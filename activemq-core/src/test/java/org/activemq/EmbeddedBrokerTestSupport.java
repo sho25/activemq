@@ -128,11 +128,12 @@ specifier|protected
 name|BrokerService
 name|broker
 decl_stmt|;
+comment|//protected String bindAddress = "tcp://localhost:61616";
 specifier|protected
 name|String
 name|bindAddress
 init|=
-literal|"tcp://localhost:61616"
+literal|"vm://localhost"
 decl_stmt|;
 specifier|protected
 name|ConnectionFactory
@@ -373,6 +374,14 @@ argument_list|()
 decl_stmt|;
 name|answer
 operator|.
+name|setPersistent
+argument_list|(
+name|isPersistent
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|answer
+operator|.
 name|addConnector
 argument_list|(
 name|bindAddress
@@ -380,6 +389,16 @@ argument_list|)
 expr_stmt|;
 return|return
 name|answer
+return|;
+block|}
+comment|/**      * @return whether or not persistence should be used      */
+specifier|protected
+name|boolean
+name|isPersistent
+parameter_list|()
+block|{
+return|return
+literal|false
 return|;
 block|}
 comment|/**      * Factory method to create a new connection      */
