@@ -499,13 +499,26 @@ argument_list|,
 literal|"Connection"
 argument_list|)
 expr_stmt|;
+comment|// lets avoid any JMX sensitive characters
+name|String
+name|jmxConnectionId
+init|=
+name|connectionId
+operator|.
+name|replace
+argument_list|(
+literal|':'
+argument_list|,
+literal|'_'
+argument_list|)
+decl_stmt|;
 name|map
 operator|.
 name|put
 argument_list|(
 literal|"Connection"
 argument_list|,
-name|connectionId
+name|jmxConnectionId
 argument_list|)
 expr_stmt|;
 try|try
