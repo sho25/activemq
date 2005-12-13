@@ -499,17 +499,14 @@ argument_list|,
 literal|"Connection"
 argument_list|)
 expr_stmt|;
-comment|// lets avoid any JMX sensitive characters
 name|String
 name|jmxConnectionId
 init|=
-name|connectionId
+name|ObjectName
 operator|.
-name|replace
+name|quote
 argument_list|(
-literal|':'
-argument_list|,
-literal|'_'
+name|connectionId
 argument_list|)
 decl_stmt|;
 name|map
