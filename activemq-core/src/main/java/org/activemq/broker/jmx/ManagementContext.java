@@ -345,6 +345,20 @@ name|Throwable
 name|ignore
 parameter_list|)
 block|{             }
+name|Thread
+name|t
+init|=
+operator|new
+name|Thread
+argument_list|(
+literal|"JMX connector"
+argument_list|)
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
 try|try
 block|{
 name|connectorServer
@@ -384,6 +398,21 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
+decl_stmt|;
+name|t
+operator|.
+name|setDaemon
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|t
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 specifier|public
