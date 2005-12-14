@@ -128,7 +128,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A JMS provider which pools Connection, Session and MessageProducer instances so it can be used with tools like   * Spring's<a href="http://activemq.org/Spring+Support">JmsTemplate</a>  *   * @version $Revision: 1.1 $  */
+comment|/**  * A JMS provider which pools Connection, Session and MessageProducer instances so it can be used with tools like   * Spring's<a href="http://activemq.org/Spring+Support">JmsTemplate</a>.  *   *<b>NOTE</b> this implementation is only intended for use when sending messages.  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
