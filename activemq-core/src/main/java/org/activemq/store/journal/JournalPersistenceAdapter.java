@@ -2190,7 +2190,9 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Journal Recovery Started."
+literal|"Journal Recovery Started from: "
+operator|+
+name|journal
 argument_list|)
 expr_stmt|;
 name|ConnectionContext
