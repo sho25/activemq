@@ -612,6 +612,10 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|reconnectDelay
+operator|=
+name|initialReconnectDelay
+expr_stmt|;
 name|Iterator
 name|iter
 init|=
@@ -702,7 +706,7 @@ argument_list|)
 expr_stmt|;
 name|reconnectDelay
 operator|=
-literal|10
+name|initialReconnectDelay
 expr_stmt|;
 name|connectedTransportURI
 operator|=
