@@ -496,7 +496,7 @@ name|ServletException
 throws|,
 name|IOException
 block|{
-name|doMessagesWithoutContinuation
+name|doMessages
 argument_list|(
 name|request
 argument_list|,
@@ -522,7 +522,7 @@ name|ServletException
 throws|,
 name|IOException
 block|{
-name|doMessagesWithoutContinuation
+name|doMessages
 argument_list|(
 name|request
 argument_list|,
