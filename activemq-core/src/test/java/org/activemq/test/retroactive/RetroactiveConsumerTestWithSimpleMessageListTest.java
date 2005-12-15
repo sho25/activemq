@@ -475,6 +475,15 @@ argument_list|()
 return|;
 block|}
 specifier|protected
+name|void
+name|startBroker
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// broker already started by XBean
+block|}
+specifier|protected
 name|String
 name|getBrokerXml
 parameter_list|()

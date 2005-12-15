@@ -29,7 +29,9 @@ name|springframework
 operator|.
 name|beans
 operator|.
-name|BeansException
+name|factory
+operator|.
+name|DisposableBean
 import|;
 end_import
 
@@ -47,20 +49,6 @@ name|InitializingBean
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|springframework
-operator|.
-name|context
-operator|.
-name|support
-operator|.
-name|AbstractApplicationContext
-import|;
-end_import
-
 begin_comment
 comment|/**  * Represents a running broker service which consists of a number of transport  * connectors, network connectors and a bunch of properties which can be used to  * configure the broker as its lazily created.  *   * @org.xbean.XBean element="broker" rootElement="true" description="An ActiveMQ  *                  Message Broker which consists of a number of transport  *                  connectors, network connectors and a persistence adaptor"  *   * @version $Revision: 1.1 $  */
 end_comment
@@ -73,38 +61,19 @@ extends|extends
 name|BrokerService
 implements|implements
 name|InitializingBean
+implements|,
+name|DisposableBean
 block|{
 specifier|private
 name|boolean
 name|start
 init|=
-literal|false
-decl_stmt|;
-specifier|private
-name|AbstractApplicationContext
-name|applicationContext
+literal|true
 decl_stmt|;
 specifier|public
 name|XBeanBrokerService
 parameter_list|()
-block|{             }
-specifier|public
-name|void
-name|setAbstractApplicationContext
-parameter_list|(
-name|AbstractApplicationContext
-name|applicationContext
-parameter_list|)
-throws|throws
-name|BeansException
-block|{
-name|this
-operator|.
-name|applicationContext
-operator|=
-name|applicationContext
-expr_stmt|;
-block|}
+block|{     }
 specifier|public
 name|void
 name|afterPropertiesSet
@@ -124,33 +93,14 @@ block|}
 block|}
 specifier|public
 name|void
-name|stop
+name|destroy
 parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
 name|stop
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|applicationContext
-operator|!=
-literal|null
-condition|)
-block|{
-name|applicationContext
-operator|.
-name|destroy
-argument_list|()
-expr_stmt|;
-name|applicationContext
-operator|=
-literal|null
-expr_stmt|;
-block|}
 block|}
 specifier|public
 name|boolean
@@ -161,6 +111,7 @@ return|return
 name|start
 return|;
 block|}
+comment|/**      * Sets whether or not the broker is started along with the ApplicationContext it is defined within.      * Normally you would want the broker to start up along with the ApplicationContext but sometimes when working      * with JUnit tests you may wish to start and stop the broker explicitly yourself.      */
 specifier|public
 name|void
 name|setStart

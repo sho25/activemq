@@ -267,13 +267,7 @@ name|config
 argument_list|)
 throw|;
 block|}
-name|broker
-operator|.
-name|setAbstractApplicationContext
-argument_list|(
-name|context
-argument_list|)
-expr_stmt|;
+comment|// TODO warning resources from the context may not be closed down!
 return|return
 name|broker
 return|;

@@ -179,9 +179,7 @@ name|createBroker
 argument_list|()
 expr_stmt|;
 block|}
-name|broker
-operator|.
-name|start
+name|startBroker
 argument_list|()
 expr_stmt|;
 name|connectionFactory
@@ -390,6 +388,19 @@ expr_stmt|;
 return|return
 name|answer
 return|;
+block|}
+specifier|protected
+name|void
+name|startBroker
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|broker
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * @return whether or not persistence should be used      */
 specifier|protected

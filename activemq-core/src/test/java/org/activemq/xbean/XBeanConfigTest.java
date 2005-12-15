@@ -470,11 +470,8 @@ operator|.
 name|getBroker
 argument_list|()
 expr_stmt|;
-name|brokerService
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
+comment|// started automatically
+comment|//brokerService.start();
 name|context
 operator|=
 operator|new
