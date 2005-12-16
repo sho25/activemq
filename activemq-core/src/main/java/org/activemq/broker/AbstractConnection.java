@@ -708,6 +708,19 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+comment|/**      * Returns the number of messages to be dispatched to this connection      */
+specifier|public
+name|int
+name|getDispatchQueueSize
+parameter_list|()
+block|{
+return|return
+name|dispatchQueue
+operator|.
+name|size
+argument_list|()
+return|;
+block|}
 specifier|public
 name|void
 name|start

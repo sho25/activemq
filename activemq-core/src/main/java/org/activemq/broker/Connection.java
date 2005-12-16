@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/** *<a href="http://activemq.org">ActiveMQ: The Open Source Message Fabric</a> * * Copyright 2005 (C) LogicBlaze, Inc. http://www.logicblaze.com * * Licensed under the Apache License, Version 2.0 (the "License"); * you may not use this file except in compliance with the License. * You may obtain a copy of the License at * * http://www.apache.org/licenses/LICENSE-2.0 * * Unless required by applicable law or agreed to in writing, software * distributed under the License is distributed on an "AS IS" BASIS, * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. * See the License for the specific language governing permissions and * limitations under the License. * **/
+comment|/**  *<a href="http://activemq.org">ActiveMQ: The Open Source Message Fabric</a>  *  * Copyright 2005 (C) LogicBlaze, Inc. http://www.logicblaze.com  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  *  **/
 end_comment
 
 begin_package
@@ -64,7 +64,7 @@ name|Connector
 name|getConnector
 parameter_list|()
 function_decl|;
-comment|/**      * Sends a message to the client.      *       * @param message the message to send to the client.      */
+comment|/**      * Sends a message to the client.      *       * @param message      *            the message to send to the client.      */
 specifier|public
 name|void
 name|dispatchSync
@@ -82,7 +82,7 @@ name|Command
 name|command
 parameter_list|)
 function_decl|;
-comment|/**      * Services a client command and submits it to the broker.       * @param command      */
+comment|/**      * Services a client command and submits it to the broker.      *       * @param command      */
 specifier|public
 name|Response
 name|service
@@ -122,6 +122,12 @@ comment|/**      * @return true if the Connection is active      */
 specifier|public
 name|boolean
 name|isActive
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the number of messages to be dispatched to this connection      */
+specifier|public
+name|int
+name|getDispatchQueueSize
 parameter_list|()
 function_decl|;
 block|}

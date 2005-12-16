@@ -131,6 +131,19 @@ name|isActive
 argument_list|()
 return|;
 block|}
+comment|/**      * Returns the number of messages to be dispatched to this connection      */
+specifier|public
+name|int
+name|getDispatchQueueSize
+parameter_list|()
+block|{
+return|return
+name|connection
+operator|.
+name|getDispatchQueueSize
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

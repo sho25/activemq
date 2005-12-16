@@ -56,6 +56,12 @@ name|boolean
 name|isActive
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the number of messages to be dispatched to this connection      */
+specifier|public
+name|int
+name|getDispatchQueueSize
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
