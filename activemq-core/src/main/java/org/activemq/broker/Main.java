@@ -964,10 +964,6 @@ init|=
 name|getClassLoader
 argument_list|()
 decl_stmt|;
-comment|// Use reflection to get teh version
-name|Object
-name|broker
-decl_stmt|;
 try|try
 block|{
 name|Class
