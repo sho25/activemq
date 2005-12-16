@@ -1110,17 +1110,31 @@ argument_list|(
 literal|"naming:type=rmiregistry"
 argument_list|)
 expr_stmt|;
-name|mbeanServer
+comment|//          Do not use the createMBean as the mx4j jar may not be in the
+comment|// same class loader than the server
+name|Class
+name|cl
+init|=
+name|Class
 operator|.
-name|createMBean
+name|forName
 argument_list|(
 literal|"mx4j.tools.naming.NamingService"
+argument_list|)
+decl_stmt|;
+name|mbeanServer
+operator|.
+name|registerMBean
+argument_list|(
+name|cl
+operator|.
+name|newInstance
+argument_list|()
 argument_list|,
 name|namingServiceObjectName
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
+comment|//mbeanServer.createMBean("mx4j.tools.naming.NamingService", namingServiceObjectName, null);
 comment|// set the naming port
 name|Attribute
 name|attr
