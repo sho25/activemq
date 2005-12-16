@@ -1236,13 +1236,11 @@ literal|true
 argument_list|)
 condition|)
 block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"Allready started."
-argument_list|)
-throw|;
+comment|// lets just ignore redundant start() calls
+comment|// as its way too easy to not be completely sure if start() has been
+comment|// called or not with the gazillion of different configuration mechanisms
+comment|//throw new IllegalStateException("Allready started.");
+return|return;
 block|}
 name|processHelperProperties
 argument_list|()
