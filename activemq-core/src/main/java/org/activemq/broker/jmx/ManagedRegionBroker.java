@@ -390,9 +390,9 @@ name|put
 argument_list|(
 literal|"Type"
 argument_list|,
-name|ObjectName
+name|JMXSupport
 operator|.
-name|quote
+name|encodeObjectNamePart
 argument_list|(
 name|destName
 operator|.
@@ -480,9 +480,9 @@ name|put
 argument_list|(
 literal|"Type"
 argument_list|,
-name|ObjectName
+name|JMXSupport
 operator|.
-name|quote
+name|encodeObjectNamePart
 argument_list|(
 name|destName
 operator|.

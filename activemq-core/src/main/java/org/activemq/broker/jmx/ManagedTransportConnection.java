@@ -514,9 +514,9 @@ expr_stmt|;
 name|String
 name|jmxConnectionId
 init|=
-name|ObjectName
+name|JMXSupport
 operator|.
-name|quote
+name|encodeObjectNamePart
 argument_list|(
 name|connectionId
 argument_list|)
