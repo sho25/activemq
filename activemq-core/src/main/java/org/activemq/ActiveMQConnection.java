@@ -1159,7 +1159,7 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-comment|/**      *       * @param factoryStats      * @param userName      * @param password      * @throws Exception       */
+comment|/**      * Construct an<code>ActiveMQConnection</code>      * @param transport       * @param factoryStats      * @param userName      * @param password      * @throws Exception       */
 specifier|protected
 name|ActiveMQConnection
 parameter_list|(
