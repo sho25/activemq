@@ -39,16 +39,6 @@ name|org
 operator|.
 name|activeio
 operator|.
-name|AsyncChannel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|activeio
-operator|.
 name|packet
 operator|.
 name|ByteArrayPacket
@@ -64,6 +54,20 @@ operator|.
 name|packet
 operator|.
 name|BytePacket
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|activeio
+operator|.
+name|packet
+operator|.
+name|async
+operator|.
+name|AsyncChannel
 import|;
 end_import
 

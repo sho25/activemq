@@ -111,16 +111,6 @@ name|org
 operator|.
 name|activeio
 operator|.
-name|Packet
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|activeio
-operator|.
 name|adapter
 operator|.
 name|PacketOutputStream
@@ -172,6 +162,18 @@ operator|.
 name|packet
 operator|.
 name|ByteBufferPacket
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|activeio
+operator|.
+name|packet
+operator|.
+name|Packet
 import|;
 end_import
 

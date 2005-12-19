@@ -43,26 +43,6 @@ name|OutputStream
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|activeio
-operator|.
-name|ByteSequence
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|activeio
-operator|.
-name|Packet
-import|;
-end_import
-
 begin_comment
 comment|/**  * Provides a Packet implementation that filters operations to another packet.  *   * Used to make it easier to augment the {@see #narrow(Class)}method.  *   * @version $Revision$  */
 end_comment

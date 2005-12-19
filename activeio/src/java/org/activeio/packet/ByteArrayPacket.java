@@ -55,26 +55,6 @@ name|Constructor
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|activeio
-operator|.
-name|ByteSequence
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|activeio
-operator|.
-name|Packet
-import|;
-end_import
-
 begin_comment
 comment|/**  * Provides a Packet implementation that is directly backed by a<code>byte[]</code>.  *   * @version $Revision$  */
 end_comment
@@ -568,7 +548,7 @@ operator|-
 name|position
 expr_stmt|;
 block|}
-comment|/**      * @see org.activeio.Packet#read()      */
+comment|/**      * @see org.activeio.packet.Packet#read()      */
 specifier|public
 name|int
 name|read
@@ -612,7 +592,7 @@ operator|&
 literal|0xff
 return|;
 block|}
-comment|/**      * @see org.activeio.Packet#read(byte[], int, int)      */
+comment|/**      * @see org.activeio.packet.Packet#read(byte[], int, int)      */
 specifier|public
 name|int
 name|read
@@ -689,7 +669,7 @@ return|return
 name|copyLength
 return|;
 block|}
-comment|/**      * @see org.activeio.Packet#write(int)      */
+comment|/**      * @see org.activeio.packet.Packet#write(int)      */
 specifier|public
 name|boolean
 name|write
@@ -735,7 +715,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * @see org.activeio.Packet#write(byte[], int, int)      */
+comment|/**      * @see org.activeio.packet.Packet#write(byte[], int, int)      */
 specifier|public
 name|int
 name|write
@@ -831,7 +811,7 @@ name|remaining
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.activeio.Packet#sliceAsBytes()      */
+comment|/**      * @see org.activeio.packet.Packet#sliceAsBytes()      */
 specifier|public
 name|byte
 index|[]

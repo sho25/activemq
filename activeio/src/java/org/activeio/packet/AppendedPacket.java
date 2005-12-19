@@ -55,26 +55,6 @@ name|Constructor
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|activeio
-operator|.
-name|ByteSequence
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|activeio
-operator|.
-name|Packet
-import|;
-end_import
-
 begin_comment
 comment|/**  * Appends two packets together.  *   * @version $Revision$  */
 end_comment
@@ -661,7 +641,7 @@ name|out
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @see org.activeio.Packet#read()      */
+comment|/**      * @see org.activeio.packet.Packet#read()      */
 specifier|public
 name|int
 name|read
@@ -706,7 +686,7 @@ literal|1
 return|;
 block|}
 block|}
-comment|/**      * @see org.activeio.Packet#read(byte[], int, int)      */
+comment|/**      * @see org.activeio.packet.Packet#read(byte[], int, int)      */
 specifier|public
 name|int
 name|read
@@ -808,7 +788,7 @@ name|rc2
 return|;
 block|}
 block|}
-comment|/**      * @see org.activeio.Packet#write(int)      */
+comment|/**      * @see org.activeio.packet.Packet#write(int)      */
 specifier|public
 name|boolean
 name|write
@@ -859,7 +839,7 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**      * @see org.activeio.Packet#write(byte[], int, int)      */
+comment|/**      * @see org.activeio.packet.Packet#write(byte[], int, int)      */
 specifier|public
 name|int
 name|write

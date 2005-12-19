@@ -33,16 +33,6 @@ name|TestCase
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|activeio
-operator|.
-name|Packet
-import|;
-end_import
-
 begin_comment
 comment|/**  */
 end_comment

@@ -83,17 +83,9 @@ name|org
 operator|.
 name|activeio
 operator|.
-name|Disposable
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|adapter
 operator|.
-name|activeio
-operator|.
-name|Packet
+name|PacketOutputStream
 import|;
 end_import
 
@@ -115,9 +107,9 @@ name|org
 operator|.
 name|activeio
 operator|.
-name|adapter
+name|packet
 operator|.
-name|PacketOutputStream
+name|ByteArrayPacket
 import|;
 end_import
 
@@ -129,7 +121,7 @@ name|activeio
 operator|.
 name|packet
 operator|.
-name|ByteArrayPacket
+name|Packet
 import|;
 end_import
 
@@ -142,8 +134,6 @@ specifier|final
 specifier|public
 class|class
 name|Record
-implements|implements
-name|Disposable
 block|{
 specifier|static
 specifier|final

@@ -30,7 +30,9 @@ specifier|public
 interface|interface
 name|ChannelServer
 extends|extends
-name|Channel
+name|Service
+extends|,
+name|Adaptable
 block|{
 comment|/**      * The URI that was used when the channel was bound.  This could be different      * than what is used by a client to connect to the ChannelServer.  For example,      * the bind URI might be tcp://localhost:0 which means the channel should bind to       * an anonymous port.      *       * @return The URI that was used when the channel was bound      */
 specifier|public

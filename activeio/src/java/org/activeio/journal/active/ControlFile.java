@@ -115,17 +115,9 @@ name|org
 operator|.
 name|activeio
 operator|.
-name|Disposable
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|packet
 operator|.
-name|activeio
-operator|.
-name|Packet
+name|ByteBufferPacket
 import|;
 end_import
 
@@ -137,7 +129,7 @@ name|activeio
 operator|.
 name|packet
 operator|.
-name|ByteBufferPacket
+name|Packet
 import|;
 end_import
 
@@ -150,8 +142,6 @@ specifier|final
 specifier|public
 class|class
 name|ControlFile
-implements|implements
-name|Disposable
 block|{
 comment|/** The File that holds the control data. */
 specifier|private

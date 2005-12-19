@@ -20,8 +20,6 @@ specifier|public
 interface|interface
 name|Channel
 extends|extends
-name|Disposable
-extends|,
 name|Service
 extends|,
 name|Adaptable

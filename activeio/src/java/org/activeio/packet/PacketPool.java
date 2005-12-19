@@ -25,26 +25,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|activeio
-operator|.
-name|Disposable
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|activeio
-operator|.
-name|Packet
-import|;
-end_import
-
-begin_import
-import|import
 name|edu
 operator|.
 name|emory
@@ -74,8 +54,6 @@ specifier|abstract
 specifier|public
 class|class
 name|PacketPool
-implements|implements
-name|Disposable
 block|{
 specifier|public
 specifier|static

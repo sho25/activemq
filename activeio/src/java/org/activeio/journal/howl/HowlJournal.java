@@ -41,16 +41,6 @@ name|org
 operator|.
 name|activeio
 operator|.
-name|Packet
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|activeio
-operator|.
 name|journal
 operator|.
 name|InvalidRecordLocationException
@@ -102,6 +92,18 @@ operator|.
 name|packet
 operator|.
 name|ByteArrayPacket
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|activeio
+operator|.
+name|packet
+operator|.
+name|Packet
 import|;
 end_import
 

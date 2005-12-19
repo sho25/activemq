@@ -39,6 +39,22 @@ name|org
 operator|.
 name|activeio
 operator|.
+name|packet
+operator|.
+name|Packet
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|activeio
+operator|.
+name|packet
+operator|.
+name|async
+operator|.
 name|AsyncChannel
 import|;
 end_import
@@ -48,6 +64,10 @@ import|import
 name|org
 operator|.
 name|activeio
+operator|.
+name|packet
+operator|.
+name|async
 operator|.
 name|AsyncChannelListener
 import|;
@@ -59,15 +79,9 @@ name|org
 operator|.
 name|activeio
 operator|.
-name|Packet
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|packet
 operator|.
-name|activeio
+name|sync
 operator|.
 name|SyncChannel
 import|;
@@ -301,7 +315,7 @@ operator|=
 name|upPacketChannel
 expr_stmt|;
 block|}
-comment|/**      * @see org.activeio.Channel#write(org.activeio.Packet)      */
+comment|/**      * @see org.activeio.Channel#write(org.activeio.packet.Packet)      */
 specifier|public
 name|void
 name|write
@@ -309,6 +323,8 @@ parameter_list|(
 name|org
 operator|.
 name|activeio
+operator|.
+name|packet
 operator|.
 name|Packet
 name|packet
@@ -338,7 +354,7 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @see org.activeio.SyncChannel#read(long)      */
+comment|/**      * @see org.activeio.packet.sync.SyncChannel#read(long)      */
 specifier|public
 name|Packet
 name|read
@@ -498,26 +514,21 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @see org.activeio.Service#stop(long)      */
+comment|/**      * @see org.activeio.Service#stop()      */
 specifier|public
 name|void
 name|stop
-parameter_list|(
-name|long
-name|timeout
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
 block|{
 name|asyncChannel
 operator|.
 name|stop
-argument_list|(
-name|timeout
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @see org.activeio.AsyncChannelListener#onPacket(org.activeio.Packet)      */
+comment|/**      * @see org.activeio.packet.async.AsyncChannelListener#onPacket(org.activeio.packet.Packet)      */
 specifier|public
 name|void
 name|onPacket
@@ -552,7 +563,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @see org.activeio.AsyncChannelListener#onPacketError(org.activeio.ChannelException)      */
+comment|/**      * @see org.activeio.packet.async.AsyncChannelListener#onPacketError(org.activeio.ChannelException)      */
 specifier|public
 name|void
 name|onPacketError

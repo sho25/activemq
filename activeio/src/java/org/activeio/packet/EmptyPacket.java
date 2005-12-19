@@ -43,26 +43,6 @@ name|OutputStream
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|activeio
-operator|.
-name|ByteSequence
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|activeio
-operator|.
-name|Packet
-import|;
-end_import
-
 begin_comment
 comment|/**  * Provides a Packet implementation that is directly backed by a<code>byte[0]</code>.  *   * @version $Revision$  */
 end_comment
@@ -295,7 +275,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * @see org.activeio.Packet#read()      */
+comment|/**      * @see org.activeio.packet.Packet#read()      */
 specifier|public
 name|int
 name|read
@@ -306,7 +286,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/**      * @see org.activeio.Packet#read(byte[], int, int)      */
+comment|/**      * @see org.activeio.packet.Packet#read(byte[], int, int)      */
 specifier|public
 name|int
 name|read
@@ -327,7 +307,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/**      * @see org.activeio.Packet#write(int)      */
+comment|/**      * @see org.activeio.packet.Packet#write(int)      */
 specifier|public
 name|boolean
 name|write
@@ -340,7 +320,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * @see org.activeio.Packet#write(byte[], int, int)      */
+comment|/**      * @see org.activeio.packet.Packet#write(byte[], int, int)      */
 specifier|public
 name|int
 name|write

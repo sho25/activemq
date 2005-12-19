@@ -19,7 +19,7 @@ name|org
 operator|.
 name|activeio
 operator|.
-name|SyncChannel
+name|Channel
 import|;
 end_import
 
@@ -28,6 +28,10 @@ import|import
 name|org
 operator|.
 name|activeio
+operator|.
+name|packet
+operator|.
+name|async
 operator|.
 name|AsyncChannel
 import|;
@@ -39,7 +43,11 @@ name|org
 operator|.
 name|activeio
 operator|.
-name|Channel
+name|packet
+operator|.
+name|sync
+operator|.
+name|SyncChannel
 import|;
 end_import
 

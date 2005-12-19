@@ -54,15 +54,17 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/** 	 * Stops the channel.  Once stopped, the channel is in the stopped state. 	 *  	 * @param timeout The amount of time the channel is allowed to take to gracefully stop.  If the timeout 	 *        is exceeded, the channel should do a forcefull stop. 	 *  	 * @throws IOException 	 */
+comment|/** 	 * Stops the channel.  Once stopped, the channel is in the stopped state. 	 *  	 * @throws IOException 	 */
 name|void
 name|stop
-parameter_list|(
-name|long
-name|timeout
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
+function_decl|;
+comment|/**      * Disposes the channel.  Once disposed, the channel cannot be used anymore.      *       * @throws IOException      */
+name|void
+name|dispose
+parameter_list|()
 function_decl|;
 block|}
 end_interface

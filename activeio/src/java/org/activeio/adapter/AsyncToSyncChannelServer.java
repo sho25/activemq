@@ -59,16 +59,6 @@ name|org
 operator|.
 name|activeio
 operator|.
-name|AsyncChannelServer
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|activeio
-operator|.
 name|Channel
 import|;
 end_import
@@ -88,6 +78,24 @@ import|import
 name|org
 operator|.
 name|activeio
+operator|.
+name|packet
+operator|.
+name|async
+operator|.
+name|AsyncChannelServer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|activeio
+operator|.
+name|packet
+operator|.
+name|sync
 operator|.
 name|SyncChannelServer
 import|;
@@ -313,7 +321,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @see org.activeio.SyncChannelServer#accept(long)      */
+comment|/**      * @see org.activeio.packet.sync.SyncChannelServer#accept(long)      */
 specifier|public
 name|org
 operator|.
@@ -477,23 +485,18 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @see org.activeio.Service#stop(long)      */
+comment|/**      * @see org.activeio.Service#stop()      */
 specifier|public
 name|void
 name|stop
-parameter_list|(
-name|long
-name|timeout
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
 block|{
 name|asyncChannelServer
 operator|.
 name|stop
-argument_list|(
-name|timeout
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 specifier|public

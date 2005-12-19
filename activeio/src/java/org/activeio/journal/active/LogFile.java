@@ -77,16 +77,6 @@ name|FileChannel
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|activeio
-operator|.
-name|Disposable
-import|;
-end_import
-
 begin_comment
 comment|/**  * Allows read/append access to a LogFile.  *   * @version $Revision: 1.1 $  */
 end_comment
@@ -96,8 +86,6 @@ specifier|final
 specifier|public
 class|class
 name|LogFile
-implements|implements
-name|Disposable
 block|{
 specifier|private
 specifier|final
