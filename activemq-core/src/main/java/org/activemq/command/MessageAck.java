@@ -229,6 +229,15 @@ return|;
 block|}
 specifier|public
 name|boolean
+name|isMessageAck
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
+specifier|public
+name|boolean
 name|isPoisonAck
 parameter_list|()
 block|{

@@ -142,6 +142,15 @@ return|return
 literal|false
 return|;
 block|}
+specifier|public
+name|boolean
+name|isMessageAck
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 comment|/**      * @openwire:property version=1      */
 specifier|public
 name|short

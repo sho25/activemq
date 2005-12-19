@@ -79,6 +79,10 @@ name|boolean
 name|isMessage
 parameter_list|()
 function_decl|;
+name|boolean
+name|isMessageAck
+parameter_list|()
+function_decl|;
 name|Response
 name|visit
 parameter_list|(

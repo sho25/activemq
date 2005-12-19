@@ -283,11 +283,6 @@ operator|new
 name|ConcurrentHashMap
 argument_list|()
 decl_stmt|;
-name|Broker
-name|broker
-init|=
-literal|null
-decl_stmt|;
 name|String
 index|[]
 name|names

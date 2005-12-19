@@ -25,30 +25,6 @@ name|Service
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|BrokerInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|RedeliveryPolicy
-import|;
-end_import
-
 begin_interface
 specifier|public
 interface|interface
@@ -107,6 +83,24 @@ parameter_list|(
 name|boolean
 name|useExponentialBackOff
 parameter_list|)
+function_decl|;
+comment|/**      * Resets the statistics      */
+specifier|public
+name|void
+name|resetStatistics
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the number of messages enqueued on this connector      *       * @return the number of messages enqueued on this connector      */
+specifier|public
+name|long
+name|getEnqueueCount
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the number of messages dequeued on this connector      *       * @return the number of messages dequeued on this connector      */
+specifier|public
+name|long
+name|getDequeueCount
+parameter_list|()
 function_decl|;
 block|}
 end_interface

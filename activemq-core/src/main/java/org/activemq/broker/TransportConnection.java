@@ -559,6 +559,14 @@ argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+name|getStatistics
+argument_list|()
+operator|.
+name|onCommand
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(

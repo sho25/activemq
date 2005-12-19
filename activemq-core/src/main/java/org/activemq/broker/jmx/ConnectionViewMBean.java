@@ -62,6 +62,24 @@ name|int
 name|getDispatchQueueSize
 parameter_list|()
 function_decl|;
+comment|/**      * Resets the statistics      */
+specifier|public
+name|void
+name|resetStatistics
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the number of messages enqueued on this connection      *       * @return the number of messages enqueued on this connection      */
+specifier|public
+name|long
+name|getEnqueueCount
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the number of messages dequeued on this connection      *       * @return the number of messages dequeued on this connection      */
+specifier|public
+name|long
+name|getDequeueCount
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

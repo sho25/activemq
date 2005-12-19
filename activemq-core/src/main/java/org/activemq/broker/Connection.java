@@ -29,6 +29,20 @@ name|org
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|ConnectionStatistics
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|Command
@@ -128,6 +142,12 @@ comment|/**      * Returns the number of messages to be dispatched to this conne
 specifier|public
 name|int
 name|getDispatchQueueSize
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the statistics for this connection      */
+specifier|public
+name|ConnectionStatistics
+name|getStatistics
 parameter_list|()
 function_decl|;
 block|}
