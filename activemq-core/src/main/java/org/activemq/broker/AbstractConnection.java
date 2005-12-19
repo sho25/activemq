@@ -709,6 +709,13 @@ name|broker
 operator|=
 name|broker
 expr_stmt|;
+if|if
+condition|(
+name|connector
+operator|!=
+literal|null
+condition|)
+block|{
 name|this
 operator|.
 name|statistics
@@ -721,6 +728,7 @@ name|getStatistics
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|taskRunnerFactory
