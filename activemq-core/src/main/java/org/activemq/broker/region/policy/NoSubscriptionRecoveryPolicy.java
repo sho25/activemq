@@ -57,6 +57,20 @@ name|Subscription
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|Topic
+import|;
+end_import
+
 begin_comment
 comment|/**  * This is the default Topic recovery policy which does not recover any messages.  *   * @org.xbean.XBean  *   * @version $Revision$  */
 end_comment
@@ -69,7 +83,7 @@ implements|implements
 name|SubscriptionRecoveryPolicy
 block|{
 specifier|public
-name|void
+name|boolean
 name|add
 parameter_list|(
 name|ConnectionContext
@@ -80,13 +94,20 @@ name|node
 parameter_list|)
 throws|throws
 name|Throwable
-block|{     }
+block|{
+return|return
+literal|true
+return|;
+block|}
 specifier|public
 name|void
 name|recover
 parameter_list|(
 name|ConnectionContext
 name|context
+parameter_list|,
+name|Topic
+name|topic
 parameter_list|,
 name|Subscription
 name|sub

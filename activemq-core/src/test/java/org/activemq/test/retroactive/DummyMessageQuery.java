@@ -9,13 +9,27 @@ name|org
 operator|.
 name|activemq
 operator|.
+name|test
+operator|.
+name|retroactive
+package|;
+end_package
+
+begin_import
+import|import
+name|org
+operator|.
+name|activemq
+operator|.
 name|broker
 operator|.
 name|region
 operator|.
 name|policy
-package|;
-end_package
+operator|.
+name|MessageQuery
+import|;
+end_import
 
 begin_import
 import|import
@@ -26,6 +40,18 @@ operator|.
 name|command
 operator|.
 name|ActiveMQDestination
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQTextMessage
 import|;
 end_import
 
@@ -52,15 +78,23 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents some kind of query which will load initial messages from some source for a new topic subscriber.  *   * @version $Revision$  */
+comment|/**  *  * @version $Revision$  */
 end_comment
 
-begin_interface
+begin_class
 specifier|public
-interface|interface
+class|class
+name|DummyMessageQuery
+implements|implements
 name|MessageQuery
 block|{
-comment|/**      * Executes the query for messages; each message is passed into the listener      *       * @param destination the destination on which the query is to be performed      * @param listener is the listener to notify as each message is created or loaded      */
+specifier|public
+specifier|static
+name|int
+name|messageCount
+init|=
+literal|10
+decl_stmt|;
 specifier|public
 name|void
 name|execute
@@ -73,8 +107,62 @@ name|listener
 parameter_list|)
 throws|throws
 name|Exception
-function_decl|;
-comment|/**      * Returns true if the given update is valid and does not overlap with the initial message query.      * When performing an initial load from some source, there is a chance that an update may occur which is logically before      * the message sent on the initial load - so this method provides a hook where the query instance can keep track of the version IDs      * of the messages sent so that if an older version is sent as an update it can be excluded to avoid going backwards in time.      *       * e.g. if the execute() method creates version 2 of an object and then an update message is sent for version 1, this method should return false to       * hide the old update message.      *       * @param message the update message which may have been sent before the query actually completed      * @return true if the update message is valid otherwise false in which case the update message will be discarded.      */
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Initial query is creating: "
+operator|+
+name|messageCount
+operator|+
+literal|" messages"
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|messageCount
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|ActiveMQTextMessage
+name|message
+init|=
+operator|new
+name|ActiveMQTextMessage
+argument_list|()
+decl_stmt|;
+name|message
+operator|.
+name|setText
+argument_list|(
+literal|"Initial message: "
+operator|+
+name|i
+operator|+
+literal|" loaded from query"
+argument_list|)
+expr_stmt|;
+name|listener
+operator|.
+name|onMessage
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 specifier|public
 name|boolean
 name|validateUpdate
@@ -82,9 +170,13 @@ parameter_list|(
 name|Message
 name|message
 parameter_list|)
-function_decl|;
+block|{
+return|return
+literal|true
+return|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

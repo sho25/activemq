@@ -283,6 +283,10 @@ name|ActiveMQTopic
 import|;
 end_import
 
+begin_comment
+comment|/**  * A helper class for converting normal JMS interfaces into ActiveMQ specific ones.  *   * @version $Revision: 1.1 $  */
+end_comment
+
 begin_class
 specifier|public
 class|class

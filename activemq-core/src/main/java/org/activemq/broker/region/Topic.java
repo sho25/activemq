@@ -501,6 +501,8 @@ name|recover
 argument_list|(
 name|context
 argument_list|,
+name|this
+argument_list|,
 name|sub
 argument_list|)
 expr_stmt|;
@@ -1304,6 +1306,9 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
+if|if
+condition|(
+operator|!
 name|subscriptionRecoveryPolicy
 operator|.
 name|add
@@ -1312,7 +1317,10 @@ name|context
 argument_list|,
 name|message
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
+return|return;
+block|}
 if|if
 condition|(
 name|consumers
