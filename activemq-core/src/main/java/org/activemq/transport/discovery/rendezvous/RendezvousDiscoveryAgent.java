@@ -1095,6 +1095,18 @@ operator|=
 name|brokerName
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|serviceFailed
+parameter_list|(
+name|DiscoveryEvent
+name|event
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+comment|// TODO: is there a way to notify the JmDNS that the service failed?
+block|}
 block|}
 end_class
 

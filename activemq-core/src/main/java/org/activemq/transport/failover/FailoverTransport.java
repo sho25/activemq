@@ -1791,6 +1791,24 @@ operator|=
 name|useExponentialBackOff
 expr_stmt|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|connectedTransportURI
+operator|==
+literal|null
+condition|?
+literal|"unconnected"
+else|:
+name|connectedTransportURI
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

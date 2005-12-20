@@ -380,6 +380,16 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+name|info
+operator|.
+name|setNetworkSubscription
+argument_list|(
+name|bs
+operator|.
+name|readBoolean
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Write the booleans that this object uses to a BooleanStream      */
 specifier|public
@@ -534,6 +544,16 @@ name|getBrokerPath
 argument_list|()
 argument_list|,
 name|bs
+argument_list|)
+expr_stmt|;
+name|bs
+operator|.
+name|writeBoolean
+argument_list|(
+name|info
+operator|.
+name|isNetworkSubscription
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -693,6 +713,11 @@ name|dataOut
 argument_list|,
 name|bs
 argument_list|)
+expr_stmt|;
+name|bs
+operator|.
+name|readBoolean
+argument_list|()
 expr_stmt|;
 block|}
 block|}

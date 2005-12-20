@@ -262,7 +262,9 @@ name|client
 init|=
 operator|new
 name|VMTransport
-argument_list|()
+argument_list|(
+name|location
+argument_list|)
 block|{
 specifier|public
 name|void
@@ -310,7 +312,9 @@ name|server
 init|=
 operator|new
 name|VMTransport
-argument_list|()
+argument_list|(
+name|location
+argument_list|)
 decl_stmt|;
 name|client
 operator|.

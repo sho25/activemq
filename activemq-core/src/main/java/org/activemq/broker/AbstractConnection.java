@@ -603,10 +603,6 @@ specifier|final
 name|Connector
 name|connector
 decl_stmt|;
-specifier|protected
-name|boolean
-name|demandForwardingBridge
-decl_stmt|;
 specifier|private
 name|ConnectionStatistics
 name|statistics
@@ -1821,13 +1817,6 @@ parameter_list|)
 throws|throws
 name|Throwable
 block|{
-name|messageSend
-operator|.
-name|setRecievedByDFBridge
-argument_list|(
-name|demandForwardingBridge
-argument_list|)
-expr_stmt|;
 name|broker
 operator|.
 name|send
@@ -1890,10 +1879,6 @@ name|BrokerInfo
 name|info
 parameter_list|)
 block|{
-name|demandForwardingBridge
-operator|=
-literal|true
-expr_stmt|;
 return|return
 literal|null
 return|;

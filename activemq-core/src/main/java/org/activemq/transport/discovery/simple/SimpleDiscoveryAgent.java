@@ -311,6 +311,16 @@ name|String
 name|brokerName
 parameter_list|)
 block|{     }
+specifier|public
+name|void
+name|serviceFailed
+parameter_list|(
+name|DiscoveryEvent
+name|event
+parameter_list|)
+throws|throws
+name|IOException
+block|{     }
 block|}
 end_class
 

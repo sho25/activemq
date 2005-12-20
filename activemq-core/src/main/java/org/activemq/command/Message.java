@@ -2008,7 +2008,7 @@ return|return
 name|size
 return|;
 block|}
-comment|/**      * @return Returns the recievedByDFBridge.      */
+comment|/**      * @openwire:property version=1      * @return Returns the recievedByDFBridge.      */
 specifier|public
 name|boolean
 name|isRecievedByDFBridge

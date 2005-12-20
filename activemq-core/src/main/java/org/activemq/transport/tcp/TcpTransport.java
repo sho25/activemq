@@ -466,9 +466,19 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"TcpTransport: "
+literal|"tcp://"
 operator|+
 name|socket
+operator|.
+name|getInetAddress
+argument_list|()
+operator|+
+literal|":"
+operator|+
+name|socket
+operator|.
+name|getPort
+argument_list|()
 return|;
 block|}
 comment|/**      * reads packets from a Socket      */

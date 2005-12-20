@@ -45,6 +45,18 @@ name|Service
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|DiscoveryEvent
+import|;
+end_import
+
 begin_comment
 comment|/**  * An agent used to discover other instances of a service.   *   * We typically use a discovery agent to auto-discover JMS clients and JMS brokers on a network  *  * @version $Revision$  */
 end_comment
@@ -71,6 +83,16 @@ name|registerService
 parameter_list|(
 name|String
 name|name
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * A process actively using a service may see it go down before the DiscoveryAgent notices the      * service's failure.  That process can use this method to notify the DiscoveryAgent of the failure      * so that other listeners of this DiscoveryAgent can also be made aware of the failure.      */
+name|void
+name|serviceFailed
+parameter_list|(
+name|DiscoveryEvent
+name|event
 parameter_list|)
 throws|throws
 name|IOException

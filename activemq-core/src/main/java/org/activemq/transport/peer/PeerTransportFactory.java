@@ -346,10 +346,17 @@ decl_stmt|;
 name|String
 name|broker
 init|=
+name|URISupport
+operator|.
+name|stripPrefix
+argument_list|(
 name|location
 operator|.
 name|getPath
 argument_list|()
+argument_list|,
+literal|"/"
+argument_list|)
 decl_stmt|;
 if|if
 condition|(

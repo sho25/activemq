@@ -698,7 +698,7 @@ name|this
 argument_list|)
 return|;
 block|}
-comment|/**      * @return Returns the networkSubscription.      */
+comment|/**      * @openwire:property version=1      * @return Returns the networkSubscription.      */
 specifier|public
 name|boolean
 name|isNetworkSubscription

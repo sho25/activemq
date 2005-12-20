@@ -423,15 +423,6 @@ name|environment
 operator|.
 name|put
 argument_list|(
-literal|"useEmbeddedBroker"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
-name|environment
-operator|.
-name|put
-argument_list|(
 literal|"brokerURL"
 argument_list|,
 literal|"vm://localhost"
