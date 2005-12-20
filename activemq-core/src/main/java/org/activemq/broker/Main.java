@@ -4011,20 +4011,6 @@ literal|"            Loads the xbean configuration file from the classpath"
 block|,
 literal|""
 block|,
-literal|"    Spring based broker configuration:"
-block|,
-literal|""
-block|,
-literal|"        Example: Main spring:file:activemq.xml"
-block|,
-literal|"            Loads the spring configuration file from the current working directory"
-block|,
-literal|"        Example: Main spring:activemq.xml"
-block|,
-literal|"            Loads the spring configuration file from the classpath"
-block|,
-literal|""
-block|,
 literal|"    URI Parameter based broker configuration:"
 block|,
 literal|""
