@@ -124,17 +124,6 @@ argument_list|,
 literal|"org.activemq.jndi.ActiveMQInitialContextFactory"
 argument_list|)
 expr_stmt|;
-name|properties
-operator|.
-name|put
-argument_list|(
-literal|"useEmbeddedBroker"
-argument_list|,
-name|Boolean
-operator|.
-name|TRUE
-argument_list|)
-expr_stmt|;
 comment|// configure the embedded broker using an XML config file
 comment|// which is either a URL or a resource on the classpath
 name|File

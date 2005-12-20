@@ -142,13 +142,6 @@ argument_list|(
 literal|"vm://locahost"
 argument_list|)
 decl_stmt|;
-name|connectionFactory
-operator|.
-name|setUseEmbeddedBroker
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|String
 name|topicName
 init|=

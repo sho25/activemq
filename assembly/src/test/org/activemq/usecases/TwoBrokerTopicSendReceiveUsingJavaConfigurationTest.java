@@ -126,13 +126,6 @@ argument_list|(
 literal|"tcp://localhost:62002"
 argument_list|)
 decl_stmt|;
-name|factory
-operator|.
-name|setUseEmbeddedBroker
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 return|return
 name|factory
 return|;
@@ -203,13 +196,6 @@ argument_list|(
 literal|"tcp://localhost:62001"
 argument_list|)
 decl_stmt|;
-name|factory
-operator|.
-name|setUseEmbeddedBroker
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 return|return
 name|factory
 return|;

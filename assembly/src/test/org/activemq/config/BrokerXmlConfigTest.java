@@ -73,13 +73,6 @@ operator|new
 name|ActiveMQConnectionFactory
 argument_list|()
 decl_stmt|;
-name|connectionFactory
-operator|.
-name|setUseEmbeddedBroker
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 comment|// configure the embedded broker using an XML config file
 comment|// which is either a URL or a resource on the classpath
 comment|// TODO ...

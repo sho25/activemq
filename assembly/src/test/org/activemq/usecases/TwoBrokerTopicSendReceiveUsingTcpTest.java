@@ -266,13 +266,6 @@ name|getConnectUri
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|fac
-operator|.
-name|setUseEmbeddedBroker
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 return|return
 name|fac
 return|;
@@ -327,13 +320,6 @@ name|getConnectUri
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|fac
-operator|.
-name|setUseEmbeddedBroker
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 return|return
 name|fac
 return|;

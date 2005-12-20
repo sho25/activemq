@@ -292,13 +292,6 @@ argument_list|(
 literal|"vm://localhost?broker.persistent=false"
 argument_list|)
 decl_stmt|;
-name|factory
-operator|.
-name|setUseEmbeddedBroker
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|connection
 operator|=
 name|factory
