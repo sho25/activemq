@@ -289,6 +289,11 @@ name|DESTINATION
 init|=
 literal|"destination"
 decl_stmt|;
+name|String
+name|ID
+init|=
+literal|"id"
+decl_stmt|;
 block|}
 specifier|public
 interface|interface
