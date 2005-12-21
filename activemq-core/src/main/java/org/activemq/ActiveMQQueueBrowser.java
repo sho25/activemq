@@ -676,6 +676,19 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ActiveMQQueueBrowser { consumerId="
+operator|+
+name|consumerId
+operator|+
+literal|" }"
+return|;
+block|}
 block|}
 end_class
 

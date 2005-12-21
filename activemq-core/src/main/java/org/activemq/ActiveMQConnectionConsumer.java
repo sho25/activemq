@@ -436,6 +436,22 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ActiveMQConnectionConsumer { consumerId="
+operator|+
+name|consumerInfo
+operator|.
+name|getConsumerId
+argument_list|()
+operator|+
+literal|" }"
+return|;
+block|}
 block|}
 end_class
 

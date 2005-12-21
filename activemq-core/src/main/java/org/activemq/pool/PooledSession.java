@@ -1335,6 +1335,19 @@ return|return
 name|topicPublisher
 return|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"PooledSession { "
+operator|+
+name|session
+operator|+
+literal|" }"
+return|;
+block|}
 block|}
 end_class
 

@@ -4960,6 +4960,36 @@ operator|=
 name|copyMessageOnSend
 expr_stmt|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ActiveMQConnection {id="
+operator|+
+name|info
+operator|.
+name|getConnectionId
+argument_list|()
+operator|+
+literal|",clientId"
+operator|+
+name|info
+operator|.
+name|getClientId
+argument_list|()
+operator|+
+literal|",started="
+operator|+
+name|started
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"}"
+return|;
+block|}
 block|}
 end_class
 

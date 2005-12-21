@@ -474,6 +474,19 @@ return|return
 name|messageProducer
 return|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"PooledProducer { "
+operator|+
+name|messageProducer
+operator|+
+literal|" }"
+return|;
+block|}
 block|}
 end_class
 

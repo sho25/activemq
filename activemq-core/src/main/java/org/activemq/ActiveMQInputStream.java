@@ -1157,6 +1157,26 @@ name|md
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ActiveMQInputStream { consumerId="
+operator|+
+name|info
+operator|.
+name|getConsumerId
+argument_list|()
+operator|+
+literal|", producerId="
+operator|+
+name|producerId
+operator|+
+literal|" }"
+return|;
+block|}
 block|}
 end_class
 

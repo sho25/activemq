@@ -2606,6 +2606,29 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ActiveMQMessageConsumer { consumerId="
+operator|+
+name|info
+operator|.
+name|getConsumerId
+argument_list|()
+operator|+
+literal|", started="
+operator|+
+name|started
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|" }"
+return|;
+block|}
 block|}
 end_class
 

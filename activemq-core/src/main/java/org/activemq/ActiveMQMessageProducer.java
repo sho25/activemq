@@ -1092,6 +1092,22 @@ operator|=
 name|info
 expr_stmt|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ActiveMQMessageProducer { consumerId="
+operator|+
+name|info
+operator|.
+name|getProducerId
+argument_list|()
+operator|+
+literal|" }"
+return|;
+block|}
 block|}
 end_class
 

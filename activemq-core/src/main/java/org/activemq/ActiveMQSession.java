@@ -3799,6 +3799,29 @@ name|getUnconsumedMessages
 argument_list|()
 return|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ActiveMQSession {id="
+operator|+
+name|info
+operator|.
+name|getSessionId
+argument_list|()
+operator|+
+literal|",started="
+operator|+
+name|started
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"}"
+return|;
+block|}
 block|}
 end_class
 
