@@ -304,6 +304,11 @@ name|PASSCODE
 init|=
 literal|"passcode"
 decl_stmt|;
+name|String
+name|CLIENT_ID
+init|=
+literal|"client-id"
+decl_stmt|;
 block|}
 specifier|public
 interface|interface
