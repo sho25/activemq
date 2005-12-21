@@ -33,6 +33,18 @@ name|org
 operator|.
 name|activemq
 operator|.
+name|openwire
+operator|.
+name|OpenWireFormat
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|activemq
+operator|.
 name|transport
 operator|.
 name|MutexTransport
@@ -364,6 +376,12 @@ comment|// TODO: missing inactivity monitor
 comment|// transport = new InactivityMonitor(transport,
 comment|// temp.getMaxInactivityDuration(), activityMonitor.getReadCounter(),
 comment|// activityMonitor.getWriteCounter());
+if|if
+condition|(
+name|format
+operator|instanceof
+name|OpenWireFormat
+condition|)
 name|transport
 operator|=
 operator|new
