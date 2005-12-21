@@ -886,6 +886,33 @@ name|topic
 argument_list|)
 return|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+try|try
+block|{
+return|return
+literal|"InboundSessionProxy { "
+operator|+
+name|getSession
+argument_list|()
+operator|+
+literal|" }"
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|e
+parameter_list|)
+block|{
+return|return
+literal|"InboundSessionProxy { null }"
+return|;
+block|}
+block|}
 block|}
 end_class
 
