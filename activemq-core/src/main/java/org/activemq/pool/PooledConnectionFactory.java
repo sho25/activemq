@@ -128,7 +128,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A JMS provider which pools Connection, Session and MessageProducer instances so it can be used with tools like   * Spring's<a href="http://activemq.org/Spring+Support">JmsTemplate</a>.  *   *<b>NOTE</b> this implementation is only intended for use when sending messages.  *   * @version $Revision: 1.1 $  */
+comment|/**  * A JMS provider which pools Connection, Session and MessageProducer instances  * so it can be used with tools like Spring's<a  * href="http://activemq.org/Spring+Support">JmsTemplate</a>.  *   *<b>NOTE</b> this implementation is only intended for use when sending  * messages.  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
@@ -260,11 +260,11 @@ argument_list|,
 name|password
 argument_list|)
 decl_stmt|;
-name|PooledConnection
+name|ConnectionPool
 name|connection
 init|=
 operator|(
-name|PooledConnection
+name|ConnectionPool
 operator|)
 name|cache
 operator|.
@@ -291,7 +291,7 @@ decl_stmt|;
 name|connection
 operator|=
 operator|new
-name|PooledConnection
+name|ConnectionPool
 argument_list|(
 name|delegate
 argument_list|)
@@ -307,10 +307,11 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+operator|new
+name|PooledConnection
+argument_list|(
 name|connection
-operator|.
-name|newInstance
-argument_list|()
+argument_list|)
 return|;
 block|}
 specifier|protected
@@ -434,11 +435,11 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|PooledConnection
+name|ConnectionPool
 name|connection
 init|=
 operator|(
-name|PooledConnection
+name|ConnectionPool
 operator|)
 name|iter
 operator|.
@@ -447,14 +448,6 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|connection
-operator|.
-name|getConnection
-argument_list|()
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 name|connection
 operator|.
 name|close

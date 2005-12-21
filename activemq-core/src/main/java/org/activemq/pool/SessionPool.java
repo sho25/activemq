@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/** *<a href="http://activemq.org">ActiveMQ: The Open Source Message Fabric</a> * * Copyright 2005 (C) LogicBlaze, Inc. http://www.logicblaze.com * * Licensed under the Apache License, Version 2.0 (the "License"); * you may not use this file except in compliance with the License. * You may obtain a copy of the License at * * http://www.apache.org/licenses/LICENSE-2.0 * * Unless required by applicable law or agreed to in writing, software * distributed under the License is distributed on an "AS IS" BASIS, * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. * See the License for the specific language governing permissions and * limitations under the License. * **/
+comment|/**  *<a href="http://activemq.org">ActiveMQ: The Open Source Message Fabric</a>  *  * Copyright 2005 (C) LogicBlaze, Inc. http://www.logicblaze.com  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  *  **/
 end_comment
 
 begin_package
@@ -110,7 +110,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents the session pool for a given JMS connection.  *  * @version $Revision: 1.1 $  */
+comment|/**  * Represents the session pool for a given JMS connection.  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
@@ -121,8 +121,8 @@ implements|implements
 name|PoolableObjectFactory
 block|{
 specifier|private
-name|ActiveMQConnection
-name|connection
+name|ConnectionPool
+name|connectionPool
 decl_stmt|;
 specifier|private
 name|SessionKey
@@ -135,8 +135,8 @@ decl_stmt|;
 specifier|public
 name|SessionPool
 parameter_list|(
-name|ActiveMQConnection
-name|connection
+name|ConnectionPool
+name|connectionPool
 parameter_list|,
 name|SessionKey
 name|key
@@ -144,7 +144,7 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-name|connection
+name|connectionPool
 argument_list|,
 name|key
 argument_list|,
@@ -157,8 +157,8 @@ block|}
 specifier|public
 name|SessionPool
 parameter_list|(
-name|ActiveMQConnection
-name|connection
+name|ConnectionPool
+name|connectionPool
 parameter_list|,
 name|SessionKey
 name|key
@@ -169,9 +169,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|connection
+name|connectionPool
 operator|=
-name|connection
+name|connectionPool
 expr_stmt|;
 name|this
 operator|.
@@ -200,10 +200,22 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|sessionPool
+operator|!=
+literal|null
+condition|)
+block|{
 name|sessionPool
 operator|.
 name|close
 argument_list|()
+expr_stmt|;
+block|}
+name|sessionPool
+operator|=
+literal|null
 expr_stmt|;
 block|}
 specifier|public
@@ -218,7 +230,8 @@ block|{
 name|Object
 name|object
 init|=
-name|sessionPool
+name|getSessionPool
+argument_list|()
 operator|.
 name|borrowObject
 argument_list|()
@@ -256,8 +269,53 @@ argument_list|)
 throw|;
 block|}
 block|}
+specifier|public
+name|void
+name|returnSession
+parameter_list|(
+name|PooledSession
+name|session
+parameter_list|)
+throws|throws
+name|JMSException
+block|{
+comment|// lets check if we are already closed
+name|getConnection
+argument_list|()
+expr_stmt|;
+try|try
+block|{
+name|getSessionPool
+argument_list|()
+operator|.
+name|returnObject
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|JMSExceptionSupport
+operator|.
+name|create
+argument_list|(
+literal|"Failed to return session to pool: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
 comment|// PoolableObjectFactory methods
-comment|//-------------------------------------------------------------------------
+comment|// -------------------------------------------------------------------------
 specifier|public
 name|Object
 name|makeObject
@@ -272,7 +330,7 @@ argument_list|(
 name|createSession
 argument_list|()
 argument_list|,
-name|sessionPool
+name|this
 argument_list|)
 return|;
 block|}
@@ -336,17 +394,17 @@ throws|throws
 name|Exception
 block|{     }
 comment|// Implemention methods
-comment|//-------------------------------------------------------------------------
+comment|// -------------------------------------------------------------------------
 specifier|protected
-name|ActiveMQConnection
-name|getConnection
+name|ObjectPool
+name|getSessionPool
 parameter_list|()
 throws|throws
-name|JMSException
+name|AlreadyClosedException
 block|{
 if|if
 condition|(
-name|connection
+name|sessionPool
 operator|==
 literal|null
 condition|)
@@ -358,7 +416,21 @@ argument_list|()
 throw|;
 block|}
 return|return
-name|connection
+name|sessionPool
+return|;
+block|}
+specifier|protected
+name|ActiveMQConnection
+name|getConnection
+parameter_list|()
+throws|throws
+name|JMSException
+block|{
+return|return
+name|connectionPool
+operator|.
+name|getConnection
+argument_list|()
 return|;
 block|}
 specifier|protected
