@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Copyright 2004 The Apache Software Foundation  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *  * Copyright 2004 The Apache Software Foundation  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   * See the License for the specific language governing permissions and   * limitations under the License.   *   **/
 end_comment
 
 begin_package
@@ -146,7 +146,7 @@ name|Service
 block|{
 comment|/**      * Returns the destination used to send a message to all members of the cluster      *      * @return the destination to send messages to all members of the cluster      */
 specifier|public
-name|String
+name|Destination
 name|getDestination
 parameter_list|()
 function_decl|;
@@ -196,22 +196,8 @@ specifier|public
 name|void
 name|send
 parameter_list|(
-name|String
-name|destination
-parameter_list|,
-name|Message
-name|message
-parameter_list|)
-throws|throws
-name|JMSException
-function_decl|;
-comment|/**      * Utility method for sending back replies in message exchanges      *      * @param replyTo the replyTo JMS Destination on a Message      * @param message     the message to be sent      * @throws JMSException      */
-specifier|public
-name|void
-name|send
-parameter_list|(
 name|Destination
-name|replyTo
+name|destination
 parameter_list|,
 name|Message
 name|message
@@ -224,7 +210,7 @@ specifier|public
 name|MessageConsumer
 name|createConsumer
 parameter_list|(
-name|String
+name|Destination
 name|destination
 parameter_list|)
 throws|throws
@@ -235,7 +221,7 @@ specifier|public
 name|MessageConsumer
 name|createConsumer
 parameter_list|(
-name|String
+name|Destination
 name|destination
 parameter_list|,
 name|String
@@ -249,7 +235,7 @@ specifier|public
 name|MessageConsumer
 name|createConsumer
 parameter_list|(
-name|String
+name|Destination
 name|destination
 parameter_list|,
 name|String

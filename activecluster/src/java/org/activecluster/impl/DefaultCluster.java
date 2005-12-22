@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Copyright 2004 The Apache Software Foundation  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *  * Copyright 2004 The Apache Software Foundation  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   * See the License for the specific language governing permissions and   * limitations under the License.   *   **/
 end_comment
 
 begin_package
@@ -189,6 +189,16 @@ name|org
 operator|.
 name|activecluster
 operator|.
+name|DestinationMarshaller
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|activecluster
+operator|.
 name|LocalNode
 import|;
 end_import
@@ -300,7 +310,7 @@ name|LocalNode
 name|localNode
 decl_stmt|;
 specifier|private
-name|String
+name|Destination
 name|destination
 decl_stmt|;
 specifier|private
@@ -324,6 +334,10 @@ name|Timer
 name|timer
 decl_stmt|;
 specifier|private
+name|DestinationMarshaller
+name|marshaller
+decl_stmt|;
+specifier|private
 name|AtomicBoolean
 name|started
 init|=
@@ -341,6 +355,7 @@ operator|new
 name|Object
 argument_list|()
 decl_stmt|;
+comment|/**      * Construct this beast      * @param localNode      * @param dataDestination      * @param destination      * @param marshaller      * @param connection      * @param session      * @param producer      * @param timer      * @param inactiveTime      * @throws JMSException      */
 specifier|public
 name|DefaultCluster
 parameter_list|(
@@ -348,11 +363,14 @@ specifier|final
 name|LocalNode
 name|localNode
 parameter_list|,
-name|String
+name|Destination
 name|dataDestination
 parameter_list|,
-name|String
+name|Destination
 name|destination
+parameter_list|,
+name|DestinationMarshaller
+name|marshaller
 parameter_list|,
 name|Connection
 name|connection
@@ -383,6 +401,12 @@ operator|.
 name|destination
 operator|=
 name|destination
+expr_stmt|;
+name|this
+operator|.
+name|marshaller
+operator|=
+name|marshaller
 expr_stmt|;
 name|this
 operator|.
@@ -430,10 +454,7 @@ name|session
 operator|.
 name|createConsumer
 argument_list|(
-name|createDestination
-argument_list|(
 name|dataDestination
-argument_list|)
 argument_list|,
 literal|null
 argument_list|,
@@ -503,6 +524,8 @@ operator|new
 name|StateConsumer
 argument_list|(
 name|stateService
+argument_list|,
+name|marshaller
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -540,7 +563,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-name|String
+name|Destination
 name|getDestination
 parameter_list|()
 block|{
@@ -589,32 +612,6 @@ specifier|public
 name|void
 name|send
 parameter_list|(
-name|String
-name|destination
-parameter_list|,
-name|Message
-name|message
-parameter_list|)
-throws|throws
-name|JMSException
-block|{
-name|producer
-operator|.
-name|send
-argument_list|(
-name|createDestination
-argument_list|(
-name|destination
-argument_list|)
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|send
-parameter_list|(
 name|Destination
 name|replyTo
 parameter_list|,
@@ -638,7 +635,7 @@ specifier|public
 name|MessageConsumer
 name|createConsumer
 parameter_list|(
-name|String
+name|Destination
 name|destination
 parameter_list|)
 throws|throws
@@ -650,10 +647,7 @@ argument_list|()
 operator|.
 name|createConsumer
 argument_list|(
-name|createDestination
-argument_list|(
 name|destination
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -661,7 +655,7 @@ specifier|public
 name|MessageConsumer
 name|createConsumer
 parameter_list|(
-name|String
+name|Destination
 name|destination
 parameter_list|,
 name|String
@@ -676,10 +670,7 @@ argument_list|()
 operator|.
 name|createConsumer
 argument_list|(
-name|createDestination
-argument_list|(
 name|destination
-argument_list|)
 argument_list|,
 name|selector
 argument_list|)
@@ -689,7 +680,7 @@ specifier|public
 name|MessageConsumer
 name|createConsumer
 parameter_list|(
-name|String
+name|Destination
 name|destination
 parameter_list|,
 name|String
@@ -707,10 +698,7 @@ argument_list|()
 operator|.
 name|createConsumer
 argument_list|(
-name|createDestination
-argument_list|(
 name|destination
-argument_list|)
 argument_list|,
 name|selector
 argument_list|,

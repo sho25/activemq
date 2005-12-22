@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Copyright 2004 The Apache Software Foundation  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *  * Copyright 2004 The Apache Software Foundation  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   * See the License for the specific language governing permissions and   * limitations under the License.   *   **/
 end_comment
 
 begin_package
@@ -12,6 +12,36 @@ operator|.
 name|impl
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|ObjectInput
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|ObjectOutput
+import|;
+end_import
 
 begin_import
 import|import
@@ -30,6 +60,26 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Destination
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|activecluster
+operator|.
+name|DestinationMarshaller
 import|;
 end_import
 
@@ -68,7 +118,7 @@ name|String
 name|name
 decl_stmt|;
 specifier|private
-name|String
+name|Destination
 name|destination
 decl_stmt|;
 specifier|protected
@@ -79,6 +129,41 @@ specifier|protected
 name|boolean
 name|coordinator
 decl_stmt|;
+comment|/**      * Construct an Node from a NodeState      * @param nodeState      * @param marshaller      */
+specifier|public
+name|NodeImpl
+parameter_list|(
+name|NodeState
+name|nodeState
+parameter_list|,
+name|DestinationMarshaller
+name|marshaller
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|nodeState
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|marshaller
+operator|.
+name|getDestination
+argument_list|(
+name|nodeState
+operator|.
+name|getDestinationName
+argument_list|()
+argument_list|)
+argument_list|,
+name|nodeState
+operator|.
+name|getState
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Allow a node to be copied for sending it as a message      *      * @param node      */
 specifier|public
 name|NodeImpl
@@ -113,7 +198,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|String
+name|Destination
 name|destination
 parameter_list|)
 block|{
@@ -136,7 +221,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|String
+name|Destination
 name|destination
 parameter_list|,
 name|Map
@@ -196,7 +281,7 @@ return|;
 block|}
 comment|/**      * @return the destination of the node      */
 specifier|public
-name|String
+name|Destination
 name|getDestination
 parameter_list|()
 block|{
@@ -274,6 +359,32 @@ name|coordinator
 operator|=
 name|value
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|writeExternal
+parameter_list|(
+name|ObjectOutput
+name|out
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+comment|// TODO Auto-generated method stub
+block|}
+specifier|public
+name|void
+name|readExternal
+parameter_list|(
+name|ObjectInput
+name|in
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|ClassNotFoundException
+block|{
+comment|// TODO Auto-generated method stub
 block|}
 block|}
 end_class

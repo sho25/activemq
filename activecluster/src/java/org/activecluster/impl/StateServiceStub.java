@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Copyright 2004 The Apache Software Foundation  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *  * Copyright 2004 The Apache Software Foundation  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   * See the License for the specific language governing permissions and   * limitations under the License.   *   **/
 end_comment
 
 begin_package
@@ -38,6 +38,16 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|activecluster
+operator|.
+name|DestinationMarshaller
 import|;
 end_import
 
@@ -123,6 +133,10 @@ specifier|private
 name|MessageProducer
 name|producer
 decl_stmt|;
+specifier|private
+name|DestinationMarshaller
+name|marshaller
+decl_stmt|;
 specifier|public
 name|StateServiceStub
 parameter_list|(
@@ -131,6 +145,9 @@ name|session
 parameter_list|,
 name|MessageProducer
 name|producer
+parameter_list|,
+name|DestinationMarshaller
+name|marshaller
 parameter_list|)
 block|{
 name|this
@@ -144,6 +161,12 @@ operator|.
 name|producer
 operator|=
 name|producer
+expr_stmt|;
+name|this
+operator|.
+name|marshaller
+operator|=
+name|marshaller
 expr_stmt|;
 block|}
 specifier|public
@@ -182,9 +205,11 @@ operator|.
 name|createObjectMessage
 argument_list|(
 operator|new
-name|NodeImpl
+name|NodeState
 argument_list|(
 name|node
+argument_list|,
+name|marshaller
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -251,9 +276,11 @@ operator|.
 name|createObjectMessage
 argument_list|(
 operator|new
-name|NodeImpl
+name|NodeState
 argument_list|(
 name|node
+argument_list|,
+name|marshaller
 argument_list|)
 argument_list|)
 decl_stmt|;

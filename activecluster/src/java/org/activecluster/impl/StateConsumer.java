@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Copyright 2004 The Apache Software Foundation  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *  * Copyright 2004 The Apache Software Foundation  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   * See the License for the specific language governing permissions and   * limitations under the License.   *   **/
 end_comment
 
 begin_package
@@ -38,6 +38,16 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|activecluster
+operator|.
+name|DestinationMarshaller
 import|;
 end_import
 
@@ -111,11 +121,18 @@ specifier|private
 name|StateService
 name|stateService
 decl_stmt|;
+specifier|private
+name|DestinationMarshaller
+name|marshaller
+decl_stmt|;
 specifier|public
 name|StateConsumer
 parameter_list|(
 name|StateService
 name|stateService
+parameter_list|,
+name|DestinationMarshaller
+name|marshaller
 parameter_list|)
 block|{
 if|if
@@ -138,6 +155,12 @@ operator|.
 name|stateService
 operator|=
 name|stateService
+expr_stmt|;
+name|this
+operator|.
+name|marshaller
+operator|=
+name|marshaller
 expr_stmt|;
 block|}
 specifier|public
@@ -183,16 +206,27 @@ name|message
 decl_stmt|;
 try|try
 block|{
-name|Node
-name|node
+name|NodeState
+name|nodeState
 init|=
 operator|(
-name|Node
+name|NodeState
 operator|)
 name|objectMessage
 operator|.
 name|getObject
 argument_list|()
+decl_stmt|;
+name|Node
+name|node
+init|=
+operator|new
+name|NodeImpl
+argument_list|(
+name|nodeState
+argument_list|,
+name|marshaller
+argument_list|)
 decl_stmt|;
 name|String
 name|type
