@@ -768,7 +768,12 @@ name|dataDestination
 init|=
 name|dataTopicPrefix
 operator|+
+name|marshaller
+operator|.
+name|getDestinationName
+argument_list|(
 name|groupDestination
+argument_list|)
 decl_stmt|;
 name|log
 operator|.

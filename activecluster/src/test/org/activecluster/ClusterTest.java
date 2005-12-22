@@ -66,7 +66,7 @@ specifier|protected
 name|int
 name|count
 init|=
-literal|2
+literal|3
 decl_stmt|;
 specifier|public
 name|void
@@ -363,14 +363,6 @@ argument_list|(
 name|clusters
 argument_list|)
 expr_stmt|;
-comment|// lets wait for a while to see if things fail
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|10000L
-argument_list|)
-expr_stmt|;
 name|assertClusterMembership
 argument_list|(
 name|clusters
@@ -430,7 +422,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|5000
+literal|500
 argument_list|)
 expr_stmt|;
 for|for

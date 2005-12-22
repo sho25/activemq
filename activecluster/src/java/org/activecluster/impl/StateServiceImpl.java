@@ -518,15 +518,12 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|String
+name|Object
 name|key
 init|=
 name|entry
 operator|.
 name|getKey
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 decl_stmt|;
 name|NodeEntry
