@@ -153,16 +153,6 @@ name|junit
 operator|.
 name|framework
 operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
 name|TestSuite
 import|;
 end_import
@@ -176,7 +166,7 @@ specifier|public
 class|class
 name|CombinationTestSupport
 extends|extends
-name|TestCase
+name|AutoFailTestSupport
 block|{
 specifier|private
 specifier|static
