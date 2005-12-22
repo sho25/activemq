@@ -799,6 +799,9 @@ name|SimpleSecurityBrokerSystemTest
 operator|.
 name|class
 operator|.
+name|getClassLoader
+argument_list|()
+operator|.
 name|getResource
 argument_list|(
 literal|"login.config"
