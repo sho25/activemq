@@ -138,7 +138,7 @@ literal|"javax.net.ssl.trustStore"
 argument_list|,
 name|basedir
 operator|+
-literal|"/src/test/client.keystore"
+literal|"/src/test/resources/client.keystore"
 argument_list|)
 expr_stmt|;
 name|System
@@ -167,7 +167,7 @@ literal|"javax.net.ssl.keyStore"
 argument_list|,
 name|basedir
 operator|+
-literal|"/src/test/server.keystore"
+literal|"/src/test/resources/server.keystore"
 argument_list|)
 expr_stmt|;
 name|System
