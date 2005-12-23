@@ -973,6 +973,15 @@ literal|"Operation not supported by a QueueSession"
 argument_list|)
 throw|;
 block|}
+specifier|public
+name|QueueSession
+name|getNext
+parameter_list|()
+block|{
+return|return
+name|next
+return|;
+block|}
 block|}
 end_class
 

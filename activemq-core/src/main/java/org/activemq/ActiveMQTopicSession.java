@@ -974,6 +974,15 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|TopicSession
+name|getNext
+parameter_list|()
+block|{
+return|return
+name|next
+return|;
+block|}
 block|}
 end_class
 
