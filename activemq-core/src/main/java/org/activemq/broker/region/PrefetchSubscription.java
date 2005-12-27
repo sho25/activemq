@@ -1191,6 +1191,11 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|node
+operator|.
+name|incrementReferenceCount
+argument_list|()
+expr_stmt|;
 specifier|final
 name|Message
 name|message
@@ -1234,11 +1239,6 @@ name|addLast
 argument_list|(
 name|node
 argument_list|)
-expr_stmt|;
-name|node
-operator|.
-name|incrementReferenceCount
-argument_list|()
 expr_stmt|;
 name|incrementPreloadSize
 argument_list|(
