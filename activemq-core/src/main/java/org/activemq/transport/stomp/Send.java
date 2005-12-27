@@ -554,7 +554,7 @@ name|Headers
 operator|.
 name|Send
 operator|.
-name|PRORITY
+name|PRIORITY
 argument_list|)
 decl_stmt|;
 if|if
@@ -566,7 +566,7 @@ condition|)
 block|{
 name|msg
 operator|.
-name|setJMSExpiration
+name|setJMSPriority
 argument_list|(
 name|asInt
 argument_list|(

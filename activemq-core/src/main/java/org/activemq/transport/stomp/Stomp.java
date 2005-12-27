@@ -180,7 +180,7 @@ init|=
 literal|"expires"
 decl_stmt|;
 name|String
-name|PRORITY
+name|PRIORITY
 init|=
 literal|"priority"
 decl_stmt|;
