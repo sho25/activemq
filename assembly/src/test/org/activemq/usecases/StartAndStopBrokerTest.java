@@ -7,6 +7,10 @@ begin_package
 package|package
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|activemq
 operator|.
 name|usecases
@@ -27,6 +31,10 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|activemq
 operator|.
 name|ActiveMQConnectionFactory
@@ -36,6 +44,10 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
+operator|.
+name|activemq
 operator|.
 name|activemq
 operator|.
@@ -49,6 +61,10 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|activemq
 operator|.
 name|broker
@@ -60,6 +76,10 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
+operator|.
+name|activemq
 operator|.
 name|activemq
 operator|.
@@ -115,7 +135,7 @@ name|setProperty
 argument_list|(
 literal|"activemq.persistenceAdapter"
 argument_list|,
-literal|"org.activemq.store.vm.VMPersistenceAdapter"
+literal|"org.apache.activemq.activemq.store.vm.VMPersistenceAdapter"
 argument_list|)
 expr_stmt|;
 comment|// configuration of container and all protocolls

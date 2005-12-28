@@ -7,6 +7,10 @@ begin_package
 package|package
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|activemq
 operator|.
 name|usecases
@@ -81,7 +85,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|/* TODO not sure yet if this is a valid test          System.setProperty("activemq.persistenceAdapter",                 "org.activemq.store.vm.VMPersistenceAdapter");         // configuration of container and all protocolls         BrokerContainerImpl container = new                 BrokerContainerImpl("DefaultBroker");         BrokerConnectorImpl connector = new                 BrokerConnectorImpl(container,                         "vm://localhost", new DefaultWireFormat());         container.start();          ActiveMQConnectionFactory factory = new                 ActiveMQConnectionFactory("vm://localhost");         factory.start();          Connection connection = factory.createConnection();         connection.setExceptionListener(this);         connection.start();         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);         Destination destination = session.createTopic(getClass().getName());         MessageProducer producer = session.createProducer(destination);          try {             Thread.currentThread().sleep(1000);         }         catch (Exception e) {         }          container.stop();          // now lets try send         try {             producer.send(session.createTextMessage("This will never get anywhere"));         }         catch (JMSException e) {             System.out.println("Caught: " + e);         }          try {             Thread.currentThread().sleep(1000);         }         catch (Exception e) {         }          assertTrue("Should have received an exception", isException);         */
+comment|/* TODO not sure yet if this is a valid test          System.setProperty("activemq.persistenceAdapter",                 "org.apache.activemq.activemq.store.vm.VMPersistenceAdapter");         // configuration of container and all protocolls         BrokerContainerImpl container = new                 BrokerContainerImpl("DefaultBroker");         BrokerConnectorImpl connector = new                 BrokerConnectorImpl(container,                         "vm://localhost", new DefaultWireFormat());         container.start();          ActiveMQConnectionFactory factory = new                 ActiveMQConnectionFactory("vm://localhost");         factory.start();          Connection connection = factory.createConnection();         connection.setExceptionListener(this);         connection.start();         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);         Destination destination = session.createTopic(getClass().getName());         MessageProducer producer = session.createProducer(destination);          try {             Thread.currentThread().sleep(1000);         }         catch (Exception e) {         }          container.stop();          // now lets try send         try {             producer.send(session.createTextMessage("This will never get anywhere"));         }         catch (JMSException e) {             System.out.println("Caught: " + e);         }          try {             Thread.currentThread().sleep(1000);         }         catch (Exception e) {         }          assertTrue("Should have received an exception", isException);         */
 block|}
 specifier|public
 name|void

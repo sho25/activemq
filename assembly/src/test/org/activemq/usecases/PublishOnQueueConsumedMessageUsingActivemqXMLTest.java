@@ -7,6 +7,10 @@ begin_package
 package|package
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|activemq
 operator|.
 name|usecases
@@ -16,6 +20,10 @@ end_package
 begin_import
 import|import
 name|org
+operator|.
+name|apache
+operator|.
+name|activemq
 operator|.
 name|activemq
 operator|.
@@ -29,6 +37,10 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|activemq
 operator|.
 name|xbean
@@ -40,6 +52,10 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
+operator|.
+name|activemq
 operator|.
 name|activemq
 operator|.

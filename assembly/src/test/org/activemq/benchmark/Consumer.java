@@ -7,6 +7,10 @@ begin_package
 package|package
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|activemq
 operator|.
 name|benchmark

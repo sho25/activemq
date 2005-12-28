@@ -7,6 +7,10 @@ begin_package
 package|package
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|activemq
 operator|.
 name|usecases
@@ -47,6 +51,10 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|activemq
 operator|.
 name|ActiveMQConnectionFactory
@@ -56,6 +64,10 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
+operator|.
+name|activemq
 operator|.
 name|activemq
 operator|.
@@ -68,6 +80,10 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
+operator|.
+name|activemq
 operator|.
 name|activemq
 operator|.

@@ -7,6 +7,10 @@ begin_package
 package|package
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|activemq
 operator|.
 name|config
@@ -17,6 +21,10 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|activemq
 operator|.
 name|ActiveMQConnectionFactory
@@ -26,6 +34,10 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
+operator|.
+name|activemq
 operator|.
 name|activemq
 operator|.
@@ -121,7 +133,7 @@ name|put
 argument_list|(
 literal|"java.naming.factory.initial"
 argument_list|,
-literal|"org.activemq.jndi.ActiveMQInitialContextFactory"
+literal|"org.apache.activemq.activemq.jndi.ActiveMQInitialContextFactory"
 argument_list|)
 expr_stmt|;
 comment|// configure the embedded broker using an XML config file
