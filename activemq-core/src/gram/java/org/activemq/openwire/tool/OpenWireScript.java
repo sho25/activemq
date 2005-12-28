@@ -7,6 +7,8 @@ begin_package
 package|package
 name|org
 operator|.
+name|apache
+operator|.
 name|activemq
 operator|.
 name|openwire
@@ -369,7 +371,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-literal|"org.activemq.command.MarshallAware"
+literal|"org.apache.activemq.command.MarshallAware"
 argument_list|)
 condition|)
 block|{
