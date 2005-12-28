@@ -125,7 +125,7 @@ name|Object
 argument_list|()
 decl_stmt|;
 specifier|public
-name|void
+name|boolean
 name|dispatch
 parameter_list|(
 name|ConnectionContext
@@ -150,6 +150,11 @@ init|(
 name|mutex
 init|)
 block|{
+name|int
+name|count
+init|=
+literal|0
+decl_stmt|;
 name|i
 operator|++
 expr_stmt|;
@@ -202,7 +207,15 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
+name|count
+operator|++
+expr_stmt|;
 block|}
+return|return
+name|count
+operator|>
+literal|0
+return|;
 block|}
 block|}
 block|}
