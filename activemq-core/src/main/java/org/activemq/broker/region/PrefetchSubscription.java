@@ -1272,6 +1272,8 @@ name|void
 name|run
 parameter_list|()
 block|{
+comment|// Since the message gets queued up in async dispatch, we don't want to
+comment|// decrease the reference count until it gets put on the wire.
 name|onDispatch
 argument_list|(
 name|node
@@ -1314,6 +1316,16 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+comment|// The onDispatch() does the node.decrementReferenceCount();
+block|}
+else|else
+block|{
+comment|// We were not allowed to dispatch that message (an other consumer grabbed it before we did)
+name|node
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 specifier|synchronized
