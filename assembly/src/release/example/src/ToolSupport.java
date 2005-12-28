@@ -11,8 +11,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|activemq
-operator|.
 name|ActiveMQConnection
 import|;
 end_import
@@ -25,8 +23,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|activemq
-operator|.
 name|ActiveMQConnectionFactory
 import|;
 end_import
@@ -36,8 +32,6 @@ import|import
 name|org
 operator|.
 name|apache
-operator|.
-name|activemq
 operator|.
 name|activemq
 operator|.
