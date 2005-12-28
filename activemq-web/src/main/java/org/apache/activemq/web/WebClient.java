@@ -7,6 +7,8 @@ begin_package
 package|package
 name|org
 operator|.
+name|apache
+operator|.
 name|activemq
 operator|.
 name|web
@@ -326,7 +328,7 @@ specifier|final
 name|String
 name|webClientAttribute
 init|=
-literal|"org.activemq.webclient"
+literal|"org.apache.activemq.webclient"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -334,7 +336,7 @@ specifier|final
 name|String
 name|connectionFactoryAttribute
 init|=
-literal|"org.activemq.connectionFactory"
+literal|"org.apache.activemq.connectionFactory"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -342,7 +344,7 @@ specifier|final
 name|String
 name|queueConsumersAttribute
 init|=
-literal|"org.activemq.queueConsumers"
+literal|"org.apache.activemq.queueConsumers"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -350,7 +352,7 @@ specifier|final
 name|String
 name|brokerUrlInitParam
 init|=
-literal|"org.activemq.brokerURL"
+literal|"org.apache.activemq.brokerURL"
 decl_stmt|;
 specifier|private
 specifier|static
