@@ -7,6 +7,8 @@ begin_package
 package|package
 name|org
 operator|.
+name|apache
+operator|.
 name|activemq
 operator|.
 name|jaas
@@ -251,14 +253,14 @@ specifier|final
 name|String
 name|USER_FILE
 init|=
-literal|"org.activemq.jaas.properties.user"
+literal|"org.apache.activemq.jaas.properties.user"
 decl_stmt|;
 specifier|private
 specifier|final
 name|String
 name|GROUP_FILE
 init|=
-literal|"org.activemq.jaas.properties.group"
+literal|"org.apache.activemq.jaas.properties.group"
 decl_stmt|;
 specifier|private
 specifier|static
