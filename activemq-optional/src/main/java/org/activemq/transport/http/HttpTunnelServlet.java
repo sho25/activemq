@@ -641,6 +641,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
 if|if
 condition|(
 name|command
@@ -949,34 +950,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-try|try
-block|{
-name|answer
-operator|.
-name|asyncRequest
-argument_list|(
-name|ping
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Failed to ping transport: "
-operator|+
-name|e
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
+comment|/*                 try {                     answer.oneway(ping);                 }                 catch (IOException e) {                     log.warn("Failed to ping transport: " + e, e);                 }                 */
 block|}
 return|return
 name|answer
