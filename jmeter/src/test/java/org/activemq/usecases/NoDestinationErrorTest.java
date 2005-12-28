@@ -73,6 +73,8 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|activemq
 operator|.
 name|ActiveMQConnectionFactory
@@ -83,6 +85,8 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|activemq
 operator|.
 name|ActiveMQConnection
@@ -92,6 +96,8 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
 operator|.
 name|activemq
 operator|.
@@ -105,6 +111,8 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|activemq
 operator|.
 name|broker
@@ -116,6 +124,8 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
 operator|.
 name|activemq
 operator|.

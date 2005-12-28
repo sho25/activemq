@@ -129,6 +129,8 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|activemq
 operator|.
 name|util
