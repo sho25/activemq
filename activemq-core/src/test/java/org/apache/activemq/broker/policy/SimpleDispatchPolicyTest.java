@@ -101,6 +101,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|MessageList
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -255,11 +269,11 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|List
+name|MessageList
 name|messageList
 init|=
 operator|(
-name|List
+name|MessageList
 operator|)
 name|consumers
 operator|.
@@ -271,12 +285,17 @@ name|next
 argument_list|()
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
+name|int
+name|count
+init|=
 name|messageList
 operator|.
-name|size
+name|getMessageCount
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|count
 operator|>
 literal|0
 condition|)
@@ -294,25 +313,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|assertTrue
+name|assertEquals
 argument_list|(
-literal|"Consumer should have received all "
-operator|+
-name|messageCount
-operator|+
-literal|" messages. Actual messages received is "
-operator|+
-name|messageList
-operator|.
-name|size
-argument_list|()
+literal|"Consumer should have received all messages."
 argument_list|,
-name|messageList
-operator|.
-name|size
-argument_list|()
-operator|==
 name|messageCount
+argument_list|,
+name|count
 argument_list|)
 expr_stmt|;
 name|found
