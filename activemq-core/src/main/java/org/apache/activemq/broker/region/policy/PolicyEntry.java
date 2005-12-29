@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents an entry in a {@link PolicyMap} for assigning policies to a  * specific destination or a hierarchial wildcard area of destinations.  *   * @org.xbean.XBean  *   * @version $Revision: 1.1 $  */
+comment|/**  * Represents an entry in a {@link PolicyMap} for assigning policies to a  * specific destination or a hierarchical wildcard area of destinations.  *   * @org.xbean.XBean  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
@@ -101,6 +101,12 @@ decl_stmt|;
 specifier|private
 name|RedeliveryPolicy
 name|redeliveryPolicy
+decl_stmt|;
+specifier|private
+name|boolean
+name|sendAdvisoryIfNoConsumers
+init|=
+literal|true
 decl_stmt|;
 specifier|public
 name|void
@@ -164,6 +170,13 @@ name|subscriptionRecoveryPolicy
 argument_list|)
 expr_stmt|;
 block|}
+name|topic
+operator|.
+name|setSendAdvisoryIfNoConsumers
+argument_list|(
+name|sendAdvisoryIfNoConsumers
+argument_list|)
+expr_stmt|;
 block|}
 comment|// Properties
 comment|// -------------------------------------------------------------------------
@@ -237,6 +250,31 @@ operator|.
 name|subscriptionRecoveryPolicy
 operator|=
 name|subscriptionRecoveryPolicy
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isSendAdvisoryIfNoConsumers
+parameter_list|()
+block|{
+return|return
+name|sendAdvisoryIfNoConsumers
+return|;
+block|}
+comment|/**      * Sends an advisory message if a non-persistent message is sent and there      * are no active consumers      */
+specifier|public
+name|void
+name|setSendAdvisoryIfNoConsumers
+parameter_list|(
+name|boolean
+name|sendAdvisoryIfNoConsumers
+parameter_list|)
+block|{
+name|this
+operator|.
+name|sendAdvisoryIfNoConsumers
+operator|=
+name|sendAdvisoryIfNoConsumers
 expr_stmt|;
 block|}
 block|}
