@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple container for performing testing and rendezvous style code.  *   * @version $Revision: 1.6 $  */
+comment|/**  * A simple container of messages for performing testing and rendezvous style  * code. You can use this class a {@link MessageListener} and then make  * assertions about how many messages it has received allowing a certain maximum  * amount of time to ensure that the test does not hang forever.  *   * Also you can chain these instances together with the  * {@link #setParent(MessageListener)} method so that you can aggregate the  * total number of messages consumed across a number of consumers.  *   * @version $Revision: 1.6 $  */
 end_comment
 
 begin_class
@@ -696,7 +696,7 @@ return|return
 name|parent
 return|;
 block|}
-comment|/**      * Allows a parent listener to be specified such as to aggregate messages consumed across consumers      */
+comment|/**      * Allows a parent listener to be specified such as to aggregate messages      * consumed across consumers      */
 specifier|public
 name|void
 name|setParent
