@@ -282,7 +282,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@see ChannelFactory}uses the requested URI's scheme to determine the  * actual {@see org.apache.activeio.SynchChannelFactory}or  * {@see org.apache.activeio.AsyncChannelFactory}implementation to use to create it's  * {@see org.apache.activeio.Channel}s and {@see org.apache.activeio.ChannelServer}s.  *   * Each URI scheme that {@see ChannelFactory}object handles will have a  * properties file located at: "META-INF/org.apache.activeio.ChannelFactory/{scheme}".  *   */
+comment|/**  * A {@see ChannelFactory}uses the requested URI's scheme to determine the  * actual {@see org.apache.activeio.SynchChannelFactory}or  * {@see org.apache.activeio.AsyncChannelFactory}implementation to use to create it's  * {@see org.apache.activeio.Channel}s and {@see org.apache.activeio.ChannelServer}s.  *   * Each URI scheme that {@see ChannelFactory}object handles will have a  * properties file located at: "META-INF/services/org/apache/activeio/channel/{scheme}".  *   */
 end_comment
 
 begin_class
@@ -393,7 +393,7 @@ init|=
 operator|new
 name|FactoryFinder
 argument_list|(
-literal|"META-INF/org.apache.activeio.ChannelFactory/"
+literal|"META-INF/services/org/apache/activeio/channel/"
 argument_list|)
 decl_stmt|;
 specifier|public
