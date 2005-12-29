@@ -431,8 +431,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|sendAdvisoryIfNoConsumers
-init|=
-literal|true
 decl_stmt|;
 specifier|public
 name|Topic
@@ -1555,7 +1553,7 @@ name|advisoryTopic
 init|=
 name|AdvisorySupport
 operator|.
-name|getExpiredTopicMessageAdvisoryTopic
+name|getNoTopicConsumersAdvisoryTopic
 argument_list|(
 name|originalDestination
 argument_list|)

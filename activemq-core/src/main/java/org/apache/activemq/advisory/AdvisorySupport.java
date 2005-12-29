@@ -290,7 +290,7 @@ name|EXPIRED_TOPIC_MESSAGES_TOPIC_PREFIX
 operator|+
 name|destination
 operator|.
-name|getQualifiedName
+name|getPhysicalName
 argument_list|()
 decl_stmt|;
 return|return
@@ -317,7 +317,7 @@ name|EXPIRED_QUEUE_MESSAGES_TOPIC_PREFIX
 operator|+
 name|destination
 operator|.
-name|getQualifiedName
+name|getPhysicalName
 argument_list|()
 decl_stmt|;
 return|return
@@ -344,7 +344,7 @@ name|NO_TOPIC_CONSUMERS_TOPIC_PREFIX
 operator|+
 name|destination
 operator|.
-name|getQualifiedName
+name|getPhysicalName
 argument_list|()
 decl_stmt|;
 return|return
@@ -371,7 +371,7 @@ name|NO_QUEUE_CONSUMERS_TOPIC_PREFIX
 operator|+
 name|destination
 operator|.
-name|getQualifiedName
+name|getPhysicalName
 argument_list|()
 decl_stmt|;
 return|return

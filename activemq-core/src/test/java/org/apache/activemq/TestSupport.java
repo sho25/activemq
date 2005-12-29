@@ -262,6 +262,27 @@ argument_list|)
 return|;
 block|}
 block|}
+specifier|protected
+name|Destination
+name|createDestination
+parameter_list|()
+block|{
+return|return
+name|createDestination
+argument_list|(
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|"."
+operator|+
+name|getName
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|/**      * @param messsage      * @param firstSet      * @param secondSet      */
 specifier|protected
 name|void
