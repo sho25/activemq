@@ -118,6 +118,12 @@ specifier|private
 name|MessageListener
 name|parent
 decl_stmt|;
+specifier|private
+name|long
+name|maximumDuration
+init|=
+literal|15000L
+decl_stmt|;
 specifier|public
 name|MessageList
 parameter_list|()
@@ -486,6 +492,25 @@ condition|)
 block|{
 break|break;
 block|}
+name|long
+name|duration
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|-
+name|start
+decl_stmt|;
+if|if
+condition|(
+name|duration
+operator|>
+name|maximumDuration
+condition|)
+block|{
+break|break;
+block|}
 synchronized|synchronized
 init|(
 name|semaphore
@@ -539,11 +564,36 @@ literal|"End of wait for "
 operator|+
 name|end
 operator|+
-literal|" millis"
+literal|" millis and received: "
+operator|+
+name|getMessageCount
+argument_list|()
+operator|+
+literal|" messages"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Performs a testing assertion that the correct number of messages have      * been received      *       * @param messageCount      */
+comment|/**      * Performs a testing assertion that the correct number of messages have      * been received without waiting      *       * @param messageCount      */
+specifier|public
+name|void
+name|assertMessagesReceivedNoWait
+parameter_list|(
+name|int
+name|messageCount
+parameter_list|)
+block|{
+name|assertEquals
+argument_list|(
+literal|"expected number of messages when received"
+argument_list|,
+name|messageCount
+argument_list|,
+name|getMessageCount
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Performs a testing assertion that the correct number of messages have      * been received waiting for the messages to arrive up to a fixed amount of time.      *       * @param messageCount      */
 specifier|public
 name|void
 name|assertMessagesReceived
@@ -557,20 +607,13 @@ argument_list|(
 name|messageCount
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertMessagesReceivedNoWait
 argument_list|(
-literal|"expected number of messages when received: "
-operator|+
-name|getMessages
-argument_list|()
-argument_list|,
 name|messageCount
-argument_list|,
-name|getMessageCount
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Asserts that there are at least the given number of messages received without waiting.      */
 specifier|public
 name|void
 name|assertAtLeastMessagesReceived
@@ -579,11 +622,6 @@ name|int
 name|messageCount
 parameter_list|)
 block|{
-name|waitForMessagesToArrive
-argument_list|(
-name|messageCount
-argument_list|)
-expr_stmt|;
 name|int
 name|actual
 init|=
@@ -606,6 +644,7 @@ name|messageCount
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Asserts that there are at most the number of messages received without waiting      * @param messageCount      */
 specifier|public
 name|void
 name|assertAtMostMessagesReceived

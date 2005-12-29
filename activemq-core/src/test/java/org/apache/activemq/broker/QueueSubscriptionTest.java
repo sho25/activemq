@@ -465,7 +465,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|500
+literal|1000
 argument_list|)
 expr_stmt|;
 name|startProducers
@@ -478,13 +478,9 @@ expr_stmt|;
 comment|// Wait for messages to be received. Make it proportional to the messages delivered.
 name|waitForAllMessagesToBeReceived
 argument_list|(
-operator|(
-name|producerCount
-operator|*
 name|messageCount
-operator|)
-operator|/
-literal|2000
+operator|*
+name|producerCount
 argument_list|)
 expr_stmt|;
 block|}
