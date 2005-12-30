@@ -460,8 +460,6 @@ argument_list|,
 name|dest
 argument_list|)
 expr_stmt|;
-comment|// Wait for consumers to setup
-comment|//        Thread.sleep(1000);
 name|startProducers
 argument_list|(
 name|dest
