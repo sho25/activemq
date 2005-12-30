@@ -511,6 +511,18 @@ name|rc
 return|;
 block|}
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|list
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

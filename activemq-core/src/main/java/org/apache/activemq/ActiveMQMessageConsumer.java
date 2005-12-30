@@ -2331,14 +2331,7 @@ argument_list|(
 name|ack
 argument_list|)
 expr_stmt|;
-comment|// Adjust the counters
-name|deliveredCounter
-operator|-=
-name|deliveredMessages
-operator|.
-name|size
-argument_list|()
-expr_stmt|;
+comment|// Adjust the window size.
 name|additionalWindowSize
 operator|=
 name|Math
@@ -2354,6 +2347,14 @@ operator|.
 name|size
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|rollbackCounter
+operator|=
+literal|0
+expr_stmt|;
+name|redeliveryDelay
+operator|=
+literal|0
 expr_stmt|;
 block|}
 else|else
@@ -2490,6 +2491,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|deliveredCounter
+operator|-=
+name|deliveredMessages
+operator|.
+name|size
+argument_list|()
+expr_stmt|;
 name|deliveredMessages
 operator|.
 name|clear

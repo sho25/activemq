@@ -165,7 +165,7 @@ specifier|protected
 name|long
 name|timeToLive
 init|=
-literal|250
+literal|0
 decl_stmt|;
 specifier|protected
 name|Connection
