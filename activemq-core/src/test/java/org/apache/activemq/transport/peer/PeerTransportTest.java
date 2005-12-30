@@ -81,7 +81,7 @@ name|activemq
 operator|.
 name|util
 operator|.
-name|MessageList
+name|MessageIdList
 import|;
 end_import
 
@@ -269,8 +269,8 @@ index|[]
 name|connections
 decl_stmt|;
 specifier|protected
-name|MessageList
-name|messageList
+name|MessageIdList
+name|messageIdList
 index|[]
 decl_stmt|;
 specifier|protected
@@ -296,10 +296,10 @@ index|[
 name|NUMBER_IN_CLUSTER
 index|]
 expr_stmt|;
-name|messageList
+name|messageIdList
 operator|=
 operator|new
-name|MessageList
+name|MessageIdList
 index|[
 name|NUMBER_IN_CLUSTER
 index|]
@@ -414,20 +414,20 @@ argument_list|,
 name|destination
 argument_list|)
 decl_stmt|;
-name|messageList
+name|messageIdList
 index|[
 name|i
 index|]
 operator|=
 operator|new
-name|MessageList
+name|MessageIdList
 argument_list|()
 expr_stmt|;
 name|consumer
 operator|.
 name|setMessageListener
 argument_list|(
-name|messageList
+name|messageIdList
 index|[
 name|i
 index|]
@@ -704,7 +704,7 @@ name|i
 operator|++
 control|)
 block|{
-name|messageList
+name|messageIdList
 index|[
 name|i
 index|]

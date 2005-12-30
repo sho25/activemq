@@ -65,7 +65,7 @@ name|activemq
 operator|.
 name|util
 operator|.
-name|MessageList
+name|MessageIdList
 import|;
 end_import
 
@@ -233,11 +233,11 @@ argument_list|(
 name|destination
 argument_list|)
 decl_stmt|;
-name|MessageList
+name|MessageIdList
 name|listener
 init|=
 operator|new
-name|MessageList
+name|MessageIdList
 argument_list|()
 decl_stmt|;
 name|listener

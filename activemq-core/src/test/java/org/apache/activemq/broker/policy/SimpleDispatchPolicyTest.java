@@ -109,7 +109,7 @@ name|activemq
 operator|.
 name|util
 operator|.
-name|MessageList
+name|MessageIdList
 import|;
 end_import
 
@@ -269,11 +269,11 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|MessageList
-name|messageList
+name|MessageIdList
+name|messageIdList
 init|=
 operator|(
-name|MessageList
+name|MessageIdList
 operator|)
 name|consumers
 operator|.
@@ -288,7 +288,7 @@ decl_stmt|;
 name|int
 name|count
 init|=
-name|messageList
+name|messageIdList
 operator|.
 name|getMessageCount
 argument_list|()
