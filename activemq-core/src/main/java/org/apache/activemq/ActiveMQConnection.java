@@ -3591,6 +3591,22 @@ return|return
 name|redeliveryPolicy
 return|;
 block|}
+comment|/**      * Sets the redelivery policy to be used when messages are rolled back      */
+specifier|public
+name|void
+name|setRedeliveryPolicy
+parameter_list|(
+name|RedeliveryPolicy
+name|redeliveryPolicy
+parameter_list|)
+block|{
+name|this
+operator|.
+name|redeliveryPolicy
+operator|=
+name|redeliveryPolicy
+expr_stmt|;
+block|}
 specifier|private
 name|void
 name|waitForBrokerInfo
