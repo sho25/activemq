@@ -907,14 +907,14 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// TODO is this meant to be == null?
+comment|// TODO is this meant to be == null - it was != ?
 if|if
 condition|(
 name|message
 operator|.
 name|getOriginalDestination
 argument_list|()
-operator|!=
+operator|==
 literal|null
 condition|)
 name|message
@@ -946,16 +946,21 @@ operator|.
 name|getDeadLetterStrategy
 argument_list|()
 decl_stmt|;
-name|message
-operator|.
-name|setDestination
-argument_list|(
+name|ActiveMQDestination
+name|deadLetterDestination
+init|=
 name|deadLetterStrategy
 operator|.
 name|getDeadLetterQueueFor
 argument_list|(
 name|originalDestination
 argument_list|)
+decl_stmt|;
+name|message
+operator|.
+name|setDestination
+argument_list|(
+name|deadLetterDestination
 argument_list|)
 expr_stmt|;
 if|if
