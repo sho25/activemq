@@ -219,7 +219,7 @@ name|ci
 argument_list|,
 name|headers
 argument_list|,
-literal|"activemq:"
+literal|"activemq."
 argument_list|)
 expr_stmt|;
 name|ci
