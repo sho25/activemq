@@ -907,14 +907,14 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// TODO is this meant to be == null - it was != ?
+comment|// TODO is this meant to be == null?
 if|if
 condition|(
 name|message
 operator|.
 name|getOriginalDestination
 argument_list|()
-operator|==
+operator|!=
 literal|null
 condition|)
 name|message
@@ -935,6 +935,21 @@ operator|.
 name|getOriginalDestination
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|originalDestination
+operator|==
+literal|null
+condition|)
+block|{
+name|originalDestination
+operator|=
+name|message
+operator|.
+name|getDestination
+argument_list|()
+expr_stmt|;
+block|}
 name|DeadLetterStrategy
 name|deadLetterStrategy
 init|=

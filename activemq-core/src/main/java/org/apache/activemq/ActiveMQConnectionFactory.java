@@ -940,6 +940,14 @@ name|isUseRetroactiveConsumer
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|getRedeliveryPolicy
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|connection
 operator|.
 name|setRedeliveryPolicy
@@ -948,6 +956,7 @@ name|getRedeliveryPolicy
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|clientID
