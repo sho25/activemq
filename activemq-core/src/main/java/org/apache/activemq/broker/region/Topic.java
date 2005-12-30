@@ -623,6 +623,11 @@ name|sub
 argument_list|)
 expr_stmt|;
 block|}
+synchronized|synchronized
+init|(
+name|consumers
+init|)
+block|{
 name|consumers
 operator|.
 name|add
@@ -630,6 +635,7 @@ argument_list|(
 name|sub
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
@@ -660,6 +666,12 @@ if|if
 condition|(
 name|initialActivation
 condition|)
+block|{
+synchronized|synchronized
+init|(
+name|consumers
+init|)
+block|{
 name|consumers
 operator|.
 name|add
@@ -667,6 +679,8 @@ argument_list|(
 name|sub
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 if|if
 condition|(
 name|store
@@ -965,6 +979,11 @@ operator|.
 name|decrement
 argument_list|()
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|consumers
+init|)
+block|{
 name|consumers
 operator|.
 name|remove
@@ -972,6 +991,7 @@ argument_list|(
 name|sub
 argument_list|)
 expr_stmt|;
+block|}
 name|sub
 operator|.
 name|remove
@@ -1496,6 +1516,11 @@ condition|)
 block|{
 return|return;
 block|}
+synchronized|synchronized
+init|(
+name|consumers
+init|)
+block|{
 if|if
 condition|(
 name|consumers
@@ -1512,6 +1537,7 @@ name|message
 argument_list|)
 expr_stmt|;
 return|return;
+block|}
 block|}
 name|msgContext
 operator|.

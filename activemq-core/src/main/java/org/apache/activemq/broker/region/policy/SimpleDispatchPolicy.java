@@ -21,26 +21,6 @@ end_package
 
 begin_import
 import|import
-name|edu
-operator|.
-name|emory
-operator|.
-name|mathcs
-operator|.
-name|backport
-operator|.
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CopyOnWriteArrayList
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -109,6 +89,16 @@ name|Iterator
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  * Simple dispatch policy that sends a message to every subscription that   * matches the message.  *   * @org.xbean.XBean  *   * @version $Revision$  */
 end_comment
@@ -133,7 +123,7 @@ parameter_list|,
 name|MessageEvaluationContext
 name|msgContext
 parameter_list|,
-name|CopyOnWriteArrayList
+name|List
 name|consumers
 parameter_list|)
 throws|throws

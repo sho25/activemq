@@ -371,7 +371,6 @@ argument_list|,
 name|dest
 argument_list|)
 expr_stmt|;
-block|}
 comment|// Add all consumers that are interested in the destination.
 for|for
 control|(
@@ -428,6 +427,7 @@ block|}
 return|return
 name|dest
 return|;
+block|}
 block|}
 specifier|public
 name|void

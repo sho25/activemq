@@ -1028,7 +1028,7 @@ argument_list|(
 operator|new
 name|URI
 argument_list|(
-literal|"broker://()/localhost?persistent=false"
+literal|"broker://()/localhost?persistent=false&useJmx=true"
 argument_list|)
 argument_list|)
 return|;

@@ -21,21 +21,11 @@ end_package
 
 begin_import
 import|import
-name|edu
-operator|.
-name|emory
-operator|.
-name|mathcs
-operator|.
-name|backport
-operator|.
 name|java
 operator|.
 name|util
 operator|.
-name|concurrent
-operator|.
-name|CopyOnWriteArrayList
+name|List
 import|;
 end_import
 
@@ -105,7 +95,7 @@ parameter_list|,
 name|MessageEvaluationContext
 name|msgContext
 parameter_list|,
-name|CopyOnWriteArrayList
+name|List
 name|consumers
 parameter_list|)
 throws|throws

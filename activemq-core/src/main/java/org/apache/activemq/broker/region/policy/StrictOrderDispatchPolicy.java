@@ -21,26 +21,6 @@ end_package
 
 begin_import
 import|import
-name|edu
-operator|.
-name|emory
-operator|.
-name|mathcs
-operator|.
-name|backport
-operator|.
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CopyOnWriteArrayList
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -109,6 +89,16 @@ name|Iterator
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  * Dispatch policy that causes every subscription to see messages in the same order.  *   * @org.xbean.XBean  *   * @version $Revision$  */
 end_comment
@@ -120,20 +110,6 @@ name|StrictOrderDispatchPolicy
 implements|implements
 name|DispatchPolicy
 block|{
-name|int
-name|i
-init|=
-literal|0
-decl_stmt|;
-specifier|private
-specifier|final
-name|Object
-name|mutex
-init|=
-operator|new
-name|Object
-argument_list|()
-decl_stmt|;
 specifier|public
 name|boolean
 name|dispatch
@@ -147,7 +123,7 @@ parameter_list|,
 name|MessageEvaluationContext
 name|msgContext
 parameter_list|,
-name|CopyOnWriteArrayList
+name|List
 name|consumers
 parameter_list|)
 throws|throws
@@ -157,7 +133,7 @@ comment|// Big synch here so that only 1 message gets dispatched at a time.  Ens
 comment|// Everyone sees the same order.
 synchronized|synchronized
 init|(
-name|mutex
+name|consumers
 init|)
 block|{
 name|int
@@ -165,9 +141,6 @@ name|count
 init|=
 literal|0
 decl_stmt|;
-name|i
-operator|++
-expr_stmt|;
 for|for
 control|(
 name|Iterator
