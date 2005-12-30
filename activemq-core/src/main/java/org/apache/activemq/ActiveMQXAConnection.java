@@ -139,17 +139,11 @@ implements|,
 name|XAConnection
 block|{
 comment|/**      * @param transport      * @param theUserName      * @param thePassword      * @param factoryStats      * @throws Exception       */
-specifier|public
+specifier|protected
 name|ActiveMQXAConnection
 parameter_list|(
 name|Transport
 name|transport
-parameter_list|,
-name|String
-name|theUserName
-parameter_list|,
-name|String
-name|thePassword
 parameter_list|,
 name|JMSStatsImpl
 name|factoryStats
@@ -160,10 +154,6 @@ block|{
 name|super
 argument_list|(
 name|transport
-argument_list|,
-name|theUserName
-argument_list|,
-name|thePassword
 argument_list|,
 name|factoryStats
 argument_list|)

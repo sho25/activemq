@@ -56,9 +56,6 @@ decl_stmt|;
 name|String
 name|brokerURL
 decl_stmt|;
-name|RedeliveryPolicy
-name|redeliveryPolicy
-decl_stmt|;
 name|BrokerInfo
 name|peerBrokerInfos
 index|[]
@@ -159,31 +156,6 @@ operator|.
 name|peerBrokerInfos
 operator|=
 name|peerBrokerInfos
-expr_stmt|;
-block|}
-comment|/**      * @openwire:property version=1      */
-specifier|public
-name|RedeliveryPolicy
-name|getRedeliveryPolicy
-parameter_list|()
-block|{
-return|return
-name|redeliveryPolicy
-return|;
-block|}
-specifier|public
-name|void
-name|setRedeliveryPolicy
-parameter_list|(
-name|RedeliveryPolicy
-name|redeliveryPolicy
-parameter_list|)
-block|{
-name|this
-operator|.
-name|redeliveryPolicy
-operator|=
-name|redeliveryPolicy
 expr_stmt|;
 block|}
 comment|/**      * @openwire:property version=1      */
