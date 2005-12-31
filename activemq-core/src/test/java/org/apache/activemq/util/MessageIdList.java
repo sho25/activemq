@@ -441,7 +441,7 @@ decl_stmt|;
 if|if
 condition|(
 name|duration
-operator|>
+operator|>=
 name|maximumDuration
 condition|)
 block|{
@@ -456,7 +456,9 @@ name|semaphore
 operator|.
 name|wait
 argument_list|(
-literal|4000
+name|maximumDuration
+operator|-
+name|duration
 argument_list|)
 expr_stmt|;
 block|}
