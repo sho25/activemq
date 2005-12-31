@@ -1139,6 +1139,16 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+name|allMessagesList
+operator|.
+name|flushMessages
+argument_list|()
+expr_stmt|;
+name|consumers
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 name|super
 operator|.
 name|tearDown
