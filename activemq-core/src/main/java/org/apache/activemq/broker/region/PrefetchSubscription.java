@@ -789,6 +789,7 @@ name|isPoisonAck
 argument_list|()
 condition|)
 block|{
+comment|// TODO: what if the message is already in a DLQ???
 comment|// Handle the poison ACK case: we need to send the message to a DLQ
 if|if
 condition|(
@@ -907,7 +908,8 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// TODO is this meant to be == null?
+comment|// The original destination and transaction id do not get filled when the message is first sent,
+comment|// it is only populated if the message is routed to another destination like the DLQ
 if|if
 condition|(
 name|message
@@ -927,29 +929,25 @@ name|getDestination
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ActiveMQDestination
-name|originalDestination
-init|=
-name|message
-operator|.
-name|getOriginalDestination
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
-name|originalDestination
-operator|==
-literal|null
-condition|)
-block|{
-name|originalDestination
-operator|=
 name|message
 operator|.
-name|getDestination
+name|getOriginalTransactionId
 argument_list|()
+operator|!=
+literal|null
+condition|)
+name|message
+operator|.
+name|setOriginalTransactionId
+argument_list|(
+name|message
+operator|.
+name|getTransactionId
+argument_list|()
+argument_list|)
 expr_stmt|;
-block|}
 name|DeadLetterStrategy
 name|deadLetterStrategy
 init|=
@@ -968,7 +966,10 @@ name|deadLetterStrategy
 operator|.
 name|getDeadLetterQueueFor
 argument_list|(
-name|originalDestination
+name|message
+operator|.
+name|getDestination
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|message
@@ -976,25 +977,6 @@ operator|.
 name|setDestination
 argument_list|(
 name|deadLetterDestination
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|message
-operator|.
-name|getOriginalTransactionId
-argument_list|()
-operator|!=
-literal|null
-condition|)
-name|message
-operator|.
-name|setOriginalTransactionId
-argument_list|(
-name|message
-operator|.
-name|getTransactionId
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|message
