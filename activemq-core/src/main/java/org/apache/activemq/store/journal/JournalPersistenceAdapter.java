@@ -1427,7 +1427,7 @@ expr_stmt|;
 comment|// Take one final checkpoint and stop checkpoint processing.
 name|checkpoint
 argument_list|(
-literal|false
+literal|true
 argument_list|,
 literal|true
 argument_list|)
