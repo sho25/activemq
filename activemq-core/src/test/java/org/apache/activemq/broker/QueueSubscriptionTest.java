@@ -405,7 +405,7 @@ expr_stmt|;
 comment|// 1 byte
 name|prefetchCount
 operator|=
-literal|10
+literal|100
 expr_stmt|;
 name|doMultipleClientsTest
 argument_list|()
