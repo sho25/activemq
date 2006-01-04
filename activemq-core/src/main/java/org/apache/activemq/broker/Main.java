@@ -3187,6 +3187,13 @@ name|configURI
 block|}
 argument_list|)
 expr_stmt|;
+name|brokers
+operator|.
+name|add
+argument_list|(
+name|broker
+argument_list|)
+expr_stmt|;
 name|Method
 name|start
 init|=
@@ -4416,7 +4423,6 @@ parameter_list|()
 throws|throws
 name|Throwable
 block|{
-comment|// TODO: Why is version returned invalid?
 name|ClassLoader
 name|cl
 init|=
