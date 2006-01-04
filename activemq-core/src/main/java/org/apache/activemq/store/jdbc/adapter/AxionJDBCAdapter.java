@@ -72,7 +72,8 @@ index|[]
 block|{
 literal|"CREATE TABLE "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|messageTableName
 operator|+
@@ -114,13 +115,15 @@ literal|", PRIMARY KEY ( ID ) )"
 block|,
 literal|"CREATE INDEX "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|messageTableName
 operator|+
 literal|"_MIDX ON "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|messageTableName
 operator|+
@@ -128,13 +131,15 @@ literal|" (MSGID_PROD,MSGID_SEQ)"
 block|,
 literal|"CREATE INDEX "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|messageTableName
 operator|+
 literal|"_CIDX ON "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|messageTableName
 operator|+
@@ -142,7 +147,8 @@ literal|" (CONTAINER)"
 block|,
 literal|"CREATE TABLE "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|durableSubAcksTableName
 operator|+
@@ -186,7 +192,8 @@ block|{
 return|return
 literal|"DELETE FROM "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|messageTableName
 operator|+

@@ -46,7 +46,7 @@ name|DefaultStatementProvider
 implements|implements
 name|StatementProvider
 block|{
-specifier|protected
+specifier|private
 name|String
 name|tablePrefix
 init|=
@@ -125,9 +125,8 @@ index|[]
 block|{
 literal|"CREATE TABLE "
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 operator|+
 literal|"("
 operator|+
@@ -167,35 +166,32 @@ literal|", PRIMARY KEY ( ID ) )"
 block|,
 literal|"CREATE INDEX "
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 operator|+
 literal|"_MIDX ON "
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 operator|+
 literal|" (MSGID_PROD,MSGID_SEQ)"
 block|,
 literal|"CREATE INDEX "
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 operator|+
 literal|"_CIDX ON "
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 operator|+
 literal|" (CONTAINER)"
 block|,
 literal|"CREATE TABLE "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|durableSubAcksTableName
 operator|+
@@ -233,6 +229,18 @@ return|;
 block|}
 specifier|public
 name|String
+name|getFullMessageTableName
+parameter_list|()
+block|{
+return|return
+name|getTablePrefix
+argument_list|()
+operator|+
+name|messageTableName
+return|;
+block|}
+specifier|public
+name|String
 index|[]
 name|getDropSchemaStatments
 parameter_list|()
@@ -244,7 +252,8 @@ index|[]
 block|{
 literal|"DROP TABLE "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|durableSubAcksTableName
 operator|+
@@ -252,9 +261,8 @@ literal|""
 block|,
 literal|"DROP TABLE "
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 operator|+
 literal|""
 block|,         }
@@ -268,9 +276,8 @@ block|{
 return|return
 literal|"INSERT INTO "
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 operator|+
 literal|"(ID, MSGID_PROD, MSGID_SEQ, CONTAINER, EXPIRATION, MSG) VALUES (?, ?, ?, ?, ?, ?)"
 return|;
@@ -283,9 +290,8 @@ block|{
 return|return
 literal|"UPDATE "
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 operator|+
 literal|" SET MSG=? WHERE ID=?"
 return|;
@@ -298,9 +304,8 @@ block|{
 return|return
 literal|"DELETE FROM "
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 operator|+
 literal|" WHERE ID=?"
 return|;
@@ -313,9 +318,8 @@ block|{
 return|return
 literal|"SELECT ID FROM "
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 operator|+
 literal|" WHERE MSGID_PROD=? AND MSGID_SEQ=?"
 return|;
@@ -328,9 +332,8 @@ block|{
 return|return
 literal|"SELECT MSG FROM "
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 operator|+
 literal|" WHERE ID=?"
 return|;
@@ -343,9 +346,8 @@ block|{
 return|return
 literal|"SELECT ID, MSG FROM "
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 operator|+
 literal|" WHERE CONTAINER=? ORDER BY ID"
 return|;
@@ -358,9 +360,8 @@ block|{
 return|return
 literal|"SELECT MAX(ID) FROM "
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 return|;
 block|}
 specifier|public
@@ -371,7 +372,8 @@ block|{
 return|return
 literal|"SELECT MAX(LAST_ACKED_ID) FROM "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|durableSubAcksTableName
 return|;
@@ -384,7 +386,8 @@ block|{
 return|return
 literal|"INSERT INTO "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|durableSubAcksTableName
 operator|+
@@ -403,7 +406,8 @@ literal|"SELECT SELECTOR, SUB_NAME "
 operator|+
 literal|"FROM "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|durableSubAcksTableName
 operator|+
@@ -418,7 +422,8 @@ block|{
 return|return
 literal|"UPDATE "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|durableSubAcksTableName
 operator|+
@@ -435,7 +440,8 @@ block|{
 return|return
 literal|"DELETE FROM "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|durableSubAcksTableName
 operator|+
@@ -450,13 +456,13 @@ block|{
 return|return
 literal|"SELECT M.ID, M.MSG FROM "
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 operator|+
 literal|" M, "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|durableSubAcksTableName
 operator|+
@@ -477,9 +483,8 @@ block|{
 return|return
 literal|"SELECT DISTINCT CONTAINER FROM "
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 return|;
 block|}
 specifier|public
@@ -490,9 +495,8 @@ block|{
 return|return
 literal|"DELETE FROM "
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 operator|+
 literal|" WHERE CONTAINER=?"
 return|;
@@ -505,7 +509,8 @@ block|{
 return|return
 literal|"DELETE FROM "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|durableSubAcksTableName
 operator|+
@@ -520,15 +525,15 @@ block|{
 return|return
 literal|"DELETE FROM "
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 operator|+
 literal|" WHERE ( EXPIRATION<>0 AND EXPIRATION<?) OR ID<= "
 operator|+
 literal|"( SELECT min("
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|durableSubAcksTableName
 operator|+
@@ -536,21 +541,22 @@ literal|".LAST_ACKED_ID) "
 operator|+
 literal|"FROM "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|durableSubAcksTableName
 operator|+
 literal|" WHERE "
 operator|+
-name|tablePrefix
+name|getTablePrefix
+argument_list|()
 operator|+
 name|durableSubAcksTableName
 operator|+
 literal|".CONTAINER="
 operator|+
-name|tablePrefix
-operator|+
-name|messageTableName
+name|getFullMessageTableName
+argument_list|()
 operator|+
 literal|".CONTAINER)"
 return|;

@@ -360,13 +360,71 @@ literal|null
 decl_stmt|;
 try|try
 block|{
-name|log
+comment|// Check to see if the table already exists.  If it does, then don't log warnings during startup.
+comment|// Need to run the scripts anyways since they may contain ALTER statements that upgrade a previous version of the table
+name|boolean
+name|alreadyExists
+init|=
+literal|false
+decl_stmt|;
+name|ResultSet
+name|rs
+init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+name|rs
+operator|=
+name|c
 operator|.
-name|info
+name|getConnection
+argument_list|()
+operator|.
+name|getMetaData
+argument_list|()
+operator|.
+name|getTables
 argument_list|(
-literal|"creating tables"
+literal|null
+argument_list|,
+literal|null
+argument_list|,
+name|statementProvider
+operator|.
+name|getFullMessageTableName
+argument_list|()
+argument_list|,
+operator|new
+name|String
+index|[]
+block|{
+literal|"TABLE"
+block|}
 argument_list|)
 expr_stmt|;
+name|alreadyExists
+operator|=
+name|rs
+operator|.
+name|next
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|ignore
+parameter_list|)
+block|{             }
+finally|finally
+block|{
+name|close
+argument_list|(
+name|rs
+argument_list|)
+expr_stmt|;
+block|}
 name|s
 operator|=
 name|c
@@ -427,6 +485,49 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|alreadyExists
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Could not create JDBC tables; The message table already existed."
+operator|+
+literal|" Failure was: "
+operator|+
+name|createStatments
+index|[
+name|i
+index|]
+operator|+
+literal|" Message: "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|+
+literal|" SQLState: "
+operator|+
+name|e
+operator|.
+name|getSQLState
+argument_list|()
+operator|+
+literal|" Vendor code: "
+operator|+
+name|e
+operator|.
+name|getErrorCode
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|log
 operator|.
 name|warn
@@ -464,6 +565,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 name|c
 operator|.
 name|getConnection
@@ -471,13 +573,6 @@ argument_list|()
 operator|.
 name|commit
 argument_list|()
-expr_stmt|;
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"done creating tables"
-argument_list|)
 expr_stmt|;
 block|}
 finally|finally

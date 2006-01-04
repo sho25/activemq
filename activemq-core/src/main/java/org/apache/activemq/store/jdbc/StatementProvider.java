@@ -136,6 +136,11 @@ name|boolean
 name|isUseExternalMessageReferences
 parameter_list|()
 function_decl|;
+specifier|public
+name|String
+name|getFullMessageTableName
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

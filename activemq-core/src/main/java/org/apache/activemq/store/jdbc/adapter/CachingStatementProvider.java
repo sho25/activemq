@@ -715,6 +715,18 @@ name|isUseExternalMessageReferences
 argument_list|()
 return|;
 block|}
+specifier|public
+name|String
+name|getFullMessageTableName
+parameter_list|()
+block|{
+return|return
+name|statementProvider
+operator|.
+name|getFullMessageTableName
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
