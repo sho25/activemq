@@ -153,6 +153,15 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Lists all the durable subscirptions for a given destination.      *       * @param clientId TODO      * @param subscriptionName TODO      * @return      */
+specifier|public
+name|SubscriptionInfo
+index|[]
+name|getAllSubscriptions
+parameter_list|()
+throws|throws
+name|IOException
+function_decl|;
 comment|/**      * Inserts the subscriber info due to a subscription change      *<p/>      * If this is a new subscription and the retroactive is false, then the last      * message sent to the topic should be set as the last message acknowledged by they new      * subscription.  Otherwise, if retroactive is true, then create the subscription without       * it having an acknowledged message so that on recovery, all message recorded for the       * topic get replayed.      * @param retroactive TODO      *      */
 specifier|public
 name|void

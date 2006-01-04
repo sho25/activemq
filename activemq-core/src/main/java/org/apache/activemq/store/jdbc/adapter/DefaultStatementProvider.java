@@ -416,6 +416,24 @@ return|;
 block|}
 specifier|public
 name|String
+name|getFindAllDurableSubsStatment
+parameter_list|()
+block|{
+return|return
+literal|"SELECT SELECTOR, SUB_NAME, CLIENT_ID"
+operator|+
+literal|"FROM "
+operator|+
+name|getTablePrefix
+argument_list|()
+operator|+
+name|durableSubAcksTableName
+operator|+
+literal|" WHERE CONTAINER=?"
+return|;
+block|}
+specifier|public
+name|String
 name|getUpdateLastAckOfDurableSub
 parameter_list|()
 block|{

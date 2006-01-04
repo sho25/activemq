@@ -441,6 +441,23 @@ name|boolean
 name|useExternalMessageReferences
 parameter_list|)
 function_decl|;
+specifier|public
+specifier|abstract
+name|SubscriptionInfo
+index|[]
+name|doGetAllSubscriptions
+parameter_list|(
+name|TransactionContext
+name|c
+parameter_list|,
+name|ActiveMQDestination
+name|destination
+parameter_list|)
+throws|throws
+name|SQLException
+throws|,
+name|IOException
+function_decl|;
 block|}
 end_interface
 

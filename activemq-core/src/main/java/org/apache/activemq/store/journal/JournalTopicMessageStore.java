@@ -1013,6 +1013,21 @@ name|subscriptionName
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|SubscriptionInfo
+index|[]
+name|getAllSubscriptions
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+return|return
+name|longTermStore
+operator|.
+name|getAllSubscriptions
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

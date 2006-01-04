@@ -141,6 +141,11 @@ name|String
 name|getFullMessageTableName
 parameter_list|()
 function_decl|;
+specifier|public
+name|String
+name|getFindAllDurableSubsStatment
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
