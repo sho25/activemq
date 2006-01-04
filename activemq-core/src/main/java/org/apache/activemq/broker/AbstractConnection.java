@@ -61,7 +61,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedList
+name|*
 import|;
 end_import
 
@@ -590,6 +590,16 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|InvalidClientIDException
 import|;
 end_import
 
@@ -2667,6 +2677,14 @@ throws|throws
 name|Throwable
 block|{
 comment|// Setup the context.
+name|String
+name|clientId
+init|=
+name|info
+operator|.
+name|getClientId
+argument_list|()
+decl_stmt|;
 name|ConnectionContext
 name|context
 init|=
@@ -2704,14 +2722,6 @@ name|ConcurrentHashMap
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|String
-name|clientId
-init|=
-name|info
-operator|.
-name|getClientId
-argument_list|()
-decl_stmt|;
 name|context
 operator|.
 name|setClientId
