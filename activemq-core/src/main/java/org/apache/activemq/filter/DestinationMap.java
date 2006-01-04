@@ -90,7 +90,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Map-like data structure allowing values to be indexed by {@link ActiveMQDestination}  * and retrieved by destination - supporting both * and&gt; style of wildcard  * as well as composite destinations.  *<br>  * This class assumes that the index changes rarely but that fast lookup into the index is required.  * So this class maintains a pre-calculated index for destination steps. So looking up the values  * for "TEST.*" or "*.TEST" will be pretty fast.  *<br>  * Looking up of a value could return a single value or a List of matching values if a wildcard or  * composite destination is used.  *  * @version $Revision: 1.3 $  */
+comment|/**  * A Map-like data structure allowing values to be indexed by  * {@link ActiveMQDestination} and retrieved by destination - supporting both *  * and&gt; style of wildcard as well as composite destinations.<br>  * This class assumes that the index changes rarely but that fast lookup into  * the index is required. So this class maintains a pre-calculated index for  * destination steps. So looking up the values for "TEST.*" or "*.TEST" will be  * pretty fast.<br>  * Looking up of a value could return a single value or a List of matching  * values if a wildcard or composite destination is used.  *   * @version $Revision: 1.3 $  */
 end_comment
 
 begin_class
@@ -98,9 +98,29 @@ specifier|public
 class|class
 name|DestinationMap
 block|{
+specifier|protected
+specifier|static
+specifier|final
+name|String
+name|ANY_DESCENDENT
+init|=
+name|DestinationFilter
+operator|.
+name|ANY_DESCENDENT
+decl_stmt|;
+specifier|protected
+specifier|static
+specifier|final
+name|String
+name|ANY_CHILD
+init|=
+name|DestinationFilter
+operator|.
+name|ANY_CHILD
+decl_stmt|;
 specifier|private
 name|DestinationMapNode
-name|rootNode
+name|queueRootNode
 init|=
 operator|new
 name|DestinationMapNode
@@ -108,27 +128,17 @@ argument_list|(
 literal|null
 argument_list|)
 decl_stmt|;
-specifier|protected
-specifier|static
-specifier|final
-name|String
-name|ANY_DESCENDENT
+specifier|private
+name|DestinationMapNode
+name|topicRootNode
 init|=
-name|DestinationFilter
-operator|.
-name|ANY_DESCENDENT
+operator|new
+name|DestinationMapNode
+argument_list|(
+literal|null
+argument_list|)
 decl_stmt|;
-specifier|protected
-specifier|static
-specifier|final
-name|String
-name|ANY_CHILD
-init|=
-name|DestinationFilter
-operator|.
-name|ANY_CHILD
-decl_stmt|;
-comment|/**      * Looks up the value(s) matching the given Destination key. For simple destinations      * this is typically a List of one single value, for wildcards or composite destinations this will typically be      * a List of matching values.      *      * @param key the destination to lookup      * @return a List of matching values or an empty list if there are no matching values.      */
+comment|/**      * Looks up the value(s) matching the given Destination key. For simple      * destinations this is typically a List of one single value, for wildcards      * or composite destinations this will typically be a List of matching      * values.      *       * @param key      *            the destination to lookup      * @return a List of matching values or an empty list if there are no      *         matching values.      */
 specifier|public
 specifier|synchronized
 name|Set
@@ -318,7 +328,10 @@ operator|.
 name|getDestinationPaths
 argument_list|()
 decl_stmt|;
-name|rootNode
+name|getRootNode
+argument_list|(
+name|key
+argument_list|)
 operator|.
 name|add
 argument_list|(
@@ -404,7 +417,10 @@ operator|.
 name|getDestinationPaths
 argument_list|()
 decl_stmt|;
-name|rootNode
+name|getRootNode
+argument_list|(
+name|key
+argument_list|)
 operator|.
 name|remove
 argument_list|(
@@ -418,19 +434,31 @@ expr_stmt|;
 block|}
 specifier|public
 name|int
-name|getRootChildCount
+name|getTopicRootChildCount
 parameter_list|()
 block|{
 return|return
-name|rootNode
+name|topicRootNode
+operator|.
+name|getChildCount
+argument_list|()
+return|;
+block|}
+specifier|public
+name|int
+name|getQueueRootChildCount
+parameter_list|()
+block|{
+return|return
+name|queueRootNode
 operator|.
 name|getChildCount
 argument_list|()
 return|;
 block|}
 comment|// Implementation methods
-comment|//-------------------------------------------------------------------------
-comment|/**      * A helper method to allow the destination map to be populated from a dependency injection      * framework such as Spring      */
+comment|// -------------------------------------------------------------------------
+comment|/**      * A helper method to allow the destination map to be populated from a      * dependency injection framework such as Spring      */
 specifier|protected
 name|void
 name|setEntries
@@ -526,7 +554,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * Returns the type of the allowed entries which can be set via the {@link #setEntries(List)} method.      * This allows derived classes to further restrict the type of allowed entries to make a type safe       * destination map for custom policies.      */
+comment|/**      * Returns the type of the allowed entries which can be set via the      * {@link #setEntries(List)} method. This allows derived classes to further      * restrict the type of allowed entries to make a type safe destination map      * for custom policies.      */
 specifier|protected
 name|Class
 name|getEntryClass
@@ -562,7 +590,10 @@ operator|new
 name|HashSet
 argument_list|()
 decl_stmt|;
-name|rootNode
+name|getRootNode
+argument_list|(
+name|key
+argument_list|)
 operator|.
 name|appendMatchingValues
 argument_list|(
@@ -640,7 +671,10 @@ operator|.
 name|getDestinationPaths
 argument_list|()
 decl_stmt|;
-name|rootNode
+name|getRootNode
+argument_list|(
+name|key
+argument_list|)
 operator|.
 name|removeAll
 argument_list|(
@@ -650,7 +684,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns the value which matches the given destination or null if there is no matching      * value. If there are multiple values, the results are sorted and the last item (the biggest)      * is returned.      *       * @param destination the destination to find the value for      * @return the largest matching value or null if no value matches      */
+comment|/**      * Returns the value which matches the given destination or null if there is      * no matching value. If there are multiple values, the results are sorted      * and the last item (the biggest) is returned.      *       * @param destination      *            the destination to find the value for      * @return the largest matching value or null if no value matches      */
 specifier|public
 name|Object
 name|chooseValue
@@ -698,6 +732,34 @@ operator|.
 name|last
 argument_list|()
 return|;
+block|}
+comment|/**      * Returns the root node for the given destination type      */
+specifier|protected
+name|DestinationMapNode
+name|getRootNode
+parameter_list|(
+name|ActiveMQDestination
+name|key
+parameter_list|)
+block|{
+if|if
+condition|(
+name|key
+operator|.
+name|isQueue
+argument_list|()
+condition|)
+block|{
+return|return
+name|queueRootNode
+return|;
+block|}
+else|else
+block|{
+return|return
+name|topicRootNode
+return|;
+block|}
 block|}
 block|}
 end_class
