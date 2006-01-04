@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation class used to implement {@link DestinationMap}  *  * @version $Revision: 1.2 $  */
+comment|/**  * An implementation class used to implement {@link DestinationMap}  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class
@@ -149,7 +149,7 @@ operator|=
 name|parent
 expr_stmt|;
 block|}
-comment|/**      * Returns the child node for the given named path or null if it does not exist      */
+comment|/**      * Returns the child node for the given named path or null if it does not      * exist      */
 specifier|public
 name|DestinationMapNode
 name|getChild
@@ -182,7 +182,7 @@ name|size
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns the child node for the given named path, lazily creating one if it does      * not yet exist      */
+comment|/**      * Returns the child node for the given named path, lazily creating one if      * it does not yet exist      */
 specifier|public
 name|DestinationMapNode
 name|getChildOrCreate
@@ -704,6 +704,11 @@ name|node
 init|=
 name|this
 decl_stmt|;
+name|boolean
+name|couldMatchAny
+init|=
+literal|true
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -756,6 +761,10 @@ operator|.
 name|getDesendentValues
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|couldMatchAny
+operator|=
+literal|false
 expr_stmt|;
 break|break;
 block|}
@@ -818,6 +827,41 @@ name|getValues
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|couldMatchAny
+condition|)
+block|{
+comment|// lets allow FOO.BAR to match the FOO.BAR.> entry in the map
+name|DestinationMapNode
+name|child
+init|=
+name|node
+operator|.
+name|getChild
+argument_list|(
+name|ANY_DESCENDENT
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|child
+operator|!=
+literal|null
+condition|)
+block|{
+name|answer
+operator|.
+name|addAll
+argument_list|(
+name|child
+operator|.
+name|getValues
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 specifier|public
