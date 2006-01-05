@@ -422,7 +422,7 @@ block|{
 return|return
 literal|"SELECT SELECTOR, SUB_NAME, CLIENT_ID"
 operator|+
-literal|"FROM "
+literal|" FROM "
 operator|+
 name|getTablePrefix
 argument_list|()
