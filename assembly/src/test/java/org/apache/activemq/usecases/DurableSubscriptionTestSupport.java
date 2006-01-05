@@ -1759,12 +1759,6 @@ empty_stmt|;
 comment|// See if the durable sub works in a new connection.
 comment|// The embeded broker shutsdown when his connections are closed.
 comment|// So we open the new connection before the old one is closed.
-name|Connection
-name|t
-init|=
-name|createConnection
-argument_list|()
-decl_stmt|;
 name|connection
 operator|.
 name|close
@@ -1772,7 +1766,8 @@ argument_list|()
 expr_stmt|;
 name|connection
 operator|=
-name|t
+name|createConnection
+argument_list|()
 expr_stmt|;
 name|connection
 operator|.
