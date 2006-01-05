@@ -2937,50 +2937,8 @@ name|deliveryMode
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|deliveryMode
-operator|==
-name|DeliveryMode
-operator|.
-name|NON_PERSISTENT
-operator|&&
-name|durableConsumer
-condition|)
-block|{
-comment|// Durable subs don't keep non persistent messages around!
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|2
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|Message
-name|m2
-init|=
-name|receiveMessage
-argument_list|(
-name|connection1
-argument_list|)
-decl_stmt|;
-name|assertNotNull
-argument_list|(
-name|m2
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-else|else
-block|{
+comment|// the behavior is VERY dependent on the recovery policy used.
+comment|// But the default broker settings try to make it as consistent as possible
 comment|// Subscription should see all messages sent.
 name|Message
 name|m2
@@ -3035,7 +2993,6 @@ argument_list|(
 name|m2
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|assertNoMessagesLeft
 argument_list|(

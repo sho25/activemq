@@ -650,6 +650,8 @@ name|topic
 operator|.
 name|recover
 argument_list|(
+name|context
+argument_list|,
 name|this
 argument_list|,
 literal|false
