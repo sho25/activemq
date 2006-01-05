@@ -13,36 +13,8 @@ name|activemq
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|CommandTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|DataStructure
-import|;
-end_import
-
 begin_comment
-comment|/**  * Configuration options used to control how messages are re-delivered when  * they are rolled back.  *    * @openwire:marshaller  * @version $Revision: 1.11 $  */
+comment|/**  * Configuration options used to control how messages are re-delivered when they  * are rolled back.  *   * @version $Revision: 1.11 $  */
 end_comment
 
 begin_class
@@ -50,18 +22,8 @@ specifier|public
 class|class
 name|RedeliveryPolicy
 implements|implements
-name|DataStructure
+name|Cloneable
 block|{
-specifier|public
-specifier|static
-specifier|final
-name|byte
-name|DATA_STRUCTURE_TYPE
-init|=
-name|CommandTypes
-operator|.
-name|REDELIVERY_POLICY
-decl_stmt|;
 specifier|protected
 name|int
 name|maximumRedeliveries
@@ -89,17 +51,41 @@ decl_stmt|;
 specifier|public
 name|RedeliveryPolicy
 parameter_list|()
-block|{             }
+block|{     }
 specifier|public
-name|byte
-name|getDataStructureType
+name|RedeliveryPolicy
+name|copy
 parameter_list|()
 block|{
+try|try
+block|{
 return|return
-name|DATA_STRUCTURE_TYPE
+operator|(
+name|RedeliveryPolicy
+operator|)
+name|clone
+argument_list|()
 return|;
 block|}
-comment|/**      * @openwire:property version=1 cache=false      */
+catch|catch
+parameter_list|(
+name|CloneNotSupportedException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Could not clone: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
 specifier|public
 name|short
 name|getBackOffMultiplier
@@ -124,7 +110,6 @@ operator|=
 name|backOffMultiplier
 expr_stmt|;
 block|}
-comment|/**      * @openwire:property version=1 cache=false      */
 specifier|public
 name|long
 name|getInitialRedeliveryDelay
@@ -149,7 +134,6 @@ operator|=
 name|initialRedeliveryDelay
 expr_stmt|;
 block|}
-comment|/**      * @openwire:property version=1 cache=false      */
 specifier|public
 name|int
 name|getMaximumRedeliveries
@@ -174,7 +158,6 @@ operator|=
 name|maximumRedeliveries
 expr_stmt|;
 block|}
-comment|/**      * @openwire:property version=1 cache=false      */
 specifier|public
 name|boolean
 name|isUseExponentialBackOff
@@ -198,15 +181,6 @@ name|useExponentialBackOff
 operator|=
 name|useExponentialBackOff
 expr_stmt|;
-block|}
-specifier|public
-name|boolean
-name|isMarshallAware
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
 block|}
 block|}
 end_class
