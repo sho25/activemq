@@ -4384,7 +4384,7 @@ block|{
 literal|0x3eL
 block|,  }
 decl_stmt|;
-specifier|private
+specifier|protected
 name|SimpleCharStream
 name|input_stream
 decl_stmt|;
@@ -4582,8 +4582,7 @@ operator|=
 name|lexState
 expr_stmt|;
 block|}
-specifier|private
-specifier|final
+specifier|protected
 name|Token
 name|jjFillToken
 parameter_list|()
@@ -4692,7 +4691,6 @@ name|int
 name|jjmatchedKind
 decl_stmt|;
 specifier|public
-specifier|final
 name|Token
 name|getNextToken
 parameter_list|()
