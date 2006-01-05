@@ -103,18 +103,6 @@ name|Topic
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQConnection
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version $Revision: 1.4 $  */
 end_comment
@@ -434,6 +422,32 @@ literal|"Created connection: "
 operator|+
 name|connection
 argument_list|)
+expr_stmt|;
+block|}
+specifier|protected
+name|void
+name|tearDown
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+if|if
+condition|(
+name|connection
+operator|!=
+literal|null
+condition|)
+block|{
+name|connection
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+name|super
+operator|.
+name|tearDown
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Returns the consumer subject.      *      * @return String - consumer subject      * @see org.apache.activemq.test.TestSupport#getConsumerSubject()      */
