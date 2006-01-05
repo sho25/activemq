@@ -482,6 +482,10 @@ specifier|private
 name|MessageAvailableListener
 name|availableListener
 decl_stmt|;
+specifier|private
+name|RedeliveryPolicy
+name|redeliveryPolicy
+decl_stmt|;
 comment|/**      * Create a MessageConsumer      *       * @param session      * @param consumerId      * @param dest      * @param name      * @param selector      * @param prefetch      * @param noLocal      * @param browser      * @param dispatchAsync      * @throws JMSException      */
 specifier|public
 name|ActiveMQMessageConsumer
@@ -652,6 +656,17 @@ operator|.
 name|selector
 operator|=
 name|selector
+expr_stmt|;
+name|this
+operator|.
+name|redeliveryPolicy
+operator|=
+name|session
+operator|.
+name|connection
+operator|.
+name|getRedeliveryPolicy
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -904,6 +919,31 @@ block|{
 return|return
 name|stats
 return|;
+block|}
+specifier|public
+name|RedeliveryPolicy
+name|getRedeliveryPolicy
+parameter_list|()
+block|{
+return|return
+name|redeliveryPolicy
+return|;
+block|}
+comment|/**      * Sets the redelivery policy used when messages are redelivered      */
+specifier|public
+name|void
+name|setRedeliveryPolicy
+parameter_list|(
+name|RedeliveryPolicy
+name|redeliveryPolicy
+parameter_list|)
+block|{
+name|this
+operator|.
+name|redeliveryPolicy
+operator|=
+name|redeliveryPolicy
+expr_stmt|;
 block|}
 comment|/**      * @return Returns the consumerId.      */
 specifier|protected
@@ -2256,16 +2296,6 @@ return|return;
 name|rollbackCounter
 operator|++
 expr_stmt|;
-name|RedeliveryPolicy
-name|redeliveryPolicy
-init|=
-name|session
-operator|.
-name|connection
-operator|.
-name|getRedeliveryPolicy
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|rollbackCounter
