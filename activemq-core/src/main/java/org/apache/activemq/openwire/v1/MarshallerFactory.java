@@ -248,13 +248,6 @@ expr_stmt|;
 name|add
 argument_list|(
 operator|new
-name|RedeliveryPolicyMarshaller
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-operator|new
 name|ConsumerIdMarshaller
 argument_list|()
 argument_list|)

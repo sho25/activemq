@@ -49,9 +49,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|command
-operator|.
-name|ActiveMQQueue
+name|RedeliveryPolicy
 import|;
 end_import
 
@@ -65,7 +63,7 @@ name|activemq
 operator|.
 name|command
 operator|.
-name|RedeliveryPolicy
+name|ActiveMQQueue
 import|;
 end_import
 
