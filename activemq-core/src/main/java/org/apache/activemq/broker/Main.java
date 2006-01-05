@@ -1281,7 +1281,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-comment|// If token is a predefined query define option
+comment|// If token is a additive predefined query define option
 elseif|else
 if|if
 condition|(
@@ -1348,76 +1348,7 @@ name|pos
 argument_list|)
 expr_stmt|;
 block|}
-comment|// If subtractive query
-if|if
-condition|(
-name|key
-operator|.
-name|startsWith
-argument_list|(
-literal|"!"
-argument_list|)
-condition|)
-block|{
-comment|// Transform predefined query to object name query
-name|String
-name|predefQuery
-init|=
-name|PREDEFINED_OBJNAME_QUERY
-operator|.
-name|getProperty
-argument_list|(
-name|key
-operator|.
-name|substring
-argument_list|(
-literal|1
-argument_list|)
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|predefQuery
-operator|==
-literal|null
-condition|)
-block|{
-name|printError
-argument_list|(
-literal|"Unknown query object type: "
-operator|+
-name|key
-operator|.
-name|substring
-argument_list|(
-literal|1
-argument_list|)
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
-name|String
-name|queryStr
-init|=
-name|createQueryString
-argument_list|(
-name|predefQuery
-argument_list|,
-name|value
-argument_list|)
-decl_stmt|;
-name|querySubObjects
-operator|.
-name|add
-argument_list|(
-name|queryStr
-argument_list|)
-expr_stmt|;
-block|}
 comment|// If additive query
-else|else
-block|{
-comment|// Transform predefined query to object name query
 name|String
 name|predefQuery
 init|=
@@ -1462,8 +1393,119 @@ name|queryStr
 argument_list|)
 expr_stmt|;
 block|}
+comment|// If token is a substractive predefined query define option
+elseif|else
+if|if
+condition|(
+name|token
+operator|.
+name|startsWith
+argument_list|(
+literal|"-xQ"
+argument_list|)
+condition|)
+block|{
+name|String
+name|key
+init|=
+name|token
+operator|.
+name|substring
+argument_list|(
+literal|3
+argument_list|)
+decl_stmt|;
+name|String
+name|value
+init|=
+literal|""
+decl_stmt|;
+name|int
+name|pos
+init|=
+name|key
+operator|.
+name|indexOf
+argument_list|(
+literal|"="
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|pos
+operator|>=
+literal|0
+condition|)
+block|{
+name|value
+operator|=
+name|key
+operator|.
+name|substring
+argument_list|(
+name|pos
+operator|+
+literal|1
+argument_list|)
+expr_stmt|;
+name|key
+operator|=
+name|key
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|pos
+argument_list|)
+expr_stmt|;
 block|}
-comment|// If token is an object name query option
+comment|// If subtractive query
+name|String
+name|predefQuery
+init|=
+name|PREDEFINED_OBJNAME_QUERY
+operator|.
+name|getProperty
+argument_list|(
+name|key
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|predefQuery
+operator|==
+literal|null
+condition|)
+block|{
+name|printError
+argument_list|(
+literal|"Unknown query object type: "
+operator|+
+name|key
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+name|String
+name|queryStr
+init|=
+name|createQueryString
+argument_list|(
+name|predefQuery
+argument_list|,
+name|value
+argument_list|)
+decl_stmt|;
+name|querySubObjects
+operator|.
+name|add
+argument_list|(
+name|queryStr
+argument_list|)
+expr_stmt|;
+block|}
+comment|// If token is an additive object name query option
 elseif|else
 if|if
 condition|(
@@ -1521,33 +1563,6 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-comment|// If subtractive query
-if|if
-condition|(
-name|queryString
-operator|.
-name|startsWith
-argument_list|(
-literal|"!"
-argument_list|)
-condition|)
-block|{
-name|querySubObjects
-operator|.
-name|add
-argument_list|(
-name|queryString
-operator|.
-name|substring
-argument_list|(
-literal|1
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// If additive query
-block|}
-else|else
-block|{
 name|queryAddObjects
 operator|.
 name|add
@@ -1556,6 +1571,71 @@ name|queryString
 argument_list|)
 expr_stmt|;
 block|}
+comment|// If token is a substractive object name query option
+elseif|else
+if|if
+condition|(
+name|token
+operator|.
+name|startsWith
+argument_list|(
+literal|"--xobjname"
+argument_list|)
+condition|)
+block|{
+comment|// If no object name query is specified, or next token is a new option
+if|if
+condition|(
+name|tokens
+operator|.
+name|isEmpty
+argument_list|()
+operator|||
+operator|(
+operator|(
+name|String
+operator|)
+name|tokens
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"-"
+argument_list|)
+condition|)
+block|{
+name|printError
+argument_list|(
+literal|"Object name query not specified"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+name|String
+name|queryString
+init|=
+operator|(
+name|String
+operator|)
+name|tokens
+operator|.
+name|remove
+argument_list|(
+literal|0
+argument_list|)
+decl_stmt|;
+name|querySubObjects
+operator|.
+name|add
+argument_list|(
+name|queryString
+argument_list|)
+expr_stmt|;
 block|}
 comment|// If token is a view option
 elseif|else
@@ -5288,11 +5368,11 @@ literal|"Query Options:"
 block|,
 literal|"    -Q<type>=<name>               Add to the search list the specific object type matched by the defined object identifier."
 block|,
-literal|"    -Q!<type>=<name>              Remove from the search list the specific object type matched by the object identifier."
+literal|"    -xQ<type>=<name>              Remove from the search list the specific object type matched by the object identifier."
 block|,
 literal|"    --objname<query>             Add to the search list objects matched by the query similar to the JMX object name format."
 block|,
-literal|"    --objname !<query>            Remove from the search list objects matched by the query similar to the JMX object name format."
+literal|"    --xobjname<query>            Remove from the search list objects matched by the query similar to the JMX object name format."
 block|,
 literal|"    --view<attr1>,<attr2>,...    Select the specific attribute of the object to view. By default all attributes will be displayed."
 block|,
@@ -5342,19 +5422,19 @@ literal|"        - Print the attributes EnqueueCount and DequeueCount of all reg
 block|,
 literal|""
 block|,
-literal|"    Main -QTopic=* -Q!Topic=ActiveMQ.Advisory.*"
+literal|"    Main -QTopic=* -xQTopic=ActiveMQ.Advisory.*"
 block|,
 literal|"        - Print all attributes of all topics except those that has a name that begins with \"ActiveMQ.Advisory\"."
 block|,
 literal|""
 block|,
-literal|"    Main --objname Type=*Connect*,BrokerName=local* -Q!NetworkConnector=*"
+literal|"    Main --objname Type=*Connect*,BrokerName=local* -xQNetworkConnector=*"
 block|,
 literal|"        - Print all attributes of all connectors, connections excluding network connectors that belongs to the broker that begins with local."
 block|,
 literal|""
 block|,
-literal|"    Main -QQueue=* -Q!Queue=????"
+literal|"    Main -QQueue=* -xQQueue=????"
 block|,
 literal|"        - Print all attributes of all queues except those that are 4 letters long."
 block|,
