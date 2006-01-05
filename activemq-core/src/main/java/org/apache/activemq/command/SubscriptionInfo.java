@@ -15,6 +15,20 @@ name|command
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IntrospectionSupport
+import|;
+end_import
+
 begin_comment
 comment|/**  *   * @openwire:marshaller  * @version $Revision: 1.6 $  */
 end_comment
@@ -168,6 +182,20 @@ parameter_list|()
 block|{
 return|return
 literal|false
+return|;
+block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|IntrospectionSupport
+operator|.
+name|toString
+argument_list|(
+name|this
+argument_list|)
 return|;
 block|}
 block|}

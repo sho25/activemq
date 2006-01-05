@@ -25,6 +25,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|Service
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|broker
 operator|.
 name|ConnectionContext
@@ -102,15 +114,17 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Region is used to implement the different QOS options available to   * a broker.  A Broker is composed of multiple mesasge processing Regions that  * provide different QOS options.  *   * @version $Revision$  */
+comment|/**  * A Region is used to implement the different QOS options available to   * a broker.  A Broker is composed of multiple message processing Regions that  * provide different QOS options.  *   * @version $Revision$  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
 name|Region
+extends|extends
+name|Service
 block|{
-comment|/**      * Used to create a destination.  Usually, this method is invoked as a side-effect of sending      * a message to a destiantion that does not exist yet.      *       * @param context      * @param destination the destination to create.      * @return TODO      */
+comment|/**      * Used to create a destination.  Usually, this method is invoked as a side-effect of sending      * a message to a destination that does not exist yet.      *       * @param context      * @param destination the destination to create.      * @return TODO      */
 specifier|public
 name|Destination
 name|addDestination
@@ -124,7 +138,7 @@ parameter_list|)
 throws|throws
 name|Throwable
 function_decl|;
-comment|/**      * Used to destory a destination.        * This shoud try to quiesce use of the destination up to the timeout alotted time before removing the destination.      * This will remove all persistent messages associated with the destination.      *       * @param context the enviorment the operation is being executed under.      * @param destination what is being removed from the broker.      * @param timeout the max amount of time to wait for the destination to quiesce      */
+comment|/**      * Used to destroy a destination.        * This should try to quiesce use of the destination up to the timeout allotted time before removing the destination.      * This will remove all persistent messages associated with the destination.      *       * @param context the environment the operation is being executed under.      * @param destination what is being removed from the broker.      * @param timeout the max amount of time to wait for the destination to quiesce      */
 specifier|public
 name|void
 name|removeDestination
@@ -141,7 +155,7 @@ parameter_list|)
 throws|throws
 name|Throwable
 function_decl|;
-comment|/**      * Adds a consumer.      * @param context the enviorment the operation is being executed under.      */
+comment|/**      * Adds a consumer.      * @param context the environment the operation is being executed under.      */
 specifier|public
 name|void
 name|addConsumer
@@ -155,7 +169,7 @@ parameter_list|)
 throws|throws
 name|Throwable
 function_decl|;
-comment|/**      * Removes a consumer.      * @param context the enviorment the operation is being executed under.      */
+comment|/**      * Removes a consumer.      * @param context the environment the operation is being executed under.      */
 specifier|public
 name|void
 name|removeConsumer
@@ -169,7 +183,7 @@ parameter_list|)
 throws|throws
 name|Throwable
 function_decl|;
-comment|/**      * Deletes a durable subscription.      * @param context the enviorment the operation is being executed under.      * @param info TODO      */
+comment|/**      * Deletes a durable subscription.      * @param context the environment the operation is being executed under.      * @param info TODO      */
 specifier|public
 name|void
 name|removeSubscription
@@ -183,7 +197,7 @@ parameter_list|)
 throws|throws
 name|Throwable
 function_decl|;
-comment|/**      * Send a message to the broker to using the specified destination.  The destination specified      * in the message does not need to match the destination the message is sent to.  This is       * handy in case the message is being sent to a dead letter destination.      * @param context the enviorment the operation is being executed under.      */
+comment|/**      * Send a message to the broker to using the specified destination.  The destination specified      * in the message does not need to match the destination the message is sent to.  This is       * handy in case the message is being sent to a dead letter destination.      * @param context the environment the operation is being executed under.      */
 specifier|public
 name|void
 name|send
@@ -197,7 +211,7 @@ parameter_list|)
 throws|throws
 name|Throwable
 function_decl|;
-comment|/**      * Used to acknowledge the receipt of a message by a client.      * @param context the enviorment the operation is being executed under.      */
+comment|/**      * Used to acknowledge the receipt of a message by a client.      * @param context the environment the operation is being executed under.      */
 specifier|public
 name|void
 name|acknowledge
