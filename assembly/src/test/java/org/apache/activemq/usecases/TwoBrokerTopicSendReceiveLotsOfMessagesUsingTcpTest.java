@@ -37,7 +37,7 @@ name|this
 operator|.
 name|messageCount
 operator|=
-literal|2000
+literal|5000
 expr_stmt|;
 name|super
 operator|.
