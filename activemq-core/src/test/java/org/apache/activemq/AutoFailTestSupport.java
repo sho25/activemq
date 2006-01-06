@@ -146,12 +146,6 @@ comment|// Disable auto fail by default
 specifier|private
 name|AtomicBoolean
 name|isTestSuccess
-init|=
-operator|new
-name|AtomicBoolean
-argument_list|(
-literal|false
-argument_list|)
 decl_stmt|;
 specifier|protected
 name|void
@@ -203,6 +197,14 @@ block|{
 name|setAutoFail
 argument_list|(
 literal|true
+argument_list|)
+expr_stmt|;
+name|isTestSuccess
+operator|=
+operator|new
+name|AtomicBoolean
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 name|autoFailThread
