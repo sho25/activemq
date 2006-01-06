@@ -1045,12 +1045,12 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|int
+name|short
 name|size
 init|=
 name|dataIn
 operator|.
-name|readInt
+name|readShort
 argument_list|()
 decl_stmt|;
 for|for
