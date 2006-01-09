@@ -1179,11 +1179,9 @@ name|str
 operator|.
 name|substring
 argument_list|(
-literal|0
+name|last
 argument_list|,
 name|i
-operator|-
-name|last
 argument_list|)
 decl_stmt|;
 name|l
