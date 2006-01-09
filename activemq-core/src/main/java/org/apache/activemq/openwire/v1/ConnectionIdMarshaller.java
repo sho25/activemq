@@ -161,7 +161,7 @@ name|o
 decl_stmt|;
 name|info
 operator|.
-name|setConnectionId
+name|setValue
 argument_list|(
 name|readString
 argument_list|(
@@ -217,7 +217,7 @@ name|writeString
 argument_list|(
 name|info
 operator|.
-name|getConnectionId
+name|getValue
 argument_list|()
 argument_list|,
 name|bs
@@ -274,7 +274,7 @@ name|writeString
 argument_list|(
 name|info
 operator|.
-name|getConnectionId
+name|getValue
 argument_list|()
 argument_list|,
 name|dataOut

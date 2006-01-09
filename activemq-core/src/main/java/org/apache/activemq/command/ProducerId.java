@@ -92,7 +92,7 @@ name|sessionId
 operator|=
 name|sessionId
 operator|.
-name|getSessionId
+name|getValue
 argument_list|()
 expr_stmt|;
 name|this
@@ -330,7 +330,7 @@ name|String
 name|sessionKey
 parameter_list|)
 block|{
-comment|// Parse off the sessionId
+comment|// Parse off the value
 name|int
 name|p
 init|=
@@ -376,7 +376,7 @@ name|p
 argument_list|)
 expr_stmt|;
 block|}
-comment|// The rest is the connectionId
+comment|// The rest is the value
 name|connectionId
 operator|=
 name|sessionKey

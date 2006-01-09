@@ -243,7 +243,7 @@ comment|//                                +", the location must have 1 and only 
 comment|//                                +components.length);
 comment|//            }
 comment|//            Map parameters=new HashMap(compositData.getParameters());
-comment|//            DiscoveryTransportServer server=new DiscoveryTransportServer(TransportFactory.bind(brokerId,components[0]));
+comment|//            DiscoveryTransportServer server=new DiscoveryTransportServer(TransportFactory.bind(value,components[0]));
 comment|//            IntrospectionSupport.setProperties(server,parameters,"discovery");
 comment|//            DiscoveryAgent discoveryAgent=DiscoveryAgentFactory.createDiscoveryAgent(server.getDiscovery());
 comment|//            // Use the host name to configure the group of the discovery agent.
@@ -253,7 +253,7 @@ comment|//                    parameters.put("discovery.group",compositData.getH
 comment|//                }
 comment|//            }
 comment|//            if(!parameters.containsKey("discovery.brokerName")){
-comment|//                parameters.put("discovery.brokerName",brokerId);
+comment|//                parameters.put("discovery.brokerName",value);
 comment|//            }
 comment|//            IntrospectionSupport.setProperties(discoveryAgent,parameters,"discovery.");
 comment|//            server.setDiscoveryAgent(discoveryAgent);

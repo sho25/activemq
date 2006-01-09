@@ -975,7 +975,7 @@ argument_list|()
 argument_list|,
 name|sessionId
 operator|.
-name|getSessionId
+name|getValue
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3178,7 +3178,7 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Returns the session id.      *       * @return sessionId - session id.      */
+comment|/**      * Returns the session id.      *       * @return value - session id.      */
 specifier|protected
 name|SessionId
 name|getSessionId
@@ -3672,7 +3672,7 @@ argument_list|,
 name|getSessionId
 argument_list|()
 operator|.
-name|getSessionId
+name|getValue
 argument_list|()
 argument_list|)
 decl_stmt|;

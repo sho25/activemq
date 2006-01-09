@@ -61,7 +61,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|LinkedList
 import|;
 end_import
 
@@ -142,6 +142,20 @@ operator|.
 name|command
 operator|.
 name|Command
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ConnectionError
 import|;
 end_import
 
@@ -595,16 +609,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|InvalidClientIDException
-import|;
-end_import
-
-begin_import
-import|import
 name|edu
 operator|.
 name|emory
@@ -709,6 +713,12 @@ decl_stmt|;
 specifier|protected
 name|boolean
 name|disposed
+init|=
+literal|false
+decl_stmt|;
+specifier|protected
+name|boolean
+name|shuttingDown
 init|=
 literal|false
 decl_stmt|;
@@ -939,6 +949,10 @@ name|ignore
 parameter_list|)
 block|{             }
 block|}
+name|shuttingDown
+operator|=
+literal|false
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -1004,8 +1018,15 @@ if|if
 condition|(
 operator|!
 name|disposed
+operator|&&
+operator|!
+name|shuttingDown
 condition|)
 block|{
+name|shuttingDown
+operator|=
+literal|true
+expr_stmt|;
 if|if
 condition|(
 name|log
@@ -1024,9 +1045,37 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-comment|// TODO: think about how to handle this.  Should we send the error down to the client
-comment|// so that he can report it to a registered error listener?
-comment|// Should we terminate the connection?
+name|ConnectionError
+name|ce
+init|=
+operator|new
+name|ConnectionError
+argument_list|()
+decl_stmt|;
+name|ce
+operator|.
+name|setException
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+name|dispatchAsync
+argument_list|(
+name|ce
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|stop
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ignore
+parameter_list|)
+block|{             }
 block|}
 block|}
 specifier|public
@@ -1412,6 +1461,10 @@ parameter_list|)
 throws|throws
 name|Throwable
 block|{
+name|shuttingDown
+operator|=
+literal|true
+expr_stmt|;
 name|stop
 argument_list|()
 expr_stmt|;

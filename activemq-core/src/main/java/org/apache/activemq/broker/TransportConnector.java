@@ -1087,7 +1087,7 @@ operator|.
 name|getBrokerId
 argument_list|()
 operator|.
-name|getBrokerId
+name|getValue
 argument_list|()
 argument_list|,
 name|uri

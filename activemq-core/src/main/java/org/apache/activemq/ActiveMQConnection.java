@@ -3571,7 +3571,7 @@ operator|.
 name|getBrokerId
 argument_list|()
 operator|.
-name|getBrokerId
+name|getValue
 argument_list|()
 return|;
 block|}

@@ -173,7 +173,7 @@ argument_list|)
 expr_stmt|;
 name|info
 operator|.
-name|setSessionId
+name|setValue
 argument_list|(
 name|unmarshalLong
 argument_list|(
@@ -245,7 +245,7 @@ name|wireFormat
 argument_list|,
 name|info
 operator|.
-name|getSessionId
+name|getValue
 argument_list|()
 argument_list|,
 name|bs
@@ -316,7 +316,7 @@ name|wireFormat
 argument_list|,
 name|info
 operator|.
-name|getSessionId
+name|getValue
 argument_list|()
 argument_list|,
 name|dataOut

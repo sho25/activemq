@@ -42,7 +42,7 @@ name|connectionId
 decl_stmt|;
 specifier|protected
 name|long
-name|transactionId
+name|value
 decl_stmt|;
 specifier|private
 specifier|transient
@@ -76,7 +76,7 @@ name|connectionId
 expr_stmt|;
 name|this
 operator|.
-name|transactionId
+name|value
 operator|=
 name|transactionId
 expr_stmt|;
@@ -128,7 +128,7 @@ name|connectionId
 operator|+
 literal|":"
 operator|+
-name|transactionId
+name|value
 expr_stmt|;
 block|}
 return|return
@@ -167,7 +167,7 @@ operator|^
 operator|(
 name|int
 operator|)
-name|transactionId
+name|value
 expr_stmt|;
 block|}
 return|return
@@ -218,11 +218,11 @@ operator|)
 name|o
 decl_stmt|;
 return|return
-name|transactionId
+name|value
 operator|==
 name|tx
 operator|.
-name|transactionId
+name|value
 operator|&&
 name|connectionId
 operator|.
@@ -237,16 +237,16 @@ block|}
 comment|/**      * @openwire:property version=1      */
 specifier|public
 name|long
-name|getTransactionId
+name|getValue
 parameter_list|()
 block|{
 return|return
-name|transactionId
+name|value
 return|;
 block|}
 specifier|public
 name|void
-name|setTransactionId
+name|setValue
 parameter_list|(
 name|long
 name|transactionId
@@ -254,7 +254,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|transactionId
+name|value
 operator|=
 name|transactionId
 expr_stmt|;

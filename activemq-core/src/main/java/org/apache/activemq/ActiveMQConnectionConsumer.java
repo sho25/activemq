@@ -502,7 +502,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"ActiveMQConnectionConsumer { consumerId="
+literal|"ActiveMQConnectionConsumer { value="
 operator|+
 name|consumerInfo
 operator|.

@@ -42,7 +42,7 @@ name|connectionId
 decl_stmt|;
 specifier|protected
 name|long
-name|sessionId
+name|value
 decl_stmt|;
 specifier|protected
 specifier|transient
@@ -79,12 +79,12 @@ name|connectionId
 operator|=
 name|connectionId
 operator|.
-name|getConnectionId
+name|getValue
 argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|sessionId
+name|value
 operator|=
 name|sessionId
 expr_stmt|;
@@ -107,11 +107,11 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|sessionId
+name|value
 operator|=
 name|id
 operator|.
-name|getSessionId
+name|getValue
 argument_list|()
 expr_stmt|;
 block|}
@@ -133,7 +133,7 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|sessionId
+name|value
 operator|=
 name|id
 operator|.
@@ -159,7 +159,7 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|sessionId
+name|value
 operator|=
 name|id
 operator|.
@@ -214,7 +214,7 @@ operator|^
 operator|(
 name|int
 operator|)
-name|sessionId
+name|value
 expr_stmt|;
 block|}
 return|return
@@ -265,11 +265,11 @@ operator|)
 name|o
 decl_stmt|;
 return|return
-name|sessionId
+name|value
 operator|==
 name|id
 operator|.
-name|sessionId
+name|value
 operator|&&
 name|connectionId
 operator|.
@@ -318,16 +318,16 @@ block|}
 comment|/**      * @openwire:property version=1      */
 specifier|public
 name|long
-name|getSessionId
+name|getValue
 parameter_list|()
 block|{
 return|return
-name|sessionId
+name|value
 return|;
 block|}
 specifier|public
 name|void
-name|setSessionId
+name|setValue
 parameter_list|(
 name|long
 name|sessionId
@@ -335,7 +335,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|sessionId
+name|value
 operator|=
 name|sessionId
 expr_stmt|;
@@ -358,7 +358,7 @@ name|connectionId
 operator|+
 literal|":"
 operator|+
-name|sessionId
+name|value
 expr_stmt|;
 block|}
 return|return

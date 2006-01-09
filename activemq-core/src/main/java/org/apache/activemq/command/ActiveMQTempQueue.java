@@ -97,7 +97,7 @@ name|super
 argument_list|(
 name|connectionId
 operator|.
-name|getConnectionId
+name|getValue
 argument_list|()
 argument_list|,
 name|sequenceId

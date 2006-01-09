@@ -157,7 +157,7 @@ specifier|transient
 name|boolean
 name|networkSubscription
 decl_stmt|;
-comment|//this subscription orginated from a network connection
+comment|//this subscription originated from a network connection
 specifier|public
 name|ConsumerInfo
 parameter_list|()

@@ -84,7 +84,7 @@ name|ActiveMQMessageConsumer
 implements|implements
 name|TopicSubscriber
 block|{
-comment|/**      * @param theSession      * @param consumerId       * @param dest      * @param name      * @param selector      * @param cnum      * @param noLocalValue      * @param browserValue      * @param asyncDispatch       * @throws JMSException      */
+comment|/**      * @param theSession      * @param value       * @param dest      * @param name      * @param selector      * @param cnum      * @param noLocalValue      * @param browserValue      * @param asyncDispatch       * @throws JMSException      */
 specifier|protected
 name|ActiveMQTopicSubscriber
 parameter_list|(

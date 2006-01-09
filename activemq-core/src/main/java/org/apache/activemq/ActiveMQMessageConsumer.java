@@ -486,7 +486,7 @@ specifier|private
 name|RedeliveryPolicy
 name|redeliveryPolicy
 decl_stmt|;
-comment|/**      * Create a MessageConsumer      *       * @param session      * @param consumerId      * @param dest      * @param name      * @param selector      * @param prefetch      * @param noLocal      * @param browser      * @param dispatchAsync      * @throws JMSException      */
+comment|/**      * Create a MessageConsumer      *       * @param session      * @param value      * @param dest      * @param name      * @param selector      * @param prefetch      * @param noLocal      * @param browser      * @param dispatchAsync      * @throws JMSException      */
 specifier|public
 name|ActiveMQMessageConsumer
 parameter_list|(
@@ -601,7 +601,7 @@ operator|.
 name|getConnectionId
 argument_list|()
 operator|.
-name|getConnectionId
+name|getValue
 argument_list|()
 decl_stmt|;
 if|if
@@ -945,7 +945,7 @@ operator|=
 name|redeliveryPolicy
 expr_stmt|;
 block|}
-comment|/**      * @return Returns the consumerId.      */
+comment|/**      * @return Returns the value.      */
 specifier|protected
 name|ConsumerId
 name|getConsumerId
@@ -2764,7 +2764,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"ActiveMQMessageConsumer { consumerId="
+literal|"ActiveMQMessageConsumer { value="
 operator|+
 name|info
 operator|.

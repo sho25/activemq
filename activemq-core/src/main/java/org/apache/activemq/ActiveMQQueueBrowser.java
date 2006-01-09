@@ -690,7 +690,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"ActiveMQQueueBrowser { consumerId="
+literal|"ActiveMQQueueBrowser { value="
 operator|+
 name|consumerId
 operator|+

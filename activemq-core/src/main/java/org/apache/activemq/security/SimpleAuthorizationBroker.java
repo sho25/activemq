@@ -372,7 +372,7 @@ operator|.
 name|getConnectionId
 argument_list|()
 operator|.
-name|getConnectionId
+name|getValue
 argument_list|()
 argument_list|)
 condition|)
@@ -497,7 +497,7 @@ operator|.
 name|getConnectionId
 argument_list|()
 operator|.
-name|getConnectionId
+name|getValue
 argument_list|()
 argument_list|)
 condition|)

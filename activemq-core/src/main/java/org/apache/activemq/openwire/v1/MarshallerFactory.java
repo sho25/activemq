@@ -185,6 +185,13 @@ expr_stmt|;
 name|add
 argument_list|(
 operator|new
+name|ConnectionErrorMarshaller
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+operator|new
 name|ActiveMQObjectMessageMarshaller
 argument_list|()
 argument_list|)

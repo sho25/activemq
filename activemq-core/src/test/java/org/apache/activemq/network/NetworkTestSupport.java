@@ -351,7 +351,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * @param brokerId      * @return      * @throws Exception      * @throws IOException      * @throws URISyntaxException      */
+comment|/**      * @param value      * @return      * @throws Exception      * @throws IOException      * @throws URISyntaxException      */
 specifier|protected
 name|TransportConnector
 name|createConnector

@@ -76,15 +76,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marshalling code for Open Wire Format for LocalTransactionId  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  * @version $Revision$  */
+comment|/**  * Marshalling code for Open Wire Format for ConnectionError  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  * @version $Revision$  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|LocalTransactionIdMarshaller
+name|ConnectionErrorMarshaller
 extends|extends
-name|TransactionIdMarshaller
+name|BaseCommandMarshaller
 block|{
 comment|/**      * Return the type of Data Structure we marshal      * @return short representation of the type data structure      */
 specifier|public
@@ -93,7 +93,7 @@ name|getDataStructureType
 parameter_list|()
 block|{
 return|return
-name|LocalTransactionId
+name|ConnectionError
 operator|.
 name|DATA_STRUCTURE_TYPE
 return|;
@@ -106,7 +106,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|LocalTransactionId
+name|ConnectionError
 argument_list|()
 return|;
 block|}
@@ -143,19 +143,26 @@ argument_list|,
 name|bs
 argument_list|)
 expr_stmt|;
-name|LocalTransactionId
+name|ConnectionError
 name|info
 init|=
 operator|(
-name|LocalTransactionId
+name|ConnectionError
 operator|)
 name|o
 decl_stmt|;
 name|info
 operator|.
-name|setValue
+name|setException
 argument_list|(
-name|unmarshalLong
+operator|(
+name|java
+operator|.
+name|lang
+operator|.
+name|Throwable
+operator|)
+name|unmarsalThrowable
 argument_list|(
 name|wireFormat
 argument_list|,
@@ -180,7 +187,7 @@ name|command
 operator|.
 name|ConnectionId
 operator|)
-name|unmarsalCachedObject
+name|unmarsalNestedObject
 argument_list|(
 name|wireFormat
 argument_list|,
@@ -208,11 +215,11 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|LocalTransactionId
+name|ConnectionError
 name|info
 init|=
 operator|(
-name|LocalTransactionId
+name|ConnectionError
 operator|)
 name|o
 decl_stmt|;
@@ -232,13 +239,13 @@ argument_list|)
 decl_stmt|;
 name|rc
 operator|+=
-name|marshal1Long
+name|marshalThrowable
 argument_list|(
 name|wireFormat
 argument_list|,
 name|info
 operator|.
-name|getValue
+name|getException
 argument_list|()
 argument_list|,
 name|bs
@@ -246,7 +253,7 @@ argument_list|)
 expr_stmt|;
 name|rc
 operator|+=
-name|marshal1CachedObject
+name|marshal1NestedObject
 argument_list|(
 name|wireFormat
 argument_list|,
@@ -297,21 +304,21 @@ argument_list|,
 name|bs
 argument_list|)
 expr_stmt|;
-name|LocalTransactionId
+name|ConnectionError
 name|info
 init|=
 operator|(
-name|LocalTransactionId
+name|ConnectionError
 operator|)
 name|o
 decl_stmt|;
-name|marshal2Long
+name|marshalThrowable
 argument_list|(
 name|wireFormat
 argument_list|,
 name|info
 operator|.
-name|getValue
+name|getException
 argument_list|()
 argument_list|,
 name|dataOut
@@ -319,7 +326,7 @@ argument_list|,
 name|bs
 argument_list|)
 expr_stmt|;
-name|marshal2CachedObject
+name|marshal2NestedObject
 argument_list|(
 name|wireFormat
 argument_list|,

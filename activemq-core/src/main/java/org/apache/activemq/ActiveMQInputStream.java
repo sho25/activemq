@@ -390,7 +390,7 @@ operator|.
 name|getConnectionId
 argument_list|()
 operator|.
-name|getConnectionId
+name|getValue
 argument_list|()
 decl_stmt|;
 if|if
@@ -1189,7 +1189,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"ActiveMQInputStream { consumerId="
+literal|"ActiveMQInputStream { value="
 operator|+
 name|info
 operator|.

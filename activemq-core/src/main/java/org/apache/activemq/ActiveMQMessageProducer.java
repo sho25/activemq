@@ -1112,7 +1112,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"ActiveMQMessageProducer { consumerId="
+literal|"ActiveMQMessageProducer { value="
 operator|+
 name|info
 operator|.

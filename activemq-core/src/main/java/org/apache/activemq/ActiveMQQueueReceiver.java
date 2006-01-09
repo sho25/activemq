@@ -84,7 +84,7 @@ name|ActiveMQMessageConsumer
 implements|implements
 name|QueueReceiver
 block|{
-comment|/**      * @param theSession      * @param consumerId      * @param destination      * @param messageSelector      * @param prefetch      * @param asyncDispatch       * @throws JMSException      */
+comment|/**      * @param theSession      * @param value      * @param destination      * @param messageSelector      * @param prefetch      * @param asyncDispatch       * @throws JMSException      */
 specifier|protected
 name|ActiveMQQueueReceiver
 parameter_list|(

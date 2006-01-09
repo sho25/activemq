@@ -55,6 +55,10 @@ name|brokerName
 decl_stmt|;
 specifier|public
 name|DiscoveryEvent
+parameter_list|()
+block|{             }
+specifier|public
+name|DiscoveryEvent
 parameter_list|(
 name|String
 name|serviceName
