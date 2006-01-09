@@ -319,7 +319,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"###Êreceived message: "
+literal|"Received message: "
 operator|+
 name|message
 argument_list|)

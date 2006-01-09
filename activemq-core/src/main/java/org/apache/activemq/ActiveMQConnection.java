@@ -5013,7 +5013,7 @@ operator|.
 name|getConnectionId
 argument_list|()
 operator|+
-literal|",clientId"
+literal|",clientId="
 operator|+
 name|info
 operator|.
