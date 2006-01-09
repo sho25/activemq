@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Represents a discovery event containing the details of the service  *  * @openwire:marshaller code="55"  * @version $Revision:$  */
+comment|/**  * Represents a discovery event containing the details of the service  *  * @openwire:marshaller code="40"  * @version $Revision:$  */
 end_comment
 
 begin_class
