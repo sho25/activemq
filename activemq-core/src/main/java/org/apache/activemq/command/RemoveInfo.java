@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Removes a consumer, producer, session or connection.  *    * @openwire:marshaller  * @version $Revision$  */
+comment|/**  * Removes a consumer, producer, session or connection.  *    * @openwire:marshaller code="12"  * @version $Revision$  */
 end_comment
 
 begin_class

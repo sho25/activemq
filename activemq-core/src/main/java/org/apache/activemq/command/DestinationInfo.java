@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to create and destroy destinations on the broker.  *   * @openwire:marshaller  * @version $Revision: 1.9 $  */
+comment|/**  * Used to create and destroy destinations on the broker.  *   * @openwire:marshaller code="8"  * @version $Revision: 1.9 $  */
 end_comment
 
 begin_class

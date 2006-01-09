@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * When a client connects to a broker, the broker send the client a BrokerInfo  * so that the client knows which broker node he's talking to and also any peers  * that the node has in his cluster.  This is the broker helping the client out  * in discovering other nodes in the cluster.  *   * @openwire:marshaller  * @version $Revision: 1.7 $  */
+comment|/**  * When a client connects to a broker, the broker send the client a BrokerInfo  * so that the client knows which broker node he's talking to and also any peers  * that the node has in his cluster.  This is the broker helping the client out  * in discovering other nodes in the cluster.  *   * @openwire:marshaller code="2"  * @version $Revision: 1.7 $  */
 end_comment
 
 begin_class

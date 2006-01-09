@@ -97,11 +97,6 @@ init|=
 literal|12
 decl_stmt|;
 name|byte
-name|REDELIVERY_POLICY
-init|=
-literal|13
-decl_stmt|;
-name|byte
 name|CONTROL_COMMAND
 init|=
 literal|14

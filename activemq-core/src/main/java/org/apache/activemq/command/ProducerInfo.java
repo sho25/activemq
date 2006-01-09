@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @openwire:marshaller  * @version $Revision: 1.13 $  */
+comment|/**  *   * @openwire:marshaller code="6"  * @version $Revision: 1.13 $  */
 end_comment
 
 begin_class
