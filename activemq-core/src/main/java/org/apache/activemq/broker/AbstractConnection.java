@@ -716,12 +716,6 @@ name|disposed
 init|=
 literal|false
 decl_stmt|;
-specifier|protected
-name|boolean
-name|shuttingDown
-init|=
-literal|false
-decl_stmt|;
 specifier|static
 class|class
 name|ConnectionState
@@ -949,10 +943,6 @@ name|ignore
 parameter_list|)
 block|{             }
 block|}
-name|shuttingDown
-operator|=
-literal|false
-expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -1018,15 +1008,8 @@ if|if
 condition|(
 operator|!
 name|disposed
-operator|&&
-operator|!
-name|shuttingDown
 condition|)
 block|{
-name|shuttingDown
-operator|=
-literal|true
-expr_stmt|;
 if|if
 condition|(
 name|log
@@ -1064,18 +1047,6 @@ argument_list|(
 name|ce
 argument_list|)
 expr_stmt|;
-try|try
-block|{
-name|stop
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|ignore
-parameter_list|)
-block|{             }
 block|}
 block|}
 specifier|public
@@ -1461,10 +1432,6 @@ parameter_list|)
 throws|throws
 name|Throwable
 block|{
-name|shuttingDown
-operator|=
-literal|true
-expr_stmt|;
 name|stop
 argument_list|()
 expr_stmt|;
