@@ -444,7 +444,15 @@ name|equals
 argument_list|(
 literal|"Exception"
 argument_list|)
-operator|||
+condition|)
+block|{
+return|return
+literal|"BrokerError"
+return|;
+block|}
+elseif|else
+if|if
+condition|(
 name|name
 operator|.
 name|equals
