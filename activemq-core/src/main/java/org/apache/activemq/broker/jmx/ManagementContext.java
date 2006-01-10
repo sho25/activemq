@@ -274,7 +274,7 @@ specifier|private
 name|String
 name|connectorPath
 init|=
-literal|"/jmxconnector"
+literal|"/jmxrmi"
 decl_stmt|;
 specifier|private
 name|JMXConnectorServer

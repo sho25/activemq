@@ -370,7 +370,7 @@ specifier|final
 name|String
 name|DEFAULT_JMX_URL
 init|=
-literal|"service:jmx:rmi:///jndi/rmi://localhost:1099/jmxconnector"
+literal|"service:jmx:rmi:///jndi/rmi://localhost:1099/jmxrmi"
 decl_stmt|;
 specifier|public
 specifier|static
