@@ -46,7 +46,7 @@ name|sessionId
 decl_stmt|;
 specifier|protected
 name|long
-name|producerId
+name|value
 decl_stmt|;
 specifier|protected
 specifier|transient
@@ -97,7 +97,7 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|producerId
+name|value
 operator|=
 name|producerId
 expr_stmt|;
@@ -129,11 +129,11 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|producerId
+name|value
 operator|=
 name|id
 operator|.
-name|getProducerId
+name|getValue
 argument_list|()
 expr_stmt|;
 block|}
@@ -162,7 +162,7 @@ operator|>=
 literal|0
 condition|)
 block|{
-name|producerId
+name|value
 operator|=
 name|Long
 operator|.
@@ -248,7 +248,7 @@ operator|^
 operator|(
 name|int
 operator|)
-name|producerId
+name|value
 expr_stmt|;
 block|}
 return|return
@@ -305,11 +305,11 @@ name|id
 operator|.
 name|sessionId
 operator|&&
-name|producerId
+name|value
 operator|==
 name|id
 operator|.
-name|producerId
+name|value
 operator|&&
 name|connectionId
 operator|.
@@ -404,7 +404,7 @@ name|sessionId
 operator|+
 literal|":"
 operator|+
-name|producerId
+name|value
 expr_stmt|;
 block|}
 return|return
@@ -448,16 +448,16 @@ block|}
 comment|/**      * @openwire:property version=1      */
 specifier|public
 name|long
-name|getProducerId
+name|getValue
 parameter_list|()
 block|{
 return|return
-name|producerId
+name|value
 return|;
 block|}
 specifier|public
 name|void
-name|setProducerId
+name|setValue
 parameter_list|(
 name|long
 name|producerId
@@ -465,7 +465,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|producerId
+name|value
 operator|=
 name|producerId
 expr_stmt|;
