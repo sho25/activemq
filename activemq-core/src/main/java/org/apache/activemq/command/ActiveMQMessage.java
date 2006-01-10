@@ -495,29 +495,33 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|NumberFormatException
 name|e
 parameter_list|)
 block|{
-throw|throw
-name|JMSExceptionSupport
-operator|.
-name|create
-argument_list|(
-literal|"Invalid message id '"
-operator|+
-name|value
-operator|+
-literal|"', reason: "
-operator|+
-name|e
-operator|.
-name|getMessage
+comment|// we must be some foreign JMS provider or strange user-supplied String
+comment|// so lets set the IDs to be 1
+name|MessageId
+name|id
+init|=
+operator|new
+name|MessageId
 argument_list|()
-argument_list|,
-name|e
+decl_stmt|;
+name|id
+operator|.
+name|setTextView
+argument_list|(
+name|value
 argument_list|)
-throw|;
+expr_stmt|;
+name|this
+operator|.
+name|setMessageId
+argument_list|(
+name|messageId
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 else|else

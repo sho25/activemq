@@ -104,7 +104,7 @@ name|String
 name|messageKey
 parameter_list|)
 block|{
-name|setMessageKey
+name|setValue
 argument_list|(
 name|messageKey
 argument_list|)
@@ -155,9 +155,10 @@ operator|=
 name|producerSequenceId
 expr_stmt|;
 block|}
+comment|/**      * Sets the value as a String      */
 specifier|public
 name|void
-name|setMessageKey
+name|setValue
 parameter_list|(
 name|String
 name|messageKey
@@ -220,6 +221,22 @@ name|ProducerId
 argument_list|(
 name|messageKey
 argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Sets the transient text view of the message which will be ignored      * if the message is marshaled on a transport; so is only for in-JVM changes      * to accommodate foreign JMS message IDs      */
+specifier|public
+name|void
+name|setTextView
+parameter_list|(
+name|String
+name|key
+parameter_list|)
+block|{
+name|this
+operator|.
+name|key
+operator|=
+name|key
 expr_stmt|;
 block|}
 specifier|public
