@@ -87,7 +87,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|Iterator
 import|;
 end_import
 
@@ -97,7 +97,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
+name|ArrayList
 import|;
 end_import
 
@@ -125,10 +125,6 @@ block|{
 specifier|protected
 name|List
 name|bridges
-init|=
-operator|new
-name|ArrayList
-argument_list|()
 decl_stmt|;
 specifier|protected
 name|void
@@ -439,6 +435,12 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
+name|bridges
+operator|=
+operator|new
+name|ArrayList
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class
