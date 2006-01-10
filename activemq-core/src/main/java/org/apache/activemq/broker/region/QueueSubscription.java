@@ -392,7 +392,7 @@ if|if
 condition|(
 name|sequence
 operator|==
-literal|1
+literal|0
 condition|)
 block|{
 if|if
@@ -506,7 +506,7 @@ if|if
 condition|(
 name|sequence
 operator|<
-literal|1
+literal|0
 condition|)
 block|{
 name|messageGroupOwners
