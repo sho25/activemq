@@ -82,6 +82,14 @@ name|ThreeBrokerQueueNetworkTest
 extends|extends
 name|JmsMultipleBrokersTestSupport
 block|{
+specifier|protected
+specifier|static
+specifier|final
+name|int
+name|MESSAGE_COUNT
+init|=
+literal|100
+decl_stmt|;
 comment|/**      * BrokerA -> BrokerB -> BrokerC      */
 specifier|public
 name|void
@@ -137,7 +145,7 @@ literal|"BrokerA"
 argument_list|,
 name|dest
 argument_list|,
-literal|10
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 comment|// Let's try to wait for any messages. Should be none.
@@ -235,7 +243,7 @@ literal|"BrokerB"
 argument_list|,
 name|dest
 argument_list|,
-literal|10
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 comment|// Let's try to wait for any messages.
@@ -267,10 +275,10 @@ argument_list|,
 name|clientC
 argument_list|)
 decl_stmt|;
-comment|// Total received should be 10
+comment|// Total received should be 100
 name|assertEquals
 argument_list|(
-literal|10
+name|MESSAGE_COUNT
 argument_list|,
 name|msgsA
 operator|.
@@ -339,7 +347,7 @@ literal|"BrokerA"
 argument_list|,
 name|dest
 argument_list|,
-literal|10
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 name|sendMessages
@@ -348,7 +356,7 @@ literal|"BrokerC"
 argument_list|,
 name|dest
 argument_list|,
-literal|10
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 comment|// Get message count
@@ -366,12 +374,16 @@ name|msgsB
 operator|.
 name|waitForMessagesToArrive
 argument_list|(
-literal|20
+name|MESSAGE_COUNT
+operator|*
+literal|2
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|20
+name|MESSAGE_COUNT
+operator|*
+literal|2
 argument_list|,
 name|msgsB
 operator|.
@@ -483,7 +495,7 @@ literal|"BrokerA"
 argument_list|,
 name|dest
 argument_list|,
-literal|10
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 name|sendMessages
@@ -492,7 +504,7 @@ literal|"BrokerB"
 argument_list|,
 name|dest
 argument_list|,
-literal|10
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 name|sendMessages
@@ -501,7 +513,7 @@ literal|"BrokerC"
 argument_list|,
 name|dest
 argument_list|,
-literal|10
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 comment|// Let's try to wait for any messages.
@@ -545,7 +557,9 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|30
+name|MESSAGE_COUNT
+operator|*
+literal|3
 argument_list|,
 name|msgsA
 operator|.
@@ -628,7 +642,7 @@ literal|"BrokerA"
 argument_list|,
 name|dest
 argument_list|,
-literal|10
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 name|sendMessages
@@ -637,7 +651,7 @@ literal|"BrokerB"
 argument_list|,
 name|dest
 argument_list|,
-literal|10
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 name|sendMessages
@@ -646,7 +660,7 @@ literal|"BrokerC"
 argument_list|,
 name|dest
 argument_list|,
-literal|10
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 comment|// Let's try to wait for any messages.
@@ -690,7 +704,9 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|30
+name|MESSAGE_COUNT
+operator|*
+literal|3
 argument_list|,
 name|msgsA
 operator|.

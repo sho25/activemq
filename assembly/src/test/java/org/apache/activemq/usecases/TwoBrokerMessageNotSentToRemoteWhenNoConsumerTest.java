@@ -195,6 +195,14 @@ extends|extends
 name|JmsMultipleBrokersTestSupport
 block|{
 specifier|protected
+specifier|static
+specifier|final
+name|int
+name|MESSAGE_COUNT
+init|=
+literal|10
+decl_stmt|;
+specifier|protected
 name|List
 name|bridges
 decl_stmt|;
@@ -260,7 +268,7 @@ literal|"BrokerA"
 argument_list|,
 name|dest
 argument_list|,
-literal|10
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 comment|// Get message count
@@ -288,19 +296,19 @@ name|msgsA
 operator|.
 name|waitForMessagesToArrive
 argument_list|(
-literal|10
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 name|msgsB
 operator|.
 name|waitForMessagesToArrive
 argument_list|(
-literal|10
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|10
+name|MESSAGE_COUNT
 argument_list|,
 name|msgsA
 operator|.
@@ -310,7 +318,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|10
+name|MESSAGE_COUNT
 argument_list|,
 name|msgsB
 operator|.
@@ -321,7 +329,7 @@ expr_stmt|;
 comment|// Check that 10 message dispatch commands are send over the network
 name|assertEquals
 argument_list|(
-literal|10
+name|MESSAGE_COUNT
 argument_list|,
 name|msgDispatchCount
 operator|.
@@ -378,7 +386,7 @@ literal|"BrokerA"
 argument_list|,
 name|dest
 argument_list|,
-literal|10
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 comment|// Get message count
@@ -396,12 +404,12 @@ name|msgsA
 operator|.
 name|waitForMessagesToArrive
 argument_list|(
-literal|10
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|10
+name|MESSAGE_COUNT
 argument_list|,
 name|msgsA
 operator|.
