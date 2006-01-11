@@ -301,6 +301,16 @@ name|bs
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|info
+operator|.
+name|setSlaveBroker
+argument_list|(
+name|bs
+operator|.
+name|readBoolean
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Write the booleans that this object uses to a BooleanStream      */
 specifier|public
@@ -391,6 +401,16 @@ name|getBrokerName
 argument_list|()
 argument_list|,
 name|bs
+argument_list|)
+expr_stmt|;
+name|bs
+operator|.
+name|writeBoolean
+argument_list|(
+name|info
+operator|.
+name|isSlaveBroker
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -491,6 +511,11 @@ name|dataOut
 argument_list|,
 name|bs
 argument_list|)
+expr_stmt|;
+name|bs
+operator|.
+name|readBoolean
+argument_list|()
 expr_stmt|;
 block|}
 block|}
