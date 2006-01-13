@@ -260,6 +260,13 @@ argument_list|(
 literal|5
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|static
+name|boolean
+name|useDefExt
+init|=
+literal|true
+decl_stmt|;
 specifier|public
 specifier|static
 name|void
@@ -316,6 +323,8 @@ expr_stmt|;
 comment|// Add default extension directories
 if|if
 condition|(
+name|useDefExt
+operator|&&
 name|app
 operator|.
 name|canUseExtdir
@@ -778,6 +787,23 @@ name|addExtensionDirectory
 argument_list|(
 name|extDir
 argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|token
+operator|.
+name|equals
+argument_list|(
+literal|"--noDefExt"
+argument_list|)
+condition|)
+block|{
+comment|// If token is --noDefExt option
+name|useDefExt
+operator|=
+literal|false
 expr_stmt|;
 block|}
 block|}
