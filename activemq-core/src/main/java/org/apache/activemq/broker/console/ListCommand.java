@@ -30,13 +30,13 @@ end_import
 begin_class
 specifier|public
 class|class
-name|ListTask
+name|ListCommand
 extends|extends
-name|AbstractJmxTask
+name|AbstractJmxCommand
 block|{
 specifier|protected
 name|void
-name|startTask
+name|execute
 parameter_list|(
 name|List
 name|tokens

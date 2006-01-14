@@ -98,9 +98,9 @@ end_import
 begin_class
 specifier|public
 class|class
-name|StartTask
+name|StartCommand
 extends|extends
-name|AbstractTask
+name|AbstractCommand
 block|{
 specifier|public
 specifier|static
@@ -127,7 +127,7 @@ decl_stmt|;
 comment|/**      * The default task to start a broker or a group of brokers      * @param brokerURIs      */
 specifier|protected
 name|void
-name|startTask
+name|execute
 parameter_list|(
 name|List
 name|brokerURIs

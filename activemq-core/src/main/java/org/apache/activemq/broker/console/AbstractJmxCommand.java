@@ -87,9 +87,9 @@ begin_class
 specifier|public
 specifier|abstract
 class|class
-name|AbstractJmxTask
+name|AbstractJmxCommand
 extends|extends
-name|AbstractTask
+name|AbstractCommand
 block|{
 specifier|public
 specifier|static

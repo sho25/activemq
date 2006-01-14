@@ -122,9 +122,9 @@ end_import
 begin_class
 specifier|public
 class|class
-name|QueryTask
+name|QueryCommand
 extends|extends
-name|AbstractJmxTask
+name|AbstractJmxCommand
 block|{
 comment|// Predefined type=identifier query
 specifier|private
@@ -230,7 +230,7 @@ argument_list|)
 decl_stmt|;
 specifier|protected
 name|void
-name|startTask
+name|execute
 parameter_list|(
 name|List
 name|tokens

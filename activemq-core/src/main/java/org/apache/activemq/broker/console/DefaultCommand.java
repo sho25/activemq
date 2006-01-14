@@ -17,20 +17,179 @@ name|console
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
-name|DefaultTask
+name|DefaultCommand
 extends|extends
-name|StartTask
+name|AbstractCommand
 block|{
+specifier|protected
+name|void
+name|execute
+parameter_list|(
+name|List
+name|tokens
+parameter_list|)
+block|{
+comment|// Process task token
+if|if
+condition|(
+name|tokens
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+name|String
+name|taskToken
+init|=
+operator|(
+name|String
+operator|)
+name|tokens
+operator|.
+name|remove
+argument_list|(
+literal|0
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|taskToken
+operator|.
+name|equals
+argument_list|(
+literal|"start"
+argument_list|)
+condition|)
+block|{
+operator|new
+name|StartCommand
+argument_list|()
+operator|.
+name|execute
+argument_list|(
+name|tokens
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|taskToken
+operator|.
+name|equals
+argument_list|(
+literal|"stop"
+argument_list|)
+condition|)
+block|{
+operator|new
+name|ShutdownCommand
+argument_list|()
+operator|.
+name|execute
+argument_list|(
+name|tokens
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|taskToken
+operator|.
+name|equals
+argument_list|(
+literal|"list"
+argument_list|)
+condition|)
+block|{
+operator|new
+name|ListCommand
+argument_list|()
+operator|.
+name|execute
+argument_list|(
+name|tokens
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|taskToken
+operator|.
+name|equals
+argument_list|(
+literal|"query"
+argument_list|)
+condition|)
+block|{
+operator|new
+name|QueryCommand
+argument_list|()
+operator|.
+name|execute
+argument_list|(
+name|tokens
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// If not valid task, push back to list
+name|tokens
+operator|.
+name|add
+argument_list|(
+literal|0
+argument_list|,
+name|taskToken
+argument_list|)
+expr_stmt|;
+operator|new
+name|StartCommand
+argument_list|()
+operator|.
+name|execute
+argument_list|(
+name|tokens
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+operator|new
+name|StartCommand
+argument_list|()
+operator|.
+name|execute
+argument_list|(
+name|tokens
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 specifier|protected
 name|void
 name|printHelp
 parameter_list|()
 block|{
-name|System
-operator|.
 name|out
 operator|.
 name|println
@@ -38,8 +197,6 @@ argument_list|(
 literal|"Usage: Main [task] [--extdir<dir>] [task-options] [task data]"
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
 name|out
 operator|.
 name|println
@@ -47,8 +204,6 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
 name|out
 operator|.
 name|println
@@ -56,8 +211,6 @@ argument_list|(
 literal|"Tasks (default task is start):"
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
 name|out
 operator|.
 name|println
@@ -65,8 +218,6 @@ argument_list|(
 literal|"    start           - Creates and starts a broker using a configuration file, or a broker URI."
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
 name|out
 operator|.
 name|println
@@ -74,8 +225,6 @@ argument_list|(
 literal|"    stop            - Stops a running broker specified by the broker name."
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
 name|out
 operator|.
 name|println
@@ -83,8 +232,6 @@ argument_list|(
 literal|"    list            - Lists all available brokers in the specified JMX context."
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
 name|out
 operator|.
 name|println
@@ -92,8 +239,6 @@ argument_list|(
 literal|"    query           - Display selected broker component's attributes and statistics."
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
 name|out
 operator|.
 name|println
@@ -101,8 +246,6 @@ argument_list|(
 literal|"    --extdir<dir>  - Add the jar files in the directory to the classpath."
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
 name|out
 operator|.
 name|println
@@ -110,8 +253,6 @@ argument_list|(
 literal|"    --version       - Display the version information."
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
 name|out
 operator|.
 name|println
@@ -119,8 +260,6 @@ argument_list|(
 literal|"    -h,-?,--help    - Display this help information. To display task specific help, use Main [task] -h,-?,--help"
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
 name|out
 operator|.
 name|println
@@ -128,8 +267,6 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
 name|out
 operator|.
 name|println
@@ -137,8 +274,6 @@ argument_list|(
 literal|"Task Options:"
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
 name|out
 operator|.
 name|println
@@ -146,8 +281,6 @@ argument_list|(
 literal|"    - Properties specific to each task."
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
 name|out
 operator|.
 name|println
@@ -155,8 +288,6 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
 name|out
 operator|.
 name|println
@@ -164,8 +295,6 @@ argument_list|(
 literal|"Task Data:"
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
 name|out
 operator|.
 name|println
@@ -173,8 +302,6 @@ argument_list|(
 literal|"    - Information needed by each specific task."
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
 name|out
 operator|.
 name|println

@@ -90,9 +90,9 @@ end_import
 begin_class
 specifier|public
 class|class
-name|ShutdownTask
+name|ShutdownCommand
 extends|extends
-name|AbstractJmxTask
+name|AbstractJmxCommand
 block|{
 specifier|private
 name|boolean
@@ -102,7 +102,7 @@ literal|false
 decl_stmt|;
 specifier|protected
 name|void
-name|startTask
+name|execute
 parameter_list|(
 name|List
 name|brokerNames
