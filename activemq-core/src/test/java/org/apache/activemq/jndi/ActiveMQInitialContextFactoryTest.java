@@ -98,7 +98,7 @@ operator|new
 name|InitialContext
 argument_list|()
 decl_stmt|;
-comment|//make sure contest is not null
+comment|//make sure context is not null
 name|assertTrue
 argument_list|(
 literal|"Created context"
