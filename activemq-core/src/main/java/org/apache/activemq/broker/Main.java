@@ -364,6 +364,24 @@ condition|)
 block|{
 return|return;
 block|}
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|tokens
+operator|.
+name|size
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
 name|String
 name|token
 init|=
@@ -374,7 +392,7 @@ name|tokens
 operator|.
 name|get
 argument_list|(
-literal|0
+name|i
 argument_list|)
 decl_stmt|;
 comment|// If token is an extension dir option
@@ -542,6 +560,11 @@ name|useDefExt
 operator|=
 literal|false
 expr_stmt|;
+block|}
+else|else
+block|{
+break|break;
+block|}
 block|}
 block|}
 specifier|public
