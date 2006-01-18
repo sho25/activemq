@@ -19,21 +19,15 @@ end_package
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|io
+name|apache
 operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
+name|activemq
 operator|.
-name|jms
+name|broker
 operator|.
-name|InvalidSelectorException
+name|Broker
 import|;
 end_import
 
@@ -127,21 +121,21 @@ end_import
 
 begin_import
 import|import
-name|edu
+name|javax
 operator|.
-name|emory
+name|jms
 operator|.
-name|mathcs
-operator|.
-name|backport
-operator|.
+name|InvalidSelectorException
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
-name|util
+name|io
 operator|.
-name|concurrent
-operator|.
-name|ConcurrentHashMap
+name|IOException
 import|;
 end_import
 
@@ -155,6 +149,9 @@ block|{
 specifier|public
 name|QueueSubscription
 parameter_list|(
+name|Broker
+name|broker
+parameter_list|,
 name|ConnectionContext
 name|context
 parameter_list|,
@@ -166,6 +163,8 @@ name|InvalidSelectorException
 block|{
 name|super
 argument_list|(
+name|broker
+argument_list|,
 name|context
 argument_list|,
 name|info

@@ -47,6 +47,20 @@ name|activemq
 operator|.
 name|broker
 operator|.
+name|Broker
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
 name|ConnectionContext
 import|;
 end_import
@@ -249,6 +263,10 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|protected
+name|Broker
+name|broker
+decl_stmt|;
+specifier|protected
 name|ConnectionContext
 name|context
 decl_stmt|;
@@ -278,6 +296,9 @@ decl_stmt|;
 specifier|public
 name|AbstractSubscription
 parameter_list|(
+name|Broker
+name|broker
+parameter_list|,
 name|ConnectionContext
 name|context
 parameter_list|,
@@ -287,6 +308,12 @@ parameter_list|)
 throws|throws
 name|InvalidSelectorException
 block|{
+name|this
+operator|.
+name|broker
+operator|=
+name|broker
+expr_stmt|;
 name|this
 operator|.
 name|context
@@ -622,6 +649,18 @@ name|void
 name|gc
 parameter_list|()
 block|{             }
+specifier|public
+name|boolean
+name|isSlaveBroker
+parameter_list|()
+block|{
+return|return
+name|broker
+operator|.
+name|isSlaveBroker
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

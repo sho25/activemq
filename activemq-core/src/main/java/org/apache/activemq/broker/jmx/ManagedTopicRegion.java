@@ -189,6 +189,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|broker
+argument_list|,
 name|destinationStatistics
 argument_list|,
 name|memoryManager

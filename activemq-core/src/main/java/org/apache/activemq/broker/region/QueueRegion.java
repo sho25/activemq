@@ -27,6 +27,20 @@ name|activemq
 operator|.
 name|broker
 operator|.
+name|Broker
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
 name|ConnectionContext
 import|;
 end_import
@@ -214,6 +228,9 @@ decl_stmt|;
 specifier|public
 name|QueueRegion
 parameter_list|(
+name|Broker
+name|broker
+parameter_list|,
 name|DestinationStatistics
 name|destinationStatistics
 parameter_list|,
@@ -232,6 +249,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|broker
+argument_list|,
 name|destinationStatistics
 argument_list|,
 name|memoryManager
@@ -401,6 +420,8 @@ return|return
 operator|new
 name|QueueBrowserSubscription
 argument_list|(
+name|broker
+argument_list|,
 name|context
 argument_list|,
 name|info
@@ -413,6 +434,8 @@ return|return
 operator|new
 name|QueueSubscription
 argument_list|(
+name|broker
+argument_list|,
 name|context
 argument_list|,
 name|info

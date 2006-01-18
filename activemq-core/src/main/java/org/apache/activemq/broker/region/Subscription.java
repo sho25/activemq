@@ -91,6 +91,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|MessageDispatchNotification
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|filter
 operator|.
 name|MessageEvaluationContext
@@ -183,6 +197,19 @@ function_decl|;
 comment|/**      * The subscription should release as may references as it can to help the garbage collector      * reclaim memory.      */
 name|void
 name|gc
+parameter_list|()
+function_decl|;
+comment|/**      * Used by a Slave Broker to update dispatch infomation      * @param mdn      */
+name|void
+name|processMessageDispatchNotification
+parameter_list|(
+name|MessageDispatchNotification
+name|mdn
+parameter_list|)
+function_decl|;
+comment|/**      * @return true if the broker is currently in slave mode      */
+name|boolean
+name|isSlaveBroker
 parameter_list|()
 function_decl|;
 block|}

@@ -81,7 +81,49 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|BrokerInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|ConnectionInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|MessageDispatch
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|MessageDispatchNotification
 import|;
 end_import
 
@@ -140,6 +182,15 @@ name|Region
 extends|,
 name|Service
 block|{
+comment|/**      * Get a Broker from the Broker Stack that is a particular class      * @param type      * @return      */
+specifier|public
+name|Broker
+name|getAdaptor
+parameter_list|(
+name|Class
+name|type
+parameter_list|)
+function_decl|;
 comment|/**      * Get the id of the broker      * @param context      * @param info       * @param client      */
 specifier|public
 name|BrokerId
@@ -151,6 +202,30 @@ specifier|public
 name|String
 name|getBrokerName
 parameter_list|()
+function_decl|;
+comment|/**      * A remote Broker connects      * @param contection      * @param info       * @param client      */
+specifier|public
+name|void
+name|addBroker
+parameter_list|(
+name|Connection
+name|connection
+parameter_list|,
+name|BrokerInfo
+name|info
+parameter_list|)
+function_decl|;
+comment|/**      * Remove a BrokerInfo      * @param connection      * @param info      */
+specifier|public
+name|void
+name|removeBroker
+parameter_list|(
+name|Connection
+name|connection
+parameter_list|,
+name|BrokerInfo
+name|info
+parameter_list|)
 function_decl|;
 comment|/**      * A client is establishing a connection with the broker.      * @param context      * @param info       * @param client      */
 specifier|public
@@ -341,6 +416,38 @@ name|transactionId
 parameter_list|)
 throws|throws
 name|Throwable
+function_decl|;
+comment|/**      * Get the BrokerInfo's of any connected Brokers      * @return array of peer BrokerInfos      */
+name|BrokerInfo
+index|[]
+name|getPeerBrokerInfos
+parameter_list|()
+function_decl|;
+comment|/**      * Notify the Broker that a dispatch has happened      * @param messageDispatch      */
+specifier|public
+name|void
+name|processDispatch
+parameter_list|(
+name|MessageDispatch
+name|messageDispatch
+parameter_list|)
+function_decl|;
+comment|/**      * Notify the Broker of a MessageDispatchNotification      * @param messageDispatchNotification      * @throws Throwable       */
+specifier|public
+name|void
+name|processDispatchNotification
+parameter_list|(
+name|MessageDispatchNotification
+name|messageDispatchNotification
+parameter_list|)
+throws|throws
+name|Throwable
+function_decl|;
+comment|/**      *       * @return true if the broker is running as a slave      */
+specifier|public
+name|boolean
+name|isSlaveBroker
+parameter_list|()
 function_decl|;
 block|}
 end_interface
