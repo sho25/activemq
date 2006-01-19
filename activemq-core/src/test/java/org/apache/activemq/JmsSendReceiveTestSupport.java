@@ -477,6 +477,9 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
+name|messageSent
+argument_list|()
+expr_stmt|;
 block|}
 name|assertMessagesAreReceived
 argument_list|()
@@ -902,6 +905,14 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * Just a hook so can insert failure tests      * @throws Exception       *      */
+specifier|protected
+name|void
+name|messageSent
+parameter_list|()
+throws|throws
+name|Exception
+block|{              }
 block|}
 end_class
 
