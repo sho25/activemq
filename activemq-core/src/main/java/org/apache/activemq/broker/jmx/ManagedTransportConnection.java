@@ -531,16 +531,6 @@ argument_list|,
 literal|"Connection"
 argument_list|)
 expr_stmt|;
-name|String
-name|jmxConnectionId
-init|=
-name|JMXSupport
-operator|.
-name|encodeObjectNamePart
-argument_list|(
-name|connectionId
-argument_list|)
-decl_stmt|;
 name|map
 operator|.
 name|put
