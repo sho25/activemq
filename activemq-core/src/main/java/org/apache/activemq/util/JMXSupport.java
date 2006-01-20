@@ -15,16 +15,6 @@ name|util
 package|;
 end_package
 
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|ObjectName
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -72,6 +62,17 @@ argument_list|(
 literal|"="
 argument_list|,
 literal|"&amp;"
+argument_list|)
+expr_stmt|;
+name|answer
+operator|=
+name|answer
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\*"
+argument_list|,
+literal|"&ast;"
 argument_list|)
 expr_stmt|;
 return|return
