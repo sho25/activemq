@@ -116,7 +116,7 @@ specifier|final
 name|String
 name|WEBAPP_DIR
 init|=
-literal|"src/webapp"
+literal|"src/main/webapp"
 decl_stmt|;
 specifier|public
 specifier|static
