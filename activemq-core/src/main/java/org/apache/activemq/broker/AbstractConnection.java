@@ -700,7 +700,7 @@ name|taskRunner
 decl_stmt|;
 specifier|protected
 specifier|final
-name|Connector
+name|TransportConnector
 name|connector
 decl_stmt|;
 specifier|protected
@@ -795,7 +795,7 @@ comment|/**      * @param connector      * @param transport      * @param broker
 specifier|public
 name|AbstractConnection
 parameter_list|(
-name|Connector
+name|TransportConnector
 name|connector
 parameter_list|,
 name|Broker

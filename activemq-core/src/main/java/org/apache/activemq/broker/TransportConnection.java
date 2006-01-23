@@ -359,6 +359,13 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|connector
+operator|.
+name|onStarted
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -367,6 +374,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|connector
+operator|.
+name|onStopped
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 if|if

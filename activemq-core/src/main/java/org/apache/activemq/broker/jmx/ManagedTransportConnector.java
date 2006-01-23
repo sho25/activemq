@@ -245,7 +245,7 @@ name|this
 argument_list|,
 name|transport
 argument_list|,
-name|getBrokerFilter
+name|getBroker
 argument_list|()
 argument_list|,
 name|getTaskRunnerFactory
