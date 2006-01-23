@@ -391,13 +391,6 @@ name|ShutdownInfo
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1000
-argument_list|)
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
