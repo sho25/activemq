@@ -135,6 +135,11 @@ name|ConsumerId
 name|getTargetConsumerId
 parameter_list|()
 function_decl|;
+specifier|public
+name|int
+name|getSize
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

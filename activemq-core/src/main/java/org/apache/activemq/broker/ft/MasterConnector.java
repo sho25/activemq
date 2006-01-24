@@ -1216,7 +1216,13 @@ operator|.
 name|masterFailed
 argument_list|()
 expr_stmt|;
-comment|//ServiceSupport.dispose(this);
+name|ServiceSupport
+operator|.
+name|dispose
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

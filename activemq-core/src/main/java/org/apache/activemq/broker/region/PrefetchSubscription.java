@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Copyright 2005-2006 The Apache Software Foundation  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *   * Copyright 2005-2006 The Apache Software Foundation  *   * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with  * the License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -479,9 +479,6 @@ name|incrementPreloadSize
 argument_list|(
 name|node
 operator|.
-name|getMessage
-argument_list|()
-operator|.
 name|getSize
 argument_list|()
 argument_list|)
@@ -874,7 +871,7 @@ return|return;
 block|}
 else|else
 block|{
-comment|//                        System.out.println("no match: "+ack.getLastMessageId()+","+messageId);
+comment|// System.out.println("no match: "+ack.getLastMessageId()+","+messageId);
 block|}
 block|}
 block|}
@@ -1118,7 +1115,8 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// The original destination and transaction id do not get filled when the message is first sent,
+comment|// The original destination and transaction id do not get filled when the message is first
+comment|// sent,
 comment|// it is only populated if the message is routed to another destination like the DLQ
 if|if
 condition|(
@@ -1718,7 +1716,7 @@ return|return
 name|preLoadSize
 return|;
 block|}
-comment|/**      * @param node      * @param message TODO      * @return      */
+comment|/**      * @param node      * @param message      *            TODO      * @return      */
 specifier|protected
 name|MessageDispatch
 name|createMessageDispatch
@@ -1781,7 +1779,7 @@ return|return
 name|md
 return|;
 block|}
-comment|/**      * Use when a matched message is about to be dispatched to the client.      *       * @param node      * @return false if the message should not be dispatched to the client (another sub may have already dispatched it for example).      */
+comment|/**      * Use when a matched message is about to be dispatched to the client.      *       * @param node      * @return false if the message should not be dispatched to the client (another sub may have already dispatched it      *         for example).      */
 specifier|abstract
 specifier|protected
 name|boolean
@@ -1791,7 +1789,7 @@ name|MessageReference
 name|node
 parameter_list|)
 function_decl|;
-comment|/**      * Used during acknowledgment to remove the message.      * @throws IOException       */
+comment|/**      * Used during acknowledgment to remove the message.      *       * @throws IOException      */
 specifier|protected
 name|void
 name|acknowledge
@@ -1809,7 +1807,7 @@ name|node
 parameter_list|)
 throws|throws
 name|IOException
-block|{             }
+block|{}
 block|}
 end_class
 
