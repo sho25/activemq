@@ -14,8 +14,44 @@ operator|.
 name|broker
 operator|.
 name|console
+operator|.
+name|command
 package|;
 end_package
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|console
+operator|.
+name|JmxMBeansUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|console
+operator|.
+name|formatter
+operator|.
+name|GlobalWriter
+import|;
+end_import
 
 begin_import
 import|import
@@ -49,6 +85,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|remote
+operator|.
+name|JMXServiceURL
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -63,7 +111,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|Iterator
 import|;
 end_import
 
@@ -73,7 +121,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
+name|Collection
 import|;
 end_import
 
@@ -100,31 +148,21 @@ name|isStopAllBrokers
 init|=
 literal|false
 decl_stmt|;
+comment|/**      * Shuts down the specified broker or brokers      * @param brokerNames - names of brokers to shutdown      * @throws Exception      */
 specifier|protected
 name|void
-name|execute
+name|runTask
 parameter_list|(
 name|List
 name|brokerNames
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 try|try
 block|{
-name|Set
+name|Collection
 name|mbeans
-init|=
-operator|new
-name|HashSet
-argument_list|()
-decl_stmt|;
-name|MBeanServerConnection
-name|server
-init|=
-name|createJmxConnector
-argument_list|()
-operator|.
-name|getMBeanServerConnection
-argument_list|()
 decl_stmt|;
 comment|// Stop all brokers
 if|if
@@ -134,11 +172,12 @@ condition|)
 block|{
 name|mbeans
 operator|=
-name|AmqJmxSupport
+name|JmxMBeansUtil
 operator|.
 name|getAllBrokers
 argument_list|(
-name|server
+name|useJmxServiceUrl
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|brokerNames
@@ -159,11 +198,12 @@ condition|)
 block|{
 name|mbeans
 operator|=
-name|AmqJmxSupport
+name|JmxMBeansUtil
 operator|.
 name|getAllBrokers
 argument_list|(
-name|server
+name|useJmxServiceUrl
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// If there is no broker to stop
@@ -175,11 +215,9 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|System
+name|GlobalWriter
 operator|.
-name|out
-operator|.
-name|println
+name|printInfo
 argument_list|(
 literal|"There are no brokers to stop."
 argument_list|)
@@ -198,27 +236,11 @@ operator|>
 literal|1
 condition|)
 block|{
-name|System
+name|GlobalWriter
 operator|.
-name|out
-operator|.
-name|println
+name|printInfo
 argument_list|(
 literal|"There are multiple brokers to stop. Please select the broker(s) to stop or use --all to stop all brokers."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|()
-expr_stmt|;
-name|AmqJmxSupport
-operator|.
-name|printBrokerList
-argument_list|(
-name|mbeans
 argument_list|)
 expr_stmt|;
 return|return;
@@ -257,6 +279,12 @@ block|{
 name|String
 name|brokerName
 decl_stmt|;
+name|mbeans
+operator|=
+operator|new
+name|HashSet
+argument_list|()
+expr_stmt|;
 while|while
 condition|(
 operator|!
@@ -278,14 +306,15 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-name|Set
+name|Collection
 name|matchedBrokers
 init|=
-name|AmqJmxSupport
+name|JmxMBeansUtil
 operator|.
-name|getBrokers
+name|getBrokersByName
 argument_list|(
-name|server
+name|useJmxServiceUrl
+argument_list|()
 argument_list|,
 name|brokerName
 argument_list|)
@@ -298,11 +327,9 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|System
+name|GlobalWriter
 operator|.
-name|out
-operator|.
-name|println
+name|printInfo
 argument_list|(
 name|brokerName
 operator|+
@@ -325,47 +352,64 @@ block|}
 comment|// Stop all brokers in set
 name|stopBrokers
 argument_list|(
-name|server
+name|useJmxServiceUrl
+argument_list|()
 argument_list|,
 name|mbeans
 argument_list|)
 expr_stmt|;
-name|closeJmxConnector
-argument_list|()
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|Exception
 name|e
 parameter_list|)
 block|{
-name|System
+name|GlobalWriter
 operator|.
-name|out
-operator|.
-name|println
+name|printException
+argument_list|(
+operator|new
+name|RuntimeException
 argument_list|(
 literal|"Failed to execute stop task. Reason: "
 operator|+
 name|e
 argument_list|)
+argument_list|)
 expr_stmt|;
+throw|throw
+operator|new
+name|Exception
+argument_list|(
+name|e
+argument_list|)
+throw|;
 block|}
 block|}
+comment|/**      * Stops the list of brokers.      * @param jmxServiceUrl - JMX service url to connect to      * @param brokerBeans - broker mbeans to stop      * @throws Exception      */
 specifier|protected
 name|void
 name|stopBrokers
 parameter_list|(
-name|MBeanServerConnection
-name|server
+name|JMXServiceURL
+name|jmxServiceUrl
 parameter_list|,
-name|Set
+name|Collection
 name|brokerBeans
 parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|MBeanServerConnection
+name|server
+init|=
+name|createJmxConnector
+argument_list|()
+operator|.
+name|getMBeanServerConnection
+argument_list|()
+decl_stmt|;
 name|ObjectName
 name|brokerObjName
 decl_stmt|;
@@ -411,11 +455,9 @@ argument_list|(
 literal|"BrokerName"
 argument_list|)
 decl_stmt|;
-name|System
+name|GlobalWriter
 operator|.
-name|out
-operator|.
-name|println
+name|print
 argument_list|(
 literal|"Stopping broker: "
 operator|+
@@ -451,11 +493,9 @@ literal|"int"
 block|}
 argument_list|)
 expr_stmt|;
-name|System
+name|GlobalWriter
 operator|.
-name|out
-operator|.
-name|println
+name|print
 argument_list|(
 literal|"Succesfully stopped broker: "
 operator|+
@@ -473,139 +513,11 @@ comment|// TODO: Check exceptions throwned
 comment|//System.out.println("Failed to stop broker: [ " + brokerName + " ]. Reason: " + e.getMessage());
 block|}
 block|}
-block|}
-specifier|protected
-name|void
-name|printHelp
-parameter_list|()
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Task Usage: Main stop [stop-options] [broker-name1] [broker-name2] ..."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Description: Stops a running broker."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Stop Options:"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    --jmxurl<url>      Set the JMX URL to connect to."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    --all               Stop all brokers."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    --version           Display the version information."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    -h,-?,--help        Display the stop broker help information."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Broker Names:"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    Name of the brokers that will be stopped."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    If omitted, it is assumed that there is only one broker running, and it will be stopped."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    Use -all to stop all running brokers."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
+name|closeJmxConnector
+argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Handle the --all option.      * @param token - option token to handle      * @param tokens - succeeding command arguments      * @throws Exception      */
 specifier|protected
 name|void
 name|handleOption
@@ -649,6 +561,58 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Print the help messages for the browse command      */
+specifier|protected
+name|void
+name|printHelp
+parameter_list|()
+block|{
+name|GlobalWriter
+operator|.
+name|printHelp
+argument_list|(
+name|helpFile
+argument_list|)
+expr_stmt|;
+block|}
+specifier|protected
+name|String
+index|[]
+name|helpFile
+init|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"Task Usage: Main stop [stop-options] [broker-name1] [broker-name2] ..."
+block|,
+literal|"Description: Stops a running broker."
+block|,
+literal|""
+block|,
+literal|"Stop Options:"
+block|,
+literal|"    --jmxurl<url>      Set the JMX URL to connect to."
+block|,
+literal|"    --all               Stop all brokers."
+block|,
+literal|"    --version           Display the version information."
+block|,
+literal|"    -h,-?,--help        Display the stop broker help information."
+block|,
+literal|""
+block|,
+literal|"Broker Names:"
+block|,
+literal|"    Name of the brokers that will be stopped."
+block|,
+literal|"    If omitted, it is assumed that there is only one broker running, and it will be stopped."
+block|,
+literal|"    Use -all to stop all running brokers."
+block|,
+literal|""
+block|}
+decl_stmt|;
 block|}
 end_class
 

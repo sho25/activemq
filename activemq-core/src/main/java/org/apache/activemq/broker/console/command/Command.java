@@ -14,6 +14,8 @@ operator|.
 name|broker
 operator|.
 name|console
+operator|.
+name|command
 package|;
 end_package
 
@@ -21,19 +23,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|PrintStream
+name|List
 import|;
 end_import
 
@@ -42,20 +34,16 @@ specifier|public
 interface|interface
 name|Command
 block|{
+comment|/**      * Execute the specified command      * @param tokens - arguments to the command      * @throws Exception      */
 specifier|public
-name|int
-name|main
+name|void
+name|execute
 parameter_list|(
-name|String
-index|[]
-name|args
-parameter_list|,
-name|InputStream
-name|in
-parameter_list|,
-name|PrintStream
-name|out
+name|List
+name|tokens
 parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
 block|}
 end_interface

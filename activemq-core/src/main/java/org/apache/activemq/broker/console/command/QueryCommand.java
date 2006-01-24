@@ -14,38 +14,42 @@ operator|.
 name|broker
 operator|.
 name|console
+operator|.
+name|command
 package|;
 end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|management
+name|apache
 operator|.
-name|remote
+name|activemq
 operator|.
-name|JMXConnector
+name|broker
+operator|.
+name|console
+operator|.
+name|JmxMBeansUtil
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|management
+name|apache
 operator|.
-name|MBeanServerConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
+name|activemq
 operator|.
-name|management
+name|broker
 operator|.
-name|ObjectInstance
+name|console
+operator|.
+name|formatter
+operator|.
+name|GlobalWriter
 import|;
 end_import
 
@@ -115,7 +119,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
+name|HashSet
 import|;
 end_import
 
@@ -219,51 +223,42 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|List
+name|Set
 name|queryViews
 init|=
 operator|new
-name|ArrayList
+name|HashSet
 argument_list|(
 literal|10
 argument_list|)
 decl_stmt|;
+comment|/**      * Queries the mbeans registered in the specified JMX context      * @param tokens - command arguments      * @throws Exception      */
 specifier|protected
 name|void
-name|execute
+name|runTask
 parameter_list|(
 name|List
 name|tokens
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 try|try
 block|{
-comment|// Connect to jmx server
-name|JMXConnector
-name|jmxConnector
-init|=
-name|createJmxConnector
-argument_list|()
-decl_stmt|;
-name|MBeanServerConnection
-name|server
-init|=
-name|jmxConnector
-operator|.
-name|getMBeanServerConnection
-argument_list|()
-decl_stmt|;
 comment|// Query for the mbeans to add
-name|Set
+name|List
 name|addMBeans
 init|=
-name|AmqJmxSupport
+name|JmxMBeansUtil
 operator|.
 name|queryMBeans
 argument_list|(
-name|server
+name|useJmxServiceUrl
+argument_list|()
 argument_list|,
 name|queryAddObjects
+argument_list|,
+name|queryViews
 argument_list|)
 decl_stmt|;
 comment|// Query for the mbeans to sub
@@ -277,16 +272,19 @@ operator|>
 literal|0
 condition|)
 block|{
-name|Set
+name|List
 name|subMBeans
 init|=
-name|AmqJmxSupport
+name|JmxMBeansUtil
 operator|.
 name|queryMBeans
 argument_list|(
-name|server
+name|useJmxServiceUrl
+argument_list|()
 argument_list|,
 name|querySubObjects
+argument_list|,
+name|queryViews
 argument_list|)
 decl_stmt|;
 name|addMBeans
@@ -297,78 +295,50 @@ name|subMBeans
 argument_list|)
 expr_stmt|;
 block|}
-for|for
-control|(
-name|Iterator
-name|i
-init|=
+name|GlobalWriter
+operator|.
+name|printMBean
+argument_list|(
+name|JmxMBeansUtil
+operator|.
+name|filterMBeansView
+argument_list|(
 name|addMBeans
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
-name|ObjectInstance
-name|mbean
-init|=
-operator|(
-name|ObjectInstance
-operator|)
-name|i
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
-name|AmqJmxSupport
-operator|.
-name|printMBeanProp
-argument_list|(
-name|mbean
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
-name|AmqJmxSupport
-operator|.
-name|printMBeanAttr
-argument_list|(
-name|server
-argument_list|,
-name|mbean
 argument_list|,
 name|queryViews
 argument_list|)
-expr_stmt|;
-block|}
-name|closeJmxConnector
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|Exception
 name|e
 parameter_list|)
 block|{
-name|System
+name|GlobalWriter
 operator|.
-name|out
-operator|.
-name|println
+name|printException
+argument_list|(
+operator|new
+name|RuntimeException
 argument_list|(
 literal|"Failed to execute query task. Reason: "
 operator|+
 name|e
 argument_list|)
+argument_list|)
 expr_stmt|;
+throw|throw
+operator|new
+name|Exception
+argument_list|(
+name|e
+argument_list|)
+throw|;
 block|}
 block|}
+comment|/**      * Handle the -Q, -xQ, --objname, --xobjname, --view options.      * @param token - option token to handle      * @param tokens - succeeding command arguments      * @throws Exception      */
 specifier|protected
 name|void
 name|handleOption
@@ -466,11 +436,17 @@ operator|==
 literal|null
 condition|)
 block|{
-name|printError
+name|GlobalWriter
+operator|.
+name|printException
+argument_list|(
+operator|new
+name|IllegalArgumentException
 argument_list|(
 literal|"Unknown query object type: "
 operator|+
 name|key
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -478,7 +454,7 @@ block|}
 name|String
 name|queryStr
 init|=
-name|AmqJmxSupport
+name|JmxMBeansUtil
 operator|.
 name|createQueryString
 argument_list|(
@@ -580,11 +556,17 @@ operator|==
 literal|null
 condition|)
 block|{
-name|printError
+name|GlobalWriter
+operator|.
+name|printException
+argument_list|(
+operator|new
+name|IllegalArgumentException
 argument_list|(
 literal|"Unknown query object type: "
 operator|+
 name|key
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -592,7 +574,7 @@ block|}
 name|String
 name|queryStr
 init|=
-name|AmqJmxSupport
+name|JmxMBeansUtil
 operator|.
 name|createQueryString
 argument_list|(
@@ -647,16 +629,25 @@ literal|"-"
 argument_list|)
 condition|)
 block|{
-name|printError
+name|GlobalWriter
+operator|.
+name|printException
+argument_list|(
+operator|new
+name|IllegalArgumentException
 argument_list|(
 literal|"Object name query not specified"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|String
-name|queryString
+name|StringTokenizer
+name|queryTokens
 init|=
+operator|new
+name|StringTokenizer
+argument_list|(
 operator|(
 name|String
 operator|)
@@ -666,14 +657,29 @@ name|remove
 argument_list|(
 literal|0
 argument_list|)
+argument_list|,
+name|COMMAND_OPTION_DELIMETER
+argument_list|)
 decl_stmt|;
+while|while
+condition|(
+name|queryTokens
+operator|.
+name|hasMoreTokens
+argument_list|()
+condition|)
+block|{
 name|queryAddObjects
 operator|.
 name|add
 argument_list|(
-name|queryString
+name|queryTokens
+operator|.
+name|nextToken
+argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// If token is a substractive object name query option
 elseif|else
@@ -713,16 +719,25 @@ literal|"-"
 argument_list|)
 condition|)
 block|{
-name|printError
+name|GlobalWriter
+operator|.
+name|printException
+argument_list|(
+operator|new
+name|IllegalArgumentException
 argument_list|(
 literal|"Object name query not specified"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|String
-name|queryString
+name|StringTokenizer
+name|queryTokens
 init|=
+operator|new
+name|StringTokenizer
+argument_list|(
 operator|(
 name|String
 operator|)
@@ -732,14 +747,29 @@ name|remove
 argument_list|(
 literal|0
 argument_list|)
+argument_list|,
+name|COMMAND_OPTION_DELIMETER
+argument_list|)
 decl_stmt|;
+while|while
+condition|(
+name|queryTokens
+operator|.
+name|hasMoreTokens
+argument_list|()
+condition|)
+block|{
 name|querySubObjects
 operator|.
 name|add
 argument_list|(
-name|queryString
+name|queryTokens
+operator|.
+name|nextToken
+argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// If token is a view option
 elseif|else
@@ -779,9 +809,15 @@ literal|"-"
 argument_list|)
 condition|)
 block|{
-name|printError
+name|GlobalWriter
+operator|.
+name|printException
+argument_list|(
+operator|new
+name|IllegalArgumentException
 argument_list|(
 literal|"Attributes to view not specified"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -803,9 +839,7 @@ argument_list|(
 literal|0
 argument_list|)
 argument_list|,
-literal|","
-argument_list|,
-literal|false
+name|COMMAND_OPTION_DELIMETER
 argument_list|)
 decl_stmt|;
 while|while
@@ -842,381 +876,128 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Print the help messages for the browse command      */
 specifier|protected
 name|void
 name|printHelp
 parameter_list|()
 block|{
-name|System
+name|GlobalWriter
 operator|.
-name|out
-operator|.
-name|println
+name|printHelp
 argument_list|(
-literal|"Task Usage: Main query [query-options]"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Description: Display selected broker component's attributes and statistics."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Query Options:"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    -Q<type>=<name>               Add to the search list the specific object type matched by the defined object identifier."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    -xQ<type>=<name>              Remove from the search list the specific object type matched by the object identifier."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    --objname<query>             Add to the search list objects matched by the query similar to the JMX object name format."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    --xobjname<query>            Remove from the search list objects matched by the query similar to the JMX object name format."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    --view<attr1>,<attr2>,...    Select the specific attribute of the object to view. By default all attributes will be displayed."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    --jmxurl<url>                Set the JMX URL to connect to."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    --version                     Display the version information."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    -h,-?,--help                  Display the query broker help information."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Examples:"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    Main query"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        - Print all the attributes of all registered objects (queues, topics, connections, etc)."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    Main query -QQueue=TEST.FOO"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        - Print all the attributes of the queue with destination name TEST.FOO."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    Main query -QTopic=*"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        - Print all the attributes of all registered topics."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    Main query --view EnqueueCount,DequeueCount"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        - Print the attributes EnqueueCount and DequeueCount of all registered objects."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    Main -QTopic=* --view EnqueueCount,DequeueCount"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        - Print the attributes EnqueueCount and DequeueCount of all registered topics."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    Main -QTopic=* -QQueue=* --view EnqueueCount,DequeueCount"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        - Print the attributes EnqueueCount and DequeueCount of all registered topics and queues."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    Main -QTopic=* -xQTopic=ActiveMQ.Advisory.*"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        - Print all attributes of all topics except those that has a name that begins with \"ActiveMQ.Advisory\"."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    Main --objname Type=*Connect*,BrokerName=local* -xQNetworkConnector=*"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        - Print all attributes of all connectors, connections excluding network connectors that belongs to the broker that begins with local."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    Main -QQueue=* -xQQueue=????"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        - Print all attributes of all queues except those that are 4 letters long."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
+name|helpFile
 argument_list|)
 expr_stmt|;
 block|}
+specifier|protected
+name|String
+index|[]
+name|helpFile
+init|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"Task Usage: Main query [query-options]"
+block|,
+literal|"Description: Display selected broker component's attributes and statistics."
+block|,
+literal|""
+block|,
+literal|"Query Options:"
+block|,
+literal|"    -Q<type>=<name>               Add to the search list the specific object type matched"
+block|,
+literal|"                                  by the defined object identifier."
+block|,
+literal|"    -xQ<type>=<name>              Remove from the search list the specific object type"
+block|,
+literal|"                                  matched by the object identifier."
+block|,
+literal|"    --objname<query>             Add to the search list objects matched by the query similar"
+block|,
+literal|"                                  to the JMX object name format."
+block|,
+literal|"    --xobjname<query>            Remove from the search list objects matched by the query"
+block|,
+literal|"                                  similar to the JMX object name format."
+block|,
+literal|"    --view<attr1>,<attr2>,...    Select the specific attribute of the object to view."
+block|,
+literal|"                                  By default all attributes will be displayed."
+block|,
+literal|"    --jmxurl<url>                Set the JMX URL to connect to."
+block|,
+literal|"    --version                     Display the version information."
+block|,
+literal|"    -h,-?,--help                  Display the query broker help information."
+block|,
+literal|""
+block|,
+literal|"Examples:"
+block|,
+literal|"    Main query"
+block|,
+literal|"        - Print all the attributes of all registered objects queues, topics, connections, etc)."
+block|,
+literal|""
+block|,
+literal|"    Main query -QQueue=TEST.FOO"
+block|,
+literal|"        - Print all the attributes of the queue with destination name TEST.FOO."
+block|,
+literal|""
+block|,
+literal|"    Main query -QTopic=*"
+block|,
+literal|"        - Print all the attributes of all registered topics."
+block|,
+literal|""
+block|,
+literal|"    Main query --view EnqueueCount,DequeueCount"
+block|,
+literal|"        - Print the attributes EnqueueCount and DequeueCount of all registered objects."
+block|,
+literal|""
+block|,
+literal|"    Main -QTopic=* --view EnqueueCount,DequeueCount"
+block|,
+literal|"        - Print the attributes EnqueueCount and DequeueCount of all registered topics."
+block|,
+literal|""
+block|,
+literal|"    Main -QTopic=* -QQueue=* --view EnqueueCount,DequeueCount"
+block|,
+literal|"        - Print the attributes EnqueueCount and DequeueCount of all registered topics and"
+block|,
+literal|"          queues."
+block|,
+literal|""
+block|,
+literal|"    Main -QTopic=* -xQTopic=ActiveMQ.Advisory.*"
+block|,
+literal|"        - Print all attributes of all topics except those that has a name that begins"
+block|,
+literal|"          with \"ActiveMQ.Advisory\"."
+block|,
+literal|""
+block|,
+literal|"    Main --objname Type=*Connect*,BrokerName=local* -xQNetworkConnector=*"
+block|,
+literal|"        - Print all attributes of all connectors, connections excluding network connectors"
+block|,
+literal|"          that belongs to the broker that begins with local."
+block|,
+literal|""
+block|,
+literal|"    Main -QQueue=* -xQQueue=????"
+block|,
+literal|"        - Print all attributes of all queues except those that are 4 letters long."
+block|,
+literal|""
+block|,     }
+decl_stmt|;
 block|}
 end_class
 

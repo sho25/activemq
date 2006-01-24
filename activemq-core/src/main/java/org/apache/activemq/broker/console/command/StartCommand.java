@@ -14,6 +14,8 @@ operator|.
 name|broker
 operator|.
 name|console
+operator|.
+name|command
 package|;
 end_package
 
@@ -42,6 +44,24 @@ operator|.
 name|broker
 operator|.
 name|BrokerService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|console
+operator|.
+name|formatter
+operator|.
+name|GlobalWriter
 import|;
 end_import
 
@@ -127,11 +147,13 @@ decl_stmt|;
 comment|/**      * The default task to start a broker or a group of brokers      * @param brokerURIs      */
 specifier|protected
 name|void
-name|execute
+name|runTask
 parameter_list|(
 name|List
 name|brokerURIs
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 try|try
 block|{
@@ -205,18 +227,11 @@ name|URISyntaxException
 name|e
 parameter_list|)
 block|{
-name|printError
-argument_list|(
-literal|"Invalid broker configuration URI: "
-operator|+
-name|strConfigURI
-operator|+
-literal|", reason: "
-operator|+
-name|e
+name|GlobalWriter
 operator|.
-name|getMessage
-argument_list|()
+name|printException
+argument_list|(
+name|e
 argument_list|)
 expr_stmt|;
 return|return;
@@ -236,21 +251,30 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|Exception
 name|e
 parameter_list|)
 block|{
-name|System
+name|GlobalWriter
 operator|.
-name|out
-operator|.
-name|println
+name|printException
+argument_list|(
+operator|new
+name|RuntimeException
 argument_list|(
 literal|"Failed to execute start task. Reason: "
 operator|+
 name|e
 argument_list|)
+argument_list|)
 expr_stmt|;
+throw|throw
+operator|new
+name|Exception
+argument_list|(
+name|e
+argument_list|)
+throw|;
 block|}
 block|}
 comment|/**      * Create and run a broker specified by the given configuration URI      * @param configURI      * @throws Exception      */
@@ -423,238 +447,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Prints the help for the start broker task      */
-specifier|protected
-name|void
-name|printHelp
-parameter_list|()
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Task Usage: Main start [start-options] [uri]"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Description: Creates and starts a broker using a configuration file, or a broker URI."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Start Options:"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    --extdir<dir>        Add the jar files in the directory to the classpath."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    -D<name>=<value>      Define a system property."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    --version             Display the version information."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    -h,-?,--help          Display the start broker help information."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"URI:"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    XBean based broker configuration:"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        Example: Main xbean:file:activemq.xml"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            Loads the xbean configuration file from the current working directory"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        Example: Main xbean:activemq.xml"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            Loads the xbean configuration file from the classpath"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    URI Parameter based broker configuration:"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        Example: Main broker:(tcp://localhost:61616, tcp://localhost:5000)?useJmx=true"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            Configures the broker with 2 transport connectors and jmx enabled"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        Example: Main broker:(tcp://localhost:61616, network:tcp://localhost:5000)?persistent=false"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            Configures the broker with 1 transport connector, and 1 network connector and persistence disabled"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * Sets the current configuration URI used by the start task      * @param uri      */
 specifier|public
 name|void
@@ -679,6 +471,78 @@ return|return
 name|configURI
 return|;
 block|}
+comment|/**      * Print the help messages for the browse command      */
+specifier|protected
+name|void
+name|printHelp
+parameter_list|()
+block|{
+name|GlobalWriter
+operator|.
+name|printHelp
+argument_list|(
+name|helpFile
+argument_list|)
+expr_stmt|;
+block|}
+specifier|protected
+name|String
+index|[]
+name|helpFile
+init|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"Task Usage: Main start [start-options] [uri]"
+block|,
+literal|"Description: Creates and starts a broker using a configuration file, or a broker URI."
+block|,
+literal|""
+block|,
+literal|"Start Options:"
+block|,
+literal|"    -D<name>=<value>      Define a system property."
+block|,
+literal|"    --version             Display the version information."
+block|,
+literal|"    -h,-?,--help          Display the start broker help information."
+block|,
+literal|""
+block|,
+literal|"URI:"
+block|,
+literal|""
+block|,
+literal|"    XBean based broker configuration:"
+block|,
+literal|""
+block|,
+literal|"        Example: Main xbean:file:activemq.xml"
+block|,
+literal|"            Loads the xbean configuration file from the current working directory"
+block|,
+literal|"        Example: Main xbean:activemq.xml"
+block|,
+literal|"            Loads the xbean configuration file from the classpath"
+block|,
+literal|""
+block|,
+literal|"    URI Parameter based broker configuration:"
+block|,
+literal|""
+block|,
+literal|"        Example: Main broker:(tcp://localhost:61616, tcp://localhost:5000)?useJmx=true"
+block|,
+literal|"            Configures the broker with 2 transport connectors and jmx enabled"
+block|,
+literal|"        Example: Main broker:(tcp://localhost:61616, network:tcp://localhost:5000)?persistent=false"
+block|,
+literal|"            Configures the broker with 1 transport connector, and 1 network connector and persistence disabled"
+block|,
+literal|""
+block|}
+decl_stmt|;
 block|}
 end_class
 

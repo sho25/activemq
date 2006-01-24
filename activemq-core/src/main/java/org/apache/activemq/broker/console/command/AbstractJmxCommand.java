@@ -14,8 +14,28 @@ operator|.
 name|broker
 operator|.
 name|console
+operator|.
+name|command
 package|;
 end_package
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|console
+operator|.
+name|formatter
+operator|.
+name|GlobalWriter
+import|;
+end_import
 
 begin_import
 import|import
@@ -107,17 +127,44 @@ specifier|private
 name|JMXConnector
 name|jmxConnector
 decl_stmt|;
+comment|/**      * Get the current specified JMX service url.      * @return JMX service url      */
 specifier|protected
 name|JMXServiceURL
 name|getJmxServiceUrl
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 return|return
 name|jmxServiceUrl
 return|;
 block|}
+comment|/**      * Get the current JMX service url being used, or create a default one if no JMX service url has been specified.      * @return JMX service url      * @throws MalformedURLException      */
+specifier|protected
+name|JMXServiceURL
+name|useJmxServiceUrl
+parameter_list|()
+throws|throws
+name|MalformedURLException
+block|{
+if|if
+condition|(
+name|getJmxServiceUrl
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+name|setJmxServiceUrl
+argument_list|(
+name|DEFAULT_JMX_URL
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|getJmxServiceUrl
+argument_list|()
+return|;
+block|}
+comment|/**      * Sets the JMX service url to use.      * @param jmxServiceUrl - new JMX service url to use      */
 specifier|protected
 name|void
 name|setJmxServiceUrl
@@ -133,6 +180,7 @@ operator|=
 name|jmxServiceUrl
 expr_stmt|;
 block|}
+comment|/**      * Sets the JMX service url to use.      * @param jmxServiceUrl - new JMX service url to use      * @throws MalformedURLException      */
 specifier|protected
 name|void
 name|setJmxServiceUrl
@@ -141,7 +189,7 @@ name|String
 name|jmxServiceUrl
 parameter_list|)
 throws|throws
-name|Exception
+name|MalformedURLException
 block|{
 name|setJmxServiceUrl
 argument_list|(
@@ -153,12 +201,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Create a JMX connector using the current specified JMX service url. If there is an existing connection,      * it tries to reuse this connection.      * @return created JMX connector      * @throws IOException      */
 specifier|protected
 name|JMXConnector
 name|createJmxConnector
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 comment|// Reuse the previous connection
 if|if
@@ -178,27 +227,13 @@ name|jmxConnector
 return|;
 block|}
 comment|// Create a new JMX connector
-if|if
-condition|(
-name|getJmxServiceUrl
-argument_list|()
-operator|==
-literal|null
-condition|)
-block|{
-name|setJmxServiceUrl
-argument_list|(
-name|DEFAULT_JMX_URL
-argument_list|)
-expr_stmt|;
-block|}
 name|jmxConnector
 operator|=
 name|JMXConnectorFactory
 operator|.
 name|connect
 argument_list|(
-name|getJmxServiceUrl
+name|useJmxServiceUrl
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -206,6 +241,7 @@ return|return
 name|jmxConnector
 return|;
 block|}
+comment|/**      * Close the current JMX connector      */
 specifier|protected
 name|void
 name|closeJmxConnector
@@ -238,6 +274,7 @@ name|e
 parameter_list|)
 block|{         }
 block|}
+comment|/**      * Handle the --jmxurl option.      * @param token - option token to handle      * @param tokens - succeeding command arguments      * @throws Exception      */
 specifier|protected
 name|void
 name|handleOption
@@ -288,9 +325,15 @@ literal|"-"
 argument_list|)
 condition|)
 block|{
-name|printError
+name|GlobalWriter
+operator|.
+name|printException
+argument_list|(
+operator|new
+name|IllegalArgumentException
 argument_list|(
 literal|"JMX URL not specified."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -303,9 +346,15 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|printError
+name|GlobalWriter
+operator|.
+name|printException
+argument_list|(
+operator|new
+name|IllegalArgumentException
 argument_list|(
 literal|"Multiple JMX URL cannot be specified."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|tokens
@@ -347,11 +396,11 @@ name|MalformedURLException
 name|e
 parameter_list|)
 block|{
-name|printError
+name|GlobalWriter
+operator|.
+name|printException
 argument_list|(
-literal|"Invalid JMX URL format: "
-operator|+
-name|strJmxUrl
+name|e
 argument_list|)
 expr_stmt|;
 name|tokens
