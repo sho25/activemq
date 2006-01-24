@@ -39,6 +39,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -207,7 +217,18 @@ class|class
 name|ActiveMQActivationSpec
 implements|implements
 name|ActivationSpec
+implements|,
+name|Serializable
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|7153087544100459975L
+decl_stmt|;
 comment|/** Auto-acknowledge constant for<code>acknowledgeMode</code> property **/
 specifier|public
 specifier|static
@@ -254,6 +275,7 @@ operator|-
 literal|1
 decl_stmt|;
 specifier|private
+specifier|transient
 name|ActiveMQResourceAdapter
 name|resourceAdapter
 decl_stmt|;
