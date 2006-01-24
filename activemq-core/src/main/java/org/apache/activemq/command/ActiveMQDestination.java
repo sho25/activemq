@@ -970,7 +970,7 @@ index|[
 name|i
 index|]
 operator|.
-name|getQualifiedName
+name|getPhysicalName
 argument_list|()
 argument_list|)
 expr_stmt|;
