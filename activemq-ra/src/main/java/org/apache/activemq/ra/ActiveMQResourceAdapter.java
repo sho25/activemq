@@ -47,6 +47,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -246,7 +256,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Knows how to connect to one ActiveMQ server. It can then activate endpoints  * and deliver messages to those end points using the connection configure in the  * resource adapter.<p/>Must override equals and hashCode (JCA spec 16.4)  *   * @org.xbean.XBean element="resourceAdapter" rootElement="true"  * description="The JCA Resource Adaptor for ActiveMQ"  *   * @version $Revision$  */
+comment|/**  * Knows how to connect to one ActiveMQ server. It can then activate endpoints  * and deliver messages to those end points using the connection configure in the  * resource adapter.<p/>Must override equals and hashCode (JCA spec 16.4)  *  * @org.xbean.XBean element="resourceAdapter" rootElement="true"  * description="The JCA Resource Adaptor for ActiveMQ"  *  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -255,6 +265,8 @@ class|class
 name|ActiveMQResourceAdapter
 implements|implements
 name|ResourceAdapter
+implements|,
+name|Serializable
 block|{
 specifier|private
 specifier|final
@@ -590,7 +602,7 @@ return|return
 name|physicalConnection
 return|;
 block|}
-comment|/**      * @param info       * @return      * @throws JMSException       * @throws URISyntaxException       */
+comment|/**      * @param info      * @return      * @throws JMSException      * @throws URISyntaxException      */
 specifier|synchronized
 specifier|private
 name|ActiveMQConnectionFactory
@@ -964,7 +976,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * We only connect to one resource manager per ResourceAdapter instance, so      * any ActivationSpec will return the same XAResource.      *       * @see javax.resource.spi.ResourceAdapter#getXAResources(javax.resource.spi.ActivationSpec[])      */
+comment|/**      * We only connect to one resource manager per ResourceAdapter instance, so      * any ActivationSpec will return the same XAResource.      *      * @see javax.resource.spi.ResourceAdapter#getXAResources(javax.resource.spi.ActivationSpec[])      */
 specifier|public
 name|XAResource
 index|[]
@@ -1211,7 +1223,7 @@ return|return
 name|brokerXmlConfig
 return|;
 block|}
-comment|/**      * Sets the<a href="http://activemq.org/Xml+Configuration">XML      * configuration file</a> used to configure the ActiveMQ broker via Spring      * if using embedded mode.      *       * @param brokerXmlConfig      *            is the filename which is assumed to be on the classpath unless      *            a URL is specified. So a value of<code>foo/bar.xml</code>      *            would be assumed to be on the classpath whereas      *<code>file:dir/file.xml</code> would use the file system.      *            Any valid URL string is supported.      * @see #setUseEmbeddedBroker(Boolean)      */
+comment|/**      * Sets the<a href="http://activemq.org/Xml+Configuration">XML      * configuration file</a> used to configure the ActiveMQ broker via Spring      * if using embedded mode.      *      * @param brokerXmlConfig      *            is the filename which is assumed to be on the classpath unless      *            a URL is specified. So a value of<code>foo/bar.xml</code>      *            would be assumed to be on the classpath whereas      *<code>file:dir/file.xml</code> would use the file system.      *            Any valid URL string is supported.      * @see #setUseEmbeddedBroker(Boolean)      */
 specifier|public
 name|void
 name|setBrokerXmlConfig
