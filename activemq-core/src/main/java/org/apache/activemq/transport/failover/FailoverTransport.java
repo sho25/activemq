@@ -502,6 +502,15 @@ block|{
 if|if
 condition|(
 name|command
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
+if|if
+condition|(
+name|command
 operator|.
 name|isResponse
 argument_list|()
