@@ -1069,8 +1069,7 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-comment|// If the adapter class is not specified.. try to detect they
-comment|// right
+comment|// If the adapter class is not specified.. try to detect the right
 comment|// type by getting info from the database.
 if|if
 condition|(
