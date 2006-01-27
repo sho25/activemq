@@ -937,6 +937,15 @@ name|message
 argument_list|)
 throw|;
 block|}
+specifier|public
+name|boolean
+name|isStopped
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 end_class
 

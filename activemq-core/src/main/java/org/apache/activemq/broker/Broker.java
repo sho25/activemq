@@ -443,10 +443,16 @@ parameter_list|)
 throws|throws
 name|Throwable
 function_decl|;
-comment|/**      *       * @return true if the broker is running as a slave      */
+comment|/**      * @return true if the broker is running as a slave      */
 specifier|public
 name|boolean
 name|isSlaveBroker
+parameter_list|()
+function_decl|;
+comment|/**      * @return true if the broker has stopped      */
+specifier|public
+name|boolean
+name|isStopped
 parameter_list|()
 function_decl|;
 block|}

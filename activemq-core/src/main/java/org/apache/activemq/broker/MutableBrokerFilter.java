@@ -993,6 +993,19 @@ name|isSlaveBroker
 argument_list|()
 return|;
 block|}
+specifier|public
+name|boolean
+name|isStopped
+parameter_list|()
+block|{
+return|return
+name|getNext
+argument_list|()
+operator|.
+name|isStopped
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
