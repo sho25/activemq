@@ -2604,6 +2604,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|unconsumedMessages
+operator|.
+name|enqueue
+argument_list|(
+name|md
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|availableListener
@@ -2619,13 +2626,6 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-name|unconsumedMessages
-operator|.
-name|enqueue
-argument_list|(
-name|md
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 block|}
