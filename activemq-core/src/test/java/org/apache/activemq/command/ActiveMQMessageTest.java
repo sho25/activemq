@@ -1119,6 +1119,17 @@ name|getJMSTimestamp
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Message is:  "
+operator|+
+name|msg1
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
