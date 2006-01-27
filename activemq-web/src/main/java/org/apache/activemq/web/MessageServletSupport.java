@@ -667,8 +667,6 @@ name|request
 parameter_list|)
 throws|throws
 name|JMSException
-throws|,
-name|NoDestinationSuppliedException
 block|{
 name|String
 name|destinationName
@@ -733,8 +731,6 @@ name|HttpServletRequest
 name|request
 parameter_list|)
 throws|throws
-name|NoDestinationSuppliedException
-throws|,
 name|JMSException
 block|{
 name|String
@@ -752,11 +748,9 @@ operator|==
 literal|null
 condition|)
 block|{
-throw|throw
-operator|new
-name|NoDestinationSuppliedException
-argument_list|()
-throw|;
+return|return
+literal|null
+return|;
 block|}
 comment|// replace URI separator with JMS destination separator
 if|if
@@ -788,6 +782,17 @@ argument_list|(
 literal|'/'
 argument_list|,
 literal|'.'
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"destination uri="
+operator|+
+name|uri
 argument_list|)
 expr_stmt|;
 return|return
