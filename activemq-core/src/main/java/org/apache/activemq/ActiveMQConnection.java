@@ -3589,6 +3589,40 @@ name|getValue
 argument_list|()
 return|;
 block|}
+comment|/**      * Returns the broker name if one is available or null if one is not available yet.      */
+specifier|public
+name|String
+name|getBrokerName
+parameter_list|()
+block|{
+if|if
+condition|(
+name|brokerInfo
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+return|return
+name|brokerInfo
+operator|.
+name|getBrokerName
+argument_list|()
+return|;
+block|}
+comment|/**      * Returns the broker information if it is available or null if it is not available yet.      */
+specifier|public
+name|BrokerInfo
+name|getBrokerInfo
+parameter_list|()
+block|{
+return|return
+name|brokerInfo
+return|;
+block|}
 comment|/**      * @return Returns the RedeliveryPolicy.      * @throws JMSException      */
 specifier|public
 name|RedeliveryPolicy
