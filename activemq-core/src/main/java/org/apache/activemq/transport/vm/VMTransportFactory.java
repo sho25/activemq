@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Copyright 2005-2006 The Apache Software Foundation  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *   * Copyright 2005-2006 The Apache Software Foundation  *   * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with  * the License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -269,6 +269,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|edu
 operator|.
 name|emory
@@ -294,6 +322,21 @@ name|VMTransportFactory
 extends|extends
 name|TransportFactory
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|VMTransportFactory
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|final
 specifier|public
 specifier|static
@@ -609,7 +652,7 @@ argument_list|(
 name|host
 argument_list|)
 decl_stmt|;
-comment|//validate the broker is still active
+comment|// validate the broker is still active
 if|if
 condition|(
 operator|!
@@ -767,7 +810,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
-block|{                      }
+block|{}
 name|VMTransport
 name|vmtransport
 init|=
@@ -871,7 +914,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * @param location      * @return      * @throws IOException      */
+comment|/**      * @param location      * @return the TransportServer      * @throws IOException      */
 specifier|private
 name|TransportServer
 name|bind
@@ -893,6 +936,15 @@ operator|.
 name|getHost
 argument_list|()
 decl_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"binding to broker: "
+operator|+
+name|host
+argument_list|)
+expr_stmt|;
 name|VMTransportServer
 name|server
 init|=
@@ -964,6 +1016,97 @@ operator|.
 name|getHost
 argument_list|()
 decl_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Shutting down VM connectors for broker: "
+operator|+
+name|host
+argument_list|)
+expr_stmt|;
+name|servers
+operator|.
+name|remove
+argument_list|(
+name|host
+argument_list|)
+expr_stmt|;
+name|TransportConnector
+name|connector
+init|=
+operator|(
+name|TransportConnector
+operator|)
+name|connectors
+operator|.
+name|remove
+argument_list|(
+name|host
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|connector
+operator|!=
+literal|null
+condition|)
+block|{
+name|ServiceSupport
+operator|.
+name|dispose
+argument_list|(
+name|connector
+argument_list|)
+expr_stmt|;
+name|BrokerService
+name|broker
+init|=
+operator|(
+name|BrokerService
+operator|)
+name|brokers
+operator|.
+name|remove
+argument_list|(
+name|host
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|broker
+operator|!=
+literal|null
+condition|)
+block|{
+name|ServiceSupport
+operator|.
+name|dispose
+argument_list|(
+name|broker
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+specifier|public
+specifier|static
+name|void
+name|stopped
+parameter_list|(
+name|String
+name|host
+parameter_list|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Shutting down VM connectors for broker: "
+operator|+
+name|host
+argument_list|)
+expr_stmt|;
 name|servers
 operator|.
 name|remove
@@ -1089,7 +1232,7 @@ name|host
 argument_list|)
 condition|)
 block|{
-comment|//check the broker is still in the BrokerRegistry
+comment|// check the broker is still in the BrokerRegistry
 name|TransportConnector
 name|connector
 init|=
@@ -1136,7 +1279,7 @@ name|result
 operator|=
 literal|false
 expr_stmt|;
-comment|//clean-up
+comment|// clean-up
 name|brokers
 operator|.
 name|remove

@@ -184,6 +184,15 @@ return|return
 literal|false
 return|;
 block|}
+specifier|public
+name|boolean
+name|isShutdownInfo
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_class
 

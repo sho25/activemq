@@ -78,6 +78,15 @@ name|this
 argument_list|)
 return|;
 block|}
+specifier|public
+name|boolean
+name|isShutdownInfo
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 end_class
 

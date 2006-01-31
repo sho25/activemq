@@ -1003,7 +1003,12 @@ throw|throw
 operator|new
 name|InvalidClientIDException
 argument_list|(
-literal|"Client: "
+literal|"Broker: "
+operator|+
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" - Client: "
 operator|+
 name|clientId
 operator|+

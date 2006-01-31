@@ -91,6 +91,10 @@ name|boolean
 name|isMessageDispatchNotification
 parameter_list|()
 function_decl|;
+name|boolean
+name|isShutdownInfo
+parameter_list|()
+function_decl|;
 name|Response
 name|visit
 parameter_list|(

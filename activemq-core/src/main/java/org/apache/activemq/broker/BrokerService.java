@@ -489,6 +489,22 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|transport
+operator|.
+name|vm
+operator|.
+name|VMTransportFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|util
 operator|.
 name|IOExceptionSupport
@@ -1109,7 +1125,9 @@ name|connector
 init|=
 operator|new
 name|NetworkConnector
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 decl_stmt|;
 comment|// add the broker name to the parameters if not set
 name|connector
@@ -1230,14 +1248,6 @@ operator|.
 name|setLocalUri
 argument_list|(
 name|uri
-argument_list|)
-expr_stmt|;
-name|connector
-operator|.
-name|setBrokerName
-argument_list|(
-name|getBrokerName
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|networkConnectors
@@ -1748,6 +1758,15 @@ name|getInstance
 argument_list|()
 operator|.
 name|unbind
+argument_list|(
+name|getBrokerName
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|//remove any VMTransports connected
+name|VMTransportFactory
+operator|.
+name|stopped
 argument_list|(
 name|getBrokerName
 argument_list|()

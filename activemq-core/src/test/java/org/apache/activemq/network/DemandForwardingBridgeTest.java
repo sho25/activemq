@@ -646,9 +646,9 @@ argument_list|)
 expr_stmt|;
 name|bridge
 operator|.
-name|setClientId
+name|setLocalBrokerName
 argument_list|(
-literal|"local-remote-bridge"
+literal|"local"
 argument_list|)
 expr_stmt|;
 name|bridge
