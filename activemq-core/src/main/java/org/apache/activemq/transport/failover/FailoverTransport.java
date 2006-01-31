@@ -941,6 +941,12 @@ literal|false
 return|;
 block|}
 block|}
+if|if
+condition|(
+operator|!
+name|disposed
+condition|)
+block|{
 try|try
 block|{
 name|log
@@ -998,8 +1004,10 @@ operator|=
 name|maxReconnectDelay
 expr_stmt|;
 block|}
+block|}
 return|return
-literal|true
+operator|!
+name|disposed
 return|;
 block|}
 block|}
