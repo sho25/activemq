@@ -158,6 +158,14 @@ argument_list|,
 name|dest
 argument_list|)
 decl_stmt|;
+comment|//      let consumers propogate around the network
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
 comment|// Send messages
 name|sendMessages
 argument_list|(
@@ -345,6 +353,14 @@ argument_list|,
 name|dest
 argument_list|)
 decl_stmt|;
+comment|//      let consumers propogate around the network
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
 comment|// Send messages
 name|sendMessages
 argument_list|(
@@ -532,6 +548,14 @@ argument_list|,
 name|dest
 argument_list|)
 decl_stmt|;
+comment|//      let consumers propogate around the network
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
 comment|// Send messages
 name|sendMessages
 argument_list|(
@@ -743,6 +767,14 @@ argument_list|,
 name|dest
 argument_list|)
 decl_stmt|;
+comment|//let consumers propogate around the network
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
 comment|// Send messages
 name|sendMessages
 argument_list|(
@@ -923,6 +955,14 @@ argument_list|,
 name|dest
 argument_list|)
 decl_stmt|;
+comment|//let consumers propogate around the network
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
 comment|// Send messages
 name|sendMessages
 argument_list|(

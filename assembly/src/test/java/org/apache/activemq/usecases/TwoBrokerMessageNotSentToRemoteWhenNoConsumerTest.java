@@ -592,16 +592,9 @@ block|}
 decl_stmt|;
 name|bridge
 operator|.
-name|setClientId
+name|setLocalBrokerName
 argument_list|(
 name|localBroker
-operator|.
-name|getBrokerName
-argument_list|()
-operator|+
-literal|"_to_"
-operator|+
-name|remoteBroker
 operator|.
 name|getBrokerName
 argument_list|()
