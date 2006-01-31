@@ -615,6 +615,13 @@ literal|true
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|transportListener
+operator|!=
+literal|null
+condition|)
+block|{
 name|transportListener
 operator|.
 name|onCommand
@@ -622,6 +629,7 @@ argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
