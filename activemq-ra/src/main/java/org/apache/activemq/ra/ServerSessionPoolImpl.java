@@ -1006,6 +1006,32 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * @return Returns the closing.      */
+specifier|public
+name|boolean
+name|isClosing
+parameter_list|()
+block|{
+return|return
+name|closing
+return|;
+block|}
+comment|/**      * @param closing The closing to set.      */
+specifier|public
+name|void
+name|setClosing
+parameter_list|(
+name|boolean
+name|closing
+parameter_list|)
+block|{
+name|this
+operator|.
+name|closing
+operator|=
+name|closing
+expr_stmt|;
+block|}
 block|}
 end_class
 

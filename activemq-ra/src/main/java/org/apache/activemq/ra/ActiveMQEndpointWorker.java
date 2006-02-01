@@ -1014,6 +1014,15 @@ name|JMSException
 name|error
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|serverSessionPool
+operator|.
+name|isClosing
+argument_list|()
+condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -1023,7 +1032,7 @@ argument_list|,
 name|error
 argument_list|)
 expr_stmt|;
-comment|// Only log errors if the server is really down..  And not a temp failure.
+comment|// Only log errors if the server is really down.. And not a temp failure.
 if|if
 condition|(
 name|reconnectDelay
@@ -1095,7 +1104,8 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{         }
+block|{}
+block|}
 block|}
 specifier|protected
 name|void
