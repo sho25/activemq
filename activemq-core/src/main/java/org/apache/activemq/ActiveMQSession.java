@@ -1856,6 +1856,22 @@ name|e
 parameter_list|)
 block|{
 comment|// TODO: figure out proper way to handle error.
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"error dispatching message: "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|onAsyncException
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 try|try
 block|{
