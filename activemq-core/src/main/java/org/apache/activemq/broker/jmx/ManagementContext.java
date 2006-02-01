@@ -591,6 +591,22 @@ return|return
 name|beanServer
 return|;
 block|}
+comment|/**      * Set the MBeanServer      * @param beanServer      */
+specifier|public
+name|void
+name|setMBeanServer
+parameter_list|(
+name|MBeanServer
+name|beanServer
+parameter_list|)
+block|{
+name|this
+operator|.
+name|beanServer
+operator|=
+name|beanServer
+expr_stmt|;
+block|}
 comment|/**      * @return Returns the useMBeanServer.      */
 specifier|public
 name|boolean
