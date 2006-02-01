@@ -48,7 +48,7 @@ name|SimpleJmsMessageConvertor
 implements|implements
 name|JmsMesageConvertor
 block|{
-comment|/**      * Convert a foreign JMS Message to a native ActiveMQ Message      * @param message      * @return the converted message      * @throws JMSException      */
+comment|/**      * Convert a foreign JMS Message to a native ActiveMQ Message - Inbound      * or visa-versa outbound      * @param message      * @return the converted message      * @throws JMSException      */
 specifier|public
 name|Message
 name|convert
