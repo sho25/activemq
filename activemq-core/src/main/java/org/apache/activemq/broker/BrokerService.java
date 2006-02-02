@@ -1125,9 +1125,7 @@ name|connector
 init|=
 operator|new
 name|NetworkConnector
-argument_list|(
-name|this
-argument_list|)
+argument_list|()
 decl_stmt|;
 comment|// add the broker name to the parameters if not set
 name|connector
@@ -4448,6 +4446,14 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|connector
+operator|.
+name|setBrokerName
+argument_list|(
+name|getBrokerName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|connector
 operator|.
 name|start
