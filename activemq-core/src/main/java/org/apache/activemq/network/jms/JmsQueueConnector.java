@@ -634,7 +634,7 @@ operator|=
 operator|(
 name|QueueConnectionFactory
 operator|)
-name|jndiTemplate
+name|jndiOutboundTemplate
 operator|.
 name|lookup
 argument_list|(
@@ -769,7 +769,7 @@ operator|=
 operator|(
 name|QueueConnectionFactory
 operator|)
-name|jndiTemplate
+name|jndiLocalTemplate
 operator|.
 name|lookup
 argument_list|(
@@ -1476,7 +1476,7 @@ operator|=
 operator|(
 name|Queue
 operator|)
-name|jndiTemplate
+name|jndiOutboundTemplate
 operator|.
 name|lookup
 argument_list|(
