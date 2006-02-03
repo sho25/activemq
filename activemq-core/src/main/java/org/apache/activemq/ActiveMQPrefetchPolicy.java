@@ -15,6 +15,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -49,6 +59,8 @@ begin_class
 specifier|public
 class|class
 name|ActiveMQPrefetchPolicy
+implements|implements
+name|Serializable
 block|{
 specifier|private
 specifier|static

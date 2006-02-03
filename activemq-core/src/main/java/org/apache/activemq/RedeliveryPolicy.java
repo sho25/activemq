@@ -13,6 +13,16 @@ name|activemq
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Configuration options used to control how messages are re-delivered when they  * are rolled back.  *   * @version $Revision: 1.11 $  */
 end_comment
@@ -23,6 +33,8 @@ class|class
 name|RedeliveryPolicy
 implements|implements
 name|Cloneable
+implements|,
+name|Serializable
 block|{
 specifier|protected
 name|int
