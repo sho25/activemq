@@ -1441,6 +1441,9 @@ name|md
 operator|.
 name|getMessage
 argument_list|()
+operator|.
+name|copy
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -2157,6 +2160,32 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+name|this
+operator|+
+literal|" ACKING "
+operator|+
+name|lastMd
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|getMessageId
+argument_list|()
+operator|+
+literal|" size = "
+operator|+
+name|deliveredMessages
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|MessageAck
 name|ack
 init|=
