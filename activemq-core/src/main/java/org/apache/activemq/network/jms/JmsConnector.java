@@ -218,7 +218,11 @@ name|jndiOutboundTemplate
 decl_stmt|;
 specifier|protected
 name|JmsMesageConvertor
-name|jmsMessageConvertor
+name|inboundMessageConvertor
+decl_stmt|;
+specifier|protected
+name|JmsMesageConvertor
+name|outboundMessageConvertor
 decl_stmt|;
 specifier|private
 name|List
@@ -431,12 +435,26 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|jmsMessageConvertor
+name|inboundMessageConvertor
 operator|==
 literal|null
 condition|)
 block|{
-name|jmsMessageConvertor
+name|inboundMessageConvertor
+operator|=
+operator|new
+name|SimpleJmsMessageConvertor
+argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|outboundMessageConvertor
+operator|==
+literal|null
+condition|)
+block|{
+name|outboundMessageConvertor
 operator|=
 operator|new
 name|SimpleJmsMessageConvertor
@@ -722,20 +740,20 @@ operator|=
 name|jndiOutboundTemplate
 expr_stmt|;
 block|}
-comment|/**      * @return Returns the jmsMessageConvertor.      */
+comment|/**      * @return Returns the inboundMessageConvertor.      */
 specifier|public
 name|JmsMesageConvertor
-name|getJmsMessageConvertor
+name|getInboundMessageConvertor
 parameter_list|()
 block|{
 return|return
-name|jmsMessageConvertor
+name|inboundMessageConvertor
 return|;
 block|}
-comment|/**      * @param jmsMessageConvertor      *            The jmsMessageConvertor to set.      */
+comment|/**      * @param inboundMessageConvertor      *            The inboundMessageConvertor to set.      */
 specifier|public
 name|void
-name|setJmsMessageConvertor
+name|setInboundMessageConvertor
 parameter_list|(
 name|JmsMesageConvertor
 name|jmsMessageConvertor
@@ -743,9 +761,35 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|jmsMessageConvertor
+name|inboundMessageConvertor
 operator|=
 name|jmsMessageConvertor
+expr_stmt|;
+block|}
+comment|/**      * @return Returns the outboundMessageConvertor.      */
+specifier|public
+name|JmsMesageConvertor
+name|getOutboundMessageConvertor
+parameter_list|()
+block|{
+return|return
+name|outboundMessageConvertor
+return|;
+block|}
+comment|/**      * @param outboundMessageConvertor The outboundMessageConvertor to set.      */
+specifier|public
+name|void
+name|setOutboundMessageConvertor
+parameter_list|(
+name|JmsMesageConvertor
+name|outboundMessageConvertor
+parameter_list|)
+block|{
+name|this
+operator|.
+name|outboundMessageConvertor
+operator|=
+name|outboundMessageConvertor
 expr_stmt|;
 block|}
 comment|/**      * @return Returns the replyToDestinationCacheSize.      */

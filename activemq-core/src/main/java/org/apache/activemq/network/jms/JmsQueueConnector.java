@@ -1008,7 +1008,7 @@ name|bridge
 operator|.
 name|setJmsMessageConvertor
 argument_list|(
-name|getJmsMessageConvertor
+name|getInboundMessageConvertor
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1182,7 +1182,7 @@ name|bridge
 operator|.
 name|setJmsMessageConvertor
 argument_list|(
-name|getJmsMessageConvertor
+name|getOutboundMessageConvertor
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1345,7 +1345,7 @@ name|bridge
 operator|.
 name|setJmsMessageConvertor
 argument_list|(
-name|getJmsMessageConvertor
+name|getOutboundMessageConvertor
 argument_list|()
 argument_list|)
 expr_stmt|;

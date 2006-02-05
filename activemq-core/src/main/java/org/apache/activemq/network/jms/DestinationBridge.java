@@ -231,7 +231,7 @@ operator|=
 name|consumer
 expr_stmt|;
 block|}
-comment|/**      * @return Returns the jmsMessageConvertor.      */
+comment|/**      * @return Returns the inboundMessageConvertor.      */
 specifier|public
 name|JmsMesageConvertor
 name|getJmsMessageConvertor
@@ -241,7 +241,7 @@ return|return
 name|jmsMessageConvertor
 return|;
 block|}
-comment|/**      * @param jmsMessageConvertor      *            The jmsMessageConvertor to set.      */
+comment|/**      * @param inboundMessageConvertor      *            The inboundMessageConvertor to set.      */
 specifier|public
 name|void
 name|setJmsMessageConvertor
@@ -387,33 +387,6 @@ argument_list|(
 name|message
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|converted
-operator|==
-name|message
-operator|&&
-name|converted
-operator|instanceof
-name|ActiveMQMessage
-condition|)
-block|{
-name|converted
-operator|=
-call|(
-name|Message
-call|)
-argument_list|(
-operator|(
-name|ActiveMQMessage
-operator|)
-name|converted
-argument_list|)
-operator|.
-name|copy
-argument_list|()
-expr_stmt|;
-block|}
 name|sendMessage
 argument_list|(
 name|converted
