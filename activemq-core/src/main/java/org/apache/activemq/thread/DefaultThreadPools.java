@@ -154,7 +154,7 @@ decl_stmt|;
 specifier|public
 specifier|static
 name|Executor
-name|getDeaultPool
+name|getDefaultPool
 parameter_list|()
 block|{
 return|return
