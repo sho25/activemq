@@ -235,7 +235,7 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{
-name|checkClosed
+name|checkClosedOrFailed
 argument_list|()
 expr_stmt|;
 name|ensureConnectionInfoSent

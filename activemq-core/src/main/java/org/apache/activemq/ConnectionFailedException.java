@@ -80,6 +80,16 @@ name|cause
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|ConnectionFailedException
+parameter_list|()
+block|{
+name|super
+argument_list|(
+literal|"The JMS connection has failed due ti a Transport problem"
+argument_list|)
+expr_stmt|;
+block|}
 specifier|static
 specifier|private
 name|String
