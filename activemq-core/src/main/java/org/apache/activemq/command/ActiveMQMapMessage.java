@@ -101,6 +101,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|zip
 operator|.
 name|DeflaterOutputStream
@@ -2184,6 +2194,20 @@ operator|+
 name|map
 operator|+
 literal|" }"
+return|;
+block|}
+specifier|public
+name|Map
+name|getContentMap
+parameter_list|()
+throws|throws
+name|JMSException
+block|{
+name|initializeReading
+argument_list|()
+expr_stmt|;
+return|return
+name|map
 return|;
 block|}
 block|}

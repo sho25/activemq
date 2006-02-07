@@ -968,7 +968,20 @@ name|sub
 argument_list|)
 expr_stmt|;
 block|}
+name|destroySubscription
+argument_list|(
+name|sub
+argument_list|)
+expr_stmt|;
 block|}
+specifier|protected
+name|void
+name|destroySubscription
+parameter_list|(
+name|Subscription
+name|sub
+parameter_list|)
+block|{             }
 specifier|public
 name|void
 name|removeSubscription
