@@ -236,6 +236,14 @@ argument_list|,
 name|dest
 argument_list|)
 decl_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
+comment|//et subscriptions get propagated
 comment|// Send messages
 name|sendMessages
 argument_list|(
