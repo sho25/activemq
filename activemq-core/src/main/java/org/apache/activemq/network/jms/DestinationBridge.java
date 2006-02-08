@@ -23,6 +23,16 @@ name|javax
 operator|.
 name|jms
 operator|.
+name|Connection
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
 name|Destination
 import|;
 end_import
@@ -205,6 +215,10 @@ name|doHandleReplyTo
 init|=
 literal|true
 decl_stmt|;
+specifier|protected
+name|JmsConnector
+name|jmsConnector
+decl_stmt|;
 comment|/**      * @return Returns the consumer.      */
 specifier|public
 name|MessageConsumer
@@ -231,6 +245,22 @@ operator|=
 name|consumer
 expr_stmt|;
 block|}
+comment|/**      * @param connector      */
+specifier|public
+name|void
+name|setJmsConnector
+parameter_list|(
+name|JmsConnector
+name|connector
+parameter_list|)
+block|{
+name|this
+operator|.
+name|jmsConnector
+operator|=
+name|connector
+expr_stmt|;
+block|}
 comment|/**      * @return Returns the inboundMessageConvertor.      */
 specifier|public
 name|JmsMesageConvertor
@@ -241,7 +271,7 @@ return|return
 name|jmsMessageConvertor
 return|;
 block|}
-comment|/**      * @param inboundMessageConvertor      *            The inboundMessageConvertor to set.      */
+comment|/**      * @param jmsMessageConvertor       */
 specifier|public
 name|void
 name|setJmsMessageConvertor
@@ -256,6 +286,29 @@ name|jmsMessageConvertor
 operator|=
 name|jmsMessageConvertor
 expr_stmt|;
+block|}
+specifier|protected
+name|Destination
+name|processReplyToDestination
+parameter_list|(
+name|Destination
+name|destination
+parameter_list|)
+block|{
+return|return
+name|jmsConnector
+operator|.
+name|createReplyToBridge
+argument_list|(
+name|destination
+argument_list|,
+name|getConsumerConnection
+argument_list|()
+argument_list|,
+name|getProducerConnection
+argument_list|()
+argument_list|)
+return|;
 block|}
 specifier|public
 name|void
@@ -495,12 +548,15 @@ name|JMSException
 function_decl|;
 specifier|protected
 specifier|abstract
-name|Destination
-name|processReplyToDestination
-parameter_list|(
-name|Destination
-name|destination
-parameter_list|)
+name|Connection
+name|getConsumerConnection
+parameter_list|()
+function_decl|;
+specifier|protected
+specifier|abstract
+name|Connection
+name|getProducerConnection
+parameter_list|()
 function_decl|;
 block|}
 end_class
