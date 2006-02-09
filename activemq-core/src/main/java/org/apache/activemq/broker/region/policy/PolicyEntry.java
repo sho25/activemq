@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents an entry in a {@link PolicyMap} for assigning policies to a  * specific destination or a hierarchical wildcard area of destinations.  *   * @org.xbean.XBean  *   * @version $Revision: 1.1 $  */
+comment|/**  * Represents an entry in a {@link PolicyMap} for assigning policies to a  * specific destination or a hierarchical wildcard area of destinations.  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class

@@ -19,6 +19,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|net
 operator|.
 name|URI
@@ -42,16 +52,6 @@ operator|.
 name|util
 operator|.
 name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|Serializable
 import|;
 end_import
 
@@ -256,7 +256,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Knows how to connect to one ActiveMQ server. It can then activate endpoints  * and deliver messages to those end points using the connection configure in the  * resource adapter.<p/>Must override equals and hashCode (JCA spec 16.4)  *  * @org.xbean.XBean element="resourceAdapter" rootElement="true"  * description="The JCA Resource Adaptor for ActiveMQ"  *  * @version $Revision$  */
+comment|/**  * Knows how to connect to one ActiveMQ server. It can then activate endpoints  * and deliver messages to those end points using the connection configure in the  * resource adapter.<p/>Must override equals and hashCode (JCA spec 16.4)  *  * @org.apache.xbean.XBean element="resourceAdapter" rootElement="true"  * description="The JCA Resource Adaptor for ActiveMQ"  *  * @version $Revision$  */
 end_comment
 
 begin_class

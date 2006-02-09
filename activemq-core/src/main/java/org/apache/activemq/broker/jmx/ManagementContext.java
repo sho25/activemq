@@ -196,7 +196,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Flow provides different dispatch policies within the NMR  *   * @org.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * A Flow provides different dispatch policies within the NMR  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
 
 begin_class

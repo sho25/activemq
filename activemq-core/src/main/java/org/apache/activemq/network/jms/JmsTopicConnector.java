@@ -136,7 +136,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Bridge to other JMS Topic providers  *   * @org.xbean.XBean  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * A Bridge to other JMS Topic providers  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class

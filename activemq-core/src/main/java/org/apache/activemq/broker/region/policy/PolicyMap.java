@@ -58,7 +58,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a destination based configuration of policies so that individual  * destinations or wildcard hierarchies of destinations can be configured using  * different policies.  *   * @org.xbean.XBean  *   * @version $Revision: 1.1 $  */
+comment|/**  * Represents a destination based configuration of policies so that individual  * destinations or wildcard hierarchies of destinations can be configured using  * different policies.  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
@@ -108,7 +108,7 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * Sets the individual entries on the policy map      *       * @org.xbean.ElementType class="org.apache.activemq.broker.region.policy.PolicyEntry"      */
+comment|/**      * Sets the individual entries on the policy map      *       * @org.apache.xbean.ElementType class="org.apache.activemq.broker.region.policy.PolicyEntry"      */
 specifier|public
 name|void
 name|setPolicyEntries

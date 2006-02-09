@@ -546,7 +546,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Forwards messages from the local broker to the remote broker based on demand.  *   * @org.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * Forwards messages from the local broker to the remote broker based on demand.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
 
 begin_class

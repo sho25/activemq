@@ -320,7 +320,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Forwards all messages from the local broker to the remote broker.  *   * @org.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * Forwards all messages from the local broker to the remote broker.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
 
 begin_class

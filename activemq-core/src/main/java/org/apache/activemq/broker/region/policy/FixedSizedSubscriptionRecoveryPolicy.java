@@ -164,7 +164,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This implementation of {@link SubscriptionRecoveryPolicy} will keep a fixed  * amount of memory available in RAM for message history which is evicted in  * time order.  *   * @org.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * This implementation of {@link SubscriptionRecoveryPolicy} will keep a fixed  * amount of memory available in RAM for message history which is evicted in  * time order.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
 
 begin_class

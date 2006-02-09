@@ -96,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This implementation of {@link SubscriptionRecoveryPolicy} will only keep   * the last message.  *   * @org.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * This implementation of {@link SubscriptionRecoveryPolicy} will only keep   * the last message.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
 
 begin_class

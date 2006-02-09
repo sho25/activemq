@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to keep track of how much of something is being used so that   * a productive working set usage can be controlled.  *   * Main use case is manage memory usage.  *   * @org.xbean.XBean  *   * @version $Revision: 1.3 $  */
+comment|/**  * Used to keep track of how much of something is being used so that   * a productive working set usage can be controlled.  *   * Main use case is manage memory usage.  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.3 $  */
 end_comment
 
 begin_class

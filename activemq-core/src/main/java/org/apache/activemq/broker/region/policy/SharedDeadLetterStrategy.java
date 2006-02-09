@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A default implementation of {@link DeadLetterStrategy} which uses  * a constant destination.  *   *   * @org.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * A default implementation of {@link DeadLetterStrategy} which uses  * a constant destination.  *   *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
 
 begin_class

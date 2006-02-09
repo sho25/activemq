@@ -300,7 +300,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @org.xbean.XBean  *   * @version $Revision: 1.6 $  */
+comment|/**  * @org.apache.xbean.XBean  *   * @version $Revision: 1.6 $  */
 end_comment
 
 begin_class

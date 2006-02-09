@@ -100,7 +100,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Dispatch policy that causes every subscription to see messages in the same order.  *   * @org.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * Dispatch policy that causes every subscription to see messages in the same order.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
 
 begin_class

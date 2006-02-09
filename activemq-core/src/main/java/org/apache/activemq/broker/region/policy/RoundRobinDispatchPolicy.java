@@ -100,7 +100,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simple dispatch policy that sends a message to every subscription that   * matches the message.  *   * @org.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * Simple dispatch policy that sends a message to every subscription that   * matches the message.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
 
 begin_class

@@ -358,7 +358,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link PersistenceAdapter} implementation using JDBC for persistence  * storage.  *   * This persistence adapter will correctly remember prepared XA transactions,  * but it will not keep track of local transaction commits so that operations  * performed against the Message store are done as a single uow.  *   * @org.xbean.XBean element="jdbcPersistenceAdapter"  *   * @version $Revision: 1.9 $  */
+comment|/**  * A {@link PersistenceAdapter} implementation using JDBC for persistence  * storage.  *   * This persistence adapter will correctly remember prepared XA transactions,  * but it will not keep track of local transaction commits so that operations  * performed against the Message store are done as a single uow.  *   * @org.apache.xbean.XBean element="jdbcPersistenceAdapter"  *   * @version $Revision: 1.9 $  */
 end_comment
 
 begin_class

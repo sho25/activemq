@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Creates a default persistence model using the Journal and JDBC  *   * @org.xbean.XBean element="journaledJDBC"  *   * @version $Revision: 1.1 $  */
+comment|/**  * Creates a default persistence model using the Journal and JDBC  *   * @org.apache.xbean.XBean element="journaledJDBC"  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
