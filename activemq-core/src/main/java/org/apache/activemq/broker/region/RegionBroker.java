@@ -1774,7 +1774,7 @@ name|getBrokerPath
 argument_list|()
 operator|==
 literal|null
-operator||
+operator|||
 name|message
 operator|.
 name|getBrokerPath
