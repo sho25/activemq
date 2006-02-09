@@ -1450,14 +1450,6 @@ expr_stmt|;
 block|}
 break|break;
 block|}
-comment|// Send the message.
-name|connectedTransport
-operator|.
-name|oneway
-argument_list|(
-name|command
-argument_list|)
-expr_stmt|;
 comment|// If it was a request and it was not being tracked by
 comment|// the state tracker,
 comment|// then hold it in the requestMap so that we can replay
@@ -1494,6 +1486,62 @@ argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
+block|}
+comment|// Send the message.
+try|try
+block|{
+name|connectedTransport
+operator|.
+name|oneway
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+comment|// If there is an IOException in the send, remove the command from the requestMap
+if|if
+condition|(
+operator|!
+name|stateTracker
+operator|.
+name|track
+argument_list|(
+name|command
+argument_list|)
+operator|&&
+name|command
+operator|.
+name|isResponseRequired
+argument_list|()
+condition|)
+block|{
+name|requestMap
+operator|.
+name|remove
+argument_list|(
+operator|new
+name|Short
+argument_list|(
+name|command
+operator|.
+name|getCommandId
+argument_list|()
+argument_list|)
+argument_list|,
+name|command
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Rethrow the exception so it will handled by the outer catch
+throw|throw
+name|e
+throw|;
 block|}
 return|return;
 block|}

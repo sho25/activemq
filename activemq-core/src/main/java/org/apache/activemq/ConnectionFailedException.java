@@ -86,7 +86,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"The JMS connection has failed due ti a Transport problem"
+literal|"The JMS connection has failed due to a Transport problem"
 argument_list|)
 expr_stmt|;
 block|}
