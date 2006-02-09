@@ -393,7 +393,29 @@ block|{
 name|executeBatch
 argument_list|()
 expr_stmt|;
-comment|/**                  * we are not in a transaction so should not be committing                 try{                     executeBatch();                 } finally {                     if (connection != null) {                         connection.commit();                     }                 }                 */
+comment|/**                  * we are not in a transaction so should not be committing ??                  * This was previously commented out - but had                  * adverse affects on testing - so it's back!                  *                   */
+try|try
+block|{
+name|executeBatch
+argument_list|()
+expr_stmt|;
+block|}
+finally|finally
+block|{
+if|if
+condition|(
+name|connection
+operator|!=
+literal|null
+condition|)
+block|{
+name|connection
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 block|}
 catch|catch
 parameter_list|(
