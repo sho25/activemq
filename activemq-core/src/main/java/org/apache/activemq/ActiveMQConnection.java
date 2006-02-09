@@ -4047,11 +4047,6 @@ name|error
 argument_list|)
 expr_stmt|;
 block|}
-name|transportFailed
-argument_list|(
-name|error
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 specifier|public
@@ -4063,6 +4058,11 @@ name|error
 parameter_list|)
 block|{
 name|onAsyncException
+argument_list|(
+name|error
+argument_list|)
+expr_stmt|;
+name|transportFailed
 argument_list|(
 name|error
 argument_list|)
