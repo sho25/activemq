@@ -888,7 +888,7 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-comment|// Do we need to crate the subscription?
+comment|// Do we need to create the subscription?
 if|if
 condition|(
 name|info
@@ -1132,23 +1132,6 @@ argument_list|(
 name|sub
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|sub
-operator|.
-name|getConsumerInfo
-argument_list|()
-operator|.
-name|isDurable
-argument_list|()
-condition|)
-block|{
-name|durableSubscriberCounter
-operator|.
-name|decrementAndGet
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 name|sub
 operator|.
@@ -1299,6 +1282,20 @@ return|;
 block|}
 specifier|public
 name|void
+name|createSubscription
+parameter_list|(
+name|SubscriptionKey
+name|key
+parameter_list|)
+block|{
+name|durableSubscriberCounter
+operator|.
+name|incrementAndGet
+argument_list|()
+expr_stmt|;
+block|}
+specifier|public
+name|void
 name|deleteSubscription
 parameter_list|(
 name|ConnectionContext
@@ -1329,6 +1326,11 @@ name|key
 operator|.
 name|subscriptionName
 argument_list|)
+expr_stmt|;
+name|durableSubscriberCounter
+operator|.
+name|decrementAndGet
+argument_list|()
 expr_stmt|;
 block|}
 block|}
