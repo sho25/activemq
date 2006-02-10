@@ -1711,6 +1711,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|boolean
+name|isPattern
+parameter_list|()
+block|{
+return|return
+name|isPattern
+return|;
+block|}
 block|}
 end_class
 
