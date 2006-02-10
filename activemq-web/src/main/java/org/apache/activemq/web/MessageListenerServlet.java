@@ -823,6 +823,13 @@ else|else
 block|{
 name|response
 operator|.
+name|setContentType
+argument_list|(
+literal|"text/xml"
+argument_list|)
+expr_stmt|;
+name|response
+operator|.
 name|getWriter
 argument_list|()
 operator|.
