@@ -2630,6 +2630,13 @@ literal|3
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|rc
+operator|.
+name|add
+argument_list|(
+name|subscription
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 operator|(
@@ -3118,7 +3125,7 @@ name|useExternalMessageReferences
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * Useful for debugging.     public void dumpTables(Connection c, String destinationName, String clientId, String subscriptionName) throws SQLException {                 printQuery(c, "Select * from ACTIVEMQ_MSGS", System.out);         printQuery(c, "Select * from ACTIVEMQ_ACKS", System.out);         PreparedStatement s = c.prepareStatement("SELECT M.ID, D.LAST_ACKED_ID FROM "         +"ACTIVEMQ_MSGS M, "         +"ACTIVEMQ_ACKS D "         +"WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"          +" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID"         +" ORDER BY M.ID");         s.setString(1,destinationName);         s.setString(2,clientId);         s.setString(3,subscriptionName);         printQuery(s,System.out);     }      private void printQuery(Connection c, String query, PrintStream out) throws SQLException {         printQuery(c.prepareStatement(query), out);     }          private void printQuery(PreparedStatement s, PrintStream out) throws SQLException {                  ResultSet set=null;         try {             set = s.executeQuery();             ResultSetMetaData metaData = set.getMetaData();             for( int i=1; i<= metaData.getColumnCount(); i++ ) {                 if(i==1)                     out.print("||");                 out.print(metaData.getColumnName(i)+"||");             }             out.println();             while(set.next()) {                 for( int i=1; i<= metaData.getColumnCount(); i++ ) {                     if(i==1)                         out.print("|");                     out.print(set.getString(i)+"|");                 }                 out.println();             }         } finally {             try { set.close(); } catch (Throwable ignore) {}             try { s.close(); } catch (Throwable ignore) {}         }     }     */
+comment|/*      * Useful for debugging.     public void dumpTables(Connection c, String destinationName, String clientId, String subscriptionName) throws SQLException {                 printQuery(c, "Select * from ACTIVEMQ_MSGS", System.out);         printQuery(c, "Select * from ACTIVEMQ_ACKS", System.out);         PreparedStatement s = c.prepareStatement("SELECT M.ID, D.LAST_ACKED_ID FROM "         +"ACTIVEMQ_MSGS M, "         +"ACTIVEMQ_ACKS D "         +"WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"          +" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID"         +" ORDER BY M.ID");         s.setString(1,destinationName);         s.setString(2,clientId);         s.setString(3,subscriptionName);         printQuery(s,System.out);     }          public void dumpTables(Connection c) throws SQLException {         printQuery(c, "Select * from ACTIVEMQ_MSGS", System.out);         printQuery(c, "Select * from ACTIVEMQ_ACKS", System.out);     }      private void printQuery(Connection c, String query, PrintStream out) throws SQLException {         printQuery(c.prepareStatement(query), out);     }          private void printQuery(PreparedStatement s, PrintStream out) throws SQLException {                  ResultSet set=null;         try {             set = s.executeQuery();             ResultSetMetaData metaData = set.getMetaData();             for( int i=1; i<= metaData.getColumnCount(); i++ ) {                 if(i==1)                     out.print("||");                 out.print(metaData.getColumnName(i)+"||");             }             out.println();             while(set.next()) {                 for( int i=1; i<= metaData.getColumnCount(); i++ ) {                     if(i==1)                         out.print("|");                     out.print(set.getString(i)+"|");                 }                 out.println();             }         } finally {             try { set.close(); } catch (Throwable ignore) {}             try { s.close(); } catch (Throwable ignore) {}         }     }     */
 block|}
 end_class
 
