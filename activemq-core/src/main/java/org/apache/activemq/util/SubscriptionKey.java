@@ -128,6 +128,19 @@ literal|false
 return|;
 block|}
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|clientId
+operator|+
+literal|":"
+operator|+
+name|subscriptionName
+return|;
+block|}
 block|}
 end_class
 
