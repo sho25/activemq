@@ -846,7 +846,20 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @return      */
+comment|/**      * Get all the Destinations that are in storage      * @return Set of all stored destinations      */
+specifier|public
+name|Set
+name|getDurableDestinations
+parameter_list|()
+block|{
+return|return
+name|persistenceAdapter
+operator|.
+name|getDestinations
+argument_list|()
+return|;
+block|}
+comment|/**      * @return all Destinations that don't have active consumers      */
 specifier|protected
 name|Set
 name|getInactiveDestinations
