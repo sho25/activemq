@@ -47,6 +47,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -272,6 +282,10 @@ init|=
 operator|new
 name|ConcurrentHashMap
 argument_list|()
+decl_stmt|;
+specifier|private
+name|Set
+name|durableDestinations
 decl_stmt|;
 name|boolean
 name|failover
@@ -970,6 +984,32 @@ operator|.
 name|brokerName
 operator|=
 name|brokerName
+expr_stmt|;
+block|}
+comment|/**      * @return Returns the durableDestinations.      */
+specifier|public
+name|Set
+name|getDurableDestinations
+parameter_list|()
+block|{
+return|return
+name|durableDestinations
+return|;
+block|}
+comment|/**      * @param durableDestinations The durableDestinations to set.      */
+specifier|public
+name|void
+name|setDurableDestinations
+parameter_list|(
+name|Set
+name|durableDestinations
+parameter_list|)
+block|{
+name|this
+operator|.
+name|durableDestinations
+operator|=
+name|durableDestinations
 expr_stmt|;
 block|}
 block|}

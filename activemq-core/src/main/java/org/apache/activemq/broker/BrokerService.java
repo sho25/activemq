@@ -4460,6 +4460,17 @@ argument_list|)
 expr_stmt|;
 name|connector
 operator|.
+name|setDurableDestinations
+argument_list|(
+name|getBroker
+argument_list|()
+operator|.
+name|getDurableDestinations
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|connector
+operator|.
 name|start
 argument_list|()
 expr_stmt|;
