@@ -1128,14 +1128,14 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
-name|receivedMessages
+name|producedMessages
 operator|.
 name|set
 argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-name|producedMessages
+name|receivedMessages
 operator|.
 name|set
 argument_list|(
