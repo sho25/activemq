@@ -473,6 +473,16 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_comment
 comment|/**  * Routes Broker operations to the correct messaging regions for processing.  *   * @version $Revision$  */
 end_comment
@@ -586,6 +596,10 @@ name|HashMap
 argument_list|()
 decl_stmt|;
 comment|// we will synchronize access
+specifier|private
+name|PersistenceAdapter
+name|adaptor
+decl_stmt|;
 specifier|public
 name|RegionBroker
 parameter_list|(
@@ -659,6 +673,12 @@ operator|.
 name|getLastMessageBrokerSequenceId
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|adaptor
+operator|=
+name|adaptor
 expr_stmt|;
 name|queueRegion
 operator|=
@@ -2460,6 +2480,18 @@ parameter_list|()
 block|{
 return|return
 name|stopped
+return|;
+block|}
+specifier|public
+name|Set
+name|getDurableDestinations
+parameter_list|()
+block|{
+return|return
+name|adaptor
+operator|.
+name|getDestinations
+argument_list|()
 return|;
 block|}
 block|}

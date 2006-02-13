@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -642,6 +652,15 @@ parameter_list|()
 block|{
 return|return
 literal|false
+return|;
+block|}
+specifier|public
+name|Set
+name|getDurableDestinations
+parameter_list|()
+block|{
+return|return
+literal|null
 return|;
 block|}
 block|}

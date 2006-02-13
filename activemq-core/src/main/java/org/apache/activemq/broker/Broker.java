@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -453,6 +463,12 @@ comment|/**      * @return true if the broker has stopped      */
 specifier|public
 name|boolean
 name|isStopped
+parameter_list|()
+function_decl|;
+comment|/**      * @return a Set of all durable destinations      */
+specifier|public
+name|Set
+name|getDurableDestinations
 parameter_list|()
 function_decl|;
 block|}
