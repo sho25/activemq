@@ -877,7 +877,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|60000
+literal|1000
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -1381,6 +1381,14 @@ expr_stmt|;
 name|sendFrame
 argument_list|(
 name|frame
+argument_list|)
+expr_stmt|;
+comment|// lets wait for the unsubscribe to take effect
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
 argument_list|)
 expr_stmt|;
 comment|//send a message to our queue
