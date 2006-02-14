@@ -194,6 +194,7 @@ argument_list|(
 name|format
 argument_list|)
 expr_stmt|;
+elseif|else
 if|if
 condition|(
 name|line
@@ -215,6 +216,7 @@ argument_list|(
 name|format
 argument_list|)
 expr_stmt|;
+elseif|else
 if|if
 condition|(
 name|line
@@ -236,6 +238,7 @@ argument_list|(
 name|format
 argument_list|)
 expr_stmt|;
+elseif|else
 if|if
 condition|(
 name|line
@@ -255,6 +258,7 @@ operator|new
 name|Disconnect
 argument_list|()
 expr_stmt|;
+elseif|else
 if|if
 condition|(
 name|line
@@ -276,6 +280,7 @@ argument_list|(
 name|format
 argument_list|)
 expr_stmt|;
+elseif|else
 if|if
 condition|(
 name|line
@@ -297,6 +302,7 @@ argument_list|(
 name|format
 argument_list|)
 expr_stmt|;
+elseif|else
 if|if
 condition|(
 name|line
@@ -318,6 +324,7 @@ argument_list|(
 name|format
 argument_list|)
 expr_stmt|;
+elseif|else
 if|if
 condition|(
 name|line
@@ -339,6 +346,7 @@ argument_list|(
 name|format
 argument_list|)
 expr_stmt|;
+elseif|else
 if|if
 condition|(
 name|line
