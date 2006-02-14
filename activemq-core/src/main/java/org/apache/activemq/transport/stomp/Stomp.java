@@ -266,6 +266,11 @@ name|ID
 init|=
 literal|"id"
 decl_stmt|;
+name|String
+name|SELECTOR
+init|=
+literal|"selector"
+decl_stmt|;
 specifier|public
 interface|interface
 name|AckModeValues
