@@ -207,6 +207,16 @@ argument_list|()
 decl_stmt|;
 name|tx
 operator|.
+name|setConnectionId
+argument_list|(
+name|format
+operator|.
+name|getConnectionId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|tx
+operator|.
 name|setTransactionId
 argument_list|(
 name|txnId

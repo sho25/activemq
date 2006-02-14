@@ -1347,7 +1347,7 @@ name|frame
 operator|=
 name|receiveFrame
 argument_list|(
-literal|10000
+literal|1000
 argument_list|)
 expr_stmt|;
 name|assertTrue
@@ -1383,13 +1383,8 @@ argument_list|(
 name|frame
 argument_list|)
 expr_stmt|;
-comment|// lets wait for the unsubscribe to take effect
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1000
-argument_list|)
+name|waitForFrameToTakeEffect
+argument_list|()
 expr_stmt|;
 comment|//send a message to our queue
 name|sendMessage
@@ -1437,6 +1432,16 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|MessageConsumer
+name|consumer
+init|=
+name|session
+operator|.
+name|createConsumer
+argument_list|(
+name|queue
+argument_list|)
+decl_stmt|;
 name|String
 name|frame
 init|=
@@ -1533,17 +1538,9 @@ argument_list|(
 name|frame
 argument_list|)
 expr_stmt|;
-comment|// This test case is currently failing
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createConsumer
-argument_list|(
-name|queue
-argument_list|)
-decl_stmt|;
+name|waitForFrameToTakeEffect
+argument_list|()
+expr_stmt|;
 name|TextMessage
 name|message
 init|=
@@ -1559,6 +1556,8 @@ argument_list|)
 decl_stmt|;
 name|assertNotNull
 argument_list|(
+literal|"Should have received a message"
+argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
@@ -1570,6 +1569,16 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|MessageConsumer
+name|consumer
+init|=
+name|session
+operator|.
+name|createConsumer
+argument_list|(
+name|queue
+argument_list|)
+decl_stmt|;
 name|String
 name|frame
 init|=
@@ -1636,7 +1645,7 @@ literal|"\n"
 operator|+
 literal|"transaction: tx1\n"
 operator|+
-literal|"\n\n"
+literal|"\n"
 operator|+
 literal|"first message"
 operator|+
@@ -1669,6 +1678,23 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|=
+literal|"BEGIN\n"
+operator|+
+literal|"transaction: tx1\n"
+operator|+
+literal|"\n\n"
+operator|+
+name|Stomp
+operator|.
+name|NULL
+expr_stmt|;
+name|sendFrame
+argument_list|(
+name|frame
+argument_list|)
+expr_stmt|;
+name|frame
+operator|=
 literal|"SEND\n"
 operator|+
 literal|"destination:/queue/"
@@ -1680,7 +1706,7 @@ literal|"\n"
 operator|+
 literal|"transaction: tx1\n"
 operator|+
-literal|"\n\n"
+literal|"\n"
 operator|+
 literal|"second message"
 operator|+
@@ -1711,17 +1737,10 @@ name|frame
 argument_list|)
 expr_stmt|;
 comment|// This test case is currently failing
+name|waitForFrameToTakeEffect
+argument_list|()
+expr_stmt|;
 comment|//only second msg should be received since first msg was rolled back
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createConsumer
-argument_list|(
-name|queue
-argument_list|)
-decl_stmt|;
 name|TextMessage
 name|message
 init|=
@@ -1748,6 +1767,27 @@ name|message
 operator|.
 name|getText
 argument_list|()
+operator|.
+name|trim
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+specifier|protected
+name|void
+name|waitForFrameToTakeEffect
+parameter_list|()
+throws|throws
+name|InterruptedException
+block|{
+comment|// bit of a dirty hack :)
+comment|// another option would be to force some kind of receipt to be returned
+comment|// from the frame
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|2000
 argument_list|)
 expr_stmt|;
 block|}
