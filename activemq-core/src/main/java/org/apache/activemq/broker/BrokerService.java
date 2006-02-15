@@ -4089,7 +4089,11 @@ return|return
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq"
+name|getManagementContext
+argument_list|()
+operator|.
+name|getJmxDomainName
+argument_list|()
 argument_list|,
 name|map
 argument_list|)
