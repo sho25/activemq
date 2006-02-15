@@ -49,24 +49,8 @@ name|SQLException
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|store
-operator|.
-name|jdbc
-operator|.
-name|StatementProvider
-import|;
-end_import
-
 begin_comment
-comment|/**  * This JDBCAdapter inserts and extracts BLOB data using the   * setBytes()/getBytes() operations.  *   * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li></li>   *</ul>  *   * @version $Revision: 1.2 $  */
+comment|/**  * This JDBCAdapter inserts and extracts BLOB data using the   * setBytes()/getBytes() operations.  *   * The databases/JDBC drivers that use this adapter are:  *   * @org.apache.xbean.XBean element="bytesJDBCAdapter"  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class
@@ -76,27 +60,6 @@ name|BytesJDBCAdapter
 extends|extends
 name|DefaultJDBCAdapter
 block|{
-specifier|public
-name|BytesJDBCAdapter
-parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
-block|}
-specifier|public
-name|BytesJDBCAdapter
-parameter_list|(
-name|StatementProvider
-name|provider
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|provider
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * @see org.apache.activemq.store.jdbc.adapter.DefaultJDBCAdapter#getBinaryData(java.sql.ResultSet, int)      */
 specifier|protected
 name|byte

@@ -99,6 +99,14 @@ interface|interface
 name|JDBCAdapter
 block|{
 specifier|public
+name|void
+name|setStatements
+parameter_list|(
+name|Statements
+name|statementProvider
+parameter_list|)
+function_decl|;
+specifier|public
 specifier|abstract
 name|void
 name|doCreateTables

@@ -31,12 +31,12 @@ name|store
 operator|.
 name|jdbc
 operator|.
-name|StatementProvider
+name|Statements
 import|;
 end_import
 
 begin_comment
-comment|/**  * Axion specific Adapter.  *   * Axion does not seem to support ALTER statements or sub-selects.  This means:  * - We cannot auto upgrade the schema was we roll out new versions of ActiveMQ  * - We cannot delete durable sub messages that have be acknowledged by all consumers.  *   * @version $Revision: 1.4 $  */
+comment|/**  * Axion specific Adapter.  *   * Axion does not seem to support ALTER statements or sub-selects.  This means:  * - We cannot auto upgrade the schema was we roll out new versions of ActiveMQ  * - We cannot delete durable sub messages that have be acknowledged by all consumers.  *   * @org.apache.xbean.XBean element="axionJDBCAdapter"  * @version $Revision: 1.4 $  */
 end_comment
 
 begin_class
@@ -47,111 +47,131 @@ extends|extends
 name|StreamJDBCAdapter
 block|{
 specifier|public
-specifier|static
-name|StatementProvider
-name|createStatementProvider
-parameter_list|()
+name|void
+name|setStatements
+parameter_list|(
+name|Statements
+name|statements
+parameter_list|)
 block|{
-name|DefaultStatementProvider
-name|answer
-init|=
-operator|new
-name|DefaultStatementProvider
-argument_list|()
-block|{
-specifier|public
-name|String
-index|[]
-name|getCreateSchemaStatments
-parameter_list|()
-block|{
-return|return
+name|statements
+operator|.
+name|setCreateSchemaStatements
+argument_list|(
 operator|new
 name|String
 index|[]
 block|{
 literal|"CREATE TABLE "
 operator|+
-name|getTablePrefix
+name|statements
+operator|.
+name|getFullMessageTableName
 argument_list|()
-operator|+
-name|messageTableName
 operator|+
 literal|"("
 operator|+
 literal|"ID "
 operator|+
-name|sequenceDataType
+name|statements
+operator|.
+name|getSequenceDataType
+argument_list|()
 operator|+
 literal|" NOT NULL"
 operator|+
 literal|", CONTAINER "
 operator|+
-name|containerNameDataType
+name|statements
+operator|.
+name|getContainerNameDataType
+argument_list|()
 operator|+
 literal|", MSGID_PROD "
 operator|+
-name|msgIdDataType
+name|statements
+operator|.
+name|getMsgIdDataType
+argument_list|()
 operator|+
 literal|", MSGID_SEQ "
 operator|+
-name|sequenceDataType
+name|statements
+operator|.
+name|getSequenceDataType
+argument_list|()
 operator|+
 literal|", EXPIRATION "
 operator|+
-name|longDataType
+name|statements
+operator|.
+name|getLongDataType
+argument_list|()
 operator|+
 literal|", MSG "
 operator|+
 operator|(
-name|useExternalMessageReferences
+name|statements
+operator|.
+name|isUseExternalMessageReferences
+argument_list|()
 condition|?
-name|stringIdDataType
+name|statements
+operator|.
+name|getStringIdDataType
+argument_list|()
 else|:
-name|binaryDataType
+name|statements
+operator|.
+name|getBinaryDataType
+argument_list|()
 operator|)
 operator|+
 literal|", PRIMARY KEY ( ID ) )"
 block|,
 literal|"CREATE INDEX "
 operator|+
-name|getTablePrefix
+name|statements
+operator|.
+name|getFullMessageTableName
 argument_list|()
-operator|+
-name|messageTableName
 operator|+
 literal|"_MIDX ON "
 operator|+
-name|getTablePrefix
+name|statements
+operator|.
+name|getFullMessageTableName
 argument_list|()
-operator|+
-name|messageTableName
 operator|+
 literal|" (MSGID_PROD,MSGID_SEQ)"
 block|,
 literal|"CREATE INDEX "
 operator|+
-name|getTablePrefix
+name|statements
+operator|.
+name|getFullMessageTableName
 argument_list|()
-operator|+
-name|messageTableName
 operator|+
 literal|"_CIDX ON "
 operator|+
-name|getTablePrefix
+name|statements
+operator|.
+name|getFullMessageTableName
 argument_list|()
-operator|+
-name|messageTableName
 operator|+
 literal|" (CONTAINER)"
 block|,
 literal|"CREATE INDEX "
 operator|+
+name|statements
+operator|.
 name|getFullMessageTableName
 argument_list|()
 operator|+
 literal|"_EIDX ON "
 operator|+
+name|statements
+operator|.
 name|getFullMessageTableName
 argument_list|()
 operator|+
@@ -159,93 +179,84 @@ literal|" (EXPIRATION)"
 block|,
 literal|"CREATE TABLE "
 operator|+
-name|getTablePrefix
+name|statements
+operator|.
+name|getFullAckTableName
 argument_list|()
-operator|+
-name|durableSubAcksTableName
 operator|+
 literal|"("
 operator|+
 literal|"CONTAINER "
 operator|+
-name|containerNameDataType
+name|statements
+operator|.
+name|getContainerNameDataType
+argument_list|()
 operator|+
 literal|" NOT NULL"
 operator|+
 literal|", CLIENT_ID "
 operator|+
-name|stringIdDataType
+name|statements
+operator|.
+name|getStringIdDataType
+argument_list|()
 operator|+
 literal|" NOT NULL"
 operator|+
 literal|", SUB_NAME "
 operator|+
-name|stringIdDataType
+name|statements
+operator|.
+name|getStringIdDataType
+argument_list|()
 operator|+
 literal|" NOT NULL"
 operator|+
 literal|", SELECTOR "
 operator|+
-name|stringIdDataType
+name|statements
+operator|.
+name|getStringIdDataType
+argument_list|()
 operator|+
 literal|", LAST_ACKED_ID "
 operator|+
-name|sequenceDataType
-operator|+
-literal|", PRIMARY KEY ( CONTAINER, CLIENT_ID, SUB_NAME))"
-block|,                                          }
-return|;
-block|}
-specifier|public
-name|String
-name|getDeleteOldMessagesStatment
-parameter_list|()
-block|{
-return|return
-literal|"DELETE FROM "
-operator|+
-name|getTablePrefix
+name|statements
+operator|.
+name|getSequenceDataType
 argument_list|()
 operator|+
-name|messageTableName
+literal|", PRIMARY KEY ( CONTAINER, CLIENT_ID, SUB_NAME))"
+block|,                     }
+argument_list|)
+expr_stmt|;
+name|statements
+operator|.
+name|setDeleteOldMessagesStatement
+argument_list|(
+literal|"DELETE FROM "
+operator|+
+name|statements
+operator|.
+name|getFullMessageTableName
+argument_list|()
 operator|+
 literal|" WHERE ( EXPIRATION<>0 AND EXPIRATION<?)"
-return|;
-block|}
-block|}
-decl_stmt|;
-name|answer
+argument_list|)
+expr_stmt|;
+name|statements
 operator|.
 name|setLongDataType
 argument_list|(
 literal|"LONG"
 argument_list|)
 expr_stmt|;
-return|return
-name|answer
-return|;
-block|}
-specifier|public
-name|AxionJDBCAdapter
-parameter_list|()
-block|{
-name|this
-argument_list|(
-name|createStatementProvider
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|AxionJDBCAdapter
-parameter_list|(
-name|StatementProvider
-name|provider
-parameter_list|)
-block|{
 name|super
+operator|.
+name|setStatements
 argument_list|(
-name|provider
+name|statements
 argument_list|)
 expr_stmt|;
 block|}

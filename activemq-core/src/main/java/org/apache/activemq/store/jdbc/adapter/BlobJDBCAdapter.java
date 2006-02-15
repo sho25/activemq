@@ -131,28 +131,12 @@ name|store
 operator|.
 name|jdbc
 operator|.
-name|StatementProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|store
-operator|.
-name|jdbc
-operator|.
 name|TransactionContext
 import|;
 end_import
 
 begin_comment
-comment|/**  * This JDBCAdapter inserts and extracts BLOB data using the   * getBlob()/setBlob() operations.  This is a little more involved  * since to insert a blob you have to:  *   *  1: insert empty blob.  *  2: select the blob   *  3: finally update the blob with data value.   *   * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li></li>   *</ul>  *   * @version $Revision: 1.2 $  */
+comment|/**  * This JDBCAdapter inserts and extracts BLOB data using the   * getBlob()/setBlob() operations.  This is a little more involved  * since to insert a blob you have to:  *   *  1: insert empty blob.  *  2: select the blob   *  3: finally update the blob with data value.   *   * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li></li>   *</ul>  *   * @org.apache.xbean.XBean element="blobJDBCAdapter"  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class
@@ -162,27 +146,6 @@ name|BlobJDBCAdapter
 extends|extends
 name|DefaultJDBCAdapter
 block|{
-specifier|public
-name|BlobJDBCAdapter
-parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
-block|}
-specifier|public
-name|BlobJDBCAdapter
-parameter_list|(
-name|StatementProvider
-name|provider
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|provider
-argument_list|)
-expr_stmt|;
-block|}
 specifier|public
 name|void
 name|doAddMessage
@@ -227,9 +190,9 @@ name|c
 operator|.
 name|prepareStatement
 argument_list|(
-name|statementProvider
+name|statements
 operator|.
-name|getAddMessageStatment
+name|getAddMessageStatement
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -301,9 +264,9 @@ name|c
 operator|.
 name|prepareStatement
 argument_list|(
-name|statementProvider
+name|statements
 operator|.
-name|getFindMessageStatment
+name|getFindMessageStatement
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -389,9 +352,9 @@ name|c
 operator|.
 name|prepareStatement
 argument_list|(
-name|statementProvider
+name|statements
 operator|.
-name|getUpdateMessageStatment
+name|getUpdateMessageStatement
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -505,9 +468,9 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
-name|statementProvider
+name|statements
 operator|.
-name|getFindMessageStatment
+name|getFindMessageStatement
 argument_list|()
 argument_list|)
 expr_stmt|;
