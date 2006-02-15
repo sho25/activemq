@@ -360,6 +360,15 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
+name|JDBCPersistenceAdapter
+operator|.
+name|log
+argument_list|(
+literal|"JDBC Failure: "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 throw|throw
 name|IOExceptionSupport
 operator|.
@@ -443,6 +452,15 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
+name|JDBCPersistenceAdapter
+operator|.
+name|log
+argument_list|(
+literal|"JDBC Failure: "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 throw|throw
 name|IOExceptionSupport
 operator|.
@@ -570,6 +588,15 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
+name|JDBCPersistenceAdapter
+operator|.
+name|log
+argument_list|(
+literal|"JDBC Failure: "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 throw|throw
 name|IOExceptionSupport
 operator|.
@@ -665,6 +692,15 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
+name|JDBCPersistenceAdapter
+operator|.
+name|log
+argument_list|(
+literal|"JDBC Failure: "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 throw|throw
 name|IOExceptionSupport
 operator|.
@@ -744,6 +780,15 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
+name|JDBCPersistenceAdapter
+operator|.
+name|log
+argument_list|(
+literal|"JDBC Failure: "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 throw|throw
 name|IOExceptionSupport
 operator|.
@@ -893,6 +938,15 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
+name|JDBCPersistenceAdapter
+operator|.
+name|log
+argument_list|(
+literal|"JDBC Failure: "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 throw|throw
 name|IOExceptionSupport
 operator|.
@@ -972,6 +1026,15 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
+name|JDBCPersistenceAdapter
+operator|.
+name|log
+argument_list|(
+literal|"JDBC Failure: "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 throw|throw
 name|IOExceptionSupport
 operator|.

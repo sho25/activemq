@@ -510,6 +510,15 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
+name|JDBCPersistenceAdapter
+operator|.
+name|log
+argument_list|(
+literal|"JDBC Failure: "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return
 name|Collections
 operator|.
@@ -687,6 +696,15 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
+name|JDBCPersistenceAdapter
+operator|.
+name|log
+argument_list|(
+literal|"JDBC Failure: "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 throw|throw
 name|IOExceptionSupport
 operator|.
@@ -762,6 +780,13 @@ argument_list|(
 literal|"Cannot create tables due to: "
 operator|+
 name|e
+argument_list|)
+expr_stmt|;
+name|JDBCPersistenceAdapter
+operator|.
+name|log
+argument_list|(
+literal|"Failure Details: "
 argument_list|,
 name|e
 argument_list|)
@@ -918,6 +943,13 @@ argument_list|(
 literal|"Old message cleanup failed due to: "
 operator|+
 name|e
+argument_list|)
+expr_stmt|;
+name|JDBCPersistenceAdapter
+operator|.
+name|log
+argument_list|(
+literal|"Failure Details: "
 argument_list|,
 name|e
 argument_list|)
@@ -1164,7 +1196,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"JDBC error occured while trying to detect database type.  Will use default JDBC implementation: "
+literal|"JDBC error occurred while trying to detect database type.  Will use default JDBC implementation: "
 operator|+
 name|e
 operator|.
@@ -1172,13 +1204,11 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|log
+name|JDBCPersistenceAdapter
 operator|.
-name|debug
+name|log
 argument_list|(
-literal|"Reason: "
-operator|+
-name|e
+literal|"Failure Details: "
 argument_list|,
 name|e
 argument_list|)
@@ -1580,6 +1610,15 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
+name|JDBCPersistenceAdapter
+operator|.
+name|log
+argument_list|(
+literal|"JDBC Failure: "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 throw|throw
 name|IOExceptionSupport
 operator|.
@@ -1620,6 +1659,65 @@ operator|.
 name|useExternalMessageReferences
 operator|=
 name|useExternalMessageReferences
+expr_stmt|;
+block|}
+specifier|static
+specifier|public
+name|void
+name|log
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+name|SQLException
+name|e
+parameter_list|)
+block|{
+name|String
+name|s
+init|=
+name|msg
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+decl_stmt|;
+while|while
+condition|(
+name|e
+operator|.
+name|getNextException
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|e
+operator|=
+name|e
+operator|.
+name|getNextException
+argument_list|()
+expr_stmt|;
+name|s
+operator|+=
+literal|", due to: "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+expr_stmt|;
+block|}
+name|log
+operator|.
+name|debug
+argument_list|(
+name|s
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}

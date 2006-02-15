@@ -185,6 +185,22 @@ name|store
 operator|.
 name|jdbc
 operator|.
+name|JDBCPersistenceAdapter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|jdbc
+operator|.
 name|StatementProvider
 import|;
 end_import
@@ -573,6 +589,15 @@ name|getErrorCode
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|JDBCPersistenceAdapter
+operator|.
+name|log
+argument_list|(
+literal|"Failure details: "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -715,6 +740,15 @@ name|e
 operator|.
 name|getErrorCode
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|JDBCPersistenceAdapter
+operator|.
+name|log
+argument_list|(
+literal|"Failure details: "
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
