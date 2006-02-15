@@ -60,7 +60,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|JassAuthenticationPlugin
+name|JaasAuthenticationPlugin
 implements|implements
 name|BrokerPlugin
 block|{

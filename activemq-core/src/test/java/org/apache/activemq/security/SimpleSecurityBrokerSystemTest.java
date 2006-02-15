@@ -867,7 +867,7 @@ name|SimpleAuthenticationFactory
 argument_list|()
 block|,
 operator|new
-name|JassAuthenticationPlugin
+name|JaasAuthenticationPlugin
 argument_list|()
 block|, }
 argument_list|)
