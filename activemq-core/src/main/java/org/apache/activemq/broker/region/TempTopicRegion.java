@@ -175,6 +175,9 @@ specifier|protected
 name|Destination
 name|createDestination
 parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
 name|ActiveMQDestination
 name|destination
 parameter_list|)

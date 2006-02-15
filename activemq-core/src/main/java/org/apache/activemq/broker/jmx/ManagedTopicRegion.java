@@ -310,6 +310,9 @@ specifier|protected
 name|Destination
 name|createDestination
 parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
 name|ActiveMQDestination
 name|destination
 parameter_list|)
@@ -323,6 +326,8 @@ name|super
 operator|.
 name|createDestination
 argument_list|(
+name|context
+argument_list|,
 name|destination
 argument_list|)
 decl_stmt|;

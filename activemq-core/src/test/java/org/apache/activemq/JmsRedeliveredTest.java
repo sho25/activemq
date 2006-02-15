@@ -747,16 +747,27 @@ argument_list|,
 literal|"sub1"
 argument_list|)
 decl_stmt|;
+comment|// This case only works with persistent messages since transient messages
+comment|// are dropped when the consumer goes offline.
 name|MessageProducer
 name|producer
 init|=
+name|session
+operator|.
 name|createProducer
 argument_list|(
-name|session
-argument_list|,
 name|topic
 argument_list|)
 decl_stmt|;
+name|producer
+operator|.
+name|setDeliveryMode
+argument_list|(
+name|DeliveryMode
+operator|.
+name|PERSISTENT
+argument_list|)
+expr_stmt|;
 name|producer
 operator|.
 name|send

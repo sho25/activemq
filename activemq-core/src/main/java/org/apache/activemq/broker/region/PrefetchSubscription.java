@@ -321,6 +321,12 @@ name|dispatching
 init|=
 literal|false
 decl_stmt|;
+name|long
+name|enqueueCounter
+decl_stmt|;
+name|long
+name|dispatchCounter
+decl_stmt|;
 specifier|public
 name|PrefetchSubscription
 parameter_list|(
@@ -357,6 +363,9 @@ parameter_list|)
 throws|throws
 name|Throwable
 block|{
+name|enqueueCounter
+operator|++
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1475,6 +1484,9 @@ name|isSlaveBroker
 argument_list|()
 condition|)
 block|{
+name|dispatchCounter
+operator|++
+expr_stmt|;
 name|MessageDispatch
 name|md
 init|=
@@ -1808,6 +1820,24 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{}
+specifier|public
+name|long
+name|getDispatchCounter
+parameter_list|()
+block|{
+return|return
+name|dispatchCounter
+return|;
+block|}
+specifier|public
+name|long
+name|getEnqueueCounter
+parameter_list|()
+block|{
+return|return
+name|enqueueCounter
+return|;
+block|}
 block|}
 end_class
 
