@@ -145,6 +145,18 @@ name|messageTableName
 operator|+
 literal|" (CONTAINER)"
 block|,
+literal|"CREATE INDEX "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|"_EIDX ON "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" (EXPIRATION)"
+block|,
 literal|"CREATE TABLE "
 operator|+
 name|getTablePrefix
