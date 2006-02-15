@@ -1471,6 +1471,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+specifier|synchronized
 specifier|public
 name|void
 name|dispose
