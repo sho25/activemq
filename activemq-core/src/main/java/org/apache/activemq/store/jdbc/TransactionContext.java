@@ -59,6 +59,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Statement
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|sql
@@ -358,14 +368,25 @@ name|i
 operator|++
 control|)
 block|{
-if|if
-condition|(
+name|int
+name|code
+init|=
 name|rc
 index|[
 name|i
 index|]
-operator|!=
-literal|1
+decl_stmt|;
+if|if
+condition|(
+name|code
+operator|>
+literal|0
+operator|||
+name|code
+operator|==
+name|Statement
+operator|.
+name|SUCCESS_NO_INFO
 condition|)
 block|{
 throw|throw
@@ -373,6 +394,10 @@ operator|new
 name|SQLException
 argument_list|(
 name|message
+operator|+
+literal|". Response code: "
+operator|+
+name|code
 argument_list|)
 throw|;
 block|}

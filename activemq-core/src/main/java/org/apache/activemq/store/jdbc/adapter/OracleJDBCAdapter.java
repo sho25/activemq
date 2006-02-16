@@ -121,7 +121,7 @@ name|rs
 operator|.
 name|getBlob
 argument_list|(
-literal|1
+name|index
 argument_list|)
 decl_stmt|;
 return|return
