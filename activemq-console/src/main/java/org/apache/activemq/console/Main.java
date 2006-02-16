@@ -910,32 +910,7 @@ literal|".jar"
 argument_list|)
 condition|)
 block|{
-try|try
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Adding to classpath: "
-operator|+
-name|files
-index|[
-name|j
-index|]
-operator|.
-name|getCanonicalPath
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{}
+comment|// try{ System.out.println("Adding to classpath: " + files[j].getCanonicalPath()); }catch(Exception e){}
 name|urls
 operator|.
 name|add
