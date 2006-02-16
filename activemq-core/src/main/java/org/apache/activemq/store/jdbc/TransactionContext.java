@@ -379,11 +379,11 @@ decl_stmt|;
 if|if
 condition|(
 name|code
-operator|>
+operator|<
 literal|0
-operator|||
+operator|&&
 name|code
-operator|==
+operator|!=
 name|Statement
 operator|.
 name|SUCCESS_NO_INFO
