@@ -74,10 +74,6 @@ name|JournalDurableSubscriptionTest
 extends|extends
 name|DurableSubscriptionTestSupport
 block|{
-specifier|private
-name|boolean
-name|init
-decl_stmt|;
 specifier|protected
 name|PersistenceAdapter
 name|createPersistenceAdapter
