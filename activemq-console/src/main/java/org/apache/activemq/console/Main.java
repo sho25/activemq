@@ -837,29 +837,7 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-try|try
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Adding to classpath: "
-operator|+
-name|dir
-operator|.
-name|getCanonicalPath
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{}
+comment|// try{ System.out.println("Adding to classpath: " + dir.getCanonicalPath()); }catch(Exception e){}
 name|urls
 operator|.
 name|add
