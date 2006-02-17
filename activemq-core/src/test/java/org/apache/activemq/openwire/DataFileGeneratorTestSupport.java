@@ -516,7 +516,7 @@ name|openWireformat
 decl_stmt|;
 specifier|public
 name|void
-name|testControlFileIsValid
+name|XXXX_testControlFileIsValid
 parameter_list|()
 throws|throws
 name|Exception
@@ -530,7 +530,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|XXX_testGenerateAndReParsingIsTheSame
+name|testGenerateAndReParsingIsTheSame
 parameter_list|()
 throws|throws
 name|Exception
@@ -557,6 +557,17 @@ init|=
 name|createObject
 argument_list|()
 decl_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Created: "
+operator|+
+name|expected
+argument_list|)
+expr_stmt|;
 name|openWireformat
 operator|.
 name|marshal
@@ -603,13 +614,30 @@ argument_list|(
 name|dis
 argument_list|)
 decl_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Parsed: "
+operator|+
+name|actual
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Objects should be equal"
 argument_list|,
 name|expected
+operator|.
+name|toString
+argument_list|()
 argument_list|,
 name|actual
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// TODO generate a property based equality method?
