@@ -191,6 +191,11 @@ name|TYPE
 init|=
 literal|"type"
 decl_stmt|;
+name|Object
+name|PERSISTENT
+init|=
+literal|"persistent"
+decl_stmt|;
 block|}
 specifier|public
 interface|interface
