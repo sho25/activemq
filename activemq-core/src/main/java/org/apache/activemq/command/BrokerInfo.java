@@ -134,7 +134,7 @@ operator|=
 name|brokerURL
 expr_stmt|;
 block|}
-comment|/**      * @openwire:property version=1      */
+comment|/**      * @openwire:property version=1 testSize=0      */
 specifier|public
 name|BrokerInfo
 index|[]
