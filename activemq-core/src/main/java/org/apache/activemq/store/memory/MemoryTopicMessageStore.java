@@ -586,6 +586,12 @@ name|lastAck
 operator|==
 literal|null
 decl_stmt|;
+comment|// the message table is a synchronizedMap - so just have to synchronize here
+synchronized|synchronized
+init|(
+name|messageTable
+init|)
+block|{
 for|for
 control|(
 name|Iterator
@@ -683,6 +689,7 @@ argument_list|(
 name|lastAck
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

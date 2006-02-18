@@ -383,6 +383,12 @@ parameter_list|)
 throws|throws
 name|Throwable
 block|{
+comment|// the message table is a synchronizedMap - so just have to synchronize here
+synchronized|synchronized
+init|(
+name|messageTable
+init|)
+block|{
 for|for
 control|(
 name|Iterator
@@ -449,6 +455,7 @@ operator|)
 name|msg
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
