@@ -665,7 +665,7 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|Transport
+name|DefaultTransportListener
 import|;
 end_import
 
@@ -679,7 +679,7 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|TransportListener
+name|Transport
 import|;
 end_import
 
@@ -867,6 +867,8 @@ begin_class
 specifier|public
 class|class
 name|ActiveMQConnection
+extends|extends
+name|DefaultTransportListener
 implements|implements
 name|Connection
 implements|,
@@ -877,8 +879,6 @@ implements|,
 name|StatsCapable
 implements|,
 name|Closeable
-implements|,
-name|TransportListener
 implements|,
 name|StreamConnection
 block|{

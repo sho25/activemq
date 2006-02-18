@@ -43,9 +43,11 @@ begin_comment
 comment|/**  * An asynchronous listener of commands  *  * @version $Revision$  */
 end_comment
 
-begin_interface
+begin_class
 specifier|public
-interface|interface
+class|class
+name|DefaultTransportListener
+implements|implements
 name|TransportListener
 block|{
 comment|/**      * called to process a command      * @param command      */
@@ -56,7 +58,7 @@ parameter_list|(
 name|Command
 name|command
 parameter_list|)
-function_decl|;
+block|{     }
 comment|/**      * An unrecoverable exception has occured on the transport      * @param error      */
 specifier|public
 name|void
@@ -65,21 +67,21 @@ parameter_list|(
 name|IOException
 name|error
 parameter_list|)
-function_decl|;
+block|{     }
 comment|/**      * The transport has suffered an interuption from which it hopes to recover      *      */
 specifier|public
 name|void
 name|transportInterupted
 parameter_list|()
-function_decl|;
+block|{     }
 comment|/**      * The transport has resumed after an interuption      *      */
 specifier|public
 name|void
 name|transportResumed
 parameter_list|()
-function_decl|;
+block|{     }
 block|}
-end_interface
+end_class
 
 end_unit
 

@@ -61,10 +61,10 @@ begin_class
 specifier|public
 class|class
 name|TransportFilter
+extends|extends
+name|DefaultTransportListener
 implements|implements
 name|Transport
-implements|,
-name|TransportListener
 block|{
 specifier|final
 specifier|protected
