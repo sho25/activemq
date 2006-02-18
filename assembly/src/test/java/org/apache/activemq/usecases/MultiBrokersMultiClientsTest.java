@@ -108,7 +108,7 @@ specifier|final
 name|int
 name|BROKER_COUNT
 init|=
-literal|5
+literal|2
 decl_stmt|;
 comment|// number of brokers to network
 specifier|public
@@ -221,6 +221,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//wait for consumers to get propagated
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
 comment|// Send messages
 for|for
 control|(
@@ -429,6 +437,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
 comment|// Send messages
 for|for
 control|(
