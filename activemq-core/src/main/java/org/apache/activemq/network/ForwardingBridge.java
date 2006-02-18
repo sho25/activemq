@@ -231,6 +231,20 @@ name|activemq
 operator|.
 name|transport
 operator|.
+name|DefaultTransportListener
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
 name|Transport
 import|;
 end_import
@@ -461,7 +475,7 @@ operator|.
 name|setTransportListener
 argument_list|(
 operator|new
-name|TransportListener
+name|DefaultTransportListener
 argument_list|()
 block|{
 specifier|public
@@ -500,7 +514,7 @@ operator|.
 name|setTransportListener
 argument_list|(
 operator|new
-name|TransportListener
+name|DefaultTransportListener
 argument_list|()
 block|{
 specifier|public
@@ -1040,11 +1054,9 @@ block|}
 block|}
 else|else
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|warn
 argument_list|(
 literal|"Unexpected remote command: "
 operator|+
