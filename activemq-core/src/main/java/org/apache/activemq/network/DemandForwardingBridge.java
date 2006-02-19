@@ -421,6 +421,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|transport
+operator|.
+name|TransportListener
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|util
 operator|.
 name|IdGenerator
@@ -796,6 +810,10 @@ name|boolean
 name|decreaseNetworkConsumerPriority
 decl_stmt|;
 specifier|protected
+name|boolean
+name|shutDown
+decl_stmt|;
+specifier|protected
 name|int
 name|networkTTL
 init|=
@@ -890,7 +908,7 @@ operator|.
 name|setTransportListener
 argument_list|(
 operator|new
-name|DefaultTransportListener
+name|TransportListener
 argument_list|()
 block|{
 specifier|public
@@ -919,6 +937,48 @@ name|serviceRemoteException
 argument_list|(
 name|error
 argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|transportInterupted
+parameter_list|()
+block|{
+comment|//clear any subscriptions - to try and prevent the bridge from stalling the broker
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Outbound transport to "
+operator|+
+name|remoteBrokerName
+operator|+
+literal|" interrupted ..."
+argument_list|)
+expr_stmt|;
+name|clearDownSubscriptions
+argument_list|()
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|transportResumed
+parameter_list|()
+block|{
+comment|//restart and static subscriptions - the consumer advisories will be replayed
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Outbound transport to "
+operator|+
+name|remoteBrokerName
+operator|+
+literal|" resumed"
+argument_list|)
+expr_stmt|;
+name|setupStaticDestinations
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -1323,7 +1383,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * stop the bridge      * @throws Exception       */
 specifier|public
 name|void
 name|stop
@@ -1331,6 +1390,39 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|shutDown
+operator|=
+literal|true
+expr_stmt|;
+name|doStop
+argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * stop the bridge      * @throws Exception       */
+specifier|protected
+name|void
+name|doStop
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|" stopping "
+operator|+
+name|localBrokerName
+operator|+
+literal|" bridge to "
+operator|+
+name|remoteBrokerName
+operator|+
+literal|" is disposed already ? "
+operator|+
+name|disposed
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1359,6 +1451,21 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|shutDown
+condition|)
+block|{
+name|remoteBroker
+operator|.
+name|oneway
+argument_list|(
+operator|new
+name|ShutdownInfo
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|localConnectionInfo
 operator|!=
 literal|null
@@ -1366,7 +1473,7 @@ condition|)
 block|{
 name|localBroker
 operator|.
-name|request
+name|oneway
 argument_list|(
 name|localConnectionInfo
 operator|.
@@ -1376,11 +1483,21 @@ argument_list|)
 expr_stmt|;
 name|remoteBroker
 operator|.
-name|request
+name|oneway
 argument_list|(
 name|remoteConnectionInfo
 operator|.
 name|createRemoveCommand
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+name|localBroker
+operator|.
+name|oneway
+argument_list|(
+operator|new
+name|ShutdownInfo
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1397,24 +1514,6 @@ operator|.
 name|setTransportListener
 argument_list|(
 literal|null
-argument_list|)
-expr_stmt|;
-name|remoteBroker
-operator|.
-name|oneway
-argument_list|(
-operator|new
-name|ShutdownInfo
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|localBroker
-operator|.
-name|oneway
-argument_list|(
-operator|new
-name|ShutdownInfo
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1464,6 +1563,19 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+name|log
+operator|.
+name|debug
+argument_list|(
+name|localBrokerName
+operator|+
+literal|" bridge to "
+operator|+
+name|remoteBrokerName
+operator|+
+literal|" stopped"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|protected
 name|void
@@ -1656,9 +1768,7 @@ argument_list|(
 literal|"Disconnecting loop back connection."
 argument_list|)
 expr_stmt|;
-name|waitStarted
-argument_list|()
-expr_stmt|;
+comment|//waitStarted();
 name|ServiceSupport
 operator|.
 name|dispose
@@ -2222,13 +2332,6 @@ argument_list|)
 expr_stmt|;
 name|message
 operator|.
-name|setRecievedByDFBridge
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|message
-operator|.
 name|evictMarshlledForm
 argument_list|()
 expr_stmt|;
@@ -2537,11 +2640,11 @@ operator|+
 literal|" Shutting down"
 argument_list|)
 expr_stmt|;
-name|disposed
+name|shutDown
 operator|=
 literal|true
 expr_stmt|;
-name|stop
+name|doStop
 argument_list|()
 expr_stmt|;
 block|}
@@ -2876,6 +2979,32 @@ operator|=
 name|networkTTL
 expr_stmt|;
 block|}
+comment|/**      * @return Returns the shutDown.      */
+specifier|public
+name|boolean
+name|isShutDown
+parameter_list|()
+block|{
+return|return
+name|shutDown
+return|;
+block|}
+comment|/**      * @param shutDown The shutDown to set.      */
+specifier|public
+name|void
+name|setShutDown
+parameter_list|(
+name|boolean
+name|shutDown
+parameter_list|)
+block|{
+name|this
+operator|.
+name|shutDown
+operator|=
+name|shutDown
+expr_stmt|;
+block|}
 specifier|private
 name|boolean
 name|contains
@@ -3169,13 +3298,11 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Subscriptions for these desitnations are always created      * @throws IOException       *      */
+comment|/**      * Subscriptions for these desitnations are always created      *      */
 specifier|protected
 name|void
 name|setupStaticDestinations
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|ActiveMQDestination
 index|[]
@@ -3223,11 +3350,32 @@ argument_list|(
 name|dest
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|addSubscription
 argument_list|(
 name|sub
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Failed to add static destination "
+operator|+
+name|dest
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|log
@@ -3250,6 +3398,21 @@ block|}
 specifier|protected
 name|DemandSubscription
 name|createDemandSubscription
+parameter_list|(
+name|ConsumerInfo
+name|info
+parameter_list|)
+block|{
+return|return
+name|doCreateDemandSubscription
+argument_list|(
+name|info
+argument_list|)
+return|;
+block|}
+specifier|protected
+name|DemandSubscription
+name|doCreateDemandSubscription
 parameter_list|(
 name|ConsumerInfo
 name|info
@@ -3760,14 +3923,53 @@ operator|.
 name|getDataStructure
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
+name|hops
+operator|=
 name|info
 operator|.
-name|isNetworkSubscription
+name|getBrokerPath
+argument_list|()
+operator|==
+literal|null
+condition|?
+literal|0
+else|:
+name|message
+operator|.
+name|getBrokerPath
+argument_list|()
+operator|.
+name|length
+expr_stmt|;
+if|if
+condition|(
+name|hops
+operator|>=
+name|networkTTL
+condition|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isTraceEnabled
 argument_list|()
 condition|)
 block|{
+name|log
+operator|.
+name|trace
+argument_list|(
+literal|"ConsumerInfo advisory restricted to "
+operator|+
+name|networkTTL
+operator|+
+literal|" network hops ignoring: "
+operator|+
+name|message
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 literal|false
 return|;
@@ -3790,6 +3992,11 @@ name|await
 argument_list|()
 expr_stmt|;
 block|}
+specifier|protected
+name|void
+name|clearDownSubscriptions
+parameter_list|()
+block|{              }
 block|}
 end_class
 
