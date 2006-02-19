@@ -171,13 +171,6 @@ name|getBrokerPath
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|localInfo
-operator|.
-name|setNetworkSubscription
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|remoteSubsIds
 operator|.
 name|add
