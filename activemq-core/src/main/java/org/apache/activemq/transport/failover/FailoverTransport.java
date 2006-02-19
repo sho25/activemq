@@ -1404,6 +1404,8 @@ name|i
 init|=
 literal|0
 init|;
+operator|!
+name|disposed
 condition|;
 name|i
 operator|++
