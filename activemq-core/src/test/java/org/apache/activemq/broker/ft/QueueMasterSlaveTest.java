@@ -272,6 +272,13 @@ name|inflightMessageCount
 operator|=
 literal|0
 expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
 name|master
 operator|.
 name|stop
