@@ -23,6 +23,8 @@ begin_class
 specifier|public
 class|class
 name|JournalTransaction
+extends|extends
+name|DataStructureSupport
 implements|implements
 name|DataStructure
 block|{

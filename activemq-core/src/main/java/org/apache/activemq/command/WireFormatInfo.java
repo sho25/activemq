@@ -153,7 +153,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * @openwire:property version=1 size=8      */
+comment|/**      * @openwire:property version=1 size=8 testSize=-1      */
 specifier|public
 name|byte
 index|[]

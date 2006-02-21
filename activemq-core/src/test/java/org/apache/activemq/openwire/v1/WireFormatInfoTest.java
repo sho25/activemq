@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test case for the OpenWire marshalling for WireFormatInfo  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  * @version $Revision$  */
+comment|/**  * Test case for the OpenWire marshalling for WireFormatInfo  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  * @version $Revision: $  */
 end_comment
 
 begin_class
@@ -143,16 +143,6 @@ name|WireFormatInfo
 operator|)
 name|object
 decl_stmt|;
-name|info
-operator|.
-name|setMagic
-argument_list|(
-literal|"Magic:1"
-operator|.
-name|getBytes
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|info
 operator|.
 name|setVersion

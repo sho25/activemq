@@ -23,6 +23,8 @@ begin_class
 specifier|public
 class|class
 name|JournalQueueAck
+extends|extends
+name|DataStructureSupport
 implements|implements
 name|DataStructure
 block|{

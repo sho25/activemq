@@ -85,14 +85,6 @@ specifier|abstract
 class|class
 name|TransactionIdMarshaller
 extends|extends
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|openwire
-operator|.
 name|DataStreamMarshaller
 block|{
 comment|/**      * Un-marshal an object instance from the data input stream      *      * @param o the object to un-marshal      * @param dataIn the data input stream to build the object from      * @throws IOException      */

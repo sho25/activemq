@@ -84,14 +84,6 @@ specifier|public
 class|class
 name|ConsumerIdMarshaller
 extends|extends
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|openwire
-operator|.
 name|DataStreamMarshaller
 block|{
 comment|/**      * Return the type of Data Structure we marshal      * @return short representation of the type data structure      */

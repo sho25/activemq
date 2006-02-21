@@ -37,6 +37,8 @@ begin_class
 specifier|public
 class|class
 name|KeepAliveInfo
+extends|extends
+name|DataStructureSupport
 implements|implements
 name|Command
 block|{
