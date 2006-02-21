@@ -484,8 +484,49 @@ init|(
 name|client
 init|)
 block|{
-comment|// System.err.println("POST client="+client+" session="+request.getSession().getId()+" info="+request.getPathInfo()+" contentType="+request.getContentType());
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"POST client="
+operator|+
+name|client
+operator|+
+literal|" session="
+operator|+
+name|request
+operator|.
+name|getSession
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|" info="
+operator|+
+name|request
+operator|.
+name|getPathInfo
+argument_list|()
+operator|+
+literal|" contentType="
+operator|+
+name|request
+operator|.
+name|getContentType
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// dump(request.getParameterMap());
+block|}
 name|String
 index|[]
 name|destinations
@@ -538,7 +579,38 @@ operator|.
 name|length
 condition|)
 block|{
-comment|// System.err.println("ERROR destination="+destinations.length+" message="+messages.length+" type="+types.length);
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"ERROR destination="
+operator|+
+name|destinations
+operator|.
+name|length
+operator|+
+literal|" message="
+operator|+
+name|messages
+operator|.
+name|length
+operator|+
+literal|" type="
+operator|+
+name|types
+operator|.
+name|length
+argument_list|)
+expr_stmt|;
+block|}
 name|response
 operator|.
 name|sendError
@@ -571,7 +643,6 @@ control|)
 block|{
 try|try
 block|{
-comment|// System.err.println(i+" destination="+destinations[i]+" message="+messages[i]+" type="+types[i]);
 name|String
 name|type
 init|=
@@ -595,6 +666,60 @@ name|i
 index|]
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+name|i
+operator|+
+literal|" destination="
+operator|+
+name|destinations
+index|[
+name|i
+index|]
+operator|+
+literal|" message="
+operator|+
+name|messages
+index|[
+name|i
+index|]
+operator|+
+literal|" type="
+operator|+
+name|types
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+name|destination
+operator|+
+literal|" is a "
+operator|+
+name|destination
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 literal|"listen"
@@ -653,7 +778,35 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
-comment|// System.err.println("Subscribed: "+consumer+" to "+destination+" id="+messages[i]);
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Subscribed: "
+operator|+
+name|consumer
+operator|+
+literal|" to "
+operator|+
+name|destination
+operator|+
+literal|" id="
+operator|+
+name|messages
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -702,7 +855,24 @@ argument_list|(
 name|consumer
 argument_list|)
 expr_stmt|;
-comment|// System.err.println("Unsubscribed: "+consumer);
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Unsubscribed: "
+operator|+
+name|consumer
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -741,7 +911,31 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-comment|// System.err.println("Sent "+messages[i]+" to "+destination);
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Sent "
+operator|+
+name|messages
+index|[
+name|i
+index|]
+operator|+
+literal|" to "
+operator|+
+name|destination
+argument_list|)
+expr_stmt|;
+block|}
 comment|// TODO return message ID.
 block|}
 else|else
@@ -867,7 +1061,48 @@ argument_list|(
 name|request
 argument_list|)
 decl_stmt|;
-comment|// System.err.println("GET client="+client+" session="+request.getSession().getId()+" uri="+request.getRequestURI()+" query="+request.getQueryString());
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"GET client="
+operator|+
+name|client
+operator|+
+literal|" session="
+operator|+
+name|request
+operator|.
+name|getSession
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|" uri="
+operator|+
+name|request
+operator|.
+name|getRequestURI
+argument_list|()
+operator|+
+literal|" query="
+operator|+
+name|request
+operator|.
+name|getQueryString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|doMessages
 argument_list|(
 name|client
@@ -931,7 +1166,24 @@ argument_list|(
 name|request
 argument_list|)
 decl_stmt|;
-comment|// System.err.println("doMessage timeout="+timeout);
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"doMessage timeout="
+operator|+
+name|timeout
+argument_list|)
+expr_stmt|;
+block|}
 name|Continuation
 name|continuation
 init|=
@@ -1021,7 +1273,28 @@ operator|.
 name|receiveNoWait
 argument_list|()
 expr_stmt|;
-comment|// System.err.println("received "+message+" from "+consumer);
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"received "
+operator|+
+name|message
+operator|+
+literal|" from "
+operator|+
+name|consumer
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|// Get an existing Continuation or create a new one if there are no
 comment|// messages
@@ -1359,14 +1632,46 @@ name|TextMessage
 operator|)
 name|message
 decl_stmt|;
-name|writer
-operator|.
-name|print
-argument_list|(
+name|String
+name|txt
+init|=
 name|textMsg
 operator|.
 name|getText
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|txt
+operator|.
+name|startsWith
+argument_list|(
+literal|"<?"
+argument_list|)
+condition|)
+block|{
+name|txt
+operator|=
+name|txt
+operator|.
+name|substring
+argument_list|(
+name|txt
+operator|.
+name|indexOf
+argument_list|(
+literal|"?>"
+argument_list|)
+operator|+
+literal|2
+argument_list|)
+expr_stmt|;
+block|}
+name|writer
+operator|.
+name|print
+argument_list|(
+name|txt
 argument_list|)
 expr_stmt|;
 block|}
@@ -1680,8 +1985,28 @@ init|(
 name|client
 init|)
 block|{
-comment|// System.err.println("message for "+consumer+"
-comment|// continuation="+continuation);
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"message for "
+operator|+
+name|consumer
+operator|+
+literal|"continuation="
+operator|+
+name|continuation
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|continuation
