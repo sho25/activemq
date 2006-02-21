@@ -27,22 +27,6 @@ name|activemq
 operator|.
 name|console
 operator|.
-name|formatter
-operator|.
-name|GlobalWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|console
-operator|.
 name|util
 operator|.
 name|AmqMessagesUtil
@@ -59,9 +43,37 @@ name|activemq
 operator|.
 name|console
 operator|.
-name|util
+name|formatter
 operator|.
-name|JmxMBeansUtil
+name|GlobalWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQQueue
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQTopic
 import|;
 end_import
 
@@ -69,9 +81,9 @@ begin_import
 import|import
 name|javax
 operator|.
-name|management
+name|jms
 operator|.
-name|ObjectInstance
+name|Destination
 import|;
 end_import
 
@@ -82,16 +94,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|StringTokenizer
 import|;
 end_import
 
@@ -131,6 +133,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|StringTokenizer
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Iterator
 import|;
 end_import
@@ -138,9 +150,9 @@ end_import
 begin_class
 specifier|public
 class|class
-name|BrowseCommand
+name|AmqBrowseCommand
 extends|extends
-name|AbstractJmxCommand
+name|AbstractAmqCommand
 block|{
 specifier|public
 specifier|static
@@ -239,7 +251,7 @@ name|Exception
 block|{
 try|try
 block|{
-comment|// If there is no queue name specified, let's select all
+comment|// If no destination specified
 if|if
 condition|(
 name|tokens
@@ -248,108 +260,202 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|GlobalWriter
+operator|.
+name|printException
+argument_list|(
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"No JMS destination specified."
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+comment|// If no broker url specified
+if|if
+condition|(
+name|getBrokerUrl
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+name|GlobalWriter
+operator|.
+name|printException
+argument_list|(
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"No broker url specified. Use the --amqurl option to specify a broker url."
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+comment|// Display the messages for each destination
+for|for
+control|(
+name|Iterator
+name|i
+init|=
 name|tokens
 operator|.
-name|add
+name|iterator
+argument_list|()
+init|;
+name|i
+operator|.
+name|hasNext
+argument_list|()
+condition|;
+control|)
+block|{
+name|String
+name|destName
+init|=
+operator|(
+name|String
+operator|)
+name|i
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+name|Destination
+name|dest
+decl_stmt|;
+comment|// If destination has been explicitly specified as a queue
+if|if
+condition|(
+name|destName
+operator|.
+name|startsWith
 argument_list|(
-literal|"*"
+name|QUEUE_PREFIX
+argument_list|)
+condition|)
+block|{
+name|dest
+operator|=
+operator|new
+name|ActiveMQQueue
+argument_list|(
+name|destName
+operator|.
+name|substring
+argument_list|(
+name|QUEUE_PREFIX
+operator|.
+name|length
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// If destination has been explicitly specified as a topic
+block|}
+elseif|else
+if|if
+condition|(
+name|destName
+operator|.
+name|startsWith
+argument_list|(
+name|TOPIC_PREFIX
+argument_list|)
+condition|)
+block|{
+name|dest
+operator|=
+operator|new
+name|ActiveMQTopic
+argument_list|(
+name|destName
+operator|.
+name|substring
+argument_list|(
+name|TOPIC_PREFIX
+operator|.
+name|length
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// By default destination is assumed to be a queue
+block|}
+else|else
+block|{
+name|dest
+operator|=
+operator|new
+name|ActiveMQQueue
+argument_list|(
+name|destName
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Iterate through the queue names
-for|for
-control|(
-name|Iterator
-name|i
-init|=
-name|tokens
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
+comment|// Query for the messages to view
 name|List
-name|queueList
+name|addMsgs
 init|=
-name|JmxMBeansUtil
+name|AmqMessagesUtil
 operator|.
-name|queryMBeans
+name|getMessages
 argument_list|(
-name|useJmxServiceUrl
+name|getBrokerUrl
 argument_list|()
 argument_list|,
-literal|"Type=Queue,Destination="
-operator|+
-name|i
-operator|.
-name|next
-argument_list|()
-operator|+
-literal|",*"
-argument_list|)
-decl_stmt|;
-comment|// Iterate through the queue result
-for|for
-control|(
-name|Iterator
-name|j
-init|=
-name|queueList
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|j
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
-name|List
-name|messages
-init|=
-name|JmxMBeansUtil
-operator|.
-name|createMessageQueryFilter
-argument_list|(
-name|useJmxServiceUrl
-argument_list|()
+name|dest
 argument_list|,
-operator|(
-operator|(
-name|ObjectInstance
-operator|)
-name|j
-operator|.
-name|next
-argument_list|()
-operator|)
-operator|.
-name|getObjectName
-argument_list|()
-argument_list|)
-operator|.
-name|query
-argument_list|(
 name|queryAddObjects
 argument_list|)
 decl_stmt|;
+comment|// Query for the messages to remove from view
+if|if
+condition|(
+name|querySubObjects
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+name|List
+name|subMsgs
+init|=
+name|AmqMessagesUtil
+operator|.
+name|getMessages
+argument_list|(
+name|getBrokerUrl
+argument_list|()
+argument_list|,
+name|dest
+argument_list|,
+name|querySubObjects
+argument_list|)
+decl_stmt|;
+name|addMsgs
+operator|.
+name|removeAll
+argument_list|(
+name|subMsgs
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Display the messages
 name|GlobalWriter
 operator|.
 name|printMessage
 argument_list|(
-name|JmxMBeansUtil
+name|AmqMessagesUtil
 operator|.
 name|filterMessagesView
 argument_list|(
-name|messages
+name|addMsgs
 argument_list|,
 name|groupViews
 argument_list|,
@@ -357,7 +463,6 @@ name|queryViews
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 catch|catch
@@ -942,13 +1047,15 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"Task Usage: Main browse [browse-options]<destinations>"
+literal|"Task Usage: Main browse --amqurl<broker url> [browse-options]<destinations>"
 block|,
 literal|"Description: Display selected destination's messages."
 block|,
 literal|""
 block|,
 literal|"Browse Options:"
+block|,
+literal|"    --amqurl<url>                Set the broker URL to connect to."
 block|,
 literal|"    --msgsel<msgsel1,msglsel2>   Add to the search list messages matched by the query similar to"
 block|,
@@ -960,8 +1067,6 @@ literal|"                                  message header, or the message body."
 block|,
 literal|"    --view<attr1>,<attr2>,...    Select the specific attribute of the message to view."
 block|,
-literal|"    --jmxurl<url>                Set the JMX URL to connect to."
-block|,
 literal|"    --version                     Display the version information."
 block|,
 literal|"    -h,-?,--help                  Display the browse broker help information."
@@ -970,7 +1075,7 @@ literal|""
 block|,
 literal|"Examples:"
 block|,
-literal|"    Main browse FOO.BAR"
+literal|"    Main browse --amqurl tcp://localhost:61616 FOO.BAR"
 block|,
 literal|"        - Print the message header, custom message header, and message body of all messages in the"
 block|,
@@ -978,19 +1083,19 @@ literal|"          queue FOO.BAR"
 block|,
 literal|""
 block|,
-literal|"    Main browse -Vheader,body queue:FOO.BAR"
+literal|"    Main browse --amqurl tcp://localhost:61616 -Vheader,body queue:FOO.BAR"
 block|,
 literal|"        - Print only the message header and message body of all messages in the queue FOO.BAR"
 block|,
 literal|""
 block|,
-literal|"    Main browse -Vheader --view custom:MyField queue:FOO.BAR"
+literal|"    Main browse --amqurl tcp://localhost:61616 -Vheader --view custom:MyField queue:FOO.BAR"
 block|,
 literal|"        - Print the message header and the custom field 'MyField' of all messages in the queue FOO.BAR"
 block|,
 literal|""
 block|,
-literal|"    Main browse --msgsel JMSMessageID='*:10',JMSPriority>5 FOO.BAR"
+literal|"    Main browse --amqurl tcp://localhost:61616 --msgsel JMSMessageID='*:10',JMSPriority>5 FOO.BAR"
 block|,
 literal|"        - Print all the message fields that has a JMSMessageID in the header field that matches the"
 block|,

@@ -318,7 +318,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Try to match the attribute list using teh regular expression map      * @param data - attribute list to match      * @param regex - regex map      * @return true if the attribute list matches the regex map      */
+comment|/**      * Try to match the attribute list using the regular expression map      * @param data - attribute list to match      * @param regex - regex map      * @return true if the attribute list matches the regex map      */
 specifier|protected
 name|boolean
 name|matches
