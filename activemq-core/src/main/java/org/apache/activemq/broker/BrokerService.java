@@ -1617,9 +1617,6 @@ condition|(
 name|deleteAllMessagesOnStartup
 condition|)
 block|{
-name|getPersistenceAdapter
-argument_list|()
-operator|.
 name|deleteAllMessages
 argument_list|()
 expr_stmt|;
@@ -2842,6 +2839,21 @@ operator|.
 name|plugins
 operator|=
 name|plugins
+expr_stmt|;
+block|}
+comment|/**      * Delete all messages from the persistent store      * @throws IOException      */
+specifier|public
+name|void
+name|deleteAllMessages
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|getPersistenceAdapter
+argument_list|()
+operator|.
+name|deleteAllMessages
+argument_list|()
 expr_stmt|;
 block|}
 comment|// Implementation methods
