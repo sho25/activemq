@@ -1389,11 +1389,6 @@ name|disposed
 operator|=
 literal|true
 expr_stmt|;
-name|reconnectTask
-operator|.
-name|shutdown
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|Iterator
@@ -1457,6 +1452,11 @@ name|throwFirstException
 argument_list|()
 expr_stmt|;
 block|}
+name|reconnectTask
+operator|.
+name|shutdown
+argument_list|()
+expr_stmt|;
 block|}
 specifier|public
 name|long
