@@ -19,6 +19,18 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|codehaus
+operator|.
+name|jam
+operator|.
+name|JClass
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -48,6 +60,13 @@ name|filePostFix
 operator|=
 literal|".cs"
 expr_stmt|;
+if|if
+condition|(
+name|destDir
+operator|==
+literal|null
+condition|)
+block|{
 name|destDir
 operator|=
 operator|new
@@ -56,6 +75,7 @@ argument_list|(
 literal|"../openwire-dotnet/src/OpenWire.Client/Commands"
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|super
 operator|.

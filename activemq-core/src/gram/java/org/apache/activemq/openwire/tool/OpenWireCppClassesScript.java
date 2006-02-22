@@ -61,6 +61,13 @@ operator|=
 name|getFilePostFix
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|destDir
+operator|==
+literal|null
+condition|)
+block|{
 name|destDir
 operator|=
 operator|new
@@ -69,6 +76,7 @@ argument_list|(
 literal|"../openwire-cpp/src/command"
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|super
 operator|.
