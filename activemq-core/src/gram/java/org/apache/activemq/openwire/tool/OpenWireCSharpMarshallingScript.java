@@ -1380,7 +1380,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.WriteBytes("
+literal|"dataOut.Write("
 operator|+
 name|getter
 operator|+
