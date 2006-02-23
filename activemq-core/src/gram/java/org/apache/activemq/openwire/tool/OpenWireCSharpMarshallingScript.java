@@ -210,7 +210,7 @@ literal|"info."
 operator|+
 name|propertyName
 operator|+
-literal|" = dataIn.ReadByte();"
+literal|" = DataStreamMarshaller.ReadByte(dataIn);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -233,7 +233,7 @@ literal|"info."
 operator|+
 name|propertyName
 operator|+
-literal|" = dataIn.ReadChar();"
+literal|" = DataStreamMarshaller.ReadChar(dataIn);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -256,7 +256,7 @@ literal|"info."
 operator|+
 name|propertyName
 operator|+
-literal|" = dataIn.ReadInt16();"
+literal|" = DataStreamMarshaller.ReadShort(dataIn);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -279,7 +279,7 @@ literal|"info."
 operator|+
 name|propertyName
 operator|+
-literal|" = dataIn.ReadInt32();"
+literal|" = DataStreamMarshaller.ReadInt(dataIn);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -604,7 +604,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"            short size = dataIn.ReadInt16();"
+literal|"            short size = DataStreamMarshaller.ReadShort(dataIn);"
 argument_list|)
 expr_stmt|;
 name|out
@@ -1228,11 +1228,11 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.Write((byte) "
+literal|"DataStreamMarshaller.WriteByte("
 operator|+
 name|getter
 operator|+
-literal|");"
+literal|", dataOut);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1251,11 +1251,11 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.Write((char) "
+literal|"DataStreamMarshaller.WriteChar("
 operator|+
 name|getter
 operator|+
-literal|");"
+literal|", dataOut);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1274,11 +1274,11 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.Write((short)"
+literal|"DataStreamMarshaller.WriteShort("
 operator|+
 name|getter
 operator|+
-literal|");"
+literal|", dataOut);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1297,11 +1297,11 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.Write((int) "
+literal|"DataStreamMarshaller.WriteInt("
 operator|+
 name|getter
 operator|+
-literal|");"
+literal|", dataOut);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1408,11 +1408,11 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"           dataOut.Write((int)"
+literal|"           DataStreamMarshaller.WriteInt("
 operator|+
 name|getter
 operator|+
-literal|".Length);"
+literal|".Length, dataOut);"
 argument_list|)
 expr_stmt|;
 name|out
