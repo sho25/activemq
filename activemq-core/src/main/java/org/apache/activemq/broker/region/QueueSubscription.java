@@ -327,6 +327,8 @@ parameter_list|(
 name|MessageReference
 name|n
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|IndirectMessageReference
 name|node
@@ -346,6 +348,22 @@ condition|)
 return|return
 literal|false
 return|;
+comment|// allow user-level security
+if|if
+condition|(
+operator|!
+name|context
+operator|.
+name|isAllowedToConsume
+argument_list|(
+name|n
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 comment|// Keep message groups together.
 name|String
 name|groupId

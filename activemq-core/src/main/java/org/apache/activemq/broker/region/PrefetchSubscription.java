@@ -1791,7 +1791,7 @@ return|return
 name|md
 return|;
 block|}
-comment|/**      * Use when a matched message is about to be dispatched to the client.      *       * @param node      * @return false if the message should not be dispatched to the client (another sub may have already dispatched it      *         for example).      */
+comment|/**      * Use when a matched message is about to be dispatched to the client.      *       * @param node      * @return false if the message should not be dispatched to the client (another sub may have already dispatched it      *         for example).      * @throws IOException       */
 specifier|abstract
 specifier|protected
 name|boolean
@@ -1800,6 +1800,8 @@ parameter_list|(
 name|MessageReference
 name|node
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 comment|/**      * Used during acknowledgment to remove the message.      *       * @throws IOException      */
 specifier|protected
