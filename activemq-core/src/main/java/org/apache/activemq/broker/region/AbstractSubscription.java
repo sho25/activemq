@@ -39,6 +39,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -503,6 +513,8 @@ parameter_list|,
 name|MessageEvaluationContext
 name|context
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|ConsumerId
 name|targetConsumerId
@@ -539,6 +551,7 @@ block|}
 try|try
 block|{
 return|return
+operator|(
 name|selector
 operator|==
 literal|null
@@ -548,6 +561,16 @@ operator|.
 name|matches
 argument_list|(
 name|context
+argument_list|)
+operator|)
+operator|&&
+name|this
+operator|.
+name|context
+operator|.
+name|isAllowedToConsume
+argument_list|(
+name|node
 argument_list|)
 return|;
 block|}
