@@ -266,6 +266,10 @@ name|setSubcriptionName
 argument_list|(
 name|getLocalBrokerName
 argument_list|()
+operator|+
+literal|"_"
+operator|+
+name|name
 argument_list|)
 expr_stmt|;
 block|}

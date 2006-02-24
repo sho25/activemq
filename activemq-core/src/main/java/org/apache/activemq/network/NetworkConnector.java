@@ -379,6 +379,12 @@ name|networkTTL
 init|=
 literal|1
 decl_stmt|;
+specifier|private
+name|String
+name|name
+init|=
+literal|"bridge"
+decl_stmt|;
 specifier|public
 name|NetworkConnector
 parameter_list|()
@@ -1036,6 +1042,32 @@ operator|=
 name|brokerName
 expr_stmt|;
 block|}
+comment|/**      * @return Returns the name.      */
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|name
+return|;
+block|}
+comment|/**      * @param name The name to set.      */
+specifier|public
+name|void
+name|setName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|this
+operator|.
+name|name
+operator|=
+name|name
+expr_stmt|;
+block|}
 comment|/**      * @return Returns the durableDestinations.      */
 specifier|public
 name|Set
@@ -1478,6 +1510,14 @@ operator|.
 name|setLocalBrokerName
 argument_list|(
 name|brokerName
+argument_list|)
+expr_stmt|;
+name|result
+operator|.
+name|setName
+argument_list|(
+name|getBrokerName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|result

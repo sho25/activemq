@@ -684,6 +684,12 @@ init|=
 literal|">"
 decl_stmt|;
 specifier|protected
+name|String
+name|name
+init|=
+literal|"bridge"
+decl_stmt|;
+specifier|protected
 name|ConsumerInfo
 name|demandConsumerInfo
 decl_stmt|;
@@ -1148,6 +1154,8 @@ operator|+
 name|remoteBrokerName
 operator|+
 literal|"_inbound"
+operator|+
+name|name
 expr_stmt|;
 name|localConnectionInfo
 operator|.
@@ -1278,6 +1286,8 @@ operator|+
 name|localBrokerName
 operator|+
 literal|"_outbound"
+operator|+
+name|name
 argument_list|)
 expr_stmt|;
 name|remoteBroker
@@ -2901,30 +2911,30 @@ return|return
 name|remoteBroker
 return|;
 block|}
-comment|/**      * @return Returns the remoteBrokerName.      */
+comment|/**      * @return Returns the name.      */
 specifier|public
 name|String
-name|getRemoteBrokerName
+name|getName
 parameter_list|()
 block|{
 return|return
-name|remoteBrokerName
+name|name
 return|;
 block|}
-comment|/**      * @param remoteBrokerName The remoteBrokerName to set.      */
+comment|/**      * @param name The name to set.      */
 specifier|public
 name|void
-name|setRemoteBrokerName
+name|setName
 parameter_list|(
 name|String
-name|remoteBrokerName
+name|name
 parameter_list|)
 block|{
 name|this
 operator|.
-name|remoteBrokerName
+name|name
 operator|=
-name|remoteBrokerName
+name|name
 expr_stmt|;
 block|}
 comment|/**      * @return Returns the decreaseNetworkConsumerPriority.      */
