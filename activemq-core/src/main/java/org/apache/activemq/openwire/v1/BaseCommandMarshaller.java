@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marshalling code for Open Wire Format for BaseCommand  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  * @version $Revision$  */
+comment|/**  * Marshalling code for Open Wire Format for BaseCommandMarshaller  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -201,7 +201,7 @@ expr_stmt|;
 return|return
 name|rc
 operator|+
-literal|2
+literal|1
 return|;
 block|}
 comment|/**      * Write a object instance to data output stream      *      * @param o the instance to be marshaled      * @param dataOut the output stream      * @throws IOException thrown if an error occurs      */

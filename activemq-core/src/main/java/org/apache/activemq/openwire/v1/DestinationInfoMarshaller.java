@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marshalling code for Open Wire Format for DestinationInfo  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  * @version $Revision$  */
+comment|/**  * Marshalling code for Open Wire Format for DestinationInfoMarshaller  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -156,14 +156,6 @@ operator|.
 name|setConnectionId
 argument_list|(
 operator|(
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|ConnectionId
 operator|)
 name|unmarsalCachedObject
@@ -181,14 +173,6 @@ operator|.
 name|setDestination
 argument_list|(
 operator|(
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|ActiveMQDestination
 operator|)
 name|unmarsalCachedObject
@@ -241,27 +225,11 @@ operator|.
 name|readShort
 argument_list|()
 decl_stmt|;
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|BrokerId
 name|value
 index|[]
 init|=
 operator|new
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|BrokerId
 index|[
 name|size
@@ -288,14 +256,6 @@ name|i
 index|]
 operator|=
 operator|(
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|BrokerId
 operator|)
 name|unmarsalNestedObject

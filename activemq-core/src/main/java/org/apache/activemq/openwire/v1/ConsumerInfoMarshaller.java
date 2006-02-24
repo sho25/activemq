@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marshalling code for Open Wire Format for ConsumerInfo  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  * @version $Revision$  */
+comment|/**  * Marshalling code for Open Wire Format for ConsumerInfoMarshaller  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -156,14 +156,6 @@ operator|.
 name|setConsumerId
 argument_list|(
 operator|(
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|ConsumerId
 operator|)
 name|unmarsalCachedObject
@@ -191,14 +183,6 @@ operator|.
 name|setDestination
 argument_list|(
 operator|(
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|ActiveMQDestination
 operator|)
 name|unmarsalCachedObject
@@ -311,27 +295,11 @@ operator|.
 name|readShort
 argument_list|()
 decl_stmt|;
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|BrokerId
 name|value
 index|[]
 init|=
 operator|new
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|BrokerId
 index|[
 name|size
@@ -358,14 +326,6 @@ name|i
 index|]
 operator|=
 operator|(
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|BrokerId
 operator|)
 name|unmarsalNestedObject
@@ -575,7 +535,7 @@ expr_stmt|;
 return|return
 name|rc
 operator|+
-literal|5
+literal|2
 return|;
 block|}
 comment|/**      * Write a object instance to data output stream      *      * @param o the instance to be marshaled      * @param dataOut the output stream      * @throws IOException thrown if an error occurs      */

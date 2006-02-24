@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marshalling code for Open Wire Format for BrokerInfo  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  * @version $Revision$  */
+comment|/**  * Marshalling code for Open Wire Format for BrokerInfoMarshaller  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -156,14 +156,6 @@ operator|.
 name|setBrokerId
 argument_list|(
 operator|(
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|BrokerId
 operator|)
 name|unmarsalCachedObject
@@ -204,27 +196,11 @@ operator|.
 name|readShort
 argument_list|()
 decl_stmt|;
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|BrokerInfo
 name|value
 index|[]
 init|=
 operator|new
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|BrokerInfo
 index|[
 name|size
@@ -251,14 +227,6 @@ name|i
 index|]
 operator|=
 operator|(
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|BrokerInfo
 operator|)
 name|unmarsalNestedObject
