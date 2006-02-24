@@ -167,6 +167,12 @@ init|=
 literal|true
 decl_stmt|;
 specifier|private
+name|boolean
+name|joinOnStop
+init|=
+literal|true
+decl_stmt|;
+specifier|private
 name|Thread
 name|runner
 decl_stmt|;
@@ -312,6 +318,8 @@ condition|(
 name|runner
 operator|!=
 literal|null
+operator|&&
+name|joinOnStop
 condition|)
 block|{
 name|runner
@@ -398,6 +406,7 @@ return|return
 name|daemon
 return|;
 block|}
+comment|/**      * Sets whether the background read thread is a daemon thread or not      */
 specifier|public
 name|void
 name|setDaemon
@@ -411,6 +420,31 @@ operator|.
 name|daemon
 operator|=
 name|daemon
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isJoinOnStop
+parameter_list|()
+block|{
+return|return
+name|joinOnStop
+return|;
+block|}
+comment|/**      * Sets whether the background read thread is joined with (waited for) on a stop      */
+specifier|public
+name|void
+name|setJoinOnStop
+parameter_list|(
+name|boolean
+name|joinOnStop
+parameter_list|)
+block|{
+name|this
+operator|.
+name|joinOnStop
+operator|=
+name|joinOnStop
 expr_stmt|;
 block|}
 specifier|protected
