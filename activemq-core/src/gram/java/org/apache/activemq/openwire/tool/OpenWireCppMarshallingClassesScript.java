@@ -25,7 +25,43 @@ name|codehaus
 operator|.
 name|jam
 operator|.
-name|*
+name|JAnnotation
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|codehaus
+operator|.
+name|jam
+operator|.
+name|JAnnotationValue
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|codehaus
+operator|.
+name|jam
+operator|.
+name|JClass
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|codehaus
+operator|.
+name|jam
+operator|.
+name|JProperty
 import|;
 end_import
 
@@ -35,17 +71,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
+name|PrintWriter
 import|;
 end_import
 
@@ -70,419 +96,25 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version $Revision$  */
+comment|/**  *  * @version $Revision$  */
 end_comment
 
 begin_class
 specifier|public
 specifier|abstract
 class|class
-name|OpenWireJavaMarshallingScript
+name|OpenWireCppMarshallingClassesScript
 extends|extends
-name|OpenWireClassesScript
+name|OpenWireCppMarshallingHeadersScript
 block|{
 specifier|protected
-name|List
-name|concreteClasses
-init|=
-operator|new
-name|ArrayList
-argument_list|()
-decl_stmt|;
-specifier|protected
-name|File
-name|factoryFile
-decl_stmt|;
-specifier|protected
 name|String
-name|factoryFileName
-init|=
-literal|"MarshallerFactory"
-decl_stmt|;
-specifier|protected
-name|String
-name|indent
-init|=
-literal|"    "
-decl_stmt|;
-specifier|public
-name|Object
-name|run
+name|getFilePostFix
 parameter_list|()
 block|{
-if|if
-condition|(
-name|destDir
-operator|==
-literal|null
-condition|)
-block|{
-name|destDir
-operator|=
-operator|new
-name|File
-argument_list|(
-literal|"src/main/java/org/apache/activemq/openwire/v"
-operator|+
-name|getOpenwireVersion
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-name|Object
-name|answer
-init|=
-name|super
-operator|.
-name|run
-argument_list|()
-decl_stmt|;
-name|processFactory
-argument_list|()
-expr_stmt|;
 return|return
-name|answer
+literal|".cpp"
 return|;
-block|}
-specifier|protected
-name|void
-name|processFactory
-parameter_list|()
-block|{
-if|if
-condition|(
-name|factoryFile
-operator|==
-literal|null
-condition|)
-block|{
-name|factoryFile
-operator|=
-operator|new
-name|File
-argument_list|(
-name|destDir
-argument_list|,
-name|factoryFileName
-operator|+
-name|filePostFix
-argument_list|)
-expr_stmt|;
-block|}
-name|PrintWriter
-name|out
-init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|out
-operator|=
-operator|new
-name|PrintWriter
-argument_list|(
-operator|new
-name|FileWriter
-argument_list|(
-name|factoryFile
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|generateFactory
-argument_list|(
-name|out
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|out
-operator|!=
-literal|null
-condition|)
-block|{
-name|out
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-block|}
-specifier|protected
-specifier|abstract
-name|void
-name|generateFactory
-parameter_list|(
-name|PrintWriter
-name|out
-parameter_list|)
-function_decl|;
-specifier|protected
-name|void
-name|processClass
-parameter_list|(
-name|JClass
-name|jclass
-parameter_list|)
-block|{
-name|super
-operator|.
-name|processClass
-argument_list|(
-name|jclass
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|jclass
-operator|.
-name|isAbstract
-argument_list|()
-condition|)
-block|{
-name|concreteClasses
-operator|.
-name|add
-argument_list|(
-name|jclass
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-specifier|protected
-name|String
-name|getClassName
-parameter_list|(
-name|JClass
-name|jclass
-parameter_list|)
-block|{
-return|return
-name|super
-operator|.
-name|getClassName
-argument_list|(
-name|jclass
-argument_list|)
-operator|+
-literal|"Marshaller"
-return|;
-block|}
-specifier|protected
-name|String
-name|getBaseClassName
-parameter_list|(
-name|JClass
-name|jclass
-parameter_list|)
-block|{
-name|String
-name|answer
-init|=
-literal|"DataStreamMarshaller"
-decl_stmt|;
-name|JClass
-name|superclass
-init|=
-name|jclass
-operator|.
-name|getSuperclass
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|superclass
-operator|!=
-literal|null
-condition|)
-block|{
-name|String
-name|superName
-init|=
-name|superclass
-operator|.
-name|getSimpleName
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|superName
-operator|.
-name|equals
-argument_list|(
-literal|"Object"
-argument_list|)
-operator|&&
-operator|!
-name|superName
-operator|.
-name|equals
-argument_list|(
-literal|"JNDIBaseStorable"
-argument_list|)
-operator|&&
-operator|!
-name|superName
-operator|.
-name|equals
-argument_list|(
-literal|"DataStructureSupport"
-argument_list|)
-condition|)
-block|{
-name|answer
-operator|=
-name|superName
-operator|+
-literal|"Marshaller"
-expr_stmt|;
-block|}
-block|}
-return|return
-name|answer
-return|;
-block|}
-specifier|protected
-name|void
-name|initialiseManuallyMaintainedClasses
-parameter_list|()
-block|{     }
-specifier|protected
-name|void
-name|generateUnmarshalBody
-parameter_list|(
-name|PrintWriter
-name|out
-parameter_list|)
-block|{
-name|List
-name|properties
-init|=
-name|getProperties
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|Iterator
-name|iter
-init|=
-name|properties
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
-name|JProperty
-name|property
-init|=
-operator|(
-name|JProperty
-operator|)
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
-name|JAnnotation
-name|annotation
-init|=
-name|property
-operator|.
-name|getAnnotation
-argument_list|(
-literal|"openwire:property"
-argument_list|)
-decl_stmt|;
-name|JAnnotationValue
-name|size
-init|=
-name|annotation
-operator|.
-name|getValue
-argument_list|(
-literal|"size"
-argument_list|)
-decl_stmt|;
-name|JClass
-name|propertyType
-init|=
-name|property
-operator|.
-name|getType
-argument_list|()
-decl_stmt|;
-name|String
-name|propertyTypeName
-init|=
-name|propertyType
-operator|.
-name|getSimpleName
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|propertyType
-operator|.
-name|isArrayType
-argument_list|()
-operator|&&
-operator|!
-name|propertyTypeName
-operator|.
-name|equals
-argument_list|(
-literal|"byte[]"
-argument_list|)
-condition|)
-block|{
-name|generateUnmarshalBodyForArrayProperty
-argument_list|(
-name|out
-argument_list|,
-name|property
-argument_list|,
-name|size
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|generateUnmarshalBodyForProperty
-argument_list|(
-name|out
-argument_list|,
-name|property
-argument_list|,
-name|size
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 block|}
 specifier|protected
 name|void
@@ -502,7 +134,7 @@ name|out
 operator|.
 name|print
 argument_list|(
-literal|"        "
+literal|"    "
 argument_list|)
 expr_stmt|;
 name|String
@@ -545,7 +177,7 @@ literal|"info."
 operator|+
 name|setter
 operator|+
-literal|"(bs.readBoolean());"
+literal|"( bs.readBoolean() );"
 argument_list|)
 expr_stmt|;
 block|}
@@ -568,7 +200,7 @@ literal|"info."
 operator|+
 name|setter
 operator|+
-literal|"(dataIn.readByte());"
+literal|"( DataStreamMarshaller.readByte(dataIn) );"
 argument_list|)
 expr_stmt|;
 block|}
@@ -591,7 +223,7 @@ literal|"info."
 operator|+
 name|setter
 operator|+
-literal|"(dataIn.readChar());"
+literal|"( DataStreamMarshaller.readChar(dataIn) );"
 argument_list|)
 expr_stmt|;
 block|}
@@ -614,7 +246,7 @@ literal|"info."
 operator|+
 name|setter
 operator|+
-literal|"(dataIn.readShort());"
+literal|"( DataStreamMarshaller.readShort(dataIn) );"
 argument_list|)
 expr_stmt|;
 block|}
@@ -637,7 +269,7 @@ literal|"info."
 operator|+
 name|setter
 operator|+
-literal|"(dataIn.readInt());"
+literal|"( DataStreamMarshaller.readInt(dataIn) );"
 argument_list|)
 expr_stmt|;
 block|}
@@ -660,7 +292,7 @@ literal|"info."
 operator|+
 name|setter
 operator|+
-literal|"(unmarshalLong(wireFormat, dataIn, bs));"
+literal|"( UnmarshalLong(wireFormat, dataIn, bs) );"
 argument_list|)
 expr_stmt|;
 block|}
@@ -683,7 +315,7 @@ literal|"info."
 operator|+
 name|setter
 operator|+
-literal|"(readString(dataIn, bs));"
+literal|"( readString(dataIn, bs) );"
 argument_list|)
 expr_stmt|;
 block|}
@@ -695,6 +327,13 @@ operator|.
 name|equals
 argument_list|(
 literal|"byte[]"
+argument_list|)
+operator|||
+name|type
+operator|.
+name|equals
+argument_list|(
+literal|"ByteSequence"
 argument_list|)
 condition|)
 block|{
@@ -709,46 +348,18 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"{"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            byte data[] = new byte["
+literal|"info."
+operator|+
+name|setter
+operator|+
+literal|"( readBytes(dataIn, "
 operator|+
 name|size
 operator|.
 name|asInt
 argument_list|()
 operator|+
-literal|"];"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            dataIn.readFully(data);"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            info."
-operator|+
-name|setter
-operator|+
-literal|"(data);"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        }"
+literal|") );"
 argument_list|)
 expr_stmt|;
 block|}
@@ -758,143 +369,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"if( bs.readBoolean() ) {"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            int size = dataIn.readInt();"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            byte data[] = new byte[size];"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            dataIn.readFully(data);"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            info."
+literal|"info."
 operator|+
 name|setter
 operator|+
-literal|"(data);"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            } else {"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            info."
-operator|+
-name|setter
-operator|+
-literal|"(null);"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        }"
+literal|"( readBytes(dataIn, bs.readBoolean()) );"
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-elseif|else
-if|if
-condition|(
-name|type
-operator|.
-name|equals
-argument_list|(
-literal|"ByteSequence"
-argument_list|)
-condition|)
-block|{
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"if( bs.readBoolean() ) {"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            int size = dataIn.readInt();"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            byte data[] = new byte[size];"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            dataIn.readFully(data);"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            info."
-operator|+
-name|setter
-operator|+
-literal|"(new org.activeio.ByteSequence(data,0,size));"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            } else {"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            info."
-operator|+
-name|setter
-operator|+
-literal|"(null);"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        }"
-argument_list|)
-expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -916,11 +398,7 @@ literal|"info."
 operator|+
 name|setter
 operator|+
-literal|"(("
-operator|+
-name|type
-operator|+
-literal|") unmarsalThrowable(wireFormat, dataIn, bs));"
+literal|"( unmarshalBrokerError(wireFormat, dataIn, bs) );"
 argument_list|)
 expr_stmt|;
 block|}
@@ -941,11 +419,11 @@ literal|"info."
 operator|+
 name|setter
 operator|+
-literal|"(("
+literal|"( ("
 operator|+
 name|type
 operator|+
-literal|") unmarsalCachedObject(wireFormat, dataIn, bs));"
+literal|") unmarshalCachedObject(wireFormat, dataIn, bs) );"
 argument_list|)
 expr_stmt|;
 block|}
@@ -959,11 +437,11 @@ literal|"info."
 operator|+
 name|setter
 operator|+
-literal|"(("
+literal|"( ("
 operator|+
 name|type
 operator|+
-literal|") unmarsalNestedObject(wireFormat, dataIn, bs));"
+literal|") unmarshalNestedObject(wireFormat, dataIn, bs) );"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1006,7 +484,7 @@ name|setter
 init|=
 name|property
 operator|.
-name|getSetter
+name|getGetter
 argument_list|()
 operator|.
 name|getSimpleName
@@ -1028,18 +506,18 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"        {"
+literal|"    {"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"            "
+literal|"        "
 operator|+
 name|arrayType
 operator|+
-literal|" value[] = new "
+literal|"[] value = new "
 operator|+
 name|arrayType
 operator|+
@@ -1057,7 +535,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"            "
+literal|"        "
 operator|+
 literal|"for( int i=0; i< "
 operator|+
@@ -1073,29 +551,11 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"                value[i] = ("
+literal|"            value[i] = ("
 operator|+
 name|arrayType
 operator|+
-literal|") unmarsalNestedObject(wireFormat,dataIn, bs);"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            }"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            info."
-operator|+
-name|setter
-operator|+
-literal|"(value);"
+literal|") unmarshalNestedObject(wireFormat,dataIn, bs);"
 argument_list|)
 expr_stmt|;
 name|out
@@ -1105,6 +565,24 @@ argument_list|(
 literal|"        }"
 argument_list|)
 expr_stmt|;
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"        info."
+operator|+
+name|setter
+operator|+
+literal|"( value );"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"    }"
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -1112,25 +590,25 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"        if (bs.readBoolean()) {"
+literal|"    if (bs.readBoolean()) {"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"            short size = dataIn.readShort();"
+literal|"        short size = DataStreamMarshaller.readShort(dataIn);"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"            "
+literal|"        "
 operator|+
 name|arrayType
 operator|+
-literal|" value[] = new "
+literal|"[] value = new "
 operator|+
 name|arrayType
 operator|+
@@ -1141,36 +619,18 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"            for( int i=0; i< size; i++ ) {"
+literal|"        for( int i=0; i< size; i++ ) {"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"                value[i] = ("
+literal|"            value[i] = ("
 operator|+
 name|arrayType
 operator|+
-literal|") unmarsalNestedObject(wireFormat,dataIn, bs);"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            }"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            info."
-operator|+
-name|setter
-operator|+
-literal|"(value);"
+literal|") unmarshalNestedObject(wireFormat,dataIn, bs);"
 argument_list|)
 expr_stmt|;
 name|out
@@ -1184,25 +644,43 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"        else {"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"            info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
-literal|"(null);"
+literal|"( value );"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"        }"
+literal|"    }"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"    else {"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"        info."
+operator|+
+name|setter
+operator|+
+literal|"( null );"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"    }"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1413,7 +891,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc+=marshal1Long(wireFormat, "
+literal|"rc += marshal1Long(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1453,6 +931,13 @@ name|equals
 argument_list|(
 literal|"byte[]"
 argument_list|)
+operator|||
+name|type
+operator|.
+name|equals
+argument_list|(
+literal|"ByteSequence"
+argument_list|)
 condition|)
 block|{
 if|if
@@ -1477,7 +962,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"        rc += "
+literal|"    rc += "
 operator|+
 name|getter
 operator|+
@@ -1485,7 +970,7 @@ literal|"==null ? 0 : "
 operator|+
 name|getter
 operator|+
-literal|".length+4;"
+literal|".Length+4;"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1499,44 +984,6 @@ name|asInt
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-elseif|else
-if|if
-condition|(
-name|type
-operator|.
-name|equals
-argument_list|(
-literal|"ByteSequence"
-argument_list|)
-condition|)
-block|{
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"bs.writeBoolean("
-operator|+
-name|getter
-operator|+
-literal|"!=null);"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        rc += "
-operator|+
-name|getter
-operator|+
-literal|"==null ? 0 : "
-operator|+
-name|getter
-operator|+
-literal|".getLength()+4;"
-argument_list|)
-expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -1601,7 +1048,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += marshalThrowable(wireFormat, "
+literal|"rc += marshalBrokerError(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1784,11 +1231,11 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.writeByte("
+literal|"DataStreamMarshaller.writeByte("
 operator|+
 name|getter
 operator|+
-literal|");"
+literal|", dataOut);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1807,11 +1254,11 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.writeChar("
+literal|"DataStreamMarshaller.writeChar("
 operator|+
 name|getter
 operator|+
-literal|");"
+literal|", dataOut);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1830,11 +1277,11 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.writeShort("
+literal|"DataStreamMarshaller.writeShort("
 operator|+
 name|getter
 operator|+
-literal|");"
+literal|", dataOut);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1853,11 +1300,11 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.writeInt("
+literal|"DataStreamMarshaller.writeInt("
 operator|+
 name|getter
 operator|+
-literal|");"
+literal|", dataOut);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1916,6 +1363,13 @@ name|equals
 argument_list|(
 literal|"byte[]"
 argument_list|)
+operator|||
+name|type
+operator|.
+name|equals
+argument_list|(
+literal|"ByteSequence"
+argument_list|)
 condition|)
 block|{
 if|if
@@ -1957,18 +1411,18 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"           dataOut.writeInt("
+literal|"       DataStreamMarshaller.writeInt("
 operator|+
 name|getter
 operator|+
-literal|".length);"
+literal|".Length, dataOut);"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"           dataOut.write("
+literal|"       dataOut.write("
 operator|+
 name|getter
 operator|+
@@ -1979,61 +1433,10 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"        }"
+literal|"    }"
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-elseif|else
-if|if
-condition|(
-name|type
-operator|.
-name|equals
-argument_list|(
-literal|"ByteSequence"
-argument_list|)
-condition|)
-block|{
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"if(bs.readBoolean()) {"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"           org.activeio.ByteSequence data = "
-operator|+
-name|getter
-operator|+
-literal|";"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"           dataOut.writeInt(data.getLength());"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"           dataOut.write(data.getData(), data.getOffset(), data.getLength());"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"        }"
-argument_list|)
-expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -2098,7 +1501,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"marshalThrowable(wireFormat, "
+literal|"marshalBrokerError(wireFormat, "
 operator|+
 name|getter
 operator|+
