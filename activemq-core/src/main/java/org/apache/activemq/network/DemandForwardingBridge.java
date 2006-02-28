@@ -3841,6 +3841,9 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 name|int
 name|hops
