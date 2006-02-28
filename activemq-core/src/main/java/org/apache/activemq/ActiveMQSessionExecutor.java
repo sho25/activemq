@@ -309,6 +309,7 @@ name|MessageDispatch
 name|message
 parameter_list|)
 block|{
+comment|// TODO  - we should use a Map for this indexed by consumerId
 for|for
 control|(
 name|Iterator
