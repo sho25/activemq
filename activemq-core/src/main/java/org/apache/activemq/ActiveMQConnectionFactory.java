@@ -393,6 +393,8 @@ implements|,
 name|TopicConnectionFactory
 implements|,
 name|StatsCapable
+implements|,
+name|Cloneable
 block|{
 specifier|public
 specifier|static
@@ -588,6 +590,43 @@ name|brokerURL
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+comment|/**      * Returns a copy of the given connection factory      */
+specifier|public
+name|ActiveMQConnectionFactory
+name|copy
+parameter_list|()
+block|{
+try|try
+block|{
+return|return
+operator|(
+name|ActiveMQConnectionFactory
+operator|)
+name|super
+operator|.
+name|clone
+argument_list|()
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|CloneNotSupportedException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"This should never happen: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/**      * @param brokerURL      * @return      * @throws URISyntaxException      */
 specifier|private
