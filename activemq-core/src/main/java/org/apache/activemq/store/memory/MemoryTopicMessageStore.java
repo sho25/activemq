@@ -691,6 +691,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|listener
+operator|.
+name|finished
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 specifier|public

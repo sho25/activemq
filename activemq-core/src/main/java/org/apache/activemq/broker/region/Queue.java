@@ -687,6 +687,11 @@ literal|"Should not be called."
 argument_list|)
 throw|;
 block|}
+specifier|public
+name|void
+name|finished
+parameter_list|()
+block|{                 }
 block|}
 argument_list|)
 expr_stmt|;

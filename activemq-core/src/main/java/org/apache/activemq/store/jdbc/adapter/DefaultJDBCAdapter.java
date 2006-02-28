@@ -1825,6 +1825,11 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+name|listener
+operator|.
+name|finished
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 specifier|public
@@ -2143,6 +2148,11 @@ name|close
 argument_list|(
 name|s
 argument_list|)
+expr_stmt|;
+name|listener
+operator|.
+name|finished
+argument_list|()
 expr_stmt|;
 block|}
 block|}

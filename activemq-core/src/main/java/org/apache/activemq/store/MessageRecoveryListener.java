@@ -56,6 +56,10 @@ parameter_list|)
 throws|throws
 name|Throwable
 function_decl|;
+name|void
+name|finished
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

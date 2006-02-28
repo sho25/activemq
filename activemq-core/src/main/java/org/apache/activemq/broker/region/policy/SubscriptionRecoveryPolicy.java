@@ -93,6 +93,34 @@ name|Topic
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQDestination
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|Message
+import|;
+end_import
+
 begin_comment
 comment|/**  * Abstraction to allow different recovery policies to be plugged  * into the region implementations.  This is used by a topic to retroactively recover  * messages that the subscription missed.  *   * @version $Revision$  */
 end_comment
@@ -104,7 +132,7 @@ name|SubscriptionRecoveryPolicy
 extends|extends
 name|Service
 block|{
-comment|/**      * A message was sent to the destination.      *       * @param context      * @param node      * @return TODO      * @throws Throwable      */
+comment|/**      * A message was sent to the destination.      *       * @param context      * @param message       * @param node      * @return true if successful      * @throws Throwable      */
 name|boolean
 name|add
 parameter_list|(
@@ -117,7 +145,7 @@ parameter_list|)
 throws|throws
 name|Throwable
 function_decl|;
-comment|/**      * Let a subscription recover message held by the policy.      *       * @param context      * @param topic TODO      * @param topic       * @param node      * @throws Throwable      */
+comment|/**      * Let a subscription recover message held by the policy.      *       * @param context      * @param topic      * @param sub       * @param node      * @throws Throwable      */
 name|void
 name|recover
 parameter_list|(
@@ -129,6 +157,17 @@ name|topic
 parameter_list|,
 name|Subscription
 name|sub
+parameter_list|)
+throws|throws
+name|Throwable
+function_decl|;
+comment|/**      * @param dest       * @return messages      * @throws Throwable       */
+name|Message
+index|[]
+name|browse
+parameter_list|(
+name|ActiveMQDestination
+name|dest
 parameter_list|)
 throws|throws
 name|Throwable

@@ -428,6 +428,17 @@ name|reference
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|finished
+parameter_list|()
+block|{
+name|listener
+operator|.
+name|finished
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 argument_list|)
 expr_stmt|;

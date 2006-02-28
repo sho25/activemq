@@ -81,6 +81,34 @@ name|Topic
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQDestination
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|Message
+import|;
+end_import
+
 begin_comment
 comment|/**  * This is the default Topic recovery policy which does not recover any messages.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
@@ -139,6 +167,25 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+specifier|public
+name|Message
+index|[]
+name|browse
+parameter_list|(
+name|ActiveMQDestination
+name|dest
+parameter_list|)
+throws|throws
+name|Throwable
+block|{
+return|return
+operator|new
+name|Message
+index|[
+literal|0
+index|]
+return|;
+block|}
 block|}
 end_class
 

@@ -274,6 +274,12 @@ name|DeadLetterStrategy
 name|getDeadLetterStrategy
 parameter_list|()
 function_decl|;
+specifier|public
+name|Message
+index|[]
+name|browse
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
