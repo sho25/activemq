@@ -131,7 +131,7 @@ return|;
 block|}
 specifier|protected
 name|void
-name|generateUnmarshalBodyForProperty
+name|generateTightUnmarshalBodyForProperty
 parameter_list|(
 name|PrintWriter
 name|out
@@ -210,7 +210,7 @@ literal|"info."
 operator|+
 name|propertyName
 operator|+
-literal|" = DataStreamMarshaller.ReadByte(dataIn);"
+literal|" = BaseDataStreamMarshaller.ReadByte(dataIn);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -233,7 +233,7 @@ literal|"info."
 operator|+
 name|propertyName
 operator|+
-literal|" = DataStreamMarshaller.ReadChar(dataIn);"
+literal|" = BaseDataStreamMarshaller.ReadChar(dataIn);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -256,7 +256,7 @@ literal|"info."
 operator|+
 name|propertyName
 operator|+
-literal|" = DataStreamMarshaller.ReadShort(dataIn);"
+literal|" = BaseDataStreamMarshaller.ReadShort(dataIn);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -279,7 +279,7 @@ literal|"info."
 operator|+
 name|propertyName
 operator|+
-literal|" = DataStreamMarshaller.ReadInt(dataIn);"
+literal|" = BaseDataStreamMarshaller.ReadInt(dataIn);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -302,7 +302,7 @@ literal|"info."
 operator|+
 name|propertyName
 operator|+
-literal|" = UnmarshalLong(wireFormat, dataIn, bs);"
+literal|" = TightUnmarshalLong(wireFormat, dataIn, bs);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -325,7 +325,7 @@ literal|"info."
 operator|+
 name|propertyName
 operator|+
-literal|" = ReadString(dataIn, bs);"
+literal|" = TightUnmarshalString(dataIn, bs);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -408,7 +408,7 @@ literal|"info."
 operator|+
 name|propertyName
 operator|+
-literal|" = UnmarshalBrokerError(wireFormat, dataIn, bs);"
+literal|" = TightUnmarshalBrokerError(wireFormat, dataIn, bs);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -433,7 +433,7 @@ literal|" = ("
 operator|+
 name|type
 operator|+
-literal|") UnmarshalCachedObject(wireFormat, dataIn, bs);"
+literal|") TightUnmarshalCachedObject(wireFormat, dataIn, bs);"
 argument_list|)
 expr_stmt|;
 block|}
@@ -451,14 +451,14 @@ literal|" = ("
 operator|+
 name|type
 operator|+
-literal|") UnmarshalNestedObject(wireFormat, dataIn, bs);"
+literal|") TightUnmarshalNestedObject(wireFormat, dataIn, bs);"
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 specifier|protected
 name|void
-name|generateUnmarshalBodyForArrayProperty
+name|generateTightUnmarshalBodyForArrayProperty
 parameter_list|(
 name|PrintWriter
 name|out
@@ -562,7 +562,7 @@ literal|"                value[i] = ("
 operator|+
 name|arrayType
 operator|+
-literal|") UnmarshalNestedObject(wireFormat,dataIn, bs);"
+literal|") TightUnmarshalNestedObject(wireFormat,dataIn, bs);"
 argument_list|)
 expr_stmt|;
 name|out
@@ -604,7 +604,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"            short size = DataStreamMarshaller.ReadShort(dataIn);"
+literal|"            short size = BaseDataStreamMarshaller.ReadShort(dataIn);"
 argument_list|)
 expr_stmt|;
 name|out
@@ -637,7 +637,7 @@ literal|"                value[i] = ("
 operator|+
 name|arrayType
 operator|+
-literal|") UnmarshalNestedObject(wireFormat,dataIn, bs);"
+literal|") TightUnmarshalNestedObject(wireFormat,dataIn, bs);"
 argument_list|)
 expr_stmt|;
 name|out
@@ -694,7 +694,7 @@ block|}
 block|}
 specifier|protected
 name|int
-name|generateMarshal1Body
+name|generateTightMarshal1Body
 parameter_list|(
 name|PrintWriter
 name|out
@@ -843,7 +843,7 @@ condition|)
 block|{
 name|baseSize
 operator|+=
-literal|1
+literal|2
 expr_stmt|;
 block|}
 elseif|else
@@ -859,7 +859,7 @@ condition|)
 block|{
 name|baseSize
 operator|+=
-literal|1
+literal|2
 expr_stmt|;
 block|}
 elseif|else
@@ -875,7 +875,7 @@ condition|)
 block|{
 name|baseSize
 operator|+=
-literal|1
+literal|4
 expr_stmt|;
 block|}
 elseif|else
@@ -893,7 +893,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += Marshal1Long(wireFormat, "
+literal|"rc += TightMarshalLong1(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -916,7 +916,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += WriteString("
+literal|"rc += TightMarshalString1("
 operator|+
 name|getter
 operator|+
@@ -1007,7 +1007,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += MarshalObjectArrayConstSize(wireFormat, "
+literal|"rc += TightMarshalObjectArrayConstSize1(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1028,7 +1028,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += MarshalObjectArray(wireFormat, "
+literal|"rc += TightMarshalObjectArray1(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1050,7 +1050,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += MarshalBrokerError(wireFormat, "
+literal|"rc += TightMarshalBrokerError1(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1072,7 +1072,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += Marshal1CachedObject(wireFormat, "
+literal|"rc += TightMarshalCachedObject1(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1086,7 +1086,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += Marshal1NestedObject(wireFormat, "
+literal|"rc += TightMarshalNestedObject1(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1102,7 +1102,7 @@ return|;
 block|}
 specifier|protected
 name|void
-name|generateMarshal2Body
+name|generateTightMarshal2Body
 parameter_list|(
 name|PrintWriter
 name|out
@@ -1228,7 +1228,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"DataStreamMarshaller.WriteByte("
+literal|"BaseDataStreamMarshaller.WriteByte("
 operator|+
 name|getter
 operator|+
@@ -1251,7 +1251,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"DataStreamMarshaller.WriteChar("
+literal|"BaseDataStreamMarshaller.WriteChar("
 operator|+
 name|getter
 operator|+
@@ -1274,7 +1274,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"DataStreamMarshaller.WriteShort("
+literal|"BaseDataStreamMarshaller.WriteShort("
 operator|+
 name|getter
 operator|+
@@ -1297,7 +1297,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"DataStreamMarshaller.WriteInt("
+literal|"BaseDataStreamMarshaller.WriteInt("
 operator|+
 name|getter
 operator|+
@@ -1320,7 +1320,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"Marshal2Long(wireFormat, "
+literal|"TightMarshalLong2(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1343,7 +1343,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"WriteString("
+literal|"TightMarshalString2("
 operator|+
 name|getter
 operator|+
@@ -1408,7 +1408,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"           DataStreamMarshaller.WriteInt("
+literal|"           BaseDataStreamMarshaller.WriteInt("
 operator|+
 name|getter
 operator|+
@@ -1455,7 +1455,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"MarshalObjectArrayConstSize(wireFormat, "
+literal|"TightMarshalObjectArrayConstSize2(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1476,7 +1476,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"MarshalObjectArray(wireFormat, "
+literal|"TightMarshalObjectArray2(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1498,7 +1498,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"MarshalBrokerError(wireFormat, "
+literal|"TightMarshalBrokerError2(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1520,7 +1520,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"Marshal2CachedObject(wireFormat, "
+literal|"TightMarshalCachedObject2(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1534,7 +1534,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"Marshal2NestedObject(wireFormat, "
+literal|"TightMarshalNestedObject2(wireFormat, "
 operator|+
 name|getter
 operator|+

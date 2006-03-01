@@ -15,6 +15,20 @@ name|command
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IntrospectionSupport
+import|;
+end_import
+
 begin_comment
 comment|/**  *   * @openwire:marshaller code="53"  * @version $Revision: 1.6 $  */
 end_comment
@@ -23,8 +37,6 @@ begin_class
 specifier|public
 class|class
 name|JournalTrace
-extends|extends
-name|DataStructureSupport
 implements|implements
 name|DataStructure
 block|{
@@ -84,6 +96,24 @@ parameter_list|()
 block|{
 return|return
 literal|false
+return|;
+block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|IntrospectionSupport
+operator|.
+name|toString
+argument_list|(
+name|this
+argument_list|,
+name|JournalTrace
+operator|.
+name|class
+argument_list|)
 return|;
 block|}
 block|}

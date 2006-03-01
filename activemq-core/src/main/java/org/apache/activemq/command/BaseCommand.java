@@ -38,8 +38,6 @@ specifier|abstract
 specifier|public
 class|class
 name|BaseCommand
-extends|extends
-name|DataStructureSupport
 implements|implements
 name|Command
 block|{

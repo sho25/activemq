@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test case for the OpenWire marshalling for WireFormatInfo  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  * @version $Revision: $  */
+comment|/**  * Test case for the OpenWire marshalling for WireFormatInfo  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -159,23 +159,30 @@ argument_list|)
 expr_stmt|;
 name|info
 operator|.
-name|setCompressionEnabled
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|info
-operator|.
 name|setStackTraceEnabled
 argument_list|(
-literal|true
+literal|false
 argument_list|)
 expr_stmt|;
 name|info
 operator|.
 name|setTcpNoDelayEnabled
 argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|info
+operator|.
+name|setPrefixPacketSize
+argument_list|(
 literal|false
+argument_list|)
+expr_stmt|;
+name|info
+operator|.
+name|setTightEncodingEnabled
+argument_list|(
+literal|true
 argument_list|)
 expr_stmt|;
 block|}

@@ -84,7 +84,7 @@ specifier|public
 class|class
 name|KeepAliveInfoMarshaller
 extends|extends
-name|DataStreamMarshaller
+name|BaseDataStreamMarshaller
 block|{
 comment|/**      * Return the type of Data Structure we marshal      * @return short representation of the type data structure      */
 specifier|public
@@ -113,7 +113,7 @@ block|}
 comment|/**      * Un-marshal an object instance from the data input stream      *      * @param o the object to un-marshal      * @param dataIn the data input stream to build the object from      * @throws IOException      */
 specifier|public
 name|void
-name|unmarshal
+name|tightUnmarshal
 parameter_list|(
 name|OpenWireFormat
 name|wireFormat
@@ -132,7 +132,7 @@ name|IOException
 block|{
 name|super
 operator|.
-name|unmarshal
+name|tightUnmarshal
 argument_list|(
 name|wireFormat
 argument_list|,
@@ -147,7 +147,7 @@ block|}
 comment|/**      * Write the booleans that this object uses to a BooleanStream      */
 specifier|public
 name|int
-name|marshal1
+name|tightMarshal1
 parameter_list|(
 name|OpenWireFormat
 name|wireFormat
@@ -166,7 +166,7 @@ name|rc
 init|=
 name|super
 operator|.
-name|marshal1
+name|tightMarshal1
 argument_list|(
 name|wireFormat
 argument_list|,
@@ -184,7 +184,7 @@ block|}
 comment|/**      * Write a object instance to data output stream      *      * @param o the instance to be marshaled      * @param dataOut the output stream      * @throws IOException thrown if an error occurs      */
 specifier|public
 name|void
-name|marshal2
+name|tightMarshal2
 parameter_list|(
 name|OpenWireFormat
 name|wireFormat
@@ -203,7 +203,7 @@ name|IOException
 block|{
 name|super
 operator|.
-name|marshal2
+name|tightMarshal2
 argument_list|(
 name|wireFormat
 argument_list|,
@@ -212,6 +212,64 @@ argument_list|,
 name|dataOut
 argument_list|,
 name|bs
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Un-marshal an object instance from the data input stream      *      * @param o the object to un-marshal      * @param dataIn the data input stream to build the object from      * @throws IOException      */
+specifier|public
+name|void
+name|looseUnmarshal
+parameter_list|(
+name|OpenWireFormat
+name|wireFormat
+parameter_list|,
+name|Object
+name|o
+parameter_list|,
+name|DataInputStream
+name|dataIn
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|super
+operator|.
+name|looseUnmarshal
+argument_list|(
+name|wireFormat
+argument_list|,
+name|o
+argument_list|,
+name|dataIn
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Write the booleans that this object uses to a BooleanStream      */
+specifier|public
+name|void
+name|looseMarshal
+parameter_list|(
+name|OpenWireFormat
+name|wireFormat
+parameter_list|,
+name|Object
+name|o
+parameter_list|,
+name|DataOutputStream
+name|dataOut
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|super
+operator|.
+name|looseMarshal
+argument_list|(
+name|wireFormat
+argument_list|,
+name|o
+argument_list|,
+name|dataOut
 argument_list|)
 expr_stmt|;
 block|}
