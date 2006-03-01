@@ -214,6 +214,21 @@ name|boolean
 name|isSlaveBroker
 parameter_list|()
 function_decl|;
+comment|/**      * @return number of messages pending delivery      */
+name|int
+name|pending
+parameter_list|()
+function_decl|;
+comment|/**      * @return number of messages dispatched      */
+name|int
+name|dispatched
+parameter_list|()
+function_decl|;
+comment|/**      * @return number of messages delivered      */
+name|int
+name|delivered
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

@@ -3756,12 +3756,7 @@ init|=
 operator|new
 name|BrokerView
 argument_list|(
-name|broker
-argument_list|,
 name|managedBroker
-operator|.
-name|getDestinationStatistics
-argument_list|()
 argument_list|,
 name|getMemoryManager
 argument_list|()

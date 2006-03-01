@@ -423,7 +423,7 @@ operator|=
 name|consumerConnection
 expr_stmt|;
 block|}
-comment|/**      * @return Returns the consumerName.      */
+comment|/**      * @return Returns the subscriptionName.      */
 specifier|public
 name|String
 name|getConsumerName
@@ -433,7 +433,7 @@ return|return
 name|consumerName
 return|;
 block|}
-comment|/**      * @param consumerName      *            The consumerName to set.      */
+comment|/**      * @param subscriptionName      *            The subscriptionName to set.      */
 specifier|public
 name|void
 name|setConsumerName
