@@ -485,6 +485,8 @@ name|append
 argument_list|(
 name|key
 argument_list|)
+expr_stmt|;
+name|buffer
 operator|.
 name|append
 argument_list|(
@@ -494,11 +496,15 @@ name|Headers
 operator|.
 name|SEPERATOR
 argument_list|)
+expr_stmt|;
+name|buffer
 operator|.
 name|append
 argument_list|(
 name|property
 argument_list|)
+expr_stmt|;
+name|buffer
 operator|.
 name|append
 argument_list|(

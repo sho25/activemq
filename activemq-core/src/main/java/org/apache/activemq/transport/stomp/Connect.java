@@ -477,6 +477,8 @@ name|Responses
 operator|.
 name|CONNECTED
 argument_list|)
+expr_stmt|;
+name|buffer
 operator|.
 name|append
 argument_list|(
@@ -497,6 +499,8 @@ name|Connected
 operator|.
 name|SESSION
 argument_list|)
+expr_stmt|;
+name|buffer
 operator|.
 name|append
 argument_list|(
@@ -506,6 +510,8 @@ name|Headers
 operator|.
 name|SEPERATOR
 argument_list|)
+expr_stmt|;
+name|buffer
 operator|.
 name|append
 argument_list|(
@@ -514,6 +520,8 @@ operator|.
 name|getClientId
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|buffer
 operator|.
 name|append
 argument_list|(
@@ -521,6 +529,8 @@ name|Stomp
 operator|.
 name|NEWLINE
 argument_list|)
+expr_stmt|;
+name|buffer
 operator|.
 name|append
 argument_list|(
