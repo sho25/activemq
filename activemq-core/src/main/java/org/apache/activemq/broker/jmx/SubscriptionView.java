@@ -82,7 +82,7 @@ specifier|final
 name|String
 name|clientId
 decl_stmt|;
-comment|/**      * Constructior      * @param subs      */
+comment|/**      * Constructor      * @param subs      */
 specifier|public
 name|SubscriptionView
 parameter_list|(
