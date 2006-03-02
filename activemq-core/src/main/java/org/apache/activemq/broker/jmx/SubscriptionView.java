@@ -472,6 +472,24 @@ else|:
 literal|null
 return|;
 block|}
+comment|/**      *@return pretty print      */
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"SubscriptionView: "
+operator|+
+name|getClientId
+argument_list|()
+operator|+
+literal|":"
+operator|+
+name|getConnectionId
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
