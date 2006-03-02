@@ -276,6 +276,8 @@ name|regionBroker
 operator|.
 name|registerSubscription
 argument_list|(
+name|context
+argument_list|,
 name|sub
 argument_list|)
 expr_stmt|;

@@ -26,6 +26,12 @@ specifier|public
 interface|interface
 name|SubscriptionViewMBean
 block|{
+comment|/**      * @return the clientId      */
+specifier|public
+name|String
+name|getClientId
+parameter_list|()
+function_decl|;
 comment|/**      * @return the id of the Connection the Subscription is on      */
 specifier|public
 name|String
@@ -66,6 +72,12 @@ comment|/**      * @return true if the destination is temporary      */
 specifier|public
 name|boolean
 name|isDestinationTemporary
+parameter_list|()
+function_decl|;
+comment|/**      * @return true if the subscriber is active      */
+specifier|public
+name|boolean
+name|isActive
 parameter_list|()
 function_decl|;
 comment|/**      * The subscription should release as may references as it can to help the garbage collector reclaim memory.      */

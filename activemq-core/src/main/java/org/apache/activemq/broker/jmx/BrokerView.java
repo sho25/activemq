@@ -440,6 +440,19 @@ name|getTemporaryQueueSubscribers
 argument_list|()
 return|;
 block|}
+specifier|public
+name|ObjectName
+index|[]
+name|getInactiveDurableTopicSubscribers
+parameter_list|()
+block|{
+return|return
+name|broker
+operator|.
+name|getInactiveDurableTopicSubscribers
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

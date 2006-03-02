@@ -153,6 +153,12 @@ function_decl|;
 specifier|public
 name|ObjectName
 index|[]
+name|getInactiveDurableTopicSubscribers
+parameter_list|()
+function_decl|;
+specifier|public
+name|ObjectName
+index|[]
 name|getQueueSubscribers
 parameter_list|()
 function_decl|;

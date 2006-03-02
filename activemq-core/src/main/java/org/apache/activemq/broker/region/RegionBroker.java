@@ -606,7 +606,7 @@ name|HashMap
 argument_list|()
 decl_stmt|;
 comment|// we will synchronize access
-specifier|private
+specifier|protected
 name|PersistenceAdapter
 name|adaptor
 decl_stmt|;

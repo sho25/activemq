@@ -61,11 +61,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
+name|command
 operator|.
-name|region
-operator|.
-name|Subscription
+name|SubscriptionInfo
 import|;
 end_import
 
@@ -76,24 +74,23 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|DurableSubscriptionView
+name|InactiveDurableSubscriptionView
 extends|extends
 name|SubscriptionView
 implements|implements
 name|DurableSubscriptionViewMBean
 block|{
 specifier|protected
-name|String
-name|subscriptionName
+name|SubscriptionInfo
+name|info
 decl_stmt|;
-comment|/**      * Constructor      * @param clientId      * @param sub      */
 specifier|public
-name|DurableSubscriptionView
+name|InactiveDurableSubscriptionView
 parameter_list|(
 name|String
 name|clientId
 parameter_list|,
-name|Subscription
+name|SubscriptionInfo
 name|sub
 parameter_list|)
 block|{
@@ -101,21 +98,72 @@ name|super
 argument_list|(
 name|clientId
 argument_list|,
-name|sub
+literal|null
 argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|subscriptionName
+name|info
 operator|=
 name|sub
-operator|.
-name|getConsumerInfo
-argument_list|()
-operator|.
-name|getSubcriptionName
-argument_list|()
 expr_stmt|;
+block|}
+comment|/**      * @return the id of the Subscription      */
+specifier|public
+name|long
+name|getSubcriptionId
+parameter_list|()
+block|{
+return|return
+operator|-
+literal|1
+return|;
+block|}
+comment|/**      * @return the destination name      */
+specifier|public
+name|String
+name|getDestinationName
+parameter_list|()
+block|{
+return|return
+name|info
+operator|.
+name|getDestination
+argument_list|()
+operator|.
+name|getPhysicalName
+argument_list|()
+return|;
+block|}
+comment|/**      * @return true if the destination is a Queue      */
+specifier|public
+name|boolean
+name|isDestinationQueue
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+comment|/**      * @return true of the destination is a Topic      */
+specifier|public
+name|boolean
+name|isDestinationTopic
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
+comment|/**      * @return true if the destination is temporary      */
+specifier|public
+name|boolean
+name|isDestinationTemporary
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
 block|}
 comment|/**      * @return name of the durable consumer      */
 specifier|public
@@ -124,7 +172,20 @@ name|getSubscriptionName
 parameter_list|()
 block|{
 return|return
-name|subscriptionName
+name|info
+operator|.
+name|getSubcriptionName
+argument_list|()
+return|;
+block|}
+comment|/**      * @return true if the subscriber is active      */
+specifier|public
+name|boolean
+name|isActive
+parameter_list|()
+block|{
+return|return
+literal|false
 return|;
 block|}
 comment|/**      * Browse messages for this durable subscriber      *       * @return messages      * @throws OpenDataException      */
