@@ -333,8 +333,8 @@ name|isSlaveBroker
 argument_list|()
 condition|)
 block|{
-comment|// TODO - if we have already dispatched too many messages to this slow consumer
-comment|// should we avoid dispatching and just discard old messages as shown below
+comment|// if maximumPendingMessages is set we will only discard messages which
+comment|// have not been dispatched (i.e. we allow the prefetch buffer to be filled)
 name|dispatch
 argument_list|(
 name|node
@@ -355,6 +355,7 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
+comment|// NOTE - be careful about the slaveBroker!
 if|if
 condition|(
 name|maximumPendingMessages
