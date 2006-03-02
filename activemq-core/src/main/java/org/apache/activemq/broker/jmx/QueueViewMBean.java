@@ -131,6 +131,19 @@ name|void
 name|purge
 parameter_list|()
 function_decl|;
+specifier|public
+name|boolean
+name|copyMessageTo
+parameter_list|(
+name|String
+name|messageId
+parameter_list|,
+name|String
+name|destinationName
+parameter_list|)
+throws|throws
+name|Throwable
+function_decl|;
 block|}
 end_interface
 

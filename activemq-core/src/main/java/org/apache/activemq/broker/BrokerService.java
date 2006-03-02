@@ -3750,6 +3750,13 @@ name|ManagedRegionBroker
 operator|)
 name|regionBroker
 decl_stmt|;
+name|managedBroker
+operator|.
+name|setContextBroker
+argument_list|(
+name|broker
+argument_list|)
+expr_stmt|;
 name|BrokerViewMBean
 name|view
 init|=

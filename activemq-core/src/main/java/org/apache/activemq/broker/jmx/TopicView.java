@@ -45,12 +45,17 @@ block|{
 specifier|public
 name|TopicView
 parameter_list|(
+name|ManagedRegionBroker
+name|broker
+parameter_list|,
 name|Topic
 name|destination
 parameter_list|)
 block|{
 name|super
 argument_list|(
+name|broker
+argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
