@@ -269,7 +269,8 @@ specifier|private
 name|int
 name|maximumPendingMessages
 init|=
-literal|0
+operator|-
+literal|1
 decl_stmt|;
 specifier|public
 name|TopicSubscription
@@ -343,6 +344,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|maximumPendingMessages
+operator|!=
+literal|0
+condition|)
+block|{
 synchronized|synchronized
 init|(
 name|matched
@@ -390,6 +398,7 @@ operator|.
 name|decrementReferenceCount
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

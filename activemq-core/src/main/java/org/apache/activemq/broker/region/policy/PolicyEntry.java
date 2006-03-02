@@ -59,6 +59,22 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|TopicSubscription
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|filter
 operator|.
 name|DestinationMapEntry
@@ -97,6 +113,10 @@ name|int
 name|messageGroupHashBucketCount
 init|=
 literal|1024
+decl_stmt|;
+specifier|private
+name|PendingMessageLimitStrategy
+name|pendingMessageLimitStrategy
 decl_stmt|;
 specifier|public
 name|void
@@ -205,6 +225,48 @@ name|sendAdvisoryIfNoConsumers
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|configure
+parameter_list|(
+name|TopicSubscription
+name|subscription
+parameter_list|)
+block|{
+if|if
+condition|(
+name|pendingMessageLimitStrategy
+operator|!=
+literal|null
+condition|)
+block|{
+name|int
+name|value
+init|=
+name|pendingMessageLimitStrategy
+operator|.
+name|getMaximumPendingMessageLimit
+argument_list|(
+name|subscription
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|value
+operator|>=
+literal|0
+condition|)
+block|{
+name|subscription
+operator|.
+name|setMaximumPendingMessages
+argument_list|(
+name|value
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
 comment|// Properties
 comment|// -------------------------------------------------------------------------
 specifier|public
@@ -289,7 +351,7 @@ return|return
 name|deadLetterStrategy
 return|;
 block|}
-comment|/**      * Sets the policy used to determine which dead letter queue destination should be used      */
+comment|/**      * Sets the policy used to determine which dead letter queue destination      * should be used      */
 specifier|public
 name|void
 name|setDeadLetterStrategy
@@ -314,7 +376,7 @@ return|return
 name|messageGroupHashBucketCount
 return|;
 block|}
-comment|/**      * Sets the number of hash buckets to use for the message group functionality.       * This is only applicable to using message groups to parallelize processing of a queue      * while preserving order across an individual JMSXGroupID header value.      * This value sets the number of hash buckets that will be used (i.e. the maximum possible concurrency).      */
+comment|/**      * Sets the number of hash buckets to use for the message group      * functionality. This is only applicable to using message groups to      * parallelize processing of a queue while preserving order across an      * individual JMSXGroupID header value. This value sets the number of hash      * buckets that will be used (i.e. the maximum possible concurrency).      */
 specifier|public
 name|void
 name|setMessageGroupHashBucketCount
@@ -328,6 +390,31 @@ operator|.
 name|messageGroupHashBucketCount
 operator|=
 name|messageGroupHashBucketCount
+expr_stmt|;
+block|}
+specifier|public
+name|PendingMessageLimitStrategy
+name|getPendingMessageLimitStrategy
+parameter_list|()
+block|{
+return|return
+name|pendingMessageLimitStrategy
+return|;
+block|}
+comment|/**      * Sets the strategy to calculate the maximum number of messages that are      * allowed to be pending on consumers (in addition to their prefetch sizes).      *       * Once the limit is reached, non-durable topics can then start discarding      * old messages. This allows us to keep dispatching messages to slow      * consumers while not blocking fast consumers and discarding the messages      * oldest first.      */
+specifier|public
+name|void
+name|setPendingMessageLimitStrategy
+parameter_list|(
+name|PendingMessageLimitStrategy
+name|pendingMessageLimitStrategy
+parameter_list|)
+block|{
+name|this
+operator|.
+name|pendingMessageLimitStrategy
+operator|=
+name|pendingMessageLimitStrategy
 expr_stmt|;
 block|}
 block|}
