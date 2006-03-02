@@ -285,7 +285,7 @@ name|dataOut
 operator|.
 name|writeByte
 argument_list|(
-literal|0xE0
+literal|0x80
 argument_list|)
 expr_stmt|;
 name|dataOut
@@ -333,7 +333,7 @@ condition|(
 operator|(
 name|arrayLimit
 operator|&
-literal|0xE0
+literal|0x80
 operator|)
 operator|!=
 literal|0
