@@ -401,7 +401,9 @@ name|groupDestination
 argument_list|,
 operator|new
 name|DefaultDestinationMarshaller
-argument_list|()
+argument_list|(
+name|session
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -501,7 +503,9 @@ argument_list|)
 argument_list|,
 operator|new
 name|DefaultDestinationMarshaller
-argument_list|()
+argument_list|(
+name|session
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -751,9 +755,7 @@ operator|=
 name|deliveryMode
 expr_stmt|;
 block|}
-comment|// Implementation methods
-comment|//-------------------------------------------------------------------------
-specifier|protected
+specifier|public
 name|Cluster
 name|createCluster
 parameter_list|(

@@ -77,6 +77,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -135,7 +145,7 @@ specifier|protected
 name|boolean
 name|coordinator
 decl_stmt|;
-comment|/**      * Construct an Node from a NodeState      * @param nodeState      * @param marshaller      */
+comment|/**      * Construct an Node from a NodeState      * @param nodeState      * @param marshaller      * @throws JMSException       */
 specifier|public
 name|NodeImpl
 parameter_list|(
@@ -145,6 +155,8 @@ parameter_list|,
 name|DestinationMarshaller
 name|marshaller
 parameter_list|)
+throws|throws
+name|JMSException
 block|{
 name|this
 argument_list|(

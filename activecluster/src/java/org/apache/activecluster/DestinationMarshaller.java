@@ -23,6 +23,16 @@ name|Destination
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
+import|;
+end_import
+
 begin_comment
 comment|/**  * A simple marshaller for Destinations  *  * @version $Revision: 1.5 $  */
 end_comment
@@ -40,6 +50,8 @@ parameter_list|(
 name|String
 name|destinationName
 parameter_list|)
+throws|throws
+name|JMSException
 function_decl|;
 comment|/**      * Gets a destination's physical name      * @param destination      * @return the destination's physical name      */
 specifier|public
