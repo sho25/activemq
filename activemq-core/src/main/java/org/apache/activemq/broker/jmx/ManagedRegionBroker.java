@@ -1041,7 +1041,6 @@ name|Subscription
 name|sub
 parameter_list|)
 block|{
-comment|// NEED CONTEXT TO GET CLIENT ID AND USE Subscription KEY!!!
 name|SubscriptionKey
 name|key
 init|=

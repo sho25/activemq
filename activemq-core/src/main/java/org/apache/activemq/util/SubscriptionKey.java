@@ -91,6 +91,12 @@ operator|.
 name|subscriptionName
 operator|=
 name|subscriptionName
+operator|!=
+literal|null
+condition|?
+name|subscriptionName
+else|:
+literal|"NOT_SET"
 expr_stmt|;
 name|hashValue
 operator|=
@@ -99,6 +105,8 @@ operator|.
 name|hashCode
 argument_list|()
 operator|^
+name|this
+operator|.
 name|subscriptionName
 operator|.
 name|hashCode

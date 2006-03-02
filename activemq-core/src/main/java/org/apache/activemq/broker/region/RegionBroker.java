@@ -688,8 +688,9 @@ name|this
 operator|.
 name|adaptor
 operator|=
-name|adaptor
+name|adapter
 expr_stmt|;
+comment|//weird - both are valid spellings ...
 name|queueRegion
 operator|=
 name|createQueueRegion
