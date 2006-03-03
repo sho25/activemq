@@ -864,6 +864,11 @@ argument_list|(
 name|myTransportListener
 argument_list|)
 expr_stmt|;
+name|t
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|started
@@ -1169,11 +1174,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|connectedTransport
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
 name|stateTracker
 operator|.
 name|restore
