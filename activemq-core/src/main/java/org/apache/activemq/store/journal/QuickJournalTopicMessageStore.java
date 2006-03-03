@@ -325,7 +325,7 @@ name|MessageRecoveryListener
 name|listener
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|this
 operator|.
@@ -358,7 +358,7 @@ name|Message
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 throw|throw
 operator|new
@@ -376,7 +376,7 @@ name|String
 name|messageReference
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|RecordLocation
 name|loc
@@ -740,6 +740,8 @@ specifier|public
 name|void
 name|afterCommit
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 if|if
 condition|(
@@ -787,6 +789,8 @@ specifier|public
 name|void
 name|afterRollback
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 if|if
 condition|(
@@ -981,7 +985,7 @@ name|void
 name|execute
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Checkpoint the acknowledged messages.
 name|Iterator

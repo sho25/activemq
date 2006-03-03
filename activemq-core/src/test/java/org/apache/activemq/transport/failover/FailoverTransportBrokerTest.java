@@ -336,7 +336,7 @@ name|void
 name|testPublisherFailsOver
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Start a normal consumer on the local broker
 name|StubConnection

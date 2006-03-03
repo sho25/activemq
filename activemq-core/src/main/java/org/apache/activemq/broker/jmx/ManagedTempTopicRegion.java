@@ -279,7 +279,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|Destination
 name|rc
@@ -320,7 +320,7 @@ name|long
 name|timeout
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.

@@ -596,6 +596,8 @@ specifier|public
 name|void
 name|afterCommit
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 if|if
 condition|(
@@ -646,6 +648,8 @@ specifier|public
 name|void
 name|afterRollback
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 if|if
 condition|(
@@ -1069,6 +1073,8 @@ specifier|public
 name|void
 name|afterCommit
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 if|if
 condition|(
@@ -1117,6 +1123,8 @@ specifier|public
 name|void
 name|afterRollback
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 if|if
 condition|(
@@ -1383,7 +1391,7 @@ name|void
 name|execute
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|int
 name|size
@@ -1796,7 +1804,7 @@ name|loc
 argument_list|)
 return|;
 block|}
-comment|/**      * Replays the checkpointStore first as those messages are the oldest ones,      * then messages are replayed from the transaction log and then the cache is      * updated.      *       * @param listener      * @throws Throwable       */
+comment|/**      * Replays the checkpointStore first as those messages are the oldest ones,      * then messages are replayed from the transaction log and then the cache is      * updated.      *       * @param listener      * @throws Exception       */
 specifier|public
 name|void
 name|recover
@@ -1806,7 +1814,7 @@ name|MessageRecoveryListener
 name|listener
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|peristenceAdapter
 operator|.
@@ -1833,7 +1841,7 @@ name|Message
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 throw|throw
 operator|new
@@ -1851,7 +1859,7 @@ name|String
 name|messageReference
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|RecordLocation
 name|loc

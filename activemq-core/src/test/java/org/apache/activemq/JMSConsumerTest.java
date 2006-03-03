@@ -396,7 +396,7 @@ name|void
 name|testMessageListenerWithConsumerCanBeStopped
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 specifier|final
 name|AtomicInteger
@@ -741,7 +741,7 @@ name|void
 name|testMutiReceiveWithPrefetch1
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Set prefetch to 1
 name|connection
@@ -906,7 +906,7 @@ name|void
 name|testDurableConsumerSelectorChange
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Receive a message with the JMS API
 name|connection
@@ -1229,7 +1229,7 @@ name|void
 name|testSendReceiveBytesMessage
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Receive a message with the JMS API
 name|connection
@@ -1432,7 +1432,7 @@ name|void
 name|testSetMessageListenerAfterStart
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 specifier|final
 name|AtomicInteger
@@ -1665,7 +1665,7 @@ name|void
 name|testMessageListenerUnackedWithPrefetch1StayInQueue
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 specifier|final
 name|AtomicInteger
@@ -2142,7 +2142,7 @@ name|void
 name|testMessageListenerWithConsumerWithPrefetch1
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 specifier|final
 name|AtomicInteger
@@ -2374,7 +2374,7 @@ name|void
 name|testMessageListenerWithConsumer
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 specifier|final
 name|AtomicInteger
@@ -2606,7 +2606,7 @@ name|void
 name|testUnackedWithPrefetch1StayInQueue
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Set prefetch to 1
 name|connection
@@ -2865,7 +2865,7 @@ name|void
 name|testDontStart
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|Session
 name|session
@@ -2977,7 +2977,7 @@ name|void
 name|testStartAfterSend
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|Session
 name|session
@@ -3127,7 +3127,7 @@ name|void
 name|testReceiveMessageWithConsumer
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Receive a message with the JMS API
 name|connection

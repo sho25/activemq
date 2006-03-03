@@ -193,7 +193,7 @@ name|void
 name|testConnectionAdvisories
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -439,7 +439,7 @@ name|void
 name|testConsumerAdvisories
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|queue
@@ -699,7 +699,7 @@ name|void
 name|testConsumerAdvisoriesReplayed
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|queue
@@ -953,7 +953,7 @@ name|void
 name|testProducerAdvisories
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|queue
@@ -1210,7 +1210,7 @@ name|void
 name|testProducerAdvisoriesReplayed
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|queue
@@ -1462,7 +1462,7 @@ name|void
 name|testProducerAdvisoriesReplayedOnlyTargetNewConsumer
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|queue

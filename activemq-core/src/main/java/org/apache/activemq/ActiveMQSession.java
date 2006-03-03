@@ -1809,7 +1809,7 @@ name|void
 name|execute
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{                     }
 block|}
 argument_list|)
@@ -1942,7 +1942,7 @@ name|void
 name|afterRollback
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|md
 operator|.

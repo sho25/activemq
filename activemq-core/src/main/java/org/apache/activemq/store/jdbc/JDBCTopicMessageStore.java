@@ -315,7 +315,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @throws Throwable      *       */
+comment|/**      * @throws Exception      *       */
 specifier|public
 name|void
 name|recoverSubscription
@@ -331,7 +331,7 @@ name|MessageRecoveryListener
 name|listener
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|TransactionContext
 name|c
@@ -371,7 +371,7 @@ index|[]
 name|data
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|Message
 name|msg
@@ -416,9 +416,7 @@ name|String
 name|reference
 parameter_list|)
 throws|throws
-name|IOException
-throws|,
-name|Throwable
+name|Exception
 block|{
 name|listener
 operator|.

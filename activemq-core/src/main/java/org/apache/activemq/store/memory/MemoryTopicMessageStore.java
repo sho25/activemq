@@ -558,7 +558,7 @@ name|MessageRecoveryListener
 name|listener
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|MessageId
 name|lastAck

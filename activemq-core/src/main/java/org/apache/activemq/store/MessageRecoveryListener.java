@@ -45,7 +45,7 @@ name|Message
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|void
 name|recoverMessageReference
@@ -54,7 +54,7 @@ name|String
 name|messageReference
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|void
 name|finished

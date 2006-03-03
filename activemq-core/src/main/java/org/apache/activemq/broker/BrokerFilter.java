@@ -295,7 +295,7 @@ name|MessageAck
 name|ack
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -318,7 +318,7 @@ name|ConnectionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -341,7 +341,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -364,7 +364,7 @@ name|ProducerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -390,7 +390,7 @@ name|boolean
 name|onePhase
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -415,7 +415,7 @@ name|RemoveSubscriptionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -436,7 +436,7 @@ name|ConnectionContext
 name|context
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 name|next
@@ -458,7 +458,7 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 name|next
@@ -485,7 +485,7 @@ name|Throwable
 name|error
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -510,7 +510,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -533,7 +533,7 @@ name|ProducerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -556,7 +556,7 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -579,7 +579,7 @@ name|Message
 name|messageSend
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -602,7 +602,7 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -625,7 +625,7 @@ name|TransactionId
 name|transactionId
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -643,7 +643,7 @@ index|[]
 name|getClients
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 name|next
@@ -663,7 +663,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 name|next
@@ -690,7 +690,7 @@ name|long
 name|timeout
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -710,7 +710,7 @@ index|[]
 name|getDestinations
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 name|next
@@ -756,7 +756,7 @@ name|SessionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -779,7 +779,7 @@ name|SessionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -905,7 +905,7 @@ name|MessageDispatchNotification
 name|messageDispatchNotification
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.

@@ -131,7 +131,7 @@ name|MessageReference
 name|node
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|true
@@ -151,7 +151,7 @@ name|Subscription
 name|sub
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{     }
 specifier|public
 name|void
@@ -176,7 +176,7 @@ name|ActiveMQDestination
 name|dest
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 operator|new

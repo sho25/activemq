@@ -64,7 +64,7 @@ name|Message
 name|messageSend
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|String
 name|userID

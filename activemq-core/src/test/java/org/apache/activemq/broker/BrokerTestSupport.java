@@ -635,7 +635,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ConsumerInfo
 name|info
@@ -704,7 +704,7 @@ name|SessionInfo
 name|sessionInfo
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ProducerInfo
 name|info
@@ -730,7 +730,7 @@ name|ConnectionInfo
 name|connectionInfo
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|SessionInfo
 name|info
@@ -753,7 +753,7 @@ name|ConnectionInfo
 name|createConnectionInfo
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ConnectionInfo
 name|info
@@ -1385,7 +1385,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|SessionInfo
 name|sessionInfo
@@ -1694,7 +1694,7 @@ name|byte
 name|destinationType
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 if|if
 condition|(

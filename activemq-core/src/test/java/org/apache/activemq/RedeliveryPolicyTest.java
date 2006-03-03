@@ -126,13 +126,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @throws Throwable      */
+comment|/**      * @throws Exception      */
 specifier|public
 name|void
 name|testExponentialRedeliveryPolicyDelaysDeliveryOnRollback
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Receive a message with the JMS API
 name|RedeliveryPolicy
@@ -393,13 +393,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @throws Throwable      */
+comment|/**      * @throws Exception      */
 specifier|public
 name|void
 name|testNornalRedeliveryPolicyDelaysDeliveryOnRollback
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Receive a message with the JMS API
 name|RedeliveryPolicy
@@ -627,13 +627,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @throws Throwable      */
+comment|/**      * @throws Exception      */
 specifier|public
 name|void
 name|testDLQHandling
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Receive a message with the JMS API
 name|RedeliveryPolicy

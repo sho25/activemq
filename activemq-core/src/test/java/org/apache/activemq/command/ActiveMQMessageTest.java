@@ -2459,7 +2459,7 @@ name|CommandVisitor
 name|visitor
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null

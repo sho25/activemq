@@ -187,7 +187,7 @@ name|void
 name|prePrepare
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Is it ok to call prepare now given the state of the
 comment|// transaction?
@@ -236,7 +236,7 @@ name|void
 name|fireAfterCommit
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 for|for
 control|(
@@ -278,7 +278,7 @@ name|void
 name|fireAfterRollback
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 for|for
 control|(

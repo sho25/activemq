@@ -203,7 +203,7 @@ name|String
 name|destinationName
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 operator|(

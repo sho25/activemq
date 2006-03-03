@@ -310,7 +310,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|MessageStore
 name|store

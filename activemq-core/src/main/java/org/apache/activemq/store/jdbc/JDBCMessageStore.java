@@ -827,7 +827,7 @@ name|MessageRecoveryListener
 name|listener
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Get all the Message ids out of the database.
 name|TransactionContext
@@ -871,7 +871,7 @@ index|[]
 name|data
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|Message
 name|msg
@@ -916,9 +916,7 @@ name|String
 name|reference
 parameter_list|)
 throws|throws
-name|IOException
-throws|,
-name|Throwable
+name|Exception
 block|{
 name|listener
 operator|.

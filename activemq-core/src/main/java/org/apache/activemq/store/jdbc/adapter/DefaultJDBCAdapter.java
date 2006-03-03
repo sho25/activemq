@@ -1702,7 +1702,7 @@ name|JDBCMessageRecoveryListener
 name|listener
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|//        printQuery(c, "Select * from ACTIVEMQ_MSGS", System.out);
 name|PreparedStatement
@@ -2008,7 +2008,7 @@ name|JDBCMessageRecoveryListener
 name|listener
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|//        dumpTables(c, destination.getQualifiedName(),clientId,subscriptionName);
 name|PreparedStatement

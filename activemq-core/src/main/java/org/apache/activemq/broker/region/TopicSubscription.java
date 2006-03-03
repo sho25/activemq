@@ -635,6 +635,7 @@ block|}
 block|}
 block|}
 block|}
+specifier|synchronized
 specifier|public
 name|void
 name|acknowledge
@@ -648,7 +649,7 @@ name|MessageAck
 name|ack
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Handle the standard acknowledgment case.
 name|boolean
@@ -704,7 +705,7 @@ name|void
 name|afterCommit
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|dispatched
 operator|.

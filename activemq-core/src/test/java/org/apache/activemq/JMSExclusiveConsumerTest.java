@@ -172,13 +172,13 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Shows that by default messages are round robined across a set of consumers.      *       * @throws Throwable      */
+comment|/**      * Shows that by default messages are round robined across a set of consumers.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testRoundRobinDispatchOnNonExclusive
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Receive a message with the JMS API
 name|connection
@@ -351,13 +351,13 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Shows that if the "?consumer.exclusive=true" option is added to destination,      * then all messages are routed to 1 consumer.      *       * @throws Throwable      */
+comment|/**      * Shows that if the "?consumer.exclusive=true" option is added to destination,      * then all messages are routed to 1 consumer.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testDispatchExclusive
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Receive a message with the JMS API
 name|connection

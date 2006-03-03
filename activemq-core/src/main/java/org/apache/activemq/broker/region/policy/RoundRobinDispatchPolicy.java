@@ -127,7 +127,7 @@ name|List
 name|consumers
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Big synch here so that only 1 message gets dispatched at a time.  Ensures
 comment|// Everyone sees the same order and that the consumer list is not used while

@@ -127,7 +127,7 @@ name|List
 name|consumers
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|int
 name|count

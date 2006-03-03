@@ -2579,7 +2579,7 @@ name|Message
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|result
 operator|.
@@ -2597,7 +2597,7 @@ name|String
 name|messageReference
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{}
 specifier|public
 name|void

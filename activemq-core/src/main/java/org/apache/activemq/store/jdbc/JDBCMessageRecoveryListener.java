@@ -17,16 +17,6 @@ name|jdbc
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version $Revision: 1.3 $  */
 end_comment
@@ -47,9 +37,7 @@ index|[]
 name|message
 parameter_list|)
 throws|throws
-name|IOException
-throws|,
-name|Throwable
+name|Exception
 function_decl|;
 name|void
 name|recoverMessageReference
@@ -58,9 +46,7 @@ name|String
 name|reference
 parameter_list|)
 throws|throws
-name|IOException
-throws|,
-name|Throwable
+name|Exception
 function_decl|;
 name|void
 name|finished

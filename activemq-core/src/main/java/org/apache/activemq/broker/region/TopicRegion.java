@@ -402,7 +402,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 if|if
 condition|(
@@ -688,7 +688,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 if|if
 condition|(
@@ -766,7 +766,7 @@ name|RemoveSubscriptionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|SubscriptionKey
 name|key
@@ -938,7 +938,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|TopicMessageStore
 name|store

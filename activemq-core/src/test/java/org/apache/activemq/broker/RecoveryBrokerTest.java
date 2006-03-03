@@ -191,7 +191,7 @@ name|void
 name|testConsumedQueuePersistentMessagesLostOnRestart
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -395,7 +395,7 @@ name|void
 name|testQueuePersistentUncommitedMessagesLostOnRestart
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -598,7 +598,7 @@ name|void
 name|testTopicDurableConsumerHoldsPersistentMessageAfterRestart
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -893,7 +893,7 @@ name|void
 name|testQueuePersistentMessagesNotLostOnRestart
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -1064,7 +1064,7 @@ name|void
 name|testQueueNonPersistentMessagesLostOnRestart
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -1214,7 +1214,7 @@ name|void
 name|testQueuePersistentCommitedMessagesNotLostOnRestart
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -1449,7 +1449,7 @@ name|void
 name|testQueuePersistentCommitedAcksNotLostOnRestart
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -1733,7 +1733,7 @@ name|void
 name|testQueuePersistentUncommitedAcksLostOnRestart
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination

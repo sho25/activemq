@@ -158,7 +158,7 @@ name|Command
 name|command
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|Response
 name|r
@@ -220,7 +220,7 @@ name|Command
 name|command
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.

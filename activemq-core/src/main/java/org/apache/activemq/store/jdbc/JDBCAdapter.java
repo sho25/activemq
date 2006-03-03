@@ -247,7 +247,7 @@ name|JDBCMessageRecoveryListener
 name|listener
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 specifier|public
 specifier|abstract
@@ -295,7 +295,7 @@ name|JDBCMessageRecoveryListener
 name|listener
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 specifier|public
 specifier|abstract

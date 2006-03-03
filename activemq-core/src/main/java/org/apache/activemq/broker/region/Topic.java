@@ -652,7 +652,7 @@ name|Subscription
 name|sub
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|sub
 operator|.
@@ -790,7 +790,7 @@ name|Subscription
 name|sub
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 if|if
 condition|(
@@ -847,7 +847,7 @@ name|DurableTopicSubscription
 name|sub
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|sub
 operator|.
@@ -941,7 +941,7 @@ name|DurableTopicSubscription
 name|subscription
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// synchronize with dispatch method so that no new messages are sent
 comment|// while
@@ -1133,7 +1133,7 @@ name|Message
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|message
 operator|.
@@ -1211,7 +1211,7 @@ name|String
 name|messageReference
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 throw|throw
 operator|new
@@ -1292,7 +1292,7 @@ name|DurableTopicSubscription
 name|sub
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 synchronized|synchronized
 init|(
@@ -1330,7 +1330,7 @@ name|Message
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 if|if
 condition|(
@@ -1406,7 +1406,7 @@ name|void
 name|afterCommit
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|dispatch
 argument_list|(
@@ -1659,7 +1659,7 @@ name|Message
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|result
 operator|.
@@ -1677,7 +1677,7 @@ name|String
 name|messageReference
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{}
 specifier|public
 name|void
@@ -1925,7 +1925,7 @@ name|Message
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|destinationStatistics
 operator|.
@@ -2054,7 +2054,7 @@ name|Message
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 if|if
 condition|(

@@ -578,7 +578,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * @throws Throwable      */
+comment|/**      * @throws Throwable       */
 specifier|public
 name|void
 name|testConcurrentSendReceive

@@ -142,7 +142,7 @@ name|String
 name|destinationName
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 block|}
 end_interface

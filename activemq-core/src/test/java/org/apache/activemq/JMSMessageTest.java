@@ -328,7 +328,7 @@ name|void
 name|testTextMessage
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Receive a message with the JMS API
 name|connection
@@ -507,7 +507,7 @@ name|void
 name|testBytesMessageLength
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Receive a message with the JMS API
 name|connection
@@ -649,7 +649,7 @@ name|void
 name|testObjectMessage
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Receive a message with the JMS API
 name|connection
@@ -770,7 +770,7 @@ name|void
 name|testBytesMessage
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Receive a message with the JMS API
 name|connection
@@ -908,7 +908,7 @@ name|void
 name|testStreamMessage
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Receive a message with the JMS API
 name|connection
@@ -1069,7 +1069,7 @@ name|void
 name|testMapMessage
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Receive a message with the JMS API
 name|connection
@@ -1891,7 +1891,7 @@ name|void
 name|testForeignMessage
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Receive a message with the JMS API
 name|connection

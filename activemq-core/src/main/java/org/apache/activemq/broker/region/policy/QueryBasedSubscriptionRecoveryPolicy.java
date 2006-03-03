@@ -361,7 +361,7 @@ name|MessageReference
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 name|query
@@ -391,7 +391,7 @@ name|Subscription
 name|sub
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 if|if
 condition|(
@@ -538,7 +538,7 @@ name|ActiveMQDestination
 name|dest
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 operator|new

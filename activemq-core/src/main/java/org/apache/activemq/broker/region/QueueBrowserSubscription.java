@@ -227,7 +227,7 @@ name|void
 name|browseDone
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|browseDone
 operator|=

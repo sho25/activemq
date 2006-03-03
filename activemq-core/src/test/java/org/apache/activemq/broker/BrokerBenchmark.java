@@ -352,7 +352,7 @@ name|void
 name|testPerformance
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|System
 operator|.

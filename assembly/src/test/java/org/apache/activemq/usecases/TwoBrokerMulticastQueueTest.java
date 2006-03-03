@@ -566,7 +566,7 @@ name|void
 name|testSendReceive
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|createMulticastBrokerNetwork
 argument_list|()
@@ -614,7 +614,7 @@ name|void
 name|testMultipleConsumersConnect
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|createMulticastBrokerNetwork
 argument_list|()
@@ -628,7 +628,7 @@ name|void
 name|testSendReceiveUsingFailover
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|sendUri
 operator|=
@@ -650,7 +650,7 @@ name|void
 name|testMultipleConsumersConnectUsingFailover
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|sendUri
 operator|=
@@ -672,7 +672,7 @@ name|void
 name|testSendReceiveUsingDiscovery
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|sendUri
 operator|=
@@ -694,7 +694,7 @@ name|void
 name|testMultipleConsumersConnectUsingDiscovery
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|sendUri
 operator|=
@@ -716,7 +716,7 @@ name|void
 name|testSendReceiveUsingAutoAssignFailover
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|sendUri
 operator|=
@@ -738,7 +738,7 @@ name|void
 name|testMultipleConsumersConnectUsingAutoAssignFailover
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|sendUri
 operator|=
@@ -760,7 +760,7 @@ name|void
 name|testSendReceiveUsingAutoAssignDiscovery
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|sendUri
 operator|=
@@ -782,7 +782,7 @@ name|void
 name|testMultipleConsumersConnectUsingAutoAssignDiscovery
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|sendUri
 operator|=

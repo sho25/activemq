@@ -237,7 +237,7 @@ name|BrokerInfo
 name|info
 parameter_list|)
 function_decl|;
-comment|/**      * A client is establishing a connection with the broker.      * @param context      * @param info       * @param client      */
+comment|/**      * A client is establishing a connection with the broker.      * @param context      * @param info       * @param client      * @throws Exception TODO      */
 specifier|public
 name|void
 name|addConnection
@@ -249,9 +249,9 @@ name|ConnectionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * A client is disconnecting from the broker.      * @param context the environment the operation is being executed under.      * @param info       * @param client      * @param error null if the client requested the disconnect or the error that caused the client to disconnect.      */
+comment|/**      * A client is disconnecting from the broker.      * @param context the environment the operation is being executed under.      * @param info       * @param client      * @param error null if the client requested the disconnect or the error that caused the client to disconnect.      * @throws Exception TODO      */
 specifier|public
 name|void
 name|removeConnection
@@ -266,9 +266,9 @@ name|Throwable
 name|error
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Adds a session.      * @param context      * @param info      * @throws Throwable      */
+comment|/**      * Adds a session.      * @param context      * @param info      * @throws Exception TODO      */
 specifier|public
 name|void
 name|addSession
@@ -280,9 +280,9 @@ name|SessionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Removes a session.      * @param context      * @param info      * @throws Throwable      */
+comment|/**      * Removes a session.      * @param context      * @param info      * @throws Exception TODO      */
 specifier|public
 name|void
 name|removeSession
@@ -294,9 +294,9 @@ name|SessionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Adds a producer.      * @param context the enviorment the operation is being executed under.      */
+comment|/**      * Adds a producer.      * @param context the enviorment the operation is being executed under.      * @throws Exception TODO      */
 specifier|public
 name|void
 name|addProducer
@@ -308,9 +308,9 @@ name|ProducerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Removes a producer.      * @param context the enviorment the operation is being executed under.      */
+comment|/**      * Removes a producer.      * @param context the enviorment the operation is being executed under.      * @throws Exception TODO      */
 specifier|public
 name|void
 name|removeProducer
@@ -322,27 +322,27 @@ name|ProducerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * @return all clients added to the Broker.      * @throws Throwable      */
+comment|/**      * @return all clients added to the Broker.      * @throws Exception TODO      */
 specifier|public
 name|Connection
 index|[]
 name|getClients
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * @return all destinations added to the Broker.      * @throws Throwable      */
+comment|/**      * @return all destinations added to the Broker.      * @throws Exception TODO      */
 specifier|public
 name|ActiveMQDestination
 index|[]
 name|getDestinations
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Gets a list of all the prepared xa transactions.      * @param client      */
+comment|/**      * Gets a list of all the prepared xa transactions.      * @param client      * @throws Exception TODO      */
 specifier|public
 name|TransactionId
 index|[]
@@ -352,9 +352,9 @@ name|ConnectionContext
 name|context
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Starts a transaction.      * @param client      * @param xid      */
+comment|/**      * Starts a transaction.      * @param client      * @param xid      * @throws Exception TODO      */
 specifier|public
 name|void
 name|beginTransaction
@@ -366,9 +366,9 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Prepares a transaction. Only valid for xa transactions.      * @param client      * @param xid      * @return      */
+comment|/**      * Prepares a transaction. Only valid for xa transactions.      * @param client      * @param xid      * @return      * @throws Exception TODO      */
 specifier|public
 name|int
 name|prepareTransaction
@@ -380,9 +380,9 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Rollsback a transaction.      * @param client      * @param xid      */
+comment|/**      * Rollsback a transaction.      * @param client      * @param xid      * @throws Exception TODO      */
 specifier|public
 name|void
 name|rollbackTransaction
@@ -394,9 +394,9 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Commits a transaction.      * @param client      * @param xid      * @param onePhase      */
+comment|/**      * Commits a transaction.      * @param client      * @param xid      * @param onePhase      * @throws Exception TODO      */
 specifier|public
 name|void
 name|commitTransaction
@@ -411,9 +411,9 @@ name|boolean
 name|onePhase
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Forgets a transaction.      * @param client      * @param xid      * @param onePhase      * @throws Throwable       */
+comment|/**      * Forgets a transaction.      * @param client      * @param xid      * @param onePhase      * @throws Exception TODO      */
 specifier|public
 name|void
 name|forgetTransaction
@@ -425,7 +425,7 @@ name|TransactionId
 name|transactionId
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 comment|/**      * Get the BrokerInfo's of any connected Brokers      * @return array of peer BrokerInfos      */
 name|BrokerInfo
@@ -441,17 +441,6 @@ parameter_list|(
 name|MessageDispatch
 name|messageDispatch
 parameter_list|)
-function_decl|;
-comment|/**      * Notify the Broker of a MessageDispatchNotification      * @param messageDispatchNotification      * @throws Throwable       */
-specifier|public
-name|void
-name|processDispatchNotification
-parameter_list|(
-name|MessageDispatchNotification
-name|messageDispatchNotification
-parameter_list|)
-throws|throws
-name|Throwable
 function_decl|;
 comment|/**      * @return true if the broker is running as a slave      */
 specifier|public

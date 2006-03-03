@@ -128,9 +128,9 @@ name|MessageReference
 name|node
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Used when client acknowledge receipt of dispatched message.       * @param node      * @throws IOException       * @throws Throwable       */
+comment|/**      * Used when client acknowledge receipt of dispatched message.       * @param node      * @throws IOException       * @throws Exception       */
 name|void
 name|acknowledge
 parameter_list|(
@@ -142,7 +142,7 @@ name|MessageAck
 name|ack
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 comment|/**      * Is the subscription interested in the message?      * @param node       * @param context      * @return      * @throws IOException       */
 name|boolean
@@ -165,7 +165,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 function_decl|;
-comment|/**      * The subscription will be receiving messages from the destination.      * @param context       * @param destination      * @throws Throwable       */
+comment|/**      * The subscription will be receiving messages from the destination.      * @param context       * @param destination      * @throws Exception       */
 name|void
 name|add
 parameter_list|(
@@ -176,7 +176,7 @@ name|Destination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 comment|/**      * The subscription will be no longer be receiving messages from the destination.      * @param context       * @param destination      */
 name|void
@@ -189,7 +189,7 @@ name|Destination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 comment|/**      * The ConsumerInfo object that created the subscription.      * @param destination      */
 name|ConsumerInfo

@@ -182,7 +182,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 specifier|final
 name|ActiveMQTempDestination
@@ -219,7 +219,7 @@ name|Subscription
 name|sub
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Only consumers on the same connection can consume from
 comment|// the temporary destination

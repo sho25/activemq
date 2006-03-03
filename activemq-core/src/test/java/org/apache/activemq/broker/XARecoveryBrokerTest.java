@@ -223,7 +223,7 @@ name|void
 name|testPreparedTransactionRecoveredOnRestart
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -579,7 +579,7 @@ name|void
 name|testQueuePersistentCommitedMessagesNotLostOnRestart
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -814,7 +814,7 @@ name|void
 name|testQueuePersistentCommitedAcksNotLostOnRestart
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -1098,7 +1098,7 @@ name|void
 name|testQueuePersistentUncommittedAcksLostOnRestart
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination

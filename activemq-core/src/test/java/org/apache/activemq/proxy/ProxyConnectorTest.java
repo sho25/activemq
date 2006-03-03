@@ -265,7 +265,7 @@ name|void
 name|testSendAndConsume
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Start a producer on local broker using the proxy
 name|StubConnection

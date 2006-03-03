@@ -276,7 +276,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 specifier|final
 name|SecurityContext
@@ -401,7 +401,7 @@ name|long
 name|timeout
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 specifier|final
 name|SecurityContext
@@ -524,7 +524,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 specifier|final
 name|SecurityContext
@@ -760,7 +760,7 @@ name|ProducerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|SecurityContext
 name|subject
@@ -882,7 +882,7 @@ name|Message
 name|messageSend
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|SecurityContext
 name|subject

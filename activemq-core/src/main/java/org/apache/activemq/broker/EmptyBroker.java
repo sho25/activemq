@@ -289,7 +289,7 @@ name|ConnectionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{      }
 specifier|public
 name|void
@@ -305,7 +305,7 @@ name|Throwable
 name|error
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{      }
 specifier|public
 name|void
@@ -318,7 +318,7 @@ name|SessionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{      }
 specifier|public
 name|void
@@ -331,7 +331,7 @@ name|SessionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{      }
 specifier|public
 name|void
@@ -344,7 +344,7 @@ name|ProducerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{      }
 specifier|public
 name|void
@@ -357,7 +357,7 @@ name|ProducerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{      }
 specifier|public
 name|Connection
@@ -365,7 +365,7 @@ index|[]
 name|getClients
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -377,7 +377,7 @@ index|[]
 name|getDestinations
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -392,7 +392,7 @@ name|ConnectionContext
 name|context
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -409,7 +409,7 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{      }
 specifier|public
 name|int
@@ -422,7 +422,7 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|0
@@ -439,7 +439,7 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{      }
 specifier|public
 name|void
@@ -455,7 +455,7 @@ name|boolean
 name|onePhase
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{      }
 specifier|public
 name|void
@@ -468,7 +468,7 @@ name|TransactionId
 name|transactionId
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{      }
 specifier|public
 name|Destination
@@ -481,7 +481,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -501,7 +501,7 @@ name|long
 name|timeout
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{      }
 specifier|public
 name|void
@@ -514,7 +514,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{      }
 specifier|public
 name|void
@@ -527,7 +527,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{      }
 specifier|public
 name|void
@@ -540,7 +540,7 @@ name|RemoveSubscriptionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{      }
 specifier|public
 name|void
@@ -553,7 +553,7 @@ name|Message
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{      }
 specifier|public
 name|void
@@ -566,7 +566,7 @@ name|MessageAck
 name|ack
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{      }
 specifier|public
 name|void
@@ -635,6 +635,8 @@ parameter_list|(
 name|MessageDispatchNotification
 name|messageDispatchNotification
 parameter_list|)
+throws|throws
+name|Exception
 block|{              }
 specifier|public
 name|boolean

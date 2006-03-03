@@ -289,7 +289,7 @@ name|void
 name|testBrokerConfiguredCorrectly
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|Topic
 name|topic

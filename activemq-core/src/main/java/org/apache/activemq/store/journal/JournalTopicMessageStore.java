@@ -324,7 +324,7 @@ name|MessageRecoveryListener
 name|listener
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|this
 operator|.
@@ -667,6 +667,8 @@ specifier|public
 name|void
 name|afterCommit
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 if|if
 condition|(
@@ -714,6 +716,8 @@ specifier|public
 name|void
 name|afterRollback
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 if|if
 condition|(
@@ -908,7 +912,7 @@ name|void
 name|execute
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Checkpoint the acknowledged messages.
 name|Iterator

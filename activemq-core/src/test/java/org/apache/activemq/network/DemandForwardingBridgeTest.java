@@ -225,7 +225,7 @@ name|void
 name|testSendThenAddConsumer
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Start a producer on local broker
 name|StubConnection
@@ -475,7 +475,7 @@ name|void
 name|testAddConsumerThenSend
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Start a producer on local broker
 name|StubConnection

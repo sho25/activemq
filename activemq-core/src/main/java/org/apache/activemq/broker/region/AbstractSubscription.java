@@ -627,7 +627,7 @@ name|Destination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|destinations
 operator|.
@@ -648,7 +648,7 @@ name|Destination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|destinations
 operator|.

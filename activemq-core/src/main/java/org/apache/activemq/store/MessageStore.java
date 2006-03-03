@@ -197,7 +197,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Recover any messages to be delivered.      *      * @param container      * @throws Throwable       */
+comment|/**      * Recover any messages to be delivered.      *      * @param container      * @throws Exception       */
 specifier|public
 name|void
 name|recover
@@ -206,7 +206,7 @@ name|MessageRecoveryListener
 name|container
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 comment|/**      * The destination that the message store is holding messages for.      * @return      */
 specifier|public

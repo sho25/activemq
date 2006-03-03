@@ -138,7 +138,7 @@ name|Region
 extends|extends
 name|Service
 block|{
-comment|/**      * Used to create a destination.  Usually, this method is invoked as a side-effect of sending      * a message to a destination that does not exist yet.      *       * @param context      * @param destination the destination to create.      * @return TODO      */
+comment|/**      * Used to create a destination.  Usually, this method is invoked as a side-effect of sending      * a message to a destination that does not exist yet.      *       * @param context      * @param destination the destination to create.      * @return TODO      * @throws Exception TODO      */
 specifier|public
 name|Destination
 name|addDestination
@@ -150,9 +150,9 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Used to destroy a destination.        * This should try to quiesce use of the destination up to the timeout allotted time before removing the destination.      * This will remove all persistent messages associated with the destination.      *       * @param context the environment the operation is being executed under.      * @param destination what is being removed from the broker.      * @param timeout the max amount of time to wait for the destination to quiesce      */
+comment|/**      * Used to destroy a destination.        * This should try to quiesce use of the destination up to the timeout allotted time before removing the destination.      * This will remove all persistent messages associated with the destination.      *       * @param context the environment the operation is being executed under.      * @param destination what is being removed from the broker.      * @param timeout the max amount of time to wait for the destination to quiesce      * @throws Exception TODO      */
 specifier|public
 name|void
 name|removeDestination
@@ -167,9 +167,9 @@ name|long
 name|timeout
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Adds a consumer.      * @param context the environment the operation is being executed under.      */
+comment|/**      * Adds a consumer.      * @param context the environment the operation is being executed under.      * @throws Exception TODO      */
 specifier|public
 name|void
 name|addConsumer
@@ -181,9 +181,9 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Removes a consumer.      * @param context the environment the operation is being executed under.      */
+comment|/**      * Removes a consumer.      * @param context the environment the operation is being executed under.      * @throws Exception TODO      */
 specifier|public
 name|void
 name|removeConsumer
@@ -195,9 +195,9 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Deletes a durable subscription.      * @param context the environment the operation is being executed under.      * @param info TODO      */
+comment|/**      * Deletes a durable subscription.      * @param context the environment the operation is being executed under.      * @param info TODO      * @throws Exception TODO      */
 specifier|public
 name|void
 name|removeSubscription
@@ -209,9 +209,9 @@ name|RemoveSubscriptionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Send a message to the broker to using the specified destination.  The destination specified      * in the message does not need to match the destination the message is sent to.  This is       * handy in case the message is being sent to a dead letter destination.      * @param context the environment the operation is being executed under.      */
+comment|/**      * Send a message to the broker to using the specified destination.  The destination specified      * in the message does not need to match the destination the message is sent to.  This is       * handy in case the message is being sent to a dead letter destination.      * @param context the environment the operation is being executed under.      * @throws Exception TODO      */
 specifier|public
 name|void
 name|send
@@ -223,9 +223,9 @@ name|Message
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Used to acknowledge the receipt of a message by a client.      * @param context the environment the operation is being executed under.      */
+comment|/**      * Used to acknowledge the receipt of a message by a client.      * @param context the environment the operation is being executed under.      * @throws Exception TODO      */
 specifier|public
 name|void
 name|acknowledge
@@ -237,9 +237,9 @@ name|MessageAck
 name|ack
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Process a notification of a dispatch - used by a Slave Broker      * @param messageDispatchNotification      * @throws Throwable      */
+comment|/**      * Process a notification of a dispatch - used by a Slave Broker      * @param messageDispatchNotification      * @throws Exception TODO      */
 specifier|public
 name|void
 name|processDispatchNotification
@@ -248,7 +248,7 @@ name|MessageDispatchNotification
 name|messageDispatchNotification
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 specifier|public
 name|void

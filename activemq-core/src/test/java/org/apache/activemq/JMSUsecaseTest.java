@@ -269,7 +269,7 @@ name|void
 name|testQueueBrowser
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Send a message to the broker.
 name|connection
@@ -482,7 +482,7 @@ name|void
 name|testSendReceive
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Send a message to the broker.
 name|connection
@@ -646,7 +646,7 @@ name|void
 name|testSendReceiveTransacted
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Send a message to the broker.
 name|connection

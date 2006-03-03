@@ -102,7 +102,7 @@ name|CommandVisitor
 name|visitor
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 block|}
 end_interface

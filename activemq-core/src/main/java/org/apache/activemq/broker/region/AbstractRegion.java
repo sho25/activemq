@@ -432,7 +432,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|log
 operator|.
@@ -553,7 +553,7 @@ name|long
 name|timeout
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// The destination cannot be removed if there are any active subscriptions
 for|for
@@ -682,7 +682,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|Subscription
 name|sub
@@ -900,7 +900,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|Subscription
 name|sub
@@ -1008,7 +1008,7 @@ name|RemoveSubscriptionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 throw|throw
 operator|new
@@ -1029,7 +1029,7 @@ name|Message
 name|messageSend
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|Destination
 name|dest
@@ -1065,7 +1065,7 @@ name|MessageAck
 name|ack
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|Subscription
 name|sub
@@ -1122,7 +1122,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 synchronized|synchronized
 init|(
@@ -1215,7 +1215,7 @@ name|MessageDispatchNotification
 name|messageDispatchNotification
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|Subscription
 name|sub
@@ -1341,7 +1341,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 specifier|abstract
 specifier|protected
@@ -1355,7 +1355,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 specifier|public
 name|boolean

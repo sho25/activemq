@@ -375,7 +375,7 @@ name|MessageReference
 name|node
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|enqueueCounter
 operator|++
@@ -549,7 +549,7 @@ name|MessageAck
 name|ack
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Handle the standard acknowledgment case.
 name|boolean
@@ -679,7 +679,7 @@ name|void
 name|afterCommit
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 synchronized|synchronized
 init|(

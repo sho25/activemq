@@ -93,7 +93,7 @@ name|ProducerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// The destination may be null.
 name|ActiveMQDestination
@@ -196,7 +196,7 @@ name|ProducerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// The destination may be null.
 name|ActiveMQDestination
@@ -299,7 +299,7 @@ name|Message
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination

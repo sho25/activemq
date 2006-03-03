@@ -322,7 +322,7 @@ name|MessageReference
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|buffer
 operator|.
@@ -355,7 +355,7 @@ name|Subscription
 name|sub
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Re-dispatch the messages from the buffer.
 name|ArrayList
@@ -601,7 +601,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|List
 name|result

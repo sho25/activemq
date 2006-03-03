@@ -285,7 +285,7 @@ name|Destination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.
@@ -344,7 +344,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 if|if
 condition|(
@@ -430,7 +430,7 @@ name|void
 name|deactivate
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|active
 operator|=
@@ -686,7 +686,7 @@ name|MessageReference
 name|node
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 if|if
 condition|(
@@ -771,7 +771,7 @@ name|MessageAck
 name|ack
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.

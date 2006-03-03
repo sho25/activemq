@@ -598,7 +598,7 @@ name|void
 name|testSendReceive
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Durable consumer combination is only valid with topics
 if|if

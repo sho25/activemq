@@ -381,7 +381,7 @@ name|MessageRecoveryListener
 name|listener
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// the message table is a synchronizedMap - so just have to synchronize here
 synchronized|synchronized

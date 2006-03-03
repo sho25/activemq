@@ -318,7 +318,7 @@ name|void
 name|testConsumerPrefetchAndStandardAck
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Start a producer and consumer
 name|StubConnection
@@ -638,7 +638,7 @@ name|void
 name|testTransactedAckWithPrefetchOfOne
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Setup a first connection
 name|StubConnection
@@ -940,7 +940,7 @@ name|void
 name|testTransactedSend
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Setup a first connection
 name|StubConnection
@@ -1213,7 +1213,7 @@ name|void
 name|testQueueTransactedAck
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Setup a first connection
 name|StubConnection
@@ -1503,7 +1503,7 @@ name|void
 name|testConsumerCloseCausesRedelivery
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Setup a first connection
 name|StubConnection
@@ -1767,7 +1767,7 @@ name|void
 name|testTopicDurableSubscriptionCanBeRestored
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -2150,7 +2150,7 @@ name|void
 name|testGroupedMessagesDeliveredToOnlyOneConsumer
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -2522,7 +2522,7 @@ name|void
 name|testTopicConsumerOnlySeeMessagesAfterCreation
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -2776,7 +2776,7 @@ name|void
 name|testTopicRetroactiveConsumerSeeMessagesBeforeCreation
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -3063,7 +3063,7 @@ name|void
 name|testTempDestinationsRemovedOnConnectionClose
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Setup a first connection
 name|StubConnection
@@ -3294,7 +3294,7 @@ name|void
 name|testTempDestinationsAreNotAutoCreated
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Setup a first connection
 name|StubConnection
@@ -3455,7 +3455,7 @@ name|void
 name|testTempDestinationsOnlyAllowsLocalConsumers
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Setup a first connection
 name|StubConnection
@@ -3639,7 +3639,7 @@ name|void
 name|testExclusiveQueueDeliversToOnlyOneConsumer
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -4032,7 +4032,7 @@ name|void
 name|testWildcardConsume
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Setup a first connection
 name|StubConnection
@@ -4341,7 +4341,7 @@ name|void
 name|testCompositeConsume
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Setup a first connection
 name|StubConnection
@@ -4593,7 +4593,7 @@ name|void
 name|testCompositeSend
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Setup a first connection
 name|StubConnection
@@ -4997,7 +4997,7 @@ name|void
 name|testConnectionCloseCascades
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Setup a first connection
 name|StubConnection
@@ -5337,7 +5337,7 @@ name|void
 name|testSessionCloseCascades
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Setup a first connection
 name|StubConnection
@@ -5677,7 +5677,7 @@ name|void
 name|testConsumerClose
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Setup a first connection
 name|StubConnection
@@ -5995,7 +5995,7 @@ name|void
 name|testTopicNoLocal
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -6351,7 +6351,7 @@ name|void
 name|testTopicDispatchIsBroadcast
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -6658,7 +6658,7 @@ name|void
 name|testQueueDispatchedAreRedeliveredOnConsumerClose
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Setup a first connection
 name|StubConnection
@@ -6998,7 +6998,7 @@ name|void
 name|testQueueBrowseMessages
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Start a producer and consumer
 name|StubConnection
@@ -7232,7 +7232,7 @@ name|void
 name|testQueueBrowserWith2Consumers
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -7587,7 +7587,7 @@ name|void
 name|testQueueOnlyOnceDeliveryWith2Consumers
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -7961,7 +7961,7 @@ name|void
 name|testQueueSendThenAddConsumer
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Start a producer
 name|StubConnection
@@ -8135,7 +8135,7 @@ name|void
 name|testQueueAckRemovesMessage
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Start a producer and consumer
 name|StubConnection
@@ -8434,7 +8434,7 @@ name|void
 name|testSelectorSkipsMessages
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Start a producer and consumer
 name|StubConnection
@@ -8713,7 +8713,7 @@ name|void
 name|testAddConsumerThenSend
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Start a producer and consumer
 name|StubConnection
@@ -8901,7 +8901,7 @@ name|void
 name|testConsumerPrefetchAtOne
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Start a producer and consumer
 name|StubConnection
@@ -9116,7 +9116,7 @@ name|void
 name|testConsumerPrefetchAtTwo
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Start a producer and consumer
 name|StubConnection
@@ -9357,7 +9357,7 @@ name|void
 name|testConsumerPrefetchAndDeliveredAck
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Start a producer and consumer
 name|StubConnection

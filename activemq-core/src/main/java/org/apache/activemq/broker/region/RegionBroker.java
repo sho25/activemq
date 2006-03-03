@@ -990,7 +990,7 @@ name|ConnectionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|String
 name|clientId
@@ -1085,7 +1085,7 @@ name|Throwable
 name|error
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|String
 name|clientId
@@ -1162,7 +1162,7 @@ index|[]
 name|getClients
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ArrayList
 name|l
@@ -1208,7 +1208,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 if|if
 condition|(
@@ -1341,7 +1341,7 @@ name|long
 name|timeout
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 if|if
 condition|(
@@ -1459,7 +1459,7 @@ index|[]
 name|getDestinations
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ArrayList
 name|l
@@ -1505,7 +1505,7 @@ name|SessionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{     }
 specifier|public
 name|void
@@ -1518,7 +1518,7 @@ name|SessionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{     }
 specifier|public
 name|void
@@ -1531,7 +1531,7 @@ name|ProducerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{     }
 specifier|public
 name|void
@@ -1544,7 +1544,7 @@ name|ProducerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{     }
 specifier|public
 name|void
@@ -1557,7 +1557,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -1654,7 +1654,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -1751,7 +1751,7 @@ name|RemoveSubscriptionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|topicRegion
 operator|.
@@ -1774,7 +1774,7 @@ name|Message
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|message
 operator|.
@@ -1924,7 +1924,7 @@ name|MessageAck
 name|ack
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination
@@ -2019,7 +2019,7 @@ name|ConnectionContext
 name|context
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 throw|throw
 operator|new
@@ -2040,7 +2040,7 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 throw|throw
 operator|new
@@ -2061,7 +2061,7 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 throw|throw
 operator|new
@@ -2082,7 +2082,7 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 throw|throw
 operator|new
@@ -2106,7 +2106,7 @@ name|boolean
 name|onePhase
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 throw|throw
 operator|new
@@ -2127,7 +2127,7 @@ name|TransactionId
 name|transactionId
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 throw|throw
 operator|new
@@ -2394,7 +2394,7 @@ name|MessageDispatchNotification
 name|messageDispatchNotification
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination

@@ -206,7 +206,7 @@ name|void
 name|testReceiveWildcardTopicEndAsterisk
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|connection
 operator|.
@@ -430,7 +430,7 @@ name|void
 name|testReceiveWildcardTopicEndGreaterThan
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|connection
 operator|.
@@ -727,7 +727,7 @@ name|void
 name|testReceiveWildcardTopicMidAsterisk
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|connection
 operator|.

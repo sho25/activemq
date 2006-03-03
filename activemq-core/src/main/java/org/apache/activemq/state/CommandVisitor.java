@@ -307,7 +307,7 @@ name|ConnectionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processAddSession
@@ -316,7 +316,7 @@ name|SessionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processAddProducer
@@ -325,7 +325,7 @@ name|ProducerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processAddConsumer
@@ -334,7 +334,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processRemoveConnection
@@ -343,7 +343,7 @@ name|ConnectionId
 name|id
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processRemoveSession
@@ -352,7 +352,7 @@ name|SessionId
 name|id
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processRemoveProducer
@@ -361,7 +361,7 @@ name|ProducerId
 name|id
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processRemoveConsumer
@@ -370,7 +370,7 @@ name|ConsumerId
 name|id
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processAddDestination
@@ -379,7 +379,7 @@ name|DestinationInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processRemoveDestination
@@ -388,7 +388,7 @@ name|DestinationInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processRemoveSubscription
@@ -397,7 +397,7 @@ name|RemoveSubscriptionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processMessage
@@ -406,7 +406,7 @@ name|Message
 name|send
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processMessageAck
@@ -415,7 +415,7 @@ name|MessageAck
 name|ack
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processBeginTransaction
@@ -424,7 +424,7 @@ name|TransactionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processPrepareTransaction
@@ -433,7 +433,7 @@ name|TransactionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processCommitTransactionOnePhase
@@ -442,7 +442,7 @@ name|TransactionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processCommitTransactionTwoPhase
@@ -451,7 +451,7 @@ name|TransactionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processRollbackTransaction
@@ -460,7 +460,7 @@ name|TransactionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processWireFormat
@@ -469,7 +469,7 @@ name|WireFormatInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processKeepAlive
@@ -478,7 +478,7 @@ name|KeepAliveInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processShutdown
@@ -487,7 +487,7 @@ name|ShutdownInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processFlush
@@ -496,7 +496,7 @@ name|FlushCommand
 name|command
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processBrokerInfo
@@ -505,7 +505,7 @@ name|BrokerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processRecoverTransactions
@@ -514,7 +514,7 @@ name|TransactionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processForgetTransaction
@@ -523,7 +523,7 @@ name|TransactionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processEndTransaction
@@ -532,7 +532,7 @@ name|TransactionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|Response
 name|processMessageDispatchNotification
@@ -541,7 +541,7 @@ name|MessageDispatchNotification
 name|notification
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 block|}
 end_interface

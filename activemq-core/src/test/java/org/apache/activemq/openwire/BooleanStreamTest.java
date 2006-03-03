@@ -133,7 +133,7 @@ name|void
 name|testBooleanMarshallingUsingAllTrue
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|testBooleanStream
 argument_list|(
@@ -167,7 +167,7 @@ name|void
 name|testBooleanMarshallingUsingAllFalse
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|testBooleanStream
 argument_list|(
@@ -201,7 +201,7 @@ name|void
 name|testBooleanMarshallingUsingOddAlternateTrueFalse
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|testBooleanStream
 argument_list|(
@@ -241,7 +241,7 @@ name|void
 name|testBooleanMarshallingUsingEvenAlternateTrueFalse
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|testBooleanStream
 argument_list|(

@@ -182,7 +182,7 @@ name|String
 name|name
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 specifier|public
 name|void
@@ -192,7 +192,7 @@ name|String
 name|name
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 specifier|public
 name|void
@@ -202,7 +202,7 @@ name|String
 name|name
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 specifier|public
 name|void
@@ -212,7 +212,7 @@ name|String
 name|name
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 block|}
 end_interface

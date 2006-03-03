@@ -312,7 +312,7 @@ name|void
 name|testPublisherFailsOver
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQDestination
 name|destination

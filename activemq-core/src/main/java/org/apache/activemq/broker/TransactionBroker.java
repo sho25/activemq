@@ -600,7 +600,7 @@ name|ConnectionContext
 name|context
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ArrayList
 name|txs
@@ -693,7 +693,7 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// the transaction may have already been started.
 if|if
@@ -826,7 +826,7 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|Transaction
 name|transaction
@@ -861,7 +861,7 @@ name|boolean
 name|onePhase
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|Transaction
 name|transaction
@@ -894,7 +894,7 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|Transaction
 name|transaction
@@ -925,7 +925,7 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|Transaction
 name|transaction
@@ -956,7 +956,7 @@ name|MessageAck
 name|ack
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// This method may be invoked recursively.
 comment|// Track original tx so that it can be restored.
@@ -1037,7 +1037,7 @@ name|Message
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// This method may be invoked recursively.
 comment|// Track original tx so that it can be restored.
@@ -1123,7 +1123,7 @@ name|Throwable
 name|error
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 for|for
 control|(

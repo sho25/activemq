@@ -176,7 +176,7 @@ name|Subscription
 name|sub
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|void
 name|removeSubscription
@@ -188,7 +188,7 @@ name|Subscription
 name|sub
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|void
 name|send
@@ -200,7 +200,7 @@ name|Message
 name|messageSend
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 name|boolean
 name|lock

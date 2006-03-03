@@ -487,7 +487,7 @@ name|String
 name|name
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|broker
 operator|.
@@ -517,7 +517,7 @@ name|String
 name|name
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|broker
 operator|.
@@ -547,7 +547,7 @@ name|String
 name|name
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|broker
 operator|.
@@ -579,7 +579,7 @@ name|String
 name|name
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|broker
 operator|.

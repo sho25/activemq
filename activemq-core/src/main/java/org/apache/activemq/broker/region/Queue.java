@@ -572,7 +572,7 @@ name|TaskRunnerFactory
 name|taskFactory
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|this
 operator|.
@@ -691,7 +691,7 @@ name|String
 name|messageReference
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 throw|throw
 operator|new
@@ -787,7 +787,7 @@ name|Subscription
 name|sub
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|sub
 operator|.
@@ -971,7 +971,7 @@ name|Subscription
 name|sub
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|destinationStatistics
 operator|.
@@ -1278,7 +1278,7 @@ name|Message
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 if|if
 condition|(
@@ -1354,7 +1354,7 @@ name|void
 name|afterCommit
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|dispatch
 argument_list|(
@@ -1816,7 +1816,7 @@ name|Message
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|dispatchValve
 operator|.
@@ -2474,7 +2474,7 @@ name|ActiveMQDestination
 name|dest
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 synchronized|synchronized
 init|(

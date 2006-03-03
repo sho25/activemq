@@ -458,7 +458,7 @@ name|ConnectionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.
@@ -490,7 +490,7 @@ name|Throwable
 name|error
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.
@@ -516,7 +516,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Adds a session.      * @param context      * @param info      * @throws Throwable      */
+comment|/**      * Adds a session.      * @param context      * @param info      */
 specifier|public
 name|void
 name|addSession
@@ -528,7 +528,7 @@ name|SessionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.
@@ -545,7 +545,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Removes a session.      * @param context      * @param info      * @throws Throwable      */
+comment|/**      * Removes a session.      * @param context      * @param info      */
 specifier|public
 name|void
 name|removeSession
@@ -557,7 +557,7 @@ name|SessionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.
@@ -593,7 +593,7 @@ name|ProducerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.
@@ -622,7 +622,7 @@ name|ProducerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.
@@ -657,7 +657,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.
@@ -685,7 +685,7 @@ name|RemoveSubscriptionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.
@@ -713,7 +713,7 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.
@@ -760,7 +760,7 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|int
 name|result
@@ -813,7 +813,7 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.
@@ -863,7 +863,7 @@ name|boolean
 name|onePhase
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.
@@ -900,7 +900,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Forgets a transaction.      * @param client      * @param xid      * @param onePhase      * @throws Throwable       */
+comment|/**      * Forgets a transaction.      * @param client      * @param xid      * @param onePhase      */
 specifier|public
 name|void
 name|forgetTransaction
@@ -912,7 +912,7 @@ name|TransactionId
 name|xid
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.
@@ -1030,7 +1030,7 @@ name|Message
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|/**          * A message can be dispatched before the super.send() method returns          * so - here the order is switched to avoid problems on the slave          * with receiving acks for messages not received yey          */
 name|sendToSlave
@@ -1059,7 +1059,7 @@ name|MessageAck
 name|ack
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.

@@ -395,7 +395,7 @@ name|ConnectionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -447,7 +447,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -818,7 +818,7 @@ name|ProducerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -898,7 +898,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|Destination
 name|answer
@@ -976,7 +976,7 @@ name|long
 name|timeout
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -1053,7 +1053,7 @@ name|Throwable
 name|error
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -1108,7 +1108,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -1182,7 +1182,7 @@ name|ProducerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|next
 operator|.
@@ -1266,7 +1266,7 @@ name|Command
 name|command
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|fireAdvisory
 argument_list|(
@@ -1297,7 +1297,7 @@ name|ConsumerId
 name|targetConsumerId
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQMessage
 name|advisoryMessage
@@ -1334,7 +1334,7 @@ name|Command
 name|command
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|fireConsumerAdvisory
 argument_list|(
@@ -1365,7 +1365,7 @@ name|ConsumerId
 name|targetConsumerId
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQMessage
 name|advisoryMessage
@@ -1414,7 +1414,7 @@ name|Command
 name|command
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|fireProducerAdvisory
 argument_list|(
@@ -1445,7 +1445,7 @@ name|ConsumerId
 name|targetConsumerId
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ActiveMQMessage
 name|advisoryMessage
@@ -1500,7 +1500,7 @@ name|ActiveMQMessage
 name|advisoryMessage
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|advisoryMessage
 operator|.

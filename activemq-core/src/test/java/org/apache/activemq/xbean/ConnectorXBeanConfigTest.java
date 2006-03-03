@@ -149,7 +149,7 @@ name|void
 name|testConnectorConfiguredCorrectly
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|TransportConnector
 name|connector

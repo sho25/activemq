@@ -814,7 +814,7 @@ name|DestinationInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ConnectionState
 name|cs
@@ -866,7 +866,7 @@ name|DestinationInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ConnectionState
 name|cs
@@ -918,7 +918,7 @@ name|ProducerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|SessionId
 name|sessionId
@@ -981,7 +981,7 @@ name|ProducerId
 name|id
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|SessionId
 name|sessionId
@@ -1041,7 +1041,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|SessionId
 name|sessionId
@@ -1104,7 +1104,7 @@ name|ConsumerId
 name|id
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|SessionId
 name|sessionId
@@ -1164,7 +1164,7 @@ name|SessionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ConnectionId
 name|connectionId
@@ -1209,7 +1209,7 @@ name|SessionId
 name|id
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|ConnectionId
 name|connectionId
@@ -1251,7 +1251,7 @@ name|ConnectionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|connectionStates
 operator|.
@@ -1281,7 +1281,7 @@ name|ConnectionId
 name|id
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|connectionStates
 operator|.
@@ -1302,7 +1302,7 @@ name|RemoveSubscriptionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -1316,7 +1316,7 @@ name|Message
 name|send
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -1330,7 +1330,7 @@ name|MessageAck
 name|ack
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -1344,7 +1344,7 @@ name|TransactionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -1358,7 +1358,7 @@ name|TransactionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -1372,7 +1372,7 @@ name|TransactionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -1386,7 +1386,7 @@ name|TransactionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -1400,7 +1400,7 @@ name|TransactionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -1414,7 +1414,7 @@ name|WireFormatInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -1428,7 +1428,7 @@ name|KeepAliveInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -1442,7 +1442,7 @@ name|ShutdownInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -1456,7 +1456,7 @@ name|BrokerInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -1482,7 +1482,7 @@ name|TransactionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -1496,7 +1496,7 @@ name|TransactionInfo
 name|info
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -1510,7 +1510,7 @@ name|FlushCommand
 name|command
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null
@@ -1524,7 +1524,7 @@ name|MessageDispatchNotification
 name|notification
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 return|return
 literal|null

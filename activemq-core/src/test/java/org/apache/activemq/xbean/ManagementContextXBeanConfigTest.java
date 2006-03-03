@@ -127,7 +127,7 @@ name|void
 name|testManagmentContextConfiguredCorrectly
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|assertEquals
 argument_list|(

@@ -179,7 +179,7 @@ name|MessageReference
 name|node
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|super
 operator|.
@@ -287,7 +287,7 @@ name|void
 name|afterCommit
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|node
 operator|.
@@ -305,7 +305,7 @@ name|void
 name|afterRollback
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|node
 operator|.

@@ -58,7 +58,7 @@ specifier|public
 class|class
 name|BrokerSupport
 block|{
-comment|/**      * @param context      * @param message      * @param deadLetterDestination      * @throws Throwable      */
+comment|/**      * @param context      * @param message      * @param deadLetterDestination      * @throws Exception      */
 specifier|static
 specifier|public
 name|void
@@ -75,7 +75,7 @@ name|ActiveMQDestination
 name|deadLetterDestination
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 block|{
 if|if
 condition|(

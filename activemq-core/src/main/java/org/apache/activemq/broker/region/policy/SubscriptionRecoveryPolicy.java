@@ -132,7 +132,7 @@ name|SubscriptionRecoveryPolicy
 extends|extends
 name|Service
 block|{
-comment|/**      * A message was sent to the destination.      *       * @param context      * @param message       * @param node      * @return true if successful      * @throws Throwable      */
+comment|/**      * A message was sent to the destination.      *       * @param context      * @param message       * @param node      * @return true if successful      * @throws Exception      */
 name|boolean
 name|add
 parameter_list|(
@@ -143,9 +143,9 @@ name|MessageReference
 name|message
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * Let a subscription recover message held by the policy.      *       * @param context      * @param topic      * @param sub       * @param node      * @throws Throwable      */
+comment|/**      * Let a subscription recover message held by the policy.      *       * @param context      * @param topic      * @param sub       * @param node      * @throws Exception      */
 name|void
 name|recover
 parameter_list|(
@@ -159,9 +159,9 @@ name|Subscription
 name|sub
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
-comment|/**      * @param dest       * @return messages      * @throws Throwable       */
+comment|/**      * @param dest       * @return messages      * @throws Exception       */
 name|Message
 index|[]
 name|browse
@@ -170,7 +170,7 @@ name|ActiveMQDestination
 name|dest
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 block|}
 end_interface

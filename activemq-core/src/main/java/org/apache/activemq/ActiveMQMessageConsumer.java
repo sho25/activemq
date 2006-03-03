@@ -1478,7 +1478,7 @@ name|void
 name|execute
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|session
 operator|.
@@ -2008,7 +2008,7 @@ name|void
 name|beforeEnd
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|acknowledge
 argument_list|()
@@ -2023,7 +2023,7 @@ name|void
 name|afterCommit
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|commit
 argument_list|()
@@ -2038,7 +2038,7 @@ name|void
 name|afterRollback
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 name|rollback
 argument_list|()

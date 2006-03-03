@@ -255,7 +255,7 @@ name|void
 name|testConsumerPrefetchAtOne
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Make sure the broker is created due to the connection being started.
 name|assertNull

@@ -122,7 +122,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * For the new subscription find the last acknowledged message ID      * and then find any new messages since then and dispatch them      * to the subscription.      *<p/>      * e.g. if we dispatched some messages to a new durable topic subscriber, then went down before      * acknowledging any messages, we need to know the correct point from which to recover from.      * @param subscription      *      * @throws Throwable       */
+comment|/**      * For the new subscription find the last acknowledged message ID      * and then find any new messages since then and dispatch them      * to the subscription.      *<p/>      * e.g. if we dispatched some messages to a new durable topic subscriber, then went down before      * acknowledging any messages, we need to know the correct point from which to recover from.      * @param subscription      *      * @throws Exception       */
 specifier|public
 name|void
 name|recoverSubscription
@@ -137,7 +137,7 @@ name|MessageRecoveryListener
 name|listener
 parameter_list|)
 throws|throws
-name|Throwable
+name|Exception
 function_decl|;
 comment|/**      * Finds the subscriber entry for the given consumer info      *       * @param clientId TODO      * @param subscriptionName TODO      * @return      */
 specifier|public

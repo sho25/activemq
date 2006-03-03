@@ -456,7 +456,7 @@ name|void
 name|xtestPublisherFansout
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Start a normal consumer on the local broker
 name|StubConnection
@@ -720,7 +720,7 @@ name|void
 name|testPublisherWaitsForServerToBeUp
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
 comment|// Start a normal consumer on the local broker
 name|StubConnection
