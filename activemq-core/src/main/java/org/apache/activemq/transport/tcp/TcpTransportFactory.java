@@ -453,10 +453,6 @@ name|transport
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO: missing inactivity monitor
-comment|// transport = new InactivityMonitor(transport,
-comment|// temp.getMaxInactivityDuration(), activityMonitor.getReadCounter(),
-comment|// activityMonitor.getWriteCounter());
 if|if
 condition|(
 name|format
@@ -570,10 +566,6 @@ name|transport
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO: missing inactivity monitor
-comment|// transport = new InactivityMonitor(transport,
-comment|// temp.getMaxInactivityDuration(), activityMonitor.getReadCounter(),
-comment|// activityMonitor.getWriteCounter());
 name|transport
 operator|=
 operator|new
