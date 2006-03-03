@@ -449,6 +449,15 @@ parameter_list|)
 block|{
 comment|// The container could be limiting us on the number of endpoints
 comment|// that are being created.
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Could not create an endpoint."
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 name|session
 operator|.
 name|close
@@ -586,7 +595,7 @@ operator|>=
 name|maxSessions
 condition|)
 block|{
-comment|// then reuse the allready created sessions..
+comment|// then reuse the already created sessions..
 comment|// This is going to queue up messages into a session for
 comment|// processing.
 return|return
@@ -600,7 +609,7 @@ init|=
 name|createServerSessionImpl
 argument_list|()
 decl_stmt|;
-comment|// We may not be able to create a session due to the conatiner
+comment|// We may not be able to create a session due to the container
 comment|// restricting us.
 if|if
 condition|(
@@ -609,6 +618,24 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|idleSessions
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"Endpoint factory did not allows to any endpoints."
+argument_list|)
+throw|;
+block|}
 return|return
 name|getExistingServerSession
 argument_list|()
