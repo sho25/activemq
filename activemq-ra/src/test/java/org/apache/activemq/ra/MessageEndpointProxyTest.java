@@ -436,9 +436,6 @@ expr_stmt|;
 name|setupAfterDeliverySuccessful
 argument_list|()
 expr_stmt|;
-name|setupExpectRelease
-argument_list|()
-expr_stmt|;
 name|doBeforeDeliveryExpectSuccess
 argument_list|()
 expr_stmt|;
@@ -476,9 +473,6 @@ argument_list|)
 expr_stmt|;
 block|}
 name|doAfterDeliveryExpectSuccess
-argument_list|()
-expr_stmt|;
-name|doFullyDeadCheck
 argument_list|()
 expr_stmt|;
 block|}
