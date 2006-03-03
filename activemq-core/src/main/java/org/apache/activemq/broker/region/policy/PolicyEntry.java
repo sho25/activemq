@@ -161,6 +161,10 @@ specifier|private
 name|PendingMessageLimitStrategy
 name|pendingMessageLimitStrategy
 decl_stmt|;
+specifier|private
+name|MessageEvictionStrategy
+name|messageEvictionStrategy
+decl_stmt|;
 specifier|public
 name|void
 name|configure
@@ -372,6 +376,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|messageEvictionStrategy
+operator|!=
+literal|null
+condition|)
+block|{
+name|subscription
+operator|.
+name|setMessageEvictionStrategy
+argument_list|(
+name|messageEvictionStrategy
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|// Properties
 comment|// -------------------------------------------------------------------------
@@ -521,6 +540,31 @@ operator|.
 name|pendingMessageLimitStrategy
 operator|=
 name|pendingMessageLimitStrategy
+expr_stmt|;
+block|}
+specifier|public
+name|MessageEvictionStrategy
+name|getMessageEvictionStrategy
+parameter_list|()
+block|{
+return|return
+name|messageEvictionStrategy
+return|;
+block|}
+comment|/**      * Sets the eviction strategy used to decide which message to evict when the      * slow consumer needs to discard messages      */
+specifier|public
+name|void
+name|setMessageEvictionStrategy
+parameter_list|(
+name|MessageEvictionStrategy
+name|messageEvictionStrategy
+parameter_list|)
+block|{
+name|this
+operator|.
+name|messageEvictionStrategy
+operator|=
+name|messageEvictionStrategy
 expr_stmt|;
 block|}
 block|}
