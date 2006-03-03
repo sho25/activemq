@@ -158,7 +158,7 @@ literal|0
 decl_stmt|;
 comment|/** The subscription that has locked the message */
 specifier|private
-name|Subscription
+name|LockOwner
 name|lockOwner
 decl_stmt|;
 comment|/** Has the message been dropped? */
@@ -581,7 +581,7 @@ specifier|public
 name|boolean
 name|lock
 parameter_list|(
-name|Subscription
+name|LockOwner
 name|subscription
 parameter_list|)
 block|{
@@ -640,7 +640,7 @@ expr_stmt|;
 block|}
 specifier|synchronized
 specifier|public
-name|Subscription
+name|LockOwner
 name|getLockOwner
 parameter_list|()
 block|{

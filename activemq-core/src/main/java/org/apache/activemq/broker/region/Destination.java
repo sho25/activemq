@@ -208,8 +208,8 @@ parameter_list|(
 name|MessageReference
 name|node
 parameter_list|,
-name|Subscription
-name|subscription
+name|LockOwner
+name|lockOwner
 parameter_list|)
 function_decl|;
 name|void

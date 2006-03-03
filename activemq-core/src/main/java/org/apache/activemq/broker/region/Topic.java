@@ -632,7 +632,7 @@ parameter_list|(
 name|MessageReference
 name|node
 parameter_list|,
-name|Subscription
+name|LockOwner
 name|sub
 parameter_list|)
 block|{
