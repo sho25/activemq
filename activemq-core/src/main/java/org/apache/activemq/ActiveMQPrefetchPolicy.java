@@ -111,6 +111,10 @@ specifier|private
 name|int
 name|inputStreamPrefetch
 decl_stmt|;
+specifier|private
+name|int
+name|maximumPendingMessageLimit
+decl_stmt|;
 comment|/**      * Initialize default prefetch policies      */
 specifier|public
 name|ActiveMQPrefetchPolicy
@@ -261,6 +265,31 @@ name|getMaxPrefetchLimit
 argument_list|(
 name|topicPrefetch
 argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|int
+name|getMaximumPendingMessageLimit
+parameter_list|()
+block|{
+return|return
+name|maximumPendingMessageLimit
+return|;
+block|}
+comment|/**      * Sets how many messages a broker will keep around, above the prefetch limit, for non-durable      * topics before starting to discard older messages.      */
+specifier|public
+name|void
+name|setMaximumPendingMessageLimit
+parameter_list|(
+name|int
+name|maximumPendingMessageLimit
+parameter_list|)
+block|{
+name|this
+operator|.
+name|maximumPendingMessageLimit
+operator|=
+name|maximumPendingMessageLimit
 expr_stmt|;
 block|}
 specifier|private

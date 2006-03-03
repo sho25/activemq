@@ -106,6 +106,9 @@ parameter_list|,
 name|int
 name|prefetch
 parameter_list|,
+name|int
+name|maximumPendingMessageCount
+parameter_list|,
 name|boolean
 name|noLocalValue
 parameter_list|,
@@ -131,6 +134,8 @@ argument_list|,
 name|selector
 argument_list|,
 name|prefetch
+argument_list|,
+name|maximumPendingMessageCount
 argument_list|,
 name|noLocalValue
 argument_list|,

@@ -486,7 +486,7 @@ specifier|private
 name|RedeliveryPolicy
 name|redeliveryPolicy
 decl_stmt|;
-comment|/**      * Create a MessageConsumer      *       * @param session      * @param value      * @param dest      * @param name      * @param selector      * @param prefetch      * @param noLocal      * @param browser      * @param dispatchAsync      * @throws JMSException      */
+comment|/**      * Create a MessageConsumer      *       * @param session      * @param dest      * @param name      * @param selector      * @param prefetch      * @param maximumPendingMessageCount TODO      * @param noLocal      * @param browser      * @param dispatchAsync      * @param value      * @throws JMSException      */
 specifier|public
 name|ActiveMQMessageConsumer
 parameter_list|(
@@ -507,6 +507,9 @@ name|selector
 parameter_list|,
 name|int
 name|prefetch
+parameter_list|,
+name|int
+name|maximumPendingMessageCount
 parameter_list|,
 name|boolean
 name|noLocal
@@ -694,6 +697,15 @@ operator|.
 name|setPrefetchSize
 argument_list|(
 name|prefetch
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|info
+operator|.
+name|setMaximumPendingMessageLimit
+argument_list|(
+name|maximumPendingMessageCount
 argument_list|)
 expr_stmt|;
 name|this

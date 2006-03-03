@@ -111,6 +111,10 @@ name|int
 name|prefetchSize
 decl_stmt|;
 specifier|protected
+name|int
+name|maximumPendingMessageLimit
+decl_stmt|;
+specifier|protected
 name|boolean
 name|browser
 decl_stmt|;
@@ -255,6 +259,12 @@ operator|.
 name|prefetchSize
 operator|=
 name|prefetchSize
+expr_stmt|;
+name|info
+operator|.
+name|maximumPendingMessageLimit
+operator|=
+name|maximumPendingMessageLimit
 expr_stmt|;
 name|info
 operator|.
@@ -429,6 +439,31 @@ operator|.
 name|prefetchSize
 operator|=
 name|prefetchSize
+expr_stmt|;
+block|}
+comment|/**      * How many messages a broker will keep around, above the prefetch limit, for non-durable      * topics before starting to discard older messages.      *       * @openwire:property version=1      */
+specifier|public
+name|int
+name|getMaximumPendingMessageLimit
+parameter_list|()
+block|{
+return|return
+name|maximumPendingMessageLimit
+return|;
+block|}
+specifier|public
+name|void
+name|setMaximumPendingMessageLimit
+parameter_list|(
+name|int
+name|maximumPendingMessageLimit
+parameter_list|)
+block|{
+name|this
+operator|.
+name|maximumPendingMessageLimit
+operator|=
+name|maximumPendingMessageLimit
 expr_stmt|;
 block|}
 comment|/**      * Should the broker dispatch a message to the consumer async?  If he does it async, then       * he uses a more SEDA style of processing while if it is not done async, then he broker       * use a STP style of processing.  STP is more appropriate in high bandwidth situations or when      * being used by and in vm transport.      *       * @openwire:property version=1      */
