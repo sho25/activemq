@@ -146,7 +146,7 @@ else|:
 literal|""
 operator|)
 operator|+
-literal|"?wireFormat=stomp"
+literal|"?wireFormat=stomp&maxInactivityDuration=0"
 argument_list|)
 decl_stmt|;
 return|return
