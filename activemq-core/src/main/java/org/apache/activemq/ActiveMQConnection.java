@@ -3507,6 +3507,15 @@ condition|(
 name|isConnectionInfoSentToBroker
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|transportFailed
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
 name|asyncSendPacket
 argument_list|(
 name|info
@@ -3515,6 +3524,7 @@ name|createRemoveCommand
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|isConnectionInfoSentToBroker
 operator|=
 literal|false
