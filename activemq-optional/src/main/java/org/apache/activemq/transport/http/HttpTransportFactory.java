@@ -39,34 +39,6 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|MutexTransport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|ResponseCorrelator
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
 name|Transport
 import|;
 end_import
@@ -262,7 +234,7 @@ name|log
 operator|.
 name|trace
 argument_list|(
-literal|"Not created with a TextWireFromat: "
+literal|"Not created with a TextWireFormat: "
 operator|+
 name|wireFormat
 argument_list|)
@@ -315,22 +287,8 @@ name|location
 argument_list|)
 decl_stmt|;
 comment|//Transport transport = new HttpTransport(textWireFormat, location);
-name|transport
-operator|=
-operator|new
-name|MutexTransport
-argument_list|(
-name|transport
-argument_list|)
-expr_stmt|;
-name|transport
-operator|=
-operator|new
-name|ResponseCorrelator
-argument_list|(
-name|transport
-argument_list|)
-expr_stmt|;
+comment|//transport = new MutexTransport(transport);
+comment|//transport = new ResponseCorrelator(transport);
 return|return
 name|transport
 return|;
