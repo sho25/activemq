@@ -118,7 +118,10 @@ operator|=
 operator|new
 name|File
 argument_list|(
-literal|"../openwire-dotnet/src/OpenWire.Client/IO"
+literal|"../openwire-dotnet/src/ActiveMQ/OpenWire/V"
+operator|+
+name|getOpenwireVersion
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

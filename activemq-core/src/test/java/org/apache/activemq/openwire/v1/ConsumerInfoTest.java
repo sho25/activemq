@@ -179,6 +179,13 @@ argument_list|)
 expr_stmt|;
 name|info
 operator|.
+name|setMaximumPendingMessageLimit
+argument_list|(
+literal|2
+argument_list|)
+expr_stmt|;
+name|info
+operator|.
 name|setDispatchAsync
 argument_list|(
 literal|false

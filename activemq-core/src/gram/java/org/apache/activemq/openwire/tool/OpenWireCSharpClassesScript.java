@@ -94,7 +94,7 @@ operator|=
 operator|new
 name|File
 argument_list|(
-literal|"../openwire-dotnet/src/OpenWire.Client/Commands"
+literal|"../openwire-dotnet/src/ActiveMQ/Commands"
 argument_list|)
 expr_stmt|;
 block|}
