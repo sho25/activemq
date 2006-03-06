@@ -2145,6 +2145,17 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+comment|// We can only cache that item if there is space left.
+if|if
+condition|(
+name|marshallCacheMap
+operator|.
+name|size
+argument_list|()
+operator|<
+name|MARSHAL_CACHE_SIZE
+condition|)
+block|{
 name|marshallCache
 index|[
 name|i
@@ -2174,6 +2185,22 @@ return|return
 name|index
 return|;
 block|}
+else|else
+block|{
+comment|// Use -1 to indicate that the value was not cached due to cache being full.
+return|return
+operator|new
+name|Short
+argument_list|(
+operator|(
+name|short
+operator|)
+operator|-
+literal|1
+argument_list|)
+return|;
+block|}
+block|}
 specifier|public
 name|void
 name|setInUnmarshallCache
@@ -2185,6 +2212,16 @@ name|DataStructure
 name|o
 parameter_list|)
 block|{
+comment|// There was no space left in the cache, so we can't
+comment|// put this in the cache.
+if|if
+condition|(
+name|index
+operator|==
+operator|-
+literal|1
+condition|)
+return|return;
 name|unmarshallCache
 index|[
 name|index
