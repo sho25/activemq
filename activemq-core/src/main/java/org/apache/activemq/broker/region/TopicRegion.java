@@ -424,21 +424,31 @@ name|destination
 argument_list|)
 expr_stmt|;
 block|}
+name|String
+name|clientId
+init|=
+name|context
+operator|.
+name|getClientId
+argument_list|()
+decl_stmt|;
+name|String
+name|subcriptionName
+init|=
+name|info
+operator|.
+name|getSubcriptionName
+argument_list|()
+decl_stmt|;
 name|SubscriptionKey
 name|key
 init|=
 operator|new
 name|SubscriptionKey
 argument_list|(
-name|context
-operator|.
-name|getClientId
-argument_list|()
+name|clientId
 argument_list|,
-name|info
-operator|.
-name|getSubcriptionName
-argument_list|()
+name|subcriptionName
 argument_list|)
 decl_stmt|;
 name|DurableTopicSubscription
@@ -473,7 +483,13 @@ throw|throw
 operator|new
 name|JMSException
 argument_list|(
-literal|"Durable consumer is in use"
+literal|"Durable consumer is in use for client: "
+operator|+
+name|clientId
+operator|+
+literal|" and subscriptionName: "
+operator|+
+name|subcriptionName
 argument_list|)
 throw|;
 block|}
