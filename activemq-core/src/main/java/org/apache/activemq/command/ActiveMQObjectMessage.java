@@ -171,6 +171,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|ObjectStreamClass
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|OutputStream
 import|;
 end_import
@@ -189,9 +199,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|lang
 operator|.
-name|ObjectStreamClass
+name|reflect
+operator|.
+name|Proxy
 import|;
 end_import
 
@@ -216,18 +228,6 @@ operator|.
 name|zip
 operator|.
 name|InflaterInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|reflect
-operator|.
-name|Proxy
 import|;
 end_import
 
@@ -655,6 +655,22 @@ name|this
 operator|.
 name|object
 return|;
+block|}
+specifier|public
+name|void
+name|onMessageRolledBack
+parameter_list|()
+block|{
+name|super
+operator|.
+name|onMessageRolledBack
+argument_list|()
+expr_stmt|;
+comment|// lets force the object to be deserialized again - as we could have changed the object
+name|object
+operator|=
+literal|null
+expr_stmt|;
 block|}
 specifier|public
 name|String

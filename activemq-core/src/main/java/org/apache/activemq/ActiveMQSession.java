@@ -1949,7 +1949,7 @@ operator|.
 name|getMessage
 argument_list|()
 operator|.
-name|incrementRedeliveryCounter
+name|onMessageRolledBack
 argument_list|()
 expr_stmt|;
 name|RedeliveryPolicy

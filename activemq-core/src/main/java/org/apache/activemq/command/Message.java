@@ -2029,6 +2029,15 @@ operator|=
 name|recievedByDFBridge
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|onMessageRolledBack
+parameter_list|()
+block|{
+name|incrementRedeliveryCounter
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 
