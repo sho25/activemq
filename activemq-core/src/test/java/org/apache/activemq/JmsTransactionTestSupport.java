@@ -2007,7 +2007,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|1000
+literal|5000
 argument_list|)
 decl_stmt|;
 name|List
@@ -2077,7 +2077,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|1000
+literal|5000
 argument_list|)
 expr_stmt|;
 name|List
