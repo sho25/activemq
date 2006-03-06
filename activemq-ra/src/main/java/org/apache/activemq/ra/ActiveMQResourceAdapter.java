@@ -551,6 +551,13 @@ condition|(
 name|clientId
 operator|!=
 literal|null
+operator|&&
+name|clientId
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
 condition|)
 block|{
 name|physicalConnection
