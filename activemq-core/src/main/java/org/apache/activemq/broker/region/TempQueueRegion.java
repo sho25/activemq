@@ -149,7 +149,7 @@ block|{
 specifier|public
 name|TempQueueRegion
 parameter_list|(
-name|Broker
+name|RegionBroker
 name|broker
 parameter_list|,
 name|DestinationStatistics

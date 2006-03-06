@@ -139,7 +139,7 @@ block|{
 specifier|public
 name|TempTopicRegion
 parameter_list|(
-name|Broker
+name|RegionBroker
 name|broker
 parameter_list|,
 name|DestinationStatistics

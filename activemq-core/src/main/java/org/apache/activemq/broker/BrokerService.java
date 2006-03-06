@@ -3861,9 +3861,6 @@ argument_list|()
 argument_list|,
 name|getPersistenceAdapter
 argument_list|()
-argument_list|,
-name|getDestinationPolicy
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3883,9 +3880,6 @@ name|getMemoryManager
 argument_list|()
 argument_list|,
 name|getPersistenceAdapter
-argument_list|()
-argument_list|,
-name|getDestinationPolicy
 argument_list|()
 argument_list|)
 expr_stmt|;

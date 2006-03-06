@@ -798,9 +798,6 @@ name|memoryManager
 parameter_list|,
 name|PersistenceAdapter
 name|adapter
-parameter_list|,
-name|PolicyMap
-name|policyMap
 parameter_list|)
 throws|throws
 name|IOException
@@ -814,8 +811,6 @@ argument_list|,
 name|memoryManager
 argument_list|,
 name|adapter
-argument_list|,
-name|policyMap
 argument_list|)
 expr_stmt|;
 name|this
@@ -860,9 +855,6 @@ name|taskRunnerFactory
 parameter_list|,
 name|PersistenceAdapter
 name|adapter
-parameter_list|,
-name|PolicyMap
-name|policyMap
 parameter_list|)
 block|{
 return|return
@@ -878,8 +870,6 @@ argument_list|,
 name|taskRunnerFactory
 argument_list|,
 name|adapter
-argument_list|,
-name|policyMap
 argument_list|)
 return|;
 block|}
@@ -945,9 +935,6 @@ name|taskRunnerFactory
 parameter_list|,
 name|PersistenceAdapter
 name|adapter
-parameter_list|,
-name|PolicyMap
-name|policyMap
 parameter_list|)
 block|{
 return|return
@@ -963,8 +950,6 @@ argument_list|,
 name|taskRunnerFactory
 argument_list|,
 name|adapter
-argument_list|,
-name|policyMap
 argument_list|)
 return|;
 block|}

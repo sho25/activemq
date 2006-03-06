@@ -222,9 +222,6 @@ name|taskRunnerFactory
 parameter_list|,
 name|PersistenceAdapter
 name|persistenceAdapter
-parameter_list|,
-name|PolicyMap
-name|policyMap
 parameter_list|)
 block|{
 name|super
@@ -238,8 +235,6 @@ argument_list|,
 name|taskRunnerFactory
 argument_list|,
 name|persistenceAdapter
-argument_list|,
-name|policyMap
 argument_list|)
 expr_stmt|;
 name|regionBroker

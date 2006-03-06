@@ -334,7 +334,7 @@ name|destinationStatistics
 decl_stmt|;
 specifier|protected
 specifier|final
-name|Broker
+name|RegionBroker
 name|broker
 decl_stmt|;
 specifier|protected
@@ -360,7 +360,7 @@ decl_stmt|;
 specifier|public
 name|AbstractRegion
 parameter_list|(
-name|Broker
+name|RegionBroker
 name|broker
 parameter_list|,
 name|DestinationStatistics
