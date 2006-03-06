@@ -380,6 +380,14 @@ literal|0x00100000
 else|:
 literal|0x00200000
 operator|)
+operator|^
+operator|(
+name|prefixPacketSize
+condition|?
+literal|0x00010000
+else|:
+literal|0x00020000
+operator|)
 return|;
 block|}
 specifier|public
@@ -431,6 +439,12 @@ operator|.
 name|tightEncodingEnabled
 operator|==
 name|tightEncodingEnabled
+operator|&&
+name|o
+operator|.
+name|prefixPacketSize
+operator|==
+name|prefixPacketSize
 return|;
 block|}
 specifier|public
@@ -450,6 +464,14 @@ operator|+
 literal|", stackTraceEnabled="
 operator|+
 name|stackTraceEnabled
+operator|+
+literal|", tightEncodingEnabled="
+operator|+
+name|tightEncodingEnabled
+operator|+
+literal|", prefixPacketSize="
+operator|+
+name|prefixPacketSize
 operator|+
 literal|"}"
 return|;
