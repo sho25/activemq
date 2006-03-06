@@ -230,6 +230,14 @@ name|array
 init|=
 literal|null
 decl_stmt|;
+specifier|protected
+name|ConnectionFactory
+name|factory
+decl_stmt|;
+specifier|protected
+name|Destination
+name|destination
+decl_stmt|;
 comment|/**      * Sets up a test where the producer and consumer have their own connection.      *       * @see junit.framework.TestCase#setUp()      */
 specifier|protected
 name|void
@@ -287,16 +295,15 @@ operator|)
 name|i
 expr_stmt|;
 block|}
-name|ConnectionFactory
-name|fac
-init|=
+name|factory
+operator|=
 name|createConnectionFactory
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|Connection
 name|con
 init|=
-name|fac
+name|factory
 operator|.
 name|createConnection
 argument_list|()
@@ -329,16 +336,15 @@ argument_list|(
 name|array
 argument_list|)
 expr_stmt|;
-name|Destination
-name|dest
-init|=
+name|destination
+operator|=
 name|createDestination
 argument_list|(
 name|session
 argument_list|,
 name|DESTINATION_NAME
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|con
 operator|.
 name|close
@@ -382,9 +388,9 @@ index|]
 operator|=
 name|createConsumer
 argument_list|(
-name|fac
+name|factory
 argument_list|,
-name|dest
+name|destination
 argument_list|,
 name|i
 argument_list|)
@@ -420,9 +426,9 @@ index|]
 operator|=
 name|createProducer
 argument_list|(
-name|fac
+name|factory
 argument_list|,
-name|dest
+name|destination
 argument_list|,
 name|i
 argument_list|)
@@ -666,13 +672,7 @@ argument_list|)
 decl_stmt|;
 comment|//        ActiveMQConnectionFactory cf = new ActiveMQConnectionFactory("vm://localhost?marshal=true");
 comment|//        ActiveMQConnectionFactory cf = new ActiveMQConnectionFactory("vm://localhost?marshal=true&wireFormat.cacheEnabled=false");
-name|cf
-operator|.
-name|setAsyncDispatch
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
+comment|// cf.setAsyncDispatch(false);
 return|return
 name|cf
 return|;
