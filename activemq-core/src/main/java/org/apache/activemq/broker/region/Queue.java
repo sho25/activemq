@@ -2594,7 +2594,9 @@ name|decrementReferenceCount
 argument_list|()
 expr_stmt|;
 block|}
-break|break;
+return|return
+literal|true
+return|;
 block|}
 block|}
 catch|catch
