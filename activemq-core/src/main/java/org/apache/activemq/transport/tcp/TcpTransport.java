@@ -453,6 +453,11 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|checkStarted
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
 name|wireFormat
 operator|.
 name|marshal
