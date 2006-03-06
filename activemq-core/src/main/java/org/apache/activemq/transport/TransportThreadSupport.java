@@ -290,6 +290,39 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+specifier|protected
+name|void
+name|checkStarted
+parameter_list|()
+block|{
+if|if
+condition|(
+operator|!
+name|isStarted
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"The transport "
+operator|+
+name|this
+operator|+
+literal|" of type: "
+operator|+
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" has not been started yet!"
+argument_list|)
+throw|;
+block|}
+block|}
 block|}
 end_class
 
