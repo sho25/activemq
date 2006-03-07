@@ -255,6 +255,10 @@ specifier|private
 name|URI
 name|localUri
 decl_stmt|;
+specifier|private
+name|String
+name|name
+decl_stmt|;
 name|CopyOnWriteArrayList
 name|connections
 init|=
@@ -362,6 +366,18 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Proxy Connector "
+operator|+
+name|getName
+argument_list|()
+operator|+
+literal|" Started"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -440,6 +456,18 @@ name|ss
 operator|.
 name|throwFirstException
 argument_list|()
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Proxy Connector "
+operator|+
+name|getName
+argument_list|()
+operator|+
+literal|" Stopped"
+argument_list|)
 expr_stmt|;
 block|}
 comment|// Properties
@@ -691,6 +719,48 @@ expr_stmt|;
 return|return
 name|transport
 return|;
+block|}
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+if|if
+condition|(
+name|name
+operator|==
+literal|null
+condition|)
+block|{
+name|name
+operator|=
+name|server
+operator|.
+name|getConnectURI
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|name
+return|;
+block|}
+specifier|public
+name|void
+name|setName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|this
+operator|.
+name|name
+operator|=
+name|name
+expr_stmt|;
 block|}
 block|}
 end_class

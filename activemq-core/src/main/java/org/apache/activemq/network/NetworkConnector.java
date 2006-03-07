@@ -457,6 +457,18 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Network Connector "
+operator|+
+name|getName
+argument_list|()
+operator|+
+literal|" Started"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -509,6 +521,18 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Network Connector "
+operator|+
+name|getName
+argument_list|()
+operator|+
+literal|" Stopped"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -1048,6 +1072,21 @@ name|String
 name|getName
 parameter_list|()
 block|{
+if|if
+condition|(
+name|name
+operator|==
+literal|null
+condition|)
+block|{
+name|name
+operator|=
+name|discoveryAgent
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
+block|}
 return|return
 name|name
 return|;
@@ -1376,7 +1415,7 @@ specifier|protected
 name|void
 name|serviceRemoteException
 parameter_list|(
-name|IOException
+name|Exception
 name|error
 parameter_list|)
 block|{
@@ -1424,7 +1463,7 @@ specifier|protected
 name|void
 name|serviceRemoteException
 parameter_list|(
-name|IOException
+name|Exception
 name|error
 parameter_list|)
 block|{
@@ -1473,7 +1512,7 @@ specifier|protected
 name|void
 name|serviceRemoteException
 parameter_list|(
-name|IOException
+name|Exception
 name|error
 parameter_list|)
 block|{
