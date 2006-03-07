@@ -445,6 +445,13 @@ name|equals
 argument_list|(
 literal|"ActiveMQMessage"
 argument_list|)
+operator|||
+name|simpleName
+operator|.
+name|equals
+argument_list|(
+literal|"WireFormatInfo"
+argument_list|)
 return|;
 block|}
 comment|/*          * else { // is it a message type String simpleName = j.getSimpleName();          * JClass superclass = j.getSuperclass(); return          * simpleName.equals("ActiveMQMessage") || (superclass != null&&          * superclass.getSimpleName().equals("ActiveMQMessage")); }          */

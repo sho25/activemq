@@ -554,13 +554,6 @@ name|JAnnotationValue
 name|size
 parameter_list|)
 block|{
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"        "
-argument_list|)
-expr_stmt|;
 name|String
 name|setter
 init|=
@@ -597,7 +590,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -620,7 +613,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -643,7 +636,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -666,7 +659,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -689,7 +682,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -712,7 +705,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -735,7 +728,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -765,7 +758,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -786,7 +779,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -810,7 +803,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -834,7 +827,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -865,7 +858,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -889,7 +882,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -1245,13 +1238,6 @@ argument_list|()
 operator|+
 literal|"()"
 decl_stmt|;
-name|out
-operator|.
-name|print
-argument_list|(
-name|indent
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|type
@@ -1266,7 +1252,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"bs.writeBoolean("
+literal|"        bs.writeBoolean("
 operator|+
 name|getter
 operator|+
@@ -1353,7 +1339,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc+=tightMarshalLong1(wireFormat, "
+literal|"        rc+=tightMarshalLong1(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1376,7 +1362,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += tightMarshalString1("
+literal|"        rc += tightMarshalString1("
 operator|+
 name|getter
 operator|+
@@ -1406,7 +1392,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += tightMarshalByteArray1("
+literal|"        rc += tightMarshalByteArray1("
 operator|+
 name|getter
 operator|+
@@ -1420,7 +1406,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += tightMarshalConstByteArray1("
+literal|"        rc += tightMarshalConstByteArray1("
 operator|+
 name|getter
 operator|+
@@ -1451,7 +1437,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += tightMarshalByteSequence1("
+literal|"        rc += tightMarshalByteSequence1("
 operator|+
 name|getter
 operator|+
@@ -1479,7 +1465,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += tightMarshalObjectArrayConstSize1(wireFormat, "
+literal|"        rc += tightMarshalObjectArrayConstSize1(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1500,7 +1486,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += tightMarshalObjectArray1(wireFormat, "
+literal|"        rc += tightMarshalObjectArray1(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1522,7 +1508,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += tightMarshalThrowable1(wireFormat, "
+literal|"        rc += tightMarshalThrowable1(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1544,7 +1530,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += tightMarshalCachedObject1(wireFormat, (DataStructure)"
+literal|"        rc += tightMarshalCachedObject1(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -1558,7 +1544,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += tightMarshalNestedObject1(wireFormat, (DataStructure)"
+literal|"        rc += tightMarshalNestedObject1(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -1665,13 +1651,6 @@ argument_list|()
 operator|+
 literal|"()"
 decl_stmt|;
-name|out
-operator|.
-name|print
-argument_list|(
-name|indent
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|type
@@ -1686,7 +1665,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"bs.readBoolean();"
+literal|"        bs.readBoolean();"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1705,7 +1684,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.writeByte("
+literal|"        dataOut.writeByte("
 operator|+
 name|getter
 operator|+
@@ -1728,7 +1707,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.writeChar("
+literal|"        dataOut.writeChar("
 operator|+
 name|getter
 operator|+
@@ -1751,7 +1730,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.writeShort("
+literal|"        dataOut.writeShort("
 operator|+
 name|getter
 operator|+
@@ -1774,7 +1753,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.writeInt("
+literal|"        dataOut.writeInt("
 operator|+
 name|getter
 operator|+
@@ -1797,7 +1776,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"tightMarshalLong2(wireFormat, "
+literal|"        tightMarshalLong2(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1820,7 +1799,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"tightMarshalString2("
+literal|"        tightMarshalString2("
 operator|+
 name|getter
 operator|+
@@ -1850,7 +1829,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"tightMarshalConstByteArray2("
+literal|"        tightMarshalConstByteArray2("
 operator|+
 name|getter
 operator|+
@@ -1871,7 +1850,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"tightMarshalByteArray2("
+literal|"        tightMarshalByteArray2("
 operator|+
 name|getter
 operator|+
@@ -1895,7 +1874,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"tightMarshalByteSequence2("
+literal|"        tightMarshalByteSequence2("
 operator|+
 name|getter
 operator|+
@@ -1923,7 +1902,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"tightMarshalObjectArrayConstSize2(wireFormat, "
+literal|"        tightMarshalObjectArrayConstSize2(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1944,7 +1923,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"tightMarshalObjectArray2(wireFormat, "
+literal|"        tightMarshalObjectArray2(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1966,7 +1945,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"tightMarshalThrowable2(wireFormat, "
+literal|"        tightMarshalThrowable2(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1988,7 +1967,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"tightMarshalCachedObject2(wireFormat, (DataStructure)"
+literal|"        tightMarshalCachedObject2(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -2002,7 +1981,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"tightMarshalNestedObject2(wireFormat, (DataStructure)"
+literal|"        tightMarshalNestedObject2(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -2106,13 +2085,6 @@ argument_list|()
 operator|+
 literal|"()"
 decl_stmt|;
-name|out
-operator|.
-name|print
-argument_list|(
-name|indent
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|type
@@ -2127,7 +2099,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.writeBoolean("
+literal|"        dataOut.writeBoolean("
 operator|+
 name|getter
 operator|+
@@ -2150,7 +2122,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.writeByte("
+literal|"        dataOut.writeByte("
 operator|+
 name|getter
 operator|+
@@ -2173,7 +2145,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.writeChar("
+literal|"        dataOut.writeChar("
 operator|+
 name|getter
 operator|+
@@ -2196,7 +2168,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.writeShort("
+literal|"        dataOut.writeShort("
 operator|+
 name|getter
 operator|+
@@ -2219,7 +2191,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.writeInt("
+literal|"        dataOut.writeInt("
 operator|+
 name|getter
 operator|+
@@ -2242,7 +2214,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"looseMarshalLong(wireFormat, "
+literal|"        looseMarshalLong(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -2265,7 +2237,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"looseMarshalString("
+literal|"        looseMarshalString("
 operator|+
 name|getter
 operator|+
@@ -2295,7 +2267,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"looseMarshalConstByteArray(wireFormat, "
+literal|"        looseMarshalConstByteArray(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -2316,7 +2288,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"looseMarshalByteArray(wireFormat, "
+literal|"        looseMarshalByteArray(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -2340,7 +2312,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"looseMarshalByteSequence(wireFormat, "
+literal|"        looseMarshalByteSequence(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -2368,7 +2340,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"looseMarshalObjectArrayConstSize(wireFormat, "
+literal|"        looseMarshalObjectArrayConstSize(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -2389,7 +2361,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"looseMarshalObjectArray(wireFormat, "
+literal|"        looseMarshalObjectArray(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -2411,7 +2383,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"looseMarshalThrowable(wireFormat, "
+literal|"        looseMarshalThrowable(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -2433,7 +2405,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"looseMarshalCachedObject(wireFormat, (DataStructure)"
+literal|"        looseMarshalCachedObject(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -2447,7 +2419,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"looseMarshalNestedObject(wireFormat, (DataStructure)"
+literal|"        looseMarshalNestedObject(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -2590,13 +2562,6 @@ name|JAnnotationValue
 name|size
 parameter_list|)
 block|{
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"        "
-argument_list|)
-expr_stmt|;
 name|String
 name|setter
 init|=
@@ -2633,7 +2598,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -2656,7 +2621,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -2679,7 +2644,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -2702,7 +2667,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -2725,7 +2690,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -2748,7 +2713,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -2771,7 +2736,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -2801,7 +2766,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -2822,7 +2787,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -2846,7 +2811,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -2870,7 +2835,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -2901,7 +2866,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+
@@ -2925,7 +2890,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|setter
 operator|+

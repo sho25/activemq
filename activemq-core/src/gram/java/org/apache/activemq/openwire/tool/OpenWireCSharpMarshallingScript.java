@@ -146,13 +146,6 @@ name|JAnnotationValue
 name|size
 parameter_list|)
 block|{
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"        "
-argument_list|)
-expr_stmt|;
 name|String
 name|propertyName
 init|=
@@ -186,7 +179,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|propertyName
 operator|+
@@ -209,7 +202,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|propertyName
 operator|+
@@ -232,7 +225,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|propertyName
 operator|+
@@ -255,7 +248,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|propertyName
 operator|+
@@ -278,7 +271,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|propertyName
 operator|+
@@ -301,7 +294,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|propertyName
 operator|+
@@ -324,7 +317,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|propertyName
 operator|+
@@ -361,7 +354,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|propertyName
 operator|+
@@ -382,7 +375,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|propertyName
 operator|+
@@ -407,7 +400,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|propertyName
 operator|+
@@ -428,7 +421,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|propertyName
 operator|+
@@ -446,7 +439,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"info."
+literal|"        info."
 operator|+
 name|propertyName
 operator|+
@@ -788,13 +781,6 @@ operator|.
 name|getSimpleName
 argument_list|()
 decl_stmt|;
-name|out
-operator|.
-name|print
-argument_list|(
-name|indent
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|type
@@ -809,7 +795,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"bs.WriteBoolean("
+literal|"        bs.WriteBoolean("
 operator|+
 name|getter
 operator|+
@@ -896,7 +882,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += TightMarshalLong1(wireFormat, "
+literal|"        rc += TightMarshalLong1(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -917,9 +903,16 @@ condition|)
 block|{
 name|out
 operator|.
+name|print
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
 name|println
 argument_list|(
-literal|"rc += TightMarshalString1("
+literal|"        rc += TightMarshalString1("
 operator|+
 name|getter
 operator|+
@@ -956,7 +949,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"bs.WriteBoolean("
+literal|"        bs.WriteBoolean("
 operator|+
 name|getter
 operator|+
@@ -1010,7 +1003,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += TightMarshalObjectArrayConstSize1(wireFormat, "
+literal|"        rc += TightMarshalObjectArrayConstSize1(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1031,7 +1024,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += TightMarshalObjectArray1(wireFormat, "
+literal|"        rc += TightMarshalObjectArray1(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1053,7 +1046,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += TightMarshalBrokerError1(wireFormat, "
+literal|"        rc += TightMarshalBrokerError1(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1075,7 +1068,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += TightMarshalCachedObject1(wireFormat, (DataStructure)"
+literal|"        rc += TightMarshalCachedObject1(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -1089,7 +1082,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += TightMarshalNestedObject1(wireFormat, (DataStructure)"
+literal|"        rc += TightMarshalNestedObject1(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -1191,13 +1184,6 @@ operator|.
 name|getSimpleName
 argument_list|()
 decl_stmt|;
-name|out
-operator|.
-name|print
-argument_list|(
-name|indent
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|type
@@ -1212,7 +1198,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"bs.ReadBoolean();"
+literal|"        bs.ReadBoolean();"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1231,7 +1217,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.Write("
+literal|"        dataOut.Write("
 operator|+
 name|getter
 operator|+
@@ -1254,7 +1240,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.Write("
+literal|"        dataOut.Write("
 operator|+
 name|getter
 operator|+
@@ -1277,7 +1263,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.Write("
+literal|"        dataOut.Write("
 operator|+
 name|getter
 operator|+
@@ -1300,7 +1286,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.Write("
+literal|"        dataOut.Write("
 operator|+
 name|getter
 operator|+
@@ -1323,7 +1309,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"TightMarshalLong2(wireFormat, "
+literal|"        TightMarshalLong2(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1346,7 +1332,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"TightMarshalString2("
+literal|"        TightMarshalString2("
 operator|+
 name|getter
 operator|+
@@ -1383,7 +1369,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"dataOut.Write("
+literal|"        dataOut.Write("
 operator|+
 name|getter
 operator|+
@@ -1404,7 +1390,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"if(bs.ReadBoolean()) {"
+literal|"        if(bs.ReadBoolean()) {"
 argument_list|)
 expr_stmt|;
 name|out
@@ -1458,7 +1444,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"TightMarshalObjectArrayConstSize2(wireFormat, "
+literal|"        TightMarshalObjectArrayConstSize2(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1479,7 +1465,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"TightMarshalObjectArray2(wireFormat, "
+literal|"        TightMarshalObjectArray2(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1501,7 +1487,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"TightMarshalBrokerError2(wireFormat, "
+literal|"        TightMarshalBrokerError2(wireFormat, "
 operator|+
 name|getter
 operator|+
@@ -1523,7 +1509,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"TightMarshalCachedObject2(wireFormat, (DataStructure)"
+literal|"        TightMarshalCachedObject2(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -1537,7 +1523,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"TightMarshalNestedObject2(wireFormat, (DataStructure)"
+literal|"        TightMarshalNestedObject2(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
