@@ -297,7 +297,7 @@ decl_stmt|;
 specifier|final
 specifier|protected
 name|LinkedList
-name|matched
+name|pending
 init|=
 operator|new
 name|LinkedList
@@ -314,7 +314,7 @@ argument_list|()
 decl_stmt|;
 specifier|protected
 name|int
-name|delivered
+name|prefetchExtension
 init|=
 literal|0
 decl_stmt|;
@@ -342,7 +342,7 @@ name|long
 name|dispatchCounter
 decl_stmt|;
 name|long
-name|aknowledgedCounter
+name|dequeueCounter
 decl_stmt|;
 specifier|public
 name|PrefetchSubscription
@@ -404,10 +404,10 @@ else|else
 block|{
 synchronized|synchronized
 init|(
-name|matched
+name|pending
 init|)
 block|{
-name|matched
+name|pending
 operator|.
 name|addLast
 argument_list|(
@@ -427,7 +427,7 @@ parameter_list|)
 block|{
 synchronized|synchronized
 init|(
-name|matched
+name|pending
 init|)
 block|{
 for|for
@@ -435,7 +435,7 @@ control|(
 name|Iterator
 name|i
 init|=
-name|matched
+name|pending
 operator|.
 name|iterator
 argument_list|()
@@ -657,7 +657,7 @@ name|isInTransaction
 argument_list|()
 condition|)
 block|{
-name|aknowledgedCounter
+name|dequeueCounter
 operator|++
 expr_stmt|;
 name|iter
@@ -694,7 +694,7 @@ operator|.
 name|this
 init|)
 block|{
-name|aknowledgedCounter
+name|dequeueCounter
 operator|++
 expr_stmt|;
 name|dispatched
@@ -704,7 +704,7 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
-name|delivered
+name|prefetchExtension
 operator|--
 expr_stmt|;
 block|}
@@ -745,13 +745,13 @@ operator|.
 name|isInTransaction
 argument_list|()
 condition|)
-name|delivered
+name|prefetchExtension
 operator|=
 name|Math
 operator|.
 name|max
 argument_list|(
-name|delivered
+name|prefetchExtension
 argument_list|,
 name|index
 operator|+
@@ -759,7 +759,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 else|else
-name|delivered
+name|prefetchExtension
 operator|=
 name|Math
 operator|.
@@ -767,7 +767,7 @@ name|max
 argument_list|(
 literal|0
 argument_list|,
-name|delivered
+name|prefetchExtension
 operator|-
 operator|(
 name|index
@@ -870,13 +870,13 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|delivered
+name|prefetchExtension
 operator|=
 name|Math
 operator|.
 name|max
 argument_list|(
-name|delivered
+name|prefetchExtension
 argument_list|,
 name|index
 operator|+
@@ -1090,7 +1090,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|aknowledgedCounter
+name|dequeueCounter
 operator|++
 expr_stmt|;
 name|index
@@ -1118,7 +1118,7 @@ name|messageId
 argument_list|)
 condition|)
 block|{
-name|delivered
+name|prefetchExtension
 operator|=
 name|Math
 operator|.
@@ -1126,7 +1126,7 @@ name|max
 argument_list|(
 literal|0
 argument_list|,
-name|delivered
+name|prefetchExtension
 operator|-
 operator|(
 name|index
@@ -1183,7 +1183,7 @@ operator|.
 name|size
 argument_list|()
 operator|-
-name|delivered
+name|prefetchExtension
 operator|>=
 name|info
 operator|.
@@ -1202,7 +1202,7 @@ name|getPendingQueueSize
 parameter_list|()
 block|{
 return|return
-name|matched
+name|pending
 operator|.
 name|size
 argument_list|()
@@ -1228,7 +1228,7 @@ name|getDequeueCounter
 parameter_list|()
 block|{
 return|return
-name|aknowledgedCounter
+name|dequeueCounter
 return|;
 block|}
 specifier|synchronized
@@ -1275,7 +1275,7 @@ control|(
 name|Iterator
 name|iter
 init|=
-name|matched
+name|pending
 operator|.
 name|iterator
 argument_list|()

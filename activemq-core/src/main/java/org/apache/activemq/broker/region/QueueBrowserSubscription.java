@@ -210,13 +210,13 @@ literal|", delivered="
 operator|+
 name|this
 operator|.
-name|delivered
+name|prefetchExtension
 operator|+
-literal|", matched="
+literal|", pending="
 operator|+
 name|this
 operator|.
-name|matched
+name|pending
 operator|.
 name|size
 argument_list|()

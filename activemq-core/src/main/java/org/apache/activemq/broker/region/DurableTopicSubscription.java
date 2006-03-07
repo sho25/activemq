@@ -581,7 +581,7 @@ control|(
 name|Iterator
 name|iter
 init|=
-name|matched
+name|pending
 operator|.
 name|iterator
 argument_list|()
@@ -611,7 +611,7 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
-name|delivered
+name|prefetchExtension
 operator|=
 literal|0
 expr_stmt|;
@@ -881,13 +881,13 @@ literal|", delivered="
 operator|+
 name|this
 operator|.
-name|delivered
+name|prefetchExtension
 operator|+
-literal|", matched="
+literal|", pending="
 operator|+
 name|this
 operator|.
-name|matched
+name|pending
 operator|.
 name|size
 argument_list|()
