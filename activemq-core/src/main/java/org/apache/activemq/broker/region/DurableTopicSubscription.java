@@ -727,7 +727,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|int
-name|pending
+name|getPendingQueueSize
 parameter_list|()
 block|{
 if|if
@@ -738,7 +738,7 @@ block|{
 return|return
 name|super
 operator|.
-name|pending
+name|getPendingQueueSize
 argument_list|()
 return|;
 block|}

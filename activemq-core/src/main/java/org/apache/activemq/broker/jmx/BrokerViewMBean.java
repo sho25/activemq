@@ -46,17 +46,20 @@ name|BrokerViewMBean
 extends|extends
 name|Service
 block|{
+comment|/** 	 * @return The unique id of the broker. 	 */
 specifier|public
 specifier|abstract
 name|String
 name|getBrokerId
 parameter_list|()
 function_decl|;
+comment|/**      * The Broker will fush it's caches so that the garbage      * collector can recalaim more memory.      *       * @throws Exception      */
 specifier|public
-specifier|abstract
 name|void
 name|gc
 parameter_list|()
+throws|throws
+name|Exception
 function_decl|;
 specifier|public
 name|void
@@ -80,12 +83,7 @@ parameter_list|()
 function_decl|;
 specifier|public
 name|long
-name|getTotalMessages
-parameter_list|()
-function_decl|;
-specifier|public
-name|long
-name|getTotalMessagesCached
+name|getTotalMessageCount
 parameter_list|()
 function_decl|;
 specifier|public
@@ -106,6 +104,7 @@ name|long
 name|limit
 parameter_list|)
 function_decl|;
+comment|/**      * Shuts down the JVM.      * @param exitCode the exit code that will be reported by the JVM process when it exits.      */
 specifier|public
 name|void
 name|terminateJVM
@@ -113,6 +112,14 @@ parameter_list|(
 name|int
 name|exitCode
 parameter_list|)
+function_decl|;
+comment|/**      * Stop the broker and all it's comonents.      */
+specifier|public
+name|void
+name|stop
+parameter_list|()
+throws|throws
+name|Exception
 function_decl|;
 specifier|public
 name|ObjectName
@@ -174,6 +181,7 @@ index|[]
 name|getTemporaryQueueSubscribers
 parameter_list|()
 function_decl|;
+comment|/**       * Adds a Topic destination to the broker.      * @param name The name of the Topic      * @throws Exception      */
 specifier|public
 name|void
 name|addTopic
@@ -184,6 +192,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Adds a Queue destination to the broker.      * @param name The name of the Queue      * @throws Exception      */
 specifier|public
 name|void
 name|addQueue
@@ -194,6 +203,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**       * Removes a Topic destination from the broker.      * @param name The name of the Topic      * @throws Exception      */
 specifier|public
 name|void
 name|removeTopic
@@ -204,6 +214,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Removes a Queue destination from the broker.      * @param name The name of the Queue      * @throws Exception      */
 specifier|public
 name|void
 name|removeQueue

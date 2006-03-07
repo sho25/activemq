@@ -85,6 +85,10 @@ name|Message
 import|;
 end_import
 
+begin_comment
+comment|/**  * Provides a JMX Management view of a Queue.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -156,13 +160,14 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|void
+name|boolean
 name|removeMessage
 parameter_list|(
 name|String
 name|messageId
 parameter_list|)
 block|{
+return|return
 operator|(
 operator|(
 name|Queue
@@ -174,7 +179,7 @@ name|removeMessage
 argument_list|(
 name|messageId
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 specifier|public
 name|void

@@ -26,7 +26,7 @@ specifier|public
 interface|interface
 name|SubscriptionViewMBean
 block|{
-comment|/**      * @return the clientId      */
+comment|/**      * @return the clientId of the Connection the Subscription is on      */
 specifier|public
 name|String
 name|getClientId
@@ -80,28 +80,31 @@ name|boolean
 name|isActive
 parameter_list|()
 function_decl|;
-comment|/**      * The subscription should release as may references as it can to help the garbage collector reclaim memory.      */
-specifier|public
-name|void
-name|gc
-parameter_list|()
-function_decl|;
 comment|/**      * @return number of messages pending delivery      */
 specifier|public
 name|int
-name|getPending
+name|getPendingQueueSize
 parameter_list|()
 function_decl|;
 comment|/**      * @return number of messages dispatched      */
 specifier|public
 name|int
-name|getDispatched
+name|getDispatchedQueueSize
 parameter_list|()
 function_decl|;
-comment|/**      * @return number of messages delivered      */
-specifier|public
-name|int
-name|getDelivered
+comment|/**      * @return number of messages that matched the subscription      */
+name|long
+name|getDispachedCounter
+parameter_list|()
+function_decl|;
+comment|/**      * @return number of messages that matched the subscription      */
+name|long
+name|getEnqueueCounter
+parameter_list|()
+function_decl|;
+comment|/**      * @return number of messages queued by the client      */
+name|long
+name|getDequeueCounter
 parameter_list|()
 function_decl|;
 block|}

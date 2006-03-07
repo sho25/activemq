@@ -79,7 +79,7 @@ block|}
 comment|/**      * @return the number of messages discarded due to being a slow consumer      */
 specifier|public
 name|int
-name|getDiscarded
+name|getDiscardedCount
 parameter_list|()
 block|{
 name|TopicSubscription
@@ -101,10 +101,10 @@ else|:
 literal|0
 return|;
 block|}
-comment|/**      * @return the number of matched messages (messages targeted for the      *         subscription but not yet able to be dispatched due to the      *         prefetch buffer being full).      */
+comment|/**      * @return the maximun number of messages that can be pending.      */
 specifier|public
 name|int
-name|getMatched
+name|getMaximumPendingQueueSize
 parameter_list|()
 block|{
 name|TopicSubscription
@@ -120,11 +120,42 @@ literal|null
 condition|?
 name|topicSubscription
 operator|.
-name|matched
+name|getMaximumPendingMessages
 argument_list|()
 else|:
 literal|0
 return|;
+block|}
+comment|/**      *       */
+specifier|public
+name|void
+name|setMaximumPendingQueueSize
+parameter_list|(
+name|int
+name|max
+parameter_list|)
+block|{
+name|TopicSubscription
+name|topicSubscription
+init|=
+name|getTopicSubscription
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|topicSubscription
+operator|!=
+literal|null
+condition|)
+block|{
+name|topicSubscription
+operator|.
+name|setMaximumPendingMessages
+argument_list|(
+name|max
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

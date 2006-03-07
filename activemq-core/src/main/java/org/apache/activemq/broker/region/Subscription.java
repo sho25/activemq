@@ -216,17 +216,27 @@ parameter_list|()
 function_decl|;
 comment|/**      * @return number of messages pending delivery      */
 name|int
-name|pending
+name|getPendingQueueSize
 parameter_list|()
 function_decl|;
-comment|/**      * @return number of messages dispatched      */
+comment|/**      * @return number of messages dispatched to the client      */
 name|int
-name|dispatched
+name|getDispatchedQueueSize
 parameter_list|()
 function_decl|;
-comment|/**      * @return number of messages delivered      */
-name|int
-name|delivered
+comment|/**      * @return number of messages dispatched to the client      */
+name|long
+name|getDispatchedCounter
+parameter_list|()
+function_decl|;
+comment|/**      * @return number of messages that matched the subscription      */
+name|long
+name|getEnqueueCounter
+parameter_list|()
+function_decl|;
+comment|/**      * @return number of messages queued by the client      */
+name|long
+name|getDequeueCounter
 parameter_list|()
 function_decl|;
 block|}

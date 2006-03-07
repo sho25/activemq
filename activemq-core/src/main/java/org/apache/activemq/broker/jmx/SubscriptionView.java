@@ -400,7 +400,7 @@ block|}
 comment|/**      * @return number of messages pending delivery      */
 specifier|public
 name|int
-name|getPending
+name|getPendingQueueSize
 parameter_list|()
 block|{
 return|return
@@ -410,7 +410,7 @@ literal|null
 condition|?
 name|subscription
 operator|.
-name|pending
+name|getPendingQueueSize
 argument_list|()
 else|:
 literal|0
@@ -419,7 +419,7 @@ block|}
 comment|/**      * @return number of messages dispatched      */
 specifier|public
 name|int
-name|getDispatched
+name|getDispatchedQueueSize
 parameter_list|()
 block|{
 return|return
@@ -429,16 +429,16 @@ literal|null
 condition|?
 name|subscription
 operator|.
-name|dispatched
+name|getDispatchedQueueSize
 argument_list|()
 else|:
 literal|0
 return|;
 block|}
-comment|/**      * @return number of messages delivered      */
+comment|/**      * @return number of messages that matched the subscription      */
 specifier|public
-name|int
-name|getDelivered
+name|long
+name|getDispachedCounter
 parameter_list|()
 block|{
 return|return
@@ -448,7 +448,45 @@ literal|null
 condition|?
 name|subscription
 operator|.
-name|delivered
+name|getDispatchedCounter
+argument_list|()
+else|:
+literal|0
+return|;
+block|}
+comment|/**      * @return number of messages that matched the subscription      */
+specifier|public
+name|long
+name|getEnqueueCounter
+parameter_list|()
+block|{
+return|return
+name|subscription
+operator|!=
+literal|null
+condition|?
+name|subscription
+operator|.
+name|getEnqueueCounter
+argument_list|()
+else|:
+literal|0
+return|;
+block|}
+comment|/**      * @return number of messages queued by the client      */
+specifier|public
+name|long
+name|getDequeueCounter
+parameter_list|()
+block|{
+return|return
+name|subscription
+operator|!=
+literal|null
+condition|?
+name|subscription
+operator|.
+name|getDequeueCounter
 argument_list|()
 else|:
 literal|0

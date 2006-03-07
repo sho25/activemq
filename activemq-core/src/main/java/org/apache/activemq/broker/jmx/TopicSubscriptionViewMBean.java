@@ -31,14 +31,22 @@ block|{
 comment|/**      * @return the number of messages discarded due to being a slow consumer      */
 specifier|public
 name|int
-name|getDiscarded
+name|getDiscardedCount
 parameter_list|()
 function_decl|;
-comment|/**      * @return the number of matched messages (messages targeted for the subscription but not      * yet able to be dispatched due to the prefetch buffer being full).      */
+comment|/**      * @return the maximun number of messages that can be pending.      */
 specifier|public
 name|int
-name|getMatched
+name|getMaximumPendingQueueSize
 parameter_list|()
+function_decl|;
+specifier|public
+name|void
+name|setMaximumPendingQueueSize
+parameter_list|(
+name|int
+name|max
+parameter_list|)
 function_decl|;
 block|}
 end_interface

@@ -2108,7 +2108,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|void
+name|boolean
 name|removeMessage
 parameter_list|(
 name|String
@@ -2243,6 +2243,9 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 block|}
 block|}
@@ -2254,6 +2257,9 @@ parameter_list|)
 block|{                 }
 block|}
 block|}
+return|return
+literal|false
+return|;
 block|}
 specifier|public
 name|Message

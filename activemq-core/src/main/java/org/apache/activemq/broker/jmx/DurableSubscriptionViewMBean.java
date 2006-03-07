@@ -64,7 +64,7 @@ name|DurableSubscriptionViewMBean
 extends|extends
 name|SubscriptionViewMBean
 block|{
-comment|/**      * @return name of the durable consumer      */
+comment|/**      * @return name of the durable subscription name      */
 specifier|public
 name|String
 name|getSubscriptionName
