@@ -840,7 +840,13 @@ name|setter
 operator|+
 literal|"(("
 operator|+
-name|type
+name|property
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|getQualifiedName
+argument_list|()
 operator|+
 literal|") tightUnmarsalThrowable(wireFormat, dataIn, bs));"
 argument_list|)
@@ -865,7 +871,13 @@ name|setter
 operator|+
 literal|"(("
 operator|+
-name|type
+name|property
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|getQualifiedName
+argument_list|()
 operator|+
 literal|") tightUnmarsalCachedObject(wireFormat, dataIn, bs));"
 argument_list|)
@@ -883,7 +895,13 @@ name|setter
 operator|+
 literal|"(("
 operator|+
-name|type
+name|property
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|getQualifiedName
+argument_list|()
 operator|+
 literal|") tightUnmarsalNestedObject(wireFormat, dataIn, bs));"
 argument_list|)
@@ -920,7 +938,7 @@ operator|.
 name|getArrayComponentType
 argument_list|()
 operator|.
-name|getSimpleName
+name|getQualifiedName
 argument_list|()
 decl_stmt|;
 name|String
@@ -1526,7 +1544,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += tightMarshalCachedObject1(wireFormat, "
+literal|"rc += tightMarshalCachedObject1(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -1540,7 +1558,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += tightMarshalNestedObject1(wireFormat, "
+literal|"rc += tightMarshalNestedObject1(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -1970,7 +1988,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"tightMarshalCachedObject2(wireFormat, "
+literal|"tightMarshalCachedObject2(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -1984,7 +2002,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"tightMarshalNestedObject2(wireFormat, "
+literal|"tightMarshalNestedObject2(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -2415,7 +2433,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"looseMarshalCachedObject(wireFormat, "
+literal|"looseMarshalCachedObject(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -2429,7 +2447,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"looseMarshalNestedObject(wireFormat, "
+literal|"looseMarshalNestedObject(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -2858,7 +2876,13 @@ name|setter
 operator|+
 literal|"(("
 operator|+
-name|type
+name|property
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|getQualifiedName
+argument_list|()
 operator|+
 literal|") looseUnmarsalThrowable(wireFormat, dataIn));"
 argument_list|)
@@ -2883,7 +2907,13 @@ name|setter
 operator|+
 literal|"(("
 operator|+
-name|type
+name|property
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|getQualifiedName
+argument_list|()
 operator|+
 literal|") looseUnmarsalCachedObject(wireFormat, dataIn));"
 argument_list|)
@@ -2901,7 +2931,13 @@ name|setter
 operator|+
 literal|"(("
 operator|+
-name|type
+name|property
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|getQualifiedName
+argument_list|()
 operator|+
 literal|") looseUnmarsalNestedObject(wireFormat, dataIn));"
 argument_list|)
@@ -2938,7 +2974,7 @@ operator|.
 name|getArrayComponentType
 argument_list|()
 operator|.
-name|getSimpleName
+name|getQualifiedName
 argument_list|()
 decl_stmt|;
 name|String

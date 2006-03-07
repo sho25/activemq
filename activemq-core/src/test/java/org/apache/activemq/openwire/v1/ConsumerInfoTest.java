@@ -283,6 +283,16 @@ expr_stmt|;
 block|}
 name|info
 operator|.
+name|setAdditionalPredicate
+argument_list|(
+name|createBooleanExpression
+argument_list|(
+literal|"AdditionalPredicate:6"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|info
+operator|.
 name|setNetworkSubscription
 argument_list|(
 literal|false

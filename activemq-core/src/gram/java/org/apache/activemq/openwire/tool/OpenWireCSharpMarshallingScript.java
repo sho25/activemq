@@ -118,7 +118,7 @@ operator|=
 operator|new
 name|File
 argument_list|(
-literal|"../openwire-dotnet/src/ActiveMQ/OpenWire/V"
+literal|"../activemq-dotnet/src/main/csharp/ActiveMQ/OpenWire/V"
 operator|+
 name|getOpenwireVersion
 argument_list|()
@@ -213,7 +213,7 @@ literal|"info."
 operator|+
 name|propertyName
 operator|+
-literal|" = BaseDataStreamMarshaller.ReadByte(dataIn);"
+literal|" = dataIn.ReadByte();"
 argument_list|)
 expr_stmt|;
 block|}
@@ -236,7 +236,7 @@ literal|"info."
 operator|+
 name|propertyName
 operator|+
-literal|" = BaseDataStreamMarshaller.ReadChar(dataIn);"
+literal|" = dataIn.ReadChar();"
 argument_list|)
 expr_stmt|;
 block|}
@@ -259,7 +259,7 @@ literal|"info."
 operator|+
 name|propertyName
 operator|+
-literal|" = BaseDataStreamMarshaller.ReadShort(dataIn);"
+literal|" = dataIn.ReadInt16();"
 argument_list|)
 expr_stmt|;
 block|}
@@ -282,7 +282,7 @@ literal|"info."
 operator|+
 name|propertyName
 operator|+
-literal|" = BaseDataStreamMarshaller.ReadInt(dataIn);"
+literal|" = dataIn.ReadInt32();"
 argument_list|)
 expr_stmt|;
 block|}
@@ -607,7 +607,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"            short size = BaseDataStreamMarshaller.ReadShort(dataIn);"
+literal|"            short size = dataIn.ReadInt16();"
 argument_list|)
 expr_stmt|;
 name|out
@@ -1075,7 +1075,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += TightMarshalCachedObject1(wireFormat, "
+literal|"rc += TightMarshalCachedObject1(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -1089,7 +1089,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"rc += TightMarshalNestedObject1(wireFormat, "
+literal|"rc += TightMarshalNestedObject1(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -1231,11 +1231,11 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"BaseDataStreamMarshaller.WriteByte("
+literal|"dataOut.Write("
 operator|+
 name|getter
 operator|+
-literal|", dataOut);"
+literal|");"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1254,11 +1254,11 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"BaseDataStreamMarshaller.WriteChar("
+literal|"dataOut.Write("
 operator|+
 name|getter
 operator|+
-literal|", dataOut);"
+literal|");"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1277,11 +1277,11 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"BaseDataStreamMarshaller.WriteShort("
+literal|"dataOut.Write("
 operator|+
 name|getter
 operator|+
-literal|", dataOut);"
+literal|");"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1300,11 +1300,11 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"BaseDataStreamMarshaller.WriteInt("
+literal|"dataOut.Write("
 operator|+
 name|getter
 operator|+
-literal|", dataOut);"
+literal|");"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1411,11 +1411,11 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"           BaseDataStreamMarshaller.WriteInt("
+literal|"           dataOut.Write("
 operator|+
 name|getter
 operator|+
-literal|".Length, dataOut);"
+literal|".Length);"
 argument_list|)
 expr_stmt|;
 name|out
@@ -1523,7 +1523,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"TightMarshalCachedObject2(wireFormat, "
+literal|"TightMarshalCachedObject2(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+
@@ -1537,7 +1537,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"TightMarshalNestedObject2(wireFormat, "
+literal|"TightMarshalNestedObject2(wireFormat, (DataStructure)"
 operator|+
 name|getter
 operator|+

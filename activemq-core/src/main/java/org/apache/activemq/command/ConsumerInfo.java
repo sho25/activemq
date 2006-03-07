@@ -152,7 +152,6 @@ index|[]
 name|brokerPath
 decl_stmt|;
 specifier|protected
-specifier|transient
 name|BooleanExpression
 name|additionalPredicate
 decl_stmt|;
@@ -695,7 +694,7 @@ operator|=
 name|brokerPath
 expr_stmt|;
 block|}
-comment|/**      * A transient additional predicate that can be used it inject additional predicates      * into the selector on the fly.  Handy if if say a Security Broker interceptor wants to       * filter out messages based on security level of the consumer.      *       * @return      */
+comment|/**      * A transient additional predicate that can be used it inject additional predicates      * into the selector on the fly.  Handy if if say a Security Broker interceptor wants to       * filter out messages based on security level of the consumer.      *       * @openwire:property version=1      */
 specifier|public
 name|BooleanExpression
 name|getAdditionalPredicate

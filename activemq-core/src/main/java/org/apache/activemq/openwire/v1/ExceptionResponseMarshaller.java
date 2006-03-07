@@ -156,6 +156,10 @@ operator|.
 name|setException
 argument_list|(
 operator|(
+name|java
+operator|.
+name|lang
+operator|.
 name|Throwable
 operator|)
 name|tightUnmarsalThrowable
@@ -325,6 +329,10 @@ operator|.
 name|setException
 argument_list|(
 operator|(
+name|java
+operator|.
+name|lang
+operator|.
 name|Throwable
 operator|)
 name|looseUnmarsalThrowable

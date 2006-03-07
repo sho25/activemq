@@ -736,6 +736,10 @@ block|,
 literal|"ActiveMQStreamMessage"
 block|,
 literal|"DataStructureSupport"
+block|,
+literal|"WireFormatInfo"
+block|,
+literal|"ActiveMQObjectMessage"
 block|}
 decl_stmt|;
 for|for

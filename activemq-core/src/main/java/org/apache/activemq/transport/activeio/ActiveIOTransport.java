@@ -273,6 +273,8 @@ name|WireFormatInfo
 operator|)
 name|command
 decl_stmt|;
+try|try
+block|{
 if|if
 condition|(
 name|info
@@ -281,15 +283,14 @@ name|isTcpNoDelayEnabled
 argument_list|()
 condition|)
 block|{
-try|try
-block|{
 name|enableTcpNodeDelay
 argument_list|()
 expr_stmt|;
 block|}
+block|}
 catch|catch
 parameter_list|(
-name|SocketException
+name|IOException
 name|e
 parameter_list|)
 block|{
@@ -298,7 +299,6 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 name|transportListener

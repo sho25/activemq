@@ -292,6 +292,11 @@ name|MESSAGE_DISPATCH_NOTIFICATION
 init|=
 literal|90
 decl_stmt|;
+name|byte
+name|NETWORK_BRIDGE_FILTER
+init|=
+literal|91
+decl_stmt|;
 comment|///////////////////////////////////////////////////
 comment|//
 comment|// Data structures contained in the command objects.
