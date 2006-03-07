@@ -325,6 +325,8 @@ parameter_list|(
 name|Command
 name|command
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 if|if
 condition|(
@@ -346,7 +348,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|IOException
 argument_list|(
 literal|"The transport "
 operator|+
@@ -360,7 +362,7 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|" has not been started yet!"
+literal|" is not running."
 argument_list|)
 throw|;
 block|}
