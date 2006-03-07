@@ -596,6 +596,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|header
+operator|.
+name|setDataSize
+argument_list|(
+name|size
+argument_list|)
+expr_stmt|;
 name|writeBuffer
 operator|.
 name|rewind
@@ -729,6 +736,13 @@ operator|+
 name|chunkSize
 operator|>=
 name|length
+expr_stmt|;
+name|header
+operator|.
+name|setDataSize
+argument_list|(
+name|chunkSize
+argument_list|)
 expr_stmt|;
 name|header
 operator|.
