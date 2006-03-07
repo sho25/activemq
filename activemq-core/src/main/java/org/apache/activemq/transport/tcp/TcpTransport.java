@@ -281,8 +281,7 @@ specifier|private
 name|int
 name|connectionTimeout
 init|=
-operator|-
-literal|1
+literal|30000
 decl_stmt|;
 specifier|private
 name|int
