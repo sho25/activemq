@@ -86,6 +86,7 @@ argument_list|(
 name|flags
 argument_list|)
 expr_stmt|;
+comment|//System.out.println("Read header with counter: " + answer.getCounter() + "size: " + answer.getDataSize() + " with flags: " + flags);
 return|return
 name|answer
 return|;
@@ -121,14 +122,20 @@ name|getDataSize
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|writeBuffer
-operator|.
-name|put
-argument_list|(
+name|byte
+name|flags
+init|=
 name|header
 operator|.
 name|getFlags
 argument_list|()
+decl_stmt|;
+comment|//System.out.println("Writing header with counter: " + header.getCounter() + " size: " + header.getDataSize() + " with flags: " + flags);
+name|writeBuffer
+operator|.
+name|put
+argument_list|(
+name|flags
 argument_list|)
 expr_stmt|;
 block|}

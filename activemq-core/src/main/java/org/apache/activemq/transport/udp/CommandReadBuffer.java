@@ -194,6 +194,8 @@ decl_stmt|;
 specifier|private
 name|long
 name|expectedCounter
+init|=
+literal|1
 decl_stmt|;
 specifier|private
 name|ByteArrayOutputStream

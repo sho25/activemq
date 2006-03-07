@@ -421,7 +421,7 @@ name|flags
 operator|&
 literal|0x1
 operator|)
-operator|==
+operator|!=
 literal|0
 expr_stmt|;
 name|complete
@@ -431,7 +431,7 @@ name|flags
 operator|&
 literal|0x2
 operator|)
-operator|==
+operator|!=
 literal|0
 expr_stmt|;
 block|}
