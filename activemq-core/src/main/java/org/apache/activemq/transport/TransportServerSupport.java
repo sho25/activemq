@@ -17,6 +17,20 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|ServiceSupport
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|net
@@ -34,6 +48,8 @@ specifier|public
 specifier|abstract
 class|class
 name|TransportServerSupport
+extends|extends
+name|ServiceSupport
 implements|implements
 name|TransportServer
 block|{
