@@ -129,6 +129,16 @@ name|javax
 operator|.
 name|jms
 operator|.
+name|DeliveryMode
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
 name|Destination
 import|;
 end_import
@@ -4664,6 +4674,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * Creates a persistent output stream; individual messages will be written to disk/database by the broker      */
 specifier|public
 name|OutputStream
 name|createOutputStream
@@ -4695,6 +4706,39 @@ name|DEFAULT_TIME_TO_LIVE
 argument_list|)
 return|;
 block|}
+comment|/**      * Creates a non persistent output stream; messages will not be written to disk      */
+specifier|public
+name|OutputStream
+name|createNonPersistentOutputStream
+parameter_list|(
+name|Destination
+name|dest
+parameter_list|)
+throws|throws
+name|JMSException
+block|{
+return|return
+name|createOutputStream
+argument_list|(
+name|dest
+argument_list|,
+literal|null
+argument_list|,
+name|DeliveryMode
+operator|.
+name|NON_PERSISTENT
+argument_list|,
+name|ActiveMQMessage
+operator|.
+name|DEFAULT_PRIORITY
+argument_list|,
+name|ActiveMQMessage
+operator|.
+name|DEFAULT_TIME_TO_LIVE
+argument_list|)
+return|;
+block|}
+comment|/**      * Creates an output stream allowing full control over the delivery mode, the priority and time to live of the messaages and the properties added to messages on the stream.      */
 specifier|public
 name|OutputStream
 name|createOutputStream
