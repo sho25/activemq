@@ -2036,6 +2036,15 @@ name|l
 return|;
 block|}
 specifier|public
+name|TransportListener
+name|getTransportListener
+parameter_list|()
+block|{
+return|return
+name|transportListener
+return|;
+block|}
+specifier|public
 name|void
 name|setTransportListener
 parameter_list|(

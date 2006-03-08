@@ -465,7 +465,8 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|commandListener
+name|getTransportListener
+argument_list|()
 operator|.
 name|onCommand
 argument_list|(
@@ -552,7 +553,8 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|commandListener
+name|getTransportListener
+argument_list|()
 operator|.
 name|onException
 argument_list|(

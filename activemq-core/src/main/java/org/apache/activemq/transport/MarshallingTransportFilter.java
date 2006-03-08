@@ -140,7 +140,8 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|commandListener
+name|getTransportListener
+argument_list|()
 operator|.
 name|onCommand
 argument_list|(
@@ -167,7 +168,8 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|commandListener
+name|getTransportListener
+argument_list|()
 operator|.
 name|onException
 argument_list|(

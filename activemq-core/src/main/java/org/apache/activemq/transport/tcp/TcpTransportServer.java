@@ -449,7 +449,7 @@ block|{
 while|while
 condition|(
 operator|!
-name|isClosed
+name|isStopped
 argument_list|()
 condition|)
 block|{
@@ -476,7 +476,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|isClosed
+name|isStopped
 argument_list|()
 operator|||
 name|getAcceptListener
@@ -600,7 +600,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|isClosing
+name|isStopping
 argument_list|()
 condition|)
 block|{
@@ -614,7 +614,7 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|isClosed
+name|isStopped
 argument_list|()
 condition|)
 block|{

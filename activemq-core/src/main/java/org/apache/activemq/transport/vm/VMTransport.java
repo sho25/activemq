@@ -445,6 +445,16 @@ literal|"Unsupported Method"
 argument_list|)
 throw|;
 block|}
+specifier|public
+specifier|synchronized
+name|TransportListener
+name|getTransportListener
+parameter_list|()
+block|{
+return|return
+name|transportListener
+return|;
+block|}
 specifier|synchronized
 specifier|public
 name|void

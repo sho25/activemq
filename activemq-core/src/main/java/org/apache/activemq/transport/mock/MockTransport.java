@@ -144,7 +144,7 @@ name|next
 decl_stmt|;
 specifier|protected
 name|TransportListener
-name|commandListener
+name|transportListener
 decl_stmt|;
 specifier|public
 name|MockTransport
@@ -172,7 +172,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|commandListener
+name|transportListener
 operator|=
 name|channelListener
 expr_stmt|;
@@ -221,7 +221,7 @@ argument_list|)
 throw|;
 if|if
 condition|(
-name|commandListener
+name|transportListener
 operator|==
 literal|null
 condition|)
@@ -261,7 +261,7 @@ name|Command
 name|command
 parameter_list|)
 block|{
-name|commandListener
+name|transportListener
 operator|.
 name|onCommand
 argument_list|(
@@ -284,11 +284,11 @@ comment|/**      * @return Returns the packetListener.      */
 specifier|synchronized
 specifier|public
 name|TransportListener
-name|getCommandListener
+name|getTransportListener
 parameter_list|()
 block|{
 return|return
-name|commandListener
+name|transportListener
 return|;
 block|}
 specifier|synchronized
@@ -372,7 +372,7 @@ name|IOException
 name|error
 parameter_list|)
 block|{
-name|commandListener
+name|transportListener
 operator|.
 name|onException
 argument_list|(

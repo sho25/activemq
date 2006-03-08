@@ -104,16 +104,6 @@ argument_list|)
 decl_stmt|;
 specifier|private
 name|AtomicBoolean
-name|closed
-init|=
-operator|new
-name|AtomicBoolean
-argument_list|(
-literal|false
-argument_list|)
-decl_stmt|;
-specifier|private
-name|AtomicBoolean
 name|started
 init|=
 operator|new
@@ -124,7 +114,17 @@ argument_list|)
 decl_stmt|;
 specifier|private
 name|AtomicBoolean
-name|closing
+name|stopping
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|(
+literal|false
+argument_list|)
+decl_stmt|;
+specifier|private
+name|AtomicBoolean
+name|stopped
 init|=
 operator|new
 name|AtomicBoolean
@@ -205,7 +205,7 @@ name|Exception
 block|{
 if|if
 condition|(
-name|closed
+name|stopped
 operator|.
 name|compareAndSet
 argument_list|(
@@ -215,7 +215,7 @@ literal|true
 argument_list|)
 condition|)
 block|{
-name|closing
+name|stopping
 operator|.
 name|set
 argument_list|(
@@ -253,7 +253,7 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-name|closed
+name|stopped
 operator|.
 name|set
 argument_list|(
@@ -267,7 +267,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|closing
+name|stopping
 operator|.
 name|set
 argument_list|(
@@ -297,11 +297,11 @@ block|}
 comment|/**      * @return true if this service is in the process of closing      */
 specifier|public
 name|boolean
-name|isClosing
+name|isStopping
 parameter_list|()
 block|{
 return|return
-name|closing
+name|stopping
 operator|.
 name|get
 argument_list|()
@@ -310,11 +310,11 @@ block|}
 comment|/**      * @return true if this service is closed      */
 specifier|public
 name|boolean
-name|isClosed
+name|isStopped
 parameter_list|()
 block|{
 return|return
-name|closed
+name|stopped
 operator|.
 name|get
 argument_list|()

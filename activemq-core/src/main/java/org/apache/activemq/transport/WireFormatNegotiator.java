@@ -449,7 +449,8 @@ name|isValid
 argument_list|()
 condition|)
 block|{
-name|commandListener
+name|getTransportListener
+argument_list|()
 operator|.
 name|onException
 argument_list|(
@@ -472,7 +473,8 @@ operator|<
 name|minimumVersion
 condition|)
 block|{
-name|commandListener
+name|getTransportListener
+argument_list|()
 operator|.
 name|onException
 argument_list|(
@@ -646,7 +648,8 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|commandListener
+name|getTransportListener
+argument_list|()
 operator|.
 name|onException
 argument_list|(
@@ -661,7 +664,8 @@ name|countDown
 argument_list|()
 expr_stmt|;
 block|}
-name|commandListener
+name|getTransportListener
+argument_list|()
 operator|.
 name|onCommand
 argument_list|(

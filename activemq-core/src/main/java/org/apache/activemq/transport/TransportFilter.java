@@ -71,9 +71,9 @@ specifier|protected
 name|Transport
 name|next
 decl_stmt|;
-specifier|protected
+specifier|private
 name|TransportListener
-name|commandListener
+name|transportListener
 decl_stmt|;
 specifier|public
 name|TransportFilter
@@ -89,7 +89,15 @@ operator|=
 name|next
 expr_stmt|;
 block|}
-comment|/**      */
+specifier|public
+name|TransportListener
+name|getTransportListener
+parameter_list|()
+block|{
+return|return
+name|transportListener
+return|;
+block|}
 specifier|public
 name|void
 name|setTransportListener
@@ -100,7 +108,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|commandListener
+name|transportListener
 operator|=
 name|channelListener
 expr_stmt|;
@@ -149,7 +157,7 @@ argument_list|)
 throw|;
 if|if
 condition|(
-name|commandListener
+name|transportListener
 operator|==
 literal|null
 condition|)
@@ -188,7 +196,7 @@ name|Command
 name|command
 parameter_list|)
 block|{
-name|commandListener
+name|transportListener
 operator|.
 name|onCommand
 argument_list|(
@@ -204,16 +212,6 @@ parameter_list|()
 block|{
 return|return
 name|next
-return|;
-block|}
-comment|/**      * @return Returns the packetListener.      */
-specifier|public
-name|TransportListener
-name|getCommandListener
-parameter_list|()
-block|{
-return|return
-name|commandListener
 return|;
 block|}
 specifier|public
@@ -292,7 +290,7 @@ name|IOException
 name|error
 parameter_list|)
 block|{
-name|commandListener
+name|transportListener
 operator|.
 name|onException
 argument_list|(

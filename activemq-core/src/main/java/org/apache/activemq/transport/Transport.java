@@ -109,6 +109,12 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Returns the current transport listener      */
+specifier|public
+name|TransportListener
+name|getTransportListener
+parameter_list|()
+function_decl|;
 comment|/**      * Registers an inbound command listener      */
 specifier|public
 name|void

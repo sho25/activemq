@@ -372,7 +372,8 @@ block|}
 block|}
 else|else
 block|{
-name|commandListener
+name|getTransportListener
+argument_list|()
 operator|.
 name|onCommand
 argument_list|(

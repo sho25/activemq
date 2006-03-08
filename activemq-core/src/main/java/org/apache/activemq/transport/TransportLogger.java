@@ -216,7 +216,8 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
-name|commandListener
+name|getTransportListener
+argument_list|()
 operator|.
 name|onCommand
 argument_list|(
@@ -252,7 +253,8 @@ name|error
 argument_list|)
 expr_stmt|;
 block|}
-name|commandListener
+name|getTransportListener
+argument_list|()
 operator|.
 name|onException
 argument_list|(
