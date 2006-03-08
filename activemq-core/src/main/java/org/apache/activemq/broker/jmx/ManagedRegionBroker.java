@@ -1290,6 +1290,9 @@ operator|.
 name|getConsumerInfo
 argument_list|()
 operator|.
+name|getConsumerId
+argument_list|()
+operator|.
 name|toString
 argument_list|()
 decl_stmt|;
