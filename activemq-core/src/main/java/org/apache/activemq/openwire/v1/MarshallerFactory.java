@@ -311,6 +311,13 @@ expr_stmt|;
 name|add
 argument_list|(
 operator|new
+name|ReplayCommandMarshaller
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+operator|new
 name|ActiveMQTopicMarshaller
 argument_list|()
 argument_list|)
