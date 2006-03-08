@@ -2102,6 +2102,11 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|r
+operator|.
+name|incrementReferenceCount
+argument_list|()
+expr_stmt|;
 try|try
 block|{
 name|Message
