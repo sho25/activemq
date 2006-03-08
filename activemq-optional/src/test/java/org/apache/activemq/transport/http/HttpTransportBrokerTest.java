@@ -84,6 +84,27 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+specifier|protected
+name|void
+name|tearDown
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|super
+operator|.
+name|tearDown
+argument_list|()
+expr_stmt|;
+comment|// Give the jetty server enough time to shutdown before starting another one
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|300
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 specifier|static
 name|Test
