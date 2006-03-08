@@ -1068,7 +1068,7 @@ block|{
 if|if
 condition|(
 name|redeliveryPolicy
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
@@ -1092,7 +1092,7 @@ block|{
 if|if
 condition|(
 name|prefetchPolicy
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
