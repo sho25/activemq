@@ -954,6 +954,24 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|InstanceNotFoundException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"The MBean: "
+operator|+
+name|name
+operator|+
+literal|" is no longer registered with JMX"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
 name|Exception
 name|e
 parameter_list|)
