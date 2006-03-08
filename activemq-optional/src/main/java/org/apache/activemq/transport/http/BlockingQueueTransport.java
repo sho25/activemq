@@ -85,6 +85,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|ServiceStopper
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -143,13 +157,6 @@ return|;
 block|}
 specifier|public
 name|void
-name|start
-parameter_list|()
-throws|throws
-name|JMSException
-block|{     }
-specifier|public
-name|void
 name|oneway
 parameter_list|(
 name|Command
@@ -166,10 +173,20 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
-specifier|public
+specifier|protected
 name|void
-name|stop
+name|doStart
 parameter_list|()
+throws|throws
+name|Exception
+block|{     }
+specifier|protected
+name|void
+name|doStop
+parameter_list|(
+name|ServiceStopper
+name|stopper
+parameter_list|)
 throws|throws
 name|Exception
 block|{     }

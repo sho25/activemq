@@ -553,7 +553,7 @@ decl_stmt|;
 while|while
 condition|(
 operator|!
-name|isClosed
+name|isStopped
 argument_list|()
 condition|)
 block|{
