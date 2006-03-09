@@ -285,6 +285,7 @@ expr_stmt|;
 name|readCheckIteration
 operator|++
 expr_stmt|;
+break|break;
 case|case
 literal|1
 case|:
@@ -417,7 +418,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"No message received since last read check!"
+literal|"No message received since last read check! "
 argument_list|)
 expr_stmt|;
 name|onException
@@ -436,7 +437,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Message received since last read check, resetting flag"
+literal|"Message received since last read check, resetting flag: "
 argument_list|)
 expr_stmt|;
 block|}

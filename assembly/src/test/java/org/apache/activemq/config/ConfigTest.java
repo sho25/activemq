@@ -781,6 +781,9 @@ operator|)
 name|myWireFormat
 operator|)
 operator|.
+name|getPreferedWireFormatInfo
+argument_list|()
+operator|.
 name|isStackTraceEnabled
 argument_list|()
 argument_list|)
@@ -798,6 +801,9 @@ operator|)
 name|myWireFormat
 operator|)
 operator|.
+name|getPreferedWireFormatInfo
+argument_list|()
+operator|.
 name|isTcpNoDelayEnabled
 argument_list|()
 argument_list|)
@@ -814,6 +820,9 @@ name|OpenWireFormat
 operator|)
 name|myWireFormat
 operator|)
+operator|.
+name|getPreferedWireFormatInfo
+argument_list|()
 operator|.
 name|isCacheEnabled
 argument_list|()

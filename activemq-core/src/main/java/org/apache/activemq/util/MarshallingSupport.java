@@ -292,7 +292,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * @param in      * @return      * @throws IOException      */
 specifier|static
 specifier|public
 name|HashMap
@@ -300,6 +299,32 @@ name|unmarshalPrimitiveMap
 parameter_list|(
 name|DataInputStream
 name|in
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|unmarshalPrimitiveMap
+argument_list|(
+name|in
+argument_list|,
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|)
+return|;
+block|}
+comment|/**      * @param in      * @return      * @throws IOException       * @throws IOException      */
+specifier|public
+specifier|static
+name|HashMap
+name|unmarshalPrimitiveMap
+parameter_list|(
+name|DataInputStream
+name|in
+parameter_list|,
+name|int
+name|max_property_size
 parameter_list|)
 throws|throws
 name|IOException
@@ -312,6 +337,23 @@ operator|.
 name|readInt
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|size
+operator|>
+name|max_property_size
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Primitive map is larger than the allowed size: "
+operator|+
+name|size
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|size

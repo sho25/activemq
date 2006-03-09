@@ -151,20 +151,6 @@ name|activemq
 operator|.
 name|util
 operator|.
-name|IntrospectionSupport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
 name|MarshallingSupport
 import|;
 end_import
@@ -182,6 +168,16 @@ name|Command
 implements|,
 name|MarshallAware
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MAX_PROPERTY_SIZE
+init|=
+literal|1024
+operator|*
+literal|4
+decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -542,6 +538,8 @@ argument_list|(
 name|marshalledProperties
 argument_list|)
 argument_list|)
+argument_list|,
+name|MAX_PROPERTY_SIZE
 argument_list|)
 return|;
 block|}
@@ -679,7 +677,7 @@ name|TRUE
 operator|==
 name|getProperty
 argument_list|(
-literal|"cache"
+literal|"CacheEnabled"
 argument_list|)
 return|;
 block|}
@@ -695,7 +693,7 @@ name|IOException
 block|{
 name|setProperty
 argument_list|(
-literal|"cache"
+literal|"CacheEnabled"
 argument_list|,
 name|cacheEnabled
 condition|?
@@ -724,7 +722,7 @@ name|TRUE
 operator|==
 name|getProperty
 argument_list|(
-literal|"stackTrace"
+literal|"StackTraceEnabled"
 argument_list|)
 return|;
 block|}
@@ -740,7 +738,7 @@ name|IOException
 block|{
 name|setProperty
 argument_list|(
-literal|"stackTrace"
+literal|"StackTraceEnabled"
 argument_list|,
 name|stackTraceEnabled
 condition|?
@@ -769,7 +767,7 @@ name|TRUE
 operator|==
 name|getProperty
 argument_list|(
-literal|"tcpNoDelay"
+literal|"TcpNoDelayEnabled"
 argument_list|)
 return|;
 block|}
@@ -785,7 +783,7 @@ name|IOException
 block|{
 name|setProperty
 argument_list|(
-literal|"tcpNoDelay"
+literal|"TcpNoDelayEnabled"
 argument_list|,
 name|tcpNoDelayEnabled
 condition|?
@@ -802,7 +800,7 @@ block|}
 comment|/**      * @throws IOException       */
 specifier|public
 name|boolean
-name|isPrefixPacketSize
+name|isSizePrefixDisabled
 parameter_list|()
 throws|throws
 name|IOException
@@ -814,13 +812,13 @@ name|TRUE
 operator|==
 name|getProperty
 argument_list|(
-literal|"prefixPacketSize"
+literal|"SizePrefixDisabled"
 argument_list|)
 return|;
 block|}
 specifier|public
 name|void
-name|setPrefixPacketSize
+name|setSizePrefixDisabled
 parameter_list|(
 name|boolean
 name|prefixPacketSize
@@ -830,7 +828,7 @@ name|IOException
 block|{
 name|setProperty
 argument_list|(
-literal|"prefixPacketSize"
+literal|"SizePrefixDisabled"
 argument_list|,
 name|prefixPacketSize
 condition|?
@@ -859,7 +857,7 @@ name|TRUE
 operator|==
 name|getProperty
 argument_list|(
-literal|"tightEncoding"
+literal|"TightEncodingEnabled"
 argument_list|)
 return|;
 block|}
@@ -875,7 +873,7 @@ name|IOException
 block|{
 name|setProperty
 argument_list|(
-literal|"tightEncoding"
+literal|"TightEncodingEnabled"
 argument_list|,
 name|tightEncodingEnabled
 condition|?
@@ -913,17 +911,44 @@ name|String
 name|toString
 parameter_list|()
 block|{
+name|Map
+name|p
+init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+name|p
+operator|=
+name|getProperties
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{ 		}
 return|return
-name|IntrospectionSupport
+literal|"WireFormatInfo { version="
+operator|+
+name|version
+operator|+
+literal|", properties="
+operator|+
+name|p
+operator|+
+literal|", magic="
+operator|+
+name|Arrays
 operator|.
 name|toString
 argument_list|(
-name|this
-argument_list|,
-name|WireFormatInfo
-operator|.
-name|class
+name|magic
 argument_list|)
+operator|+
+literal|"}"
 return|;
 block|}
 comment|///////////////////////////////////////////////////////////////

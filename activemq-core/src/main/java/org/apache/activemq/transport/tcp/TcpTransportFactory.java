@@ -453,12 +453,14 @@ name|transport
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Only need the OpenWireFormat if using openwire
 if|if
 condition|(
 name|format
 operator|instanceof
 name|OpenWireFormat
 condition|)
+block|{
 name|transport
 operator|=
 operator|new
@@ -466,6 +468,9 @@ name|WireFormatNegotiator
 argument_list|(
 name|transport
 argument_list|,
+operator|(
+name|OpenWireFormat
+operator|)
 name|format
 argument_list|,
 name|tcpTransport
@@ -474,6 +479,7 @@ name|getMinmumWireFormatVersion
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|tcpTransport
@@ -566,6 +572,14 @@ name|transport
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Only need the OpenWireFormat if using openwire
+if|if
+condition|(
+name|format
+operator|instanceof
+name|OpenWireFormat
+condition|)
+block|{
 name|transport
 operator|=
 operator|new
@@ -573,6 +587,9 @@ name|WireFormatNegotiator
 argument_list|(
 name|transport
 argument_list|,
+operator|(
+name|OpenWireFormat
+operator|)
 name|format
 argument_list|,
 name|tcpTransport
@@ -581,6 +598,7 @@ name|getMinmumWireFormatVersion
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|tcpTransport

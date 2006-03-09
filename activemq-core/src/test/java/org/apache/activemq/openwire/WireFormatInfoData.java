@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -40,6 +50,8 @@ specifier|protected
 name|Object
 name|createObject
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|WireFormatInfo
 name|rc
@@ -53,6 +65,13 @@ operator|.
 name|setResponseRequired
 argument_list|(
 literal|false
+argument_list|)
+expr_stmt|;
+name|rc
+operator|.
+name|setCacheEnabled
+argument_list|(
+literal|true
 argument_list|)
 expr_stmt|;
 name|rc
