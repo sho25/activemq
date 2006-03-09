@@ -305,7 +305,7 @@ specifier|final
 name|int
 name|MAX_CLIENT_TIMEOUT
 init|=
-literal|20000
+literal|30000
 decl_stmt|;
 specifier|private
 name|HttpClient

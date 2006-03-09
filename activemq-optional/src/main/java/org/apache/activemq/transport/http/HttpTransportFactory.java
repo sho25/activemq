@@ -286,9 +286,6 @@ argument_list|,
 name|location
 argument_list|)
 decl_stmt|;
-comment|//Transport transport = new HttpTransport(textWireFormat, location);
-comment|//transport = new MutexTransport(transport);
-comment|//transport = new ResponseCorrelator(transport);
 return|return
 name|transport
 return|;
