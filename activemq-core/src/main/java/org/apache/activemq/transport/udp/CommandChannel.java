@@ -1013,7 +1013,7 @@ block|{
 comment|// write the header
 name|writeBuffer
 operator|.
-name|rewind
+name|clear
 argument_list|()
 expr_stmt|;
 name|int
@@ -1041,7 +1041,11 @@ name|length
 expr_stmt|;
 if|if
 condition|(
-name|lastFragment
+name|chunkSize
+operator|+
+name|offset
+operator|>
+name|length
 condition|)
 block|{
 name|chunkSize
