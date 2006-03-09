@@ -139,20 +139,6 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|TransportLogger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
 name|TransportServer
 import|;
 end_import
@@ -351,6 +337,15 @@ name|configuredTransport
 operator|=
 name|configuredTransport
 expr_stmt|;
+comment|// lets disable the incremental checking of the sequence numbers
+comment|// as we are getting messages from many different clients
+name|serverTransport
+operator|.
+name|setCheckSequenceNumbers
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|String
@@ -481,24 +476,32 @@ operator|.
 name|getFromAddress
 argument_list|()
 decl_stmt|;
-name|System
+if|if
+condition|(
+name|log
 operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|toString
+name|isDebugEnabled
 argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Received command on: "
 operator|+
-literal|" received command: "
-operator|+
-name|command
+name|this
 operator|+
 literal|" from address: "
 operator|+
 name|address
+operator|+
+literal|" command: "
+operator|+
+name|command
 argument_list|)
 expr_stmt|;
+block|}
 name|Transport
 name|transport
 init|=
@@ -528,15 +531,22 @@ operator|==
 literal|null
 condition|)
 block|{
-name|System
+if|if
+condition|(
+name|log
 operator|.
-name|out
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
 operator|.
-name|println
+name|debug
 argument_list|(
-literal|"###Êcreating new server connector"
+literal|"Creating a new UDP server connection"
 argument_list|)
 expr_stmt|;
+block|}
 name|transport
 operator|=
 name|createTransport
@@ -597,8 +607,30 @@ argument_list|(
 name|transport
 argument_list|)
 expr_stmt|;
-comment|// TODO
-comment|//transport = new InactivityMonitor(transport, serverTransport.getMaxInactivityDuration());
+if|if
+condition|(
+name|serverTransport
+operator|.
+name|getMaxInactivityDuration
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+name|transport
+operator|=
+operator|new
+name|InactivityMonitor
+argument_list|(
+name|transport
+argument_list|,
+name|serverTransport
+operator|.
+name|getMaxInactivityDuration
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|getAcceptListener
 argument_list|()
 operator|.
@@ -615,6 +647,7 @@ specifier|protected
 name|Transport
 name|createTransport
 parameter_list|(
+specifier|final
 name|Command
 name|command
 parameter_list|,
@@ -633,7 +666,18 @@ operator|.
 name|getFromAddress
 argument_list|()
 decl_stmt|;
-comment|// TODO lets copy the wireformat...
+specifier|final
+name|OpenWireFormat
+name|connectionWireFormat
+init|=
+name|serverTransport
+operator|.
+name|getWireFormat
+argument_list|()
+operator|.
+name|copy
+argument_list|()
+decl_stmt|;
 specifier|final
 name|UdpTransport
 name|transport
@@ -641,21 +685,15 @@ init|=
 operator|new
 name|UdpTransport
 argument_list|(
-name|serverTransport
-operator|.
-name|getWireFormat
-argument_list|()
+name|connectionWireFormat
 argument_list|,
 name|address
 argument_list|)
 decl_stmt|;
-comment|// lets send the packet into the transport so it can track packets
 name|transport
 operator|.
-name|doConsume
+name|receivedHeader
 argument_list|(
-name|command
-argument_list|,
 name|header
 argument_list|)
 expr_stmt|;
@@ -665,7 +703,7 @@ name|WireFormatNegotiator
 argument_list|(
 name|transport
 argument_list|,
-name|serverTransport
+name|transport
 operator|.
 name|getWireFormat
 argument_list|()
@@ -676,6 +714,25 @@ name|getMinmumWireFormatVersion
 argument_list|()
 argument_list|)
 block|{
+specifier|public
+name|void
+name|start
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|super
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+comment|// process the inbound wireformat
+name|onCommand
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
+block|}
 comment|// lets use the specific addressing of wire format
 specifier|protected
 name|void

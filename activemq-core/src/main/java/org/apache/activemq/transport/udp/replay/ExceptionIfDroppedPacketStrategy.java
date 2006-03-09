@@ -44,6 +44,9 @@ specifier|public
 name|void
 name|onDroppedPackets
 parameter_list|(
+name|String
+name|name
+parameter_list|,
 name|long
 name|expectedCounter
 parameter_list|,
@@ -64,7 +67,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|""
+name|name
 operator|+
 name|count
 operator|+
@@ -82,6 +85,9 @@ specifier|public
 name|void
 name|onReceivedPacket
 parameter_list|(
+name|String
+name|name
+parameter_list|,
 name|long
 name|expectedCounter
 parameter_list|)

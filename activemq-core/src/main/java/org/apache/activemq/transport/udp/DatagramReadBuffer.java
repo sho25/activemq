@@ -14,10 +14,22 @@ operator|.
 name|transport
 operator|.
 name|udp
-operator|.
-name|replay
 package|;
 end_package
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|Command
+import|;
+end_import
 
 begin_import
 import|import
@@ -30,38 +42,22 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A pluggable strategy for how to deal with dropped packets.  *   * @version $Revision$  */
+comment|/**  * Represents an inbound buffer of datagrams for dealing with out of order  * or fragmented commands.  *   * @version $Revision$  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|DatagramReplayStrategy
+name|DatagramReadBuffer
 block|{
-name|void
-name|onDroppedPackets
+name|Command
+name|read
 parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|long
-name|expectedCounter
-parameter_list|,
-name|long
-name|actualCounter
+name|DatagramHeader
+name|header
 parameter_list|)
 throws|throws
 name|IOException
-function_decl|;
-name|void
-name|onReceivedPacket
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|long
-name|expectedCounter
-parameter_list|)
 function_decl|;
 block|}
 end_interface

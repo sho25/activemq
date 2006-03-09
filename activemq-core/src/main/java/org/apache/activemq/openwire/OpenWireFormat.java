@@ -431,6 +431,12 @@ argument_list|()
 decl_stmt|;
 name|answer
 operator|.
+name|version
+operator|=
+name|version
+expr_stmt|;
+name|answer
+operator|.
 name|stackTraceEnabled
 operator|=
 name|stackTraceEnabled
@@ -458,6 +464,12 @@ operator|.
 name|sizePrefixDisabled
 operator|=
 name|sizePrefixDisabled
+expr_stmt|;
+name|answer
+operator|.
+name|preferedWireFormatInfo
+operator|=
+name|preferedWireFormatInfo
 expr_stmt|;
 return|return
 name|answer
@@ -541,18 +553,30 @@ name|String
 name|toString
 parameter_list|()
 block|{
-comment|//return "OpenWireFormat{version="+version+", cacheEnabled="+cacheEnabled+", stackTraceEnabled="+stackTraceEnabled+", tightEncodingEnabled="+tightEncodingEnabled+", sizePrefixDisabled="+sizePrefixDisabled+"}";
 return|return
-literal|"OpenWireFormat{id="
+literal|"OpenWireFormat{version="
 operator|+
-name|id
+name|version
+operator|+
+literal|", cacheEnabled="
+operator|+
+name|cacheEnabled
+operator|+
+literal|", stackTraceEnabled="
+operator|+
+name|stackTraceEnabled
 operator|+
 literal|", tightEncodingEnabled="
 operator|+
 name|tightEncodingEnabled
 operator|+
+literal|", sizePrefixDisabled="
+operator|+
+name|sizePrefixDisabled
+operator|+
 literal|"}"
 return|;
+comment|//return "OpenWireFormat{id="+id+", tightEncodingEnabled="+tightEncodingEnabled+"}";
 block|}
 specifier|public
 name|int

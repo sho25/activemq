@@ -557,13 +557,6 @@ argument_list|(
 name|wf
 argument_list|)
 decl_stmt|;
-name|wireFormat
-operator|.
-name|setSizePrefixDisabled
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 return|return
 operator|new
 name|UdpTransport
@@ -725,7 +718,7 @@ name|info
 parameter_list|)
 block|{
 comment|// lets switch to the targetAddress that the last packet was
-comment|// received as
+comment|// received as so that all future requests go to the newly created UDP channel
 name|udpTransport
 operator|.
 name|useLastInboundDatagramAsNewTarget
@@ -754,20 +747,6 @@ name|OpenWireFormat
 operator|)
 name|wf
 decl_stmt|;
-name|answer
-operator|.
-name|setSizePrefixDisabled
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|answer
-operator|.
-name|setCacheEnabled
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 return|return
 name|answer
 return|;

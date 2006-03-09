@@ -159,6 +159,8 @@ begin_class
 specifier|public
 class|class
 name|CommandReadBuffer
+implements|implements
+name|DatagramReadBuffer
 block|{
 specifier|private
 specifier|static
@@ -205,9 +207,17 @@ operator|new
 name|ByteArrayOutputStream
 argument_list|()
 decl_stmt|;
+specifier|private
+specifier|final
+name|String
+name|name
+decl_stmt|;
 specifier|public
 name|CommandReadBuffer
 parameter_list|(
+name|String
+name|name
+parameter_list|,
 name|OpenWireFormat
 name|wireFormat
 parameter_list|,
@@ -215,6 +225,12 @@ name|DatagramReplayStrategy
 name|replayStrategy
 parameter_list|)
 block|{
+name|this
+operator|.
+name|name
+operator|=
+name|name
+expr_stmt|;
 name|this
 operator|.
 name|wireFormat
@@ -276,6 +292,8 @@ name|replayStrategy
 operator|.
 name|onDroppedPackets
 argument_list|(
+name|name
+argument_list|,
 name|expectedCounter
 argument_list|,
 name|actualCounter
@@ -291,6 +309,18 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// lets see if the first item in the set is the next header
+if|if
+condition|(
+name|headers
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|header
 operator|=
 operator|(
@@ -321,6 +351,8 @@ name|replayStrategy
 operator|.
 name|onReceivedPacket
 argument_list|(
+name|name
+argument_list|,
 name|expectedCounter
 argument_list|)
 expr_stmt|;
