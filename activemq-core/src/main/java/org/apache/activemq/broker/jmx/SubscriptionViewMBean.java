@@ -17,6 +17,16 @@ name|jmx
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|InvalidSelectorException
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision: 1.5 $  */
 end_comment
@@ -55,6 +65,25 @@ specifier|public
 name|String
 name|getDestinationName
 parameter_list|()
+function_decl|;
+comment|/**      * @return the JMS selector on the current subscription      */
+specifier|public
+name|String
+name|getSelector
+parameter_list|()
+function_decl|;
+comment|/**      * Attempts to change the current active selector on the subscription.      * This operation is not supported for persistent topics.      */
+specifier|public
+name|void
+name|setSelector
+parameter_list|(
+name|String
+name|selector
+parameter_list|)
+throws|throws
+name|InvalidSelectorException
+throws|,
+name|UnsupportedOperationException
 function_decl|;
 comment|/**      * @return true if the destination is a Queue      */
 specifier|public

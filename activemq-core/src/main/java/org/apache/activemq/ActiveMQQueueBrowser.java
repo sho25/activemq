@@ -262,7 +262,7 @@ name|createConsumer
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @param session      * @param originalDestination      * @param selector      * @param cnum      * @return      * @throws JMSException      */
+comment|/**      * @param session      * @param originalDestination      * @param selectorExpression      * @param cnum      * @return      * @throws JMSException      */
 specifier|private
 name|ActiveMQMessageConsumer
 name|createConsumer
