@@ -760,11 +760,7 @@ name|JMSException
 block|{
 return|return
 name|createActiveMQConnection
-argument_list|(
-name|userName
-argument_list|,
-name|password
-argument_list|)
+argument_list|()
 return|;
 block|}
 comment|/**      * @return Returns the Connection.      */
@@ -800,11 +796,7 @@ name|JMSException
 block|{
 return|return
 name|createActiveMQConnection
-argument_list|(
-name|userName
-argument_list|,
-name|password
-argument_list|)
+argument_list|()
 return|;
 block|}
 comment|/**      * @return Returns the QueueConnection.      */
@@ -840,11 +832,7 @@ name|JMSException
 block|{
 return|return
 name|createActiveMQConnection
-argument_list|(
-name|userName
-argument_list|,
-name|password
-argument_list|)
+argument_list|()
 return|;
 block|}
 comment|/**      * @return Returns the TopicConnection.      */
@@ -885,8 +873,24 @@ comment|//
 comment|// Implementation methods.
 comment|//
 comment|// /////////////////////////////////////////////
+specifier|protected
+name|ActiveMQConnection
+name|createActiveMQConnection
+parameter_list|()
+throws|throws
+name|JMSException
+block|{
+return|return
+name|createActiveMQConnection
+argument_list|(
+name|userName
+argument_list|,
+name|password
+argument_list|)
+return|;
+block|}
 comment|/**      * @return Returns the Connection.      */
-specifier|private
+specifier|protected
 name|ActiveMQConnection
 name|createActiveMQConnection
 parameter_list|(
@@ -933,8 +937,7 @@ expr_stmt|;
 name|ActiveMQConnection
 name|connection
 init|=
-operator|new
-name|ActiveMQConnection
+name|createActiveMQConnection
 argument_list|(
 name|transport
 argument_list|,
@@ -1098,6 +1101,34 @@ name|e
 argument_list|)
 throw|;
 block|}
+block|}
+specifier|protected
+name|ActiveMQConnection
+name|createActiveMQConnection
+parameter_list|(
+name|Transport
+name|transport
+parameter_list|,
+name|JMSStatsImpl
+name|stats
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|ActiveMQConnection
+name|connection
+init|=
+operator|new
+name|ActiveMQConnection
+argument_list|(
+name|transport
+argument_list|,
+name|stats
+argument_list|)
+decl_stmt|;
+return|return
+name|connection
+return|;
 block|}
 comment|// /////////////////////////////////////////////
 comment|//
