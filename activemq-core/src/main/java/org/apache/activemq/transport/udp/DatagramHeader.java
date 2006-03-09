@@ -31,6 +31,16 @@ name|Command
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|SocketAddress
+import|;
+end_import
+
 begin_comment
 comment|/**  * Represents a header used when sending data grams  *   * @version $Revision$  */
 end_comment
@@ -63,6 +73,11 @@ name|int
 name|dataSize
 decl_stmt|;
 comment|// transient caches
+specifier|private
+specifier|transient
+name|SocketAddress
+name|fromAddress
+decl_stmt|;
 specifier|private
 specifier|transient
 name|byte
@@ -241,6 +256,26 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
+return|;
+block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"DatagramHeader[producer: "
+operator|+
+name|producerId
+operator|+
+literal|" counter: "
+operator|+
+name|counter
+operator|+
+literal|" flags: "
+operator|+
+name|getFlags
+argument_list|()
 return|;
 block|}
 specifier|public
@@ -435,6 +470,7 @@ operator|!=
 literal|0
 expr_stmt|;
 block|}
+comment|// Transient cached properties
 specifier|public
 name|Command
 name|getCommand
@@ -485,7 +521,30 @@ operator|=
 name|partialData
 expr_stmt|;
 block|}
-comment|// Transient cached properties
+specifier|public
+name|SocketAddress
+name|getFromAddress
+parameter_list|()
+block|{
+return|return
+name|fromAddress
+return|;
+block|}
+specifier|public
+name|void
+name|setFromAddress
+parameter_list|(
+name|SocketAddress
+name|fromAddress
+parameter_list|)
+block|{
+name|this
+operator|.
+name|fromAddress
+operator|=
+name|fromAddress
+expr_stmt|;
+block|}
 block|}
 end_class
 

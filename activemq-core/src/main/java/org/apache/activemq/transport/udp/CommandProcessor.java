@@ -35,9 +35,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
+name|io
 operator|.
-name|SocketAddress
+name|IOException
 import|;
 end_import
 
@@ -56,9 +56,11 @@ parameter_list|(
 name|Command
 name|command
 parameter_list|,
-name|SocketAddress
-name|address
+name|DatagramHeader
+name|header
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 block|}
 end_interface

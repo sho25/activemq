@@ -288,6 +288,10 @@ specifier|private
 name|CommandReadBuffer
 name|readStack
 decl_stmt|;
+specifier|private
+name|SocketAddress
+name|lastReadDatagramAddress
+decl_stmt|;
 comment|// writing
 specifier|private
 name|Object
@@ -391,7 +395,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//wireFormat.setPrefixPacketSize(false);
+comment|// wireFormat.setPrefixPacketSize(false);
 name|wireFormat
 operator|.
 name|setCacheEnabled
@@ -466,16 +470,20 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|DatagramHeader
+name|header
+init|=
+literal|null
+decl_stmt|;
 name|Command
 name|answer
 init|=
 literal|null
 decl_stmt|;
-name|SocketAddress
-name|address
-init|=
+name|lastReadDatagramAddress
+operator|=
 literal|null
-decl_stmt|;
+expr_stmt|;
 synchronized|synchronized
 init|(
 name|readLock
@@ -486,7 +494,7 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|address
+name|lastReadDatagramAddress
 operator|=
 name|channel
 operator|.
@@ -514,20 +522,48 @@ name|debug
 argument_list|(
 literal|"Read a datagram from: "
 operator|+
-name|address
+name|lastReadDatagramAddress
 argument_list|)
 expr_stmt|;
 block|}
-name|DatagramHeader
 name|header
-init|=
+operator|=
 name|headerMarshaller
 operator|.
 name|readHeader
 argument_list|(
 name|readBuffer
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+name|header
+operator|.
+name|setFromAddress
+argument_list|(
+name|lastReadDatagramAddress
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Received datagram from: "
+operator|+
+name|lastReadDatagramAddress
+operator|+
+literal|" header: "
+operator|+
+name|header
+argument_list|)
+expr_stmt|;
+block|}
 name|int
 name|remaining
 init|=
@@ -544,34 +580,11 @@ operator|.
 name|getDataSize
 argument_list|()
 decl_stmt|;
+comment|/*             if (size> remaining) {                 throw new IOException("Invalid command size: " + size + " when there are only: " + remaining + " byte(s) remaining");             }             else if (size< remaining) {                 log.warn("Extra bytes in buffer. Expecting: " + size + " but has: " + remaining);             }             */
 if|if
 condition|(
 name|size
-operator|>
-name|remaining
-condition|)
-block|{
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-literal|"Invalid command size: "
-operator|+
-name|size
-operator|+
-literal|" when there are only: "
-operator|+
-name|remaining
-operator|+
-literal|" byte(s) remaining"
-argument_list|)
-throw|;
-block|}
-elseif|else
-if|if
-condition|(
-name|size
-operator|<
+operator|!=
 name|remaining
 condition|)
 block|{
@@ -579,7 +592,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Extra bytes in buffer. Expecting: "
+literal|"Expecting: "
 operator|+
 name|size
 operator|+
@@ -631,7 +644,7 @@ init|=
 operator|new
 name|byte
 index|[
-name|size
+name|remaining
 index|]
 decl_stmt|;
 name|readBuffer
@@ -700,10 +713,30 @@ name|process
 argument_list|(
 name|answer
 argument_list|,
-name|address
+name|header
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|/**      * Called if a packet is received on a different channel from a remote client      * @throws IOException       */
+specifier|public
+name|Command
+name|onDatagramReceived
+parameter_list|(
+name|DatagramHeader
+name|header
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|readStack
+operator|.
+name|read
+argument_list|(
+name|header
+argument_list|)
+return|;
 block|}
 specifier|public
 name|void
@@ -746,6 +779,14 @@ operator|.
 name|incrementCounter
 argument_list|()
 expr_stmt|;
+name|bs
+operator|=
+operator|new
+name|BooleanStream
+argument_list|()
+expr_stmt|;
+comment|// TODO
+comment|//bs.clear();
 name|int
 name|size
 init|=
@@ -1011,31 +1052,6 @@ block|}
 block|}
 block|}
 block|}
-specifier|protected
-name|void
-name|sendWriteBuffer
-parameter_list|(
-name|SocketAddress
-name|address
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-name|writeBuffer
-operator|.
-name|flip
-argument_list|()
-expr_stmt|;
-name|channel
-operator|.
-name|send
-argument_list|(
-name|writeBuffer
-argument_list|,
-name|address
-argument_list|)
-expr_stmt|;
-block|}
 comment|// Properties
 comment|// -------------------------------------------------------------------------
 specifier|public
@@ -1110,6 +1126,70 @@ operator|.
 name|headerMarshaller
 operator|=
 name|headerMarshaller
+expr_stmt|;
+block|}
+specifier|public
+name|SocketAddress
+name|getLastReadDatagramAddress
+parameter_list|()
+block|{
+synchronized|synchronized
+init|(
+name|readLock
+init|)
+block|{
+return|return
+name|lastReadDatagramAddress
+return|;
+block|}
+block|}
+comment|// Implementation methods
+comment|// -------------------------------------------------------------------------
+specifier|protected
+name|void
+name|sendWriteBuffer
+parameter_list|(
+name|SocketAddress
+name|address
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|writeBuffer
+operator|.
+name|flip
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Sending datagram to: "
+operator|+
+name|address
+operator|+
+literal|" header: "
+operator|+
+name|header
+argument_list|)
+expr_stmt|;
+block|}
+name|channel
+operator|.
+name|send
+argument_list|(
+name|writeBuffer
+argument_list|,
+name|address
+argument_list|)
 expr_stmt|;
 block|}
 block|}
