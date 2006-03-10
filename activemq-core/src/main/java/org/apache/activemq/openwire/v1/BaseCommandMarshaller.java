@@ -134,7 +134,7 @@ name|setCommandId
 argument_list|(
 name|dataIn
 operator|.
-name|readShort
+name|readInt
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -201,7 +201,7 @@ expr_stmt|;
 return|return
 name|rc
 operator|+
-literal|2
+literal|4
 return|;
 block|}
 comment|/**      * Write a object instance to data output stream      *      * @param o the instance to be marshaled      * @param dataOut the output stream      * @throws IOException thrown if an error occurs      */
@@ -247,7 +247,7 @@ name|o
 decl_stmt|;
 name|dataOut
 operator|.
-name|writeShort
+name|writeInt
 argument_list|(
 name|info
 operator|.
@@ -303,7 +303,7 @@ name|setCommandId
 argument_list|(
 name|dataIn
 operator|.
-name|readShort
+name|readInt
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -356,7 +356,7 @@ argument_list|)
 expr_stmt|;
 name|dataOut
 operator|.
-name|writeShort
+name|writeInt
 argument_list|(
 name|info
 operator|.

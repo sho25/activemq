@@ -1099,7 +1099,7 @@ name|lock
 operator|.
 name|wait
 argument_list|(
-literal|10000
+literal|5000
 argument_list|)
 expr_stmt|;
 block|}

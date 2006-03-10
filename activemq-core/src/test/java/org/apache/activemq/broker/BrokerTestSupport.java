@@ -557,7 +557,7 @@ specifier|protected
 name|int
 name|MAX_WAIT
 init|=
-literal|1000
+literal|4000
 decl_stmt|;
 specifier|protected
 name|UsageManager

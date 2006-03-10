@@ -50,7 +50,7 @@ name|CommandTypes
 operator|.
 name|RESPONSE
 decl_stmt|;
-name|short
+name|int
 name|correlationId
 decl_stmt|;
 specifier|public
@@ -64,7 +64,7 @@ return|;
 block|}
 comment|/**      * @openwire:property version=1      */
 specifier|public
-name|short
+name|int
 name|getCorrelationId
 parameter_list|()
 block|{
@@ -76,7 +76,7 @@ specifier|public
 name|void
 name|setCorrelationId
 parameter_list|(
-name|short
+name|int
 name|responseId
 parameter_list|)
 block|{

@@ -1185,7 +1185,7 @@ operator|.
 name|isResponseRequired
 argument_list|()
 decl_stmt|;
-name|short
+name|int
 name|commandId
 init|=
 name|command

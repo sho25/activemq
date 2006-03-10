@@ -619,11 +619,11 @@ name|isResponse
 argument_list|()
 condition|)
 block|{
-name|Short
+name|Integer
 name|id
 init|=
 operator|new
-name|Short
+name|Integer
 argument_list|(
 operator|(
 operator|(
@@ -1613,7 +1613,7 @@ operator|.
 name|put
 argument_list|(
 operator|new
-name|Short
+name|Integer
 argument_list|(
 name|command
 operator|.

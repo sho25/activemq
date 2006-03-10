@@ -13,7 +13,7 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|udp
+name|replay
 package|;
 end_package
 
@@ -25,9 +25,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|command
+name|transport
 operator|.
-name|Command
+name|ReliableTransport
 import|;
 end_import
 
@@ -42,28 +42,74 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A callback used to process inbound commands  *   * @version $Revision$  */
+comment|/**  * Throws an exception if packets are dropped causing the transport to be closed.  *   * @version $Revision$  */
 end_comment
 
-begin_interface
+begin_class
 specifier|public
-interface|interface
-name|CommandProcessor
+class|class
+name|ExceptionIfDroppedReplayStrategy
+implements|implements
+name|ReplayStrategy
 block|{
+specifier|public
 name|void
-name|process
+name|onDroppedPackets
 parameter_list|(
-name|Command
-name|command
+name|ReliableTransport
+name|transport
 parameter_list|,
-name|DatagramHeader
-name|header
+name|long
+name|expectedCounter
+parameter_list|,
+name|long
+name|actualCounter
 parameter_list|)
 throws|throws
 name|IOException
-function_decl|;
+block|{
+name|long
+name|count
+init|=
+name|actualCounter
+operator|-
+name|expectedCounter
+decl_stmt|;
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Packets dropped on: "
+operator|+
+name|transport
+operator|+
+literal|" count: "
+operator|+
+name|count
+operator|+
+literal|" expected: "
+operator|+
+name|expectedCounter
+operator|+
+literal|" but was: "
+operator|+
+name|actualCounter
+argument_list|)
+throw|;
 block|}
-end_interface
+specifier|public
+name|void
+name|onReceivedPacket
+parameter_list|(
+name|ReliableTransport
+name|transport
+parameter_list|,
+name|long
+name|expectedCounter
+parameter_list|)
+block|{     }
+block|}
+end_class
 
 end_unit
 

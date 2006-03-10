@@ -210,7 +210,14 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"RECEIVED: "
+literal|"RECEIVED: from: "
+operator|+
+name|command
+operator|.
+name|getFrom
+argument_list|()
+operator|+
+literal|" : "
 operator|+
 name|command
 argument_list|)

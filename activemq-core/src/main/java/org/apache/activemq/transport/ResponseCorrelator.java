@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Creates a {@see org.activeio.RequestChannel} out of a {@see org.activeio.AsynchChannel}.  This   * {@see org.activeio.RequestChannel} is thread safe and mutiplexes concurrent requests and responses over  * the underlying {@see org.activeio.AsynchChannel}.  *   * @version $Revision: 1.4 $  */
+comment|/**  * Adds the incrementing sequence number to commands along with performing the corelation of  * responses to requests to create a blocking request-response semantics.  *   * @version $Revision: 1.4 $  */
 end_comment
 
 begin_class
@@ -138,13 +138,13 @@ name|ConcurrentHashMap
 argument_list|()
 decl_stmt|;
 specifier|private
-name|short
+name|int
 name|lastCommandId
 init|=
 literal|0
 decl_stmt|;
 specifier|synchronized
-name|short
+name|int
 name|getNextCommandId
 parameter_list|()
 block|{
@@ -236,7 +236,7 @@ operator|.
 name|put
 argument_list|(
 operator|new
-name|Short
+name|Integer
 argument_list|(
 name|command
 operator|.
@@ -326,7 +326,7 @@ operator|.
 name|remove
 argument_list|(
 operator|new
-name|Short
+name|Integer
 argument_list|(
 name|response
 operator|.

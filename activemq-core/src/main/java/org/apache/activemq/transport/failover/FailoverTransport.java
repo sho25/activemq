@@ -544,7 +544,7 @@ operator|.
 name|remove
 argument_list|(
 operator|new
-name|Short
+name|Integer
 argument_list|(
 operator|(
 operator|(
@@ -1559,7 +1559,7 @@ operator|.
 name|put
 argument_list|(
 operator|new
-name|Short
+name|Integer
 argument_list|(
 name|command
 operator|.
@@ -1610,7 +1610,7 @@ operator|.
 name|remove
 argument_list|(
 operator|new
-name|Short
+name|Integer
 argument_list|(
 name|command
 operator|.

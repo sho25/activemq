@@ -80,6 +80,13 @@ expr_stmt|;
 name|add
 argument_list|(
 operator|new
+name|PartialCommandMarshaller
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+operator|new
 name|IntegerResponseMarshaller
 argument_list|()
 argument_list|)
@@ -270,6 +277,13 @@ name|add
 argument_list|(
 operator|new
 name|ControlCommandMarshaller
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+operator|new
+name|LastPartialCommandMarshaller
 argument_list|()
 argument_list|)
 expr_stmt|;

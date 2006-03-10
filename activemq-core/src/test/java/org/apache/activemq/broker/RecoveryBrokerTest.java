@@ -1042,6 +1042,8 @@ argument_list|)
 decl_stmt|;
 name|assertNotNull
 argument_list|(
+literal|"Should have received a message by now!"
+argument_list|,
 name|m
 argument_list|)
 expr_stmt|;

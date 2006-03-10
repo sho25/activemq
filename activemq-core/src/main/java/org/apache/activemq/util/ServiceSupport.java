@@ -86,6 +86,8 @@ specifier|public
 specifier|abstract
 class|class
 name|ServiceSupport
+implements|implements
+name|Service
 block|{
 specifier|private
 specifier|static

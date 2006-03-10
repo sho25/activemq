@@ -41,7 +41,7 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|Transport
+name|CommandJoiner
 import|;
 end_import
 
@@ -55,7 +55,7 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|TransportFactory
+name|Transport
 import|;
 end_import
 
@@ -94,8 +94,6 @@ literal|"udp://localhost:"
 operator|+
 name|consumerPort
 decl_stmt|;
-comment|//protected String producerURI = "udp://localhost:8830";
-comment|//protected String consumerURI = "udp://localhost:8831?port=8830";
 specifier|protected
 name|Transport
 name|createProducer
@@ -114,13 +112,22 @@ operator|+
 name|producerURI
 argument_list|)
 expr_stmt|;
-comment|// The WireFormatNegotiator means we can only connect to servers
-return|return
+comment|// we are not using the TransportFactory as this assumes that
+comment|// UDP transports talk to a server using a WireFormat Negotiation step
+comment|// rather than talking directly to each other
+name|OpenWireFormat
+name|wireFormat
+init|=
+name|createWireFormat
+argument_list|()
+decl_stmt|;
+name|UdpTransport
+name|transport
+init|=
 operator|new
 name|UdpTransport
 argument_list|(
-name|createWireFormat
-argument_list|()
+name|wireFormat
 argument_list|,
 operator|new
 name|URI
@@ -128,8 +135,16 @@ argument_list|(
 name|producerURI
 argument_list|)
 argument_list|)
+decl_stmt|;
+return|return
+operator|new
+name|CommandJoiner
+argument_list|(
+name|transport
+argument_list|,
+name|wireFormat
+argument_list|)
 return|;
-comment|//return TransportFactory.connect(new URI(producerURI));
 block|}
 specifier|protected
 name|Transport
@@ -149,17 +164,32 @@ operator|+
 name|consumerPort
 argument_list|)
 expr_stmt|;
-return|return
+name|OpenWireFormat
+name|wireFormat
+init|=
+name|createWireFormat
+argument_list|()
+decl_stmt|;
+name|UdpTransport
+name|transport
+init|=
 operator|new
 name|UdpTransport
 argument_list|(
-name|createWireFormat
-argument_list|()
+name|wireFormat
 argument_list|,
 name|consumerPort
 argument_list|)
+decl_stmt|;
+return|return
+operator|new
+name|CommandJoiner
+argument_list|(
+name|transport
+argument_list|,
+name|wireFormat
+argument_list|)
 return|;
-comment|//return TransportFactory.connect(new URI(consumerURI));
 block|}
 specifier|protected
 name|OpenWireFormat

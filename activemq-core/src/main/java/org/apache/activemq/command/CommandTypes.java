@@ -189,16 +189,6 @@ literal|34
 decl_stmt|;
 comment|///////////////////////////////////////////////////
 comment|//
-comment|// Optional additional responses
-comment|//
-comment|///////////////////////////////////////////////////
-name|byte
-name|REPLAY
-init|=
-literal|38
-decl_stmt|;
-comment|///////////////////////////////////////////////////
-comment|//
 comment|// Used by discovery
 comment|//
 comment|///////////////////////////////////////////////////
@@ -236,6 +226,26 @@ name|byte
 name|DURABLE_SUBSCRIPTION_INFO
 init|=
 literal|55
+decl_stmt|;
+comment|///////////////////////////////////////////////////
+comment|//
+comment|// Reliability and fragmentation
+comment|//
+comment|///////////////////////////////////////////////////
+name|byte
+name|PARTIAL_COMMAND
+init|=
+literal|60
+decl_stmt|;
+name|byte
+name|PARTIAL_LAST_COMMAND
+init|=
+literal|61
+decl_stmt|;
+name|byte
+name|REPLAY
+init|=
+literal|65
 decl_stmt|;
 comment|///////////////////////////////////////////////////
 comment|//
