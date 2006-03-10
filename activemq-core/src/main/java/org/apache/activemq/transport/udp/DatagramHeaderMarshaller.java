@@ -38,6 +38,17 @@ name|DatagramHeaderMarshaller
 block|{
 specifier|public
 name|DatagramHeader
+name|createDatagramHeader
+parameter_list|()
+block|{
+return|return
+operator|new
+name|DatagramHeader
+argument_list|()
+return|;
+block|}
+specifier|public
+name|DatagramHeader
 name|readHeader
 parameter_list|(
 name|ByteBuffer
@@ -47,8 +58,7 @@ block|{
 name|DatagramHeader
 name|answer
 init|=
-operator|new
-name|DatagramHeader
+name|createDatagramHeader
 argument_list|()
 decl_stmt|;
 name|answer
