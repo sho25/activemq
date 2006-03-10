@@ -55,20 +55,6 @@ name|activemq
 operator|.
 name|command
 operator|.
-name|Endpoint
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|WireFormatInfo
 import|;
 end_import
@@ -738,14 +724,6 @@ argument_list|,
 name|address
 argument_list|)
 decl_stmt|;
-comment|// TODO - is this still required?
-name|transport
-operator|.
-name|receivedHeader
-argument_list|(
-name|endpoint
-argument_list|)
-expr_stmt|;
 name|Transport
 name|configuredTransport
 init|=

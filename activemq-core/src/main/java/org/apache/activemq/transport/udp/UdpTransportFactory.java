@@ -757,12 +757,18 @@ name|WireFormatInfo
 name|info
 parameter_list|)
 block|{
-comment|// lets switch to the targetAddress that the last packet was
-comment|// received as so that all future requests go to the newly created UDP channel
+comment|// lets switch to the target endpoint
+comment|// based on the last packet that was received
+comment|// so that all future requests go to the newly created UDP channel
 name|udpTransport
 operator|.
-name|useLastInboundDatagramAsNewTarget
+name|setTargetEndpoint
+argument_list|(
+name|info
+operator|.
+name|getFrom
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}

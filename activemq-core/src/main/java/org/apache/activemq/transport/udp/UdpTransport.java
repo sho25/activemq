@@ -51,6 +51,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|Endpoint
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|openwire
 operator|.
 name|OpenWireFormat
@@ -97,7 +111,7 @@ name|transport
 operator|.
 name|replay
 operator|.
-name|ReplayStrategy
+name|ExceptionIfDroppedReplayStrategy
 import|;
 end_import
 
@@ -113,7 +127,7 @@ name|transport
 operator|.
 name|replay
 operator|.
-name|ExceptionIfDroppedReplayStrategy
+name|ReplayStrategy
 import|;
 end_import
 
@@ -364,10 +378,6 @@ name|description
 init|=
 literal|null
 decl_stmt|;
-specifier|private
-name|DatagramEndpoint
-name|wireFormatHeader
-decl_stmt|;
 specifier|protected
 name|UdpTransport
 parameter_list|(
@@ -567,19 +577,6 @@ name|address
 argument_list|)
 expr_stmt|;
 block|}
-specifier|public
-name|void
-name|receivedHeader
-parameter_list|(
-name|DatagramEndpoint
-name|endpoint
-parameter_list|)
-block|{
-name|wireFormatHeader
-operator|=
-name|endpoint
-expr_stmt|;
-block|}
 comment|/**      * @return pretty print of 'this'      */
 specifier|public
 name|String
@@ -652,7 +649,6 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*              * catch (SocketTimeoutException e) { } catch              * (InterruptedIOException e) { }              */
 catch|catch
 parameter_list|(
 name|AsynchronousCloseException
@@ -755,8 +751,41 @@ block|}
 comment|/**      * We have received the WireFormatInfo from the server on the actual channel      * we should use for all future communication with the server, so lets set      * the target to be the actual channel that the server has chosen for us to      * talk on.      */
 specifier|public
 name|void
-name|useLastInboundDatagramAsNewTarget
-parameter_list|()
+name|setTargetEndpoint
+parameter_list|(
+name|Endpoint
+name|newTarget
+parameter_list|)
+block|{
+if|if
+condition|(
+name|newTarget
+operator|instanceof
+name|DatagramEndpoint
+condition|)
+block|{
+name|DatagramEndpoint
+name|endpoint
+init|=
+operator|(
+name|DatagramEndpoint
+operator|)
+name|newTarget
+decl_stmt|;
+name|SocketAddress
+name|address
+init|=
+name|endpoint
+operator|.
+name|getAddress
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|address
+operator|!=
+literal|null
+condition|)
 block|{
 if|if
 condition|(
@@ -770,25 +799,11 @@ operator|=
 name|targetAddress
 expr_stmt|;
 block|}
-name|SocketAddress
-name|lastAddress
-init|=
-name|commandChannel
-operator|.
-name|getLastReadDatagramAddress
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|lastAddress
-operator|!=
-literal|null
-condition|)
-block|{
 name|targetAddress
 operator|=
-name|lastAddress
+name|address
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// Properties
@@ -1234,23 +1249,6 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-comment|// lets pass the header& address into the channel so it avoids a
-comment|// re-request
-if|if
-condition|(
-name|wireFormatHeader
-operator|!=
-literal|null
-condition|)
-block|{
-name|commandChannel
-operator|.
-name|setWireFormatInfoEndpoint
-argument_list|(
-name|wireFormatHeader
-argument_list|)
-expr_stmt|;
-block|}
 name|super
 operator|.
 name|doStart

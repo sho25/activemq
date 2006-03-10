@@ -21,16 +21,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|activeio
-operator|.
-name|ByteSequence
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|apache
 operator|.
 name|activemq
@@ -105,35 +95,7 @@ name|activemq
 operator|.
 name|openwire
 operator|.
-name|BooleanStream
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|openwire
-operator|.
 name|OpenWireFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|TransportListener
 import|;
 end_import
 
@@ -319,10 +281,6 @@ specifier|private
 name|ByteBuffer
 name|readBuffer
 decl_stmt|;
-specifier|private
-name|SocketAddress
-name|lastReadDatagramAddress
-decl_stmt|;
 comment|// writing
 specifier|private
 name|Object
@@ -430,21 +388,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// wireFormat.setPrefixPacketSize(false);
-name|wireFormat
-operator|.
-name|setCacheEnabled
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|wireFormat
-operator|.
-name|setTightEncodingEnabled
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|bufferPool
 operator|.
 name|setDefaultSize
@@ -497,10 +440,6 @@ name|answer
 init|=
 literal|null
 decl_stmt|;
-name|lastReadDatagramAddress
-operator|=
-literal|null
-expr_stmt|;
 synchronized|synchronized
 init|(
 name|readLock
@@ -511,15 +450,16 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|lastReadDatagramAddress
-operator|=
+name|SocketAddress
+name|address
+init|=
 name|channel
 operator|.
 name|receive
 argument_list|(
 name|readBuffer
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|readBuffer
 operator|.
 name|flip
@@ -534,7 +474,7 @@ name|createEndpoint
 argument_list|(
 name|readBuffer
 argument_list|,
-name|lastReadDatagramAddress
+name|address
 argument_list|)
 decl_stmt|;
 name|int
@@ -563,8 +503,7 @@ name|data
 argument_list|)
 expr_stmt|;
 comment|// TODO could use a DataInput implementation that talks direct to
-comment|// the
-comment|// ByteBuffer
+comment|// the ByteBuffer to avoid object allocation and unnecessary buffering?
 name|DataInputStream
 name|dataIn
 init|=
@@ -632,17 +571,6 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * Called if a packet is received on a different channel from a remote      * client      *       * @throws IOException      */
-specifier|public
-name|void
-name|setWireFormatInfoEndpoint
-parameter_list|(
-name|DatagramEndpoint
-name|endpoint
-parameter_list|)
-throws|throws
-name|IOException
-block|{     }
 specifier|public
 name|void
 name|write
@@ -1009,21 +937,6 @@ name|headerMarshaller
 operator|=
 name|headerMarshaller
 expr_stmt|;
-block|}
-specifier|public
-name|SocketAddress
-name|getLastReadDatagramAddress
-parameter_list|()
-block|{
-synchronized|synchronized
-init|(
-name|readLock
-init|)
-block|{
-return|return
-name|lastReadDatagramAddress
-return|;
-block|}
 block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
