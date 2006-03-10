@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Copyright 2005-2006 The Apache Software Foundation  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *   * Copyright 2005-2006 The Apache Software Foundation  *   * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with  * the License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -195,6 +195,28 @@ name|LogFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|edu
+operator|.
+name|emory
+operator|.
+name|mathcs
+operator|.
+name|backport
+operator|.
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicBoolean
+import|;
+end_import
+
 begin_comment
 comment|/**  * A Flow provides different dispatch policies within the NMR  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
@@ -277,6 +299,16 @@ init|=
 literal|"/jmxrmi"
 decl_stmt|;
 specifier|private
+name|AtomicBoolean
+name|started
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|(
+literal|false
+argument_list|)
+decl_stmt|;
+specifier|private
 name|JMXConnectorServer
 name|connectorServer
 decl_stmt|;
@@ -316,6 +348,18 @@ throws|throws
 name|IOException
 block|{
 comment|// lets force the MBeanServer to be created if needed
+if|if
+condition|(
+name|started
+operator|.
+name|compareAndSet
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+condition|)
+block|{
 name|getMBeanServer
 argument_list|()
 expr_stmt|;
@@ -348,7 +392,7 @@ parameter_list|(
 name|Throwable
 name|ignore
 parameter_list|)
-block|{             }
+block|{}
 name|Thread
 name|t
 init|=
@@ -364,6 +408,18 @@ name|run
 parameter_list|()
 block|{
 try|try
+block|{
+if|if
+condition|(
+name|started
+operator|.
+name|get
+argument_list|()
+operator|&&
+name|connectorServer
+operator|!=
+literal|null
+condition|)
 block|{
 name|connectorServer
 operator|.
@@ -382,6 +438,7 @@ name|getAddress
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -419,12 +476,25 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
 specifier|public
 name|void
 name|stop
 parameter_list|()
 throws|throws
 name|IOException
+block|{
+if|if
+condition|(
+name|started
+operator|.
+name|compareAndSet
+argument_list|(
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+condition|)
 block|{
 if|if
 condition|(
@@ -486,7 +556,7 @@ parameter_list|(
 name|Throwable
 name|ignore
 parameter_list|)
-block|{             }
+block|{}
 block|}
 if|if
 condition|(
@@ -535,6 +605,7 @@ argument_list|(
 name|beanServer
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -591,7 +662,7 @@ return|return
 name|beanServer
 return|;
 block|}
-comment|/**      * Set the MBeanServer      * @param beanServer      */
+comment|/**      * Set the MBeanServer      *       * @param beanServer      */
 specifier|public
 name|void
 name|setMBeanServer
@@ -659,7 +730,7 @@ operator|=
 name|enableJMX
 expr_stmt|;
 block|}
-comment|/**      * Formulate and return the MBean ObjectName of a custom control MBean      *       * @param type      * @param name      * @return the JMX ObjectName of the MBean, or<code>null</code> if      *<code>customName</code> is invalid.      */
+comment|/**      * Formulate and return the MBean ObjectName of a custom control MBean      *       * @param type      * @param name      * @return the JMX ObjectName of the MBean, or<code>null</code> if<code>customName</code> is invalid.      */
 specifier|public
 name|ObjectName
 name|createCustomComponentMBeanName
@@ -1057,7 +1128,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * @return      * @throws NullPointerException       * @throws MalformedObjectNameException       * @throws IOException       */
+comment|/**      * @return      * @throws NullPointerException      * @throws MalformedObjectNameException      * @throws IOException      */
 specifier|protected
 name|MBeanServer
 name|createMBeanServer
@@ -1130,7 +1201,7 @@ argument_list|(
 literal|"naming:type=rmiregistry"
 argument_list|)
 expr_stmt|;
-comment|//          Do not use the createMBean as the mx4j jar may not be in the
+comment|// Do not use the createMBean as the mx4j jar may not be in the
 comment|// same class loader than the server
 name|Class
 name|cl
@@ -1154,7 +1225,7 @@ argument_list|,
 name|namingServiceObjectName
 argument_list|)
 expr_stmt|;
-comment|//mbeanServer.createMBean("mx4j.tools.naming.NamingService", namingServiceObjectName, null);
+comment|// mbeanServer.createMBean("mx4j.tools.naming.NamingService", namingServiceObjectName, null);
 comment|// set the naming port
 name|Attribute
 name|attr
@@ -1229,7 +1300,7 @@ argument_list|,
 name|mbeanServer
 argument_list|)
 expr_stmt|;
-comment|//log.info("JMX consoles can connect to serviceURL: " + serviceURL);
+comment|// log.info("JMX consoles can connect to serviceURL: " + serviceURL);
 block|}
 specifier|public
 name|String
