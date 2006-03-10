@@ -76,7 +76,7 @@ name|Transport
 extends|extends
 name|Service
 block|{
-comment|/**      * A one way asynchronous send      */
+comment|/**      * A one way asynchronous send      * @param command       * @throws IOException       */
 specifier|public
 name|void
 name|oneway
@@ -87,7 +87,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * An asynchronous request response where the Receipt will be returned      * in the future      */
+comment|/**      * An asynchronous request response where the Receipt will be returned      * in the future      * @param command       * @return the FutureResponse      * @throws IOException       */
 specifier|public
 name|FutureResponse
 name|asyncRequest
@@ -98,7 +98,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * A synchronous request response      */
+comment|/**      * A synchronous request response      * @param command       * @return the response      * @throws IOException       */
 specifier|public
 name|Response
 name|request
@@ -109,13 +109,27 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Returns the current transport listener      */
+comment|/**      * A synchronous request response      * @param command       * @param timeout       * @return the repsonse or null if timeout      * @throws IOException       */
+specifier|public
+name|Response
+name|request
+parameter_list|(
+name|Command
+name|command
+parameter_list|,
+name|int
+name|timeout
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * Returns the current transport listener      * @return       */
 specifier|public
 name|TransportListener
 name|getTransportListener
 parameter_list|()
 function_decl|;
-comment|/**      * Registers an inbound command listener      */
+comment|/**      * Registers an inbound command listener      * @param commandListener       */
 specifier|public
 name|void
 name|setTransportListener
@@ -124,6 +138,7 @@ name|TransportListener
 name|commandListener
 parameter_list|)
 function_decl|;
+comment|/**      * @param target      * @return the target      */
 specifier|public
 name|Object
 name|narrow

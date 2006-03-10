@@ -446,6 +446,27 @@ argument_list|)
 throw|;
 block|}
 specifier|public
+name|Response
+name|request
+parameter_list|(
+name|Command
+name|command
+parameter_list|,
+name|int
+name|timeout
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+literal|"Unsupported Method"
+argument_list|)
+throw|;
+block|}
+specifier|public
 specifier|synchronized
 name|TransportListener
 name|getTransportListener
