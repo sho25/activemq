@@ -11,7 +11,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|openwire
+name|soaktest
 package|;
 end_package
 
@@ -87,6 +87,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|openwire
+operator|.
+name|OpenWireFormat
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -146,7 +160,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @version $Revision$  */
+comment|/**  *  * @version $Revision: 383541 $  */
 end_comment
 
 begin_class
