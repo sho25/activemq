@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a partial command; a large command that has been split up into  * pieces.  *   * @openwire:marshaller code="61"  * @version $Revision$  */
+comment|/**  * Represents the end marker of a stream of {@link PartialCommand} instances.  *   * @openwire:marshaller code="61"  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -38,7 +38,7 @@ specifier|public
 class|class
 name|LastPartialCommand
 extends|extends
-name|PartialCommand
+name|BaseCommand
 block|{
 specifier|public
 specifier|static
@@ -55,21 +55,36 @@ name|LastPartialCommand
 parameter_list|()
 block|{     }
 specifier|public
+name|LastPartialCommand
+parameter_list|(
+name|Command
+name|command
+parameter_list|)
+block|{
+name|setCommandId
+argument_list|(
+name|command
+operator|.
+name|getCommandId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|setResponseRequired
+argument_list|(
+name|command
+operator|.
+name|isResponseRequired
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
 name|byte
 name|getDataStructureType
 parameter_list|()
 block|{
 return|return
 name|DATA_STRUCTURE_TYPE
-return|;
-block|}
-specifier|public
-name|boolean
-name|isLastPart
-parameter_list|()
-block|{
-return|return
-literal|true
 return|;
 block|}
 specifier|public
@@ -86,7 +101,7 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"The transport layer should filter out PartialCommand instances but received: "
+literal|"The transport layer should filter out LastPartialCommand instances but received: "
 operator|+
 name|this
 argument_list|)

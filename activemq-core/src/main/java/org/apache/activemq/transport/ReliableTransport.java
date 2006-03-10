@@ -207,7 +207,7 @@ name|boolean
 name|valid
 init|=
 name|expectedCounter
-operator|!=
+operator|==
 name|actualCounter
 decl_stmt|;
 if|if
@@ -215,25 +215,6 @@ condition|(
 operator|!
 name|valid
 condition|)
-block|{
-if|if
-condition|(
-name|actualCounter
-operator|<
-name|expectedCounter
-condition|)
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Ignoring out of step packet: "
-operator|+
-name|command
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 comment|// lets add it to the list for later on
 name|headers
@@ -271,7 +252,6 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(

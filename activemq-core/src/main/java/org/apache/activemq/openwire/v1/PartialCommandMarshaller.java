@@ -84,7 +84,7 @@ specifier|public
 class|class
 name|PartialCommandMarshaller
 extends|extends
-name|BaseCommandMarshaller
+name|BaseDataStreamMarshaller
 block|{
 comment|/**      * Return the type of Data Structure we marshal      * @return short representation of the type data structure      */
 specifier|public
@@ -153,6 +153,16 @@ name|o
 decl_stmt|;
 name|info
 operator|.
+name|setCommandId
+argument_list|(
+name|dataIn
+operator|.
+name|readInt
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|info
+operator|.
 name|setData
 argument_list|(
 name|tightUnmarshalByteArray
@@ -218,7 +228,7 @@ expr_stmt|;
 return|return
 name|rc
 operator|+
-literal|0
+literal|4
 return|;
 block|}
 comment|/**      * Write a object instance to data output stream      *      * @param o the instance to be marshaled      * @param dataOut the output stream      * @throws IOException thrown if an error occurs      */
@@ -262,6 +272,16 @@ name|PartialCommand
 operator|)
 name|o
 decl_stmt|;
+name|dataOut
+operator|.
+name|writeInt
+argument_list|(
+name|info
+operator|.
+name|getCommandId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|tightMarshalByteArray2
 argument_list|(
 name|info
@@ -313,6 +333,16 @@ name|o
 decl_stmt|;
 name|info
 operator|.
+name|setCommandId
+argument_list|(
+name|dataIn
+operator|.
+name|readInt
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|info
+operator|.
 name|setData
 argument_list|(
 name|looseUnmarshalByteArray
@@ -356,6 +386,16 @@ argument_list|,
 name|o
 argument_list|,
 name|dataOut
+argument_list|)
+expr_stmt|;
+name|dataOut
+operator|.
+name|writeInt
+argument_list|(
+name|info
+operator|.
+name|getCommandId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|looseMarshalByteArray

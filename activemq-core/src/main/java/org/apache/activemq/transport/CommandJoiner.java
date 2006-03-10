@@ -112,7 +112,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Joins together of partial commands which were split into individual chunks of data.  *   * @version $Revision$  */
+comment|/**  * Joins together of partial commands which were split into individual chunks of  * data.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -179,12 +179,6 @@ operator|==
 name|PartialCommand
 operator|.
 name|DATA_STRUCTURE_TYPE
-operator|||
-name|type
-operator|==
-name|LastPartialCommand
-operator|.
-name|DATA_STRUCTURE_TYPE
 condition|)
 block|{
 name|PartialCommand
@@ -213,13 +207,34 @@ argument_list|(
 name|partialData
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|getTransportListener
+argument_list|()
+operator|.
+name|onException
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+elseif|else
 if|if
 condition|(
-name|header
+name|type
+operator|==
+name|LastPartialCommand
 operator|.
-name|isLastPart
-argument_list|()
+name|DATA_STRUCTURE_TYPE
 condition|)
+block|{
+try|try
 block|{
 name|byte
 index|[]
@@ -251,6 +266,26 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|completeCommand
+operator|.
+name|setCommandId
+argument_list|(
+name|command
+operator|.
+name|getCommandId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|completeCommand
+operator|.
+name|setResponseRequired
+argument_list|(
+name|command
+operator|.
+name|isResponseRequired
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|resetBuffer
 argument_list|()
 expr_stmt|;
@@ -262,7 +297,6 @@ argument_list|(
 name|completeCommand
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(

@@ -95,6 +95,20 @@ name|activemq
 operator|.
 name|openwire
 operator|.
+name|BooleanStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|openwire
+operator|.
 name|OpenWireFormat
 import|;
 end_import
@@ -503,7 +517,8 @@ name|data
 argument_list|)
 expr_stmt|;
 comment|// TODO could use a DataInput implementation that talks direct to
-comment|// the ByteBuffer to avoid object allocation and unnecessary buffering?
+comment|// the ByteBuffer to avoid object allocation and unnecessary
+comment|// buffering?
 name|DataInputStream
 name|dataIn
 init|=
@@ -648,38 +663,9 @@ decl_stmt|;
 if|if
 condition|(
 name|size
-operator|<
+operator|>=
 name|datagramSize
 condition|)
-block|{
-name|writeBuffer
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-name|headerMarshaller
-operator|.
-name|writeHeader
-argument_list|(
-name|command
-argument_list|,
-name|writeBuffer
-argument_list|)
-expr_stmt|;
-name|writeBuffer
-operator|.
-name|put
-argument_list|(
-name|data
-argument_list|)
-expr_stmt|;
-name|sendWriteBuffer
-argument_list|(
-name|address
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 comment|// lets split the command up into chunks
 name|int
@@ -735,17 +721,75 @@ operator|.
 name|remaining
 argument_list|()
 decl_stmt|;
-comment|// we need to remove the amount of overhead to write the partial command
+comment|// we need to remove the amount of overhead to write the
+comment|// partial command
+comment|// lets write the flags in there
+name|BooleanStream
+name|bs
+init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|wireFormat
+operator|.
+name|isTightEncodingEnabled
+argument_list|()
+condition|)
+block|{
+name|bs
+operator|=
+operator|new
+name|BooleanStream
+argument_list|()
+expr_stmt|;
+name|bs
+operator|.
+name|writeBoolean
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+comment|// the partial data byte[] is
+comment|// never null
+block|}
 comment|// lets remove the header of the partial command
-comment|// which is the byte for the type and an int for the size of the byte[]
+comment|// which is the byte for the type and an int for the size of
+comment|// the byte[]
 name|chunkSize
 operator|-=
 literal|1
+comment|// the data type
 operator|+
 literal|4
+comment|// the command ID
 operator|+
 literal|4
 expr_stmt|;
+comment|// the size of the partial data
+comment|// the boolean flags
+if|if
+condition|(
+name|bs
+operator|!=
+literal|null
+condition|)
+block|{
+name|chunkSize
+operator|-=
+name|bs
+operator|.
+name|marshalledSize
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|chunkSize
+operator|-=
+literal|1
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -792,23 +836,6 @@ operator|-
 name|offset
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|lastFragment
-condition|)
-block|{
-name|writeBuffer
-operator|.
-name|put
-argument_list|(
-name|LastPartialCommand
-operator|.
-name|DATA_STRUCTURE_TYPE
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|writeBuffer
 operator|.
 name|put
@@ -816,6 +843,20 @@ argument_list|(
 name|PartialCommand
 operator|.
 name|DATA_STRUCTURE_TYPE
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|bs
+operator|!=
+literal|null
+condition|)
+block|{
+name|bs
+operator|.
+name|marshal
+argument_list|(
+name|writeBuffer
 argument_list|)
 expr_stmt|;
 block|}
@@ -829,6 +870,24 @@ name|getCommandId
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|bs
+operator|==
+literal|null
+condition|)
+block|{
+name|writeBuffer
+operator|.
+name|put
+argument_list|(
+operator|(
+name|byte
+operator|)
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
 comment|// size of byte array
 name|writeBuffer
 operator|.
@@ -859,7 +918,70 @@ name|address
 argument_list|)
 expr_stmt|;
 block|}
+comment|// now lets write the last partial command
+name|command
+operator|=
+operator|new
+name|LastPartialCommand
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
+name|largeBuffer
+operator|=
+operator|new
+name|ByteArrayOutputStream
+argument_list|(
+name|defaultMarshalBufferSize
+argument_list|)
+expr_stmt|;
+name|wireFormat
+operator|.
+name|marshal
+argument_list|(
+name|command
+argument_list|,
+operator|new
+name|DataOutputStream
+argument_list|(
+name|largeBuffer
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|data
+operator|=
+name|largeBuffer
+operator|.
+name|toByteArray
+argument_list|()
+expr_stmt|;
 block|}
+name|writeBuffer
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|headerMarshaller
+operator|.
+name|writeHeader
+argument_list|(
+name|command
+argument_list|,
+name|writeBuffer
+argument_list|)
+expr_stmt|;
+name|writeBuffer
+operator|.
+name|put
+argument_list|(
+name|data
+argument_list|)
+expr_stmt|;
+name|sendWriteBuffer
+argument_list|(
+name|address
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|// Properties
