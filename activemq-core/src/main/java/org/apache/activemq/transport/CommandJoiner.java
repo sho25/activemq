@@ -19,6 +19,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|activeio
+operator|.
+name|ByteArrayInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|apache
 operator|.
 name|activemq
@@ -68,16 +78,6 @@ operator|.
 name|openwire
 operator|.
 name|OpenWireFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|ByteArrayInputStream
 import|;
 end_import
 
