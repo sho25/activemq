@@ -13,23 +13,9 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|replay
+name|reliable
 package|;
 end_package
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|ReliableTransport
-import|;
-end_import
 
 begin_import
 import|import
@@ -42,62 +28,29 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Throws an exception if packets are dropped causing the transport to be closed.  *   * @version $Revision$  */
+comment|/**  * A pluggable strategy for how to deal with dropped packets.  *   * @version $Revision$  */
 end_comment
 
-begin_class
+begin_interface
 specifier|public
-class|class
-name|ExceptionIfDroppedReplayStrategy
-implements|implements
+interface|interface
 name|ReplayStrategy
 block|{
-specifier|public
 name|void
 name|onDroppedPackets
 parameter_list|(
 name|ReliableTransport
 name|transport
 parameter_list|,
-name|long
+name|int
 name|expectedCounter
 parameter_list|,
-name|long
+name|int
 name|actualCounter
 parameter_list|)
 throws|throws
 name|IOException
-block|{
-name|long
-name|count
-init|=
-name|actualCounter
-operator|-
-name|expectedCounter
-decl_stmt|;
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-literal|"Packets dropped on: "
-operator|+
-name|transport
-operator|+
-literal|" count: "
-operator|+
-name|count
-operator|+
-literal|" expected: "
-operator|+
-name|expectedCounter
-operator|+
-literal|" but was: "
-operator|+
-name|actualCounter
-argument_list|)
-throw|;
-block|}
-specifier|public
+function_decl|;
 name|void
 name|onReceivedPacket
 parameter_list|(
@@ -107,9 +60,9 @@ parameter_list|,
 name|long
 name|expectedCounter
 parameter_list|)
-block|{     }
+function_decl|;
 block|}
-end_class
+end_interface
 
 end_unit
 

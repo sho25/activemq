@@ -109,7 +109,7 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|replay
+name|reliable
 operator|.
 name|ExceptionIfDroppedReplayStrategy
 import|;
@@ -125,7 +125,7 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|replay
+name|reliable
 operator|.
 name|ReplayStrategy
 import|;
