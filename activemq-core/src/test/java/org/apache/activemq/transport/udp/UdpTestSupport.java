@@ -855,7 +855,19 @@ parameter_list|(
 name|Command
 name|command
 parameter_list|)
-block|{             }
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Producer received: "
+operator|+
+name|command
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 name|void
 name|onException
@@ -863,7 +875,19 @@ parameter_list|(
 name|IOException
 name|error
 parameter_list|)
-block|{             }
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Producer exception: "
+operator|+
+name|error
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 name|void
 name|transportInterupted

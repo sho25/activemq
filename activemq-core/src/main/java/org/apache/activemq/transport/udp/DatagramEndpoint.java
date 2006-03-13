@@ -37,6 +37,16 @@ name|java
 operator|.
 name|net
 operator|.
+name|InetAddress
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
 name|SocketAddress
 import|;
 end_import
