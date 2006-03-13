@@ -166,14 +166,24 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-throw|throw
+name|IllegalStateException
+name|ise
+init|=
 operator|new
 name|IllegalStateException
 argument_list|(
 literal|"Could not configure WireFormatInfo"
-argument_list|,
+argument_list|)
+decl_stmt|;
+name|ise
+operator|.
+name|initCause
+argument_list|(
 name|e
 argument_list|)
+expr_stmt|;
+throw|throw
+name|ise
 throw|;
 block|}
 name|OpenWireFormat
