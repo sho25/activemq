@@ -291,6 +291,17 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// Validate the system properties are being evaluated in xbean.
+name|assertEquals
+argument_list|(
+literal|"testbroker"
+argument_list|,
+name|brokerService
+operator|.
+name|getBrokerName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|Topic
 name|topic
 init|=
@@ -496,6 +507,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"brokername"
+argument_list|,
+literal|"testbroker"
+argument_list|)
+expr_stmt|;
 name|brokerService
 operator|=
 name|createBroker
