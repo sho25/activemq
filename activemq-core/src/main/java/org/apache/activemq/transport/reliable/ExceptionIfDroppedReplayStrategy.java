@@ -45,7 +45,7 @@ init|=
 literal|5
 decl_stmt|;
 specifier|public
-name|void
+name|boolean
 name|onDroppedPackets
 parameter_list|(
 name|ReliableTransport
@@ -60,6 +60,13 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|int
+name|difference
+init|=
+name|actualCounter
+operator|-
+name|expectedCounter
+decl_stmt|;
 name|long
 name|count
 init|=
@@ -67,9 +74,7 @@ name|Math
 operator|.
 name|abs
 argument_list|(
-name|actualCounter
-operator|-
-name|expectedCounter
+name|difference
 argument_list|)
 decl_stmt|;
 if|if
@@ -101,6 +106,12 @@ name|actualCounter
 argument_list|)
 throw|;
 block|}
+comment|// lets discard old commands
+return|return
+name|difference
+operator|>
+literal|0
+return|;
 block|}
 specifier|public
 name|void

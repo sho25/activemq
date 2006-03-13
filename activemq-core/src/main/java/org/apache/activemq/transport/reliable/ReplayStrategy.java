@@ -36,7 +36,8 @@ specifier|public
 interface|interface
 name|ReplayStrategy
 block|{
-name|void
+comment|/**      * Deals with a dropped packet.       *       * @param transport the transport on which the packet was dropped      * @param expectedCounter the expected command counter      * @param actualCounter the actual command counter      * @return true if the command should be buffered or false if it should be discarded      */
+name|boolean
 name|onDroppedPackets
 parameter_list|(
 name|ReliableTransport
