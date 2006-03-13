@@ -23,36 +23,7 @@ interface|interface
 name|TopicViewMBean
 extends|extends
 name|DestinationViewMBean
-block|{
-comment|/** 	 * Creates a durable subscription that is subscribed to this topic. 	 *  	 * @param clientId 	 * @param subscriberName 	 * @throws Exception 	 */
-specifier|public
-name|void
-name|createDurableSubscriber
-parameter_list|(
-name|String
-name|clientId
-parameter_list|,
-name|String
-name|subscriberName
-parameter_list|)
-throws|throws
-name|Exception
-function_decl|;
-comment|/** 	 * Destroys a durable subscription that had previously subscribed to this topic. 	 *  	 * @param clientId 	 * @param subscriberName 	 * @throws Exception 	 */
-specifier|public
-name|void
-name|destroyDurableSubscriber
-parameter_list|(
-name|String
-name|clientId
-parameter_list|,
-name|String
-name|subscriberName
-parameter_list|)
-throws|throws
-name|Exception
-function_decl|;
-block|}
+block|{ }
 end_interface
 
 end_unit
