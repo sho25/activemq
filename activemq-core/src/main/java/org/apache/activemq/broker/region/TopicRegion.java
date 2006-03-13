@@ -378,7 +378,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-name|void
+name|Subscription
 name|addConsumer
 parameter_list|(
 name|ConnectionContext
@@ -665,9 +665,13 @@ argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
+return|return
+name|sub
+return|;
 block|}
 else|else
 block|{
+return|return
 name|super
 operator|.
 name|addConsumer
@@ -676,7 +680,7 @@ name|context
 argument_list|,
 name|info
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 block|}
 specifier|public

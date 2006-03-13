@@ -1227,7 +1227,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-name|void
+name|ObjectName
 name|registerSubscription
 parameter_list|(
 name|ConnectionContext
@@ -1460,6 +1460,9 @@ argument_list|,
 name|objectName
 argument_list|)
 expr_stmt|;
+return|return
+name|objectName
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -1478,6 +1481,9 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+return|return
+literal|null
+return|;
 block|}
 block|}
 specifier|public

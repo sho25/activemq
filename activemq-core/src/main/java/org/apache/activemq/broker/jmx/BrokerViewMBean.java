@@ -295,9 +295,9 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Creates a new durable topic subscriber      *       * @param clientId the JMS client ID      * @param subscriberName the durable subscriber name      * @param topicName the name of the topic to subscribe to      * @param selector a selector or null      */
+comment|/**      * Creates a new durable topic subscriber      *       * @param clientId the JMS client ID      * @param subscriberName the durable subscriber name      * @param topicName the name of the topic to subscribe to      * @param selector a selector or null      *       * @return the object name of the MBean registered in JMX      */
 specifier|public
-name|void
+name|ObjectName
 name|createDurableSubscriber
 parameter_list|(
 name|String

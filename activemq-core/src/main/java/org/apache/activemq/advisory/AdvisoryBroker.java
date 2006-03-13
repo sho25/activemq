@@ -91,6 +91,22 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|Subscription
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -437,7 +453,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-name|void
+name|Subscription
 name|addConsumer
 parameter_list|(
 name|ConnectionContext
@@ -449,6 +465,9 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|Subscription
+name|answer
+init|=
 name|next
 operator|.
 name|addConsumer
@@ -457,7 +476,7 @@ name|context
 argument_list|,
 name|info
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// Don't advise advisory topics.
 if|if
 condition|(
@@ -806,6 +825,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+return|return
+name|answer
+return|;
 block|}
 specifier|public
 name|void

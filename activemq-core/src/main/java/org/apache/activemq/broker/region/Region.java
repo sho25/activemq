@@ -169,9 +169,9 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Adds a consumer.      * @param context the environment the operation is being executed under.      * @throws Exception TODO      */
+comment|/**      * Adds a consumer.      * @param context the environment the operation is being executed under.      * @return TODO      * @throws Exception TODO      */
 specifier|public
-name|void
+name|Subscription
 name|addConsumer
 parameter_list|(
 name|ConnectionContext

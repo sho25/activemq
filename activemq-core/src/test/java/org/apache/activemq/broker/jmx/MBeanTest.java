@@ -690,6 +690,9 @@ name|selector
 init|=
 literal|null
 decl_stmt|;
+name|ObjectName
+name|name1
+init|=
 name|broker
 operator|.
 name|createDurableSubscriber
@@ -702,7 +705,7 @@ name|topicName
 argument_list|,
 name|selector
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|broker
 operator|.
 name|createDurableSubscriber
@@ -728,6 +731,24 @@ name|getDurableTopicSubscribers
 argument_list|()
 operator|.
 name|length
+argument_list|)
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Should have created an mbean name for the durable subscriber!"
+argument_list|,
+name|name1
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Created durable subscriber with name: "
+operator|+
+name|name1
 argument_list|)
 expr_stmt|;
 comment|// now lets try destroy it

@@ -121,6 +121,16 @@ name|InvalidSelectorException
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|ObjectName
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision: 1.5 $  */
 end_comment
@@ -267,6 +277,21 @@ throws|throws
 name|InvalidSelectorException
 throws|,
 name|UnsupportedOperationException
+function_decl|;
+comment|/**      * @return the JMX object name that this subscription was registered as if applicable      */
+specifier|public
+name|ObjectName
+name|getObjectName
+parameter_list|()
+function_decl|;
+comment|/**      * Set when the subscription is registered in JMX      */
+specifier|public
+name|void
+name|setObjectName
+parameter_list|(
+name|ObjectName
+name|objectName
+parameter_list|)
 function_decl|;
 block|}
 end_interface

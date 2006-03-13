@@ -29,6 +29,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|ObjectName
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -267,6 +277,9 @@ argument_list|,
 name|info
 argument_list|)
 decl_stmt|;
+name|ObjectName
+name|name
+init|=
 name|regionBroker
 operator|.
 name|registerSubscription
@@ -274,6 +287,13 @@ argument_list|(
 name|context
 argument_list|,
 name|sub
+argument_list|)
+decl_stmt|;
+name|sub
+operator|.
+name|setObjectName
+argument_list|(
+name|name
 argument_list|)
 expr_stmt|;
 return|return

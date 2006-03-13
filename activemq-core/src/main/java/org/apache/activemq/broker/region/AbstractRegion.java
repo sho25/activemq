@@ -672,7 +672,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-name|void
+name|Subscription
 name|addConsumer
 parameter_list|(
 name|ConnectionContext
@@ -847,6 +847,9 @@ name|browseDone
 argument_list|()
 expr_stmt|;
 block|}
+return|return
+name|sub
+return|;
 block|}
 comment|/**      * Get all the Destinations that are in storage      * @return Set of all stored destinations      */
 specifier|public

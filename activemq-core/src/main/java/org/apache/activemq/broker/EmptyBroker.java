@@ -49,6 +49,22 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|Subscription
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -504,7 +520,7 @@ throws|throws
 name|Exception
 block|{      }
 specifier|public
-name|void
+name|Subscription
 name|addConsumer
 parameter_list|(
 name|ConnectionContext
@@ -515,7 +531,11 @@ name|info
 parameter_list|)
 throws|throws
 name|Exception
-block|{      }
+block|{
+return|return
+literal|null
+return|;
+block|}
 specifier|public
 name|void
 name|removeConsumer
