@@ -319,10 +319,7 @@ specifier|private
 name|String
 name|clientID
 decl_stmt|;
-specifier|private
-name|String
-name|sessionID
-decl_stmt|;
+comment|//    private String sessionID;
 specifier|public
 name|HttpClientTransport
 parameter_list|(
@@ -467,11 +464,7 @@ name|answer
 argument_list|)
 throw|;
 block|}
-name|checkSession
-argument_list|(
-name|httpMethod
-argument_list|)
-expr_stmt|;
+comment|//            checkSession(httpMethod);
 block|}
 catch|catch
 parameter_list|(
@@ -631,11 +624,7 @@ block|}
 block|}
 else|else
 block|{
-name|checkSession
-argument_list|(
-name|httpMethod
-argument_list|)
-expr_stmt|;
+comment|//                    checkSession(httpMethod);
 name|Command
 name|command
 init|=
@@ -827,26 +816,10 @@ name|HttpMethod
 name|method
 parameter_list|)
 block|{
-if|if
-condition|(
-name|sessionID
-operator|!=
-literal|null
-condition|)
-block|{
-name|method
-operator|.
-name|addRequestHeader
-argument_list|(
-literal|"Cookie"
-argument_list|,
-literal|"JSESSIONID="
-operator|+
-name|sessionID
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
+comment|//        if (sessionID != null) {
+comment|//            method.addRequestHeader("Cookie", "JSESSIONID=" + sessionID);
+comment|//        }
+comment|//        else
 if|if
 condition|(
 name|clientID
@@ -865,74 +838,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|protected
-name|void
-name|checkSession
-parameter_list|(
-name|HttpMethod
-name|client
-parameter_list|)
-block|{
-name|Header
-name|header
-init|=
-name|client
-operator|.
-name|getRequestHeader
-argument_list|(
-literal|"Set-Cookie"
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|header
-operator|!=
-literal|null
-condition|)
-block|{
-name|String
-name|set_cookie
-init|=
-name|header
-operator|.
-name|getValue
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|set_cookie
-operator|!=
-literal|null
-operator|&&
-name|set_cookie
-operator|.
-name|startsWith
-argument_list|(
-literal|"JSESSIONID="
-argument_list|)
-condition|)
-block|{
-name|String
-index|[]
-name|bits
-init|=
-name|set_cookie
-operator|.
-name|split
-argument_list|(
-literal|"[=;]"
-argument_list|)
-decl_stmt|;
-name|sessionID
-operator|=
-name|bits
-index|[
-literal|1
-index|]
-expr_stmt|;
-block|}
-block|}
-block|}
+comment|//    protected void checkSession(HttpMethod client) {
+comment|//        Header header = client.getRequestHeader("Set-Cookie");
+comment|//        if (header != null) {
+comment|//            String set_cookie = header.getValue();
+comment|//
+comment|//            if (set_cookie != null&& set_cookie.startsWith("JSESSIONID=")) {
+comment|//                String[] bits = set_cookie.split("[=;]");
+comment|//                sessionID = bits[1];
+comment|//            }
+comment|//        }
+comment|//    }
 block|}
 end_class
 

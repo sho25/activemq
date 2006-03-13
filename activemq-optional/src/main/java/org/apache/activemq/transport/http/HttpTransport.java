@@ -253,10 +253,7 @@ specifier|private
 name|String
 name|clientID
 decl_stmt|;
-specifier|private
-name|String
-name|sessionID
-decl_stmt|;
+comment|//    private String sessionID;
 specifier|public
 name|HttpTransport
 parameter_list|(
@@ -395,11 +392,7 @@ name|answer
 argument_list|)
 throw|;
 block|}
-name|checkSession
-argument_list|(
-name|connection
-argument_list|)
-expr_stmt|;
+comment|//            checkSession(connection);
 block|}
 catch|catch
 parameter_list|(
@@ -513,11 +506,7 @@ block|}
 block|}
 else|else
 block|{
-name|checkSession
-argument_list|(
-name|connection
-argument_list|)
-expr_stmt|;
+comment|//                    checkSession(connection);
 name|Command
 name|command
 init|=
@@ -712,58 +701,15 @@ return|return
 name|conn
 return|;
 block|}
-specifier|protected
-name|void
-name|checkSession
-parameter_list|(
-name|HttpURLConnection
-name|connection
-parameter_list|)
-block|{
-name|String
-name|set_cookie
-init|=
-name|connection
-operator|.
-name|getHeaderField
-argument_list|(
-literal|"Set-Cookie"
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|set_cookie
-operator|!=
-literal|null
-operator|&&
-name|set_cookie
-operator|.
-name|startsWith
-argument_list|(
-literal|"JSESSIONID="
-argument_list|)
-condition|)
-block|{
-name|String
-index|[]
-name|bits
-init|=
-name|set_cookie
-operator|.
-name|split
-argument_list|(
-literal|"[=;]"
-argument_list|)
-decl_stmt|;
-name|sessionID
-operator|=
-name|bits
-index|[
-literal|1
-index|]
-expr_stmt|;
-block|}
-block|}
+comment|//    protected void checkSession(HttpURLConnection connection)
+comment|//    {
+comment|//        String set_cookie=connection.getHeaderField("Set-Cookie");
+comment|//        if (set_cookie!=null&& set_cookie.startsWith("JSESSIONID="))
+comment|//        {
+comment|//            String[] bits=set_cookie.split("[=;]");
+comment|//            sessionID=bits[1];
+comment|//        }
+comment|//    }
 specifier|protected
 name|void
 name|configureConnection
@@ -772,26 +718,10 @@ name|HttpURLConnection
 name|connection
 parameter_list|)
 block|{
-if|if
-condition|(
-name|sessionID
-operator|!=
-literal|null
-condition|)
-block|{
-name|connection
-operator|.
-name|addRequestProperty
-argument_list|(
-literal|"Cookie"
-argument_list|,
-literal|"JSESSIONID="
-operator|+
-name|sessionID
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
+comment|//        if (sessionID !=null) {
+comment|//            connection.addRequestProperty("Cookie", "JSESSIONID="+sessionID);
+comment|//        }
+comment|//        else
 if|if
 condition|(
 name|clientID

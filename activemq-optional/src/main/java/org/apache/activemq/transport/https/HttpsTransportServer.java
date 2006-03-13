@@ -130,7 +130,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|start
+name|doStart
 parameter_list|()
 throws|throws
 name|Exception
@@ -225,7 +225,7 @@ argument_list|)
 expr_stmt|;
 name|super
 operator|.
-name|start
+name|doStart
 argument_list|()
 expr_stmt|;
 block|}
