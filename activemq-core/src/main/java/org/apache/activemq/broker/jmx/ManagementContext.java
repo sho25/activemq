@@ -392,7 +392,7 @@ parameter_list|(
 name|Throwable
 name|ignore
 parameter_list|)
-block|{}
+block|{                 }
 name|Thread
 name|t
 init|=
@@ -409,6 +409,11 @@ parameter_list|()
 block|{
 try|try
 block|{
+name|JMXConnectorServer
+name|server
+init|=
+name|connectorServer
+decl_stmt|;
 if|if
 condition|(
 name|started
@@ -416,12 +421,12 @@ operator|.
 name|get
 argument_list|()
 operator|&&
-name|connectorServer
+name|server
 operator|!=
 literal|null
 condition|)
 block|{
-name|connectorServer
+name|server
 operator|.
 name|start
 argument_list|()
@@ -432,7 +437,7 @@ name|info
 argument_list|(
 literal|"JMX consoles can connect to "
 operator|+
-name|connectorServer
+name|server
 operator|.
 name|getAddress
 argument_list|()
@@ -496,16 +501,25 @@ literal|false
 argument_list|)
 condition|)
 block|{
+name|JMXConnectorServer
+name|server
+init|=
+name|connectorServer
+decl_stmt|;
+name|connectorServer
+operator|=
+literal|null
+expr_stmt|;
 if|if
 condition|(
-name|connectorServer
+name|server
 operator|!=
 literal|null
 condition|)
 block|{
 try|try
 block|{
-name|connectorServer
+name|server
 operator|.
 name|stop
 argument_list|()
@@ -530,10 +544,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|connectorServer
-operator|=
-literal|null
-expr_stmt|;
 try|try
 block|{
 name|getMBeanServer
@@ -556,7 +566,7 @@ parameter_list|(
 name|Throwable
 name|ignore
 parameter_list|)
-block|{}
+block|{                 }
 block|}
 if|if
 condition|(
