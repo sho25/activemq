@@ -1258,6 +1258,10 @@ specifier|private
 name|BrokerInfo
 name|brokerInfo
 decl_stmt|;
+specifier|private
+name|IOException
+name|firstFailureError
+decl_stmt|;
 comment|/**      * Construct an<code>ActiveMQConnection</code>      * @param transport       * @param factoryStats      * @param userName      * @param password      * @throws Exception       */
 specifier|protected
 name|ActiveMQConnection
@@ -3365,7 +3369,9 @@ block|{
 throw|throw
 operator|new
 name|ConnectionFailedException
-argument_list|()
+argument_list|(
+name|firstFailureError
+argument_list|)
 throw|;
 block|}
 block|}
@@ -5336,7 +5342,7 @@ specifier|protected
 name|void
 name|transportFailed
 parameter_list|(
-name|Throwable
+name|IOException
 name|error
 parameter_list|)
 block|{
@@ -5347,6 +5353,18 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|firstFailureError
+operator|==
+literal|null
+condition|)
+block|{
+name|firstFailureError
+operator|=
+name|error
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
