@@ -19,6 +19,26 @@ end_package
 
 begin_import
 import|import
+name|edu
+operator|.
+name|emory
+operator|.
+name|mathcs
+operator|.
+name|backport
+operator|.
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Future
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|activeio
@@ -34,18 +54,6 @@ operator|.
 name|activeio
 operator|.
 name|ByteArrayOutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|Service
 import|;
 end_import
 
@@ -223,6 +231,16 @@ name|DatagramChannel
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
 begin_comment
 comment|/**  * A strategy for reading datagrams and de-fragmenting them together.  *   * @version $Revision$  */
 end_comment
@@ -248,6 +266,11 @@ name|CommandDatagramChannel
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+specifier|private
+specifier|final
+name|UdpTransport
+name|transport
 decl_stmt|;
 specifier|private
 specifier|final
@@ -319,8 +342,8 @@ decl_stmt|;
 specifier|public
 name|CommandDatagramChannel
 parameter_list|(
-name|String
-name|name
+name|UdpTransport
+name|transport
 parameter_list|,
 name|DatagramChannel
 name|channel
@@ -343,9 +366,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|name
+name|transport
 operator|=
-name|name
+name|transport
 expr_stmt|;
 name|this
 operator|.
@@ -382,6 +405,15 @@ operator|.
 name|headerMarshaller
 operator|=
 name|headerMarshaller
+expr_stmt|;
+name|this
+operator|.
+name|name
+operator|=
+name|transport
+operator|.
+name|toString
+argument_list|()
 expr_stmt|;
 block|}
 specifier|public
@@ -442,7 +474,6 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.transport.udp.CommandChannel#read()      */
 specifier|public
 name|Command
 name|read
@@ -452,6 +483,11 @@ name|IOException
 block|{
 name|Command
 name|answer
+init|=
+literal|null
+decl_stmt|;
+name|Endpoint
+name|from
 init|=
 literal|null
 decl_stmt|;
@@ -480,7 +516,6 @@ argument_list|(
 name|readBuffer
 argument_list|)
 decl_stmt|;
-comment|/*                 if (address == null) {                     System.out.println("No address on packet: " + readBuffer);                     // continue;                 }                 */
 name|readBuffer
 operator|.
 name|flip
@@ -496,13 +531,10 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|//System.out.println("Empty packet!");
 continue|continue;
 block|}
-comment|//log.debug("buffer: " + readBuffer + " has remaining: " + readBuffer.remaining());
-name|Endpoint
 name|from
-init|=
+operator|=
 name|headerMarshaller
 operator|.
 name|createEndpoint
@@ -511,7 +543,7 @@ name|readBuffer
 argument_list|,
 name|address
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|int
 name|remaining
 init|=
@@ -566,6 +598,9 @@ argument_list|(
 name|dataIn
 argument_list|)
 expr_stmt|;
+break|break;
+block|}
+block|}
 if|if
 condition|(
 name|answer
@@ -580,17 +615,6 @@ argument_list|(
 name|from
 argument_list|)
 expr_stmt|;
-block|}
-break|break;
-block|}
-block|}
-if|if
-condition|(
-name|answer
-operator|!=
-literal|null
-condition|)
-block|{
 if|if
 condition|(
 name|log
@@ -607,6 +631,10 @@ literal|"Channel: "
 operator|+
 name|name
 operator|+
+literal|" received from: "
+operator|+
+name|from
+operator|+
 literal|" about to process: "
 operator|+
 name|answer
@@ -618,26 +646,6 @@ return|return
 name|answer
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.transport.udp.CommandChannel#write(org.apache.activemq.command.Command)      */
-specifier|public
-name|void
-name|write
-parameter_list|(
-name|Command
-name|command
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-name|write
-argument_list|(
-name|command
-argument_list|,
-name|targetAddress
-argument_list|)
-expr_stmt|;
-block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.transport.udp.CommandChannel#write(org.apache.activemq.command.Command, java.net.SocketAddress)      */
 specifier|public
 name|void
 name|write
@@ -647,6 +655,12 @@ name|command
 parameter_list|,
 name|SocketAddress
 name|address
+parameter_list|,
+name|Map
+name|requestMap
+parameter_list|,
+name|Future
+name|future
 parameter_list|)
 throws|throws
 name|IOException
@@ -656,6 +670,33 @@ init|(
 name|writeLock
 init|)
 block|{
+if|if
+condition|(
+operator|!
+name|command
+operator|.
+name|isWireFormatInfo
+argument_list|()
+operator|&&
+name|command
+operator|.
+name|getCommandId
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+name|command
+operator|.
+name|setCommandId
+argument_list|(
+name|transport
+operator|.
+name|getNextCommandId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|ByteArrayOutputStream
 name|largeBuffer
 init|=
@@ -711,7 +752,7 @@ expr_stmt|;
 if|if
 condition|(
 name|size
-operator|>=
+operator|>
 name|writeBuffer
 operator|.
 name|remaining
@@ -919,14 +960,34 @@ name|writeBuffer
 argument_list|)
 expr_stmt|;
 block|}
-name|writeBuffer
-operator|.
-name|putInt
-argument_list|(
+name|int
+name|commandId
+init|=
 name|command
 operator|.
 name|getCommandId
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|fragment
+operator|>
+literal|0
+condition|)
+block|{
+name|commandId
+operator|=
+name|transport
+operator|.
+name|getNextCommandId
+argument_list|()
+expr_stmt|;
+block|}
+name|writeBuffer
+operator|.
+name|putInt
+argument_list|(
+name|commandId
 argument_list|)
 expr_stmt|;
 if|if
@@ -984,6 +1045,19 @@ operator|new
 name|LastPartialCommand
 argument_list|(
 name|command
+operator|.
+name|isResponseRequired
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|command
+operator|.
+name|setCommandId
+argument_list|(
+name|transport
+operator|.
+name|getNextCommandId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|largeBuffer
@@ -1036,6 +1110,31 @@ argument_list|(
 name|data
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|command
+operator|.
+name|isResponseRequired
+argument_list|()
+condition|)
+block|{
+name|requestMap
+operator|.
+name|put
+argument_list|(
+operator|new
+name|Integer
+argument_list|(
+name|command
+operator|.
+name|getCommandId
+argument_list|()
+argument_list|)
+argument_list|,
+name|future
+argument_list|)
+expr_stmt|;
+block|}
 name|sendWriteBuffer
 argument_list|(
 name|address
@@ -1045,7 +1144,6 @@ block|}
 block|}
 comment|// Properties
 comment|// -------------------------------------------------------------------------
-comment|/* (non-Javadoc)      * @see org.apache.activemq.transport.udp.CommandChannel#getDatagramSize()      */
 specifier|public
 name|int
 name|getDatagramSize
@@ -1055,7 +1153,6 @@ return|return
 name|datagramSize
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.transport.udp.CommandChannel#setDatagramSize(int)      */
 specifier|public
 name|void
 name|setDatagramSize
@@ -1096,7 +1193,6 @@ operator|=
 name|bufferPool
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.transport.udp.CommandChannel#getHeaderMarshaller()      */
 specifier|public
 name|DatagramHeaderMarshaller
 name|getHeaderMarshaller
@@ -1106,7 +1202,6 @@ return|return
 name|headerMarshaller
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.transport.udp.CommandChannel#setHeaderMarshaller(org.apache.activemq.transport.udp.DatagramHeaderMarshaller)      */
 specifier|public
 name|void
 name|setHeaderMarshaller
@@ -1120,6 +1215,30 @@ operator|.
 name|headerMarshaller
 operator|=
 name|headerMarshaller
+expr_stmt|;
+block|}
+specifier|public
+name|SocketAddress
+name|getTargetAddress
+parameter_list|()
+block|{
+return|return
+name|targetAddress
+return|;
+block|}
+specifier|public
+name|void
+name|setTargetAddress
+parameter_list|(
+name|SocketAddress
+name|targetAddress
+parameter_list|)
+block|{
+name|this
+operator|.
+name|targetAddress
+operator|=
+name|targetAddress
 expr_stmt|;
 block|}
 comment|// Implementation methods

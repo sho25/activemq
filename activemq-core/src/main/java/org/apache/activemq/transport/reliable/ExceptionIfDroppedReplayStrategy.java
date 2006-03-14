@@ -45,6 +45,24 @@ init|=
 literal|5
 decl_stmt|;
 specifier|public
+name|ExceptionIfDroppedReplayStrategy
+parameter_list|()
+block|{     }
+specifier|public
+name|ExceptionIfDroppedReplayStrategy
+parameter_list|(
+name|int
+name|maximumDifference
+parameter_list|)
+block|{
+name|this
+operator|.
+name|maximumDifference
+operator|=
+name|maximumDifference
+expr_stmt|;
+block|}
+specifier|public
 name|boolean
 name|onDroppedPackets
 parameter_list|(

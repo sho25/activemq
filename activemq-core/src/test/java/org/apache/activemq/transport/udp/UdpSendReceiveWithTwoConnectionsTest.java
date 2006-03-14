@@ -85,10 +85,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|largeMessages
-operator|=
-literal|true
-expr_stmt|;
 name|broker
 operator|=
 name|createBroker

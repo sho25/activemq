@@ -139,6 +139,20 @@ name|activemq
 operator|.
 name|transport
 operator|.
+name|TransportFilter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
 name|TransportListener
 import|;
 end_import
@@ -312,6 +326,10 @@ name|Transport
 name|configuredTransport
 decl_stmt|;
 specifier|private
+name|boolean
+name|usingWireFormatNegotiation
+decl_stmt|;
+specifier|private
 name|Map
 name|transports
 init|=
@@ -437,7 +455,19 @@ parameter_list|(
 name|IOException
 name|error
 parameter_list|)
-block|{             }
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Caught: "
+operator|+
+name|error
+argument_list|,
+name|error
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 name|void
 name|transportInterupted
@@ -549,6 +579,36 @@ condition|)
 block|{
 if|if
 condition|(
+name|usingWireFormatNegotiation
+operator|&&
+operator|!
+name|command
+operator|.
+name|isWireFormatInfo
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Received inbound server communication from: "
+operator|+
+name|command
+operator|.
+name|getFrom
+argument_list|()
+operator|+
+literal|" expecting WireFormatInfo but was command: "
+operator|+
+name|command
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
 name|log
 operator|.
 name|isDebugEnabled
@@ -597,6 +657,17 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Caught: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 name|getAcceptListener
 argument_list|()
 operator|.
@@ -605,6 +676,7 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -633,14 +705,7 @@ name|Transport
 name|transport
 parameter_list|)
 block|{
-name|transport
-operator|=
-operator|new
-name|ResponseCorrelator
-argument_list|(
-name|transport
-argument_list|)
-expr_stmt|;
+comment|// transport = new ResponseCorrelator(transport);
 if|if
 condition|(
 name|serverTransport
@@ -691,6 +756,24 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+name|endpoint
+operator|==
+literal|null
+condition|)
+block|{
+comment|//log.error("No endpoint available for command: " + command);
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"No endpoint available for command: "
+operator|+
+name|command
+argument_list|)
+throw|;
+block|}
 specifier|final
 name|SocketAddress
 name|address
@@ -735,21 +818,12 @@ argument_list|,
 name|connectionWireFormat
 argument_list|)
 decl_stmt|;
+comment|// lets pass in the received transport
 return|return
 operator|new
-name|WireFormatNegotiator
+name|TransportFilter
 argument_list|(
 name|configuredTransport
-argument_list|,
-name|transport
-operator|.
-name|getWireFormat
-argument_list|()
-argument_list|,
-name|serverTransport
-operator|.
-name|getMinmumWireFormatVersion
-argument_list|()
 argument_list|)
 block|{
 specifier|public
@@ -764,36 +838,16 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-comment|// process the inbound wireformat
 name|onCommand
 argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
 block|}
-comment|// lets use the specific addressing of wire format
-specifier|protected
-name|void
-name|sendWireFormat
-parameter_list|(
-name|WireFormatInfo
-name|info
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-name|transport
-operator|.
-name|oneway
-argument_list|(
-name|info
-argument_list|,
-name|address
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 return|;
+comment|/**         // return configuredTransport;          // configuredTransport = transport.createFilter(configuredTransport);          final WireFormatNegotiator wireFormatNegotiator = new WireFormatNegotiator(configuredTransport, transport.getWireFormat(), serverTransport                 .getMinmumWireFormatVersion()) {              public void start() throws Exception {                 super.start();                 System.out.println("Starting a new server transport: " + this + " with command: " + command);                 onCommand(command);             }              // lets use the specific addressing of wire format             protected void sendWireFormat(WireFormatInfo info) throws IOException {                 System.out.println("#### we have negotiated the wireformat; sending a wireformat to: " + address);                 transport.oneway(info, address);             }         };         return wireFormatNegotiator;         */
+comment|/*          * transport.setStartupRunnable(new Runnable() {          *           * public void run() { System.out.println("Passing the incoming          * WireFormat into into: " + this);          *  // process the inbound wireformat          * wireFormatNegotiator.onCommand(command); }});          */
 block|}
 block|}
 end_class

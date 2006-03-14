@@ -300,6 +300,25 @@ return|return
 literal|false
 return|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"PartialCommand[id: "
+operator|+
+name|commandId
+operator|+
+literal|" data: "
+operator|+
+name|data
+operator|.
+name|length
+operator|+
+literal|" byte(s)]"
+return|;
+block|}
 block|}
 end_class
 

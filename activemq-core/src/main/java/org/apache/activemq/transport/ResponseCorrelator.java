@@ -106,7 +106,6 @@ comment|/**  * Adds the incrementing sequence number to commands along with perf
 end_comment
 
 begin_class
-specifier|final
 specifier|public
 class|class
 name|ResponseCorrelator
@@ -143,6 +142,7 @@ name|lastCommandId
 init|=
 literal|0
 decl_stmt|;
+specifier|public
 specifier|synchronized
 name|int
 name|getNextCommandId
@@ -176,6 +176,17 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// a parent transport could have set the ID
+if|if
+condition|(
+name|command
+operator|.
+name|getCommandId
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
 name|command
 operator|.
 name|setCommandId
@@ -184,6 +195,7 @@ name|getNextCommandId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|command
 operator|.
 name|setResponseRequired
@@ -209,6 +221,17 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// a parent transport could have set the ID
+if|if
+condition|(
+name|command
+operator|.
+name|getCommandId
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
 name|command
 operator|.
 name|setCommandId
@@ -217,6 +240,7 @@ name|getNextCommandId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|command
 operator|.
 name|setResponseRequired

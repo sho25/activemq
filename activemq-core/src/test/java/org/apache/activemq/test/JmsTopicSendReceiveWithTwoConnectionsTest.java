@@ -129,20 +129,48 @@ operator|=
 name|createConnectionFactory
 argument_list|()
 expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Creating send connection"
+argument_list|)
+expr_stmt|;
 name|sendConnection
 operator|=
 name|createSendConnection
 argument_list|()
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Starting send connection"
+argument_list|)
 expr_stmt|;
 name|sendConnection
 operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Creating receive connection"
+argument_list|)
+expr_stmt|;
 name|receiveConnection
 operator|=
 name|createReceiveConnection
 argument_list|()
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Starting receive connection"
+argument_list|)
 expr_stmt|;
 name|receiveConnection
 operator|.

@@ -57,24 +57,13 @@ block|{     }
 specifier|public
 name|LastPartialCommand
 parameter_list|(
-name|Command
-name|command
+name|boolean
+name|responseRequired
 parameter_list|)
 block|{
-name|setCommandId
-argument_list|(
-name|command
-operator|.
-name|getCommandId
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|setResponseRequired
 argument_list|(
-name|command
-operator|.
-name|isResponseRequired
-argument_list|()
+name|responseRequired
 argument_list|)
 expr_stmt|;
 block|}
@@ -106,6 +95,37 @@ operator|+
 name|this
 argument_list|)
 throw|;
+block|}
+comment|/**      * Lets copy across the required fields from this last partial command to      * the newly unmarshalled complete command      *      * @param completeCommand the newly unmarshalled complete command      */
+specifier|public
+name|void
+name|configure
+parameter_list|(
+name|Command
+name|completeCommand
+parameter_list|)
+block|{
+comment|// overwrite the commandId as the numbers change when we introduce
+comment|// fragmentation commands
+name|completeCommand
+operator|.
+name|setCommandId
+argument_list|(
+name|getCommandId
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// copy across the transient properties
+name|completeCommand
+operator|.
+name|setFrom
+argument_list|(
+name|getFrom
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// TODO should not be required as the large command would be marshalled with this property
+comment|//completeCommand.setResponseRequired(isResponseRequired());
 block|}
 block|}
 end_class

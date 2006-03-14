@@ -767,7 +767,7 @@ block|{
 name|long
 name|maxWaitTime
 init|=
-literal|30000
+literal|60000
 decl_stmt|;
 name|long
 name|waitTime
