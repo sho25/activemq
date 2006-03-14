@@ -65,20 +65,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|command
-operator|.
-name|WireFormatInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|openwire
 operator|.
 name|OpenWireFormat
@@ -110,20 +96,6 @@ operator|.
 name|transport
 operator|.
 name|InactivityMonitor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|ResponseCorrelator
 import|;
 end_import
 
@@ -207,20 +179,6 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|WireFormatNegotiator
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
 name|reliable
 operator|.
 name|ExceptionIfDroppedReplayStrategy
@@ -270,6 +228,20 @@ operator|.
 name|util
 operator|.
 name|IOExceptionSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IntSequenceGenerator
 import|;
 end_import
 
@@ -465,6 +437,47 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+name|ReplayStrategy
+name|replayStrategy
+init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|configuredTransport
+operator|instanceof
+name|ReliableTransport
+condition|)
+block|{
+name|ReliableTransport
+name|rt
+init|=
+operator|(
+name|ReliableTransport
+operator|)
+name|configuredTransport
+decl_stmt|;
+name|replayStrategy
+operator|=
+name|rt
+operator|.
+name|getReplayStrategy
+argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|replayStrategy
+operator|==
+literal|null
+condition|)
+block|{
+name|replayStrategy
+operator|=
+name|createReplayStrategy
+argument_list|()
+expr_stmt|;
+block|}
 name|UdpTransportServer
 name|server
 init|=
@@ -476,6 +489,8 @@ argument_list|,
 name|transport
 argument_list|,
 name|configuredTransport
+argument_list|,
+name|replayStrategy
 argument_list|)
 decl_stmt|;
 return|return
@@ -646,8 +661,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO should we have this?
-comment|//transport = udpTransport.createFilter(transport);
 return|return
 name|transport
 return|;
@@ -790,9 +803,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// add reliabilty
-comment|//transport = new ReliableTransport(transport, createReplayStrategy());
 comment|// deal with fragmentation
+if|if
+condition|(
+name|server
+condition|)
+block|{
+comment|// we don't want to do reliable checks on this transport as we
+comment|// delegate to one that does
 name|transport
 operator|=
 operator|new
@@ -803,18 +821,55 @@ argument_list|,
 name|openWireFormat
 argument_list|)
 expr_stmt|;
-name|transport
-operator|=
 name|udpTransport
 operator|.
-name|createFilter
+name|setSequenceGenerator
 argument_list|(
-name|transport
+operator|new
+name|IntSequenceGenerator
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
 name|transport
 return|;
+block|}
+else|else
+block|{
+name|ReliableTransport
+name|reliableTransport
+init|=
+operator|new
+name|ReliableTransport
+argument_list|(
+name|transport
+argument_list|,
+name|createReplayStrategy
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|udpTransport
+operator|.
+name|setSequenceGenerator
+argument_list|(
+name|reliableTransport
+operator|.
+name|getSequenceGenerator
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Joiner must be on outside as the inbound messages must be
+comment|// processed by the reliable transport first
+return|return
+operator|new
+name|CommandJoiner
+argument_list|(
+name|reliableTransport
+argument_list|,
+name|openWireFormat
+argument_list|)
+return|;
+block|}
 block|}
 specifier|protected
 name|ReplayStrategy
@@ -885,7 +940,7 @@ expr_stmt|;
 block|}
 block|}
 return|;
-comment|/*         transport = new WireFormatNegotiator(transport, asOpenWireFormat(format), udpTransport.getMinmumWireFormatVersion()) {             protected void onWireFormatNegotiated(WireFormatInfo info) {                 // lets switch to the target endpoint                 // based on the last packet that was received                 // so that all future requests go to the newly created UDP channel                 Endpoint from = info.getFrom();                 System.out.println("####Êsetting the client side target to: " + from);                 udpTransport.setTargetEndpoint(from);             }         };         return transport;         */
+comment|/*          * transport = new WireFormatNegotiator(transport,          * asOpenWireFormat(format), udpTransport.getMinmumWireFormatVersion()) {          * protected void onWireFormatNegotiated(WireFormatInfo info) { // lets          * switch to the target endpoint // based on the last packet that was          * received // so that all future requests go to the newly created UDP          * channel Endpoint from = info.getFrom();          * System.out.println("####Êsetting the client side target to: " +          * from); udpTransport.setTargetEndpoint(from); } }; return transport;          */
 block|}
 specifier|protected
 name|OpenWireFormat

@@ -53,20 +53,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|command
-operator|.
-name|WireFormatInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|openwire
 operator|.
 name|OpenWireFormat
@@ -111,35 +97,7 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|ResponseCorrelator
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
 name|Transport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|TransportFilter
 import|;
 end_import
 
@@ -195,7 +153,25 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|WireFormatNegotiator
+name|reliable
+operator|.
+name|ReliableTransport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|reliable
+operator|.
+name|ReplayStrategy
 import|;
 end_import
 
@@ -322,6 +298,10 @@ name|UdpTransport
 name|serverTransport
 decl_stmt|;
 specifier|private
+name|ReplayStrategy
+name|replayStrategy
+decl_stmt|;
+specifier|private
 name|Transport
 name|configuredTransport
 decl_stmt|;
@@ -348,6 +328,9 @@ name|serverTransport
 parameter_list|,
 name|Transport
 name|configuredTransport
+parameter_list|,
+name|ReplayStrategy
+name|replayStrategy
 parameter_list|)
 block|{
 name|super
@@ -366,6 +349,12 @@ operator|.
 name|configuredTransport
 operator|=
 name|configuredTransport
+expr_stmt|;
+name|this
+operator|.
+name|replayStrategy
+operator|=
+name|replayStrategy
 expr_stmt|;
 comment|// lets disable the incremental checking of the sequence numbers
 comment|// as we are getting messages from many different clients
@@ -705,7 +694,6 @@ name|Transport
 name|transport
 parameter_list|)
 block|{
-comment|// transport = new ResponseCorrelator(transport);
 if|if
 condition|(
 name|serverTransport
@@ -763,7 +751,6 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|//log.error("No endpoint available for command: " + command);
 throw|throw
 operator|new
 name|IOException
@@ -807,23 +794,36 @@ argument_list|,
 name|address
 argument_list|)
 decl_stmt|;
-name|Transport
-name|configuredTransport
+specifier|final
+name|ReliableTransport
+name|reliableTransport
 init|=
 operator|new
-name|CommandJoiner
+name|ReliableTransport
 argument_list|(
 name|transport
 argument_list|,
-name|connectionWireFormat
+name|replayStrategy
 argument_list|)
 decl_stmt|;
-comment|// lets pass in the received transport
+name|transport
+operator|.
+name|setSequenceGenerator
+argument_list|(
+name|reliableTransport
+operator|.
+name|getSequenceGenerator
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Joiner must be on outside as the inbound messages must be processed by the reliable transport first
 return|return
 operator|new
-name|TransportFilter
+name|CommandJoiner
 argument_list|(
-name|configuredTransport
+name|reliableTransport
+argument_list|,
+name|connectionWireFormat
 argument_list|)
 block|{
 specifier|public
@@ -838,6 +838,8 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|reliableTransport
+operator|.
 name|onCommand
 argument_list|(
 name|command
@@ -846,8 +848,7 @@ expr_stmt|;
 block|}
 block|}
 return|;
-comment|/**         // return configuredTransport;          // configuredTransport = transport.createFilter(configuredTransport);          final WireFormatNegotiator wireFormatNegotiator = new WireFormatNegotiator(configuredTransport, transport.getWireFormat(), serverTransport                 .getMinmumWireFormatVersion()) {              public void start() throws Exception {                 super.start();                 System.out.println("Starting a new server transport: " + this + " with command: " + command);                 onCommand(command);             }              // lets use the specific addressing of wire format             protected void sendWireFormat(WireFormatInfo info) throws IOException {                 System.out.println("#### we have negotiated the wireformat; sending a wireformat to: " + address);                 transport.oneway(info, address);             }         };         return wireFormatNegotiator;         */
-comment|/*          * transport.setStartupRunnable(new Runnable() {          *           * public void run() { System.out.println("Passing the incoming          * WireFormat into into: " + this);          *  // process the inbound wireformat          * wireFormatNegotiator.onCommand(command); }});          */
+comment|/**         final WireFormatNegotiator wireFormatNegotiator = new WireFormatNegotiator(configuredTransport, transport.getWireFormat(), serverTransport                 .getMinmumWireFormatVersion()) {              public void start() throws Exception {                 super.start();                 System.out.println("Starting a new server transport: " + this + " with command: " + command);                 onCommand(command);             }              // lets use the specific addressing of wire format             protected void sendWireFormat(WireFormatInfo info) throws IOException {                 System.out.println("#### we have negotiated the wireformat; sending a wireformat to: " + address);                 transport.oneway(info, address);             }         };         return wireFormatNegotiator;         */
 block|}
 block|}
 end_class

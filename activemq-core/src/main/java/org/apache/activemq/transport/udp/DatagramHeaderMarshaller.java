@@ -21,16 +21,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|activeio
-operator|.
-name|ByteArrayOutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|apache
 operator|.
 name|activemq
@@ -82,16 +72,6 @@ operator|.
 name|net
 operator|.
 name|DatagramPacket
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|InetAddress
 import|;
 end_import
 

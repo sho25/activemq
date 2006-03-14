@@ -1622,6 +1622,8 @@ comment|// called or not with the gazillion of different configuration mechanism
 comment|//throw new IllegalStateException("Allready started.");
 return|return;
 block|}
+try|try
+block|{
 name|processHelperProperties
 argument_list|()
 expr_stmt|;
@@ -1714,6 +1716,28 @@ operator|+
 literal|") started"
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Failed to start ActiveMQ JMS Message Broker. Reason: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+name|e
+throw|;
+block|}
 block|}
 specifier|public
 name|void

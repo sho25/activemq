@@ -150,6 +150,13 @@ argument_list|)
 expr_stmt|;
 name|answer
 operator|.
+name|setUseJmx
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|answer
+operator|.
 name|addConnector
 argument_list|(
 name|brokerURI

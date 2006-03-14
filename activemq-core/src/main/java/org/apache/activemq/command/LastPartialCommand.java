@@ -105,16 +105,6 @@ name|Command
 name|completeCommand
 parameter_list|)
 block|{
-comment|// overwrite the commandId as the numbers change when we introduce
-comment|// fragmentation commands
-name|completeCommand
-operator|.
-name|setCommandId
-argument_list|(
-name|getCommandId
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|// copy across the transient properties
 name|completeCommand
 operator|.

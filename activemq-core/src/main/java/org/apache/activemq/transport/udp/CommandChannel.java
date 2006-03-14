@@ -19,26 +19,6 @@ end_package
 
 begin_import
 import|import
-name|edu
-operator|.
-name|emory
-operator|.
-name|mathcs
-operator|.
-name|backport
-operator|.
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Future
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -83,16 +63,6 @@ name|SocketAddress
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
 begin_comment
 comment|/**  *  * @version $Revision$  */
 end_comment
@@ -122,12 +92,6 @@ name|command
 parameter_list|,
 name|SocketAddress
 name|address
-parameter_list|,
-name|Map
-name|requestMap
-parameter_list|,
-name|Future
-name|future
 parameter_list|)
 throws|throws
 name|IOException
