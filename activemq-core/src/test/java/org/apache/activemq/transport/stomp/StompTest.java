@@ -309,10 +309,7 @@ operator|=
 operator|new
 name|Socket
 argument_list|(
-name|connectUri
-operator|.
-name|getHost
-argument_list|()
+literal|"127.0.0.1"
 argument_list|,
 name|connectUri
 operator|.

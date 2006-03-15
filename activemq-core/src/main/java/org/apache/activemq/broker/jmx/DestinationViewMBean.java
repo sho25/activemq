@@ -140,6 +140,24 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+specifier|public
+name|int
+name|getMemoryPercentageUsed
+parameter_list|()
+function_decl|;
+specifier|public
+name|long
+name|getMemoryLimit
+parameter_list|()
+function_decl|;
+specifier|public
+name|void
+name|setMemoryLimit
+parameter_list|(
+name|long
+name|limit
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
