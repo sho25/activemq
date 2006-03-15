@@ -567,7 +567,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|warn
+name|error
 argument_list|(
 literal|"Failed to perform GET on: "
 operator|+

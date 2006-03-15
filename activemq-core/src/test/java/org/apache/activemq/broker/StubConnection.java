@@ -193,20 +193,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|axiondb
-operator|.
-name|engine
-operator|.
-name|commands
-operator|.
-name|ShutdownCommand
-import|;
-end_import
-
-begin_import
-import|import
 name|edu
 operator|.
 name|emory
@@ -445,7 +431,7 @@ operator|.
 name|getClass
 argument_list|()
 operator|==
-name|ShutdownCommand
+name|ShutdownInfo
 operator|.
 name|class
 condition|)
