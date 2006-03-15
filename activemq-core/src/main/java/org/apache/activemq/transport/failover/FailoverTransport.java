@@ -1477,6 +1477,8 @@ argument_list|(
 literal|"Waiting for transport to reconnect."
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|reconnectMutex
 operator|.
 name|wait
@@ -1484,6 +1486,25 @@ argument_list|(
 literal|1000
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Interupted: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
