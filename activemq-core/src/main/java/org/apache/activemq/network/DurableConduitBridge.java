@@ -17,26 +17,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -133,6 +113,26 @@ name|LogFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
 begin_comment
 comment|/**  * Consolidates subscriptions  *   * @version $Revision: 1.1 $  */
 end_comment
@@ -178,7 +178,7 @@ name|remoteBroker
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Subscriptions for these desitnations are always created      *       */
+comment|/**      * Subscriptions for these destinations are always created      *       */
 specifier|protected
 name|void
 name|setupStaticDestinations
@@ -326,6 +326,8 @@ parameter_list|(
 name|ConsumerInfo
 name|info
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 if|if
 condition|(
@@ -399,7 +401,7 @@ name|isDurable
 argument_list|()
 condition|)
 block|{
-comment|// set the subscriber name to something reproducable
+comment|// set the subscriber name to something reproducible
 name|info
 operator|.
 name|setSubcriptionName
