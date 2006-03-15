@@ -837,6 +837,9 @@ argument_list|()
 argument_list|,
 literal|"journal"
 argument_list|)
+operator|.
+name|getCanonicalFile
+argument_list|()
 decl_stmt|;
 name|journal
 operator|=
