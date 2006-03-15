@@ -76,7 +76,7 @@ block|{
 name|String
 name|brokerURI
 init|=
-literal|"broker:(tcp://localhost:61616)?persistent=false&useJmx=true"
+literal|"broker:(tcp://localhost:61616,stomp://localhost:61613)?persistent=false&useJmx=true"
 decl_stmt|;
 if|if
 condition|(
