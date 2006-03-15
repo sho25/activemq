@@ -139,6 +139,22 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|transport
+operator|.
+name|reliable
+operator|.
+name|Replayer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|util
 operator|.
 name|IntSequenceGenerator
@@ -420,6 +436,12 @@ specifier|private
 name|IntSequenceGenerator
 name|sequenceGenerator
 decl_stmt|;
+specifier|private
+name|boolean
+name|replayEnabled
+init|=
+literal|true
+decl_stmt|;
 specifier|protected
 name|UdpTransport
 parameter_list|(
@@ -548,6 +570,25 @@ argument_list|()
 operator|+
 literal|"Server@"
 expr_stmt|;
+block|}
+comment|/**      * Creates a replayer for working with the reliable transport      * @return      */
+specifier|public
+name|Replayer
+name|createReplayer
+parameter_list|()
+block|{
+if|if
+condition|(
+name|replayEnabled
+condition|)
+block|{
+return|return
+name|commandChannel
+return|;
+block|}
+return|return
+literal|null
+return|;
 block|}
 comment|/**      * A one way asynchronous send      */
 specifier|public
@@ -1254,6 +1295,31 @@ operator|=
 name|sequenceGenerator
 expr_stmt|;
 block|}
+specifier|public
+name|boolean
+name|isReplayEnabled
+parameter_list|()
+block|{
+return|return
+name|replayEnabled
+return|;
+block|}
+comment|/**      * Sets whether or not replay should be enabled when using the reliable transport.      * i.e. should we maintain a buffer of messages that can be replayed?      */
+specifier|public
+name|void
+name|setReplayEnabled
+parameter_list|(
+name|boolean
+name|replayEnabled
+parameter_list|)
+block|{
+name|this
+operator|.
+name|replayEnabled
+operator|=
+name|replayEnabled
+expr_stmt|;
+block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
 comment|/**      * Creates an address from the given URI      */
@@ -1445,11 +1511,7 @@ name|CommandDatagramChannel
 argument_list|(
 name|this
 argument_list|,
-name|channel
-argument_list|,
 name|wireFormat
-argument_list|,
-name|bufferPool
 argument_list|,
 name|datagramSize
 argument_list|,
@@ -1457,6 +1519,10 @@ name|targetAddress
 argument_list|,
 name|createDatagramHeaderMarshaller
 argument_list|()
+argument_list|,
+name|channel
+argument_list|,
+name|bufferPool
 argument_list|)
 return|;
 block|}

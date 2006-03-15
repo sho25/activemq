@@ -45,6 +45,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|reliable
+operator|.
+name|Replayer
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -72,6 +88,8 @@ specifier|public
 interface|interface
 name|CommandChannel
 extends|extends
+name|Replayer
+extends|,
 name|Service
 block|{
 specifier|public
@@ -131,6 +149,15 @@ specifier|public
 specifier|abstract
 name|void
 name|setTargetAddress
+parameter_list|(
+name|SocketAddress
+name|address
+parameter_list|)
+function_decl|;
+specifier|public
+specifier|abstract
+name|void
+name|setReplayAddress
 parameter_list|(
 name|SocketAddress
 name|address
