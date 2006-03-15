@@ -1181,39 +1181,8 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|md
-operator|.
-name|getConsumerId
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|queueConsumerInfo
-operator|.
-name|getConsumerId
-argument_list|()
-argument_list|)
-condition|)
-block|{
-name|queueDispatched
-operator|++
-expr_stmt|;
-if|if
-condition|(
-name|queueDispatched
-operator|>
-operator|(
-name|queueConsumerInfo
-operator|.
-name|getPrefetchSize
-argument_list|()
-operator|/
-literal|2
-operator|)
-condition|)
-block|{
+comment|// Ack on every message since we don't know if the broker is blocked due to memory
+comment|// usage and is waiting for an Ack to un-block him.
 name|localBroker
 operator|.
 name|oneway
@@ -1227,58 +1196,25 @@ name|MessageAck
 operator|.
 name|STANDARD_ACK_TYPE
 argument_list|,
-name|queueDispatched
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|queueDispatched
-operator|=
-literal|0
-expr_stmt|;
-block|}
-block|}
-else|else
-block|{
-name|topicDispatched
-operator|++
-expr_stmt|;
-if|if
-condition|(
-name|topicDispatched
-operator|>
-operator|(
-name|topicConsumerInfo
-operator|.
-name|getPrefetchSize
-argument_list|()
-operator|/
-literal|2
-operator|)
-condition|)
-block|{
-name|localBroker
-operator|.
-name|oneway
-argument_list|(
-operator|new
-name|MessageAck
-argument_list|(
-name|md
-argument_list|,
-name|MessageAck
-operator|.
-name|STANDARD_ACK_TYPE
-argument_list|,
-name|topicDispatched
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|topicDispatched
-operator|=
-literal|0
-expr_stmt|;
-block|}
-block|}
+comment|// Acking a range is more efficient, but also more prone to locking up a server
+comment|// Perhaps doing something like the following should be policy based.
+comment|//                if( md.getConsumerId().equals(queueConsumerInfo.getConsumerId()) ) {
+comment|//                    queueDispatched++;
+comment|//                    if( queueDispatched> (queueConsumerInfo.getPrefetchSize()/2) ) {
+comment|//                        localBroker.oneway(new MessageAck(md, MessageAck.STANDARD_ACK_TYPE, queueDispatched));
+comment|//                        queueDispatched=0;
+comment|//                    }
+comment|//                } else {
+comment|//                    topicDispatched++;
+comment|//                    if( topicDispatched> (topicConsumerInfo.getPrefetchSize()/2) ) {
+comment|//                        localBroker.oneway(new MessageAck(md, MessageAck.STANDARD_ACK_TYPE, topicDispatched));
+comment|//                        topicDispatched=0;
+comment|//                    }
+comment|//                }
 block|}
 elseif|else
 if|if

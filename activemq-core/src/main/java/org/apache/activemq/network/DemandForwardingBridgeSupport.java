@@ -2351,31 +2351,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|int
-name|dispatched
-init|=
-name|sub
-operator|.
-name|incrementDispatched
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|dispatched
-operator|>
-operator|(
-name|sub
-operator|.
-name|getLocalInfo
-argument_list|()
-operator|.
-name|getPrefetchSize
-argument_list|()
-operator|*
-literal|.75
-operator|)
-condition|)
-block|{
+comment|// Ack on every message since we don't know if the broker is blocked due to memory
+comment|// usage and is waiting for an Ack to un-block him.
 name|localBroker
 operator|.
 name|oneway
@@ -2389,18 +2366,17 @@ name|MessageAck
 operator|.
 name|STANDARD_ACK_TYPE
 argument_list|,
-name|dispatched
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|sub
-operator|.
-name|setDispatched
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
-block|}
+comment|// Acking a range is more efficient, but also more prone to locking up a server
+comment|// Perhaps doing something like the following should be policy based.
+comment|//                        int dispatched = sub.incrementDispatched();
+comment|//                        if(dispatched>(sub.getLocalInfo().getPrefetchSize()*.75)){
+comment|//                            localBroker.oneway(new MessageAck(md,MessageAck.STANDARD_ACK_TYPE,dispatched));
+comment|//                            sub.setDispatched(0);
+comment|//                        }
 block|}
 block|}
 elseif|else
