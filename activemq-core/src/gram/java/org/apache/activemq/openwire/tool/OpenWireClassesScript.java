@@ -600,7 +600,7 @@ block|{
 name|String
 name|answer
 init|=
-literal|"AbstractCommand"
+literal|"BaseDataStructure"
 decl_stmt|;
 if|if
 condition|(
