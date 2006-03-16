@@ -2253,6 +2253,13 @@ argument_list|(
 name|maxMessages
 argument_list|)
 expr_stmt|;
+name|info
+operator|.
+name|setDispatchAsync
+argument_list|(
+name|asyncDispatch
+argument_list|)
+expr_stmt|;
 comment|// Allows the options on the destination to configure the consumerInfo
 if|if
 condition|(
@@ -2816,6 +2823,13 @@ operator|.
 name|setNoLocal
 argument_list|(
 name|noLocal
+argument_list|)
+expr_stmt|;
+name|info
+operator|.
+name|setDispatchAsync
+argument_list|(
+name|asyncDispatch
 argument_list|)
 expr_stmt|;
 comment|// Allows the options on the destination to configure the consumerInfo
