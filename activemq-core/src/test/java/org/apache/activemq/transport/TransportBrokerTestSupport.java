@@ -293,7 +293,7 @@ name|getBindURI
 argument_list|()
 decl_stmt|;
 comment|// Note: on platforms like OS X we cannot bind to the actual hostname, so we
-comment|// instead use the orignal host name (typically localhost) to bind to
+comment|// instead use the original host name (typically localhost) to bind to
 name|URI
 name|actualURI
 init|=
