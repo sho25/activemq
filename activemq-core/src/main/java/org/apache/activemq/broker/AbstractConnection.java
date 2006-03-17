@@ -1109,6 +1109,25 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
+comment|// are we a transport exception such as not being able to dispatch
+comment|// synchronously to a transport
+if|if
+condition|(
+name|e
+operator|instanceof
+name|IOException
+condition|)
+block|{
+name|serviceTransportException
+argument_list|(
+operator|(
+name|IOException
+operator|)
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 operator|!
