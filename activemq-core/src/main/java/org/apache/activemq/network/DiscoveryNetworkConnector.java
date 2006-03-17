@@ -43,6 +43,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|BrokerService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|DiscoveryEvent
@@ -318,7 +332,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-comment|// Has it allready been added?
+comment|// Should we try to connect to that URI?
 if|if
 condition|(
 name|bridges
@@ -334,6 +348,20 @@ name|equals
 argument_list|(
 name|uri
 argument_list|)
+operator|||
+operator|(
+name|connectionFilter
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|connectionFilter
+operator|.
+name|connectTo
+argument_list|(
+name|uri
+argument_list|)
+operator|)
 condition|)
 return|return;
 name|URI
@@ -616,7 +644,7 @@ name|Bridge
 operator|)
 name|bridges
 operator|.
-name|get
+name|remove
 argument_list|(
 name|uri
 argument_list|)
