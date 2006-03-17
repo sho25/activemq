@@ -409,18 +409,11 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Establishing network connection between "
+literal|"Establishing network connection between from "
 operator|+
 name|localURI
 operator|+
-literal|" and "
-operator|+
-name|event
-operator|.
-name|getBrokerName
-argument_list|()
-operator|+
-literal|" at "
+literal|" to "
 operator|+
 name|connectUri
 argument_list|)
