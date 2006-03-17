@@ -141,9 +141,12 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|e
+name|Thread
 operator|.
-name|printStackTrace
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
 argument_list|()
 expr_stmt|;
 block|}

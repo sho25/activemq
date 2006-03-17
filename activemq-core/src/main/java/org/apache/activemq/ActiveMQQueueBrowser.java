@@ -675,7 +675,16 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{         }
+block|{
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 specifier|protected
 name|void
