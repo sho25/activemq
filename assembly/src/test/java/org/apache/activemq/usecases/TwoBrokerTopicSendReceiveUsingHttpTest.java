@@ -49,6 +49,28 @@ extends|extends
 name|TwoBrokerTopicSendReceiveTest
 block|{
 specifier|protected
+name|void
+name|setUp
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|super
+operator|.
+name|setUp
+argument_list|()
+expr_stmt|;
+comment|// Give jetty server enough time to setup,
+comment|// so we don't lose messages when connection fails
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|5000
+argument_list|)
+expr_stmt|;
+block|}
+specifier|protected
 name|ActiveMQConnectionFactory
 name|createReceiverConnectionFactory
 parameter_list|()
