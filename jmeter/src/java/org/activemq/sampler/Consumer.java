@@ -715,11 +715,7 @@ expr_stmt|;
 block|}
 block|}
 comment|//start connection before receiving messages.
-name|connection
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
+comment|//        connection.start();
 name|Session
 name|session
 init|=
@@ -777,6 +773,11 @@ name|consumer
 init|=
 literal|null
 decl_stmt|;
+name|connection
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|ServerConnectionFactory
