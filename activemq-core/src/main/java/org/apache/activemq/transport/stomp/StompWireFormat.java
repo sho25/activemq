@@ -1025,6 +1025,12 @@ name|getConsumerId
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|sub
+operator|!=
+literal|null
+condition|)
 name|sub
 operator|.
 name|receive
