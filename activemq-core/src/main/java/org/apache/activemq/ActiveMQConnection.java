@@ -1805,19 +1805,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * @return true if this Connection is started      */
-specifier|protected
-name|boolean
-name|isStarted
-parameter_list|()
-block|{
-return|return
-name|started
-operator|.
-name|get
-argument_list|()
-return|;
-block|}
 comment|/**      * Temporarily stops a connection's delivery of incoming messages. Delivery      * can be restarted using the connection's<CODE>start</CODE> method. When      * the connection is stopped, delivery to all the connection's message      * consumers is inhibited: synchronous receives block, and messages are not      * delivered to message listeners.      *<P>      * This call blocks until receives and/or message listeners in progress have      * completed.      *<P>      * Stopping a connection has no effect on its ability to send messages. A      * call to<CODE>stop</CODE> on a connection that has already been stopped      * is ignored.      *<P>      * A call to<CODE>stop</CODE> must not return until delivery of messages      * has paused. This means that a client can rely on the fact that none of      * its message listeners will be called and that all threads of control      * waiting for<CODE>receive</CODE> calls to return will not return with a      * message until the connection is restarted. The receive timers for a      * stopped connection continue to advance, so receives may time out while      * the connection is stopped.      *<P>      * If message listeners are running when<CODE>stop</CODE> is invoked, the      *<CODE>stop</CODE> call must wait until all of them have returned before      * it may return. While these message listeners are completing, they must      * have the full services of the connection available to them.      *       * @throws JMSException      *             if the JMS provider fails to stop message delivery due to      *             some internal error.      * @see javax.jms.Connection#start()      */
 specifier|public
 name|void
@@ -2340,6 +2327,58 @@ return|;
 block|}
 comment|// Properties
 comment|// -------------------------------------------------------------------------
+comment|/**      * Returns true if this connection has been started      *       * @return true if this Connection is started      */
+specifier|public
+name|boolean
+name|isStarted
+parameter_list|()
+block|{
+return|return
+name|started
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
+comment|/**      * Returns true if the connection is closed      */
+specifier|public
+name|boolean
+name|isClosed
+parameter_list|()
+block|{
+return|return
+name|closed
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
+comment|/**      * Returns true if the connection is in the process of being closed      */
+specifier|public
+name|boolean
+name|isClosing
+parameter_list|()
+block|{
+return|return
+name|closing
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
+comment|/**      * Returns true if the underlying transport has failed      */
+specifier|public
+name|boolean
+name|isTransportFailed
+parameter_list|()
+block|{
+return|return
+name|transportFailed
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 comment|/**      * @return Returns the prefetchPolicy.      */
 specifier|public
 name|ActiveMQPrefetchPolicy
@@ -3393,18 +3432,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-block|}
-specifier|public
-name|boolean
-name|isClosed
-parameter_list|()
-block|{
-return|return
-name|closed
-operator|.
-name|get
-argument_list|()
-return|;
 block|}
 comment|/**      * @return statistics for this Connection      */
 specifier|public
