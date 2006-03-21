@@ -918,6 +918,8 @@ parameter_list|,
 name|Map
 name|options
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 name|IntrospectionSupport
 operator|.

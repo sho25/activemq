@@ -74,6 +74,9 @@ name|expectedCounter
 parameter_list|,
 name|int
 name|actualCounter
+parameter_list|,
+name|int
+name|nextAvailableCounter
 parameter_list|)
 throws|throws
 name|IOException

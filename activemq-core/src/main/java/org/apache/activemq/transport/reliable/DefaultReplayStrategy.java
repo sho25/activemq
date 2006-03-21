@@ -74,6 +74,9 @@ name|expectedCounter
 parameter_list|,
 name|int
 name|actualCounter
+parameter_list|,
+name|int
+name|nextAvailableCounter
 parameter_list|)
 throws|throws
 name|IOException
@@ -106,6 +109,8 @@ name|int
 name|upperLimit
 init|=
 name|actualCounter
+operator|-
+literal|1
 decl_stmt|;
 if|if
 condition|(

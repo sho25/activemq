@@ -36,7 +36,7 @@ specifier|public
 interface|interface
 name|ReplayStrategy
 block|{
-comment|/**      * Deals with a dropped packet.       *       * @param transport the transport on which the packet was dropped      * @param expectedCounter the expected command counter      * @param actualCounter the actual command counter      * @return true if the command should be buffered or false if it should be discarded      */
+comment|/**      * Deals with a dropped packet.       *       * @param transport the transport on which the packet was dropped      * @param expectedCounter the expected command counter      * @param actualCounter the actual command counter      * @param nextAvailableCounter TODO      * @return true if the command should be buffered or false if it should be discarded      */
 name|boolean
 name|onDroppedPackets
 parameter_list|(
@@ -48,6 +48,9 @@ name|expectedCounter
 parameter_list|,
 name|int
 name|actualCounter
+parameter_list|,
+name|int
+name|nextAvailableCounter
 parameter_list|)
 throws|throws
 name|IOException

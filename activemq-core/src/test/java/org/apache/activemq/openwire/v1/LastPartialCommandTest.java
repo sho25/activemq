@@ -84,7 +84,7 @@ specifier|public
 class|class
 name|LastPartialCommandTest
 extends|extends
-name|BaseCommandTestSupport
+name|PartialCommandTest
 block|{
 specifier|public
 specifier|static

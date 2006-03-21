@@ -222,6 +222,30 @@ operator|=
 name|lastNakNumber
 expr_stmt|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ReplayCommand {commandId = "
+operator|+
+name|getCommandId
+argument_list|()
+operator|+
+literal|", firstNakNumber = "
+operator|+
+name|getFirstNakNumber
+argument_list|()
+operator|+
+literal|", lastNakNumber = "
+operator|+
+name|getLastNakNumber
+argument_list|()
+operator|+
+literal|"}"
+return|;
+block|}
 block|}
 end_class
 

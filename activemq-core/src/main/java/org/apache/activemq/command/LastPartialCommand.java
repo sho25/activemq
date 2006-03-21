@@ -38,7 +38,7 @@ specifier|public
 class|class
 name|LastPartialCommand
 extends|extends
-name|BaseCommand
+name|PartialCommand
 block|{
 specifier|public
 specifier|static
@@ -54,19 +54,6 @@ specifier|public
 name|LastPartialCommand
 parameter_list|()
 block|{     }
-specifier|public
-name|LastPartialCommand
-parameter_list|(
-name|boolean
-name|responseRequired
-parameter_list|)
-block|{
-name|setResponseRequired
-argument_list|(
-name|responseRequired
-argument_list|)
-expr_stmt|;
-block|}
 specifier|public
 name|byte
 name|getDataStructureType
@@ -96,7 +83,7 @@ name|this
 argument_list|)
 throw|;
 block|}
-comment|/**      * Lets copy across the required fields from this last partial command to      * the newly unmarshalled complete command      *      * @param completeCommand the newly unmarshalled complete command      */
+comment|/**      * Lets copy across any transient fields from this command       * to the complete command when it is unmarshalled on the other end      *      * @param completeCommand the newly unmarshalled complete command      */
 specifier|public
 name|void
 name|configure
@@ -105,7 +92,7 @@ name|Command
 name|completeCommand
 parameter_list|)
 block|{
-comment|// copy across the transient properties
+comment|// copy across the transient properties added by the low level transport
 name|completeCommand
 operator|.
 name|setFrom
@@ -114,8 +101,6 @@ name|getFrom
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// TODO should not be required as the large command would be marshalled with this property
-comment|//completeCommand.setResponseRequired(isResponseRequired());
 block|}
 block|}
 end_class
