@@ -259,6 +259,19 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+comment|// Wait a little to drain any left over messages.
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
+name|consumer
+operator|.
+name|flushMessages
+argument_list|()
+expr_stmt|;
 name|producer
 operator|=
 operator|(
@@ -279,11 +292,6 @@ name|producer
 operator|!=
 literal|null
 argument_list|)
-expr_stmt|;
-name|consumer
-operator|.
-name|flushMessages
-argument_list|()
 expr_stmt|;
 name|producer
 operator|.
