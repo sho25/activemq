@@ -372,15 +372,6 @@ name|replayStrategy
 operator|=
 name|replayStrategy
 expr_stmt|;
-comment|// lets disable the incremental checking of the sequence numbers
-comment|// as we are getting messages from many different clients
-name|serverTransport
-operator|.
-name|setCheckSequenceNumbers
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 block|}
 specifier|public
 name|String
