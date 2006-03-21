@@ -807,6 +807,16 @@ argument_list|)
 decl_stmt|;
 name|connector
 operator|.
+name|setTaskRunnerFactory
+argument_list|(
+name|broker
+operator|.
+name|getTaskRunnerFactory
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|connector
+operator|.
 name|start
 argument_list|()
 expr_stmt|;
