@@ -398,13 +398,6 @@ operator|*
 literal|1024
 decl_stmt|;
 specifier|private
-name|long
-name|maxInactivityDuration
-init|=
-literal|0
-decl_stmt|;
-comment|// 30000;
-specifier|private
 name|SocketAddress
 name|targetAddress
 decl_stmt|;
@@ -1051,15 +1044,6 @@ name|trace
 expr_stmt|;
 block|}
 specifier|public
-name|long
-name|getMaxInactivityDuration
-parameter_list|()
-block|{
-return|return
-name|maxInactivityDuration
-return|;
-block|}
-specifier|public
 name|int
 name|getDatagramSize
 parameter_list|()
@@ -1081,22 +1065,6 @@ operator|.
 name|datagramSize
 operator|=
 name|datagramSize
-expr_stmt|;
-block|}
-comment|/**      * Sets the maximum inactivity duration      */
-specifier|public
-name|void
-name|setMaxInactivityDuration
-parameter_list|(
-name|long
-name|maxInactivityDuration
-parameter_list|)
-block|{
-name|this
-operator|.
-name|maxInactivityDuration
-operator|=
-name|maxInactivityDuration
 expr_stmt|;
 block|}
 specifier|public

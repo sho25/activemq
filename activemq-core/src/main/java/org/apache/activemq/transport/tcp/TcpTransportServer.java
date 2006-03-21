@@ -285,9 +285,8 @@ specifier|private
 name|long
 name|maxInactivityDuration
 init|=
-literal|0
+literal|30000
 decl_stmt|;
-comment|//30000;
 specifier|private
 name|int
 name|minmumWireFormatVersion
