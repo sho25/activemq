@@ -459,6 +459,18 @@ comment|// This will fail usually since the tables will be
 comment|// created already.
 try|try
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Executing SQL: "
+operator|+
+name|createStatments
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
 name|boolean
 name|rc
 init|=
