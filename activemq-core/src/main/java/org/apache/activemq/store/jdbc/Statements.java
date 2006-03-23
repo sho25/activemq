@@ -58,12 +58,6 @@ literal|"VARCHAR(250)"
 decl_stmt|;
 specifier|protected
 name|String
-name|xidDataType
-init|=
-literal|"VARCHAR(250)"
-decl_stmt|;
-specifier|protected
-name|String
 name|msgIdDataType
 init|=
 literal|"VARCHAR(250)"
@@ -1035,32 +1029,6 @@ operator|.
 name|tablePrefix
 operator|=
 name|tablePrefix
-expr_stmt|;
-block|}
-comment|/**      * @return Returns the xidDataType.      */
-specifier|public
-name|String
-name|getXidDataType
-parameter_list|()
-block|{
-return|return
-name|xidDataType
-return|;
-block|}
-comment|/**      * @param xidDataType      *            The xidDataType to set.      */
-specifier|public
-name|void
-name|setXidDataType
-parameter_list|(
-name|String
-name|xidDataType
-parameter_list|)
-block|{
-name|this
-operator|.
-name|xidDataType
-operator|=
-name|xidDataType
 expr_stmt|;
 block|}
 comment|/**      * @return Returns the durableSubAcksTableName.      */
