@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The mangement interface for the ActiveMQ broker GBean.  * This is separate from ActiveMQContainer because that interface has hard  * links to code in activemq-core, yet we still want to be able to  * distinguish ActiveMQ brokers from non-ActiveMQ JMS brokers.  *  * @version $Revision: 1.0$  */
+comment|/**  * The management interface for the ActiveMQ broker GBean.  * This is separate from ActiveMQContainer because that interface has hard  * links to code in activemq-core, yet we still want to be able to  * distinguish ActiveMQ brokers from non-ActiveMQ JMS brokers.  *  * @version $Revision: 1.0$  */
 end_comment
 
 begin_interface
