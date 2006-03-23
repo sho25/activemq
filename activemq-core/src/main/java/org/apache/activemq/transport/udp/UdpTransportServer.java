@@ -249,6 +249,16 @@ name|java
 operator|.
 name|net
 operator|.
+name|InetSocketAddress
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
 name|SocketAddress
 import|;
 end_import
@@ -845,6 +855,18 @@ block|}
 block|}
 return|;
 comment|/**         final WireFormatNegotiator wireFormatNegotiator = new WireFormatNegotiator(configuredTransport, transport.getWireFormat(), serverTransport                 .getMinmumWireFormatVersion()) {              public void start() throws Exception {                 super.start();                 System.out.println("Starting a new server transport: " + this + " with command: " + command);                 onCommand(command);             }              // lets use the specific addressing of wire format             protected void sendWireFormat(WireFormatInfo info) throws IOException {                 System.out.println("#### we have negotiated the wireformat; sending a wireformat to: " + address);                 transport.oneway(info, address);             }         };         return wireFormatNegotiator;         */
+block|}
+specifier|public
+name|InetSocketAddress
+name|getSocketAddress
+parameter_list|()
+block|{
+return|return
+name|serverTransport
+operator|.
+name|getLocalSocketAddress
+argument_list|()
+return|;
 block|}
 block|}
 end_class

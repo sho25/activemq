@@ -33,6 +33,16 @@ name|java
 operator|.
 name|net
 operator|.
+name|InetSocketAddress
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
 name|URI
 import|;
 end_import
@@ -558,6 +568,16 @@ name|stopTimeout
 operator|=
 name|stopTimeout
 expr_stmt|;
+block|}
+specifier|public
+name|InetSocketAddress
+name|getSocketAddress
+parameter_list|()
+block|{
+comment|// TODO: need to drill into the server object to get the socket address
+return|return
+literal|null
+return|;
 block|}
 block|}
 end_class

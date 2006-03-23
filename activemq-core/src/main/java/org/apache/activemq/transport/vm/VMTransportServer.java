@@ -33,6 +33,16 @@ name|java
 operator|.
 name|net
 operator|.
+name|InetSocketAddress
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
 name|URI
 import|;
 end_import
@@ -453,6 +463,15 @@ name|BrokerInfo
 name|brokerInfo
 parameter_list|)
 block|{     }
+specifier|public
+name|InetSocketAddress
+name|getSocketAddress
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
 block|}
 end_class
 
