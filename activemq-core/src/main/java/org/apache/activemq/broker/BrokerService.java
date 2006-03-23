@@ -2001,8 +2001,7 @@ name|stopper
 operator|.
 name|stop
 argument_list|(
-name|getPersistenceAdapter
-argument_list|()
+name|persistenceAdapter
 argument_list|)
 expr_stmt|;
 if|if
