@@ -681,6 +681,24 @@ block|{
 name|BrokerService
 name|broker
 init|=
+literal|null
+decl_stmt|;
+comment|// Synchronize on the registry so that multiple concurrent threads
+comment|// doing this do not think that the broker has not been created and cause multiple
+comment|// brokers to be started.
+synchronized|synchronized
+init|(
+name|BrokerRegistry
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getRegistryMutext
+argument_list|()
+init|)
+block|{
+name|broker
+operator|=
 name|BrokerRegistry
 operator|.
 name|getInstance
@@ -690,7 +708,7 @@ name|lookup
 argument_list|(
 name|host
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|broker
@@ -831,8 +849,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-else|else
-block|{}
+block|}
 name|VMTransport
 name|vmtransport
 init|=
