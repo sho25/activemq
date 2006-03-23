@@ -1032,7 +1032,7 @@ name|Thread
 argument_list|(
 name|runnable
 argument_list|,
-literal|"Cleanup Timmer"
+literal|"ActiveMQ Cleanup Timer"
 argument_list|)
 decl_stmt|;
 name|thread
