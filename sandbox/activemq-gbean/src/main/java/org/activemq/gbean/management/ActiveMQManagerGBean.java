@@ -129,7 +129,7 @@ name|activemq
 operator|.
 name|gbean
 operator|.
-name|ActiveMQConnectorGBean
+name|TransportConnectorGBeanImpl
 import|;
 end_import
 
@@ -280,7 +280,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of the ActiveMQ management interface.  These are the ActiveMQ  * mangement features available at runtime.  *  * @version $Revision: 1.0$  */
+comment|/**  * Implementation of the ActiveMQ management interface.  These are the ActiveMQ  * management features available at runtime.  *  * @version $Revision: 1.0$  */
 end_comment
 
 begin_class
@@ -426,30 +426,21 @@ index|[]
 name|getSupportedProtocols
 parameter_list|()
 block|{
-comment|// see files in modules/core/src/conf/META-INF/services/org/activemq/transport/server/
 return|return
 operator|new
 name|String
 index|[]
 block|{
-literal|"activeio"
-block|,
-literal|"jabber"
-block|,
-literal|"multicast"
-block|,
-literal|"openwire"
-block|,
-literal|"peer"
-block|,
-literal|"stomp"
-block|,
 literal|"tcp"
+block|,
+literal|"vm"
+block|,
+literal|"ssl"
 block|,
 literal|"udp"
 block|,
-literal|"vm"
-block|,}
+literal|"nio"
+block|}
 return|;
 block|}
 specifier|public
@@ -813,7 +804,7 @@ name|data
 operator|.
 name|getReferencePatterns
 argument_list|(
-literal|"activeMQContainer"
+literal|"brokerService"
 argument_list|)
 decl_stmt|;
 for|for
@@ -1110,7 +1101,7 @@ name|data
 operator|.
 name|getReferencePatterns
 argument_list|(
-literal|"activeMQContainer"
+literal|"brokerService"
 argument_list|)
 decl_stmt|;
 for|for
@@ -1430,7 +1421,7 @@ name|GBeanData
 argument_list|(
 name|name
 argument_list|,
-name|ActiveMQConnectorGBean
+name|TransportConnectorGBeanImpl
 operator|.
 name|GBEAN_INFO
 argument_list|)
@@ -1471,7 +1462,7 @@ name|connector
 operator|.
 name|setReferencePattern
 argument_list|(
-literal|"activeMQContainer"
+literal|"brokerService"
 argument_list|,
 name|brokerName
 argument_list|)

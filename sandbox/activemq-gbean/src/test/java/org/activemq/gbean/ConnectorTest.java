@@ -35,7 +35,7 @@ extends|extends
 name|TestCase
 block|{
 specifier|public
-name|ActiveMQConnectorGBean
+name|TransportConnectorGBeanImpl
 name|test
 decl_stmt|;
 specifier|protected
@@ -53,7 +53,7 @@ block|{
 name|test
 operator|=
 operator|new
-name|ActiveMQConnectorGBean
+name|TransportConnectorGBeanImpl
 argument_list|(
 literal|null
 argument_list|,
@@ -248,7 +248,7 @@ expr_stmt|;
 name|test
 operator|=
 operator|new
-name|ActiveMQConnectorGBean
+name|TransportConnectorGBeanImpl
 argument_list|(
 literal|null
 argument_list|,
