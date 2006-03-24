@@ -29,9 +29,13 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|activeio
 operator|.
-name|ByteSequence
+name|command
+operator|.
+name|WireFormat
 import|;
 end_import
 
@@ -39,11 +43,13 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|activeio
 operator|.
-name|command
+name|packet
 operator|.
-name|WireFormat
+name|ByteSequence
 import|;
 end_import
 

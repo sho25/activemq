@@ -81,6 +81,8 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|activeio
 operator|.
 name|journal
@@ -1651,7 +1653,7 @@ name|void
 name|start
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|longTermStore
 operator|.
@@ -1662,19 +1664,14 @@ block|}
 specifier|public
 name|void
 name|stop
-parameter_list|(
-name|long
-name|timeout
-parameter_list|)
+parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|longTermStore
 operator|.
 name|stop
-argument_list|(
-name|timeout
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @return Returns the longTermStore.      */

@@ -193,7 +193,11 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|activeio
+operator|.
+name|packet
 operator|.
 name|ByteSequence
 import|;

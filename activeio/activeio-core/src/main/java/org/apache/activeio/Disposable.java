@@ -9,66 +9,26 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|xstream
+name|activeio
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activeio
-operator|.
-name|command
-operator|.
-name|WireFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activeio
-operator|.
-name|command
-operator|.
-name|WireFormatFactory
-import|;
-end_import
-
 begin_comment
-comment|/**  *   * @version $Revision: 1.1 $  */
+comment|/**  * @version $Revision$  */
 end_comment
 
-begin_class
+begin_interface
 specifier|public
-class|class
-name|XStreamWireFormatFactory
-implements|implements
-name|WireFormatFactory
+interface|interface
+name|Disposable
 block|{
-specifier|public
-name|WireFormat
-name|createWireFormat
+comment|/**      */
+name|void
+name|dispose
 parameter_list|()
-block|{
-return|return
-operator|new
-name|XStreamWireFormat
-argument_list|()
-return|;
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

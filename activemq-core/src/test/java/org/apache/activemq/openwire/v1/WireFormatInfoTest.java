@@ -167,7 +167,11 @@ argument_list|(
 operator|new
 name|org
 operator|.
+name|apache
+operator|.
 name|activeio
+operator|.
+name|packet
 operator|.
 name|ByteSequence
 argument_list|(

@@ -71,9 +71,13 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|activeio
 operator|.
-name|FactoryFinder
+name|command
+operator|.
+name|WireFormat
 import|;
 end_import
 
@@ -81,11 +85,13 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|activeio
 operator|.
-name|command
+name|util
 operator|.
-name|WireFormat
+name|FactoryFinder
 import|;
 end_import
 

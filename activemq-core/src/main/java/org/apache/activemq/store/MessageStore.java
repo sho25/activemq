@@ -29,7 +29,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|activeio
+name|apache
+operator|.
+name|activemq
 operator|.
 name|Service
 import|;

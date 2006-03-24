@@ -41,15 +41,7 @@ begin_import
 import|import
 name|org
 operator|.
-name|activeio
-operator|.
-name|Packet
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|apache
 operator|.
 name|activeio
 operator|.
@@ -63,11 +55,27 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|activeio
 operator|.
 name|packet
 operator|.
 name|ByteArrayPacket
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activeio
+operator|.
+name|packet
+operator|.
+name|Packet
 import|;
 end_import
 
@@ -982,18 +990,11 @@ specifier|public
 name|void
 name|start
 parameter_list|()
-throws|throws
-name|IOException
 block|{     }
 specifier|public
 name|void
 name|stop
-parameter_list|(
-name|long
-name|timeout
-parameter_list|)
-throws|throws
-name|IOException
+parameter_list|()
 block|{     }
 comment|/**      * @see org.apache.activemq.store.MessageStore#removeAllMessages(ConnectionContext)      */
 specifier|public

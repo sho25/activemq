@@ -468,18 +468,11 @@ specifier|public
 name|void
 name|start
 parameter_list|()
-throws|throws
-name|IOException
 block|{     }
 specifier|public
 name|void
 name|stop
-parameter_list|(
-name|long
-name|timeout
-parameter_list|)
-throws|throws
-name|IOException
+parameter_list|()
 block|{     }
 specifier|public
 name|void
