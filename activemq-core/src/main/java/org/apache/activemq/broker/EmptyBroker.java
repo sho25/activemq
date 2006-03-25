@@ -137,6 +137,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|DestinationInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|Message
 import|;
 end_import
@@ -685,6 +699,32 @@ return|return
 literal|null
 return|;
 block|}
+specifier|public
+name|void
+name|addDestinationInfo
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|DestinationInfo
+name|info
+parameter_list|)
+throws|throws
+name|Exception
+block|{     }
+specifier|public
+name|void
+name|removeDestinationInfo
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|DestinationInfo
+name|info
+parameter_list|)
+throws|throws
+name|Exception
+block|{             }
 block|}
 end_class
 

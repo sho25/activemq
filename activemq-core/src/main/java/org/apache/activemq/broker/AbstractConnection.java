@@ -987,6 +987,15 @@ expr_stmt|;
 comment|//
 comment|// Remove all logical connection associated with this connection
 comment|// from the broker.
+if|if
+condition|(
+operator|!
+name|broker
+operator|.
+name|isStopped
+argument_list|()
+condition|)
+block|{
 name|ArrayList
 name|l
 init|=
@@ -1040,7 +1049,7 @@ parameter_list|(
 name|Throwable
 name|ignore
 parameter_list|)
-block|{             }
+block|{}
 block|}
 if|if
 condition|(
@@ -1058,6 +1067,7 @@ argument_list|,
 name|brokerInfo
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
@@ -2194,7 +2204,7 @@ argument_list|)
 decl_stmt|;
 name|broker
 operator|.
-name|addDestination
+name|addDestinationInfo
 argument_list|(
 name|cs
 operator|.
@@ -2202,9 +2212,6 @@ name|getContext
 argument_list|()
 argument_list|,
 name|info
-operator|.
-name|getDestination
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -2256,7 +2263,7 @@ argument_list|)
 decl_stmt|;
 name|broker
 operator|.
-name|removeDestination
+name|removeDestinationInfo
 argument_list|(
 name|cs
 operator|.
@@ -2264,14 +2271,6 @@ name|getContext
 argument_list|()
 argument_list|,
 name|info
-operator|.
-name|getDestination
-argument_list|()
-argument_list|,
-name|info
-operator|.
-name|getTimeout
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if

@@ -450,6 +450,16 @@ name|networkTTL
 argument_list|)
 return|;
 block|}
+specifier|protected
+name|BrokerId
+index|[]
+name|getRemoteBrokerPath
+parameter_list|()
+block|{
+return|return
+name|remoteBrokerPath
+return|;
+block|}
 block|}
 end_class
 

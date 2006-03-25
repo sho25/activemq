@@ -286,7 +286,8 @@ operator|.
 name|getBrokerPath
 argument_list|()
 argument_list|,
-name|remoteBrokerPath
+name|getRemoteBrokerPath
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -384,6 +385,16 @@ index|]
 argument_list|,
 name|networkTTL
 argument_list|)
+return|;
+block|}
+specifier|protected
+name|BrokerId
+index|[]
+name|getRemoteBrokerPath
+parameter_list|()
+block|{
+return|return
+name|remoteBrokerPath
 return|;
 block|}
 block|}
