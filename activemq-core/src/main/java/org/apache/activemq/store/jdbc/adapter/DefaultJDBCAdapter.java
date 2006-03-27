@@ -1603,7 +1603,7 @@ name|s
 init|=
 name|c
 operator|.
-name|getAddMessageStatement
+name|getRemovedMessageStatement
 argument_list|()
 decl_stmt|;
 try|try
