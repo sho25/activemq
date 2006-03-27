@@ -31,6 +31,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashMap
 import|;
 end_import
@@ -168,6 +178,19 @@ name|get
 argument_list|(
 name|path
 argument_list|)
+return|;
+block|}
+comment|/**      * Returns the child nodes      */
+specifier|public
+name|Collection
+name|getChildren
+parameter_list|()
+block|{
+return|return
+name|childNodes
+operator|.
+name|values
+argument_list|()
 return|;
 block|}
 specifier|public

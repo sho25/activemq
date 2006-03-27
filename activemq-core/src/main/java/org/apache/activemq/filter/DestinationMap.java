@@ -456,6 +456,24 @@ name|getChildCount
 argument_list|()
 return|;
 block|}
+specifier|public
+name|DestinationMapNode
+name|getQueueRootNode
+parameter_list|()
+block|{
+return|return
+name|queueRootNode
+return|;
+block|}
+specifier|public
+name|DestinationMapNode
+name|getTopicRootNode
+parameter_list|()
+block|{
+return|return
+name|topicRootNode
+return|;
+block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
 comment|/**      * A helper method to allow the destination map to be populated from a      * dependency injection framework such as Spring      */
