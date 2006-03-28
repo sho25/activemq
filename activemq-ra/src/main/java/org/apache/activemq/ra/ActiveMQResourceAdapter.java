@@ -437,6 +437,10 @@ name|ResourceAdapterInternalException
 argument_list|(
 literal|"Failed to startup an embedded broker: "
 operator|+
+name|brokerXmlConfig
+operator|+
+literal|", due to: "
+operator|+
 name|e
 argument_list|,
 name|e
