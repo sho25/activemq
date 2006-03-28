@@ -247,6 +247,16 @@ name|LogFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|net
+operator|.
+name|SocketFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * An implementation of the {@link Transport} interface using raw tcp/ip  *   * @version $Revision$  */
 end_comment
@@ -355,6 +365,9 @@ parameter_list|(
 name|WireFormat
 name|wireFormat
 parameter_list|,
+name|SocketFactory
+name|socketFactory
+parameter_list|,
 name|URI
 name|remoteLocation
 parameter_list|)
@@ -374,16 +387,21 @@ name|socket
 operator|=
 name|createSocket
 argument_list|(
+name|socketFactory
+argument_list|,
 name|remoteLocation
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Connect to a remote Node - e.g. a Broker      *       * @param wireFormat      * @param remoteLocation      * @param localLocation -      *            e.g. local InetAddress and local port      * @throws IOException      * @throws UnknownHostException      */
+comment|/**      * Connect to a remote Node - e.g. a Broker      *       * @param wireFormat      * @param socketFactory       * @param remoteLocation      * @param localLocation -      *            e.g. local InetAddress and local port      * @throws IOException      * @throws UnknownHostException      */
 specifier|public
 name|TcpTransport
 parameter_list|(
 name|WireFormat
 name|wireFormat
+parameter_list|,
+name|SocketFactory
+name|socketFactory
 parameter_list|,
 name|URI
 name|remoteLocation
@@ -407,6 +425,8 @@ name|socket
 operator|=
 name|createSocket
 argument_list|(
+name|socketFactory
+argument_list|,
 name|remoteLocation
 argument_list|,
 name|localLocation
@@ -746,6 +766,9 @@ specifier|protected
 name|Socket
 name|createSocket
 parameter_list|(
+name|SocketFactory
+name|socketFactory
+parameter_list|,
 name|URI
 name|remoteLocation
 parameter_list|)
@@ -781,8 +804,9 @@ expr_stmt|;
 name|Socket
 name|sock
 init|=
-operator|new
-name|Socket
+name|socketFactory
+operator|.
+name|createSocket
 argument_list|()
 decl_stmt|;
 return|return
@@ -794,6 +818,9 @@ specifier|protected
 name|Socket
 name|createSocket
 parameter_list|(
+name|SocketFactory
+name|socketFactory
+parameter_list|,
 name|URI
 name|remoteLocation
 parameter_list|,
@@ -855,8 +882,9 @@ decl_stmt|;
 name|Socket
 name|sock
 init|=
-operator|new
-name|Socket
+name|socketFactory
+operator|.
+name|createSocket
 argument_list|()
 decl_stmt|;
 name|initialiseSocket

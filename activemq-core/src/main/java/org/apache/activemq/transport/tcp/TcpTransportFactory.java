@@ -359,6 +359,12 @@ name|location
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|ServerSocketFactory
+name|serverSocketFactory
+init|=
+name|createServerSocketFactory
+argument_list|()
+decl_stmt|;
 name|TcpTransportServer
 name|server
 init|=
@@ -366,6 +372,8 @@ operator|new
 name|TcpTransportServer
 argument_list|(
 name|location
+argument_list|,
+name|serverSocketFactory
 argument_list|)
 decl_stmt|;
 name|server
@@ -711,6 +719,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|SocketFactory
+name|socketFactory
+init|=
+name|createSocketFactory
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|localLocation
@@ -724,6 +738,8 @@ name|TcpTransport
 argument_list|(
 name|wf
 argument_list|,
+name|socketFactory
+argument_list|,
 name|location
 argument_list|,
 name|localLocation
@@ -735,6 +751,8 @@ operator|new
 name|TcpTransport
 argument_list|(
 name|wf
+argument_list|,
+name|socketFactory
 argument_list|,
 name|location
 argument_list|)

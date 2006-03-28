@@ -257,6 +257,16 @@ name|LogFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|net
+operator|.
+name|ServerSocketFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * A TCP based implementation of {@link TransportServer}  *   * @version $Revision: 1.1 $  */
 end_comment
@@ -323,12 +333,14 @@ specifier|private
 name|boolean
 name|trace
 decl_stmt|;
-comment|/**      * Constructor      *       * @param location      * @throws IOException      * @throws URISyntaxException      */
 specifier|public
 name|TcpTransportServer
 parameter_list|(
 name|URI
 name|location
+parameter_list|,
+name|ServerSocketFactory
+name|serverSocketFactory
 parameter_list|)
 throws|throws
 name|IOException
@@ -345,6 +357,8 @@ operator|=
 name|createServerSocket
 argument_list|(
 name|location
+argument_list|,
+name|serverSocketFactory
 argument_list|)
 expr_stmt|;
 name|serverSocket
@@ -797,6 +811,9 @@ name|createServerSocket
 parameter_list|(
 name|URI
 name|bind
+parameter_list|,
+name|ServerSocketFactory
+name|factory
 parameter_list|)
 throws|throws
 name|UnknownHostException
@@ -870,8 +887,9 @@ condition|)
 block|{
 name|answer
 operator|=
-operator|new
-name|ServerSocket
+name|factory
+operator|.
+name|createServerSocket
 argument_list|(
 name|bind
 operator|.
@@ -886,8 +904,9 @@ else|else
 block|{
 name|answer
 operator|=
-operator|new
-name|ServerSocket
+name|factory
+operator|.
+name|createServerSocket
 argument_list|(
 name|bind
 operator|.

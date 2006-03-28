@@ -173,6 +173,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|net
+operator|.
+name|SocketFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|edu
 operator|.
 name|emory
@@ -720,6 +730,11 @@ name|TcpTransport
 argument_list|(
 operator|new
 name|OpenWireFormat
+argument_list|()
+argument_list|,
+name|SocketFactory
+operator|.
+name|getDefault
 argument_list|()
 argument_list|,
 operator|new
