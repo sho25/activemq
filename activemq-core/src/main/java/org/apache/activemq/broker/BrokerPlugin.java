@@ -32,6 +32,8 @@ parameter_list|(
 name|Broker
 name|broker
 parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
 block|}
 end_interface

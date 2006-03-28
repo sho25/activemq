@@ -3904,7 +3904,7 @@ name|Broker
 name|broker
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|broker
 operator|=

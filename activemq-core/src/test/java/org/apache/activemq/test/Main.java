@@ -23,9 +23,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
-operator|.
-name|BrokerFactory
+name|ActiveMQConnectionFactory
 import|;
 end_import
 
@@ -69,7 +67,7 @@ name|broker
 operator|.
 name|view
 operator|.
-name|DestinationDotFileInterceptor
+name|ConnectionDotFilePlugin
 import|;
 end_import
 
@@ -97,6 +95,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|ActiveMQQueue
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|demo
 operator|.
 name|DefaultQueueSender
@@ -105,11 +117,31 @@ end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|net
+name|jms
 operator|.
-name|URI
+name|Connection
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|MessageConsumer
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Session
 import|;
 end_import
 
@@ -157,7 +189,9 @@ expr_stmt|;
 block|}
 try|try
 block|{
-comment|//BrokerService broker = BrokerFactory.createBroker(new URI(brokerURI));
+comment|// TODO - this seems to break interceptors for some reason
+comment|// BrokerService broker = BrokerFactory.createBroker(new
+comment|// URI(brokerURI));
 name|BrokerService
 name|broker
 init|=
@@ -187,8 +221,9 @@ operator|new
 name|BrokerPlugin
 index|[]
 block|{
+comment|/*new DestinationDotFilePlugin(), */
 operator|new
-name|DestinationDotFilePlugin
+name|ConnectionDotFilePlugin
 argument_list|()
 block|}
 argument_list|)
@@ -212,6 +247,96 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+comment|// lets create a dummy couple of consumers
+name|Connection
+name|connection
+init|=
+operator|new
+name|ActiveMQConnectionFactory
+argument_list|()
+operator|.
+name|createConnection
+argument_list|()
+decl_stmt|;
+name|connection
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+name|Session
+name|session
+init|=
+name|connection
+operator|.
+name|createSession
+argument_list|(
+literal|false
+argument_list|,
+name|Session
+operator|.
+name|AUTO_ACKNOWLEDGE
+argument_list|)
+decl_stmt|;
+name|MessageConsumer
+name|consumer1
+init|=
+name|session
+operator|.
+name|createConsumer
+argument_list|(
+operator|new
+name|ActiveMQQueue
+argument_list|(
+literal|"Orders.IBM"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|MessageConsumer
+name|consumer2
+init|=
+name|session
+operator|.
+name|createConsumer
+argument_list|(
+operator|new
+name|ActiveMQQueue
+argument_list|(
+literal|"Orders.MSFT"
+argument_list|)
+argument_list|,
+literal|"price> 100"
+argument_list|)
+decl_stmt|;
+name|Session
+name|session2
+init|=
+name|connection
+operator|.
+name|createSession
+argument_list|(
+literal|false
+argument_list|,
+name|Session
+operator|.
+name|AUTO_ACKNOWLEDGE
+argument_list|)
+decl_stmt|;
+name|MessageConsumer
+name|consumer3
+init|=
+name|session2
+operator|.
+name|createConsumer
+argument_list|(
+operator|new
+name|ActiveMQQueue
+argument_list|(
+literal|"Orders.MSFT"
+argument_list|)
+argument_list|,
+literal|"price> 200"
+argument_list|)
+decl_stmt|;
 comment|// lets publish some messages so that there is some stuff to browse
 name|DefaultQueueSender
 operator|.
