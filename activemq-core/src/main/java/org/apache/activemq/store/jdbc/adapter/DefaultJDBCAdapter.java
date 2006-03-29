@@ -2904,6 +2904,18 @@ literal|null
 decl_stmt|;
 try|try
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Executing SQL: "
+operator|+
+name|statements
+operator|.
+name|getDeleteOldMessagesStatement
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|s
 operator|=
 name|c
