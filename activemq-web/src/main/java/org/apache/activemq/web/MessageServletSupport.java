@@ -170,7 +170,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A useful base class for any JMS related servlet;  * there are various ways to map JMS operations to web requests  * so we put most of the common behaviour in a reusable base class.  *  * @version $Revision: 1.1.1.1 $  */
+comment|/**  * A useful base class for any JMS related servlet;  * there are various ways to map JMS operations to web requests  * so we put most of the common behaviour in a reusable base class.  *  * This servlet can be configured with the following init paramters<dl>  *<dt>topic</dt><dd>Set to 'true' if the servle should default to using topics rather than channels</dd>  *<dt>destination</dt><dd>The default destination to use if one is not specifiied</dd>  *<dt></dt><dd></dd>  *</dl>  * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -321,10 +321,7 @@ block|{
 return|return
 operator|new
 name|WebClient
-argument_list|(
-name|getServletContext
 argument_list|()
-argument_list|)
 return|;
 block|}
 specifier|public
@@ -414,6 +411,11 @@ condition|(
 name|client
 operator|==
 literal|null
+operator|||
+name|client
+operator|.
+name|isClosed
+argument_list|()
 condition|)
 block|{
 name|client
