@@ -685,6 +685,18 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|// No need to carry the content length in the JMS headers.
+name|headers
+operator|.
+name|remove
+argument_list|(
+name|Stomp
+operator|.
+name|Headers
+operator|.
+name|CONTENT_LENGTH
+argument_list|)
+expr_stmt|;
 comment|// now the general headers
 name|msg
 operator|.
