@@ -2160,7 +2160,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"For help or more information please see: http://www.logicblaze.com"
+literal|"For help or more information please see: http://incubator.apache.org/activemq/"
 argument_list|)
 expr_stmt|;
 name|broker
