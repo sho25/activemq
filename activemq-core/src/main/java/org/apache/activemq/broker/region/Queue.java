@@ -694,6 +694,11 @@ argument_list|(
 name|message
 argument_list|)
 decl_stmt|;
+synchronized|synchronized
+init|(
+name|messages
+init|)
+block|{
 name|messages
 operator|.
 name|add
@@ -701,6 +706,7 @@ argument_list|(
 name|reference
 argument_list|)
 expr_stmt|;
+block|}
 name|reference
 operator|.
 name|decrementReferenceCount
@@ -1692,6 +1698,24 @@ name|String
 name|toString
 parameter_list|()
 block|{
+name|int
+name|size
+init|=
+literal|0
+decl_stmt|;
+synchronized|synchronized
+init|(
+name|messages
+init|)
+block|{
+name|size
+operator|=
+name|message
+operator|.
+name|size
+argument_list|()
+expr_stmt|;
+block|}
 return|return
 literal|"Queue: destination="
 operator|+
@@ -1716,10 +1740,7 @@ argument_list|()
 operator|+
 literal|"%, size="
 operator|+
-name|messages
-operator|.
 name|size
-argument_list|()
 operator|+
 literal|", in flight groups="
 operator|+
