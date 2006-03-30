@@ -467,7 +467,7 @@ operator|new
 name|CopyOnWriteArrayList
 argument_list|()
 decl_stmt|;
-specifier|protected
+specifier|private
 specifier|final
 name|LinkedList
 name|messages
@@ -1710,7 +1710,7 @@ init|)
 block|{
 name|size
 operator|=
-name|message
+name|messages
 operator|.
 name|size
 argument_list|()
