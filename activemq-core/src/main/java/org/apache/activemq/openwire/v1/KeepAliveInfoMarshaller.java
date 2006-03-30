@@ -84,7 +84,7 @@ specifier|public
 class|class
 name|KeepAliveInfoMarshaller
 extends|extends
-name|BaseDataStreamMarshaller
+name|BaseCommandMarshaller
 block|{
 comment|/**      * Return the type of Data Structure we marshal      * @return short representation of the type data structure      */
 specifier|public

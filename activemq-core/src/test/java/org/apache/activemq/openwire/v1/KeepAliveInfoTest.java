@@ -84,7 +84,7 @@ specifier|public
 class|class
 name|KeepAliveInfoTest
 extends|extends
-name|DataFileGeneratorTestSupport
+name|BaseCommandTestSupport
 block|{
 specifier|public
 specifier|static
