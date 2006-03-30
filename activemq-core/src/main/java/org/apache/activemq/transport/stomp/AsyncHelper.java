@@ -50,7 +50,14 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-comment|/* */
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 block|}
