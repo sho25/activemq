@@ -107,6 +107,20 @@ name|MessageId
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|memory
+operator|.
+name|UsageManager
+import|;
+end_import
+
 begin_comment
 comment|/**  * Represents a message store which is used by the persistent {@link org.apache.activemq.service.MessageContainer}  * implementations  *  * @version $Revision: 1.5 $  */
 end_comment
@@ -215,6 +229,15 @@ specifier|public
 name|ActiveMQDestination
 name|getDestination
 parameter_list|()
+function_decl|;
+comment|/**      * @param usageManager The UsageManager that is controlling the destination's memory usage.      */
+specifier|public
+name|void
+name|setUsageManager
+parameter_list|(
+name|UsageManager
+name|usageManager
+parameter_list|)
 function_decl|;
 block|}
 end_interface

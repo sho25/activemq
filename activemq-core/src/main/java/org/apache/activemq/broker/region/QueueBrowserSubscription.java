@@ -103,6 +103,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|MessageAck
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|MessageDispatch
 import|;
 end_import
@@ -126,7 +140,7 @@ specifier|public
 class|class
 name|QueueBrowserSubscription
 extends|extends
-name|PrefetchSubscription
+name|QueueSubscription
 block|{
 name|boolean
 name|browseDone
@@ -337,6 +351,25 @@ name|context
 argument_list|)
 return|;
 block|}
+comment|/**      * Since we are a browser we don't really remove the message from the queue.      */
+specifier|protected
+name|void
+name|acknowledge
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+specifier|final
+name|MessageAck
+name|ack
+parameter_list|,
+specifier|final
+name|MessageReference
+name|n
+parameter_list|)
+throws|throws
+name|IOException
+block|{     }
 block|}
 end_class
 

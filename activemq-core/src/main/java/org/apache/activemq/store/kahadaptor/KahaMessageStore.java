@@ -129,6 +129,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|memory
+operator|.
+name|UsageManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|store
 operator|.
 name|MessageRecoveryListener
@@ -484,6 +498,15 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * @param usageManager The UsageManager that is controlling the destination's memory usage.      */
+specifier|public
+name|void
+name|setUsageManager
+parameter_list|(
+name|UsageManager
+name|usageManager
+parameter_list|)
+block|{     }
 block|}
 end_class
 

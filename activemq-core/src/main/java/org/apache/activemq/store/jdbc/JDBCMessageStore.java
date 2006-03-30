@@ -157,6 +157,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|memory
+operator|.
+name|UsageManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|store
 operator|.
 name|MessageRecoveryListener
@@ -1075,6 +1089,16 @@ block|{
 return|return
 name|destination
 return|;
+block|}
+specifier|public
+name|void
+name|setUsageManager
+parameter_list|(
+name|UsageManager
+name|usageManager
+parameter_list|)
+block|{
+comment|// we can ignore since we don't buffer up messages.
 block|}
 block|}
 end_class

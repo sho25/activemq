@@ -95,6 +95,20 @@ name|MessageId
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|memory
+operator|.
+name|UsageManager
+import|;
+end_import
+
 begin_comment
 comment|/**  * A simple proxy that delegates to another MessageStore.  */
 end_comment
@@ -323,6 +337,22 @@ argument_list|(
 name|identity
 argument_list|)
 return|;
+block|}
+specifier|public
+name|void
+name|setUsageManager
+parameter_list|(
+name|UsageManager
+name|usageManager
+parameter_list|)
+block|{
+name|delegate
+operator|.
+name|setUsageManager
+argument_list|(
+name|usageManager
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

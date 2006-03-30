@@ -607,6 +607,23 @@ name|store
 operator|=
 name|store
 expr_stmt|;
+comment|// Let the store know what usage manager we are using so that he can flush messages to disk
+comment|// when usage gets high.
+if|if
+condition|(
+name|store
+operator|!=
+literal|null
+condition|)
+block|{
+name|store
+operator|.
+name|setUsageManager
+argument_list|(
+name|usageManager
+argument_list|)
+expr_stmt|;
+block|}
 name|destinationStatistics
 operator|.
 name|setParent

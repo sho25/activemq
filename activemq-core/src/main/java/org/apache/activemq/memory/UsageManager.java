@@ -118,7 +118,7 @@ specifier|private
 name|int
 name|percentUsageMinDelta
 init|=
-literal|10
+literal|1
 decl_stmt|;
 specifier|private
 specifier|final
