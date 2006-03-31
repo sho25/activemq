@@ -265,7 +265,7 @@ condition|(
 name|result
 operator|.
 name|length
-operator|<
+operator|<=
 name|list
 operator|.
 name|size
