@@ -1632,6 +1632,18 @@ expr_stmt|;
 block|}
 block|}
 block|}
+specifier|public
+name|boolean
+name|isStarted
+parameter_list|()
+block|{
+return|return
+name|started
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 comment|// Service interface
 comment|// -------------------------------------------------------------------------
 specifier|public
