@@ -154,6 +154,13 @@ operator|.
 name|createConnection
 argument_list|()
 expr_stmt|;
+name|connection
+operator|.
+name|setClientID
+argument_list|(
+name|consumerName
+argument_list|)
+expr_stmt|;
 name|Session
 name|s
 init|=
