@@ -1071,6 +1071,17 @@ name|ACTIVEMQ_BYTES_MESSAGE
 condition|)
 block|{
 comment|// First message.
+name|long
+name|producerSequenceId
+init|=
+name|m
+operator|.
+name|getMessageId
+argument_list|()
+operator|.
+name|getProducerSequenceId
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|producerId
@@ -1081,13 +1092,7 @@ block|{
 comment|// We have to start a stream at sequence id = 0
 if|if
 condition|(
-name|m
-operator|.
-name|getMessageId
-argument_list|()
-operator|.
-name|getProducerSequenceId
-argument_list|()
+name|producerSequenceId
 operator|!=
 literal|0
 condition|)
@@ -1140,13 +1145,7 @@ throw|;
 block|}
 if|if
 condition|(
-name|m
-operator|.
-name|getMessageId
-argument_list|()
-operator|.
-name|getProducerSequenceId
-argument_list|()
+name|producerSequenceId
 operator|!=
 name|nextSequenceId
 operator|++
@@ -1156,7 +1155,19 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Received an unexpected message: invalid sequence id: "
+literal|"Received an unexpected message: expected ID: "
+operator|+
+operator|(
+name|nextSequenceId
+operator|-
+literal|1
+operator|)
+operator|+
+literal|" but was: "
+operator|+
+name|producerSequenceId
+operator|+
+literal|" for message: "
 operator|+
 name|m
 argument_list|)
