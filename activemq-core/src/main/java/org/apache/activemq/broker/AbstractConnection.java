@@ -3415,6 +3415,11 @@ name|dispatchQueue
 operator|.
 name|isEmpty
 argument_list|()
+operator|||
+name|broker
+operator|.
+name|isStopped
+argument_list|()
 condition|)
 block|{
 return|return
