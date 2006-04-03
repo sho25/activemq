@@ -527,6 +527,20 @@ name|activemq
 operator|.
 name|store
 operator|.
+name|PersistenceAdapterFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
 name|memory
 operator|.
 name|MemoryPersistenceAdapter
@@ -822,7 +836,7 @@ name|PersistenceAdapter
 name|persistenceAdapter
 decl_stmt|;
 specifier|private
-name|DefaultPersistenceAdapterFactory
+name|PersistenceAdapterFactory
 name|persistenceFactory
 decl_stmt|;
 specifier|private
@@ -2211,7 +2225,7 @@ name|brokerName
 expr_stmt|;
 block|}
 specifier|public
-name|DefaultPersistenceAdapterFactory
+name|PersistenceAdapterFactory
 name|getPersistenceFactory
 parameter_list|()
 block|{
@@ -2291,7 +2305,7 @@ specifier|public
 name|void
 name|setPersistenceFactory
 parameter_list|(
-name|DefaultPersistenceAdapterFactory
+name|PersistenceAdapterFactory
 name|persistenceFactory
 parameter_list|)
 block|{
