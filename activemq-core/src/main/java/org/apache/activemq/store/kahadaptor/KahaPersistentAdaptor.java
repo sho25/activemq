@@ -748,7 +748,13 @@ name|stop
 parameter_list|()
 throws|throws
 name|Exception
-block|{}
+block|{
+name|store
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 specifier|public
 name|long
 name|getLastMessageBrokerSequenceId
