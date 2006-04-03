@@ -575,7 +575,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|20000
 argument_list|)
 argument_list|)
 expr_stmt|;
