@@ -389,6 +389,7 @@ argument_list|(
 literal|false
 argument_list|)
 decl_stmt|;
+comment|/**      * Constructor      * @param parent      * @param slave      */
 specifier|public
 name|MasterBroker
 parameter_list|(
@@ -411,6 +412,7 @@ operator|=
 name|slave
 expr_stmt|;
 block|}
+comment|/**      * start processing this broker      *      */
 specifier|public
 name|void
 name|startProcessing
@@ -424,6 +426,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * stop the broker      * @throws Exception       */
 specifier|public
 name|void
 name|stop
@@ -440,6 +443,7 @@ name|stopProcessing
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * stop processing this broker      *      */
 specifier|public
 name|void
 name|stopProcessing
@@ -462,7 +466,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * A client is establishing a connection with the broker.      * @param context      * @param info       * @param client      */
+comment|/**      * A client is establishing a connection with the broker.      * @param context      * @param info       * @throws Exception       */
 specifier|public
 name|void
 name|addConnection
@@ -491,7 +495,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * A client is disconnecting from the broker.      * @param context the environment the operation is being executed under.      * @param info       * @param client      * @param error null if the client requested the disconnect or the error that caused the client to disconnect.      */
+comment|/**      * A client is disconnecting from the broker.      * @param context the environment the operation is being executed under.      * @param info       * @param error null if the client requested the disconnect or the error that caused the client to disconnect.      * @throws Exception       */
 specifier|public
 name|void
 name|removeConnection
@@ -532,7 +536,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Adds a session.      * @param context      * @param info      */
+comment|/**      * Adds a session.      * @param context      * @param info      * @throws Exception       */
 specifier|public
 name|void
 name|addSession
@@ -561,7 +565,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Removes a session.      * @param context      * @param info      */
+comment|/**      * Removes a session.      * @param context      * @param info      * @throws Exception       */
 specifier|public
 name|void
 name|removeSession
@@ -597,7 +601,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Adds a producer.      * @param context the enviorment the operation is being executed under.      */
+comment|/**      * Adds a producer.      * @param context the enviorment the operation is being executed under.      * @param info       * @throws Exception       */
 specifier|public
 name|void
 name|addProducer
@@ -626,7 +630,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Removes a producer.      * @param context the enviorment the operation is being executed under.      */
+comment|/**      * Removes a producer.      * @param context the enviorment the operation is being executed under.      * @param info       * @throws Exception       */
 specifier|public
 name|void
 name|removeProducer
@@ -662,6 +666,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * add a consumer      * @param context       * @param info       * @return the assocated subscription      * @throws Exception       */
 specifier|public
 name|Subscription
 name|addConsumer
@@ -675,6 +680,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|sendAsyncToSlave
+argument_list|(
+name|info
+argument_list|)
+expr_stmt|;
 name|Subscription
 name|answer
 init|=
@@ -687,15 +697,11 @@ argument_list|,
 name|info
 argument_list|)
 decl_stmt|;
-name|sendAsyncToSlave
-argument_list|(
-name|info
-argument_list|)
-expr_stmt|;
 return|return
 name|answer
 return|;
 block|}
+comment|/**      * remove a subscription      * @param context       * @param info       * @throws Exception       */
 specifier|public
 name|void
 name|removeSubscription
@@ -724,6 +730,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * begin a transaction      * @param context       * @param xid       * @throws Exception       */
 specifier|public
 name|void
 name|beginTransaction
@@ -737,15 +744,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|beginTransaction
-argument_list|(
-name|context
-argument_list|,
-name|xid
-argument_list|)
-expr_stmt|;
 name|TransactionInfo
 name|info
 init|=
@@ -769,8 +767,17 @@ argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
+name|super
+operator|.
+name|beginTransaction
+argument_list|(
+name|context
+argument_list|,
+name|xid
+argument_list|)
+expr_stmt|;
 block|}
-comment|/**      * Prepares a transaction. Only valid for xa transactions.      * @param client      * @param xid      * @return      */
+comment|/**      * Prepares a transaction. Only valid for xa transactions.      * @param context       * @param xid      * @return the state      * @throws Exception       */
 specifier|public
 name|int
 name|prepareTransaction
@@ -784,18 +791,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|int
-name|result
-init|=
-name|super
-operator|.
-name|prepareTransaction
-argument_list|(
-name|context
-argument_list|,
-name|xid
-argument_list|)
-decl_stmt|;
 name|TransactionInfo
 name|info
 init|=
@@ -819,11 +814,23 @@ argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
+name|int
+name|result
+init|=
+name|super
+operator|.
+name|prepareTransaction
+argument_list|(
+name|context
+argument_list|,
+name|xid
+argument_list|)
+decl_stmt|;
 return|return
 name|result
 return|;
 block|}
-comment|/**      * Rollsback a transaction.      * @param client      * @param xid      */
+comment|/**      * Rollsback a transaction.      * @param context       * @param xid      * @throws Exception       */
 specifier|public
 name|void
 name|rollbackTransaction
@@ -837,15 +844,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|rollbackTransaction
-argument_list|(
-name|context
-argument_list|,
-name|xid
-argument_list|)
-expr_stmt|;
 name|TransactionInfo
 name|info
 init|=
@@ -869,8 +867,17 @@ argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
+name|super
+operator|.
+name|rollbackTransaction
+argument_list|(
+name|context
+argument_list|,
+name|xid
+argument_list|)
+expr_stmt|;
 block|}
-comment|/**      * Commits a transaction.      * @param client      * @param xid      * @param onePhase      */
+comment|/**      * Commits a transaction.      * @param context       * @param xid      * @param onePhase      * @throws Exception       */
 specifier|public
 name|void
 name|commitTransaction
@@ -887,17 +894,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|commitTransaction
-argument_list|(
-name|context
-argument_list|,
-name|xid
-argument_list|,
-name|onePhase
-argument_list|)
-expr_stmt|;
 name|TransactionInfo
 name|info
 init|=
@@ -921,8 +917,19 @@ argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
+name|super
+operator|.
+name|commitTransaction
+argument_list|(
+name|context
+argument_list|,
+name|xid
+argument_list|,
+name|onePhase
+argument_list|)
+expr_stmt|;
 block|}
-comment|/**      * Forgets a transaction.      * @param client      * @param xid      * @param onePhase      */
+comment|/**      * Forgets a transaction.      * @param context       * @param xid       * @throws Exception       */
 specifier|public
 name|void
 name|forgetTransaction
@@ -936,15 +943,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|forgetTransaction
-argument_list|(
-name|context
-argument_list|,
-name|xid
-argument_list|)
-expr_stmt|;
 name|TransactionInfo
 name|info
 init|=
@@ -968,6 +966,15 @@ argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
+name|super
+operator|.
+name|forgetTransaction
+argument_list|(
+name|context
+argument_list|,
+name|xid
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Notifiy the Broker that a dispatch has happened      * @param messageDispatch      */
 specifier|public
@@ -978,13 +985,6 @@ name|MessageDispatch
 name|messageDispatch
 parameter_list|)
 block|{
-name|super
-operator|.
-name|processDispatch
-argument_list|(
-name|messageDispatch
-argument_list|)
-expr_stmt|;
 name|MessageDispatchNotification
 name|mdn
 init|=
@@ -1040,7 +1040,15 @@ argument_list|(
 name|mdn
 argument_list|)
 expr_stmt|;
+name|super
+operator|.
+name|processDispatch
+argument_list|(
+name|messageDispatch
+argument_list|)
+expr_stmt|;
 block|}
+comment|/**      * @param context       * @param message       * @throws Exception       *       */
 specifier|public
 name|void
 name|send
@@ -1070,6 +1078,7 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @param context       * @param ack       * @throws Exception       *       */
 specifier|public
 name|void
 name|acknowledge
@@ -1083,17 +1092,17 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|sendToSlave
+argument_list|(
+name|ack
+argument_list|)
+expr_stmt|;
 name|super
 operator|.
 name|acknowledge
 argument_list|(
 name|context
 argument_list|,
-name|ack
-argument_list|)
-expr_stmt|;
-name|sendToSlave
-argument_list|(
 name|ack
 argument_list|)
 expr_stmt|;
