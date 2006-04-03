@@ -402,13 +402,22 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
+if|if
+condition|(
 name|log
 operator|.
-name|info
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
 argument_list|(
 literal|"Prefetch limit."
 argument_list|)
 expr_stmt|;
+block|}
 name|pending
 operator|.
 name|addLast
