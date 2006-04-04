@@ -1085,6 +1085,8 @@ name|getType
 parameter_list|()
 block|{
 return|return
+literal|"_"
+operator|+
 name|group
 operator|+
 literal|"."
