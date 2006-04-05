@@ -3621,10 +3621,9 @@ name|hasUncomsumedMessages
 parameter_list|()
 block|{
 return|return
-operator|!
 name|executor
 operator|.
-name|isEmpty
+name|hasUncomsumedMessages
 argument_list|()
 return|;
 block|}
