@@ -514,17 +514,6 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|peristenceAdapter
-operator|.
-name|checkpoint
-argument_list|(
-literal|false
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**      */
 specifier|public
