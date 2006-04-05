@@ -397,6 +397,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|BrokerId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|memory
 operator|.
 name|UsageManager
@@ -946,6 +960,10 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|keepDurableSubsActive
+decl_stmt|;
+specifier|private
+name|BrokerId
+name|brokerId
 decl_stmt|;
 comment|/**      * Adds a new transport connector for the given bind address      *      * @return the newly created and added transport connector      * @throws Exception      */
 specifier|public
@@ -1768,6 +1786,13 @@ block|}
 name|startAllConnectors
 argument_list|()
 expr_stmt|;
+name|brokerId
+operator|=
+name|broker
+operator|.
+name|getBrokerId
+argument_list|()
+expr_stmt|;
 name|log
 operator|.
 name|info
@@ -1776,6 +1801,10 @@ literal|"ActiveMQ JMS Message Broker ("
 operator|+
 name|getBrokerName
 argument_list|()
+operator|+
+literal|", "
+operator|+
+name|brokerId
 operator|+
 literal|") started"
 argument_list|)
@@ -1833,6 +1862,10 @@ literal|"ActiveMQ Message Broker ("
 operator|+
 name|getBrokerName
 argument_list|()
+operator|+
+literal|", "
+operator|+
+name|brokerId
 operator|+
 literal|") is shutting down"
 argument_list|)
@@ -2137,9 +2170,11 @@ operator|+
 name|getBrokerName
 argument_list|()
 operator|+
-literal|") stopped: "
+literal|", "
 operator|+
-name|broker
+name|brokerId
+operator|+
+literal|") stopped"
 argument_list|)
 expr_stmt|;
 name|stopper
