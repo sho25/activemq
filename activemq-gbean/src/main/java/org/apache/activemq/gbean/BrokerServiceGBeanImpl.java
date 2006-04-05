@@ -281,6 +281,9 @@ block|}
 name|DefaultPersistenceAdapterFactory
 name|persistenceFactory
 init|=
+operator|(
+name|DefaultPersistenceAdapterFactory
+operator|)
 name|brokerService
 operator|.
 name|getPersistenceFactory
