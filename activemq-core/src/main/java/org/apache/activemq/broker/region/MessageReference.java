@@ -140,6 +140,17 @@ name|int
 name|getSize
 parameter_list|()
 function_decl|;
+specifier|public
+name|long
+name|getExpiration
+parameter_list|()
+function_decl|;
+comment|/**      * Returns true if this message is expired      */
+specifier|public
+name|boolean
+name|isExpired
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

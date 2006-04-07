@@ -74,6 +74,11 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * REturns the high water mark on which we will eagerly evict expired messages from RAM      */
+name|int
+name|getEvictExpiredMessagesHighWatermark
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

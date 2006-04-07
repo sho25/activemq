@@ -73,8 +73,8 @@ begin_class
 specifier|public
 class|class
 name|OldestMessageWithLowestPriorityEvictionStrategy
-implements|implements
-name|MessageEvictionStrategy
+extends|extends
+name|MessageEvictionStrategySupport
 block|{
 specifier|public
 name|MessageReference
