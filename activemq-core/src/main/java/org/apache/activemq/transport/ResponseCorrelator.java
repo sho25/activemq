@@ -27,6 +27,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InterruptedIOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -234,6 +244,9 @@ name|asyncRequest
 parameter_list|(
 name|Command
 name|command
+parameter_list|,
+name|ResponseCallback
+name|responseCallback
 parameter_list|)
 throws|throws
 name|IOException
@@ -260,7 +273,9 @@ name|future
 init|=
 operator|new
 name|FutureResponse
-argument_list|()
+argument_list|(
+name|responseCallback
+argument_list|)
 decl_stmt|;
 name|requestMap
 operator|.
@@ -305,6 +320,8 @@ init|=
 name|asyncRequest
 argument_list|(
 name|command
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 return|return
@@ -333,6 +350,8 @@ init|=
 name|asyncRequest
 argument_list|(
 name|command
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 return|return
@@ -367,6 +386,8 @@ operator|.
 name|isResponse
 argument_list|()
 condition|)
+block|{
+try|try
 block|{
 name|Response
 name|response
@@ -427,6 +448,19 @@ name|response
 operator|.
 name|getCorrelationId
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedIOException
+name|e
+parameter_list|)
+block|{
+name|onException
+argument_list|(
+name|e
 argument_list|)
 expr_stmt|;
 block|}

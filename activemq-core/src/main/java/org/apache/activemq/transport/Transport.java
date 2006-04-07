@@ -87,13 +87,16 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * An asynchronous request response where the Receipt will be returned      * in the future      * @param command       * @return the FutureResponse      * @throws IOException       */
+comment|/**      * An asynchronous request response where the Receipt will be returned      * in the future.  If responseCallback is not null, then it will be called      * when the response has been completed.      *       * @param command       * @param responseCallback TODO      * @return the FutureResponse      * @throws IOException       */
 specifier|public
 name|FutureResponse
 name|asyncRequest
 parameter_list|(
 name|Command
 name|command
+parameter_list|,
+name|ResponseCallback
+name|responseCallback
 parameter_list|)
 throws|throws
 name|IOException

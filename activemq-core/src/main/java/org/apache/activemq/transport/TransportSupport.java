@@ -220,6 +220,9 @@ name|asyncRequest
 parameter_list|(
 name|Command
 name|command
+parameter_list|,
+name|ResponseCallback
+name|responseCallback
 parameter_list|)
 throws|throws
 name|IOException

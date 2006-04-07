@@ -250,6 +250,9 @@ name|asyncRequest
 parameter_list|(
 name|Command
 name|command
+parameter_list|,
+name|ResponseCallback
+name|responseCallback
 parameter_list|)
 throws|throws
 name|IOException
@@ -260,6 +263,8 @@ operator|.
 name|asyncRequest
 argument_list|(
 name|command
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}

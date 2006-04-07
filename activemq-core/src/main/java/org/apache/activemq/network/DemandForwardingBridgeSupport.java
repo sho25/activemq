@@ -437,6 +437,34 @@ name|activemq
 operator|.
 name|transport
 operator|.
+name|FutureResponse
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|ResponseCallback
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
 name|Transport
 import|;
 end_import
@@ -2282,6 +2310,7 @@ block|{
 name|waitStarted
 argument_list|()
 expr_stmt|;
+specifier|final
 name|MessageDispatch
 name|md
 init|=
@@ -2347,19 +2376,12 @@ condition|(
 operator|!
 name|message
 operator|.
-name|isPersistent
-argument_list|()
-operator|||
-operator|!
-name|sub
-operator|.
-name|getRemoteInfo
-argument_list|()
-operator|.
-name|isDurable
+name|isResponseRequired
 argument_list|()
 condition|)
 block|{
+comment|// If the message was originally sent using async send, we will preserve that QOS
+comment|// by bridging it using an async send (small chance of message loss).
 name|remoteBroker
 operator|.
 name|oneway
@@ -2367,18 +2389,52 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
+name|localBroker
+operator|.
+name|oneway
+argument_list|(
+operator|new
+name|MessageAck
+argument_list|(
+name|md
+argument_list|,
+name|MessageAck
+operator|.
+name|STANDARD_ACK_TYPE
+argument_list|,
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 else|else
+block|{
+comment|// The message was not sent using async send, so we should only ack the local
+comment|// broker when we get confirmation that the remote broker has received the message.
+name|ResponseCallback
+name|callback
+init|=
+operator|new
+name|ResponseCallback
+argument_list|()
+block|{
+specifier|public
+name|void
+name|onCompletion
+parameter_list|(
+name|FutureResponse
+name|future
+parameter_list|)
+block|{
+try|try
 block|{
 name|Response
 name|response
 init|=
-name|remoteBroker
+name|future
 operator|.
-name|request
-argument_list|(
-name|message
-argument_list|)
+name|getResult
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -2405,9 +2461,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-comment|// Ack on every message since we don't know if the broker is blocked due to memory
-comment|// usage and is waiting for an Ack to un-block him.
+else|else
+block|{
 name|localBroker
 operator|.
 name|oneway
@@ -2425,6 +2480,35 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|serviceLocalException
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+decl_stmt|;
+name|remoteBroker
+operator|.
+name|asyncRequest
+argument_list|(
+name|message
+argument_list|,
+name|callback
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Ack on every message since we don't know if the broker is blocked due to memory
+comment|// usage and is waiting for an Ack to un-block him.
 comment|// Acking a range is more efficient, but also more prone to locking up a server
 comment|// Perhaps doing something like the following should be policy based.
 comment|//                        int dispatched = sub.incrementDispatched();

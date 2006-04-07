@@ -825,6 +825,13 @@ argument_list|)
 decl_stmt|;
 name|connector
 operator|.
+name|setUri
+argument_list|(
+name|location
+argument_list|)
+expr_stmt|;
+name|connector
+operator|.
 name|setTaskRunnerFactory
 argument_list|(
 name|broker
