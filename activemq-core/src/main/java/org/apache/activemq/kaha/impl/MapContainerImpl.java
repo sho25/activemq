@@ -287,7 +287,7 @@ name|Object
 name|id
 parameter_list|,
 name|StoreImpl
-name|rfs
+name|si
 parameter_list|,
 name|LocatableItem
 name|root
@@ -305,7 +305,7 @@ name|this
 operator|.
 name|store
 operator|=
-name|rfs
+name|si
 expr_stmt|;
 name|this
 operator|.

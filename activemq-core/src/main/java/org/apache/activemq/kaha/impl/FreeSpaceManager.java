@@ -131,7 +131,9 @@ specifier|final
 name|int
 name|RESIZE_INCREMENT
 init|=
-literal|4096
+literal|20
+operator|*
+literal|1024
 operator|*
 literal|1024
 decl_stmt|;
