@@ -981,6 +981,8 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|keepDurableSubsActive
+init|=
+literal|true
 decl_stmt|;
 specifier|private
 name|BrokerId
