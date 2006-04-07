@@ -49,18 +49,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-operator|.
-name|Entry
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -397,15 +385,6 @@ operator|>
 literal|0
 condition|)
 block|{
-name|super
-operator|.
-name|addMessage
-argument_list|(
-name|context
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
 name|String
 name|id
 init|=
@@ -476,6 +455,15 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
+name|super
+operator|.
+name|addMessage
+argument_list|(
+name|context
+argument_list|,
+name|message
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 specifier|public
@@ -586,11 +574,11 @@ block|}
 else|else
 block|{
 comment|// no more references to message messageContainer so remove it
-name|container
+name|super
 operator|.
-name|remove
+name|removeMessage
 argument_list|(
-name|id
+name|messageId
 argument_list|)
 expr_stmt|;
 block|}
