@@ -392,8 +392,6 @@ specifier|public
 name|void
 name|close
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 synchronized|synchronized
 init|(
@@ -405,6 +403,8 @@ condition|(
 operator|!
 name|closed
 condition|)
+block|{
+try|try
 block|{
 for|for
 control|(
@@ -492,6 +492,23 @@ name|closed
 operator|=
 literal|true
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Failed to close the store cleanly"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}
