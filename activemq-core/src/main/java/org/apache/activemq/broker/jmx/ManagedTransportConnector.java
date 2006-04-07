@@ -258,6 +258,7 @@ parameter_list|()
 block|{
 return|return
 name|nextConnectionId
+operator|++
 return|;
 block|}
 block|}
