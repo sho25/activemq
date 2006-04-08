@@ -1195,20 +1195,6 @@ name|destination
 argument_list|)
 condition|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-name|brokerService
-operator|.
-name|getBrokerName
-argument_list|()
-operator|+
-literal|" SPLATYTTTT!!!!"
-argument_list|)
-expr_stmt|;
 throw|throw
 operator|new
 name|JMSException
