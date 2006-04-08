@@ -1485,7 +1485,7 @@ name|ObjectName
 operator|)
 name|subscriptionMap
 operator|.
-name|get
+name|remove
 argument_list|(
 name|sub
 argument_list|)
@@ -2466,10 +2466,16 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|e
+name|log
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"failed to browse : "
+operator|+
+name|view
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
