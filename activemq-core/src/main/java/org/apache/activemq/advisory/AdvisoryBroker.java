@@ -1224,6 +1224,8 @@ argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|next
 operator|.
 name|removeDestination
@@ -1243,6 +1245,15 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|expectedIfDestinationDidNotExistYet
+parameter_list|)
+block|{         }
+try|try
+block|{
 name|next
 operator|.
 name|removeDestination
@@ -1262,6 +1273,13 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|expectedIfDestinationDidNotExistYet
+parameter_list|)
+block|{         }
 block|}
 specifier|public
 name|void
