@@ -166,6 +166,26 @@ name|ByteBufferPacket
 name|controlData
 decl_stmt|;
 specifier|private
+specifier|final
+specifier|static
+name|boolean
+name|brokenFileLock
+init|=
+literal|"true"
+operator|.
+name|equals
+argument_list|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"java.nio.channels.FileLock.broken"
+argument_list|,
+literal|"false"
+argument_list|)
+argument_list|)
+decl_stmt|;
+specifier|private
 name|long
 name|controlDataVersion
 init|=
@@ -291,6 +311,12 @@ literal|"Journal is already opened by this application."
 argument_list|)
 throw|;
 block|}
+if|if
+condition|(
+operator|!
+name|brokenFileLock
+condition|)
+block|{
 name|lock
 operator|=
 name|channel
@@ -319,6 +345,7 @@ argument_list|(
 literal|"Journal is already opened by another application"
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 block|}
