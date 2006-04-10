@@ -638,18 +638,10 @@ decl_stmt|;
 if|if
 condition|(
 name|dest
-operator|==
+operator|!=
 literal|null
 condition|)
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"The destination does not exist: "
-operator|+
-name|destination
-argument_list|)
-throw|;
+block|{
 name|destinationMap
 operator|.
 name|removeAll
@@ -669,6 +661,19 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Destination doesn't exist: "
+operator|+
+name|dest
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public

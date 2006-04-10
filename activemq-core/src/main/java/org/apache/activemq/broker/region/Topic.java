@@ -527,6 +527,7 @@ specifier|final
 name|TopicMessageStore
 name|store
 decl_stmt|;
+comment|//this could be NULL! (If an advsiory)
 specifier|protected
 specifier|final
 name|UsageManager
@@ -609,6 +610,7 @@ name|store
 operator|=
 name|store
 expr_stmt|;
+comment|//this could be NULL! (If an advsiory)
 name|this
 operator|.
 name|usageManager
@@ -1579,11 +1581,17 @@ name|IOException
 block|{
 return|return
 name|store
+operator|!=
+literal|null
+condition|?
+name|store
 operator|.
 name|getMessage
 argument_list|(
 name|messageId
 argument_list|)
+else|:
+literal|null
 return|;
 block|}
 specifier|public
@@ -1631,6 +1639,13 @@ name|CopyOnWriteArraySet
 argument_list|()
 decl_stmt|;
 try|try
+block|{
+if|if
+condition|(
+name|store
+operator|!=
+literal|null
+condition|)
 block|{
 name|store
 operator|.
@@ -1722,6 +1737,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
