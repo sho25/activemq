@@ -538,6 +538,12 @@ literal|false
 argument_list|)
 decl_stmt|;
 specifier|private
+name|boolean
+name|reportAdvertizeFailed
+init|=
+literal|true
+decl_stmt|;
+specifier|private
 specifier|final
 name|Executor
 name|executor
@@ -1515,6 +1521,17 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+comment|// If a send fails, chances are all subsequent sends will fail too.. No need to keep reporting the
+comment|// same error over and over.
+if|if
+condition|(
+name|reportAdvertizeFailed
+condition|)
+block|{
+name|reportAdvertizeFailed
+operator|=
+literal|false
+expr_stmt|;
 name|log
 operator|.
 name|error
@@ -1526,6 +1543,33 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+literal|"Operation not permitted"
+operator|.
+name|equals
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+condition|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"The 'Operation not permitted' error has been know to be caused by improper firewall/network setup.  Please make sure that the OS is properly configured to allow multicast traffic over: "
+operator|+
+name|mcast
+operator|.
+name|getLocalAddress
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 block|}
