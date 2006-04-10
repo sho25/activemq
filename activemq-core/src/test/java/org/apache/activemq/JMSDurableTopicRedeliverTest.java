@@ -113,7 +113,12 @@ block|{
 name|String
 name|text
 init|=
-literal|"TEST"
+literal|"TEST: "
+operator|+
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
 decl_stmt|;
 name|Message
 name|sendMessage
@@ -343,8 +348,10 @@ name|assertNull
 argument_list|(
 name|consumer
 operator|.
-name|receiveNoWait
-argument_list|()
+name|receive
+argument_list|(
+literal|1000
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -634,12 +634,12 @@ operator|.
 name|decrementReferenceCount
 argument_list|()
 expr_stmt|;
+block|}
 name|iter
 operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
