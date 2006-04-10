@@ -299,13 +299,13 @@ specifier|private
 name|int
 name|soTimeout
 init|=
-literal|10000
+literal|0
 decl_stmt|;
 specifier|private
 name|int
 name|socketBufferSize
 init|=
-literal|64
+literal|128
 operator|*
 literal|1024
 decl_stmt|;
@@ -1115,7 +1115,9 @@ operator|.
 name|getInputStream
 argument_list|()
 argument_list|,
-literal|4096
+literal|8
+operator|*
+literal|1024
 argument_list|)
 decl_stmt|;
 name|this
@@ -1139,7 +1141,9 @@ operator|.
 name|getOutputStream
 argument_list|()
 argument_list|,
-literal|8192
+literal|16
+operator|*
+literal|1024
 argument_list|)
 decl_stmt|;
 name|this
