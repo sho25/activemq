@@ -1323,7 +1323,6 @@ name|Exception
 block|{
 if|if
 condition|(
-operator|!
 name|destinations
 operator|.
 name|contains
@@ -1331,15 +1330,7 @@ argument_list|(
 name|destination
 argument_list|)
 condition|)
-throw|throw
-operator|new
-name|JMSException
-argument_list|(
-literal|"Destination does not exist: "
-operator|+
-name|destination
-argument_list|)
-throw|;
+block|{
 switch|switch
 condition|(
 name|destination
@@ -1431,6 +1422,7 @@ argument_list|(
 name|destination
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
