@@ -186,7 +186,7 @@ condition|(
 operator|!
 name|session
 operator|.
-name|isAsyncDispatch
+name|isSessionAsyncDispatch
 argument_list|()
 operator|&&
 operator|!
