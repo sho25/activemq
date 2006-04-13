@@ -2540,6 +2540,15 @@ operator|.
 name|EMPTY_SET
 return|;
 block|}
+specifier|public
+name|boolean
+name|isFaultTolerantConfiguration
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 specifier|protected
 name|void
 name|doStop

@@ -111,6 +111,16 @@ name|CONNECTION_ERROR
 init|=
 literal|16
 decl_stmt|;
+name|byte
+name|CONSUMER_CONTROL
+init|=
+literal|17
+decl_stmt|;
+name|byte
+name|CONNECTION_CONTROL
+init|=
+literal|18
+decl_stmt|;
 comment|///////////////////////////////////////////////////
 comment|//
 comment|// Messages that go back and forth between the client

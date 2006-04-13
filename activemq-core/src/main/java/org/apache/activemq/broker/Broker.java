@@ -518,6 +518,12 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * @return true if fault tolerant      */
+specifier|public
+name|boolean
+name|isFaultTolerantConfiguration
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

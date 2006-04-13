@@ -160,6 +160,12 @@ name|ConnectionStatistics
 name|getStatistics
 parameter_list|()
 function_decl|;
+comment|/**      * @return true if the Connection will process control commands      */
+specifier|public
+name|boolean
+name|isManageable
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

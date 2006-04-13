@@ -367,6 +367,13 @@ expr_stmt|;
 name|add
 argument_list|(
 operator|new
+name|ConnectionControlMarshaller
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+operator|new
 name|KeepAliveInfoMarshaller
 argument_list|()
 argument_list|)
@@ -375,6 +382,13 @@ name|add
 argument_list|(
 operator|new
 name|FlushCommandMarshaller
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+operator|new
+name|ConsumerControlMarshaller
 argument_list|()
 argument_list|)
 expr_stmt|;

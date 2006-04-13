@@ -1049,6 +1049,21 @@ name|message
 argument_list|)
 throw|;
 block|}
+specifier|public
+name|boolean
+name|isFaultTolerantConfiguration
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+name|this
+operator|.
+name|message
+argument_list|)
+throw|;
+block|}
 block|}
 end_class
 

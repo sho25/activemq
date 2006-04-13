@@ -1108,6 +1108,19 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|boolean
+name|isFaultTolerantConfiguration
+parameter_list|()
+block|{
+return|return
+name|getNext
+argument_list|()
+operator|.
+name|isFaultTolerantConfiguration
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

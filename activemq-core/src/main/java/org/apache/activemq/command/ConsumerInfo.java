@@ -152,6 +152,10 @@ index|[]
 name|brokerPath
 decl_stmt|;
 specifier|protected
+name|boolean
+name|optimizedAcknowledge
+decl_stmt|;
+specifier|protected
 name|BooleanExpression
 name|additionalPredicate
 decl_stmt|;
@@ -762,6 +766,32 @@ operator|.
 name|networkSubscription
 operator|=
 name|networkSubscription
+expr_stmt|;
+block|}
+comment|/**      *  @openwire:property version=1      * @return Returns the optimizedAcknowledge.      */
+specifier|public
+name|boolean
+name|isOptimizedAcknowledge
+parameter_list|()
+block|{
+return|return
+name|optimizedAcknowledge
+return|;
+block|}
+comment|/**      * @param optimizedAcknowledge The optimizedAcknowledge to set.      */
+specifier|public
+name|void
+name|setOptimizedAcknowledge
+parameter_list|(
+name|boolean
+name|optimizedAcknowledge
+parameter_list|)
+block|{
+name|this
+operator|.
+name|optimizedAcknowledge
+operator|=
+name|optimizedAcknowledge
 expr_stmt|;
 block|}
 block|}

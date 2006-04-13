@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Copyright 2005-2006 The Apache Software Foundation  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *   * Copyright 2005-2006 The Apache Software Foundation  *   * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with  * the License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * When a client connects to a broker, the broker send the client a BrokerInfo  * so that the client knows which broker node he's talking to and also any peers  * that the node has in his cluster.  This is the broker helping the client out  * in discovering other nodes in the cluster.  *   * @openwire:marshaller code="2"  * @version $Revision: 1.7 $  */
+comment|/**  * When a client connects to a broker, the broker send the client a BrokerInfo so that the client knows which broker  * node he's talking to and also any peers that the node has in his cluster. This is the broker helping the client out  * in discovering other nodes in the cluster.  *   * @openwire:marshaller code="2"  * @version $Revision: 1.7 $  */
 end_comment
 
 begin_class
@@ -58,6 +58,12 @@ name|brokerURL
 decl_stmt|;
 name|boolean
 name|slaveBroker
+decl_stmt|;
+name|boolean
+name|masterBroker
+decl_stmt|;
+name|boolean
+name|faultTolerantConfiguration
 decl_stmt|;
 name|BrokerInfo
 name|peerBrokerInfos
@@ -205,7 +211,7 @@ name|this
 argument_list|)
 return|;
 block|}
-comment|/**      * @openwire:property version=1 cache=true      */
+comment|/**      * @openwire:property version=1      */
 specifier|public
 name|boolean
 name|isSlaveBroker
@@ -228,6 +234,58 @@ operator|.
 name|slaveBroker
 operator|=
 name|slaveBroker
+expr_stmt|;
+block|}
+comment|/**      * @openwire:property version=1      */
+specifier|public
+name|boolean
+name|isMasterBroker
+parameter_list|()
+block|{
+return|return
+name|masterBroker
+return|;
+block|}
+comment|/**      * @param masterBroker      *            The masterBroker to set.      */
+specifier|public
+name|void
+name|setMasterBroker
+parameter_list|(
+name|boolean
+name|masterBroker
+parameter_list|)
+block|{
+name|this
+operator|.
+name|masterBroker
+operator|=
+name|masterBroker
+expr_stmt|;
+block|}
+comment|/**      * @openwire:property version=1      * @return Returns the faultTolerantConfiguration.      */
+specifier|public
+name|boolean
+name|isFaultTolerantConfiguration
+parameter_list|()
+block|{
+return|return
+name|faultTolerantConfiguration
+return|;
+block|}
+comment|/**      * @param faultTolerantConfiguration      *            The faultTolerantConfiguration to set.      */
+specifier|public
+name|void
+name|setFaultTolerantConfiguration
+parameter_list|(
+name|boolean
+name|faultTolerantConfiguration
+parameter_list|)
+block|{
+name|this
+operator|.
+name|faultTolerantConfiguration
+operator|=
+name|faultTolerantConfiguration
 expr_stmt|;
 block|}
 block|}

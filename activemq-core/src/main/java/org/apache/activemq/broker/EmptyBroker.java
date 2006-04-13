@@ -725,6 +725,15 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{             }
+specifier|public
+name|boolean
+name|isFaultTolerantConfiguration
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_class
 
