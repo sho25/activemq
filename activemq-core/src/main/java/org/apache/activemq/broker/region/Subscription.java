@@ -293,6 +293,33 @@ name|ObjectName
 name|objectName
 parameter_list|)
 function_decl|;
+comment|/**      * @return true when 60% or more room is left for dispatching messages      */
+specifier|public
+name|boolean
+name|isLowWaterMark
+parameter_list|()
+function_decl|;
+comment|/**      * @return true when 10% or less room is left for dispatching messages      */
+specifier|public
+name|boolean
+name|isHighWaterMark
+parameter_list|()
+function_decl|;
+comment|/**      * inform the MessageConsumer on the client to change it's prefetch      * @param newPrefetch      */
+specifier|public
+name|void
+name|updateConsumerPrefetch
+parameter_list|(
+name|int
+name|newPrefetch
+parameter_list|)
+function_decl|;
+comment|/**      * optimize message consumer prefetch if the consumer supports it      *      */
+specifier|public
+name|void
+name|optimizePrefetch
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

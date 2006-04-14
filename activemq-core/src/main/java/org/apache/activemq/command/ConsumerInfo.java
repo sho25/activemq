@@ -156,6 +156,12 @@ name|boolean
 name|optimizedAcknowledge
 decl_stmt|;
 specifier|protected
+specifier|transient
+name|int
+name|currentPrefetchSize
+decl_stmt|;
+comment|//used by the broker
+specifier|protected
 name|BooleanExpression
 name|additionalPredicate
 decl_stmt|;
@@ -440,6 +446,12 @@ block|{
 name|this
 operator|.
 name|prefetchSize
+operator|=
+name|prefetchSize
+expr_stmt|;
+name|this
+operator|.
+name|currentPrefetchSize
 operator|=
 name|prefetchSize
 expr_stmt|;
@@ -792,6 +804,32 @@ operator|.
 name|optimizedAcknowledge
 operator|=
 name|optimizedAcknowledge
+expr_stmt|;
+block|}
+comment|/**      * @return Returns the currentPrefetchSize.      */
+specifier|public
+name|int
+name|getCurrentPrefetchSize
+parameter_list|()
+block|{
+return|return
+name|currentPrefetchSize
+return|;
+block|}
+comment|/**      * @param currentPrefetchSize The currentPrefetchSize to set.      */
+specifier|public
+name|void
+name|setCurrentPrefetchSize
+parameter_list|(
+name|int
+name|currentPrefetchSize
+parameter_list|)
+block|{
+name|this
+operator|.
+name|currentPrefetchSize
+operator|=
+name|currentPrefetchSize
 expr_stmt|;
 block|}
 block|}
