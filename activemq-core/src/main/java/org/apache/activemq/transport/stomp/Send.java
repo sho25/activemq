@@ -770,6 +770,11 @@ name|tx_id
 argument_list|)
 expr_stmt|;
 block|}
+name|msg
+operator|.
+name|onSend
+argument_list|()
+expr_stmt|;
 return|return
 operator|new
 name|CommandEnvelope
