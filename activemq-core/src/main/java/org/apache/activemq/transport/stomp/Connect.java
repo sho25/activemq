@@ -548,6 +548,15 @@ operator|.
 name|NULL
 argument_list|)
 expr_stmt|;
+name|buffer
+operator|.
+name|append
+argument_list|(
+name|Stomp
+operator|.
+name|NEWLINE
+argument_list|)
+expr_stmt|;
 name|out
 operator|.
 name|writeBytes
