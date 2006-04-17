@@ -549,6 +549,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+specifier|synchronized
 specifier|private
 name|void
 name|addMessageDispatch
@@ -622,6 +623,7 @@ return|return
 name|subscriptionId
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|MessageAck
 name|createMessageAck
@@ -778,6 +780,7 @@ name|getMessageId
 argument_list|()
 argument_list|)
 expr_stmt|;
+break|break;
 block|}
 block|}
 name|ack

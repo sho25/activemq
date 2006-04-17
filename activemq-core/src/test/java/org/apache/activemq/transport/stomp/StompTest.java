@@ -540,6 +540,22 @@ operator|==
 literal|0
 condition|)
 block|{
+name|c
+operator|=
+name|is
+operator|.
+name|read
+argument_list|()
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Expecting stomp frame to terminate with \0\n"
+argument_list|,
+name|c
+argument_list|,
+literal|'\n'
+argument_list|)
+expr_stmt|;
 name|byte
 index|[]
 name|ba
