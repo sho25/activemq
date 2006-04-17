@@ -153,6 +153,16 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -733,6 +743,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      */
+specifier|synchronized
+specifier|public
+name|void
+name|destroy
+parameter_list|()
+block|{             }
 block|}
 end_class
 

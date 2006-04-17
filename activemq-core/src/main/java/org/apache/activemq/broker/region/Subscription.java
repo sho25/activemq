@@ -320,6 +320,12 @@ name|void
 name|optimizePrefetch
 parameter_list|()
 function_decl|;
+comment|/**      * Called when the subscription is destroyed.      */
+specifier|public
+name|void
+name|destroy
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

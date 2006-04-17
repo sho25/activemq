@@ -1004,7 +1004,13 @@ parameter_list|(
 name|Subscription
 name|sub
 parameter_list|)
-block|{             }
+block|{
+name|sub
+operator|.
+name|destroy
+argument_list|()
+expr_stmt|;
+block|}
 specifier|public
 name|void
 name|removeSubscription
