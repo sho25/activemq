@@ -729,22 +729,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|transport
-operator|.
-name|failover
-operator|.
-name|FailoverTransport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|util
 operator|.
 name|IdGenerator
@@ -912,26 +896,6 @@ operator|.
 name|concurrent
 operator|.
 name|Executor
-import|;
-end_import
-
-begin_import
-import|import
-name|edu
-operator|.
-name|emory
-operator|.
-name|mathcs
-operator|.
-name|backport
-operator|.
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|LinkedBlockingDeque
 import|;
 end_import
 
@@ -1504,13 +1468,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|asyncConnectionThread
-operator|.
-name|allowCoreThreadTimeOut
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
+comment|// Todo: see if we can allow the core threads to timeout.
+comment|// asyncConnectionThread.allowCoreThreadTimeOut(true);
 name|this
 operator|.
 name|info
@@ -3524,6 +3483,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|response
+operator|!=
+literal|null
+operator|&&
 name|response
 operator|.
 name|isException
