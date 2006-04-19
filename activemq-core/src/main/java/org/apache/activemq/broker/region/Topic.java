@@ -1523,9 +1523,9 @@ operator|.
 name|getSubscriptionName
 argument_list|()
 argument_list|,
-name|ack
+name|node
 operator|.
-name|getLastMessageId
+name|getMessageId
 argument_list|()
 argument_list|)
 expr_stmt|;
