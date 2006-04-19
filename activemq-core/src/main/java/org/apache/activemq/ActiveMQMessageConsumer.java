@@ -2311,7 +2311,7 @@ operator|.
 name|getCurrentPrefetchSize
 argument_list|()
 operator|*
-literal|.75
+literal|.50
 operator|)
 condition|)
 block|{
