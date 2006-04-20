@@ -139,6 +139,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -202,6 +212,20 @@ operator|.
 name|transport
 operator|.
 name|TransportThreadSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IntrospectionSupport
 import|;
 end_import
 
@@ -342,6 +366,10 @@ decl_stmt|;
 specifier|private
 name|InetSocketAddress
 name|socketAddress
+decl_stmt|;
+specifier|private
+name|Map
+name|socketOptions
 decl_stmt|;
 comment|/**      * Construct basic helpers      *       * @param wireFormat      */
 specifier|protected
@@ -1190,6 +1218,24 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+specifier|public
+name|void
+name|setSocketOptions
+parameter_list|(
+name|Map
+name|socketOptions
+parameter_list|)
+block|{
+name|IntrospectionSupport
+operator|.
+name|setProperties
+argument_list|(
+name|socket
+argument_list|,
+name|socketOptions
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
