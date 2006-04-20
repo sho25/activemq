@@ -1252,7 +1252,7 @@ literal|"Second Message"
 argument_list|)
 block|}
 decl_stmt|;
-comment|// lets consume any outstanding messages from previous test runs
+comment|// lets consume any outstanding messages from prev test runs
 while|while
 condition|(
 name|consumer
@@ -1389,7 +1389,7 @@ operator|.
 name|rollback
 argument_list|()
 expr_stmt|;
-comment|// Consume again.. the previous message should
+comment|// Consume again.. the prev message should
 comment|// get redelivered.
 name|message
 operator|=
@@ -1480,7 +1480,7 @@ literal|"Second Message"
 argument_list|)
 block|}
 decl_stmt|;
-comment|// lets consume any outstanding messages from previous test runs
+comment|// lets consume any outstanding messages from prev test runs
 while|while
 condition|(
 name|consumer
@@ -1604,7 +1604,7 @@ operator|.
 name|rollback
 argument_list|()
 expr_stmt|;
-comment|// Consume again.. the previous message should
+comment|// Consume again.. the prev message should
 comment|// get redelivered.
 name|message
 operator|=
@@ -1941,7 +1941,7 @@ literal|"Second Message"
 argument_list|)
 block|}
 decl_stmt|;
-comment|// lets consume any outstanding messages from previous test runs
+comment|// lets consume any outstanding messages from prev test runs
 while|while
 condition|(
 name|consumer
@@ -2380,7 +2380,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// Close the previous connection.
+comment|// Close the prev connection.
 name|connection
 operator|.
 name|close
@@ -2510,6 +2510,13 @@ expr_stmt|;
 name|prefetchPolicy
 operator|.
 name|setDurableTopicPrefetch
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+name|prefetchPolicy
+operator|.
+name|setOptimizeDurableTopicPrefetch
 argument_list|(
 literal|1
 argument_list|)

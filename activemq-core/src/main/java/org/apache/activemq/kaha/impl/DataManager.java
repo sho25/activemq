@@ -182,7 +182,7 @@ literal|1024
 operator|*
 literal|1024
 operator|*
-literal|16
+literal|32
 decl_stmt|;
 specifier|private
 specifier|final

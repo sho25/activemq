@@ -733,6 +733,16 @@ argument_list|(
 name|prefetchValue
 argument_list|)
 expr_stmt|;
+name|activeMQConnection
+operator|.
+name|getPrefetchPolicy
+argument_list|()
+operator|.
+name|setOptimizeDurableTopicPrefetch
+argument_list|(
+name|prefetchValue
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
