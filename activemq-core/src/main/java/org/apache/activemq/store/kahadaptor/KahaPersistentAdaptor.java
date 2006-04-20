@@ -551,6 +551,8 @@ argument_list|(
 name|getMapContainer
 argument_list|(
 name|destination
+argument_list|,
+literal|"queue-data"
 argument_list|)
 argument_list|,
 name|destination
@@ -633,6 +635,8 @@ init|=
 name|getMapContainer
 argument_list|(
 name|destination
+argument_list|,
+literal|"topic-data"
 argument_list|)
 decl_stmt|;
 name|MapContainer
@@ -646,6 +650,8 @@ name|toString
 argument_list|()
 operator|+
 literal|"-Subscriptions"
+argument_list|,
+literal|"topic-subs"
 argument_list|)
 decl_stmt|;
 name|MapContainer
@@ -659,8 +665,8 @@ name|destination
 operator|.
 name|toString
 argument_list|()
-operator|+
-literal|"-Acks"
+argument_list|,
+literal|"topic-acks"
 argument_list|)
 decl_stmt|;
 name|ackContainer
@@ -784,6 +790,8 @@ operator|.
 name|getMapContainer
 argument_list|(
 name|PREPARED_TRANSACTIONS_NAME
+argument_list|,
+literal|"transactions"
 argument_list|)
 decl_stmt|;
 name|container
@@ -942,6 +950,9 @@ name|getMapContainer
 parameter_list|(
 name|Object
 name|id
+parameter_list|,
+name|String
+name|containerName
 parameter_list|)
 throws|throws
 name|IOException
@@ -954,6 +965,8 @@ operator|.
 name|getMapContainer
 argument_list|(
 name|id
+argument_list|,
+name|containerName
 argument_list|)
 decl_stmt|;
 name|container

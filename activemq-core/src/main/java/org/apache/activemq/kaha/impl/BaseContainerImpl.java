@@ -131,8 +131,8 @@ name|DataManager
 name|dataManager
 decl_stmt|;
 specifier|protected
-name|Object
-name|id
+name|ContainerId
+name|containerId
 decl_stmt|;
 specifier|protected
 name|boolean
@@ -158,7 +158,7 @@ decl_stmt|;
 specifier|protected
 name|BaseContainerImpl
 parameter_list|(
-name|Object
+name|ContainerId
 name|id
 parameter_list|,
 name|IndexItem
@@ -173,7 +173,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|id
+name|containerId
 operator|=
 name|id
 expr_stmt|;
@@ -205,6 +205,14 @@ argument_list|(
 name|root
 argument_list|)
 expr_stmt|;
+block|}
+name|ContainerId
+name|getContainerId
+parameter_list|()
+block|{
+return|return
+name|containerId
+return|;
 block|}
 specifier|public
 specifier|abstract
@@ -297,7 +305,10 @@ name|checkClosed
 argument_list|()
 expr_stmt|;
 return|return
-name|id
+name|containerId
+operator|.
+name|getKey
+argument_list|()
 return|;
 block|}
 specifier|protected

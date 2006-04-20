@@ -32,7 +32,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** * A Store is holds persistent containers *  * @version $Revision: 1.2 $ */
+comment|/**  * A Store is holds persistent containers  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_interface
@@ -40,7 +40,7 @@ specifier|public
 interface|interface
 name|Store
 block|{
-comment|/**      * close the store      * @throws IOException      */
+comment|/**      * close the store      *       * @throws IOException      */
 specifier|public
 name|void
 name|close
@@ -48,7 +48,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Force all writes to disk      * @throws IOException      */
+comment|/**      * Force all writes to disk      *       * @throws IOException      */
 specifier|public
 name|void
 name|force
@@ -56,7 +56,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * empty all the contents of the store      * @throws IOException      */
+comment|/**      * empty all the contents of the store      *       * @throws IOException      */
 specifier|public
 name|void
 name|clear
@@ -64,7 +64,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * delete the store      * @return true if the delete was successful      * @throws IOException      */
+comment|/**      * delete the store      *       * @return true if the delete was successful      * @throws IOException      */
 specifier|public
 name|boolean
 name|delete
@@ -72,7 +72,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Checks if a MapContainer exists      * @param id      * @return new MapContainer      * @throws IOException       */
+comment|/**      * Checks if a MapContainer exists      *       * @param id      * @return new MapContainer      * @throws IOException      */
 specifier|public
 name|boolean
 name|doesMapContainerExist
@@ -83,7 +83,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Get a MapContainer with the given id - the MapContainer is created if needed      * @param id      * @return container for the associated id or null if it doesn't exist      * @throws IOException       */
+comment|/**      * Get a MapContainer with the given id - the MapContainer is created if needed      *       * @param id      * @return container for the associated id or null if it doesn't exist      * @throws IOException      */
 specifier|public
 name|MapContainer
 name|getMapContainer
@@ -94,7 +94,21 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * delete a container      * @param id      * @throws IOException      */
+comment|/**      * Get a MapContainer with the given id - the MapContainer is created if needed      *       * @param id      * @param containerName      * @return container for the associated id or null if it doesn't exist      * @throws IOException      */
+specifier|public
+name|MapContainer
+name|getMapContainer
+parameter_list|(
+name|Object
+name|id
+parameter_list|,
+name|String
+name|containerName
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * delete a container      *       * @param id      * @throws IOException      */
 specifier|public
 name|void
 name|deleteMapContainer
@@ -105,7 +119,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Get a Set of call MapContainer Ids      * @return the set of ids      * @throws IOException       */
+comment|/**      * Get a Set of call MapContainer Ids      *       * @return the set of ids      * @throws IOException      */
 specifier|public
 name|Set
 name|getMapContainerIds
@@ -113,7 +127,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Checks if a ListContainer exists      * @param id      * @return new MapContainer      * @throws IOException       */
+comment|/**      * Checks if a ListContainer exists      *       * @param id      * @return new MapContainer      * @throws IOException      */
 specifier|public
 name|boolean
 name|doesListContainerExist
@@ -124,7 +138,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**     * Get a ListContainer with the given id and creates it if it doesn't exist     * @param id     * @return container for the associated id or null if it doesn't exist  * @throws IOException      */
+comment|/**      * Get a ListContainer with the given id and creates it if it doesn't exist      *       * @param id      * @return container for the associated id or null if it doesn't exist      * @throws IOException      */
 specifier|public
 name|ListContainer
 name|getListContainer
@@ -135,7 +149,21 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**     * delete a ListContainer     * @param id     * @throws IOException     */
+comment|/**      * Get a ListContainer with the given id and creates it if it doesn't exist      *       * @param id      * @param containerName      * @return container for the associated id or null if it doesn't exist      * @throws IOException      */
+specifier|public
+name|ListContainer
+name|getListContainer
+parameter_list|(
+name|Object
+name|id
+parameter_list|,
+name|String
+name|containerName
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * delete a ListContainer      *       * @param id      * @throws IOException      */
 specifier|public
 name|void
 name|deleteListContainer
@@ -146,7 +174,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**     * Get a Set of call ListContainer Ids     * @return the set of ids  * @throws IOException      */
+comment|/**      * Get a Set of call ListContainer Ids      *       * @return the set of ids      * @throws IOException      */
 specifier|public
 name|Set
 name|getListContainerIds

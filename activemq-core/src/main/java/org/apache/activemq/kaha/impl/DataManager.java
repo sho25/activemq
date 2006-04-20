@@ -413,6 +413,15 @@ block|}
 block|}
 block|}
 block|}
+specifier|public
+name|String
+name|getPrefix
+parameter_list|()
+block|{
+return|return
+name|prefix
+return|;
+block|}
 name|DataFile
 name|findSpaceForData
 parameter_list|(
@@ -1071,7 +1080,7 @@ argument_list|()
 decl_stmt|;
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"discarding data file "
 operator|+
@@ -1171,7 +1180,7 @@ argument_list|()
 decl_stmt|;
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"discarding data file "
 operator|+

@@ -459,6 +459,8 @@ operator|.
 name|getListContainer
 argument_list|(
 name|key
+argument_list|,
+literal|"durable-subs"
 argument_list|)
 decl_stmt|;
 name|container
@@ -1084,6 +1086,8 @@ operator|.
 name|getListContainer
 argument_list|(
 name|key
+argument_list|,
+literal|"topic-subs"
 argument_list|)
 decl_stmt|;
 name|Marshaller

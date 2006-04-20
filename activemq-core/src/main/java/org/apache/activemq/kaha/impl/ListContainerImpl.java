@@ -200,7 +200,7 @@ decl_stmt|;
 specifier|protected
 name|ListContainerImpl
 parameter_list|(
-name|Object
+name|ContainerId
 name|id
 parameter_list|,
 name|IndexItem
