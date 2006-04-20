@@ -878,7 +878,13 @@ name|i
 index|]
 argument_list|)
 decl_stmt|;
-comment|// TODO sent message parameters
+name|appendParametersToMessage
+argument_list|(
+name|request
+argument_list|,
+name|message
+argument_list|)
+expr_stmt|;
 name|client
 operator|.
 name|send
@@ -1068,6 +1074,13 @@ argument_list|(
 name|body
 argument_list|)
 decl_stmt|;
+name|appendParametersToMessage
+argument_list|(
+name|request
+argument_list|,
+name|message
+argument_list|)
+expr_stmt|;
 name|client
 operator|.
 name|send
