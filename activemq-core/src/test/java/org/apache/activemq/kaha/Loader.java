@@ -117,22 +117,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|kaha
-operator|.
-name|impl
-operator|.
-name|StoreImpl
-import|;
-end_import
-
-begin_import
-import|import
 name|edu
 operator|.
 name|emory

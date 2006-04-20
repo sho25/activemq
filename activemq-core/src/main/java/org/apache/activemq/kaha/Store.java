@@ -72,7 +72,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Checks if a MapContainer exists      * @param id      * @return new MapContainer      */
+comment|/**      * Checks if a MapContainer exists      * @param id      * @return new MapContainer      * @throws IOException       */
 specifier|public
 name|boolean
 name|doesMapContainerExist
@@ -80,6 +80,8 @@ parameter_list|(
 name|Object
 name|id
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 comment|/**      * Get a MapContainer with the given id - the MapContainer is created if needed      * @param id      * @return container for the associated id or null if it doesn't exist      * @throws IOException       */
 specifier|public
@@ -103,13 +105,15 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Get a Set of call MapContainer Ids      * @return the set of ids      */
+comment|/**      * Get a Set of call MapContainer Ids      * @return the set of ids      * @throws IOException       */
 specifier|public
 name|Set
 name|getMapContainerIds
 parameter_list|()
+throws|throws
+name|IOException
 function_decl|;
-comment|/**      * Checks if a ListContainer exists      * @param id      * @return new MapContainer      */
+comment|/**      * Checks if a ListContainer exists      * @param id      * @return new MapContainer      * @throws IOException       */
 specifier|public
 name|boolean
 name|doesListContainerExist
@@ -117,6 +121,8 @@ parameter_list|(
 name|Object
 name|id
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 comment|/**     * Get a ListContainer with the given id and creates it if it doesn't exist     * @param id     * @return container for the associated id or null if it doesn't exist  * @throws IOException      */
 specifier|public
@@ -140,11 +146,13 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**     * Get a Set of call ListContainer Ids     * @return the set of ids     */
+comment|/**     * Get a Set of call ListContainer Ids     * @return the set of ids  * @throws IOException      */
 specifier|public
 name|Set
 name|getListContainerIds
 parameter_list|()
+throws|throws
+name|IOException
 function_decl|;
 block|}
 end_interface

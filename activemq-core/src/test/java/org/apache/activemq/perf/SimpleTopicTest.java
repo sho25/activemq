@@ -173,8 +173,11 @@ specifier|protected
 name|String
 name|bindAddress
 init|=
-literal|"tcp://localhost:61616"
+literal|"tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=true"
 decl_stmt|;
+comment|//protected String bindAddress="tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=false";
+comment|//protected String bindAddress="vm://localhost?marshal=true";
+comment|//protected String bindAddress="vm://localhost";
 specifier|protected
 name|PerfProducer
 index|[]
@@ -221,7 +224,7 @@ specifier|protected
 name|int
 name|MESSAGE_COUNT
 init|=
-literal|1000000
+literal|100000
 decl_stmt|;
 specifier|protected
 name|byte
@@ -703,7 +706,7 @@ if|if
 condition|(
 name|i
 operator|%
-literal|5000
+literal|10000
 operator|==
 literal|0
 condition|)

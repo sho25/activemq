@@ -57,7 +57,7 @@ name|kaha
 operator|.
 name|impl
 operator|.
-name|StoreImpl
+name|KahaStore
 import|;
 end_import
 
@@ -113,7 +113,7 @@ init|=
 literal|"load.db"
 decl_stmt|;
 specifier|protected
-name|StoreImpl
+name|KahaStore
 name|store
 decl_stmt|;
 comment|/*      * Test method for 'org.apache.activemq.kaha.Store.close()'      */
@@ -187,22 +187,9 @@ operator|.
 name|await
 argument_list|()
 expr_stmt|;
-name|store
-operator|.
-name|dumpFreeSpace
-argument_list|(
-operator|new
-name|PrintWriter
-argument_list|(
-name|System
-operator|.
-name|out
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 specifier|protected
-name|StoreImpl
+name|KahaStore
 name|getStore
 parameter_list|()
 throws|throws
@@ -210,7 +197,7 @@ name|IOException
 block|{
 return|return
 operator|(
-name|StoreImpl
+name|KahaStore
 operator|)
 name|StoreFactory
 operator|.
