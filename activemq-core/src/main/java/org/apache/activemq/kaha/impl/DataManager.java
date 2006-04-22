@@ -680,6 +680,11 @@ operator|.
 name|force
 argument_list|()
 expr_stmt|;
+name|dataFile
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 name|fileMap
 operator|.
