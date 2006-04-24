@@ -930,6 +930,17 @@ name|IOException
 block|{
 if|if
 condition|(
+name|closed
+condition|)
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Store has been closed."
+argument_list|)
+throw|;
+if|if
+condition|(
 operator|!
 name|initialized
 condition|)
