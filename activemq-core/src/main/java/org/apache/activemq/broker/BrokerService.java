@@ -217,22 +217,6 @@ name|broker
 operator|.
 name|jmx
 operator|.
-name|BrokerViewMBean
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|jmx
-operator|.
 name|ConnectorView
 import|;
 end_import
@@ -848,6 +832,10 @@ decl_stmt|;
 specifier|private
 name|Broker
 name|broker
+decl_stmt|;
+specifier|private
+name|BrokerView
+name|adminView
 decl_stmt|;
 specifier|private
 name|ManagementContext
@@ -2120,6 +2108,13 @@ operator|.
 name|getMBeanServer
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|mbeanServer
+operator|!=
+literal|null
+condition|)
+block|{
 for|for
 control|(
 name|Iterator
@@ -2175,6 +2170,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 name|stopper
 operator|.
 name|stop
@@ -2208,6 +2204,7 @@ expr_stmt|;
 block|}
 comment|// Properties
 comment|// -------------------------------------------------------------------------
+comment|/**      * Returns the message broker      */
 specifier|public
 name|Broker
 name|getBroker
@@ -2256,6 +2253,45 @@ block|}
 return|return
 name|broker
 return|;
+block|}
+comment|/**      * Returns the administration view of the broker; used to create and destroy resources such as queues and topics.      *       * Note this method returns null if JMX is disabled.      */
+specifier|public
+name|BrokerView
+name|getAdminView
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+if|if
+condition|(
+name|adminView
+operator|==
+literal|null
+condition|)
+block|{
+comment|// force lazy creation
+name|getBroker
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|adminView
+return|;
+block|}
+specifier|public
+name|void
+name|setAdminView
+parameter_list|(
+name|BrokerView
+name|adminView
+parameter_list|)
+block|{
+name|this
+operator|.
+name|adminView
+operator|=
+name|adminView
+expr_stmt|;
 block|}
 specifier|public
 name|String
@@ -3241,6 +3277,13 @@ operator|.
 name|getMBeanServer
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|mbeanServer
+operator|!=
+literal|null
+condition|)
+block|{
 name|ConnectorViewMBean
 name|view
 init|=
@@ -3292,6 +3335,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+block|}
 specifier|protected
 name|void
 name|registerNetworkConnectorMBean
@@ -3311,6 +3355,13 @@ operator|.
 name|getMBeanServer
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|mbeanServer
+operator|!=
+literal|null
+condition|)
+block|{
 name|NetworkConnectorViewMBean
 name|view
 init|=
@@ -3402,6 +3453,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+block|}
 specifier|protected
 name|void
 name|registerProxyConnectorMBean
@@ -3421,6 +3473,13 @@ operator|.
 name|getMBeanServer
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|mbeanServer
+operator|!=
+literal|null
+condition|)
+block|{
 name|ProxyConnectorView
 name|view
 init|=
@@ -3512,6 +3571,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+block|}
 specifier|protected
 name|void
 name|registerFTConnectorMBean
@@ -3531,6 +3591,13 @@ operator|.
 name|getMBeanServer
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|mbeanServer
+operator|!=
+literal|null
+condition|)
+block|{
 name|FTConnectorView
 name|view
 init|=
@@ -3610,6 +3677,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+block|}
 specifier|protected
 name|void
 name|registerJmsConnectorMBean
@@ -3629,6 +3697,13 @@ operator|.
 name|getMBeanServer
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|mbeanServer
+operator|!=
+literal|null
+condition|)
+block|{
 name|JmsConnectorView
 name|view
 init|=
@@ -3720,6 +3795,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+block|}
 comment|/**      * Factory method to create a new broker      *      * @throws Exception      *      * @throws      * @throws      */
 specifier|protected
 name|Broker
@@ -3808,9 +3884,8 @@ argument_list|(
 name|broker
 argument_list|)
 expr_stmt|;
-name|BrokerViewMBean
-name|view
-init|=
+name|adminView
+operator|=
 operator|new
 name|BrokerView
 argument_list|(
@@ -3818,7 +3893,7 @@ name|this
 argument_list|,
 name|managedBroker
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|MBeanServer
 name|mbeanServer
 init|=
@@ -3828,6 +3903,13 @@ operator|.
 name|getMBeanServer
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|mbeanServer
+operator|!=
+literal|null
+condition|)
+block|{
 name|ObjectName
 name|objectName
 init|=
@@ -3838,7 +3920,7 @@ name|mbeanServer
 operator|.
 name|registerMBean
 argument_list|(
-name|view
+name|adminView
 argument_list|,
 name|objectName
 argument_list|)
@@ -3850,6 +3932,7 @@ argument_list|(
 name|objectName
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|broker
