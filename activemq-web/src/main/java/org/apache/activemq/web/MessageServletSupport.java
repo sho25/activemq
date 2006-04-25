@@ -1026,6 +1026,17 @@ index|[
 literal|0
 index|]
 decl_stmt|;
+if|if
+condition|(
+name|text
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 return|return
 name|ActiveMQDestination
 operator|.
