@@ -73,11 +73,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"### starting up the test case: "
 operator|+
@@ -102,11 +100,9 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"### started up the test case: "
 operator|+
@@ -132,24 +128,15 @@ operator|.
 name|tearDown
 argument_list|()
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"### closed down the test case: "
 operator|+
 name|getName
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|()
 expr_stmt|;
 block|}
 block|}

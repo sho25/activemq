@@ -328,11 +328,9 @@ operator|.
 name|getBrokerName
 argument_list|()
 decl_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Got broker name: "
 operator|+
@@ -484,11 +482,9 @@ name|getFragment
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"connection URI is: "
 operator|+

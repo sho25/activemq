@@ -84,7 +84,7 @@ name|AutoFailTestSupport
 extends|extends
 name|TestCase
 block|{
-specifier|private
+specifier|protected
 specifier|static
 specifier|final
 name|Log
@@ -299,11 +299,9 @@ condition|(
 name|verbose
 condition|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Starting auto fail thread..."
 argument_list|)
@@ -355,11 +353,9 @@ condition|(
 name|verbose
 condition|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Stopping auto fail thread..."
 argument_list|)

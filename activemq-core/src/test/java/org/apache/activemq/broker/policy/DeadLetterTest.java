@@ -134,11 +134,9 @@ argument_list|()
 operator|+
 literal|1
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Will redeliver messages: "
 operator|+
@@ -282,11 +280,9 @@ name|rollback
 argument_list|()
 expr_stmt|;
 block|}
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Rolled back: "
 operator|+

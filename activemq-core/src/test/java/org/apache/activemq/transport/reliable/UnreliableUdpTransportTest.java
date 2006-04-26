@@ -206,11 +206,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Producer using URI: "
 operator|+
@@ -291,11 +289,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Consumer on port: "
 operator|+

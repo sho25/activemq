@@ -411,11 +411,9 @@ name|get
 argument_list|()
 condition|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Client transport error:"
 argument_list|)
@@ -576,11 +574,9 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"["
 operator|+
@@ -646,11 +642,9 @@ name|get
 argument_list|()
 condition|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Server transport error:"
 argument_list|)
@@ -796,11 +790,9 @@ name|get
 argument_list|()
 condition|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Client transport error:"
 argument_list|)
@@ -1025,11 +1017,9 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Sleeping"
 argument_list|)

@@ -500,11 +500,9 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Waiting for cluster to be fully connected"
 argument_list|)
@@ -643,11 +641,9 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Cluster is online."
 argument_list|)

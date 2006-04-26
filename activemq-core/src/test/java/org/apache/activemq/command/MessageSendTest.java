@@ -370,11 +370,9 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"marshaled/unmarshaled: "
 operator|+

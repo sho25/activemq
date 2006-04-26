@@ -27,6 +27,34 @@ name|JmsTopicSendReceiveWithTwoConnectionsTest
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision: 1.2 $  */
 end_comment
@@ -38,6 +66,21 @@ name|JmsQueueSendReceiveTwoConnectionsTest
 extends|extends
 name|JmsTopicSendReceiveWithTwoConnectionsTest
 block|{
+specifier|protected
+specifier|static
+specifier|final
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|JmsQueueSendReceiveTwoConnectionsTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * Set up the test with a queue and using two connections.       *       * @see junit.framework.TestCase#setUp()      */
 specifier|protected
 name|void

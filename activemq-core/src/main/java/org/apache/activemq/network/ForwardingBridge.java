@@ -1001,21 +1001,23 @@ name|IOException
 name|error
 parameter_list|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Unexpected remote exception: "
 operator|+
 name|error
 argument_list|)
 expr_stmt|;
-name|error
+name|log
 operator|.
-name|printStackTrace
-argument_list|()
+name|debug
+argument_list|(
+literal|"Exception trace: "
+argument_list|,
+name|error
+argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
@@ -1128,21 +1130,23 @@ name|Throwable
 name|error
 parameter_list|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Unexpected local exception: "
 operator|+
 name|error
 argument_list|)
 expr_stmt|;
-name|error
+name|log
 operator|.
-name|printStackTrace
-argument_list|()
+name|debug
+argument_list|(
+literal|"Exception trace: "
+argument_list|,
+name|error
+argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
@@ -1454,11 +1458,9 @@ block|}
 block|}
 else|else
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 literal|"Unexpected local command: "
 operator|+

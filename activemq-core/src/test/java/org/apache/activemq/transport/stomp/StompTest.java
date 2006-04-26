@@ -2028,11 +2028,9 @@ argument_list|(
 literal|1000
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Received frame: "
 operator|+

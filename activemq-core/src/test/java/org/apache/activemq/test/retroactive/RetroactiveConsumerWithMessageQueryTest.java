@@ -343,11 +343,9 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Sent: "
 operator|+
@@ -468,11 +466,9 @@ init|=
 name|getBrokerXml
 argument_list|()
 decl_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Loading broker configuration from the classpath with URI: "
 operator|+

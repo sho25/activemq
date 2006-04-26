@@ -75,6 +75,34 @@ name|Assert
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * A simple container of messages for performing testing and rendezvous style  * code. You can use this class a {@link MessageListener} and then make  * assertions about how many messages it has received allowing a certain maximum  * amount of time to ensure that the test does not hang forever.  *   * Also you can chain these instances together with the  * {@link #setParent(MessageListener)} method so that you can aggregate the  * total number of messages consumed across a number of consumers.  *   * @version $Revision: 1.6 $  */
 end_comment
@@ -88,6 +116,21 @@ name|Assert
 implements|implements
 name|MessageListener
 block|{
+specifier|protected
+specifier|static
+specifier|final
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|MessageIdList
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 name|List
 name|messageIds
@@ -313,11 +356,9 @@ condition|(
 name|verbose
 condition|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Received message: "
 operator|+
@@ -380,11 +421,9 @@ name|int
 name|messageCount
 parameter_list|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Waiting for "
 operator|+
@@ -469,11 +508,9 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Caught: "
 operator|+
@@ -492,11 +529,9 @@ argument_list|()
 operator|-
 name|start
 decl_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"End of wait for "
 operator|+

@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URI
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -91,11 +101,29 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|net
+name|apache
 operator|.
-name|URI
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -110,6 +138,21 @@ name|MulticastTransportTest
 extends|extends
 name|UdpTransportTest
 block|{
+specifier|protected
+specifier|static
+specifier|final
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|MulticastTransportTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 name|String
 name|multicastURI
@@ -123,11 +166,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Producer using URI: "
 operator|+

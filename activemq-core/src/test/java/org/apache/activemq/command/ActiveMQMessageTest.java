@@ -1027,11 +1027,9 @@ name|getJMSTimestamp
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Message is:  "
 operator|+

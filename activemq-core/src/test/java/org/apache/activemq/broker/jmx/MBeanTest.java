@@ -740,11 +740,9 @@ argument_list|,
 name|name1
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Created durable subscriber with name: "
 operator|+
@@ -1082,11 +1080,9 @@ name|String
 name|text
 parameter_list|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 name|text
 argument_list|)

@@ -156,11 +156,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"About to send: "
 operator|+
@@ -179,11 +177,9 @@ argument_list|,
 literal|2000
 argument_list|)
 decl_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Received: "
 operator|+
@@ -216,11 +212,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Producer using URI: "
 operator|+

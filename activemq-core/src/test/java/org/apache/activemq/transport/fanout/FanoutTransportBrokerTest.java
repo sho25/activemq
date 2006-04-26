@@ -979,11 +979,9 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Dropping: "
 operator|+

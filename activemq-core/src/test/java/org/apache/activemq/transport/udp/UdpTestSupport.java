@@ -19,6 +19,36 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|MessageNotWriteableException
+import|;
+end_import
+
+begin_import
+import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|TestCase
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -84,20 +114,6 @@ operator|.
 name|command
 operator|.
 name|ConsumerInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|KeepAliveInfo
 import|;
 end_import
 
@@ -201,31 +217,29 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jms
+name|apache
 operator|.
-name|MessageNotWriteableException
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|io
+name|apache
 operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
+name|commons
 operator|.
-name|framework
+name|logging
 operator|.
-name|TestCase
+name|LogFactory
 import|;
 end_import
 
@@ -243,6 +257,21 @@ name|TestCase
 implements|implements
 name|TransportListener
 block|{
+specifier|protected
+specifier|static
+specifier|final
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|UdpTestSupport
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|protected
 name|Transport
 name|producer
@@ -322,11 +351,9 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"About to send: "
 operator|+
@@ -417,11 +444,9 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Caught: "
 operator|+
@@ -550,11 +575,9 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"About to send message of type: "
 operator|+
@@ -648,11 +671,9 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Received text message with: "
 operator|+
@@ -674,11 +695,9 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Caught: "
 operator|+
@@ -878,11 +897,9 @@ name|Command
 name|command
 parameter_list|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Producer received: "
 operator|+
@@ -898,11 +915,9 @@ name|IOException
 name|error
 parameter_list|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Producer exception: "
 operator|+
@@ -996,11 +1011,9 @@ operator|instanceof
 name|WireFormatInfo
 condition|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Got WireFormatInfo: "
 operator|+
@@ -1030,11 +1043,9 @@ condition|(
 name|large
 condition|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"### Received command: "
 operator|+
@@ -1054,11 +1065,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"### Received command: "
 operator|+
@@ -1085,11 +1094,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Ignoring superfluous command: "
 operator|+
@@ -1146,11 +1153,9 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Caught: "
 operator|+
@@ -1179,11 +1184,9 @@ name|IOException
 name|error
 parameter_list|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"### Received error: "
 operator|+
@@ -1201,11 +1204,9 @@ name|void
 name|transportInterupted
 parameter_list|()
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"### Transport interrupted"
 argument_list|)
@@ -1216,11 +1217,9 @@ name|void
 name|transportResumed
 parameter_list|()
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"### Transport resumed"
 argument_list|)

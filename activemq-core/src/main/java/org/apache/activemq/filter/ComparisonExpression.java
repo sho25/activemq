@@ -605,21 +605,6 @@ literal|"\\z"
 argument_list|)
 expr_stmt|;
 comment|// The end of the input
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"regexp: "
-operator|+
-name|like
-operator|+
-literal|": "
-operator|+
-name|regexp
-argument_list|)
-expr_stmt|;
 name|likePattern
 operator|=
 name|Pattern

@@ -205,11 +205,9 @@ argument_list|(
 literal|"JMSXUserID"
 argument_list|)
 decl_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Received message with userID: "
 operator|+

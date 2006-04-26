@@ -359,11 +359,9 @@ init|=
 name|getDestination
 argument_list|()
 decl_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Consuming from: "
 operator|+
@@ -418,11 +416,9 @@ operator|=
 name|createDlqDestination
 argument_list|()
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Consuming from dead letter on: "
 operator|+
@@ -484,11 +480,9 @@ argument_list|(
 name|timeToLive
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Sending "
 operator|+
@@ -586,11 +580,9 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Received message: "
 operator|+

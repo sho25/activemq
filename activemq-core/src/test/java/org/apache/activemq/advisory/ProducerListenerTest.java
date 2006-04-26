@@ -563,11 +563,9 @@ operator|++
 name|consumerCounter
 operator|)
 decl_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Creating consumer: "
 operator|+

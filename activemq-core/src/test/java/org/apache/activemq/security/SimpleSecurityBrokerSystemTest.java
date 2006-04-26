@@ -284,11 +284,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Path to login config: "
 operator|+

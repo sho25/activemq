@@ -230,22 +230,18 @@ index|[
 name|idx
 index|]
 decl_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Connecting to: "
 operator|+
 name|uri
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Queue name is "
 operator|+

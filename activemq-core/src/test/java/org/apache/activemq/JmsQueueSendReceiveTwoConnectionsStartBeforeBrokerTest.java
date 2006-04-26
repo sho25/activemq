@@ -112,11 +112,9 @@ name|startBroker
 parameter_list|()
 block|{
 comment|// Initialize the broker
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Lets wait: "
 operator|+
@@ -147,11 +145,9 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Now starting the broker"
 argument_list|)
@@ -190,11 +186,9 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Caught: "
 operator|+

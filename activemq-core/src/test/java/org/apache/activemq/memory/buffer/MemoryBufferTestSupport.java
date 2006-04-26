@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|TestCase
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -37,13 +47,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activemq
+name|commons
 operator|.
-name|memory
+name|logging
 operator|.
-name|buffer
-operator|.
-name|MessageBuffer
+name|Log
 import|;
 end_import
 
@@ -53,23 +61,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activemq
+name|commons
 operator|.
-name|memory
+name|logging
 operator|.
-name|buffer
-operator|.
-name|MessageQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
+name|LogFactory
 import|;
 end_import
 
@@ -85,6 +81,21 @@ name|MemoryBufferTestSupport
 extends|extends
 name|TestCase
 block|{
+specifier|protected
+specifier|static
+specifier|final
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|MemoryBufferTestSupport
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|protected
 specifier|abstract
 name|MessageBuffer
@@ -168,11 +179,9 @@ name|void
 name|dump
 parameter_list|()
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Dumping current state"
 argument_list|)
@@ -198,13 +207,6 @@ argument_list|,
 literal|"C"
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|()
-expr_stmt|;
 block|}
 specifier|protected
 name|void
@@ -217,11 +219,9 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"  "
 operator|+

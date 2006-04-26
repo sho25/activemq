@@ -854,7 +854,7 @@ expr_stmt|;
 block|}
 block|}
 return|;
-comment|/**         final WireFormatNegotiator wireFormatNegotiator = new WireFormatNegotiator(configuredTransport, transport.getWireFormat(), serverTransport                 .getMinmumWireFormatVersion()) {              public void start() throws Exception {                 super.start();                 System.out.println("Starting a new server transport: " + this + " with command: " + command);                 onCommand(command);             }              // lets use the specific addressing of wire format             protected void sendWireFormat(WireFormatInfo info) throws IOException {                 System.out.println("#### we have negotiated the wireformat; sending a wireformat to: " + address);                 transport.oneway(info, address);             }         };         return wireFormatNegotiator;         */
+comment|/**         final WireFormatNegotiator wireFormatNegotiator = new WireFormatNegotiator(configuredTransport, transport.getWireFormat(), serverTransport                 .getMinmumWireFormatVersion()) {              public void start() throws Exception {                 super.start();                 log.debug("Starting a new server transport: " + this + " with command: " + command);                 onCommand(command);             }              // lets use the specific addressing of wire format             protected void sendWireFormat(WireFormatInfo info) throws IOException {                 log.debug("#### we have negotiated the wireformat; sending a wireformat to: " + address);                 transport.oneway(info, address);             }         };         return wireFormatNegotiator;         */
 block|}
 specifier|public
 name|InetSocketAddress

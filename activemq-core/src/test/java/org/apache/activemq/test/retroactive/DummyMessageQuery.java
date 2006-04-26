@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|MessageListener
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -79,11 +89,29 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jms
+name|apache
 operator|.
-name|MessageListener
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -98,6 +126,21 @@ name|DummyMessageQuery
 implements|implements
 name|MessageQuery
 block|{
+specifier|protected
+specifier|static
+specifier|final
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|DummyMessageQuery
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|public
 specifier|static
 name|int
@@ -118,11 +161,9 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Initial query is creating: "
 operator|+

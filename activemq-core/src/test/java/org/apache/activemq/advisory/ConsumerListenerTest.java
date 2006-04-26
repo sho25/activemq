@@ -553,11 +553,9 @@ operator|++
 name|consumerCounter
 operator|)
 decl_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Creating consumer: "
 operator|+
@@ -608,11 +606,9 @@ name|Message
 name|message
 parameter_list|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Received message by: "
 operator|+

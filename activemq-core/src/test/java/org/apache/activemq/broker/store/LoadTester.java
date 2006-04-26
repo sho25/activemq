@@ -398,11 +398,9 @@ operator|.
 name|PERSISTENT
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Sending "
 operator|+
@@ -497,11 +495,9 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Produced messages/sec: "
 operator|+
@@ -587,11 +583,9 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Consumed messages/sec: "
 operator|+
