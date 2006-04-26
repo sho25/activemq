@@ -197,6 +197,15 @@ name|managedBroker
 expr_stmt|;
 block|}
 specifier|public
+name|ManagedRegionBroker
+name|getBroker
+parameter_list|()
+block|{
+return|return
+name|broker
+return|;
+block|}
+specifier|public
 name|String
 name|getBrokerId
 parameter_list|()

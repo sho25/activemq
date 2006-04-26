@@ -68,6 +68,12 @@ specifier|public
 interface|interface
 name|DestinationViewMBean
 block|{
+comment|/**      * Returns the name of this destination      */
+specifier|public
+name|String
+name|getName
+parameter_list|()
+function_decl|;
 comment|/** 	 * Resets the managment counters. 	 */
 specifier|public
 name|void

@@ -127,6 +127,16 @@ name|RemoveSubscriptionInfo
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
 begin_comment
 comment|/**  * A Region is used to implement the different QOS options available to   * a broker.  A Broker is composed of multiple message processing Regions that  * provide different QOS options.  *   * @version $Revision$  */
 end_comment
@@ -168,6 +178,12 @@ name|timeout
 parameter_list|)
 throws|throws
 name|Exception
+function_decl|;
+comment|/**      * Returns a copy of the current destinations available in the region      *       * @return a copy of the regions currently active at the time of the call with the key the destination and the value the Destination.      */
+specifier|public
+name|Map
+name|getDestinationMap
+parameter_list|()
 function_decl|;
 comment|/**      * Adds a consumer.      * @param context the environment the operation is being executed under.      * @return TODO      * @throws Exception TODO      */
 specifier|public
