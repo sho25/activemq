@@ -685,7 +685,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//System.out.println("GOT: " + msg);
+comment|//log.info("GOT: " + msg);
 name|messagesReceived
 operator|.
 name|incrementAndGet
@@ -743,7 +743,7 @@ argument_list|(
 name|RECEIVE_TIMEOUT
 argument_list|)
 decl_stmt|;
-comment|//System.out.println("GOT: " + msg);
+comment|//log.info("GOT: " + msg);
 if|if
 condition|(
 name|msg

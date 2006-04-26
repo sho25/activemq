@@ -153,11 +153,9 @@ argument_list|(
 name|messageCount
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"About to send and receive: "
 operator|+

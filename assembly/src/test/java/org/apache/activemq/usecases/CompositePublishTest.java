@@ -205,22 +205,18 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Created sendConnection: "
 operator|+
 name|sendConnection
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Created receiveConnection: "
 operator|+
@@ -253,22 +249,18 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Created sendSession: "
 operator|+
 name|session
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Created receiveSession: "
 operator|+
@@ -284,11 +276,9 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Created producer: "
 operator|+
@@ -344,11 +334,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Created  consumer destination: "
 operator|+
@@ -362,11 +350,9 @@ name|getClass
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Created  producer destination: "
 operator|+
@@ -471,11 +457,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Started connections"
 argument_list|)
@@ -621,11 +605,9 @@ name|i
 operator|++
 control|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Message list: "
 operator|+

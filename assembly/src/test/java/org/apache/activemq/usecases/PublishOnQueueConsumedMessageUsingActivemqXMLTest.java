@@ -171,11 +171,9 @@ argument_list|(
 literal|"org/apache/activemq/usecases/activemq.xml"
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Success"
 argument_list|)
@@ -194,11 +192,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Closing Broker"
 argument_list|)
@@ -216,11 +212,9 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Broker closed..."
 argument_list|)

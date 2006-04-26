@@ -133,11 +133,9 @@ condition|(
 name|verbose
 condition|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"About to send a message: "
 operator|+

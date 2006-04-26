@@ -127,7 +127,7 @@ argument_list|(
 name|msgCopy
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("Sending reply: " + message);
+comment|//log.info("Sending reply: " + message);
 name|super
 operator|.
 name|onMessage
@@ -142,11 +142,9 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Failed to send message: "
 operator|+
@@ -219,11 +217,9 @@ argument_list|(
 name|replyDestination
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Created replyProducer: "
 operator|+

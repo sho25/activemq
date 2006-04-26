@@ -398,17 +398,6 @@ literal|"."
 argument_list|)
 expr_stmt|;
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"setting based dir="
-operator|+
-name|baseDir
-argument_list|)
-expr_stmt|;
 name|debug
 operator|=
 literal|"true"

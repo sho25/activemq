@@ -261,11 +261,9 @@ expr_stmt|;
 name|closeConsumer
 argument_list|()
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Now lets create the consumer again and because we didn't ack, we should get it again"
 argument_list|)
@@ -299,11 +297,9 @@ expr_stmt|;
 name|closeConsumer
 argument_list|()
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Now lets create the consumer again and because we didn't ack, we should get it again"
 argument_list|)
@@ -332,11 +328,9 @@ expr_stmt|;
 name|closeConsumer
 argument_list|()
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Lets publish one more message now"
 argument_list|)
@@ -562,11 +556,9 @@ init|=
 name|getSubject
 argument_list|()
 decl_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Creating a durable subscribe for clientID: "
 operator|+
