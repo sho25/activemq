@@ -599,6 +599,28 @@ operator|=
 name|copies
 expr_stmt|;
 block|}
+specifier|public
+name|String
+name|getJMSMessageCountHeader
+parameter_list|()
+block|{
+return|return
+name|JMSMessageCountHeader
+return|;
+block|}
+specifier|public
+name|void
+name|setJMSMessageCountHeader
+parameter_list|(
+name|String
+name|messageCountHeader
+parameter_list|)
+block|{
+name|JMSMessageCountHeader
+operator|=
+name|messageCountHeader
+expr_stmt|;
+block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
 specifier|protected
