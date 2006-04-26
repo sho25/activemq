@@ -369,6 +369,8 @@ block|{
 name|WebClient
 name|client
 init|=
+name|WebClient
+operator|.
 name|getWebClient
 argument_list|(
 name|request
@@ -603,6 +605,8 @@ block|{
 name|WebClient
 name|client
 init|=
+name|WebClient
+operator|.
 name|getWebClient
 argument_list|(
 name|request
@@ -1073,6 +1077,8 @@ block|{
 name|WebClient
 name|client
 init|=
+name|WebClient
+operator|.
 name|getWebClient
 argument_list|(
 name|request

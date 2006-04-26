@@ -432,6 +432,8 @@ comment|// lets turn the HTTP post into a JMS Message
 name|WebClient
 name|client
 init|=
+name|WebClient
+operator|.
 name|getWebClient
 argument_list|(
 name|request
@@ -1186,6 +1188,8 @@ block|{
 name|WebClient
 name|client
 init|=
+name|WebClient
+operator|.
 name|getWebClient
 argument_list|(
 name|request
@@ -1913,6 +1917,8 @@ operator|=
 operator|new
 name|Listener
 argument_list|(
+name|WebClient
+operator|.
 name|getWebClient
 argument_list|(
 name|request
