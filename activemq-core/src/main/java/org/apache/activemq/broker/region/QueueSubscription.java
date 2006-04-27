@@ -661,7 +661,7 @@ condition|)
 block|{
 name|node
 operator|.
-name|incrementReferenceCount
+name|decrementReferenceCount
 argument_list|()
 expr_stmt|;
 block|}
