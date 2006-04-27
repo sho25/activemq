@@ -5082,9 +5082,7 @@ name|info
 operator|.
 name|setTimeout
 argument_list|(
-literal|1000
-operator|*
-literal|5
+literal|0
 argument_list|)
 expr_stmt|;
 name|syncSendPacket
@@ -5208,9 +5206,7 @@ name|info
 operator|.
 name|setTimeout
 argument_list|(
-literal|1000
-operator|*
-literal|5
+literal|0
 argument_list|)
 expr_stmt|;
 name|syncSendPacket
