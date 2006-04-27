@@ -320,6 +320,14 @@ specifier|public
 specifier|static
 specifier|final
 name|String
+name|ASYNC_SEND
+init|=
+literal|"Sampler.async_send"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|CONFIG_SUBJECT
 init|=
 literal|"TOOL.DEFAULT.CONFIG"
@@ -1300,6 +1308,38 @@ argument_list|(
 name|BATCHSIZE
 argument_list|)
 return|;
+block|}
+comment|/**      * @return Returns whether to use Asynchronous Send.      */
+specifier|protected
+name|boolean
+name|getAsyncSend
+parameter_list|()
+block|{
+return|return
+name|getPropertyAsBoolean
+argument_list|(
+name|ASYNC_SEND
+argument_list|)
+return|;
+block|}
+comment|/**      * @param newAsyncSend - when to use Asynchronous Send.      */
+specifier|protected
+name|void
+name|setAsyncSend
+parameter_list|(
+name|String
+name|newAsyncSend
+parameter_list|)
+block|{
+name|this
+operator|.
+name|setProperty
+argument_list|(
+name|ASYNC_SEND
+argument_list|,
+name|newAsyncSend
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      *      * @param inpublisher - MessageProducer object      */
 specifier|protected
