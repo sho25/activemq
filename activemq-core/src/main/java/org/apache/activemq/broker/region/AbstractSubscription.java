@@ -808,6 +808,18 @@ operator|=
 name|objectName
 expr_stmt|;
 block|}
+specifier|public
+name|int
+name|getPrefetchSize
+parameter_list|()
+block|{
+return|return
+name|info
+operator|.
+name|getPrefetchSize
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

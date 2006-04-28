@@ -326,6 +326,11 @@ name|void
 name|destroy
 parameter_list|()
 function_decl|;
+comment|/**      * @return the prefetch size that is configured for the subscription      */
+name|int
+name|getPrefetchSize
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

@@ -599,6 +599,25 @@ name|getConnectionId
 argument_list|()
 return|;
 block|}
+comment|/**      */
+specifier|public
+name|int
+name|getPrefetchSize
+parameter_list|()
+block|{
+return|return
+name|subscription
+operator|!=
+literal|null
+condition|?
+name|subscription
+operator|.
+name|getPrefetchSize
+argument_list|()
+else|:
+literal|0
+return|;
+block|}
 block|}
 end_class
 

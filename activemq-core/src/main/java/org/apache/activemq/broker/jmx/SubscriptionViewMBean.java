@@ -136,6 +136,12 @@ name|long
 name|getDequeueCounter
 parameter_list|()
 function_decl|;
+comment|/**      * @return the prefetch that has been configured for this subscriber      */
+specifier|public
+name|int
+name|getPrefetchSize
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
