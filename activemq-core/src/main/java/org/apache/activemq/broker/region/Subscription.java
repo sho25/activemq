@@ -221,13 +221,15 @@ name|void
 name|gc
 parameter_list|()
 function_decl|;
-comment|/**      * Used by a Slave Broker to update dispatch infomation      * @param mdn      */
+comment|/**      * Used by a Slave Broker to update dispatch infomation      * @param mdn      * @throws Exception       */
 name|void
 name|processMessageDispatchNotification
 parameter_list|(
 name|MessageDispatchNotification
 name|mdn
 parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
 comment|/**      * @return true if the broker is currently in slave mode      */
 name|boolean

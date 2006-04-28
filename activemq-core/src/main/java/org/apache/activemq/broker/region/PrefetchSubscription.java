@@ -390,10 +390,6 @@ condition|(
 operator|!
 name|isFull
 argument_list|()
-operator|&&
-operator|!
-name|isSlaveBroker
-argument_list|()
 condition|)
 block|{
 name|dispatch
@@ -419,13 +415,6 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
-if|if
-condition|(
-name|log
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
 block|{
 name|log
 operator|.
@@ -445,6 +434,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+specifier|synchronized
 specifier|public
 name|void
 name|processMessageDispatchNotification
@@ -452,6 +442,8 @@ parameter_list|(
 name|MessageDispatchNotification
 name|mdn
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 synchronized|synchronized
 init|(
@@ -507,11 +499,6 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-try|try
-block|{
-name|MessageDispatch
-name|md
-init|=
 name|createMessageDispatch
 argument_list|(
 name|node
@@ -521,7 +508,7 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|dispatched
 operator|.
 name|addLast
@@ -529,28 +516,25 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
+return|return;
 block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|error
+block|}
+throw|throw
+operator|new
+name|JMSException
 argument_list|(
-literal|"Problem processing MessageDispatchNotification: "
+literal|"Slave broker out of sync with master: Dispatched message ("
 operator|+
 name|mdn
-argument_list|,
-name|e
+operator|.
+name|getMessageId
+argument_list|()
+operator|+
+literal|") was not in the pending list: "
+operator|+
+name|pending
 argument_list|)
-expr_stmt|;
-block|}
-break|break;
-block|}
-block|}
+throw|;
 block|}
 block|}
 specifier|synchronized
@@ -1077,6 +1061,28 @@ name|ack
 argument_list|)
 throw|;
 block|}
+if|if
+condition|(
+name|isSlaveBroker
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"Slave broker out of sync with master: Acknowledgment ("
+operator|+
+name|ack
+operator|+
+literal|") was not in the dispatch list: "
+operator|+
+name|dispatched
+argument_list|)
+throw|;
+block|}
+else|else
+block|{
 throw|throw
 operator|new
 name|JMSException
@@ -1086,6 +1092,7 @@ operator|+
 name|ack
 argument_list|)
 throw|;
+block|}
 block|}
 comment|/**      * @param context      * @param node      * @throws IOException      * @throws Exception      */
 specifier|protected
@@ -1161,12 +1168,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Used to determine if the broker can dispatch to the consumer.      * @return      */
 specifier|protected
 name|boolean
 name|isFull
 parameter_list|()
 block|{
 return|return
+name|isSlaveBroker
+argument_list|()
+operator|||
 name|dispatched
 operator|.
 name|size
