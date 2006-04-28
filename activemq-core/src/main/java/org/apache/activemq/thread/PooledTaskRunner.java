@@ -41,7 +41,7 @@ end_comment
 
 begin_class
 class|class
-name|SimpleTaskRunner
+name|PooledTaskRunner
 implements|implements
 name|TaskRunner
 block|{
@@ -82,7 +82,7 @@ name|Thread
 name|runningThread
 decl_stmt|;
 specifier|public
-name|SimpleTaskRunner
+name|PooledTaskRunner
 parameter_list|(
 name|Executor
 name|executor

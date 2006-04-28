@@ -944,6 +944,15 @@ operator|.
 name|createTaskRunner
 argument_list|(
 name|this
+argument_list|,
+literal|"ActiveMQ Connection Dispatcher: "
+operator|+
+name|System
+operator|.
+name|identityHashCode
+argument_list|(
+name|this
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1001,6 +1010,17 @@ return|return;
 name|disposed
 operator|=
 literal|true
+expr_stmt|;
+if|if
+condition|(
+name|taskRunner
+operator|!=
+literal|null
+condition|)
+name|taskRunner
+operator|.
+name|shutdown
+argument_list|()
 expr_stmt|;
 comment|//
 comment|// Remove all logical connection associated with this connection

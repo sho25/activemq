@@ -220,6 +220,10 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|taskRunner
+operator|!=
+literal|null
+operator|&&
 operator|!
 name|dispatchedBySessionPool
 operator|&&
@@ -399,6 +403,13 @@ operator|.
 name|createTaskRunner
 argument_list|(
 name|this
+argument_list|,
+literal|"ActiveMQ Session: "
+operator|+
+name|session
+operator|.
+name|getSessionId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|wakeup

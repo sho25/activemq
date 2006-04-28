@@ -215,6 +215,8 @@ name|Thread
 argument_list|(
 name|this
 argument_list|,
+literal|"ActiveMQ Transport Server: "
+operator|+
 name|toString
 argument_list|()
 argument_list|)

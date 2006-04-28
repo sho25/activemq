@@ -1631,6 +1631,11 @@ operator|!
 name|closed
 condition|)
 block|{
+name|executor
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|Iterator

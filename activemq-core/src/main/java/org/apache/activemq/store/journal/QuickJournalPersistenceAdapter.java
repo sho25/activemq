@@ -964,6 +964,8 @@ argument_list|()
 return|;
 block|}
 block|}
+argument_list|,
+literal|"ActiveMQ Checkpoint Worker"
 argument_list|)
 expr_stmt|;
 name|this

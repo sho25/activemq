@@ -1342,6 +1342,16 @@ operator|=
 name|name
 expr_stmt|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|getName
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

@@ -895,26 +895,6 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|Executor
-import|;
-end_import
-
-begin_import
-import|import
-name|edu
-operator|.
-name|emory
-operator|.
-name|mathcs
-operator|.
-name|backport
-operator|.
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
 name|LinkedBlockingQueue
 import|;
 end_import
@@ -1029,7 +1009,7 @@ init|=
 operator|new
 name|TaskRunnerFactory
 argument_list|(
-literal|"session Task"
+literal|"ActiveMQ Session Task"
 argument_list|,
 name|ThreadPriorities
 operator|.
@@ -1042,7 +1022,7 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|Executor
+name|ThreadPoolExecutor
 name|asyncConnectionThread
 decl_stmt|;
 specifier|private
@@ -1414,6 +1394,7 @@ comment|/**      * Construct an<code>ActiveMQConnection</code>      * @param tra
 specifier|protected
 name|ActiveMQConnection
 parameter_list|(
+specifier|final
 name|Transport
 name|transport
 parameter_list|,
@@ -1455,21 +1436,40 @@ name|Runnable
 name|r
 parameter_list|)
 block|{
-return|return
+name|Thread
+name|thread
+init|=
 operator|new
 name|Thread
 argument_list|(
 name|r
 argument_list|,
-literal|"Connection task"
+literal|"AcitveMQ Connection Worker: "
+operator|+
+name|transport
 argument_list|)
+decl_stmt|;
+name|thread
+operator|.
+name|setDaemon
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+return|return
+name|thread
 return|;
 block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|// Todo: see if we can allow the core threads to timeout.
-comment|// asyncConnectionThread.allowCoreThreadTimeOut(true);
+name|asyncConnectionThread
+operator|.
+name|allowCoreThreadTimeOut
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|info

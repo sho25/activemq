@@ -487,7 +487,7 @@ name|Thread
 argument_list|(
 name|this
 argument_list|,
-literal|"Transport Status Dector "
+literal|"ActiveMQ Transport Status Monitor: "
 operator|+
 name|connector
 argument_list|)

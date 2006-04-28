@@ -231,6 +231,15 @@ argument_list|()
 return|;
 block|}
 block|}
+argument_list|,
+literal|"Cache Evictor: "
+operator|+
+name|System
+operator|.
+name|identityHashCode
+argument_list|(
+name|this
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

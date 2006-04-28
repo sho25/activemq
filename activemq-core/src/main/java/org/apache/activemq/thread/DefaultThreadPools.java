@@ -145,11 +145,7 @@ name|defaultTaskRunnerFactory
 init|=
 operator|new
 name|TaskRunnerFactory
-argument_list|(
-name|defaultPool
-argument_list|,
-literal|10
-argument_list|)
+argument_list|()
 decl_stmt|;
 specifier|public
 specifier|static

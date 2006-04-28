@@ -705,7 +705,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"TcpTransportServer@"
+literal|""
 operator|+
 name|getLocation
 argument_list|()
