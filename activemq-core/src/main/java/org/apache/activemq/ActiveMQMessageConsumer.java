@@ -3103,9 +3103,9 @@ name|listener
 operator|!=
 literal|null
 operator|&&
-name|started
+name|unconsumedMessages
 operator|.
-name|get
+name|isRunning
 argument_list|()
 condition|)
 block|{

@@ -561,7 +561,10 @@ name|message
 argument_list|)
 expr_stmt|;
 return|return
-literal|true
+name|messageQueue
+operator|.
+name|isRunning
+argument_list|()
 return|;
 block|}
 block|}
