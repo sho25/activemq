@@ -162,6 +162,11 @@ name|currentPrefetchSize
 decl_stmt|;
 comment|//used by the broker
 specifier|protected
+name|boolean
+name|noRangeAcks
+decl_stmt|;
+comment|// if true, the consumer will not send range acks.
+specifier|protected
 name|BooleanExpression
 name|additionalPredicate
 decl_stmt|;
@@ -830,6 +835,31 @@ operator|.
 name|currentPrefetchSize
 operator|=
 name|currentPrefetchSize
+expr_stmt|;
+block|}
+comment|/**      * The broker may be able to optimize it's processing or provides better      * QOS if it knows the consumer will not be sending ranged acks.      *       * @return true if the consumer will not send range acks.      * @openwire:property version=1      */
+specifier|public
+name|boolean
+name|isNoRangeAcks
+parameter_list|()
+block|{
+return|return
+name|noRangeAcks
+return|;
+block|}
+specifier|public
+name|void
+name|setNoRangeAcks
+parameter_list|(
+name|boolean
+name|noRangeAcks
+parameter_list|)
+block|{
+name|this
+operator|.
+name|noRangeAcks
+operator|=
+name|noRangeAcks
 expr_stmt|;
 block|}
 block|}
