@@ -583,11 +583,7 @@ name|prefetchExtension
 operator|+
 literal|", pending="
 operator|+
-name|this
-operator|.
-name|pending
-operator|.
-name|size
+name|getPendingQueueSize
 argument_list|()
 return|;
 block|}
