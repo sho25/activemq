@@ -274,6 +274,10 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+name|slave
+operator|=
+literal|null
+expr_stmt|;
 name|super
 operator|.
 name|tearDown
