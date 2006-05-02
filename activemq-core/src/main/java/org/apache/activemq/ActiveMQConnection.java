@@ -3618,6 +3618,7 @@ block|}
 block|}
 comment|/**      * Send the ConnectionInfo to the Broker      *       * @throws JMSException      */
 specifier|protected
+specifier|synchronized
 name|void
 name|ensureConnectionInfoSent
 parameter_list|()
