@@ -343,17 +343,8 @@ name|BeansException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|trace
-argument_list|(
-literal|"No bean named broker available: "
-operator|+
-name|e
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
+comment|// ignore...
+comment|//log.trace("No bean named broker available: " + e, e);
 block|}
 if|if
 condition|(
