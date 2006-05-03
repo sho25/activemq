@@ -379,6 +379,7 @@ argument_list|()
 return|;
 block|}
 comment|// TODO - we should not have to use JMX to implement the following methods...
+comment|/*     public Collection getQueues() throws Exception {         BrokerView broker = brokerService.getAdminView();         if (broker == null) {             return Collections.EMPTY_LIST;         }         ObjectName[] queues = broker.getQueues();         return getManagedObjects(queues, QueueViewMBean.class);     }     */
 specifier|public
 name|Collection
 name|getQueues
@@ -386,12 +387,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|BrokerView
+name|ManagedRegionBroker
 name|broker
 init|=
-name|brokerService
-operator|.
-name|getAdminView
+name|getManagedBroker
 argument_list|()
 decl_stmt|;
 if|if
@@ -402,29 +401,22 @@ literal|null
 condition|)
 block|{
 return|return
-name|Collections
-operator|.
-name|EMPTY_LIST
+operator|new
+name|ArrayList
+argument_list|()
 return|;
 block|}
-name|ObjectName
-index|[]
-name|queues
-init|=
+return|return
 name|broker
 operator|.
-name|getQueues
+name|getQueueRegion
 argument_list|()
-decl_stmt|;
-return|return
-name|getManagedObjects
-argument_list|(
-name|queues
-argument_list|,
-name|QueueViewMBean
 operator|.
-name|class
-argument_list|)
+name|getDestinationMap
+argument_list|()
+operator|.
+name|values
+argument_list|()
 return|;
 block|}
 specifier|public
@@ -620,7 +612,7 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * public Collection getQueues() throws Exception { ManagedRegionBroker      * broker = getManagedBroker(); if (broker == null) { return new      * ArrayList(); } return      * broker.getQueueRegion().getDestinationMap().values(); }      *       *       * public Collection getTopics() throws Exception { ManagedRegionBroker      * broker = getManagedBroker(); if (broker == null) { return new      * ArrayList(); } return      * broker.getTopicRegion().getDestinationMap().values(); }      */
+comment|/**      *       *       * public Collection getTopics() throws Exception { ManagedRegionBroker      * broker = getManagedBroker(); if (broker == null) { return new      * ArrayList(); } return      * broker.getTopicRegion().getDestinationMap().values(); }      */
 block|}
 end_class
 
