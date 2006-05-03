@@ -429,11 +429,9 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Connector stopped: Stopping proxy."
 argument_list|)
