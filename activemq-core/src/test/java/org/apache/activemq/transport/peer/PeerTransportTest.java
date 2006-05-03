@@ -723,11 +723,9 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{
-name|System
+name|log
 operator|.
-name|err
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"creating connection ...."
 argument_list|)
