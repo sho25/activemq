@@ -151,6 +151,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|junit
 operator|.
 name|framework
@@ -167,6 +195,21 @@ name|DataFileGenerator
 extends|extends
 name|Assert
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|DataFileGenerator
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|static
 specifier|final
 name|File
@@ -296,11 +339,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Looking for generators in : "
 operator|+
@@ -472,11 +513,9 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Processing: "
 operator|+
@@ -498,11 +537,9 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"Error while processing: "
 operator|+
@@ -510,15 +547,12 @@ name|object
 operator|.
 name|getClass
 argument_list|()
-argument_list|)
-expr_stmt|;
+operator|+
+literal|". Reason: "
+operator|+
 name|e
-operator|.
-name|printStackTrace
-argument_list|(
-name|System
-operator|.
-name|out
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -734,11 +768,9 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Processing: "
 operator|+
