@@ -134,25 +134,6 @@ name|text
 operator|+
 name|rvalue
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"lvalue: "
-operator|+
-name|lvalue
-operator|+
-literal|" rvalue: "
-operator|+
-name|rvalue
-operator|+
-literal|" result: "
-operator|+
-name|answer
-argument_list|)
-expr_stmt|;
 return|return
 name|answer
 return|;
