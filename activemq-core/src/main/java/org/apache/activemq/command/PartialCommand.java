@@ -305,6 +305,25 @@ name|String
 name|toString
 parameter_list|()
 block|{
+name|int
+name|size
+init|=
+literal|0
+decl_stmt|;
+if|if
+condition|(
+name|data
+operator|!=
+literal|null
+condition|)
+block|{
+name|size
+operator|=
+name|data
+operator|.
+name|length
+expr_stmt|;
+block|}
 return|return
 literal|"PartialCommand[id: "
 operator|+
@@ -312,9 +331,7 @@ name|commandId
 operator|+
 literal|" data: "
 operator|+
-name|data
-operator|.
-name|length
+name|size
 operator|+
 literal|" byte(s)]"
 return|;
