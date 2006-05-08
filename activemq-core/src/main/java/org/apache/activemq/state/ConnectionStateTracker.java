@@ -848,9 +848,6 @@ operator|.
 name|addTempDestination
 argument_list|(
 name|info
-operator|.
-name|getDestination
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
