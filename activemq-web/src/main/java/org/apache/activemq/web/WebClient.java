@@ -398,7 +398,7 @@ specifier|public
 specifier|static
 specifier|final
 name|String
-name|connectionFactoryPrefetch
+name|connectionFactoryPrefetchParam
 init|=
 literal|"org.apache.activemq.connectionFactory.prefetch"
 decl_stmt|;
@@ -406,7 +406,7 @@ specifier|public
 specifier|static
 specifier|final
 name|String
-name|connectionFactoryOptimizeAck
+name|connectionFactoryOptimizeAckParam
 init|=
 literal|"org.apache.activemq.connectionFactory.optimizeAck"
 decl_stmt|;
@@ -1249,7 +1249,7 @@ name|servletContext
 operator|.
 name|getInitParameter
 argument_list|(
-name|connectionFactoryPrefetch
+name|connectionFactoryPrefetchParam
 argument_list|)
 operator|!=
 literal|null
@@ -1266,7 +1266,7 @@ name|servletContext
 operator|.
 name|getInitParameter
 argument_list|(
-name|connectionFactoryPrefetch
+name|connectionFactoryPrefetchParam
 argument_list|)
 argument_list|)
 operator|.
@@ -1291,7 +1291,7 @@ name|servletContext
 operator|.
 name|getInitParameter
 argument_list|(
-name|connectionFactoryOptimizeAck
+name|connectionFactoryOptimizeAckParam
 argument_list|)
 operator|!=
 literal|null
@@ -1308,7 +1308,7 @@ name|servletContext
 operator|.
 name|getInitParameter
 argument_list|(
-name|connectionFactoryOptimizeAck
+name|connectionFactoryOptimizeAckParam
 argument_list|)
 argument_list|)
 operator|.
