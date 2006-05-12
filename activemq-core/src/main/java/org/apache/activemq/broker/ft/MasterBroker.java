@@ -1261,13 +1261,7 @@ if|if
 condition|(
 name|message
 operator|.
-name|isPersistent
-argument_list|()
-operator|&&
-operator|!
-name|message
-operator|.
-name|isInTransaction
+name|isResponseRequired
 argument_list|()
 condition|)
 block|{
@@ -1298,7 +1292,7 @@ if|if
 condition|(
 name|ack
 operator|.
-name|isInTransaction
+name|isResponseRequired
 argument_list|()
 condition|)
 block|{
