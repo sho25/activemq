@@ -131,7 +131,7 @@ expr_stmt|;
 comment|//System.setProperty("javax.net.debug", "ssl,handshake,data,trustmanager");
 name|MAX_WAIT
 operator|=
-literal|2000
+literal|10000
 expr_stmt|;
 name|super
 operator|.
