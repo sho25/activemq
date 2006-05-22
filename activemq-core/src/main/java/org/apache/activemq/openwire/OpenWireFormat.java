@@ -1234,6 +1234,12 @@ operator|.
 name|marshalledSize
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|sizePrefixDisabled
+condition|)
+block|{
 name|dataOut
 operator|.
 name|writeInt
@@ -1241,6 +1247,7 @@ argument_list|(
 name|size
 argument_list|)
 expr_stmt|;
+block|}
 name|dataOut
 operator|.
 name|writeByte
@@ -1347,8 +1354,6 @@ name|sequence
 operator|.
 name|getLength
 argument_list|()
-operator|-
-literal|4
 argument_list|)
 expr_stmt|;
 name|dataOut
