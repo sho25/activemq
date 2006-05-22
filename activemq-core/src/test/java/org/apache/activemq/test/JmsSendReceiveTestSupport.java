@@ -540,6 +540,11 @@ name|i
 index|]
 argument_list|)
 decl_stmt|;
+name|configureMessage
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|verbose
@@ -589,6 +594,17 @@ literal|" messages(s) received, closing down connections"
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * A hook to allow the message to be configured such as adding extra headers      * @throws JMSException       */
+specifier|protected
+name|void
+name|configureMessage
+parameter_list|(
+name|Message
+name|message
+parameter_list|)
+throws|throws
+name|JMSException
+block|{     }
 comment|/**      * Waits to receive the messages and performs the test if all messages have been received and       * are in sequential order.        *       * @throws JMSException      */
 specifier|protected
 name|void
