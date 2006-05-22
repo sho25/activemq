@@ -423,6 +423,24 @@ name|assertSelector
 argument_list|(
 name|message
 argument_list|,
+literal|"byteProp2 = 33"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"byteProp2 = 10"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
 literal|"shortProp = 123"
 argument_list|,
 literal|true
@@ -1714,6 +1732,18 @@ operator|(
 name|byte
 operator|)
 literal|123
+argument_list|)
+expr_stmt|;
+name|message
+operator|.
+name|setByteProperty
+argument_list|(
+literal|"byteProp2"
+argument_list|,
+operator|(
+name|byte
+operator|)
+literal|33
 argument_list|)
 expr_stmt|;
 name|message
