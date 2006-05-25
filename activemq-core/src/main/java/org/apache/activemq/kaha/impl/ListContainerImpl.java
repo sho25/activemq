@@ -2682,7 +2682,7 @@ name|data
 init|=
 name|dataManager
 operator|.
-name|storeItem
+name|storeDataItem
 argument_list|(
 name|marshaller
 argument_list|,
@@ -2858,7 +2858,7 @@ name|data
 init|=
 name|dataManager
 operator|.
-name|storeItem
+name|storeDataItem
 argument_list|(
 name|marshaller
 argument_list|,
@@ -3031,7 +3031,7 @@ name|data
 init|=
 name|dataManager
 operator|.
-name|storeItem
+name|storeDataItem
 argument_list|(
 name|marshaller
 argument_list|,

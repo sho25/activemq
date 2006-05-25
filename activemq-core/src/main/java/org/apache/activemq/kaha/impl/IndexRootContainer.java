@@ -349,7 +349,7 @@ name|data
 init|=
 name|dataManager
 operator|.
-name|storeItem
+name|storeDataItem
 argument_list|(
 name|rootMarshaller
 argument_list|,

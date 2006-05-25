@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A an Item with a relative postion and location to other Items in the Store  *   * @version $Revision: 1.2 $  */
+comment|/**  * A an Item with a relative position and location to other Items in the Store  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class
@@ -63,7 +63,7 @@ specifier|final
 name|int
 name|INDEX_SIZE
 init|=
-literal|43
+literal|51
 decl_stmt|;
 comment|//used by linked list
 name|IndexItem
@@ -91,6 +91,13 @@ init|=
 name|POSITION_NOT_SET
 decl_stmt|;
 specifier|private
+name|boolean
+name|active
+init|=
+literal|true
+decl_stmt|;
+comment|// TODO: consider just using a DataItem for the following fields.
+specifier|private
 name|long
 name|keyOffset
 init|=
@@ -104,6 +111,12 @@ operator|(
 name|int
 operator|)
 name|POSITION_NOT_SET
+decl_stmt|;
+specifier|private
+name|int
+name|keySize
+init|=
+literal|0
 decl_stmt|;
 specifier|private
 name|long
@@ -121,10 +134,10 @@ operator|)
 name|POSITION_NOT_SET
 decl_stmt|;
 specifier|private
-name|boolean
-name|active
+name|int
+name|valueSize
 init|=
-literal|true
+literal|0
 decl_stmt|;
 comment|/**      * Default Constructor      */
 name|IndexItem
@@ -153,6 +166,10 @@ name|int
 operator|)
 name|POSITION_NOT_SET
 expr_stmt|;
+name|keySize
+operator|=
+literal|0
+expr_stmt|;
 name|valueOffset
 operator|=
 name|POSITION_NOT_SET
@@ -163,6 +180,10 @@ operator|(
 name|int
 operator|)
 name|POSITION_NOT_SET
+expr_stmt|;
+name|valueSize
+operator|=
+literal|0
 expr_stmt|;
 name|active
 operator|=
@@ -194,6 +215,13 @@ argument_list|(
 name|keyFile
 argument_list|)
 expr_stmt|;
+name|result
+operator|.
+name|setSize
+argument_list|(
+name|keySize
+argument_list|)
+expr_stmt|;
 return|return
 name|result
 return|;
@@ -223,6 +251,13 @@ argument_list|(
 name|valueFile
 argument_list|)
 expr_stmt|;
+name|result
+operator|.
+name|setSize
+argument_list|(
+name|valueSize
+argument_list|)
+expr_stmt|;
 return|return
 name|result
 return|;
@@ -248,6 +283,13 @@ operator|.
 name|getFile
 argument_list|()
 expr_stmt|;
+name|valueSize
+operator|=
+name|item
+operator|.
+name|getSize
+argument_list|()
+expr_stmt|;
 block|}
 name|void
 name|setKeyData
@@ -268,6 +310,13 @@ operator|=
 name|item
 operator|.
 name|getFile
+argument_list|()
+expr_stmt|;
+name|keySize
+operator|=
+name|item
+operator|.
+name|getSize
 argument_list|()
 expr_stmt|;
 block|}
@@ -327,6 +376,13 @@ name|dataOut
 operator|.
 name|writeInt
 argument_list|(
+name|keySize
+argument_list|)
+expr_stmt|;
+name|dataOut
+operator|.
+name|writeInt
+argument_list|(
 name|valueFile
 argument_list|)
 expr_stmt|;
@@ -335,6 +391,13 @@ operator|.
 name|writeLong
 argument_list|(
 name|valueOffset
+argument_list|)
+expr_stmt|;
+name|dataOut
+operator|.
+name|writeInt
+argument_list|(
+name|valueSize
 argument_list|)
 expr_stmt|;
 block|}
@@ -399,6 +462,13 @@ operator|.
 name|readLong
 argument_list|()
 expr_stmt|;
+name|keySize
+operator|=
+name|dataIn
+operator|.
+name|readInt
+argument_list|()
+expr_stmt|;
 name|valueFile
 operator|=
 name|dataIn
@@ -411,6 +481,13 @@ operator|=
 name|dataIn
 operator|.
 name|readLong
+argument_list|()
+expr_stmt|;
+name|valueSize
+operator|=
+name|dataIn
+operator|.
+name|readInt
 argument_list|()
 expr_stmt|;
 block|}
@@ -600,7 +677,55 @@ operator|=
 name|offset
 expr_stmt|;
 block|}
-comment|/**      * @return eprtty print of 'this'      */
+specifier|public
+name|int
+name|getKeySize
+parameter_list|()
+block|{
+return|return
+name|keySize
+return|;
+block|}
+specifier|public
+name|void
+name|setKeySize
+parameter_list|(
+name|int
+name|keySize
+parameter_list|)
+block|{
+name|this
+operator|.
+name|keySize
+operator|=
+name|keySize
+expr_stmt|;
+block|}
+specifier|public
+name|int
+name|getValueSize
+parameter_list|()
+block|{
+return|return
+name|valueSize
+return|;
+block|}
+specifier|public
+name|void
+name|setValueSize
+parameter_list|(
+name|int
+name|valueSize
+parameter_list|)
+block|{
+name|this
+operator|.
+name|valueSize
+operator|=
+name|valueSize
+expr_stmt|;
+block|}
+comment|/**      * @return print of 'this'      */
 specifier|public
 name|String
 name|toString
@@ -613,23 +738,39 @@ literal|"offset="
 operator|+
 name|offset
 operator|+
-literal|" , keyFile = "
+literal|", key=("
 operator|+
 name|keyFile
 operator|+
-literal|" , keyOffset = "
+literal|", "
 operator|+
 name|keyOffset
 operator|+
-literal|", valueOffset = "
+literal|", "
+operator|+
+name|keySize
+operator|+
+literal|")"
+operator|+
+literal|", value=("
+operator|+
+name|valueFile
+operator|+
+literal|", "
 operator|+
 name|valueOffset
 operator|+
-literal|" , previousItem = "
+literal|", "
+operator|+
+name|valueSize
+operator|+
+literal|")"
+operator|+
+literal|", previousItem="
 operator|+
 name|previousItem
 operator|+
-literal|" , nextItem = "
+literal|", nextItem="
 operator|+
 name|nextItem
 decl_stmt|;

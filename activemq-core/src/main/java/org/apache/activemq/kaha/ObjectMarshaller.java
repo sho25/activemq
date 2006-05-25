@@ -21,26 +21,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|ByteArrayInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|ByteArrayOutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|DataInput
 import|;
 end_import
@@ -71,6 +51,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|ObjectInputStream
 import|;
 end_import
@@ -82,6 +72,16 @@ operator|.
 name|io
 operator|.
 name|ObjectOutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|OutputStream
 import|;
 end_import
 
@@ -110,20 +110,24 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|ByteArrayOutputStream
-name|bytesOut
-init|=
-operator|new
-name|ByteArrayOutputStream
-argument_list|()
-decl_stmt|;
+comment|// I failed to see why we just did not just used the provided stream directly
+comment|//        ByteArrayOutputStream bytesOut = new ByteArrayOutputStream();
+comment|//        ObjectOutputStream objectOut=new ObjectOutputStream(bytesOut);
+comment|//        objectOut.writeObject(object);
+comment|//        objectOut.close();
+comment|//        byte[] data = bytesOut.toByteArray();
+comment|//        dataOut.writeInt(data.length);
+comment|//        dataOut.write(data);
 name|ObjectOutputStream
 name|objectOut
 init|=
 operator|new
 name|ObjectOutputStream
 argument_list|(
-name|bytesOut
+operator|(
+name|OutputStream
+operator|)
+name|dataOut
 argument_list|)
 decl_stmt|;
 name|objectOut
@@ -135,33 +139,13 @@ argument_list|)
 expr_stmt|;
 name|objectOut
 operator|.
-name|close
+name|reset
 argument_list|()
 expr_stmt|;
-name|byte
-index|[]
-name|data
-init|=
-name|bytesOut
+name|objectOut
 operator|.
-name|toByteArray
+name|flush
 argument_list|()
-decl_stmt|;
-name|dataOut
-operator|.
-name|writeInt
-argument_list|(
-name|data
-operator|.
-name|length
-argument_list|)
-expr_stmt|;
-name|dataOut
-operator|.
-name|write
-argument_list|(
-name|data
-argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Read the entry from the RawContainer      *       * @param dataIn      * @return unmarshalled object      * @throws IOException      */
@@ -175,47 +159,27 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|int
-name|size
-init|=
-name|dataIn
-operator|.
-name|readInt
-argument_list|()
-decl_stmt|;
-name|byte
-index|[]
-name|data
-init|=
-operator|new
-name|byte
-index|[
-name|size
-index|]
-decl_stmt|;
-name|dataIn
-operator|.
-name|readFully
-argument_list|(
-name|data
-argument_list|)
-expr_stmt|;
-name|ByteArrayInputStream
-name|bytesIn
-init|=
-operator|new
-name|ByteArrayInputStream
-argument_list|(
-name|data
-argument_list|)
-decl_stmt|;
+comment|// I failed to see why we just did not just used the provided stream directly
+comment|//        int size = dataIn.readInt();
+comment|//        byte[] data = new byte[size];
+comment|//        dataIn.readFully(data);
+comment|//        ByteArrayInputStream bytesIn = new ByteArrayInputStream(data);
+comment|//        ObjectInputStream objectIn=new ObjectInputStream(bytesIn);
+comment|//        try{
+comment|//            return objectIn.readObject();
+comment|//        }catch(ClassNotFoundException e){
+comment|//            throw new IOException(e.getMessage());
+comment|//        }
 name|ObjectInputStream
 name|objectIn
 init|=
 operator|new
 name|ObjectInputStream
 argument_list|(
-name|bytesIn
+operator|(
+name|InputStream
+operator|)
+name|dataIn
 argument_list|)
 decl_stmt|;
 try|try
