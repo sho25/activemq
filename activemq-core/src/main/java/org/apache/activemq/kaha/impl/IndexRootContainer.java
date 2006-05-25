@@ -715,15 +715,9 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-literal|"Cannot find root for key "
-operator|+
-name|key
-argument_list|)
-throw|;
+return|return
+literal|null
+return|;
 block|}
 block|}
 end_class
