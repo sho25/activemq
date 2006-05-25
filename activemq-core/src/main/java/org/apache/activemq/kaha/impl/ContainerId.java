@@ -83,22 +83,22 @@ name|key
 decl_stmt|;
 specifier|private
 name|String
-name|dataContainerPrefix
+name|dataContainerName
 decl_stmt|;
 comment|/**      * @return Returns the dataContainerPrefix.      */
 specifier|public
 name|String
-name|getDataContainerPrefix
+name|getDataContainerName
 parameter_list|()
 block|{
 return|return
-name|dataContainerPrefix
+name|dataContainerName
 return|;
 block|}
 comment|/**      * @param dataContainerPrefix The dataContainerPrefix to set.      */
 specifier|public
 name|void
-name|setDataContainerPrefix
+name|setDataContainerName
 parameter_list|(
 name|String
 name|dataContainerPrefix
@@ -106,7 +106,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|dataContainerPrefix
+name|dataContainerName
 operator|=
 name|dataContainerPrefix
 expr_stmt|;
@@ -213,7 +213,7 @@ name|out
 operator|.
 name|writeUTF
 argument_list|(
-name|getDataContainerPrefix
+name|getDataContainerName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -237,7 +237,7 @@ name|IOException
 throws|,
 name|ClassNotFoundException
 block|{
-name|dataContainerPrefix
+name|dataContainerName
 operator|=
 name|in
 operator|.
