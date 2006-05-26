@@ -827,6 +827,17 @@ name|networkTTL
 init|=
 literal|1
 decl_stmt|;
+specifier|protected
+specifier|final
+name|AtomicBoolean
+name|remoteInterupted
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|(
+literal|false
+argument_list|)
+decl_stmt|;
 specifier|public
 name|DemandForwardingBridgeSupport
 parameter_list|(
@@ -956,6 +967,18 @@ name|transportInterupted
 parameter_list|()
 block|{
 comment|//clear any subscriptions - to try and prevent the bridge from stalling the broker
+if|if
+condition|(
+name|remoteInterupted
+operator|.
+name|compareAndSet
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+condition|)
+block|{
 name|log
 operator|.
 name|warn
@@ -970,21 +993,17 @@ expr_stmt|;
 name|clearDownSubscriptions
 argument_list|()
 expr_stmt|;
-name|doStopLocal
-argument_list|()
-expr_stmt|;
-name|startedLatch
-operator|=
-operator|new
-name|CountDownLatch
-argument_list|(
-literal|2
-argument_list|)
-expr_stmt|;
 try|try
 block|{
-name|triggerLocalStartBridge
+name|localBroker
+operator|.
+name|oneway
+argument_list|(
+name|remoteConnectionInfo
+operator|.
+name|createRemoveCommand
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -1003,12 +1022,47 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+name|localBridgeStarted
+operator|.
+name|set
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|remoteBridgeStarted
+operator|.
+name|set
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|startedLatch
+operator|=
+operator|new
+name|CountDownLatch
+argument_list|(
+literal|2
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|public
 specifier|synchronized
 name|void
 name|transportResumed
 parameter_list|()
+block|{
+if|if
+condition|(
+name|remoteInterupted
+operator|.
+name|compareAndSet
+argument_list|(
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+condition|)
 block|{
 comment|//restart and static subscriptions - the consumer advisories will be replayed
 name|log
@@ -1022,14 +1076,45 @@ operator|+
 literal|" resumed"
 argument_list|)
 expr_stmt|;
-name|setupStaticDestinations
-argument_list|()
-expr_stmt|;
-name|startedLatch
+comment|//                    try{
+comment|//                        triggerLocalStartBridge();
+comment|//                    }catch(IOException e){
+comment|//                        log.warn("Caught exception from local start",e);
+comment|//                    }
+try|try
+block|{
+comment|// clear out the previous connection as it may have missed some consumer advisories.
+name|remoteBroker
 operator|.
-name|countDown
+name|oneway
+argument_list|(
+name|remoteConnectionInfo
+operator|.
+name|createRemoveCommand
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|triggerRemoteStartBridge
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Caught exception from remote start"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 argument_list|)
@@ -1044,6 +1129,7 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+comment|//        triggerLocalStartBridge();
 name|triggerRemoteStartBridge
 argument_list|()
 expr_stmt|;
@@ -1075,7 +1161,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
@@ -1127,7 +1213,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
@@ -1157,7 +1243,7 @@ name|void
 name|startLocalBridge
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 if|if
 condition|(
@@ -1280,7 +1366,7 @@ name|void
 name|startRemoteBridge
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 if|if
 condition|(
@@ -1458,7 +1544,7 @@ argument_list|(
 name|demandConsumerInfo
 argument_list|)
 expr_stmt|;
-comment|//we want infomation about Destinations as well
+comment|//we want information about Destinations as well
 name|ConsumerInfo
 name|destinationInfo
 init|=
@@ -1766,6 +1852,13 @@ operator|.
 name|stop
 argument_list|(
 name|localBroker
+argument_list|)
+expr_stmt|;
+name|localBridgeStarted
+operator|.
+name|set
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -2909,6 +3002,18 @@ operator|+
 literal|" Shutting down"
 argument_list|)
 expr_stmt|;
+comment|// Don't shut down the whole connector if the remote side was interrupted.
+comment|// the local transport is just shutting down temporarily until the remote side
+comment|// is restored.
+if|if
+condition|(
+operator|!
+name|remoteInterupted
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
 name|shutDown
 operator|=
 literal|true
@@ -2916,6 +3021,7 @@ expr_stmt|;
 name|doStop
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{

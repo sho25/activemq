@@ -1178,12 +1178,12 @@ name|connectedTransportURI
 operator|=
 literal|null
 expr_stmt|;
+block|}
 name|reconnectTask
 operator|.
 name|wakeup
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 block|}
 specifier|public
