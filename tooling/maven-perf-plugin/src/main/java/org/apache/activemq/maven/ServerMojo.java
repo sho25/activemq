@@ -120,7 +120,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Goal which starts activemq broker.  *  * @goal server  * @phase process  */
+comment|/**  * Goal which starts activemq broker.  *  * @goal broker  * @phase process-sources  */
 end_comment
 
 begin_class
@@ -135,7 +135,7 @@ specifier|private
 name|File
 name|outputDirectory
 decl_stmt|;
-comment|/**      * Location of the predefined config files.      *      * @parameter expression="${configDirectory}" default-value="${basedir}/src/main/resources/config"      * @required      */
+comment|/**      * Location of the predefined config files.      *      * @parameter expression="${configDirectory}" default-value="${basedir}/src/main/resources/broker-conf"      * @required      */
 specifier|private
 name|String
 name|configDirectory
