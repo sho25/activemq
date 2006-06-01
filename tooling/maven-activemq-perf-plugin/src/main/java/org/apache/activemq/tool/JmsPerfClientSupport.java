@@ -77,6 +77,17 @@ init|=
 literal|null
 decl_stmt|;
 specifier|public
+name|void
+name|reset
+parameter_list|()
+block|{
+name|setThroughput
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
 name|long
 name|getThroughput
 parameter_list|()
@@ -86,6 +97,7 @@ name|throughput
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|setThroughput
 parameter_list|(
@@ -101,6 +113,7 @@ name|val
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|incThroughput
 parameter_list|()
@@ -110,6 +123,7 @@ operator|++
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|incThroughput
 parameter_list|(

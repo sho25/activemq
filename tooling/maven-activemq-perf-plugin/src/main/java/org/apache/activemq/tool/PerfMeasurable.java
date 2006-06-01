@@ -21,6 +21,11 @@ interface|interface
 name|PerfMeasurable
 block|{
 specifier|public
+name|void
+name|reset
+parameter_list|()
+function_decl|;
+specifier|public
 name|long
 name|getThroughput
 parameter_list|()
