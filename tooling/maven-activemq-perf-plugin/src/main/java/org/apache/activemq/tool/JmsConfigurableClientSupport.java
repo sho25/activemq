@@ -891,26 +891,6 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
-comment|// Connection URL to use
-block|}
-elseif|else
-if|if
-condition|(
-name|key
-operator|.
-name|equalsIgnoreCase
-argument_list|(
-literal|"url"
-argument_list|)
-condition|)
-block|{
-name|factoryUrl
-operator|=
-name|value
-operator|.
-name|toString
-argument_list|()
-expr_stmt|;
 comment|// Connection factory specific settings
 block|}
 elseif|else
