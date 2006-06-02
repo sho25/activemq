@@ -285,15 +285,24 @@ argument_list|,
 name|val
 argument_list|)
 decl_stmt|;
+name|Object
+index|[]
+name|objVal
+init|=
+block|{
+name|val
+block|}
+decl_stmt|;
 name|method
 operator|.
 name|invoke
 argument_list|(
 name|target
 argument_list|,
-name|val
+name|objVal
 argument_list|)
 expr_stmt|;
+comment|//method.invoke(target, val);
 comment|//System.out.println("." + methodName + "(" + val + ")");
 block|}
 catch|catch
