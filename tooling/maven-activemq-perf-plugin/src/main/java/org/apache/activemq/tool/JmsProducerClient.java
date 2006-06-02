@@ -362,7 +362,9 @@ block|{
 name|listener
 operator|.
 name|onConfigStart
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 comment|// Create connection factory
 if|if
@@ -600,7 +602,9 @@ block|}
 name|listener
 operator|.
 name|onConfigEnd
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 specifier|public
@@ -644,7 +648,9 @@ block|{
 name|listener
 operator|.
 name|onPublishStart
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 for|for
 control|(
@@ -691,12 +697,17 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
+name|incThroughput
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 name|listener
 operator|.
 name|onPublishEnd
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 comment|// Send to only one actual destination
 block|}
@@ -705,7 +716,9 @@ block|{
 name|listener
 operator|.
 name|onPublishStart
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 for|for
 control|(
@@ -730,11 +743,16 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
+name|incThroughput
+argument_list|()
+expr_stmt|;
 block|}
 name|listener
 operator|.
 name|onPublishEnd
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 comment|// Send different type of messages using indexing to identify each one.
@@ -756,7 +774,9 @@ block|{
 name|listener
 operator|.
 name|onPublishStart
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 for|for
 control|(
@@ -810,12 +830,17 @@ literal|"]"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|incThroughput
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 name|listener
 operator|.
 name|onPublishEnd
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 comment|// Send to only one actual destination
 block|}
@@ -824,7 +849,9 @@ block|{
 name|listener
 operator|.
 name|onPublishStart
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 for|for
 control|(
@@ -856,11 +883,16 @@ literal|"]"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|incThroughput
+argument_list|()
+expr_stmt|;
 block|}
 name|listener
 operator|.
 name|onPublishEnd
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -926,7 +958,9 @@ block|{
 name|listener
 operator|.
 name|onPublishStart
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 while|while
 condition|(
@@ -968,12 +1002,17 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
+name|incThroughput
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 name|listener
 operator|.
 name|onPublishEnd
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 comment|// Send to only one actual destination
 block|}
@@ -982,7 +1021,9 @@ block|{
 name|listener
 operator|.
 name|onPublishStart
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 while|while
 condition|(
@@ -1002,11 +1043,16 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
+name|incThroughput
+argument_list|()
+expr_stmt|;
 block|}
 name|listener
 operator|.
 name|onPublishEnd
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 comment|// Send different type of messages using indexing to identify each one.
@@ -1033,7 +1079,9 @@ block|{
 name|listener
 operator|.
 name|onPublishStart
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 while|while
 condition|(
@@ -1083,12 +1131,17 @@ literal|"]"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|incThroughput
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 name|listener
 operator|.
 name|onPublishEnd
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 comment|// Send to only one actual destination
 block|}
@@ -1097,7 +1150,9 @@ block|{
 name|listener
 operator|.
 name|onPublishStart
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 while|while
 condition|(
@@ -1125,11 +1180,16 @@ literal|"]"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|incThroughput
+argument_list|()
+expr_stmt|;
 block|}
 name|listener
 operator|.
 name|onPublishEnd
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 block|}

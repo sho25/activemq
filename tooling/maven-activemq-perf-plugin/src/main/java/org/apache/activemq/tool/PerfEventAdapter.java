@@ -35,37 +35,58 @@ block|{
 specifier|public
 name|void
 name|onConfigStart
-parameter_list|()
+parameter_list|(
+name|PerfMeasurable
+name|client
+parameter_list|)
 block|{     }
 specifier|public
 name|void
 name|onConfigEnd
-parameter_list|()
+parameter_list|(
+name|PerfMeasurable
+name|client
+parameter_list|)
 block|{     }
 specifier|public
 name|void
 name|onPublishStart
-parameter_list|()
+parameter_list|(
+name|PerfMeasurable
+name|client
+parameter_list|)
 block|{     }
 specifier|public
 name|void
 name|onPublishEnd
-parameter_list|()
+parameter_list|(
+name|PerfMeasurable
+name|client
+parameter_list|)
 block|{     }
 specifier|public
 name|void
 name|onConsumeStart
-parameter_list|()
+parameter_list|(
+name|PerfMeasurable
+name|client
+parameter_list|)
 block|{     }
 specifier|public
 name|void
 name|onConsumeEnd
-parameter_list|()
+parameter_list|(
+name|PerfMeasurable
+name|client
+parameter_list|)
 block|{     }
 specifier|public
 name|void
 name|onJMSException
 parameter_list|(
+name|PerfMeasurable
+name|client
+parameter_list|,
 name|JMSException
 name|e
 parameter_list|)
@@ -74,6 +95,9 @@ specifier|public
 name|void
 name|onException
 parameter_list|(
+name|PerfMeasurable
+name|client
+parameter_list|,
 name|Exception
 name|e
 parameter_list|)
