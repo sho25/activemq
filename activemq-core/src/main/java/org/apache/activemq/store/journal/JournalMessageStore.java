@@ -1402,11 +1402,6 @@ operator|.
 name|getSize
 argument_list|()
 expr_stmt|;
-name|iterator
-operator|.
-name|remove
-argument_list|()
-expr_stmt|;
 name|message
 operator|.
 name|decrementReferenceCount
