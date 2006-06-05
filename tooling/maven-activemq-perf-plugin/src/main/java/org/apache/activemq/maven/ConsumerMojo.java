@@ -25,7 +25,7 @@ name|activemq
 operator|.
 name|tool
 operator|.
-name|ConsumerTool
+name|JmsConsumerClient
 import|;
 end_import
 
@@ -57,8 +57,18 @@ name|MojoExecutionException
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
+import|;
+end_import
+
 begin_comment
-comment|/**  * Goal which touches a timestamp file.  *  * @goal consumer  * @phase process  */
+comment|/**  * Goal which touches a timestamp file.  *  * @goal consumer  * @phase process-sources  */
 end_comment
 
 begin_class
@@ -116,13 +126,35 @@ block|,
 name|maximumMessage
 block|}
 decl_stmt|;
-name|ConsumerTool
+try|try
+block|{
+name|JmsConsumerClient
 operator|.
 name|main
 argument_list|(
 name|args
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|MojoExecutionException
+argument_list|(
+literal|"Error Executing Consumer: "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 end_class
