@@ -96,6 +96,14 @@ name|PerfEventListener
 implements|,
 name|Runnable
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PREFIX_CONFIG_SYSTEM_TEST
+init|=
+literal|"sampler."
+decl_stmt|;
 specifier|private
 name|long
 name|duration

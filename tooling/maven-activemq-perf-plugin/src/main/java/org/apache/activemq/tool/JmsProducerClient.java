@@ -1310,7 +1310,7 @@ init|=
 operator|new
 name|String
 index|[
-literal|17
+literal|16
 index|]
 decl_stmt|;
 name|options
@@ -1427,13 +1427,6 @@ expr_stmt|;
 name|options
 index|[
 literal|15
-index|]
-operator|=
-literal|"-Dfactory.clientID=producerSampleClient"
-expr_stmt|;
-name|options
-index|[
-literal|16
 index|]
 operator|=
 literal|"-Dfactory.asyncSend=true"
