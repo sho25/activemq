@@ -436,9 +436,6 @@ condition|)
 block|{
 try|try
 block|{
-name|executeBatch
-argument_list|()
-expr_stmt|;
 comment|/**                  * we are not in a transaction so should not be committing ??                  * This was previously commented out - but had                  * adverse affects on testing - so it's back!                  *                   */
 try|try
 block|{
@@ -453,6 +450,12 @@ condition|(
 name|connection
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|connection
+operator|.
+name|getAutoCommit
+argument_list|()
 condition|)
 block|{
 name|connection
@@ -588,6 +591,14 @@ block|{
 name|executeBatch
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|connection
+operator|.
+name|getAutoCommit
+argument_list|()
+condition|)
 name|connection
 operator|.
 name|commit
