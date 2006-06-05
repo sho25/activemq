@@ -604,6 +604,11 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|isRunning
+operator|.
+name|notifyAll
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 specifier|public
