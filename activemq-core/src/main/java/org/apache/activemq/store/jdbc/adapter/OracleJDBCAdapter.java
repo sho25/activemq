@@ -124,6 +124,17 @@ argument_list|(
 name|index
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|aBlob
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 return|return
 name|aBlob
 operator|.
