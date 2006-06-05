@@ -516,6 +516,8 @@ name|rampDownTime
 decl_stmt|;
 try|try
 block|{
+try|try
+block|{
 name|Thread
 operator|.
 name|sleep
@@ -523,6 +525,13 @@ argument_list|(
 name|rampUpTime
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{             }
 comment|// Let's reset the throughput first and start getting the samples
 for|for
 control|(
@@ -574,6 +583,8 @@ name|get
 argument_list|()
 condition|)
 block|{
+try|try
+block|{
 name|Thread
 operator|.
 name|sleep
@@ -581,6 +592,13 @@ argument_list|(
 name|interval
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{                 }
 name|sampleClients
 argument_list|()
 expr_stmt|;
@@ -589,12 +607,6 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{         }
 finally|finally
 block|{
 name|isRunning
@@ -604,11 +616,17 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|isRunning
+init|)
+block|{
 name|isRunning
 operator|.
 name|notifyAll
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
@@ -696,6 +714,11 @@ condition|)
 block|{
 try|try
 block|{
+synchronized|synchronized
+init|(
+name|isRunning
+init|)
+block|{
 name|isRunning
 operator|.
 name|wait
@@ -703,6 +726,7 @@ argument_list|(
 name|timeout
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
