@@ -1392,6 +1392,21 @@ name|TransactionContext
 name|getTransactionContext
 parameter_list|()
 block|{
+if|if
+condition|(
+name|dataSource
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"No dataSource property has been configured"
+argument_list|)
+throw|;
+block|}
 return|return
 operator|new
 name|TransactionContext
