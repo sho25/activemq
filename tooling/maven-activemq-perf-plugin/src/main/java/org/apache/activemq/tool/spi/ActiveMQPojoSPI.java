@@ -405,7 +405,7 @@ name|setUseAsyncSend
 argument_list|(
 name|Boolean
 operator|.
-name|parseBoolean
+name|getBoolean
 argument_list|(
 name|setting
 argument_list|)
@@ -441,7 +441,7 @@ name|setAsyncDispatch
 argument_list|(
 name|Boolean
 operator|.
-name|parseBoolean
+name|getBoolean
 argument_list|(
 name|setting
 argument_list|)
@@ -477,7 +477,7 @@ name|setAlwaysSessionAsync
 argument_list|(
 name|Boolean
 operator|.
-name|parseBoolean
+name|getBoolean
 argument_list|(
 name|setting
 argument_list|)
@@ -549,7 +549,7 @@ name|setCopyMessageOnSend
 argument_list|(
 name|Boolean
 operator|.
-name|parseBoolean
+name|getBoolean
 argument_list|(
 name|setting
 argument_list|)
@@ -585,7 +585,7 @@ name|setDisableTimeStampsByDefault
 argument_list|(
 name|Boolean
 operator|.
-name|parseBoolean
+name|getBoolean
 argument_list|(
 name|setting
 argument_list|)
@@ -621,7 +621,7 @@ name|setObjectMessageSerializationDefered
 argument_list|(
 name|Boolean
 operator|.
-name|parseBoolean
+name|getBoolean
 argument_list|(
 name|setting
 argument_list|)
@@ -657,7 +657,7 @@ name|setOnSendPrepareMessageBody
 argument_list|(
 name|Boolean
 operator|.
-name|parseBoolean
+name|getBoolean
 argument_list|(
 name|setting
 argument_list|)
@@ -693,7 +693,7 @@ name|setOptimizeAcknowledge
 argument_list|(
 name|Boolean
 operator|.
-name|parseBoolean
+name|getBoolean
 argument_list|(
 name|setting
 argument_list|)
@@ -729,7 +729,7 @@ name|setOptimizedMessageDispatch
 argument_list|(
 name|Boolean
 operator|.
-name|parseBoolean
+name|getBoolean
 argument_list|(
 name|setting
 argument_list|)
@@ -843,7 +843,7 @@ name|setUseCompression
 argument_list|(
 name|Boolean
 operator|.
-name|parseBoolean
+name|getBoolean
 argument_list|(
 name|setting
 argument_list|)
@@ -879,7 +879,7 @@ name|setUseRetroactiveConsumer
 argument_list|(
 name|Boolean
 operator|.
-name|parseBoolean
+name|getBoolean
 argument_list|(
 name|setting
 argument_list|)
