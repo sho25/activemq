@@ -158,7 +158,7 @@ index|[]
 name|args
 parameter_list|)
 block|{
-comment|/*String[] options = new String[19];         options[0] = "-Dsampler.duration=60000";     // 1 min         options[1] = "-Dsampler.interval=5000";      // 5 secs         options[2] = "-Dsampler.rampUpTime=10000";   // 10 secs         options[3] = "-Dsampler.rampDownTime=10000"; // 10 secs          options[4] = "-Dclient.spiClass=org.apache.activemq.tool.spi.ActiveMQPojoSPI";         options[5] = "-Dclient.sessTransacted=false";         options[6] = "-Dclient.sessAckMode=autoAck";         options[7] = "-Dclient.destName=topic://FOO.BAR.TEST";         options[8] = "-Dclient.destCount=1";         options[9] = "-Dclient.destComposite=false";          options[10] = "-Dproducer.messageSize=1024";         options[11] = "-Dproducer.sendCount=1000";     // 1000 messages         options[12] = "-Dproducer.sendDuration=60000"; // 1 min         options[13] = "-Dproducer.sendType=time";          options[14] = "-Dfactory.brokerUrl=tcp://localhost:61616";         options[15] = "-Dfactory.asyncSend=true";          options[16] = "-DsysTest.numClients=5";         options[17] = "-DsysTest.totalDests=5";         options[18] = "-DsysTest.destDistro=all";          args = options;*/
+comment|/*String[] options = new String[20];         options[0] = "-Dsampler.duration=60000";     // 1 min         options[1] = "-Dsampler.interval=5000";      // 5 secs         options[2] = "-Dsampler.rampUpTime=10000";   // 10 secs         options[3] = "-Dsampler.rampDownTime=10000"; // 10 secs          options[4] = "-Dclient.spiClass=org.apache.activemq.tool.spi.ActiveMQPojoSPI";         options[5] = "-Dclient.sessTransacted=false";         options[6] = "-Dclient.sessAckMode=autoAck";         options[7] = "-Dclient.destName=topic://FOO.BAR.TEST";         options[8] = "-Dclient.destCount=1";         options[9] = "-Dclient.destComposite=false";          options[10] = "-Dproducer.messageSize=1024";         options[11] = "-Dproducer.sendCount=1000";     // 1000 messages         options[12] = "-Dproducer.sendDuration=60000"; // 1 min         options[13] = "-Dproducer.sendType=time";          options[14] = "-Dfactory.brokerUrl=tcp://localhost:61616";         options[15] = "-Dfactory.asyncSend=true";          options[16] = "-DsysTest.numClients=5";         options[17] = "-DsysTest.totalDests=5";         options[18] = "-DsysTest.destDistro=all";         options[19] = "-DsysTest.reportDirectory=./target/test-perf";          args = options; */
 name|Properties
 name|sysSettings
 init|=
@@ -265,13 +265,6 @@ operator|new
 name|JmsProducerSystem
 argument_list|()
 decl_stmt|;
-name|sysTest
-operator|.
-name|setReportDirectory
-argument_list|(
-literal|"./target/Test-perf"
-argument_list|)
-expr_stmt|;
 name|sysTest
 operator|.
 name|setSettings
