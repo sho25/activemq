@@ -78,7 +78,7 @@ name|ConsumerMojo
 extends|extends
 name|AbstractMojo
 block|{
-comment|/**      * @parameter expression="${sampler.durable}" default-value="60000"      * @required      */
+comment|/**      * @parameter expression="${sampler.duration}" default-value="60000"      * @required      */
 specifier|private
 name|String
 name|duration
@@ -255,6 +255,19 @@ index|[
 literal|25
 index|]
 decl_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"--- "
+operator|+
+name|duration
+operator|+
+literal|" ----"
+argument_list|)
+expr_stmt|;
 name|options
 index|[
 literal|0

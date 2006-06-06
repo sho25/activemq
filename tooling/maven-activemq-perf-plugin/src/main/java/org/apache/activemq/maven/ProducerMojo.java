@@ -68,7 +68,7 @@ name|ProducerMojo
 extends|extends
 name|AbstractMojo
 block|{
-comment|/**      * @parameter expression="${sampler.durable}" default-value="60000"      * @required      */
+comment|/**      * @parameter expression="${sampler.duration}" default-value="60000"      * @required      */
 specifier|private
 name|String
 name|duration
@@ -197,7 +197,7 @@ init|=
 operator|new
 name|String
 index|[
-literal|25
+literal|20
 index|]
 decl_stmt|;
 name|options
@@ -352,7 +352,7 @@ name|asyncSend
 expr_stmt|;
 name|options
 index|[
-literal|21
+literal|16
 index|]
 operator|=
 literal|"-DsysTest.numClients="
@@ -361,7 +361,7 @@ name|numClients
 expr_stmt|;
 name|options
 index|[
-literal|22
+literal|17
 index|]
 operator|=
 literal|"-DsysTest.totalDests="
@@ -370,7 +370,7 @@ name|totalDests
 expr_stmt|;
 name|options
 index|[
-literal|23
+literal|18
 index|]
 operator|=
 literal|"-DsysTest.destDistro="
@@ -379,7 +379,7 @@ name|destDistro
 expr_stmt|;
 name|options
 index|[
-literal|24
+literal|19
 index|]
 operator|=
 literal|"-DsysTest.reportDirectory="
