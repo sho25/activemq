@@ -128,11 +128,7 @@ specifier|private
 name|String
 name|sendCount
 decl_stmt|;
-comment|/**      * @parameter expression="${producer.sendDuration}" default-value="60000"      * @required      */
-specifier|private
-name|String
-name|sendDuration
-decl_stmt|;
+comment|/*      * @parameter expression="${producer.sendDuration}" default-value="60000"      * @required      private String sendDuration;     */
 comment|/**      * @parameter expression="${producer.sendType}" default-value="time"      * @required      */
 specifier|private
 name|String
@@ -205,7 +201,7 @@ index|[
 literal|0
 index|]
 operator|=
-literal|"-Dsampler.duration="
+literal|"sampler.duration="
 operator|+
 name|duration
 expr_stmt|;
@@ -215,7 +211,7 @@ index|[
 literal|1
 index|]
 operator|=
-literal|"-Dsampler.interval="
+literal|"sampler.interval="
 operator|+
 name|interval
 expr_stmt|;
@@ -225,7 +221,7 @@ index|[
 literal|2
 index|]
 operator|=
-literal|"-Dsampler.rampUpTime="
+literal|"sampler.rampUpTime="
 operator|+
 name|rampUpTime
 expr_stmt|;
@@ -235,7 +231,7 @@ index|[
 literal|3
 index|]
 operator|=
-literal|"-Dsampler.rampDownTime="
+literal|"sampler.rampDownTime="
 operator|+
 name|rampDownTime
 expr_stmt|;
@@ -245,7 +241,7 @@ index|[
 literal|4
 index|]
 operator|=
-literal|"-Dclient.spiClass="
+literal|"client.spiClass="
 operator|+
 name|spiClass
 expr_stmt|;
@@ -254,7 +250,7 @@ index|[
 literal|5
 index|]
 operator|=
-literal|"-Dclient.sessTransacted="
+literal|"client.sessTransacted="
 operator|+
 name|sessTransacted
 expr_stmt|;
@@ -263,7 +259,7 @@ index|[
 literal|6
 index|]
 operator|=
-literal|"-Dclient.sessAckMode="
+literal|"client.sessAckMode="
 operator|+
 name|sessAckMode
 expr_stmt|;
@@ -272,7 +268,7 @@ index|[
 literal|7
 index|]
 operator|=
-literal|"-Dclient.destName="
+literal|"client.destName="
 operator|+
 name|destName
 expr_stmt|;
@@ -281,7 +277,7 @@ index|[
 literal|8
 index|]
 operator|=
-literal|"-Dclient.destCount="
+literal|"client.destCount="
 operator|+
 name|destCount
 expr_stmt|;
@@ -290,7 +286,7 @@ index|[
 literal|9
 index|]
 operator|=
-literal|"-Dclient.destComposite="
+literal|"client.destComposite="
 operator|+
 name|destComposite
 expr_stmt|;
@@ -299,7 +295,7 @@ index|[
 literal|10
 index|]
 operator|=
-literal|"-Dproducer.messageSize="
+literal|"producer.messageSize="
 operator|+
 name|messageSize
 expr_stmt|;
@@ -308,7 +304,7 @@ index|[
 literal|11
 index|]
 operator|=
-literal|"-Dproducer.sendCount="
+literal|"producer.sendCount="
 operator|+
 name|sendCount
 expr_stmt|;
@@ -318,17 +314,17 @@ index|[
 literal|12
 index|]
 operator|=
-literal|"-Dproducer.sendDuration="
+literal|"producer.sendDuration="
 operator|+
-name|sendDuration
+name|duration
 expr_stmt|;
-comment|// 1 min
+comment|// use sampler.duration.
 name|options
 index|[
 literal|13
 index|]
 operator|=
-literal|"-Dproducer.sendType="
+literal|"producer.sendType="
 operator|+
 name|sendType
 expr_stmt|;
@@ -337,7 +333,7 @@ index|[
 literal|14
 index|]
 operator|=
-literal|"-Dfactory.brokerUrl="
+literal|"factory.brokerUrl="
 operator|+
 name|brokerUrl
 expr_stmt|;
@@ -346,7 +342,7 @@ index|[
 literal|15
 index|]
 operator|=
-literal|"-Dfactory.asyncSend="
+literal|"factory.asyncSend="
 operator|+
 name|asyncSend
 expr_stmt|;
@@ -355,7 +351,7 @@ index|[
 literal|16
 index|]
 operator|=
-literal|"-DsysTest.numClients="
+literal|"sysTest.numClients="
 operator|+
 name|numClients
 expr_stmt|;
@@ -364,7 +360,7 @@ index|[
 literal|17
 index|]
 operator|=
-literal|"-DsysTest.totalDests="
+literal|"sysTest.totalDests="
 operator|+
 name|totalDests
 expr_stmt|;
@@ -373,7 +369,7 @@ index|[
 literal|18
 index|]
 operator|=
-literal|"-DsysTest.destDistro="
+literal|"sysTest.destDistro="
 operator|+
 name|destDistro
 expr_stmt|;
@@ -382,7 +378,7 @@ index|[
 literal|19
 index|]
 operator|=
-literal|"-DsysTest.reportDirectory="
+literal|"sysTest.reportDirectory="
 operator|+
 name|reportDirectory
 expr_stmt|;

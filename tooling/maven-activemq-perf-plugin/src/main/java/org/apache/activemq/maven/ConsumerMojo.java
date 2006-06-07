@@ -143,11 +143,7 @@ specifier|private
 name|String
 name|recvCount
 decl_stmt|;
-comment|/**      * @parameter expression="${consumer.recvDuration}" default-value="60000"      * @required      */
-specifier|private
-name|String
-name|recvDuration
-decl_stmt|;
+comment|/*      * @parameter expression="${consumer.recvDuration}" default-value="60000"      * @required      private String recvDuration;     */
 comment|/**      * @parameter expression="${consumer.recvType}" default-value="time"      * @required      */
 specifier|private
 name|String
@@ -255,25 +251,12 @@ index|[
 literal|25
 index|]
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"--- "
-operator|+
-name|duration
-operator|+
-literal|" ----"
-argument_list|)
-expr_stmt|;
 name|options
 index|[
 literal|0
 index|]
 operator|=
-literal|"-Dsampler.duration="
+literal|"sampler.duration="
 operator|+
 name|duration
 expr_stmt|;
@@ -283,7 +266,7 @@ index|[
 literal|1
 index|]
 operator|=
-literal|"-Dsampler.interval="
+literal|"sampler.interval="
 operator|+
 name|interval
 expr_stmt|;
@@ -293,7 +276,7 @@ index|[
 literal|2
 index|]
 operator|=
-literal|"-Dsampler.rampUpTime="
+literal|"sampler.rampUpTime="
 operator|+
 name|rampUpTime
 expr_stmt|;
@@ -303,7 +286,7 @@ index|[
 literal|3
 index|]
 operator|=
-literal|"-Dsampler.rampDownTime="
+literal|"sampler.rampDownTime="
 operator|+
 name|rampDownTime
 expr_stmt|;
@@ -313,7 +296,7 @@ index|[
 literal|4
 index|]
 operator|=
-literal|"-Dclient.spiClass="
+literal|"client.spiClass="
 operator|+
 name|spiClass
 expr_stmt|;
@@ -322,7 +305,7 @@ index|[
 literal|5
 index|]
 operator|=
-literal|"-Dclient.sessTransacted="
+literal|"client.sessTransacted="
 operator|+
 name|sessTransacted
 expr_stmt|;
@@ -331,7 +314,7 @@ index|[
 literal|6
 index|]
 operator|=
-literal|"-Dclient.sessAckMode="
+literal|"client.sessAckMode="
 operator|+
 name|sessAckMode
 expr_stmt|;
@@ -340,7 +323,7 @@ index|[
 literal|7
 index|]
 operator|=
-literal|"-Dclient.destName="
+literal|"client.destName="
 operator|+
 name|destName
 expr_stmt|;
@@ -349,7 +332,7 @@ index|[
 literal|8
 index|]
 operator|=
-literal|"-Dclient.destCount="
+literal|"client.destCount="
 operator|+
 name|destCount
 expr_stmt|;
@@ -358,7 +341,7 @@ index|[
 literal|9
 index|]
 operator|=
-literal|"-Dclient.destComposite="
+literal|"client.destComposite="
 operator|+
 name|destComposite
 expr_stmt|;
@@ -367,7 +350,7 @@ index|[
 literal|10
 index|]
 operator|=
-literal|"-Dconsumer.durable="
+literal|"consumer.durable="
 operator|+
 name|durable
 expr_stmt|;
@@ -376,7 +359,7 @@ index|[
 literal|11
 index|]
 operator|=
-literal|"-Dconsumer.asyncRecv="
+literal|"consumer.asyncRecv="
 operator|+
 name|asyncRecv
 expr_stmt|;
@@ -385,7 +368,7 @@ index|[
 literal|12
 index|]
 operator|=
-literal|"-Dconsumer.recvCount="
+literal|"consumer.recvCount="
 operator|+
 name|recvCount
 expr_stmt|;
@@ -395,17 +378,17 @@ index|[
 literal|13
 index|]
 operator|=
-literal|"-Dconsumer.recvDuration="
+literal|"consumer.recvDuration="
 operator|+
-name|recvDuration
+name|duration
 expr_stmt|;
-comment|// 1 min
+comment|// use sampler.duration.
 name|options
 index|[
 literal|14
 index|]
 operator|=
-literal|"-Dconsumer.recvType="
+literal|"consumer.recvType="
 operator|+
 name|recvType
 expr_stmt|;
@@ -414,7 +397,7 @@ index|[
 literal|15
 index|]
 operator|=
-literal|"-Dfactory.brokerUrl="
+literal|"factory.brokerUrl="
 operator|+
 name|brokerUrl
 expr_stmt|;
@@ -423,7 +406,7 @@ index|[
 literal|16
 index|]
 operator|=
-literal|"-Dfactory.optimAck="
+literal|"factory.optimAck="
 operator|+
 name|optimAck
 expr_stmt|;
@@ -432,7 +415,7 @@ index|[
 literal|17
 index|]
 operator|=
-literal|"-Dfactory.optimDispatch="
+literal|"factory.optimDispatch="
 operator|+
 name|optimDispatch
 expr_stmt|;
@@ -441,7 +424,7 @@ index|[
 literal|18
 index|]
 operator|=
-literal|"-Dfactory.prefetchQueue="
+literal|"factory.prefetchQueue="
 operator|+
 name|prefetchQueue
 expr_stmt|;
@@ -450,7 +433,7 @@ index|[
 literal|19
 index|]
 operator|=
-literal|"-Dfactory.prefetchTopic="
+literal|"factory.prefetchTopic="
 operator|+
 name|prefetchTopic
 expr_stmt|;
@@ -459,7 +442,7 @@ index|[
 literal|20
 index|]
 operator|=
-literal|"-Dfactory.useRetroactive="
+literal|"factory.useRetroactive="
 operator|+
 name|useRetroactive
 expr_stmt|;
@@ -468,7 +451,7 @@ index|[
 literal|21
 index|]
 operator|=
-literal|"-DsysTest.numClients="
+literal|"sysTest.numClients="
 operator|+
 name|numClients
 expr_stmt|;
@@ -477,7 +460,7 @@ index|[
 literal|22
 index|]
 operator|=
-literal|"-DsysTest.totalDests="
+literal|"sysTest.totalDests="
 operator|+
 name|totalDests
 expr_stmt|;
@@ -486,7 +469,7 @@ index|[
 literal|23
 index|]
 operator|=
-literal|"-DsysTest.destDistro="
+literal|"sysTest.destDistro="
 operator|+
 name|destDistro
 expr_stmt|;
@@ -495,7 +478,7 @@ index|[
 literal|24
 index|]
 operator|=
-literal|"-DsysTest.reportDirectory="
+literal|"sysTest.reportDirectory="
 operator|+
 name|reportDirectory
 expr_stmt|;
