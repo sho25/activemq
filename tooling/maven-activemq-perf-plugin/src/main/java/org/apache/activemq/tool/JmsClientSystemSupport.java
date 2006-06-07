@@ -243,11 +243,11 @@ argument_list|()
 expr_stmt|;
 name|performanceSampler
 operator|.
-name|setDataOutputStream
+name|setWriter
 argument_list|(
 name|report
 operator|.
-name|getDataOutputStream
+name|getWriter
 argument_list|()
 argument_list|)
 expr_stmt|;
