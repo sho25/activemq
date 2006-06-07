@@ -36,6 +36,11 @@ name|reset
 parameter_list|()
 function_decl|;
 specifier|public
+name|int
+name|getClientNumber
+parameter_list|()
+function_decl|;
+specifier|public
 name|String
 name|getClientName
 parameter_list|()

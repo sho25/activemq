@@ -707,25 +707,32 @@ argument_list|()
 operator|.
 name|println
 argument_list|(
-literal|"<sample index="
+literal|"<sample index='"
 operator|+
 name|sampleIndex
 operator|+
-literal|" name="
+literal|"' clientNumber='"
+operator|+
+name|client
+operator|.
+name|getClientNumber
+argument_list|()
+operator|+
+literal|"' name='"
 operator|+
 name|client
 operator|.
 name|getClientName
 argument_list|()
 operator|+
-literal|" throughput="
+literal|"' throughput='"
 operator|+
 name|client
 operator|.
 name|getThroughput
 argument_list|()
 operator|+
-literal|"/>"
+literal|"'/>"
 argument_list|)
 expr_stmt|;
 name|client
