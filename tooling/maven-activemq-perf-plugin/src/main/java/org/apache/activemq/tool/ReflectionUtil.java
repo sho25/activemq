@@ -176,13 +176,21 @@ argument_list|,
 literal|"."
 argument_list|)
 decl_stmt|;
+name|int
+name|tokenCount
+init|=
+name|tokenizer
+operator|.
+name|countTokens
+argument_list|()
+decl_stmt|;
 comment|// NOTE: Skip the first token, it is assume that this is an indicator for the object itself
 name|tokenizer
 operator|.
 name|nextToken
 argument_list|()
 expr_stmt|;
-comment|// For nested settings, get the object first
+comment|// For nested settings, get the object first. -2, do not count the first and last token
 for|for
 control|(
 name|int
@@ -192,12 +200,9 @@ literal|0
 init|;
 name|j
 operator|<
-name|tokenizer
-operator|.
-name|countTokens
-argument_list|()
+name|tokenCount
 operator|-
-literal|1
+literal|2
 condition|;
 name|j
 operator|++
@@ -763,6 +768,7 @@ comment|// to convert the string to the target object type
 block|}
 else|else
 block|{
+comment|// Note valueOf method should be public and static
 name|Object
 name|param
 init|=

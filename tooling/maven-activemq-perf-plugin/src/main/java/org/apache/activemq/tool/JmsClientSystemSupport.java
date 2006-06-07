@@ -224,7 +224,7 @@ operator|.
 name|getClass
 argument_list|()
 operator|.
-name|getCanonicalName
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
