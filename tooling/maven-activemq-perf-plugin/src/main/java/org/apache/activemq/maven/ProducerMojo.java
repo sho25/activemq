@@ -88,48 +88,48 @@ specifier|private
 name|String
 name|rampDownTime
 decl_stmt|;
-comment|/**      * @parameter expression="${client.spiClass}" default-value="org.apache.activemq.tool.spi.ActiveMQPojoSPI"      * @required      */
+comment|/**      * @parameter expression="${producer.spiClass}" default-value="org.apache.activemq.tool.spi.ActiveMQPojoSPI"      * @required      */
 specifier|private
 name|String
 name|spiClass
 decl_stmt|;
-comment|/**      * @parameter expression="${client.sessTransacted}" default-value="false"      * @required      */
+comment|/**      * @parameter expression="${producer.sessTransacted}" default-value="false"      * @required      */
 specifier|private
 name|String
 name|sessTransacted
 decl_stmt|;
-comment|/**      * @parameter expression="${client.sessAckMode}" default-value="autoAck"      * @required      */
+comment|/**      * @parameter expression="${producer.sessAckMode}" default-value="autoAck"      * @required      */
 specifier|private
 name|String
 name|sessAckMode
 decl_stmt|;
-comment|/**      * @parameter expression="${client.destName}" default-value="topic://FOO.BAR.TEST"      * @required      */
+comment|/**      * @parameter expression="${producer.destName}" default-value="topic://FOO.BAR.TEST"      * @required      */
 specifier|private
 name|String
 name|destName
 decl_stmt|;
-comment|/**      * @parameter expression="${client.destCount}" default-value="1"      * @required      */
+comment|/**      * @parameter expression="${producer.destCount}" default-value="1"      * @required      */
 specifier|private
 name|String
 name|destCount
 decl_stmt|;
-comment|/**      * @parameter expression="${client.destComposite}" default-value="false"      * @required      */
+comment|/**      * @parameter expression="${producer.destComposite}" default-value="false"      * @required      */
 specifier|private
 name|String
 name|destComposite
 decl_stmt|;
-comment|/**      * @parameter expression="${client.messageSize}" default-value="1024"      * @required      */
+comment|/**      * @parameter expression="${producer.messageSize}" default-value="1024"      * @required      */
 specifier|private
 name|String
 name|messageSize
 decl_stmt|;
-comment|/**      * @parameter expression="${client.sendCount}" default-value="1000"      * @required      */
+comment|/**      * @parameter expression="${producer.sendCount}" default-value="1000"      * @required      */
 specifier|private
 name|String
 name|sendCount
 decl_stmt|;
-comment|/*      * @parameter expression="${client.sendDuration}" default-value="60000"      * @required      private String sendDuration;     */
-comment|/**      * @parameter expression="${client.sendType}" default-value="time"      * @required      */
+comment|/*      * @parameter expression="${producer.sendDuration}" default-value="60000"      * @required      private String sendDuration;     */
+comment|/**      * @parameter expression="${producer.sendType}" default-value="time"      * @required      */
 specifier|private
 name|String
 name|sendType
@@ -241,7 +241,7 @@ index|[
 literal|4
 index|]
 operator|=
-literal|"client.spiClass="
+literal|"producer.spiClass="
 operator|+
 name|spiClass
 expr_stmt|;
@@ -250,7 +250,7 @@ index|[
 literal|5
 index|]
 operator|=
-literal|"client.sessTransacted="
+literal|"producer.sessTransacted="
 operator|+
 name|sessTransacted
 expr_stmt|;
@@ -259,7 +259,7 @@ index|[
 literal|6
 index|]
 operator|=
-literal|"client.sessAckMode="
+literal|"producer.sessAckMode="
 operator|+
 name|sessAckMode
 expr_stmt|;
@@ -268,7 +268,7 @@ index|[
 literal|7
 index|]
 operator|=
-literal|"client.destName="
+literal|"producer.destName="
 operator|+
 name|destName
 expr_stmt|;
@@ -277,7 +277,7 @@ index|[
 literal|8
 index|]
 operator|=
-literal|"client.destCount="
+literal|"producer.destCount="
 operator|+
 name|destCount
 expr_stmt|;
@@ -286,7 +286,7 @@ index|[
 literal|9
 index|]
 operator|=
-literal|"client.destComposite="
+literal|"producer.destComposite="
 operator|+
 name|destComposite
 expr_stmt|;
@@ -295,7 +295,7 @@ index|[
 literal|10
 index|]
 operator|=
-literal|"client.messageSize="
+literal|"producer.messageSize="
 operator|+
 name|messageSize
 expr_stmt|;
@@ -304,7 +304,7 @@ index|[
 literal|11
 index|]
 operator|=
-literal|"client.sendCount="
+literal|"producer.sendCount="
 operator|+
 name|sendCount
 expr_stmt|;
@@ -314,7 +314,7 @@ index|[
 literal|12
 index|]
 operator|=
-literal|"client.sendDuration="
+literal|"producer.sendDuration="
 operator|+
 name|duration
 expr_stmt|;
@@ -324,7 +324,7 @@ index|[
 literal|13
 index|]
 operator|=
-literal|"client.sendType="
+literal|"producer.sendType="
 operator|+
 name|sendType
 expr_stmt|;

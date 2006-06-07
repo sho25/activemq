@@ -98,53 +98,53 @@ specifier|private
 name|String
 name|rampDownTime
 decl_stmt|;
-comment|/**      * @parameter expression="${client.spiClass}" default-value="org.apache.activemq.tool.spi.ActiveMQPojoSPI"      * @required      */
+comment|/**      * @parameter expression="${consumer.spiClass}" default-value="org.apache.activemq.tool.spi.ActiveMQPojoSPI"      * @required      */
 specifier|private
 name|String
 name|spiClass
 decl_stmt|;
-comment|/**      * @parameter expression="${client.sessTransacted}" default-value="false"      * @required      */
+comment|/**      * @parameter expression="${consumer.sessTransacted}" default-value="false"      * @required      */
 specifier|private
 name|String
 name|sessTransacted
 decl_stmt|;
-comment|/**      * @parameter expression="${client.sessAckMode}" default-value="autoAck"      * @required      */
+comment|/**      * @parameter expression="${consumer.sessAckMode}" default-value="autoAck"      * @required      */
 specifier|private
 name|String
 name|sessAckMode
 decl_stmt|;
-comment|/**      * @parameter expression="${client.destName}" default-value="topic://FOO.BAR.TEST"      * @required      */
+comment|/**      * @parameter expression="${consumer.destName}" default-value="topic://FOO.BAR.TEST"      * @required      */
 specifier|private
 name|String
 name|destName
 decl_stmt|;
-comment|/**      * @parameter expression="${client.destCount}" default-value="1"      * @required      */
+comment|/**      * @parameter expression="${consumer.destCount}" default-value="1"      * @required      */
 specifier|private
 name|String
 name|destCount
 decl_stmt|;
-comment|/**      * @parameter expression="${client.destComposite}" default-value="false"      * @required      */
+comment|/**      * @parameter expression="${consumer.destComposite}" default-value="false"      * @required      */
 specifier|private
 name|String
 name|destComposite
 decl_stmt|;
-comment|/**      * @parameter expression="${client.durable}" default-value="false"      * @required      */
+comment|/**      * @parameter expression="${consumer.durable}" default-value="false"      * @required      */
 specifier|private
 name|String
 name|durable
 decl_stmt|;
-comment|/**      * @parameter expression="${client.asyncRecv}" default-value="true"      * @required      */
+comment|/**      * @parameter expression="${consumer.asyncRecv}" default-value="true"      * @required      */
 specifier|private
 name|String
 name|asyncRecv
 decl_stmt|;
-comment|/**      * @parameter expression="${client.recvCount}" default-value="1000"      * @required      */
+comment|/**      * @parameter expression="${consumer.recvCount}" default-value="1000"      * @required      */
 specifier|private
 name|String
 name|recvCount
 decl_stmt|;
-comment|/*      * @parameter expression="${client.recvDuration}" default-value="60000"      * @required      private String recvDuration;     */
-comment|/**      * @parameter expression="${client.recvType}" default-value="time"      * @required      */
+comment|/*      * @parameter expression="${consumer.recvDuration}" default-value="60000"      * @required      private String recvDuration;     */
+comment|/**      * @parameter expression="${consumer.recvType}" default-value="time"      * @required      */
 specifier|private
 name|String
 name|recvType
@@ -296,7 +296,7 @@ index|[
 literal|4
 index|]
 operator|=
-literal|"client.spiClass="
+literal|"consumer.spiClass="
 operator|+
 name|spiClass
 expr_stmt|;
@@ -305,7 +305,7 @@ index|[
 literal|5
 index|]
 operator|=
-literal|"client.sessTransacted="
+literal|"consumer.sessTransacted="
 operator|+
 name|sessTransacted
 expr_stmt|;
@@ -314,7 +314,7 @@ index|[
 literal|6
 index|]
 operator|=
-literal|"client.sessAckMode="
+literal|"consumer.sessAckMode="
 operator|+
 name|sessAckMode
 expr_stmt|;
@@ -323,7 +323,7 @@ index|[
 literal|7
 index|]
 operator|=
-literal|"client.destName="
+literal|"consumer.destName="
 operator|+
 name|destName
 expr_stmt|;
@@ -332,7 +332,7 @@ index|[
 literal|8
 index|]
 operator|=
-literal|"client.destCount="
+literal|"consumer.destCount="
 operator|+
 name|destCount
 expr_stmt|;
@@ -341,7 +341,7 @@ index|[
 literal|9
 index|]
 operator|=
-literal|"client.destComposite="
+literal|"consumer.destComposite="
 operator|+
 name|destComposite
 expr_stmt|;
@@ -350,7 +350,7 @@ index|[
 literal|10
 index|]
 operator|=
-literal|"client.durable="
+literal|"consumer.durable="
 operator|+
 name|durable
 expr_stmt|;
@@ -359,7 +359,7 @@ index|[
 literal|11
 index|]
 operator|=
-literal|"client.asyncRecv="
+literal|"consumer.asyncRecv="
 operator|+
 name|asyncRecv
 expr_stmt|;
@@ -368,7 +368,7 @@ index|[
 literal|12
 index|]
 operator|=
-literal|"client.recvCount="
+literal|"consumer.recvCount="
 operator|+
 name|recvCount
 expr_stmt|;
@@ -378,7 +378,7 @@ index|[
 literal|13
 index|]
 operator|=
-literal|"client.recvDuration="
+literal|"consumer.recvDuration="
 operator|+
 name|duration
 expr_stmt|;
@@ -388,7 +388,7 @@ index|[
 literal|14
 index|]
 operator|=
-literal|"client.recvType="
+literal|"consumer.recvType="
 operator|+
 name|recvType
 expr_stmt|;
