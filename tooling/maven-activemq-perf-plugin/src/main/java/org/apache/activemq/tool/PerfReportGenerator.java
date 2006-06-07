@@ -398,10 +398,9 @@ name|key
 operator|+
 literal|">"
 operator|+
-name|getTestSettings
-argument_list|()
+name|System
 operator|.
-name|get
+name|getProperty
 argument_list|(
 name|key
 argument_list|)
