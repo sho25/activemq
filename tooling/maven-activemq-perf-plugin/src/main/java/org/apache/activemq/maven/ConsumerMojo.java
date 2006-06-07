@@ -128,23 +128,23 @@ specifier|private
 name|String
 name|destComposite
 decl_stmt|;
-comment|/**      * @parameter expression="${consumer.durable}" default-value="false"      * @required      */
+comment|/**      * @parameter expression="${client.durable}" default-value="false"      * @required      */
 specifier|private
 name|String
 name|durable
 decl_stmt|;
-comment|/**      * @parameter expression="${consumer.asyncRecv}" default-value="true"      * @required      */
+comment|/**      * @parameter expression="${client.asyncRecv}" default-value="true"      * @required      */
 specifier|private
 name|String
 name|asyncRecv
 decl_stmt|;
-comment|/**      * @parameter expression="${consumer.recvCount}" default-value="1000"      * @required      */
+comment|/**      * @parameter expression="${client.recvCount}" default-value="1000"      * @required      */
 specifier|private
 name|String
 name|recvCount
 decl_stmt|;
-comment|/*      * @parameter expression="${consumer.recvDuration}" default-value="60000"      * @required      private String recvDuration;     */
-comment|/**      * @parameter expression="${consumer.recvType}" default-value="time"      * @required      */
+comment|/*      * @parameter expression="${client.recvDuration}" default-value="60000"      * @required      private String recvDuration;     */
+comment|/**      * @parameter expression="${client.recvType}" default-value="time"      * @required      */
 specifier|private
 name|String
 name|recvType
@@ -350,7 +350,7 @@ index|[
 literal|10
 index|]
 operator|=
-literal|"consumer.durable="
+literal|"client.durable="
 operator|+
 name|durable
 expr_stmt|;
@@ -359,7 +359,7 @@ index|[
 literal|11
 index|]
 operator|=
-literal|"consumer.asyncRecv="
+literal|"client.asyncRecv="
 operator|+
 name|asyncRecv
 expr_stmt|;
@@ -368,7 +368,7 @@ index|[
 literal|12
 index|]
 operator|=
-literal|"consumer.recvCount="
+literal|"client.recvCount="
 operator|+
 name|recvCount
 expr_stmt|;
@@ -378,7 +378,7 @@ index|[
 literal|13
 index|]
 operator|=
-literal|"consumer.recvDuration="
+literal|"client.recvDuration="
 operator|+
 name|duration
 expr_stmt|;
@@ -388,7 +388,7 @@ index|[
 literal|14
 index|]
 operator|=
-literal|"consumer.recvType="
+literal|"client.recvType="
 operator|+
 name|recvType
 expr_stmt|;

@@ -118,18 +118,18 @@ specifier|private
 name|String
 name|destComposite
 decl_stmt|;
-comment|/**      * @parameter expression="${producer.messageSize}" default-value="1024"      * @required      */
+comment|/**      * @parameter expression="${client.messageSize}" default-value="1024"      * @required      */
 specifier|private
 name|String
 name|messageSize
 decl_stmt|;
-comment|/**      * @parameter expression="${producer.sendCount}" default-value="1000"      * @required      */
+comment|/**      * @parameter expression="${client.sendCount}" default-value="1000"      * @required      */
 specifier|private
 name|String
 name|sendCount
 decl_stmt|;
-comment|/*      * @parameter expression="${producer.sendDuration}" default-value="60000"      * @required      private String sendDuration;     */
-comment|/**      * @parameter expression="${producer.sendType}" default-value="time"      * @required      */
+comment|/*      * @parameter expression="${client.sendDuration}" default-value="60000"      * @required      private String sendDuration;     */
+comment|/**      * @parameter expression="${client.sendType}" default-value="time"      * @required      */
 specifier|private
 name|String
 name|sendType
@@ -295,7 +295,7 @@ index|[
 literal|10
 index|]
 operator|=
-literal|"producer.messageSize="
+literal|"client.messageSize="
 operator|+
 name|messageSize
 expr_stmt|;
@@ -304,7 +304,7 @@ index|[
 literal|11
 index|]
 operator|=
-literal|"producer.sendCount="
+literal|"client.sendCount="
 operator|+
 name|sendCount
 expr_stmt|;
@@ -314,7 +314,7 @@ index|[
 literal|12
 index|]
 operator|=
-literal|"producer.sendDuration="
+literal|"client.sendDuration="
 operator|+
 name|duration
 expr_stmt|;
@@ -324,7 +324,7 @@ index|[
 literal|13
 index|]
 operator|=
-literal|"producer.sendType="
+literal|"client.sendType="
 operator|+
 name|sendType
 expr_stmt|;

@@ -554,11 +554,11 @@ init|=
 block|{
 literal|"client.destCount"
 block|,
-literal|"consumer.asyncRecv"
+literal|"client.asyncRecv"
 block|,
-literal|"consumer.durable"
+literal|"client.durable"
 block|,
-literal|"producer.messageSize"
+literal|"client.messageSize"
 block|,
 literal|"sysTest.numClients"
 block|,
