@@ -330,7 +330,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|JournalLockedException
 argument_list|(
 literal|"Journal is already opened by this application."
 argument_list|)
@@ -365,7 +365,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|IOException
+name|JournalLockedException
 argument_list|(
 literal|"Journal is already opened by another application"
 argument_list|)
