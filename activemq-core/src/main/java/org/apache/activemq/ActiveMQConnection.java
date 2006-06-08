@@ -1133,12 +1133,6 @@ literal|false
 decl_stmt|;
 specifier|private
 name|boolean
-name|onSendPrepareMessageBody
-init|=
-literal|true
-decl_stmt|;
-specifier|private
-name|boolean
 name|optimizedMessageDispatch
 init|=
 literal|true
@@ -2712,32 +2706,6 @@ operator|.
 name|closeTimeout
 operator|=
 name|closeTimeout
-expr_stmt|;
-block|}
-comment|/**      *       * @return Returns the onSendPrepareMessageBody.      */
-specifier|public
-name|boolean
-name|isOnSendPrepareMessageBody
-parameter_list|()
-block|{
-return|return
-name|onSendPrepareMessageBody
-return|;
-block|}
-comment|/**      *       * @param onSendPrepareMessageBody      *            The onSendPrepareMessageBody to set.      */
-specifier|public
-name|void
-name|setOnSendPrepareMessageBody
-parameter_list|(
-name|boolean
-name|onSendPrepareMessageBody
-parameter_list|)
-block|{
-name|this
-operator|.
-name|onSendPrepareMessageBody
-operator|=
-name|onSendPrepareMessageBody
 expr_stmt|;
 block|}
 comment|/**      *       * @return ConnectionInfo      */
