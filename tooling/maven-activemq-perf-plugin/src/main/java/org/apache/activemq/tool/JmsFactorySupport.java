@@ -295,6 +295,13 @@ name|jmsFactorySettings
 operator|=
 name|jmsFactorySettings
 expr_stmt|;
+if|if
+condition|(
+name|spiFactory
+operator|!=
+literal|null
+condition|)
+block|{
 try|try
 block|{
 name|spiFactory
@@ -320,6 +327,7 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
@@ -388,6 +396,13 @@ name|val
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|spiFactory
+operator|!=
+literal|null
+condition|)
+block|{
 try|try
 block|{
 name|spiFactory
@@ -406,6 +421,11 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 name|log
 operator|.
 name|warn
@@ -413,6 +433,7 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public

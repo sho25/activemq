@@ -170,6 +170,8 @@ decl_stmt|;
 specifier|protected
 name|String
 name|reportDirectory
+init|=
+literal|""
 decl_stmt|;
 specifier|protected
 name|int

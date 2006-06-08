@@ -125,6 +125,14 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DEFAULT_SPI_CLASS
+init|=
+literal|"org.apache.activemq.tool.spi.ActiveMQPojoSPI"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -185,6 +193,8 @@ comment|// Client settings
 specifier|protected
 name|String
 name|spiClass
+init|=
+name|DEFAULT_SPI_CLASS
 decl_stmt|;
 specifier|protected
 name|boolean

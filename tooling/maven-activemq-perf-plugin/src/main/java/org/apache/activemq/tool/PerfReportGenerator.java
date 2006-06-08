@@ -146,6 +146,8 @@ operator|.
 name|getProperty
 argument_list|(
 literal|"sysTest.reportDirectory"
+argument_list|,
+literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
