@@ -698,17 +698,7 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Mark set: "
-operator|+
-name|safeLocation
-argument_list|)
-expr_stmt|;
+comment|// System.out.println("Mark set: "+safeLocation);
 name|journal
 operator|.
 name|setMark

@@ -436,6 +436,12 @@ name|SERIALIZED_SIZE
 index|]
 argument_list|)
 decl_stmt|;
+specifier|private
+name|boolean
+name|doingNotification
+init|=
+literal|false
+decl_stmt|;
 specifier|public
 name|JournalImpl
 parameter_list|(
@@ -1163,7 +1169,16 @@ name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
+operator|&&
+operator|!
+name|doingNotification
 condition|)
+block|{
+name|doingNotification
+operator|=
+literal|true
+expr_stmt|;
+try|try
 block|{
 comment|// We need to send an overflow notification to free up
 comment|// some logFiles.
@@ -1189,6 +1204,14 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|doingNotification
+operator|=
+literal|false
+expr_stmt|;
+block|}
 block|}
 comment|// Is it time to roll over?
 if|if
