@@ -2646,7 +2646,7 @@ return|return
 name|disableTimeStampsByDefault
 return|;
 block|}
-comment|/**      *       * @param timeStampsDisableByDefault      *            The timeStampsDisableByDefault to set.      */
+comment|/**      * Sets whether or not timestamps on messages should be disabled or not. If you disable them it adds a small performance boost.      *       * @param timeStampsDisableByDefault      *            The timeStampsDisableByDefault to set.      */
 specifier|public
 name|void
 name|setDisableTimeStampsByDefault
@@ -2698,7 +2698,7 @@ return|return
 name|closeTimeout
 return|;
 block|}
-comment|/**      * @param closeTimeout The closeTimeout to set.      */
+comment|/**      * Sets the timeout before a close is considered complete. Normally a      * close() on a connection waits for confirmation from the broker; this      * allows that operation to timeout to save the client hanging if there is      * no broker      *       * @param closeTimeout      *            The closeTimeout to set.      */
 specifier|public
 name|void
 name|setCloseTimeout
@@ -4155,7 +4155,7 @@ return|return
 name|optimizeAcknowledge
 return|;
 block|}
-comment|/**      * @param optimizeAcknowledge The optimizeAcknowledge to set.      */
+comment|/**      * Enables an optimised acknowledgement mode where messages are acknowledged in batches rather than individually      *       * @param optimizeAcknowledge The optimizeAcknowledge to set.      */
 specifier|public
 name|void
 name|setOptimizeAcknowledge
@@ -5137,6 +5137,7 @@ return|return
 name|useCompression
 return|;
 block|}
+comment|/**      * Enables the use of compression of the message bodies      *       * @param useCompression      */
 specifier|public
 name|void
 name|setUseCompression
@@ -6189,6 +6190,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|/**      * Should a JMS message be copied to a new JMS Message object as part of the      * send() method in JMS. This is enabled by default to be compliant with the      * JMS specification. You can disable it if you do not mutate JMS messages      * after they are sent for a performance boost      *       * @param copyMessageOnSend      */
 specifier|public
 name|void
 name|setCopyMessageOnSend
