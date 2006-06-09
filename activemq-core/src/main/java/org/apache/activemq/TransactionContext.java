@@ -2368,7 +2368,6 @@ argument_list|,
 name|l
 argument_list|)
 expr_stmt|;
-block|}
 name|l
 operator|.
 name|add
@@ -2376,6 +2375,27 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|l
+operator|.
+name|contains
+argument_list|(
+name|this
+argument_list|)
+condition|)
+block|{
+name|l
+operator|.
+name|add
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|// dis-associate
 name|associatedXid
