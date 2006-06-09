@@ -103,7 +103,7 @@ specifier|private
 name|String
 name|sessAckMode
 decl_stmt|;
-comment|/**      * @parameter expression="${consumer.destName}" default-value="topic://TEST.PERFORMANCE.FOO.BAR"      * @required      */
+comment|/**      * @parameter expression="${producer.destName}" default-value="topic://TEST.PERFORMANCE.FOO.BAR"      * @required      */
 specifier|private
 name|String
 name|destName
