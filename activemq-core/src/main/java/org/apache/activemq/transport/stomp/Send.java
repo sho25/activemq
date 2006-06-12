@@ -454,6 +454,16 @@ name|createMessageId
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|msg
+operator|.
+name|setJMSTimestamp
+argument_list|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|ActiveMQDestination
 name|d
 init|=
