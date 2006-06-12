@@ -471,7 +471,7 @@ expr_stmt|;
 block|}
 name|wireFormat
 operator|.
-name|renegociatWireFormat
+name|renegotiateWireFormat
 argument_list|(
 name|info
 argument_list|)

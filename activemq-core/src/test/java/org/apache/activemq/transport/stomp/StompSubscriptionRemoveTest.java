@@ -123,16 +123,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|MessageConsumer
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|MessageProducer
 import|;
 end_import
@@ -179,37 +169,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|Broker
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
 name|BrokerService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|region
-operator|.
-name|RegionBroker
 import|;
 end_import
 
@@ -224,22 +184,6 @@ operator|.
 name|command
 operator|.
 name|ActiveMQQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|stomp
-operator|.
-name|Stomp
 import|;
 end_import
 
@@ -1037,14 +981,14 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Total messages receved: "
+literal|"Total messages received: "
 operator|+
 name|messagesCount
 argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"Messages receved after connection loss: "
+literal|"Messages received after connection loss: "
 operator|+
 name|messagesCount
 argument_list|,
@@ -1055,8 +999,8 @@ argument_list|)
 expr_stmt|;
 comment|// The first ack messages has no chance complete, so we receiving more messages
 comment|// Don't know how to list subscriptions for the broker. Currently you
-comment|// can check using jmx console. You'll see
-comment|// Subscription whithout any connections
+comment|// can check using JMX console. You'll see
+comment|// Subscription without any connections
 block|}
 specifier|public
 name|void

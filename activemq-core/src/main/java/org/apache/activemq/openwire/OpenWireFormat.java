@@ -2824,7 +2824,7 @@ return|;
 block|}
 specifier|public
 name|void
-name|renegociatWireFormat
+name|renegotiateWireFormat
 parameter_list|(
 name|WireFormatInfo
 name|info
@@ -2842,7 +2842,7 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"Wireformat cannot not be renegociated."
+literal|"Wireformat cannot not be renegotiated."
 argument_list|)
 throw|;
 name|this
