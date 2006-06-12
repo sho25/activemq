@@ -999,7 +999,7 @@ name|localBroker
 operator|.
 name|oneway
 argument_list|(
-name|remoteConnectionInfo
+name|localConnectionInfo
 operator|.
 name|createRemoveCommand
 argument_list|()
