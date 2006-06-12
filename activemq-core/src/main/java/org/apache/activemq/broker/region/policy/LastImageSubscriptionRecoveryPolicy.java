@@ -373,6 +373,17 @@ index|]
 argument_list|)
 return|;
 block|}
+specifier|public
+name|SubscriptionRecoveryPolicy
+name|copy
+parameter_list|()
+block|{
+return|return
+operator|new
+name|LastImageSubscriptionRecoveryPolicy
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

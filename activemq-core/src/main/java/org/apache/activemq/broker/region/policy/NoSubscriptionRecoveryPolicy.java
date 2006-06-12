@@ -121,6 +121,16 @@ implements|implements
 name|SubscriptionRecoveryPolicy
 block|{
 specifier|public
+name|SubscriptionRecoveryPolicy
+name|copy
+parameter_list|()
+block|{
+comment|// This object is immutable
+return|return
+name|this
+return|;
+block|}
+specifier|public
 name|boolean
 name|add
 parameter_list|(

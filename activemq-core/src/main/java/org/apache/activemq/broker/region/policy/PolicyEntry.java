@@ -283,6 +283,9 @@ operator|.
 name|setSubscriptionRecoveryPolicy
 argument_list|(
 name|subscriptionRecoveryPolicy
+operator|.
+name|copy
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

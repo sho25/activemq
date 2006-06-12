@@ -172,6 +172,11 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Used to copy the policy object.      */
+name|SubscriptionRecoveryPolicy
+name|copy
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
