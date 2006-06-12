@@ -387,6 +387,38 @@ name|out
 operator|.
 name|println
 argument_list|(
+literal|"[PERF-SUMMARY] System Average Client Throughput: "
+operator|+
+name|summary
+operator|.
+name|get
+argument_list|(
+name|KEY_SYS_AVE_CLIENT_TP
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"[PERF-SUMMARY] System Average Client Throughput Excluding Min/Max: "
+operator|+
+name|summary
+operator|.
+name|get
+argument_list|(
+name|KEY_SYS_AVE_CLIENT_EMM_TP
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
 literal|"[PERF-SUMMARY] Min Client Throughput Per Sample: "
 operator|+
 name|summary

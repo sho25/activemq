@@ -55,12 +55,12 @@ literal|null
 condition|)
 block|{
 return|return
-literal|"JmsConsumer_ClientCount"
+literal|"JmsConsumer_Client"
 operator|+
 name|getNumClients
 argument_list|()
 operator|+
-literal|"_DestCount"
+literal|"_Dest"
 operator|+
 name|getTotalDests
 argument_list|()
@@ -134,14 +134,6 @@ argument_list|(
 name|clientSettings
 argument_list|)
 expr_stmt|;
-name|consumer
-operator|.
-name|setConsumerName
-argument_list|(
-name|clientName
-argument_list|)
-expr_stmt|;
-comment|// For durable subscribers
 name|consumer
 operator|.
 name|setClientName

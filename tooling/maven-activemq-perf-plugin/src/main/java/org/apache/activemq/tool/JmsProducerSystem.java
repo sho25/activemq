@@ -55,12 +55,12 @@ literal|null
 condition|)
 block|{
 return|return
-literal|"JmsProducer_ClientCount"
+literal|"JmsProducer_Client"
 operator|+
 name|getNumClients
 argument_list|()
 operator|+
-literal|"_DestCount"
+literal|"_Dest"
 operator|+
 name|getTotalDests
 argument_list|()
