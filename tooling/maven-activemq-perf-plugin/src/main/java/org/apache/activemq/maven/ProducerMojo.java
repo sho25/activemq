@@ -164,6 +164,11 @@ specifier|private
 name|String
 name|reportDirectory
 decl_stmt|;
+comment|/**      * @parameter expression="${sysTest.reportType}" default-value="xml"      * @required      */
+specifier|private
+name|String
+name|reportType
+decl_stmt|;
 specifier|public
 name|void
 name|execute
@@ -270,6 +275,10 @@ block|,
 literal|"sysTest.reportDirectory="
 operator|+
 name|reportDirectory
+block|,
+literal|"sysTest.reportType="
+operator|+
+name|reportType
 block|}
 decl_stmt|;
 return|return
