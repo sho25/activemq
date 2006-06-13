@@ -326,6 +326,11 @@ name|CLIENT_ID
 init|=
 literal|"client-id"
 decl_stmt|;
+name|String
+name|REQUEST_ID
+init|=
+literal|"request-id"
+decl_stmt|;
 block|}
 specifier|public
 interface|interface
@@ -345,6 +350,11 @@ name|String
 name|SESSION
 init|=
 literal|"session"
+decl_stmt|;
+name|String
+name|RESPONSE_ID
+init|=
+literal|"response-id"
 decl_stmt|;
 block|}
 specifier|public

@@ -681,6 +681,8 @@ literal|"login: brianm\n"
 operator|+
 literal|"passcode: wombats\n"
 operator|+
+literal|"request-id: 1\n"
+operator|+
 literal|"\n"
 operator|+
 name|Stomp
@@ -707,6 +709,16 @@ operator|.
 name|startsWith
 argument_list|(
 literal|"CONNECTED"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|f
+operator|.
+name|contains
+argument_list|(
+literal|"response-id:1"
 argument_list|)
 argument_list|)
 expr_stmt|;
