@@ -716,10 +716,12 @@ name|assertTrue
 argument_list|(
 name|f
 operator|.
-name|contains
+name|indexOf
 argument_list|(
 literal|"response-id:1"
 argument_list|)
+operator|>=
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
