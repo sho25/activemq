@@ -118,6 +118,11 @@ specifier|private
 name|String
 name|destComposite
 decl_stmt|;
+comment|/**      * @parameter expression="${producer.deliveryMode}" default-value="nonpersistent"      * @required      */
+specifier|private
+name|String
+name|deliveryMode
+decl_stmt|;
 comment|/**      * @parameter expression="${producer.messageSize}" default-value="1024"      * @required      */
 specifier|private
 name|String
@@ -235,6 +240,10 @@ block|,
 literal|"producer.destComposite="
 operator|+
 name|destComposite
+block|,
+literal|"producer.deliveryMode="
+operator|+
+name|deliveryMode
 block|,
 literal|"producer.messageSize="
 operator|+
