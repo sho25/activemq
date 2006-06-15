@@ -31,6 +31,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|jms
+operator|.
+name|InvalidSelectorException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|management
 operator|.
 name|openmbean
@@ -120,6 +130,33 @@ name|browseAsTable
 parameter_list|()
 throws|throws
 name|OpenDataException
+function_decl|;
+comment|/**      * @return An array of all the messages in the destination's queue.      * @throws InvalidSelectorException       */
+specifier|public
+name|CompositeData
+index|[]
+name|browse
+parameter_list|(
+name|String
+name|selector
+parameter_list|)
+throws|throws
+name|OpenDataException
+throws|,
+name|InvalidSelectorException
+function_decl|;
+comment|/**      * @return A list of all the messages in the destination's queue.      * @throws InvalidSelectorException       */
+specifier|public
+name|TabularData
+name|browseAsTable
+parameter_list|(
+name|String
+name|selector
+parameter_list|)
+throws|throws
+name|OpenDataException
+throws|,
+name|InvalidSelectorException
 function_decl|;
 comment|/**      * Sends a TextMesage to the destination.      * @param body the text to send      * @return the message id of the message sent.      * @throws Exception      */
 specifier|public
