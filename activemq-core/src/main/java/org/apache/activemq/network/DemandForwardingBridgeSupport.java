@@ -2109,12 +2109,12 @@ if|if
 condition|(
 name|log
 operator|.
-name|isTraceEnabled
+name|isDebugEnabled
 argument_list|()
 condition|)
 name|log
 operator|.
-name|trace
+name|debug
 argument_list|(
 literal|"Ignoring Subscription "
 operator|+
@@ -2150,12 +2150,12 @@ if|if
 condition|(
 name|log
 operator|.
-name|isTraceEnabled
+name|isDebugEnabled
 argument_list|()
 condition|)
 name|log
 operator|.
-name|trace
+name|debug
 argument_list|(
 literal|"Ignoring sub "
 operator|+
@@ -2183,12 +2183,12 @@ if|if
 condition|(
 name|log
 operator|.
-name|isTraceEnabled
+name|isDebugEnabled
 argument_list|()
 condition|)
 name|log
 operator|.
-name|trace
+name|debug
 argument_list|(
 literal|"Ignoring sub "
 operator|+
@@ -2243,12 +2243,12 @@ if|if
 condition|(
 name|log
 operator|.
-name|isTraceEnabled
+name|isDebugEnabled
 argument_list|()
 condition|)
 name|log
 operator|.
-name|trace
+name|debug
 argument_list|(
 literal|"Forwarding sub on "
 operator|+
@@ -2270,12 +2270,12 @@ if|if
 condition|(
 name|log
 operator|.
-name|isTraceEnabled
+name|isDebugEnabled
 argument_list|()
 condition|)
 name|log
 operator|.
-name|trace
+name|debug
 argument_list|(
 literal|"Ignoring sub "
 operator|+
@@ -2337,12 +2337,12 @@ if|if
 condition|(
 name|log
 operator|.
-name|isTraceEnabled
+name|isDebugEnabled
 argument_list|()
 condition|)
 name|log
 operator|.
-name|trace
+name|debug
 argument_list|(
 literal|"Ignoring Subscription "
 operator|+
@@ -2378,12 +2378,12 @@ if|if
 condition|(
 name|log
 operator|.
-name|isTraceEnabled
+name|isDebugEnabled
 argument_list|()
 condition|)
 name|log
 operator|.
-name|trace
+name|debug
 argument_list|(
 literal|"Ignoring sub "
 operator|+

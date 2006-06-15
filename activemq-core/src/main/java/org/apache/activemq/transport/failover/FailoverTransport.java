@@ -1033,9 +1033,16 @@ operator|!
 name|disposed
 condition|)
 block|{
+if|if
+condition|(
 name|log
 operator|.
-name|debug
+name|isTraceEnabled
+argument_list|()
+condition|)
+name|log
+operator|.
+name|trace
 argument_list|(
 literal|"Waiting "
 operator|+
