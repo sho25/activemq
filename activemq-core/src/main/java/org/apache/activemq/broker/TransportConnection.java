@@ -784,6 +784,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+specifier|public
+name|String
+name|getRemoteAddress
+parameter_list|()
+block|{
+return|return
+name|transport
+operator|.
+name|getRemoteAddress
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

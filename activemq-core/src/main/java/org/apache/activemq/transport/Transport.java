@@ -150,6 +150,12 @@ name|Class
 name|target
 parameter_list|)
 function_decl|;
+comment|/**      * @return the remote address for this connection      *        */
+specifier|public
+name|String
+name|getRemoteAddress
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

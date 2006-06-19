@@ -354,6 +354,15 @@ return|return
 name|wireFormat
 return|;
 block|}
+specifier|public
+name|String
+name|getRemoteAddress
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
 block|}
 expr_stmt|;
 block|}

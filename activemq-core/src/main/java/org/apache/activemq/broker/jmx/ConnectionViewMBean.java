@@ -84,6 +84,12 @@ name|long
 name|getDequeueCount
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the source address for this connection      *       * @return the souce address for this connection      */
+specifier|public
+name|String
+name|getRemoteAddress
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

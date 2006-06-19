@@ -154,6 +154,15 @@ return|return
 name|queue
 return|;
 block|}
+specifier|public
+name|String
+name|getRemoteAddress
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
 block|}
 end_class
 

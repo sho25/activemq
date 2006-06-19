@@ -502,6 +502,18 @@ name|filter
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|String
+name|getRemoteAddress
+parameter_list|()
+block|{
+return|return
+name|next
+operator|.
+name|getRemoteAddress
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
