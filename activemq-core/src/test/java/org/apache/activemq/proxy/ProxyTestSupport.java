@@ -260,6 +260,13 @@ argument_list|()
 expr_stmt|;
 name|proxyConnector
 operator|.
+name|setName
+argument_list|(
+literal|"proxy"
+argument_list|)
+expr_stmt|;
+name|proxyConnector
+operator|.
 name|setBind
 argument_list|(
 operator|new
@@ -338,6 +345,13 @@ operator|=
 operator|new
 name|ProxyConnector
 argument_list|()
+expr_stmt|;
+name|remoteProxyConnector
+operator|.
+name|setName
+argument_list|(
+literal|"remoteProxy"
+argument_list|)
 expr_stmt|;
 name|remoteProxyConnector
 operator|.
