@@ -115,6 +115,18 @@ block|}
 comment|// Properties
 comment|// -------------------------------------------------------------------------
 specifier|public
+name|String
+name|getRemoteAddress
+parameter_list|()
+block|{
+return|return
+name|remoteUrl
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
+specifier|public
 name|URI
 name|getRemoteUrl
 parameter_list|()

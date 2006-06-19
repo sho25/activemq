@@ -243,6 +243,15 @@ argument_list|)
 throw|;
 block|}
 block|}
+specifier|public
+name|String
+name|getRemoteAddress
+parameter_list|()
+block|{
+return|return
+literal|"blockingQueue"
+return|;
+block|}
 specifier|protected
 name|void
 name|doStart
