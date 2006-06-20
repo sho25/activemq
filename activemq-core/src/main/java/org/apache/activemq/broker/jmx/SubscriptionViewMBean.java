@@ -72,7 +72,7 @@ name|String
 name|getSelector
 parameter_list|()
 function_decl|;
-comment|/**      * Attempts to change the current active selector on the subscription.      * This operation is not supported for persistent topics.      */
+comment|/**      * Attempts to change the current active selector on the subscription. This      * operation is not supported for persistent topics.      */
 specifier|public
 name|void
 name|setSelector
@@ -140,6 +140,48 @@ comment|/**      * @return the prefetch that has been configured for this subscr
 specifier|public
 name|int
 name|getPrefetchSize
+parameter_list|()
+function_decl|;
+comment|/**      * @return whether or not the subscriber is retroactive or not      */
+specifier|public
+name|boolean
+name|isRetroactive
+parameter_list|()
+function_decl|;
+comment|/**      * @return whether or not the subscriber is an exclusive consumer      */
+specifier|public
+name|boolean
+name|isExclusive
+parameter_list|()
+function_decl|;
+comment|/**      * @return whether or not the subscriber is durable (persistent)      */
+specifier|public
+name|boolean
+name|isDurable
+parameter_list|()
+function_decl|;
+comment|/**      * @return whether or not the subscriber ignores local messages      */
+specifier|public
+name|boolean
+name|isNoLocal
+parameter_list|()
+function_decl|;
+comment|/**      * @return the maximum number of pending messages allowed in addition to the      *         prefetch size. If enabled to a non-zero value then this will      *         perform eviction of messages for slow consumers on non-durable      *         topics.      */
+specifier|public
+name|int
+name|getMaximumPendingMessageLimit
+parameter_list|()
+function_decl|;
+comment|/**      * @return the consumer priority      */
+specifier|public
+name|byte
+name|getPriority
+parameter_list|()
+function_decl|;
+comment|/**      * @return the name of the consumer which is only used for durable      *         consumers.      */
+specifier|public
+name|String
+name|getSubcriptionName
 parameter_list|()
 function_decl|;
 block|}
