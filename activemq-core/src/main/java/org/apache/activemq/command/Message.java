@@ -310,7 +310,7 @@ name|int
 name|size
 decl_stmt|;
 specifier|protected
-name|HashMap
+name|Map
 name|properties
 decl_stmt|;
 specifier|protected
@@ -737,7 +737,7 @@ block|}
 block|}
 block|}
 specifier|private
-name|HashMap
+name|Map
 name|unmarsallProperties
 parameter_list|(
 name|ByteSequence

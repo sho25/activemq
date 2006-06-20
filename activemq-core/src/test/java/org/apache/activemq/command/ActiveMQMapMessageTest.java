@@ -1427,6 +1427,22 @@ name|MessageFormatException
 name|mfe
 parameter_list|)
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Caught: "
+operator|+
+name|mfe
+argument_list|)
+expr_stmt|;
+name|mfe
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 name|fail
 argument_list|(
 literal|"object formats should be correct"

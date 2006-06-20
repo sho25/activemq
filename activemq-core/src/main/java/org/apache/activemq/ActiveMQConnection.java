@@ -1181,6 +1181,12 @@ literal|false
 decl_stmt|;
 specifier|private
 name|boolean
+name|nestedMapAndListEnabled
+init|=
+literal|true
+decl_stmt|;
+specifier|private
+name|boolean
 name|useRetroactiveConsumer
 decl_stmt|;
 specifier|private
@@ -2743,6 +2749,31 @@ operator|.
 name|useRetroactiveConsumer
 operator|=
 name|useRetroactiveConsumer
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isNestedMapAndListEnabled
+parameter_list|()
+block|{
+return|return
+name|nestedMapAndListEnabled
+return|;
+block|}
+comment|/**      * Enables/disables whether or not Message properties and MapMessage entries support nested Map and List objects      */
+specifier|public
+name|void
+name|setNestedMapAndListEnabled
+parameter_list|(
+name|boolean
+name|structuredMapsEnabled
+parameter_list|)
+block|{
+name|this
+operator|.
+name|nestedMapAndListEnabled
+operator|=
+name|structuredMapsEnabled
 expr_stmt|;
 block|}
 comment|/**      * Adds a transport listener so that a client can be notified of events in the underlying       * transport      */

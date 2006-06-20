@@ -247,7 +247,7 @@ name|marshalledProperties
 decl_stmt|;
 specifier|protected
 specifier|transient
-name|HashMap
+name|Map
 name|properties
 decl_stmt|;
 specifier|private
@@ -589,7 +589,7 @@ block|}
 block|}
 block|}
 specifier|private
-name|HashMap
+name|Map
 name|unmarsallProperties
 parameter_list|(
 name|ByteSequence
