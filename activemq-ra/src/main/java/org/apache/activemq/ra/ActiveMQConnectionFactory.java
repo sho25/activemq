@@ -348,6 +348,21 @@ name|InboundConnectionProxy
 argument_list|()
 return|;
 block|}
+if|if
+condition|(
+name|manager
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"No JCA ConnectionManager configured! Either enable UseInboundSessionEnabled or get your JCA container to configure one."
+argument_list|)
+throw|;
+block|}
 return|return
 operator|(
 name|Connection
