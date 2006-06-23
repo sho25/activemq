@@ -62,7 +62,7 @@ specifier|final
 name|String
 name|KEY_BROKER_URL
 init|=
-literal|"factory.brokerUrl"
+literal|"brokerUrl"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -70,7 +70,7 @@ specifier|final
 name|String
 name|KEY_USERNAME
 init|=
-literal|"factory.username"
+literal|"username"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -78,7 +78,7 @@ specifier|final
 name|String
 name|KEY_PASSWORD
 init|=
-literal|"factory.password"
+literal|"password"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -86,7 +86,7 @@ specifier|final
 name|String
 name|KEY_CLIENT_ID
 init|=
-literal|"factory.clientID"
+literal|"clientID"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -94,7 +94,7 @@ specifier|final
 name|String
 name|KEY_ASYNC_SEND
 init|=
-literal|"factory.asyncSend"
+literal|"asyncSend"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -102,7 +102,7 @@ specifier|final
 name|String
 name|KEY_ASYNC_DISPATCH
 init|=
-literal|"factory.asyncDispatch"
+literal|"asyncDispatch"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -110,7 +110,7 @@ specifier|final
 name|String
 name|KEY_ASYNC_SESSION
 init|=
-literal|"factory.asyncSession"
+literal|"asyncSession"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -118,7 +118,7 @@ specifier|final
 name|String
 name|KEY_CLOSE_TIMEOUT
 init|=
-literal|"factory.closeTimeout"
+literal|"closeTimeout"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -126,7 +126,7 @@ specifier|final
 name|String
 name|KEY_COPY_MSG_ON_SEND
 init|=
-literal|"factory.copyMsgOnSend"
+literal|"copyMsgOnSend"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -134,7 +134,7 @@ specifier|final
 name|String
 name|KEY_DISABLE_TIMESTAMP
 init|=
-literal|"factory.disableTimestamp"
+literal|"disableTimestamp"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -142,7 +142,7 @@ specifier|final
 name|String
 name|KEY_DEFER_OBJ_SERIAL
 init|=
-literal|"factory.deferObjSerial"
+literal|"deferObjSerial"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -150,7 +150,7 @@ specifier|final
 name|String
 name|KEY_OPTIM_ACK
 init|=
-literal|"factory.optimAck"
+literal|"optimAck"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -158,7 +158,7 @@ specifier|final
 name|String
 name|KEY_OPTIM_DISPATCH
 init|=
-literal|"factory.optimDispatch"
+literal|"optimDispatch"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -166,7 +166,7 @@ specifier|final
 name|String
 name|KEY_PREFETCH_QUEUE
 init|=
-literal|"factory.prefetchQueue"
+literal|"prefetchQueue"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -174,7 +174,7 @@ specifier|final
 name|String
 name|KEY_PREFETCH_TOPIC
 init|=
-literal|"factory.prefetchTopic"
+literal|"prefetchTopic"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -182,7 +182,7 @@ specifier|final
 name|String
 name|KEY_USE_COMPRESSION
 init|=
-literal|"factory.useCompression"
+literal|"useCompression"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -190,7 +190,7 @@ specifier|final
 name|String
 name|KEY_USE_RETROACTIVE
 init|=
-literal|"factory.useRetroactive"
+literal|"useRetroactive"
 decl_stmt|;
 specifier|public
 name|ConnectionFactory
