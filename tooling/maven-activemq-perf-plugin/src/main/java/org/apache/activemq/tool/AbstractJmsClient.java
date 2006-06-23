@@ -109,6 +109,16 @@ name|Destination
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Enumeration
+import|;
+end_import
+
 begin_class
 specifier|public
 specifier|abstract
@@ -304,6 +314,7 @@ operator|.
 name|createConnection
 argument_list|()
 expr_stmt|;
+comment|// Get Connection Metadata
 name|getClient
 argument_list|()
 operator|.
@@ -316,6 +327,8 @@ argument_list|()
 operator|.
 name|getJMSProviderName
 argument_list|()
+operator|+
+literal|" "
 operator|+
 name|jmsConnection
 operator|.
@@ -342,11 +355,14 @@ name|getJMSVersion
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|getClient
-argument_list|()
-operator|.
-name|setJmsProperties
-argument_list|(
+name|String
+name|jmsProperties
+init|=
+literal|""
+decl_stmt|;
+name|Enumeration
+name|props
+init|=
 name|jmsConnection
 operator|.
 name|getMetaData
@@ -354,9 +370,64 @@ argument_list|()
 operator|.
 name|getJMSXPropertyNames
 argument_list|()
+decl_stmt|;
+while|while
+condition|(
+name|props
+operator|.
+name|hasMoreElements
+argument_list|()
+condition|)
+block|{
+name|jmsProperties
+operator|+=
+operator|(
+name|props
+operator|.
+name|nextElement
+argument_list|()
 operator|.
 name|toString
 argument_list|()
+operator|+
+literal|","
+operator|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|jmsProperties
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+comment|// Remove the last comma
+name|jmsProperties
+operator|=
+name|jmsProperties
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|jmsProperties
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+name|getClient
+argument_list|()
+operator|.
+name|setJmsProperties
+argument_list|(
+name|jmsProperties
 argument_list|)
 expr_stmt|;
 block|}
@@ -374,7 +445,7 @@ operator|.
 name|getJmsProvider
 argument_list|()
 operator|+
-literal|" JMS Spec="
+literal|", JMS Spec="
 operator|+
 name|getClient
 argument_list|()
@@ -382,7 +453,7 @@ operator|.
 name|getJmsVersion
 argument_list|()
 operator|+
-literal|" JMS Properties="
+literal|", JMS Properties="
 operator|+
 name|getClient
 argument_list|()
