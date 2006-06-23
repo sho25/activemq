@@ -27,6 +27,8 @@ name|activemq
 operator|.
 name|tool
 operator|.
+name|properties
+operator|.
 name|ReflectionUtil
 import|;
 end_import

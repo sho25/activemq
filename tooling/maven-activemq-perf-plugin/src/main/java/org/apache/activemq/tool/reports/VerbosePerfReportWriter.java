@@ -19,6 +19,42 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|tool
+operator|.
+name|reports
+operator|.
+name|plugins
+operator|.
+name|ReportPlugin
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|tool
+operator|.
+name|reports
+operator|.
+name|plugins
+operator|.
+name|ThroughputReportPlugin
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -69,16 +105,7 @@ name|void
 name|openReportWriter
 parameter_list|()
 block|{
-name|writeProperties
-argument_list|(
-literal|"System Properties"
-argument_list|,
-name|System
-operator|.
-name|getProperties
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|// Do nothing
 block|}
 specifier|public
 name|void
@@ -116,85 +143,45 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|writeHeader
+name|writeCsvData
 parameter_list|(
+name|int
+name|csvType
+parameter_list|,
 name|String
-name|header
+name|csvData
 parameter_list|)
 block|{
-name|char
-index|[]
-name|border
-init|=
-operator|new
-name|char
-index|[
-name|header
+if|if
+condition|(
+name|csvType
+operator|==
+name|ReportPlugin
 operator|.
-name|length
-argument_list|()
-operator|+
-literal|8
-index|]
-decl_stmt|;
-comment|// +8 for spacing
-name|Arrays
-operator|.
-name|fill
-argument_list|(
-name|border
-argument_list|,
-literal|'#'
-argument_list|)
-expr_stmt|;
-name|String
-name|borderStr
-init|=
-operator|new
-name|String
-argument_list|(
-name|border
-argument_list|)
-decl_stmt|;
+name|REPORT_PLUGIN_THROUGHPUT
+condition|)
+block|{
 name|System
 operator|.
 name|out
 operator|.
 name|println
 argument_list|(
-name|borderStr
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"#   "
+literal|"[PERF-TP]: "
 operator|+
-name|header
-operator|+
-literal|"   #"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|borderStr
+name|csvData
 argument_list|)
 expr_stmt|;
 block|}
-specifier|public
-name|void
-name|writePerfData
-parameter_list|(
-name|String
-name|data
-parameter_list|)
+elseif|else
+if|if
+condition|(
+name|csvType
+operator|==
+name|ReportPlugin
+operator|.
+name|REPORT_PLUGIN_CPU
+condition|)
 block|{
 name|System
 operator|.
@@ -202,15 +189,17 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"[PERF-DATA]: "
+literal|"[PERF-CPU]: "
 operator|+
-name|data
+name|csvData
 argument_list|)
 expr_stmt|;
-comment|// Assume data is a CSV of key-value pair
-name|parsePerfCsvData
+block|}
+name|handleCsvData
 argument_list|(
-name|data
+name|csvType
+argument_list|,
+name|csvData
 argument_list|)
 expr_stmt|;
 block|}
@@ -312,9 +301,11 @@ block|{
 name|Map
 name|summary
 init|=
-name|createPerfSummary
+name|getSummary
 argument_list|(
-name|clientThroughputs
+name|ReportPlugin
+operator|.
+name|REPORT_PLUGIN_THROUGHPUT
 argument_list|)
 decl_stmt|;
 name|System
@@ -323,12 +314,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"[PERF-SUMMARY] System Total Throughput: "
+literal|"[PERF-TP-SUMMARY] System Total Throughput: "
 operator|+
 name|summary
 operator|.
 name|get
 argument_list|(
+name|ThroughputReportPlugin
+operator|.
 name|KEY_SYS_TOTAL_TP
 argument_list|)
 argument_list|)
@@ -339,12 +332,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"[PERF-SUMMARY] System Total Clients: "
+literal|"[PERF-TP-SUMMARY] System Total Clients: "
 operator|+
 name|summary
 operator|.
 name|get
 argument_list|(
+name|ThroughputReportPlugin
+operator|.
 name|KEY_SYS_TOTAL_CLIENTS
 argument_list|)
 argument_list|)
@@ -355,12 +350,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"[PERF-SUMMARY] System Average Throughput: "
+literal|"[PERF-TP-SUMMARY] System Average Throughput: "
 operator|+
 name|summary
 operator|.
 name|get
 argument_list|(
+name|ThroughputReportPlugin
+operator|.
 name|KEY_SYS_AVE_TP
 argument_list|)
 argument_list|)
@@ -371,12 +368,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"[PERF-SUMMARY] System Average Throughput Excluding Min/Max: "
+literal|"[PERF-TP-SUMMARY] System Average Throughput Excluding Min/Max: "
 operator|+
 name|summary
 operator|.
 name|get
 argument_list|(
+name|ThroughputReportPlugin
+operator|.
 name|KEY_SYS_AVE_EMM_TP
 argument_list|)
 argument_list|)
@@ -387,12 +386,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"[PERF-SUMMARY] System Average Client Throughput: "
+literal|"[PERF-TP-SUMMARY] System Average Client Throughput: "
 operator|+
 name|summary
 operator|.
 name|get
 argument_list|(
+name|ThroughputReportPlugin
+operator|.
 name|KEY_SYS_AVE_CLIENT_TP
 argument_list|)
 argument_list|)
@@ -403,12 +404,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"[PERF-SUMMARY] System Average Client Throughput Excluding Min/Max: "
+literal|"[PERF-TP-SUMMARY] System Average Client Throughput Excluding Min/Max: "
 operator|+
 name|summary
 operator|.
 name|get
 argument_list|(
+name|ThroughputReportPlugin
+operator|.
 name|KEY_SYS_AVE_CLIENT_EMM_TP
 argument_list|)
 argument_list|)
@@ -419,12 +422,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"[PERF-SUMMARY] Min Client Throughput Per Sample: "
+literal|"[PERF-TP-SUMMARY] Min Client Throughput Per Sample: "
 operator|+
 name|summary
 operator|.
 name|get
 argument_list|(
+name|ThroughputReportPlugin
+operator|.
 name|KEY_MIN_CLIENT_TP
 argument_list|)
 argument_list|)
@@ -435,12 +440,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"[PERF-SUMMARY] Max Client Throughput Per Sample: "
+literal|"[PERF-TP-SUMMARY] Max Client Throughput Per Sample: "
 operator|+
 name|summary
 operator|.
 name|get
 argument_list|(
+name|ThroughputReportPlugin
+operator|.
 name|KEY_MAX_CLIENT_TP
 argument_list|)
 argument_list|)
@@ -451,12 +458,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"[PERF-SUMMARY] Min Client Total Throughput: "
+literal|"[PERF-TP-SUMMARY] Min Client Total Throughput: "
 operator|+
 name|summary
 operator|.
 name|get
 argument_list|(
+name|ThroughputReportPlugin
+operator|.
 name|KEY_MIN_CLIENT_TOTAL_TP
 argument_list|)
 argument_list|)
@@ -467,12 +476,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"[PERF-SUMMARY] Max Client Total Throughput: "
+literal|"[PERF-TP-SUMMARY] Max Client Total Throughput: "
 operator|+
 name|summary
 operator|.
 name|get
 argument_list|(
+name|ThroughputReportPlugin
+operator|.
 name|KEY_MAX_CLIENT_TOTAL_TP
 argument_list|)
 argument_list|)
@@ -483,12 +494,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"[PERF-SUMMARY] Min Client Average Throughput: "
+literal|"[PERF-TP-SUMMARY] Min Client Average Throughput: "
 operator|+
 name|summary
 operator|.
 name|get
 argument_list|(
+name|ThroughputReportPlugin
+operator|.
 name|KEY_MIN_CLIENT_AVE_TP
 argument_list|)
 argument_list|)
@@ -499,12 +512,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"[PERF-SUMMARY] Max Client Average Throughput: "
+literal|"[PERF-TP-SUMMARY] Max Client Average Throughput: "
 operator|+
 name|summary
 operator|.
 name|get
 argument_list|(
+name|ThroughputReportPlugin
+operator|.
 name|KEY_MAX_CLIENT_AVE_TP
 argument_list|)
 argument_list|)
@@ -515,12 +530,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"[PERF-SUMMARY] Min Client Average Throughput Excluding Min/Max: "
+literal|"[PERF-TP-SUMMARY] Min Client Average Throughput Excluding Min/Max: "
 operator|+
 name|summary
 operator|.
 name|get
 argument_list|(
+name|ThroughputReportPlugin
+operator|.
 name|KEY_MIN_CLIENT_AVE_EMM_TP
 argument_list|)
 argument_list|)
@@ -531,14 +548,90 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"[PERF-SUMMARY] Max Client Average Throughput Excluding Min/Max: "
+literal|"[PERF-TP-SUMMARY] Max Client Average Throughput Excluding Min/Max: "
 operator|+
 name|summary
 operator|.
 name|get
 argument_list|(
+name|ThroughputReportPlugin
+operator|.
 name|KEY_MAX_CLIENT_AVE_EMM_TP
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+specifier|protected
+name|void
+name|writeHeader
+parameter_list|(
+name|String
+name|header
+parameter_list|)
+block|{
+name|char
+index|[]
+name|border
+init|=
+operator|new
+name|char
+index|[
+name|header
+operator|.
+name|length
+argument_list|()
+operator|+
+literal|8
+index|]
+decl_stmt|;
+comment|// +8 for spacing
+name|Arrays
+operator|.
+name|fill
+argument_list|(
+name|border
+argument_list|,
+literal|'#'
+argument_list|)
+expr_stmt|;
+name|String
+name|borderStr
+init|=
+operator|new
+name|String
+argument_list|(
+name|border
+argument_list|)
+decl_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|borderStr
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"#   "
+operator|+
+name|header
+operator|+
+literal|"   #"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|borderStr
 argument_list|)
 expr_stmt|;
 block|}
