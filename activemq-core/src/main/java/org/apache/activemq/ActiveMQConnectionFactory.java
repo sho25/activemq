@@ -376,7 +376,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A ConnectionFactory is an an Administered object, and is used for creating  * Connections.<p/> This class also implements QueueConnectionFactory and  * TopicConnectionFactory. You can use this connection to create both  * QueueConnections and TopicConnections.  *   * @version $Revision: 1.9 $  * @see javax.jms.ConnectionFactory  */
+comment|/**  * A ConnectionFactory is an an Administered object, and is used for creating  * Connections.<p/> This class also implements QueueConnectionFactory and  * TopicConnectionFactory. You can use this connection to create both  * QueueConnections and TopicConnections.  *  * @version $Revision: 1.9 $  * @see javax.jms.ConnectionFactory  */
 end_comment
 
 begin_class
@@ -1666,6 +1666,14 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|getBrokerURL
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|props
 operator|.
 name|setProperty
@@ -1688,6 +1696,7 @@ name|getBrokerURL
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|getClientID
@@ -1695,6 +1704,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|props
 operator|.
 name|setProperty
@@ -1705,6 +1715,7 @@ name|getClientID
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|props
 operator|.
 name|setProperty
@@ -1765,6 +1776,14 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|getPassword
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|props
 operator|.
 name|setProperty
@@ -1775,6 +1794,7 @@ name|getPassword
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|props
 operator|.
 name|setProperty
@@ -1820,6 +1840,14 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|getUserName
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|props
 operator|.
 name|setProperty
@@ -1830,6 +1858,7 @@ name|getUserName
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|props
 operator|.
 name|setProperty
