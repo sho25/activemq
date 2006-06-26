@@ -234,7 +234,7 @@ operator|.
 name|nextToken
 argument_list|()
 operator|+
-literal|";"
+literal|","
 operator|)
 expr_stmt|;
 block|}

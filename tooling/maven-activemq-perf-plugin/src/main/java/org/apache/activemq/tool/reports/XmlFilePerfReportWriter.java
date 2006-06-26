@@ -2184,7 +2184,7 @@ name|StringTokenizer
 argument_list|(
 name|csvData
 argument_list|,
-literal|","
+literal|",;"
 argument_list|)
 decl_stmt|;
 name|String
