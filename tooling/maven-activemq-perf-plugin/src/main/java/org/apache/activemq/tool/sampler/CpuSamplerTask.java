@@ -196,6 +196,12 @@ name|ReportPlugin
 operator|.
 name|REPORT_PLUGIN_CPU
 argument_list|,
+literal|"index="
+operator|+
+name|sampleIndex
+operator|+
+literal|","
+operator|+
 name|plugin
 operator|.
 name|getCpuUtilizationStats
