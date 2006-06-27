@@ -129,6 +129,16 @@ name|String
 name|getCpuUtilizationStats
 parameter_list|()
 function_decl|;
+specifier|public
+name|void
+name|start
+parameter_list|()
+function_decl|;
+specifier|public
+name|void
+name|stop
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
