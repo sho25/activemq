@@ -189,8 +189,6 @@ expr_stmt|;
 return|return
 name|instantiateConnectionFactory
 argument_list|(
-name|newClassLoader
-argument_list|,
 name|settings
 argument_list|)
 return|;
@@ -453,9 +451,6 @@ specifier|abstract
 name|ConnectionFactory
 name|instantiateConnectionFactory
 parameter_list|(
-name|ClassLoader
-name|cl
-parameter_list|,
 name|Properties
 name|settings
 parameter_list|)

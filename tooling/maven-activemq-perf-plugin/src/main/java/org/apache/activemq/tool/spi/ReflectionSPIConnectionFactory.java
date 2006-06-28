@@ -65,9 +65,6 @@ specifier|public
 name|ConnectionFactory
 name|instantiateConnectionFactory
 parameter_list|(
-name|ClassLoader
-name|cl
-parameter_list|,
 name|Properties
 name|settings
 parameter_list|)
@@ -77,7 +74,13 @@ block|{
 name|Class
 name|factoryClass
 init|=
-name|cl
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|getContextClassLoader
+argument_list|()
 operator|.
 name|loadClass
 argument_list|(
