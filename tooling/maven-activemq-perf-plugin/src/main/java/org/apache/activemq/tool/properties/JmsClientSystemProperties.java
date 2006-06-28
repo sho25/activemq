@@ -118,7 +118,7 @@ specifier|protected
 name|String
 name|spiClass
 init|=
-literal|"org.apache.activemq.tool.spi.ActiveMQClassLoaderSPI"
+literal|"org.apache.activemq.tool.spi.ActiveMQReflectionSPI"
 decl_stmt|;
 specifier|protected
 name|String

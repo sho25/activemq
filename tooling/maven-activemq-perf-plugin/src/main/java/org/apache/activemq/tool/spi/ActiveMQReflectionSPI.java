@@ -20,9 +20,9 @@ end_package
 begin_class
 specifier|public
 class|class
-name|ActiveMQClassLoaderSPI
+name|ActiveMQReflectionSPI
 extends|extends
-name|ClassLoaderSPIConnectionFactory
+name|ReflectionSPIConnectionFactory
 block|{
 specifier|public
 name|String
