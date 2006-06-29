@@ -1210,6 +1210,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|started
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
 name|log
 operator|.
 name|error
@@ -1219,6 +1227,7 @@ operator|+
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
