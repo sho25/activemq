@@ -274,7 +274,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of the broker where all it's methods throw an IllegalStateException.  *   * @version $Revision$  */
+comment|/**  * Implementation of the broker where all it's methods throw an BrokerStoppedException.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -347,7 +347,7 @@ parameter_list|()
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -362,7 +362,7 @@ parameter_list|()
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -385,7 +385,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -411,7 +411,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -434,7 +434,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -457,7 +457,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -480,7 +480,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -503,7 +503,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -521,7 +521,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -539,7 +539,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -560,7 +560,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -583,7 +583,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -606,7 +606,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -629,7 +629,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -655,7 +655,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -678,7 +678,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -701,7 +701,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -727,7 +727,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -750,7 +750,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -773,7 +773,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -796,7 +796,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -819,7 +819,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -842,7 +842,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -857,7 +857,7 @@ parameter_list|()
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -874,7 +874,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -891,7 +891,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -912,7 +912,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -933,7 +933,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -949,7 +949,7 @@ parameter_list|()
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -967,7 +967,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -987,7 +987,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -1002,7 +1002,7 @@ parameter_list|()
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -1026,7 +1026,7 @@ parameter_list|()
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -1049,7 +1049,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -1072,7 +1072,7 @@ name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
@@ -1087,7 +1087,7 @@ parameter_list|()
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|BrokerStoppedException
 argument_list|(
 name|this
 operator|.
