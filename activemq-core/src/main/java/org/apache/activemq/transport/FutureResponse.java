@@ -279,8 +279,6 @@ parameter_list|(
 name|Response
 name|result
 parameter_list|)
-throws|throws
-name|InterruptedIOException
 block|{
 if|if
 condition|(
