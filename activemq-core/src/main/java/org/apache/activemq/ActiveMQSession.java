@@ -653,20 +653,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|thread
-operator|.
-name|TaskRunner
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|transaction
 operator|.
 name|Synchronization
@@ -941,10 +927,6 @@ decl_stmt|;
 specifier|protected
 name|boolean
 name|sessionAsyncDispatch
-decl_stmt|;
-specifier|protected
-name|TaskRunner
-name|taskRunner
 decl_stmt|;
 comment|/**      * Construct the Session      *       * @param connection      * @param sessionId       * @param acknowledgeMode      *            n.b if transacted - the acknowledgeMode ==      *            Session.SESSION_TRANSACTED      * @param asyncDispatch       * @param sessionAsyncDispatch       * @throws JMSException      *             on internal error      */
 specifier|protected
