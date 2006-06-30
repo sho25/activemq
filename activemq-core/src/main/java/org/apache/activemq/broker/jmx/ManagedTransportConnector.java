@@ -238,6 +238,11 @@ argument_list|,
 name|getBroker
 argument_list|()
 argument_list|,
+name|isDisableAsyncDispatch
+argument_list|()
+condition|?
+literal|null
+else|:
 name|getTaskRunnerFactory
 argument_list|()
 argument_list|,
