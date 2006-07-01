@@ -167,7 +167,16 @@ argument_list|(
 operator|new
 name|File
 argument_list|(
-literal|"activemq-data/storetest"
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"basedir"
+argument_list|,
+literal|"."
+argument_list|)
+operator|+
+literal|"/target/activemq-data/kaha-store.db"
 argument_list|)
 argument_list|)
 decl_stmt|;
