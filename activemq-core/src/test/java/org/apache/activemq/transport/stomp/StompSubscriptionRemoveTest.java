@@ -430,10 +430,6 @@ operator|+
 literal|"passcode: wombats\n"
 operator|+
 literal|"\n"
-operator|+
-name|Stomp
-operator|.
-name|NULL
 decl_stmt|;
 name|sendFrame
 argument_list|(
@@ -461,10 +457,6 @@ operator|+
 literal|"\n"
 operator|+
 literal|"ack:client\n\n"
-operator|+
-name|Stomp
-operator|.
-name|NULL
 decl_stmt|;
 name|sendFrame
 argument_list|(
@@ -621,10 +613,6 @@ operator|+
 name|messageId
 operator|+
 literal|"\n\n"
-operator|+
-name|Stomp
-operator|.
-name|NULL
 decl_stmt|;
 name|sendFrame
 argument_list|(
@@ -651,17 +639,6 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|10000
-argument_list|)
-expr_stmt|;
-comment|// for (int idx = 0; idx< 500; ++idx) {
-comment|// producer.send(message);
-comment|// log.debug("Sending: " +idx);
-comment|// }
 name|stompSocket
 operator|=
 operator|new
@@ -687,10 +664,6 @@ operator|+
 literal|"passcode: wombats\n"
 operator|+
 literal|"\n"
-operator|+
-name|Stomp
-operator|.
-name|NULL
 expr_stmt|;
 name|sendFrame
 argument_list|(
@@ -701,7 +674,7 @@ name|f
 operator|=
 name|receiveFrame
 argument_list|(
-literal|100000
+literal|5000
 argument_list|)
 expr_stmt|;
 name|frame
@@ -716,10 +689,6 @@ operator|+
 literal|"\n"
 operator|+
 literal|"ack:client\n\n"
-operator|+
-name|Stomp
-operator|.
-name|NULL
 expr_stmt|;
 name|sendFrame
 argument_list|(
@@ -740,7 +709,7 @@ name|receiveFrame
 init|=
 name|receiveFrame
 argument_list|(
-literal|10000
+literal|5000
 argument_list|)
 decl_stmt|;
 name|DataInput
@@ -868,10 +837,6 @@ operator|+
 name|messageId
 operator|+
 literal|"\n\n"
-operator|+
-name|Stomp
-operator|.
-name|NULL
 decl_stmt|;
 name|sendFrame
 argument_list|(
@@ -902,7 +867,11 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-comment|// timeout
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 block|}
 name|stompSocket
 operator|.
@@ -968,34 +937,20 @@ operator|.
 name|getOutputStream
 argument_list|()
 decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|bytes
-operator|.
-name|length
-condition|;
-name|i
-operator|++
-control|)
-block|{
 name|outputStream
 operator|.
 name|write
 argument_list|(
 name|bytes
-index|[
-name|i
-index|]
 argument_list|)
 expr_stmt|;
-block|}
+name|outputStream
+operator|.
+name|write
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
 name|outputStream
 operator|.
 name|flush
