@@ -786,6 +786,18 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Adding consumer: "
+operator|+
+name|info
+operator|.
+name|getConsumerId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|Subscription
 name|sub
 init|=
@@ -1007,6 +1019,18 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Removing consumer: "
+operator|+
+name|info
+operator|.
+name|getConsumerId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|Subscription
 name|sub
 init|=
