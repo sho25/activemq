@@ -71,7 +71,7 @@ specifier|protected
 name|Transport
 name|next
 decl_stmt|;
-specifier|private
+specifier|protected
 name|TransportListener
 name|transportListener
 decl_stmt|;

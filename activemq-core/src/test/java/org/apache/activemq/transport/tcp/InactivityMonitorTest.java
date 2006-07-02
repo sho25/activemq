@@ -736,6 +736,8 @@ name|URI
 argument_list|(
 literal|"tcp://localhost:61616"
 argument_list|)
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|clientTransport

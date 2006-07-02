@@ -913,7 +913,8 @@ return|return
 literal|"default"
 return|;
 block|}
-specifier|protected
+comment|/**      * Fully configures and adds all need transport filters so that the transport      * can be used by the JMS client.      *       * @param transport      * @param wf      * @param options      * @return      * @throws Exception      */
+specifier|public
 name|Transport
 name|configure
 parameter_list|(
@@ -929,11 +930,13 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|IntrospectionSupport
-operator|.
-name|setProperties
+name|transport
+operator|=
+name|compositeConfigure
 argument_list|(
 name|transport
+argument_list|,
+name|wf
 argument_list|,
 name|options
 argument_list|)
@@ -958,6 +961,7 @@ return|return
 name|transport
 return|;
 block|}
+comment|/**      * Similar to configure(...) but this avoid adding in the MutexTransport and ResponseCorrelator transport layers      * so that the resulting transport can more efficiently be used as part of a composite transport.      *       * @param transport      * @param format      * @param options      * @return      */
 specifier|public
 name|Transport
 name|compositeConfigure
