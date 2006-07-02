@@ -349,7 +349,7 @@ name|ack
 argument_list|)
 expr_stmt|;
 block|}
-name|StompCommand
+name|StompFrame
 name|command
 init|=
 name|protocolConverter

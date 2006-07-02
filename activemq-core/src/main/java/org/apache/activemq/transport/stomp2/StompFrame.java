@@ -110,7 +110,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|StompCommand
+name|StompFrame
 implements|implements
 name|Command
 block|{
@@ -146,7 +146,7 @@ init|=
 name|NO_DATA
 decl_stmt|;
 specifier|public
-name|StompCommand
+name|StompFrame
 parameter_list|(
 name|String
 name|command
@@ -179,7 +179,7 @@ name|data
 expr_stmt|;
 block|}
 specifier|public
-name|StompCommand
+name|StompFrame
 parameter_list|()
 block|{ 	}
 specifier|public

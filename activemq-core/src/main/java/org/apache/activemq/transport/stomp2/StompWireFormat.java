@@ -51,16 +51,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
-operator|.
-name|ProtocolException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|HashMap
@@ -367,7 +357,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|StompCommand
+name|StompFrame
 name|stomp
 init|=
 operator|(
@@ -381,7 +371,7 @@ name|transport
 operator|.
 name|stomp2
 operator|.
-name|StompCommand
+name|StompFrame
 operator|)
 name|command
 decl_stmt|;
@@ -544,6 +534,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+block|{
 name|String
 name|action
 init|=
@@ -662,6 +654,8 @@ operator|new
 name|ProtocolException
 argument_list|(
 literal|"The maximum number of headers was exceeded"
+argument_list|,
+literal|true
 argument_list|)
 throw|;
 try|try
@@ -740,6 +734,8 @@ operator|+
 name|line
 operator|+
 literal|"]"
+argument_list|,
+literal|true
 argument_list|)
 throw|;
 block|}
@@ -810,6 +806,8 @@ operator|new
 name|ProtocolException
 argument_list|(
 literal|"Specified content-length is not a valid integer"
+argument_list|,
+literal|true
 argument_list|)
 throw|;
 block|}
@@ -824,6 +822,8 @@ operator|new
 name|ProtocolException
 argument_list|(
 literal|"The maximum data length was exceeded"
+argument_list|,
+literal|true
 argument_list|)
 throw|;
 name|data
@@ -864,6 +864,8 @@ operator|+
 literal|" bytes were read and "
 operator|+
 literal|"there was no trailing null byte"
+argument_list|,
+literal|true
 argument_list|)
 throw|;
 block|}
@@ -923,6 +925,8 @@ operator|new
 name|ProtocolException
 argument_list|(
 literal|"The maximum data length was exceeded"
+argument_list|,
+literal|true
 argument_list|)
 throw|;
 block|}
@@ -957,7 +961,7 @@ block|}
 block|}
 return|return
 operator|new
-name|StompCommand
+name|StompFrame
 argument_list|(
 name|action
 argument_list|,
@@ -966,6 +970,21 @@ argument_list|,
 name|data
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|ProtocolException
+name|e
+parameter_list|)
+block|{
+return|return
+operator|new
+name|StompFrameError
+argument_list|(
+name|e
+argument_list|)
+return|;
+block|}
 block|}
 specifier|private
 name|String
@@ -1023,6 +1042,8 @@ operator|new
 name|ProtocolException
 argument_list|(
 name|errorMessage
+argument_list|,
+literal|true
 argument_list|)
 throw|;
 name|baos
