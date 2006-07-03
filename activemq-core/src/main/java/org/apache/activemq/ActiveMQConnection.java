@@ -5233,7 +5233,12 @@ name|boolean
 name|asyncDispatch
 parameter_list|)
 block|{
-comment|//this.asyncDispatch = asyncDispatch;
+name|this
+operator|.
+name|asyncDispatch
+operator|=
+name|asyncDispatch
+expr_stmt|;
 block|}
 specifier|public
 name|boolean
