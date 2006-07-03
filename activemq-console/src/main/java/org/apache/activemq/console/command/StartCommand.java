@@ -261,6 +261,8 @@ argument_list|(
 literal|"Failed to execute start task. Reason: "
 operator|+
 name|e
+argument_list|,
+name|e
 argument_list|)
 argument_list|)
 expr_stmt|;
