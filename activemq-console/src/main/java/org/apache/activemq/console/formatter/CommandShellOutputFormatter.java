@@ -814,6 +814,13 @@ operator|+
 name|e
 argument_list|)
 expr_stmt|;
+name|e
+operator|.
+name|printStackTrace
+argument_list|(
+name|out
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Print a version information      * @param version - version info to print      */
 specifier|public
