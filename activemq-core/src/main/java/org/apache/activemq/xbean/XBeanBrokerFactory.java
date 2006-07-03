@@ -165,7 +165,7 @@ argument_list|(
 name|uri
 argument_list|)
 decl_stmt|;
-name|XBeanBrokerService
+name|BrokerService
 name|broker
 init|=
 literal|null
@@ -175,7 +175,7 @@ block|{
 name|broker
 operator|=
 operator|(
-name|XBeanBrokerService
+name|BrokerService
 operator|)
 name|context
 operator|.
@@ -240,7 +240,7 @@ decl_stmt|;
 name|broker
 operator|=
 operator|(
-name|XBeanBrokerService
+name|BrokerService
 operator|)
 name|context
 operator|.
