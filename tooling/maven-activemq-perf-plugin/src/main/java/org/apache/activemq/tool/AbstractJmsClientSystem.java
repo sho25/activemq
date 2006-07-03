@@ -1413,6 +1413,24 @@ operator|new
 name|Properties
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|args
+operator|==
+literal|null
+operator|||
+name|args
+operator|.
+name|length
+operator|==
+literal|0
+condition|)
+block|{
+return|return
+name|props
+return|;
+comment|// Empty properties
+block|}
 for|for
 control|(
 name|int
@@ -1553,6 +1571,13 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
+if|if
+condition|(
+name|configFile
+operator|!=
+literal|null
+condition|)
+block|{
 name|fileProps
 operator|.
 name|load
@@ -1564,6 +1589,7 @@ name|configFile
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
