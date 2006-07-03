@@ -1578,6 +1578,18 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Loading properties file: "
+operator|+
+name|configFile
+operator|.
+name|getAbsolutePath
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|fileProps
 operator|.
 name|load

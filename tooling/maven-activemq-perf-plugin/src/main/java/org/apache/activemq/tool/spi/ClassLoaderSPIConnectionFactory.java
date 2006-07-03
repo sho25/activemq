@@ -266,12 +266,17 @@ argument_list|(
 name|dir
 argument_list|)
 decl_stmt|;
-name|dir
-operator|=
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Adding extension dir: "
+operator|+
 name|f
 operator|.
 name|getAbsolutePath
 argument_list|()
+argument_list|)
 expr_stmt|;
 name|urls
 operator|.
@@ -345,8 +350,12 @@ literal|".jar"
 argument_list|)
 condition|)
 block|{
-name|dir
-operator|=
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Adding extension dir: "
+operator|+
 name|files
 index|[
 name|j
@@ -354,6 +363,7 @@ index|]
 operator|.
 name|getAbsolutePath
 argument_list|()
+argument_list|)
 expr_stmt|;
 name|urls
 operator|.
