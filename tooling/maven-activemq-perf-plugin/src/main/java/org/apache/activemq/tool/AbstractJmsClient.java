@@ -314,6 +314,14 @@ operator|.
 name|createConnection
 argument_list|()
 expr_stmt|;
+name|jmsConnection
+operator|.
+name|setClientID
+argument_list|(
+name|getClientName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|log
 operator|.
 name|info

@@ -781,49 +781,6 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-name|Connection
-name|getConnection
-parameter_list|()
-throws|throws
-name|JMSException
-block|{
-name|Connection
-name|c
-init|=
-name|super
-operator|.
-name|getConnection
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|c
-operator|.
-name|getClientID
-argument_list|()
-operator|==
-literal|null
-operator|&&
-name|client
-operator|.
-name|isDurable
-argument_list|()
-condition|)
-block|{
-name|c
-operator|.
-name|setClientID
-argument_list|(
-name|getClientName
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|c
-return|;
-block|}
-specifier|public
 name|MessageConsumer
 name|createJmsConsumer
 parameter_list|()
@@ -891,7 +848,15 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Creating durable subscriber to: "
+literal|"Creating durable subscriber ("
+operator|+
+name|getConnection
+argument_list|()
+operator|.
+name|getClientID
+argument_list|()
+operator|+
+literal|") to: "
 operator|+
 name|dest
 operator|.
@@ -990,7 +955,15 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Creating durable subscriber to: "
+literal|"Creating durable subscriber ("
+operator|+
+name|getConnection
+argument_list|()
+operator|.
+name|getClientID
+argument_list|()
+operator|+
+literal|") to: "
 operator|+
 name|dest
 operator|.
