@@ -477,6 +477,12 @@ specifier|private
 name|boolean
 name|useRetroactiveConsumer
 decl_stmt|;
+specifier|private
+name|boolean
+name|nestedMapAndListEnabled
+init|=
+literal|true
+decl_stmt|;
 name|JMSStatsImpl
 name|factoryStats
 init|=
@@ -1133,6 +1139,7 @@ name|toString
 argument_list|()
 return|;
 block|}
+comment|/**      * Sets the<a      * href="http://incubator.apache.org/activemq/configuring-transports.html">connection      * URL</a> used to connect to the ActiveMQ broker.      */
 specifier|public
 name|void
 name|setBrokerURL
@@ -1284,6 +1291,7 @@ return|return
 name|clientID
 return|;
 block|}
+comment|/**      * Sets the JMS clientID to use for the created connection. Note that this can only be used by one connection at once so generally its a better idea      * to set the clientID on a Connection      */
 specifier|public
 name|void
 name|setClientID
@@ -1308,6 +1316,7 @@ return|return
 name|copyMessageOnSend
 return|;
 block|}
+comment|/**      * Should a JMS message be copied to a new JMS Message object as part of the      * send() method in JMS. This is enabled by default to be compliant with the      * JMS specification. You can disable it if you do not mutate JMS messages      * after they are sent for a performance boost      */
 specifier|public
 name|void
 name|setCopyMessageOnSend
@@ -1332,6 +1341,7 @@ return|return
 name|disableTimeStampsByDefault
 return|;
 block|}
+comment|/**      * Sets whether or not timestamps on messages should be disabled or not. If      * you disable them it adds a small performance boost.      */
 specifier|public
 name|void
 name|setDisableTimeStampsByDefault
@@ -1356,6 +1366,7 @@ return|return
 name|optimizedMessageDispatch
 return|;
 block|}
+comment|/**      * If this flag is set then an larger prefetch limit is used - only      * applicable for durable topic subscribers.      */
 specifier|public
 name|void
 name|setOptimizedMessageDispatch
@@ -1380,6 +1391,7 @@ return|return
 name|password
 return|;
 block|}
+comment|/**      * Sets the JMS password used for connections created from this factory      */
 specifier|public
 name|void
 name|setPassword
@@ -1429,6 +1441,7 @@ return|return
 name|useAsyncSend
 return|;
 block|}
+comment|/**      * Forces the use of<a      * href="http://incubator.apache.org/activemq/async-sends.html">Async Sends</a>      * which adds a massive performance boost; but means that the send() method      * will return immediately whether the message has been sent or not which      * could lead to message loss.      */
 specifier|public
 name|void
 name|setUseAsyncSend
@@ -1453,6 +1466,7 @@ return|return
 name|userName
 return|;
 block|}
+comment|/**      * Sets the JMS userName used by connections created by this factory      */
 specifier|public
 name|void
 name|setUserName
@@ -1987,6 +2001,7 @@ return|return
 name|useCompression
 return|;
 block|}
+comment|/**      * Enables the use of compression of the message bodies      */
 specifier|public
 name|void
 name|setUseCompression
@@ -2011,6 +2026,7 @@ return|return
 name|objectMessageSerializationDefered
 return|;
 block|}
+comment|/**      * When an object is set on an ObjectMessage, the JMS spec requires the      * object to be serialized by that set method. Enabling this flag causes the      * object to not get serialized. The object may subsequently get serialized      * if the message needs to be sent over a socket or stored to disk.      */
 specifier|public
 name|void
 name|setObjectMessageSerializationDefered
@@ -2061,7 +2077,7 @@ return|return
 name|closeTimeout
 return|;
 block|}
-comment|/**      * @param closeTimeout The closeTimeout to set.      */
+comment|/**      * Sets the timeout before a close is considered complete. Normally a      * close() on a connection waits for confirmation from the broker; this      * allows that operation to timeout to save the client hanging if there is      * no broker      */
 specifier|public
 name|void
 name|setCloseTimeout
@@ -2087,7 +2103,7 @@ return|return
 name|alwaysSessionAsync
 return|;
 block|}
-comment|/**      * @param alwaysSessionAsync The alwaysSessionAsync to set.      */
+comment|/**      * If this flag is set then a separate thread is not used for dispatching      * messages for each Session in the Connection. However, a separate thread      * is always used if there is more than one session, or the session isn't in      * auto acknowledge or duplicates ok mode      */
 specifier|public
 name|void
 name|setAlwaysSessionAsync
@@ -2127,6 +2143,31 @@ operator|.
 name|optimizeAcknowledge
 operator|=
 name|optimizeAcknowledge
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isNestedMapAndListEnabled
+parameter_list|()
+block|{
+return|return
+name|nestedMapAndListEnabled
+return|;
+block|}
+comment|/**      * Enables/disables whether or not Message properties and MapMessage entries      * support<a      * href="http://incubator.apache.org/activemq/structured-message-properties-and-mapmessages.html">Nested      * Structures</a> of Map and List objects      */
+specifier|public
+name|void
+name|setNestedMapAndListEnabled
+parameter_list|(
+name|boolean
+name|structuredMapsEnabled
+parameter_list|)
+block|{
+name|this
+operator|.
+name|nestedMapAndListEnabled
+operator|=
+name|structuredMapsEnabled
 expr_stmt|;
 block|}
 block|}
