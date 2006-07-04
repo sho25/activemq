@@ -13,7 +13,7 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|stomp
+name|stomp2
 package|;
 end_package
 

@@ -161,22 +161,6 @@ name|ByteArrayOutputStream
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|stomp
-operator|.
-name|Stomp
-import|;
-end_import
-
 begin_comment
 comment|/**  * Implements marshalling and unmarsalling the<a href="http://stomp.codehaus.org/">Stomp</a> protocol.  */
 end_comment
