@@ -254,7 +254,7 @@ name|Session
 operator|.
 name|SESSION_TRANSACTED
 argument_list|,
-name|asyncDispatch
+name|dispatchAsync
 argument_list|)
 return|;
 block|}

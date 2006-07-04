@@ -1157,7 +1157,7 @@ literal|false
 decl_stmt|;
 specifier|protected
 name|boolean
-name|asyncDispatch
+name|dispatchAsync
 init|=
 literal|false
 decl_stmt|;
@@ -1780,7 +1780,7 @@ name|acknowledgeMode
 operator|)
 operator|)
 argument_list|,
-name|asyncDispatch
+name|dispatchAsync
 argument_list|,
 name|alwaysSessionAsync
 argument_list|)
@@ -2470,7 +2470,7 @@ name|info
 operator|.
 name|setDispatchAsync
 argument_list|(
-name|asyncDispatch
+name|dispatchAsync
 argument_list|)
 expr_stmt|;
 comment|// Allows the options on the destination to configure the consumerInfo
@@ -2592,7 +2592,7 @@ return|return
 name|prefetchPolicy
 return|;
 block|}
-comment|/**      * @param prefetchPolicy      *            The prefetchPolicy to set.      */
+comment|/**      * Sets the<a      * href="http://incubator.apache.org/activemq/what-is-the-prefetch-limit-for.html">prefetch      * policy</a> for consumers created by this connection.      */
 specifier|public
 name|void
 name|setPrefetchPolicy
@@ -3126,7 +3126,7 @@ name|info
 operator|.
 name|setDispatchAsync
 argument_list|(
-name|asyncDispatch
+name|dispatchAsync
 argument_list|)
 expr_stmt|;
 comment|// Allows the options on the destination to configure the consumerInfo
@@ -4128,7 +4128,7 @@ return|return
 name|alwaysSessionAsync
 return|;
 block|}
-comment|/**      * @param alwaysSessionAsync The alwaysSessionAsync to set.      */
+comment|/**      * If this flag is set then a separate thread is not used for dispatching      * messages for each Session in the Connection. However, a separate thread      * is always used if there is more than one session, or the session isn't in      * auto acknowledge or duplicates ok mode      *       * @param alwaysSessionAsync      *            The alwaysSessionAsync to set.      */
 specifier|public
 name|void
 name|setAlwaysSessionAsync
@@ -5218,16 +5218,17 @@ expr_stmt|;
 block|}
 specifier|public
 name|boolean
-name|isAsyncDispatch
+name|isDispatchAsync
 parameter_list|()
 block|{
 return|return
-name|asyncDispatch
+name|dispatchAsync
 return|;
 block|}
+comment|/**      * Enables or disables the default setting of whether or not consumers have      * their messages<a      * href="http://incubator.apache.org/activemq/consumer-dispatch-async.html">dispatched      * synchronously or asynchronously by the broker</a>.      *       * For non-durable topics for example we typically dispatch synchronously by      * default to minimize context switches which boost performance. However      * sometimes its better to go slower to ensure that a single blocked      * consumer socket does not block delivery to other consumers.      *       * @param asyncDispatch      *            If true then consumers created on this connection will default      *            to having their messages dispatched asynchronously. The      *            default value is false.      */
 specifier|public
 name|void
-name|setAsyncDispatch
+name|setDispatchAsync
 parameter_list|(
 name|boolean
 name|asyncDispatch
@@ -5235,7 +5236,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|asyncDispatch
+name|dispatchAsync
 operator|=
 name|asyncDispatch
 expr_stmt|;

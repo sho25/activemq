@@ -445,7 +445,7 @@ literal|false
 decl_stmt|;
 specifier|protected
 name|boolean
-name|asyncDispatch
+name|dispatchAsync
 init|=
 literal|false
 decl_stmt|;
@@ -980,9 +980,9 @@ argument_list|)
 expr_stmt|;
 name|connection
 operator|.
-name|setAsyncDispatch
+name|setDispatchAsync
 argument_list|(
-name|isAsyncDispatch
+name|isDispatchAsync
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1404,6 +1404,7 @@ return|return
 name|prefetchPolicy
 return|;
 block|}
+comment|/**      * Sets the<a      * href="http://incubator.apache.org/activemq/what-is-the-prefetch-limit-for.html">prefetch      * policy</a> for consumers created by this connection.      */
 specifier|public
 name|void
 name|setPrefetchPolicy
@@ -1703,13 +1704,13 @@ name|props
 operator|.
 name|setProperty
 argument_list|(
-literal|"asyncDispatch"
+literal|"dispatchAsync"
 argument_list|,
 name|Boolean
 operator|.
 name|toString
 argument_list|(
-name|isAsyncDispatch
+name|isDispatchAsync
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2027,16 +2028,17 @@ expr_stmt|;
 block|}
 specifier|public
 name|boolean
-name|isAsyncDispatch
+name|isDispatchAsync
 parameter_list|()
 block|{
 return|return
-name|asyncDispatch
+name|dispatchAsync
 return|;
 block|}
+comment|/**      * Enables or disables the default setting of whether or not consumers have      * their messages<a      * href="http://incubator.apache.org/activemq/consumer-dispatch-async.html">dispatched      * synchronously or asynchronously by the broker</a>.      *       * For non-durable topics for example we typically dispatch synchronously by      * default to minimize context switches which boost performance. However      * sometimes its better to go slower to ensure that a single blocked      * consumer socket does not block delivery to other consumers.      *       * @param asyncDispatch      *            If true then consumers created on this connection will default      *            to having their messages dispatched asynchronously. The      *            default value is false.      */
 specifier|public
 name|void
-name|setAsyncDispatch
+name|setDispatchAsync
 parameter_list|(
 name|boolean
 name|asyncDispatch
@@ -2044,7 +2046,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|asyncDispatch
+name|dispatchAsync
 operator|=
 name|asyncDispatch
 expr_stmt|;

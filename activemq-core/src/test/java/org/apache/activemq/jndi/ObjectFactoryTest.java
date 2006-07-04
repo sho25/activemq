@@ -101,7 +101,7 @@ argument_list|()
 decl_stmt|;
 name|factory
 operator|.
-name|setAsyncDispatch
+name|setDispatchAsync
 argument_list|(
 literal|false
 argument_list|)
@@ -269,12 +269,12 @@ name|assertEquals
 argument_list|(
 name|factory
 operator|.
-name|isAsyncDispatch
+name|isDispatchAsync
 argument_list|()
 argument_list|,
 name|temp
 operator|.
-name|isAsyncDispatch
+name|isDispatchAsync
 argument_list|()
 argument_list|)
 expr_stmt|;
