@@ -386,6 +386,18 @@ name|ack
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"Unknown ackMode: "
+operator|+
+name|ackMode
+argument_list|)
+throw|;
+block|}
 name|FrameBuilder
 name|builder
 init|=
