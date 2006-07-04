@@ -107,7 +107,7 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|stomp2
+name|stomp
 operator|.
 name|Stomp
 import|;

@@ -13,7 +13,7 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|stomp2
+name|stomp
 package|;
 end_package
 
@@ -353,7 +353,7 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|stomp2
+name|stomp
 operator|.
 name|StompFrame
 operator|)
