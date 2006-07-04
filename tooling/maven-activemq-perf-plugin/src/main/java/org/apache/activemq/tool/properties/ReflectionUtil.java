@@ -210,6 +210,11 @@ argument_list|,
 literal|"."
 argument_list|)
 decl_stmt|;
+name|String
+name|keySubString
+init|=
+name|key
+decl_stmt|;
 name|int
 name|tokenCount
 init|=
@@ -245,6 +250,53 @@ operator|.
 name|nextToken
 argument_list|()
 decl_stmt|;
+comment|// Check if the target object will accept the settings
+if|if
+condition|(
+name|target
+operator|instanceof
+name|ReflectionConfigurable
+operator|&&
+operator|!
+operator|(
+operator|(
+name|ReflectionConfigurable
+operator|)
+name|target
+operator|)
+operator|.
+name|acceptConfig
+argument_list|(
+name|keySubString
+argument_list|,
+name|val
+argument_list|)
+condition|)
+block|{
+return|return;
+block|}
+else|else
+block|{
+comment|// This will reduce the key, so that it will be recognize by the next object. i.e.
+comment|// Property name: factory.prefetchPolicy.queuePrefetch
+comment|// Calling order: this.getFactory().prefetchPolicy().queuePrefetch();
+comment|// If factory does not accept the config, it should be given prefetchPolicy.queuePrefetch as the key
+name|keySubString
+operator|=
+name|keySubString
+operator|.
+name|substring
+argument_list|(
+name|name
+operator|.
+name|length
+argument_list|()
+operator|+
+literal|1
+argument_list|)
+expr_stmt|;
+comment|// +1 to account for the '.'
+block|}
 name|String
 name|getMethod
 init|=
@@ -325,7 +377,7 @@ decl_stmt|;
 comment|// Check if the target object will accept the settings
 if|if
 condition|(
-name|obj
+name|target
 operator|instanceof
 name|ReflectionConfigurable
 operator|&&
