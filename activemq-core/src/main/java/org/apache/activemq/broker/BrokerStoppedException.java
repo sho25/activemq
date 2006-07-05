@@ -56,7 +56,10 @@ block|{
 name|super
 argument_list|(
 name|message
-argument_list|,
+argument_list|)
+expr_stmt|;
+name|initCause
+argument_list|(
 name|cause
 argument_list|)
 expr_stmt|;
@@ -81,7 +84,7 @@ name|Throwable
 name|cause
 parameter_list|)
 block|{
-name|super
+name|initCause
 argument_list|(
 name|cause
 argument_list|)
