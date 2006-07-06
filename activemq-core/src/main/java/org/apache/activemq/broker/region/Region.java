@@ -137,6 +137,16 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_comment
 comment|/**  * A Region is used to implement the different QOS options available to   * a broker.  A Broker is composed of multiple message processing Regions that  * provide different QOS options.  *   * @version $Revision$  */
 end_comment
@@ -270,6 +280,15 @@ specifier|public
 name|void
 name|gc
 parameter_list|()
+function_decl|;
+comment|/**      * Provide an exact or wildcard lookup of destinations in the region      *       * @return a set of matching destination objects.      */
+specifier|public
+name|Set
+name|getDestinations
+parameter_list|(
+name|ActiveMQDestination
+name|destination
+parameter_list|)
 function_decl|;
 block|}
 end_interface
