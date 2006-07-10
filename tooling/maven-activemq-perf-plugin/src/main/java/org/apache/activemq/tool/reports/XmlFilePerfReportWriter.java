@@ -2341,7 +2341,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|" Ave Blocks Sent: "
+literal|"Ave Blocks Sent: "
 operator|+
 name|summary
 operator|.
