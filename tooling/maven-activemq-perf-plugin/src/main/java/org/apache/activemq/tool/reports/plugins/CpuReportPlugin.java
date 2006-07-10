@@ -141,7 +141,7 @@ specifier|final
 name|String
 name|NAME_IGNORE_LIST
 init|=
-literal|"$r$b$w$swpd$inact$active$free$buff$cache$si$so$in$"
+literal|"$index$timeUnit$r$b$w$swpd$inact$active$free$buff$cache$si$so$in$"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -1089,8 +1089,9 @@ name|key
 operator|+
 literal|"$"
 argument_list|)
-operator|>
-literal|0
+operator|!=
+operator|-
+literal|1
 condition|)
 block|{
 comment|// Ignore key
