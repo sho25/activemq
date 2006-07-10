@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -70,6 +60,26 @@ operator|.
 name|openmbean
 operator|.
 name|TabularData
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
 import|;
 end_import
 
@@ -200,6 +210,25 @@ parameter_list|(
 name|long
 name|limit
 parameter_list|)
+function_decl|;
+comment|/**      * Browses the current destination returning a list of messages      */
+specifier|public
+name|List
+name|browseMessages
+parameter_list|()
+throws|throws
+name|InvalidSelectorException
+function_decl|;
+comment|/**      * Browses the current destination with the given selector returning a list of messages      */
+specifier|public
+name|List
+name|browseMessages
+parameter_list|(
+name|String
+name|selector
+parameter_list|)
+throws|throws
+name|InvalidSelectorException
 function_decl|;
 block|}
 end_interface
