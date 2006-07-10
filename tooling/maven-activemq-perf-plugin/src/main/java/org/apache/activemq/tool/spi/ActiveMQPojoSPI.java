@@ -429,7 +429,7 @@ condition|)
 block|{
 name|factory
 operator|.
-name|setAsyncDispatch
+name|setDispatchAsync
 argument_list|(
 name|Boolean
 operator|.

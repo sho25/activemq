@@ -368,6 +368,23 @@ name|Map
 name|getSummary
 parameter_list|()
 block|{
+comment|// Check if tp sampler wasn't used.
+if|if
+condition|(
+name|clientThroughputs
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+return|return
+operator|new
+name|HashMap
+argument_list|()
+return|;
+block|}
 name|long
 name|minClientTP
 init|=
@@ -536,7 +553,7 @@ name|tempLong
 operator|=
 name|PerformanceStatisticsUtil
 operator|.
-name|getMinThroughput
+name|getMin
 argument_list|(
 name|clientTPList
 argument_list|)
@@ -561,7 +578,7 @@ name|tempLong
 operator|=
 name|PerformanceStatisticsUtil
 operator|.
-name|getMaxThroughput
+name|getMax
 argument_list|(
 name|clientTPList
 argument_list|)
@@ -586,7 +603,7 @@ name|tempLong
 operator|=
 name|PerformanceStatisticsUtil
 operator|.
-name|getTotalThroughput
+name|getSum
 argument_list|(
 name|clientTPList
 argument_list|)
@@ -632,7 +649,7 @@ name|tempDouble
 operator|=
 name|PerformanceStatisticsUtil
 operator|.
-name|getAveThroughput
+name|getAve
 argument_list|(
 name|clientTPList
 argument_list|)
@@ -678,7 +695,7 @@ name|tempDouble
 operator|=
 name|PerformanceStatisticsUtil
 operator|.
-name|getAveThroughputExcludingMinMax
+name|getAveEx
 argument_list|(
 name|clientTPList
 argument_list|)

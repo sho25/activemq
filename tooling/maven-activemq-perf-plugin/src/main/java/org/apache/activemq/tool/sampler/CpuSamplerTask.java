@@ -69,6 +69,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|tool
+operator|.
+name|reports
+operator|.
+name|AbstractPerfReportWriter
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -192,7 +208,7 @@ name|perfReportWriter
 operator|.
 name|writeCsvData
 argument_list|(
-name|ReportPlugin
+name|AbstractPerfReportWriter
 operator|.
 name|REPORT_PLUGIN_CPU
 argument_list|,
