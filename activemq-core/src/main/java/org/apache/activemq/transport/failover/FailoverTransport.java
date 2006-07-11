@@ -1033,16 +1033,9 @@ operator|!
 name|disposed
 condition|)
 block|{
-if|if
-condition|(
 name|log
 operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-name|log
-operator|.
-name|trace
+name|debug
 argument_list|(
 literal|"Waiting "
 operator|+
@@ -1531,7 +1524,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"Waiting for transport to reconnect."
 argument_list|)

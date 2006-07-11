@@ -298,7 +298,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"A send is in progress"
 argument_list|)
@@ -316,7 +316,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"No message sent since last write check, sending a KeepAliveInfo"
 argument_list|)
@@ -350,7 +350,7 @@ else|else
 block|{
 name|log
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"Message sent since last write check, resetting flag"
 argument_list|)
@@ -379,7 +379,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"A receive is in progress"
 argument_list|)
@@ -399,7 +399,12 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"No message received since last read check! "
+literal|"No message received since last read check for "
+operator|+
+name|toString
+argument_list|()
+operator|+
+literal|"! Throwing InactivityIOException."
 argument_list|)
 expr_stmt|;
 name|onException
@@ -416,7 +421,7 @@ else|else
 block|{
 name|log
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"Message received since last read check, resetting flag: "
 argument_list|)
