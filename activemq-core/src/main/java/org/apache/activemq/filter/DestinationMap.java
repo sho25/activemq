@@ -626,15 +626,22 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * @param dest      */
+comment|/**      * @param dest      * @return       */
 specifier|public
-name|void
+name|Set
 name|removeAll
 parameter_list|(
 name|ActiveMQDestination
 name|key
 parameter_list|)
 block|{
+name|Set
+name|rc
+init|=
+operator|new
+name|HashSet
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|key
@@ -669,6 +676,10 @@ name|i
 operator|++
 control|)
 block|{
+name|rc
+operator|.
+name|add
+argument_list|(
 name|removeAll
 argument_list|(
 name|destinations
@@ -676,9 +687,12 @@ index|[
 name|i
 index|]
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
-return|return;
+return|return
+name|rc
+return|;
 block|}
 name|String
 index|[]
@@ -696,11 +710,16 @@ argument_list|)
 operator|.
 name|removeAll
 argument_list|(
+name|rc
+argument_list|,
 name|paths
 argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+return|return
+name|rc
+return|;
 block|}
 comment|/**      * Returns the value which matches the given destination or null if there is      * no matching value. If there are multiple values, the results are sorted      * and the last item (the biggest) is returned.      *       * @param destination      *            the destination to find the value for      * @return the largest matching value or null if no value matches      */
 specifier|public
