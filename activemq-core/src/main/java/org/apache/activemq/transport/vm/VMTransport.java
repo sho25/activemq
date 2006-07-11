@@ -422,6 +422,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Peer disconnected."
+argument_list|)
+throw|;
+block|}
 block|}
 specifier|public
 name|FutureResponse

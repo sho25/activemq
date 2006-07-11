@@ -984,7 +984,7 @@ argument_list|()
 decl_stmt|;
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"binding to broker: "
 operator|+
@@ -1062,15 +1062,6 @@ operator|.
 name|getHost
 argument_list|()
 decl_stmt|;
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"Shutting down VM connectors for broker: "
-operator|+
-name|host
-argument_list|)
-expr_stmt|;
 name|servers
 operator|.
 name|remove
@@ -1098,6 +1089,15 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Shutting down VM connectors for broker: "
+operator|+
+name|host
+argument_list|)
+expr_stmt|;
 name|ServiceSupport
 operator|.
 name|dispose
@@ -1144,15 +1144,6 @@ name|String
 name|host
 parameter_list|)
 block|{
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"Shutting down VM connectors for broker: "
-operator|+
-name|host
-argument_list|)
-expr_stmt|;
 name|servers
 operator|.
 name|remove
@@ -1180,6 +1171,15 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Shutting down VM connectors for broker: "
+operator|+
+name|host
+argument_list|)
+expr_stmt|;
 name|ServiceSupport
 operator|.
 name|dispose
