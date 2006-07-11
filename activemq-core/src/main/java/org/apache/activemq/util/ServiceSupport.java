@@ -159,7 +159,7 @@ parameter_list|)
 block|{
 name|log
 operator|.
-name|error
+name|debug
 argument_list|(
 literal|"Could not stop service: "
 operator|+
