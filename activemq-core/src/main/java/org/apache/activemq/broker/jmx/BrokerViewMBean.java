@@ -113,7 +113,7 @@ name|int
 name|exitCode
 parameter_list|)
 function_decl|;
-comment|/**      * Stop the broker and all it's comonents.      */
+comment|/**      * Stop the broker and all it's components.      */
 specifier|public
 name|void
 name|stop
