@@ -255,16 +255,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-if|if
-condition|(
-operator|!
-name|disposed
-condition|)
-block|{
-name|triggerLocalStartBridge
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 specifier|protected
