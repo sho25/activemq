@@ -51,6 +51,13 @@ decl_stmt|;
 comment|// Consumer is a durable subscriber
 specifier|protected
 name|boolean
+name|unsubscribe
+init|=
+literal|true
+decl_stmt|;
+comment|// If true, unsubscribe a durable subscriber after it finishes running
+specifier|protected
+name|boolean
 name|asyncRecv
 init|=
 literal|true
@@ -102,6 +109,30 @@ operator|.
 name|durable
 operator|=
 name|durable
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isUnsubscribe
+parameter_list|()
+block|{
+return|return
+name|unsubscribe
+return|;
+block|}
+specifier|public
+name|void
+name|setUnsubscribe
+parameter_list|(
+name|boolean
+name|unsubscribe
+parameter_list|)
+block|{
+name|this
+operator|.
+name|unsubscribe
+operator|=
+name|unsubscribe
 expr_stmt|;
 block|}
 specifier|public
