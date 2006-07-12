@@ -919,6 +919,15 @@ argument_list|(
 literal|"Cannot set socket buffer size = "
 operator|+
 name|socketBufferSize
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Cannot set socket buffer size. Reason: "
+operator|+
+name|se
 argument_list|,
 name|se
 argument_list|)
