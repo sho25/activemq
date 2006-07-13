@@ -1047,7 +1047,7 @@ argument_list|()
 operator|.
 name|getResource
 argument_list|(
-literal|"org/apache/activemq/broker/Main.class"
+literal|"org/apache/activemq/console/Main.class"
 argument_list|)
 decl_stmt|;
 if|if
@@ -1126,7 +1126,7 @@ operator|=
 operator|new
 name|File
 argument_list|(
-literal|"."
+literal|"../."
 argument_list|)
 expr_stmt|;
 block|}
