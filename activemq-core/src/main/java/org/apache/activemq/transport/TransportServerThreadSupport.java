@@ -204,7 +204,7 @@ name|info
 argument_list|(
 literal|"Listening for connections at: "
 operator|+
-name|getLocation
+name|getConnectURI
 argument_list|()
 argument_list|)
 expr_stmt|;

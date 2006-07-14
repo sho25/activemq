@@ -385,6 +385,11 @@ argument_list|(
 name|transportOptions
 argument_list|)
 expr_stmt|;
+name|server
+operator|.
+name|bind
+argument_list|()
+expr_stmt|;
 return|return
 name|server
 return|;
@@ -681,7 +686,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Allows subclasses of TcpTransportFactory to provide a create custom TcpTransport intances.       *       * @param location      * @param wf      * @param socketFactory      * @param localLocation       * @return      * @throws UnknownHostException      * @throws IOException      */
-specifier|private
+specifier|protected
 name|TcpTransport
 name|createTcpTransport
 parameter_list|(
