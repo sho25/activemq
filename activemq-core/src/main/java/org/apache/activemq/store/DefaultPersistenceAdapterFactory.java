@@ -563,7 +563,7 @@ operator|=
 operator|new
 name|File
 argument_list|(
-name|getDataDirectory
+name|getDataDirectoryFile
 argument_list|()
 argument_list|,
 literal|"journal"
@@ -685,7 +685,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-name|getDataDirectory
+name|getDataDirectoryFile
 argument_list|()
 argument_list|,
 literal|"journal"

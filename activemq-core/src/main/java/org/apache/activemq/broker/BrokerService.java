@@ -4230,7 +4230,7 @@ argument_list|()
 decl_stmt|;
 name|factory
 operator|.
-name|setDataDirectory
+name|setDataDirectoryFile
 argument_list|(
 name|getDataDirectory
 argument_list|()
