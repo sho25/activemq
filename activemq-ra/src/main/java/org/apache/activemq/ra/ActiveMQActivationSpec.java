@@ -220,7 +220,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Configures the inbound JMS consumer specification using ActiveMQ  *   * @org.apache.xbean.XBean   *   * @version $Revision$ $Date$  */
+comment|/**  * Configures the inbound JMS consumer specification using ActiveMQ  *   * @org.apache.xbean.XBean element="activationSpec"  *   * @version $Revision$ $Date$  */
 end_comment
 
 begin_class
