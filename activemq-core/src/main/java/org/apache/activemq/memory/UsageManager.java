@@ -400,6 +400,7 @@ name|limit
 return|;
 block|}
 block|}
+comment|/**      * Sets the memory limit in bytes      */
 specifier|public
 name|void
 name|setLimit
@@ -441,6 +442,40 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|/**      * Sets the memory limit in megabytes      */
+specifier|public
+name|void
+name|setLimitMb
+parameter_list|(
+name|long
+name|limitMb
+parameter_list|)
+block|{
+name|setLimitKb
+argument_list|(
+literal|1024
+operator|*
+name|limitMb
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Sets the memory limit in kilobytes      */
+specifier|public
+name|void
+name|setLimitKb
+parameter_list|(
+name|long
+name|limitKb
+parameter_list|)
+block|{
+name|setLimit
+argument_list|(
+literal|1024
+operator|*
+name|limitKb
+argument_list|)
+expr_stmt|;
 block|}
 comment|/*     * Sets the minimum number of percentage points the usage has to change before a UsageListener     * event is fired by the manager.     */
 specifier|public
