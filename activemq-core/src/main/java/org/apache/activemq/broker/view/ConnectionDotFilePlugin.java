@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A<a href="http://www.graphviz.org/">DOT</a> file creator plugin which  * creates a DOT file showing the current connections  *   * @version $Revision: $  */
+comment|/**  * A<a href="http://www.graphviz.org/">DOT</a> file creator plugin which  * creates a DOT file showing the current connections  *   * @org.apache.xbean.XBean  *   * @version $Revision: $  */
 end_comment
 
 begin_class
