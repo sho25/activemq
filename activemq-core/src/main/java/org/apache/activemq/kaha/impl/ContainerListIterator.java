@@ -74,7 +74,7 @@ name|list
 operator|.
 name|getPrevEntry
 argument_list|(
-name|currentItem
+name|nextItem
 argument_list|)
 operator|!=
 literal|null
@@ -86,17 +86,17 @@ name|Object
 name|previous
 parameter_list|()
 block|{
-name|currentItem
+name|nextItem
 operator|=
 name|list
 operator|.
 name|getPrevEntry
 argument_list|(
-name|currentItem
+name|nextItem
 argument_list|)
 expr_stmt|;
 return|return
-name|currentItem
+name|nextItem
 operator|!=
 literal|null
 condition|?
@@ -104,7 +104,7 @@ name|container
 operator|.
 name|getValue
 argument_list|(
-name|currentItem
+name|nextItem
 argument_list|)
 else|:
 literal|null
@@ -124,7 +124,7 @@ literal|1
 decl_stmt|;
 if|if
 condition|(
-name|currentItem
+name|nextItem
 operator|!=
 literal|null
 condition|)
@@ -136,7 +136,7 @@ name|list
 operator|.
 name|getNextEntry
 argument_list|(
-name|currentItem
+name|nextItem
 argument_list|)
 decl_stmt|;
 if|if
@@ -178,7 +178,7 @@ literal|1
 decl_stmt|;
 if|if
 condition|(
-name|currentItem
+name|nextItem
 operator|!=
 literal|null
 condition|)
@@ -190,7 +190,7 @@ name|list
 operator|.
 name|getPrevEntry
 argument_list|(
-name|currentItem
+name|nextItem
 argument_list|)
 decl_stmt|;
 if|if
@@ -247,7 +247,7 @@ argument_list|,
 name|o
 argument_list|)
 decl_stmt|;
-name|currentItem
+name|nextItem
 operator|=
 name|item
 expr_stmt|;
@@ -281,7 +281,7 @@ argument_list|,
 name|o
 argument_list|)
 decl_stmt|;
-name|currentItem
+name|nextItem
 operator|=
 name|item
 expr_stmt|;

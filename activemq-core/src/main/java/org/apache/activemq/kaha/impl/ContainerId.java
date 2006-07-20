@@ -252,6 +252,23 @@ name|readObject
 argument_list|()
 expr_stmt|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"CID{"
+operator|+
+name|dataContainerName
+operator|+
+literal|":"
+operator|+
+name|key
+operator|+
+literal|"}"
+return|;
+block|}
 block|}
 end_class
 

@@ -81,6 +81,8 @@ block|{
 specifier|protected
 name|String
 name|name
+init|=
+literal|"test"
 decl_stmt|;
 specifier|protected
 name|Store

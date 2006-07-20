@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Copyright 2005-2006 The Apache Software Foundation  *  *  Licensed under the Apache License, Version 2.0 (the "License");  *  you may not use this file except in compliance with the License.  *  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  *  Unless required by applicable law or agreed to in writing, software  *  distributed under the License is distributed on an "AS IS" BASIS,  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  *  See the License for the specific language governing permissions and  *  limitations under the License.  */
+comment|/**  *   * Copyright 2005-2006 The Apache Software Foundation  *   * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with  * the License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** * Values collection iterator for the MapContainer *  * @version $Revision: 1.2 $ */
+comment|/**  * Values collection iterator for the MapContainer  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class
@@ -45,6 +45,10 @@ decl_stmt|;
 specifier|protected
 name|IndexLinkedList
 name|list
+decl_stmt|;
+specifier|protected
+name|IndexItem
+name|nextItem
 decl_stmt|;
 specifier|protected
 name|IndexItem
@@ -80,6 +84,17 @@ name|currentItem
 operator|=
 name|start
 expr_stmt|;
+name|this
+operator|.
+name|nextItem
+operator|=
+name|list
+operator|.
+name|getNextEntry
+argument_list|(
+name|start
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|boolean
@@ -87,16 +102,7 @@ name|hasNext
 parameter_list|()
 block|{
 return|return
-name|currentItem
-operator|!=
-literal|null
-operator|&&
-name|list
-operator|.
-name|getNextEntry
-argument_list|(
-name|currentItem
-argument_list|)
+name|nextItem
 operator|!=
 literal|null
 return|;
@@ -108,20 +114,29 @@ parameter_list|()
 block|{
 name|currentItem
 operator|=
-name|list
-operator|.
-name|getNextEntry
-argument_list|(
-name|currentItem
-argument_list|)
+name|nextItem
 expr_stmt|;
-return|return
+name|Object
+name|result
+init|=
 name|container
 operator|.
 name|getValue
 argument_list|(
-name|currentItem
+name|nextItem
 argument_list|)
+decl_stmt|;
+name|nextItem
+operator|=
+name|list
+operator|.
+name|getNextEntry
+argument_list|(
+name|nextItem
+argument_list|)
+expr_stmt|;
+return|return
+name|result
 return|;
 block|}
 specifier|public
