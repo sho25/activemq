@@ -2078,6 +2078,8 @@ block|{
 name|checkClosed
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 comment|// If we were running, lets stop first.
 name|stop
 argument_list|()
@@ -2321,6 +2323,17 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
+finally|finally
+block|{
+name|factoryStats
+operator|.
+name|removeConnection
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Tells the broker to terminate its VM. This can be used to cleanly      * terminate a broker running in a standalone java process. Server must have      * property enable.vm.shutdown=true defined to allow this to work.      */
