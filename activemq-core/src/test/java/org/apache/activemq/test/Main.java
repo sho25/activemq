@@ -37,6 +37,20 @@ name|activemq
 operator|.
 name|broker
 operator|.
+name|BrokerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
 name|BrokerPlugin
 import|;
 end_import
@@ -145,6 +159,16 @@ name|Session
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URI
+import|;
+end_import
+
 begin_comment
 comment|/**  * A helper class which can be handy for running a broker in your IDE from the  * activemq-core module.  *   * @version $Revision$  */
 end_comment
@@ -170,6 +194,13 @@ name|brokerURI
 init|=
 literal|"broker:(tcp://localhost:61616,stomp://localhost:61613)?persistent=false&useJmx=true"
 decl_stmt|;
+try|try
+block|{
+name|BrokerService
+name|broker
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|args
@@ -186,19 +217,28 @@ index|[
 literal|0
 index|]
 expr_stmt|;
-block|}
-try|try
-block|{
-comment|// TODO - this seems to break interceptors for some reason
-comment|// BrokerService broker = BrokerFactory.createBroker(new
-comment|// URI(brokerURI));
-name|BrokerService
 name|broker
-init|=
+operator|=
+name|BrokerFactory
+operator|.
+name|createBroker
+argument_list|(
+operator|new
+name|URI
+argument_list|(
+name|brokerURI
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|broker
+operator|=
 operator|new
 name|BrokerService
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|broker
 operator|.
 name|setPersistent
@@ -221,7 +261,6 @@ operator|new
 name|BrokerPlugin
 index|[]
 block|{
-comment|/*new DestinationDotFilePlugin(), */
 operator|new
 name|ConnectionDotFilePlugin
 argument_list|()
@@ -242,6 +281,7 @@ argument_list|(
 literal|"stomp://localhost:61613"
 argument_list|)
 expr_stmt|;
+block|}
 name|broker
 operator|.
 name|start
