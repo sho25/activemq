@@ -1650,6 +1650,13 @@ argument_list|(
 name|prefetchSize
 argument_list|)
 expr_stmt|;
+name|destinationInfo
+operator|.
+name|setDispatchAsync
+argument_list|(
+name|dispatchAsync
+argument_list|)
+expr_stmt|;
 name|remoteBroker
 operator|.
 name|oneway
