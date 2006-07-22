@@ -307,6 +307,11 @@ condition|)
 block|{
 name|connection
 operator|.
+name|rollback
+argument_list|()
+expr_stmt|;
+name|connection
+operator|.
 name|close
 argument_list|()
 expr_stmt|;
