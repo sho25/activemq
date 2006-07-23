@@ -3148,6 +3148,17 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Exception while processing message: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 else|else
