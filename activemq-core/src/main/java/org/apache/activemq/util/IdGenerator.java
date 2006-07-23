@@ -185,8 +185,6 @@ argument_list|)
 decl_stmt|;
 name|stub
 operator|=
-name|hostName
-operator|+
 literal|"-"
 operator|+
 name|ss
@@ -245,8 +243,6 @@ literal|"localhost"
 expr_stmt|;
 name|stub
 operator|=
-name|hostName
-operator|+
 literal|"-1-"
 operator|+
 name|System
@@ -310,6 +306,8 @@ block|{
 name|this
 argument_list|(
 literal|"ID:"
+operator|+
+name|hostName
 argument_list|)
 expr_stmt|;
 block|}

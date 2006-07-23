@@ -121,6 +121,20 @@ name|Transport
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IdGenerator
+import|;
+end_import
+
 begin_comment
 comment|/**  * The XAConnection interface extends the capability of Connection by providing  * an XASession (optional).  *<p/>  * The XAConnection interface is optional. JMS providers are not required to  * support this interface. This interface is for use by JMS providers to  * support transactional environments. Client programs are strongly encouraged  * to use the transactional support  available in their environment, rather  * than use these XA  interfaces directly.  *  * @version $Revision: 1.6 $  * @see javax.jms.Connection  * @see javax.jms.ConnectionFactory  * @see javax.jms.QueueConnection  * @see javax.jms.TopicConnection  * @see javax.jms.TopicConnectionFactory  * @see javax.jms.QueueConnection  * @see javax.jms.QueueConnectionFactory  */
 end_comment
@@ -138,12 +152,14 @@ name|XAQueueConnection
 implements|,
 name|XAConnection
 block|{
-comment|/**      * @param transport      * @param theUserName      * @param thePassword      * @param factoryStats      * @throws Exception       */
 specifier|protected
 name|ActiveMQXAConnection
 parameter_list|(
 name|Transport
 name|transport
+parameter_list|,
+name|IdGenerator
+name|clientIdGenerator
 parameter_list|,
 name|JMSStatsImpl
 name|factoryStats
@@ -154,6 +170,8 @@ block|{
 name|super
 argument_list|(
 name|transport
+argument_list|,
+name|clientIdGenerator
 argument_list|,
 name|factoryStats
 argument_list|)
