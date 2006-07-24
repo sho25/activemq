@@ -255,6 +255,16 @@ argument_list|)
 expr_stmt|;
 name|broker
 operator|.
+name|getManagementContext
+argument_list|()
+operator|.
+name|setCreateConnector
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
 name|setPlugins
 argument_list|(
 operator|new
@@ -287,13 +297,25 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-comment|// lets create a dummy couple of consumers
-name|Connection
-name|connection
+name|ActiveMQConnectionFactory
+name|factory
 init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|()
+decl_stmt|;
+name|factory
+operator|.
+name|setClientIDPrefix
+argument_list|(
+literal|"testClient"
+argument_list|)
+expr_stmt|;
+comment|// lets create a dummy couple of consumers
+name|Connection
+name|connection
+init|=
+name|factory
 operator|.
 name|createConnection
 argument_list|()
