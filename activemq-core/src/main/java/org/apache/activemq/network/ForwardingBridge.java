@@ -1194,16 +1194,6 @@ name|getProducerId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|message
-operator|.
-name|setDestination
-argument_list|(
-name|md
-operator|.
-name|getDestination
-argument_list|()
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|message
