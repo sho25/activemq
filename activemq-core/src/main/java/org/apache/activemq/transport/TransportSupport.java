@@ -361,41 +361,13 @@ name|isStarted
 argument_list|()
 condition|)
 block|{
-comment|// we might try to shut down the transport before it was ever started in some test cases
-if|if
-condition|(
-operator|!
-operator|(
-name|command
-operator|instanceof
-name|ShutdownInfo
-operator|||
-name|command
-operator|instanceof
-name|RemoveInfo
-operator|)
-condition|)
-block|{
 throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"The transport "
-operator|+
-name|this
-operator|+
-literal|" of type: "
-operator|+
-name|getClass
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" is not running."
+literal|"The transport is not running."
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 block|}
