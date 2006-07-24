@@ -621,6 +621,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|usecases
+operator|.
+name|VirtualTopicPubSubTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|util
 operator|.
 name|IOExceptionSupport
@@ -975,6 +989,12 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|keepDurableSubsActive
+init|=
+literal|true
+decl_stmt|;
+specifier|private
+name|boolean
+name|useVirtualTopics
 init|=
 literal|true
 decl_stmt|;
@@ -3254,6 +3274,31 @@ operator|=
 name|keepDurableSubsActive
 expr_stmt|;
 block|}
+specifier|public
+name|boolean
+name|isUseVirtualTopics
+parameter_list|()
+block|{
+return|return
+name|useVirtualTopics
+return|;
+block|}
+comment|/**      * Sets whether or not      *<a href="http://incubator.apache.org/activemq/virtual-destinations.html">Virtual Topics</a>      * should be supported.      */
+specifier|public
+name|void
+name|setUseVirtualTopics
+parameter_list|(
+name|boolean
+name|useVirtualTopics
+parameter_list|)
+block|{
+name|this
+operator|.
+name|useVirtualTopics
+operator|=
+name|useVirtualTopics
+expr_stmt|;
+block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
 comment|/**      * Handles any lazy-creation helper properties which are added to make      * things easier to configure inside environments such as Spring      *      * @throws Exception      */
@@ -4243,6 +4288,21 @@ name|broker
 operator|=
 operator|new
 name|AdvisoryBroker
+argument_list|(
+name|broker
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|isUseVirtualTopics
+argument_list|()
+condition|)
+block|{
+name|broker
+operator|=
+operator|new
+name|VirtualTopicBroker
 argument_list|(
 name|broker
 argument_list|)

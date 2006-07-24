@@ -55,10 +55,22 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
 name|ConsumerBean
+extends|extends
+name|Assert
 implements|implements
 name|MessageListener
 block|{
@@ -105,6 +117,10 @@ specifier|private
 name|Object
 name|semaphore
 decl_stmt|;
+specifier|private
+name|boolean
+name|verbose
+decl_stmt|;
 comment|/**      * Constructor.      */
 specifier|public
 name|ConsumerBean
@@ -118,7 +134,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Constructor, initialized semaphore object.      * @param semaphore      */
+comment|/**      * Constructor, initialized semaphore object.      *       * @param semaphore      */
 specifier|public
 name|ConsumerBean
 parameter_list|(
@@ -158,7 +174,7 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * Method implemented from MessageListener interface.      * @param message      */
+comment|/**      * Method implemented from MessageListener interface.      *       * @param message      */
 specifier|public
 specifier|synchronized
 name|void
@@ -175,6 +191,21 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|verbose
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Received: "
+operator|+
+name|message
+argument_list|)
+expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|semaphore
@@ -269,7 +300,7 @@ literal|" millis"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Used to wait for a message to arrive given a particular message count.      * @param messageCount      */
+comment|/**      * Used to wait for a message to arrive given a particular message count.      *       * @param messageCount      */
 specifier|public
 name|void
 name|waitForMessagesToArrive
@@ -373,7 +404,68 @@ literal|" millis"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Identifies if the message is empty.      * @return      */
+specifier|public
+name|void
+name|assertMessagesArrived
+parameter_list|(
+name|int
+name|total
+parameter_list|)
+block|{
+name|waitForMessagesToArrive
+argument_list|(
+name|total
+argument_list|)
+expr_stmt|;
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
+name|int
+name|count
+init|=
+name|messages
+operator|.
+name|size
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Messages received"
+argument_list|,
+name|total
+argument_list|,
+name|count
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+specifier|public
+name|boolean
+name|isVerbose
+parameter_list|()
+block|{
+return|return
+name|verbose
+return|;
+block|}
+specifier|public
+name|void
+name|setVerbose
+parameter_list|(
+name|boolean
+name|verbose
+parameter_list|)
+block|{
+name|this
+operator|.
+name|verbose
+operator|=
+name|verbose
+expr_stmt|;
+block|}
+comment|/**      * Identifies if the message is empty.      *       * @return      */
 specifier|protected
 name|boolean
 name|hasReceivedMessage
@@ -386,7 +478,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * Identifies if the message count has reached the total size of message.      * @param messageCount      * @return      */
+comment|/**      * Identifies if the message count has reached the total size of message.      *       * @param messageCount      * @return      */
 specifier|protected
 specifier|synchronized
 name|boolean
