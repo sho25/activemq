@@ -187,13 +187,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"Attempting to acquire exclusive lock on the database"
-argument_list|)
-expr_stmt|;
 name|connection
 operator|=
 name|dataSource
@@ -228,6 +221,13 @@ condition|)
 block|{
 try|try
 block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Attempting to acquire the exclusive lock to become the Master broker"
+argument_list|)
+expr_stmt|;
 name|boolean
 name|answer
 init|=
@@ -264,7 +264,7 @@ expr_stmt|;
 block|}
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Sleeping for "
 operator|+
