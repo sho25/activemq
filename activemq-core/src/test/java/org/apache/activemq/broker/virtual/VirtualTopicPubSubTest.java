@@ -11,7 +11,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|usecases
+name|broker
+operator|.
+name|virtual
 package|;
 end_package
 
@@ -166,7 +168,8 @@ expr_stmt|;
 name|String
 name|queueAName
 init|=
-literal|"Consumer.A.VirtualTopic.TEST"
+name|getVirtualTopicConsumerName
+argument_list|()
 decl_stmt|;
 comment|// create consumer 'cluster'
 name|ActiveMQQueue
@@ -246,7 +249,8 @@ argument_list|(
 operator|new
 name|ActiveMQTopic
 argument_list|(
-literal|"VirtualTopic.TEST"
+name|getVirtualTopicName
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -297,6 +301,24 @@ argument_list|(
 name|total
 argument_list|)
 expr_stmt|;
+block|}
+specifier|protected
+name|String
+name|getVirtualTopicName
+parameter_list|()
+block|{
+return|return
+literal|"VirtualTopic.TEST"
+return|;
+block|}
+specifier|protected
+name|String
+name|getVirtualTopicConsumerName
+parameter_list|()
+block|{
+return|return
+literal|"Consumer.A.VirtualTopic.TEST"
+return|;
 block|}
 specifier|protected
 name|void

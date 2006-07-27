@@ -150,7 +150,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implements<a  * href="http://incubator.apache.org/activemq/virtual-destinations.html">Virtual  * Topics</a>.  *   * @version $Revision$  */
+comment|/**  * Implements<a  * href="http://incubator.apache.org/activemq/virtual-destinations.html">Virtual  * Topics</a>.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
 
 begin_class
