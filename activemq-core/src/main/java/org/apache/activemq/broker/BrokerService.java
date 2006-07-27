@@ -3346,7 +3346,7 @@ return|return
 name|useVirtualTopics
 return|;
 block|}
-comment|/**      * Sets whether or not      *<a href="http://incubator.apache.org/activemq/virtual-destinations.html">Virtual Topics</a>      * should be supported by defaut if they have not been explicitly configured.      */
+comment|/**      * Sets whether or not      *<a href="http://incubator.apache.org/activemq/virtual-destinations.html">Virtual Topics</a>      * should be supported by default if they have not been explicitly configured.      */
 specifier|public
 name|void
 name|setUseVirtualTopics
@@ -3387,6 +3387,33 @@ operator|.
 name|destinationInterceptors
 operator|=
 name|destinationInterceptors
+expr_stmt|;
+block|}
+specifier|public
+name|ActiveMQDestination
+index|[]
+name|getDestinations
+parameter_list|()
+block|{
+return|return
+name|destinations
+return|;
+block|}
+comment|/**      * Sets the destinations which should be loaded/created on startup      */
+specifier|public
+name|void
+name|setDestinations
+parameter_list|(
+name|ActiveMQDestination
+index|[]
+name|destinations
+parameter_list|)
+block|{
+name|this
+operator|.
+name|destinations
+operator|=
+name|destinations
 expr_stmt|;
 block|}
 comment|// Implementation methods
