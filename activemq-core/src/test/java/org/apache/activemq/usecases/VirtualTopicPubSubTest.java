@@ -166,7 +166,7 @@ expr_stmt|;
 name|String
 name|queueAName
 init|=
-literal|"ActiveMQ.Virtual.A.TEST"
+literal|"Consumer.A.VirtualTopic.TEST"
 decl_stmt|;
 comment|// create consumer 'cluster'
 name|ActiveMQQueue
@@ -246,7 +246,7 @@ argument_list|(
 operator|new
 name|ActiveMQTopic
 argument_list|(
-literal|"TEST"
+literal|"VirtualTopic.TEST"
 argument_list|)
 argument_list|)
 decl_stmt|;
