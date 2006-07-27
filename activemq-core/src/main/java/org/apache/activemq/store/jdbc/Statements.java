@@ -326,7 +326,7 @@ literal|"( ID "
 operator|+
 name|longDataType
 operator|+
-literal|", TIME "
+literal|" NOT NULL, TIME "
 operator|+
 name|longDataType
 operator|+
