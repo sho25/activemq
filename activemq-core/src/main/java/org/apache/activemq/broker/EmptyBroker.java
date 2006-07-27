@@ -676,7 +676,7 @@ parameter_list|,
 name|BrokerInfo
 name|info
 parameter_list|)
-block|{              }
+block|{      }
 specifier|public
 name|void
 name|removeBroker
@@ -687,7 +687,7 @@ parameter_list|,
 name|BrokerInfo
 name|info
 parameter_list|)
-block|{             }
+block|{      }
 specifier|public
 name|BrokerInfo
 index|[]
@@ -698,7 +698,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Notifiy the Broker that a dispatch has happened      * @param messageDispatch      */
+comment|/**      * Notifiy the Broker that a dispatch has happened      *       * @param messageDispatch      */
 specifier|public
 name|void
 name|processDispatch
@@ -706,7 +706,7 @@ parameter_list|(
 name|MessageDispatch
 name|messageDispatch
 parameter_list|)
-block|{              }
+block|{      }
 specifier|public
 name|void
 name|processDispatchNotification
@@ -716,7 +716,7 @@ name|messageDispatchNotification
 parameter_list|)
 throws|throws
 name|Exception
-block|{              }
+block|{      }
 specifier|public
 name|boolean
 name|isSlaveBroker
@@ -769,7 +769,7 @@ name|info
 parameter_list|)
 throws|throws
 name|Exception
-block|{             }
+block|{     }
 specifier|public
 name|boolean
 name|isFaultTolerantConfiguration
@@ -779,6 +779,23 @@ return|return
 literal|false
 return|;
 block|}
+specifier|public
+name|ConnectionContext
+name|getAdminConnectionContext
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+specifier|public
+name|void
+name|setAdminConnectionContext
+parameter_list|(
+name|ConnectionContext
+name|adminConnectionContext
+parameter_list|)
+block|{     }
 block|}
 end_class
 

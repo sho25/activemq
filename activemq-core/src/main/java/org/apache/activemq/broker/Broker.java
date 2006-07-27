@@ -524,6 +524,23 @@ name|boolean
 name|isFaultTolerantConfiguration
 parameter_list|()
 function_decl|;
+comment|/**      * @return the connection context used to make administration operations on startup or via JMX MBeans      */
+specifier|public
+specifier|abstract
+name|ConnectionContext
+name|getAdminConnectionContext
+parameter_list|()
+function_decl|;
+comment|/**      * Sets the default administration connection context used when configuring the broker on startup or via JMX      */
+specifier|public
+specifier|abstract
+name|void
+name|setAdminConnectionContext
+parameter_list|(
+name|ConnectionContext
+name|adminConnectionContext
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

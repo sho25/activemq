@@ -274,7 +274,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of the broker where all it's methods throw an BrokerStoppedException.  *   * @version $Revision$  */
+comment|/**  * Implementation of the broker where all it's methods throw an  * BrokerStoppedException.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -1098,6 +1098,39 @@ specifier|public
 name|boolean
 name|isFaultTolerantConfiguration
 parameter_list|()
+block|{
+throw|throw
+operator|new
+name|BrokerStoppedException
+argument_list|(
+name|this
+operator|.
+name|message
+argument_list|)
+throw|;
+block|}
+specifier|public
+name|ConnectionContext
+name|getAdminConnectionContext
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|BrokerStoppedException
+argument_list|(
+name|this
+operator|.
+name|message
+argument_list|)
+throw|;
+block|}
+specifier|public
+name|void
+name|setAdminConnectionContext
+parameter_list|(
+name|ConnectionContext
+name|adminConnectionContext
+parameter_list|)
 block|{
 throw|throw
 operator|new
