@@ -269,6 +269,13 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|clockDaemon
+operator|.
+name|remove
+argument_list|(
+name|task
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 specifier|public

@@ -579,6 +579,10 @@ name|dropped
 operator|=
 literal|true
 expr_stmt|;
+name|lockOwner
+operator|=
+literal|null
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -630,6 +634,9 @@ init|)
 block|{
 if|if
 condition|(
+name|dropped
+operator|||
+operator|(
 name|lockOwner
 operator|!=
 literal|null
@@ -637,6 +644,7 @@ operator|&&
 name|lockOwner
 operator|!=
 name|subscription
+operator|)
 condition|)
 return|return
 literal|false

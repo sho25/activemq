@@ -2109,6 +2109,15 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|factoryStats
+operator|.
+name|removeConnection
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|advisoryConsumer

@@ -2305,6 +2305,32 @@ name|BrokerInfo
 name|info
 parameter_list|)
 block|{
+comment|// We only expect to get one broker info command per connection
+if|if
+condition|(
+name|this
+operator|.
+name|brokerInfo
+operator|!=
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Unexpected extra broker info command received: "
+operator|+
+name|info
+argument_list|)
+expr_stmt|;
+block|}
+name|this
+operator|.
+name|brokerInfo
+operator|=
+name|info
+expr_stmt|;
 name|broker
 operator|.
 name|addBroker
