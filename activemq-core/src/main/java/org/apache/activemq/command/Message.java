@@ -566,6 +566,45 @@ name|recievedByDFBridge
 operator|=
 name|recievedByDFBridge
 expr_stmt|;
+name|copy
+operator|.
+name|arrival
+operator|=
+name|arrival
+expr_stmt|;
+name|copy
+operator|.
+name|connection
+operator|=
+name|connection
+expr_stmt|;
+name|copy
+operator|.
+name|regionDestination
+operator|=
+name|regionDestination
+expr_stmt|;
+name|copy
+operator|.
+name|cachedWireFormat
+operator|=
+name|cachedWireFormat
+expr_stmt|;
+name|copy
+operator|.
+name|cachedWireFormatData
+operator|=
+name|cachedWireFormatData
+expr_stmt|;
+name|copy
+operator|.
+name|brokerPath
+operator|=
+name|brokerPath
+expr_stmt|;
+comment|// lets not copy the following fields
+comment|//copy.targetConsumerId = targetConsumerId;
+comment|//copy.referenceCount = referenceCount;
 block|}
 specifier|public
 name|Object
