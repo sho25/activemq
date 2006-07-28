@@ -318,7 +318,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|KahaPersistentAdaptor
+name|KahaPersistenceAdapter
 implements|implements
 name|PersistenceAdapter
 block|{
@@ -332,7 +332,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|KahaPersistentAdaptor
+name|KahaPersistenceAdapter
 operator|.
 name|class
 argument_list|)
@@ -384,7 +384,7 @@ name|Store
 name|store
 decl_stmt|;
 specifier|public
-name|KahaPersistentAdaptor
+name|KahaPersistenceAdapter
 parameter_list|(
 name|File
 name|dir

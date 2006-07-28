@@ -81,7 +81,7 @@ name|store
 operator|.
 name|kahadaptor
 operator|.
-name|KahaPersistentAdaptor
+name|KahaPersistenceAdapter
 import|;
 end_import
 
@@ -106,11 +106,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|KahaPersistentAdaptor
+name|KahaPersistenceAdapter
 name|adaptor
 init|=
 operator|new
-name|KahaPersistentAdaptor
+name|KahaPersistenceAdapter
 argument_list|(
 operator|new
 name|File

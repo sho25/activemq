@@ -269,12 +269,12 @@ name|Map
 name|prepared
 decl_stmt|;
 specifier|private
-name|KahaPersistentAdaptor
+name|KahaPersistenceAdapter
 name|adaptor
 decl_stmt|;
 name|KahaTransactionStore
 parameter_list|(
-name|KahaPersistentAdaptor
+name|KahaPersistenceAdapter
 name|adaptor
 parameter_list|,
 name|Map
