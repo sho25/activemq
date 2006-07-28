@@ -836,7 +836,7 @@ index|]
 operator|=
 name|createBroker
 argument_list|(
-literal|"xbean:multicast-broker-"
+literal|"org/apache/activemq/usecases/multicast-broker-"
 operator|+
 operator|(
 name|i
@@ -902,7 +902,7 @@ index|]
 operator|=
 name|createBroker
 argument_list|(
-literal|"xbean:multicast-broker-auto.xml"
+literal|"org/apache/activemq/usecases/multicast-broker-auto.xml"
 argument_list|)
 expr_stmt|;
 name|brokers
