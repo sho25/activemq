@@ -252,7 +252,7 @@ operator|.
 name|getClass
 argument_list|()
 operator|==
-name|SyncToAsyncChannel
+name|SyncToAsyncChannelServer
 operator|.
 name|class
 condition|)
