@@ -52,7 +52,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Defines the pretech message policies for different types of consumers  * @version $Revision: 1.3 $  */
+comment|/**  * Defines the prefetch message policies for different types of consumers  *   * @org.apache.xbean.XBean element="prefetchPolicy"  *   * @version $Revision: 1.3 $  */
 end_comment
 
 begin_class

@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Configuration options used to control how messages are re-delivered when they  * are rolled back.  *   * @version $Revision: 1.11 $  */
+comment|/**  * Configuration options used to control how messages are re-delivered when they  * are rolled back.  *   * @org.apache.xbean.XBean element="redeliveryPolicy"  *   * @version $Revision: 1.11 $  */
 end_comment
 
 begin_class

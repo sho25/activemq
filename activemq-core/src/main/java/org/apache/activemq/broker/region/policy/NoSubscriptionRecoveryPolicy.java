@@ -110,7 +110,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This is the default Topic recovery policy which does not recover any messages.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * This SubscriptionRecoveryPolicy disable recovery of messages.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
 
 begin_class

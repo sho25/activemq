@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A<a href="http://www.springframework.org/">Spring</a> enhanced connection  * factory which will automatically use the Spring bean name as the clientIDPrefix property  * so that connections created have client IDs related to your Spring.xml file for  * easier comprehension from<a href="http://incubator.apache.org/activemq/jmx.html">JMX</a>.  *   * @version $Revision: $  */
+comment|/**  * A<a href="http://www.springframework.org/">Spring</a> enhanced connection  * factory which will automatically use the Spring bean name as the clientIDPrefix property  * so that connections created have client IDs related to your Spring.xml file for  * easier comprehension from<a href="http://incubator.apache.org/activemq/jmx.html">JMX</a>.  *   * @org.apache.xbean.XBean element="connectionFactory"  *   * @version $Revision: $  */
 end_comment
 
 begin_class
