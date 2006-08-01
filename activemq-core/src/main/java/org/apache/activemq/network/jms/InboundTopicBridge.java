@@ -31,6 +31,9 @@ block|{
 name|String
 name|inboundTopicName
 decl_stmt|;
+name|String
+name|localTopicName
+decl_stmt|;
 comment|/**      * Constructor that takes a foriegn destination as an argument      * @param inboundTopicName      */
 specifier|public
 name|InboundTopicBridge
@@ -42,6 +45,12 @@ block|{
 name|this
 operator|.
 name|inboundTopicName
+operator|=
+name|inboundTopicName
+expr_stmt|;
+name|this
+operator|.
+name|localTopicName
 operator|=
 name|inboundTopicName
 expr_stmt|;
@@ -61,7 +70,7 @@ return|return
 name|inboundTopicName
 return|;
 block|}
-comment|/**      * @param outboundTopicName The outboundTopicName to set.      */
+comment|/**      * @param inboundTopicName       */
 specifier|public
 name|void
 name|setInboundTopicName
@@ -75,6 +84,48 @@ operator|.
 name|inboundTopicName
 operator|=
 name|inboundTopicName
+expr_stmt|;
+if|if
+condition|(
+name|this
+operator|.
+name|localTopicName
+operator|==
+literal|null
+condition|)
+block|{
+name|this
+operator|.
+name|localTopicName
+operator|=
+name|inboundTopicName
+expr_stmt|;
+block|}
+block|}
+comment|/**      * @return the localTopicName      */
+specifier|public
+name|String
+name|getLocalTopicName
+parameter_list|()
+block|{
+return|return
+name|localTopicName
+return|;
+block|}
+comment|/**      * @param localTopicName the localTopicName to set      */
+specifier|public
+name|void
+name|setLocalTopicName
+parameter_list|(
+name|String
+name|localTopicName
+parameter_list|)
+block|{
+name|this
+operator|.
+name|localTopicName
+operator|=
+name|localTopicName
 expr_stmt|;
 block|}
 block|}
