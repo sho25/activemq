@@ -393,6 +393,24 @@ name|config
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|testSenderWithSpringXmlUsingSpring2NamespacesWithEmbeddedBrokerConfiguredViaXml
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|config
+init|=
+literal|"spring-embedded-xbean.xml"
+decl_stmt|;
+name|assertSenderConfig
+argument_list|(
+name|config
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * assert method that is used by all the test method to send and receive messages      * based on each spring configuration.      *      * @param config      * @throws Exception      */
 specifier|protected
 name|void
