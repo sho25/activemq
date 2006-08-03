@@ -396,10 +396,9 @@ operator|.
 name|list
 argument_list|()
 expr_stmt|;
-name|assertEquals
-argument_list|(
-name|numThreads
-argument_list|,
+name|int
+name|activeCount
+init|=
 name|Thread
 operator|.
 name|currentThread
@@ -410,6 +409,18 @@ argument_list|()
 operator|.
 name|activeCount
 argument_list|()
+decl_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Should be at most one more thread but was: "
+operator|+
+name|activeCount
+argument_list|,
+name|numThreads
+operator|+
+literal|1
+operator|<=
+name|activeCount
 argument_list|)
 expr_stmt|;
 block|}
