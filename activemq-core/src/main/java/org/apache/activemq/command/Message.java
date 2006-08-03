@@ -596,12 +596,9 @@ name|cachedWireFormatData
 operator|=
 name|cachedWireFormatData
 expr_stmt|;
-name|copy
-operator|.
-name|brokerPath
-operator|=
-name|brokerPath
-expr_stmt|;
+comment|//copying the broker path breaks networks - if a consumer re-uses a consumed
+comment|//message and forwards it on
+comment|//copy.brokerPath = brokerPath;
 comment|// lets not copy the following fields
 comment|//copy.targetConsumerId = targetConsumerId;
 comment|//copy.referenceCount = referenceCount;
