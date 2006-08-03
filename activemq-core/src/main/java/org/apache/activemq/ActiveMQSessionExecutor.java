@@ -413,9 +413,12 @@ condition|)
 block|{
 name|taskRunner
 operator|=
-name|ActiveMQConnection
+name|session
 operator|.
-name|SESSION_TASK_RUNNER
+name|connection
+operator|.
+name|getSessionTaskRunner
+argument_list|()
 operator|.
 name|createTaskRunner
 argument_list|(

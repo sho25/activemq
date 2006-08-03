@@ -1000,11 +1000,9 @@ name|StreamConnection
 implements|,
 name|TransportListener
 block|{
-specifier|public
-specifier|static
-specifier|final
+specifier|private
 name|TaskRunnerFactory
-name|SESSION_TASK_RUNNER
+name|sessionTaskRunner
 init|=
 operator|new
 name|TaskRunnerFactory
@@ -2309,9 +2307,14 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|// TODO : ActiveMQConnectionFactory.onConnectionClose() not
-comment|// yet implemented.
+comment|// TODO if we move the TaskRunnerFactory to the connection factory
+comment|// then we may need to call
 comment|// factory.onConnectionClose(this);
+name|sessionTaskRunner
+operator|.
+name|shutdown
+argument_list|()
+expr_stmt|;
 name|closed
 operator|.
 name|set
@@ -2824,6 +2827,30 @@ name|remove
 argument_list|(
 name|transportListener
 argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|TaskRunnerFactory
+name|getSessionTaskRunner
+parameter_list|()
+block|{
+return|return
+name|sessionTaskRunner
+return|;
+block|}
+specifier|public
+name|void
+name|setSessionTaskRunner
+parameter_list|(
+name|TaskRunnerFactory
+name|sessionTaskRunner
+parameter_list|)
+block|{
+name|this
+operator|.
+name|sessionTaskRunner
+operator|=
+name|sessionTaskRunner
 expr_stmt|;
 block|}
 comment|// Implementation methods
