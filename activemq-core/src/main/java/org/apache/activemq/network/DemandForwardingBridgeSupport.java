@@ -2129,7 +2129,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Ignoring Subscription "
+name|localBrokerName
+operator|+
+literal|" Ignoring Subscription "
 operator|+
 name|info
 operator|+
@@ -2170,7 +2172,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Ignoring sub "
+name|localBrokerName
+operator|+
+literal|" Ignoring sub "
 operator|+
 name|info
 operator|+
@@ -2203,7 +2207,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Ignoring sub "
+name|localBrokerName
+operator|+
+literal|" Ignoring sub "
 operator|+
 name|info
 operator|+
@@ -2263,7 +2269,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Forwarding sub on "
+name|localBrokerName
+operator|+
+literal|" Forwarding sub on "
 operator|+
 name|localBroker
 operator|+
@@ -2290,7 +2298,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Ignoring sub "
+name|localBrokerName
+operator|+
+literal|" Ignoring sub "
 operator|+
 name|info
 operator|+
@@ -3010,6 +3020,32 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|trace
+condition|)
+name|log
+operator|.
+name|trace
+argument_list|(
+literal|"No subscription registered with this network bridge for consumerId "
+operator|+
+name|md
+operator|.
+name|getConsumerId
+argument_list|()
+operator|+
+literal|" for message: "
+operator|+
+name|md
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 elseif|else
