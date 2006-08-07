@@ -804,7 +804,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a running broker service which consists of a number of transport  * connectors, network connectors and a bunch of properties which can be used to  * configure the broker as its lazily created.  *  * @version $Revision: 1.1 $  */
+comment|/**  * Manages the lifecycle of an ActiveMQ Broker. A BrokerService consists of a number of transport  * connectors, network connectors and a bunch of properties which can be used to  * configure the broker as its lazily created.  *  * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
@@ -2954,7 +2954,7 @@ name|transportConnectors
 argument_list|)
 return|;
 block|}
-comment|/**      * Sets the transport connectors which this broker will listen on for new      * clients      */
+comment|/**      * Sets the transport connectors which this broker will listen on for new      * clients      *       * @org.apache.xbean.Property nestedType="org.apache.activemq.broker.TransportConnector"      */
 specifier|public
 name|void
 name|setTransportConnectors
@@ -3026,7 +3026,7 @@ name|proxyConnectors
 argument_list|)
 return|;
 block|}
-comment|/**      * Sets the network connectors which this broker will use to connect to      * other brokers in a federated network      */
+comment|/**      * Sets the network connectors which this broker will use to connect to      * other brokers in a federated network      *       * @org.apache.xbean.Property nestedType="org.apache.activemq.network.NetworkConnector"      */
 specifier|public
 name|void
 name|setNetworkConnectors
