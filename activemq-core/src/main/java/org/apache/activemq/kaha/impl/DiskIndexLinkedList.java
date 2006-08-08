@@ -37,21 +37,21 @@ name|DiskIndexLinkedList
 implements|implements
 name|IndexLinkedList
 block|{
-specifier|private
+specifier|protected
 name|IndexManager
 name|indexManager
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|transient
 name|IndexItem
 name|root
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|transient
 name|IndexItem
 name|last
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|transient
 name|int
 name|size
@@ -102,17 +102,6 @@ operator|.
 name|root
 operator|=
 name|e
-expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"SET ROOT = "
-operator|+
-name|e
-argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns the first element in this list.      *       * @return the first element in this list.      */
