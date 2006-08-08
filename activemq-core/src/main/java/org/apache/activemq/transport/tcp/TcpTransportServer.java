@@ -448,6 +448,8 @@ argument_list|(
 name|host
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 if|if
 condition|(
 name|host
@@ -518,6 +520,30 @@ argument_list|(
 literal|2000
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|IOExceptionSupport
+operator|.
+name|create
+argument_list|(
+literal|"Failed to bind to server socket: "
+operator|+
+name|bind
+operator|+
+literal|" due to: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 try|try
 block|{
 name|setConnectURI
