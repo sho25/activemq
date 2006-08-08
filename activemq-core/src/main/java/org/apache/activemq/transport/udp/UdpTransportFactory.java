@@ -857,7 +857,6 @@ argument_list|,
 name|udpTransport
 argument_list|)
 return|;
-comment|/*          * transport = new WireFormatNegotiator(transport,          * asOpenWireFormat(format), udpTransport.getMinmumWireFormatVersion()) {          * protected void onWireFormatNegotiated(WireFormatInfo info) { // lets          * switch to the target endpoint // based on the last packet that was          * received // so that all future requests go to the newly created UDP          * channel Endpoint from = info.getFrom();          * System.out.println("####Êsetting the client side target to: " +          * from); udpTransport.setTargetEndpoint(from); } }; return transport;          */
 block|}
 specifier|protected
 name|OpenWireFormat
