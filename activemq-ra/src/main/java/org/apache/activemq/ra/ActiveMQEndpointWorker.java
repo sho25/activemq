@@ -1056,7 +1056,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|info
+name|error
 argument_list|(
 literal|"Endpoint connection to JMS broker failed: "
 operator|+
@@ -1068,7 +1068,7 @@ argument_list|)
 expr_stmt|;
 name|log
 operator|.
-name|info
+name|error
 argument_list|(
 literal|"Endpoint will try to reconnect to the JMS broker in "
 operator|+
