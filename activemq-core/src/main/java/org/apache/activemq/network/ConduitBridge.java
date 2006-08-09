@@ -301,14 +301,12 @@ argument_list|)
 condition|)
 block|{
 comment|//add the interest in the subscription
+comment|//ds.add(ds.getRemoteInfo().getConsumerId());
 name|ds
 operator|.
 name|add
 argument_list|(
-name|ds
-operator|.
-name|getRemoteInfo
-argument_list|()
+name|info
 operator|.
 name|getConsumerId
 argument_list|()
