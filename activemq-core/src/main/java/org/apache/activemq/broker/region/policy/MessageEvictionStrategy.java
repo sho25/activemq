@@ -66,7 +66,8 @@ name|MessageEvictionStrategy
 block|{
 comment|/**      * Find the message reference in the given list with oldest messages at the front and newer messages at the end      *       * @return the message that has been evicted.      * @throws IOException if an exception occurs such as reading a message content (but should not ever happen      * as usually all the messages will be in RAM when this method is called).      */
 name|MessageReference
-name|evictMessage
+index|[]
+name|evictMessages
 parameter_list|(
 name|LinkedList
 name|messages

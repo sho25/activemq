@@ -58,13 +58,18 @@ name|MessageEvictionStrategySupport
 block|{
 specifier|public
 name|MessageReference
-name|evictMessage
+index|[]
+name|evictMessages
 parameter_list|(
 name|LinkedList
 name|messages
 parameter_list|)
 block|{
 return|return
+operator|new
+name|MessageReference
+index|[]
+block|{
 operator|(
 name|MessageReference
 operator|)
@@ -72,6 +77,7 @@ name|messages
 operator|.
 name|removeFirst
 argument_list|()
+block|}
 return|;
 block|}
 block|}

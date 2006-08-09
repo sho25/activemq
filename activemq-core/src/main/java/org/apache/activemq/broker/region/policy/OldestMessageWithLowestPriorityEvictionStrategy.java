@@ -78,7 +78,8 @@ name|MessageEvictionStrategySupport
 block|{
 specifier|public
 name|MessageReference
-name|evictMessage
+index|[]
+name|evictMessages
 parameter_list|(
 name|LinkedList
 name|messages
@@ -162,6 +163,10 @@ expr_stmt|;
 block|}
 block|}
 return|return
+operator|new
+name|MessageReference
+index|[]
+block|{
 operator|(
 name|MessageReference
 operator|)
@@ -171,6 +176,7 @@ name|remove
 argument_list|(
 name|pivot
 argument_list|)
+block|}
 return|;
 block|}
 block|}
