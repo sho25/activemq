@@ -197,6 +197,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|MessagePull
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|ProducerInfo
 import|;
 end_import
@@ -212,6 +226,20 @@ operator|.
 name|command
 operator|.
 name|RemoveSubscriptionInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|Response
 import|;
 end_import
 
@@ -796,6 +824,21 @@ name|ConnectionContext
 name|adminConnectionContext
 parameter_list|)
 block|{     }
+specifier|public
+name|Response
+name|messagePull
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|MessagePull
+name|pull
+parameter_list|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 block|}
 end_class
 

@@ -128,6 +128,11 @@ comment|// and the server.
 comment|//
 comment|///////////////////////////////////////////////////
 name|byte
+name|MESSAGE_PULL
+init|=
+literal|20
+decl_stmt|;
+name|byte
 name|MESSAGE_DISPATCH
 init|=
 literal|21
