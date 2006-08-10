@@ -90,6 +90,32 @@ name|this
 argument_list|)
 return|;
 block|}
+comment|/**      * Configures a message pull from the consumer information      */
+specifier|public
+name|void
+name|configure
+parameter_list|(
+name|ConsumerInfo
+name|info
+parameter_list|)
+block|{
+name|setConsumerId
+argument_list|(
+name|info
+operator|.
+name|getConsumerId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|setDestination
+argument_list|(
+name|info
+operator|.
+name|getDestination
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * @openwire:property version=1 cache=true      */
 specifier|public
 name|ConsumerId
