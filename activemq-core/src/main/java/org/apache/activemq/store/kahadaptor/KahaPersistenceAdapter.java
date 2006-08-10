@@ -380,6 +380,16 @@ operator|new
 name|OpenWireFormat
 argument_list|()
 decl_stmt|;
+specifier|private
+name|long
+name|maxDataFileLength
+init|=
+literal|32
+operator|*
+literal|1024
+operator|*
+literal|1024
+decl_stmt|;
 name|Store
 name|store
 decl_stmt|;
@@ -430,6 +440,13 @@ argument_list|(
 name|name
 argument_list|,
 literal|"rw"
+argument_list|)
+expr_stmt|;
+name|store
+operator|.
+name|setMaxDataFileLength
+argument_list|(
+name|maxDataFileLength
 argument_list|)
 expr_stmt|;
 block|}
@@ -1025,6 +1042,32 @@ name|UsageManager
 name|usageManager
 parameter_list|)
 block|{}
+comment|/**      * @return the maxDataFileLength      */
+specifier|public
+name|long
+name|getMaxDataFileLength
+parameter_list|()
+block|{
+return|return
+name|maxDataFileLength
+return|;
+block|}
+comment|/**      * @param maxDataFileLength the maxDataFileLength to set      */
+specifier|public
+name|void
+name|setMaxDataFileLength
+parameter_list|(
+name|long
+name|maxDataFileLength
+parameter_list|)
+block|{
+name|this
+operator|.
+name|maxDataFileLength
+operator|=
+name|maxDataFileLength
+expr_stmt|;
+block|}
 block|}
 end_class
 

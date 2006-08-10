@@ -186,6 +186,21 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * @return the maxDataFileLength      */
+specifier|public
+name|long
+name|getMaxDataFileLength
+parameter_list|()
+function_decl|;
+comment|/**      * @param maxDataFileLength the maxDataFileLength to set      */
+specifier|public
+name|void
+name|setMaxDataFileLength
+parameter_list|(
+name|long
+name|maxDataFileLength
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

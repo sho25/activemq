@@ -220,6 +220,12 @@ specifier|private
 name|DataFile
 name|currentWriteFile
 decl_stmt|;
+specifier|private
+name|long
+name|maxFileLength
+init|=
+name|MAX_FILE_LENGTH
+decl_stmt|;
 name|Map
 name|fileMap
 init|=
@@ -562,7 +568,7 @@ name|getSize
 argument_list|()
 operator|)
 operator|>
-name|MAX_FILE_LENGTH
+name|maxFileLength
 operator|)
 condition|)
 block|{
@@ -1490,6 +1496,32 @@ operator|.
 name|redoMarshaller
 operator|=
 name|redoMarshaller
+expr_stmt|;
+block|}
+comment|/**      * @return the maxFileLength      */
+specifier|public
+name|long
+name|getMaxFileLength
+parameter_list|()
+block|{
+return|return
+name|maxFileLength
+return|;
+block|}
+comment|/**      * @param maxFileLength the maxFileLength to set      */
+specifier|public
+name|void
+name|setMaxFileLength
+parameter_list|(
+name|long
+name|maxFileLength
+parameter_list|)
+block|{
+name|this
+operator|.
+name|maxFileLength
+operator|=
+name|maxFileLength
 expr_stmt|;
 block|}
 block|}
