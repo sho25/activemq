@@ -79,6 +79,11 @@ specifier|protected
 name|boolean
 name|manageable
 decl_stmt|;
+specifier|protected
+specifier|transient
+name|Object
+name|transportContext
+decl_stmt|;
 specifier|public
 name|ConnectionInfo
 parameter_list|()
@@ -381,6 +386,32 @@ operator|.
 name|manageable
 operator|=
 name|manageable
+expr_stmt|;
+block|}
+comment|/** 	 * Transports may wish to associate additional data with the connection.  For 	 * example, an SSL transport may use this field to attach the client certificates 	 * used when the conection was established.      *       * @return the transport context.      */
+specifier|public
+name|Object
+name|getTransportContext
+parameter_list|()
+block|{
+return|return
+name|transportContext
+return|;
+block|}
+comment|/** 	 * Transports may wish to associate additional data with the connection.  For 	 * example, an SSL transport may use this field to attach the client certificates 	 * used when the conection was established. 	 *   	 * @param transportContext value used to set the transport context 	 */
+specifier|public
+name|void
+name|setTransportContext
+parameter_list|(
+name|Object
+name|transportContext
+parameter_list|)
+block|{
+name|this
+operator|.
+name|transportContext
+operator|=
+name|transportContext
 expr_stmt|;
 block|}
 block|}
