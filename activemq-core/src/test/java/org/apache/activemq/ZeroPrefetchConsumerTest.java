@@ -158,7 +158,7 @@ specifier|public
 class|class
 name|ZeroPrefetchConsumerTest
 extends|extends
-name|TestSupport
+name|EmbeddedBrokerTestSupport
 block|{
 specifier|private
 specifier|static
@@ -332,9 +332,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|topic
+name|bindAddress
 operator|=
-literal|false
+literal|"tcp://localhost:61616"
 expr_stmt|;
 name|super
 operator|.
@@ -384,15 +384,7 @@ return|return
 operator|new
 name|ActiveMQQueue
 argument_list|(
-name|getClass
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"."
-operator|+
-name|getName
+name|getDestinationString
 argument_list|()
 operator|+
 literal|"?consumer.prefetchSize=0"

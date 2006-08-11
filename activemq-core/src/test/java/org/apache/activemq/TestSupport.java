@@ -270,6 +270,18 @@ block|{
 return|return
 name|createDestination
 argument_list|(
+name|getDestinationString
+argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/**      * Returns the name of the destination used in this test case      */
+specifier|protected
+name|String
+name|getDestinationString
+parameter_list|()
+block|{
+return|return
 name|getClass
 argument_list|()
 operator|.
@@ -280,7 +292,6 @@ literal|"."
 operator|+
 name|getName
 argument_list|()
-argument_list|)
 return|;
 block|}
 comment|/**      * @param messsage      * @param firstSet      * @param secondSet      */
