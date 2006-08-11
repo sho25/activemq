@@ -1868,7 +1868,7 @@ name|wf
 operator|.
 name|setVersion
 argument_list|(
-literal|1
+literal|2
 argument_list|)
 expr_stmt|;
 return|return
