@@ -1600,9 +1600,8 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Pattern
-name|null_type_pattern
-init|=
+name|assertFalse
+argument_list|(
 name|Pattern
 operator|.
 name|compile
@@ -1613,10 +1612,6 @@ name|Pattern
 operator|.
 name|CASE_INSENSITIVE
 argument_list|)
-decl_stmt|;
-name|assertFalse
-argument_list|(
-name|null_type_pattern
 operator|.
 name|matcher
 argument_list|(
