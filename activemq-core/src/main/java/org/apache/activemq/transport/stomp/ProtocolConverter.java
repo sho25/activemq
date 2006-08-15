@@ -3404,6 +3404,16 @@ name|getJMSMessageID
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|message
+operator|.
+name|getJMSCorrelationID
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|headers
 operator|.
 name|put
@@ -3422,6 +3432,7 @@ name|getJMSCorrelationID
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|headers
 operator|.
 name|put
@@ -3486,6 +3497,16 @@ name|getJMSPriority
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|message
+operator|.
+name|getJMSReplyTo
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|headers
 operator|.
 name|put
@@ -3507,6 +3528,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|headers
 operator|.
 name|put
@@ -3527,6 +3549,16 @@ name|getJMSTimestamp
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|message
+operator|.
+name|getJMSType
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|headers
 operator|.
 name|put
@@ -3545,6 +3577,7 @@ name|getJMSType
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 comment|// now lets add all the message headers
 name|Map
 name|properties
