@@ -687,7 +687,6 @@ throw|;
 block|}
 block|}
 comment|/**      * @see java.lang.Runnable#run()      */
-specifier|synchronized
 specifier|public
 name|void
 name|run
