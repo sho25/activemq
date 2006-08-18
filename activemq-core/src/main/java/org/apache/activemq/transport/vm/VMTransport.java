@@ -509,6 +509,52 @@ operator|.
 name|disposed
 condition|)
 block|{
+if|if
+condition|(
+name|async
+condition|)
+block|{
+name|asyncOneWay
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|syncOneWay
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|TransportDisposedIOException
+argument_list|(
+literal|"Peer ("
+operator|+
+name|peer
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|") disposed."
+argument_list|)
+throw|;
+block|}
+block|}
+specifier|protected
+name|void
+name|syncOneWay
+parameter_list|(
+name|Command
+name|command
+parameter_list|)
+block|{
 specifier|final
 name|TransportListener
 name|tl
@@ -517,11 +563,6 @@ name|peer
 operator|.
 name|transportListener
 decl_stmt|;
-name|messageQueue
-operator|=
-name|getMessageQueue
-argument_list|()
-expr_stmt|;
 name|prePeerSetQueue
 operator|=
 name|peer
@@ -543,12 +584,7 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-operator|!
-name|async
-condition|)
+else|else
 block|{
 name|tl
 operator|.
@@ -558,8 +594,22 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
-else|else
+block|}
+specifier|protected
+name|void
+name|asyncOneWay
+parameter_list|(
+name|Command
+name|command
+parameter_list|)
+throws|throws
+name|IOException
 block|{
+name|messageQueue
+operator|=
+name|getMessageQueue
+argument_list|()
+expr_stmt|;
 try|try
 block|{
 name|messageQueue
@@ -584,7 +634,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"messageQueue interuppted"
+literal|"messageQueue interupted"
 argument_list|,
 name|e
 argument_list|)
@@ -597,25 +647,6 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
-throw|;
-block|}
-block|}
-block|}
-else|else
-block|{
-throw|throw
-operator|new
-name|TransportDisposedIOException
-argument_list|(
-literal|"Peer ("
-operator|+
-name|peer
-operator|.
-name|toString
-argument_list|()
-operator|+
-literal|") disposed."
 argument_list|)
 throw|;
 block|}
@@ -708,6 +739,11 @@ expr_stmt|;
 name|wakeup
 argument_list|()
 expr_stmt|;
+name|peer
+operator|.
+name|wakeup
+argument_list|()
+expr_stmt|;
 block|}
 specifier|public
 specifier|synchronized
@@ -734,6 +770,12 @@ argument_list|(
 literal|"TransportListener not set."
 argument_list|)
 throw|;
+if|if
+condition|(
+operator|!
+name|async
+condition|)
+block|{
 for|for
 control|(
 name|Iterator
@@ -775,9 +817,18 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
 name|wakeup
 argument_list|()
 expr_stmt|;
+name|peer
+operator|.
+name|wakeup
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -930,12 +981,13 @@ return|return
 literal|null
 return|;
 block|}
-comment|// task implementation
+comment|/**      * @see org.apache.activemq.thread.Task#iterate()      */
 specifier|public
 name|boolean
 name|iterate
 parameter_list|()
 block|{
+specifier|final
 name|TransportListener
 name|tl
 init|=
@@ -961,6 +1013,7 @@ operator|!=
 literal|null
 condition|)
 block|{
+specifier|final
 name|Command
 name|command
 init|=
@@ -972,13 +1025,6 @@ operator|.
 name|poll
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|tl
-operator|!=
-literal|null
-condition|)
-block|{
 name|tl
 operator|.
 name|onCommand
@@ -986,7 +1032,6 @@ argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 operator|!
