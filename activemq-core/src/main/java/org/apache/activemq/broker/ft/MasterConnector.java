@@ -39,6 +39,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URISyntaxException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -60,6 +80,20 @@ operator|.
 name|broker
 operator|.
 name|BrokerService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|BrokerServiceAware
 import|;
 end_import
 
@@ -352,7 +386,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used by a Slave Broker to Connect to the Master  *   * @version $Revision$  */
+comment|/**  * Connects a Slave Broker to a Master when using<a  * href="http://incubator.apache.org/activemq/masterslave.html">Master Slave</a>  * for High Availability of messages.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -361,6 +395,8 @@ class|class
 name|MasterConnector
 implements|implements
 name|Service
+implements|,
+name|BrokerServiceAware
 block|{
 specifier|private
 specifier|static
@@ -438,23 +474,46 @@ specifier|private
 name|String
 name|password
 decl_stmt|;
+specifier|private
 name|ConnectionInfo
 name|connectionInfo
 decl_stmt|;
+specifier|private
 name|SessionInfo
 name|sessionInfo
 decl_stmt|;
+specifier|private
 name|ProducerInfo
 name|producerInfo
 decl_stmt|;
 specifier|public
 name|MasterConnector
+parameter_list|()
+block|{     }
+specifier|public
+name|MasterConnector
+parameter_list|(
+name|String
+name|remoteUri
+parameter_list|)
+throws|throws
+name|URISyntaxException
+block|{
+name|remoteURI
+operator|=
+operator|new
+name|URI
+argument_list|(
+name|remoteUri
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setBrokerService
 parameter_list|(
 name|BrokerService
 name|broker
-parameter_list|,
-name|TransportConnector
-name|connector
 parameter_list|)
 block|{
 name|this
@@ -463,12 +522,59 @@ name|broker
 operator|=
 name|broker
 expr_stmt|;
-name|this
+if|if
+condition|(
+name|localURI
+operator|==
+literal|null
+condition|)
+block|{
+name|localURI
+operator|=
+name|broker
 operator|.
+name|getVmConnectorURI
+argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|connector
+operator|==
+literal|null
+condition|)
+block|{
+name|List
+name|transportConnectors
+init|=
+name|broker
+operator|.
+name|getTransportConnectors
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|transportConnectors
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|connector
 operator|=
-name|connector
+operator|(
+name|TransportConnector
+operator|)
+name|transportConnectors
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 specifier|public
 name|boolean
@@ -503,6 +609,21 @@ argument_list|)
 condition|)
 block|{
 return|return;
+block|}
+if|if
+condition|(
+name|remoteURI
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"You must specify a remoteURI"
+argument_list|)
+throw|;
 block|}
 name|localBroker
 operator|=
@@ -952,11 +1073,11 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-comment|//            if (connectionInfo!=null){
-comment|//                localBroker.request(connectionInfo.createRemoveCommand());
-comment|//            }
-comment|//            localBroker.setTransportListener(null);
-comment|//            remoteBroker.setTransportListener(null);
+comment|// if (connectionInfo!=null){
+comment|// localBroker.request(connectionInfo.createRemoveCommand());
+comment|// }
+comment|// localBroker.setTransportListener(null);
+comment|// remoteBroker.setTransportListener(null);
 name|remoteBroker
 operator|.
 name|oneway
@@ -1280,7 +1401,7 @@ return|return
 name|password
 return|;
 block|}
-comment|/**      * @param password The password to set.      */
+comment|/**      * @param password      *            The password to set.      */
 specifier|public
 name|void
 name|setPassword
@@ -1306,7 +1427,7 @@ return|return
 name|userName
 return|;
 block|}
-comment|/**      * @param userName The userName to set.      */
+comment|/**      * @param userName      *            The userName to set.      */
 specifier|public
 name|void
 name|setUserName
