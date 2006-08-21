@@ -193,6 +193,11 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+name|remoteBrokerNameKnownLatch
+operator|.
+name|countDown
+argument_list|()
+expr_stmt|;
 block|}
 specifier|protected
 name|void

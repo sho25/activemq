@@ -255,6 +255,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|remoteBrokerNameKnownLatch
+operator|.
+name|countDown
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 specifier|protected
