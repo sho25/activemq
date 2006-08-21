@@ -520,6 +520,11 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+name|consumers
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|Iterator
@@ -554,6 +559,11 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+name|browsers
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 comment|// maybe do a rollback?
 if|if
 condition|(
