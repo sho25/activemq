@@ -370,7 +370,7 @@ init|=
 literal|false
 decl_stmt|;
 specifier|protected
-name|void
+name|NetworkConnector
 name|bridgeBrokers
 parameter_list|(
 name|String
@@ -382,6 +382,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+return|return
 name|bridgeBrokers
 argument_list|(
 name|localBrokerName
@@ -392,7 +393,7 @@ literal|false
 argument_list|,
 literal|1
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 specifier|protected
 name|void
@@ -457,7 +458,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
-name|void
+name|NetworkConnector
 name|bridgeBrokers
 parameter_list|(
 name|String
@@ -509,6 +510,7 @@ operator|)
 operator|.
 name|broker
 decl_stmt|;
+return|return
 name|bridgeBrokers
 argument_list|(
 name|localBroker
@@ -519,12 +521,12 @@ name|dynamicOnly
 argument_list|,
 name|networkTTL
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 comment|// Overwrite this method to specify how you want to bridge the two brokers
 comment|// By default, bridge them using add network connector of the local broker and the first connector of the remote broker
 specifier|protected
-name|void
+name|NetworkConnector
 name|bridgeBrokers
 parameter_list|(
 name|BrokerService
@@ -615,6 +617,13 @@ argument_list|(
 name|connector
 argument_list|)
 expr_stmt|;
+name|MAX_SETUP_TIME
+operator|=
+literal|2000
+expr_stmt|;
+return|return
+name|connector
+return|;
 block|}
 else|else
 block|{
@@ -626,10 +635,6 @@ literal|"Remote broker has no registered connectors."
 argument_list|)
 throw|;
 block|}
-name|MAX_SETUP_TIME
-operator|=
-literal|2000
-expr_stmt|;
 block|}
 comment|// This will interconnect all brokes using multicast
 specifier|protected
