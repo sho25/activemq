@@ -1145,9 +1145,11 @@ init|)
 block|{
 name|log
 operator|.
-name|debug
+name|info
 argument_list|(
-literal|"Transport failed, starting up reconnect task"
+literal|"Transport failed, attempting to automatically reconnect due to: "
+operator|+
+name|e
 argument_list|,
 name|e
 argument_list|)
