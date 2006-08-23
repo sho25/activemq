@@ -374,6 +374,10 @@ specifier|protected
 name|int
 name|minmumWireFormatVersion
 decl_stmt|;
+specifier|private
+name|Boolean
+name|keepAlive
+decl_stmt|;
 comment|/**      * Connect to a remote Node - e.g. a Broker      *       * @param wireFormat      * @param socketFactory       * @param remoteLocation      * @param localLocation -      *            e.g. local InetAddress and local port      * @throws IOException      * @throws UnknownHostException      */
 specifier|public
 name|TcpTransport
@@ -767,6 +771,31 @@ operator|=
 name|connectionTimeout
 expr_stmt|;
 block|}
+specifier|public
+name|Boolean
+name|getKeepAlive
+parameter_list|()
+block|{
+return|return
+name|keepAlive
+return|;
+block|}
+comment|/**      * Enable/disable TCP KEEP_ALIVE mode      */
+specifier|public
+name|void
+name|setKeepAlive
+parameter_list|(
+name|Boolean
+name|keepAlive
+parameter_list|)
+block|{
+name|this
+operator|.
+name|keepAlive
+operator|=
+name|keepAlive
+expr_stmt|;
+block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
 specifier|protected
@@ -881,6 +910,24 @@ argument_list|(
 name|soTimeout
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|keepAlive
+operator|!=
+literal|null
+condition|)
+block|{
+name|sock
+operator|.
+name|setKeepAlive
+argument_list|(
+name|keepAlive
+operator|.
+name|booleanValue
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|protected
 name|void
