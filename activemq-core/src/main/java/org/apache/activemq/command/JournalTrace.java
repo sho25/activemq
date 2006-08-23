@@ -55,6 +55,24 @@ name|String
 name|message
 decl_stmt|;
 specifier|public
+name|JournalTrace
+parameter_list|()
+block|{     	     }
+specifier|public
+name|JournalTrace
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|this
+operator|.
+name|message
+operator|=
+name|message
+expr_stmt|;
+block|}
+specifier|public
 name|byte
 name|getDataStructureType
 parameter_list|()
