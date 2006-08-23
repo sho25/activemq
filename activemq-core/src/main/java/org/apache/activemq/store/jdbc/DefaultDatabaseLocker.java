@@ -157,6 +157,10 @@ specifier|private
 name|Connection
 name|connection
 decl_stmt|;
+specifier|private
+name|boolean
+name|stopping
+decl_stmt|;
 specifier|public
 name|DefaultDatabaseLocker
 parameter_list|(
@@ -187,6 +191,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|stopping
+operator|=
+literal|false
+expr_stmt|;
 name|connection
 operator|=
 name|dataSource
@@ -250,6 +258,23 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|stopping
+condition|)
+block|{
+throw|throw
+operator|new
+name|Exception
+argument_list|(
+literal|"Cannot start broker as being asked to shut down. Interupted attempt to acquire lock: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 name|log
 operator|.
 name|error
@@ -298,6 +323,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|stopping
+operator|=
+literal|true
+expr_stmt|;
 if|if
 condition|(
 name|connection
