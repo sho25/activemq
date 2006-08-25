@@ -1204,6 +1204,17 @@ condition|)
 return|return
 literal|true
 return|;
+if|if
+condition|(
+name|clazz
+operator|==
+name|Boolean
+operator|.
+name|class
+condition|)
+return|return
+literal|true
+return|;
 return|return
 literal|false
 return|;
