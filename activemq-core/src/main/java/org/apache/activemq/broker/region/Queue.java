@@ -1512,6 +1512,20 @@ name|void
 name|dropEvent
 parameter_list|()
 block|{
+name|dropEvent
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|dropEvent
+parameter_list|(
+name|boolean
+name|skipGc
+parameter_list|)
+block|{
 comment|// TODO: need to also decrement when messages expire.
 name|destinationStatistics
 operator|.
@@ -1531,6 +1545,9 @@ operator|++
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|skipGc
+operator|&&
 name|garbageSize
 operator|>
 name|garbageSizeBeforeCollection
@@ -2564,11 +2581,6 @@ expr_stmt|;
 name|dropEvent
 argument_list|()
 expr_stmt|;
-name|iter
-operator|.
-name|remove
-argument_list|()
-expr_stmt|;
 return|return
 literal|true
 return|;
@@ -2806,12 +2818,9 @@ name|drop
 argument_list|()
 expr_stmt|;
 name|dropEvent
-argument_list|()
-expr_stmt|;
-name|iter
-operator|.
-name|remove
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2822,6 +2831,11 @@ name|e
 parameter_list|)
 block|{                 }
 block|}
+comment|// Run gc() by hand. Had we run it in the loop it could be
+comment|// quite expensive.
+name|gc
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 specifier|public
