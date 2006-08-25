@@ -65,6 +65,22 @@ name|activemq
 operator|.
 name|broker
 operator|.
+name|util
+operator|.
+name|UDPTraceBrokerPlugin
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
 name|view
 operator|.
 name|ConnectionDotFilePlugin
@@ -221,9 +237,12 @@ operator|new
 name|BrokerPlugin
 index|[]
 block|{
-comment|/*new DestinationDotFilePlugin(), */
 operator|new
 name|ConnectionDotFilePlugin
+argument_list|()
+block|,
+operator|new
+name|UDPTraceBrokerPlugin
 argument_list|()
 block|}
 argument_list|)
