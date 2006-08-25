@@ -69,6 +69,26 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|naming
+operator|.
+name|NamingException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -202,7 +222,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This bridge joins the gap between foreign JMS providers and ActiveMQ As some JMS providers are still only 1.0.1  * compliant, this bridge itself aimed to be JMS 1.0.2 compliant.  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * This bridge joins the gap between foreign JMS providers and ActiveMQ As some  * JMS providers are still only 1.0.1 compliant, this bridge itself aimed to be  * JMS 1.0.2 compliant.  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -756,7 +776,7 @@ name|Connection
 name|producerConnection
 parameter_list|)
 function_decl|;
-comment|/**      * One way to configure the local connection - this is called by      * The BrokerService when the Connector is embedded      * @param service      */
+comment|/**      * One way to configure the local connection - this is called by The      * BrokerService when the Connector is embedded      *       * @param service      */
 specifier|public
 name|void
 name|setBrokerService
@@ -813,7 +833,7 @@ return|return
 name|jndiOutboundTemplate
 return|;
 block|}
-comment|/**      * @param jndiOutboundTemplate The jndiOutboundTemplate to set.      */
+comment|/**      * @param jndiOutboundTemplate      *            The jndiOutboundTemplate to set.      */
 specifier|public
 name|void
 name|setJndiOutboundTemplate
@@ -865,7 +885,7 @@ return|return
 name|outboundMessageConvertor
 return|;
 block|}
-comment|/**      * @param outboundMessageConvertor The outboundMessageConvertor to set.      */
+comment|/**      * @param outboundMessageConvertor      *            The outboundMessageConvertor to set.      */
 specifier|public
 name|void
 name|setOutboundMessageConvertor
@@ -917,7 +937,7 @@ return|return
 name|localPassword
 return|;
 block|}
-comment|/**      * @param localPassword The localPassword to set.      */
+comment|/**      * @param localPassword      *            The localPassword to set.      */
 specifier|public
 name|void
 name|setLocalPassword
@@ -943,7 +963,7 @@ return|return
 name|localUsername
 return|;
 block|}
-comment|/**      * @param localUsername The localUsername to set.      */
+comment|/**      * @param localUsername      *            The localUsername to set.      */
 specifier|public
 name|void
 name|setLocalUsername
@@ -969,7 +989,7 @@ return|return
 name|outboundPassword
 return|;
 block|}
-comment|/**      * @param outboundPassword The outboundPassword to set.      */
+comment|/**      * @param outboundPassword      *            The outboundPassword to set.      */
 specifier|public
 name|void
 name|setOutboundPassword
@@ -995,7 +1015,7 @@ return|return
 name|outboundUsername
 return|;
 block|}
-comment|/**      * @param outboundUsername The outboundUsername to set.      */
+comment|/**      * @param outboundUsername      *            The outboundUsername to set.      */
 specifier|public
 name|void
 name|setOutboundUsername
@@ -1130,6 +1150,16 @@ operator|=
 name|name
 expr_stmt|;
 block|}
+specifier|public
+specifier|abstract
+name|void
+name|restartProducerConnection
+parameter_list|()
+throws|throws
+name|NamingException
+throws|,
+name|JMSException
+function_decl|;
 block|}
 end_class
 
