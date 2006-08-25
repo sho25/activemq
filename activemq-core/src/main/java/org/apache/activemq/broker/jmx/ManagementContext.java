@@ -337,6 +337,10 @@ init|=
 literal|1099
 decl_stmt|;
 specifier|private
+name|int
+name|rmiServerPort
+decl_stmt|;
+specifier|private
 name|String
 name|connectorPath
 init|=
@@ -1188,6 +1192,14 @@ name|createMBeanServer
 argument_list|()
 expr_stmt|;
 block|}
+else|else
+block|{
+name|createConnector
+argument_list|(
+name|result
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1199,7 +1211,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Couldnot load MBeanServer"
+literal|"Could not load MBeanServer"
 argument_list|,
 name|e
 argument_list|)
@@ -1582,9 +1594,34 @@ expr_stmt|;
 block|}
 comment|// Create the JMXConnectorServer
 name|String
+name|rmiServer
+init|=
+literal|""
+decl_stmt|;
+if|if
+condition|(
+name|rmiServerPort
+operator|!=
+literal|0
+condition|)
+block|{
+comment|// This is handy to use if you have a firewall and need to
+comment|// force JMX to use fixed ports.
+name|rmiServer
+operator|=
+literal|"localhost:"
+operator|+
+name|rmiServerPort
+expr_stmt|;
+block|}
+name|String
 name|serviceURL
 init|=
-literal|"service:jmx:rmi:///jndi/rmi://localhost:"
+literal|"service:jmx:rmi://"
+operator|+
+name|rmiServer
+operator|+
+literal|"/jndi/rmi://localhost:"
 operator|+
 name|connectorPort
 operator|+
@@ -1612,7 +1649,6 @@ argument_list|,
 name|mbeanServer
 argument_list|)
 expr_stmt|;
-comment|// log.info("JMX consoles can connect to serviceURL: " + serviceURL);
 block|}
 specifier|public
 name|String
@@ -1660,6 +1696,30 @@ operator|.
 name|connectorPort
 operator|=
 name|connectorPort
+expr_stmt|;
+block|}
+specifier|public
+name|int
+name|getRmiServerPort
+parameter_list|()
+block|{
+return|return
+name|rmiServerPort
+return|;
+block|}
+specifier|public
+name|void
+name|setRmiServerPort
+parameter_list|(
+name|int
+name|rmiServerPort
+parameter_list|)
+block|{
+name|this
+operator|.
+name|rmiServerPort
+operator|=
+name|rmiServerPort
 expr_stmt|;
 block|}
 specifier|public
