@@ -298,7 +298,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version $Revision: 1.14 $  */
+comment|/**  *  * @version $Revision: 1.14 $  */
 end_comment
 
 begin_class
@@ -389,6 +389,15 @@ name|destinationsMutex
 init|=
 operator|new
 name|Object
+argument_list|()
+decl_stmt|;
+specifier|protected
+specifier|final
+name|Map
+name|consumerChangeMutexMap
+init|=
+operator|new
+name|HashMap
 argument_list|()
 decl_stmt|;
 specifier|public
@@ -840,7 +849,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Provide an exact or wildcard lookup of destinations in the region      *       * @return a set of matching destination objects.      */
+comment|/**      * Provide an exact or wildcard lookup of destinations in the region      *      * @return a set of matching destination objects.      */
 specifier|public
 name|Set
 name|getDestinations
@@ -944,6 +953,92 @@ name|destination
 argument_list|)
 expr_stmt|;
 block|}
+name|Object
+name|addGuard
+decl_stmt|;
+synchronized|synchronized
+init|(
+name|consumerChangeMutexMap
+init|)
+block|{
+name|addGuard
+operator|=
+name|consumerChangeMutexMap
+operator|.
+name|get
+argument_list|(
+name|info
+operator|.
+name|getConsumerId
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|addGuard
+operator|==
+literal|null
+condition|)
+block|{
+name|addGuard
+operator|=
+operator|new
+name|Object
+argument_list|()
+expr_stmt|;
+name|consumerChangeMutexMap
+operator|.
+name|put
+argument_list|(
+name|info
+operator|.
+name|getConsumerId
+argument_list|()
+argument_list|,
+name|addGuard
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+synchronized|synchronized
+init|(
+name|addGuard
+init|)
+block|{
+name|Object
+name|o
+init|=
+name|subscriptions
+operator|.
+name|get
+argument_list|(
+name|info
+operator|.
+name|getConsumerId
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|o
+operator|!=
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"A duplicate subscription was detected. Clients may be misbehaving. Later warnings you may see about subscription removal are a consequence of this."
+argument_list|)
+expr_stmt|;
+return|return
+operator|(
+name|Subscription
+operator|)
+name|o
+return|;
+block|}
 name|Subscription
 name|sub
 init|=
@@ -1041,6 +1136,12 @@ argument_list|,
 name|sub
 argument_list|)
 expr_stmt|;
+comment|// At this point we're done directly manipulating subscriptions,
+comment|// but we need to retain the synchronized block here. Consider
+comment|// otherwise what would happen if at this point a second
+comment|// thread added, then removed, as would be allowed with
+comment|// no mutex held. Remove is only essentially run once
+comment|// so everything after this point would be leaked.
 comment|// Add the subscription to all the matching queues.
 for|for
 control|(
@@ -1110,6 +1211,7 @@ block|}
 return|return
 name|sub
 return|;
+block|}
 block|}
 comment|/**      * Get all the Destinations that are in storage      * @return Set of all stored destinations      */
 specifier|public
@@ -1263,6 +1365,22 @@ argument_list|(
 name|sub
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|consumerChangeMutexMap
+init|)
+block|{
+name|consumerChangeMutexMap
+operator|.
+name|remove
+argument_list|(
+name|info
+operator|.
+name|getConsumerId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|protected
 name|void

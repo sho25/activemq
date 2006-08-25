@@ -728,6 +728,40 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|sub
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"Cannot use the same consumerId: "
+operator|+
+name|info
+operator|.
+name|getConsumerId
+argument_list|()
+operator|+
+literal|" for two different durable subscriptions clientID: "
+operator|+
+name|key
+operator|.
+name|getClientId
+argument_list|()
+operator|+
+literal|" subscriberName: "
+operator|+
+name|key
+operator|.
+name|getSubscriptionName
+argument_list|()
+argument_list|)
+throw|;
+block|}
 block|}
 name|sub
 operator|.
