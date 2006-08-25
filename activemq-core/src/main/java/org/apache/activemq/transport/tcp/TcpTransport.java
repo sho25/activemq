@@ -378,6 +378,10 @@ specifier|private
 name|Boolean
 name|keepAlive
 decl_stmt|;
+specifier|private
+name|Boolean
+name|tcpNoDelay
+decl_stmt|;
 comment|/**      * Connect to a remote Node - e.g. a Broker      *       * @param wireFormat      * @param socketFactory       * @param remoteLocation      * @param localLocation -      *            e.g. local InetAddress and local port      * @throws IOException      * @throws UnknownHostException      */
 specifier|public
 name|TcpTransport
@@ -796,6 +800,31 @@ operator|=
 name|keepAlive
 expr_stmt|;
 block|}
+specifier|public
+name|Boolean
+name|getTcpNoDelay
+parameter_list|()
+block|{
+return|return
+name|tcpNoDelay
+return|;
+block|}
+comment|/**      * Enable/disable the TCP_NODELAY option on the socket      */
+specifier|public
+name|void
+name|setTcpNoDelay
+parameter_list|(
+name|Boolean
+name|tcpNoDelay
+parameter_list|)
+block|{
+name|this
+operator|.
+name|tcpNoDelay
+operator|=
+name|tcpNoDelay
+expr_stmt|;
+block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
 specifier|protected
@@ -922,6 +951,24 @@ operator|.
 name|setKeepAlive
 argument_list|(
 name|keepAlive
+operator|.
+name|booleanValue
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|tcpNoDelay
+operator|!=
+literal|null
+condition|)
+block|{
+name|sock
+operator|.
+name|setTcpNoDelay
+argument_list|(
+name|tcpNoDelay
 operator|.
 name|booleanValue
 argument_list|()
