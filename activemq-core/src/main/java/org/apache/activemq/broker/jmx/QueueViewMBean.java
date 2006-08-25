@@ -48,7 +48,7 @@ name|QueueViewMBean
 extends|extends
 name|DestinationViewMBean
 block|{
-comment|/** 	 * Retrieve a message from the destination's queue. 	 *  	 * @param messageId the message id of the message to retreive 	 * @return A CompositeData object which is a JMX version of the messages 	 * @throws OpenDataException 	 */
+comment|/**      * Retrieve a message from the destination's queue.      *       * @param messageId      *            the message id of the message to retrieve      * @return A CompositeData object which is a JMX version of the messages      * @throws OpenDataException      */
 specifier|public
 name|CompositeData
 name|getMessage
@@ -59,7 +59,7 @@ parameter_list|)
 throws|throws
 name|OpenDataException
 function_decl|;
-comment|/**      * Removes a message from the queue.  If the message has allready been dispatched       * to another consumer, the message cannot be delted and this method will return       * false.      *       * @param messageId       * @return true if the message was found and could be succesfully deleted.      */
+comment|/**      * Removes a message from the queue. If the message has already been      * dispatched to another consumer, the message cannot be deleted and this      * method will return false.      *       * @param messageId      * @return true if the message was found and could be successfully deleted.      * @throws Exception       */
 specifier|public
 name|boolean
 name|removeMessage
@@ -67,14 +67,41 @@ parameter_list|(
 name|String
 name|messageId
 parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
-comment|/**      * Emptys out all the messages in the queue.      */
+comment|/**      * Removes the messages matching the given selector      *       * @return the number of messages removed      */
+specifier|public
+name|int
+name|removeMatchingMessages
+parameter_list|(
+name|String
+name|selector
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Removes the messages matching the given selector up to the maximum number of matched messages      *       * @return the number of messages removed      */
+specifier|public
+name|int
+name|removeMatchingMessages
+parameter_list|(
+name|String
+name|selector
+parameter_list|,
+name|int
+name|maximumMessages
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Removes all of the messages in the queue.      */
 specifier|public
 name|void
 name|purge
 parameter_list|()
 function_decl|;
-comment|/**      * Copys a given message to another destination.      *       * @param messageId      * @param destinationName      * @return true if the message was found and was successfuly copied to the other destination.      * @throws Exception      */
+comment|/**      * Copies a given message to another destination.      *       * @param messageId      * @param destinationName      * @return true if the message was found and was successfully copied to the      *         other destination.      * @throws Exception      */
 specifier|public
 name|boolean
 name|copyMessageTo
@@ -84,6 +111,82 @@ name|messageId
 parameter_list|,
 name|String
 name|destinationName
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Copies the messages matching the given selector      *       * @return the number of messages copied      */
+specifier|public
+name|int
+name|copyMatchingMessagesTo
+parameter_list|(
+name|String
+name|selector
+parameter_list|,
+name|String
+name|destinationName
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Copies the messages matching the given selector up to the maximum number of matched messages      *       * @return the number of messages copied      */
+specifier|public
+name|int
+name|copyMatchingMessagesTo
+parameter_list|(
+name|String
+name|selector
+parameter_list|,
+name|String
+name|destinationName
+parameter_list|,
+name|int
+name|maximumMessages
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Moves the message to another destination.      *       * @param messageId      * @param destinationName      * @return true if the message was found and was successfully copied to the      *         other destination.      * @throws Exception      */
+specifier|public
+name|boolean
+name|moveMessageTo
+parameter_list|(
+name|String
+name|messageId
+parameter_list|,
+name|String
+name|destinationName
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Moves the messages matching the given selector      *       * @return the number of messages removed      */
+specifier|public
+name|int
+name|moveMatchingMessagesTo
+parameter_list|(
+name|String
+name|selector
+parameter_list|,
+name|String
+name|destinationName
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Moves the messages matching the given selector up to the maximum number of matched messages      */
+specifier|public
+name|int
+name|moveMatchingMessagesTo
+parameter_list|(
+name|String
+name|selector
+parameter_list|,
+name|String
+name|destinationName
+parameter_list|,
+name|int
+name|maximumMessages
 parameter_list|)
 throws|throws
 name|Exception
