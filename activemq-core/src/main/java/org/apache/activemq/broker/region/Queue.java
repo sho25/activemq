@@ -975,11 +975,11 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|IndirectMessageReference
+name|QueueMessageReference
 name|node
 init|=
 operator|(
-name|IndirectMessageReference
+name|QueueMessageReference
 operator|)
 name|iter
 operator|.
@@ -1221,11 +1221,11 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|IndirectMessageReference
+name|QueueMessageReference
 name|node
 init|=
 operator|(
-name|IndirectMessageReference
+name|QueueMessageReference
 operator|)
 name|iter
 operator|.
@@ -1305,11 +1305,11 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|IndirectMessageReference
+name|QueueMessageReference
 name|node
 init|=
 operator|(
-name|IndirectMessageReference
+name|QueueMessageReference
 operator|)
 name|iter
 operator|.
@@ -1637,11 +1637,11 @@ condition|;
 control|)
 block|{
 comment|// Remove dropped messages from the queue.
-name|IndirectMessageReference
+name|QueueMessageReference
 name|node
 init|=
 operator|(
-name|IndirectMessageReference
+name|QueueMessageReference
 operator|)
 name|iter
 operator|.
@@ -1772,7 +1772,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|public
 name|Message
 name|loadMessage
 parameter_list|(
@@ -2181,6 +2180,8 @@ name|IndirectMessageReference
 argument_list|(
 name|this
 argument_list|,
+name|store
+argument_list|,
 name|message
 argument_list|)
 return|;
@@ -2376,7 +2377,6 @@ return|return
 name|rc
 return|;
 block|}
-specifier|public
 name|MessageStore
 name|getMessageStore
 parameter_list|()
@@ -2645,11 +2645,11 @@ control|)
 block|{
 try|try
 block|{
-name|IndirectMessageReference
+name|QueueMessageReference
 name|r
 init|=
 operator|(
-name|IndirectMessageReference
+name|QueueMessageReference
 operator|)
 name|iter
 operator|.

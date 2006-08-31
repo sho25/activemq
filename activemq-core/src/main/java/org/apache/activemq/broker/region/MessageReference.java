@@ -145,6 +145,16 @@ name|long
 name|getExpiration
 parameter_list|()
 function_decl|;
+specifier|public
+name|String
+name|getGroupID
+parameter_list|()
+function_decl|;
+specifier|public
+name|int
+name|getGroupSequence
+parameter_list|()
+function_decl|;
 comment|/**      * Returns true if this message is expired      */
 specifier|public
 name|boolean

@@ -182,7 +182,7 @@ return|return
 operator|!
 operator|(
 operator|(
-name|IndirectMessageReference
+name|QueueMessageReference
 operator|)
 name|node
 operator|)
@@ -245,7 +245,7 @@ literal|true
 expr_stmt|;
 name|add
 argument_list|(
-name|IndirectMessageReference
+name|QueueMessageReference
 operator|.
 name|END_OF_BROWSE_MARKER
 argument_list|)
@@ -266,7 +266,7 @@ if|if
 condition|(
 name|node
 operator|==
-name|IndirectMessageReference
+name|QueueMessageReference
 operator|.
 name|END_OF_BROWSE_MARKER
 condition|)

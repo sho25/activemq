@@ -209,11 +209,11 @@ specifier|private
 name|File
 name|directory
 decl_stmt|;
-specifier|private
+specifier|protected
 name|IndexRootContainer
 name|mapsContainer
 decl_stmt|;
-specifier|private
+specifier|protected
 name|IndexRootContainer
 name|listsContainer
 decl_stmt|;
@@ -249,7 +249,7 @@ operator|new
 name|ConcurrentHashMap
 argument_list|()
 decl_stmt|;
-specifier|private
+specifier|protected
 name|IndexManager
 name|rootIndexManager
 decl_stmt|;

@@ -120,7 +120,7 @@ name|root
 decl_stmt|;
 specifier|protected
 name|IndexLinkedList
-name|list
+name|indexList
 decl_stmt|;
 specifier|protected
 name|IndexManager
@@ -254,14 +254,14 @@ if|if
 condition|(
 name|this
 operator|.
-name|list
+name|indexList
 operator|==
 literal|null
 condition|)
 block|{
 name|this
 operator|.
-name|list
+name|indexList
 operator|=
 operator|new
 name|DiskIndexLinkedList
@@ -283,42 +283,42 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|list
+name|indexList
 operator|!=
 literal|null
 condition|)
 block|{
-name|list
+name|indexList
 operator|.
 name|clear
 argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @return the list      */
+comment|/**      * @return the indexList      */
 specifier|public
 name|IndexLinkedList
 name|getList
 parameter_list|()
 block|{
 return|return
-name|list
+name|indexList
 return|;
 block|}
-comment|/**      * @param list the list to set      */
+comment|/**      * @param indexList the indexList to set      */
 specifier|public
 name|void
 name|setList
 parameter_list|(
 name|IndexLinkedList
-name|list
+name|indexList
 parameter_list|)
 block|{
 name|this
 operator|.
-name|list
+name|indexList
 operator|=
-name|list
+name|indexList
 expr_stmt|;
 block|}
 specifier|public
@@ -364,7 +364,7 @@ name|getInternalList
 parameter_list|()
 block|{
 return|return
-name|list
+name|indexList
 return|;
 block|}
 specifier|public
@@ -507,7 +507,7 @@ name|mutex
 init|)
 block|{
 name|List
-name|list
+name|indexList
 init|=
 operator|new
 name|ArrayList
@@ -546,7 +546,7 @@ argument_list|(
 name|nextItem
 argument_list|)
 expr_stmt|;
-name|list
+name|indexList
 operator|.
 name|add
 argument_list|(
@@ -584,7 +584,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|list
+name|indexList
 operator|.
 name|size
 argument_list|()
@@ -599,7 +599,7 @@ init|=
 operator|(
 name|IndexItem
 operator|)
-name|list
+name|indexList
 operator|.
 name|get
 argument_list|(
@@ -634,7 +634,7 @@ name|item
 argument_list|)
 expr_stmt|;
 block|}
-name|list
+name|indexList
 operator|.
 name|clear
 argument_list|()
