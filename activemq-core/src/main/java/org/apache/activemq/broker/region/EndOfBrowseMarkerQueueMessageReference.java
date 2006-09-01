@@ -84,7 +84,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Only used by the {@link QueueMessageReference#END_OF_BROWSE_MARKER}   */
+comment|/**  * Only used by the {@link QueueMessageReference#NULL_MESSAGE}   */
 end_comment
 
 begin_class

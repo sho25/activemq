@@ -32,7 +32,7 @@ specifier|public
 specifier|static
 specifier|final
 name|QueueMessageReference
-name|END_OF_BROWSE_MARKER
+name|NULL_MESSAGE
 init|=
 operator|new
 name|EndOfBrowseMarkerQueueMessageReference
