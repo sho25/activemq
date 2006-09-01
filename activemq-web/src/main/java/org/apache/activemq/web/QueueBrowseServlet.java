@@ -21,11 +21,9 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activeio
+name|activemq
 operator|.
-name|util
-operator|.
-name|FactoryFinder
+name|ActiveMQConnectionFactory
 import|;
 end_import
 
@@ -37,7 +35,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|ActiveMQConnectionFactory
+name|util
+operator|.
+name|FactoryFinder
 import|;
 end_import
 

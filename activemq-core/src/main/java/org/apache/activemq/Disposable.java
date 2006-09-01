@@ -10,65 +10,25 @@ operator|.
 name|apache
 operator|.
 name|activemq
-operator|.
-name|transport
-operator|.
-name|stomp
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|wireformat
-operator|.
-name|WireFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|wireformat
-operator|.
-name|WireFormatFactory
-import|;
-end_import
-
 begin_comment
-comment|/**  * Creates WireFormat objects that marshalls the<a href="http://stomp.codehaus.org/">Stomp</a> protocol.  */
+comment|/**  * @version $Revision$  */
 end_comment
 
-begin_class
+begin_interface
 specifier|public
-class|class
-name|StompWireFormatFactory
-implements|implements
-name|WireFormatFactory
+interface|interface
+name|Disposable
 block|{
-specifier|public
-name|WireFormat
-name|createWireFormat
+comment|/**      */
+name|void
+name|dispose
 parameter_list|()
-block|{
-return|return
-operator|new
-name|StompWireFormat
-argument_list|()
-return|;
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

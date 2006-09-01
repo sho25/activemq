@@ -70,6 +70,15 @@ name|HttpSpringEmbeddedTunnelServlet
 extends|extends
 name|HttpEmbeddedTunnelServlet
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|6568661997192814908L
+decl_stmt|;
 comment|/**      * Factory method to create a new broker      */
 specifier|protected
 name|BrokerService

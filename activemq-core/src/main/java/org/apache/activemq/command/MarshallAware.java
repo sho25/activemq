@@ -31,11 +31,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activeio
+name|activemq
 operator|.
-name|command
+name|util
 operator|.
-name|WireFormat
+name|ByteSequence
 import|;
 end_import
 
@@ -45,11 +45,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activeio
+name|activemq
 operator|.
-name|packet
+name|wireformat
 operator|.
-name|ByteSequence
+name|WireFormat
 import|;
 end_import
 

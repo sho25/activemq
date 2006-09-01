@@ -169,9 +169,9 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activeio
+name|activemq
 operator|.
-name|packet
+name|util
 operator|.
 name|ByteSequence
 argument_list|(

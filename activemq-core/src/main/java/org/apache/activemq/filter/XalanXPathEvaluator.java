@@ -85,11 +85,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activeio
+name|activemq
 operator|.
-name|util
+name|command
 operator|.
-name|ByteArrayInputStream
+name|Message
 import|;
 end_import
 
@@ -101,9 +101,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|command
+name|util
 operator|.
-name|Message
+name|ByteArrayInputStream
 import|;
 end_import
 

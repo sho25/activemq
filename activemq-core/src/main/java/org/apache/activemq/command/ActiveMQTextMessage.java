@@ -125,11 +125,9 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activeio
+name|activemq
 operator|.
-name|command
-operator|.
-name|WireFormat
+name|ActiveMQConnection
 import|;
 end_import
 
@@ -139,21 +137,7 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activeio
-operator|.
-name|packet
-operator|.
-name|ByteSequence
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activeio
+name|activemq
 operator|.
 name|util
 operator|.
@@ -167,7 +151,7 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activeio
+name|activemq
 operator|.
 name|util
 operator|.
@@ -183,7 +167,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|ActiveMQConnection
+name|util
+operator|.
+name|ByteSequence
 import|;
 end_import
 
@@ -212,6 +198,20 @@ operator|.
 name|util
 operator|.
 name|MarshallingSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|wireformat
+operator|.
+name|WireFormat
 import|;
 end_import
 

@@ -537,9 +537,12 @@ comment|// Read the command directly from the reader
 name|Command
 name|command
 init|=
+operator|(
+name|Command
+operator|)
 name|wireFormat
 operator|.
-name|readCommand
+name|unmarshalText
 argument_list|(
 name|request
 operator|.

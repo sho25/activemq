@@ -175,11 +175,9 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activeio
+name|activemq
 operator|.
-name|packet
-operator|.
-name|ByteSequence
+name|ActiveMQConnection
 import|;
 end_import
 
@@ -189,7 +187,7 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activeio
+name|activemq
 operator|.
 name|util
 operator|.
@@ -203,7 +201,7 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activeio
+name|activemq
 operator|.
 name|util
 operator|.
@@ -219,7 +217,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|ActiveMQConnection
+name|util
+operator|.
+name|ByteSequence
 import|;
 end_import
 

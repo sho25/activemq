@@ -115,11 +115,13 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activeio
+name|activemq
 operator|.
-name|util
+name|store
 operator|.
-name|ByteArrayOutputStream
+name|jdbc
+operator|.
+name|TransactionContext
 import|;
 end_import
 
@@ -131,11 +133,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|store
+name|util
 operator|.
-name|jdbc
-operator|.
-name|TransactionContext
+name|ByteArrayOutputStream
 import|;
 end_import
 
