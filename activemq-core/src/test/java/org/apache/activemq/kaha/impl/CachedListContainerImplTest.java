@@ -103,7 +103,9 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-return|return
+name|KahaStore
+name|store
+init|=
 operator|new
 name|KahaStore
 argument_list|(
@@ -111,6 +113,14 @@ name|name
 argument_list|,
 literal|"rw"
 argument_list|)
+decl_stmt|;
+name|store
+operator|.
+name|initialize
+argument_list|()
+expr_stmt|;
+return|return
+name|store
 return|;
 block|}
 specifier|public

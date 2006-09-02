@@ -310,7 +310,17 @@ name|mode
 operator|=
 name|mode
 expr_stmt|;
-name|initialize
+name|directory
+operator|=
+operator|new
+name|File
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+name|directory
+operator|.
+name|mkdirs
 argument_list|()
 expr_stmt|;
 block|}
@@ -617,17 +627,19 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|initialize
-argument_list|()
-expr_stmt|;
-name|clear
-argument_list|()
-expr_stmt|;
 name|boolean
 name|result
 init|=
 literal|true
 decl_stmt|;
+if|if
+condition|(
+name|initialized
+condition|)
+block|{
+name|clear
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|Iterator
@@ -716,9 +728,7 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
-comment|// now delete all the files - containers that don't use the standard DataManager
-comment|// and IndexManager will not have initialized the files - so these will be left around
-comment|// unless we do this
+block|}
 if|if
 condition|(
 name|directory
@@ -1345,19 +1355,6 @@ block|{
 name|initialized
 operator|=
 literal|true
-expr_stmt|;
-name|directory
-operator|=
-operator|new
-name|File
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
-name|directory
-operator|.
-name|mkdirs
-argument_list|()
 expr_stmt|;
 name|log
 operator|.

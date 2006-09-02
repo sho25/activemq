@@ -237,6 +237,20 @@ name|TransactionId
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|kaha
+operator|.
+name|Store
+import|;
+end_import
+
 begin_comment
 comment|/**  * The Message Broker which routes messages,  * maintains subscriptions and connections, acknowledges messages and handles  * transactions.  *  * @version $Revision: 1.8 $  */
 end_comment
@@ -568,6 +582,12 @@ parameter_list|(
 name|ConnectionContext
 name|adminConnectionContext
 parameter_list|)
+function_decl|;
+comment|/**      * @return the broker's temp data store      * @throws Exception      */
+specifier|public
+name|Store
+name|getTempDataStore
+parameter_list|()
 function_decl|;
 block|}
 end_interface

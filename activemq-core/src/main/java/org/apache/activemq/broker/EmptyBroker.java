@@ -273,6 +273,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|kaha
+operator|.
+name|Store
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -834,6 +848,15 @@ parameter_list|,
 name|MessagePull
 name|pull
 parameter_list|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+specifier|public
+name|Store
+name|getTempDataStore
+parameter_list|()
 block|{
 return|return
 literal|null

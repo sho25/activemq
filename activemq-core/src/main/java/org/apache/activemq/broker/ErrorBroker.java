@@ -301,6 +301,20 @@ name|TransactionId
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|kaha
+operator|.
+name|Store
+import|;
+end_import
+
 begin_comment
 comment|/**  * Implementation of the broker where all it's methods throw an  * BrokerStoppedException.  *   * @version $Revision$  */
 end_comment
@@ -1180,6 +1194,21 @@ parameter_list|,
 name|MessagePull
 name|pull
 parameter_list|)
+block|{
+throw|throw
+operator|new
+name|BrokerStoppedException
+argument_list|(
+name|this
+operator|.
+name|message
+argument_list|)
+throw|;
+block|}
+specifier|public
+name|Store
+name|getTempDataStore
+parameter_list|()
 block|{
 throw|throw
 operator|new

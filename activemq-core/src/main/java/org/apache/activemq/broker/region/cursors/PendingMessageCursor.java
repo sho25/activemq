@@ -1,0 +1,111 @@
+begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
+end_comment
+
+begin_package
+package|package
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|cursors
+package|;
+end_package
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|MessageReference
+import|;
+end_import
+
+begin_comment
+comment|/**  * Interface to pending message (messages awaiting disptach to a consumer) cursor  *   * @version $Revision$  */
+end_comment
+
+begin_interface
+specifier|public
+interface|interface
+name|PendingMessageCursor
+block|{
+comment|/**      * @return true if there are no pending messages      */
+specifier|public
+name|boolean
+name|isEmpty
+parameter_list|()
+function_decl|;
+comment|/**      * reset the cursor      *      */
+specifier|public
+name|void
+name|reset
+parameter_list|()
+function_decl|;
+comment|/**      * add message to await dispatch      * @param node      */
+specifier|public
+name|void
+name|addMessageLast
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|)
+function_decl|;
+comment|/**      * add message to await dispatch      * @param node      */
+specifier|public
+name|void
+name|addMessageFirst
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|)
+function_decl|;
+comment|/**      * @return true if there pending messages to dispatch      */
+specifier|public
+name|boolean
+name|hasNext
+parameter_list|()
+function_decl|;
+comment|/**      * @return the next pending message      */
+specifier|public
+name|MessageReference
+name|next
+parameter_list|()
+function_decl|;
+comment|/**      * remove the message at the cursor position      *       */
+specifier|public
+name|void
+name|remove
+parameter_list|()
+function_decl|;
+comment|/**      * @return the number of pending messages      */
+specifier|public
+name|int
+name|size
+parameter_list|()
+function_decl|;
+comment|/**      * clear all pending messages      *       */
+specifier|public
+name|void
+name|clear
+parameter_list|()
+function_decl|;
+block|}
+end_interface
+
+end_unit
+
