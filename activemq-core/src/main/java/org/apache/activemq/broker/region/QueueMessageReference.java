@@ -35,7 +35,7 @@ name|QueueMessageReference
 name|NULL_MESSAGE
 init|=
 operator|new
-name|EndOfBrowseMarkerQueueMessageReference
+name|NullMessageReference
 argument_list|()
 decl_stmt|;
 specifier|public

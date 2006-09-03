@@ -90,7 +90,7 @@ end_comment
 begin_class
 specifier|final
 class|class
-name|EndOfBrowseMarkerQueueMessageReference
+name|NullMessageReference
 implements|implements
 name|QueueMessageReference
 block|{
@@ -163,13 +163,9 @@ name|LockOwner
 name|subscription
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"not implemented"
-argument_list|)
-throw|;
+return|return
+literal|true
+return|;
 block|}
 specifier|public
 name|void
@@ -191,15 +187,7 @@ specifier|public
 name|void
 name|unlock
 parameter_list|()
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"not implemented"
-argument_list|)
-throw|;
-block|}
+block|{ 	}
 specifier|public
 name|int
 name|decrementReferenceCount
@@ -228,26 +216,18 @@ name|String
 name|getGroupID
 parameter_list|()
 block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"not implemented"
-argument_list|)
-throw|;
+return|return
+literal|null
+return|;
 block|}
 specifier|public
 name|int
 name|getGroupSequence
 parameter_list|()
 block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"not implemented"
-argument_list|)
-throw|;
+return|return
+literal|0
+return|;
 block|}
 specifier|public
 name|Message
