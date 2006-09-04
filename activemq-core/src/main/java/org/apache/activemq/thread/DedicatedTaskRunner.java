@@ -261,6 +261,14 @@ name|e
 parameter_list|)
 block|{
 comment|// Someone really wants this thread to die off.
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
+argument_list|()
+expr_stmt|;
 block|}
 finally|finally
 block|{

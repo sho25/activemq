@@ -1680,6 +1680,14 @@ name|InterruptedException
 name|e1
 parameter_list|)
 block|{
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
+argument_list|()
+expr_stmt|;
 throw|throw
 name|e
 throw|;

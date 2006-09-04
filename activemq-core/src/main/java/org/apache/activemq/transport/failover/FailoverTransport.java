@@ -684,6 +684,14 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
+argument_list|()
+expr_stmt|;
 name|transportListener
 operator|.
 name|onException
@@ -1556,6 +1564,14 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
+argument_list|()
+expr_stmt|;
 name|log
 operator|.
 name|debug
@@ -1746,6 +1762,14 @@ name|e
 parameter_list|)
 block|{
 comment|// Some one may be trying to stop our thread.
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
+argument_list|()
+expr_stmt|;
 throw|throw
 operator|new
 name|InterruptedIOException

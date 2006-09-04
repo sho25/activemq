@@ -296,7 +296,7 @@ specifier|private
 name|boolean
 name|bridgeTempDestinations
 init|=
-literal|false
+literal|true
 decl_stmt|;
 specifier|protected
 name|ConnectionFilter
