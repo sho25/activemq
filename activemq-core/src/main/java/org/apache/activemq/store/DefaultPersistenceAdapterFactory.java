@@ -406,6 +406,7 @@ return|return
 name|journalLogFileSize
 return|;
 block|}
+comment|/**      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
 specifier|public
 name|void
 name|setJournalLogFileSize

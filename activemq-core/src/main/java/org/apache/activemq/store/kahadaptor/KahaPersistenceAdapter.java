@@ -1052,7 +1052,7 @@ return|return
 name|maxDataFileLength
 return|;
 block|}
-comment|/**      * @param maxDataFileLength the maxDataFileLength to set      */
+comment|/**      * @param maxDataFileLength the maxDataFileLength to set      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
 specifier|public
 name|void
 name|setMaxDataFileLength

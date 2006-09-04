@@ -334,11 +334,20 @@ specifier|protected
 name|LRUCache
 name|replyToBridges
 init|=
+name|createLRUCache
+argument_list|()
+decl_stmt|;
+specifier|static
+specifier|private
+name|LRUCache
+name|createLRUCache
+parameter_list|()
+block|{
+return|return
 operator|new
 name|LRUCache
 argument_list|()
 block|{
-comment|/**          *           */
 specifier|private
 specifier|static
 specifier|final
@@ -452,7 +461,9 @@ literal|false
 return|;
 block|}
 block|}
-decl_stmt|;
+return|;
+block|}
+comment|/**      */
 specifier|public
 name|boolean
 name|init

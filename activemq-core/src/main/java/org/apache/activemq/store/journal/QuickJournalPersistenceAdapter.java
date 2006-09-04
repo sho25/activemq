@@ -911,6 +911,15 @@ specifier|final
 name|Runnable
 name|periodicCheckpointTask
 init|=
+name|createPeriodicCheckpointTask
+argument_list|()
+decl_stmt|;
+specifier|final
+name|Runnable
+name|createPeriodicCheckpointTask
+parameter_list|()
+block|{
+return|return
 operator|new
 name|Runnable
 argument_list|()
@@ -942,7 +951,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-decl_stmt|;
+return|;
+block|}
 specifier|public
 name|QuickJournalPersistenceAdapter
 parameter_list|(

@@ -423,7 +423,7 @@ name|limit
 return|;
 block|}
 block|}
-comment|/**      * Sets the memory limit in bytes      */
+comment|/**      * Sets the memory limit in bytes.      *       * When set using XBean, you can use values such as: "20 mb", "1024 kb", or "1 gb"      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
 specifier|public
 name|void
 name|setLimit
@@ -470,40 +470,6 @@ block|}
 name|setPercentUsage
 argument_list|(
 name|percentUsage
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Sets the memory limit in megabytes      */
-specifier|public
-name|void
-name|setLimitMb
-parameter_list|(
-name|long
-name|limitMb
-parameter_list|)
-block|{
-name|setLimitKb
-argument_list|(
-literal|1024
-operator|*
-name|limitMb
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Sets the memory limit in kilobytes      */
-specifier|public
-name|void
-name|setLimitKb
-parameter_list|(
-name|long
-name|limitKb
-parameter_list|)
-block|{
-name|setLimit
-argument_list|(
-literal|1024
-operator|*
-name|limitKb
 argument_list|)
 expr_stmt|;
 block|}

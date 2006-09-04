@@ -510,6 +510,14 @@ specifier|final
 name|TransportListener
 name|myTransportListener
 init|=
+name|createTransportListener
+argument_list|()
+decl_stmt|;
+name|TransportListener
+name|createTransportListener
+parameter_list|()
+block|{
+return|return
 operator|new
 name|TransportListener
 argument_list|()
@@ -726,7 +734,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-decl_stmt|;
+return|;
+block|}
 specifier|public
 name|FailoverTransport
 parameter_list|()
