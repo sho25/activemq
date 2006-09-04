@@ -1063,7 +1063,7 @@ argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
-literal|"Should have created at least 4 connectors"
+literal|"Should have created at least 3 connectors"
 argument_list|,
 operator|(
 name|connectors
@@ -1071,7 +1071,7 @@ operator|.
 name|size
 argument_list|()
 operator|>=
-literal|4
+literal|3
 operator|)
 argument_list|)
 expr_stmt|;

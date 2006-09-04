@@ -50,13 +50,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**   * Converts string values like "20 Mb", "1024kb", and "1g"  * to long values in bytes.  *   */
+comment|/**   * Converts string values like "20 Mb", "1024kb", and "1g"  * to int values in bytes.  *   */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|MemoryPropertyEditor
+name|MemoryIntPropertyEditor
 extends|extends
 name|PropertyEditorSupport
 block|{
@@ -105,11 +105,11 @@ block|{
 name|setValue
 argument_list|(
 operator|new
-name|Long
+name|Integer
 argument_list|(
-name|Long
+name|Integer
 operator|.
-name|parseLong
+name|parseInt
 argument_list|(
 name|m
 operator|.
@@ -156,11 +156,11 @@ block|{
 name|setValue
 argument_list|(
 operator|new
-name|Long
+name|Integer
 argument_list|(
-name|Long
+name|Integer
 operator|.
-name|parseLong
+name|parseInt
 argument_list|(
 name|m
 operator|.
@@ -209,11 +209,11 @@ block|{
 name|setValue
 argument_list|(
 operator|new
-name|Long
+name|Integer
 argument_list|(
-name|Long
+name|Integer
 operator|.
-name|parseLong
+name|parseInt
 argument_list|(
 name|m
 operator|.
@@ -264,11 +264,11 @@ block|{
 name|setValue
 argument_list|(
 operator|new
-name|Long
+name|Integer
 argument_list|(
-name|Long
+name|Integer
 operator|.
-name|parseLong
+name|parseInt
 argument_list|(
 name|m
 operator|.
@@ -303,11 +303,11 @@ name|String
 name|getAsText
 parameter_list|()
 block|{
-name|Long
+name|Integer
 name|value
 init|=
 operator|(
-name|Long
+name|Integer
 operator|)
 name|getValue
 argument_list|()
