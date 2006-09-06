@@ -2815,7 +2815,7 @@ name|setVersion
 argument_list|(
 name|Math
 operator|.
-name|max
+name|min
 argument_list|(
 name|preferedWireFormatInfo
 operator|.
