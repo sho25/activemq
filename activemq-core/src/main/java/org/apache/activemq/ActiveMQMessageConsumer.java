@@ -2238,6 +2238,11 @@ name|getPrefetchSize
 argument_list|()
 operator|==
 literal|0
+operator|&&
+name|unconsumedMessages
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|MessagePull

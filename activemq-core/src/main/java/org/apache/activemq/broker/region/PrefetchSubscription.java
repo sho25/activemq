@@ -1038,6 +1038,16 @@ operator|.
 name|isInTransaction
 argument_list|()
 condition|)
+block|{
+comment|// extend prefetch window only if not a pulling consumer
+if|if
+condition|(
+name|getPrefetchSize
+argument_list|()
+operator|!=
+literal|0
+condition|)
+block|{
 name|prefetchExtension
 operator|=
 name|Math
@@ -1051,7 +1061,10 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 else|else
+block|{
 name|prefetchExtension
 operator|=
 name|Math
@@ -1069,6 +1082,7 @@ literal|1
 operator|)
 argument_list|)
 expr_stmt|;
+block|}
 name|dispatchMatched
 argument_list|()
 expr_stmt|;
