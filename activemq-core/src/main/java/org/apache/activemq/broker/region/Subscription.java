@@ -374,6 +374,12 @@ name|int
 name|getPrefetchSize
 parameter_list|()
 function_decl|;
+comment|/**      * Informs the Broker if the subscription needs to intervention to recover it's state      * e.g. DurableTopicSubscriber may do      * @see org.apache.activemq.region.cursors.PendingMessageCursor      * @return true if recovery required      */
+specifier|public
+name|boolean
+name|isRecoveryRequired
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

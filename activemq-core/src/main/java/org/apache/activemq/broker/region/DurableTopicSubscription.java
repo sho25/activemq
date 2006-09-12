@@ -111,6 +111,24 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|cursors
+operator|.
+name|StoreDurableSubscriberCursor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ConsumerInfo
@@ -252,7 +270,8 @@ parameter_list|)
 throws|throws
 name|InvalidSelectorException
 block|{
-comment|//super(broker,context, info, new FilePendingMessageCursor(context.getClientId() + info.getConsumerId().toString(),broker.getTempDataStore()));
+comment|//super(broker,context, info, new StoreDurableSubscriberCursor(context.getClientId(),info.getSubcriptionName()));
+comment|// super(broker,context, info, new FilePendingMessageCursor(context.getClientId() + info.getConsumerId().toString(),broker.getTempDataStore()));
 name|super
 argument_list|(
 name|broker
@@ -466,6 +485,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|pending
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 name|dispatchMatched
 argument_list|()
 expr_stmt|;
@@ -485,6 +509,11 @@ block|{
 name|active
 operator|=
 literal|false
+expr_stmt|;
+name|pending
+operator|.
+name|stop
+argument_list|()
 expr_stmt|;
 if|if
 condition|(

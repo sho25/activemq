@@ -150,6 +150,10 @@ name|findAllDurableSubMessagesStatement
 decl_stmt|;
 specifier|private
 name|String
+name|findDurableSubMessagesStatement
+decl_stmt|;
+specifier|private
+name|String
 name|findAllDestinationsStatement
 decl_stmt|;
 specifier|private
@@ -181,6 +185,14 @@ decl_stmt|;
 specifier|private
 name|String
 name|lockUpdateStatement
+decl_stmt|;
+specifier|private
+name|String
+name|nextDurableSubscriberMessageStatement
+decl_stmt|;
+specifier|private
+name|String
+name|durableSubscriberMessageCountStatement
 decl_stmt|;
 specifier|private
 name|boolean
@@ -765,6 +777,156 @@ expr_stmt|;
 block|}
 return|return
 name|findAllDurableSubMessagesStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getFindDurableSubMessagesStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|findDurableSubMessagesStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|findDurableSubMessagesStatement
+operator|=
+literal|"SELECT M.ID, M.MSG FROM "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" M, "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" D "
+operator|+
+literal|" WHERE ?>= ( select count(*) from "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" M, where D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
+operator|+
+literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> ?"
+operator|+
+literal|" ORDER BY M.ID)"
+expr_stmt|;
+block|}
+return|return
+name|findDurableSubMessagesStatement
+return|;
+block|}
+specifier|public
+name|String
+name|findAllDurableSubMessagesStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|findAllDurableSubMessagesStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|findAllDurableSubMessagesStatement
+operator|=
+literal|"SELECT M.ID, M.MSG FROM "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" M, "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" D "
+operator|+
+literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
+operator|+
+literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID"
+operator|+
+literal|" ORDER BY M.ID"
+expr_stmt|;
+block|}
+return|return
+name|findAllDurableSubMessagesStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getNextDurableSubscriberMessageStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|nextDurableSubscriberMessageStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|nextDurableSubscriberMessageStatement
+operator|=
+literal|"SELECT M.ID, M.MSG FROM "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" M, "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" D "
+operator|+
+literal|" WHERE 1>= ( select count(*) from "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" M, where D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
+operator|+
+literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID"
+operator|+
+literal|" ORDER BY M.ID)"
+expr_stmt|;
+block|}
+return|return
+name|nextDurableSubscriberMessageStatement
+return|;
+block|}
+comment|/**      * @return the durableSubscriberMessageCountStatement      */
+specifier|public
+name|String
+name|getDurableSubscriberMessageCountStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|durableSubscriberMessageCountStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|durableSubscriberMessageCountStatement
+operator|=
+literal|"select count(*) from "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" M, where D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
+operator|+
+literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID"
+expr_stmt|;
+block|}
+return|return
+name|durableSubscriberMessageCountStatement
 return|;
 block|}
 specifier|public
@@ -1628,6 +1790,54 @@ operator|.
 name|lockUpdateStatement
 operator|=
 name|lockUpdateStatement
+expr_stmt|;
+block|}
+comment|/**      * @param findDurableSubMessagesStatement the findDurableSubMessagesStatement to set      */
+specifier|public
+name|void
+name|setFindDurableSubMessagesStatement
+parameter_list|(
+name|String
+name|findDurableSubMessagesStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|findDurableSubMessagesStatement
+operator|=
+name|findDurableSubMessagesStatement
+expr_stmt|;
+block|}
+comment|/**      * @param nextDurableSubscriberMessageStatement the nextDurableSubscriberMessageStatement to set      */
+specifier|public
+name|void
+name|setNextDurableSubscriberMessageStatement
+parameter_list|(
+name|String
+name|nextDurableSubscriberMessageStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|nextDurableSubscriberMessageStatement
+operator|=
+name|nextDurableSubscriberMessageStatement
+expr_stmt|;
+block|}
+comment|/**      * @param durableSubscriberMessageCountStatement the durableSubscriberMessageCountStatement to set      */
+specifier|public
+name|void
+name|setDurableSubscriberMessageCountStatement
+parameter_list|(
+name|String
+name|durableSubscriberMessageCountStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|durableSubscriberMessageCountStatement
+operator|=
+name|durableSubscriberMessageCountStatement
 expr_stmt|;
 block|}
 block|}

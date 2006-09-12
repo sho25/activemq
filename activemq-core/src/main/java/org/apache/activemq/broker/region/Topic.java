@@ -1104,6 +1104,14 @@ argument_list|(
 name|destination
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|subscription
+operator|.
+name|isRecoveryRequired
+argument_list|()
+condition|)
+block|{
 name|store
 operator|.
 name|recoverSubscription
@@ -1216,10 +1224,11 @@ specifier|public
 name|void
 name|finished
 parameter_list|()
-block|{                 }
+block|{}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 literal|true

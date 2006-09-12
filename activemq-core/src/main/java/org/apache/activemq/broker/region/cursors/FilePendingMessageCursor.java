@@ -35,7 +35,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|Iterator
 import|;
 end_import
 
@@ -95,7 +95,21 @@ name|activemq
 operator|.
 name|kaha
 operator|.
-name|*
+name|ListContainer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|kaha
+operator|.
+name|Store
 import|;
 end_import
 
@@ -137,8 +151,8 @@ begin_class
 specifier|public
 class|class
 name|FilePendingMessageCursor
-implements|implements
-name|PendingMessageCursor
+extends|extends
+name|AbstractPendingMessageCursor
 block|{
 specifier|private
 name|ListContainer
@@ -225,7 +239,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * reset the cursor      *      */
+comment|/**      * reset the cursor      *       */
 specifier|public
 name|void
 name|reset
@@ -288,7 +302,7 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * add message to await dispatch      * @param position       * @param node      */
+comment|/**      * add message to await dispatch      *       * @param position      * @param node      */
 specifier|public
 name|void
 name|addMessageFirst

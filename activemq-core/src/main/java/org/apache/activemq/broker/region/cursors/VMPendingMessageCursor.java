@@ -63,8 +63,8 @@ begin_class
 specifier|public
 class|class
 name|VMPendingMessageCursor
-implements|implements
-name|PendingMessageCursor
+extends|extends
+name|AbstractPendingMessageCursor
 block|{
 specifier|private
 name|LinkedList
