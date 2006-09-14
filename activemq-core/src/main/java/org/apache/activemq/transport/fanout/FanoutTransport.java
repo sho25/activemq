@@ -1616,13 +1616,14 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|stateTracker
 operator|.
 name|track
 argument_list|(
 name|command
 argument_list|)
+operator|==
+literal|null
 operator|&&
 name|command
 operator|.
