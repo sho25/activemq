@@ -864,6 +864,10 @@ name|disposed
 init|=
 literal|false
 decl_stmt|;
+specifier|protected
+name|IOException
+name|transportException
+decl_stmt|;
 specifier|static
 class|class
 name|ConnectionState
@@ -1175,6 +1179,10 @@ operator|!
 name|disposed
 condition|)
 block|{
+name|transportException
+operator|=
+name|e
+expr_stmt|;
 if|if
 condition|(
 name|transportLog

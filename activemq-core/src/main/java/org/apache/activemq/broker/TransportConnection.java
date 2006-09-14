@@ -79,20 +79,6 @@ name|activemq
 operator|.
 name|command
 operator|.
-name|MessageDispatch
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|Response
 import|;
 end_import
@@ -150,20 +136,6 @@ operator|.
 name|transport
 operator|.
 name|Transport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|TransportListener
 import|;
 end_import
 
@@ -424,6 +396,15 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+comment|// If the transport has not failed yet,
+comment|// notify the peer that we are doing a normal shutdown.
+if|if
+condition|(
+name|transportException
+operator|==
+literal|null
+condition|)
+block|{
 name|transport
 operator|.
 name|oneway
@@ -433,6 +414,7 @@ name|ShutdownInfo
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

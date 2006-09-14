@@ -1117,9 +1117,9 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|closeStreams
-argument_list|()
-expr_stmt|;
+comment|// Closing the streams flush the sockets before closing.. if the socket
+comment|// is hung.. then this hangs the close.
+comment|// closeStreams();
 if|if
 condition|(
 name|socket
