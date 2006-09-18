@@ -127,7 +127,7 @@ name|activemq
 operator|.
 name|jaas
 operator|.
-name|JassCredentialCallback
+name|JassCredentialCallbackHandler
 import|;
 end_import
 
@@ -299,11 +299,11 @@ block|{
 comment|// Do the login.
 try|try
 block|{
-name|JassCredentialCallback
+name|JassCredentialCallbackHandler
 name|callback
 init|=
 operator|new
-name|JassCredentialCallback
+name|JassCredentialCallbackHandler
 argument_list|(
 name|info
 operator|.

@@ -11,7 +11,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|security
+name|jaas
 package|;
 end_package
 
@@ -102,7 +102,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|JassCredentialCallback
+name|JassCredentialCallbackHandler
 implements|implements
 name|CallbackHandler
 block|{
@@ -117,7 +117,7 @@ name|String
 name|password
 decl_stmt|;
 specifier|public
-name|JassCredentialCallback
+name|JassCredentialCallbackHandler
 parameter_list|(
 name|String
 name|username
