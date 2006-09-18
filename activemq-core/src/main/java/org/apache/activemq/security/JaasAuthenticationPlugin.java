@@ -64,13 +64,13 @@ name|JaasAuthenticationPlugin
 implements|implements
 name|BrokerPlugin
 block|{
-specifier|private
+specifier|protected
 name|String
 name|configuration
 init|=
 literal|"activemq-domain"
 decl_stmt|;
-specifier|private
+specifier|protected
 name|boolean
 name|discoverLoginConfig
 init|=

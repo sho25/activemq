@@ -119,6 +119,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|jaas
+operator|.
+name|JassCredentialCallback
+import|;
+end_import
+
+begin_import
+import|import
 name|edu
 operator|.
 name|emory
