@@ -208,7 +208,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|transient
 specifier|private
 name|ConnectionManager
 name|manager
