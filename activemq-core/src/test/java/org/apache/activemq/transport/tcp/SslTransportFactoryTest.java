@@ -92,6 +92,10 @@ specifier|private
 name|SslTransportFactory
 name|factory
 decl_stmt|;
+specifier|private
+name|boolean
+name|verbose
+decl_stmt|;
 specifier|protected
 name|void
 name|setUp
@@ -494,6 +498,77 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|verbose
+condition|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|()
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Iteration: "
+operator|+
+name|i
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Map settings: "
+operator|+
+name|options
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|int
+name|x
+init|=
+literal|0
+init|;
+name|x
+operator|<
+name|optionSettings
+operator|.
+name|length
+condition|;
+name|x
+operator|++
+control|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"optionSetting["
+operator|+
+name|x
+operator|+
+literal|"] = "
+operator|+
+name|optionSettings
+index|[
+name|x
+index|]
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 name|factory
 operator|.
 name|compositeConfigure
@@ -507,6 +582,23 @@ argument_list|,
 name|options
 argument_list|)
 expr_stmt|;
+comment|// lets start the transport to force the introspection
+try|try
+block|{
+name|transport
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+comment|// ignore bad connection
+block|}
 if|if
 condition|(
 name|socketStub
@@ -519,6 +611,7 @@ index|[
 literal|2
 index|]
 condition|)
+block|{
 name|System
 operator|.
 name|out
@@ -528,9 +621,12 @@ argument_list|(
 literal|"sheiite"
 argument_list|)
 expr_stmt|;
+block|}
 name|assertEquals
 argument_list|(
-literal|"wantClientAuth was not properly set"
+literal|"wantClientAuth was not properly set for iteration: "
+operator|+
+name|i
 argument_list|,
 name|optionSettings
 index|[
@@ -545,7 +641,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"needClientAuth was not properly set"
+literal|"needClientAuth was not properly set for iteration: "
+operator|+
+name|i
 argument_list|,
 name|optionSettings
 index|[
@@ -560,7 +658,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"socket.wantClientAuth was not properly set"
+literal|"socket.wantClientAuth was not properly set for iteration: "
+operator|+
+name|i
 argument_list|,
 name|optionSettings
 index|[
@@ -575,7 +675,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"socket.needClientAuth was not properly set"
+literal|"socket.needClientAuth was not properly set for iteration: "
+operator|+
+name|i
 argument_list|,
 name|optionSettings
 index|[
@@ -590,7 +692,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"socket.useClientMode was not properly set"
+literal|"socket.useClientMode was not properly set for iteration: "
+operator|+
+name|i
 argument_list|,
 name|optionSettings
 index|[
