@@ -71,9 +71,37 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|ExceptionResponse
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|openwire
 operator|.
 name|OpenWireFormat
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IOExceptionSupport
 import|;
 end_import
 
@@ -167,6 +195,10 @@ name|AtomicBoolean
 import|;
 end_import
 
+begin_comment
+comment|/**  * Negotiates the wire format with a new connection  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -237,7 +269,7 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-comment|/**      * Negotiator      *       * @param next      * @param preferedFormat      */
+comment|/**      * Negotiator      *       * @param next      */
 specifier|public
 name|WireFormatNegotiator
 parameter_list|(
@@ -262,6 +294,18 @@ name|wireFormat
 operator|=
 name|wireFormat
 expr_stmt|;
+if|if
+condition|(
+name|minimumVersion
+operator|<=
+literal|0
+condition|)
+block|{
+name|minimumVersion
+operator|=
+literal|1
+expr_stmt|;
+block|}
 name|this
 operator|.
 name|minimumVersion
@@ -599,6 +643,23 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|onException
+argument_list|(
+name|IOExceptionSupport
+operator|.
+name|create
+argument_list|(
+name|e
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|readyCountDownLatch
 operator|.
 name|countDown
@@ -632,6 +693,7 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
+comment|/*         try {             super.oneway(new ExceptionResponse(error));         }         catch (IOException e) {             // ignore as we are already throwing an exception         }         */
 name|super
 operator|.
 name|onException
