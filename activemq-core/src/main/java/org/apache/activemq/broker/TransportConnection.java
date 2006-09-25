@@ -17,16 +17,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -167,8 +157,18 @@ name|LogFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_comment
-comment|/**  *   * @version $Revision: 1.8 $  */
+comment|/**  * @version $Revision: 1.8 $  */
 end_comment
 
 begin_class
@@ -221,6 +221,14 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|active
+decl_stmt|;
+specifier|private
+name|boolean
+name|starting
+decl_stmt|;
+specifier|private
+name|boolean
+name|pendingStop
 decl_stmt|;
 specifier|private
 name|long
@@ -339,11 +347,18 @@ literal|true
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|start
 parameter_list|()
 throws|throws
 name|Exception
+block|{
+name|starting
+operator|=
+literal|true
+expr_stmt|;
+try|try
 block|{
 name|transport
 operator|.
@@ -367,13 +382,61 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+finally|finally
+block|{
+comment|// stop() can be called from within the above block,
+comment|// but we want to be sure start() completes before
+comment|// stop() runs, so queue the stop until right now:
+name|starting
+operator|=
+literal|false
+expr_stmt|;
+if|if
+condition|(
+name|pendingStop
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Calling the delayed stop()"
+argument_list|)
+expr_stmt|;
+name|stop
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+block|}
 specifier|public
+specifier|synchronized
 name|void
 name|stop
 parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// If we're in the middle of starting
+comment|// then go no further... for now.
+name|pendingStop
+operator|=
+literal|true
+expr_stmt|;
+if|if
+condition|(
+name|starting
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"stop() called in the middle of start(). Delaying..."
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|connector
 operator|.
 name|onStopped
@@ -449,7 +512,7 @@ return|return
 name|blockedCandidate
 return|;
 block|}
-comment|/**      * @param blockedCandidate      *            The blockedCandidate to set.      */
+comment|/**      * @param blockedCandidate The blockedCandidate to set.      */
 specifier|public
 name|void
 name|setBlockedCandidate
@@ -475,7 +538,7 @@ return|return
 name|markedCandidate
 return|;
 block|}
-comment|/**      * @param markedCandidate      *            The markedCandidate to set.      */
+comment|/**      * @param markedCandidate The markedCandidate to set.      */
 specifier|public
 name|void
 name|setMarkedCandidate
@@ -506,7 +569,7 @@ literal|false
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @param slow      *            The slow to set.      */
+comment|/**      * @param slow The slow to set.      */
 specifier|public
 name|void
 name|setSlow
@@ -584,7 +647,7 @@ return|return
 name|connected
 return|;
 block|}
-comment|/**      * @param blocked      *            The blocked to set.      */
+comment|/**      * @param blocked The blocked to set.      */
 specifier|public
 name|void
 name|setBlocked
@@ -600,7 +663,7 @@ operator|=
 name|blocked
 expr_stmt|;
 block|}
-comment|/**      * @param connected      *            The connected to set.      */
+comment|/**      * @param connected The connected to set.      */
 specifier|public
 name|void
 name|setConnected
@@ -626,7 +689,7 @@ return|return
 name|active
 return|;
 block|}
-comment|/**      * @param active      *            The active to set.      */
+comment|/**      * @param active The active to set.      */
 specifier|public
 name|void
 name|setActive
@@ -640,6 +703,60 @@ operator|.
 name|active
 operator|=
 name|active
+expr_stmt|;
+block|}
+comment|/**      * @return true if the Connection is starting      */
+specifier|public
+specifier|synchronized
+name|boolean
+name|isStarting
+parameter_list|()
+block|{
+return|return
+name|starting
+return|;
+block|}
+specifier|synchronized
+specifier|protected
+name|void
+name|setStarting
+parameter_list|(
+name|boolean
+name|starting
+parameter_list|)
+block|{
+name|this
+operator|.
+name|starting
+operator|=
+name|starting
+expr_stmt|;
+block|}
+comment|/**      * @return true if the Connection needs to stop      */
+specifier|public
+specifier|synchronized
+name|boolean
+name|isPendingStop
+parameter_list|()
+block|{
+return|return
+name|pendingStop
+return|;
+block|}
+specifier|protected
+specifier|synchronized
+name|void
+name|setPendingStop
+parameter_list|(
+name|boolean
+name|pendingStop
+parameter_list|)
+block|{
+name|this
+operator|.
+name|pendingStop
+operator|=
+name|pendingStop
 expr_stmt|;
 block|}
 specifier|public
