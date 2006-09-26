@@ -272,6 +272,8 @@ decl_stmt|;
 specifier|private
 name|int
 name|version
+init|=
+literal|2
 decl_stmt|;
 specifier|private
 name|boolean

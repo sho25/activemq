@@ -23,7 +23,33 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|CombinationTestSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|JmsTestSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|BrokerService
 import|;
 end_import
 
@@ -38,6 +64,20 @@ operator|.
 name|command
 operator|.
 name|ActiveMQDestination
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQMessage
 import|;
 end_import
 
@@ -144,6 +184,33 @@ specifier|public
 name|ActiveMQDestination
 name|destination
 decl_stmt|;
+comment|/**      * Overrides to set the JMSXUserID flag to true.      */
+specifier|protected
+name|BrokerService
+name|createBroker
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|BrokerService
+name|broker
+init|=
+name|super
+operator|.
+name|createBroker
+argument_list|()
+decl_stmt|;
+name|broker
+operator|.
+name|setPopulateJMSXUserID
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+return|return
+name|broker
+return|;
+block|}
 specifier|public
 name|void
 name|testUserReceiveFails
@@ -285,9 +352,39 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
+name|Message
+name|m
+init|=
 name|doReceive
 argument_list|(
 literal|false
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"system"
+argument_list|,
+operator|(
+operator|(
+name|ActiveMQMessage
+operator|)
+name|m
+operator|)
+operator|.
+name|getUserID
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"system"
+argument_list|,
+name|m
+operator|.
+name|getStringProperty
+argument_list|(
+literal|"JMSXUserID"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -324,9 +421,39 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
+name|Message
+name|m
+init|=
 name|doSend
 argument_list|(
 literal|false
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"user"
+argument_list|,
+operator|(
+operator|(
+name|ActiveMQMessage
+operator|)
+name|m
+operator|)
+operator|.
+name|getUserID
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"user"
+argument_list|,
+name|m
+operator|.
+name|getStringProperty
+argument_list|(
+literal|"JMSXUserID"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -371,7 +498,7 @@ expr_stmt|;
 block|}
 comment|/**      * @throws JMSException      */
 specifier|public
-name|void
+name|Message
 name|doSend
 parameter_list|(
 name|boolean
@@ -534,10 +661,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|m
+return|;
 block|}
 comment|/**      * @throws JMSException      */
 specifier|public
-name|void
+name|Message
 name|doReceive
 parameter_list|(
 name|boolean
@@ -608,7 +738,9 @@ argument_list|()
 operator|instanceof
 name|SecurityException
 condition|)
-return|return;
+return|return
+literal|null
+return|;
 throw|throw
 name|e
 throw|;
@@ -693,7 +825,11 @@ name|receiveNoWait
 argument_list|()
 argument_list|)
 expr_stmt|;
+return|return
+name|m
+return|;
 block|}
+comment|/**      * @see {@link CombinationTestSupport}      */
 specifier|public
 name|void
 name|initCombosForTestUserReceiveFails
@@ -758,6 +894,7 @@ block|, }
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @see {@link CombinationTestSupport}      */
 specifier|public
 name|void
 name|initCombosForTestInvalidAuthentication
@@ -788,6 +925,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @see {@link CombinationTestSupport}      */
 specifier|public
 name|void
 name|initCombosForTestUserReceiveSucceeds
@@ -840,6 +978,7 @@ block|, }
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @see {@link CombinationTestSupport}      */
 specifier|public
 name|void
 name|initCombosForTestGuestReceiveSucceeds
@@ -892,6 +1031,7 @@ block|, }
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @see {@link CombinationTestSupport}      */
 specifier|public
 name|void
 name|initCombosForTestGuestReceiveFails
@@ -956,6 +1096,7 @@ block|, }
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @see {@link CombinationTestSupport}      */
 specifier|public
 name|void
 name|initCombosForTestUserSendSucceeds
@@ -1020,6 +1161,7 @@ block|, }
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @see {@link CombinationTestSupport}      */
 specifier|public
 name|void
 name|initCombosForTestUserSendFails
@@ -1072,6 +1214,7 @@ block|, }
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @see {@link CombinationTestSupport}      */
 specifier|public
 name|void
 name|initCombosForTestGuestSendFails
@@ -1136,6 +1279,7 @@ block|, }
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @see {@link CombinationTestSupport}      */
 specifier|public
 name|void
 name|initCombosForTestGuestSendSucceeds

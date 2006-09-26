@@ -23,6 +23,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|CombinationTestSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|broker
 operator|.
 name|Broker
@@ -830,6 +842,7 @@ literal|"SimpleAuthenticationBroker"
 return|;
 block|}
 block|}
+comment|/**      * @see {@link CombinationTestSupport}      */
 specifier|public
 name|void
 name|initCombos
@@ -881,8 +894,9 @@ block|{
 name|BrokerService
 name|broker
 init|=
-operator|new
-name|BrokerService
+name|super
+operator|.
+name|createBroker
 argument_list|()
 decl_stmt|;
 name|broker
