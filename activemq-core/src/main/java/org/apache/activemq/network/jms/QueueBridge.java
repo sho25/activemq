@@ -287,6 +287,7 @@ name|consumer
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|MessageProducer
 name|createProducer
 parameter_list|()
@@ -320,6 +321,7 @@ name|producer
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|void
 name|sendMessage
 parameter_list|(
@@ -329,6 +331,17 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{
+if|if
+condition|(
+name|producer
+operator|==
+literal|null
+condition|)
+block|{
+name|createProducer
+argument_list|()
+expr_stmt|;
+block|}
 name|producer
 operator|.
 name|send
