@@ -161,9 +161,9 @@ begin_class
 specifier|public
 specifier|abstract
 class|class
-name|OpenWireClassesScript
+name|MultiSourceGenerator
 extends|extends
-name|OpenWireScript
+name|OpenWireGenerator
 block|{
 specifier|protected
 name|Set
@@ -206,7 +206,7 @@ name|StringBuffer
 name|buffer
 decl_stmt|;
 specifier|public
-name|OpenWireClassesScript
+name|MultiSourceGenerator
 parameter_list|()
 block|{
 name|initialiseManuallyMaintainedClasses
@@ -588,6 +588,8 @@ parameter_list|(
 name|PrintWriter
 name|out
 parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
 specifier|protected
 name|String
