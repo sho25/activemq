@@ -1383,7 +1383,7 @@ specifier|private
 name|IOException
 name|firstFailureError
 decl_stmt|;
-comment|/**      * Construct an<code>ActiveMQConnection</code>      * @param transport       * @param factoryStats      * @param userName      * @param password      * @throws Exception       */
+comment|/**      * Construct an<code>ActiveMQConnection</code>      * @param transport       * @param factoryStats      * @throws Exception      */
 specifier|protected
 name|ActiveMQConnection
 parameter_list|(

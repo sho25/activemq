@@ -1613,6 +1613,8 @@ operator|!
 name|closed
 condition|)
 block|{
+try|try
+block|{
 name|executor
 operator|.
 name|stop
@@ -1717,7 +1719,10 @@ parameter_list|(
 name|JMSException
 name|e
 parameter_list|)
-block|{             }
+block|{                 }
+block|}
+finally|finally
+block|{
 name|connection
 operator|.
 name|removeSession
@@ -1735,6 +1740,7 @@ name|closed
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Check if the session is closed. It is used for ensuring that the session      * is open before performing various operations.      *       * @throws IllegalStateException      *             if the Session is closed      */
