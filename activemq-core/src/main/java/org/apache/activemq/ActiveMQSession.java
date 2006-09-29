@@ -3102,7 +3102,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Acknowledges all consumed messages of the session of this consumed      * message.      *<P>      * All consumed JMS messages support the<CODE>acknowledge</CODE> method      * for use when a client has specified that its JMS session's consumed      * messages are to be explicitly acknowledged. By invoking<CODE>acknowledge</CODE>      * on a consumed message, a client acknowledges all messages consumed by the      * session that the message was delivered to.      *<P>      * Calls to<CODE>acknowledge</CODE> are ignored for both transacted      * sessions and sessions specified to use implicit acknowledgement modes.      *<P>      * A client may individually acknowledge each message as it is consumed, or      * it may choose to acknowledge messages as an application-defined group      * (which is done by calling acknowledge on the last received message of the      * group, thereby acknowledging all messages consumed by the session.)      *<P>      * Messages that have been received but not acknowledged may be redelivered.      *       * @param caller -      *            the message calling acknowledge on the session      *       * @throws JMSException      *             if the JMS provider fails to acknowledge the messages due to      *             some internal error.      * @throws javax.jms.IllegalStateException      *             if this method is called on a closed session.      * @see javax.jms.Session#CLIENT_ACKNOWLEDGE      */
+comment|/**      * Acknowledges all consumed messages of the session of this consumed      * message.      *<P>      * All consumed JMS messages support the<CODE>acknowledge</CODE> method      * for use when a client has specified that its JMS session's consumed      * messages are to be explicitly acknowledged. By invoking<CODE>acknowledge</CODE>      * on a consumed message, a client acknowledges all messages consumed by the      * session that the message was delivered to.      *<P>      * Calls to<CODE>acknowledge</CODE> are ignored for both transacted      * sessions and sessions specified to use implicit acknowledgement modes.      *<P>      * A client may individually acknowledge each message as it is consumed, or      * it may choose to acknowledge messages as an application-defined group      * (which is done by calling acknowledge on the last received message of the      * group, thereby acknowledging all messages consumed by the session.)      *<P>      * Messages that have been received but not acknowledged may be redelivered.      *       * @throws JMSException      *             if the JMS provider fails to acknowledge the messages due to      *             some internal error.      * @throws javax.jms.IllegalStateException      *             if this method is called on a closed session.      * @see javax.jms.Session#CLIENT_ACKNOWLEDGE      */
 specifier|public
 name|void
 name|acknowledge
@@ -3145,7 +3145,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Add a message consumer.      * @param id       *       * @param consumer -      *            message consumer.      * @throws JMSException      */
+comment|/**      * Add a message consumer.      *      * @param consumer -      *            message consumer.      * @throws JMSException      */
 specifier|protected
 name|void
 name|addConsumer
@@ -3402,7 +3402,7 @@ name|getSessionId
 argument_list|()
 return|;
 block|}
-comment|/**      * Sends the message for dispatch by the broker.      *       * @param producer -      *            message producer.      * @param destination -      *            message destination.      * @param message -      *            message to be sent.      * @param deliveryMode -      *            JMS messsage delivery mode.      * @param priority -      *            message priority.      * @param timeToLive -      *            message expiration.      * @param reuseMessageId -      *            true if the message id will be reused.      * @throws JMSException      */
+comment|/**      * Sends the message for dispatch by the broker.      *       * @param producer -      *            message producer.      * @param destination -      *            message destination.      * @param message -      *            message to be sent.      * @param deliveryMode -      *            JMS messsage delivery mode.      * @param priority -      *            message priority.      * @param timeToLive -      *            message expiration.      * @throws JMSException      */
 specifier|protected
 name|void
 name|send
