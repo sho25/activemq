@@ -112,7 +112,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|JmsSendReceiveWithMessageExpiration
+name|JmsSendReceiveWithMessageExpirationTest
 extends|extends
 name|TestSupport
 block|{
