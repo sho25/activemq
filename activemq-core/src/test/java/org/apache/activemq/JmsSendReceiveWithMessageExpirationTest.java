@@ -142,7 +142,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|JmsQueueSendReceiveWithMessageExpiration
+name|JmsSendReceiveWithMessageExpirationTest
 operator|.
 name|class
 argument_list|)
