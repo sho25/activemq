@@ -1192,7 +1192,14 @@ name|createMBeanServer
 argument_list|()
 expr_stmt|;
 block|}
-else|else
+if|if
+condition|(
+name|result
+operator|!=
+literal|null
+operator|&&
+name|createConnector
+condition|)
 block|{
 name|createConnector
 argument_list|(
