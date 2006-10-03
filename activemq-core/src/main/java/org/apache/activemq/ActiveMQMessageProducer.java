@@ -994,6 +994,21 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+if|if
+condition|(
+name|dest
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"No destination specified"
+argument_list|)
+throw|;
+block|}
 name|this
 operator|.
 name|session
