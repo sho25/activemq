@@ -139,12 +139,12 @@ argument_list|)
 expr_stmt|;
 name|objectOut
 operator|.
-name|reset
+name|flush
 argument_list|()
 expr_stmt|;
 name|objectOut
 operator|.
-name|flush
+name|reset
 argument_list|()
 expr_stmt|;
 block|}

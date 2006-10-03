@@ -392,6 +392,16 @@ argument_list|)
 expr_stmt|;
 name|objOut
 operator|.
+name|flush
+argument_list|()
+expr_stmt|;
+name|objOut
+operator|.
+name|reset
+argument_list|()
+expr_stmt|;
+name|objOut
+operator|.
 name|close
 argument_list|()
 expr_stmt|;
