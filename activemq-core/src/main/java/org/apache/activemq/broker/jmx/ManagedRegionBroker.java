@@ -1392,7 +1392,20 @@ condition|)
 block|{
 name|persistentMode
 operator|=
-literal|"Durable"
+literal|"Durable, subscriptionID="
+operator|+
+name|JMXSupport
+operator|.
+name|encodeObjectNamePart
+argument_list|(
+name|sub
+operator|.
+name|getConsumerInfo
+argument_list|()
+operator|.
+name|getSubcriptionName
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -1469,7 +1482,7 @@ literal|", destinationType="
 operator|+
 name|destinationType
 operator|+
-literal|" ,destinationName="
+literal|", destinationName="
 operator|+
 name|JMXSupport
 operator|.
@@ -1478,7 +1491,7 @@ argument_list|(
 name|destinationName
 argument_list|)
 operator|+
-literal|" ,clientID="
+literal|", clientID="
 operator|+
 name|JMXSupport
 operator|.
