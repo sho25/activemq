@@ -191,6 +191,45 @@ name|void
 name|clear
 parameter_list|()
 function_decl|;
+comment|/**      * Add an entry to the Store Map      * @param key      * @param Value      * @return the StoreEntry associated with the entry      */
+specifier|public
+name|StoreEntry
+name|place
+parameter_list|(
+name|Object
+name|key
+parameter_list|,
+name|Object
+name|Value
+parameter_list|)
+function_decl|;
+comment|/**      * Remove an Entry from ther Map      * @param entry      */
+specifier|public
+name|void
+name|remove
+parameter_list|(
+name|StoreEntry
+name|entry
+parameter_list|)
+function_decl|;
+comment|/**      * Get the Key object from it's location      * @param keyLocation      * @return      */
+specifier|public
+name|Object
+name|getKey
+parameter_list|(
+name|StoreEntry
+name|keyLocation
+parameter_list|)
+function_decl|;
+comment|/**      * Get the value from it's location      * @param Valuelocation      * @return      */
+specifier|public
+name|Object
+name|getValue
+parameter_list|(
+name|StoreEntry
+name|Valuelocation
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

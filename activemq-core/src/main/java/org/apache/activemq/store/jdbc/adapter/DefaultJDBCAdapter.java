@@ -2209,6 +2209,20 @@ literal|null
 decl_stmt|;
 try|try
 block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"VANILLA STATEMENT = "
+operator|+
+name|statements
+operator|.
+name|getFindDurableSubMessagesStatement
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|s
 operator|=
 name|c
@@ -2270,6 +2284,17 @@ argument_list|(
 literal|5
 argument_list|,
 name|maxReturned
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"STATEMENT = "
+operator|+
+name|s
 argument_list|)
 expr_stmt|;
 name|rs

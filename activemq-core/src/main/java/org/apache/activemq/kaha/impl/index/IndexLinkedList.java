@@ -19,6 +19,24 @@ name|index
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|kaha
+operator|.
+name|StoreEntry
+import|;
+end_import
+
+begin_comment
+comment|/** * Inteface to LinkedList of Indexes *  * @version $Revision$ */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
@@ -44,7 +62,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Removes and returns the first element from this list.      *       * @return the first element from this list.      */
 specifier|public
-name|IndexItem
+name|StoreEntry
 name|removeFirst
 parameter_list|()
 function_decl|;
@@ -54,7 +72,7 @@ name|Object
 name|removeLast
 parameter_list|()
 function_decl|;
-comment|/**      * Inserts the given element at the beginning of this list.      *       * @param o the element to be inserted at the beginning of this list.      */
+comment|/**      * Inserts the given element at the beginning of this list.      * @param item       */
 specifier|public
 name|void
 name|addFirst
@@ -63,7 +81,7 @@ name|IndexItem
 name|item
 parameter_list|)
 function_decl|;
-comment|/**      * Appends the given element to the end of this list. (Identical in function to the<tt>add</tt> method; included      * only for consistency.)      *       * @param o the element to be inserted at the end of this list.      */
+comment|/**      * Appends the given element to the end of this list. (Identical in function to the<tt>add</tt> method; included      * only for consistency.)      * @param item       */
 specifier|public
 name|void
 name|addLast
@@ -84,7 +102,7 @@ name|boolean
 name|isEmpty
 parameter_list|()
 function_decl|;
-comment|/**      * Appends the specified element to the end of this list.      *       * @param o element to be appended to this list.      * @return<tt>true</tt> (as per the general contract of<tt>Collection.add</tt>).      */
+comment|/**      * Appends the specified element to the end of this list.      * @param item       *       * @return<tt>true</tt> (as per the general contract of<tt>Collection.add</tt>).      */
 specifier|public
 name|boolean
 name|add
@@ -136,7 +154,7 @@ specifier|public
 name|int
 name|indexOf
 parameter_list|(
-name|IndexItem
+name|StoreEntry
 name|o
 parameter_list|)
 function_decl|;
@@ -167,12 +185,21 @@ name|IndexItem
 name|e
 parameter_list|)
 function_decl|;
-comment|/**      * Ensure we have the up to date entry      * @param current      * @return the entry      */
+comment|/**      * Ensure we have the up to date entry      * @param entry       * @return the entry      */
 specifier|public
-name|IndexItem
+name|StoreEntry
 name|getEntry
 parameter_list|(
-name|IndexItem
+name|StoreEntry
+name|entry
+parameter_list|)
+function_decl|;
+comment|/**      * Update the indexes of a StoreEntry      * @param current      * @return update StoreEntry      */
+specifier|public
+name|StoreEntry
+name|refreshEntry
+parameter_list|(
+name|StoreEntry
 name|current
 parameter_list|)
 function_decl|;

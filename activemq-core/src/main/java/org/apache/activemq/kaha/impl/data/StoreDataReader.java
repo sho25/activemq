@@ -53,6 +53,20 @@ name|Marshaller
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|kaha
+operator|.
+name|StoreLocation
+import|;
+end_import
+
 begin_comment
 comment|/**  * Optimized Store reader  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
@@ -153,7 +167,7 @@ parameter_list|(
 name|Marshaller
 name|marshaller
 parameter_list|,
-name|DataItem
+name|StoreLocation
 name|item
 parameter_list|)
 throws|throws

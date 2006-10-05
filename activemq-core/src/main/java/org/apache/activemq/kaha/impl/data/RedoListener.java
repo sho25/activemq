@@ -19,6 +19,20 @@ name|data
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|kaha
+operator|.
+name|StoreLocation
+import|;
+end_import
+
 begin_interface
 specifier|public
 interface|interface
@@ -27,7 +41,7 @@ block|{
 name|void
 name|onRedoItem
 parameter_list|(
-name|DataItem
+name|StoreLocation
 name|item
 parameter_list|,
 name|Object

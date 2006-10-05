@@ -19,6 +19,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|List
@@ -144,6 +154,54 @@ specifier|public
 name|void
 name|clearCache
 parameter_list|()
+function_decl|;
+comment|/**      * add an Object to the list but get a StoreEntry of its position      * @param object      * @return the entry in the Store      */
+specifier|public
+name|StoreEntry
+name|placeLast
+parameter_list|(
+name|Object
+name|object
+parameter_list|)
+function_decl|;
+comment|/**      * insert an Object in first position int the list but get a StoreEntry of its position      * @param object      * @return the location in the Store      */
+specifier|public
+name|StoreEntry
+name|placeFirst
+parameter_list|(
+name|Object
+name|object
+parameter_list|)
+function_decl|;
+comment|/**      * Advanced feature = must ensure the object written doesn't overwrite other objects in the container      * @param entry       * @param object       */
+specifier|public
+name|void
+name|update
+parameter_list|(
+name|StoreEntry
+name|entry
+parameter_list|,
+name|Object
+name|object
+parameter_list|)
+function_decl|;
+comment|/**      * Retrieve an Object from the Store by its location      * @param entry      * @return the Object at that entry      */
+specifier|public
+name|Object
+name|get
+parameter_list|(
+name|StoreEntry
+name|entry
+parameter_list|)
+function_decl|;
+comment|/**      * remove the Object at the StoreEntry      * @param entry      * @return true if successful      */
+specifier|public
+name|boolean
+name|remove
+parameter_list|(
+name|StoreEntry
+name|entry
+parameter_list|)
 function_decl|;
 block|}
 end_interface

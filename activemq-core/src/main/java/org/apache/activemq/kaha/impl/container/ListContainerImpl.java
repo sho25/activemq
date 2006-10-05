@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
+comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements. See the NOTICE file distributed with this  * work for additional information regarding copyright ownership. The ASF  * licenses this file to You under the Apache License, Version 2.0 (the  * "License"); you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the  * License for the specific language governing permissions and limitations under  * the License.  */
 end_comment
 
 begin_package
@@ -155,11 +155,21 @@ name|activemq
 operator|.
 name|kaha
 operator|.
-name|impl
+name|StoreEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|data
+name|apache
 operator|.
-name|DataItem
+name|activemq
+operator|.
+name|kaha
+operator|.
+name|StoreLocation
 import|;
 end_import
 
@@ -333,13 +343,13 @@ name|IndexItem
 name|root
 parameter_list|,
 name|IndexManager
-name|rootIndexManager
-parameter_list|,
-name|IndexManager
 name|indexManager
 parameter_list|,
 name|DataManager
 name|dataManager
+parameter_list|,
+name|String
+name|indexType
 parameter_list|)
 throws|throws
 name|IOException
@@ -350,16 +360,17 @@ name|id
 argument_list|,
 name|root
 argument_list|,
-name|rootIndexManager
-argument_list|,
 name|indexManager
 argument_list|,
 name|dataManager
+argument_list|,
+name|indexType
 argument_list|)
 expr_stmt|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.ListContainer#load()      */
 specifier|public
+specifier|synchronized
 name|void
 name|load
 parameter_list|()
@@ -373,11 +384,6 @@ operator|!
 name|loaded
 condition|)
 block|{
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
 if|if
 condition|(
 operator|!
@@ -388,11 +394,11 @@ name|loaded
 operator|=
 literal|true
 expr_stmt|;
+try|try
+block|{
 name|init
 argument_list|()
 expr_stmt|;
-try|try
-block|{
 name|long
 name|nextItem
 init|=
@@ -482,9 +488,9 @@ block|}
 block|}
 block|}
 block|}
-block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.ListContainer#unload()      */
 specifier|public
+specifier|synchronized
 name|void
 name|unload
 parameter_list|()
@@ -513,6 +519,7 @@ block|}
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.ListContainer#setKeyMarshaller(org.apache.activemq.kaha.Marshaller)      */
 specifier|public
+specifier|synchronized
 name|void
 name|setMarshaller
 parameter_list|(
@@ -531,6 +538,7 @@ name|marshaller
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|boolean
 name|equals
 parameter_list|(
@@ -565,11 +573,6 @@ name|List
 operator|)
 name|obj
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
 name|result
 operator|=
 name|other
@@ -655,13 +658,13 @@ block|}
 block|}
 block|}
 block|}
-block|}
 return|return
 name|result
 return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.ListContainer#size()      */
 specifier|public
+specifier|synchronized
 name|int
 name|size
 parameter_list|()
@@ -678,6 +681,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.ListContainer#addFirst(java.lang.Object)      */
 specifier|public
+specifier|synchronized
 name|void
 name|addFirst
 parameter_list|(
@@ -685,42 +689,15 @@ name|Object
 name|o
 parameter_list|)
 block|{
-name|load
-argument_list|()
-expr_stmt|;
-name|IndexItem
-name|item
-init|=
-name|writeFirst
+name|internalAddFirst
 argument_list|(
 name|o
 argument_list|)
-decl_stmt|;
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
-name|indexList
-operator|.
-name|addFirst
-argument_list|(
-name|item
-argument_list|)
 expr_stmt|;
-name|itemAdded
-argument_list|(
-name|item
-argument_list|,
-literal|0
-argument_list|,
-name|o
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.ListContainer#addLast(java.lang.Object)      */
 specifier|public
+specifier|synchronized
 name|void
 name|addLast
 parameter_list|(
@@ -728,47 +705,15 @@ name|Object
 name|o
 parameter_list|)
 block|{
-name|load
-argument_list|()
-expr_stmt|;
-name|IndexItem
-name|item
-init|=
-name|writeLast
+name|internalAddLast
 argument_list|(
 name|o
 argument_list|)
-decl_stmt|;
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
-name|indexList
-operator|.
-name|addLast
-argument_list|(
-name|item
-argument_list|)
 expr_stmt|;
-name|itemAdded
-argument_list|(
-name|item
-argument_list|,
-name|indexList
-operator|.
-name|size
-argument_list|()
-operator|-
-literal|1
-argument_list|,
-name|o
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.ListContainer#removeFirst()      */
 specifier|public
+specifier|synchronized
 name|Object
 name|removeFirst
 parameter_list|()
@@ -781,11 +726,6 @@ name|result
 init|=
 literal|null
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
 name|IndexItem
 name|item
 init|=
@@ -816,50 +756,20 @@ argument_list|(
 name|item
 argument_list|)
 expr_stmt|;
-name|int
-name|index
-init|=
-name|indexList
-operator|.
-name|indexOf
-argument_list|(
-name|item
-argument_list|)
-decl_stmt|;
 name|IndexItem
 name|prev
 init|=
-name|index
-operator|>
-literal|0
-condition|?
-operator|(
-name|IndexItem
-operator|)
-name|indexList
-operator|.
-name|get
-argument_list|(
-name|index
-operator|-
-literal|1
-argument_list|)
-else|:
 name|root
 decl_stmt|;
 name|IndexItem
 name|next
 init|=
-name|index
-operator|<
-operator|(
 name|indexList
 operator|.
 name|size
 argument_list|()
-operator|-
+operator|>
 literal|1
-operator|)
 condition|?
 operator|(
 name|IndexItem
@@ -868,8 +778,6 @@ name|indexList
 operator|.
 name|get
 argument_list|(
-name|index
-operator|+
 literal|1
 argument_list|)
 else|:
@@ -894,13 +802,13 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-block|}
 return|return
 name|result
 return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.ListContainer#removeLast()      */
 specifier|public
+specifier|synchronized
 name|Object
 name|removeLast
 parameter_list|()
@@ -913,11 +821,6 @@ name|result
 init|=
 literal|null
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
 name|IndexItem
 name|last
 init|=
@@ -980,13 +883,13 @@ name|next
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 return|return
 name|result
 return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#isEmpty()      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|isEmpty
 parameter_list|()
@@ -1003,6 +906,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#contains(java.lang.Object)      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|contains
 parameter_list|(
@@ -1024,11 +928,6 @@ name|o
 operator|!=
 literal|null
 condition|)
-block|{
-synchronized|synchronized
-init|(
-name|mutex
-init|)
 block|{
 name|IndexItem
 name|next
@@ -1084,13 +983,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
 return|return
 name|result
 return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#iterator()      */
 specifier|public
+specifier|synchronized
 name|Iterator
 name|iterator
 parameter_list|()
@@ -1105,6 +1004,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#toArray()      */
 specifier|public
+specifier|synchronized
 name|Object
 index|[]
 name|toArray
@@ -1125,11 +1025,6 @@ name|size
 argument_list|()
 argument_list|)
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
 name|IndexItem
 name|next
 init|=
@@ -1170,7 +1065,6 @@ name|next
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 return|return
 name|tmp
 operator|.
@@ -1180,6 +1074,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#toArray(T[])      */
 specifier|public
+specifier|synchronized
 name|Object
 index|[]
 name|toArray
@@ -1204,11 +1099,6 @@ name|size
 argument_list|()
 argument_list|)
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
 name|IndexItem
 name|next
 init|=
@@ -1249,7 +1139,6 @@ name|next
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 return|return
 name|tmp
 operator|.
@@ -1261,6 +1150,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#add(E)      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|add
 parameter_list|(
@@ -1282,6 +1172,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#remove(java.lang.Object)      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|remove
 parameter_list|(
@@ -1297,11 +1188,6 @@ name|result
 init|=
 literal|false
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
 name|int
 name|pos
 init|=
@@ -1373,7 +1259,6 @@ name|pos
 operator|++
 expr_stmt|;
 block|}
-block|}
 return|return
 name|result
 return|;
@@ -1385,11 +1270,6 @@ parameter_list|(
 name|IndexItem
 name|item
 parameter_list|)
-block|{
-synchronized|synchronized
-init|(
-name|mutex
-init|)
 block|{
 name|IndexItem
 name|prev
@@ -1428,9 +1308,9 @@ name|next
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#containsAll(java.util.Collection)      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|containsAll
 parameter_list|(
@@ -1446,11 +1326,6 @@ name|result
 init|=
 literal|false
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
 for|for
 control|(
 name|Iterator
@@ -1496,13 +1371,13 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-block|}
 return|return
 name|result
 return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#addAll(java.util.Collection)      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|addAll
 parameter_list|(
@@ -1513,11 +1388,6 @@ block|{
 name|load
 argument_list|()
 expr_stmt|;
-name|boolean
-name|result
-init|=
-literal|false
-decl_stmt|;
 for|for
 control|(
 name|Iterator
@@ -1550,6 +1420,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#addAll(int, java.util.Collection)      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|addAll
 parameter_list|(
@@ -1613,6 +1484,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#removeAll(java.util.Collection)      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|removeAll
 parameter_list|(
@@ -1667,6 +1539,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#retainAll(java.util.Collection)      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|retainAll
 parameter_list|(
@@ -1684,11 +1557,6 @@ operator|new
 name|ArrayList
 argument_list|()
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
 name|IndexItem
 name|next
 init|=
@@ -1741,7 +1609,6 @@ name|next
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 for|for
 control|(
 name|Iterator
@@ -1778,6 +1645,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#clear()      */
 specifier|public
+specifier|synchronized
 name|void
 name|clear
 parameter_list|()
@@ -1785,11 +1653,6 @@ block|{
 name|checkClosed
 argument_list|()
 expr_stmt|;
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
 name|super
 operator|.
 name|clear
@@ -1802,9 +1665,9 @@ name|clearCache
 argument_list|()
 expr_stmt|;
 block|}
-block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#get(int)      */
 specifier|public
+specifier|synchronized
 name|Object
 name|get
 parameter_list|(
@@ -1842,11 +1705,6 @@ name|result
 init|=
 literal|null
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
 name|IndexItem
 name|replace
 init|=
@@ -1967,7 +1825,6 @@ argument_list|,
 name|element
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|result
 return|;
@@ -1982,11 +1839,6 @@ parameter_list|,
 name|Object
 name|element
 parameter_list|)
-block|{
-synchronized|synchronized
-init|(
-name|mutex
-init|)
 block|{
 name|IndexItem
 name|replace
@@ -2103,9 +1955,9 @@ name|element
 argument_list|)
 return|;
 block|}
-block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#add(int, E)      */
 specifier|public
+specifier|synchronized
 name|void
 name|add
 parameter_list|(
@@ -2119,11 +1971,6 @@ block|{
 name|load
 argument_list|()
 expr_stmt|;
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
 name|IndexItem
 name|item
 init|=
@@ -2153,6 +2000,88 @@ name|element
 argument_list|)
 expr_stmt|;
 block|}
+specifier|protected
+name|StoreEntry
+name|internalAddLast
+parameter_list|(
+name|Object
+name|o
+parameter_list|)
+block|{
+name|load
+argument_list|()
+expr_stmt|;
+name|IndexItem
+name|item
+init|=
+name|writeLast
+argument_list|(
+name|o
+argument_list|)
+decl_stmt|;
+name|indexList
+operator|.
+name|addLast
+argument_list|(
+name|item
+argument_list|)
+expr_stmt|;
+name|itemAdded
+argument_list|(
+name|item
+argument_list|,
+name|indexList
+operator|.
+name|size
+argument_list|()
+operator|-
+literal|1
+argument_list|,
+name|o
+argument_list|)
+expr_stmt|;
+return|return
+name|item
+return|;
+block|}
+specifier|protected
+name|StoreEntry
+name|internalAddFirst
+parameter_list|(
+name|Object
+name|o
+parameter_list|)
+block|{
+name|load
+argument_list|()
+expr_stmt|;
+name|IndexItem
+name|item
+init|=
+name|writeFirst
+argument_list|(
+name|o
+argument_list|)
+decl_stmt|;
+name|indexList
+operator|.
+name|addFirst
+argument_list|(
+name|item
+argument_list|)
+expr_stmt|;
+name|itemAdded
+argument_list|(
+name|item
+argument_list|,
+literal|0
+argument_list|,
+name|o
+argument_list|)
+expr_stmt|;
+return|return
+name|item
+return|;
 block|}
 specifier|protected
 name|IndexItem
@@ -2165,11 +2094,9 @@ name|Object
 name|element
 parameter_list|)
 block|{
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
+name|load
+argument_list|()
+expr_stmt|;
 name|IndexItem
 name|item
 init|=
@@ -2202,20 +2129,17 @@ return|return
 name|item
 return|;
 block|}
-block|}
 specifier|protected
-name|IndexItem
+name|StoreEntry
 name|internalGet
 parameter_list|(
 name|int
 name|index
 parameter_list|)
 block|{
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
+name|load
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|index
@@ -2239,13 +2163,13 @@ name|index
 argument_list|)
 return|;
 block|}
-block|}
 return|return
 literal|null
 return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.ListContainer#doRemove(int)      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|doRemove
 parameter_list|(
@@ -2261,11 +2185,6 @@ name|result
 init|=
 literal|false
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
 name|IndexItem
 name|item
 init|=
@@ -2339,13 +2258,13 @@ name|next
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 return|return
 name|result
 return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#remove(int)      */
 specifier|public
+specifier|synchronized
 name|Object
 name|remove
 parameter_list|(
@@ -2361,11 +2280,6 @@ name|result
 init|=
 literal|null
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|mutex
-init|)
-block|{
 name|IndexItem
 name|item
 init|=
@@ -2442,13 +2356,13 @@ name|next
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 return|return
 name|result
 return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#indexOf(java.lang.Object)      */
 specifier|public
+specifier|synchronized
 name|int
 name|indexOf
 parameter_list|(
@@ -2471,11 +2385,6 @@ name|o
 operator|!=
 literal|null
 condition|)
-block|{
-synchronized|synchronized
-init|(
-name|mutex
-init|)
 block|{
 name|int
 name|count
@@ -2539,13 +2448,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
 return|return
 name|result
 return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#lastIndexOf(java.lang.Object)      */
 specifier|public
+specifier|synchronized
 name|int
 name|lastIndexOf
 parameter_list|(
@@ -2568,11 +2477,6 @@ name|o
 operator|!=
 literal|null
 condition|)
-block|{
-synchronized|synchronized
-init|(
-name|mutex
-init|)
 block|{
 name|int
 name|count
@@ -2641,13 +2545,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
 return|return
 name|result
 return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#listIterator()      */
 specifier|public
+specifier|synchronized
 name|ListIterator
 name|listIterator
 parameter_list|()
@@ -2667,6 +2571,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#listIterator(int)      */
 specifier|public
+specifier|synchronized
 name|ListIterator
 name|listIterator
 parameter_list|(
@@ -2689,6 +2594,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#subList(int, int)      */
 specifier|public
+specifier|synchronized
 name|List
 name|subList
 parameter_list|(
@@ -2760,6 +2666,194 @@ return|return
 name|result
 return|;
 block|}
+comment|/**      * add an Object to the list but get a StoreEntry of its position      * @param object      * @return the entry in the Store      */
+specifier|public
+specifier|synchronized
+name|StoreEntry
+name|placeLast
+parameter_list|(
+name|Object
+name|object
+parameter_list|)
+block|{
+name|StoreEntry
+name|item
+init|=
+name|internalAddLast
+argument_list|(
+name|object
+argument_list|)
+decl_stmt|;
+return|return
+name|item
+return|;
+block|}
+comment|/**      * insert an Object in first position int the list but get a StoreEntry of its position      * @param object      * @return the location in the Store      */
+specifier|public
+specifier|synchronized
+name|StoreEntry
+name|placeFirst
+parameter_list|(
+name|Object
+name|object
+parameter_list|)
+block|{
+name|StoreEntry
+name|item
+init|=
+name|internalAddFirst
+argument_list|(
+name|object
+argument_list|)
+decl_stmt|;
+return|return
+name|item
+return|;
+block|}
+comment|/**      * @param entry      * @param object      * @see org.apache.activemq.kaha.ListContainer#update(org.apache.activemq.kaha.StoreEntry, java.lang.Object)      */
+specifier|public
+name|void
+name|update
+parameter_list|(
+name|StoreEntry
+name|entry
+parameter_list|,
+name|Object
+name|object
+parameter_list|)
+block|{
+try|try
+block|{
+name|dataManager
+operator|.
+name|updateItem
+argument_list|(
+name|entry
+operator|.
+name|getValueDataItem
+argument_list|()
+argument_list|,
+name|marshaller
+argument_list|,
+name|object
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+comment|/**     * Retrieve an Object from the Store by its location     * @param entry     * @return the Object at that entry     */
+specifier|public
+specifier|synchronized
+name|Object
+name|get
+parameter_list|(
+name|StoreEntry
+name|entry
+parameter_list|)
+block|{
+name|load
+argument_list|()
+expr_stmt|;
+return|return
+name|getValue
+argument_list|(
+name|entry
+argument_list|)
+return|;
+block|}
+comment|/**     * remove the Object at the StoreEntry     * @param entry     * @return true if successful     */
+specifier|public
+specifier|synchronized
+name|boolean
+name|remove
+parameter_list|(
+name|StoreEntry
+name|entry
+parameter_list|)
+block|{
+name|IndexItem
+name|item
+init|=
+operator|(
+name|IndexItem
+operator|)
+name|entry
+decl_stmt|;
+name|load
+argument_list|()
+expr_stmt|;
+name|boolean
+name|result
+init|=
+literal|false
+decl_stmt|;
+if|if
+condition|(
+name|item
+operator|!=
+literal|null
+condition|)
+block|{
+name|clearCache
+argument_list|()
+expr_stmt|;
+name|IndexItem
+name|prev
+init|=
+name|indexList
+operator|.
+name|getPrevEntry
+argument_list|(
+name|item
+argument_list|)
+decl_stmt|;
+name|prev
+operator|=
+name|prev
+operator|!=
+literal|null
+condition|?
+name|prev
+else|:
+name|root
+expr_stmt|;
+name|IndexItem
+name|next
+init|=
+name|indexList
+operator|.
+name|getNextEntry
+argument_list|(
+name|item
+argument_list|)
+decl_stmt|;
+name|delete
+argument_list|(
+name|item
+argument_list|,
+name|prev
+argument_list|,
+name|next
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|result
+return|;
+block|}
 specifier|protected
 name|IndexItem
 name|writeLast
@@ -2782,7 +2876,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|DataItem
+name|StoreLocation
 name|data
 init|=
 name|dataManager
@@ -2856,7 +2950,7 @@ name|getOffset
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|updateIndex
+name|updateIndexes
 argument_list|(
 name|prev
 argument_list|)
@@ -2888,13 +2982,13 @@ name|getOffset
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|updateIndex
+name|updateIndexes
 argument_list|(
 name|next
 argument_list|)
 expr_stmt|;
 block|}
-name|updateIndex
+name|storeIndex
 argument_list|(
 name|index
 argument_list|)
@@ -2952,7 +3046,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|DataItem
+name|StoreLocation
 name|data
 init|=
 name|dataManager
@@ -3013,7 +3107,7 @@ name|getOffset
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|updateIndex
+name|updateIndexes
 argument_list|(
 name|prev
 argument_list|)
@@ -3045,13 +3139,13 @@ name|getOffset
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|updateIndex
+name|updateIndexes
 argument_list|(
 name|next
 argument_list|)
 expr_stmt|;
 block|}
-name|updateIndex
+name|storeIndex
 argument_list|(
 name|index
 argument_list|)
@@ -3098,13 +3192,6 @@ name|Object
 name|value
 parameter_list|)
 block|{
-name|long
-name|pos
-init|=
-name|Item
-operator|.
-name|POSITION_NOT_SET
-decl_stmt|;
 name|IndexItem
 name|index
 init|=
@@ -3119,7 +3206,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|DataItem
+name|StoreLocation
 name|data
 init|=
 name|dataManager
@@ -3250,7 +3337,7 @@ name|getOffset
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|updateIndex
+name|updateIndexes
 argument_list|(
 name|prev
 argument_list|)
@@ -3282,13 +3369,13 @@ name|getOffset
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|updateIndex
+name|updateIndexes
 argument_list|(
 name|next
 argument_list|)
 expr_stmt|;
 block|}
-name|updateIndex
+name|storeIndex
 argument_list|(
 name|index
 argument_list|)
@@ -3328,7 +3415,7 @@ specifier|protected
 name|Object
 name|getValue
 parameter_list|(
-name|IndexItem
+name|StoreEntry
 name|item
 parameter_list|)
 block|{
@@ -3346,7 +3433,9 @@ condition|)
 block|{
 try|try
 block|{
-name|DataItem
+comment|// ensure it's up to date
+comment|//item=indexList.getEntry(item);
+name|StoreLocation
 name|data
 init|=
 name|item
@@ -3398,6 +3487,7 @@ return|;
 block|}
 comment|/**      * @return a string representation of this collection.      */
 specifier|public
+specifier|synchronized
 name|String
 name|toString
 parameter_list|()
@@ -3897,6 +3987,7 @@ return|;
 block|}
 comment|/**      * clear any cached values      */
 specifier|public
+specifier|synchronized
 name|void
 name|clearCache
 parameter_list|()
@@ -3917,6 +4008,7 @@ expr_stmt|;
 block|}
 comment|/**      * @return the cacheList      */
 specifier|public
+specifier|synchronized
 name|LinkedList
 name|getCacheList
 parameter_list|()
@@ -3925,8 +4017,9 @@ return|return
 name|cacheList
 return|;
 block|}
-comment|/**      * @param cacheList the cacheList to set      */
+comment|/**      * @param cacheList      *            the cacheList to set      */
 specifier|public
+specifier|synchronized
 name|void
 name|setCacheList
 parameter_list|(
@@ -3943,7 +4036,8 @@ expr_stmt|;
 block|}
 comment|/**      * @return the lastCached      */
 specifier|public
-name|IndexItem
+specifier|synchronized
+name|StoreEntry
 name|getLastCached
 parameter_list|()
 block|{
@@ -3951,8 +4045,9 @@ return|return
 name|lastCached
 return|;
 block|}
-comment|/**      * @param lastCached the lastCached to set      */
+comment|/**      * @param lastCached      *            the lastCached to set      */
 specifier|public
+specifier|synchronized
 name|void
 name|setLastCached
 parameter_list|(
@@ -3969,6 +4064,7 @@ expr_stmt|;
 block|}
 comment|/**      * @return the maximumCacheSize      */
 specifier|public
+specifier|synchronized
 name|int
 name|getMaximumCacheSize
 parameter_list|()
@@ -3977,8 +4073,9 @@ return|return
 name|maximumCacheSize
 return|;
 block|}
-comment|/**      * @param maximumCacheSize the maximumCacheSize to set      */
+comment|/**      * @param maximumCacheSize      *            the maximumCacheSize to set      */
 specifier|public
+specifier|synchronized
 name|void
 name|setMaximumCacheSize
 parameter_list|(
@@ -3995,6 +4092,7 @@ expr_stmt|;
 block|}
 comment|/**      * @return the offset      */
 specifier|public
+specifier|synchronized
 name|int
 name|getOffset
 parameter_list|()
@@ -4003,8 +4101,9 @@ return|return
 name|offset
 return|;
 block|}
-comment|/**      * @param offset the offset to set      */
+comment|/**      * @param offset      *            the offset to set      */
 specifier|public
+specifier|synchronized
 name|void
 name|setOffset
 parameter_list|(

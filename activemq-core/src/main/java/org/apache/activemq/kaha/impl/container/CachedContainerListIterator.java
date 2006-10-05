@@ -39,11 +39,7 @@ name|activemq
 operator|.
 name|kaha
 operator|.
-name|impl
-operator|.
-name|index
-operator|.
-name|IndexItem
+name|StoreEntry
 import|;
 end_import
 
@@ -97,7 +93,7 @@ init|=
 literal|0
 decl_stmt|;
 specifier|protected
-name|IndexItem
+name|StoreEntry
 name|currentItem
 decl_stmt|;
 specifier|protected

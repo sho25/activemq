@@ -59,6 +59,34 @@ name|activemq
 operator|.
 name|kaha
 operator|.
+name|StoreEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|kaha
+operator|.
+name|StoreLocation
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|kaha
+operator|.
 name|impl
 operator|.
 name|data
@@ -95,6 +123,8 @@ class|class
 name|IndexItem
 implements|implements
 name|Item
+implements|,
+name|StoreEntry
 block|{
 specifier|public
 specifier|static
@@ -103,6 +133,14 @@ name|int
 name|INDEX_SIZE
 init|=
 literal|51
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|INDEXES_ONLY_SIZE
+init|=
+literal|19
 decl_stmt|;
 comment|//used by linked list
 name|IndexItem
@@ -230,8 +268,9 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+comment|/**      * @return      * @see org.apache.activemq.kaha.StoreEntry#getKeyDataItem()      */
 specifier|public
-name|DataItem
+name|StoreLocation
 name|getKeyDataItem
 parameter_list|()
 block|{
@@ -267,8 +306,9 @@ return|return
 name|result
 return|;
 block|}
+comment|/**      * @return      * @see org.apache.activemq.kaha.StoreEntry#getValueDataItem()      */
 specifier|public
-name|DataItem
+name|StoreLocation
 name|getValueDataItem
 parameter_list|()
 block|{
@@ -308,7 +348,7 @@ specifier|public
 name|void
 name|setValueData
 parameter_list|(
-name|DataItem
+name|StoreLocation
 name|item
 parameter_list|)
 block|{
@@ -338,7 +378,7 @@ specifier|public
 name|void
 name|setKeyData
 parameter_list|(
-name|DataItem
+name|StoreLocation
 name|item
 parameter_list|)
 block|{
@@ -365,6 +405,7 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @param dataOut      * @throws IOException      */
+specifier|public
 name|void
 name|write
 parameter_list|(
@@ -445,7 +486,46 @@ name|valueSize
 argument_list|)
 expr_stmt|;
 block|}
+name|void
+name|updateIndexes
+parameter_list|(
+name|DataOutput
+name|dataOut
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|dataOut
+operator|.
+name|writeShort
+argument_list|(
+name|MAGIC
+argument_list|)
+expr_stmt|;
+name|dataOut
+operator|.
+name|writeBoolean
+argument_list|(
+name|active
+argument_list|)
+expr_stmt|;
+name|dataOut
+operator|.
+name|writeLong
+argument_list|(
+name|previousItem
+argument_list|)
+expr_stmt|;
+name|dataOut
+operator|.
+name|writeLong
+argument_list|(
+name|nextItem
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * @param dataIn      * @throws IOException      */
+specifier|public
 name|void
 name|read
 parameter_list|(
@@ -535,6 +615,53 @@ name|readInt
 argument_list|()
 expr_stmt|;
 block|}
+name|void
+name|readIndexes
+parameter_list|(
+name|DataInput
+name|dataIn
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+if|if
+condition|(
+name|dataIn
+operator|.
+name|readShort
+argument_list|()
+operator|!=
+name|MAGIC
+condition|)
+block|{
+throw|throw
+operator|new
+name|BadMagicException
+argument_list|()
+throw|;
+block|}
+name|active
+operator|=
+name|dataIn
+operator|.
+name|readBoolean
+argument_list|()
+expr_stmt|;
+name|previousItem
+operator|=
+name|dataIn
+operator|.
+name|readLong
+argument_list|()
+expr_stmt|;
+name|nextItem
+operator|=
+name|dataIn
+operator|.
+name|readLong
+argument_list|()
+expr_stmt|;
+block|}
 comment|/**      * @param newPrevEntry      */
 specifier|public
 name|void
@@ -572,7 +699,7 @@ operator|=
 name|newNextEntry
 expr_stmt|;
 block|}
-comment|/**      * @return next item      */
+comment|/**      * @return      * @see org.apache.activemq.kaha.StoreEntry#getNextItem()      */
 specifier|public
 name|long
 name|getNextItem
@@ -604,7 +731,7 @@ return|return
 name|keyOffset
 return|;
 block|}
-comment|/**      * @return Returns the keyFile.      */
+comment|/**      * @return      * @see org.apache.activemq.kaha.StoreEntry#getKeyFile()      */
 specifier|public
 name|int
 name|getKeyFile
@@ -629,7 +756,7 @@ operator|=
 name|keyFile
 expr_stmt|;
 block|}
-comment|/**      * @return Returns the valueFile.      */
+comment|/**      * @return      * @see org.apache.activemq.kaha.StoreEntry#getValueFile()      */
 specifier|public
 name|int
 name|getValueFile
@@ -654,7 +781,7 @@ operator|=
 name|valueFile
 expr_stmt|;
 block|}
-comment|/**      * @return Returns the valueOffset.      */
+comment|/**      * @return      * @see org.apache.activemq.kaha.StoreEntry#getValueOffset()      */
 specifier|public
 name|long
 name|getValueOffset
@@ -704,7 +831,7 @@ operator|=
 name|active
 expr_stmt|;
 block|}
-comment|/**      * @return Returns the offset.      */
+comment|/**      * @return      * @see org.apache.activemq.kaha.StoreEntry#getOffset()      */
 specifier|public
 name|long
 name|getOffset
@@ -730,6 +857,7 @@ operator|=
 name|offset
 expr_stmt|;
 block|}
+comment|/**      * @return      * @see org.apache.activemq.kaha.StoreEntry#getKeySize()      */
 specifier|public
 name|int
 name|getKeySize
@@ -754,6 +882,7 @@ operator|=
 name|keySize
 expr_stmt|;
 block|}
+comment|/**      * @return      * @see org.apache.activemq.kaha.StoreEntry#getValueSize()      */
 specifier|public
 name|int
 name|getValueSize

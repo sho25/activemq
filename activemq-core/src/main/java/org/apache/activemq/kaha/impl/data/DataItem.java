@@ -19,6 +19,20 @@ name|data
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|kaha
+operator|.
+name|StoreLocation
+import|;
+end_import
+
 begin_comment
 comment|/**  * A a wrapper for a data in the store  *   * @version $Revision: 1.2 $  */
 end_comment
@@ -30,6 +44,8 @@ class|class
 name|DataItem
 implements|implements
 name|Item
+implements|,
+name|StoreLocation
 block|{
 specifier|private
 name|int
@@ -95,7 +111,7 @@ operator|!=
 name|POSITION_NOT_SET
 return|;
 block|}
-comment|/**      * @return Returns the size.      */
+comment|/**      * @return      * @see org.apache.activemq.kaha.StoreLocation#getSize()      */
 specifier|public
 name|int
 name|getSize
@@ -121,7 +137,7 @@ operator|=
 name|size
 expr_stmt|;
 block|}
-comment|/**      * @return Returns the offset.      */
+comment|/**      * @return      * @see org.apache.activemq.kaha.StoreLocation#getOffset()      */
 specifier|public
 name|long
 name|getOffset
@@ -147,7 +163,7 @@ operator|=
 name|offset
 expr_stmt|;
 block|}
-comment|/**      * @return Returns the file.      */
+comment|/**      * @return      * @see org.apache.activemq.kaha.StoreLocation#getFile()      */
 specifier|public
 name|int
 name|getFile

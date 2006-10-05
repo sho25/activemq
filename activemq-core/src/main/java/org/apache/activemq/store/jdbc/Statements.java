@@ -805,14 +805,19 @@ argument_list|()
 operator|+
 literal|" D "
 operator|+
-literal|" WHERE ?>= ( select count(*) from "
+literal|" WHERE ?>= ( SELECT COUNT(*) FROM "
 operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" M, where D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
+literal|" M, "
 operator|+
-literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> ?"
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" D WHERE (D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
+operator|+
+literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> ?)"
 operator|+
 literal|" ORDER BY M.ID)"
 expr_stmt|;
@@ -884,16 +889,16 @@ argument_list|()
 operator|+
 literal|" D "
 operator|+
-literal|" WHERE 1>= ( select count(*) from "
+literal|" WHERE 1>= ( SELECT COUNT(*) FROM "
 operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" M, where D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
+literal|" M, WHERE (D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
 operator|+
 literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID"
 operator|+
-literal|" ORDER BY M.ID)"
+literal|") ORDER BY M.ID)"
 expr_stmt|;
 block|}
 return|return
@@ -915,7 +920,7 @@ condition|)
 block|{
 name|durableSubscriberMessageCountStatement
 operator|=
-literal|"select count(*) from "
+literal|"SELECT COUNT(*) FROM "
 operator|+
 name|getFullMessageTableName
 argument_list|()

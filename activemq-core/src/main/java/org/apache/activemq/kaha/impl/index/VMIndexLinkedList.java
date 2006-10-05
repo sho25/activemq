@@ -19,11 +19,26 @@ name|index
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|kaha
+operator|.
+name|StoreEntry
+import|;
+end_import
+
 begin_comment
 comment|/**  * A linked list used by IndexItems  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class
+specifier|public
 specifier|final
 class|class
 name|VMIndexLinkedList
@@ -45,6 +60,7 @@ init|=
 literal|0
 decl_stmt|;
 comment|/**      * Constructs an empty list.      */
+specifier|public
 name|VMIndexLinkedList
 parameter_list|(
 name|IndexItem
@@ -123,7 +139,7 @@ return|;
 block|}
 comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#removeFirst()      */
 specifier|public
-name|IndexItem
+name|StoreEntry
 name|removeFirst
 parameter_list|()
 block|{
@@ -138,7 +154,7 @@ return|return
 literal|null
 return|;
 block|}
-name|IndexItem
+name|StoreEntry
 name|result
 init|=
 name|root
@@ -171,7 +187,7 @@ condition|)
 return|return
 literal|null
 return|;
-name|IndexItem
+name|StoreEntry
 name|result
 init|=
 name|root
@@ -462,7 +478,7 @@ specifier|public
 name|int
 name|indexOf
 parameter_list|(
-name|IndexItem
+name|StoreEntry
 name|o
 parameter_list|)
 block|{
@@ -691,10 +707,23 @@ name|clone
 return|;
 block|}
 specifier|public
-name|IndexItem
+name|StoreEntry
 name|getEntry
 parameter_list|(
-name|IndexItem
+name|StoreEntry
+name|current
+parameter_list|)
+block|{
+return|return
+name|current
+return|;
+block|}
+comment|/**      * Update the indexes of a StoreEntry      * @param current      */
+specifier|public
+name|StoreEntry
+name|refreshEntry
+parameter_list|(
+name|StoreEntry
 name|current
 parameter_list|)
 block|{

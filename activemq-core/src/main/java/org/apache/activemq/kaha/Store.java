@@ -44,6 +44,7 @@ specifier|public
 interface|interface
 name|Store
 block|{
+comment|/**      * Byte Marshaller      */
 specifier|public
 specifier|final
 specifier|static
@@ -54,6 +55,7 @@ operator|new
 name|BytesMarshaller
 argument_list|()
 decl_stmt|;
+comment|/**      * Object Marshaller      */
 specifier|public
 specifier|final
 specifier|static
@@ -64,6 +66,7 @@ operator|new
 name|ObjectMarshaller
 argument_list|()
 decl_stmt|;
+comment|/**      * String Marshaller      */
 specifier|public
 specifier|final
 specifier|static
@@ -106,13 +109,27 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Checks if a MapContainer exists      *       * @param id      * @return new MapContainer      * @throws IOException      */
+comment|/**      * Checks if a MapContainer exists in the default container      *       * @param id      * @return new MapContainer      * @throws IOException      */
 specifier|public
 name|boolean
 name|doesMapContainerExist
 parameter_list|(
 name|Object
 name|id
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * Checks if a MapContainer exists in the named container      *       * @param id      * @param containerName       * @return new MapContainer      * @throws IOException      */
+specifier|public
+name|boolean
+name|doesMapContainerExist
+parameter_list|(
+name|Object
+name|id
+parameter_list|,
+name|String
+name|containerName
 parameter_list|)
 throws|throws
 name|IOException
@@ -142,13 +159,44 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * delete a container      *       * @param id      * @throws IOException      */
+comment|/**      * Get a MapContainer with the given id - the MapContainer is created if needed      *       * @param id      * @param containerName      * @param indexType       * @return container for the associated id or null if it doesn't exist      * @throws IOException      */
+specifier|public
+name|MapContainer
+name|getMapContainer
+parameter_list|(
+name|Object
+name|id
+parameter_list|,
+name|String
+name|containerName
+parameter_list|,
+name|String
+name|indexType
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * delete a container from the default container      *       * @param id      * @throws IOException      */
 specifier|public
 name|void
 name|deleteMapContainer
 parameter_list|(
 name|Object
 name|id
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * delete a MapContainer from the name container      *       * @param id      * @param containerName       * @throws IOException      */
+specifier|public
+name|void
+name|deleteMapContainer
+parameter_list|(
+name|Object
+name|id
+parameter_list|,
+name|String
+name|containerName
 parameter_list|)
 throws|throws
 name|IOException
@@ -161,13 +209,27 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Checks if a ListContainer exists      *       * @param id      * @return new MapContainer      * @throws IOException      */
+comment|/**      * Checks if a ListContainer exists in the default container      *       * @param id      * @return new MapContainer      * @throws IOException      */
 specifier|public
 name|boolean
 name|doesListContainerExist
 parameter_list|(
 name|Object
 name|id
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * Checks if a ListContainer exists in the named container      *       * @param id      * @param containerName       * @return new MapContainer      * @throws IOException      */
+specifier|public
+name|boolean
+name|doesListContainerExist
+parameter_list|(
+name|Object
+name|id
+parameter_list|,
+name|String
+name|containerName
 parameter_list|)
 throws|throws
 name|IOException
@@ -197,13 +259,44 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * delete a ListContainer      *       * @param id      * @throws IOException      */
+comment|/**      * Get a ListContainer with the given id and creates it if it doesn't exist      *       * @param id      * @param containerName      * @param indexType       * @return container for the associated id or null if it doesn't exist      * @throws IOException      */
+specifier|public
+name|ListContainer
+name|getListContainer
+parameter_list|(
+name|Object
+name|id
+parameter_list|,
+name|String
+name|containerName
+parameter_list|,
+name|String
+name|indexType
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * delete a ListContainer from the default container      *       * @param id      * @throws IOException      */
 specifier|public
 name|void
 name|deleteListContainer
 parameter_list|(
 name|Object
 name|id
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * delete a ListContainer from the named container      *       * @param id      * @param containerName       * @throws IOException      */
+specifier|public
+name|void
+name|deleteListContainer
+parameter_list|(
+name|Object
+name|id
+parameter_list|,
+name|String
+name|containerName
 parameter_list|)
 throws|throws
 name|IOException
@@ -229,6 +322,21 @@ name|setMaxDataFileLength
 parameter_list|(
 name|long
 name|maxDataFileLength
+parameter_list|)
+function_decl|;
+comment|/**      * @see org.apache.activemq.kaha.IndexTypes      * @return the default index type      */
+specifier|public
+name|String
+name|getIndexType
+parameter_list|()
+function_decl|;
+comment|/**      * Set the default index type      * @param type      * @see org.apache.activemq.kaha.IndexTypes      */
+specifier|public
+name|void
+name|setIndexType
+parameter_list|(
+name|String
+name|type
 parameter_list|)
 function_decl|;
 block|}
