@@ -3413,12 +3413,6 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
-comment|// Don't let new consumers or producers get added while we are closing this down.
-name|session
-operator|.
-name|shutdown
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|session
@@ -3434,6 +3428,12 @@ operator|+
 name|id
 argument_list|)
 throw|;
+comment|// Don't let new consumers or producers get added while we are closing this down.
+name|session
+operator|.
+name|shutdown
+argument_list|()
+expr_stmt|;
 comment|// Cascade the connection stop to the consumers and producers.
 for|for
 control|(
