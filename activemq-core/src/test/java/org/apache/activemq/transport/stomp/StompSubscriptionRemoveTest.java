@@ -216,7 +216,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version $Revision$  */
+comment|/**  *  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -249,7 +249,6 @@ specifier|private
 name|ByteArrayOutputStream
 name|inputBuffer
 decl_stmt|;
-comment|/**      * @param args      * @throws Exception      */
 specifier|public
 name|void
 name|testRemoveSubscriber

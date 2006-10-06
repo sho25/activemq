@@ -94,7 +94,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The StompTransportFilter normally sits on top of a TcpTransport  * that has been configured with the StompWireFormat and is used to  * convert STOMP commands to ActiveMQ commands.  *   * All of the coversion work is done by delegating to the ProtocolConverter.   *    * @author<a href="http://hiramchirino.com">chirino</a>   */
+comment|/**  * The StompTransportFilter normally sits on top of a TcpTransport  * that has been configured with the StompWireFormat and is used to  * convert STOMP commands to ActiveMQ commands.  *  * All of the coversion work is done by delegating to the ProtocolConverter.  *  * @author<a href="http://hiramchirino.com">chirino</a>  */
 end_comment
 
 begin_class
@@ -104,12 +104,10 @@ name|StompTransportFilter
 extends|extends
 name|TransportFilter
 block|{
+specifier|private
+specifier|final
 name|ProtocolConverter
 name|protocolConverter
-init|=
-operator|new
-name|ProtocolConverter
-argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
@@ -129,11 +127,19 @@ operator|new
 name|Object
 argument_list|()
 decl_stmt|;
+specifier|private
+specifier|final
+name|FrameTranslator
+name|frameTranslator
+decl_stmt|;
 specifier|public
 name|StompTransportFilter
 parameter_list|(
 name|Transport
 name|next
+parameter_list|,
+name|FrameTranslator
+name|translator
 parameter_list|)
 block|{
 name|super
@@ -141,11 +147,22 @@ argument_list|(
 name|next
 argument_list|)
 expr_stmt|;
-name|protocolConverter
+name|this
 operator|.
-name|setTransportFilter
+name|frameTranslator
+operator|=
+name|translator
+expr_stmt|;
+name|this
+operator|.
+name|protocolConverter
+operator|=
+operator|new
+name|ProtocolConverter
 argument_list|(
 name|this
+argument_list|,
+name|translator
 argument_list|)
 expr_stmt|;
 block|}
@@ -281,6 +298,15 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+specifier|public
+name|FrameTranslator
+name|getFrameTranslator
+parameter_list|()
+block|{
+return|return
+name|frameTranslator
+return|;
 block|}
 block|}
 end_class

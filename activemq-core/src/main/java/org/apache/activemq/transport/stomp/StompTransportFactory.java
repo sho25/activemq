@@ -72,7 +72,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A<a href="http://stomp.codehaus.org/">STOMP</a> transport factory  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * A<a href="http://stomp.codehaus.org/">STOMP</a> transport factory  *  * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -111,6 +111,10 @@ operator|new
 name|StompTransportFilter
 argument_list|(
 name|transport
+argument_list|,
+operator|new
+name|LegacyFrameTranslator
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
