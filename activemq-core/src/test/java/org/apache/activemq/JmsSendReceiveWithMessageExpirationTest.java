@@ -300,7 +300,7 @@ name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends and consumes the messages to a queue destination.      *      * @throws Exception      */
+comment|/**      * Test consuming an expired queue.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testConsumeExpiredQueue
@@ -439,6 +439,8 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+comment|// sleeps a second longer than the expiration time.
+comment|// Basically waits till queue expires.
 name|Thread
 operator|.
 name|sleep
@@ -599,7 +601,7 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-comment|// message should have expired.
+comment|// should receive a queue since there is no expiration.
 name|assertNotNull
 argument_list|(
 name|consumer
@@ -611,7 +613,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends and consumes the messages to a topic destination.      *      * @throws Exception      */
+comment|/**      * Test consuming an expired topic.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testConsumeExpiredTopic
@@ -750,6 +752,8 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+comment|// sleeps a second longer than the expiration time.
+comment|// Basically waits till topic expires.
 name|Thread
 operator|.
 name|sleep
@@ -910,7 +914,7 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-comment|// message should have expired.
+comment|// should receive a topic since there is no expiration.
 name|assertNotNull
 argument_list|(
 name|consumer
@@ -1024,7 +1028,6 @@ argument_list|(
 literal|"Closing down connection"
 argument_list|)
 expr_stmt|;
-comment|/** TODO we should be able to shut down properly */
 name|session
 operator|.
 name|close
