@@ -2928,8 +2928,6 @@ comment|// Only pick up the first message.
 name|Message
 name|message1
 init|=
-name|message1
-operator|=
 name|consumer
 operator|.
 name|receive

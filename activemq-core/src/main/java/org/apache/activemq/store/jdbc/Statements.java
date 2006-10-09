@@ -195,6 +195,14 @@ name|String
 name|durableSubscriberMessageCountStatement
 decl_stmt|;
 specifier|private
+name|String
+name|nextDurableSubscriberMessageIdStatement
+decl_stmt|;
+specifier|private
+name|String
+name|prevDurableSubscriberMessageIdStatement
+decl_stmt|;
+specifier|private
 name|boolean
 name|useLockCreateWhereClause
 decl_stmt|;
@@ -805,21 +813,11 @@ argument_list|()
 operator|+
 literal|" D "
 operator|+
-literal|" WHERE ?>= ( SELECT COUNT(*) FROM "
+literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
 operator|+
-name|getFullMessageTableName
-argument_list|()
+literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> ?"
 operator|+
-literal|" M, "
-operator|+
-name|getFullAckTableName
-argument_list|()
-operator|+
-literal|" D WHERE (D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
-operator|+
-literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> ?)"
-operator|+
-literal|" ORDER BY M.ID)"
+literal|" ORDER BY M.ID"
 expr_stmt|;
 block|}
 return|return
@@ -889,16 +887,11 @@ argument_list|()
 operator|+
 literal|" D "
 operator|+
-literal|" WHERE 1>= ( SELECT COUNT(*) FROM "
+literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
 operator|+
-name|getFullMessageTableName
-argument_list|()
+literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> ?"
 operator|+
-literal|" M, WHERE (D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
-operator|+
-literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID"
-operator|+
-literal|") ORDER BY M.ID)"
+literal|" ORDER BY M.ID "
 expr_stmt|;
 block|}
 return|return
@@ -925,13 +918,92 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" M, where D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
+literal|" M, "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" D "
+operator|+
+literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
 operator|+
 literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID"
 expr_stmt|;
 block|}
 return|return
 name|durableSubscriberMessageCountStatement
+return|;
+block|}
+comment|/**      * @return the nextDurableSubscriberMessageIdStatement      */
+specifier|public
+name|String
+name|getNextDurableSubscriberMessageIdStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|nextDurableSubscriberMessageIdStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|nextDurableSubscriberMessageIdStatement
+operator|=
+literal|"SELECT M.ID FROM "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" M, "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" D "
+operator|+
+literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
+operator|+
+literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> ?"
+operator|+
+literal|" ORDER BY M.ID "
+expr_stmt|;
+block|}
+return|return
+name|nextDurableSubscriberMessageIdStatement
+return|;
+block|}
+comment|/**      * @return the prevDurableSubscriberMessageIdStatement      */
+comment|/*     public String getPrevDurableSubscriberMessageIdStatement(){         if(prevDurableSubscriberMessageIdStatement==null) {             prevDurableSubscriberMessageIdStatement = "SELECT M.ID, M.MSG FROM " + getFullMessageTableName() + " M, "             + getFullAckTableName() + " D " + " WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"             + " AND M.CONTAINER=D.CONTAINER AND M.ID< ?" + " ORDER BY M.ID ";         }         return prevDurableSubscriberMessageIdStatement;     }     */
+specifier|public
+name|String
+name|getPrevDurableSubscriberMessageIdStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|prevDurableSubscriberMessageIdStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|prevDurableSubscriberMessageIdStatement
+operator|=
+literal|"SELECT M.ID, M.MSG FROM "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" M "
+operator|+
+literal|" WHERE M.CONTAINER=? "
+operator|+
+literal|"  AND M.ID<?"
+operator|+
+literal|"  ORDER BY M.ID DESC "
+expr_stmt|;
+block|}
+return|return
+name|prevDurableSubscriberMessageIdStatement
 return|;
 block|}
 specifier|public
@@ -1843,6 +1915,38 @@ operator|.
 name|durableSubscriberMessageCountStatement
 operator|=
 name|durableSubscriberMessageCountStatement
+expr_stmt|;
+block|}
+comment|/**      * @param nextDurableSubscriberMessageIdStatement the nextDurableSubscriberMessageIdStatement to set      */
+specifier|public
+name|void
+name|setNextDurableSubscriberMessageIdStatement
+parameter_list|(
+name|String
+name|nextDurableSubscriberMessageIdStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|nextDurableSubscriberMessageIdStatement
+operator|=
+name|nextDurableSubscriberMessageIdStatement
+expr_stmt|;
+block|}
+comment|/**      * @param prevDurableSubscriberMessageIdStatement the prevDurableSubscriberMessageIdStatement to set      */
+specifier|public
+name|void
+name|setPrevDurableSubscriberMessageIdStatement
+parameter_list|(
+name|String
+name|prevDurableSubscriberMessageIdStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|prevDurableSubscriberMessageIdStatement
+operator|=
+name|prevDurableSubscriberMessageIdStatement
 expr_stmt|;
 block|}
 block|}

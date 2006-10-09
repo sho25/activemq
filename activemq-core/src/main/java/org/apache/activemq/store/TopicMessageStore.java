@@ -176,19 +176,54 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Get the next un-acknowledged message to deliver to a subscriber      * @param clientId      * @param subscriptionName      * @return the next message or null      * @throws IOException       */
+comment|/**      * A hint to the Store to reset any batching state for a durable subsriber      * @param clientId       * @param subscriptionName       * @param nextToDispatch       *      */
 specifier|public
-name|Message
-name|getNextMessageToDeliver
+name|void
+name|resetBatching
 parameter_list|(
 name|String
 name|clientId
 parameter_list|,
 name|String
 name|subscriptionName
+parameter_list|,
+name|MessageId
+name|nextToDispatch
+parameter_list|)
+function_decl|;
+comment|/**      * Get the next  messageId to deliver to a subscriber after the MessageId provided      * @param clientId      * @param subscriptionName      * @param id       * @return the next messageId or null      * @throws IOException       * @throws Exception       */
+specifier|public
+name|MessageId
+name|getNextMessageIdToDeliver
+parameter_list|(
+name|String
+name|clientId
+parameter_list|,
+name|String
+name|subscriptionName
+parameter_list|,
+name|MessageId
+name|id
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
+function_decl|;
+comment|/**      * Get the previous  messageId to deliver to a subscriber before the MessageId provided      * @param clientId      * @param subscriptionName      * @param id       * @return the next messageId or null      * @throws IOException       * @throws Exception       */
+specifier|public
+name|MessageId
+name|getPreviousMessageIdToDeliver
+parameter_list|(
+name|String
+name|clientId
+parameter_list|,
+name|String
+name|subscriptionName
+parameter_list|,
+name|MessageId
+name|id
+parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
 comment|/**      * Get the number of messages ready to deliver from the store to a durable subscriber      * @param clientId      * @param subscriberName      * @return the outstanding message count      * @throws IOException      */
 specifier|public

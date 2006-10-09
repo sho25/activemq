@@ -692,11 +692,22 @@ block|{
 name|enqueueCounter
 operator|++
 expr_stmt|;
+comment|//if(!isFull()){
 if|if
 condition|(
 operator|!
 name|isFull
 argument_list|()
+operator|&&
+name|pending
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+name|canDispatch
+argument_list|(
+name|node
+argument_list|)
 condition|)
 block|{
 name|dispatch
@@ -1087,10 +1098,6 @@ name|dispatchMatched
 argument_list|()
 expr_stmt|;
 return|return;
-block|}
-else|else
-block|{
-comment|// System.out.println("no match: "+ack.getLastMessageId()+","+messageId);
 block|}
 block|}
 block|}
@@ -2086,7 +2093,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @param node      * @param message      *            TODO      * @return      */
+comment|/**      * @param node      * @param message      * @return MessageDispatch      */
 specifier|protected
 name|MessageDispatch
 name|createMessageDispatch

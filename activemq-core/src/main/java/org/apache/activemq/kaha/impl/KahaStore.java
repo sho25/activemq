@@ -2268,7 +2268,7 @@ name|this
 operator|.
 name|indexType
 operator|=
-name|indexType
+name|type
 expr_stmt|;
 block|}
 specifier|public

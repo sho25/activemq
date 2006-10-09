@@ -43,24 +43,6 @@ name|StoreEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|kaha
-operator|.
-name|impl
-operator|.
-name|index
-operator|.
-name|IndexLinkedList
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version $Revision$ */
 end_comment
@@ -75,10 +57,6 @@ block|{
 specifier|protected
 name|ListContainerImpl
 name|container
-decl_stmt|;
-specifier|protected
-name|IndexLinkedList
-name|list
 decl_stmt|;
 specifier|protected
 name|int
@@ -111,12 +89,6 @@ operator|.
 name|container
 operator|=
 name|container
-expr_stmt|;
-name|this
-operator|.
-name|list
-operator|=
-name|list
 expr_stmt|;
 name|this
 operator|.

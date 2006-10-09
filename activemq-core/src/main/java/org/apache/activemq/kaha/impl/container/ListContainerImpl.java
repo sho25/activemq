@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements. See the NOTICE file distributed with this  * work for additional information regarding copyright ownership. The ASF  * licenses this file to You under the Apache License, Version 2.0 (the  * "License"); you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the  * License for the specific language governing permissions and limitations under  * the License.  */
+comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -2666,7 +2666,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * add an Object to the list but get a StoreEntry of its position      * @param object      * @return the entry in the Store      */
+comment|/**      * add an Object to the list but get a StoreEntry of its position      *       * @param object      * @return the entry in the Store      */
 specifier|public
 specifier|synchronized
 name|StoreEntry
@@ -2688,7 +2688,7 @@ return|return
 name|item
 return|;
 block|}
-comment|/**      * insert an Object in first position int the list but get a StoreEntry of its position      * @param object      * @return the location in the Store      */
+comment|/**      * insert an Object in first position int the list but get a StoreEntry of its position      *       * @param object      * @return the location in the Store      */
 specifier|public
 specifier|synchronized
 name|StoreEntry
@@ -2754,7 +2754,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**     * Retrieve an Object from the Store by its location     * @param entry     * @return the Object at that entry     */
+comment|/**      * Retrieve an Object from the Store by its location      *       * @param entry      * @return the Object at that entry      */
 specifier|public
 specifier|synchronized
 name|Object
@@ -2774,7 +2774,7 @@ name|entry
 argument_list|)
 return|;
 block|}
-comment|/**     * remove the Object at the StoreEntry     * @param entry     * @return true if successful     */
+comment|/**      * remove the Object at the StoreEntry      *       * @param entry      * @return true if successful      */
 specifier|public
 specifier|synchronized
 name|boolean
@@ -2810,48 +2810,119 @@ block|{
 name|clearCache
 argument_list|()
 expr_stmt|;
-name|IndexItem
-name|prev
-init|=
-name|indexList
-operator|.
-name|getPrevEntry
+name|remove
 argument_list|(
 name|item
 argument_list|)
-decl_stmt|;
-name|prev
-operator|=
-name|prev
-operator|!=
-literal|null
-condition|?
-name|prev
-else|:
-name|root
 expr_stmt|;
+name|result
+operator|=
+literal|true
+expr_stmt|;
+block|}
+return|return
+name|result
+return|;
+block|}
+comment|/**      * Get the StoreEntry for the first item of the list      *       * @return the first StoreEntry or null if the list is empty      */
+specifier|public
+specifier|synchronized
+name|StoreEntry
+name|getFirst
+parameter_list|()
+block|{
+return|return
+name|indexList
+operator|.
+name|getFirst
+argument_list|()
+return|;
+block|}
+comment|/**      * Get yjr StoreEntry for the last item of the list      *       * @return the last StoreEntry or null if the list is empty      */
+specifier|public
+specifier|synchronized
+name|StoreEntry
+name|getLast
+parameter_list|()
+block|{
+return|return
+name|indexList
+operator|.
+name|getLast
+argument_list|()
+return|;
+block|}
+comment|/**      * Get the next StoreEntry from the list      *       * @param entry      * @return the next StoreEntry or null      */
+specifier|public
+specifier|synchronized
+name|StoreEntry
+name|getNext
+parameter_list|(
+name|StoreEntry
+name|entry
+parameter_list|)
+block|{
 name|IndexItem
-name|next
+name|item
 init|=
+operator|(
+name|IndexItem
+operator|)
+name|entry
+decl_stmt|;
+return|return
 name|indexList
 operator|.
 name|getNextEntry
 argument_list|(
 name|item
 argument_list|)
+return|;
+block|}
+comment|/**      * Get the previous StoreEntry from the list      *       * @param entry      * @return the previous store entry or null      */
+specifier|public
+specifier|synchronized
+name|StoreEntry
+name|getPrevious
+parameter_list|(
+name|StoreEntry
+name|entry
+parameter_list|)
+block|{
+name|IndexItem
+name|item
+init|=
+operator|(
+name|IndexItem
+operator|)
+name|entry
 decl_stmt|;
-name|delete
+return|return
+name|indexList
+operator|.
+name|getPrevEntry
 argument_list|(
 name|item
-argument_list|,
-name|prev
-argument_list|,
-name|next
 argument_list|)
-expr_stmt|;
+return|;
 block|}
+comment|/**      * It's possible that a StoreEntry could be come stale      * this will return an upto date entry for the StoreEntry position      * @param entry old entry      * @return a refreshed StoreEntry      */
+specifier|public
+specifier|synchronized
+name|StoreEntry
+name|refresh
+parameter_list|(
+name|StoreEntry
+name|entry
+parameter_list|)
+block|{
 return|return
-name|result
+name|indexList
+operator|.
+name|getEntry
+argument_list|(
+name|entry
+argument_list|)
 return|;
 block|}
 specifier|protected
@@ -3434,7 +3505,7 @@ block|{
 try|try
 block|{
 comment|// ensure it's up to date
-comment|//item=indexList.getEntry(item);
+comment|// item=indexList.getEntry(item);
 name|StoreLocation
 name|data
 init|=
@@ -4017,7 +4088,7 @@ return|return
 name|cacheList
 return|;
 block|}
-comment|/**      * @param cacheList      *            the cacheList to set      */
+comment|/**      * @param cacheList the cacheList to set      */
 specifier|public
 specifier|synchronized
 name|void
@@ -4045,7 +4116,7 @@ return|return
 name|lastCached
 return|;
 block|}
-comment|/**      * @param lastCached      *            the lastCached to set      */
+comment|/**      * @param lastCached the lastCached to set      */
 specifier|public
 specifier|synchronized
 name|void
@@ -4073,7 +4144,7 @@ return|return
 name|maximumCacheSize
 return|;
 block|}
-comment|/**      * @param maximumCacheSize      *            the maximumCacheSize to set      */
+comment|/**      * @param maximumCacheSize the maximumCacheSize to set      */
 specifier|public
 specifier|synchronized
 name|void
@@ -4101,7 +4172,7 @@ return|return
 name|offset
 return|;
 block|}
-comment|/**      * @param offset      *            the offset to set      */
+comment|/**      * @param offset the offset to set      */
 specifier|public
 specifier|synchronized
 name|void

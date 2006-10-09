@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -128,7 +138,7 @@ name|void
 name|reset
 parameter_list|()
 function_decl|;
-comment|/**      * add message to await dispatch      * @param node      */
+comment|/**      * add message to await dispatch      * @param node      * @throws IOException       * @throws Exception       */
 specifier|public
 name|void
 name|addMessageLast
@@ -136,8 +146,10 @@ parameter_list|(
 name|MessageReference
 name|node
 parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
-comment|/**      * add message to await dispatch      * @param node      */
+comment|/**      * add message to await dispatch      * @param node      * @throws Exception       */
 specifier|public
 name|void
 name|addMessageFirst
@@ -145,6 +157,8 @@ parameter_list|(
 name|MessageReference
 name|node
 parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
 comment|/**      * @return true if there pending messages to dispatch      */
 specifier|public
@@ -176,11 +190,26 @@ name|void
 name|clear
 parameter_list|()
 function_decl|;
-comment|/**      * Informs the Broker if the subscription needs to intervention to recover it's state      * e.g. DurableTopicSubscriber may do      * @see org.apache.activemq.region.cursors.PendingMessageCursor      * @return true if recovery required      */
+comment|/**      * Informs the Broker if the subscription needs to intervention to recover it's state      * e.g. DurableTopicSubscriber may do      * @return true if recovery required      */
 specifier|public
 name|boolean
 name|isRecoveryRequired
 parameter_list|()
+function_decl|;
+comment|/**      * @return the maximum batch size      */
+specifier|public
+name|int
+name|getMaxBatchSize
+parameter_list|()
+function_decl|;
+comment|/**      * Set the max batch size      * @param maxBatchSize      */
+specifier|public
+name|void
+name|setMaxBatchSize
+parameter_list|(
+name|int
+name|maxBatchSize
+parameter_list|)
 function_decl|;
 block|}
 end_interface

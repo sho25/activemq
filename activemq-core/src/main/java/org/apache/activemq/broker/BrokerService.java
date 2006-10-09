@@ -2271,6 +2271,11 @@ name|broker
 argument_list|)
 expr_stmt|;
 block|}
+name|tempDataStore
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|isUseJmx
@@ -3715,6 +3720,7 @@ expr_stmt|;
 block|}
 comment|/**      * @return the tempDataStore      */
 specifier|public
+specifier|synchronized
 name|Store
 name|getTempDataStore
 parameter_list|()
