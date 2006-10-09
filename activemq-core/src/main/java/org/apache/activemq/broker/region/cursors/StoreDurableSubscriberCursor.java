@@ -609,11 +609,6 @@ name|Exception
 block|{
 if|if
 condition|(
-name|started
-condition|)
-block|{
-if|if
-condition|(
 name|node
 operator|!=
 literal|null
@@ -627,6 +622,14 @@ operator|.
 name|getMessage
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|started
+condition|)
+block|{
+name|pendingCount
+operator|++
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -644,7 +647,14 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
-else|else
+block|}
+if|if
+condition|(
+name|msg
+operator|.
+name|isPersistent
+argument_list|()
+condition|)
 block|{
 name|Destination
 name|dest
@@ -681,6 +691,11 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|started
+condition|)
+block|{
 comment|// if the store has been empty - then this message is next to dispatch
 if|if
 condition|(
@@ -709,9 +724,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|pendingCount
-operator|++
-expr_stmt|;
 block|}
 block|}
 block|}
