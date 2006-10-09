@@ -80,6 +80,10 @@ name|boolean
 name|manageable
 decl_stmt|;
 specifier|protected
+name|boolean
+name|clientMaster
+decl_stmt|;
+specifier|protected
 specifier|transient
 name|Object
 name|transportContext
@@ -412,6 +416,34 @@ operator|.
 name|transportContext
 operator|=
 name|transportContext
+expr_stmt|;
+block|}
+comment|/**      * @openwire:property version=2      * @return the clientMaster      */
+specifier|public
+name|boolean
+name|isClientMaster
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|clientMaster
+return|;
+block|}
+comment|/**      * @param clientMaster the clientMaster to set      */
+specifier|public
+name|void
+name|setClientMaster
+parameter_list|(
+name|boolean
+name|clientMaster
+parameter_list|)
+block|{
+name|this
+operator|.
+name|clientMaster
+operator|=
+name|clientMaster
 expr_stmt|;
 block|}
 block|}
