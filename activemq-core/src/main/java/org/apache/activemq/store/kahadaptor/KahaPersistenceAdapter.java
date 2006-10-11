@@ -972,7 +972,7 @@ condition|)
 block|{
 name|theStore
 operator|.
-name|clear
+name|delete
 argument_list|()
 expr_stmt|;
 block|}
