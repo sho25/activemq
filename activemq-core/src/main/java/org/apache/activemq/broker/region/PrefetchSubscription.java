@@ -692,7 +692,6 @@ block|{
 name|enqueueCounter
 operator|++
 expr_stmt|;
-comment|//if(!isFull()){
 if|if
 condition|(
 operator|!
@@ -703,11 +702,6 @@ name|pending
 operator|.
 name|isEmpty
 argument_list|()
-operator|&&
-name|canDispatch
-argument_list|(
-name|node
-argument_list|)
 condition|)
 block|{
 name|dispatch

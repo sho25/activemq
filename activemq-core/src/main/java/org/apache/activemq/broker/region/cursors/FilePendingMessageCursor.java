@@ -144,7 +144,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * perist pending messages pending message (messages awaiting disptach to a consumer) cursor  *   * @version $Revision$  */
+comment|/**  * perist pending messages pending message (messages awaiting disptach to a consumer) cursor  *  * @version $Revision$  */
 end_comment
 
 begin_class

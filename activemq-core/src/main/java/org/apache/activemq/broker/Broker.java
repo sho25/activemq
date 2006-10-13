@@ -77,6 +77,24 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|policy
+operator|.
+name|PendingDurableSubscriberMessageStoragePolicy
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -573,7 +591,7 @@ name|ConnectionContext
 name|getAdminConnectionContext
 parameter_list|()
 function_decl|;
-comment|/**      * Sets the default administration connection context used when configuring the broker on startup or via JMX      */
+comment|/**      * Sets the default administration connection context used when configuring the broker on startup or via JMX      * @param adminConnectionContext       */
 specifier|public
 specifier|abstract
 name|void
@@ -581,6 +599,23 @@ name|setAdminConnectionContext
 parameter_list|(
 name|ConnectionContext
 name|adminConnectionContext
+parameter_list|)
+function_decl|;
+comment|/**      * @return the pendingDurableSubscriberPolicy      */
+specifier|public
+specifier|abstract
+name|PendingDurableSubscriberMessageStoragePolicy
+name|getPendingDurableSubscriberPolicy
+parameter_list|()
+function_decl|;
+comment|/**      * @param pendingDurableSubscriberPolicy the pendingDurableSubscriberPolicy to set      */
+specifier|public
+specifier|abstract
+name|void
+name|setPendingDurableSubscriberPolicy
+parameter_list|(
+name|PendingDurableSubscriberMessageStoragePolicy
+name|pendingDurableSubscriberPolicy
 parameter_list|)
 function_decl|;
 comment|/**      * @return the broker's temp data store      * @throws Exception      */

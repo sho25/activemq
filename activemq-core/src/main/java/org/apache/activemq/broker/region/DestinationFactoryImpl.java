@@ -510,6 +510,11 @@ argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
+name|queue
+operator|.
+name|initialize
+argument_list|()
+expr_stmt|;
 return|return
 name|queue
 return|;

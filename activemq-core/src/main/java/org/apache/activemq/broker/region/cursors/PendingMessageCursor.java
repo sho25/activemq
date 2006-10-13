@@ -211,6 +211,12 @@ name|int
 name|maxBatchSize
 parameter_list|)
 function_decl|;
+comment|/**      * Give the cursor a hint that we are about to remove      * messages from memory only      */
+specifier|public
+name|void
+name|resetForGC
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

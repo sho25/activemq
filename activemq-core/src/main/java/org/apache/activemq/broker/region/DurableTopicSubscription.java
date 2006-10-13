@@ -117,6 +117,24 @@ name|region
 operator|.
 name|cursors
 operator|.
+name|PendingMessageCursor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|cursors
+operator|.
 name|StoreDurableSubscriberCursor
 import|;
 end_import
@@ -266,12 +284,13 @@ name|info
 parameter_list|,
 name|boolean
 name|keepDurableSubsActive
+parameter_list|,
+name|PendingMessageCursor
+name|cursor
 parameter_list|)
 throws|throws
 name|InvalidSelectorException
 block|{
-comment|//super(broker,context, info, new StoreDurableSubscriberCursor(context.getClientId(),info.getSubcriptionName(),broker.getTempDataStore(),info.getPrefetchSize()));
-comment|//super(broker,context, info, new FilePendingMessageCursor(context.getClientId() + info.getConsumerId().toString(),broker.getTempDataStore()));
 name|super
 argument_list|(
 name|broker
@@ -279,6 +298,8 @@ argument_list|,
 name|context
 argument_list|,
 name|info
+argument_list|,
+name|cursor
 argument_list|)
 expr_stmt|;
 name|this

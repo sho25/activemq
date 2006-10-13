@@ -413,7 +413,43 @@ name|region
 operator|.
 name|policy
 operator|.
+name|PendingDurableSubscriberMessageStoragePolicy
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|policy
+operator|.
 name|PolicyMap
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|policy
+operator|.
+name|VMPendingDurableSubscriberMessageStoragePolicy
 import|;
 end_import
 
@@ -1156,6 +1192,14 @@ init|=
 name|Thread
 operator|.
 name|MAX_PRIORITY
+decl_stmt|;
+specifier|private
+name|PendingDurableSubscriberMessageStoragePolicy
+name|pendingDurableSubscriberPolicy
+init|=
+operator|new
+name|VMPendingDurableSubscriberMessageStoragePolicy
+argument_list|()
 decl_stmt|;
 comment|/**      * Adds a new transport connector for the given bind address      *      * @return the newly created and added transport connector      * @throws Exception      */
 specifier|public
@@ -1923,6 +1967,7 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+comment|/*             if(isUseJmx()){                 // yes - this is orer dependent!                 // register all destination in persistence store including inactive destinations as mbeans                 this.startDestinationsInPersistenceStore(broker);             }             */
 name|startAllConnectors
 argument_list|()
 expr_stmt|;
@@ -3829,6 +3874,49 @@ operator|=
 name|persistenceThreadPriority
 expr_stmt|;
 block|}
+comment|/**      * @return the pendingDurableSubscriberPolicy      */
+specifier|public
+name|PendingDurableSubscriberMessageStoragePolicy
+name|getPendingDurableSubscriberPolicy
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|pendingDurableSubscriberPolicy
+return|;
+block|}
+comment|/**      * @param pendingDurableSubscriberPolicy the pendingDurableSubscriberPolicy to set      */
+specifier|public
+name|void
+name|setPendingDurableSubscriberPolicy
+parameter_list|(
+name|PendingDurableSubscriberMessageStoragePolicy
+name|pendingDurableSubscriberPolicy
+parameter_list|)
+block|{
+name|this
+operator|.
+name|pendingDurableSubscriberPolicy
+operator|=
+name|pendingDurableSubscriberPolicy
+expr_stmt|;
+if|if
+condition|(
+name|broker
+operator|!=
+literal|null
+condition|)
+block|{
+name|broker
+operator|.
+name|setPendingDurableSubscriberPolicy
+argument_list|(
+name|pendingDurableSubscriberPolicy
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
 comment|/**      * Handles any lazy-creation helper properties which are added to make      * things easier to configure inside environments such as Spring      *      * @throws Exception      */
@@ -4962,14 +5050,6 @@ name|objectName
 argument_list|)
 expr_stmt|;
 block|}
-comment|//register all destination in persistence store including inactive destinations as mbeans
-name|this
-operator|.
-name|startDestinationsInPersistenceStore
-argument_list|(
-name|broker
-argument_list|)
-expr_stmt|;
 block|}
 return|return
 name|broker
@@ -5136,6 +5216,14 @@ operator|.
 name|setBrokerName
 argument_list|(
 name|getBrokerName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|regionBroker
+operator|.
+name|setPendingDurableSubscriberPolicy
+argument_list|(
+name|getPendingDurableSubscriberPolicy
 argument_list|()
 argument_list|)
 expr_stmt|;
