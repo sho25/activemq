@@ -115,10 +115,19 @@ specifier|public
 name|void
 name|onCommand
 parameter_list|(
-name|Command
-name|command
+name|Object
+name|o
 parameter_list|)
 block|{
+specifier|final
+name|Command
+name|command
+init|=
+operator|(
+name|Command
+operator|)
+name|o
+decl_stmt|;
 comment|// redirect to the endpoint that the last response came from
 name|Endpoint
 name|from

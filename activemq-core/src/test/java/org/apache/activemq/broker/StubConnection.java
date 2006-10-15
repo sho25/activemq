@@ -370,7 +370,7 @@ specifier|protected
 name|void
 name|dispatch
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|)
 throws|throws
@@ -427,7 +427,7 @@ specifier|public
 name|void
 name|onCommand
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|)
 block|{
@@ -741,6 +741,9 @@ block|{
 name|Response
 name|response
 init|=
+operator|(
+name|Response
+operator|)
 name|transport
 operator|.
 name|request

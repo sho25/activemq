@@ -1362,6 +1362,9 @@ block|{
 name|Response
 name|response
 init|=
+operator|(
+name|Response
+operator|)
 name|slave
 operator|.
 name|request

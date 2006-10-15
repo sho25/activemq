@@ -627,7 +627,7 @@ specifier|public
 name|void
 name|oneway
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|)
 throws|throws
@@ -646,7 +646,7 @@ specifier|public
 name|void
 name|oneway
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|,
 name|SocketAddress
@@ -682,14 +682,15 @@ argument_list|)
 expr_stmt|;
 block|}
 name|checkStarted
-argument_list|(
-name|command
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|commandChannel
 operator|.
 name|write
 argument_list|(
+operator|(
+name|Command
+operator|)
 name|command
 argument_list|,
 name|address

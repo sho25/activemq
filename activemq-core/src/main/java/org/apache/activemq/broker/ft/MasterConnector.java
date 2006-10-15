@@ -670,7 +670,7 @@ specifier|public
 name|void
 name|onCommand
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|)
 block|{             }
@@ -712,10 +712,18 @@ specifier|public
 name|void
 name|onCommand
 parameter_list|(
-name|Command
-name|command
+name|Object
+name|o
 parameter_list|)
 block|{
+name|Command
+name|command
+init|=
+operator|(
+name|Command
+operator|)
+name|o
+decl_stmt|;
 if|if
 condition|(
 name|started

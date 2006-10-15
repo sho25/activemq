@@ -25,34 +25,6 @@ name|IOException
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|Command
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|Response
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version $Revision: 1.5 $  */
 end_comment
@@ -192,7 +164,7 @@ specifier|public
 name|void
 name|onCommand
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|)
 block|{
@@ -230,7 +202,7 @@ specifier|public
 name|void
 name|oneway
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|)
 throws|throws
@@ -248,7 +220,7 @@ specifier|public
 name|FutureResponse
 name|asyncRequest
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|,
 name|ResponseCallback
@@ -269,10 +241,10 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|Response
+name|Object
 name|request
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|)
 throws|throws
@@ -288,10 +260,10 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|Response
+name|Object
 name|request
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|,
 name|int

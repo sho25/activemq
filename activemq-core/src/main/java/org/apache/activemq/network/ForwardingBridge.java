@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -365,16 +375,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
 comment|/**  * Forwards all messages from the local broker to the remote broker.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
@@ -524,10 +524,18 @@ specifier|public
 name|void
 name|onCommand
 parameter_list|(
-name|Command
-name|command
+name|Object
+name|o
 parameter_list|)
 block|{
+name|Command
+name|command
+init|=
+operator|(
+name|Command
+operator|)
+name|o
+decl_stmt|;
 name|serviceLocalCommand
 argument_list|(
 name|command
@@ -563,10 +571,18 @@ specifier|public
 name|void
 name|onCommand
 parameter_list|(
-name|Command
-name|command
+name|Object
+name|o
 parameter_list|)
 block|{
+name|Command
+name|command
+init|=
+operator|(
+name|Command
+operator|)
+name|o
+decl_stmt|;
 name|serviceRemoteCommand
 argument_list|(
 name|command

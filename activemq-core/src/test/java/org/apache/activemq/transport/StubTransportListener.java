@@ -55,20 +55,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|Command
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -126,7 +112,7 @@ specifier|public
 name|void
 name|onCommand
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|)
 block|{

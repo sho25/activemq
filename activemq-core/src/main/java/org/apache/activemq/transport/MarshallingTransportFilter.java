@@ -105,7 +105,7 @@ specifier|public
 name|void
 name|oneway
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|)
 throws|throws
@@ -136,7 +136,7 @@ specifier|public
 name|void
 name|onCommand
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|)
 block|{

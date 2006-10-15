@@ -29,34 +29,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|Command
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|Response
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -81,7 +53,7 @@ specifier|public
 name|void
 name|oneway
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|)
 throws|throws
@@ -92,7 +64,7 @@ specifier|public
 name|FutureResponse
 name|asyncRequest
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|,
 name|ResponseCallback
@@ -103,10 +75,10 @@ name|IOException
 function_decl|;
 comment|/**      * A synchronous request response      * @param command       * @return the response      * @throws IOException       */
 specifier|public
-name|Response
+name|Object
 name|request
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|)
 throws|throws
@@ -114,10 +86,10 @@ name|IOException
 function_decl|;
 comment|/**      * A synchronous request response      * @param command       * @param timeout       * @return the repsonse or null if timeout      * @throws IOException       */
 specifier|public
-name|Response
+name|Object
 name|request
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|,
 name|int
@@ -126,6 +98,41 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|//    /**
+comment|//     * A one way asynchronous send
+comment|//     * @param command
+comment|//     * @throws IOException
+comment|//     */
+comment|//    public void oneway(Command command) throws IOException;
+comment|//
+comment|//    /**
+comment|//     * An asynchronous request response where the Receipt will be returned
+comment|//     * in the future.  If responseCallback is not null, then it will be called
+comment|//     * when the response has been completed.
+comment|//     *
+comment|//     * @param command
+comment|//     * @param responseCallback TODO
+comment|//     * @return the FutureResponse
+comment|//     * @throws IOException
+comment|//     */
+comment|//    public FutureResponse asyncRequest(Command command, ResponseCallback responseCallback) throws IOException;
+comment|//
+comment|//    /**
+comment|//     * A synchronous request response
+comment|//     * @param command
+comment|//     * @return the response
+comment|//     * @throws IOException
+comment|//     */
+comment|//    public Response request(Command command) throws IOException;
+comment|//
+comment|//    /**
+comment|//     * A synchronous request response
+comment|//     * @param command
+comment|//     * @param timeout
+comment|//     * @return the repsonse or null if timeout
+comment|//     * @throws IOException
+comment|//     */
+comment|//    public Response request(Command command, int timeout) throws IOException;
 comment|/**      * Returns the current transport listener      * @return       */
 specifier|public
 name|TransportListener
