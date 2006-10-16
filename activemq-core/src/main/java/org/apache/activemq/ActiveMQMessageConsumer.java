@@ -1579,8 +1579,7 @@ argument_list|()
 expr_stmt|;
 name|sendPullCommand
 argument_list|(
-operator|-
-literal|1
+literal|0
 argument_list|)
 expr_stmt|;
 name|MessageDispatch
