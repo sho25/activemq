@@ -775,6 +775,14 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|String
+name|remoteHost
+init|=
+name|transport
+operator|.
+name|getRemoteAddress
+argument_list|()
+decl_stmt|;
 name|ServiceSupport
 operator|.
 name|dispose
@@ -785,6 +793,8 @@ expr_stmt|;
 name|onAcceptError
 argument_list|(
 name|e
+argument_list|,
+name|remoteHost
 argument_list|)
 expr_stmt|;
 block|}
@@ -797,11 +807,44 @@ name|Exception
 name|error
 parameter_list|)
 block|{
+name|onAcceptError
+argument_list|(
+name|error
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|onAcceptError
+parameter_list|(
+name|Exception
+name|error
+parameter_list|,
+name|String
+name|remoteHost
+parameter_list|)
+block|{
 name|log
 operator|.
 name|error
 argument_list|(
-literal|"Could not accept connection: "
+literal|"Could not accept connection "
+operator|+
+operator|(
+name|remoteHost
+operator|==
+literal|null
+condition|?
+literal|""
+else|:
+literal|"from "
+operator|+
+name|remoteHost
+operator|)
+operator|+
+literal|": "
 operator|+
 name|error
 argument_list|,

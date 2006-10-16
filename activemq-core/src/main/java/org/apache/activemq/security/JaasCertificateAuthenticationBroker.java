@@ -406,11 +406,20 @@ name|SecurityContext
 name|s
 init|=
 operator|new
-name|JaasSecurityContext
+name|JaasCertificateSecurityContext
 argument_list|(
 name|dnName
 argument_list|,
 name|subject
+argument_list|,
+operator|(
+name|X509Certificate
+index|[]
+operator|)
+name|info
+operator|.
+name|getTransportContext
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|context
@@ -431,7 +440,12 @@ throw|throw
 operator|new
 name|SecurityException
 argument_list|(
-literal|"User name or password is invalid."
+literal|"User name or password is invalid: "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|,
 name|e
 argument_list|)

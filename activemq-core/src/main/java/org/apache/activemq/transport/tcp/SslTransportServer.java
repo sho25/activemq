@@ -146,7 +146,7 @@ name|wantClientAuth
 init|=
 literal|false
 decl_stmt|;
-comment|/**      * Constructor.      *       * @param transportFactory The factory used to create transports when connections arrive.      * @param location The location of the broker to bind to.      * @param serverSocketFactory The factory used to create this server.      * @param needClientAuth States if this server should needClientAuth.      * @throws IOException passed up from TcpTransportFactory.      * @throws URISyntaxException passed up from TcpTransportFactory.      */
+comment|/**      * Creates a ssl transport server for the specified url using the provided      * serverSocketFactory      *       * @param transportFactory The factory used to create transports when connections arrive.      * @param location The location of the broker to bind to.      * @param serverSocketFactory The factory used to create this server.      * @throws IOException passed up from TcpTransportFactory.      * @throws URISyntaxException passed up from TcpTransportFactory.      */
 specifier|public
 name|SslTransportServer
 parameter_list|(
@@ -174,7 +174,7 @@ name|serverSocketFactory
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Setter for needClientAuth.      *       * When set to true, needClientAuth will set SSLSockets' needClientAuth to true forcing clients to provide      *      client certificates.      */
+comment|/**      * Sets whether client authentication should be required      * Must be called before {@link #bind()}      * Note: Calling this method clears the wantClientAuth flag      * in the underlying implementation.      */
 specifier|public
 name|void
 name|setNeedClientAuth
@@ -190,7 +190,7 @@ operator|=
 name|needAuth
 expr_stmt|;
 block|}
-comment|/**      * Getter for needClientAuth.      */
+comment|/**      * Returns whether client authentication should be required.      */
 specifier|public
 name|boolean
 name|getNeedClientAuth
@@ -202,7 +202,7 @@ operator|.
 name|needClientAuth
 return|;
 block|}
-comment|/**      * Getter for wantClientAuth.      */
+comment|/**      * Returns whether client authentication should be requested.      */
 specifier|public
 name|boolean
 name|getWantClientAuth
@@ -214,7 +214,7 @@ operator|.
 name|wantClientAuth
 return|;
 block|}
-comment|/**      * Setter for wantClientAuth.      *       * When set to true, wantClientAuth will set SSLSockets' wantClientAuth to true forcing clients to provide      *      client certificates.      */
+comment|/**      * Sets whether client authentication should be requested.      * Must be called before {@link #bind()}      * Note: Calling this method clears the needClientAuth flag      * in the underlying implementation.      */
 specifier|public
 name|void
 name|setWantClientAuth
