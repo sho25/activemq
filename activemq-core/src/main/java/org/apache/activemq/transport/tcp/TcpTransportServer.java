@@ -844,7 +844,7 @@ name|configuredTransport
 init|=
 name|transportFactory
 operator|.
-name|configure
+name|serverConfigure
 argument_list|(
 name|transport
 argument_list|,
