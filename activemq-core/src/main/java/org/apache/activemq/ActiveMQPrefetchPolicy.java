@@ -287,7 +287,7 @@ return|return
 name|optimizeDurableTopicPrefetch
 return|;
 block|}
-comment|/**      * @param optimizeDurableTopicPrefetch The optimizeDurableTopicPrefetch to set.      */
+comment|/**      * @param optimizeAcknowledgePrefetch The optimizeDurableTopicPrefetch to set.      */
 specifier|public
 name|void
 name|setOptimizeDurableTopicPrefetch

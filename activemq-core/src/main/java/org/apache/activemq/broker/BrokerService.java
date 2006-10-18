@@ -3102,7 +3102,7 @@ return|return
 name|jmsBridgeConnectors
 return|;
 block|}
-comment|/**      * @param jmsBridgeConnectors The jmsBridgeConnectors to set.      */
+comment|/**      * @param jmsConnectors The jmsBridgeConnectors to set.      */
 specifier|public
 name|void
 name|setJmsBridgeConnectors

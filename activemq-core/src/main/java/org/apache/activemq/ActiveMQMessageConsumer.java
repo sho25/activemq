@@ -584,7 +584,7 @@ name|executorService
 init|=
 literal|null
 decl_stmt|;
-comment|/**      * Create a MessageConsumer      *       * @param session      * @param dest      * @param name      * @param selector      * @param prefetch      * @param maximumPendingMessageCount TODO      * @param noLocal      * @param browser      * @param dispatchAsync      * @param value      * @throws JMSException      */
+comment|/**      * Create a MessageConsumer      *       * @param session      * @param dest      * @param name      * @param selector      * @param prefetch      * @param maximumPendingMessageCount TODO      * @param noLocal      * @param browser      * @param dispatchAsync      * @throws JMSException      */
 specifier|public
 name|ActiveMQMessageConsumer
 parameter_list|(
@@ -2800,7 +2800,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Acknowledge all the messages that have been delivered to the client upto      * this point.      *       * @param deliverySequenceId      * @throws JMSException      */
+comment|/**      * Acknowledge all the messages that have been delivered to the client upto      * this point.      *       * @throws JMSException      */
 specifier|public
 name|void
 name|acknowledge
