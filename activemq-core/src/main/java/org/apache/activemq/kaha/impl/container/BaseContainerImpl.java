@@ -308,7 +308,7 @@ name|initialized
 init|=
 literal|false
 decl_stmt|;
-specifier|private
+specifier|protected
 name|String
 name|indexType
 decl_stmt|;

@@ -212,7 +212,7 @@ name|StoreEntry
 name|entry
 parameter_list|)
 function_decl|;
-comment|/**      * Get the Key object from it's location      * @param keyLocation      * @return      */
+comment|/**      * Get the Key object from it's location      * @param keyLocation      * @return the key for the entry      */
 specifier|public
 name|Object
 name|getKey
@@ -221,7 +221,7 @@ name|StoreEntry
 name|keyLocation
 parameter_list|)
 function_decl|;
-comment|/**      * Get the value from it's location      * @param Valuelocation      * @return      */
+comment|/**      * Get the value from it's location      * @param Valuelocation      * @return the Object      */
 specifier|public
 name|Object
 name|getValue
@@ -229,6 +229,21 @@ parameter_list|(
 name|StoreEntry
 name|Valuelocation
 parameter_list|)
+function_decl|;
+comment|/**      * Set the internal index map      * @param map      */
+specifier|public
+name|void
+name|setIndexMap
+parameter_list|(
+name|Map
+name|map
+parameter_list|)
+function_decl|;
+comment|/**      * @return the index map      */
+specifier|public
+name|Map
+name|getIndexMap
+parameter_list|()
 function_decl|;
 block|}
 end_interface

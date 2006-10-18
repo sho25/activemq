@@ -971,10 +971,15 @@ block|{
 name|boolean
 name|result
 init|=
-literal|false
+name|obj
+operator|==
+name|this
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|result
+operator|&&
 name|obj
 operator|!=
 literal|null
