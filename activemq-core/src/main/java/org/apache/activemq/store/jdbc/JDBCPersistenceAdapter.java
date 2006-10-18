@@ -1711,6 +1711,7 @@ return|return
 name|cleanupPeriod
 return|;
 block|}
+comment|/**      * Sets the number of milliseconds until the database is attempted to be cleaned up for durable topics      */
 specifier|public
 name|void
 name|setCleanupPeriod
@@ -1833,6 +1834,7 @@ return|return
 name|createTablesOnStartup
 return|;
 block|}
+comment|/**      * Sets whether or not tables are created on startup      */
 specifier|public
 name|void
 name|setCreateTablesOnStartup
@@ -1857,6 +1859,7 @@ return|return
 name|useDatabaseLock
 return|;
 block|}
+comment|/**      * Sets whether or not an exclusive database lock should be used to enable JDBC Master/Slave. Enabled by default.      */
 specifier|public
 name|void
 name|setUseDatabaseLock
