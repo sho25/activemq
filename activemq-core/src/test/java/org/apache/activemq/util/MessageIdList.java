@@ -353,12 +353,15 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|verbose
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
 condition|)
 block|{
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Received message: "
 operator|+
