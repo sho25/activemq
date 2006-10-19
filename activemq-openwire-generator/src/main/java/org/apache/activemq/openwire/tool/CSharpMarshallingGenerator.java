@@ -3913,7 +3913,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"    public class MarshallerFactory"
+literal|"    public class MarshallerFactory : IMarshallerFactory"
 argument_list|)
 expr_stmt|;
 name|out
@@ -3935,6 +3935,13 @@ operator|.
 name|println
 argument_list|(
 literal|"        {"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"            format.clearMarshallers();"
 argument_list|)
 expr_stmt|;
 name|List
