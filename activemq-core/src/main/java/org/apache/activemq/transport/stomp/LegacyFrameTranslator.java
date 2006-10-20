@@ -394,6 +394,13 @@ operator|.
 name|copy
 argument_list|()
 decl_stmt|;
+name|msg
+operator|.
+name|setReadOnlyBody
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|byte
 index|[]
 name|data
