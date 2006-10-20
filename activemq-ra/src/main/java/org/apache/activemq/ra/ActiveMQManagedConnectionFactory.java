@@ -150,7 +150,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @version $Revisio n$  *   * TODO: Must override equals and hashCode (JCA spec 16.4)  */
+comment|/**  * @version $Revisio n$  *   * TODO: Must override equals and hashCode (JCA spec 16.4)  *   * @org.apache.xbean.XBean element="managedConnectionFactory"    */
 end_comment
 
 begin_class
