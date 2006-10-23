@@ -510,7 +510,7 @@ name|subcriptionName
 init|=
 name|info
 operator|.
-name|getSubcriptionName
+name|getSubscriptionName
 argument_list|()
 decl_stmt|;
 name|SubscriptionKey
@@ -824,7 +824,7 @@ argument_list|()
 argument_list|,
 name|info
 operator|.
-name|getSubcriptionName
+name|getSubscriptionName
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1293,7 +1293,7 @@ argument_list|)
 expr_stmt|;
 name|rc
 operator|.
-name|setSubcriptionName
+name|setSubscriptionName
 argument_list|(
 name|info
 operator|.
@@ -1447,7 +1447,7 @@ argument_list|()
 argument_list|,
 name|info
 operator|.
-name|getSubcriptionName
+name|getSubscriptionName
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1488,7 +1488,7 @@ argument_list|()
 argument_list|,
 name|info
 operator|.
-name|getSubcriptionName
+name|getSubscriptionName
 argument_list|()
 argument_list|,
 name|broker

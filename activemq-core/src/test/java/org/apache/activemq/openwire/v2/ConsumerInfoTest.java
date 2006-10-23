@@ -200,7 +200,7 @@ argument_list|)
 expr_stmt|;
 name|info
 operator|.
-name|setSubcriptionName
+name|setSubscriptionName
 argument_list|(
 literal|"SubcriptionName:4"
 argument_list|)

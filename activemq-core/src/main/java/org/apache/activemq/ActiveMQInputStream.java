@@ -470,7 +470,7 @@ name|this
 operator|.
 name|info
 operator|.
-name|setSubcriptionName
+name|setSubscriptionName
 argument_list|(
 name|name
 argument_list|)

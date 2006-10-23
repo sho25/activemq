@@ -816,7 +816,7 @@ argument_list|)
 expr_stmt|;
 name|info
 operator|.
-name|setSubcriptionName
+name|setSubscriptionName
 argument_list|(
 name|subscriberName
 argument_list|)

@@ -128,7 +128,7 @@ name|selector
 decl_stmt|;
 specifier|protected
 name|String
-name|subcriptionName
+name|subscriptionName
 decl_stmt|;
 specifier|protected
 name|boolean
@@ -300,9 +300,9 @@ name|selector
 expr_stmt|;
 name|info
 operator|.
-name|subcriptionName
+name|subscriptionName
 operator|=
-name|subcriptionName
+name|subscriptionName
 expr_stmt|;
 name|info
 operator|.
@@ -341,7 +341,7 @@ name|isDurable
 parameter_list|()
 block|{
 return|return
-name|subcriptionName
+name|subscriptionName
 operator|!=
 literal|null
 return|;
@@ -539,13 +539,39 @@ block|}
 comment|/**      * Used to identify the name of a durable subscription.      *       * @openwire:property version=1      */
 specifier|public
 name|String
+name|getSubscriptionName
+parameter_list|()
+block|{
+return|return
+name|subscriptionName
+return|;
+block|}
+specifier|public
+name|void
+name|setSubscriptionName
+parameter_list|(
+name|String
+name|durableSubscriptionId
+parameter_list|)
+block|{
+name|this
+operator|.
+name|subscriptionName
+operator|=
+name|durableSubscriptionId
+expr_stmt|;
+block|}
+comment|/**      * @deprecated      * @return @see getSubscriptionName      */
+specifier|public
+name|String
 name|getSubcriptionName
 parameter_list|()
 block|{
 return|return
-name|subcriptionName
+name|subscriptionName
 return|;
 block|}
+comment|/**      * @deprecated      * @see setSubscriptionName      * @param durableSubscriptionId       */
 specifier|public
 name|void
 name|setSubcriptionName
@@ -556,7 +582,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|subcriptionName
+name|subscriptionName
 operator|=
 name|durableSubscriptionId
 expr_stmt|;

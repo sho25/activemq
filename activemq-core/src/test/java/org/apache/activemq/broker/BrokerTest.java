@@ -1854,7 +1854,7 @@ argument_list|)
 expr_stmt|;
 name|consumerInfo1
 operator|.
-name|setSubcriptionName
+name|setSubscriptionName
 argument_list|(
 literal|"test"
 argument_list|)
@@ -2047,7 +2047,7 @@ argument_list|)
 expr_stmt|;
 name|consumerInfo2
 operator|.
-name|setSubcriptionName
+name|setSubscriptionName
 argument_list|(
 literal|"test"
 argument_list|)
@@ -2623,7 +2623,7 @@ condition|)
 block|{
 name|consumerInfo1
 operator|.
-name|setSubcriptionName
+name|setSubscriptionName
 argument_list|(
 literal|"test"
 argument_list|)
@@ -2882,7 +2882,7 @@ condition|)
 block|{
 name|consumerInfo1
 operator|.
-name|setSubcriptionName
+name|setSubscriptionName
 argument_list|(
 literal|"test"
 argument_list|)

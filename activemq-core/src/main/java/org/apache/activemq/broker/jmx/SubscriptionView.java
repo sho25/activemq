@@ -637,7 +637,7 @@ literal|null
 condition|?
 name|info
 operator|.
-name|getSubcriptionName
+name|getSubscriptionName
 argument_list|()
 else|:
 literal|null

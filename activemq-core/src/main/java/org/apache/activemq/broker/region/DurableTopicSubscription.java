@@ -320,7 +320,7 @@ argument_list|()
 argument_list|,
 name|info
 operator|.
-name|getSubcriptionName
+name|getSubscriptionName
 argument_list|()
 argument_list|)
 expr_stmt|;

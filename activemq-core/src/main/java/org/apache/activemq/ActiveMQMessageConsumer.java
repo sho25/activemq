@@ -783,7 +783,7 @@ name|this
 operator|.
 name|info
 operator|.
-name|setSubcriptionName
+name|setSubscriptionName
 argument_list|(
 name|name
 argument_list|)
@@ -1121,7 +1121,7 @@ name|this
 operator|.
 name|info
 operator|.
-name|getSubcriptionName
+name|getSubscriptionName
 argument_list|()
 return|;
 block|}
@@ -1186,7 +1186,7 @@ block|{
 return|return
 name|info
 operator|.
-name|getSubcriptionName
+name|getSubscriptionName
 argument_list|()
 operator|!=
 literal|null

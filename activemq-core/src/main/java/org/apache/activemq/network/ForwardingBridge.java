@@ -846,7 +846,7 @@ argument_list|)
 expr_stmt|;
 name|topicConsumerInfo
 operator|.
-name|setSubcriptionName
+name|setSubscriptionName
 argument_list|(
 literal|"topic-bridge"
 argument_list|)

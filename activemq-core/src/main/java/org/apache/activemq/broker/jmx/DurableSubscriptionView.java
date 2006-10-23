@@ -154,7 +154,7 @@ operator|.
 name|getConsumerInfo
 argument_list|()
 operator|.
-name|getSubcriptionName
+name|getSubscriptionName
 argument_list|()
 expr_stmt|;
 block|}

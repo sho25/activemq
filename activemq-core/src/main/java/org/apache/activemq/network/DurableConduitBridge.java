@@ -262,7 +262,7 @@ operator|.
 name|getLocalInfo
 argument_list|()
 operator|.
-name|setSubcriptionName
+name|setSubscriptionName
 argument_list|(
 name|getSubscriberName
 argument_list|(
@@ -402,7 +402,7 @@ block|{
 comment|// set the subscriber name to something reproducible
 name|info
 operator|.
-name|setSubcriptionName
+name|setSubscriptionName
 argument_list|(
 name|getSubscriberName
 argument_list|(

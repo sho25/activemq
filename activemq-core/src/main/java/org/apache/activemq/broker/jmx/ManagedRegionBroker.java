@@ -1438,7 +1438,7 @@ operator|.
 name|getConsumerInfo
 argument_list|()
 operator|.
-name|getSubcriptionName
+name|getSubscriptionName
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1466,7 +1466,7 @@ operator|.
 name|getConsumerInfo
 argument_list|()
 operator|.
-name|getSubcriptionName
+name|getSubscriptionName
 argument_list|()
 argument_list|)
 expr_stmt|;
