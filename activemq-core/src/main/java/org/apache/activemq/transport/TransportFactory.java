@@ -961,7 +961,7 @@ return|return
 name|transport
 return|;
 block|}
-comment|/**      * Fully configures and adds all need transport filters so that the transport      * can be used by the ActiveMQ message broker.  The main difference between this and the       * configure() method is that the broker does not issue requests to the client so the      * ResponseCorrelator is not needed.      *       * @param transport      * @param wf      * @param options      * @return      * @throws Exception      */
+comment|/**      * Fully configures and adds all need transport filters so that the transport      * can be used by the ActiveMQ message broker.  The main difference between this and the       * configure() method is that the broker does not issue requests to the client so the      * ResponseCorrelator is not needed.      *       * @param transport      * @param format      * @param options      * @return      * @throws Exception      */
 specifier|public
 name|Transport
 name|serverConfigure
