@@ -1850,17 +1850,7 @@ literal|"MESSAGE"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"out: "
-operator|+
-name|frame
-argument_list|)
-expr_stmt|;
+comment|//        System.out.println("out: "+frame);
 name|frame
 operator|=
 literal|"DISCONNECT\n"
