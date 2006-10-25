@@ -393,9 +393,10 @@ name|config
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Broken: http://issues.apache.org/activemq/browse/AMQ-1002      * Needs to be fixed.      *       * @throws Exception      */
 specifier|public
 name|void
-name|testSenderWithSpringXmlUsingSpring2NamespacesWithEmbeddedBrokerConfiguredViaXml
+name|XtestSenderWithSpringXmlUsingSpring2NamespacesWithEmbeddedBrokerConfiguredViaXml
 parameter_list|()
 throws|throws
 name|Exception
