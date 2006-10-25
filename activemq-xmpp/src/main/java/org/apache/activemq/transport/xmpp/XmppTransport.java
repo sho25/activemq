@@ -667,6 +667,7 @@ operator|new
 name|Features
 argument_list|()
 decl_stmt|;
+comment|// TODO support TLS
 comment|//features.getAny().add(new Starttls());
 name|Mechanisms
 name|mechanisms
@@ -675,6 +676,7 @@ operator|new
 name|Mechanisms
 argument_list|()
 decl_stmt|;
+comment|// TODO support SASL
 comment|//mechanisms.getMechanism().add("DIGEST-MD5");
 comment|//mechanisms.getMechanism().add("PLAIN");
 name|features
@@ -692,7 +694,6 @@ argument_list|(
 name|features
 argument_list|)
 expr_stmt|;
-comment|/*                     xmlWriter.flush();                     outputStream.flush();                     */
 block|}
 catch|catch
 parameter_list|(
