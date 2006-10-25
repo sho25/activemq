@@ -211,17 +211,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Looking for generators in : "
-operator|+
-name|classFileDir
-argument_list|)
-expr_stmt|;
+comment|//        System.out.println("Looking for generators in : "+classFileDir);
 name|ArrayList
 name|l
 init|=
@@ -387,20 +377,7 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Processing: "
-operator|+
-name|object
-operator|.
-name|getClass
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//                System.out.println("Processing: "+object.getClass());
 name|object
 operator|.
 name|generateControlFile
@@ -413,24 +390,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Error while processing: "
-operator|+
-name|object
-operator|.
-name|getClass
-argument_list|()
-operator|+
-literal|". Reason: "
-operator|+
-name|e
-argument_list|)
-expr_stmt|;
+comment|//                System.err.println("Error while processing: "+object.getClass() + ". Reason: " + e);
 block|}
 block|}
 block|}
@@ -644,20 +604,7 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Processing: "
-operator|+
-name|object
-operator|.
-name|getClass
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//            System.out.println("Processing: "+object.getClass());
 name|object
 operator|.
 name|assertControlFileIsEqual
