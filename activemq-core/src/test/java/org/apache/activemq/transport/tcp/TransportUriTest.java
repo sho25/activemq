@@ -110,17 +110,7 @@ name|bindAddress
 operator|+
 name|postfix
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Connecting via: "
-operator|+
-name|uri
-argument_list|)
-expr_stmt|;
+comment|//        System.out.println("Connecting via: " + uri);
 name|connection
 operator|=
 operator|new
@@ -154,17 +144,7 @@ name|postfix
 operator|+
 literal|"&minmumWireFormatVersion=65535"
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Connecting via: "
-operator|+
-name|uri
-argument_list|)
-expr_stmt|;
+comment|//        System.out.println("Connecting via: " + uri);
 try|try
 block|{
 name|connection
@@ -192,21 +172,9 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|e
+name|expected
 parameter_list|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Caught expected exception: "
-operator|+
-name|e
-argument_list|)
-expr_stmt|;
-block|}
+block|{         }
 block|}
 specifier|public
 name|void
@@ -224,17 +192,7 @@ name|postfix
 operator|+
 literal|"&cheese=abc"
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Connecting via: "
-operator|+
-name|uri
-argument_list|)
-expr_stmt|;
+comment|//        System.out.println("Connecting via: " + uri);
 try|try
 block|{
 name|connection
@@ -262,21 +220,9 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|e
+name|expected
 parameter_list|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Caught expected exception: "
-operator|+
-name|e
-argument_list|)
-expr_stmt|;
-block|}
+block|{         }
 block|}
 specifier|protected
 name|void
