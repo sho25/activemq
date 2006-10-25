@@ -100,18 +100,7 @@ throws|throws
 name|Exception
 block|{
 comment|// START SNIPPET: example
-name|System
-operator|.
-name|err
-operator|.
-name|print
-argument_list|(
-name|System
-operator|.
-name|getProperties
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//        System.err.print(System.getProperties());
 comment|// we could put these properties into a jndi.properties
 comment|// on the classpath instead
 name|Hashtable
