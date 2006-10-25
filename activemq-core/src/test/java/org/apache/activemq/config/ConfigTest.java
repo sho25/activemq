@@ -551,15 +551,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"Checking journaled JDBC persistence adapter configuration... "
-argument_list|)
-expr_stmt|;
+comment|//        System.out.print("Checking journaled JDBC persistence adapter configuration... ");
 name|File
 name|journalFile
 init|=
@@ -671,15 +663,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Check persistence factory configurations
-name|System
-operator|.
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"Checking persistence adapter factory settings... "
-argument_list|)
-expr_stmt|;
+comment|//            System.out.print("Checking persistence adapter factory settings... ");
 name|JournalPersistenceAdapter
 name|pa
 init|=
@@ -724,15 +708,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"Checking jdbc persistence adapter configuration... "
-argument_list|)
-expr_stmt|;
+comment|//        System.out.print("Checking jdbc persistence adapter configuration... ");
 name|BrokerService
 name|broker
 decl_stmt|;
@@ -885,15 +861,7 @@ name|journalFile
 argument_list|)
 expr_stmt|;
 comment|// Create broker from resource
-name|System
-operator|.
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"Creating broker... "
-argument_list|)
-expr_stmt|;
+comment|//        System.out.print("Creating broker... ");
 name|broker
 operator|=
 name|createBroker
@@ -911,15 +879,7 @@ expr_stmt|;
 try|try
 block|{
 comment|// Check broker configuration
-name|System
-operator|.
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"Checking broker configurations... "
-argument_list|)
-expr_stmt|;
+comment|//            System.out.print("Checking broker configurations... ");
 name|assertEquals
 argument_list|(
 literal|"Broker Config Error (brokerName)"
@@ -1012,15 +972,7 @@ literal|"Success"
 argument_list|)
 expr_stmt|;
 comment|// Check specific vm transport
-name|System
-operator|.
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"Checking vm connector... "
-argument_list|)
-expr_stmt|;
+comment|//            System.out.print("Checking vm connector... ");
 name|assertEquals
 argument_list|(
 literal|"Should have a specific VM Connector"
@@ -1044,15 +996,7 @@ literal|"Success"
 argument_list|)
 expr_stmt|;
 comment|// Check transport connectors list
-name|System
-operator|.
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"Checking transport connectors... "
-argument_list|)
-expr_stmt|;
+comment|//            System.out.print("Checking transport connectors... ");
 name|List
 name|connectors
 init|=
@@ -1142,15 +1086,7 @@ name|TcpTransportServer
 argument_list|)
 expr_stmt|;
 comment|// Check network connectors
-name|System
-operator|.
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"Checking network connectors... "
-argument_list|)
-expr_stmt|;
+comment|//            System.out.print("Checking network connectors... ");
 name|List
 name|networkConnectors
 init|=
@@ -1179,15 +1115,7 @@ literal|"Success"
 argument_list|)
 expr_stmt|;
 comment|// Check dispatch policy configuration
-name|System
-operator|.
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"Checking dispatch policies... "
-argument_list|)
-expr_stmt|;
+comment|//            System.out.print("Checking dispatch policies... ");
 name|dest
 operator|=
 operator|new
@@ -1295,15 +1223,7 @@ literal|"Success"
 argument_list|)
 expr_stmt|;
 comment|// Check subscription policy configuration
-name|System
-operator|.
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"Checking subscription recovery policies... "
-argument_list|)
-expr_stmt|;
+comment|//            System.out.print("Checking subscription recovery policies... ");
 name|SubscriptionRecoveryPolicy
 name|subsPolicy
 decl_stmt|;
@@ -1514,15 +1434,7 @@ literal|"Success"
 argument_list|)
 expr_stmt|;
 comment|// Check usage manager
-name|System
-operator|.
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"Checking memory manager configurations... "
-argument_list|)
-expr_stmt|;
+comment|//            System.out.print("Checking memory manager configurations... ");
 name|UsageManager
 name|memMgr
 init|=
@@ -1604,15 +1516,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"Checking journal persistence adapter configuration... "
-argument_list|)
-expr_stmt|;
+comment|//        System.out.print("Checking journal persistence adapter configuration... ");
 name|File
 name|journalFile
 init|=
@@ -1724,15 +1628,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"Checking memory persistence adapter configuration... "
-argument_list|)
-expr_stmt|;
+comment|//        System.out.print("Checking memory persistence adapter configuration... ");
 name|File
 name|journalFile
 init|=
