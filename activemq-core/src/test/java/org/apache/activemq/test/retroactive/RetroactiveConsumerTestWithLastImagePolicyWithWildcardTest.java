@@ -120,17 +120,7 @@ operator|++
 operator|)
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Sending to destination: "
-operator|+
-name|topic
-argument_list|)
-expr_stmt|;
+comment|//        System.out.println("Sending to destination: " + topic);
 name|producer
 operator|.
 name|send
