@@ -391,7 +391,7 @@ specifier|final
 name|String
 name|DEFAULT_DISCOVERY_URI_STRING
 init|=
-literal|"multicast://224.1.2.3:6155"
+literal|"multicast://239.255.2.3:6155"
 decl_stmt|;
 specifier|private
 specifier|static
