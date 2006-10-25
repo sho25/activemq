@@ -939,15 +939,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Stopping broker"
-argument_list|)
-expr_stmt|;
+comment|//        System.err.println("Stopping broker");
 name|broker
 operator|.
 name|stop
@@ -956,15 +948,7 @@ expr_stmt|;
 name|startBroker
 argument_list|()
 expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Started Broker again"
-argument_list|)
-expr_stmt|;
+comment|//        System.err.println("Started Broker again");
 synchronized|synchronized
 init|(
 name|messagesReceived
