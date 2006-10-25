@@ -356,17 +356,7 @@ operator|.
 name|activeCount
 argument_list|()
 decl_stmt|;
-name|Thread
-operator|.
-name|currentThread
-argument_list|()
-operator|.
-name|getThreadGroup
-argument_list|()
-operator|.
-name|list
-argument_list|()
-expr_stmt|;
+comment|//        Thread.currentThread().getThreadGroup().list();
 name|task
 operator|.
 name|execute
@@ -385,17 +375,7 @@ literal|2000
 argument_list|)
 expr_stmt|;
 comment|// Wait for the threads to exit on their own
-name|Thread
-operator|.
-name|currentThread
-argument_list|()
-operator|.
-name|getThreadGroup
-argument_list|()
-operator|.
-name|list
-argument_list|()
-expr_stmt|;
+comment|//        Thread.currentThread().getThreadGroup().list();
 name|int
 name|activeCount
 init|=
