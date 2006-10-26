@@ -3130,7 +3130,6 @@ operator|.
 name|pendingDurableSubscriberPolicy
 return|;
 block|}
-comment|/**      * @param pendingDurableSubscriberPolicy the pendingDurableSubscriberPolicy to set      */
 specifier|public
 name|void
 name|setPendingDurableSubscriberPolicy
