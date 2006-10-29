@@ -789,7 +789,7 @@ return|return
 name|rc
 return|;
 block|}
-specifier|private
+specifier|public
 specifier|static
 name|boolean
 name|setProperty
