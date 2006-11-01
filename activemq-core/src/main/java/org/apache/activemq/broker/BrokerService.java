@@ -1103,15 +1103,6 @@ specifier|private
 name|Service
 index|[]
 name|services
-init|=
-operator|new
-name|Service
-index|[]
-block|{
-operator|new
-name|CommandAgent
-argument_list|()
-block|}
 decl_stmt|;
 specifier|private
 name|MasterConnector
