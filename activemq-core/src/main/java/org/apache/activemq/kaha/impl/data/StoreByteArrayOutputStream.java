@@ -59,6 +59,20 @@ name|UTFDataFormatException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|ByteSequence
+import|;
+end_import
+
 begin_comment
 comment|/**  * Optimized ByteArrayOutputStream  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
@@ -150,6 +164,24 @@ name|pos
 operator|=
 literal|0
 expr_stmt|;
+block|}
+comment|/**      * Get a ByteSequence from the stream      * @return the byte sequence      */
+specifier|public
+name|ByteSequence
+name|toByteSequence
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ByteSequence
+argument_list|(
+name|buf
+argument_list|,
+literal|0
+argument_list|,
+name|pos
+argument_list|)
+return|;
 block|}
 comment|/**      * Writes the specified byte to this byte array output stream.      *       * @param b the byte to be written.      */
 specifier|public

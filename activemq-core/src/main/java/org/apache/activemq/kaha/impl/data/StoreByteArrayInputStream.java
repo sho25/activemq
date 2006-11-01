@@ -59,6 +59,20 @@ name|UTFDataFormatException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|ByteSequence
+import|;
+end_import
+
 begin_comment
 comment|/**  * Optimized ByteArrayInputStream that can be used more than once  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
@@ -82,7 +96,11 @@ specifier|private
 name|int
 name|pos
 decl_stmt|;
-comment|/**      * Creates a<code>WireByteArrayInputStream</code>.      *       * @param buf the input buffer.      */
+specifier|private
+name|int
+name|offset
+decl_stmt|;
+comment|/**      * Creates a<code>StoreByteArrayInputStream</code>.      *       * @param buf the input buffer.      */
 specifier|public
 name|StoreByteArrayInputStream
 parameter_list|(
@@ -102,6 +120,43 @@ operator|.
 name|pos
 operator|=
 literal|0
+expr_stmt|;
+name|this
+operator|.
+name|offset
+operator|=
+literal|0
+expr_stmt|;
+block|}
+comment|/**      * Creates a<code>StoreByteArrayInputStream</code>.      *       * @param sequence the input buffer.      */
+specifier|public
+name|StoreByteArrayInputStream
+parameter_list|(
+name|ByteSequence
+name|sequence
+parameter_list|)
+block|{
+name|this
+operator|.
+name|buf
+operator|=
+name|sequence
+operator|.
+name|getData
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|offset
+operator|=
+name|this
+operator|.
+name|pos
+operator|=
+name|sequence
+operator|.
+name|getOffset
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Creates<code>WireByteArrayInputStream</code> with a minmalist byte array      */
@@ -119,6 +174,7 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      *       * @return the size      */
 specifier|public
 name|int
 name|size
@@ -126,6 +182,8 @@ parameter_list|()
 block|{
 return|return
 name|pos
+operator|-
+name|offset
 return|;
 block|}
 comment|/**      * @return the underlying data array      */
@@ -139,7 +197,7 @@ return|return
 name|buf
 return|;
 block|}
-comment|/**      * reset the<code>WireByteArrayInputStream</code> to use an new byte array      *       * @param newBuff      */
+comment|/**      * reset the<code>StoreByteArrayInputStream</code> to use an new byte array      *       * @param newBuff      */
 specifier|public
 name|void
 name|restart
@@ -156,6 +214,34 @@ expr_stmt|;
 name|pos
 operator|=
 literal|0
+expr_stmt|;
+block|}
+comment|/**      * reset the<code>StoreByteArrayInputStream</code> to use an new ByteSequence      * @param sequence       *        */
+specifier|public
+name|void
+name|restart
+parameter_list|(
+name|ByteSequence
+name|sequence
+parameter_list|)
+block|{
+name|this
+operator|.
+name|buf
+operator|=
+name|sequence
+operator|.
+name|getData
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|pos
+operator|=
+name|sequence
+operator|.
+name|getOffset
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * re-start the input stream - reusing the current buffer      *       * @param size      */
