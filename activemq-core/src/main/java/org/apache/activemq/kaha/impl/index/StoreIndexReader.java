@@ -47,13 +47,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|kaha
+name|util
 operator|.
-name|impl
-operator|.
-name|data
-operator|.
-name|StoreByteArrayInputStream
+name|DataByteArrayInputStream
 import|;
 end_import
 
@@ -70,7 +66,7 @@ name|RandomAccessFile
 name|file
 decl_stmt|;
 specifier|protected
-name|StoreByteArrayInputStream
+name|DataByteArrayInputStream
 name|dataIn
 decl_stmt|;
 specifier|protected
@@ -104,7 +100,7 @@ operator|.
 name|dataIn
 operator|=
 operator|new
-name|StoreByteArrayInputStream
+name|DataByteArrayInputStream
 argument_list|()
 expr_stmt|;
 block|}

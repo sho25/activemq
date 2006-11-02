@@ -67,6 +67,20 @@ name|StoreLocation
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|DataByteArrayInputStream
+import|;
+end_import
+
 begin_comment
 comment|/**  * Optimized Store reader  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
@@ -81,7 +95,7 @@ name|DataManager
 name|dataManager
 decl_stmt|;
 specifier|private
-name|StoreByteArrayInputStream
+name|DataByteArrayInputStream
 name|dataIn
 decl_stmt|;
 comment|/**      * Construct a Store reader      *       * @param file      */
@@ -102,7 +116,7 @@ operator|.
 name|dataIn
 operator|=
 operator|new
-name|StoreByteArrayInputStream
+name|DataByteArrayInputStream
 argument_list|()
 expr_stmt|;
 block|}

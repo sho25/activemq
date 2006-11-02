@@ -65,13 +65,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|kaha
+name|util
 operator|.
-name|impl
-operator|.
-name|data
-operator|.
-name|StoreByteArrayOutputStream
+name|DataByteArrayOutputStream
 import|;
 end_import
 
@@ -85,11 +81,11 @@ name|StoreIndexWriter
 block|{
 specifier|protected
 specifier|final
-name|StoreByteArrayOutputStream
+name|DataByteArrayOutputStream
 name|dataOut
 init|=
 operator|new
-name|StoreByteArrayOutputStream
+name|DataByteArrayOutputStream
 argument_list|()
 decl_stmt|;
 specifier|protected

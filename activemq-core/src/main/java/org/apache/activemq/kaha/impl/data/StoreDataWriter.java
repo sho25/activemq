@@ -77,6 +77,20 @@ name|StoreLocation
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|DataByteArrayOutputStream
+import|;
+end_import
+
 begin_comment
 comment|/**  * Optimized Store writer  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
@@ -87,7 +101,7 @@ class|class
 name|StoreDataWriter
 block|{
 specifier|private
-name|StoreByteArrayOutputStream
+name|DataByteArrayOutputStream
 name|buffer
 decl_stmt|;
 specifier|private
@@ -112,7 +126,7 @@ operator|.
 name|buffer
 operator|=
 operator|new
-name|StoreByteArrayOutputStream
+name|DataByteArrayOutputStream
 argument_list|()
 expr_stmt|;
 block|}
