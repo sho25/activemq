@@ -23,7 +23,27 @@ name|java
 operator|.
 name|io
 operator|.
+name|DataInput
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|DataInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|DataOutput
 import|;
 end_import
 
@@ -303,7 +323,7 @@ parameter_list|(
 name|Object
 name|command
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|os
 parameter_list|)
 throws|throws
@@ -480,7 +500,7 @@ specifier|public
 name|Object
 name|unmarshal
 parameter_list|(
-name|DataInputStream
+name|DataInput
 name|in
 parameter_list|)
 throws|throws
@@ -942,7 +962,7 @@ specifier|private
 name|String
 name|readLine
 parameter_list|(
-name|DataInputStream
+name|DataInput
 name|in
 parameter_list|,
 name|int

@@ -21,7 +21,27 @@ name|java
 operator|.
 name|io
 operator|.
+name|DataInput
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|DataInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|DataOutput
 import|;
 end_import
 
@@ -96,7 +116,7 @@ parameter_list|,
 name|Object
 name|c
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|ds
 parameter_list|,
 name|BooleanStream
@@ -114,7 +134,7 @@ parameter_list|,
 name|Object
 name|data
 parameter_list|,
-name|DataInputStream
+name|DataInput
 name|dis
 parameter_list|,
 name|BooleanStream
@@ -132,7 +152,7 @@ parameter_list|,
 name|Object
 name|c
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|ds
 parameter_list|)
 throws|throws
@@ -147,7 +167,7 @@ parameter_list|,
 name|Object
 name|data
 parameter_list|,
-name|DataInputStream
+name|DataInput
 name|dis
 parameter_list|)
 throws|throws

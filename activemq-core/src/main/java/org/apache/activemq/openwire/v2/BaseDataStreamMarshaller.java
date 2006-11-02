@@ -23,7 +23,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|DataInputStream
+name|DataInput
 import|;
 end_import
 
@@ -33,7 +33,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|DataOutputStream
+name|DataOutput
 import|;
 end_import
 
@@ -250,7 +250,7 @@ parameter_list|,
 name|Object
 name|o
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|,
 name|BooleanStream
@@ -269,7 +269,7 @@ parameter_list|,
 name|Object
 name|o
 parameter_list|,
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|,
 name|BooleanStream
@@ -410,7 +410,7 @@ parameter_list|,
 name|long
 name|o
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|,
 name|BooleanStream
@@ -487,7 +487,7 @@ parameter_list|(
 name|OpenWireFormat
 name|wireFormat
 parameter_list|,
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|,
 name|BooleanStream
@@ -607,7 +607,7 @@ parameter_list|(
 name|OpenWireFormat
 name|wireFormat
 parameter_list|,
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|,
 name|BooleanStream
@@ -664,7 +664,7 @@ parameter_list|,
 name|DataStructure
 name|o
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|,
 name|BooleanStream
@@ -692,7 +692,7 @@ parameter_list|(
 name|OpenWireFormat
 name|wireFormat
 parameter_list|,
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|,
 name|BooleanStream
@@ -890,7 +890,7 @@ parameter_list|,
 name|DataStructure
 name|o
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|,
 name|BooleanStream
@@ -983,7 +983,7 @@ parameter_list|(
 name|OpenWireFormat
 name|wireFormat
 parameter_list|,
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|,
 name|BooleanStream
@@ -1505,7 +1505,7 @@ parameter_list|,
 name|Throwable
 name|o
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|,
 name|BooleanStream
@@ -1668,7 +1668,7 @@ specifier|protected
 name|String
 name|tightUnmarshalString
 parameter_list|(
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|,
 name|BooleanStream
@@ -1935,7 +1935,7 @@ parameter_list|(
 name|String
 name|value
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|,
 name|BooleanStream
@@ -2092,7 +2092,7 @@ name|DataStructure
 index|[]
 name|objects
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|,
 name|BooleanStream
@@ -2181,7 +2181,7 @@ name|byte
 index|[]
 name|data
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|,
 name|BooleanStream
@@ -2210,7 +2210,7 @@ name|byte
 index|[]
 name|tightUnmarshalConstByteArray
 parameter_list|(
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|,
 name|BooleanStream
@@ -2296,7 +2296,7 @@ name|byte
 index|[]
 name|data
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|,
 name|BooleanStream
@@ -2336,7 +2336,7 @@ name|byte
 index|[]
 name|tightUnmarshalByteArray
 parameter_list|(
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|,
 name|BooleanStream
@@ -2439,7 +2439,7 @@ parameter_list|(
 name|ByteSequence
 name|data
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|,
 name|BooleanStream
@@ -2492,7 +2492,7 @@ specifier|protected
 name|ByteSequence
 name|tightUnmarshalByteSequence
 parameter_list|(
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|,
 name|BooleanStream
@@ -2568,7 +2568,7 @@ parameter_list|,
 name|Object
 name|o
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|)
 throws|throws
@@ -2584,7 +2584,7 @@ parameter_list|,
 name|Object
 name|o
 parameter_list|,
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|)
 throws|throws
@@ -2600,7 +2600,7 @@ parameter_list|,
 name|long
 name|o
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|)
 throws|throws
@@ -2621,7 +2621,7 @@ parameter_list|(
 name|OpenWireFormat
 name|wireFormat
 parameter_list|,
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|)
 throws|throws
@@ -2641,7 +2641,7 @@ parameter_list|(
 name|OpenWireFormat
 name|wireFormat
 parameter_list|,
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|)
 throws|throws
@@ -2666,7 +2666,7 @@ parameter_list|,
 name|DataStructure
 name|o
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|)
 throws|throws
@@ -2689,7 +2689,7 @@ parameter_list|(
 name|OpenWireFormat
 name|wireFormat
 parameter_list|,
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|)
 throws|throws
@@ -2784,7 +2784,7 @@ parameter_list|,
 name|DataStructure
 name|o
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|)
 throws|throws
@@ -2887,7 +2887,7 @@ parameter_list|(
 name|OpenWireFormat
 name|wireFormat
 parameter_list|,
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|)
 throws|throws
@@ -3123,7 +3123,7 @@ parameter_list|,
 name|Throwable
 name|o
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|)
 throws|throws
@@ -3279,7 +3279,7 @@ specifier|protected
 name|String
 name|looseUnmarshalString
 parameter_list|(
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|)
 throws|throws
@@ -3314,7 +3314,7 @@ parameter_list|(
 name|String
 name|value
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|)
 throws|throws
@@ -3356,7 +3356,7 @@ name|DataStructure
 index|[]
 name|objects
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|)
 throws|throws
@@ -3430,7 +3430,7 @@ name|byte
 index|[]
 name|data
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|,
 name|int
@@ -3456,7 +3456,7 @@ name|byte
 index|[]
 name|looseUnmarshalConstByteArray
 parameter_list|(
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|,
 name|int
@@ -3497,7 +3497,7 @@ name|byte
 index|[]
 name|data
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|)
 throws|throws
@@ -3542,7 +3542,7 @@ name|byte
 index|[]
 name|looseUnmarshalByteArray
 parameter_list|(
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|)
 throws|throws
@@ -3600,7 +3600,7 @@ parameter_list|,
 name|ByteSequence
 name|data
 parameter_list|,
-name|DataOutputStream
+name|DataOutput
 name|dataOut
 parameter_list|)
 throws|throws
@@ -3658,7 +3658,7 @@ specifier|protected
 name|ByteSequence
 name|looseUnmarshalByteSequence
 parameter_list|(
-name|DataInputStream
+name|DataInput
 name|dataIn
 parameter_list|)
 throws|throws

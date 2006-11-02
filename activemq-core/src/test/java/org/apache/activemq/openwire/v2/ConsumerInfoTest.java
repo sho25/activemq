@@ -202,7 +202,7 @@ name|info
 operator|.
 name|setSubscriptionName
 argument_list|(
-literal|"SubcriptionName:4"
+literal|"SubscriptionName:4"
 argument_list|)
 expr_stmt|;
 name|info
