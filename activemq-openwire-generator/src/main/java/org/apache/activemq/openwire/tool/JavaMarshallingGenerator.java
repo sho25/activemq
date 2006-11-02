@@ -284,14 +284,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"import java.io.DataInputStream;"
+literal|"import java.io.DataInput;"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"import java.io.DataOutputStream;"
+literal|"import java.io.DataOutput;"
 argument_list|)
 expr_stmt|;
 name|out
@@ -716,7 +716,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"    public void tightUnmarshal(OpenWireFormat wireFormat, Object o, DataInputStream dataIn, BooleanStream bs) throws IOException {"
+literal|"    public void tightUnmarshal(OpenWireFormat wireFormat, Object o, DataInput dataIn, BooleanStream bs) throws IOException {"
 argument_list|)
 expr_stmt|;
 name|out
@@ -1046,7 +1046,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"    public void tightMarshal2(OpenWireFormat wireFormat, Object o, DataOutputStream dataOut, BooleanStream bs) throws IOException {"
+literal|"    public void tightMarshal2(OpenWireFormat wireFormat, Object o, DataOutput dataOut, BooleanStream bs) throws IOException {"
 argument_list|)
 expr_stmt|;
 name|out
@@ -1197,7 +1197,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"    public void looseUnmarshal(OpenWireFormat wireFormat, Object o, DataInputStream dataIn) throws IOException {"
+literal|"    public void looseUnmarshal(OpenWireFormat wireFormat, Object o, DataInput dataIn) throws IOException {"
 argument_list|)
 expr_stmt|;
 name|out
@@ -1355,7 +1355,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"    public void looseMarshal(OpenWireFormat wireFormat, Object o, DataOutputStream dataOut) throws IOException {"
+literal|"    public void looseMarshal(OpenWireFormat wireFormat, Object o, DataOutput dataOut) throws IOException {"
 argument_list|)
 expr_stmt|;
 if|if
