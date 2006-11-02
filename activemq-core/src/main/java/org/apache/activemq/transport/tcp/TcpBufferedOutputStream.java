@@ -83,6 +83,10 @@ name|buffer
 decl_stmt|;
 specifier|private
 name|int
+name|bufferlen
+decl_stmt|;
+specifier|private
+name|int
 name|count
 decl_stmt|;
 specifier|private
@@ -144,6 +148,10 @@ index|[
 name|size
 index|]
 expr_stmt|;
+name|bufferlen
+operator|=
+name|size
+expr_stmt|;
 block|}
 comment|/**      * write a byte on to the stream      *      * @param b - byte to write      * @throws IOException      */
 specifier|public
@@ -156,13 +164,13 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|checkClosed
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
-name|availableBufferToWrite
-argument_list|()
+operator|(
+name|bufferlen
+operator|-
+name|count
+operator|)
 operator|<
 literal|1
 condition|)
@@ -201,13 +209,13 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|checkClosed
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
-name|availableBufferToWrite
-argument_list|()
+operator|(
+name|bufferlen
+operator|-
+name|count
+operator|)
 operator|<
 name|len
 condition|)
@@ -315,7 +323,8 @@ literal|true
 expr_stmt|;
 block|}
 comment|/**      * Checks that the stream has not been closed      *      * @throws IOException      */
-specifier|protected
+specifier|private
+specifier|final
 name|void
 name|checkClosed
 parameter_list|()
@@ -335,20 +344,6 @@ literal|"Cannot write to the stream any more it has already been closed"
 argument_list|)
 throw|;
 block|}
-block|}
-comment|/**      * @return the amount free space in the buffer      */
-specifier|private
-name|int
-name|availableBufferToWrite
-parameter_list|()
-block|{
-return|return
-name|buffer
-operator|.
-name|length
-operator|-
-name|count
-return|;
 block|}
 block|}
 end_class
