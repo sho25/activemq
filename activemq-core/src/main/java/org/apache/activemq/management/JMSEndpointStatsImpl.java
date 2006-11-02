@@ -509,6 +509,11 @@ name|void
 name|onMessage
 parameter_list|()
 block|{
+if|if
+condition|(
+name|enabled
+condition|)
+block|{
 name|long
 name|start
 init|=
@@ -539,6 +544,7 @@ operator|-
 name|start
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void

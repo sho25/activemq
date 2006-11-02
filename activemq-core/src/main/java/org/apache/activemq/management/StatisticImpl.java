@@ -62,6 +62,12 @@ specifier|private
 name|long
 name|lastSampleTime
 decl_stmt|;
+specifier|protected
+name|boolean
+name|enabled
+init|=
+literal|true
+decl_stmt|;
 specifier|public
 name|StatisticImpl
 parameter_list|(
@@ -229,6 +235,34 @@ block|{
 return|return
 name|lastSampleTime
 return|;
+block|}
+comment|/**      * @return the enabled      */
+specifier|public
+name|boolean
+name|isEnabled
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|enabled
+return|;
+block|}
+comment|/**      * @param enabled the enabled to set      */
+specifier|public
+name|void
+name|setEnabled
+parameter_list|(
+name|boolean
+name|enabled
+parameter_list|)
+block|{
+name|this
+operator|.
+name|enabled
+operator|=
+name|enabled
+expr_stmt|;
 block|}
 specifier|protected
 specifier|synchronized

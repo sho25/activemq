@@ -2853,6 +2853,40 @@ operator|=
 name|sessionTaskRunner
 expr_stmt|;
 block|}
+comment|/**      * @return the statsEnabled      */
+specifier|public
+name|boolean
+name|isStatsEnabled
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|stats
+operator|.
+name|isEnabled
+argument_list|()
+return|;
+block|}
+comment|/**      * @param statsEnabled the statsEnabled to set      */
+specifier|public
+name|void
+name|setStatsEnabled
+parameter_list|(
+name|boolean
+name|statsEnabled
+parameter_list|)
+block|{
+name|this
+operator|.
+name|stats
+operator|.
+name|setEnabled
+argument_list|(
+name|statsEnabled
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
 comment|/**      * Used internally for adding Sessions to the Connection      *       * @param session      * @throws JMSException       * @throws JMSException      */
