@@ -330,7 +330,15 @@ specifier|protected
 name|int
 name|socketBufferSize
 init|=
-literal|128
+literal|64
+operator|*
+literal|1024
+decl_stmt|;
+specifier|protected
+name|int
+name|ioBufferSize
+init|=
+literal|8
 operator|*
 literal|1024
 decl_stmt|;
@@ -848,6 +856,34 @@ operator|=
 name|tcpNoDelay
 expr_stmt|;
 block|}
+comment|/**      * @return the ioBufferSize      */
+specifier|public
+name|int
+name|getIoBufferSize
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|ioBufferSize
+return|;
+block|}
+comment|/**      * @param ioBufferSize the ioBufferSize to set      */
+specifier|public
+name|void
+name|setIoBufferSize
+parameter_list|(
+name|int
+name|ioBufferSize
+parameter_list|)
+block|{
+name|this
+operator|.
+name|ioBufferSize
+operator|=
+name|ioBufferSize
+expr_stmt|;
+block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
 specifier|protected
@@ -1303,9 +1339,7 @@ operator|.
 name|getInputStream
 argument_list|()
 argument_list|,
-literal|8
-operator|*
-literal|1024
+name|ioBufferSize
 argument_list|)
 decl_stmt|;
 name|this
@@ -1329,9 +1363,7 @@ operator|.
 name|getOutputStream
 argument_list|()
 argument_list|,
-literal|16
-operator|*
-literal|1024
+name|ioBufferSize
 argument_list|)
 decl_stmt|;
 name|this
