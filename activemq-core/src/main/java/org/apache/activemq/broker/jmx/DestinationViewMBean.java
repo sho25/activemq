@@ -106,7 +106,13 @@ name|long
 name|getEnqueueCount
 parameter_list|()
 function_decl|;
-comment|/**      * @return The number of messages that have been received from the destination.      */
+comment|/**      * @return The number of messages that have been delivered (potentially not acknowledged) to consumers.      */
+specifier|public
+name|long
+name|getDispatchCount
+parameter_list|()
+function_decl|;
+comment|/**      * @return The number of messages that have been acknowledged from the destination.      */
 specifier|public
 name|long
 name|getDequeueCount
