@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -171,6 +181,14 @@ specifier|public
 name|String
 name|getRemoteAddress
 parameter_list|()
+function_decl|;
+specifier|public
+name|void
+name|serviceExceptionAsync
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
 function_decl|;
 block|}
 end_interface

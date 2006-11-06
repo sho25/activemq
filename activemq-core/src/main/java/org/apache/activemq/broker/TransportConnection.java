@@ -167,6 +167,28 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|edu
+operator|.
+name|emory
+operator|.
+name|mathcs
+operator|.
+name|backport
+operator|.
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicBoolean
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision: 1.8 $  */
 end_comment
@@ -241,6 +263,16 @@ name|MasterBroker
 name|masterBroker
 decl_stmt|;
 comment|//used if this connection is used by a Slave
+specifier|private
+name|AtomicBoolean
+name|stopped
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|(
+literal|false
+argument_list|)
+decl_stmt|;
 comment|/**      * @param connector      * @param transport      * @param broker      * @param taskRunnerFactory - can be null if you want direct dispatch to the transport else commands are sent async.      */
 specifier|public
 name|TransportConnection
@@ -418,7 +450,6 @@ block|}
 block|}
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|stop
 parameter_list|()
@@ -427,6 +458,11 @@ name|Exception
 block|{
 comment|// If we're in the middle of starting
 comment|// then go no further... for now.
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 name|pendingStop
 operator|=
 literal|true
@@ -445,6 +481,31 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+block|}
+if|if
+condition|(
+name|stopped
+operator|.
+name|compareAndSet
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Stopping connection: "
+operator|+
+name|transport
+operator|.
+name|getRemoteAddress
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|connector
 operator|.
 name|onStopped
@@ -509,6 +570,19 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Stopped connection: "
+operator|+
+name|transport
+operator|.
+name|getRemoteAddress
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * @return Returns the blockedCandidate.      */
 specifier|public
@@ -876,7 +950,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|serviceException
+name|serviceExceptionAsync
 argument_list|(
 name|e
 argument_list|)

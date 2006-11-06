@@ -168,7 +168,8 @@ name|channelListener
 operator|==
 literal|null
 condition|)
-name|next
+name|getNext
+argument_list|()
 operator|.
 name|setTransportListener
 argument_list|(
@@ -176,7 +177,8 @@ literal|null
 argument_list|)
 expr_stmt|;
 else|else
-name|next
+name|getNext
+argument_list|()
 operator|.
 name|setTransportListener
 argument_list|(
@@ -194,7 +196,8 @@ name|Exception
 block|{
 if|if
 condition|(
-name|next
+name|getNext
+argument_list|()
 operator|==
 literal|null
 condition|)
@@ -218,7 +221,8 @@ argument_list|(
 literal|"The command listener has not been set."
 argument_list|)
 throw|;
-name|next
+name|getNext
+argument_list|()
 operator|.
 name|start
 argument_list|()
@@ -232,13 +236,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|next
+name|getNext
+argument_list|()
 operator|.
 name|stop
 argument_list|()
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|public
 name|void
 name|onCommand
@@ -247,7 +251,8 @@ name|Object
 name|command
 parameter_list|)
 block|{
-name|transportListener
+name|getTransportListener
+argument_list|()
 operator|.
 name|onCommand
 argument_list|(
@@ -255,7 +260,7 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @return Returns the next.      */
+comment|/**      * @return Returns the getNext().      */
 specifier|synchronized
 specifier|public
 name|Transport
@@ -277,20 +282,19 @@ return|return
 name|transportListener
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|String
 name|toString
 parameter_list|()
 block|{
 return|return
-name|next
+name|getNext
+argument_list|()
 operator|.
 name|toString
 argument_list|()
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|void
 name|oneway
@@ -301,7 +305,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|next
+name|getNext
+argument_list|()
 operator|.
 name|oneway
 argument_list|(
@@ -309,7 +314,6 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|public
 name|FutureResponse
 name|asyncRequest
@@ -324,7 +328,8 @@ throws|throws
 name|IOException
 block|{
 return|return
-name|next
+name|getNext
+argument_list|()
 operator|.
 name|asyncRequest
 argument_list|(
@@ -334,7 +339,6 @@ literal|null
 argument_list|)
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Object
 name|request
@@ -346,7 +350,8 @@ throws|throws
 name|IOException
 block|{
 return|return
-name|next
+name|getNext
+argument_list|()
 operator|.
 name|request
 argument_list|(
@@ -368,7 +373,8 @@ throws|throws
 name|IOException
 block|{
 return|return
-name|next
+name|getNext
+argument_list|()
 operator|.
 name|request
 argument_list|(
@@ -378,7 +384,6 @@ name|timeout
 argument_list|)
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|void
 name|onException
@@ -387,7 +392,8 @@ name|IOException
 name|error
 parameter_list|)
 block|{
-name|transportListener
+name|getTransportListener
+argument_list|()
 operator|.
 name|onException
 argument_list|(
@@ -395,7 +401,6 @@ name|error
 argument_list|)
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|public
 name|Object
 name|narrow
@@ -420,7 +425,8 @@ name|this
 return|;
 block|}
 return|return
-name|next
+name|getNext
+argument_list|()
 operator|.
 name|narrow
 argument_list|(
@@ -444,7 +450,6 @@ operator|=
 name|next
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|public
 name|void
 name|install
@@ -480,7 +485,8 @@ name|getRemoteAddress
 parameter_list|()
 block|{
 return|return
-name|next
+name|getNext
+argument_list|()
 operator|.
 name|getRemoteAddress
 argument_list|()

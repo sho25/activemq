@@ -75,18 +75,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|ActiveMQConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|broker
 operator|.
 name|Broker
@@ -104,24 +92,6 @@ operator|.
 name|broker
 operator|.
 name|ConnectionContext
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|region
-operator|.
-name|cursors
-operator|.
-name|FilePendingMessageCursor
 import|;
 end_import
 
@@ -1440,15 +1410,15 @@ throw|;
 block|}
 else|else
 block|{
-throw|throw
-operator|new
-name|JMSException
+name|log
+operator|.
+name|debug
 argument_list|(
-literal|"Invalid acknowledgment: "
+literal|"Acknowledgment out of sync (Normally occurs when failover connection reconnects): "
 operator|+
 name|ack
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 block|}
 comment|/**      * @param context      * @param node      * @throws IOException      * @throws Exception      */
@@ -2055,7 +2025,7 @@ operator|.
 name|getConnection
 argument_list|()
 operator|.
-name|serviceException
+name|serviceExceptionAsync
 argument_list|(
 name|e
 argument_list|)

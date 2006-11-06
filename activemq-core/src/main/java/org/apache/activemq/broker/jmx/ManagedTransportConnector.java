@@ -219,14 +219,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|String
-name|connectionId
-init|=
-literal|""
-operator|+
-name|getNextConnectionId
-argument_list|()
-decl_stmt|;
 return|return
 operator|new
 name|ManagedTransportConnection
@@ -249,8 +241,6 @@ argument_list|,
 name|mbeanServer
 argument_list|,
 name|connectorName
-argument_list|,
-name|connectionId
 argument_list|)
 return|;
 block|}
