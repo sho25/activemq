@@ -247,6 +247,13 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|info
+operator|.
+name|setConnectionId
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

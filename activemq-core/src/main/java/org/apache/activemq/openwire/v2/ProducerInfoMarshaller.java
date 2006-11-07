@@ -302,6 +302,16 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+name|info
+operator|.
+name|setDispatchAsync
+argument_list|(
+name|bs
+operator|.
+name|readBoolean
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Write the booleans that this object uses to a BooleanStream      */
 specifier|public
@@ -388,6 +398,16 @@ name|getBrokerPath
 argument_list|()
 argument_list|,
 name|bs
+argument_list|)
+expr_stmt|;
+name|bs
+operator|.
+name|writeBoolean
+argument_list|(
+name|info
+operator|.
+name|isDispatchAsync
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -484,6 +504,11 @@ name|dataOut
 argument_list|,
 name|bs
 argument_list|)
+expr_stmt|;
+name|bs
+operator|.
+name|readBoolean
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Un-marshal an object instance from the data input stream      *      * @param o the object to un-marshal      * @param dataIn the data input stream to build the object from      * @throws IOException      */
@@ -667,6 +692,16 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+name|info
+operator|.
+name|setDispatchAsync
+argument_list|(
+name|dataIn
+operator|.
+name|readBoolean
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Write the booleans that this object uses to a BooleanStream      */
 specifier|public
@@ -744,6 +779,16 @@ name|getBrokerPath
 argument_list|()
 argument_list|,
 name|dataOut
+argument_list|)
+expr_stmt|;
+name|dataOut
+operator|.
+name|writeBoolean
+argument_list|(
+name|info
+operator|.
+name|isDispatchAsync
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

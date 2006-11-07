@@ -208,6 +208,13 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+name|info
+operator|.
+name|setDispatchAsync
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
