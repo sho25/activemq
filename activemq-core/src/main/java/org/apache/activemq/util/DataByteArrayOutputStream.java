@@ -350,6 +350,8 @@ parameter_list|)
 block|{
 name|ensureEnoughBuffer
 argument_list|(
+name|pos
+operator|+
 literal|1
 argument_list|)
 expr_stmt|;
@@ -381,6 +383,8 @@ parameter_list|)
 block|{
 name|ensureEnoughBuffer
 argument_list|(
+name|pos
+operator|+
 literal|1
 argument_list|)
 expr_stmt|;
@@ -410,6 +414,8 @@ parameter_list|)
 block|{
 name|ensureEnoughBuffer
 argument_list|(
+name|pos
+operator|+
 literal|2
 argument_list|)
 expr_stmt|;
@@ -454,6 +460,8 @@ parameter_list|)
 block|{
 name|ensureEnoughBuffer
 argument_list|(
+name|pos
+operator|+
 literal|2
 argument_list|)
 expr_stmt|;
@@ -498,6 +506,8 @@ parameter_list|)
 block|{
 name|ensureEnoughBuffer
 argument_list|(
+name|pos
+operator|+
 literal|4
 argument_list|)
 expr_stmt|;
@@ -572,6 +582,8 @@ parameter_list|)
 block|{
 name|ensureEnoughBuffer
 argument_list|(
+name|pos
+operator|+
 literal|8
 argument_list|)
 expr_stmt|;
@@ -958,6 +970,8 @@ argument_list|)
 throw|;
 name|ensureEnoughBuffer
 argument_list|(
+name|pos
+operator|+
 name|encodedsize
 operator|+
 literal|2
