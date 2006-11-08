@@ -228,7 +228,7 @@ name|failure
 decl_stmt|;
 specifier|public
 name|void
-name|xtestWithReciever
+name|testWithReciever
 parameter_list|()
 throws|throws
 name|Throwable
@@ -691,7 +691,10 @@ name|info
 argument_list|(
 literal|"Rolling Back message: "
 operator|+
-name|value
+name|ackCounter
+operator|.
+name|get
+argument_list|()
 operator|+
 literal|" id: "
 operator|+
@@ -718,7 +721,10 @@ name|info
 argument_list|(
 literal|"Received message: "
 operator|+
-name|value
+name|ackCounter
+operator|.
+name|get
+argument_list|()
 operator|+
 literal|" id: "
 operator|+

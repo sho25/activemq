@@ -57,7 +57,7 @@ specifier|protected
 name|int
 name|maximumRedeliveries
 init|=
-literal|5
+literal|6
 decl_stmt|;
 specifier|protected
 name|long

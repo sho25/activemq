@@ -280,7 +280,30 @@ operator|.
 name|rollback
 argument_list|()
 expr_stmt|;
-comment|// Show re-delivery delay is incrementing.
+comment|// No delay on first rollback..
+name|m
+operator|=
+operator|(
+name|TextMessage
+operator|)
+name|consumer
+operator|.
+name|receive
+argument_list|(
+literal|100
+argument_list|)
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+name|m
+argument_list|)
+expr_stmt|;
+name|session
+operator|.
+name|rollback
+argument_list|()
+expr_stmt|;
+comment|// Show subsequent re-delivery delay is incrementing.
 name|m
 operator|=
 operator|(
@@ -530,7 +553,30 @@ operator|.
 name|rollback
 argument_list|()
 expr_stmt|;
-comment|// Show re-delivery delay is incrementing.
+comment|// No delay on first rollback..
+name|m
+operator|=
+operator|(
+name|TextMessage
+operator|)
+name|consumer
+operator|.
+name|receive
+argument_list|(
+literal|100
+argument_list|)
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+name|m
+argument_list|)
+expr_stmt|;
+name|session
+operator|.
+name|rollback
+argument_list|()
+expr_stmt|;
+comment|// Show subsequent re-delivery delay is incrementing.
 name|m
 operator|=
 operator|(

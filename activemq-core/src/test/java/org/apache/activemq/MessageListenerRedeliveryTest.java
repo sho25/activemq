@@ -246,7 +246,7 @@ name|redeliveryPolicy
 operator|.
 name|setMaximumRedeliveries
 argument_list|(
-literal|2
+literal|3
 argument_list|)
 expr_stmt|;
 name|redeliveryPolicy
@@ -357,7 +357,7 @@ if|if
 condition|(
 name|counter
 operator|<=
-literal|3
+literal|4
 condition|)
 block|{
 name|log
@@ -537,10 +537,11 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{          }
-comment|// first try
+comment|// first try.. should get 2 since there is no delay on the
+comment|// first redeliver..
 name|assertEquals
 argument_list|(
-literal|1
+literal|2
 argument_list|,
 name|listener
 operator|.
@@ -563,10 +564,10 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{          }
-comment|// second try (redelivery after 1 sec)
+comment|// 2nd redeliver (redelivery after 1 sec)
 name|assertEquals
 argument_list|(
-literal|2
+literal|3
 argument_list|,
 name|listener
 operator|.
@@ -589,10 +590,10 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{          }
-comment|// third try (redelivery after 2 seconds) - it should give up after that
+comment|// 3rd redeliver (redelivery after 2 seconds) - it should give up after that
 name|assertEquals
 argument_list|(
-literal|3
+literal|4
 argument_list|,
 name|listener
 operator|.
@@ -636,7 +637,7 @@ block|}
 comment|// it should be committed, so no redelivery
 name|assertEquals
 argument_list|(
-literal|4
+literal|5
 argument_list|,
 name|listener
 operator|.
@@ -664,7 +665,7 @@ block|}
 comment|// no redelivery, counter should still be 4
 name|assertEquals
 argument_list|(
-literal|4
+literal|5
 argument_list|,
 name|listener
 operator|.
@@ -807,7 +808,7 @@ block|{          }
 comment|// first try
 name|assertEquals
 argument_list|(
-literal|1
+literal|2
 argument_list|,
 name|listener
 operator|.
@@ -833,7 +834,7 @@ block|{          }
 comment|// second try (redelivery after 1 sec)
 name|assertEquals
 argument_list|(
-literal|2
+literal|3
 argument_list|,
 name|listener
 operator|.
@@ -859,7 +860,7 @@ block|{          }
 comment|// third try (redelivery after 2 seconds) - it should give up after that
 name|assertEquals
 argument_list|(
-literal|3
+literal|4
 argument_list|,
 name|listener
 operator|.
@@ -903,7 +904,7 @@ block|}
 comment|// it should be committed, so no redelivery
 name|assertEquals
 argument_list|(
-literal|4
+literal|5
 argument_list|,
 name|listener
 operator|.
@@ -931,7 +932,7 @@ block|}
 comment|// no redelivery, counter should still be 4
 name|assertEquals
 argument_list|(
-literal|4
+literal|5
 argument_list|,
 name|listener
 operator|.
