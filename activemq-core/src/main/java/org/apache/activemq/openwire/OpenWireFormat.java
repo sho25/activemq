@@ -601,6 +601,7 @@ name|version
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|ByteSequence
 name|marshal
 parameter_list|(
@@ -963,6 +964,7 @@ name|sequence
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|Object
 name|unmarshal
 parameter_list|(
@@ -1053,6 +1055,7 @@ name|command
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|marshal
 parameter_list|(
