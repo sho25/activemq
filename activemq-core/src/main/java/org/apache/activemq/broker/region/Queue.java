@@ -1011,6 +1011,31 @@ init|(
 name|consumers
 init|)
 block|{
+if|if
+condition|(
+name|sub
+operator|.
+name|getConsumerInfo
+argument_list|()
+operator|.
+name|isExclusive
+argument_list|()
+condition|)
+block|{
+comment|// Add to front of list to ensure that an exclusive consumer gets all messages
+comment|// before non-exclusive consumers
+name|consumers
+operator|.
+name|add
+argument_list|(
+literal|0
+argument_list|,
+name|sub
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|consumers
 operator|.
 name|add
