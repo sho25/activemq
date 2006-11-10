@@ -1893,6 +1893,33 @@ name|ensureConnectionInfoSent
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Sets the default client id that the connection will use if explicitly not set with      * the setClientId() call.      */
+specifier|public
+name|void
+name|setDefaultClientID
+parameter_list|(
+name|String
+name|clientID
+parameter_list|)
+throws|throws
+name|JMSException
+block|{
+name|this
+operator|.
+name|info
+operator|.
+name|setClientId
+argument_list|(
+name|clientID
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|userSpecifiedClientID
+operator|=
+literal|true
+expr_stmt|;
+block|}
 comment|/**      * Gets the metadata for this connection.      *       * @return the connection metadata      * @throws JMSException      *             if the JMS provider fails to get the connection metadata for      *             this connection.      * @see javax.jms.ConnectionMetaData      */
 specifier|public
 name|ConnectionMetaData

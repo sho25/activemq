@@ -1102,7 +1102,7 @@ literal|null
 condition|)
 name|connection
 operator|.
-name|setClientID
+name|setDefaultClientID
 argument_list|(
 name|clientID
 argument_list|)
