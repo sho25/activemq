@@ -135,6 +135,8 @@ literal|"basedir"
 argument_list|,
 literal|"."
 argument_list|)
+argument_list|,
+literal|"/src/test/resources/activemq.xml"
 argument_list|)
 decl_stmt|;
 name|properties
@@ -145,11 +147,12 @@ name|Context
 operator|.
 name|PROVIDER_URL
 argument_list|,
-literal|"vm://localhost?brokerConfig=xbean:file:"
+literal|"vm://localhost?brokerConfig=xbean:"
 operator|+
 name|f
-operator|+
-literal|"/src/test/resources/activemq.xml"
+operator|.
+name|toURI
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|InitialContext

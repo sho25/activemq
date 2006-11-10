@@ -709,6 +709,23 @@ throws|throws
 name|Exception
 block|{
 comment|//        System.out.print("Checking jdbc persistence adapter configuration... ");
+name|File
+name|derbyFile
+init|=
+operator|new
+name|File
+argument_list|(
+name|DERBY_ROOT
+operator|+
+literal|"testJDBCConfig/derbydb"
+argument_list|)
+decl_stmt|;
+comment|// Default derby name
+name|recursiveDelete
+argument_list|(
+name|derbyFile
+argument_list|)
+expr_stmt|;
 name|BrokerService
 name|broker
 decl_stmt|;
