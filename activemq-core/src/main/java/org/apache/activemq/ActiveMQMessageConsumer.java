@@ -3394,6 +3394,13 @@ block|}
 block|}
 block|}
 block|}
+comment|// yeild here so that a thread trying to stop unconsumedMessages has
+comment|// a chance of getting prioritized head of this thread that is in a dispatch loop.
+name|Thread
+operator|.
+name|yield
+argument_list|()
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
