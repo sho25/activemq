@@ -207,7 +207,16 @@ name|JMSException
 block|{
 try|try
 block|{
+comment|//for Queues - the message can be acknowledged and dropped whilst still
+comment|//in the dispatch loop
 return|return
+name|message
+operator|.
+name|getMessage
+argument_list|()
+operator|!=
+literal|null
+operator|&&
 name|matchesForwardingFilter
 argument_list|(
 name|message
