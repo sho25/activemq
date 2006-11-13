@@ -95,11 +95,13 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Removes all of the messages in the queue.      */
+comment|/**      * Removes all of the messages in the queue.      * @throws Exception       */
 specifier|public
 name|void
 name|purge
 parameter_list|()
+throws|throws
+name|Exception
 function_decl|;
 comment|/**      * Copies a given message to another destination.      *       * @param messageId      * @param destinationName      * @return true if the message was found and was successfully copied to the      *         other destination.      * @throws Exception      */
 specifier|public

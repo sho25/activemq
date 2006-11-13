@@ -177,6 +177,8 @@ specifier|public
 name|void
 name|purge
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 operator|(
 operator|(
