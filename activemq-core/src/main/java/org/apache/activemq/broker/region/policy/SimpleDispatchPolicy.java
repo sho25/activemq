@@ -21,15 +21,21 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|activemq
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|broker
+name|util
 operator|.
-name|ConnectionContext
+name|List
 import|;
 end_import
 
@@ -79,26 +85,6 @@ name|MessageEvaluationContext
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_comment
 comment|/**  * Simple dispatch policy that sends a message to every subscription that   * matches the message.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
@@ -114,9 +100,6 @@ specifier|public
 name|boolean
 name|dispatch
 parameter_list|(
-name|ConnectionContext
-name|context
-parameter_list|,
 name|MessageReference
 name|node
 parameter_list|,

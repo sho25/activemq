@@ -86,9 +86,6 @@ comment|/**      * Decides how to dispatch a selected message to a collection of
 name|boolean
 name|dispatch
 parameter_list|(
-name|ConnectionContext
-name|newParam
-parameter_list|,
 name|MessageReference
 name|node
 parameter_list|,

@@ -482,7 +482,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Allows a message to be pulled on demand by a client      */
-specifier|synchronized
 specifier|public
 name|Response
 name|pullMessage
@@ -600,7 +599,6 @@ literal|null
 return|;
 block|}
 comment|/**      * Occurs when a pull times out.  If nothing has been dispatched      * since the timeout was setup, then send the NULL message.      */
-specifier|synchronized
 specifier|private
 name|void
 name|pullTimeout
@@ -648,7 +646,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-specifier|synchronized
 specifier|public
 name|void
 name|add
@@ -659,19 +656,34 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|boolean
+name|pendingEmpty
+init|=
+literal|false
+decl_stmt|;
+synchronized|synchronized
+init|(
+name|pending
+init|)
+block|{
+name|pendingEmpty
+operator|=
+name|pending
+operator|.
+name|isEmpty
+argument_list|()
+expr_stmt|;
 name|enqueueCounter
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
 name|isFull
 argument_list|()
 operator|&&
-name|pending
-operator|.
-name|isEmpty
-argument_list|()
+name|pendingEmpty
 condition|)
 block|{
 name|dispatch
@@ -692,6 +704,11 @@ init|)
 block|{
 if|if
 condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+operator|&&
 name|pending
 operator|.
 name|isEmpty
@@ -716,7 +733,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-specifier|synchronized
 specifier|public
 name|void
 name|processMessageDispatchNotification
@@ -812,7 +828,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-specifier|synchronized
 specifier|public
 name|void
 name|acknowledge
@@ -829,6 +844,11 @@ throws|throws
 name|Exception
 block|{
 comment|// Handle the standard acknowledgment case.
+synchronized|synchronized
+init|(
+name|dispatched
+init|)
+block|{
 if|if
 condition|(
 name|ack
@@ -1106,6 +1126,7 @@ return|return;
 block|}
 block|}
 block|}
+comment|//this only happens after a reconnect - get an ack which is not valid
 name|log
 operator|.
 name|info
@@ -1434,6 +1455,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 comment|/**      * @param context      * @param node      * @throws IOException      * @throws Exception      */
 specifier|protected
 name|void
@@ -1601,11 +1623,15 @@ argument_list|()
 return|;
 block|}
 block|}
-specifier|synchronized
 specifier|public
 name|int
 name|getDispatchedQueueSize
 parameter_list|()
+block|{
+synchronized|synchronized
+init|(
+name|dispatched
+init|)
 block|{
 return|return
 name|dispatched
@@ -1613,6 +1639,7 @@ operator|.
 name|size
 argument_list|()
 return|;
+block|}
 block|}
 specifier|synchronized
 specifier|public
@@ -1735,6 +1762,11 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+synchronized|synchronized
+init|(
+name|pending
+init|)
+block|{
 if|if
 condition|(
 operator|!
@@ -1793,6 +1825,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 specifier|protected
 name|boolean
 name|dispatch
@@ -1824,6 +1857,11 @@ return|return
 literal|false
 return|;
 block|}
+synchronized|synchronized
+init|(
+name|dispatched
+init|)
+block|{
 comment|// Make sure we can dispatch a message.
 if|if
 condition|(
@@ -1960,7 +1998,7 @@ literal|false
 return|;
 block|}
 block|}
-specifier|synchronized
+block|}
 specifier|protected
 name|void
 name|onDispatch

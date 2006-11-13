@@ -253,6 +253,15 @@ name|reset
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * @param node      * @see org.apache.activemq.broker.region.cursors.PendingMessageCursor#remove(org.apache.activemq.broker.region.MessageReference)      */
+specifier|public
+name|void
+name|remove
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|)
+block|{     }
 block|}
 end_class
 

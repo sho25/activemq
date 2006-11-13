@@ -21,15 +21,21 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|activemq
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|broker
+name|util
 operator|.
-name|ConnectionContext
+name|List
 import|;
 end_import
 
@@ -81,21 +87,29 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|Iterator
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|List
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -110,13 +124,25 @@ name|RoundRobinDispatchPolicy
 implements|implements
 name|DispatchPolicy
 block|{
+specifier|static
+specifier|final
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|RoundRobinDispatchPolicy
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+comment|/**      * @param node      * @param msgContext      * @param consumers      * @return true if dispatched      * @throws Exception      * @see org.apache.activemq.broker.region.policy.DispatchPolicy#dispatch(org.apache.activemq.broker.region.MessageReference, org.apache.activemq.filter.MessageEvaluationContext, java.util.List)      */
 specifier|public
 name|boolean
 name|dispatch
 parameter_list|(
-name|ConnectionContext
-name|newParam
-parameter_list|,
 name|MessageReference
 name|node
 parameter_list|,
@@ -216,7 +242,15 @@ parameter_list|(
 name|Throwable
 name|bestEffort
 parameter_list|)
-block|{             }
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Caught error rotating consumers"
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|count
 operator|>

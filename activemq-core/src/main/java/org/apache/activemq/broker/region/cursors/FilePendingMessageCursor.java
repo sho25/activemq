@@ -409,6 +409,22 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|remove
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|)
+block|{
+name|list
+operator|.
+name|remove
+argument_list|(
+name|node
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * @return the number of pending messages      */
 specifier|public
 name|int

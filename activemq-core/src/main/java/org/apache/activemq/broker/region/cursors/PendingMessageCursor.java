@@ -217,6 +217,15 @@ name|void
 name|resetForGC
 parameter_list|()
 function_decl|;
+comment|/**      * remove a node      * @param node      */
+specifier|public
+name|void
+name|remove
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

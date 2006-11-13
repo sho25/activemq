@@ -356,7 +356,6 @@ name|void
 name|gc
 parameter_list|()
 block|{     }
-specifier|synchronized
 specifier|public
 name|void
 name|add
@@ -420,7 +419,6 @@ name|dispatchMatched
 argument_list|()
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|public
 name|void
 name|activate
@@ -506,11 +504,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+synchronized|synchronized
+init|(
+name|pending
+init|)
+block|{
 name|pending
 operator|.
 name|start
 argument_list|()
 expr_stmt|;
+block|}
 name|dispatchMatched
 argument_list|()
 expr_stmt|;
@@ -531,11 +535,17 @@ name|active
 operator|=
 literal|false
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|pending
+init|)
+block|{
 name|pending
 operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -584,6 +594,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+synchronized|synchronized
+init|(
+name|dispatched
+init|)
+block|{
 for|for
 control|(
 name|Iterator
@@ -710,6 +725,7 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
+block|}
 if|if
 condition|(
 operator|!
@@ -821,7 +837,6 @@ return|return
 name|md
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|void
 name|add
@@ -1033,7 +1048,6 @@ name|subscriptionKey
 return|;
 block|}
 comment|/**      * Release any references that we are holding.      */
-specifier|synchronized
 specifier|public
 name|void
 name|destroy

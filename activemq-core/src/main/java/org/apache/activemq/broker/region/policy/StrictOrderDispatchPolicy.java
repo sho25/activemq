@@ -21,15 +21,21 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|activemq
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|broker
+name|util
 operator|.
-name|ConnectionContext
+name|List
 import|;
 end_import
 
@@ -79,26 +85,6 @@ name|MessageEvaluationContext
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_comment
 comment|/**  * Dispatch policy that causes every subscription to see messages in the same order.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
@@ -110,13 +96,11 @@ name|StrictOrderDispatchPolicy
 implements|implements
 name|DispatchPolicy
 block|{
+comment|/**      * @param node      * @param msgContext      * @param consumers      * @return true if dispatched      * @throws Exception      * @see org.apache.activemq.broker.region.policy.DispatchPolicy#dispatch(org.apache.activemq.broker.region.MessageReference, org.apache.activemq.filter.MessageEvaluationContext, java.util.List)      */
 specifier|public
 name|boolean
 name|dispatch
 parameter_list|(
-name|ConnectionContext
-name|newParam
-parameter_list|,
 name|MessageReference
 name|node
 parameter_list|,
