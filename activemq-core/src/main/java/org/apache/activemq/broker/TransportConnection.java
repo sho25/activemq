@@ -1556,16 +1556,9 @@ literal|true
 expr_stmt|;
 try|try
 block|{
-if|if
-condition|(
 name|serviceLog
 operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-name|serviceLog
-operator|.
-name|debug
+name|error
 argument_list|(
 literal|"Async error occurred: "
 operator|+
