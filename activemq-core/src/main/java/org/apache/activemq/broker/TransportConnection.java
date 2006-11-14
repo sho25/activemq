@@ -1060,6 +1060,17 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
+specifier|protected
+specifier|final
+name|AtomicBoolean
+name|asyncException
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|(
+literal|false
+argument_list|)
+decl_stmt|;
 specifier|static
 class|class
 name|ConnectionState
@@ -1394,6 +1405,18 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|asyncException
+operator|.
+name|compareAndSet
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+condition|)
+block|{
 operator|new
 name|Thread
 argument_list|(
@@ -1416,6 +1439,7 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/** 	 * Closes a clients connection due to a detected error. 	 *  	 * Errors are ignored if: the client is closing or broker is closing. 	 * Otherwise, the connection error transmitted to the client before stopping it's 	 * transport. 	 */
 specifier|public
@@ -2009,6 +2033,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processBeginTransaction
@@ -2098,6 +2123,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processEndTransaction
@@ -2115,6 +2141,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processPrepareTransaction
@@ -2263,6 +2290,7 @@ name|response
 return|;
 block|}
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processCommitTransactionOnePhase
@@ -2337,6 +2365,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processCommitTransactionTwoPhase
@@ -2411,6 +2440,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processRollbackTransaction
@@ -2483,6 +2513,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processForgetTransaction
@@ -2545,6 +2576,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processRecoverTransactions
@@ -2857,6 +2889,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processAddDestination
@@ -2913,6 +2946,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processRemoveDestination
@@ -2972,6 +3006,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processAddProducer
@@ -3098,6 +3133,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processRemoveProducer
@@ -3201,6 +3237,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processAddConsumer
@@ -3327,6 +3364,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processRemoveConsumer
@@ -3430,6 +3468,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processAddSession
@@ -3523,6 +3562,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processRemoveSession
@@ -3731,6 +3771,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processAddConnection
@@ -4016,6 +4057,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processRemoveConnection
