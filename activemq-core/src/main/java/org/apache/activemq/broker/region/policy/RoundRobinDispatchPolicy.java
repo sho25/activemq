@@ -248,6 +248,8 @@ operator|.
 name|error
 argument_list|(
 literal|"Caught error rotating consumers"
+argument_list|,
+name|bestEffort
 argument_list|)
 expr_stmt|;
 block|}
