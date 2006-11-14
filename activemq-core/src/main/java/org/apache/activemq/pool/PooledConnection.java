@@ -225,6 +225,13 @@ name|pool
 operator|=
 name|pool
 expr_stmt|;
+name|this
+operator|.
+name|pool
+operator|.
+name|incrementReferenceCount
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Factory method to create a new instance.      */
 specifier|public
@@ -247,10 +254,29 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
+if|if
+condition|(
+name|this
+operator|.
+name|pool
+operator|!=
+literal|null
+condition|)
+block|{
+name|this
+operator|.
+name|pool
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
 name|pool
 operator|=
 literal|null
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -586,7 +612,6 @@ return|;
 block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
-specifier|protected
 name|ActiveMQConnection
 name|getConnection
 parameter_list|()
