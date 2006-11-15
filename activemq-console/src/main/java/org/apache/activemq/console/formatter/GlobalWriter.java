@@ -112,22 +112,12 @@ name|OutputFormatter
 name|formatter
 parameter_list|)
 block|{
-if|if
-condition|(
-name|GlobalWriter
-operator|.
-name|formatter
-operator|==
-literal|null
-condition|)
-block|{
 name|GlobalWriter
 operator|.
 name|formatter
 operator|=
 name|formatter
 expr_stmt|;
-block|}
 block|}
 comment|/**      * Retrieve the output stream being used by the global formatter      * @return      */
 specifier|public

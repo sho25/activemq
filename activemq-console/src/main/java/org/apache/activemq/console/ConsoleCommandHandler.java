@@ -146,7 +146,9 @@ name|command
 init|=
 operator|new
 name|ShellCommand
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 decl_stmt|;
 specifier|public
 name|void
@@ -180,15 +182,20 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// lets turn the text into a list of arguments
+name|String
+name|requestText
+init|=
+name|request
+operator|.
+name|getText
+argument_list|()
+decl_stmt|;
 name|List
 name|tokens
 init|=
 name|tokenize
 argument_list|(
-name|request
-operator|.
-name|getText
-argument_list|()
+name|requestText
 argument_list|)
 decl_stmt|;
 name|command
@@ -213,7 +220,7 @@ name|toByteArray
 argument_list|()
 decl_stmt|;
 name|String
-name|text
+name|answer
 init|=
 operator|new
 name|String
@@ -225,7 +232,7 @@ name|response
 operator|.
 name|setText
 argument_list|(
-name|text
+name|answer
 argument_list|)
 expr_stmt|;
 block|}

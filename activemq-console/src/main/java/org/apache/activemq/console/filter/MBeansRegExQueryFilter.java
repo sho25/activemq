@@ -136,6 +136,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+comment|// TODO why not just use instanceof?
 comment|// Use reflection to determine where the object should go
 try|try
 block|{

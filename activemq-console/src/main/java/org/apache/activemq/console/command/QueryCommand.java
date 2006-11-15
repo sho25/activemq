@@ -933,37 +933,37 @@ literal|""
 block|,
 literal|"Examples:"
 block|,
-literal|"    Main query"
+literal|"    query"
 block|,
 literal|"        - Print all the attributes of all registered objects queues, topics, connections, etc)."
 block|,
 literal|""
 block|,
-literal|"    Main query -QQueue=TEST.FOO"
+literal|"    query -QQueue=TEST.FOO"
 block|,
 literal|"        - Print all the attributes of the queue with destination name TEST.FOO."
 block|,
 literal|""
 block|,
-literal|"    Main query -QTopic=*"
+literal|"    query -QTopic=*"
 block|,
 literal|"        - Print all the attributes of all registered topics."
 block|,
 literal|""
 block|,
-literal|"    Main query --view EnqueueCount,DequeueCount"
+literal|"    query --view EnqueueCount,DequeueCount"
 block|,
 literal|"        - Print the attributes EnqueueCount and DequeueCount of all registered objects."
 block|,
 literal|""
 block|,
-literal|"    Main -QTopic=* --view EnqueueCount,DequeueCount"
+literal|"    query -QTopic=* --view EnqueueCount,DequeueCount"
 block|,
 literal|"        - Print the attributes EnqueueCount and DequeueCount of all registered topics."
 block|,
 literal|""
 block|,
-literal|"    Main -QTopic=* -QQueue=* --view EnqueueCount,DequeueCount"
+literal|"    query -QTopic=* -QQueue=* --view EnqueueCount,DequeueCount"
 block|,
 literal|"        - Print the attributes EnqueueCount and DequeueCount of all registered topics and"
 block|,
@@ -971,7 +971,7 @@ literal|"          queues."
 block|,
 literal|""
 block|,
-literal|"    Main -QTopic=* -xQTopic=ActiveMQ.Advisory.*"
+literal|"    query -QTopic=* -xQTopic=ActiveMQ.Advisory.*"
 block|,
 literal|"        - Print all attributes of all topics except those that has a name that begins"
 block|,
@@ -979,7 +979,7 @@ literal|"          with \"ActiveMQ.Advisory\"."
 block|,
 literal|""
 block|,
-literal|"    Main --objname Type=*Connect*,BrokerName=local* -xQNetworkConnector=*"
+literal|"    query --objname Type=*Connect*,BrokerName=local* -xQNetworkConnector=*"
 block|,
 literal|"        - Print all attributes of all connectors, connections excluding network connectors"
 block|,
@@ -987,7 +987,7 @@ literal|"          that belongs to the broker that begins with local."
 block|,
 literal|""
 block|,
-literal|"    Main -QQueue=* -xQQueue=????"
+literal|"    query -QQueue=* -xQQueue=????"
 block|,
 literal|"        - Print all attributes of all queues except those that are 4 letters long."
 block|,
