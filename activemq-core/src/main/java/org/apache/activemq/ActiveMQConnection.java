@@ -1114,6 +1114,10 @@ name|RedeliveryPolicy
 name|redeliveryPolicy
 decl_stmt|;
 specifier|private
+name|MessageTransformer
+name|transformer
+decl_stmt|;
+specifier|private
 name|boolean
 name|disableTimeStampsByDefault
 init|=
@@ -2880,6 +2884,31 @@ operator|=
 name|sessionTaskRunner
 expr_stmt|;
 block|}
+specifier|public
+name|MessageTransformer
+name|getTransformer
+parameter_list|()
+block|{
+return|return
+name|transformer
+return|;
+block|}
+comment|/**      * Sets the transformer used to transform messages before they are sent on to the JMS bus      * or when they are received from the bus but before they are delivered to the JMS client      */
+specifier|public
+name|void
+name|setTransformer
+parameter_list|(
+name|MessageTransformer
+name|transformer
+parameter_list|)
+block|{
+name|this
+operator|.
+name|transformer
+operator|=
+name|transformer
+expr_stmt|;
+block|}
 comment|/**      * @return the statsEnabled      */
 specifier|public
 name|boolean
@@ -4366,7 +4395,7 @@ name|consumerId
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param command - the command to consume      */
+comment|/**      * @param o - the command to consume      */
 specifier|public
 name|void
 name|onCommand
