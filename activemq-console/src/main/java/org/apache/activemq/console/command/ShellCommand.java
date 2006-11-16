@@ -110,6 +110,11 @@ specifier|private
 name|boolean
 name|interactive
 decl_stmt|;
+specifier|private
+name|String
+index|[]
+name|helpFile
+decl_stmt|;
 specifier|public
 name|ShellCommand
 parameter_list|()
@@ -132,6 +137,65 @@ operator|.
 name|interactive
 operator|=
 name|interactive
+expr_stmt|;
+name|this
+operator|.
+name|helpFile
+operator|=
+operator|new
+name|String
+index|[]
+block|{
+operator|(
+name|interactive
+condition|?
+literal|"Usage: [task] [task-options] [task data]"
+else|:
+literal|"Usage: Main [--extdir<dir>] [task] [task-options] [task data]"
+operator|)
+block|,
+literal|""
+block|,
+literal|"Tasks (default task is start):"
+block|,
+literal|"    start           - Creates and starts a broker using a configuration file, or a broker URI."
+block|,
+literal|"    stop            - Stops a running broker specified by the broker name."
+block|,
+literal|"    list            - Lists all available brokers in the specified JMX context."
+block|,
+literal|"    query           - Display selected broker component's attributes and statistics."
+block|,
+literal|"    browse          - Display selected messages in a specified destination."
+block|,
+literal|""
+block|,
+literal|"Task Options (Options specific to each task):"
+block|,
+literal|"    --extdir<dir>  - Add the jar files in the directory to the classpath."
+block|,
+literal|"    --version       - Display the version information."
+block|,
+literal|"    -h,-?,--help    - Display this help information. To display task specific help, use "
+operator|+
+operator|(
+name|interactive
+condition|?
+literal|""
+else|:
+literal|"Main "
+operator|)
+operator|+
+literal|"[task] -h,-?,--help"
+block|,
+literal|""
+block|,
+literal|"Task Data:"
+block|,
+literal|"    - Information needed by each specific task."
+block|,
+literal|""
+block|}
 expr_stmt|;
 block|}
 comment|/**      * Main method to run a command shell client.      * @param args - command line arguments      * @param in - input stream to use      * @param out - output stream to use      * @return 0 for a successful run, -1 if there are any exception      */
@@ -465,50 +529,6 @@ name|helpFile
 argument_list|)
 expr_stmt|;
 block|}
-specifier|protected
-name|String
-index|[]
-name|helpFile
-init|=
-operator|new
-name|String
-index|[]
-block|{
-literal|"Usage: Main [--extdir<dir>] [task] [task-options] [task data]"
-block|,
-literal|""
-block|,
-literal|"Tasks (default task is start):"
-block|,
-literal|"    start           - Creates and starts a broker using a configuration file, or a broker URI."
-block|,
-literal|"    stop            - Stops a running broker specified by the broker name."
-block|,
-literal|"    list            - Lists all available brokers in the specified JMX context."
-block|,
-literal|"    query           - Display selected broker component's attributes and statistics."
-block|,
-literal|"    browse          - Display selected messages in a specified destination."
-block|,
-literal|""
-block|,
-literal|"Task Options (Options specific to each task):"
-block|,
-literal|"    --extdir<dir>  - Add the jar files in the directory to the classpath."
-block|,
-literal|"    --version       - Display the version information."
-block|,
-literal|"    -h,-?,--help    - Display this help information. To display task specific help, use Main [task] -h,-?,--help"
-block|,
-literal|""
-block|,
-literal|"Task Data:"
-block|,
-literal|"    - Information needed by each specific task."
-block|,
-literal|""
-block|}
-decl_stmt|;
 block|}
 end_class
 
