@@ -1809,6 +1809,19 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
+comment|// Message may have been sitting in the pending list a while
+comment|// waiting for the consumer to ak the message.
+if|if
+condition|(
+name|node
+operator|.
+name|isExpired
+argument_list|()
+condition|)
+block|{
+continue|continue;
+comment|// just drop it.
+block|}
 name|dispatch
 argument_list|(
 name|node

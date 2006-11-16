@@ -1343,6 +1343,18 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+comment|// There is delay between the client sending it and it arriving at the
+comment|// destination.. it may have expired.
+if|if
+condition|(
+name|message
+operator|.
+name|isExpired
+argument_list|()
+condition|)
+block|{
+return|return;
+block|}
 if|if
 condition|(
 name|context
@@ -1383,6 +1395,18 @@ operator|.
 name|waitForSpace
 argument_list|()
 expr_stmt|;
+comment|// The usage manager could have delayed us by the time
+comment|// we unblock the message could have expired..
+if|if
+condition|(
+name|message
+operator|.
+name|isExpired
+argument_list|()
+condition|)
+block|{
+return|return;
+block|}
 block|}
 block|}
 name|message
@@ -1449,6 +1473,19 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// It could take while before we receive the commit
+comment|// operration.. by that time the message could have expired..
+if|if
+condition|(
+name|message
+operator|.
+name|isExpired
+argument_list|()
+condition|)
+block|{
+comment|// TODO: remove message from store.
+return|return;
+block|}
 name|dispatch
 argument_list|(
 name|context
