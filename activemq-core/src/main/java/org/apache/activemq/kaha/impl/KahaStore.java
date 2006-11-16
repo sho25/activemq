@@ -593,7 +593,7 @@ specifier|private
 name|boolean
 name|useAsyncWriter
 init|=
-literal|false
+literal|true
 decl_stmt|;
 specifier|private
 name|long

@@ -125,7 +125,7 @@ block|}
 comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.DataFileWriter#storeItem(org.apache.activemq.kaha.Marshaller, java.lang.Object, byte) 	 */
 specifier|public
 specifier|synchronized
-name|StoreLocation
+name|DataItem
 name|storeItem
 parameter_list|(
 name|Marshaller
@@ -283,8 +283,8 @@ specifier|synchronized
 name|void
 name|updateItem
 parameter_list|(
-name|StoreLocation
-name|location
+name|DataItem
+name|item
 parameter_list|,
 name|Marshaller
 name|marshaller
@@ -358,6 +358,13 @@ argument_list|(
 name|payloadSize
 argument_list|)
 expr_stmt|;
+name|item
+operator|.
+name|setSize
+argument_list|(
+name|payloadSize
+argument_list|)
+expr_stmt|;
 name|DataFile
 name|dataFile
 init|=
@@ -365,7 +372,7 @@ name|dataManager
 operator|.
 name|getDataFile
 argument_list|(
-name|location
+name|item
 argument_list|)
 decl_stmt|;
 name|RandomAccessFile
@@ -380,7 +387,7 @@ name|file
 operator|.
 name|seek
 argument_list|(
-name|location
+name|item
 operator|.
 name|getOffset
 argument_list|()

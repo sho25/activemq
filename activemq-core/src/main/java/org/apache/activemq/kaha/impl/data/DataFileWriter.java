@@ -49,27 +49,13 @@ name|Marshaller
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|kaha
-operator|.
-name|StoreLocation
-import|;
-end_import
-
 begin_interface
 interface|interface
 name|DataFileWriter
 block|{
 comment|/** 	 * @param marshaller 	 * @param payload 	 * @param data_item2  	 * @return 	 * @throws IOException 	 * @throws FileNotFoundException 	 */
 specifier|public
-name|StoreLocation
+name|DataItem
 name|storeItem
 parameter_list|(
 name|Marshaller
@@ -88,8 +74,8 @@ specifier|public
 name|void
 name|updateItem
 parameter_list|(
-name|StoreLocation
-name|location
+name|DataItem
+name|item
 parameter_list|,
 name|Marshaller
 name|marshaller
