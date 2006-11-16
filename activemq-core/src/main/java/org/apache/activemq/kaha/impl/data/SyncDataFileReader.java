@@ -88,7 +88,7 @@ end_comment
 begin_class
 specifier|final
 class|class
-name|StoreDataReader
+name|SyncDataFileReader
 block|{
 specifier|private
 name|DataManager
@@ -99,7 +99,7 @@ name|DataByteArrayInputStream
 name|dataIn
 decl_stmt|;
 comment|/**      * Construct a Store reader      *       * @param file      */
-name|StoreDataReader
+name|SyncDataFileReader
 parameter_list|(
 name|DataManager
 name|fileManager
@@ -140,6 +140,9 @@ name|getDataFile
 argument_list|(
 name|item
 argument_list|)
+operator|.
+name|getRandomAccessFile
+argument_list|()
 decl_stmt|;
 name|file
 operator|.
@@ -196,6 +199,9 @@ name|getDataFile
 argument_list|(
 name|item
 argument_list|)
+operator|.
+name|getRandomAccessFile
+argument_list|()
 decl_stmt|;
 comment|// TODO: we could reuse the buffer in dataIn if it's big enough to avoid
 comment|// allocating byte[] arrays on every readItem.

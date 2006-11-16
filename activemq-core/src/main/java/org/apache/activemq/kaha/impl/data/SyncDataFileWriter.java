@@ -25,16 +25,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|FileNotFoundException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -92,13 +82,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Optimized Store writer  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Optimized Store writer.  Synchronously marshalls and writes to the data file. Simple but   * may introduce a bit of contention when put under load.  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
 specifier|final
 class|class
-name|StoreDataWriter
+name|SyncDataFileWriter
+implements|implements
+name|DataFileWriter
 block|{
 specifier|private
 name|DataByteArrayOutputStream
@@ -109,7 +101,7 @@ name|DataManager
 name|dataManager
 decl_stmt|;
 comment|/**      * Construct a Store writer      *       * @param file      */
-name|StoreDataWriter
+name|SyncDataFileWriter
 parameter_list|(
 name|DataManager
 name|fileManager
@@ -130,7 +122,9 @@ name|DataByteArrayOutputStream
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @param marshaller      * @param payload      * @param data_item2       * @return      * @throws IOException      * @throws FileNotFoundException      */
+comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.DataFileWriter#storeItem(org.apache.activemq.kaha.Marshaller, java.lang.Object, byte) 	 */
+specifier|public
+specifier|synchronized
 name|StoreLocation
 name|storeItem
 parameter_list|(
@@ -264,11 +258,14 @@ argument_list|)
 expr_stmt|;
 name|dataFile
 operator|.
-name|incrementLength
+name|setWriterData
 argument_list|(
-name|size
+name|Boolean
+operator|.
+name|TRUE
 argument_list|)
 expr_stmt|;
+comment|// Use as dirty marker..
 name|dataManager
 operator|.
 name|addInterestInFile
@@ -280,6 +277,9 @@ return|return
 name|item
 return|;
 block|}
+comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.DataFileWriter#updateItem(org.apache.activemq.kaha.StoreLocation, org.apache.activemq.kaha.Marshaller, java.lang.Object, byte) 	 */
+specifier|public
+specifier|synchronized
 name|void
 name|updateItem
 parameter_list|(
@@ -358,7 +358,7 @@ argument_list|(
 name|payloadSize
 argument_list|)
 expr_stmt|;
-name|RandomAccessFile
+name|DataFile
 name|dataFile
 init|=
 name|dataManager
@@ -368,7 +368,15 @@ argument_list|(
 name|location
 argument_list|)
 decl_stmt|;
+name|RandomAccessFile
+name|file
+init|=
 name|dataFile
+operator|.
+name|getRandomAccessFile
+argument_list|()
+decl_stmt|;
+name|file
 operator|.
 name|seek
 argument_list|(
@@ -378,7 +386,7 @@ name|getOffset
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|dataFile
+name|file
 operator|.
 name|write
 argument_list|(
@@ -392,7 +400,66 @@ argument_list|,
 name|size
 argument_list|)
 expr_stmt|;
+name|dataFile
+operator|.
+name|setWriterData
+argument_list|(
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
+comment|// Use as dirty marker..
 block|}
+specifier|public
+specifier|synchronized
+name|void
+name|force
+parameter_list|(
+name|DataFile
+name|dataFile
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+comment|// If our dirty marker was set.. then we need to sync
+if|if
+condition|(
+name|dataFile
+operator|.
+name|getWriterData
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|dataFile
+operator|.
+name|getRandomAccessFile
+argument_list|()
+operator|.
+name|getFD
+argument_list|()
+operator|.
+name|sync
+argument_list|()
+expr_stmt|;
+name|dataFile
+operator|.
+name|setWriterData
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+specifier|public
+name|void
+name|close
+parameter_list|()
+throws|throws
+name|IOException
+block|{ 	}
 block|}
 end_class
 
