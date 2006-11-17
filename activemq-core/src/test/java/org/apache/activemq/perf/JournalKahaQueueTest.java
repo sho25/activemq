@@ -179,6 +179,13 @@ name|getTaskRunnerFactory
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|journalAdaptor
+operator|.
+name|setMaxCheckpointWorkers
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
 name|answer
 operator|.
 name|setPersistenceAdapter
