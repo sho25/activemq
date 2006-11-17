@@ -1523,6 +1523,13 @@ name|getNumber
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|writer
+operator|.
+name|force
+argument_list|(
+name|dataFile
+argument_list|)
+expr_stmt|;
 name|boolean
 name|result
 init|=
