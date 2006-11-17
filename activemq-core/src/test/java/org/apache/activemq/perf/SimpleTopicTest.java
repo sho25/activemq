@@ -141,7 +141,6 @@ extends|extends
 name|TestCase
 block|{
 specifier|private
-specifier|static
 specifier|final
 name|Log
 name|log
@@ -150,9 +149,8 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|SimpleTopicTest
-operator|.
-name|class
+name|getClass
+argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|protected
@@ -192,7 +190,7 @@ specifier|protected
 name|int
 name|SAMPLE_COUNT
 init|=
-literal|10
+literal|30
 decl_stmt|;
 specifier|protected
 name|long
