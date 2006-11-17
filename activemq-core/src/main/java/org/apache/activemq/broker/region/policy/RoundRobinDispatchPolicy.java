@@ -224,6 +224,15 @@ block|}
 comment|// Rotate the consumer list.
 try|try
 block|{
+if|if
+condition|(
+name|consumers
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|1
+condition|)
 name|consumers
 operator|.
 name|add
