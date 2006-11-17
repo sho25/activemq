@@ -487,9 +487,8 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|Session
 name|session
-init|=
+operator|=
 name|connection
 operator|.
 name|createSession
@@ -498,7 +497,7 @@ name|transacted
 argument_list|,
 name|ackMode
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|topic

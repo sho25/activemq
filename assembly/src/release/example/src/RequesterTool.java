@@ -496,6 +496,13 @@ condition|(
 name|replySubject
 operator|==
 literal|null
+operator|||
+name|replySubject
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
 condition|)
 name|replyDest
 operator|=
@@ -531,6 +538,13 @@ condition|(
 name|replySubject
 operator|==
 literal|null
+operator|||
+name|replySubject
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
 condition|)
 name|replyDest
 operator|=
