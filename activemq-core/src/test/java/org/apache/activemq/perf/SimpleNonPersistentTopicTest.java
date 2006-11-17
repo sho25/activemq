@@ -78,6 +78,10 @@ name|dest
 parameter_list|,
 name|int
 name|number
+parameter_list|,
+name|byte
+index|[]
+name|payload
 parameter_list|)
 throws|throws
 name|JMSException
@@ -91,6 +95,8 @@ argument_list|(
 name|fac
 argument_list|,
 name|dest
+argument_list|,
+name|payload
 argument_list|)
 decl_stmt|;
 name|pp

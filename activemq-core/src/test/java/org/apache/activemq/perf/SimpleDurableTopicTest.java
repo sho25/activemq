@@ -55,18 +55,6 @@ name|JMSException
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQConnectionFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version $Revision: 1.3 $  */
 end_comment
@@ -90,6 +78,10 @@ name|dest
 parameter_list|,
 name|int
 name|number
+parameter_list|,
+name|byte
+name|payload
+index|[]
 parameter_list|)
 throws|throws
 name|JMSException
@@ -103,6 +95,8 @@ argument_list|(
 name|fac
 argument_list|,
 name|dest
+argument_list|,
+name|payload
 argument_list|)
 decl_stmt|;
 name|pp
