@@ -27,14 +27,6 @@ end_import
 
 begin_import
 import|import
-name|edu
-operator|.
-name|emory
-operator|.
-name|mathcs
-operator|.
-name|backport
-operator|.
 name|java
 operator|.
 name|util
@@ -47,14 +39,6 @@ end_import
 
 begin_import
 import|import
-name|edu
-operator|.
-name|emory
-operator|.
-name|mathcs
-operator|.
-name|backport
-operator|.
 name|java
 operator|.
 name|util
@@ -67,14 +51,6 @@ end_import
 
 begin_import
 import|import
-name|edu
-operator|.
-name|emory
-operator|.
-name|mathcs
-operator|.
-name|backport
-operator|.
 name|java
 operator|.
 name|util
@@ -87,14 +63,6 @@ end_import
 
 begin_import
 import|import
-name|edu
-operator|.
-name|emory
-operator|.
-name|mathcs
-operator|.
-name|backport
-operator|.
 name|java
 operator|.
 name|util
@@ -172,13 +140,6 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|SECONDS
-argument_list|)
-expr_stmt|;
-name|clockDaemon
-operator|.
-name|allowCoreThreadTimeOut
-argument_list|(
-literal|false
 argument_list|)
 expr_stmt|;
 block|}
