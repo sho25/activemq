@@ -396,6 +396,11 @@ argument_list|(
 name|message
 argument_list|)
 decl_stmt|;
+comment|// TODO: we should do the following but it is not need if the message is being added within a persistence transaction
+comment|// but since I can't tell if one is running right now.. I'll leave this out for now.
+comment|//        if( message.isResponseRequired() ) {
+comment|//        	messageContainer.force();
+comment|//        }
 name|cache
 operator|.
 name|put
