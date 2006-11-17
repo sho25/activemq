@@ -863,7 +863,7 @@ argument_list|()
 expr_stmt|;
 name|totalCount
 operator|+=
-name|consumers
+name|producers
 index|[
 name|i
 index|]
