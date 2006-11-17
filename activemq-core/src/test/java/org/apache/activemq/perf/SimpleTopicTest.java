@@ -232,6 +232,12 @@ specifier|protected
 name|Destination
 name|destination
 decl_stmt|;
+specifier|protected
+name|long
+name|CONSUMER_SLEEP_DURATION
+init|=
+literal|0
+decl_stmt|;
 comment|/**      * Sets up a test where the producer and consumer have their own connection.      *       * @see junit.framework.TestCase#setUp()      */
 specifier|protected
 name|void
@@ -289,6 +295,15 @@ argument_list|,
 name|DESTINATION_NAME
 argument_list|)
 expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Testing against destination: "
+operator|+
+name|destination
+argument_list|)
+expr_stmt|;
 name|con
 operator|.
 name|close
@@ -337,6 +352,16 @@ argument_list|,
 name|destination
 argument_list|,
 name|i
+argument_list|)
+expr_stmt|;
+name|consumers
+index|[
+name|i
+index|]
+operator|.
+name|setSleepDuration
+argument_list|(
+name|CONSUMER_SLEEP_DURATION
 argument_list|)
 expr_stmt|;
 block|}
@@ -633,20 +658,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ActiveMQConnectionFactory
-name|cf
-init|=
+return|return
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
 name|bindAddress
 argument_list|)
-decl_stmt|;
-comment|//        ActiveMQConnectionFactory cf = new ActiveMQConnectionFactory("vm://localhost?marshal=true");
-comment|//        ActiveMQConnectionFactory cf = new ActiveMQConnectionFactory("vm://localhost?marshal=true&wireFormat.cacheEnabled=false");
-comment|// cf.setAsyncDispatch(false);
-return|return
-name|cf
 return|;
 block|}
 specifier|public
@@ -805,7 +822,7 @@ name|dumpProducerRate
 parameter_list|()
 block|{
 name|int
-name|count
+name|totalRate
 init|=
 literal|0
 decl_stmt|;
@@ -831,7 +848,7 @@ name|i
 operator|++
 control|)
 block|{
-name|count
+name|totalRate
 operator|+=
 name|producers
 index|[
@@ -858,23 +875,28 @@ name|getTotalCount
 argument_list|()
 expr_stmt|;
 block|}
-name|count
-operator|=
-name|count
+name|int
+name|avgRate
+init|=
+name|totalRate
 operator|/
 name|producers
 operator|.
 name|length
-expr_stmt|;
+decl_stmt|;
 name|log
 operator|.
 name|info
 argument_list|(
-literal|"Producer rate = "
+literal|"Avg producer rate = "
 operator|+
-name|count
+name|avgRate
 operator|+
-literal|" msg/sec total count = "
+literal|" msg/sec | Total rate = "
+operator|+
+name|totalRate
+operator|+
+literal|", sent = "
 operator|+
 name|totalCount
 argument_list|)
@@ -915,7 +937,7 @@ name|dumpConsumerRate
 parameter_list|()
 block|{
 name|int
-name|rate
+name|totalRate
 init|=
 literal|0
 decl_stmt|;
@@ -941,7 +963,7 @@ name|i
 operator|++
 control|)
 block|{
-name|rate
+name|totalRate
 operator|+=
 name|consumers
 index|[
@@ -968,23 +990,28 @@ name|getTotalCount
 argument_list|()
 expr_stmt|;
 block|}
-name|rate
-operator|=
-name|rate
+name|int
+name|avgRate
+init|=
+name|totalRate
 operator|/
 name|consumers
 operator|.
 name|length
-expr_stmt|;
+decl_stmt|;
 name|log
 operator|.
 name|info
 argument_list|(
-literal|"Consumer rate = "
+literal|"Avg consumer rate = "
 operator|+
-name|rate
+name|avgRate
 operator|+
-literal|" msg/sec total count = "
+literal|" msg/sec | Total rate = "
+operator|+
+name|totalRate
+operator|+
+literal|", received = "
 operator|+
 name|totalCount
 argument_list|)
