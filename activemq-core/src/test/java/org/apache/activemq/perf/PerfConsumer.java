@@ -268,7 +268,7 @@ argument_list|()
 expr_stmt|;
 name|rate
 operator|.
-name|getRate
+name|reset
 argument_list|()
 expr_stmt|;
 block|}

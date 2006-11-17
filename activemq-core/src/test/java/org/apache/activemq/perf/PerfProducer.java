@@ -254,6 +254,11 @@ operator|!
 name|running
 condition|)
 block|{
+name|rate
+operator|.
+name|reset
+argument_list|()
+expr_stmt|;
 name|running
 operator|=
 literal|true
@@ -270,11 +275,6 @@ name|this
 argument_list|)
 operator|.
 name|start
-argument_list|()
-expr_stmt|;
-name|rate
-operator|.
-name|reset
 argument_list|()
 expr_stmt|;
 block|}
