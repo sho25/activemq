@@ -203,6 +203,14 @@ name|String
 name|prevDurableSubscriberMessageIdStatement
 decl_stmt|;
 specifier|private
+name|String
+name|destinationMessageCountStatement
+decl_stmt|;
+specifier|private
+name|String
+name|findNextMessagesStatement
+decl_stmt|;
+specifier|private
 name|boolean
 name|useLockCreateWhereClause
 decl_stmt|;
@@ -1196,6 +1204,60 @@ return|return
 name|lockUpdateStatement
 return|;
 block|}
+comment|/**      * @return the destinationMessageCountStatement      */
+specifier|public
+name|String
+name|getDestinationMessageCountStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|destinationMessageCountStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|destinationMessageCountStatement
+operator|=
+literal|"SELECT COUNT(*) FROM "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" WHERE CONTAINER=?"
+expr_stmt|;
+block|}
+return|return
+name|destinationMessageCountStatement
+return|;
+block|}
+comment|/**      * @return the findNextMessagesStatement      */
+specifier|public
+name|String
+name|getFindNextMessagesStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|findNextMessagesStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|findNextMessagesStatement
+operator|=
+literal|"SELECT ID, MSG FROM "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" WHERE CONTAINER=? AND ID> ? ORDER BY ID"
+expr_stmt|;
+block|}
+return|return
+name|findNextMessagesStatement
+return|;
+block|}
 specifier|public
 name|String
 name|getFullMessageTableName
@@ -1947,6 +2009,38 @@ operator|.
 name|prevDurableSubscriberMessageIdStatement
 operator|=
 name|prevDurableSubscriberMessageIdStatement
+expr_stmt|;
+block|}
+comment|/**      * @param findNextMessagesStatement the findNextMessagesStatement to set      */
+specifier|public
+name|void
+name|setFindNextMessagesStatement
+parameter_list|(
+name|String
+name|findNextMessagesStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|findNextMessagesStatement
+operator|=
+name|findNextMessagesStatement
+expr_stmt|;
+block|}
+comment|/**      * @param destinationMessageCountStatement the destinationMessageCountStatement to set      */
+specifier|public
+name|void
+name|setDestinationMessageCountStatement
+parameter_list|(
+name|String
+name|destinationMessageCountStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|destinationMessageCountStatement
+operator|=
+name|destinationMessageCountStatement
 expr_stmt|;
 block|}
 block|}

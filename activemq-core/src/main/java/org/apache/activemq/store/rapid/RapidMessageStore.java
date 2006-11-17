@@ -1501,6 +1501,33 @@ name|lastLocation
 return|;
 block|}
 block|}
+specifier|public
+name|int
+name|getMessageCount
+parameter_list|()
+block|{
+return|return
+literal|0
+return|;
+block|}
+specifier|public
+name|void
+name|recoverNextMessages
+parameter_list|(
+name|int
+name|maxReturned
+parameter_list|,
+name|MessageRecoveryListener
+name|listener
+parameter_list|)
+throws|throws
+name|Exception
+block|{     }
+specifier|public
+name|void
+name|resetBatching
+parameter_list|()
+block|{     }
 block|}
 end_class
 

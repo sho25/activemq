@@ -153,7 +153,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * For an active subscription - retrieve messages from the store for the subscriber after the lastMessageId      * messageId<p/>      *       * @param clientId      * @param subscriptionName      * @param lastMessageId      * @param maxReturned      * @param listener      *       * @throws Exception      */
+comment|/**      * For an active subscription - retrieve messages from the store for the subscriber after the lastMessageId      * messageId<p/>      *       * @param clientId      * @param subscriptionName      * @param maxReturned      * @param listener      *       * @throws Exception      */
 specifier|public
 name|void
 name|recoverNextMessages
@@ -164,9 +164,6 @@ parameter_list|,
 name|String
 name|subscriptionName
 parameter_list|,
-name|MessageId
-name|lastMessageId
-parameter_list|,
 name|int
 name|maxReturned
 parameter_list|,
@@ -176,7 +173,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * A hint to the Store to reset any batching state for a durable subsriber      * @param clientId       * @param subscriptionName       * @param nextToDispatch       *      */
+comment|/**      * A hint to the Store to reset any batching state for a durable subsriber      * @param clientId       * @param subscriptionName       *      */
 specifier|public
 name|void
 name|resetBatching
@@ -186,44 +183,7 @@ name|clientId
 parameter_list|,
 name|String
 name|subscriptionName
-parameter_list|,
-name|MessageId
-name|nextToDispatch
 parameter_list|)
-function_decl|;
-comment|/**      * Get the next  messageId to deliver to a subscriber after the MessageId provided      * @param clientId      * @param subscriptionName      * @param id       * @return the next messageId or null      * @throws IOException       * @throws Exception       */
-specifier|public
-name|MessageId
-name|getNextMessageIdToDeliver
-parameter_list|(
-name|String
-name|clientId
-parameter_list|,
-name|String
-name|subscriptionName
-parameter_list|,
-name|MessageId
-name|id
-parameter_list|)
-throws|throws
-name|Exception
-function_decl|;
-comment|/**      * Get the previous  messageId to deliver to a subscriber before the MessageId provided      * @param clientId      * @param subscriptionName      * @param id       * @return the next messageId or null      * @throws IOException       * @throws Exception       */
-specifier|public
-name|MessageId
-name|getPreviousMessageIdToDeliver
-parameter_list|(
-name|String
-name|clientId
-parameter_list|,
-name|String
-name|subscriptionName
-parameter_list|,
-name|MessageId
-name|id
-parameter_list|)
-throws|throws
-name|Exception
 function_decl|;
 comment|/**      * Get the number of messages ready to deliver from the store to a durable subscriber      * @param clientId      * @param subscriberName      * @return the outstanding message count      * @throws IOException      */
 specifier|public

@@ -69,6 +69,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentHashMap
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -316,18 +328,6 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ConcurrentHashMap
 import|;
 end_import
 
@@ -750,6 +750,8 @@ argument_list|,
 name|subsContainer
 argument_list|,
 name|destination
+argument_list|,
+name|maximumDestinationCacheSize
 argument_list|)
 expr_stmt|;
 name|messageStores
