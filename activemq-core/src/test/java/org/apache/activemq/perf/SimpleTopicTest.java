@@ -157,11 +157,12 @@ specifier|protected
 name|BrokerService
 name|broker
 decl_stmt|;
+comment|//    protected String bindAddress="tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=true&jms.useAsyncSend=false";
 specifier|protected
 name|String
 name|bindAddress
 init|=
-literal|"tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=true"
+literal|"tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=true&jms.useAsyncSend=true"
 decl_stmt|;
 comment|//protected String bindAddress="tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=false";
 comment|//protected String bindAddress="vm://localhost?marshal=true";
