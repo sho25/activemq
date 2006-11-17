@@ -113,7 +113,9 @@ name|activeio
 operator|.
 name|journal
 operator|.
-name|RecordLocation
+name|active
+operator|.
+name|Location
 import|;
 end_import
 
@@ -1206,7 +1208,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 specifier|final
-name|RecordLocation
+name|Location
 name|location
 init|=
 name|peristenceAdapter
@@ -1569,7 +1571,7 @@ parameter_list|(
 name|MessageId
 name|messageId
 parameter_list|,
-name|RecordLocation
+name|Location
 name|location
 parameter_list|,
 name|SubscriptionKey
@@ -1735,7 +1737,7 @@ name|result
 return|;
 block|}
 specifier|public
-name|RecordLocation
+name|Location
 name|checkpoint
 parameter_list|()
 throws|throws
@@ -1772,7 +1774,7 @@ name|HashMap
 argument_list|()
 expr_stmt|;
 block|}
-name|RecordLocation
+name|Location
 name|rc
 init|=
 name|super
@@ -1796,11 +1798,11 @@ argument_list|(
 name|cpAckedLastAckLocations
 argument_list|)
 expr_stmt|;
-name|RecordLocation
+name|Location
 name|t
 init|=
 operator|(
-name|RecordLocation
+name|Location
 operator|)
 name|cpAckedLastAckLocations
 operator|.

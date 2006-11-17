@@ -49,6 +49,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentHashMap
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|transaction
@@ -69,7 +81,9 @@ name|activeio
 operator|.
 name|journal
 operator|.
-name|RecordLocation
+name|active
+operator|.
+name|Location
 import|;
 end_import
 
@@ -185,18 +199,6 @@ name|TransactionStore
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ConcurrentHashMap
-import|;
-end_import
-
 begin_comment
 comment|/**  */
 end_comment
@@ -270,7 +272,7 @@ name|Object
 name|data
 decl_stmt|;
 specifier|public
-name|RecordLocation
+name|Location
 name|location
 decl_stmt|;
 specifier|public
@@ -285,7 +287,7 @@ parameter_list|,
 name|Object
 name|data
 parameter_list|,
-name|RecordLocation
+name|Location
 name|location
 parameter_list|)
 block|{
@@ -323,7 +325,7 @@ name|Tx
 block|{
 specifier|private
 specifier|final
-name|RecordLocation
+name|Location
 name|location
 decl_stmt|;
 specifier|private
@@ -337,7 +339,7 @@ decl_stmt|;
 specifier|public
 name|Tx
 parameter_list|(
-name|RecordLocation
+name|Location
 name|location
 parameter_list|)
 block|{
@@ -358,7 +360,7 @@ parameter_list|,
 name|Message
 name|msg
 parameter_list|,
-name|RecordLocation
+name|Location
 name|loc
 parameter_list|)
 block|{
@@ -392,7 +394,7 @@ parameter_list|,
 name|MessageAck
 name|ack
 parameter_list|,
-name|RecordLocation
+name|Location
 name|loc
 parameter_list|)
 block|{
@@ -426,7 +428,7 @@ parameter_list|,
 name|JournalTopicAck
 name|ack
 parameter_list|,
-name|RecordLocation
+name|Location
 name|loc
 parameter_list|)
 block|{
@@ -756,7 +758,7 @@ parameter_list|(
 name|Object
 name|txid
 parameter_list|,
-name|RecordLocation
+name|Location
 name|location
 parameter_list|)
 block|{
@@ -1212,7 +1214,7 @@ parameter_list|,
 name|Message
 name|message
 parameter_list|,
-name|RecordLocation
+name|Location
 name|location
 parameter_list|)
 throws|throws
@@ -1254,7 +1256,7 @@ parameter_list|,
 name|MessageAck
 name|ack
 parameter_list|,
-name|RecordLocation
+name|Location
 name|location
 parameter_list|)
 throws|throws
@@ -1295,7 +1297,7 @@ parameter_list|,
 name|JournalTopicAck
 name|ack
 parameter_list|,
-name|RecordLocation
+name|Location
 name|location
 parameter_list|)
 block|{
@@ -1325,7 +1327,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-name|RecordLocation
+name|Location
 name|checkpoint
 parameter_list|()
 throws|throws
@@ -1336,7 +1338,7 @@ comment|// checkpoint tx operations in to long term store until they are committ
 comment|// But we keep track of the first location of an operation
 comment|// that was associated with an active tx. The journal can not
 comment|// roll over active tx records.
-name|RecordLocation
+name|Location
 name|rc
 init|=
 literal|null
@@ -1372,7 +1374,7 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|RecordLocation
+name|Location
 name|location
 init|=
 name|tx
@@ -1432,7 +1434,7 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|RecordLocation
+name|Location
 name|location
 init|=
 name|tx

@@ -77,20 +77,6 @@ name|activeio
 operator|.
 name|journal
 operator|.
-name|RecordLocation
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activeio
-operator|.
-name|journal
-operator|.
 name|active
 operator|.
 name|Location
@@ -349,7 +335,7 @@ comment|//    private ArrayList messageAcks = new ArrayList();
 comment|//    /** A MessageStore that we can use to retrieve messages quickly. */
 comment|//    private LinkedHashMap cpAddedMessageIds;
 specifier|protected
-name|RecordLocation
+name|Location
 name|lastLocation
 decl_stmt|;
 specifier|protected
@@ -449,7 +435,7 @@ name|isDebugEnabled
 argument_list|()
 decl_stmt|;
 specifier|final
-name|RecordLocation
+name|Location
 name|location
 init|=
 name|peristenceAdapter
@@ -715,7 +701,7 @@ specifier|protected
 name|String
 name|toString
 parameter_list|(
-name|RecordLocation
+name|Location
 name|location
 parameter_list|)
 block|{
@@ -743,8 +729,8 @@ return|;
 block|}
 specifier|static
 specifier|protected
-name|RecordLocation
-name|toRecordLocation
+name|Location
+name|toLocation
 parameter_list|(
 name|String
 name|t
@@ -814,7 +800,7 @@ parameter_list|,
 name|Message
 name|message
 parameter_list|,
-name|RecordLocation
+name|Location
 name|location
 parameter_list|)
 block|{
@@ -917,7 +903,7 @@ name|ack
 argument_list|)
 expr_stmt|;
 specifier|final
-name|RecordLocation
+name|Location
 name|location
 init|=
 name|peristenceAdapter
@@ -1133,7 +1119,7 @@ name|MessageAck
 name|ack
 parameter_list|,
 specifier|final
-name|RecordLocation
+name|Location
 name|location
 parameter_list|)
 block|{
@@ -1441,7 +1427,7 @@ parameter_list|)
 block|{     }
 comment|/**      * @return      * @throws IOException      */
 specifier|public
-name|RecordLocation
+name|Location
 name|checkpoint
 parameter_list|()
 throws|throws
@@ -1484,7 +1470,7 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|(
-name|RecordLocation
+name|Location
 operator|)
 name|cpActiveJournalLocations
 operator|.
