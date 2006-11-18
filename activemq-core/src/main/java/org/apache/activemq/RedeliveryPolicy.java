@@ -46,6 +46,15 @@ name|Cloneable
 implements|,
 name|Serializable
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|NO_MAXIMUM_REDELIVERIES
+init|=
+operator|-
+literal|1
+decl_stmt|;
 comment|// +/-15% for a 30% spread -cgs
 specifier|protected
 name|double

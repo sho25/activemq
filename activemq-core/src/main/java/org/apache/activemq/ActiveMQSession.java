@@ -2108,6 +2108,15 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|redeliveryPolicy
+operator|.
+name|getMaximumRedeliveries
+argument_list|()
+operator|!=
+name|RedeliveryPolicy
+operator|.
+name|NO_MAXIMUM_REDELIVERIES
+operator|&&
 name|redeliveryCounter
 operator|>
 name|redeliveryPolicy
