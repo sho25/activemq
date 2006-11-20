@@ -304,6 +304,21 @@ operator|+
 name|destination
 argument_list|)
 expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Running "
+operator|+
+name|NUMBER_OF_PRODUCERS
+operator|+
+literal|" producer(s) and "
+operator|+
+name|NUMBER_OF_CONSUMERS
+operator|+
+literal|" consumer(s)"
+argument_list|)
+expr_stmt|;
 name|con
 operator|.
 name|close
