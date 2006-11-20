@@ -200,10 +200,6 @@ name|nextDurableSubscriberMessageIdStatement
 decl_stmt|;
 specifier|private
 name|String
-name|prevDurableSubscriberMessageIdStatement
-decl_stmt|;
-specifier|private
-name|String
 name|destinationMessageCountStatement
 decl_stmt|;
 specifier|private
@@ -940,78 +936,6 @@ expr_stmt|;
 block|}
 return|return
 name|durableSubscriberMessageCountStatement
-return|;
-block|}
-comment|/**      * @return the nextDurableSubscriberMessageIdStatement      */
-specifier|public
-name|String
-name|getNextDurableSubscriberMessageIdStatement
-parameter_list|()
-block|{
-if|if
-condition|(
-name|nextDurableSubscriberMessageIdStatement
-operator|==
-literal|null
-condition|)
-block|{
-name|nextDurableSubscriberMessageIdStatement
-operator|=
-literal|"SELECT M.ID FROM "
-operator|+
-name|getFullMessageTableName
-argument_list|()
-operator|+
-literal|" M, "
-operator|+
-name|getFullAckTableName
-argument_list|()
-operator|+
-literal|" D "
-operator|+
-literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
-operator|+
-literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> ?"
-operator|+
-literal|" ORDER BY M.ID "
-expr_stmt|;
-block|}
-return|return
-name|nextDurableSubscriberMessageIdStatement
-return|;
-block|}
-comment|/**      * @return the prevDurableSubscriberMessageIdStatement      */
-comment|/*     public String getPrevDurableSubscriberMessageIdStatement(){         if(prevDurableSubscriberMessageIdStatement==null) {             prevDurableSubscriberMessageIdStatement = "SELECT M.ID, M.MSG FROM " + getFullMessageTableName() + " M, "             + getFullAckTableName() + " D " + " WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"             + " AND M.CONTAINER=D.CONTAINER AND M.ID< ?" + " ORDER BY M.ID ";         }         return prevDurableSubscriberMessageIdStatement;     }     */
-specifier|public
-name|String
-name|getPrevDurableSubscriberMessageIdStatement
-parameter_list|()
-block|{
-if|if
-condition|(
-name|prevDurableSubscriberMessageIdStatement
-operator|==
-literal|null
-condition|)
-block|{
-name|prevDurableSubscriberMessageIdStatement
-operator|=
-literal|"SELECT M.ID, M.MSG FROM "
-operator|+
-name|getFullMessageTableName
-argument_list|()
-operator|+
-literal|" M "
-operator|+
-literal|" WHERE M.CONTAINER=? "
-operator|+
-literal|"  AND M.ID<?"
-operator|+
-literal|"  ORDER BY M.ID DESC "
-expr_stmt|;
-block|}
-return|return
-name|prevDurableSubscriberMessageIdStatement
 return|;
 block|}
 specifier|public
@@ -1993,22 +1917,6 @@ operator|.
 name|nextDurableSubscriberMessageIdStatement
 operator|=
 name|nextDurableSubscriberMessageIdStatement
-expr_stmt|;
-block|}
-comment|/**      * @param prevDurableSubscriberMessageIdStatement the prevDurableSubscriberMessageIdStatement to set      */
-specifier|public
-name|void
-name|setPrevDurableSubscriberMessageIdStatement
-parameter_list|(
-name|String
-name|prevDurableSubscriberMessageIdStatement
-parameter_list|)
-block|{
-name|this
-operator|.
-name|prevDurableSubscriberMessageIdStatement
-operator|=
-name|prevDurableSubscriberMessageIdStatement
 expr_stmt|;
 block|}
 comment|/**      * @param findNextMessagesStatement the findNextMessagesStatement to set      */

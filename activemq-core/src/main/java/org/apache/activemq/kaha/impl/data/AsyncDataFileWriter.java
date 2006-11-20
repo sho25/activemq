@@ -509,6 +509,7 @@ block|}
 block|}
 comment|/**      * @param marshaller      * @param payload      * @param type       * @return      * @throws IOException      */
 specifier|public
+specifier|synchronized
 name|DataItem
 name|storeItem
 parameter_list|(
@@ -755,7 +756,12 @@ name|InterruptedIOException
 argument_list|()
 throw|;
 block|}
-comment|//Write the packet our internal buffer.
+synchronized|synchronized
+init|(
+name|enqueueMutex
+init|)
+block|{
+comment|// Write the packet our internal buffer.
 specifier|final
 name|DataByteArrayOutputStream
 name|buffer
@@ -897,6 +903,7 @@ argument_list|,
 name|write
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|private
 name|void

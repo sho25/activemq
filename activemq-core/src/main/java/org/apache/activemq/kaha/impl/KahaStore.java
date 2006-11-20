@@ -41,16 +41,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|RandomAccessFile
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|nio
 operator|.
 name|channels
@@ -106,6 +96,18 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentHashMap
 import|;
 end_import
 
@@ -401,18 +403,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ConcurrentHashMap
-import|;
-end_import
-
 begin_comment
 comment|/**  * Store Implementation  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
@@ -585,7 +575,7 @@ specifier|private
 name|boolean
 name|useAsyncWriter
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|private
 name|long
@@ -1109,22 +1099,41 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|String
+name|str
+init|=
+name|result
+condition|?
+literal|"successfully deleted"
+else|:
+literal|"failed to delete"
+decl_stmt|;
 name|log
 operator|.
 name|info
 argument_list|(
-literal|"Kaha Store deleted data directory "
+literal|"Kaha Store "
+operator|+
+name|str
+operator|+
+literal|" data directory "
 operator|+
 name|directory
 argument_list|)
 expr_stmt|;
 block|}
-name|initialized
-operator|=
-literal|false
-expr_stmt|;
 return|return
 name|result
+return|;
+block|}
+specifier|public
+specifier|synchronized
+name|boolean
+name|isInitialized
+parameter_list|()
+block|{
+return|return
+name|initialized
 return|;
 block|}
 specifier|public
@@ -1147,6 +1156,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|boolean
 name|doesMapContainerExist
 parameter_list|(
@@ -1401,6 +1411,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|deleteMapContainer
 parameter_list|(
@@ -1477,6 +1488,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|Set
 name|getMapContainerIds
 parameter_list|()
@@ -1559,6 +1571,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|boolean
 name|doesListContainerExist
 parameter_list|(
@@ -1813,6 +1826,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|deleteListContainer
 parameter_list|(
@@ -1889,6 +1903,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|Set
 name|getListContainerIds
 parameter_list|()
@@ -1976,6 +1991,7 @@ name|mapsContainer
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|DataManager
 name|getDataManager
 parameter_list|(
@@ -2050,6 +2066,7 @@ name|dm
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|IndexManager
 name|getIndexManager
 parameter_list|(
@@ -2181,6 +2198,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|boolean
 name|isLogIndexChanges
 parameter_list|()
@@ -2190,6 +2208,7 @@ name|logIndexChanges
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|setLogIndexChanges
 parameter_list|(
@@ -2206,6 +2225,7 @@ expr_stmt|;
 block|}
 comment|/**      * @return the maxDataFileLength      */
 specifier|public
+specifier|synchronized
 name|long
 name|getMaxDataFileLength
 parameter_list|()
@@ -2216,6 +2236,7 @@ return|;
 block|}
 comment|/**      * @param maxDataFileLength      *            the maxDataFileLength to set      */
 specifier|public
+specifier|synchronized
 name|void
 name|setMaxDataFileLength
 parameter_list|(
@@ -2232,6 +2253,7 @@ expr_stmt|;
 block|}
 comment|/**      * @see org.apache.activemq.kaha.IndexTypes      * @return the default index type      */
 specifier|public
+specifier|synchronized
 name|String
 name|getIndexType
 parameter_list|()
@@ -2242,6 +2264,7 @@ return|;
 block|}
 comment|/**      * Set the default index type      *       * @param type      * @see org.apache.activemq.kaha.IndexTypes      */
 specifier|public
+specifier|synchronized
 name|void
 name|setIndexType
 parameter_list|(
@@ -2630,6 +2653,7 @@ block|}
 block|}
 block|}
 specifier|private
+specifier|synchronized
 name|void
 name|unlock
 parameter_list|()
@@ -2921,7 +2945,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * scans the directory and builds up the IndexManager and DataManager      * @throws IOException       */
+comment|/**      * scans the directory and builds up the IndexManager and DataManager      *       * @throws IOException      */
 specifier|private
 name|void
 name|generateInterestInMapDataFiles

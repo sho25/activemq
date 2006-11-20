@@ -396,11 +396,12 @@ argument_list|(
 name|message
 argument_list|)
 decl_stmt|;
-comment|// TODO: we should do the following but it is not need if the message is being added within a persistence transaction
+comment|// TODO: we should do the following but it is not need if the message is being added within a persistence
+comment|// transaction
 comment|// but since I can't tell if one is running right now.. I'll leave this out for now.
-comment|//        if( message.isResponseRequired() ) {
-comment|//        	messageContainer.force();
-comment|//        }
+comment|// if( message.isResponseRequired() ) {
+comment|// messageContainer.force();
+comment|// }
 name|cache
 operator|.
 name|put
@@ -478,6 +479,15 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|entry
+operator|=
+name|messageContainer
+operator|.
+name|refresh
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
 name|result
 operator|=
 operator|(
@@ -630,6 +640,15 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|entry
+operator|=
+name|messageContainer
+operator|.
+name|refresh
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
 name|messageContainer
 operator|.
 name|remove

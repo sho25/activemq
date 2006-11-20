@@ -390,6 +390,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+block|{
 name|writer
 operator|.
 name|updateIndexes
@@ -397,6 +399,25 @@ argument_list|(
 name|index
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+name|name
+operator|+
+literal|" GORT ERROR! "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|public
 specifier|synchronized

@@ -1224,6 +1224,7 @@ name|result
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|void
 name|remove
 parameter_list|(
@@ -1291,6 +1292,7 @@ expr_stmt|;
 block|}
 comment|/**      * Add an entry to the Store Map      * @param key      * @param value      * @return the StoreEntry associated with the entry      */
 specifier|public
+specifier|synchronized
 name|StoreEntry
 name|place
 parameter_list|(
@@ -1352,6 +1354,7 @@ return|;
 block|}
 comment|/**      * Remove an Entry from ther Map      * @param entry      */
 specifier|public
+specifier|synchronized
 name|void
 name|remove
 parameter_list|(
@@ -1587,6 +1590,7 @@ name|result
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|Set
 name|getInternalKeySet
 parameter_list|()
@@ -1612,6 +1616,7 @@ name|indexList
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|IndexItem
 name|write
 parameter_list|(

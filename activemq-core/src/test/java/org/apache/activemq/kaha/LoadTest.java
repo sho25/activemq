@@ -96,7 +96,7 @@ specifier|final
 name|int
 name|NUM_LOADERS
 init|=
-literal|2
+literal|5
 decl_stmt|;
 specifier|protected
 name|String

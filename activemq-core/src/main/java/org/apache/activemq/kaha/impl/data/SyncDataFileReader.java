@@ -124,6 +124,7 @@ expr_stmt|;
 block|}
 comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.DataFileReader#readDataItemSize(org.apache.activemq.kaha.impl.data.DataItem) 	 */
 specifier|public
+specifier|synchronized
 name|byte
 name|readDataItemSize
 parameter_list|(
@@ -181,6 +182,7 @@ return|;
 block|}
 comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.DataFileReader#readItem(org.apache.activemq.kaha.Marshaller, org.apache.activemq.kaha.StoreLocation) 	 */
 specifier|public
+specifier|synchronized
 name|Object
 name|readItem
 parameter_list|(

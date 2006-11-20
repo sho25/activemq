@@ -1270,6 +1270,7 @@ name|result
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|void
 name|remove
 parameter_list|(
@@ -1693,6 +1694,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#set(int, E)      */
 specifier|public
+specifier|synchronized
 name|Object
 name|set
 parameter_list|(
@@ -1836,6 +1838,7 @@ name|result
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|IndexItem
 name|internalSet
 parameter_list|(
@@ -2007,6 +2010,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
+specifier|synchronized
 name|StoreEntry
 name|internalAddLast
 parameter_list|(
@@ -2051,6 +2055,7 @@ name|item
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|StoreEntry
 name|internalAddFirst
 parameter_list|(
@@ -2090,6 +2095,7 @@ name|item
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|IndexItem
 name|internalAdd
 parameter_list|(
@@ -2136,6 +2142,7 @@ name|item
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|StoreEntry
 name|internalGet
 parameter_list|(
@@ -2718,6 +2725,7 @@ return|;
 block|}
 comment|/**      * @param entry      * @param object      * @see org.apache.activemq.kaha.ListContainer#update(org.apache.activemq.kaha.StoreEntry, java.lang.Object)      */
 specifier|public
+specifier|synchronized
 name|void
 name|update
 parameter_list|(
@@ -2932,6 +2940,7 @@ argument_list|)
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|IndexItem
 name|writeLast
 parameter_list|(
@@ -3102,6 +3111,7 @@ name|index
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|IndexItem
 name|writeFirst
 parameter_list|(
@@ -3259,6 +3269,7 @@ name|index
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|IndexItem
 name|insert
 parameter_list|(
@@ -3489,6 +3500,7 @@ name|index
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|Object
 name|getValue
 parameter_list|(
@@ -3656,6 +3668,7 @@ argument_list|()
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|void
 name|itemAdded
 parameter_list|(
@@ -3794,6 +3807,7 @@ block|}
 block|}
 block|}
 specifier|protected
+specifier|synchronized
 name|void
 name|itemRemoved
 parameter_list|(
@@ -3887,6 +3901,7 @@ block|}
 block|}
 block|}
 specifier|protected
+specifier|synchronized
 name|Object
 name|getCachedItem
 parameter_list|(

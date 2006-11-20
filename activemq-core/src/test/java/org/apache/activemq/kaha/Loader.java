@@ -495,6 +495,7 @@ name|i
 operator|++
 control|)
 block|{
+comment|//System.out.println(this + " Container size = " + container.size());
 name|String
 name|key
 init|=

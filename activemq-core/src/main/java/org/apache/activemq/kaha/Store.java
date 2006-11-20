@@ -339,6 +339,12 @@ name|String
 name|type
 parameter_list|)
 function_decl|;
+comment|/**      * @return true if the store has been initialized      */
+specifier|public
+name|boolean
+name|isInitialized
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

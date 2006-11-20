@@ -334,13 +334,12 @@ operator|&&
 name|rc
 operator|==
 literal|1
-condition|)
-block|{
-assert|assert
+operator|&&
 name|message
 operator|==
 literal|null
-assert|;
+condition|)
+block|{
 try|try
 block|{
 name|message

@@ -560,6 +560,7 @@ return|return
 name|name
 return|;
 block|}
+specifier|synchronized
 name|DataFile
 name|findSpaceForData
 parameter_list|(
@@ -780,6 +781,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|StoreLocation
 name|storeDataItem
 parameter_list|(
@@ -807,6 +809,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|StoreLocation
 name|storeRedoItem
 parameter_list|(
@@ -831,6 +834,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|updateItem
 parameter_list|(
@@ -1645,6 +1649,7 @@ name|reader
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|DataFileReader
 name|createReader
 parameter_list|()
