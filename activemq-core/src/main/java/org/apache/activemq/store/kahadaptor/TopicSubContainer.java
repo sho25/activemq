@@ -50,6 +50,7 @@ comment|/**  * Holds information for the subscriber  *   * @version $Revision: 1
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|TopicSubContainer
 block|{
@@ -61,6 +62,7 @@ specifier|private
 name|StoreEntry
 name|batchEntry
 decl_stmt|;
+specifier|public
 name|TopicSubContainer
 parameter_list|(
 name|ListContainer
@@ -75,6 +77,7 @@ name|container
 expr_stmt|;
 block|}
 comment|/**      * @return the batchEntry      */
+specifier|public
 name|StoreEntry
 name|getBatchEntry
 parameter_list|()
@@ -86,6 +89,7 @@ name|batchEntry
 return|;
 block|}
 comment|/**      * @param batchEntry the batchEntry to set      */
+specifier|public
 name|void
 name|setBatchEntry
 parameter_list|(
@@ -101,6 +105,7 @@ name|batchEntry
 expr_stmt|;
 block|}
 comment|/**      * @return the listContainer      */
+specifier|public
 name|ListContainer
 name|getListContainer
 parameter_list|()
@@ -112,6 +117,7 @@ name|listContainer
 return|;
 block|}
 comment|/**      * @param listContainer the listContainer to set      */
+specifier|public
 name|void
 name|setListContainer
 parameter_list|(
@@ -126,6 +132,7 @@ operator|=
 name|container
 expr_stmt|;
 block|}
+specifier|public
 name|void
 name|reset
 parameter_list|()

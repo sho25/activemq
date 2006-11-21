@@ -562,7 +562,7 @@ name|put
 argument_list|(
 name|identity
 argument_list|,
-name|msg
+name|entry
 argument_list|)
 expr_stmt|;
 break|break;
@@ -908,6 +908,7 @@ return|;
 block|}
 comment|/**      * @param lastMessageId      * @param maxReturned      * @param listener      * @throws Exception      * @see org.apache.activemq.store.MessageStore#recoverNextMessages(org.apache.activemq.command.MessageId, int, org.apache.activemq.store.MessageRecoveryListener)      */
 specifier|public
+specifier|synchronized
 name|void
 name|recoverNextMessages
 parameter_list|(

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -467,6 +467,20 @@ name|activemq
 operator|.
 name|kaha
 operator|.
+name|ListContainer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|kaha
+operator|.
 name|MapContainer
 import|;
 end_import
@@ -653,6 +667,38 @@ name|activemq
 operator|.
 name|store
 operator|.
+name|kahadaptor
+operator|.
+name|KahaTopicMessageStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|kahadaptor
+operator|.
+name|TopicSubAckMarshaller
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
 name|rapid
 operator|.
 name|RapidTransactionStore
@@ -806,7 +852,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with a  * {@link Journal} and then check pointing asynchronously on a timeout with some  * other long term persistent storage.  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.17 $  */
+comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with a {@link Journal} and then check pointing  * asynchronously on a timeout with some other long term persistent storage.  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.17 $  */
 end_comment
 
 begin_class
@@ -954,6 +1000,12 @@ name|periodicCheckpointTask
 init|=
 name|createPeriodicCheckpointTask
 argument_list|()
+decl_stmt|;
+specifier|private
+name|int
+name|maximumDestinationCacheSize
+init|=
+literal|2000
 decl_stmt|;
 specifier|final
 name|Runnable
@@ -1233,10 +1285,10 @@ operator|==
 literal|null
 condition|)
 block|{
-name|MapContainer
+name|ListContainer
 name|messageContainer
 init|=
-name|getMapContainer
+name|getListContainer
 argument_list|(
 name|destination
 argument_list|,
@@ -1253,6 +1305,8 @@ argument_list|,
 name|destination
 argument_list|,
 name|messageContainer
+argument_list|,
+name|maximumDestinationCacheSize
 argument_list|)
 expr_stmt|;
 name|queues
@@ -1341,6 +1395,62 @@ return|return
 name|container
 return|;
 block|}
+specifier|protected
+name|ListContainer
+name|getListContainer
+parameter_list|(
+name|Object
+name|id
+parameter_list|,
+name|String
+name|containerName
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|Store
+name|store
+init|=
+name|getStore
+argument_list|()
+decl_stmt|;
+name|ListContainer
+name|container
+init|=
+name|store
+operator|.
+name|getListContainer
+argument_list|(
+name|id
+argument_list|,
+name|containerName
+argument_list|)
+decl_stmt|;
+name|container
+operator|.
+name|setMaximumCacheSize
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|container
+operator|.
+name|setMarshaller
+argument_list|(
+operator|new
+name|RapidMessageReferenceMarshaller
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|container
+operator|.
+name|load
+argument_list|()
+expr_stmt|;
+return|return
+name|container
+return|;
+block|}
 specifier|public
 name|TopicMessageStore
 name|createTopicMessageStore
@@ -1351,11 +1461,11 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|RapidTopicMessageStore
-name|store
+name|TopicMessageStore
+name|rc
 init|=
 operator|(
-name|RapidTopicMessageStore
+name|TopicMessageStore
 operator|)
 name|topics
 operator|.
@@ -1366,15 +1476,21 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|store
+name|rc
 operator|==
 literal|null
 condition|)
 block|{
-name|MapContainer
+name|Store
+name|store
+init|=
+name|getStore
+argument_list|()
+decl_stmt|;
+name|ListContainer
 name|messageContainer
 init|=
-name|getMapContainer
+name|getListContainer
 argument_list|(
 name|destination
 argument_list|,
@@ -1391,19 +1507,17 @@ operator|.
 name|toString
 argument_list|()
 operator|+
-literal|"-subscriptions"
+literal|"-Subscriptions"
 argument_list|,
 literal|"topic-subs"
 argument_list|)
 decl_stmt|;
-name|MapContainer
+name|ListContainer
 name|ackContainer
 init|=
-name|this
-operator|.
 name|store
 operator|.
-name|getMapContainer
+name|getListContainer
 argument_list|(
 name|destination
 operator|.
@@ -1415,36 +1529,31 @@ argument_list|)
 decl_stmt|;
 name|ackContainer
 operator|.
-name|setKeyMarshaller
+name|setMarshaller
 argument_list|(
 operator|new
-name|StringMarshaller
+name|TopicSubAckMarshaller
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ackContainer
-operator|.
-name|setValueMarshaller
-argument_list|(
-operator|new
-name|AtomicIntegerMarshaller
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|store
+name|rc
 operator|=
 operator|new
 name|RapidTopicMessageStore
 argument_list|(
 name|this
 argument_list|,
-name|destination
+name|store
 argument_list|,
 name|messageContainer
 argument_list|,
+name|ackContainer
+argument_list|,
 name|subsContainer
 argument_list|,
-name|ackContainer
+name|destination
+argument_list|,
+name|maximumDestinationCacheSize
 argument_list|)
 expr_stmt|;
 name|topics
@@ -1453,12 +1562,12 @@ name|put
 argument_list|(
 name|destination
 argument_list|,
-name|store
+name|rc
 argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|store
+name|rc
 return|;
 block|}
 specifier|public
@@ -1591,7 +1700,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|//checkpointExecutor.allowCoreThreadTimeOut(true);
+comment|// checkpointExecutor.allowCoreThreadTimeOut(true);
 name|createTransactionStore
 argument_list|()
 expr_stmt|;
@@ -1730,7 +1839,7 @@ return|;
 block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
-comment|/**      * The Journal give us a call back so that we can move old data out of the      * journal. Taking a checkpoint does this for us.      *       * @see org.apache.activemq.journal.JournalEventListener#overflowNotification(org.apache.activemq.journal.RecordLocation)      */
+comment|/**      * The Journal give us a call back so that we can move old data out of the journal. Taking a checkpoint does this      * for us.      *       * @see org.apache.activemq.journal.JournalEventListener#overflowNotification(org.apache.activemq.journal.RecordLocation)      */
 specifier|public
 name|void
 name|overflowNotification
@@ -1747,7 +1856,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * When we checkpoint we move all the journalled data to long term storage.      * @param stopping       *       * @param b      */
+comment|/**      * When we checkpoint we move all the journalled data to long term storage.      *       * @param stopping      *       * @param b      */
 specifier|public
 name|void
 name|checkpoint
@@ -1856,7 +1965,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This does the actual checkpoint.      * @return       */
+comment|/**      * This does the actual checkpoint.      *       * @return      */
 specifier|public
 name|boolean
 name|doCheckpoint
@@ -1936,7 +2045,7 @@ comment|// We do many partial checkpoints (fullCheckpoint==false) to move topic 
 comment|// to long term store as soon as possible.
 comment|//
 comment|// We want to avoid doing that for queue messages since removes the come in the same
-comment|// checkpoint cycle will nullify the previous message add.  Therefore, we only
+comment|// checkpoint cycle will nullify the previous message add. Therefore, we only
 comment|// checkpoint queues on the fullCheckpoint cycles.
 comment|//
 if|if
@@ -2281,15 +2390,15 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TODO: do we need to implement a periodic clean up?
-comment|//                if (longTermPersistence instanceof JDBCPersistenceAdapter) {
-comment|//                    // We may be check pointing more often than the checkpointInterval if under high use
-comment|//                    // But we don't want to clean up the db that often.
-comment|//                    long now = System.currentTimeMillis();
-comment|//                    if( now> lastCleanup+checkpointInterval ) {
-comment|//                        lastCleanup = now;
-comment|//                        ((JDBCPersistenceAdapter) longTermPersistence).cleanup();
-comment|//                    }
-comment|//                }
+comment|// if (longTermPersistence instanceof JDBCPersistenceAdapter) {
+comment|// // We may be check pointing more often than the checkpointInterval if under high use
+comment|// // But we don't want to clean up the db that often.
+comment|// long now = System.currentTimeMillis();
+comment|// if( now> lastCleanup+checkpointInterval ) {
+comment|// lastCleanup = now;
+comment|// ((JDBCPersistenceAdapter) longTermPersistence).cleanup();
+comment|// }
+comment|// }
 block|}
 name|log
 operator|.
@@ -2388,7 +2497,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Move all the messages that were in the journal into long term storage. We      * just replay and do a checkpoint.      *       * @throws IOException      * @throws IOException      * @throws InvalidRecordLocationException      * @throws IllegalStateException      */
+comment|/**      * Move all the messages that were in the journal into long term storage. We just replay and do a checkpoint.      *       * @throws IOException      * @throws IOException      * @throws InvalidRecordLocationException      * @throws IllegalStateException      */
 specifier|private
 name|void
 name|recover
@@ -3372,11 +3481,28 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|store
+operator|.
+name|isInitialized
+argument_list|()
+condition|)
+block|{
+name|store
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
 name|store
 operator|.
 name|delete
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
@@ -3472,6 +3598,34 @@ block|{
 return|return
 name|store
 return|;
+block|}
+comment|/**      * @return the maximumDestinationCacheSize      */
+specifier|public
+name|int
+name|getMaximumDestinationCacheSize
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|maximumDestinationCacheSize
+return|;
+block|}
+comment|/**      * @param maximumDestinationCacheSize the maximumDestinationCacheSize to set      */
+specifier|public
+name|void
+name|setMaximumDestinationCacheSize
+parameter_list|(
+name|int
+name|maximumDestinationCacheSize
+parameter_list|)
+block|{
+name|this
+operator|.
+name|maximumDestinationCacheSize
+operator|=
+name|maximumDestinationCacheSize
+expr_stmt|;
 block|}
 specifier|public
 name|Packet
