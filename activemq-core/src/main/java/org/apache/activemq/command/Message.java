@@ -422,9 +422,15 @@ operator|.
 name|messageId
 operator|=
 name|messageId
+operator|!=
+literal|null
+condition|?
+name|messageId
 operator|.
 name|copy
 argument_list|()
+else|:
+literal|null
 expr_stmt|;
 name|copy
 operator|.
