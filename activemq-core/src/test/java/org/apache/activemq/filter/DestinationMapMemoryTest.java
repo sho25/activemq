@@ -142,17 +142,7 @@ operator|+
 name|j
 expr_stmt|;
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Checking: "
-operator|+
-name|name
-argument_list|)
-expr_stmt|;
+comment|//System.out.println("Checking: " + name);
 try|try
 block|{
 name|ActiveMQDestination
