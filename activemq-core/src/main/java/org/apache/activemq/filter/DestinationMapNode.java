@@ -85,6 +85,16 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
 begin_comment
 comment|/**  * An implementation class used to implement {@link DestinationMap}  *   * @version $Revision: 1.2 $  */
 end_comment
@@ -93,7 +103,29 @@ begin_class
 specifier|public
 class|class
 name|DestinationMapNode
+implements|implements
+name|DestinationNode
 block|{
+specifier|protected
+specifier|static
+specifier|final
+name|String
+name|ANY_CHILD
+init|=
+name|DestinationMap
+operator|.
+name|ANY_CHILD
+decl_stmt|;
+specifier|protected
+specifier|static
+specifier|final
+name|String
+name|ANY_DESCENDENT
+init|=
+name|DestinationMap
+operator|.
+name|ANY_DESCENDENT
+decl_stmt|;
 comment|// we synchornize at the DestinationMap level
 specifier|private
 name|DestinationMapNode
@@ -119,31 +151,12 @@ specifier|private
 name|String
 name|path
 init|=
-literal|"*"
+literal|"Root"
 decl_stmt|;
+comment|//    private DestinationMapNode anyChild;
 specifier|private
-name|DestinationMapNode
-name|anyChild
-decl_stmt|;
-specifier|protected
-specifier|static
-specifier|final
-name|String
-name|ANY_CHILD
-init|=
-name|DestinationMap
-operator|.
-name|ANY_CHILD
-decl_stmt|;
-specifier|protected
-specifier|static
-specifier|final
-name|String
-name|ANY_DESCENDENT
-init|=
-name|DestinationMap
-operator|.
-name|ANY_DESCENDENT
+name|int
+name|pathLength
 decl_stmt|;
 specifier|public
 name|DestinationMapNode
@@ -158,6 +171,29 @@ name|parent
 operator|=
 name|parent
 expr_stmt|;
+if|if
+condition|(
+name|parent
+operator|==
+literal|null
+condition|)
+block|{
+name|pathLength
+operator|=
+literal|0
+expr_stmt|;
+block|}
+else|else
+block|{
+name|pathLength
+operator|=
+name|parent
+operator|.
+name|pathLength
+operator|+
+literal|1
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Returns the child node for the given named path or null if it does not      * exist      */
 specifier|public
@@ -260,28 +296,12 @@ name|answer
 return|;
 block|}
 comment|/**      * Returns the node which represents all children (i.e. the * node)      */
-specifier|public
-name|DestinationMapNode
-name|getAnyChildNode
-parameter_list|()
-block|{
-if|if
-condition|(
-name|anyChild
-operator|==
-literal|null
-condition|)
-block|{
-name|anyChild
-operator|=
-name|createChildNode
-argument_list|()
-expr_stmt|;
-block|}
-return|return
-name|anyChild
-return|;
-block|}
+comment|//    public DestinationMapNode getAnyChildNode() {
+comment|//        if (anyChild == null) {
+comment|//            anyChild = createChildNode();
+comment|//        }
+comment|//        return anyChild;
+comment|//    }
 comment|/**      * Returns a mutable List of the values available at this node in the tree      */
 specifier|public
 name|List
@@ -307,19 +327,7 @@ argument_list|(
 name|values
 argument_list|)
 decl_stmt|;
-name|parent
-operator|.
-name|getAnyChildNode
-argument_list|()
-operator|.
-name|getValues
-argument_list|()
-operator|.
-name|removeAll
-argument_list|(
-name|v
-argument_list|)
-expr_stmt|;
+comment|//    	parent.getAnyChildNode().getValues().removeAll(v);
 name|values
 operator|.
 name|clear
@@ -361,21 +369,9 @@ name|Set
 name|answer
 parameter_list|)
 block|{
-if|if
-condition|(
-name|anyChild
-operator|!=
-literal|null
-condition|)
-block|{
-name|anyChild
-operator|.
-name|removeDesendentValues
-argument_list|(
-name|answer
-argument_list|)
-expr_stmt|;
-block|}
+comment|//        if (anyChild != null) {
+comment|//            anyChild.removeDesendentValues(answer);
+comment|//        }
 name|answer
 operator|.
 name|addAll
@@ -441,46 +437,12 @@ expr_stmt|;
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|idx
-operator|==
-name|paths
-operator|.
-name|length
-operator|-
-literal|1
-condition|)
-block|{
-name|getAnyChildNode
-argument_list|()
-operator|.
-name|getValues
-argument_list|()
-operator|.
-name|add
-argument_list|(
-name|value
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|getAnyChildNode
-argument_list|()
-operator|.
-name|add
-argument_list|(
-name|paths
-argument_list|,
-name|idx
-operator|+
-literal|1
-argument_list|,
-name|value
-argument_list|)
-expr_stmt|;
-block|}
+comment|//            if (idx == paths.length - 1) {
+comment|//                getAnyChildNode().getValues().add(value);
+comment|//            }
+comment|//            else {
+comment|//                getAnyChildNode().add(paths, idx + 1, value);
+comment|//            }
 name|getChildOrCreate
 argument_list|(
 name|paths
@@ -539,46 +501,12 @@ expr_stmt|;
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|idx
-operator|==
-name|paths
-operator|.
-name|length
-operator|-
-literal|1
-condition|)
-block|{
-name|getAnyChildNode
-argument_list|()
-operator|.
-name|getValues
-argument_list|()
-operator|.
-name|remove
-argument_list|(
-name|value
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|getAnyChildNode
-argument_list|()
-operator|.
-name|remove
-argument_list|(
-name|paths
-argument_list|,
-name|idx
-operator|+
-literal|1
-argument_list|,
-name|value
-argument_list|)
-expr_stmt|;
-block|}
+comment|//            if (idx == paths.length - 1) {
+comment|//                getAnyChildNode().getValues().remove(value);
+comment|//            }
+comment|//            else {
+comment|//                getAnyChildNode().remove(paths, idx + 1, value);
+comment|//            }
 name|getChildOrCreate
 argument_list|(
 name|paths
@@ -614,21 +542,7 @@ name|int
 name|startIndex
 parameter_list|)
 block|{
-comment|//        if (idx>= paths.length) {
-comment|//            values.clear();
-comment|//            pruneIfEmpty();
-comment|//        }
-comment|//        else {
-comment|//            if (idx == paths.length - 1) {
-comment|//                getAnyChildNode().getValues().clear();
-comment|//            }
-comment|//            else {
-comment|//                getAnyChildNode().removeAll(paths, idx + 1);
-comment|//            }
-comment|//            getChildOrCreate(paths[idx]).removeAll(paths, ++idx);
-comment|//        }
-comment|//
-name|DestinationMapNode
+name|DestinationNode
 name|node
 init|=
 name|this
@@ -709,12 +623,14 @@ name|ANY_CHILD
 argument_list|)
 condition|)
 block|{
+comment|//node = node.getAnyChildNode();
 name|node
 operator|=
+operator|new
+name|AnyChildDestinationNode
+argument_list|(
 name|node
-operator|.
-name|getAnyChildNode
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -749,7 +665,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|protected
+specifier|public
 name|void
 name|appendDescendantValues
 parameter_list|(
@@ -764,14 +680,38 @@ argument_list|(
 name|values
 argument_list|)
 expr_stmt|;
-if|if
+comment|// lets add all the children too
+name|Iterator
+name|iter
+init|=
+name|childNodes
+operator|.
+name|values
+argument_list|()
+operator|.
+name|iterator
+argument_list|()
+decl_stmt|;
+while|while
 condition|(
-name|anyChild
-operator|!=
-literal|null
+name|iter
+operator|.
+name|hasNext
+argument_list|()
 condition|)
 block|{
-name|anyChild
+name|DestinationNode
+name|child
+init|=
+operator|(
+name|DestinationNode
+operator|)
+name|iter
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+name|child
 operator|.
 name|appendDescendantValues
 argument_list|(
@@ -779,6 +719,10 @@ name|answer
 argument_list|)
 expr_stmt|;
 block|}
+comment|// TODO???
+comment|//        if (anyChild != null) {
+comment|//            anyChild.appendDescendantValues(answer);
+comment|//        }
 block|}
 comment|/**      * Factory method to create a child node      */
 specifier|protected
@@ -794,6 +738,7 @@ name|this
 argument_list|)
 return|;
 block|}
+comment|/**      * Matches any entries in the map containing wildcards      */
 specifier|public
 name|void
 name|appendMatchingWildcards
@@ -809,6 +754,17 @@ name|int
 name|idx
 parameter_list|)
 block|{
+if|if
+condition|(
+name|idx
+operator|-
+literal|1
+operator|>
+name|pathLength
+condition|)
+block|{
+return|return;
+block|}
 name|DestinationMapNode
 name|wildCardNode
 init|=
@@ -879,7 +835,7 @@ name|int
 name|startIndex
 parameter_list|)
 block|{
-name|DestinationMapNode
+name|DestinationNode
 name|node
 init|=
 name|this
@@ -971,10 +927,11 @@ condition|)
 block|{
 name|node
 operator|=
+operator|new
+name|AnyChildDestinationNode
+argument_list|(
 name|node
-operator|.
-name|getAnyChildNode
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -1013,7 +970,7 @@ name|couldMatchAny
 condition|)
 block|{
 comment|// lets allow FOO.BAR to match the FOO.BAR.> entry in the map
-name|DestinationMapNode
+name|DestinationNode
 name|child
 init|=
 name|node
