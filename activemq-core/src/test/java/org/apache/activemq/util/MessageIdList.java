@@ -727,6 +727,34 @@ operator|=
 name|parent
 expr_stmt|;
 block|}
+comment|/**      * @return the maximumDuration      */
+specifier|public
+name|long
+name|getMaximumDuration
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|maximumDuration
+return|;
+block|}
+comment|/**      * @param maximumDuration the maximumDuration to set      */
+specifier|public
+name|void
+name|setMaximumDuration
+parameter_list|(
+name|long
+name|maximumDuration
+parameter_list|)
+block|{
+name|this
+operator|.
+name|maximumDuration
+operator|=
+name|maximumDuration
+expr_stmt|;
+block|}
 block|}
 end_class
 
