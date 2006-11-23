@@ -70,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Creates a PendingMessageCursor that access the persistent store to retrieve messages  *  *  * @org.apache.xbean.XBean element="storeDurableSubscriberCursor" description="Pending messages for a durable subscriber  *                         are referenced from the Store"  *   * @version $Revision$  */
+comment|/**  * Creates a PendingMessageCursor that access the persistent store to retrieve messages  *    * @org.apache.xbean.XBean element="storeDurableSubscriberCursor" description="Pending messages for a durable subscriber  *                         are referenced from the Store"  *   * @version $Revision$  */
 end_comment
 
 begin_class

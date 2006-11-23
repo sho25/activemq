@@ -736,6 +736,11 @@ operator|.
 name|configure
 argument_list|(
 name|queue
+argument_list|,
+name|broker
+operator|.
+name|getTempDataStore
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

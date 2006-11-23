@@ -253,6 +253,11 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|persistent
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 name|pendingCount
 operator|=
 name|persistent
@@ -286,6 +291,11 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+name|persistent
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
 name|pendingCount
 operator|=
 literal|0

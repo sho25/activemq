@@ -49,6 +49,24 @@ name|region
 operator|.
 name|cursors
 operator|.
+name|FilePendingMessageCursor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|cursors
+operator|.
 name|PendingMessageCursor
 import|;
 end_import
@@ -68,15 +86,17 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstraction to allow different policies for holding messages awaiting dispatch on a Queue  *   * @version $Revision$  */
+comment|/**  * Creates a FilePendingMessageCursor  *  *  * @org.apache.xbean.XBean element="fileCursor" description="Pending messages paged in from file"  *   * @version $Revision$  */
 end_comment
 
-begin_interface
+begin_class
 specifier|public
-interface|interface
+class|class
+name|FilePendingQueueMessageStoragePolicy
+implements|implements
 name|PendingQueueMessageStoragePolicy
 block|{
-comment|/**      * Retrieve the configured pending message storage cursor;      * @param queue       * @param tmpStore      * @return the cursor      *       */
+comment|/**      * @param queue      * @param tmpStore      * @return the cursor      * @see org.apache.activemq.broker.region.policy.PendingQueueMessageStoragePolicy#getQueuePendingMessageCursor(org.apache.openjpa.lib.util.concurrent.Queue, org.apache.activemq.kaha.Store)      */
 specifier|public
 name|PendingMessageCursor
 name|getQueuePendingMessageCursor
@@ -87,9 +107,24 @@ parameter_list|,
 name|Store
 name|tmpStore
 parameter_list|)
-function_decl|;
+block|{
+return|return
+operator|new
+name|FilePendingMessageCursor
+argument_list|(
+literal|"PendingCursor:"
+operator|+
+name|queue
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|tmpStore
+argument_list|)
+return|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 
