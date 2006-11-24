@@ -1066,6 +1066,11 @@ operator|&&
 name|count
 operator|<
 name|maxReturned
+operator|&&
+name|listener
+operator|.
+name|hasSpace
+argument_list|()
 condition|)
 do|;
 block|}

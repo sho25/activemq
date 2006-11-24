@@ -60,7 +60,7 @@ literal|20
 expr_stmt|;
 name|messageCount
 operator|=
-literal|500
+literal|50
 expr_stmt|;
 name|messageSize
 operator|=

@@ -3046,6 +3046,15 @@ name|void
 name|finished
 parameter_list|()
 block|{}
+specifier|public
+name|boolean
+name|hasSpace
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 argument_list|)
 expr_stmt|;

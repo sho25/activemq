@@ -1945,6 +1945,16 @@ name|finished
 argument_list|()
 expr_stmt|;
 block|}
+specifier|public
+name|boolean
+name|hasSpace
+parameter_list|()
+block|{
+comment|// TODO Auto-generated method stub
+return|return
+literal|true
+return|;
+block|}
 block|}
 argument_list|)
 expr_stmt|;

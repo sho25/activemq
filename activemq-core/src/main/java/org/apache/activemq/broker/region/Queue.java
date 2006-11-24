@@ -867,6 +867,14 @@ block|{
 comment|// Restore the persistent messages.
 name|messages
 operator|.
+name|setUsageManager
+argument_list|(
+name|getUsageManager
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|messages
+operator|.
 name|start
 argument_list|()
 expr_stmt|;
@@ -979,6 +987,15 @@ name|void
 name|finished
 parameter_list|()
 block|{                     }
+specifier|public
+name|boolean
+name|hasSpace
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 argument_list|)
 expr_stmt|;
@@ -1352,6 +1369,20 @@ argument_list|(
 name|sub
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|consumers
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|messages
+operator|.
+name|gc
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 name|sub
 operator|.

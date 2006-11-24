@@ -1494,6 +1494,13 @@ name|getPrefetchSize
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|cursor
+operator|.
+name|setUsageManager
+argument_list|(
+name|memoryManager
+argument_list|)
+expr_stmt|;
 name|sub
 operator|=
 operator|new

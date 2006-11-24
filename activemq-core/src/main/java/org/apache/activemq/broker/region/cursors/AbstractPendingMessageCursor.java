@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -75,6 +65,20 @@ name|MessageReference
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|memory
+operator|.
+name|UsageManager
+import|;
+end_import
+
 begin_comment
 comment|/**  * Abstract method holder for pending message (messages awaiting disptach to a consumer) cursor  *   * @version $Revision$  */
 end_comment
@@ -92,6 +96,10 @@ name|maxBatchSize
 init|=
 literal|100
 decl_stmt|;
+specifier|protected
+name|UsageManager
+name|usageManager
+decl_stmt|;
 specifier|public
 name|void
 name|start
@@ -105,7 +113,11 @@ name|stop
 parameter_list|()
 throws|throws
 name|Exception
-block|{     }
+block|{
+name|gc
+argument_list|()
+expr_stmt|;
+block|}
 specifier|public
 name|void
 name|add
@@ -243,7 +255,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
-comment|/**      * Give the cursor a hint that we are about to remove messages from memory only      */
 specifier|public
 name|void
 name|resetForGC
@@ -253,7 +264,6 @@ name|reset
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @param node      * @see org.apache.activemq.broker.region.cursors.PendingMessageCursor#remove(org.apache.activemq.broker.region.MessageReference)      */
 specifier|public
 name|void
 name|remove
@@ -262,6 +272,45 @@ name|MessageReference
 name|node
 parameter_list|)
 block|{     }
+specifier|public
+name|void
+name|gc
+parameter_list|()
+block|{     }
+specifier|public
+name|void
+name|setUsageManager
+parameter_list|(
+name|UsageManager
+name|usageManager
+parameter_list|)
+block|{
+name|this
+operator|.
+name|usageManager
+operator|=
+name|usageManager
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|hasSpace
+parameter_list|()
+block|{
+return|return
+name|usageManager
+operator|!=
+literal|null
+condition|?
+operator|!
+name|usageManager
+operator|.
+name|isFull
+argument_list|()
+else|:
+literal|true
+return|;
+block|}
 block|}
 end_class
 

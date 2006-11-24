@@ -87,6 +87,20 @@ name|MessageReference
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|memory
+operator|.
+name|UsageManager
+import|;
+end_import
+
 begin_comment
 comment|/**  * Interface to pending message (messages awaiting disptach to a consumer) cursor  *   * @version $Revision$  */
 end_comment
@@ -224,6 +238,21 @@ name|remove
 parameter_list|(
 name|MessageReference
 name|node
+parameter_list|)
+function_decl|;
+comment|/**      * free up any internal buffers      *      */
+specifier|public
+name|void
+name|gc
+parameter_list|()
+function_decl|;
+comment|/**      * Set the UsageManager      * @param usageManager      * @see org.apache.activemq.memory.UsageManager      */
+specifier|public
+name|void
+name|setUsageManager
+parameter_list|(
+name|UsageManager
+name|usageManager
 parameter_list|)
 function_decl|;
 block|}

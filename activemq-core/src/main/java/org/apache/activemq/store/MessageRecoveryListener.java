@@ -60,6 +60,10 @@ name|void
 name|finished
 parameter_list|()
 function_decl|;
+name|boolean
+name|hasSpace
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

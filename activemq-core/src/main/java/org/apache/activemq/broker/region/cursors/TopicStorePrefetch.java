@@ -301,6 +301,9 @@ argument_list|,
 name|subscriberName
 argument_list|)
 expr_stmt|;
+name|gc
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * @return true if there are no pending messages      */
 specifier|public
@@ -564,6 +567,17 @@ name|getLast
 argument_list|()
 decl_stmt|;
 block|}
+block|}
+specifier|public
+name|void
+name|gc
+parameter_list|()
+block|{
+name|batchList
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 block|}
 specifier|public
 name|String

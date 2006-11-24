@@ -1263,6 +1263,14 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|listener
+operator|.
+name|hasSpace
+argument_list|()
+condition|)
+block|{
 name|Message
 name|msg
 init|=
@@ -1305,6 +1313,7 @@ name|sequenceId
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 specifier|public
 name|void
 name|recoverMessageReference
@@ -1315,6 +1324,14 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|listener
+operator|.
+name|hasSpace
+argument_list|()
+condition|)
+block|{
 name|listener
 operator|.
 name|recoverMessageReference
@@ -1322,6 +1339,7 @@ argument_list|(
 name|reference
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void

@@ -41,16 +41,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -105,39 +95,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
-operator|.
-name|region
-operator|.
-name|Topic
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|command
 operator|.
 name|Message
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|MessageId
 import|;
 end_import
 
@@ -166,20 +126,6 @@ operator|.
 name|store
 operator|.
 name|MessageStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|store
-operator|.
-name|TopicMessageStore
 import|;
 end_import
 
@@ -299,6 +245,9 @@ block|{
 name|store
 operator|.
 name|resetBatching
+argument_list|()
+expr_stmt|;
+name|gc
 argument_list|()
 expr_stmt|;
 block|}
@@ -514,6 +463,17 @@ argument_list|(
 literal|"Not supported"
 argument_list|)
 throw|;
+block|}
+specifier|public
+name|void
+name|gc
+parameter_list|()
+block|{
+name|batchList
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 block|}
 comment|// implementation
 specifier|protected
