@@ -255,6 +255,12 @@ name|UsageManager
 name|usageManager
 parameter_list|)
 function_decl|;
+comment|/**      * @return true if the cursor is full      */
+specifier|public
+name|boolean
+name|isFull
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

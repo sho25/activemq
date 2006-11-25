@@ -311,6 +311,24 @@ else|:
 literal|true
 return|;
 block|}
+specifier|public
+name|boolean
+name|isFull
+parameter_list|()
+block|{
+return|return
+name|usageManager
+operator|!=
+literal|null
+condition|?
+name|usageManager
+operator|.
+name|isFull
+argument_list|()
+else|:
+literal|false
+return|;
+block|}
 block|}
 end_class
 
