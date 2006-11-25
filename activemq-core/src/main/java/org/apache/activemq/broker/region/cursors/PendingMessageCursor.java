@@ -152,6 +152,12 @@ name|void
 name|reset
 parameter_list|()
 function_decl|;
+comment|/**      * hint to the cursor to release any locks it might have      * grabbed after a reset      *      */
+specifier|public
+name|void
+name|release
+parameter_list|()
+function_decl|;
 comment|/**      * add message to await dispatch      * @param node      * @throws IOException       * @throws Exception       */
 specifier|public
 name|void

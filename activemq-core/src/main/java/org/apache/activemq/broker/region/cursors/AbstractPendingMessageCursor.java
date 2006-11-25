@@ -329,6 +329,11 @@ else|:
 literal|false
 return|;
 block|}
+specifier|public
+name|void
+name|release
+parameter_list|()
+block|{             }
 block|}
 end_class
 
