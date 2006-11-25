@@ -139,6 +139,22 @@ name|kaha
 operator|.
 name|impl
 operator|.
+name|DataManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|kaha
+operator|.
+name|impl
+operator|.
 name|index
 operator|.
 name|RedoStoreIndexItem
@@ -195,6 +211,8 @@ begin_class
 specifier|public
 specifier|final
 class|class
+name|DataManagerImpl
+implements|implements
 name|DataManager
 block|{
 specifier|private
@@ -207,7 +225,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|DataManager
+name|DataManagerImpl
 operator|.
 name|class
 argument_list|)
@@ -242,11 +260,11 @@ name|String
 name|name
 decl_stmt|;
 specifier|private
-name|DataFileReader
+name|SyncDataFileReader
 name|reader
 decl_stmt|;
 specifier|private
-name|DataFileWriter
+name|SyncDataFileWriter
 name|writer
 decl_stmt|;
 specifier|private
@@ -265,12 +283,6 @@ init|=
 operator|new
 name|HashMap
 argument_list|()
-decl_stmt|;
-specifier|private
-name|boolean
-name|useAsyncWriter
-init|=
-literal|false
 decl_stmt|;
 specifier|public
 specifier|static
@@ -309,7 +321,7 @@ name|String
 name|dataFilePrefix
 decl_stmt|;
 specifier|public
-name|DataManager
+name|DataManagerImpl
 parameter_list|(
 name|File
 name|dir
@@ -551,6 +563,7 @@ return|return
 name|result
 return|;
 block|}
+comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#getName() 	 */
 specifier|public
 name|String
 name|getName
@@ -754,6 +767,7 @@ return|return
 name|dataFile
 return|;
 block|}
+comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#readItem(org.apache.activemq.kaha.Marshaller, org.apache.activemq.kaha.StoreLocation) 	 */
 specifier|public
 specifier|synchronized
 name|Object
@@ -780,6 +794,7 @@ name|item
 argument_list|)
 return|;
 block|}
+comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#storeDataItem(org.apache.activemq.kaha.Marshaller, java.lang.Object) 	 */
 specifier|public
 specifier|synchronized
 name|StoreLocation
@@ -808,6 +823,7 @@ name|DATA_ITEM_TYPE
 argument_list|)
 return|;
 block|}
+comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#storeRedoItem(java.lang.Object) 	 */
 specifier|public
 specifier|synchronized
 name|StoreLocation
@@ -833,6 +849,7 @@ name|REDO_ITEM_TYPE
 argument_list|)
 return|;
 block|}
+comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#updateItem(org.apache.activemq.kaha.StoreLocation, org.apache.activemq.kaha.Marshaller, java.lang.Object) 	 */
 specifier|public
 specifier|synchronized
 name|void
@@ -868,6 +885,7 @@ name|DATA_ITEM_TYPE
 argument_list|)
 expr_stmt|;
 block|}
+comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#recoverRedoItems(org.apache.activemq.kaha.impl.data.RedoListener) 	 */
 specifier|public
 specifier|synchronized
 name|void
@@ -1053,6 +1071,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#close() 	 */
 specifier|public
 specifier|synchronized
 name|void
@@ -1118,6 +1137,7 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#force() 	 */
 specifier|public
 specifier|synchronized
 name|void
@@ -1167,6 +1187,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#delete() 	 */
 specifier|public
 specifier|synchronized
 name|boolean
@@ -1228,6 +1249,7 @@ return|return
 name|result
 return|;
 block|}
+comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#addInterestInFile(int) 	 */
 specifier|public
 specifier|synchronized
 name|void
@@ -1312,6 +1334,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#removeInterestInFile(int) 	 */
 specifier|public
 specifier|synchronized
 name|void
@@ -1402,6 +1425,7 @@ block|}
 block|}
 block|}
 block|}
+comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#consolidateDataFiles() 	 */
 specifier|public
 specifier|synchronized
 name|void
@@ -1560,6 +1584,7 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#getRedoMarshaller() 	 */
 specifier|public
 name|Marshaller
 name|getRedoMarshaller
@@ -1569,6 +1594,7 @@ return|return
 name|redoMarshaller
 return|;
 block|}
+comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#setRedoMarshaller(org.apache.activemq.kaha.Marshaller) 	 */
 specifier|public
 name|void
 name|setRedoMarshaller
@@ -1627,7 +1653,7 @@ return|;
 block|}
 specifier|public
 specifier|synchronized
-name|DataFileReader
+name|SyncDataFileReader
 name|getReader
 parameter_list|()
 block|{
@@ -1650,30 +1676,9 @@ return|;
 block|}
 specifier|protected
 specifier|synchronized
-name|DataFileReader
+name|SyncDataFileReader
 name|createReader
 parameter_list|()
-block|{
-if|if
-condition|(
-name|useAsyncWriter
-condition|)
-block|{
-return|return
-operator|new
-name|AsyncDataFileReader
-argument_list|(
-name|this
-argument_list|,
-operator|(
-name|AsyncDataFileWriter
-operator|)
-name|getWriter
-argument_list|()
-argument_list|)
-return|;
-block|}
-else|else
 block|{
 return|return
 operator|new
@@ -1683,13 +1688,12 @@ name|this
 argument_list|)
 return|;
 block|}
-block|}
 specifier|public
 specifier|synchronized
 name|void
 name|setReader
 parameter_list|(
-name|DataFileReader
+name|SyncDataFileReader
 name|reader
 parameter_list|)
 block|{
@@ -1702,7 +1706,7 @@ expr_stmt|;
 block|}
 specifier|public
 specifier|synchronized
-name|DataFileWriter
+name|SyncDataFileWriter
 name|getWriter
 parameter_list|()
 block|{
@@ -1724,24 +1728,9 @@ name|writer
 return|;
 block|}
 specifier|private
-name|DataFileWriter
+name|SyncDataFileWriter
 name|createWriter
 parameter_list|()
-block|{
-if|if
-condition|(
-name|useAsyncWriter
-condition|)
-block|{
-return|return
-operator|new
-name|AsyncDataFileWriter
-argument_list|(
-name|this
-argument_list|)
-return|;
-block|}
-else|else
 block|{
 return|return
 operator|new
@@ -1751,13 +1740,12 @@ name|this
 argument_list|)
 return|;
 block|}
-block|}
 specifier|public
 specifier|synchronized
 name|void
 name|setWriter
 parameter_list|(
-name|DataFileWriter
+name|SyncDataFileWriter
 name|writer
 parameter_list|)
 block|{
@@ -1766,32 +1754,6 @@ operator|.
 name|writer
 operator|=
 name|writer
-expr_stmt|;
-block|}
-specifier|public
-specifier|synchronized
-name|boolean
-name|isUseAsyncWriter
-parameter_list|()
-block|{
-return|return
-name|useAsyncWriter
-return|;
-block|}
-specifier|public
-specifier|synchronized
-name|void
-name|setUseAsyncWriter
-parameter_list|(
-name|boolean
-name|useAsyncWriter
-parameter_list|)
-block|{
-name|this
-operator|.
-name|useAsyncWriter
-operator|=
-name|useAsyncWriter
 expr_stmt|;
 block|}
 block|}

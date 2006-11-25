@@ -61,20 +61,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|kaha
-operator|.
-name|StoreLocation
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|util
 operator|.
 name|DataByteArrayOutputStream
@@ -87,23 +73,22 @@ end_comment
 
 begin_class
 specifier|final
+specifier|public
 class|class
 name|SyncDataFileWriter
-implements|implements
-name|DataFileWriter
 block|{
 specifier|private
 name|DataByteArrayOutputStream
 name|buffer
 decl_stmt|;
 specifier|private
-name|DataManager
+name|DataManagerImpl
 name|dataManager
 decl_stmt|;
 comment|/**      * Construct a Store writer      *       * @param file      */
 name|SyncDataFileWriter
 parameter_list|(
-name|DataManager
+name|DataManagerImpl
 name|fileManager
 parameter_list|)
 block|{
@@ -150,7 +135,7 @@ name|buffer
 operator|.
 name|position
 argument_list|(
-name|DataManager
+name|DataManagerImpl
 operator|.
 name|ITEM_HEAD_SIZE
 argument_list|)
@@ -177,7 +162,7 @@ name|payloadSize
 init|=
 name|size
 operator|-
-name|DataManager
+name|DataManagerImpl
 operator|.
 name|ITEM_HEAD_SIZE
 decl_stmt|;
@@ -308,7 +293,7 @@ name|buffer
 operator|.
 name|position
 argument_list|(
-name|DataManager
+name|DataManagerImpl
 operator|.
 name|ITEM_HEAD_SIZE
 argument_list|)
@@ -335,7 +320,7 @@ name|payloadSize
 init|=
 name|size
 operator|-
-name|DataManager
+name|DataManagerImpl
 operator|.
 name|ITEM_HEAD_SIZE
 decl_stmt|;

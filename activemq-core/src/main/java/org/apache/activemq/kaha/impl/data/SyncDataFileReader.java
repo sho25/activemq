@@ -86,14 +86,13 @@ comment|/**  * Optimized Store reader  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
+specifier|public
 specifier|final
 class|class
 name|SyncDataFileReader
-implements|implements
-name|DataFileReader
 block|{
 specifier|private
-name|DataManager
+name|DataManagerImpl
 name|dataManager
 decl_stmt|;
 specifier|private
@@ -103,7 +102,7 @@ decl_stmt|;
 comment|/**      * Construct a Store reader      *       * @param file      */
 name|SyncDataFileReader
 parameter_list|(
-name|DataManager
+name|DataManagerImpl
 name|fileManager
 parameter_list|)
 block|{
@@ -232,7 +231,7 @@ operator|.
 name|getOffset
 argument_list|()
 operator|+
-name|DataManager
+name|DataManagerImpl
 operator|.
 name|ITEM_HEAD_SIZE
 argument_list|)

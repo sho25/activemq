@@ -103,8 +103,6 @@ name|kaha
 operator|.
 name|impl
 operator|.
-name|data
-operator|.
 name|DataManager
 import|;
 end_import
