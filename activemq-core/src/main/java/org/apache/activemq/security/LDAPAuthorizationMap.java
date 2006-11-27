@@ -786,6 +786,36 @@ expr_stmt|;
 block|}
 specifier|public
 name|Set
+name|getTempDestinationAdminACLs
+parameter_list|()
+block|{
+comment|//TODO insert implementation
+return|return
+literal|null
+return|;
+block|}
+specifier|public
+name|Set
+name|getTempDestinationReadACLs
+parameter_list|()
+block|{
+comment|//    	TODO insert implementation
+return|return
+literal|null
+return|;
+block|}
+specifier|public
+name|Set
+name|getTempDestinationWriteACLs
+parameter_list|()
+block|{
+comment|//    	TODO insert implementation
+return|return
+literal|null
+return|;
+block|}
+specifier|public
+name|Set
 name|getAdminACLs
 parameter_list|(
 name|ActiveMQDestination

@@ -23,9 +23,43 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|command
+name|filter
 operator|.
-name|ActiveMQDestination
+name|DestinationMapEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|jaas
+operator|.
+name|GroupPrincipal
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
 import|;
 end_import
 
@@ -39,56 +73,39 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|StringTokenizer
+import|;
+end_import
+
 begin_comment
-comment|/**  *  * @version $Revision$  */
+comment|/**  * Represents an entry in a {@link DefaultAuthorizationMap} for assigning  * different operations (read, write, admin) of user roles to  * a temporary destination  *   * @org.apache.xbean.XBean  *   * @version $Revision: 426366 $  */
 end_comment
 
-begin_interface
+begin_class
 specifier|public
-interface|interface
-name|AuthorizationMap
+class|class
+name|TempDestinationAuthorizationEntry
+extends|extends
+name|AuthorizationEntry
 block|{
-comment|/**      * Returns the set of all ACLs capable of administering temp destination      */
-name|Set
-name|getTempDestinationAdminACLs
+specifier|public
+name|void
+name|afterPropertiesSet
 parameter_list|()
-function_decl|;
-comment|/**      * Returns the set of all ACLs capable of reading from temp destination      */
-name|Set
-name|getTempDestinationReadACLs
-parameter_list|()
-function_decl|;
-comment|/**      * Returns the set of all ACLs capable of writing to temp destination      */
-name|Set
-name|getTempDestinationWriteACLs
-parameter_list|()
-function_decl|;
-comment|/**      * Returns the set of all ACLs capable of administering the given destination      */
-name|Set
-name|getAdminACLs
-parameter_list|(
-name|ActiveMQDestination
-name|destination
-parameter_list|)
-function_decl|;
-comment|/**      * Returns the set of all ACLs capable of reading (consuming from) the given destination      */
-name|Set
-name|getReadACLs
-parameter_list|(
-name|ActiveMQDestination
-name|destination
-parameter_list|)
-function_decl|;
-comment|/**      * Returns the set of all ACLs capable of writing to the given destination      */
-name|Set
-name|getWriteACLs
-parameter_list|(
-name|ActiveMQDestination
-name|destination
-parameter_list|)
-function_decl|;
+throws|throws
+name|Exception
+block|{
+comment|//we don't need to check if destination is specified since
+comment|//the TempDestinationAuthorizationEntry  should map to all temp destinations
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 
