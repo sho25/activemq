@@ -89,6 +89,22 @@ name|broker
 operator|.
 name|region
 operator|.
+name|SubscriptionRecovery
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
 name|Topic
 import|;
 end_import
@@ -155,7 +171,7 @@ parameter_list|,
 name|Topic
 name|topic
 parameter_list|,
-name|Subscription
+name|SubscriptionRecovery
 name|sub
 parameter_list|)
 throws|throws
@@ -172,7 +188,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Used to copy the policy object.      */
+comment|/**      * Used to copy the policy object.      * @return the copy      */
 name|SubscriptionRecoveryPolicy
 name|copy
 parameter_list|()

@@ -180,6 +180,17 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Add a message recovered from a retroactive policy      * @param node      * @throws Exception      */
+specifier|public
+name|void
+name|addRecoveredMessage
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
 comment|/**      * @return true if there pending messages to dispatch      */
 specifier|public
 name|boolean

@@ -11,19 +11,23 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
+name|broker
 operator|.
-name|list
+name|region
 package|;
 end_package
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|List
+name|activemq
+operator|.
+name|broker
+operator|.
+name|ConnectionContext
 import|;
 end_import
 
@@ -57,55 +61,31 @@ name|ActiveMQDestination
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|Message
-import|;
-end_import
-
 begin_comment
-comment|/**  * A container of messages which is used to store messages and then   * replay them later for a given subscription.  *   * @version $Revision: 1.1 $  */
+comment|/**  * An interface for recoverying transient messages held by the broker  * for retractive recovery for subscribers  *   * @version $Revision$  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|MessageList
+name|SubscriptionRecovery
 block|{
-name|void
-name|add
+comment|/**      * Add a message to the SubscriptionRecovery      * @param context      * @param message      * @return true if the message is accepted      * @throws Exception      */
+name|boolean
+name|addRecoveredMessage
 parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
 name|MessageReference
-name|node
+name|message
 parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
-comment|/**      * Returns the current list of MessageReference objects for the given subscription      */
-name|List
-name|getMessages
-parameter_list|(
+comment|/**      * @return the Destination associated with this Subscription      */
 name|ActiveMQDestination
-name|destination
-parameter_list|)
-function_decl|;
-comment|/**      * @param destination      * @return an array of Messages that match the destination      */
-name|Message
-index|[]
-name|browse
-parameter_list|(
-name|ActiveMQDestination
-name|destination
-parameter_list|)
-function_decl|;
-name|void
-name|clear
+name|getActiveMQDestination
 parameter_list|()
 function_decl|;
 block|}

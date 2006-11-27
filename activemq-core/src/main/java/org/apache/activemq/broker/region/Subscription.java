@@ -167,6 +167,8 @@ begin_interface
 specifier|public
 interface|interface
 name|Subscription
+extends|extends
+name|SubscriptionRecovery
 block|{
 comment|/**      * Used to add messages that match the subscription.      * @param node      * @throws InterruptedException       * @throws IOException       */
 name|void

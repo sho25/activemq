@@ -175,6 +175,22 @@ name|Exception
 block|{     }
 specifier|public
 name|void
+name|addRecoveredMessage
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|addMessageLast
+argument_list|(
+name|node
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
 name|clear
 parameter_list|()
 block|{     }

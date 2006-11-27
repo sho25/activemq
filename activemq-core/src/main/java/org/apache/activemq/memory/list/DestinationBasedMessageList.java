@@ -393,7 +393,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-specifier|protected
+specifier|public
 name|List
 name|getMessages
 parameter_list|(

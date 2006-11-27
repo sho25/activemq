@@ -1840,6 +1840,12 @@ comment|// waiting for the consumer to ak the message.
 if|if
 condition|(
 name|node
+operator|!=
+name|QueueMessageReference
+operator|.
+name|NULL_MESSAGE
+operator|&&
+name|node
 operator|.
 name|isExpired
 argument_list|()
