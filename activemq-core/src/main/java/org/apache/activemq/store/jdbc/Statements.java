@@ -196,7 +196,7 @@ name|durableSubscriberMessageCountStatement
 decl_stmt|;
 specifier|private
 name|String
-name|nextDurableSubscriberMessageIdStatement
+name|lastAckedDurableSubscriberMessageStatement
 decl_stmt|;
 specifier|private
 name|String
@@ -1182,6 +1182,33 @@ return|return
 name|findNextMessagesStatement
 return|;
 block|}
+comment|/**      * @return the lastAckedDurableSubscriberMessageStatement      */
+specifier|public
+name|String
+name|getLastAckedDurableSubscriberMessageStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|lastAckedDurableSubscriberMessageStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|lastAckedDurableSubscriberMessageStatement
+operator|=
+literal|"SELECT MAX(LAST_ACKED_ID) FROM "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=?"
+expr_stmt|;
+block|}
+return|return
+name|lastAckedDurableSubscriberMessageStatement
+return|;
+block|}
 specifier|public
 name|String
 name|getFullMessageTableName
@@ -1903,22 +1930,6 @@ operator|=
 name|durableSubscriberMessageCountStatement
 expr_stmt|;
 block|}
-comment|/**      * @param nextDurableSubscriberMessageIdStatement the nextDurableSubscriberMessageIdStatement to set      */
-specifier|public
-name|void
-name|setNextDurableSubscriberMessageIdStatement
-parameter_list|(
-name|String
-name|nextDurableSubscriberMessageIdStatement
-parameter_list|)
-block|{
-name|this
-operator|.
-name|nextDurableSubscriberMessageIdStatement
-operator|=
-name|nextDurableSubscriberMessageIdStatement
-expr_stmt|;
-block|}
 comment|/**      * @param findNextMessagesStatement the findNextMessagesStatement to set      */
 specifier|public
 name|void
@@ -1949,6 +1960,22 @@ operator|.
 name|destinationMessageCountStatement
 operator|=
 name|destinationMessageCountStatement
+expr_stmt|;
+block|}
+comment|/**      * @param lastAckedDurableSubscriberMessageStatement the lastAckedDurableSubscriberMessageStatement to set      */
+specifier|public
+name|void
+name|setLastAckedDurableSubscriberMessageStatement
+parameter_list|(
+name|String
+name|lastAckedDurableSubscriberMessageStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|lastAckedDurableSubscriberMessageStatement
+operator|=
+name|lastAckedDurableSubscriberMessageStatement
 expr_stmt|;
 block|}
 block|}

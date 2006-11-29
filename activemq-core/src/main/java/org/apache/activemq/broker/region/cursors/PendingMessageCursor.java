@@ -146,6 +146,15 @@ name|boolean
 name|isEmpty
 parameter_list|()
 function_decl|;
+comment|/**      * check if a Destination is Empty for this cursor      * @param destination      * @return true id the Destination is empty      */
+specifier|public
+name|boolean
+name|isEmpty
+parameter_list|(
+name|Destination
+name|destination
+parameter_list|)
+function_decl|;
 comment|/**      * reset the cursor      *      */
 specifier|public
 name|void

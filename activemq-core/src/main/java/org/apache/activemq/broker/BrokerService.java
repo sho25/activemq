@@ -449,6 +449,24 @@ name|region
 operator|.
 name|policy
 operator|.
+name|StorePendingDurableSubscriberMessageStoragePolicy
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|policy
+operator|.
 name|VMPendingDurableSubscriberMessageStoragePolicy
 import|;
 end_import
@@ -1193,12 +1211,13 @@ name|Thread
 operator|.
 name|MAX_PRIORITY
 decl_stmt|;
+comment|//private PendingDurableSubscriberMessageStoragePolicy pendingDurableSubscriberPolicy = new VMPendingDurableSubscriberMessageStoragePolicy();
 specifier|private
 name|PendingDurableSubscriberMessageStoragePolicy
 name|pendingDurableSubscriberPolicy
 init|=
 operator|new
-name|VMPendingDurableSubscriberMessageStoragePolicy
+name|StorePendingDurableSubscriberMessageStoragePolicy
 argument_list|()
 decl_stmt|;
 comment|/**      * Adds a new transport connector for the given bind address      *      * @return the newly created and added transport connector      * @throws Exception      */
@@ -1938,6 +1957,16 @@ argument_list|()
 expr_stmt|;
 name|addShutdownHook
 argument_list|()
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Using Persistence Adaptor "
+operator|+
+name|getPersistenceAdapter
+argument_list|()
+argument_list|)
 expr_stmt|;
 if|if
 condition|(

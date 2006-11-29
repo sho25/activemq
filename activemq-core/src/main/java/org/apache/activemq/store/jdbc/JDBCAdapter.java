@@ -553,6 +553,27 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+specifier|public
+name|long
+name|doGetLastAckedDurableSubscriberMessageId
+parameter_list|(
+name|TransactionContext
+name|c
+parameter_list|,
+name|ActiveMQDestination
+name|destination
+parameter_list|,
+name|String
+name|clientId
+parameter_list|,
+name|String
+name|subscriberName
+parameter_list|)
+throws|throws
+name|SQLException
+throws|,
+name|IOException
+function_decl|;
 block|}
 end_interface
 
