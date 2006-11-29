@@ -2843,6 +2843,9 @@ name|StoreEntry
 name|getFirst
 parameter_list|()
 block|{
+name|load
+argument_list|()
+expr_stmt|;
 return|return
 name|indexList
 operator|.
@@ -2857,6 +2860,9 @@ name|StoreEntry
 name|getLast
 parameter_list|()
 block|{
+name|load
+argument_list|()
+expr_stmt|;
 return|return
 name|indexList
 operator|.
@@ -2874,6 +2880,9 @@ name|StoreEntry
 name|entry
 parameter_list|)
 block|{
+name|load
+argument_list|()
+expr_stmt|;
 name|IndexItem
 name|item
 init|=
@@ -2901,6 +2910,9 @@ name|StoreEntry
 name|entry
 parameter_list|)
 block|{
+name|load
+argument_list|()
+expr_stmt|;
 name|IndexItem
 name|item
 init|=
@@ -2928,6 +2940,9 @@ name|StoreEntry
 name|entry
 parameter_list|)
 block|{
+name|load
+argument_list|()
+expr_stmt|;
 return|return
 name|indexList
 operator|.
