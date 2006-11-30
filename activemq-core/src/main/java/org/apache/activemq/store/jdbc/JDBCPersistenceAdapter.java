@@ -2073,6 +2073,22 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"JDBCPersistenceAdaptor("
+operator|+
+name|super
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|")"
+return|;
+block|}
 block|}
 end_class
 

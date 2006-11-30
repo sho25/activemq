@@ -1962,7 +1962,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Using Persistence Adaptor "
+literal|"Using Persistence Adaptor: "
 operator|+
 name|getPersistenceAdapter
 argument_list|()

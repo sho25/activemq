@@ -286,6 +286,17 @@ return|return
 name|ds
 return|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|""
+operator|+
+name|dataSource
+return|;
+block|}
 block|}
 end_class
 

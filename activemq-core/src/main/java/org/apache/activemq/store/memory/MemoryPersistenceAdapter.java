@@ -760,6 +760,15 @@ name|UsageManager
 name|usageManager
 parameter_list|)
 block|{     }
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"MemoryPersistenceAdapter"
+return|;
+block|}
 block|}
 end_class
 
