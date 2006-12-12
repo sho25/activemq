@@ -422,7 +422,7 @@ condition|(
 name|lastBatchId
 operator|!=
 literal|null
-operator|&
+operator|&&
 name|lastBatchId
 operator|.
 name|equals
