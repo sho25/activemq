@@ -916,6 +916,14 @@ specifier|protected
 name|boolean
 name|sessionAsyncDispatch
 decl_stmt|;
+specifier|protected
+name|Object
+name|sendMutex
+init|=
+operator|new
+name|Object
+argument_list|()
+decl_stmt|;
 comment|/**      * Construct the Session      *       * @param connection      * @param sessionId       * @param acknowledgeMode      *            n.b if transacted - the acknowledgeMode ==      *            Session.SESSION_TRANSACTED      * @param asyncDispatch       * @param sessionAsyncDispatch       * @throws JMSException      *             on internal error      */
 specifier|protected
 name|ActiveMQSession
@@ -3461,6 +3469,11 @@ name|destination
 argument_list|)
 throw|;
 block|}
+synchronized|synchronized
+init|(
+name|sendMutex
+init|)
+block|{
 comment|// tell the Broker we are about to start a new transaction
 name|doStartTransaction
 argument_list|()
@@ -3739,7 +3752,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Send TransactionInfo to indicate transaction has started      *       * @throws JMSException      *             if some internal error occurs      */
+block|}
+comment|/** 	 * Send TransactionInfo to indicate transaction has started 	 *  	 * @throws JMSException 	 *             if some internal error occurs 	 */
 specifier|protected
 name|void
 name|doStartTransaction
@@ -3766,7 +3780,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Checks whether the session has unconsumed messages.      *       * @return true - if there are unconsumed messages.      */
+comment|/** 	 * Checks whether the session has unconsumed messages. 	 *  	 * @return true - if there are unconsumed messages. 	 */
 specifier|public
 name|boolean
 name|hasUncomsumedMessages
@@ -3779,7 +3793,7 @@ name|hasUncomsumedMessages
 argument_list|()
 return|;
 block|}
-comment|/**      * Checks whether the session uses transactions.      *       * @return true - if the session uses transactions.      */
+comment|/** 	 * Checks whether the session uses transactions. 	 *  	 * @return true - if the session uses transactions. 	 */
 specifier|public
 name|boolean
 name|isTransacted
