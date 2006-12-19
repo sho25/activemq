@@ -215,19 +215,6 @@ name|MessageReference
 name|node
 parameter_list|)
 block|{
-name|boolean
-name|matched
-init|=
-literal|false
-decl_stmt|;
-name|int
-name|size
-init|=
-name|list
-operator|.
-name|size
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|Iterator
@@ -256,27 +243,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"MATCHIG "
-operator|+
-name|node
-operator|.
-name|getMessageId
-argument_list|()
-operator|+
-literal|" AGAINST "
-operator|+
-name|ref
-operator|.
-name|getMessageId
-argument_list|()
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|node
@@ -298,42 +264,9 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|matched
-operator|=
-literal|true
-expr_stmt|;
 break|break;
 block|}
 block|}
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"REMOVED "
-operator|+
-name|node
-operator|.
-name|getMessageId
-argument_list|()
-operator|+
-literal|"  = "
-operator|+
-name|matched
-operator|+
-literal|" presize = "
-operator|+
-name|size
-operator|+
-literal|" size now = "
-operator|+
-name|list
-operator|.
-name|size
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class
