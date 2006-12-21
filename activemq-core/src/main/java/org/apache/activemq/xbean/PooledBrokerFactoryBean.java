@@ -161,6 +161,9 @@ operator|.
 name|get
 argument_list|(
 name|config
+operator|.
+name|getFilename
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -214,6 +217,9 @@ operator|.
 name|put
 argument_list|(
 name|config
+operator|.
+name|getFilename
+argument_list|()
 argument_list|,
 name|sharedBroker
 argument_list|)
@@ -249,6 +255,9 @@ operator|.
 name|get
 argument_list|(
 name|config
+operator|.
+name|getFilename
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -284,6 +293,9 @@ operator|.
 name|remove
 argument_list|(
 name|config
+operator|.
+name|getFilename
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -322,6 +334,9 @@ operator|.
 name|get
 argument_list|(
 name|config
+operator|.
+name|getFilename
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
