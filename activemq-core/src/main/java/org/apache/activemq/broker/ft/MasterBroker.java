@@ -1411,17 +1411,6 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"SEMNDING SYNC "
-operator|+
-name|command
-argument_list|)
-expr_stmt|;
 name|Response
 name|response
 init|=
@@ -1435,17 +1424,6 @@ argument_list|(
 name|command
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"GOT RESPONSE "
-operator|+
-name|response
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|response
