@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -337,6 +337,34 @@ name|activemq
 operator|.
 name|transport
 operator|.
+name|MutexTransport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|ResponseCorrelator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
 name|Transport
 import|;
 end_import
@@ -409,7 +437,7 @@ argument_list|(
 literal|false
 argument_list|)
 decl_stmt|;
-comment|/**      * Constructor      * @param parent      * @param slave      */
+comment|/**      * Constructor      *       * @param parent      * @param transport      */
 specifier|public
 name|MasterBroker
 parameter_list|(
@@ -417,7 +445,7 @@ name|MutableBrokerFilter
 name|parent
 parameter_list|,
 name|Transport
-name|slave
+name|transport
 parameter_list|)
 block|{
 name|super
@@ -429,10 +457,42 @@ name|this
 operator|.
 name|slave
 operator|=
+name|transport
+expr_stmt|;
+name|this
+operator|.
 name|slave
+operator|=
+operator|new
+name|MutexTransport
+argument_list|(
+name|slave
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|slave
+operator|=
+operator|new
+name|ResponseCorrelator
+argument_list|(
+name|slave
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|slave
+operator|.
+name|setTransportListener
+argument_list|(
+name|transport
+operator|.
+name|getTransportListener
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * start processing this broker      *      */
+comment|/**      * start processing this broker      *       */
 specifier|public
 name|void
 name|startProcessing
@@ -559,7 +619,7 @@ name|stopProcessing
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * stop processing this broker      *      */
+comment|/**      * stop processing this broker      *       */
 specifier|public
 name|void
 name|stopProcessing
@@ -582,7 +642,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * A client is establishing a connection with the broker.      * @param context      * @param info       * @throws Exception       */
+comment|/**      * A client is establishing a connection with the broker.      *       * @param context      * @param info      * @throws Exception      */
 specifier|public
 name|void
 name|addConnection
@@ -611,7 +671,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * A client is disconnecting from the broker.      * @param context the environment the operation is being executed under.      * @param info       * @param error null if the client requested the disconnect or the error that caused the client to disconnect.      * @throws Exception       */
+comment|/**      * A client is disconnecting from the broker.      *       * @param context the environment the operation is being executed under.      * @param info      * @param error null if the client requested the disconnect or the error that caused the client to disconnect.      * @throws Exception      */
 specifier|public
 name|void
 name|removeConnection
@@ -652,7 +712,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Adds a session.      * @param context      * @param info      * @throws Exception       */
+comment|/**      * Adds a session.      *       * @param context      * @param info      * @throws Exception      */
 specifier|public
 name|void
 name|addSession
@@ -681,7 +741,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Removes a session.      * @param context      * @param info      * @throws Exception       */
+comment|/**      * Removes a session.      *       * @param context      * @param info      * @throws Exception      */
 specifier|public
 name|void
 name|removeSession
@@ -717,7 +777,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Adds a producer.      * @param context the enviorment the operation is being executed under.      * @param info       * @throws Exception       */
+comment|/**      * Adds a producer.      *       * @param context the enviorment the operation is being executed under.      * @param info      * @throws Exception      */
 specifier|public
 name|void
 name|addProducer
@@ -746,7 +806,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Removes a producer.      * @param context the enviorment the operation is being executed under.      * @param info       * @throws Exception       */
+comment|/**      * Removes a producer.      *       * @param context the enviorment the operation is being executed under.      * @param info      * @throws Exception      */
 specifier|public
 name|void
 name|removeProducer
@@ -782,7 +842,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * add a consumer      * @param context       * @param info       * @return the assocated subscription      * @throws Exception       */
+comment|/**      * add a consumer      *       * @param context      * @param info      * @return the assocated subscription      * @throws Exception      */
 specifier|public
 name|Subscription
 name|addConsumer
@@ -817,7 +877,7 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * remove a subscription      * @param context       * @param info       * @throws Exception       */
+comment|/**      * remove a subscription      *       * @param context      * @param info      * @throws Exception      */
 specifier|public
 name|void
 name|removeSubscription
@@ -846,7 +906,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * begin a transaction      * @param context       * @param xid       * @throws Exception       */
+comment|/**      * begin a transaction      *       * @param context      * @param xid      * @throws Exception      */
 specifier|public
 name|void
 name|beginTransaction
@@ -893,7 +953,7 @@ name|xid
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Prepares a transaction. Only valid for xa transactions.      * @param context       * @param xid      * @return the state      * @throws Exception       */
+comment|/**      * Prepares a transaction. Only valid for xa transactions.      *       * @param context      * @param xid      * @return the state      * @throws Exception      */
 specifier|public
 name|int
 name|prepareTransaction
@@ -946,7 +1006,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Rollsback a transaction.      * @param context       * @param xid      * @throws Exception       */
+comment|/**      * Rollsback a transaction.      *       * @param context      * @param xid      * @throws Exception      */
 specifier|public
 name|void
 name|rollbackTransaction
@@ -993,7 +1053,7 @@ name|xid
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Commits a transaction.      * @param context       * @param xid      * @param onePhase      * @throws Exception       */
+comment|/**      * Commits a transaction.      *       * @param context      * @param xid      * @param onePhase      * @throws Exception      */
 specifier|public
 name|void
 name|commitTransaction
@@ -1045,7 +1105,7 @@ name|onePhase
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Forgets a transaction.      * @param context       * @param xid       * @throws Exception       */
+comment|/**      * Forgets a transaction.      *       * @param context      * @param xid      * @throws Exception      */
 specifier|public
 name|void
 name|forgetTransaction
@@ -1092,7 +1152,7 @@ name|xid
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Notifiy the Broker that a dispatch has happened      * @param messageDispatch      */
+comment|/**      * Notifiy the Broker that a dispatch has happened      *       * @param messageDispatch      */
 specifier|public
 name|void
 name|processDispatch
@@ -1173,7 +1233,7 @@ name|messageDispatch
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param context       * @param message       * @throws Exception       *       */
+comment|/**      * @param context      * @param message      * @throws Exception      *       */
 specifier|public
 name|void
 name|send
@@ -1187,7 +1247,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|/**          * A message can be dispatched before the super.send() method returns          * so - here the order is switched to avoid problems on the slave          * with receiving acks for messages not received yey          */
+comment|/**          * A message can be dispatched before the super.send() method returns so - here the order is switched to avoid          * problems on the slave with receiving acks for messages not received yey          */
 name|sendToSlave
 argument_list|(
 name|message
@@ -1203,7 +1263,7 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param context       * @param ack       * @throws Exception       *       */
+comment|/**      * @param context      * @param ack      * @throws Exception      *       */
 specifier|public
 name|void
 name|acknowledge
@@ -1351,6 +1411,17 @@ parameter_list|)
 block|{
 try|try
 block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"SEMNDING SYNC "
+operator|+
+name|command
+argument_list|)
+expr_stmt|;
 name|Response
 name|response
 init|=
@@ -1364,6 +1435,17 @@ argument_list|(
 name|command
 argument_list|)
 decl_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"GOT RESPONSE "
+operator|+
+name|response
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|response
