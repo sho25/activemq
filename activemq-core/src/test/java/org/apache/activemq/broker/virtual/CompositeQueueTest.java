@@ -613,14 +613,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// lets disable persistence as we are a test
-name|answer
-operator|.
-name|setPersistent
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 return|return
 name|answer
 return|;
