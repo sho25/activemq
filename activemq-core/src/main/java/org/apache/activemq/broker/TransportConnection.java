@@ -2001,7 +2001,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processBeginTransaction
@@ -2091,7 +2090,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processEndTransaction
@@ -2109,7 +2107,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processPrepareTransaction
@@ -2258,7 +2255,6 @@ name|response
 return|;
 block|}
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processCommitTransactionOnePhase
@@ -2333,7 +2329,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processCommitTransactionTwoPhase
@@ -2408,7 +2403,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processRollbackTransaction
@@ -2481,7 +2475,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processForgetTransaction
@@ -2544,7 +2537,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processRecoverTransactions
@@ -2857,7 +2849,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processAddDestination
@@ -2914,7 +2905,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processRemoveDestination
@@ -2974,7 +2964,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processAddProducer
@@ -3101,7 +3090,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processRemoveProducer
@@ -3205,7 +3193,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processAddConsumer
@@ -3332,7 +3319,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processRemoveConsumer
@@ -3436,7 +3422,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processAddSession
@@ -3530,7 +3515,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processRemoveSession
@@ -3739,7 +3723,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processAddConnection
@@ -4025,7 +4008,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
 name|Response
 name|processRemoveConnection
