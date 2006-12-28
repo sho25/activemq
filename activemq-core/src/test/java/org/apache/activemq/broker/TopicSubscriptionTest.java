@@ -52,7 +52,7 @@ name|Exception
 block|{
 name|consumerCount
 operator|=
-literal|20
+literal|40
 expr_stmt|;
 name|producerCount
 operator|=
@@ -60,7 +60,7 @@ literal|20
 expr_stmt|;
 name|messageCount
 operator|=
-literal|50
+literal|100
 expr_stmt|;
 name|messageSize
 operator|=
