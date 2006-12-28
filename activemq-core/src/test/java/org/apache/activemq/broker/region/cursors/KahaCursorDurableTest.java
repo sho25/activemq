@@ -150,7 +150,13 @@ argument_list|(
 name|bindAddress
 argument_list|)
 expr_stmt|;
-comment|//answer.setDeleteAllMessagesOnStartup(true);
+name|answer
+operator|.
+name|setDeleteAllMessagesOnStartup
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
