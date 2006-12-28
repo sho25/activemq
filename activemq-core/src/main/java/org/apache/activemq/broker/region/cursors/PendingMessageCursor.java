@@ -287,6 +287,12 @@ name|boolean
 name|isFull
 parameter_list|()
 function_decl|;
+comment|/**      * @return true if the cursor has buffered messages ready to deliver      */
+specifier|public
+name|boolean
+name|hasMessagesBufferedToDeliver
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

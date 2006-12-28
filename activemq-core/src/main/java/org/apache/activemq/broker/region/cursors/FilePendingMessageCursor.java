@@ -898,6 +898,17 @@ literal|false
 return|;
 block|}
 specifier|public
+name|boolean
+name|hasMessagesBufferedToDeliver
+parameter_list|()
+block|{
+return|return
+operator|!
+name|isEmpty
+argument_list|()
+return|;
+block|}
+specifier|public
 name|void
 name|setUsageManager
 parameter_list|(

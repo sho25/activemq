@@ -363,6 +363,15 @@ name|void
 name|release
 parameter_list|()
 block|{             }
+specifier|public
+name|boolean
+name|hasMessagesBufferedToDeliver
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_class
 

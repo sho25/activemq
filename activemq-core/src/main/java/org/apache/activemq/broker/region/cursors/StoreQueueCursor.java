@@ -210,6 +210,10 @@ argument_list|(
 name|queue
 argument_list|)
 expr_stmt|;
+name|currentCursor
+operator|=
+name|persistent
+expr_stmt|;
 block|}
 specifier|public
 specifier|synchronized
@@ -591,6 +595,7 @@ operator|--
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|remove
 parameter_list|(
@@ -636,6 +641,11 @@ name|reset
 parameter_list|()
 block|{
 name|nonPersistent
+operator|.
+name|reset
+argument_list|()
+expr_stmt|;
+name|persistent
 operator|.
 name|reset
 argument_list|()
@@ -830,6 +840,26 @@ name|currentCursor
 operator|==
 literal|null
 operator|||
+operator|!
+name|currentCursor
+operator|.
+name|hasMessagesBufferedToDeliver
+argument_list|()
+condition|)
+block|{
+name|currentCursor
+operator|=
+name|currentCursor
+operator|==
+name|persistent
+condition|?
+name|nonPersistent
+else|:
+name|persistent
+expr_stmt|;
+comment|//sanity check
+if|if
+condition|(
 name|currentCursor
 operator|.
 name|isEmpty
@@ -846,6 +876,7 @@ name|nonPersistent
 else|:
 name|persistent
 expr_stmt|;
+block|}
 block|}
 return|return
 name|currentCursor
