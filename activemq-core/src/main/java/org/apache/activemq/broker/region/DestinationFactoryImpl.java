@@ -407,6 +407,11 @@ argument_list|,
 name|destinationStatistics
 argument_list|,
 name|taskRunnerFactory
+argument_list|,
+name|broker
+operator|.
+name|getTempDataStore
+argument_list|()
 argument_list|)
 block|{
 specifier|public
@@ -501,6 +506,11 @@ argument_list|,
 name|destinationStatistics
 argument_list|,
 name|taskRunnerFactory
+argument_list|,
+name|broker
+operator|.
+name|getTempDataStore
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|configureQueue

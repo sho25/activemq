@@ -881,7 +881,6 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      */
-specifier|synchronized
 specifier|public
 name|void
 name|destroy

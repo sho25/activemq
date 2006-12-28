@@ -39,11 +39,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|jms
+name|util
 operator|.
-name|InvalidSelectorException
+name|concurrent
+operator|.
+name|ConcurrentHashMap
 import|;
 end_import
 
@@ -53,7 +55,7 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|JMSException
+name|InvalidSelectorException
 import|;
 end_import
 
@@ -99,43 +101,7 @@ name|region
 operator|.
 name|cursors
 operator|.
-name|FilePendingMessageCursor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|region
-operator|.
-name|cursors
-operator|.
 name|PendingMessageCursor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|region
-operator|.
-name|cursors
-operator|.
-name|StoreDurableSubscriberCursor
 import|;
 end_import
 
@@ -211,13 +177,29 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|concurrent
+name|commons
 operator|.
-name|ConcurrentHashMap
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -228,6 +210,21 @@ name|DurableTopicSubscription
 extends|extends
 name|PrefetchSubscription
 block|{
+specifier|static
+specifier|private
+specifier|final
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|PrefetchSubscription
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|ConcurrentHashMap
@@ -444,6 +441,15 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Deactivating "
+operator|+
+name|this
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1099,23 +1105,31 @@ operator|.
 name|size
 argument_list|()
 operator|+
+literal|", total="
+operator|+
+name|enqueueCounter
+operator|+
+literal|", pending="
+operator|+
+name|getPendingQueueSize
+argument_list|()
+operator|+
 literal|", dispatched="
+operator|+
+name|dispatchCounter
+operator|+
+literal|", inflight="
 operator|+
 name|dispatched
 operator|.
 name|size
 argument_list|()
 operator|+
-literal|", delivered="
+literal|", prefetchExtension="
 operator|+
 name|this
 operator|.
 name|prefetchExtension
-operator|+
-literal|", pending="
-operator|+
-name|getPendingQueueSize
-argument_list|()
 return|;
 block|}
 specifier|public
