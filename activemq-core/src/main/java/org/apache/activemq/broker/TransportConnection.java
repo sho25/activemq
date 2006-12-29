@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -82,6 +82,56 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentHashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|CountDownLatch
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicBoolean
 import|;
 end_import
 
@@ -747,56 +797,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ConcurrentHashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CountDownLatch
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicBoolean
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version $Revision: 1.8 $  */
 end_comment
@@ -917,7 +917,7 @@ specifier|private
 name|WireFormatInfo
 name|wireFormatInfo
 decl_stmt|;
-comment|// Used to do async dispatch..  this should perhaps be pushed down into the transport layer..
+comment|// Used to do async dispatch.. this should perhaps be pushed down into the transport layer..
 specifier|protected
 specifier|final
 name|List
@@ -1363,7 +1363,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Calls the serviceException method in an async thread.  Since       * handling a service exception closes a socket, we should not tie       * up broker threads since client sockets may hang or cause deadlocks.      *       * @param e      */
+comment|/**      * Calls the serviceException method in an async thread. Since handling a service exception closes a socket, we      * should not tie up broker threads since client sockets may hang or cause deadlocks.      *       * @param e      */
 specifier|public
 name|void
 name|serviceExceptionAsync
@@ -1409,7 +1409,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Closes a clients connection due to a detected error. 	 *  	 * Errors are ignored if: the client is closing or broker is closing. 	 * Otherwise, the connection error transmitted to the client before stopping it's 	 * transport. 	 */
+comment|/**      * Closes a clients connection due to a detected error.      *       * Errors are ignored if: the client is closing or broker is closing. Otherwise, the connection error transmitted to      * the client before stopping it's transport.      */
 specifier|public
 name|void
 name|serviceException
@@ -2001,6 +2001,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processBeginTransaction
@@ -2090,6 +2091,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processEndTransaction
@@ -2100,13 +2102,14 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// No need to do anything.  This packet is just sent by the client
+comment|// No need to do anything. This packet is just sent by the client
 comment|// make sure he is synced with the server as commit command could
 comment|// come from a different connection.
 return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processPrepareTransaction
@@ -2255,6 +2258,7 @@ name|response
 return|;
 block|}
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processCommitTransactionOnePhase
@@ -2329,6 +2333,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processCommitTransactionTwoPhase
@@ -2403,6 +2408,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processRollbackTransaction
@@ -2475,6 +2481,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processForgetTransaction
@@ -2537,6 +2544,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processRecoverTransactions
@@ -2849,6 +2857,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processAddDestination
@@ -2905,6 +2914,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processRemoveDestination
@@ -2964,6 +2974,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processAddProducer
@@ -3090,6 +3101,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processRemoveProducer
@@ -3193,6 +3205,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processAddConsumer
@@ -3319,6 +3332,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processRemoveConsumer
@@ -3422,6 +3436,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processAddSession
@@ -3515,6 +3530,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processRemoveSession
@@ -3723,6 +3739,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processAddConnection
@@ -3756,7 +3773,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// ConnectionInfo replay??  Chances are that it's a client reconnecting,
+comment|// ConnectionInfo replay?? Chances are that it's a client reconnecting,
 comment|// and we have not detected that that old connection died.. Kill the old connection
 comment|// to make sure our state is in sync with the client.
 if|if
@@ -3980,7 +3997,7 @@ name|isFaultTolerantConfiguration
 argument_list|()
 condition|)
 block|{
-comment|//send ConnectionCommand
+comment|// send ConnectionCommand
 name|ConnectionControl
 name|command
 init|=
@@ -4008,6 +4025,7 @@ return|return
 literal|null
 return|;
 block|}
+specifier|synchronized
 specifier|public
 name|Response
 name|processRemoveConnection
@@ -4674,7 +4692,7 @@ name|Exception
 name|ignore
 parameter_list|)
 block|{
-comment|//ignore.printStackTrace();
+comment|// ignore.printStackTrace();
 block|}
 name|transport
 operator|.
@@ -5106,8 +5124,8 @@ name|isSlaveBroker
 argument_list|()
 condition|)
 block|{
-comment|//stream messages from this broker (the master) to
-comment|//the slave
+comment|// stream messages from this broker (the master) to
+comment|// the slave
 name|MutableBrokerFilter
 name|parent
 init|=
