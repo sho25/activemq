@@ -727,9 +727,8 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|batchEntry
-operator|=
-literal|null
+name|resetBatching
+argument_list|()
 expr_stmt|;
 block|}
 block|}
