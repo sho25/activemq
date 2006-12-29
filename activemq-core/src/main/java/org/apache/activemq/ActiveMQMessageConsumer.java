@@ -3377,7 +3377,7 @@ expr_stmt|;
 block|}
 name|log
 operator|.
-name|warn
+name|error
 argument_list|(
 literal|"Exception while processing message: "
 operator|+
