@@ -1184,6 +1184,23 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+try|try
+block|{
+name|startLocalBridge
+argument_list|()
+expr_stmt|;
+name|remoteBridgeStarted
+operator|.
+name|set
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|startedLatch
+operator|.
+name|countDown
+argument_list|()
+expr_stmt|;
 name|log
 operator|.
 name|debug
@@ -1195,6 +1212,23 @@ operator|+
 literal|" resumed"
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Caught exception  from local start ib resume transport"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}
