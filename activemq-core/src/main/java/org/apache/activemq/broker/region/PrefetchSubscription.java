@@ -1964,6 +1964,13 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|node
+operator|==
+literal|null
+condition|)
+break|break;
+if|if
+condition|(
 name|canDispatch
 argument_list|(
 name|node
