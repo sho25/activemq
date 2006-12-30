@@ -419,6 +419,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|lastBatchId
 operator|!=
 literal|null
@@ -429,6 +430,12 @@ name|equals
 argument_list|(
 name|msgId
 argument_list|)
+operator|)
+operator|||
+name|messageTable
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|lastBatchId
