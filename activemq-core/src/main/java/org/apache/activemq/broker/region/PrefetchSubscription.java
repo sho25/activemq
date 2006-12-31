@@ -724,6 +724,12 @@ name|isFull
 argument_list|()
 operator|&&
 name|pendingEmpty
+operator|&&
+operator|!
+name|broker
+operator|.
+name|isSlaveBroker
+argument_list|()
 condition|)
 block|{
 name|dispatch
@@ -876,9 +882,7 @@ operator|.
 name|getMessageId
 argument_list|()
 operator|+
-literal|") was not in the pending list: "
-operator|+
-name|pending
+literal|") was not in the pending list"
 argument_list|)
 throw|;
 block|}
@@ -1891,6 +1895,12 @@ name|IOException
 block|{
 if|if
 condition|(
+operator|!
+name|broker
+operator|.
+name|isSlaveBroker
+argument_list|()
+operator|&&
 name|dispatching
 operator|.
 name|compareAndSet
