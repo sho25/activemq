@@ -1223,7 +1223,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Caught exception  from local start ib resume transport"
+literal|"Caught exception  from local start in resume transport"
 argument_list|,
 name|e
 argument_list|)
