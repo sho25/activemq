@@ -17,27 +17,55 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|net
 operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|MessageIdList
+name|URI
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|activemq
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|JmsMultipleBrokersTestSupport
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|CountDownLatch
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
 import|;
 end_import
 
@@ -63,31 +91,27 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|Map
+name|activemq
+operator|.
+name|JmsMultipleBrokersTestSupport
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
 operator|.
 name|util
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URI
+name|MessageIdList
 import|;
 end_import
 
@@ -166,6 +190,23 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+name|CountDownLatch
+name|latch
+init|=
+operator|new
+name|CountDownLatch
+argument_list|(
+name|BROKER_COUNT
+operator|*
+name|PRODUCER_COUNT
+operator|*
+name|BROKER_COUNT
+operator|*
+name|CONSUMER_COUNT
+operator|*
+name|MESSAGE_COUNT
+argument_list|)
+decl_stmt|;
 comment|// Setup consumers
 for|for
 control|(
@@ -216,6 +257,8 @@ operator|+
 name|i
 argument_list|,
 name|dest
+argument_list|,
+name|latch
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -226,7 +269,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|2000
+literal|5000
 argument_list|)
 expr_stmt|;
 comment|// Send messages
@@ -273,6 +316,29 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|assertTrue
+argument_list|(
+literal|"Missing "
+operator|+
+name|latch
+operator|.
+name|getCount
+argument_list|()
+operator|+
+literal|" messages"
+argument_list|,
+name|latch
+operator|.
+name|await
+argument_list|(
+literal|30
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Get message count
 for|for
 control|(
@@ -330,17 +396,6 @@ name|j
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|msgs
-operator|.
-name|waitForMessagesToArrive
-argument_list|(
-name|BROKER_COUNT
-operator|*
-name|PRODUCER_COUNT
-operator|*
-name|MESSAGE_COUNT
-argument_list|)
-expr_stmt|;
 name|assertEquals
 argument_list|(
 name|BROKER_COUNT
@@ -380,6 +435,19 @@ argument_list|(
 literal|"TEST.FOO"
 argument_list|,
 literal|false
+argument_list|)
+decl_stmt|;
+name|CountDownLatch
+name|latch
+init|=
+operator|new
+name|CountDownLatch
+argument_list|(
+name|BROKER_COUNT
+operator|*
+name|PRODUCER_COUNT
+operator|*
+name|MESSAGE_COUNT
 argument_list|)
 decl_stmt|;
 comment|// Setup consumers
@@ -432,16 +500,19 @@ operator|+
 name|i
 argument_list|,
 name|dest
+argument_list|,
+name|latch
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//wait for consumers to get propagated
 name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|2000
+literal|5000
 argument_list|)
 expr_stmt|;
 comment|// Send messages
@@ -489,11 +560,27 @@ expr_stmt|;
 block|}
 block|}
 comment|// Wait for messages to be delivered
-name|Thread
-operator|.
-name|sleep
+name|assertTrue
 argument_list|(
-literal|2000
+literal|"Missing "
+operator|+
+name|latch
+operator|.
+name|getCount
+argument_list|()
+operator|+
+literal|" messages"
+argument_list|,
+name|latch
+operator|.
+name|await
+argument_list|(
+literal|30
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Get message count
