@@ -2146,17 +2146,6 @@ operator|+
 literal|") is shutting down"
 argument_list|)
 expr_stmt|;
-name|BrokerRegistry
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|unbind
-argument_list|(
-name|getBrokerName
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|removeShutdownHook
 argument_list|()
 expr_stmt|;
@@ -2335,9 +2324,20 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|//remove any VMTransports connected
-comment|//this has to be done after services are stopped,
-comment|//to avoid timimg issue with discovery (spinning up a new instance)
+comment|// remove any VMTransports connected
+comment|// this has to be done after services are stopped,
+comment|// to avoid timimg issue with discovery (spinning up a new instance)
+name|BrokerRegistry
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|unbind
+argument_list|(
+name|getBrokerName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|VMTransportFactory
 operator|.
 name|stopped
