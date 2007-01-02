@@ -2213,15 +2213,6 @@ argument_list|(
 name|stopper
 argument_list|)
 expr_stmt|;
-comment|//remove any VMTransports connected
-name|VMTransportFactory
-operator|.
-name|stopped
-argument_list|(
-name|getBrokerName
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|stopper
 operator|.
 name|stop
@@ -2344,6 +2335,17 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|//remove any VMTransports connected
+comment|//this has to be done after services are stopped,
+comment|//to avoid timimg issue with discovery (spinning up a new instance)
+name|VMTransportFactory
+operator|.
+name|stopped
+argument_list|(
+name|getBrokerName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|log
 operator|.
 name|info
@@ -6241,6 +6243,14 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|connector
+operator|.
+name|setLocalUri
+argument_list|(
+name|getVmConnectorURI
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|connector
 operator|.
 name|setBrokerName
