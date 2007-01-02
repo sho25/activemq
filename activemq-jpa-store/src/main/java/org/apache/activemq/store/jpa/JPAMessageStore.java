@@ -653,7 +653,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|Integer
+name|Long
 name|rc
 decl_stmt|;
 name|EntityManager
@@ -681,7 +681,7 @@ decl_stmt|;
 name|rc
 operator|=
 operator|(
-name|Integer
+name|Long
 operator|)
 name|query
 operator|.
@@ -724,6 +724,9 @@ argument_list|)
 expr_stmt|;
 return|return
 name|rc
+operator|.
+name|intValue
+argument_list|()
 return|;
 block|}
 specifier|public

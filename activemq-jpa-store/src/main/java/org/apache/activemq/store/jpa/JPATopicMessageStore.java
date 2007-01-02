@@ -933,7 +933,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|Integer
+name|Long
 name|rc
 decl_stmt|;
 name|EntityManager
@@ -963,7 +963,7 @@ literal|"and   ss.subscriptionName=?2 "
 operator|+
 literal|"and   ss.destination=?3 "
 operator|+
-literal|"and   m.desination=ss.destination and m.id> ss.lastAckedId"
+literal|"and   m.destination=ss.destination and m.id> ss.lastAckedId"
 argument_list|)
 decl_stmt|;
 name|query
@@ -988,7 +988,7 @@ name|query
 operator|.
 name|setParameter
 argument_list|(
-literal|2
+literal|3
 argument_list|,
 name|destinationName
 argument_list|)
@@ -996,7 +996,7 @@ expr_stmt|;
 name|rc
 operator|=
 operator|(
-name|Integer
+name|Long
 operator|)
 name|query
 operator|.
@@ -1039,6 +1039,9 @@ argument_list|)
 expr_stmt|;
 return|return
 name|rc
+operator|.
+name|intValue
+argument_list|()
 return|;
 block|}
 specifier|public
