@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -33,16 +33,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Iterator
 import|;
 end_import
@@ -54,16 +44,6 @@ operator|.
 name|util
 operator|.
 name|LinkedList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -523,6 +503,7 @@ expr_stmt|;
 block|}
 comment|/**      * Allows a message to be pulled on demand by a client      */
 specifier|public
+specifier|synchronized
 name|Response
 name|pullMessage
 parameter_list|(
@@ -535,7 +516,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// The slave should not deliver pull messages.  TODO: when the slave becomes a master,
+comment|// The slave should not deliver pull messages. TODO: when the slave becomes a master,
 comment|// He should send a NULL message to all the consumers to 'wake them up' in case
 comment|// they were waiting for a message.
 if|if
@@ -638,7 +619,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Occurs when a pull times out.  If nothing has been dispatched      * since the timeout was setup, then send the NULL message.      */
+comment|/**      * Occurs when a pull times out. If nothing has been dispatched since the timeout was setup, then send the NULL      * message.      */
 specifier|private
 name|void
 name|pullTimeout
@@ -687,6 +668,7 @@ block|}
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|add
 parameter_list|(
@@ -701,11 +683,6 @@ name|pendingEmpty
 init|=
 literal|false
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|pending
-init|)
-block|{
 name|pendingEmpty
 operator|=
 name|pending
@@ -716,7 +693,6 @@ expr_stmt|;
 name|enqueueCounter
 operator|++
 expr_stmt|;
-block|}
 if|if
 condition|(
 operator|!
@@ -777,13 +753,10 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
-comment|//we might be able to dispatch messages (i.e. not full() anymore)
-name|dispatchMatched
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|processMessageDispatchNotification
 parameter_list|(
@@ -792,11 +765,6 @@ name|mdn
 parameter_list|)
 throws|throws
 name|Exception
-block|{
-synchronized|synchronized
-init|(
-name|pending
-init|)
 block|{
 try|try
 block|{
@@ -886,8 +854,8 @@ literal|") was not in the pending list"
 argument_list|)
 throw|;
 block|}
-block|}
 specifier|public
+specifier|synchronized
 name|void
 name|acknowledge
 parameter_list|(
@@ -908,11 +876,6 @@ name|callDispatchMatched
 init|=
 literal|false
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|dispatched
-init|)
-block|{
 if|if
 condition|(
 name|ack
@@ -1510,7 +1473,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-block|}
 if|if
 condition|(
 name|callDispatchMatched
@@ -1630,8 +1592,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Used to determine if the broker can dispatch to the consumer.      * @return      */
+comment|/**      * Used to determine if the broker can dispatch to the consumer.      *       * @return      */
 specifier|protected
+specifier|synchronized
 name|boolean
 name|isFull
 parameter_list|()
@@ -1706,6 +1669,7 @@ operator|)
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|int
 name|countBeforeFull
 parameter_list|()
@@ -1802,15 +1766,16 @@ name|isRecoveryRequired
 argument_list|()
 return|;
 block|}
-comment|/**      * optimize message consumer prefetch if the consumer supports it      *      */
+comment|/**      * optimize message consumer prefetch if the consumer supports it      *       */
 specifier|public
 name|void
 name|optimizePrefetch
 parameter_list|()
 block|{
-comment|/*         if(info!=null&&info.isOptimizedAcknowledge()&&context!=null&&context.getConnection()!=null&&context.getConnection().isManageable()){             if(info.getCurrentPrefetchSize()!=info.getPrefetchSize()&& isLowWaterMark()){                 info.setCurrentPrefetchSize(info.getPrefetchSize());                 updateConsumerPrefetch(info.getPrefetchSize());             }else if(info.getCurrentPrefetchSize()==info.getPrefetchSize()&& isHighWaterMark()){                 // want to purge any outstanding acks held by the consumer                 info.setCurrentPrefetchSize(1);                 updateConsumerPrefetch(1);             }         }         */
+comment|/*          * if(info!=null&&info.isOptimizedAcknowledge()&&context!=null&&context.getConnection()!=null          *&&context.getConnection().isManageable()){ if(info.getCurrentPrefetchSize()!=info.getPrefetchSize()&&          * isLowWaterMark()){ info.setCurrentPrefetchSize(info.getPrefetchSize());          * updateConsumerPrefetch(info.getPrefetchSize()); }else          * if(info.getCurrentPrefetchSize()==info.getPrefetchSize()&& isHighWaterMark()){ // want to purge any          * outstanding acks held by the consumer info.setCurrentPrefetchSize(1); updateConsumerPrefetch(1); } }          */
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|add
 parameter_list|(
@@ -1832,11 +1797,6 @@ argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
-synchronized|synchronized
-init|(
-name|pending
-init|)
-block|{
 name|pending
 operator|.
 name|add
@@ -1847,8 +1807,8 @@ name|destination
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 specifier|public
+specifier|synchronized
 name|void
 name|remove
 parameter_list|(
@@ -1870,11 +1830,6 @@ argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
-synchronized|synchronized
-init|(
-name|pending
-init|)
-block|{
 name|pending
 operator|.
 name|remove
@@ -1884,7 +1839,6 @@ argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 specifier|protected
 name|void
@@ -1912,16 +1866,6 @@ argument_list|)
 condition|)
 block|{
 try|try
-block|{
-name|List
-name|toDispatch
-init|=
-literal|null
-decl_stmt|;
-synchronized|synchronized
-init|(
-name|pending
-init|)
 block|{
 try|try
 block|{
@@ -2011,23 +1955,7 @@ block|{
 continue|continue;
 comment|// just drop it.
 block|}
-if|if
-condition|(
-name|toDispatch
-operator|==
-literal|null
-condition|)
-block|{
-name|toDispatch
-operator|=
-operator|new
-name|ArrayList
-argument_list|()
-expr_stmt|;
-block|}
-name|toDispatch
-operator|.
-name|add
+name|dispatch
 argument_list|(
 name|node
 argument_list|)
@@ -2046,58 +1974,6 @@ operator|.
 name|release
 argument_list|()
 expr_stmt|;
-block|}
-block|}
-if|if
-condition|(
-name|toDispatch
-operator|!=
-literal|null
-condition|)
-block|{
-synchronized|synchronized
-init|(
-name|dispatched
-init|)
-block|{
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|toDispatch
-operator|.
-name|size
-argument_list|()
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|MessageReference
-name|node
-init|=
-operator|(
-name|MessageReference
-operator|)
-name|toDispatch
-operator|.
-name|get
-argument_list|(
-name|i
-argument_list|)
-decl_stmt|;
-name|dispatch
-argument_list|(
-name|node
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 block|}
 block|}
 finally|finally
@@ -2143,11 +2019,6 @@ return|return
 literal|false
 return|;
 block|}
-synchronized|synchronized
-init|(
-name|dispatched
-init|)
-block|{
 comment|// Make sure we can dispatch a message.
 if|if
 condition|(
@@ -2273,6 +2144,7 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+comment|//System.err.println(broker.getBrokerName() + " " + this + " (" + enqueueCounter + ", " + dispatchCounter +") " + node);
 return|return
 literal|true
 return|;
@@ -2290,7 +2162,6 @@ decl_stmt|;
 return|return
 literal|false
 return|;
-block|}
 block|}
 block|}
 specifier|protected
@@ -2378,7 +2249,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * inform the MessageConsumer on the client to change it's prefetch      * @param newPrefetch      */
+comment|/**      * inform the MessageConsumer on the client to change it's prefetch      *       * @param newPrefetch      */
 specifier|public
 name|void
 name|updateConsumerPrefetch
@@ -2555,7 +2426,7 @@ name|md
 return|;
 block|}
 block|}
-comment|/**      * Use when a matched message is about to be dispatched to the client.      *       * @param node      * @return false if the message should not be dispatched to the client (another sub may have already dispatched it      *         for example).      * @throws IOException       */
+comment|/**      * Use when a matched message is about to be dispatched to the client.      *       * @param node      * @return false if the message should not be dispatched to the client (another sub may have already dispatched it      *         for example).      * @throws IOException      */
 specifier|abstract
 specifier|protected
 name|boolean
@@ -2585,7 +2456,7 @@ name|node
 parameter_list|)
 throws|throws
 name|IOException
-block|{}
+block|{     }
 block|}
 end_class
 
