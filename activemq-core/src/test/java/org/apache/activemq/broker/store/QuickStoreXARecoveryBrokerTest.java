@@ -51,7 +51,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|RecoveryBrokerTest
+name|XARecoveryBrokerTest
 import|;
 end_import
 
@@ -78,10 +78,48 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|QuickJournalRecoveryBrokerTest
+name|QuickStoreXARecoveryBrokerTest
 extends|extends
-name|RecoveryBrokerTest
+name|XARecoveryBrokerTest
 block|{
+specifier|public
+specifier|static
+name|Test
+name|suite
+parameter_list|()
+block|{
+return|return
+name|suite
+argument_list|(
+name|QuickStoreXARecoveryBrokerTest
+operator|.
+name|class
+argument_list|)
+return|;
+block|}
+specifier|public
+specifier|static
+name|void
+name|main
+parameter_list|(
+name|String
+index|[]
+name|args
+parameter_list|)
+block|{
+name|junit
+operator|.
+name|textui
+operator|.
+name|TestRunner
+operator|.
+name|run
+argument_list|(
+name|suite
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 specifier|protected
 name|BrokerService
 name|createBroker
@@ -153,53 +191,6 @@ return|return
 name|service
 return|;
 block|}
-specifier|public
-specifier|static
-name|Test
-name|suite
-parameter_list|()
-block|{
-return|return
-name|suite
-argument_list|(
-name|QuickJournalRecoveryBrokerTest
-operator|.
-name|class
-argument_list|)
-return|;
-block|}
-specifier|public
-specifier|static
-name|void
-name|main
-parameter_list|(
-name|String
-index|[]
-name|args
-parameter_list|)
-block|{
-name|junit
-operator|.
-name|textui
-operator|.
-name|TestRunner
-operator|.
-name|run
-argument_list|(
-name|suite
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-comment|//    @Override
-comment|//    public void testTopicDurableConsumerHoldsPersistentMessageAfterRestart() throws Exception {
-comment|//    	// TODO: this test is currently failing in base class.. overriden to avoid failure
-comment|//    }
-comment|//
-comment|//    @Override
-comment|//    public void testQueuePersistentCommitedAcksNotLostOnRestart() throws Exception {
-comment|//    	// TODO: this test is currently failing in base class.. overriden to avoid failure
-comment|//    }
 block|}
 end_class
 

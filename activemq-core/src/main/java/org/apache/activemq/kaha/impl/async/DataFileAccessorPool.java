@@ -130,6 +130,14 @@ specifier|private
 name|boolean
 name|used
 decl_stmt|;
+specifier|private
+name|int
+name|openCounter
+decl_stmt|;
+specifier|private
+name|boolean
+name|disposed
+decl_stmt|;
 specifier|public
 name|Pool
 parameter_list|(
@@ -199,6 +207,9 @@ name|used
 operator|=
 literal|true
 expr_stmt|;
+name|openCounter
+operator|++
+expr_stmt|;
 return|return
 name|rc
 return|;
@@ -211,6 +222,9 @@ name|DataFileAccessor
 name|reader
 parameter_list|)
 block|{
+name|openCounter
+operator|--
+expr_stmt|;
 name|used
 operator|=
 literal|true
@@ -223,6 +237,8 @@ name|size
 argument_list|()
 operator|>=
 name|MAX_OPEN_READERS_PER_FILE
+operator|||
+name|disposed
 condition|)
 block|{
 name|reader
@@ -285,6 +301,19 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+name|disposed
+operator|=
+literal|true
+expr_stmt|;
+block|}
+specifier|public
+name|int
+name|getOpenCounter
+parameter_list|()
+block|{
+return|return
+name|openCounter
+return|;
 block|}
 block|}
 specifier|public
@@ -409,8 +438,6 @@ parameter_list|(
 name|DataFile
 name|dataFile
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 if|if
 condition|(
@@ -419,7 +446,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|IllegalStateException
 argument_list|(
 literal|"Closed."
 argument_list|)
@@ -447,11 +474,12 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
 name|pool
 operator|.
-name|isUsed
+name|getOpenCounter
 argument_list|()
+operator|==
+literal|0
 condition|)
 block|{
 name|pool
@@ -474,11 +502,18 @@ else|else
 block|{
 throw|throw
 operator|new
-name|IOException
+name|IllegalStateException
 argument_list|(
 literal|"The data file is still in use: "
 operator|+
 name|dataFile
+operator|+
+literal|", use count: "
+operator|+
+name|pool
+operator|.
+name|getOpenCounter
+argument_list|()
 argument_list|)
 throw|;
 block|}
