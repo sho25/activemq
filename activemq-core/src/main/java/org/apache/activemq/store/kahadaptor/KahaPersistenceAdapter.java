@@ -1118,8 +1118,11 @@ name|container
 operator|.
 name|setValueMarshaller
 argument_list|(
-name|createMessageMarshaller
-argument_list|()
+operator|new
+name|CommandMarshaller
+argument_list|(
+name|wireFormat
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|container

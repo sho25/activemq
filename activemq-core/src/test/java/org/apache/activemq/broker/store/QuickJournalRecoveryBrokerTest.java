@@ -191,28 +191,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|testTopicDurableConsumerHoldsPersistentMessageAfterRestart
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// TODO: this test is currently failing in base class.. overriden to avoid failure
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|testQueuePersistentCommitedAcksNotLostOnRestart
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// TODO: this test is currently failing in base class.. overriden to avoid failure
-block|}
+comment|//    @Override
+comment|//    public void testTopicDurableConsumerHoldsPersistentMessageAfterRestart() throws Exception {
+comment|//    	// TODO: this test is currently failing in base class.. overriden to avoid failure
+comment|//    }
+comment|//
+comment|//    @Override
+comment|//    public void testQueuePersistentCommitedAcksNotLostOnRestart() throws Exception {
+comment|//    	// TODO: this test is currently failing in base class.. overriden to avoid failure
+comment|//    }
 block|}
 end_class
 

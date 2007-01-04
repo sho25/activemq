@@ -227,6 +227,24 @@ name|TopicMessageStore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|kahadaptor
+operator|.
+name|KahaReferenceStoreAdapter
+operator|.
+name|ReferenceRecord
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision: 1.5 $  */
 end_comment
@@ -345,6 +363,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
