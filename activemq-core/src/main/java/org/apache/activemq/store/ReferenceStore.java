@@ -149,6 +149,27 @@ operator|=
 name|offset
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ReferenceData fileId="
+operator|+
+name|fileId
+operator|+
+literal|", offset="
+operator|+
+name|offset
+operator|+
+literal|", expiration="
+operator|+
+name|expiration
+return|;
+block|}
 block|}
 comment|/**      * Adds a message reference to the message store      */
 specifier|public

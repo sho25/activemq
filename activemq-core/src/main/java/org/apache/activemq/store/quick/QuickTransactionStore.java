@@ -302,6 +302,10 @@ name|Object
 name|data
 decl_stmt|;
 specifier|public
+name|Location
+name|location
+decl_stmt|;
+specifier|public
 name|TxOperation
 parameter_list|(
 name|byte
@@ -312,6 +316,9 @@ name|store
 parameter_list|,
 name|Object
 name|data
+parameter_list|,
+name|Location
+name|location
 parameter_list|)
 block|{
 name|this
@@ -331,6 +338,12 @@ operator|.
 name|data
 operator|=
 name|data
+expr_stmt|;
+name|this
+operator|.
+name|location
+operator|=
+name|location
 expr_stmt|;
 block|}
 block|}
@@ -382,6 +395,9 @@ name|store
 parameter_list|,
 name|Message
 name|msg
+parameter_list|,
+name|Location
+name|location
 parameter_list|)
 block|{
 name|operations
@@ -398,6 +414,8 @@ argument_list|,
 name|store
 argument_list|,
 name|msg
+argument_list|,
+name|location
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -427,6 +445,8 @@ argument_list|,
 name|store
 argument_list|,
 name|ack
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -456,6 +476,8 @@ argument_list|,
 name|store
 argument_list|,
 name|ack
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1373,6 +1395,8 @@ argument_list|(
 name|store
 argument_list|,
 name|message
+argument_list|,
+name|location
 argument_list|)
 expr_stmt|;
 block|}

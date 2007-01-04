@@ -747,6 +747,8 @@ name|cleanupInterval
 init|=
 literal|1000
 operator|*
+literal|1
+operator|/
 literal|10
 decl_stmt|;
 specifier|private
@@ -1024,35 +1026,15 @@ operator|.
 name|getReferenceFileIdsInUse
 argument_list|()
 decl_stmt|;
-for|for
-control|(
-name|Integer
-name|fileId
-range|:
-name|files
-control|)
-block|{
-try|try
-block|{
-name|asyncDataManager
+name|log
 operator|.
-name|addInterestInFile
+name|info
 argument_list|(
-name|fileId
+literal|"Active data files: "
+operator|+
+name|files
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-comment|// We can expect these since referenceStoreAdapter is a litle behind in updates
-comment|// and it might think it has references to data files that have allready come and gone..
-comment|// This should get resolved once recovery kicks in.
-block|}
-block|}
 name|checkpointTask
 operator|=
 name|taskRunnerFactory
@@ -1176,6 +1158,13 @@ operator|.
 name|cancel
 argument_list|(
 name|periodicCheckpointTask
+argument_list|)
+expr_stmt|;
+name|Scheduler
+operator|.
+name|cancel
+argument_list|(
+name|periodicCleanupTask
 argument_list|)
 expr_stmt|;
 name|Iterator
@@ -2577,7 +2566,9 @@ name|op
 operator|.
 name|data
 argument_list|,
-name|pos
+name|op
+operator|.
+name|location
 argument_list|)
 expr_stmt|;
 block|}
