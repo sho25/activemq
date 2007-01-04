@@ -99,6 +99,9 @@ class|class
 name|CommandMarshaller
 implements|implements
 name|Marshaller
+argument_list|<
+name|Object
+argument_list|>
 block|{
 specifier|private
 name|WireFormat

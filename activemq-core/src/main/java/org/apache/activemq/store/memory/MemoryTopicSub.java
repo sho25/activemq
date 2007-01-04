@@ -237,7 +237,7 @@ operator|.
 name|getClass
 argument_list|()
 operator|==
-name|String
+name|MessageId
 operator|.
 name|class
 condition|)
@@ -247,7 +247,7 @@ operator|.
 name|recoverMessageReference
 argument_list|(
 operator|(
-name|String
+name|MessageId
 operator|)
 name|msg
 argument_list|)
@@ -373,7 +373,7 @@ operator|.
 name|getClass
 argument_list|()
 operator|==
-name|String
+name|MessageId
 operator|.
 name|class
 condition|)
@@ -383,7 +383,7 @@ operator|.
 name|recoverMessageReference
 argument_list|(
 operator|(
-name|String
+name|MessageId
 operator|)
 name|msg
 argument_list|)

@@ -171,22 +171,6 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|journal
-operator|.
-name|QuickJournalPersistenceAdapter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|store
-operator|.
 name|kahadaptor
 operator|.
 name|KahaPersistenceAdapter
@@ -361,27 +345,9 @@ name|jdbcPersistenceAdapter
 return|;
 block|}
 comment|// Setup the Journal
-if|if
-condition|(
-name|useQuickJournal
-condition|)
-block|{
-return|return
-operator|new
-name|QuickJournalPersistenceAdapter
-argument_list|(
-name|getJournal
-argument_list|()
-argument_list|,
-name|jdbcPersistenceAdapter
-argument_list|,
-name|getTaskRunnerFactory
-argument_list|()
-argument_list|)
-return|;
-block|}
-else|else
-block|{
+comment|//        if( useQuickJournal ) {
+comment|//            return new QuickJournalPersistenceAdapter(getJournal(), jdbcPersistenceAdapter, getTaskRunnerFactory());
+comment|//        }  else {
 name|KahaPersistenceAdapter
 name|adaptor
 init|=
@@ -409,7 +375,7 @@ argument_list|()
 argument_list|)
 return|;
 comment|//return new JournalPersistenceAdapter(getJournal(), adaptor, getTaskRunnerFactory());
-block|}
+comment|//        }
 block|}
 specifier|public
 name|int

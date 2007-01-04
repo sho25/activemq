@@ -146,41 +146,10 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Adds a message reference to the message store      *       * @param context       * @param messageId       * @param expirationTime       * @param messageRef       * @throws IOException       */
-specifier|public
-name|void
-name|addMessageReference
-parameter_list|(
-name|ConnectionContext
-name|context
-parameter_list|,
-name|MessageId
-name|messageId
-parameter_list|,
-name|long
-name|expirationTime
-parameter_list|,
-name|String
-name|messageRef
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
 comment|/**      * Looks up a message using either the String messageID or the messageNumber. Implementations are encouraged to fill      * in the missing key if its easy to do so.      *       * @param identity which contains either the messageID or the messageNumber      * @return the message or null if it does not exist      * @throws IOException       */
 specifier|public
 name|Message
 name|getMessage
-parameter_list|(
-name|MessageId
-name|identity
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
-comment|/**      * Looks up a message using either the String messageID or the messageNumber. Implementations are encouraged to fill      * in the missing key if its easy to do so.      *       * @param identity which contains either the messageID or the messageNumber      * @return the message or null if it does not exist      * @throws IOException       */
-specifier|public
-name|String
-name|getMessageReference
 parameter_list|(
 name|MessageId
 name|identity

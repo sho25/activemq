@@ -53,8 +53,18 @@ begin_interface
 specifier|public
 interface|interface
 name|MapContainer
+parameter_list|<
+name|K
+parameter_list|,
+name|V
+parameter_list|>
 extends|extends
 name|Map
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
 block|{
 comment|/**      * The container is created or retrieved in       * an unloaded state.      * load populates the container will all the indexes used etc      * and should be called before any operations on the container      */
 specifier|public
@@ -80,6 +90,9 @@ name|void
 name|setKeyMarshaller
 parameter_list|(
 name|Marshaller
+argument_list|<
+name|K
+argument_list|>
 name|keyMarshaller
 parameter_list|)
 function_decl|;
@@ -89,6 +102,9 @@ name|void
 name|setValueMarshaller
 parameter_list|(
 name|Marshaller
+argument_list|<
+name|V
+argument_list|>
 name|valueMarshaller
 parameter_list|)
 function_decl|;
@@ -115,16 +131,16 @@ specifier|public
 name|boolean
 name|containsKey
 parameter_list|(
-name|Object
+name|K
 name|key
 parameter_list|)
 function_decl|;
 comment|/**      * Get the value associated with the key      * @param key       * @return the value associated with the key from the store      */
 specifier|public
-name|Object
+name|V
 name|get
 parameter_list|(
-name|Object
+name|K
 name|key
 parameter_list|)
 function_decl|;
@@ -133,7 +149,7 @@ specifier|public
 name|boolean
 name|containsValue
 parameter_list|(
-name|Object
+name|K
 name|o
 parameter_list|)
 function_decl|;
@@ -143,45 +159,66 @@ name|void
 name|putAll
 parameter_list|(
 name|Map
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
 name|map
 parameter_list|)
 function_decl|;
 comment|/**      * @return a Set of all the keys      */
 specifier|public
 name|Set
+argument_list|<
+name|K
+argument_list|>
 name|keySet
 parameter_list|()
 function_decl|;
 comment|/**      * @return a collection of all the values - the values will be lazily pulled out of the      * store if iterated etc.      */
 specifier|public
 name|Collection
+argument_list|<
+name|V
+argument_list|>
 name|values
 parameter_list|()
 function_decl|;
 comment|/**      * @return a Set of all the Map.Entry instances - the values will be lazily pulled out of the      * store if iterated etc.      */
 specifier|public
 name|Set
+argument_list|<
+name|Map
+operator|.
+name|Entry
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+argument_list|>
 name|entrySet
 parameter_list|()
 function_decl|;
 comment|/**      * Add an entry      * @param key      * @param value      * @return the old value for the key      */
 specifier|public
-name|Object
+name|V
 name|put
 parameter_list|(
-name|Object
+name|K
 name|key
 parameter_list|,
-name|Object
+name|V
 name|value
 parameter_list|)
 function_decl|;
 comment|/**      * remove an entry associated with the key      * @param key       * @return the old value assocaited with the key or null      */
 specifier|public
-name|Object
+name|V
 name|remove
 parameter_list|(
-name|Object
+name|K
 name|key
 parameter_list|)
 function_decl|;
@@ -196,10 +233,10 @@ specifier|public
 name|StoreEntry
 name|place
 parameter_list|(
-name|Object
+name|K
 name|key
 parameter_list|,
-name|Object
+name|V
 name|Value
 parameter_list|)
 function_decl|;
@@ -214,7 +251,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Get the Key object from it's location      * @param keyLocation      * @return the key for the entry      */
 specifier|public
-name|Object
+name|K
 name|getKey
 parameter_list|(
 name|StoreEntry
@@ -223,7 +260,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Get the value from it's location      * @param Valuelocation      * @return the Object      */
 specifier|public
-name|Object
+name|V
 name|getValue
 parameter_list|(
 name|StoreEntry

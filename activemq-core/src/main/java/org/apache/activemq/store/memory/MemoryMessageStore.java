@@ -294,41 +294,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|public
-name|void
-name|addMessageReference
-parameter_list|(
-name|ConnectionContext
-name|context
-parameter_list|,
-name|MessageId
-name|messageId
-parameter_list|,
-name|long
-name|expirationTime
-parameter_list|,
-name|String
-name|messageRef
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-synchronized|synchronized
-init|(
-name|messageTable
-init|)
-block|{
-name|messageTable
-operator|.
-name|put
-argument_list|(
-name|messageId
-argument_list|,
-name|messageRef
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+comment|//    public void addMessageReference(ConnectionContext context,MessageId messageId,long expirationTime,String messageRef)
+comment|//            throws IOException{
+comment|//        synchronized(messageTable){
+comment|//            messageTable.put(messageId,messageRef);
+comment|//        }
+comment|//    }
 specifier|public
 name|Message
 name|getMessage
@@ -351,28 +322,9 @@ name|identity
 argument_list|)
 return|;
 block|}
-specifier|public
-name|String
-name|getMessageReference
-parameter_list|(
-name|MessageId
-name|identity
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-return|return
-operator|(
-name|String
-operator|)
-name|messageTable
-operator|.
-name|get
-argument_list|(
-name|identity
-argument_list|)
-return|;
-block|}
+comment|//    public String getMessageReference(MessageId identity) throws IOException{
+comment|//        return (String)messageTable.get(identity);
+comment|//    }
 specifier|public
 name|void
 name|removeMessage
@@ -499,7 +451,7 @@ operator|.
 name|getClass
 argument_list|()
 operator|==
-name|String
+name|MessageId
 operator|.
 name|class
 condition|)
@@ -509,7 +461,7 @@ operator|.
 name|recoverMessageReference
 argument_list|(
 operator|(
-name|String
+name|MessageId
 operator|)
 name|msg
 argument_list|)
@@ -711,7 +663,7 @@ operator|.
 name|getClass
 argument_list|()
 operator|==
-name|String
+name|MessageId
 operator|.
 name|class
 condition|)
@@ -721,7 +673,7 @@ operator|.
 name|recoverMessageReference
 argument_list|(
 operator|(
-name|String
+name|MessageId
 operator|)
 name|msg
 argument_list|)

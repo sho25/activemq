@@ -99,7 +99,7 @@ specifier|private
 name|DataByteArrayInputStream
 name|dataIn
 decl_stmt|;
-comment|/**      * Construct a Store reader      *       * @param file      */
+comment|/**      * Construct a Store reader      *       * @param fileId      */
 name|SyncDataFileReader
 parameter_list|(
 name|DataManagerImpl

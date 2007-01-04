@@ -53,13 +53,16 @@ begin_interface
 specifier|public
 interface|interface
 name|Marshaller
+parameter_list|<
+name|T
+parameter_list|>
 block|{
 comment|/**      * Write the payload of this entry to the RawContainer      * @param object       * @param dataOut      * @throws IOException      */
 specifier|public
 name|void
 name|writePayload
 parameter_list|(
-name|Object
+name|T
 name|object
 parameter_list|,
 name|DataOutput
@@ -70,7 +73,7 @@ name|IOException
 function_decl|;
 comment|/**      * Read the entry from the RawContainer      * @param dataIn       * @return unmarshalled object      * @throws IOException      */
 specifier|public
-name|Object
+name|T
 name|readPayload
 parameter_list|(
 name|DataInput

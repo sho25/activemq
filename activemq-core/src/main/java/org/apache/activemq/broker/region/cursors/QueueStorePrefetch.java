@@ -540,7 +540,7 @@ specifier|public
 name|void
 name|recoverMessageReference
 parameter_list|(
-name|String
+name|MessageId
 name|messageReference
 parameter_list|)
 throws|throws
@@ -553,11 +553,7 @@ name|store
 operator|.
 name|getMessage
 argument_list|(
-operator|new
-name|MessageId
-argument_list|(
 name|messageReference
-argument_list|)
 argument_list|)
 decl_stmt|;
 if|if

@@ -85,7 +85,7 @@ specifier|private
 name|DataManagerImpl
 name|dataManager
 decl_stmt|;
-comment|/**      * Construct a Store writer      *       * @param file      */
+comment|/**      * Construct a Store writer      *       * @param fileId      */
 name|SyncDataFileWriter
 parameter_list|(
 name|DataManagerImpl

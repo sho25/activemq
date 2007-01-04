@@ -29,6 +29,20 @@ name|Message
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|MessageId
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision: 1.4 $  */
 end_comment
@@ -50,8 +64,8 @@ function_decl|;
 name|void
 name|recoverMessageReference
 parameter_list|(
-name|String
-name|messageReference
+name|MessageId
+name|ref
 parameter_list|)
 throws|throws
 name|Exception

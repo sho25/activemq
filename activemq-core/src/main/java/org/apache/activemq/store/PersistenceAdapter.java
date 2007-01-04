@@ -51,6 +51,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|ActiveMQDestination
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|ActiveMQQueue
 import|;
 end_import
@@ -117,6 +131,9 @@ block|{
 comment|/**      * Returns a set of all the {@link org.apache.activemq.command.ActiveMQDestination}      * objects that the persistence store is aware exist.      *      * @return      */
 specifier|public
 name|Set
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 name|getDestinations
 parameter_list|()
 function_decl|;
@@ -198,19 +215,6 @@ name|deleteAllMessages
 parameter_list|()
 throws|throws
 name|IOException
-function_decl|;
-specifier|public
-name|boolean
-name|isUseExternalMessageReferences
-parameter_list|()
-function_decl|;
-specifier|public
-name|void
-name|setUseExternalMessageReferences
-parameter_list|(
-name|boolean
-name|enable
-parameter_list|)
 function_decl|;
 comment|/**      * @param usageManager The UsageManager that is controlling the broker's memory usage.      */
 specifier|public

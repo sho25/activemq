@@ -971,7 +971,11 @@ name|listener
 operator|.
 name|recoverMessageReference
 argument_list|(
+operator|new
+name|MessageId
+argument_list|(
 name|reference
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1336,7 +1340,11 @@ name|listener
 operator|.
 name|recoverMessageReference
 argument_list|(
+operator|new
+name|MessageId
+argument_list|(
 name|reference
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

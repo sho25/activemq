@@ -1193,7 +1193,7 @@ specifier|public
 name|void
 name|recoverMessageReference
 parameter_list|(
-name|String
+name|MessageId
 name|messageReference
 parameter_list|)
 throws|throws
@@ -1744,7 +1744,7 @@ specifier|public
 name|void
 name|recoverMessageReference
 parameter_list|(
-name|String
+name|MessageId
 name|messageReference
 parameter_list|)
 throws|throws

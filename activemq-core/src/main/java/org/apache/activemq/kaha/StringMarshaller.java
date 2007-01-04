@@ -55,13 +55,16 @@ class|class
 name|StringMarshaller
 implements|implements
 name|Marshaller
+argument_list|<
+name|String
+argument_list|>
 block|{
 comment|/**      * Write the payload of this entry to the RawContainer      *       * @param object      * @param dataOut      * @throws IOException      */
 specifier|public
 name|void
 name|writePayload
 parameter_list|(
-name|Object
+name|String
 name|object
 parameter_list|,
 name|DataOutput
@@ -75,15 +78,12 @@ operator|.
 name|writeUTF
 argument_list|(
 name|object
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Read the entry from the RawContainer      *       * @param dataIn      * @return unmarshalled object      * @throws IOException      */
 specifier|public
-name|Object
+name|String
 name|readPayload
 parameter_list|(
 name|DataInput

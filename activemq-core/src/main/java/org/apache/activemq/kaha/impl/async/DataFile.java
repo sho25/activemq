@@ -342,12 +342,12 @@ name|getLength
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|file
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 specifier|public
 specifier|synchronized

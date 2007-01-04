@@ -264,8 +264,15 @@ name|WriteCommand
 name|first
 decl_stmt|;
 specifier|public
+specifier|final
 name|CountDownLatch
 name|latch
+init|=
+operator|new
+name|CountDownLatch
+argument_list|(
+literal|1
+argument_list|)
 decl_stmt|;
 specifier|public
 name|int
@@ -304,22 +311,6 @@ operator|.
 name|getSize
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|write
-operator|.
-name|sync
-condition|)
-block|{
-name|latch
-operator|=
-operator|new
-name|CountDownLatch
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 specifier|public
 name|boolean
@@ -394,26 +385,6 @@ operator|.
 name|getSize
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|write
-operator|.
-name|sync
-operator|&&
-name|latch
-operator|==
-literal|null
-condition|)
-block|{
-name|latch
-operator|=
-operator|new
-name|CountDownLatch
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 specifier|public
@@ -525,7 +496,7 @@ specifier|private
 name|Thread
 name|thread
 decl_stmt|;
-comment|/**      * Construct a Store writer      *       * @param file      */
+comment|/**      * Construct a Store writer      *       * @param fileId      */
 specifier|public
 name|DataFileAppender
 parameter_list|(
@@ -648,6 +619,15 @@ name|write
 argument_list|)
 expr_stmt|;
 block|}
+name|location
+operator|.
+name|setLatch
+argument_list|(
+name|batch
+operator|.
+name|latch
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|sync
@@ -1409,15 +1389,6 @@ name|location
 argument_list|)
 expr_stmt|;
 comment|// Signal any waiting threads that the write is on disk.
-if|if
-condition|(
-name|wb
-operator|.
-name|latch
-operator|!=
-literal|null
-condition|)
-block|{
 name|wb
 operator|.
 name|latch
@@ -1425,7 +1396,6 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
-block|}
 comment|// Now that the data is on disk, remove the writes from the in flight
 comment|// cache.
 name|write

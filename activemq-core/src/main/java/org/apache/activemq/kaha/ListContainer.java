@@ -19,16 +19,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|List
@@ -53,8 +43,14 @@ begin_interface
 specifier|public
 interface|interface
 name|ListContainer
+parameter_list|<
+name|V
+parameter_list|>
 extends|extends
 name|List
+argument_list|<
+name|V
+argument_list|>
 block|{
 comment|/**      * The container is created or retrieved in an unloaded state. load populates the container will all the indexes      * used etc and should be called before any operations on the container      */
 specifier|public
@@ -100,7 +96,7 @@ specifier|public
 name|void
 name|addFirst
 parameter_list|(
-name|Object
+name|V
 name|o
 parameter_list|)
 function_decl|;
@@ -109,19 +105,19 @@ specifier|public
 name|void
 name|addLast
 parameter_list|(
-name|Object
+name|V
 name|o
 parameter_list|)
 function_decl|;
 comment|/**      * Removes and returns the first element from this list.      *       * @return the first element from this list.      * @throws NoSuchElementException if this list is empty.      */
 specifier|public
-name|Object
+name|V
 name|removeFirst
 parameter_list|()
 function_decl|;
 comment|/**      * Removes and returns the last element from this list.      *       * @return the last element from this list.      * @throws NoSuchElementException if this list is empty.      */
 specifier|public
-name|Object
+name|V
 name|removeLast
 parameter_list|()
 function_decl|;
@@ -160,7 +156,7 @@ specifier|public
 name|StoreEntry
 name|placeLast
 parameter_list|(
-name|Object
+name|V
 name|object
 parameter_list|)
 function_decl|;
@@ -169,7 +165,7 @@ specifier|public
 name|StoreEntry
 name|placeFirst
 parameter_list|(
-name|Object
+name|V
 name|object
 parameter_list|)
 function_decl|;
@@ -181,13 +177,13 @@ parameter_list|(
 name|StoreEntry
 name|entry
 parameter_list|,
-name|Object
+name|V
 name|object
 parameter_list|)
 function_decl|;
 comment|/**      * Retrieve an Object from the Store by its location      *       * @param entry      * @return the Object at that entry      */
 specifier|public
-name|Object
+name|V
 name|get
 parameter_list|(
 name|StoreEntry
