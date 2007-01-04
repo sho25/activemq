@@ -2134,7 +2134,7 @@ init|=
 literal|null
 decl_stmt|;
 name|int
-name|transactionCounter
+name|redoCounter
 init|=
 literal|0
 decl_stmt|;
@@ -2147,6 +2147,14 @@ operator|+
 name|asyncDataManager
 argument_list|)
 expr_stmt|;
+name|long
+name|start
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
 name|ConnectionContext
 name|context
 init|=
@@ -2245,6 +2253,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
 name|store
 operator|.
 name|replayAddMessage
@@ -2255,10 +2265,12 @@ name|message
 argument_list|,
 name|pos
 argument_list|)
-expr_stmt|;
-name|transactionCounter
+condition|)
+block|{
+name|redoCounter
 operator|++
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -2327,6 +2339,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
 name|store
 operator|.
 name|replayRemoveMessage
@@ -2338,10 +2352,12 @@ operator|.
 name|getMessageAck
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|transactionCounter
+condition|)
+block|{
+name|redoCounter
 operator|++
 expr_stmt|;
+block|}
 block|}
 block|}
 break|break;
@@ -2397,6 +2413,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
 name|store
 operator|.
 name|replayAcknowledge
@@ -2418,10 +2436,12 @@ operator|.
 name|getMessageId
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|transactionCounter
+condition|)
+block|{
+name|redoCounter
 operator|++
 expr_stmt|;
+block|}
 block|}
 block|}
 break|break;
@@ -2551,6 +2571,8 @@ operator|.
 name|ADD_OPERATION_TYPE
 condition|)
 block|{
+if|if
+condition|(
 name|op
 operator|.
 name|store
@@ -2570,6 +2592,9 @@ name|op
 operator|.
 name|location
 argument_list|)
+condition|)
+name|redoCounter
+operator|++
 expr_stmt|;
 block|}
 if|if
@@ -2583,6 +2608,8 @@ operator|.
 name|REMOVE_OPERATION_TYPE
 condition|)
 block|{
+if|if
+condition|(
 name|op
 operator|.
 name|store
@@ -2598,6 +2625,9 @@ name|op
 operator|.
 name|data
 argument_list|)
+condition|)
+name|redoCounter
+operator|++
 expr_stmt|;
 block|}
 if|if
@@ -2621,6 +2651,8 @@ name|op
 operator|.
 name|data
 decl_stmt|;
+if|if
+condition|(
 operator|(
 operator|(
 name|QuickTopicMessageStore
@@ -2649,12 +2681,14 @@ operator|.
 name|getMessageId
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-name|transactionCounter
+condition|)
+block|{
+name|redoCounter
 operator|++
 expr_stmt|;
+block|}
+block|}
+block|}
 break|break;
 case|case
 name|JournalTransaction
@@ -2765,15 +2799,35 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+name|long
+name|end
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
 name|log
 operator|.
 name|info
 argument_list|(
-literal|"Journal Recovered: "
+literal|"Recovered "
 operator|+
-name|transactionCounter
+name|redoCounter
 operator|+
-literal|" message(s) in transactions recovered."
+literal|" operations from redo log in "
+operator|+
+operator|(
+operator|(
+name|end
+operator|-
+name|start
+operator|)
+operator|/
+literal|1000.0f
+operator|)
+operator|+
+literal|" seconds."
 argument_list|)
 expr_stmt|;
 block|}

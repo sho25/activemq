@@ -992,7 +992,7 @@ throw|;
 block|}
 block|}
 specifier|public
-name|void
+name|boolean
 name|replayAddMessage
 parameter_list|(
 name|ConnectionContext
@@ -1080,21 +1080,9 @@ argument_list|,
 name|data
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"referenceStore.put "
-operator|+
-name|id
-operator|+
-literal|"-->"
-operator|+
-name|data
-argument_list|)
-expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 block|}
 catch|catch
@@ -1119,6 +1107,9 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 comment|/**      */
 specifier|public
@@ -1463,7 +1454,7 @@ block|}
 block|}
 block|}
 specifier|public
-name|void
+name|boolean
 name|replayRemoveMessage
 parameter_list|(
 name|ConnectionContext
@@ -1505,6 +1496,9 @@ argument_list|,
 name|messageAck
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 block|}
 catch|catch
@@ -1530,6 +1524,9 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 comment|/**      * Waits till the lastest data has landed on the referenceStore      * @throws InterruptedIOException       */
 specifier|public
@@ -1895,27 +1892,6 @@ name|getValue
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"referenceStore.put "
-operator|+
-name|entry
-operator|.
-name|getKey
-argument_list|()
-operator|+
-literal|"-->"
-operator|+
-name|entry
-operator|.
-name|getValue
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -2154,21 +2130,6 @@ operator|.
 name|getMessageReference
 argument_list|(
 name|identity
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"referenceStore.get "
-operator|+
-name|identity
-operator|+
-literal|"-->"
-operator|+
-name|data
 argument_list|)
 expr_stmt|;
 if|if

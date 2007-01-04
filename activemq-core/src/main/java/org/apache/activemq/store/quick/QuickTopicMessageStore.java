@@ -783,7 +783,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-name|void
+name|boolean
 name|replayAcknowledge
 parameter_list|(
 name|ConnectionContext
@@ -833,6 +833,9 @@ argument_list|,
 name|messageId
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 block|}
 catch|catch
@@ -855,6 +858,9 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 comment|/**      * @param messageId      * @param location      * @param key      * @throws InterruptedIOException       */
 specifier|private
