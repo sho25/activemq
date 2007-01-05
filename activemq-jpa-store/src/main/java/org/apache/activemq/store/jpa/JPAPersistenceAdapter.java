@@ -320,7 +320,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link PersistenceAdapter} that uses JPA to  * store it's messages.  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.17 $  */
+comment|/**  * An implementation of {@link PersistenceAdapter} that uses JPA to  * store it's messages.  *   * @org.apache.xbean.XBean element="jpaPersistenceAdapter"  *   * @version $Revision: 1.17 $  */
 end_comment
 
 begin_class
@@ -856,6 +856,9 @@ expr_stmt|;
 block|}
 specifier|public
 name|Set
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 name|getDestinations
 parameter_list|()
 block|{
@@ -1061,28 +1064,6 @@ name|UsageManager
 name|usageManager
 parameter_list|)
 block|{ 	}
-specifier|public
-name|void
-name|setUseExternalMessageReferences
-parameter_list|(
-name|boolean
-name|enable
-parameter_list|)
-block|{
-if|if
-condition|(
-name|enable
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"This persistence adapter does not support externa message references"
-argument_list|)
-throw|;
-block|}
-block|}
 specifier|public
 name|void
 name|start

@@ -747,9 +747,7 @@ name|cleanupInterval
 init|=
 literal|1000
 operator|*
-literal|1
-operator|/
-literal|10
+literal|60
 decl_stmt|;
 specifier|private
 name|long

@@ -141,20 +141,6 @@ name|activemq
 operator|.
 name|command
 operator|.
-name|Message
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|MessageId
 import|;
 end_import
@@ -197,7 +183,7 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|TopicMessageStore
+name|TopicReferenceStore
 import|;
 end_import
 
@@ -215,7 +201,7 @@ name|jpa
 operator|.
 name|model
 operator|.
-name|StoredMessage
+name|StoredMessageReference
 import|;
 end_import
 
@@ -254,20 +240,6 @@ operator|.
 name|StoredSubscription
 operator|.
 name|SubscriptionId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|ByteSequence
 import|;
 end_import
 
@@ -288,11 +260,11 @@ end_import
 begin_class
 specifier|public
 class|class
-name|JPATopicMessageStore
+name|JPATopicReferenceStore
 extends|extends
-name|JPAMessageStore
+name|JPAReferenceStore
 implements|implements
-name|TopicMessageStore
+name|TopicReferenceStore
 block|{
 specifier|private
 name|Map
@@ -313,7 +285,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|public
-name|JPATopicMessageStore
+name|JPATopicReferenceStore
 parameter_list|(
 name|JPAPersistenceAdapter
 name|adapter
@@ -505,7 +477,7 @@ name|manager
 operator|.
 name|createQuery
 argument_list|(
-literal|"select max(m.id) from StoredMessage m"
+literal|"select max(m.id) from StoredMessageReference m"
 argument_list|)
 decl_stmt|;
 name|Long
@@ -959,7 +931,7 @@ name|manager
 operator|.
 name|createQuery
 argument_list|(
-literal|"select count(m) FROM StoredMessage m, StoredSubscription ss "
+literal|"select count(m) FROM StoredMessageReference m, StoredSubscription ss "
 operator|+
 literal|"where ss.clientId=?1 "
 operator|+
@@ -1301,7 +1273,7 @@ name|manager
 operator|.
 name|createQuery
 argument_list|(
-literal|"select m from StoredMessage m where m.destination=?1 and m.id>?2 order by m.id asc"
+literal|"select m from StoredMessageReference m where m.destination=?1 and m.id>?2 order by m.id asc"
 argument_list|)
 decl_stmt|;
 name|query
@@ -1339,13 +1311,13 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-name|StoredMessage
+name|StoredMessageReference
 name|m
 range|:
 operator|(
 name|List
 argument_list|<
-name|StoredMessage
+name|StoredMessageReference
 argument_list|>
 operator|)
 name|query
@@ -1354,31 +1326,33 @@ name|getResultList
 argument_list|()
 control|)
 block|{
-name|Message
-name|message
+name|MessageId
+name|mid
 init|=
-operator|(
-name|Message
-operator|)
-name|wireFormat
-operator|.
-name|unmarshal
-argument_list|(
 operator|new
-name|ByteSequence
+name|MessageId
 argument_list|(
 name|m
 operator|.
-name|getData
+name|getMessageId
 argument_list|()
 argument_list|)
-argument_list|)
 decl_stmt|;
+name|mid
+operator|.
+name|setBrokerSequenceId
+argument_list|(
+name|m
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|listener
 operator|.
-name|recoverMessage
+name|recoverMessageReference
 argument_list|(
-name|message
+name|mid
 argument_list|)
 expr_stmt|;
 name|lastMessageId
@@ -1486,7 +1460,7 @@ name|manager
 operator|.
 name|createQuery
 argument_list|(
-literal|"select m from StoredMessage m where m.destination=?1 and m.id>?2 order by m.id asc"
+literal|"select m from StoredMessageReference m where m.destination=?1 and m.id>?2 order by m.id asc"
 argument_list|)
 decl_stmt|;
 name|query
@@ -1512,13 +1486,13 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|StoredMessage
+name|StoredMessageReference
 name|m
 range|:
 operator|(
 name|List
 argument_list|<
-name|StoredMessage
+name|StoredMessageReference
 argument_list|>
 operator|)
 name|query
@@ -1527,31 +1501,33 @@ name|getResultList
 argument_list|()
 control|)
 block|{
-name|Message
-name|message
+name|MessageId
+name|mid
 init|=
-operator|(
-name|Message
-operator|)
-name|wireFormat
-operator|.
-name|unmarshal
-argument_list|(
 operator|new
-name|ByteSequence
+name|MessageId
 argument_list|(
 name|m
 operator|.
-name|getData
+name|getMessageId
 argument_list|()
 argument_list|)
-argument_list|)
 decl_stmt|;
+name|mid
+operator|.
+name|setBrokerSequenceId
+argument_list|(
+name|m
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|listener
 operator|.
-name|recoverMessage
+name|recoverMessageReference
 argument_list|(
-name|message
+name|mid
 argument_list|)
 expr_stmt|;
 block|}
