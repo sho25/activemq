@@ -454,7 +454,7 @@ specifier|protected
 name|int
 name|maximumDestinationCacheSize
 init|=
-literal|2000
+literal|10000
 decl_stmt|;
 specifier|private
 name|String
