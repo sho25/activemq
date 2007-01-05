@@ -200,7 +200,7 @@ name|boolean
 name|matches
 parameter_list|(
 name|MessageEvaluationContext
-name|message
+name|mec
 parameter_list|)
 throws|throws
 name|JMSException
@@ -209,20 +209,23 @@ try|try
 block|{
 comment|//for Queues - the message can be acknowledged and dropped whilst still
 comment|//in the dispatch loop
-return|return
+comment|//so need to get the reference to it
+name|Message
 name|message
+init|=
+name|mec
 operator|.
 name|getMessage
 argument_list|()
+decl_stmt|;
+return|return
+name|message
 operator|!=
 literal|null
 operator|&&
 name|matchesForwardingFilter
 argument_list|(
 name|message
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 return|;
 block|}
