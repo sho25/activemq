@@ -428,10 +428,7 @@ operator|.
 name|decrementReferenceCount
 argument_list|()
 expr_stmt|;
-name|message
-operator|=
-literal|null
-expr_stmt|;
+comment|//message=null;
 block|}
 return|return
 name|rc
