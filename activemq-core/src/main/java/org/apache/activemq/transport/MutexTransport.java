@@ -25,6 +25,20 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ShutdownInfo
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision$  */
 end_comment
@@ -98,6 +112,23 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+name|command
+operator|instanceof
+name|ShutdownInfo
+condition|)
+block|{
+name|next
+operator|.
+name|oneway
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 synchronized|synchronized
 init|(
 name|writeMutex
@@ -110,6 +141,7 @@ argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
