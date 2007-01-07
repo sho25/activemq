@@ -575,6 +575,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|GeneralSecurityException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -1018,7 +1028,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"Outbound transport to "
 operator|+
@@ -1203,7 +1213,7 @@ argument_list|()
 expr_stmt|;
 name|log
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"Outbound transport to "
 operator|+
@@ -1760,6 +1770,11 @@ operator|+
 name|disposed
 argument_list|)
 expr_stmt|;
+name|boolean
+name|wasDisposedAlready
+init|=
+name|disposed
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -1806,7 +1821,7 @@ parameter_list|)
 block|{
 name|log
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"Caught exception stopping"
 argument_list|,
@@ -1844,6 +1859,11 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|wasDisposedAlready
+condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -1857,6 +1877,23 @@ operator|+
 literal|" stopped"
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+name|localBrokerName
+operator|+
+literal|" bridge to "
+operator|+
+name|remoteBrokerName
+operator|+
+literal|" stopped"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|protected
 name|void
@@ -1872,9 +1909,20 @@ operator|!
 name|disposed
 condition|)
 block|{
+if|if
+condition|(
+name|error
+operator|instanceof
+name|SecurityException
+operator|||
+name|error
+operator|instanceof
+name|GeneralSecurityException
+condition|)
+block|{
 name|log
 operator|.
-name|info
+name|error
 argument_list|(
 literal|"Network connection between "
 operator|+
@@ -1889,6 +1937,27 @@ operator|+
 name|error
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Network connection between "
+operator|+
+name|localBroker
+operator|+
+literal|" and "
+operator|+
+name|remoteBroker
+operator|+
+literal|" shutdown due to a remote error: "
+operator|+
+name|error
+argument_list|)
+expr_stmt|;
+block|}
 name|log
 operator|.
 name|debug
