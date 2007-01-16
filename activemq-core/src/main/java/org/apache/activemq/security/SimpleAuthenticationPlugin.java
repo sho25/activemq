@@ -281,7 +281,7 @@ name|StringTokenizer
 argument_list|(
 name|user
 operator|.
-name|getGroup
+name|getGroups
 argument_list|()
 argument_list|,
 literal|","

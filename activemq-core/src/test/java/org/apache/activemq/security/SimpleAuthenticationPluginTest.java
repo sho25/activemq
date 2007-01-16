@@ -108,7 +108,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|XBeanSecurityTest
+name|SimpleAuthenticationPluginTest
 operator|.
 name|class
 argument_list|)
@@ -122,7 +122,7 @@ block|{
 return|return
 name|suite
 argument_list|(
-name|XBeanSecurityTest
+name|SimpleAuthenticationPluginTest
 operator|.
 name|class
 argument_list|)
