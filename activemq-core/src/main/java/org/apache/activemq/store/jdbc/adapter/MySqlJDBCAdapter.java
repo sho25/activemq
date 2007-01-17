@@ -68,6 +68,13 @@ operator|+
 literal|" WRITE"
 argument_list|)
 expr_stmt|;
+name|statements
+operator|.
+name|setBinaryDataType
+argument_list|(
+literal|"LONGBLOB"
+argument_list|)
+expr_stmt|;
 name|super
 operator|.
 name|setStatements
