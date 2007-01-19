@@ -130,6 +130,19 @@ name|options
 argument_list|)
 return|;
 block|}
+specifier|protected
+name|boolean
+name|isUseInactivityMonitor
+parameter_list|(
+name|Transport
+name|transport
+parameter_list|)
+block|{
+comment|// lets disable the inactivity monitor as stomp does not use keep alive packets
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_class
 

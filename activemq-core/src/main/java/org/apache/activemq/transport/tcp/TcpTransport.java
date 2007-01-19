@@ -1304,6 +1304,24 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Stopping transport "
+operator|+
+name|this
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Closing the streams flush the sockets before closing.. if the socket
 comment|// is hung.. then this hangs the close.
 comment|// closeStreams();

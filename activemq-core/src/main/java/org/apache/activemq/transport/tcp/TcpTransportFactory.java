@@ -513,6 +513,14 @@ name|transport
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|isUseInactivityMonitor
+argument_list|(
+name|transport
+argument_list|)
+condition|)
+block|{
 name|transport
 operator|=
 operator|new
@@ -521,6 +529,7 @@ argument_list|(
 name|transport
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Only need the WireFormatNegotiator if using openwire
 if|if
 condition|(
@@ -550,6 +559,19 @@ expr_stmt|;
 block|}
 return|return
 name|transport
+return|;
+block|}
+comment|/**      * Returns true if the inactivity monitor should be used on the transport      */
+specifier|protected
+name|boolean
+name|isUseInactivityMonitor
+parameter_list|(
+name|Transport
+name|transport
+parameter_list|)
+block|{
+return|return
+literal|true
 return|;
 block|}
 specifier|protected
