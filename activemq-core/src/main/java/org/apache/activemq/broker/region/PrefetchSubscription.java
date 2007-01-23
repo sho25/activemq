@@ -621,6 +621,7 @@ return|;
 block|}
 comment|/**      * Occurs when a pull times out. If nothing has been dispatched since the timeout was setup, then send the NULL      * message.      */
 specifier|private
+specifier|synchronized
 name|void
 name|pullTimeout
 parameter_list|(
@@ -1841,6 +1842,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
+specifier|synchronized
 name|void
 name|dispatchMatched
 parameter_list|()
