@@ -391,7 +391,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Wire format negociation timeout: peer did not send his wire format."
+literal|"Wire format negotiation timeout: peer did not send his wire format."
 argument_list|)
 throw|;
 block|}
