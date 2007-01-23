@@ -2417,6 +2417,11 @@ name|command
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|iter
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
 return|return;
 block|}
 block|}
