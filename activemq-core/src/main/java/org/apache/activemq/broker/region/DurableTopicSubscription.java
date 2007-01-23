@@ -346,6 +346,7 @@ name|gc
 parameter_list|()
 block|{     }
 specifier|public
+specifier|synchronized
 name|void
 name|add
 parameter_list|(
