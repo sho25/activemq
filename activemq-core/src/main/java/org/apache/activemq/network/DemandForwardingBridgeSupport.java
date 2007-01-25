@@ -1821,7 +1821,7 @@ parameter_list|)
 block|{
 name|log
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Caught exception stopping"
 argument_list|,
