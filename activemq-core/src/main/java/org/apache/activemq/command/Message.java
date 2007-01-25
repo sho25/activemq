@@ -209,7 +209,7 @@ specifier|final
 name|int
 name|AVERAGE_MESSAGE_SIZE_OVERHEAD
 init|=
-literal|300
+literal|500
 decl_stmt|;
 specifier|protected
 name|MessageId
@@ -2029,8 +2029,8 @@ block|{
 if|if
 condition|(
 name|size
-operator|==
-literal|0
+operator|<=
+name|AVERAGE_MESSAGE_SIZE_OVERHEAD
 condition|)
 block|{
 name|size
