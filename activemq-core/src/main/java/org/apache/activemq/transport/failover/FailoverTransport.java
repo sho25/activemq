@@ -1019,6 +1019,15 @@ name|transportResumed
 argument_list|()
 expr_stmt|;
 block|}
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Successfully reconnected to "
+operator|+
+name|uri
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -1205,7 +1214,7 @@ init|)
 block|{
 name|log
 operator|.
-name|info
+name|warn
 argument_list|(
 literal|"Transport failed, attempting to automatically reconnect due to: "
 operator|+
