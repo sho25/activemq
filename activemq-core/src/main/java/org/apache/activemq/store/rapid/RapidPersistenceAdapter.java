@@ -1428,13 +1428,6 @@ argument_list|)
 decl_stmt|;
 name|container
 operator|.
-name|setMaximumCacheSize
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
-name|container
-operator|.
 name|setMarshaller
 argument_list|(
 operator|new

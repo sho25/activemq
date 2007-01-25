@@ -130,27 +130,6 @@ name|int
 name|position
 parameter_list|)
 function_decl|;
-comment|/**      * @return the maximumCacheSize      */
-specifier|public
-name|int
-name|getMaximumCacheSize
-parameter_list|()
-function_decl|;
-comment|/**      * @param maximumCacheSize the maximumCacheSize to set      */
-specifier|public
-name|void
-name|setMaximumCacheSize
-parameter_list|(
-name|int
-name|maximumCacheSize
-parameter_list|)
-function_decl|;
-comment|/**      * clear any cached values      */
-specifier|public
-name|void
-name|clearCache
-parameter_list|()
-function_decl|;
 comment|/**      * add an Object to the list but get a StoreEntry of its position      *       * @param object      * @return the entry in the Store      */
 specifier|public
 name|StoreEntry
