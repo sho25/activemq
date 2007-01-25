@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -33,7 +33,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
+name|LinkedList
 import|;
 end_import
 
@@ -43,7 +43,11 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedList
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicLong
 import|;
 end_import
 
@@ -146,34 +150,6 @@ operator|.
 name|policy
 operator|.
 name|OldestMessageEvictionStrategy
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQDestination
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQQueue
 import|;
 end_import
 
@@ -345,20 +321,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicLong
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -381,21 +343,22 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|AtomicLong
+name|cursorNameCounter
+init|=
+operator|new
+name|AtomicLong
+argument_list|(
+literal|0
+argument_list|)
+decl_stmt|;
 specifier|final
 specifier|protected
 name|FilePendingMessageCursor
 name|matched
-decl_stmt|;
-specifier|final
-specifier|protected
-name|ActiveMQDestination
-name|dlqDestination
-init|=
-operator|new
-name|ActiveMQQueue
-argument_list|(
-literal|"ActiveMQ.DLQ"
-argument_list|)
 decl_stmt|;
 specifier|final
 specifier|protected
@@ -478,6 +441,12 @@ decl_stmt|;
 name|Destination
 name|destination
 decl_stmt|;
+specifier|private
+name|int
+name|memoryUsageHighWaterMark
+init|=
+literal|95
+decl_stmt|;
 specifier|public
 name|TopicSubscription
 parameter_list|(
@@ -511,13 +480,18 @@ name|usageManager
 operator|=
 name|usageManager
 expr_stmt|;
-name|this
+name|String
+name|matchedName
+init|=
+literal|"TopicSubscription:"
+operator|+
+name|cursorNameCounter
 operator|.
-name|matched
-operator|=
-operator|new
-name|FilePendingMessageCursor
-argument_list|(
+name|getAndIncrement
+argument_list|()
+operator|+
+literal|"["
+operator|+
 name|info
 operator|.
 name|getConsumerId
@@ -525,12 +499,39 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
+operator|+
+literal|"]"
+decl_stmt|;
+name|this
+operator|.
+name|matched
+operator|=
+operator|new
+name|FilePendingMessageCursor
+argument_list|(
+name|matchedName
 argument_list|,
 name|broker
 operator|.
 name|getTempDataStore
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|matched
+operator|.
+name|setUsageManager
+argument_list|(
+name|usageManager
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|matched
+operator|.
+name|start
+argument_list|()
 expr_stmt|;
 block|}
 specifier|public
@@ -678,7 +679,7 @@ argument_list|()
 operator|-
 name|maximumPendingMessages
 decl_stmt|;
-comment|//only page in a 1000 at a time - else we could blow da memory
+comment|// only page in a 1000 at a time - else we could blow da memory
 name|pageInSize
 operator|=
 name|Math
@@ -804,7 +805,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Discard any expired messages from the matched list. Called from a synchronized block.      * @throws IOException       */
+comment|/**      * Discard any expired messages from the matched list. Called from a synchronized block.      *       * @throws IOException      */
 specifier|protected
 name|void
 name|removeExpiredMessages
@@ -1341,7 +1342,7 @@ name|discarded
 return|;
 block|}
 block|}
-comment|/**      * @return the number of matched messages (messages targeted for the subscription but not      * yet able to be dispatched due to the prefetch buffer being full).      */
+comment|/**      * @return the number of matched messages (messages targeted for the subscription but not yet able to be dispatched      *         due to the prefetch buffer being full).      */
 specifier|public
 name|int
 name|matched
@@ -1385,7 +1386,7 @@ return|return
 name|messageEvictionStrategy
 return|;
 block|}
-comment|/**      * Sets the eviction strategy used to decide which message to evict when the slow consumer      * needs to discard messages      */
+comment|/**      * Sets the eviction strategy used to decide which message to evict when the slow consumer needs to discard messages      */
 specifier|public
 name|void
 name|setMessageEvictionStrategy
@@ -1483,7 +1484,47 @@ literal|.9
 operator|)
 return|;
 block|}
-comment|/**      * inform the MessageConsumer on the client to change it's prefetch      * @param newPrefetch      */
+comment|/**      * @param memoryUsageHighWaterMark the memoryUsageHighWaterMark to set      */
+specifier|public
+name|void
+name|setMemoryUsageHighWaterMark
+parameter_list|(
+name|int
+name|memoryUsageHighWaterMark
+parameter_list|)
+block|{
+name|this
+operator|.
+name|memoryUsageHighWaterMark
+operator|=
+name|memoryUsageHighWaterMark
+expr_stmt|;
+block|}
+comment|/**      * @return the memoryUsageHighWaterMark      */
+specifier|public
+name|int
+name|getMemoryUsageHighWaterMark
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|memoryUsageHighWaterMark
+return|;
+block|}
+comment|/**      * @return the usageManager      */
+specifier|public
+name|UsageManager
+name|getUsageManager
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|usageManager
+return|;
+block|}
+comment|/**      * inform the MessageConsumer on the client to change it's prefetch      *       * @param newPrefetch      */
 specifier|public
 name|void
 name|updateConsumerPrefetch
@@ -1550,13 +1591,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * optimize message consumer prefetch if the consumer supports it      *      */
+comment|/**      * optimize message consumer prefetch if the consumer supports it      *       */
 specifier|public
 name|void
 name|optimizePrefetch
 parameter_list|()
 block|{
-comment|/*         if(info!=null&&info.isOptimizedAcknowledge()&&context!=null&&context.getConnection()!=null&&context.getConnection().isManageable()){             if(info.getCurrentPrefetchSize()!=info.getPrefetchSize()&& isLowWaterMark()){                 info.setCurrentPrefetchSize(info.getPrefetchSize());                 updateConsumerPrefetch(info.getPrefetchSize());             }else if(info.getCurrentPrefetchSize()==info.getPrefetchSize()&& isHighWaterMark()){                 // want to purge any outstanding acks held by the consumer                 info.setCurrentPrefetchSize(1);                 updateConsumerPrefetch(1);             }         }         */
+comment|/*          * if(info!=null&&info.isOptimizedAcknowledge()&&context!=null&&context.getConnection()!=null          *&&context.getConnection().isManageable()){ if(info.getCurrentPrefetchSize()!=info.getPrefetchSize()&&          * isLowWaterMark()){ info.setCurrentPrefetchSize(info.getPrefetchSize());          * updateConsumerPrefetch(info.getPrefetchSize()); }else          * if(info.getCurrentPrefetchSize()==info.getPrefetchSize()&& isHighWaterMark()){ // want to purge any          * outstanding acks held by the consumer info.setCurrentPrefetchSize(1); updateConsumerPrefetch(1); } }          */
 block|}
 specifier|private
 name|void
@@ -1582,6 +1623,10 @@ condition|(
 name|matched
 operator|.
 name|hasNext
+argument_list|()
+operator|&&
+operator|!
+name|isFull
 argument_list|()
 condition|)
 block|{

@@ -281,6 +281,27 @@ name|UsageManager
 name|usageManager
 parameter_list|)
 function_decl|;
+comment|/**      * @return the usageManager      */
+specifier|public
+name|UsageManager
+name|getUsageManager
+parameter_list|()
+function_decl|;
+comment|/**      * @return the memoryUsageHighWaterMark      */
+specifier|public
+name|int
+name|getMemoryUsageHighWaterMark
+parameter_list|()
+function_decl|;
+comment|/**      * @param memoryUsageHighWaterMark the memoryUsageHighWaterMark to set      */
+specifier|public
+name|void
+name|setMemoryUsageHighWaterMark
+parameter_list|(
+name|int
+name|memoryUsageHighWaterMark
+parameter_list|)
+function_decl|;
 comment|/**      * @return true if the cursor is full      */
 specifier|public
 name|boolean
