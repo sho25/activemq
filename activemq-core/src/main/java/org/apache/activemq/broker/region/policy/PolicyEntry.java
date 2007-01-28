@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -18,6 +18,36 @@ operator|.
 name|policy
 package|;
 end_package
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|Broker
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|DurableTopicSubscription
+import|;
+end_import
 
 begin_import
 import|import
@@ -155,6 +185,20 @@ name|org
 operator|.
 name|apache
 operator|.
+name|activemq
+operator|.
+name|memory
+operator|.
+name|UsageManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|commons
 operator|.
 name|logging
@@ -178,7 +222,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents an entry in a {@link PolicyMap} for assigning policies to a  * specific destination or a hierarchical wildcard area of destinations.  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.1 $  */
+comment|/**  * Represents an entry in a {@link PolicyMap} for assigning policies to a specific destination or a hierarchical  * wildcard area of destinations.  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
@@ -237,7 +281,15 @@ name|messageGroupMapFactory
 decl_stmt|;
 specifier|private
 name|PendingQueueMessageStoragePolicy
-name|pendingQueueMessageStoragePolicy
+name|pendingQueuePolicy
+decl_stmt|;
+specifier|private
+name|PendingDurableSubscriberMessageStoragePolicy
+name|pendingDurableSubscriberPolicy
+decl_stmt|;
+specifier|private
+name|PendingSubscriberMessageStoragePolicy
+name|pendingSubscriberPolicy
 decl_stmt|;
 specifier|public
 name|void
@@ -308,7 +360,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|pendingQueueMessageStoragePolicy
+name|pendingQueuePolicy
 operator|!=
 literal|null
 condition|)
@@ -316,7 +368,7 @@ block|{
 name|PendingMessageCursor
 name|messages
 init|=
-name|pendingQueueMessageStoragePolicy
+name|pendingQueuePolicy
 operator|.
 name|getQueuePendingMessageCursor
 argument_list|(
@@ -420,6 +472,12 @@ specifier|public
 name|void
 name|configure
 parameter_list|(
+name|Broker
+name|broker
+parameter_list|,
+name|UsageManager
+name|memoryManager
+parameter_list|,
 name|TopicSubscription
 name|subscription
 parameter_list|)
@@ -535,6 +593,145 @@ name|messageEvictionStrategy
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|pendingSubscriberPolicy
+operator|!=
+literal|null
+condition|)
+block|{
+name|String
+name|name
+init|=
+name|subscription
+operator|.
+name|getContext
+argument_list|()
+operator|.
+name|getClientId
+argument_list|()
+operator|+
+literal|"_"
+operator|+
+name|subscription
+operator|.
+name|getConsumerInfo
+argument_list|()
+operator|.
+name|getConsumerId
+argument_list|()
+decl_stmt|;
+name|int
+name|maxBatchSize
+init|=
+name|subscription
+operator|.
+name|getConsumerInfo
+argument_list|()
+operator|.
+name|getPrefetchSize
+argument_list|()
+decl_stmt|;
+name|subscription
+operator|.
+name|setMatched
+argument_list|(
+name|pendingSubscriberPolicy
+operator|.
+name|getSubscriberPendingMessageCursor
+argument_list|(
+name|name
+argument_list|,
+name|broker
+operator|.
+name|getTempDataStore
+argument_list|()
+argument_list|,
+name|maxBatchSize
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+specifier|public
+name|void
+name|configure
+parameter_list|(
+name|Broker
+name|broker
+parameter_list|,
+name|UsageManager
+name|memoryManager
+parameter_list|,
+name|DurableTopicSubscription
+name|sub
+parameter_list|)
+block|{
+name|String
+name|clientId
+init|=
+name|sub
+operator|.
+name|getClientId
+argument_list|()
+decl_stmt|;
+name|String
+name|subName
+init|=
+name|sub
+operator|.
+name|getSubscriptionName
+argument_list|()
+decl_stmt|;
+name|int
+name|prefetch
+init|=
+name|sub
+operator|.
+name|getPrefetchSize
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|pendingDurableSubscriberPolicy
+operator|!=
+literal|null
+condition|)
+block|{
+name|PendingMessageCursor
+name|cursor
+init|=
+name|pendingDurableSubscriberPolicy
+operator|.
+name|getSubscriberPendingMessageCursor
+argument_list|(
+name|clientId
+argument_list|,
+name|subName
+argument_list|,
+name|broker
+operator|.
+name|getTempDataStore
+argument_list|()
+argument_list|,
+name|prefetch
+argument_list|)
+decl_stmt|;
+name|cursor
+operator|.
+name|setUsageManager
+argument_list|(
+name|memoryManager
+argument_list|)
+expr_stmt|;
+name|sub
+operator|.
+name|setPending
+argument_list|(
+name|cursor
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|// Properties
 comment|// -------------------------------------------------------------------------
@@ -595,7 +792,7 @@ return|return
 name|sendAdvisoryIfNoConsumers
 return|;
 block|}
-comment|/**      * Sends an advisory message if a non-persistent message is sent and there      * are no active consumers      */
+comment|/**      * Sends an advisory message if a non-persistent message is sent and there are no active consumers      */
 specifier|public
 name|void
 name|setSendAdvisoryIfNoConsumers
@@ -620,7 +817,7 @@ return|return
 name|deadLetterStrategy
 return|;
 block|}
-comment|/**      * Sets the policy used to determine which dead letter queue destination      * should be used      */
+comment|/**      * Sets the policy used to determine which dead letter queue destination should be used      */
 specifier|public
 name|void
 name|setDeadLetterStrategy
@@ -645,7 +842,7 @@ return|return
 name|pendingMessageLimitStrategy
 return|;
 block|}
-comment|/**      * Sets the strategy to calculate the maximum number of messages that are      * allowed to be pending on consumers (in addition to their prefetch sizes).      *       * Once the limit is reached, non-durable topics can then start discarding      * old messages. This allows us to keep dispatching messages to slow      * consumers while not blocking fast consumers and discarding the messages      * oldest first.      */
+comment|/**      * Sets the strategy to calculate the maximum number of messages that are allowed to be pending on consumers (in      * addition to their prefetch sizes).      *       * Once the limit is reached, non-durable topics can then start discarding old messages. This allows us to keep      * dispatching messages to slow consumers while not blocking fast consumers and discarding the messages oldest      * first.      */
 specifier|public
 name|void
 name|setPendingMessageLimitStrategy
@@ -670,7 +867,7 @@ return|return
 name|messageEvictionStrategy
 return|;
 block|}
-comment|/**      * Sets the eviction strategy used to decide which message to evict when the      * slow consumer needs to discard messages      */
+comment|/**      * Sets the eviction strategy used to decide which message to evict when the slow consumer needs to discard messages      */
 specifier|public
 name|void
 name|setMessageEvictionStrategy
@@ -734,7 +931,7 @@ return|return
 name|messageGroupMapFactory
 return|;
 block|}
-comment|/**      * Sets the factory used to create new instances of {MessageGroupMap} used to implement the       *<a href="http://incubator.apache.org/activemq/message-groups.html">Message Groups</a> functionality.      */
+comment|/**      * Sets the factory used to create new instances of {MessageGroupMap} used to implement the<a      * href="http://incubator.apache.org/activemq/message-groups.html">Message Groups</a> functionality.      */
 specifier|public
 name|void
 name|setMessageGroupMapFactory
@@ -750,32 +947,88 @@ operator|=
 name|messageGroupMapFactory
 expr_stmt|;
 block|}
-comment|/**      * @return the pendingQueueMessageStoragePolicy      */
+comment|/**      * @return the pendingDurableSubscriberPolicy      */
 specifier|public
-name|PendingQueueMessageStoragePolicy
-name|getPendingQueueMessageStoragePolicy
+name|PendingDurableSubscriberMessageStoragePolicy
+name|getPendingDurableSubscriberPolicy
 parameter_list|()
 block|{
 return|return
 name|this
 operator|.
-name|pendingQueueMessageStoragePolicy
+name|pendingDurableSubscriberPolicy
 return|;
 block|}
-comment|/**      * @param pendingQueueMessageStoragePolicy the pendingQueueMessageStoragePolicy to set      */
+comment|/**      * @param pendingDurableSubscriberPolicy the pendingDurableSubscriberPolicy to set      */
 specifier|public
 name|void
-name|setPendingQueueMessageStoragePolicy
+name|setPendingDurableSubscriberPolicy
 parameter_list|(
-name|PendingQueueMessageStoragePolicy
-name|pendingQueueMessageStoragePolicy
+name|PendingDurableSubscriberMessageStoragePolicy
+name|pendingDurableSubscriberPolicy
 parameter_list|)
 block|{
 name|this
 operator|.
-name|pendingQueueMessageStoragePolicy
+name|pendingDurableSubscriberPolicy
 operator|=
-name|pendingQueueMessageStoragePolicy
+name|pendingDurableSubscriberPolicy
+expr_stmt|;
+block|}
+comment|/**      * @return the pendingQueuePolicy      */
+specifier|public
+name|PendingQueueMessageStoragePolicy
+name|getPendingQueuePolicy
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|pendingQueuePolicy
+return|;
+block|}
+comment|/**      * @param pendingQueuePolicy the pendingQueuePolicy to set      */
+specifier|public
+name|void
+name|setPendingQueuePolicy
+parameter_list|(
+name|PendingQueueMessageStoragePolicy
+name|pendingQueuePolicy
+parameter_list|)
+block|{
+name|this
+operator|.
+name|pendingQueuePolicy
+operator|=
+name|pendingQueuePolicy
+expr_stmt|;
+block|}
+comment|/**      * @return the pendingSubscriberPolicy      */
+specifier|public
+name|PendingSubscriberMessageStoragePolicy
+name|getPendingSubscriberPolicy
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|pendingSubscriberPolicy
+return|;
+block|}
+comment|/**      * @param pendingSubscriberPolicy the pendingSubscriberPolicy to set      */
+specifier|public
+name|void
+name|setPendingSubscriberPolicy
+parameter_list|(
+name|PendingSubscriberMessageStoragePolicy
+name|pendingSubscriberPolicy
+parameter_list|)
+block|{
+name|this
+operator|.
+name|pendingSubscriberPolicy
+operator|=
+name|pendingSubscriberPolicy
 expr_stmt|;
 block|}
 block|}

@@ -103,24 +103,6 @@ name|BrokerService
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|region
-operator|.
-name|policy
-operator|.
-name|StorePendingDurableSubscriberMessageStoragePolicy
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version $Revision: 1.3 $  */
 end_comment
@@ -260,15 +242,6 @@ operator|.
 name|setDeleteAllMessagesOnStartup
 argument_list|(
 literal|true
-argument_list|)
-expr_stmt|;
-name|answer
-operator|.
-name|setPendingDurableSubscriberPolicy
-argument_list|(
-operator|new
-name|StorePendingDurableSubscriberMessageStoragePolicy
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|answer

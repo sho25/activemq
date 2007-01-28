@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|LinkedList
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -420,6 +430,35 @@ name|this
 operator|.
 name|usageManager
 return|;
+block|}
+comment|/**      * destroy the cursor      * @throws Exception       */
+specifier|public
+name|void
+name|destroy
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|stop
+argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * Page in a restricted number of messages      * @param maxItems      * @return a list of paged in messages      */
+specifier|public
+name|LinkedList
+name|pageInList
+parameter_list|(
+name|int
+name|maxItems
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Not supported"
+argument_list|)
+throw|;
 block|}
 block|}
 end_class

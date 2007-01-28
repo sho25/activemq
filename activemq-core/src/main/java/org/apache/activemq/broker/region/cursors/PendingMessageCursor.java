@@ -31,6 +31,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|LinkedList
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -313,6 +323,23 @@ specifier|public
 name|boolean
 name|hasMessagesBufferedToDeliver
 parameter_list|()
+function_decl|;
+comment|/**      * destroy the cursor      * @throws Exception       */
+specifier|public
+name|void
+name|destroy
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Page in a restricted number of messages      * @param maxItems      * @return a list of paged in messages      */
+specifier|public
+name|LinkedList
+name|pageInList
+parameter_list|(
+name|int
+name|maxItems
+parameter_list|)
 function_decl|;
 block|}
 end_interface

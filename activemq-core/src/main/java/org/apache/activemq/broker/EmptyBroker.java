@@ -872,23 +872,6 @@ literal|null
 return|;
 block|}
 specifier|public
-name|PendingDurableSubscriberMessageStoragePolicy
-name|getPendingDurableSubscriberPolicy
-parameter_list|()
-block|{
-return|return
-literal|null
-return|;
-block|}
-specifier|public
-name|void
-name|setPendingDurableSubscriberPolicy
-parameter_list|(
-name|PendingDurableSubscriberMessageStoragePolicy
-name|pendingDurableSubscriberPolicy
-parameter_list|)
-block|{     }
-specifier|public
 name|Store
 name|getTempDataStore
 parameter_list|()

@@ -268,6 +268,19 @@ break|break;
 block|}
 block|}
 block|}
+comment|/**      * Page in a restricted number of messages      * @param maxItems      * @return a list of paged in messages      */
+specifier|public
+name|LinkedList
+name|pageInList
+parameter_list|(
+name|int
+name|maxItems
+parameter_list|)
+block|{
+return|return
+name|list
+return|;
+block|}
 block|}
 end_class
 

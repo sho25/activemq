@@ -70,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Creates a VMPendingMessageCursor  *  *  * @org.apache.xbean.XBean element="vmCursor" description="Pending messages held in the JVM"  *   * @version $Revision$  */
+comment|/**  * Creates a VMPendingMessageCursor  *  *  * @org.apache.xbean.XBean element="vmDurableCursor" description="Pending messages held in the JVM"  *   * @version $Revision$  */
 end_comment
 
 begin_class

@@ -305,7 +305,7 @@ argument_list|()
 decl_stmt|;
 name|policy
 operator|.
-name|setPendingQueueMessageStoragePolicy
+name|setPendingQueuePolicy
 argument_list|(
 operator|new
 name|StorePendingQueueMessageStoragePolicy

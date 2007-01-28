@@ -601,24 +601,6 @@ name|ConnectionContext
 name|adminConnectionContext
 parameter_list|)
 function_decl|;
-comment|/**      * @return the pendingDurableSubscriberPolicy      */
-specifier|public
-specifier|abstract
-name|PendingDurableSubscriberMessageStoragePolicy
-name|getPendingDurableSubscriberPolicy
-parameter_list|()
-function_decl|;
-comment|/**      * @param pendingDurableSubscriberPolicy the pendingDurableSubscriberPolicy to set      */
-specifier|public
-specifier|abstract
-name|void
-name|setPendingDurableSubscriberPolicy
-parameter_list|(
-name|PendingDurableSubscriberMessageStoragePolicy
-name|pendingDurableSubscriberPolicy
-parameter_list|)
-function_decl|;
-comment|/**      * @return the broker's temp data store      * @throws Exception      */
 specifier|public
 name|Store
 name|getTempDataStore

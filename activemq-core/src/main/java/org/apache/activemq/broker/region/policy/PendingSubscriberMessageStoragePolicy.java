@@ -31,40 +31,6 @@ name|broker
 operator|.
 name|region
 operator|.
-name|Queue
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|region
-operator|.
-name|cursors
-operator|.
-name|FilePendingMessageCursor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|region
-operator|.
 name|cursors
 operator|.
 name|PendingMessageCursor
@@ -86,45 +52,31 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Creates a FilePendingMessageCursor  *  *  * @org.apache.xbean.XBean element="fileQueueCursor" description="Pending messages paged in from file"  *   * @version $Revision$  */
+comment|/** * Abstraction to allow different policies for holding messages awaiting dispatch to active clients *  * @version $Revision$ */
 end_comment
 
-begin_class
+begin_interface
 specifier|public
-class|class
-name|FilePendingQueueMessageStoragePolicy
-implements|implements
-name|PendingQueueMessageStoragePolicy
+interface|interface
+name|PendingSubscriberMessageStoragePolicy
 block|{
-comment|/**      * @param queue      * @param tmpStore      * @return the cursor      * @see org.apache.activemq.broker.region.policy.PendingQueueMessageStoragePolicy#getQueuePendingMessageCursor(org.apache.openjpa.lib.util.concurrent.Queue, org.apache.activemq.kaha.Store)      */
+comment|/**      * Retrieve the configured pending message storage cursor;      *       * @param name      * @param tmpStorage      * @param maxBatchSize      * @return the Pending Message cursor      */
 specifier|public
 name|PendingMessageCursor
-name|getQueuePendingMessageCursor
+name|getSubscriberPendingMessageCursor
 parameter_list|(
-name|Queue
-name|queue
+name|String
+name|name
 parameter_list|,
 name|Store
-name|tmpStore
+name|tmpStorage
+parameter_list|,
+name|int
+name|maxBatchSize
 parameter_list|)
-block|{
-return|return
-operator|new
-name|FilePendingMessageCursor
-argument_list|(
-literal|"PendingCursor:"
-operator|+
-name|queue
-operator|.
-name|getName
-argument_list|()
-argument_list|,
-name|tmpStore
-argument_list|)
-return|;
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 
