@@ -3677,6 +3677,13 @@ expr_stmt|;
 block|}
 name|msg
 operator|.
+name|setConnection
+argument_list|(
+name|connection
+argument_list|)
+expr_stmt|;
+name|msg
+operator|.
 name|onSend
 argument_list|()
 expr_stmt|;
