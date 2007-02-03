@@ -322,7 +322,9 @@ parameter_list|,
 name|DataManager
 name|dataManager
 parameter_list|,
-name|String
+name|Store
+operator|.
+name|IndexType
 name|indexType
 parameter_list|)
 throws|throws

@@ -707,11 +707,6 @@ argument_list|(
 name|index
 argument_list|)
 expr_stmt|;
-name|page
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
 block|}
 specifier|private
 name|HashEntry
@@ -753,11 +748,6 @@ name|doUnderFlow
 argument_list|(
 name|index
 argument_list|)
-expr_stmt|;
-name|page
-operator|.
-name|save
-argument_list|()
 expr_stmt|;
 return|return
 name|result
@@ -1020,7 +1010,7 @@ argument_list|()
 operator|)
 condition|)
 block|{
-comment|//count=count==0?count:count+1;
+comment|// count=count==0?count:count+1;
 name|result
 operator|=
 name|index
@@ -1263,11 +1253,6 @@ name|overflowed
 argument_list|)
 expr_stmt|;
 block|}
-name|info
-operator|.
-name|save
-argument_list|()
-expr_stmt|;
 block|}
 specifier|private
 name|void
@@ -1316,6 +1301,8 @@ specifier|private
 name|void
 name|end
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 for|for
 control|(

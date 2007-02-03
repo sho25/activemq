@@ -945,9 +945,11 @@ literal|"test"
 argument_list|,
 literal|"test"
 argument_list|,
-name|IndexTypes
+name|Store
 operator|.
-name|DISK_INDEX
+name|IndexType
+operator|.
+name|PERSISTENT
 argument_list|)
 expr_stmt|;
 name|container

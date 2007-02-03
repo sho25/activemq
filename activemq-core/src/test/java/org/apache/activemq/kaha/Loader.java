@@ -209,6 +209,16 @@ operator|.
 name|getMapContainer
 argument_list|(
 name|name
+argument_list|,
+name|Store
+operator|.
+name|DEFAULT_CONTAINER_NAME
+argument_list|,
+name|Store
+operator|.
+name|IndexType
+operator|.
+name|PERSISTENT
 argument_list|)
 decl_stmt|;
 name|container

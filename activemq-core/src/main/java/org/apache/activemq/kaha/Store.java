@@ -44,6 +44,27 @@ specifier|public
 interface|interface
 name|Store
 block|{
+comment|/**      * Defauly container name      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DEFAULT_CONTAINER_NAME
+init|=
+literal|"kaha"
+decl_stmt|;
+comment|/**      * Index Types      *      */
+specifier|public
+specifier|static
+enum|enum
+name|IndexType
+block|{
+comment|/**          * Map Index held in memory          */
+name|VM
+block|,
+comment|/**          * Map index persistent          */
+name|PERSISTENT
+block|}
 comment|/**      * Byte Marshaller      */
 specifier|public
 specifier|final
@@ -170,7 +191,9 @@ parameter_list|,
 name|String
 name|containerName
 parameter_list|,
-name|String
+name|Store
+operator|.
+name|IndexType
 name|indexType
 parameter_list|)
 throws|throws
@@ -270,7 +293,9 @@ parameter_list|,
 name|String
 name|containerName
 parameter_list|,
-name|String
+name|Store
+operator|.
+name|IndexType
 name|indexType
 parameter_list|)
 throws|throws
@@ -327,13 +352,13 @@ function_decl|;
 comment|/**      * @see org.apache.activemq.kaha.IndexTypes      * @return the default index type      */
 specifier|public
 name|String
-name|getIndexType
+name|getIndexTypeAsString
 parameter_list|()
 function_decl|;
 comment|/**      * Set the default index type      * @param type      * @see org.apache.activemq.kaha.IndexTypes      */
 specifier|public
 name|void
-name|setIndexType
+name|setIndexTypeAsString
 parameter_list|(
 name|String
 name|type
