@@ -185,7 +185,7 @@ decl_stmt|;
 comment|/*      * Test method for 'org.apache.activemq.kaha.MapContainer.size()'      */
 specifier|public
 name|void
-name|testSize
+name|XtestSize
 parameter_list|()
 throws|throws
 name|Exception
@@ -214,7 +214,7 @@ block|}
 comment|/*      * Test method for 'org.apache.activemq.kaha.MapContainer.isEmpty()'      */
 specifier|public
 name|void
-name|testIsEmpty
+name|XtestIsEmpty
 parameter_list|()
 throws|throws
 name|Exception
@@ -231,7 +231,7 @@ block|}
 comment|/*      * Test method for 'org.apache.activemq.kaha.MapContainer.clear()'      */
 specifier|public
 name|void
-name|testClear
+name|XtestClear
 parameter_list|()
 throws|throws
 name|Exception

@@ -1437,6 +1437,8 @@ operator|=
 operator|new
 name|MapContainerImpl
 argument_list|(
+name|directory
+argument_list|,
 name|containerId
 argument_list|,
 name|root
