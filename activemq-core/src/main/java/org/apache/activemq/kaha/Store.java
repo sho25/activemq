@@ -53,18 +53,6 @@ name|DEFAULT_CONTAINER_NAME
 init|=
 literal|"kaha"
 decl_stmt|;
-comment|/**      * Index Types      *      */
-specifier|public
-specifier|static
-enum|enum
-name|IndexType
-block|{
-comment|/**          * Map Index held in memory          */
-name|VM
-block|,
-comment|/**          * Map index persistent          */
-name|PERSISTENT
-block|}
 comment|/**      * Byte Marshaller      */
 specifier|public
 specifier|final
@@ -180,7 +168,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Get a MapContainer with the given id - the MapContainer is created if needed      *       * @param id      * @param containerName      * @param indexType       * @return container for the associated id or null if it doesn't exist      * @throws IOException      */
+comment|/**      * Get a MapContainer with the given id - the MapContainer is created if needed      *       * @param id      * @param containerName      * @param persistentIndex       * @return container for the associated id or null if it doesn't exist      * @throws IOException      */
 specifier|public
 name|MapContainer
 name|getMapContainer
@@ -191,10 +179,8 @@ parameter_list|,
 name|String
 name|containerName
 parameter_list|,
-name|Store
-operator|.
-name|IndexType
-name|indexType
+name|boolean
+name|persistentIndex
 parameter_list|)
 throws|throws
 name|IOException
@@ -282,7 +268,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Get a ListContainer with the given id and creates it if it doesn't exist      *       * @param id      * @param containerName      * @param indexType       * @return container for the associated id or null if it doesn't exist      * @throws IOException      */
+comment|/**      * Get a ListContainer with the given id and creates it if it doesn't exist      *       * @param id      * @param containerName      * @param persistentIndex       * @return container for the associated id or null if it doesn't exist      * @throws IOException      */
 specifier|public
 name|ListContainer
 name|getListContainer
@@ -293,10 +279,8 @@ parameter_list|,
 name|String
 name|containerName
 parameter_list|,
-name|Store
-operator|.
-name|IndexType
-name|indexType
+name|boolean
+name|persistentIndex
 parameter_list|)
 throws|throws
 name|IOException

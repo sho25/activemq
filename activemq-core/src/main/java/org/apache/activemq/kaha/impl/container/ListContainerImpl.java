@@ -322,10 +322,8 @@ parameter_list|,
 name|DataManager
 name|dataManager
 parameter_list|,
-name|Store
-operator|.
-name|IndexType
-name|indexType
+name|boolean
+name|persistentIndex
 parameter_list|)
 throws|throws
 name|IOException
@@ -340,7 +338,7 @@ name|indexManager
 argument_list|,
 name|dataManager
 argument_list|,
-name|indexType
+name|persistentIndex
 argument_list|)
 expr_stmt|;
 block|}
@@ -2883,7 +2881,7 @@ name|getFirst
 argument_list|()
 return|;
 block|}
-comment|/**      * Get yjr StoreEntry for the last item of the list      *       * @return the last StoreEntry or null if the list is empty      */
+comment|/**      * Get the StoreEntry for the last item of the list      *       * @return the last StoreEntry or null if the list is empty      */
 specifier|public
 specifier|synchronized
 name|StoreEntry

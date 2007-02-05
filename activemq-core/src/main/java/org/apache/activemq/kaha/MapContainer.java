@@ -267,6 +267,45 @@ name|StoreEntry
 name|Valuelocation
 parameter_list|)
 function_decl|;
+comment|/** Get the StoreEntry for the first value in the Map     *      * @return the first StoreEntry or null if the map is empty     */
+specifier|public
+name|StoreEntry
+name|getFirst
+parameter_list|()
+function_decl|;
+comment|/**     * Get the StoreEntry for the last value item of the Map     *      * @return the last StoreEntry or null if the list is empty     */
+specifier|public
+name|StoreEntry
+name|getLast
+parameter_list|()
+function_decl|;
+comment|/**     * Get the next StoreEntry value from the map     *      * @param entry     * @return the next StoreEntry or null     */
+specifier|public
+name|StoreEntry
+name|getNext
+parameter_list|(
+name|StoreEntry
+name|entry
+parameter_list|)
+function_decl|;
+comment|/**     * Get the previous StoreEntry from the map     *      * @param entry     * @return the previous store entry or null     */
+specifier|public
+name|StoreEntry
+name|getPrevious
+parameter_list|(
+name|StoreEntry
+name|entry
+parameter_list|)
+function_decl|;
+comment|/**     * It's possible that a StoreEntry could be come stale     * this will return an upto date entry for the StoreEntry position     * @param entry old entry     * @return a refreshed StoreEntry     */
+specifier|public
+name|StoreEntry
+name|refresh
+parameter_list|(
+name|StoreEntry
+name|entry
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

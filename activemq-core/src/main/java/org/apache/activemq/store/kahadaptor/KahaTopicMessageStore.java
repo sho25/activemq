@@ -227,24 +227,6 @@ name|TopicMessageStore
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|store
-operator|.
-name|kahadaptor
-operator|.
-name|KahaReferenceStoreAdapter
-operator|.
-name|ReferenceRecord
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version $Revision: 1.5 $  */
 end_comment
@@ -260,6 +242,9 @@ name|TopicMessageStore
 block|{
 specifier|protected
 name|ListContainer
+argument_list|<
+name|TopicSubAck
+argument_list|>
 name|ackContainer
 decl_stmt|;
 specifier|private
@@ -284,10 +269,13 @@ parameter_list|(
 name|Store
 name|store
 parameter_list|,
-name|ListContainer
+name|MapContainer
 name|messageContainer
 parameter_list|,
 name|ListContainer
+argument_list|<
+name|TopicSubAck
+argument_list|>
 name|ackContainer
 parameter_list|,
 name|MapContainer
@@ -295,9 +283,6 @@ name|subsContainer
 parameter_list|,
 name|ActiveMQDestination
 name|destination
-parameter_list|,
-name|int
-name|maximumCacheSize
 parameter_list|)
 throws|throws
 name|IOException
@@ -307,8 +292,6 @@ argument_list|(
 name|messageContainer
 argument_list|,
 name|destination
-argument_list|,
-name|maximumCacheSize
 argument_list|)
 expr_stmt|;
 name|this
@@ -399,8 +382,13 @@ name|messageEntry
 init|=
 name|messageContainer
 operator|.
-name|placeLast
+name|place
 argument_list|(
+name|message
+operator|.
+name|getMessageId
+argument_list|()
+argument_list|,
 name|message
 argument_list|)
 decl_stmt|;
@@ -1114,7 +1102,7 @@ name|msg
 init|=
 name|messageContainer
 operator|.
-name|get
+name|getValue
 argument_list|(
 name|consumerRef
 operator|.
@@ -1508,9 +1496,15 @@ argument_list|)
 decl_stmt|;
 return|return
 name|container
+operator|!=
+literal|null
+condition|?
+name|container
 operator|.
 name|size
 argument_list|()
+else|:
+literal|0
 return|;
 block|}
 comment|/**      * @param context      * @throws IOException      * @see org.apache.activemq.store.MessageStore#removeAllMessages(org.apache.activemq.broker.ConnectionContext)      */

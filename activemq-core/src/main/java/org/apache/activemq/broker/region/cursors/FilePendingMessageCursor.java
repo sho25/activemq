@@ -1204,11 +1204,7 @@ name|name
 argument_list|,
 literal|"TopicSubscription"
 argument_list|,
-name|Store
-operator|.
-name|IndexType
-operator|.
-name|PERSISTENT
+literal|true
 argument_list|)
 expr_stmt|;
 name|diskList

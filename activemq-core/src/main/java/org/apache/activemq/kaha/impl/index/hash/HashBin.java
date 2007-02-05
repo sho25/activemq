@@ -555,7 +555,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|void
+name|HashEntry
 name|remove
 parameter_list|(
 name|HashEntry
@@ -564,6 +564,11 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|HashEntry
+name|result
+init|=
+literal|null
+decl_stmt|;
 try|try
 block|{
 name|int
@@ -622,6 +627,10 @@ operator|==
 literal|0
 condition|)
 block|{
+name|result
+operator|=
+name|te
+expr_stmt|;
 name|removeHashEntry
 argument_list|(
 name|mid
@@ -664,6 +673,9 @@ name|end
 argument_list|()
 expr_stmt|;
 block|}
+return|return
+name|result
+return|;
 block|}
 specifier|private
 name|void

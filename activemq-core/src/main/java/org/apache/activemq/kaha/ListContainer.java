@@ -175,7 +175,7 @@ name|StoreEntry
 name|getFirst
 parameter_list|()
 function_decl|;
-comment|/**      * Get yjr StoreEntry for the last item of the list      *       * @return the last StoreEntry or null if the list is empty      */
+comment|/**      * Get the StoreEntry for the last item of the list      *       * @return the last StoreEntry or null if the list is empty      */
 specifier|public
 name|StoreEntry
 name|getLast

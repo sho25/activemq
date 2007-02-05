@@ -1077,7 +1077,7 @@ return|return
 name|result
 return|;
 block|}
-name|void
+name|TreeEntry
 name|remove
 parameter_list|(
 name|TreeEntry
@@ -1086,6 +1086,11 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|TreeEntry
+name|result
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|isRoot
@@ -1099,6 +1104,8 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|result
+operator|=
 name|doRemove
 argument_list|(
 name|entry
@@ -1116,6 +1123,9 @@ literal|"remove() should not be called on non root page"
 argument_list|)
 throw|;
 block|}
+return|return
+name|result
+return|;
 block|}
 specifier|private
 name|TreeEntry
@@ -1632,7 +1642,7 @@ name|result
 return|;
 block|}
 specifier|private
-name|void
+name|TreeEntry
 name|doRemove
 parameter_list|(
 name|TreeEntry
@@ -1641,6 +1651,11 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|TreeEntry
+name|result
+init|=
+literal|null
+decl_stmt|;
 name|TreePageEntry
 name|closest
 init|=
@@ -1696,14 +1711,13 @@ operator|==
 literal|0
 condition|)
 block|{
-name|TreeEntry
 name|result
-init|=
+operator|=
 name|closest
 operator|.
 name|getTreeEntry
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|int
 name|index
 init|=
@@ -1747,6 +1761,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+return|return
+name|result
+return|;
 block|}
 comment|/**      * @return true if the page is removed      * @throws IOException      */
 specifier|private
