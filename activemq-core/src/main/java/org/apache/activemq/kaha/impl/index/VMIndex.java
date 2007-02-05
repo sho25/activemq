@@ -128,20 +128,21 @@ return|;
 block|}
 comment|/**      * @param key      * @see org.apache.activemq.kaha.impl.index.Index#removeKey(java.lang.Object)      */
 specifier|public
-name|void
+name|StoreEntry
 name|remove
 parameter_list|(
 name|Object
 name|key
 parameter_list|)
 block|{
+return|return
 name|map
 operator|.
 name|remove
 argument_list|(
 name|key
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 comment|/**      * @param key      * @param entry      * @see org.apache.activemq.kaha.impl.index.Index#store(java.lang.Object,      *      org.apache.activemq.kaha.impl.index.IndexItem)      */
 specifier|public

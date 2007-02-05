@@ -85,9 +85,9 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * remove the index key      *       * @param key      * @throws IOException       */
+comment|/**      * remove the index key      *       * @param key      * @return StoreEntry removed      * @throws IOException       */
 specifier|public
-name|void
+name|StoreEntry
 name|remove
 parameter_list|(
 name|Object
