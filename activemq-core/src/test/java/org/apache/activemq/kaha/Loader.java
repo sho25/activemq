@@ -214,11 +214,7 @@ name|Store
 operator|.
 name|DEFAULT_CONTAINER_NAME
 argument_list|,
-name|Store
-operator|.
-name|IndexType
-operator|.
-name|PERSISTENT
+literal|true
 argument_list|)
 decl_stmt|;
 name|container

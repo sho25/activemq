@@ -945,11 +945,7 @@ literal|"test"
 argument_list|,
 literal|"test"
 argument_list|,
-name|Store
-operator|.
-name|IndexType
-operator|.
-name|PERSISTENT
+literal|true
 argument_list|)
 expr_stmt|;
 name|container
