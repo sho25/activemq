@@ -1184,7 +1184,6 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
-empty_stmt|;
 name|IndexItem
 name|item
 init|=
@@ -1518,6 +1517,9 @@ expr_stmt|;
 name|loaded
 operator|=
 literal|true
+expr_stmt|;
+name|init
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
