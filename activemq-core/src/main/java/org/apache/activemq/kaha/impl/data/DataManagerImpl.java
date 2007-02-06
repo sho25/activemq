@@ -1551,6 +1551,13 @@ name|getNumber
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|writer
+operator|!=
+literal|null
+condition|)
+block|{
 name|writer
 operator|.
 name|force
@@ -1558,6 +1565,7 @@ argument_list|(
 name|dataFile
 argument_list|)
 expr_stmt|;
+block|}
 name|boolean
 name|result
 init|=
