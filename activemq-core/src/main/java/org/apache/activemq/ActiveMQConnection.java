@@ -3226,8 +3226,6 @@ name|IntrospectionSupport
 operator|.
 name|setProperties
 argument_list|(
-name|this
-operator|.
 name|info
 argument_list|,
 name|options
