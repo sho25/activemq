@@ -25,9 +25,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
+name|web
 operator|.
-name|BrokerService
+name|BrokerFacade
 import|;
 end_import
 
@@ -119,13 +119,13 @@ decl_stmt|;
 specifier|public
 name|CreateSubscriber
 parameter_list|(
-name|BrokerService
-name|brokerService
+name|BrokerFacade
+name|brokerFacade
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|brokerService
+name|brokerFacade
 argument_list|)
 expr_stmt|;
 block|}

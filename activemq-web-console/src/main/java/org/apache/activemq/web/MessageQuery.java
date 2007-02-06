@@ -17,20 +17,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|BrokerService
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -109,16 +95,6 @@ name|Map
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
 begin_comment
 comment|/**  * Allow the user to browse a message on a queue by its ID  *   * @version $Revision$  */
 end_comment
@@ -141,8 +117,8 @@ decl_stmt|;
 specifier|public
 name|MessageQuery
 parameter_list|(
-name|BrokerService
-name|brokerService
+name|BrokerFacade
+name|brokerFacade
 parameter_list|,
 name|SessionPool
 name|sessionPool
@@ -152,7 +128,7 @@ name|JMSException
 block|{
 name|super
 argument_list|(
-name|brokerService
+name|brokerFacade
 argument_list|,
 name|sessionPool
 argument_list|)

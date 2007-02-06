@@ -25,7 +25,9 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|BrokerService
+name|jmx
+operator|.
+name|BrokerViewMBean
 import|;
 end_import
 
@@ -105,8 +107,6 @@ begin_class
 specifier|public
 class|class
 name|DestinationFacade
-extends|extends
-name|BrokerFacade
 block|{
 specifier|private
 name|String
@@ -116,17 +116,22 @@ specifier|private
 name|String
 name|JMSDestinationType
 decl_stmt|;
+specifier|private
+name|BrokerFacade
+name|brokerFacade
+decl_stmt|;
 specifier|public
 name|DestinationFacade
 parameter_list|(
-name|BrokerService
-name|brokerService
+name|BrokerFacade
+name|brokerFacade
 parameter_list|)
 block|{
-name|super
-argument_list|(
-name|brokerService
-argument_list|)
+name|this
+operator|.
+name|brokerFacade
+operator|=
+name|brokerFacade
 expr_stmt|;
 block|}
 specifier|public
@@ -230,6 +235,29 @@ block|}
 block|}
 comment|// Properties
 comment|// -------------------------------------------------------------------------
+specifier|public
+name|BrokerViewMBean
+name|getBrokerAdmin
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
+name|brokerFacade
+operator|.
+name|getBrokerAdmin
+argument_list|()
+return|;
+block|}
+specifier|public
+name|BrokerFacade
+name|getBrokerFacade
+parameter_list|()
+block|{
+return|return
+name|brokerFacade
+return|;
+block|}
 specifier|public
 name|boolean
 name|isQueue
@@ -379,17 +407,7 @@ operator|.
 name|getRequestURI
 argument_list|()
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Redirecting to: "
-operator|+
-name|view
-argument_list|)
-expr_stmt|;
+comment|//        System.out.println("Redirecting to: " + view);
 return|return
 operator|new
 name|ModelAndView

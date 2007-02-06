@@ -15,20 +15,6 @@ name|web
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|BrokerService
-import|;
-end_import
-
 begin_comment
 comment|/**  *   * @version $Revision$  */
 end_comment
@@ -51,13 +37,13 @@ decl_stmt|;
 specifier|public
 name|DurableSubscriberFacade
 parameter_list|(
-name|BrokerService
-name|brokerService
+name|BrokerFacade
+name|brokerFacade
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|brokerService
+name|brokerFacade
 argument_list|)
 expr_stmt|;
 block|}

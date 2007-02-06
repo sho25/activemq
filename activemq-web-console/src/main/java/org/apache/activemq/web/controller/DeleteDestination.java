@@ -25,9 +25,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
+name|web
 operator|.
-name|BrokerService
+name|BrokerFacade
 import|;
 end_import
 
@@ -42,20 +42,6 @@ operator|.
 name|web
 operator|.
 name|DestinationFacade
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|web
-operator|.
-name|DurableSubscriberFacade
 import|;
 end_import
 
@@ -129,13 +115,13 @@ block|{
 specifier|public
 name|DeleteDestination
 parameter_list|(
-name|BrokerService
-name|brokerService
+name|BrokerFacade
+name|brokerFacade
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|brokerService
+name|brokerFacade
 argument_list|)
 expr_stmt|;
 block|}

@@ -25,9 +25,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
+name|command
 operator|.
-name|BrokerService
+name|ActiveMQDestination
 import|;
 end_import
 
@@ -39,9 +39,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|command
+name|web
 operator|.
-name|ActiveMQDestination
+name|BrokerFacade
 import|;
 end_import
 
@@ -230,13 +230,13 @@ decl_stmt|;
 specifier|public
 name|SendMessage
 parameter_list|(
-name|BrokerService
-name|brokerService
+name|BrokerFacade
+name|brokerFacade
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|brokerService
+name|brokerFacade
 argument_list|)
 expr_stmt|;
 block|}
