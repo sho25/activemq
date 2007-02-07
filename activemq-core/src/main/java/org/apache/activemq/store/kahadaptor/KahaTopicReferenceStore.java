@@ -699,7 +699,7 @@ name|ReferenceRecord
 operator|)
 name|messageContainer
 operator|.
-name|get
+name|getValue
 argument_list|(
 name|subAck
 operator|.

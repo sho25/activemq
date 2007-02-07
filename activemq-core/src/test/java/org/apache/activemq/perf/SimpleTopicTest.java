@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -157,16 +157,18 @@ specifier|protected
 name|BrokerService
 name|broker
 decl_stmt|;
-comment|//    protected String bindAddress="tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=true&jms.useAsyncSend=false";
+comment|// protected String
+comment|// bindAddress="tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=true&jms.useAsyncSend=false";
 specifier|protected
 name|String
 name|bindAddress
 init|=
 literal|"tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=true&jms.useAsyncSend=true"
 decl_stmt|;
-comment|//protected String bindAddress="tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=false";
-comment|//protected String bindAddress="vm://localhost?marshal=true";
-comment|//protected String bindAddress="vm://localhost";
+comment|// protected String
+comment|// bindAddress="tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=false";
+comment|// protected String bindAddress="vm://localhost?marshal=true";
+comment|// protected String bindAddress="vm://localhost";
 specifier|protected
 name|PerfProducer
 index|[]
@@ -203,7 +205,7 @@ specifier|protected
 name|int
 name|NUMBER_OF_CONSUMERS
 init|=
-literal|10
+literal|1
 decl_stmt|;
 specifier|protected
 name|int
@@ -980,6 +982,19 @@ name|getTotalCount
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|consumers
+operator|!=
+literal|null
+operator|&&
+name|consumers
+operator|.
+name|length
+operator|>
+literal|0
+condition|)
+block|{
 name|int
 name|avgRate
 init|=
@@ -1006,6 +1021,7 @@ operator|+
 name|totalCount
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

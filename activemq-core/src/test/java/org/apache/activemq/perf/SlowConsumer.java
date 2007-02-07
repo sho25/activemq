@@ -77,9 +77,6 @@ name|dest
 parameter_list|,
 name|String
 name|consumerName
-parameter_list|,
-name|boolean
-name|slowConsumer
 parameter_list|)
 throws|throws
 name|JMSException
@@ -128,6 +125,17 @@ name|super
 operator|.
 name|onMessage
 argument_list|(
+name|msg
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"GOT A MSG "
+operator|+
 name|msg
 argument_list|)
 expr_stmt|;

@@ -11,9 +11,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|store
-operator|.
-name|kahadaptor
+name|kaha
 package|;
 end_package
 
