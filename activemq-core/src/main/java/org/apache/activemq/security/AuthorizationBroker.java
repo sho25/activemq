@@ -314,6 +314,15 @@ literal|"User is not authenticated."
 argument_list|)
 throw|;
 comment|//if(!((ActiveMQTempDestination)destination).getConnectionId().equals(context.getConnectionId().getValue()) ) {
+if|if
+condition|(
+operator|!
+name|securityContext
+operator|.
+name|isBrokerContext
+argument_list|()
+condition|)
+block|{
 name|Set
 name|allowedACLs
 init|=
@@ -378,6 +387,7 @@ operator|+
 name|destination
 argument_list|)
 throw|;
+block|}
 comment|// }
 return|return
 name|super
