@@ -306,6 +306,15 @@ name|StoreEntry
 name|entry
 parameter_list|)
 function_decl|;
+comment|/**     * Get the StoreEntry associated with the key     * @param key     * @return the StoreEntry     */
+specifier|public
+name|StoreEntry
+name|getEntry
+parameter_list|(
+name|K
+name|key
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

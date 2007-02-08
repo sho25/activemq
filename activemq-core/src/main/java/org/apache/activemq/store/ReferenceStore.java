@@ -199,6 +199,20 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * @return true if it supports external batch control      */
+specifier|public
+name|boolean
+name|supportsExternalBatchControl
+parameter_list|()
+function_decl|;
+specifier|public
+name|void
+name|setBatch
+parameter_list|(
+name|MessageId
+name|startAfter
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

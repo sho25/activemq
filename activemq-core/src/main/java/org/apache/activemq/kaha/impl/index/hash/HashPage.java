@@ -703,6 +703,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|//index = index>= 0 ? index : 0;
+comment|//index = (index == 0 || index< size()) ? index : size()-1;
 name|hashIndexEntries
 operator|.
 name|add

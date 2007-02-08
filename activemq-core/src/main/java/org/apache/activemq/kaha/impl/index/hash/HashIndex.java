@@ -466,6 +466,7 @@ expr_stmt|;
 block|}
 comment|/**      * Set the marshaller for key objects      *       * @param marshaller      */
 specifier|public
+specifier|synchronized
 name|void
 name|setKeyMarshaller
 parameter_list|(
@@ -482,6 +483,7 @@ expr_stmt|;
 block|}
 comment|/**      * @return the keySize      */
 specifier|public
+specifier|synchronized
 name|int
 name|getKeySize
 parameter_list|()
@@ -494,6 +496,7 @@ return|;
 block|}
 comment|/**      * @param keySize the keySize to set      */
 specifier|public
+specifier|synchronized
 name|void
 name|setKeySize
 parameter_list|(
@@ -526,6 +529,7 @@ block|}
 block|}
 comment|/**      * @return the pageSize      */
 specifier|public
+specifier|synchronized
 name|int
 name|getPageSize
 parameter_list|()
@@ -538,6 +542,7 @@ return|;
 block|}
 comment|/**      * @param pageSize the pageSize to set      */
 specifier|public
+specifier|synchronized
 name|void
 name|setPageSize
 parameter_list|(
@@ -576,6 +581,7 @@ expr_stmt|;
 block|}
 comment|/**      * @return the enablePageCaching      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|isEnablePageCaching
 parameter_list|()
@@ -588,6 +594,7 @@ return|;
 block|}
 comment|/**      * @param enablePageCaching the enablePageCaching to set      */
 specifier|public
+specifier|synchronized
 name|void
 name|setEnablePageCaching
 parameter_list|(
@@ -604,6 +611,7 @@ expr_stmt|;
 block|}
 comment|/**      * @return the pageCacheSize      */
 specifier|public
+specifier|synchronized
 name|int
 name|getPageCacheSize
 parameter_list|()
@@ -616,6 +624,7 @@ return|;
 block|}
 comment|/**      * @param pageCacheSize the pageCacheSize to set      */
 specifier|public
+specifier|synchronized
 name|void
 name|setPageCacheSize
 parameter_list|(
@@ -638,6 +647,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|boolean
 name|isTransient
 parameter_list|()
@@ -647,6 +657,7 @@ literal|false
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|load
 parameter_list|()
@@ -885,6 +896,7 @@ block|}
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|unload
 parameter_list|()
@@ -939,6 +951,7 @@ block|}
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|store
 parameter_list|(
@@ -993,6 +1006,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|StoreEntry
 name|get
 parameter_list|(
@@ -1054,6 +1068,7 @@ literal|null
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|StoreEntry
 name|remove
 parameter_list|(
@@ -1115,6 +1130,7 @@ literal|null
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|boolean
 name|containsKey
 parameter_list|(
@@ -1134,6 +1150,7 @@ literal|null
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|clear
 parameter_list|()
@@ -1154,6 +1171,7 @@ argument_list|()
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|delete
 parameter_list|()

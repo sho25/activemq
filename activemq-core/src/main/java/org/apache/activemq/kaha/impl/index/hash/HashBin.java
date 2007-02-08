@@ -536,6 +536,31 @@ operator|!
 name|replace
 condition|)
 block|{
+if|if
+condition|(
+name|low
+operator|>
+name|size
+argument_list|()
+condition|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"SIZE() "
+operator|+
+name|size
+argument_list|()
+operator|+
+literal|" low = "
+operator|+
+name|low
+argument_list|)
+expr_stmt|;
+block|}
 name|addHashEntry
 argument_list|(
 name|low
