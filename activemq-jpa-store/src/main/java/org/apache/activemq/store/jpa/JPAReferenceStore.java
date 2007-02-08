@@ -1253,6 +1253,23 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{ 	}
+specifier|public
+name|void
+name|setBatch
+parameter_list|(
+name|MessageId
+name|startAfter
+parameter_list|)
+block|{             }
+specifier|public
+name|boolean
+name|supportsExternalBatchControl
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_class
 
