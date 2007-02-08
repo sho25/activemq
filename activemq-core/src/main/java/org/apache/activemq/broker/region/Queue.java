@@ -4207,6 +4207,13 @@ operator|>
 literal|0
 condition|)
 block|{
+name|messages
+operator|.
+name|setMaxBatchSize
+argument_list|(
+name|toPageIn
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|dispatchValve

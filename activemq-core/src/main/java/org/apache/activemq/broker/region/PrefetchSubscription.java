@@ -1909,6 +1909,13 @@ operator|>
 literal|0
 condition|)
 block|{
+name|pending
+operator|.
+name|setMaxBatchSize
+argument_list|(
+name|numberToDispatch
+argument_list|)
+expr_stmt|;
 name|int
 name|count
 init|=
