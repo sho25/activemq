@@ -889,6 +889,19 @@ name|usageManager
 argument_list|)
 expr_stmt|;
 block|}
+comment|//let's copy the enabled property from the parent DestinationStatistics
+name|this
+operator|.
+name|destinationStatistics
+operator|.
+name|setEnabled
+argument_list|(
+name|parentStats
+operator|.
+name|isEnabled
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|destinationStatistics
 operator|.
 name|setParent

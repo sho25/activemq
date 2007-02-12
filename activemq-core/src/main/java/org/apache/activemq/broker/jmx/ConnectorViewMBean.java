@@ -42,6 +42,24 @@ name|void
 name|resetStatistics
 parameter_list|()
 function_decl|;
+comment|/**      * enable statistics gathering      */
+specifier|public
+name|void
+name|enableStatistics
+parameter_list|()
+function_decl|;
+comment|/**      * disable statistics gathering      */
+specifier|public
+name|void
+name|disableStatistics
+parameter_list|()
+function_decl|;
+comment|/**      * Returns true if statistics is enabled      *       * @return true if statistics is enabled      */
+specifier|public
+name|boolean
+name|isStatisticsEnabled
+parameter_list|()
+function_decl|;
 comment|/**      * Returns the number of messages enqueued on this connector      *       * @return the number of messages enqueued on this connector      */
 specifier|public
 name|long

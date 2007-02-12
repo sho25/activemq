@@ -150,6 +150,56 @@ name|reset
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * enable statistics gathering      */
+specifier|public
+name|void
+name|enableStatistics
+parameter_list|()
+block|{
+name|connector
+operator|.
+name|getStatistics
+argument_list|()
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * disable statistics gathering      */
+specifier|public
+name|void
+name|disableStatistics
+parameter_list|()
+block|{
+name|connector
+operator|.
+name|getStatistics
+argument_list|()
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Returns true if statistics is enabled      *       * @return true if statistics is enabled      */
+specifier|public
+name|boolean
+name|isStatisticsEnabled
+parameter_list|()
+block|{
+return|return
+name|connector
+operator|.
+name|getStatistics
+argument_list|()
+operator|.
+name|isEnabled
+argument_list|()
+return|;
+block|}
 comment|/**      * Returns the number of messages enqueued on this connector      *       * @return the number of messages enqueued on this connector      */
 specifier|public
 name|long
