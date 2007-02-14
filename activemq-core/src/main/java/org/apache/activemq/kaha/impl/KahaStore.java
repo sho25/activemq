@@ -1596,6 +1596,11 @@ argument_list|,
 name|containerId
 argument_list|)
 expr_stmt|;
+name|container
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 specifier|public
@@ -2012,6 +2017,11 @@ expr_stmt|;
 name|container
 operator|.
 name|clear
+argument_list|()
+expr_stmt|;
+name|container
+operator|.
+name|close
 argument_list|()
 expr_stmt|;
 block|}
