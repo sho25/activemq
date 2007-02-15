@@ -591,7 +591,7 @@ name|allowedACLs
 operator|=
 name|authorizationMap
 operator|.
-name|getTempDestinationWriteACLs
+name|getTempDestinationReadACLs
 argument_list|()
 expr_stmt|;
 block|}
