@@ -570,6 +570,11 @@ operator|new
 name|HashMap
 argument_list|()
 decl_stmt|;
+name|int
+name|count
+init|=
+literal|1000
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -579,7 +584,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|10
+name|count
 condition|;
 name|i
 operator|++
@@ -625,7 +630,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|10
+name|count
 condition|;
 name|i
 operator|++

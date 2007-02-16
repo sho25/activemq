@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -14,6 +14,26 @@ operator|.
 name|kaha
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|ByteArrayInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|ByteArrayOutputStream
+import|;
+end_import
 
 begin_import
 import|import
@@ -51,16 +71,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|ObjectInputStream
 import|;
 end_import
@@ -72,16 +82,6 @@ operator|.
 name|io
 operator|.
 name|ObjectOutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|OutputStream
 import|;
 end_import
 
@@ -110,24 +110,20 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// I failed to see why we just did not just used the provided stream directly
-comment|//        ByteArrayOutputStream bytesOut = new ByteArrayOutputStream();
-comment|//        ObjectOutputStream objectOut=new ObjectOutputStream(bytesOut);
-comment|//        objectOut.writeObject(object);
-comment|//        objectOut.close();
-comment|//        byte[] data = bytesOut.toByteArray();
-comment|//        dataOut.writeInt(data.length);
-comment|//        dataOut.write(data);
+name|ByteArrayOutputStream
+name|bytesOut
+init|=
+operator|new
+name|ByteArrayOutputStream
+argument_list|()
+decl_stmt|;
 name|ObjectOutputStream
 name|objectOut
 init|=
 operator|new
 name|ObjectOutputStream
 argument_list|(
-operator|(
-name|OutputStream
-operator|)
-name|dataOut
+name|bytesOut
 argument_list|)
 decl_stmt|;
 name|objectOut
@@ -139,13 +135,33 @@ argument_list|)
 expr_stmt|;
 name|objectOut
 operator|.
-name|flush
+name|close
 argument_list|()
 expr_stmt|;
-name|objectOut
+name|byte
+index|[]
+name|data
+init|=
+name|bytesOut
 operator|.
-name|reset
+name|toByteArray
 argument_list|()
+decl_stmt|;
+name|dataOut
+operator|.
+name|writeInt
+argument_list|(
+name|data
+operator|.
+name|length
+argument_list|)
+expr_stmt|;
+name|dataOut
+operator|.
+name|write
+argument_list|(
+name|data
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Read the entry from the RawContainer      *       * @param dataIn      * @return unmarshalled object      * @throws IOException      */
@@ -159,27 +175,47 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// I failed to see why we just did not just used the provided stream directly
-comment|//        int size = dataIn.readInt();
-comment|//        byte[] data = new byte[size];
-comment|//        dataIn.readFully(data);
-comment|//        ByteArrayInputStream bytesIn = new ByteArrayInputStream(data);
-comment|//        ObjectInputStream objectIn=new ObjectInputStream(bytesIn);
-comment|//        try{
-comment|//            return objectIn.readObject();
-comment|//        }catch(ClassNotFoundException e){
-comment|//            throw new IOException(e.getMessage());
-comment|//        }
+name|int
+name|size
+init|=
+name|dataIn
+operator|.
+name|readInt
+argument_list|()
+decl_stmt|;
+name|byte
+index|[]
+name|data
+init|=
+operator|new
+name|byte
+index|[
+name|size
+index|]
+decl_stmt|;
+name|dataIn
+operator|.
+name|readFully
+argument_list|(
+name|data
+argument_list|)
+expr_stmt|;
+name|ByteArrayInputStream
+name|bytesIn
+init|=
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+name|data
+argument_list|)
+decl_stmt|;
 name|ObjectInputStream
 name|objectIn
 init|=
 operator|new
 name|ObjectInputStream
 argument_list|(
-operator|(
-name|InputStream
-operator|)
-name|dataIn
+name|bytesIn
 argument_list|)
 decl_stmt|;
 try|try
