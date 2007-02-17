@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -130,7 +130,15 @@ name|list
 operator|.
 name|getNextEntry
 argument_list|(
+operator|(
+name|IndexItem
+operator|)
+name|list
+operator|.
+name|refreshEntry
+argument_list|(
 name|start
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -150,6 +158,23 @@ name|Object
 name|next
 parameter_list|()
 block|{
+synchronized|synchronized
+init|(
+name|container
+init|)
+block|{
+name|nextItem
+operator|=
+operator|(
+name|IndexItem
+operator|)
+name|list
+operator|.
+name|refreshEntry
+argument_list|(
+name|nextItem
+argument_list|)
+expr_stmt|;
 name|currentItem
 operator|=
 name|nextItem
@@ -177,10 +202,16 @@ return|return
 name|result
 return|;
 block|}
+block|}
 specifier|public
 name|void
 name|remove
 parameter_list|()
+block|{
+synchronized|synchronized
+init|(
+name|container
+init|)
 block|{
 if|if
 condition|(
@@ -189,6 +220,18 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|currentItem
+operator|=
+operator|(
+name|IndexItem
+operator|)
+name|list
+operator|.
+name|refreshEntry
+argument_list|(
+name|currentItem
+argument_list|)
+expr_stmt|;
 name|container
 operator|.
 name|remove
@@ -196,6 +239,7 @@ argument_list|(
 name|currentItem
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
