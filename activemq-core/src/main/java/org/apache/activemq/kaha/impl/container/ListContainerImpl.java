@@ -3564,11 +3564,20 @@ block|{
 try|try
 block|{
 comment|// ensure it's up to date
-comment|// item=indexList.getEntry(item);
+name|StoreEntry
+name|itemToUse
+init|=
+name|indexList
+operator|.
+name|getEntry
+argument_list|(
+name|item
+argument_list|)
+decl_stmt|;
 name|StoreLocation
 name|data
 init|=
-name|item
+name|itemToUse
 operator|.
 name|getValueDataItem
 argument_list|()
