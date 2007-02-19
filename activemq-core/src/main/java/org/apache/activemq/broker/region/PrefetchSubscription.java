@@ -2185,14 +2185,6 @@ return|;
 block|}
 else|else
 block|{
-name|QueueMessageReference
-name|n
-init|=
-operator|(
-name|QueueMessageReference
-operator|)
-name|node
-decl_stmt|;
 return|return
 literal|false
 return|;
