@@ -140,6 +140,12 @@ argument_list|()
 operator|.
 name|publish
 argument_list|(
+operator|(
+name|Topic
+operator|)
+name|getDestination
+argument_list|()
+argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
@@ -168,6 +174,12 @@ argument_list|()
 operator|.
 name|publish
 argument_list|(
+operator|(
+name|Topic
+operator|)
+name|getDestination
+argument_list|()
+argument_list|,
 name|message
 argument_list|,
 name|i
