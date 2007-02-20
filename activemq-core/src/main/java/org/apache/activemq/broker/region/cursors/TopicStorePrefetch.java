@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements. See the NOTICE file distributed with this  * work for additional information regarding copyright ownership. The ASF  * licenses this file to You under the Apache License, Version 2.0 (the  * "License"); you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the  * License for the specific language governing permissions and limitations under  * the License.  */
+comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -172,7 +172,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * perist pending messages pending message (messages awaiting disptach to a  * consumer) cursor  *   * @version $Revision$  */
+comment|/**  * perist pending messages pending message (messages awaiting disptach to a consumer) cursor  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -205,10 +205,16 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|LinkedList
+argument_list|<
+name|Message
+argument_list|>
 name|batchList
 init|=
 operator|new
 name|LinkedList
+argument_list|<
+name|Message
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -474,18 +480,17 @@ name|MessageReference
 name|next
 parameter_list|()
 block|{
+name|Message
+name|result
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
+operator|!
 name|empty
 condition|)
 block|{
-return|return
-literal|null
-return|;
-block|}
-else|else
-block|{
-comment|// We may need to fill in the batch...
 if|if
 condition|(
 name|batchList
@@ -502,6 +507,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+specifier|final
 name|Exception
 name|e
 parameter_list|)
@@ -536,17 +542,22 @@ literal|null
 return|;
 block|}
 block|}
-name|Message
+if|if
+condition|(
+operator|!
+name|batchList
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|result
-init|=
-operator|(
-name|Message
-operator|)
+operator|=
 name|batchList
 operator|.
 name|removeFirst
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|firstMessageId
@@ -568,14 +579,17 @@ argument_list|(
 name|firstMessageId
 argument_list|)
 condition|)
-return|return
+name|result
+operator|=
 literal|null
-return|;
+expr_stmt|;
 name|firstMessageId
 operator|=
 literal|null
 expr_stmt|;
 block|}
+else|else
+block|{
 if|if
 condition|(
 name|lastMessageId
@@ -609,10 +623,12 @@ argument_list|(
 name|regionDestination
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+block|}
 return|return
 name|result
 return|;
-block|}
 block|}
 specifier|public
 name|void
@@ -642,11 +658,23 @@ argument_list|(
 name|regionDestination
 argument_list|)
 expr_stmt|;
+comment|// only increment if count is zero (could have been cached)
+if|if
+condition|(
+name|message
+operator|.
+name|getReferenceCount
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
 name|message
 operator|.
 name|incrementReferenceCount
 argument_list|()
 expr_stmt|;
+block|}
 name|batchList
 operator|.
 name|addLast
@@ -701,6 +729,20 @@ name|void
 name|gc
 parameter_list|()
 block|{
+for|for
+control|(
+name|Message
+name|msg
+range|:
+name|batchList
+control|)
+block|{
+name|msg
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
+block|}
 name|batchList
 operator|.
 name|clear
