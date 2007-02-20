@@ -163,6 +163,20 @@ name|activemq
 operator|.
 name|broker
 operator|.
+name|DestinationAlreadyExistsException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
 name|region
 operator|.
 name|policy
@@ -1533,10 +1547,8 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|JMSException
+name|DestinationAlreadyExistsException
 argument_list|(
-literal|"Destination already exists: "
-operator|+
 name|destination
 argument_list|)
 throw|;

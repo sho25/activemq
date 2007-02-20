@@ -89,6 +89,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|DestinationAlreadyExistsException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -1720,11 +1734,10 @@ condition|)
 block|{
 comment|// Try to auto create the destination... re-invoke broker from the
 comment|// top so that the proper security checks are performed.
-name|context
-operator|.
-name|getBroker
-argument_list|()
-operator|.
+try|try
+block|{
+name|dest
+operator|=
 name|addDestination
 argument_list|(
 name|context
@@ -1732,19 +1745,18 @@ argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
+comment|//context.getBroker().addDestination(context,destination);
+block|}
+catch|catch
+parameter_list|(
+name|DestinationAlreadyExistsException
+name|e
+parameter_list|)
+block|{
+comment|// if the destination already exists then lets ignore this error
+block|}
 comment|// We should now have the dest created.
-name|dest
-operator|=
-operator|(
-name|Destination
-operator|)
-name|destinations
-operator|.
-name|get
-argument_list|(
-name|destination
-argument_list|)
-expr_stmt|;
+comment|//dest=(Destination) destinations.get(destination);
 block|}
 if|if
 condition|(
