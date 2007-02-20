@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -101,24 +101,6 @@ name|region
 operator|.
 name|cursors
 operator|.
-name|PendingMessageCursor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|region
-operator|.
-name|cursors
-operator|.
 name|StoreDurableSubscriberCursor
 import|;
 end_import
@@ -189,6 +171,20 @@ name|activemq
 operator|.
 name|memory
 operator|.
+name|UsageListener
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|memory
+operator|.
 name|UsageManager
 import|;
 end_import
@@ -241,6 +237,8 @@ class|class
 name|DurableTopicSubscription
 extends|extends
 name|PrefetchSubscription
+implements|implements
+name|UsageListener
 block|{
 specifier|static
 specifier|private
@@ -286,6 +284,11 @@ name|boolean
 name|keepDurableSubsActive
 decl_stmt|;
 specifier|private
+specifier|final
+name|UsageManager
+name|usageManager
+decl_stmt|;
+specifier|private
 name|boolean
 name|active
 init|=
@@ -296,6 +299,9 @@ name|DurableTopicSubscription
 parameter_list|(
 name|Broker
 name|broker
+parameter_list|,
+name|UsageManager
+name|usageManager
 parameter_list|,
 name|ConnectionContext
 name|context
@@ -341,6 +347,12 @@ name|getPrefetchSize
 argument_list|()
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|usageManager
+operator|=
+name|usageManager
 expr_stmt|;
 name|this
 operator|.
@@ -595,7 +607,7 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-comment|//If nothing was in the persistent store, then try to use the recovery policy.
+comment|// If nothing was in the persistent store, then try to use the recovery policy.
 if|if
 condition|(
 name|pending
@@ -649,6 +661,15 @@ block|}
 name|dispatchMatched
 argument_list|()
 expr_stmt|;
+name|this
+operator|.
+name|usageManager
+operator|.
+name|addUsageListener
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 specifier|synchronized
@@ -665,6 +686,15 @@ block|{
 name|active
 operator|=
 literal|false
+expr_stmt|;
+name|this
+operator|.
+name|usageManager
+operator|.
+name|removeUsageListener
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 synchronized|synchronized
 init|(
@@ -1050,7 +1080,7 @@ name|getPendingQueueSize
 argument_list|()
 return|;
 block|}
-comment|//TODO: need to get from store
+comment|// TODO: need to get from store
 return|return
 literal|0
 return|;
@@ -1309,6 +1339,56 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+block|}
+comment|/**      * @param memoryManager      * @param oldPercentUsage      * @param newPercentUsage      * @see org.apache.activemq.memory.UsageListener#onMemoryUseChanged(org.apache.activemq.memory.UsageManager, int,      *      int)      */
+specifier|public
+name|void
+name|onMemoryUseChanged
+parameter_list|(
+name|UsageManager
+name|memoryManager
+parameter_list|,
+name|int
+name|oldPercentUsage
+parameter_list|,
+name|int
+name|newPercentUsage
+parameter_list|)
+block|{
+if|if
+condition|(
+name|oldPercentUsage
+operator|>
+name|newPercentUsage
+operator|&&
+name|oldPercentUsage
+operator|>=
+literal|90
+condition|)
+block|{
+try|try
+block|{
+name|dispatchMatched
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"problem calling dispatchMatched"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 end_class

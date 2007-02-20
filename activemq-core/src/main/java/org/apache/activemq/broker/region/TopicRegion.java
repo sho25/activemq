@@ -1472,6 +1472,8 @@ name|DurableTopicSubscription
 argument_list|(
 name|broker
 argument_list|,
+name|memoryManager
+argument_list|,
 name|context
 argument_list|,
 name|info
