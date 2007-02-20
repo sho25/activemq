@@ -1526,9 +1526,10 @@ name|String
 name|toString
 parameter_list|()
 block|{
+comment|// TODO we should use the physical name by default for easier operation
+comment|// with other software like StompConnect
 return|return
-name|getQualifiedName
-argument_list|()
+name|physicalName
 return|;
 block|}
 specifier|public
