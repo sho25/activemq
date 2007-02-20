@@ -2514,10 +2514,6 @@ operator|!
 name|initialized
 condition|)
 block|{
-name|initialized
-operator|=
-literal|true
-expr_stmt|;
 name|log
 operator|.
 name|info
@@ -2633,6 +2629,10 @@ expr_stmt|;
 block|}
 name|lock
 argument_list|()
+expr_stmt|;
+name|initialized
+operator|=
+literal|true
 expr_stmt|;
 name|mapsContainer
 operator|=
