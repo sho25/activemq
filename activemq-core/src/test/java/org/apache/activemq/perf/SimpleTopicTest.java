@@ -159,16 +159,16 @@ name|broker
 decl_stmt|;
 comment|// protected String
 comment|// bindAddress="tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=true&jms.useAsyncSend=false";
+comment|//protected String bindAddress="tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=true&jms.useAsyncSend=true";
+comment|// protected String
+comment|// bindAddress="tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=false";
+comment|// protected String bindAddress="vm://localhost?marshal=true";
 specifier|protected
 name|String
 name|bindAddress
 init|=
-literal|"tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=true&jms.useAsyncSend=true"
+literal|"vm://localhost"
 decl_stmt|;
-comment|// protected String
-comment|// bindAddress="tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=false";
-comment|// protected String bindAddress="vm://localhost?marshal=true";
-comment|// protected String bindAddress="vm://localhost";
 specifier|protected
 name|PerfProducer
 index|[]
@@ -193,19 +193,19 @@ specifier|protected
 name|int
 name|SAMPLE_COUNT
 init|=
-literal|30
+literal|20
 decl_stmt|;
 specifier|protected
 name|long
 name|SAMPLE_INTERVAL
 init|=
-literal|2000
+literal|1000
 decl_stmt|;
 specifier|protected
 name|int
 name|NUMBER_OF_CONSUMERS
 init|=
-literal|1
+literal|0
 decl_stmt|;
 specifier|protected
 name|int
