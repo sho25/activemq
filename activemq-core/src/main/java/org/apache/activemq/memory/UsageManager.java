@@ -229,6 +229,29 @@ name|wait
 argument_list|()
 expr_stmt|;
 block|}
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|percentUsage
+operator|>
+literal|90
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|usageMutex
+operator|.
+name|wait
+argument_list|(
+literal|100
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Increases the usage by the value amount.        *       * @param value      */
@@ -720,6 +743,21 @@ init|(
 name|usageMutex
 init|)
 block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"Memory usage change.  from: "
+operator|+
+name|oldPercentUsage
+operator|+
+literal|", to: "
+operator|+
+name|newPercentUsage
+argument_list|)
+expr_stmt|;
 name|usageMutex
 operator|.
 name|notifyAll
@@ -727,7 +765,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|// Let the listeners know
+comment|//      Let the listeners know
 for|for
 control|(
 name|Iterator
