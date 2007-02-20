@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -22,6 +22,16 @@ operator|.
 name|io
 operator|.
 name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Properties
 import|;
 end_import
 
@@ -253,6 +263,9 @@ specifier|protected
 name|Destination
 name|consumerDestination2
 decl_stmt|;
+name|BrokerService
+name|broker
+decl_stmt|;
 specifier|final
 name|int
 name|NMSG
@@ -277,7 +290,7 @@ specifier|private
 name|TopicSubscriber
 name|consumer3
 decl_stmt|;
-comment|/** 	 * Set up a durable suscriber test. 	 *  	 * @see junit.framework.TestCase#setUp() 	 */
+comment|/**      * Set up a durable suscriber test.      *       * @see junit.framework.TestCase#setUp()      */
 specifier|protected
 name|void
 name|setUp
@@ -291,12 +304,32 @@ name|durable
 operator|=
 literal|true
 expr_stmt|;
+name|broker
+operator|=
 name|createBroker
 argument_list|()
 expr_stmt|;
 name|super
 operator|.
 name|setUp
+argument_list|()
+expr_stmt|;
+block|}
+specifier|protected
+name|void
+name|tearDown
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|super
+operator|.
+name|tearDown
+argument_list|()
+expr_stmt|;
+name|broker
+operator|.
+name|stop
 argument_list|()
 expr_stmt|;
 block|}
@@ -316,6 +349,38 @@ argument_list|(
 literal|"vm://localhost"
 argument_list|)
 decl_stmt|;
+name|Properties
+name|props
+init|=
+operator|new
+name|Properties
+argument_list|()
+decl_stmt|;
+name|props
+operator|.
+name|put
+argument_list|(
+literal|"prefetchPolicy.durableTopicPrefetch"
+argument_list|,
+literal|"5"
+argument_list|)
+expr_stmt|;
+name|props
+operator|.
+name|put
+argument_list|(
+literal|"prefetchPolicy.optimizeDurableTopicPrefetch"
+argument_list|,
+literal|"5"
+argument_list|)
+expr_stmt|;
+name|result
+operator|.
+name|setProperties
+argument_list|(
+name|props
+argument_list|)
+expr_stmt|;
 return|return
 name|result
 return|;
@@ -358,10 +423,9 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|//KahaPersistenceAdapter adapter = new KahaPersistenceAdapter(new File("activemq-data/durableTest"));
-comment|//answer.setPersistenceAdapter(adapter);
+comment|//KahaPersistenceAdapter adapter=new KahaPersistenceAdapter(new File("activemq-data/durableTest"));
 comment|//JDBCPersistenceAdapter adapter = new JDBCPersistenceAdapter();
-comment|//answer.setPersistenceAdapter(adapter);
+comment|// answer.setPersistenceAdapter(adapter);
 name|answer
 operator|.
 name|setDeleteAllMessagesOnStartup
@@ -370,7 +434,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Test if all the messages sent are being received. 	 *  	 * @throws Exception 	 */
+comment|/**      * Test if all the messages sent are being received.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testSlowReceiver
@@ -803,9 +867,7 @@ name|consumer3
 operator|.
 name|receive
 argument_list|(
-name|Integer
-operator|.
-name|MAX_VALUE
+literal|10000
 argument_list|)
 expr_stmt|;
 if|if
@@ -889,7 +951,7 @@ argument_list|,
 literal|"test"
 argument_list|)
 expr_stmt|;
-comment|//connection3.stop();
+comment|// connection3.stop();
 name|connection3
 operator|.
 name|close
