@@ -871,6 +871,7 @@ operator|--
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|remove
 parameter_list|(

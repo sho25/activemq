@@ -286,6 +286,7 @@ name|subscriberName
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|start
 parameter_list|()
@@ -339,6 +340,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|stop
 parameter_list|()
@@ -642,6 +644,7 @@ name|finished
 parameter_list|()
 block|{     }
 specifier|public
+specifier|synchronized
 name|void
 name|recoverMessage
 parameter_list|(
@@ -704,6 +707,7 @@ throw|;
 block|}
 comment|// implementation
 specifier|protected
+specifier|synchronized
 name|void
 name|fillBatch
 parameter_list|()
@@ -725,6 +729,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|gc
 parameter_list|()
