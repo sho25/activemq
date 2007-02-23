@@ -139,6 +139,16 @@ specifier|private
 name|boolean
 name|sendFailIfNoSpaceExplicitySet
 decl_stmt|;
+specifier|private
+specifier|final
+name|boolean
+name|debug
+init|=
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+decl_stmt|;
 specifier|public
 name|UsageManager
 parameter_list|()
@@ -713,6 +723,11 @@ name|int
 name|newPercentUsage
 parameter_list|)
 block|{
+if|if
+condition|(
+name|debug
+condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -726,6 +741,7 @@ operator|+
 name|newPercentUsage
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Switching from being full to not being full..
 if|if
 condition|(
@@ -750,7 +766,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|//      Let the listeners know
+comment|// Let the listeners know
 for|for
 control|(
 name|Iterator
