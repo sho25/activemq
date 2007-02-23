@@ -172,6 +172,11 @@ name|ACTIVEMQ_TEXT_MESSAGE
 init|=
 literal|28
 decl_stmt|;
+name|byte
+name|ACTIVEMQ_BLOB_MESSAGE
+init|=
+literal|29
+decl_stmt|;
 comment|///////////////////////////////////////////////////
 comment|//
 comment|// Command Response messages

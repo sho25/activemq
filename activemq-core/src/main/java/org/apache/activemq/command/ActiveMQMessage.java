@@ -3394,6 +3394,8 @@ specifier|public
 name|void
 name|onSend
 parameter_list|()
+throws|throws
+name|JMSException
 block|{
 name|setReadOnlyBody
 argument_list|(

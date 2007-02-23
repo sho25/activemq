@@ -75,7 +75,9 @@ specifier|private
 name|int
 name|version
 init|=
-literal|2
+name|OpenWireFormat
+operator|.
+name|DEFAULT_VERSION
 decl_stmt|;
 specifier|private
 name|boolean
