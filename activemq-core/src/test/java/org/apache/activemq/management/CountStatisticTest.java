@@ -15,20 +15,6 @@ name|management
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|management
-operator|.
-name|CountStatisticImpl
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -88,6 +74,13 @@ argument_list|,
 literal|"myDescription"
 argument_list|)
 decl_stmt|;
+name|stat
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|assertStatistic
 argument_list|(
 name|stat
