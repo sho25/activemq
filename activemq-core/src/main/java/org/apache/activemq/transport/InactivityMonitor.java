@@ -17,16 +17,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -92,6 +82,16 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
 import|;
 end_import
 
@@ -599,6 +599,7 @@ block|{
 name|stopMonitorThreads
 argument_list|()
 expr_stmt|;
+block|}
 name|getTransportListener
 argument_list|()
 operator|.
@@ -607,7 +608,6 @@ argument_list|(
 name|error
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 specifier|synchronized
 specifier|private
