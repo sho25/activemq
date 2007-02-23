@@ -743,21 +743,6 @@ init|(
 name|usageMutex
 init|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Memory usage change.  from: "
-operator|+
-name|oldPercentUsage
-operator|+
-literal|", to: "
-operator|+
-name|newPercentUsage
-argument_list|)
-expr_stmt|;
 name|usageMutex
 operator|.
 name|notifyAll
