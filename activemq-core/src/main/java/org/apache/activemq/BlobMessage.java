@@ -19,16 +19,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|Message
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|JMSException
 import|;
 end_import
@@ -113,6 +103,18 @@ name|setMimeType
 parameter_list|(
 name|String
 name|mimeType
+parameter_list|)
+function_decl|;
+name|String
+name|getName
+parameter_list|()
+function_decl|;
+comment|/**      * The name of the attachment which can be useful information if transmitting files over ActiveMQ      */
+name|void
+name|setName
+parameter_list|(
+name|String
+name|name
 parameter_list|)
 function_decl|;
 block|}

@@ -254,6 +254,13 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
+name|info
+operator|.
+name|setBrokerUploadUrl
+argument_list|(
+literal|"BrokerUploadUrl:5"
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

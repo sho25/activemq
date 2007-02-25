@@ -574,6 +574,15 @@ return|return
 name|DATA_STRUCTURE_TYPE
 return|;
 block|}
+specifier|public
+name|String
+name|getJMSXMimeType
+parameter_list|()
+block|{
+return|return
+literal|"jms/map-message"
+return|;
+block|}
 comment|/**      * Clears out the message body. Clearing a message's body does not clear its header values or property entries.<P>      * If this message body was read-only, calling this method leaves the message body in the same state as an empty      * body in a newly created message.      */
 specifier|public
 name|void

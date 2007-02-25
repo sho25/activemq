@@ -342,6 +342,15 @@ return|return
 name|DATA_STRUCTURE_TYPE
 return|;
 block|}
+specifier|public
+name|String
+name|getJMSXMimeType
+parameter_list|()
+block|{
+return|return
+literal|"jms/bytes-message"
+return|;
+block|}
 comment|/**      * Clears out the message body. Clearing a message's body does not clear its header values or property entries.<P>      * If this message body was read-only, calling this method leaves the message body in the same state as an empty      * body in a newly created message.      *      * @throws JMSException if the JMS provider fails to clear the message body due to some internal error.      */
 specifier|public
 name|void
