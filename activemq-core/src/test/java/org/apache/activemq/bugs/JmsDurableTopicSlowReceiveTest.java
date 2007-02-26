@@ -423,7 +423,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|//KahaPersistenceAdapter adapter=new KahaPersistenceAdapter(new File("activemq-data/durableTest"));
+comment|//KahaPersistenceAdapter adapter=new KahaPersistenceAdapter(new File("target/test-amq-data/durableTest"));
 comment|//JDBCPersistenceAdapter adapter = new JDBCPersistenceAdapter();
 comment|// answer.setPersistenceAdapter(adapter);
 name|answer

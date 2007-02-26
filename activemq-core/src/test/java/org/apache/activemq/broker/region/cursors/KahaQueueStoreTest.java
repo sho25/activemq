@@ -186,7 +186,7 @@ argument_list|(
 operator|new
 name|File
 argument_list|(
-literal|"activemq-data/durableTest"
+literal|"target/test-amq-data/durableTest"
 argument_list|)
 argument_list|)
 decl_stmt|;

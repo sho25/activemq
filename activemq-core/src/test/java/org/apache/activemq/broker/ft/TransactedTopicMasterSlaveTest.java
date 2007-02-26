@@ -173,7 +173,7 @@ argument_list|(
 operator|new
 name|File
 argument_list|(
-literal|"activemq-data/slave"
+literal|"target/test-amq-data/slave"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -316,7 +316,7 @@ argument_list|(
 operator|new
 name|File
 argument_list|(
-literal|"activemq-data/master"
+literal|"target/test-amq-data/master"
 argument_list|)
 argument_list|)
 decl_stmt|;

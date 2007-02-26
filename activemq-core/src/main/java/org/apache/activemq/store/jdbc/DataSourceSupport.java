@@ -33,6 +33,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IOHelper
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|sql
@@ -74,7 +88,10 @@ specifier|private
 name|String
 name|dataDirectory
 init|=
-literal|"activemq-data"
+name|IOHelper
+operator|.
+name|getDefaultDataDirectory
+argument_list|()
 decl_stmt|;
 specifier|private
 name|File

@@ -101,6 +101,20 @@ name|IndexManager
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IOHelper
+import|;
+end_import
+
 begin_comment
 comment|/**  * Test a HashIndex  *   */
 end_comment
@@ -149,7 +163,10 @@ operator|=
 operator|new
 name|File
 argument_list|(
-literal|"activemq-data"
+name|IOHelper
+operator|.
+name|getDefaultDataDirectory
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|directory

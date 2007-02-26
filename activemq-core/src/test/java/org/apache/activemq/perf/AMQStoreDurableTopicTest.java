@@ -98,7 +98,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-literal|"activemq-data/perfTest/amqdb"
+literal|"target/test-amq-data/perfTest/amqdb"
 argument_list|)
 decl_stmt|;
 name|AMQPersistenceAdapter
