@@ -1868,7 +1868,9 @@ name|wf
 operator|.
 name|setVersion
 argument_list|(
-literal|2
+name|OpenWireFormat
+operator|.
+name|DEFAULT_VERSION
 argument_list|)
 expr_stmt|;
 return|return
