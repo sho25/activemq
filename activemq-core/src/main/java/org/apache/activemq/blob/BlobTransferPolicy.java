@@ -28,7 +28,7 @@ specifier|private
 name|String
 name|defaultUploadUrl
 init|=
-literal|"http://localhost:8080"
+literal|"http://localhost:8080/uploads/"
 decl_stmt|;
 specifier|private
 name|String
