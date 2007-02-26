@@ -672,6 +672,11 @@ argument_list|(
 literal|50
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|verbose
+condition|)
+block|{
 name|System
 operator|.
 name|err
@@ -687,6 +692,7 @@ operator|+
 name|i
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|producer2
 operator|.
@@ -877,6 +883,11 @@ operator|==
 literal|null
 condition|)
 break|break;
+if|if
+condition|(
+name|verbose
+condition|)
+block|{
 name|System
 operator|.
 name|err
@@ -892,6 +903,7 @@ operator|+
 name|i
 argument_list|)
 expr_stmt|;
+block|}
 name|Thread
 operator|.
 name|sleep
