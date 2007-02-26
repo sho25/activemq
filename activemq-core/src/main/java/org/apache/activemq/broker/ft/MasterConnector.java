@@ -378,7 +378,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Connects a Slave Broker to a Master when using<a  * href="http://incubator.apache.org/activemq/masterslave.html">Master Slave</a>  * for High Availability of messages.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * Connects a Slave Broker to a Master when using<a  * href="http://activemq.apache.org/masterslave.html">Master Slave</a>  * for High Availability of messages.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
 
 begin_class

@@ -2561,7 +2561,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"For help or more information please see: http://incubator.apache.org/activemq/"
+literal|"For help or more information please see: http://activemq.apache.org/"
 argument_list|)
 expr_stmt|;
 name|broker
@@ -3852,7 +3852,7 @@ return|return
 name|useVirtualTopics
 return|;
 block|}
-comment|/**      * Sets whether or not      *<a href="http://incubator.apache.org/activemq/virtual-destinations.html">Virtual Topics</a>      * should be supported by default if they have not been explicitly configured.      */
+comment|/**      * Sets whether or not      *<a href="http://activemq.apache.org/virtual-destinations.html">Virtual Topics</a>      * should be supported by default if they have not been explicitly configured.      */
 specifier|public
 name|void
 name|setUseVirtualTopics

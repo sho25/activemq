@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A factory to create instances of {@link SimpleMessageGroupMap} when implementing the   *<a href="http://incubator.apache.org/activemq/message-groups.html">Message Groups</a> functionality.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * A factory to create instances of {@link SimpleMessageGroupMap} when implementing the   *<a href="http://activemq.apache.org/message-groups.html">Message Groups</a> functionality.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
 end_comment
 
 begin_class

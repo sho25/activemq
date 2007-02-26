@@ -931,7 +931,7 @@ return|return
 name|messageGroupMapFactory
 return|;
 block|}
-comment|/**      * Sets the factory used to create new instances of {MessageGroupMap} used to implement the<a      * href="http://incubator.apache.org/activemq/message-groups.html">Message Groups</a> functionality.      */
+comment|/**      * Sets the factory used to create new instances of {MessageGroupMap} used to implement the<a      * href="http://activemq.apache.org/message-groups.html">Message Groups</a> functionality.      */
 specifier|public
 name|void
 name|setMessageGroupMapFactory

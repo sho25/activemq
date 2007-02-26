@@ -1220,7 +1220,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Sets the<a      * href="http://incubator.apache.org/activemq/configuring-transports.html">connection      * URL</a> used to connect to the ActiveMQ broker.      */
+comment|/**      * Sets the<a      * href="http://activemq.apache.org/configuring-transports.html">connection      * URL</a> used to connect to the ActiveMQ broker.      */
 specifier|public
 name|void
 name|setBrokerURL
@@ -1497,7 +1497,7 @@ return|return
 name|prefetchPolicy
 return|;
 block|}
-comment|/**      * Sets the<a      * href="http://incubator.apache.org/activemq/what-is-the-prefetch-limit-for.html">prefetch      * policy</a> for consumers created by this connection.      */
+comment|/**      * Sets the<a      * href="http://activemq.apache.org/what-is-the-prefetch-limit-for.html">prefetch      * policy</a> for consumers created by this connection.      */
 specifier|public
 name|void
 name|setPrefetchPolicy
@@ -1547,7 +1547,7 @@ operator|=
 name|blobTransferPolicy
 expr_stmt|;
 block|}
-comment|/**      * Forces the use of<a      * href="http://incubator.apache.org/activemq/async-sends.html">Async Sends</a>      * which adds a massive performance boost; but means that the send() method      * will return immediately whether the message has been sent or not which      * could lead to message loss.      */
+comment|/**      * Forces the use of<a      * href="http://activemq.apache.org/async-sends.html">Async Sends</a>      * which adds a massive performance boost; but means that the send() method      * will return immediately whether the message has been sent or not which      * could lead to message loss.      */
 specifier|public
 name|void
 name|setUseAsyncSend
@@ -2197,7 +2197,7 @@ return|return
 name|dispatchAsync
 return|;
 block|}
-comment|/**      * Enables or disables the default setting of whether or not consumers have      * their messages<a      * href="http://incubator.apache.org/activemq/consumer-dispatch-async.html">dispatched      * synchronously or asynchronously by the broker</a>.      *       * For non-durable topics for example we typically dispatch synchronously by      * default to minimize context switches which boost performance. However      * sometimes its better to go slower to ensure that a single blocked      * consumer socket does not block delivery to other consumers.      *       * @param asyncDispatch      *            If true then consumers created on this connection will default      *            to having their messages dispatched asynchronously. The      *            default value is false.      */
+comment|/**      * Enables or disables the default setting of whether or not consumers have      * their messages<a      * href="http://activemq.apache.org/consumer-dispatch-async.html">dispatched      * synchronously or asynchronously by the broker</a>.      *       * For non-durable topics for example we typically dispatch synchronously by      * default to minimize context switches which boost performance. However      * sometimes its better to go slower to ensure that a single blocked      * consumer socket does not block delivery to other consumers.      *       * @param asyncDispatch      *            If true then consumers created on this connection will default      *            to having their messages dispatched asynchronously. The      *            default value is false.      */
 specifier|public
 name|void
 name|setDispatchAsync
@@ -2300,7 +2300,7 @@ return|return
 name|nestedMapAndListEnabled
 return|;
 block|}
-comment|/**      * Enables/disables whether or not Message properties and MapMessage entries      * support<a      * href="http://incubator.apache.org/activemq/structured-message-properties-and-mapmessages.html">Nested      * Structures</a> of Map and List objects      */
+comment|/**      * Enables/disables whether or not Message properties and MapMessage entries      * support<a      * href="http://activemq.apache.org/structured-message-properties-and-mapmessages.html">Nested      * Structures</a> of Map and List objects      */
 specifier|public
 name|void
 name|setNestedMapAndListEnabled
