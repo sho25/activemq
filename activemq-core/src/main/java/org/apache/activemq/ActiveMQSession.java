@@ -935,6 +935,29 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{
+return|return
+name|createBlobMessage
+argument_list|(
+name|url
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
+comment|/**      * Creates an initialized<CODE>BlobMessage</CODE> object. A<CODE>BlobMessage</CODE>      * object is used to send a message containing a<CODE>URL</CODE> which points to some      * network addressible BLOB.      *      * @param url      *            the network addressable URL used to pass directly to the consumer      * @param deletedByBroker      *          indicates whether or not the resource is deleted by the broker when the message      * is acknowledged      * @return a BlobMessage      * @throws JMSException      *             if the JMS provider fails to create this message due to some      *             internal error.      */
+specifier|public
+name|BlobMessage
+name|createBlobMessage
+parameter_list|(
+name|URL
+name|url
+parameter_list|,
+name|boolean
+name|deletedByBroker
+parameter_list|)
+throws|throws
+name|JMSException
+block|{
 name|ActiveMQBlobMessage
 name|message
 init|=
@@ -954,11 +977,18 @@ argument_list|(
 name|url
 argument_list|)
 expr_stmt|;
+name|message
+operator|.
+name|setDeletedByBroker
+argument_list|(
+name|deletedByBroker
+argument_list|)
+expr_stmt|;
 return|return
 name|message
 return|;
 block|}
-comment|/**      * Creates an initialized<CODE>BlobMessage</CODE> object. A<CODE>BlobMessage</CODE>      * object is used to send a message containing the<CODE>File</CODE> content. Before the      * message is sent the file conent will be uploaded to the broker or some other remote repository      * depending on the {@link #getBlobUploadStrategy()}.      *      * @param file      *            the file to be uploaded to some remote repo (or the broker) depending on the      *      * @return a BlobMessage      * @throws JMSException      *             if the JMS provider fails to create this message due to some      *             internal error.      */
+comment|/**      * Creates an initialized<CODE>BlobMessage</CODE> object. A<CODE>BlobMessage</CODE>      * object is used to send a message containing the<CODE>File</CODE> content. Before the      * message is sent the file conent will be uploaded to the broker or some other remote repository      * depending on the {@link #getBlobTransferPolicy()}.      *      * @param file      *            the file to be uploaded to some remote repo (or the broker) depending on the strategy      *      * @return a BlobMessage      * @throws JMSException      *             if the JMS provider fails to create this message due to some      *             internal error.      */
 specifier|public
 name|BlobMessage
 name|createBlobMessage
@@ -1016,7 +1046,7 @@ return|return
 name|message
 return|;
 block|}
-comment|/**      * Creates an initialized<CODE>BlobMessage</CODE> object. A<CODE>BlobMessage</CODE>      * object is used to send a message containing the<CODE>File</CODE> content. Before the      * message is sent the file conent will be uploaded to the broker or some other remote repository      * depending on the {@link #getBlobUploadStrategy()}.      *      * @param file      *            the file to be uploaded to some remote repo (or the broker) depending on the      *      * @return a BlobMessage      * @throws JMSException      *             if the JMS provider fails to create this message due to some      *             internal error.      */
+comment|/**      * Creates an initialized<CODE>BlobMessage</CODE> object. A<CODE>BlobMessage</CODE>      * object is used to send a message containing the<CODE>File</CODE> content. Before the      * message is sent the file conent will be uploaded to the broker or some other remote repository      * depending on the {@link #getBlobTransferPolicy()}.      *      * @param in      *            the stream to be uploaded to some remote repo (or the broker) depending on the strategy      *      * @return a BlobMessage      * @throws JMSException      *             if the JMS provider fails to create this message due to some      *             internal error.      */
 specifier|public
 name|BlobMessage
 name|createBlobMessage
