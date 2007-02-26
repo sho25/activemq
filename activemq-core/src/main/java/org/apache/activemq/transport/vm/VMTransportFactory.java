@@ -617,7 +617,7 @@ name|equals
 argument_list|(
 name|options
 operator|.
-name|get
+name|remove
 argument_list|(
 literal|"create"
 argument_list|)
