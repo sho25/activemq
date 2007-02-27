@@ -2917,6 +2917,7 @@ throw|;
 block|}
 block|}
 specifier|static
+specifier|synchronized
 specifier|private
 name|Set
 argument_list|<
