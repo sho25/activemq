@@ -841,7 +841,7 @@ condition|)
 block|{
 name|log
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"Refilling batch - haven't got past first message = "
 operator|+
