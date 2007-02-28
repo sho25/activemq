@@ -318,8 +318,8 @@ operator|+
 name|key
 decl_stmt|;
 comment|// lets try the thread context class loader first
-name|InputStream
-name|in
+name|ClassLoader
+name|classLoader
 init|=
 name|Thread
 operator|.
@@ -328,6 +328,25 @@ argument_list|()
 operator|.
 name|getContextClassLoader
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|classLoader
+operator|==
+literal|null
+condition|)
+name|classLoader
+operator|=
+name|getClass
+argument_list|()
+operator|.
+name|getClassLoader
+argument_list|()
+expr_stmt|;
+name|InputStream
+name|in
+init|=
+name|classLoader
 operator|.
 name|getResourceAsStream
 argument_list|(
