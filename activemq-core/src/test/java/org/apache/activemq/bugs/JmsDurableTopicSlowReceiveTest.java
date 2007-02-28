@@ -290,6 +290,13 @@ specifier|private
 name|TopicSubscriber
 name|consumer3
 decl_stmt|;
+specifier|private
+specifier|final
+name|String
+name|countProperyName
+init|=
+literal|"count"
+decl_stmt|;
 comment|/**      * Set up a durable suscriber test.      *       * @see junit.framework.TestCase#setUp()      */
 specifier|protected
 name|void
@@ -423,8 +430,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|//KahaPersistenceAdapter adapter=new KahaPersistenceAdapter(new File("target/test-amq-data/durableTest"));
-comment|//JDBCPersistenceAdapter adapter = new JDBCPersistenceAdapter();
+comment|// KahaPersistenceAdapter adapter=new KahaPersistenceAdapter(new File("activemq-data/durableTest"));
+comment|// JDBCPersistenceAdapter adapter = new JDBCPersistenceAdapter();
 comment|// answer.setPersistenceAdapter(adapter);
 name|answer
 operator|.
@@ -543,6 +550,11 @@ parameter_list|()
 block|{
 try|try
 block|{
+name|int
+name|count
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -651,6 +663,15 @@ argument_list|)
 expr_stmt|;
 name|message
 operator|.
+name|setIntProperty
+argument_list|(
+name|countProperyName
+argument_list|,
+name|count
+argument_list|)
+expr_stmt|;
+name|message
+operator|.
 name|setJMSType
 argument_list|(
 literal|"test"
@@ -679,7 +700,7 @@ condition|)
 block|{
 name|System
 operator|.
-name|err
+name|out
 operator|.
 name|println
 argument_list|(
@@ -693,6 +714,9 @@ name|i
 argument_list|)
 expr_stmt|;
 block|}
+name|count
+operator|++
+expr_stmt|;
 block|}
 name|producer2
 operator|.
@@ -782,6 +806,11 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+name|int
+name|count
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -866,7 +895,6 @@ name|i
 operator|++
 control|)
 block|{
-comment|// System.err.println("Receive...");
 name|msg
 operator|=
 name|consumer3
@@ -890,7 +918,7 @@ condition|)
 block|{
 name|System
 operator|.
-name|err
+name|out
 operator|.
 name|println
 argument_list|(
@@ -901,46 +929,23 @@ operator|+
 literal|"): "
 operator|+
 name|i
-argument_list|)
-expr_stmt|;
-block|}
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|500
-argument_list|)
-expr_stmt|;
+operator|+
+literal|" count = "
+operator|+
 name|msg
 operator|.
-name|acknowledge
-argument_list|()
-expr_stmt|;
-block|}
-name|consumer3
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
+name|getIntProperty
 argument_list|(
-literal|"Receiver "
-operator|+
-name|loop
-argument_list|,
-name|NMSG
-operator|/
-literal|4
-argument_list|,
-name|i
+name|countProperyName
+argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|assertNotNull
 argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
-comment|// assertEquals(((BytesMessage) msg).getText(), "test");
 name|assertEquals
 argument_list|(
 name|msg
@@ -963,7 +968,54 @@ argument_list|,
 literal|"test"
 argument_list|)
 expr_stmt|;
-comment|// connection3.stop();
+name|assertEquals
+argument_list|(
+literal|"Messages received out of order"
+argument_list|,
+name|count
+argument_list|,
+name|msg
+operator|.
+name|getIntProperty
+argument_list|(
+name|countProperyName
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|500
+argument_list|)
+expr_stmt|;
+name|msg
+operator|.
+name|acknowledge
+argument_list|()
+expr_stmt|;
+name|count
+operator|++
+expr_stmt|;
+block|}
+name|consumer3
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Receiver "
+operator|+
+name|loop
+argument_list|,
+name|NMSG
+operator|/
+literal|4
+argument_list|,
+name|i
+argument_list|)
+expr_stmt|;
 name|connection3
 operator|.
 name|close
