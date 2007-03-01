@@ -833,6 +833,10 @@ name|boolean
 name|deleteAllMessages
 decl_stmt|;
 specifier|private
+name|boolean
+name|syncOnWrite
+decl_stmt|;
+specifier|private
 name|File
 name|directory
 init|=
@@ -3001,7 +3005,7 @@ name|e
 argument_list|)
 return|;
 block|}
-comment|/**      *       * @param command      * @param sync      * @return      * @throws IOException      */
+comment|/**      *       * @param command      * @param syncHint      * @return      * @throws IOException      */
 specifier|public
 name|Location
 name|writeCommand
@@ -3010,7 +3014,7 @@ name|DataStructure
 name|command
 parameter_list|,
 name|boolean
-name|sync
+name|syncHint
 parameter_list|)
 throws|throws
 name|IOException
@@ -3027,7 +3031,11 @@ argument_list|(
 name|command
 argument_list|)
 argument_list|,
-name|sync
+operator|(
+name|syncHint
+operator|&&
+name|syncOnWrite
+operator|)
 argument_list|)
 return|;
 block|}
@@ -3400,6 +3408,32 @@ operator|.
 name|directory
 operator|=
 name|directory
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isSyncOnWrite
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|syncOnWrite
+return|;
+block|}
+specifier|public
+name|void
+name|setSyncOnWrite
+parameter_list|(
+name|boolean
+name|syncOnWrite
+parameter_list|)
+block|{
+name|this
+operator|.
+name|syncOnWrite
+operator|=
+name|syncOnWrite
 expr_stmt|;
 block|}
 block|}
