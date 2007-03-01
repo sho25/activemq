@@ -1136,6 +1136,10 @@ name|boolean
 name|useRetroactiveConsumer
 decl_stmt|;
 specifier|private
+name|boolean
+name|alwaysSyncSend
+decl_stmt|;
+specifier|private
 name|int
 name|closeTimeout
 init|=
@@ -3830,6 +3834,34 @@ operator|.
 name|useAsyncSend
 operator|=
 name|useAsyncSend
+expr_stmt|;
+block|}
+comment|/**      * @return true if always sync send messages      */
+specifier|public
+name|boolean
+name|isAlwaysSyncSend
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|alwaysSyncSend
+return|;
+block|}
+comment|/**      * Set true if always require messages to be sync sent      * @param alwaysSyncSend      */
+specifier|public
+name|void
+name|setAlwaysSyncSend
+parameter_list|(
+name|boolean
+name|alwaysSyncSend
+parameter_list|)
+block|{
+name|this
+operator|.
+name|alwaysSyncSend
+operator|=
+name|alwaysSyncSend
 expr_stmt|;
 block|}
 comment|/**      * Cleans up this connection so that it's state is as if the connection was      * just created. This allows the Resource Adapter to clean up a connection      * so that it can be reused without having to close and recreate the      * connection.      *       */

@@ -3464,6 +3464,13 @@ block|}
 if|if
 condition|(
 operator|!
+name|connection
+operator|.
+name|isAlwaysSyncSend
+argument_list|()
+operator|&&
+operator|(
+operator|!
 name|msg
 operator|.
 name|isPersistent
@@ -3477,6 +3484,7 @@ operator|||
 name|txid
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|this
