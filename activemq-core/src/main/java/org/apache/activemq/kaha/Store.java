@@ -210,9 +210,23 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Delete Map container      * @param id      * @throws IOException      */
+specifier|public
+name|void
+name|deleteMapContainer
+parameter_list|(
+name|ContainerId
+name|id
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 comment|/**      * Get a Set of call MapContainer Ids      *       * @return the set of ids      * @throws IOException      */
 specifier|public
 name|Set
+argument_list|<
+name|ContainerId
+argument_list|>
 name|getMapContainerIds
 parameter_list|()
 throws|throws
@@ -310,9 +324,23 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * delete a list container      * @param id      * @throws IOException      */
+specifier|public
+name|void
+name|deleteListContainer
+parameter_list|(
+name|ContainerId
+name|id
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 comment|/**      * Get a Set of call ListContainer Ids      *       * @return the set of ids      * @throws IOException      */
 specifier|public
 name|Set
+argument_list|<
+name|ContainerId
+argument_list|>
 name|getListContainerIds
 parameter_list|()
 throws|throws

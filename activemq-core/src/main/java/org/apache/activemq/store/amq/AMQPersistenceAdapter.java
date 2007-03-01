@@ -736,7 +736,7 @@ name|AsyncDataManager
 name|asyncDataManager
 decl_stmt|;
 specifier|private
-name|ReferenceStoreAdapter
+name|KahaReferenceStoreAdapter
 name|referenceStoreAdapter
 decl_stmt|;
 specifier|private
@@ -844,7 +844,7 @@ operator|.
 name|getDefaultDataDirectory
 argument_list|()
 operator|+
-literal|"/quick"
+literal|"/amq"
 argument_list|)
 decl_stmt|;
 specifier|public
@@ -1383,6 +1383,14 @@ condition|(
 name|sync
 condition|)
 block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -1390,6 +1398,7 @@ argument_list|(
 literal|"Waitng for checkpoint to complete."
 argument_list|)
 expr_stmt|;
+block|}
 name|latch
 operator|.
 name|await
@@ -1455,12 +1464,26 @@ expr_stmt|;
 block|}
 try|try
 block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|log
 operator|.
 name|debug
 argument_list|(
 literal|"Checkpoint started."
 argument_list|)
+expr_stmt|;
+block|}
+name|referenceStoreAdapter
+operator|.
+name|sync
+argument_list|()
 expr_stmt|;
 name|Location
 name|newMark
@@ -1615,6 +1638,14 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -1624,6 +1655,7 @@ operator|+
 name|newMark
 argument_list|)
 expr_stmt|;
+block|}
 name|asyncDataManager
 operator|.
 name|setMark
@@ -1664,20 +1696,36 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-comment|//                if (referenceStoreAdapter instanceof JDBCReferenceStoreAdapter) {
-comment|//                    // We may be check pointing more often than the checkpointInterval if under high use
-comment|//                    // But we don't want to clean up the db that often.
-comment|//                    long now = System.currentTimeMillis();
-comment|//                    if( now> lastCleanup+checkpointInterval ) {
-comment|//                        lastCleanup = now;
-comment|//                        ((JDBCReferenceStoreAdapter) referenceStoreAdapter).cleanup();
-comment|//                    }
-comment|//                }
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|log
 operator|.
 name|debug
 argument_list|(
 literal|"Checkpoint done."
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Failed to sync reference store"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -3142,7 +3190,7 @@ name|manager
 return|;
 block|}
 specifier|protected
-name|ReferenceStoreAdapter
+name|KahaReferenceStoreAdapter
 name|createReferenceStoreAdapter
 parameter_list|()
 throws|throws
@@ -3208,21 +3256,6 @@ block|{
 return|return
 name|referenceStoreAdapter
 return|;
-block|}
-specifier|public
-name|void
-name|setReferenceStoreAdapter
-parameter_list|(
-name|ReferenceStoreAdapter
-name|referenceStoreAdapter
-parameter_list|)
-block|{
-name|this
-operator|.
-name|referenceStoreAdapter
-operator|=
-name|referenceStoreAdapter
-expr_stmt|;
 block|}
 specifier|public
 name|TaskRunnerFactory

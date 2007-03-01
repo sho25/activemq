@@ -219,6 +219,10 @@ specifier|private
 name|IndexItem
 name|lastFree
 decl_stmt|;
+specifier|private
+name|boolean
+name|dirty
+decl_stmt|;
 specifier|public
 name|IndexManager
 parameter_list|(
@@ -380,6 +384,10 @@ argument_list|(
 name|item
 argument_list|)
 expr_stmt|;
+name|dirty
+operator|=
+literal|true
+expr_stmt|;
 block|}
 specifier|public
 specifier|synchronized
@@ -398,6 +406,10 @@ name|storeItem
 argument_list|(
 name|index
 argument_list|)
+expr_stmt|;
+name|dirty
+operator|=
+literal|true
 expr_stmt|;
 block|}
 specifier|public
@@ -439,6 +451,10 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+name|dirty
+operator|=
+literal|true
+expr_stmt|;
 block|}
 specifier|public
 specifier|synchronized
@@ -458,6 +474,10 @@ name|redoStoreItem
 argument_list|(
 name|redo
 argument_list|)
+expr_stmt|;
+name|dirty
+operator|=
+literal|true
 expr_stmt|;
 block|}
 specifier|public
@@ -545,6 +565,8 @@ condition|(
 name|indexFile
 operator|!=
 literal|null
+operator|&&
+name|dirty
 condition|)
 block|{
 name|indexFile
@@ -554,6 +576,10 @@ argument_list|()
 operator|.
 name|sync
 argument_list|()
+expr_stmt|;
+name|dirty
+operator|=
+literal|false
 expr_stmt|;
 block|}
 block|}

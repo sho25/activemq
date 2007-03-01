@@ -12,10 +12,6 @@ operator|.
 name|activemq
 operator|.
 name|kaha
-operator|.
-name|impl
-operator|.
-name|container
 package|;
 end_package
 
@@ -87,6 +83,33 @@ specifier|private
 name|String
 name|dataContainerName
 decl_stmt|;
+specifier|public
+name|ContainerId
+parameter_list|()
+block|{     }
+specifier|public
+name|ContainerId
+parameter_list|(
+name|Object
+name|key
+parameter_list|,
+name|String
+name|dataContainerName
+parameter_list|)
+block|{
+name|this
+operator|.
+name|key
+operator|=
+name|key
+expr_stmt|;
+name|this
+operator|.
+name|dataContainerName
+operator|=
+name|dataContainerName
+expr_stmt|;
+block|}
 comment|/**      * @return Returns the dataContainerPrefix.      */
 specifier|public
 name|String
@@ -97,20 +120,20 @@ return|return
 name|dataContainerName
 return|;
 block|}
-comment|/**      * @param dataContainerPrefix The dataContainerPrefix to set.      */
+comment|/**      * @param dataContainerName The dataContainerPrefix to set.      */
 specifier|public
 name|void
 name|setDataContainerName
 parameter_list|(
 name|String
-name|dataContainerPrefix
+name|dataContainerName
 parameter_list|)
 block|{
 name|this
 operator|.
 name|dataContainerName
 operator|=
-name|dataContainerPrefix
+name|dataContainerName
 expr_stmt|;
 block|}
 comment|/**      * @return Returns the key.      */

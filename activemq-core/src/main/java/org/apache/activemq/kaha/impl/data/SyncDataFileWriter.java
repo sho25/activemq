@@ -423,6 +423,11 @@ name|getWriterData
 argument_list|()
 operator|!=
 literal|null
+operator|&&
+name|dataFile
+operator|.
+name|isDirty
+argument_list|()
 condition|)
 block|{
 name|dataFile
@@ -441,6 +446,13 @@ operator|.
 name|setWriterData
 argument_list|(
 literal|null
+argument_list|)
+expr_stmt|;
+name|dataFile
+operator|.
+name|setDirty
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
