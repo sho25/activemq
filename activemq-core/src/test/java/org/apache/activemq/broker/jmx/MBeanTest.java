@@ -1678,6 +1678,13 @@ argument_list|)
 expr_stmt|;
 name|answer
 operator|.
+name|setEnableStatistics
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|answer
+operator|.
 name|setPersistent
 argument_list|(
 literal|false
