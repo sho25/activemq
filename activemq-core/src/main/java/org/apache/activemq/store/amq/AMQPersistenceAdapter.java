@@ -3158,9 +3158,9 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"JournalPersistenceAdapator("
+literal|"AMQPersistenceAdapter("
 operator|+
-name|referenceStoreAdapter
+name|directory
 operator|+
 literal|")"
 return|;
