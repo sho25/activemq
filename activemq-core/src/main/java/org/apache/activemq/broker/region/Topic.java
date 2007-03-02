@@ -151,7 +151,7 @@ name|region
 operator|.
 name|policy
 operator|.
-name|NoSubscriptionRecoveryPolicy
+name|FixedSizedSubscriptionRecoveryPolicy
 import|;
 end_import
 
@@ -531,7 +531,7 @@ name|SubscriptionRecoveryPolicy
 name|subscriptionRecoveryPolicy
 init|=
 operator|new
-name|NoSubscriptionRecoveryPolicy
+name|FixedSizedSubscriptionRecoveryPolicy
 argument_list|()
 decl_stmt|;
 specifier|private
