@@ -373,7 +373,8 @@ operator|)
 name|object
 operator|)
 operator|.
-name|messageId
+name|getMessageId
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -448,7 +449,8 @@ name|MessageId
 argument_list|(
 name|record
 operator|.
-name|messageId
+name|getMessageId
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -640,7 +642,8 @@ return|;
 return|return
 name|result
 operator|.
-name|data
+name|getData
+argument_list|()
 return|;
 block|}
 specifier|public
