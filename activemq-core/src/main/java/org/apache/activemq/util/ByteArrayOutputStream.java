@@ -49,7 +49,7 @@ parameter_list|()
 block|{
 name|this
 argument_list|(
-literal|512
+literal|1028
 argument_list|)
 expr_stmt|;
 block|}
