@@ -5400,6 +5400,14 @@ name|getDestination
 argument_list|()
 operator|==
 literal|null
+operator|||
+name|info
+operator|.
+name|getDestination
+argument_list|()
+operator|.
+name|isComposite
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
