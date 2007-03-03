@@ -1055,7 +1055,7 @@ specifier|private
 name|boolean
 name|enableStatistics
 init|=
-literal|false
+literal|true
 decl_stmt|;
 specifier|private
 name|boolean
