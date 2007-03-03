@@ -51,6 +51,34 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|ConsumerBrokerExchange
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|ProducerBrokerExchange
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -265,13 +293,13 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Send a message to the broker to using the specified destination.  The destination specified      * in the message does not need to match the destination the message is sent to.  This is       * handy in case the message is being sent to a dead letter destination.      * @param context the environment the operation is being executed under.      * @throws Exception TODO      */
+comment|/**      * Send a message to the broker to using the specified destination.  The destination specified      * in the message does not need to match the destination the message is sent to.  This is       * handy in case the message is being sent to a dead letter destination.      * @param producerExchange the environment the operation is being executed under.      * @param message       * @throws Exception TODO      */
 specifier|public
 name|void
 name|send
 parameter_list|(
-name|ConnectionContext
-name|context
+name|ProducerBrokerExchange
+name|producerExchange
 parameter_list|,
 name|Message
 name|message
@@ -279,13 +307,13 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Used to acknowledge the receipt of a message by a client.      * @param context the environment the operation is being executed under.      * @throws Exception TODO      */
+comment|/**      * Used to acknowledge the receipt of a message by a client.      * @param consumerExchange the environment the operation is being executed under.      * @throws Exception TODO      */
 specifier|public
 name|void
 name|acknowledge
 parameter_list|(
-name|ConnectionContext
-name|context
+name|ConsumerBrokerExchange
+name|consumerExchange
 parameter_list|,
 name|MessageAck
 name|ack

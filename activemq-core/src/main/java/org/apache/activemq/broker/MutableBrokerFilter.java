@@ -463,8 +463,8 @@ specifier|public
 name|void
 name|acknowledge
 parameter_list|(
-name|ConnectionContext
-name|context
+name|ConsumerBrokerExchange
+name|consumerExchange
 parameter_list|,
 name|MessageAck
 name|ack
@@ -477,7 +477,7 @@ argument_list|()
 operator|.
 name|acknowledge
 argument_list|(
-name|context
+name|consumerExchange
 argument_list|,
 name|ack
 argument_list|)
@@ -760,8 +760,8 @@ specifier|public
 name|void
 name|send
 parameter_list|(
-name|ConnectionContext
-name|context
+name|ProducerBrokerExchange
+name|producerExchange
 parameter_list|,
 name|Message
 name|messageSend
@@ -774,7 +774,7 @@ argument_list|()
 operator|.
 name|send
 argument_list|(
-name|context
+name|producerExchange
 argument_list|,
 name|messageSend
 argument_list|)

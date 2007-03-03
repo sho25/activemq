@@ -57,8 +57,8 @@ specifier|public
 name|void
 name|send
 parameter_list|(
-name|ConnectionContext
-name|context
+name|ProducerBrokerExchange
+name|producerExchange
 parameter_list|,
 name|Message
 name|messageSend
@@ -66,6 +66,15 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+specifier|final
+name|ConnectionContext
+name|context
+init|=
+name|producerExchange
+operator|.
+name|getConnectionContext
+argument_list|()
+decl_stmt|;
 name|String
 name|userID
 init|=
@@ -85,7 +94,7 @@ name|super
 operator|.
 name|send
 argument_list|(
-name|context
+name|producerExchange
 argument_list|,
 name|messageSend
 argument_list|)

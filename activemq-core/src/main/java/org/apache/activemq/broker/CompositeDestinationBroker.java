@@ -292,8 +292,8 @@ specifier|public
 name|void
 name|send
 parameter_list|(
-name|ConnectionContext
-name|context
+name|ProducerBrokerExchange
+name|producerExchange
 parameter_list|,
 name|Message
 name|message
@@ -384,7 +384,7 @@ name|next
 operator|.
 name|send
 argument_list|(
-name|context
+name|producerExchange
 argument_list|,
 name|message
 argument_list|)
@@ -397,7 +397,7 @@ name|next
 operator|.
 name|send
 argument_list|(
-name|context
+name|producerExchange
 argument_list|,
 name|message
 argument_list|)

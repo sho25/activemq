@@ -418,6 +418,43 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+specifier|final
+name|ProducerBrokerExchange
+name|producerExchange
+init|=
+operator|new
+name|ProducerBrokerExchange
+argument_list|()
+decl_stmt|;
+name|producerExchange
+operator|.
+name|setMutable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|producerExchange
+operator|.
+name|setConnectionContext
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
+specifier|final
+name|ConsumerBrokerExchange
+name|consumerExchange
+init|=
+operator|new
+name|ConsumerBrokerExchange
+argument_list|()
+decl_stmt|;
+name|consumerExchange
+operator|.
+name|setConnectionContext
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
 name|transactionStore
 operator|.
 name|recover
@@ -470,7 +507,7 @@ control|)
 block|{
 name|send
 argument_list|(
-name|context
+name|producerExchange
 argument_list|,
 name|addedMessages
 index|[
@@ -498,7 +535,7 @@ control|)
 block|{
 name|acknowledge
 argument_list|(
-name|context
+name|consumerExchange
 argument_list|,
 name|aks
 index|[
@@ -967,8 +1004,8 @@ specifier|public
 name|void
 name|acknowledge
 parameter_list|(
-name|ConnectionContext
-name|context
+name|ConsumerBrokerExchange
+name|consumerExchange
 parameter_list|,
 name|MessageAck
 name|ack
@@ -978,6 +1015,15 @@ name|Exception
 block|{
 comment|// This method may be invoked recursively.
 comment|// Track original tx so that it can be restored.
+specifier|final
+name|ConnectionContext
+name|context
+init|=
+name|consumerExchange
+operator|.
+name|getConnectionContext
+argument_list|()
+decl_stmt|;
 name|Transaction
 name|originalTx
 init|=
@@ -1027,7 +1073,7 @@ name|next
 operator|.
 name|acknowledge
 argument_list|(
-name|context
+name|consumerExchange
 argument_list|,
 name|ack
 argument_list|)
@@ -1048,8 +1094,8 @@ specifier|public
 name|void
 name|send
 parameter_list|(
-name|ConnectionContext
-name|context
+name|ProducerBrokerExchange
+name|producerExchange
 parameter_list|,
 name|Message
 name|message
@@ -1059,6 +1105,15 @@ name|Exception
 block|{
 comment|// This method may be invoked recursively.
 comment|// Track original tx so that it can be restored.
+specifier|final
+name|ConnectionContext
+name|context
+init|=
+name|producerExchange
+operator|.
+name|getConnectionContext
+argument_list|()
+decl_stmt|;
 name|Transaction
 name|originalTx
 init|=
@@ -1110,7 +1165,7 @@ name|next
 operator|.
 name|send
 argument_list|(
-name|context
+name|producerExchange
 argument_list|,
 name|message
 argument_list|)

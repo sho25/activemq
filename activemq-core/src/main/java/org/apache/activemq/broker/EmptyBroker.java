@@ -685,8 +685,8 @@ specifier|public
 name|void
 name|send
 parameter_list|(
-name|ConnectionContext
-name|context
+name|ProducerBrokerExchange
+name|producerExchange
 parameter_list|,
 name|Message
 name|message
@@ -698,8 +698,8 @@ specifier|public
 name|void
 name|acknowledge
 parameter_list|(
-name|ConnectionContext
-name|context
+name|ConsumerBrokerExchange
+name|consumerExchange
 parameter_list|,
 name|MessageAck
 name|ack
