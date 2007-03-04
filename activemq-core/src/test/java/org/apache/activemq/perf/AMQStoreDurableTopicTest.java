@@ -55,22 +55,6 @@ name|AMQPersistenceAdapter
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|store
-operator|.
-name|quick
-operator|.
-name|QuickPersistenceAdapter
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version $Revision: 1.3 $  */
 end_comment
@@ -106,7 +90,9 @@ name|adaptor
 init|=
 operator|new
 name|AMQPersistenceAdapter
-argument_list|()
+argument_list|(
+literal|"localhost"
+argument_list|)
 decl_stmt|;
 name|adaptor
 operator|.
@@ -124,16 +110,16 @@ argument_list|)
 expr_stmt|;
 name|answer
 operator|.
-name|addConnector
+name|setDeleteAllMessagesOnStartup
 argument_list|(
-name|bindAddress
+literal|true
 argument_list|)
 expr_stmt|;
 name|answer
 operator|.
-name|setDeleteAllMessagesOnStartup
+name|addConnector
 argument_list|(
-literal|true
+name|bindAddress
 argument_list|)
 expr_stmt|;
 block|}
