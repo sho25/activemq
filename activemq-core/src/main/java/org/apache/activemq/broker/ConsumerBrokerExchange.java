@@ -88,6 +88,10 @@ specifier|private
 name|Subscription
 name|subscription
 decl_stmt|;
+specifier|private
+name|boolean
+name|wildcard
+decl_stmt|;
 comment|/**      * @return the connectionContext      */
 specifier|public
 name|ConnectionContext
@@ -198,6 +202,34 @@ operator|.
 name|subscription
 operator|=
 name|subscription
+expr_stmt|;
+block|}
+comment|/**      * @return the wildcard      */
+specifier|public
+name|boolean
+name|isWildcard
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|wildcard
+return|;
+block|}
+comment|/**      * @param wildcard the wildcard to set      */
+specifier|public
+name|void
+name|setWildcard
+parameter_list|(
+name|boolean
+name|wildcard
+parameter_list|)
+block|{
+name|this
+operator|.
+name|wildcard
+operator|=
+name|wildcard
 expr_stmt|;
 block|}
 block|}

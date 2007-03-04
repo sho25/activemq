@@ -2318,6 +2318,11 @@ if|if
 condition|(
 name|consumerExchange
 operator|.
+name|isWildcard
+argument_list|()
+operator|||
+name|consumerExchange
+operator|.
 name|getRegion
 argument_list|()
 operator|==
