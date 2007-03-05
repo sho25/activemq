@@ -1777,6 +1777,12 @@ name|context
 operator|.
 name|isProducerFlowControl
 argument_list|()
+operator|&&
+operator|!
+name|context
+operator|.
+name|isNetworkConnection
+argument_list|()
 condition|)
 block|{
 if|if
