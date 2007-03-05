@@ -495,7 +495,7 @@ operator|new
 name|BrokerService
 argument_list|()
 decl_stmt|;
-name|broker
+name|answer
 operator|.
 name|setBrokerName
 argument_list|(
