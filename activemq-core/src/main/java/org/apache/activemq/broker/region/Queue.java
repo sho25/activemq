@@ -1812,11 +1812,35 @@ throw|;
 block|}
 else|else
 block|{
+while|while
+condition|(
+operator|!
 name|usageManager
 operator|.
 name|waitForSpace
+argument_list|(
+literal|1000
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|context
+operator|.
+name|getStopping
 argument_list|()
-expr_stmt|;
+operator|.
+name|get
+argument_list|()
+condition|)
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Connection closed, send aborted."
+argument_list|)
+throw|;
+block|}
 comment|// The usage manager could have delayed us by the time
 comment|// we unblock the message could have expired..
 if|if

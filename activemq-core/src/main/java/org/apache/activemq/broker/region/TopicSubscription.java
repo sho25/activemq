@@ -1058,6 +1058,10 @@ block|{
 if|if
 condition|(
 name|singleDestination
+operator|&&
+name|destination
+operator|!=
+literal|null
 condition|)
 block|{
 name|destination
@@ -1108,6 +1112,10 @@ block|{
 if|if
 condition|(
 name|singleDestination
+operator|&&
+name|destination
+operator|!=
+literal|null
 condition|)
 block|{
 name|destination
