@@ -2992,398 +2992,89 @@ name|connection1
 argument_list|)
 expr_stmt|;
 block|}
-specifier|public
-name|void
-name|initCombosForTestTempDestinationsRemovedOnConnectionClose
-parameter_list|()
-block|{
-name|addCombinationValues
-argument_list|(
-literal|"deliveryMode"
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-operator|new
-name|Integer
-argument_list|(
-name|DeliveryMode
-operator|.
-name|NON_PERSISTENT
-argument_list|)
-block|,
-operator|new
-name|Integer
-argument_list|(
-name|DeliveryMode
-operator|.
-name|PERSISTENT
-argument_list|)
-block|}
-argument_list|)
-expr_stmt|;
-name|addCombinationValues
-argument_list|(
-literal|"destinationType"
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-operator|new
-name|Byte
-argument_list|(
-name|ActiveMQDestination
-operator|.
-name|TEMP_QUEUE_TYPE
-argument_list|)
-block|,
-operator|new
-name|Byte
-argument_list|(
-name|ActiveMQDestination
-operator|.
-name|TEMP_TOPIC_TYPE
-argument_list|)
-block|}
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testTempDestinationsRemovedOnConnectionClose
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// Setup a first connection
-name|StubConnection
-name|connection1
-init|=
-name|createConnection
-argument_list|()
-decl_stmt|;
-name|ConnectionInfo
-name|connectionInfo1
-init|=
-name|createConnectionInfo
-argument_list|()
-decl_stmt|;
-name|SessionInfo
-name|sessionInfo1
-init|=
-name|createSessionInfo
-argument_list|(
-name|connectionInfo1
-argument_list|)
-decl_stmt|;
-name|ProducerInfo
-name|producerInfo1
-init|=
-name|createProducerInfo
-argument_list|(
-name|sessionInfo1
-argument_list|)
-decl_stmt|;
-name|connection1
-operator|.
-name|send
-argument_list|(
-name|connectionInfo1
-argument_list|)
-expr_stmt|;
-name|connection1
-operator|.
-name|send
-argument_list|(
-name|sessionInfo1
-argument_list|)
-expr_stmt|;
-name|connection1
-operator|.
-name|send
-argument_list|(
-name|producerInfo1
-argument_list|)
-expr_stmt|;
-name|destination
-operator|=
-name|createDestinationInfo
-argument_list|(
-name|connection1
-argument_list|,
-name|connectionInfo1
-argument_list|,
-name|destinationType
-argument_list|)
-expr_stmt|;
-name|StubConnection
-name|connection2
-init|=
-name|createConnection
-argument_list|()
-decl_stmt|;
-name|ConnectionInfo
-name|connectionInfo2
-init|=
-name|createConnectionInfo
-argument_list|()
-decl_stmt|;
-name|SessionInfo
-name|sessionInfo2
-init|=
-name|createSessionInfo
-argument_list|(
-name|connectionInfo2
-argument_list|)
-decl_stmt|;
-name|ProducerInfo
-name|producerInfo2
-init|=
-name|createProducerInfo
-argument_list|(
-name|sessionInfo2
-argument_list|)
-decl_stmt|;
-name|connection2
-operator|.
-name|send
-argument_list|(
-name|connectionInfo2
-argument_list|)
-expr_stmt|;
-name|connection2
-operator|.
-name|send
-argument_list|(
-name|sessionInfo2
-argument_list|)
-expr_stmt|;
-name|connection2
-operator|.
-name|send
-argument_list|(
-name|producerInfo2
-argument_list|)
-expr_stmt|;
-comment|// Send from connection2 to connection1's temp destination.  Should succeed.
-name|connection2
-operator|.
-name|send
-argument_list|(
-name|createMessage
-argument_list|(
-name|producerInfo2
-argument_list|,
-name|destination
-argument_list|,
-name|deliveryMode
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// Close connection 1
-name|connection1
-operator|.
-name|request
-argument_list|(
-name|closeConnectionInfo
-argument_list|(
-name|connectionInfo1
-argument_list|)
-argument_list|)
-expr_stmt|;
-try|try
-block|{
-comment|// Send from connection2 to connection1's temp destination.  Should not succeed.
-name|connection2
-operator|.
-name|request
-argument_list|(
-name|createMessage
-argument_list|(
-name|producerInfo2
-argument_list|,
-name|destination
-argument_list|,
-name|deliveryMode
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected JMSException."
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|JMSException
-name|success
-parameter_list|)
-block|{         }
-block|}
-specifier|public
-name|void
-name|initCombosForTestTempDestinationsAreNotAutoCreated
-parameter_list|()
-block|{
-name|addCombinationValues
-argument_list|(
-literal|"deliveryMode"
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-operator|new
-name|Integer
-argument_list|(
-name|DeliveryMode
-operator|.
-name|NON_PERSISTENT
-argument_list|)
-block|,
-operator|new
-name|Integer
-argument_list|(
-name|DeliveryMode
-operator|.
-name|PERSISTENT
-argument_list|)
-block|}
-argument_list|)
-expr_stmt|;
-name|addCombinationValues
-argument_list|(
-literal|"destinationType"
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-operator|new
-name|Byte
-argument_list|(
-name|ActiveMQDestination
-operator|.
-name|TEMP_QUEUE_TYPE
-argument_list|)
-block|,
-operator|new
-name|Byte
-argument_list|(
-name|ActiveMQDestination
-operator|.
-name|TEMP_TOPIC_TYPE
-argument_list|)
-block|}
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testTempDestinationsAreNotAutoCreated
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// Setup a first connection
-name|StubConnection
-name|connection1
-init|=
-name|createConnection
-argument_list|()
-decl_stmt|;
-name|ConnectionInfo
-name|connectionInfo1
-init|=
-name|createConnectionInfo
-argument_list|()
-decl_stmt|;
-name|SessionInfo
-name|sessionInfo1
-init|=
-name|createSessionInfo
-argument_list|(
-name|connectionInfo1
-argument_list|)
-decl_stmt|;
-name|ProducerInfo
-name|producerInfo1
-init|=
-name|createProducerInfo
-argument_list|(
-name|sessionInfo1
-argument_list|)
-decl_stmt|;
-name|connection1
-operator|.
-name|send
-argument_list|(
-name|connectionInfo1
-argument_list|)
-expr_stmt|;
-name|connection1
-operator|.
-name|send
-argument_list|(
-name|sessionInfo1
-argument_list|)
-expr_stmt|;
-name|connection1
-operator|.
-name|send
-argument_list|(
-name|producerInfo1
-argument_list|)
-expr_stmt|;
-name|destination
-operator|=
-name|ActiveMQDestination
-operator|.
-name|createDestination
-argument_list|(
-name|connectionInfo1
-operator|.
-name|getConnectionId
-argument_list|()
-operator|+
-literal|":1"
-argument_list|,
-name|destinationType
-argument_list|)
-expr_stmt|;
-comment|// Should not be able to send to a non-existant temp destination.
-try|try
-block|{
-name|connection1
-operator|.
-name|request
-argument_list|(
-name|createMessage
-argument_list|(
-name|producerInfo1
-argument_list|,
-name|destination
-argument_list|,
-name|deliveryMode
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected JMSException."
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|JMSException
-name|success
-parameter_list|)
-block|{         }
-block|}
+comment|//
+comment|//  TODO: need to reimplement this since we don't fail when we send to a non-existant
+comment|//  destination.  But if we can access the Region directly then we should be able to
+comment|//  check that if the destination was removed.
+comment|//
+comment|//    public void initCombosForTestTempDestinationsRemovedOnConnectionClose() {
+comment|//        addCombinationValues( "deliveryMode", new Object[]{
+comment|//                new Integer(DeliveryMode.NON_PERSISTENT),
+comment|//                new Integer(DeliveryMode.PERSISTENT)} );
+comment|//        addCombinationValues( "destinationType", new Object[]{
+comment|//                new Byte(ActiveMQDestination.TEMP_QUEUE_TYPE),
+comment|//                new Byte(ActiveMQDestination.TEMP_TOPIC_TYPE)} );
+comment|//    }
+comment|//
+comment|//    public void testTempDestinationsRemovedOnConnectionClose() throws Exception {
+comment|//
+comment|//        // Setup a first connection
+comment|//        StubConnection connection1 = createConnection();
+comment|//        ConnectionInfo connectionInfo1 = createConnectionInfo();
+comment|//        SessionInfo sessionInfo1 = createSessionInfo(connectionInfo1);
+comment|//        ProducerInfo producerInfo1 = createProducerInfo(sessionInfo1);
+comment|//        connection1.send(connectionInfo1);
+comment|//        connection1.send(sessionInfo1);
+comment|//        connection1.send(producerInfo1);
+comment|//
+comment|//        destination = createDestinationInfo(connection1, connectionInfo1, destinationType);
+comment|//
+comment|//        StubConnection connection2 = createConnection();
+comment|//        ConnectionInfo connectionInfo2 = createConnectionInfo();
+comment|//        SessionInfo sessionInfo2 = createSessionInfo(connectionInfo2);
+comment|//        ProducerInfo producerInfo2 = createProducerInfo(sessionInfo2);
+comment|//        connection2.send(connectionInfo2);
+comment|//        connection2.send(sessionInfo2);
+comment|//        connection2.send(producerInfo2);
+comment|//
+comment|//        // Send from connection2 to connection1's temp destination.  Should succeed.
+comment|//        connection2.send(createMessage(producerInfo2, destination, deliveryMode));
+comment|//
+comment|//        // Close connection 1
+comment|//        connection1.request(closeConnectionInfo(connectionInfo1));
+comment|//
+comment|//        try {
+comment|//            // Send from connection2 to connection1's temp destination.  Should not succeed.
+comment|//            connection2.request(createMessage(producerInfo2, destination, deliveryMode));
+comment|//            fail("Expected JMSException.");
+comment|//        } catch ( JMSException success ) {
+comment|//        }
+comment|//
+comment|//    }
+comment|//    public void initCombosForTestTempDestinationsAreNotAutoCreated() {
+comment|//        addCombinationValues( "deliveryMode", new Object[]{
+comment|//                new Integer(DeliveryMode.NON_PERSISTENT),
+comment|//                new Integer(DeliveryMode.PERSISTENT)} );
+comment|//        addCombinationValues( "destinationType", new Object[]{
+comment|//                new Byte(ActiveMQDestination.TEMP_QUEUE_TYPE),
+comment|//                new Byte(ActiveMQDestination.TEMP_TOPIC_TYPE)} );
+comment|//    }
+comment|//
+comment|//
+comment|//  We create temp destination on demand now so this test case is no longer
+comment|//  valid.
+comment|//
+comment|//    public void testTempDestinationsAreNotAutoCreated() throws Exception {
+comment|//
+comment|//        // Setup a first connection
+comment|//        StubConnection connection1 = createConnection();
+comment|//        ConnectionInfo connectionInfo1 = createConnectionInfo();
+comment|//        SessionInfo sessionInfo1 = createSessionInfo(connectionInfo1);
+comment|//        ProducerInfo producerInfo1 = createProducerInfo(sessionInfo1);
+comment|//        connection1.send(connectionInfo1);
+comment|//        connection1.send(sessionInfo1);
+comment|//        connection1.send(producerInfo1);
+comment|//
+comment|//        destination = ActiveMQDestination.createDestination(connectionInfo1.getConnectionId()+":1", destinationType);
+comment|//
+comment|//        // Should not be able to send to a non-existant temp destination.
+comment|//        try {
+comment|//            connection1.request(createMessage(producerInfo1, destination, deliveryMode));
+comment|//            fail("Expected JMSException.");
+comment|//        } catch ( JMSException success ) {
+comment|//        }
+comment|//
+comment|//    }
 specifier|public
 name|void
 name|initCombosForTestTempDestinationsOnlyAllowsLocalConsumers

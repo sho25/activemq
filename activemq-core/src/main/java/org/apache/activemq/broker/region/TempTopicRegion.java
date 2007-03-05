@@ -49,6 +49,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|ActiveMQDestination
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|broker
 operator|.
 name|region
@@ -219,11 +233,8 @@ argument_list|,
 name|destinationFactory
 argument_list|)
 expr_stmt|;
-name|setAutoCreateDestinations
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
+comment|// We should allow the following to be configurable via a Destination Policy
+comment|// setAutoCreateDestinations(false);
 block|}
 specifier|protected
 name|Subscription
@@ -401,6 +412,47 @@ argument_list|()
 operator|+
 literal|"%"
 return|;
+block|}
+specifier|public
+name|void
+name|removeDestination
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|ActiveMQDestination
+name|destination
+parameter_list|,
+name|long
+name|timeout
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+comment|// Force a timeout value so that we don't get an error that
+comment|// there is still an active sub.  Temp destination may be removed
+comment|// while a network sub is still active which is valid.
+if|if
+condition|(
+name|timeout
+operator|==
+literal|0
+condition|)
+name|timeout
+operator|=
+literal|1
+expr_stmt|;
+name|super
+operator|.
+name|removeDestination
+argument_list|(
+name|context
+argument_list|,
+name|destination
+argument_list|,
+name|timeout
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

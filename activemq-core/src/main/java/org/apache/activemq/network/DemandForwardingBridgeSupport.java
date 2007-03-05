@@ -2102,6 +2102,14 @@ argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+comment|// Let the local broker know the remote broker's ID.
+name|localBroker
+operator|.
+name|oneway
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if

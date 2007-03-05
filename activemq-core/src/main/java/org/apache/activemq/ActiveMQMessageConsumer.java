@@ -3633,6 +3633,26 @@ return|return
 literal|false
 return|;
 block|}
+specifier|public
+name|boolean
+name|isInUse
+parameter_list|(
+name|ActiveMQTempDestination
+name|destination
+parameter_list|)
+block|{
+return|return
+name|info
+operator|.
+name|getDestination
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|destination
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
