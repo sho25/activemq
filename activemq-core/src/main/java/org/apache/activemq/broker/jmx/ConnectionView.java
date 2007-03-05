@@ -213,6 +213,18 @@ name|getRemoteAddress
 argument_list|()
 return|;
 block|}
+specifier|public
+name|String
+name|getConnectionId
+parameter_list|()
+block|{
+return|return
+name|connection
+operator|.
+name|getConnectionId
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

@@ -190,6 +190,11 @@ name|IOException
 name|e
 parameter_list|)
 function_decl|;
+specifier|public
+name|String
+name|getConnectionId
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
