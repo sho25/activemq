@@ -2256,6 +2256,8 @@ condition|(
 name|isConnectionInfoSentToBroker
 condition|)
 block|{
+comment|// If we announced ourselfs to the broker.. Try to let the broker
+comment|// know that the connection is being shutdown.
 name|syncSendPacket
 argument_list|(
 name|info
@@ -2266,7 +2268,6 @@ argument_list|,
 name|closeTimeout
 argument_list|)
 expr_stmt|;
-block|}
 name|asyncSendPacket
 argument_list|(
 operator|new
@@ -2274,6 +2275,7 @@ name|ShutdownInfo
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|ServiceSupport
 operator|.
 name|dispose
