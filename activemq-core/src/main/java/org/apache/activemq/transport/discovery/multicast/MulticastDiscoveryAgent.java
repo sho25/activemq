@@ -1361,6 +1361,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|currentTime
+operator|<
+name|lastAdvertizeTime
+operator|||
+operator|(
 operator|(
 name|currentTime
 operator|-
@@ -1368,6 +1373,7 @@ name|keepAliveInterval
 operator|)
 operator|>
 name|lastAdvertizeTime
+operator|)
 condition|)
 block|{
 name|doAdvertizeSelf
