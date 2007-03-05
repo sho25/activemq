@@ -129,6 +129,23 @@ operator|=
 name|messageId
 expr_stmt|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ReferenceRecord(id="
+operator|+
+name|messageId
+operator|+
+literal|",data="
+operator|+
+name|data
+operator|+
+literal|")"
+return|;
+block|}
 block|}
 end_class
 
