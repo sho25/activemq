@@ -98,7 +98,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link PersistenceAdapterFactory}  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.17 $  */
+comment|/**  * An implementation of {@link PersistenceAdapterFactory}  *   * @org.apache.xbean.XBean element="amqPersistenceAdapterFactory"  *   * @version $Revision: 1.17 $  */
 end_comment
 
 begin_class
@@ -168,6 +168,14 @@ operator|.
 name|setBrokerName
 argument_list|(
 name|getBrokerName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|result
+operator|.
+name|setReferenceStoreAdapter
+argument_list|(
+name|getReferenceStoreAdapter
 argument_list|()
 argument_list|)
 expr_stmt|;
