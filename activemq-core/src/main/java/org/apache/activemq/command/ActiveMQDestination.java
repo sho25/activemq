@@ -1133,7 +1133,7 @@ literal|'*'
 operator|||
 name|c
 operator|==
-literal|'.'
+literal|'>'
 operator|)
 condition|)
 block|{
