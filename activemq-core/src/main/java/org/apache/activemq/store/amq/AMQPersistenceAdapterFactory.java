@@ -63,6 +63,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|store
+operator|.
+name|ReferenceStoreAdapter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|thread
 operator|.
 name|TaskRunnerFactory
@@ -115,6 +129,10 @@ name|String
 name|brokerName
 init|=
 literal|"localhost"
+decl_stmt|;
+specifier|private
+name|ReferenceStoreAdapter
+name|referenceStoreAdapter
 decl_stmt|;
 comment|/**      * @return a AMQPersistenceAdapter      * @see org.apache.activemq.store.PersistenceAdapterFactory#createPersistenceAdapter()      */
 specifier|public
@@ -312,6 +330,34 @@ operator|.
 name|brokerName
 operator|=
 name|brokerName
+expr_stmt|;
+block|}
+comment|/**      * @return the referenceStoreAdapter      */
+specifier|public
+name|ReferenceStoreAdapter
+name|getReferenceStoreAdapter
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|referenceStoreAdapter
+return|;
+block|}
+comment|/**      * @param referenceStoreAdapter the referenceStoreAdapter to set      */
+specifier|public
+name|void
+name|setReferenceStoreAdapter
+parameter_list|(
+name|ReferenceStoreAdapter
+name|referenceStoreAdapter
+parameter_list|)
+block|{
+name|this
+operator|.
+name|referenceStoreAdapter
+operator|=
+name|referenceStoreAdapter
 expr_stmt|;
 block|}
 block|}

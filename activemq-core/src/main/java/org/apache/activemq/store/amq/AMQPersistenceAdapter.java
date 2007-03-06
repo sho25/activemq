@@ -3553,6 +3553,22 @@ operator|=
 name|syncOnWrite
 expr_stmt|;
 block|}
+comment|/**      * @param referenceStoreAdapter the referenceStoreAdapter to set      */
+specifier|public
+name|void
+name|setReferenceStoreAdapter
+parameter_list|(
+name|ReferenceStoreAdapter
+name|referenceStoreAdapter
+parameter_list|)
+block|{
+name|this
+operator|.
+name|referenceStoreAdapter
+operator|=
+name|referenceStoreAdapter
+expr_stmt|;
+block|}
 block|}
 end_class
 
