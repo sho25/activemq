@@ -186,9 +186,7 @@ name|adaptor
 init|=
 operator|new
 name|AMQPersistenceAdapter
-argument_list|(
-literal|"localhost"
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|answer
 operator|.

@@ -153,15 +153,7 @@ name|kahaAdaptor
 init|=
 operator|new
 name|KahaPersistenceAdapter
-argument_list|(
-operator|new
-name|File
-argument_list|(
-name|dataFileDir
-argument_list|,
-literal|"kaha"
-argument_list|)
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|JournalPersistenceAdapter
 name|journalAdaptor

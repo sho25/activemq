@@ -343,6 +343,15 @@ argument_list|(
 literal|1000
 argument_list|)
 expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"MASTER STOPPED!@!!!!"
+argument_list|)
+expr_stmt|;
 name|master
 operator|.
 name|stop

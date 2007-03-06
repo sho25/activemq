@@ -185,7 +185,9 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|DefaultPersistenceAdapterFactory
+name|journal
+operator|.
+name|JournalPersistenceAdapterFactory
 import|;
 end_import
 
@@ -354,16 +356,10 @@ name|setPersistenceAdapter
 argument_list|(
 operator|new
 name|KahaPersistenceAdapter
-argument_list|(
-operator|new
-name|File
-argument_list|(
-literal|"TEST_STUFD"
-argument_list|)
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/*         DefaultPersistenceAdapterFactory factory = new DefaultPersistenceAdapterFactory();         factory.setDataDirectoryFile(broker.getDataDirectory());         factory.setTaskRunnerFactory(broker.getTaskRunnerFactory());         factory.setUseJournal(false);         broker.setPersistenceFactory(factory);         */
+comment|/*         JournalPersistenceAdapterFactory factory = new JournalPersistenceAdapterFactory();         factory.setDataDirectoryFile(broker.getDataDirectory());         factory.setTaskRunnerFactory(broker.getTaskRunnerFactory());         factory.setUseJournal(false);         broker.setPersistenceFactory(factory);         */
 name|broker
 operator|.
 name|addConnector

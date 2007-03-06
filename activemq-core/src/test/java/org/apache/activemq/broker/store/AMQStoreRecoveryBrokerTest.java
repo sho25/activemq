@@ -65,9 +65,9 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|quick
+name|amq
 operator|.
-name|QuickPersistenceAdapter
+name|AMQPersistenceAdapter
 import|;
 end_import
 
@@ -78,7 +78,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|QuickStoreRecoveryBrokerTest
+name|AMQStoreRecoveryBrokerTest
 extends|extends
 name|RecoveryBrokerTest
 block|{
@@ -103,11 +103,11 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|QuickPersistenceAdapter
+name|AMQPersistenceAdapter
 name|pa
 init|=
 operator|new
-name|QuickPersistenceAdapter
+name|AMQPersistenceAdapter
 argument_list|()
 decl_stmt|;
 name|service
@@ -135,11 +135,11 @@ operator|new
 name|BrokerService
 argument_list|()
 decl_stmt|;
-name|QuickPersistenceAdapter
+name|AMQPersistenceAdapter
 name|pa
 init|=
 operator|new
-name|QuickPersistenceAdapter
+name|AMQPersistenceAdapter
 argument_list|()
 decl_stmt|;
 name|service
@@ -162,7 +162,7 @@ block|{
 return|return
 name|suite
 argument_list|(
-name|QuickStoreRecoveryBrokerTest
+name|AMQStoreRecoveryBrokerTest
 operator|.
 name|class
 argument_list|)

@@ -474,7 +474,7 @@ name|Exception
 function_decl|;
 specifier|public
 name|void
-name|testUnsubscribeSubscription
+name|XtestUnsubscribeSubscription
 parameter_list|()
 throws|throws
 name|Exception
@@ -673,7 +673,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testInactiveDurableSubscriptionTwoConnections
+name|XtestInactiveDurableSubscriptionTwoConnections
 parameter_list|()
 throws|throws
 name|Exception
@@ -844,7 +844,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testInactiveDurableSubscriptionBrokerRestart
+name|XtestInactiveDurableSubscriptionBrokerRestart
 parameter_list|()
 throws|throws
 name|Exception
@@ -1189,7 +1189,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testInactiveDurableSubscriptionOneConnection
+name|XtestInactiveDurableSubscriptionOneConnection
 parameter_list|()
 throws|throws
 name|Exception
@@ -1327,7 +1327,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|xtestSelectorChange
+name|XtestSelectorChange
 parameter_list|()
 throws|throws
 name|Exception
@@ -1548,7 +1548,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testDurableSubWorksInNewSession
+name|XtestDurableSubWorksInNewSession
 parameter_list|()
 throws|throws
 name|JMSException
@@ -1698,7 +1698,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testDurableSubWorksInNewConnection
+name|XtestDurableSubWorksInNewConnection
 parameter_list|()
 throws|throws
 name|Exception

@@ -17,16 +17,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -82,13 +72,7 @@ name|adaptor
 init|=
 operator|new
 name|KahaPersistenceAdapter
-argument_list|(
-operator|new
-name|File
-argument_list|(
-literal|"target/test-amq-data/perfTest"
-argument_list|)
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|answer
 operator|.

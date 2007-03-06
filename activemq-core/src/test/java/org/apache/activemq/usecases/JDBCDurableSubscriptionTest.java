@@ -45,7 +45,7 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|DefaultPersistenceAdapterFactory
+name|PersistenceAdapter
 import|;
 end_import
 
@@ -59,7 +59,9 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|PersistenceAdapter
+name|journal
+operator|.
+name|JournalPersistenceAdapterFactory
 import|;
 end_import
 
@@ -90,11 +92,11 @@ argument_list|(
 literal|"target/test-data/durableJDBC"
 argument_list|)
 decl_stmt|;
-name|DefaultPersistenceAdapterFactory
+name|JournalPersistenceAdapterFactory
 name|factory
 init|=
 operator|new
-name|DefaultPersistenceAdapterFactory
+name|JournalPersistenceAdapterFactory
 argument_list|()
 decl_stmt|;
 name|factory

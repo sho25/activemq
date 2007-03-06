@@ -2234,6 +2234,17 @@ operator|.
 name|getDestination
 argument_list|()
 decl_stmt|;
+comment|//ensure the destination is registered with the RegionBroker
+name|addDestination
+argument_list|(
+name|producerExchange
+operator|.
+name|getConnectionContext
+argument_list|()
+argument_list|,
+name|destination
+argument_list|)
+expr_stmt|;
 name|Region
 name|region
 init|=

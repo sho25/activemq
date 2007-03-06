@@ -97,10 +97,15 @@ name|adaptor
 init|=
 operator|new
 name|KahaPersistenceAdapter
+argument_list|()
+decl_stmt|;
+name|adaptor
+operator|.
+name|setDirectory
 argument_list|(
 name|dataDir
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 return|return
 name|adaptor
 return|;
