@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -27,9 +37,7 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|tcp
-operator|.
-name|TcpTransportFactory
+name|Transport
 import|;
 end_import
 
@@ -57,9 +65,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|transport
+name|util
 operator|.
-name|Transport
+name|IntrospectionSupport
 import|;
 end_import
 
@@ -74,16 +82,6 @@ operator|.
 name|wireformat
 operator|.
 name|WireFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
 import|;
 end_import
 
@@ -131,6 +129,15 @@ argument_list|,
 operator|new
 name|LegacyFrameTranslator
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|IntrospectionSupport
+operator|.
+name|setProperties
+argument_list|(
+name|transport
+argument_list|,
+name|options
 argument_list|)
 expr_stmt|;
 return|return
