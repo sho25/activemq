@@ -103,6 +103,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -128,7 +138,7 @@ name|PersistenceAdapter
 extends|extends
 name|Service
 block|{
-comment|/**      * Returns a set of all the {@link org.apache.activemq.command.ActiveMQDestination}      * objects that the persistence store is aware exist.      *      * @return      */
+comment|/**      * Returns a set of all the {@link org.apache.activemq.command.ActiveMQDestination}      * objects that the persistence store is aware exist.      *      * @return active destinations      */
 specifier|public
 name|Set
 argument_list|<
@@ -137,7 +147,7 @@ argument_list|>
 name|getDestinations
 parameter_list|()
 function_decl|;
-comment|/**      * Factory method to create a new queue message store with the given destination name      */
+comment|/**      * Factory method to create a new queue message store with the given destination name      * @param destination      * @return the message store      * @throws IOException       */
 specifier|public
 name|MessageStore
 name|createQueueMessageStore
@@ -148,7 +158,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Factory method to create a new topic message store with the given destination name      */
+comment|/**      * Factory method to create a new topic message store with the given destination name      * @param destination       * @return the topic message store      * @throws IOException       */
 specifier|public
 name|TopicMessageStore
 name|createTopicMessageStore
@@ -159,7 +169,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Factory method to create a new persistent prepared transaction store for XA recovery      */
+comment|/**      * Factory method to create a new persistent prepared transaction store for XA recovery      * @return transaction store      * @throws IOException       */
 specifier|public
 name|TransactionStore
 name|createTransactionStore
@@ -167,7 +177,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * This method starts a transaction on the persistent storage - which is nothing to      * do with JMS or XA transactions - its purely a mechanism to perform multiple writes      * to a persistent store in 1 transaction as a performance optimization.      *<p/>      * Typically one transaction will require one disk synchronization point and so for      * real high performance its usually faster to perform many writes within the same      * transaction to minimize latency caused by disk synchronization. This is especially      * true when using tools like Berkeley Db or embedded JDBC servers.      */
+comment|/**      * This method starts a transaction on the persistent storage - which is nothing to      * do with JMS or XA transactions - its purely a mechanism to perform multiple writes      * to a persistent store in 1 transaction as a performance optimization.      *<p/>      * Typically one transaction will require one disk synchronization point and so for      * real high performance its usually faster to perform many writes within the same      * transaction to minimize latency caused by disk synchronization. This is especially      * true when using tools like Berkeley Db or embedded JDBC servers.      * @param context       * @throws IOException       */
 specifier|public
 name|void
 name|beginTransaction
@@ -178,7 +188,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Commit a persistence transaction      *      * @see PersistenceAdapter#beginTransaction()      */
+comment|/**      * Commit a persistence transaction      * @param context       * @throws IOException       *      * @see PersistenceAdapter#beginTransaction(ConnectionContext context)      */
 specifier|public
 name|void
 name|commitTransaction
@@ -189,7 +199,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Rollback a persistence transaction      *      * @see PersistenceAdapter#beginTransaction()      */
+comment|/**      * Rollback a persistence transaction      * @param context       * @throws IOException       *      * @see PersistenceAdapter#beginTransaction(ConnectionContext context)      */
 specifier|public
 name|void
 name|rollbackTransaction
@@ -200,7 +210,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      *       * @return      * @throws IOException      */
+comment|/**      *       * @return last broker sequence      * @throws IOException      */
 specifier|public
 name|long
 name|getLastMessageBrokerSequenceId
@@ -224,6 +234,35 @@ parameter_list|(
 name|UsageManager
 name|usageManager
 parameter_list|)
+function_decl|;
+comment|/**      * Set the name of the broker using the adapter      * @param brokerName      */
+specifier|public
+name|void
+name|setBrokerName
+parameter_list|(
+name|String
+name|brokerName
+parameter_list|)
+function_decl|;
+comment|/**      * Set the directory where any data files should be created      * @param dir      */
+specifier|public
+name|void
+name|setDirectory
+parameter_list|(
+name|File
+name|dir
+parameter_list|)
+function_decl|;
+comment|/**      * checkpoint any      * @param sync       * @throws IOException       *      */
+specifier|public
+name|void
+name|checkpoint
+parameter_list|(
+name|boolean
+name|sync
+parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 block|}
 end_interface

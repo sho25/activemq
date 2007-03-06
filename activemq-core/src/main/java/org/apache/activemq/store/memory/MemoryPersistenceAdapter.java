@@ -769,6 +769,32 @@ return|return
 literal|"MemoryPersistenceAdapter"
 return|;
 block|}
+specifier|public
+name|void
+name|setBrokerName
+parameter_list|(
+name|String
+name|brokerName
+parameter_list|)
+block|{             }
+specifier|public
+name|void
+name|setDirectory
+parameter_list|(
+name|File
+name|dir
+parameter_list|)
+block|{             }
+specifier|public
+name|void
+name|checkpoint
+parameter_list|(
+name|boolean
+name|sync
+parameter_list|)
+throws|throws
+name|IOException
+block|{             }
 block|}
 end_class
 

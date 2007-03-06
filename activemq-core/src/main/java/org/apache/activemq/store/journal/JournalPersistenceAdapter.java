@@ -23,6 +23,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -1672,6 +1682,22 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+specifier|public
+name|void
+name|checkpoint
+parameter_list|(
+name|boolean
+name|sync
+parameter_list|)
+block|{
+name|checkpoint
+argument_list|(
+name|sync
+argument_list|,
+name|sync
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * This does the actual checkpoint.      * @return       */
 specifier|public
@@ -3416,6 +3442,22 @@ argument_list|)
 return|;
 block|}
 specifier|public
+name|void
+name|setBrokerName
+parameter_list|(
+name|String
+name|brokerName
+parameter_list|)
+block|{
+name|longTermPersistence
+operator|.
+name|setBrokerName
+argument_list|(
+name|brokerName
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
 name|String
 name|toString
 parameter_list|()
@@ -3428,6 +3470,14 @@ operator|+
 literal|")"
 return|;
 block|}
+specifier|public
+name|void
+name|setDirectory
+parameter_list|(
+name|File
+name|dir
+parameter_list|)
+block|{             }
 block|}
 end_class
 

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -666,7 +666,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with a  * {@link Journal} and then check pointing asynchronously on a timeout with some  * other long term persistent storage.  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.17 $  */
+comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with a {@link Journal} and then check pointing  * asynchronously on a timeout with some other long term persistent storage.  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.17 $  */
 end_comment
 
 begin_class
@@ -736,7 +736,7 @@ name|AsyncDataManager
 name|asyncDataManager
 decl_stmt|;
 specifier|private
-name|KahaReferenceStoreAdapter
+name|ReferenceStoreAdapter
 name|referenceStoreAdapter
 decl_stmt|;
 specifier|private
@@ -839,23 +839,27 @@ decl_stmt|;
 specifier|private
 name|String
 name|brokerName
+init|=
+literal|""
 decl_stmt|;
 specifier|private
 name|File
 name|directory
 decl_stmt|;
 specifier|public
-name|AMQPersistenceAdapter
+name|String
+name|getBrokerName
 parameter_list|()
 block|{
+return|return
 name|this
-argument_list|(
-literal|"localhost"
-argument_list|)
-expr_stmt|;
+operator|.
+name|brokerName
+return|;
 block|}
 specifier|public
-name|AMQPersistenceAdapter
+name|void
+name|setBrokerName
 parameter_list|(
 name|String
 name|brokerName
@@ -867,23 +871,25 @@ name|brokerName
 operator|=
 name|brokerName
 expr_stmt|;
+if|if
+condition|(
 name|this
 operator|.
-name|directory
-operator|=
-operator|new
-name|File
-argument_list|(
-name|IOHelper
+name|referenceStoreAdapter
+operator|!=
+literal|null
+condition|)
+block|{
+name|this
 operator|.
-name|getDefaultDataDirectory
-argument_list|()
-argument_list|,
+name|referenceStoreAdapter
+operator|.
+name|setBrokerName
+argument_list|(
 name|brokerName
-operator|+
-literal|"-amqstore"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 specifier|synchronized
@@ -906,6 +912,50 @@ literal|true
 argument_list|)
 condition|)
 return|return;
+if|if
+condition|(
+name|this
+operator|.
+name|directory
+operator|==
+literal|null
+condition|)
+block|{
+name|this
+operator|.
+name|directory
+operator|=
+operator|new
+name|File
+argument_list|(
+name|IOHelper
+operator|.
+name|getDefaultDataDirectory
+argument_list|()
+argument_list|,
+name|brokerName
+argument_list|)
+expr_stmt|;
+block|}
+name|this
+operator|.
+name|directory
+operator|=
+operator|new
+name|File
+argument_list|(
+name|directory
+argument_list|,
+literal|"amqstore"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|directory
+operator|.
+name|mkdirs
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|this
@@ -951,6 +1001,27 @@ name|createReferenceStoreAdapter
 argument_list|()
 expr_stmt|;
 block|}
+name|referenceStoreAdapter
+operator|.
+name|setDirectory
+argument_list|(
+operator|new
+name|File
+argument_list|(
+name|directory
+argument_list|,
+literal|"kaha-reference-store"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|referenceStoreAdapter
+operator|.
+name|setBrokerName
+argument_list|(
+name|getBrokerName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|referenceStoreAdapter
 operator|.
 name|setUsageManager
@@ -1382,7 +1453,7 @@ name|firstException
 throw|;
 block|}
 block|}
-comment|/**      * When we checkpoint we move all the journalled data to long term storage.      * @param stopping       *       * @param b      */
+comment|/**      * When we checkpoint we move all the journalled data to long term storage.      *       * @param stopping      *       * @param b      */
 specifier|public
 name|void
 name|checkpoint
@@ -1453,6 +1524,13 @@ name|await
 argument_list|()
 expr_stmt|;
 block|}
+name|referenceStoreAdapter
+operator|.
+name|checkpoint
+argument_list|(
+name|sync
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1480,8 +1558,26 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"checkpoint failed: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
-comment|/**      * This does the actual checkpoint.      * @return       */
+block|}
+comment|/**      * This does the actual checkpoint.      *       * @return      */
 specifier|public
 name|boolean
 name|doCheckpoint
@@ -1528,11 +1624,6 @@ literal|"Checkpoint started."
 argument_list|)
 expr_stmt|;
 block|}
-name|referenceStoreAdapter
-operator|.
-name|sync
-argument_list|()
-expr_stmt|;
 name|Location
 name|newMark
 init|=
@@ -1761,22 +1852,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"Failed to sync reference store"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
 finally|finally
 block|{
 name|latch
@@ -1789,7 +1864,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Cleans up the data files      * @return       * @throws IOException       */
+comment|/**      * Cleans up the data files      *       * @return      * @throws IOException      */
 specifier|public
 name|void
 name|cleanup
@@ -2231,7 +2306,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Move all the messages that were in the journal into long term storage. We      * just replay and do a checkpoint.      *       * @throws IOException      * @throws IOException      * @throws InvalidLocationException      * @throws IllegalStateException      */
+comment|/**      * Move all the messages that were in the journal into long term storage. We just replay and do a checkpoint.      *       * @throws IOException      * @throws IOException      * @throws InvalidLocationException      * @throws IllegalStateException      */
 specifier|private
 name|void
 name|recover
@@ -3209,9 +3284,9 @@ operator|+
 literal|")"
 return|;
 block|}
-comment|///////////////////////////////////////////////////////////////////
+comment|// /////////////////////////////////////////////////////////////////
 comment|// Subclass overridables
-comment|///////////////////////////////////////////////////////////////////
+comment|// /////////////////////////////////////////////////////////////////
 specifier|protected
 name|AsyncDataManager
 name|createAsyncDataManager
@@ -3253,9 +3328,7 @@ name|adaptor
 init|=
 operator|new
 name|KahaReferenceStoreAdapter
-argument_list|(
-name|directory
-argument_list|)
+argument_list|()
 decl_stmt|;
 return|return
 name|adaptor
@@ -3273,9 +3346,9 @@ name|getDefaultTaskRunnerFactory
 argument_list|()
 return|;
 block|}
-comment|///////////////////////////////////////////////////////////////////
+comment|// /////////////////////////////////////////////////////////////////
 comment|// Property Accessors
-comment|///////////////////////////////////////////////////////////////////
+comment|// /////////////////////////////////////////////////////////////////
 specifier|public
 name|AsyncDataManager
 name|getAsyncDataManager
