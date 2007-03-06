@@ -75,9 +75,9 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|jpa
+name|amq
 operator|.
-name|JPAReferenceStoreAdapter
+name|AMQPersistenceAdapter
 import|;
 end_import
 
@@ -91,9 +91,9 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|quick
+name|jpa
 operator|.
-name|QuickPersistenceAdapter
+name|JPAReferenceStoreAdapter
 import|;
 end_import
 
@@ -167,11 +167,11 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|QuickPersistenceAdapter
+name|AMQPersistenceAdapter
 name|pa
 init|=
 operator|new
-name|QuickPersistenceAdapter
+name|AMQPersistenceAdapter
 argument_list|()
 decl_stmt|;
 name|JPAReferenceStoreAdapter
@@ -263,11 +263,11 @@ operator|new
 name|BrokerService
 argument_list|()
 decl_stmt|;
-name|QuickPersistenceAdapter
+name|AMQPersistenceAdapter
 name|pa
 init|=
 operator|new
-name|QuickPersistenceAdapter
+name|AMQPersistenceAdapter
 argument_list|()
 decl_stmt|;
 name|JPAReferenceStoreAdapter

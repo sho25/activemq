@@ -23,6 +23,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -1251,6 +1261,32 @@ operator|=
 name|wireFormat
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|checkpoint
+parameter_list|(
+name|boolean
+name|sync
+parameter_list|)
+throws|throws
+name|IOException
+block|{             }
+specifier|public
+name|void
+name|setBrokerName
+parameter_list|(
+name|String
+name|brokerName
+parameter_list|)
+block|{             }
+specifier|public
+name|void
+name|setDirectory
+parameter_list|(
+name|File
+name|dir
+parameter_list|)
+block|{             }
 block|}
 end_class
 
