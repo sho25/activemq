@@ -289,6 +289,13 @@ argument_list|)
 expr_stmt|;
 name|broker
 operator|.
+name|setDeleteAllMessagesOnStartup
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
 name|addConnector
 argument_list|(
 literal|"tcp://localhost:61616"
