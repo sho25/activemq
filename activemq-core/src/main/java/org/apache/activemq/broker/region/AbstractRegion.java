@@ -664,21 +664,9 @@ decl_stmt|;
 if|if
 condition|(
 name|dest
-operator|!=
+operator|==
 literal|null
 condition|)
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Attempt to add destination which is already created: "
-operator|+
-name|destination
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 name|dest
 operator|=
