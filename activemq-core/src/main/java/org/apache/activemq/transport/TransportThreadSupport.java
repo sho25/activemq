@@ -39,6 +39,13 @@ specifier|private
 name|Thread
 name|runner
 decl_stmt|;
+specifier|private
+name|long
+name|stackSize
+init|=
+literal|0
+decl_stmt|;
+comment|//should be a multiple of 128k
 specifier|public
 name|boolean
 name|isDaemon
@@ -75,12 +82,16 @@ operator|=
 operator|new
 name|Thread
 argument_list|(
+literal|null
+argument_list|,
 name|this
 argument_list|,
 literal|"ActiveMQ Transport: "
 operator|+
 name|toString
 argument_list|()
+argument_list|,
+name|stackSize
 argument_list|)
 expr_stmt|;
 name|runner
@@ -94,6 +105,34 @@ name|runner
 operator|.
 name|start
 argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * @return the stackSize      */
+specifier|public
+name|long
+name|getStackSize
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|stackSize
+return|;
+block|}
+comment|/**      * @param stackSize the stackSize to set      */
+specifier|public
+name|void
+name|setStackSize
+parameter_list|(
+name|long
+name|stackSize
+parameter_list|)
+block|{
+name|this
+operator|.
+name|stackSize
+operator|=
+name|stackSize
 expr_stmt|;
 block|}
 block|}
