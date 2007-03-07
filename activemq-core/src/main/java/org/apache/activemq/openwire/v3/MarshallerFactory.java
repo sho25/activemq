@@ -367,6 +367,13 @@ expr_stmt|;
 name|add
 argument_list|(
 operator|new
+name|ProducerAckMarshaller
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+operator|new
 name|ProducerIdMarshaller
 argument_list|()
 argument_list|)

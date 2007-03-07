@@ -128,6 +128,11 @@ comment|// and the server.
 comment|//
 comment|///////////////////////////////////////////////////
 name|byte
+name|PRODUCER_ACK
+init|=
+literal|19
+decl_stmt|;
+name|byte
 name|MESSAGE_PULL
 init|=
 literal|20
