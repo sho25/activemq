@@ -2123,7 +2123,7 @@ condition|)
 block|{
 name|md
 operator|.
-name|setConsumer
+name|setTransmitCallback
 argument_list|(
 operator|new
 name|Runnable
