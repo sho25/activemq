@@ -206,12 +206,6 @@ specifier|private
 name|Set
 name|durableDestinations
 decl_stmt|;
-specifier|protected
-name|boolean
-name|failover
-init|=
-literal|false
-decl_stmt|;
 specifier|private
 name|List
 name|excludedDestinations
