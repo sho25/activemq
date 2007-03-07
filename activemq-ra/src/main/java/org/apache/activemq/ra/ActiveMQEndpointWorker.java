@@ -279,6 +279,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      *       */
 specifier|public
 specifier|static
 specifier|final
@@ -356,7 +357,7 @@ throw|;
 block|}
 block|}
 specifier|protected
-name|ActiveMQResourceAdapter
+name|MessageResourceAdapter
 name|adapter
 decl_stmt|;
 specifier|protected
@@ -436,7 +437,9 @@ parameter_list|(
 name|JMSException
 name|e
 parameter_list|)
-block|{         }
+block|{
+comment|//
+block|}
 block|}
 comment|/**      * @param c      */
 specifier|public
@@ -469,7 +472,9 @@ parameter_list|(
 name|JMSException
 name|e
 parameter_list|)
-block|{         }
+block|{
+comment|//
+block|}
 block|}
 comment|/**      * @param cc      */
 specifier|public
@@ -502,13 +507,16 @@ parameter_list|(
 name|JMSException
 name|e
 parameter_list|)
-block|{         }
+block|{
+comment|//
 block|}
+block|}
+comment|/**      *       */
 specifier|public
 name|ActiveMQEndpointWorker
 parameter_list|(
 specifier|final
-name|ActiveMQResourceAdapter
+name|MessageResourceAdapter
 name|adapter
 parameter_list|,
 name|ActiveMQEndpointActivationKey
@@ -588,7 +596,9 @@ specifier|public
 name|void
 name|release
 parameter_list|()
-block|{             }
+block|{
+comment|//
+block|}
 specifier|synchronized
 specifier|public
 name|void
@@ -609,7 +619,7 @@ operator|!=
 literal|null
 condition|)
 return|return;
-name|ActiveMQActivationSpec
+name|MessageActivationSpec
 name|activationSpec
 init|=
 name|endpointActivationKey
@@ -773,7 +783,7 @@ block|}
 block|}
 block|}
 expr_stmt|;
-name|ActiveMQActivationSpec
+name|MessageActivationSpec
 name|activationSpec
 init|=
 name|endpointActivationKey
@@ -848,6 +858,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/**      *       */
 specifier|synchronized
 specifier|public
 name|void
@@ -1131,7 +1142,9 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{}
+block|{
+comment|//
+block|}
 block|}
 specifier|protected
 name|void

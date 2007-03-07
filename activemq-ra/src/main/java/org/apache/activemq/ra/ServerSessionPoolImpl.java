@@ -21,27 +21,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|LinkedList
 import|;
 end_import
 
@@ -317,7 +297,7 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-name|ActiveMQActivationSpec
+name|MessageActivationSpec
 name|activationSpec
 init|=
 name|activeMQAsfEndpointWorker
@@ -694,7 +674,7 @@ name|ss
 return|;
 block|}
 block|}
-comment|/**      * @param message      * @throws JMSException      */
+comment|/**      * @param messageDispatch the message to dispatch      * @throws JMSException      */
 specifier|private
 name|void
 name|dispatchToSession

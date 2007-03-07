@@ -171,7 +171,7 @@ init|=
 literal|6196921962230582875L
 decl_stmt|;
 specifier|private
-name|ActiveMQResourceAdapter
+name|MessageResourceAdapter
 name|adapter
 decl_stmt|;
 specifier|private
@@ -186,6 +186,7 @@ operator|new
 name|ActiveMQConnectionRequestInfo
 argument_list|()
 decl_stmt|;
+comment|/**      * @see javax.resource.spi.ResourceAdapterAssociation#setResourceAdapter(javax.resource.spi.ResourceAdapter)      */
 specifier|public
 name|void
 name|setResourceAdapter
@@ -196,12 +197,37 @@ parameter_list|)
 throws|throws
 name|ResourceException
 block|{
+if|if
+condition|(
+operator|!
+operator|(
+name|adapter
+operator|instanceof
+name|MessageResourceAdapter
+operator|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|ResourceException
+argument_list|(
+literal|"ResourceAdapter is not of type: "
+operator|+
+name|MessageResourceAdapter
+operator|.
+name|class
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+throw|;
+block|}
 name|this
 operator|.
 name|adapter
 operator|=
 operator|(
-name|ActiveMQResourceAdapter
+name|MessageResourceAdapter
 operator|)
 name|adapter
 expr_stmt|;
@@ -314,6 +340,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @see java.lang.Object#equals(java.lang.Object)      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals
@@ -358,6 +387,9 @@ name|info
 argument_list|)
 return|;
 block|}
+comment|/**      * @see java.lang.Object#hashCode()      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -370,6 +402,7 @@ name|hashCode
 argument_list|()
 return|;
 block|}
+comment|/**      * @see javax.resource.spi.ResourceAdapterAssociation#getResourceAdapter()      */
 specifier|public
 name|ResourceAdapter
 name|getResourceAdapter
@@ -625,6 +658,7 @@ comment|//
 comment|// Bean setters and getters.
 comment|//
 comment|// /////////////////////////////////////////////////////////////////////////
+comment|/**      *       */
 specifier|public
 name|String
 name|getClientid
@@ -637,6 +671,7 @@ name|getClientid
 argument_list|()
 return|;
 block|}
+comment|/**      *       */
 specifier|public
 name|String
 name|getPassword
@@ -649,6 +684,7 @@ name|getPassword
 argument_list|()
 return|;
 block|}
+comment|/**      *       */
 specifier|public
 name|String
 name|getUserName
@@ -661,6 +697,7 @@ name|getUserName
 argument_list|()
 return|;
 block|}
+comment|/**      *       */
 specifier|public
 name|void
 name|setClientid
@@ -677,6 +714,7 @@ name|clientid
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      *       */
 specifier|public
 name|void
 name|setPassword
@@ -693,6 +731,7 @@ name|password
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      *       */
 specifier|public
 name|void
 name|setUserName
@@ -709,6 +748,8 @@ name|userid
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      *       */
+comment|/**      *       */
 specifier|public
 name|Boolean
 name|getUseInboundSession
@@ -721,6 +762,7 @@ name|getUseInboundSession
 argument_list|()
 return|;
 block|}
+comment|/**      *       */
 specifier|public
 name|void
 name|setUseInboundSession
@@ -737,6 +779,7 @@ name|useInboundSession
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      *       */
 specifier|public
 name|boolean
 name|isUseInboundSessionEnabled
@@ -750,6 +793,7 @@ argument_list|()
 return|;
 block|}
 comment|// Redelivery policy configuration
+comment|/**      *       */
 specifier|public
 name|Long
 name|getInitialRedeliveryDelay
@@ -762,6 +806,7 @@ name|getInitialRedeliveryDelay
 argument_list|()
 return|;
 block|}
+comment|/**      *       */
 specifier|public
 name|Integer
 name|getMaximumRedeliveries
@@ -774,6 +819,7 @@ name|getMaximumRedeliveries
 argument_list|()
 return|;
 block|}
+comment|/**      *       */
 specifier|public
 name|Short
 name|getRedeliveryBackOffMultiplier
@@ -786,6 +832,7 @@ name|getRedeliveryBackOffMultiplier
 argument_list|()
 return|;
 block|}
+comment|/**      *       */
 specifier|public
 name|Boolean
 name|getRedeliveryUseExponentialBackOff
@@ -798,6 +845,7 @@ name|getRedeliveryUseExponentialBackOff
 argument_list|()
 return|;
 block|}
+comment|/**      *       */
 specifier|public
 name|void
 name|setInitialRedeliveryDelay
@@ -814,6 +862,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      *       */
 specifier|public
 name|void
 name|setMaximumRedeliveries
@@ -830,6 +879,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      *       */
 specifier|public
 name|void
 name|setRedeliveryBackOffMultiplier
@@ -846,6 +896,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      *       */
 specifier|public
 name|void
 name|setRedeliveryUseExponentialBackOff
@@ -863,6 +914,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Prefetch policy configuration
+comment|/**      *       */
 specifier|public
 name|Integer
 name|getDurableTopicPrefetch
@@ -875,6 +927,7 @@ name|getDurableTopicPrefetch
 argument_list|()
 return|;
 block|}
+comment|/**      *       */
 specifier|public
 name|Integer
 name|getInputStreamPrefetch
@@ -887,6 +940,7 @@ name|getInputStreamPrefetch
 argument_list|()
 return|;
 block|}
+comment|/**      *       */
 specifier|public
 name|Integer
 name|getQueueBrowserPrefetch
@@ -899,6 +953,7 @@ name|getQueueBrowserPrefetch
 argument_list|()
 return|;
 block|}
+comment|/**      *       */
 specifier|public
 name|Integer
 name|getQueuePrefetch
@@ -911,6 +966,7 @@ name|getQueuePrefetch
 argument_list|()
 return|;
 block|}
+comment|/**      *       */
 specifier|public
 name|Integer
 name|getTopicPrefetch
@@ -923,6 +979,7 @@ name|getTopicPrefetch
 argument_list|()
 return|;
 block|}
+comment|/**      *       */
 specifier|public
 name|void
 name|setAllPrefetchValues
@@ -939,6 +996,7 @@ name|i
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      *       */
 specifier|public
 name|void
 name|setDurableTopicPrefetch
@@ -955,6 +1013,7 @@ name|durableTopicPrefetch
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      *       */
 specifier|public
 name|void
 name|setInputStreamPrefetch
@@ -971,6 +1030,7 @@ name|inputStreamPrefetch
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      *       */
 specifier|public
 name|void
 name|setQueueBrowserPrefetch
@@ -987,6 +1047,7 @@ name|queueBrowserPrefetch
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      *       */
 specifier|public
 name|void
 name|setQueuePrefetch
@@ -1003,6 +1064,7 @@ name|queuePrefetch
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @param topicPrefetch      */
 specifier|public
 name|void
 name|setTopicPrefetch

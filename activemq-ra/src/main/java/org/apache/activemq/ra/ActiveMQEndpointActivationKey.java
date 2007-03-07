@@ -41,12 +41,12 @@ name|messageEndpointFactory
 decl_stmt|;
 specifier|final
 specifier|private
-name|ActiveMQActivationSpec
+name|MessageActivationSpec
 name|activationSpec
 decl_stmt|;
 comment|/**      * @return Returns the activationSpec.      */
 specifier|public
-name|ActiveMQActivationSpec
+name|MessageActivationSpec
 name|getActivationSpec
 parameter_list|()
 block|{
@@ -83,7 +83,7 @@ parameter_list|(
 name|MessageEndpointFactory
 name|messageEndpointFactory
 parameter_list|,
-name|ActiveMQActivationSpec
+name|MessageActivationSpec
 name|activationSpec
 parameter_list|)
 block|{
