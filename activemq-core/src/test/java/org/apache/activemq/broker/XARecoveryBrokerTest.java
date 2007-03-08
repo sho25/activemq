@@ -228,11 +228,8 @@ block|{
 name|ActiveMQDestination
 name|destination
 init|=
-operator|new
-name|ActiveMQQueue
-argument_list|(
-literal|"TEST"
-argument_list|)
+name|createDestination
+argument_list|()
 decl_stmt|;
 comment|// Setup the producer and send the message.
 name|StubConnection
@@ -594,11 +591,8 @@ block|{
 name|ActiveMQDestination
 name|destination
 init|=
-operator|new
-name|ActiveMQQueue
-argument_list|(
-literal|"TEST"
-argument_list|)
+name|createDestination
+argument_list|()
 decl_stmt|;
 comment|// Setup the producer and send the message.
 name|StubConnection
@@ -839,11 +833,8 @@ block|{
 name|ActiveMQDestination
 name|destination
 init|=
-operator|new
-name|ActiveMQQueue
-argument_list|(
-literal|"TEST"
-argument_list|)
+name|createDestination
+argument_list|()
 decl_stmt|;
 comment|// Setup the producer and send the message.
 name|StubConnection
@@ -1099,6 +1090,11 @@ name|consumerInfo
 argument_list|)
 expr_stmt|;
 comment|// No messages should be delivered.
+name|assertNoMessagesLeft
+argument_list|(
+name|connection
+argument_list|)
+expr_stmt|;
 name|Message
 name|m
 init|=
@@ -1123,11 +1119,8 @@ block|{
 name|ActiveMQDestination
 name|destination
 init|=
-operator|new
-name|ActiveMQQueue
-argument_list|(
-literal|"TEST"
-argument_list|)
+name|createDestination
+argument_list|()
 decl_stmt|;
 comment|// Setup the producer and send the message.
 name|StubConnection
@@ -1443,6 +1436,28 @@ name|suite
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+specifier|protected
+name|ActiveMQDestination
+name|createDestination
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ActiveMQQueue
+argument_list|(
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|"."
+operator|+
+name|getName
+argument_list|()
+argument_list|)
+return|;
 block|}
 block|}
 end_class
