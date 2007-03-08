@@ -1586,12 +1586,16 @@ argument_list|()
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|close
 parameter_list|()
 throws|throws
 name|IOException
+block|{
+synchronized|synchronized
+init|(
+name|this
+init|)
 block|{
 if|if
 condition|(
@@ -1613,6 +1617,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 name|storeState
 argument_list|(
 literal|false
