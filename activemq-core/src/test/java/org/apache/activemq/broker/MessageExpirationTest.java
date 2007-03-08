@@ -574,7 +574,7 @@ argument_list|)
 expr_stmt|;
 name|connection2
 operator|.
-name|send
+name|request
 argument_list|(
 name|consumerInfo2
 argument_list|)
