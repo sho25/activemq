@@ -40,6 +40,17 @@ parameter_list|()
 throws|throws
 name|InterruptedException
 function_decl|;
+specifier|public
+specifier|abstract
+name|void
+name|shutdown
+parameter_list|(
+name|long
+name|timeout
+parameter_list|)
+throws|throws
+name|InterruptedException
+function_decl|;
 block|}
 end_interface
 

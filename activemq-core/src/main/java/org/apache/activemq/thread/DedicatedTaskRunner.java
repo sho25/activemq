@@ -153,11 +153,14 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * shut down the task      * @throws InterruptedException       */
+comment|/**      * shut down the task      * @param timeout       * @throws InterruptedException       */
 specifier|public
 name|void
 name|shutdown
-parameter_list|()
+parameter_list|(
+name|long
+name|timeout
+parameter_list|)
 throws|throws
 name|InterruptedException
 block|{
@@ -189,10 +192,26 @@ block|{
 name|mutex
 operator|.
 name|wait
-argument_list|()
+argument_list|(
+name|timeout
+argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+comment|/**      * shut down the task      * @throws InterruptedException       */
+specifier|public
+name|void
+name|shutdown
+parameter_list|()
+throws|throws
+name|InterruptedException
+block|{
+name|shutdown
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 name|void
