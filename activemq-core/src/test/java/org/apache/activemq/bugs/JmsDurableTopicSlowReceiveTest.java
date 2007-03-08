@@ -353,7 +353,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://localhost"
+literal|"vm://localhost?async=false"
 argument_list|)
 decl_stmt|;
 name|Properties
@@ -430,9 +430,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// KahaPersistenceAdapter adapter=new KahaPersistenceAdapter(new File("activemq-data/durableTest"));
-comment|// JDBCPersistenceAdapter adapter = new JDBCPersistenceAdapter();
-comment|// answer.setPersistenceAdapter(adapter);
 name|answer
 operator|.
 name|setDeleteAllMessagesOnStartup
@@ -517,13 +514,6 @@ name|consumerDestination2
 argument_list|,
 name|getName
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1000
 argument_list|)
 expr_stmt|;
 name|consumer2
