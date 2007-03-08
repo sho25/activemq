@@ -774,6 +774,16 @@ name|PERSISTENT
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|connection1
+operator|.
+name|request
+argument_list|(
+name|closeConnectionInfo
+argument_list|(
+name|connectionInfo1
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Restart the broker.
 name|restartBroker
 argument_list|()
@@ -976,6 +986,16 @@ operator|.
 name|send
 argument_list|(
 name|message
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|request
+argument_list|(
+name|closeConnectionInfo
+argument_list|(
+name|connectionInfo
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// restart the broker.
@@ -1358,6 +1378,16 @@ name|txid
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|connection
+operator|.
+name|request
+argument_list|(
+name|closeConnectionInfo
+argument_list|(
+name|connectionInfo
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// restart the broker.
 name|restartBroker
 argument_list|()
@@ -1660,6 +1690,16 @@ argument_list|(
 name|connectionInfo
 argument_list|,
 name|txid
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|request
+argument_list|(
+name|closeConnectionInfo
+argument_list|(
+name|connectionInfo
 argument_list|)
 argument_list|)
 expr_stmt|;
