@@ -21,6 +21,22 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|jdbc
+operator|.
+name|Statements
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|sql
@@ -50,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @org.apache.xbean.XBean element="db2JDBCAdapter"  *  * @version $Revision: 1.2 $  */
+comment|/**  * @version $Revision: 1.2 $  * @org.apache.xbean.XBean element="db2JDBCAdapter"  */
 end_comment
 
 begin_class
@@ -67,6 +83,41 @@ block|{
 name|batchStatments
 operator|=
 literal|false
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setStatements
+parameter_list|(
+name|Statements
+name|statements
+parameter_list|)
+block|{
+name|String
+name|lockCreateStatement
+init|=
+literal|"LOCK TABLE "
+operator|+
+name|statements
+operator|.
+name|getFullLockTableName
+argument_list|()
+operator|+
+literal|" IN EXCLUSIVE MODE"
+decl_stmt|;
+name|statements
+operator|.
+name|setLockCreateStatement
+argument_list|(
+name|lockCreateStatement
+argument_list|)
+expr_stmt|;
+name|super
+operator|.
+name|setStatements
+argument_list|(
+name|statements
+argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
