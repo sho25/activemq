@@ -593,7 +593,7 @@ expr_stmt|;
 comment|// Send the message to the local boker.
 name|connection1
 operator|.
-name|send
+name|request
 argument_list|(
 name|createMessage
 argument_list|(
@@ -614,11 +614,6 @@ argument_list|(
 name|connection2
 argument_list|)
 decl_stmt|;
-name|assertNotNull
-argument_list|(
-name|m
-argument_list|)
-expr_stmt|;
 block|}
 specifier|protected
 name|void
