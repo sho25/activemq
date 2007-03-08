@@ -389,6 +389,16 @@ argument_list|(
 name|connection
 argument_list|)
 expr_stmt|;
+name|connection
+operator|.
+name|request
+argument_list|(
+name|closeConnectionInfo
+argument_list|(
+name|connectionInfo
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// restart the broker.
 name|restartBroker
 argument_list|()
@@ -718,6 +728,16 @@ argument_list|(
 name|connectionInfo
 argument_list|,
 name|txid
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|request
+argument_list|(
+name|closeConnectionInfo
+argument_list|(
+name|connectionInfo
 argument_list|)
 argument_list|)
 expr_stmt|;
