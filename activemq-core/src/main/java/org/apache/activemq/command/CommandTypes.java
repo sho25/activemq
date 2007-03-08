@@ -24,6 +24,12 @@ specifier|public
 interface|interface
 name|CommandTypes
 block|{
+comment|// What is the latest version of the openwire protocol
+name|byte
+name|PROTOCOL_VERSION
+init|=
+literal|3
+decl_stmt|;
 comment|// A marshaling layer can use this type to specify a null object.
 name|byte
 name|NULL
