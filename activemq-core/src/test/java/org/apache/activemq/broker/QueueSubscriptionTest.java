@@ -152,27 +152,13 @@ name|messageCount
 operator|=
 literal|1000
 expr_stmt|;
-name|prefetchCount
-operator|=
-literal|1
-expr_stmt|;
 name|messageSize
 operator|=
 literal|1024
 expr_stmt|;
 comment|// 1 Kb
-comment|// this is gonna be a bit slow what with the low prefetch so bump up the wait time
-name|allMessagesList
-operator|.
-name|setMaximumDuration
-argument_list|(
-name|allMessagesList
-operator|.
-name|getMaximumDuration
+name|configurePrefetchOfOne
 argument_list|()
-operator|*
-literal|20
-argument_list|)
 expr_stmt|;
 name|doMultipleClientsTest
 argument_list|()
@@ -245,10 +231,6 @@ name|messageCount
 operator|=
 literal|10
 expr_stmt|;
-name|prefetchCount
-operator|=
-literal|1
-expr_stmt|;
 name|messageSize
 operator|=
 literal|1024
@@ -258,6 +240,9 @@ operator|*
 literal|1
 expr_stmt|;
 comment|// 2 MB
+name|configurePrefetchOfOne
+argument_list|()
+expr_stmt|;
 name|doMultipleClientsTest
 argument_list|()
 expr_stmt|;
@@ -428,6 +413,29 @@ argument_list|(
 name|messageCount
 operator|*
 name|producerCount
+argument_list|)
+expr_stmt|;
+block|}
+specifier|protected
+name|void
+name|configurePrefetchOfOne
+parameter_list|()
+block|{
+name|prefetchCount
+operator|=
+literal|1
+expr_stmt|;
+comment|// this is gonna be a bit slow what with the low prefetch so bump up the wait time
+name|allMessagesList
+operator|.
+name|setMaximumDuration
+argument_list|(
+name|allMessagesList
+operator|.
+name|getMaximumDuration
+argument_list|()
+operator|*
+literal|20
 argument_list|)
 expr_stmt|;
 block|}
