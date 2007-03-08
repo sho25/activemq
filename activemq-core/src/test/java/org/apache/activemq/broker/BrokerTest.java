@@ -1979,7 +1979,7 @@ expr_stmt|;
 comment|// Close the connection.
 name|connection1
 operator|.
-name|send
+name|request
 argument_list|(
 name|closeConnectionInfo
 argument_list|(
@@ -7044,7 +7044,7 @@ argument_list|)
 expr_stmt|;
 name|connection1
 operator|.
-name|send
+name|request
 argument_list|(
 name|consumerInfo1
 argument_list|)
@@ -7167,7 +7167,7 @@ argument_list|)
 expr_stmt|;
 name|connection2
 operator|.
-name|send
+name|request
 argument_list|(
 name|consumerInfo2
 argument_list|)
