@@ -291,7 +291,7 @@ name|Class
 name|type
 parameter_list|)
 function_decl|;
-comment|/**      * Get the id of the broker      * @param context      * @param info       * @param client      */
+comment|/**      * Get the id of the broker      */
 specifier|public
 name|BrokerId
 name|getBrokerId
@@ -303,7 +303,7 @@ name|String
 name|getBrokerName
 parameter_list|()
 function_decl|;
-comment|/**      * A remote Broker connects      * @param contection      * @param info       * @param client      */
+comment|/**      * A remote Broker connects      */
 specifier|public
 name|void
 name|addBroker
@@ -327,7 +327,7 @@ name|BrokerInfo
 name|info
 parameter_list|)
 function_decl|;
-comment|/**      * A client is establishing a connection with the broker.      * @param context      * @param info       * @param client      * @throws Exception TODO      */
+comment|/**      * A client is establishing a connection with the broker.      * @throws Exception TODO      */
 specifier|public
 name|void
 name|addConnection
@@ -341,7 +341,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * A client is disconnecting from the broker.      * @param context the environment the operation is being executed under.      * @param info       * @param client      * @param error null if the client requested the disconnect or the error that caused the client to disconnect.      * @throws Exception TODO      */
+comment|/**      * A client is disconnecting from the broker.      * @param context the environment the operation is being executed under.      * @param info       * @param error null if the client requested the disconnect or the error that caused the client to disconnect.      * @throws Exception TODO      */
 specifier|public
 name|void
 name|removeConnection
@@ -432,7 +432,7 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Gets a list of all the prepared xa transactions.      * @param client      * @throws Exception TODO      */
+comment|/**      * Gets a list of all the prepared xa transactions.      * @throws Exception TODO      */
 specifier|public
 name|TransactionId
 index|[]
@@ -444,7 +444,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Starts a transaction.      * @param client      * @param xid      * @throws Exception TODO      */
+comment|/**      * Starts a transaction.      * @param context      * @param xid      * @throws Exception TODO      */
 specifier|public
 name|void
 name|beginTransaction
@@ -458,7 +458,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Prepares a transaction. Only valid for xa transactions.      * @param client      * @param xid      * @return      * @throws Exception TODO      */
+comment|/**      * Prepares a transaction. Only valid for xa transactions.      * @param context      * @param xid      * @return      * @throws Exception TODO      */
 specifier|public
 name|int
 name|prepareTransaction
@@ -472,7 +472,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Rollsback a transaction.      * @param client      * @param xid      * @throws Exception TODO      */
+comment|/**      * Rollsback a transaction.      * @param context      * @param xid      * @throws Exception TODO      */
 specifier|public
 name|void
 name|rollbackTransaction
@@ -486,7 +486,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Commits a transaction.      * @param client      * @param xid      * @param onePhase      * @throws Exception TODO      */
+comment|/**      * Commits a transaction.      * @param context      * @param xid      * @param onePhase      * @throws Exception TODO      */
 specifier|public
 name|void
 name|commitTransaction
@@ -503,7 +503,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Forgets a transaction.      * @param client      * @param xid      * @param onePhase      * @throws Exception TODO      */
+comment|/**      * Forgets a transaction.      */
 specifier|public
 name|void
 name|forgetTransaction
