@@ -884,7 +884,7 @@ expr_stmt|;
 comment|// Close the second connection.
 name|connection2
 operator|.
-name|send
+name|request
 argument_list|(
 name|closeConnectionInfo
 argument_list|(
