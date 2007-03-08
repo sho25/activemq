@@ -3016,6 +3016,23 @@ argument_list|(
 name|producer
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|connection
+operator|.
+name|addProducer
+argument_list|(
+name|producer
+operator|.
+name|getProducerInfo
+argument_list|()
+operator|.
+name|getProducerId
+argument_list|()
+argument_list|,
+name|producer
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Removes a message producer.      *       * @param producer -      *            message producer to be removed.      * @throws JMSException      */
 specifier|protected
@@ -3026,6 +3043,21 @@ name|ActiveMQMessageProducer
 name|producer
 parameter_list|)
 block|{
+name|this
+operator|.
+name|connection
+operator|.
+name|removeProducer
+argument_list|(
+name|producer
+operator|.
+name|getProducerInfo
+argument_list|()
+operator|.
+name|getProducerId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|producers
@@ -3161,7 +3193,7 @@ return|;
 block|}
 comment|/**      * Sends the message for dispatch by the broker.      *       * @param producer -      *            message producer.      * @param destination -      *            message destination.      * @param message -      *            message to be sent.      * @param deliveryMode -      *            JMS messsage delivery mode.      * @param priority -      *            message priority.      * @param timeToLive -      *            message expiration.      * @throws JMSException      */
 specifier|protected
-name|void
+name|int
 name|send
 parameter_list|(
 name|ActiveMQMessageProducer
@@ -3509,6 +3541,16 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Since we defer lots of the marshaling till we hit the wire, this might not
+comment|// provide and accurate size.  We may change over to doing more aggressive marshaling,
+comment|// to get more accurate sizes.. this is more important once users start using producer window
+comment|// flow control.
+return|return
+name|msg
+operator|.
+name|getSize
+argument_list|()
+return|;
 block|}
 block|}
 comment|/** 	 * Send TransactionInfo to indicate transaction has started 	 *  	 * @throws JMSException 	 *             if some internal error occurs 	 */
