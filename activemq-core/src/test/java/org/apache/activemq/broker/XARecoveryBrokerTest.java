@@ -1027,7 +1027,7 @@ block|}
 comment|// Commit
 name|connection
 operator|.
-name|send
+name|request
 argument_list|(
 name|createCommitTransaction1Phase
 argument_list|(
