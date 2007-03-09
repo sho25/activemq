@@ -123,6 +123,20 @@ name|activemq
 operator|.
 name|broker
 operator|.
+name|ProducerBrokerExchange
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
 name|region
 operator|.
 name|cursors
@@ -1731,8 +1745,8 @@ name|void
 name|send
 parameter_list|(
 specifier|final
-name|ConnectionContext
-name|context
+name|ProducerBrokerExchange
+name|producerExchange
 parameter_list|,
 specifier|final
 name|Message
@@ -1741,6 +1755,15 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+specifier|final
+name|ConnectionContext
+name|context
+init|=
+name|producerExchange
+operator|.
+name|getConnectionContext
+argument_list|()
+decl_stmt|;
 comment|// There is delay between the client sending it and it arriving at the
 comment|// destination.. it may have expired.
 if|if

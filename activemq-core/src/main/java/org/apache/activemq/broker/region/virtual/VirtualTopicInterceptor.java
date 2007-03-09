@@ -29,7 +29,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|ConnectionContext
+name|ProducerBrokerExchange
 import|;
 end_import
 
@@ -161,7 +161,7 @@ specifier|public
 name|void
 name|send
 parameter_list|(
-name|ConnectionContext
+name|ProducerBrokerExchange
 name|context
 parameter_list|,
 name|Message

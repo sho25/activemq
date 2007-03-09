@@ -21,6 +21,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -29,7 +49,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|ConnectionContext
+name|ProducerBrokerExchange
 import|;
 end_import
 
@@ -107,26 +127,6 @@ name|MessageEvaluationContext
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
 begin_comment
 comment|/**  * Represents a composite {@link Destination} where send()s are replicated to  * each Destination instance.  *  * @version $Revision$  */
 end_comment
@@ -194,7 +194,7 @@ specifier|public
 name|void
 name|send
 parameter_list|(
-name|ConnectionContext
+name|ProducerBrokerExchange
 name|context
 parameter_list|,
 name|Message
