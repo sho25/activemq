@@ -668,6 +668,16 @@ return|return
 name|rc
 return|;
 block|}
+comment|/**      * @return      * @see org.apache.activemq.store.ReferenceStoreAdapter#isStoreValid()      */
+specifier|public
+name|boolean
+name|isStoreValid
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 end_class
 
