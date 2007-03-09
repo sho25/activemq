@@ -997,6 +997,13 @@ operator|.
 name|doAsyncWrite
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|cpAckedLastAckLocations
+operator|!=
+literal|null
+condition|)
+block|{
 name|transactionTemplate
 operator|.
 name|run
@@ -1078,6 +1085,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|location
 return|;
