@@ -106,6 +106,12 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * If the store isn't valid, it can be recoverd at start-up      * @return true if the reference store is in a consistent state      */
+specifier|public
+name|boolean
+name|isStoreValid
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
