@@ -94,7 +94,12 @@ throws|throws
 name|Exception
 block|{
 return|return
-literal|null
+name|visitor
+operator|.
+name|processConsumerControl
+argument_list|(
+name|this
+argument_list|)
 return|;
 block|}
 comment|/**      * @openwire:property version=1      * @return Returns the close.      */

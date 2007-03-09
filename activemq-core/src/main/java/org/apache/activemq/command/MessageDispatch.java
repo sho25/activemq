@@ -258,7 +258,12 @@ throws|throws
 name|Exception
 block|{
 return|return
-literal|null
+name|visitor
+operator|.
+name|processMessageDispatch
+argument_list|(
+name|this
+argument_list|)
 return|;
 block|}
 specifier|public
