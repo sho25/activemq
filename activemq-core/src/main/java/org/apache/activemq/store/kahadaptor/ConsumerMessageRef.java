@@ -150,6 +150,19 @@ operator|=
 name|messageId
 expr_stmt|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ConsumerMessageRef["
+operator|+
+name|messageId
+operator|+
+literal|"]"
+return|;
+block|}
 block|}
 end_class
 
