@@ -4830,6 +4830,10 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|brokerInfo
+operator|=
+name|info
+expr_stmt|;
 name|brokerInfoReceived
 operator|.
 name|countDown
