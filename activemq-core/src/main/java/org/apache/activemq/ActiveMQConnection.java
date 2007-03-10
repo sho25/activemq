@@ -4995,10 +4995,10 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|onConsumerControl
+name|onWireFormatInfo
 argument_list|(
 operator|(
-name|ConsumerControl
+name|WireFormatInfo
 operator|)
 name|command
 argument_list|)
