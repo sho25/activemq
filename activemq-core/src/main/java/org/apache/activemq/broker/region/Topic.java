@@ -620,11 +620,9 @@ name|this
 operator|.
 name|usageManager
 operator|.
-name|setLimit
+name|setUsagePortion
 argument_list|(
-name|Long
-operator|.
-name|MAX_VALUE
+literal|1.0f
 argument_list|)
 expr_stmt|;
 comment|// Let the store know what usage manager we are using so that he can flush messages to disk

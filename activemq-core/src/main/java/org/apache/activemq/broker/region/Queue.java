@@ -869,11 +869,9 @@ name|this
 operator|.
 name|usageManager
 operator|.
-name|setLimit
+name|setUsagePortion
 argument_list|(
-name|Long
-operator|.
-name|MAX_VALUE
+literal|1.0f
 argument_list|)
 expr_stmt|;
 name|this
