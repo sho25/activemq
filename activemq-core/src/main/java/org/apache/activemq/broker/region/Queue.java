@@ -2421,6 +2421,11 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+name|message
+operator|.
+name|incrementReferenceCount
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|context
