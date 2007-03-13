@@ -19,6 +19,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|net
+operator|.
+name|URI
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Set
@@ -601,9 +611,16 @@ name|ConnectionContext
 name|adminConnectionContext
 parameter_list|)
 function_decl|;
+comment|/**      * @return the temp data store      */
 specifier|public
 name|Store
 name|getTempDataStore
+parameter_list|()
+function_decl|;
+comment|/**      * @return the URI that can be used to connect to the local Broker      */
+specifier|public
+name|URI
+name|getVmConnectorURI
 parameter_list|()
 function_decl|;
 block|}
