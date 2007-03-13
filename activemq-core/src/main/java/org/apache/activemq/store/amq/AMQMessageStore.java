@@ -2006,14 +2006,9 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 name|log
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Message could not be removed from long term store: "
 operator|+
@@ -2286,6 +2281,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|flush
+argument_list|()
+expr_stmt|;
 name|asyncWriteTask
 operator|.
 name|shutdown

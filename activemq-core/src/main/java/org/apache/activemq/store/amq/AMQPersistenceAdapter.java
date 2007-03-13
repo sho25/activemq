@@ -1591,7 +1591,7 @@ name|firstException
 throw|;
 block|}
 block|}
-comment|/**      * When we checkpoint we move all the journalled data to long term storage.      *       * @param stopping      *       * @param b      */
+comment|/**      * When we checkpoint we move all the journalled data to long term storage.      * @param sync          */
 specifier|public
 name|void
 name|checkpoint
@@ -1715,7 +1715,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This does the actual checkpoint.      *       * @return      */
+comment|/**      * This does the actual checkpoint.      *       * @return true if successful      */
 specifier|public
 name|boolean
 name|doCheckpoint
