@@ -203,6 +203,29 @@ return|return
 name|broker
 return|;
 block|}
+comment|/**      * Creates a broker from a URI configuration      * @param brokerURI      * @throws Exception      */
+specifier|public
+specifier|static
+name|BrokerService
+name|createBroker
+parameter_list|(
+name|String
+name|brokerURI
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+return|return
+name|createBroker
+argument_list|(
+operator|new
+name|URI
+argument_list|(
+name|brokerURI
+argument_list|)
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
