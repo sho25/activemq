@@ -71,7 +71,9 @@ name|BrokerService
 name|findSingletonBroker
 parameter_list|()
 block|{
-return|return
+name|BrokerService
+name|broker
+init|=
 name|BrokerRegistry
 operator|.
 name|getInstance
@@ -79,6 +81,26 @@ argument_list|()
 operator|.
 name|findFirst
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|broker
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"No BrokerService is registered with the BrokerRegistry."
+operator|+
+literal|" Are you sure there is a configured broker in the same ClassLoader?"
+argument_list|)
+throw|;
+block|}
+return|return
+name|broker
 return|;
 block|}
 block|}
