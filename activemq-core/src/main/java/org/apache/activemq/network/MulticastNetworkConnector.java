@@ -216,7 +216,7 @@ comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
 specifier|protected
 name|void
-name|doStart
+name|handleStart
 parameter_list|()
 throws|throws
 name|Exception
@@ -298,13 +298,13 @@ argument_list|()
 expr_stmt|;
 name|super
 operator|.
-name|doStart
+name|handleStart
 argument_list|()
 expr_stmt|;
 block|}
 specifier|protected
 name|void
-name|doStop
+name|handleStop
 parameter_list|(
 name|ServiceStopper
 name|stopper
@@ -314,7 +314,7 @@ name|Exception
 block|{
 name|super
 operator|.
-name|doStop
+name|handleStop
 argument_list|(
 name|stopper
 argument_list|)
@@ -443,6 +443,8 @@ return|return
 operator|new
 name|CompositeDemandForwardingBridge
 argument_list|(
+name|this
+argument_list|,
 name|local
 argument_list|,
 name|remote

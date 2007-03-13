@@ -172,6 +172,9 @@ decl_stmt|;
 specifier|public
 name|CompositeDemandForwardingBridge
 parameter_list|(
+name|NetworkBridgeConfiguration
+name|configuration
+parameter_list|,
 name|Transport
 name|localBroker
 parameter_list|,
@@ -181,6 +184,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|configuration
+argument_list|,
 name|localBroker
 argument_list|,
 name|remoteBroker
@@ -451,7 +456,10 @@ argument_list|(
 name|info
 argument_list|)
 argument_list|,
-name|networkTTL
+name|configuration
+operator|.
+name|getNetworkTTL
+argument_list|()
 argument_list|)
 return|;
 block|}

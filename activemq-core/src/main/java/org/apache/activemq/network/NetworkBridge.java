@@ -34,10 +34,38 @@ end_comment
 begin_interface
 specifier|public
 interface|interface
-name|Bridge
+name|NetworkBridge
 extends|extends
 name|Service
-block|{  }
+block|{
+comment|/**      * Service an exception      * @param error      */
+specifier|public
+name|void
+name|serviceRemoteException
+parameter_list|(
+name|Throwable
+name|error
+parameter_list|)
+function_decl|;
+comment|/**      * servicee an exception      * @param error      */
+specifier|public
+name|void
+name|serviceLocalException
+parameter_list|(
+name|Throwable
+name|error
+parameter_list|)
+function_decl|;
+comment|/**      * Set the NetworkBridgeFailedListener      * @param listener      */
+specifier|public
+name|void
+name|setNetworkBridgeFailedListener
+parameter_list|(
+name|NetworkBridgeFailedListener
+name|listener
+parameter_list|)
+function_decl|;
+block|}
 end_interface
 
 end_unit

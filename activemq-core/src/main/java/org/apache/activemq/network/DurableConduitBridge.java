@@ -159,10 +159,13 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Constructor      *       * @param localBroker      * @param remoteBroker      */
+comment|/**      * Constructor      * @param configuration       *       * @param localBroker      * @param remoteBroker      */
 specifier|public
 name|DurableConduitBridge
 parameter_list|(
+name|NetworkBridgeConfiguration
+name|configuration
+parameter_list|,
 name|Transport
 name|localBroker
 parameter_list|,
@@ -172,6 +175,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|configuration
+argument_list|,
 name|localBroker
 argument_list|,
 name|remoteBroker
@@ -432,6 +437,8 @@ block|{
 name|String
 name|subscriberName
 init|=
+name|configuration
+operator|.
 name|getLocalBrokerName
 argument_list|()
 operator|+

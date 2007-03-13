@@ -84,6 +84,9 @@ decl_stmt|;
 name|String
 name|brokerUploadUrl
 decl_stmt|;
+name|String
+name|networkProperties
+decl_stmt|;
 specifier|public
 name|boolean
 name|isBrokerInfo
@@ -404,6 +407,34 @@ operator|.
 name|brokerUploadUrl
 operator|=
 name|brokerUploadUrl
+expr_stmt|;
+block|}
+comment|/**      *  @openwire:property version=3 cache=false      * @return the networkProperties      */
+specifier|public
+name|String
+name|getNetworkProperties
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|networkProperties
+return|;
+block|}
+comment|/**      * @param networkProperties the networkProperties to set      */
+specifier|public
+name|void
+name|setNetworkProperties
+parameter_list|(
+name|String
+name|networkProperties
+parameter_list|)
+block|{
+name|this
+operator|.
+name|networkProperties
+operator|=
+name|networkProperties
 expr_stmt|;
 block|}
 block|}

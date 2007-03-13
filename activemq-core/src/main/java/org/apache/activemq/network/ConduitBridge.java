@@ -169,6 +169,9 @@ comment|/**      * Constructor      * @param localBroker      * @param remoteBro
 specifier|public
 name|ConduitBridge
 parameter_list|(
+name|NetworkBridgeConfiguration
+name|configuration
+parameter_list|,
 name|Transport
 name|localBroker
 parameter_list|,
@@ -178,6 +181,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|configuration
+argument_list|,
 name|localBroker
 argument_list|,
 name|remoteBroker

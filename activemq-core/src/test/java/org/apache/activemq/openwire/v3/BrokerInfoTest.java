@@ -261,6 +261,13 @@ argument_list|(
 literal|"BrokerUploadUrl:5"
 argument_list|)
 expr_stmt|;
+name|info
+operator|.
+name|setNetworkProperties
+argument_list|(
+literal|"NetworkProperties:6"
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
