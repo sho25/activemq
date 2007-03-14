@@ -2830,10 +2830,10 @@ literal|1024
 operator|*
 literal|1024
 operator|*
-literal|20
+literal|64
 argument_list|)
 expr_stmt|;
-comment|// Default to 20 Meg
+comment|// Default to 64 Meg
 comment|// limit
 block|}
 return|return
