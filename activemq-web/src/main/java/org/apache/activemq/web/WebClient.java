@@ -1243,9 +1243,9 @@ argument_list|(
 name|brokerUrlInitParam
 argument_list|)
 decl_stmt|;
-name|servletContext
-operator|.
 name|log
+operator|.
+name|debug
 argument_list|(
 literal|"Value of: "
 operator|+
