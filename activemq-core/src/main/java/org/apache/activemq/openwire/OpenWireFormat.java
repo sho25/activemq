@@ -663,23 +663,9 @@ name|sequence
 init|=
 literal|null
 decl_stmt|;
-if|if
-condition|(
-name|ma
-operator|!=
-literal|null
-condition|)
-block|{
-name|sequence
-operator|=
-name|ma
-operator|.
-name|getCachedMarshalledForm
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
-block|}
+comment|//        if( ma!=null ) {
+comment|//             sequence = ma.getCachedMarshalledForm(this);
+comment|//        }
 if|if
 condition|(
 name|sequence
@@ -949,23 +935,9 @@ name|toByteSequence
 argument_list|()
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|ma
-operator|!=
-literal|null
-condition|)
-block|{
-name|ma
-operator|.
-name|setCachedMarshalledForm
-argument_list|(
-name|this
-argument_list|,
-name|sequence
-argument_list|)
-expr_stmt|;
-block|}
+comment|//            if( ma!=null ) {
+comment|//                ma.setCachedMarshalledForm(this, sequence);
+comment|//            }
 block|}
 return|return
 name|sequence
@@ -1027,37 +999,9 @@ argument_list|(
 name|bytesIn
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|cacheEnabled
-operator|&&
-operator|(
-operator|(
-name|DataStructure
-operator|)
-name|command
-operator|)
-operator|.
-name|isMarshallAware
-argument_list|()
-condition|)
-block|{
-operator|(
-operator|(
-name|MarshallAware
-operator|)
-name|command
-operator|)
-operator|.
-name|setCachedMarshalledForm
-argument_list|(
-name|this
-argument_list|,
-name|sequence
-argument_list|)
-expr_stmt|;
-block|}
+comment|//        if( !cacheEnabled&& ((DataStructure)command).isMarshallAware() ) {
+comment|//            ((MarshallAware) command).setCachedMarshalledForm(this, sequence);
+comment|//        }
 return|return
 name|command
 return|;
@@ -1884,13 +1828,9 @@ decl_stmt|;
 name|ByteSequence
 name|sequence
 init|=
-name|ma
-operator|.
-name|getCachedMarshalledForm
-argument_list|(
-name|this
-argument_list|)
+literal|null
 decl_stmt|;
+comment|//            sequence=ma.getCachedMarshalledForm(this);
 name|bs
 operator|.
 name|writeBoolean
@@ -2021,44 +1961,17 @@ name|readBoolean
 argument_list|()
 condition|)
 block|{
-name|MarshallAware
-name|ma
-init|=
-operator|(
-name|MarshallAware
-operator|)
-name|o
-decl_stmt|;
-name|ByteSequence
-name|sequence
-init|=
-name|ma
-operator|.
-name|getCachedMarshalledForm
+comment|// We should not be doing any caching
+throw|throw
+operator|new
+name|IOException
 argument_list|(
-name|this
+literal|"Corrupted stream"
 argument_list|)
-decl_stmt|;
-name|ds
-operator|.
-name|write
-argument_list|(
-name|sequence
-operator|.
-name|getData
-argument_list|()
-argument_list|,
-name|sequence
-operator|.
-name|getOffset
-argument_list|()
-argument_list|,
-name|sequence
-operator|.
-name|getLength
-argument_list|()
-argument_list|)
-expr_stmt|;
+throw|;
+comment|//            MarshallAware ma = (MarshallAware) o;
+comment|//            ByteSequence sequence=ma.getCachedMarshalledForm(this);
+comment|//            ds.write(sequence.getData(), sequence.getOffset(), sequence.getLength());
 block|}
 else|else
 block|{

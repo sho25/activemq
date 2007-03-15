@@ -2352,11 +2352,6 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-name|message
-operator|.
-name|evictMarshlledForm
-argument_list|()
-expr_stmt|;
 comment|// Disable flow control for this since since we don't want to block.
 name|boolean
 name|originalFlowControl

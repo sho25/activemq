@@ -375,11 +375,6 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
-name|message
-operator|.
-name|evictMarshlledForm
-argument_list|()
-expr_stmt|;
 name|next
 operator|.
 name|send
