@@ -200,7 +200,7 @@ name|BrokerFactory
 operator|.
 name|createBroker
 argument_list|(
-literal|"file:src/release/conf/activemq.xml"
+literal|"xbean:src/release/conf/activemq.xml"
 argument_list|)
 expr_stmt|;
 block|}
