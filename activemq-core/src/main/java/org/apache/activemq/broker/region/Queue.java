@@ -2421,11 +2421,6 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-name|message
-operator|.
-name|incrementReferenceCount
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|context
@@ -2434,6 +2429,13 @@ name|isInTransaction
 argument_list|()
 condition|)
 block|{
+comment|// If this is a transacted message.. increase the usage now so that a big TX does not blow up
+comment|// our memory.  This increment is decremented once the tx finishes..
+name|message
+operator|.
+name|incrementReferenceCount
+argument_list|()
+expr_stmt|;
 name|context
 operator|.
 name|getTransaction
@@ -2452,21 +2454,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//even though the message could be expired - it won't be from the store
-comment|//and it's important to keep the store/cursor in step
-synchronized|synchronized
-init|(
-name|messages
-init|)
+try|try
 block|{
-name|messages
-operator|.
-name|addMessageLast
-argument_list|(
-name|message
-argument_list|)
-expr_stmt|;
-block|}
 comment|// It could take while before we receive the commit
 comment|// op, by that time the message could have expired..
 if|if
@@ -2562,25 +2551,37 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+finally|finally
+block|{
+name|message
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|afterRollback
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|message
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
-synchronized|synchronized
-init|(
-name|messages
-init|)
-block|{
-name|messages
-operator|.
-name|addMessageLast
-argument_list|(
-name|message
-argument_list|)
-expr_stmt|;
-block|}
+comment|// Add to the pending list, this takes care of incrementing the usage manager.
 name|sendMessage
 argument_list|(
 name|context
@@ -4782,6 +4783,19 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+synchronized|synchronized
+init|(
+name|messages
+init|)
+block|{
+name|messages
+operator|.
+name|addMessageLast
+argument_list|(
+name|msg
+argument_list|)
+expr_stmt|;
+block|}
 name|destinationStatistics
 operator|.
 name|getEnqueues

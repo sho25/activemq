@@ -6342,6 +6342,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+else|else
+block|{
+name|context
+operator|=
+name|result
+operator|.
+name|getConnectionContext
+argument_list|()
+expr_stmt|;
+block|}
 return|return
 name|result
 return|;

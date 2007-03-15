@@ -68,17 +68,30 @@ name|AbstractPendingMessageCursor
 block|{
 specifier|private
 name|LinkedList
+argument_list|<
+name|MessageReference
+argument_list|>
 name|list
 init|=
 operator|new
 name|LinkedList
+argument_list|<
+name|MessageReference
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
 name|Iterator
+argument_list|<
+name|MessageReference
+argument_list|>
 name|iter
 init|=
 literal|null
+decl_stmt|;
+specifier|private
+name|MessageReference
+name|last
 decl_stmt|;
 comment|/**      * @return true if there are no pending messages      */
 specifier|public
@@ -106,6 +119,10 @@ operator|.
 name|listIterator
 argument_list|()
 expr_stmt|;
+name|last
+operator|=
+literal|null
+expr_stmt|;
 block|}
 comment|/**      * add message to await dispatch      *       * @param node      */
 specifier|public
@@ -116,6 +133,11 @@ name|MessageReference
 name|node
 parameter_list|)
 block|{
+name|node
+operator|.
+name|incrementReferenceCount
+argument_list|()
+expr_stmt|;
 name|list
 operator|.
 name|addLast
@@ -133,6 +155,11 @@ name|MessageReference
 name|node
 parameter_list|)
 block|{
+name|node
+operator|.
+name|incrementReferenceCount
+argument_list|()
+expr_stmt|;
 name|list
 operator|.
 name|addFirst
@@ -160,7 +187,8 @@ name|MessageReference
 name|next
 parameter_list|()
 block|{
-return|return
+name|last
+operator|=
 operator|(
 name|MessageReference
 operator|)
@@ -168,6 +196,9 @@ name|iter
 operator|.
 name|next
 argument_list|()
+expr_stmt|;
+return|return
+name|last
 return|;
 block|}
 comment|/**      * remove the message at the cursor position      *       */
@@ -176,6 +207,19 @@ name|void
 name|remove
 parameter_list|()
 block|{
+if|if
+condition|(
+name|last
+operator|!=
+literal|null
+condition|)
+block|{
+name|last
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
+block|}
 name|iter
 operator|.
 name|remove
@@ -218,6 +262,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|MessageReference
+argument_list|>
 name|i
 init|=
 name|list
@@ -235,9 +282,6 @@ block|{
 name|MessageReference
 name|ref
 init|=
-operator|(
-name|MessageReference
-operator|)
 name|i
 operator|.
 name|next
@@ -259,6 +303,11 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+name|ref
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
 name|i
 operator|.
 name|remove
@@ -271,6 +320,9 @@ block|}
 comment|/**      * Page in a restricted number of messages      * @param maxItems      * @return a list of paged in messages      */
 specifier|public
 name|LinkedList
+argument_list|<
+name|MessageReference
+argument_list|>
 name|pageInList
 parameter_list|(
 name|int
