@@ -25,8 +25,6 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|BrokerFactory
-operator|.
 name|BrokerFactoryHandler
 import|;
 end_import
@@ -284,8 +282,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// TODO we want folks to be able to add other connectors and start the broker afterwards
-comment|//brokerService.start();
 return|return
 name|brokerService
 return|;

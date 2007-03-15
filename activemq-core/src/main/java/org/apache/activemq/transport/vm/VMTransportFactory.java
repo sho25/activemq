@@ -133,8 +133,6 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|BrokerFactory
-operator|.
 name|BrokerFactoryHandler
 import|;
 end_import
