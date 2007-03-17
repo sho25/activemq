@@ -1966,10 +1966,7 @@ name|context
 operator|.
 name|isProducerFlowControl
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|usageManager
 operator|.
 name|isFull
@@ -1996,8 +1993,6 @@ literal|"Usage Manager memory limit reached"
 argument_list|)
 throw|;
 block|}
-else|else
-block|{
 comment|// We can avoid blocking due to low usage if the producer is sending a sync message or
 comment|// if it is using a producer window
 if|if
@@ -2261,8 +2256,6 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return;
-block|}
-block|}
 block|}
 block|}
 block|}
