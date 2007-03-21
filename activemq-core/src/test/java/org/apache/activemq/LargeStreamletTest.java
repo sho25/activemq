@@ -190,7 +190,7 @@ specifier|final
 name|int
 name|MESSAGE_COUNT
 init|=
-literal|1024
+literal|10
 operator|*
 literal|1024
 decl_stmt|;
