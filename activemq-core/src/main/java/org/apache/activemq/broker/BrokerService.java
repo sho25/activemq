@@ -999,7 +999,6 @@ name|DEFAULT_PORT
 init|=
 literal|"61616"
 decl_stmt|;
-specifier|public
 specifier|static
 specifier|final
 name|String

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
 end_comment
 
 begin_package
@@ -35,6 +35,34 @@ name|Iterator
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  *   * @version $Revision: 1.3 $  */
 end_comment
@@ -44,6 +72,21 @@ specifier|public
 class|class
 name|BrokerRegistry
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|BrokerRegistry
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|static
 specifier|final
 specifier|private
@@ -76,12 +119,23 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|BrokerService
+argument_list|>
 name|brokers
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|BrokerService
+argument_list|>
 argument_list|()
 decl_stmt|;
+comment|/**      * @param brokerName      * @return the BrokerService      */
 specifier|public
 name|BrokerService
 name|lookup
@@ -90,25 +144,79 @@ name|String
 name|brokerName
 parameter_list|)
 block|{
+name|BrokerService
+name|result
+init|=
+literal|null
+decl_stmt|;
 synchronized|synchronized
 init|(
 name|mutex
 init|)
 block|{
-return|return
-operator|(
-name|BrokerService
-operator|)
+name|result
+operator|=
 name|brokers
 operator|.
 name|get
 argument_list|(
 name|brokerName
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|result
+operator|==
+literal|null
+operator|&&
+name|brokerName
+operator|!=
+literal|null
+operator|&&
+name|brokerName
+operator|.
+name|equals
+argument_list|(
+name|BrokerService
+operator|.
+name|DEFAULT_BROKER_NAME
+argument_list|)
+condition|)
+block|{
+name|result
+operator|=
+name|findFirst
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|result
+operator|!=
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Broker localhost not started so using "
+operator|+
+name|result
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" instead"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+return|return
+name|result
 return|;
 block|}
-block|}
-comment|/**      * Returns the first registered broker found      */
+comment|/**      * Returns the first registered broker found      * @return the first BrokerService      */
 specifier|public
 name|BrokerService
 name|findFirst
@@ -120,6 +228,9 @@ name|mutex
 init|)
 block|{
 name|Iterator
+argument_list|<
+name|BrokerService
+argument_list|>
 name|iter
 init|=
 name|brokers
@@ -139,9 +250,6 @@ argument_list|()
 condition|)
 block|{
 return|return
-operator|(
-name|BrokerService
-operator|)
 name|iter
 operator|.
 name|next
@@ -153,6 +261,7 @@ literal|null
 return|;
 block|}
 block|}
+comment|/**      * @param brokerName      * @param broker      */
 specifier|public
 name|void
 name|bind
@@ -180,6 +289,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * @param brokerName      */
 specifier|public
 name|void
 name|unbind
@@ -202,6 +312,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * @return the mutex used      */
 specifier|public
 name|Object
 name|getRegistryMutext
