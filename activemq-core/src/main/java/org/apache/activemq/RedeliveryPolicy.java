@@ -295,23 +295,18 @@ condition|(
 name|useCollisionAvoidance
 condition|)
 block|{
-if|if
-condition|(
-name|randomNumberGenerator
-operator|==
-literal|null
-condition|)
-block|{
-name|initRandomNumberGenerator
+comment|/*              * First random determines +/-, second random determines how far to              * go in that direction. -cgs              */
+name|Random
+name|random
+init|=
+name|getRandomNumberGenerator
 argument_list|()
-expr_stmt|;
-block|}
-comment|/*               * First random determines +/-, second random determines how far to              * go in that direction. -cgs              */
+decl_stmt|;
 name|double
 name|variance
 init|=
 operator|(
-name|randomNumberGenerator
+name|random
 operator|.
 name|nextBoolean
 argument_list|()
@@ -322,7 +317,7 @@ operator|-
 name|collisionAvoidanceFactor
 operator|)
 operator|*
-name|randomNumberGenerator
+name|random
 operator|.
 name|nextDouble
 argument_list|()
@@ -389,8 +384,8 @@ block|}
 specifier|protected
 specifier|static
 specifier|synchronized
-name|void
-name|initRandomNumberGenerator
+name|Random
+name|getRandomNumberGenerator
 parameter_list|()
 block|{
 if|if
@@ -407,6 +402,9 @@ name|Random
 argument_list|()
 expr_stmt|;
 block|}
+return|return
+name|randomNumberGenerator
+return|;
 block|}
 block|}
 end_class
