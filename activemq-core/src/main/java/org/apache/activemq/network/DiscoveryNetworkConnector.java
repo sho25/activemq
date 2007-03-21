@@ -928,9 +928,9 @@ name|result
 argument_list|)
 return|;
 block|}
-specifier|protected
+specifier|public
 name|String
-name|createName
+name|getName
 parameter_list|()
 block|{
 return|return

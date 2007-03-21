@@ -439,7 +439,7 @@ name|subscriberName
 init|=
 name|configuration
 operator|.
-name|getLocalBrokerName
+name|getBrokerName
 argument_list|()
 operator|+
 literal|"_"

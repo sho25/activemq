@@ -246,7 +246,7 @@ argument_list|()
 decl_stmt|;
 name|config
 operator|.
-name|setLocalBrokerName
+name|setBrokerName
 argument_list|(
 name|localBroker
 operator|.

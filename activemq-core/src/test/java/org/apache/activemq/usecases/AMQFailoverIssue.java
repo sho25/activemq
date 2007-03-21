@@ -881,15 +881,6 @@ argument_list|)
 expr_stmt|;
 name|nc
 operator|.
-name|setName
-argument_list|(
-name|brokerName
-operator|+
-literal|".nc"
-argument_list|)
-expr_stmt|;
-name|nc
-operator|.
 name|setPrefetchSize
 argument_list|(
 literal|1

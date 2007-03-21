@@ -74,9 +74,9 @@ literal|1
 decl_stmt|;
 specifier|private
 name|String
-name|localBrokerName
+name|brokerName
 init|=
-literal|"Unknow"
+literal|"localhost"
 decl_stmt|;
 specifier|private
 name|String
@@ -260,32 +260,32 @@ operator|=
 name|duplex
 expr_stmt|;
 block|}
-comment|/**      * @return the localBrokerName      */
+comment|/**      * @return the brokerName      */
 specifier|public
 name|String
-name|getLocalBrokerName
+name|getBrokerName
 parameter_list|()
 block|{
 return|return
 name|this
 operator|.
-name|localBrokerName
+name|brokerName
 return|;
 block|}
-comment|/**      * @param localBrokerName the localBrokerName to set      */
+comment|/**      * @param brokerName the localBrokerName to set      */
 specifier|public
 name|void
-name|setLocalBrokerName
+name|setBrokerName
 parameter_list|(
 name|String
-name|localBrokerName
+name|brokerName
 parameter_list|)
 block|{
 name|this
 operator|.
-name|localBrokerName
+name|brokerName
 operator|=
-name|localBrokerName
+name|brokerName
 expr_stmt|;
 block|}
 comment|/**      * @return the networkTTL      */

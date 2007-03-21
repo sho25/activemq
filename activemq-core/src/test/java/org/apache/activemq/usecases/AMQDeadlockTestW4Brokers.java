@@ -1215,15 +1215,6 @@ argument_list|(
 name|brokerName
 argument_list|)
 expr_stmt|;
-name|nc
-operator|.
-name|setName
-argument_list|(
-name|brokerName
-operator|+
-literal|".nc"
-argument_list|)
-expr_stmt|;
 comment|// When using queue limits set this to 1
 name|nc
 operator|.

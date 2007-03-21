@@ -115,8 +115,6 @@ name|long
 name|initialReconnectDelay
 init|=
 literal|1000
-operator|*
-literal|5
 decl_stmt|;
 specifier|private
 name|long

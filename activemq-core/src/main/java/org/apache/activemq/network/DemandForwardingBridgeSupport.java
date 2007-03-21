@@ -739,12 +739,6 @@ name|String
 name|localClientId
 decl_stmt|;
 specifier|protected
-name|String
-name|name
-init|=
-literal|"bridge"
-decl_stmt|;
-specifier|protected
 name|ConsumerInfo
 name|demandConsumerInfo
 decl_stmt|;
@@ -884,6 +878,10 @@ decl_stmt|;
 specifier|private
 name|NetworkBridgeFailedListener
 name|bridgeFailedListener
+decl_stmt|;
+specifier|private
+name|boolean
+name|createdByDuplex
 decl_stmt|;
 specifier|public
 name|DemandForwardingBridgeSupport
@@ -1433,7 +1431,10 @@ name|remoteBrokerName
 operator|+
 literal|"_inbound"
 operator|+
-name|name
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
 expr_stmt|;
 name|localConnectionInfo
 operator|.
@@ -1586,12 +1587,10 @@ literal|"NC_"
 operator|+
 name|configuration
 operator|.
-name|getLocalBrokerName
+name|getBrokerName
 argument_list|()
 operator|+
 literal|"_outbound"
-operator|+
-name|name
 argument_list|)
 expr_stmt|;
 name|remoteConnectionInfo
@@ -1621,6 +1620,14 @@ argument_list|(
 name|remoteConnectionInfo
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|isCreatedByDuplex
+argument_list|()
+operator|==
+literal|false
+condition|)
+block|{
 name|BrokerInfo
 name|brokerInfo
 init|=
@@ -1634,7 +1641,7 @@ name|setBrokerName
 argument_list|(
 name|configuration
 operator|.
-name|getLocalBrokerName
+name|getBrokerName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1698,6 +1705,7 @@ argument_list|(
 name|brokerInfo
 argument_list|)
 expr_stmt|;
+block|}
 name|SessionInfo
 name|remoteSessionInfo
 init|=
@@ -1851,7 +1859,7 @@ literal|" stopping "
 operator|+
 name|configuration
 operator|.
-name|getLocalBrokerName
+name|getBrokerName
 argument_list|()
 operator|+
 literal|" bridge to "
@@ -1963,7 +1971,7 @@ name|debug
 argument_list|(
 name|configuration
 operator|.
-name|getLocalBrokerName
+name|getBrokerName
 argument_list|()
 operator|+
 literal|" bridge to "
@@ -1982,7 +1990,7 @@ name|info
 argument_list|(
 name|configuration
 operator|.
-name|getLocalBrokerName
+name|getBrokerName
 argument_list|()
 operator|+
 literal|" bridge to "
@@ -2373,7 +2381,7 @@ name|debug
 argument_list|(
 name|configuration
 operator|.
-name|getLocalBrokerName
+name|getBrokerName
 argument_list|()
 operator|+
 literal|" Ignoring Subscription "
@@ -2419,7 +2427,7 @@ name|debug
 argument_list|(
 name|configuration
 operator|.
-name|getLocalBrokerName
+name|getBrokerName
 argument_list|()
 operator|+
 literal|" Ignoring sub "
@@ -2457,7 +2465,7 @@ name|debug
 argument_list|(
 name|configuration
 operator|.
-name|getLocalBrokerName
+name|getBrokerName
 argument_list|()
 operator|+
 literal|" Ignoring sub "
@@ -2522,7 +2530,7 @@ name|debug
 argument_list|(
 name|configuration
 operator|.
-name|getLocalBrokerName
+name|getBrokerName
 argument_list|()
 operator|+
 literal|" Forwarding sub on "
@@ -2554,7 +2562,7 @@ name|debug
 argument_list|(
 name|configuration
 operator|.
-name|getLocalBrokerName
+name|getBrokerName
 argument_list|()
 operator|+
 literal|" Ignoring sub "
@@ -3130,7 +3138,7 @@ literal|"bridging "
 operator|+
 name|configuration
 operator|.
-name|getLocalBrokerName
+name|getBrokerName
 argument_list|()
 operator|+
 literal|" -> "
@@ -3336,7 +3344,7 @@ name|info
 argument_list|(
 name|configuration
 operator|.
-name|getLocalBrokerName
+name|getBrokerName
 argument_list|()
 operator|+
 literal|" Shutting down"
@@ -3564,30 +3572,32 @@ return|return
 name|remoteBroker
 return|;
 block|}
-comment|/**      * @return Returns the name.      */
+comment|/**      * @return the createdByDuplex      */
 specifier|public
-name|String
-name|getName
+name|boolean
+name|isCreatedByDuplex
 parameter_list|()
 block|{
 return|return
-name|name
+name|this
+operator|.
+name|createdByDuplex
 return|;
 block|}
-comment|/**      * @param name The name to set.      */
+comment|/**      * @param createdByDuplex the createdByDuplex to set      */
 specifier|public
 name|void
-name|setName
+name|setCreatedByDuplex
 parameter_list|(
-name|String
-name|name
+name|boolean
+name|createdByDuplex
 parameter_list|)
 block|{
 name|this
 operator|.
-name|name
+name|createdByDuplex
 operator|=
-name|name
+name|createdByDuplex
 expr_stmt|;
 block|}
 specifier|public
@@ -3832,9 +3842,11 @@ operator|.
 name|isBridgeTempDestinations
 argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|DestinationFilter
 name|filter
 init|=
