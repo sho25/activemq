@@ -4042,11 +4042,25 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"About to delete any non-persistent messages that may have overflowed to disk ..."
+argument_list|)
+expr_stmt|;
 name|StoreFactory
 operator|.
 name|delete
 argument_list|(
 name|name
+argument_list|)
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Successfully deleted temporary storage"
 argument_list|)
 expr_stmt|;
 name|tempDataStore
