@@ -395,7 +395,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"####Êattempting to figure out the type of resource: "
+literal|"Now attempting to figure out the type of resource: "
 operator|+
 name|uri
 argument_list|)
