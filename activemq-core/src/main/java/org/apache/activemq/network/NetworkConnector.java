@@ -365,14 +365,14 @@ name|void
 name|setExcludedDestinations
 parameter_list|(
 name|List
-name|exludedDestinations
+name|excludedDestinations
 parameter_list|)
 block|{
 name|this
 operator|.
 name|excludedDestinations
 operator|=
-name|exludedDestinations
+name|excludedDestinations
 expr_stmt|;
 block|}
 specifier|public
