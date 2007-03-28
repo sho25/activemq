@@ -85,6 +85,16 @@ name|JMSException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision: 1.2 $  */
 end_comment
@@ -193,6 +203,15 @@ literal|"activemq.base"
 argument_list|,
 literal|"target"
 argument_list|)
+expr_stmt|;
+operator|new
+name|File
+argument_list|(
+literal|"target/data"
+argument_list|)
+operator|.
+name|mkdirs
+argument_list|()
 expr_stmt|;
 name|broker
 operator|=
