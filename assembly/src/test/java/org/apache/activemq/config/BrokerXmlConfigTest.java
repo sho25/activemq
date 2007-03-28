@@ -204,15 +204,7 @@ argument_list|,
 literal|"target"
 argument_list|)
 expr_stmt|;
-operator|new
-name|File
-argument_list|(
-literal|"target/data"
-argument_list|)
-operator|.
-name|mkdirs
-argument_list|()
-expr_stmt|;
+comment|//new File("target/data").mkdirs();
 name|broker
 operator|=
 name|BrokerFactory
