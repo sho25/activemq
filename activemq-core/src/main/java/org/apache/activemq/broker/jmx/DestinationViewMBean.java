@@ -100,31 +100,31 @@ name|void
 name|resetStatistics
 parameter_list|()
 function_decl|;
-comment|/**      * @return The number of messages that have been sent to the destination.      */
+comment|/**      * Returns the number of messages that have been sent to the destination.      *      * @return The number of messages that have been sent to the destination.      */
 specifier|public
 name|long
 name|getEnqueueCount
 parameter_list|()
 function_decl|;
-comment|/**      * @return The number of messages that have been delivered (potentially not acknowledged) to consumers.      */
+comment|/**      * Returns the number of messages that have been delivered (potentially not acknowledged) to consumers.      *      * @return The number of messages that have been delivered (potentially not acknowledged) to consumers.      */
 specifier|public
 name|long
 name|getDispatchCount
 parameter_list|()
 function_decl|;
-comment|/**      * @return The number of messages that have been acknowledged from the destination.      */
+comment|/**      * Returns the number of messages that have been acknowledged from the destination.      *      * @return The number of messages that have been acknowledged from the destination.      */
 specifier|public
 name|long
 name|getDequeueCount
 parameter_list|()
 function_decl|;
-comment|/**      * @return The number of consmers subscribed to messages from this destination.      */
+comment|/**      * Returns the number of consumers subscribed this destination.      *      * @return The number of consumers subscribed this destination.      */
 specifier|public
 name|long
 name|getConsumerCount
 parameter_list|()
 function_decl|;
-comment|/**      * @return The number of messages being buffered by this destination      */
+comment|/**      * Returns the number of messages in this destination which are yet to be consumed      *      * @return Returns the number of messages in this destination which are yet to be consumed      */
 specifier|public
 name|long
 name|getQueueSize
