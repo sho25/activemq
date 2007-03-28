@@ -92,6 +92,12 @@ name|destinationFilter
 init|=
 literal|">"
 decl_stmt|;
+specifier|private
+name|String
+name|name
+init|=
+literal|"localhost"
+decl_stmt|;
 comment|/**      * @return the conduitSubscriptions      */
 specifier|public
 name|boolean
@@ -426,6 +432,34 @@ operator|.
 name|destinationFilter
 operator|=
 name|destinationFilter
+expr_stmt|;
+block|}
+comment|/**      * @return the name      */
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|name
+return|;
+block|}
+comment|/**      * @param name the name to set      */
+specifier|public
+name|void
+name|setName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|this
+operator|.
+name|name
+operator|=
+name|name
 expr_stmt|;
 block|}
 block|}
