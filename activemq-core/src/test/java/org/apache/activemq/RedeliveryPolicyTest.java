@@ -192,7 +192,8 @@ init|=
 operator|new
 name|ActiveMQQueue
 argument_list|(
-literal|"TEST"
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|MessageProducer
@@ -330,7 +331,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|500
+literal|700
 argument_list|)
 expr_stmt|;
 name|assertNotNull
@@ -397,7 +398,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|500
+literal|700
 argument_list|)
 expr_stmt|;
 name|assertNotNull
@@ -465,7 +466,8 @@ init|=
 operator|new
 name|ActiveMQQueue
 argument_list|(
-literal|"TEST"
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|MessageProducer
@@ -603,7 +605,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|500
+literal|700
 argument_list|)
 expr_stmt|;
 name|assertNotNull
@@ -654,7 +656,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|500
+literal|700
 argument_list|)
 expr_stmt|;
 name|assertNotNull
