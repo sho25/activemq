@@ -74,7 +74,7 @@ specifier|public
 class|class
 name|OracleJDBCAdapter
 extends|extends
-name|DefaultJDBCAdapter
+name|BlobJDBCAdapter
 block|{
 specifier|public
 name|void
