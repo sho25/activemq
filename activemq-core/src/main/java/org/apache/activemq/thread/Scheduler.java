@@ -234,14 +234,14 @@ if|if
 condition|(
 name|ticket
 operator|instanceof
-name|RunnableScheduledFuture
+name|Runnable
 condition|)
 name|clockDaemon
 operator|.
 name|remove
 argument_list|(
 operator|(
-name|RunnableScheduledFuture
+name|Runnable
 operator|)
 name|ticket
 argument_list|)
