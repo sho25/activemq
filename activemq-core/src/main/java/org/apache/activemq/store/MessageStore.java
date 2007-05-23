@@ -216,7 +216,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * A hint to the Store to reset any batching state for the Destination      *       * @param nextToDispatch      *       */
+comment|/**      * A hint to the Store to reset any batching state for the Destination      *      */
 specifier|public
 name|void
 name|resetBatching
