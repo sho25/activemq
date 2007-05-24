@@ -174,7 +174,7 @@ name|LinkedList
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|/**      * Create a ConnectionConsumer      *      * @param theConnection      * @param theSessionPool      * @param theConsumerInfo      * @param theMaximumMessages      * @throws JMSException      */
+comment|/**      * Create a ConnectionConsumer      *      * @param theConnection      * @param theSessionPool      * @param theConsumerInfo      * @throws JMSException      */
 specifier|protected
 name|ActiveMQConnectionConsumer
 parameter_list|(
