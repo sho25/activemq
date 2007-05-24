@@ -17,57 +17,51 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|io
 operator|.
-name|activemq
-operator|.
-name|ActiveMQConnectionFactory
+name|IOException
 import|;
 end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
+name|java
 operator|.
 name|util
 operator|.
-name|FactoryFinder
+name|Enumeration
 import|;
 end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
+name|java
 operator|.
 name|util
 operator|.
-name|IntrospectionSupport
+name|HashMap
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|activemq
+name|LinkedList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|web
+name|util
 operator|.
-name|view
-operator|.
-name|MessageRenderer
+name|Map
 import|;
 end_import
 
@@ -179,56 +173,58 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|io
+name|apache
 operator|.
-name|IOException
+name|activemq
+operator|.
+name|util
+operator|.
+name|FactoryFinder
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
 operator|.
 name|util
 operator|.
-name|Enumeration
+name|IntrospectionSupport
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|activemq
 operator|.
-name|util
+name|web
 operator|.
-name|LinkedList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|view
 operator|.
-name|util
-operator|.
-name|Map
+name|MessageRenderer
 import|;
 end_import
 
 begin_comment
 comment|/**  * Renders the contents of a queue using some kind of view. The URI is assumed  * to be the queue. The following parameters can be used  *   *<ul>  *<li>view - specifies the type of the view such as simple, xml, rss</li>  *<li>selector - specifies the SQL 92 selector to apply to the queue</li>  *</ul>  *   * @version $Revision: $  */
+end_comment
+
+begin_comment
+comment|//TODO Why do we implement our own session pool?
+end_comment
+
+begin_comment
+comment|//TODO This doesn't work, since nobody will be setting the connection factory (because nobody is able to). Just use the WebClient?
 end_comment
 
 begin_class
@@ -324,15 +320,13 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// TODO support remote brokers too
-name|connectionFactory
-operator|=
+throw|throw
 operator|new
-name|ActiveMQConnectionFactory
+name|IllegalStateException
 argument_list|(
-literal|"vm://localhost"
+literal|"missing ConnectionFactory in QueueBrowserServlet"
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 return|return
 name|connectionFactory
