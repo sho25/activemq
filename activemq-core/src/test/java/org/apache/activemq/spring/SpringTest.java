@@ -393,7 +393,7 @@ name|config
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Broken: http://issues.apache.org/activemq/browse/AMQ-1002      * Needs to be fixed.      *       * @throws Exception      */
+comment|/**      * Spring configured test case that tests the remotely deployed xsd      * http://people.apache.org/repository/org.apache.activemq/xsds/activemq-core-4.1-incubator-SNAPSHOT.xsd      *       * Broken: http://issues.apache.org/activemq/browse/AMQ-1002      * Needs to be fixed.      *       * @throws Exception      */
 specifier|public
 name|void
 name|XtestSenderWithSpringXmlUsingSpring2NamespacesWithEmbeddedBrokerConfiguredViaXml
@@ -405,6 +405,25 @@ name|String
 name|config
 init|=
 literal|"spring-embedded-xbean.xml"
+decl_stmt|;
+name|assertSenderConfig
+argument_list|(
+name|config
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Spring configured test case that tests the locally generated xsd      *      * @throws Exception      */
+specifier|public
+name|void
+name|testSenderWithSpringXmlUsingSpring2NamespacesWithEmbeddedBrokerConfiguredViaXmlUsingLocalXsd
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|config
+init|=
+literal|"spring-embedded-xbean-local.xml"
 decl_stmt|;
 name|assertSenderConfig
 argument_list|(
