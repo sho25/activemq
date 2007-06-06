@@ -1481,7 +1481,7 @@ condition|)
 block|{
 name|is_topic
 operator|=
-literal|true
+literal|false
 expr_stmt|;
 name|destinationName
 operator|=
