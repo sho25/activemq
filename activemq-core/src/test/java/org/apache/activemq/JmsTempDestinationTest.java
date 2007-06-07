@@ -1011,13 +1011,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Make sure you cannot publish to a temp destination that does not exist anymore.      *       * @throws JMSException      */
+comment|/**      * Make sure you cannot publish to a temp destination that does not exist anymore.      *       * @throws JMSException      * @throws InterruptedException       */
 specifier|public
 name|void
 name|testPublishFailsForDestoryedTempDestination
 parameter_list|()
 throws|throws
 name|JMSException
+throws|,
+name|InterruptedException
 block|{
 name|Connection
 name|tempConnection
@@ -1111,6 +1113,14 @@ operator|.
 name|delete
 argument_list|()
 expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
+comment|// Wait a little bit to let the delete take effect.
 comment|// This message delivery NOT should work since the temp connection is now closed.
 try|try
 block|{
