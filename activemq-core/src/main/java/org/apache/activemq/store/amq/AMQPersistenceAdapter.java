@@ -1288,60 +1288,25 @@ expr_stmt|;
 name|createTransactionStore
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|referenceStoreAdapter
-operator|.
-name|isStoreValid
-argument_list|()
-operator|==
-literal|false
-condition|)
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"The ReferenceStore is not valid - recovering ..."
-argument_list|)
-expr_stmt|;
+comment|//
+comment|// The following was attempting to reduce startup times by avoiding the log
+comment|// file scanning that recovery performs.  The problem with it is that XA transactions
+comment|// only live in transaction log and are not stored in the reference store, but they still
+comment|// need to be recovered when the broker starts up.  Perhaps on a graceful shutdown we
+comment|// should record all the in flight XA transactions to a file to avoid having to scan
+comment|// the entire transaction log.  For now going to comment this bit out.
+comment|//
+comment|//        if(referenceStoreAdapter.isStoreValid()==false){
+comment|//            log.warn("The ReferenceStore is not valid - recovering ...");
+comment|//            recover();
+comment|//            log.info("Finished recovering the ReferenceStore");
+comment|//        }else {
+comment|//            Location location=writeTraceMessage("RECOVERED "+new Date(),true);
+comment|//            asyncDataManager.setMark(location,true);
+comment|//        }
 name|recover
 argument_list|()
 expr_stmt|;
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"Finished recovering the ReferenceStore"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|Location
-name|location
-init|=
-name|writeTraceMessage
-argument_list|(
-literal|"RECOVERED "
-operator|+
-operator|new
-name|Date
-argument_list|()
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|asyncDataManager
-operator|.
-name|setMark
-argument_list|(
-name|location
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
 comment|// Do a checkpoint periodically.
 name|periodicCheckpointTask
 operator|=
