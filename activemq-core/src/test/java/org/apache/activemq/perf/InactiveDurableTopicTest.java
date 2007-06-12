@@ -207,6 +207,34 @@ name|KahaPersistenceAdapter
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision$  */
 end_comment
@@ -218,6 +246,22 @@ name|InactiveDurableTopicTest
 extends|extends
 name|TestCase
 block|{
+specifier|private
+specifier|static
+specifier|final
+specifier|transient
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|InactiveDurableTopicTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -698,11 +742,9 @@ operator|==
 literal|0
 condition|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 literal|"Sent "
 operator|+
@@ -902,11 +944,9 @@ operator|==
 literal|0
 condition|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 literal|"Received "
 operator|+

@@ -23,6 +23,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|ActiveMQConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|broker
 operator|.
 name|BrokerService
@@ -49,9 +61,25 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activemq
+name|commons
 operator|.
-name|ActiveMQConnectionFactory
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -94,7 +122,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * Test Publish/Consume topic  using the release activemq.xml configuration file  *  * @version $Revision: 1.2 $  */
+comment|/**  * Test Publish/Consume topic  using the release activemq.xml configuration file  *  * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class
@@ -104,6 +132,22 @@ name|PublishOnTopicConsumerMessageUsingActivemqXMLTest
 extends|extends
 name|PublishOnTopicConsumedMessageTest
 block|{
+specifier|private
+specifier|static
+specifier|final
+specifier|transient
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|PublishOnTopicConsumerMessageUsingActivemqXMLTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|protected
 specifier|static
 specifier|final
@@ -139,7 +183,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-empty_stmt|;
 name|File
 name|journalFile
 init|=
@@ -155,11 +198,9 @@ name|journalFile
 argument_list|)
 expr_stmt|;
 comment|// Create broker from resource
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|print
+name|info
 argument_list|(
 literal|"Creating broker... "
 argument_list|)
@@ -184,7 +225,7 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
-comment|/*      * Stops the Broker      * @see junit.framework.TestCase#tearDown()      */
+comment|/*     * Stops the Broker     * @see junit.framework.TestCase#tearDown()     */
 specifier|protected
 name|void
 name|tearDown
@@ -220,7 +261,7 @@ literal|"Broker closed..."
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * clean up the journal      */
+comment|/*     * clean up the journal     */
 specifier|protected
 specifier|static
 name|void

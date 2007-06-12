@@ -872,11 +872,9 @@ name|k
 operator|++
 control|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Test run: "
 operator|+
@@ -934,11 +932,9 @@ operator|.
 name|assertNoErrors
 argument_list|()
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Waiting for worker "
 operator|+
@@ -985,11 +981,9 @@ name|assertNoErrors
 argument_list|()
 expr_stmt|;
 block|}
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Simulating transport error to cause reconnect."
 argument_list|)
@@ -1030,11 +1024,9 @@ operator|<
 name|WORKER_COUNT
 condition|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Waiting for connections to get interrupted.. at: "
 operator|+
@@ -1053,11 +1045,9 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// let things stablize..
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Pausing before starting next iterations..."
 argument_list|)

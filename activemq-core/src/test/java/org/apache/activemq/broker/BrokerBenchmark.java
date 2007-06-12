@@ -153,6 +153,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -188,6 +216,22 @@ name|BrokerBenchmark
 extends|extends
 name|BrokerTestSupport
 block|{
+specifier|private
+specifier|static
+specifier|final
+specifier|transient
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|BrokerBenchmark
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|public
 name|int
 name|PRODUCE_COUNT
@@ -338,11 +382,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Running Benchmark for destination="
 operator|+
@@ -673,11 +715,9 @@ operator|<
 name|CONSUME_COUNT
 condition|)
 block|{
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Consumer stall, waiting for message #"
 operator|+
@@ -924,11 +964,9 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Results for destination="
 operator|+
@@ -947,11 +985,9 @@ operator|+
 name|deliveryMode
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Produced at messages/sec: "
 operator|+
@@ -968,11 +1004,9 @@ operator|)
 operator|)
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Consumed at messages/sec: "
 operator|+

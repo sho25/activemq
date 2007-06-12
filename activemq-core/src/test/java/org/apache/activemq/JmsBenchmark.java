@@ -237,6 +237,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -308,6 +336,22 @@ name|JmsBenchmark
 extends|extends
 name|JmsTestSupport
 block|{
+specifier|private
+specifier|static
+specifier|final
+specifier|transient
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|JmsBenchmark
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -993,11 +1037,9 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 name|getName
 argument_list|()
@@ -1010,11 +1052,9 @@ operator|.
 name|acquire
 argument_list|()
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Producers and Consumers are now running.  Waiting for system to reach steady state: "
 operator|+
@@ -1036,11 +1076,9 @@ operator|*
 literal|10
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Starting sample: "
 operator|+
@@ -1133,11 +1171,9 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"published: "
 operator|+
@@ -1181,11 +1217,9 @@ literal|" msgs/sec"
 argument_list|)
 expr_stmt|;
 block|}
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Sample done."
 argument_list|)
