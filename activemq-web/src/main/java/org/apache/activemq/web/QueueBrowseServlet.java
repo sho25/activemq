@@ -215,6 +215,18 @@ name|MessageRenderer
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|ActiveMQConnectionFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Renders the contents of a queue using some kind of view. The URI is assumed  * to be the queue. The following parameters can be used  *   *<ul>  *<li>view - specifies the type of the view such as simple, xml, rss</li>  *<li>selector - specifies the SQL 92 selector to apply to the queue</li>  *</ul>  *   * @version $Revision: $  */
 end_comment
@@ -320,6 +332,35 @@ operator|==
 literal|null
 condition|)
 block|{
+name|String
+name|uri
+init|=
+name|getServletContext
+argument_list|()
+operator|.
+name|getInitParameter
+argument_list|(
+literal|"org.apache.activemq.brokerURL"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|uri
+operator|!=
+literal|null
+condition|)
+block|{
+name|connectionFactory
+operator|=
+operator|new
+name|ActiveMQConnectionFactory
+argument_list|(
+name|uri
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -327,6 +368,7 @@ argument_list|(
 literal|"missing ConnectionFactory in QueueBrowserServlet"
 argument_list|)
 throw|;
+block|}
 block|}
 return|return
 name|connectionFactory
