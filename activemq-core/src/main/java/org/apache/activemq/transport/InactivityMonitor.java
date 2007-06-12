@@ -110,7 +110,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to make sure that commands are arriving periodically from the peer of the transport.    *   * @version $Revision$  */
+comment|/**  * Used to make sure that commands are arriving periodically from the peer of the transport.  *  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -271,6 +271,11 @@ name|void
 name|writeCheck
 parameter_list|()
 block|{
+synchronized|synchronized
+init|(
+name|writeChecker
+init|)
+block|{
 if|if
 condition|(
 name|inSend
@@ -347,10 +352,16 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 specifier|private
 name|void
 name|readCheck
 parameter_list|()
+block|{
+synchronized|synchronized
+init|(
+name|readChecker
+init|)
 block|{
 if|if
 condition|(
@@ -418,6 +429,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 specifier|public
 name|void
 name|onCommand
@@ -425,6 +437,11 @@ parameter_list|(
 name|Object
 name|command
 parameter_list|)
+block|{
+synchronized|synchronized
+init|(
+name|readChecker
+init|)
 block|{
 name|inReceive
 operator|.
@@ -505,6 +522,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 specifier|public
 name|void
 name|oneway
@@ -514,6 +532,11 @@ name|o
 parameter_list|)
 throws|throws
 name|IOException
+block|{
+synchronized|synchronized
+init|(
+name|writeChecker
+init|)
 block|{
 comment|// Disable inactivity monitoring while processing a command.
 name|inSend
@@ -578,6 +601,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
@@ -693,7 +717,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      *       */
+comment|/**      *      */
 specifier|synchronized
 specifier|private
 name|void
