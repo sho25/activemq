@@ -29,6 +29,18 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|EmbeddedBrokerAndConnectionTestSupport
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -96,7 +108,7 @@ specifier|public
 class|class
 name|CreateLotsOfTemporaryQueuesTest
 extends|extends
-name|EmbeddedBrokerTestSupport
+name|EmbeddedBrokerAndConnectionTestSupport
 block|{
 specifier|private
 specifier|static
@@ -169,17 +181,6 @@ name|numberToCreate
 operator|+
 literal|" temporary queue(s)"
 argument_list|)
-expr_stmt|;
-name|Connection
-name|connection
-init|=
-name|createConnection
-argument_list|()
-decl_stmt|;
-name|connection
-operator|.
-name|start
-argument_list|()
 expr_stmt|;
 name|Session
 name|session
@@ -260,11 +261,6 @@ name|numberToCreate
 operator|+
 literal|" temporary queue(s)"
 argument_list|)
-expr_stmt|;
-name|connection
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 specifier|public

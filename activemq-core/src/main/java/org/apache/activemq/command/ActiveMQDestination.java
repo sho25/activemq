@@ -338,6 +338,14 @@ name|TEMP_TOPIC_QUALIFED_PREFIX
 init|=
 literal|"temp-topic://"
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|TEMP_DESTINATION_NAME_PREFIX
+init|=
+literal|"ID:"
+decl_stmt|;
 specifier|protected
 name|String
 name|physicalName
