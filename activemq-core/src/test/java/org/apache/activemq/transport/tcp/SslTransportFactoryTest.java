@@ -550,7 +550,9 @@ block|{
 name|log
 operator|.
 name|info
-argument_list|()
+argument_list|(
+literal|""
+argument_list|)
 expr_stmt|;
 name|log
 operator|.
