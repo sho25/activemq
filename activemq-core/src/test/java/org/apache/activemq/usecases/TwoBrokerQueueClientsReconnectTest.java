@@ -1258,11 +1258,9 @@ operator|==
 literal|null
 condition|)
 block|{
-name|System
+name|log
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"Consumer failed to receive exactly "
 operator|+

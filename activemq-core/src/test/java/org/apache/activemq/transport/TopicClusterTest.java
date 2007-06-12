@@ -962,11 +962,9 @@ argument_list|(
 literal|2000
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|err
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"GOT: "
 operator|+

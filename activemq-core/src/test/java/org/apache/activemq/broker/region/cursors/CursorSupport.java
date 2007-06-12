@@ -903,36 +903,30 @@ name|consumed
 argument_list|)
 condition|)
 block|{
-name|System
+name|log
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"BAD MATCH AT POS "
 operator|+
 name|i
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
 name|sent
 argument_list|)
 expr_stmt|;
-name|System
+name|log
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
 name|consumed
 argument_list|)
 expr_stmt|;
-comment|/*                System.err.println("\n\n\n\n\n");                for (int j = 0; j< consumerList.size(); j++) {                    System.err.println(consumerList.get(j));                }                */
+comment|/*                log.error("\n\n\n\n\n");                for (int j = 0; j< consumerList.size(); j++) {                    log.error(consumerList.get(j));                }                */
 block|}
 name|assertEquals
 argument_list|(

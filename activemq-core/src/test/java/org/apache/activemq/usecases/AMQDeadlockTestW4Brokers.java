@@ -1749,19 +1749,14 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|System
+name|log
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
-literal|"Producer 1 is exiting."
-argument_list|)
-expr_stmt|;
+literal|"Producer 1 is exiting"
+argument_list|,
 name|e
-operator|.
-name|printStackTrace
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}

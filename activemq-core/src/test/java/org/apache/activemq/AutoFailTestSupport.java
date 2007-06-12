@@ -246,11 +246,9 @@ name|get
 argument_list|()
 condition|)
 block|{
-name|System
+name|log
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"Test case has exceeded the maximum allotted time to run of: "
 operator|+
