@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -52,16 +62,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
 import|;
 end_import
 
@@ -134,7 +134,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Constructor, initialized semaphore object.      *       * @param semaphore      */
+comment|/**      * Constructor, initialized semaphore object.      *      * @param semaphore      */
 specifier|public
 name|ConsumerBean
 parameter_list|(
@@ -174,7 +174,7 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * Method implemented from MessageListener interface.      *       * @param message      */
+comment|/**      * Method implemented from MessageListener interface.      *      * @param message      */
 specifier|public
 specifier|synchronized
 name|void
@@ -300,7 +300,7 @@ literal|" millis"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Used to wait for a message to arrive given a particular message count.      *       * @param messageCount      */
+comment|/**      * Used to wait for a message to arrive given a particular message count.      *      * @param messageCount      */
 specifier|public
 name|void
 name|waitForMessagesToArrive
@@ -465,7 +465,7 @@ operator|=
 name|verbose
 expr_stmt|;
 block|}
-comment|/**      * Identifies if the message is empty.      *       * @return      */
+comment|/**      * Identifies if the message is empty.      *      * @return      */
 specifier|protected
 name|boolean
 name|hasReceivedMessage
@@ -478,7 +478,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * Identifies if the message count has reached the total size of message.      *       * @param messageCount      * @return      */
+comment|/**      * Identifies if the message count has reached the total size of message.      *      * @param messageCount      * @return      */
 specifier|protected
 specifier|synchronized
 name|boolean
