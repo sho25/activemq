@@ -493,6 +493,7 @@ argument_list|()
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|activate
 parameter_list|(
@@ -512,7 +513,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Deactivating "
+literal|"Activating "
 operator|+
 name|this
 argument_list|)
@@ -589,11 +590,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-synchronized|synchronized
-init|(
-name|pending
-init|)
-block|{
 name|pending
 operator|.
 name|setUsageManager
@@ -606,7 +602,6 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-block|}
 comment|// If nothing was in the persistent store, then try to use the recovery policy.
 if|if
 condition|(
@@ -1010,6 +1005,7 @@ name|md
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|add
 parameter_list|(
@@ -1116,6 +1112,7 @@ name|active
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|void
 name|acknowledge
 parameter_list|(
