@@ -321,12 +321,12 @@ return|;
 block|}
 specifier|protected
 name|void
-name|recover
+name|recoverMessage
 parameter_list|(
 name|MessageRecoveryListener
 name|listener
 parameter_list|,
-name|Object
+name|Message
 name|msg
 parameter_list|)
 throws|throws
@@ -336,9 +336,6 @@ name|listener
 operator|.
 name|recoverMessage
 argument_list|(
-operator|(
-name|Message
-operator|)
 name|msg
 argument_list|)
 expr_stmt|;
@@ -475,7 +472,7 @@ argument_list|(
 name|entry
 argument_list|)
 decl_stmt|;
-name|recover
+name|recoverMessage
 argument_list|(
 name|listener
 argument_list|,
@@ -656,7 +653,7 @@ literal|0
 decl_stmt|;
 do|do
 block|{
-name|Object
+name|Message
 name|msg
 init|=
 name|messageContainer
@@ -673,7 +670,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|recover
+name|recoverMessage
 argument_list|(
 name|listener
 argument_list|,
