@@ -86,13 +86,19 @@ name|TransportUriTest
 extends|extends
 name|EmbeddedBrokerTestSupport
 block|{
-specifier|private
+specifier|protected
+name|String
+name|prefix
+init|=
+literal|""
+decl_stmt|;
+specifier|protected
 name|String
 name|postfix
 init|=
 literal|"?tcpNoDelay=true&keepAlive=true"
 decl_stmt|;
-specifier|private
+specifier|protected
 name|Connection
 name|connection
 decl_stmt|;
@@ -106,6 +112,8 @@ block|{
 name|String
 name|uri
 init|=
+name|prefix
+operator|+
 name|bindAddress
 operator|+
 name|postfix
@@ -138,6 +146,8 @@ block|{
 name|String
 name|uri
 init|=
+name|prefix
+operator|+
 name|bindAddress
 operator|+
 name|postfix
@@ -186,6 +196,8 @@ block|{
 name|String
 name|uri
 init|=
+name|prefix
+operator|+
 name|bindAddress
 operator|+
 name|postfix
@@ -222,7 +234,13 @@ parameter_list|(
 name|Exception
 name|expected
 parameter_list|)
-block|{         }
+block|{
+name|expected
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 specifier|protected
 name|void
@@ -233,7 +251,7 @@ name|Exception
 block|{
 name|bindAddress
 operator|=
-literal|"tcp://localhost:6161"
+literal|"tcp://localhost:61616"
 expr_stmt|;
 name|super
 operator|.
