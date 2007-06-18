@@ -65,9 +65,9 @@ argument_list|()
 decl_stmt|;
 name|String
 index|[]
-name|unknonwn
+name|unknown
 init|=
-name|CommnadLineSupport
+name|CommandLineSupport
 operator|.
 name|setOptions
 argument_list|(
@@ -86,7 +86,7 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-name|unknonwn
+name|unknown
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -97,9 +97,9 @@ operator|new
 name|ProducerTool
 argument_list|()
 decl_stmt|;
-name|unknonwn
+name|unknown
 operator|=
-name|CommnadLineSupport
+name|CommandLineSupport
 operator|.
 name|setOptions
 argument_list|(
@@ -118,7 +118,7 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-name|unknonwn
+name|unknown
 argument_list|)
 argument_list|)
 decl_stmt|;

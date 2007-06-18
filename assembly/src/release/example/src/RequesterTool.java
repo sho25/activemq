@@ -273,9 +273,9 @@ argument_list|()
 decl_stmt|;
 name|String
 index|[]
-name|unknonwn
+name|unknown
 init|=
-name|CommnadLineSupport
+name|CommandLineSupport
 operator|.
 name|setOptions
 argument_list|(
@@ -286,7 +286,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|unknonwn
+name|unknown
 operator|.
 name|length
 operator|>
@@ -305,7 +305,7 @@ name|Arrays
 operator|.
 name|toString
 argument_list|(
-name|unknonwn
+name|unknown
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -34,7 +34,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|CommnadLineSupport
+name|CommandLineSupport
 block|{
 comment|/** 	 * Sets the properties of an object given the command line args. 	 *  	 * if args contains: --ack-mode=AUTO --url=tcp://localhost:61616 --persistent  	 *  	 * then it will try to call the following setters on the target object. 	 *  	 * target.setAckMode("AUTO"); 	 * target.setURL(new URI("tcp://localhost:61616") ); 	 * target.setPersistent(true); 	 *  	 * Notice the the proper conversion for the argument is determined by examining the  	 * setter arguement type.   	 *  	 * @param target the object that will have it's properties set 	 * @param args the commline options 	 * @return any arguments that are not valid options for the target 	 */
 specifier|static
