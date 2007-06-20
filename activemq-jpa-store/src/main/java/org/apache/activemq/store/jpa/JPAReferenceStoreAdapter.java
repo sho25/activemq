@@ -678,6 +678,12 @@ return|return
 literal|true
 return|;
 block|}
+comment|/**      *       * @see org.apache.activemq.store.ReferenceStoreAdapter#clearMessages()      */
+specifier|public
+name|void
+name|clearMessages
+parameter_list|()
+block|{                      }
 block|}
 end_class
 
