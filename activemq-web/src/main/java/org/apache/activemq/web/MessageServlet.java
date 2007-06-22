@@ -479,6 +479,12 @@ argument_list|(
 name|destination
 argument_list|,
 name|message
+argument_list|,
+name|persistent
+argument_list|,
+name|priority
+argument_list|,
+name|timeToLive
 argument_list|)
 expr_stmt|;
 comment|// lets return a unique URI for reliable messaging

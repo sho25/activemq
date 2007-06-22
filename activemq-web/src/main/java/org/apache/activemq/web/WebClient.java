@@ -1068,7 +1068,7 @@ parameter_list|,
 name|int
 name|priority
 parameter_list|,
-name|int
+name|long
 name|timeToLive
 parameter_list|)
 throws|throws
