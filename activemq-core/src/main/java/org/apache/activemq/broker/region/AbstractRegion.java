@@ -307,18 +307,6 @@ end_import
 
 begin_import
 import|import
-name|sun
-operator|.
-name|security
-operator|.
-name|x509
-operator|.
-name|IssuerAlternativeNameExtension
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
