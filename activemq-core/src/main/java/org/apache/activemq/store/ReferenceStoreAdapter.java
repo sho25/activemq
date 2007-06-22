@@ -112,6 +112,22 @@ name|boolean
 name|isStoreValid
 parameter_list|()
 function_decl|;
+comment|/**      * called by recover to clear out message references      * @throws IOException       */
+specifier|public
+name|void
+name|clearMessages
+parameter_list|()
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * recover any state       * @throws IOException       *      */
+specifier|public
+name|void
+name|recoverState
+parameter_list|()
+throws|throws
+name|IOException
+function_decl|;
 block|}
 end_interface
 

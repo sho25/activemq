@@ -1296,14 +1296,7 @@ comment|// need to be recovered when the broker starts up.  Perhaps on a gracefu
 comment|// should record all the in flight XA transactions to a file to avoid having to scan
 comment|// the entire transaction log.  For now going to comment this bit out.
 comment|//
-comment|//        if(referenceStoreAdapter.isStoreValid()==false){
-comment|//            log.warn("The ReferenceStore is not valid - recovering ...");
-comment|//            recover();
-comment|//            log.info("Finished recovering the ReferenceStore");
-comment|//        }else {
-comment|//            Location location=writeTraceMessage("RECOVERED "+new Date(),true);
-comment|//            asyncDataManager.setMark(location,true);
-comment|//        }
+comment|/*         if(referenceStoreAdapter.isStoreValid()==false){             log.warn("The ReferenceStore is not valid - recovering ...");             recover();             log.info("Finished recovering the ReferenceStore");         }else {            Location location=writeTraceMessage("RECOVERED "+new Date(),true);             asyncDataManager.setMark(location,true);        }         */
 name|recover
 argument_list|()
 expr_stmt|;
@@ -2419,6 +2412,16 @@ name|IllegalStateException
 throws|,
 name|IOException
 block|{
+name|referenceStoreAdapter
+operator|.
+name|clearMessages
+argument_list|()
+expr_stmt|;
+name|referenceStoreAdapter
+operator|.
+name|recoverState
+argument_list|()
+expr_stmt|;
 name|Location
 name|pos
 init|=
