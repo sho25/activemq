@@ -711,7 +711,7 @@ return|return
 name|jclass
 operator|!=
 literal|null
-operator|&
+operator|&&
 name|jclass
 operator|.
 name|isAbstract

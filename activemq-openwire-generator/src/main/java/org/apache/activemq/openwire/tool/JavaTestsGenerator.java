@@ -570,14 +570,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|boolean
-name|marshallerAware
-init|=
-name|isMarshallAware
-argument_list|(
-name|jclass
-argument_list|)
-decl_stmt|;
 name|out
 operator|.
 name|println
