@@ -294,6 +294,7 @@ name|destination
 decl_stmt|;
 comment|// for message listener test
 specifier|private
+specifier|static
 specifier|final
 name|int
 name|messageCount
@@ -301,6 +302,7 @@ init|=
 literal|5
 decl_stmt|;
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|messageText

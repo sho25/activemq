@@ -143,6 +143,7 @@ argument_list|)
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
 name|int
 name|messageCount
 init|=

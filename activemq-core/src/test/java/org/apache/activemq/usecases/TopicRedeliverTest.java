@@ -187,7 +187,7 @@ expr_stmt|;
 block|}
 specifier|protected
 name|void
-name|setup
+name|setUp
 parameter_list|()
 throws|throws
 name|Exception

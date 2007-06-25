@@ -245,8 +245,9 @@ name|assertEquals
 argument_list|(
 literal|"mapField.b"
 argument_list|,
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 literal|23
 argument_list|)
@@ -263,8 +264,9 @@ name|assertEquals
 argument_list|(
 literal|"mapField.c"
 argument_list|,
-operator|new
 name|Long
+operator|.
+name|valueOf
 argument_list|(
 literal|45
 argument_list|)
@@ -539,8 +541,9 @@ name|put
 argument_list|(
 literal|"b"
 argument_list|,
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 literal|23
 argument_list|)
@@ -552,8 +555,9 @@ name|put
 argument_list|(
 literal|"c"
 argument_list|,
-operator|new
 name|Long
+operator|.
+name|valueOf
 argument_list|(
 literal|45
 argument_list|)

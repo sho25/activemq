@@ -946,8 +946,9 @@ operator|new
 name|Object
 index|[]
 block|{
-operator|new
 name|Long
+operator|.
+name|valueOf
 argument_list|(
 literal|1000
 argument_list|)
@@ -962,8 +963,9 @@ operator|new
 name|Object
 index|[]
 block|{
-operator|new
 name|Long
+operator|.
+name|valueOf
 argument_list|(
 literal|1000
 argument_list|)

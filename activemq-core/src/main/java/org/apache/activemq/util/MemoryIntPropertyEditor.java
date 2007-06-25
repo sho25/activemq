@@ -104,8 +104,9 @@ condition|)
 block|{
 name|setValue
 argument_list|(
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|Integer
 operator|.
@@ -155,8 +156,9 @@ condition|)
 block|{
 name|setValue
 argument_list|(
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|Integer
 operator|.
@@ -208,8 +210,9 @@ condition|)
 block|{
 name|setValue
 argument_list|(
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|Integer
 operator|.
@@ -263,8 +266,9 @@ condition|)
 block|{
 name|setValue
 argument_list|(
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|Integer
 operator|.

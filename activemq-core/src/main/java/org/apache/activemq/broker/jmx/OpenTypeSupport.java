@@ -806,8 +806,9 @@ name|put
 argument_list|(
 literal|"JMSExpiration"
 argument_list|,
-operator|new
 name|Long
+operator|.
+name|valueOf
 argument_list|(
 name|m
 operator|.
@@ -822,8 +823,9 @@ name|put
 argument_list|(
 literal|"JMSPriority"
 argument_list|,
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|m
 operator|.
@@ -838,8 +840,9 @@ name|put
 argument_list|(
 literal|"JMSRedelivered"
 argument_list|,
-operator|new
 name|Boolean
+operator|.
+name|valueOf
 argument_list|(
 name|m
 operator|.
@@ -1011,8 +1014,9 @@ name|put
 argument_list|(
 literal|"BodyLength"
 argument_list|,
-operator|new
 name|Long
+operator|.
+name|valueOf
 argument_list|(
 name|length
 argument_list|)
@@ -1031,8 +1035,9 @@ name|put
 argument_list|(
 literal|"BodyLength"
 argument_list|,
-operator|new
 name|Long
+operator|.
+name|valueOf
 argument_list|(
 literal|0
 argument_list|)

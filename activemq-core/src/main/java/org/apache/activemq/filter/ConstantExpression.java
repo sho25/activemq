@@ -239,8 +239,9 @@ condition|)
 block|{
 name|value
 operator|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|value
 operator|.
@@ -269,8 +270,9 @@ block|{
 name|Number
 name|value
 init|=
-operator|new
 name|Long
+operator|.
+name|valueOf
 argument_list|(
 name|Long
 operator|.
@@ -312,8 +314,9 @@ condition|)
 block|{
 name|value
 operator|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|value
 operator|.
@@ -342,8 +345,9 @@ block|{
 name|Number
 name|value
 init|=
-operator|new
 name|Long
+operator|.
+name|valueOf
 argument_list|(
 name|Long
 operator|.
@@ -380,8 +384,9 @@ condition|)
 block|{
 name|value
 operator|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|value
 operator|.

@@ -259,10 +259,6 @@ extends|extends
 name|TestCase
 block|{
 specifier|private
-name|HashMap
-name|options
-decl_stmt|;
-specifier|private
 name|LDAPAuthorizationMap
 name|authMap
 decl_stmt|;

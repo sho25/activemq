@@ -1026,6 +1026,11 @@ name|b
 argument_list|)
 expr_stmt|;
 block|}
+name|baos
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 name|ByteSequence
 name|sequence
 init|=

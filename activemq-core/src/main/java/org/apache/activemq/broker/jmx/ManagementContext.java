@@ -1558,8 +1558,9 @@ name|Attribute
 argument_list|(
 literal|"Port"
 argument_list|,
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|connectorPort
 argument_list|)

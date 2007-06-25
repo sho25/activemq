@@ -294,8 +294,9 @@ name|message
 parameter_list|)
 block|{
 return|return
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|message
 operator|.
@@ -334,8 +335,9 @@ name|message
 parameter_list|)
 block|{
 return|return
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|message
 operator|.
@@ -409,8 +411,9 @@ name|message
 parameter_list|)
 block|{
 return|return
-operator|new
 name|Long
+operator|.
+name|valueOf
 argument_list|(
 name|message
 operator|.
@@ -469,8 +472,9 @@ name|message
 parameter_list|)
 block|{
 return|return
-operator|new
 name|Long
+operator|.
+name|valueOf
 argument_list|(
 name|message
 operator|.
@@ -501,8 +505,9 @@ name|message
 parameter_list|)
 block|{
 return|return
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|message
 operator|.
@@ -533,8 +538,9 @@ name|message
 parameter_list|)
 block|{
 return|return
-operator|new
 name|Long
+operator|.
+name|valueOf
 argument_list|(
 name|message
 operator|.
@@ -565,8 +571,9 @@ name|message
 parameter_list|)
 block|{
 return|return
-operator|new
 name|Boolean
+operator|.
+name|valueOf
 argument_list|(
 name|message
 operator|.
@@ -597,8 +604,9 @@ name|message
 parameter_list|)
 block|{
 return|return
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|message
 operator|.

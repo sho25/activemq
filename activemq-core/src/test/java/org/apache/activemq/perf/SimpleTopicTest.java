@@ -204,7 +204,7 @@ specifier|protected
 name|int
 name|NUMBER_OF_CONSUMERS
 init|=
-literal|1
+literal|10
 decl_stmt|;
 specifier|protected
 name|int

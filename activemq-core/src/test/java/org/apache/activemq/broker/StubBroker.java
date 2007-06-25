@@ -401,6 +401,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+specifier|static
 class|class
 name|RemoveConnectionData
 block|{

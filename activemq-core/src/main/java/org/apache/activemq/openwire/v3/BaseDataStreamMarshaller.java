@@ -1114,8 +1114,9 @@ argument_list|,
 name|bs
 argument_list|)
 block|,
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|dataIn
 operator|.
@@ -3005,8 +3006,9 @@ argument_list|(
 name|dataIn
 argument_list|)
 block|,
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|dataIn
 operator|.

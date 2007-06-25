@@ -1754,8 +1754,9 @@ name|put
 argument_list|(
 name|name
 argument_list|,
-operator|new
 name|Byte
+operator|.
+name|valueOf
 argument_list|(
 name|value
 argument_list|)
@@ -1783,8 +1784,9 @@ name|put
 argument_list|(
 name|name
 argument_list|,
-operator|new
 name|Short
+operator|.
+name|valueOf
 argument_list|(
 name|value
 argument_list|)
@@ -1812,8 +1814,9 @@ name|put
 argument_list|(
 name|name
 argument_list|,
-operator|new
 name|Character
+operator|.
+name|valueOf
 argument_list|(
 name|value
 argument_list|)
@@ -1841,8 +1844,9 @@ name|put
 argument_list|(
 name|name
 argument_list|,
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|value
 argument_list|)
@@ -1870,8 +1874,9 @@ name|put
 argument_list|(
 name|name
 argument_list|,
-operator|new
 name|Long
+operator|.
+name|valueOf
 argument_list|(
 name|value
 argument_list|)

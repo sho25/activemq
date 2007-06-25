@@ -492,8 +492,8 @@ condition|(
 name|i
 operator|%
 literal|2
-operator|==
-literal|1
+operator|!=
+literal|0
 condition|)
 block|{
 name|textMessage

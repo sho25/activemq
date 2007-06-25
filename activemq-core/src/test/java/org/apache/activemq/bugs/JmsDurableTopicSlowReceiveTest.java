@@ -279,12 +279,14 @@ decl_stmt|;
 name|BrokerService
 name|broker
 decl_stmt|;
+specifier|static
 specifier|final
 name|int
 name|NMSG
 init|=
 literal|100
 decl_stmt|;
+specifier|static
 specifier|final
 name|int
 name|MSIZE
@@ -304,6 +306,7 @@ name|TopicSubscriber
 name|consumer3
 decl_stmt|;
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|countProperyName

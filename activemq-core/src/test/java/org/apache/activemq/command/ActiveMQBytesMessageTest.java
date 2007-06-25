@@ -1080,8 +1080,9 @@ name|msg
 operator|.
 name|writeObject
 argument_list|(
-operator|new
 name|Character
+operator|.
+name|valueOf
 argument_list|(
 literal|'q'
 argument_list|)
@@ -1091,8 +1092,9 @@ name|msg
 operator|.
 name|writeObject
 argument_list|(
-operator|new
 name|Byte
+operator|.
+name|valueOf
 argument_list|(
 operator|(
 name|byte
@@ -1105,8 +1107,9 @@ name|msg
 operator|.
 name|writeObject
 argument_list|(
-operator|new
 name|Short
+operator|.
+name|valueOf
 argument_list|(
 operator|(
 name|short
@@ -1119,8 +1122,9 @@ name|msg
 operator|.
 name|writeObject
 argument_list|(
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 literal|3
 argument_list|)
@@ -1130,8 +1134,9 @@ name|msg
 operator|.
 name|writeObject
 argument_list|(
-operator|new
 name|Long
+operator|.
+name|valueOf
 argument_list|(
 literal|300l
 argument_list|)

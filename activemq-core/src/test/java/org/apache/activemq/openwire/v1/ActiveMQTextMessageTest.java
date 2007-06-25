@@ -88,6 +88,7 @@ name|ActiveMQMessageTest
 block|{
 specifier|public
 specifier|static
+specifier|final
 name|ActiveMQTextMessageTest
 name|SINGLETON
 init|=

@@ -763,8 +763,9 @@ argument_list|)
 expr_stmt|;
 name|topicSearchSubtreeBool
 operator|=
-operator|new
 name|Boolean
+operator|.
+name|valueOf
 argument_list|(
 name|topicSearchSubtree
 argument_list|)
@@ -774,8 +775,9 @@ argument_list|()
 expr_stmt|;
 name|queueSearchSubtreeBool
 operator|=
-operator|new
 name|Boolean
+operator|.
+name|valueOf
 argument_list|(
 name|queueSearchSubtree
 argument_list|)

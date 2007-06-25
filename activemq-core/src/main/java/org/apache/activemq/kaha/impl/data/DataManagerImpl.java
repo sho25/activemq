@@ -232,6 +232,7 @@ argument_list|)
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
 name|long
 name|MAX_FILE_LENGTH
 init|=
@@ -1271,8 +1272,9 @@ block|{
 name|Integer
 name|key
 init|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|file
 argument_list|)
@@ -1356,8 +1358,9 @@ block|{
 name|Integer
 name|key
 init|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|file
 argument_list|)

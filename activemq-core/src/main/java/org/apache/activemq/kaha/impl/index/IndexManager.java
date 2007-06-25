@@ -701,6 +701,7 @@ return|return
 name|result
 return|;
 block|}
+specifier|synchronized
 name|long
 name|getLength
 parameter_list|()

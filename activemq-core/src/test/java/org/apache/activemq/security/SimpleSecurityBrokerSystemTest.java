@@ -695,6 +695,7 @@ name|adminAccess
 argument_list|)
 return|;
 block|}
+specifier|static
 class|class
 name|SimpleAuthenticationFactory
 implements|implements

@@ -88,6 +88,7 @@ name|BaseCommandTestSupport
 block|{
 specifier|public
 specifier|static
+specifier|final
 name|BrokerInfoTest
 name|SINGLETON
 init|=

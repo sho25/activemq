@@ -1707,6 +1707,7 @@ block|}
 block|}
 block|}
 specifier|private
+specifier|static
 class|class
 name|PooledProducerTask
 implements|implements
@@ -1954,6 +1955,7 @@ block|}
 block|}
 block|}
 specifier|private
+specifier|static
 class|class
 name|NonPooledProducerTask
 implements|implements

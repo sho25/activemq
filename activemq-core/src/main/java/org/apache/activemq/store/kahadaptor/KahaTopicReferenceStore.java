@@ -1383,9 +1383,6 @@ name|msg
 operator|.
 name|getMessageId
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|entry
 argument_list|)

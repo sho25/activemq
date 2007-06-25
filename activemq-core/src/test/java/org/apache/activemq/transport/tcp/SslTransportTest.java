@@ -129,9 +129,6 @@ block|{
 name|SSLSocket
 name|sslSocket
 decl_stmt|;
-name|SslTransport
-name|transport
-decl_stmt|;
 name|StubTransportListener
 name|stubListener
 decl_stmt|;

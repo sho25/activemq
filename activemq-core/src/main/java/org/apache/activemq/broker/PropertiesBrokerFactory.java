@@ -306,6 +306,11 @@ argument_list|(
 name|inputStream
 argument_list|)
 expr_stmt|;
+name|inputStream
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 comment|// should we append any system properties?
 try|try
 block|{

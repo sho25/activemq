@@ -119,7 +119,7 @@ operator|.
 name|batchEntry
 return|;
 block|}
-comment|/**      * @param batchEntry the batchEntry to set      */
+comment|/**      * @param id       * @param batchEntry the batchEntry to set      */
 specifier|public
 name|void
 name|setBatchEntry

@@ -536,6 +536,7 @@ decl_stmt|;
 comment|/**      * Setting this to false makes the test run faster but they may be less accurate.      */
 specifier|public
 specifier|static
+specifier|final
 name|boolean
 name|FAST_NO_MESSAGE_LEFT_ASSERT
 init|=

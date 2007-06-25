@@ -1064,8 +1064,9 @@ block|{
 name|Integer
 name|key
 init|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|recordNumber
 argument_list|)
@@ -1120,8 +1121,9 @@ block|{
 name|Integer
 name|key
 init|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|recordNumber
 argument_list|)

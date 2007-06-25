@@ -835,8 +835,9 @@ name|put
 argument_list|(
 literal|"maxInactivityDuration"
 argument_list|,
-operator|new
 name|Long
+operator|.
+name|valueOf
 argument_list|(
 name|maxInactivityDuration
 argument_list|)
@@ -848,8 +849,9 @@ name|put
 argument_list|(
 literal|"minmumWireFormatVersion"
 argument_list|,
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|minmumWireFormatVersion
 argument_list|)
@@ -861,8 +863,9 @@ name|put
 argument_list|(
 literal|"trace"
 argument_list|,
-operator|new
 name|Boolean
+operator|.
+name|valueOf
 argument_list|(
 name|trace
 argument_list|)

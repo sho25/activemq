@@ -465,14 +465,6 @@ name|destinationFilter
 init|=
 literal|">"
 decl_stmt|;
-specifier|private
-name|int
-name|queueDispatched
-decl_stmt|;
-specifier|private
-name|int
-name|topicDispatched
-decl_stmt|;
 name|BrokerId
 name|localBrokerId
 decl_stmt|;

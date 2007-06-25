@@ -343,6 +343,7 @@ argument_list|)
 decl_stmt|;
 specifier|protected
 specifier|static
+specifier|final
 name|int
 name|MESSAGE_COUNT
 init|=
@@ -350,6 +351,7 @@ literal|50
 decl_stmt|;
 specifier|protected
 specifier|static
+specifier|final
 name|int
 name|NUMBER_IN_CLUSTER
 init|=

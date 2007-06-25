@@ -318,6 +318,7 @@ argument_list|)
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
 name|int
 name|CONTROL_RECORD_MAX_LENGTH
 init|=
@@ -431,6 +432,7 @@ literal|2
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|DEFAULT_DIRECTORY
 init|=
@@ -438,6 +440,7 @@ literal|"data"
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|DEFAULT_FILE_PREFIX
 init|=
@@ -445,6 +448,7 @@ literal|"data-"
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
 name|int
 name|DEFAULT_MAX_FILE_LENGTH
 init|=
@@ -1810,8 +1814,9 @@ block|{
 name|Integer
 name|key
 init|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|file
 argument_list|)
@@ -1894,8 +1899,9 @@ block|{
 name|Integer
 name|key
 init|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|file
 argument_list|)

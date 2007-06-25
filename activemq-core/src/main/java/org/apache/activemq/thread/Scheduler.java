@@ -82,8 +82,9 @@ specifier|public
 class|class
 name|Scheduler
 block|{
-specifier|static
 specifier|public
+specifier|static
+specifier|final
 name|ScheduledThreadPoolExecutor
 name|clockDaemon
 init|=

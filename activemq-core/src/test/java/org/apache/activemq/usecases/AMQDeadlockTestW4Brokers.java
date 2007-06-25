@@ -1422,6 +1422,7 @@ name|acf
 return|;
 block|}
 specifier|private
+specifier|static
 class|class
 name|TestMessageListener1
 implements|implements

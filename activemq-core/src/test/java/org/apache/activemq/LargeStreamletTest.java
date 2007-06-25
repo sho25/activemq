@@ -428,6 +428,15 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+specifier|private
+specifier|final
+name|Random
+name|random
+init|=
+operator|new
+name|Random
+argument_list|()
+decl_stmt|;
 specifier|public
 name|void
 name|run
@@ -471,9 +480,7 @@ index|[
 name|BUFFER_SIZE
 index|]
 decl_stmt|;
-operator|new
-name|Random
-argument_list|()
+name|random
 operator|.
 name|nextBytes
 argument_list|(

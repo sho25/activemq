@@ -2879,8 +2879,9 @@ name|LONG_TYPE
 condition|)
 block|{
 return|return
-operator|new
 name|Long
+operator|.
+name|valueOf
 argument_list|(
 name|this
 operator|.
@@ -2901,8 +2902,9 @@ name|INTEGER_TYPE
 condition|)
 block|{
 return|return
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|this
 operator|.
@@ -2923,8 +2925,9 @@ name|SHORT_TYPE
 condition|)
 block|{
 return|return
-operator|new
 name|Short
+operator|.
+name|valueOf
 argument_list|(
 name|this
 operator|.
@@ -2945,8 +2948,9 @@ name|BYTE_TYPE
 condition|)
 block|{
 return|return
-operator|new
 name|Byte
+operator|.
+name|valueOf
 argument_list|(
 name|this
 operator|.
@@ -3037,8 +3041,9 @@ name|CHAR_TYPE
 condition|)
 block|{
 return|return
-operator|new
 name|Character
+operator|.
+name|valueOf
 argument_list|(
 name|this
 operator|.

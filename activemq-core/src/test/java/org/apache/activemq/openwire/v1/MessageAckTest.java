@@ -88,6 +88,7 @@ name|BaseCommandTestSupport
 block|{
 specifier|public
 specifier|static
+specifier|final
 name|MessageAckTest
 name|SINGLETON
 init|=
