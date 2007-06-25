@@ -2211,9 +2211,6 @@ parameter_list|()
 block|{
 return|return
 name|maxMessagesPerSessions
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 comment|/**      *       */
@@ -2344,8 +2341,9 @@ name|isUseRAManagedTransactionEnabled
 parameter_list|()
 block|{
 return|return
-operator|new
 name|Boolean
+operator|.
+name|valueOf
 argument_list|(
 name|useRAManagedTransaction
 argument_list|)
@@ -2361,8 +2359,9 @@ name|getNoLocalBooleanValue
 parameter_list|()
 block|{
 return|return
-operator|new
 name|Boolean
+operator|.
+name|valueOf
 argument_list|(
 name|noLocal
 argument_list|)
@@ -2410,8 +2409,9 @@ name|getEnableBatchBooleanValue
 parameter_list|()
 block|{
 return|return
-operator|new
 name|Boolean
+operator|.
+name|valueOf
 argument_list|(
 name|enableBatch
 argument_list|)
@@ -2441,9 +2441,6 @@ parameter_list|()
 block|{
 return|return
 name|maxMessagesPerBatch
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 comment|/**      *       */

@@ -227,9 +227,6 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|MessageEndpointProxy
-name|proxy
-init|=
 operator|new
 name|MessageEndpointProxy
 argument_list|(
@@ -241,7 +238,7 @@ operator|.
 name|proxy
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|fail
 argument_list|(
 literal|"An exception should have been thrown"

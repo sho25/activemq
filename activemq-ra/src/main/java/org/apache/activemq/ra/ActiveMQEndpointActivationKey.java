@@ -143,6 +143,13 @@ condition|(
 name|obj
 operator|==
 literal|null
+operator|||
+operator|!
+operator|(
+name|obj
+operator|instanceof
+name|ActiveMQEndpointActivationKey
+operator|)
 condition|)
 block|{
 return|return
