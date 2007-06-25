@@ -478,6 +478,11 @@ name|List
 name|params
 parameter_list|)
 block|{
+name|String
+name|output
+init|=
+name|query
+decl_stmt|;
 name|int
 name|count
 init|=
@@ -500,7 +505,9 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|query
+name|output
+operator|=
+name|output
 operator|.
 name|replaceAll
 argument_list|(
@@ -520,7 +527,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|query
+name|output
 return|;
 block|}
 specifier|public

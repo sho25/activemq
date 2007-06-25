@@ -86,17 +86,6 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
-name|key
-operator|=
-name|key
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|pos
-argument_list|)
-expr_stmt|;
 block|}
 comment|// If the value contains wildcards and is enclose by '
 return|return
