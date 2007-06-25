@@ -844,6 +844,11 @@ name|separator
 argument_list|)
 expr_stmt|;
 block|}
+name|in
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 return|return
 name|buffer
 operator|.

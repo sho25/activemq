@@ -696,6 +696,9 @@ name|average
 operator|=
 name|total
 operator|/
+operator|(
+name|double
+operator|)
 name|times
 expr_stmt|;
 block|}
