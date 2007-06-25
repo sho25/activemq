@@ -1757,6 +1757,7 @@ return|;
 block|}
 comment|/*      * Listen for available messages and wakeup any continuations.      */
 specifier|private
+specifier|static
 class|class
 name|Listener
 implements|implements

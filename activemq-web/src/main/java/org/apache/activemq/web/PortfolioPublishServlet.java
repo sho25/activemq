@@ -275,8 +275,9 @@ literal|null
 condition|)
 name|total
 operator|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 literal|0
 argument_list|)
@@ -291,8 +292,9 @@ argument_list|)
 decl_stmt|;
 name|total
 operator|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|total
 operator|.
