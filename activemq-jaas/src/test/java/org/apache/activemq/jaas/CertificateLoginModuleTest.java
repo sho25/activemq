@@ -161,6 +161,7 @@ extends|extends
 name|TestCase
 block|{
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|userName
@@ -168,6 +169,7 @@ init|=
 literal|"testUser"
 decl_stmt|;
 specifier|private
+specifier|static
 specifier|final
 name|List
 name|groupNames

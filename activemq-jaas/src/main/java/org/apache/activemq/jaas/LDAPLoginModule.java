@@ -830,8 +830,9 @@ argument_list|)
 expr_stmt|;
 name|userSearchSubtreeBool
 operator|=
-operator|new
 name|Boolean
+operator|.
+name|valueOf
 argument_list|(
 name|userSearchSubtree
 argument_list|)
@@ -841,8 +842,9 @@ argument_list|()
 expr_stmt|;
 name|roleSearchSubtreeBool
 operator|=
-operator|new
 name|Boolean
+operator|.
+name|valueOf
 argument_list|(
 name|roleSearchSubtree
 argument_list|)
