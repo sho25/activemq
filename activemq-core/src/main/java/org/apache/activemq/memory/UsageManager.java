@@ -984,6 +984,11 @@ name|int
 name|value
 parameter_list|)
 block|{
+synchronized|synchronized
+init|(
+name|usageMutex
+init|)
+block|{
 name|int
 name|oldValue
 init|=
@@ -1007,6 +1012,7 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|private
