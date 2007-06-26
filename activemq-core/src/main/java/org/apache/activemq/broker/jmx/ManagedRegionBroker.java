@@ -2483,7 +2483,7 @@ name|debug
 argument_list|(
 literal|"Restoring durable subscription: "
 operator|+
-name|infos
+name|info
 argument_list|)
 expr_stmt|;
 name|SubscriptionKey
