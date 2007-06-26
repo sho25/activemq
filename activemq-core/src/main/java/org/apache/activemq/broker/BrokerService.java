@@ -39,16 +39,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|Serializable
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|net
 operator|.
 name|URI
@@ -965,8 +955,6 @@ class|class
 name|BrokerService
 implements|implements
 name|Service
-implements|,
-name|Serializable
 block|{
 specifier|private
 specifier|static
