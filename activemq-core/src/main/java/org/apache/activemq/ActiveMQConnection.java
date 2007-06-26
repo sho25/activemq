@@ -1217,12 +1217,6 @@ literal|15000
 decl_stmt|;
 specifier|private
 name|boolean
-name|useSyncSend
-init|=
-literal|false
-decl_stmt|;
-specifier|private
-name|boolean
 name|watchTopicAdvisories
 init|=
 literal|true
@@ -3960,31 +3954,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @return Returns the useAsyncSend.      */
-specifier|public
-name|boolean
-name|isUseAsyncSend
-parameter_list|()
-block|{
-return|return
-name|useAsyncSend
-return|;
-block|}
-specifier|public
-name|void
-name|setUseSyncSend
-parameter_list|(
-name|boolean
-name|forceSyncSend
-parameter_list|)
-block|{
-name|this
-operator|.
-name|useSyncSend
-operator|=
-name|forceSyncSend
-expr_stmt|;
-block|}
 specifier|public
 specifier|synchronized
 name|boolean
@@ -4010,6 +3979,16 @@ name|watchTopicAdvisories
 operator|=
 name|watchTopicAdvisories
 expr_stmt|;
+block|}
+comment|/**      * @return Returns the useAsyncSend.      */
+specifier|public
+name|boolean
+name|isUseAsyncSend
+parameter_list|()
+block|{
+return|return
+name|useAsyncSend
+return|;
 block|}
 comment|/**      * Forces the use of<a      * href="http://activemq.apache.org/async-sends.html">Async Sends</a>      * which adds a massive performance boost; but means that the send() method      * will return immediately whether the message has been sent or not which      * could lead to message loss.      */
 specifier|public
