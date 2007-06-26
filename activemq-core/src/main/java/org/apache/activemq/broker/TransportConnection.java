@@ -1109,6 +1109,9 @@ comment|// Used to do async dispatch.. this should perhaps be pushed down into t
 specifier|protected
 specifier|final
 name|List
+argument_list|<
+name|Command
+argument_list|>
 name|dispatchQueue
 init|=
 name|Collections
@@ -1117,6 +1120,9 @@ name|synchronizedList
 argument_list|(
 operator|new
 name|LinkedList
+argument_list|<
+name|Command
+argument_list|>
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1589,7 +1595,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|/**      * Returns the number of messages to be dispatched to this connection      */
+comment|/**      * Returns the number of messages to be dispatched to this connection      * @return size of dispatch queue      */
 specifier|public
 name|int
 name|getDispatchQueueSize
@@ -4952,14 +4958,9 @@ return|return
 literal|false
 return|;
 block|}
-else|else
-block|{
 name|Command
 name|command
 init|=
-operator|(
-name|Command
-operator|)
 name|dispatchQueue
 operator|.
 name|remove
@@ -4976,13 +4977,9 @@ return|return
 literal|true
 return|;
 block|}
-block|}
-else|else
-block|{
 return|return
 literal|false
 return|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -5247,7 +5244,15 @@ name|Exception
 name|ignore
 parameter_list|)
 block|{
-comment|// ignore.printStackTrace();
+name|log
+operator|.
+name|trace
+argument_list|(
+literal|"Exception caught stopping"
+argument_list|,
+name|ignore
+argument_list|)
+expr_stmt|;
 block|}
 name|transport
 operator|.
@@ -6662,9 +6667,21 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|String
+name|control
+init|=
+name|command
+operator|.
+name|getCommand
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
-name|command
+name|control
+operator|!=
+literal|null
+operator|&&
+name|control
 operator|.
 name|equals
 argument_list|(
