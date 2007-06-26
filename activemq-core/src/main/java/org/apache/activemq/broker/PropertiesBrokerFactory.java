@@ -288,6 +288,10 @@ condition|(
 name|inputStream
 operator|==
 literal|null
+operator|&&
+name|url
+operator|!=
+literal|null
 condition|)
 block|{
 name|inputStream
@@ -299,6 +303,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|inputStream
+operator|!=
+literal|null
+condition|)
+block|{
 name|properties
 operator|.
 name|load
@@ -311,6 +322,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 comment|// should we append any system properties?
 try|try
 block|{
