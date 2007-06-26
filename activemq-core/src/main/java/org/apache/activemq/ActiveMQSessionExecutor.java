@@ -192,12 +192,6 @@ specifier|private
 name|boolean
 name|startedOrWarnedThatNotStarted
 decl_stmt|;
-specifier|private
-name|long
-name|warnAboutUnstartedConnectionTime
-init|=
-literal|500L
-decl_stmt|;
 name|ActiveMQSessionExecutor
 parameter_list|(
 name|ActiveMQSession
