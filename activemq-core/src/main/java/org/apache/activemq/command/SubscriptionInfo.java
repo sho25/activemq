@@ -200,7 +200,7 @@ return|;
 block|}
 specifier|public
 name|int
-name|hasCode
+name|hashCode
 parameter_list|()
 block|{
 name|int

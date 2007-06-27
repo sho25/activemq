@@ -253,7 +253,7 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|File
-name|dir
+name|directory
 decl_stmt|;
 specifier|private
 specifier|final
@@ -334,7 +334,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|dir
+name|directory
 operator|=
 name|dir
 expr_stmt|;
@@ -381,7 +381,7 @@ name|dir
 operator|.
 name|equals
 argument_list|(
-name|dir
+name|directory
 argument_list|)
 operator|&&
 name|n
@@ -532,7 +532,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-name|dir
+name|directory
 argument_list|,
 name|fileName
 argument_list|)
@@ -703,8 +703,9 @@ block|{
 name|Integer
 name|key
 init|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|item
 operator|.

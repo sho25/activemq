@@ -678,7 +678,7 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @throws IOException      */
-specifier|private
+specifier|final
 name|void
 name|startBridge
 parameter_list|()

@@ -235,7 +235,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
 name|boolean
 name|evictMessages
 parameter_list|()

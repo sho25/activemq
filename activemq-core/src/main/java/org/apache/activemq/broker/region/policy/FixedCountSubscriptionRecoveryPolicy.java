@@ -409,6 +409,7 @@ name|maximumSize
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|Message
 index|[]
 name|browse

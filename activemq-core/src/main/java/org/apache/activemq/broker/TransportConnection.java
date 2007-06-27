@@ -2282,6 +2282,7 @@ literal|null
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|Response
 name|processWireFormat
 parameter_list|(
@@ -2385,6 +2386,21 @@ operator|.
 name|getContext
 argument_list|()
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|cs
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|NullPointerException
+argument_list|(
+literal|"Context is null"
+argument_list|)
+throw|;
 block|}
 comment|// Avoid replaying dup commands
 if|if
@@ -2492,6 +2508,21 @@ operator|.
 name|getContext
 argument_list|()
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|cs
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|NullPointerException
+argument_list|(
+literal|"Context is null"
+argument_list|)
+throw|;
 block|}
 name|TransactionState
 name|transactionState
@@ -2641,6 +2672,21 @@ name|getContext
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|cs
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|NullPointerException
+argument_list|(
+literal|"Context is null"
+argument_list|)
+throw|;
+block|}
 name|cs
 operator|.
 name|removeTransactionState
@@ -2715,6 +2761,21 @@ name|getContext
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|cs
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|NullPointerException
+argument_list|(
+literal|"Context is null"
+argument_list|)
+throw|;
+block|}
 name|cs
 operator|.
 name|removeTransactionState
@@ -2788,6 +2849,21 @@ operator|.
 name|getContext
 argument_list|()
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|cs
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|NullPointerException
+argument_list|(
+literal|"Context is null"
+argument_list|)
+throw|;
 block|}
 name|cs
 operator|.
@@ -5192,6 +5268,11 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 if|if
 condition|(
 name|masterBroker
@@ -5236,6 +5317,7 @@ name|ShutdownInfo
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch
@@ -5819,6 +5901,7 @@ name|pendingStop
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|Response
 name|processBrokerInfo
 parameter_list|(
@@ -6452,6 +6535,11 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 name|context
 operator|=
 name|state
@@ -6466,6 +6554,7 @@ argument_list|(
 name|context
 argument_list|)
 expr_stmt|;
+block|}
 name|SessionState
 name|ss
 init|=

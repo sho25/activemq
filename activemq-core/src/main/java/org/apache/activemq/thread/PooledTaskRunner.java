@@ -244,7 +244,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
+specifier|final
 name|void
 name|runTask
 parameter_list|()

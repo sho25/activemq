@@ -226,6 +226,13 @@ name|Object
 name|obj
 parameter_list|)
 block|{
+if|if
+condition|(
+name|obj
+operator|instanceof
+name|WriteKey
+condition|)
+block|{
 name|WriteKey
 name|di
 init|=
@@ -246,6 +253,10 @@ operator|.
 name|offset
 operator|==
 name|offset
+return|;
+block|}
+return|return
+literal|false
 return|;
 block|}
 block|}

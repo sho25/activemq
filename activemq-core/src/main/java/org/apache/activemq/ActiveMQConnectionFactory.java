@@ -2368,7 +2368,8 @@ name|Integer
 operator|.
 name|toString
 argument_list|(
-name|producerWindowSize
+name|getProducerWindowSize
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

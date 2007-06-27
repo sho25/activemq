@@ -747,6 +747,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|clear
 parameter_list|()

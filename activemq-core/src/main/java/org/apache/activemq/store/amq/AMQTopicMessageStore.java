@@ -889,7 +889,7 @@ literal|false
 return|;
 block|}
 comment|/**      * @param messageId      * @param location      * @param key      * @throws InterruptedIOException      */
-specifier|private
+specifier|protected
 name|void
 name|acknowledge
 parameter_list|(

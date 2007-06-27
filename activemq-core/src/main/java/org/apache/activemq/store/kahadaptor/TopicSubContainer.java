@@ -88,11 +88,6 @@ specifier|transient
 name|StoreEntry
 name|batchEntry
 decl_stmt|;
-specifier|private
-specifier|transient
-name|String
-name|lastBatchId
-decl_stmt|;
 specifier|public
 name|TopicSubContainer
 parameter_list|(
@@ -133,12 +128,6 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|lastBatchId
-operator|=
-name|id
-expr_stmt|;
-name|this
-operator|.
 name|batchEntry
 operator|=
 name|batchEntry
@@ -149,10 +138,6 @@ name|void
 name|reset
 parameter_list|()
 block|{
-name|lastBatchId
-operator|=
-literal|null
-expr_stmt|;
 name|batchEntry
 operator|=
 literal|null

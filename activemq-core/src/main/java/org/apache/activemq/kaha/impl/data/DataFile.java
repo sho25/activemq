@@ -115,8 +115,9 @@ name|this
 operator|.
 name|number
 operator|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|number
 argument_list|)

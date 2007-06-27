@@ -376,7 +376,6 @@ name|ITEM_HEAD_SPACE
 operator|+
 name|ITEM_FOOT_SPACE
 decl_stmt|;
-specifier|public
 specifier|static
 specifier|final
 name|byte
@@ -395,7 +394,6 @@ literal|'R'
 block|}
 decl_stmt|;
 comment|//
-specifier|public
 specifier|static
 specifier|final
 name|byte
@@ -458,7 +456,6 @@ literal|1024
 operator|*
 literal|32
 decl_stmt|;
-specifier|private
 name|File
 name|directory
 init|=
@@ -468,7 +465,6 @@ argument_list|(
 name|DEFAULT_DIRECTORY
 argument_list|)
 decl_stmt|;
-specifier|private
 name|String
 name|filePrefix
 init|=
@@ -610,6 +606,11 @@ operator|.
 name|mkdirs
 argument_list|()
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 name|controlFile
 operator|=
 operator|new
@@ -633,6 +634,7 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+block|}
 name|ByteSequence
 name|sequence
 init|=
@@ -714,7 +716,7 @@ name|dir
 operator|.
 name|equals
 argument_list|(
-name|dir
+name|directory
 argument_list|)
 operator|&&
 name|n
@@ -1508,8 +1510,9 @@ block|{
 name|Integer
 name|key
 init|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|item
 operator|.
@@ -1520,9 +1523,6 @@ decl_stmt|;
 name|DataFile
 name|dataFile
 init|=
-operator|(
-name|DataFile
-operator|)
 name|fileMap
 operator|.
 name|get
@@ -1590,16 +1590,12 @@ argument_list|()
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|close
 parameter_list|()
 throws|throws
 name|IOException
-block|{
-synchronized|synchronized
-init|(
-name|this
-init|)
 block|{
 if|if
 condition|(
@@ -1621,7 +1617,6 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-block|}
 name|storeState
 argument_list|(
 literal|false
@@ -1652,7 +1647,6 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-specifier|private
 specifier|synchronized
 name|void
 name|cleanup
@@ -2123,6 +2117,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
+specifier|synchronized
 name|void
 name|removeDataFile
 parameter_list|(
@@ -2256,6 +2251,7 @@ name|mark
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|Location
 name|getNextLocation
 parameter_list|(
@@ -2600,6 +2596,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
+specifier|synchronized
 name|void
 name|storeState
 parameter_list|(
@@ -2639,6 +2636,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|Location
 name|write
 parameter_list|(
@@ -2669,6 +2667,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|Location
 name|write
 parameter_list|(

@@ -647,6 +647,18 @@ return|return
 name|result
 return|;
 block|}
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+return|return
+name|super
+operator|.
+name|hashCode
+argument_list|()
+return|;
+block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.ListContainer#size()      */
 specifier|public
 specifier|synchronized
@@ -714,9 +726,6 @@ decl_stmt|;
 name|IndexItem
 name|item
 init|=
-operator|(
-name|IndexItem
-operator|)
 name|indexList
 operator|.
 name|getFirst
@@ -2575,14 +2584,6 @@ block|{
 name|load
 argument_list|()
 expr_stmt|;
-name|IndexItem
-name|start
-init|=
-name|indexList
-operator|.
-name|getFirst
-argument_list|()
-decl_stmt|;
 return|return
 operator|new
 name|ContainerListIterator

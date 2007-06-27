@@ -772,7 +772,6 @@ specifier|private
 name|UsageManager
 name|usageManager
 decl_stmt|;
-specifier|private
 name|long
 name|checkpointInterval
 init|=
@@ -782,7 +781,6 @@ literal|60
 operator|*
 literal|5
 decl_stmt|;
-specifier|private
 name|long
 name|lastCheckpointRequest
 init|=
@@ -879,6 +877,21 @@ name|void
 name|run
 parameter_list|()
 block|{
+name|long
+name|lastTime
+init|=
+literal|0
+decl_stmt|;
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
+name|lastTime
+operator|=
+name|lastCheckpointRequest
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|System
@@ -886,7 +899,7 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 operator|>
-name|lastCheckpointRequest
+name|lastTime
 operator|+
 name|checkpointInterval
 condition|)

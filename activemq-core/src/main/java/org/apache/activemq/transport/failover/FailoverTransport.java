@@ -560,8 +560,9 @@ name|requestMap
 operator|.
 name|remove
 argument_list|(
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 operator|(
 operator|(
@@ -1184,7 +1185,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
+specifier|final
 name|void
 name|handleTransportFailure
 parameter_list|(
@@ -1724,8 +1725,9 @@ name|requestMap
 operator|.
 name|put
 argument_list|(
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|command
 operator|.
@@ -1754,8 +1756,9 @@ name|requestMap
 operator|.
 name|put
 argument_list|(
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|command
 operator|.
@@ -1806,8 +1809,9 @@ name|requestMap
 operator|.
 name|remove
 argument_list|(
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|command
 operator|.

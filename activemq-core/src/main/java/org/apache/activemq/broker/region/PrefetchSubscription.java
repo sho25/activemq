@@ -619,7 +619,7 @@ literal|null
 return|;
 block|}
 comment|/**      * Occurs when a pull times out. If nothing has been dispatched since the timeout was setup, then send the NULL      * message.      */
-specifier|private
+specifier|final
 specifier|synchronized
 name|void
 name|pullTimeout
@@ -1618,6 +1618,7 @@ return|;
 block|}
 comment|/**      * @return true when 60% or more room is left for dispatching messages      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|isLowWaterMark
 parameter_list|()
@@ -1644,6 +1645,7 @@ return|;
 block|}
 comment|/**      * @return true when 10% or less room is left for dispatching messages      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|isHighWaterMark
 parameter_list|()
@@ -1689,15 +1691,11 @@ argument_list|()
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|int
 name|getPendingQueueSize
 parameter_list|()
 block|{
-synchronized|synchronized
-init|(
-name|pending
-init|)
-block|{
 return|return
 name|pending
 operator|.
@@ -1705,24 +1703,18 @@ name|size
 argument_list|()
 return|;
 block|}
-block|}
 specifier|public
+specifier|synchronized
 name|int
 name|getDispatchedQueueSize
 parameter_list|()
 block|{
-synchronized|synchronized
-init|(
-name|dispatched
-init|)
-block|{
 return|return
 name|dispatched
 operator|.
 name|size
 argument_list|()
 return|;
-block|}
 block|}
 specifier|synchronized
 specifier|public
@@ -1767,6 +1759,7 @@ argument_list|()
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|PendingMessageCursor
 name|getPending
 parameter_list|()
@@ -1778,6 +1771,7 @@ name|pending
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|setPending
 parameter_list|(
@@ -2023,6 +2017,7 @@ block|}
 block|}
 block|}
 specifier|protected
+specifier|synchronized
 name|boolean
 name|dispatch
 parameter_list|(

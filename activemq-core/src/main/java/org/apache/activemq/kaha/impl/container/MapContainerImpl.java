@@ -2127,13 +2127,6 @@ literal|null
 decl_stmt|;
 try|try
 block|{
-if|if
-condition|(
-name|key
-operator|!=
-literal|null
-condition|)
-block|{
 name|index
 operator|=
 name|indexManager
@@ -2160,7 +2153,6 @@ argument_list|(
 name|data
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|value
@@ -2168,9 +2160,8 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|StoreLocation
 name|data
-init|=
+operator|=
 name|dataManager
 operator|.
 name|storeDataItem
@@ -2179,7 +2170,7 @@ name|valueMarshaller
 argument_list|,
 name|value
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|index
 operator|.
 name|setValueData

@@ -1079,7 +1079,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @param ack      * @throws IOException      */
-specifier|private
+specifier|final
 name|void
 name|removeMessage
 parameter_list|(

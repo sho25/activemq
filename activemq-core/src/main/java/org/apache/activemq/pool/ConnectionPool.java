@@ -893,7 +893,7 @@ specifier|final
 name|PooledSession
 name|session
 decl_stmt|;
-specifier|private
+specifier|protected
 name|Synchronization
 parameter_list|(
 name|PooledSession

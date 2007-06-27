@@ -373,6 +373,7 @@ block|}
 block|}
 comment|/**      * @return true if there are no pendingCount messages      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|isEmpty
 parameter_list|()
@@ -446,6 +447,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|addMessageFirst
 parameter_list|(

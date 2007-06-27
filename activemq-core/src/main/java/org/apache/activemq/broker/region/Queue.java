@@ -431,20 +431,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|command
-operator|.
-name|Response
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|filter
 operator|.
 name|BooleanExpression
@@ -2287,7 +2273,6 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
 name|void
 name|doMessageSend
 parameter_list|(
@@ -4698,7 +4683,7 @@ return|return
 name|answer
 return|;
 block|}
-specifier|private
+specifier|final
 name|void
 name|sendMessage
 parameter_list|(

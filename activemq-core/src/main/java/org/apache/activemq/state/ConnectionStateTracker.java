@@ -869,6 +869,13 @@ name|DestinationInfo
 name|info
 parameter_list|)
 block|{
+if|if
+condition|(
+name|info
+operator|!=
+literal|null
+condition|)
+block|{
 name|ConnectionState
 name|cs
 init|=
@@ -888,10 +895,6 @@ decl_stmt|;
 if|if
 condition|(
 name|cs
-operator|!=
-literal|null
-operator|&&
-name|info
 operator|!=
 literal|null
 operator|&&
@@ -912,6 +915,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 return|return
 name|TRACKED_RESPONSE_MARKER
 return|;
@@ -923,6 +927,13 @@ parameter_list|(
 name|DestinationInfo
 name|info
 parameter_list|)
+block|{
+if|if
+condition|(
+name|info
+operator|!=
+literal|null
+condition|)
 block|{
 name|ConnectionState
 name|cs
@@ -943,10 +954,6 @@ decl_stmt|;
 if|if
 condition|(
 name|cs
-operator|!=
-literal|null
-operator|&&
-name|info
 operator|!=
 literal|null
 operator|&&
@@ -969,6 +976,7 @@ name|getDestination
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|TRACKED_RESPONSE_MARKER

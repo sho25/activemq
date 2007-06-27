@@ -1189,14 +1189,11 @@ name|exists
 argument_list|()
 condition|)
 block|{
-name|boolean
-name|result
-init|=
 name|file
 operator|.
 name|delete
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 block|}
 name|length
 operator|=

@@ -897,7 +897,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|private
 name|void
 name|addMessage
 parameter_list|(
@@ -1356,7 +1355,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|private
+specifier|final
 name|void
 name|removeMessage
 parameter_list|(
@@ -1625,7 +1624,6 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @return      * @throws IOException      */
-specifier|private
 name|void
 name|asyncWrite
 parameter_list|()

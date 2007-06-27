@@ -1795,6 +1795,9 @@ name|ListEnumeration
 extends|extends
 name|LocalNamingEnumeration
 block|{
+name|ListEnumeration
+parameter_list|()
+block|{}
 specifier|public
 name|Object
 name|next
@@ -1852,6 +1855,9 @@ name|ListBindingEnumeration
 extends|extends
 name|LocalNamingEnumeration
 block|{
+name|ListBindingEnumeration
+parameter_list|()
+block|{         }
 specifier|public
 name|Object
 name|next

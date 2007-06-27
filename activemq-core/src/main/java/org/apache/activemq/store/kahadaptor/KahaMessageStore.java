@@ -720,6 +720,7 @@ expr_stmt|;
 block|}
 comment|/**      * @param nextToDispatch      * @see org.apache.activemq.store.MessageStore#resetBatching(org.apache.activemq.command.MessageId)      */
 specifier|public
+specifier|synchronized
 name|void
 name|resetBatching
 parameter_list|()

@@ -1385,6 +1385,11 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 name|Scheduler
 operator|.
 name|cancel
@@ -1399,6 +1404,7 @@ argument_list|(
 name|periodicCleanupTask
 argument_list|)
 expr_stmt|;
+block|}
 name|Iterator
 argument_list|<
 name|AMQMessageStore
@@ -1477,11 +1483,17 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 name|checkpointTask
 operator|.
 name|shutdown
 argument_list|()
 expr_stmt|;
+block|}
 name|queues
 operator|.
 name|clear
@@ -1587,12 +1599,12 @@ name|latch
 operator|=
 name|nextCheckpointCountDownLatch
 expr_stmt|;
-block|}
 name|checkpointTask
 operator|.
 name|wakeup
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|sync
@@ -3366,6 +3378,7 @@ name|transactionStore
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|deleteAllMessages
 parameter_list|()
@@ -3610,6 +3623,7 @@ name|maxCheckpointWorkers
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|File
 name|getDirectory
 parameter_list|()
@@ -3619,6 +3633,7 @@ name|directory
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|setDirectory
 parameter_list|(

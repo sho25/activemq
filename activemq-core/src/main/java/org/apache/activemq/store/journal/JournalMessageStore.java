@@ -705,7 +705,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|private
 name|void
 name|addMessage
 parameter_list|(
@@ -1068,7 +1067,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|private
+specifier|final
 name|void
 name|removeMessage
 parameter_list|(
@@ -1332,6 +1331,13 @@ name|getContext
 argument_list|()
 decl_stmt|;
 comment|// Checkpoint the added messages.
+synchronized|synchronized
+init|(
+name|JournalMessageStore
+operator|.
+name|this
+init|)
+block|{
 name|Iterator
 name|iterator
 init|=
@@ -1435,6 +1441,7 @@ literal|0
 expr_stmt|;
 block|}
 block|}
+block|}
 name|persitanceAdapter
 operator|.
 name|commitTransaction
@@ -1450,13 +1457,14 @@ name|context
 argument_list|)
 expr_stmt|;
 comment|// Checkpoint the removed messages.
+name|Iterator
 name|iterator
-operator|=
+init|=
 name|cpRemovedMessageLocations
 operator|.
 name|iterator
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 while|while
 condition|(
 name|iterator
@@ -1569,7 +1577,10 @@ literal|0
 argument_list|)
 return|;
 block|}
-else|else
+synchronized|synchronized
+init|(
+name|this
+init|)
 block|{
 return|return
 name|lastLocation

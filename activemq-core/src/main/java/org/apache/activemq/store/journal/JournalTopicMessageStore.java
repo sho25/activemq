@@ -867,7 +867,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @param messageId      * @param location      * @param key      */
-specifier|private
+specifier|protected
 name|void
 name|acknowledge
 parameter_list|(

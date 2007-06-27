@@ -284,15 +284,9 @@ operator|.
 name|cachedSize
 operator|=
 name|message
-operator|!=
-literal|null
-condition|?
-name|message
 operator|.
 name|getSize
 argument_list|()
-else|:
-literal|0
 expr_stmt|;
 block|}
 specifier|synchronized
@@ -742,6 +736,7 @@ literal|false
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|int
 name|getSize
 parameter_list|()

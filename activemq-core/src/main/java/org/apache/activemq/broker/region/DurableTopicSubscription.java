@@ -388,6 +388,7 @@ name|active
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|boolean
 name|isFull
 parameter_list|()
@@ -750,11 +751,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-synchronized|synchronized
-init|(
-name|dispatched
-init|)
-block|{
 for|for
 control|(
 name|Iterator
@@ -882,7 +878,6 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -1042,6 +1037,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
+specifier|synchronized
 name|void
 name|doAddRecoveredMessage
 parameter_list|(
@@ -1060,6 +1056,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|int
 name|getPendingQueueSize
 parameter_list|()
@@ -1102,6 +1099,7 @@ argument_list|)
 throw|;
 block|}
 specifier|protected
+specifier|synchronized
 name|boolean
 name|canDispatch
 parameter_list|(
@@ -1175,6 +1173,7 @@ argument_list|()
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|String
 name|toString
 parameter_list|()
@@ -1246,6 +1245,7 @@ return|;
 block|}
 comment|/**      * Release any references that we are holding.      */
 specifier|public
+specifier|synchronized
 name|void
 name|destroy
 parameter_list|()

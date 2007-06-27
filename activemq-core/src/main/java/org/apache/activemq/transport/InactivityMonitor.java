@@ -266,7 +266,7 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-specifier|private
+specifier|final
 name|void
 name|writeCheck
 parameter_list|()
@@ -353,7 +353,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|private
+specifier|final
 name|void
 name|readCheck
 parameter_list|()

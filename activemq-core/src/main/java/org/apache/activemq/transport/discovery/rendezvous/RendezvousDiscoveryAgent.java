@@ -312,10 +312,6 @@ operator|new
 name|CopyOnWriteArrayList
 argument_list|()
 decl_stmt|;
-specifier|private
-name|String
-name|brokerName
-decl_stmt|;
 comment|// DiscoveryAgent interface
 comment|//-------------------------------------------------------------------------
 specifier|public
@@ -1088,21 +1084,6 @@ return|;
 block|}
 specifier|public
 name|void
-name|setBrokerName
-parameter_list|(
-name|String
-name|brokerName
-parameter_list|)
-block|{
-name|this
-operator|.
-name|brokerName
-operator|=
-name|brokerName
-expr_stmt|;
-block|}
-specifier|public
-name|void
 name|serviceFailed
 parameter_list|(
 name|DiscoveryEvent
@@ -1112,6 +1093,17 @@ throws|throws
 name|IOException
 block|{
 comment|// TODO: is there a way to notify the JmDNS that the service failed?
+block|}
+comment|/**      * @param brokerName      * @see org.apache.activemq.transport.discovery.DiscoveryAgent#setBrokerName(java.lang.String)      */
+specifier|public
+name|void
+name|setBrokerName
+parameter_list|(
+name|String
+name|brokerName
+parameter_list|)
+block|{
+comment|// implementation of interface
 block|}
 block|}
 end_class
