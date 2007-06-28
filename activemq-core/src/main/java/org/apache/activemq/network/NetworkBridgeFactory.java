@@ -38,7 +38,7 @@ specifier|public
 class|class
 name|NetworkBridgeFactory
 block|{
-comment|/**      * Create a network bridge      *       * @param config      * @param localTransport      * @param remoteTransport      * @return the NetworkBridge      */
+comment|/** 	 * Create a network bridge 	 *  	 * @param config 	 * @param localTransport 	 * @param remoteTransport 	 * @return the NetworkBridge 	 */
 specifier|public
 specifier|static
 name|DemandForwardingBridge
@@ -67,7 +67,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**      * create a network bridge      *       * @param configuration      * @param localTransport      * @param remoteTransport      * @param listener      * @return the NetworkBridge      */
+comment|/** 	 * create a network bridge 	 *  	 * @param configuration 	 * @param localTransport 	 * @param remoteTransport 	 * @param listener 	 * @return the NetworkBridge 	 */
 specifier|public
 specifier|static
 name|DemandForwardingBridge
@@ -82,7 +82,8 @@ parameter_list|,
 name|Transport
 name|remoteTransport
 parameter_list|,
-name|NetworkBridgeFailedListener
+specifier|final
+name|NetworkBridgeListener
 name|listener
 parameter_list|)
 block|{
@@ -160,7 +161,7 @@ condition|)
 block|{
 name|result
 operator|.
-name|setNetworkBridgeFailedListener
+name|setNetworkBridgeListener
 argument_list|(
 name|listener
 argument_list|)

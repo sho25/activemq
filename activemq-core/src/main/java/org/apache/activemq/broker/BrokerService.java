@@ -1592,6 +1592,13 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|connector
+operator|.
+name|setBrokerService
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 name|URI
 name|uri
 init|=
@@ -4793,6 +4800,13 @@ argument_list|(
 name|connector
 argument_list|)
 decl_stmt|;
+name|connector
+operator|.
+name|setObjectName
+argument_list|(
+name|objectName
+argument_list|)
+expr_stmt|;
 name|mbeanServer
 operator|.
 name|registerMBean
