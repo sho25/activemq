@@ -84,6 +84,9 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|LinkedList
+argument_list|<
+name|MessageDispatch
+argument_list|>
 name|list
 decl_stmt|;
 specifier|private
@@ -104,6 +107,9 @@ name|list
 operator|=
 operator|new
 name|LinkedList
+argument_list|<
+name|MessageDispatch
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -260,9 +266,6 @@ literal|null
 return|;
 block|}
 return|return
-operator|(
-name|MessageDispatch
-operator|)
 name|list
 operator|.
 name|removeFirst
@@ -298,9 +301,6 @@ literal|null
 return|;
 block|}
 return|return
-operator|(
-name|MessageDispatch
-operator|)
 name|list
 operator|.
 name|removeFirst
@@ -336,9 +336,6 @@ literal|null
 return|;
 block|}
 return|return
-operator|(
-name|MessageDispatch
-operator|)
 name|list
 operator|.
 name|getFirst
@@ -484,6 +481,9 @@ return|;
 block|}
 specifier|public
 name|List
+argument_list|<
+name|MessageDispatch
+argument_list|>
 name|removeAll
 parameter_list|()
 block|{
@@ -493,10 +493,16 @@ name|mutex
 init|)
 block|{
 name|ArrayList
+argument_list|<
+name|MessageDispatch
+argument_list|>
 name|rc
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|MessageDispatch
+argument_list|>
 argument_list|(
 name|list
 argument_list|)

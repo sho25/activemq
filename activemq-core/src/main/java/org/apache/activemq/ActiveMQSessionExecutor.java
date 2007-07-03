@@ -535,6 +535,7 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
+break|break;
 block|}
 block|}
 block|}
