@@ -2469,6 +2469,15 @@ return|return
 literal|null
 return|;
 block|}
+specifier|public
+name|boolean
+name|isFaultTolerant
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 end_class
 

@@ -163,6 +163,12 @@ name|String
 name|getRemoteAddress
 parameter_list|()
 function_decl|;
+comment|/**      * Indicates if the transport can handle faults      * @return tru if fault tolerant      */
+specifier|public
+name|boolean
+name|isFaultTolerant
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

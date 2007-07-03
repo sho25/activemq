@@ -365,6 +365,19 @@ name|getRemoteAddress
 argument_list|()
 return|;
 block|}
+comment|/**      * @return      * @see org.apache.activemq.transport.Transport#isFaultTolerant()      */
+specifier|public
+name|boolean
+name|isFaultTolerant
+parameter_list|()
+block|{
+return|return
+name|next
+operator|.
+name|isFaultTolerant
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
