@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Simple LRU Cache  *   * @version $Revision$  */
+comment|/**  * A Simple LRU Cache  *   * @version $Revision$  * @param<K>   * @param<V>   */
 end_comment
 
 begin_class
@@ -71,7 +71,7 @@ name|maxCacheSize
 init|=
 literal|10000
 decl_stmt|;
-comment|/**      * Constructs LRU Cache      *       */
+comment|/**      * Default constructorfor an LRU Cache      * The default capacity is 10000      *       */
 specifier|public
 name|LRUCache
 parameter_list|()
@@ -79,6 +79,26 @@ block|{
 name|super
 argument_list|(
 literal|1000
+argument_list|,
+literal|0.75f
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Constructs a LRUCache with a maximum capacity      * @param maximumCacheSize      */
+specifier|public
+name|LRUCache
+parameter_list|(
+name|int
+name|maximumCacheSize
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|maximumCacheSize
+argument_list|,
+name|maximumCacheSize
 argument_list|,
 literal|0.75f
 argument_list|,
