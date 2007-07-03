@@ -899,6 +899,20 @@ return|return
 literal|null
 return|;
 block|}
+specifier|public
+name|void
+name|brokerServiceStarted
+parameter_list|()
+block|{     }
+specifier|public
+name|BrokerService
+name|getBrokerService
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
 block|}
 end_class
 

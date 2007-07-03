@@ -681,6 +681,16 @@ name|getPeerBrokerInfos
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|brokerInfo
+operator|.
+name|setFaultTolerantConfiguration
+argument_list|(
+name|broker
+operator|.
+name|isFaultTolerantConfiguration
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void

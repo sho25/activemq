@@ -1279,6 +1279,12 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
+specifier|private
+name|boolean
+name|supportFailOver
+init|=
+literal|false
+decl_stmt|;
 static|static
 block|{
 name|String
@@ -1933,6 +1939,7 @@ expr_stmt|;
 block|}
 comment|/**      * @return true if this Broker is a slave to a Master      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|isSlave
 parameter_list|()
@@ -2163,6 +2170,12 @@ name|brokerId
 operator|+
 literal|") started"
 argument_list|)
+expr_stmt|;
+name|getBroker
+argument_list|()
+operator|.
+name|brokerServiceStarted
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -4193,6 +4206,34 @@ operator|=
 name|LOCAL_HOST_NAME
 expr_stmt|;
 block|}
+block|}
+comment|/**      * @return the supportFailOver      */
+specifier|public
+name|boolean
+name|isSupportFailOver
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|supportFailOver
+return|;
+block|}
+comment|/**      * @param supportFailOver the supportFailOver to set      */
+specifier|public
+name|void
+name|setSupportFailOver
+parameter_list|(
+name|boolean
+name|supportFailOver
+parameter_list|)
+block|{
+name|this
+operator|.
+name|supportFailOver
+operator|=
+name|supportFailOver
+expr_stmt|;
 block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
@@ -6795,6 +6836,10 @@ operator|(
 name|MasterConnector
 operator|)
 name|service
+expr_stmt|;
+name|supportFailOver
+operator|=
+literal|true
 expr_stmt|;
 block|}
 block|}

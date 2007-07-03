@@ -623,6 +623,15 @@ name|URI
 name|getVmConnectorURI
 parameter_list|()
 function_decl|;
+specifier|public
+name|void
+name|brokerServiceStarted
+parameter_list|()
+function_decl|;
+name|BrokerService
+name|getBrokerService
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
