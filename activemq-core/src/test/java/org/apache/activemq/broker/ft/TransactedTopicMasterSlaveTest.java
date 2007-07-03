@@ -327,11 +327,6 @@ name|Exception
 block|{
 if|if
 condition|(
-literal|true
-condition|)
-return|return;
-if|if
-condition|(
 operator|++
 name|inflightMessageCount
 operator|>=
