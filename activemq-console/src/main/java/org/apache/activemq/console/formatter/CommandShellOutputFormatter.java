@@ -851,7 +851,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"For help or more information please see: http://www.logicblaze.com"
+literal|"For help or more information please see: http://activemq.apache.org"
 argument_list|)
 expr_stmt|;
 name|out
