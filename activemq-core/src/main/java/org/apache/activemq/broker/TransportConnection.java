@@ -6432,11 +6432,6 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|this
-init|)
-block|{
 name|context
 operator|=
 name|state
@@ -6451,7 +6446,6 @@ argument_list|(
 name|context
 argument_list|)
 expr_stmt|;
-block|}
 name|SessionState
 name|ss
 init|=
