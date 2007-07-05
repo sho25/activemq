@@ -1207,6 +1207,10 @@ name|useRetroactiveConsumer
 decl_stmt|;
 specifier|private
 name|boolean
+name|exclusiveConsumer
+decl_stmt|;
+specifier|private
+name|boolean
 name|alwaysSyncSend
 decl_stmt|;
 specifier|private
@@ -2935,6 +2939,31 @@ operator|.
 name|nestedMapAndListEnabled
 operator|=
 name|structuredMapsEnabled
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isExclusiveConsumer
+parameter_list|()
+block|{
+return|return
+name|exclusiveConsumer
+return|;
+block|}
+comment|/**      * Enables or disables whether or not queue consumers should be exclusive or not      * for example to preserve ordering when not using      *<a href="http://activemq.apache.org/message-groups.html">Message Groups</a>      *      * @param exclusiveConsumer      */
+specifier|public
+name|void
+name|setExclusiveConsumer
+parameter_list|(
+name|boolean
+name|exclusiveConsumer
+parameter_list|)
+block|{
+name|this
+operator|.
+name|exclusiveConsumer
+operator|=
+name|exclusiveConsumer
 expr_stmt|;
 block|}
 comment|/**      * Adds a transport listener so that a client can be notified of events in the underlying       * transport      */
