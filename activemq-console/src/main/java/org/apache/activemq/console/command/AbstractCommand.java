@@ -360,10 +360,14 @@ name|GlobalWriter
 operator|.
 name|printInfo
 argument_list|(
-literal|"Ignoring unrecognized option: "
+literal|"Unrecognized option: "
 operator|+
 name|token
 argument_list|)
+expr_stmt|;
+name|isPrintHelp
+operator|=
+literal|true
 expr_stmt|;
 block|}
 block|}
