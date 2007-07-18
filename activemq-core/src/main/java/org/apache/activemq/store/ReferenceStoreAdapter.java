@@ -31,6 +31,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -63,6 +73,36 @@ name|ActiveMQTopic
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|TransactionId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|amq
+operator|.
+name|AMQTx
+import|;
+end_import
+
 begin_comment
 comment|/**  * Adapter to the actual persistence mechanism used with ActiveMQ  *  * @version $Revision: 1.3 $  */
 end_comment
@@ -74,7 +114,7 @@ name|ReferenceStoreAdapter
 extends|extends
 name|PersistenceAdapter
 block|{
-comment|/**      * Factory method to create a new queue message store with the given destination name      */
+comment|/**      * Factory method to create a new queue message store with the given destination name      * @param destination       * @return the QueueReferenceStore      * @throws IOException       */
 specifier|public
 name|ReferenceStore
 name|createQueueReferenceStore
@@ -85,7 +125,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Factory method to create a new topic message store with the given destination name      */
+comment|/**      * Factory method to create a new topic message store with the given destination name      * @param destination      * @return  the TopicRefererenceStore      * @throws IOException       */
 specifier|public
 name|TopicReferenceStore
 name|createTopicReferenceStore
@@ -96,6 +136,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/** 	 * @return Set of File ids in use 	 * @throws IOException 	 */
 specifier|public
 name|Set
 argument_list|<
@@ -124,6 +165,35 @@ comment|/**      * recover any state       * @throws IOException       *      */
 specifier|public
 name|void
 name|recoverState
+parameter_list|()
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * Save prepared transactions      * @param map      * @throws IOException      */
+specifier|public
+name|void
+name|savePreparedState
+parameter_list|(
+name|Map
+argument_list|<
+name|TransactionId
+argument_list|,
+name|AMQTx
+argument_list|>
+name|map
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      *       * @return saved prepared transactions      * @throws IOException      */
+specifier|public
+name|Map
+argument_list|<
+name|TransactionId
+argument_list|,
+name|AMQTx
+argument_list|>
+name|retrievePreparedState
 parameter_list|()
 throws|throws
 name|IOException
