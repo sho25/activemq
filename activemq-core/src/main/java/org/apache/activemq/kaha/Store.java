@@ -86,6 +86,17 @@ operator|new
 name|StringMarshaller
 argument_list|()
 decl_stmt|;
+comment|/**      * Command Marshaller      */
+specifier|public
+specifier|final
+specifier|static
+name|Marshaller
+name|CommandMarshaller
+init|=
+operator|new
+name|CommandMarshaller
+argument_list|()
+decl_stmt|;
 comment|/**      * close the store      *       * @throws IOException      */
 specifier|public
 name|void
