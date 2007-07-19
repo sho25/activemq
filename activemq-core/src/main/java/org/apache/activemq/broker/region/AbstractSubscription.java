@@ -679,13 +679,14 @@ parameter_list|()
 block|{             }
 specifier|public
 name|boolean
-name|isSlaveBroker
+name|isSlave
 parameter_list|()
 block|{
 return|return
-name|broker
+name|getContext
+argument_list|()
 operator|.
-name|isSlaveBroker
+name|isSlave
 argument_list|()
 return|;
 block|}

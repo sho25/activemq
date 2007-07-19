@@ -1285,6 +1285,12 @@ name|supportFailOver
 init|=
 literal|false
 decl_stmt|;
+specifier|private
+name|boolean
+name|clustered
+init|=
+literal|false
+decl_stmt|;
 static|static
 block|{
 name|String
@@ -4242,6 +4248,34 @@ operator|.
 name|supportFailOver
 operator|=
 name|supportFailOver
+expr_stmt|;
+block|}
+comment|/**      * @return the clustered      */
+specifier|public
+name|boolean
+name|isClustered
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|clustered
+return|;
+block|}
+comment|/**      * @param clustered the clustered to set      */
+specifier|public
+name|void
+name|setClustered
+parameter_list|(
+name|boolean
+name|clustered
+parameter_list|)
+block|{
+name|this
+operator|.
+name|clustered
+operator|=
+name|clustered
 expr_stmt|;
 block|}
 comment|// Implementation methods

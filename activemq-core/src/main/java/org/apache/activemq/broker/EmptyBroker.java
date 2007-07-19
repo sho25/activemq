@@ -789,15 +789,6 @@ name|Exception
 block|{      }
 specifier|public
 name|boolean
-name|isSlaveBroker
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-block|}
-specifier|public
-name|boolean
 name|isStopped
 parameter_list|()
 block|{

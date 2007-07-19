@@ -4214,6 +4214,16 @@ argument_list|)
 expr_stmt|;
 name|context
 operator|.
+name|setClientMaster
+argument_list|(
+name|info
+operator|.
+name|isClientMaster
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|context
+operator|.
 name|setWireFormatInfo
 argument_list|(
 name|wireFormatInfo

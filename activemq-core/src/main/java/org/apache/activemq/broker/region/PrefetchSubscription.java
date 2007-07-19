@@ -504,7 +504,7 @@ operator|==
 literal|0
 operator|&&
 operator|!
-name|isSlaveBroker
+name|isSlave
 argument_list|()
 condition|)
 block|{
@@ -680,9 +680,7 @@ operator|&&
 name|pendingEmpty
 operator|&&
 operator|!
-name|broker
-operator|.
-name|isSlaveBroker
+name|isSlave
 argument_list|()
 condition|)
 block|{
@@ -1473,7 +1471,7 @@ else|else
 block|{
 if|if
 condition|(
-name|isSlaveBroker
+name|isSlave
 argument_list|()
 condition|)
 block|{
@@ -1587,7 +1585,7 @@ name|isFull
 parameter_list|()
 block|{
 return|return
-name|isSlaveBroker
+name|isSlave
 argument_list|()
 operator|||
 name|dispatched
@@ -1858,9 +1856,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|broker
-operator|.
-name|isSlaveBroker
+name|isSlave
 argument_list|()
 condition|)
 block|{
@@ -2022,7 +2018,7 @@ name|node
 argument_list|)
 operator|&&
 operator|!
-name|isSlaveBroker
+name|isSlave
 argument_list|()
 condition|)
 block|{

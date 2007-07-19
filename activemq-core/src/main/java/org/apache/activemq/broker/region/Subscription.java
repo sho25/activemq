@@ -276,7 +276,7 @@ name|Exception
 function_decl|;
 comment|/**      * @return true if the broker is currently in slave mode      */
 name|boolean
-name|isSlaveBroker
+name|isSlave
 parameter_list|()
 function_decl|;
 comment|/**      * @return number of messages pending delivery      */

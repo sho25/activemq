@@ -82,6 +82,8 @@ decl_stmt|;
 specifier|protected
 name|boolean
 name|clientMaster
+init|=
+literal|true
 decl_stmt|;
 specifier|protected
 specifier|transient

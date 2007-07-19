@@ -542,12 +542,6 @@ name|MessageDispatch
 name|messageDispatch
 parameter_list|)
 function_decl|;
-comment|/**      * @return true if the broker is running as a slave      */
-specifier|public
-name|boolean
-name|isSlaveBroker
-parameter_list|()
-function_decl|;
 comment|/**      * @return true if the broker has stopped      */
 specifier|public
 name|boolean

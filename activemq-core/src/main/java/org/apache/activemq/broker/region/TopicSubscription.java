@@ -586,7 +586,7 @@ name|isFull
 argument_list|()
 operator|&&
 operator|!
-name|isSlaveBroker
+name|isSlave
 argument_list|()
 condition|)
 block|{
