@@ -207,6 +207,11 @@ return|return
 operator|new
 name|Queue
 argument_list|(
+name|broker
+operator|.
+name|getRoot
+argument_list|()
+argument_list|,
 name|destination
 argument_list|,
 name|memoryManager

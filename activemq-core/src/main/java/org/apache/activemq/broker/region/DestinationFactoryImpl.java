@@ -398,6 +398,11 @@ return|return
 operator|new
 name|Queue
 argument_list|(
+name|broker
+operator|.
+name|getRoot
+argument_list|()
+argument_list|,
 name|destination
 argument_list|,
 name|memoryManager
@@ -497,6 +502,11 @@ init|=
 operator|new
 name|Queue
 argument_list|(
+name|broker
+operator|.
+name|getRoot
+argument_list|()
+argument_list|,
 name|destination
 argument_list|,
 name|memoryManager
@@ -552,6 +562,11 @@ return|return
 operator|new
 name|Topic
 argument_list|(
+name|broker
+operator|.
+name|getRoot
+argument_list|()
+argument_list|,
 name|destination
 argument_list|,
 literal|null
@@ -662,6 +677,11 @@ init|=
 operator|new
 name|Topic
 argument_list|(
+name|broker
+operator|.
+name|getRoot
+argument_list|()
+argument_list|,
 name|destination
 argument_list|,
 name|store

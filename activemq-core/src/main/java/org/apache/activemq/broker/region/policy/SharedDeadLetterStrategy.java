@@ -55,8 +55,8 @@ begin_class
 specifier|public
 class|class
 name|SharedDeadLetterStrategy
-implements|implements
-name|DeadLetterStrategy
+extends|extends
+name|AbstractDeadLetterStrategy
 block|{
 specifier|private
 name|ActiveMQDestination

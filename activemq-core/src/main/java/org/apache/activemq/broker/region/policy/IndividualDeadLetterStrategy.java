@@ -69,8 +69,8 @@ begin_class
 specifier|public
 class|class
 name|IndividualDeadLetterStrategy
-implements|implements
-name|DeadLetterStrategy
+extends|extends
+name|AbstractDeadLetterStrategy
 block|{
 specifier|private
 name|String

@@ -59,7 +59,7 @@ name|broker
 operator|.
 name|region
 operator|.
-name|Destination
+name|MessageReference
 import|;
 end_import
 
@@ -76,24 +76,6 @@ operator|.
 name|region
 operator|.
 name|Region
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|region
-operator|.
-name|policy
-operator|.
-name|PendingDurableSubscriberMessageStoragePolicy
 import|;
 end_import
 
@@ -191,49 +173,7 @@ name|activemq
 operator|.
 name|command
 operator|.
-name|MessageDispatchNotification
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|MessagePull
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|ProducerInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|Response
 import|;
 end_import
 
@@ -442,7 +382,7 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Gets a list of all the prepared xa transactions.      * @throws Exception TODO      */
+comment|/**      * Gets a list of all the prepared xa transactions.      * @param context transaction ids      * @return       * @throws Exception TODO      */
 specifier|public
 name|TransactionId
 index|[]
@@ -468,7 +408,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Prepares a transaction. Only valid for xa transactions.      * @param context      * @param xid      * @return      * @throws Exception TODO      */
+comment|/**      * Prepares a transaction. Only valid for xa transactions.      * @param context      * @param xid      * @return id      * @throws Exception TODO      */
 specifier|public
 name|int
 name|prepareTransaction
@@ -513,7 +453,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Forgets a transaction.      */
+comment|/**      * Forgets a transaction.      * @param context       * @param transactionId       * @throws Exception       */
 specifier|public
 name|void
 name|forgetTransaction
@@ -617,14 +557,45 @@ name|URI
 name|getVmConnectorURI
 parameter_list|()
 function_decl|;
+comment|/**      * called when the brokerService starts      */
 specifier|public
 name|void
 name|brokerServiceStarted
 parameter_list|()
 function_decl|;
+comment|/**      * @return the BrokerService      */
 name|BrokerService
 name|getBrokerService
 parameter_list|()
+function_decl|;
+comment|/**      * Ensure we get the Broker at the top of the Stack      * @return the broker at the top of the Stack      */
+name|Broker
+name|getRoot
+parameter_list|()
+function_decl|;
+comment|/**      * A Message has Expired      * @param context      * @param messageReference      * @throws Exception       */
+specifier|public
+name|void
+name|messageExpired
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|MessageReference
+name|messageReference
+parameter_list|)
+function_decl|;
+comment|/**      * A message needs to go the a DLQ      * @param context      * @param messageReference      * @throws Exception      */
+specifier|public
+name|void
+name|sendToDeadLetterQueue
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|MessageReference
+name|messageReference
+parameter_list|)
 function_decl|;
 block|}
 end_interface

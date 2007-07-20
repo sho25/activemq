@@ -1804,6 +1804,18 @@ comment|// Try to auto create the destination... re-invoke broker from the
 comment|// top so that the proper security checks are performed.
 try|try
 block|{
+name|context
+operator|.
+name|getBroker
+argument_list|()
+operator|.
+name|addDestination
+argument_list|(
+name|context
+argument_list|,
+name|destination
+argument_list|)
+expr_stmt|;
 name|dest
 operator|=
 name|addDestination
@@ -1813,7 +1825,6 @@ argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
-comment|//context.getBroker().addDestination(context,destination);
 block|}
 catch|catch
 parameter_list|(
@@ -1824,7 +1835,18 @@ block|{
 comment|// if the destination already exists then lets ignore this error
 block|}
 comment|// We should now have the dest created.
-comment|//dest=(Destination) destinations.get(destination);
+name|dest
+operator|=
+operator|(
+name|Destination
+operator|)
+name|destinations
+operator|.
+name|get
+argument_list|(
+name|destination
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(

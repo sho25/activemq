@@ -1521,61 +1521,15 @@ name|IOException
 throws|,
 name|Exception
 block|{
-comment|// Send the message to the DLQ
-name|Message
-name|message
-init|=
-name|node
+name|broker
 operator|.
-name|getMessage
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|message
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// The original destination and transaction id do not get filled when the message is first
-comment|// sent,
-comment|// it is only populated if the message is routed to another destination like the DLQ
-name|DeadLetterStrategy
-name|deadLetterStrategy
-init|=
-name|node
-operator|.
-name|getRegionDestination
-argument_list|()
-operator|.
-name|getDeadLetterStrategy
-argument_list|()
-decl_stmt|;
-name|ActiveMQDestination
-name|deadLetterDestination
-init|=
-name|deadLetterStrategy
-operator|.
-name|getDeadLetterQueueFor
-argument_list|(
-name|message
-operator|.
-name|getDestination
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|BrokerSupport
-operator|.
-name|resend
+name|sendToDeadLetterQueue
 argument_list|(
 name|context
 argument_list|,
-name|message
-argument_list|,
-name|deadLetterDestination
+name|node
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|/**      * Used to determine if the broker can dispatch to the consumer.      *       * @return      */
 specifier|protected
@@ -1952,8 +1906,20 @@ name|isExpired
 argument_list|()
 condition|)
 block|{
+name|broker
+operator|.
+name|messageExpired
+argument_list|(
+name|getContext
+argument_list|()
+argument_list|,
+name|node
+argument_list|)
+expr_stmt|;
+name|dequeueCounter
+operator|++
+expr_stmt|;
 continue|continue;
-comment|// just drop it.
 block|}
 name|dispatch
 argument_list|(
