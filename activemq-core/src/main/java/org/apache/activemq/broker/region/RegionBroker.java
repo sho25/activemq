@@ -737,11 +737,11 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 name|destinations
 init|=
 operator|new
-name|HashMap
+name|ConcurrentHashMap
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -1611,11 +1611,6 @@ block|{
 name|Destination
 name|answer
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|destinations
-init|)
-block|{
 name|answer
 operator|=
 operator|(
@@ -1637,7 +1632,6 @@ condition|)
 return|return
 name|answer
 return|;
-block|}
 switch|switch
 condition|(
 name|destination
@@ -1722,11 +1716,6 @@ name|destination
 argument_list|)
 throw|;
 block|}
-synchronized|synchronized
-init|(
-name|destinations
-init|)
-block|{
 name|destinations
 operator|.
 name|put
@@ -1739,7 +1728,6 @@ expr_stmt|;
 return|return
 name|answer
 return|;
-block|}
 block|}
 specifier|public
 name|void
@@ -1756,11 +1744,6 @@ name|timeout
 parameter_list|)
 throws|throws
 name|Exception
-block|{
-synchronized|synchronized
-init|(
-name|destinations
-init|)
 block|{
 if|if
 condition|(
@@ -1860,7 +1843,6 @@ throw|;
 block|}
 block|}
 block|}
-block|}
 specifier|public
 name|void
 name|addDestinationInfo
@@ -1925,11 +1907,6 @@ block|{
 name|ArrayList
 name|l
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|destinations
-init|)
-block|{
 name|l
 operator|=
 operator|new
@@ -1941,7 +1918,6 @@ name|values
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|ActiveMQDestination
 name|rc
 index|[]
