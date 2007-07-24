@@ -759,7 +759,7 @@ block|{
 try|try
 block|{
 comment|// Starting the connection could block due to
-comment|// wireformat negociation, so start it in an async thread.
+comment|// wireformat negotiation, so start it in an async thread.
 name|Thread
 name|startThread
 init|=

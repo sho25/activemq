@@ -182,9 +182,17 @@ operator|.
 name|notifyAll
 argument_list|()
 expr_stmt|;
-comment|// Wait till the thread stops.
+comment|// Wait till the thread stops ( no need to wait if shutdown
+comment|// is called from thread that is shutting down)
 if|if
 condition|(
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|!=
+name|thread
+operator|&&
 operator|!
 name|threadTerminated
 condition|)
@@ -257,6 +265,13 @@ init|(
 name|mutex
 init|)
 block|{
+if|if
+condition|(
+name|shutdown
+condition|)
+block|{
+return|return;
+block|}
 while|while
 condition|(
 operator|!
