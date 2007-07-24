@@ -2035,6 +2035,17 @@ argument_list|(
 name|remoteBroker
 argument_list|)
 expr_stmt|;
+comment|// Release the started Latch since another thread could be stuck waiting for it to start up.
+name|startedLatch
+operator|.
+name|countDown
+argument_list|()
+expr_stmt|;
+name|startedLatch
+operator|.
+name|countDown
+argument_list|()
+expr_stmt|;
 name|ss
 operator|.
 name|throwFirstException
