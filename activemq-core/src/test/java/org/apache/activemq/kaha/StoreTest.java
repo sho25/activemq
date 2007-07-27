@@ -896,8 +896,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-try|try
-block|{
 name|store
 operator|.
 name|doesListContainerExist
@@ -911,6 +909,8 @@ init|=
 name|getStore
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 name|s
 operator|.
 name|doesListContainerExist
@@ -926,6 +926,14 @@ name|e
 parameter_list|)
 block|{
 return|return;
+block|}
+finally|finally
+block|{
+name|s
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 name|fail
 argument_list|(
