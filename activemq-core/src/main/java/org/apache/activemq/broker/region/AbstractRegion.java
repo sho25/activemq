@@ -1816,15 +1816,7 @@ argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
-name|dest
-operator|=
-name|addDestination
-argument_list|(
-name|context
-argument_list|,
-name|destination
-argument_list|)
-expr_stmt|;
+comment|//dest = addDestination(context, destination);
 block|}
 catch|catch
 parameter_list|(
