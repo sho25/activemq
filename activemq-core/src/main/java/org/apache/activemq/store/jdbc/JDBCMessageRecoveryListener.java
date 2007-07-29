@@ -26,7 +26,7 @@ specifier|public
 interface|interface
 name|JDBCMessageRecoveryListener
 block|{
-name|void
+name|boolean
 name|recoverMessage
 parameter_list|(
 name|long
@@ -39,7 +39,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-name|void
+name|boolean
 name|recoverMessageReference
 parameter_list|(
 name|String
@@ -47,10 +47,6 @@ name|reference
 parameter_list|)
 throws|throws
 name|Exception
-function_decl|;
-name|void
-name|finished
-parameter_list|()
 function_decl|;
 block|}
 end_interface

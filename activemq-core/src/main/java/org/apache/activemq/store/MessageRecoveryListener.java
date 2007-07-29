@@ -52,7 +52,7 @@ specifier|public
 interface|interface
 name|MessageRecoveryListener
 block|{
-name|void
+name|boolean
 name|recoverMessage
 parameter_list|(
 name|Message
@@ -61,7 +61,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-name|void
+name|boolean
 name|recoverMessageReference
 parameter_list|(
 name|MessageId
@@ -69,10 +69,6 @@ name|ref
 parameter_list|)
 throws|throws
 name|Exception
-function_decl|;
-name|void
-name|finished
-parameter_list|()
 function_decl|;
 name|boolean
 name|hasSpace

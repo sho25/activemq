@@ -489,7 +489,7 @@ name|finished
 parameter_list|()
 block|{     }
 specifier|public
-name|void
+name|boolean
 name|recoverMessage
 parameter_list|(
 name|Message
@@ -517,9 +517,12 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 specifier|public
-name|void
+name|boolean
 name|recoverMessageReference
 parameter_list|(
 name|MessageId
@@ -545,11 +548,12 @@ operator|!=
 literal|null
 condition|)
 block|{
+return|return
 name|recoverMessage
 argument_list|(
 name|msg
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 else|else
 block|{

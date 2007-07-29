@@ -3028,7 +3028,7 @@ name|MessageRecoveryListener
 argument_list|()
 block|{
 specifier|public
-name|void
+name|boolean
 name|recoverMessage
 parameter_list|(
 name|Message
@@ -3044,9 +3044,12 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 specifier|public
-name|void
+name|boolean
 name|recoverMessageReference
 parameter_list|(
 name|MessageId

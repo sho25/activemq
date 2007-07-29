@@ -267,11 +267,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|listener
-operator|.
-name|finished
-argument_list|()
-expr_stmt|;
 block|}
 name|void
 name|recoverNextMessages
@@ -431,11 +426,6 @@ operator|=
 name|lastId
 expr_stmt|;
 block|}
-name|listener
-operator|.
-name|finished
-argument_list|()
-expr_stmt|;
 block|}
 name|void
 name|resetBatching
