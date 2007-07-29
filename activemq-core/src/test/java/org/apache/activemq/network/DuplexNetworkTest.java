@@ -79,7 +79,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/*     protected String getLocalBrokerURI(){         return "org/apache/activemq/network/duplexLocalBroker.xml";     }     */
+specifier|protected
+name|String
+name|getLocalBrokerURI
+parameter_list|()
+block|{
+return|return
+literal|"org/apache/activemq/network/duplexLocalBroker.xml"
+return|;
+block|}
 specifier|protected
 name|BrokerService
 name|createRemoteBroker
@@ -94,6 +102,13 @@ operator|new
 name|BrokerService
 argument_list|()
 decl_stmt|;
+name|broker
+operator|.
+name|setBrokerName
+argument_list|(
+literal|"remoteBroker"
+argument_list|)
+expr_stmt|;
 name|broker
 operator|.
 name|addConnector
