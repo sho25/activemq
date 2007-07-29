@@ -358,15 +358,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"START TEST!"
-argument_list|)
-expr_stmt|;
 specifier|final
 name|MessageProducer
 name|remoteProducer
@@ -494,7 +485,7 @@ argument_list|(
 literal|2000
 argument_list|)
 expr_stmt|;
-comment|//alow for consumer infos to perculate arround
+comment|//allow for consumer infos to perculate arround
 for|for
 control|(
 name|int
@@ -551,15 +542,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"FIN TEST!"
-argument_list|)
-expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -657,15 +639,6 @@ name|receive
 argument_list|(
 literal|500
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"FIN TEST!"
 argument_list|)
 expr_stmt|;
 block|}
