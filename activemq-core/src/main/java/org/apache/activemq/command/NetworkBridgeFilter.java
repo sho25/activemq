@@ -415,7 +415,7 @@ literal|null
 condition|?
 literal|0
 else|:
-name|message
+name|info
 operator|.
 name|getBrokerPath
 argument_list|()
@@ -476,6 +476,10 @@ block|{
 if|if
 condition|(
 name|brokerPath
+operator|!=
+literal|null
+operator|&&
+name|brokerId
 operator|!=
 literal|null
 condition|)
