@@ -766,15 +766,22 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Notifiy the Broker that a dispatch has happened      *       * @param messageDispatch      */
 specifier|public
 name|void
-name|processDispatch
+name|preProcessDispatch
 parameter_list|(
 name|MessageDispatch
 name|messageDispatch
 parameter_list|)
-block|{      }
+block|{     }
+specifier|public
+name|void
+name|postProcessDispatch
+parameter_list|(
+name|MessageDispatch
+name|messageDispatch
+parameter_list|)
+block|{     }
 specifier|public
 name|void
 name|processDispatchNotification
@@ -900,6 +907,18 @@ parameter_list|()
 block|{
 return|return
 literal|null
+return|;
+block|}
+specifier|public
+name|boolean
+name|isExpired
+parameter_list|(
+name|MessageReference
+name|messageReference
+parameter_list|)
+block|{
+return|return
+literal|false
 return|;
 block|}
 specifier|public

@@ -1183,7 +1183,7 @@ block|}
 comment|/**      * Notifiy the Broker that a dispatch has happened      *       * @param messageDispatch      */
 specifier|public
 name|void
-name|processDispatch
+name|postProcessDispatch
 parameter_list|(
 name|MessageDispatch
 name|messageDispatch
@@ -1262,7 +1262,7 @@ expr_stmt|;
 block|}
 name|super
 operator|.
-name|processDispatch
+name|postProcessDispatch
 argument_list|(
 name|messageDispatch
 argument_list|)

@@ -1060,10 +1060,12 @@ block|{
 comment|// Message could have expired while it was being loaded..
 if|if
 condition|(
-name|message
+name|broker
 operator|.
 name|isExpired
-argument_list|()
+argument_list|(
+name|message
+argument_list|)
 condition|)
 block|{
 name|broker
@@ -2157,10 +2159,12 @@ block|{
 comment|// While waiting for space to free up... the message may have expired.
 if|if
 condition|(
-name|message
+name|broker
 operator|.
 name|isExpired
-argument_list|()
+argument_list|(
+name|message
+argument_list|)
 condition|)
 block|{
 name|broker
@@ -2548,10 +2552,12 @@ comment|// It could take while before we receive the commit
 comment|// op, by that time the message could have expired..
 if|if
 condition|(
-name|message
+name|broker
 operator|.
 name|isExpired
-argument_list|()
+argument_list|(
+name|message
+argument_list|)
 condition|)
 block|{
 name|broker
@@ -4926,10 +4932,12 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|node
+name|broker
 operator|.
 name|isExpired
-argument_list|()
+argument_list|(
+name|node
+argument_list|)
 condition|)
 block|{
 name|node

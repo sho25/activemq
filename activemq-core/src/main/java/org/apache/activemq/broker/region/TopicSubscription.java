@@ -830,10 +830,12 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|node
+name|broker
 operator|.
 name|isExpired
-argument_list|()
+argument_list|(
+name|node
+argument_list|)
 condition|)
 block|{
 name|matched
@@ -1636,10 +1638,12 @@ comment|// Message may have been sitting in the matched list a while
 comment|// waiting for the consumer to ak the message.
 if|if
 condition|(
-name|message
+name|broker
 operator|.
 name|isExpired
-argument_list|()
+argument_list|(
+name|message
+argument_list|)
 condition|)
 block|{
 name|message

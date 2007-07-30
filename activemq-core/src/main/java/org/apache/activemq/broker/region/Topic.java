@@ -1504,10 +1504,12 @@ comment|// There is delay between the client sending it and it arriving at the
 comment|// destination.. it may have expired.
 if|if
 condition|(
-name|message
+name|broker
 operator|.
 name|isExpired
-argument_list|()
+argument_list|(
+name|message
+argument_list|)
 condition|)
 block|{
 name|broker
@@ -1670,10 +1672,12 @@ block|{
 comment|// While waiting for space to free up... the message may have expired.
 if|if
 condition|(
-name|message
+name|broker
 operator|.
 name|isExpired
-argument_list|()
+argument_list|(
+name|message
+argument_list|)
 condition|)
 block|{
 name|broker
@@ -2004,10 +2008,12 @@ comment|// It could take while before we receive the commit
 comment|// operration.. by that time the message could have expired..
 if|if
 condition|(
-name|message
+name|broker
 operator|.
 name|isExpired
-argument_list|()
+argument_list|(
+name|message
+argument_list|)
 condition|)
 block|{
 name|broker

@@ -473,10 +473,19 @@ index|[]
 name|getPeerBrokerInfos
 parameter_list|()
 function_decl|;
+comment|/**      * Notify the Broker that a dispatch is going to happen      * @param messageDispatch      */
+specifier|public
+name|void
+name|preProcessDispatch
+parameter_list|(
+name|MessageDispatch
+name|messageDispatch
+parameter_list|)
+function_decl|;
 comment|/**      * Notify the Broker that a dispatch has happened      * @param messageDispatch      */
 specifier|public
 name|void
-name|processDispatch
+name|postProcessDispatch
 parameter_list|(
 name|MessageDispatch
 name|messageDispatch
@@ -573,7 +582,16 @@ name|Broker
 name|getRoot
 parameter_list|()
 function_decl|;
-comment|/**      * A Message has Expired      * @param context      * @param messageReference      * @throws Exception       */
+comment|/**      * Determine if a message has expired -allows default behaviour to be overriden -       * as the timestamp set by the producer can be out of sync with the broker      * @param messageReference      * @return true if the message is expired      */
+specifier|public
+name|boolean
+name|isExpired
+parameter_list|(
+name|MessageReference
+name|messageReference
+parameter_list|)
+function_decl|;
+comment|/**      * A Message has Expired      * @param context      * @param messageReference      */
 specifier|public
 name|void
 name|messageExpired
@@ -585,7 +603,7 @@ name|MessageReference
 name|messageReference
 parameter_list|)
 function_decl|;
-comment|/**      * A message needs to go the a DLQ      * @param context      * @param messageReference      * @throws Exception      */
+comment|/**      * A message needs to go the a DLQ      * @param context      * @param messageReference      */
 specifier|public
 name|void
 name|sendToDeadLetterQueue

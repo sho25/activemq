@@ -1900,10 +1900,12 @@ name|QueueMessageReference
 operator|.
 name|NULL_MESSAGE
 operator|&&
-name|node
+name|broker
 operator|.
 name|isExpired
-argument_list|()
+argument_list|(
+name|node
+argument_list|)
 condition|)
 block|{
 name|broker

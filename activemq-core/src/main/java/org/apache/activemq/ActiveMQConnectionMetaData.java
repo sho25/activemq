@@ -341,6 +341,15 @@ argument_list|,
 literal|"1"
 argument_list|)
 expr_stmt|;
+name|jmxProperties
+operator|.
+name|put
+argument_list|(
+literal|"JMSXProducerTXID"
+argument_list|,
+literal|"1"
+argument_list|)
+expr_stmt|;
 return|return
 name|jmxProperties
 operator|.

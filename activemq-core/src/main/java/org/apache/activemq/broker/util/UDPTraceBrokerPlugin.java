@@ -1259,7 +1259,7 @@ return|;
 block|}
 specifier|public
 name|void
-name|processDispatch
+name|postProcessDispatch
 parameter_list|(
 name|MessageDispatch
 name|messageDispatch
@@ -1272,7 +1272,7 @@ argument_list|)
 expr_stmt|;
 name|super
 operator|.
-name|processDispatch
+name|postProcessDispatch
 argument_list|(
 name|messageDispatch
 argument_list|)
