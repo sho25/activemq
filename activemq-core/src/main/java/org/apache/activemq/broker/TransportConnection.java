@@ -5346,6 +5346,11 @@ name|isStopped
 argument_list|()
 condition|)
 block|{
+name|connectionStates
+operator|=
+name|listConnectionStates
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|TransportConnectionState
