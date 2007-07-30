@@ -364,7 +364,9 @@ expr_stmt|;
 comment|// 1 byte
 name|prefetchCount
 operator|=
-literal|10
+name|messageCount
+operator|/
+name|consumerCount
 expr_stmt|;
 name|doMultipleClientsTest
 argument_list|()
