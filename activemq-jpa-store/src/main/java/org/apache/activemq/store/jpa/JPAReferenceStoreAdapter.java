@@ -715,7 +715,7 @@ name|isStoreValid
 parameter_list|()
 block|{
 return|return
-literal|true
+literal|false
 return|;
 block|}
 comment|/**      * @see org.apache.activemq.store.ReferenceStoreAdapter#clearMessages()      */
