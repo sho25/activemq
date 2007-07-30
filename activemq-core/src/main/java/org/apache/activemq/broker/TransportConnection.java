@@ -1987,6 +1987,17 @@ name|response
 init|=
 literal|null
 decl_stmt|;
+if|if
+condition|(
+name|broker
+operator|.
+name|getBrokerService
+argument_list|()
+operator|.
+name|isStarted
+argument_list|()
+condition|)
+block|{
 name|boolean
 name|responseRequired
 init|=
@@ -2130,6 +2141,7 @@ name|context
 operator|=
 literal|null
 expr_stmt|;
+block|}
 block|}
 return|return
 name|response

@@ -236,6 +236,24 @@ parameter_list|)
 throws|throws
 name|InvalidSelectorException
 function_decl|;
+comment|/**      * @return longest time a message is held by a destination      */
+specifier|public
+name|long
+name|getMaxEnqueueTime
+parameter_list|()
+function_decl|;
+comment|/**      * @return shortest time a message is held by a destination      */
+specifier|public
+name|long
+name|getMinEnqueueTime
+parameter_list|()
+function_decl|;
+comment|/**      * @return average time a message is held by a destination      */
+specifier|public
+name|double
+name|getAverageEnqueueTime
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
