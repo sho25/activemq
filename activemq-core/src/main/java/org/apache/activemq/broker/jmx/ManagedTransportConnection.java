@@ -335,9 +335,8 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-specifier|synchronized
 name|void
-name|stop
+name|doStop
 parameter_list|()
 throws|throws
 name|Exception
@@ -381,7 +380,7 @@ expr_stmt|;
 block|}
 name|super
 operator|.
-name|stop
+name|doStop
 argument_list|()
 expr_stmt|;
 block|}
