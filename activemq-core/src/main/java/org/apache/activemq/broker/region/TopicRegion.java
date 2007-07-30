@@ -498,7 +498,7 @@ name|getClientId
 argument_list|()
 decl_stmt|;
 name|String
-name|subcriptionName
+name|subscriptionName
 init|=
 name|info
 operator|.
@@ -513,7 +513,7 @@ name|SubscriptionKey
 argument_list|(
 name|clientId
 argument_list|,
-name|subcriptionName
+name|subscriptionName
 argument_list|)
 decl_stmt|;
 name|DurableTopicSubscription
@@ -554,7 +554,7 @@ name|clientId
 operator|+
 literal|" and subscriptionName: "
 operator|+
-name|subcriptionName
+name|subscriptionName
 argument_list|)
 throw|;
 block|}
@@ -1291,7 +1291,7 @@ name|setSubscriptionName
 argument_list|(
 name|info
 operator|.
-name|getSubcriptionName
+name|getSubscriptionName
 argument_list|()
 argument_list|)
 expr_stmt|;

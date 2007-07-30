@@ -216,7 +216,7 @@ block|{
 return|return
 name|subscriptionInfo
 operator|.
-name|getSubcriptionName
+name|getSubscriptionName
 argument_list|()
 return|;
 block|}
@@ -293,7 +293,7 @@ name|setSubcriptionName
 argument_list|(
 name|subscriptionInfo
 operator|.
-name|getSubcriptionName
+name|getSubscriptionName
 argument_list|()
 argument_list|)
 expr_stmt|;
