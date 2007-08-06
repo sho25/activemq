@@ -215,14 +215,8 @@ specifier|public
 name|void
 name|addSubsciption
 parameter_list|(
-name|String
-name|clientId
-parameter_list|,
-name|String
-name|subscriptionName
-parameter_list|,
-name|String
-name|selector
+name|SubscriptionInfo
+name|subscriptionInfo
 parameter_list|,
 name|boolean
 name|retroactive

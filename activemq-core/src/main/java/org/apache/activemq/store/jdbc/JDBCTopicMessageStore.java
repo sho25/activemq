@@ -819,14 +819,8 @@ specifier|public
 name|void
 name|addSubsciption
 parameter_list|(
-name|String
-name|clientId
-parameter_list|,
-name|String
-name|subscriptionName
-parameter_list|,
-name|String
-name|selector
+name|SubscriptionInfo
+name|subscriptionInfo
 parameter_list|,
 name|boolean
 name|retroactive
@@ -857,13 +851,7 @@ name|doSetSubscriberEntry
 argument_list|(
 name|c
 argument_list|,
-name|destination
-argument_list|,
-name|clientId
-argument_list|,
-name|subscriptionName
-argument_list|,
-name|selector
+name|subscriptionInfo
 argument_list|,
 name|retroactive
 argument_list|)
@@ -891,7 +879,10 @@ name|create
 argument_list|(
 literal|"Failed to lookup subscription for info: "
 operator|+
-name|clientId
+name|subscriptionInfo
+operator|.
+name|getClientId
+argument_list|()
 operator|+
 literal|". Reason: "
 operator|+

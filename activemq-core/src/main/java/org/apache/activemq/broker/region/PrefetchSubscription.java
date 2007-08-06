@@ -2161,6 +2161,15 @@ name|increment
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+if|if
+condition|(
+name|info
+operator|.
+name|isDispatchAsync
+argument_list|()
+condition|)
+block|{
 try|try
 block|{
 name|dispatchMatched

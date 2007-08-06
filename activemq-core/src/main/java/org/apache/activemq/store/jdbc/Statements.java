@@ -319,6 +319,10 @@ name|containerNameDataType
 operator|+
 literal|" NOT NULL"
 operator|+
+literal|", SUB_DEST "
+operator|+
+name|stringIdDataType
+operator|+
 literal|", CLIENT_ID "
 operator|+
 name|stringIdDataType
@@ -635,9 +639,9 @@ operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
-literal|"(CONTAINER, CLIENT_ID, SUB_NAME, SELECTOR, LAST_ACKED_ID) "
+literal|"(CONTAINER, CLIENT_ID, SUB_NAME, SELECTOR, LAST_ACKED_ID, SUB_DEST) "
 operator|+
-literal|"VALUES (?, ?, ?, ?, ?)"
+literal|"VALUES (?, ?, ?, ?, ?, ?)"
 expr_stmt|;
 block|}
 return|return
@@ -658,7 +662,7 @@ condition|)
 block|{
 name|findDurableSubStatement
 operator|=
-literal|"SELECT SELECTOR, SUB_NAME "
+literal|"SELECT SELECTOR, SUB_DEST "
 operator|+
 literal|"FROM "
 operator|+
@@ -686,7 +690,7 @@ condition|)
 block|{
 name|findAllDurableSubsStatement
 operator|=
-literal|"SELECT SELECTOR, SUB_NAME, CLIENT_ID"
+literal|"SELECT SELECTOR, SUB_NAME, CLIENT_ID, SUB_DEST"
 operator|+
 literal|" FROM "
 operator|+

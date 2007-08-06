@@ -174,6 +174,16 @@ argument_list|(
 literal|"SubcriptionName:4"
 argument_list|)
 expr_stmt|;
+name|info
+operator|.
+name|setSubscribedDestination
+argument_list|(
+name|createActiveMQDestination
+argument_list|(
+literal|"SubscribedDestination:5"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @openwire:marshaller code="55"  * @version $Revision: 1.6 $  */
+comment|/**  * Used to represent a durable subscription.  *   * @openwire:marshaller code="55"  * @version $Revision: 1.6 $  */
 end_comment
 
 begin_class
@@ -49,6 +49,10 @@ init|=
 name|CommandTypes
 operator|.
 name|DURABLE_SUBSCRIPTION_INFO
+decl_stmt|;
+specifier|protected
+name|ActiveMQDestination
+name|subscribedDestination
 decl_stmt|;
 specifier|protected
 name|ActiveMQDestination
@@ -100,7 +104,7 @@ operator|=
 name|clientId
 expr_stmt|;
 block|}
-comment|/**      * @openwire:property version=1 cache=true      */
+comment|/**      * This is the a resolved destination that the subscription is receiving messages from.      * This will never be a pattern or a composite destination.      *       * @openwire:property version=1 cache=true      */
 specifier|public
 name|ActiveMQDestination
 name|getDestination
@@ -360,6 +364,43 @@ block|}
 return|return
 name|result
 return|;
+block|}
+comment|/**      * The destination the client originally subscribed to.. This may not match the {@see getDestination} method      * if the subscribed destination uses patterns or composites.      *        *  If the subscribed destinationis not set, this just ruturns the desitination.      *        * @openwire:property version=3      */
+specifier|public
+name|ActiveMQDestination
+name|getSubscribedDestination
+parameter_list|()
+block|{
+if|if
+condition|(
+name|subscribedDestination
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|getDestination
+argument_list|()
+return|;
+block|}
+return|return
+name|subscribedDestination
+return|;
+block|}
+specifier|public
+name|void
+name|setSubscribedDestination
+parameter_list|(
+name|ActiveMQDestination
+name|subscribedDestination
+parameter_list|)
+block|{
+name|this
+operator|.
+name|subscribedDestination
+operator|=
+name|subscribedDestination
+expr_stmt|;
 block|}
 block|}
 end_class

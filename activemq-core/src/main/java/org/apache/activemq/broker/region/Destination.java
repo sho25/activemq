@@ -141,6 +141,34 @@ name|UsageManager
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|MessageStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|TopicMessageStore
+import|;
+end_import
+
 begin_comment
 comment|/**  *   * @version $Revision: 1.12 $  */
 end_comment
@@ -256,6 +284,11 @@ function_decl|;
 specifier|public
 name|String
 name|getName
+parameter_list|()
+function_decl|;
+specifier|public
+name|MessageStore
+name|getMessageStore
 parameter_list|()
 function_decl|;
 block|}

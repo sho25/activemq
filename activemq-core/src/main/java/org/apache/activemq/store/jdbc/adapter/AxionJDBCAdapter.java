@@ -195,6 +195,13 @@ argument_list|()
 operator|+
 literal|" NOT NULL"
 operator|+
+literal|", SUB_DEST "
+operator|+
+name|statements
+operator|.
+name|getContainerNameDataType
+argument_list|()
+operator|+
 literal|", CLIENT_ID "
 operator|+
 name|statements
