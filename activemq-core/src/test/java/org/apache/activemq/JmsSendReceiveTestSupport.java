@@ -597,7 +597,7 @@ if|if
 condition|(
 name|log
 operator|.
-name|isDebugEnabled
+name|isInfoEnabled
 argument_list|()
 condition|)
 block|{
@@ -613,6 +613,9 @@ operator|+
 literal|" = "
 operator|+
 name|message
+operator|.
+name|getText
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

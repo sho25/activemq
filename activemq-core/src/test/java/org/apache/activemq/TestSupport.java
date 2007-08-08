@@ -527,14 +527,6 @@ name|getSubject
 parameter_list|()
 block|{
 return|return
-name|getClass
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"."
-operator|+
 name|getName
 argument_list|()
 return|;

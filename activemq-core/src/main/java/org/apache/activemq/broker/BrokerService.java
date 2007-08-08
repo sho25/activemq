@@ -5566,11 +5566,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|stop
-argument_list|()
-expr_stmt|;
 name|setNext
 argument_list|(
 operator|new
@@ -5591,6 +5586,11 @@ name|Exception
 block|{                     }
 block|}
 argument_list|)
+expr_stmt|;
+name|super
+operator|.
+name|stop
+argument_list|()
 expr_stmt|;
 block|}
 block|}

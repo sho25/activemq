@@ -120,10 +120,7 @@ name|Topic
 operator|)
 name|dest
 argument_list|,
-name|dest
-operator|.
-name|toString
-argument_list|()
+literal|"subName"
 argument_list|)
 return|;
 block|}
@@ -146,11 +143,7 @@ name|result
 operator|.
 name|setClientID
 argument_list|(
-name|getClass
-argument_list|()
-operator|.
-name|getName
-argument_list|()
+literal|"clientId"
 argument_list|)
 expr_stmt|;
 return|return
