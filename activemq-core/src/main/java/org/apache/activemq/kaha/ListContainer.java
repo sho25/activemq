@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a container of persistent objects in the store Acts as a map, but values can be retrieved in insertion  * order  *   * @version $Revision: 1.2 $  */
+comment|/**  * Represents a container of persistent objects in the store Acts as a map, but  * values can be retrieved in insertion order  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_interface
@@ -52,7 +52,7 @@ argument_list|<
 name|V
 argument_list|>
 block|{
-comment|/**      * The container is created or retrieved in an unloaded state. load populates the container will all the indexes      * used etc and should be called before any operations on the container      */
+comment|/**      * The container is created or retrieved in an unloaded state. load      * populates the container will all the indexes used etc and should be      * called before any operations on the container      */
 specifier|public
 name|void
 name|load
@@ -70,7 +70,7 @@ name|boolean
 name|isLoaded
 parameter_list|()
 function_decl|;
-comment|/**      * For homogenous containers can set a custom marshaller for loading values The default uses Object serialization      *       * @param marshaller      */
+comment|/**      * For homogenous containers can set a custom marshaller for loading values      * The default uses Object serialization      *       * @param marshaller      */
 specifier|public
 name|void
 name|setMarshaller
@@ -100,7 +100,7 @@ name|V
 name|o
 parameter_list|)
 function_decl|;
-comment|/**      * Appends the given element to the end of this list. (Identical in function to the<tt>add</tt> method; included      * only for consistency.)      *       * @param o the element to be inserted at the end of this list.      */
+comment|/**      * Appends the given element to the end of this list. (Identical in function      * to the<tt>add</tt> method; included only for consistency.)      *       * @param o the element to be inserted at the end of this list.      */
 specifier|public
 name|void
 name|addLast
@@ -121,7 +121,7 @@ name|V
 name|removeLast
 parameter_list|()
 function_decl|;
-comment|/**      * remove an objecr from the list without retrieving the old value from the store      *       * @param position      * @return true if successful      */
+comment|/**      * remove an objecr from the list without retrieving the old value from the      * store      *       * @param position      * @return true if successful      */
 specifier|public
 name|boolean
 name|doRemove
@@ -139,7 +139,7 @@ name|V
 name|object
 parameter_list|)
 function_decl|;
-comment|/**      * insert an Object in first position int the list but get a StoreEntry of its position      *       * @param object      * @return the location in the Store      */
+comment|/**      * insert an Object in first position int the list but get a StoreEntry of      * its position      *       * @param object      * @return the location in the Store      */
 specifier|public
 name|StoreEntry
 name|placeFirst
@@ -148,7 +148,7 @@ name|V
 name|object
 parameter_list|)
 function_decl|;
-comment|/**      * Advanced feature = must ensure the object written doesn't overwrite other objects in the container      *       * @param entry      * @param object      */
+comment|/**      * Advanced feature = must ensure the object written doesn't overwrite other      * objects in the container      *       * @param entry      * @param object      */
 specifier|public
 name|void
 name|update
@@ -208,7 +208,7 @@ name|StoreEntry
 name|entry
 parameter_list|)
 function_decl|;
-comment|/**      * It's possible that a StoreEntry could be come stale      * this will return an upto date entry for the StoreEntry position      * @param entry old entry      * @return a refreshed StoreEntry      */
+comment|/**      * It's possible that a StoreEntry could be come stale this will return an      * upto date entry for the StoreEntry position      *       * @param entry old entry      * @return a refreshed StoreEntry      */
 specifier|public
 name|StoreEntry
 name|refresh

@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Maintains a simple linked list of CacheEntry objects.  It is thread safe.  *   * @version $Revision$  */
+comment|/**  * Maintains a simple linked list of CacheEntry objects. It is thread safe.  *   * @version $Revision$  */
 end_comment
 
 begin_class

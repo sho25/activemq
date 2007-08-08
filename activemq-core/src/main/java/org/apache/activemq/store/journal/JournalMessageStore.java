@@ -1665,7 +1665,7 @@ name|identity
 argument_list|)
 return|;
 block|}
-comment|/**      * Replays the checkpointStore first as those messages are the oldest ones,      * then messages are replayed from the transaction log and then the cache is      * updated.      *       * @param listener      * @throws Exception       */
+comment|/**      * Replays the checkpointStore first as those messages are the oldest ones,      * then messages are replayed from the transaction log and then the cache is      * updated.      *       * @param listener      * @throws Exception      */
 specifier|public
 name|void
 name|recover
@@ -1846,7 +1846,7 @@ literal|"The journal does not support message references."
 argument_list|)
 throw|;
 block|}
-comment|/**      * @return      * @throws IOException       * @see org.apache.activemq.store.MessageStore#getMessageCount()      */
+comment|/**      * @return      * @throws IOException      * @see org.apache.activemq.store.MessageStore#getMessageCount()      */
 specifier|public
 name|int
 name|getMessageCount

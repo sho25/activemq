@@ -627,6 +627,7 @@ if|if
 condition|(
 name|debug
 condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -640,6 +641,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 name|acknowledge
 argument_list|(
 name|messageId
@@ -656,6 +658,7 @@ if|if
 condition|(
 name|debug
 condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -669,6 +672,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|this
@@ -715,6 +719,7 @@ if|if
 condition|(
 name|debug
 condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -728,6 +733,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|AMQTopicMessageStore
@@ -764,6 +770,7 @@ if|if
 condition|(
 name|debug
 condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -777,6 +784,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|AMQTopicMessageStore

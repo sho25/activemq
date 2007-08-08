@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @author<a href="http://hiramchirino.com">chirino</a>   */
+comment|/**  * @author<a href="http://hiramchirino.com">chirino</a>  */
 end_comment
 
 begin_class

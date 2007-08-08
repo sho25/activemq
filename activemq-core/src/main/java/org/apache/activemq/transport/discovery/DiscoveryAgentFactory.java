@@ -252,21 +252,24 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|//    {
-comment|//        try {
-comment|//            String type = ( uri.getScheme() == null ) ? uri.getPath() : uri.getScheme();
-comment|//            DiscoveryAgent rc = (DiscoveryAgent) discoveryAgentFinder.newInstance(type);
-comment|//            Map options = URISupport.parseParamters(uri);
-comment|//            IntrospectionSupport.setProperties(rc, options);
-comment|//            if( rc.getClass() == SimpleDiscoveryAgent.class ) {
-comment|//                CompositeData data = URISupport.parseComposite(uri);
-comment|//                ((SimpleDiscoveryAgent)rc).setServices(data.getComponents());
-comment|//            }
-comment|//            return rc;
-comment|//        } catch (Throwable e) {
-comment|//            throw IOExceptionSupport.create("Could not create discovery agent: "+uri, e);
-comment|//        }
-comment|//    }
+comment|// {
+comment|// try {
+comment|// String type = ( uri.getScheme() == null ) ? uri.getPath() :
+comment|// uri.getScheme();
+comment|// DiscoveryAgent rc = (DiscoveryAgent)
+comment|// discoveryAgentFinder.newInstance(type);
+comment|// Map options = URISupport.parseParamters(uri);
+comment|// IntrospectionSupport.setProperties(rc, options);
+comment|// if( rc.getClass() == SimpleDiscoveryAgent.class ) {
+comment|// CompositeData data = URISupport.parseComposite(uri);
+comment|// ((SimpleDiscoveryAgent)rc).setServices(data.getComponents());
+comment|// }
+comment|// return rc;
+comment|// } catch (Throwable e) {
+comment|// throw IOExceptionSupport.create("Could not create discovery agent: "+uri,
+comment|// e);
+comment|// }
+comment|// }
 block|}
 end_class
 

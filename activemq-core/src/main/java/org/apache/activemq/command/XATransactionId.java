@@ -103,7 +103,7 @@ decl_stmt|;
 specifier|public
 name|XATransactionId
 parameter_list|()
-block|{             }
+block|{     }
 specifier|public
 name|XATransactionId
 parameter_list|(

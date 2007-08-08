@@ -54,7 +54,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a message store which is used by the persistent   * implementations  *   * @version $Revision: 1.5 $  */
+comment|/**  * Represents a message store which is used by the persistent implementations  *   * @version $Revision: 1.5 $  */
 end_comment
 
 begin_interface
@@ -188,7 +188,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Looks up a message using either the String messageID or the messageNumber. Implementations are encouraged to fill      * in the missing key if its easy to do so.      */
+comment|/**      * Looks up a message using either the String messageID or the      * messageNumber. Implementations are encouraged to fill in the missing key      * if its easy to do so.      */
 specifier|public
 name|ReferenceData
 name|getMessageReference

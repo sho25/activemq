@@ -529,7 +529,7 @@ name|ActiveMQDestination
 operator|.
 name|TOPIC_TYPE
 argument_list|)
-block|,}
+block|}
 argument_list|)
 expr_stmt|;
 name|addCombinationValues
@@ -543,7 +543,7 @@ block|{
 name|Boolean
 operator|.
 name|TRUE
-block|,}
+block|}
 argument_list|)
 expr_stmt|;
 name|addCombinationValues
@@ -609,7 +609,7 @@ name|valueOf
 argument_list|(
 literal|108
 argument_list|)
-block|,}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -631,7 +631,9 @@ name|ActiveMQDestination
 operator|.
 name|TOPIC_TYPE
 condition|)
+block|{
 return|return;
+block|}
 name|connection
 operator|.
 name|setClientID

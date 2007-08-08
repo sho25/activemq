@@ -116,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An optimized writer to do batch appends to a data file.  This object is thread safe   * and gains throughput as you increase the number of concurrent writes it does.  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * An optimized writer to do batch appends to a data file. This object is thread  * safe and gains throughput as you increase the number of concurrent writes it  * does.  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -533,7 +533,7 @@ name|getInflightWrites
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @param type       * @param marshaller      * @param payload      * @param type       * @param sync       * @return      * @throws IOException      * @throws        * @throws        */
+comment|/**      * @param type      * @param marshaller      * @param payload      * @param type      * @param sync      * @return      * @throws IOException      * @throws      * @throws      */
 specifier|public
 name|Location
 name|storeItem
@@ -601,8 +601,10 @@ argument_list|,
 name|sync
 argument_list|)
 decl_stmt|;
-comment|// Locate datafile and enqueue into the executor in sychronized block so that
-comment|// writes get equeued onto the executor in order that they were assigned by
+comment|// Locate datafile and enqueue into the executor in sychronized block so
+comment|// that
+comment|// writes get equeued onto the executor in order that they were assigned
+comment|// by
 comment|// the data manager (which is basically just appending)
 synchronized|synchronized
 init|(
@@ -978,7 +980,7 @@ argument_list|()
 throw|;
 block|}
 block|}
-comment|/**      * The async processing loop that writes to the data files and      * does the force calls.        *       * Since the file sync() call is the slowest of all the operations,       * this algorithm tries to 'batch' or group together several file sync() requests       * into a single file sync() call. The batching is accomplished attaching the       * same CountDownLatch instance to every force request in a group.      *       */
+comment|/**      * The async processing loop that writes to the data files and does the      * force calls.      *       * Since the file sync() call is the slowest of all the operations, this      * algorithm tries to 'batch' or group together several file sync() requests      * into a single file sync() call. The batching is accomplished attaching      * the same CountDownLatch instance to every force request in a group.      *       */
 specifier|protected
 name|void
 name|processQueue
@@ -1407,7 +1409,8 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
-comment|// Now that the data is on disk, remove the writes from the in flight
+comment|// Now that the data is on disk, remove the writes from the in
+comment|// flight
 comment|// cache.
 name|write
 operator|=
@@ -1484,7 +1487,7 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{ 		}
+block|{         }
 finally|finally
 block|{
 try|try
@@ -1510,7 +1513,7 @@ parameter_list|(
 name|IOException
 name|e
 parameter_list|)
-block|{ 			}
+block|{             }
 name|shutdownDone
 operator|.
 name|countDown

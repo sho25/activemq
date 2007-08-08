@@ -122,7 +122,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The StompTransportFilter normally sits on top of a TcpTransport  * that has been configured with the StompWireFormat and is used to  * convert STOMP commands to ActiveMQ commands.  *  * All of the coversion work is done by delegating to the ProtocolConverter.  *  * @author<a href="http://hiramchirino.com">chirino</a>  */
+comment|/**  * The StompTransportFilter normally sits on top of a TcpTransport that has been  * configured with the StompWireFormat and is used to convert STOMP commands to  * ActiveMQ commands. All of the coversion work is done by delegating to the  * ProtocolConverter.  *   * @author<a href="http://hiramchirino.com">chirino</a>  */
 end_comment
 
 begin_class

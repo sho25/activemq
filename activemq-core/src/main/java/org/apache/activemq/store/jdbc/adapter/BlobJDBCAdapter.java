@@ -140,7 +140,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This JDBCAdapter inserts and extracts BLOB data using the   * getBlob()/setBlob() operations.  This is a little more involved  * since to insert a blob you have to:  *   *  1: insert empty blob.  *  2: select the blob   *  3: finally update the blob with data value.   *   * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li></li>   *</ul>  *   * @org.apache.xbean.XBean element="blobJDBCAdapter"  *   * @version $Revision: 1.2 $  */
+comment|/**  * This JDBCAdapter inserts and extracts BLOB data using the getBlob()/setBlob()  * operations. This is a little more involved since to insert a blob you have  * to:  *   * 1: insert empty blob. 2: select the blob 3: finally update the blob with data  * value.  *   * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li></li>  *</ul>  *   * @org.apache.xbean.XBean element="blobJDBCAdapter"  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class
@@ -502,9 +502,11 @@ operator|.
 name|next
 argument_list|()
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|Blob
 name|blob
 init|=
@@ -617,9 +619,9 @@ block|}
 catch|catch
 parameter_list|(
 name|Throwable
-name|e
+name|ignore
 parameter_list|)
-block|{}
+block|{             }
 try|try
 block|{
 name|s
@@ -631,9 +633,9 @@ block|}
 catch|catch
 parameter_list|(
 name|Throwable
-name|e
+name|ignore
 parameter_list|)
-block|{}
+block|{             }
 block|}
 block|}
 block|}

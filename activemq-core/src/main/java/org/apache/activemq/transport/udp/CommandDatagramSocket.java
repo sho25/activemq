@@ -636,17 +636,15 @@ block|}
 comment|// lets remove the header of the partial command
 comment|// which is the byte for the type and an int for the size of
 comment|// the byte[]
+comment|// data type + the command ID + size of the partial data
 name|chunkSize
 operator|-=
 literal|1
-comment|// the data type
 operator|+
 literal|4
-comment|// the command ID
 operator|+
 literal|4
 expr_stmt|;
-comment|// the size of the partial data
 comment|// the boolean flags
 if|if
 condition|(

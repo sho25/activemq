@@ -306,6 +306,7 @@ operator|.
 name|isQueue
 argument_list|()
 condition|)
+block|{
 return|return
 operator|new
 name|ActiveMQTopic
@@ -318,7 +319,9 @@ name|getPhysicalName
 argument_list|()
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 operator|new
 name|ActiveMQTopic
@@ -331,6 +334,7 @@ name|getPhysicalName
 argument_list|()
 argument_list|)
 return|;
+block|}
 block|}
 specifier|public
 specifier|static
@@ -348,6 +352,7 @@ operator|.
 name|isQueue
 argument_list|()
 condition|)
+block|{
 return|return
 operator|new
 name|ActiveMQTopic
@@ -360,7 +365,9 @@ name|getPhysicalName
 argument_list|()
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 operator|new
 name|ActiveMQTopic
@@ -373,6 +380,7 @@ name|getPhysicalName
 argument_list|()
 argument_list|)
 return|;
+block|}
 block|}
 specifier|public
 specifier|static

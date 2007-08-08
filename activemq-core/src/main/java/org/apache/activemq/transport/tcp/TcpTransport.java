@@ -294,7 +294,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the {@link Transport} interface using raw tcp/ip  *  * @version $Revision$  */
+comment|/**  * An implementation of the {@link Transport} interface using raw tcp/ip  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -425,7 +425,7 @@ specifier|private
 name|Boolean
 name|tcpNoDelay
 decl_stmt|;
-comment|/**      * Connect to a remote Node - e.g. a Broker      *      * @param wireFormat      * @param socketFactory      * @param remoteLocation      * @param localLocation  -      *                       e.g. local InetAddress and local port      * @throws IOException      * @throws UnknownHostException      */
+comment|/**      * Connect to a remote Node - e.g. a Broker      *       * @param wireFormat      * @param socketFactory      * @param remoteLocation      * @param localLocation - e.g. local InetAddress and local port      * @throws IOException      * @throws UnknownHostException      */
 specifier|public
 name|TcpTransport
 parameter_list|(
@@ -501,7 +501,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Initialize from a server Socket      *      * @param wireFormat      * @param socket      * @throws IOException      */
+comment|/**      * Initialize from a server Socket      *       * @param wireFormat      * @param socket      * @throws IOException      */
 specifier|public
 name|TcpTransport
 parameter_list|(
@@ -680,13 +680,13 @@ parameter_list|(
 name|SocketTimeoutException
 name|e
 parameter_list|)
-block|{ 		}
+block|{         }
 catch|catch
 parameter_list|(
 name|InterruptedIOException
 name|e
 parameter_list|)
-block|{ 		}
+block|{         }
 block|}
 specifier|protected
 name|Object
@@ -984,7 +984,7 @@ return|return
 name|host
 return|;
 block|}
-comment|/**      * Configures the socket for use      *      * @param sock      * @throws SocketException      */
+comment|/**      * Configures the socket for use      *       * @param sock      * @throws SocketException      */
 specifier|protected
 name|void
 name|initialiseSocket

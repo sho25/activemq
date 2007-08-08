@@ -82,7 +82,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version $Revision: 1.5 $  */
+comment|/**  * @version $Revision: 1.5 $  */
 end_comment
 
 begin_interface
@@ -98,7 +98,7 @@ name|Connector
 name|getConnector
 parameter_list|()
 function_decl|;
-comment|/**      * Sends a message to the client.      *       * @param message      *            the message to send to the client.      */
+comment|/**      * Sends a message to the client.      *       * @param message the message to send to the client.      */
 specifier|public
 name|void
 name|dispatchSync

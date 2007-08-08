@@ -212,7 +212,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An<CODE>ObjectMessage</CODE> object is used to send a message that contains a serializable object in the Java  * programming language ("Java object"). It inherits from the<CODE>Message</CODE> interface and adds a body containing  * a single reference to an object. Only<CODE>Serializable</CODE> Java objects can be used.  *<p/>  *<P>If a collection of Java objects must be sent, one of the<CODE>Collection</CODE> classes provided since JDK 1.2  * can be used.  *<p/>  *<P>When a client receives an<CODE>ObjectMessage</CODE>, it is in read-only mode. If a client attempts to write to  * the message at this point, a<CODE>MessageNotWriteableException</CODE> is thrown. If<CODE>clearBody</CODE> is  * called, the message can now be both read from and written to.  *  * @openwire:marshaller code="26"  * @see javax.jms.Session#createObjectMessage()  * @see javax.jms.Session#createObjectMessage(Serializable)  * @see javax.jms.BytesMessage  * @see javax.jms.MapMessage  * @see javax.jms.Message  * @see javax.jms.StreamMessage  * @see javax.jms.TextMessage  */
+comment|/**  * An<CODE>ObjectMessage</CODE> object is used to send a message that  * contains a serializable object in the Java programming language ("Java  * object"). It inherits from the<CODE>Message</CODE> interface and adds a  * body containing a single reference to an object. Only  *<CODE>Serializable</CODE> Java objects can be used.<p/>  *<P>  * If a collection of Java objects must be sent, one of the  *<CODE>Collection</CODE> classes provided since JDK 1.2 can be used.<p/>  *<P>  * When a client receives an<CODE>ObjectMessage</CODE>, it is in read-only  * mode. If a client attempts to write to the message at this point, a  *<CODE>MessageNotWriteableException</CODE> is thrown. If  *<CODE>clearBody</CODE> is called, the message can now be both read from and  * written to.  *   * @openwire:marshaller code="26"  * @see javax.jms.Session#createObjectMessage()  * @see javax.jms.Session#createObjectMessage(Serializable)  * @see javax.jms.BytesMessage  * @see javax.jms.MapMessage  * @see javax.jms.Message  * @see javax.jms.StreamMessage  * @see javax.jms.TextMessage  */
 end_comment
 
 begin_class
@@ -236,7 +236,9 @@ operator|.
 name|getClassLoader
 argument_list|()
 decl_stmt|;
-comment|//TODO verify classloader
+comment|// TODO
+comment|// verify
+comment|// classloader
 specifier|public
 specifier|static
 specifier|final
@@ -453,7 +455,7 @@ return|return
 literal|"jms/object-message"
 return|;
 block|}
-comment|/**      * Clears out the message body. Clearing a message's body does not clear its header values or property entries.      *<p/>      *<P>If this message body was read-only, calling this method leaves the message body in the same state as an empty      * body in a newly created message.      *      * @throws JMSException if the JMS provider fails to clear the message body due to some internal error.      */
+comment|/**      * Clears out the message body. Clearing a message's body does not clear its      * header values or property entries.<p/>      *<P>      * If this message body was read-only, calling this method leaves the      * message body in the same state as an empty body in a newly created      * message.      *       * @throws JMSException if the JMS provider fails to clear the message body      *                 due to some internal error.      */
 specifier|public
 name|void
 name|clearBody
@@ -473,7 +475,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/**      * Sets the serializable object containing this message's data. It is important to note that an      *<CODE>ObjectMessage</CODE> contains a snapshot of the object at the time<CODE>setObject()</CODE> is called;      * subsequent modifications of the object will have no effect on the<CODE>ObjectMessage</CODE> body.      *      * @param newObject the message's data      * @throws JMSException if the JMS provider fails to set the object due to some internal error.      * @throws javax.jms.MessageFormatException      *                      if object serialization fails.      * @throws javax.jms.MessageNotWriteableException      *                      if the message is in read-only mode.      */
+comment|/**      * Sets the serializable object containing this message's data. It is      * important to note that an<CODE>ObjectMessage</CODE> contains a      * snapshot of the object at the time<CODE>setObject()</CODE> is called;      * subsequent modifications of the object will have no effect on the      *<CODE>ObjectMessage</CODE> body.      *       * @param newObject the message's data      * @throws JMSException if the JMS provider fails to set the object due to      *                 some internal error.      * @throws javax.jms.MessageFormatException if object serialization fails.      * @throws javax.jms.MessageNotWriteableException if the message is in      *                 read-only mode.      */
 specifier|public
 name|void
 name|setObject
@@ -522,7 +524,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Gets the serializable object containing this message's data. The default value is null.      *      * @return the serializable object containing this message's data      * @throws JMSException      */
+comment|/**      * Gets the serializable object containing this message's data. The default      * value is null.      *       * @return the serializable object containing this message's data      * @throws JMSException      */
 specifier|public
 name|Serializable
 name|getObject
@@ -664,7 +666,8 @@ operator|.
 name|onMessageRolledBack
 argument_list|()
 expr_stmt|;
-comment|// lets force the object to be deserialized again - as we could have changed the object
+comment|// lets force the object to be deserialized again - as we could have
+comment|// changed the object
 name|object
 operator|=
 literal|null

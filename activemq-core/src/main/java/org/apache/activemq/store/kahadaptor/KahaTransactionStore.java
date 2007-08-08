@@ -238,7 +238,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides a TransactionStore implementation that can create transaction aware MessageStore objects from non  * transaction aware MessageStore objects.  *   * @version $Revision: 1.4 $  */
+comment|/**  * Provides a TransactionStore implementation that can create transaction aware  * MessageStore objects from non transaction aware MessageStore objects.  *   * @version $Revision: 1.4 $  */
 end_comment
 
 begin_class
@@ -555,14 +555,14 @@ name|start
 parameter_list|()
 throws|throws
 name|Exception
-block|{}
+block|{     }
 specifier|public
 name|void
 name|stop
 parameter_list|()
 throws|throws
 name|Exception
-block|{}
+block|{     }
 specifier|synchronized
 specifier|public
 name|void

@@ -352,7 +352,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Previously logged in users may no longer have the same access anymore.  Refresh      * all the logged into users.       */
+comment|/**      * Previously logged in users may no longer have the same access anymore.      * Refresh all the logged into users.      */
 specifier|public
 name|void
 name|refresh

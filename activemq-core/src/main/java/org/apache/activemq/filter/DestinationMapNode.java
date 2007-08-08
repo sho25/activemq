@@ -153,7 +153,7 @@ name|path
 init|=
 literal|"Root"
 decl_stmt|;
-comment|//    private DestinationMapNode anyChild;
+comment|// private DestinationMapNode anyChild;
 specifier|private
 name|int
 name|pathLength
@@ -296,12 +296,12 @@ name|answer
 return|;
 block|}
 comment|/**      * Returns the node which represents all children (i.e. the * node)      */
-comment|//    public DestinationMapNode getAnyChildNode() {
-comment|//        if (anyChild == null) {
-comment|//            anyChild = createChildNode();
-comment|//        }
-comment|//        return anyChild;
-comment|//    }
+comment|// public DestinationMapNode getAnyChildNode() {
+comment|// if (anyChild == null) {
+comment|// anyChild = createChildNode();
+comment|// }
+comment|// return anyChild;
+comment|// }
 comment|/**      * Returns a mutable List of the values available at this node in the tree      */
 specifier|public
 name|List
@@ -327,7 +327,7 @@ argument_list|(
 name|values
 argument_list|)
 decl_stmt|;
-comment|//    	parent.getAnyChildNode().getValues().removeAll(v);
+comment|// parent.getAnyChildNode().getValues().removeAll(v);
 name|values
 operator|.
 name|clear
@@ -369,9 +369,9 @@ name|Set
 name|answer
 parameter_list|)
 block|{
-comment|//        if (anyChild != null) {
-comment|//            anyChild.removeDesendentValues(answer);
-comment|//        }
+comment|// if (anyChild != null) {
+comment|// anyChild.removeDesendentValues(answer);
+comment|// }
 name|answer
 operator|.
 name|addAll
@@ -437,12 +437,12 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|//            if (idx == paths.length - 1) {
-comment|//                getAnyChildNode().getValues().add(value);
-comment|//            }
-comment|//            else {
-comment|//                getAnyChildNode().add(paths, idx + 1, value);
-comment|//            }
+comment|// if (idx == paths.length - 1) {
+comment|// getAnyChildNode().getValues().add(value);
+comment|// }
+comment|// else {
+comment|// getAnyChildNode().add(paths, idx + 1, value);
+comment|// }
 name|getChildOrCreate
 argument_list|(
 name|paths
@@ -501,12 +501,12 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|//            if (idx == paths.length - 1) {
-comment|//                getAnyChildNode().getValues().remove(value);
-comment|//            }
-comment|//            else {
-comment|//                getAnyChildNode().remove(paths, idx + 1, value);
-comment|//            }
+comment|// if (idx == paths.length - 1) {
+comment|// getAnyChildNode().getValues().remove(value);
+comment|// }
+comment|// else {
+comment|// getAnyChildNode().remove(paths, idx + 1, value);
+comment|// }
 name|getChildOrCreate
 argument_list|(
 name|paths
@@ -623,7 +623,7 @@ name|ANY_CHILD
 argument_list|)
 condition|)
 block|{
-comment|//node = node.getAnyChildNode();
+comment|// node = node.getAnyChildNode();
 name|node
 operator|=
 operator|new
@@ -720,9 +720,9 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TODO???
-comment|//        if (anyChild != null) {
-comment|//            anyChild.appendDescendantValues(answer);
-comment|//        }
+comment|// if (anyChild != null) {
+comment|// anyChild.appendDescendantValues(answer);
+comment|// }
 block|}
 comment|/**      * Factory method to create a child node      */
 specifier|protected

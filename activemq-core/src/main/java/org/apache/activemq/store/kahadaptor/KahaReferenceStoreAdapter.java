@@ -712,7 +712,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-comment|//need to set the Marshallers here
+comment|// need to set the Marshallers here
 name|preparedTransactions
 operator|.
 name|setKeyMarshaller
@@ -866,9 +866,9 @@ argument_list|,
 name|rc
 argument_list|)
 expr_stmt|;
-comment|//            if(transactionStore!=null){
-comment|//                rc=transactionStore.proxy(rc);
-comment|//            }
+comment|// if(transactionStore!=null){
+comment|// rc=transactionStore.proxy(rc);
+comment|// }
 name|queues
 operator|.
 name|put
@@ -995,9 +995,9 @@ argument_list|,
 name|rc
 argument_list|)
 expr_stmt|;
-comment|//            if(transactionStore!=null){
-comment|//                rc=transactionStore.proxy(rc);
-comment|//            }
+comment|// if(transactionStore!=null){
+comment|// rc=transactionStore.proxy(rc);
+comment|// }
 name|topics
 operator|.
 name|put
@@ -1293,7 +1293,7 @@ name|keySet
 argument_list|()
 return|;
 block|}
-comment|/**      *       * @throws IOException       * @see org.apache.activemq.store.ReferenceStoreAdapter#clearMessages()      */
+comment|/**      *       * @throws IOException      * @see org.apache.activemq.store.ReferenceStoreAdapter#clearMessages()      */
 specifier|public
 name|void
 name|clearMessages
@@ -1305,7 +1305,7 @@ name|deleteAllMessages
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      *       * @throws IOException       * @see org.apache.activemq.store.ReferenceStoreAdapter#recoverState()      */
+comment|/**      *       * @throws IOException      * @see org.apache.activemq.store.ReferenceStoreAdapter#recoverState()      */
 specifier|public
 name|void
 name|recoverState

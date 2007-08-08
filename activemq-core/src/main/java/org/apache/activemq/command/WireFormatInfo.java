@@ -389,7 +389,7 @@ operator|=
 name|from
 expr_stmt|;
 block|}
-comment|/**      * The endpoint within the transport where this message is going to - null means all endpoints.      */
+comment|/**      * The endpoint within the transport where this message is going to - null      * means all endpoints.      */
 specifier|public
 name|Endpoint
 name|getTo
@@ -414,11 +414,11 @@ operator|=
 name|to
 expr_stmt|;
 block|}
-comment|//////////////////////
+comment|// ////////////////////
 comment|//
 comment|// Implementation Methods.
 comment|//
-comment|//////////////////////
+comment|// ////////////////////
 specifier|public
 name|Object
 name|getProperty
@@ -736,7 +736,7 @@ name|boolean
 name|responseRequired
 parameter_list|)
 block|{     }
-comment|/**      * @throws IOException       */
+comment|/**      * @throws IOException      */
 specifier|public
 name|boolean
 name|isCacheEnabled
@@ -781,7 +781,7 @@ name|FALSE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @throws IOException       */
+comment|/**      * @throws IOException      */
 specifier|public
 name|boolean
 name|isStackTraceEnabled
@@ -826,7 +826,7 @@ name|FALSE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @throws IOException       */
+comment|/**      * @throws IOException      */
 specifier|public
 name|boolean
 name|isTcpNoDelayEnabled
@@ -871,7 +871,7 @@ name|FALSE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @throws IOException       */
+comment|/**      * @throws IOException      */
 specifier|public
 name|boolean
 name|isSizePrefixDisabled
@@ -916,7 +916,7 @@ name|FALSE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @throws IOException       */
+comment|/**      * @throws IOException      */
 specifier|public
 name|boolean
 name|isTightEncodingEnabled
@@ -961,7 +961,7 @@ name|FALSE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @throws IOException       */
+comment|/**      * @throws IOException      */
 specifier|public
 name|long
 name|getMaxInactivityDuration
@@ -1015,7 +1015,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @throws IOException       */
+comment|/**      * @throws IOException      */
 specifier|public
 name|int
 name|getCacheSize
@@ -1111,7 +1111,7 @@ parameter_list|(
 name|IOException
 name|e
 parameter_list|)
-block|{ 		}
+block|{         }
 return|return
 literal|"WireFormatInfo { version="
 operator|+
@@ -1214,11 +1214,11 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|///////////////////////////////////////////////////////////////
+comment|// /////////////////////////////////////////////////////////////
 comment|//
 comment|// This are not implemented.
 comment|//
-comment|///////////////////////////////////////////////////////////////
+comment|// /////////////////////////////////////////////////////////////
 specifier|public
 name|void
 name|setCommandId

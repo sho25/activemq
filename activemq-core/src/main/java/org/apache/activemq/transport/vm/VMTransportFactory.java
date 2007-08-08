@@ -525,7 +525,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// If using the less complex vm://localhost?broker.persistent=true form
+comment|// If using the less complex vm://localhost?broker.persistent=true
+comment|// form
 try|try
 block|{
 name|host
@@ -699,7 +700,8 @@ init|=
 literal|null
 decl_stmt|;
 comment|// Synchronize on the registry so that multiple concurrent threads
-comment|// doing this do not think that the broker has not been created and cause multiple
+comment|// doing this do not think that the broker has not been created and
+comment|// cause multiple
 comment|// brokers to be started.
 synchronized|synchronized
 init|(

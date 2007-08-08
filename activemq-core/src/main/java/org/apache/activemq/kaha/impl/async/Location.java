@@ -141,7 +141,7 @@ decl_stmt|;
 specifier|public
 name|Location
 parameter_list|()
-block|{}
+block|{     }
 name|Location
 parameter_list|(
 name|Location

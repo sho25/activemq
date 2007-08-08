@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  *  * @version $Revision: 1.1 $  */
+comment|/**  * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
@@ -153,7 +153,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * shut down the task      * @param timeout       * @throws InterruptedException       */
+comment|/**      * shut down the task      *       * @param timeout      * @throws InterruptedException      */
 specifier|public
 name|void
 name|shutdown
@@ -207,7 +207,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * shut down the task      * @throws InterruptedException       */
+comment|/**      * shut down the task      *       * @throws InterruptedException      */
 specifier|public
 name|void
 name|shutdown

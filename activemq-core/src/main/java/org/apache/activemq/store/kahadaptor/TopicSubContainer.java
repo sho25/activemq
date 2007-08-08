@@ -70,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Holds information for the subscriber  *  * @version $Revision: 1.10 $  */
+comment|/**  * Holds information for the subscriber  *   * @version $Revision: 1.10 $  */
 end_comment
 
 begin_class
@@ -114,7 +114,7 @@ operator|.
 name|batchEntry
 return|;
 block|}
-comment|/**      * @param id       * @param batchEntry the batchEntry to set      */
+comment|/**      * @param id      * @param batchEntry the batchEntry to set      */
 specifier|public
 name|void
 name|setBatchEntry

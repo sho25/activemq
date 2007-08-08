@@ -106,7 +106,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Optimized Store reader and updater.  Single threaded and synchronous.  Use in conjunction   * with the DataFileAccessorPool of concurrent use.  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Optimized Store reader and updater. Single threaded and synchronous. Use in  * conjunction with the DataFileAccessorPool of concurrent use.  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -138,7 +138,7 @@ specifier|private
 name|boolean
 name|disposed
 decl_stmt|;
-comment|/**      * Construct a Store reader      *       * @param fileId      * @throws IOException       */
+comment|/**      * Construct a Store reader      *       * @param fileId      * @throws IOException      */
 specifier|public
 name|DataFileAccessor
 parameter_list|(

@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marshall an AtomicInteger  * @version $Revision: 1.10 $  */
+comment|/**  * Marshall an AtomicInteger  *   * @version $Revision: 1.10 $  */
 end_comment
 
 begin_class

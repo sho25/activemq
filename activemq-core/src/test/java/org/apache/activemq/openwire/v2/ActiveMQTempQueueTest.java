@@ -19,50 +19,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|DataInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|DataOutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|openwire
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -71,12 +27,12 @@ name|activemq
 operator|.
 name|command
 operator|.
-name|*
+name|ActiveMQTempQueue
 import|;
 end_import
 
 begin_comment
-comment|/**  * Test case for the OpenWire marshalling for ActiveMQTempQueue  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  * @version $Revision: $  */
+comment|/**  * Test case for the OpenWire marshalling for ActiveMQTempQueue  *   *   * NOTE!: This file is auto generated - do not modify! if you need to make a  * change, please see the modify the groovy scripts in the under src/gram/script  * and then use maven openwire:generate to regenerate this file.  *   * @version $Revision: $  */
 end_comment
 
 begin_class

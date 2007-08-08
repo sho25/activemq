@@ -234,7 +234,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link DiscoveryAgent} using<a href="http://www.zeroconf.org/">Zeroconf</a>  * via the<a href="http://jmdns.sf.net/">jmDNS</a> library  *  * @version $Revision$  */
+comment|/**  * A {@link DiscoveryAgent} using<a href="http://www.zeroconf.org/">Zeroconf</a>  * via the<a href="http://jmdns.sf.net/">jmDNS</a> library  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -313,7 +313,7 @@ name|CopyOnWriteArrayList
 argument_list|()
 decl_stmt|;
 comment|// DiscoveryAgent interface
-comment|//-------------------------------------------------------------------------
+comment|// -------------------------------------------------------------------------
 specifier|public
 name|void
 name|start
@@ -553,7 +553,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// ServiceListener interface
-comment|//-------------------------------------------------------------------------
+comment|// -------------------------------------------------------------------------
 specifier|public
 name|void
 name|addService
@@ -901,7 +901,7 @@ name|localhost
 expr_stmt|;
 block|}
 comment|// Implementation methods
-comment|//-------------------------------------------------------------------------
+comment|// -------------------------------------------------------------------------
 specifier|protected
 name|ServiceInfo
 name|createServiceInfo

@@ -1489,7 +1489,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Creates a URI from the original URI and the remaining paramaters      * @throws URISyntaxException       */
+comment|/**      * Creates a URI from the original URI and the remaining paramaters      *       * @throws URISyntaxException      */
 specifier|public
 specifier|static
 name|URI

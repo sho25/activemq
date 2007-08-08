@@ -192,7 +192,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link org.apache.activemq.store.MessageStore} which uses a  *   * @version $Revision: 1.7 $  */
+comment|/**  * An implementation of {@link org.apache.activemq.store.MessageStore} which  * uses a  *   * @version $Revision: 1.7 $  */
 end_comment
 
 begin_class
@@ -294,12 +294,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//    public void addMessageReference(ConnectionContext context,MessageId messageId,long expirationTime,String messageRef)
-comment|//            throws IOException{
-comment|//        synchronized(messageTable){
-comment|//            messageTable.put(messageId,messageRef);
-comment|//        }
-comment|//    }
+comment|// public void addMessageReference(ConnectionContext context,MessageId
+comment|// messageId,long expirationTime,String messageRef)
+comment|// throws IOException{
+comment|// synchronized(messageTable){
+comment|// messageTable.put(messageId,messageRef);
+comment|// }
+comment|// }
 specifier|public
 name|Message
 name|getMessage
@@ -322,9 +323,9 @@ name|identity
 argument_list|)
 return|;
 block|}
-comment|//    public String getMessageReference(MessageId identity) throws IOException{
-comment|//        return (String)messageTable.get(identity);
-comment|//    }
+comment|// public String getMessageReference(MessageId identity) throws IOException{
+comment|// return (String)messageTable.get(identity);
+comment|// }
 specifier|public
 name|void
 name|removeMessage
@@ -407,7 +408,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// the message table is a synchronizedMap - so just have to synchronize here
+comment|// the message table is a synchronizedMap - so just have to synchronize
+comment|// here
 synchronized|synchronized
 init|(
 name|messageTable
@@ -541,7 +543,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @param usageManager The UsageManager that is controlling the destination's memory usage.      */
+comment|/**      * @param usageManager The UsageManager that is controlling the      *                destination's memory usage.      */
 specifier|public
 name|void
 name|setUsageManager

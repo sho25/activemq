@@ -434,7 +434,7 @@ parameter_list|(
 name|Throwable
 name|e
 parameter_list|)
-block|{ }
+block|{             }
 block|}
 block|}
 specifier|public
@@ -452,7 +452,7 @@ condition|)
 block|{
 try|try
 block|{
-comment|/**                  * we are not in a transaction so should not be committing ??                  * This was previously commented out - but had                  * adverse affects on testing - so it's back!                  *                   */
+comment|/**                  * we are not in a transaction so should not be committing ??                  * This was previously commented out - but had adverse affects                  * on testing - so it's back!                  *                   */
 try|try
 block|{
 name|executeBatch

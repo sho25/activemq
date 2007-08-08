@@ -94,7 +94,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marshall a TopicSubAck  * @version $Revision: 1.10 $  */
+comment|/**  * Marshall a TopicSubAck  *   * @version $Revision: 1.10 $  */
 end_comment
 
 begin_class
@@ -104,7 +104,7 @@ name|ConsumerMessageRefMarshaller
 implements|implements
 name|Marshaller
 block|{
-comment|/**      * @param object      * @param dataOut      * @throws IOException      * @see org.apache.activemq.kaha.Marshaller#writePayload(java.lang.Object, java.io.DataOutput)      */
+comment|/**      * @param object      * @param dataOut      * @throws IOException      * @see org.apache.activemq.kaha.Marshaller#writePayload(java.lang.Object,      *      java.io.DataOutput)      */
 specifier|public
 name|void
 name|writePayload

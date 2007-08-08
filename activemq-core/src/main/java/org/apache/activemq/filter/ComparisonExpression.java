@@ -702,7 +702,8 @@ name|Boolean
 operator|.
 name|FALSE
 return|;
-comment|//throw new RuntimeException("LIKE can only operate on String identifiers.  LIKE attemped on: '" + rv.getClass());
+comment|// throw new RuntimeException("LIKE can only operate on String
+comment|// identifiers. LIKE attemped on: '" + rv.getClass());
 block|}
 return|return
 name|likePattern
@@ -1449,7 +1450,7 @@ block|}
 block|}
 return|;
 block|}
-comment|/**      * Only Numeric expressions can be used in>,>=,< or<= expressions.s       *  	 * @param expr 	 */
+comment|/**      * Only Numeric expressions can be used in>,>=,< or<= expressions.s      *       * @param expr      */
 specifier|public
 specifier|static
 name|void
@@ -1519,7 +1520,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Validates that the expression can be used in == or<> expression.        * Cannot not be NULL TRUE or FALSE litterals.      *  	 * @param expr 	 */
+comment|/**      * Validates that the expression can be used in == or<> expression. Cannot      * not be NULL TRUE or FALSE litterals.      *       * @param expr      */
 specifier|public
 specifier|static
 name|void
@@ -1568,7 +1569,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/** 	 *  	 * @param left 	 * @param right 	 */
+comment|/**      *       * @param left      * @param right      */
 specifier|private
 specifier|static
 name|void

@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *Represents a container of persistent objects in the store  *Acts as a map, but values can be retrieved in insertion order  *   * @version $Revision: 1.2 $  */
+comment|/**  * Represents a container of persistent objects in the store Acts as a map, but  * values can be retrieved in insertion order  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_interface
@@ -66,13 +66,13 @@ argument_list|,
 name|V
 argument_list|>
 block|{
-comment|/**      * The container is created or retrieved in       * an unloaded state.      * load populates the container will all the indexes used etc      * and should be called before any operations on the container      */
+comment|/**      * The container is created or retrieved in an unloaded state. load      * populates the container will all the indexes used etc and should be      * called before any operations on the container      */
 specifier|public
 name|void
 name|load
 parameter_list|()
 function_decl|;
-comment|/**      * unload indexes from the container      *      */
+comment|/**      * unload indexes from the container      *       */
 specifier|public
 name|void
 name|unload
@@ -84,7 +84,7 @@ name|boolean
 name|isLoaded
 parameter_list|()
 function_decl|;
-comment|/**      * For homogenous containers can set a custom marshaller for loading keys      * The default uses Object serialization      * @param keyMarshaller      */
+comment|/**      * For homogenous containers can set a custom marshaller for loading keys      * The default uses Object serialization      *       * @param keyMarshaller      */
 specifier|public
 name|void
 name|setKeyMarshaller
@@ -96,7 +96,7 @@ argument_list|>
 name|keyMarshaller
 parameter_list|)
 function_decl|;
-comment|/**      * For homogenous containers can set a custom marshaller for loading values      * The default uses Object serialization      * @param valueMarshaller           */
+comment|/**      * For homogenous containers can set a custom marshaller for loading values      * The default uses Object serialization      *       * @param valueMarshaller      *       */
 specifier|public
 name|void
 name|setValueMarshaller
@@ -126,7 +126,7 @@ name|boolean
 name|isEmpty
 parameter_list|()
 function_decl|;
-comment|/**      * @param key       * @return true if the container contains the key      */
+comment|/**      * @param key      * @return true if the container contains the key      */
 specifier|public
 name|boolean
 name|containsKey
@@ -135,7 +135,7 @@ name|K
 name|key
 parameter_list|)
 function_decl|;
-comment|/**      * Get the value associated with the key      * @param key       * @return the value associated with the key from the store      */
+comment|/**      * Get the value associated with the key      *       * @param key      * @return the value associated with the key from the store      */
 specifier|public
 name|V
 name|get
@@ -144,7 +144,7 @@ name|K
 name|key
 parameter_list|)
 function_decl|;
-comment|/**      * @param o       * @return true if the MapContainer contains the value o      */
+comment|/**      * @param o      * @return true if the MapContainer contains the value o      */
 specifier|public
 name|boolean
 name|containsValue
@@ -153,7 +153,7 @@ name|K
 name|o
 parameter_list|)
 function_decl|;
-comment|/**      * Add add entries in the supplied Map      * @param map      */
+comment|/**      * Add add entries in the supplied Map      *       * @param map      */
 specifier|public
 name|void
 name|putAll
@@ -176,7 +176,7 @@ argument_list|>
 name|keySet
 parameter_list|()
 function_decl|;
-comment|/**      * @return a collection of all the values - the values will be lazily pulled out of the      * store if iterated etc.      */
+comment|/**      * @return a collection of all the values - the values will be lazily pulled      *         out of the store if iterated etc.      */
 specifier|public
 name|Collection
 argument_list|<
@@ -185,7 +185,7 @@ argument_list|>
 name|values
 parameter_list|()
 function_decl|;
-comment|/**      * @return a Set of all the Map.Entry instances - the values will be lazily pulled out of the      * store if iterated etc.      */
+comment|/**      * @return a Set of all the Map.Entry instances - the values will be lazily      *         pulled out of the store if iterated etc.      */
 specifier|public
 name|Set
 argument_list|<
@@ -201,7 +201,7 @@ argument_list|>
 name|entrySet
 parameter_list|()
 function_decl|;
-comment|/**      * Add an entry      * @param key      * @param value      * @return the old value for the key      */
+comment|/**      * Add an entry      *       * @param key      * @param value      * @return the old value for the key      */
 specifier|public
 name|V
 name|put
@@ -213,7 +213,7 @@ name|V
 name|value
 parameter_list|)
 function_decl|;
-comment|/**      * remove an entry associated with the key      * @param key       * @return the old value assocaited with the key or null      */
+comment|/**      * remove an entry associated with the key      *       * @param key      * @return the old value assocaited with the key or null      */
 specifier|public
 name|V
 name|remove
@@ -228,7 +228,7 @@ name|void
 name|clear
 parameter_list|()
 function_decl|;
-comment|/**      * Add an entry to the Store Map      * @param key      * @param Value      * @return the StoreEntry associated with the entry      */
+comment|/**      * Add an entry to the Store Map      *       * @param key      * @param Value      * @return the StoreEntry associated with the entry      */
 specifier|public
 name|StoreEntry
 name|place
@@ -240,7 +240,7 @@ name|V
 name|Value
 parameter_list|)
 function_decl|;
-comment|/**      * Remove an Entry from ther Map      * @param entry      */
+comment|/**      * Remove an Entry from ther Map      *       * @param entry      */
 specifier|public
 name|void
 name|remove
@@ -249,7 +249,7 @@ name|StoreEntry
 name|entry
 parameter_list|)
 function_decl|;
-comment|/**      * Get the Key object from it's location      * @param keyLocation      * @return the key for the entry      */
+comment|/**      * Get the Key object from it's location      *       * @param keyLocation      * @return the key for the entry      */
 specifier|public
 name|K
 name|getKey
@@ -258,7 +258,7 @@ name|StoreEntry
 name|keyLocation
 parameter_list|)
 function_decl|;
-comment|/**      * Get the value from it's location      * @param Valuelocation      * @return the Object      */
+comment|/**      * Get the value from it's location      *       * @param Valuelocation      * @return the Object      */
 specifier|public
 name|V
 name|getValue
@@ -267,19 +267,19 @@ name|StoreEntry
 name|Valuelocation
 parameter_list|)
 function_decl|;
-comment|/** Get the StoreEntry for the first value in the Map     *      * @return the first StoreEntry or null if the map is empty     */
+comment|/**      * Get the StoreEntry for the first value in the Map      *       * @return the first StoreEntry or null if the map is empty      */
 specifier|public
 name|StoreEntry
 name|getFirst
 parameter_list|()
 function_decl|;
-comment|/**     * Get the StoreEntry for the last value item of the Map     *      * @return the last StoreEntry or null if the list is empty     */
+comment|/**      * Get the StoreEntry for the last value item of the Map      *       * @return the last StoreEntry or null if the list is empty      */
 specifier|public
 name|StoreEntry
 name|getLast
 parameter_list|()
 function_decl|;
-comment|/**     * Get the next StoreEntry value from the map     *      * @param entry     * @return the next StoreEntry or null     */
+comment|/**      * Get the next StoreEntry value from the map      *       * @param entry      * @return the next StoreEntry or null      */
 specifier|public
 name|StoreEntry
 name|getNext
@@ -288,7 +288,7 @@ name|StoreEntry
 name|entry
 parameter_list|)
 function_decl|;
-comment|/**     * Get the previous StoreEntry from the map     *      * @param entry     * @return the previous store entry or null     */
+comment|/**      * Get the previous StoreEntry from the map      *       * @param entry      * @return the previous store entry or null      */
 specifier|public
 name|StoreEntry
 name|getPrevious
@@ -297,7 +297,7 @@ name|StoreEntry
 name|entry
 parameter_list|)
 function_decl|;
-comment|/**     * It's possible that a StoreEntry could be come stale     * this will return an upto date entry for the StoreEntry position     * @param entry old entry     * @return a refreshed StoreEntry     */
+comment|/**      * It's possible that a StoreEntry could be come stale this will return an      * upto date entry for the StoreEntry position      *       * @param entry old entry      * @return a refreshed StoreEntry      */
 specifier|public
 name|StoreEntry
 name|refresh
@@ -306,7 +306,7 @@ name|StoreEntry
 name|entry
 parameter_list|)
 function_decl|;
-comment|/**     * Get the StoreEntry associated with the key     * @param key     * @return the StoreEntry     */
+comment|/**      * Get the StoreEntry associated with the key      *       * @param key      * @return the StoreEntry      */
 specifier|public
 name|StoreEntry
 name|getEntry

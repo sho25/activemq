@@ -69,7 +69,7 @@ decl_stmt|;
 specifier|public
 name|DataItem
 parameter_list|()
-block|{}
+block|{     }
 name|DataItem
 parameter_list|(
 name|DataItem

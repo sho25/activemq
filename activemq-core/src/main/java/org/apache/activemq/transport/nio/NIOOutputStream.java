@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An optimized buffered outputstream for Tcp  *  * @version $Revision: 1.1.1.1 $  */
+comment|/**  * An optimized buffered outputstream for Tcp  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -122,7 +122,7 @@ specifier|private
 name|boolean
 name|closed
 decl_stmt|;
-comment|/**      * Constructor      *      * @param out      */
+comment|/**      * Constructor      *       * @param out      */
 specifier|public
 name|NIOOutputStream
 parameter_list|(
@@ -138,7 +138,7 @@ name|BUFFER_SIZE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a new buffered output stream to write data to the specified underlying output stream with the specified      * buffer size.      *      * @param out  the underlying output stream.      * @param size the buffer size.      * @throws IllegalArgumentException if size<= 0.      */
+comment|/**      * Creates a new buffered output stream to write data to the specified      * underlying output stream with the specified buffer size.      *       * @param out the underlying output stream.      * @param size the buffer size.      * @throws IllegalArgumentException if size<= 0.      */
 specifier|public
 name|NIOOutputStream
 parameter_list|(
@@ -188,7 +188,7 @@ name|buffer
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * write a byte on to the stream      *      * @param b - byte to write      * @throws IOException      */
+comment|/**      * write a byte on to the stream      *       * @param b - byte to write      * @throws IOException      */
 specifier|public
 name|void
 name|write
@@ -226,7 +226,7 @@ operator|)
 name|b
 expr_stmt|;
 block|}
-comment|/**      * write a byte array to the stream      *      * @param b   the byte buffer      * @param off the offset into the buffer      * @param len the length of data to write      * @throws IOException      */
+comment|/**      * write a byte array to the stream      *       * @param b the byte buffer      * @param off the offset into the buffer      * @param len the length of data to write      * @throws IOException      */
 specifier|public
 name|void
 name|write
@@ -306,7 +306,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * flush the data to the output stream      * This doesn't call flush on the underlying outputstream, because      * Tcp is particularly efficent at doing this itself ....      *      * @throws IOException      */
+comment|/**      * flush the data to the output stream This doesn't call flush on the      * underlying outputstream, because Tcp is particularly efficent at doing      * this itself ....      *       * @throws IOException      */
 specifier|public
 name|void
 name|flush
@@ -350,7 +350,7 @@ literal|0
 expr_stmt|;
 block|}
 block|}
-comment|/**      * close this stream      *      * @throws IOException      */
+comment|/**      * close this stream      *       * @throws IOException      */
 specifier|public
 name|void
 name|close
@@ -368,7 +368,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|/**      * Checks that the stream has not been closed      *      * @throws IOException      */
+comment|/**      * Checks that the stream has not been closed      *       * @throws IOException      */
 specifier|protected
 name|void
 name|checkClosed
@@ -501,7 +501,8 @@ name|lastRemaining
 operator|=
 name|remaining
 expr_stmt|;
-comment|// Since the write is non-blocking, all the data may not have been written.
+comment|// Since the write is non-blocking, all the data may not have been
+comment|// written.
 name|out
 operator|.
 name|write

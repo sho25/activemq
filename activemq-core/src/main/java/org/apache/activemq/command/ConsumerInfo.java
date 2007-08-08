@@ -155,17 +155,17 @@ specifier|protected
 name|boolean
 name|optimizedAcknowledge
 decl_stmt|;
+comment|// used by the broker
 specifier|protected
 specifier|transient
 name|int
 name|currentPrefetchSize
 decl_stmt|;
-comment|// used by the broker
+comment|// if true, the consumer will not send range
 specifier|protected
 name|boolean
 name|noRangeAcks
 decl_stmt|;
-comment|// if true, the consumer will not send range
 comment|// acks.
 specifier|protected
 name|BooleanExpression

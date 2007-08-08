@@ -859,9 +859,12 @@ operator|.
 name|class
 condition|)
 block|{
-comment|// We ussually get a big deciamal when we have Long.MIN_VALUE constant in the
-comment|// Selector.  Long.MIN_VALUE is too big to store in a Long as a positive so we store it
-comment|// as a Big decimal.  But it gets Negated right away.. to here we try to covert it back
+comment|// We ussually get a big deciamal when we have Long.MIN_VALUE
+comment|// constant in the
+comment|// Selector. Long.MIN_VALUE is too big to store in a Long as a
+comment|// positive so we store it
+comment|// as a Big decimal. But it gets Negated right away.. to here we try
+comment|// to covert it back
 comment|// to a Long.
 name|BigDecimal
 name|bd
@@ -976,7 +979,7 @@ operator|+
 literal|")"
 return|;
 block|}
-comment|/**      * TODO: more efficient hashCode()      *      * @see java.lang.Object#hashCode()      */
+comment|/**      * TODO: more efficient hashCode()      *       * @see java.lang.Object#hashCode()      */
 specifier|public
 name|int
 name|hashCode
@@ -990,7 +993,7 @@ name|hashCode
 argument_list|()
 return|;
 block|}
-comment|/**      * TODO: more efficient hashCode()      *      * @see java.lang.Object#equals(java.lang.Object)      */
+comment|/**      * TODO: more efficient hashCode()      *       * @see java.lang.Object#equals(java.lang.Object)      */
 specifier|public
 name|boolean
 name|equals
@@ -1037,7 +1040,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the symbol that represents this binary expression.  For example, addition is      * represented by "+"      *      * @return      */
+comment|/**      * Returns the symbol that represents this binary expression. For example,      * addition is represented by "+"      *       * @return      */
 specifier|abstract
 specifier|public
 name|String

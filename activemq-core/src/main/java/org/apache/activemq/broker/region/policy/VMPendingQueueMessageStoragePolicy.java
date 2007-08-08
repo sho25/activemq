@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Creates a VMPendingMessageCursor  *  *  * @org.apache.xbean.XBean element="vmQueueCursor" description="Pending messages held in the JVM"  *   * @version $Revision$  */
+comment|/**  * Creates a VMPendingMessageCursor *  *   * @org.apache.xbean.XBean element="vmQueueCursor" description="Pending messages  *                         held in the JVM"  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -96,7 +96,7 @@ name|VMPendingQueueMessageStoragePolicy
 implements|implements
 name|PendingQueueMessageStoragePolicy
 block|{
-comment|/**      * @param queue      * @param tmpStore      * @return the cursor       */
+comment|/**      * @param queue      * @param tmpStore      * @return the cursor      */
 specifier|public
 name|PendingMessageCursor
 name|getQueuePendingMessageCursor

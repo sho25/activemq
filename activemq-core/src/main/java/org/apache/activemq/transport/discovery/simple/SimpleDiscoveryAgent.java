@@ -100,7 +100,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple DiscoveryAgent that allows static configuration of the discovered services.  *   * @version $Revision$  */
+comment|/**  * A simple DiscoveryAgent that allows static configuration of the discovered  * services.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -515,7 +515,8 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|// We detect a failed connection attempt because the service fails right
+comment|// We detect a failed connection attempt because the service
+comment|// fails right
 comment|// away.
 if|if
 condition|(

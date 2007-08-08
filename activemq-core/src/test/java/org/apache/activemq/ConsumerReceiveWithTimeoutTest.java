@@ -147,7 +147,7 @@ name|tearDown
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Test to check if consumer thread wakes up inside a receive(timeout) after a message is dispatched to the consumer      *      * @throws javax.jms.JMSException      */
+comment|/**      * Test to check if consumer thread wakes up inside a receive(timeout) after      * a message is dispatched to the consumer      *       * @throws javax.jms.JMSException      */
 specifier|public
 name|void
 name|testConsumerReceiveBeforeMessageDispatched
@@ -200,7 +200,8 @@ parameter_list|()
 block|{
 try|try
 block|{
-comment|//wait for 10 seconds to allow consumer.receive to be run first
+comment|// wait for 10 seconds to allow consumer.receive to be run
+comment|// first
 name|Thread
 operator|.
 name|sleep

@@ -100,7 +100,7 @@ operator|=
 name|path
 expr_stmt|;
 block|}
-comment|/**      * Creates a new instance of the given key      *      * @param key is the key to add to the path to find a text file      *            containing the factory name      * @return a newly created instance      */
+comment|/**      * Creates a new instance of the given key      *       * @param key is the key to add to the path to find a text file containing      *                the factory name      * @return a newly created instance      */
 specifier|public
 name|Object
 name|newInstance
@@ -151,10 +151,12 @@ name|propertyPrefix
 operator|==
 literal|null
 condition|)
+block|{
 name|propertyPrefix
 operator|=
 literal|""
 expr_stmt|;
+block|}
 name|Class
 name|clazz
 init|=

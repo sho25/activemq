@@ -478,14 +478,14 @@ name|setUp
 parameter_list|()
 throws|throws
 name|Exception
-block|{ 	}
+block|{     }
 specifier|public
 name|void
 name|tearDown
 parameter_list|()
 throws|throws
 name|Exception
-block|{ 	}
+block|{     }
 comment|// This should fail with incubator-activemq-fuse-4.1.0.5
 specifier|public
 name|void

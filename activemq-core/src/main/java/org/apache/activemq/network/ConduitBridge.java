@@ -165,7 +165,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Constructor      * @param localBroker      * @param remoteBroker      */
+comment|/**      * Constructor      *       * @param localBroker      * @param remoteBroker      */
 specifier|public
 name|ConduitBridge
 parameter_list|(
@@ -210,7 +210,7 @@ block|{
 return|return
 literal|null
 return|;
-comment|//don't want this subscription added
+comment|// don't want this subscription added
 block|}
 return|return
 name|doCreateDemandSubscription
@@ -239,7 +239,7 @@ condition|)
 return|return
 literal|false
 return|;
-comment|//search through existing subscriptions and see if we have a match
+comment|// search through existing subscriptions and see if we have a match
 name|boolean
 name|matched
 init|=
@@ -305,8 +305,8 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-comment|//add the interest in the subscription
-comment|//ds.add(ds.getRemoteInfo().getConsumerId());
+comment|// add the interest in the subscription
+comment|// ds.add(ds.getRemoteInfo().getConsumerId());
 name|ds
 operator|.
 name|add
@@ -321,7 +321,8 @@ name|matched
 operator|=
 literal|true
 expr_stmt|;
-comment|//continue - we want interest to any existing DemandSubscriptions
+comment|// continue - we want interest to any existing
+comment|// DemandSubscriptions
 block|}
 block|}
 return|return

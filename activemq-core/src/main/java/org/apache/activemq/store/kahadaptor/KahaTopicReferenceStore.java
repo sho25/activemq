@@ -1021,7 +1021,7 @@ condition|(
 name|retroactive
 condition|)
 block|{
-comment|/*             for(StoreEntry entry=ackContainer.getFirst();entry!=null;entry=ackContainer.getNext(entry)){                 TopicSubAck tsa=(TopicSubAck)ackContainer.get(entry);                 ConsumerMessageRef ref=new ConsumerMessageRef();                 ref.setAckEntry(entry);                 ref.setMessageEntry(tsa.getMessageEntry());                 container.add(ref);             }             */
+comment|/*              * for(StoreEntry              * entry=ackContainer.getFirst();entry!=null;entry=ackContainer.getNext(entry)){              * TopicSubAck tsa=(TopicSubAck)ackContainer.get(entry);              * ConsumerMessageRef ref=new ConsumerMessageRef();              * ref.setAckEntry(entry);              * ref.setMessageEntry(tsa.getMessageEntry()); container.add(ref); }              */
 block|}
 block|}
 specifier|public

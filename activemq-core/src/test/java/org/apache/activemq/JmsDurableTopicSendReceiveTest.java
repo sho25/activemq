@@ -177,7 +177,7 @@ specifier|protected
 name|Destination
 name|producerDestination2
 decl_stmt|;
-comment|/**      * Set up a durable suscriber test.      *      * @see junit.framework.TestCase#setUp()      */
+comment|/**      * Set up a durable suscriber test.      *       * @see junit.framework.TestCase#setUp()      */
 specifier|protected
 name|void
 name|setUp
@@ -197,7 +197,7 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Test if all the messages sent are being received.      *      * @throws Exception      */
+comment|/**      * Test if all the messages sent are being received.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testSendWhileClosed

@@ -908,7 +908,8 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|//                    connectionFailure = new IOException("No uris available to connect to.");
+comment|// connectionFailure = new IOException("No uris available to
+comment|// connect to.");
 block|}
 else|else
 block|{

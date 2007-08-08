@@ -60,7 +60,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Broker interceptor which updates a JMS Client's timestamp on the message  * with a broker timestamp.  Useful when the clocks on client machines are known to  * not be correct and you can only trust the time set on the broker machines.  *   * Enabling this plugin will break JMS compliance since the timestamp that the producer  * sees on the messages after as send() will be different from the timestamp the consumer  * will observe when he receives the message.  This plugin is not enabled in the default  * ActiveMQ configuration.  *   * @org.apache.xbean.XBean element="timeStampingBrokerPlugin"   *   * @version $Revision$  */
+comment|/**  * A Broker interceptor which updates a JMS Client's timestamp on the message  * with a broker timestamp. Useful when the clocks on client machines are known  * to not be correct and you can only trust the time set on the broker machines.  *   * Enabling this plugin will break JMS compliance since the timestamp that the  * producer sees on the messages after as send() will be different from the  * timestamp the consumer will observe when he receives the message. This plugin  * is not enabled in the default ActiveMQ configuration.  *   * @org.apache.xbean.XBean element="timeStampingBrokerPlugin"  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -111,7 +111,7 @@ literal|0
 operator|)
 condition|)
 block|{
-comment|//timestamp not been disabled and has not passed through a network
+comment|// timestamp not been disabled and has not passed through a network
 name|message
 operator|.
 name|setTimestamp

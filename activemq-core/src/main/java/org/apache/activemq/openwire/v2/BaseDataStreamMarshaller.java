@@ -202,7 +202,7 @@ parameter_list|(
 name|Throwable
 name|e
 parameter_list|)
-block|{                     }
+block|{         }
 name|STACK_TRACE_ELEMENT_CONSTRUCTOR
 operator|=
 name|constructor
@@ -258,7 +258,7 @@ name|bs
 parameter_list|)
 throws|throws
 name|IOException
-block|{             }
+block|{     }
 specifier|public
 name|void
 name|tightUnmarshal
@@ -277,7 +277,7 @@ name|bs
 parameter_list|)
 throws|throws
 name|IOException
-block|{             }
+block|{     }
 specifier|public
 name|int
 name|tightMarshalLong1
@@ -1728,7 +1728,8 @@ argument_list|,
 literal|0
 argument_list|)
 return|;
-comment|// Yes deprecated, but we know what we are doing.
+comment|// Yes deprecated, but we know what
+comment|// we are doing.
 block|}
 else|else
 block|{
@@ -1902,6 +1903,7 @@ name|Short
 operator|.
 name|MAX_VALUE
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -1909,6 +1911,7 @@ argument_list|(
 literal|"Encountered a String value that is too long to encode."
 argument_list|)
 throw|;
+block|}
 name|bs
 operator|.
 name|writeBoolean
@@ -2574,7 +2577,7 @@ name|dataOut
 parameter_list|)
 throws|throws
 name|IOException
-block|{             }
+block|{     }
 specifier|public
 name|void
 name|looseUnmarshal
@@ -2590,7 +2593,7 @@ name|dataIn
 parameter_list|)
 throws|throws
 name|IOException
-block|{             }
+block|{     }
 specifier|public
 name|void
 name|looseMarshalLong

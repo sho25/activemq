@@ -410,7 +410,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Allows subclasses of TcpTransportFactory to create custom instances of TcpTransportServer.      *       * @param location      * @param serverSocketFactory      * @return      * @throws IOException      * @throws URISyntaxException      */
+comment|/**      * Allows subclasses of TcpTransportFactory to create custom instances of      * TcpTransportServer.      *       * @param location      * @param serverSocketFactory      * @return      * @throws IOException      * @throws URISyntaxException      */
 specifier|protected
 name|TcpTransportServer
 name|createTcpTransportServer
@@ -707,7 +707,7 @@ name|localLocation
 argument_list|)
 return|;
 block|}
-comment|/**      * Allows subclasses of TcpTransportFactory to provide a create custom TcpTransport intances.       *       * @param location      * @param wf      * @param socketFactory      * @param localLocation       * @return      * @throws UnknownHostException      * @throws IOException      */
+comment|/**      * Allows subclasses of TcpTransportFactory to provide a create custom      * TcpTransport intances.      *       * @param location      * @param wf      * @param socketFactory      * @param localLocation      * @return      * @throws UnknownHostException      * @throws IOException      */
 specifier|protected
 name|TcpTransport
 name|createTcpTransport

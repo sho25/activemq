@@ -139,7 +139,7 @@ decl_stmt|;
 specifier|public
 name|TransactionInfo
 parameter_list|()
-block|{             }
+block|{     }
 specifier|public
 name|TransactionInfo
 parameter_list|(

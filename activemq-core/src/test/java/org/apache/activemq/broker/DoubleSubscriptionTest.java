@@ -248,7 +248,7 @@ name|ActiveMQQueue
 argument_list|(
 literal|"TEST"
 argument_list|)
-block|,}
+block|}
 argument_list|)
 expr_stmt|;
 block|}

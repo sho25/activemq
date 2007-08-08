@@ -116,7 +116,7 @@ operator|=
 name|adminACLs
 expr_stmt|;
 block|}
-comment|/*      * Need to think how to retrieve the ACLs for temporary destinations since they are not map       * to a specific destination. For now we'll just retrieve it from a TempDestinationAuthorizationEntry       * same way as the DefaultAuthorizationMap. The ACLs retrieved here will be map to all temp destinations      */
+comment|/*      * Need to think how to retrieve the ACLs for temporary destinations since      * they are not map to a specific destination. For now we'll just retrieve      * it from a TempDestinationAuthorizationEntry same way as the      * DefaultAuthorizationMap. The ACLs retrieved here will be map to all temp      * destinations      */
 specifier|public
 name|void
 name|setTempDestinationAuthorizationEntry

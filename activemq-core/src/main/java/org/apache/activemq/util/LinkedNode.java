@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Provides a base class for you to extend when you want object to maintain  * a doubly linked list to other objects without using a collection class.   *   * @author chirino  */
+comment|/**  * Provides a base class for you to extend when you want object to maintain a  * doubly linked list to other objects without using a collection class.  *   * @author chirino  */
 end_comment
 
 begin_class
@@ -191,7 +191,7 @@ return|return
 name|tail
 return|;
 block|}
-comment|/** 	 * @param rightHead the node to link after this node. 	 * @return this 	 */
+comment|/**      * @param rightHead the node to link after this node.      * @return this      */
 specifier|public
 name|LinkedNode
 name|linkAfter
@@ -288,7 +288,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/** 	 * @param leftHead the node to link after this node. 	 * @return  	 * @return this 	 */
+comment|/**      * @param leftHead the node to link after this node.      * @return      * @return this      */
 specifier|public
 name|LinkedNode
 name|linkBefore
@@ -373,7 +373,7 @@ return|return
 name|leftHead
 return|;
 block|}
-comment|/** 	 * Removes this node out of the linked list it is chained in.   	 */
+comment|/**      * Removes this node out of the linked list it is chained in.      */
 specifier|public
 name|void
 name|unlink

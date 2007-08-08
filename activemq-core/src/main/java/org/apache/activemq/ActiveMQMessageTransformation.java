@@ -308,7 +308,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper class for converting normal JMS interfaces into ActiveMQ specific ones.  *   * @version $Revision: 1.1 $  */
+comment|/**  * A helper class for converting normal JMS interfaces into ActiveMQ specific  * ones.  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
@@ -316,7 +316,7 @@ specifier|public
 class|class
 name|ActiveMQMessageTransformation
 block|{
-comment|/**      * Creates a an available JMS message from another provider. 	 *  	 * @param destination -  Destination to be converted into ActiveMQ's implementation. 	 * @return ActiveMQDestination - ActiveMQ's implementation of the destination. 	 * @throws JMSException if an error occurs 	 */
+comment|/**      * Creates a an available JMS message from another provider.      *       * @param destination - Destination to be converted into ActiveMQ's      *                implementation.      * @return ActiveMQDestination - ActiveMQ's implementation of the      *         destination.      * @throws JMSException if an error occurs      */
 specifier|public
 specifier|static
 name|ActiveMQDestination
@@ -461,7 +461,7 @@ return|return
 name|activeMQDestination
 return|;
 block|}
-comment|/**      * Creates a fast shallow copy of the current ActiveMQMessage or creates a whole new      * message instance from an available JMS message from another provider.      *      * @param message - Message to be converted into ActiveMQ's implementation.      * @param connection       * @return ActiveMQMessage -  ActiveMQ's implementation object of the message.      * @throws JMSException if an error occurs      */
+comment|/**      * Creates a fast shallow copy of the current ActiveMQMessage or creates a      * whole new message instance from an available JMS message from another      * provider.      *       * @param message - Message to be converted into ActiveMQ's implementation.      * @param connection      * @return ActiveMQMessage - ActiveMQ's implementation object of the      *         message.      * @throws JMSException if an error occurs      */
 specifier|public
 specifier|static
 specifier|final
@@ -857,7 +857,7 @@ name|activeMessage
 return|;
 block|}
 block|}
-comment|/**      * Copies the standard JMS and user defined properties from the givem message to the specified message      *      * @param fromMessage the message to take the properties from      * @param toMesage the message to add the properties to      * @throws JMSException      */
+comment|/**      * Copies the standard JMS and user defined properties from the givem      * message to the specified message      *       * @param fromMessage the message to take the properties from      * @param toMesage the message to add the properties to      * @throws JMSException      */
 specifier|public
 specifier|static
 name|void

@@ -69,7 +69,8 @@ implements|implements
 name|WireFormatFactory
 block|{
 comment|//
-comment|// The default values here are what the wire format changes to after a default negotiation.
+comment|// The default values here are what the wire format changes to after a
+comment|// default negotiation.
 comment|//
 specifier|private
 name|int

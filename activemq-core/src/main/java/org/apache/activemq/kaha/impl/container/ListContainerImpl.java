@@ -2745,7 +2745,7 @@ return|return
 name|item
 return|;
 block|}
-comment|/**      * insert an Object in first position int the list but get a StoreEntry of its position      *       * @param object      * @return the location in the Store      */
+comment|/**      * insert an Object in first position int the list but get a StoreEntry of      * its position      *       * @param object      * @return the location in the Store      */
 specifier|public
 specifier|synchronized
 name|StoreEntry
@@ -2767,7 +2767,7 @@ return|return
 name|item
 return|;
 block|}
-comment|/**      * @param entry      * @param object      * @see org.apache.activemq.kaha.ListContainer#update(org.apache.activemq.kaha.StoreEntry, java.lang.Object)      */
+comment|/**      * @param entry      * @param object      * @see org.apache.activemq.kaha.ListContainer#update(org.apache.activemq.kaha.StoreEntry,      *      java.lang.Object)      */
 specifier|public
 specifier|synchronized
 name|void
@@ -2982,7 +2982,7 @@ name|item
 argument_list|)
 return|;
 block|}
-comment|/**      * It's possible that a StoreEntry could be come stale      * this will return an upto date entry for the StoreEntry position      * @param entry old entry      * @return a refreshed StoreEntry      */
+comment|/**      * It's possible that a StoreEntry could be come stale this will return an      * upto date entry for the StoreEntry position      *       * @param entry old entry      * @return a refreshed StoreEntry      */
 specifier|public
 specifier|synchronized
 name|StoreEntry
@@ -3744,7 +3744,7 @@ parameter_list|,
 name|Object
 name|value
 parameter_list|)
-block|{              }
+block|{      }
 specifier|protected
 specifier|synchronized
 name|void
@@ -3753,7 +3753,7 @@ parameter_list|(
 name|int
 name|pos
 parameter_list|)
-block|{              }
+block|{      }
 block|}
 end_class
 

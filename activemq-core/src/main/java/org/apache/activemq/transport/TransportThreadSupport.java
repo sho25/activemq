@@ -39,13 +39,13 @@ specifier|private
 name|Thread
 name|runner
 decl_stmt|;
+comment|// should be a multiple of 128k
 specifier|private
 name|long
 name|stackSize
 init|=
 literal|0
 decl_stmt|;
-comment|//should be a multiple of 128k
 specifier|public
 name|boolean
 name|isDaemon

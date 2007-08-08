@@ -172,7 +172,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -196,7 +196,7 @@ specifier|private
 name|long
 name|negotiateTimeout
 init|=
-literal|15000
+literal|15000L
 decl_stmt|;
 specifier|private
 specifier|final
@@ -311,13 +311,13 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -457,13 +457,13 @@ name|command
 decl_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -482,13 +482,13 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -560,13 +560,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -663,7 +663,7 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
-comment|/*         try {             super.oneway(new ExceptionResponse(error));         }         catch (IOException e) {             // ignore as we are already throwing an exception         }         */
+comment|/*          * try { super.oneway(new ExceptionResponse(error)); } catch          * (IOException e) { // ignore as we are already throwing an exception }          */
 name|super
 operator|.
 name|onException

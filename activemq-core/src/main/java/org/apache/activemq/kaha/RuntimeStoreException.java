@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/** *Runtime exception for the Store *  * @version $Revision: 1.2 $ */
+comment|/**  * Runtime exception for the Store  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class
@@ -43,7 +43,7 @@ name|super
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Constructor      * @param message      */
+comment|/**      * Constructor      *       * @param message      */
 specifier|public
 name|RuntimeStoreException
 parameter_list|(
@@ -57,7 +57,7 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Constructor      * @param message      * @param cause      */
+comment|/**      * Constructor      *       * @param message      * @param cause      */
 specifier|public
 name|RuntimeStoreException
 parameter_list|(
@@ -76,7 +76,7 @@ name|cause
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Constructor      * @param cause      */
+comment|/**      * Constructor      *       * @param cause      */
 specifier|public
 name|RuntimeStoreException
 parameter_list|(

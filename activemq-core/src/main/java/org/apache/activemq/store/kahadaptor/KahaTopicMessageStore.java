@@ -770,7 +770,7 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
-comment|/*         if(retroactive){             for(StoreEntry entry=ackContainer.getFirst();entry!=null;entry=ackContainer.getNext(entry)){                 TopicSubAck tsa=(TopicSubAck)ackContainer.get(entry);                 ConsumerMessageRef ref=new ConsumerMessageRef();                 ref.setAckEntry(entry);                 ref.setMessageEntry(tsa.getMessageEntry());                 container.add(ref);             }         }         */
+comment|/*          * if(retroactive){ for(StoreEntry          * entry=ackContainer.getFirst();entry!=null;entry=ackContainer.getNext(entry)){          * TopicSubAck tsa=(TopicSubAck)ackContainer.get(entry);          * ConsumerMessageRef ref=new ConsumerMessageRef();          * ref.setAckEntry(entry); ref.setMessageEntry(tsa.getMessageEntry());          * container.add(ref); } }          */
 block|}
 specifier|public
 specifier|synchronized

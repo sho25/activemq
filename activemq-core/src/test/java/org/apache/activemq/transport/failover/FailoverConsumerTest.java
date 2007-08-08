@@ -182,9 +182,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Uncomment this if you want to use remote broker created by NetworkTestSupport.
+comment|// Uncomment this if you want to use remote broker created by
+comment|// NetworkTestSupport.
 comment|// But it doesn't work. See comments below.
-comment|//        URI failoverURI = new URI("failover://"+remoteConnector.getServer().getConnectURI());
+comment|// URI failoverURI = new
+comment|// URI("failover://"+remoteConnector.getServer().getConnectURI());
 name|URI
 name|failoverURI
 init|=
@@ -349,8 +351,10 @@ argument_list|(
 literal|3000
 argument_list|)
 decl_stmt|;
-comment|// restartRemoteBroker() doesn't work (you won't get received any messages
-comment|// after restart, javadoc says, that messages should be received though).
+comment|// restartRemoteBroker() doesn't work (you won't get received any
+comment|// messages
+comment|// after restart, javadoc says, that messages should be received
+comment|// though).
 comment|// So we must use external broker ant restart it manually.
 name|log
 operator|.
@@ -366,7 +370,7 @@ operator|.
 name|read
 argument_list|()
 expr_stmt|;
-comment|//		Thread.sleep(20000);
+comment|// Thread.sleep(20000);
 name|restartRemoteBroker
 argument_list|()
 expr_stmt|;

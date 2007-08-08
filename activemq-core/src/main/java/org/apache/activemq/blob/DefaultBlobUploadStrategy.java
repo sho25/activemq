@@ -120,7 +120,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A default implementation of {@link BlobUploadStrategy} which uses the URL class to upload  * files or streams to a remote URL  */
+comment|/**  * A default implementation of {@link BlobUploadStrategy} which uses the URL  * class to upload files or streams to a remote URL  */
 end_comment
 
 begin_class
@@ -224,7 +224,8 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// use chunked mode or otherwise URLConnection loads everything into memory
+comment|// use chunked mode or otherwise URLConnection loads everything into
+comment|// memory
 comment|// (chunked mode not supported before JRE 1.5)
 name|connection
 operator|.

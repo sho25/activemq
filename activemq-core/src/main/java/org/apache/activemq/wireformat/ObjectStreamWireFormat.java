@@ -152,7 +152,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple implementation which uses Object Stream serialization.  *  * @version $Revision: 1.1 $  */
+comment|/**  * A simple implementation which uses Object Stream serialization.  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class

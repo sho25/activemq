@@ -17,6 +17,66 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Connection
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Message
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|MessageConsumer
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Session
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|TextMessage
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -106,66 +166,6 @@ operator|.
 name|command
 operator|.
 name|ActiveMQTopic
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Connection
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Message
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|MessageConsumer
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Session
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|TextMessage
 import|;
 end_import
 
@@ -890,7 +890,7 @@ name|ActiveMQTopic
 argument_list|(
 literal|"GUEST.BAR"
 argument_list|)
-block|, }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}
@@ -974,7 +974,7 @@ name|ActiveMQTopic
 argument_list|(
 literal|"USERS.FOO"
 argument_list|)
-block|, }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1027,7 +1027,7 @@ name|ActiveMQTopic
 argument_list|(
 literal|"GUEST.BAR"
 argument_list|)
-block|, }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1092,7 +1092,7 @@ name|ActiveMQTopic
 argument_list|(
 literal|"USERS.FOO"
 argument_list|)
-block|, }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1157,7 +1157,7 @@ name|ActiveMQTopic
 argument_list|(
 literal|"GUEST.BAR"
 argument_list|)
-block|, }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1210,7 +1210,7 @@ name|ActiveMQTopic
 argument_list|(
 literal|"TEST"
 argument_list|)
-block|, }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1275,7 +1275,7 @@ name|ActiveMQTopic
 argument_list|(
 literal|"USERS.FOO"
 argument_list|)
-block|, }
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1328,7 +1328,7 @@ name|ActiveMQTopic
 argument_list|(
 literal|"GUEST.BAR"
 argument_list|)
-block|, }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}

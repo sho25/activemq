@@ -59,7 +59,7 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-comment|/**      * Create a BitArrayBin to a certain window size (number of messages to keep)      *       * @param windowSize      */
+comment|/**      * Create a BitArrayBin to a certain window size (number of messages to      * keep)      *       * @param windowSize      */
 specifier|public
 name|BitArrayBin
 parameter_list|(

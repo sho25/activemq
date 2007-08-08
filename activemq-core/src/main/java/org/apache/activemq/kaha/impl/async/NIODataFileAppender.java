@@ -62,7 +62,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An AsyncDataFileAppender that uses NIO ByteBuffers and File chanels to more efficently  * copy data to files.  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * An AsyncDataFileAppender that uses NIO ByteBuffers and File chanels to more  * efficently copy data to files.  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -84,7 +84,7 @@ name|fileManager
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * The async processing loop that writes to the data files and      * does the force calls.        *       * Since the file sync() call is the slowest of all the operations,       * this algorithm tries to 'batch' or group together several file sync() requests       * into a single file sync() call. The batching is accomplished attaching the       * same CountDownLatch instance to every force request in a group.      *       */
+comment|/**      * The async processing loop that writes to the data files and does the      * force calls.      *       * Since the file sync() call is the slowest of all the operations, this      * algorithm tries to 'batch' or group together several file sync() requests      * into a single file sync() call. The batching is accomplished attaching      * the same CountDownLatch instance to every force request in a group.      *       */
 specifier|protected
 name|void
 name|processQueue
@@ -640,7 +640,8 @@ name|countDown
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Now that the data is on disk, remove the writes from the in flight
+comment|// Now that the data is on disk, remove the writes from the in
+comment|// flight
 comment|// cache.
 name|write
 operator|=
@@ -712,7 +713,7 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{ 		}
+block|{         }
 finally|finally
 block|{
 try|try
@@ -738,7 +739,7 @@ parameter_list|(
 name|IOException
 name|e
 parameter_list|)
-block|{ 			}
+block|{             }
 name|shutdownDone
 operator|.
 name|countDown
@@ -746,7 +747,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Copy the bytes in header to the channel.      * @param header - source of data      * @param channel - destination where the data will be written.      * @throws IOException      */
+comment|/**      * Copy the bytes in header to the channel.      *       * @param header - source of data      * @param channel - destination where the data will be written.      * @throws IOException      */
 specifier|private
 name|void
 name|transfer

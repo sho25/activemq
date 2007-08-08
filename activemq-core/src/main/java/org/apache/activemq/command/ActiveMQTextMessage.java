@@ -627,6 +627,7 @@ name|marshalledProperties
 operator|!=
 literal|null
 condition|)
+block|{
 name|size
 operator|+=
 name|marshalledProperties
@@ -634,6 +635,7 @@ operator|.
 name|getLength
 argument_list|()
 expr_stmt|;
+block|}
 name|size
 operator|=
 name|text

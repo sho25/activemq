@@ -155,7 +155,7 @@ name|getOffset
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Creates<code>WireByteArrayInputStream</code> with a minmalist byte array      */
+comment|/**      * Creates<code>WireByteArrayInputStream</code> with a minmalist byte      * array      */
 specifier|public
 name|DataByteArrayInputStream
 parameter_list|()
@@ -170,7 +170,7 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *       * @return the size      */
+comment|/**      * @return the size      */
 specifier|public
 name|int
 name|size
@@ -193,7 +193,7 @@ return|return
 name|buf
 return|;
 block|}
-comment|/**      * reset the<code>StoreByteArrayInputStream</code> to use an new byte array      *       * @param newBuff      */
+comment|/**      * reset the<code>StoreByteArrayInputStream</code> to use an new byte      * array      *       * @param newBuff      */
 specifier|public
 name|void
 name|restart
@@ -212,7 +212,7 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
-comment|/**      * reset the<code>StoreByteArrayInputStream</code> to use an new ByteSequence      * @param sequence       *        */
+comment|/**      * reset the<code>StoreByteArrayInputStream</code> to use an new      * ByteSequence      *       * @param sequence      */
 specifier|public
 name|void
 name|restart
@@ -277,7 +277,7 @@ name|buf
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Reads the next byte of data from this input stream. The value byte is returned as an<code>int</code> in the      * range<code>0</code> to<code>255</code>. If no byte is available because the end of the stream has been      * reached, the value<code>-1</code> is returned.      *<p>      * This<code>read</code> method cannot block.      *       * @return the next byte of data, or<code>-1</code> if the end of the stream has been reached.      */
+comment|/**      * Reads the next byte of data from this input stream. The value byte is      * returned as an<code>int</code> in the range<code>0</code> to      *<code>255</code>. If no byte is available because the end of the      * stream has been reached, the value<code>-1</code> is returned.      *<p>      * This<code>read</code> method cannot block.      *       * @return the next byte of data, or<code>-1</code> if the end of the      *         stream has been reached.      */
 specifier|public
 name|int
 name|read
@@ -306,7 +306,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/**      * Reads up to<code>len</code> bytes of data into an array of bytes from this input stream.      *       * @param b the buffer into which the data is read.      * @param off the start offset of the data.      * @param len the maximum number of bytes read.      * @return the total number of bytes read into the buffer, or<code>-1</code> if there is no more data because the      *         end of the stream has been reached.      */
+comment|/**      * Reads up to<code>len</code> bytes of data into an array of bytes from      * this input stream.      *       * @param b the buffer into which the data is read.      * @param off the start offset of the data.      * @param len the maximum number of bytes read.      * @return the total number of bytes read into the buffer, or      *<code>-1</code> if there is no more data because the end of the      *         stream has been reached.      */
 specifier|public
 name|int
 name|read
@@ -403,7 +403,7 @@ return|return
 name|len
 return|;
 block|}
-comment|/**      * @return the number of bytes that can be read from the input stream without blocking.      */
+comment|/**      * @return the number of bytes that can be read from the input stream      *         without blocking.      */
 specifier|public
 name|int
 name|available

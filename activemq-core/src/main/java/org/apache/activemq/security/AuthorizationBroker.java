@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -141,20 +151,6 @@ name|activemq
 operator|.
 name|command
 operator|.
-name|ActiveMQTempDestination
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|ActiveMQTopic
 import|;
 end_import
@@ -201,56 +197,8 @@ name|ProducerInfo
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|filter
-operator|.
-name|BooleanExpression
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|filter
-operator|.
-name|MessageEvaluationContext
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
 begin_comment
-comment|/**  * Verifies if a authenticated user can do an operation against the broker using an authorization map.  *   * @version $Revision$  */
+comment|/**  * Verifies if a authenticated user can do an operation against the broker using  * an authorization map.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -320,6 +268,7 @@ name|securityContext
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|SecurityException
@@ -327,7 +276,9 @@ argument_list|(
 literal|"User is not authenticated."
 argument_list|)
 throw|;
-comment|//if(!((ActiveMQTempDestination)destination).getConnectionId().equals(context.getConnectionId().getValue()) ) {
+block|}
+comment|// if(!((ActiveMQTempDestination)destination).getConnectionId().equals(context.getConnectionId().getValue())
+comment|// ) {
 if|if
 condition|(
 operator|!
@@ -385,6 +336,7 @@ argument_list|(
 name|allowedACLs
 argument_list|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|SecurityException
@@ -401,6 +353,7 @@ operator|+
 name|destination
 argument_list|)
 throw|;
+block|}
 block|}
 comment|// }
 return|return
@@ -448,6 +401,7 @@ name|securityContext
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|SecurityException
@@ -455,6 +409,7 @@ argument_list|(
 literal|"User is not authenticated."
 argument_list|)
 throw|;
+block|}
 name|Set
 name|allowedACLs
 init|=
@@ -503,6 +458,7 @@ argument_list|(
 name|allowedACLs
 argument_list|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|SecurityException
@@ -519,6 +475,7 @@ operator|+
 name|destination
 argument_list|)
 throw|;
+block|}
 name|super
 operator|.
 name|removeDestination
@@ -562,6 +519,7 @@ name|subject
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|SecurityException
@@ -569,6 +527,7 @@ argument_list|(
 literal|"User is not authenticated."
 argument_list|)
 throw|;
+block|}
 name|Set
 name|allowedACLs
 init|=
@@ -623,6 +582,7 @@ argument_list|(
 name|allowedACLs
 argument_list|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|SecurityException
@@ -642,6 +602,7 @@ name|getDestination
 argument_list|()
 argument_list|)
 throw|;
+block|}
 name|subject
 operator|.
 name|getAuthorizedReadDests
@@ -660,7 +621,7 @@ name|getDestination
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/*           * Need to think about this a little more.  We could do per message security checking          * to implement finer grained security checking. For example a user can only see messages          * with price>1000 .  Perhaps this should just be another additional broker filter that installs           * this type of feature.          *           * If we did want to do that, then we would install a predicate.  We should be careful since          * there may be an existing predicate already assigned and the consumer info may be sent to a remote           * broker, so it also needs to support being marshaled.          *              info.setAdditionalPredicate(new BooleanExpression() {                 public boolean matches(MessageEvaluationContext message) throws JMSException {                     if( !subject.getAuthorizedReadDests().contains(message.getDestination()) ) {                         Set allowedACLs = authorizationMap.getReadACLs(message.getDestination());                         if(allowedACLs!=null&& !subject.isInOneOf(allowedACLs))                             return false;                         subject.getAuthorizedReadDests().put(message.getDestination(), message.getDestination());                     }                     return true;                 }                 public Object evaluate(MessageEvaluationContext message) throws JMSException {                     return matches(message) ? Boolean.TRUE : Boolean.FALSE;                 }             });         */
+comment|/*          * Need to think about this a little more. We could do per message          * security checking to implement finer grained security checking. For          * example a user can only see messages with price>1000 . Perhaps this          * should just be another additional broker filter that installs this          * type of feature. If we did want to do that, then we would install a          * predicate. We should be careful since there may be an existing          * predicate already assigned and the consumer info may be sent to a          * remote broker, so it also needs to support being marshaled.          * info.setAdditionalPredicate(new BooleanExpression() { public boolean          * matches(MessageEvaluationContext message) throws JMSException { if(          * !subject.getAuthorizedReadDests().contains(message.getDestination()) ) {          * Set allowedACLs =          * authorizationMap.getReadACLs(message.getDestination());          * if(allowedACLs!=null&& !subject.isInOneOf(allowedACLs)) return          * false; subject.getAuthorizedReadDests().put(message.getDestination(),          * message.getDestination()); } return true; } public Object          * evaluate(MessageEvaluationContext message) throws JMSException {          * return matches(message) ? Boolean.TRUE : Boolean.FALSE; } });          */
 return|return
 name|super
 operator|.
@@ -702,6 +663,7 @@ name|subject
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|SecurityException
@@ -709,6 +671,7 @@ argument_list|(
 literal|"User is not authenticated."
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|info
@@ -773,6 +736,7 @@ argument_list|(
 name|allowedACLs
 argument_list|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|SecurityException
@@ -792,6 +756,7 @@ name|getDestination
 argument_list|()
 argument_list|)
 throw|;
+block|}
 name|subject
 operator|.
 name|getAuthorizedWriteDests
@@ -854,6 +819,7 @@ name|subject
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|SecurityException
@@ -861,6 +827,7 @@ argument_list|(
 literal|"User is not authenticated."
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 operator|!
@@ -932,6 +899,7 @@ argument_list|(
 name|allowedACLs
 argument_list|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|SecurityException
@@ -951,6 +919,7 @@ name|getDestination
 argument_list|()
 argument_list|)
 throw|;
+block|}
 name|subject
 operator|.
 name|getAuthorizedWriteDests

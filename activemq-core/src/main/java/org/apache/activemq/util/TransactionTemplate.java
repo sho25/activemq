@@ -82,7 +82,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper class for running code with a PersistenceAdapter  * in a transaction.  *  * @version $Revision: 1.2 $  */
+comment|/**  * A helper class for running code with a PersistenceAdapter in a transaction.  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class
@@ -94,7 +94,7 @@ specifier|static
 specifier|private
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -236,7 +236,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(

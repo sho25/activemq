@@ -564,7 +564,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#getName() 	 */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.data.IDataManager#getName()      */
 specifier|public
 name|String
 name|getName
@@ -769,7 +769,7 @@ return|return
 name|dataFile
 return|;
 block|}
-comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#readItem(org.apache.activemq.kaha.Marshaller, org.apache.activemq.kaha.StoreLocation) 	 */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.data.IDataManager#readItem(org.apache.activemq.kaha.Marshaller,      *      org.apache.activemq.kaha.StoreLocation)      */
 specifier|public
 specifier|synchronized
 name|Object
@@ -796,7 +796,7 @@ name|item
 argument_list|)
 return|;
 block|}
-comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#storeDataItem(org.apache.activemq.kaha.Marshaller, java.lang.Object) 	 */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.data.IDataManager#storeDataItem(org.apache.activemq.kaha.Marshaller,      *      java.lang.Object)      */
 specifier|public
 specifier|synchronized
 name|StoreLocation
@@ -825,7 +825,7 @@ name|DATA_ITEM_TYPE
 argument_list|)
 return|;
 block|}
-comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#storeRedoItem(java.lang.Object) 	 */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.data.IDataManager#storeRedoItem(java.lang.Object)      */
 specifier|public
 specifier|synchronized
 name|StoreLocation
@@ -851,7 +851,7 @@ name|REDO_ITEM_TYPE
 argument_list|)
 return|;
 block|}
-comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#updateItem(org.apache.activemq.kaha.StoreLocation, org.apache.activemq.kaha.Marshaller, java.lang.Object) 	 */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.data.IDataManager#updateItem(org.apache.activemq.kaha.StoreLocation,      *      org.apache.activemq.kaha.Marshaller, java.lang.Object)      */
 specifier|public
 specifier|synchronized
 name|void
@@ -887,7 +887,7 @@ name|DATA_ITEM_TYPE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#recoverRedoItems(org.apache.activemq.kaha.impl.data.RedoListener) 	 */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.data.IDataManager#recoverRedoItems(org.apache.activemq.kaha.impl.data.RedoListener)      */
 specifier|public
 specifier|synchronized
 name|void
@@ -1023,7 +1023,8 @@ argument_list|,
 name|object
 argument_list|)
 expr_stmt|;
-comment|// in case the listener is holding on to item references, copy it
+comment|// in case the listener is holding on to item references,
+comment|// copy it
 comment|// so we don't change it behind the listener's back.
 name|item
 operator|=
@@ -1073,7 +1074,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#close() 	 */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.data.IDataManager#close()      */
 specifier|public
 specifier|synchronized
 name|void
@@ -1139,7 +1140,7 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#force() 	 */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.data.IDataManager#force()      */
 specifier|public
 specifier|synchronized
 name|void
@@ -1189,7 +1190,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#delete() 	 */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.data.IDataManager#delete()      */
 specifier|public
 specifier|synchronized
 name|boolean
@@ -1251,7 +1252,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#addInterestInFile(int) 	 */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.data.IDataManager#addInterestInFile(int)      */
 specifier|public
 specifier|synchronized
 name|void
@@ -1337,7 +1338,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#removeInterestInFile(int) 	 */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.data.IDataManager#removeInterestInFile(int)      */
 specifier|public
 specifier|synchronized
 name|void
@@ -1429,7 +1430,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#consolidateDataFiles() 	 */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.data.IDataManager#consolidateDataFiles()      */
 specifier|public
 specifier|synchronized
 name|void
@@ -1596,7 +1597,7 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#getRedoMarshaller() 	 */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.data.IDataManager#getRedoMarshaller()      */
 specifier|public
 name|Marshaller
 name|getRedoMarshaller
@@ -1606,7 +1607,7 @@ return|return
 name|redoMarshaller
 return|;
 block|}
-comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.IDataManager#setRedoMarshaller(org.apache.activemq.kaha.Marshaller) 	 */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.data.IDataManager#setRedoMarshaller(org.apache.activemq.kaha.Marshaller)      */
 specifier|public
 name|void
 name|setRedoMarshaller

@@ -96,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to share a single broker even if you have multiple broker bean definitions.  *   * A use case is where you have multiple web applications that want to start an embedded broker  * but only the first one to deploy should actually start it.  *   * @version $Revision$  */
+comment|/**  * Used to share a single broker even if you have multiple broker bean  * definitions. A use case is where you have multiple web applications that want  * to start an embedded broker but only the first one to deploy should actually  * start it.  *   * @version $Revision$  */
 end_comment
 
 begin_class

@@ -84,7 +84,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a destination based configuration of policies so that individual  * destinations or wildcard hierarchies of destinations can be configured using  * different policies. Each entry in the map represents the authorization ACLs for each operation.  *   * @org.apache.xbean.XBean element="authorizationMap"  *   * @version $Revision$  */
+comment|/**  * Represents a destination based configuration of policies so that individual  * destinations or wildcard hierarchies of destinations can be configured using  * different policies. Each entry in the map represents the authorization ACLs  * for each operation.  *   * @org.apache.xbean.XBean element="authorizationMap"  *   * @version $Revision$  */
 end_comment
 
 begin_class

@@ -138,7 +138,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple authentication plugin  *    * @org.apache.xbean.XBean element="simpleAuthenticationPlugin" description="Provides a simple authentication  * plugin configured with a map of user-passwords and a map of user-groups or a list of authentication users"  *   * @version $Revision$  */
+comment|/**  * A simple authentication plugin  *   * @org.apache.xbean.XBean element="simpleAuthenticationPlugin"  *                         description="Provides a simple authentication plugin  *                         configured with a map of user-passwords and a map of  *                         user-groups or a list of authentication users"  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -159,7 +159,7 @@ decl_stmt|;
 specifier|public
 name|SimpleAuthenticationPlugin
 parameter_list|()
-block|{}
+block|{     }
 specifier|public
 name|SimpleAuthenticationPlugin
 parameter_list|(
@@ -332,7 +332,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sets the groups a user is in. The key is the user name and the value is a Set of groups      */
+comment|/**      * Sets the groups a user is in. The key is the user name and the value is a      * Set of groups      */
 specifier|public
 name|void
 name|setUserGroups

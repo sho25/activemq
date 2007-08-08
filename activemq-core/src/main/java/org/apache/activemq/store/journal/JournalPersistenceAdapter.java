@@ -702,7 +702,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with a  * {@link Journal} and then check pointing asynchronously on a timeout with some  * other long term persistent storage.  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.17 $  */
+comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with a  * {@link Journal} and then check pointing asynchronously on a timeout with some  * other long term persistent storage.  *   * @org.apache.xbean.XBean  * @version $Revision: 1.17 $  */
 end_comment
 
 begin_class
@@ -976,7 +976,7 @@ operator|=
 name|longTermPersistence
 expr_stmt|;
 block|}
-comment|/**      * @param usageManager The UsageManager that is controlling the destination's memory usage.      */
+comment|/**      * @param usageManager The UsageManager that is controlling the      *                destination's memory usage.      */
 specifier|public
 name|void
 name|setUsageManager
@@ -1312,7 +1312,9 @@ argument_list|,
 literal|true
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 name|checkpointExecutor
 operator|=
 operator|new
@@ -1369,7 +1371,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|//checkpointExecutor.allowCoreThreadTimeOut(true);
+comment|// checkpointExecutor.allowCoreThreadTimeOut(true);
 name|this
 operator|.
 name|usageManager
@@ -1579,7 +1581,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * When we checkpoint we move all the journalled data to long term storage.      * @param stopping       *       * @param b      */
+comment|/**      * When we checkpoint we move all the journalled data to long term storage.      *       * @param stopping      * @param b      */
 specifier|public
 name|void
 name|checkpoint
@@ -1712,7 +1714,7 @@ name|sync
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This does the actual checkpoint.      * @return       */
+comment|/**      * This does the actual checkpoint.      *       * @return      */
 specifier|public
 name|boolean
 name|doCheckpoint
@@ -1788,11 +1790,14 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 comment|//
-comment|// We do many partial checkpoints (fullCheckpoint==false) to move topic messages
+comment|// We do many partial checkpoints (fullCheckpoint==false) to move
+comment|// topic messages
 comment|// to long term store as soon as possible.
 comment|//
-comment|// We want to avoid doing that for queue messages since removes the come in the same
-comment|// checkpoint cycle will nullify the previous message add.  Therefore, we only
+comment|// We want to avoid doing that for queue messages since removes the
+comment|// come in the same
+comment|// checkpoint cycle will nullify the previous message add.
+comment|// Therefore, we only
 comment|// checkpoint queues on the fullCheckpoint cycles.
 comment|//
 if|if
@@ -2143,7 +2148,8 @@ operator|instanceof
 name|JDBCPersistenceAdapter
 condition|)
 block|{
-comment|// We may be check pointing more often than the checkpointInterval if under high use
+comment|// We may be check pointing more often than the
+comment|// checkpointInterval if under high use
 comment|// But we don't want to clean up the db that often.
 name|long
 name|now
@@ -2664,7 +2670,8 @@ operator|==
 literal|null
 condition|)
 break|break;
-comment|// We may be trying to replay a commit that
+comment|// We may be trying to replay a commit
+comment|// that
 comment|// was already committed.
 comment|// Replay the committed operations.
 name|tx
@@ -3037,7 +3044,7 @@ name|e
 argument_list|)
 return|;
 block|}
-comment|/**      *       * @param command      * @param sync      * @return      * @throws IOException      */
+comment|/**      * @param command      * @param sync      * @return      * @throws IOException      */
 specifier|public
 name|RecordLocation
 name|writeCommand
@@ -3490,7 +3497,7 @@ parameter_list|(
 name|File
 name|dir
 parameter_list|)
-block|{             }
+block|{     }
 block|}
 end_class
 

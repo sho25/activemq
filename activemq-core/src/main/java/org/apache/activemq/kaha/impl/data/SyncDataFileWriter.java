@@ -68,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Optimized Store writer.  Synchronously marshalls and writes to the data file. Simple but   * may introduce a bit of contention when put under load.  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Optimized Store writer. Synchronously marshalls and writes to the data file.  * Simple but may introduce a bit of contention when put under load.  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -107,7 +107,7 @@ name|DataByteArrayOutputStream
 argument_list|()
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.DataFileWriter#storeItem(org.apache.activemq.kaha.Marshaller, java.lang.Object, byte) 	 */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.data.DataFileWriter#storeItem(org.apache.activemq.kaha.Marshaller,      *      java.lang.Object, byte)      */
 specifier|public
 specifier|synchronized
 name|DataItem
@@ -262,7 +262,7 @@ return|return
 name|item
 return|;
 block|}
-comment|/* (non-Javadoc) 	 * @see org.apache.activemq.kaha.impl.data.DataFileWriter#updateItem(org.apache.activemq.kaha.StoreLocation, org.apache.activemq.kaha.Marshaller, java.lang.Object, byte) 	 */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.data.DataFileWriter#updateItem(org.apache.activemq.kaha.StoreLocation,      *      org.apache.activemq.kaha.Marshaller, java.lang.Object, byte)      */
 specifier|public
 specifier|synchronized
 name|void
@@ -283,7 +283,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|//Write the packet our internal buffer.
+comment|// Write the packet our internal buffer.
 name|buffer
 operator|.
 name|reset
@@ -463,7 +463,7 @@ name|close
 parameter_list|()
 throws|throws
 name|IOException
-block|{ 	}
+block|{     }
 block|}
 end_class
 

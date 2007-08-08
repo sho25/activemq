@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  *   * @version $Revision$  */
+comment|/**  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -30,21 +30,21 @@ name|beforeEnd
 parameter_list|()
 throws|throws
 name|Exception
-block|{}
+block|{     }
 specifier|public
 name|void
 name|afterCommit
 parameter_list|()
 throws|throws
 name|Exception
-block|{}
+block|{     }
 specifier|public
 name|void
 name|afterRollback
 parameter_list|()
 throws|throws
 name|Exception
-block|{}
+block|{     }
 block|}
 end_class
 

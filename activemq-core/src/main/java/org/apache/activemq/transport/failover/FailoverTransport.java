@@ -1787,7 +1787,8 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-comment|// If the command was not tracked.. we will retry in this method
+comment|// If the command was not tracked.. we will retry in
+comment|// this method
 if|if
 condition|(
 name|tracked
@@ -1795,8 +1796,10 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// since we will retry in this method.. take it out of the request
-comment|// map so that it is not sent 2 times on recovery
+comment|// since we will retry in this method.. take it
+comment|// out of the request
+comment|// map so that it is not sent 2 times on
+comment|// recovery
 if|if
 condition|(
 name|command
@@ -1821,7 +1824,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Rethrow the exception so it will handled by the outer catch
+comment|// Rethrow the exception so it will handled by
+comment|// the outer catch
 throw|throw
 name|e
 throw|;

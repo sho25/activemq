@@ -474,7 +474,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @author<a href="http://hiramchirino.com">chirino</a>  */
+comment|/**  * @author<a href="http://hiramchirino.com">chirino</a>  */
 end_comment
 
 begin_class
@@ -854,7 +854,7 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Convert a stomp command      * @param command      */
+comment|/**      * Convert a stomp command      *       * @param command      */
 specifier|public
 name|void
 name|onStompCommad
@@ -1393,8 +1393,10 @@ name|checkConnected
 argument_list|()
 expr_stmt|;
 comment|// TODO: acking with just a message id is very bogus
-comment|// since the same message id could have been sent to 2 different subscriptions
-comment|// on the same stomp connection. For example, when 2 subs are created on the same topic.
+comment|// since the same message id could have been sent to 2 different
+comment|// subscriptions
+comment|// on the same stomp connection. For example, when 2 subs are created on
+comment|// the same topic.
 name|Map
 name|headers
 init|=
@@ -2333,8 +2335,10 @@ literal|"Must specify the subscriptionId or the destination you are unsubscribin
 argument_list|)
 throw|;
 block|}
-comment|// TODO: Unsubscribing using a destination is a bit wierd if multiple subscriptions
-comment|// are created with the same destination.  Perhaps this should be removed.
+comment|// TODO: Unsubscribing using a destination is a bit wierd if multiple
+comment|// subscriptions
+comment|// are created with the same destination. Perhaps this should be
+comment|// removed.
 comment|//
 for|for
 control|(
@@ -2884,7 +2888,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Dispatch a ActiveMQ command      * @param command      * @throws IOException      */
+comment|/**      * Dispatch a ActiveMQ command      *       * @param command      * @throws IOException      */
 specifier|public
 name|void
 name|onActiveMQCommad

@@ -156,7 +156,7 @@ name|destination4String
 init|=
 literal|"TEST.TWO.ONE"
 decl_stmt|;
-comment|/**      * Sets a test to have a queue destination and non-persistent delivery mode.       *       * @see junit.framework.TestCase#setUp()      */
+comment|/**      * Sets a test to have a queue destination and non-persistent delivery mode.      *       * @see junit.framework.TestCase#setUp()      */
 specifier|protected
 name|void
 name|setUp

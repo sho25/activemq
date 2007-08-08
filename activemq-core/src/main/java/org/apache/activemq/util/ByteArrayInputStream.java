@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Very similar to the java.io.ByteArrayInputStream but this version   * is not thread safe.  */
+comment|/**  * Very similar to the java.io.ByteArrayInputStream but this version is not  * thread safe.  */
 end_comment
 
 begin_class

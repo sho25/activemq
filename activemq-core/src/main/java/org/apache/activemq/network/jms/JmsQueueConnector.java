@@ -136,7 +136,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Bridge to other JMS Queue providers  *   * @org.apache.xbean.XBean  *  * @version $Revision: 1.1.1.1 $  */
+comment|/**  * A Bridge to other JMS Queue providers  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -266,7 +266,7 @@ return|return
 name|inboundQueueBridges
 return|;
 block|}
-comment|/**      * @param inboundQueueBridges      *            The inboundQueueBridges to set.      */
+comment|/**      * @param inboundQueueBridges The inboundQueueBridges to set.      */
 specifier|public
 name|void
 name|setInboundQueueBridges
@@ -294,7 +294,7 @@ return|return
 name|outboundQueueBridges
 return|;
 block|}
-comment|/**      * @param outboundQueueBridges      *            The outboundQueueBridges to set.      */
+comment|/**      * @param outboundQueueBridges The outboundQueueBridges to set.      */
 specifier|public
 name|void
 name|setOutboundQueueBridges
@@ -321,7 +321,7 @@ return|return
 name|localQueueConnectionFactory
 return|;
 block|}
-comment|/**      * @param localQueueConnectionFactory      *            The localQueueConnectionFactory to set.      */
+comment|/**      * @param localQueueConnectionFactory The localQueueConnectionFactory to      *                set.      */
 specifier|public
 name|void
 name|setLocalQueueConnectionFactory
@@ -357,7 +357,7 @@ return|return
 name|outboundQueueConnectionFactoryName
 return|;
 block|}
-comment|/**      * @param outboundQueueConnectionFactoryName      *            The outboundQueueConnectionFactoryName to set.      */
+comment|/**      * @param outboundQueueConnectionFactoryName The      *                outboundQueueConnectionFactoryName to set.      */
 specifier|public
 name|void
 name|setOutboundQueueConnectionFactoryName
@@ -383,7 +383,7 @@ return|return
 name|localConnectionFactoryName
 return|;
 block|}
-comment|/**      * @param localConnectionFactoryName      *            The localConnectionFactoryName to set.      */
+comment|/**      * @param localConnectionFactoryName The localConnectionFactoryName to set.      */
 specifier|public
 name|void
 name|setLocalConnectionFactoryName
@@ -409,7 +409,7 @@ return|return
 name|localQueueConnection
 return|;
 block|}
-comment|/**      * @param localQueueConnection      *            The localQueueConnection to set.      */
+comment|/**      * @param localQueueConnection The localQueueConnection to set.      */
 specifier|public
 name|void
 name|setLocalQueueConnection
@@ -435,7 +435,7 @@ return|return
 name|outboundQueueConnection
 return|;
 block|}
-comment|/**      * @param outboundQueueConnection      *            The outboundQueueConnection to set.      */
+comment|/**      * @param outboundQueueConnection The outboundQueueConnection to set.      */
 specifier|public
 name|void
 name|setOutboundQueueConnection
@@ -451,7 +451,7 @@ operator|=
 name|foreignQueueConnection
 expr_stmt|;
 block|}
-comment|/**      * @param outboundQueueConnectionFactory      *            The outboundQueueConnectionFactory to set.      */
+comment|/**      * @param outboundQueueConnectionFactory The outboundQueueConnectionFactory      *                to set.      */
 specifier|public
 name|void
 name|setOutboundQueueConnectionFactory
@@ -1620,7 +1620,7 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-comment|//look-up the Queue
+comment|// look-up the Queue
 try|try
 block|{
 name|result

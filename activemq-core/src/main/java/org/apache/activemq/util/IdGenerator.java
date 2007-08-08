@@ -258,7 +258,7 @@ operator|=
 name|stub
 expr_stmt|;
 block|}
-comment|/**      * As we have to find the hostname as a side-affect of generating      * a unique stub, we allow it's easy retrevial here      * @return the local host name      */
+comment|/**      * As we have to find the hostname as a side-affect of generating a unique      * stub, we allow it's easy retrevial here      *       * @return the local host name      */
 specifier|public
 specifier|static
 name|String
@@ -269,7 +269,7 @@ return|return
 name|hostName
 return|;
 block|}
-comment|/** 	 * Construct an IdGenerator 	 * 	 */
+comment|/**      * Construct an IdGenerator      */
 specifier|public
 name|IdGenerator
 parameter_list|(
@@ -311,7 +311,7 @@ name|hostName
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Generate a unqiue id 	 * @return a unique id 	 */
+comment|/**      * Generate a unqiue id      *       * @return a unique id      */
 specifier|public
 specifier|synchronized
 name|String
@@ -331,7 +331,7 @@ operator|++
 operator|)
 return|;
 block|}
-comment|/**      * Generate a unique ID - that is friendly for a URL or file system      * @return a unique id      */
+comment|/**      * Generate a unique ID - that is friendly for a URL or file system      *       * @return a unique id      */
 specifier|public
 name|String
 name|generateSanitizedId
@@ -380,7 +380,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * From a generated id - return the seed (i.e. minus the count)      *      * @param id the generated identifer      * @return the seed      */
+comment|/**      * From a generated id - return the seed (i.e. minus the count)      *       * @param id the generated identifer      * @return the seed      */
 specifier|public
 specifier|static
 name|String
@@ -449,7 +449,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * From a generated id - return the generator count      *      * @param id      * @return the count      */
+comment|/**      * From a generated id - return the generator count      *       * @param id      * @return the count      */
 specifier|public
 specifier|static
 name|long
@@ -532,7 +532,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Does a proper compare on the ids      *      * @param id1      * @param id2      * @return 0 if equal else a positive if id1 is> id2 ...      */
+comment|/**      * Does a proper compare on the ids      *       * @param id1      * @param id2      * @return 0 if equal else a positive if id1 is> id2 ...      */
 specifier|public
 specifier|static
 name|int

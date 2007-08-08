@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Defines the interface used to cache messages.  *  * @version $Revision$  */
+comment|/**  * Defines the interface used to cache messages.  *   * @version $Revision$  */
 end_comment
 
 begin_interface
@@ -24,7 +24,7 @@ specifier|public
 interface|interface
 name|Cache
 block|{
-comment|/** 	 * Gets an object that was previously<code>put</code> into this object.    	 *  	 * @param msgid 	 * @return null if the object was not previously put or if the object has expired out of the cache. 	 */
+comment|/**      * Gets an object that was previously<code>put</code> into this object.      *       * @param msgid      * @return null if the object was not previously put or if the object has      *         expired out of the cache.      */
 specifier|public
 name|Object
 name|get
@@ -33,7 +33,7 @@ name|Object
 name|key
 parameter_list|)
 function_decl|;
-comment|/** 	 * Puts an object into the cache. 	 *  	 * @param messageID 	 * @param message 	 */
+comment|/**      * Puts an object into the cache.      *       * @param messageID      * @param message      */
 specifier|public
 name|Object
 name|put
@@ -45,7 +45,7 @@ name|Object
 name|value
 parameter_list|)
 function_decl|;
-comment|/** 	 * Removes an object from the cache. 	 *  	 * @param messageID      * @return the object associated with the key if it was still in the cache. 	 */
+comment|/**      * Removes an object from the cache.      *       * @param messageID      * @return the object associated with the key if it was still in the cache.      */
 specifier|public
 name|Object
 name|remove
@@ -54,13 +54,13 @@ name|Object
 name|key
 parameter_list|)
 function_decl|;
-comment|/**      * Lets a cache know it will not be used any further and that it can release       * acquired resources      */
+comment|/**      * Lets a cache know it will not be used any further and that it can release      * acquired resources      */
 specifier|public
 name|void
 name|close
 parameter_list|()
 function_decl|;
-comment|/**      * How big is the cache right now?      * @return      */
+comment|/**      * How big is the cache right now?      *       * @return      */
 specifier|public
 name|int
 name|size

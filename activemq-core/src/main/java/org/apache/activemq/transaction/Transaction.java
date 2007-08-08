@@ -72,7 +72,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Keeps track of all the actions the need to be done when  * a transaction does a commit or rollback.  *  * @version $Revision: 1.5 $  */
+comment|/**  * Keeps track of all the actions the need to be done when a transaction does a  * commit or rollback.  *   * @version $Revision: 1.5 $  */
 end_comment
 
 begin_class
@@ -241,11 +241,11 @@ throw|throw
 name|xae
 throw|;
 block|}
-comment|//        // Run the prePrepareTasks
-comment|//        for (Iterator iter = prePrepareTasks.iterator(); iter.hasNext();) {
-comment|//            Callback r = (Callback) iter.next();
-comment|//            r.execute();
-comment|//        }
+comment|// // Run the prePrepareTasks
+comment|// for (Iterator iter = prePrepareTasks.iterator(); iter.hasNext();) {
+comment|// Callback r = (Callback) iter.next();
+comment|// r.execute();
+comment|// }
 block|}
 specifier|protected
 name|void

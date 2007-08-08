@@ -234,7 +234,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Factory class that can create PersistenceAdapter objects.  *  * @version $Revision: 1.4 $  */
+comment|/**  * Factory class that can create PersistenceAdapter objects.  *   * @version $Revision: 1.4 $  */
 end_comment
 
 begin_class
@@ -406,7 +406,7 @@ return|return
 name|journalLogFileSize
 return|;
 block|}
-comment|/**      * Sets the size of the journal log files      *      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryIntPropertyEditor"      */
+comment|/**      * Sets the size of the journal log files      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryIntPropertyEditor"      */
 specifier|public
 name|void
 name|setJournalLogFileSize
@@ -455,7 +455,7 @@ return|return
 name|useJournal
 return|;
 block|}
-comment|/**      * Enables or disables the use of the journal. The default is to use the journal      *      * @param useJournal      */
+comment|/**      * Enables or disables the use of the journal. The default is to use the      * journal      *       * @param useJournal      */
 specifier|public
 name|void
 name|setUseJournal
@@ -608,7 +608,7 @@ return|return
 name|useQuickJournal
 return|;
 block|}
-comment|/**      * Enables or disables the use of quick journal, which keeps messages in the journal and just      * stores a reference to the messages in JDBC. Defaults to false so that messages actually reside      * long term in the JDBC database.      */
+comment|/**      * Enables or disables the use of quick journal, which keeps messages in the      * journal and just stores a reference to the messages in JDBC. Defaults to      * false so that messages actually reside long term in the JDBC database.      */
 specifier|public
 name|void
 name|setUseQuickJournal
@@ -694,7 +694,7 @@ name|isUseDatabaseLock
 argument_list|()
 return|;
 block|}
-comment|/**      * Sets whether or not an exclusive database lock should be used to enable JDBC Master/Slave. Enabled by default.      */
+comment|/**      * Sets whether or not an exclusive database lock should be used to enable      * JDBC Master/Slave. Enabled by default.      */
 specifier|public
 name|void
 name|setUseDatabaseLock

@@ -363,7 +363,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @throws Exception      *       */
+comment|/**      * @throws Exception      */
 specifier|public
 name|void
 name|recoverSubscription

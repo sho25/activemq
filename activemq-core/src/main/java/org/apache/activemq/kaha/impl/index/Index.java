@@ -66,7 +66,7 @@ specifier|public
 interface|interface
 name|Index
 block|{
-comment|/**      * clear the index       * @throws IOException       *       */
+comment|/**      * clear the index      *       * @throws IOException      *       */
 specifier|public
 name|void
 name|clear
@@ -74,7 +74,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * @param key      * @return true if it contains the key      * @throws IOException       */
+comment|/**      * @param key      * @return true if it contains the key      * @throws IOException      */
 specifier|public
 name|boolean
 name|containsKey
@@ -85,7 +85,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * remove the index key      *       * @param key      * @return StoreEntry removed      * @throws IOException       */
+comment|/**      * remove the index key      *       * @param key      * @return StoreEntry removed      * @throws IOException      */
 specifier|public
 name|StoreEntry
 name|remove
@@ -96,7 +96,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * store the key, item      *       * @param key      * @param entry      * @throws IOException       */
+comment|/**      * store the key, item      *       * @param key      * @param entry      * @throws IOException      */
 specifier|public
 name|void
 name|store
@@ -110,7 +110,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * @param key      * @return the entry      * @throws IOException       */
+comment|/**      * @param key      * @return the entry      * @throws IOException      */
 specifier|public
 name|StoreEntry
 name|get
@@ -133,7 +133,7 @@ name|void
 name|load
 parameter_list|()
 function_decl|;
-comment|/**      * unload indexes      * @throws IOException       */
+comment|/**      * unload indexes      *       * @throws IOException      */
 specifier|public
 name|void
 name|unload
@@ -141,7 +141,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Set the marshaller for key objects      * @param marshaller      */
+comment|/**      * Set the marshaller for key objects      *       * @param marshaller      */
 specifier|public
 name|void
 name|setKeyMarshaller

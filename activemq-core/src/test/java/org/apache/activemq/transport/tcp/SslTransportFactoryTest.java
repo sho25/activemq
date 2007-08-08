@@ -19,6 +19,46 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URI
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|junit
 operator|.
 name|framework
@@ -66,46 +106,6 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URI
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
 import|;
 end_import
 
@@ -406,8 +406,10 @@ block|,
 literal|"socket.useClientMode"
 block|}
 decl_stmt|;
-comment|// Using a trinary interpretation of i to set all possible values of stub options for socket and transport.
-comment|// 2 transport options, 3 socket options, 3 settings for each option => 3^5 = 243 combos.
+comment|// Using a trinary interpretation of i to set all possible values of
+comment|// stub options for socket and transport.
+comment|// 2 transport options, 3 socket options, 3 settings for each option =>
+comment|// 3^5 = 243 combos.
 for|for
 control|(
 name|int

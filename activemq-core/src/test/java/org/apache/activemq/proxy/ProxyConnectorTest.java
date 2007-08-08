@@ -27,6 +27,16 @@ end_import
 
 begin_import
 import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -120,16 +130,6 @@ operator|.
 name|command
 operator|.
 name|SessionInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Test
 import|;
 end_import
 
@@ -259,7 +259,7 @@ name|ActiveMQDestination
 operator|.
 name|TOPIC_TYPE
 argument_list|)
-block|,                  }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}
@@ -439,7 +439,8 @@ name|deliveryMode
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Verify that the message Was sent to the remote broker and the local broker.
+comment|// Verify that the message Was sent to the remote broker and the local
+comment|// broker.
 name|Message
 name|m
 decl_stmt|;

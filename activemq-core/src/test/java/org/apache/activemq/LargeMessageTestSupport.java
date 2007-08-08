@@ -508,6 +508,7 @@ block|}
 block|}
 try|try
 block|{
+comment|// allow the broker to start
 name|Thread
 operator|.
 name|sleep
@@ -515,7 +516,6 @@ argument_list|(
 literal|1000
 argument_list|)
 expr_stmt|;
-comment|// allow the broker to start
 block|}
 catch|catch
 parameter_list|(

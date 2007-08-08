@@ -228,7 +228,7 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Make sure Temp destination can only be consumed by local connection      *      * @throws JMSException      */
+comment|/**      * Make sure Temp destination can only be consumed by local connection      *       * @throws JMSException      */
 specifier|public
 name|void
 name|testTempDestOnlyConsumedByLocalConn
@@ -299,7 +299,7 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
-comment|//temp destination should not be consume  when using another connection
+comment|// temp destination should not be consume when using another connection
 name|Connection
 name|otherConnection
 init|=
@@ -355,7 +355,8 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
-comment|//should throw InvalidDestinationException when consuming a temp destination from another connection
+comment|// should throw InvalidDestinationException when consuming a temp
+comment|// destination from another connection
 try|try
 block|{
 name|consumer
@@ -387,7 +388,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|//should be able to consume temp destination from the same connection
+comment|// should be able to consume temp destination from the same connection
 name|consumer
 operator|=
 name|tempSession
@@ -684,7 +685,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test temp queue works under load      * @throws JMSException      */
+comment|/**      * Test temp queue works under load      *       * @throws JMSException      */
 specifier|public
 name|void
 name|testTmpQueueWorksUnderLoad
@@ -871,7 +872,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Make sure you cannot publish to a temp destination that does not exist anymore.      *       * @throws JMSException      * @throws InterruptedException       */
+comment|/**      * Make sure you cannot publish to a temp destination that does not exist      * anymore.      *       * @throws JMSException      * @throws InterruptedException      */
 specifier|public
 name|void
 name|testPublishFailsForClosedConnection
@@ -930,7 +931,8 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-comment|// This message delivery should work since the temp connection is still open.
+comment|// This message delivery should work since the temp connection is still
+comment|// open.
 name|MessageProducer
 name|producer
 init|=
@@ -967,7 +969,8 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
-comment|// Closing the connection should destroy the temp queue that was created.
+comment|// Closing the connection should destroy the temp queue that was
+comment|// created.
 name|tempConnection
 operator|.
 name|close
@@ -981,7 +984,8 @@ literal|1000
 argument_list|)
 expr_stmt|;
 comment|// Wait a little bit to let the delete take effect.
-comment|// This message delivery NOT should work since the temp connection is now closed.
+comment|// This message delivery NOT should work since the temp connection is
+comment|// now closed.
 try|try
 block|{
 name|message
@@ -1021,7 +1025,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Make sure you cannot publish to a temp destination that does not exist anymore.      *       * @throws JMSException      * @throws InterruptedException       */
+comment|/**      * Make sure you cannot publish to a temp destination that does not exist      * anymore.      *       * @throws JMSException      * @throws InterruptedException      */
 specifier|public
 name|void
 name|testPublishFailsForDestoryedTempDestination
@@ -1080,7 +1084,8 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-comment|// This message delivery should work since the temp connection is still open.
+comment|// This message delivery should work since the temp connection is still
+comment|// open.
 name|MessageProducer
 name|producer
 init|=
@@ -1131,7 +1136,8 @@ literal|1000
 argument_list|)
 expr_stmt|;
 comment|// Wait a little bit to let the delete take effect.
-comment|// This message delivery NOT should work since the temp connection is now closed.
+comment|// This message delivery NOT should work since the temp connection is
+comment|// now closed.
 try|try
 block|{
 name|message
@@ -1171,7 +1177,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Test you can't delete a Destination with Active Subscribers      * @throws JMSException      */
+comment|/**      * Test you can't delete a Destination with Active Subscribers      *       * @throws JMSException      */
 specifier|public
 name|void
 name|testDeleteDestinationWithSubscribersFails
@@ -1221,7 +1227,8 @@ argument_list|(
 name|queue
 argument_list|)
 expr_stmt|;
-comment|// This message delivery should NOT work since the temp connection is now closed.
+comment|// This message delivery should NOT work since the temp connection is
+comment|// now closed.
 try|try
 block|{
 name|queue

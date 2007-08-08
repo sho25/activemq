@@ -440,7 +440,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -554,7 +554,7 @@ specifier|final
 name|boolean
 name|debug
 init|=
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
@@ -677,7 +677,7 @@ name|usageManager
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Not synchronized since the Journal has better throughput if you increase the number of concurrent writes that it      * is doing.      */
+comment|/**      * Not synchronized since the Journal has better throughput if you increase      * the number of concurrent writes that it is doing.      */
 specifier|public
 name|void
 name|addMessage
@@ -730,7 +730,8 @@ if|if
 condition|(
 name|debug
 condition|)
-name|log
+block|{
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -743,6 +744,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 name|addMessage
 argument_list|(
 name|message
@@ -757,7 +759,8 @@ if|if
 condition|(
 name|debug
 condition|)
-name|log
+block|{
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -770,6 +773,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|this
@@ -816,7 +820,8 @@ if|if
 condition|(
 name|debug
 condition|)
-name|log
+block|{
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -829,6 +834,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|AMQMessageStore
@@ -863,7 +869,8 @@ if|if
 condition|(
 name|debug
 condition|)
-name|log
+block|{
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -876,6 +883,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|AMQMessageStore
@@ -1091,7 +1099,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1176,7 +1184,8 @@ if|if
 condition|(
 name|debug
 condition|)
-name|log
+block|{
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1192,6 +1201,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 name|removeMessage
 argument_list|(
 name|ack
@@ -1206,7 +1216,8 @@ if|if
 condition|(
 name|debug
 condition|)
-name|log
+block|{
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1222,6 +1233,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|this
@@ -1268,7 +1280,8 @@ if|if
 condition|(
 name|debug
 condition|)
-name|log
+block|{
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1284,6 +1297,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|AMQMessageStore
@@ -1318,7 +1332,8 @@ if|if
 condition|(
 name|debug
 condition|)
-name|log
+block|{
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1334,6 +1349,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|AMQMessageStore
@@ -1498,7 +1514,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1529,13 +1545,13 @@ name|InterruptedIOException
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1608,13 +1624,13 @@ throw|;
 block|}
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1675,7 +1691,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1785,12 +1801,13 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
-name|log
+block|{
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1811,6 +1828,7 @@ operator|+
 literal|" "
 argument_list|)
 expr_stmt|;
+block|}
 name|transactionTemplate
 operator|.
 name|run
@@ -1914,7 +1932,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -2004,7 +2022,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -2024,7 +2042,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2230,7 +2248,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Replays the referenceStore first as those messages are the oldest ones, then messages are replayed from the      * transaction log and then the cache is updated.      *       * @param listener      * @throws Exception      */
+comment|/**      * Replays the referenceStore first as those messages are the oldest ones,      * then messages are replayed from the transaction log and then the cache is      * updated.      *       * @param listener      * @throws Exception      */
 specifier|public
 name|void
 name|recover
@@ -2410,7 +2428,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|/*         RecoveryListenerAdapter recoveryListener=new RecoveryListenerAdapter(this,listener);         if(referenceStore.supportsExternalBatchControl()){             synchronized(this){                 referenceStore.recoverNextMessages(maxReturned,recoveryListener);                 if(recoveryListener.size()==0&&recoveryListener.hasSpace()){                     // check for inflight messages                     int count=0;                     Iterator<Entry<MessageId,ReferenceData>> iterator=messages.entrySet().iterator();                     while(iterator.hasNext()&&count<maxReturned&&recoveryListener.hasSpace()){                         Entry<MessageId,ReferenceData> entry=iterator.next();                         ReferenceData data=entry.getValue();                         Message message=getMessage(data);                         recoveryListener.recoverMessage(message);                         count++;                     }                     referenceStore.setBatch(recoveryListener.getLastRecoveredMessageId());                 }             }         }else{             flush();             referenceStore.recoverNextMessages(maxReturned,recoveryListener);         }         */
+comment|/*          * RecoveryListenerAdapter recoveryListener=new          * RecoveryListenerAdapter(this,listener);          * if(referenceStore.supportsExternalBatchControl()){          * synchronized(this){          * referenceStore.recoverNextMessages(maxReturned,recoveryListener);          * if(recoveryListener.size()==0&&recoveryListener.hasSpace()){ // check          * for inflight messages int count=0; Iterator<Entry<MessageId,ReferenceData>>          * iterator=messages.entrySet().iterator();          * while(iterator.hasNext()&&count<maxReturned&&recoveryListener.hasSpace()){          * Entry<MessageId,ReferenceData> entry=iterator.next(); ReferenceData          * data=entry.getValue(); Message message=getMessage(data);          * recoveryListener.recoverMessage(message); count++; }          * referenceStore.setBatch(recoveryListener.getLastRecoveredMessageId()); } }          * }else{ flush();          * referenceStore.recoverNextMessages(maxReturned,recoveryListener); }          */
 name|RecoveryListenerAdapter
 name|recoveryListener
 init|=

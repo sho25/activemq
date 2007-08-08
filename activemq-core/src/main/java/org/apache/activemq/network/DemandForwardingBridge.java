@@ -250,7 +250,7 @@ argument_list|(
 literal|"Disconnecting loop back connection."
 argument_list|)
 expr_stmt|;
-comment|//waitStarted();
+comment|// waitStarted();
 name|ServiceSupport
 operator|.
 name|dispose

@@ -70,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Creates a PendIngMessageCursor for Durable subscribers  *  *  * @org.apache.xbean.XBean element="fileCursor" description="Pending messages for durable subscribers  *                         held in temporary files"  *   * @version $Revision$  */
+comment|/**  * Creates a PendIngMessageCursor for Durable subscribers *  *   * @org.apache.xbean.XBean element="fileCursor" description="Pending messages  *                         for durable subscribers held in temporary files"  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -80,7 +80,7 @@ name|FilePendingSubscriberMessageStoragePolicy
 implements|implements
 name|PendingSubscriberMessageStoragePolicy
 block|{
-comment|/**      * @param name      * @param tmpStorage      * @param maxBatchSize      * @return a Cursor      * @see org.apache.activemq.broker.region.policy.PendingSubscriberMessageStoragePolicy#getSubscriberPendingMessageCursor(java.lang.String, org.apache.activemq.kaha.Store, int)      */
+comment|/**      * @param name      * @param tmpStorage      * @param maxBatchSize      * @return a Cursor      * @see org.apache.activemq.broker.region.policy.PendingSubscriberMessageStoragePolicy#getSubscriberPendingMessageCursor(java.lang.String,      *      org.apache.activemq.kaha.Store, int)      */
 specifier|public
 name|PendingMessageCursor
 name|getSubscriberPendingMessageCursor

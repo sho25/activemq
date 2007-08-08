@@ -224,7 +224,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A factory of the ActiveMQ InitialContext which contains {@link ConnectionFactory}  * instances as well as a child context called<i>destinations</i> which contain all of the  * current active destinations, in child context depending on the QoS such as  * transient or durable and queue or topic.  *  * @version $Revision: 1.2 $  */
+comment|/**  * A factory of the ActiveMQ InitialContext which contains  * {@link ConnectionFactory} instances as well as a child context called  *<i>destinations</i> which contain all of the current active destinations, in  * child context depending on the QoS such as transient or durable and queue or  * topic.  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class
@@ -350,7 +350,7 @@ literal|"Invalid broker URL"
 argument_list|)
 throw|;
 block|}
-comment|/*     if( broker==null ) {                 try {                     broker = factory.getEmbeddedBroker();                 }                 catch (JMSException e) {                     log.warn("Failed to get embedded broker", e);                 }             }        */
+comment|/*              * if( broker==null ) { try { broker = factory.getEmbeddedBroker(); }              * catch (JMSException e) { log.warn("Failed to get embedded              * broker", e); } }              */
 name|data
 operator|.
 name|put
@@ -375,7 +375,7 @@ argument_list|,
 name|environment
 argument_list|)
 expr_stmt|;
-comment|/*         if (broker != null) {             data.put("destinations", broker.getDestinationContext(environment));         }         */
+comment|/*          * if (broker != null) { data.put("destinations",          * broker.getDestinationContext(environment)); }          */
 name|data
 operator|.
 name|put
@@ -460,7 +460,7 @@ argument_list|)
 return|;
 block|}
 comment|// Properties
-comment|//-------------------------------------------------------------------------
+comment|// -------------------------------------------------------------------------
 specifier|public
 name|String
 name|getTopicPrefix
@@ -510,7 +510,7 @@ name|queuePrefix
 expr_stmt|;
 block|}
 comment|// Implementation methods
-comment|//-------------------------------------------------------------------------
+comment|// -------------------------------------------------------------------------
 specifier|protected
 name|ReadOnlyContext
 name|createContext
@@ -1007,7 +1007,7 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/**      * Factory method to create a new connection factory from the given environment      */
+comment|/**      * Factory method to create a new connection factory from the given      * environment      */
 specifier|protected
 name|ActiveMQConnectionFactory
 name|createConnectionFactory

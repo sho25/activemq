@@ -1200,7 +1200,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * @param maxReturned      * @param listener      * @throws Exception      * @see org.apache.activemq.store.MessageStore#recoverNextMessages(int, org.apache.activemq.store.MessageRecoveryListener)      */
+comment|/**      * @param maxReturned      * @param listener      * @throws Exception      * @see org.apache.activemq.store.MessageStore#recoverNextMessages(int,      *      org.apache.activemq.store.MessageRecoveryListener)      */
 specifier|public
 name|void
 name|recoverNextMessages
@@ -1381,7 +1381,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      *       * @see org.apache.activemq.store.MessageStore#resetBatching()      */
+comment|/**      * @see org.apache.activemq.store.MessageStore#resetBatching()      */
 specifier|public
 name|void
 name|resetBatching

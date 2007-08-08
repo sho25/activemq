@@ -160,7 +160,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// now lets try closing the original connection and creating a new connection with the same ID
+comment|// now lets try closing the original connection and creating a new
+comment|// connection with the same ID
 name|connection
 operator|.
 name|close

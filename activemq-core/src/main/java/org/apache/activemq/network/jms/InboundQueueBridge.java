@@ -34,7 +34,7 @@ decl_stmt|;
 name|String
 name|localQueueName
 decl_stmt|;
-comment|/**      * Constructor that takes a foriegn destination as an argument      * @param inboundQueueName      */
+comment|/**      * Constructor that takes a foriegn destination as an argument      *       * @param inboundQueueName      */
 specifier|public
 name|InboundQueueBridge
 parameter_list|(

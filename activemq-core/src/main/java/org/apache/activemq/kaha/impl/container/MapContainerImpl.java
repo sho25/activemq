@@ -968,7 +968,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Get the StoreEntry associated with the key      * @param key      * @return the StoreEntry      */
+comment|/**      * Get the StoreEntry associated with the key      *       * @param key      * @return the StoreEntry      */
 specifier|public
 specifier|synchronized
 name|StoreEntry
@@ -1235,7 +1235,7 @@ name|this
 argument_list|)
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.MapContainer#put(java.lang.Object, java.lang.Object)      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.MapContainer#put(java.lang.Object,      *      java.lang.Object)      */
 specifier|public
 specifier|synchronized
 name|Object

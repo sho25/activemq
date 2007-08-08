@@ -146,7 +146,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Broker side of the VMTransport  *  */
+comment|/**  * Broker side of the VMTransport  */
 end_comment
 
 begin_class
@@ -185,7 +185,7 @@ specifier|final
 name|boolean
 name|disposeOnDisconnect
 decl_stmt|;
-comment|/**      * @param location      * @param disposeOnDisconnect       */
+comment|/**      * @param location      * @param disposeOnDisconnect      */
 specifier|public
 name|VMTransportServer
 parameter_list|(
@@ -209,7 +209,7 @@ operator|=
 name|disposeOnDisconnect
 expr_stmt|;
 block|}
-comment|/**      *@return a pretty print of this      */
+comment|/**      * @return a pretty print of this      */
 specifier|public
 name|String
 name|toString
@@ -360,7 +360,7 @@ return|return
 name|client
 return|;
 block|}
-comment|/**      * Configure transport      * @param transport      * @return the Transport      */
+comment|/**      * Configure transport      *       * @param transport      * @return the Transport      */
 specifier|public
 specifier|static
 name|Transport
@@ -390,7 +390,7 @@ return|return
 name|transport
 return|;
 block|}
-comment|/**      * Set the Transport accept listener for new Connections      * @param acceptListener       *       */
+comment|/**      * Set the Transport accept listener for new Connections      *       * @param acceptListener      */
 specifier|synchronized
 specifier|public
 name|void

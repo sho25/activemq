@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A count statistic implementation  *  * @version $Revision: 1.3 $  */
+comment|/**  * A count statistic implementation  *   * @version $Revision: 1.3 $  */
 end_comment
 
 begin_class
@@ -407,7 +407,7 @@ name|buffer
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @return the average time period that elapses between counter increments since the last reset.      */
+comment|/**      * @return the average time period that elapses between counter increments      *         since the last reset.      */
 specifier|public
 name|double
 name|getPeriod
@@ -455,7 +455,7 @@ operator|)
 operator|)
 return|;
 block|}
-comment|/**      * @return the number of times per second that the counter is incrementing since the last reset.      */
+comment|/**      * @return the number of times per second that the counter is incrementing      *         since the last reset.      */
 specifier|public
 name|double
 name|getFrequency

@@ -250,7 +250,7 @@ return|return
 name|command
 return|;
 block|}
-comment|/**      * The route of brokers the command has moved through.       *       * @openwire:property version=1 cache=true      */
+comment|/**      * The route of brokers the command has moved through.      *       * @openwire:property version=1 cache=true      */
 specifier|public
 name|BrokerId
 index|[]
@@ -296,7 +296,7 @@ name|this
 argument_list|)
 return|;
 block|}
-comment|/**      * If the broker should dispatch messages from this producer async.  Since sync      * dispatch could potentally block the producer thread, this could be an important      * setting for the producer.      *       * @openwire:property version=2      */
+comment|/**      * If the broker should dispatch messages from this producer async. Since      * sync dispatch could potentally block the producer thread, this could be      * an important setting for the producer.      *       * @openwire:property version=2      */
 specifier|public
 name|boolean
 name|isDispatchAsync
@@ -321,7 +321,7 @@ operator|=
 name|dispatchAsync
 expr_stmt|;
 block|}
-comment|/**      * Used to configure the producer window size.  A producer will      * send up to the configured window size worth of payload data to      * the broker before waiting for an Ack that allows him to send more.      *       * @openwire:property version=3      */
+comment|/**      * Used to configure the producer window size. A producer will send up to      * the configured window size worth of payload data to the broker before      * waiting for an Ack that allows him to send more.      *       * @openwire:property version=3      */
 specifier|public
 name|int
 name|getWindowSize

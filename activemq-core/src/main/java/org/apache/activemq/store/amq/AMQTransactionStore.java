@@ -304,7 +304,9 @@ name|tx
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|peristenceAdapter
 operator|.
 name|writeCommand
@@ -377,7 +379,9 @@ name|tx
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 synchronized|synchronized
 init|(
 name|preparedTransactions
@@ -516,7 +520,9 @@ name|tx
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|txid
@@ -657,6 +663,7 @@ name|tx
 operator|!=
 literal|null
 condition|)
+block|{
 synchronized|synchronized
 init|(
 name|preparedTransactions
@@ -671,6 +678,7 @@ argument_list|(
 name|txid
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -1057,7 +1065,8 @@ throws|throws
 name|IOException
 block|{
 comment|// Nothing really to checkpoint.. since, we don't
-comment|// checkpoint tx operations in to long term store until they are committed.
+comment|// checkpoint tx operations in to long term store until they are
+comment|// committed.
 comment|// But we keep track of the first location of an operation
 comment|// that was associated with an active tx. The journal can not
 comment|// roll over active tx records.

@@ -320,7 +320,7 @@ name|data
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Operations      * @version $Revision: 1.6 $      */
+comment|/**      * Operations      *       * @version $Revision: 1.6 $      */
 specifier|public
 specifier|static
 class|class
@@ -1446,7 +1446,8 @@ throws|throws
 name|IOException
 block|{
 comment|// Nothing really to checkpoint.. since, we don't
-comment|// checkpoint tx operations in to long term store until they are committed.
+comment|// checkpoint tx operations in to long term store until they are
+comment|// committed.
 comment|// But we keep track of the first location of an operation
 comment|// that was associated with an active tx. The journal can not
 comment|// roll over active tx records.

@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URI
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -26,16 +36,6 @@ operator|.
 name|util
 operator|.
 name|ServiceSupport
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URI
 import|;
 end_import
 
@@ -125,7 +125,7 @@ return|return
 name|connectURI
 return|;
 block|}
-comment|/**      * @param location      *            The location to set.      */
+comment|/**      * @param location The location to set.      */
 specifier|public
 name|void
 name|setConnectURI

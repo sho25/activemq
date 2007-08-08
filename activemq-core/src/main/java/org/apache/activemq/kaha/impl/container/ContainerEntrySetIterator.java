@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** * An Iterator for a container entry Set *  * @version $Revision: 1.2 $ */
+comment|/**  * An Iterator for a container entry Set  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class

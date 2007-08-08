@@ -62,7 +62,7 @@ decl_stmt|;
 specifier|public
 name|SessionId
 parameter_list|()
-block|{             }
+block|{     }
 specifier|public
 name|SessionId
 parameter_list|(

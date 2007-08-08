@@ -42,7 +42,7 @@ decl_stmt|;
 specifier|public
 name|DataResponse
 parameter_list|()
-block|{         }
+block|{     }
 specifier|public
 name|DataResponse
 parameter_list|(

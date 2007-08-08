@@ -413,7 +413,7 @@ parameter_list|(
 name|Throwable
 name|ignore
 parameter_list|)
-block|{             	}
+block|{                 }
 block|}
 block|}
 return|return
@@ -833,7 +833,8 @@ condition|)
 return|return
 literal|false
 return|;
-comment|// If the type is null or it matches the needed type, just use the value directly
+comment|// If the type is null or it matches the needed type, just use the
+comment|// value directly
 if|if
 condition|(
 name|value

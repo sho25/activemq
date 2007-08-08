@@ -826,7 +826,7 @@ argument_list|()
 operator|!=
 literal|'\n'
 condition|)
-block|{                     }
+block|{         }
 block|}
 block|}
 end_class

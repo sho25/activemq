@@ -528,7 +528,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -564,13 +564,12 @@ argument_list|(
 literal|true
 argument_list|)
 decl_stmt|;
+comment|// this could be NULL! (If an advisory)
 specifier|protected
 specifier|final
 name|TopicMessageStore
 name|store
 decl_stmt|;
-comment|// this could be NULL! (If an
-comment|// advsiory)
 specifier|protected
 specifier|final
 name|UsageManager
@@ -1950,13 +1949,13 @@ condition|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2494,7 +2493,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(

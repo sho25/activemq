@@ -235,7 +235,8 @@ operator|.
 name|getBrokerId
 argument_list|()
 decl_stmt|;
-comment|// lets associate the incoming endpoint with a broker ID so we can refer to it later
+comment|// lets associate the incoming endpoint with a broker ID so we can
+comment|// refer to it later
 name|Endpoint
 name|from
 init|=

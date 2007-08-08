@@ -92,7 +92,7 @@ specifier|final
 name|String
 name|clientId
 decl_stmt|;
-comment|/**      * Constructor      * @param subs      */
+comment|/**      * Constructor      *       * @param subs      */
 specifier|public
 name|SubscriptionView
 parameter_list|(
@@ -448,7 +448,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * The subscription should release as may references as it can to help the garbage collector      * reclaim memory.      */
+comment|/**      * The subscription should release as may references as it can to help the      * garbage collector reclaim memory.      */
 specifier|public
 name|void
 name|gc
@@ -568,7 +568,7 @@ else|:
 literal|false
 return|;
 block|}
-comment|/**      * @return the maximum number of pending messages allowed in addition to the prefetch size. If enabled      * to a non-zero value then this will perform eviction of messages for slow consumers on non-durable topics.      */
+comment|/**      * @return the maximum number of pending messages allowed in addition to the      *         prefetch size. If enabled to a non-zero value then this will      *         perform eviction of messages for slow consumers on non-durable      *         topics.      */
 specifier|public
 name|int
 name|getMaximumPendingMessageLimit
@@ -618,7 +618,7 @@ else|:
 literal|0
 return|;
 block|}
-comment|/**      * @return the name of the consumer which is only used for durable consumers.      */
+comment|/**      * @return the name of the consumer which is only used for durable      *         consumers.      */
 specifier|public
 name|String
 name|getSubcriptionName
@@ -756,7 +756,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**      *@return pretty print      */
+comment|/**      * @return pretty print      */
 specifier|public
 name|String
 name|toString

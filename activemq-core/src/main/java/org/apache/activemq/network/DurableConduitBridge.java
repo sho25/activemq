@@ -159,7 +159,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Constructor      * @param configuration       *       * @param localBroker      * @param remoteBroker      */
+comment|/**      * Constructor      *       * @param configuration      *       * @param localBroker      * @param remoteBroker      */
 specifier|public
 name|DurableConduitBridge
 parameter_list|(

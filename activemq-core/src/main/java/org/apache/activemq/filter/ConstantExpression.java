@@ -530,7 +530,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * TODO: more efficient hashCode()      *      * @see java.lang.Object#hashCode()      */
+comment|/**      * TODO: more efficient hashCode()      *       * @see java.lang.Object#hashCode()      */
 specifier|public
 name|int
 name|hashCode
@@ -544,7 +544,7 @@ name|hashCode
 argument_list|()
 return|;
 block|}
-comment|/**      * TODO: more efficient hashCode()      *      * @see java.lang.Object#equals(java.lang.Object)      */
+comment|/**      * TODO: more efficient hashCode()      *       * @see java.lang.Object#equals(java.lang.Object)      */
 specifier|public
 name|boolean
 name|equals
@@ -591,7 +591,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Encodes the value of string so that it looks like it would look like      * when it was provided in a selector.      *      * @param string      * @return      */
+comment|/**      * Encodes the value of string so that it looks like it would look like when      * it was provided in a selector.      *       * @param string      * @return      */
 specifier|public
 specifier|static
 name|String

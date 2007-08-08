@@ -271,7 +271,8 @@ argument_list|,
 name|transactionManager
 argument_list|)
 expr_stmt|;
-comment|// Add a transport Listener so that we can notice if this connection should be expired due to
+comment|// Add a transport Listener so that we can notice if this connection
+comment|// should be expired due to
 comment|// a connection failure.
 name|connection
 operator|.
@@ -288,7 +289,7 @@ parameter_list|(
 name|Object
 name|command
 parameter_list|)
-block|{ 			}
+block|{             }
 specifier|public
 name|void
 name|onException
@@ -314,12 +315,12 @@ specifier|public
 name|void
 name|transportInterupted
 parameter_list|()
-block|{ 			}
+block|{             }
 specifier|public
 name|void
 name|transportResumed
 parameter_list|()
-block|{ 			}
+block|{             }
 block|}
 argument_list|)
 expr_stmt|;
@@ -679,7 +680,7 @@ parameter_list|(
 name|Exception
 name|e
 parameter_list|)
-block|{ 		            }
+block|{                     }
 block|}
 block|}
 finally|finally
@@ -753,7 +754,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * @return true if this connection has expired. 	 */
+comment|/**      * @return true if this connection has expired.      */
 specifier|synchronized
 specifier|public
 name|boolean

@@ -391,7 +391,8 @@ operator|.
 name|disable
 argument_list|()
 expr_stmt|;
-comment|// Kick off another thread to find newly selected keys while we process the
+comment|// Kick off another thread to find newly selected keys
+comment|// while we process the
 comment|// currently selected keys
 name|manager
 operator|.

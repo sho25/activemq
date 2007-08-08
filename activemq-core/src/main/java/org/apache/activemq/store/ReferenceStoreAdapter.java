@@ -104,7 +104,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Adapter to the actual persistence mechanism used with ActiveMQ  *  * @version $Revision: 1.3 $  */
+comment|/**  * Adapter to the actual persistence mechanism used with ActiveMQ  *   * @version $Revision: 1.3 $  */
 end_comment
 
 begin_interface
@@ -114,7 +114,7 @@ name|ReferenceStoreAdapter
 extends|extends
 name|PersistenceAdapter
 block|{
-comment|/**      * Factory method to create a new queue message store with the given destination name      * @param destination       * @return the QueueReferenceStore      * @throws IOException       */
+comment|/**      * Factory method to create a new queue message store with the given      * destination name      *       * @param destination      * @return the QueueReferenceStore      * @throws IOException      */
 specifier|public
 name|ReferenceStore
 name|createQueueReferenceStore
@@ -125,7 +125,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Factory method to create a new topic message store with the given destination name      * @param destination      * @return  the TopicRefererenceStore      * @throws IOException       */
+comment|/**      * Factory method to create a new topic message store with the given      * destination name      *       * @param destination      * @return the TopicRefererenceStore      * @throws IOException      */
 specifier|public
 name|TopicReferenceStore
 name|createTopicReferenceStore
@@ -136,7 +136,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/** 	 * @return Set of File ids in use 	 * @throws IOException 	 */
+comment|/**      * @return Set of File ids in use      * @throws IOException      */
 specifier|public
 name|Set
 argument_list|<
@@ -147,13 +147,13 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * If the store isn't valid, it can be recoverd at start-up      * @return true if the reference store is in a consistent state      */
+comment|/**      * If the store isn't valid, it can be recoverd at start-up      *       * @return true if the reference store is in a consistent state      */
 specifier|public
 name|boolean
 name|isStoreValid
 parameter_list|()
 function_decl|;
-comment|/**      * called by recover to clear out message references      * @throws IOException       */
+comment|/**      * called by recover to clear out message references      *       * @throws IOException      */
 specifier|public
 name|void
 name|clearMessages
@@ -161,7 +161,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * recover any state       * @throws IOException       *      */
+comment|/**      * recover any state      *       * @throws IOException      */
 specifier|public
 name|void
 name|recoverState
@@ -169,7 +169,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Save prepared transactions      * @param map      * @throws IOException      */
+comment|/**      * Save prepared transactions      *       * @param map      * @throws IOException      */
 specifier|public
 name|void
 name|savePreparedState
@@ -185,7 +185,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      *       * @return saved prepared transactions      * @throws IOException      */
+comment|/**      * @return saved prepared transactions      * @throws IOException      */
 specifier|public
 name|Map
 argument_list|<

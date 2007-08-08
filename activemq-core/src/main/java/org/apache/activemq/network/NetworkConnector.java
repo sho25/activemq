@@ -511,7 +511,7 @@ return|return
 name|staticallyIncludedDestinations
 return|;
 block|}
-comment|/**      * @param staticallyIncludedDestinations The staticallyIncludedDestinations to set.      */
+comment|/**      * @param staticallyIncludedDestinations The staticallyIncludedDestinations      *                to set.      */
 specifier|public
 name|void
 name|setStaticallyIncludedDestinations
@@ -555,7 +555,7 @@ return|return
 name|dynamicallyIncludedDestinations
 return|;
 block|}
-comment|/**      * @param dynamicallyIncludedDestinations The dynamicallyIncludedDestinations to set.      */
+comment|/**      * @param dynamicallyIncludedDestinations The      *                dynamicallyIncludedDestinations to set.      */
 specifier|public
 name|void
 name|setDynamicallyIncludedDestinations

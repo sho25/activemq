@@ -50,7 +50,7 @@ init|=
 operator|-
 literal|570930196733067056L
 decl_stmt|;
-comment|/**      * Default Constructor      *      */
+comment|/**      * Default Constructor      *       */
 specifier|public
 name|BadMagicException
 parameter_list|()
@@ -59,7 +59,7 @@ name|super
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Construct an Exception with a reason      * @param s      */
+comment|/**      * Construct an Exception with a reason      *       * @param s      */
 specifier|public
 name|BadMagicException
 parameter_list|(

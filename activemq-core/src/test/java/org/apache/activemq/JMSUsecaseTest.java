@@ -264,7 +264,7 @@ name|ActiveMQDestination
 operator|.
 name|TEMP_QUEUE_TYPE
 argument_list|)
-block|,                  }
+block|}
 argument_list|)
 expr_stmt|;
 block|}

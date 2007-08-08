@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simple BitArray to enable setting multiple boolean values efficently Used instead of BitSet because BitSet does not  * allow for efficent serialization.  * Will store up to 64 boolean values  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Simple BitArray to enable setting multiple boolean values efficently Used  * instead of BitSet because BitSet does not allow for efficent serialization.  * Will store up to 64 boolean values  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -247,7 +247,7 @@ return|return
 name|bits
 return|;
 block|}
-comment|/**      * set the boolean value at the index      *      * @param index      * @param flag      * @return the old value held at this index      */
+comment|/**      * set the boolean value at the index      *       * @param index      * @param flag      * @return the old value held at this index      */
 specifier|public
 name|boolean
 name|set
@@ -353,7 +353,7 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
-comment|/**      * reset all the bits to the value supplied      * @param bits      */
+comment|/**      * reset all the bits to the value supplied      *       * @param bits      */
 specifier|public
 name|void
 name|reset
@@ -369,7 +369,7 @@ operator|=
 name|bits
 expr_stmt|;
 block|}
-comment|/**      * write the bits to an output stream      *      * @param dataOut      * @throws IOException      */
+comment|/**      * write the bits to an output stream      *       * @param dataOut      * @throws IOException      */
 specifier|public
 name|void
 name|writeToStream
@@ -454,7 +454,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * read the bits from an input stream      *      * @param dataIn      * @throws IOException      */
+comment|/**      * read the bits from an input stream      *       * @param dataIn      * @throws IOException      */
 specifier|public
 name|void
 name|readFromStream

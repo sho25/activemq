@@ -168,7 +168,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link org.apache.activemq.store.MessageStore} which uses a JPS Container  *   * @version $Revision: 1.7 $  */
+comment|/**  * An implementation of {@link org.apache.activemq.store.MessageStore} which  * uses a JPS Container  *   * @version $Revision: 1.7 $  */
 end_comment
 
 begin_class
@@ -287,9 +287,11 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-comment|// TODO: we should do the following but it is not need if the message is being added within a persistence
+comment|// TODO: we should do the following but it is not need if the message is
+comment|// being added within a persistence
 comment|// transaction
-comment|// but since I can't tell if one is running right now.. I'll leave this out for now.
+comment|// but since I can't tell if one is running right now.. I'll leave this
+comment|// out for now.
 comment|// if( message.isResponseRequired() ) {
 comment|// messageContainer.force();
 comment|// }
@@ -550,7 +552,7 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @param usageManager The UsageManager that is controlling the destination's memory usage.      */
+comment|/**      * @param usageManager The UsageManager that is controlling the      *                destination's memory usage.      */
 specifier|public
 name|void
 name|setUsageManager
@@ -587,7 +589,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * @param lastMessageId      * @param maxReturned      * @param listener      * @throws Exception      * @see org.apache.activemq.store.MessageStore#recoverNextMessages(org.apache.activemq.command.MessageId, int,      *      org.apache.activemq.store.MessageRecoveryListener)      */
+comment|/**      * @param lastMessageId      * @param maxReturned      * @param listener      * @throws Exception      * @see org.apache.activemq.store.MessageStore#recoverNextMessages(org.apache.activemq.command.MessageId,      *      int, org.apache.activemq.store.MessageRecoveryListener)      */
 specifier|public
 specifier|synchronized
 name|void

@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Removes a consumer, producer, session or connection.  *    * @openwire:marshaller code="12"  * @version $Revision$  */
+comment|/**  * Removes a consumer, producer, session or connection.  *   * @openwire:marshaller code="12"  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -76,7 +76,7 @@ block|}
 specifier|public
 name|RemoveInfo
 parameter_list|()
-block|{             }
+block|{     }
 specifier|public
 name|RemoveInfo
 parameter_list|(

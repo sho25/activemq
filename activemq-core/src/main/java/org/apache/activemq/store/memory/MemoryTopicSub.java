@@ -292,7 +292,8 @@ name|lastId
 init|=
 literal|null
 decl_stmt|;
-comment|// the message table is a synchronizedMap - so just have to synchronize here
+comment|// the message table is a synchronizedMap - so just have to synchronize
+comment|// here
 name|int
 name|count
 init|=

@@ -4089,6 +4089,7 @@ name|data
 operator|==
 literal|null
 condition|)
+block|{
 name|data
 operator|=
 operator|new
@@ -4104,6 +4105,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 name|InputStream
 name|is
 init|=

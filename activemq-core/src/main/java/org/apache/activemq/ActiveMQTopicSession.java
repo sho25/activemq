@@ -364,6 +364,7 @@ name|destination
 operator|instanceof
 name|Queue
 condition|)
+block|{
 throw|throw
 operator|new
 name|InvalidDestinationException
@@ -371,6 +372,7 @@ argument_list|(
 literal|"Queues are not supported by a TopicSession"
 argument_list|)
 throw|;
+block|}
 return|return
 name|next
 operator|.
@@ -400,6 +402,7 @@ name|destination
 operator|instanceof
 name|Queue
 condition|)
+block|{
 throw|throw
 operator|new
 name|InvalidDestinationException
@@ -407,6 +410,7 @@ argument_list|(
 literal|"Queues are not supported by a TopicSession"
 argument_list|)
 throw|;
+block|}
 return|return
 name|next
 operator|.
@@ -441,6 +445,7 @@ name|destination
 operator|instanceof
 name|Queue
 condition|)
+block|{
 throw|throw
 operator|new
 name|InvalidDestinationException
@@ -448,6 +453,7 @@ argument_list|(
 literal|"Queues are not supported by a TopicSession"
 argument_list|)
 throw|;
+block|}
 return|return
 name|next
 operator|.
@@ -603,6 +609,7 @@ name|destination
 operator|instanceof
 name|Queue
 condition|)
+block|{
 throw|throw
 operator|new
 name|InvalidDestinationException
@@ -610,6 +617,7 @@ argument_list|(
 literal|"Queues are not supported by a TopicSession"
 argument_list|)
 throw|;
+block|}
 return|return
 name|next
 operator|.

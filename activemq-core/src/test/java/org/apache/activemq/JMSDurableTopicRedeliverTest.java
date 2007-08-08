@@ -102,7 +102,7 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Sends and consumes the messages.      *      * @throws Exception      */
+comment|/**      * Sends and consumes the messages.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testRedeliverNewSession
@@ -158,7 +158,7 @@ argument_list|,
 name|sendMessage
 argument_list|)
 expr_stmt|;
-comment|//receive but don't acknowledge
+comment|// receive but don't acknowledge
 name|Message
 name|unackMessage
 init|=
@@ -227,7 +227,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-comment|//receive then acknowledge
+comment|// receive then acknowledge
 name|consumeSession
 operator|=
 name|connection

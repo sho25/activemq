@@ -106,7 +106,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @see org.apache.activemq.Service#start()      * @throws IOException      *             if the next channel has not been set.      */
+comment|/**      * @see org.apache.activemq.Service#start()      * @throws IOException if the next channel has not been set.      */
 specifier|public
 name|void
 name|start

@@ -174,7 +174,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Shows that by default messages are round robined across a set of consumers.      *       * @throws Exception      */
+comment|/**      * Shows that by default messages are round robined across a set of      * consumers.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testRoundRobinDispatchOnNonExclusive
@@ -355,7 +355,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Shows that if the "?consumer.exclusive=true" option is added to destination,      * then all messages are routed to 1 consumer.      *       * @throws Exception      */
+comment|/**      * Shows that if the "?consumer.exclusive=true" option is added to      * destination, then all messages are routed to 1 consumer.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testDispatchExclusive

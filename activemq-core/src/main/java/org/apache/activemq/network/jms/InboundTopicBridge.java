@@ -34,7 +34,7 @@ decl_stmt|;
 name|String
 name|localTopicName
 decl_stmt|;
-comment|/**      * Constructor that takes a foriegn destination as an argument      * @param inboundTopicName      */
+comment|/**      * Constructor that takes a foriegn destination as an argument      *       * @param inboundTopicName      */
 specifier|public
 name|InboundTopicBridge
 parameter_list|(
@@ -70,7 +70,7 @@ return|return
 name|inboundTopicName
 return|;
 block|}
-comment|/**      * @param inboundTopicName       */
+comment|/**      * @param inboundTopicName      */
 specifier|public
 name|void
 name|setInboundTopicName

@@ -1689,7 +1689,7 @@ return|return
 name|cleanupPeriod
 return|;
 block|}
-comment|/**      * Sets the number of milliseconds until the database is attempted to be cleaned up for durable topics      */
+comment|/**      * Sets the number of milliseconds until the database is attempted to be      * cleaned up for durable topics      */
 specifier|public
 name|void
 name|setCleanupPeriod
@@ -1837,7 +1837,7 @@ return|return
 name|useDatabaseLock
 return|;
 block|}
-comment|/**      * Sets whether or not an exclusive database lock should be used to enable JDBC Master/Slave. Enabled by default.      */
+comment|/**      * Sets whether or not an exclusive database lock should be used to enable      * JDBC Master/Slave. Enabled by default.      */
 specifier|public
 name|void
 name|setUseDatabaseLock
@@ -1950,7 +1950,7 @@ operator|=
 name|statements
 expr_stmt|;
 block|}
-comment|/**      * @param usageManager The UsageManager that is controlling the destination's memory usage.      */
+comment|/**      * @param usageManager The UsageManager that is controlling the      *                destination's memory usage.      */
 specifier|public
 name|void
 name|setUsageManager
@@ -2114,7 +2114,7 @@ parameter_list|(
 name|File
 name|dir
 parameter_list|)
-block|{             }
+block|{     }
 specifier|public
 name|void
 name|checkpoint
@@ -2124,7 +2124,7 @@ name|sync
 parameter_list|)
 throws|throws
 name|IOException
-block|{             }
+block|{     }
 block|}
 end_class
 

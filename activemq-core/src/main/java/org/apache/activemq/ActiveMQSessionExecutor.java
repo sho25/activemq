@@ -422,7 +422,7 @@ condition|(
 name|iterate
 argument_list|()
 condition|)
-empty_stmt|;
+block|{                                     }
 block|}
 block|}
 block|}
@@ -564,9 +564,11 @@ condition|(
 name|hasUncomsumedMessages
 argument_list|()
 condition|)
+block|{
 name|wakeup
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 name|void

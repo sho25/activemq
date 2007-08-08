@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Queue
+import|;
+end_import
+
+begin_import
+import|import
 name|junit
 operator|.
 name|framework
@@ -97,18 +107,8 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Queue
-import|;
-end_import
-
 begin_comment
-comment|/**  *   * @version $Revision$  */
+comment|/**  * @version $Revision$  */
 end_comment
 
 begin_class

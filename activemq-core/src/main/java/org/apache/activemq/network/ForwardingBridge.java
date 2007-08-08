@@ -1301,8 +1301,10 @@ name|isResponseRequired
 argument_list|()
 condition|)
 block|{
-comment|// If the message was originally sent using async send, we will preserve that QOS
-comment|// by bridging it using an async send (small chance of message loss).
+comment|// If the message was originally sent using async send, we
+comment|// will preserve that QOS
+comment|// by bridging it using an async send (small chance of
+comment|// message loss).
 name|remoteBroker
 operator|.
 name|oneway
@@ -1335,8 +1337,10 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// The message was not sent using async send, so we should only ack the local
-comment|// broker when we get confirmation that the remote broker has received the message.
+comment|// The message was not sent using async send, so we should
+comment|// only ack the local
+comment|// broker when we get confirmation that the remote broker
+comment|// has received the message.
 name|ResponseCallback
 name|callback
 init|=
@@ -1438,23 +1442,32 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Ack on every message since we don't know if the broker is blocked due to memory
+comment|// Ack on every message since we don't know if the broker is
+comment|// blocked due to memory
 comment|// usage and is waiting for an Ack to un-block him.
-comment|// Acking a range is more efficient, but also more prone to locking up a server
-comment|// Perhaps doing something like the following should be policy based.
-comment|//                if( md.getConsumerId().equals(queueConsumerInfo.getConsumerId()) ) {
-comment|//                    queueDispatched++;
-comment|//                    if( queueDispatched> (queueConsumerInfo.getPrefetchSize()/2) ) {
-comment|//                        localBroker.oneway(new MessageAck(md, MessageAck.STANDARD_ACK_TYPE, queueDispatched));
-comment|//                        queueDispatched=0;
-comment|//                    }
-comment|//                } else {
-comment|//                    topicDispatched++;
-comment|//                    if( topicDispatched> (topicConsumerInfo.getPrefetchSize()/2) ) {
-comment|//                        localBroker.oneway(new MessageAck(md, MessageAck.STANDARD_ACK_TYPE, topicDispatched));
-comment|//                        topicDispatched=0;
-comment|//                    }
-comment|//                }
+comment|// Acking a range is more efficient, but also more prone to
+comment|// locking up a server
+comment|// Perhaps doing something like the following should be policy
+comment|// based.
+comment|// if(
+comment|// md.getConsumerId().equals(queueConsumerInfo.getConsumerId())
+comment|// ) {
+comment|// queueDispatched++;
+comment|// if( queueDispatched> (queueConsumerInfo.getPrefetchSize()/2)
+comment|// ) {
+comment|// localBroker.oneway(new MessageAck(md,
+comment|// MessageAck.STANDARD_ACK_TYPE, queueDispatched));
+comment|// queueDispatched=0;
+comment|// }
+comment|// } else {
+comment|// topicDispatched++;
+comment|// if( topicDispatched> (topicConsumerInfo.getPrefetchSize()/2)
+comment|// ) {
+comment|// localBroker.oneway(new MessageAck(md,
+comment|// MessageAck.STANDARD_ACK_TYPE, topicDispatched));
+comment|// topicDispatched=0;
+comment|// }
+comment|// }
 block|}
 elseif|else
 if|if

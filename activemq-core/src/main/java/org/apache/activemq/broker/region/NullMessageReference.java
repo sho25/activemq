@@ -84,7 +84,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Only used by the {@link QueueMessageReference#NULL_MESSAGE}   */
+comment|/**  * Only used by the {@link QueueMessageReference#NULL_MESSAGE}  */
 end_comment
 
 begin_class
@@ -187,7 +187,7 @@ specifier|public
 name|void
 name|unlock
 parameter_list|()
-block|{ 	}
+block|{     }
 specifier|public
 name|int
 name|decrementReferenceCount

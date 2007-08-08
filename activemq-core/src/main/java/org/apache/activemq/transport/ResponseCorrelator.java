@@ -162,7 +162,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Adds the incrementing sequence number to commands along with performing the corelation of responses to requests to  * create a blocking request-response semantics.  *   * @version $Revision: 1.4 $  */
+comment|/**  * Adds the incrementing sequence number to commands along with performing the  * corelation of responses to requests to create a blocking request-response  * semantics.  *   * @version $Revision: 1.4 $  */
 end_comment
 
 begin_class
@@ -176,7 +176,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -205,7 +205,7 @@ specifier|final
 name|boolean
 name|debug
 init|=
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
@@ -515,7 +515,7 @@ if|if
 condition|(
 name|debug
 condition|)
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -541,7 +541,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * If an async exception occurs, then assume no responses will arrive for any of current requests. Lets let them      * know of the problem.      */
+comment|/**      * If an async exception occurs, then assume no responses will arrive for      * any of current requests. Lets let them know of the problem.      */
 specifier|public
 name|void
 name|onException

@@ -409,7 +409,7 @@ name|getFullMessageTableName
 argument_list|()
 operator|+
 literal|""
-block|, }
+block|,}
 expr_stmt|;
 block|}
 return|return
@@ -1262,7 +1262,7 @@ return|return
 name|containerNameDataType
 return|;
 block|}
-comment|/**      * @param containerNameDataType      *            The containerNameDataType to set.      */
+comment|/**      * @param containerNameDataType The containerNameDataType to set.      */
 specifier|public
 name|void
 name|setContainerNameDataType
@@ -1288,7 +1288,7 @@ return|return
 name|binaryDataType
 return|;
 block|}
-comment|/**      * @param messageDataType      *            The messageDataType to set.      */
+comment|/**      * @param messageDataType The messageDataType to set.      */
 specifier|public
 name|void
 name|setBinaryDataType
@@ -1314,7 +1314,7 @@ return|return
 name|messageTableName
 return|;
 block|}
-comment|/**      * @param messageTableName      *            The messageTableName to set.      */
+comment|/**      * @param messageTableName The messageTableName to set.      */
 specifier|public
 name|void
 name|setMessageTableName
@@ -1340,7 +1340,7 @@ return|return
 name|msgIdDataType
 return|;
 block|}
-comment|/**      * @param msgIdDataType      *            The msgIdDataType to set.      */
+comment|/**      * @param msgIdDataType The msgIdDataType to set.      */
 specifier|public
 name|void
 name|setMsgIdDataType
@@ -1366,7 +1366,7 @@ return|return
 name|sequenceDataType
 return|;
 block|}
-comment|/**      * @param sequenceDataType      *            The sequenceDataType to set.      */
+comment|/**      * @param sequenceDataType The sequenceDataType to set.      */
 specifier|public
 name|void
 name|setSequenceDataType
@@ -1392,7 +1392,7 @@ return|return
 name|tablePrefix
 return|;
 block|}
-comment|/**      * @param tablePrefix      *            The tablePrefix to set.      */
+comment|/**      * @param tablePrefix The tablePrefix to set.      */
 specifier|public
 name|void
 name|setTablePrefix
@@ -1418,7 +1418,7 @@ return|return
 name|durableSubAcksTableName
 return|;
 block|}
-comment|/**      * @param durableSubAcksTableName      *            The durableSubAcksTableName to set.      */
+comment|/**      * @param durableSubAcksTableName The durableSubAcksTableName to set.      */
 specifier|public
 name|void
 name|setDurableSubAcksTableName
@@ -1886,7 +1886,7 @@ operator|=
 name|lockUpdateStatement
 expr_stmt|;
 block|}
-comment|/**      * @param findDurableSubMessagesStatement the findDurableSubMessagesStatement to set      */
+comment|/**      * @param findDurableSubMessagesStatement the      *                findDurableSubMessagesStatement to set      */
 specifier|public
 name|void
 name|setFindDurableSubMessagesStatement

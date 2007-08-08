@@ -88,7 +88,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Manages the thread pool for long running tasks.  *   * Long running tasks are not always active but when they are active, they may  * need a few iterations of processing for them to become idle. The manager  * ensures that each task is processes but that no one task overtakes the  * system.  *   * This is kina like cooperative multitasking.  *   * @version $Revision: 1.5 $  */
+comment|/**  * Manages the thread pool for long running tasks. Long running tasks are not  * always active but when they are active, they may need a few iterations of  * processing for them to become idle. The manager ensures that each task is  * processes but that no one task overtakes the system. This is kina like  * cooperative multitasking.  *   * @version $Revision: 1.5 $  */
 end_comment
 
 begin_class
@@ -174,8 +174,10 @@ name|maxIterationsPerRun
 operator|=
 name|maxIterationsPerRun
 expr_stmt|;
-comment|// If your OS/JVM combination has a good thread model, you may want to avoid
-comment|// using a thread pool to run tasks and use a DedicatedTaskRunner instead.
+comment|// If your OS/JVM combination has a good thread model, you may want to
+comment|// avoid
+comment|// using a thread pool to run tasks and use a DedicatedTaskRunner
+comment|// instead.
 if|if
 condition|(
 literal|"true"
@@ -342,7 +344,7 @@ block|}
 block|}
 argument_list|)
 decl_stmt|;
-comment|//rc.allowCoreThreadTimeOut(true);
+comment|// rc.allowCoreThreadTimeOut(true);
 return|return
 name|rc
 return|;

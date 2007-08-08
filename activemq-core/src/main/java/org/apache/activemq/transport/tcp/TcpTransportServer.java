@@ -598,7 +598,8 @@ name|URISyntaxException
 name|e
 parameter_list|)
 block|{
-comment|// it could be that the host name contains invalid characters such as _ on unix platforms
+comment|// it could be that the host name contains invalid characters such
+comment|// as _ on unix platforms
 comment|// so lets try use the IP address instead
 try|try
 block|{
@@ -672,7 +673,7 @@ return|return
 name|wireFormatFactory
 return|;
 block|}
-comment|/**      * @param wireFormatFactory      *            The wireFormatFactory to set.      */
+comment|/**      * @param wireFormatFactory The wireFormatFactory to set.      */
 specifier|public
 name|void
 name|setWireFormatFactory
@@ -974,7 +975,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Allow derived classes to override the Transport implementation that this transport server creates.      * @param socket      * @param format      * @return      * @throws IOException      */
+comment|/**      * Allow derived classes to override the Transport implementation that this      * transport server creates.      *       * @param socket      * @param format      * @return      * @throws IOException      */
 specifier|protected
 name|Transport
 name|createTransport
@@ -1011,7 +1012,7 @@ name|getBindLocation
 argument_list|()
 return|;
 block|}
-comment|/**      *       * @param hostName      * @return real hostName      * @throws UnknownHostException      */
+comment|/**      * @param hostName      * @return real hostName      * @throws UnknownHostException      */
 specifier|protected
 name|String
 name|resolveHostName

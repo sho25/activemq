@@ -314,7 +314,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Benchmarks the broker by starting many consumer and producers against the  * same destination.  *   * Make sure you run with jvm option -server (makes a big difference). The tests  * simulate storing 1000 1k jms messages to see the rate of processing msg/sec.  *   * @version $Revision$  */
+comment|/**  * Benchmarks the broker by starting many consumer and producers against the  * same destination. Make sure you run with jvm option -server (makes a big  * difference). The tests simulate storing 1000 1k jms messages to see the rate  * of processing msg/sec.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -504,13 +504,12 @@ operator|new
 name|Object
 index|[]
 block|{
-comment|// new ActiveMQTopic("TEST"),
 operator|new
 name|ActiveMQQueue
 argument_list|(
 literal|"TEST"
 argument_list|)
-block|,}
+block|}
 argument_list|)
 expr_stmt|;
 block|}

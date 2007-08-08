@@ -104,7 +104,7 @@ operator|=
 name|clientId
 expr_stmt|;
 block|}
-comment|/**      * This is the a resolved destination that the subscription is receiving messages from.      * This will never be a pattern or a composite destination.      *       * @openwire:property version=1 cache=true      */
+comment|/**      * This is the a resolved destination that the subscription is receiving      * messages from. This will never be a pattern or a composite destination.      *       * @openwire:property version=1 cache=true      */
 specifier|public
 name|ActiveMQDestination
 name|getDestination
@@ -164,7 +164,7 @@ return|return
 name|subscriptionName
 return|;
 block|}
-comment|/**      * @param subscriptionName      *  * @deprecated      */
+comment|/**      * @param subscriptionName *      * @deprecated      */
 specifier|public
 name|void
 name|setSubcriptionName
@@ -365,7 +365,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * The destination the client originally subscribed to.. This may not match the {@see getDestination} method      * if the subscribed destination uses patterns or composites.      *        *  If the subscribed destinationis not set, this just ruturns the desitination.      *        * @openwire:property version=3      */
+comment|/**      * The destination the client originally subscribed to.. This may not match      * the {@see getDestination} method if the subscribed destination uses      * patterns or composites.      *       * If the subscribed destinationis not set, this just ruturns the      * desitination.      *       * @openwire:property version=3      */
 specifier|public
 name|ActiveMQDestination
 name|getSubscribedDestination

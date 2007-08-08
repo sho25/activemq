@@ -1009,7 +1009,7 @@ block|}
 argument_list|)
 return|;
 block|}
-comment|/** 	 * @return Returns the longTermStore. 	 */
+comment|/**      * @return Returns the longTermStore.      */
 specifier|public
 name|TopicMessageStore
 name|getLongTermTopicMessageStore

@@ -154,7 +154,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple fixed size {@link MessageList} where there is a single, fixed size  * list that all messages are added to for simplicity. Though this  * will lead to possibly slow recovery times as many more messages  * than is necessary will have to be iterated through for each subscription.  *   * @version $Revision: 1.1 $  */
+comment|/**  * A simple fixed size {@link MessageList} where there is a single, fixed size  * list that all messages are added to for simplicity. Though this will lead to  * possibly slow recovery times as many more messages than is necessary will  * have to be iterated through for each subscription.  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class

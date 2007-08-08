@@ -122,7 +122,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a message store which is used by the persistent   * implementations  *   * @version $Revision: 1.5 $  */
+comment|/**  * Represents a message store which is used by the persistent implementations  *   * @version $Revision: 1.5 $  */
 end_comment
 
 begin_interface
@@ -132,7 +132,7 @@ name|MessageStore
 extends|extends
 name|Service
 block|{
-comment|/**      * Adds a message to the message store      *       * @param context context      * @param message       * @throws IOException       */
+comment|/**      * Adds a message to the message store      *       * @param context context      * @param message      * @throws IOException      */
 specifier|public
 name|void
 name|addMessage
@@ -146,7 +146,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Looks up a message using either the String messageID or the messageNumber. Implementations are encouraged to fill      * in the missing key if its easy to do so.      *       * @param identity which contains either the messageID or the messageNumber      * @return the message or null if it does not exist      * @throws IOException       */
+comment|/**      * Looks up a message using either the String messageID or the      * messageNumber. Implementations are encouraged to fill in the missing key      * if its easy to do so.      *       * @param identity which contains either the messageID or the messageNumber      * @return the message or null if it does not exist      * @throws IOException      */
 specifier|public
 name|Message
 name|getMessage
@@ -157,7 +157,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Removes a message from the message store.      *       * @param context       * @param ack the ack request that cause the message to be removed. It conatins the identity which contains the      *            messageID of the message that needs to be removed.      * @throws IOException       */
+comment|/**      * Removes a message from the message store.      *       * @param context      * @param ack the ack request that cause the message to be removed. It      *                conatins the identity which contains the messageID of the      *                message that needs to be removed.      * @throws IOException      */
 specifier|public
 name|void
 name|removeMessage
@@ -171,7 +171,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Removes all the messages from the message store.      *       * @param context       * @throws IOException       */
+comment|/**      * Removes all the messages from the message store.      *       * @param context      * @throws IOException      */
 specifier|public
 name|void
 name|removeAllMessages
@@ -199,7 +199,7 @@ name|ActiveMQDestination
 name|getDestination
 parameter_list|()
 function_decl|;
-comment|/**      * @param usageManager The UsageManager that is controlling the destination's memory usage.      */
+comment|/**      * @param usageManager The UsageManager that is controlling the      *                destination's memory usage.      */
 specifier|public
 name|void
 name|setUsageManager
@@ -208,7 +208,7 @@ name|UsageManager
 name|usageManager
 parameter_list|)
 function_decl|;
-comment|/**      * @return the number of messages ready to deliver      * @throws IOException       *       */
+comment|/**      * @return the number of messages ready to deliver      * @throws IOException      *       */
 specifier|public
 name|int
 name|getMessageCount
@@ -216,7 +216,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * A hint to the Store to reset any batching state for the Destination      *      */
+comment|/**      * A hint to the Store to reset any batching state for the Destination      *       */
 specifier|public
 name|void
 name|resetBatching

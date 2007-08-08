@@ -971,7 +971,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns the broker's administration connection context used for configuring the broker      * at startup      */
+comment|/**      * Returns the broker's administration connection context used for      * configuring the broker at startup      */
 specifier|public
 specifier|static
 name|ConnectionContext
@@ -1015,7 +1015,7 @@ return|return
 name|adminConnectionContext
 return|;
 block|}
-comment|/**      * Factory method to create the new administration connection context object.      * Note this method is here rather than inside a default broker implementation to      * ensure that the broker reference inside it is the outer most interceptor      */
+comment|/**      * Factory method to create the new administration connection context      * object. Note this method is here rather than inside a default broker      * implementation to ensure that the broker reference inside it is the outer      * most interceptor      */
 specifier|protected
 specifier|static
 name|ConnectionContext

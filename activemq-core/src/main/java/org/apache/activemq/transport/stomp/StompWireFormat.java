@@ -154,7 +154,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implements marshalling and unmarsalling the<a href="http://stomp.codehaus.org/">Stomp</a> protocol.  */
+comment|/**  * Implements marshalling and unmarsalling the<a  * href="http://stomp.codehaus.org/">Stomp</a> protocol.  */
 end_comment
 
 begin_class

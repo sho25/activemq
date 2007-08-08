@@ -1289,7 +1289,7 @@ return|return
 name|replayEnabled
 return|;
 block|}
-comment|/**      * Sets whether or not replay should be enabled when using the reliable transport.      * i.e. should we maintain a buffer of messages that can be replayed?      */
+comment|/**      * Sets whether or not replay should be enabled when using the reliable      * transport. i.e. should we maintain a buffer of messages that can be      * replayed?      */
 specifier|public
 name|void
 name|setReplayEnabled
@@ -1619,8 +1619,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//
-comment|// We have noticed that on some platfoms like linux, after you close down
-comment|// a previously bound socket, it can take a little while before we can bind it again.
+comment|// We have noticed that on some platfoms like linux, after you close
+comment|// down
+comment|// a previously bound socket, it can take a little while before we can
+comment|// bind it again.
 comment|//
 for|for
 control|(

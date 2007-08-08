@@ -108,7 +108,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to keep track of how much of something is being used so that   * a productive working set usage can be controlled.  *   * Main use case is manage memory usage.  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.3 $  */
+comment|/**  * Used to keep track of how much of something is being used so that a  * productive working set usage can be controlled.  *   * Main use case is manage memory usage.  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.3 $  */
 end_comment
 
 begin_class
@@ -178,7 +178,7 @@ specifier|private
 name|boolean
 name|sendFailIfNoSpace
 decl_stmt|;
-comment|/** True if someone called setSendFailIfNoSpace() on this particular usage manager */
+comment|/**      * True if someone called setSendFailIfNoSpace() on this particular usage      * manager      */
 specifier|private
 name|boolean
 name|sendFailIfNoSpaceExplicitySet
@@ -246,7 +246,7 @@ literal|"default"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create the memory manager linked to a parent.  When the memory manager is linked to       * a parent then when usage increased or decreased, the parent's usage is also increased       * or decreased.      *       * @param parent      */
+comment|/**      * Create the memory manager linked to a parent. When the memory manager is      * linked to a parent then when usage increased or decreased, the parent's      * usage is also increased or decreased.      *       * @param parent      */
 specifier|public
 name|UsageManager
 parameter_list|(
@@ -362,7 +362,7 @@ operator|+=
 name|name
 expr_stmt|;
 block|}
-comment|/**      * Tries to increase the usage by value amount but blocks if this object      * is currently full.      * @throws InterruptedException       */
+comment|/**      * Tries to increase the usage by value amount but blocks if this object is      * currently full.      *       * @throws InterruptedException      */
 specifier|public
 name|void
 name|enqueueUsage
@@ -488,7 +488,7 @@ literal|100
 return|;
 block|}
 block|}
-comment|/**      * Increases the usage by the value amount.        *       * @param value      */
+comment|/**      * Increases the usage by the value amount.      *       * @param value      */
 specifier|public
 name|void
 name|increaseUsage
@@ -541,7 +541,7 @@ name|percentUsage
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Decreases the usage by the value amount.        *       * @param value      */
+comment|/**      * Decreases the usage by the value amount.      *       * @param value      */
 specifier|public
 name|void
 name|decreaseUsage
@@ -672,7 +672,7 @@ name|limit
 return|;
 block|}
 block|}
-comment|/**      * Sets the memory limit in bytes.  Setting the limit in bytes will set the usagePortion to 0 since       * the UsageManager is not going to be portion based off the parent.      *       * When set using XBean, you can use values such as: "20 mb", "1024 kb", or "1 gb"      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
+comment|/**      * Sets the memory limit in bytes. Setting the limit in bytes will set the      * usagePortion to 0 since the UsageManager is not going to be portion based      * off the parent.      *       * When set using XBean, you can use values such as: "20 mb", "1024 kb", or      * "1 gb"      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
 specifier|public
 name|void
 name|setLimit
@@ -776,7 +776,8 @@ argument_list|(
 name|percentUsage
 argument_list|)
 expr_stmt|;
-comment|// Let the children know that the limit has changed.  They may need to set
+comment|// Let the children know that the limit has changed. They may need to
+comment|// set
 comment|// their limits based on ours.
 for|for
 control|(
@@ -832,7 +833,7 @@ name|onLimitChange
 argument_list|()
 expr_stmt|;
 block|}
-comment|/*     * Sets the minimum number of percentage points the usage has to change before a UsageListener     * event is fired by the manager.     */
+comment|/*      * Sets the minimum number of percentage points the usage has to change      * before a UsageListener event is fired by the manager.      */
 specifier|public
 name|int
 name|getPercentUsage
@@ -863,7 +864,7 @@ name|percentUsageMinDelta
 return|;
 block|}
 block|}
-comment|/**      * Sets the minimum number of percentage points the usage has to change before a UsageListener      * event is fired by the manager.      *       * @param percentUsageMinDelta      */
+comment|/**      * Sets the minimum number of percentage points the usage has to change      * before a UsageListener event is fired by the manager.      *       * @param percentUsageMinDelta      */
 specifier|public
 name|void
 name|setPercentUsageMinDelta
@@ -928,7 +929,7 @@ name|usage
 return|;
 block|}
 block|}
-comment|/**      * Sets whether or not a send() should fail if there is no space free. The default      * value is false which means to block the send() method until space becomes available      */
+comment|/**      * Sets whether or not a send() should fail if there is no space free. The      * default value is false which means to block the send() method until space      * becomes available      */
 specifier|public
 name|void
 name|setSendFailIfNoSpace
@@ -1307,7 +1308,7 @@ name|child
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param callback      * @return true if the UsageManager was full.  The callback will only be called if this method returns true.      */
+comment|/**      * @param callback      * @return true if the UsageManager was full. The callback will only be      *         called if this method returns true.      */
 specifier|public
 name|boolean
 name|notifyCallbackWhenNotFull

@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Command indicating that an invalid Stomp Frame was received.  *   * @author<a href="http://hiramchirino.com">chirino</a>   */
+comment|/**  * Command indicating that an invalid Stomp Frame was received.  *   * @author<a href="http://hiramchirino.com">chirino</a>  */
 end_comment
 
 begin_class

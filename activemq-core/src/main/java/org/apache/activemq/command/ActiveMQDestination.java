@@ -1061,13 +1061,13 @@ operator|.
 name|length
 argument_list|()
 decl_stmt|;
+comment|// options offset
 name|int
 name|p
 init|=
 operator|-
 literal|1
 decl_stmt|;
-comment|// options offset
 name|boolean
 name|composite
 init|=

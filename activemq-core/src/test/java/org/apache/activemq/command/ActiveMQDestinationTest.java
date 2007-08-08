@@ -178,7 +178,7 @@ name|ActiveMQTempTopic
 argument_list|(
 literal|"TEST:1?option=value"
 argument_list|)
-block|,         }
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -231,7 +231,7 @@ name|ActiveMQTempTopic
 argument_list|(
 literal|"TEST:1?k1=v1&k2=v2"
 argument_list|)
-block|,         }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}

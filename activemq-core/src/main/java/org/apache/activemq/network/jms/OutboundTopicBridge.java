@@ -34,7 +34,7 @@ decl_stmt|;
 name|String
 name|localTopicName
 decl_stmt|;
-comment|/**      * Constructor that takes a foreign destination as an argument      * @param outboundTopicName      */
+comment|/**      * Constructor that takes a foreign destination as an argument      *       * @param outboundTopicName      */
 specifier|public
 name|OutboundTopicBridge
 parameter_list|(

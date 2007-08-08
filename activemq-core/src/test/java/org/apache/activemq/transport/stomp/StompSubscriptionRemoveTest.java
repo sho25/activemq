@@ -176,7 +176,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @version $Revision$  */
+comment|/**  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -664,7 +664,7 @@ argument_list|(
 name|ackmessage
 argument_list|)
 expr_stmt|;
-comment|//Thread.sleep(1000);
+comment|// Thread.sleep(1000);
 operator|++
 name|messagesCount
 expr_stmt|;
@@ -722,7 +722,8 @@ operator|>=
 literal|2000
 argument_list|)
 expr_stmt|;
-comment|// The first ack messages has no chance complete, so we receiving more messages
+comment|// The first ack messages has no chance complete, so we receiving more
+comment|// messages
 comment|// Don't know how to list subscriptions for the broker. Currently you
 comment|// can check using JMX console. You'll see
 comment|// Subscription without any connections
@@ -814,7 +815,7 @@ name|idx
 init|=
 literal|0
 init|;
-comment|/*forever, sort of*/
+comment|/* forever, sort of */
 condition|;
 operator|++
 name|idx

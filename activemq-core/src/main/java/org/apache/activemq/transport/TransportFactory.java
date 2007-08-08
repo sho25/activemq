@@ -636,7 +636,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Factory method to create a new transport      * @throws IOException       * @throws UnknownHostException       */
+comment|/**      * Factory method to create a new transport      *       * @throws IOException      * @throws UnknownHostException      */
 specifier|protected
 name|Transport
 name|createTransport
@@ -897,7 +897,7 @@ return|return
 literal|"default"
 return|;
 block|}
-comment|/**      * Fully configures and adds all need transport filters so that the transport      * can be used by the JMS client.      *       * @param transport      * @param wf      * @param options      * @return      * @throws Exception      */
+comment|/**      * Fully configures and adds all need transport filters so that the      * transport can be used by the JMS client.      *       * @param transport      * @param wf      * @param options      * @return      * @throws Exception      */
 specifier|public
 name|Transport
 name|configure
@@ -945,7 +945,7 @@ return|return
 name|transport
 return|;
 block|}
-comment|/**      * Fully configures and adds all need transport filters so that the transport      * can be used by the ActiveMQ message broker.  The main difference between this and the       * configure() method is that the broker does not issue requests to the client so the      * ResponseCorrelator is not needed.      *       * @param transport      * @param format      * @param options      * @return      * @throws Exception      */
+comment|/**      * Fully configures and adds all need transport filters so that the      * transport can be used by the ActiveMQ message broker. The main difference      * between this and the configure() method is that the broker does not issue      * requests to the client so the ResponseCorrelator is not needed.      *       * @param transport      * @param format      * @param options      * @return      * @throws Exception      */
 specifier|public
 name|Transport
 name|serverConfigure
@@ -985,7 +985,7 @@ return|return
 name|transport
 return|;
 block|}
-comment|/**      * Similar to configure(...) but this avoid adding in the MutexTransport and ResponseCorrelator transport layers      * so that the resulting transport can more efficiently be used as part of a composite transport.      *       * @param transport      * @param format      * @param options      * @return      */
+comment|/**      * Similar to configure(...) but this avoid adding in the MutexTransport and      * ResponseCorrelator transport layers so that the resulting transport can      * more efficiently be used as part of a composite transport.      *       * @param transport      * @param format      * @param options      * @return      */
 specifier|public
 name|Transport
 name|compositeConfigure

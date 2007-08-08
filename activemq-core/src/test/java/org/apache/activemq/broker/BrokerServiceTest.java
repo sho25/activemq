@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|TestCase
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -29,18 +39,8 @@ name|NetworkConnector
 import|;
 end_import
 
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
 begin_comment
-comment|/**  * Tests for the BrokerService class   * @author chirino  */
+comment|/**  * Tests for the BrokerService class  *   * @author chirino  */
 end_comment
 
 begin_class

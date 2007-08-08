@@ -139,7 +139,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|ConnectionContext
+name|BrokerService
 import|;
 end_import
 
@@ -167,7 +167,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|BrokerService
+name|ConnectionContext
 import|;
 end_import
 
@@ -294,20 +294,6 @@ operator|.
 name|command
 operator|.
 name|Message
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|MessageAck
 import|;
 end_import
 
@@ -658,7 +644,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with a {@link Journal} and then check pointing  * asynchronously on a timeout with some other long term persistent storage.  *   * @org.apache.xbean.XBean element="amqPersistenceAdapter"  *   * @version $Revision: 1.17 $  */
+comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with a  * {@link Journal} and then check pointing asynchronously on a timeout with some  * other long term persistent storage.  *   * @org.apache.xbean.XBean element="amqPersistenceAdapter"  * @version $Revision: 1.17 $  */
 end_comment
 
 begin_class
@@ -933,7 +919,9 @@ argument_list|,
 literal|true
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|this
@@ -1253,9 +1241,12 @@ name|createTransactionStore
 argument_list|()
 expr_stmt|;
 comment|//
-comment|// The following was attempting to reduce startup times by avoiding the log
-comment|// file scanning that recovery performs.  The problem with it is that XA transactions
-comment|// only live in transaction log and are not stored in the reference store, but they still
+comment|// The following was attempting to reduce startup times by avoiding the
+comment|// log
+comment|// file scanning that recovery performs. The problem with it is that XA
+comment|// transactions
+comment|// only live in transaction log and are not stored in the reference
+comment|// store, but they still
 comment|// need to be recovered when the broker starts up.
 if|if
 condition|(
@@ -1310,7 +1301,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|//recover transactions
+comment|// recover transactions
 name|getTransactionStore
 argument_list|()
 operator|.
@@ -1398,7 +1389,9 @@ argument_list|,
 literal|false
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 name|this
 operator|.
 name|usageManager
@@ -1595,7 +1588,7 @@ name|firstException
 throw|;
 block|}
 block|}
-comment|/**      * When we checkpoint we move all the journalled data to long term storage.      * @param sync          */
+comment|/**      * When we checkpoint we move all the journalled data to long term storage.      *       * @param sync      */
 specifier|public
 name|void
 name|checkpoint
@@ -1612,6 +1605,7 @@ name|asyncDataManager
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -1619,6 +1613,7 @@ argument_list|(
 literal|"Journal is closed."
 argument_list|)
 throw|;
+block|}
 name|CountDownLatch
 name|latch
 init|=
@@ -2447,7 +2442,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Move all the messages that were in the journal into long term storage. We just replay and do a checkpoint.      *       * @throws IOException      * @throws IOException      * @throws InvalidLocationException      * @throws IllegalStateException      */
+comment|/**      * Move all the messages that were in the journal into long term storage. We      * just replay and do a checkpoint.      *       * @throws IOException      * @throws IOException      * @throws InvalidLocationException      * @throws IllegalStateException      */
 specifier|private
 name|void
 name|recover
@@ -2859,8 +2854,11 @@ name|tx
 operator|==
 literal|null
 condition|)
+block|{
 break|break;
-comment|// We may be trying to replay a commit that
+comment|// We may be trying to replay a commit
+block|}
+comment|// that
 comment|// was already committed.
 comment|// Replay the committed operations.
 name|tx
@@ -3163,7 +3161,7 @@ name|e
 argument_list|)
 return|;
 block|}
-comment|/**      *       * @param command      * @param syncHint      * @return      * @throws IOException      */
+comment|/**      * @param command      * @param syncHint      * @return      * @throws IOException      */
 specifier|public
 name|Location
 name|writeCommand

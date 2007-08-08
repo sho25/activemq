@@ -159,7 +159,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/** 	 *  	 * @see org.apache.activemq.JmsTransactionTestSupport#getJmsResourceProvider() 	 */
+comment|/**      * @see org.apache.activemq.JmsTransactionTestSupport#getJmsResourceProvider()      */
 specifier|protected
 name|JmsResourceProvider
 name|getJmsResourceProvider
@@ -183,7 +183,7 @@ return|return
 name|p
 return|;
 block|}
-comment|/**      * Tests if the the connection gets reset, the messages will still be received.        *        * @throws Exception      */
+comment|/**      * Tests if the the connection gets reset, the messages will still be      * received.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testReceiveTwoThenCloseConnection
@@ -439,7 +439,7 @@ name|inbound
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Tests sending and receiving messages with two sessions(one for producing and another for consuming).      *       * @throws Exception      */
+comment|/**      * Tests sending and receiving messages with two sessions(one for producing      * and another for consuming).      *       * @throws Exception      */
 specifier|public
 name|void
 name|testSendReceiveInSeperateSessionTest
@@ -472,7 +472,7 @@ name|i
 operator|++
 control|)
 block|{
-comment|//Session that sends messages
+comment|// Session that sends messages
 block|{
 name|Session
 name|session
@@ -496,7 +496,8 @@ argument_list|,
 name|destination
 argument_list|)
 decl_stmt|;
-comment|//consumer = resourceProvider.createConsumer(session, destination);
+comment|// consumer = resourceProvider.createConsumer(session,
+comment|// destination);
 name|producer
 operator|.
 name|send
@@ -522,7 +523,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|//Session that consumes messages
+comment|// Session that consumes messages
 block|{
 name|Session
 name|session
@@ -597,7 +598,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Tests the queue browser. Browses the messages then the consumer tries to receive them.       * The messages should still be in the queue even when it was browsed.        *       * @throws Exception      */
+comment|/**      * Tests the queue browser. Browses the messages then the consumer tries to      * receive them. The messages should still be in the queue even when it was      * browsed.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testReceiveBrowseReceive

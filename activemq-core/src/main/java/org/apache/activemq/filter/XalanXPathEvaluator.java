@@ -424,7 +424,8 @@ argument_list|(
 name|inputSource
 argument_list|)
 decl_stmt|;
-comment|// We should associated the cachedXPathAPI object with the message being evaluated
+comment|// We should associated the cachedXPathAPI object with the message
+comment|// being evaluated
 comment|// since that should speedup subsequent xpath expressions.
 name|CachedXPathAPI
 name|cachedXPathAPI

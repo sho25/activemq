@@ -60,7 +60,7 @@ specifier|public
 class|class
 name|StoreFactory
 block|{
-comment|/**      * open or create a Store      * @param name      * @param mode      * @return the opened/created store      * @throws IOException      */
+comment|/**      * open or create a Store      *       * @param name      * @param mode      * @return the opened/created store      * @throws IOException      */
 specifier|public
 specifier|static
 name|Store
@@ -85,7 +85,7 @@ name|mode
 argument_list|)
 return|;
 block|}
-comment|/**      * Delete a database      * @param name of the database      * @return true if successful      * @throws IOException       */
+comment|/**      * Delete a database      *       * @param name of the database      * @return true if successful      * @throws IOException      */
 specifier|public
 specifier|static
 name|boolean

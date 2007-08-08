@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Creates a StoreQueueCursor  *  *  * @org.apache.xbean.XBean element="storeCursor" description="Pending messages paged in from the Store"  *   * @version $Revision$  */
+comment|/**  * Creates a StoreQueueCursor *  *   * @org.apache.xbean.XBean element="storeCursor" description="Pending messages  *                         paged in from the Store"  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -96,7 +96,7 @@ name|StorePendingQueueMessageStoragePolicy
 implements|implements
 name|PendingQueueMessageStoragePolicy
 block|{
-comment|/**      * @param queue      * @param tmpStore      * @return the cursor      * @see org.apache.activemq.broker.region.policy.PendingQueueMessageStoragePolicy#getQueuePendingMessageCursor(org.apache.openjpa.lib.util.concurrent.Queue, org.apache.activemq.kaha.Store)      */
+comment|/**      * @param queue      * @param tmpStore      * @return the cursor      * @see org.apache.activemq.broker.region.policy.PendingQueueMessageStoragePolicy#getQueuePendingMessageCursor(org.apache.openjpa.lib.util.concurrent.Queue,      *      org.apache.activemq.kaha.Store)      */
 specifier|public
 name|PendingMessageCursor
 name|getQueuePendingMessageCursor

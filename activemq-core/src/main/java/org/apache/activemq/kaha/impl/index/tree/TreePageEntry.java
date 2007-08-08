@@ -22,7 +22,7 @@ package|;
 end_package
 
 begin_comment
-comment|/** * A conglomarate used for return results from a tree lookup *  * @version $Revision: 1.1.1.1 $ */
+comment|/**  * A conglomarate used for return results from a tree lookup  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class

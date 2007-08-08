@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** *Iterator for the set of keys for a container *  * @version $Revision: 1.2 $ */
+comment|/**  * Iterator for the set of keys for a container  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class

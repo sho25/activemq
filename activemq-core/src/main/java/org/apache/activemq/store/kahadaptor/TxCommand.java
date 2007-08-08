@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for  messages/acknowledgements for a transaction  *   * @version $Revision: 1.4 $  */
+comment|/**  * Base class for messages/acknowledgements for a transaction  *   * @version $Revision: 1.4 $  */
 end_comment
 
 begin_class
@@ -61,7 +61,7 @@ specifier|protected
 name|BaseCommand
 name|command
 decl_stmt|;
-comment|/**          * @return Returns the messageStoreKey.          */
+comment|/**      * @return Returns the messageStoreKey.      */
 specifier|public
 name|Object
 name|getMessageStoreKey
@@ -71,7 +71,7 @@ return|return
 name|messageStoreKey
 return|;
 block|}
-comment|/**          * @param messageStoreKey The messageStoreKey to set.          */
+comment|/**      * @param messageStoreKey The messageStoreKey to set.      */
 specifier|public
 name|void
 name|setMessageStoreKey
@@ -87,7 +87,7 @@ operator|=
 name|messageStoreKey
 expr_stmt|;
 block|}
-comment|/**          * @return Returns the command.          */
+comment|/**      * @return Returns the command.      */
 specifier|public
 name|BaseCommand
 name|getCommand
@@ -97,7 +97,7 @@ return|return
 name|command
 return|;
 block|}
-comment|/**          * @param command The command to set.          */
+comment|/**      * @param command The command to set.      */
 specifier|public
 name|void
 name|setCommand
@@ -113,7 +113,7 @@ operator|=
 name|command
 expr_stmt|;
 block|}
-comment|/**          * @return true if a Message command          */
+comment|/**      * @return true if a Message command      */
 specifier|public
 name|boolean
 name|isAdd
@@ -134,7 +134,7 @@ operator|.
 name|MESSAGE_ACK
 return|;
 block|}
-comment|/**          * @return true if a MessageAck command          */
+comment|/**      * @return true if a MessageAck command      */
 specifier|public
 name|boolean
 name|isRemove

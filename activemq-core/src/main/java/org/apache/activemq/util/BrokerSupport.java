@@ -132,6 +132,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|message
 operator|.
 name|setOriginalDestination
@@ -142,6 +143,7 @@ name|getDestination
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|message
@@ -151,6 +153,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|message
 operator|.
 name|setOriginalTransactionId
@@ -161,6 +164,7 @@ name|getTransactionId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|message
 operator|.
 name|setDestination

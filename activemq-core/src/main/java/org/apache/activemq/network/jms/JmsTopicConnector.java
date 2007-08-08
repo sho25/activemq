@@ -266,7 +266,7 @@ return|return
 name|inboundTopicBridges
 return|;
 block|}
-comment|/**      * @param inboundTopicBridges      *            The inboundTopicBridges to set.      */
+comment|/**      * @param inboundTopicBridges The inboundTopicBridges to set.      */
 specifier|public
 name|void
 name|setInboundTopicBridges
@@ -294,7 +294,7 @@ return|return
 name|outboundTopicBridges
 return|;
 block|}
-comment|/**      * @param outboundTopicBridges      *            The outboundTopicBridges to set.      */
+comment|/**      * @param outboundTopicBridges The outboundTopicBridges to set.      */
 specifier|public
 name|void
 name|setOutboundTopicBridges
@@ -321,7 +321,7 @@ return|return
 name|localTopicConnectionFactory
 return|;
 block|}
-comment|/**      * @param localTopicConnectionFactory      *            The localTopicConnectionFactory to set.      */
+comment|/**      * @param localTopicConnectionFactory The localTopicConnectionFactory to      *                set.      */
 specifier|public
 name|void
 name|setLocalTopicConnectionFactory
@@ -357,7 +357,7 @@ return|return
 name|outboundTopicConnectionFactoryName
 return|;
 block|}
-comment|/**      * @param outboundTopicConnectionFactoryName      *            The outboundTopicConnectionFactoryName to set.      */
+comment|/**      * @param outboundTopicConnectionFactoryName The      *                outboundTopicConnectionFactoryName to set.      */
 specifier|public
 name|void
 name|setOutboundTopicConnectionFactoryName
@@ -383,7 +383,7 @@ return|return
 name|localConnectionFactoryName
 return|;
 block|}
-comment|/**      * @param localConnectionFactoryName      *            The localConnectionFactoryName to set.      */
+comment|/**      * @param localConnectionFactoryName The localConnectionFactoryName to set.      */
 specifier|public
 name|void
 name|setLocalConnectionFactoryName
@@ -409,7 +409,7 @@ return|return
 name|localTopicConnection
 return|;
 block|}
-comment|/**      * @param localTopicConnection      *            The localTopicConnection to set.      */
+comment|/**      * @param localTopicConnection The localTopicConnection to set.      */
 specifier|public
 name|void
 name|setLocalTopicConnection
@@ -435,7 +435,7 @@ return|return
 name|outboundTopicConnection
 return|;
 block|}
-comment|/**      * @param outboundTopicConnection      *            The outboundTopicConnection to set.      */
+comment|/**      * @param outboundTopicConnection The outboundTopicConnection to set.      */
 specifier|public
 name|void
 name|setOutboundTopicConnection
@@ -451,7 +451,7 @@ operator|=
 name|foreignTopicConnection
 expr_stmt|;
 block|}
-comment|/**      * @param outboundTopicConnectionFactory      *            The outboundTopicConnectionFactory to set.      */
+comment|/**      * @param outboundTopicConnectionFactory The outboundTopicConnectionFactory      *                to set.      */
 specifier|public
 name|void
 name|setOutboundTopicConnectionFactory
@@ -1620,7 +1620,7 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-comment|//look-up the Topic
+comment|// look-up the Topic
 try|try
 block|{
 name|result

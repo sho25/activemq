@@ -94,7 +94,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The StreamConnection interface allows you to send and receive   * data from a Destination in using standard java InputStream and OutputStream  * objects.  It's best use case is to send and receive large amounts of data  * that would be to large to hold in a single JMS message.  *   * @version $Revision$  */
+comment|/**  * The StreamConnection interface allows you to send and receive data from a  * Destination in using standard java InputStream and OutputStream objects. It's  * best use case is to send and receive large amounts of data that would be to  * large to hold in a single JMS message.  *   * @version $Revision$  */
 end_comment
 
 begin_interface
@@ -223,7 +223,7 @@ parameter_list|)
 throws|throws
 name|JMSException
 function_decl|;
-comment|/**      * Unsubscribes a durable subscription that has been created by a client.      *<P>      * This method deletes the state being maintained on behalf of the      * subscriber by its provider.      *<P>      * It is erroneous for a client to delete a durable subscription while there      * is an active<CODE>MessageConsumer</CODE> or<CODE>TopicSubscriber</CODE>      * for the subscription, or while a consumed message is part of a pending      * transaction or has not been acknowledged in the session.      *       * @param name      *            the name used to identify this subscription      * @throws JMSException      *             if the session fails to unsubscribe to the durable      *             subscription due to some internal error.      * @throws InvalidDestinationException      *             if an invalid subscription name is specified.      * @since 1.1      */
+comment|/**      * Unsubscribes a durable subscription that has been created by a client.      *<P>      * This method deletes the state being maintained on behalf of the      * subscriber by its provider.      *<P>      * It is erroneous for a client to delete a durable subscription while there      * is an active<CODE>MessageConsumer</CODE> or      *<CODE>TopicSubscriber</CODE> for the subscription, or while a consumed      * message is part of a pending transaction or has not been acknowledged in      * the session.      *       * @param name the name used to identify this subscription      * @throws JMSException if the session fails to unsubscribe to the durable      *                 subscription due to some internal error.      * @throws InvalidDestinationException if an invalid subscription name is      *                 specified.      * @since 1.1      */
 specifier|public
 name|void
 name|unsubscribe

@@ -124,7 +124,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents all the data in a STOMP frame.  *   * @author<a href="http://hiramchirino.com">chirino</a>   */
+comment|/**  * Represents all the data in a STOMP frame.  *   * @author<a href="http://hiramchirino.com">chirino</a>  */
 end_comment
 
 begin_class
@@ -201,7 +201,7 @@ block|}
 specifier|public
 name|StompFrame
 parameter_list|()
-block|{ 	}
+block|{     }
 specifier|public
 name|String
 name|getAction
@@ -394,7 +394,7 @@ parameter_list|(
 name|int
 name|value
 parameter_list|)
-block|{ 	}
+block|{     }
 specifier|public
 name|void
 name|setFrom
@@ -402,7 +402,7 @@ parameter_list|(
 name|Endpoint
 name|from
 parameter_list|)
-block|{ 	}
+block|{     }
 specifier|public
 name|void
 name|setResponseRequired
@@ -410,7 +410,7 @@ parameter_list|(
 name|boolean
 name|responseRequired
 parameter_list|)
-block|{ 	}
+block|{     }
 specifier|public
 name|void
 name|setTo
@@ -418,7 +418,7 @@ parameter_list|(
 name|Endpoint
 name|to
 parameter_list|)
-block|{ 	}
+block|{     }
 specifier|public
 name|Response
 name|visit

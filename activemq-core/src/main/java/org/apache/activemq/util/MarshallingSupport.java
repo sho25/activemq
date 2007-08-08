@@ -156,7 +156,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   *   * The fixed version of the UTF8 encoding function.  Some older JVM's UTF8 encoding function  * breaks when handling large strings.   *   * @version $Revision$  */
+comment|/**  * The fixed version of the UTF8 encoding function. Some older JVM's UTF8  * encoding function breaks when handling large strings.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -398,7 +398,7 @@ name|MAX_VALUE
 argument_list|)
 return|;
 block|}
-comment|/**      * @param in      * @return      * @throws IOException       * @throws IOException      */
+comment|/**      * @param in      * @return      * @throws IOException      * @throws IOException      */
 specifier|public
 specifier|static
 name|Map
@@ -1732,7 +1732,7 @@ literal|2
 expr_stmt|;
 block|}
 block|}
-comment|//TODO diff: Sun code - removed
+comment|// TODO diff: Sun code - removed
 name|byte
 index|[]
 name|bytearr
@@ -1745,7 +1745,7 @@ operator|+
 literal|4
 index|]
 decl_stmt|;
-comment|//TODO diff: Sun code
+comment|// TODO diff: Sun code
 name|bytearr
 index|[
 name|count
@@ -1765,7 +1765,8 @@ operator|&
 literal|0xFF
 argument_list|)
 expr_stmt|;
-comment|//TODO diff: Sun code
+comment|// TODO diff:
+comment|// Sun code
 name|bytearr
 index|[
 name|count
@@ -1785,7 +1786,8 @@ operator|&
 literal|0xFF
 argument_list|)
 expr_stmt|;
-comment|//TODO diff: Sun code
+comment|// TODO diff:
+comment|// Sun code
 name|bytearr
 index|[
 name|count
@@ -2040,7 +2042,7 @@ operator|.
 name|readInt
 argument_list|()
 decl_stmt|;
-comment|//TODO diff: Sun code
+comment|// TODO diff: Sun code
 if|if
 condition|(
 name|utflen
@@ -2260,7 +2262,7 @@ operator|-
 literal|2
 index|]
 expr_stmt|;
-comment|//TODO diff: Sun code
+comment|// TODO diff: Sun code
 name|char3
 operator|=
 name|bytearr
@@ -2270,7 +2272,7 @@ operator|-
 literal|1
 index|]
 expr_stmt|;
-comment|//TODO diff: Sun code
+comment|// TODO diff: Sun code
 if|if
 condition|(
 operator|(
@@ -2341,7 +2343,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
-default|default :
+default|default:
 comment|/* 10xx xxxx, 1111 xxxx */
 throw|throw
 operator|new

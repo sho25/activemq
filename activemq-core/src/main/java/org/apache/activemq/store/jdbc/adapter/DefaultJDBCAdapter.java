@@ -250,7 +250,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implements all the default JDBC operations that are used by the JDBCPersistenceAdapter.<p/> sub-classing is  * encouraged to override the default implementation of methods to account for differences in JDBC Driver  * implementations.<p/> The JDBCAdapter inserts and extracts BLOB data using the getBytes()/setBytes() operations.<p/>  * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li></li>  *</ul>  *   * @org.apache.xbean.XBean element="defaultJDBCAdapter"  *   * @version $Revision: 1.10 $  */
+comment|/**  * Implements all the default JDBC operations that are used by the  * JDBCPersistenceAdapter.<p/> sub-classing is encouraged to override the  * default implementation of methods to account for differences in JDBC Driver  * implementations.<p/> The JDBCAdapter inserts and extracts BLOB data using  * the getBytes()/setBytes() operations.<p/> The databases/JDBC drivers that  * use this adapter are:  *<ul>  *<li></li>  *</ul>  *   * @org.apache.xbean.XBean element="defaultJDBCAdapter"  *   * @version $Revision: 1.10 $  */
 end_comment
 
 begin_class
@@ -354,8 +354,10 @@ literal|null
 decl_stmt|;
 try|try
 block|{
-comment|// Check to see if the table already exists. If it does, then don't log warnings during startup.
-comment|// Need to run the scripts anyways since they may contain ALTER statements that upgrade a previous version
+comment|// Check to see if the table already exists. If it does, then don't
+comment|// log warnings during startup.
+comment|// Need to run the scripts anyways since they may contain ALTER
+comment|// statements that upgrade a previous version
 comment|// of the table
 name|boolean
 name|alreadyExists
@@ -2029,7 +2031,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// dumpTables(c, destination.getQualifiedName(),clientId,subscriptionName);
+comment|// dumpTables(c,
+comment|// destination.getQualifiedName(),clientId,subscriptionName);
 name|PreparedStatement
 name|s
 init|=
@@ -2527,7 +2530,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * @see org.apache.activemq.store.jdbc.JDBCAdapter#doSetSubscriberEntry(java.sql.Connection, java.lang.Object,      *      org.apache.activemq.service.SubscriptionInfo)      */
+comment|/**      * @see org.apache.activemq.store.jdbc.JDBCAdapter#doSetSubscriberEntry(java.sql.Connection,      *      java.lang.Object, org.apache.activemq.service.SubscriptionInfo)      */
 specifier|public
 name|void
 name|doSetSubscriberEntry
@@ -2546,7 +2549,8 @@ name|SQLException
 throws|,
 name|IOException
 block|{
-comment|// dumpTables(c, destination.getQualifiedName(), clientId, subscriptionName);
+comment|// dumpTables(c, destination.getQualifiedName(), clientId,
+comment|// subscriptionName);
 name|PreparedStatement
 name|s
 init|=
@@ -4187,7 +4191,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/*      * Useful for debugging. public void dumpTables(Connection c, String destinationName, String clientId, String      * subscriptionName) throws SQLException { printQuery(c, "Select * from ACTIVEMQ_MSGS", System.out); printQuery(c,      * "Select * from ACTIVEMQ_ACKS", System.out); PreparedStatement s = c.prepareStatement("SELECT M.ID,      * D.LAST_ACKED_ID FROM " +"ACTIVEMQ_MSGS M, " +"ACTIVEMQ_ACKS D " +"WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND      * D.SUB_NAME=?" +" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID" +" ORDER BY M.ID");      * s.setString(1,destinationName); s.setString(2,clientId); s.setString(3,subscriptionName);      * printQuery(s,System.out); }      *       * public void dumpTables(Connection c) throws SQLException { printQuery(c, "Select * from ACTIVEMQ_MSGS",      * System.out); printQuery(c, "Select * from ACTIVEMQ_ACKS", System.out); }      *       * private void printQuery(Connection c, String query, PrintStream out) throws SQLException {      * printQuery(c.prepareStatement(query), out); }      *       * private void printQuery(PreparedStatement s, PrintStream out) throws SQLException {      *       * ResultSet set=null; try { set = s.executeQuery(); ResultSetMetaData metaData = set.getMetaData(); for( int i=1; i<=      * metaData.getColumnCount(); i++ ) { if(i==1) out.print("||"); out.print(metaData.getColumnName(i)+"||"); }      * out.println(); while(set.next()) { for( int i=1; i<= metaData.getColumnCount(); i++ ) { if(i==1) out.print("|");      * out.print(set.getString(i)+"|"); } out.println(); } } finally { try { set.close(); } catch (Throwable ignore) {}      * try { s.close(); } catch (Throwable ignore) {} } }      */
+comment|/*      * Useful for debugging. public void dumpTables(Connection c, String      * destinationName, String clientId, String subscriptionName) throws      * SQLException { printQuery(c, "Select * from ACTIVEMQ_MSGS", System.out);      * printQuery(c, "Select * from ACTIVEMQ_ACKS", System.out);      * PreparedStatement s = c.prepareStatement("SELECT M.ID, D.LAST_ACKED_ID      * FROM " +"ACTIVEMQ_MSGS M, " +"ACTIVEMQ_ACKS D " +"WHERE D.CONTAINER=? AND      * D.CLIENT_ID=? AND D.SUB_NAME=?" +" AND M.CONTAINER=D.CONTAINER AND M.ID>      * D.LAST_ACKED_ID" +" ORDER BY M.ID"); s.setString(1,destinationName);      * s.setString(2,clientId); s.setString(3,subscriptionName);      * printQuery(s,System.out); }      *       * public void dumpTables(Connection c) throws SQLException { printQuery(c,      * "Select * from ACTIVEMQ_MSGS", System.out); printQuery(c, "Select * from      * ACTIVEMQ_ACKS", System.out); }      *       * private void printQuery(Connection c, String query, PrintStream out)      * throws SQLException { printQuery(c.prepareStatement(query), out); }      *       * private void printQuery(PreparedStatement s, PrintStream out) throws      * SQLException {      *       * ResultSet set=null; try { set = s.executeQuery(); ResultSetMetaData      * metaData = set.getMetaData(); for( int i=1; i<=      * metaData.getColumnCount(); i++ ) { if(i==1) out.print("||");      * out.print(metaData.getColumnName(i)+"||"); } out.println();      * while(set.next()) { for( int i=1; i<= metaData.getColumnCount(); i++ ) {      * if(i==1) out.print("|"); out.print(set.getString(i)+"|"); }      * out.println(); } } finally { try { set.close(); } catch (Throwable      * ignore) {} try { s.close(); } catch (Throwable ignore) {} } }      */
 block|}
 end_class
 

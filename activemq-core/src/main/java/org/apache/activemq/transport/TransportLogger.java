@@ -68,8 +68,6 @@ specifier|private
 specifier|static
 name|int
 name|lastId
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 specifier|final

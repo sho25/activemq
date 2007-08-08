@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -27,18 +37,8 @@ name|Service
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
-comment|/**  * Represents the client side of a transport allowing messages  * to be sent synchronously, asynchronously and consumed.  *  * @version $Revision: 1.5 $  */
+comment|/**  * Represents the client side of a transport allowing messages to be sent  * synchronously, asynchronously and consumed.  *   * @version $Revision: 1.5 $  */
 end_comment
 
 begin_interface
@@ -48,7 +48,7 @@ name|Transport
 extends|extends
 name|Service
 block|{
-comment|/**      * A one way asynchronous send      * @param command       * @throws IOException       */
+comment|/**      * A one way asynchronous send      *       * @param command      * @throws IOException      */
 specifier|public
 name|void
 name|oneway
@@ -59,7 +59,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * An asynchronous request response where the Receipt will be returned      * in the future.  If responseCallback is not null, then it will be called      * when the response has been completed.      *       * @param command       * @param responseCallback TODO      * @return the FutureResponse      * @throws IOException       */
+comment|/**      * An asynchronous request response where the Receipt will be returned in      * the future. If responseCallback is not null, then it will be called when      * the response has been completed.      *       * @param command      * @param responseCallback TODO      * @return the FutureResponse      * @throws IOException      */
 specifier|public
 name|FutureResponse
 name|asyncRequest
@@ -73,7 +73,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * A synchronous request response      * @param command       * @return the response      * @throws IOException       */
+comment|/**      * A synchronous request response      *       * @param command      * @return the response      * @throws IOException      */
 specifier|public
 name|Object
 name|request
@@ -84,7 +84,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * A synchronous request response      * @param command       * @param timeout       * @return the repsonse or null if timeout      * @throws IOException       */
+comment|/**      * A synchronous request response      *       * @param command      * @param timeout      * @return the repsonse or null if timeout      * @throws IOException      */
 specifier|public
 name|Object
 name|request
@@ -98,48 +98,49 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|//    /**
-comment|//     * A one way asynchronous send
-comment|//     * @param command
-comment|//     * @throws IOException
-comment|//     */
-comment|//    public void oneway(Command command) throws IOException;
+comment|// /**
+comment|// * A one way asynchronous send
+comment|// * @param command
+comment|// * @throws IOException
+comment|// */
+comment|// public void oneway(Command command) throws IOException;
 comment|//
-comment|//    /**
-comment|//     * An asynchronous request response where the Receipt will be returned
-comment|//     * in the future.  If responseCallback is not null, then it will be called
-comment|//     * when the response has been completed.
-comment|//     *
-comment|//     * @param command
-comment|//     * @param responseCallback TODO
-comment|//     * @return the FutureResponse
-comment|//     * @throws IOException
-comment|//     */
-comment|//    public FutureResponse asyncRequest(Command command, ResponseCallback responseCallback) throws IOException;
+comment|// /**
+comment|// * An asynchronous request response where the Receipt will be returned
+comment|// * in the future. If responseCallback is not null, then it will be called
+comment|// * when the response has been completed.
+comment|// *
+comment|// * @param command
+comment|// * @param responseCallback TODO
+comment|// * @return the FutureResponse
+comment|// * @throws IOException
+comment|// */
+comment|// public FutureResponse asyncRequest(Command command, ResponseCallback
+comment|// responseCallback) throws IOException;
 comment|//
-comment|//    /**
-comment|//     * A synchronous request response
-comment|//     * @param command
-comment|//     * @return the response
-comment|//     * @throws IOException
-comment|//     */
-comment|//    public Response request(Command command) throws IOException;
+comment|// /**
+comment|// * A synchronous request response
+comment|// * @param command
+comment|// * @return the response
+comment|// * @throws IOException
+comment|// */
+comment|// public Response request(Command command) throws IOException;
 comment|//
-comment|//    /**
-comment|//     * A synchronous request response
-comment|//     * @param command
-comment|//     * @param timeout
-comment|//     * @return the repsonse or null if timeout
-comment|//     * @throws IOException
-comment|//     */
-comment|//    public Response request(Command command, int timeout) throws IOException;
-comment|/**      * Returns the current transport listener      * @return       */
+comment|// /**
+comment|// * A synchronous request response
+comment|// * @param command
+comment|// * @param timeout
+comment|// * @return the repsonse or null if timeout
+comment|// * @throws IOException
+comment|// */
+comment|// public Response request(Command command, int timeout) throws IOException;
+comment|/**      * Returns the current transport listener      *       * @return      */
 specifier|public
 name|TransportListener
 name|getTransportListener
 parameter_list|()
 function_decl|;
-comment|/**      * Registers an inbound command listener      * @param commandListener       */
+comment|/**      * Registers an inbound command listener      *       * @param commandListener      */
 specifier|public
 name|void
 name|setTransportListener
@@ -157,13 +158,13 @@ name|Class
 name|target
 parameter_list|)
 function_decl|;
-comment|/**      * @return the remote address for this connection      *        */
+comment|/**      * @return the remote address for this connection      */
 specifier|public
 name|String
 name|getRemoteAddress
 parameter_list|()
 function_decl|;
-comment|/**      * Indicates if the transport can handle faults      * @return tru if fault tolerant      */
+comment|/**      * Indicates if the transport can handle faults      *       * @return tru if fault tolerant      */
 specifier|public
 name|boolean
 name|isFaultTolerant

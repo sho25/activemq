@@ -220,7 +220,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @org.apache.xbean.XBean  *   * @version $Revision: 1.4 $  */
+comment|/**  * @org.apache.xbean.XBean  * @version $Revision: 1.4 $  */
 end_comment
 
 begin_class
@@ -751,7 +751,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * @param usageManager The UsageManager that is controlling the broker's memory usage.      */
+comment|/**      * @param usageManager The UsageManager that is controlling the broker's      *                memory usage.      */
 specifier|public
 name|void
 name|setUsageManager
@@ -776,7 +776,7 @@ parameter_list|(
 name|String
 name|brokerName
 parameter_list|)
-block|{             }
+block|{     }
 specifier|public
 name|void
 name|setDirectory
@@ -784,7 +784,7 @@ parameter_list|(
 name|File
 name|dir
 parameter_list|)
-block|{             }
+block|{     }
 specifier|public
 name|void
 name|checkpoint
@@ -794,7 +794,7 @@ name|sync
 parameter_list|)
 throws|throws
 name|IOException
-block|{             }
+block|{     }
 block|}
 end_class
 

@@ -228,7 +228,7 @@ name|NIOTransport
 extends|extends
 name|TcpTransport
 block|{
-comment|//private static final Log log = LogFactory.getLog(NIOTransport.class);
+comment|// private static final Log log = LogFactory.getLog(NIOTransport.class);
 specifier|private
 name|SocketChannel
 name|channel
@@ -397,7 +397,7 @@ block|}
 argument_list|)
 expr_stmt|;
 comment|// Send the data via the channel
-comment|//        inputBuffer = ByteBuffer.allocateDirect(8*1024);
+comment|// inputBuffer = ByteBuffer.allocateDirect(8*1024);
 name|inputBuffer
 operator|=
 name|ByteBuffer
@@ -520,7 +520,8 @@ operator|==
 name|currentBuffer
 assert|;
 comment|// If the frame is too big to fit in our direct byte buffer,
-comment|// Then allocate a non direct byte buffer of the right size for it.
+comment|// Then allocate a non direct byte buffer of the right size
+comment|// for it.
 name|inputBuffer
 operator|.
 name|flip

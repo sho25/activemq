@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  *called when a bridge fails  *   * @version $Revision: 1.1 $  */
+comment|/**  * called when a bridge fails  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_interface
@@ -24,13 +24,13 @@ specifier|public
 interface|interface
 name|NetworkBridgeListener
 block|{
-comment|/**      * called when the transport fails      *      */
+comment|/**      * called when the transport fails      */
 specifier|public
 name|void
 name|bridgeFailed
 parameter_list|()
 function_decl|;
-comment|/**      * called after the bridge is started.      *      */
+comment|/**      * called after the bridge is started.      */
 specifier|public
 name|void
 name|onStart
@@ -39,7 +39,7 @@ name|NetworkBridge
 name|bridge
 parameter_list|)
 function_decl|;
-comment|/**      * called before the bridge is stopped.      *      */
+comment|/**      * called before the bridge is stopped.      */
 specifier|public
 name|void
 name|onStop

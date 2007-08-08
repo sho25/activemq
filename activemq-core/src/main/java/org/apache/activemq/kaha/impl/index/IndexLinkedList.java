@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** * Inteface to LinkedList of Indexes *  * @version $Revision$ */
+comment|/**  * Inteface to LinkedList of Indexes  *   * @version $Revision$  */
 end_comment
 
 begin_interface
@@ -72,7 +72,7 @@ name|Object
 name|removeLast
 parameter_list|()
 function_decl|;
-comment|/**      * Inserts the given element at the beginning of this list.      * @param item       */
+comment|/**      * Inserts the given element at the beginning of this list.      *       * @param item      */
 specifier|public
 name|void
 name|addFirst
@@ -81,7 +81,7 @@ name|IndexItem
 name|item
 parameter_list|)
 function_decl|;
-comment|/**      * Appends the given element to the end of this list. (Identical in function to the<tt>add</tt> method; included      * only for consistency.)      * @param item       */
+comment|/**      * Appends the given element to the end of this list. (Identical in function      * to the<tt>add</tt> method; included only for consistency.)      *       * @param item      */
 specifier|public
 name|void
 name|addLast
@@ -102,7 +102,7 @@ name|boolean
 name|isEmpty
 parameter_list|()
 function_decl|;
-comment|/**      * Appends the specified element to the end of this list.      * @param item       *       * @return<tt>true</tt> (as per the general contract of<tt>Collection.add</tt>).      */
+comment|/**      * Appends the specified element to the end of this list.      *       * @param item      *       * @return<tt>true</tt> (as per the general contract of      *<tt>Collection.add</tt>).      */
 specifier|public
 name|boolean
 name|add
@@ -118,7 +118,7 @@ name|clear
 parameter_list|()
 function_decl|;
 comment|// Positional Access Operations
-comment|/**      * Returns the element at the specified position in this list.      *       * @param index index of element to return.      * @return the element at the specified position in this list.      *       * @throws IndexOutOfBoundsException if the specified index is is out of range (<tt>index&lt; 0 || index&gt;= size()</tt>).      */
+comment|/**      * Returns the element at the specified position in this list.      *       * @param index index of element to return.      * @return the element at the specified position in this list.      *       * @throws IndexOutOfBoundsException if the specified index is is out of      *                 range (<tt>index&lt; 0 || index&gt;= size()</tt>).      */
 specifier|public
 name|IndexItem
 name|get
@@ -127,7 +127,7 @@ name|int
 name|index
 parameter_list|)
 function_decl|;
-comment|/**      * Inserts the specified element at the specified position in this list. Shifts the element currently at that      * position (if any) and any subsequent elements to the right (adds one to their indices).      *       * @param index index at which the specified element is to be inserted.      * @param element element to be inserted.      *       * @throws IndexOutOfBoundsException if the specified index is out of range (<tt>index&lt; 0 || index&gt; size()</tt>).      */
+comment|/**      * Inserts the specified element at the specified position in this list.      * Shifts the element currently at that position (if any) and any subsequent      * elements to the right (adds one to their indices).      *       * @param index index at which the specified element is to be inserted.      * @param element element to be inserted.      *       * @throws IndexOutOfBoundsException if the specified index is out of range (<tt>index&lt; 0 || index&gt; size()</tt>).      */
 specifier|public
 name|void
 name|add
@@ -139,7 +139,7 @@ name|IndexItem
 name|element
 parameter_list|)
 function_decl|;
-comment|/**      * Removes the element at the specified position in this list. Shifts any subsequent elements to the left (subtracts      * one from their indices). Returns the element that was removed from the list.      *       * @param index the index of the element to removed.      * @return the element previously at the specified position.      *       * @throws IndexOutOfBoundsException if the specified index is out of range (<tt>index&lt; 0 || index&gt;= size()</tt>).      */
+comment|/**      * Removes the element at the specified position in this list. Shifts any      * subsequent elements to the left (subtracts one from their indices).      * Returns the element that was removed from the list.      *       * @param index the index of the element to removed.      * @return the element previously at the specified position.      *       * @throws IndexOutOfBoundsException if the specified index is out of range (<tt>index&lt; 0 || index&gt;= size()</tt>).      */
 specifier|public
 name|Object
 name|remove
@@ -149,7 +149,7 @@ name|index
 parameter_list|)
 function_decl|;
 comment|// Search Operations
-comment|/**      * Returns the index in this list of the first occurrence of the specified element, or -1 if the List does not      * contain this element. More formally, returns the lowest index i such that      *<tt>(o==null ? get(i)==null : o.equals(get(i)))</tt>, or -1 if there is no such index.      *       * @param o element to search for.      * @return the index in this list of the first occurrence of the specified element, or -1 if the list does not      *         contain this element.      */
+comment|/**      * Returns the index in this list of the first occurrence of the specified      * element, or -1 if the List does not contain this element. More formally,      * returns the lowest index i such that      *<tt>(o==null ? get(i)==null : o.equals(get(i)))</tt>, or -1 if there      * is no such index.      *       * @param o element to search for.      * @return the index in this list of the first occurrence of the specified      *         element, or -1 if the list does not contain this element.      */
 specifier|public
 name|int
 name|indexOf
@@ -176,7 +176,7 @@ name|IndexItem
 name|entry
 parameter_list|)
 function_decl|;
-comment|/**      * remove an entry      * @param e      */
+comment|/**      * remove an entry      *       * @param e      */
 specifier|public
 name|void
 name|remove
@@ -185,7 +185,7 @@ name|IndexItem
 name|e
 parameter_list|)
 function_decl|;
-comment|/**      * Ensure we have the up to date entry      * @param entry       * @return the entry      */
+comment|/**      * Ensure we have the up to date entry      *       * @param entry      * @return the entry      */
 specifier|public
 name|StoreEntry
 name|getEntry
@@ -194,7 +194,7 @@ name|StoreEntry
 name|entry
 parameter_list|)
 function_decl|;
-comment|/**      * Update the indexes of a StoreEntry      * @param current      * @return update StoreEntry      */
+comment|/**      * Update the indexes of a StoreEntry      *       * @param current      * @return update StoreEntry      */
 specifier|public
 name|StoreEntry
 name|refreshEntry

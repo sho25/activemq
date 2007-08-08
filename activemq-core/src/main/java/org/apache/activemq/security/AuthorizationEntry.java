@@ -17,20 +17,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|filter
-operator|.
-name|DestinationMapEntry
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -93,8 +79,22 @@ name|StringTokenizer
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|filter
+operator|.
+name|DestinationMapEntry
+import|;
+end_import
+
 begin_comment
-comment|/**  * Represents an entry in a {@link DefaultAuthorizationMap} for assigning  * different operations (read, write, admin) of user roles to a specific  * destination or a hierarchical wildcard area of destinations.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * Represents an entry in a {@link DefaultAuthorizationMap} for assigning  * different operations (read, write, admin) of user roles to a specific  * destination or a hierarchical wildcard area of destinations.  *   * @org.apache.xbean.XBean  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -249,9 +249,12 @@ name|writeACLs
 expr_stmt|;
 block|}
 comment|// helper methods for easier configuration in Spring
-comment|// ACLs are already set in the afterPropertiesSet method to ensure that  groupClass is set first before
-comment|// calling parceACLs() on any of the roles. We still need to add  the call to parceACLs inside the helper
-comment|// methods for instances where we configure security programatically without using xbean
+comment|// ACLs are already set in the afterPropertiesSet method to ensure that
+comment|// groupClass is set first before
+comment|// calling parceACLs() on any of the roles. We still need to add the call to
+comment|// parceACLs inside the helper
+comment|// methods for instances where we configure security programatically without
+comment|// using xbean
 comment|// -------------------------------------------------------------------------
 specifier|public
 name|void
@@ -478,7 +481,9 @@ literal|0
 index|]
 argument_list|)
 condition|)
+block|{
 break|break;
+block|}
 block|}
 if|if
 condition|(
@@ -595,7 +600,9 @@ literal|0
 index|]
 argument_list|)
 condition|)
+block|{
 break|break;
+block|}
 block|}
 if|if
 condition|(
@@ -627,11 +634,13 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 throw|throw
 operator|new
 name|NoSuchMethodException
 argument_list|()
 throw|;
+block|}
 block|}
 block|}
 catch|catch

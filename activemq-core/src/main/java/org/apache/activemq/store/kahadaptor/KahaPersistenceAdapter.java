@@ -1372,7 +1372,7 @@ return|return
 name|container
 return|;
 block|}
-comment|/**      * @param usageManager The UsageManager that is controlling the broker's memory usage.      */
+comment|/**      * @param usageManager The UsageManager that is controlling the broker's      *                memory usage.      */
 specifier|public
 name|void
 name|setUsageManager

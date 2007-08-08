@@ -329,7 +329,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * @param location      * @return       * @throws IOException      * @throws URISyntaxException       */
+comment|/**      * @param location      * @return      * @throws IOException      * @throws URISyntaxException      */
 specifier|public
 name|Transport
 name|createTransport

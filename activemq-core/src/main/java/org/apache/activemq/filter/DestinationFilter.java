@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a filter which only operates on Destinations  *  * @version $Revision: 1.3 $  */
+comment|/**  * Represents a filter which only operates on Destinations  *   * @version $Revision: 1.3 $  */
 end_comment
 
 begin_class

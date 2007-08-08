@@ -366,7 +366,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the TcpTransportFactory using SSL.  *   * The major contribution from this class is that it is aware of SslTransportServer and SslTransport classes.  * All Transports and TransportServers created from this factory will have their needClientAuth option set to false.  *   * @author sepandm@gmail.com (Sepand)  * @version $Revision: $  */
+comment|/**  * An implementation of the TcpTransportFactory using SSL. The major  * contribution from this class is that it is aware of SslTransportServer and  * SslTransport classes. All Transports and TransportServers created from this  * factory will have their needClientAuth option set to false.  *   * @author sepandm@gmail.com (Sepand)  * @version $Revision: $  */
 end_comment
 
 begin_class
@@ -399,7 +399,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Constructor. Nothing special.      *      */
+comment|/**      * Constructor. Nothing special.      */
 specifier|public
 name|SslTransportFactory
 parameter_list|()
@@ -774,7 +774,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Sets the key and trust managers used in constructed socket factories.      *       * Passes given arguments to SSLContext.init(...).      *       * @param km The sources of authentication keys or null.      * @param tm The sources of peer authentication trust decisions or null.      * @param random The source of randomness for this generator or null.      */
+comment|/**      * Sets the key and trust managers used in constructed socket factories.      * Passes given arguments to SSLContext.init(...).      *       * @param km The sources of authentication keys or null.      * @param tm The sources of peer authentication trust decisions or null.      * @param random The source of randomness for this generator or null.      */
 specifier|public
 name|void
 name|setKeyAndTrustManagers
@@ -835,7 +835,7 @@ name|random
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a new SSL ServerSocketFactory.      *       * The given factory will use user-provided key and trust managers (if the user provided them).      *       * @return Newly created (Ssl)ServerSocketFactory.      */
+comment|/**      * Creates a new SSL ServerSocketFactory. The given factory will use      * user-provided key and trust managers (if the user provided them).      *       * @return Newly created (Ssl)ServerSocketFactory.      */
 specifier|protected
 name|ServerSocketFactory
 name|createServerSocketFactory
@@ -863,7 +863,7 @@ name|getServerSocketFactory
 argument_list|()
 return|;
 block|}
-comment|/**      * Creates a new SSL SocketFactory.      *       * The given factory will use user-provided key and trust managers (if the user provided them).      *       * @return Newly created (Ssl)SocketFactory.      */
+comment|/**      * Creates a new SSL SocketFactory. The given factory will use user-provided      * key and trust managers (if the user provided them).      *       * @return Newly created (Ssl)SocketFactory.      */
 specifier|protected
 name|SocketFactory
 name|createSocketFactory

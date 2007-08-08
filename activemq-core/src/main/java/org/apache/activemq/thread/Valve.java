@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A Valve is a synchronization object used enable or disable the "flow" of concurrent  * processing.  *   *    * @version $Revision: 1.2 $  */
+comment|/**  * A Valve is a synchronization object used enable or disable the "flow" of  * concurrent processing.  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class
@@ -64,7 +64,7 @@ operator|=
 name|on
 expr_stmt|;
 block|}
-comment|/**      * Turns the valve on.  This method blocks until the valve is off.      * @throws InterruptedException       */
+comment|/**      * Turns the valve on. This method blocks until the valve is off.      *       * @throws InterruptedException      */
 specifier|public
 name|void
 name|turnOn
@@ -113,7 +113,7 @@ name|on
 return|;
 block|}
 block|}
-comment|/**      * Turns the valve off.  This method blocks until the valve is on and the valve is not       * in use.      *        * @throws InterruptedException      */
+comment|/**      * Turns the valve off. This method blocks until the valve is on and the      * valve is not in use.      *       * @throws InterruptedException      */
 specifier|public
 name|void
 name|turnOff
@@ -165,7 +165,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Increments the use counter of the valve.  This method blocks if the valve is off,      * or is being turned off.      *       * @throws InterruptedException      */
+comment|/**      * Increments the use counter of the valve. This method blocks if the valve      * is off, or is being turned off.      *       * @throws InterruptedException      */
 specifier|public
 name|void
 name|increment

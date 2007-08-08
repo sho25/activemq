@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper class to create a fully configured broker service using a URI.  * The list of currently supported URI syntaxes is described  *<a href="http://activemq.apache.org/how-do-i-embed-a-broker-inside-a-connection.html">here</a>  *   * @version $Revision$  */
+comment|/**  * A helper class to create a fully configured broker service using a URI. The  * list of currently supported URI syntaxes is described<a  * href="http://activemq.apache.org/how-do-i-embed-a-broker-inside-a-connection.html">here</a>  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -133,7 +133,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Creates a broker from a URI configuration      * @param brokerURI the URI scheme to configure the broker      * @throws Exception      */
+comment|/**      * Creates a broker from a URI configuration      *       * @param brokerURI the URI scheme to configure the broker      * @throws Exception      */
 specifier|public
 specifier|static
 name|BrokerService
@@ -154,7 +154,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a broker from a URI configuration      * @param brokerURI the URI scheme to configure the broker      * @param startBroker whether or not the broker should have its {@link BrokerService#start()} method called after construction      * @throws Exception      */
+comment|/**      * Creates a broker from a URI configuration      *       * @param brokerURI the URI scheme to configure the broker      * @param startBroker whether or not the broker should have its      *                {@link BrokerService#start()} method called after      *                construction      * @throws Exception      */
 specifier|public
 specifier|static
 name|BrokerService
@@ -178,6 +178,7 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -187,6 +188,7 @@ operator|+
 name|brokerURI
 argument_list|)
 throw|;
+block|}
 name|BrokerFactoryHandler
 name|handler
 init|=
@@ -223,7 +225,7 @@ return|return
 name|broker
 return|;
 block|}
-comment|/**      * Creates a broker from a URI configuration      * @param brokerURI the URI scheme to configure the broker      * @throws Exception      */
+comment|/**      * Creates a broker from a URI configuration      *       * @param brokerURI the URI scheme to configure the broker      * @throws Exception      */
 specifier|public
 specifier|static
 name|BrokerService
@@ -246,7 +248,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a broker from a URI configuration      * @param brokerURI the URI scheme to configure the broker      * @param startBroker whether or not the broker should have its {@link BrokerService#start()} method called after construction      * @throws Exception      */
+comment|/**      * Creates a broker from a URI configuration      *       * @param brokerURI the URI scheme to configure the broker      * @param startBroker whether or not the broker should have its      *                {@link BrokerService#start()} method called after      *                construction      * @throws Exception      */
 specifier|public
 specifier|static
 name|BrokerService

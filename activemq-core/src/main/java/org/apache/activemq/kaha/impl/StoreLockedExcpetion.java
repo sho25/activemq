@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** * Exception thrown if the store is in use by another application *  * @version $Revision: 1.1.1.1 $ */
+comment|/**  * Exception thrown if the store is in use by another application  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class

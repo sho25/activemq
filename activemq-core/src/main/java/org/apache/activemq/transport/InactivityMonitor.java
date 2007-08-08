@@ -110,7 +110,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to make sure that commands are arriving periodically from the peer of the transport.  *  * @version $Revision$  */
+comment|/**  * Used to make sure that commands are arriving periodically from the peer of  * the transport.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -123,7 +123,7 @@ block|{
 specifier|private
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -284,7 +284,7 @@ name|get
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -302,7 +302,7 @@ name|get
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -336,7 +336,7 @@ block|}
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -371,7 +371,7 @@ name|get
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -389,7 +389,7 @@ name|get
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -413,7 +413,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(

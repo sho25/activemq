@@ -234,7 +234,7 @@ operator|+
 name|location
 argument_list|)
 throw|;
-comment|//        try{
+comment|// try{
 comment|//            CompositeData compositData=URISupport.parseComposite(location);
 comment|//            URI[] components=compositData.getComponents();
 comment|//            if(components.length!=1){

@@ -150,7 +150,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Transport class that uses SSL and client-side certificate authentication.  *  * Client-side certificate authentication must be enabled through the constructor.  * By default, this class will have the same client authentication behavior as the socket it is passed.  * This class will set ConnectionInfo's transportContext to the SSL certificates of the client.  * NOTE: Accessor method for needClientAuth was not provided on purpose. This is because needClientAuth's value must be  *      set before the socket is connected. Otherwise, unexpected situations may occur.  *   */
+comment|/**  * A Transport class that uses SSL and client-side certificate authentication.  * Client-side certificate authentication must be enabled through the  * constructor. By default, this class will have the same client authentication  * behavior as the socket it is passed. This class will set ConnectionInfo's  * transportContext to the SSL certificates of the client. NOTE: Accessor method  * for needClientAuth was not provided on purpose. This is because  * needClientAuth's value must be set before the socket is connected. Otherwise,  * unexpected situations may occur.  */
 end_comment
 
 begin_class
@@ -160,7 +160,7 @@ name|SslTransport
 extends|extends
 name|TcpTransport
 block|{
-comment|/**      * Connect to a remote node such as a Broker.      *       * @param wireFormat The WireFormat to be used.      * @param socketFactory The socket factory to be used. Forcing SSLSockets      *      for obvious reasons.      * @param remoteLocation The remote location.      * @param localLocation The local location.      * @param needClientAuth If set to true, the underlying socket will need      *      client certificate authentication.      * @throws UnknownHostException If TcpTransport throws.      * @throws IOException If TcpTransport throws.      */
+comment|/**      * Connect to a remote node such as a Broker.      *       * @param wireFormat The WireFormat to be used.      * @param socketFactory The socket factory to be used. Forcing SSLSockets      *                for obvious reasons.      * @param remoteLocation The remote location.      * @param localLocation The local location.      * @param needClientAuth If set to true, the underlying socket will need      *                client certificate authentication.      * @throws UnknownHostException If TcpTransport throws.      * @throws IOException If TcpTransport throws.      */
 specifier|public
 name|SslTransport
 parameter_list|(
@@ -218,7 +218,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Initialize from a ServerSocket.      *       * No access to needClientAuth is given since it is already set within the      *      provided socket.      *       * @param wireFormat The WireFormat to be used.      * @param socket The Socket to be used. Forcing SSL.      * @throws IOException If TcpTransport throws.      */
+comment|/**      * Initialize from a ServerSocket. No access to needClientAuth is given      * since it is already set within the provided socket.      *       * @param wireFormat The WireFormat to be used.      * @param socket The Socket to be used. Forcing SSL.      * @throws IOException If TcpTransport throws.      */
 specifier|public
 name|SslTransport
 parameter_list|(
@@ -239,7 +239,7 @@ name|socket
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Overriding in order to add the client's certificates to ConnectionInfo Commmands.       *       * @param command The Command coming in.      */
+comment|/**      * Overriding in order to add the client's certificates to ConnectionInfo      * Commmands.      *       * @param command The Command coming in.      */
 specifier|public
 name|void
 name|doConsume
@@ -249,8 +249,8 @@ name|command
 parameter_list|)
 block|{
 comment|// The instanceof can be avoided, but that would require modifying the
-comment|//      Command clas tree and that would require too much effort right
-comment|//      now.
+comment|// Command clas tree and that would require too much effort right
+comment|// now.
 if|if
 condition|(
 name|command

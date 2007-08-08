@@ -124,13 +124,13 @@ specifier|private
 name|Thread
 name|runner
 decl_stmt|;
+comment|// should be a multiple of 128k
 specifier|private
 name|long
 name|stackSize
 init|=
 literal|0
 decl_stmt|;
-comment|//should be a multiple of 128k
 specifier|public
 name|TransportServerThreadSupport
 parameter_list|()
@@ -182,7 +182,7 @@ return|return
 name|joinOnStop
 return|;
 block|}
-comment|/**      * Sets whether the background read thread is joined with (waited for) on a stop      */
+comment|/**      * Sets whether the background read thread is joined with (waited for) on a      * stop      */
 specifier|public
 name|void
 name|setJoinOnStop

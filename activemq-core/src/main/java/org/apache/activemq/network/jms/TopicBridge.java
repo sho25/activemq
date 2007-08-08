@@ -420,7 +420,7 @@ return|return
 name|consumerConnection
 return|;
 block|}
-comment|/**      * @param consumerConnection      *            The consumerConnection to set.      */
+comment|/**      * @param consumerConnection The consumerConnection to set.      */
 specifier|public
 name|void
 name|setConsumerConnection
@@ -446,7 +446,7 @@ return|return
 name|consumerName
 return|;
 block|}
-comment|/**      * @param subscriptionName      *            The subscriptionName to set.      */
+comment|/**      * @param subscriptionName The subscriptionName to set.      */
 specifier|public
 name|void
 name|setConsumerName
@@ -472,7 +472,7 @@ return|return
 name|consumerTopic
 return|;
 block|}
-comment|/**      * @param consumerTopic      *            The consumerTopic to set.      */
+comment|/**      * @param consumerTopic The consumerTopic to set.      */
 specifier|public
 name|void
 name|setConsumerTopic
@@ -498,7 +498,7 @@ return|return
 name|producerConnection
 return|;
 block|}
-comment|/**      * @param producerConnection      *            The producerConnection to set.      */
+comment|/**      * @param producerConnection The producerConnection to set.      */
 specifier|public
 name|void
 name|setProducerConnection
@@ -524,7 +524,7 @@ return|return
 name|producerTopic
 return|;
 block|}
-comment|/**      * @param producerTopic      *            The producerTopic to set.      */
+comment|/**      * @param producerTopic The producerTopic to set.      */
 specifier|public
 name|void
 name|setProducerTopic
@@ -550,7 +550,7 @@ return|return
 name|selector
 return|;
 block|}
-comment|/**      * @param selector      *            The selector to set.      */
+comment|/**      * @param selector The selector to set.      */
 specifier|public
 name|void
 name|setSelector

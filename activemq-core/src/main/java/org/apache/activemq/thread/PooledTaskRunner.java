@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @version $Revision: 1.1 $  */
+comment|/**  * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
@@ -147,10 +147,14 @@ name|runable
 init|)
 block|{
 comment|// When we get in here, we make some assumptions of state:
-comment|// queued=false, iterating=false: wakeup() has not be called and therefore task is not executing.
-comment|// queued=true,  iterating=false: wakeup() was called but, task execution has not started yet
-comment|// queued=false, iterating=true : wakeup() was called, which caused task execution to start.
-comment|// queued=true,  iterating=true : wakeup() called after task execution was started.
+comment|// queued=false, iterating=false: wakeup() has not be called and
+comment|// therefore task is not executing.
+comment|// queued=true, iterating=false: wakeup() was called but, task
+comment|// execution has not started yet
+comment|// queued=false, iterating=true : wakeup() was called, which caused
+comment|// task execution to start.
+comment|// queued=true, iterating=true : wakeup() called after task
+comment|// execution was started.
 if|if
 condition|(
 name|queued
@@ -162,7 +166,8 @@ name|queued
 operator|=
 literal|true
 expr_stmt|;
-comment|// The runTask() method will do this for me once we are done iterating.
+comment|// The runTask() method will do this for me once we are done
+comment|// iterating.
 if|if
 condition|(
 operator|!
@@ -179,7 +184,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * shut down the task      * @throws InterruptedException       */
+comment|/**      * shut down the task      *       * @throws InterruptedException      */
 specifier|public
 name|void
 name|shutdown
@@ -199,10 +204,10 @@ name|shutdown
 operator|=
 literal|true
 expr_stmt|;
-comment|//the check on the thread is done
-comment|//because a call to iterate can result in
-comment|//shutDown() being called, which would wait forever
-comment|//waiting for iterating to finish
+comment|// the check on the thread is done
+comment|// because a call to iterate can result in
+comment|// shutDown() being called, which would wait forever
+comment|// waiting for iterating to finish
 if|if
 condition|(
 name|runningThread

@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Simple LRU Cache  *   * @version $Revision$  * @param<K>   * @param<V>   */
+comment|/**  * A Simple LRU Cache  *   * @version $Revision$  * @param<K>  * @param<V>  */
 end_comment
 
 begin_class
@@ -71,7 +71,7 @@ name|maxCacheSize
 init|=
 literal|10000
 decl_stmt|;
-comment|/**      * Default constructorfor an LRU Cache      * The default capacity is 10000      *       */
+comment|/**      * Default constructorfor an LRU Cache The default capacity is 10000      */
 specifier|public
 name|LRUCache
 parameter_list|()
@@ -86,7 +86,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Constructs a LRUCache with a maximum capacity      * @param maximumCacheSize      */
+comment|/**      * Constructs a LRUCache with a maximum capacity      *       * @param maximumCacheSize      */
 specifier|public
 name|LRUCache
 parameter_list|(
@@ -106,7 +106,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Constructs an empty<tt>LRUCache</tt> instance with the      * specified initial capacity, maximumCacheSize,load factor and ordering mode.      *      * @param  initialCapacity the initial capacity.      * @param maximumCacheSize       * @param  loadFactor      the load factor.      * @param  accessOrder     the ordering mode -<tt>true</tt> for      *         access-order,<tt>false</tt> for insertion-order.      * @throws IllegalArgumentException if the initial capacity is negative      *         or the load factor is nonpositive.      */
+comment|/**      * Constructs an empty<tt>LRUCache</tt> instance with the specified      * initial capacity, maximumCacheSize,load factor and ordering mode.      *       * @param initialCapacity the initial capacity.      * @param maximumCacheSize      * @param loadFactor the load factor.      * @param accessOrder the ordering mode -<tt>true</tt> for access-order,      *<tt>false</tt> for insertion-order.      * @throws IllegalArgumentException if the initial capacity is negative or      *                 the load factor is nonpositive.      */
 specifier|public
 name|LRUCache
 parameter_list|(
@@ -149,7 +149,7 @@ return|return
 name|maxCacheSize
 return|;
 block|}
-comment|/**      * @param maxCacheSize      *            The maxCacheSize to set.      */
+comment|/**      * @param maxCacheSize The maxCacheSize to set.      */
 specifier|public
 name|void
 name|setMaxCacheSize

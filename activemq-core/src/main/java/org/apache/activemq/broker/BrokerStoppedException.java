@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * This exception is thrown by the broker when you try to use it after it has been stopped.  *    * @author chirino  */
+comment|/**  * This exception is thrown by the broker when you try to use it after it has  * been stopped.  *   * @author chirino  */
 end_comment
 
 begin_class
