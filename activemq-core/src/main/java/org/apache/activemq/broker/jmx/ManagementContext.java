@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -248,7 +248,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Flow provides different dispatch policies within the NMR  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * A Flow provides different dispatch policies within the NMR  *   * @org.apache.xbean.XBean  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -268,10 +268,10 @@ init|=
 literal|"org.apache.activemq"
 decl_stmt|;
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -307,8 +307,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|locallyCreateMBeanServer
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
@@ -319,8 +317,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|findTigerMbeanServer
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|int
@@ -471,7 +467,7 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -491,7 +487,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -571,7 +567,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -669,7 +665,7 @@ return|return
 name|jmxDomainName
 return|;
 block|}
-comment|/**      * @param jmxDomainName      *            The jmxDomainName to set.      */
+comment|/**      * @param jmxDomainName The jmxDomainName to set.      */
 specifier|public
 name|void
 name|setJmxDomainName
@@ -738,7 +734,7 @@ return|return
 name|useMBeanServer
 return|;
 block|}
-comment|/**      * @param useMBeanServer      *            The useMBeanServer to set.      */
+comment|/**      * @param useMBeanServer The useMBeanServer to set.      */
 specifier|public
 name|void
 name|setUseMBeanServer
@@ -764,7 +760,7 @@ return|return
 name|createMBeanServer
 return|;
 block|}
-comment|/**      * @param enableJMX      *            Set createMBeanServer.      */
+comment|/**      * @param enableJMX Set createMBeanServer.      */
 specifier|public
 name|void
 name|setCreateMBeanServer
@@ -805,7 +801,7 @@ operator|=
 name|findTigerMbeanServer
 expr_stmt|;
 block|}
-comment|/**      * Formulate and return the MBean ObjectName of a custom control MBean      *       * @param type      * @param name      * @return the JMX ObjectName of the MBean, or<code>null</code> if<code>customName</code> is invalid.      */
+comment|/**      * Formulate and return the MBean ObjectName of a custom control MBean      *       * @param type      * @param name      * @return the JMX ObjectName of the MBean, or<code>null</code> if      *<code>customName</code> is invalid.      */
 specifier|public
 name|ObjectName
 name|createCustomComponentMBeanName
@@ -860,7 +856,7 @@ name|MalformedObjectNameException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1206,7 +1202,7 @@ name|NoClassDefFoundError
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1223,7 +1219,7 @@ name|e
 parameter_list|)
 block|{
 comment|// probably don't have access to system properties
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1327,7 +1323,7 @@ return|;
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1342,7 +1338,7 @@ block|}
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1362,7 +1358,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1377,7 +1373,7 @@ block|}
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -1548,7 +1544,8 @@ argument_list|,
 name|namingServiceObjectName
 argument_list|)
 expr_stmt|;
-comment|// mbeanServer.createMBean("mx4j.tools.naming.NamingService", namingServiceObjectName, null);
+comment|// mbeanServer.createMBean("mx4j.tools.naming.NamingService",
+comment|// namingServiceObjectName, null);
 comment|// set the naming port
 name|Attribute
 name|attr
@@ -1582,7 +1579,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(

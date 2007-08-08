@@ -271,7 +271,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -305,20 +305,14 @@ decl_stmt|;
 specifier|protected
 name|boolean
 name|loaded
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|boolean
 name|closed
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|boolean
 name|initialized
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|boolean
@@ -835,7 +829,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -989,7 +983,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(

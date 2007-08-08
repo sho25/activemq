@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author rajdavies  *   */
+comment|/**  * @author rajdavies  */
 end_comment
 
 begin_class
@@ -84,7 +84,7 @@ name|tearDown
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Test method for {@link org.apache.activemq.util.MarshallingSupport#propertiesToString(java.util.Properties)}.      *       * @throws Exception      */
+comment|/**      * Test method for      * {@link org.apache.activemq.util.MarshallingSupport#propertiesToString(java.util.Properties)}.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testPropertiesToString

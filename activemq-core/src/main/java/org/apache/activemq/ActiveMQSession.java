@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -562,7 +562,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<P>  * A<CODE>Session</CODE> object is a single-threaded context for producing  * and consuming messages. Although it may allocate provider resources outside  * the Java virtual machine (JVM), it is considered a lightweight JMS object.  *<P>  * A session serves several purposes:  *<UL>  *<LI>It is a factory for its message producers and consumers.  *<LI>It supplies provider-optimized message factories.  *<LI>It is a factory for<CODE>TemporaryTopics</CODE> and<CODE>TemporaryQueues</CODE>.  *<LI>It provides a way to create<CODE>Queue</CODE> or<CODE>Topic</CODE>  * objects for those clients that need to dynamically manipulate  * provider-specific destination names.  *<LI>It supports a single series of transactions that combine work spanning  * its producers and consumers into atomic units.  *<LI>It defines a serial order for the messages it consumes and the messages  * it produces.  *<LI>It retains messages it consumes until they have been acknowledged.  *<LI>It serializes execution of message listeners registered with its message  * consumers.  *<LI>It is a factory for<CODE>QueueBrowsers</CODE>.  *</UL>  *<P>  * A session can create and service multiple message producers and consumers.  *<P>  * One typical use is to have a thread block on a synchronous<CODE>MessageConsumer</CODE>  * until a message arrives. The thread may then use one or more of the<CODE>Session</CODE>'s<CODE>MessageProducer</CODE>s.  *<P>  * If a client desires to have one thread produce messages while others consume  * them, the client should use a separate session for its producing thread.  *<P>  * Once a connection has been started, any session with one or more registered  * message listeners is dedicated to the thread of control that delivers  * messages to it. It is erroneous for client code to use this session or any of  * its constituent objects from another thread of control. The only exception to  * this rule is the use of the session or connection<CODE>close</CODE>  * method.  *<P>  * It should be easy for most clients to partition their work naturally into  * sessions. This model allows clients to start simply and incrementally add  * message processing complexity as their need for concurrency grows.  *<P>  * The<CODE>close</CODE> method is the only session method that can be called  * while some other session method is being executed in another thread.  *<P>  * A session may be specified as transacted. Each transacted session supports a  * single series of transactions. Each transaction groups a set of message sends  * and a set of message receives into an atomic unit of work. In effect,  * transactions organize a session's input message stream and output message  * stream into series of atomic units. When a transaction commits, its atomic  * unit of input is acknowledged and its associated atomic unit of output is  * sent. If a transaction rollback is done, the transaction's sent messages are  * destroyed and the session's input is automatically recovered.  *<P>  * The content of a transaction's input and output units is simply those  * messages that have been produced and consumed within the session's current  * transaction.  *<P>  * A transaction is completed using either its session's<CODE>commit</CODE>  * method or its session's<CODE>rollback</CODE> method. The completion of a  * session's current transaction automatically begins the next. The result is  * that a transacted session always has a current transaction within which its  * work is done.  *<P>  * The Java Transaction Service (JTS) or some other transaction monitor may be  * used to combine a session's transaction with transactions on other resources  * (databases, other JMS sessions, etc.). Since Java distributed transactions  * are controlled via the Java Transaction API (JTA), use of the session's  *<CODE>commit</CODE> and<CODE>rollback</CODE> methods in this context is  * prohibited.  *<P>  * The JMS API does not require support for JTA; however, it does define how a  * provider supplies this support.  *<P>  * Although it is also possible for a JMS client to handle distributed  * transactions directly, it is unlikely that many JMS clients will do this.  * Support for JTA in the JMS API is targeted at systems vendors who will be  * integrating the JMS API into their application server products.  *   * @version $Revision: 1.34 $  * @see javax.jms.Session  * @see javax.jms.QueueSession  * @see javax.jms.TopicSession  * @see javax.jms.XASession  */
+comment|/**  *<P>  * A<CODE>Session</CODE> object is a single-threaded context for producing  * and consuming messages. Although it may allocate provider resources outside  * the Java virtual machine (JVM), it is considered a lightweight JMS object.  *<P>  * A session serves several purposes:  *<UL>  *<LI>It is a factory for its message producers and consumers.  *<LI>It supplies provider-optimized message factories.  *<LI>It is a factory for<CODE>TemporaryTopics</CODE> and  *<CODE>TemporaryQueues</CODE>.  *<LI>It provides a way to create<CODE>Queue</CODE> or<CODE>Topic</CODE>  * objects for those clients that need to dynamically manipulate  * provider-specific destination names.  *<LI>It supports a single series of transactions that combine work spanning  * its producers and consumers into atomic units.  *<LI>It defines a serial order for the messages it consumes and the messages  * it produces.  *<LI>It retains messages it consumes until they have been acknowledged.  *<LI>It serializes execution of message listeners registered with its message  * consumers.  *<LI>It is a factory for<CODE>QueueBrowsers</CODE>.  *</UL>  *<P>  * A session can create and service multiple message producers and consumers.  *<P>  * One typical use is to have a thread block on a synchronous  *<CODE>MessageConsumer</CODE> until a message arrives. The thread may then  * use one or more of the<CODE>Session</CODE>'s<CODE>MessageProducer</CODE>s.  *<P>  * If a client desires to have one thread produce messages while others consume  * them, the client should use a separate session for its producing thread.  *<P>  * Once a connection has been started, any session with one or more registered  * message listeners is dedicated to the thread of control that delivers  * messages to it. It is erroneous for client code to use this session or any of  * its constituent objects from another thread of control. The only exception to  * this rule is the use of the session or connection<CODE>close</CODE>  * method.  *<P>  * It should be easy for most clients to partition their work naturally into  * sessions. This model allows clients to start simply and incrementally add  * message processing complexity as their need for concurrency grows.  *<P>  * The<CODE>close</CODE> method is the only session method that can be called  * while some other session method is being executed in another thread.  *<P>  * A session may be specified as transacted. Each transacted session supports a  * single series of transactions. Each transaction groups a set of message sends  * and a set of message receives into an atomic unit of work. In effect,  * transactions organize a session's input message stream and output message  * stream into series of atomic units. When a transaction commits, its atomic  * unit of input is acknowledged and its associated atomic unit of output is  * sent. If a transaction rollback is done, the transaction's sent messages are  * destroyed and the session's input is automatically recovered.  *<P>  * The content of a transaction's input and output units is simply those  * messages that have been produced and consumed within the session's current  * transaction.  *<P>  * A transaction is completed using either its session's<CODE>commit</CODE>  * method or its session's<CODE>rollback</CODE> method. The completion of a  * session's current transaction automatically begins the next. The result is  * that a transacted session always has a current transaction within which its  * work is done.  *<P>  * The Java Transaction Service (JTS) or some other transaction monitor may be  * used to combine a session's transaction with transactions on other resources  * (databases, other JMS sessions, etc.). Since Java distributed transactions  * are controlled via the Java Transaction API (JTA), use of the session's  *<CODE>commit</CODE> and<CODE>rollback</CODE> methods in this context is  * prohibited.  *<P>  * The JMS API does not require support for JTA; however, it does define how a  * provider supplies this support.  *<P>  * Although it is also possible for a JMS client to handle distributed  * transactions directly, it is unlikely that many JMS clients will do this.  * Support for JTA in the JMS API is targeted at systems vendors who will be  * integrating the JMS API into their application server products.  *   * @version $Revision: 1.34 $  * @see javax.jms.Session  * @see javax.jms.QueueSession  * @see javax.jms.TopicSession  * @see javax.jms.XASession  */
 end_comment
 
 begin_class
@@ -753,7 +753,7 @@ operator|new
 name|Object
 argument_list|()
 decl_stmt|;
-comment|/**      * Construct the Session      *       * @param connection      * @param sessionId       * @param acknowledgeMode      *            n.b if transacted - the acknowledgeMode ==      *            Session.SESSION_TRANSACTED      * @param asyncDispatch       * @param sessionAsyncDispatch       * @throws JMSException      *             on internal error      */
+comment|/**      * Construct the Session      *       * @param connection      * @param sessionId      * @param acknowledgeMode n.b if transacted - the acknowledgeMode ==      *                Session.SESSION_TRANSACTED      * @param asyncDispatch      * @param sessionAsyncDispatch      * @throws JMSException on internal error      */
 specifier|protected
 name|ActiveMQSession
 parameter_list|(
@@ -920,7 +920,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets the transaction context of the session.      *       * @param transactionContext -      *            provides the means to control a JMS transaction.      */
+comment|/**      * Sets the transaction context of the session.      *       * @param transactionContext - provides the means to control a JMS      *                transaction.      */
 specifier|public
 name|void
 name|setTransactionContext
@@ -966,7 +966,7 @@ return|return
 name|stats
 return|;
 block|}
-comment|/**      * Creates a<CODE>BytesMessage</CODE> object. A<CODE>BytesMessage</CODE>      * object is used to send a message containing a stream of uninterpreted      * bytes.      *       * @return the an ActiveMQBytesMessage      * @throws JMSException      *             if the JMS provider fails to create this message due to some      *             internal error.      */
+comment|/**      * Creates a<CODE>BytesMessage</CODE> object. A<CODE>BytesMessage</CODE>      * object is used to send a message containing a stream of uninterpreted      * bytes.      *       * @return the an ActiveMQBytesMessage      * @throws JMSException if the JMS provider fails to create this message due      *                 to some internal error.      */
 specifier|public
 name|BytesMessage
 name|createBytesMessage
@@ -990,7 +990,7 @@ return|return
 name|message
 return|;
 block|}
-comment|/**      * Creates a<CODE>MapMessage</CODE> object. A<CODE>MapMessage</CODE>      * object is used to send a self-defining set of name-value pairs, where      * names are<CODE>String</CODE> objects and values are primitive values      * in the Java programming language.      *       * @return an ActiveMQMapMessage      * @throws JMSException      *             if the JMS provider fails to create this message due to some      *             internal error.      */
+comment|/**      * Creates a<CODE>MapMessage</CODE> object. A<CODE>MapMessage</CODE>      * object is used to send a self-defining set of name-value pairs, where      * names are<CODE>String</CODE> objects and values are primitive values      * in the Java programming language.      *       * @return an ActiveMQMapMessage      * @throws JMSException if the JMS provider fails to create this message due      *                 to some internal error.      */
 specifier|public
 name|MapMessage
 name|createMapMessage
@@ -1014,7 +1014,7 @@ return|return
 name|message
 return|;
 block|}
-comment|/**      * Creates a<CODE>Message</CODE> object. The<CODE>Message</CODE>      * interface is the root interface of all JMS messages. A<CODE>Message</CODE>      * object holds all the standard message header information. It can be sent      * when a message containing only header information is sufficient.      *       * @return an ActiveMQMessage      * @throws JMSException      *             if the JMS provider fails to create this message due to some      *             internal error.      */
+comment|/**      * Creates a<CODE>Message</CODE> object. The<CODE>Message</CODE>      * interface is the root interface of all JMS messages. A      *<CODE>Message</CODE> object holds all the standard message header      * information. It can be sent when a message containing only header      * information is sufficient.      *       * @return an ActiveMQMessage      * @throws JMSException if the JMS provider fails to create this message due      *                 to some internal error.      */
 specifier|public
 name|Message
 name|createMessage
@@ -1038,7 +1038,7 @@ return|return
 name|message
 return|;
 block|}
-comment|/**      * Creates an<CODE>ObjectMessage</CODE> object. An<CODE>ObjectMessage</CODE>      * object is used to send a message that contains a serializable Java      * object.      *       * @return an ActiveMQObjectMessage      * @throws JMSException      *             if the JMS provider fails to create this message due to some      *             internal error.      */
+comment|/**      * Creates an<CODE>ObjectMessage</CODE> object. An      *<CODE>ObjectMessage</CODE> object is used to send a message that      * contains a serializable Java object.      *       * @return an ActiveMQObjectMessage      * @throws JMSException if the JMS provider fails to create this message due      *                 to some internal error.      */
 specifier|public
 name|ObjectMessage
 name|createObjectMessage
@@ -1062,7 +1062,7 @@ return|return
 name|message
 return|;
 block|}
-comment|/**      * Creates an initialized<CODE>ObjectMessage</CODE> object. An<CODE>ObjectMessage</CODE>      * object is used to send a message that contains a serializable Java      * object.      *       * @param object      *            the object to use to initialize this message      * @return an ActiveMQObjectMessage      * @throws JMSException      *             if the JMS provider fails to create this message due to some      *             internal error.      */
+comment|/**      * Creates an initialized<CODE>ObjectMessage</CODE> object. An      *<CODE>ObjectMessage</CODE> object is used to send a message that      * contains a serializable Java object.      *       * @param object the object to use to initialize this message      * @return an ActiveMQObjectMessage      * @throws JMSException if the JMS provider fails to create this message due      *                 to some internal error.      */
 specifier|public
 name|ObjectMessage
 name|createObjectMessage
@@ -1096,7 +1096,7 @@ return|return
 name|message
 return|;
 block|}
-comment|/**      * Creates a<CODE>StreamMessage</CODE> object. A<CODE>StreamMessage</CODE>      * object is used to send a self-defining stream of primitive values in the      * Java programming language.      *       * @return an ActiveMQStreamMessage      * @throws JMSException      *             if the JMS provider fails to create this message due to some      *             internal error.      */
+comment|/**      * Creates a<CODE>StreamMessage</CODE> object. A      *<CODE>StreamMessage</CODE> object is used to send a self-defining      * stream of primitive values in the Java programming language.      *       * @return an ActiveMQStreamMessage      * @throws JMSException if the JMS provider fails to create this message due      *                 to some internal error.      */
 specifier|public
 name|StreamMessage
 name|createStreamMessage
@@ -1120,7 +1120,7 @@ return|return
 name|message
 return|;
 block|}
-comment|/**      * Creates a<CODE>TextMessage</CODE> object. A<CODE>TextMessage</CODE>      * object is used to send a message containing a<CODE>String</CODE>      * object.      *       * @return an ActiveMQTextMessage      * @throws JMSException      *             if the JMS provider fails to create this message due to some      *             internal error.      */
+comment|/**      * Creates a<CODE>TextMessage</CODE> object. A<CODE>TextMessage</CODE>      * object is used to send a message containing a<CODE>String</CODE>      * object.      *       * @return an ActiveMQTextMessage      * @throws JMSException if the JMS provider fails to create this message due      *                 to some internal error.      */
 specifier|public
 name|TextMessage
 name|createTextMessage
@@ -1144,7 +1144,7 @@ return|return
 name|message
 return|;
 block|}
-comment|/**      * Creates an initialized<CODE>TextMessage</CODE> object. A<CODE>TextMessage</CODE>      * object is used to send a message containing a<CODE>String</CODE>.      *       * @param text      *            the string used to initialize this message      * @return an ActiveMQTextMessage      * @throws JMSException      *             if the JMS provider fails to create this message due to some      *             internal error.      */
+comment|/**      * Creates an initialized<CODE>TextMessage</CODE> object. A      *<CODE>TextMessage</CODE> object is used to send a message containing a      *<CODE>String</CODE>.      *       * @param text the string used to initialize this message      * @return an ActiveMQTextMessage      * @throws JMSException if the JMS provider fails to create this message due      *                 to some internal error.      */
 specifier|public
 name|TextMessage
 name|createTextMessage
@@ -1178,7 +1178,7 @@ return|return
 name|message
 return|;
 block|}
-comment|/**      * Creates an initialized<CODE>BlobMessage</CODE> object. A<CODE>BlobMessage</CODE>      * object is used to send a message containing a<CODE>URL</CODE> which points to some      * network addressible BLOB.      *      * @param url      *            the network addressable URL used to pass directly to the consumer      * @return a BlobMessage      * @throws JMSException      *             if the JMS provider fails to create this message due to some      *             internal error.      */
+comment|/**      * Creates an initialized<CODE>BlobMessage</CODE> object. A      *<CODE>BlobMessage</CODE> object is used to send a message containing a      *<CODE>URL</CODE> which points to some network addressible BLOB.      *       * @param url the network addressable URL used to pass directly to the      *                consumer      * @return a BlobMessage      * @throws JMSException if the JMS provider fails to create this message due      *                 to some internal error.      */
 specifier|public
 name|BlobMessage
 name|createBlobMessage
@@ -1198,7 +1198,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates an initialized<CODE>BlobMessage</CODE> object. A<CODE>BlobMessage</CODE>      * object is used to send a message containing a<CODE>URL</CODE> which points to some      * network addressible BLOB.      *      * @param url      *            the network addressable URL used to pass directly to the consumer      * @param deletedByBroker      *          indicates whether or not the resource is deleted by the broker when the message      * is acknowledged      * @return a BlobMessage      * @throws JMSException      *             if the JMS provider fails to create this message due to some      *             internal error.      */
+comment|/**      * Creates an initialized<CODE>BlobMessage</CODE> object. A      *<CODE>BlobMessage</CODE> object is used to send a message containing a      *<CODE>URL</CODE> which points to some network addressible BLOB.      *       * @param url the network addressable URL used to pass directly to the      *                consumer      * @param deletedByBroker indicates whether or not the resource is deleted      *                by the broker when the message is acknowledged      * @return a BlobMessage      * @throws JMSException if the JMS provider fails to create this message due      *                 to some internal error.      */
 specifier|public
 name|BlobMessage
 name|createBlobMessage
@@ -1242,7 +1242,7 @@ return|return
 name|message
 return|;
 block|}
-comment|/**      * Creates an initialized<CODE>BlobMessage</CODE> object. A<CODE>BlobMessage</CODE>      * object is used to send a message containing the<CODE>File</CODE> content. Before the      * message is sent the file conent will be uploaded to the broker or some other remote repository      * depending on the {@link #getBlobTransferPolicy()}.      *      * @param file      *            the file to be uploaded to some remote repo (or the broker) depending on the strategy      *      * @return a BlobMessage      * @throws JMSException      *             if the JMS provider fails to create this message due to some      *             internal error.      */
+comment|/**      * Creates an initialized<CODE>BlobMessage</CODE> object. A      *<CODE>BlobMessage</CODE> object is used to send a message containing      * the<CODE>File</CODE> content. Before the message is sent the file      * conent will be uploaded to the broker or some other remote repository      * depending on the {@link #getBlobTransferPolicy()}.      *       * @param file the file to be uploaded to some remote repo (or the broker)      *                depending on the strategy      * @return a BlobMessage      * @throws JMSException if the JMS provider fails to create this message due      *                 to some internal error.      */
 specifier|public
 name|BlobMessage
 name|createBlobMessage
@@ -1300,7 +1300,7 @@ return|return
 name|message
 return|;
 block|}
-comment|/**      * Creates an initialized<CODE>BlobMessage</CODE> object. A<CODE>BlobMessage</CODE>      * object is used to send a message containing the<CODE>File</CODE> content. Before the      * message is sent the file conent will be uploaded to the broker or some other remote repository      * depending on the {@link #getBlobTransferPolicy()}.      *      * @param in      *            the stream to be uploaded to some remote repo (or the broker) depending on the strategy      *      * @return a BlobMessage      * @throws JMSException      *             if the JMS provider fails to create this message due to some      *             internal error.      */
+comment|/**      * Creates an initialized<CODE>BlobMessage</CODE> object. A      *<CODE>BlobMessage</CODE> object is used to send a message containing      * the<CODE>File</CODE> content. Before the message is sent the file      * conent will be uploaded to the broker or some other remote repository      * depending on the {@link #getBlobTransferPolicy()}.      *       * @param in the stream to be uploaded to some remote repo (or the broker)      *                depending on the strategy      * @return a BlobMessage      * @throws JMSException if the JMS provider fails to create this message due      *                 to some internal error.      */
 specifier|public
 name|BlobMessage
 name|createBlobMessage
@@ -1348,7 +1348,7 @@ return|return
 name|message
 return|;
 block|}
-comment|/**      * Indicates whether the session is in transacted mode.      *       * @return true if the session is in transacted mode      * @throws JMSException      *             if there is some internal error.      */
+comment|/**      * Indicates whether the session is in transacted mode.      *       * @return true if the session is in transacted mode      * @throws JMSException if there is some internal error.      */
 specifier|public
 name|boolean
 name|getTransacted
@@ -1395,7 +1395,7 @@ operator|.
 name|acknowledgementMode
 return|;
 block|}
-comment|/**      * Commits all messages done in this transaction and releases any locks      * currently held.      *       * @throws JMSException      *             if the JMS provider fails to commit the transaction due to      *             some internal error.      * @throws TransactionRolledBackException      *             if the transaction is rolled back due to some internal error      *             during commit.      * @throws javax.jms.IllegalStateException      *             if the method is not called by a transacted session.      */
+comment|/**      * Commits all messages done in this transaction and releases any locks      * currently held.      *       * @throws JMSException if the JMS provider fails to commit the transaction      *                 due to some internal error.      * @throws TransactionRolledBackException if the transaction is rolled back      *                 due to some internal error during commit.      * @throws javax.jms.IllegalStateException if the method is not called by a      *                 transacted session.      */
 specifier|public
 name|void
 name|commit
@@ -1431,7 +1431,7 @@ name|commit
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Rolls back any messages done in this transaction and releases any locks      * currently held.      *       * @throws JMSException      *             if the JMS provider fails to roll back the transaction due to      *             some internal error.      * @throws javax.jms.IllegalStateException      *             if the method is not called by a transacted session.      */
+comment|/**      * Rolls back any messages done in this transaction and releases any locks      * currently held.      *       * @throws JMSException if the JMS provider fails to roll back the      *                 transaction due to some internal error.      * @throws javax.jms.IllegalStateException if the method is not called by a      *                 transacted session.      */
 specifier|public
 name|void
 name|rollback
@@ -1467,7 +1467,7 @@ name|rollback
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Closes the session.      *<P>      * Since a provider may allocate some resources on behalf of a session      * outside the JVM, clients should close the resources when they are not      * needed. Relying on garbage collection to eventually reclaim these      * resources may not be timely enough.      *<P>      * There is no need to close the producers and consumers of a closed      * session.      *<P>      * This call will block until a<CODE>receive</CODE> call or message      * listener in progress has completed. A blocked message consumer<CODE>receive</CODE>      * call returns<CODE>null</CODE> when this session is closed.      *<P>      * Closing a transacted session must roll back the transaction in progress.      *<P>      * This method is the only<CODE>Session</CODE> method that can be called      * concurrently.      *<P>      * Invoking any other<CODE>Session</CODE> method on a closed session must      * throw a<CODE> JMSException.IllegalStateException</CODE>. Closing a      * closed session must<I>not</I> throw an exception.      *       * @throws JMSException      *             if the JMS provider fails to close the session due to some      *             internal error.      */
+comment|/**      * Closes the session.      *<P>      * Since a provider may allocate some resources on behalf of a session      * outside the JVM, clients should close the resources when they are not      * needed. Relying on garbage collection to eventually reclaim these      * resources may not be timely enough.      *<P>      * There is no need to close the producers and consumers of a closed      * session.      *<P>      * This call will block until a<CODE>receive</CODE> call or message      * listener in progress has completed. A blocked message consumer      *<CODE>receive</CODE> call returns<CODE>null</CODE> when this session      * is closed.      *<P>      * Closing a transacted session must roll back the transaction in progress.      *<P>      * This method is the only<CODE>Session</CODE> method that can be called      * concurrently.      *<P>      * Invoking any other<CODE>Session</CODE> method on a closed session must      * throw a<CODE> JMSException.IllegalStateException</CODE>. Closing a      * closed session must<I>not</I> throw an exception.      *       * @throws JMSException if the JMS provider fails to close the session due      *                 to some internal error.      */
 specifier|public
 name|void
 name|close
@@ -1745,7 +1745,7 @@ name|connection
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Check if the session is closed. It is used for ensuring that the session      * is open before performing various operations.      *       * @throws IllegalStateException      *             if the Session is closed      */
+comment|/**      * Check if the session is closed. It is used for ensuring that the session      * is open before performing various operations.      *       * @throws IllegalStateException if the Session is closed      */
 specifier|protected
 name|void
 name|checkClosed
@@ -1767,7 +1767,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Stops message delivery in this session, and restarts message delivery      * with the oldest unacknowledged message.      *<P>      * All consumers deliver messages in a serial order. Acknowledging a      * received message automatically acknowledges all messages that have been      * delivered to the client.      *<P>      * Restarting a session causes it to take the following actions:      *<UL>      *<LI>Stop message delivery      *<LI>Mark all messages that might have been delivered but not      * acknowledged as "redelivered"      *<LI>Restart the delivery sequence including all unacknowledged messages      * that had been previously delivered. Redelivered messages do not have to      * be delivered in exactly their original delivery order.      *</UL>      *       * @throws JMSException      *             if the JMS provider fails to stop and restart message      *             delivery due to some internal error.      * @throws IllegalStateException      *             if the method is called by a transacted session.      */
+comment|/**      * Stops message delivery in this session, and restarts message delivery      * with the oldest unacknowledged message.      *<P>      * All consumers deliver messages in a serial order. Acknowledging a      * received message automatically acknowledges all messages that have been      * delivered to the client.      *<P>      * Restarting a session causes it to take the following actions:      *<UL>      *<LI>Stop message delivery      *<LI>Mark all messages that might have been delivered but not      * acknowledged as "redelivered"      *<LI>Restart the delivery sequence including all unacknowledged messages      * that had been previously delivered. Redelivered messages do not have to      * be delivered in exactly their original delivery order.      *</UL>      *       * @throws JMSException if the JMS provider fails to stop and restart      *                 message delivery due to some internal error.      * @throws IllegalStateException if the method is called by a transacted      *                 session.      */
 specifier|public
 name|void
 name|recover
@@ -1827,7 +1827,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Returns the session's distinguished message listener (optional).      *       * @return the message listener associated with this session      * @throws JMSException      *             if the JMS provider fails to get the message listener due to      *             an internal error.      * @see javax.jms.Session#setMessageListener(javax.jms.MessageListener)      * @see javax.jms.ServerSessionPool      * @see javax.jms.ServerSession      */
+comment|/**      * Returns the session's distinguished message listener (optional).      *       * @return the message listener associated with this session      * @throws JMSException if the JMS provider fails to get the message      *                 listener due to an internal error.      * @see javax.jms.Session#setMessageListener(javax.jms.MessageListener)      * @see javax.jms.ServerSessionPool      * @see javax.jms.ServerSession      */
 specifier|public
 name|MessageListener
 name|getMessageListener
@@ -1844,7 +1844,7 @@ operator|.
 name|messageListener
 return|;
 block|}
-comment|/**      * Sets the session's distinguished message listener (optional).      *<P>      * When the distinguished message listener is set, no other form of message      * receipt in the session can be used; however, all forms of sending      * messages are still supported.      *<P>      * This is an expert facility not used by regular JMS clients.      *       * @param listener      *            the message listener to associate with this session      * @throws JMSException      *             if the JMS provider fails to set the message listener due to      *             an internal error.      * @see javax.jms.Session#getMessageListener()      * @see javax.jms.ServerSessionPool      * @see javax.jms.ServerSession      */
+comment|/**      * Sets the session's distinguished message listener (optional).      *<P>      * When the distinguished message listener is set, no other form of message      * receipt in the session can be used; however, all forms of sending      * messages are still supported.      *<P>      * This is an expert facility not used by regular JMS clients.      *       * @param listener the message listener to associate with this session      * @throws JMSException if the JMS provider fails to set the message      *                 listener due to an internal error.      * @see javax.jms.Session#getMessageListener()      * @see javax.jms.ServerSessionPool      * @see javax.jms.ServerSession      */
 specifier|public
 name|void
 name|setMessageListener
@@ -1939,7 +1939,7 @@ name|message
 argument_list|)
 condition|)
 block|{
-comment|//TODO: Ack it without delivery to client
+comment|// TODO: Ack it without delivery to client
 continue|continue;
 block|}
 if|if
@@ -2157,7 +2157,8 @@ name|getMaximumRedeliveries
 argument_list|()
 condition|)
 block|{
-comment|// We need to NACK the messages so that they get sent to the
+comment|// We need to NACK the messages so that they get
+comment|// sent to the
 comment|// DLQ.
 comment|// Acknowledge the last message.
 name|MessageAck
@@ -2196,7 +2197,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// Figure out how long we should wait to resend this message.
+comment|// Figure out how long we should wait to resend
+comment|// this message.
 name|long
 name|redeliveryDelay
 init|=
@@ -2306,7 +2308,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Creates a<CODE>MessageProducer</CODE> to send messages to the      * specified destination.      *<P>      * A client uses a<CODE>MessageProducer</CODE> object to send messages to      * a destination. Since<CODE>Queue</CODE> and<CODE>Topic</CODE> both      * inherit from<CODE>Destination</CODE>, they can be used in the      * destination parameter to create a<CODE>MessageProducer</CODE> object.      *       * @param destination      *            the<CODE>Destination</CODE> to send to, or null if this is      *            a producer which does not have a specified destination.      * @return the MessageProducer      * @throws JMSException      *             if the session fails to create a MessageProducer due to some      *             internal error.      * @throws InvalidDestinationException      *             if an invalid destination is specified.      * @since 1.1      */
+comment|/**      * Creates a<CODE>MessageProducer</CODE> to send messages to the      * specified destination.      *<P>      * A client uses a<CODE>MessageProducer</CODE> object to send messages to      * a destination. Since<CODE>Queue</CODE> and<CODE>Topic</CODE> both      * inherit from<CODE>Destination</CODE>, they can be used in the      * destination parameter to create a<CODE>MessageProducer</CODE> object.      *       * @param destination the<CODE>Destination</CODE> to send to, or null if      *                this is a producer which does not have a specified      *                destination.      * @return the MessageProducer      * @throws JMSException if the session fails to create a MessageProducer due      *                 to some internal error.      * @throws InvalidDestinationException if an invalid destination is      *                 specified.      * @since 1.1      */
 specifier|public
 name|MessageProducer
 name|createProducer
@@ -2362,7 +2364,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a<CODE>MessageConsumer</CODE> for the specified destination.      * Since<CODE>Queue</CODE> and<CODE> Topic</CODE> both inherit from      *<CODE>Destination</CODE>, they can be used in the destination      * parameter to create a<CODE>MessageConsumer</CODE>.      *       * @param destination      *            the<CODE>Destination</CODE> to access.      * @return the MessageConsumer      * @throws JMSException      *             if the session fails to create a consumer due to some      *             internal error.      * @throws InvalidDestinationException      *             if an invalid destination is specified.      * @since 1.1      */
+comment|/**      * Creates a<CODE>MessageConsumer</CODE> for the specified destination.      * Since<CODE>Queue</CODE> and<CODE> Topic</CODE> both inherit from      *<CODE>Destination</CODE>, they can be used in the destination      * parameter to create a<CODE>MessageConsumer</CODE>.      *       * @param destination the<CODE>Destination</CODE> to access.      * @return the MessageConsumer      * @throws JMSException if the session fails to create a consumer due to      *                 some internal error.      * @throws InvalidDestinationException if an invalid destination is      *                 specified.      * @since 1.1      */
 specifier|public
 name|MessageConsumer
 name|createConsumer
@@ -2385,7 +2387,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a<CODE>MessageConsumer</CODE> for the specified destination,      * using a message selector. Since<CODE> Queue</CODE> and<CODE>Topic</CODE>      * both inherit from<CODE>Destination</CODE>, they can be used in the      * destination parameter to create a<CODE>MessageConsumer</CODE>.      *<P>      * A client uses a<CODE>MessageConsumer</CODE> object to receive messages      * that have been sent to a destination.      *       * @param destination      *            the<CODE>Destination</CODE> to access      * @param messageSelector      *            only messages with properties matching the message selector      *            expression are delivered. A value of null or an empty string      *            indicates that there is no message selector for the message      *            consumer.      * @return the MessageConsumer      * @throws JMSException      *             if the session fails to create a MessageConsumer due to some      *             internal error.      * @throws InvalidDestinationException      *             if an invalid destination is specified.      * @throws InvalidSelectorException      *             if the message selector is invalid.      * @since 1.1      */
+comment|/**      * Creates a<CODE>MessageConsumer</CODE> for the specified destination,      * using a message selector. Since<CODE> Queue</CODE> and      *<CODE>Topic</CODE> both inherit from<CODE>Destination</CODE>, they      * can be used in the destination parameter to create a      *<CODE>MessageConsumer</CODE>.      *<P>      * A client uses a<CODE>MessageConsumer</CODE> object to receive messages      * that have been sent to a destination.      *       * @param destination the<CODE>Destination</CODE> to access      * @param messageSelector only messages with properties matching the message      *                selector expression are delivered. A value of null or an      *                empty string indicates that there is no message selector      *                for the message consumer.      * @return the MessageConsumer      * @throws JMSException if the session fails to create a MessageConsumer due      *                 to some internal error.      * @throws InvalidDestinationException if an invalid destination is      *                 specified.      * @throws InvalidSelectorException if the message selector is invalid.      * @since 1.1      */
 specifier|public
 name|MessageConsumer
 name|createConsumer
@@ -2545,7 +2547,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates<CODE>MessageConsumer</CODE> for the specified destination,      * using a message selector. This method can specify whether messages      * published by its own connection should be delivered to it, if the      * destination is a topic.      *<P>      * Since<CODE>Queue</CODE> and<CODE>Topic</CODE> both inherit from      *<CODE>Destination</CODE>, they can be used in the destination      * parameter to create a<CODE>MessageConsumer</CODE>.      *<P>      * A client uses a<CODE>MessageConsumer</CODE> object to receive messages      * that have been published to a destination.      *<P>      * In some cases, a connection may both publish and subscribe to a topic.      * The consumer<CODE>NoLocal</CODE> attribute allows a consumer to      * inhibit the delivery of messages published by its own connection. The      * default value for this attribute is False. The<CODE>noLocal</CODE>      * value must be supported by destinations that are topics.      *       * @param destination      *            the<CODE>Destination</CODE> to access      * @param messageSelector      *            only messages with properties matching the message selector      *            expression are delivered. A value of null or an empty string      *            indicates that there is no message selector for the message      *            consumer.      * @param noLocal -      *            if true, and the destination is a topic, inhibits the delivery      *            of messages published by its own connection. The behavior for      *<CODE>NoLocal</CODE> is not specified if the destination is      *            a queue.      * @return the MessageConsumer      * @throws JMSException      *             if the session fails to create a MessageConsumer due to some      *             internal error.      * @throws InvalidDestinationException      *             if an invalid destination is specified.      * @throws InvalidSelectorException      *             if the message selector is invalid.      * @since 1.1      */
+comment|/**      * Creates<CODE>MessageConsumer</CODE> for the specified destination,      * using a message selector. This method can specify whether messages      * published by its own connection should be delivered to it, if the      * destination is a topic.      *<P>      * Since<CODE>Queue</CODE> and<CODE>Topic</CODE> both inherit from      *<CODE>Destination</CODE>, they can be used in the destination      * parameter to create a<CODE>MessageConsumer</CODE>.      *<P>      * A client uses a<CODE>MessageConsumer</CODE> object to receive messages      * that have been published to a destination.      *<P>      * In some cases, a connection may both publish and subscribe to a topic.      * The consumer<CODE>NoLocal</CODE> attribute allows a consumer to      * inhibit the delivery of messages published by its own connection. The      * default value for this attribute is False. The<CODE>noLocal</CODE>      * value must be supported by destinations that are topics.      *       * @param destination the<CODE>Destination</CODE> to access      * @param messageSelector only messages with properties matching the message      *                selector expression are delivered. A value of null or an      *                empty string indicates that there is no message selector      *                for the message consumer.      * @param noLocal - if true, and the destination is a topic, inhibits the      *                delivery of messages published by its own connection. The      *                behavior for<CODE>NoLocal</CODE> is not specified if      *                the destination is a queue.      * @return the MessageConsumer      * @throws JMSException if the session fails to create a MessageConsumer due      *                 to some internal error.      * @throws InvalidDestinationException if an invalid destination is      *                 specified.      * @throws InvalidSelectorException if the message selector is invalid.      * @since 1.1      */
 specifier|public
 name|MessageConsumer
 name|createConsumer
@@ -2639,7 +2641,7 @@ name|asyncDispatch
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a queue identity given a<CODE>Queue</CODE> name.      *<P>      * This facility is provided for the rare cases where clients need to      * dynamically manipulate queue identity. It allows the creation of a queue      * identity with a provider-specific name. Clients that depend on this      * ability are not portable.      *<P>      * Note that this method is not for creating the physical queue. The      * physical creation of queues is an administrative task and is not to be      * initiated by the JMS API. The one exception is the creation of temporary      * queues, which is accomplished with the<CODE>createTemporaryQueue</CODE>      * method.      *       * @param queueName      *            the name of this<CODE>Queue</CODE>      * @return a<CODE>Queue</CODE> with the given name      * @throws JMSException      *             if the session fails to create a queue due to some internal      *             error.      * @since 1.1      */
+comment|/**      * Creates a queue identity given a<CODE>Queue</CODE> name.      *<P>      * This facility is provided for the rare cases where clients need to      * dynamically manipulate queue identity. It allows the creation of a queue      * identity with a provider-specific name. Clients that depend on this      * ability are not portable.      *<P>      * Note that this method is not for creating the physical queue. The      * physical creation of queues is an administrative task and is not to be      * initiated by the JMS API. The one exception is the creation of temporary      * queues, which is accomplished with the<CODE>createTemporaryQueue</CODE>      * method.      *       * @param queueName the name of this<CODE>Queue</CODE>      * @return a<CODE>Queue</CODE> with the given name      * @throws JMSException if the session fails to create a queue due to some      *                 internal error.      * @since 1.1      */
 specifier|public
 name|Queue
 name|createQueue
@@ -2681,7 +2683,7 @@ name|queueName
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a topic identity given a<CODE>Topic</CODE> name.      *<P>      * This facility is provided for the rare cases where clients need to      * dynamically manipulate topic identity. This allows the creation of a      * topic identity with a provider-specific name. Clients that depend on this      * ability are not portable.      *<P>      * Note that this method is not for creating the physical topic. The      * physical creation of topics is an administrative task and is not to be      * initiated by the JMS API. The one exception is the creation of temporary      * topics, which is accomplished with the<CODE>createTemporaryTopic</CODE>      * method.      *       * @param topicName      *            the name of this<CODE>Topic</CODE>      * @return a<CODE>Topic</CODE> with the given name      * @throws JMSException      *             if the session fails to create a topic due to some internal      *             error.      * @since 1.1      */
+comment|/**      * Creates a topic identity given a<CODE>Topic</CODE> name.      *<P>      * This facility is provided for the rare cases where clients need to      * dynamically manipulate topic identity. This allows the creation of a      * topic identity with a provider-specific name. Clients that depend on this      * ability are not portable.      *<P>      * Note that this method is not for creating the physical topic. The      * physical creation of topics is an administrative task and is not to be      * initiated by the JMS API. The one exception is the creation of temporary      * topics, which is accomplished with the<CODE>createTemporaryTopic</CODE>      * method.      *       * @param topicName the name of this<CODE>Topic</CODE>      * @return a<CODE>Topic</CODE> with the given name      * @throws JMSException if the session fails to create a topic due to some      *                 internal error.      * @since 1.1      */
 specifier|public
 name|Topic
 name|createTopic
@@ -2723,8 +2725,8 @@ name|topicName
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a<CODE>QueueBrowser</CODE> object to peek at the messages on      * the specified queue.      *       * @param queue      *            the<CODE>queue</CODE> to access      * @exception InvalidDestinationException      *                if an invalid destination is specified      * @since 1.1      */
-comment|/**      * Creates a durable subscriber to the specified topic.      *<P>      * If a client needs to receive all the messages published on a topic,      * including the ones published while the subscriber is inactive, it uses a      * durable<CODE>TopicSubscriber</CODE>. The JMS provider retains a      * record of this durable subscription and insures that all messages from      * the topic's publishers are retained until they are acknowledged by this      * durable subscriber or they have expired.      *<P>      * Sessions with durable subscribers must always provide the same client      * identifier. In addition, each client must specify a name that uniquely      * identifies (within client identifier) each durable subscription it      * creates. Only one session at a time can have a<CODE>TopicSubscriber</CODE>      * for a particular durable subscription.      *<P>      * A client can change an existing durable subscription by creating a      * durable<CODE>TopicSubscriber</CODE> with the same name and a new topic      * and/or message selector. Changing a durable subscriber is equivalent to      * unsubscribing (deleting) the old one and creating a new one.      *<P>      * In some cases, a connection may both publish and subscribe to a topic.      * The subscriber<CODE>NoLocal</CODE> attribute allows a subscriber to      * inhibit the delivery of messages published by its own connection. The      * default value for this attribute is false.      *       * @param topic      *            the non-temporary<CODE>Topic</CODE> to subscribe to      * @param name      *            the name used to identify this subscription      * @return the TopicSubscriber      * @throws JMSException      *             if the session fails to create a subscriber due to some      *             internal error.      * @throws InvalidDestinationException      *             if an invalid topic is specified.      * @since 1.1      */
+comment|/**      * Creates a<CODE>QueueBrowser</CODE> object to peek at the messages on      * the specified queue.      *       * @param queue the<CODE>queue</CODE> to access      * @exception InvalidDestinationException if an invalid destination is      *                    specified      * @since 1.1      */
+comment|/**      * Creates a durable subscriber to the specified topic.      *<P>      * If a client needs to receive all the messages published on a topic,      * including the ones published while the subscriber is inactive, it uses a      * durable<CODE>TopicSubscriber</CODE>. The JMS provider retains a      * record of this durable subscription and insures that all messages from      * the topic's publishers are retained until they are acknowledged by this      * durable subscriber or they have expired.      *<P>      * Sessions with durable subscribers must always provide the same client      * identifier. In addition, each client must specify a name that uniquely      * identifies (within client identifier) each durable subscription it      * creates. Only one session at a time can have a      *<CODE>TopicSubscriber</CODE> for a particular durable subscription.      *<P>      * A client can change an existing durable subscription by creating a      * durable<CODE>TopicSubscriber</CODE> with the same name and a new topic      * and/or message selector. Changing a durable subscriber is equivalent to      * unsubscribing (deleting) the old one and creating a new one.      *<P>      * In some cases, a connection may both publish and subscribe to a topic.      * The subscriber<CODE>NoLocal</CODE> attribute allows a subscriber to      * inhibit the delivery of messages published by its own connection. The      * default value for this attribute is false.      *       * @param topic the non-temporary<CODE>Topic</CODE> to subscribe to      * @param name the name used to identify this subscription      * @return the TopicSubscriber      * @throws JMSException if the session fails to create a subscriber due to      *                 some internal error.      * @throws InvalidDestinationException if an invalid topic is specified.      * @since 1.1      */
 specifier|public
 name|TopicSubscriber
 name|createDurableSubscriber
@@ -2754,7 +2756,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a durable subscriber to the specified topic, using a message      * selector and specifying whether messages published by its own connection      * should be delivered to it.      *<P>      * If a client needs to receive all the messages published on a topic,      * including the ones published while the subscriber is inactive, it uses a      * durable<CODE>TopicSubscriber</CODE>. The JMS provider retains a      * record of this durable subscription and insures that all messages from      * the topic's publishers are retained until they are acknowledged by this      * durable subscriber or they have expired.      *<P>      * Sessions with durable subscribers must always provide the same client      * identifier. In addition, each client must specify a name which uniquely      * identifies (within client identifier) each durable subscription it      * creates. Only one session at a time can have a<CODE>TopicSubscriber</CODE>      * for a particular durable subscription. An inactive durable subscriber is      * one that exists but does not currently have a message consumer associated      * with it.      *<P>      * A client can change an existing durable subscription by creating a      * durable<CODE>TopicSubscriber</CODE> with the same name and a new topic      * and/or message selector. Changing a durable subscriber is equivalent to      * unsubscribing (deleting) the old one and creating a new one.      *       * @param topic      *            the non-temporary<CODE>Topic</CODE> to subscribe to      * @param name      *            the name used to identify this subscription      * @param messageSelector      *            only messages with properties matching the message selector      *            expression are delivered. A value of null or an empty string      *            indicates that there is no message selector for the message      *            consumer.      * @param noLocal      *            if set, inhibits the delivery of messages published by its own      *            connection      * @return the Queue Browser      * @throws JMSException      *             if the session fails to create a subscriber due to some      *             internal error.      * @throws InvalidDestinationException      *             if an invalid topic is specified.      * @throws InvalidSelectorException      *             if the message selector is invalid.      * @since 1.1      */
+comment|/**      * Creates a durable subscriber to the specified topic, using a message      * selector and specifying whether messages published by its own connection      * should be delivered to it.      *<P>      * If a client needs to receive all the messages published on a topic,      * including the ones published while the subscriber is inactive, it uses a      * durable<CODE>TopicSubscriber</CODE>. The JMS provider retains a      * record of this durable subscription and insures that all messages from      * the topic's publishers are retained until they are acknowledged by this      * durable subscriber or they have expired.      *<P>      * Sessions with durable subscribers must always provide the same client      * identifier. In addition, each client must specify a name which uniquely      * identifies (within client identifier) each durable subscription it      * creates. Only one session at a time can have a      *<CODE>TopicSubscriber</CODE> for a particular durable subscription. An      * inactive durable subscriber is one that exists but does not currently      * have a message consumer associated with it.      *<P>      * A client can change an existing durable subscription by creating a      * durable<CODE>TopicSubscriber</CODE> with the same name and a new topic      * and/or message selector. Changing a durable subscriber is equivalent to      * unsubscribing (deleting) the old one and creating a new one.      *       * @param topic the non-temporary<CODE>Topic</CODE> to subscribe to      * @param name the name used to identify this subscription      * @param messageSelector only messages with properties matching the message      *                selector expression are delivered. A value of null or an      *                empty string indicates that there is no message selector      *                for the message consumer.      * @param noLocal if set, inhibits the delivery of messages published by its      *                own connection      * @return the Queue Browser      * @throws JMSException if the session fails to create a subscriber due to      *                 some internal error.      * @throws InvalidDestinationException if an invalid topic is specified.      * @throws InvalidSelectorException if the message selector is invalid.      * @since 1.1      */
 specifier|public
 name|TopicSubscriber
 name|createDurableSubscriber
@@ -2883,7 +2885,7 @@ name|asyncDispatch
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a<CODE>QueueBrowser</CODE> object to peek at the messages on      * the specified queue.      *       * @param queue      *            the<CODE>queue</CODE> to access      * @return the Queue Browser      * @throws JMSException      *             if the session fails to create a browser due to some internal      *             error.      * @throws InvalidDestinationException      *             if an invalid destination is specified      * @since 1.1      */
+comment|/**      * Creates a<CODE>QueueBrowser</CODE> object to peek at the messages on      * the specified queue.      *       * @param queue the<CODE>queue</CODE> to access      * @return the Queue Browser      * @throws JMSException if the session fails to create a browser due to some      *                 internal error.      * @throws InvalidDestinationException if an invalid destination is      *                 specified      * @since 1.1      */
 specifier|public
 name|QueueBrowser
 name|createBrowser
@@ -2906,7 +2908,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a<CODE>QueueBrowser</CODE> object to peek at the messages on      * the specified queue using a message selector.      *       * @param queue      *            the<CODE>queue</CODE> to access      * @param messageSelector      *            only messages with properties matching the message selector      *            expression are delivered. A value of null or an empty string      *            indicates that there is no message selector for the message      *            consumer.      * @return the Queue Browser      * @throws JMSException      *             if the session fails to create a browser due to some internal      *             error.      * @throws InvalidDestinationException      *             if an invalid destination is specified      * @throws InvalidSelectorException      *             if the message selector is invalid.      * @since 1.1      */
+comment|/**      * Creates a<CODE>QueueBrowser</CODE> object to peek at the messages on      * the specified queue using a message selector.      *       * @param queue the<CODE>queue</CODE> to access      * @param messageSelector only messages with properties matching the message      *                selector expression are delivered. A value of null or an      *                empty string indicates that there is no message selector      *                for the message consumer.      * @return the Queue Browser      * @throws JMSException if the session fails to create a browser due to some      *                 internal error.      * @throws InvalidDestinationException if an invalid destination is      *                 specified      * @throws InvalidSelectorException if the message selector is invalid.      * @since 1.1      */
 specifier|public
 name|QueueBrowser
 name|createBrowser
@@ -2945,7 +2947,7 @@ name|asyncDispatch
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a<CODE>TemporaryQueue</CODE> object. Its lifetime will be that      * of the<CODE>Connection</CODE> unless it is deleted earlier.      *       * @return a temporary queue identity      * @throws JMSException      *             if the session fails to create a temporary queue due to some      *             internal error.      * @since 1.1      */
+comment|/**      * Creates a<CODE>TemporaryQueue</CODE> object. Its lifetime will be that      * of the<CODE>Connection</CODE> unless it is deleted earlier.      *       * @return a temporary queue identity      * @throws JMSException if the session fails to create a temporary queue due      *                 to some internal error.      * @since 1.1      */
 specifier|public
 name|TemporaryQueue
 name|createTemporaryQueue
@@ -2968,7 +2970,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a<CODE>TemporaryTopic</CODE> object. Its lifetime will be that      * of the<CODE>Connection</CODE> unless it is deleted earlier.      *       * @return a temporary topic identity      * @throws JMSException      *             if the session fails to create a temporary topic due to some      *             internal error.      * @since 1.1      */
+comment|/**      * Creates a<CODE>TemporaryTopic</CODE> object. Its lifetime will be that      * of the<CODE>Connection</CODE> unless it is deleted earlier.      *       * @return a temporary topic identity      * @throws JMSException if the session fails to create a temporary topic due      *                 to some internal error.      * @since 1.1      */
 specifier|public
 name|TemporaryTopic
 name|createTemporaryTopic
@@ -2991,7 +2993,7 @@ literal|true
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a<CODE>QueueReceiver</CODE> object to receive messages from      * the specified queue.      *       * @param queue      *            the<CODE>Queue</CODE> to access      * @return      * @throws JMSException      *             if the session fails to create a receiver due to some      *             internal error.      * @throws JMSException      * @throws InvalidDestinationException      *             if an invalid queue is specified.      */
+comment|/**      * Creates a<CODE>QueueReceiver</CODE> object to receive messages from      * the specified queue.      *       * @param queue the<CODE>Queue</CODE> to access      * @return      * @throws JMSException if the session fails to create a receiver due to      *                 some internal error.      * @throws JMSException      * @throws InvalidDestinationException if an invalid queue is specified.      */
 specifier|public
 name|QueueReceiver
 name|createReceiver
@@ -3014,7 +3016,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a<CODE>QueueReceiver</CODE> object to receive messages from      * the specified queue using a message selector.      *       * @param queue      *            the<CODE>Queue</CODE> to access      * @param messageSelector      *            only messages with properties matching the message selector      *            expression are delivered. A value of null or an empty string      *            indicates that there is no message selector for the message      *            consumer.      * @return QueueReceiver      * @throws JMSException      *             if the session fails to create a receiver due to some      *             internal error.      * @throws InvalidDestinationException      *             if an invalid queue is specified.      * @throws InvalidSelectorException      *             if the message selector is invalid.      */
+comment|/**      * Creates a<CODE>QueueReceiver</CODE> object to receive messages from      * the specified queue using a message selector.      *       * @param queue the<CODE>Queue</CODE> to access      * @param messageSelector only messages with properties matching the message      *                selector expression are delivered. A value of null or an      *                empty string indicates that there is no message selector      *                for the message consumer.      * @return QueueReceiver      * @throws JMSException if the session fails to create a receiver due to      *                 some internal error.      * @throws InvalidDestinationException if an invalid queue is specified.      * @throws InvalidSelectorException if the message selector is invalid.      */
 specifier|public
 name|QueueReceiver
 name|createReceiver
@@ -3099,7 +3101,7 @@ name|asyncDispatch
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a<CODE>QueueSender</CODE> object to send messages to the      * specified queue.      *       * @param queue      *            the<CODE>Queue</CODE> to access, or null if this is an      *            unidentified producer      * @return QueueSender      * @throws JMSException      *             if the session fails to create a sender due to some internal      *             error.      * @throws InvalidDestinationException      *             if an invalid queue is specified.      */
+comment|/**      * Creates a<CODE>QueueSender</CODE> object to send messages to the      * specified queue.      *       * @param queue the<CODE>Queue</CODE> to access, or null if this is an      *                unidentified producer      * @return QueueSender      * @throws JMSException if the session fails to create a sender due to some      *                 internal error.      * @throws InvalidDestinationException if an invalid queue is specified.      */
 specifier|public
 name|QueueSender
 name|createSender
@@ -3152,7 +3154,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a nondurable subscriber to the specified topic.<p/>      *<P>      * A client uses a<CODE>TopicSubscriber</CODE> object to receive messages      * that have been published to a topic.<p/>      *<P>      * Regular<CODE>TopicSubscriber</CODE> objects are not durable. They      * receive only messages that are published while they are active.<p/>      *<P>      * In some cases, a connection may both publish and subscribe to a topic.      * The subscriber<CODE>NoLocal</CODE> attribute allows a subscriber to      * inhibit the delivery of messages published by its own connection. The      * default value for this attribute is false.      *       * @param topic      *            the<CODE>Topic</CODE> to subscribe to      * @return TopicSubscriber      * @throws JMSException      *             if the session fails to create a subscriber due to some      *             internal error.      * @throws InvalidDestinationException      *             if an invalid topic is specified.      */
+comment|/**      * Creates a nondurable subscriber to the specified topic.<p/>      *<P>      * A client uses a<CODE>TopicSubscriber</CODE> object to receive messages      * that have been published to a topic.<p/>      *<P>      * Regular<CODE>TopicSubscriber</CODE> objects are not durable. They      * receive only messages that are published while they are active.<p/>      *<P>      * In some cases, a connection may both publish and subscribe to a topic.      * The subscriber<CODE>NoLocal</CODE> attribute allows a subscriber to      * inhibit the delivery of messages published by its own connection. The      * default value for this attribute is false.      *       * @param topic the<CODE>Topic</CODE> to subscribe to      * @return TopicSubscriber      * @throws JMSException if the session fails to create a subscriber due to      *                 some internal error.      * @throws InvalidDestinationException if an invalid topic is specified.      */
 specifier|public
 name|TopicSubscriber
 name|createSubscriber
@@ -3177,7 +3179,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a nondurable subscriber to the specified topic, using a message      * selector or specifying whether messages published by its own connection      * should be delivered to it.<p/>      *<P>      * A client uses a<CODE>TopicSubscriber</CODE> object to receive messages      * that have been published to a topic.<p/>      *<P>      * Regular<CODE>TopicSubscriber</CODE> objects are not durable. They      * receive only messages that are published while they are active.<p/>      *<P>      * Messages filtered out by a subscriber's message selector will never be      * delivered to the subscriber. From the subscriber's perspective, they do      * not exist.<p/>      *<P>      * In some cases, a connection may both publish and subscribe to a topic.      * The subscriber<CODE>NoLocal</CODE> attribute allows a subscriber to      * inhibit the delivery of messages published by its own connection. The      * default value for this attribute is false.      *       * @param topic      *            the<CODE>Topic</CODE> to subscribe to      * @param messageSelector      *            only messages with properties matching the message selector      *            expression are delivered. A value of null or an empty string      *            indicates that there is no message selector for the message      *            consumer.      * @param noLocal      *            if set, inhibits the delivery of messages published by its own      *            connection      * @return TopicSubscriber      * @throws JMSException      *             if the session fails to create a subscriber due to some      *             internal error.      * @throws InvalidDestinationException      *             if an invalid topic is specified.      * @throws InvalidSelectorException      *             if the message selector is invalid.      */
+comment|/**      * Creates a nondurable subscriber to the specified topic, using a message      * selector or specifying whether messages published by its own connection      * should be delivered to it.<p/>      *<P>      * A client uses a<CODE>TopicSubscriber</CODE> object to receive messages      * that have been published to a topic.<p/>      *<P>      * Regular<CODE>TopicSubscriber</CODE> objects are not durable. They      * receive only messages that are published while they are active.<p/>      *<P>      * Messages filtered out by a subscriber's message selector will never be      * delivered to the subscriber. From the subscriber's perspective, they do      * not exist.<p/>      *<P>      * In some cases, a connection may both publish and subscribe to a topic.      * The subscriber<CODE>NoLocal</CODE> attribute allows a subscriber to      * inhibit the delivery of messages published by its own connection. The      * default value for this attribute is false.      *       * @param topic the<CODE>Topic</CODE> to subscribe to      * @param messageSelector only messages with properties matching the message      *                selector expression are delivered. A value of null or an      *                empty string indicates that there is no message selector      *                for the message consumer.      * @param noLocal if set, inhibits the delivery of messages published by its      *                own connection      * @return TopicSubscriber      * @throws JMSException if the session fails to create a subscriber due to      *                 some internal error.      * @throws InvalidDestinationException if an invalid topic is specified.      * @throws InvalidSelectorException if the message selector is invalid.      */
 specifier|public
 name|TopicSubscriber
 name|createSubscriber
@@ -3273,7 +3275,7 @@ name|asyncDispatch
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a publisher for the specified topic.<p/>      *<P>      * A client uses a<CODE>TopicPublisher</CODE> object to publish messages      * on a topic. Each time a client creates a<CODE>TopicPublisher</CODE> on      * a topic, it defines a new sequence of messages that have no ordering      * relationship with the messages it has previously sent.      *       * @param topic      *            the<CODE>Topic</CODE> to publish to, or null if this is an      *            unidentified producer      * @return TopicPublisher      * @throws JMSException      *             if the session fails to create a publisher due to some      *             internal error.      * @throws InvalidDestinationException      *             if an invalid topic is specified.      */
+comment|/**      * Creates a publisher for the specified topic.<p/>      *<P>      * A client uses a<CODE>TopicPublisher</CODE> object to publish messages      * on a topic. Each time a client creates a<CODE>TopicPublisher</CODE> on      * a topic, it defines a new sequence of messages that have no ordering      * relationship with the messages it has previously sent.      *       * @param topic the<CODE>Topic</CODE> to publish to, or null if this is      *                an unidentified producer      * @return TopicPublisher      * @throws JMSException if the session fails to create a publisher due to      *                 some internal error.      * @throws InvalidDestinationException if an invalid topic is specified.      */
 specifier|public
 name|TopicPublisher
 name|createPublisher
@@ -3326,7 +3328,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Unsubscribes a durable subscription that has been created by a client.      *<P>      * This method deletes the state being maintained on behalf of the      * subscriber by its provider.      *<P>      * It is erroneous for a client to delete a durable subscription while there      * is an active<CODE>MessageConsumer</CODE> or<CODE>TopicSubscriber</CODE>      * for the subscription, or while a consumed message is part of a pending      * transaction or has not been acknowledged in the session.      *       * @param name      *            the name used to identify this subscription      * @throws JMSException      *             if the session fails to unsubscribe to the durable      *             subscription due to some internal error.      * @throws InvalidDestinationException      *             if an invalid subscription name is specified.      * @since 1.1      */
+comment|/**      * Unsubscribes a durable subscription that has been created by a client.      *<P>      * This method deletes the state being maintained on behalf of the      * subscriber by its provider.      *<P>      * It is erroneous for a client to delete a durable subscription while there      * is an active<CODE>MessageConsumer</CODE> or      *<CODE>TopicSubscriber</CODE> for the subscription, or while a consumed      * message is part of a pending transaction or has not been acknowledged in      * the session.      *       * @param name the name used to identify this subscription      * @throws JMSException if the session fails to unsubscribe to the durable      *                 subscription due to some internal error.      * @throws InvalidDestinationException if an invalid subscription name is      *                 specified.      * @since 1.1      */
 specifier|public
 name|void
 name|unsubscribe
@@ -3389,7 +3391,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Acknowledges all consumed messages of the session of this consumed      * message.      *<P>      * All consumed JMS messages support the<CODE>acknowledge</CODE> method      * for use when a client has specified that its JMS session's consumed      * messages are to be explicitly acknowledged. By invoking<CODE>acknowledge</CODE>      * on a consumed message, a client acknowledges all messages consumed by the      * session that the message was delivered to.      *<P>      * Calls to<CODE>acknowledge</CODE> are ignored for both transacted      * sessions and sessions specified to use implicit acknowledgement modes.      *<P>      * A client may individually acknowledge each message as it is consumed, or      * it may choose to acknowledge messages as an application-defined group      * (which is done by calling acknowledge on the last received message of the      * group, thereby acknowledging all messages consumed by the session.)      *<P>      * Messages that have been received but not acknowledged may be redelivered.      *       * @throws JMSException      *             if the JMS provider fails to acknowledge the messages due to      *             some internal error.      * @throws javax.jms.IllegalStateException      *             if this method is called on a closed session.      * @see javax.jms.Session#CLIENT_ACKNOWLEDGE      */
+comment|/**      * Acknowledges all consumed messages of the session of this consumed      * message.      *<P>      * All consumed JMS messages support the<CODE>acknowledge</CODE> method      * for use when a client has specified that its JMS session's consumed      * messages are to be explicitly acknowledged. By invoking      *<CODE>acknowledge</CODE> on a consumed message, a client acknowledges      * all messages consumed by the session that the message was delivered to.      *<P>      * Calls to<CODE>acknowledge</CODE> are ignored for both transacted      * sessions and sessions specified to use implicit acknowledgement modes.      *<P>      * A client may individually acknowledge each message as it is consumed, or      * it may choose to acknowledge messages as an application-defined group      * (which is done by calling acknowledge on the last received message of the      * group, thereby acknowledging all messages consumed by the session.)      *<P>      * Messages that have been received but not acknowledged may be redelivered.      *       * @throws JMSException if the JMS provider fails to acknowledge the      *                 messages due to some internal error.      * @throws javax.jms.IllegalStateException if this method is called on a      *                 closed session.      * @see javax.jms.Session#CLIENT_ACKNOWLEDGE      */
 specifier|public
 name|void
 name|acknowledge
@@ -3432,7 +3434,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Add a message consumer.      *      * @param consumer -      *            message consumer.      * @throws JMSException      */
+comment|/**      * Add a message consumer.      *       * @param consumer - message consumer.      * @throws JMSException      */
 specifier|protected
 name|void
 name|addConsumer
@@ -3481,7 +3483,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Remove the message consumer.      *       * @param consumer -      *            consumer to be removed.      * @throws JMSException      */
+comment|/**      * Remove the message consumer.      *       * @param consumer - consumer to be removed.      * @throws JMSException      */
 specifier|protected
 name|void
 name|removeConsumer
@@ -3535,7 +3537,7 @@ name|consumer
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Adds a message producer.      *       * @param producer -      *            message producer to be added.      * @throws JMSException      */
+comment|/**      * Adds a message producer.      *       * @param producer - message producer to be added.      * @throws JMSException      */
 specifier|protected
 name|void
 name|addProducer
@@ -3573,7 +3575,7 @@ name|producer
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Removes a message producer.      *       * @param producer -      *            message producer to be removed.      * @throws JMSException      */
+comment|/**      * Removes a message producer.      *       * @param producer - message producer to be removed.      * @throws JMSException      */
 specifier|protected
 name|void
 name|removeProducer
@@ -3662,7 +3664,7 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Stops this session.      * @throws JMSException       */
+comment|/**      * Stops this session.      *       * @throws JMSException      */
 specifier|protected
 name|void
 name|stop
@@ -3730,7 +3732,7 @@ name|getSessionId
 argument_list|()
 return|;
 block|}
-comment|/**      * Sends the message for dispatch by the broker.      *       * @param producer -      *            message producer.      * @param destination -      *            message destination.      * @param message -      *            message to be sent.      * @param deliveryMode -      *            JMS messsage delivery mode.      * @param priority -      *            message priority.      * @param timeToLive -      *            message expiration.      * @param producerWindow       * @throws JMSException      */
+comment|/**      * Sends the message for dispatch by the broker.      *       * @param producer - message producer.      * @param destination - message destination.      * @param message - message to be sent.      * @param deliveryMode - JMS messsage delivery mode.      * @param priority - message priority.      * @param timeToLive - message expiration.      * @param producerWindow      * @throws JMSException      */
 specifier|protected
 name|void
 name|send
@@ -4077,9 +4079,12 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// Since we defer lots of the marshaling till we hit the wire, this might not
-comment|// provide and accurate size.  We may change over to doing more aggressive marshaling,
-comment|// to get more accurate sizes.. this is more important once users start using producer window
+comment|// Since we defer lots of the marshaling till we hit the
+comment|// wire, this might not
+comment|// provide and accurate size. We may change over to doing
+comment|// more aggressive marshaling,
+comment|// to get more accurate sizes.. this is more important once
+comment|// users start using producer window
 comment|// flow control.
 name|int
 name|size
@@ -4112,7 +4117,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Send TransactionInfo to indicate transaction has started 	 *  	 * @throws JMSException 	 *             if some internal error occurs 	 */
+comment|/**      * Send TransactionInfo to indicate transaction has started      *       * @throws JMSException if some internal error occurs      */
 specifier|protected
 name|void
 name|doStartTransaction
@@ -4139,7 +4144,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Checks whether the session has unconsumed messages. 	 *  	 * @return true - if there are unconsumed messages. 	 */
+comment|/**      * Checks whether the session has unconsumed messages.      *       * @return true - if there are unconsumed messages.      */
 specifier|public
 name|boolean
 name|hasUncomsumedMessages
@@ -4152,7 +4157,7 @@ name|hasUncomsumedMessages
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Checks whether the session uses transactions. 	 *  	 * @return true - if the session uses transactions. 	 */
+comment|/**      * Checks whether the session uses transactions.      *       * @return true - if the session uses transactions.      */
 specifier|public
 name|boolean
 name|isTransacted
@@ -4222,7 +4227,7 @@ return|return
 name|deliveryListener
 return|;
 block|}
-comment|/**      * Sets the message delivery listener.      *       * @param deliveryListener -      *            message delivery listener.      */
+comment|/**      * Sets the message delivery listener.      *       * @param deliveryListener - message delivery listener.      */
 specifier|public
 name|void
 name|setDeliveryListener
@@ -4268,7 +4273,7 @@ return|return
 name|info
 return|;
 block|}
-comment|/**      * Send the asynchronus command.      *       * @param command -      *            command to be executed.      * @throws JMSException      */
+comment|/**      * Send the asynchronus command.      *       * @param command - command to be executed.      * @throws JMSException      */
 specifier|public
 name|void
 name|asyncSendPacket
@@ -4287,7 +4292,7 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Send the synchronus command.      *       * @param command -      *            command to be executed.      * @return Response      * @throws JMSException      */
+comment|/**      * Send the synchronus command.      *       * @param command - command to be executed.      * @return Response      * @throws JMSException      */
 specifier|public
 name|Response
 name|syncSendPacket
@@ -4490,7 +4495,7 @@ return|return
 name|connection
 return|;
 block|}
-comment|/**      * Sets the transformer used to transform messages before they are sent on to the JMS bus      * or when they are received from the bus but before they are delivered to the JMS client      */
+comment|/**      * Sets the transformer used to transform messages before they are sent on      * to the JMS bus or when they are received from the bus but before they are      * delivered to the JMS client      */
 specifier|public
 name|void
 name|setTransformer
@@ -4515,7 +4520,7 @@ return|return
 name|blobTransferPolicy
 return|;
 block|}
-comment|/**      * Sets the policy used to describe how out-of-band BLOBs (Binary Large OBjects)      * are transferred from producers to brokers to consumers      */
+comment|/**      * Sets the policy used to describe how out-of-band BLOBs (Binary Large      * OBjects) are transferred from producers to brokers to consumers      */
 specifier|public
 name|void
 name|setBlobTransferPolicy

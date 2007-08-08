@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -40,6 +40,30 @@ operator|.
 name|net
 operator|.
 name|URISyntaxException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|CountDownLatch
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
 import|;
 end_import
 
@@ -161,18 +185,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|ActiveMQConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|broker
 operator|.
 name|BrokerFactory
@@ -249,32 +261,8 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CountDownLatch
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
 begin_comment
-comment|/**  * Small burn test moves sends a moderate amount of messages through the broker, to   * checking to make sure that the broker does not lock up after a while of sustained  * messaging.  *   * @version $Revision$  */
+comment|/**  * Small burn test moves sends a moderate amount of messages through the broker,  * to checking to make sure that the broker does not lock up after a while of  * sustained messaging.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -425,7 +413,8 @@ literal|"broker://(tcp://localhost:0)?useJmx=true"
 argument_list|)
 argument_list|)
 return|;
-comment|//        return BrokerFactory.createBroker(new URI("xbean:org/apache/activemq/broker/store/loadtester.xml"));
+comment|// return BrokerFactory.createBroker(new
+comment|// URI("xbean:org/apache/activemq/broker/store/loadtester.xml"));
 block|}
 specifier|protected
 name|ConnectionFactory
@@ -540,9 +529,7 @@ name|ActiveMQDestination
 operator|.
 name|TOPIC_TYPE
 argument_list|)
-block|,
-comment|//                Byte.valueOf(ActiveMQDestination.QUEUE_TYPE),
-block|}
+block|,}
 argument_list|)
 expr_stmt|;
 name|addCombinationValues
@@ -556,9 +543,7 @@ block|{
 name|Boolean
 operator|.
 name|TRUE
-block|,
-comment|//                Boolean.FALSE,
-block|}
+block|,}
 argument_list|)
 expr_stmt|;
 name|addCombinationValues
@@ -624,7 +609,7 @@ name|valueOf
 argument_list|(
 literal|108
 argument_list|)
-block|,          }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}

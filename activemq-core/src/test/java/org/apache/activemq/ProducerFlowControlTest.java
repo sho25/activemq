@@ -368,7 +368,8 @@ argument_list|(
 name|queueA
 argument_list|)
 expr_stmt|;
-comment|// Test sending to Queue B it should not block since the connection should not be blocked.
+comment|// Test sending to Queue B it should not block since the connection
+comment|// should not be blocked.
 name|CountDownLatch
 name|pubishDoneToQeueuB
 init|=
@@ -538,7 +539,7 @@ name|queueB
 argument_list|)
 decl_stmt|;
 comment|// Test sending to Queue A
-comment|// 1st send should not block.  But the rest will.
+comment|// 1st send should not block. But the rest will.
 name|fillQueue
 argument_list|(
 name|queueA
@@ -856,7 +857,8 @@ name|queueA
 argument_list|)
 expr_stmt|;
 comment|// Test sending to Queue B it should block.
-comment|// Since even though  the it's queue limits have not been reached, the connection
+comment|// Since even though the it's queue limits have not been reached, the
+comment|// connection
 comment|// is blocked.
 name|CountDownLatch
 name|pubishDoneToQeueuB
@@ -916,8 +918,10 @@ argument_list|(
 literal|true
 argument_list|)
 decl_stmt|;
-comment|// Starts an async thread that every time it publishes it sets the done flag to false.
-comment|// Once the send starts to block it will not reset the done flag anymore.
+comment|// Starts an async thread that every time it publishes it sets the done
+comment|// flag to false.
+comment|// Once the send starts to block it will not reset the done flag
+comment|// anymore.
 operator|new
 name|Thread
 argument_list|(
@@ -1002,7 +1006,7 @@ parameter_list|(
 name|JMSException
 name|e
 parameter_list|)
-block|{ 				}
+block|{                 }
 finally|finally
 block|{
 name|safeClose
@@ -1152,7 +1156,7 @@ parameter_list|(
 name|JMSException
 name|e
 parameter_list|)
-block|{ 				}
+block|{                 }
 finally|finally
 block|{
 name|safeClose

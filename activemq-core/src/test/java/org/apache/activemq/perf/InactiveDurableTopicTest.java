@@ -17,26 +17,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URI
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -157,37 +137,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|BrokerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
 name|BrokerService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|store
-operator|.
-name|journal
-operator|.
-name|JournalPersistenceAdapterFactory
 import|;
 end_import
 
@@ -251,7 +201,7 @@ specifier|static
 specifier|final
 specifier|transient
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -341,37 +291,25 @@ decl_stmt|;
 specifier|private
 name|Connection
 name|connection
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|MessageProducer
 name|publisher
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|TopicSubscriber
 name|subscriber
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|Topic
 name|topic
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|Session
 name|session
-init|=
-literal|null
 decl_stmt|;
 name|ActiveMQConnectionFactory
 name|connectionFactory
-init|=
-literal|null
 decl_stmt|;
 name|BrokerService
 name|broker
@@ -403,7 +341,7 @@ name|KahaPersistenceAdapter
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/*         JournalPersistenceAdapterFactory factory = new JournalPersistenceAdapterFactory();         factory.setDataDirectoryFile(broker.getDataDirectory());         factory.setTaskRunnerFactory(broker.getTaskRunnerFactory());         factory.setUseJournal(false);         broker.setPersistenceFactory(factory);         */
+comment|/*          * JournalPersistenceAdapterFactory factory = new          * JournalPersistenceAdapterFactory();          * factory.setDataDirectoryFile(broker.getDataDirectory());          * factory.setTaskRunnerFactory(broker.getTaskRunnerFactory());          * factory.setUseJournal(false); broker.setPersistenceFactory(factory);          */
 name|broker
 operator|.
 name|addConnector
@@ -428,7 +366,7 @@ operator|.
 name|DEFAULT_BROKER_URL
 argument_list|)
 expr_stmt|;
-comment|/*          * Doesn't matter if you enable or disable these, so just leaving them out for this test case          * connectionFactory.setAlwaysSessionAsync(true); connectionFactory.setAsyncDispatch(true);          */
+comment|/*          * Doesn't matter if you enable or disable these, so just leaving them          * out for this test case connectionFactory.setAlwaysSessionAsync(true);          * connectionFactory.setAsyncDispatch(true);          */
 name|connectionFactory
 operator|.
 name|setUseAsyncSend
@@ -464,7 +402,7 @@ name|Exception
 block|{
 try|try
 block|{
-comment|/*              * Step 1 - Establish a connection with a client id and create a durable subscription              */
+comment|/*              * Step 1 - Establish a connection with a client id and create a              * durable subscription              */
 name|connection
 operator|=
 name|connectionFactory
@@ -584,7 +522,7 @@ parameter_list|(
 name|Exception
 name|ignore
 parameter_list|)
-block|{}
+block|{             }
 throw|throw
 operator|new
 name|AssertionFailedError
@@ -601,7 +539,7 @@ name|void
 name|test2ProducerTestCase
 parameter_list|()
 block|{
-comment|/*          * Step 2 - Establish a connection without a client id and create a producer and start pumping messages. We will          * get hung          */
+comment|/*          * Step 2 - Establish a connection without a client id and create a          * producer and start pumping messages. We will get hung          */
 try|try
 block|{
 name|connection
@@ -742,7 +680,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -804,7 +742,7 @@ parameter_list|(
 name|Exception
 name|ignore
 parameter_list|)
-block|{}
+block|{             }
 throw|throw
 operator|new
 name|AssertionFailedError
@@ -825,7 +763,7 @@ name|Exception
 block|{
 try|try
 block|{
-comment|/*              * Step 1 - Establish a connection with a client id and create a durable subscription              */
+comment|/*              * Step 1 - Establish a connection with a client id and create a              * durable subscription              */
 name|connection
 operator|=
 name|connectionFactory
@@ -944,7 +882,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1001,7 +939,7 @@ parameter_list|(
 name|Exception
 name|ignore
 parameter_list|)
-block|{}
+block|{             }
 throw|throw
 operator|new
 name|AssertionFailedError

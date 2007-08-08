@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @openwire:marshaller code="22"  * @version $Revision: 1.11 $  */
+comment|/**  * @openwire:marshaller code="22"  * @version $Revision: 1.11 $  */
 end_comment
 
 begin_class
@@ -50,7 +50,7 @@ name|CommandTypes
 operator|.
 name|MESSAGE_ACK
 decl_stmt|;
-comment|/**      * Used to let the broker know that the message has been delivered to the       * client.  Message will still be retained until an standard ack is received.      * This is used get the broker to send more messages past prefetch limits when      * an standard ack has not been sent.      */
+comment|/**      * Used to let the broker know that the message has been delivered to the      * client. Message will still be retained until an standard ack is received.      * This is used get the broker to send more messages past prefetch limits      * when an standard ack has not been sent.      */
 specifier|public
 specifier|static
 specifier|final
@@ -68,7 +68,7 @@ name|STANDARD_ACK_TYPE
 init|=
 literal|2
 decl_stmt|;
-comment|/**      * In case the client want's to explicitly let the broker know that a       * message was not processed and the message was considered a poison message.      */
+comment|/**      * In case the client want's to explicitly let the broker know that a      * message was not processed and the message was considered a poison      * message.      */
 specifier|public
 specifier|static
 specifier|final
@@ -434,7 +434,7 @@ operator|=
 name|lastMessageId
 expr_stmt|;
 block|}
-comment|/**      * The number of messages being acknowledged in the range.      * @openwire:property version=1      */
+comment|/**      * The number of messages being acknowledged in the range.      *       * @openwire:property version=1      */
 specifier|public
 name|int
 name|getMessageCount

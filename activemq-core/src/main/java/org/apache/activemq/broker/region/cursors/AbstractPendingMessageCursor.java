@@ -90,7 +90,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract method holder for pending message (messages awaiting disptach to a consumer) cursor  *   * @version $Revision$  */
+comment|/**  * Abstract method holder for pending message (messages awaiting disptach to a  * consumer) cursor  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -381,7 +381,7 @@ specifier|public
 name|void
 name|release
 parameter_list|()
-block|{             }
+block|{     }
 specifier|public
 name|boolean
 name|hasMessagesBufferedToDeliver
@@ -431,7 +431,7 @@ operator|.
 name|usageManager
 return|;
 block|}
-comment|/**      * destroy the cursor      * @throws Exception       */
+comment|/**      * destroy the cursor      *       * @throws Exception      */
 specifier|public
 name|void
 name|destroy
@@ -443,7 +443,7 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Page in a restricted number of messages      * @param maxItems      * @return a list of paged in messages      */
+comment|/**      * Page in a restricted number of messages      *       * @param maxItems      * @return a list of paged in messages      */
 specifier|public
 name|LinkedList
 name|pageInList

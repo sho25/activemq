@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -155,8 +155,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|transacted
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|int
@@ -194,7 +192,7 @@ operator|.
 name|getName
 argument_list|()
 decl_stmt|;
-comment|/** 	 * Creates a connection factory.  	 *  	 * @see org.apache.activemq.test.JmsResourceProvider#createConnectionFactory() 	 */
+comment|/**      * Creates a connection factory.      *       * @see org.apache.activemq.test.JmsResourceProvider#createConnectionFactory()      */
 specifier|public
 name|ConnectionFactory
 name|createConnectionFactory
@@ -210,7 +208,7 @@ name|serverUri
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Creates a connection. 	 *  	 * @see org.apache.activemq.test.JmsResourceProvider#createConnection(javax.jms.ConnectionFactory) 	 */
+comment|/**      * Creates a connection.      *       * @see org.apache.activemq.test.JmsResourceProvider#createConnection(javax.jms.ConnectionFactory)      */
 specifier|public
 name|Connection
 name|createConnection
@@ -250,7 +248,7 @@ return|return
 name|connection
 return|;
 block|}
-comment|/** 	 * @see org.apache.activemq.test.JmsResourceProvider#createSession(javax.jms.Connection) 	 */
+comment|/**      * @see org.apache.activemq.test.JmsResourceProvider#createSession(javax.jms.Connection)      */
 specifier|public
 name|Session
 name|createSession
@@ -272,7 +270,7 @@ name|ackMode
 argument_list|)
 return|;
 block|}
-comment|/** 	 * @see org.apache.activemq.test.JmsResourceProvider#createConsumer(javax.jms.Session, 	 *      javax.jms.Destination) 	 */
+comment|/**      * @see org.apache.activemq.test.JmsResourceProvider#createConsumer(javax.jms.Session,      *      javax.jms.Destination)      */
 specifier|public
 name|MessageConsumer
 name|createConsumer
@@ -315,7 +313,7 @@ name|destination
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Creates a connection for a consumer. 	 *  	 * @param ssp - ServerSessionPool 	 * @return ConnectionConsumer 	 */
+comment|/**      * Creates a connection for a consumer.      *       * @param ssp - ServerSessionPool      * @return ConnectionConsumer      */
 specifier|public
 name|ConnectionConsumer
 name|createConnectionConsumer
@@ -347,7 +345,7 @@ literal|1
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Creates a producer.  	 *  	 * @see org.apache.activemq.test.JmsResourceProvider#createProducer(javax.jms.Session, 	 *      javax.jms.Destination) 	 */
+comment|/**      * Creates a producer.      *       * @see org.apache.activemq.test.JmsResourceProvider#createProducer(javax.jms.Session,      *      javax.jms.Destination)      */
 specifier|public
 name|MessageProducer
 name|createProducer
@@ -382,7 +380,7 @@ return|return
 name|producer
 return|;
 block|}
-comment|/** 	 * Creates a destination, which can either a topic or a queue.  	 *  	 * @see org.apache.activemq.test.JmsResourceProvider#createDestination(javax.jms.Session, 	 *      java.lang.String) 	 */
+comment|/**      * Creates a destination, which can either a topic or a queue.      *       * @see org.apache.activemq.test.JmsResourceProvider#createDestination(javax.jms.Session,      *      java.lang.String)      */
 specifier|public
 name|Destination
 name|createDestination
@@ -436,7 +434,7 @@ operator|!=
 literal|null
 return|;
 block|}
-comment|/** 	 * Returns the acknowledgement mode.  	 *  	 * @return Returns the ackMode. 	 */
+comment|/**      * Returns the acknowledgement mode.      *       * @return Returns the ackMode.      */
 specifier|public
 name|int
 name|getAckMode
@@ -446,7 +444,7 @@ return|return
 name|ackMode
 return|;
 block|}
-comment|/** 	 * Sets the acnknowledgement mode.  	 *  	 * @param ackMode The ackMode to set. 	 */
+comment|/**      * Sets the acnknowledgement mode.      *       * @param ackMode The ackMode to set.      */
 specifier|public
 name|void
 name|setAckMode
@@ -462,7 +460,7 @@ operator|=
 name|ackMode
 expr_stmt|;
 block|}
-comment|/** 	 * Returns true if the destination is a topic, false if the destination is a queue. 	 *  	 * @return Returns the isTopic. 	 */
+comment|/**      * Returns true if the destination is a topic, false if the destination is a      * queue.      *       * @return Returns the isTopic.      */
 specifier|public
 name|boolean
 name|isTopic
@@ -472,7 +470,7 @@ return|return
 name|isTopic
 return|;
 block|}
-comment|/** 	 * @param isTopic The isTopic to set. 	 */
+comment|/**      * @param isTopic The isTopic to set.      */
 specifier|public
 name|void
 name|setTopic
@@ -488,7 +486,7 @@ operator|=
 name|isTopic
 expr_stmt|;
 block|}
-comment|/** 	 * Returns the server URI. 	 *  	 * @return Returns the serverUri. 	 */
+comment|/**      * Returns the server URI.      *       * @return Returns the serverUri.      */
 specifier|public
 name|String
 name|getServerUri
@@ -498,7 +496,7 @@ return|return
 name|serverUri
 return|;
 block|}
-comment|/** 	 * Sets the server URI.  	 *  	 * @param serverUri - the server URI to set. 	 */
+comment|/**      * Sets the server URI.      *       * @param serverUri - the server URI to set.      */
 specifier|public
 name|void
 name|setServerUri
@@ -514,7 +512,7 @@ operator|=
 name|serverUri
 expr_stmt|;
 block|}
-comment|/** 	 * Return true if the session is transacted.  	 *  	 * @return Returns the transacted. 	 */
+comment|/**      * Return true if the session is transacted.      *       * @return Returns the transacted.      */
 specifier|public
 name|boolean
 name|isTransacted
@@ -524,7 +522,7 @@ return|return
 name|transacted
 return|;
 block|}
-comment|/** 	 * Sets the session to be transacted.   	 *  	 * @param transacted 	 */
+comment|/**      * Sets the session to be transacted.      *       * @param transacted      */
 specifier|public
 name|void
 name|setTransacted
@@ -540,7 +538,7 @@ operator|=
 name|transacted
 expr_stmt|;
 block|}
-comment|/**      * Returns the delivery mode.      *       * @return deliveryMode       */
+comment|/**      * Returns the delivery mode.      *       * @return deliveryMode      */
 specifier|public
 name|int
 name|getDeliveryMode

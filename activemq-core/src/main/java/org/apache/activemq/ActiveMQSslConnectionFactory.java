@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An ActiveMQConnectionFactory that allows access to the key and trust managers used for SslConnections.  *   * There is no reason to use this class unless SSL is being used AND the key and trust managers need to be specified  *      from within code. In fact, if the URI passed to this class does not have an "ssl" scheme, this class will  *      pass all work on to its superclass.  *   * @author sepandm@gmail.com  *  */
+comment|/**  * An ActiveMQConnectionFactory that allows access to the key and trust managers  * used for SslConnections. There is no reason to use this class unless SSL is  * being used AND the key and trust managers need to be specified from within  * code. In fact, if the URI passed to this class does not have an "ssl" scheme,  * this class will pass all work on to its superclass.  *   * @author sepandm@gmail.com  */
 end_comment
 
 begin_class
@@ -117,21 +117,15 @@ specifier|protected
 name|KeyManager
 index|[]
 name|keyManager
-init|=
-literal|null
 decl_stmt|;
 specifier|protected
 name|TrustManager
 index|[]
 name|trustManager
-init|=
-literal|null
 decl_stmt|;
 specifier|protected
 name|SecureRandom
 name|secureRandom
-init|=
-literal|null
 decl_stmt|;
 comment|/**      * Sets the key and trust managers used when creating SSL connections.      *       * @param km The KeyManagers used.      * @param tm The TrustManagers used.      * @param random The SecureRandom number used.      */
 specifier|public
@@ -166,7 +160,7 @@ operator|=
 name|random
 expr_stmt|;
 block|}
-comment|/**      * Overriding to make special considerations for SSL connections.      *       * If we are not using SSL, the superclass's method is called.      * If we are using SSL, an SslConnectionFactory is used and it is given the      *      needed key and trust managers.      *       * @author sepandm@gmail.com      */
+comment|/**      * Overriding to make special considerations for SSL connections. If we are      * not using SSL, the superclass's method is called. If we are using SSL, an      * SslConnectionFactory is used and it is given the needed key and trust      * managers.      *       * @author sepandm@gmail.com      */
 specifier|protected
 name|Transport
 name|createTransport

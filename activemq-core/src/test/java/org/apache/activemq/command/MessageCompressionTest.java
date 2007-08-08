@@ -515,14 +515,14 @@ return|return
 name|rc
 return|;
 block|}
-comment|//	public void testJavaUtilZip() throws Exception {
-comment|//		String str = "When the going gets weird, the weird turn pro.";
-comment|//		byte[] bytes = str.getBytes();
+comment|// public void testJavaUtilZip() throws Exception {
+comment|// String str = "When the going gets weird, the weird turn pro.";
+comment|// byte[] bytes = str.getBytes();
 comment|//
-comment|//		ByteArrayOutputStream baos = new ByteArrayOutputStream(bytes.length);
-comment|//		DeflaterOutputStream dos = new DeflaterOutputStream(baos);
-comment|//		dos.
-comment|//	}
+comment|// ByteArrayOutputStream baos = new ByteArrayOutputStream(bytes.length);
+comment|// DeflaterOutputStream dos = new DeflaterOutputStream(baos);
+comment|// dos.
+comment|// }
 block|}
 end_class
 

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -340,7 +340,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A ConnectionFactory is an an Administered object, and is used for creating  * Connections.<p/> This class also implements QueueConnectionFactory and  * TopicConnectionFactory. You can use this connection to create both  * QueueConnections and TopicConnections.  *  * @version $Revision: 1.9 $  * @see javax.jms.ConnectionFactory  */
+comment|/**  * A ConnectionFactory is an an Administered object, and is used for creating  * Connections.<p/> This class also implements QueueConnectionFactory and  * TopicConnectionFactory. You can use this connection to create both  * QueueConnections and TopicConnections.  *   * @version $Revision: 1.9 $  * @see javax.jms.ConnectionFactory  */
 end_comment
 
 begin_class
@@ -392,162 +392,6 @@ name|DEFAULT_PRODUCER_WINDOW_SIZE
 init|=
 literal|0
 decl_stmt|;
-specifier|private
-name|IdGenerator
-name|clientIdGenerator
-decl_stmt|;
-specifier|private
-name|String
-name|clientIDPrefix
-decl_stmt|;
-specifier|protected
-name|URI
-name|brokerURL
-decl_stmt|;
-specifier|protected
-name|String
-name|userName
-decl_stmt|;
-specifier|protected
-name|String
-name|password
-decl_stmt|;
-specifier|protected
-name|String
-name|clientID
-decl_stmt|;
-comment|// client policies
-specifier|private
-name|ActiveMQPrefetchPolicy
-name|prefetchPolicy
-init|=
-operator|new
-name|ActiveMQPrefetchPolicy
-argument_list|()
-decl_stmt|;
-specifier|private
-name|RedeliveryPolicy
-name|redeliveryPolicy
-init|=
-operator|new
-name|RedeliveryPolicy
-argument_list|()
-decl_stmt|;
-specifier|private
-name|BlobTransferPolicy
-name|blobTransferPolicy
-init|=
-operator|new
-name|BlobTransferPolicy
-argument_list|()
-decl_stmt|;
-specifier|private
-name|MessageTransformer
-name|transformer
-decl_stmt|;
-specifier|private
-name|boolean
-name|disableTimeStampsByDefault
-init|=
-literal|false
-decl_stmt|;
-specifier|private
-name|boolean
-name|optimizedMessageDispatch
-init|=
-literal|true
-decl_stmt|;
-specifier|private
-name|boolean
-name|copyMessageOnSend
-init|=
-literal|true
-decl_stmt|;
-specifier|private
-name|boolean
-name|useCompression
-init|=
-literal|false
-decl_stmt|;
-specifier|private
-name|boolean
-name|objectMessageSerializationDefered
-init|=
-literal|false
-decl_stmt|;
-specifier|protected
-name|boolean
-name|dispatchAsync
-init|=
-literal|false
-decl_stmt|;
-specifier|protected
-name|boolean
-name|alwaysSessionAsync
-init|=
-literal|true
-decl_stmt|;
-specifier|private
-name|boolean
-name|useAsyncSend
-init|=
-literal|false
-decl_stmt|;
-specifier|private
-name|boolean
-name|optimizeAcknowledge
-init|=
-literal|false
-decl_stmt|;
-specifier|private
-name|int
-name|closeTimeout
-init|=
-literal|15000
-decl_stmt|;
-specifier|private
-name|boolean
-name|useRetroactiveConsumer
-decl_stmt|;
-specifier|private
-name|boolean
-name|exclusiveConsumer
-decl_stmt|;
-specifier|private
-name|boolean
-name|nestedMapAndListEnabled
-init|=
-literal|true
-decl_stmt|;
-name|JMSStatsImpl
-name|factoryStats
-init|=
-operator|new
-name|JMSStatsImpl
-argument_list|()
-decl_stmt|;
-specifier|private
-name|boolean
-name|alwaysSyncSend
-decl_stmt|;
-specifier|private
-name|boolean
-name|watchTopicAdvisories
-init|=
-literal|true
-decl_stmt|;
-specifier|private
-name|int
-name|producerWindowSize
-init|=
-name|DEFAULT_PRODUCER_WINDOW_SIZE
-decl_stmt|;
-specifier|private
-name|long
-name|warnAboutUnstartedConnectionTimeout
-init|=
-literal|500L
-decl_stmt|;
 specifier|static
 specifier|protected
 specifier|final
@@ -595,6 +439,150 @@ return|;
 block|}
 block|}
 argument_list|)
+decl_stmt|;
+specifier|protected
+name|URI
+name|brokerURL
+decl_stmt|;
+specifier|protected
+name|String
+name|userName
+decl_stmt|;
+specifier|protected
+name|String
+name|password
+decl_stmt|;
+specifier|protected
+name|String
+name|clientID
+decl_stmt|;
+specifier|protected
+name|boolean
+name|dispatchAsync
+decl_stmt|;
+specifier|protected
+name|boolean
+name|alwaysSessionAsync
+init|=
+literal|true
+decl_stmt|;
+name|JMSStatsImpl
+name|factoryStats
+init|=
+operator|new
+name|JMSStatsImpl
+argument_list|()
+decl_stmt|;
+specifier|private
+name|IdGenerator
+name|clientIdGenerator
+decl_stmt|;
+specifier|private
+name|String
+name|clientIDPrefix
+decl_stmt|;
+comment|// client policies
+specifier|private
+name|ActiveMQPrefetchPolicy
+name|prefetchPolicy
+init|=
+operator|new
+name|ActiveMQPrefetchPolicy
+argument_list|()
+decl_stmt|;
+specifier|private
+name|RedeliveryPolicy
+name|redeliveryPolicy
+init|=
+operator|new
+name|RedeliveryPolicy
+argument_list|()
+decl_stmt|;
+specifier|private
+name|BlobTransferPolicy
+name|blobTransferPolicy
+init|=
+operator|new
+name|BlobTransferPolicy
+argument_list|()
+decl_stmt|;
+specifier|private
+name|MessageTransformer
+name|transformer
+decl_stmt|;
+specifier|private
+name|boolean
+name|disableTimeStampsByDefault
+decl_stmt|;
+specifier|private
+name|boolean
+name|optimizedMessageDispatch
+init|=
+literal|true
+decl_stmt|;
+specifier|private
+name|boolean
+name|copyMessageOnSend
+init|=
+literal|true
+decl_stmt|;
+specifier|private
+name|boolean
+name|useCompression
+decl_stmt|;
+specifier|private
+name|boolean
+name|objectMessageSerializationDefered
+decl_stmt|;
+specifier|private
+name|boolean
+name|useAsyncSend
+decl_stmt|;
+specifier|private
+name|boolean
+name|optimizeAcknowledge
+decl_stmt|;
+specifier|private
+name|int
+name|closeTimeout
+init|=
+literal|15000
+decl_stmt|;
+specifier|private
+name|boolean
+name|useRetroactiveConsumer
+decl_stmt|;
+specifier|private
+name|boolean
+name|exclusiveConsumer
+decl_stmt|;
+specifier|private
+name|boolean
+name|nestedMapAndListEnabled
+init|=
+literal|true
+decl_stmt|;
+specifier|private
+name|boolean
+name|alwaysSyncSend
+decl_stmt|;
+specifier|private
+name|boolean
+name|watchTopicAdvisories
+init|=
+literal|true
+decl_stmt|;
+specifier|private
+name|int
+name|producerWindowSize
+init|=
+name|DEFAULT_PRODUCER_WINDOW_SIZE
+decl_stmt|;
+specifier|private
+name|long
+name|warnAboutUnstartedConnectionTimeout
+init|=
+literal|500L
 decl_stmt|;
 comment|// /////////////////////////////////////////////
 comment|//
@@ -925,7 +913,7 @@ name|password
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a Transport based on this object's connection settings.      *       * Separated from createActiveMQConnection to allow for subclasses to      *      override.      *       * @return The newly created Transport.      * @throws JMSException If unable to create trasnport.      *       * @author sepandm@gmail.com      */
+comment|/**      * Creates a Transport based on this object's connection settings. Separated      * from createActiveMQConnection to allow for subclasses to override.      *       * @return The newly created Transport.      * @throws JMSException If unable to create trasnport.      * @author sepandm@gmail.com      */
 specifier|protected
 name|Transport
 name|createTransport
@@ -1078,7 +1066,7 @@ parameter_list|(
 name|Throwable
 name|ignore
 parameter_list|)
-block|{}
+block|{             }
 throw|throw
 name|e
 throw|;
@@ -1103,7 +1091,7 @@ parameter_list|(
 name|Throwable
 name|ignore
 parameter_list|)
-block|{}
+block|{             }
 throw|throw
 name|JMSExceptionSupport
 operator|.
@@ -1350,7 +1338,8 @@ argument_list|(
 name|brokerURL
 argument_list|)
 expr_stmt|;
-comment|// Use all the properties prefixed with 'jms.' to set the connection factory
+comment|// Use all the properties prefixed with 'jms.' to set the connection
+comment|// factory
 comment|// options.
 if|if
 condition|(
@@ -1484,7 +1473,7 @@ return|return
 name|clientID
 return|;
 block|}
-comment|/**      * Sets the JMS clientID to use for the created connection. Note that this can only be used by one connection at once so generally its a better idea      * to set the clientID on a Connection      */
+comment|/**      * Sets the JMS clientID to use for the created connection. Note that this      * can only be used by one connection at once so generally its a better idea      * to set the clientID on a Connection      */
 specifier|public
 name|void
 name|setClientID
@@ -1643,7 +1632,7 @@ return|return
 name|blobTransferPolicy
 return|;
 block|}
-comment|/**      * Sets the policy used to describe how out-of-band BLOBs (Binary Large OBjects)      * are transferred from producers to brokers to consumers      */
+comment|/**      * Sets the policy used to describe how out-of-band BLOBs (Binary Large      * OBjects) are transferred from producers to brokers to consumers      */
 specifier|public
 name|void
 name|setBlobTransferPolicy
@@ -1659,7 +1648,7 @@ operator|=
 name|blobTransferPolicy
 expr_stmt|;
 block|}
-comment|/**      * Forces the use of<a      * href="http://activemq.apache.org/async-sends.html">Async Sends</a>      * which adds a massive performance boost; but means that the send() method      * will return immediately whether the message has been sent or not which      * could lead to message loss.      */
+comment|/**      * Forces the use of<a      * href="http://activemq.apache.org/async-sends.html">Async Sends</a> which      * adds a massive performance boost; but means that the send() method will      * return immediately whether the message has been sent or not which could      * lead to message loss.      */
 specifier|public
 name|void
 name|setUseAsyncSend
@@ -1713,7 +1702,7 @@ operator|.
 name|alwaysSyncSend
 return|;
 block|}
-comment|/**      * Set true if always require messages to be sync sent      * @param alwaysSyncSend      */
+comment|/**      * Set true if always require messages to be sync sent      *       * @param alwaysSyncSend      */
 specifier|public
 name|void
 name|setAlwaysSyncSend
@@ -1763,7 +1752,7 @@ return|return
 name|useRetroactiveConsumer
 return|;
 block|}
-comment|/**      * Sets whether or not retroactive consumers are enabled. Retroactive consumers allow      * non-durable topic subscribers to receive old messages that were published before the      * non-durable subscriber started.      */
+comment|/**      * Sets whether or not retroactive consumers are enabled. Retroactive      * consumers allow non-durable topic subscribers to receive old messages      * that were published before the non-durable subscriber started.      */
 specifier|public
 name|void
 name|setUseRetroactiveConsumer
@@ -1788,7 +1777,7 @@ return|return
 name|exclusiveConsumer
 return|;
 block|}
-comment|/**      * Enables or disables whether or not queue consumers should be exclusive or not      * for example to preserve ordering when not using      *<a href="http://activemq.apache.org/message-groups.html">Message Groups</a>      *      * @param exclusiveConsumer      */
+comment|/**      * Enables or disables whether or not queue consumers should be exclusive or      * not for example to preserve ordering when not using<a      * href="http://activemq.apache.org/message-groups.html">Message Groups</a>      *       * @param exclusiveConsumer      */
 specifier|public
 name|void
 name|setExclusiveConsumer
@@ -1813,7 +1802,7 @@ return|return
 name|redeliveryPolicy
 return|;
 block|}
-comment|/**      * Sets the global redelivery policy to be used when a message is delivered but the session is rolled back      */
+comment|/**      * Sets the global redelivery policy to be used when a message is delivered      * but the session is rolled back      */
 specifier|public
 name|void
 name|setRedeliveryPolicy
@@ -1838,7 +1827,7 @@ return|return
 name|transformer
 return|;
 block|}
-comment|/**      * Sets the transformer used to transform messages before they are sent on to the JMS bus      * or when they are received from the bus but before they are delivered to the JMS client      */
+comment|/**      * Sets the transformer used to transform messages before they are sent on      * to the JMS bus or when they are received from the bus but before they are      * delivered to the JMS client      */
 specifier|public
 name|void
 name|setTransformer
@@ -2476,7 +2465,7 @@ return|return
 name|dispatchAsync
 return|;
 block|}
-comment|/**      * Enables or disables the default setting of whether or not consumers have      * their messages<a      * href="http://activemq.apache.org/consumer-dispatch-async.html">dispatched      * synchronously or asynchronously by the broker</a>.      *       * For non-durable topics for example we typically dispatch synchronously by      * default to minimize context switches which boost performance. However      * sometimes its better to go slower to ensure that a single blocked      * consumer socket does not block delivery to other consumers.      *       * @param asyncDispatch      *            If true then consumers created on this connection will default      *            to having their messages dispatched asynchronously. The      *            default value is false.      */
+comment|/**      * Enables or disables the default setting of whether or not consumers have      * their messages<a      * href="http://activemq.apache.org/consumer-dispatch-async.html">dispatched      * synchronously or asynchronously by the broker</a>. For non-durable      * topics for example we typically dispatch synchronously by default to      * minimize context switches which boost performance. However sometimes its      * better to go slower to ensure that a single blocked consumer socket does      * not block delivery to other consumers.      *       * @param asyncDispatch If true then consumers created on this connection      *                will default to having their messages dispatched      *                asynchronously. The default value is false.      */
 specifier|public
 name|void
 name|setDispatchAsync
@@ -2604,7 +2593,7 @@ return|return
 name|clientIDPrefix
 return|;
 block|}
-comment|/**      * Sets the prefix used by autogenerated JMS Client ID values which are      * used if the JMS client does not explicitly specify on.      *       * @param clientIDPrefix      */
+comment|/**      * Sets the prefix used by autogenerated JMS Client ID values which are used      * if the JMS client does not explicitly specify on.      *       * @param clientIDPrefix      */
 specifier|public
 name|void
 name|setClientIDPrefix
@@ -2747,7 +2736,7 @@ return|return
 name|warnAboutUnstartedConnectionTimeout
 return|;
 block|}
-comment|/**      * Enables the timeout from a connection creation to when a warning is generated      * if the connection is not properly started via {@link Connection#start()} and a message is received by a consumer.      *      * It is a very common gotcha to forget to      *<a href="http://activemq.apache.org/i-am-not-receiving-any-messages-what-is-wrong.html">start the connection</a>      * so this option makes the default case to create a warning if the user forgets.      * To disable the warning just set the value to< 0 (say -1).      */
+comment|/**      * Enables the timeout from a connection creation to when a warning is      * generated if the connection is not properly started via      * {@link Connection#start()} and a message is received by a consumer. It is      * a very common gotcha to forget to<a      * href="http://activemq.apache.org/i-am-not-receiving-any-messages-what-is-wrong.html">start      * the connection</a> so this option makes the default case to create a      * warning if the user forgets. To disable the warning just set the value to<      * 0 (say -1).      */
 specifier|public
 name|void
 name|setWarnAboutUnstartedConnectionTimeout

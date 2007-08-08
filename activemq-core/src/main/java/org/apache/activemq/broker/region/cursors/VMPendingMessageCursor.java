@@ -56,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * hold pending messages in a linked list (messages awaiting disptach to a consumer) cursor  *   * @version $Revision$  */
+comment|/**  * hold pending messages in a linked list (messages awaiting disptach to a  * consumer) cursor  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -86,8 +86,6 @@ argument_list|<
 name|MessageReference
 argument_list|>
 name|iter
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|MessageReference
@@ -106,7 +104,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * reset the cursor      *      */
+comment|/**      * reset the cursor      */
 specifier|public
 name|void
 name|reset
@@ -146,7 +144,7 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * add message to await dispatch      * @param position       * @param node      */
+comment|/**      * add message to await dispatch      *       * @param position      * @param node      */
 specifier|public
 name|void
 name|addMessageFirst
@@ -201,7 +199,7 @@ return|return
 name|last
 return|;
 block|}
-comment|/**      * remove the message at the cursor position      *       */
+comment|/**      * remove the message at the cursor position      */
 specifier|public
 name|void
 name|remove
@@ -239,7 +237,7 @@ name|size
 argument_list|()
 return|;
 block|}
-comment|/**      * clear all pending messages      *       */
+comment|/**      * clear all pending messages      */
 specifier|public
 name|void
 name|clear
@@ -317,7 +315,7 @@ break|break;
 block|}
 block|}
 block|}
-comment|/**      * Page in a restricted number of messages      * @param maxItems      * @return a list of paged in messages      */
+comment|/**      * Page in a restricted number of messages      *       * @param maxItems      * @return a list of paged in messages      */
 specifier|public
 name|LinkedList
 argument_list|<

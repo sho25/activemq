@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -632,7 +632,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This test is being disabled for now since it is failing.  Looks like the queue browser has       * changed in trunk.  It now seems to not give you message that have been dispatched to another consumer but not       * yet acked.  Created JIRA issue: https://issues.apache.org/activemq/browse/AMQ-1268      *       * @throws Exception      */
+comment|/**      * This test is being disabled for now since it is failing. Looks like the      * queue browser has changed in trunk. It now seems to not give you message      * that have been dispatched to another consumer but not yet acked. Created      * JIRA issue: https://issues.apache.org/activemq/browse/AMQ-1268      *       * @throws Exception      */
 specifier|public
 name|void
 name|XtestQueueBrowserWith2Consumers
@@ -994,7 +994,7 @@ operator|new
 name|Object
 index|[]
 block|{
-comment|//                Integer.valueOf(DeliveryMode.NON_PERSISTENT),
+comment|// Integer.valueOf(DeliveryMode.NON_PERSISTENT),
 name|Integer
 operator|.
 name|valueOf
@@ -1207,7 +1207,8 @@ argument_list|(
 name|connection
 argument_list|)
 expr_stmt|;
-comment|// Acknowledge the first message.  This should cause the next message to get dispatched.
+comment|// Acknowledge the first message. This should cause the next message to
+comment|// get dispatched.
 name|connection
 operator|.
 name|send
@@ -1960,7 +1961,7 @@ name|ActiveMQDestination
 operator|.
 name|TEMP_QUEUE_TYPE
 argument_list|)
-block|,          }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}
@@ -2436,7 +2437,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Close the consumer without acking.. this should cause re-delivery of the messages.
+comment|// Close the consumer without acking.. this should cause re-delivery of
+comment|// the messages.
 name|connection1
 operator|.
 name|send
@@ -3106,7 +3108,8 @@ argument_list|(
 name|consumerInfo2
 argument_list|)
 expr_stmt|;
-comment|// All the messages should have been sent down connection 1.. just get the first 3
+comment|// All the messages should have been sent down connection 1.. just get
+comment|// the first 3
 for|for
 control|(
 name|int
@@ -3702,7 +3705,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// the behavior is VERY dependent on the recovery policy used.
-comment|// But the default broker settings try to make it as consistent as possible
+comment|// But the default broker settings try to make it as consistent as
+comment|// possible
 comment|// Subscription should see all messages sent.
 name|Message
 name|m2
@@ -3765,88 +3769,99 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//
-comment|//  TODO: need to reimplement this since we don't fail when we send to a non-existant
-comment|//  destination.  But if we can access the Region directly then we should be able to
-comment|//  check that if the destination was removed.
+comment|// TODO: need to reimplement this since we don't fail when we send to a
+comment|// non-existant
+comment|// destination. But if we can access the Region directly then we should be
+comment|// able to
+comment|// check that if the destination was removed.
 comment|//
-comment|//    public void initCombosForTestTempDestinationsRemovedOnConnectionClose() {
-comment|//        addCombinationValues( "deliveryMode", new Object[]{
-comment|//                Integer.valueOf(DeliveryMode.NON_PERSISTENT),
-comment|//                Integer.valueOf(DeliveryMode.PERSISTENT)} );
-comment|//        addCombinationValues( "destinationType", new Object[]{
-comment|//                Byte.valueOf(ActiveMQDestination.TEMP_QUEUE_TYPE),
-comment|//                Byte.valueOf(ActiveMQDestination.TEMP_TOPIC_TYPE)} );
-comment|//    }
+comment|// public void initCombosForTestTempDestinationsRemovedOnConnectionClose() {
+comment|// addCombinationValues( "deliveryMode", new Object[]{
+comment|// Integer.valueOf(DeliveryMode.NON_PERSISTENT),
+comment|// Integer.valueOf(DeliveryMode.PERSISTENT)} );
+comment|// addCombinationValues( "destinationType", new Object[]{
+comment|// Byte.valueOf(ActiveMQDestination.TEMP_QUEUE_TYPE),
+comment|// Byte.valueOf(ActiveMQDestination.TEMP_TOPIC_TYPE)} );
+comment|// }
 comment|//
-comment|//    public void testTempDestinationsRemovedOnConnectionClose() throws Exception {
+comment|// public void testTempDestinationsRemovedOnConnectionClose() throws
+comment|// Exception {
 comment|//
-comment|//        // Setup a first connection
-comment|//        StubConnection connection1 = createConnection();
-comment|//        ConnectionInfo connectionInfo1 = createConnectionInfo();
-comment|//        SessionInfo sessionInfo1 = createSessionInfo(connectionInfo1);
-comment|//        ProducerInfo producerInfo1 = createProducerInfo(sessionInfo1);
-comment|//        connection1.send(connectionInfo1);
-comment|//        connection1.send(sessionInfo1);
-comment|//        connection1.send(producerInfo1);
+comment|// // Setup a first connection
+comment|// StubConnection connection1 = createConnection();
+comment|// ConnectionInfo connectionInfo1 = createConnectionInfo();
+comment|// SessionInfo sessionInfo1 = createSessionInfo(connectionInfo1);
+comment|// ProducerInfo producerInfo1 = createProducerInfo(sessionInfo1);
+comment|// connection1.send(connectionInfo1);
+comment|// connection1.send(sessionInfo1);
+comment|// connection1.send(producerInfo1);
 comment|//
-comment|//        destination = createDestinationInfo(connection1, connectionInfo1, destinationType);
+comment|// destination = createDestinationInfo(connection1, connectionInfo1,
+comment|// destinationType);
 comment|//
-comment|//        StubConnection connection2 = createConnection();
-comment|//        ConnectionInfo connectionInfo2 = createConnectionInfo();
-comment|//        SessionInfo sessionInfo2 = createSessionInfo(connectionInfo2);
-comment|//        ProducerInfo producerInfo2 = createProducerInfo(sessionInfo2);
-comment|//        connection2.send(connectionInfo2);
-comment|//        connection2.send(sessionInfo2);
-comment|//        connection2.send(producerInfo2);
+comment|// StubConnection connection2 = createConnection();
+comment|// ConnectionInfo connectionInfo2 = createConnectionInfo();
+comment|// SessionInfo sessionInfo2 = createSessionInfo(connectionInfo2);
+comment|// ProducerInfo producerInfo2 = createProducerInfo(sessionInfo2);
+comment|// connection2.send(connectionInfo2);
+comment|// connection2.send(sessionInfo2);
+comment|// connection2.send(producerInfo2);
 comment|//
-comment|//        // Send from connection2 to connection1's temp destination.  Should succeed.
-comment|//        connection2.send(createMessage(producerInfo2, destination, deliveryMode));
+comment|// // Send from connection2 to connection1's temp destination. Should
+comment|// succeed.
+comment|// connection2.send(createMessage(producerInfo2, destination,
+comment|// deliveryMode));
 comment|//
-comment|//        // Close connection 1
-comment|//        connection1.request(closeConnectionInfo(connectionInfo1));
+comment|// // Close connection 1
+comment|// connection1.request(closeConnectionInfo(connectionInfo1));
 comment|//
-comment|//        try {
-comment|//            // Send from connection2 to connection1's temp destination.  Should not succeed.
-comment|//            connection2.request(createMessage(producerInfo2, destination, deliveryMode));
-comment|//            fail("Expected JMSException.");
-comment|//        } catch ( JMSException success ) {
-comment|//        }
+comment|// try {
+comment|// // Send from connection2 to connection1's temp destination. Should not
+comment|// succeed.
+comment|// connection2.request(createMessage(producerInfo2, destination,
+comment|// deliveryMode));
+comment|// fail("Expected JMSException.");
+comment|// } catch ( JMSException success ) {
+comment|// }
 comment|//
-comment|//    }
-comment|//    public void initCombosForTestTempDestinationsAreNotAutoCreated() {
-comment|//        addCombinationValues( "deliveryMode", new Object[]{
-comment|//                Integer.valueOf(DeliveryMode.NON_PERSISTENT),
-comment|//                Integer.valueOf(DeliveryMode.PERSISTENT)} );
-comment|//        addCombinationValues( "destinationType", new Object[]{
-comment|//                Byte.valueOf(ActiveMQDestination.TEMP_QUEUE_TYPE),
-comment|//                Byte.valueOf(ActiveMQDestination.TEMP_TOPIC_TYPE)} );
-comment|//    }
+comment|// }
+comment|// public void initCombosForTestTempDestinationsAreNotAutoCreated() {
+comment|// addCombinationValues( "deliveryMode", new Object[]{
+comment|// Integer.valueOf(DeliveryMode.NON_PERSISTENT),
+comment|// Integer.valueOf(DeliveryMode.PERSISTENT)} );
+comment|// addCombinationValues( "destinationType", new Object[]{
+comment|// Byte.valueOf(ActiveMQDestination.TEMP_QUEUE_TYPE),
+comment|// Byte.valueOf(ActiveMQDestination.TEMP_TOPIC_TYPE)} );
+comment|// }
 comment|//
 comment|//
-comment|//  We create temp destination on demand now so this test case is no longer
-comment|//  valid.
+comment|// We create temp destination on demand now so this test case is no longer
+comment|// valid.
 comment|//
-comment|//    public void testTempDestinationsAreNotAutoCreated() throws Exception {
+comment|// public void testTempDestinationsAreNotAutoCreated() throws Exception {
 comment|//
-comment|//        // Setup a first connection
-comment|//        StubConnection connection1 = createConnection();
-comment|//        ConnectionInfo connectionInfo1 = createConnectionInfo();
-comment|//        SessionInfo sessionInfo1 = createSessionInfo(connectionInfo1);
-comment|//        ProducerInfo producerInfo1 = createProducerInfo(sessionInfo1);
-comment|//        connection1.send(connectionInfo1);
-comment|//        connection1.send(sessionInfo1);
-comment|//        connection1.send(producerInfo1);
+comment|// // Setup a first connection
+comment|// StubConnection connection1 = createConnection();
+comment|// ConnectionInfo connectionInfo1 = createConnectionInfo();
+comment|// SessionInfo sessionInfo1 = createSessionInfo(connectionInfo1);
+comment|// ProducerInfo producerInfo1 = createProducerInfo(sessionInfo1);
+comment|// connection1.send(connectionInfo1);
+comment|// connection1.send(sessionInfo1);
+comment|// connection1.send(producerInfo1);
 comment|//
-comment|//        destination = ActiveMQDestination.createDestination(connectionInfo1.getConnectionId()+":1", destinationType);
+comment|// destination =
+comment|// ActiveMQDestination.createDestination(connectionInfo1.getConnectionId()+":1",
+comment|// destinationType);
 comment|//
-comment|//        // Should not be able to send to a non-existant temp destination.
-comment|//        try {
-comment|//            connection1.request(createMessage(producerInfo1, destination, deliveryMode));
-comment|//            fail("Expected JMSException.");
-comment|//        } catch ( JMSException success ) {
-comment|//        }
+comment|// // Should not be able to send to a non-existant temp destination.
+comment|// try {
+comment|// connection1.request(createMessage(producerInfo1, destination,
+comment|// deliveryMode));
+comment|// fail("Expected JMSException.");
+comment|// } catch ( JMSException success ) {
+comment|// }
 comment|//
-comment|//    }
+comment|// }
 specifier|public
 name|void
 name|initCombosForTestTempDestinationsOnlyAllowsLocalConsumers
@@ -4010,7 +4025,8 @@ argument_list|(
 name|sessionInfo2
 argument_list|)
 expr_stmt|;
-comment|// Only consumers local to the temp destination should be allowed to subscribe.
+comment|// Only consumers local to the temp destination should be allowed to
+comment|// subscribe.
 try|try
 block|{
 name|ConsumerInfo
@@ -4273,7 +4289,8 @@ argument_list|(
 name|consumerInfo2
 argument_list|)
 expr_stmt|;
-comment|// Second message should go to consumer 1 even though consumer 2 is ready
+comment|// Second message should go to consumer 1 even though consumer 2 is
+comment|// ready
 comment|// for dispatch.
 name|connection1
 operator|.
@@ -5289,7 +5306,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// The messages should have been delivered to both the A and B destination.
+comment|// The messages should have been delivered to both the A and B
+comment|// destination.
 for|for
 control|(
 name|int
@@ -6791,7 +6809,8 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
-comment|// The first connection should not see the initial 4 local messages sent but should
+comment|// The first connection should not see the initial 4 local messages sent
+comment|// but should
 comment|// see the messages from connection 2.
 name|Message
 name|m
@@ -7185,7 +7204,7 @@ name|ActiveMQDestination
 operator|.
 name|TEMP_QUEUE_TYPE
 argument_list|)
-block|,                  }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}
@@ -7529,7 +7548,7 @@ name|ActiveMQDestination
 operator|.
 name|TEMP_QUEUE_TYPE
 argument_list|)
-block|,                  }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}
@@ -7793,7 +7812,7 @@ name|ActiveMQDestination
 operator|.
 name|TEMP_QUEUE_TYPE
 argument_list|)
-block|,                  }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}
@@ -7971,7 +7990,7 @@ name|ActiveMQDestination
 operator|.
 name|TEMP_QUEUE_TYPE
 argument_list|)
-block|,                  }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}
@@ -9379,7 +9398,8 @@ argument_list|(
 name|connection
 argument_list|)
 expr_stmt|;
-comment|// Acknowledge the first message.  This should cause the next message to get dispatched.
+comment|// Acknowledge the first message. This should cause the next message to
+comment|// get dispatched.
 name|connection
 operator|.
 name|send

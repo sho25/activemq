@@ -926,7 +926,7 @@ argument_list|(
 name|consumed
 argument_list|)
 expr_stmt|;
-comment|/*                log.error("\n\n\n\n\n");                for (int j = 0; j< consumerList.size(); j++) {                    log.error(consumerList.get(j));                }                */
+comment|/*                  * log.error("\n\n\n\n\n"); for (int j = 0; j<                  * consumerList.size(); j++) { log.error(consumerList.get(j)); }                  */
 block|}
 name|assertEquals
 argument_list|(

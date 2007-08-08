@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -170,7 +170,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Useful base class for unit test cases  *  * @version $Revision: 1.4 $  */
+comment|/**  * Useful base class for unit test cases  *   * @version $Revision: 1.4 $  */
 end_comment
 
 begin_class
@@ -272,7 +272,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Tests if firstSet and secondSet are equal.      *       * @param messsage - string to be displayed when the assertion fails.      * @param firstSet[] - set of messages to be compared with its counterpart in the secondset.      * @param secondSet[] - set of messages to be compared with its counterpart in the firstset.  	 * @throws JMSException 	 */
+comment|/**      * Tests if firstSet and secondSet are equal.      *       * @param messsage - string to be displayed when the assertion fails.      * @param firstSet[] - set of messages to be compared with its counterpart      *                in the secondset.      * @param secondSet[] - set of messages to be compared with its counterpart      *                in the firstset.      * @throws JMSException      */
 specifier|protected
 name|void
 name|assertTextMessagesEqual
@@ -298,7 +298,7 @@ name|secondSet
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Tests if firstSet and secondSet are equal.      *       * @param messsage - string to be displayed when the assertion fails.      * @param firstSet[] - set of messages to be compared with its counterpart in the secondset.      * @param secondSet[] - set of messages to be compared with its counterpart in the firstset.       */
+comment|/**      * Tests if firstSet and secondSet are equal.      *       * @param messsage - string to be displayed when the assertion fails.      * @param firstSet[] - set of messages to be compared with its counterpart      *                in the secondset.      * @param secondSet[] - set of messages to be compared with its counterpart      *                in the firstset.      */
 specifier|protected
 name|void
 name|assertTextMessagesEqual
@@ -414,7 +414,7 @@ name|m2
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Tests if m1 and m2 are equal. 	 *       * @param message - string to be displayed when the assertion fails.      * @param m1 - message to be compared with m2.      * @param m2 - message to be compared with m1.      */
+comment|/**      * Tests if m1 and m2 are equal.      *       * @param message - string to be displayed when the assertion fails.      * @param m1 - message to be compared with m2.      * @param m2 - message to be compared with m1.      */
 specifier|protected
 name|void
 name|assertTextMessageEqual
@@ -503,7 +503,7 @@ name|m2
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tests if m1 and m2 are equal.   	 *       * @param message - error message.       * @param m1 - message to be compared with m2.      * @param m2 -- message to be compared with m1.      */
+comment|/**      * Tests if m1 and m2 are equal.      *       * @param message - error message.      * @param m1 - message to be compared with m2.      * @param m2 -- message to be compared with m1.      */
 specifier|protected
 name|void
 name|assertEquals
@@ -613,7 +613,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Creates an ActiveMQConnectionFactory.      *       * @return ActiveMQConnectionFactory       * @throws Exception      */
+comment|/**      * Creates an ActiveMQConnectionFactory.      *       * @return ActiveMQConnectionFactory      * @throws Exception      */
 specifier|protected
 name|ActiveMQConnectionFactory
 name|createConnectionFactory
@@ -629,7 +629,7 @@ literal|"vm://localhost?broker.persistent=false"
 argument_list|)
 return|;
 block|}
-comment|/**      * Factory method to create a new connection.      *       * @return connection       * @throws Exception      */
+comment|/**      * Factory method to create a new connection.      *       * @return connection      * @throws Exception      */
 specifier|protected
 name|Connection
 name|createConnection
@@ -701,7 +701,7 @@ name|getSubject
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns the subject.       *       * @return String      */
+comment|/**      * Returns the subject.      *       * @return String      */
 specifier|protected
 name|String
 name|getSubject

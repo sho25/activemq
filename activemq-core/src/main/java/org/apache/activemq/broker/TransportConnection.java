@@ -1058,7 +1058,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -1073,7 +1073,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|transportLog
+name|TRANSPORTLOG
 init|=
 name|LogFactory
 operator|.
@@ -1093,7 +1093,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|serviceLog
+name|SERVICELOG
 init|=
 name|LogFactory
 operator|.
@@ -1134,7 +1134,8 @@ name|MessageAuthorizationPolicy
 name|messageAuthorizationPolicy
 decl_stmt|;
 comment|// Keeps track of the state of the connections.
-comment|//    protected final ConcurrentHashMap localConnectionStates=new ConcurrentHashMap();
+comment|// protected final ConcurrentHashMap localConnectionStates=new
+comment|// ConcurrentHashMap();
 specifier|protected
 specifier|final
 name|Map
@@ -1154,7 +1155,8 @@ specifier|private
 name|WireFormatInfo
 name|wireFormatInfo
 decl_stmt|;
-comment|// Used to do async dispatch.. this should perhaps be pushed down into the transport layer..
+comment|// Used to do async dispatch.. this should perhaps be pushed down into the
+comment|// transport layer..
 specifier|protected
 specifier|final
 name|List
@@ -1241,8 +1243,6 @@ decl_stmt|;
 specifier|private
 name|long
 name|timeStamp
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 specifier|final
@@ -1377,8 +1377,6 @@ decl_stmt|;
 specifier|private
 name|DemandForwardingBridge
 name|duplexBridge
-init|=
-literal|null
 decl_stmt|;
 specifier|final
 specifier|private
@@ -1521,7 +1519,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * @param connector      * @param transport      * @param broker      * @param taskRunnerFactory - can be null if you want direct dispatch to the transport else commands are sent async.      */
+comment|/**      * @param connector      * @param transport      * @param broker      * @param taskRunnerFactory - can be null if you want direct dispatch to the      *                transport else commands are sent async.      */
 specifier|public
 name|TransportConnection
 parameter_list|(
@@ -1685,7 +1683,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|/**      * Returns the number of messages to be dispatched to this connection      * @return size of dispatch queue      */
+comment|/**      * Returns the number of messages to be dispatched to this connection      *       * @return size of dispatch queue      */
 specifier|public
 name|int
 name|getDispatchQueueSize
@@ -1724,12 +1722,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|transportLog
+name|TRANSPORTLOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
-name|transportLog
+name|TRANSPORTLOG
 operator|.
 name|debug
 argument_list|(
@@ -1749,7 +1747,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Calls the serviceException method in an async thread. Since handling a service exception closes a socket, we      * should not tie up broker threads since client sockets may hang or cause deadlocks.      *       * @param e      */
+comment|/**      * Calls the serviceException method in an async thread. Since handling a      * service exception closes a socket, we should not tie up broker threads      * since client sockets may hang or cause deadlocks.      *       * @param e      */
 specifier|public
 name|void
 name|serviceExceptionAsync
@@ -1795,7 +1793,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Closes a clients connection due to a detected error.      *       * Errors are ignored if: the client is closing or broker is closing. Otherwise, the connection error transmitted to      * the client before stopping it's transport.      */
+comment|/**      * Closes a clients connection due to a detected error. Errors are ignored      * if: the client is closing or broker is closing. Otherwise, the connection      * error transmitted to the client before stopping it's transport.      */
 specifier|public
 name|void
 name|serviceException
@@ -1848,12 +1846,12 @@ condition|)
 block|{
 if|if
 condition|(
-name|serviceLog
+name|SERVICELOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
-name|serviceLog
+name|SERVICELOG
 operator|.
 name|debug
 argument_list|(
@@ -1879,7 +1877,8 @@ argument_list|(
 name|ce
 argument_list|)
 expr_stmt|;
-comment|// Wait a little bit to try to get the output buffer to flush the exption notification to the client.
+comment|// Wait a little bit to try to get the output buffer to flush
+comment|// the exption notification to the client.
 try|try
 block|{
 name|Thread
@@ -1905,7 +1904,8 @@ name|interrupt
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Worst case is we just kill the connection before the notification gets to him.
+comment|// Worst case is we just kill the connection before the
+comment|// notification gets to him.
 name|ServiceSupport
 operator|.
 name|dispose
@@ -1934,7 +1934,7 @@ literal|true
 expr_stmt|;
 try|try
 block|{
-name|serviceLog
+name|SERVICELOG
 operator|.
 name|error
 argument_list|(
@@ -2039,7 +2039,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|serviceLog
+name|SERVICELOG
 operator|.
 name|isDebugEnabled
 argument_list|()
@@ -2053,7 +2053,7 @@ name|BrokerStoppedException
 operator|.
 name|class
 condition|)
-name|serviceLog
+name|SERVICELOG
 operator|.
 name|debug
 argument_list|(
@@ -2109,7 +2109,8 @@ name|commandId
 argument_list|)
 expr_stmt|;
 block|}
-comment|// The context may have been flagged so that the response is not sent.
+comment|// The context may have been flagged so that the response is not
+comment|// sent.
 if|if
 condition|(
 name|context
@@ -3685,7 +3686,8 @@ operator|+
 name|id
 argument_list|)
 throw|;
-comment|// Don't let new consumers or producers get added while we are closing this down.
+comment|// Don't let new consumers or producers get added while we are closing
+comment|// this down.
 name|session
 operator|.
 name|shutdown
@@ -3737,7 +3739,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -3799,7 +3801,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -3855,7 +3857,8 @@ block|{
 name|TransportConnectionState
 name|state
 decl_stmt|;
-comment|// Make sure 2 concurrent connections by the same ID only generate 1 TransportConnectionState object.
+comment|// Make sure 2 concurrent connections by the same ID only generate 1
+comment|// TransportConnectionState object.
 synchronized|synchronized
 init|(
 name|brokerConnectionStates
@@ -3912,7 +3915,8 @@ name|incrementReference
 argument_list|()
 expr_stmt|;
 block|}
-comment|// If there are 2 concurrent connections for the same connection id, then last one in wins, we need to sync here
+comment|// If there are 2 concurrent connections for the same connection id,
+comment|// then last one in wins, we need to sync here
 comment|// to figure out the winner.
 synchronized|synchronized
 init|(
@@ -3931,7 +3935,7 @@ operator|!=
 name|this
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -3954,7 +3958,7 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -4000,7 +4004,7 @@ argument_list|,
 name|state
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -4196,7 +4200,8 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
-comment|// Don't allow things to be added to the connection state while we are shutting down.
+comment|// Don't allow things to be added to the connection state while we are
+comment|// shutting down.
 name|cs
 operator|.
 name|shutdown
@@ -4248,7 +4253,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|serviceLog
+name|SERVICELOG
 operator|.
 name|warn
 argument_list|(
@@ -4319,7 +4324,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|serviceLog
+name|SERVICELOG
 operator|.
 name|warn
 argument_list|(
@@ -4366,7 +4371,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|serviceLog
+name|SERVICELOG
 operator|.
 name|warn
 argument_list|(
@@ -4773,7 +4778,7 @@ parameter_list|(
 name|Throwable
 name|ignore
 parameter_list|)
-block|{                          }
+block|{                         }
 block|}
 name|dispatchStoppedLatch
 operator|.
@@ -4990,7 +4995,7 @@ condition|(
 name|pendingStop
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -5026,7 +5031,7 @@ condition|(
 name|starting
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -5075,7 +5080,7 @@ name|Exception
 throws|,
 name|InterruptedException
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -5154,7 +5159,7 @@ name|Exception
 name|ignore
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -5259,7 +5264,8 @@ operator|.
 name|shutdown
 argument_list|()
 expr_stmt|;
-comment|// Run the MessageDispatch callbacks so that message references get cleaned up.
+comment|// Run the MessageDispatch callbacks so that message references get
+comment|// cleaned up.
 for|for
 control|(
 name|Iterator
@@ -5374,7 +5380,7 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -5427,7 +5433,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -5439,7 +5445,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * @return Returns the blockedCandidate. 	 */
+comment|/**      * @return Returns the blockedCandidate.      */
 specifier|public
 name|boolean
 name|isBlockedCandidate
@@ -5449,7 +5455,7 @@ return|return
 name|blockedCandidate
 return|;
 block|}
-comment|/** 	 * @param blockedCandidate 	 *            The blockedCandidate to set. 	 */
+comment|/**      * @param blockedCandidate The blockedCandidate to set.      */
 specifier|public
 name|void
 name|setBlockedCandidate
@@ -5745,7 +5751,7 @@ operator|.
 name|startProcessing
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -5774,8 +5780,8 @@ name|isDuplexConnection
 argument_list|()
 condition|)
 block|{
-comment|//so this TransportConnection is the rear end of a network bridge
-comment|//We have been requested to create a two way pipe ...
+comment|// so this TransportConnection is the rear end of a network bridge
+comment|// We have been requested to create a two way pipe ...
 try|try
 block|{
 name|Properties
@@ -5907,7 +5913,7 @@ argument_list|,
 name|remoteBridgeTransport
 argument_list|)
 expr_stmt|;
-comment|//now turn duplex off this side
+comment|// now turn duplex off this side
 name|info
 operator|.
 name|setDuplexConnection
@@ -5931,7 +5937,7 @@ argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -5953,7 +5959,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -5974,7 +5980,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -6536,7 +6542,7 @@ name|active
 operator|=
 literal|false
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -6555,7 +6561,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -6679,18 +6685,21 @@ return|return
 literal|null
 return|;
 block|}
-comment|///////////////////////////////////////////////////////////////////
+comment|// /////////////////////////////////////////////////////////////////
 comment|//
-comment|// The following methods handle the logical connection state.  It is possible
-comment|// multiple logical connections multiplexed over a single physical connection.
-comment|// But have not yet exploited the feature from the clients, so for performance
+comment|// The following methods handle the logical connection state. It is possible
+comment|// multiple logical connections multiplexed over a single physical
+comment|// connection.
+comment|// But have not yet exploited the feature from the clients, so for
+comment|// performance
 comment|// reasons (to avoid a hash lookup) this class only keeps track of 1
 comment|// logical connection state.
 comment|//
-comment|// A sub class could override these methods to a full multiple logical connection
+comment|// A sub class could override these methods to a full multiple logical
+comment|// connection
 comment|// support.
 comment|//
-comment|///////////////////////////////////////////////////////////////////
+comment|// /////////////////////////////////////////////////////////////////
 specifier|protected
 name|TransportConnectionState
 name|registerConnectionState

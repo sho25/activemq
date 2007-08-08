@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -125,18 +125,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|junit
 operator|.
 name|framework
@@ -180,7 +168,7 @@ specifier|private
 name|Connection
 name|connection
 decl_stmt|;
-comment|/* (non-Javadoc)      * @see junit.framework.TestCase#setUp()      */
+comment|/*      * (non-Javadoc)      *       * @see junit.framework.TestCase#setUp()      */
 specifier|protected
 name|void
 name|setUp
@@ -220,7 +208,7 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Creates a connection.       *       * @return connection      * @throws Exception      */
+comment|/**      * Creates a connection.      *       * @return connection      * @throws Exception      */
 specifier|protected
 name|Connection
 name|createConnection
@@ -244,7 +232,7 @@ name|createConnection
 argument_list|()
 return|;
 block|}
-comment|/**      * Tests if a message unacknowledged message gets to be resent when the session is closed and      * then a new consumer session is created.           *       */
+comment|/**      * Tests if a message unacknowledged message gets to be resent when the      * session is closed and then a new consumer session is created.      *       */
 specifier|public
 name|void
 name|testQueueSessionCloseMarksMessageRedelivered
@@ -341,7 +329,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Don't ack the message.
-comment|// Reset the session.  This should cause the Unacked message to be redelivered.
+comment|// Reset the session. This should cause the Unacked message to be
+comment|// redelivered.
 name|session
 operator|.
 name|close
@@ -405,7 +394,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Tests session recovery and that the redelivered message is marked as such.      * Session uses client acknowledgement, the destination is a queue.      *       * @throws JMSException      */
+comment|/**      * Tests session recovery and that the redelivered message is marked as      * such. Session uses client acknowledgement, the destination is a queue.      *       * @throws JMSException      */
 specifier|public
 name|void
 name|testQueueRecoverMarksMessageRedelivered
@@ -502,7 +491,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Don't ack the message.
-comment|// Reset the session.  This should cause the Unacked message to be redelivered.
+comment|// Reset the session. This should cause the Unacked message to be
+comment|// redelivered.
 name|session
 operator|.
 name|recover
@@ -544,7 +534,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Tests rollback message to be marked as redelivered.      * Session uses client acknowledgement and the destination is a queue.        *       * @throws JMSException      */
+comment|/**      * Tests rollback message to be marked as redelivered. Session uses client      * acknowledgement and the destination is a queue.      *       * @throws JMSException      */
 specifier|public
 name|void
 name|testQueueRollbackMarksMessageRedelivered
@@ -687,7 +677,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Tests if the message gets to be re-delivered when the session closes and       * that the re-delivered message is marked as such.        * Session uses client acknowledgment, the destination is a topic and       * the consumer is a durable subscriber.      *       * @throws JMSException      */
+comment|/**      * Tests if the message gets to be re-delivered when the session closes and      * that the re-delivered message is marked as such. Session uses client      * acknowledgment, the destination is a topic and the consumer is a durable      * subscriber.      *       * @throws JMSException      */
 specifier|public
 name|void
 name|testDurableTopicSessionCloseMarksMessageRedelivered
@@ -747,7 +737,8 @@ argument_list|,
 literal|"sub1"
 argument_list|)
 decl_stmt|;
-comment|// This case only works with persistent messages since transient messages
+comment|// This case only works with persistent messages since transient
+comment|// messages
 comment|// are dropped when the consumer goes offline.
 name|MessageProducer
 name|producer
@@ -805,7 +796,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Don't ack the message.
-comment|// Reset the session.  This should cause the Unacked message to be re-delivered.
+comment|// Reset the session. This should cause the Unacked message to be
+comment|// re-delivered.
 name|session
 operator|.
 name|close
@@ -871,7 +863,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Tests session recovery and that the redelivered message is marked as such.      * Session uses client acknowledgement, the destination is a topic and      * the consumer is a durable suscriber.       *       * @throws JMSException      */
+comment|/**      * Tests session recovery and that the redelivered message is marked as      * such. Session uses client acknowledgement, the destination is a topic and      * the consumer is a durable suscriber.      *       * @throws JMSException      */
 specifier|public
 name|void
 name|testDurableTopicRecoverMarksMessageRedelivered
@@ -978,7 +970,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Don't ack the message.
-comment|// Reset the session.  This should cause the Unacked message to be redelivered.
+comment|// Reset the session. This should cause the Unacked message to be
+comment|// redelivered.
 name|session
 operator|.
 name|recover
@@ -1020,7 +1013,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Tests rollback message to be marked as redelivered.      * Session uses client acknowledgement and the destination is a topic.        *       * @throws JMSException      */
+comment|/**      * Tests rollback message to be marked as redelivered. Session uses client      * acknowledgement and the destination is a topic.      *       * @throws JMSException      */
 specifier|public
 name|void
 name|testDurableTopicRollbackMarksMessageRedelivered
@@ -1278,7 +1271,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Don't ack the message.
-comment|// Reset the session.  This should cause the Unacked message to be redelivered.
+comment|// Reset the session. This should cause the Unacked message to be
+comment|// redelivered.
 name|session
 operator|.
 name|recover
@@ -1320,7 +1314,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Tests rollback message to be marked as redelivered.      * Session uses client acknowledgement and the destination is a topic.        *        * @throws JMSException      */
+comment|/**      * Tests rollback message to be marked as redelivered. Session uses client      * acknowledgement and the destination is a topic.      *       * @throws JMSException      */
 specifier|public
 name|void
 name|testTopicRollbackMarksMessageRedelivered
@@ -1491,7 +1485,7 @@ literal|"Hello"
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a producer.       *       * @param session        * @param queue - destination.      * @return MessageProducer      * @throws JMSException      */
+comment|/**      * Creates a producer.      *       * @param session      * @param queue - destination.      * @return MessageProducer      * @throws JMSException      */
 specifier|private
 name|MessageProducer
 name|createProducer
@@ -1527,7 +1521,7 @@ return|return
 name|producer
 return|;
 block|}
-comment|/**      * Returns delivery mode.        *       * @return int - persistent delivery mode.        */
+comment|/**      * Returns delivery mode.      *       * @return int - persistent delivery mode.      */
 specifier|protected
 name|int
 name|getDeliveryMode
@@ -1548,7 +1542,7 @@ name|PersistentCase
 extends|extends
 name|JmsRedeliveredTest
 block|{
-comment|/**          * Returns delivery mode.            *           * @return int - persistent delivery mode.            */
+comment|/**          * Returns delivery mode.          *           * @return int - persistent delivery mode.          */
 specifier|protected
 name|int
 name|getDeliveryMode
@@ -1570,7 +1564,7 @@ name|TransientCase
 extends|extends
 name|JmsRedeliveredTest
 block|{
-comment|/**          * Returns delivery mode.            *           * @return int - non-persistent delivery mode.            */
+comment|/**          * Returns delivery mode.          *           * @return int - non-persistent delivery mode.          */
 specifier|protected
 name|int
 name|getDeliveryMode

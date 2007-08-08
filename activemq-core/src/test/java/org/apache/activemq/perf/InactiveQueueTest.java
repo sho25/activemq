@@ -17,26 +17,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URI
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -52,16 +32,6 @@ operator|.
 name|jms
 operator|.
 name|Destination
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
 import|;
 end_import
 
@@ -111,27 +81,7 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|Topic
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|TopicSubscriber
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|AssertionFailedError
 import|;
 end_import
 
@@ -167,53 +117,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|BrokerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
 name|BrokerService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|store
-operator|.
-name|journal
-operator|.
-name|JournalPersistenceAdapterFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|store
-operator|.
-name|kahadaptor
-operator|.
-name|KahaPersistenceAdapter
 import|;
 end_import
 
@@ -261,7 +165,7 @@ specifier|static
 specifier|final
 specifier|transient
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -343,37 +247,25 @@ decl_stmt|;
 specifier|private
 name|Connection
 name|connection
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|MessageProducer
 name|publisher
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|TopicSubscriber
 name|subscriber
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|Destination
 name|destination
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|Session
 name|session
-init|=
-literal|null
 decl_stmt|;
 name|ActiveMQConnectionFactory
 name|connectionFactory
-init|=
-literal|null
 decl_stmt|;
 name|BrokerService
 name|broker
@@ -396,8 +288,9 @@ operator|new
 name|BrokerService
 argument_list|()
 expr_stmt|;
-comment|//broker.setPersistenceAdapter(new KahaPersistenceAdapter(new File ("TEST_STUFD")));
-comment|/*         JournalPersistenceAdapterFactory factory = new JournalPersistenceAdapterFactory();         factory.setDataDirectoryFile(broker.getDataDirectory());         factory.setTaskRunnerFactory(broker.getTaskRunnerFactory());         factory.setUseJournal(false);         broker.setPersistenceFactory(factory);         */
+comment|// broker.setPersistenceAdapter(new KahaPersistenceAdapter(new File
+comment|// ("TEST_STUFD")));
+comment|/*          * JournalPersistenceAdapterFactory factory = new          * JournalPersistenceAdapterFactory();          * factory.setDataDirectoryFile(broker.getDataDirectory());          * factory.setTaskRunnerFactory(broker.getTaskRunnerFactory());          * factory.setUseJournal(false); broker.setPersistenceFactory(factory);          */
 name|broker
 operator|.
 name|addConnector
@@ -422,7 +315,7 @@ operator|.
 name|DEFAULT_BROKER_URL
 argument_list|)
 expr_stmt|;
-comment|/*          * Doesn't matter if you enable or disable these, so just leaving them out for this test case          * connectionFactory.setAlwaysSessionAsync(true); connectionFactory.setAsyncDispatch(true);          */
+comment|/*          * Doesn't matter if you enable or disable these, so just leaving them          * out for this test case connectionFactory.setAlwaysSessionAsync(true);          * connectionFactory.setAsyncDispatch(true);          */
 name|connectionFactory
 operator|.
 name|setUseAsyncSend
@@ -599,7 +492,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(

@@ -114,7 +114,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Page within a HashPage  *  * @version $Revision: 1.1.1.1 $  */
+comment|/**  * A Page within a HashPage  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -159,8 +159,6 @@ decl_stmt|;
 specifier|private
 name|int
 name|persistedSize
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|List
@@ -184,7 +182,7 @@ name|active
 init|=
 literal|true
 decl_stmt|;
-comment|/**      * Constructor      *      * @param hashIndex      * @param id      * @param parentId      * @param maximumEntries      */
+comment|/**      * Constructor      *       * @param hashIndex      * @param id      * @param parentId      * @param maximumEntries      */
 name|HashPage
 parameter_list|(
 name|long
@@ -206,7 +204,7 @@ operator|=
 name|id
 expr_stmt|;
 block|}
-comment|/**      * Constructor      *      * @param maximumEntries      */
+comment|/**      * Constructor      *       * @param maximumEntries      */
 specifier|public
 name|HashPage
 parameter_list|(
@@ -727,8 +725,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|//index = index>= 0 ? index : 0;
-comment|//index = (index == 0 || index< size()) ? index : size()-1;
+comment|// index = index>= 0 ? index : 0;
+comment|// index = (index == 0 || index< size()) ? index : size()-1;
 name|hashIndexEntries
 operator|.
 name|add

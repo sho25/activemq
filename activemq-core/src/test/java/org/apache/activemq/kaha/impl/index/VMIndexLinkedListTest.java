@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -63,44 +63,8 @@ name|StoreEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|kaha
-operator|.
-name|impl
-operator|.
-name|index
-operator|.
-name|IndexItem
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|kaha
-operator|.
-name|impl
-operator|.
-name|index
-operator|.
-name|IndexLinkedList
-import|;
-end_import
-
 begin_comment
-comment|/**  * @version $Revision: 1.2 $ */
+comment|/**  * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class
@@ -207,7 +171,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/*      * Test method for 'org.apache.activemq.kaha.impl.VMIndexLinkedList.getFirst()'      */
+comment|/*      * Test method for      * 'org.apache.activemq.kaha.impl.VMIndexLinkedList.getFirst()'      */
 specifier|public
 name|void
 name|testGetFirst
@@ -263,7 +227,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * Test method for 'org.apache.activemq.kaha.impl.VMIndexLinkedList.getLast()'      */
+comment|/*      * Test method for      * 'org.apache.activemq.kaha.impl.VMIndexLinkedList.getLast()'      */
 specifier|public
 name|void
 name|testGetLast
@@ -324,7 +288,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * Test method for 'org.apache.activemq.kaha.impl.VMIndexLinkedList.removeFirst()'      */
+comment|/*      * Test method for      * 'org.apache.activemq.kaha.impl.VMIndexLinkedList.removeFirst()'      */
 specifier|public
 name|void
 name|testRemoveFirst
@@ -380,7 +344,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * Test method for 'org.apache.activemq.kaha.impl.VMIndexLinkedList.removeLast()'      */
+comment|/*      * Test method for      * 'org.apache.activemq.kaha.impl.VMIndexLinkedList.removeLast()'      */
 specifier|public
 name|void
 name|testRemoveLast
@@ -441,7 +405,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * Test method for 'org.apache.activemq.kaha.impl.VMIndexLinkedList.addFirst(IndexItem)'      */
+comment|/*      * Test method for      * 'org.apache.activemq.kaha.impl.VMIndexLinkedList.addFirst(IndexItem)'      */
 specifier|public
 name|void
 name|testAddFirst
@@ -526,7 +490,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/*      * Test method for 'org.apache.activemq.kaha.impl.VMIndexLinkedList.addLast(IndexItem)'      */
+comment|/*      * Test method for      * 'org.apache.activemq.kaha.impl.VMIndexLinkedList.addLast(IndexItem)'      */
 specifier|public
 name|void
 name|testAddLast
@@ -656,7 +620,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/*      * Test method for 'org.apache.activemq.kaha.impl.VMIndexLinkedList.isEmpty()'      */
+comment|/*      * Test method for      * 'org.apache.activemq.kaha.impl.VMIndexLinkedList.isEmpty()'      */
 specifier|public
 name|void
 name|testIsEmpty
@@ -722,7 +686,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * Test method for 'org.apache.activemq.kaha.impl.VMIndexLinkedList.add(IndexItem)'      */
+comment|/*      * Test method for      * 'org.apache.activemq.kaha.impl.VMIndexLinkedList.add(IndexItem)'      */
 specifier|public
 name|void
 name|testAddIndexItem
@@ -865,7 +829,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * Test method for 'org.apache.activemq.kaha.impl.VMIndexLinkedList.add(int, IndexItem)'      */
+comment|/*      * Test method for 'org.apache.activemq.kaha.impl.VMIndexLinkedList.add(int,      * IndexItem)'      */
 specifier|public
 name|void
 name|testAddIntIndexItem
@@ -944,7 +908,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/*      * Test method for 'org.apache.activemq.kaha.impl.VMIndexLinkedList.remove(int)'      */
+comment|/*      * Test method for      * 'org.apache.activemq.kaha.impl.VMIndexLinkedList.remove(int)'      */
 specifier|public
 name|void
 name|testRemoveInt
@@ -1096,7 +1060,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * Test method for 'org.apache.activemq.kaha.impl.VMIndexLinkedList.indexOf(IndexItem)'      */
+comment|/*      * Test method for      * 'org.apache.activemq.kaha.impl.VMIndexLinkedList.indexOf(IndexItem)'      */
 specifier|public
 name|void
 name|testIndexOf
@@ -1178,7 +1142,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/*      * Test method for 'org.apache.activemq.kaha.impl.VMIndexLinkedList.getNextEntry(IndexItem)'      */
+comment|/*      * Test method for      * 'org.apache.activemq.kaha.impl.VMIndexLinkedList.getNextEntry(IndexItem)'      */
 specifier|public
 name|void
 name|testGetNextEntry
@@ -1271,7 +1235,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/*      * Test method for 'org.apache.activemq.kaha.impl.VMIndexLinkedList.getPrevEntry(IndexItem)'      */
+comment|/*      * Test method for      * 'org.apache.activemq.kaha.impl.VMIndexLinkedList.getPrevEntry(IndexItem)'      */
 specifier|public
 name|void
 name|testGetPrevEntry
@@ -1369,7 +1333,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/*      * Test method for 'org.apache.activemq.kaha.impl.VMIndexLinkedList.remove(IndexItem)'      */
+comment|/*      * Test method for      * 'org.apache.activemq.kaha.impl.VMIndexLinkedList.remove(IndexItem)'      */
 specifier|public
 name|void
 name|testRemoveIndexItem

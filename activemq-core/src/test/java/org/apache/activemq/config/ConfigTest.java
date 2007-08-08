@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -542,8 +542,8 @@ literal|"jks"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * IMPORTANT NOTE: Assertions checking for the existence of the derby directory will fail if the first derby      *                 directory is not created under target/test-data/. The test in unable to change the derby      *                 root directory for succeeding creation. It uses the first created directory as the root.      */
-comment|/*      * This tests creating a journal persistence adapter using the persistence adapter factory bean      */
+comment|/*      * IMPORTANT NOTE: Assertions checking for the existence of the derby      * directory will fail if the first derby directory is not created under      * target/test-data/. The test in unable to change the derby root directory      * for succeeding creation. It uses the first created directory as the root.      */
+comment|/*      * This tests creating a journal persistence adapter using the persistence      * adapter factory bean      */
 specifier|public
 name|void
 name|testJournaledJDBCConfig
@@ -551,7 +551,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//        System.out.print("Checking journaled JDBC persistence adapter configuration... ");
+comment|// System.out.print("Checking journaled JDBC persistence adapter
+comment|// configuration... ");
 name|File
 name|journalFile
 init|=
@@ -579,7 +580,9 @@ operator|+
 literal|"testJournaledJDBCConfig/derbydb"
 argument_list|)
 decl_stmt|;
-comment|// Default derby name
+comment|// Default
+comment|// derby
+comment|// name
 name|recursiveDelete
 argument_list|(
 name|derbyFile
@@ -663,7 +666,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Check persistence factory configurations
-comment|//            System.out.print("Checking persistence adapter factory settings... ");
+comment|// System.out.print("Checking persistence adapter factory
+comment|// settings... ");
 name|JournalPersistenceAdapter
 name|pa
 init|=
@@ -708,7 +712,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//        System.out.print("Checking jdbc persistence adapter configuration... ");
+comment|// System.out.print("Checking jdbc persistence adapter configuration...
+comment|// ");
 name|File
 name|derbyFile
 init|=
@@ -720,7 +725,9 @@ operator|+
 literal|"testJDBCConfig/derbydb"
 argument_list|)
 decl_stmt|;
-comment|// Default derby name
+comment|// Default
+comment|// derby
+comment|// name
 name|recursiveDelete
 argument_list|(
 name|derbyFile
@@ -849,7 +856,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/*      * This tests configuring the different broker properties using xbeans-spring      */
+comment|/*      * This tests configuring the different broker properties using      * xbeans-spring      */
 specifier|public
 name|void
 name|testBrokerConfig
@@ -878,7 +885,7 @@ name|journalFile
 argument_list|)
 expr_stmt|;
 comment|// Create broker from resource
-comment|//        System.out.print("Creating broker... ");
+comment|// System.out.print("Creating broker... ");
 name|broker
 operator|=
 name|createBroker
@@ -896,7 +903,7 @@ expr_stmt|;
 try|try
 block|{
 comment|// Check broker configuration
-comment|//            System.out.print("Checking broker configurations... ");
+comment|// System.out.print("Checking broker configurations... ");
 name|assertEquals
 argument_list|(
 literal|"Broker Config Error (brokerName)"
@@ -989,7 +996,7 @@ literal|"Success"
 argument_list|)
 expr_stmt|;
 comment|// Check specific vm transport
-comment|//            System.out.print("Checking vm connector... ");
+comment|// System.out.print("Checking vm connector... ");
 name|assertEquals
 argument_list|(
 literal|"Should have a specific VM Connector"
@@ -1013,7 +1020,7 @@ literal|"Success"
 argument_list|)
 expr_stmt|;
 comment|// Check transport connectors list
-comment|//            System.out.print("Checking transport connectors... ");
+comment|// System.out.print("Checking transport connectors... ");
 name|List
 name|connectors
 init|=
@@ -1103,7 +1110,7 @@ name|TcpTransportServer
 argument_list|)
 expr_stmt|;
 comment|// Check network connectors
-comment|//            System.out.print("Checking network connectors... ");
+comment|// System.out.print("Checking network connectors... ");
 name|List
 name|networkConnectors
 init|=
@@ -1132,7 +1139,7 @@ literal|"Success"
 argument_list|)
 expr_stmt|;
 comment|// Check dispatch policy configuration
-comment|//            System.out.print("Checking dispatch policies... ");
+comment|// System.out.print("Checking dispatch policies... ");
 name|dest
 operator|=
 operator|new
@@ -1240,7 +1247,7 @@ literal|"Success"
 argument_list|)
 expr_stmt|;
 comment|// Check subscription policy configuration
-comment|//            System.out.print("Checking subscription recovery policies... ");
+comment|// System.out.print("Checking subscription recovery policies... ");
 name|SubscriptionRecoveryPolicy
 name|subsPolicy
 decl_stmt|;
@@ -1451,7 +1458,7 @@ literal|"Success"
 argument_list|)
 expr_stmt|;
 comment|// Check usage manager
-comment|//            System.out.print("Checking memory manager configurations... ");
+comment|// System.out.print("Checking memory manager configurations... ");
 name|UsageManager
 name|memMgr
 init|=
@@ -1533,7 +1540,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//        System.out.print("Checking journal persistence adapter configuration... ");
+comment|// System.out.print("Checking journal persistence adapter
+comment|// configuration... ");
 name|File
 name|journalFile
 init|=
@@ -1645,7 +1653,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//        System.out.print("Checking memory persistence adapter configuration... ");
+comment|// System.out.print("Checking memory persistence adapter
+comment|// configuration... ");
 name|File
 name|journalFile
 init|=
@@ -1997,7 +2006,7 @@ operator|!=
 literal|null
 argument_list|)
 expr_stmt|;
-comment|//Broker is already started by default when using the XML file
+comment|// Broker is already started by default when using the XML file
 comment|// broker.start();
 return|return
 name|broker

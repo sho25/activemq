@@ -685,7 +685,8 @@ throws|throws
 name|Exception
 block|{
 comment|//
-comment|// Manually create a client transport so that it does not send KeepAlive packets.
+comment|// Manually create a client transport so that it does not send KeepAlive
+comment|// packets.
 comment|// this should simulate a client hang.
 name|clientTransport
 operator|=
@@ -840,7 +841,8 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Server should consider the client timed out right away since the client is not hart beating fast enough.
+comment|// Server should consider the client timed out right away since the
+comment|// client is not hart beating fast enough.
 name|Thread
 operator|.
 name|sleep
@@ -927,7 +929,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Used to test when a operation blocks.  This should      * not cause transport to get disconnected.      * @throws Exception       * @throws URISyntaxException       */
+comment|/**      * Used to test when a operation blocks. This should not cause transport to      * get disconnected.      *       * @throws Exception      * @throws URISyntaxException      */
 specifier|public
 name|void
 name|initCombosForTestNoClientHangWithServerBlock
@@ -1011,7 +1013,7 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{                     }
+block|{                 }
 block|}
 block|}
 end_class
@@ -1022,7 +1024,7 @@ empty_stmt|;
 end_empty_stmt
 
 begin_function
-unit|}          public
+unit|}      public
 name|void
 name|testNoClientHangWithServerBlock
 parameter_list|()

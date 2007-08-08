@@ -222,7 +222,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents an entry in a {@link PolicyMap} for assigning policies to a specific destination or a hierarchical  * wildcard area of destinations.  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.1 $  */
+comment|/**  * Represents an entry in a {@link PolicyMap} for assigning policies to a  * specific destination or a hierarchical wildcard area of destinations.  *   * @org.apache.xbean.XBean  * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
@@ -792,7 +792,7 @@ return|return
 name|sendAdvisoryIfNoConsumers
 return|;
 block|}
-comment|/**      * Sends an advisory message if a non-persistent message is sent and there are no active consumers      */
+comment|/**      * Sends an advisory message if a non-persistent message is sent and there      * are no active consumers      */
 specifier|public
 name|void
 name|setSendAdvisoryIfNoConsumers
@@ -817,7 +817,7 @@ return|return
 name|deadLetterStrategy
 return|;
 block|}
-comment|/**      * Sets the policy used to determine which dead letter queue destination should be used      */
+comment|/**      * Sets the policy used to determine which dead letter queue destination      * should be used      */
 specifier|public
 name|void
 name|setDeadLetterStrategy
@@ -842,7 +842,7 @@ return|return
 name|pendingMessageLimitStrategy
 return|;
 block|}
-comment|/**      * Sets the strategy to calculate the maximum number of messages that are allowed to be pending on consumers (in      * addition to their prefetch sizes).      *       * Once the limit is reached, non-durable topics can then start discarding old messages. This allows us to keep      * dispatching messages to slow consumers while not blocking fast consumers and discarding the messages oldest      * first.      */
+comment|/**      * Sets the strategy to calculate the maximum number of messages that are      * allowed to be pending on consumers (in addition to their prefetch sizes).      * Once the limit is reached, non-durable topics can then start discarding      * old messages. This allows us to keep dispatching messages to slow      * consumers while not blocking fast consumers and discarding the messages      * oldest first.      */
 specifier|public
 name|void
 name|setPendingMessageLimitStrategy
@@ -867,7 +867,7 @@ return|return
 name|messageEvictionStrategy
 return|;
 block|}
-comment|/**      * Sets the eviction strategy used to decide which message to evict when the slow consumer needs to discard messages      */
+comment|/**      * Sets the eviction strategy used to decide which message to evict when the      * slow consumer needs to discard messages      */
 specifier|public
 name|void
 name|setMessageEvictionStrategy
@@ -892,7 +892,7 @@ return|return
 name|memoryLimit
 return|;
 block|}
-comment|/**      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
+comment|/**      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
 specifier|public
 name|void
 name|setMemoryLimit
@@ -931,7 +931,7 @@ return|return
 name|messageGroupMapFactory
 return|;
 block|}
-comment|/**      * Sets the factory used to create new instances of {MessageGroupMap} used to implement the<a      * href="http://activemq.apache.org/message-groups.html">Message Groups</a> functionality.      */
+comment|/**      * Sets the factory used to create new instances of {MessageGroupMap} used      * to implement the<a      * href="http://activemq.apache.org/message-groups.html">Message Groups</a>      * functionality.      */
 specifier|public
 name|void
 name|setMessageGroupMapFactory
@@ -959,7 +959,7 @@ operator|.
 name|pendingDurableSubscriberPolicy
 return|;
 block|}
-comment|/**      * @param pendingDurableSubscriberPolicy the pendingDurableSubscriberPolicy to set      */
+comment|/**      * @param pendingDurableSubscriberPolicy the pendingDurableSubscriberPolicy      *                to set      */
 specifier|public
 name|void
 name|setPendingDurableSubscriberPolicy

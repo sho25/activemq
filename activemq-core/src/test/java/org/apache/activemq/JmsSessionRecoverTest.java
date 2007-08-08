@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -12,6 +12,30 @@ operator|.
 name|activemq
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|CountDownLatch
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
 
 begin_import
 import|import
@@ -115,13 +139,11 @@ end_import
 
 begin_import
 import|import
-name|org
+name|junit
 operator|.
-name|apache
+name|framework
 operator|.
-name|activemq
-operator|.
-name|ActiveMQConnectionFactory
+name|TestCase
 import|;
 end_import
 
@@ -153,42 +175,8 @@ name|ActiveMQTopic
 import|;
 end_import
 
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CountDownLatch
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
 begin_comment
-comment|/**  * Testcases to see if Session.recover() work.  * @version $Revision: 1.3 $  */
+comment|/**  * Testcases to see if Session.recover() work.  *   * @version $Revision: 1.3 $  */
 end_comment
 
 begin_class
@@ -260,7 +248,7 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-comment|/**      *      * @throws JMSException      * @throws InterruptedException      */
+comment|/**      *       * @throws JMSException      * @throws InterruptedException      */
 specifier|public
 name|void
 name|testQueueSynchRecover
@@ -287,7 +275,7 @@ name|doTestSynchRecover
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      *      * @throws JMSException      * @throws InterruptedException      */
+comment|/**      *       * @throws JMSException      * @throws InterruptedException      */
 specifier|public
 name|void
 name|testQueueAsynchRecover
@@ -314,7 +302,7 @@ name|doTestAsynchRecover
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      *      * @throws JMSException      * @throws InterruptedException      */
+comment|/**      *       * @throws JMSException      * @throws InterruptedException      */
 specifier|public
 name|void
 name|testTopicSynchRecover
@@ -341,7 +329,7 @@ name|doTestSynchRecover
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      *      * @throws JMSException      * @throws InterruptedException      */
+comment|/**      *       * @throws JMSException      * @throws InterruptedException      */
 specifier|public
 name|void
 name|testTopicAsynchRecover
@@ -368,7 +356,7 @@ name|doTestAsynchRecover
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      *      * @throws JMSException      * @throws InterruptedException      */
+comment|/**      *       * @throws JMSException      * @throws InterruptedException      */
 specifier|public
 name|void
 name|testQueueAsynchRecoverWithAutoAck
@@ -395,7 +383,7 @@ name|doTestAsynchRecoverWithAutoAck
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      *      * @throws JMSException      * @throws InterruptedException      */
+comment|/**      *       * @throws JMSException      * @throws InterruptedException      */
 specifier|public
 name|void
 name|testTopicAsynchRecoverWithAutoAck
@@ -1089,7 +1077,8 @@ break|break;
 case|case
 literal|2
 case|:
-comment|// This should rollback the delivery of this message.. and re-deliver.
+comment|// This should rollback the delivery of this message..
+comment|// and re-deliver.
 name|assertEquals
 argument_list|(
 literal|"Second"

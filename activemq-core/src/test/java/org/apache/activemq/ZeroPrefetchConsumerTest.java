@@ -160,7 +160,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version $Revision$  */
+comment|/**  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -472,7 +472,7 @@ argument_list|(
 name|queue
 argument_list|)
 decl_stmt|;
-comment|//noinspection UNUSED_SYMBOL
+comment|// noinspection UNUSED_SYMBOL
 name|MessageConsumer
 name|idleConsumer
 init|=

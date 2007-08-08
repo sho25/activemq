@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -211,7 +211,7 @@ specifier|protected
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -273,8 +273,6 @@ decl_stmt|;
 specifier|protected
 name|boolean
 name|durable
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|int
@@ -296,20 +294,14 @@ decl_stmt|;
 specifier|protected
 name|boolean
 name|verbose
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|boolean
 name|useSeparateSession
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|boolean
 name|largeMessages
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|int
@@ -372,7 +364,7 @@ name|i
 expr_stmt|;
 block|}
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -491,7 +483,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Test if all the messages sent are being received.        *       * @throws Exception      */
+comment|/**      * Test if all the messages sent are being received.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testSendReceive
@@ -546,7 +538,7 @@ condition|(
 name|verbose
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -576,7 +568,7 @@ block|}
 name|assertMessagesAreReceived
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -617,7 +609,7 @@ return|return
 name|message
 return|;
 block|}
-comment|/**      * A hook to allow the message to be configured such as adding extra headers      * @throws JMSException       */
+comment|/**      * A hook to allow the message to be configured such as adding extra headers      *       * @throws JMSException      */
 specifier|protected
 name|void
 name|configureMessage
@@ -628,7 +620,7 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{     }
-comment|/**      * Waits to receive the messages and performs the test if all messages have been received and       * are in sequential order.        *       * @throws JMSException      */
+comment|/**      * Waits to receive the messages and performs the test if all messages have      * been received and are in sequential order.      *       * @throws JMSException      */
 specifier|protected
 name|void
 name|assertMessagesAreReceived
@@ -645,7 +637,7 @@ name|messages
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Tests if the messages have all been received and are in sequential order.       *       * @param receivedMessages      * @throws JMSException      */
+comment|/**      * Tests if the messages have all been received and are in sequential order.      *       * @param receivedMessages      * @throws JMSException      */
 specifier|protected
 name|void
 name|assertMessagesReceivedAreValid
@@ -711,7 +703,7 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -814,7 +806,7 @@ condition|(
 name|verbose
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -839,7 +831,7 @@ name|text
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Waits for the messages to be delivered or when the wait time has been reached.       */
+comment|/**      * Waits for the messages to be delivered or when the wait time has been      * reached.      */
 specifier|protected
 name|void
 name|waitForMessagesToBeDelivered
@@ -948,7 +940,7 @@ name|messages
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Consumes a received message.      *       * @param message - a newly received message.       * @param messageList - list containing the received messages.       */
+comment|/**      * Consumes a received message.      *       * @param message - a newly received message.      * @param messageList - list containing the received messages.      */
 specifier|protected
 name|void
 name|consumeMessage
@@ -965,7 +957,7 @@ condition|(
 name|verbose
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1007,7 +999,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Creates a synchronized list.       *       * @return a synchronized view of the specified list.      */
+comment|/**      * Creates a synchronized list.      *       * @return a synchronized view of the specified list.      */
 specifier|protected
 name|List
 name|createConcurrentList

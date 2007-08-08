@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -228,7 +228,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @openwire:marshaller code="23"  *   * @version $Revision:$  */
+comment|/**  * @openwire:marshaller code="23"  * @version $Revision:$  */
 end_comment
 
 begin_class
@@ -520,7 +520,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Seems to be invalid because the parameter doesn't initialize MessageId instance variables ProducerId and      * ProducerSequenceId      *      * @param value      * @throws JMSException      */
+comment|/**      * Seems to be invalid because the parameter doesn't initialize MessageId      * instance variables ProducerId and ProducerSequenceId      *       * @param value      * @throws JMSException      */
 specifier|public
 name|void
 name|setJMSMessageID
@@ -563,7 +563,8 @@ name|NumberFormatException
 name|e
 parameter_list|)
 block|{
-comment|// we must be some foreign JMS provider or strange user-supplied String
+comment|// we must be some foreign JMS provider or strange user-supplied
+comment|// String
 comment|// so lets set the IDs to be 1
 name|MessageId
 name|id
@@ -599,7 +600,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This will create an object of MessageId. For it to be valid, the instance variable ProducerId and      * producerSequenceId must be initialized.      *      * @param producerId      * @param producerSequenceId      * @throws JMSException      */
+comment|/**      * This will create an object of MessageId. For it to be valid, the instance      * variable ProducerId and producerSequenceId must be initialized.      *       * @param producerId      * @param producerSequenceId      * @throws JMSException      */
 specifier|public
 name|void
 name|setJMSMessageID
@@ -2227,7 +2228,8 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-comment|// Lets use the object property method as we may contain standard extension headers like JMSXGroupID
+comment|// Lets use the object property method as we may contain standard
+comment|// extension headers like JMSXGroupID
 name|setObjectProperty
 argument_list|(
 operator|(
@@ -3457,7 +3459,7 @@ operator|=
 name|acknowledgeCallback
 expr_stmt|;
 block|}
-comment|/**      * Send operation event listener.  Used to get the message ready to be sent.       */
+comment|/**      * Send operation event listener. Used to get the message ready to be sent.      */
 specifier|public
 name|void
 name|onSend

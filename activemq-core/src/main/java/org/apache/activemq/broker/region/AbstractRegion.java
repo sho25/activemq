@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -352,7 +352,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @version $Revision: 1.14 $  */
+comment|/**  * @version $Revision: 1.14 $  */
 end_comment
 
 begin_class
@@ -367,7 +367,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -457,8 +457,6 @@ decl_stmt|;
 specifier|protected
 name|boolean
 name|started
-init|=
-literal|false
 decl_stmt|;
 specifier|public
 name|AbstractRegion
@@ -723,7 +721,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -940,7 +938,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// No timeout.. then try to shut down right way, fails if there are current subscribers.
+comment|// No timeout.. then try to shut down right way, fails if there are
+comment|// current subscribers.
 if|if
 condition|(
 name|timeout
@@ -1008,11 +1007,13 @@ operator|>
 literal|0
 condition|)
 block|{
-comment|// TODO: implement a way to notify the subscribers that we want to take the down
-comment|// the destination and that they should un-subscribe..  Then wait up to timeout time before
+comment|// TODO: implement a way to notify the subscribers that we want to
+comment|// take the down
+comment|// the destination and that they should un-subscribe.. Then wait up
+comment|// to timeout time before
 comment|// dropping the subscription.
 block|}
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1046,7 +1047,8 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// timeout<0 or we timed out, we now force any remaining subscriptions to un-subscribe.
+comment|// timeout<0 or we timed out, we now force any remaining
+comment|// subscriptions to un-subscribe.
 for|for
 control|(
 name|Iterator
@@ -1121,7 +1123,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1133,7 +1135,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Provide an exact or wildcard lookup of destinations in the region      *      * @return a set of matching destination objects.      */
+comment|/**      * Provide an exact or wildcard lookup of destinations in the region      *       * @return a set of matching destination objects.      */
 specifier|public
 name|Set
 name|getDestinations
@@ -1189,7 +1191,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1309,7 +1311,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1323,13 +1325,18 @@ operator|)
 name|o
 return|;
 block|}
-comment|// We may need to add some destinations that are in persistent store but not active
+comment|// We may need to add some destinations that are in persistent store
+comment|// but not active
 comment|// in the broker.
 comment|//
-comment|// TODO: think about this a little more.  This is good cause destinations are not loaded into
-comment|// memory until a client needs to use the queue, but a management agent viewing the
-comment|// broker will not see a destination that exists in persistent store.  We may want to
-comment|// eagerly load all destinations into the broker but have an inactive state for the
+comment|// TODO: think about this a little more. This is good cause
+comment|// destinations are not loaded into
+comment|// memory until a client needs to use the queue, but a management
+comment|// agent viewing the
+comment|// broker will not see a destination that exists in persistent
+comment|// store. We may want to
+comment|// eagerly load all destinations into the broker but have an
+comment|// inactive state for the
 comment|// destination which has reduced memory usage.
 comment|//
 name|DestinationFilter
@@ -1444,7 +1451,7 @@ name|sub
 return|;
 block|}
 block|}
-comment|/**      * Get all the Destinations that are in storage      * @return Set of all stored destinations      */
+comment|/**      * Get all the Destinations that are in storage      *       * @return Set of all stored destinations      */
 specifier|public
 name|Set
 name|getDurableDestinations
@@ -1498,7 +1505,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1906,7 +1913,8 @@ condition|(
 name|autoCreateDestinations
 condition|)
 block|{
-comment|// Try to auto create the destination... re-invoke broker from the
+comment|// Try to auto create the destination... re-invoke broker
+comment|// from the
 comment|// top so that the proper security checks are performed.
 try|try
 block|{
@@ -1922,7 +1930,7 @@ argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
-comment|//dest = addDestination(context, destination);
+comment|// dest = addDestination(context, destination);
 block|}
 catch|catch
 parameter_list|(
@@ -1930,7 +1938,8 @@ name|DestinationAlreadyExistsException
 name|e
 parameter_list|)
 block|{
-comment|// if the destination already exists then lets ignore this error
+comment|// if the destination already exists then lets ignore
+comment|// this error
 block|}
 comment|// We should now have the dest created.
 name|dest

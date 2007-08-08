@@ -136,7 +136,7 @@ specifier|static
 specifier|private
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -514,7 +514,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -675,7 +675,7 @@ operator|<=
 literal|0
 return|;
 block|}
-comment|/**      * Informs the Broker if the subscription needs to intervention to recover it's state e.g. DurableTopicSubscriber      * may do      *       * @see org.apache.activemq.region.cursors.PendingMessageCursor      * @return true if recovery required      */
+comment|/**      * Informs the Broker if the subscription needs to intervention to recover      * it's state e.g. DurableTopicSubscriber may do      *       * @see org.apache.activemq.region.cursors.PendingMessageCursor      * @return true if recovery required      */
 specifier|public
 specifier|synchronized
 name|boolean
@@ -866,7 +866,7 @@ name|nonPersistent
 else|:
 name|persistent
 expr_stmt|;
-comment|//sanity check
+comment|// sanity check
 if|if
 condition|(
 name|currentCursor

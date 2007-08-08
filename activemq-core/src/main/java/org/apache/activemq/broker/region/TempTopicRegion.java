@@ -176,7 +176,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version $Revision: 1.7 $  */
+comment|/**  * @version $Revision: 1.7 $  */
 end_comment
 
 begin_class
@@ -233,7 +233,8 @@ argument_list|,
 name|destinationFactory
 argument_list|)
 expr_stmt|;
-comment|// We should allow the following to be configurable via a Destination Policy
+comment|// We should allow the following to be configurable via a Destination
+comment|// Policy
 comment|// setAutoCreateDestinations(false);
 block|}
 specifier|protected
@@ -430,7 +431,7 @@ throws|throws
 name|Exception
 block|{
 comment|// Force a timeout value so that we don't get an error that
-comment|// there is still an active sub.  Temp destination may be removed
+comment|// there is still an active sub. Temp destination may be removed
 comment|// while a network sub is still active which is valid.
 if|if
 condition|(

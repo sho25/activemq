@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -194,7 +194,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A test case of the various MBeans in ActiveMQ.  * If you want to look at the various MBeans after the test has been run then  * run this test case as a command line application.  *   * @version $Revision$  */
+comment|/**  * A test case of the various MBeans in ActiveMQ. If you want to look at the  * various MBeans after the test has been run then run this test case as a  * command line application.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -247,7 +247,7 @@ name|messageCount
 init|=
 literal|10
 decl_stmt|;
-comment|/**      * When you run this test case from the command line it will pause before terminating      * so that you can look at the MBeans state for debugging purposes.      */
+comment|/**      * When you run this test case from the command line it will pause before      * terminating so that you can look at the MBeans state for debugging      * purposes.      */
 specifier|public
 specifier|static
 name|void
@@ -579,7 +579,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1090,7 +1090,7 @@ argument_list|,
 name|name1
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1162,7 +1162,7 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-comment|//create 2 topics
+comment|// create 2 topics
 name|broker
 operator|.
 name|addTopic
@@ -1290,7 +1290,7 @@ name|selector
 init|=
 literal|null
 decl_stmt|;
-comment|//create 1 subscriber for each topic
+comment|// create 1 subscriber for each topic
 name|broker
 operator|.
 name|createDurableSubscriber
@@ -1345,7 +1345,7 @@ name|getConsumerCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//create 1 more subscriber for topic1
+comment|// create 1 more subscriber for topic1
 name|broker
 operator|.
 name|createDurableSubscriber
@@ -1385,7 +1385,7 @@ name|getConsumerCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//destroy topic1 subscriber
+comment|// destroy topic1 subscriber
 name|broker
 operator|.
 name|destroyDurableSubscriber
@@ -1453,7 +1453,7 @@ name|getConsumerCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//destroy remaining topic1 subscriber
+comment|// destroy remaining topic1 subscriber
 name|broker
 operator|.
 name|destroyDurableSubscriber
@@ -1810,7 +1810,7 @@ name|String
 name|text
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

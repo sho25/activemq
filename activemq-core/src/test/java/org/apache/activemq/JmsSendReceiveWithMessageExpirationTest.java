@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -136,7 +136,7 @@ operator|.
 name|logging
 operator|.
 name|Log
-name|log
+name|LOG
 init|=
 name|org
 operator|.
@@ -181,8 +181,6 @@ decl_stmt|;
 specifier|protected
 name|boolean
 name|durable
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|int
@@ -201,8 +199,6 @@ decl_stmt|;
 specifier|protected
 name|boolean
 name|verbose
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|Connection
@@ -300,7 +296,7 @@ name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test consuming an expired queue.      *      * @throws Exception      */
+comment|/**      * Test consuming an expired queue.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testConsumeExpiredQueue
@@ -405,13 +401,13 @@ condition|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -462,7 +458,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends and consumes the messages to a queue destination.      *      * @throws Exception      */
+comment|/**      * Sends and consumes the messages to a queue destination.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testConsumeQueue
@@ -567,13 +563,13 @@ condition|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -613,7 +609,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test consuming an expired topic.      *      * @throws Exception      */
+comment|/**      * Test consuming an expired topic.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testConsumeExpiredTopic
@@ -718,13 +714,13 @@ condition|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -775,7 +771,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends and consumes the messages to a topic destination.      *      * @throws Exception      */
+comment|/**      * Sends and consumes the messages to a topic destination.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testConsumeTopic
@@ -880,13 +876,13 @@ condition|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -976,7 +972,7 @@ condition|(
 name|durable
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1014,14 +1010,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
 literal|"Dumping stats..."
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -304,7 +304,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A TransactionContext provides the means to control a JMS transaction. It  * provides a local transaction interface and also an XAResource interface.  *   *<p/> An application server controls the transactional assignment of an  * XASession by obtaining its XAResource. It uses the XAResource to assign the  * session to a transaction, prepare and commit work on the transaction, and so  * on.<p/> An XAResource provides some fairly sophisticated facilities for  * interleaving work on multiple transactions, recovering a list of transactions  * in progress, and so on. A JTA aware JMS provider must fully implement this  * functionality. This could be done by using the services of a database that  * supports XA, or a JMS provider may choose to implement this functionality  * from scratch.<p/>  *   * @version $Revision: 1.10 $  * @see javax.jms.Session  * @see javax.jms.QueueSession  * @see javax.jms.TopicSession  * @see javax.jms.XASession  */
+comment|/**  * A TransactionContext provides the means to control a JMS transaction. It  * provides a local transaction interface and also an XAResource interface.<p/>  * An application server controls the transactional assignment of an XASession  * by obtaining its XAResource. It uses the XAResource to assign the session to  * a transaction, prepare and commit work on the transaction, and so on.<p/> An  * XAResource provides some fairly sophisticated facilities for interleaving  * work on multiple transactions, recovering a list of transactions in progress,  * and so on. A JTA aware JMS provider must fully implement this functionality.  * This could be done by using the services of a database that supports XA, or a  * JMS provider may choose to implement this functionality from scratch.<p/>  *   * @version $Revision: 1.10 $  * @see javax.jms.Session  * @see javax.jms.QueueSession  * @see javax.jms.TopicSession  * @see javax.jms.XASession  */
 end_comment
 
 begin_class
@@ -449,7 +449,7 @@ return|return
 name|localTransactionEventListener
 return|;
 block|}
-comment|/**      * Used by the resource adapter to listen to transaction events.      *       * @param localTransactionEventListener      *            The localTransactionEventListener to set.      */
+comment|/**      * Used by the resource adapter to listen to transaction events.      *       * @param localTransactionEventListener The localTransactionEventListener to      *                set.      */
 specifier|public
 name|void
 name|setLocalTransactionEventListener
@@ -855,7 +855,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Rolls back any work done in this transaction and releases any locks      * currently held.      *       * @throws JMSException      *             if the JMS provider fails to roll back the transaction due to      *             some internal error.      * @throws javax.jms.IllegalStateException      *             if the method is not called by a transacted session.      */
+comment|/**      * Rolls back any work done in this transaction and releases any locks      * currently held.      *       * @throws JMSException if the JMS provider fails to roll back the      *                 transaction due to some internal error.      * @throws javax.jms.IllegalStateException if the method is not called by a      *                 transacted session.      */
 specifier|public
 name|void
 name|rollback
@@ -932,7 +932,7 @@ name|afterRollback
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Commits all work done in this transaction and releases any locks      * currently held.      *       * @throws JMSException      *             if the JMS provider fails to commit the transaction due to      *             some internal error.      * @throws TransactionRolledBackException      *             if the transaction is rolled back due to some internal error      *             during commit.      * @throws javax.jms.IllegalStateException      *             if the method is not called by a transacted session.      */
+comment|/**      * Commits all work done in this transaction and releases any locks      * currently held.      *       * @throws JMSException if the JMS provider fails to commit the transaction      *                 due to some internal error.      * @throws TransactionRolledBackException if the transaction is rolled back      *                 due to some internal error during commit.      * @throws javax.jms.IllegalStateException if the method is not called by a      *                 transacted session.      */
 specifier|public
 name|void
 name|commit
@@ -1080,12 +1080,12 @@ name|XAER_PROTO
 argument_list|)
 throw|;
 block|}
-comment|//        if ((flags& TMJOIN) == TMJOIN) {
-comment|//            // TODO: verify that the server has seen the xid
-comment|//        }
-comment|//        if ((flags& TMJOIN) == TMRESUME) {
-comment|//            // TODO: verify that the xid was suspended.
-comment|//        }
+comment|// if ((flags& TMJOIN) == TMJOIN) {
+comment|// // TODO: verify that the server has seen the xid
+comment|// }
+comment|// if ((flags& TMJOIN) == TMRESUME) {
+comment|// // TODO: verify that the xid was suspended.
+comment|// }
 comment|// associate
 name|synchornizations
 operator|=

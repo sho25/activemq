@@ -58,8 +58,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|dirty
-init|=
-literal|false
 decl_stmt|;
 name|HashPageInfo
 parameter_list|(

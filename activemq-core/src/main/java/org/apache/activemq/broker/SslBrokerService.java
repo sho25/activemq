@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -124,7 +124,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A BrokerService that allows access to the key and trust managers used by SSL connections.  *   * There is no reason to use this class unless SSL is being used AND the key and trust managers need to be specified  *      from within code. In fact, if the URI passed to this class does not have an "ssl" scheme, this class will  *      pass all work on to its superclass.  *   * @author sepandm@gmail.com (Sepand)  */
+comment|/**  * A BrokerService that allows access to the key and trust managers used by SSL  * connections. There is no reason to use this class unless SSL is being used  * AND the key and trust managers need to be specified from within code. In  * fact, if the URI passed to this class does not have an "ssl" scheme, this  * class will pass all work on to its superclass.  *   * @author sepandm@gmail.com (Sepand)  */
 end_comment
 
 begin_class
@@ -134,7 +134,7 @@ name|SslBrokerService
 extends|extends
 name|BrokerService
 block|{
-comment|/**      * Adds a new transport connector for the given bind address.      *      * If the transport created uses SSL, it will also use the key and trust      *      managers provided. Otherwise, this is the same as calling      *      addConnector.      *      * @param bindAddress The address to bind to.      * @param km The KeyManager to be used.      * @param tm The trustmanager to be used.      * @param random The source of randomness for the generator.      * @return the newly connected and added transport connector.      * @throws Exception      */
+comment|/**      * Adds a new transport connector for the given bind address. If the      * transport created uses SSL, it will also use the key and trust managers      * provided. Otherwise, this is the same as calling addConnector.      *       * @param bindAddress The address to bind to.      * @param km The KeyManager to be used.      * @param tm The trustmanager to be used.      * @param random The source of randomness for the generator.      * @return the newly connected and added transport connector.      * @throws Exception      */
 specifier|public
 name|TransportConnector
 name|addSslConnector
@@ -173,7 +173,7 @@ name|random
 argument_list|)
 return|;
 block|}
-comment|/**      * Adds a new transport connector for the given bind address.      *       * If the transport created uses SSL, it will also use the key and trust      *      managers provided. Otherwise, this is the same as calling      *      addConnector.      *            * @param bindAddress The URI to bind to.      * @param km The KeyManager to be used.      * @param tm The trustmanager to be used.      * @param random The source of randomness for the generator.      * @return the newly created and added transport connector.      * @throws Exception      */
+comment|/**      * Adds a new transport connector for the given bind address. If the      * transport created uses SSL, it will also use the key and trust managers      * provided. Otherwise, this is the same as calling addConnector.      *       * @param bindAddress The URI to bind to.      * @param km The KeyManager to be used.      * @param tm The trustmanager to be used.      * @param random The source of randomness for the generator.      * @return the newly created and added transport connector.      * @throws Exception      */
 specifier|public
 name|TransportConnector
 name|addSslConnector
@@ -211,7 +211,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a TransportServer that uses the given key and trust managers.      *       * The last three parameters will be eventually passed to SSLContext.init.      *       * @param brokerURI The URI to bind to.      * @param km The KeyManager to be used.      * @param tm The trustmanager to be used.      * @param random The source of randomness for the generator.      * @return A new TransportServer that uses the given managers.      * @throws IOException If cannot handle URI.      * @throws KeyManagementException Passed on from SSL.      */
+comment|/**      * Creates a TransportServer that uses the given key and trust managers. The      * last three parameters will be eventually passed to SSLContext.init.      *       * @param brokerURI The URI to bind to.      * @param km The KeyManager to be used.      * @param tm The trustmanager to be used.      * @param random The source of randomness for the generator.      * @return A new TransportServer that uses the given managers.      * @throws IOException If cannot handle URI.      * @throws KeyManagementException Passed on from SSL.      */
 specifier|protected
 name|TransportServer
 name|createSslTransportServer
@@ -249,7 +249,7 @@ argument_list|)
 condition|)
 block|{
 comment|// If given an SSL URI, use an SSL TransportFactory and configure
-comment|//      it to use the given key and trust managers.
+comment|// it to use the given key and trust managers.
 name|SslTransportFactory
 name|transportFactory
 init|=

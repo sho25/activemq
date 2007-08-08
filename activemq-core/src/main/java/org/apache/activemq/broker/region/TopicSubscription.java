@@ -350,7 +350,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -416,8 +416,6 @@ decl_stmt|;
 specifier|private
 name|int
 name|discarded
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 specifier|final
@@ -593,8 +591,10 @@ block|{
 name|optimizePrefetch
 argument_list|()
 expr_stmt|;
-comment|// if maximumPendingMessages is set we will only discard messages which
-comment|// have not been dispatched (i.e. we allow the prefetch buffer to be filled)
+comment|// if maximumPendingMessages is set we will only discard messages
+comment|// which
+comment|// have not been dispatched (i.e. we allow the prefetch buffer to be
+comment|// filled)
 name|dispatch
 argument_list|(
 name|node
@@ -630,7 +630,8 @@ operator|>
 literal|0
 condition|)
 block|{
-comment|// calculate the high water mark from which point we will eagerly evict expired messages
+comment|// calculate the high water mark from which point we
+comment|// will eagerly evict expired messages
 name|int
 name|max
 init|=
@@ -702,7 +703,8 @@ argument_list|()
 operator|-
 name|maximumPendingMessages
 decl_stmt|;
-comment|// only page in a 1000 at a time - else we could blow da memory
+comment|// only page in a 1000 at a time - else we could
+comment|// blow da memory
 name|pageInSize
 operator|=
 name|Math
@@ -771,7 +773,8 @@ name|oldMessage
 argument_list|)
 expr_stmt|;
 block|}
-comment|// lets avoid an infinite loop if we are given a bad eviction strategy
+comment|// lets avoid an infinite loop if we are given a bad
+comment|// eviction strategy
 comment|// for a bad strategy lets just not evict
 if|if
 condition|(
@@ -780,7 +783,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -797,7 +800,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Discard any expired messages from the matched list. Called from a synchronized block.      *       * @throws IOException      */
+comment|/**      * Discard any expired messages from the matched list. Called from a      * synchronized block.      *       * @throws IOException      */
 specifier|protected
 name|void
 name|removeExpiredMessages
@@ -1161,7 +1164,8 @@ name|isDeliveredAck
 argument_list|()
 condition|)
 block|{
-comment|// Message was delivered but not acknowledged: update pre-fetch counters.
+comment|// Message was delivered but not acknowledged: update pre-fetch
+comment|// counters.
 name|prefetchExtension
 operator|.
 name|addAndGet
@@ -1308,7 +1312,7 @@ name|discarded
 return|;
 block|}
 block|}
-comment|/**      * @return the number of matched messages (messages targeted for the subscription but not yet able to be dispatched      *         due to the prefetch buffer being full).      */
+comment|/**      * @return the number of matched messages (messages targeted for the      *         subscription but not yet able to be dispatched due to the      *         prefetch buffer being full).      */
 specifier|public
 name|int
 name|matched
@@ -1327,7 +1331,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Sets the maximum number of pending messages that can be matched against this consumer before old messages are      * discarded.      */
+comment|/**      * Sets the maximum number of pending messages that can be matched against      * this consumer before old messages are discarded.      */
 specifier|public
 name|void
 name|setMaximumPendingMessages
@@ -1352,7 +1356,7 @@ return|return
 name|messageEvictionStrategy
 return|;
 block|}
-comment|/**      * Sets the eviction strategy used to decide which message to evict when the slow consumer needs to discard messages      */
+comment|/**      * Sets the eviction strategy used to decide which message to evict when the      * slow consumer needs to discard messages      */
 specifier|public
 name|void
 name|setMessageEvictionStrategy
@@ -1579,13 +1583,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * optimize message consumer prefetch if the consumer supports it      *       */
+comment|/**      * optimize message consumer prefetch if the consumer supports it      */
 specifier|public
 name|void
 name|optimizePrefetch
 parameter_list|()
 block|{
-comment|/*          * if(info!=null&&info.isOptimizedAcknowledge()&&context!=null&&context.getConnection()!=null          *&&context.getConnection().isManageable()){ if(info.getCurrentPrefetchSize()!=info.getPrefetchSize()&&          * isLowWaterMark()){ info.setCurrentPrefetchSize(info.getPrefetchSize());          * updateConsumerPrefetch(info.getPrefetchSize()); }else          * if(info.getCurrentPrefetchSize()==info.getPrefetchSize()&& isHighWaterMark()){ // want to purge any          * outstanding acks held by the consumer info.setCurrentPrefetchSize(1); updateConsumerPrefetch(1); } }          */
+comment|/*          * if(info!=null&&info.isOptimizedAcknowledge()&&context!=null&&context.getConnection()!=null          *&&context.getConnection().isManageable()){          * if(info.getCurrentPrefetchSize()!=info.getPrefetchSize()&&          * isLowWaterMark()){          * info.setCurrentPrefetchSize(info.getPrefetchSize());          * updateConsumerPrefetch(info.getPrefetchSize()); }else          * if(info.getCurrentPrefetchSize()==info.getPrefetchSize()&&          * isHighWaterMark()){ // want to purge any outstanding acks held by the          * consumer info.setCurrentPrefetchSize(1); updateConsumerPrefetch(1); } }          */
 block|}
 specifier|private
 name|void
@@ -1748,7 +1752,8 @@ operator|.
 name|incrementAndGet
 argument_list|()
 expr_stmt|;
-comment|// Keep track if this subscription is receiving messages from a single destination.
+comment|// Keep track if this subscription is receiving messages from a single
+comment|// destination.
 if|if
 condition|(
 name|singleDestination
@@ -1906,13 +1911,13 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2003,7 +2008,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(

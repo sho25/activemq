@@ -164,11 +164,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|NUMBER_OF_CONSUMERS
+name|numberOfConsumers
 operator|=
 literal|0
 expr_stmt|;
-name|PAYLOAD_SIZE
+name|playloadSize
 operator|=
 literal|10
 operator|*

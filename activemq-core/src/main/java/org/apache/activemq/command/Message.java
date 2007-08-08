@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -290,8 +290,6 @@ decl_stmt|;
 specifier|protected
 name|boolean
 name|compressed
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|String
@@ -324,21 +322,15 @@ decl_stmt|;
 specifier|protected
 name|boolean
 name|readOnlyProperties
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|boolean
 name|readOnlyBody
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 specifier|transient
 name|boolean
 name|recievedByDFBridge
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 specifier|transient
@@ -373,8 +365,6 @@ decl_stmt|;
 specifier|protected
 name|boolean
 name|droppable
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|BrokerId
@@ -614,12 +604,13 @@ name|brokerOutTime
 operator|=
 name|brokerOutTime
 expr_stmt|;
-comment|//copying the broker path breaks networks - if a consumer re-uses a consumed
-comment|//message and forwards it on
-comment|//copy.brokerPath = brokerPath;
+comment|// copying the broker path breaks networks - if a consumer re-uses a
+comment|// consumed
+comment|// message and forwards it on
+comment|// copy.brokerPath = brokerPath;
 comment|// lets not copy the following fields
-comment|//copy.targetConsumerId = targetConsumerId;
-comment|//copy.referenceCount = referenceCount;
+comment|// copy.targetConsumerId = targetConsumerId;
+comment|// copy.referenceCount = referenceCount;
 block|}
 specifier|public
 name|Object
@@ -908,11 +899,11 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{     }
-comment|///////////////////////////////////////////////////////////////////
+comment|// /////////////////////////////////////////////////////////////////
 comment|//
 comment|// Simple Field accessors
 comment|//
-comment|///////////////////////////////////////////////////////////////////
+comment|// /////////////////////////////////////////////////////////////////
 comment|/**      * @openwire:property version=1 cache=true      */
 specifier|public
 name|ProducerId
@@ -1374,7 +1365,7 @@ operator|=
 name|data
 expr_stmt|;
 block|}
-comment|/**      * Can be used to route the message to a specific consumer.  Should      * be null to allow the broker use normal JMS routing semantics.  If       * the target consumer id is an active consumer on the broker, the message       * is dropped.  Used by the AdvisoryBroker to replay advisory messages      * to a specific consumer.       *       * @openwire:property version=1 cache=true      */
+comment|/**      * Can be used to route the message to a specific consumer. Should be null      * to allow the broker use normal JMS routing semantics. If the target      * consumer id is an active consumer on the broker, the message is dropped.      * Used by the AdvisoryBroker to replay advisory messages to a specific      * consumer.      *       * @openwire:property version=1 cache=true      */
 specifier|public
 name|ConsumerId
 name|getTargetConsumerId
@@ -1565,7 +1556,7 @@ operator|=
 name|deliveryCounter
 expr_stmt|;
 block|}
-comment|/**      * The route of brokers the command has moved through.       *       * @openwire:property version=1 cache=true      */
+comment|/**      * The route of brokers the command has moved through.      *       * @openwire:property version=1 cache=true      */
 specifier|public
 name|BrokerId
 index|[]
@@ -1666,7 +1657,7 @@ operator|=
 name|connection
 expr_stmt|;
 block|}
-comment|/**      * Used to schedule the arrival time of a message to a broker.  The broker will       * not dispatch a message to a consumer until it's arrival time has elapsed.       *        * @openwire:property version=1      */
+comment|/**      * Used to schedule the arrival time of a message to a broker. The broker      * will not dispatch a message to a consumer until it's arrival time has      * elapsed.      *       * @openwire:property version=1      */
 specifier|public
 name|long
 name|getArrival
@@ -1691,7 +1682,7 @@ operator|=
 name|arrival
 expr_stmt|;
 block|}
-comment|/**      * Only set by the broker and defines the userID of the producer connection who      * sent this message. This is an optional field, it needs to be enabled on the      * broker to have this field populated.      *        * @openwire:property version=1      */
+comment|/**      * Only set by the broker and defines the userID of the producer connection      * who sent this message. This is an optional field, it needs to be enabled      * on the broker to have this field populated.      *       * @openwire:property version=1      */
 specifier|public
 name|String
 name|getUserID
@@ -1845,7 +1836,8 @@ argument_list|(
 name|size
 argument_list|)
 expr_stmt|;
-comment|//        System.out.println(" + "+getDestination()+" :::: "+getMessageId()+" "+rc);
+comment|// System.out.println(" + "+getDestination()+" :::: "+getMessageId()+"
+comment|// "+rc);
 return|return
 name|rc
 return|;
@@ -1898,7 +1890,8 @@ argument_list|(
 name|size
 argument_list|)
 expr_stmt|;
-comment|//        System.out.println(" - "+getDestination()+" :::: "+getMessageId()+" "+rc);
+comment|// System.out.println(" - "+getDestination()+" :::: "+getMessageId()+"
+comment|// "+rc);
 return|return
 name|rc
 return|;
@@ -2010,7 +2003,7 @@ operator|=
 name|droppable
 expr_stmt|;
 block|}
-comment|/**      * If a message is stored in multiple nodes on a cluster,      * all the cluster members will be listed here.        * Otherwise, it will be null.      *       * @openwire:property version=3 cache=true      */
+comment|/**      * If a message is stored in multiple nodes on a cluster, all the cluster      * members will be listed here. Otherwise, it will be null.      *       * @openwire:property version=3 cache=true      */
 specifier|public
 name|BrokerId
 index|[]

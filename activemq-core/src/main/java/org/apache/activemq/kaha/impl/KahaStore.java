@@ -607,8 +607,6 @@ comment|// contains all the root indexes
 specifier|private
 name|boolean
 name|closed
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
@@ -617,14 +615,10 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|logIndexChanges
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
 name|useAsyncDataManager
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|long
@@ -643,8 +637,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|persistentIndex
-init|=
-literal|true
 decl_stmt|;
 specifier|private
 name|RandomAccessFile
@@ -2456,7 +2448,7 @@ return|return
 name|maxDataFileLength
 return|;
 block|}
-comment|/**      * @param maxDataFileLength      *            the maxDataFileLength to set      */
+comment|/**      * @param maxDataFileLength the maxDataFileLength to set      */
 specifier|public
 specifier|synchronized
 name|void
@@ -2854,7 +2846,7 @@ block|}
 block|}
 else|else
 block|{
-comment|//already locked
+comment|// already locked
 throw|throw
 operator|new
 name|StoreLockedExcpetion
@@ -2936,7 +2928,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|//Is replaceAll() needed?  Should test without it.
+comment|// Is replaceAll() needed? Should test without it.
 return|return
 name|getClass
 argument_list|()
@@ -2971,7 +2963,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * scans the directory and builds up the IndexManager and DataManager      * @throws IOException       */
+comment|/**      * scans the directory and builds up the IndexManager and DataManager      *       * @throws IOException      */
 specifier|private
 name|void
 name|generateInterestInListDataFiles

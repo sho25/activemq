@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/** * * Copyright 2005-2006 The Apache Software Foundation * *  Licensed under the Apache License, Version 2.0 (the "License"); *  you may not use this file except in compliance with the License. *  You may obtain a copy of the License at * *     http://www.apache.org/licenses/LICENSE-2.0 * *  Unless required by applicable law or agreed to in writing, software *  distributed under the License is distributed on an "AS IS" BASIS, *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *  See the License for the specific language governing permissions and *  limitations under the License. */
+comment|/**  *  * Copyright 2005-2006 The Apache Software Foundation  *  *  Licensed under the Apache License, Version 2.0 (the "License");  *  you may not use this file except in compliance with the License.  *  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  *  Unless required by applicable law or agreed to in writing, software  *  distributed under the License is distributed on an "AS IS" BASIS,  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  *  See the License for the specific language governing permissions and  *  limitations under the License.  */
 end_comment
 
 begin_package
@@ -100,18 +100,6 @@ operator|.
 name|framework
 operator|.
 name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQConnectionFactory
 import|;
 end_import
 
@@ -373,8 +361,8 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
-comment|//TODO need two send a 2nd message - bug AMQ-1024
-comment|//producer.send(msg);
+comment|// TODO need two send a 2nd message - bug AMQ-1024
+comment|// producer.send(msg);
 name|Thread
 operator|.
 name|sleep
@@ -382,7 +370,7 @@ argument_list|(
 literal|100
 argument_list|)
 expr_stmt|;
-comment|//Verify exclusive consumer receives the message.
+comment|// Verify exclusive consumer receives the message.
 name|Assert
 operator|.
 name|assertNotNull
@@ -581,7 +569,7 @@ argument_list|(
 literal|100
 argument_list|)
 expr_stmt|;
-comment|//Verify exclusive consumer receives the message.
+comment|// Verify exclusive consumer receives the message.
 name|Assert
 operator|.
 name|assertNotNull
@@ -717,7 +705,8 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
-comment|// This creates the exclusive consumer first which avoids AMQ-1024 bug.
+comment|// This creates the exclusive consumer first which avoids AMQ-1024
+comment|// bug.
 name|ActiveMQQueue
 name|exclusiveQueue
 init|=
@@ -809,7 +798,7 @@ argument_list|(
 literal|100
 argument_list|)
 expr_stmt|;
-comment|//Verify exclusive consumer receives the message.
+comment|// Verify exclusive consumer receives the message.
 name|Assert
 operator|.
 name|assertNotNull
@@ -846,7 +835,8 @@ literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Close the exclusive consumer to verify the non-exclusive consumer takes over
+comment|// Close the exclusive consumer to verify the non-exclusive consumer
+comment|// takes over
 name|exclusiveConsumer1
 operator|.
 name|close
@@ -1001,7 +991,8 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
-comment|// This creates the exclusive consumer first which avoids AMQ-1024 bug.
+comment|// This creates the exclusive consumer first which avoids AMQ-1024
+comment|// bug.
 name|ActiveMQQueue
 name|exclusiveQueue
 init|=
@@ -1093,7 +1084,7 @@ argument_list|(
 literal|100
 argument_list|)
 expr_stmt|;
-comment|//Verify exclusive consumer receives the message.
+comment|// Verify exclusive consumer receives the message.
 name|Assert
 operator|.
 name|assertNotNull
@@ -1130,7 +1121,8 @@ literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Close the exclusive consumer to verify the non-exclusive consumer takes over
+comment|// Close the exclusive consumer to verify the non-exclusive consumer
+comment|// takes over
 name|exclusiveConsumer1
 operator|.
 name|close
@@ -1267,7 +1259,8 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
-comment|// This creates the exclusive consumer first which avoids AMQ-1024 bug.
+comment|// This creates the exclusive consumer first which avoids AMQ-1024
+comment|// bug.
 name|ActiveMQQueue
 name|exclusiveQueue
 init|=
@@ -1349,7 +1342,7 @@ argument_list|(
 literal|100
 argument_list|)
 expr_stmt|;
-comment|//Verify exclusive consumer receives the message.
+comment|// Verify exclusive consumer receives the message.
 name|Assert
 operator|.
 name|assertNotNull
@@ -1374,7 +1367,8 @@ literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Close the exclusive consumer to verify the non-exclusive consumer takes over
+comment|// Close the exclusive consumer to verify the non-exclusive consumer
+comment|// takes over
 name|exclusiveConsumer
 operator|.
 name|close
@@ -1492,7 +1486,8 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
-comment|// This creates the exclusive consumer first which avoids AMQ-1024 bug.
+comment|// This creates the exclusive consumer first which avoids AMQ-1024
+comment|// bug.
 name|ActiveMQQueue
 name|exclusiveQueue
 init|=
@@ -1574,7 +1569,7 @@ argument_list|(
 literal|100
 argument_list|)
 expr_stmt|;
-comment|//Verify exclusive consumer receives the message.
+comment|// Verify exclusive consumer receives the message.
 name|Assert
 operator|.
 name|assertNotNull
@@ -1599,7 +1594,8 @@ literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Close the exclusive consumer to verify the non-exclusive consumer takes over
+comment|// Close the exclusive consumer to verify the non-exclusive consumer
+comment|// takes over
 name|exclusiveConsumer
 operator|.
 name|close
@@ -1625,7 +1621,8 @@ literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Create exclusive consumer to determine if it will start receiving the messages.
+comment|// Create exclusive consumer to determine if it will start receiving
+comment|// the messages.
 name|exclusiveConsumer
 operator|=
 name|exclusiveSession

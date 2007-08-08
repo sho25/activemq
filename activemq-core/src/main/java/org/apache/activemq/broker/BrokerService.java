@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -946,7 +946,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Manages the lifecycle of an ActiveMQ Broker. A BrokerService consists of a number of transport  * connectors, network connectors and a bunch of properties which can be used to  * configure the broker as its lazily created.  *  * @version $Revision: 1.1 $  */
+comment|/**  * Manages the lifecycle of an ActiveMQ Broker. A BrokerService consists of a  * number of transport connectors, network connectors and a bunch of properties  * which can be used to configure the broker as its lazily created.  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
@@ -960,7 +960,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -1021,8 +1021,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|populateJMSXUserID
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
@@ -1033,14 +1031,10 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|useLoggingForShutdownErrors
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
 name|shutdownOnMasterFailure
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|String
@@ -1181,7 +1175,9 @@ name|JmsConnector
 index|[]
 name|jmsBridgeConnectors
 decl_stmt|;
-comment|//these are Jms to Jms bridges to other jms messaging systems
+comment|// these are Jms to Jms bridges
+comment|// to other jms messaging
+comment|// systems
 specifier|private
 name|boolean
 name|deleteAllMessagesOnStartup
@@ -1266,8 +1262,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|useLocalHostBrokerName
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|CountDownLatch
@@ -1282,14 +1276,10 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|supportFailOver
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
 name|clustered
-init|=
-literal|false
 decl_stmt|;
 static|static
 block|{
@@ -1321,7 +1311,7 @@ name|UnknownHostException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1350,7 +1340,7 @@ operator|+
 literal|"]"
 return|;
 block|}
-comment|/**      * Adds a new transport connector for the given bind address      *      * @return the newly created and added transport connector      * @throws Exception      */
+comment|/**      * Adds a new transport connector for the given bind address      *       * @return the newly created and added transport connector      * @throws Exception      */
 specifier|public
 name|TransportConnector
 name|addConnector
@@ -1372,7 +1362,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Adds a new transport connector for the given bind address      *      * @return the newly created and added transport connector      * @throws Exception      */
+comment|/**      * Adds a new transport connector for the given bind address      *       * @return the newly created and added transport connector      * @throws Exception      */
 specifier|public
 name|TransportConnector
 name|addConnector
@@ -1396,7 +1386,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Adds a new transport connector for the given TransportServer transport      *      * @return the newly created and added transport connector      * @throws Exception      */
+comment|/**      * Adds a new transport connector for the given TransportServer transport      *       * @return the newly created and added transport connector      * @throws Exception      */
 specifier|public
 name|TransportConnector
 name|addConnector
@@ -1421,7 +1411,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Adds a new transport connector      *      * @return the transport connector      * @throws Exception      */
+comment|/**      * Adds a new transport connector      *       * @return the transport connector      * @throws Exception      */
 specifier|public
 name|TransportConnector
 name|addConnector
@@ -1479,7 +1469,7 @@ return|return
 name|rc
 return|;
 block|}
-comment|/**      * Adds a new network connector using the given discovery address      *      * @return the newly created and added network connector      * @throws Exception      */
+comment|/**      * Adds a new network connector using the given discovery address      *       * @return the newly created and added network connector      * @throws Exception      */
 specifier|public
 name|NetworkConnector
 name|addNetworkConnector
@@ -1501,7 +1491,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Adds a new proxy connector using the given bind address      *      * @return the newly created and added network connector      * @throws Exception      */
+comment|/**      * Adds a new proxy connector using the given bind address      *       * @return the newly created and added network connector      * @throws Exception      */
 specifier|public
 name|ProxyConnector
 name|addProxyConnector
@@ -1523,7 +1513,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Adds a new network connector using the given discovery address      *      * @return the newly created and added network connector      * @throws Exception      */
+comment|/**      * Adds a new network connector using the given discovery address      *       * @return the newly created and added network connector      * @throws Exception      */
 specifier|public
 name|NetworkConnector
 name|addNetworkConnector
@@ -1550,7 +1540,7 @@ name|connector
 argument_list|)
 return|;
 block|}
-comment|/**      * Adds a new proxy connector using the given bind address      *      * @return the newly created and added network connector      * @throws Exception      */
+comment|/**      * Adds a new proxy connector using the given bind address      *       * @return the newly created and added network connector      * @throws Exception      */
 specifier|public
 name|ProxyConnector
 name|addProxyConnector
@@ -1672,7 +1662,8 @@ argument_list|(
 name|uri
 argument_list|)
 expr_stmt|;
-comment|// Set a connection filter so that the connector does not establish loop back connections.
+comment|// Set a connection filter so that the connector does not establish loop
+comment|// back connections.
 name|connector
 operator|.
 name|setConnectionFilter
@@ -1780,7 +1771,7 @@ return|return
 name|connector
 return|;
 block|}
-comment|/**      * Removes the given network connector without stopping it.      * The caller should call {@link NetworkConnector#stop()} to close the connector      */
+comment|/**      * Removes the given network connector without stopping it. The caller      * should call {@link NetworkConnector#stop()} to close the connector      */
 specifier|public
 name|boolean
 name|removeNetworkConnector
@@ -1980,7 +1971,7 @@ condition|(
 name|shutdownOnMasterFailure
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|fatal
 argument_list|(
@@ -1999,7 +1990,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -2012,7 +2003,7 @@ block|}
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -2031,7 +2022,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -2077,8 +2068,9 @@ condition|)
 block|{
 comment|// lets just ignore redundant start() calls
 comment|// as its way too easy to not be completely sure if start() has been
-comment|// called or not with the gazillion of different configuration mechanisms
-comment|//throw new IllegalStateException("Allready started.");
+comment|// called or not with the gazillion of different configuration
+comment|// mechanisms
+comment|// throw new IllegalStateException("Allready started.");
 return|return;
 block|}
 try|try
@@ -2105,7 +2097,7 @@ expr_stmt|;
 name|addShutdownHook
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2143,7 +2135,7 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-comment|/*             if(isUseJmx()){                 // yes - this is order dependent!                 // register all destination in persistence store including inactive destinations as mbeans                 this.startDestinationsInPersistenceStore(broker);             }             */
+comment|/*              * if(isUseJmx()){ // yes - this is order dependent! // register all              * destination in persistence store including inactive destinations              * as mbeans this.startDestinationsInPersistenceStore(broker); }              */
 name|startAllConnectors
 argument_list|()
 expr_stmt|;
@@ -2170,7 +2162,7 @@ operator|.
 name|getBrokerId
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2199,7 +2191,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -2237,7 +2229,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2465,7 +2457,7 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2487,7 +2479,7 @@ name|throwFirstException
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * A helper method to block the caller thread until the broker has been stopped      */
+comment|/**      * A helper method to block the caller thread until the broker has been      * stopped      */
 specifier|public
 name|void
 name|waitUntilStopped
@@ -2537,7 +2529,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2555,7 +2547,7 @@ operator|+
 literal|") is starting"
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2572,7 +2564,7 @@ return|return
 name|broker
 return|;
 block|}
-comment|/**      * Returns the administration view of the broker; used to create and destroy resources such as queues and topics.      *       * Note this method returns null if JMX is disabled.      */
+comment|/**      * Returns the administration view of the broker; used to create and destroy      * resources such as queues and topics. Note this method returns null if JMX      * is disabled.      */
 specifier|public
 name|BrokerView
 name|getAdminView
@@ -2620,7 +2612,7 @@ return|return
 name|brokerName
 return|;
 block|}
-comment|/**      * Sets the name of this broker; which must be unique in the network      * @param brokerName       */
+comment|/**      * Sets the name of this broker; which must be unique in the network      *       * @param brokerName      */
 specifier|public
 name|void
 name|setBrokerName
@@ -2667,7 +2659,7 @@ name|brokerName
 argument_list|)
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -2763,7 +2755,7 @@ name|brokerDir
 argument_list|)
 return|;
 block|}
-comment|/**      * Sets the directory in which the data files will be stored by default for      * the JDBC and Journal persistence adaptors.      *      * @param dataDirectory      *            the directory to store data files      */
+comment|/**      * Sets the directory in which the data files will be stored by default for      * the JDBC and Journal persistence adaptors.      *       * @param dataDirectory the directory to store data files      */
 specifier|public
 name|void
 name|setDataDirectory
@@ -2782,7 +2774,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets the directory in which the data files will be stored by default for      * the JDBC and Journal persistence adaptors.      *      * @param dataDirectoryFile      *            the directory to store data files      */
+comment|/**      * Sets the directory in which the data files will be stored by default for      * the JDBC and Journal persistence adaptors.      *       * @param dataDirectoryFile the directory to store data files      */
 specifier|public
 name|void
 name|setDataDirectoryFile
@@ -3217,7 +3209,7 @@ return|return
 name|enableStatistics
 return|;
 block|}
-comment|/**      * Sets whether or not the Broker's services enable statistics or      * not.      */
+comment|/**      * Sets whether or not the Broker's services enable statistics or not.      */
 specifier|public
 name|void
 name|setEnableStatistics
@@ -3417,7 +3409,7 @@ return|return
 name|services
 return|;
 block|}
-comment|/**      * Sets the services associated with this broker such as a {@link MasterConnector}      */
+comment|/**      * Sets the services associated with this broker such as a      * {@link MasterConnector}      */
 specifier|public
 name|void
 name|setServices
@@ -3434,7 +3426,7 @@ operator|=
 name|services
 expr_stmt|;
 block|}
-comment|/**      * Adds a new service so that it will be started as part of the broker lifecycle      */
+comment|/**      * Adds a new service so that it will be started as part of the broker      * lifecycle      */
 specifier|public
 name|void
 name|addService
@@ -3568,7 +3560,7 @@ return|return
 name|advisorySupport
 return|;
 block|}
-comment|/**      * Allows the support of advisory messages to be disabled for performance reasons.      */
+comment|/**      * Allows the support of advisory messages to be disabled for performance      * reasons.      */
 specifier|public
 name|void
 name|setAdvisorySupport
@@ -3796,7 +3788,7 @@ return|return
 name|plugins
 return|;
 block|}
-comment|/**      * Sets a number of broker plugins to install such as for security authentication or authorization      */
+comment|/**      * Sets a number of broker plugins to install such as for security      * authentication or authorization      */
 specifier|public
 name|void
 name|setPlugins
@@ -3822,7 +3814,7 @@ return|return
 name|messageAuthorizationPolicy
 return|;
 block|}
-comment|/**      * Sets the policy used to decide if the current connection is authorized to consume      * a given message      */
+comment|/**      * Sets the policy used to decide if the current connection is authorized to      * consume a given message      */
 specifier|public
 name|void
 name|setMessageAuthorizationPolicy
@@ -3838,7 +3830,7 @@ operator|=
 name|messageAuthorizationPolicy
 expr_stmt|;
 block|}
-comment|/**      * Delete all messages from the persistent store      * @throws IOException      */
+comment|/**      * Delete all messages from the persistent store      *       * @throws IOException      */
 specifier|public
 name|void
 name|deleteAllMessages
@@ -3917,7 +3909,7 @@ name|URISyntaxException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -4009,7 +4001,7 @@ return|return
 name|useVirtualTopics
 return|;
 block|}
-comment|/**      * Sets whether or not      *<a href="http://activemq.apache.org/virtual-destinations.html">Virtual Topics</a>      * should be supported by default if they have not been explicitly configured.      */
+comment|/**      * Sets whether or not<a      * href="http://activemq.apache.org/virtual-destinations.html">Virtual      * Topics</a> should be supported by default if they have not been      * explicitly configured.      */
 specifier|public
 name|void
 name|setUseVirtualTopics
@@ -4210,7 +4202,7 @@ literal|"Successfully deleted"
 else|:
 literal|"Failed to delete"
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -4405,7 +4397,7 @@ expr_stmt|;
 block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
-comment|/**      * Handles any lazy-creation helper properties which are added to make      * things easier to configure inside environments such as Spring      *      * @throws Exception      */
+comment|/**      * Handles any lazy-creation helper properties which are added to make      * things easier to configure inside environments such as Spring      *       * @throws Exception      */
 specifier|protected
 name|void
 name|processHelperProperties
@@ -5171,7 +5163,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -5528,7 +5520,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * Factory method to create a new broker      *      * @throws Exception      *      * @throws      * @throws      */
+comment|/**      * Factory method to create a new broker      *       * @throws Exception      * @throws      * @throws      */
 specifier|protected
 name|Broker
 name|createBroker
@@ -5688,7 +5680,7 @@ return|return
 name|broker
 return|;
 block|}
-comment|/**      * Factory method to create the core region broker onto which interceptors      * are added      *      * @throws Exception      */
+comment|/**      * Factory method to create the core region broker onto which interceptors      * are added      *       * @throws Exception      */
 specifier|protected
 name|Broker
 name|createRegionBroker
@@ -5936,7 +5928,7 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * Strategy method to add interceptors to the broker      *      * @throws IOException      */
+comment|/**      * Strategy method to add interceptors to the broker      *       * @throws IOException      */
 specifier|protected
 name|Broker
 name|addInterceptors
@@ -6239,7 +6231,7 @@ name|port
 operator|=
 name|DEFAULT_PORT
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -6325,7 +6317,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -6446,7 +6438,7 @@ condition|(
 name|useLoggingForShutdownErrors
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -6471,7 +6463,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Starts any configured destinations on startup      *      */
+comment|/**      * Starts any configured destinations on startup      */
 specifier|protected
 name|void
 name|startDestinations
@@ -6530,7 +6522,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Returns the broker's administration connection context used for configuring the broker      * at startup      */
+comment|/**      * Returns the broker's administration connection context used for      * configuring the broker at startup      */
 specifier|public
 name|ConnectionContext
 name|getAdminConnectionContext
@@ -6572,7 +6564,7 @@ return|return
 name|adminConnectionContext
 return|;
 block|}
-comment|/**      * Factory method to create the new administration connection context object.      * Note this method is here rather than inside a default broker implementation to      * ensure that the broker reference inside it is the outer most interceptor      */
+comment|/**      * Factory method to create the new administration connection context      * object. Note this method is here rather than inside a default broker      * implementation to ensure that the broker reference inside it is the outer      * most interceptor      */
 specifier|protected
 name|ConnectionContext
 name|createAdminConnectionContext
@@ -6608,7 +6600,7 @@ return|return
 name|context
 return|;
 block|}
-comment|/**      * Start all transport and network connections, proxies and bridges      * @throws Exception      */
+comment|/**      * Start all transport and network connections, proxies and bridges      *       * @throws Exception      */
 specifier|protected
 name|void
 name|startAllConnectors
@@ -6680,7 +6672,8 @@ operator|>
 literal|0
 condition|)
 block|{
-comment|//let's clear the transportConnectors list and replace it with the started transportConnector instances
+comment|// let's clear the transportConnectors list and replace it with
+comment|// the started transportConnector instances
 name|this
 operator|.
 name|transportConnectors
@@ -7064,7 +7057,7 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Starts all destiantions in persistence store. This includes all inactive destinations      */
+comment|/**      * Starts all destiantions in persistence store. This includes all inactive      * destinations      */
 specifier|protected
 name|void
 name|startDestinationsInPersistenceStore

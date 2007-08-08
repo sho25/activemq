@@ -116,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test a TreeIndex  *   */
+comment|/**  * Test a TreeIndex  */
 end_comment
 
 begin_class
@@ -148,8 +148,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|dumpTree
-init|=
-literal|false
 decl_stmt|;
 comment|/**      * @throws java.lang.Exception      * @see junit.framework.TestCase#setUp()      */
 specifier|protected
@@ -233,7 +231,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|//doTest();
+comment|// doTest();
 block|}
 specifier|public
 name|void
@@ -251,7 +249,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|//doTest();
+comment|// doTest();
 block|}
 specifier|public
 name|void
@@ -263,15 +261,15 @@ block|{
 comment|// doTest(300);
 comment|// tree.clear();
 comment|// tree.unload();
+comment|// count = 55 - this fails
 name|doTest
 argument_list|(
 literal|600
 argument_list|)
 expr_stmt|;
-comment|// count = 55 - this fails
 comment|// tree.clear();
 comment|// tree.unload();
-comment|//doTest(1024*16);
+comment|// doTest(1024*16);
 block|}
 specifier|public
 name|void
@@ -447,9 +445,9 @@ operator|+
 name|i
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("Removed " + keyRoot+i);
+comment|// System.out.println("Removed " + keyRoot+i);
 comment|// tree.getRoot().dump();
-comment|//System.out.println("");
+comment|// System.out.println("");
 block|}
 for|for
 control|(

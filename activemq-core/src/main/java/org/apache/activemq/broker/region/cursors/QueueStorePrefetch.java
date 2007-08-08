@@ -187,7 +187,7 @@ specifier|static
 specifier|private
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -224,8 +224,6 @@ decl_stmt|;
 specifier|private
 name|int
 name|size
-init|=
-literal|0
 decl_stmt|;
 comment|/**      * @param topic      * @param clientId      * @param subscriberName      * @throws IOException      */
 specifier|public
@@ -324,7 +322,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -421,7 +419,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -564,7 +562,7 @@ literal|"Failed to retrieve message for id: "
 operator|+
 name|messageReference
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(

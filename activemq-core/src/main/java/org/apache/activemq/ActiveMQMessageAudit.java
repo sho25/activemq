@@ -167,7 +167,7 @@ name|BitArrayBin
 argument_list|>
 name|map
 decl_stmt|;
-comment|/**      * Default Constructor windowSize = 1024, maximumNumberOfProducersToTrack = 128      */
+comment|/**      * Default Constructor windowSize = 1024, maximumNumberOfProducersToTrack =      * 128      */
 specifier|public
 name|ActiveMQMessageAudit
 parameter_list|()
@@ -180,7 +180,7 @@ name|MAXIMUM_PRODUCER_COUNT
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Construct a MessageAudit      *       * @param windowSize range of ids to track      * @param maximumNumberOfProducersToTrack number of producers expected in the system      */
+comment|/**      * Construct a MessageAudit      *       * @param windowSize range of ids to track      * @param maximumNumberOfProducersToTrack number of producers expected in      *                the system      */
 specifier|public
 name|ActiveMQMessageAudit
 parameter_list|(
@@ -239,7 +239,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * checks whether this messageId has been seen before and adds this messageId to the list      *       * @param id      * @return true if the message is a duplicate      */
+comment|/**      * checks whether this messageId has been seen before and adds this      * messageId to the list      *       * @param id      * @return true if the message is a duplicate      */
 specifier|public
 specifier|synchronized
 name|boolean
@@ -441,7 +441,7 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * uun mark this messager as being received      * @param message      */
+comment|/**      * uun mark this messager as being received      *       * @param message      */
 specifier|public
 specifier|synchronized
 name|void

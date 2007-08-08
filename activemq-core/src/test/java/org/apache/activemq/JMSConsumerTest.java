@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -12,6 +12,44 @@ operator|.
 name|activemq
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|CountDownLatch
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicInteger
+import|;
+end_import
 
 begin_import
 import|import
@@ -121,30 +159,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|ActiveMQConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQMessageConsumer
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -162,44 +176,6 @@ operator|.
 name|command
 operator|.
 name|ActiveMQQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CountDownLatch
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicInteger
 import|;
 end_import
 
@@ -519,7 +495,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|// Send a first message to make sure that the consumer dispatcher is running
+comment|// Send a first message to make sure that the consumer dispatcher is
+comment|// running
 name|sendMessages
 argument_list|(
 name|session
@@ -1682,7 +1659,7 @@ name|ActiveMQDestination
 operator|.
 name|QUEUE_TYPE
 argument_list|)
-block|, }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1734,8 +1711,10 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-comment|// This test case does not work if optimized message dispatch is used as the main thread send block until the consumer receives the
-comment|// message.  This test depends on thread decoupling so that the main thread can stop the consumer thread.
+comment|// This test case does not work if optimized message dispatch is used as
+comment|// the main thread send block until the consumer receives the
+comment|// message. This test depends on thread decoupling so that the main
+comment|// thread can stop the consumer thread.
 name|connection
 operator|.
 name|setOptimizedMessageDispatch
@@ -2654,7 +2633,7 @@ name|ActiveMQDestination
 operator|.
 name|QUEUE_TYPE
 argument_list|)
-block|, }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}
@@ -2985,9 +2964,11 @@ argument_list|(
 name|message1
 argument_list|)
 expr_stmt|;
-comment|// Don't acknowledge yet.  This should keep our prefetch full.
-comment|// Since prefetch is still full, the 2nd message should get dispatched to
-comment|// another consumer..  lets create the 2nd consumer test that it does make sure it does.
+comment|// Don't acknowledge yet. This should keep our prefetch full.
+comment|// Since prefetch is still full, the 2nd message should get dispatched
+comment|// to
+comment|// another consumer.. lets create the 2nd consumer test that it does
+comment|// make sure it does.
 name|ActiveMQConnection
 name|connection2
 init|=
@@ -3084,7 +3065,7 @@ name|DeliveryMode
 operator|.
 name|NON_PERSISTENT
 argument_list|)
-block|, }
+block|,}
 argument_list|)
 expr_stmt|;
 name|addCombinationValues
@@ -3112,7 +3093,7 @@ name|ActiveMQDestination
 operator|.
 name|TOPIC_TYPE
 argument_list|)
-block|, }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}
@@ -3199,7 +3180,7 @@ name|DeliveryMode
 operator|.
 name|NON_PERSISTENT
 argument_list|)
-block|, }
+block|,}
 argument_list|)
 expr_stmt|;
 name|addCombinationValues
@@ -3227,7 +3208,7 @@ name|ActiveMQDestination
 operator|.
 name|TOPIC_TYPE
 argument_list|)
-block|, }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}

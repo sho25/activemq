@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -302,7 +302,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A client uses a<CODE>MessageConsumer</CODE> object to receive messages  * from a destination. A<CODE> MessageConsumer</CODE> object is created by  * passing a<CODE>Destination</CODE> object to a message-consumer creation  * method supplied by a session.  *<P>  *<CODE>MessageConsumer</CODE> is the parent interface for all message  * consumers.  *<P>  * A message consumer can be created with a message selector. A message selector  * allows the client to restrict the messages delivered to the message consumer  * to those that match the selector.  *<P>  * A client may either synchronously receive a message consumer's messages or  * have the consumer asynchronously deliver them as they arrive.  *<P>  * For synchronous receipt, a client can request the next message from a message  * consumer using one of its<CODE> receive</CODE> methods. There are several  * variations of<CODE>receive</CODE> that allow a client to poll or wait for  * the next message.  *<P>  * For asynchronous delivery, a client can register a<CODE>MessageListener</CODE>  * object with a message consumer. As messages arrive at the message consumer,  * it delivers them by calling the<CODE>MessageListener</CODE>'s<CODE>  * onMessage</CODE> method.  *<P>  * It is a client programming error for a<CODE>MessageListener</CODE> to  * throw an exception.  *   * @version $Revision: 1.22 $  * @see javax.jms.MessageConsumer  * @see javax.jms.QueueReceiver  * @see javax.jms.TopicSubscriber  * @see javax.jms.Session  */
+comment|/**  * A client uses a<CODE>MessageConsumer</CODE> object to receive messages  * from a destination. A<CODE> MessageConsumer</CODE> object is created by  * passing a<CODE>Destination</CODE> object to a message-consumer creation  * method supplied by a session.  *<P>  *<CODE>MessageConsumer</CODE> is the parent interface for all message  * consumers.  *<P>  * A message consumer can be created with a message selector. A message selector  * allows the client to restrict the messages delivered to the message consumer  * to those that match the selector.  *<P>  * A client may either synchronously receive a message consumer's messages or  * have the consumer asynchronously deliver them as they arrive.  *<P>  * For synchronous receipt, a client can request the next message from a message  * consumer using one of its<CODE> receive</CODE> methods. There are several  * variations of<CODE>receive</CODE> that allow a client to poll or wait for  * the next message.  *<P>  * For asynchronous delivery, a client can register a  *<CODE>MessageListener</CODE> object with a message consumer. As messages  * arrive at the message consumer, it delivers them by calling the  *<CODE>MessageListener</CODE>'s<CODE>  * onMessage</CODE> method.  *<P>  * It is a client programming error for a<CODE>MessageListener</CODE> to  * throw an exception.  *   * @version $Revision: 1.22 $  * @see javax.jms.MessageConsumer  * @see javax.jms.QueueReceiver  * @see javax.jms.TopicSubscriber  * @see javax.jms.Session  */
 end_comment
 
 begin_class
@@ -320,7 +320,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -372,38 +372,26 @@ decl_stmt|;
 specifier|private
 name|int
 name|deliveredCounter
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|int
 name|additionalWindowSize
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|int
 name|rollbackCounter
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|long
 name|redeliveryDelay
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|int
 name|ackCounter
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|int
 name|dispatchedCount
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|MessageListener
@@ -421,8 +409,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|synchronizationRegistered
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|AtomicBoolean
@@ -457,8 +443,6 @@ decl_stmt|;
 specifier|private
 name|ExecutorService
 name|executorService
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|MessageTransformer
@@ -1058,7 +1042,7 @@ return|return
 name|transformer
 return|;
 block|}
-comment|/**      * Sets the transformer used to transform messages before they are sent on to the JMS bus      */
+comment|/**      * Sets the transformer used to transform messages before they are sent on      * to the JMS bus      */
 specifier|public
 name|void
 name|setTransformer
@@ -1177,7 +1161,7 @@ name|isTopic
 argument_list|()
 return|;
 block|}
-comment|/**      * Gets this message consumer's message selector expression.      *       * @return this message consumer's message selector, or null if no message      *         selector exists for the message consumer (that is, if the message      *         selector was not set or was set to null or the empty string)      * @throws JMSException      *             if the JMS provider fails to receive the next message due to      *             some internal error.      */
+comment|/**      * Gets this message consumer's message selector expression.      *       * @return this message consumer's message selector, or null if no message      *         selector exists for the message consumer (that is, if the message      *         selector was not set or was set to null or the empty string)      * @throws JMSException if the JMS provider fails to receive the next      *                 message due to some internal error.      */
 specifier|public
 name|String
 name|getMessageSelector
@@ -1192,7 +1176,7 @@ return|return
 name|selector
 return|;
 block|}
-comment|/**      * Gets the message consumer's<CODE>MessageListener</CODE>.      *       * @return the listener for the message consumer, or null if no listener is      *         set      * @throws JMSException      *             if the JMS provider fails to get the message listener due to      *             some internal error.      * @see javax.jms.MessageConsumer#setMessageListener(javax.jms.MessageListener)      */
+comment|/**      * Gets the message consumer's<CODE>MessageListener</CODE>.      *       * @return the listener for the message consumer, or null if no listener is      *         set      * @throws JMSException if the JMS provider fails to get the message      *                 listener due to some internal error.      * @see javax.jms.MessageConsumer#setMessageListener(javax.jms.MessageListener)      */
 specifier|public
 name|MessageListener
 name|getMessageListener
@@ -1209,7 +1193,7 @@ operator|.
 name|messageListener
 return|;
 block|}
-comment|/**      * Sets the message consumer's<CODE>MessageListener</CODE>.      *<P>      * Setting the message listener to null is the equivalent of unsetting the      * message listener for the message consumer.      *<P>      * The effect of calling<CODE>MessageConsumer.setMessageListener</CODE>      * while messages are being consumed by an existing listener or the consumer      * is being used to consume messages synchronously is undefined.      *       * @param listener      *            the listener to which the messages are to be delivered      * @throws JMSException      *             if the JMS provider fails to receive the next message due to      *             some internal error.      * @see javax.jms.MessageConsumer#getMessageListener      */
+comment|/**      * Sets the message consumer's<CODE>MessageListener</CODE>.      *<P>      * Setting the message listener to null is the equivalent of unsetting the      * message listener for the message consumer.      *<P>      * The effect of calling<CODE>MessageConsumer.setMessageListener</CODE>      * while messages are being consumed by an existing listener or the consumer      * is being used to consume messages synchronously is undefined.      *       * @param listener the listener to which the messages are to be delivered      * @throws JMSException if the JMS provider fails to receive the next      *                 message due to some internal error.      * @see javax.jms.MessageConsumer#getMessageListener      */
 specifier|public
 name|void
 name|setMessageListener
@@ -1300,7 +1284,7 @@ return|return
 name|availableListener
 return|;
 block|}
-comment|/**      * Sets the listener used to notify synchronous consumers that there is a message      * available so that the {@link MessageConsumer#receiveNoWait()} can be called.      */
+comment|/**      * Sets the listener used to notify synchronous consumers that there is a      * message available so that the {@link MessageConsumer#receiveNoWait()} can      * be called.      */
 specifier|public
 name|void
 name|setAvailableListener
@@ -1316,7 +1300,7 @@ operator|=
 name|availableListener
 expr_stmt|;
 block|}
-comment|/**      * Used to get an enqueued message from the unconsumedMessages list. The      * amount of time this method blocks is based on the timeout value. - if      * timeout==-1 then it blocks until a message is received. - if timeout==0      * then it it tries to not block at all, it returns a message if it is      * available - if timeout>0 then it blocks up to timeout amount of time.      *       * Expired messages will consumed by this method.      *       * @throws JMSException      *       * @return null if we timeout or if the consumer is closed.      */
+comment|/**      * Used to get an enqueued message from the unconsumedMessages list. The      * amount of time this method blocks is based on the timeout value. - if      * timeout==-1 then it blocks until a message is received. - if timeout==0      * then it it tries to not block at all, it returns a message if it is      * available - if timeout>0 then it blocks up to timeout amount of time.      * Expired messages will consumed by this method.      *       * @throws JMSException      * @return null if we timeout or if the consumer is closed.      */
 specifier|private
 name|MessageDispatch
 name|dequeue
@@ -1439,13 +1423,13 @@ condition|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1496,13 +1480,13 @@ else|else
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1709,7 +1693,7 @@ return|return
 name|m
 return|;
 block|}
-comment|/**      * Receives the next message that arrives within the specified timeout      * interval.      *<P>      * This call blocks until a message arrives, the timeout expires, or this      * message consumer is closed. A<CODE>timeout</CODE> of zero never      * expires, and the call blocks indefinitely.      *       * @param timeout      *            the timeout value (in milliseconds), a time out of zero never expires.      * @return the next message produced for this message consumer, or null if      *         the timeout expires or this message consumer is concurrently      *         closed      */
+comment|/**      * Receives the next message that arrives within the specified timeout      * interval.      *<P>      * This call blocks until a message arrives, the timeout expires, or this      * message consumer is closed. A<CODE>timeout</CODE> of zero never      * expires, and the call blocks indefinitely.      *       * @param timeout the timeout value (in milliseconds), a time out of zero      *                never expires.      * @return the next message produced for this message consumer, or null if      *         the timeout expires or this message consumer is concurrently      *         closed      */
 specifier|public
 name|Message
 name|receive
@@ -1773,7 +1757,8 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
-comment|// We let the broker let us know when we timeout.
+comment|// We let the broker let us know when we
+comment|// timeout.
 block|}
 else|else
 block|{
@@ -1817,7 +1802,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Receives the next message if one is immediately available.      *       * @return the next message produced for this message consumer, or null if      *         one is not available      * @throws JMSException      *             if the JMS provider fails to receive the next message due to      *             some internal error.      */
+comment|/**      * Receives the next message if one is immediately available.      *       * @return the next message produced for this message consumer, or null if      *         one is not available      * @throws JMSException if the JMS provider fails to receive the next      *                 message due to some internal error.      */
 specifier|public
 name|Message
 name|receiveNoWait
@@ -1858,7 +1843,8 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
-comment|// We let the broker let us know when we timeout.
+comment|// We let the broker let us know when we
+comment|// timeout.
 block|}
 else|else
 block|{
@@ -1898,7 +1884,7 @@ name|md
 argument_list|)
 return|;
 block|}
-comment|/**      * Closes the message consumer.      *<P>      * Since a provider may allocate some resources on behalf of a<CODE>      * MessageConsumer</CODE> outside the Java virtual machine, clients should      * close them when they are not needed. Relying on garbage collection to      * eventually reclaim these resources may not be timely enough.      *<P>      * This call blocks until a<CODE>receive</CODE> or message listener in      * progress has completed. A blocked message consumer<CODE>receive</CODE>      * call returns null when this message consumer is closed.      *       * @throws JMSException      *             if the JMS provider fails to close the consumer due to some      *             internal error.      */
+comment|/**      * Closes the message consumer.      *<P>      * Since a provider may allocate some resources on behalf of a<CODE>      * MessageConsumer</CODE>      * outside the Java virtual machine, clients should close them when they are      * not needed. Relying on garbage collection to eventually reclaim these      * resources may not be timely enough.      *<P>      * This call blocks until a<CODE>receive</CODE> or message listener in      * progress has completed. A blocked message consumer<CODE>receive</CODE>      * call returns null when this message consumer is closed.      *       * @throws JMSException if the JMS provider fails to close the consumer due      *                 to some internal error.      */
 specifier|public
 name|void
 name|close
@@ -2078,7 +2064,7 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -2134,10 +2120,10 @@ block|{
 comment|// Do we have any acks we need to send out before closing?
 comment|// Ack any delivered messages now. (session may still
 comment|// commit/rollback the acks).
+comment|// only processes optimized acknowledgements
 name|deliverAcks
 argument_list|()
 expr_stmt|;
-comment|// only processes optimized acknowledgements
 if|if
 condition|(
 name|executorService
@@ -2337,7 +2323,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * If we have a zero prefetch specified then send a pull command to the broker to pull a message      * we are about to receive      *      */
+comment|/**      * If we have a zero prefetch specified then send a pull command to the      * broker to pull a message we are about to receive      */
 specifier|protected
 name|void
 name|sendPullCommand
@@ -3079,7 +3065,8 @@ condition|(
 name|optimizeAcknowledge
 condition|)
 block|{
-comment|// remove messages read but not acked at the broker yet through optimizeAcknowledge
+comment|// remove messages read but not acked at the broker yet through
+comment|// optimizeAcknowledge
 if|if
 condition|(
 operator|!
@@ -3227,7 +3214,7 @@ argument_list|(
 name|ack
 argument_list|)
 expr_stmt|;
-comment|//ensure we don't filter this as a duplicate
+comment|// ensure we don't filter this as a duplicate
 name|session
 operator|.
 name|connection
@@ -3445,7 +3432,8 @@ condition|(
 name|clearDispatchList
 condition|)
 block|{
-comment|// we are reconnecting so lets flush the in progress messages
+comment|// we are reconnecting so lets flush the in progress
+comment|// messages
 name|clearDispatchList
 operator|=
 literal|false
@@ -3613,7 +3601,8 @@ comment|// Redeliver the message
 block|}
 else|else
 block|{
-comment|// Transacted or Client ack: Deliver the next message.
+comment|// Transacted or Client ack: Deliver the
+comment|// next message.
 name|afterMessageIsConsumed
 argument_list|(
 name|md
@@ -3622,7 +3611,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -3663,16 +3652,16 @@ block|}
 block|}
 else|else
 block|{
-comment|//ignore duplicate
+comment|// ignore duplicate
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -3825,7 +3814,7 @@ operator|+
 literal|" }"
 return|;
 block|}
-comment|/**      * Delivers a message to the message listener.      * @return      * @throws JMSException       */
+comment|/**      * Delivers a message to the message listener.      *       * @return      * @throws JMSException      */
 specifier|public
 name|boolean
 name|iterate

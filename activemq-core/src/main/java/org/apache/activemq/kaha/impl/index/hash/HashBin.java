@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Bin in a HashIndex  *  * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Bin in a HashIndex  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -118,8 +118,6 @@ decl_stmt|;
 specifier|private
 name|int
 name|size
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|List
@@ -135,7 +133,7 @@ name|HashPageInfo
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**      * Constructor      *      * @param hashIndex      * @param id      * @param maximumEntries      */
+comment|/**      * Constructor      *       * @param hashIndex      * @param id      * @param maximumEntries      */
 name|HashBin
 parameter_list|(
 name|HashIndex
@@ -1346,7 +1344,7 @@ name|int
 name|index
 parameter_list|)
 block|{
-comment|//does little
+comment|// does little
 block|}
 specifier|private
 name|void

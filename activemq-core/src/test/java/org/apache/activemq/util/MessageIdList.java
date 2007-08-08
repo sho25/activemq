@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -116,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple container of messages for performing testing and rendezvous style  * code. You can use this class a {@link MessageListener} and then make  * assertions about how many messages it has received allowing a certain maximum  * amount of time to ensure that the test does not hang forever.  *   * Also you can chain these instances together with the  * {@link #setParent(MessageListener)} method so that you can aggregate the  * total number of messages consumed across a number of consumers.  *   * @version $Revision: 1.6 $  */
+comment|/**  * A simple container of messages for performing testing and rendezvous style  * code. You can use this class a {@link MessageListener} and then make  * assertions about how many messages it has received allowing a certain maximum  * amount of time to ensure that the test does not hang forever. Also you can  * chain these instances together with the {@link #setParent(MessageListener)}  * method so that you can aggregate the total number of messages consumed across  * a number of consumers.  *   * @version $Revision: 1.6 $  */
 end_comment
 
 begin_class
@@ -172,8 +172,6 @@ decl_stmt|;
 specifier|private
 name|long
 name|processingDelay
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|CountDownLatch
@@ -452,7 +450,7 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{ 			}
+block|{             }
 block|}
 block|}
 specifier|public
@@ -626,7 +624,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Performs a testing assertion that the correct number of messages have      * been received waiting for the messages to arrive up to a fixed amount of time.      *       * @param messageCount      */
+comment|/**      * Performs a testing assertion that the correct number of messages have      * been received waiting for the messages to arrive up to a fixed amount of      * time.      *       * @param messageCount      */
 specifier|public
 name|void
 name|assertMessagesReceived
@@ -646,7 +644,7 @@ name|messageCount
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Asserts that there are at least the given number of messages received without waiting.      */
+comment|/**      * Asserts that there are at least the given number of messages received      * without waiting.      */
 specifier|public
 name|void
 name|assertAtLeastMessagesReceived
@@ -677,7 +675,7 @@ name|messageCount
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Asserts that there are at most the number of messages received without waiting      * @param messageCount      */
+comment|/**      * Asserts that there are at most the number of messages received without      * waiting      *       * @param messageCount      */
 specifier|public
 name|void
 name|assertAtMostMessagesReceived
@@ -827,7 +825,7 @@ operator|=
 name|countDownLatch
 expr_stmt|;
 block|}
-comment|/** 	 * Gets the amount of time the message listener will spend sleeping to 	 * simulate a processing delay. 	 *  	 * @return 	 */
+comment|/**      * Gets the amount of time the message listener will spend sleeping to      * simulate a processing delay.      *       * @return      */
 specifier|public
 name|long
 name|getProcessingDelay
@@ -837,7 +835,7 @@ return|return
 name|processingDelay
 return|;
 block|}
-comment|/** 	 * Sets the amount of time the message listener will spend sleeping to 	 * simulate a processing delay. 	 *  	 * @param processingDelay 	 */
+comment|/**      * Sets the amount of time the message listener will spend sleeping to      * simulate a processing delay.      *       * @param processingDelay      */
 specifier|public
 name|void
 name|setProcessingDelay

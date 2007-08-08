@@ -116,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test a HashIndex  *   */
+comment|/**  * Test a HashIndex  */
 end_comment
 
 begin_class

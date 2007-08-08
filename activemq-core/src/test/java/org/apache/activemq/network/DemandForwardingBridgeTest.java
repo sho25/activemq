@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -22,6 +22,16 @@ operator|.
 name|jms
 operator|.
 name|DeliveryMode
+import|;
+end_import
+
+begin_import
+import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|Test
 import|;
 end_import
 
@@ -123,30 +133,6 @@ name|SessionInfo
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|network
-operator|.
-name|DemandForwardingBridge
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Test
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -216,7 +202,7 @@ name|ActiveMQDestination
 operator|.
 name|QUEUE_TYPE
 argument_list|)
-block|,                  }
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -380,7 +366,8 @@ name|createRemoveCommand
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Now create remote consumer that should cause message to move to this remote consumer.
+comment|// Now create remote consumer that should cause message to move to this
+comment|// remote consumer.
 name|ConsumerInfo
 name|consumerInfo2
 init|=
@@ -466,7 +453,7 @@ name|ActiveMQDestination
 operator|.
 name|TOPIC_TYPE
 argument_list|)
-block|,                  }
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -590,7 +577,8 @@ argument_list|(
 name|consumerInfo
 argument_list|)
 expr_stmt|;
-comment|// Give demand forwarding bridge a chance to finish forwarding the subscriptions.
+comment|// Give demand forwarding bridge a chance to finish forwarding the
+comment|// subscriptions.
 try|try
 block|{
 name|Thread

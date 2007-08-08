@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Enforces a test case to run for only an allotted time to prevent them from hanging  * and breaking the whole testing.  *   * @version $Revision: 1.0 $  */
+comment|/**  * Enforces a test case to run for only an allotted time to prevent them from  * hanging and breaking the whole testing.  *   * @version $Revision: 1.0 $  */
 end_comment
 
 begin_class
@@ -81,7 +81,7 @@ specifier|protected
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -132,8 +132,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|useAutoFail
-init|=
-literal|false
 decl_stmt|;
 comment|// Disable auto fail by default
 specifier|private
@@ -181,7 +179,7 @@ name|stopAutoFailThread
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Manually start the auto fail thread. To start it automatically, just set the auto fail to true before calling      * any setup methods. As a rule, this method is used only when you are not sure, if the setUp and tearDown method      * is propagated correctly.      */
+comment|/**      * Manually start the auto fail thread. To start it automatically, just set      * the auto fail to true before calling any setup methods. As a rule, this      * method is used only when you are not sure, if the setUp and tearDown      * method is propagated correctly.      */
 specifier|public
 name|void
 name|startAutoFailThread
@@ -236,7 +234,8 @@ comment|// This usually means the test was successful
 block|}
 finally|finally
 block|{
-comment|// Check if the test was able to tear down succesfully, which usually means, it has finished its run.
+comment|// Check if the test was able to tear down succesfully,
+comment|// which usually means, it has finished its run.
 if|if
 condition|(
 operator|!
@@ -246,7 +245,7 @@ name|get
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -258,7 +257,7 @@ operator|+
 literal|" ms."
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|fatal
 argument_list|(
@@ -290,7 +289,7 @@ condition|(
 name|verbose
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -298,7 +297,7 @@ literal|"Starting auto fail thread..."
 argument_list|)
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -311,7 +310,7 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Manually stops the auto fail thread. As a rule, this method is used only when you are not sure, if the      * setUp and tearDown method is propagated correctly.      */
+comment|/**      * Manually stops the auto fail thread. As a rule, this method is used only      * when you are not sure, if the setUp and tearDown method is propagated      * correctly.      */
 specifier|public
 name|void
 name|stopAutoFailThread
@@ -344,7 +343,7 @@ condition|(
 name|verbose
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -352,7 +351,7 @@ literal|"Stopping auto fail thread..."
 argument_list|)
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -366,7 +365,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sets the auto fail value. As a rule, this should be used only before any setup methods is called to automatically      * enable the auto fail thread in the setup method of the test case.      * @param val      */
+comment|/**      * Sets the auto fail value. As a rule, this should be used only before any      * setup methods is called to automatically enable the auto fail thread in      * the setup method of the test case.      *       * @param val      */
 specifier|public
 name|void
 name|setAutoFail
@@ -393,7 +392,7 @@ operator|.
 name|useAutoFail
 return|;
 block|}
-comment|/**      * The assigned value will only be reflected when the auto fail thread has started its run. Value is in milliseconds.      * @param val      */
+comment|/**      * The assigned value will only be reflected when the auto fail thread has      * started its run. Value is in milliseconds.      *       * @param val      */
 specifier|public
 name|void
 name|setMaxTestTime

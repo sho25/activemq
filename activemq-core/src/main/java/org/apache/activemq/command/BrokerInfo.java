@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * When a client connects to a broker, the broker send the client a BrokerInfo so that the client knows which broker  * node he's talking to and also any peers that the node has in his cluster. This is the broker helping the client out  * in discovering other nodes in the cluster.  *   * @openwire:marshaller code="2"  * @version $Revision: 1.7 $  */
+comment|/**  * When a client connects to a broker, the broker send the client a BrokerInfo  * so that the client knows which broker node he's talking to and also any peers  * that the node has in his cluster. This is the broker helping the client out  * in discovering other nodes in the cluster.  *   * @openwire:marshaller code="2"  * @version $Revision: 1.7 $  */
 end_comment
 
 begin_class
@@ -261,7 +261,7 @@ return|return
 name|masterBroker
 return|;
 block|}
-comment|/**      * @param masterBroker      *            The masterBroker to set.      */
+comment|/**      * @param masterBroker The masterBroker to set.      */
 specifier|public
 name|void
 name|setMasterBroker
@@ -287,7 +287,7 @@ return|return
 name|faultTolerantConfiguration
 return|;
 block|}
-comment|/**      * @param faultTolerantConfiguration      *            The faultTolerantConfiguration to set.      */
+comment|/**      * @param faultTolerantConfiguration The faultTolerantConfiguration to set.      */
 specifier|public
 name|void
 name|setFaultTolerantConfiguration
@@ -384,7 +384,7 @@ operator|=
 name|connectionId
 expr_stmt|;
 block|}
-comment|/**      * The URL to use when uploading BLOBs to the broker or some other external file/http server      *      * @openwire:property version=3      */
+comment|/**      * The URL to use when uploading BLOBs to the broker or some other external      * file/http server      *       * @openwire:property version=3      */
 specifier|public
 name|String
 name|getBrokerUploadUrl
@@ -409,7 +409,7 @@ operator|=
 name|brokerUploadUrl
 expr_stmt|;
 block|}
-comment|/**      *  @openwire:property version=3 cache=false      * @return the networkProperties      */
+comment|/**      * @openwire:property version=3 cache=false      * @return the networkProperties      */
 specifier|public
 name|String
 name|getNetworkProperties

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -397,7 +397,7 @@ name|ActiveMQDestination
 operator|.
 name|TOPIC_TYPE
 argument_list|)
-block|,                  }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}
@@ -441,7 +441,7 @@ operator|.
 name|getDefaultPolicy
 argument_list|()
 decl_stmt|;
-comment|//disable spooling
+comment|// disable spooling
 name|policy
 operator|.
 name|setPendingSubscriberPolicy
@@ -585,7 +585,8 @@ argument_list|(
 name|consumerInfo2
 argument_list|)
 expr_stmt|;
-comment|// Reduce the limit so that only 1 message can flow through the broker at a time.
+comment|// Reduce the limit so that only 1 message can flow through the broker
+comment|// at a time.
 name|broker
 operator|.
 name|getMemoryManager
@@ -652,7 +653,8 @@ argument_list|,
 literal|1000
 argument_list|)
 decl_stmt|;
-comment|// Produce in an async thread since the producer will be getting blocked by the usage manager..
+comment|// Produce in an async thread since the producer will be getting blocked
+comment|// by the usage manager..
 operator|new
 name|Thread
 argument_list|()
@@ -770,7 +772,8 @@ name|STANDARD_ACK_TYPE
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// 2nd message received should be m3.. it should have expired 2nd message sent.
+comment|// 2nd message received should be m3.. it should have expired 2nd
+comment|// message sent.
 name|m
 operator|=
 name|receiveMessage
@@ -849,7 +852,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Small regression.  Looks like persistent messages to a queue       * are not being timedout when in a long transaction.             * See: http://issues.apache.org/activemq/browse/AMQ-1269      *      * Commenting out the DeliveryMode.PERSISTENT test combination for now.      */
+comment|/**      * Small regression. Looks like persistent messages to a queue are not being      * timedout when in a long transaction. See:      * http://issues.apache.org/activemq/browse/AMQ-1269 Commenting out the      * DeliveryMode.PERSISTENT test combination for now.      */
 specifier|public
 name|void
 name|initCombosForTestMessagesInLongTransactionExpire
@@ -872,7 +875,7 @@ operator|.
 name|NON_PERSISTENT
 argument_list|)
 block|,
-comment|//Integer.valueOf(DeliveryMode.PERSISTENT)
+comment|// Integer.valueOf(DeliveryMode.PERSISTENT)
 block|}
 argument_list|)
 expr_stmt|;
@@ -1144,7 +1147,8 @@ argument_list|(
 name|m
 argument_list|)
 expr_stmt|;
-comment|// Sleep before we commit so that the messages expire on the commit list..
+comment|// Sleep before we commit so that the messages expire on the commit
+comment|// list..
 name|Thread
 operator|.
 name|sleep
@@ -1207,7 +1211,8 @@ name|STANDARD_ACK_TYPE
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// 2nd message received should be m3.. it should have expired 2nd message sent.
+comment|// 2nd message received should be m3.. it should have expired 2nd
+comment|// message sent.
 name|m
 operator|=
 name|receiveMessage
@@ -1649,7 +1654,8 @@ name|STANDARD_ACK_TYPE
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// 2nd message received should be m3.. it should have expired 2nd message sent.
+comment|// 2nd message received should be m3.. it should have expired 2nd
+comment|// message sent.
 name|m
 operator|=
 name|receiveMessage

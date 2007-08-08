@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -182,20 +182,14 @@ decl_stmt|;
 specifier|protected
 name|boolean
 name|durable
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|boolean
 name|verbose
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|long
 name|initRedeliveryDelay
-init|=
-literal|0
 decl_stmt|;
 specifier|protected
 name|void
@@ -313,7 +307,7 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-comment|//producer.setDeliveryMode(deliveryMode);
+comment|// producer.setDeliveryMode(deliveryMode);
 name|log
 operator|.
 name|info
@@ -450,7 +444,7 @@ name|tearDown
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Returns the consumer subject.      *      * @return String - consumer subject      * @see org.apache.activemq.test.TestSupport#getConsumerSubject()      */
+comment|/**      * Returns the consumer subject.      *       * @return String - consumer subject      * @see org.apache.activemq.test.TestSupport#getConsumerSubject()      */
 specifier|protected
 name|String
 name|getConsumerSubject
@@ -460,7 +454,7 @@ return|return
 literal|"TEST"
 return|;
 block|}
-comment|/**      * Returns the producer subject.      *      * @return String - producer subject      * @see org.apache.activemq.test.TestSupport#getProducerSubject()      */
+comment|/**      * Returns the producer subject.      *       * @return String - producer subject      * @see org.apache.activemq.test.TestSupport#getProducerSubject()      */
 specifier|protected
 name|String
 name|getProducerSubject
@@ -470,7 +464,7 @@ return|return
 literal|"TEST"
 return|;
 block|}
-comment|/**      * Sends and consumes the messages.      *      * @throws Exception      */
+comment|/**      * Sends and consumes the messages.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testRecover
@@ -521,7 +515,7 @@ argument_list|,
 name|sendMessage
 argument_list|)
 expr_stmt|;
-comment|//receive but don't acknowledge
+comment|// receive but don't acknowledge
 name|Message
 name|unackMessage
 init|=
@@ -570,8 +564,8 @@ name|getJMSRedelivered
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//assertEquals(unackMessage.getIntProperty("JMSXDeliveryCount"),1);
-comment|//receive then acknowledge
+comment|// assertEquals(unackMessage.getIntProperty("JMSXDeliveryCount"),1);
+comment|// receive then acknowledge
 name|consumeSession
 operator|.
 name|recover
@@ -630,7 +624,7 @@ name|getJMSRedelivered
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//assertEquals(ackMessage.getIntProperty("JMSXDeliveryCount"),2);
+comment|// assertEquals(ackMessage.getIntProperty("JMSXDeliveryCount"),2);
 name|assertEquals
 argument_list|(
 name|unackId

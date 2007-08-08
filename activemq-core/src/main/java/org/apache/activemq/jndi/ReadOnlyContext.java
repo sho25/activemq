@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -98,7 +98,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A read-only Context  *<p/>  * This version assumes it and all its subcontext are read-only and any attempt  * to modify (e.g. through bind) will result in an OperationNotSupportedException.  * Each Context in the tree builds a cache of the entries in all sub-contexts  * to optimise the performance of lookup.  *</p>  *<p>This implementation is intended to optimise the performance of lookup(String)  * to about the level of a HashMap get. It has been observed that the scheme  * resolution phase performed by the JVM takes considerably longer, so for  * optimum performance lookups should be coded like:</p>  *<code>  * Context componentContext = (Context)new InitialContext().lookup("java:comp");  * String envEntry = (String) componentContext.lookup("env/myEntry");  * String envEntry2 = (String) componentContext.lookup("env/myEntry2");  *</code>  *  * @version $Revision: 1.2 $ $Date: 2005/08/27 03:52:39 $  */
+comment|/**  * A read-only Context<p/> This version assumes it and all its subcontext are  * read-only and any attempt to modify (e.g. through bind) will result in an  * OperationNotSupportedException. Each Context in the tree builds a cache of  * the entries in all sub-contexts to optimise the performance of lookup.  *</p>  *<p>  * This implementation is intended to optimise the performance of lookup(String)  * to about the level of a HashMap get. It has been observed that the scheme  * resolution phase performed by the JVM takes considerably longer, so for  * optimum performance lookups should be coded like:  *</p>  *<code>  * Context componentContext = (Context)new InitialContext().lookup("java:comp");  * String envEntry = (String) componentContext.lookup("env/myEntry");  * String envEntry2 = (String) componentContext.lookup("env/myEntry2");  *</code>  *   * @version $Revision: 1.2 $ $Date: 2005/08/27 03:52:39 $  */
 end_comment
 
 begin_class
@@ -129,6 +129,14 @@ operator|new
 name|NameParserImpl
 argument_list|()
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SEPARATOR
+init|=
+literal|"/"
+decl_stmt|;
 specifier|protected
 specifier|final
 name|Hashtable
@@ -150,22 +158,12 @@ comment|// all bindings under me
 specifier|private
 name|boolean
 name|frozen
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|String
 name|nameInNamespace
 init|=
 literal|""
-decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SEPARATOR
-init|=
-literal|"/"
 decl_stmt|;
 specifier|public
 name|ReadOnlyContext
@@ -408,7 +406,7 @@ return|return
 name|frozen
 return|;
 block|}
-comment|/**      * internalBind is intended for use only during setup or possibly by suitably synchronized superclasses.      * It binds every possible lookup into a map in each context.  To do this, each context      * strips off one name segment and if necessary creates a new context for it. Then it asks that context      * to bind the remaining name.  It returns a map containing all the bindings from the next context, plus      * the context it just created (if it in fact created it). (the names are suitably extended by the segment      * originally lopped off).      *      * @param name      * @param value      * @return      * @throws javax.naming.NamingException      */
+comment|/**      * internalBind is intended for use only during setup or possibly by      * suitably synchronized superclasses. It binds every possible lookup into a      * map in each context. To do this, each context strips off one name segment      * and if necessary creates a new context for it. Then it asks that context      * to bind the remaining name. It returns a map containing all the bindings      * from the next context, plus the context it just created (if it in fact      * created it). (the names are suitably extended by the segment originally      * lopped off).      *       * @param name      * @param value      * @return      * @throws javax.naming.NamingException      */
 specifier|protected
 name|Map
 name|internalBind
@@ -1797,7 +1795,7 @@ name|LocalNamingEnumeration
 block|{
 name|ListEnumeration
 parameter_list|()
-block|{}
+block|{         }
 specifier|public
 name|Object
 name|next

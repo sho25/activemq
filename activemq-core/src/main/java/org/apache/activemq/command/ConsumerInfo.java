@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @openwire:marshaller code="5"  * @version $Revision: 1.20 $  */
+comment|/**  * @openwire:marshaller code="5"  * @version $Revision: 1.20 $  */
 end_comment
 
 begin_class
@@ -160,12 +160,13 @@ specifier|transient
 name|int
 name|currentPrefetchSize
 decl_stmt|;
-comment|//used by the broker
+comment|// used by the broker
 specifier|protected
 name|boolean
 name|noRangeAcks
 decl_stmt|;
-comment|// if true, the consumer will not send range acks.
+comment|// if true, the consumer will not send range
+comment|// acks.
 specifier|protected
 name|BooleanExpression
 name|additionalPredicate
@@ -175,7 +176,9 @@ specifier|transient
 name|boolean
 name|networkSubscription
 decl_stmt|;
-comment|//this subscription originated from a network connection
+comment|// this subscription
+comment|// originated from a
+comment|// network connection
 specifier|public
 name|ConsumerInfo
 parameter_list|()
@@ -405,7 +408,7 @@ operator|=
 name|browser
 expr_stmt|;
 block|}
-comment|/**      * The destination that the consumer is interested in receiving messages from.      * This destination could be a composite destination.      *       * @openwire:property version=1 cache=true      */
+comment|/**      * The destination that the consumer is interested in receiving messages      * from. This destination could be a composite destination.      *       * @openwire:property version=1 cache=true      */
 specifier|public
 name|ActiveMQDestination
 name|getDestination
@@ -430,7 +433,7 @@ operator|=
 name|destination
 expr_stmt|;
 block|}
-comment|/**      * How many messages a broker will send to the client without receiving an ack before      * he stops dispatching messages to the client.      *       * @openwire:property version=1      */
+comment|/**      * How many messages a broker will send to the client without receiving an      * ack before he stops dispatching messages to the client.      *       * @openwire:property version=1      */
 specifier|public
 name|int
 name|getPrefetchSize
@@ -461,7 +464,7 @@ operator|=
 name|prefetchSize
 expr_stmt|;
 block|}
-comment|/**      * How many messages a broker will keep around, above the prefetch limit, for non-durable      * topics before starting to discard older messages.      *       * @openwire:property version=1      */
+comment|/**      * How many messages a broker will keep around, above the prefetch limit,      * for non-durable topics before starting to discard older messages.      *       * @openwire:property version=1      */
 specifier|public
 name|int
 name|getMaximumPendingMessageLimit
@@ -486,7 +489,7 @@ operator|=
 name|maximumPendingMessageLimit
 expr_stmt|;
 block|}
-comment|/**      * Should the broker dispatch a message to the consumer async?  If he does it async, then       * he uses a more SEDA style of processing while if it is not done async, then he broker       * use a STP style of processing.  STP is more appropriate in high bandwidth situations or when      * being used by and in vm transport.      *       * @openwire:property version=1      */
+comment|/**      * Should the broker dispatch a message to the consumer async? If he does it      * async, then he uses a more SEDA style of processing while if it is not      * done async, then he broker use a STP style of processing. STP is more      * appropriate in high bandwidth situations or when being used by and in vm      * transport.      *       * @openwire:property version=1      */
 specifier|public
 name|boolean
 name|isDispatchAsync
@@ -511,7 +514,7 @@ operator|=
 name|dispatchAsync
 expr_stmt|;
 block|}
-comment|/**      * The JMS selector used to filter out messages that this consumer      * is interested in.      *       * @openwire:property version=1      */
+comment|/**      * The JMS selector used to filter out messages that this consumer is      * interested in.      *       * @openwire:property version=1      */
 specifier|public
 name|String
 name|getSelector
@@ -561,7 +564,7 @@ operator|=
 name|durableSubscriptionId
 expr_stmt|;
 block|}
-comment|/**      * @deprecated      * @return @see getSubscriptionName      */
+comment|/**      * @deprecated      * @return      * @see getSubscriptionName      */
 specifier|public
 name|String
 name|getSubcriptionName
@@ -571,7 +574,7 @@ return|return
 name|subscriptionName
 return|;
 block|}
-comment|/**      * @deprecated      * @see setSubscriptionName      * @param durableSubscriptionId       */
+comment|/**      * @deprecated      * @see setSubscriptionName      * @param durableSubscriptionId      */
 specifier|public
 name|void
 name|setSubcriptionName
@@ -587,7 +590,7 @@ operator|=
 name|durableSubscriptionId
 expr_stmt|;
 block|}
-comment|/**      * Set noLocal to true to avoid receiving messages that were published locally on the same connection.      *       * @openwire:property version=1      */
+comment|/**      * Set noLocal to true to avoid receiving messages that were published      * locally on the same connection.      *       * @openwire:property version=1      */
 specifier|public
 name|boolean
 name|isNoLocal
@@ -612,7 +615,7 @@ operator|=
 name|noLocal
 expr_stmt|;
 block|}
-comment|/**      * An exclusive consumer locks out other consumers from being able to receive messages      * from the destination.  If there are multiple exclusive consumers for a destination, the first one      * created will be the exclusive consumer of the destination.      *       * @openwire:property version=1      */
+comment|/**      * An exclusive consumer locks out other consumers from being able to      * receive messages from the destination. If there are multiple exclusive      * consumers for a destination, the first one created will be the exclusive      * consumer of the destination.      *       * @openwire:property version=1      */
 specifier|public
 name|boolean
 name|isExclusive
@@ -637,7 +640,7 @@ operator|=
 name|exclusive
 expr_stmt|;
 block|}
-comment|/**      * A retroactive consumer only has meaning for Topics.  It allows a consumer      * to retroactively see messages sent prior to the consumer being created.  If the       * consumer is not durable, it will be delivered the last message published to the topic.      * If the consumer is durable then it will receive all persistent messages that are       * still stored in persistent storage for that topic.      *       * @openwire:property version=1      */
+comment|/**      * A retroactive consumer only has meaning for Topics. It allows a consumer      * to retroactively see messages sent prior to the consumer being created.      * If the consumer is not durable, it will be delivered the last message      * published to the topic. If the consumer is durable then it will receive      * all persistent messages that are still stored in persistent storage for      * that topic.      *       * @openwire:property version=1      */
 specifier|public
 name|boolean
 name|isRetroactive
@@ -689,7 +692,7 @@ return|return
 name|command
 return|;
 block|}
-comment|/**      * The broker will avoid dispatching to a lower priority consumer if there are other higher priority       * consumers available to dispatch to.  This allows letting the broker to have an affinity to       * higher priority consumers.  Default priority is 0.      *       * @openwire:property version=1      */
+comment|/**      * The broker will avoid dispatching to a lower priority consumer if there      * are other higher priority consumers available to dispatch to. This allows      * letting the broker to have an affinity to higher priority consumers.      * Default priority is 0.      *       * @openwire:property version=1      */
 specifier|public
 name|byte
 name|getPriority
@@ -714,7 +717,7 @@ operator|=
 name|priority
 expr_stmt|;
 block|}
-comment|/**      * The route of brokers the command has moved through.       *       * @openwire:property version=1 cache=true      */
+comment|/**      * The route of brokers the command has moved through.      *       * @openwire:property version=1 cache=true      */
 specifier|public
 name|BrokerId
 index|[]
@@ -741,7 +744,7 @@ operator|=
 name|brokerPath
 expr_stmt|;
 block|}
-comment|/**      * A transient additional predicate that can be used it inject additional predicates      * into the selector on the fly.  Handy if if say a Security Broker interceptor wants to       * filter out messages based on security level of the consumer.      *       * @openwire:property version=1      */
+comment|/**      * A transient additional predicate that can be used it inject additional      * predicates into the selector on the fly. Handy if if say a Security      * Broker interceptor wants to filter out messages based on security level      * of the consumer.      *       * @openwire:property version=1      */
 specifier|public
 name|BooleanExpression
 name|getAdditionalPredicate
@@ -811,7 +814,7 @@ operator|=
 name|networkSubscription
 expr_stmt|;
 block|}
-comment|/**      *  @openwire:property version=1      * @return Returns the optimizedAcknowledge.      */
+comment|/**      * @openwire:property version=1      * @return Returns the optimizedAcknowledge.      */
 specifier|public
 name|boolean
 name|isOptimizedAcknowledge
@@ -863,7 +866,7 @@ operator|=
 name|currentPrefetchSize
 expr_stmt|;
 block|}
-comment|/**      * The broker may be able to optimize it's processing or provides better      * QOS if it knows the consumer will not be sending ranged acks.      *       * @return true if the consumer will not send range acks.      * @openwire:property version=1      */
+comment|/**      * The broker may be able to optimize it's processing or provides better QOS      * if it knows the consumer will not be sending ranged acks.      *       * @return true if the consumer will not send range acks.      * @openwire:property version=1      */
 specifier|public
 name|boolean
 name|isNoRangeAcks

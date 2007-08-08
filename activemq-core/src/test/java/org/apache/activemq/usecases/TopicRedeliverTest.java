@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -171,7 +171,7 @@ decl_stmt|;
 specifier|public
 name|TopicRedeliverTest
 parameter_list|()
-block|{            }
+block|{     }
 specifier|public
 name|TopicRedeliverTest
 parameter_list|(
@@ -202,7 +202,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|/**      * test messages are acknowledged and recovered properly      * @throws Exception      */
+comment|/**      * test messages are acknowledged and recovered properly      *       * @throws Exception      */
 specifier|public
 name|void
 name|testClientAcknowledge
@@ -298,7 +298,7 @@ argument_list|(
 name|deliveryMode
 argument_list|)
 expr_stmt|;
-comment|//send some messages
+comment|// send some messages
 name|TextMessage
 name|sent1
 init|=
@@ -395,7 +395,7 @@ argument_list|(
 name|RECEIVE_TIMEOUT
 argument_list|)
 decl_stmt|;
-comment|//ack rec2
+comment|// ack rec2
 name|rec2
 operator|.
 name|acknowledge
@@ -486,7 +486,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Test redelivered flag is set on rollbacked transactions      * @throws Exception      */
+comment|/**      * Test redelivered flag is set on rollbacked transactions      *       * @throws Exception      */
 specifier|public
 name|void
 name|testRedilveredFlagSetOnRollback
@@ -716,7 +716,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Check a session is rollbacked on a Session close();      * @throws Exception      */
+comment|/**      * Check a session is rollbacked on a Session close();      *       * @throws Exception      */
 specifier|public
 name|void
 name|XtestTransactionRollbackOnSessionClose
@@ -943,7 +943,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * check messages are actuallly sent on a tx rollback      * @throws Exception      */
+comment|/**      * check messages are actuallly sent on a tx rollback      *       * @throws Exception      */
 specifier|public
 name|void
 name|testTransactionRollbackOnSend

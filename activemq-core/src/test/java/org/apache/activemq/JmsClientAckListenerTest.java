@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -103,8 +103,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|dontAck
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|void
@@ -289,7 +287,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Tests if unacknowleged messages are being redelivered when the consumer connects again.      *       * @throws javax.jms.JMSException      */
+comment|/**      * Tests if unacknowleged messages are being redelivered when the consumer      * connects again.      *       * @throws javax.jms.JMSException      */
 specifier|public
 name|void
 name|testUnAckedMessageAreNotConsumedOnSessionClose
@@ -302,7 +300,7 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-comment|//don't aknowledge message on onMessage() call
+comment|// don't aknowledge message on onMessage() call
 name|dontAck
 operator|=
 literal|true
@@ -372,7 +370,8 @@ name|this
 argument_list|)
 expr_stmt|;
 comment|// Don't ack the message.
-comment|// Reset the session.  This should cause the Unacked message to be redelivered.
+comment|// Reset the session. This should cause the Unacked message to be
+comment|// redelivered.
 name|session
 operator|.
 name|close

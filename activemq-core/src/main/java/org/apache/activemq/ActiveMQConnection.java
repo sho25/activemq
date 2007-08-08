@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -1047,7 +1047,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -1144,8 +1144,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|disableTimeStampsByDefault
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
@@ -1162,20 +1160,14 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|useCompression
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
 name|objectMessageSerializationDefered
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|boolean
 name|dispatchAsync
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|boolean
@@ -1186,14 +1178,10 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|useAsyncSend
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
 name|optimizeAcknowledge
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
@@ -1458,7 +1446,7 @@ name|ActiveMQConnectionFactory
 operator|.
 name|DEFAULT_PRODUCER_WINDOW_SIZE
 decl_stmt|;
-comment|// Assume that protocol is the latest.  Change to the actual protocol
+comment|// Assume that protocol is the latest. Change to the actual protocol
 comment|// version when a WireFormatInfo is received.
 specifier|private
 name|AtomicInteger
@@ -1484,7 +1472,7 @@ operator|new
 name|ConnectionAudit
 argument_list|()
 decl_stmt|;
-comment|/**      * Construct an<code>ActiveMQConnection</code>      * @param transport       * @param factoryStats      * @throws Exception      */
+comment|/**      * Construct an<code>ActiveMQConnection</code>      *       * @param transport      * @param factoryStats      * @throws Exception      */
 specifier|protected
 name|ActiveMQConnection
 parameter_list|(
@@ -1519,7 +1507,8 @@ name|factoryStats
 operator|=
 name|factoryStats
 expr_stmt|;
-comment|// Configure a single threaded executor who's core thread can timeout if idle
+comment|// Configure a single threaded executor who's core thread can timeout if
+comment|// idle
 name|asyncConnectionThread
 operator|=
 operator|new
@@ -1578,7 +1567,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|//asyncConnectionThread.allowCoreThreadTimeOut(true);
+comment|// asyncConnectionThread.allowCoreThreadTimeOut(true);
 name|this
 operator|.
 name|info
@@ -1827,7 +1816,7 @@ return|return
 name|stats
 return|;
 block|}
-comment|/**      * Creates a<CODE>Session</CODE> object.      *       * @param transacted      *            indicates whether the session is transacted      * @param acknowledgeMode      *            indicates whether the consumer or the client will acknowledge      *            any messages it receives; ignored if the session is      *            transacted. Legal values are      *<code>Session.AUTO_ACKNOWLEDGE</code>,      *<code>Session.CLIENT_ACKNOWLEDGE</code>, and      *<code>Session.DUPS_OK_ACKNOWLEDGE</code>.      * @return a newly created session      * @throws JMSException      *             if the<CODE>Connection</CODE> object fails to create a      *             session due to some internal error or lack of support for the      *             specific transaction and acknowledgement mode.      * @see Session#AUTO_ACKNOWLEDGE      * @see Session#CLIENT_ACKNOWLEDGE      * @see Session#DUPS_OK_ACKNOWLEDGE      * @since 1.1      */
+comment|/**      * Creates a<CODE>Session</CODE> object.      *       * @param transacted indicates whether the session is transacted      * @param acknowledgeMode indicates whether the consumer or the client will      *                acknowledge any messages it receives; ignored if the      *                session is transacted. Legal values are      *<code>Session.AUTO_ACKNOWLEDGE</code>,      *<code>Session.CLIENT_ACKNOWLEDGE</code>, and      *<code>Session.DUPS_OK_ACKNOWLEDGE</code>.      * @return a newly created session      * @throws JMSException if the<CODE>Connection</CODE> object fails to      *                 create a session due to some internal error or lack of      *                 support for the specific transaction and acknowledgement      *                 mode.      * @see Session#AUTO_ACKNOWLEDGE      * @see Session#CLIENT_ACKNOWLEDGE      * @see Session#DUPS_OK_ACKNOWLEDGE      * @since 1.1      */
 specifier|public
 name|Session
 name|createSession
@@ -1926,7 +1915,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Gets the client identifier for this connection.      *<P>      * This value is specific to the JMS provider. It is either preconfigured by      * an administrator in a<CODE> ConnectionFactory</CODE> object or assigned      * dynamically by the application by calling the<code>setClientID</code>      * method.      *       * @return the unique client identifier      * @throws JMSException      *             if the JMS provider fails to return the client ID for this      *             connection due to some internal error.      */
+comment|/**      * Gets the client identifier for this connection.      *<P>      * This value is specific to the JMS provider. It is either preconfigured by      * an administrator in a<CODE> ConnectionFactory</CODE> object or assigned      * dynamically by the application by calling the<code>setClientID</code>      * method.      *       * @return the unique client identifier      * @throws JMSException if the JMS provider fails to return the client ID      *                 for this connection due to some internal error.      */
 specifier|public
 name|String
 name|getClientID
@@ -1946,7 +1935,7 @@ name|getClientId
 argument_list|()
 return|;
 block|}
-comment|/**      * Sets the client identifier for this connection.      *<P>      * The preferred way to assign a JMS client's client identifier is for it to      * be configured in a client-specific<CODE>ConnectionFactory</CODE>      * object and transparently assigned to the<CODE>Connection</CODE> object      * it creates.      *<P>      * Alternatively, a client can set a connection's client identifier using a      * provider-specific value. The facility to set a connection's client      * identifier explicitly is not a mechanism for overriding the identifier      * that has been administratively configured. It is provided for the case      * where no administratively specified identifier exists. If one does exist,      * an attempt to change it by setting it must throw an<CODE>IllegalStateException</CODE>.      * If a client sets the client identifier explicitly, it must do so      * immediately after it creates the connection and before any other action      * on the connection is taken. After this point, setting the client      * identifier is a programming error that should throw an<CODE>IllegalStateException</CODE>.      *<P>      * The purpose of the client identifier is to associate a connection and its      * objects with a state maintained on behalf of the client by a provider.      * The only such state identified by the JMS API is that required to support      * durable subscriptions.      *<P>      * If another connection with the same<code>clientID</code> is already      * running when this method is called, the JMS provider should detect the      * duplicate ID and throw an<CODE>InvalidClientIDException</CODE>.      *       * @param newClientID      *            the unique client identifier      * @throws JMSException      *             if the JMS provider fails to set the client ID for this      *             connection due to some internal error.      * @throws javax.jms.InvalidClientIDException      *             if the JMS client specifies an invalid or duplicate client      *             ID.      * @throws javax.jms.IllegalStateException      *             if the JMS client attempts to set a connection's client ID at      *             the wrong time or when it has been administratively      *             configured.      */
+comment|/**      * Sets the client identifier for this connection.      *<P>      * The preferred way to assign a JMS client's client identifier is for it to      * be configured in a client-specific<CODE>ConnectionFactory</CODE>      * object and transparently assigned to the<CODE>Connection</CODE> object      * it creates.      *<P>      * Alternatively, a client can set a connection's client identifier using a      * provider-specific value. The facility to set a connection's client      * identifier explicitly is not a mechanism for overriding the identifier      * that has been administratively configured. It is provided for the case      * where no administratively specified identifier exists. If one does exist,      * an attempt to change it by setting it must throw an      *<CODE>IllegalStateException</CODE>. If a client sets the client      * identifier explicitly, it must do so immediately after it creates the      * connection and before any other action on the connection is taken. After      * this point, setting the client identifier is a programming error that      * should throw an<CODE>IllegalStateException</CODE>.      *<P>      * The purpose of the client identifier is to associate a connection and its      * objects with a state maintained on behalf of the client by a provider.      * The only such state identified by the JMS API is that required to support      * durable subscriptions.      *<P>      * If another connection with the same<code>clientID</code> is already      * running when this method is called, the JMS provider should detect the      * duplicate ID and throw an<CODE>InvalidClientIDException</CODE>.      *       * @param newClientID the unique client identifier      * @throws JMSException if the JMS provider fails to set the client ID for      *                 this connection due to some internal error.      * @throws javax.jms.InvalidClientIDException if the JMS client specifies an      *                 invalid or duplicate client ID.      * @throws javax.jms.IllegalStateException if the JMS client attempts to set      *                 a connection's client ID at the wrong time or when it has      *                 been administratively configured.      */
 specifier|public
 name|void
 name|setClientID
@@ -2009,7 +1998,7 @@ name|ensureConnectionInfoSent
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Sets the default client id that the connection will use if explicitly not set with      * the setClientId() call.      */
+comment|/**      * Sets the default client id that the connection will use if explicitly not      * set with the setClientId() call.      */
 specifier|public
 name|void
 name|setDefaultClientID
@@ -2036,7 +2025,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|/**      * Gets the metadata for this connection.      *       * @return the connection metadata      * @throws JMSException      *             if the JMS provider fails to get the connection metadata for      *             this connection.      * @see javax.jms.ConnectionMetaData      */
+comment|/**      * Gets the metadata for this connection.      *       * @return the connection metadata      * @throws JMSException if the JMS provider fails to get the connection      *                 metadata for this connection.      * @see javax.jms.ConnectionMetaData      */
 specifier|public
 name|ConnectionMetaData
 name|getMetaData
@@ -2053,7 +2042,7 @@ operator|.
 name|INSTANCE
 return|;
 block|}
-comment|/**      * Gets the<CODE>ExceptionListener</CODE> object for this connection. Not      * every<CODE>Connection</CODE> has an<CODE>ExceptionListener</CODE>      * associated with it.      *       * @return the<CODE>ExceptionListener</CODE> for this connection, or      *         null. if no<CODE>ExceptionListener</CODE> is associated with      *         this connection.      * @throws JMSException      *             if the JMS provider fails to get the<CODE>ExceptionListener</CODE>      *             for this connection.      * @see javax.jms.Connection#setExceptionListener(ExceptionListener)      */
+comment|/**      * Gets the<CODE>ExceptionListener</CODE> object for this connection. Not      * every<CODE>Connection</CODE> has an<CODE>ExceptionListener</CODE>      * associated with it.      *       * @return the<CODE>ExceptionListener</CODE> for this connection, or      *         null. if no<CODE>ExceptionListener</CODE> is associated with      *         this connection.      * @throws JMSException if the JMS provider fails to get the      *<CODE>ExceptionListener</CODE> for this connection.      * @see javax.jms.Connection#setExceptionListener(ExceptionListener)      */
 specifier|public
 name|ExceptionListener
 name|getExceptionListener
@@ -2070,7 +2059,7 @@ operator|.
 name|exceptionListener
 return|;
 block|}
-comment|/**      * Sets an exception listener for this connection.      *<P>      * If a JMS provider detects a serious problem with a connection, it informs      * the connection's<CODE> ExceptionListener</CODE>, if one has been      * registered. It does this by calling the listener's<CODE>onException      *</CODE> method, passing it a<CODE>JMSException</CODE> object      * describing the problem.      *<P>      * An exception listener allows a client to be notified of a problem      * asynchronously. Some connections only consume messages, so they would      * have no other way to learn their connection has failed.      *<P>      * A connection serializes execution of its<CODE>ExceptionListener</CODE>.      *<P>      * A JMS provider should attempt to resolve connection problems itself      * before it notifies the client of them.      *       * @param listener      *            the exception listener      * @throws JMSException      *             if the JMS provider fails to set the exception listener for      *             this connection.      */
+comment|/**      * Sets an exception listener for this connection.      *<P>      * If a JMS provider detects a serious problem with a connection, it informs      * the connection's<CODE> ExceptionListener</CODE>, if one has been      * registered. It does this by calling the listener's<CODE>onException      *</CODE>      * method, passing it a<CODE>JMSException</CODE> object describing the      * problem.      *<P>      * An exception listener allows a client to be notified of a problem      * asynchronously. Some connections only consume messages, so they would      * have no other way to learn their connection has failed.      *<P>      * A connection serializes execution of its<CODE>ExceptionListener</CODE>.      *<P>      * A JMS provider should attempt to resolve connection problems itself      * before it notifies the client of them.      *       * @param listener the exception listener      * @throws JMSException if the JMS provider fails to set the exception      *                 listener for this connection.      */
 specifier|public
 name|void
 name|setExceptionListener
@@ -2091,7 +2080,7 @@ operator|=
 name|listener
 expr_stmt|;
 block|}
-comment|/**      * Starts (or restarts) a connection's delivery of incoming messages. A call      * to<CODE>start</CODE> on a connection that has already been started is      * ignored.      *       * @throws JMSException      *             if the JMS provider fails to start message delivery due to      *             some internal error.      * @see javax.jms.Connection#stop()      */
+comment|/**      * Starts (or restarts) a connection's delivery of incoming messages. A call      * to<CODE>start</CODE> on a connection that has already been started is      * ignored.      *       * @throws JMSException if the JMS provider fails to start message delivery      *                 due to some internal error.      * @see javax.jms.Connection#stop()      */
 specifier|public
 name|void
 name|start
@@ -2153,7 +2142,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Temporarily stops a connection's delivery of incoming messages. Delivery      * can be restarted using the connection's<CODE>start</CODE> method. When      * the connection is stopped, delivery to all the connection's message      * consumers is inhibited: synchronous receives block, and messages are not      * delivered to message listeners.      *<P>      * This call blocks until receives and/or message listeners in progress have      * completed.      *<P>      * Stopping a connection has no effect on its ability to send messages. A      * call to<CODE>stop</CODE> on a connection that has already been stopped      * is ignored.      *<P>      * A call to<CODE>stop</CODE> must not return until delivery of messages      * has paused. This means that a client can rely on the fact that none of      * its message listeners will be called and that all threads of control      * waiting for<CODE>receive</CODE> calls to return will not return with a      * message until the connection is restarted. The receive timers for a      * stopped connection continue to advance, so receives may time out while      * the connection is stopped.      *<P>      * If message listeners are running when<CODE>stop</CODE> is invoked, the      *<CODE>stop</CODE> call must wait until all of them have returned before      * it may return. While these message listeners are completing, they must      * have the full services of the connection available to them.      *       * @throws JMSException      *             if the JMS provider fails to stop message delivery due to      *             some internal error.      * @see javax.jms.Connection#start()      */
+comment|/**      * Temporarily stops a connection's delivery of incoming messages. Delivery      * can be restarted using the connection's<CODE>start</CODE> method. When      * the connection is stopped, delivery to all the connection's message      * consumers is inhibited: synchronous receives block, and messages are not      * delivered to message listeners.      *<P>      * This call blocks until receives and/or message listeners in progress have      * completed.      *<P>      * Stopping a connection has no effect on its ability to send messages. A      * call to<CODE>stop</CODE> on a connection that has already been stopped      * is ignored.      *<P>      * A call to<CODE>stop</CODE> must not return until delivery of messages      * has paused. This means that a client can rely on the fact that none of      * its message listeners will be called and that all threads of control      * waiting for<CODE>receive</CODE> calls to return will not return with a      * message until the connection is restarted. The receive timers for a      * stopped connection continue to advance, so receives may time out while      * the connection is stopped.      *<P>      * If message listeners are running when<CODE>stop</CODE> is invoked, the      *<CODE>stop</CODE> call must wait until all of them have returned before      * it may return. While these message listeners are completing, they must      * have the full services of the connection available to them.      *       * @throws JMSException if the JMS provider fails to stop message delivery      *                 due to some internal error.      * @see javax.jms.Connection#start()      */
 specifier|public
 name|void
 name|stop
@@ -2212,7 +2201,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Closes the connection.      *<P>      * Since a provider typically allocates significant resources outside the      * JVM on behalf of a connection, clients should close these resources when      * they are not needed. Relying on garbage collection to eventually reclaim      * these resources may not be timely enough.      *<P>      * There is no need to close the sessions, producers, and consumers of a      * closed connection.      *<P>      * Closing a connection causes all temporary destinations to be deleted.      *<P>      * When this method is invoked, it should not return until message      * processing has been shut down in an orderly fashion. This means that all      * message listeners that may have been running have returned, and that all      * pending receives have returned. A close terminates all pending message      * receives on the connection's sessions' consumers. The receives may return      * with a message or with null, depending on whether there was a message      * available at the time of the close. If one or more of the connection's      * sessions' message listeners is processing a message at the time when      * connection<CODE>close</CODE> is invoked, all the facilities of the      * connection and its sessions must remain available to those listeners      * until they return control to the JMS provider.      *<P>      * Closing a connection causes any of its sessions' transactions in progress      * to be rolled back. In the case where a session's work is coordinated by      * an external transaction manager, a session's<CODE>commit</CODE> and      *<CODE> rollback</CODE> methods are not used and the result of a closed      * session's work is determined later by the transaction manager. Closing a      * connection does NOT force an acknowledgment of client-acknowledged      * sessions.      *<P>      * Invoking the<CODE>acknowledge</CODE> method of a received message from      * a closed connection's session must throw an<CODE>IllegalStateException</CODE>.      * Closing a closed connection must NOT throw an exception.      *       * @throws JMSException      *             if the JMS provider fails to close the connection due to some      *             internal error. For example, a failure to release resources      *             or to close a socket connection can cause this exception to      *             be thrown.      */
+comment|/**      * Closes the connection.      *<P>      * Since a provider typically allocates significant resources outside the      * JVM on behalf of a connection, clients should close these resources when      * they are not needed. Relying on garbage collection to eventually reclaim      * these resources may not be timely enough.      *<P>      * There is no need to close the sessions, producers, and consumers of a      * closed connection.      *<P>      * Closing a connection causes all temporary destinations to be deleted.      *<P>      * When this method is invoked, it should not return until message      * processing has been shut down in an orderly fashion. This means that all      * message listeners that may have been running have returned, and that all      * pending receives have returned. A close terminates all pending message      * receives on the connection's sessions' consumers. The receives may return      * with a message or with null, depending on whether there was a message      * available at the time of the close. If one or more of the connection's      * sessions' message listeners is processing a message at the time when      * connection<CODE>close</CODE> is invoked, all the facilities of the      * connection and its sessions must remain available to those listeners      * until they return control to the JMS provider.      *<P>      * Closing a connection causes any of its sessions' transactions in progress      * to be rolled back. In the case where a session's work is coordinated by      * an external transaction manager, a session's<CODE>commit</CODE> and      *<CODE> rollback</CODE> methods are not used and the result of a closed      * session's work is determined later by the transaction manager. Closing a      * connection does NOT force an acknowledgment of client-acknowledged      * sessions.      *<P>      * Invoking the<CODE>acknowledge</CODE> method of a received message from      * a closed connection's session must throw an      *<CODE>IllegalStateException</CODE>. Closing a closed connection must      * NOT throw an exception.      *       * @throws JMSException if the JMS provider fails to close the connection      *                 due to some internal error. For example, a failure to      *                 release resources or to close a socket connection can      *                 cause this exception to be thrown.      */
 specifier|public
 name|void
 name|close
@@ -2416,7 +2405,8 @@ condition|(
 name|isConnectionInfoSentToBroker
 condition|)
 block|{
-comment|// If we announced ourselfs to the broker.. Try to let the broker
+comment|// If we announced ourselfs to the broker.. Try to let
+comment|// the broker
 comment|// know that the connection is being shutdown.
 name|syncSendPacket
 argument_list|(
@@ -2452,7 +2442,8 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|// TODO if we move the TaskRunnerFactory to the connection factory
+comment|// TODO if we move the TaskRunnerFactory to the connection
+comment|// factory
 comment|// then we may need to call
 comment|// factory.onConnectionClose(this);
 name|sessionTaskRunner
@@ -2489,9 +2480,10 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Tells the broker to terminate its VM. This can be used to cleanly      * terminate a broker running in a standalone java process. Server must have      * property enable.vm.shutdown=true defined to allow this to work.      */
-comment|// TODO : org.apache.activemq.message.BrokerAdminCommand not yet implemented.
+comment|// TODO : org.apache.activemq.message.BrokerAdminCommand not yet
+comment|// implemented.
 comment|/*      * public void terminateBrokerVM() throws JMSException { BrokerAdminCommand      * command = new BrokerAdminCommand();      * command.setCommand(BrokerAdminCommand.SHUTDOWN_SERVER_VM);      * asyncSendPacket(command); }      */
-comment|/**      * Create a durable connection consumer for this connection (optional      * operation). This is an expert facility not used by regular JMS clients.      *       * @param topic      *            topic to access      * @param subscriptionName      *            durable subscription name      * @param messageSelector      *            only messages with properties matching the message selector      *            expression are delivered. A value of null or an empty string      *            indicates that there is no message selector for the message      *            consumer.      * @param sessionPool      *            the server session pool to associate with this durable      *            connection consumer      * @param maxMessages      *            the maximum number of messages that can be assigned to a      *            server session at one time      * @return the durable connection consumer      * @throws JMSException      *             if the<CODE>Connection</CODE> object fails to create a      *             connection consumer due to some internal error or invalid      *             arguments for<CODE>sessionPool</CODE> and<CODE>messageSelector</CODE>.      * @throws javax.jms.InvalidDestinationException      *             if an invalid destination is specified.      * @throws javax.jms.InvalidSelectorException      *             if the message selector is invalid.      * @see javax.jms.ConnectionConsumer      * @since 1.1      */
+comment|/**      * Create a durable connection consumer for this connection (optional      * operation). This is an expert facility not used by regular JMS clients.      *       * @param topic topic to access      * @param subscriptionName durable subscription name      * @param messageSelector only messages with properties matching the message      *                selector expression are delivered. A value of null or an      *                empty string indicates that there is no message selector      *                for the message consumer.      * @param sessionPool the server session pool to associate with this durable      *                connection consumer      * @param maxMessages the maximum number of messages that can be assigned to      *                a server session at one time      * @return the durable connection consumer      * @throws JMSException if the<CODE>Connection</CODE> object fails to      *                 create a connection consumer due to some internal error      *                 or invalid arguments for<CODE>sessionPool</CODE> and      *<CODE>messageSelector</CODE>.      * @throws javax.jms.InvalidDestinationException if an invalid destination      *                 is specified.      * @throws javax.jms.InvalidSelectorException if the message selector is      *                 invalid.      * @see javax.jms.ConnectionConsumer      * @since 1.1      */
 specifier|public
 name|ConnectionConsumer
 name|createDurableConnectionConsumer
@@ -2533,7 +2525,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Create a durable connection consumer for this connection (optional      * operation). This is an expert facility not used by regular JMS clients.      *       * @param topic      *            topic to access      * @param subscriptionName      *            durable subscription name      * @param messageSelector      *            only messages with properties matching the message selector      *            expression are delivered. A value of null or an empty string      *            indicates that there is no message selector for the message      *            consumer.      * @param sessionPool      *            the server session pool to associate with this durable      *            connection consumer      * @param maxMessages      *            the maximum number of messages that can be assigned to a      *            server session at one time      * @param noLocal      *            set true if you want to filter out messages published locally      *       * @return the durable connection consumer      * @throws JMSException      *             if the<CODE>Connection</CODE> object fails to create a      *             connection consumer due to some internal error or invalid      *             arguments for<CODE>sessionPool</CODE> and<CODE>messageSelector</CODE>.      * @throws javax.jms.InvalidDestinationException      *             if an invalid destination is specified.      * @throws javax.jms.InvalidSelectorException      *             if the message selector is invalid.      * @see javax.jms.ConnectionConsumer      * @since 1.1      */
+comment|/**      * Create a durable connection consumer for this connection (optional      * operation). This is an expert facility not used by regular JMS clients.      *       * @param topic topic to access      * @param subscriptionName durable subscription name      * @param messageSelector only messages with properties matching the message      *                selector expression are delivered. A value of null or an      *                empty string indicates that there is no message selector      *                for the message consumer.      * @param sessionPool the server session pool to associate with this durable      *                connection consumer      * @param maxMessages the maximum number of messages that can be assigned to      *                a server session at one time      * @param noLocal set true if you want to filter out messages published      *                locally      * @return the durable connection consumer      * @throws JMSException if the<CODE>Connection</CODE> object fails to      *                 create a connection consumer due to some internal error      *                 or invalid arguments for<CODE>sessionPool</CODE> and      *<CODE>messageSelector</CODE>.      * @throws javax.jms.InvalidDestinationException if an invalid destination      *                 is specified.      * @throws javax.jms.InvalidSelectorException if the message selector is      *                 invalid.      * @see javax.jms.ConnectionConsumer      * @since 1.1      */
 specifier|public
 name|ConnectionConsumer
 name|createDurableConnectionConsumer
@@ -2783,7 +2775,7 @@ return|return
 name|transport
 return|;
 block|}
-comment|/**      *       * @return Returns the clientID of the connection, forcing one to be      *         generated if one has not yet been configured.      */
+comment|/**      * @return Returns the clientID of the connection, forcing one to be      *         generated if one has not yet been configured.      */
 specifier|public
 name|String
 name|getInitializedClientID
@@ -2801,7 +2793,7 @@ name|getClientId
 argument_list|()
 return|;
 block|}
-comment|/**      *       * @return Returns the timeStampsDisableByDefault.      */
+comment|/**      * @return Returns the timeStampsDisableByDefault.      */
 specifier|public
 name|boolean
 name|isDisableTimeStampsByDefault
@@ -2827,7 +2819,7 @@ operator|=
 name|timeStampsDisableByDefault
 expr_stmt|;
 block|}
-comment|/**      *       * @return Returns the dispatchOptimizedMessage.      */
+comment|/**      * @return Returns the dispatchOptimizedMessage.      */
 specifier|public
 name|boolean
 name|isOptimizedMessageDispatch
@@ -2879,7 +2871,7 @@ operator|=
 name|closeTimeout
 expr_stmt|;
 block|}
-comment|/**      *       * @return ConnectionInfo      */
+comment|/**      * @return ConnectionInfo      */
 specifier|public
 name|ConnectionInfo
 name|getConnectionInfo
@@ -2900,7 +2892,7 @@ return|return
 name|useRetroactiveConsumer
 return|;
 block|}
-comment|/**      * Sets whether or not retroactive consumers are enabled. Retroactive consumers allow      * non-durable topic subscribers to receive old messages that were published before the      * non-durable subscriber started.      */
+comment|/**      * Sets whether or not retroactive consumers are enabled. Retroactive      * consumers allow non-durable topic subscribers to receive old messages      * that were published before the non-durable subscriber started.      */
 specifier|public
 name|void
 name|setUseRetroactiveConsumer
@@ -2950,7 +2942,7 @@ return|return
 name|exclusiveConsumer
 return|;
 block|}
-comment|/**      * Enables or disables whether or not queue consumers should be exclusive or not      * for example to preserve ordering when not using      *<a href="http://activemq.apache.org/message-groups.html">Message Groups</a>      *      * @param exclusiveConsumer      */
+comment|/**      * Enables or disables whether or not queue consumers should be exclusive or      * not for example to preserve ordering when not using<a      * href="http://activemq.apache.org/message-groups.html">Message Groups</a>      *       * @param exclusiveConsumer      */
 specifier|public
 name|void
 name|setExclusiveConsumer
@@ -2966,7 +2958,7 @@ operator|=
 name|exclusiveConsumer
 expr_stmt|;
 block|}
-comment|/**      * Adds a transport listener so that a client can be notified of events in the underlying       * transport      */
+comment|/**      * Adds a transport listener so that a client can be notified of events in      * the underlying transport      */
 specifier|public
 name|void
 name|addTransportListener
@@ -3032,7 +3024,7 @@ return|return
 name|transformer
 return|;
 block|}
-comment|/**      * Sets the transformer used to transform messages before they are sent on to the JMS bus      * or when they are received from the bus but before they are delivered to the JMS client      */
+comment|/**      * Sets the transformer used to transform messages before they are sent on      * to the JMS bus or when they are received from the bus but before they are      * delivered to the JMS client      */
 specifier|public
 name|void
 name|setTransformer
@@ -3084,7 +3076,7 @@ expr_stmt|;
 block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
-comment|/**      * Used internally for adding Sessions to the Connection      *       * @param session      * @throws JMSException       * @throws JMSException      */
+comment|/**      * Used internally for adding Sessions to the Connection      *       * @param session      * @throws JMSException      * @throws JMSException      */
 specifier|protected
 name|void
 name|addSession
@@ -3198,7 +3190,7 @@ name|connectionConsumer
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a<CODE>TopicSession</CODE> object.      *       * @param transacted      *            indicates whether the session is transacted      * @param acknowledgeMode      *            indicates whether the consumer or the client will acknowledge      *            any messages it receives; ignored if the session is      *            transacted. Legal values are      *<code>Session.AUTO_ACKNOWLEDGE</code>,      *<code>Session.CLIENT_ACKNOWLEDGE</code>, and      *<code>Session.DUPS_OK_ACKNOWLEDGE</code>.      * @return a newly created topic session      * @throws JMSException      *             if the<CODE>TopicConnection</CODE> object fails to create      *             a session due to some internal error or lack of support for      *             the specific transaction and acknowledgement mode.      * @see Session#AUTO_ACKNOWLEDGE      * @see Session#CLIENT_ACKNOWLEDGE      * @see Session#DUPS_OK_ACKNOWLEDGE      */
+comment|/**      * Creates a<CODE>TopicSession</CODE> object.      *       * @param transacted indicates whether the session is transacted      * @param acknowledgeMode indicates whether the consumer or the client will      *                acknowledge any messages it receives; ignored if the      *                session is transacted. Legal values are      *<code>Session.AUTO_ACKNOWLEDGE</code>,      *<code>Session.CLIENT_ACKNOWLEDGE</code>, and      *<code>Session.DUPS_OK_ACKNOWLEDGE</code>.      * @return a newly created topic session      * @throws JMSException if the<CODE>TopicConnection</CODE> object fails      *                 to create a session due to some internal error or lack of      *                 support for the specific transaction and acknowledgement      *                 mode.      * @see Session#AUTO_ACKNOWLEDGE      * @see Session#CLIENT_ACKNOWLEDGE      * @see Session#DUPS_OK_ACKNOWLEDGE      */
 specifier|public
 name|TopicSession
 name|createTopicSession
@@ -3228,7 +3220,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a connection consumer for this connection (optional operation).      * This is an expert facility not used by regular JMS clients.      *       * @param topic      *            the topic to access      * @param messageSelector      *            only messages with properties matching the message selector      *            expression are delivered. A value of null or an empty string      *            indicates that there is no message selector for the message      *            consumer.      * @param sessionPool      *            the server session pool to associate with this connection      *            consumer      * @param maxMessages      *            the maximum number of messages that can be assigned to a      *            server session at one time      * @return the connection consumer      * @throws JMSException      *             if the<CODE>TopicConnection</CODE> object fails to create      *             a connection consumer due to some internal error or invalid      *             arguments for<CODE>sessionPool</CODE> and<CODE>messageSelector</CODE>.      * @throws javax.jms.InvalidDestinationException      *             if an invalid topic is specified.      * @throws javax.jms.InvalidSelectorException      *             if the message selector is invalid.      * @see javax.jms.ConnectionConsumer      */
+comment|/**      * Creates a connection consumer for this connection (optional operation).      * This is an expert facility not used by regular JMS clients.      *       * @param topic the topic to access      * @param messageSelector only messages with properties matching the message      *                selector expression are delivered. A value of null or an      *                empty string indicates that there is no message selector      *                for the message consumer.      * @param sessionPool the server session pool to associate with this      *                connection consumer      * @param maxMessages the maximum number of messages that can be assigned to      *                a server session at one time      * @return the connection consumer      * @throws JMSException if the<CODE>TopicConnection</CODE> object fails      *                 to create a connection consumer due to some internal      *                 error or invalid arguments for<CODE>sessionPool</CODE>      *                 and<CODE>messageSelector</CODE>.      * @throws javax.jms.InvalidDestinationException if an invalid topic is      *                 specified.      * @throws javax.jms.InvalidSelectorException if the message selector is      *                 invalid.      * @see javax.jms.ConnectionConsumer      */
 specifier|public
 name|ConnectionConsumer
 name|createConnectionConsumer
@@ -3263,7 +3255,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a connection consumer for this connection (optional operation).      * This is an expert facility not used by regular JMS clients.      *       * @param queue      *            the queue to access      * @param messageSelector      *            only messages with properties matching the message selector      *            expression are delivered. A value of null or an empty string      *            indicates that there is no message selector for the message      *            consumer.      * @param sessionPool      *            the server session pool to associate with this connection      *            consumer      * @param maxMessages      *            the maximum number of messages that can be assigned to a      *            server session at one time      * @return the connection consumer      * @throws JMSException      *             if the<CODE>QueueConnection</CODE> object fails to create      *             a connection consumer due to some internal error or invalid      *             arguments for<CODE>sessionPool</CODE> and<CODE>messageSelector</CODE>.      * @throws javax.jms.InvalidDestinationException      *             if an invalid queue is specified.      * @throws javax.jms.InvalidSelectorException      *             if the message selector is invalid.      * @see javax.jms.ConnectionConsumer      */
+comment|/**      * Creates a connection consumer for this connection (optional operation).      * This is an expert facility not used by regular JMS clients.      *       * @param queue the queue to access      * @param messageSelector only messages with properties matching the message      *                selector expression are delivered. A value of null or an      *                empty string indicates that there is no message selector      *                for the message consumer.      * @param sessionPool the server session pool to associate with this      *                connection consumer      * @param maxMessages the maximum number of messages that can be assigned to      *                a server session at one time      * @return the connection consumer      * @throws JMSException if the<CODE>QueueConnection</CODE> object fails      *                 to create a connection consumer due to some internal      *                 error or invalid arguments for<CODE>sessionPool</CODE>      *                 and<CODE>messageSelector</CODE>.      * @throws javax.jms.InvalidDestinationException if an invalid queue is      *                 specified.      * @throws javax.jms.InvalidSelectorException if the message selector is      *                 invalid.      * @see javax.jms.ConnectionConsumer      */
 specifier|public
 name|ConnectionConsumer
 name|createConnectionConsumer
@@ -3298,7 +3290,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a connection consumer for this connection (optional operation).      * This is an expert facility not used by regular JMS clients.      *       * @param destination      *            the destination to access      * @param messageSelector      *            only messages with properties matching the message selector      *            expression are delivered. A value of null or an empty string      *            indicates that there is no message selector for the message      *            consumer.      * @param sessionPool      *            the server session pool to associate with this connection      *            consumer      * @param maxMessages      *            the maximum number of messages that can be assigned to a      *            server session at one time      * @return the connection consumer      * @throws JMSException      *             if the<CODE>Connection</CODE> object fails to create a      *             connection consumer due to some internal error or invalid      *             arguments for<CODE>sessionPool</CODE> and<CODE>messageSelector</CODE>.      * @throws javax.jms.InvalidDestinationException      *             if an invalid destination is specified.      * @throws javax.jms.InvalidSelectorException      *             if the message selector is invalid.      * @see javax.jms.ConnectionConsumer      * @since 1.1      */
+comment|/**      * Creates a connection consumer for this connection (optional operation).      * This is an expert facility not used by regular JMS clients.      *       * @param destination the destination to access      * @param messageSelector only messages with properties matching the message      *                selector expression are delivered. A value of null or an      *                empty string indicates that there is no message selector      *                for the message consumer.      * @param sessionPool the server session pool to associate with this      *                connection consumer      * @param maxMessages the maximum number of messages that can be assigned to      *                a server session at one time      * @return the connection consumer      * @throws JMSException if the<CODE>Connection</CODE> object fails to      *                 create a connection consumer due to some internal error      *                 or invalid arguments for<CODE>sessionPool</CODE> and      *<CODE>messageSelector</CODE>.      * @throws javax.jms.InvalidDestinationException if an invalid destination      *                 is specified.      * @throws javax.jms.InvalidSelectorException if the message selector is      *                 invalid.      * @see javax.jms.ConnectionConsumer      * @since 1.1      */
 specifier|public
 name|ConnectionConsumer
 name|createConnectionConsumer
@@ -3507,7 +3499,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a<CODE>QueueSession</CODE> object.      *       * @param transacted      *            indicates whether the session is transacted      * @param acknowledgeMode      *            indicates whether the consumer or the client will acknowledge      *            any messages it receives; ignored if the session is      *            transacted. Legal values are      *<code>Session.AUTO_ACKNOWLEDGE</code>,      *<code>Session.CLIENT_ACKNOWLEDGE</code>, and      *<code>Session.DUPS_OK_ACKNOWLEDGE</code>.      * @return a newly created queue session      * @throws JMSException      *             if the<CODE>QueueConnection</CODE> object fails to create      *             a session due to some internal error or lack of support for      *             the specific transaction and acknowledgement mode.      * @see Session#AUTO_ACKNOWLEDGE      * @see Session#CLIENT_ACKNOWLEDGE      * @see Session#DUPS_OK_ACKNOWLEDGE      */
+comment|/**      * Creates a<CODE>QueueSession</CODE> object.      *       * @param transacted indicates whether the session is transacted      * @param acknowledgeMode indicates whether the consumer or the client will      *                acknowledge any messages it receives; ignored if the      *                session is transacted. Legal values are      *<code>Session.AUTO_ACKNOWLEDGE</code>,      *<code>Session.CLIENT_ACKNOWLEDGE</code>, and      *<code>Session.DUPS_OK_ACKNOWLEDGE</code>.      * @return a newly created queue session      * @throws JMSException if the<CODE>QueueConnection</CODE> object fails      *                 to create a session due to some internal error or lack of      *                 support for the specific transaction and acknowledgement      *                 mode.      * @see Session#AUTO_ACKNOWLEDGE      * @see Session#CLIENT_ACKNOWLEDGE      * @see Session#DUPS_OK_ACKNOWLEDGE      */
 specifier|public
 name|QueueSession
 name|createQueueSession
@@ -3853,7 +3845,7 @@ return|return
 name|stats
 return|;
 block|}
-comment|/**      * simply throws an exception if the Connection is already closed      * or the Transport has failed      *       * @throws JMSException      */
+comment|/**      * simply throws an exception if the Connection is already closed or the      * Transport has failed      *       * @throws JMSException      */
 specifier|protected
 specifier|synchronized
 name|void
@@ -4053,7 +4045,7 @@ return|return
 name|useAsyncSend
 return|;
 block|}
-comment|/**      * Forces the use of<a      * href="http://activemq.apache.org/async-sends.html">Async Sends</a>      * which adds a massive performance boost; but means that the send() method      * will return immediately whether the message has been sent or not which      * could lead to message loss.      */
+comment|/**      * Forces the use of<a      * href="http://activemq.apache.org/async-sends.html">Async Sends</a> which      * adds a massive performance boost; but means that the send() method will      * return immediately whether the message has been sent or not which could      * lead to message loss.      */
 specifier|public
 name|void
 name|setUseAsyncSend
@@ -4081,7 +4073,7 @@ operator|.
 name|alwaysSyncSend
 return|;
 block|}
-comment|/**      * Set true if always require messages to be sync sent      * @param alwaysSyncSend      */
+comment|/**      * Set true if always require messages to be sync sent      *       * @param alwaysSyncSend      */
 specifier|public
 name|void
 name|setAlwaysSyncSend
@@ -4097,7 +4089,7 @@ operator|=
 name|alwaysSyncSend
 expr_stmt|;
 block|}
-comment|/**      * Cleans up this connection so that it's state is as if the connection was      * just created. This allows the Resource Adapter to clean up a connection      * so that it can be reused without having to close and recreate the      * connection.      *       */
+comment|/**      * Cleans up this connection so that it's state is as if the connection was      * just created. This allows the Resource Adapter to clean up a connection      * so that it can be reused without having to close and recreate the      * connection.      */
 specifier|public
 name|void
 name|cleanup
@@ -4329,7 +4321,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Changes the associated username/password that is associated with this      * connection. If the connection has been used, you must called cleanup()      * before calling this method.      *       * @throws IllegalStateException      *             if the connection is in used.      *       */
+comment|/**      * Changes the associated username/password that is associated with this      * connection. If the connection has been used, you must called cleanup()      * before calling this method.      *       * @throws IllegalStateException if the connection is in used.      */
 specifier|public
 name|void
 name|changeUserInfo
@@ -4407,7 +4399,7 @@ name|getValue
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns the broker name if one is available or null if one is not available yet.      */
+comment|/**      * Returns the broker name if one is available or null if one is not      * available yet.      */
 specifier|public
 name|String
 name|getBrokerName
@@ -4463,7 +4455,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Returns the broker information if it is available or null if it is not available yet.      */
+comment|/**      * Returns the broker information if it is available or null if it is not      * available yet.      */
 specifier|public
 name|BrokerInfo
 name|getBrokerInfo
@@ -4523,7 +4515,7 @@ return|return
 name|blobTransferPolicy
 return|;
 block|}
-comment|/**      * Sets the policy used to describe how out-of-band BLOBs (Binary Large OBjects)      * are transferred from producers to brokers to consumers      */
+comment|/**      * Sets the policy used to describe how out-of-band BLOBs (Binary Large      * OBjects) are transferred from producers to brokers to consumers      */
 specifier|public
 name|void
 name|setBlobTransferPolicy
@@ -4575,7 +4567,7 @@ return|return
 name|optimizeAcknowledge
 return|;
 block|}
-comment|/**      * Enables an optimised acknowledgement mode where messages are acknowledged in batches rather than individually      *       * @param optimizeAcknowledge The optimizeAcknowledge to set.      */
+comment|/**      * Enables an optimised acknowledgement mode where messages are acknowledged      * in batches rather than individually      *       * @param optimizeAcknowledge The optimizeAcknowledge to set.      */
 specifier|public
 name|void
 name|setOptimizeAcknowledge
@@ -4600,7 +4592,7 @@ return|return
 name|warnAboutUnstartedConnectionTimeout
 return|;
 block|}
-comment|/**      * Enables the timeout from a connection creation to when a warning is generated      * if the connection is not properly started via {@link #start()} and a message is received by a consumer.      *       * It is a very common gotcha to forget to      *<a href="http://activemq.apache.org/i-am-not-receiving-any-messages-what-is-wrong.html">start the connection</a>      * so this option makes the default case to create a warning if the user forgets.      * To disable the warning just set the value to< 0 (say -1).      */
+comment|/**      * Enables the timeout from a connection creation to when a warning is      * generated if the connection is not properly started via {@link #start()}      * and a message is received by a consumer. It is a very common gotcha to      * forget to<a      * href="http://activemq.apache.org/i-am-not-receiving-any-messages-what-is-wrong.html">start      * the connection</a> so this option makes the default case to create a      * warning if the user forgets. To disable the warning just set the value to<      * 0 (say -1).      */
 specifier|public
 name|void
 name|setWarnAboutUnstartedConnectionTimeout
@@ -4825,8 +4817,10 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// Copy in case a embedded broker is dispatching via vm://
-comment|// md.getMessage() == null to signal end of queue browse.
+comment|// Copy in case a embedded broker is dispatching via
+comment|// vm://
+comment|// md.getMessage() == null to signal end of queue
+comment|// browse.
 name|Message
 name|msg
 init|=
@@ -5048,7 +5042,7 @@ name|Thread
 argument_list|(
 literal|"Async error worker"
 argument_list|)
-block|{ 		                }
+block|{                         }
 operator|.
 name|start
 argument_list|()
@@ -5314,7 +5308,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -5569,7 +5563,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Create the DestinationInfo object for the temporary destination.      *       * @param topic - if its true topic, else queue.      * @return DestinationInfo      * @throws JMSException       */
+comment|/**      * Create the DestinationInfo object for the temporary destination.      *       * @param topic - if its true topic, else queue.      * @return DestinationInfo      * @throws JMSException      */
 specifier|protected
 name|ActiveMQTempDestination
 name|createTempDestination
@@ -5685,7 +5679,7 @@ return|return
 name|dest
 return|;
 block|}
-comment|/**      *       * @param destination      * @throws JMSException      */
+comment|/**      * @param destination      * @throws JMSException      */
 specifier|public
 name|void
 name|deleteTempDestination
@@ -5948,7 +5942,7 @@ return|return
 name|dispatchAsync
 return|;
 block|}
-comment|/**      * Enables or disables the default setting of whether or not consumers have      * their messages<a      * href="http://activemq.apache.org/consumer-dispatch-async.html">dispatched      * synchronously or asynchronously by the broker</a>.      *       * For non-durable topics for example we typically dispatch synchronously by      * default to minimize context switches which boost performance. However      * sometimes its better to go slower to ensure that a single blocked      * consumer socket does not block delivery to other consumers.      *       * @param asyncDispatch      *            If true then consumers created on this connection will default      *            to having their messages dispatched asynchronously. The      *            default value is false.      */
+comment|/**      * Enables or disables the default setting of whether or not consumers have      * their messages<a      * href="http://activemq.apache.org/consumer-dispatch-async.html">dispatched      * synchronously or asynchronously by the broker</a>. For non-durable      * topics for example we typically dispatch synchronously by default to      * minimize context switches which boost performance. However sometimes its      * better to go slower to ensure that a single blocked consumer socket does      * not block delivery to other consumers.      *       * @param asyncDispatch If true then consumers created on this connection      *                will default to having their messages dispatched      *                asynchronously. The default value is false.      */
 specifier|public
 name|void
 name|setDispatchAsync
@@ -6200,7 +6194,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a persistent output stream; individual messages will be written to disk/database by the broker      */
+comment|/**      * Creates a persistent output stream; individual messages will be written      * to disk/database by the broker      */
 specifier|public
 name|OutputStream
 name|createOutputStream
@@ -6232,7 +6226,7 @@ name|DEFAULT_TIME_TO_LIVE
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a non persistent output stream; messages will not be written to disk      */
+comment|/**      * Creates a non persistent output stream; messages will not be written to      * disk      */
 specifier|public
 name|OutputStream
 name|createNonPersistentOutputStream
@@ -6264,7 +6258,7 @@ name|DEFAULT_TIME_TO_LIVE
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates an output stream allowing full control over the delivery mode,      * the priority and time to live of the messages and the properties added to      * messages on the stream.      *       * @param streamProperties      *            defines a map of key-value pairs where the keys are strings      *            and the values are primitive values (numbers and strings)      *            which are appended to the messages similarly to using the      *            {@link javax.jms.Message#setObjectProperty(String, Object)}      *            method      */
+comment|/**      * Creates an output stream allowing full control over the delivery mode,      * the priority and time to live of the messages and the properties added to      * messages on the stream.      *       * @param streamProperties defines a map of key-value pairs where the keys      *                are strings and the values are primitive values (numbers      *                and strings) which are appended to the messages similarly      *                to using the      *                {@link javax.jms.Message#setObjectProperty(String, Object)}      *                method      */
 specifier|public
 name|OutputStream
 name|createOutputStream
@@ -6319,7 +6313,7 @@ name|timeToLive
 argument_list|)
 return|;
 block|}
-comment|/**      * Unsubscribes a durable subscription that has been created by a client.      *<P>      * This method deletes the state being maintained on behalf of the      * subscriber by its provider.      *<P>      * It is erroneous for a client to delete a durable subscription while there      * is an active<CODE>MessageConsumer</CODE> or<CODE>TopicSubscriber</CODE>      * for the subscription, or while a consumed message is part of a pending      * transaction or has not been acknowledged in the session.      *       * @param name      *            the name used to identify this subscription      * @throws JMSException      *             if the session fails to unsubscribe to the durable      *             subscription due to some internal error.      * @throws InvalidDestinationException      *             if an invalid subscription name is specified.      * @since 1.1      */
+comment|/**      * Unsubscribes a durable subscription that has been created by a client.      *<P>      * This method deletes the state being maintained on behalf of the      * subscriber by its provider.      *<P>      * It is erroneous for a client to delete a durable subscription while there      * is an active<CODE>MessageConsumer</CODE> or      *<CODE>TopicSubscriber</CODE> for the subscription, or while a consumed      * message is part of a pending transaction or has not been acknowledged in      * the session.      *       * @param name the name used to identify this subscription      * @throws JMSException if the session fails to unsubscribe to the durable      *                 subscription due to some internal error.      * @throws InvalidDestinationException if an invalid subscription name is      *                 specified.      * @since 1.1      */
 specifier|public
 name|void
 name|unsubscribe
@@ -6375,7 +6369,7 @@ name|rsi
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Internal send method optimized:      *  - It does not copy the message      *  - It can only handle ActiveMQ messages.      *  - You can specify if the send is async or sync       *  - Does not allow you to send /w a transaction.      */
+comment|/**      * Internal send method optimized: - It does not copy the message - It can      * only handle ActiveMQ messages. - You can specify if the send is async or      * sync - Does not allow you to send /w a transaction.      */
 name|void
 name|send
 parameter_list|(
@@ -6533,13 +6527,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -6666,7 +6660,7 @@ literal|"shutdown"
 argument_list|)
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -6907,7 +6901,7 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(

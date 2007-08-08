@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -254,7 +254,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * In the queue case, mark the node as dropped and then a gc cycle will remove it from       * the queue.      * @throws IOException       */
+comment|/**      * In the queue case, mark the node as dropped and then a gc cycle will      * remove it from the queue.      *       * @throws IOException      */
 specifier|protected
 name|void
 name|acknowledge
@@ -603,7 +603,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Assigns the message group to this subscription and set the flag on the message that it is the first message      * to be dispatched.      */
+comment|/**      * Assigns the message group to this subscription and set the flag on the      * message that it is the first message to be dispatched.      */
 specifier|protected
 name|void
 name|assignGroupToMe
@@ -755,7 +755,7 @@ name|isExclusive
 argument_list|()
 return|;
 block|}
-comment|/**      * Override so that the message ref count is> 0 only when the message is being dispatched      * to a client.  Keeping it at 0 when it is in the pending list allows the message to be swapped out      * to disk.      *       * @return true if the message was dispatched.      */
+comment|/**      * Override so that the message ref count is> 0 only when the message is      * being dispatched to a client. Keeping it at 0 when it is in the pending      * list allows the message to be swapped out to disk.      *       * @return true if the message was dispatched.      */
 specifier|protected
 name|boolean
 name|dispatch
@@ -791,8 +791,10 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-comment|// If the message was dispatched, it could be getting dispatched async, so we
-comment|// can only drop the reference count when that completes @see onDispatch
+comment|// If the message was dispatched, it could be getting dispatched
+comment|// async, so we
+comment|// can only drop the reference count when that completes @see
+comment|// onDispatch
 if|if
 condition|(
 operator|!
@@ -810,7 +812,7 @@ return|return
 name|rc
 return|;
 block|}
-comment|/**      * OK Message was transmitted, we can now drop the reference count.      *       * @see org.apache.activemq.broker.region.PrefetchSubscription#onDispatch(org.apache.activemq.broker.region.MessageReference, org.apache.activemq.command.Message)      */
+comment|/**      * OK Message was transmitted, we can now drop the reference count.      *       * @see org.apache.activemq.broker.region.PrefetchSubscription#onDispatch(org.apache.activemq.broker.region.MessageReference,      *      org.apache.activemq.command.Message)      */
 specifier|protected
 name|void
 name|onDispatch
@@ -839,7 +841,7 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sending a message to the DQL will require us to increment the ref count so we can get at the content.      */
+comment|/**      * Sending a message to the DQL will require us to increment the ref count      * so we can get at the content.      */
 specifier|protected
 name|void
 name|sendToDLQ
@@ -888,7 +890,7 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{             }
+block|{     }
 block|}
 end_class
 

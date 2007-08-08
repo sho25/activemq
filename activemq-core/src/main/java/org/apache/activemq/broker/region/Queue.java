@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -674,6 +674,10 @@ name|Destination
 implements|,
 name|Task
 block|{
+specifier|final
+name|Broker
+name|broker
+decl_stmt|;
 specifier|private
 specifier|final
 name|Log
@@ -742,8 +746,6 @@ decl_stmt|;
 specifier|private
 name|int
 name|garbageSize
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|int
@@ -822,12 +824,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|started
-init|=
-literal|false
-decl_stmt|;
-specifier|final
-name|Broker
-name|broker
 decl_stmt|;
 specifier|public
 name|Queue
@@ -967,7 +963,7 @@ name|usageManager
 argument_list|)
 expr_stmt|;
 block|}
-comment|//let's copy the enabled property from the parent DestinationStatistics
+comment|// let's copy the enabled property from the parent DestinationStatistics
 name|this
 operator|.
 name|destinationStatistics
@@ -1057,7 +1053,8 @@ name|Message
 name|message
 parameter_list|)
 block|{
-comment|// Message could have expired while it was being loaded..
+comment|// Message could have expired while it was being
+comment|// loaded..
 if|if
 condition|(
 name|broker
@@ -1952,7 +1949,7 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{ 			}
+block|{             }
 block|}
 empty_stmt|;
 block|}
@@ -2113,7 +2110,8 @@ literal|"Usage Manager memory limit reached"
 argument_list|)
 throw|;
 block|}
-comment|// We can avoid blocking due to low usage if the producer is sending a sync message or
+comment|// We can avoid blocking due to low usage if the producer is sending
+comment|// a sync message or
 comment|// if it is using a producer window
 if|if
 condition|(
@@ -2156,7 +2154,8 @@ parameter_list|()
 block|{
 try|try
 block|{
-comment|// While waiting for space to free up... the message may have expired.
+comment|// While waiting for space to free up... the
+comment|// message may have expired.
 if|if
 condition|(
 name|broker
@@ -2318,7 +2317,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|// If the user manager is not full, then the task will not get called..
+comment|// If the user manager is not full, then the task will not
+comment|// get called..
 if|if
 condition|(
 operator|!
@@ -2349,7 +2349,8 @@ block|}
 block|}
 else|else
 block|{
-comment|// Producer flow control cannot be used, so we have do the flow control at the broker
+comment|// Producer flow control cannot be used, so we have do the flow
+comment|// control at the broker
 comment|// by blocking this thread until there is space available.
 while|while
 condition|(
@@ -2521,8 +2522,9 @@ name|isInTransaction
 argument_list|()
 condition|)
 block|{
-comment|// If this is a transacted message.. increase the usage now so that a big TX does not blow up
-comment|// our memory.  This increment is decremented once the tx finishes..
+comment|// If this is a transacted message.. increase the usage now so that
+comment|// a big TX does not blow up
+comment|// our memory. This increment is decremented once the tx finishes..
 name|message
 operator|.
 name|incrementReferenceCount
@@ -2617,7 +2619,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// Add to the pending list, this takes care of incrementing the usage manager.
+comment|// Add to the pending list, this takes care of incrementing the
+comment|// usage manager.
 name|sendMessage
 argument_list|(
 name|context
@@ -3848,7 +3851,7 @@ literal|1
 argument_list|)
 return|;
 block|}
-comment|/**      * Removes the messages matching the given selector up to the maximum number of matched messages      *       * @return the number of messages removed      */
+comment|/**      * Removes the messages matching the given selector up to the maximum number      * of matched messages      *       * @return the number of messages removed      */
 specifier|public
 name|int
 name|removeMatchingMessages
@@ -3874,7 +3877,7 @@ name|maximumMessages
 argument_list|)
 return|;
 block|}
-comment|/**      * Removes the messages matching the given filter up to the maximum number of matched messages      *       * @return the number of messages removed      */
+comment|/**      * Removes the messages matching the given filter up to the maximum number      * of matched messages      *       * @return the number of messages removed      */
 specifier|public
 name|int
 name|removeMatchingMessages
@@ -4041,7 +4044,7 @@ literal|1
 argument_list|)
 return|;
 block|}
-comment|/**      * Copies the messages matching the given selector up to the maximum number of matched messages      *       * @return the number of messages copied      */
+comment|/**      * Copies the messages matching the given selector up to the maximum number      * of matched messages      *       * @return the number of messages copied      */
 specifier|public
 name|int
 name|copyMatchingMessagesTo
@@ -4077,7 +4080,7 @@ name|maximumMessages
 argument_list|)
 return|;
 block|}
-comment|/**      * Copies the messages matching the given filter up to the maximum number of matched messages      *       * @return the number of messages copied      */
+comment|/**      * Copies the messages matching the given filter up to the maximum number of      * matched messages      *       * @return the number of messages copied      */
 specifier|public
 name|int
 name|copyMatchingMessages
@@ -4272,7 +4275,7 @@ literal|1
 argument_list|)
 return|;
 block|}
-comment|/**      * Moves the messages matching the given selector up to the maximum number of matched messages      */
+comment|/**      * Moves the messages matching the given selector up to the maximum number      * of matched messages      */
 specifier|public
 name|int
 name|moveMatchingMessagesTo
@@ -4308,7 +4311,7 @@ name|maximumMessages
 argument_list|)
 return|;
 block|}
-comment|/**      * Moves the messages matching the given filter up to the maximum number of matched messages      */
+comment|/**      * Moves the messages matching the given filter up to the maximum number of      * matched messages      */
 specifier|public
 name|int
 name|moveMatchingMessagesTo

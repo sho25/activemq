@@ -33,8 +33,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|dynamicOnly
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
@@ -45,14 +43,10 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|decreaseNetworkConsumerPriority
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
 name|duplex
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
@@ -194,7 +188,7 @@ operator|.
 name|decreaseNetworkConsumerPriority
 return|;
 block|}
-comment|/**      * @param decreaseNetworkConsumerPriority the decreaseNetworkConsumerPriority to set      */
+comment|/**      * @param decreaseNetworkConsumerPriority the      *                decreaseNetworkConsumerPriority to set      */
 specifier|public
 name|void
 name|setDecreaseNetworkConsumerPriority

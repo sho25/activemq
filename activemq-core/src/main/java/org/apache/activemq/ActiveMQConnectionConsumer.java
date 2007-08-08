@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -132,7 +132,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * For application servers,<CODE>Connection</CODE> objects provide a special  * facility for creating a<CODE>ConnectionConsumer</CODE> (optional). The  * messages it is to consume are specified by a<CODE>Destination</CODE> and  * a message selector. In addition, a<CODE>ConnectionConsumer</CODE> must be  * given a<CODE>ServerSessionPool</CODE> to use for processing its messages.  *<p/>  *<P>  * Normally, when traffic is light, a<CODE>ConnectionConsumer</CODE> gets a  *<CODE>ServerSession</CODE> from its pool, loads it with a single message,  * and starts it. As traffic picks up, messages can back up. If this happens, a  *<CODE>ConnectionConsumer</CODE> can load each<CODE>ServerSession</CODE>  * with more than one message. This reduces the thread context switches and  * minimizes resource use at the expense of some serialization of message  * processing.  *  * @see javax.jms.Connection#createConnectionConsumer  * @see javax.jms.Connection#createDurableConnectionConsumer  * @see javax.jms.QueueConnection#createConnectionConsumer  * @see javax.jms.TopicConnection#createConnectionConsumer  * @see javax.jms.TopicConnection#createDurableConnectionConsumer  */
+comment|/**  * For application servers,<CODE>Connection</CODE> objects provide a special  * facility for creating a<CODE>ConnectionConsumer</CODE> (optional). The  * messages it is to consume are specified by a<CODE>Destination</CODE> and a  * message selector. In addition, a<CODE>ConnectionConsumer</CODE> must be  * given a<CODE>ServerSessionPool</CODE> to use for processing its messages.  *<p/>  *<P>  * Normally, when traffic is light, a<CODE>ConnectionConsumer</CODE> gets a  *<CODE>ServerSession</CODE> from its pool, loads it with a single message,  * and starts it. As traffic picks up, messages can back up. If this happens, a  *<CODE>ConnectionConsumer</CODE> can load each<CODE>ServerSession</CODE>  * with more than one message. This reduces the thread context switches and  * minimizes resource use at the expense of some serialization of message  * processing.  *   * @see javax.jms.Connection#createConnectionConsumer  * @see javax.jms.Connection#createDurableConnectionConsumer  * @see javax.jms.QueueConnection#createConnectionConsumer  * @see javax.jms.TopicConnection#createConnectionConsumer  * @see javax.jms.TopicConnection#createDurableConnectionConsumer  */
 end_comment
 
 begin_class
@@ -174,7 +174,7 @@ name|LinkedList
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|/**      * Create a ConnectionConsumer      *      * @param theConnection      * @param theSessionPool      * @param theConsumerInfo      * @throws JMSException      */
+comment|/**      * Create a ConnectionConsumer      *       * @param theConnection      * @param theSessionPool      * @param theConsumerInfo      * @throws JMSException      */
 specifier|protected
 name|ActiveMQConnectionConsumer
 parameter_list|(
@@ -243,7 +243,7 @@ name|consumerInfo
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Gets the server session pool associated with this connection consumer.      *      * @return the server session pool used by this connection consumer      * @throws JMSException if the JMS provider fails to get the server session pool      *                      associated with this consumer due to some internal error.      */
+comment|/**      * Gets the server session pool associated with this connection consumer.      *       * @return the server session pool used by this connection consumer      * @throws JMSException if the JMS provider fails to get the server session      *                 pool associated with this consumer due to some internal      *                 error.      */
 specifier|public
 name|ServerSessionPool
 name|getServerSessionPool
@@ -270,7 +270,7 @@ operator|.
 name|sessionPool
 return|;
 block|}
-comment|/**      * Closes the connection consumer.      *<p/>      *<P>      * Since a provider may allocate some resources on behalf of a connection      * consumer outside the Java virtual machine, clients should close these      * resources when they are not needed. Relying on garbage collection to      * eventually reclaim these resources may not be timely enough.      *      * @throws JMSException      */
+comment|/**      * Closes the connection consumer.<p/>      *<P>      * Since a provider may allocate some resources on behalf of a connection      * consumer outside the Java virtual machine, clients should close these      * resources when they are not needed. Relying on garbage collection to      * eventually reclaim these resources may not be timely enough.      *       * @throws JMSException      */
 specifier|public
 name|void
 name|close

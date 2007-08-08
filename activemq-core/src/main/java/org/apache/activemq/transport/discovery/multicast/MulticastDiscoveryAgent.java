@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -294,7 +294,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link DiscoveryAgent} using a multicast address and heartbeat packets encoded using any   * wireformat, but openwire by default.  *   * @version $Revision$  */
+comment|/**  * A {@link DiscoveryAgent} using a multicast address and heartbeat packets  * encoded using any wireformat, but openwire by default.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -485,7 +485,8 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 expr_stmt|;
-comment|// Consider that the broker recovery has succeeded if it has not failed in 60 seconds.
+comment|// Consider that the broker recovery has succeeded if it has not
+comment|// failed in 60 seconds.
 if|if
 condition|(
 operator|!
@@ -645,7 +646,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** 		 * @return true if this broker is marked failed and it is now the right time to start recovery. 		 */
+comment|/**          * @return true if this broker is marked failed and it is now the right          *         time to start recovery.          */
 specifier|synchronized
 specifier|public
 name|boolean
@@ -1037,7 +1038,7 @@ return|return
 name|loopBackMode
 return|;
 block|}
-comment|/**      * @param loopBackMode      *            The loopBackMode to set.      */
+comment|/**      * @param loopBackMode The loopBackMode to set.      */
 specifier|public
 name|void
 name|setLoopBackMode
@@ -1063,7 +1064,7 @@ return|return
 name|timeToLive
 return|;
 block|}
-comment|/**      * @param timeToLive      *            The timeToLive to set.      */
+comment|/**      * @param timeToLive The timeToLive to set.      */
 specifier|public
 name|void
 name|setTimeToLive
@@ -1822,7 +1823,8 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-comment|// If a send fails, chances are all subsequent sends will fail too.. No need to keep reporting the
+comment|// If a send fails, chances are all subsequent sends will fail
+comment|// too.. No need to keep reporting the
 comment|// same error over and over.
 if|if
 condition|(
@@ -1861,7 +1863,9 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"The 'Operation not permitted' error has been know to be caused by improper firewall/network setup.  Please make sure that the OS is properly configured to allow multicast traffic over: "
+literal|"The 'Operation not permitted' error has been know to be caused by improper firewall/network setup.  "
+operator|+
+literal|"Please make sure that the OS is properly configured to allow multicast traffic over: "
 operator|+
 name|mcast
 operator|.

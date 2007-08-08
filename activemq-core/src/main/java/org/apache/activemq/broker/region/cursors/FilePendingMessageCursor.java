@@ -236,7 +236,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * perist pending messages pending message (messages awaiting disptach to a consumer) cursor  *   * @version $Revision$  */
+comment|/**  * persist pending messages pending message (messages awaiting dispatch to a  * consumer) cursor  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -252,7 +252,7 @@ specifier|static
 specifier|private
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -296,8 +296,6 @@ decl_stmt|;
 specifier|private
 name|Iterator
 name|iter
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|Destination
@@ -438,7 +436,7 @@ name|isDiskListEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * reset the cursor      *       */
+comment|/**      * reset the cursor      */
 specifier|public
 specifier|synchronized
 name|void
@@ -880,7 +878,7 @@ return|return
 name|message
 return|;
 block|}
-comment|/**      * remove the message at the cursor position      *       */
+comment|/**      * remove the message at the cursor position      */
 specifier|public
 specifier|synchronized
 name|void
@@ -954,7 +952,7 @@ argument_list|()
 operator|)
 return|;
 block|}
-comment|/**      * clear all pending messages      *       */
+comment|/**      * clear all pending messages      */
 specifier|public
 specifier|synchronized
 name|void

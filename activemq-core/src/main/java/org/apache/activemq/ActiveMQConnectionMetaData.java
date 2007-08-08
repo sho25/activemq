@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -230,8 +230,8 @@ block|}
 specifier|private
 name|ActiveMQConnectionMetaData
 parameter_list|()
-block|{}
-comment|/**      * Gets the JMS API version.      *      * @return the JMS API version      */
+block|{     }
+comment|/**      * Gets the JMS API version.      *       * @return the JMS API version      */
 specifier|public
 name|String
 name|getJMSVersion
@@ -241,7 +241,7 @@ return|return
 literal|"1.1"
 return|;
 block|}
-comment|/**      * Gets the JMS major version number.      *      * @return the JMS API major version number      */
+comment|/**      * Gets the JMS major version number.      *       * @return the JMS API major version number      */
 specifier|public
 name|int
 name|getJMSMajorVersion
@@ -251,7 +251,7 @@ return|return
 literal|1
 return|;
 block|}
-comment|/**      * Gets the JMS minor version number.      *      * @return the JMS API minor version number      */
+comment|/**      * Gets the JMS minor version number.      *       * @return the JMS API minor version number      */
 specifier|public
 name|int
 name|getJMSMinorVersion
@@ -261,7 +261,7 @@ return|return
 literal|1
 return|;
 block|}
-comment|/**      * Gets the JMS provider name.      *      * @return the JMS provider name      */
+comment|/**      * Gets the JMS provider name.      *       * @return the JMS provider name      */
 specifier|public
 name|String
 name|getJMSProviderName
@@ -271,7 +271,7 @@ return|return
 literal|"ActiveMQ"
 return|;
 block|}
-comment|/**      * Gets the JMS provider version.      *      * @return the JMS provider version      */
+comment|/**      * Gets the JMS provider version.      *       * @return the JMS provider version      */
 specifier|public
 name|String
 name|getProviderVersion
@@ -281,7 +281,7 @@ return|return
 name|PROVIDER_VERSION
 return|;
 block|}
-comment|/**      * Gets the JMS provider major version number.      *      * @return the JMS provider major version number      */
+comment|/**      * Gets the JMS provider major version number.      *       * @return the JMS provider major version number      */
 specifier|public
 name|int
 name|getProviderMajorVersion
@@ -291,7 +291,7 @@ return|return
 name|PROVIDER_MAJOR_VERSION
 return|;
 block|}
-comment|/**      * Gets the JMS provider minor version number.      *      * @return the JMS provider minor version number      */
+comment|/**      * Gets the JMS provider minor version number.      *       * @return the JMS provider minor version number      */
 specifier|public
 name|int
 name|getProviderMinorVersion
@@ -301,7 +301,7 @@ return|return
 name|PROVIDER_MINOR_VERSION
 return|;
 block|}
-comment|/**      * Gets an enumeration of the JMSX property names.      *      * @return an Enumeration of JMSX property names      */
+comment|/**      * Gets an enumeration of the JMSX property names.      *       * @return an Enumeration of JMSX property names      */
 specifier|public
 name|Enumeration
 name|getJMSXPropertyNames

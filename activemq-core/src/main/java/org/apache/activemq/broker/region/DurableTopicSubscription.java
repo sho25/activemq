@@ -240,11 +240,11 @@ name|PrefetchSubscription
 implements|implements
 name|UsageListener
 block|{
-specifier|static
 specifier|private
+specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -291,8 +291,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|active
-init|=
-literal|false
 decl_stmt|;
 specifier|public
 name|DurableTopicSubscription
@@ -510,7 +508,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -603,7 +601,8 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-comment|// If nothing was in the persistent store, then try to use the recovery policy.
+comment|// If nothing was in the persistent store, then try to use the
+comment|// recovery policy.
 if|if
 condition|(
 name|pending
@@ -1339,7 +1338,7 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @param memoryManager      * @param oldPercentUsage      * @param newPercentUsage      * @see org.apache.activemq.memory.UsageListener#onMemoryUseChanged(org.apache.activemq.memory.UsageManager, int,      *      int)      */
+comment|/**      * @param memoryManager      * @param oldPercentUsage      * @param newPercentUsage      * @see org.apache.activemq.memory.UsageListener#onMemoryUseChanged(org.apache.activemq.memory.UsageManager,      *      int, int)      */
 specifier|public
 name|void
 name|onMemoryUseChanged
@@ -1377,7 +1376,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Use to reliably store fixed sized state data.  It stores the state in   * record that is versioned and repeated twice in the file so that a failure in the  * middle of the write of the first or second record do not not result in an unknown  * state.  *   * @version $Revision: 1.1 $  */
+comment|/**  * Use to reliably store fixed sized state data. It stores the state in record  * that is versioned and repeated twice in the file so that a failure in the  * middle of the write of the first or second record do not not result in an  * unknown state.  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
@@ -124,8 +124,6 @@ decl_stmt|;
 specifier|private
 name|long
 name|version
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|FileLock
@@ -172,7 +170,7 @@ literal|"rw"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Locks the control file.      * @throws IOException       */
+comment|/**      * Locks the control file.      *       * @throws IOException      */
 specifier|public
 name|void
 name|lock
@@ -490,7 +488,7 @@ block|}
 else|else
 block|{
 comment|// Bummer.. Both checks are screwed. we don't know
-comment|// if any of the two buffer are ok.  This should
+comment|// if any of the two buffer are ok. This should
 comment|// only happen is data got corrupted.
 throw|throw
 operator|new

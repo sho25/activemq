@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -84,7 +84,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Keeps track of a message that is flowing through the Broker.  This   * object may hold a hard reference to the message or only hold the  * id of the message if the message has been persisted on in a MessageStore.  *   * @version $Revision: 1.15 $  */
+comment|/**  * Keeps track of a message that is flowing through the Broker. This object may  * hold a hard reference to the message or only hold the id of the message if  * the message has been persisted on in a MessageStore.  *   * @version $Revision: 1.15 $  */
 end_comment
 
 begin_class
@@ -132,12 +132,10 @@ specifier|final
 name|ConsumerId
 name|targetConsumerId
 decl_stmt|;
-comment|/** The number of times the message has been delivered.*/
+comment|/** The number of times the message has been delivered. */
 specifier|private
 name|short
 name|redeliveryCounter
-init|=
-literal|0
 decl_stmt|;
 comment|/** The subscription that has locked the message */
 specifier|private
@@ -164,12 +162,10 @@ specifier|private
 name|int
 name|referenceCount
 decl_stmt|;
-comment|/** the size of the message **/
+comment|/** the size of the message * */
 specifier|private
 name|int
 name|cachedSize
-init|=
-literal|0
 decl_stmt|;
 comment|/** the expiration time of the message */
 specifier|private
@@ -422,7 +418,7 @@ operator|.
 name|decrementReferenceCount
 argument_list|()
 expr_stmt|;
-comment|//message=null;
+comment|// message=null;
 block|}
 return|return
 name|rc

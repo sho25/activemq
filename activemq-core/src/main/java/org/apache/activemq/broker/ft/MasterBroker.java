@@ -520,7 +520,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * start processing this broker      *       */
+comment|/**      * start processing this broker      */
 specifier|public
 name|void
 name|startProcessing
@@ -647,7 +647,7 @@ name|stopProcessing
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * stop processing this broker      *       */
+comment|/**      * stop processing this broker      */
 specifier|public
 name|void
 name|stopProcessing
@@ -699,7 +699,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * A client is disconnecting from the broker.      *       * @param context the environment the operation is being executed under.      * @param info      * @param error null if the client requested the disconnect or the error that caused the client to disconnect.      * @throws Exception      */
+comment|/**      * A client is disconnecting from the broker.      *       * @param context the environment the operation is being executed under.      * @param info      * @param error null if the client requested the disconnect or the error      *                that caused the client to disconnect.      * @throws Exception      */
 specifier|public
 name|void
 name|removeConnection
@@ -1268,7 +1268,7 @@ name|messageDispatch
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param context      * @param message      * @throws Exception      *       */
+comment|/**      * @param context      * @param message      * @throws Exception      */
 specifier|public
 name|void
 name|send
@@ -1282,7 +1282,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|/**          * A message can be dispatched before the super.send() method returns so - here the order is switched to avoid          * problems on the slave with receiving acks for messages not received yey          */
+comment|/**          * A message can be dispatched before the super.send() method returns so -          * here the order is switched to avoid problems on the slave with          * receiving acks for messages not received yey          */
 name|sendToSlave
 argument_list|(
 name|message
@@ -1298,7 +1298,7 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param context      * @param ack      * @throws Exception      *       */
+comment|/**      * @param context      * @param ack      * @throws Exception      */
 specifier|public
 name|void
 name|acknowledge

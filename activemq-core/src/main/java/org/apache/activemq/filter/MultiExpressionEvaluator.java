@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A MultiExpressionEvaluator is used to evaluate multiple expressions in  * single method call.  *<p/>  * Multiple Expression/ExpressionListener pairs can be added to a MultiExpressionEvaluator object.  When  * the MultiExpressionEvaluator object is evaluated, all the registed Expressions are evaluated and then the  * associated ExpressionListener is invoked to inform it of the evaluation result.  *<p/>  * By evaluating multiple expressions at one time, some optimizations can be made  * to reduce the number of computations normally required to evaluate all the expressions.  *<p/>  * When this class adds an Expression it wrapps each node in the Expression's AST with a  * CacheExpression object.  Then each CacheExpression object (one for each node) is placed  * in the cachedExpressions map.  The cachedExpressions map allows us to find the sub expressions  * that are common across two different expressions.  When adding an Expression in, if a sub  * Expression of the Expression is allready in the cachedExpressions map, then instead of  * wrapping the sub expression in a new CacheExpression object, we reuse the CacheExpression allready  * int the map.  *<p/>  * To help illustrate what going on, lets try to give an exmample:  * If we denote the AST of a Expression as follows: [AST-Node-Type,Left-Node,Right-Node], then  * A expression like: "3*5+6" would result in "[*,3,[+,5,6]]"  *<p/>  * If the [*,3,[+,5,6]] expression is added to the MultiExpressionEvaluator, it would really  * be converted to: [c0,[*,3,[c1,[+,5,6]]]] where c0 and c1 represent the CacheExpression expression  * objects that cache the results of the * and the + operation.  Constants and Property nodes are not  * cached.  *<p/>  * If later on we add the following expression [=,11,[+,5,6]] ("11=5+6") to the MultiExpressionEvaluator  * it would be converted to: [c2,[=,11,[c1,[+,5,6]]]], where c2 is a new CacheExpression object  * but c1 is the same CacheExpression used in the previous expression.  *<p/>  * When the expressions are evaluated, the c1 CacheExpression object will only evaluate the  * [+,5,6] expression once and cache the resulting value.  Hence evauating the second expression  * costs less because that [+,5,6] is not done 2 times.  *<p/>  * Problems:  * - cacheing the values introduces overhead.  It may be possible to be smarter about WHICH  * nodes in the AST are cached and which are not.  * - Current implementation is not thread safe.  This is because you need a way to invalidate  * all the cached values so that the next evaluation re-evaluates the nodes.  By going single  * threaded, chache invalidation is done quickly by incrementing a 'view' counter.  * When a CacheExpressionnotices it's last cached value was generated in an old 'view',  * it invalidates its cached value.  *  * @version $Revision: 1.2 $ $Date: 2005/08/27 03:52:36 $  */
+comment|/**  * A MultiExpressionEvaluator is used to evaluate multiple expressions in single  * method call.<p/> Multiple Expression/ExpressionListener pairs can be added  * to a MultiExpressionEvaluator object. When the MultiExpressionEvaluator  * object is evaluated, all the registed Expressions are evaluated and then the  * associated ExpressionListener is invoked to inform it of the evaluation  * result.<p/> By evaluating multiple expressions at one time, some  * optimizations can be made to reduce the number of computations normally  * required to evaluate all the expressions.<p/> When this class adds an  * Expression it wrapps each node in the Expression's AST with a CacheExpression  * object. Then each CacheExpression object (one for each node) is placed in the  * cachedExpressions map. The cachedExpressions map allows us to find the sub  * expressions that are common across two different expressions. When adding an  * Expression in, if a sub Expression of the Expression is allready in the  * cachedExpressions map, then instead of wrapping the sub expression in a new  * CacheExpression object, we reuse the CacheExpression allready int the map.  *<p/> To help illustrate what going on, lets try to give an exmample: If we  * denote the AST of a Expression as follows:  * [AST-Node-Type,Left-Node,Right-Node], then A expression like: "3*5+6" would  * result in "[*,3,[+,5,6]]"<p/> If the [*,3,[+,5,6]] expression is added to  * the MultiExpressionEvaluator, it would really be converted to:  * [c0,[*,3,[c1,[+,5,6]]]] where c0 and c1 represent the CacheExpression  * expression objects that cache the results of the * and the + operation.  * Constants and Property nodes are not cached.<p/> If later on we add the  * following expression [=,11,[+,5,6]] ("11=5+6") to the  * MultiExpressionEvaluator it would be converted to: [c2,[=,11,[c1,[+,5,6]]]],  * where c2 is a new CacheExpression object but c1 is the same CacheExpression  * used in the previous expression.<p/> When the expressions are evaluated, the  * c1 CacheExpression object will only evaluate the [+,5,6] expression once and  * cache the resulting value. Hence evauating the second expression costs less  * because that [+,5,6] is not done 2 times.<p/> Problems: - cacheing the  * values introduces overhead. It may be possible to be smarter about WHICH  * nodes in the AST are cached and which are not. - Current implementation is  * not thread safe. This is because you need a way to invalidate all the cached  * values so that the next evaluation re-evaluates the nodes. By going single  * threaded, chache invalidation is done quickly by incrementing a 'view'  * counter. When a CacheExpressionnotices it's last cached value was generated  * in an old 'view', it invalidates its cached value.  *   * @version $Revision: 1.2 $ $Date: 2005/08/27 03:52:36 $  */
 end_comment
 
 begin_class
@@ -90,10 +90,8 @@ argument_list|()
 decl_stmt|;
 name|int
 name|view
-init|=
-literal|0
 decl_stmt|;
-comment|/**      * A UnaryExpression that caches the result of the      * nested expression.  The cached value is valid      * if the CacheExpression.cview==MultiExpressionEvaluator.view      */
+comment|/**      * A UnaryExpression that caches the result of the nested expression. The      * cached value is valid if the      * CacheExpression.cview==MultiExpressionEvaluator.view      */
 specifier|public
 class|class
 name|CacheExpression
@@ -102,8 +100,6 @@ name|UnaryExpression
 block|{
 name|short
 name|refCount
-init|=
-literal|0
 decl_stmt|;
 name|int
 name|cview
@@ -241,7 +237,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Multiple listeners my be interested in the results      * of a single expression.      */
+comment|/**      * Multiple listeners my be interested in the results of a single      * expression.      */
 specifier|static
 class|class
 name|ExpressionListenerSet
@@ -257,7 +253,7 @@ name|ArrayList
 argument_list|()
 decl_stmt|;
 block|}
-comment|/**      * Objects that are interested in the results of an expression      * should implement this interface.      */
+comment|/**      * Objects that are interested in the results of an expression should      * implement this interface.      */
 specifier|static
 interface|interface
 name|ExpressionListener
@@ -277,7 +273,7 @@ name|result
 parameter_list|)
 function_decl|;
 block|}
-comment|/**      * Adds an ExpressionListener to a given expression.  When evaluate is      * called, the ExpressionListener will be provided the results of the      * Expression applied to the evaluated message.      */
+comment|/**      * Adds an ExpressionListener to a given expression. When evaluate is      * called, the ExpressionListener will be provided the results of the      * Expression applied to the evaluated message.      */
 specifier|public
 name|void
 name|addExpressionListner
@@ -350,7 +346,7 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Removes an ExpressionListener from receiving the results of      * a given evaluation.      */
+comment|/**      * Removes an ExpressionListener from receiving the results of a given      * evaluation.      */
 specifier|public
 name|boolean
 name|removeEventListner
@@ -446,7 +442,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Finds the CacheExpression that has been associated      * with an expression.  If it is the first time the      * Expression is being added to the Cache, a new      * CacheExpression is created and associated with      * the expression.      *<p/>      * This method updates the reference counters on the      * CacheExpression to know when it is no longer needed.      */
+comment|/**      * Finds the CacheExpression that has been associated with an expression. If      * it is the first time the Expression is being added to the Cache, a new      * CacheExpression is created and associated with the expression.<p/> This      * method updates the reference counters on the CacheExpression to know when      * it is no longer needed.      */
 specifier|private
 name|CacheExpression
 name|addToCache
@@ -576,7 +572,7 @@ return|return
 name|n
 return|;
 block|}
-comment|/**      * Removes an expression from the cache.  Updates the      * reference counters on the CacheExpression object.  When      * the refernce counter goes to zero, the entry      * int the Expression to CacheExpression map is removed.      *      * @param cn      */
+comment|/**      * Removes an expression from the cache. Updates the reference counters on      * the CacheExpression object. When the refernce counter goes to zero, the      * entry int the Expression to CacheExpression map is removed.      *       * @param cn      */
 specifier|private
 name|void
 name|removeFromCache
@@ -670,7 +666,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Evaluates the message against all the Expressions added to      * this object.  The added ExpressionListeners are notified      * of the result of the evaluation.      *      * @param message      */
+comment|/**      * Evaluates the message against all the Expressions added to this object.      * The added ExpressionListeners are notified of the result of the      * evaluation.      *       * @param message      */
 specifier|public
 name|void
 name|evaluate

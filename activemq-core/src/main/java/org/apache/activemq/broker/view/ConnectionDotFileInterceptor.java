@@ -318,7 +318,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version $Revision: $  */
+comment|/**  * @version $Revision: $  */
 end_comment
 
 begin_class
@@ -344,8 +344,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|clearProducerCacheAfterRender
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|String

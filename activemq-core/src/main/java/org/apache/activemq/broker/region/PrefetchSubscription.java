@@ -375,7 +375,7 @@ specifier|static
 specifier|private
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -402,8 +402,6 @@ decl_stmt|;
 specifier|protected
 name|int
 name|prefetchExtension
-init|=
-literal|0
 decl_stmt|;
 specifier|protected
 name|long
@@ -493,8 +491,10 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// The slave should not deliver pull messages. TODO: when the slave becomes a master,
-comment|// He should send a NULL message to all the consumers to 'wake them up' in case
+comment|// The slave should not deliver pull messages. TODO: when the slave
+comment|// becomes a master,
+comment|// He should send a NULL message to all the consumers to 'wake them up'
+comment|// in case
 comment|// they were waiting for a message.
 if|if
 condition|(
@@ -596,7 +596,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Occurs when a pull times out. If nothing has been dispatched since the timeout was setup, then send the NULL      * message.      */
+comment|/**      * Occurs when a pull times out. If nothing has been dispatched since the      * timeout was setup, then send the NULL message.      */
 specifier|final
 specifier|synchronized
 name|void
@@ -707,13 +707,13 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|&&
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -860,7 +860,8 @@ name|isStandardAck
 argument_list|()
 condition|)
 block|{
-comment|// Acknowledge all dispatched messages up till the message id of the acknowledgment.
+comment|// Acknowledge all dispatched messages up till the message id of the
+comment|// acknowledgment.
 name|int
 name|index
 init|=
@@ -973,7 +974,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// setup a Synchronization to remove nodes from the dispatched list.
+comment|// setup a Synchronization to remove nodes from the
+comment|// dispatched list.
 name|context
 operator|.
 name|getTransaction
@@ -1078,7 +1080,8 @@ name|isInTransaction
 argument_list|()
 condition|)
 block|{
-comment|// extend prefetch window only if not a pulling consumer
+comment|// extend prefetch window only if not a pulling
+comment|// consumer
 if|if
 condition|(
 name|getPrefetchSize
@@ -1130,7 +1133,8 @@ break|break;
 block|}
 block|}
 block|}
-comment|// this only happens after a reconnect - get an ack which is not valid
+comment|// this only happens after a reconnect - get an ack which is not
+comment|// valid
 if|if
 condition|(
 operator|!
@@ -1139,13 +1143,13 @@ condition|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1166,8 +1170,10 @@ name|isDeliveredAck
 argument_list|()
 condition|)
 block|{
-comment|// Message was delivered but not acknowledged: update pre-fetch counters.
-comment|// Acknowledge all dispatched messages up till the message id of the acknowledgment.
+comment|// Message was delivered but not acknowledged: update pre-fetch
+comment|// counters.
+comment|// Acknowledge all dispatched messages up till the message id of the
+comment|// acknowledgment.
 name|int
 name|index
 init|=
@@ -1284,7 +1290,8 @@ operator|+
 name|ack
 argument_list|)
 throw|;
-comment|// Acknowledge all dispatched messages up till the message id of the acknowledgment.
+comment|// Acknowledge all dispatched messages up till the message id of the
+comment|// acknowledgment.
 name|int
 name|index
 init|=
@@ -1491,7 +1498,7 @@ throw|;
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1725,13 +1732,13 @@ operator|=
 name|pending
 expr_stmt|;
 block|}
-comment|/**      * optimize message consumer prefetch if the consumer supports it      *       */
+comment|/**      * optimize message consumer prefetch if the consumer supports it      */
 specifier|public
 name|void
 name|optimizePrefetch
 parameter_list|()
 block|{
-comment|/*          * if(info!=null&&info.isOptimizedAcknowledge()&&context!=null&&context.getConnection()!=null          *&&context.getConnection().isManageable()){ if(info.getCurrentPrefetchSize()!=info.getPrefetchSize()&&          * isLowWaterMark()){ info.setCurrentPrefetchSize(info.getPrefetchSize());          * updateConsumerPrefetch(info.getPrefetchSize()); }else          * if(info.getCurrentPrefetchSize()==info.getPrefetchSize()&& isHighWaterMark()){ // want to purge any          * outstanding acks held by the consumer info.setCurrentPrefetchSize(1); updateConsumerPrefetch(1); } }          */
+comment|/*          * if(info!=null&&info.isOptimizedAcknowledge()&&context!=null&&context.getConnection()!=null          *&&context.getConnection().isManageable()){          * if(info.getCurrentPrefetchSize()!=info.getPrefetchSize()&&          * isLowWaterMark()){          * info.setCurrentPrefetchSize(info.getPrefetchSize());          * updateConsumerPrefetch(info.getPrefetchSize()); }else          * if(info.getCurrentPrefetchSize()==info.getPrefetchSize()&&          * isHighWaterMark()){ // want to purge any outstanding acks held by the          * consumer info.setCurrentPrefetchSize(1); updateConsumerPrefetch(1); } }          */
 block|}
 specifier|public
 specifier|synchronized
@@ -1890,7 +1897,8 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-comment|// Message may have been sitting in the pending list a while
+comment|// Message may have been sitting in the pending list
+comment|// a while
 comment|// waiting for the consumer to ak the message.
 if|if
 condition|(
@@ -2058,8 +2066,10 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|// Since the message gets queued up in async dispatch, we don't want to
-comment|// decrease the reference count until it gets put on the wire.
+comment|// Since the message gets queued up in async dispatch,
+comment|// we don't want to
+comment|// decrease the reference count until it gets put on the
+comment|// wire.
 name|onDispatch
 argument_list|(
 name|node
@@ -2102,7 +2112,8 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-comment|//System.err.println(broker.getBrokerName() + " " + this + " (" + enqueueCounter + ", " + dispatchCounter +") " + node);
+comment|// System.err.println(broker.getBrokerName() + " " + this + " (" +
+comment|// enqueueCounter + ", " + dispatchCounter +") " + node);
 return|return
 literal|true
 return|;
@@ -2372,7 +2383,7 @@ name|md
 return|;
 block|}
 block|}
-comment|/**      * Use when a matched message is about to be dispatched to the client.      *       * @param node      * @return false if the message should not be dispatched to the client (another sub may have already dispatched it      *         for example).      * @throws IOException      */
+comment|/**      * Use when a matched message is about to be dispatched to the client.      *       * @param node      * @return false if the message should not be dispatched to the client      *         (another sub may have already dispatched it for example).      * @throws IOException      */
 specifier|abstract
 specifier|protected
 name|boolean

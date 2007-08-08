@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -245,7 +245,7 @@ operator|.
 name|logging
 operator|.
 name|Log
-name|log
+name|LOG
 init|=
 name|org
 operator|.
@@ -332,8 +332,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|resendPhase
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|int
@@ -372,7 +370,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see junit.framework.TestCase#setUp()      */
+comment|/*      * (non-Javadoc)      *       * @see junit.framework.TestCase#setUp()      */
 specifier|protected
 name|void
 name|setUp
@@ -444,7 +442,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see junit.framework.TestCase#tearDown()      */
+comment|/*      * (non-Javadoc)      *       * @see junit.framework.TestCase#tearDown()      */
 specifier|protected
 name|void
 name|tearDown
@@ -452,7 +450,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -486,7 +484,7 @@ name|broker
 operator|=
 literal|null
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -500,7 +498,7 @@ name|JmsResourceProvider
 name|getJmsResourceProvider
 parameter_list|()
 function_decl|;
-comment|/**      * Sends a batch of messages and validates that the messages are received.      *      * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the messages are received.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testSendReceiveTransactedBatches
@@ -533,7 +531,7 @@ name|j
 operator|++
 control|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -576,7 +574,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -651,7 +649,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sends a batch of messages and validates that the rollbacked message was not consumed.      *      * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * not consumed.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testSendRollback
@@ -682,7 +680,7 @@ literal|"Second Message"
 argument_list|)
 block|}
 decl_stmt|;
-comment|//sends a message
+comment|// sends a message
 name|producer
 operator|.
 name|send
@@ -698,7 +696,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-comment|//sends a message that gets rollbacked
+comment|// sends a message that gets rollbacked
 name|producer
 operator|.
 name|send
@@ -716,7 +714,7 @@ operator|.
 name|rollback
 argument_list|()
 expr_stmt|;
-comment|//sends a message
+comment|// sends a message
 name|producer
 operator|.
 name|send
@@ -732,7 +730,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-comment|//receives the first message
+comment|// receives the first message
 name|ArrayList
 name|messages
 init|=
@@ -740,7 +738,7 @@ operator|new
 name|ArrayList
 argument_list|()
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -764,7 +762,7 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -773,8 +771,8 @@ operator|+
 name|message
 argument_list|)
 expr_stmt|;
-comment|//receives the second message
-name|log
+comment|// receives the second message
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -797,7 +795,7 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -806,7 +804,7 @@ operator|+
 name|message
 argument_list|)
 expr_stmt|;
-comment|//validates that the rollbacked was not consumed
+comment|// validates that the rollbacked was not consumed
 name|session
 operator|.
 name|commit
@@ -842,7 +840,7 @@ name|inbound
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends a batch of messages and validates that the message sent before session close is not consumed.      *      * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the message sent before      * session close is not consumed.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testSendSessionClose
@@ -873,7 +871,7 @@ literal|"Second Message"
 argument_list|)
 block|}
 decl_stmt|;
-comment|//sends a message
+comment|// sends a message
 name|producer
 operator|.
 name|send
@@ -889,7 +887,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-comment|//sends a message that gets rollbacked
+comment|// sends a message that gets rollbacked
 name|producer
 operator|.
 name|send
@@ -910,7 +908,7 @@ expr_stmt|;
 name|reconnectSession
 argument_list|()
 expr_stmt|;
-comment|//sends a message
+comment|// sends a message
 name|producer
 operator|.
 name|send
@@ -926,7 +924,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-comment|//receives the first message
+comment|// receives the first message
 name|ArrayList
 name|messages
 init|=
@@ -934,7 +932,7 @@ operator|new
 name|ArrayList
 argument_list|()
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -958,7 +956,7 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -967,8 +965,8 @@ operator|+
 name|message
 argument_list|)
 expr_stmt|;
-comment|//receives the second message
-name|log
+comment|// receives the second message
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -991,7 +989,7 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1000,7 +998,7 @@ operator|+
 name|message
 argument_list|)
 expr_stmt|;
-comment|//validates that the rollbacked was not consumed
+comment|// validates that the rollbacked was not consumed
 name|session
 operator|.
 name|commit
@@ -1036,7 +1034,7 @@ name|inbound
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends a batch of messages and validates that the message sent before session close is not consumed.      *      * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the message sent before      * session close is not consumed.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testSendSessionAndConnectionClose
@@ -1067,7 +1065,7 @@ literal|"Second Message"
 argument_list|)
 block|}
 decl_stmt|;
-comment|//sends a message
+comment|// sends a message
 name|producer
 operator|.
 name|send
@@ -1083,7 +1081,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-comment|//sends a message that gets rollbacked
+comment|// sends a message that gets rollbacked
 name|producer
 operator|.
 name|send
@@ -1109,7 +1107,7 @@ expr_stmt|;
 name|reconnect
 argument_list|()
 expr_stmt|;
-comment|//sends a message
+comment|// sends a message
 name|producer
 operator|.
 name|send
@@ -1125,7 +1123,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-comment|//receives the first message
+comment|// receives the first message
 name|ArrayList
 name|messages
 init|=
@@ -1133,7 +1131,7 @@ operator|new
 name|ArrayList
 argument_list|()
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1157,7 +1155,7 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1166,8 +1164,8 @@ operator|+
 name|message
 argument_list|)
 expr_stmt|;
-comment|//receives the second message
-name|log
+comment|// receives the second message
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1190,7 +1188,7 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1199,7 +1197,7 @@ operator|+
 name|message
 argument_list|)
 expr_stmt|;
-comment|//validates that the rollbacked was not consumed
+comment|// validates that the rollbacked was not consumed
 name|session
 operator|.
 name|commit
@@ -1235,7 +1233,7 @@ name|inbound
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends a batch of messages and validates that the rollbacked message was redelivered.      *      * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * redelivered.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testReceiveRollback
@@ -1284,7 +1282,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-comment|//sent both messages
+comment|// sent both messages
 name|producer
 operator|.
 name|send
@@ -1310,7 +1308,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1322,7 +1320,7 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1463,7 +1461,7 @@ name|inbound
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends a batch of messages and validates that the rollbacked message was redelivered.      *      * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * redelivered.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testReceiveTwoThenRollback
@@ -1538,7 +1536,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1550,7 +1548,7 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1729,7 +1727,7 @@ name|inbound
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends a batch of messages and validates that the rollbacked message was not consumed.      *      * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * not consumed.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testSendReceiveWithPrefetchOne
@@ -1794,7 +1792,7 @@ name|i
 operator|++
 control|)
 block|{
-comment|//sends a message
+comment|// sends a message
 name|producer
 operator|.
 name|send
@@ -1811,7 +1809,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-comment|//receives the first message
+comment|// receives the first message
 for|for
 control|(
 name|int
@@ -1829,7 +1827,7 @@ name|i
 operator|++
 control|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1851,7 +1849,7 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1861,14 +1859,14 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-comment|//validates that the rollbacked was not consumed
+comment|// validates that the rollbacked was not consumed
 name|session
 operator|.
 name|commit
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Perform the test that validates if the rollbacked message was redelivered multiple times.      *      * @throws Exception      */
+comment|/**      * Perform the test that validates if the rollbacked message was redelivered      * multiple times.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testReceiveTwoThenRollbackManyTimes
@@ -1894,7 +1892,7 @@ name|testReceiveTwoThenRollback
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Sends a batch of messages and validates that the rollbacked message was not consumed. This test differs by      * setting the message prefetch to one.      *      * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * not consumed. This test differs by setting the message prefetch to one.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testSendRollbackWithPrefetchOfOne
@@ -1909,7 +1907,7 @@ name|testSendRollback
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Sends a batch of messages and  and validates that the rollbacked message was redelivered. This test differs by      * setting the message prefetch to one.      *      * @throws Exception      */
+comment|/**      * Sends a batch of messages and and validates that the rollbacked message      * was redelivered. This test differs by setting the message prefetch to      * one.      *       * @throws Exception      */
 specifier|public
 name|void
 name|testReceiveRollbackWithPrefetchOfOne
@@ -1924,7 +1922,7 @@ name|testReceiveRollback
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Tests if the messages can still be received if the consumer is closed (session is not closed).      *      * @throws Exception see http://jira.codehaus.org/browse/AMQ-143      */
+comment|/**      * Tests if the messages can still be received if the consumer is closed      * (session is not closed).      *       * @throws Exception see http://jira.codehaus.org/browse/AMQ-143      */
 specifier|public
 name|void
 name|testCloseConsumerBeforeCommit
@@ -1971,7 +1969,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-comment|//sends the messages
+comment|// sends the messages
 name|producer
 operator|.
 name|send
@@ -1997,7 +1995,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2009,7 +2007,7 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2050,7 +2048,8 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Close the consumer before the commit.  This should not cause the received message
+comment|// Close the consumer before the commit. This should not cause the
+comment|// received message
 comment|// to rollback.
 name|consumer
 operator|.
@@ -2074,7 +2073,7 @@ argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2169,7 +2168,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2218,7 +2217,7 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2340,7 +2339,7 @@ operator|.
 name|getObject
 argument_list|()
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2543,7 +2542,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//send messages
+comment|// send messages
 for|for
 control|(
 name|int
@@ -2586,7 +2585,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-comment|//wait receive
+comment|// wait receive
 name|waitReceiveUnack
 argument_list|()
 expr_stmt|;
@@ -2600,7 +2599,7 @@ argument_list|,
 name|messageCount
 argument_list|)
 expr_stmt|;
-comment|//resend phase
+comment|// resend phase
 name|waitReceiveAck
 argument_list|()
 expr_stmt|;
@@ -2614,7 +2613,7 @@ argument_list|,
 name|messageCount
 argument_list|)
 expr_stmt|;
-comment|//should no longer re-receive
+comment|// should no longer re-receive
 name|consumer
 operator|.
 name|setMessageListener

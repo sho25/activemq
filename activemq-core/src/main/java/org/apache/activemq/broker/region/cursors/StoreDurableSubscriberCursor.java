@@ -216,7 +216,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * perist pending messages pending message (messages awaiting disptach to a consumer) cursor  *   * @version $Revision$  */
+comment|/**  * perist pending messages pending message (messages awaiting disptach to a  * consumer) cursor  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -244,8 +244,6 @@ decl_stmt|;
 specifier|private
 name|int
 name|pendingCount
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|String
@@ -619,7 +617,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Informs the Broker if the subscription needs to intervention to recover it's state e.g. DurableTopicSubscriber      * may do      *       * @see org.apache.activemq.region.cursors.PendingMessageCursor      * @return true if recovery required      */
+comment|/**      * Informs the Broker if the subscription needs to intervention to recover      * it's state e.g. DurableTopicSubscriber may do      *       * @see org.apache.activemq.region.cursors.PendingMessageCursor      * @return true if recovery required      */
 specifier|public
 name|boolean
 name|isRecoveryRequired

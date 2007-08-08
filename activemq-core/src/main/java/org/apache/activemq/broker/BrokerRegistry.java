@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version $Revision: 1.3 $  */
+comment|/**  * @version $Revision: 1.3 $  */
 end_comment
 
 begin_class
@@ -216,7 +216,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Returns the first registered broker found      * @return the first BrokerService      */
+comment|/**      * Returns the first registered broker found      *       * @return the first BrokerService      */
 specifier|public
 name|BrokerService
 name|findFirst

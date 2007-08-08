@@ -172,7 +172,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * perist pendingCount messages pendingCount message (messages awaiting disptach to a consumer) cursor  *   * @version $Revision$  */
+comment|/**  * perist pendingCount messages pendingCount message (messages awaiting disptach  * to a consumer) cursor  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -638,7 +638,7 @@ name|lastMessageId
 argument_list|)
 condition|)
 block|{
-comment|//pendingCount=0;
+comment|// pendingCount=0;
 block|}
 block|}
 name|result

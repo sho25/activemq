@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -597,7 +597,8 @@ name|sizePrefixDisabled
 operator|+
 literal|"}"
 return|;
-comment|//return "OpenWireFormat{id="+id+", tightEncodingEnabled="+tightEncodingEnabled+"}";
+comment|// return "OpenWireFormat{id="+id+",
+comment|// tightEncodingEnabled="+tightEncodingEnabled+"}";
 block|}
 specifier|public
 name|int
@@ -633,7 +634,8 @@ name|ma
 init|=
 literal|null
 decl_stmt|;
-comment|// If not using value caching, then the marshaled form is always the same
+comment|// If not using value caching, then the marshaled form is always the
+comment|// same
 if|if
 condition|(
 operator|!
@@ -663,9 +665,9 @@ name|sequence
 init|=
 literal|null
 decl_stmt|;
-comment|//        if( ma!=null ) {
-comment|//             sequence = ma.getCachedMarshalledForm(this);
-comment|//        }
+comment|// if( ma!=null ) {
+comment|// sequence = ma.getCachedMarshalledForm(this);
+comment|// }
 if|if
 condition|(
 name|sequence
@@ -837,7 +839,9 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-comment|// we don't know the final size yet but write this here for now.
+comment|// we don't know the final size
+comment|// yet but write this here for
+comment|// now.
 block|}
 name|bytesOut
 operator|.
@@ -935,9 +939,9 @@ name|toByteSequence
 argument_list|()
 expr_stmt|;
 block|}
-comment|//            if( ma!=null ) {
-comment|//                ma.setCachedMarshalledForm(this, sequence);
-comment|//            }
+comment|// if( ma!=null ) {
+comment|// ma.setCachedMarshalledForm(this, sequence);
+comment|// }
 block|}
 return|return
 name|sequence
@@ -961,7 +965,8 @@ argument_list|(
 name|sequence
 argument_list|)
 expr_stmt|;
-comment|//DataInputStream dis = new DataInputStream(new ByteArrayInputStream(sequence));
+comment|// DataInputStream dis = new DataInputStream(new
+comment|// ByteArrayInputStream(sequence));
 if|if
 condition|(
 operator|!
@@ -988,7 +993,8 @@ operator|!=
 name|size
 condition|)
 block|{
-comment|//            throw new IOException("Packet size does not match marshaled size");
+comment|// throw new IOException("Packet size does not match marshaled
+comment|// size");
 block|}
 block|}
 name|Object
@@ -999,9 +1005,9 @@ argument_list|(
 name|bytesIn
 argument_list|)
 decl_stmt|;
-comment|//        if( !cacheEnabled&& ((DataStructure)command).isMarshallAware() ) {
-comment|//            ((MarshallAware) command).setCachedMarshalledForm(this, sequence);
-comment|//        }
+comment|// if( !cacheEnabled&& ((DataStructure)command).isMarshallAware() ) {
+comment|// ((MarshallAware) command).setCachedMarshalledForm(this, sequence);
+comment|// }
 return|return
 name|command
 return|;
@@ -1294,10 +1300,10 @@ operator|.
 name|readInt
 argument_list|()
 decl_stmt|;
-comment|//byte[] data = new byte[size];
-comment|//dis.readFully(data);
-comment|//bytesIn.restart(data);
-comment|//dataIn = bytesIn;
+comment|// byte[] data = new byte[size];
+comment|// dis.readFully(data);
+comment|// bytesIn.restart(data);
+comment|// dataIn = bytesIn;
 block|}
 return|return
 name|doUnmarshal
@@ -1401,7 +1407,7 @@ return|return
 name|size
 return|;
 block|}
-comment|/**      * Used by NIO or AIO transports; note that the size is not written as part of this method.      */
+comment|/**      * Used by NIO or AIO transports; note that the size is not written as part      * of this method.      */
 specifier|public
 name|void
 name|tightMarshal2
@@ -1507,7 +1513,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Allows you to dynamically switch the version of the openwire protocol being used.      * @param version      */
+comment|/**      * Allows you to dynamically switch the version of the openwire protocol      * being used.      *       * @param version      */
 specifier|public
 name|void
 name|setVersion
@@ -1774,10 +1780,10 @@ literal|null
 return|;
 block|}
 block|}
-comment|//    public void debug(String msg) {
-comment|//    	String t = (Thread.currentThread().getName()+"                                         ").substring(0, 40);
-comment|//    	System.out.println(t+": "+msg);
-comment|//    }
+comment|// public void debug(String msg) {
+comment|// String t = (Thread.currentThread().getName()+" ").substring(0, 40);
+comment|// System.out.println(t+": "+msg);
+comment|// }
 specifier|public
 name|int
 name|tightMarshalNestedObject1
@@ -1830,7 +1836,7 @@ name|sequence
 init|=
 literal|null
 decl_stmt|;
-comment|//            sequence=ma.getCachedMarshalledForm(this);
+comment|// sequence=ma.getCachedMarshalledForm(this);
 name|bs
 operator|.
 name|writeBoolean
@@ -1969,9 +1975,10 @@ argument_list|(
 literal|"Corrupted stream"
 argument_list|)
 throw|;
-comment|//            MarshallAware ma = (MarshallAware) o;
-comment|//            ByteSequence sequence=ma.getCachedMarshalledForm(this);
-comment|//            ds.write(sequence.getData(), sequence.getOffset(), sequence.getLength());
+comment|// MarshallAware ma = (MarshallAware) o;
+comment|// ByteSequence sequence=ma.getCachedMarshalledForm(this);
+comment|// ds.write(sequence.getData(), sequence.getOffset(),
+comment|// sequence.getLength());
 block|}
 else|else
 block|{
@@ -2134,8 +2141,8 @@ name|bs2
 argument_list|)
 expr_stmt|;
 comment|// TODO: extract the sequence from the dis and associate it.
-comment|//                MarshallAware ma = (MarshallAware)data
-comment|//                ma.setCachedMarshalledForm(this, sequence);
+comment|// MarshallAware ma = (MarshallAware)data
+comment|// ma.setCachedMarshalledForm(this, sequence);
 block|}
 else|else
 block|{
@@ -2481,7 +2488,8 @@ return|;
 block|}
 else|else
 block|{
-comment|// Use -1 to indicate that the value was not cached due to cache being full.
+comment|// Use -1 to indicate that the value was not cached due to cache
+comment|// being full.
 return|return
 operator|new
 name|Short

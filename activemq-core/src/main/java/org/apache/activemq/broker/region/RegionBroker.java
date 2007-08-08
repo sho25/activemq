@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -674,7 +674,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -722,14 +722,10 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|started
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
 name|keepDurableSubsActive
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 specifier|final
@@ -802,7 +798,10 @@ name|ConnectionContext
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|// we will synchronize access
+comment|// we
+comment|// will
+comment|// synchronize
+comment|// access
 specifier|private
 specifier|final
 name|DestinationInterceptor
@@ -1507,7 +1506,8 @@ argument_list|(
 name|clientId
 argument_list|)
 decl_stmt|;
-comment|// we may be removing the duplicate connection, not the first connection to be created
+comment|// we may be removing the duplicate connection, not the first
+comment|// connection to be created
 comment|// so lets check that their connection IDs are the same
 if|if
 condition|(
@@ -2770,7 +2770,8 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// TODO: this should persist the broker id so that subsequent startup
+comment|// TODO: this should persist the broker id so that subsequent
+comment|// startup
 comment|// uses the same broker id.
 name|brokerId
 operator|=
@@ -3064,7 +3065,7 @@ parameter_list|(
 name|MessageDispatch
 name|messageDispatch
 parameter_list|)
-block|{        }
+block|{     }
 specifier|public
 name|void
 name|processDispatchNotification
@@ -3369,13 +3370,13 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -3513,9 +3514,11 @@ literal|"NON_PERSISTENT"
 argument_list|)
 expr_stmt|;
 block|}
-comment|// The original destination and transaction id do not get filled when the message is first
+comment|// The original destination and transaction id do
+comment|// not get filled when the message is first
 comment|// sent,
-comment|// it is only populated if the message is routed to another destination like the DLQ
+comment|// it is only populated if the message is routed to
+comment|// another destination like the DLQ
 name|ActiveMQDestination
 name|deadLetterDestination
 init|=
@@ -3545,7 +3548,7 @@ block|}
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -3563,7 +3566,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -3593,7 +3596,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|fatal
 argument_list|(

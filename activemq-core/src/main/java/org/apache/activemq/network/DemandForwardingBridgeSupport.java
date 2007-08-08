@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -799,8 +799,6 @@ decl_stmt|;
 specifier|protected
 name|boolean
 name|disposed
-init|=
-literal|false
 decl_stmt|;
 specifier|protected
 name|BrokerId
@@ -1124,7 +1122,8 @@ name|void
 name|transportInterupted
 parameter_list|()
 block|{
-comment|// clear any subscriptions - to try and prevent the bridge from stalling the broker
+comment|// clear any subscriptions - to try and prevent the bridge
+comment|// from stalling the broker
 if|if
 condition|(
 name|remoteInterupted
@@ -1254,7 +1253,8 @@ literal|false
 argument_list|)
 condition|)
 block|{
-comment|// We want to slow down false connects so that we don't get in a busy loop.
+comment|// We want to slow down false connects so that we don't
+comment|// get in a busy loop.
 comment|// False connects can occurr if you using SSH tunnels.
 if|if
 condition|(
@@ -1877,7 +1877,8 @@ argument_list|(
 name|producerInfo
 argument_list|)
 expr_stmt|;
-comment|// Listen to consumer advisory messages on the remote broker to determine demand.
+comment|// Listen to consumer advisory messages on the remote broker to
+comment|// determine demand.
 name|demandConsumerInfo
 operator|=
 operator|new
@@ -2116,7 +2117,8 @@ argument_list|(
 name|remoteBroker
 argument_list|)
 expr_stmt|;
-comment|// Release the started Latch since another thread could be stuck waiting for it to start up.
+comment|// Release the started Latch since another thread could be
+comment|// stuck waiting for it to start up.
 name|startedLatch
 operator|.
 name|countDown
@@ -2747,7 +2749,8 @@ index|]
 argument_list|)
 condition|)
 block|{
-comment|// Ignore this consumer as it's a consumer we locally sent to the broker.
+comment|// Ignore this consumer as it's a consumer we locally sent to
+comment|// the broker.
 if|if
 condition|(
 name|log
@@ -2970,7 +2973,8 @@ index|]
 argument_list|)
 condition|)
 block|{
-comment|// Ignore this consumer as it's a consumer we locally sent to the broker.
+comment|// Ignore this consumer as it's a consumer we locally sent to
+comment|// the broker.
 if|if
 condition|(
 name|log
@@ -3473,8 +3477,10 @@ name|isResponseRequired
 argument_list|()
 condition|)
 block|{
-comment|// If the message was originally sent using async send, we will preserve that QOS
-comment|// by bridging it using an async send (small chance of message loss).
+comment|// If the message was originally sent using async
+comment|// send, we will preserve that QOS
+comment|// by bridging it using an async send (small chance
+comment|// of message loss).
 name|remoteBroker
 operator|.
 name|oneway
@@ -3507,8 +3513,10 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// The message was not sent using async send, so we should only ack the local
-comment|// broker when we get confirmation that the remote broker has received the message.
+comment|// The message was not sent using async send, so we
+comment|// should only ack the local
+comment|// broker when we get confirmation that the remote
+comment|// broker has received the message.
 name|ResponseCallback
 name|callback
 init|=
@@ -3683,8 +3691,10 @@ operator|+
 literal|" Shutting down"
 argument_list|)
 expr_stmt|;
-comment|// Don't shut down the whole connector if the remote side was interrupted.
-comment|// the local transport is just shutting down temporarily until the remote side
+comment|// Don't shut down the whole connector if the remote side
+comment|// was interrupted.
+comment|// the local transport is just shutting down temporarily
+comment|// until the remote side
 comment|// is restored.
 if|if
 condition|(
@@ -3784,7 +3794,7 @@ return|return
 name|dynamicallyIncludedDestinations
 return|;
 block|}
-comment|/**      * @param dynamicallyIncludedDestinations The dynamicallyIncludedDestinations to set.      */
+comment|/**      * @param dynamicallyIncludedDestinations The      *                dynamicallyIncludedDestinations to set.      */
 specifier|public
 name|void
 name|setDynamicallyIncludedDestinations
@@ -3840,7 +3850,7 @@ return|return
 name|staticallyIncludedDestinations
 return|;
 block|}
-comment|/**      * @param staticallyIncludedDestinations The staticallyIncludedDestinations to set.      */
+comment|/**      * @param staticallyIncludedDestinations The staticallyIncludedDestinations      *                to set.      */
 specifier|public
 name|void
 name|setStaticallyIncludedDestinations
@@ -4323,7 +4333,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Subscriptions for these desitnations are always created      *      */
+comment|/**      * Subscriptions for these desitnations are always created      */
 specifier|protected
 name|void
 name|setupStaticDestinations
@@ -4547,7 +4557,7 @@ name|isTemporary
 argument_list|()
 condition|)
 block|{
-comment|//reset the local connection Id
+comment|// reset the local connection Id
 name|ActiveMQTempDestination
 name|dest
 init|=
@@ -4616,7 +4626,8 @@ operator|>
 literal|1
 condition|)
 block|{
-comment|// The longer the path to the consumer, the less it's consumer priority.
+comment|// The longer the path to the consumer, the less it's consumer
+comment|// priority.
 name|priority
 operator|-=
 name|info
@@ -4673,8 +4684,9 @@ argument_list|(
 name|destination
 argument_list|)
 expr_stmt|;
-comment|//the remote info held by the DemandSubscription holds the original consumerId,
-comment|//the local info get's overwritten
+comment|// the remote info held by the DemandSubscription holds the original
+comment|// consumerId,
+comment|// the local info get's overwritten
 name|info
 operator|.
 name|setConsumerId

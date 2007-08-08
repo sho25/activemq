@@ -308,7 +308,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @version $Revision: 1.1 $  */
+comment|/**  * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
@@ -475,7 +475,7 @@ parameter_list|(
 name|Object
 name|command
 parameter_list|)
-block|{ 				}
+block|{                 }
 specifier|public
 name|void
 name|onException
@@ -505,7 +505,7 @@ specifier|public
 name|void
 name|transportResumed
 parameter_list|()
-block|{ 				}
+block|{                 }
 block|}
 argument_list|)
 expr_stmt|;

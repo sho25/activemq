@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -569,7 +569,8 @@ specifier|final
 name|TopicMessageStore
 name|store
 decl_stmt|;
-comment|//this could be NULL! (If an advsiory)
+comment|// this could be NULL! (If an
+comment|// advsiory)
 specifier|protected
 specifier|final
 name|UsageManager
@@ -665,7 +666,7 @@ name|store
 operator|=
 name|store
 expr_stmt|;
-comment|//this could be NULL! (If an advsiory)
+comment|// this could be NULL! (If an advsiory)
 name|this
 operator|.
 name|usageManager
@@ -690,7 +691,8 @@ argument_list|(
 literal|1.0f
 argument_list|)
 expr_stmt|;
-comment|// Let the store know what usage manager we are using so that he can flush messages to disk
+comment|// Let the store know what usage manager we are using so that he can
+comment|// flush messages to disk
 comment|// when usage gets high.
 if|if
 condition|(
@@ -707,7 +709,7 @@ name|usageManager
 argument_list|)
 expr_stmt|;
 block|}
-comment|//let's copy the enabled property from the parent DestinationStatistics
+comment|// let's copy the enabled property from the parent DestinationStatistics
 name|this
 operator|.
 name|destinationStatistics
@@ -800,8 +802,10 @@ name|isRetroactive
 argument_list|()
 condition|)
 block|{
-comment|// synchronize with dispatch method so that no new messages are sent
-comment|// while we are recovering a subscription to avoid out of order messages.
+comment|// synchronize with dispatch method so that no new messages are
+comment|// sent
+comment|// while we are recovering a subscription to avoid out of order
+comment|// messages.
 name|dispatchValve
 operator|.
 name|turnOff
@@ -1186,7 +1190,11 @@ name|getActiveMQDestination
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// This destination is an actual destination id.
+comment|// This
+comment|// destination
+comment|// is an actual
+comment|// destination
+comment|// id.
 name|info
 operator|.
 name|setSubscribedDestination
@@ -1200,7 +1208,11 @@ name|getDestination
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// This destination might be a pattern
+comment|// This
+comment|// destination
+comment|// might
+comment|// be a
+comment|// pattern
 name|store
 operator|.
 name|addSubsciption
@@ -1355,7 +1367,7 @@ specifier|public
 name|void
 name|finished
 parameter_list|()
-block|{}
+block|{                     }
 specifier|public
 name|boolean
 name|hasSpace
@@ -1481,7 +1493,8 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|// We may need to do this in async thread since this is run for within a synchronization
+comment|// We may need to do this in async thread since this is run for
+comment|// within a synchronization
 comment|// that the UsageManager is holding.
 synchronized|synchronized
 init|(
@@ -1674,7 +1687,8 @@ literal|"Usage Manager memory limit reached"
 argument_list|)
 throw|;
 block|}
-comment|// We can avoid blocking due to low usage if the producer is sending a sync message or
+comment|// We can avoid blocking due to low usage if the producer is sending
+comment|// a sync message or
 comment|// if it is using a producer window
 if|if
 condition|(
@@ -1715,7 +1729,8 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|// While waiting for space to free up... the message may have expired.
+comment|// While waiting for space to free up... the message
+comment|// may have expired.
 if|if
 condition|(
 name|broker
@@ -1859,7 +1874,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|// If the user manager is not full, then the task will not get called..
+comment|// If the user manager is not full, then the task will not
+comment|// get called..
 if|if
 condition|(
 operator|!
@@ -1890,7 +1906,8 @@ block|}
 block|}
 else|else
 block|{
-comment|// Producer flow control cannot be used, so we have do the flow control at the broker
+comment|// Producer flow control cannot be used, so we have do the flow
+comment|// control at the broker
 comment|// by blocking this thread until there is space available.
 while|while
 condition|(
@@ -2051,7 +2068,8 @@ throws|throws
 name|Exception
 block|{
 comment|// It could take while before we receive the commit
-comment|// operration.. by that time the message could have expired..
+comment|// operration.. by that time the message could have
+comment|// expired..
 if|if
 condition|(
 name|broker
@@ -2407,7 +2425,7 @@ specifier|public
 name|void
 name|finished
 parameter_list|()
-block|{}
+block|{                     }
 specifier|public
 name|boolean
 name|hasSpace
@@ -2841,8 +2859,10 @@ name|destination
 argument_list|)
 condition|)
 block|{
-comment|// The original destination and transaction id do not get filled when the message is first sent,
-comment|// it is only populated if the message is routed to another destination like the DLQ
+comment|// The original destination and transaction id do not get
+comment|// filled when the message is first sent,
+comment|// it is only populated if the message is routed to another
+comment|// destination like the DLQ
 if|if
 condition|(
 name|message
@@ -2905,7 +2925,8 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-comment|// Disable flow control for this since since we don't want to block.
+comment|// Disable flow control for this since since we don't want
+comment|// to block.
 name|boolean
 name|originalFlowControl
 init|=

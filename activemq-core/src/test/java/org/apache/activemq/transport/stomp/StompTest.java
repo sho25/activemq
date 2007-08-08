@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -1642,7 +1642,7 @@ literal|"MESSAGE"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//        System.out.println("out: "+frame);
+comment|// System.out.println("out: "+frame);
 name|frame
 operator|=
 literal|"DISCONNECT\n"
@@ -2269,13 +2269,13 @@ argument_list|(
 name|frame
 argument_list|)
 expr_stmt|;
-comment|//send a message to our queue
+comment|// send a message to our queue
 name|sendMessage
 argument_list|(
 literal|"first message"
 argument_list|)
 expr_stmt|;
-comment|//receive message from socket
+comment|// receive message from socket
 name|frame
 operator|=
 name|stompConnection
@@ -2293,7 +2293,7 @@ literal|"MESSAGE"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//remove suscription
+comment|// remove suscription
 name|frame
 operator|=
 literal|"UNSUBSCRIBE\n"
@@ -2321,7 +2321,7 @@ expr_stmt|;
 name|waitForFrameToTakeEffect
 argument_list|()
 expr_stmt|;
-comment|//send a message to our queue
+comment|// send a message to our queue
 name|sendMessage
 argument_list|(
 literal|"second message"
@@ -2605,7 +2605,7 @@ argument_list|(
 name|frame
 argument_list|)
 expr_stmt|;
-comment|//rollback first message
+comment|// rollback first message
 name|frame
 operator|=
 literal|"ABORT\n"
@@ -2695,7 +2695,7 @@ comment|// This test case is currently failing
 name|waitForFrameToTakeEffect
 argument_list|()
 expr_stmt|;
-comment|//only second msg should be received since first msg was rolled back
+comment|// only second msg should be received since first msg was rolled back
 name|TextMessage
 name|message
 init|=

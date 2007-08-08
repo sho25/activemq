@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -72,8 +72,6 @@ specifier|protected
 specifier|transient
 name|int
 name|size
-init|=
-literal|0
 decl_stmt|;
 comment|/**      * Constructs an empty list.      */
 specifier|public
@@ -280,7 +278,7 @@ name|size
 operator|++
 expr_stmt|;
 block|}
-comment|/**      * Appends the given element to the end of this list. (Identical in function to the<tt>add</tt> method; included      * only for consistency.)      *       * @param o the element to be inserted at the end of this list.      */
+comment|/**      * Appends the given element to the end of this list. (Identical in function      * to the<tt>add</tt> method; included only for consistency.)      *       * @param o the element to be inserted at the end of this list.      */
 specifier|public
 specifier|synchronized
 name|void
@@ -322,7 +320,7 @@ operator|==
 literal|0
 return|;
 block|}
-comment|/**      * Appends the specified element to the end of this list.      *       * @param o element to be appended to this list.      * @return<tt>true</tt> (as per the general contract of<tt>Collection.add</tt>).      */
+comment|/**      * Appends the specified element to the end of this list.      *       * @param o element to be appended to this list.      * @return<tt>true</tt> (as per the general contract of      *<tt>Collection.add</tt>).      */
 specifier|public
 specifier|synchronized
 name|boolean
@@ -358,7 +356,7 @@ literal|0
 expr_stmt|;
 block|}
 comment|// Positional Access Operations
-comment|/**      * Returns the element at the specified position in this list.      *       * @param index index of element to return.      * @return the element at the specified position in this list.      *       * @throws IndexOutOfBoundsException if the specified index is is out of range (<tt>index&lt; 0 || index&gt;= size()</tt>).      */
+comment|/**      * Returns the element at the specified position in this list.      *       * @param index index of element to return.      * @return the element at the specified position in this list.      * @throws IndexOutOfBoundsException if the specified index is is out of      *                 range (<tt>index&lt; 0 || index&gt;= size()</tt>).      */
 specifier|public
 specifier|synchronized
 name|IndexItem
@@ -375,7 +373,7 @@ name|index
 argument_list|)
 return|;
 block|}
-comment|/**      * Inserts the specified element at the specified position in this list. Shifts the element currently at that      * position (if any) and any subsequent elements to the right (adds one to their indices).      *       * @param index index at which the specified element is to be inserted.      * @param element element to be inserted.      *       * @throws IndexOutOfBoundsException if the specified index is out of range (<tt>index&lt; 0 || index&gt; size()</tt>).      */
+comment|/**      * Inserts the specified element at the specified position in this list.      * Shifts the element currently at that position (if any) and any subsequent      * elements to the right (adds one to their indices).      *       * @param index index at which the specified element is to be inserted.      * @param element element to be inserted.      * @throws IndexOutOfBoundsException if the specified index is out of range (<tt>index&lt; 0 || index&gt; size()</tt>).      */
 specifier|public
 specifier|synchronized
 name|void
@@ -406,7 +404,7 @@ name|size
 operator|++
 expr_stmt|;
 block|}
-comment|/**      * Removes the element at the specified position in this list. Shifts any subsequent elements to the left (subtracts      * one from their indices). Returns the element that was removed from the list.      *       * @param index the index of the element to removed.      * @return the element previously at the specified position.      *       * @throws IndexOutOfBoundsException if the specified index is out of range (<tt>index&lt; 0 || index&gt;= size()</tt>).      */
+comment|/**      * Removes the element at the specified position in this list. Shifts any      * subsequent elements to the left (subtracts one from their indices).      * Returns the element that was removed from the list.      *       * @param index the index of the element to removed.      * @return the element previously at the specified position.      * @throws IndexOutOfBoundsException if the specified index is out of range (<tt>index&lt; 0 || index&gt;= size()</tt>).      */
 specifier|public
 specifier|synchronized
 name|Object
@@ -519,7 +517,7 @@ name|e
 return|;
 block|}
 comment|// Search Operations
-comment|/**      * Returns the index in this list of the first occurrence of the specified element, or -1 if the List does not      * contain this element. More formally, returns the lowest index i such that      *<tt>(o==null ? get(i)==null : o.equals(get(i)))</tt>, or -1 if there is no such index.      *       * @param o element to search for.      * @return the index in this list of the first occurrence of the specified element, or -1 if the list does not      *         contain this element.      */
+comment|/**      * Returns the index in this list of the first occurrence of the specified      * element, or -1 if the List does not contain this element. More formally,      * returns the lowest index i such that      *<tt>(o==null ? get(i)==null : o.equals(get(i)))</tt>, or -1 if there      * is no such index.      *       * @param o element to search for.      * @return the index in this list of the first occurrence of the specified      *         element, or -1 if the list does not contain this element.      */
 specifier|public
 specifier|synchronized
 name|int
@@ -654,7 +652,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|//      essential last get's updated consistently
+comment|// essential last get's updated consistently
 if|if
 condition|(
 name|result
@@ -832,7 +830,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|//essential root get's updated consistently
+comment|// essential root get's updated consistently
 if|if
 condition|(
 name|result
@@ -859,7 +857,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**     * Update the indexes of a StoreEntry     * @param current     */
+comment|/**      * Update the indexes of a StoreEntry      *       * @param current      */
 specifier|public
 specifier|synchronized
 name|StoreEntry
@@ -920,7 +918,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|//essential root get's updated consistently
+comment|// essential root get's updated consistently
 if|if
 condition|(
 name|result

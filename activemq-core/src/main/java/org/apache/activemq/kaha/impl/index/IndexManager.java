@@ -208,8 +208,6 @@ decl_stmt|;
 specifier|private
 name|long
 name|length
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|IndexItem

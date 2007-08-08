@@ -159,15 +159,15 @@ name|broker
 decl_stmt|;
 comment|// protected String
 comment|// bindAddress="tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=true&jms.useAsyncSend=false";
-comment|//protected String bindAddress="tcp://localhost:61616";
+comment|// protected String bindAddress="tcp://localhost:61616";
 specifier|protected
 name|String
 name|bindAddress
 init|=
 literal|"tcp://localhost:61616"
 decl_stmt|;
-comment|//protected String bindAddress="vm://localhost?marshal=true";
-comment|//protected String bindAddress="vm://localhost";
+comment|// protected String bindAddress="vm://localhost?marshal=true";
+comment|// protected String bindAddress="vm://localhost";
 specifier|protected
 name|PerfProducer
 index|[]
@@ -180,7 +180,7 @@ name|consumers
 decl_stmt|;
 specifier|protected
 name|String
-name|DESTINATION_NAME
+name|destinationName
 init|=
 name|getClass
 argument_list|()
@@ -190,31 +190,31 @@ argument_list|()
 decl_stmt|;
 specifier|protected
 name|int
-name|SAMPLE_COUNT
+name|samepleCount
 init|=
 literal|10
 decl_stmt|;
 specifier|protected
 name|long
-name|SAMPLE_INTERVAL
+name|sampleInternal
 init|=
 literal|1000
 decl_stmt|;
 specifier|protected
 name|int
-name|NUMBER_OF_CONSUMERS
+name|numberOfConsumers
 init|=
 literal|10
 decl_stmt|;
 specifier|protected
 name|int
-name|NUMBER_OF_PRODUCERS
+name|numberofProducers
 init|=
 literal|1
 decl_stmt|;
 specifier|protected
 name|int
-name|PAYLOAD_SIZE
+name|playloadSize
 init|=
 literal|1024
 decl_stmt|;
@@ -222,8 +222,6 @@ specifier|protected
 name|byte
 index|[]
 name|array
-init|=
-literal|null
 decl_stmt|;
 specifier|protected
 name|ConnectionFactory
@@ -235,9 +233,7 @@ name|destination
 decl_stmt|;
 specifier|protected
 name|long
-name|CONSUMER_SLEEP_DURATION
-init|=
-literal|0
+name|consumerSleepDuration
 decl_stmt|;
 comment|/**      * Sets up a test where the producer and consumer have their own connection.      *       * @see junit.framework.TestCase#setUp()      */
 specifier|protected
@@ -293,7 +289,7 @@ name|createDestination
 argument_list|(
 name|session
 argument_list|,
-name|DESTINATION_NAME
+name|destinationName
 argument_list|)
 expr_stmt|;
 name|log
@@ -311,11 +307,11 @@ name|info
 argument_list|(
 literal|"Running "
 operator|+
-name|NUMBER_OF_PRODUCERS
+name|numberofProducers
 operator|+
 literal|" producer(s) and "
 operator|+
-name|NUMBER_OF_CONSUMERS
+name|numberOfConsumers
 operator|+
 literal|" consumer(s)"
 argument_list|)
@@ -330,7 +326,7 @@ operator|=
 operator|new
 name|PerfProducer
 index|[
-name|NUMBER_OF_PRODUCERS
+name|numberofProducers
 index|]
 expr_stmt|;
 name|consumers
@@ -338,7 +334,7 @@ operator|=
 operator|new
 name|PerfConsumer
 index|[
-name|NUMBER_OF_CONSUMERS
+name|numberOfConsumers
 index|]
 expr_stmt|;
 for|for
@@ -350,7 +346,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|NUMBER_OF_CONSUMERS
+name|numberOfConsumers
 condition|;
 name|i
 operator|++
@@ -377,7 +373,7 @@ index|]
 operator|.
 name|setSleepDuration
 argument_list|(
-name|CONSUMER_SLEEP_DURATION
+name|consumerSleepDuration
 argument_list|)
 expr_stmt|;
 block|}
@@ -390,7 +386,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|NUMBER_OF_PRODUCERS
+name|numberofProducers
 condition|;
 name|i
 operator|++
@@ -401,7 +397,7 @@ operator|=
 operator|new
 name|byte
 index|[
-name|PAYLOAD_SIZE
+name|playloadSize
 index|]
 expr_stmt|;
 for|for
@@ -476,7 +472,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|NUMBER_OF_CONSUMERS
+name|numberOfConsumers
 condition|;
 name|i
 operator|++
@@ -500,7 +496,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|NUMBER_OF_PRODUCERS
+name|numberofProducers
 condition|;
 name|i
 operator|++
@@ -700,7 +696,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|NUMBER_OF_CONSUMERS
+name|numberOfConsumers
 condition|;
 name|i
 operator|++
@@ -724,7 +720,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|NUMBER_OF_PRODUCERS
+name|numberofProducers
 condition|;
 name|i
 operator|++
@@ -745,11 +741,11 @@ name|info
 argument_list|(
 literal|"Sampling performance "
 operator|+
-name|SAMPLE_COUNT
+name|samepleCount
 operator|+
 literal|" times at a "
 operator|+
-name|SAMPLE_INTERVAL
+name|sampleInternal
 operator|+
 literal|" ms interval."
 argument_list|)
@@ -763,7 +759,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|SAMPLE_COUNT
+name|samepleCount
 condition|;
 name|i
 operator|++
@@ -773,7 +769,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-name|SAMPLE_INTERVAL
+name|sampleInternal
 argument_list|)
 expr_stmt|;
 name|dumpProducerRate
@@ -792,7 +788,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|NUMBER_OF_PRODUCERS
+name|numberofProducers
 condition|;
 name|i
 operator|++
@@ -816,7 +812,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|NUMBER_OF_CONSUMERS
+name|numberOfConsumers
 condition|;
 name|i
 operator|++

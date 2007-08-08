@@ -52,7 +52,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstraction to allow different policies for holding messages awaiting dispatch to active clients  *   * @version $Revision$  */
+comment|/**  * Abstraction to allow different policies for holding messages awaiting  * dispatch to active clients  *   * @version $Revision$  */
 end_comment
 
 begin_interface

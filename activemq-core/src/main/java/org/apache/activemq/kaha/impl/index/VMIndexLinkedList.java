@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -56,8 +56,6 @@ specifier|private
 specifier|transient
 name|int
 name|size
-init|=
-literal|0
 decl_stmt|;
 comment|/**      * Constructs an empty list.      */
 specifier|public
@@ -95,7 +93,7 @@ return|return
 name|root
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#getFirst()      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#getFirst()      */
 specifier|public
 name|IndexItem
 name|getFirst
@@ -116,7 +114,7 @@ operator|.
 name|next
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#getLast()      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#getLast()      */
 specifier|public
 name|IndexItem
 name|getLast
@@ -137,7 +135,7 @@ operator|.
 name|prev
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#removeFirst()      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#removeFirst()      */
 specifier|public
 name|StoreEntry
 name|removeFirst
@@ -172,7 +170,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#removeLast()      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#removeLast()      */
 specifier|public
 name|Object
 name|removeLast
@@ -205,7 +203,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#addFirst(org.apache.activemq.kaha.impl.IndexItem)      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#addFirst(org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
 name|void
 name|addFirst
@@ -224,7 +222,7 @@ name|next
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#addLast(org.apache.activemq.kaha.impl.IndexItem)      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#addLast(org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
 name|void
 name|addLast
@@ -241,7 +239,7 @@ name|root
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#size()      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#size()      */
 specifier|public
 name|int
 name|size
@@ -251,7 +249,7 @@ return|return
 name|size
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#isEmpty()      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#isEmpty()      */
 specifier|public
 name|boolean
 name|isEmpty
@@ -263,7 +261,7 @@ operator|==
 literal|0
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#add(org.apache.activemq.kaha.impl.IndexItem)      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#add(org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
 name|boolean
 name|add
@@ -283,7 +281,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#clear()      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#clear()      */
 specifier|public
 name|void
 name|clear
@@ -305,7 +303,7 @@ literal|0
 expr_stmt|;
 block|}
 comment|// Positional Access Operations
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#get(int)      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#get(int)      */
 specifier|public
 name|IndexItem
 name|get
@@ -321,7 +319,7 @@ name|index
 argument_list|)
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#add(int, org.apache.activemq.kaha.impl.IndexItem)      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#add(int,      *      org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
 name|void
 name|add
@@ -352,7 +350,7 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#remove(int)      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#remove(int)      */
 specifier|public
 name|Object
 name|remove
@@ -473,7 +471,7 @@ name|e
 return|;
 block|}
 comment|// Search Operations
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#indexOf(org.apache.activemq.kaha.impl.IndexItem)      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#indexOf(org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
 name|int
 name|indexOf
@@ -527,7 +525,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#getNextEntry(org.apache.activemq.kaha.impl.IndexItem)      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#getNextEntry(org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
 name|IndexItem
 name|getNextEntry
@@ -550,7 +548,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#getPrevEntry(org.apache.activemq.kaha.impl.IndexItem)      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#getPrevEntry(org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
 name|IndexItem
 name|getPrevEntry
@@ -573,7 +571,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#addBefore(org.apache.activemq.kaha.impl.IndexItem, org.apache.activemq.kaha.impl.IndexItem)      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#addBefore(org.apache.activemq.kaha.impl.IndexItem,      *      org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
 name|void
 name|addBefore
@@ -619,7 +617,7 @@ name|size
 operator|++
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.kaha.impl.IndexLinkedList#remove(org.apache.activemq.kaha.impl.IndexItem)      */
+comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#remove(org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
 name|void
 name|remove
@@ -659,7 +657,7 @@ name|size
 operator|--
 expr_stmt|;
 block|}
-comment|/**      *@return clone      */
+comment|/**      * @return clone      */
 specifier|public
 name|Object
 name|clone
@@ -718,7 +716,7 @@ return|return
 name|current
 return|;
 block|}
-comment|/**      * Update the indexes of a StoreEntry      * @param current      */
+comment|/**      * Update the indexes of a StoreEntry      *       * @param current      */
 specifier|public
 name|StoreEntry
 name|refreshEntry
