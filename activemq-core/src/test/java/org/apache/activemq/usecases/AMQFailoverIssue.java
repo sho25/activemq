@@ -476,6 +476,8 @@ name|Exception
 block|{
 name|BrokerService
 name|brokerService1
+init|=
+literal|null
 decl_stmt|;
 name|ActiveMQConnectionFactory
 name|acf
