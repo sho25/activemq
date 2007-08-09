@@ -311,7 +311,7 @@ literal|"Remote broker or local broker has no registered connectors."
 argument_list|)
 throw|;
 block|}
-name|MAX_SETUP_TIME
+name|maxSetupTime
 operator|=
 literal|2000
 expr_stmt|;

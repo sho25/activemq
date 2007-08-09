@@ -155,11 +155,11 @@ name|ProxyConnection
 implements|implements
 name|Service
 block|{
+specifier|private
 specifier|static
 specifier|final
-specifier|private
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -240,7 +240,7 @@ name|get
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(

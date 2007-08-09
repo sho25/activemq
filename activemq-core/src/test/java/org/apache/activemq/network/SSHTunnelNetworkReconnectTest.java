@@ -137,7 +137,7 @@ specifier|static
 specifier|final
 specifier|transient
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.

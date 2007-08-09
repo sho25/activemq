@@ -189,6 +189,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|cinterfaces
 index|[
 name|i
@@ -204,6 +205,7 @@ argument_list|,
 name|cl
 argument_list|)
 expr_stmt|;
+block|}
 try|try
 block|{
 return|return

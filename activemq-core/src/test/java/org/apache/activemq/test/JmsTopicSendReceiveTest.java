@@ -75,6 +75,34 @@ name|Topic
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision: 1.2 $  */
 end_comment
@@ -89,25 +117,9 @@ block|{
 specifier|private
 specifier|static
 specifier|final
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
 name|Log
-name|log
+name|LOG
 init|=
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
 name|LogFactory
 operator|.
 name|getLog
@@ -160,7 +172,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -187,7 +199,7 @@ operator|=
 name|createConsumerSession
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -196,7 +208,7 @@ operator|+
 name|session
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -221,7 +233,7 @@ argument_list|(
 name|deliveryMode
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -293,7 +305,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -309,7 +321,7 @@ name|getClass
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -340,7 +352,7 @@ expr_stmt|;
 name|startConnection
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -370,7 +382,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -379,7 +391,7 @@ argument_list|)
 expr_stmt|;
 comment|// TODO
 comment|// connectionFactory.getFactoryStats().dump(new IndentPrinter());
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -444,7 +456,7 @@ condition|(
 name|durable
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

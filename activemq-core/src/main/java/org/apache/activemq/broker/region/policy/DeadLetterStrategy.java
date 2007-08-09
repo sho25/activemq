@@ -57,7 +57,6 @@ interface|interface
 name|DeadLetterStrategy
 block|{
 comment|/**      * Allow pluggable strategy for deciding if message should be sent to a dead letter queue      * for example, you might not want to ignore expired or non-persistent messages      * @param message      * @return true if message should be sent to a dead letter queue      */
-specifier|public
 name|boolean
 name|isSendToDeadLetterQueue
 parameter_list|(

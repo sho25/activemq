@@ -288,8 +288,8 @@ name|CommandTypes
 operator|.
 name|ACTIVEMQ_MAP_MESSAGE
 decl_stmt|;
-specifier|transient
 specifier|protected
+specifier|transient
 name|Map
 name|map
 init|=

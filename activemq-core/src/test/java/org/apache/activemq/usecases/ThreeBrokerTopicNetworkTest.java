@@ -93,7 +93,7 @@ decl_stmt|;
 comment|/**      * BrokerA -> BrokerB -> BrokerC      */
 specifier|public
 name|void
-name|test_AB_BC_BrokerNetwork
+name|testABandBCbrokerNetwork
 parameter_list|()
 throws|throws
 name|Exception
@@ -288,7 +288,7 @@ block|}
 comment|/**      * BrokerA<- BrokerB -> BrokerC      */
 specifier|public
 name|void
-name|test_BA_BC_BrokerNetwork
+name|testBAandBCbrokerNetwork
 parameter_list|()
 throws|throws
 name|Exception
@@ -483,7 +483,7 @@ block|}
 comment|/**      * BrokerA -> BrokerB<- BrokerC      */
 specifier|public
 name|void
-name|test_AB_CB_BrokerNetwork
+name|testABandCBbrokerNetwork
 parameter_list|()
 throws|throws
 name|Exception

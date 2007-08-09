@@ -201,7 +201,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|MAX_SETUP_TIME
+name|maxSetupTime
 operator|=
 literal|5000
 expr_stmt|;

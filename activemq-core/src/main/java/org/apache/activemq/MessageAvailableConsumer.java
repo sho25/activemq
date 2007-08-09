@@ -35,7 +35,6 @@ extends|extends
 name|MessageConsumer
 block|{
 comment|/**      * Sets the listener used to notify synchronous consumers that there is a message      * available so that the {@link MessageConsumer#receiveNoWait()} can be called.      */
-specifier|public
 name|void
 name|setAvailableListener
 parameter_list|(
@@ -44,7 +43,6 @@ name|availableListener
 parameter_list|)
 function_decl|;
 comment|/**      * Gets the listener used to notify synchronous consumers that there is a message      * available so that the {@link MessageConsumer#receiveNoWait()} can be called.      */
-specifier|public
 name|MessageAvailableListener
 name|getAvailableListener
 parameter_list|()

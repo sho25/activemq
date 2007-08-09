@@ -373,7 +373,7 @@ specifier|static
 specifier|final
 specifier|transient
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -613,7 +613,7 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -640,7 +640,7 @@ name|JMSException
 name|e1
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(

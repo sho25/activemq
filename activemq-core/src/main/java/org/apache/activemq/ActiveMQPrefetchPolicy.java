@@ -66,7 +66,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -83,13 +83,11 @@ specifier|final
 name|int
 name|MAX_PREFETCH_SIZE
 init|=
-operator|(
 name|Short
 operator|.
 name|MAX_VALUE
 operator|-
 literal|1
-operator|)
 decl_stmt|;
 specifier|private
 name|int
@@ -355,7 +353,7 @@ operator|<
 name|value
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(

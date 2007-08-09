@@ -364,7 +364,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -657,13 +657,13 @@ name|IOException
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -736,7 +736,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -788,7 +788,7 @@ name|Exception
 name|e2
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -814,7 +814,7 @@ name|e
 parameter_list|)
 block|{
 comment|// DatagramSocket closed
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -837,7 +837,7 @@ name|Exception
 name|e2
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -863,7 +863,7 @@ name|e
 parameter_list|)
 block|{
 comment|// DataInputStream closed
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -886,7 +886,7 @@ name|Exception
 name|e2
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -923,7 +923,7 @@ name|Exception
 name|e2
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -959,7 +959,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1602,13 +1602,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1664,9 +1664,11 @@ literal|1
 operator|==
 name|MAX_BIND_ATTEMPTS
 condition|)
+block|{
 throw|throw
 name|e
 throw|;
+block|}
 try|try
 block|{
 name|Thread

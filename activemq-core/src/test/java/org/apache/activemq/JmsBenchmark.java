@@ -329,7 +329,7 @@ specifier|static
 specifier|final
 specifier|transient
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -1024,7 +1024,7 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1039,7 +1039,7 @@ operator|.
 name|acquire
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1063,7 +1063,7 @@ operator|*
 literal|10
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1158,7 +1158,7 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1204,7 +1204,7 @@ literal|" msgs/sec"
 argument_list|)
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

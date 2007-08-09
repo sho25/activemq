@@ -20,8 +20,8 @@ comment|/**  * An expression which performs an operation on two expression value
 end_comment
 
 begin_class
-specifier|abstract
 specifier|public
+specifier|abstract
 class|class
 name|BinaryExpression
 implements|implements
@@ -167,8 +167,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the symbol that represents this binary expression.  For example, addition is      * represented by "+"      *      * @return      */
-specifier|abstract
 specifier|public
+specifier|abstract
 name|String
 name|getExpressionSymbol
 parameter_list|()

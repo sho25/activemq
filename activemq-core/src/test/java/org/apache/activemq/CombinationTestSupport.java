@@ -199,11 +199,11 @@ name|CombinationTestSupport
 extends|extends
 name|AutoFailTestSupport
 block|{
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -516,7 +516,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1049,7 +1049,9 @@ name|i
 index|]
 argument_list|)
 condition|)
+block|{
 continue|continue;
+block|}
 name|names
 operator|.
 name|add
@@ -1134,8 +1136,8 @@ return|return
 name|suite
 return|;
 block|}
-specifier|static
 specifier|private
+specifier|static
 name|boolean
 name|isPublicTestMethod
 parameter_list|(
@@ -1160,8 +1162,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-specifier|static
 specifier|private
+specifier|static
 name|boolean
 name|isTestMethod
 parameter_list|(

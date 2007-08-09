@@ -63,8 +63,8 @@ init|=
 literal|5088138839609391074L
 decl_stmt|;
 specifier|private
-specifier|transient
 specifier|final
+specifier|transient
 name|ProducerInfo
 name|consumerInfo
 decl_stmt|;

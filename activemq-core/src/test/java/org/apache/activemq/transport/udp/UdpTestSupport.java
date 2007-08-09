@@ -257,11 +257,11 @@ name|TestCase
 implements|implements
 name|TransportListener
 block|{
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -351,7 +351,7 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -444,7 +444,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -575,7 +575,7 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -671,7 +671,7 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -695,7 +695,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -897,7 +897,7 @@ name|Object
 name|command
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -915,7 +915,7 @@ name|IOException
 name|error
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1020,7 +1020,7 @@ operator|instanceof
 name|WireFormatInfo
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1052,7 +1052,7 @@ condition|(
 name|large
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1074,7 +1074,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1103,7 +1103,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1162,7 +1162,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1193,7 +1193,7 @@ name|IOException
 name|error
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1213,7 +1213,7 @@ name|void
 name|transportInterupted
 parameter_list|()
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1226,7 +1226,7 @@ name|void
 name|transportResumed
 parameter_list|()
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

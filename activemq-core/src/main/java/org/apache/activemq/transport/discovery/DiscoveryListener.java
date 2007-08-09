@@ -32,7 +32,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A listener of services being added or removed from a network  *  * @version $Revision$  */
+comment|/**  * A listener of services being added or removed from a network  *   * @version $Revision$  */
 end_comment
 
 begin_interface
@@ -40,7 +40,6 @@ specifier|public
 interface|interface
 name|DiscoveryListener
 block|{
-specifier|public
 name|void
 name|onServiceAdd
 parameter_list|(
@@ -48,7 +47,6 @@ name|DiscoveryEvent
 name|event
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|onServiceRemove
 parameter_list|(

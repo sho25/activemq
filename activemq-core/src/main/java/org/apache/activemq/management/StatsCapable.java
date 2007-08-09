@@ -25,7 +25,6 @@ interface|interface
 name|StatsCapable
 block|{
 comment|/**      * @return the Stats for this object      */
-specifier|public
 name|StatsImpl
 name|getStats
 parameter_list|()

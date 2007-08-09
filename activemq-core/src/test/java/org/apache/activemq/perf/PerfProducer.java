@@ -240,8 +240,8 @@ return|return
 name|rate
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|start
 parameter_list|()
@@ -309,8 +309,8 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|boolean
 name|isRunning
 parameter_list|()

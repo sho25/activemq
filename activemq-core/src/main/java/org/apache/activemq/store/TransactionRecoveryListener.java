@@ -62,7 +62,6 @@ specifier|public
 interface|interface
 name|TransactionRecoveryListener
 block|{
-specifier|public
 name|void
 name|recover
 parameter_list|(

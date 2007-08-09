@@ -161,7 +161,9 @@ name|queued
 operator|||
 name|shutdown
 condition|)
+block|{
 return|return;
+block|}
 name|queued
 operator|=
 literal|true
@@ -352,10 +354,12 @@ condition|(
 operator|!
 name|done
 condition|)
+block|{
 name|queued
 operator|=
 literal|true
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|queued

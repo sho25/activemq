@@ -25,24 +25,20 @@ interface|interface
 name|Endpoint
 block|{
 comment|/**      * Returns the name of the endpoint.      */
-specifier|public
 name|String
 name|getName
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the broker ID for this endpoint, if the endpoint is a broker or      * null      */
-specifier|public
 name|BrokerId
 name|getBrokerId
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the broker information for this endpoint, if the endpoint is a      * broker or null      */
-specifier|public
 name|BrokerInfo
 name|getBrokerInfo
 parameter_list|()
 function_decl|;
-specifier|public
 name|void
 name|setBrokerInfo
 parameter_list|(

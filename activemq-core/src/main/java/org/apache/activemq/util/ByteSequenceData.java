@@ -30,8 +30,8 @@ comment|/**  * Used to write and read primitives to and from a ByteSequence.  */
 end_comment
 
 begin_class
-specifier|final
 specifier|public
+specifier|final
 class|class
 name|ByteSequenceData
 block|{
@@ -63,11 +63,13 @@ name|data
 operator|.
 name|length
 condition|)
+block|{
 return|return
 name|packet
 operator|.
 name|data
 return|;
+block|}
 name|byte
 name|rc
 index|[]

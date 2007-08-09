@@ -717,7 +717,7 @@ block|}
 comment|/**      * Check a session is rollbacked on a Session close();      *       * @throws Exception      */
 specifier|public
 name|void
-name|XtestTransactionRollbackOnSessionClose
+name|xtestTransactionRollbackOnSessionClose
 parameter_list|()
 throws|throws
 name|Exception

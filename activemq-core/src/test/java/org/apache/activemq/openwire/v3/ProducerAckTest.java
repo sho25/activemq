@@ -44,6 +44,7 @@ name|BaseCommandTestSupport
 block|{
 specifier|public
 specifier|static
+specifier|final
 name|ProducerAckTest
 name|SINGLETON
 init|=

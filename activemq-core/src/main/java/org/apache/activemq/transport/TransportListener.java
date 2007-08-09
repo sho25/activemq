@@ -35,7 +35,6 @@ interface|interface
 name|TransportListener
 block|{
 comment|/**      * called to process a command      * @param command      */
-specifier|public
 name|void
 name|onCommand
 parameter_list|(
@@ -44,7 +43,6 @@ name|command
 parameter_list|)
 function_decl|;
 comment|/**      * An unrecoverable exception has occured on the transport      * @param error      */
-specifier|public
 name|void
 name|onException
 parameter_list|(
@@ -53,13 +51,11 @@ name|error
 parameter_list|)
 function_decl|;
 comment|/**      * The transport has suffered an interuption from which it hopes to recover      *      */
-specifier|public
 name|void
 name|transportInterupted
 parameter_list|()
 function_decl|;
 comment|/**      * The transport has resumed after an interuption      *      */
-specifier|public
 name|void
 name|transportResumed
 parameter_list|()

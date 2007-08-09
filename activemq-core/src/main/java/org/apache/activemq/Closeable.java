@@ -33,7 +33,6 @@ interface|interface
 name|Closeable
 block|{
 comment|/**      * Closes a JMS object.      *<P>      * Many JMS objects are closeable such as Connections, Sessions, Consumers      * and Producers.      *       * @throws JMSException if the JMS provider fails to close the object due to      *                 some internal error.      */
-specifier|public
 name|void
 name|close
 parameter_list|()

@@ -328,7 +328,7 @@ name|Exception
 block|{
 specifier|final
 name|int
-name|NUMBER
+name|number
 init|=
 literal|20
 decl_stmt|;
@@ -351,7 +351,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|NUMBER
+name|number
 condition|;
 name|i
 operator|++
@@ -424,7 +424,7 @@ operator|.
 name|incrementAndGet
 argument_list|()
 operator|>=
-name|NUMBER
+name|number
 condition|)
 block|{
 synchronized|synchronized
@@ -492,7 +492,7 @@ operator|.
 name|get
 argument_list|()
 operator|<
-name|NUMBER
+name|number
 condition|)
 block|{
 if|if
@@ -540,7 +540,7 @@ operator|.
 name|get
 argument_list|()
 operator|==
-name|NUMBER
+name|number
 argument_list|)
 expr_stmt|;
 block|}

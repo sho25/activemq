@@ -39,7 +39,6 @@ extends|extends
 name|Service
 block|{
 comment|/**      * Service an exception      * @param error      */
-specifier|public
 name|void
 name|serviceRemoteException
 parameter_list|(
@@ -48,7 +47,6 @@ name|error
 parameter_list|)
 function_decl|;
 comment|/**      * servicee an exception      * @param error      */
-specifier|public
 name|void
 name|serviceLocalException
 parameter_list|(
@@ -57,7 +55,6 @@ name|error
 parameter_list|)
 function_decl|;
 comment|/**      * Set the NetworkBridgeFailedListener      * @param listener      */
-specifier|public
 name|void
 name|setNetworkBridgeListener
 parameter_list|(
@@ -65,32 +62,26 @@ name|NetworkBridgeListener
 name|listener
 parameter_list|)
 function_decl|;
-specifier|public
 name|String
 name|getRemoteAddress
 parameter_list|()
 function_decl|;
-specifier|public
 name|String
 name|getRemoteBrokerName
 parameter_list|()
 function_decl|;
-specifier|public
 name|String
 name|getLocalAddress
 parameter_list|()
 function_decl|;
-specifier|public
 name|String
 name|getLocalBrokerName
 parameter_list|()
 function_decl|;
-specifier|public
 name|long
 name|getEnqueueCounter
 parameter_list|()
 function_decl|;
-specifier|public
 name|long
 name|getDequeueCounter
 parameter_list|()

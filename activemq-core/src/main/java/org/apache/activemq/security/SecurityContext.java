@@ -62,8 +62,8 @@ comment|/**  * Used to cache up authorizations so that subsequent requests are f
 end_comment
 
 begin_class
-specifier|abstract
 specifier|public
+specifier|abstract
 class|class
 name|SecurityContext
 block|{
@@ -171,8 +171,8 @@ operator|>
 literal|0
 return|;
 block|}
-specifier|abstract
 specifier|public
+specifier|abstract
 name|Set
 name|getPrincipals
 parameter_list|()

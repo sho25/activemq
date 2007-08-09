@@ -129,7 +129,7 @@ literal|"jks"
 argument_list|)
 expr_stmt|;
 comment|//System.setProperty("javax.net.debug", "ssl,handshake,data,trustmanager");
-name|MAX_WAIT
+name|maxWait
 operator|=
 literal|10000
 expr_stmt|;

@@ -20,7 +20,6 @@ specifier|public
 interface|interface
 name|UsageListener
 block|{
-specifier|public
 name|void
 name|onMemoryUseChanged
 parameter_list|(

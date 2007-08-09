@@ -405,7 +405,7 @@ decl_stmt|;
 specifier|public
 specifier|static
 name|int
-name|MAX_SETUP_TIME
+name|maxSetupTime
 init|=
 literal|5000
 decl_stmt|;
@@ -682,7 +682,7 @@ argument_list|(
 name|connector
 argument_list|)
 expr_stmt|;
-name|MAX_SETUP_TIME
+name|maxSetupTime
 operator|=
 literal|2000
 expr_stmt|;
@@ -837,7 +837,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Multicasting may take longer to setup
-name|MAX_SETUP_TIME
+name|maxSetupTime
 operator|=
 literal|8000
 expr_stmt|;
@@ -899,7 +899,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-name|MAX_SETUP_TIME
+name|maxSetupTime
 argument_list|)
 expr_stmt|;
 block|}

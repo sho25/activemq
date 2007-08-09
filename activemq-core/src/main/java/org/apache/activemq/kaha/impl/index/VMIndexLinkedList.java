@@ -434,12 +434,14 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|e
 operator|=
 name|e
 operator|.
 name|next
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -457,12 +459,14 @@ condition|;
 name|i
 operator|--
 control|)
+block|{
 name|e
 operator|=
 name|e
 operator|.
 name|prev
 expr_stmt|;
+block|}
 block|}
 return|return
 name|e
@@ -691,6 +695,7 @@ name|e
 operator|.
 name|next
 control|)
+block|{
 name|clone
 operator|.
 name|add
@@ -698,6 +703,7 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|clone
 return|;

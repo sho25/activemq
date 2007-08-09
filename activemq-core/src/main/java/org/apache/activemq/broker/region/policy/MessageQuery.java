@@ -67,7 +67,6 @@ interface|interface
 name|MessageQuery
 block|{
 comment|/**      * Executes the query for messages; each message is passed into the listener      *       * @param destination the destination on which the query is to be performed      * @param listener is the listener to notify as each message is created or loaded      */
-specifier|public
 name|void
 name|execute
 parameter_list|(
@@ -81,7 +80,6 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Returns true if the given update is valid and does not overlap with the initial message query.      * When performing an initial load from some source, there is a chance that an update may occur which is logically before      * the message sent on the initial load - so this method provides a hook where the query instance can keep track of the version IDs      * of the messages sent so that if an older version is sent as an update it can be excluded to avoid going backwards in time.      *       * e.g. if the execute() method creates version 2 of an object and then an update message is sent for version 1, this method should return false to       * hide the old update message.      *       * @param message the update message which may have been sent before the query actually completed      * @return true if the update message is valid otherwise false in which case the update message will be discarded.      */
-specifier|public
 name|boolean
 name|validateUpdate
 parameter_list|(

@@ -272,11 +272,11 @@ name|DiscoveryTransportBrokerTest
 extends|extends
 name|NetworkTestSupport
 block|{
+specifier|private
 specifier|static
 specifier|final
-specifier|private
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -589,7 +589,7 @@ name|connectionB
 argument_list|)
 expr_stmt|;
 comment|// Dispose the server so that it fails over to the other server.
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -601,7 +601,7 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

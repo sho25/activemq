@@ -130,7 +130,7 @@ operator|.
 name|logging
 operator|.
 name|Log
-name|log
+name|LOG
 init|=
 name|org
 operator|.
@@ -357,7 +357,7 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

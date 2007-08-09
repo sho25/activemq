@@ -197,7 +197,7 @@ specifier|static
 specifier|final
 specifier|transient
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -330,7 +330,9 @@ argument_list|()
 operator|==
 name|numberOfMessagesOnQueue
 condition|)
+block|{
 return|return;
+block|}
 name|Message
 name|message
 init|=
@@ -347,7 +349,9 @@ name|message
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
+block|}
 try|try
 block|{
 name|onMessage
@@ -456,7 +460,7 @@ name|SECONDS
 argument_list|)
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -703,7 +707,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -733,7 +737,7 @@ name|value
 argument_list|)
 throw|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

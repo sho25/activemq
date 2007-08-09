@@ -44,6 +44,7 @@ name|ResponseTest
 block|{
 specifier|public
 specifier|static
+specifier|final
 name|DataResponseTest
 name|SINGLETON
 init|=

@@ -296,7 +296,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -458,8 +458,8 @@ name|currentTimeMillis
 argument_list|()
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|updateHeartBeat
 parameter_list|()
@@ -495,12 +495,13 @@ condition|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
-name|log
+block|{
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -511,6 +512,7 @@ operator|+
 literal|" service has recovered."
 argument_list|)
 expr_stmt|;
+block|}
 name|failureCount
 operator|=
 literal|0
@@ -521,8 +523,8 @@ literal|0
 expr_stmt|;
 block|}
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|long
 name|getLastHeartBeat
 parameter_list|()
@@ -531,8 +533,8 @@ return|return
 name|lastHeartBeat
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|boolean
 name|markFailed
 parameter_list|()
@@ -586,19 +588,22 @@ name|reconnectDelay
 operator|>
 name|maxReconnectDelay
 condition|)
+block|{
 name|reconnectDelay
 operator|=
 name|maxReconnectDelay
 expr_stmt|;
 block|}
+block|}
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
-name|log
+block|{
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -615,6 +620,7 @@ operator|+
 name|failureCount
 argument_list|)
 expr_stmt|;
+block|}
 name|recoveryTime
 operator|=
 name|System
@@ -633,8 +639,8 @@ literal|false
 return|;
 block|}
 comment|/**          * @return true if this broker is marked failed and it is now the right          *         time to start recovery.          */
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|boolean
 name|doRecovery
 parameter_list|()
@@ -644,9 +650,11 @@ condition|(
 operator|!
 name|failed
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 comment|// Are we done trying to recover this guy?
 if|if
 condition|(
@@ -661,12 +669,13 @@ condition|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
-name|log
+block|{
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -677,6 +686,7 @@ operator|+
 literal|" service has been reached."
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 literal|false
 return|;
@@ -691,17 +701,20 @@ argument_list|()
 operator|<
 name|recoveryTime
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
-name|log
+block|{
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -712,6 +725,7 @@ operator|+
 literal|" service."
 argument_list|)
 expr_stmt|;
+block|}
 name|failed
 operator|=
 literal|false
@@ -1172,7 +1186,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1197,7 +1211,7 @@ literal|"."
 argument_list|)
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1491,7 +1505,7 @@ name|get
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1821,7 +1835,7 @@ name|reportAdvertizeFailed
 operator|=
 literal|false
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1845,7 +1859,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(

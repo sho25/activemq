@@ -181,11 +181,11 @@ name|TestSupport
 extends|extends
 name|TestCase
 block|{
-specifier|final
+specifier|private
 specifier|static
-specifier|protected
+specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.

@@ -77,13 +77,11 @@ extends|extends
 name|DestinationInterceptor
 block|{
 comment|/**      * Returns the virtual destination      */
-specifier|public
 name|ActiveMQDestination
 name|getVirtualDestination
 parameter_list|()
 function_decl|;
 comment|/**      * Creates a virtual destination from the physical destination      */
-specifier|public
 name|Destination
 name|intercept
 parameter_list|(

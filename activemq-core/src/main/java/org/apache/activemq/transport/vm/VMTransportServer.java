@@ -243,6 +243,7 @@ if|if
 condition|(
 name|disposed
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -250,6 +251,7 @@ argument_list|(
 literal|"Server has been disposed."
 argument_list|)
 throw|;
+block|}
 name|al
 operator|=
 name|acceptListener
@@ -261,6 +263,7 @@ name|al
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -268,6 +271,7 @@ argument_list|(
 literal|"Server TransportAcceptListener is null."
 argument_list|)
 throw|;
+block|}
 name|connectionCount
 operator|.
 name|incrementAndGet
@@ -293,7 +297,9 @@ if|if
 condition|(
 name|disposed
 condition|)
+block|{
 return|return;
+block|}
 name|super
 operator|.
 name|stop
@@ -391,8 +397,8 @@ name|transport
 return|;
 block|}
 comment|/**      * Set the Transport accept listener for new Connections      *       * @param acceptListener      */
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|setAcceptListener
 parameter_list|(

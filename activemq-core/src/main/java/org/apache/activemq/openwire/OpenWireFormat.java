@@ -226,8 +226,8 @@ comment|/**  *   * @version $Revision$  */
 end_comment
 
 begin_class
-specifier|final
 specifier|public
+specifier|final
 class|class
 name|OpenWireFormat
 implements|implements

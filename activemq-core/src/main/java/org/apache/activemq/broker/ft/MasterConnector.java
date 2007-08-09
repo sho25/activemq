@@ -394,7 +394,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -633,7 +633,7 @@ argument_list|(
 name|remoteURI
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -803,7 +803,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1024,7 +1024,7 @@ argument_list|(
 name|brokerInfo
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1101,7 +1101,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1149,7 +1149,7 @@ name|IOException
 name|error
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1221,7 +1221,7 @@ operator|.
 name|SHUTDOWN_INFO
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1316,7 +1316,7 @@ name|Throwable
 name|error
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

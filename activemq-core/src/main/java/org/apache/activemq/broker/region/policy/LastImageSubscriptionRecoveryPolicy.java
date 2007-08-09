@@ -154,8 +154,8 @@ name|LastImageSubscriptionRecoveryPolicy
 implements|implements
 name|SubscriptionRecoveryPolicy
 block|{
-specifier|volatile
 specifier|private
+specifier|volatile
 name|MessageReference
 name|lastImage
 decl_stmt|;

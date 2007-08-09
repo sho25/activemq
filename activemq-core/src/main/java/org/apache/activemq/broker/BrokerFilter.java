@@ -342,8 +342,8 @@ name|BrokerFilter
 implements|implements
 name|Broker
 block|{
-specifier|final
 specifier|protected
+specifier|final
 name|Broker
 name|next
 decl_stmt|;

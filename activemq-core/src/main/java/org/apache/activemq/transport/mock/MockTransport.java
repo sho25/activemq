@@ -147,8 +147,8 @@ name|next
 expr_stmt|;
 block|}
 comment|/**      */
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|setTransportListener
 parameter_list|(
@@ -168,6 +168,7 @@ name|channelListener
 operator|==
 literal|null
 condition|)
+block|{
 name|getNext
 argument_list|()
 operator|.
@@ -176,7 +177,9 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|getNext
 argument_list|()
 operator|.
@@ -185,6 +188,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * @see org.apache.activemq.Service#start()      * @throws IOException if the next channel has not been set.      */
 specifier|public
@@ -201,6 +205,7 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -208,12 +213,14 @@ argument_list|(
 literal|"The next channel has not been set."
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|transportListener
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -221,6 +228,7 @@ argument_list|(
 literal|"The command listener has not been set."
 argument_list|)
 throw|;
+block|}
 name|getNext
 argument_list|()
 operator|.
@@ -261,8 +269,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @return Returns the getNext().      */
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|Transport
 name|getNext
 parameter_list|()
@@ -272,8 +280,8 @@ name|next
 return|;
 block|}
 comment|/**      * @return Returns the packetListener.      */
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|TransportListener
 name|getTransportListener
 parameter_list|()
@@ -434,8 +442,8 @@ name|target
 argument_list|)
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|setNext
 parameter_list|(

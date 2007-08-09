@@ -392,8 +392,8 @@ name|DEFAULT_PRODUCER_WINDOW_SIZE
 init|=
 literal|0
 decl_stmt|;
-specifier|static
 specifier|protected
+specifier|static
 specifier|final
 name|Executor
 name|DEFAULT_CONNECTION_EXECUTOR
@@ -2701,8 +2701,8 @@ name|statsEnabled
 argument_list|)
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|int
 name|getProducerWindowSize
 parameter_list|()
@@ -2711,8 +2711,8 @@ return|return
 name|producerWindowSize
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|setProducerWindowSize
 parameter_list|(

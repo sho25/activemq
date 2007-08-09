@@ -35,7 +35,6 @@ interface|interface
 name|PersistenceAdapterFactory
 block|{
 comment|/**      * Creates a persistence Adapter that can use a given directory to store it's data.      * @throws IOException       */
-specifier|public
 name|PersistenceAdapter
 name|createPersistenceAdapter
 parameter_list|()

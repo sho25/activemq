@@ -69,13 +69,11 @@ extends|extends
 name|Service
 block|{
 comment|/**      *       * @return      */
-specifier|public
 name|BrokerInfo
 name|getBrokerInfo
 parameter_list|()
 function_decl|;
 comment|/**      * @return the statistics for this connector      */
-specifier|public
 name|ConnectorStatistics
 name|getStatistics
 parameter_list|()

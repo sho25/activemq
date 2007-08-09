@@ -104,8 +104,8 @@ class|class
 name|DestinationFactory
 block|{
 comment|/**      * Create destination implementation.      */
-specifier|abstract
 specifier|public
+specifier|abstract
 name|Destination
 name|createDestination
 parameter_list|(
@@ -122,15 +122,15 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Returns a set of all the {@link org.apache.activemq.command.ActiveMQDestination}      * objects that the persistence store is aware exist.      */
-specifier|abstract
 specifier|public
+specifier|abstract
 name|Set
 name|getDestinations
 parameter_list|()
 function_decl|;
 comment|/**      * Lists all the durable subscirptions for a given destination.      */
-specifier|abstract
 specifier|public
+specifier|abstract
 name|SubscriptionInfo
 index|[]
 name|getAllDurableSubscriptions
@@ -141,16 +141,16 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-specifier|abstract
 specifier|public
+specifier|abstract
 name|long
 name|getLastMessageBrokerSequenceId
 parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-specifier|abstract
 specifier|public
+specifier|abstract
 name|void
 name|setRegionBroker
 parameter_list|(

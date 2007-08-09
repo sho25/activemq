@@ -305,13 +305,11 @@ name|getDequeueCounter
 parameter_list|()
 function_decl|;
 comment|/**      * @return the JMS selector on the current subscription      */
-specifier|public
 name|String
 name|getSelector
 parameter_list|()
 function_decl|;
 comment|/**      * Attempts to change the current active selector on the subscription.      * This operation is not supported for persistent topics.      */
-specifier|public
 name|void
 name|setSelector
 parameter_list|(
@@ -324,13 +322,11 @@ throws|,
 name|UnsupportedOperationException
 function_decl|;
 comment|/**      * @return the JMX object name that this subscription was registered as if applicable      */
-specifier|public
 name|ObjectName
 name|getObjectName
 parameter_list|()
 function_decl|;
 comment|/**      * Set when the subscription is registered in JMX      */
-specifier|public
 name|void
 name|setObjectName
 parameter_list|(
@@ -339,19 +335,16 @@ name|objectName
 parameter_list|)
 function_decl|;
 comment|/**      * @return true when 60% or more room is left for dispatching messages      */
-specifier|public
 name|boolean
 name|isLowWaterMark
 parameter_list|()
 function_decl|;
 comment|/**      * @return true when 10% or less room is left for dispatching messages      */
-specifier|public
 name|boolean
 name|isHighWaterMark
 parameter_list|()
 function_decl|;
 comment|/**      * inform the MessageConsumer on the client to change it's prefetch      * @param newPrefetch      */
-specifier|public
 name|void
 name|updateConsumerPrefetch
 parameter_list|(
@@ -360,13 +353,11 @@ name|newPrefetch
 parameter_list|)
 function_decl|;
 comment|/**      * optimize message consumer prefetch if the consumer supports it      *      */
-specifier|public
 name|void
 name|optimizePrefetch
 parameter_list|()
 function_decl|;
 comment|/**      * Called when the subscription is destroyed.      */
-specifier|public
 name|void
 name|destroy
 parameter_list|()
@@ -377,7 +368,6 @@ name|getPrefetchSize
 parameter_list|()
 function_decl|;
 comment|/**      * Informs the Broker if the subscription needs to intervention to recover it's state      * e.g. DurableTopicSubscriber may do      * @see org.apache.activemq.region.cursors.PendingMessageCursor      * @return true if recovery required      */
-specifier|public
 name|boolean
 name|isRecoveryRequired
 parameter_list|()

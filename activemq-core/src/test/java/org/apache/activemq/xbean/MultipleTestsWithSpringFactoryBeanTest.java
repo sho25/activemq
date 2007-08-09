@@ -138,11 +138,11 @@ name|MultipleTestsWithSpringFactoryBeanTest
 extends|extends
 name|TestCase
 block|{
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -186,7 +186,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -240,7 +240,7 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -279,7 +279,7 @@ operator|.
 name|tearDown
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

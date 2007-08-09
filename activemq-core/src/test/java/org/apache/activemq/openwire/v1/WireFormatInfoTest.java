@@ -58,6 +58,7 @@ name|DataFileGeneratorTestSupport
 block|{
 specifier|public
 specifier|static
+specifier|final
 name|WireFormatInfoTest
 name|SINGLETON
 init|=

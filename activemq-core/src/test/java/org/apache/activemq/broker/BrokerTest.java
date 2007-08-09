@@ -635,7 +635,7 @@ block|}
 comment|/**      * This test is being disabled for now since it is failing. Looks like the      * queue browser has changed in trunk. It now seems to not give you message      * that have been dispatched to another consumer but not yet acked. Created      * JIRA issue: https://issues.apache.org/activemq/browse/AMQ-1268      *       * @throws Exception      */
 specifier|public
 name|void
-name|XtestQueueBrowserWith2Consumers
+name|xtestQueueBrowserWith2Consumers
 parameter_list|()
 throws|throws
 name|Exception
@@ -5783,7 +5783,7 @@ argument_list|()
 operator|.
 name|poll
 argument_list|(
-name|MAX_WAIT
+name|maxWait
 argument_list|,
 name|TimeUnit
 operator|.
@@ -6125,7 +6125,7 @@ argument_list|()
 operator|.
 name|poll
 argument_list|(
-name|MAX_WAIT
+name|maxWait
 argument_list|,
 name|TimeUnit
 operator|.
@@ -6467,7 +6467,7 @@ argument_list|()
 operator|.
 name|poll
 argument_list|(
-name|MAX_WAIT
+name|maxWait
 argument_list|,
 name|TimeUnit
 operator|.

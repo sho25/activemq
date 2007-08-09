@@ -46,8 +46,8 @@ import|;
 end_import
 
 begin_class
-specifier|final
 specifier|public
+specifier|final
 class|class
 name|JMSExceptionSupport
 block|{
@@ -166,6 +166,7 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 name|msg
 operator|=
 name|cause
@@ -173,6 +174,7 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+block|}
 name|JMSException
 name|exception
 init|=
@@ -237,6 +239,7 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 name|msg
 operator|=
 name|cause
@@ -244,6 +247,7 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+block|}
 name|JMSException
 name|exception
 init|=
@@ -301,6 +305,7 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 name|msg
 operator|=
 name|cause
@@ -308,6 +313,7 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+block|}
 name|MessageEOFException
 name|exception
 init|=
@@ -365,6 +371,7 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 name|msg
 operator|=
 name|cause
@@ -372,6 +379,7 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+block|}
 name|MessageFormatException
 name|exception
 init|=

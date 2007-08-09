@@ -25,7 +25,6 @@ interface|interface
 name|BrokerPlugin
 block|{
 comment|/**      * Installs the plugin into the interceptor chain of the broker, returning the new      * intercepted broker to use.      */
-specifier|public
 name|Broker
 name|installPlugin
 parameter_list|(

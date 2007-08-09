@@ -24,7 +24,6 @@ specifier|public
 interface|interface
 name|Task
 block|{
-specifier|public
 name|boolean
 name|iterate
 parameter_list|()

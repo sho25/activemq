@@ -20,8 +20,8 @@ comment|/**  * A Valve is a synchronization object used enable or disable the "f
 end_comment
 
 begin_class
-specifier|final
 specifier|public
+specifier|final
 class|class
 name|Valve
 block|{

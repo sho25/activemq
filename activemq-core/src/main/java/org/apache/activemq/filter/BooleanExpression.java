@@ -37,7 +37,6 @@ extends|extends
 name|Expression
 block|{
 comment|/**      * @param message      * @return true if the expression evaluates to Boolean.TRUE.      * @throws JMSException      */
-specifier|public
 name|boolean
 name|matches
 parameter_list|(

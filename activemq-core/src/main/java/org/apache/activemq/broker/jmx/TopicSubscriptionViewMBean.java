@@ -29,18 +29,15 @@ extends|extends
 name|SubscriptionViewMBean
 block|{
 comment|/**      * @return the number of messages discarded due to being a slow consumer      */
-specifier|public
 name|int
 name|getDiscardedCount
 parameter_list|()
 function_decl|;
 comment|/**      * @return the maximun number of messages that can be pending.      */
-specifier|public
 name|int
 name|getMaximumPendingQueueSize
 parameter_list|()
 function_decl|;
-specifier|public
 name|void
 name|setMaximumPendingQueueSize
 parameter_list|(

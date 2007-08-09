@@ -568,7 +568,9 @@ operator|.
 name|get
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 name|sleepMutex
 operator|.
 name|wait
@@ -626,12 +628,14 @@ name|reconnectDelay
 operator|>
 name|maxReconnectDelay
 condition|)
+block|{
 name|event
 operator|.
 name|reconnectDelay
 operator|=
 name|maxReconnectDelay
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -657,7 +661,9 @@ operator|.
 name|get
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 name|event
 operator|.
 name|connectTime

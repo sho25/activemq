@@ -116,7 +116,7 @@ operator|.
 name|logging
 operator|.
 name|Log
-name|log
+name|LOG
 init|=
 name|org
 operator|.
@@ -151,7 +151,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

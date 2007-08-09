@@ -224,11 +224,11 @@ name|TestCase
 implements|implements
 name|MessageListener
 block|{
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -512,7 +512,7 @@ argument_list|(
 name|result
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

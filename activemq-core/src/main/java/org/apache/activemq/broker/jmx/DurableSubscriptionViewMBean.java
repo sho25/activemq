@@ -65,13 +65,11 @@ extends|extends
 name|SubscriptionViewMBean
 block|{
 comment|/**      * @return name of the durable subscription name      */
-specifier|public
 name|String
 name|getSubscriptionName
 parameter_list|()
 function_decl|;
 comment|/**      * Browse messages for this durable subscriber      *       * @return messages      * @throws OpenDataException      */
-specifier|public
 name|CompositeData
 index|[]
 name|browse
@@ -80,7 +78,6 @@ throws|throws
 name|OpenDataException
 function_decl|;
 comment|/**      * Browse messages for this durable subscriber      *       * @return messages      * @throws OpenDataException      */
-specifier|public
 name|TabularData
 name|browseAsTable
 parameter_list|()
@@ -88,7 +85,6 @@ throws|throws
 name|OpenDataException
 function_decl|;
 comment|/**      * Destroys the durable subscription so that messages will no longer be      * stored for this subscription      */
-specifier|public
 name|void
 name|destroy
 parameter_list|()

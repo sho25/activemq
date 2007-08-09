@@ -303,7 +303,7 @@ name|data
 decl_stmt|;
 specifier|private
 name|String
-name|DATAFILE_ROOT
+name|dataFileRoot
 init|=
 name|IOHelper
 operator|.
@@ -339,7 +339,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-name|DATAFILE_ROOT
+name|dataFileRoot
 argument_list|)
 decl_stmt|;
 name|recursiveDelete

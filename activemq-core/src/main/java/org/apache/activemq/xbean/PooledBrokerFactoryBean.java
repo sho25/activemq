@@ -113,7 +113,7 @@ block|{
 specifier|static
 specifier|final
 name|HashMap
-name|sharedBrokerMap
+name|SHARED_BROKER_MAP
 init|=
 operator|new
 name|HashMap
@@ -147,7 +147,7 @@ name|Exception
 block|{
 synchronized|synchronized
 init|(
-name|sharedBrokerMap
+name|SHARED_BROKER_MAP
 init|)
 block|{
 name|SharedBroker
@@ -156,7 +156,7 @@ init|=
 operator|(
 name|SharedBroker
 operator|)
-name|sharedBrokerMap
+name|SHARED_BROKER_MAP
 operator|.
 name|get
 argument_list|(
@@ -212,7 +212,7 @@ operator|.
 name|afterPropertiesSet
 argument_list|()
 expr_stmt|;
-name|sharedBrokerMap
+name|SHARED_BROKER_MAP
 operator|.
 name|put
 argument_list|(
@@ -241,7 +241,7 @@ name|Exception
 block|{
 synchronized|synchronized
 init|(
-name|sharedBrokerMap
+name|SHARED_BROKER_MAP
 init|)
 block|{
 name|SharedBroker
@@ -250,7 +250,7 @@ init|=
 operator|(
 name|SharedBroker
 operator|)
-name|sharedBrokerMap
+name|SHARED_BROKER_MAP
 operator|.
 name|get
 argument_list|(
@@ -288,7 +288,7 @@ operator|.
 name|destroy
 argument_list|()
 expr_stmt|;
-name|sharedBrokerMap
+name|SHARED_BROKER_MAP
 operator|.
 name|remove
 argument_list|(
@@ -320,7 +320,7 @@ name|Exception
 block|{
 synchronized|synchronized
 init|(
-name|sharedBrokerMap
+name|SHARED_BROKER_MAP
 init|)
 block|{
 name|SharedBroker
@@ -329,7 +329,7 @@ init|=
 operator|(
 name|SharedBroker
 operator|)
-name|sharedBrokerMap
+name|SHARED_BROKER_MAP
 operator|.
 name|get
 argument_list|(

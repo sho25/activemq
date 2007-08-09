@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -123,7 +123,6 @@ extends|extends
 name|Service
 block|{
 comment|/**      * Add a destination      *       * @param context      * @param destination      * @throws Exception      */
-specifier|public
 name|void
 name|add
 parameter_list|(
@@ -137,7 +136,6 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * remove a destination      *       * @param context      * @param destination      * @throws Exception      */
-specifier|public
 name|void
 name|remove
 parameter_list|(
@@ -151,13 +149,11 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * @return true if there are no pending messages      */
-specifier|public
 name|boolean
 name|isEmpty
 parameter_list|()
 function_decl|;
 comment|/**      * check if a Destination is Empty for this cursor      *       * @param destination      * @return true id the Destination is empty      */
-specifier|public
 name|boolean
 name|isEmpty
 parameter_list|(
@@ -166,19 +162,16 @@ name|destination
 parameter_list|)
 function_decl|;
 comment|/**      * reset the cursor      */
-specifier|public
 name|void
 name|reset
 parameter_list|()
 function_decl|;
 comment|/**      * hint to the cursor to release any locks it might have grabbed after a      * reset      */
-specifier|public
 name|void
 name|release
 parameter_list|()
 function_decl|;
 comment|/**      * add message to await dispatch      *       * @param node      * @throws IOException      * @throws Exception      */
-specifier|public
 name|void
 name|addMessageLast
 parameter_list|(
@@ -189,7 +182,6 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * add message to await dispatch      *       * @param node      * @throws Exception      */
-specifier|public
 name|void
 name|addMessageFirst
 parameter_list|(
@@ -200,7 +192,6 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Add a message recovered from a retroactive policy      *       * @param node      * @throws Exception      */
-specifier|public
 name|void
 name|addRecoveredMessage
 parameter_list|(
@@ -211,49 +202,41 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * @return true if there pending messages to dispatch      */
-specifier|public
 name|boolean
 name|hasNext
 parameter_list|()
 function_decl|;
 comment|/**      * @return the next pending message      */
-specifier|public
 name|MessageReference
 name|next
 parameter_list|()
 function_decl|;
 comment|/**      * remove the message at the cursor position      */
-specifier|public
 name|void
 name|remove
 parameter_list|()
 function_decl|;
 comment|/**      * @return the number of pending messages      */
-specifier|public
 name|int
 name|size
 parameter_list|()
 function_decl|;
 comment|/**      * clear all pending messages      */
-specifier|public
 name|void
 name|clear
 parameter_list|()
 function_decl|;
 comment|/**      * Informs the Broker if the subscription needs to intervention to recover      * it's state e.g. DurableTopicSubscriber may do      *       * @return true if recovery required      */
-specifier|public
 name|boolean
 name|isRecoveryRequired
 parameter_list|()
 function_decl|;
 comment|/**      * @return the maximum batch size      */
-specifier|public
 name|int
 name|getMaxBatchSize
 parameter_list|()
 function_decl|;
 comment|/**      * Set the max batch size      *       * @param maxBatchSize      */
-specifier|public
 name|void
 name|setMaxBatchSize
 parameter_list|(
@@ -262,13 +245,11 @@ name|maxBatchSize
 parameter_list|)
 function_decl|;
 comment|/**      * Give the cursor a hint that we are about to remove messages from memory      * only      */
-specifier|public
 name|void
 name|resetForGC
 parameter_list|()
 function_decl|;
 comment|/**      * remove a node      *       * @param node      */
-specifier|public
 name|void
 name|remove
 parameter_list|(
@@ -277,13 +258,11 @@ name|node
 parameter_list|)
 function_decl|;
 comment|/**      * free up any internal buffers      */
-specifier|public
 name|void
 name|gc
 parameter_list|()
 function_decl|;
 comment|/**      * Set the UsageManager      *       * @param usageManager      * @see org.apache.activemq.memory.UsageManager      */
-specifier|public
 name|void
 name|setUsageManager
 parameter_list|(
@@ -292,19 +271,16 @@ name|usageManager
 parameter_list|)
 function_decl|;
 comment|/**      * @return the usageManager      */
-specifier|public
 name|UsageManager
 name|getUsageManager
 parameter_list|()
 function_decl|;
 comment|/**      * @return the memoryUsageHighWaterMark      */
-specifier|public
 name|int
 name|getMemoryUsageHighWaterMark
 parameter_list|()
 function_decl|;
 comment|/**      * @param memoryUsageHighWaterMark the memoryUsageHighWaterMark to set      */
-specifier|public
 name|void
 name|setMemoryUsageHighWaterMark
 parameter_list|(
@@ -313,19 +289,16 @@ name|memoryUsageHighWaterMark
 parameter_list|)
 function_decl|;
 comment|/**      * @return true if the cursor is full      */
-specifier|public
 name|boolean
 name|isFull
 parameter_list|()
 function_decl|;
 comment|/**      * @return true if the cursor has buffered messages ready to deliver      */
-specifier|public
 name|boolean
 name|hasMessagesBufferedToDeliver
 parameter_list|()
 function_decl|;
 comment|/**      * destroy the cursor      *       * @throws Exception      */
-specifier|public
 name|void
 name|destroy
 parameter_list|()
@@ -333,7 +306,6 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Page in a restricted number of messages      *       * @param maxItems      * @return a list of paged in messages      */
-specifier|public
 name|LinkedList
 name|pageInList
 parameter_list|(

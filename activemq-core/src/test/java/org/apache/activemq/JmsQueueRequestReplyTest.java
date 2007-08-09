@@ -24,7 +24,7 @@ name|JmsQueueRequestReplyTest
 extends|extends
 name|JmsTopicRequestReplyTest
 block|{
-comment|/**      * Set up the test with a queue.       *       * @see junit.framework.TestCase#setUp()      */
+comment|/**      * Set up the test with a queue.      *       * @see junit.framework.TestCase#setUp()      */
 specifier|protected
 name|void
 name|setUp

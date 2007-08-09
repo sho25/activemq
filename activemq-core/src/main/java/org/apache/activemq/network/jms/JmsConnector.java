@@ -221,7 +221,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -321,8 +321,8 @@ init|=
 name|createLRUCache
 argument_list|()
 decl_stmt|;
-specifier|static
 specifier|private
+specifier|static
 name|LRUCache
 name|createLRUCache
 parameter_list|()
@@ -409,7 +409,7 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -425,7 +425,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -635,7 +635,7 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -742,7 +742,7 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1118,8 +1118,8 @@ specifier|static
 name|int
 name|nextId
 decl_stmt|;
-specifier|static
 specifier|private
+specifier|static
 specifier|synchronized
 name|int
 name|getNextId

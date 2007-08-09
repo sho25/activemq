@@ -25,7 +25,6 @@ interface|interface
 name|Resettable
 block|{
 comment|/**      * Reset the statistic      */
-specifier|public
 name|void
 name|reset
 parameter_list|()

@@ -575,8 +575,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|flush
 parameter_list|()

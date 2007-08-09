@@ -24,7 +24,7 @@ name|JmsQueueSendReceiveUsingTwoSessionsTest
 extends|extends
 name|JmsQueueSendReceiveTest
 block|{
-comment|/**      * Set up the test using two sessions.        *       * @see junit.framework.TestCase#setUp()      */
+comment|/**      * Set up the test using two sessions.      *       * @see junit.framework.TestCase#setUp()      */
 specifier|protected
 name|void
 name|setUp

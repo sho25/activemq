@@ -794,8 +794,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|recover
 parameter_list|(

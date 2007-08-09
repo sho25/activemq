@@ -44,6 +44,7 @@ name|ResponseTest
 block|{
 specifier|public
 specifier|static
+specifier|final
 name|IntegerResponseTest
 name|SINGLETON
 init|=

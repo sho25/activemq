@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+end_comment
+
 begin_package
 package|package
 name|org
@@ -473,7 +477,7 @@ literal|null
 return|;
 block|}
 name|ActiveMQDestination
-name|amq_d
+name|activeMQDestination
 init|=
 operator|(
 name|ActiveMQDestination
@@ -481,9 +485,9 @@ operator|)
 name|d
 decl_stmt|;
 name|String
-name|p_name
+name|physicalName
 init|=
-name|amq_d
+name|activeMQDestination
 operator|.
 name|getPhysicalName
 argument_list|()
@@ -497,7 +501,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|amq_d
+name|activeMQDestination
 operator|.
 name|isQueue
 argument_list|()
@@ -505,7 +509,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|amq_d
+name|activeMQDestination
 operator|.
 name|isTemporary
 argument_list|()
@@ -534,7 +538,7 @@ else|else
 block|{
 if|if
 condition|(
-name|amq_d
+name|activeMQDestination
 operator|.
 name|isTemporary
 argument_list|()
@@ -563,7 +567,7 @@ name|buffer
 operator|.
 name|append
 argument_list|(
-name|p_name
+name|physicalName
 argument_list|)
 expr_stmt|;
 return|return
@@ -606,7 +610,7 @@ argument_list|)
 condition|)
 block|{
 name|String
-name|q_name
+name|qName
 init|=
 name|name
 operator|.
@@ -628,7 +632,7 @@ name|ActiveMQDestination
 operator|.
 name|createDestination
 argument_list|(
-name|q_name
+name|qName
 argument_list|,
 name|ActiveMQDestination
 operator|.
@@ -648,7 +652,7 @@ argument_list|)
 condition|)
 block|{
 name|String
-name|t_name
+name|tName
 init|=
 name|name
 operator|.
@@ -670,7 +674,7 @@ name|ActiveMQDestination
 operator|.
 name|createDestination
 argument_list|(
-name|t_name
+name|tName
 argument_list|,
 name|ActiveMQDestination
 operator|.
@@ -690,7 +694,7 @@ argument_list|)
 condition|)
 block|{
 name|String
-name|t_name
+name|tName
 init|=
 name|name
 operator|.
@@ -712,7 +716,7 @@ name|ActiveMQDestination
 operator|.
 name|createDestination
 argument_list|(
-name|t_name
+name|tName
 argument_list|,
 name|ActiveMQDestination
 operator|.
@@ -732,7 +736,7 @@ argument_list|)
 condition|)
 block|{
 name|String
-name|t_name
+name|tName
 init|=
 name|name
 operator|.
@@ -754,7 +758,7 @@ name|ActiveMQDestination
 operator|.
 name|createDestination
 argument_list|(
-name|t_name
+name|tName
 argument_list|,
 name|ActiveMQDestination
 operator|.

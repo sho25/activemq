@@ -203,8 +203,8 @@ comment|// }
 comment|// }
 comment|// }
 block|}
-specifier|static
 specifier|public
+specifier|static
 name|void
 name|assertEquals
 parameter_list|(
@@ -225,6 +225,7 @@ name|was
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|AssertionFailedError
@@ -238,13 +239,16 @@ operator|+
 name|was
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|expect
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|expect
@@ -257,6 +261,7 @@ operator|.
 name|getClass
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|AssertionFailedError
@@ -276,6 +281,7 @@ name|getClass
 argument_list|()
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|expect
@@ -561,6 +567,7 @@ name|wasArray
 operator|.
 name|length
 condition|)
+block|{
 throw|throw
 operator|new
 name|AssertionFailedError
@@ -578,6 +585,7 @@ operator|.
 name|length
 argument_list|)
 throw|;
+block|}
 for|for
 control|(
 name|int

@@ -104,7 +104,6 @@ name|StreamConnection
 extends|extends
 name|Connection
 block|{
-specifier|public
 name|InputStream
 name|createInputStream
 parameter_list|(
@@ -114,7 +113,6 @@ parameter_list|)
 throws|throws
 name|JMSException
 function_decl|;
-specifier|public
 name|InputStream
 name|createInputStream
 parameter_list|(
@@ -127,7 +125,6 @@ parameter_list|)
 throws|throws
 name|JMSException
 function_decl|;
-specifier|public
 name|InputStream
 name|createInputStream
 parameter_list|(
@@ -143,7 +140,6 @@ parameter_list|)
 throws|throws
 name|JMSException
 function_decl|;
-specifier|public
 name|InputStream
 name|createDurableInputStream
 parameter_list|(
@@ -156,7 +152,6 @@ parameter_list|)
 throws|throws
 name|JMSException
 function_decl|;
-specifier|public
 name|InputStream
 name|createDurableInputStream
 parameter_list|(
@@ -172,7 +167,6 @@ parameter_list|)
 throws|throws
 name|JMSException
 function_decl|;
-specifier|public
 name|InputStream
 name|createDurableInputStream
 parameter_list|(
@@ -191,7 +185,6 @@ parameter_list|)
 throws|throws
 name|JMSException
 function_decl|;
-specifier|public
 name|OutputStream
 name|createOutputStream
 parameter_list|(
@@ -201,7 +194,6 @@ parameter_list|)
 throws|throws
 name|JMSException
 function_decl|;
-specifier|public
 name|OutputStream
 name|createOutputStream
 parameter_list|(
@@ -224,7 +216,6 @@ throws|throws
 name|JMSException
 function_decl|;
 comment|/**      * Unsubscribes a durable subscription that has been created by a client.      *<P>      * This method deletes the state being maintained on behalf of the      * subscriber by its provider.      *<P>      * It is erroneous for a client to delete a durable subscription while there      * is an active<CODE>MessageConsumer</CODE> or      *<CODE>TopicSubscriber</CODE> for the subscription, or while a consumed      * message is part of a pending transaction or has not been acknowledged in      * the session.      *       * @param name the name used to identify this subscription      * @throws JMSException if the session fails to unsubscribe to the durable      *                 subscription due to some internal error.      * @throws InvalidDestinationException if an invalid subscription name is      *                 specified.      * @since 1.1      */
-specifier|public
 name|void
 name|unsubscribe
 parameter_list|(

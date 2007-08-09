@@ -25,7 +25,6 @@ interface|interface
 name|Callback
 block|{
 comment|/**      * Executes some piece of code within a transaction      * performing a commit if there is no exception thrown      * else a rollback is performed      * @throws Exception TODO      */
-specifier|public
 name|void
 name|execute
 parameter_list|()

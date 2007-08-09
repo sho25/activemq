@@ -44,6 +44,7 @@ name|BaseCommandTestSupport
 block|{
 specifier|public
 specifier|static
+specifier|final
 name|ConsumerControlTest
 name|SINGLETON
 init|=

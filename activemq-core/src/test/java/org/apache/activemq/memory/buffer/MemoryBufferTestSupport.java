@@ -81,11 +81,11 @@ name|MemoryBufferTestSupport
 extends|extends
 name|TestCase
 block|{
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -179,7 +179,7 @@ name|void
 name|dump
 parameter_list|()
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -219,7 +219,7 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

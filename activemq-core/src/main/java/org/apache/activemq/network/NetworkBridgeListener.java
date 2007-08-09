@@ -25,13 +25,11 @@ interface|interface
 name|NetworkBridgeListener
 block|{
 comment|/**      * called when the transport fails      */
-specifier|public
 name|void
 name|bridgeFailed
 parameter_list|()
 function_decl|;
 comment|/**      * called after the bridge is started.      */
-specifier|public
 name|void
 name|onStart
 parameter_list|(
@@ -40,7 +38,6 @@ name|bridge
 parameter_list|)
 function_decl|;
 comment|/**      * called before the bridge is stopped.      */
-specifier|public
 name|void
 name|onStop
 parameter_list|(

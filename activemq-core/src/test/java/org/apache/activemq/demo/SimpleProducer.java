@@ -144,7 +144,7 @@ operator|.
 name|logging
 operator|.
 name|Log
-name|log
+name|LOG
 init|=
 name|org
 operator|.
@@ -211,7 +211,7 @@ literal|null
 decl_stmt|;
 specifier|final
 name|int
-name|NUM_MSGS
+name|numMsgs
 decl_stmt|;
 if|if
 condition|(
@@ -232,7 +232,7 @@ literal|2
 operator|)
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -254,7 +254,7 @@ index|[
 literal|0
 index|]
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -272,7 +272,7 @@ operator|==
 literal|2
 condition|)
 block|{
-name|NUM_MSGS
+name|numMsgs
 operator|=
 operator|(
 operator|new
@@ -291,7 +291,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|NUM_MSGS
+name|numMsgs
 operator|=
 literal|1
 expr_stmt|;
@@ -312,7 +312,7 @@ name|NamingException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -366,7 +366,7 @@ name|NamingException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -432,7 +432,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|NUM_MSGS
+name|numMsgs
 condition|;
 name|i
 operator|++
@@ -451,7 +451,7 @@ literal|1
 operator|)
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -489,7 +489,7 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

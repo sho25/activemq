@@ -116,7 +116,6 @@ decl_stmt|;
 interface|interface
 name|BooleanValueSet
 block|{
-specifier|public
 name|boolean
 name|getBooleanValueFor
 parameter_list|(

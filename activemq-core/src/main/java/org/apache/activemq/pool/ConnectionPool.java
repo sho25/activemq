@@ -392,8 +392,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|ActiveMQConnection
 name|getConnection
 parameter_list|()
@@ -617,8 +617,8 @@ name|jmsException
 throw|;
 block|}
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|close
 parameter_list|()
@@ -709,8 +709,8 @@ block|}
 block|}
 block|}
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|incrementReferenceCount
 parameter_list|()
@@ -726,8 +726,8 @@ name|currentTimeMillis
 argument_list|()
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|decrementReferenceCount
 parameter_list|()
@@ -755,8 +755,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @return true if this connection has expired.      */
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|boolean
 name|expiredCheck
 parameter_list|()

@@ -38,8 +38,8 @@ name|TransportListener
 implements|,
 name|Transport
 block|{
-specifier|final
 specifier|protected
+specifier|final
 name|Transport
 name|next
 decl_stmt|;
@@ -90,6 +90,7 @@ name|channelListener
 operator|==
 literal|null
 condition|)
+block|{
 name|next
 operator|.
 name|setTransportListener
@@ -97,7 +98,9 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|next
 operator|.
 name|setTransportListener
@@ -105,6 +108,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * @see org.apache.activemq.Service#start()      * @throws IOException if the next channel has not been set.      */
 specifier|public
@@ -120,6 +124,7 @@ name|next
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -127,12 +132,14 @@ argument_list|(
 literal|"The next channel has not been set."
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|transportListener
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -140,6 +147,7 @@ argument_list|(
 literal|"The command listener has not been set."
 argument_list|)
 throw|;
+block|}
 name|next
 operator|.
 name|start

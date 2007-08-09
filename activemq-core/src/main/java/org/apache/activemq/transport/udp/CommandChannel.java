@@ -108,14 +108,12 @@ name|Replayer
 extends|,
 name|Service
 block|{
-specifier|public
 name|Command
 name|read
 parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-specifier|public
 name|void
 name|write
 parameter_list|(
@@ -128,13 +126,11 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-specifier|public
 name|int
 name|getDatagramSize
 parameter_list|()
 function_decl|;
 comment|/**      * Sets the default size of a datagram on the network.      */
-specifier|public
 name|void
 name|setDatagramSize
 parameter_list|(
@@ -142,12 +138,10 @@ name|int
 name|datagramSize
 parameter_list|)
 function_decl|;
-specifier|public
 name|DatagramHeaderMarshaller
 name|getHeaderMarshaller
 parameter_list|()
 function_decl|;
-specifier|public
 name|void
 name|setHeaderMarshaller
 parameter_list|(
@@ -155,7 +149,6 @@ name|DatagramHeaderMarshaller
 name|headerMarshaller
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|setTargetAddress
 parameter_list|(
@@ -163,7 +156,6 @@ name|SocketAddress
 name|address
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|setReplayAddress
 parameter_list|(
@@ -171,7 +163,6 @@ name|SocketAddress
 name|address
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|setReplayBuffer
 parameter_list|(

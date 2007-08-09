@@ -76,8 +76,8 @@ comment|/**  * @author chirino  */
 end_comment
 
 begin_class
-specifier|final
 specifier|public
+specifier|final
 class|class
 name|SelectorSelection
 block|{

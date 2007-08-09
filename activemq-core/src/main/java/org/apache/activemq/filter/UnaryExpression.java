@@ -458,13 +458,17 @@ if|if
 condition|(
 name|not
 condition|)
+block|{
 return|return
 literal|"NOT IN"
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|"IN"
 return|;
+block|}
 block|}
 block|}
 return|;
@@ -1041,8 +1045,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the symbol that represents this binary expression. For example,      * addition is represented by "+"      *       * @return      */
-specifier|abstract
 specifier|public
+specifier|abstract
 name|String
 name|getExpressionSymbol
 parameter_list|()

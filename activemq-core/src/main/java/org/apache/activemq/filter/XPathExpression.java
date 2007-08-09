@@ -131,7 +131,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -206,7 +206,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -250,7 +250,7 @@ name|Throwable
 name|e2
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -355,12 +355,11 @@ specifier|final
 name|XPathEvaluator
 name|evaluator
 decl_stmt|;
-specifier|static
 specifier|public
+specifier|static
 interface|interface
 name|XPathEvaluator
 block|{
-specifier|public
 name|boolean
 name|evaluate
 parameter_list|(

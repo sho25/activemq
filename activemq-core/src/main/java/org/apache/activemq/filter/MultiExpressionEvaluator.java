@@ -258,7 +258,6 @@ specifier|static
 interface|interface
 name|ExpressionListener
 block|{
-specifier|public
 name|void
 name|evaluateResultEvent
 parameter_list|(

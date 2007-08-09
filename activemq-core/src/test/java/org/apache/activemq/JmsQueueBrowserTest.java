@@ -130,7 +130,7 @@ operator|.
 name|logging
 operator|.
 name|Log
-name|log
+name|LOG
 init|=
 name|org
 operator|.
@@ -387,7 +387,7 @@ name|hasMoreElements
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

@@ -482,6 +482,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|e
 operator|=
 name|getNextEntry
@@ -489,6 +490,7 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|e

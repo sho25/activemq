@@ -207,7 +207,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -377,7 +377,7 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -391,7 +391,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -412,7 +412,7 @@ operator|.
 name|rollback
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -426,7 +426,7 @@ name|JMSException
 name|e1
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -439,7 +439,7 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -493,7 +493,7 @@ argument_list|(
 name|tm
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -518,7 +518,7 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -530,7 +530,7 @@ operator|.
 name|await
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

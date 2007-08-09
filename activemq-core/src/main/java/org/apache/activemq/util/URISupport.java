@@ -294,6 +294,7 @@ name|i
 operator|!=
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -301,6 +302,7 @@ argument_list|(
 literal|','
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -1065,6 +1067,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|rc
 operator|.
 name|path
@@ -1076,6 +1079,7 @@ argument_list|,
 literal|"/"
 argument_list|)
 expr_stmt|;
+block|}
 name|rc
 operator|.
 name|parameters
@@ -1221,6 +1225,7 @@ argument_list|()
 operator|!=
 literal|0
 condition|)
+block|{
 name|l
 operator|.
 name|add
@@ -1228,6 +1233,7 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|rc
 index|[]
@@ -1273,6 +1279,7 @@ argument_list|(
 name|prefix
 argument_list|)
 condition|)
+block|{
 return|return
 name|value
 operator|.
@@ -1284,6 +1291,7 @@ name|length
 argument_list|()
 argument_list|)
 return|;
+block|}
 return|return
 name|value
 return|;
@@ -1377,11 +1385,14 @@ if|if
 condition|(
 name|first
 condition|)
+block|{
 name|first
 operator|=
 literal|false
 expr_stmt|;
+block|}
 else|else
+block|{
 name|rc
 operator|.
 name|append
@@ -1389,6 +1400,7 @@ argument_list|(
 literal|"&"
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|key
 init|=
@@ -1523,10 +1535,12 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 name|s
 operator|=
 literal|null
 expr_stmt|;
+block|}
 return|return
 name|createURIWithQuery
 argument_list|(
@@ -1536,8 +1550,8 @@ name|s
 argument_list|)
 return|;
 block|}
-specifier|static
 specifier|public
+specifier|static
 name|URI
 name|changeScheme
 parameter_list|(

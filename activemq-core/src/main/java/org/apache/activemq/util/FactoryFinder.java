@@ -361,6 +361,7 @@ name|classLoader
 operator|==
 literal|null
 condition|)
+block|{
 name|classLoader
 operator|=
 name|getClass
@@ -369,6 +370,7 @@ operator|.
 name|getClassLoader
 argument_list|()
 expr_stmt|;
+block|}
 name|InputStream
 name|in
 init|=

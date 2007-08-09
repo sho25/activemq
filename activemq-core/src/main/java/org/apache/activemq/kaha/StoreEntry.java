@@ -24,61 +24,43 @@ specifier|public
 interface|interface
 name|StoreEntry
 block|{
-specifier|public
-specifier|abstract
 name|StoreLocation
 name|getKeyDataItem
 parameter_list|()
 function_decl|;
-specifier|public
-specifier|abstract
 name|StoreLocation
 name|getValueDataItem
 parameter_list|()
 function_decl|;
 comment|/**      * @return next item      */
-specifier|public
-specifier|abstract
 name|long
 name|getNextItem
 parameter_list|()
 function_decl|;
 comment|/**      * @return Returns the keyFile.      */
-specifier|public
-specifier|abstract
 name|int
 name|getKeyFile
 parameter_list|()
 function_decl|;
 comment|/**      * @return Returns the valueFile.      */
-specifier|public
-specifier|abstract
 name|int
 name|getValueFile
 parameter_list|()
 function_decl|;
 comment|/**      * @return Returns the valueOffset.      */
-specifier|public
-specifier|abstract
 name|long
 name|getValueOffset
 parameter_list|()
 function_decl|;
 comment|/**      * @return Returns the offset.      */
-specifier|public
-specifier|abstract
 name|long
 name|getOffset
 parameter_list|()
 function_decl|;
-specifier|public
-specifier|abstract
 name|int
 name|getKeySize
 parameter_list|()
 function_decl|;
-specifier|public
-specifier|abstract
 name|int
 name|getValueSize
 parameter_list|()

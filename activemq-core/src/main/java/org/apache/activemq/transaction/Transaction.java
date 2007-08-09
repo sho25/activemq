@@ -81,36 +81,36 @@ specifier|abstract
 class|class
 name|Transaction
 block|{
+specifier|public
 specifier|static
 specifier|final
-specifier|public
 name|byte
 name|START_STATE
 init|=
 literal|0
 decl_stmt|;
 comment|// can go to: 1,2,3
+specifier|public
 specifier|static
 specifier|final
-specifier|public
 name|byte
 name|IN_USE_STATE
 init|=
 literal|1
 decl_stmt|;
 comment|// can go to: 2,3
+specifier|public
 specifier|static
 specifier|final
-specifier|public
 name|byte
 name|PREPARED_STATE
 init|=
 literal|2
 decl_stmt|;
 comment|// can go to: 3
+specifier|public
 specifier|static
 specifier|final
-specifier|public
 name|byte
 name|FINISHED_STATE
 init|=
@@ -349,8 +349,8 @@ operator|+
 literal|"]"
 return|;
 block|}
-specifier|abstract
 specifier|public
+specifier|abstract
 name|void
 name|commit
 parameter_list|(
@@ -362,8 +362,8 @@ name|XAException
 throws|,
 name|IOException
 function_decl|;
-specifier|abstract
 specifier|public
+specifier|abstract
 name|void
 name|rollback
 parameter_list|()
@@ -372,8 +372,8 @@ name|XAException
 throws|,
 name|IOException
 function_decl|;
-specifier|abstract
 specifier|public
+specifier|abstract
 name|int
 name|prepare
 parameter_list|()
@@ -382,8 +382,8 @@ name|XAException
 throws|,
 name|IOException
 function_decl|;
-specifier|abstract
 specifier|public
+specifier|abstract
 name|TransactionId
 name|getTransactionId
 parameter_list|()

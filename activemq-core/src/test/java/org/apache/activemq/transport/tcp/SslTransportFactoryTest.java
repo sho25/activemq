@@ -119,9 +119,8 @@ block|{
 specifier|private
 specifier|static
 specifier|final
-specifier|transient
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -547,14 +546,14 @@ condition|(
 name|verbose
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -563,7 +562,7 @@ operator|+
 name|i
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -589,7 +588,7 @@ name|x
 operator|++
 control|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -650,7 +649,7 @@ literal|2
 index|]
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

@@ -32,7 +32,6 @@ name|CompositeTransport
 extends|extends
 name|Transport
 block|{
-specifier|public
 name|void
 name|add
 parameter_list|(
@@ -41,7 +40,6 @@ index|[]
 name|uris
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|remove
 parameter_list|(

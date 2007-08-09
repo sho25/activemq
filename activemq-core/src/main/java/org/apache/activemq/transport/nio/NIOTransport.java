@@ -504,7 +504,9 @@ operator|.
 name|hasRemaining
 argument_list|()
 condition|)
+block|{
 continue|continue;
+block|}
 comment|// Are we trying to figure out the size of the next frame?
 if|if
 condition|(

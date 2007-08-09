@@ -202,9 +202,9 @@ name|CommandTypes
 operator|.
 name|WIREFORMAT_INFO
 decl_stmt|;
+specifier|private
 specifier|static
 specifier|final
-specifier|private
 name|byte
 name|MAGIC
 index|[]

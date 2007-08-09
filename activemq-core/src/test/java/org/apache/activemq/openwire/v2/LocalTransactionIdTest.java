@@ -44,6 +44,7 @@ name|TransactionIdTestSupport
 block|{
 specifier|public
 specifier|static
+specifier|final
 name|LocalTransactionIdTest
 name|SINGLETON
 init|=

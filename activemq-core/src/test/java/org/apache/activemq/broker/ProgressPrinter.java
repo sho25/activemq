@@ -59,8 +59,8 @@ operator|=
 name|interval
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|increment
 parameter_list|()
@@ -72,8 +72,8 @@ name|counter
 argument_list|)
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|update
 parameter_list|(

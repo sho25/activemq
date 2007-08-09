@@ -193,8 +193,8 @@ return|return
 name|rc
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|boolean
 name|add
 parameter_list|(
@@ -231,8 +231,8 @@ return|return
 literal|true
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|recover
 parameter_list|(

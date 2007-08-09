@@ -44,6 +44,7 @@ name|ActiveMQMessageTest
 block|{
 specifier|public
 specifier|static
+specifier|final
 name|ActiveMQStreamMessageTest
 name|SINGLETON
 init|=

@@ -64,11 +64,11 @@ specifier|private
 specifier|static
 specifier|final
 name|Executor
-name|defaultPool
+name|DEFAULT_POOL
 decl_stmt|;
 static|static
 block|{
-name|defaultPool
+name|DEFAULT_POOL
 operator|=
 operator|new
 name|ScheduledThreadPoolExecutor
@@ -117,7 +117,7 @@ specifier|private
 specifier|static
 specifier|final
 name|TaskRunnerFactory
-name|defaultTaskRunnerFactory
+name|DEFAULT_TASK_RUNNER_FACTORY
 init|=
 operator|new
 name|TaskRunnerFactory
@@ -130,7 +130,7 @@ name|getDefaultPool
 parameter_list|()
 block|{
 return|return
-name|defaultPool
+name|DEFAULT_POOL
 return|;
 block|}
 specifier|public
@@ -140,7 +140,7 @@ name|getDefaultTaskRunnerFactory
 parameter_list|()
 block|{
 return|return
-name|defaultTaskRunnerFactory
+name|DEFAULT_TASK_RUNNER_FACTORY
 return|;
 block|}
 block|}

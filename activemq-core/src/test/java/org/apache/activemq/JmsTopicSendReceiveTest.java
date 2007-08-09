@@ -96,7 +96,7 @@ operator|.
 name|logging
 operator|.
 name|Log
-name|log
+name|LOG
 init|=
 name|org
 operator|.
@@ -158,7 +158,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -180,7 +180,7 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -205,7 +205,7 @@ argument_list|(
 name|deliveryMode
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -277,7 +277,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -293,7 +293,7 @@ name|getClass
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -340,7 +340,7 @@ condition|(
 name|durable
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -378,7 +378,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -386,7 +386,7 @@ literal|"Dumping stats..."
 argument_list|)
 expr_stmt|;
 comment|// connectionFactory.getStats().reset();
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

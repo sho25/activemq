@@ -90,8 +90,8 @@ literal|"The JMS connection has failed due to a Transport problem"
 argument_list|)
 expr_stmt|;
 block|}
-specifier|static
 specifier|private
+specifier|static
 name|String
 name|extractMessage
 parameter_list|(

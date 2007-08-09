@@ -212,8 +212,8 @@ comment|/**  * @openwire:marshaller  * @version $Revision: 1.10 $  */
 end_comment
 
 begin_class
-specifier|abstract
 specifier|public
+specifier|abstract
 class|class
 name|ActiveMQDestination
 extends|extends
@@ -340,25 +340,25 @@ specifier|protected
 name|String
 name|physicalName
 decl_stmt|;
-specifier|transient
 specifier|protected
+specifier|transient
 name|ActiveMQDestination
 index|[]
 name|compositeDestinations
 decl_stmt|;
-specifier|transient
 specifier|protected
+specifier|transient
 name|String
 index|[]
 name|destinationPaths
 decl_stmt|;
-specifier|transient
 specifier|protected
+specifier|transient
 name|boolean
 name|isPattern
 decl_stmt|;
-specifier|transient
 specifier|protected
+specifier|transient
 name|int
 name|hashValue
 decl_stmt|;
@@ -368,8 +368,8 @@ name|options
 decl_stmt|;
 comment|// static helper methods for working with destinations
 comment|// -------------------------------------------------------------------------
-specifier|static
 specifier|public
+specifier|static
 name|ActiveMQDestination
 name|createDestination
 parameter_list|(
@@ -1018,8 +1018,8 @@ operator|+
 name|physicalName
 return|;
 block|}
-specifier|abstract
 specifier|protected
+specifier|abstract
 name|String
 name|getQualifiedPrefix
 parameter_list|()
@@ -1451,8 +1451,8 @@ return|return
 name|destinationPaths
 return|;
 block|}
-specifier|abstract
 specifier|public
+specifier|abstract
 name|byte
 name|getDestinationType
 parameter_list|()

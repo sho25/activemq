@@ -44,7 +44,6 @@ specifier|public
 interface|interface
 name|MarshallAware
 block|{
-specifier|public
 name|void
 name|beforeMarshall
 parameter_list|(
@@ -54,7 +53,6 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-specifier|public
 name|void
 name|afterMarshall
 parameter_list|(
@@ -64,7 +62,6 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-specifier|public
 name|void
 name|beforeUnmarshall
 parameter_list|(
@@ -74,7 +71,6 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-specifier|public
 name|void
 name|afterUnmarshall
 parameter_list|(

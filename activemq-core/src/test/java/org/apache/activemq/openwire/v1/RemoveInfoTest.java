@@ -44,6 +44,7 @@ name|BaseCommandTestSupport
 block|{
 specifier|public
 specifier|static
+specifier|final
 name|RemoveInfoTest
 name|SINGLETON
 init|=

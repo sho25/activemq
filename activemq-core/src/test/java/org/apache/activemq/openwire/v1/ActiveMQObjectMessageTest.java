@@ -44,6 +44,7 @@ name|ActiveMQMessageTest
 block|{
 specifier|public
 specifier|static
+specifier|final
 name|ActiveMQObjectMessageTest
 name|SINGLETON
 init|=

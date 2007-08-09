@@ -123,7 +123,7 @@ specifier|static
 specifier|final
 specifier|transient
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -139,8 +139,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|testRecordLocationImplComparison
 parameter_list|()
@@ -274,7 +274,7 @@ name|l
 argument_list|)
 expr_stmt|;
 comment|// Did they get sorted to the correct order?
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(

@@ -24,31 +24,21 @@ specifier|public
 interface|interface
 name|SecurityAdminMBean
 block|{
-specifier|public
-specifier|static
-specifier|final
 name|String
 name|OPERATION_READ
 init|=
 literal|"read"
 decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
 name|String
 name|OPERATION_WRITE
 init|=
 literal|"write"
 decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
 name|String
 name|OPERATION_ADMIN
 init|=
 literal|"admin"
 decl_stmt|;
-specifier|public
 name|void
 name|addRole
 parameter_list|(
@@ -56,7 +46,6 @@ name|String
 name|role
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|removeRole
 parameter_list|(
@@ -64,7 +53,6 @@ name|String
 name|role
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|addUserRole
 parameter_list|(
@@ -75,7 +63,6 @@ name|String
 name|role
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|removeUserRole
 parameter_list|(
@@ -86,7 +73,6 @@ name|String
 name|role
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|addTopicRole
 parameter_list|(
@@ -100,7 +86,6 @@ name|String
 name|role
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|removeTopicRole
 parameter_list|(
@@ -114,7 +99,6 @@ name|String
 name|role
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|addQueueRole
 parameter_list|(
@@ -128,7 +112,6 @@ name|String
 name|role
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|removeQueueRole
 parameter_list|(

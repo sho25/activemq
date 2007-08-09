@@ -221,7 +221,7 @@ specifier|static
 specifier|final
 specifier|transient
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -234,7 +234,7 @@ argument_list|)
 decl_stmt|;
 specifier|public
 name|int
-name|PRODUCE_COUNT
+name|produceCount
 init|=
 name|Integer
 operator|.
@@ -256,11 +256,11 @@ name|destination
 decl_stmt|;
 specifier|public
 name|int
-name|PRODUCER_COUNT
+name|prodcuerCount
 decl_stmt|;
 specifier|public
 name|int
-name|CONSUMER_COUNT
+name|consumerCount
 decl_stmt|;
 specifier|public
 name|boolean
@@ -381,7 +381,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -391,11 +391,11 @@ name|destination
 operator|+
 literal|", producers="
 operator|+
-name|PRODUCER_COUNT
+name|prodcuerCount
 operator|+
 literal|", consumers="
 operator|+
-name|CONSUMER_COUNT
+name|consumerCount
 operator|+
 literal|", deliveryMode="
 operator|+
@@ -404,18 +404,18 @@ argument_list|)
 expr_stmt|;
 specifier|final
 name|int
-name|CONSUME_COUNT
+name|consumeCount
 init|=
 name|destination
 operator|.
 name|isTopic
 argument_list|()
 condition|?
-name|CONSUMER_COUNT
+name|consumerCount
 operator|*
-name|PRODUCE_COUNT
+name|produceCount
 else|:
-name|PRODUCE_COUNT
+name|produceCount
 decl_stmt|;
 specifier|final
 name|Semaphore
@@ -426,7 +426,7 @@ name|Semaphore
 argument_list|(
 literal|1
 operator|-
-name|CONSUMER_COUNT
+name|consumerCount
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -438,7 +438,7 @@ name|Semaphore
 argument_list|(
 literal|1
 operator|-
-name|PRODUCER_COUNT
+name|prodcuerCount
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -450,7 +450,7 @@ name|Semaphore
 argument_list|(
 literal|1
 operator|-
-name|CONSUMER_COUNT
+name|consumerCount
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -460,9 +460,9 @@ init|=
 operator|new
 name|ProgressPrinter
 argument_list|(
-name|PRODUCE_COUNT
+name|produceCount
 operator|+
-name|CONSUME_COUNT
+name|consumeCount
 argument_list|,
 literal|10
 argument_list|)
@@ -500,7 +500,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|CONSUMER_COUNT
+name|consumerCount
 condition|;
 name|i
 operator|++
@@ -591,7 +591,7 @@ operator|.
 name|get
 argument_list|()
 operator|<
-name|CONSUME_COUNT
+name|consumeCount
 condition|)
 block|{
 name|int
@@ -706,10 +706,10 @@ operator|.
 name|get
 argument_list|()
 operator|<
-name|CONSUME_COUNT
+name|consumeCount
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -781,7 +781,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|PRODUCER_COUNT
+name|prodcuerCount
 condition|;
 name|i
 operator|++
@@ -859,9 +859,9 @@ literal|0
 init|;
 name|i
 operator|<
-name|PRODUCE_COUNT
+name|produceCount
 operator|/
-name|PRODUCER_COUNT
+name|prodcuerCount
 condition|;
 name|i
 operator|++
@@ -959,7 +959,7 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -969,25 +969,25 @@ name|destination
 operator|+
 literal|", producers="
 operator|+
-name|PRODUCER_COUNT
+name|prodcuerCount
 operator|+
 literal|", consumers="
 operator|+
-name|CONSUMER_COUNT
+name|consumerCount
 operator|+
 literal|", deliveryMode="
 operator|+
 name|deliveryMode
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
 literal|"Produced at messages/sec: "
 operator|+
 operator|(
-name|PRODUCE_COUNT
+name|produceCount
 operator|*
 literal|1000.0
 operator|/
@@ -999,14 +999,14 @@ operator|)
 operator|)
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
 literal|"Consumed at messages/sec: "
 operator|+
 operator|(
-name|CONSUME_COUNT
+name|consumeCount
 operator|*
 literal|1000.0
 operator|/

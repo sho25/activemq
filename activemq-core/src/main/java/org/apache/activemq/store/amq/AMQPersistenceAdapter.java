@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -648,7 +648,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -965,7 +965,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1128,7 +1128,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1187,7 +1187,7 @@ operator|.
 name|getReferenceFileIdsInUse
 argument_list|()
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1243,7 +1243,7 @@ name|isStoreValid
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1253,7 +1253,7 @@ expr_stmt|;
 name|recover
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1528,7 +1528,7 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1626,13 +1626,13 @@ condition|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1668,7 +1668,7 @@ operator|.
 name|interrupt
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1686,7 +1686,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1732,13 +1732,13 @@ try|try
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1901,13 +1901,13 @@ condition|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1945,7 +1945,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1959,13 +1959,13 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2019,7 +2019,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -2457,7 +2457,7 @@ name|redoCounter
 init|=
 literal|0
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2942,7 +2942,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -2973,7 +2973,7 @@ name|JournalTrace
 operator|)
 name|c
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2987,7 +2987,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 default|default:
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -3030,7 +3030,7 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

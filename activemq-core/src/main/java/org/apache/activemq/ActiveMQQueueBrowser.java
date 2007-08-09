@@ -596,8 +596,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|close
 parameter_list|()

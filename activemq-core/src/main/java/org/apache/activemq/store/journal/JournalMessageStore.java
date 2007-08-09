@@ -533,6 +533,7 @@ if|if
 condition|(
 name|debug
 condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -546,6 +547,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 name|addMessage
 argument_list|(
 name|message
@@ -560,6 +562,7 @@ if|if
 condition|(
 name|debug
 condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -573,6 +576,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|this
@@ -619,6 +623,7 @@ if|if
 condition|(
 name|debug
 condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -632,6 +637,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|JournalMessageStore
@@ -666,6 +672,7 @@ if|if
 condition|(
 name|debug
 condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -679,6 +686,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|JournalMessageStore
@@ -888,6 +896,7 @@ if|if
 condition|(
 name|debug
 condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -904,6 +913,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 name|removeMessage
 argument_list|(
 name|ack
@@ -918,6 +928,7 @@ if|if
 condition|(
 name|debug
 condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -934,6 +945,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|this
@@ -980,6 +992,7 @@ if|if
 condition|(
 name|debug
 condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -996,6 +1009,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|JournalMessageStore

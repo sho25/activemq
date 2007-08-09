@@ -37,7 +37,6 @@ interface|interface
 name|ReplayBuffer
 block|{
 comment|/**      * Submit a buffer for caching around for a period of time, during which time it can be replayed      * to users interested in it.      */
-specifier|public
 name|void
 name|addBuffer
 parameter_list|(
@@ -48,7 +47,6 @@ name|Object
 name|buffer
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|setReplayBufferListener
 parameter_list|(
@@ -56,7 +54,6 @@ name|ReplayBufferListener
 name|bufferPoolAdapter
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|replayMessages
 parameter_list|(

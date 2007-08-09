@@ -105,12 +105,10 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * The endpoint within the transport where this message came from which could be null if the       * transport only supports a single endpoint.      */
-specifier|public
 name|Endpoint
 name|getFrom
 parameter_list|()
 function_decl|;
-specifier|public
 name|void
 name|setFrom
 parameter_list|(
@@ -119,12 +117,10 @@ name|from
 parameter_list|)
 function_decl|;
 comment|/**      * The endpoint within the transport where this message is going to - null means all endpoints.      */
-specifier|public
 name|Endpoint
 name|getTo
 parameter_list|()
 function_decl|;
-specifier|public
 name|void
 name|setTo
 parameter_list|(

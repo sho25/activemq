@@ -350,11 +350,13 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 name|deleteDir
 argument_list|(
 name|logDirectory
 argument_list|)
 expr_stmt|;
+block|}
 comment|// assertTrue( !logDirectory.exists() );
 block|}
 specifier|public
@@ -840,6 +842,7 @@ name|arg1
 operator|==
 literal|null
 condition|)
+block|{
 name|fail
 argument_list|(
 literal|"Not equal: "
@@ -851,13 +854,16 @@ operator|+
 name|arg1
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|arg0
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|arg0
@@ -868,6 +874,7 @@ name|arg1
 operator|.
 name|length
 condition|)
+block|{
 name|fail
 argument_list|(
 literal|"Array lenght not equal: "
@@ -883,6 +890,7 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 name|int

@@ -171,6 +171,7 @@ name|this
 operator|.
 name|isVerified
 condition|)
+block|{
 return|return
 operator|new
 name|X509Certificate
@@ -181,7 +182,9 @@ operator|.
 name|cert
 block|}
 return|;
+block|}
 else|else
+block|{
 throw|throw
 operator|new
 name|SSLPeerUnverifiedException
@@ -189,6 +192,7 @@ argument_list|(
 literal|"Socket is unverified."
 argument_list|)
 throw|;
+block|}
 block|}
 comment|// --- Stubbed methods ---
 specifier|public

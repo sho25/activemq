@@ -402,7 +402,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -841,7 +841,7 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -889,7 +889,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1026,7 +1026,7 @@ literal|null
 decl_stmt|;
 try|try
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1053,7 +1053,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1071,7 +1071,7 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1114,7 +1114,7 @@ name|e
 parameter_list|)
 block|{                 }
 block|}
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1391,7 +1391,7 @@ argument_list|(
 name|dirverName
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1409,7 +1409,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1428,7 +1428,7 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1853,8 +1853,8 @@ operator|=
 name|useDatabaseLock
 expr_stmt|;
 block|}
-specifier|static
 specifier|public
+specifier|static
 name|void
 name|log
 parameter_list|(
@@ -1902,7 +1902,7 @@ name|getMessage
 argument_list|()
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2006,7 +2006,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -2034,7 +2034,7 @@ name|stopBroker
 parameter_list|()
 block|{
 comment|// we can no longer keep the lock so lets fail
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2055,7 +2055,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(

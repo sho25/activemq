@@ -52,7 +52,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents the durable store of the commit/rollback operations taken against the  * broker.  *  * @version $Revision: 1.2 $  */
+comment|/**  * Represents the durable store of the commit/rollback operations taken against  * the broker.  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_interface
@@ -62,7 +62,6 @@ name|TransactionStore
 extends|extends
 name|Service
 block|{
-specifier|public
 name|void
 name|prepare
 parameter_list|(
@@ -72,7 +71,6 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-specifier|public
 name|void
 name|commit
 parameter_list|(
@@ -85,7 +83,6 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-specifier|public
 name|void
 name|rollback
 parameter_list|(
@@ -95,7 +92,6 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-specifier|public
 name|void
 name|recover
 parameter_list|(

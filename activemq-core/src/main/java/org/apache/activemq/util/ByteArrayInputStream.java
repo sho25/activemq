@@ -157,6 +157,7 @@ name|pos
 operator|<
 name|limit
 condition|)
+block|{
 return|return
 name|buffer
 index|[
@@ -166,11 +167,14 @@ index|]
 operator|&
 literal|0xff
 return|;
+block|}
 else|else
+block|{
 return|return
 operator|-
 literal|1
 return|;
+block|}
 block|}
 specifier|public
 name|int

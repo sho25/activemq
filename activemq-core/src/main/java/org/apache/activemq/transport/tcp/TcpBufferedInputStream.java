@@ -176,12 +176,14 @@ name|n
 operator|>
 literal|0
 condition|)
+block|{
 name|count
 operator|=
 name|n
 operator|+
 name|position
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|int
@@ -206,10 +208,12 @@ name|position
 operator|>=
 name|count
 condition|)
+block|{
 return|return
 operator|-
 literal|1
 return|;
+block|}
 block|}
 return|return
 name|internalBuffer
@@ -289,10 +293,12 @@ name|avail
 operator|<=
 literal|0
 condition|)
+block|{
 return|return
 operator|-
 literal|1
 return|;
+block|}
 block|}
 name|int
 name|cnt
@@ -427,6 +433,7 @@ name|nread
 operator|<=
 literal|0
 condition|)
+block|{
 return|return
 operator|(
 name|n
@@ -438,6 +445,7 @@ name|nread
 else|:
 name|n
 return|;
+block|}
 name|n
 operator|+=
 name|nread
@@ -448,9 +456,11 @@ name|n
 operator|>=
 name|len
 condition|)
+block|{
 return|return
 name|n
 return|;
+block|}
 comment|// if not closed but no bytes available, return
 name|InputStream
 name|input
@@ -470,9 +480,11 @@ argument_list|()
 operator|<=
 literal|0
 condition|)
+block|{
 return|return
 name|n
 return|;
+block|}
 block|}
 block|}
 specifier|public
@@ -582,11 +594,13 @@ name|in
 operator|!=
 literal|null
 condition|)
+block|{
 name|in
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @version $Revision$  */
+comment|/**  * @version $Revision$  */
 end_comment
 
 begin_interface
@@ -63,7 +63,7 @@ name|Set
 name|getTempDestinationWriteACLs
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the set of all ACLs capable of administering the given destination      */
+comment|/**      * Returns the set of all ACLs capable of administering the given      * destination      */
 name|Set
 name|getAdminACLs
 parameter_list|(
@@ -71,7 +71,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 function_decl|;
-comment|/**      * Returns the set of all ACLs capable of reading (consuming from) the given destination      */
+comment|/**      * Returns the set of all ACLs capable of reading (consuming from) the given      * destination      */
 name|Set
 name|getReadACLs
 parameter_list|(

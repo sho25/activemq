@@ -507,10 +507,12 @@ operator|.
 name|isTopic
 argument_list|()
 condition|)
+block|{
 name|totalMessageCount
 operator|*=
 name|consumerCount
 expr_stmt|;
+block|}
 name|waitForAllMessagesToBeReceived
 argument_list|(
 name|totalMessageCount

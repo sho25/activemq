@@ -211,8 +211,8 @@ name|location
 return|;
 block|}
 block|}
-specifier|static
 specifier|private
+specifier|static
 name|StoreLocation
 name|convertToStoreLocation
 parameter_list|(
@@ -237,8 +237,8 @@ name|location
 argument_list|)
 return|;
 block|}
-specifier|static
 specifier|private
+specifier|static
 name|Location
 name|convertFromStoreLocation
 parameter_list|(
@@ -321,9 +321,9 @@ return|return
 name|l
 return|;
 block|}
+specifier|private
 specifier|static
 specifier|final
-specifier|private
 name|ByteSequence
 name|FORCE_COMMAND
 init|=

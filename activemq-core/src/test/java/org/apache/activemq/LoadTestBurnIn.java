@@ -277,7 +277,7 @@ specifier|static
 specifier|final
 specifier|transient
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -310,7 +310,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -359,7 +359,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

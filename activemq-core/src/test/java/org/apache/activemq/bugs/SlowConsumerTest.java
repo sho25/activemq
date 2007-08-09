@@ -214,7 +214,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -413,7 +413,7 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -544,7 +544,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -580,7 +580,7 @@ argument_list|(
 name|text
 argument_list|)
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -609,7 +609,7 @@ operator|!=
 name|currentMsgIdx
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -641,7 +641,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

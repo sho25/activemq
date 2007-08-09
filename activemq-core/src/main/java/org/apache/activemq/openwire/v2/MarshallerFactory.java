@@ -55,11 +55,11 @@ class|class
 name|MarshallerFactory
 block|{
 comment|/**      * Creates a Map of command type -> Marshallers      */
+specifier|private
 specifier|static
 specifier|final
-specifier|private
 name|DataStreamMarshaller
-name|marshaller
+name|MARSHALLER
 index|[]
 init|=
 operator|new
@@ -449,8 +449,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-specifier|static
 specifier|private
+specifier|static
 name|void
 name|add
 parameter_list|(
@@ -458,7 +458,7 @@ name|DataStreamMarshaller
 name|dsm
 parameter_list|)
 block|{
-name|marshaller
+name|MARSHALLER
 index|[
 name|dsm
 operator|.
@@ -469,8 +469,8 @@ operator|=
 name|dsm
 expr_stmt|;
 block|}
-specifier|static
 specifier|public
+specifier|static
 name|DataStreamMarshaller
 index|[]
 name|createMarshallerMap
@@ -480,7 +480,7 @@ name|wireFormat
 parameter_list|)
 block|{
 return|return
-name|marshaller
+name|MARSHALLER
 return|;
 block|}
 block|}

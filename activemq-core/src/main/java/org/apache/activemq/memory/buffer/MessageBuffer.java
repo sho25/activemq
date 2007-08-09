@@ -26,19 +26,16 @@ specifier|public
 interface|interface
 name|MessageBuffer
 block|{
-specifier|public
 name|int
 name|getSize
 parameter_list|()
 function_decl|;
 comment|/**      * Creates a new message queue instance      */
-specifier|public
 name|MessageQueue
 name|createMessageQueue
 parameter_list|()
 function_decl|;
 comment|/**      * After a message queue has changed we may need to perform some evictions      *       * @param delta      * @param queueSize      */
-specifier|public
 name|void
 name|onSizeChanged
 parameter_list|(
@@ -52,7 +49,6 @@ name|int
 name|queueSize
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|clear
 parameter_list|()

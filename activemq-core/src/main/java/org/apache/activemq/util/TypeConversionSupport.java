@@ -162,9 +162,9 @@ name|value
 parameter_list|)
 function_decl|;
 block|}
+specifier|private
 specifier|static
 specifier|final
-specifier|private
 name|HashMap
 name|CONVERSION_MAP
 init|=
@@ -986,8 +986,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-specifier|static
 specifier|public
+specifier|static
 name|Object
 name|convert
 parameter_list|(
@@ -1016,9 +1016,11 @@ argument_list|()
 operator|==
 name|clazz
 condition|)
+block|{
 return|return
 name|value
 return|;
+block|}
 name|Converter
 name|c
 init|=
@@ -1047,9 +1049,11 @@ name|c
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 return|return
 name|c
 operator|.

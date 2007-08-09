@@ -44,6 +44,7 @@ name|BaseCommandTestSupport
 block|{
 specifier|public
 specifier|static
+specifier|final
 name|ShutdownInfoTest
 name|SINGLETON
 init|=

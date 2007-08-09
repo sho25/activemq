@@ -356,8 +356,8 @@ comment|/**  * @version $Revision: 1.14 $  */
 end_comment
 
 begin_class
-specifier|abstract
 specifier|public
+specifier|abstract
 class|class
 name|AbstractRegion
 implements|implements

@@ -86,7 +86,7 @@ specifier|public
 specifier|static
 specifier|final
 name|ScheduledThreadPoolExecutor
-name|clockDaemon
+name|CLOCK_DAEMON
 init|=
 operator|new
 name|ScheduledThreadPoolExecutor
@@ -132,7 +132,7 @@ argument_list|)
 decl_stmt|;
 static|static
 block|{
-name|clockDaemon
+name|CLOCK_DAEMON
 operator|.
 name|setKeepAliveTime
 argument_list|(
@@ -144,17 +144,19 @@ name|SECONDS
 argument_list|)
 expr_stmt|;
 block|}
+specifier|private
 specifier|static
+specifier|final
 name|HashMap
-name|clockTickets
+name|CLOCK_TICKETS
 init|=
 operator|new
 name|HashMap
 argument_list|()
 decl_stmt|;
-specifier|synchronized
-specifier|static
 specifier|public
+specifier|static
+specifier|synchronized
 name|void
 name|executePeriodically
 parameter_list|(
@@ -169,7 +171,7 @@ block|{
 name|ScheduledFuture
 name|ticket
 init|=
-name|clockDaemon
+name|CLOCK_DAEMON
 operator|.
 name|scheduleAtFixedRate
 argument_list|(
@@ -184,7 +186,7 @@ operator|.
 name|MILLISECONDS
 argument_list|)
 decl_stmt|;
-name|clockTickets
+name|CLOCK_TICKETS
 operator|.
 name|put
 argument_list|(
@@ -194,9 +196,9 @@ name|ticket
 argument_list|)
 expr_stmt|;
 block|}
-specifier|synchronized
-specifier|static
 specifier|public
+specifier|static
+specifier|synchronized
 name|void
 name|cancel
 parameter_list|(
@@ -210,7 +212,7 @@ init|=
 operator|(
 name|ScheduledFuture
 operator|)
-name|clockTickets
+name|CLOCK_TICKETS
 operator|.
 name|remove
 argument_list|(
@@ -237,7 +239,8 @@ name|ticket
 operator|instanceof
 name|Runnable
 condition|)
-name|clockDaemon
+block|{
+name|CLOCK_DAEMON
 operator|.
 name|remove
 argument_list|(
@@ -247,6 +250,7 @@ operator|)
 name|ticket
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
@@ -262,7 +266,7 @@ name|long
 name|redeliveryDelay
 parameter_list|)
 block|{
-name|clockDaemon
+name|CLOCK_DAEMON
 operator|.
 name|schedule
 argument_list|(

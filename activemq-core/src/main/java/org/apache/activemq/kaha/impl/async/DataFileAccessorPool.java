@@ -97,7 +97,7 @@ name|boolean
 name|closed
 decl_stmt|;
 name|int
-name|MAX_OPEN_READERS_PER_FILE
+name|maxOpenReadersPerFile
 init|=
 literal|5
 decl_stmt|;
@@ -234,7 +234,7 @@ operator|.
 name|size
 argument_list|()
 operator|>=
-name|MAX_OPEN_READERS_PER_FILE
+name|maxOpenReadersPerFile
 operator|||
 name|disposed
 condition|)
@@ -638,8 +638,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|close
 parameter_list|()

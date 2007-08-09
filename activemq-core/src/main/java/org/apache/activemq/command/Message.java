@@ -192,8 +192,8 @@ comment|/**  * Represents an ActiveMQ message  *   * @openwire:marshaller  * @ve
 end_comment
 
 begin_class
-specifier|abstract
 specifier|public
+specifier|abstract
 class|class
 name|Message
 extends|extends
@@ -371,8 +371,8 @@ name|BrokerId
 index|[]
 name|cluster
 decl_stmt|;
-specifier|abstract
 specifier|public
+specifier|abstract
 name|Message
 name|copy
 parameter_list|()
@@ -515,6 +515,7 @@ name|properties
 operator|!=
 literal|null
 condition|)
+block|{
 name|copy
 operator|.
 name|properties
@@ -525,13 +526,16 @@ argument_list|(
 name|properties
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|copy
 operator|.
 name|properties
 operator|=
 name|properties
 expr_stmt|;
+block|}
 name|copy
 operator|.
 name|content
@@ -1842,8 +1846,8 @@ return|return
 name|rc
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|int
 name|decrementReferenceCount
 parameter_list|()

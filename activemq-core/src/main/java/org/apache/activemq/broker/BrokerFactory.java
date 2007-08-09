@@ -72,11 +72,11 @@ specifier|public
 class|class
 name|BrokerFactory
 block|{
+specifier|private
 specifier|static
 specifier|final
-specifier|private
 name|FactoryFinder
-name|brokerFactoryHandlerFinder
+name|BROKER_FACTORY_HANDLER_FINDER
 init|=
 operator|new
 name|FactoryFinder
@@ -101,7 +101,7 @@ return|return
 operator|(
 name|BrokerFactoryHandler
 operator|)
-name|brokerFactoryHandlerFinder
+name|BROKER_FACTORY_HANDLER_FINDER
 operator|.
 name|newInstance
 argument_list|(

@@ -58,6 +58,7 @@ name|ResponseTest
 block|{
 specifier|public
 specifier|static
+specifier|final
 name|DataArrayResponseTest
 name|SINGLETON
 init|=

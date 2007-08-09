@@ -112,8 +112,8 @@ import|;
 end_import
 
 begin_class
-specifier|abstract
 specifier|public
+specifier|abstract
 class|class
 name|TransportBrokerTestSupport
 extends|extends

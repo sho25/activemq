@@ -91,8 +91,8 @@ extends|extends
 name|OutputStream
 block|{
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|BUFFER_SIZE
 init|=

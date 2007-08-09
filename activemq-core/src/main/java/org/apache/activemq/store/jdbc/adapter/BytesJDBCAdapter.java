@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This JDBCAdapter inserts and extracts BLOB data using the   * setBytes()/getBytes() operations.  *   * The databases/JDBC drivers that use this adapter are:  *   * @org.apache.xbean.XBean element="bytesJDBCAdapter"  *   * @version $Revision: 1.2 $  */
+comment|/**  * This JDBCAdapter inserts and extracts BLOB data using the  * setBytes()/getBytes() operations. The databases/JDBC drivers that use this  * adapter are:  *   * @org.apache.xbean.XBean element="bytesJDBCAdapter"  * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class
@@ -60,7 +60,7 @@ name|BytesJDBCAdapter
 extends|extends
 name|DefaultJDBCAdapter
 block|{
-comment|/**      * @see org.apache.activemq.store.jdbc.adapter.DefaultJDBCAdapter#getBinaryData(java.sql.ResultSet, int)      */
+comment|/**      * @see org.apache.activemq.store.jdbc.adapter.DefaultJDBCAdapter#getBinaryData(java.sql.ResultSet,      *      int)      */
 specifier|protected
 name|byte
 index|[]
@@ -84,7 +84,7 @@ name|index
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.activemq.store.jdbc.adapter.DefaultJDBCAdapter#setBinaryData(java.sql.PreparedStatement, int, byte[])      */
+comment|/**      * @see org.apache.activemq.store.jdbc.adapter.DefaultJDBCAdapter#setBinaryData(java.sql.PreparedStatement,      *      int, byte[])      */
 specifier|protected
 name|void
 name|setBinaryData

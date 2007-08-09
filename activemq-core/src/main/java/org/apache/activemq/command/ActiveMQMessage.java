@@ -265,8 +265,8 @@ return|return
 name|DATA_STRUCTURE_TYPE
 return|;
 block|}
-specifier|transient
 specifier|protected
+specifier|transient
 name|Callback
 name|acknowledgeCallback
 decl_stmt|;
@@ -771,8 +771,8 @@ return|return
 literal|"jms/message"
 return|;
 block|}
-specifier|static
 specifier|protected
+specifier|static
 name|String
 name|decodeString
 parameter_list|(
@@ -826,8 +826,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-specifier|static
 specifier|protected
+specifier|static
 name|byte
 index|[]
 name|encodeString
@@ -1205,7 +1205,6 @@ block|}
 interface|interface
 name|PropertySetter
 block|{
-specifier|public
 name|void
 name|set
 parameter_list|(
@@ -1219,9 +1218,9 @@ throws|throws
 name|MessageFormatException
 function_decl|;
 block|}
+specifier|private
 specifier|static
 specifier|final
-specifier|private
 name|HashMap
 name|JMS_PROPERTY_SETERS
 init|=

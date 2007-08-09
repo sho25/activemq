@@ -85,11 +85,11 @@ name|Loader
 extends|extends
 name|Thread
 block|{
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -308,7 +308,7 @@ name|finishLoad
 operator|-
 name|startLoad
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -390,7 +390,7 @@ name|finishExtract
 operator|-
 name|startExtract
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -456,7 +456,7 @@ name|finishRemove
 operator|-
 name|startRemove
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -533,7 +533,7 @@ name|finishLoad
 operator|-
 name|startLoad
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

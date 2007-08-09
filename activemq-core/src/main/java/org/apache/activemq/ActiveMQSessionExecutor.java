@@ -155,9 +155,8 @@ block|{
 specifier|private
 specifier|static
 specifier|final
-specifier|transient
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -291,7 +290,7 @@ operator|>
 name|aboutUnstartedConnectionTimeout
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(

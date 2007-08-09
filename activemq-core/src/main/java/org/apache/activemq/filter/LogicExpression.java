@@ -260,8 +260,8 @@ name|right
 argument_list|)
 expr_stmt|;
 block|}
-specifier|abstract
 specifier|public
+specifier|abstract
 name|Object
 name|evaluate
 parameter_list|(

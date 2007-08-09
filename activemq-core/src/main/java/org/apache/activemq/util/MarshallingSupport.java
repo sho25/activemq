@@ -256,8 +256,8 @@ name|BIG_STRING_TYPE
 init|=
 literal|13
 decl_stmt|;
-specifier|static
 specifier|public
+specifier|static
 name|void
 name|marshalPrimitiveMap
 parameter_list|(
@@ -356,8 +356,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-specifier|static
 specifier|public
+specifier|static
 name|Map
 name|unmarshalPrimitiveMap
 parameter_list|(
@@ -388,7 +388,7 @@ name|DataInputStream
 name|in
 parameter_list|,
 name|int
-name|max_property_size
+name|maxPropertySize
 parameter_list|)
 throws|throws
 name|IOException
@@ -405,7 +405,7 @@ if|if
 condition|(
 name|size
 operator|>
-name|max_property_size
+name|maxPropertySize
 condition|)
 block|{
 throw|throw
@@ -593,8 +593,8 @@ return|return
 name|answer
 return|;
 block|}
-specifier|static
 specifier|public
+specifier|static
 name|void
 name|marshalPrimitive
 parameter_list|(
@@ -967,8 +967,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-specifier|static
 specifier|public
+specifier|static
 name|Object
 name|unmarshalPrimitive
 parameter_list|(
@@ -1596,8 +1596,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|static
 specifier|public
+specifier|static
 name|void
 name|writeUTF8
 parameter_list|(
@@ -2013,8 +2013,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|static
 specifier|public
+specifier|static
 name|String
 name|readUTF8
 parameter_list|(

@@ -34,7 +34,6 @@ specifier|public
 interface|interface
 name|BrokerFactoryHandler
 block|{
-specifier|public
 name|BrokerService
 name|createBroker
 parameter_list|(

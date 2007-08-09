@@ -24,7 +24,6 @@ specifier|public
 interface|interface
 name|ProducerListener
 block|{
-specifier|public
 name|void
 name|onProducerEvent
 parameter_list|(

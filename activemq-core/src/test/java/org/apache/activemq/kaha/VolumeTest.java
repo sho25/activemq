@@ -85,7 +85,7 @@ specifier|static
 specifier|final
 specifier|transient
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -136,7 +136,7 @@ name|setMarshaller
 argument_list|(
 name|Store
 operator|.
-name|BytesMarshaller
+name|BYTES_MARSHALLER
 argument_list|)
 expr_stmt|;
 name|byte
@@ -180,7 +180,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -233,7 +233,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(

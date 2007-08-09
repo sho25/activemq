@@ -74,7 +74,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|MAX_WAIT
+name|maxWait
 operator|=
 literal|2000
 expr_stmt|;

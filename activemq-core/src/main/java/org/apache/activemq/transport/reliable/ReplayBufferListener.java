@@ -27,7 +27,6 @@ interface|interface
 name|ReplayBufferListener
 block|{
 comment|/**      * Indications that the buffer has been discarded and so could be      * re-introduced into some pool      */
-specifier|public
 name|void
 name|onBufferDiscarded
 parameter_list|(

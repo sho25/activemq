@@ -118,11 +118,11 @@ name|ReliableTransportTest
 extends|extends
 name|TestCase
 block|{
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -232,7 +232,7 @@ name|i
 operator|++
 control|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -683,7 +683,7 @@ operator|.
 name|remove
 argument_list|()
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

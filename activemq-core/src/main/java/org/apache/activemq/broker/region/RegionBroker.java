@@ -689,7 +689,7 @@ specifier|private
 specifier|static
 specifier|final
 name|IdGenerator
-name|brokerIdGenerator
+name|BROKER_ID_GENERATOR
 init|=
 operator|new
 name|IdGenerator
@@ -2778,7 +2778,7 @@ operator|=
 operator|new
 name|BrokerId
 argument_list|(
-name|brokerIdGenerator
+name|BROKER_ID_GENERATOR
 operator|.
 name|generateId
 argument_list|()

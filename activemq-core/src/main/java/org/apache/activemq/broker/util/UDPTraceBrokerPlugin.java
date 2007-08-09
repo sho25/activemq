@@ -550,11 +550,11 @@ name|UDPTraceBrokerPlugin
 extends|extends
 name|BrokerPluginSupport
 block|{
+specifier|private
 specifier|static
 specifier|final
-specifier|private
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -842,7 +842,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(

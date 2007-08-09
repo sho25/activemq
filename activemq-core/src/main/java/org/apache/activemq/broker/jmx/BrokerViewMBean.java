@@ -46,72 +46,58 @@ name|BrokerViewMBean
 extends|extends
 name|Service
 block|{
-comment|/** 	 * @return The unique id of the broker. 	 */
-specifier|public
-specifier|abstract
+comment|/**      * @return The unique id of the broker.      */
 name|String
 name|getBrokerId
 parameter_list|()
 function_decl|;
-comment|/**      * The Broker will fush it's caches so that the garbage      * collector can recalaim more memory.      *       * @throws Exception      */
-specifier|public
+comment|/**      * The Broker will fush it's caches so that the garbage collector can      * recalaim more memory.      *       * @throws Exception      */
 name|void
 name|gc
 parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-specifier|public
 name|void
 name|resetStatistics
 parameter_list|()
 function_decl|;
-specifier|public
 name|void
 name|enableStatistics
 parameter_list|()
 function_decl|;
-specifier|public
 name|void
 name|disableStatistics
 parameter_list|()
 function_decl|;
-specifier|public
 name|boolean
 name|isStatisticsEnabled
 parameter_list|()
 function_decl|;
-specifier|public
 name|long
 name|getTotalEnqueueCount
 parameter_list|()
 function_decl|;
-specifier|public
 name|long
 name|getTotalDequeueCount
 parameter_list|()
 function_decl|;
-specifier|public
 name|long
 name|getTotalConsumerCount
 parameter_list|()
 function_decl|;
-specifier|public
 name|long
 name|getTotalMessageCount
 parameter_list|()
 function_decl|;
-specifier|public
 name|int
 name|getMemoryPercentageUsed
 parameter_list|()
 function_decl|;
-specifier|public
 name|long
 name|getMemoryLimit
 parameter_list|()
 function_decl|;
-specifier|public
 name|void
 name|setMemoryLimit
 parameter_list|(
@@ -119,8 +105,7 @@ name|long
 name|limit
 parameter_list|)
 function_decl|;
-comment|/**      * Shuts down the JVM.      * @param exitCode the exit code that will be reported by the JVM process when it exits.      */
-specifier|public
+comment|/**      * Shuts down the JVM.      *       * @param exitCode the exit code that will be reported by the JVM process      *                when it exits.      */
 name|void
 name|terminateJVM
 parameter_list|(
@@ -129,75 +114,63 @@ name|exitCode
 parameter_list|)
 function_decl|;
 comment|/**      * Stop the broker and all it's components.      */
-specifier|public
 name|void
 name|stop
 parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-specifier|public
 name|ObjectName
 index|[]
 name|getTopics
 parameter_list|()
 function_decl|;
-specifier|public
 name|ObjectName
 index|[]
 name|getQueues
 parameter_list|()
 function_decl|;
-specifier|public
 name|ObjectName
 index|[]
 name|getTemporaryTopics
 parameter_list|()
 function_decl|;
-specifier|public
 name|ObjectName
 index|[]
 name|getTemporaryQueues
 parameter_list|()
 function_decl|;
-specifier|public
 name|ObjectName
 index|[]
 name|getTopicSubscribers
 parameter_list|()
 function_decl|;
-specifier|public
 name|ObjectName
 index|[]
 name|getDurableTopicSubscribers
 parameter_list|()
 function_decl|;
-specifier|public
 name|ObjectName
 index|[]
 name|getInactiveDurableTopicSubscribers
 parameter_list|()
 function_decl|;
-specifier|public
 name|ObjectName
 index|[]
 name|getQueueSubscribers
 parameter_list|()
 function_decl|;
-specifier|public
 name|ObjectName
 index|[]
 name|getTemporaryTopicSubscribers
 parameter_list|()
 function_decl|;
-specifier|public
 name|ObjectName
 index|[]
 name|getTemporaryQueueSubscribers
 parameter_list|()
 function_decl|;
-comment|/**       * Adds a Topic destination to the broker.      * @param name The name of the Topic      * @throws Exception      */
-specifier|public
+comment|/**      * Adds a Topic destination to the broker.      *       * @param name The name of the Topic      * @throws Exception      */
 name|void
 name|addTopic
 parameter_list|(
@@ -207,8 +180,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Adds a Queue destination to the broker.      * @param name The name of the Queue      * @throws Exception      */
-specifier|public
+comment|/**      * Adds a Queue destination to the broker.      *       * @param name The name of the Queue      * @throws Exception      */
 name|void
 name|addQueue
 parameter_list|(
@@ -218,8 +190,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**       * Removes a Topic destination from the broker.      * @param name The name of the Topic      * @throws Exception      */
-specifier|public
+comment|/**      * Removes a Topic destination from the broker.      *       * @param name The name of the Topic      * @throws Exception      */
 name|void
 name|removeTopic
 parameter_list|(
@@ -229,8 +200,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Removes a Queue destination from the broker.      * @param name The name of the Queue      * @throws Exception      */
-specifier|public
+comment|/**      * Removes a Queue destination from the broker.      *       * @param name The name of the Queue      * @throws Exception      */
 name|void
 name|removeQueue
 parameter_list|(
@@ -240,8 +210,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Creates a new durable topic subscriber      *       * @param clientId the JMS client ID      * @param subscriberName the durable subscriber name      * @param topicName the name of the topic to subscribe to      * @param selector a selector or null      *       * @return the object name of the MBean registered in JMX      */
-specifier|public
+comment|/**      * Creates a new durable topic subscriber      *       * @param clientId the JMS client ID      * @param subscriberName the durable subscriber name      * @param topicName the name of the topic to subscribe to      * @param selector a selector or null      * @return the object name of the MBean registered in JMX      */
 name|ObjectName
 name|createDurableSubscriber
 parameter_list|(
@@ -261,7 +230,6 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Destroys a durable subscriber      *       * @param clientId the JMS client ID      * @param subscriberName the durable subscriber name      */
-specifier|public
 name|void
 name|destroyDurableSubscriber
 parameter_list|(

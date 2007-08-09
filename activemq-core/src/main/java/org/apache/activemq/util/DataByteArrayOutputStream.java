@@ -943,6 +943,7 @@ name|encodedsize
 operator|>
 literal|65535
 condition|)
+block|{
 throw|throw
 operator|new
 name|UTFDataFormatException
@@ -954,6 +955,7 @@ operator|+
 literal|" bytes"
 argument_list|)
 throw|;
+block|}
 name|ensureEnoughBuffer
 argument_list|(
 name|pos
@@ -1013,7 +1015,9 @@ literal|0x007F
 operator|)
 operator|)
 condition|)
+block|{
 break|break;
+block|}
 name|buf
 index|[
 name|pos

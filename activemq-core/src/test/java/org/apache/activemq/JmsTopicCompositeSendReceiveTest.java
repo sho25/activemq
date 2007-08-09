@@ -90,7 +90,7 @@ operator|.
 name|logging
 operator|.
 name|Log
-name|log
+name|LOG
 init|=
 name|org
 operator|.
@@ -143,7 +143,7 @@ argument_list|(
 literal|"FOO.BAR.HUMBUG2"
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -164,7 +164,7 @@ condition|(
 name|durable
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -248,7 +248,7 @@ expr_stmt|;
 name|assertMessagesAreReceived
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

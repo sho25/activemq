@@ -138,7 +138,7 @@ name|ByteBuffer
 operator|.
 name|allocateDirect
 argument_list|(
-name|MAX_WRITE_BATCH_SIZE
+name|maxWriteBatchSize
 argument_list|)
 decl_stmt|;
 comment|// Populate the static parts of the headers and footers..

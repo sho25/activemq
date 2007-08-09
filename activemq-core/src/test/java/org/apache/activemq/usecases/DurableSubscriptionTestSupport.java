@@ -182,8 +182,8 @@ comment|/**  * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
-specifier|abstract
 specifier|public
+specifier|abstract
 class|class
 name|DurableSubscriptionTestSupport
 extends|extends
@@ -447,25 +447,29 @@ name|connection
 operator|!=
 literal|null
 condition|)
+block|{
 name|connection
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|broker
 operator|!=
 literal|null
 condition|)
+block|{
 name|broker
 operator|.
 name|stop
 argument_list|()
 expr_stmt|;
 block|}
-specifier|abstract
+block|}
 specifier|protected
+specifier|abstract
 name|PersistenceAdapter
 name|createPersistenceAdapter
 parameter_list|()
@@ -474,7 +478,7 @@ name|Exception
 function_decl|;
 specifier|public
 name|void
-name|XtestUnsubscribeSubscription
+name|xtestUnsubscribeSubscription
 parameter_list|()
 throws|throws
 name|Exception
@@ -673,7 +677,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|XtestInactiveDurableSubscriptionTwoConnections
+name|xtestInactiveDurableSubscriptionTwoConnections
 parameter_list|()
 throws|throws
 name|Exception
@@ -844,7 +848,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|XtestInactiveDurableSubscriptionBrokerRestart
+name|xtestInactiveDurableSubscriptionBrokerRestart
 parameter_list|()
 throws|throws
 name|Exception
@@ -1189,7 +1193,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|XtestInactiveDurableSubscriptionOneConnection
+name|xtestInactiveDurableSubscriptionOneConnection
 parameter_list|()
 throws|throws
 name|Exception
@@ -1327,7 +1331,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|XtestSelectorChange
+name|xtestSelectorChange
 parameter_list|()
 throws|throws
 name|Exception
@@ -1548,7 +1552,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|XtestDurableSubWorksInNewSession
+name|xtestDurableSubWorksInNewSession
 parameter_list|()
 throws|throws
 name|JMSException
@@ -1698,7 +1702,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|XtestDurableSubWorksInNewConnection
+name|xtestDurableSubWorksInNewConnection
 parameter_list|()
 throws|throws
 name|Exception

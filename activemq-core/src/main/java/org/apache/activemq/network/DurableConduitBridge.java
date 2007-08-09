@@ -144,11 +144,11 @@ name|DurableConduitBridge
 extends|extends
 name|ConduitBridge
 block|{
+specifier|private
 specifier|static
 specifier|final
-specifier|private
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -290,7 +290,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -304,12 +304,12 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isTraceEnabled
 argument_list|()
 condition|)
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(

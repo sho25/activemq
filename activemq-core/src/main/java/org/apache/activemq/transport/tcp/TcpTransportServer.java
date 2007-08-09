@@ -306,7 +306,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -957,7 +957,7 @@ name|isStopped
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(

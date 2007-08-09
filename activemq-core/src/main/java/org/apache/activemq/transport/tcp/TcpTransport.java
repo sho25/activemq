@@ -314,7 +314,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -601,7 +601,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -1035,7 +1035,7 @@ name|SocketException
 name|se
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1044,7 +1044,7 @@ operator|+
 name|socketBufferSize
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1365,13 +1365,13 @@ name|Exception
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(

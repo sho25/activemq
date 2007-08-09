@@ -725,7 +725,9 @@ name|tx
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|preparedTransactions
 operator|.
 name|put
@@ -840,7 +842,9 @@ name|tx
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|tx
 operator|.
 name|commit
@@ -885,8 +889,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|recover
 parameter_list|(
@@ -1005,7 +1009,9 @@ if|if
 condition|(
 name|doingRecover
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|message
@@ -1098,7 +1104,9 @@ if|if
 condition|(
 name|doingRecover
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|ack

@@ -541,6 +541,7 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 name|ack
 operator|.
 name|setFirstMessageId
@@ -548,6 +549,7 @@ argument_list|(
 name|msgid
 argument_list|)
 expr_stmt|;
+block|}
 name|iter
 operator|.
 name|remove

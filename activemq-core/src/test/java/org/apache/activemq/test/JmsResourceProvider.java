@@ -398,6 +398,7 @@ if|if
 condition|(
 name|isTopic
 condition|)
+block|{
 return|return
 name|session
 operator|.
@@ -408,7 +409,9 @@ operator|+
 name|name
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 name|session
 operator|.
@@ -419,6 +422,7 @@ operator|+
 name|name
 argument_list|)
 return|;
+block|}
 block|}
 comment|/**      * Returns true if the subscriber is durable.      *       * @return isDurableSubscriber      */
 specifier|public

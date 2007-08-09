@@ -441,19 +441,19 @@ name|Exception
 block|{
 specifier|final
 name|int
-name|TEST_DATA
+name|testData
 init|=
 literal|23
 decl_stmt|;
 specifier|final
 name|int
-name|DATA_LENGTH
+name|dataLength
 init|=
 literal|4096
 decl_stmt|;
 specifier|final
 name|int
-name|COUNT
+name|count
 init|=
 literal|1024
 decl_stmt|;
@@ -464,7 +464,7 @@ init|=
 operator|new
 name|byte
 index|[
-name|DATA_LENGTH
+name|dataLength
 index|]
 decl_stmt|;
 for|for
@@ -489,7 +489,7 @@ index|[
 name|i
 index|]
 operator|=
-name|TEST_DATA
+name|testData
 expr_stmt|;
 block|}
 specifier|final
@@ -528,7 +528,7 @@ literal|0
 init|;
 name|x
 operator|<
-name|COUNT
+name|count
 condition|;
 name|x
 operator|++
@@ -575,7 +575,7 @@ index|[
 name|i
 index|]
 operator|==
-name|TEST_DATA
+name|testData
 argument_list|)
 expr_stmt|;
 block|}
@@ -629,7 +629,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|COUNT
+name|count
 condition|;
 name|i
 operator|++

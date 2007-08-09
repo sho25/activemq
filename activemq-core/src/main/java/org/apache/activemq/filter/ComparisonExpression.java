@@ -143,9 +143,9 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+specifier|private
 specifier|static
 specifier|final
-specifier|private
 name|HashSet
 name|REGEXP_CONTROL_CHARS
 init|=
@@ -2427,11 +2427,13 @@ return|;
 block|}
 block|}
 else|else
+block|{
 return|return
 name|Boolean
 operator|.
 name|FALSE
 return|;
+block|}
 block|}
 return|return
 name|asBoolean

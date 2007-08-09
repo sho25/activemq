@@ -77,7 +77,7 @@ name|AutoFailTestSupport
 extends|extends
 name|TestCase
 block|{
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Log

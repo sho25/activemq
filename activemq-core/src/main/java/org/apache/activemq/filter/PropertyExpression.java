@@ -125,7 +125,6 @@ block|{
 interface|interface
 name|SubExpression
 block|{
-specifier|public
 name|Object
 name|evaluate
 parameter_list|(
@@ -134,9 +133,9 @@ name|message
 parameter_list|)
 function_decl|;
 block|}
+specifier|private
 specifier|static
 specifier|final
-specifier|private
 name|HashMap
 name|JMS_PROPERTY_EXPRESSIONS
 init|=

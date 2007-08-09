@@ -800,7 +800,7 @@ name|StubConnection
 name|connection
 parameter_list|,
 name|int
-name|MAX_WAIT
+name|maxWait
 parameter_list|)
 throws|throws
 name|InterruptedException
@@ -820,7 +820,7 @@ argument_list|()
 operator|.
 name|poll
 argument_list|(
-name|MAX_WAIT
+name|maxWait
 argument_list|,
 name|TimeUnit
 operator|.
@@ -833,9 +833,11 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 if|if
 condition|(
 name|o

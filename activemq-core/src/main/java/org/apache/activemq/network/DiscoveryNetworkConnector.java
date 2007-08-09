@@ -185,6 +185,34 @@ name|ServiceSupport
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * A network connector which uses a discovery agent to detect the remote brokers  * available and setup a connection to each available remote broker  *   * @org.apache.xbean.XBean element="networkConnector"  *   * @version $Revision$  */
 end_comment
@@ -198,6 +226,21 @@ name|NetworkConnector
 implements|implements
 name|DiscoveryListener
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOG
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|DiscoveryNetworkConnector
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 name|DiscoveryAgent
 name|discoveryAgent
@@ -322,7 +365,7 @@ name|URISyntaxException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -376,7 +419,7 @@ name|connectUri
 init|=
 name|uri
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -410,7 +453,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -426,7 +469,7 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -463,7 +506,7 @@ argument_list|(
 name|remoteTransport
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -479,7 +522,7 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -541,7 +584,7 @@ argument_list|(
 name|remoteTransport
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -558,7 +601,7 @@ operator|+
 name|e
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -632,7 +675,7 @@ name|URISyntaxException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(

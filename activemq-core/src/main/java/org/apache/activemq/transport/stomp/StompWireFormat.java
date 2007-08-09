@@ -621,6 +621,7 @@ argument_list|()
 operator|>
 name|MAX_HEADERS
 condition|)
+block|{
 throw|throw
 operator|new
 name|ProtocolException
@@ -630,10 +631,11 @@ argument_list|,
 literal|true
 argument_list|)
 throw|;
+block|}
 try|try
 block|{
 name|int
-name|seperator_index
+name|seperatorIndex
 init|=
 name|line
 operator|.
@@ -655,7 +657,7 @@ name|substring
 argument_list|(
 literal|0
 argument_list|,
-name|seperator_index
+name|seperatorIndex
 argument_list|)
 operator|.
 name|trim
@@ -668,7 +670,7 @@ name|line
 operator|.
 name|substring
 argument_list|(
-name|seperator_index
+name|seperatorIndex
 operator|+
 literal|1
 argument_list|,
@@ -789,6 +791,7 @@ name|length
 operator|>
 name|MAX_DATA_LENGTH
 condition|)
+block|{
 throw|throw
 operator|new
 name|ProtocolException
@@ -798,6 +801,7 @@ argument_list|,
 literal|true
 argument_list|)
 throw|;
+block|}
 name|data
 operator|=
 operator|new
@@ -1009,6 +1013,7 @@ argument_list|()
 operator|>
 name|maxLength
 condition|)
+block|{
 throw|throw
 operator|new
 name|ProtocolException
@@ -1018,6 +1023,7 @@ argument_list|,
 literal|true
 argument_list|)
 throw|;
+block|}
 name|baos
 operator|.
 name|write

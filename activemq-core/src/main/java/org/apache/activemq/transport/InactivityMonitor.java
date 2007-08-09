@@ -121,6 +121,7 @@ extends|extends
 name|TransportFilter
 block|{
 specifier|private
+specifier|static
 specifier|final
 name|Log
 name|LOG
@@ -633,8 +634,8 @@ name|error
 argument_list|)
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|private
+specifier|synchronized
 name|void
 name|startMonitorThreads
 parameter_list|()
@@ -648,21 +649,27 @@ operator|.
 name|get
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|localWireFormatInfo
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|remoteWireFormatInfo
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|long
 name|l
 init|=
@@ -718,8 +725,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      *      */
-specifier|synchronized
 specifier|private
+specifier|synchronized
 name|void
 name|stopMonitorThreads
 parameter_list|()

@@ -697,11 +697,11 @@ name|DemandForwardingBridgeSupport
 implements|implements
 name|NetworkBridge
 block|{
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -1136,7 +1136,7 @@ literal|true
 argument_list|)
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1184,7 +1184,7 @@ name|TransportDisposedIOException
 name|td
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1200,7 +1200,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1267,7 +1267,7 @@ condition|)
 block|{
 try|try
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1322,7 +1322,7 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1340,7 +1340,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1377,7 +1377,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1616,7 +1616,7 @@ argument_list|(
 name|localSessionInfo
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1992,7 +1992,7 @@ literal|false
 argument_list|)
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2083,7 +2083,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2140,7 +2140,7 @@ condition|(
 name|wasDisposedAlready
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2159,7 +2159,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2203,7 +2203,7 @@ operator|instanceof
 name|GeneralSecurityException
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -2223,7 +2223,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -2241,7 +2241,7 @@ name|error
 argument_list|)
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2549,12 +2549,12 @@ condition|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2568,12 +2568,12 @@ break|break;
 default|default:
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2612,7 +2612,7 @@ name|DATA_STRUCTURE_TYPE
 case|:
 break|break;
 default|default:
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -2703,12 +2703,12 @@ condition|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2750,12 +2750,12 @@ comment|// Ignore this consumer as it's a consumer we locally sent to
 comment|// the broker.
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2788,12 +2788,12 @@ block|{
 comment|// ignore if not in the permited or in the excluded list
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2828,12 +2828,12 @@ condition|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2860,12 +2860,12 @@ else|else
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2930,13 +2930,13 @@ condition|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2974,13 +2974,13 @@ comment|// Ignore this consumer as it's a consumer we locally sent to
 comment|// the broker.
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -3056,7 +3056,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -3123,7 +3123,7 @@ operator|!
 name|disposed
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -3140,7 +3140,7 @@ operator|+
 name|error
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -3380,7 +3380,7 @@ specifier|final
 name|boolean
 name|trace
 init|=
-name|log
+name|LOG
 operator|.
 name|isTraceEnabled
 argument_list|()
@@ -3447,7 +3447,7 @@ if|if
 condition|(
 name|trace
 condition|)
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -3624,7 +3624,7 @@ if|if
 condition|(
 name|trace
 condition|)
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -3678,7 +3678,7 @@ name|isShutdownInfo
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -3756,7 +3756,7 @@ name|DATA_STRUCTURE_TYPE
 case|:
 break|break;
 default|default:
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -4398,7 +4398,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -4412,12 +4412,12 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isTraceEnabled
 argument_list|()
 condition|)
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -4852,12 +4852,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isTraceEnabled
 argument_list|()
 condition|)
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(

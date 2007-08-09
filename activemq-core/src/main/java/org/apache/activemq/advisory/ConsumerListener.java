@@ -24,7 +24,6 @@ specifier|public
 interface|interface
 name|ConsumerListener
 block|{
-specifier|public
 name|void
 name|onConsumerEvent
 parameter_list|(

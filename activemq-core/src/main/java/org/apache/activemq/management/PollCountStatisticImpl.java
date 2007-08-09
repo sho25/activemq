@@ -201,8 +201,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|synchronized
 specifier|private
+specifier|synchronized
 name|void
 name|removeChild
 parameter_list|(
@@ -224,8 +224,8 @@ name|child
 argument_list|)
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|private
+specifier|synchronized
 name|void
 name|addChild
 parameter_list|(
@@ -253,8 +253,8 @@ name|child
 argument_list|)
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|long
 name|getCount
 parameter_list|()

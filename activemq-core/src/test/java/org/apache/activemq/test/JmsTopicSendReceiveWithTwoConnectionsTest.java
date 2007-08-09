@@ -116,11 +116,11 @@ name|JmsTopicSendReceiveWithTwoConnectionsTest
 extends|extends
 name|JmsSendReceiveTestSupport
 block|{
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -161,7 +161,7 @@ operator|=
 name|createConnectionFactory
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -173,7 +173,7 @@ operator|=
 name|createSendConnection
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -185,7 +185,7 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -197,7 +197,7 @@ operator|=
 name|createReceiveConnection
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -209,7 +209,7 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -218,7 +218,7 @@ operator|+
 name|sendConnection
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -253,7 +253,7 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -262,7 +262,7 @@ operator|+
 name|session
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -287,7 +287,7 @@ argument_list|(
 name|deliveryMode
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -359,7 +359,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -375,7 +375,7 @@ name|getClass
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -403,7 +403,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

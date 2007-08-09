@@ -625,11 +625,13 @@ if|if
 condition|(
 name|fail
 condition|)
+block|{
 name|assertNull
 argument_list|(
 name|m
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|assertNotNull
@@ -715,11 +717,13 @@ if|if
 condition|(
 name|fail
 condition|)
+block|{
 name|fail
 argument_list|(
 literal|"Expected failure due to security constraint."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -738,9 +742,11 @@ argument_list|()
 operator|instanceof
 name|SecurityException
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 throw|throw
 name|e
 throw|;

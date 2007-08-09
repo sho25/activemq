@@ -141,7 +141,9 @@ if|if
 condition|(
 name|shutdown
 condition|)
+block|{
 return|return;
+block|}
 name|pending
 operator|=
 literal|true

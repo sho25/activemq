@@ -34,8 +34,8 @@ comment|/**  *   * @openwire:marshaller  * @version $Revision: 1.11 $  */
 end_comment
 
 begin_class
-specifier|abstract
 specifier|public
+specifier|abstract
 class|class
 name|BaseCommand
 implements|implements

@@ -1006,7 +1006,9 @@ name|c
 operator|>
 literal|127
 condition|)
+block|{
 break|break;
+block|}
 name|pos
 operator|++
 expr_stmt|;
@@ -1103,6 +1105,7 @@ name|pos
 operator|>
 name|length
 condition|)
+block|{
 throw|throw
 operator|new
 name|UTFDataFormatException
@@ -1110,6 +1113,7 @@ argument_list|(
 literal|"bad string"
 argument_list|)
 throw|;
+block|}
 name|c2
 operator|=
 operator|(
@@ -1132,6 +1136,7 @@ operator|)
 operator|!=
 literal|0x80
 condition|)
+block|{
 throw|throw
 operator|new
 name|UTFDataFormatException
@@ -1139,6 +1144,7 @@ argument_list|(
 literal|"bad string"
 argument_list|)
 throw|;
+block|}
 name|characters
 index|[
 name|count
@@ -1180,6 +1186,7 @@ name|pos
 operator|>
 name|length
 condition|)
+block|{
 throw|throw
 operator|new
 name|UTFDataFormatException
@@ -1187,6 +1194,7 @@ argument_list|(
 literal|"bad string"
 argument_list|)
 throw|;
+block|}
 name|c2
 operator|=
 operator|(
@@ -1233,6 +1241,7 @@ operator|!=
 literal|0x80
 operator|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|UTFDataFormatException
@@ -1240,6 +1249,7 @@ argument_list|(
 literal|"bad string"
 argument_list|)
 throw|;
+block|}
 name|characters
 index|[
 name|count

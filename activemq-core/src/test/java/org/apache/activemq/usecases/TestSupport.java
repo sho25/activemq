@@ -440,7 +440,9 @@ name|m1
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|assertEquals
 argument_list|(
 name|message
@@ -526,7 +528,9 @@ name|m1
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|assertTrue
 argument_list|(
 name|message

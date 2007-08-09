@@ -224,8 +224,8 @@ comment|/**  * @version $Revision: 1.9 $  */
 end_comment
 
 begin_class
-specifier|abstract
 specifier|public
+specifier|abstract
 class|class
 name|JmsTransactionTestSupport
 extends|extends
@@ -264,6 +264,22 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MESSAGE_COUNT
+init|=
+literal|5
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|MESSAGE_TEXT
+init|=
+literal|"message"
+decl_stmt|;
 specifier|protected
 name|ConnectionFactory
 name|connectionFactory
@@ -294,29 +310,13 @@ name|destination
 decl_stmt|;
 comment|// for message listener test
 specifier|private
-specifier|static
-specifier|final
-name|int
-name|messageCount
-init|=
-literal|5
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|messageText
-init|=
-literal|"message"
-decl_stmt|;
-specifier|private
 name|List
 name|unackMessages
 init|=
 operator|new
 name|ArrayList
 argument_list|(
-name|messageCount
+name|MESSAGE_COUNT
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -326,7 +326,7 @@ init|=
 operator|new
 name|ArrayList
 argument_list|(
-name|messageCount
+name|MESSAGE_COUNT
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -1888,9 +1888,11 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|testReceiveTwoThenRollback
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * not consumed. This test differs by setting the message prefetch to one.      *       * @throws Exception      */
 specifier|public
@@ -2552,7 +2554,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|messageCount
+name|MESSAGE_COUNT
 condition|;
 name|i
 operator|++
@@ -2566,7 +2568,7 @@ name|session
 operator|.
 name|createTextMessage
 argument_list|(
-name|messageText
+name|MESSAGE_TEXT
 operator|+
 name|i
 argument_list|)
@@ -2596,7 +2598,7 @@ operator|.
 name|size
 argument_list|()
 argument_list|,
-name|messageCount
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 comment|// resend phase
@@ -2610,7 +2612,7 @@ operator|.
 name|size
 argument_list|()
 argument_list|,
-name|messageCount
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 comment|// should no longer re-receive
@@ -2663,7 +2665,7 @@ operator|.
 name|size
 argument_list|()
 operator|==
-name|messageCount
+name|MESSAGE_COUNT
 condition|)
 block|{
 try|try
@@ -2708,7 +2710,7 @@ operator|.
 name|size
 argument_list|()
 operator|==
-name|messageCount
+name|MESSAGE_COUNT
 condition|)
 block|{
 try|try
@@ -2796,7 +2798,7 @@ operator|.
 name|size
 argument_list|()
 operator|<
-name|messageCount
+name|MESSAGE_COUNT
 condition|;
 name|i
 operator|++
@@ -2817,7 +2819,7 @@ operator|.
 name|size
 argument_list|()
 operator|<
-name|messageCount
+name|MESSAGE_COUNT
 argument_list|)
 expr_stmt|;
 block|}

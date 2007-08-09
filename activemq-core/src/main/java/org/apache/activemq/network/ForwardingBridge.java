@@ -412,11 +412,11 @@ name|ForwardingBridge
 implements|implements
 name|Service
 block|{
+specifier|private
 specifier|static
 specifier|final
-specifier|private
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -541,7 +541,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -692,7 +692,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -937,7 +937,7 @@ name|topicConsumerInfo
 argument_list|)
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1061,7 +1061,7 @@ name|Throwable
 name|error
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1070,7 +1070,7 @@ operator|+
 name|error
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1136,7 +1136,7 @@ name|remoteBrokerId
 argument_list|)
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1162,7 +1162,7 @@ block|}
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1194,7 +1194,7 @@ name|Throwable
 name|error
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1203,7 +1203,7 @@ operator|+
 name|error
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1516,7 +1516,7 @@ name|localBrokerId
 argument_list|)
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1542,7 +1542,7 @@ block|}
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(

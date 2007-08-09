@@ -233,7 +233,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -248,11 +248,11 @@ specifier|protected
 specifier|static
 specifier|final
 name|Marshaller
-name|rootMarshaller
+name|ROOT_MARSHALLER
 init|=
 name|Store
 operator|.
-name|ObjectMarshaller
+name|OBJECT_MARSHALLER
 decl_stmt|;
 specifier|protected
 name|IndexItem
@@ -356,7 +356,7 @@ name|dataManager
 operator|.
 name|readItem
 argument_list|(
-name|rootMarshaller
+name|ROOT_MARSHALLER
 argument_list|,
 name|data
 argument_list|)
@@ -444,7 +444,7 @@ name|dataManager
 operator|.
 name|storeDataItem
 argument_list|(
-name|rootMarshaller
+name|ROOT_MARSHALLER
 argument_list|,
 name|key
 argument_list|)

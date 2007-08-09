@@ -66,11 +66,11 @@ name|JmsQueueSendReceiveTwoConnectionsTest
 extends|extends
 name|JmsTopicSendReceiveWithTwoConnectionsTest
 block|{
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -81,7 +81,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Set up the test with a queue and using two connections.       *       * @see junit.framework.TestCase#setUp()      */
+comment|/**      * Set up the test with a queue and using two connections.      *       * @see junit.framework.TestCase#setUp()      */
 specifier|protected
 name|void
 name|setUp

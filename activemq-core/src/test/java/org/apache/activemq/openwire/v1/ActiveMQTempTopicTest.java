@@ -44,6 +44,7 @@ name|ActiveMQTempDestinationTestSupport
 block|{
 specifier|public
 specifier|static
+specifier|final
 name|ActiveMQTempTopicTest
 name|SINGLETON
 init|=

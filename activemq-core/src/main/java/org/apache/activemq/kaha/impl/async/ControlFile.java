@@ -80,14 +80,14 @@ comment|/**  * Use to reliably store fixed sized state data. It stores the state
 end_comment
 
 begin_class
-specifier|final
 specifier|public
+specifier|final
 class|class
 name|ControlFile
 block|{
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|boolean
 name|DISABLE_FILE_LOCK
 init|=
@@ -293,8 +293,8 @@ name|e
 parameter_list|)
 block|{         }
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|ByteSequence
 name|load
 parameter_list|()

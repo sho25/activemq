@@ -93,13 +93,11 @@ extends|extends
 name|Service
 block|{
 comment|/**      * @return the connector that created this connection.      */
-specifier|public
 name|Connector
 name|getConnector
 parameter_list|()
 function_decl|;
 comment|/**      * Sends a message to the client.      *       * @param message the message to send to the client.      */
-specifier|public
 name|void
 name|dispatchSync
 parameter_list|(
@@ -108,7 +106,6 @@ name|message
 parameter_list|)
 function_decl|;
 comment|/**      * Sends a message to the client.      *       * @param command      */
-specifier|public
 name|void
 name|dispatchAsync
 parameter_list|(
@@ -117,7 +114,6 @@ name|command
 parameter_list|)
 function_decl|;
 comment|/**      * Services a client command and submits it to the broker.      *       * @param command      */
-specifier|public
 name|Response
 name|service
 parameter_list|(
@@ -126,7 +122,6 @@ name|command
 parameter_list|)
 function_decl|;
 comment|/**      * Handles an unexpected error associated with a connection.      *       * @param error      */
-specifier|public
 name|void
 name|serviceException
 parameter_list|(
@@ -135,54 +130,45 @@ name|error
 parameter_list|)
 function_decl|;
 comment|/**      * @return true if the Connection is slow      */
-specifier|public
 name|boolean
 name|isSlow
 parameter_list|()
 function_decl|;
 comment|/**      * @return if after being marked, the Connection is still writing      */
-specifier|public
 name|boolean
 name|isBlocked
 parameter_list|()
 function_decl|;
 comment|/**      * @return true if the Connection is connected      */
-specifier|public
 name|boolean
 name|isConnected
 parameter_list|()
 function_decl|;
 comment|/**      * @return true if the Connection is active      */
-specifier|public
 name|boolean
 name|isActive
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the number of messages to be dispatched to this connection      */
-specifier|public
 name|int
 name|getDispatchQueueSize
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the statistics for this connection      */
-specifier|public
 name|ConnectionStatistics
 name|getStatistics
 parameter_list|()
 function_decl|;
 comment|/**      * @return true if the Connection will process control commands      */
-specifier|public
 name|boolean
 name|isManageable
 parameter_list|()
 function_decl|;
 comment|/**      * @return the source address for this connection      */
-specifier|public
 name|String
 name|getRemoteAddress
 parameter_list|()
 function_decl|;
-specifier|public
 name|void
 name|serviceExceptionAsync
 parameter_list|(
@@ -190,7 +176,6 @@ name|IOException
 name|e
 parameter_list|)
 function_decl|;
-specifier|public
 name|String
 name|getConnectionId
 parameter_list|()

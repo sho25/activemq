@@ -283,8 +283,8 @@ extends|extends
 name|CommandVisitorAdapter
 block|{
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Tracked
 name|TRACKED_RESPONSE_MARKER
 init|=

@@ -46,7 +46,7 @@ operator|.
 name|logging
 operator|.
 name|Log
-name|log
+name|LOG
 init|=
 name|org
 operator|.
@@ -138,7 +138,7 @@ condition|(
 name|verbose
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

@@ -104,9 +104,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|private
 specifier|static
+specifier|synchronized
 name|int
 name|getNextId
 parameter_list|()

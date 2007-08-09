@@ -35,7 +35,6 @@ interface|interface
 name|Expression
 block|{
 comment|/**      * @return the value of this expression      */
-specifier|public
 name|Object
 name|evaluate
 parameter_list|(

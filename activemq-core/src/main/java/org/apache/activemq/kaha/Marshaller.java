@@ -58,7 +58,6 @@ name|T
 parameter_list|>
 block|{
 comment|/**      * Write the payload of this entry to the RawContainer      * @param object       * @param dataOut      * @throws IOException      */
-specifier|public
 name|void
 name|writePayload
 parameter_list|(
@@ -72,7 +71,6 @@ throws|throws
 name|IOException
 function_decl|;
 comment|/**      * Read the entry from the RawContainer      * @param dataIn       * @return unmarshalled object      * @throws IOException      */
-specifier|public
 name|T
 name|readPayload
 parameter_list|(

@@ -172,7 +172,6 @@ return|;
 block|}
 block|}
 comment|/**      * Adds a message reference to the message store      */
-specifier|public
 name|void
 name|addMessageReference
 parameter_list|(
@@ -189,7 +188,6 @@ throws|throws
 name|IOException
 function_decl|;
 comment|/**      * Looks up a message using either the String messageID or the      * messageNumber. Implementations are encouraged to fill in the missing key      * if its easy to do so.      */
-specifier|public
 name|ReferenceData
 name|getMessageReference
 parameter_list|(
@@ -200,12 +198,10 @@ throws|throws
 name|IOException
 function_decl|;
 comment|/**      * @return true if it supports external batch control      */
-specifier|public
 name|boolean
 name|supportsExternalBatchControl
 parameter_list|()
 function_decl|;
-specifier|public
 name|void
 name|setBatch
 parameter_list|(

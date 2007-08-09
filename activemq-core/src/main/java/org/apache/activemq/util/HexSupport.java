@@ -549,8 +549,8 @@ literal|"ff"
 block|,     }
 decl_stmt|;
 comment|/**      * @param hex      * @return      */
-specifier|static
 specifier|public
+specifier|static
 name|byte
 index|[]
 name|toBytesFromHex
@@ -637,8 +637,8 @@ name|rc
 return|;
 block|}
 comment|/**      * @param bytes      * @return      */
-specifier|static
 specifier|public
+specifier|static
 name|String
 name|toHexFromBytes
 parameter_list|(

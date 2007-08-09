@@ -20,8 +20,8 @@ specifier|public
 class|class
 name|JMXSupport
 block|{
-specifier|static
 specifier|public
+specifier|static
 name|String
 name|encodeObjectNamePart
 parameter_list|(

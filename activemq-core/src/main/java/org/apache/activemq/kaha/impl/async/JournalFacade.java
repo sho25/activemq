@@ -207,8 +207,8 @@ name|rc
 return|;
 block|}
 block|}
-specifier|static
 specifier|private
+specifier|static
 name|RecordLocation
 name|convertToRecordLocation
 parameter_list|(
@@ -233,8 +233,8 @@ name|location
 argument_list|)
 return|;
 block|}
-specifier|static
 specifier|private
+specifier|static
 name|Location
 name|convertFromRecordLocation
 parameter_list|(

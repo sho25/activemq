@@ -220,7 +220,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -337,7 +337,7 @@ name|Exception
 name|error
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -358,7 +358,7 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -421,7 +421,7 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -447,7 +447,7 @@ operator|.
 name|throwFirstException
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -682,7 +682,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

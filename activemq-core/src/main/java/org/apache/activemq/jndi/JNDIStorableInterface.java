@@ -47,7 +47,6 @@ extends|extends
 name|Referenceable
 block|{
 comment|/**      * set the properties for this instance as retrieved from JNDI      *      * @param properties      */
-specifier|public
 name|void
 name|setProperties
 parameter_list|(
@@ -56,7 +55,6 @@ name|properties
 parameter_list|)
 function_decl|;
 comment|/**      * Get the properties from this instance for storing in JNDI      *      * @return      */
-specifier|public
 name|Properties
 name|getProperties
 parameter_list|()

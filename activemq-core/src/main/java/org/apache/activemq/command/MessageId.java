@@ -53,13 +53,13 @@ specifier|protected
 name|long
 name|brokerSequenceId
 decl_stmt|;
-specifier|transient
 specifier|private
+specifier|transient
 name|String
 name|key
 decl_stmt|;
-specifier|transient
 specifier|private
+specifier|transient
 name|int
 name|hashCode
 decl_stmt|;

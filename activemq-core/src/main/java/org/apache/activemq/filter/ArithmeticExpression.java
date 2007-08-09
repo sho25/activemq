@@ -954,8 +954,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @param lvalue      * @param rvalue      * @return      */
-specifier|abstract
 specifier|protected
+specifier|abstract
 name|Object
 name|evaluate
 parameter_list|(

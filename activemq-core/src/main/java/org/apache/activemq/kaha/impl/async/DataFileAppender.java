@@ -147,7 +147,7 @@ init|=
 literal|"SHUTDOWN"
 decl_stmt|;
 name|int
-name|MAX_WRITE_BATCH_SIZE
+name|maxWriteBatchSize
 init|=
 literal|1024
 operator|*
@@ -155,8 +155,8 @@ literal|1024
 operator|*
 literal|4
 decl_stmt|;
-specifier|static
 specifier|public
+specifier|static
 class|class
 name|WriteKey
 block|{
@@ -356,7 +356,7 @@ operator|.
 name|getSize
 argument_list|()
 operator|>=
-name|MAX_WRITE_BATCH_SIZE
+name|maxWriteBatchSize
 condition|)
 return|return
 literal|false
@@ -1003,7 +1003,7 @@ init|=
 operator|new
 name|DataByteArrayOutputStream
 argument_list|(
-name|MAX_WRITE_BATCH_SIZE
+name|maxWriteBatchSize
 argument_list|)
 decl_stmt|;
 while|while

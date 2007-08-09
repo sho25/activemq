@@ -58,6 +58,7 @@ name|BaseCommandTestSupport
 block|{
 specifier|public
 specifier|static
+specifier|final
 name|ProducerInfoTest
 name|SINGLETON
 init|=

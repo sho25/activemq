@@ -75,7 +75,6 @@ extends|extends
 name|Service
 block|{
 comment|/**      * Sets the discovery listener      * @param listener      */
-specifier|public
 name|void
 name|setDiscoveryListener
 parameter_list|(
@@ -114,7 +113,6 @@ name|String
 name|group
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|setBrokerName
 parameter_list|(

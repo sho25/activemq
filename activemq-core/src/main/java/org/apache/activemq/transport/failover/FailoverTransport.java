@@ -368,7 +368,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -937,7 +937,7 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -979,7 +979,7 @@ name|t
 argument_list|)
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1020,7 +1020,7 @@ name|transportResumed
 argument_list|()
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1043,7 +1043,7 @@ name|failure
 operator|=
 name|e
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1072,7 +1072,7 @@ operator|>=
 name|maxReconnectAttempts
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1103,7 +1103,7 @@ operator|!
 name|disposed
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1161,10 +1161,12 @@ name|reconnectDelay
 operator|>
 name|maxReconnectDelay
 condition|)
+block|{
 name|reconnectDelay
 operator|=
 name|maxReconnectDelay
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
@@ -1213,7 +1215,7 @@ init|(
 name|reconnectMutex
 init|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1270,7 +1272,7 @@ init|(
 name|reconnectMutex
 init|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1281,7 +1283,9 @@ if|if
 condition|(
 name|started
 condition|)
+block|{
 return|return;
+block|}
 name|started
 operator|=
 literal|true
@@ -1315,7 +1319,7 @@ init|(
 name|reconnectMutex
 init|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1327,7 +1331,9 @@ condition|(
 operator|!
 name|started
 condition|)
+block|{
 return|return;
+block|}
 name|started
 operator|=
 literal|false
@@ -1602,7 +1608,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -1633,7 +1639,7 @@ operator|.
 name|interrupt
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1839,7 +1845,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1899,12 +1905,14 @@ name|error
 operator|instanceof
 name|IOException
 condition|)
+block|{
 throw|throw
 operator|(
 name|IOException
 operator|)
 name|error
 throw|;
+block|}
 throw|throw
 name|IOExceptionSupport
 operator|.
@@ -2015,6 +2023,7 @@ name|i
 index|]
 argument_list|)
 condition|)
+block|{
 name|uris
 operator|.
 name|add
@@ -2025,6 +2034,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|reconnect
 argument_list|()
@@ -2100,6 +2110,7 @@ argument_list|(
 name|uri
 argument_list|)
 condition|)
+block|{
 name|uris
 operator|.
 name|add
@@ -2107,6 +2118,7 @@ argument_list|(
 name|uri
 argument_list|)
 expr_stmt|;
+block|}
 name|reconnect
 argument_list|()
 expr_stmt|;
@@ -2117,7 +2129,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -2133,7 +2145,7 @@ name|void
 name|reconnect
 parameter_list|()
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(

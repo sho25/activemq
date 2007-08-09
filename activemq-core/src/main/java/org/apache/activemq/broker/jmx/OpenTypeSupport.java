@@ -297,7 +297,7 @@ specifier|private
 specifier|static
 specifier|final
 name|HashMap
-name|openTypeFactories
+name|OPEN_TYPE_FACTORIES
 init|=
 operator|new
 name|HashMap
@@ -460,8 +460,8 @@ name|itemTypes
 argument_list|)
 return|;
 block|}
-specifier|abstract
 specifier|protected
+specifier|abstract
 name|String
 name|getTypeName
 parameter_list|()
@@ -1513,7 +1513,7 @@ block|}
 block|}
 static|static
 block|{
-name|openTypeFactories
+name|OPEN_TYPE_FACTORIES
 operator|.
 name|put
 argument_list|(
@@ -1526,7 +1526,7 @@ name|MessageOpenTypeFactory
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|openTypeFactories
+name|OPEN_TYPE_FACTORIES
 operator|.
 name|put
 argument_list|(
@@ -1539,7 +1539,7 @@ name|ByteMessageOpenTypeFactory
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|openTypeFactories
+name|OPEN_TYPE_FACTORIES
 operator|.
 name|put
 argument_list|(
@@ -1552,7 +1552,7 @@ name|MapMessageOpenTypeFactory
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|openTypeFactories
+name|OPEN_TYPE_FACTORIES
 operator|.
 name|put
 argument_list|(
@@ -1565,7 +1565,7 @@ name|ObjectMessageOpenTypeFactory
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|openTypeFactories
+name|OPEN_TYPE_FACTORIES
 operator|.
 name|put
 argument_list|(
@@ -1578,7 +1578,7 @@ name|StreamMessageOpenTypeFactory
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|openTypeFactories
+name|OPEN_TYPE_FACTORIES
 operator|.
 name|put
 argument_list|(
@@ -1607,7 +1607,7 @@ return|return
 operator|(
 name|OpenTypeFactory
 operator|)
-name|openTypeFactories
+name|OPEN_TYPE_FACTORIES
 operator|.
 name|get
 argument_list|(

@@ -67,7 +67,6 @@ interface|interface
 name|JmsMesageConvertor
 block|{
 comment|/**      * Convert a foreign JMS Message to a native ActiveMQ Message      * @param message      * @return the converted message      * @throws JMSException      */
-specifier|public
 name|Message
 name|convert
 parameter_list|(
@@ -77,7 +76,6 @@ parameter_list|)
 throws|throws
 name|JMSException
 function_decl|;
-specifier|public
 name|Message
 name|convert
 parameter_list|(
@@ -90,7 +88,6 @@ parameter_list|)
 throws|throws
 name|JMSException
 function_decl|;
-specifier|public
 name|void
 name|setConnection
 parameter_list|(

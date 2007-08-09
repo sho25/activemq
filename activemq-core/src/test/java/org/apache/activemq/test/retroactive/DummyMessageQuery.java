@@ -126,11 +126,11 @@ name|DummyMessageQuery
 implements|implements
 name|MessageQuery
 block|{
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -145,7 +145,7 @@ specifier|public
 specifier|static
 specifier|final
 name|int
-name|messageCount
+name|MESSAGE_COUNT
 init|=
 literal|10
 decl_stmt|;
@@ -162,13 +162,13 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
 literal|"Initial query is creating: "
 operator|+
-name|messageCount
+name|MESSAGE_COUNT
 operator|+
 literal|" messages"
 argument_list|)
@@ -182,7 +182,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|messageCount
+name|MESSAGE_COUNT
 condition|;
 name|i
 operator|++

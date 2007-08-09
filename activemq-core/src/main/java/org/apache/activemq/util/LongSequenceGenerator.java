@@ -24,8 +24,8 @@ specifier|private
 name|long
 name|lastSequenceId
 decl_stmt|;
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|long
 name|getNextSequenceId
 parameter_list|()
@@ -35,8 +35,8 @@ operator|++
 name|lastSequenceId
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|long
 name|getLastSequenceId
 parameter_list|()
@@ -45,8 +45,8 @@ return|return
 name|lastSequenceId
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|setLastSequenceId
 parameter_list|(

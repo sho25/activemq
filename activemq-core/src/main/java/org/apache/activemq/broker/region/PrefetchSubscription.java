@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *   * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file  * to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the  * License. You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the  * specific language governing permissions and limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -318,15 +318,15 @@ comment|/**  * A subscription that honors the pre-fetch option of the ConsumerIn
 end_comment
 
 begin_class
-specifier|abstract
 specifier|public
+specifier|abstract
 class|class
 name|PrefetchSubscription
 extends|extends
 name|AbstractSubscription
 block|{
-specifier|static
 specifier|private
+specifier|static
 specifier|final
 name|Log
 name|LOG
@@ -344,8 +344,8 @@ specifier|protected
 name|PendingMessageCursor
 name|pending
 decl_stmt|;
-specifier|final
 specifier|protected
+specifier|final
 name|LinkedList
 name|dispatched
 init|=
@@ -1616,8 +1616,8 @@ name|size
 argument_list|()
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|long
 name|getDequeueCounter
 parameter_list|()
@@ -1626,8 +1626,8 @@ return|return
 name|dequeueCounter
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|long
 name|getDispatchedCounter
 parameter_list|()
@@ -1636,8 +1636,8 @@ return|return
 name|dispatchCounter
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|long
 name|getEnqueueCounter
 parameter_list|()
@@ -2338,8 +2338,8 @@ return|;
 block|}
 block|}
 comment|/**      * Use when a matched message is about to be dispatched to the client.      *       * @param node      * @return false if the message should not be dispatched to the client      *         (another sub may have already dispatched it for example).      * @throws IOException      */
-specifier|abstract
 specifier|protected
+specifier|abstract
 name|boolean
 name|canDispatch
 parameter_list|(

@@ -22,14 +22,12 @@ specifier|public
 interface|interface
 name|Service
 block|{
-specifier|public
 name|void
 name|start
 parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-specifier|public
 name|void
 name|stop
 parameter_list|()

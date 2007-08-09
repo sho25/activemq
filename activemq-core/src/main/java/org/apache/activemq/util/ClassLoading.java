@@ -127,9 +127,11 @@ name|type
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|type
 return|;
+block|}
 comment|// Check if it is a vm primitive
 name|type
 operator|=
@@ -144,9 +146,11 @@ name|type
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|type
 return|;
+block|}
 comment|// Handle VM class syntax (Lclassname;)
 if|if
 condition|(
@@ -417,6 +421,7 @@ name|classLoader
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|Class
 operator|.
@@ -425,7 +430,9 @@ argument_list|(
 name|className
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 name|classLoader
 operator|.
@@ -434,6 +441,7 @@ argument_list|(
 name|className
 argument_list|)
 return|;
+block|}
 block|}
 specifier|public
 specifier|static

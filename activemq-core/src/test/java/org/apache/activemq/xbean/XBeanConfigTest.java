@@ -296,11 +296,11 @@ name|XBeanConfigTest
 extends|extends
 name|TestCase
 block|{
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -402,7 +402,7 @@ operator|instanceof
 name|LastImageSubscriptionRecoveryPolicy
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -411,7 +411,7 @@ operator|+
 name|topic
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -420,7 +420,7 @@ operator|+
 name|dispatchPolicy
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -503,7 +503,7 @@ name|getRecoverDuration
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -512,7 +512,7 @@ operator|+
 name|topic
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -521,7 +521,7 @@ operator|+
 name|dispatchPolicy
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -676,7 +676,7 @@ name|uri
 init|=
 literal|"org/apache/activemq/xbean/activemq-policy.xml"
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

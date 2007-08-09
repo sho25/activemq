@@ -44,6 +44,7 @@ name|PartialCommandTest
 block|{
 specifier|public
 specifier|static
+specifier|final
 name|LastPartialCommandTest
 name|SINGLETON
 init|=

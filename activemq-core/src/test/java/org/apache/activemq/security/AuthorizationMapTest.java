@@ -97,7 +97,7 @@ block|{
 specifier|static
 specifier|final
 name|GroupPrincipal
-name|guests
+name|GUESTS
 init|=
 operator|new
 name|GroupPrincipal
@@ -108,7 +108,7 @@ decl_stmt|;
 specifier|static
 specifier|final
 name|GroupPrincipal
-name|users
+name|USERS
 init|=
 operator|new
 name|GroupPrincipal
@@ -119,7 +119,7 @@ decl_stmt|;
 specifier|static
 specifier|final
 name|GroupPrincipal
-name|admins
+name|ADMINS
 init|=
 operator|new
 name|GroupPrincipal
@@ -130,7 +130,7 @@ decl_stmt|;
 specifier|static
 specifier|final
 name|GroupPrincipal
-name|tempDestinationAdmins
+name|TEMP_DESTINATION_ADMINS
 init|=
 operator|new
 name|GroupPrincipal
@@ -185,7 +185,7 @@ name|readACLs
 operator|.
 name|contains
 argument_list|(
-name|admins
+name|ADMINS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -197,7 +197,7 @@ name|readACLs
 operator|.
 name|contains
 argument_list|(
-name|users
+name|USERS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -249,7 +249,7 @@ name|readACLs
 operator|.
 name|contains
 argument_list|(
-name|admins
+name|ADMINS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -261,7 +261,7 @@ name|readACLs
 operator|.
 name|contains
 argument_list|(
-name|users
+name|USERS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -295,7 +295,7 @@ name|tempAdminACLs
 operator|.
 name|contains
 argument_list|(
-name|tempDestinationAdmins
+name|TEMP_DESTINATION_ADMINS
 argument_list|)
 argument_list|)
 expr_stmt|;

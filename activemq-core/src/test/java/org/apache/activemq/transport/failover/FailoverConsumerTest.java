@@ -129,16 +129,8 @@ name|NetworkTestSupport
 import|;
 end_import
 
-begin_class
-specifier|public
-class|class
-name|FailoverConsumerTest
-extends|extends
-name|NetworkTestSupport
-block|{
-specifier|private
-specifier|static
-specifier|final
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -148,8 +140,11 @@ operator|.
 name|logging
 operator|.
 name|Log
-name|log
-init|=
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -159,14 +154,16 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
-operator|.
-name|getLog
-argument_list|(
+import|;
+end_import
+
+begin_class
+specifier|public
+class|class
 name|FailoverConsumerTest
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
+extends|extends
+name|NetworkTestSupport
+block|{
 specifier|public
 specifier|static
 specifier|final
@@ -174,6 +171,21 @@ name|int
 name|MSG_COUNT
 init|=
 literal|100
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOG
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|FailoverConsumerTest
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 specifier|public
 name|void
@@ -356,7 +368,7 @@ comment|// messages
 comment|// after restart, javadoc says, that messages should be received
 comment|// though).
 comment|// So we must use external broker ant restart it manually.
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -413,7 +425,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(

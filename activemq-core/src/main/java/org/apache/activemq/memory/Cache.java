@@ -25,7 +25,6 @@ interface|interface
 name|Cache
 block|{
 comment|/**      * Gets an object that was previously<code>put</code> into this object.      *       * @param msgid      * @return null if the object was not previously put or if the object has      *         expired out of the cache.      */
-specifier|public
 name|Object
 name|get
 parameter_list|(
@@ -34,7 +33,6 @@ name|key
 parameter_list|)
 function_decl|;
 comment|/**      * Puts an object into the cache.      *       * @param messageID      * @param message      */
-specifier|public
 name|Object
 name|put
 parameter_list|(
@@ -46,7 +44,6 @@ name|value
 parameter_list|)
 function_decl|;
 comment|/**      * Removes an object from the cache.      *       * @param messageID      * @return the object associated with the key if it was still in the cache.      */
-specifier|public
 name|Object
 name|remove
 parameter_list|(
@@ -55,13 +52,11 @@ name|key
 parameter_list|)
 function_decl|;
 comment|/**      * Lets a cache know it will not be used any further and that it can release      * acquired resources      */
-specifier|public
 name|void
 name|close
 parameter_list|()
 function_decl|;
 comment|/**      * How big is the cache right now?      *       * @return      */
-specifier|public
 name|int
 name|size
 parameter_list|()

@@ -22,17 +22,14 @@ specifier|public
 interface|interface
 name|LocalTransactionEventListener
 block|{
-specifier|public
 name|void
 name|beginEvent
 parameter_list|()
 function_decl|;
-specifier|public
 name|void
 name|commitEvent
 parameter_list|()
 function_decl|;
-specifier|public
 name|void
 name|rollbackEvent
 parameter_list|()

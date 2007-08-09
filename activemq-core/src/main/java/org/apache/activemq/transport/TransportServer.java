@@ -73,7 +73,6 @@ extends|extends
 name|Service
 block|{
 comment|/**      * Registers an {@see TransportAcceptListener} which is notified of accepted      * channels.      *       * @param acceptListener      */
-specifier|public
 name|void
 name|setAcceptListener
 parameter_list|(
@@ -82,7 +81,6 @@ name|acceptListener
 parameter_list|)
 function_decl|;
 comment|/**      * Associates a broker info with the transport server so that the transport      * can do discovery advertisements of the broker.      *       * @param brokerInfo      */
-specifier|public
 name|void
 name|setBrokerInfo
 parameter_list|(
@@ -90,13 +88,11 @@ name|BrokerInfo
 name|brokerInfo
 parameter_list|)
 function_decl|;
-specifier|public
 name|URI
 name|getConnectURI
 parameter_list|()
 function_decl|;
 comment|/**      * @return The socket address that this transport is accepting connections      *         on or null if this does not or is not currently accepting      *         connections on a socket.      */
-specifier|public
 name|InetSocketAddress
 name|getSocketAddress
 parameter_list|()

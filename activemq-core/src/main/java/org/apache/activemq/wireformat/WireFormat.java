@@ -112,7 +112,6 @@ throws|throws
 name|IOException
 function_decl|;
 comment|/**      * @param the version of the wire format      */
-specifier|public
 name|void
 name|setVersion
 parameter_list|(
@@ -121,7 +120,6 @@ name|version
 parameter_list|)
 function_decl|;
 comment|/**      * @return the version of the wire format      */
-specifier|public
 name|int
 name|getVersion
 parameter_list|()

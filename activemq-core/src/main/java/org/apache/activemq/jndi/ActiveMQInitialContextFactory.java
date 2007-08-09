@@ -215,7 +215,7 @@ specifier|static
 specifier|final
 name|String
 index|[]
-name|defaultConnectionFactoryNames
+name|DEFAULT_CONNECTION_FACTORY_NAMES
 init|=
 block|{
 literal|"ConnectionFactory"
@@ -744,7 +744,7 @@ return|;
 block|}
 block|}
 return|return
-name|defaultConnectionFactoryNames
+name|DEFAULT_CONNECTION_FACTORY_NAMES
 return|;
 block|}
 specifier|protected

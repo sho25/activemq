@@ -73,7 +73,6 @@ interface|interface
 name|MessageTransformer
 block|{
 comment|/**      * Transforms the given message inside the producer before it is sent to the JMS bus.      */
-specifier|public
 name|Message
 name|producerTransform
 parameter_list|(
@@ -90,7 +89,6 @@ throws|throws
 name|JMSException
 function_decl|;
 comment|/**      * Transforms the given message inside the consumer before being dispatched to the client code      */
-specifier|public
 name|Message
 name|consumerTransform
 parameter_list|(

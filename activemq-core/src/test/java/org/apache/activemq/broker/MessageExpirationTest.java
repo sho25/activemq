@@ -1219,7 +1219,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|TestMessagesInSubscriptionPendingListExpire
+name|xinitCombosForTestMessagesInSubscriptionPendingListExpire
 parameter_list|()
 block|{
 name|addCombinationValues

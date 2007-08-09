@@ -69,8 +69,8 @@ extends|extends
 name|FilterOutputStream
 block|{
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|BUFFER_SIZE
 init|=
@@ -324,7 +324,6 @@ expr_stmt|;
 block|}
 comment|/**      * Checks that the stream has not been closed      *       * @throws IOException      */
 specifier|private
-specifier|final
 name|void
 name|checkClosed
 parameter_list|()

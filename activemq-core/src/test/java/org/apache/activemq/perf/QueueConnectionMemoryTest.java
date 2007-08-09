@@ -139,7 +139,7 @@ specifier|static
 specifier|final
 specifier|transient
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -353,7 +353,7 @@ argument_list|(
 name|dest
 argument_list|)
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(

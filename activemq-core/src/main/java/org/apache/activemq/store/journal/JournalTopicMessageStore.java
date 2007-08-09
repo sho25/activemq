@@ -260,7 +260,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -501,7 +501,7 @@ specifier|final
 name|boolean
 name|debug
 init|=
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
@@ -611,7 +611,8 @@ if|if
 condition|(
 name|debug
 condition|)
-name|log
+block|{
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -624,6 +625,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 name|acknowledge
 argument_list|(
 name|messageId
@@ -640,7 +642,8 @@ if|if
 condition|(
 name|debug
 condition|)
-name|log
+block|{
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -653,6 +656,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|this
@@ -699,7 +703,8 @@ if|if
 condition|(
 name|debug
 condition|)
-name|log
+block|{
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -712,6 +717,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|JournalTopicMessageStore
@@ -748,7 +754,8 @@ if|if
 condition|(
 name|debug
 condition|)
-name|log
+block|{
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -761,6 +768,7 @@ operator|+
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|JournalTopicMessageStore
@@ -841,7 +849,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(

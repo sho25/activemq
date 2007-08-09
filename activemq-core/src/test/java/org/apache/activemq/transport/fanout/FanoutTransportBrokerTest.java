@@ -304,7 +304,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -535,7 +535,7 @@ name|consumerInfo2
 argument_list|)
 expr_stmt|;
 comment|// Start a fanout publisher.
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -801,7 +801,7 @@ name|consumerInfo2
 argument_list|)
 expr_stmt|;
 comment|// Start a fanout publisher.
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -953,7 +953,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

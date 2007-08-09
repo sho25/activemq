@@ -432,7 +432,7 @@ name|messageSelector
 argument_list|)
 return|;
 block|}
-comment|/**      * @param destination      * @param messageSelector      * @param NoLocal      * @return      * @throws JMSException      */
+comment|/**      * @param destination      * @param messageSelector      * @param noLocal      * @return      * @throws JMSException      */
 specifier|public
 name|MessageConsumer
 name|createConsumer
@@ -444,7 +444,7 @@ name|String
 name|messageSelector
 parameter_list|,
 name|boolean
-name|NoLocal
+name|noLocal
 parameter_list|)
 throws|throws
 name|JMSException
@@ -455,6 +455,7 @@ name|destination
 operator|instanceof
 name|Topic
 condition|)
+block|{
 throw|throw
 operator|new
 name|InvalidDestinationException
@@ -462,6 +463,7 @@ argument_list|(
 literal|"Topics are not supported by a QueueSession"
 argument_list|)
 throw|;
+block|}
 return|return
 name|next
 operator|.
@@ -471,7 +473,7 @@ name|destination
 argument_list|,
 name|messageSelector
 argument_list|,
-name|NoLocal
+name|noLocal
 argument_list|)
 return|;
 block|}

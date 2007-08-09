@@ -49,6 +49,34 @@ name|BrokerService
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision$  */
 end_comment
@@ -60,6 +88,21 @@ name|JmsQueueSendReceiveTwoConnectionsStartBeforeBrokerTest
 extends|extends
 name|JmsQueueSendReceiveTwoConnectionsTest
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOG
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|JmsQueueSendReceiveTwoConnectionsStartBeforeBrokerTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 name|Queue
 name|errors
@@ -84,7 +127,7 @@ name|startBroker
 parameter_list|()
 block|{
 comment|// Initialize the broker
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -117,7 +160,7 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -158,7 +201,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

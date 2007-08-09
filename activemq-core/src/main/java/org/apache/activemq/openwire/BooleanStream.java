@@ -56,8 +56,8 @@ import|;
 end_import
 
 begin_class
-specifier|final
 specifier|public
+specifier|final
 class|class
 name|BooleanStream
 block|{

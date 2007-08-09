@@ -72,7 +72,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Logger
-name|log
+name|LOG
 init|=
 name|Logger
 operator|.
@@ -220,7 +220,7 @@ name|Exception
 name|ioe
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|log
 argument_list|(

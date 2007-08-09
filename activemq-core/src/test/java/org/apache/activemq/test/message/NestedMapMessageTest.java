@@ -144,7 +144,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -344,7 +344,7 @@ name|List
 operator|)
 name|value
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -365,7 +365,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -386,7 +386,7 @@ argument_list|(
 literal|"listField"
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(

@@ -253,7 +253,7 @@ specifier|static
 specifier|final
 specifier|transient
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -433,7 +433,7 @@ parameter_list|)
 throws|throws
 name|MalformedURLException
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(

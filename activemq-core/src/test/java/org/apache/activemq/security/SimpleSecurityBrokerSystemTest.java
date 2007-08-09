@@ -155,6 +155,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|MessageSendTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|filter
 operator|.
 name|DestinationMap
@@ -175,6 +189,34 @@ name|GroupPrincipal
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests that the broker allows/fails access to destinations based on the  * security policy installed on the broker.  *   * @version $Revision$  */
 end_comment
@@ -186,10 +228,25 @@ name|SimpleSecurityBrokerSystemTest
 extends|extends
 name|SecurityTestSupport
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOG
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|SimpleSecurityBrokerSystemTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|static
 specifier|final
 name|GroupPrincipal
-name|guests
+name|GUESTS
 init|=
 operator|new
 name|GroupPrincipal
@@ -200,7 +257,7 @@ decl_stmt|;
 specifier|static
 specifier|final
 name|GroupPrincipal
-name|users
+name|USERS
 init|=
 operator|new
 name|GroupPrincipal
@@ -211,7 +268,7 @@ decl_stmt|;
 specifier|static
 specifier|final
 name|GroupPrincipal
-name|admins
+name|ADMINS
 init|=
 operator|new
 name|GroupPrincipal
@@ -286,7 +343,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -357,7 +414,7 @@ argument_list|(
 literal|">"
 argument_list|)
 argument_list|,
-name|admins
+name|ADMINS
 argument_list|)
 expr_stmt|;
 name|readAccess
@@ -370,7 +427,7 @@ argument_list|(
 literal|"USERS.>"
 argument_list|)
 argument_list|,
-name|users
+name|USERS
 argument_list|)
 expr_stmt|;
 name|readAccess
@@ -383,7 +440,7 @@ argument_list|(
 literal|"GUEST.>"
 argument_list|)
 argument_list|,
-name|guests
+name|GUESTS
 argument_list|)
 expr_stmt|;
 name|readAccess
@@ -396,7 +453,7 @@ argument_list|(
 literal|">"
 argument_list|)
 argument_list|,
-name|admins
+name|ADMINS
 argument_list|)
 expr_stmt|;
 name|readAccess
@@ -409,7 +466,7 @@ argument_list|(
 literal|"USERS.>"
 argument_list|)
 argument_list|,
-name|users
+name|USERS
 argument_list|)
 expr_stmt|;
 name|readAccess
@@ -422,7 +479,7 @@ argument_list|(
 literal|"GUEST.>"
 argument_list|)
 argument_list|,
-name|guests
+name|GUESTS
 argument_list|)
 expr_stmt|;
 name|DestinationMap
@@ -442,7 +499,7 @@ argument_list|(
 literal|">"
 argument_list|)
 argument_list|,
-name|admins
+name|ADMINS
 argument_list|)
 expr_stmt|;
 name|writeAccess
@@ -455,7 +512,7 @@ argument_list|(
 literal|"USERS.>"
 argument_list|)
 argument_list|,
-name|users
+name|USERS
 argument_list|)
 expr_stmt|;
 name|writeAccess
@@ -468,7 +525,7 @@ argument_list|(
 literal|"GUEST.>"
 argument_list|)
 argument_list|,
-name|users
+name|USERS
 argument_list|)
 expr_stmt|;
 name|writeAccess
@@ -481,7 +538,7 @@ argument_list|(
 literal|"GUEST.>"
 argument_list|)
 argument_list|,
-name|guests
+name|GUESTS
 argument_list|)
 expr_stmt|;
 name|writeAccess
@@ -494,7 +551,7 @@ argument_list|(
 literal|">"
 argument_list|)
 argument_list|,
-name|admins
+name|ADMINS
 argument_list|)
 expr_stmt|;
 name|writeAccess
@@ -507,7 +564,7 @@ argument_list|(
 literal|"USERS.>"
 argument_list|)
 argument_list|,
-name|users
+name|USERS
 argument_list|)
 expr_stmt|;
 name|writeAccess
@@ -520,7 +577,7 @@ argument_list|(
 literal|"GUEST.>"
 argument_list|)
 argument_list|,
-name|users
+name|USERS
 argument_list|)
 expr_stmt|;
 name|writeAccess
@@ -533,7 +590,7 @@ argument_list|(
 literal|"GUEST.>"
 argument_list|)
 argument_list|,
-name|guests
+name|GUESTS
 argument_list|)
 expr_stmt|;
 name|readAccess
@@ -546,7 +603,7 @@ argument_list|(
 literal|"ActiveMQ.Advisory.>"
 argument_list|)
 argument_list|,
-name|guests
+name|GUESTS
 argument_list|)
 expr_stmt|;
 name|readAccess
@@ -559,7 +616,7 @@ argument_list|(
 literal|"ActiveMQ.Advisory.>"
 argument_list|)
 argument_list|,
-name|users
+name|USERS
 argument_list|)
 expr_stmt|;
 name|writeAccess
@@ -572,7 +629,7 @@ argument_list|(
 literal|"ActiveMQ.Advisory.>"
 argument_list|)
 argument_list|,
-name|guests
+name|GUESTS
 argument_list|)
 expr_stmt|;
 name|writeAccess
@@ -585,7 +642,7 @@ argument_list|(
 literal|"ActiveMQ.Advisory.>"
 argument_list|)
 argument_list|,
-name|users
+name|USERS
 argument_list|)
 expr_stmt|;
 name|DestinationMap
@@ -605,7 +662,7 @@ argument_list|(
 literal|">"
 argument_list|)
 argument_list|,
-name|admins
+name|ADMINS
 argument_list|)
 expr_stmt|;
 name|adminAccess
@@ -618,7 +675,7 @@ argument_list|(
 literal|">"
 argument_list|)
 argument_list|,
-name|users
+name|USERS
 argument_list|)
 expr_stmt|;
 name|adminAccess
@@ -631,7 +688,7 @@ argument_list|(
 literal|">"
 argument_list|)
 argument_list|,
-name|guests
+name|GUESTS
 argument_list|)
 expr_stmt|;
 name|adminAccess
@@ -644,7 +701,7 @@ argument_list|(
 literal|">"
 argument_list|)
 argument_list|,
-name|admins
+name|ADMINS
 argument_list|)
 expr_stmt|;
 name|adminAccess
@@ -657,7 +714,7 @@ argument_list|(
 literal|">"
 argument_list|)
 argument_list|,
-name|users
+name|USERS
 argument_list|)
 expr_stmt|;
 name|adminAccess
@@ -670,7 +727,7 @@ argument_list|(
 literal|">"
 argument_list|)
 argument_list|,
-name|guests
+name|GUESTS
 argument_list|)
 expr_stmt|;
 return|return
@@ -757,9 +814,9 @@ operator|new
 name|Object
 index|[]
 block|{
-name|admins
+name|ADMINS
 block|,
-name|users
+name|USERS
 block|}
 argument_list|)
 argument_list|)
@@ -782,7 +839,7 @@ operator|new
 name|Object
 index|[]
 block|{
-name|users
+name|USERS
 block|}
 argument_list|)
 argument_list|)
@@ -805,7 +862,7 @@ operator|new
 name|Object
 index|[]
 block|{
-name|guests
+name|GUESTS
 block|}
 argument_list|)
 argument_list|)

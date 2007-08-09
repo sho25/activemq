@@ -49,7 +49,6 @@ extends|extends
 name|Service
 block|{
 comment|/**      * A one way asynchronous send      *       * @param command      * @throws IOException      */
-specifier|public
 name|void
 name|oneway
 parameter_list|(
@@ -60,7 +59,6 @@ throws|throws
 name|IOException
 function_decl|;
 comment|/**      * An asynchronous request response where the Receipt will be returned in      * the future. If responseCallback is not null, then it will be called when      * the response has been completed.      *       * @param command      * @param responseCallback TODO      * @return the FutureResponse      * @throws IOException      */
-specifier|public
 name|FutureResponse
 name|asyncRequest
 parameter_list|(
@@ -74,7 +72,6 @@ throws|throws
 name|IOException
 function_decl|;
 comment|/**      * A synchronous request response      *       * @param command      * @return the response      * @throws IOException      */
-specifier|public
 name|Object
 name|request
 parameter_list|(
@@ -85,7 +82,6 @@ throws|throws
 name|IOException
 function_decl|;
 comment|/**      * A synchronous request response      *       * @param command      * @param timeout      * @return the repsonse or null if timeout      * @throws IOException      */
-specifier|public
 name|Object
 name|request
 parameter_list|(
@@ -103,7 +99,7 @@ comment|// * A one way asynchronous send
 comment|// * @param command
 comment|// * @throws IOException
 comment|// */
-comment|// public void oneway(Command command) throws IOException;
+comment|// void oneway(Command command) throws IOException;
 comment|//
 comment|// /**
 comment|// * An asynchronous request response where the Receipt will be returned
@@ -115,7 +111,7 @@ comment|// * @param responseCallback TODO
 comment|// * @return the FutureResponse
 comment|// * @throws IOException
 comment|// */
-comment|// public FutureResponse asyncRequest(Command command, ResponseCallback
+comment|// FutureResponse asyncRequest(Command command, ResponseCallback
 comment|// responseCallback) throws IOException;
 comment|//
 comment|// /**
@@ -124,7 +120,7 @@ comment|// * @param command
 comment|// * @return the response
 comment|// * @throws IOException
 comment|// */
-comment|// public Response request(Command command) throws IOException;
+comment|// Response request(Command command) throws IOException;
 comment|//
 comment|// /**
 comment|// * A synchronous request response
@@ -133,15 +129,13 @@ comment|// * @param timeout
 comment|// * @return the repsonse or null if timeout
 comment|// * @throws IOException
 comment|// */
-comment|// public Response request(Command command, int timeout) throws IOException;
+comment|// Response request(Command command, int timeout) throws IOException;
 comment|/**      * Returns the current transport listener      *       * @return      */
-specifier|public
 name|TransportListener
 name|getTransportListener
 parameter_list|()
 function_decl|;
 comment|/**      * Registers an inbound command listener      *       * @param commandListener      */
-specifier|public
 name|void
 name|setTransportListener
 parameter_list|(
@@ -150,7 +144,6 @@ name|commandListener
 parameter_list|)
 function_decl|;
 comment|/**      * @param target      * @return the target      */
-specifier|public
 name|Object
 name|narrow
 parameter_list|(
@@ -159,13 +152,11 @@ name|target
 parameter_list|)
 function_decl|;
 comment|/**      * @return the remote address for this connection      */
-specifier|public
 name|String
 name|getRemoteAddress
 parameter_list|()
 function_decl|;
 comment|/**      * Indicates if the transport can handle faults      *       * @return tru if fault tolerant      */
-specifier|public
 name|boolean
 name|isFaultTolerant
 parameter_list|()

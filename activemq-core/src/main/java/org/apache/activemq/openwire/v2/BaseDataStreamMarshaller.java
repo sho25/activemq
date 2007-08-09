@@ -144,16 +144,16 @@ import|;
 end_import
 
 begin_class
-specifier|abstract
 specifier|public
+specifier|abstract
 class|class
 name|BaseDataStreamMarshaller
 implements|implements
 name|DataStreamMarshaller
 block|{
+specifier|public
 specifier|static
 specifier|final
-specifier|public
 name|Constructor
 name|STACK_TRACE_ELEMENT_CONSTRUCTOR
 decl_stmt|;
@@ -208,14 +208,14 @@ operator|=
 name|constructor
 expr_stmt|;
 block|}
-specifier|abstract
 specifier|public
+specifier|abstract
 name|byte
 name|getDataStructureType
 parameter_list|()
 function_decl|;
-specifier|abstract
 specifier|public
+specifier|abstract
 name|DataStructure
 name|createObject
 parameter_list|()

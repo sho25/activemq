@@ -22,9 +22,6 @@ specifier|public
 interface|interface
 name|LockOwner
 block|{
-specifier|public
-specifier|static
-specifier|final
 name|LockOwner
 name|HIGH_PRIORITY_LOCK_OWNER
 init|=

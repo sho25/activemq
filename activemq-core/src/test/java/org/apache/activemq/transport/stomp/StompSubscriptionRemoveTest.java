@@ -190,7 +190,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -361,7 +361,7 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -396,7 +396,7 @@ name|STOMP_PORT
 argument_list|)
 expr_stmt|;
 name|String
-name|connect_frame
+name|connectFrame
 init|=
 literal|"CONNECT\n"
 operator|+
@@ -410,7 +410,7 @@ name|stompConnection
 operator|.
 name|sendFrame
 argument_list|(
-name|connect_frame
+name|connectFrame
 argument_list|)
 expr_stmt|;
 name|stompConnection
@@ -464,7 +464,7 @@ operator|.
 name|receiveFrame
 argument_list|()
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -551,7 +551,7 @@ argument_list|,
 name|STOMP_PORT
 argument_list|)
 expr_stmt|;
-name|connect_frame
+name|connectFrame
 operator|=
 literal|"CONNECT\n"
 operator|+
@@ -565,7 +565,7 @@ name|stompConnection
 operator|.
 name|sendFrame
 argument_list|(
-name|connect_frame
+name|connectFrame
 argument_list|)
 expr_stmt|;
 name|stompConnection
@@ -610,7 +610,7 @@ operator|.
 name|receiveFrame
 argument_list|()
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -702,7 +702,7 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

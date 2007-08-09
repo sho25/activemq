@@ -182,8 +182,8 @@ specifier|public
 class|class
 name|IntrospectionSupport
 block|{
-specifier|static
 specifier|public
+specifier|static
 name|boolean
 name|getProperties
 parameter_list|(
@@ -208,6 +208,7 @@ name|target
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -215,12 +216,14 @@ argument_list|(
 literal|"target was null."
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|props
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -228,16 +231,19 @@ argument_list|(
 literal|"props was null."
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|optionPrefix
 operator|==
 literal|null
 condition|)
+block|{
 name|optionPrefix
 operator|=
 literal|""
 expr_stmt|;
+block|}
 name|Class
 name|clazz
 init|=
@@ -353,7 +359,9 @@ name|value
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
+block|}
 name|String
 name|strValue
 init|=
@@ -370,7 +378,9 @@ name|strValue
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
+block|}
 name|name
 operator|=
 name|name
@@ -420,8 +430,8 @@ return|return
 name|rc
 return|;
 block|}
-specifier|static
 specifier|public
+specifier|static
 name|boolean
 name|setProperties
 parameter_list|(
@@ -446,6 +456,7 @@ name|target
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -453,12 +464,14 @@ argument_list|(
 literal|"target was null."
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|props
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -466,6 +479,7 @@ argument_list|(
 literal|"props was null."
 argument_list|)
 throw|;
+block|}
 for|for
 control|(
 name|Iterator
@@ -575,6 +589,7 @@ name|props
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -582,6 +597,7 @@ argument_list|(
 literal|"props was null."
 argument_list|)
 throw|;
+block|}
 name|HashMap
 name|rc
 init|=
@@ -700,6 +716,7 @@ name|target
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -707,12 +724,14 @@ argument_list|(
 literal|"target was null."
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|props
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -720,6 +739,7 @@ argument_list|(
 literal|"props was null."
 argument_list|)
 throw|;
+block|}
 for|for
 control|(
 name|Iterator
@@ -830,9 +850,11 @@ name|setter
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 comment|// If the type is null or it matches the needed type, just use the
 comment|// value directly
 if|if
@@ -1191,9 +1213,11 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|clazz
@@ -1202,9 +1226,11 @@ name|URI
 operator|.
 name|class
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|clazz
@@ -1213,15 +1239,17 @@ name|Boolean
 operator|.
 name|class
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 return|return
 literal|false
 return|;
 block|}
-specifier|static
 specifier|public
+specifier|static
 name|String
 name|toString
 parameter_list|(
@@ -1240,8 +1268,8 @@ name|class
 argument_list|)
 return|;
 block|}
-specifier|static
 specifier|public
+specifier|static
 name|String
 name|toString
 parameter_list|(
@@ -1451,8 +1479,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|static
 specifier|public
+specifier|static
 name|String
 name|simpleName
 parameter_list|(
@@ -1501,8 +1529,8 @@ return|return
 name|name
 return|;
 block|}
-specifier|static
 specifier|private
+specifier|static
 name|void
 name|addFields
 parameter_list|(
@@ -1525,6 +1553,7 @@ name|startClass
 operator|!=
 name|stopClass
 condition|)
+block|{
 name|addFields
 argument_list|(
 name|target
@@ -1539,6 +1568,7 @@ argument_list|,
 name|map
 argument_list|)
 expr_stmt|;
+block|}
 name|Field
 index|[]
 name|fields

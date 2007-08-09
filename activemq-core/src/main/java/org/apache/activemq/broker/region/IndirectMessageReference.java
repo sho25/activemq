@@ -285,8 +285,8 @@ name|getSize
 argument_list|()
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|Message
 name|getMessageHardRef
 parameter_list|()
@@ -295,8 +295,8 @@ return|return
 name|message
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|int
 name|getReferenceCount
 parameter_list|()
@@ -305,8 +305,8 @@ return|return
 name|referenceCount
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|int
 name|incrementReferenceCount
 parameter_list|()
@@ -388,8 +388,8 @@ return|return
 name|rc
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|int
 name|decrementReferenceCount
 parameter_list|()
@@ -424,8 +424,8 @@ return|return
 name|rc
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|Message
 name|getMessage
 parameter_list|()
@@ -457,8 +457,8 @@ literal|null
 operator|)
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|incrementRedeliveryCounter
 parameter_list|()
@@ -469,8 +469,8 @@ name|redeliveryCounter
 operator|++
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|boolean
 name|isDropped
 parameter_list|()
@@ -479,8 +479,8 @@ return|return
 name|dropped
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|drop
 parameter_list|()
@@ -568,8 +568,8 @@ literal|true
 return|;
 block|}
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|unlock
 parameter_list|()
@@ -579,8 +579,8 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|LockOwner
 name|getLockOwner
 parameter_list|()
@@ -589,8 +589,8 @@ return|return
 name|lockOwner
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|int
 name|getRedeliveryCounter
 parameter_list|()
@@ -626,8 +626,8 @@ return|return
 name|persistent
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|boolean
 name|isLocked
 parameter_list|()
@@ -638,8 +638,8 @@ operator|!=
 literal|null
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|boolean
 name|isAcked
 parameter_list|()
@@ -648,8 +648,8 @@ return|return
 name|acked
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|setAcked
 parameter_list|(

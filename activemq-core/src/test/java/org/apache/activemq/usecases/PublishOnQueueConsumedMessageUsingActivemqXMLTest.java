@@ -132,12 +132,20 @@ name|PublishOnQueueConsumedMessageUsingActivemqXMLTest
 extends|extends
 name|PublishOnTopicConsumedMessageTest
 block|{
+specifier|protected
+specifier|static
+specifier|final
+name|String
+name|JOURNAL_ROOT
+init|=
+literal|"../data/"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
 specifier|transient
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -147,14 +155,6 @@ name|PublishOnQueueConsumedMessageUsingActivemqXMLTest
 operator|.
 name|class
 argument_list|)
-decl_stmt|;
-specifier|protected
-specifier|static
-specifier|final
-name|String
-name|JOURNAL_ROOT
-init|=
-literal|"../data/"
 decl_stmt|;
 name|BrokerService
 name|broker
@@ -198,7 +198,7 @@ name|journalFile
 argument_list|)
 expr_stmt|;
 comment|// Create broker from resource
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -212,7 +212,7 @@ argument_list|(
 literal|"org/apache/activemq/usecases/activemq.xml"
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -233,7 +233,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -253,7 +253,7 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

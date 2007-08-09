@@ -84,7 +84,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a destination based configuration of policies so that individual  * destinations or wildcard hierarchies of destinations can be configured using  * different policies. Each entry in the map represents the authorization ACLs  * for each operation.  *   * @org.apache.xbean.XBean element="authorizationMap"  *   * @version $Revision$  */
+comment|/**  * Represents a destination based configuration of policies so that individual  * destinations or wildcard hierarchies of destinations can be configured using  * different policies. Each entry in the map represents the authorization ACLs  * for each operation.  *   * @org.apache.xbean.XBean element="authorizationMap"  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -158,16 +158,20 @@ name|tempDestinationAuthorizationEntry
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|tempDestinationAuthorizationEntry
 operator|.
 name|getAdminACLs
 argument_list|()
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 specifier|public
 name|Set
@@ -180,16 +184,20 @@ name|tempDestinationAuthorizationEntry
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|tempDestinationAuthorizationEntry
 operator|.
 name|getReadACLs
 argument_list|()
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 specifier|public
 name|Set
@@ -202,16 +210,20 @@ name|tempDestinationAuthorizationEntry
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|tempDestinationAuthorizationEntry
 operator|.
 name|getWriteACLs
 argument_list|()
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 specifier|public
 name|Set

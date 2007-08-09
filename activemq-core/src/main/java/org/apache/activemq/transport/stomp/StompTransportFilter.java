@@ -132,11 +132,11 @@ name|StompTransportFilter
 extends|extends
 name|TransportFilter
 block|{
+specifier|private
 specifier|static
 specifier|final
-specifier|private
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -273,7 +273,7 @@ condition|(
 name|trace
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -361,7 +361,7 @@ condition|(
 name|trace
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(

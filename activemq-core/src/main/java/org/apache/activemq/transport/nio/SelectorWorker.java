@@ -93,8 +93,8 @@ implements|implements
 name|Runnable
 block|{
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|AtomicInteger
 name|NEXT_ID
 init|=
@@ -127,8 +127,8 @@ operator|new
 name|AtomicInteger
 argument_list|()
 decl_stmt|;
-specifier|final
 specifier|private
+specifier|final
 name|int
 name|maxChannelsPerWorker
 decl_stmt|;
@@ -320,14 +320,18 @@ name|count
 operator|==
 literal|0
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 operator|!
 name|isRunning
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 comment|// Get a java.util.Set containing the SelectionKey objects
 comment|// for all channels that are ready for I/O.
 name|Set

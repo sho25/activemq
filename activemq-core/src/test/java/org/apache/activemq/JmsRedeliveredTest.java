@@ -1534,9 +1534,9 @@ name|PERSISTENT
 return|;
 block|}
 comment|/**      * Run the JmsRedeliverTest with the delivery mode set as persistent.      */
+specifier|public
 specifier|static
 specifier|final
-specifier|public
 class|class
 name|PersistentCase
 extends|extends
@@ -1556,9 +1556,9 @@ return|;
 block|}
 block|}
 comment|/**      * Run the JmsRedeliverTest with the delivery mode set as non-persistent.      */
+specifier|public
 specifier|static
 specifier|final
-specifier|public
 class|class
 name|TransientCase
 extends|extends

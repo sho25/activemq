@@ -175,7 +175,7 @@ specifier|static
 specifier|final
 specifier|transient
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -185,6 +185,9 @@ name|AdvisoryConsumer
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+name|int
+name|deliveredCounter
 decl_stmt|;
 specifier|private
 specifier|final
@@ -198,9 +201,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|closed
-decl_stmt|;
-name|int
-name|deliveredCounter
 decl_stmt|;
 specifier|public
 name|AdvisoryConsumer
@@ -310,7 +310,7 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

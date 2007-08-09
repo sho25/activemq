@@ -190,7 +190,7 @@ name|MemoryAllocationTest
 extends|extends
 name|TestCase
 block|{
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Log
@@ -342,6 +342,7 @@ literal|500
 operator|==
 literal|0
 condition|)
+block|{
 name|LOG
 operator|.
 name|info
@@ -351,6 +352,7 @@ operator|+
 name|i
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|connection
 operator|.

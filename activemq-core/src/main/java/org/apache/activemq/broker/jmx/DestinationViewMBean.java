@@ -89,49 +89,41 @@ interface|interface
 name|DestinationViewMBean
 block|{
 comment|/**      * Returns the name of this destination      */
-specifier|public
 name|String
 name|getName
 parameter_list|()
 function_decl|;
-comment|/** 	 * Resets the managment counters. 	 */
-specifier|public
+comment|/**      * Resets the managment counters.      */
 name|void
 name|resetStatistics
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of messages that have been sent to the destination.      *      * @return The number of messages that have been sent to the destination.      */
-specifier|public
+comment|/**      * Returns the number of messages that have been sent to the destination.      *       * @return The number of messages that have been sent to the destination.      */
 name|long
 name|getEnqueueCount
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of messages that have been delivered (potentially not acknowledged) to consumers.      *      * @return The number of messages that have been delivered (potentially not acknowledged) to consumers.      */
-specifier|public
+comment|/**      * Returns the number of messages that have been delivered (potentially not      * acknowledged) to consumers.      *       * @return The number of messages that have been delivered (potentially not      *         acknowledged) to consumers.      */
 name|long
 name|getDispatchCount
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of messages that have been acknowledged from the destination.      *      * @return The number of messages that have been acknowledged from the destination.      */
-specifier|public
+comment|/**      * Returns the number of messages that have been acknowledged from the      * destination.      *       * @return The number of messages that have been acknowledged from the      *         destination.      */
 name|long
 name|getDequeueCount
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of consumers subscribed this destination.      *      * @return The number of consumers subscribed this destination.      */
-specifier|public
+comment|/**      * Returns the number of consumers subscribed this destination.      *       * @return The number of consumers subscribed this destination.      */
 name|long
 name|getConsumerCount
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of messages in this destination which are yet to be consumed      *      * @return Returns the number of messages in this destination which are yet to be consumed      */
-specifier|public
+comment|/**      * Returns the number of messages in this destination which are yet to be      * consumed      *       * @return Returns the number of messages in this destination which are yet      *         to be consumed      */
 name|long
 name|getQueueSize
 parameter_list|()
 function_decl|;
 comment|/**      * @return An array of all the messages in the destination's queue.      */
-specifier|public
 name|CompositeData
 index|[]
 name|browse
@@ -140,15 +132,13 @@ throws|throws
 name|OpenDataException
 function_decl|;
 comment|/**      * @return A list of all the messages in the destination's queue.      */
-specifier|public
 name|TabularData
 name|browseAsTable
 parameter_list|()
 throws|throws
 name|OpenDataException
 function_decl|;
-comment|/**      * @return An array of all the messages in the destination's queue.      * @throws InvalidSelectorException       */
-specifier|public
+comment|/**      * @return An array of all the messages in the destination's queue.      * @throws InvalidSelectorException      */
 name|CompositeData
 index|[]
 name|browse
@@ -161,8 +151,7 @@ name|OpenDataException
 throws|,
 name|InvalidSelectorException
 function_decl|;
-comment|/**      * @return A list of all the messages in the destination's queue.      * @throws InvalidSelectorException       */
-specifier|public
+comment|/**      * @return A list of all the messages in the destination's queue.      * @throws InvalidSelectorException      */
 name|TabularData
 name|browseAsTable
 parameter_list|(
@@ -174,8 +163,7 @@ name|OpenDataException
 throws|,
 name|InvalidSelectorException
 function_decl|;
-comment|/**      * Sends a TextMesage to the destination.      * @param body the text to send      * @return the message id of the message sent.      * @throws Exception      */
-specifier|public
+comment|/**      * Sends a TextMesage to the destination.      *       * @param body the text to send      * @return the message id of the message sent.      * @throws Exception      */
 name|String
 name|sendTextMessage
 parameter_list|(
@@ -185,8 +173,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Sends a TextMesage to the destination.      * @param headers the message headers and properties to set.  Can only container Strings maped to primitive types.      * @param body the text to send      * @return the message id of the message sent.      * @throws Exception      */
-specifier|public
+comment|/**      * Sends a TextMesage to the destination.      *       * @param headers the message headers and properties to set. Can only      *                container Strings maped to primitive types.      * @param body the text to send      * @return the message id of the message sent.      * @throws Exception      */
 name|String
 name|sendTextMessage
 parameter_list|(
@@ -199,17 +186,14 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-specifier|public
 name|int
 name|getMemoryPercentageUsed
 parameter_list|()
 function_decl|;
-specifier|public
 name|long
 name|getMemoryLimit
 parameter_list|()
 function_decl|;
-specifier|public
 name|void
 name|setMemoryLimit
 parameter_list|(
@@ -218,15 +202,13 @@ name|limit
 parameter_list|)
 function_decl|;
 comment|/**      * Browses the current destination returning a list of messages      */
-specifier|public
 name|List
 name|browseMessages
 parameter_list|()
 throws|throws
 name|InvalidSelectorException
 function_decl|;
-comment|/**      * Browses the current destination with the given selector returning a list of messages      */
-specifier|public
+comment|/**      * Browses the current destination with the given selector returning a list      * of messages      */
 name|List
 name|browseMessages
 parameter_list|(
@@ -237,19 +219,16 @@ throws|throws
 name|InvalidSelectorException
 function_decl|;
 comment|/**      * @return longest time a message is held by a destination      */
-specifier|public
 name|long
 name|getMaxEnqueueTime
 parameter_list|()
 function_decl|;
 comment|/**      * @return shortest time a message is held by a destination      */
-specifier|public
 name|long
 name|getMinEnqueueTime
 parameter_list|()
 function_decl|;
 comment|/**      * @return average time a message is held by a destination      */
-specifier|public
 name|double
 name|getAverageEnqueueTime
 parameter_list|()

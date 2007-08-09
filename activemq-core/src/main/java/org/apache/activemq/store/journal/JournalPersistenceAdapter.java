@@ -720,7 +720,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -1455,7 +1455,9 @@ argument_list|,
 literal|false
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 name|Scheduler
 operator|.
 name|cancel
@@ -1601,6 +1603,7 @@ name|journal
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -1608,6 +1611,7 @@ argument_list|(
 literal|"Journal is closed."
 argument_list|)
 throw|;
+block|}
 name|long
 name|now
 init|=
@@ -1657,7 +1661,7 @@ condition|(
 name|sync
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1685,7 +1689,7 @@ operator|.
 name|interrupt
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1760,7 +1764,7 @@ expr_stmt|;
 block|}
 try|try
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1886,7 +1890,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1981,7 +1985,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -2077,7 +2081,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -2103,7 +2107,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2129,7 +2133,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -2185,7 +2189,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2306,7 +2310,7 @@ name|transactionCounter
 init|=
 literal|0
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2669,8 +2673,10 @@ name|tx
 operator|==
 literal|null
 condition|)
+block|{
 break|break;
 comment|// We may be trying to replay a commit
+block|}
 comment|// that
 comment|// was already committed.
 comment|// Replay the committed operations.
@@ -2864,7 +2870,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -2895,7 +2901,7 @@ name|JournalTrace
 operator|)
 name|c
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2909,7 +2915,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 default|default:
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -2940,7 +2946,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -3078,6 +3084,7 @@ operator|.
 name|get
 argument_list|()
 condition|)
+block|{
 return|return
 name|journal
 operator|.
@@ -3096,6 +3103,7 @@ argument_list|,
 name|sync
 argument_list|)
 return|;
+block|}
 throw|throw
 operator|new
 name|IOException
@@ -3262,7 +3270,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -3379,6 +3387,7 @@ if|if
 condition|(
 name|enable
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -3386,6 +3395,7 @@ argument_list|(
 literal|"The journal does not support message references."
 argument_list|)
 throw|;
+block|}
 block|}
 specifier|public
 name|Packet

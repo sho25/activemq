@@ -51,8 +51,8 @@ return|return
 name|totalCount
 return|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|increment
 parameter_list|()
@@ -105,8 +105,8 @@ name|result
 return|;
 block|}
 comment|/**      * Resets the rate sampling.      */
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|PerfRate
 name|cloneAndReset
 parameter_list|()

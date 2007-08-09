@@ -668,7 +668,9 @@ name|tx
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|peristenceAdapter
 operator|.
 name|writeCommand
@@ -744,7 +746,9 @@ name|tx
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 synchronized|synchronized
 init|(
 name|preparedTransactions
@@ -892,7 +896,9 @@ name|tx
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|txid
@@ -1042,6 +1048,7 @@ name|tx
 operator|!=
 literal|null
 condition|)
+block|{
 synchronized|synchronized
 init|(
 name|preparedTransactions
@@ -1059,6 +1066,7 @@ argument_list|(
 name|txid
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -1186,8 +1194,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|recover
 parameter_list|(

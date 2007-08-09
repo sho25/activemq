@@ -448,7 +448,7 @@ specifier|private
 specifier|static
 specifier|final
 name|IdGenerator
-name|connectionIdGenerator
+name|CONNECTION_ID_GENERATOR
 init|=
 operator|new
 name|IdGenerator
@@ -462,7 +462,7 @@ init|=
 operator|new
 name|ConnectionId
 argument_list|(
-name|connectionIdGenerator
+name|CONNECTION_ID_GENERATOR
 operator|.
 name|generateId
 argument_list|()
@@ -876,11 +876,13 @@ operator|.
 name|SEND
 argument_list|)
 condition|)
+block|{
 name|onStompSend
 argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -895,11 +897,13 @@ operator|.
 name|ACK
 argument_list|)
 condition|)
+block|{
 name|onStompAck
 argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -914,11 +918,13 @@ operator|.
 name|BEGIN
 argument_list|)
 condition|)
+block|{
 name|onStompBegin
 argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -933,11 +939,13 @@ operator|.
 name|COMMIT
 argument_list|)
 condition|)
+block|{
 name|onStompCommit
 argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -952,11 +960,13 @@ operator|.
 name|ABORT
 argument_list|)
 condition|)
+block|{
 name|onStompAbort
 argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -971,11 +981,13 @@ operator|.
 name|SUBSCRIBE
 argument_list|)
 condition|)
+block|{
 name|onStompSubscribe
 argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -990,11 +1002,13 @@ operator|.
 name|UNSUBSCRIBE
 argument_list|)
 condition|)
+block|{
 name|onStompUnsubscribe
 argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1009,11 +1023,13 @@ operator|.
 name|CONNECT
 argument_list|)
 condition|)
+block|{
 name|onStompConnect
 argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1028,12 +1044,15 @@ operator|.
 name|DISCONNECT
 argument_list|)
 condition|)
+block|{
 name|onStompDisconnect
 argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 throw|throw
 operator|new
 name|ProtocolException
@@ -1043,6 +1062,7 @@ operator|+
 name|action
 argument_list|)
 throw|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1186,6 +1206,7 @@ operator|.
 name|isFatal
 argument_list|()
 condition|)
+block|{
 name|getTransportFilter
 argument_list|()
 operator|.
@@ -1194,6 +1215,7 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|protected
@@ -1308,6 +1330,7 @@ name|activemqTx
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|ProtocolException
@@ -1317,6 +1340,7 @@ operator|+
 name|stompTx
 argument_list|)
 throw|;
+block|}
 name|message
 operator|.
 name|setTransactionId
@@ -1392,6 +1416,7 @@ name|messageId
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|ProtocolException
@@ -1399,6 +1424,7 @@ argument_list|(
 literal|"ACK received without a message-id to acknowledge!"
 argument_list|)
 throw|;
+block|}
 name|TransactionId
 name|activemqTx
 init|=
@@ -1446,6 +1472,7 @@ name|activemqTx
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|ProtocolException
@@ -1455,6 +1482,7 @@ operator|+
 name|stompTx
 argument_list|)
 throw|;
+block|}
 block|}
 name|boolean
 name|acked
@@ -1538,6 +1566,7 @@ condition|(
 operator|!
 name|acked
 condition|)
+block|{
 throw|throw
 operator|new
 name|ProtocolException
@@ -1549,6 +1578,7 @@ operator|+
 literal|"]"
 argument_list|)
 throw|;
+block|}
 block|}
 specifier|protected
 name|void
@@ -2005,7 +2035,7 @@ name|DESTINATION
 argument_list|)
 decl_stmt|;
 name|ActiveMQDestination
-name|actual_dest
+name|actualDest
 init|=
 name|frameTranslator
 operator|.
@@ -2117,7 +2147,7 @@ name|stompSubscription
 operator|.
 name|setDestination
 argument_list|(
-name|actual_dest
+name|actualDest
 argument_list|)
 expr_stmt|;
 name|String
@@ -2247,6 +2277,7 @@ name|o
 operator|!=
 literal|null
 condition|)
+block|{
 name|destination
 operator|=
 name|frameTranslator
@@ -2259,6 +2290,7 @@ operator|)
 name|o
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|subscriptionId
 init|=
@@ -2525,6 +2557,7 @@ name|clientId
 operator|!=
 literal|null
 condition|)
+block|{
 name|connectionInfo
 operator|.
 name|setClientId
@@ -2532,7 +2565,9 @@ argument_list|(
 name|clientId
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|connectionInfo
 operator|.
 name|setClientId
@@ -2548,6 +2583,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|connectionInfo
 operator|.
 name|setResponseRequired

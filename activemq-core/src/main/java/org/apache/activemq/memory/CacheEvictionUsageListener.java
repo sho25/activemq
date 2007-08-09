@@ -125,10 +125,10 @@ implements|implements
 name|UsageListener
 block|{
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -242,7 +242,7 @@ block|{
 comment|// Try to take the memory usage down below the low mark.
 try|try
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(

@@ -48,8 +48,7 @@ name|QueueViewMBean
 extends|extends
 name|DestinationViewMBean
 block|{
-comment|/**      * Retrieve a message from the destination's queue.      *       * @param messageId      *            the message id of the message to retrieve      * @return A CompositeData object which is a JMX version of the messages      * @throws OpenDataException      */
-specifier|public
+comment|/**      * Retrieve a message from the destination's queue.      *       * @param messageId the message id of the message to retrieve      * @return A CompositeData object which is a JMX version of the messages      * @throws OpenDataException      */
 name|CompositeData
 name|getMessage
 parameter_list|(
@@ -59,8 +58,7 @@ parameter_list|)
 throws|throws
 name|OpenDataException
 function_decl|;
-comment|/**      * Removes a message from the queue. If the message has already been      * dispatched to another consumer, the message cannot be deleted and this      * method will return false.      *       * @param messageId      * @return true if the message was found and could be successfully deleted.      * @throws Exception       */
-specifier|public
+comment|/**      * Removes a message from the queue. If the message has already been      * dispatched to another consumer, the message cannot be deleted and this      * method will return false.      *       * @param messageId      * @return true if the message was found and could be successfully deleted.      * @throws Exception      */
 name|boolean
 name|removeMessage
 parameter_list|(
@@ -71,7 +69,6 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Removes the messages matching the given selector      *       * @return the number of messages removed      */
-specifier|public
 name|int
 name|removeMatchingMessages
 parameter_list|(
@@ -81,8 +78,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Removes the messages matching the given selector up to the maximum number of matched messages      *       * @return the number of messages removed      */
-specifier|public
+comment|/**      * Removes the messages matching the given selector up to the maximum number      * of matched messages      *       * @return the number of messages removed      */
 name|int
 name|removeMatchingMessages
 parameter_list|(
@@ -95,8 +91,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Removes all of the messages in the queue.      * @throws Exception       */
-specifier|public
+comment|/**      * Removes all of the messages in the queue.      *       * @throws Exception      */
 name|void
 name|purge
 parameter_list|()
@@ -104,7 +99,6 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Copies a given message to another destination.      *       * @param messageId      * @param destinationName      * @return true if the message was found and was successfully copied to the      *         other destination.      * @throws Exception      */
-specifier|public
 name|boolean
 name|copyMessageTo
 parameter_list|(
@@ -118,7 +112,6 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Copies the messages matching the given selector      *       * @return the number of messages copied      */
-specifier|public
 name|int
 name|copyMatchingMessagesTo
 parameter_list|(
@@ -131,8 +124,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Copies the messages matching the given selector up to the maximum number of matched messages      *       * @return the number of messages copied      */
-specifier|public
+comment|/**      * Copies the messages matching the given selector up to the maximum number      * of matched messages      *       * @return the number of messages copied      */
 name|int
 name|copyMatchingMessagesTo
 parameter_list|(
@@ -149,7 +141,6 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Moves the message to another destination.      *       * @param messageId      * @param destinationName      * @return true if the message was found and was successfully copied to the      *         other destination.      * @throws Exception      */
-specifier|public
 name|boolean
 name|moveMessageTo
 parameter_list|(
@@ -163,7 +154,6 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Moves the messages matching the given selector      *       * @return the number of messages removed      */
-specifier|public
 name|int
 name|moveMatchingMessagesTo
 parameter_list|(
@@ -176,8 +166,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Moves the messages matching the given selector up to the maximum number of matched messages      */
-specifier|public
+comment|/**      * Moves the messages matching the given selector up to the maximum number      * of matched messages      */
 name|int
 name|moveMatchingMessagesTo
 parameter_list|(
