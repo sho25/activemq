@@ -335,7 +335,6 @@ name|addBefore
 argument_list|(
 name|element
 argument_list|,
-operator|(
 name|index
 operator|==
 name|size
@@ -346,7 +345,6 @@ name|entry
 argument_list|(
 name|index
 argument_list|)
-operator|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -70,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper class for working with services together with a useful base class for service implementations.  *    * @version $Revision: 1.1 $  */
+comment|/**  * A helper class for working with services together with a useful base class  * for service implementations.  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class

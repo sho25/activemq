@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A<a href="http://stomp.codehaus.org/">STOMP</a> transport factory  *  * @version $Revision: 1.1.1.1 $  */
+comment|/**  * A<a href="http://stomp.codehaus.org/">STOMP</a> transport factory  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -161,7 +161,8 @@ name|Transport
 name|transport
 parameter_list|)
 block|{
-comment|// lets disable the inactivity monitor as stomp does not use keep alive packets
+comment|// lets disable the inactivity monitor as stomp does not use keep alive
+comment|// packets
 return|return
 literal|false
 return|;

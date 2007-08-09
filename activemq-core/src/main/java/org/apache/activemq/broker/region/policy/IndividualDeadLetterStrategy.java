@@ -62,7 +62,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link DeadLetterStrategy} where each destination has its own individual  * DLQ using the subject naming hierarchy.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * A {@link DeadLetterStrategy} where each destination has its own individual  * DLQ using the subject naming hierarchy.  *   * @org.apache.xbean.XBean  * @version $Revision$  */
 end_comment
 
 begin_class

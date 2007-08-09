@@ -309,7 +309,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-comment|// I guess this could happen.  Post commit task failed
+comment|// I guess this could happen. Post commit task failed
 comment|// to execute properly.
 name|log
 operator|.

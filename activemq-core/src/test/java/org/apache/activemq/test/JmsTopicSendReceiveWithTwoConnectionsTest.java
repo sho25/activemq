@@ -469,7 +469,7 @@ name|createConnection
 argument_list|()
 return|;
 block|}
-comment|/**      * Creates a connection.      *       * @return Connection       * @throws Exception      */
+comment|/**      * Creates a connection.      *       * @return Connection      * @throws Exception      */
 specifier|protected
 name|Connection
 name|createSendConnection

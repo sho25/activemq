@@ -17,56 +17,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|BlobMessage
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|blob
-operator|.
-name|BlobUploader
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|JMSExceptionSupport
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -105,8 +55,58 @@ name|URL
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|BlobMessage
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|blob
+operator|.
+name|BlobUploader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|JMSExceptionSupport
+import|;
+end_import
+
 begin_comment
-comment|/**  * An implementation of {@link BlobMessage} for out of band BLOB transfer  *  * @version $Revision: $  * @openwire:marshaller code="29"  */
+comment|/**  * An implementation of {@link BlobMessage} for out of band BLOB transfer  *   * @version $Revision: $  * @openwire:marshaller code="29"  */
 end_comment
 
 begin_class
@@ -261,7 +261,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/**      * The MIME type of the BLOB which can be used to apply different content types to messages.      *      * @openwire:property version=3 cache=true      */
+comment|/**      * The MIME type of the BLOB which can be used to apply different content      * types to messages.      *       * @openwire:property version=3 cache=true      */
 specifier|public
 name|String
 name|getMimeType
@@ -306,7 +306,7 @@ return|return
 name|name
 return|;
 block|}
-comment|/**      * The name of the attachment which can be useful information if transmitting files over ActiveMQ      *      * @openwire:property version=3 cache=false      */
+comment|/**      * The name of the attachment which can be useful information if      * transmitting files over ActiveMQ      *       * @openwire:property version=3 cache=false      */
 specifier|public
 name|void
 name|setName
@@ -503,7 +503,8 @@ operator|.
 name|onSend
 argument_list|()
 expr_stmt|;
-comment|// lets ensure we upload the BLOB first out of band before we send the message
+comment|// lets ensure we upload the BLOB first out of band before we send the
+comment|// message
 if|if
 condition|(
 name|blobUploader

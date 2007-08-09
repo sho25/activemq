@@ -426,9 +426,7 @@ name|Semaphore
 argument_list|(
 literal|1
 operator|-
-operator|(
 name|CONSUMER_COUNT
-operator|)
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -440,9 +438,7 @@ name|Semaphore
 argument_list|(
 literal|1
 operator|-
-operator|(
 name|PRODUCER_COUNT
-operator|)
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -454,9 +450,7 @@ name|Semaphore
 argument_list|(
 literal|1
 operator|-
-operator|(
 name|CONSUMER_COUNT
-operator|)
 argument_list|)
 decl_stmt|;
 specifier|final

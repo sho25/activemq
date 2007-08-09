@@ -19,6 +19,26 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Connection
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -52,26 +72,6 @@ operator|.
 name|broker
 operator|.
 name|BrokerService
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Connection
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
 import|;
 end_import
 
@@ -118,7 +118,7 @@ name|bindAddress
 operator|+
 name|postfix
 decl_stmt|;
-comment|//        System.out.println("Connecting via: " + uri);
+comment|// System.out.println("Connecting via: " + uri);
 name|connection
 operator|=
 operator|new
@@ -154,7 +154,7 @@ name|postfix
 operator|+
 literal|"&minmumWireFormatVersion=65535"
 decl_stmt|;
-comment|//        System.out.println("Connecting via: " + uri);
+comment|// System.out.println("Connecting via: " + uri);
 try|try
 block|{
 name|connection
@@ -204,7 +204,7 @@ name|postfix
 operator|+
 literal|"&cheese=abc"
 decl_stmt|;
-comment|//        System.out.println("Connecting via: " + uri);
+comment|// System.out.println("Connecting via: " + uri);
 try|try
 block|{
 name|connection

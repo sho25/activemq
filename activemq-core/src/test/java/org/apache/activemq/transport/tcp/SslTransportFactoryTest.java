@@ -484,7 +484,6 @@ index|[
 name|j
 index|]
 argument_list|,
-operator|(
 name|optionSettings
 index|[
 name|j
@@ -495,7 +494,6 @@ condition|?
 literal|"true"
 else|:
 literal|"false"
-operator|)
 argument_list|)
 expr_stmt|;
 block|}

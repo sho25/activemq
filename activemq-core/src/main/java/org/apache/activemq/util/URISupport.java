@@ -1198,6 +1198,8 @@ operator|+
 literal|1
 expr_stmt|;
 block|}
+break|break;
+default|default:
 block|}
 block|}
 name|String

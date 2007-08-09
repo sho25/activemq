@@ -21,16 +21,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|HashSet
 import|;
 end_import
@@ -91,16 +81,6 @@ name|javax
 operator|.
 name|naming
 operator|.
-name|NamingException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|naming
-operator|.
 name|directory
 operator|.
 name|DirContext
@@ -116,6 +96,16 @@ operator|.
 name|directory
 operator|.
 name|InitialDirContext
+import|;
+end_import
+
+begin_import
+import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|TestCase
 import|;
 end_import
 
@@ -234,16 +224,6 @@ operator|.
 name|support
 operator|.
 name|ClassPathXmlApplicationContext
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 

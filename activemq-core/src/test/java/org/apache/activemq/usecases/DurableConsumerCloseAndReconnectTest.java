@@ -17,32 +17,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|test
-operator|.
-name|TestSupport
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -141,6 +115,32 @@ name|Topic
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|ActiveMQConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|test
+operator|.
+name|TestSupport
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision: 1.1.1.1 $  */
 end_comment
@@ -230,7 +230,7 @@ comment|// now lets try again without one connection open
 name|consumeMessagesDeliveredWhileConsumerClosed
 argument_list|()
 expr_stmt|;
-comment|//now delete the db
+comment|// now delete the db
 name|ActiveMQConnectionFactory
 name|fac
 init|=

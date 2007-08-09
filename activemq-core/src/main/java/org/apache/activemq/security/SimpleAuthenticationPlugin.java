@@ -93,20 +93,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|jaas
-operator|.
-name|GroupPrincipal
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|broker
 operator|.
 name|Broker
@@ -129,11 +115,15 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|Map
+name|activemq
+operator|.
+name|jaas
+operator|.
+name|GroupPrincipal
 import|;
 end_import
 

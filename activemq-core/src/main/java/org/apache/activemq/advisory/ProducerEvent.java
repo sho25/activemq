@@ -17,15 +17,11 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ProducerId
+name|EventObject
 import|;
 end_import
 
@@ -41,11 +37,15 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|EventObject
+name|activemq
+operator|.
+name|command
+operator|.
+name|ProducerId
 import|;
 end_import
 

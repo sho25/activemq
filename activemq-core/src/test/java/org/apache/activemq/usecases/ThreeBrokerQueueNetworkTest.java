@@ -17,27 +17,11 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|net
 operator|.
-name|activemq
-operator|.
-name|JmsMultipleBrokersTestSupport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|MessageIdList
+name|URI
 import|;
 end_import
 
@@ -63,11 +47,27 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|net
+name|apache
 operator|.
-name|URI
+name|activemq
+operator|.
+name|JmsMultipleBrokersTestSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|MessageIdList
 import|;
 end_import
 

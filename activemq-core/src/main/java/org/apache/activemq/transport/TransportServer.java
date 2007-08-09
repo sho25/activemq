@@ -62,7 +62,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A TransportServer asynchronously accepts {@see Transport} objects  * and then delivers those objects to a {@see TransportAcceptListener}.  *   * @version $Revision: 1.4 $  */
+comment|/**  * A TransportServer asynchronously accepts {@see Transport} objects and then  * delivers those objects to a {@see TransportAcceptListener}.  *   * @version $Revision: 1.4 $  */
 end_comment
 
 begin_interface
@@ -72,7 +72,7 @@ name|TransportServer
 extends|extends
 name|Service
 block|{
-comment|/** 	 * Registers an {@see TransportAcceptListener} which is notified of accepted channels. 	 *   	 * @param acceptListener 	 */
+comment|/**      * Registers an {@see TransportAcceptListener} which is notified of accepted      * channels.      *       * @param acceptListener      */
 specifier|public
 name|void
 name|setAcceptListener
@@ -81,7 +81,7 @@ name|TransportAcceptListener
 name|acceptListener
 parameter_list|)
 function_decl|;
-comment|/**      * Associates a broker info with the transport server so that the transport can do      * discovery advertisements of the broker.      *       * @param brokerInfo      */
+comment|/**      * Associates a broker info with the transport server so that the transport      * can do discovery advertisements of the broker.      *       * @param brokerInfo      */
 specifier|public
 name|void
 name|setBrokerInfo
@@ -95,7 +95,7 @@ name|URI
 name|getConnectURI
 parameter_list|()
 function_decl|;
-comment|/**      * @return The socket address that this transport is accepting connections on or null if       * this does not or is not currently accepting connections on a socket.      */
+comment|/**      * @return The socket address that this transport is accepting connections      *         on or null if this does not or is not currently accepting      *         connections on a socket.      */
 specifier|public
 name|InetSocketAddress
 name|getSocketAddress

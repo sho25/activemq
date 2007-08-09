@@ -33,46 +33,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|Service
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -151,6 +111,46 @@ name|NamingException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|Service
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * A Destination bridge is used to bridge between to different JMS systems  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
@@ -224,7 +224,7 @@ return|return
 name|consumer
 return|;
 block|}
-comment|/**      * @param consumer      *            The consumer to set.      */
+comment|/**      * @param consumer The consumer to set.      */
 specifier|public
 name|void
 name|setConsumer
@@ -576,7 +576,7 @@ return|return
 name|doHandleReplyTo
 return|;
 block|}
-comment|/**      * @param doHandleReplyTo      *            The doHandleReplyTo to set.      */
+comment|/**      * @param doHandleReplyTo The doHandleReplyTo to set.      */
 specifier|protected
 name|void
 name|setDoHandleReplyTo

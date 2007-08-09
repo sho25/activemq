@@ -112,7 +112,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Interface to pending message (messages awaiting disptach to a consumer) cursor  *   * @version $Revision$  */
+comment|/**  * Interface to pending message (messages awaiting disptach to a consumer)  * cursor  *   * @version $Revision$  */
 end_comment
 
 begin_interface
@@ -122,7 +122,7 @@ name|PendingMessageCursor
 extends|extends
 name|Service
 block|{
-comment|/**      * Add a destination      * @param context      * @param destination      * @throws Exception      */
+comment|/**      * Add a destination      *       * @param context      * @param destination      * @throws Exception      */
 specifier|public
 name|void
 name|add
@@ -136,7 +136,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * remove a destination      * @param context      * @param destination      * @throws Exception      */
+comment|/**      * remove a destination      *       * @param context      * @param destination      * @throws Exception      */
 specifier|public
 name|void
 name|remove
@@ -156,7 +156,7 @@ name|boolean
 name|isEmpty
 parameter_list|()
 function_decl|;
-comment|/**      * check if a Destination is Empty for this cursor      * @param destination      * @return true id the Destination is empty      */
+comment|/**      * check if a Destination is Empty for this cursor      *       * @param destination      * @return true id the Destination is empty      */
 specifier|public
 name|boolean
 name|isEmpty
@@ -165,19 +165,19 @@ name|Destination
 name|destination
 parameter_list|)
 function_decl|;
-comment|/**      * reset the cursor      *      */
+comment|/**      * reset the cursor      */
 specifier|public
 name|void
 name|reset
 parameter_list|()
 function_decl|;
-comment|/**      * hint to the cursor to release any locks it might have      * grabbed after a reset      *      */
+comment|/**      * hint to the cursor to release any locks it might have grabbed after a      * reset      */
 specifier|public
 name|void
 name|release
 parameter_list|()
 function_decl|;
-comment|/**      * add message to await dispatch      * @param node      * @throws IOException       * @throws Exception       */
+comment|/**      * add message to await dispatch      *       * @param node      * @throws IOException      * @throws Exception      */
 specifier|public
 name|void
 name|addMessageLast
@@ -188,7 +188,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * add message to await dispatch      * @param node      * @throws Exception       */
+comment|/**      * add message to await dispatch      *       * @param node      * @throws Exception      */
 specifier|public
 name|void
 name|addMessageFirst
@@ -199,7 +199,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Add a message recovered from a retroactive policy      * @param node      * @throws Exception      */
+comment|/**      * Add a message recovered from a retroactive policy      *       * @param node      * @throws Exception      */
 specifier|public
 name|void
 name|addRecoveredMessage
@@ -222,7 +222,7 @@ name|MessageReference
 name|next
 parameter_list|()
 function_decl|;
-comment|/**      * remove the message at the cursor position      *       */
+comment|/**      * remove the message at the cursor position      */
 specifier|public
 name|void
 name|remove
@@ -234,13 +234,13 @@ name|int
 name|size
 parameter_list|()
 function_decl|;
-comment|/**      * clear all pending messages      *       */
+comment|/**      * clear all pending messages      */
 specifier|public
 name|void
 name|clear
 parameter_list|()
 function_decl|;
-comment|/**      * Informs the Broker if the subscription needs to intervention to recover it's state      * e.g. DurableTopicSubscriber may do      * @return true if recovery required      */
+comment|/**      * Informs the Broker if the subscription needs to intervention to recover      * it's state e.g. DurableTopicSubscriber may do      *       * @return true if recovery required      */
 specifier|public
 name|boolean
 name|isRecoveryRequired
@@ -252,7 +252,7 @@ name|int
 name|getMaxBatchSize
 parameter_list|()
 function_decl|;
-comment|/**      * Set the max batch size      * @param maxBatchSize      */
+comment|/**      * Set the max batch size      *       * @param maxBatchSize      */
 specifier|public
 name|void
 name|setMaxBatchSize
@@ -261,13 +261,13 @@ name|int
 name|maxBatchSize
 parameter_list|)
 function_decl|;
-comment|/**      * Give the cursor a hint that we are about to remove      * messages from memory only      */
+comment|/**      * Give the cursor a hint that we are about to remove messages from memory      * only      */
 specifier|public
 name|void
 name|resetForGC
 parameter_list|()
 function_decl|;
-comment|/**      * remove a node      * @param node      */
+comment|/**      * remove a node      *       * @param node      */
 specifier|public
 name|void
 name|remove
@@ -276,13 +276,13 @@ name|MessageReference
 name|node
 parameter_list|)
 function_decl|;
-comment|/**      * free up any internal buffers      *      */
+comment|/**      * free up any internal buffers      */
 specifier|public
 name|void
 name|gc
 parameter_list|()
 function_decl|;
-comment|/**      * Set the UsageManager      * @param usageManager      * @see org.apache.activemq.memory.UsageManager      */
+comment|/**      * Set the UsageManager      *       * @param usageManager      * @see org.apache.activemq.memory.UsageManager      */
 specifier|public
 name|void
 name|setUsageManager
@@ -324,7 +324,7 @@ name|boolean
 name|hasMessagesBufferedToDeliver
 parameter_list|()
 function_decl|;
-comment|/**      * destroy the cursor      * @throws Exception       */
+comment|/**      * destroy the cursor      *       * @throws Exception      */
 specifier|public
 name|void
 name|destroy
@@ -332,7 +332,7 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Page in a restricted number of messages      * @param maxItems      * @return a list of paged in messages      */
+comment|/**      * Page in a restricted number of messages      *       * @param maxItems      * @return a list of paged in messages      */
 specifier|public
 name|LinkedList
 name|pageInList

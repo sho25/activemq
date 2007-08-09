@@ -116,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Unit tests for the SslTransport class.  *   */
+comment|/**  * Unit tests for the SslTransport class.  */
 end_comment
 
 begin_class

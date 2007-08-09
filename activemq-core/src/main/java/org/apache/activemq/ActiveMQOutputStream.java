@@ -379,9 +379,8 @@ name|IOException
 block|{
 if|if
 condition|(
+operator|!
 name|closed
-operator|==
-literal|false
 condition|)
 block|{
 name|flushBuffer
@@ -438,9 +437,8 @@ parameter_list|()
 block|{
 if|if
 condition|(
+operator|!
 name|closed
-operator|==
-literal|false
 condition|)
 block|{
 name|this

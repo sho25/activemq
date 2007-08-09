@@ -49,6 +49,32 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|CopyOnWriteArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicBoolean
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -176,32 +202,6 @@ operator|.
 name|jndi
 operator|.
 name|JndiTemplate
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CopyOnWriteArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicBoolean
 import|;
 end_import
 
@@ -802,7 +802,7 @@ return|return
 name|jndiLocalTemplate
 return|;
 block|}
-comment|/**      * @param jndiTemplate      *            The jndiTemplate to set.      */
+comment|/**      * @param jndiTemplate The jndiTemplate to set.      */
 specifier|public
 name|void
 name|setJndiLocalTemplate
@@ -828,7 +828,7 @@ return|return
 name|jndiOutboundTemplate
 return|;
 block|}
-comment|/**      * @param jndiOutboundTemplate      *            The jndiOutboundTemplate to set.      */
+comment|/**      * @param jndiOutboundTemplate The jndiOutboundTemplate to set.      */
 specifier|public
 name|void
 name|setJndiOutboundTemplate
@@ -854,7 +854,7 @@ return|return
 name|inboundMessageConvertor
 return|;
 block|}
-comment|/**      * @param inboundMessageConvertor      *            The inboundMessageConvertor to set.      */
+comment|/**      * @param inboundMessageConvertor The inboundMessageConvertor to set.      */
 specifier|public
 name|void
 name|setInboundMessageConvertor
@@ -880,7 +880,7 @@ return|return
 name|outboundMessageConvertor
 return|;
 block|}
-comment|/**      * @param outboundMessageConvertor      *            The outboundMessageConvertor to set.      */
+comment|/**      * @param outboundMessageConvertor The outboundMessageConvertor to set.      */
 specifier|public
 name|void
 name|setOutboundMessageConvertor
@@ -906,7 +906,7 @@ return|return
 name|replyToDestinationCacheSize
 return|;
 block|}
-comment|/**      * @param replyToDestinationCacheSize      *            The replyToDestinationCacheSize to set.      */
+comment|/**      * @param replyToDestinationCacheSize The replyToDestinationCacheSize to      *                set.      */
 specifier|public
 name|void
 name|setReplyToDestinationCacheSize
@@ -932,7 +932,7 @@ return|return
 name|localPassword
 return|;
 block|}
-comment|/**      * @param localPassword      *            The localPassword to set.      */
+comment|/**      * @param localPassword The localPassword to set.      */
 specifier|public
 name|void
 name|setLocalPassword
@@ -958,7 +958,7 @@ return|return
 name|localUsername
 return|;
 block|}
-comment|/**      * @param localUsername      *            The localUsername to set.      */
+comment|/**      * @param localUsername The localUsername to set.      */
 specifier|public
 name|void
 name|setLocalUsername
@@ -984,7 +984,7 @@ return|return
 name|outboundPassword
 return|;
 block|}
-comment|/**      * @param outboundPassword      *            The outboundPassword to set.      */
+comment|/**      * @param outboundPassword The outboundPassword to set.      */
 specifier|public
 name|void
 name|setOutboundPassword
@@ -1010,7 +1010,7 @@ return|return
 name|outboundUsername
 return|;
 block|}
-comment|/**      * @param outboundUsername      *            The outboundUsername to set.      */
+comment|/**      * @param outboundUsername The outboundUsername to set.      */
 specifier|public
 name|void
 name|setOutboundUsername

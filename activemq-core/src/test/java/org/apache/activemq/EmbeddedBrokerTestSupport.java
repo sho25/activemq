@@ -182,7 +182,7 @@ specifier|protected
 name|BrokerService
 name|broker
 decl_stmt|;
-comment|//protected String bindAddress = "tcp://localhost:61616";
+comment|// protected String bindAddress = "tcp://localhost:61616";
 specifier|protected
 name|String
 name|bindAddress

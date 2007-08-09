@@ -68,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstraction to allow different policies for holding messages awaiting dispatch on a Queue  *   * @version $Revision$  */
+comment|/**  * Abstraction to allow different policies for holding messages awaiting  * dispatch on a Queue  *   * @version $Revision$  */
 end_comment
 
 begin_interface
@@ -76,7 +76,7 @@ specifier|public
 interface|interface
 name|PendingQueueMessageStoragePolicy
 block|{
-comment|/**      * Retrieve the configured pending message storage cursor;      * @param queue       * @param tmpStore      * @return the cursor      *       */
+comment|/**      * Retrieve the configured pending message storage cursor;      *       * @param queue      * @param tmpStore      * @return the cursor      */
 specifier|public
 name|PendingMessageCursor
 name|getQueuePendingMessageCursor

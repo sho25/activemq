@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link DestinationFilter} used for composite destinations  *  * @version $Revision: 1.3 $  */
+comment|/**  * A {@link DestinationFilter} used for composite destinations  *   * @version $Revision: 1.3 $  */
 end_comment
 
 begin_class

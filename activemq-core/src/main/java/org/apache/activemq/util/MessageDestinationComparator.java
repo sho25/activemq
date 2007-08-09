@@ -17,15 +17,11 @@ end_package
 
 begin_import
 import|import
-name|org
+name|javax
 operator|.
-name|apache
+name|jms
 operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQMessage
+name|Destination
 import|;
 end_import
 
@@ -35,7 +31,31 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|*
+name|JMSException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Message
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQMessage
 import|;
 end_import
 

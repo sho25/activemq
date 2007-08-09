@@ -1672,10 +1672,9 @@ init|)
 block|{
 if|if
 condition|(
+operator|!
 name|isCreatedByDuplex
 argument_list|()
-operator|==
-literal|false
 condition|)
 block|{
 name|BrokerInfo
@@ -2691,7 +2690,6 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|path
 operator|!=
 literal|null
@@ -2701,7 +2699,6 @@ operator|.
 name|length
 operator|>=
 name|networkTTL
-operator|)
 condition|)
 block|{
 if|if
@@ -2920,7 +2917,6 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|path
 operator|!=
 literal|null
@@ -2930,7 +2926,6 @@ operator|.
 name|length
 operator|>=
 name|networkTTL
-operator|)
 condition|)
 block|{
 if|if
@@ -2940,6 +2935,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -2955,6 +2951,7 @@ operator|+
 literal|" network hops only"
 argument_list|)
 expr_stmt|;
+block|}
 return|return;
 block|}
 if|if
@@ -2982,6 +2979,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -2993,6 +2991,7 @@ operator|+
 literal|" already routed through this broker once"
 argument_list|)
 expr_stmt|;
+block|}
 return|return;
 block|}
 name|destInfo

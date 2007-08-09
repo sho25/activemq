@@ -382,6 +382,8 @@ operator|.
 name|dataFileId
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals
@@ -417,6 +419,17 @@ expr_stmt|;
 block|}
 return|return
 name|result
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+return|return
+name|dataFileId
 return|;
 block|}
 block|}

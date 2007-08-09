@@ -1610,7 +1610,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
-empty_stmt|;
+block|{         }
 comment|// See if the durable sub works in a new session.
 name|session
 operator|.
@@ -1760,7 +1760,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
-empty_stmt|;
+block|{         }
 comment|// See if the durable sub works in a new connection.
 comment|// The embeded broker shutsdown when his connections are closed.
 comment|// So we open the new connection before the old one is closed.

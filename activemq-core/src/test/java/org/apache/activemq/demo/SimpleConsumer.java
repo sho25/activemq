@@ -130,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple polymorphic JMS consumer which can work with Queues or Topics  * which uses JNDI to lookup the JMS connection factory and destination  *  * @version $Revision: 1.2 $  */
+comment|/**  * A simple polymorphic JMS consumer which can work with Queues or Topics which  * uses JNDI to lookup the JMS connection factory and destination  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class
@@ -348,7 +348,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*          * Create connection.          * Create session from connection; false means session is          * not transacted.          * Create receiver, then start message delivery.          * Receive all text messages from destination until          * a non-text message is received indicating end of          * message stream.          * Close connection.          */
+comment|/*          * Create connection. Create session from connection; false means          * session is not transacted. Create receiver, then start message          * delivery. Receive all text messages from destination until a non-text          * message is received indicating end of message stream. Close          * connection.          */
 try|try
 block|{
 name|connection

@@ -17,7 +17,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
+name|BufferedWriter
 import|;
 end_import
 
@@ -27,7 +27,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
+name|File
 import|;
 end_import
 
@@ -47,7 +47,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|BufferedWriter
+name|InputStream
 import|;
 end_import
 

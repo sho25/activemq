@@ -221,8 +221,6 @@ block|{
 if|if
 condition|(
 name|iterating
-operator|==
-literal|true
 condition|)
 block|{
 name|runable

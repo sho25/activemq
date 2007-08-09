@@ -121,20 +121,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activeio
-operator|.
-name|journal
-operator|.
-name|Journal
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|activemq
 operator|.
 name|broker
@@ -1250,12 +1236,11 @@ comment|// store, but they still
 comment|// need to be recovered when the broker starts up.
 if|if
 condition|(
+operator|!
 name|referenceStoreAdapter
 operator|.
 name|isStoreValid
 argument_list|()
-operator|==
-literal|false
 condition|)
 block|{
 name|log
@@ -2936,6 +2921,19 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;
+default|default:
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Invalid journal command type: "
+operator|+
+name|command
+operator|.
+name|getType
+argument_list|()
+argument_list|)
+throw|;
 block|}
 block|}
 catch|catch
@@ -3187,11 +3185,9 @@ argument_list|(
 name|command
 argument_list|)
 argument_list|,
-operator|(
 name|syncHint
 operator|&&
 name|syncOnWrite
-operator|)
 argument_list|)
 return|;
 block|}
@@ -3248,9 +3244,7 @@ block|{
 name|newPercentUsage
 operator|=
 operator|(
-operator|(
 name|newPercentUsage
-operator|)
 operator|/
 literal|10
 operator|)
@@ -3260,9 +3254,7 @@ expr_stmt|;
 name|oldPercentUsage
 operator|=
 operator|(
-operator|(
 name|oldPercentUsage
-operator|)
 operator|/
 literal|10
 operator|)

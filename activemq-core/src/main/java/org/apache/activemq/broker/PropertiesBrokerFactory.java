@@ -17,20 +17,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|IntrospectionSupport
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -75,6 +61,16 @@ name|java
 operator|.
 name|net
 operator|.
+name|MalformedURLException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
 name|URI
 import|;
 end_import
@@ -86,16 +82,6 @@ operator|.
 name|net
 operator|.
 name|URL
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|MalformedURLException
 import|;
 end_import
 
@@ -116,6 +102,20 @@ operator|.
 name|util
 operator|.
 name|Properties
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IntrospectionSupport
 import|;
 end_import
 

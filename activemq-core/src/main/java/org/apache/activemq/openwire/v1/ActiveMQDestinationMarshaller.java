@@ -55,9 +55,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|openwire
+name|command
 operator|.
-name|*
+name|ActiveMQDestination
 import|;
 end_import
 
@@ -69,9 +69,23 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|command
+name|openwire
 operator|.
-name|*
+name|BooleanStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|openwire
+operator|.
+name|OpenWireFormat
 import|;
 end_import
 

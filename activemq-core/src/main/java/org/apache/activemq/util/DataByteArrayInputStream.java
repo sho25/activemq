@@ -55,20 +55,6 @@ name|UTFDataFormatException
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|ByteSequence
-import|;
-end_import
-
 begin_comment
 comment|/**  * Optimized ByteArrayInputStream that can be used more than once  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
@@ -712,8 +698,9 @@ name|long
 name|readLong
 parameter_list|()
 block|{
-return|return
-operator|(
+name|long
+name|rc
+init|=
 operator|(
 operator|(
 name|long
@@ -777,6 +764,9 @@ argument_list|)
 operator|<<
 literal|32
 operator|)
+decl_stmt|;
+return|return
+name|rc
 operator|+
 operator|(
 call|(
@@ -835,7 +825,6 @@ literal|255
 operator|)
 operator|<<
 literal|0
-operator|)
 operator|)
 return|;
 block|}

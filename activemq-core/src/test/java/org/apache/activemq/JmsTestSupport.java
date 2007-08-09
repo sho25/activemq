@@ -322,7 +322,7 @@ operator|.
 name|createTemporaryTopic
 argument_list|()
 return|;
-block|}
+default|default:
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -332,6 +332,7 @@ operator|+
 name|type
 argument_list|)
 throw|;
+block|}
 block|}
 specifier|protected
 name|void

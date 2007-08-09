@@ -122,7 +122,7 @@ name|TestSupport
 implements|implements
 name|MessageListener
 block|{
-comment|/**      * test following condition- which are defined by JMS Spec 1.1: MessageConsumers cannot use a MessageListener and      * receive() from the same session      *       * @throws Exception      */
+comment|/**      * test following condition- which are defined by JMS Spec 1.1:      * MessageConsumers cannot use a MessageListener and receive() from the same      * session      *       * @throws Exception      */
 specifier|public
 name|void
 name|testDoChangeSessionDeliveryMode

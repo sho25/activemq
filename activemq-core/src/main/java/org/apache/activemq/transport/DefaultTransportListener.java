@@ -26,7 +26,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An asynchronous listener of commands  *  * @version $Revision$  */
+comment|/**  * An asynchronous listener of commands  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -36,7 +36,7 @@ name|DefaultTransportListener
 implements|implements
 name|TransportListener
 block|{
-comment|/**      * called to process a command      * @param command      */
+comment|/**      * called to process a command      *       * @param command      */
 specifier|public
 name|void
 name|onCommand
@@ -45,7 +45,7 @@ name|Object
 name|command
 parameter_list|)
 block|{     }
-comment|/**      * An unrecoverable exception has occured on the transport      * @param error      */
+comment|/**      * An unrecoverable exception has occured on the transport      *       * @param error      */
 specifier|public
 name|void
 name|onException
@@ -54,13 +54,13 @@ name|IOException
 name|error
 parameter_list|)
 block|{     }
-comment|/**      * The transport has suffered an interuption from which it hopes to recover      *      */
+comment|/**      * The transport has suffered an interuption from which it hopes to recover      */
 specifier|public
 name|void
 name|transportInterupted
 parameter_list|()
 block|{     }
-comment|/**      * The transport has resumed after an interuption      *      */
+comment|/**      * The transport has resumed after an interuption      */
 specifier|public
 name|void
 name|transportResumed

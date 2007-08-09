@@ -49,6 +49,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentHashMap
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|transaction
@@ -210,18 +222,6 @@ operator|.
 name|store
 operator|.
 name|TransactionStore
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ConcurrentHashMap
 import|;
 end_import
 

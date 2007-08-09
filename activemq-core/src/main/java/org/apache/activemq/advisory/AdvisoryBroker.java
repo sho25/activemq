@@ -19,9 +19,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|IOException
+name|Iterator
 import|;
 end_import
 
@@ -31,7 +31,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
+name|concurrent
+operator|.
+name|ConcurrentHashMap
 import|;
 end_import
 
@@ -346,18 +348,6 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ConcurrentHashMap
 import|;
 end_import
 

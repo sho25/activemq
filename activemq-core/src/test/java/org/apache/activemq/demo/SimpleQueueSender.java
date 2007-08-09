@@ -169,7 +169,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Main method.      *      * @param args the queue used by the example and,      *             optionally, the number of messages to send      */
+comment|/**      * Main method.      *       * @param args the queue used by the example and, optionally, the number of      *                messages to send      */
 specifier|public
 specifier|static
 name|void
@@ -309,7 +309,7 @@ operator|=
 literal|1
 expr_stmt|;
 block|}
-comment|/*          * Create a JNDI API InitialContext object if none exists          * yet.          */
+comment|/*          * Create a JNDI API InitialContext object if none exists yet.          */
 try|try
 block|{
 name|jndiContext
@@ -345,7 +345,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*          * Look up connection factory and queue.  If either does          * not exist, exit.          */
+comment|/*          * Look up connection factory and queue. If either does not exist, exit.          */
 try|try
 block|{
 name|queueConnectionFactory
@@ -396,7 +396,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*          * Create connection.          * Create session from connection; false means session is          * not transacted.          * Create sender and text message.          * Send messages, varying text slightly.          * Send end-of-messages message.          * Finally, close connection.          */
+comment|/*          * Create connection. Create session from connection; false means          * session is not transacted. Create sender and text message. Send          * messages, varying text slightly. Send end-of-messages message.          * Finally, close connection.          */
 try|try
 block|{
 name|queueConnection
@@ -483,7 +483,7 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*              * Send a non-text control message indicating end of              * messages.              */
+comment|/*              * Send a non-text control message indicating end of messages.              */
 name|queueSender
 operator|.
 name|send

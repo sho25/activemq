@@ -175,7 +175,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Main method.      *      * @param args the queue used by the example      */
+comment|/**      * Main method.      *       * @param args the queue used by the example      */
 specifier|public
 specifier|static
 name|void
@@ -269,7 +269,7 @@ operator|+
 name|queueName
 argument_list|)
 expr_stmt|;
-comment|/*          * Create a JNDI API InitialContext object if none exists          * yet.          */
+comment|/*          * Create a JNDI API InitialContext object if none exists yet.          */
 try|try
 block|{
 name|jndiContext
@@ -307,7 +307,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*          * Look up connection factory and queue.  If either does          * not exist, exit.          */
+comment|/*          * Look up connection factory and queue. If either does not exist, exit.          */
 try|try
 block|{
 name|queueConnectionFactory
@@ -361,7 +361,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*          * Create connection.          * Create session from connection; false means session is          * not transacted.          * Create receiver, then start message delivery.          * Receive all text messages from queue until          * a non-text message is received indicating end of          * message stream.          * Close connection.          */
+comment|/*          * Create connection. Create session from connection; false means          * session is not transacted. Create receiver, then start message          * delivery. Receive all text messages from queue until a non-text          * message is received indicating end of message stream. Close          * connection.          */
 try|try
 block|{
 name|queueConnection

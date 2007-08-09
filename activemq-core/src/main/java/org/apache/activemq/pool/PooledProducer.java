@@ -17,18 +17,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQMessageProducer
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -67,8 +55,20 @@ name|MessageProducer
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|ActiveMQMessageProducer
+import|;
+end_import
+
 begin_comment
-comment|/**  * A pooled {@link MessageProducer}  *  * @version $Revision: 1.1 $  */
+comment|/**  * A pooled {@link MessageProducer}  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
@@ -468,7 +468,7 @@ name|timeToLive
 expr_stmt|;
 block|}
 comment|// Implementation methods
-comment|//-------------------------------------------------------------------------
+comment|// -------------------------------------------------------------------------
 specifier|protected
 name|ActiveMQMessageProducer
 name|getMessageProducer

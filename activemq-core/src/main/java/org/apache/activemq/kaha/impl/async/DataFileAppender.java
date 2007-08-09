@@ -929,9 +929,8 @@ init|)
 block|{
 if|if
 condition|(
+operator|!
 name|shutdown
-operator|==
-literal|false
 condition|)
 block|{
 name|shutdown

@@ -19,6 +19,66 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Connection
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|ConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Destination
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|MessageConsumer
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Session
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -121,7 +181,7 @@ name|beans
 operator|.
 name|factory
 operator|.
-name|InitializingBean
+name|FactoryBean
 import|;
 end_import
 
@@ -135,72 +195,12 @@ name|beans
 operator|.
 name|factory
 operator|.
-name|FactoryBean
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Connection
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|ConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Destination
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|MessageConsumer
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Session
+name|InitializingBean
 import|;
 end_import
 
 begin_comment
-comment|/**  * An agent which listens to commands on a JMS destination  *  * @version $Revision$  * @org.apache.xbean.XBean  */
+comment|/**  * An agent which listens to commands on a JMS destination  *   * @version $Revision$  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
@@ -459,7 +459,8 @@ name|throwFirstException
 argument_list|()
 expr_stmt|;
 block|}
-comment|// the following methods ensure that we are created on startup and the lifecycles respected
+comment|// the following methods ensure that we are created on startup and the
+comment|// lifecycles respected
 comment|// TODO there must be a simpler way?
 specifier|public
 name|void
@@ -514,7 +515,7 @@ literal|true
 return|;
 block|}
 comment|// Properties
-comment|//-------------------------------------------------------------------------
+comment|// -------------------------------------------------------------------------
 specifier|public
 name|String
 name|getBrokerUrl

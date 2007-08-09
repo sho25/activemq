@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Destination
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -99,18 +109,8 @@ name|ActiveMQQueue
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Destination
-import|;
-end_import
-
 begin_comment
-comment|/**  *  * @version $Revision$  */
+comment|/**  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -184,9 +184,7 @@ block|{
 name|String
 name|prefix
 init|=
-operator|(
 name|topic
-operator|)
 condition|?
 literal|"ActiveMQ.DLQ.Topic."
 else|:

@@ -61,16 +61,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jmdns
-operator|.
-name|JmDNS
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -80,6 +70,16 @@ operator|.
 name|atomic
 operator|.
 name|AtomicInteger
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jmdns
+operator|.
+name|JmDNS
 import|;
 end_import
 

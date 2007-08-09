@@ -72,7 +72,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @author chirino  */
+comment|/**  * @author chirino  */
 end_comment
 
 begin_class

@@ -17,37 +17,21 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|net
 operator|.
-name|activemq
-operator|.
-name|JmsMultipleBrokersTestSupport
+name|URI
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|javax
 operator|.
-name|apache
+name|jms
 operator|.
-name|activemq
-operator|.
-name|ActiveMQConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQPrefetchPolicy
+name|Connection
 import|;
 end_import
 
@@ -77,7 +61,7 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|Connection
+name|MessageConsumer
 import|;
 end_import
 
@@ -93,21 +77,37 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jms
+name|apache
 operator|.
-name|MessageConsumer
+name|activemq
+operator|.
+name|ActiveMQConnectionFactory
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|net
+name|apache
 operator|.
-name|URI
+name|activemq
+operator|.
+name|ActiveMQPrefetchPolicy
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|JmsMultipleBrokersTestSupport
 import|;
 end_import
 

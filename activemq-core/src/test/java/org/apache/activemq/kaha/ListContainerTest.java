@@ -557,12 +557,10 @@ argument_list|()
 expr_stmt|;
 block|}
 assert|assert
-operator|(
 name|container
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 assert|;
 block|}
 comment|/*      * Test method for 'java.util.List.isEmpty()'      */

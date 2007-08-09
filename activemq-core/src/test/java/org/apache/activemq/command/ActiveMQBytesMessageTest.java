@@ -205,7 +205,7 @@ name|msg
 operator|.
 name|writeLong
 argument_list|(
-literal|5l
+literal|5L
 argument_list|)
 expr_stmt|;
 block|}
@@ -1110,7 +1110,7 @@ name|Long
 operator|.
 name|valueOf
 argument_list|(
-literal|300l
+literal|300L
 argument_list|)
 argument_list|)
 expr_stmt|;

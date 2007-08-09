@@ -622,7 +622,7 @@ name|location
 argument_list|)
 return|;
 block|}
-comment|/**      * Configures the transport      *       * @param acceptServer      *            true if this transport is used purely as an 'accept' transport      *            for new connections which work like TCP SocketServers where      *            new connections spin up a new separate UDP transport      */
+comment|/**      * Configures the transport      *       * @param acceptServer true if this transport is used purely as an 'accept'      *                transport for new connections which work like TCP      *                SocketServers where new connections spin up a new separate      *                UDP transport      */
 specifier|protected
 name|Transport
 name|configure

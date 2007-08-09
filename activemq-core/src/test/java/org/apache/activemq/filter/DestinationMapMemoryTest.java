@@ -142,7 +142,7 @@ operator|+
 name|j
 expr_stmt|;
 block|}
-comment|//System.out.println("Checking: " + name);
+comment|// System.out.println("Checking: " + name);
 try|try
 block|{
 name|ActiveMQDestination

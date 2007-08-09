@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helper class for decomposing a Destination into a number of paths  *  * @version $Revision: 1.3 $  */
+comment|/**  * Helper class for decomposing a Destination into a number of paths  *   * @version $Revision: 1.3 $  */
 end_comment
 
 begin_class
@@ -251,7 +251,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Converts the paths to a single String seperated by dots.      *      * @param paths      * @return      */
+comment|/**      * Converts the paths to a single String seperated by dots.      *       * @param paths      * @return      */
 specifier|public
 specifier|static
 name|String

@@ -56,7 +56,7 @@ name|KahaDurableTopicTest
 extends|extends
 name|SimpleDurableTopicTest
 block|{
-comment|/*     protected BrokerService createBroker() throws Exception{         Resource resource=new ClassPathResource( "org/apache/activemq/perf/kahaBroker.xml");         BrokerFactoryBean factory=new BrokerFactoryBean(resource);         factory.afterPropertiesSet();         BrokerService result=factory.getBroker();         result.start();         return result;     }     */
+comment|/*      * protected BrokerService createBroker() throws Exception{ Resource      * resource=new ClassPathResource(      * "org/apache/activemq/perf/kahaBroker.xml"); BrokerFactoryBean factory=new      * BrokerFactoryBean(resource); factory.afterPropertiesSet(); BrokerService      * result=factory.getBroker(); result.start(); return result; }      */
 specifier|protected
 name|void
 name|configureBroker

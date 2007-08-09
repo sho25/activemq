@@ -138,7 +138,7 @@ argument_list|(
 literal|null
 argument_list|)
 decl_stmt|;
-comment|/**      * Looks up the value(s) matching the given Destination key. For simple      * destinations this is typically a List of one single value, for wildcards      * or composite destinations this will typically be a List of matching      * values.      *       * @param key      *            the destination to lookup      * @return a List of matching values or an empty list if there are no      *         matching values.      */
+comment|/**      * Looks up the value(s) matching the given Destination key. For simple      * destinations this is typically a List of one single value, for wildcards      * or composite destinations this will typically be a List of matching      * values.      *       * @param key the destination to lookup      * @return a List of matching values or an empty list if there are no      *         matching values.      */
 specifier|public
 specifier|synchronized
 name|Set
@@ -626,7 +626,7 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * @param key      * @return       */
+comment|/**      * @param key      * @return      */
 specifier|public
 name|Set
 name|removeAll
@@ -721,7 +721,7 @@ return|return
 name|rc
 return|;
 block|}
-comment|/**      * Returns the value which matches the given destination or null if there is      * no matching value. If there are multiple values, the results are sorted      * and the last item (the biggest) is returned.      *       * @param destination      *            the destination to find the value for      * @return the largest matching value or null if no value matches      */
+comment|/**      * Returns the value which matches the given destination or null if there is      * no matching value. If there are multiple values, the results are sorted      * and the last item (the biggest) is returned.      *       * @param destination the destination to find the value for      * @return the largest matching value or null if no value matches      */
 specifier|public
 name|Object
 name|chooseValue

@@ -61,7 +61,7 @@ specifier|public
 name|ResponseHolder
 parameter_list|()
 block|{     }
-comment|/**      * Set the Response for this holder      *      * @param r      */
+comment|/**      * Set the Response for this holder      *       * @param r      */
 specifier|public
 name|void
 name|setResponse
@@ -105,7 +105,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**      * wait upto<Code>timeout</Code> timeout ms to get a receipt      *      * @param timeout      * @return      */
+comment|/**      * wait upto<Code>timeout</Code> timeout ms to get a receipt      *       * @param timeout      * @return      */
 specifier|public
 name|Response
 name|getResponse

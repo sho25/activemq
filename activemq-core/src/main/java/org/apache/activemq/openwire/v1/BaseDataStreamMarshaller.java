@@ -325,7 +325,7 @@ condition|(
 operator|(
 name|o
 operator|&
-literal|0xFFFFFFFFFFFF0000l
+literal|0xFFFFFFFFFFFF0000L
 operator|)
 operator|==
 literal|0
@@ -355,7 +355,7 @@ condition|(
 operator|(
 name|o
 operator|&
-literal|0xFFFFFFFF00000000l
+literal|0xFFFFFFFF00000000L
 operator|)
 operator|==
 literal|0

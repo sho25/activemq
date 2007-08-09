@@ -26,7 +26,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A bunch of utility methods for working with maps  *  * @version $Revision$  */
+comment|/**  * A bunch of utility methods for working with maps  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -72,7 +72,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**      * Extracts the value from the map and coerces to an int value      * or returns a default value if one could not be found or coerced      */
+comment|/**      * Extracts the value from the map and coerces to an int value or returns a      * default value if one could not be found or coerced      */
 specifier|public
 specifier|static
 name|int

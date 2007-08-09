@@ -71,7 +71,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|Map
+operator|.
+name|Entry
 import|;
 end_import
 
@@ -81,9 +83,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
-operator|.
-name|Entry
+name|Set
 import|;
 end_import
 
@@ -178,7 +178,7 @@ operator|=
 name|getStore
 argument_list|()
 expr_stmt|;
-name|assertTrue
+name|assertFalse
 argument_list|(
 name|store
 operator|.
@@ -187,8 +187,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|==
-literal|false
 argument_list|)
 expr_stmt|;
 name|test

@@ -105,7 +105,7 @@ specifier|private
 name|WireFormat
 name|wireFormat
 decl_stmt|;
-comment|/**      * Constructor      * @param wireFormat      */
+comment|/**      * Constructor      *       * @param wireFormat      */
 specifier|public
 name|MessageMarshaller
 parameter_list|(

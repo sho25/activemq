@@ -17,16 +17,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Message
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -42,6 +32,16 @@ operator|.
 name|util
 operator|.
 name|Comparator
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Message
 import|;
 end_import
 

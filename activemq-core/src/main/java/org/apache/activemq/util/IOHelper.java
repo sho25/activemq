@@ -50,7 +50,7 @@ operator|+
 literal|"amqstore"
 return|;
 block|}
-comment|/**      * Allows a system property to be used to overload the default data directory      * which can be useful for forcing the test cases to use a target/ prefix      */
+comment|/**      * Allows a system property to be used to overload the default data      * directory which can be useful for forcing the test cases to use a target/      * prefix      */
 specifier|public
 specifier|static
 name|String

@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -41,18 +51,8 @@ name|IndentPrinter
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_comment
-comment|/**  * Statistics for a JMS connection  *  * @version $Revision: 1.2 $  */
+comment|/**  * Statistics for a JMS connection  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class

@@ -54,10 +54,10 @@ name|Statements
 name|statements
 parameter_list|)
 block|{
-name|statements
-operator|.
-name|setCreateSchemaStatements
-argument_list|(
+name|String
+index|[]
+name|createStatements
+init|=
 operator|new
 name|String
 index|[]
@@ -235,7 +235,13 @@ name|getSequenceDataType
 argument_list|()
 operator|+
 literal|", PRIMARY KEY ( CONTAINER, CLIENT_ID, SUB_NAME))"
-block|,                     }
+block|}
+decl_stmt|;
+name|statements
+operator|.
+name|setCreateSchemaStatements
+argument_list|(
+name|createStatements
 argument_list|)
 expr_stmt|;
 name|statements

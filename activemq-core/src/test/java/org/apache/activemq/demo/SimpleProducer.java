@@ -124,7 +124,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple polymorphic JMS producer which can work with Queues or Topics  * which uses JNDI to lookup the JMS connection factory and destination  *  * @version $Revision: 1.2 $  */
+comment|/**  * A simple polymorphic JMS producer which can work with Queues or Topics which  * uses JNDI to lookup the JMS connection factory and destination  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class
@@ -163,7 +163,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * @param args the destination name to send to and optionally, the number of messages to send      */
+comment|/**      * @param args the destination name to send to and optionally, the number of      *                messages to send      */
 specifier|public
 specifier|static
 name|void
@@ -383,7 +383,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*          * Create connection.          * Create session from connection; false means session is not transacted.          * Create sender and text message.          * Send messages, varying text slightly.          * Send end-of-messages message.          * Finally, close connection.          */
+comment|/*          * Create connection. Create session from connection; false means          * session is not transacted. Create sender and text message. Send          * messages, varying text slightly. Send end-of-messages message.          * Finally, close connection.          */
 try|try
 block|{
 name|connection

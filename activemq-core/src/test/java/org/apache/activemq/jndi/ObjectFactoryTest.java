@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|naming
+operator|.
+name|Reference
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -64,16 +74,6 @@ operator|.
 name|command
 operator|.
 name|ActiveMQQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|naming
-operator|.
-name|Reference
 import|;
 end_import
 

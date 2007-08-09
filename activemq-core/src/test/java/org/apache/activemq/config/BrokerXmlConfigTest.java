@@ -41,16 +41,6 @@ name|JmsTopicSendReceiveWithTwoConnectionsTest
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URI
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version $Revision$  */
 end_comment

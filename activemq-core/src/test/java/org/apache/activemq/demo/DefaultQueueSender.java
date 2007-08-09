@@ -25,13 +25,11 @@ end_comment
 
 begin_import
 import|import
-name|org
+name|javax
 operator|.
-name|apache
+name|jms
 operator|.
-name|activemq
-operator|.
-name|ActiveMQConnectionFactory
+name|Connection
 import|;
 end_import
 
@@ -41,7 +39,7 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|*
+name|ConnectionFactory
 import|;
 end_import
 
@@ -49,9 +47,9 @@ begin_import
 import|import
 name|javax
 operator|.
-name|naming
+name|jms
 operator|.
-name|Context
+name|Destination
 import|;
 end_import
 
@@ -59,9 +57,9 @@ begin_import
 import|import
 name|javax
 operator|.
-name|naming
+name|jms
 operator|.
-name|InitialContext
+name|JMSException
 import|;
 end_import
 
@@ -69,9 +67,51 @@ begin_import
 import|import
 name|javax
 operator|.
-name|naming
+name|jms
 operator|.
-name|NamingException
+name|Message
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|MessageProducer
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|QueueSession
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Session
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|ActiveMQConnectionFactory
 import|;
 end_import
 
@@ -147,13 +187,11 @@ literal|null
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|args
 operator|.
 name|length
 operator|<
 literal|1
-operator|)
 condition|)
 block|{
 name|printUsage

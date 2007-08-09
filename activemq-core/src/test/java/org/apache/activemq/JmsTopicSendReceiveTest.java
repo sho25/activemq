@@ -326,7 +326,7 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-comment|//log.info("Created connection: " + connection);
+comment|// log.info("Created connection: " + connection);
 block|}
 specifier|protected
 name|MessageConsumer
@@ -385,7 +385,7 @@ argument_list|(
 literal|"Dumping stats..."
 argument_list|)
 expr_stmt|;
-comment|//connectionFactory.getStats().reset();
+comment|// connectionFactory.getStats().reset();
 name|log
 operator|.
 name|info

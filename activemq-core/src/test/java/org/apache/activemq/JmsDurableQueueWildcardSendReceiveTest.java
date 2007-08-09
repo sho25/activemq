@@ -48,7 +48,7 @@ name|JmsDurableQueueWildcardSendReceiveTest
 extends|extends
 name|JmsTopicSendReceiveTest
 block|{
-comment|/**      * Set up the test with a queue and persistent delivery mode.       *       * @see junit.framework.TestCase#setUp()      */
+comment|/**      * Set up the test with a queue and persistent delivery mode.      *       * @see junit.framework.TestCase#setUp()      */
 specifier|protected
 name|void
 name|setUp
@@ -72,7 +72,7 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Returns the consumer subject.       */
+comment|/**      * Returns the consumer subject.      */
 specifier|protected
 name|String
 name|getConsumerSubject
@@ -82,7 +82,7 @@ return|return
 literal|"FOO.>"
 return|;
 block|}
-comment|/**      * Returns the producer subject.       */
+comment|/**      * Returns the producer subject.      */
 specifier|protected
 name|String
 name|getProducerSubject

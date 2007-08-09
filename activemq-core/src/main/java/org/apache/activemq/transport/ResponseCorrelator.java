@@ -149,18 +149,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ConcurrentHashMap
-import|;
-end_import
-
 begin_comment
 comment|/**  * Adds the incrementing sequence number to commands along with performing the  * corelation of responses to requests to create a blocking request-response  * semantics.  *   * @version $Revision: 1.4 $  */
 end_comment

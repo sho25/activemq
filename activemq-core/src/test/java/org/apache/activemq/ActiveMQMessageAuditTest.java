@@ -245,7 +245,7 @@ argument_list|(
 name|id
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertFalse
 argument_list|(
 name|audit
 operator|.
@@ -253,8 +253,6 @@ name|isDuplicate
 argument_list|(
 name|id
 argument_list|)
-operator|==
-literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -394,7 +392,7 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertFalse
 argument_list|(
 name|audit
 operator|.
@@ -402,8 +400,6 @@ name|isDuplicateMessageReference
 argument_list|(
 name|msg
 argument_list|)
-operator|==
-literal|false
 argument_list|)
 expr_stmt|;
 block|}

@@ -17,18 +17,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|EmbeddedBrokerAndConnectionTestSupport
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -54,6 +42,18 @@ operator|.
 name|jms
 operator|.
 name|Topic
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|EmbeddedBrokerAndConnectionTestSupport
 import|;
 end_import
 

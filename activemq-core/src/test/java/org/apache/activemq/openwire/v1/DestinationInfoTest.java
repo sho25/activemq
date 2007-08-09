@@ -19,45 +19,15 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|DataInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|DataOutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
 operator|.
 name|activemq
 operator|.
-name|openwire
+name|command
 operator|.
-name|*
+name|BrokerId
 import|;
 end_import
 
@@ -71,7 +41,7 @@ name|activemq
 operator|.
 name|command
 operator|.
-name|*
+name|DestinationInfo
 import|;
 end_import
 

@@ -248,7 +248,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An {@link AuthorizationMap} which uses LDAP  *   * @org.apache.xbean.XBean  *   * @author ngcutura  */
+comment|/**  * An {@link AuthorizationMap} which uses LDAP  *   * @org.apache.xbean.XBean  * @author ngcutura  */
 end_comment
 
 begin_class
@@ -791,7 +791,7 @@ name|Set
 name|getTempDestinationAdminACLs
 parameter_list|()
 block|{
-comment|//TODO insert implementation
+comment|// TODO insert implementation
 return|return
 literal|null
 return|;
@@ -801,7 +801,7 @@ name|Set
 name|getTempDestinationReadACLs
 parameter_list|()
 block|{
-comment|//    	TODO insert implementation
+comment|// TODO insert implementation
 return|return
 literal|null
 return|;
@@ -811,7 +811,7 @@ name|Set
 name|getTempDestinationWriteACLs
 parameter_list|()
 block|{
-comment|//    	TODO insert implementation
+comment|// TODO insert implementation
 return|return
 literal|null
 return|;
@@ -1685,9 +1685,7 @@ literal|null
 condition|)
 block|{
 return|return
-operator|(
 name|values
-operator|)
 return|;
 block|}
 name|NamingEnumeration

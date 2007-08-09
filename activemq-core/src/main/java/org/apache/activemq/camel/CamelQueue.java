@@ -17,18 +17,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQSession
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -53,7 +41,7 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|QueueSender
+name|QueueReceiver
 import|;
 end_import
 
@@ -63,7 +51,19 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|QueueReceiver
+name|QueueSender
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|ActiveMQSession
 import|;
 end_import
 

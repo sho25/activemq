@@ -2843,6 +2843,19 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;
+default|default:
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Invalid journal command type: "
+operator|+
+name|command
+operator|.
+name|getType
+argument_list|()
+argument_list|)
+throw|;
 block|}
 block|}
 catch|catch
@@ -3144,9 +3157,7 @@ block|{
 name|newPercentUsage
 operator|=
 operator|(
-operator|(
 name|newPercentUsage
-operator|)
 operator|/
 literal|10
 operator|)
@@ -3156,9 +3167,7 @@ expr_stmt|;
 name|oldPercentUsage
 operator|=
 operator|(
-operator|(
 name|oldPercentUsage
-operator|)
 operator|/
 literal|10
 operator|)

@@ -288,9 +288,11 @@ operator|.
 name|getClientID
 argument_list|()
 expr_stmt|;
-comment|//TODO
-comment|//String value = ActiveMQDestination.getClientId((ActiveMQDestination) replyDestination);
-comment|//assertEquals("clientID from the temporary destination must be the same", clientSideClientID, value);
+comment|// TODO
+comment|// String value = ActiveMQDestination.getClientId((ActiveMQDestination)
+comment|// replyDestination);
+comment|// assertEquals("clientID from the temporary destination must be the
+comment|// same", clientSideClientID, value);
 name|log
 operator|.
 name|info
@@ -500,9 +502,12 @@ operator|.
 name|getJMSReplyTo
 argument_list|()
 decl_stmt|;
-comment|//TODO
-comment|//String value = ActiveMQDestination.getClientId((ActiveMQDestination) replyDestination);
-comment|//assertEquals("clientID from the temporary destination must be the same", clientSideClientID, value);
+comment|// TODO
+comment|// String value =
+comment|// ActiveMQDestination.getClientId((ActiveMQDestination)
+comment|// replyDestination);
+comment|// assertEquals("clientID from the temporary destination must be the
+comment|// same", clientSideClientID, value);
 name|TextMessage
 name|replyMessage
 init|=

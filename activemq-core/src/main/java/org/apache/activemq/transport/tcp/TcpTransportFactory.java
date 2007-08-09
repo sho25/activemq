@@ -637,11 +637,9 @@ name|path
 operator|.
 name|substring
 argument_list|(
-operator|(
 name|localPortIndex
 operator|+
 literal|1
-operator|)
 argument_list|,
 name|path
 operator|.

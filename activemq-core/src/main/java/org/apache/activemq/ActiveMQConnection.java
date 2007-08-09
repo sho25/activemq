@@ -281,16 +281,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|InvalidDestinationException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|JMSException
 import|;
 end_import
@@ -1865,7 +1855,6 @@ argument_list|,
 name|getNextSessionId
 argument_list|()
 argument_list|,
-operator|(
 name|transacted
 condition|?
 name|Session
@@ -1884,7 +1873,6 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 else|:
 name|acknowledgeMode
-operator|)
 operator|)
 argument_list|,
 name|dispatchAsync
@@ -3673,6 +3661,7 @@ argument_list|()
 operator|instanceof
 name|JMSException
 condition|)
+block|{
 throw|throw
 operator|(
 name|JMSException
@@ -3682,7 +3671,9 @@ operator|.
 name|getException
 argument_list|()
 throw|;
+block|}
 else|else
+block|{
 throw|throw
 name|JMSExceptionSupport
 operator|.
@@ -3694,6 +3685,7 @@ name|getException
 argument_list|()
 argument_list|)
 throw|;
+block|}
 block|}
 return|return
 name|response
@@ -3792,6 +3784,7 @@ argument_list|()
 operator|instanceof
 name|JMSException
 condition|)
+block|{
 throw|throw
 operator|(
 name|JMSException
@@ -3801,7 +3794,9 @@ operator|.
 name|getException
 argument_list|()
 throw|;
+block|}
 else|else
+block|{
 throw|throw
 name|JMSExceptionSupport
 operator|.
@@ -3813,6 +3808,7 @@ name|getException
 argument_list|()
 argument_list|)
 throw|;
+block|}
 block|}
 return|return
 name|response
@@ -4339,6 +4335,7 @@ if|if
 condition|(
 name|isConnectionInfoSentToBroker
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -4346,6 +4343,7 @@ argument_list|(
 literal|"changeUserInfo used Connection is not allowed"
 argument_list|)
 throw|;
+block|}
 name|this
 operator|.
 name|info
@@ -4382,6 +4380,7 @@ name|brokerInfo
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|JMSException
@@ -4389,6 +4388,7 @@ argument_list|(
 literal|"Connection failed before Broker info was received."
 argument_list|)
 throw|;
+block|}
 return|return
 name|brokerInfo
 operator|.
@@ -5037,16 +5037,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-operator|new
-name|Thread
-argument_list|(
-literal|"Async error worker"
-argument_list|)
-block|{                         }
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
 return|return
 literal|null
 return|;
@@ -5259,6 +5249,7 @@ operator|instanceof
 name|JMSException
 operator|)
 condition|)
+block|{
 name|error
 operator|=
 name|JMSExceptionSupport
@@ -5268,6 +5259,7 @@ argument_list|(
 name|error
 argument_list|)
 expr_stmt|;
+block|}
 specifier|final
 name|JMSException
 name|e
@@ -5813,9 +5805,11 @@ name|advisoryConsumer
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 return|return
 operator|!
 name|activeTempDestinations

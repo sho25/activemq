@@ -17,20 +17,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|j2ee
-operator|.
-name|statistics
-operator|.
-name|CountStatistic
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -40,6 +26,20 @@ operator|.
 name|atomic
 operator|.
 name|AtomicLong
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|j2ee
+operator|.
+name|statistics
+operator|.
+name|CountStatistic
 import|;
 end_import
 

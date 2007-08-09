@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/** *  Entry for Store data *  * @version $Revision: 1.2 $ */
+comment|/**  * Entry for Store data  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_interface

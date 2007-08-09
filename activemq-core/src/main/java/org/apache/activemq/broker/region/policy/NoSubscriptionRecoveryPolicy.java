@@ -61,22 +61,6 @@ name|broker
 operator|.
 name|region
 operator|.
-name|Subscription
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|region
-operator|.
 name|SubscriptionRecovery
 import|;
 end_import
@@ -126,7 +110,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This SubscriptionRecoveryPolicy disable recovery of messages.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * This SubscriptionRecoveryPolicy disable recovery of messages.  *   * @org.apache.xbean.XBean  * @version $Revision$  */
 end_comment
 
 begin_class

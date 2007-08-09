@@ -19,34 +19,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|ConnectionContext
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|RemoveSubscriptionInfo
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|management
@@ -115,7 +87,7 @@ parameter_list|()
 throws|throws
 name|OpenDataException
 function_decl|;
-comment|/**      * Destroys the durable subscription so that messages will no longer be stored for this subscription      */
+comment|/**      * Destroys the durable subscription so that messages will no longer be      * stored for this subscription      */
 specifier|public
 name|void
 name|destroy

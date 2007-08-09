@@ -17,6 +17,26 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|naming
+operator|.
+name|InitialContext
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|naming
+operator|.
+name|NamingException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -40,16 +60,6 @@ operator|.
 name|command
 operator|.
 name|ActiveMQTopic
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|naming
-operator|.
-name|*
 import|;
 end_import
 

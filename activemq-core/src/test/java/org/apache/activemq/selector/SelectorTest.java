@@ -1275,7 +1275,8 @@ init|=
 name|createMessage
 argument_list|()
 decl_stmt|;
-comment|// JMS 1.1 Section 3.8.1.1 : Approximate literals use the Java floating-point literal syntax.
+comment|// JMS 1.1 Section 3.8.1.1 : Approximate literals use the Java
+comment|// floating-point literal syntax.
 comment|// We will use the java varible x to demo valid floating point syntaxs.
 name|double
 name|x

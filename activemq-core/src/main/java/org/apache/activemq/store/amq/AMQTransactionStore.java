@@ -59,18 +59,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|transaction
-operator|.
-name|xa
-operator|.
-name|XAException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache

@@ -17,29 +17,31 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
+name|Enumeration
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|commons
+name|Hashtable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|logging
+name|util
 operator|.
-name|LogFactory
+name|Properties
 import|;
 end_import
 
@@ -49,9 +51,7 @@ name|javax
 operator|.
 name|naming
 operator|.
-name|spi
-operator|.
-name|ObjectFactory
+name|Context
 import|;
 end_import
 
@@ -71,7 +71,7 @@ name|javax
 operator|.
 name|naming
 operator|.
-name|Context
+name|NamingException
 import|;
 end_import
 
@@ -101,37 +101,37 @@ name|javax
 operator|.
 name|naming
 operator|.
-name|NamingException
+name|spi
+operator|.
+name|ObjectFactory
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|Hashtable
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|Properties
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|commons
 operator|.
-name|util
+name|logging
 operator|.
-name|Enumeration
+name|LogFactory
 import|;
 end_import
 
@@ -159,7 +159,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * This will be called by a JNDIprovider when a Reference is retrieved from      * a JNDI store - and generates the orignal instance      *      * @param object      the Reference object      * @param name        the JNDI name      * @param nameCtx     the context      * @param environment the environment settings used by JNDI      * @return the instance built from the Reference object      * @throws Exception if building the instance from Reference fails (usually class      *                   not found)      */
+comment|/**      * This will be called by a JNDIprovider when a Reference is retrieved from      * a JNDI store - and generates the orignal instance      *       * @param object the Reference object      * @param name the JNDI name      * @param nameCtx the context      * @param environment the environment settings used by JNDI      * @return the instance built from the Reference object      * @throws Exception if building the instance from Reference fails (usually      *                 class not found)      */
 specifier|public
 name|Object
 name|getObjectInstance
@@ -360,7 +360,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Create a Reference instance from a JNDIStorable object      *      * @param instanceClassName      * @param po      * @return @throws      *         NamingException      */
+comment|/**      * Create a Reference instance from a JNDIStorable object      *       * @param instanceClassName      * @param po      * @return      * @throws NamingException      */
 specifier|public
 specifier|static
 name|Reference
@@ -524,7 +524,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Retrieve the class loader for a named class      *      * @param thisObj      * @param className      * @return @throws      *         ClassNotFoundException      */
+comment|/**      * Retrieve the class loader for a named class      *       * @param thisObj      * @param className      * @return      * @throws ClassNotFoundException      */
 specifier|public
 specifier|static
 name|Class

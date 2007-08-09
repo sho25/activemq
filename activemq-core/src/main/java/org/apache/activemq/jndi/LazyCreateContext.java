@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Allows users to dynamically create items  *  * @version $Revision: 1.2 $  */
+comment|/**  * Allows users to dynamically create items  *   * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class

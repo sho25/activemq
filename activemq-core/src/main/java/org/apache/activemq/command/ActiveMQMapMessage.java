@@ -471,7 +471,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Builds the message body from data      *       * @throws JMSException      *       * @throws IOException      */
+comment|/**      * Builds the message body from data      *       * @throws JMSException      * @throws IOException      */
 specifier|private
 name|void
 name|loadContent
@@ -1719,9 +1719,7 @@ name|put
 argument_list|(
 name|name
 argument_list|,
-operator|(
 name|value
-operator|)
 condition|?
 name|Boolean
 operator|.

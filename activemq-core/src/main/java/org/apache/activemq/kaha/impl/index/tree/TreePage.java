@@ -23,48 +23,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|kaha
-operator|.
-name|Marshaller
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -133,8 +91,50 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|kaha
+operator|.
+name|Marshaller
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * Page in a BTree  *  * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Page in a BTree  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -220,7 +220,7 @@ name|active
 init|=
 literal|true
 decl_stmt|;
-comment|/**      * Constructor      *      * @param tree      * @param id      * @param parentId      * @param maximumEntries      */
+comment|/**      * Constructor      *       * @param tree      * @param id      * @param parentId      * @param maximumEntries      */
 name|TreePage
 parameter_list|(
 name|TreeIndex
@@ -260,7 +260,7 @@ operator|=
 name|parentId
 expr_stmt|;
 block|}
-comment|/**      * Constructor      *      * @param maximumEntries      */
+comment|/**      * Constructor      *       * @param maximumEntries      */
 specifier|public
 name|TreePage
 parameter_list|(
@@ -1349,7 +1349,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// need to insert the new entry and propogate up the hightest value
+comment|// need to insert the new entry and propogate up the hightest
+comment|// value
 name|doOverflow
 argument_list|(
 name|flavour
@@ -1415,7 +1416,8 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// we aren't the root, but to ensure the correct distribution we need to
+comment|// we aren't the root, but to ensure the correct distribution we
+comment|// need to
 comment|// insert the new entry and take a node of the end of the page
 comment|// and pass that up the tree to find a home
 name|doInsertEntry
@@ -1505,7 +1507,7 @@ name|newEntry
 argument_list|)
 condition|)
 block|{
-comment|//the newEntry stayed here
+comment|// the newEntry stayed here
 name|result
 operator|=
 name|this
@@ -1585,7 +1587,8 @@ expr_stmt|;
 name|save
 argument_list|()
 expr_stmt|;
-comment|// we are no longer root - need to save - we maybe looked up v. soon!
+comment|// we are no longer root - need to save - we maybe
+comment|// looked up v. soon!
 name|TreePage
 name|rightPage
 init|=
@@ -2169,7 +2172,8 @@ operator|.
 name|copy
 argument_list|()
 decl_stmt|;
-comment|// check children pages of the replacement point to the correct place
+comment|// check children pages of the replacement point to the
+comment|// correct place
 name|checkParentIdForRemovedPageEntry
 argument_list|(
 name|copy
@@ -2225,7 +2229,8 @@ name|landed
 init|=
 literal|null
 decl_stmt|;
-comment|// if we overflow - the page the replacement ends up on
+comment|// if we overflow - the page the
+comment|// replacement ends up on
 name|TreeEntry
 name|removed
 init|=
@@ -2437,7 +2442,8 @@ name|result
 init|=
 literal|false
 decl_stmt|;
-comment|// if we have unerflowed - and we are a leaf - push entries further up the tree
+comment|// if we have unerflowed - and we are a leaf - push entries further up
+comment|// the tree
 comment|// and delete ourselves
 if|if
 condition|(
@@ -2476,7 +2482,8 @@ range|:
 name|list
 control|)
 block|{
-comment|// need to check for each iteration - we might get promoted to root
+comment|// need to check for each iteration - we might get promoted to
+comment|// root
 name|TreePage
 name|parent
 init|=

@@ -51,6 +51,16 @@ name|javax
 operator|.
 name|jms
 operator|.
+name|DeliveryMode
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
 name|Destination
 import|;
 end_import
@@ -102,16 +112,6 @@ operator|.
 name|jms
 operator|.
 name|Session
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|DeliveryMode
 import|;
 end_import
 

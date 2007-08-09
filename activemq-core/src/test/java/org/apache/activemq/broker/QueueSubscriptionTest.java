@@ -23,7 +23,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|JmsMultipleClientsTestSupport
+name|ActiveMQConnectionFactory
 import|;
 end_import
 
@@ -35,7 +35,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|ActiveMQConnectionFactory
+name|JmsMultipleClientsTestSupport
 import|;
 end_import
 

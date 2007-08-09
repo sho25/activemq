@@ -17,27 +17,21 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|activemq
-operator|.
-name|ActiveMQConnectionFactory
+name|Iterator
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|BrokerService
+name|List
 import|;
 end_import
 
@@ -63,21 +57,27 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|Iterator
+name|activemq
+operator|.
+name|ActiveMQConnectionFactory
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|List
+name|activemq
+operator|.
+name|broker
+operator|.
+name|BrokerService
 import|;
 end_import
 

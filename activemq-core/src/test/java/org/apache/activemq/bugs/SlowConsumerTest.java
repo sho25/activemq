@@ -653,7 +653,7 @@ literal|" messages so far"
 argument_list|)
 expr_stmt|;
 block|}
-comment|//Thread.sleep(70);
+comment|// Thread.sleep(70);
 block|}
 block|}
 catch|catch

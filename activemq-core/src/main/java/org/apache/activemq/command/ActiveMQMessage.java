@@ -2258,10 +2258,9 @@ parameter_list|)
 throws|throws
 name|MessageFormatException
 block|{
-if|if
-condition|(
-operator|!
-operator|(
+name|boolean
+name|valid
+init|=
 name|value
 operator|instanceof
 name|Boolean
@@ -2281,6 +2280,10 @@ operator|||
 name|value
 operator|instanceof
 name|Long
+decl_stmt|;
+name|valid
+operator|=
+name|valid
 operator|||
 name|value
 operator|instanceof
@@ -2301,7 +2304,11 @@ operator|||
 name|value
 operator|==
 literal|null
-operator|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|valid
 condition|)
 block|{
 name|ActiveMQConnection

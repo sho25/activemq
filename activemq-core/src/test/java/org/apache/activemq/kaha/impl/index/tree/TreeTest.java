@@ -43,15 +43,11 @@ end_import
 
 begin_import
 import|import
-name|org
+name|junit
 operator|.
-name|apache
+name|framework
 operator|.
-name|activemq
-operator|.
-name|kaha
-operator|.
-name|Store
+name|TestCase
 import|;
 end_import
 
@@ -65,7 +61,7 @@ name|activemq
 operator|.
 name|kaha
 operator|.
-name|StoreEntry
+name|Store
 import|;
 end_import
 
@@ -102,16 +98,6 @@ operator|.
 name|index
 operator|.
 name|IndexManager
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 

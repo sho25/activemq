@@ -49,16 +49,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|MessageEOFException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|JMSException
 import|;
 end_import
@@ -80,6 +70,16 @@ operator|.
 name|jms
 operator|.
 name|Message
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|MessageEOFException
 import|;
 end_import
 

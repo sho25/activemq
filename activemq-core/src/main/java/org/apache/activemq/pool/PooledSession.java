@@ -37,6 +37,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|CopyOnWriteArrayList
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -343,18 +355,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CopyOnWriteArrayList
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version $Revision: 1.1 $  */
 end_comment
@@ -624,7 +624,8 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-comment|// lets close the session and not put the session back into the pool
+comment|// lets close the session and not put the session back into
+comment|// the pool
 try|try
 block|{
 name|session
@@ -978,7 +979,7 @@ expr_stmt|;
 block|}
 block|}
 comment|// Consumer related methods
-comment|//-------------------------------------------------------------------------
+comment|// -------------------------------------------------------------------------
 specifier|public
 name|QueueBrowser
 name|createBrowser
@@ -1322,7 +1323,7 @@ argument_list|)
 return|;
 block|}
 comment|// Producer related methods
-comment|//-------------------------------------------------------------------------
+comment|// -------------------------------------------------------------------------
 specifier|public
 name|MessageProducer
 name|createProducer
@@ -1387,7 +1388,7 @@ argument_list|)
 return|;
 block|}
 comment|// Implementation methods
-comment|//-------------------------------------------------------------------------
+comment|// -------------------------------------------------------------------------
 specifier|protected
 name|ActiveMQSession
 name|getSession

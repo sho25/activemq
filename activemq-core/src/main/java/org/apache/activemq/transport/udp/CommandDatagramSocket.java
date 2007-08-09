@@ -963,9 +963,7 @@ block|{
 name|String
 name|text
 init|=
-operator|(
 name|redelivery
-operator|)
 condition|?
 literal|"REDELIVERING"
 else|:

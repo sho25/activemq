@@ -19,32 +19,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|EmbeddedBrokerTestSupport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|BrokerService
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -133,8 +107,34 @@ name|TestRunner
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|EmbeddedBrokerTestSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|BrokerService
+import|;
+end_import
+
 begin_comment
-comment|/**  * A specific test of Queue.purge() functionality  *  * @version $Revision$  */
+comment|/**  * A specific test of Queue.purge() functionality  *   * @version $Revision$  */
 end_comment
 
 begin_class

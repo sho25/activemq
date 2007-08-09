@@ -27,16 +27,6 @@ name|TextMessage
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
-import|;
-end_import
-
 begin_comment
 comment|/**  * Represents a processor of text based commands  *  * @version $Revision: $  */
 end_comment

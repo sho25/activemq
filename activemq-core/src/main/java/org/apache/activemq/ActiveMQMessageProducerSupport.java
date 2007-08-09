@@ -19,7 +19,17 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|*
+name|DeliveryMode
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Destination
 import|;
 end_import
 
@@ -39,7 +49,27 @@ name|javax
 operator|.
 name|jms
 operator|.
+name|JMSException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
 name|Message
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|MessageProducer
 import|;
 end_import
 
@@ -319,7 +349,7 @@ if|if
 condition|(
 name|timeToLive
 operator|<
-literal|0l
+literal|0L
 condition|)
 block|{
 throw|throw

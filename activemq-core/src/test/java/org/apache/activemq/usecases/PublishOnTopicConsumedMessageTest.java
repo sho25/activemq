@@ -17,20 +17,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|test
-operator|.
-name|JmsTopicSendReceiveWithTwoConnectionsTest
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -66,6 +52,20 @@ operator|.
 name|jms
 operator|.
 name|MessageProducer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|test
+operator|.
+name|JmsTopicSendReceiveWithTwoConnectionsTest
 import|;
 end_import
 
@@ -127,7 +127,7 @@ argument_list|(
 name|msgCopy
 argument_list|)
 expr_stmt|;
-comment|//log.info("Sending reply: " + message);
+comment|// log.info("Sending reply: " + message);
 name|super
 operator|.
 name|onMessage

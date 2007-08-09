@@ -1547,7 +1547,7 @@ block|{
 name|long
 name|test
 init|=
-literal|4l
+literal|4L
 decl_stmt|;
 name|msg
 operator|.
@@ -2508,7 +2508,7 @@ expr_stmt|;
 name|long
 name|testLong
 init|=
-literal|6l
+literal|6L
 decl_stmt|;
 name|msg
 operator|.
@@ -3287,7 +3287,7 @@ expr_stmt|;
 name|long
 name|testLong
 init|=
-literal|6l
+literal|6L
 decl_stmt|;
 name|msg
 operator|.

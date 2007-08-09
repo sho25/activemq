@@ -113,7 +113,7 @@ argument_list|(
 name|bindAddress
 argument_list|)
 expr_stmt|;
-comment|//answer.setDeleteAllMessagesOnStartup(true);
+comment|// answer.setDeleteAllMessagesOnStartup(true);
 block|}
 block|}
 end_class

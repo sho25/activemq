@@ -128,7 +128,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a composite {@link Destination} where send()s are replicated to  * each Destination instance.  *  * @version $Revision$  */
+comment|/**  * Represents a composite {@link Destination} where send()s are replicated to  * each Destination instance.  *   * @version $Revision$  */
 end_comment
 
 begin_class

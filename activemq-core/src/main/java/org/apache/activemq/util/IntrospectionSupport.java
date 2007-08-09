@@ -17,20 +17,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQDestination
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|beans
@@ -161,7 +147,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|Map
+operator|.
+name|Entry
 import|;
 end_import
 
@@ -171,9 +159,21 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|Entry
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQDestination
 import|;
 end_import
 

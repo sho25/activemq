@@ -29,9 +29,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|PrintWriter
+name|concurrent
+operator|.
+name|CountDownLatch
 import|;
 end_import
 
@@ -58,18 +60,6 @@ operator|.
 name|impl
 operator|.
 name|KahaStore
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CountDownLatch
 import|;
 end_import
 

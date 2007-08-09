@@ -17,6 +17,56 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|IllegalStateException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Message
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|MessageConsumer
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|MessageListener
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -101,28 +151,8 @@ name|Processor
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|IllegalStateException
-import|;
-end_import
-
 begin_comment
-comment|/**  * A JMS {@link javax.jms.MessageConsumer} which consumes message exchanges from a  * Camel {@link Endpoint}  *  * @version $Revision: $  */
+comment|/**  * A JMS {@link javax.jms.MessageConsumer} which consumes message exchanges from  * a Camel {@link Endpoint}  *   * @version $Revision: $  */
 end_comment
 
 begin_class
@@ -416,7 +446,7 @@ argument_list|)
 return|;
 block|}
 comment|// Properties
-comment|//-----------------------------------------------------------------------
+comment|// -----------------------------------------------------------------------
 specifier|public
 name|CamelDestination
 name|getDestination
@@ -463,7 +493,7 @@ name|session
 return|;
 block|}
 comment|// Implementation methods
-comment|//-----------------------------------------------------------------------
+comment|// -----------------------------------------------------------------------
 specifier|protected
 name|PollingConsumer
 name|getPollingConsumer

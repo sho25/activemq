@@ -77,11 +77,11 @@ end_import
 
 begin_import
 import|import
-name|java
+name|junit
 operator|.
-name|util
+name|framework
 operator|.
-name|Set
+name|TestCase
 import|;
 end_import
 
@@ -98,16 +98,6 @@ operator|.
 name|impl
 operator|.
 name|StoreLockedExcpetion
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 

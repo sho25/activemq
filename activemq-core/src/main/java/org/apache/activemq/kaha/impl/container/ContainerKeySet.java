@@ -87,24 +87,6 @@ name|IndexItem
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|kaha
-operator|.
-name|impl
-operator|.
-name|index
-operator|.
-name|IndexLinkedList
-import|;
-end_import
-
 begin_comment
 comment|/**  * A Set of keys for the container  *   * @version $Revision: 1.2 $  */
 end_comment

@@ -593,6 +593,14 @@ name|doPostRollback
 argument_list|()
 expr_stmt|;
 break|break;
+default|default:
+throw|throw
+operator|new
+name|XAException
+argument_list|(
+literal|"Invalid state"
+argument_list|)
+throw|;
 block|}
 block|}
 specifier|private
