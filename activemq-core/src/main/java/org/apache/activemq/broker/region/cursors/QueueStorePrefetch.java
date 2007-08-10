@@ -258,7 +258,13 @@ name|start
 parameter_list|()
 throws|throws
 name|Exception
-block|{     }
+block|{
+name|store
+operator|.
+name|resetBatching
+argument_list|()
+expr_stmt|;
+block|}
 specifier|public
 name|void
 name|stop
