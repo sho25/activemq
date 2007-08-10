@@ -216,7 +216,9 @@ argument_list|,
 name|msgContext
 argument_list|)
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 name|firstMatchingConsumer

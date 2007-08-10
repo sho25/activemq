@@ -331,6 +331,24 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|protected
+name|CopyOnWriteArrayList
+argument_list|<
+name|TransportConnection
+argument_list|>
+name|connections
+init|=
+operator|new
+name|CopyOnWriteArrayList
+argument_list|<
+name|TransportConnection
+argument_list|>
+argument_list|()
+decl_stmt|;
+specifier|protected
+name|TransportStatusDetector
+name|statusDector
+decl_stmt|;
 specifier|private
 name|Broker
 name|broker
@@ -363,18 +381,6 @@ specifier|private
 name|DiscoveryAgent
 name|discoveryAgent
 decl_stmt|;
-specifier|protected
-name|CopyOnWriteArrayList
-name|connections
-init|=
-operator|new
-name|CopyOnWriteArrayList
-argument_list|()
-decl_stmt|;
-specifier|protected
-name|TransportStatusDetector
-name|statusDector
-decl_stmt|;
 specifier|private
 name|ConnectorStatistics
 name|statistics
@@ -405,16 +411,6 @@ name|enableStatusMonitor
 init|=
 literal|true
 decl_stmt|;
-comment|/**      * @return Returns the connections.      */
-specifier|public
-name|CopyOnWriteArrayList
-name|getConnections
-parameter_list|()
-block|{
-return|return
-name|connections
-return|;
-block|}
 specifier|public
 name|TransportConnector
 parameter_list|()
@@ -488,6 +484,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+comment|/**      * @return Returns the connections.      */
+specifier|public
+name|CopyOnWriteArrayList
+argument_list|<
+name|TransportConnection
+argument_list|>
+name|getConnections
+parameter_list|()
+block|{
+return|return
+name|connections
+return|;
 block|}
 comment|/**      * Factory method to create a JMX managed version of this transport      * connector      */
 specifier|public
@@ -1182,6 +1191,9 @@ block|}
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|TransportConnection
+argument_list|>
 name|iter
 init|=
 name|connections
@@ -1199,9 +1211,6 @@ block|{
 name|TransportConnection
 name|c
 init|=
-operator|(
-name|TransportConnection
-operator|)
 name|iter
 operator|.
 name|next
@@ -1594,6 +1603,7 @@ name|rc
 operator|==
 literal|null
 condition|)
+block|{
 name|rc
 operator|=
 name|super
@@ -1601,6 +1611,7 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|rc
 return|;

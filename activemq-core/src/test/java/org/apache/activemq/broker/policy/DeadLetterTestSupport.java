@@ -181,10 +181,6 @@ specifier|protected
 name|MessageProducer
 name|producer
 decl_stmt|;
-specifier|private
-name|Destination
-name|destination
-decl_stmt|;
 specifier|protected
 name|int
 name|deliveryMode
@@ -220,6 +216,10 @@ init|=
 name|Session
 operator|.
 name|CLIENT_ACKNOWLEDGE
+decl_stmt|;
+specifier|private
+name|Destination
+name|destination
 decl_stmt|;
 specifier|protected
 name|void

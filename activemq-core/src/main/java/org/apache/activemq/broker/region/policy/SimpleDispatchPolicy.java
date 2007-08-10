@@ -156,7 +156,9 @@ operator|.
 name|isBrowser
 argument_list|()
 condition|)
+block|{
 continue|continue;
+block|}
 comment|// Only dispatch to interested subscriptions
 if|if
 condition|(
@@ -170,7 +172,9 @@ argument_list|,
 name|msgContext
 argument_list|)
 condition|)
+block|{
 continue|continue;
+block|}
 name|sub
 operator|.
 name|add

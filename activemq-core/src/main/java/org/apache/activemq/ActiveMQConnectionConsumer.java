@@ -160,20 +160,6 @@ specifier|private
 name|boolean
 name|closed
 decl_stmt|;
-specifier|protected
-specifier|final
-name|List
-name|messageQueue
-init|=
-name|Collections
-operator|.
-name|synchronizedList
-argument_list|(
-operator|new
-name|LinkedList
-argument_list|()
-argument_list|)
-decl_stmt|;
 comment|/**      * Create a ConnectionConsumer      *       * @param theConnection      * @param theSessionPool      * @param theConsumerInfo      * @throws JMSException      */
 specifier|protected
 name|ActiveMQConnectionConsumer

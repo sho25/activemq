@@ -439,6 +439,11 @@ name|Object
 name|target
 parameter_list|,
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|?
+argument_list|>
 name|props
 parameter_list|,
 name|String

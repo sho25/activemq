@@ -214,11 +214,9 @@ index|[
 name|arrayPos
 index|]
 operator||=
-operator|(
 literal|0x01
 operator|<<
 name|bytePos
-operator|)
 expr_stmt|;
 block|}
 name|bytePos

@@ -41,6 +41,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Pattern
@@ -71,6 +81,41 @@ name|BinaryExpression
 implements|implements
 name|BooleanExpression
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Set
+argument_list|<
+name|Character
+argument_list|>
+name|REGEXP_CONTROL_CHARS
+init|=
+operator|new
+name|HashSet
+argument_list|<
+name|Character
+argument_list|>
+argument_list|()
+decl_stmt|;
+comment|/**      * @param left      * @param right      */
+specifier|public
+name|ComparisonExpression
+parameter_list|(
+name|Expression
+name|left
+parameter_list|,
+name|Expression
+name|right
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|left
+argument_list|,
+name|right
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 specifier|static
 name|BooleanExpression
@@ -143,16 +188,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-specifier|private
-specifier|static
-specifier|final
-name|HashSet
-name|REGEXP_CONTROL_CHARS
-init|=
-operator|new
-name|HashSet
-argument_list|()
-decl_stmt|;
 static|static
 block|{
 name|REGEXP_CONTROL_CHARS
@@ -887,6 +922,7 @@ operator|instanceof
 name|PropertyExpression
 operator|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|RuntimeException
@@ -896,6 +932,7 @@ operator|+
 name|left
 argument_list|)
 throw|;
+block|}
 return|return
 name|UnaryExpression
 operator|.
@@ -933,6 +970,7 @@ operator|instanceof
 name|PropertyExpression
 operator|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|RuntimeException
@@ -942,6 +980,7 @@ operator|+
 name|left
 argument_list|)
 throw|;
+block|}
 return|return
 name|UnaryExpression
 operator|.
@@ -1486,7 +1525,9 @@ name|value
 operator|instanceof
 name|Number
 condition|)
+block|{
 return|return;
+block|}
 comment|// Else it's boolean or a String..
 throw|throw
 operator|new
@@ -1556,6 +1597,7 @@ name|value
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|RuntimeException
@@ -1569,7 +1611,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      *       * @param left      * @param right      */
+block|}
+comment|/**      * @param left      * @param right      */
 specifier|private
 specifier|static
 name|void
@@ -1606,6 +1649,7 @@ operator|instanceof
 name|BooleanExpression
 operator|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|RuntimeException
@@ -1623,24 +1667,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * @param left      * @param right      */
-specifier|public
-name|ComparisonExpression
-parameter_list|(
-name|Expression
-name|left
-parameter_list|,
-name|Expression
-name|right
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|left
-argument_list|,
-name|right
-argument_list|)
-expr_stmt|;
 block|}
 specifier|public
 name|Object
@@ -1653,6 +1679,9 @@ throws|throws
 name|JMSException
 block|{
 name|Comparable
+argument_list|<
+name|Comparable
+argument_list|>
 name|lv
 init|=
 operator|(
@@ -1721,6 +1750,11 @@ name|rv
 parameter_list|)
 block|{
 name|Class
+argument_list|<
+name|?
+extends|extends
+name|Comparable
+argument_list|>
 name|lc
 init|=
 name|lv
@@ -1729,6 +1763,11 @@ name|getClass
 argument_list|()
 decl_stmt|;
 name|Class
+argument_list|<
+name|?
+extends|extends
+name|Comparable
+argument_list|>
 name|rc
 init|=
 name|rv

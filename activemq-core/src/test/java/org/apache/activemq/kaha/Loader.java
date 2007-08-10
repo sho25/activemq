@@ -188,6 +188,9 @@ name|await
 argument_list|()
 expr_stmt|;
 name|Marshaller
+argument_list|<
+name|String
+argument_list|>
 name|keyMarshaller
 init|=
 operator|new
@@ -195,6 +198,9 @@ name|StringMarshaller
 argument_list|()
 decl_stmt|;
 name|Marshaller
+argument_list|<
+name|Object
+argument_list|>
 name|valueMarshaller
 init|=
 operator|new
@@ -202,6 +208,11 @@ name|BytesMarshaller
 argument_list|()
 decl_stmt|;
 name|MapContainer
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|container
 init|=
 name|store
@@ -324,6 +335,9 @@ literal|"(ms)"
 argument_list|)
 expr_stmt|;
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|keys
 init|=
 name|container
@@ -342,6 +356,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|i
 init|=
 name|keys
@@ -416,6 +433,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|i
 init|=
 name|keys

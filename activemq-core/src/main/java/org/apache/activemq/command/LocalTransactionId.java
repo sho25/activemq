@@ -193,9 +193,11 @@ name|this
 operator|==
 name|o
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|o
@@ -211,9 +213,11 @@ name|LocalTransactionId
 operator|.
 name|class
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|LocalTransactionId
 name|tx
 init|=

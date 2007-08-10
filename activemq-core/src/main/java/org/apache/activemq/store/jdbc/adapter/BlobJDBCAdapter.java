@@ -245,6 +245,7 @@ argument_list|()
 operator|!=
 literal|1
 condition|)
+block|{
 throw|throw
 operator|new
 name|JMSException
@@ -256,6 +257,7 @@ operator|+
 literal|" in container."
 argument_list|)
 throw|;
+block|}
 name|s
 operator|.
 name|close
@@ -298,6 +300,7 @@ operator|.
 name|next
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|JMSException
@@ -309,6 +312,7 @@ operator|+
 literal|" in container."
 argument_list|)
 throw|;
+block|}
 comment|// Update the blob
 name|Blob
 name|blob
@@ -418,7 +422,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Throwable
-name|e
+name|ignore
 parameter_list|)
 block|{             }
 try|try
@@ -432,7 +436,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Throwable
-name|e
+name|ignore
 parameter_list|)
 block|{             }
 block|}

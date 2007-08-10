@@ -132,6 +132,10 @@ name|JMSInputStreamTest
 extends|extends
 name|JmsTestSupport
 block|{
+specifier|public
+name|Destination
+name|destination
+decl_stmt|;
 specifier|protected
 name|DataOutputStream
 name|out
@@ -143,10 +147,6 @@ decl_stmt|;
 specifier|private
 name|ActiveMQConnection
 name|connection2
-decl_stmt|;
-specifier|public
-name|Destination
-name|destination
 decl_stmt|;
 specifier|public
 specifier|static

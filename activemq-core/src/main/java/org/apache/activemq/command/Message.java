@@ -317,6 +317,11 @@ name|size
 decl_stmt|;
 specifier|protected
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|properties
 decl_stmt|;
 specifier|protected
@@ -331,6 +336,10 @@ specifier|protected
 specifier|transient
 name|boolean
 name|recievedByDFBridge
+decl_stmt|;
+specifier|protected
+name|boolean
+name|droppable
 decl_stmt|;
 specifier|private
 specifier|transient
@@ -361,10 +370,6 @@ specifier|private
 name|BrokerId
 index|[]
 name|brokerPath
-decl_stmt|;
-specifier|protected
-name|boolean
-name|droppable
 decl_stmt|;
 specifier|private
 name|BrokerId
@@ -522,6 +527,11 @@ name|properties
 operator|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 argument_list|(
 name|properties
 argument_list|)
@@ -639,9 +649,11 @@ name|marshalledProperties
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|properties
 operator|=
 name|unmarsallProperties
@@ -659,8 +671,18 @@ name|name
 argument_list|)
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|getProperties
 parameter_list|()
 throws|throws
@@ -679,11 +701,13 @@ name|marshalledProperties
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|Collections
 operator|.
 name|EMPTY_MAP
 return|;
+block|}
 name|properties
 operator|=
 name|unmarsallProperties
@@ -766,6 +790,11 @@ name|properties
 operator|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -787,6 +816,11 @@ block|}
 block|}
 specifier|private
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|unmarsallProperties
 parameter_list|(
 name|ByteSequence
@@ -1830,6 +1864,7 @@ name|regionDestination
 operator|!=
 literal|null
 condition|)
+block|{
 name|regionDestination
 operator|.
 name|getUsageManager
@@ -1840,6 +1875,7 @@ argument_list|(
 name|size
 argument_list|)
 expr_stmt|;
+block|}
 comment|// System.out.println(" + "+getDestination()+" :::: "+getMessageId()+"
 comment|// "+rc);
 return|return
@@ -1884,6 +1920,7 @@ name|regionDestination
 operator|!=
 literal|null
 condition|)
+block|{
 name|regionDestination
 operator|.
 name|getUsageManager
@@ -1894,6 +1931,7 @@ argument_list|(
 name|size
 argument_list|)
 expr_stmt|;
+block|}
 comment|// System.out.println(" - "+getDestination()+" :::: "+getMessageId()+"
 comment|// "+rc);
 return|return
@@ -1922,6 +1960,7 @@ name|marshalledProperties
 operator|!=
 literal|null
 condition|)
+block|{
 name|size
 operator|+=
 name|marshalledProperties
@@ -1929,12 +1968,14 @@ operator|.
 name|getLength
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|content
 operator|!=
 literal|null
 condition|)
+block|{
 name|size
 operator|+=
 name|content
@@ -1942,6 +1983,7 @@ operator|.
 name|getLength
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 return|return
 name|size

@@ -198,11 +198,6 @@ name|AMQTransactionStore
 implements|implements
 name|TransactionStore
 block|{
-specifier|private
-specifier|final
-name|AMQPersistenceAdapter
-name|peristenceAdapter
-decl_stmt|;
 name|Map
 argument_list|<
 name|TransactionId
@@ -236,6 +231,11 @@ argument_list|,
 name|AMQTx
 argument_list|>
 argument_list|()
+decl_stmt|;
+specifier|private
+specifier|final
+name|AMQPersistenceAdapter
+name|peristenceAdapter
 decl_stmt|;
 specifier|private
 name|boolean

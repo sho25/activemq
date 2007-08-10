@@ -172,7 +172,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A JAAS Authentication Broker that uses SSL Certificates.  *   * This class will provide the JAAS framework with a JaasCertificateCallbackHandler that will grant JAAS access to  *      incoming connections' SSL certificate chains.   * NOTE: There is a chance that the incoming connection does not have a valid certificate (has null).  *   * @author sepandm@gmail.com (Sepand)  */
+comment|/**  * A JAAS Authentication Broker that uses SSL Certificates. This class will  * provide the JAAS framework with a JaasCertificateCallbackHandler that will  * grant JAAS access to incoming connections' SSL certificate chains. NOTE:  * There is a chance that the incoming connection does not have a valid  * certificate (has null).  *   * @author sepandm@gmail.com (Sepand)  */
 end_comment
 
 begin_class
@@ -187,7 +187,7 @@ specifier|final
 name|String
 name|jaasConfiguration
 decl_stmt|;
-comment|/**      * Simple constructor. Leaves everything to superclass.      *       * @param next The Broker that does the actual work for this Filter.      * @param jassConfiguration The JAAS domain configuration name (refere to JAAS documentation).      */
+comment|/**      * Simple constructor. Leaves everything to superclass.      *       * @param next The Broker that does the actual work for this Filter.      * @param jassConfiguration The JAAS domain configuration name (refere to      *                JAAS documentation).      */
 specifier|public
 name|JaasCertificateAuthenticationBroker
 parameter_list|(
@@ -210,7 +210,7 @@ operator|=
 name|jaasConfiguration
 expr_stmt|;
 block|}
-comment|/**      * Overridden to allow for authentication based on client certificates.      *       * Connections being added will be authenticated based on their certificate chain and the JAAS module specified      *      through the JAAS framework.      * NOTE: The security context's username will be set to the first UserPrincipal created by the login module.      *       * @param context The context for the incoming Connection.      * @param info The ConnectionInfo Command representing the incoming connection.      */
+comment|/**      * Overridden to allow for authentication based on client certificates.      * Connections being added will be authenticated based on their certificate      * chain and the JAAS module specified through the JAAS framework. NOTE: The      * security context's username will be set to the first UserPrincipal      * created by the login module.      *       * @param context The context for the incoming Connection.      * @param info The ConnectionInfo Command representing the incoming      *                connection.      */
 specifier|public
 name|void
 name|addConnection
@@ -256,7 +256,8 @@ literal|"Unable to authenticate transport without SSL certificate."
 argument_list|)
 throw|;
 block|}
-comment|// Set the TCCL since it seems JAAS needs it to find the login module classes.
+comment|// Set the TCCL since it seems JAAS needs it to find the login
+comment|// module classes.
 name|ClassLoader
 name|original
 init|=

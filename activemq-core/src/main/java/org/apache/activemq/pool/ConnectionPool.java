@@ -420,7 +420,6 @@ block|{
 name|boolean
 name|isXa
 init|=
-operator|(
 name|transactionManager
 operator|!=
 literal|null
@@ -433,7 +432,6 @@ operator|!=
 name|Status
 operator|.
 name|STATUS_NO_TRANSACTION
-operator|)
 decl_stmt|;
 if|if
 condition|(

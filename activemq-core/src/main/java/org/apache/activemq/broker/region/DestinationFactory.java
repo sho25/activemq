@@ -125,6 +125,9 @@ comment|/**      * Returns a set of all the {@link org.apache.activemq.command.A
 specifier|public
 specifier|abstract
 name|Set
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 name|getDestinations
 parameter_list|()
 function_decl|;

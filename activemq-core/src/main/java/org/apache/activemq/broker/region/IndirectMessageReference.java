@@ -534,9 +534,11 @@ argument_list|,
 name|subscription
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 synchronized|synchronized
 init|(
 name|this
@@ -556,9 +558,11 @@ operator|!=
 name|subscription
 operator|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|lockOwner
 operator|=
 name|subscription

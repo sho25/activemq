@@ -210,9 +210,11 @@ name|this
 operator|==
 name|o
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|o
@@ -228,9 +230,11 @@ name|ConsumerId
 operator|.
 name|class
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|ConsumerId
 name|id
 init|=

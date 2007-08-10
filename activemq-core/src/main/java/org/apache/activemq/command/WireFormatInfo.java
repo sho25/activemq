@@ -170,7 +170,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @openwire:marshaller code="1"  * @version $Revision$  */
+comment|/**  * @openwire:marshaller code="1"  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -182,16 +182,6 @@ name|Command
 implements|,
 name|MarshallAware
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|MAX_PROPERTY_SIZE
-init|=
-literal|1024
-operator|*
-literal|4
-decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -201,6 +191,16 @@ init|=
 name|CommandTypes
 operator|.
 name|WIREFORMAT_INFO
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MAX_PROPERTY_SIZE
+init|=
+literal|1024
+operator|*
+literal|4
 decl_stmt|;
 specifier|private
 specifier|static
@@ -248,6 +248,11 @@ decl_stmt|;
 specifier|protected
 specifier|transient
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|properties
 decl_stmt|;
 specifier|private
@@ -442,9 +447,11 @@ name|marshalledProperties
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|properties
 operator|=
 name|unmarsallProperties
@@ -462,8 +469,18 @@ name|name
 argument_list|)
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|getProperties
 parameter_list|()
 throws|throws
@@ -482,11 +499,13 @@ name|marshalledProperties
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|Collections
 operator|.
 name|EMPTY_MAP
 return|;
+block|}
 name|properties
 operator|=
 name|unmarsallProperties
@@ -569,6 +588,11 @@ name|properties
 operator|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -590,6 +614,11 @@ block|}
 block|}
 specifier|private
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|unmarsallProperties
 parameter_list|(
 name|ByteSequence
@@ -1094,6 +1123,11 @@ name|toString
 parameter_list|()
 block|{
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|p
 init|=
 literal|null
@@ -1109,7 +1143,7 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|e
+name|ignore
 parameter_list|)
 block|{         }
 return|return

@@ -236,9 +236,11 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 comment|// search through existing subscriptions and see if we have a match
 name|boolean
 name|matched
@@ -340,10 +342,16 @@ throws|throws
 name|IOException
 block|{
 name|List
+argument_list|<
+name|DemandSubscription
+argument_list|>
 name|tmpList
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|DemandSubscription
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -404,6 +412,9 @@ block|}
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|DemandSubscription
+argument_list|>
 name|i
 init|=
 name|tmpList
@@ -421,9 +432,6 @@ block|{
 name|DemandSubscription
 name|ds
 init|=
-operator|(
-name|DemandSubscription
-operator|)
 name|i
 operator|.
 name|next
@@ -454,6 +462,7 @@ operator|.
 name|isTraceEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|trace
@@ -474,6 +483,7 @@ name|getRemoteInfo
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

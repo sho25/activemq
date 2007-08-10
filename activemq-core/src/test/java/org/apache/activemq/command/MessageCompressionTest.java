@@ -134,14 +134,6 @@ name|MessageCompressionTest
 extends|extends
 name|TestCase
 block|{
-specifier|protected
-name|BrokerService
-name|broker
-decl_stmt|;
-specifier|private
-name|ActiveMQQueue
-name|queue
-decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -190,6 +182,14 @@ operator|+
 literal|"The quick red fox jumped over the lazy brown dog. "
 operator|+
 literal|"The quick red fox jumped over the lazy brown dog. "
+decl_stmt|;
+specifier|protected
+name|BrokerService
+name|broker
+decl_stmt|;
+specifier|private
+name|ActiveMQQueue
+name|queue
 decl_stmt|;
 specifier|protected
 name|void

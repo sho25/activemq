@@ -311,6 +311,8 @@ condition|)
 block|{
 name|firstFree
 operator|=
+name|item
+expr_stmt|;
 name|lastFree
 operator|=
 name|item
@@ -545,6 +547,8 @@ name|IOException
 block|{
 name|firstFree
 operator|=
+literal|null
+expr_stmt|;
 name|lastFree
 operator|=
 literal|null
@@ -609,6 +613,8 @@ name|firstFree
 expr_stmt|;
 name|firstFree
 operator|=
+literal|null
+expr_stmt|;
 name|lastFree
 operator|=
 literal|null
@@ -818,6 +824,8 @@ else|else
 block|{
 name|lastFree
 operator|=
+name|index
+expr_stmt|;
 name|firstFree
 operator|=
 name|index

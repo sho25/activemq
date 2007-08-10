@@ -216,7 +216,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version $Revision: 397249 $  */
+comment|/**  * @version $Revision: 397249 $  */
 end_comment
 
 begin_class
@@ -331,7 +331,8 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-comment|// Once we delete the topic, the advisory topic for the destination should also be deleted.
+comment|// Once we delete the topic, the advisory topic for the destination
+comment|// should also be deleted.
 name|tempTopic
 operator|.
 name|delete
@@ -396,7 +397,8 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-comment|// Once we delete the queue, the advisory topic for the destination should also be deleted.
+comment|// Once we delete the queue, the advisory topic for the destination
+comment|// should also be deleted.
 name|tempQueue
 operator|.
 name|delete

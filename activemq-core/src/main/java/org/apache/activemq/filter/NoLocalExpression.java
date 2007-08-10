@@ -94,9 +94,11 @@ operator|.
 name|isDropped
 argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 return|return
 operator|!
 name|connectionId

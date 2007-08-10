@@ -195,10 +195,16 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 name|List
+argument_list|<
+name|Destination
+argument_list|>
 name|destinations
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Destination
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -267,9 +273,6 @@ literal|1
 condition|)
 block|{
 return|return
-operator|(
-name|Destination
-operator|)
 name|destinations
 operator|.
 name|get
@@ -374,6 +377,9 @@ name|destination
 parameter_list|,
 specifier|final
 name|List
+argument_list|<
+name|Destination
+argument_list|>
 name|destinations
 parameter_list|)
 block|{
@@ -400,6 +406,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Destination
+argument_list|>
 name|iter
 init|=
 name|destinations
@@ -417,9 +426,6 @@ block|{
 name|Destination
 name|destination
 init|=
-operator|(
-name|Destination
-operator|)
 name|iter
 operator|.
 name|next

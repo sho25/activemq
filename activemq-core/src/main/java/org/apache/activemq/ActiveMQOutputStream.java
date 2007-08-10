@@ -195,6 +195,10 @@ implements|implements
 name|Disposable
 block|{
 comment|// Send down 64k messages.
+specifier|protected
+name|int
+name|count
+decl_stmt|;
 specifier|final
 name|byte
 name|buffer
@@ -208,10 +212,6 @@ operator|*
 literal|1024
 index|]
 decl_stmt|;
-specifier|protected
-name|int
-name|count
-decl_stmt|;
 specifier|private
 specifier|final
 name|ActiveMQConnection
@@ -219,7 +219,12 @@ name|connection
 decl_stmt|;
 specifier|private
 specifier|final
-name|HashMap
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|properties
 decl_stmt|;
 specifier|private
@@ -263,6 +268,11 @@ name|ActiveMQDestination
 name|destination
 parameter_list|,
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|properties
 parameter_list|,
 name|int
@@ -313,6 +323,11 @@ literal|null
 else|:
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 argument_list|(
 name|properties
 argument_list|)

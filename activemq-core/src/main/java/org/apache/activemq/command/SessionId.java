@@ -235,9 +235,11 @@ name|this
 operator|==
 name|o
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|o
@@ -253,9 +255,11 @@ name|SessionId
 operator|.
 name|class
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|SessionId
 name|id
 init|=

@@ -121,10 +121,20 @@ name|brokerURI
 argument_list|)
 decl_stmt|;
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|params
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|(
 name|compositeData
 operator|.
@@ -157,6 +167,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|brokerService
 operator|.
 name|setBrokerName
@@ -167,6 +178,7 @@ name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|URI
 index|[]
 name|components

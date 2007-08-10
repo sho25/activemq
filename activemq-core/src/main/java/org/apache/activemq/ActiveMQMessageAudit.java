@@ -19,7 +19,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedHashMap
+name|Map
 import|;
 end_import
 
@@ -159,7 +159,7 @@ name|int
 name|windowSize
 decl_stmt|;
 specifier|private
-name|LinkedHashMap
+name|Map
 argument_list|<
 name|Object
 argument_list|,

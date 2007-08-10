@@ -309,6 +309,7 @@ operator|.
 name|isTraceEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|trace
@@ -318,6 +319,7 @@ operator|+
 name|dest
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

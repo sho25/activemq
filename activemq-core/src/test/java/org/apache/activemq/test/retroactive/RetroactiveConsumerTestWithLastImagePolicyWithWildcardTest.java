@@ -72,7 +72,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @version $Revision$  */
+comment|/**  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -120,7 +120,7 @@ operator|++
 operator|)
 argument_list|)
 decl_stmt|;
-comment|//        System.out.println("Sending to destination: " + topic);
+comment|// System.out.println("Sending to destination: " + topic);
 name|producer
 operator|.
 name|send

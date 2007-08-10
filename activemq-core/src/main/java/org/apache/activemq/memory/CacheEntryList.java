@@ -47,6 +47,8 @@ operator|.
 name|next
 operator|=
 name|tail
+expr_stmt|;
+name|tail
 operator|.
 name|previous
 operator|=
@@ -156,6 +158,8 @@ name|tail
 operator|.
 name|next
 operator|=
+name|tail
+expr_stmt|;
 name|tail
 operator|.
 name|previous

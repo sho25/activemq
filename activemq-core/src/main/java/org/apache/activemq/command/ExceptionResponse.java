@@ -26,9 +26,6 @@ name|ExceptionResponse
 extends|extends
 name|Response
 block|{
-name|Throwable
-name|exception
-decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -38,6 +35,9 @@ init|=
 name|CommandTypes
 operator|.
 name|EXCEPTION_RESPONSE
+decl_stmt|;
+name|Throwable
+name|exception
 decl_stmt|;
 specifier|public
 name|ExceptionResponse

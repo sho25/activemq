@@ -157,9 +157,11 @@ name|this
 operator|==
 name|o
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|o
@@ -175,9 +177,11 @@ name|ConnectionId
 operator|.
 name|class
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|ConnectionId
 name|id
 init|=

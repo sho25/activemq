@@ -59,6 +59,26 @@ name|Iterator
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
 begin_comment
 comment|/**  * Used to pool DataFileAccessors.  *   * @author chirino  */
 end_comment
@@ -75,7 +95,7 @@ name|dataManager
 decl_stmt|;
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|Integer
 argument_list|,
@@ -96,6 +116,7 @@ specifier|private
 name|boolean
 name|closed
 decl_stmt|;
+specifier|private
 name|int
 name|maxOpenReadersPerFile
 init|=
@@ -111,7 +132,7 @@ name|file
 decl_stmt|;
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|DataFileAccessor
 argument_list|>
@@ -648,7 +669,9 @@ if|if
 condition|(
 name|closed
 condition|)
+block|{
 return|return;
+block|}
 name|closed
 operator|=
 literal|true

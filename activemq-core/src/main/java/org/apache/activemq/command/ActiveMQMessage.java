@@ -256,6 +256,31 @@ name|CommandTypes
 operator|.
 name|ACTIVEMQ_MESSAGE
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|PropertySetter
+argument_list|>
+name|JMS_PROPERTY_SETERS
+init|=
+operator|new
+name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|PropertySetter
+argument_list|>
+argument_list|()
+decl_stmt|;
+specifier|protected
+specifier|transient
+name|Callback
+name|acknowledgeCallback
+decl_stmt|;
 specifier|public
 name|byte
 name|getDataStructureType
@@ -265,11 +290,6 @@ return|return
 name|DATA_STRUCTURE_TYPE
 return|;
 block|}
-specifier|protected
-specifier|transient
-name|Callback
-name|acknowledgeCallback
-decl_stmt|;
 specifier|public
 name|Message
 name|copy
@@ -362,9 +382,11 @@ name|this
 operator|==
 name|o
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|o
@@ -379,9 +401,11 @@ operator|!=
 name|getClass
 argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|ActiveMQMessage
 name|msg
 init|=
@@ -1172,6 +1196,9 @@ block|{
 return|return
 operator|new
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|this
 operator|.
@@ -1218,16 +1245,6 @@ throws|throws
 name|MessageFormatException
 function_decl|;
 block|}
-specifier|private
-specifier|static
-specifier|final
-name|HashMap
-name|JMS_PROPERTY_SETERS
-init|=
-operator|new
-name|HashMap
-argument_list|()
-decl_stmt|;
 static|static
 block|{
 name|JMS_PROPERTY_SETERS
@@ -2124,9 +2141,6 @@ expr_stmt|;
 name|PropertySetter
 name|setter
 init|=
-operator|(
-name|PropertySetter
-operator|)
 name|JMS_PROPERTY_SETERS
 operator|.
 name|get
@@ -2450,9 +2464,11 @@ name|value
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|Boolean
 name|rc
 init|=
@@ -2530,6 +2546,7 @@ name|value
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|NumberFormatException
@@ -2541,6 +2558,7 @@ operator|+
 literal|" was null"
 argument_list|)
 throw|;
+block|}
 name|Byte
 name|rc
 init|=
@@ -2618,6 +2636,7 @@ name|value
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|NumberFormatException
@@ -2629,6 +2648,7 @@ operator|+
 literal|" was null"
 argument_list|)
 throw|;
+block|}
 name|Short
 name|rc
 init|=
@@ -2706,6 +2726,7 @@ name|value
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|NumberFormatException
@@ -2717,6 +2738,7 @@ operator|+
 literal|" was null"
 argument_list|)
 throw|;
+block|}
 name|Integer
 name|rc
 init|=
@@ -2794,6 +2816,7 @@ name|value
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|NumberFormatException
@@ -2805,6 +2828,7 @@ operator|+
 literal|" was null"
 argument_list|)
 throw|;
+block|}
 name|Long
 name|rc
 init|=
@@ -2882,6 +2906,7 @@ name|value
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|NullPointerException
@@ -2893,6 +2918,7 @@ operator|+
 literal|" was null"
 argument_list|)
 throw|;
+block|}
 name|Float
 name|rc
 init|=
@@ -2970,6 +2996,7 @@ name|value
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|NullPointerException
@@ -2981,6 +3008,7 @@ operator|+
 literal|" was null"
 argument_list|)
 throw|;
+block|}
 name|Double
 name|rc
 init|=
@@ -3082,9 +3110,11 @@ name|value
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|String
 name|rc
 init|=

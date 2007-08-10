@@ -53,9 +53,98 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|ClassLoading
 block|{
+comment|/**      * Primitive type name -> class map.      */
+specifier|private
+specifier|static
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Class
+argument_list|>
+name|PRIMITIVES
+init|=
+operator|new
+name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Class
+argument_list|>
+argument_list|()
+decl_stmt|;
+comment|/**      * VM primitive type primitive type -> name      */
+specifier|private
+specifier|static
+specifier|final
+name|Map
+argument_list|<
+name|Class
+argument_list|,
+name|String
+argument_list|>
+name|VM_PRIMITIVES_REVERSE
+init|=
+operator|new
+name|HashMap
+argument_list|<
+name|Class
+argument_list|,
+name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
+comment|/**      * VM primitive type name -> primitive type      */
+specifier|private
+specifier|static
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Class
+argument_list|>
+name|VM_PRIMITIVES
+init|=
+operator|new
+name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Class
+argument_list|>
+argument_list|()
+decl_stmt|;
+comment|/**      * Map of primitive types to their wrapper classes      */
+specifier|private
+specifier|static
+specifier|final
+name|Map
+argument_list|<
+name|Class
+argument_list|,
+name|Class
+argument_list|>
+name|PRIMITIVE_WRAPPERS
+init|=
+operator|new
+name|HashMap
+argument_list|<
+name|Class
+argument_list|,
+name|Class
+argument_list|>
+argument_list|()
+decl_stmt|;
+specifier|private
+name|ClassLoading
+parameter_list|()
+block|{             }
 comment|/**      * Load a class for the given name.<p/>      *<p>      * Handles loading primitive types as well as VM class and array syntax.      *       * @param className      *            The name of the Class to be loaded.      * @param classLoader      *            The class loader to load the Class object from.      * @return The Class object for the given name.      * @throws ClassNotFoundException      *             Failed to load Class object.      */
 specifier|public
 specifier|static
@@ -538,17 +627,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Primitive type name -> class map.      */
-specifier|private
-specifier|static
-specifier|final
-name|Map
-name|PRIMITIVES
-init|=
-operator|new
-name|HashMap
-argument_list|()
-decl_stmt|;
 comment|/** Setup the primitives map. */
 static|static
 block|{
@@ -664,9 +742,6 @@ name|name
 parameter_list|)
 block|{
 return|return
-operator|(
-name|Class
-operator|)
 name|PRIMITIVES
 operator|.
 name|get
@@ -675,17 +750,6 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/**      * VM primitive type name -> primitive type      */
-specifier|private
-specifier|static
-specifier|final
-name|HashMap
-name|VM_PRIMITIVES
-init|=
-operator|new
-name|HashMap
-argument_list|()
-decl_stmt|;
 comment|/** Setup the vm primitives map. */
 static|static
 block|{
@@ -789,17 +853,6 @@ name|class
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * VM primitive type primitive type -> name      */
-specifier|private
-specifier|static
-specifier|final
-name|HashMap
-name|VM_PRIMITIVES_REVERSE
-init|=
-operator|new
-name|HashMap
-argument_list|()
-decl_stmt|;
 comment|/** Setup the vm primitives reverse map. */
 static|static
 block|{
@@ -915,9 +968,6 @@ name|name
 parameter_list|)
 block|{
 return|return
-operator|(
-name|Class
-operator|)
 name|VM_PRIMITIVES
 operator|.
 name|get
@@ -926,17 +976,6 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/**      * Map of primitive types to their wrapper classes      */
-specifier|private
-specifier|static
-specifier|final
-name|Map
-name|PRIMITIVE_WRAPPERS
-init|=
-operator|new
-name|HashMap
-argument_list|()
-decl_stmt|;
 comment|/** Setup the wrapper map. */
 static|static
 block|{

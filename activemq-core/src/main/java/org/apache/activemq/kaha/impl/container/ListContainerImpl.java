@@ -1306,11 +1306,6 @@ block|{
 name|load
 argument_list|()
 expr_stmt|;
-name|boolean
-name|result
-init|=
-literal|false
-decl_stmt|;
 for|for
 control|(
 name|Iterator
@@ -1339,25 +1334,19 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-operator|(
-name|result
-operator|=
 name|contains
 argument_list|(
 name|obj
 argument_list|)
-operator|)
 condition|)
 block|{
-name|result
-operator|=
+return|return
 literal|false
-expr_stmt|;
-break|break;
+return|;
 block|}
 block|}
 return|return
-name|result
+literal|true
 return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.util.List#addAll(java.util.Collection)      */
@@ -3698,6 +3687,7 @@ if|if
 condition|(
 name|hasNext
 condition|)
+block|{
 name|result
 operator|.
 name|append
@@ -3705,6 +3695,7 @@ argument_list|(
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|result
 operator|.

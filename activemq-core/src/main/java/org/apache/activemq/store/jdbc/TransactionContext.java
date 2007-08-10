@@ -355,7 +355,9 @@ name|p
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 try|try
 block|{
 name|int
@@ -566,6 +568,7 @@ if|if
 condition|(
 name|inTx
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -573,6 +576,7 @@ argument_list|(
 literal|"Already started."
 argument_list|)
 throw|;
+block|}
 name|inTx
 operator|=
 literal|true
@@ -595,6 +599,7 @@ condition|(
 operator|!
 name|inTx
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -602,6 +607,7 @@ argument_list|(
 literal|"Not started."
 argument_list|)
 throw|;
+block|}
 try|try
 block|{
 name|executeBatch
@@ -615,11 +621,13 @@ operator|.
 name|getAutoCommit
 argument_list|()
 condition|)
+block|{
 name|connection
 operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -668,6 +676,7 @@ condition|(
 operator|!
 name|inTx
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -675,6 +684,7 @@ argument_list|(
 literal|"Not started."
 argument_list|)
 throw|;
+block|}
 try|try
 block|{
 if|if

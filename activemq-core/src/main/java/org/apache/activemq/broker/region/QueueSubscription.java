@@ -416,9 +416,11 @@ operator|.
 name|isAcked
 argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 comment|// Keep message groups together.
 name|String
 name|groupId

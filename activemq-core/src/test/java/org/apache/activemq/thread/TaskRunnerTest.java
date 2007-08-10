@@ -79,15 +79,11 @@ end_import
 
 begin_import
 import|import
-name|org
+name|junit
 operator|.
-name|apache
+name|framework
 operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|TopicClusterTest
+name|TestCase
 import|;
 end_import
 
@@ -116,16 +112,6 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 

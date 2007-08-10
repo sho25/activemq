@@ -120,6 +120,7 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 name|m
 operator|=
 name|cause
@@ -127,6 +128,7 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|m
 return|;

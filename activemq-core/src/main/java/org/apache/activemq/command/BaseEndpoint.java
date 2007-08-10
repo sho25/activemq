@@ -30,6 +30,7 @@ specifier|private
 name|String
 name|name
 decl_stmt|;
+specifier|private
 name|BrokerInfo
 name|brokerInfo
 decl_stmt|;

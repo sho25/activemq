@@ -433,11 +433,13 @@ name|bucket
 operator|<
 literal|0
 condition|)
+block|{
 name|bucket
 operator|*=
 operator|-
 literal|1
 expr_stmt|;
+block|}
 return|return
 name|bucket
 return|;

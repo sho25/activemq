@@ -26,9 +26,6 @@ name|DataResponse
 extends|extends
 name|Response
 block|{
-name|DataStructure
-name|data
-decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -38,6 +35,9 @@ init|=
 name|CommandTypes
 operator|.
 name|DATA_RESPONSE
+decl_stmt|;
+name|DataStructure
+name|data
 decl_stmt|;
 specifier|public
 name|DataResponse

@@ -57,6 +57,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -74,18 +94,38 @@ specifier|public
 class|class
 name|MultiExpressionEvaluator
 block|{
-name|HashMap
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|ExpressionListenerSet
+argument_list|>
 name|rootExpressions
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|ExpressionListenerSet
+argument_list|>
 argument_list|()
 decl_stmt|;
-name|HashMap
+name|Map
+argument_list|<
+name|Expression
+argument_list|,
+name|CacheExpression
+argument_list|>
 name|cachedExpressions
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|Expression
+argument_list|,
+name|CacheExpression
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|int
@@ -196,9 +236,11 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 return|return
 operator|(
 operator|(
@@ -245,11 +287,17 @@ block|{
 name|Expression
 name|expression
 decl_stmt|;
-name|ArrayList
+name|List
+argument_list|<
+name|ExpressionListener
+argument_list|>
 name|listeners
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|ExpressionListener
+argument_list|>
 argument_list|()
 decl_stmt|;
 block|}
@@ -287,9 +335,6 @@ block|{
 name|ExpressionListenerSet
 name|data
 init|=
-operator|(
-name|ExpressionListenerSet
-operator|)
 name|rootExpressions
 operator|.
 name|get
@@ -365,9 +410,6 @@ decl_stmt|;
 name|ExpressionListenerSet
 name|d
 init|=
-operator|(
-name|ExpressionListenerSet
-operator|)
 name|rootExpressions
 operator|.
 name|get
@@ -375,18 +417,19 @@ argument_list|(
 name|expKey
 argument_list|)
 decl_stmt|;
+comment|// that selector had not been added.
 if|if
 condition|(
 name|d
 operator|==
 literal|null
 condition|)
-comment|// that selector had not been added.
 block|{
 return|return
 literal|false
 return|;
 block|}
+comment|// that selector did not have that listeners..
 if|if
 condition|(
 operator|!
@@ -399,13 +442,12 @@ argument_list|(
 name|c
 argument_list|)
 condition|)
-comment|// that selector did not have that listner..
 block|{
 return|return
 literal|false
 return|;
 block|}
-comment|// If there are no more listners for this expression....
+comment|// If there are no more listeners for this expression....
 if|if
 condition|(
 name|d
@@ -418,7 +460,7 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// Uncache it...
+comment|// Un-cache it...
 name|removeFromCache
 argument_list|(
 operator|(
@@ -453,9 +495,6 @@ block|{
 name|CacheExpression
 name|n
 init|=
-operator|(
-name|CacheExpression
-operator|)
 name|cachedExpressions
 operator|.
 name|get
@@ -675,6 +714,9 @@ name|message
 parameter_list|)
 block|{
 name|Collection
+argument_list|<
+name|ExpressionListenerSet
+argument_list|>
 name|expressionListeners
 init|=
 name|rootExpressions
@@ -685,6 +727,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|ExpressionListenerSet
+argument_list|>
 name|iter
 init|=
 name|expressionListeners
@@ -702,9 +747,6 @@ block|{
 name|ExpressionListenerSet
 name|els
 init|=
-operator|(
-name|ExpressionListenerSet
-operator|)
 name|iter
 operator|.
 name|next
@@ -727,6 +769,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|ExpressionListener
+argument_list|>
 name|iterator
 init|=
 name|els
@@ -746,9 +791,6 @@ block|{
 name|ExpressionListener
 name|l
 init|=
-operator|(
-name|ExpressionListener
-operator|)
 name|iterator
 operator|.
 name|next

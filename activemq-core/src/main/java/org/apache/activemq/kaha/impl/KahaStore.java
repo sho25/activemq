@@ -173,20 +173,6 @@ name|activemq
 operator|.
 name|kaha
 operator|.
-name|RuntimeStoreException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|kaha
-operator|.
 name|Store
 import|;
 end_import
@@ -619,6 +605,8 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|persistentIndex
+init|=
+literal|true
 decl_stmt|;
 specifier|private
 name|RandomAccessFile
@@ -817,11 +805,13 @@ name|lockFile
 operator|!=
 literal|null
 condition|)
+block|{
 name|lockFile
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
@@ -2507,6 +2497,7 @@ if|if
 condition|(
 name|closed
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -2514,6 +2505,7 @@ argument_list|(
 literal|"Store has been closed."
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 operator|!
@@ -2927,25 +2919,6 @@ operator|.
 name|getCanonicalPath
 argument_list|()
 return|;
-block|}
-specifier|private
-name|void
-name|checkClosed
-parameter_list|()
-block|{
-if|if
-condition|(
-name|closed
-condition|)
-block|{
-throw|throw
-operator|new
-name|RuntimeStoreException
-argument_list|(
-literal|"The store is closed"
-argument_list|)
-throw|;
-block|}
 block|}
 comment|/**      * scans the directory and builds up the IndexManager and DataManager      *       * @throws IOException      */
 specifier|private

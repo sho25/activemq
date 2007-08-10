@@ -339,6 +339,7 @@ name|pw
 operator|!=
 literal|null
 condition|)
+block|{
 name|pw
 operator|=
 name|pw
@@ -350,6 +351,7 @@ argument_list|,
 literal|"*"
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|pw
 return|;

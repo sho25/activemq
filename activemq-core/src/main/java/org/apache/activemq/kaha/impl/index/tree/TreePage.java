@@ -640,14 +640,12 @@ name|isFull
 parameter_list|()
 block|{
 return|return
-operator|(
 name|treeEntries
 operator|.
 name|size
 argument_list|()
 operator|>=
 name|maximumEntries
-operator|)
 return|;
 block|}
 name|boolean
@@ -1525,12 +1523,10 @@ expr_stmt|;
 name|int
 name|midIndex
 init|=
-operator|(
 name|size
 argument_list|()
 operator|/
 literal|2
-operator|)
 decl_stmt|;
 name|TreeEntry
 name|midEntry

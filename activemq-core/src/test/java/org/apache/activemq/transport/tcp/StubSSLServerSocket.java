@@ -117,13 +117,11 @@ parameter_list|)
 block|{
 name|wantClientAuthStatus
 operator|=
-operator|(
 name|want
 condition|?
 name|TRUE
 else|:
 name|FALSE
-operator|)
 expr_stmt|;
 block|}
 specifier|public
@@ -136,13 +134,11 @@ parameter_list|)
 block|{
 name|needClientAuthStatus
 operator|=
-operator|(
 name|need
 condition|?
 name|TRUE
 else|:
 name|FALSE
-operator|)
 expr_stmt|;
 block|}
 comment|// --- Stubbed methods ---

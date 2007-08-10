@@ -245,6 +245,11 @@ name|Exception
 function_decl|;
 comment|/**      * Returns a copy of the current destinations available in the region      *       * @return a copy of the regions currently active at the time of the call with the key the destination and the value the Destination.      */
 name|Map
+argument_list|<
+name|ActiveMQDestination
+argument_list|,
+name|Destination
+argument_list|>
 name|getDestinationMap
 parameter_list|()
 function_decl|;

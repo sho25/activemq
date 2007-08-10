@@ -1326,6 +1326,9 @@ return|;
 block|}
 specifier|protected
 name|ListContainer
+argument_list|<
+name|TopicSubAck
+argument_list|>
 name|getListContainer
 parameter_list|(
 name|Object
@@ -1344,6 +1347,9 @@ name|getStore
 argument_list|()
 decl_stmt|;
 name|ListContainer
+argument_list|<
+name|TopicSubAck
+argument_list|>
 name|container
 init|=
 name|store

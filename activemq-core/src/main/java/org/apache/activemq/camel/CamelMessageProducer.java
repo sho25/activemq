@@ -158,6 +158,10 @@ name|CamelMessageProducer
 extends|extends
 name|ActiveMQMessageProducerSupport
 block|{
+specifier|protected
+name|Producer
+name|producer
+decl_stmt|;
 specifier|private
 specifier|final
 name|CamelDestination
@@ -167,10 +171,6 @@ specifier|private
 specifier|final
 name|Endpoint
 name|endpoint
-decl_stmt|;
-specifier|protected
-name|Producer
-name|producer
 decl_stmt|;
 specifier|private
 name|boolean

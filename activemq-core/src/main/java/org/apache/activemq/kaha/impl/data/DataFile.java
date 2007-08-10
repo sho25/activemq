@@ -87,6 +87,7 @@ specifier|private
 name|Object
 name|writerData
 decl_stmt|;
+specifier|private
 name|long
 name|length
 decl_stmt|;

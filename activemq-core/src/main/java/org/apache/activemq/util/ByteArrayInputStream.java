@@ -129,6 +129,8 @@ name|this
 operator|.
 name|mark
 operator|=
+name|offset
+expr_stmt|;
 name|this
 operator|.
 name|pos

@@ -481,7 +481,6 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|(
-operator|(
 name|read
 argument_list|(
 name|packet
@@ -497,7 +496,6 @@ name|packet
 argument_list|)
 operator|<<
 literal|0
-operator|)
 operator|)
 return|;
 block|}
@@ -521,7 +519,6 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|(
-operator|(
 name|read
 argument_list|(
 name|packet
@@ -537,7 +534,6 @@ name|packet
 argument_list|)
 operator|<<
 literal|8
-operator|)
 operator|)
 return|;
 block|}
@@ -647,7 +643,6 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|(
-operator|(
 name|read
 argument_list|(
 name|packet
@@ -681,7 +676,6 @@ name|packet
 argument_list|)
 operator|<<
 literal|0
-operator|)
 operator|)
 return|;
 block|}
@@ -705,7 +699,6 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|(
-operator|(
 name|read
 argument_list|(
 name|packet
@@ -739,7 +732,6 @@ name|packet
 argument_list|)
 operator|<<
 literal|24
-operator|)
 operator|)
 return|;
 block|}
@@ -764,7 +756,6 @@ expr_stmt|;
 return|return
 operator|(
 operator|(
-operator|(
 name|long
 operator|)
 name|read
@@ -854,7 +845,6 @@ argument_list|)
 operator|)
 operator|<<
 literal|0
-operator|)
 operator|)
 return|;
 block|}
@@ -878,7 +868,6 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|(
-operator|(
 name|read
 argument_list|(
 name|packet
@@ -963,7 +952,6 @@ name|packet
 argument_list|)
 operator|<<
 literal|56
-operator|)
 operator|)
 return|;
 block|}

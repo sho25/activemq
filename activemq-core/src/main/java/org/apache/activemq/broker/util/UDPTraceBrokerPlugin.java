@@ -642,6 +642,7 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -649,6 +650,7 @@ argument_list|(
 literal|"Wireformat must be specifed."
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|address

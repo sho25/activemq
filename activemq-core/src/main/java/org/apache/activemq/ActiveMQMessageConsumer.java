@@ -59,6 +59,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|ExecutorService
@@ -873,11 +883,21 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|HashMap
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|options
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|(
 name|dest
 operator|.
@@ -1104,9 +1124,11 @@ operator|.
 name|isStarted
 argument_list|()
 condition|)
+block|{
 name|start
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|StatsImpl
@@ -1368,11 +1390,13 @@ if|if
 condition|(
 name|wasRunning
 condition|)
+block|{
 name|session
 operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
 name|session
 operator|.
 name|redispatch
@@ -1386,11 +1410,13 @@ if|if
 condition|(
 name|wasRunning
 condition|)
+block|{
 name|session
 operator|.
 name|start
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
@@ -1678,9 +1704,11 @@ name|md
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|beforeMessageIsConsumed
 argument_list|(
 name|md
@@ -1894,9 +1922,11 @@ name|md
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|beforeMessageIsConsumed
 argument_list|(
 name|md
@@ -1980,9 +2010,11 @@ name|md
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|beforeMessageIsConsumed
 argument_list|(
 name|md
@@ -2630,7 +2662,9 @@ operator|.
 name|isClosed
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|messageExpired
@@ -2660,7 +2694,9 @@ operator|.
 name|isTransacted
 argument_list|()
 condition|)
-block|{             }
+block|{
+comment|// Do nothing.
+block|}
 elseif|else
 if|if
 condition|(
@@ -3014,6 +3050,8 @@ condition|)
 block|{
 name|deliveredCounter
 operator|=
+literal|0
+expr_stmt|;
 name|additionalWindowSize
 operator|=
 literal|0
@@ -3036,7 +3074,9 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 comment|// Acknowledge the last message.
 name|MessageDispatch
 name|lastMd
@@ -3253,7 +3293,9 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 comment|// Only increase the redlivery delay after the first redelivery..
 if|if
 condition|(
@@ -3261,6 +3303,7 @@ name|rollbackCounter
 operator|>
 literal|0
 condition|)
+block|{
 name|redeliveryDelay
 operator|=
 name|redeliveryPolicy
@@ -3270,6 +3313,7 @@ argument_list|(
 name|redeliveryDelay
 argument_list|)
 expr_stmt|;
+block|}
 name|rollbackCounter
 operator|++
 expr_stmt|;
@@ -3453,9 +3497,11 @@ operator|.
 name|get
 argument_list|()
 condition|)
+block|{
 name|start
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

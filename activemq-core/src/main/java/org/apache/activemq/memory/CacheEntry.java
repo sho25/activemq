@@ -91,9 +91,11 @@ name|next
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 synchronized|synchronized
 init|(
 name|owner
@@ -131,6 +133,8 @@ name|this
 operator|.
 name|next
 operator|=
+literal|null
+expr_stmt|;
 name|this
 operator|.
 name|previous

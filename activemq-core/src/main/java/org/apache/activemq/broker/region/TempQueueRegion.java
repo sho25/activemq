@@ -383,10 +383,12 @@ name|timeout
 operator|==
 literal|0
 condition|)
+block|{
 name|timeout
 operator|=
 literal|1
 expr_stmt|;
+block|}
 name|super
 operator|.
 name|removeDestination

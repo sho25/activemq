@@ -26,9 +26,6 @@ name|IntegerResponse
 extends|extends
 name|Response
 block|{
-name|int
-name|result
-decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -38,6 +35,9 @@ init|=
 name|CommandTypes
 operator|.
 name|INTEGER_RESPONSE
+decl_stmt|;
+name|int
+name|result
 decl_stmt|;
 specifier|public
 name|IntegerResponse

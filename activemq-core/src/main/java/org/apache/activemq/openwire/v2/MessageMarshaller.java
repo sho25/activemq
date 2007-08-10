@@ -104,7 +104,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marshalling code for Open Wire Format for MessageMarshaller  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  * @version $Revision$  */
+comment|/**  * Marshalling code for Open Wire Format for MessageMarshaller NOTE!: This file  * is auto generated - do not modify! if you need to make a change, please see  * the modify the groovy scripts in the under src/gram/script and then use maven  * openwire:generate to regenerate this file.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -115,7 +115,7 @@ name|MessageMarshaller
 extends|extends
 name|BaseCommandMarshaller
 block|{
-comment|/**      * Un-marshal an object instance from the data input stream      *      * @param o the object to un-marshal      * @param dataIn the data input stream to build the object from      * @throws IOException      */
+comment|/**      * Un-marshal an object instance from the data input stream      *       * @param o the object to un-marshal      * @param dataIn the data input stream to build the object from      * @throws IOException      */
 specifier|public
 name|void
 name|tightUnmarshal
@@ -1054,7 +1054,7 @@ operator|+
 literal|9
 return|;
 block|}
-comment|/**      * Write a object instance to data output stream      *      * @param o the instance to be marshaled      * @param dataOut the output stream      * @throws IOException thrown if an error occurs      */
+comment|/**      * Write a object instance to data output stream      *       * @param o the instance to be marshaled      * @param dataOut the output stream      * @throws IOException thrown if an error occurs      */
 specifier|public
 name|void
 name|tightMarshal2
@@ -1434,7 +1434,7 @@ name|wireFormat
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Un-marshal an object instance from the data input stream      *      * @param o the object to un-marshal      * @param dataIn the data input stream to build the object from      * @throws IOException      */
+comment|/**      * Un-marshal an object instance from the data input stream      *       * @param o the object to un-marshal      * @param dataIn the data input stream to build the object from      * @throws IOException      */
 specifier|public
 name|void
 name|looseUnmarshal

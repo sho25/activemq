@@ -70,6 +70,11 @@ name|Resettable
 block|{
 specifier|private
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|StatisticImpl
+argument_list|>
 name|map
 decl_stmt|;
 specifier|public
@@ -88,6 +93,11 @@ specifier|public
 name|StatsImpl
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|StatisticImpl
+argument_list|>
 name|map
 parameter_list|)
 block|{
@@ -180,9 +190,6 @@ name|name
 parameter_list|)
 block|{
 return|return
-operator|(
-name|Statistic
-operator|)
 name|map
 operator|.
 name|get
@@ -198,6 +205,9 @@ name|getStatisticNames
 parameter_list|()
 block|{
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|keys
 init|=
 name|map
@@ -236,6 +246,9 @@ name|getStatistics
 parameter_list|()
 block|{
 name|Collection
+argument_list|<
+name|StatisticImpl
+argument_list|>
 name|values
 init|=
 name|map

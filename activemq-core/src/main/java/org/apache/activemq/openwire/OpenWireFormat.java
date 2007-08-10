@@ -69,6 +69,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -92,20 +102,6 @@ operator|.
 name|command
 operator|.
 name|DataStructure
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|MarshallAware
 import|;
 end_import
 
@@ -201,20 +197,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|util
-operator|.
-name|IdGenerator
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|wireformat
 operator|.
 name|WireFormat
@@ -284,52 +266,48 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|stackTraceEnabled
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
 name|tcpNoDelayEnabled
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
 name|cacheEnabled
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
 name|tightEncodingEnabled
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
 name|sizePrefixDisabled
-init|=
-literal|false
 decl_stmt|;
 comment|// The following fields are used for value caching
 specifier|private
 name|short
 name|nextMarshallCacheIndex
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|short
 name|nextMarshallCacheEvictionIndex
-init|=
-literal|0
 decl_stmt|;
 specifier|private
-name|HashMap
+name|Map
+argument_list|<
+name|DataStructure
+argument_list|,
+name|Short
+argument_list|>
 name|marshallCacheMap
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|DataStructure
+argument_list|,
+name|Short
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -510,9 +488,11 @@ name|object
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|OpenWireFormat
 name|o
 init|=
@@ -553,22 +533,6 @@ operator|==
 name|sizePrefixDisabled
 return|;
 block|}
-specifier|static
-name|IdGenerator
-name|g
-init|=
-operator|new
-name|IdGenerator
-argument_list|()
-decl_stmt|;
-name|String
-name|id
-init|=
-name|g
-operator|.
-name|generateId
-argument_list|()
-decl_stmt|;
 specifier|public
 name|String
 name|toString
@@ -629,37 +593,12 @@ name|runMarshallCacheEvictionSweep
 argument_list|()
 expr_stmt|;
 block|}
-name|MarshallAware
-name|ma
-init|=
-literal|null
-decl_stmt|;
-comment|// If not using value caching, then the marshaled form is always the
-comment|// same
-if|if
-condition|(
-operator|!
-name|cacheEnabled
-operator|&&
-operator|(
-operator|(
-name|DataStructure
-operator|)
-name|command
-operator|)
-operator|.
-name|isMarshallAware
-argument_list|()
-condition|)
-block|{
-name|ma
-operator|=
-operator|(
-name|MarshallAware
-operator|)
-name|command
-expr_stmt|;
-block|}
+comment|//        MarshallAware ma = null;
+comment|//        // If not using value caching, then the marshaled form is always the
+comment|//        // same
+comment|//        if (!cacheEnabled&& ((DataStructure)command).isMarshallAware()) {
+comment|//            ma = (MarshallAware)command;
+comment|//        }
 name|ByteSequence
 name|sequence
 init|=
@@ -722,6 +661,7 @@ name|dsm
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -731,6 +671,7 @@ operator|+
 name|type
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|tightEncodingEnabled
@@ -1082,6 +1023,7 @@ name|dsm
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -1091,6 +1033,7 @@ operator|+
 name|type
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|tightEncodingEnabled
@@ -1292,14 +1235,12 @@ operator|!
 name|sizePrefixDisabled
 condition|)
 block|{
-name|int
-name|size
-init|=
 name|dis
 operator|.
 name|readInt
 argument_list|()
-decl_stmt|;
+expr_stmt|;
+comment|// int size = dis.readInt();
 comment|// byte[] data = new byte[size];
 comment|// dis.readFully(data);
 comment|// bytesIn.restart(data);
@@ -1373,6 +1314,7 @@ name|dsm
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -1382,6 +1324,7 @@ operator|+
 name|type
 argument_list|)
 throw|;
+block|}
 name|size
 operator|+=
 name|dsm
@@ -1475,6 +1418,7 @@ name|dsm
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -1484,6 +1428,7 @@ operator|+
 name|type
 argument_list|)
 throw|;
+block|}
 name|ds
 operator|.
 name|writeByte
@@ -1703,6 +1648,7 @@ name|dsm
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -1712,6 +1658,7 @@ operator|+
 name|dataType
 argument_list|)
 throw|;
+block|}
 name|Object
 name|data
 init|=
@@ -1812,9 +1759,11 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|0
 return|;
+block|}
 if|if
 condition|(
 name|o
@@ -1823,14 +1772,7 @@ name|isMarshallAware
 argument_list|()
 condition|)
 block|{
-name|MarshallAware
-name|ma
-init|=
-operator|(
-name|MarshallAware
-operator|)
-name|o
-decl_stmt|;
+comment|// MarshallAware ma = (MarshallAware)o;
 name|ByteSequence
 name|sequence
 init|=
@@ -1890,6 +1832,7 @@ name|dsm
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -1899,6 +1842,7 @@ operator|+
 name|type
 argument_list|)
 throw|;
+block|}
 return|return
 literal|1
 operator|+
@@ -1938,7 +1882,9 @@ operator|.
 name|readBoolean
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 name|byte
 name|type
 init|=
@@ -2001,6 +1947,7 @@ name|dsm
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -2010,6 +1957,7 @@ operator|+
 name|type
 argument_list|)
 throw|;
+block|}
 name|dsm
 operator|.
 name|tightMarshal2
@@ -2073,6 +2021,7 @@ name|dsm
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -2082,6 +2031,7 @@ operator|+
 name|dataType
 argument_list|)
 throw|;
+block|}
 name|DataStructure
 name|data
 init|=
@@ -2216,6 +2166,7 @@ name|dsm
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -2225,6 +2176,7 @@ operator|+
 name|dataType
 argument_list|)
 throw|;
+block|}
 name|DataStructure
 name|data
 init|=
@@ -2318,6 +2270,7 @@ name|dsm
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -2327,6 +2280,7 @@ operator|+
 name|type
 argument_list|)
 throw|;
+block|}
 name|dsm
 operator|.
 name|looseMarshal
@@ -2405,9 +2359,6 @@ name|o
 parameter_list|)
 block|{
 return|return
-operator|(
-name|Short
-operator|)
 name|marshallCacheMap
 operator|.
 name|get
@@ -2523,7 +2474,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 return|return;
+block|}
 name|unmarshallCache
 index|[
 name|index
@@ -2705,6 +2658,7 @@ name|preferedWireFormatInfo
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -2712,6 +2666,7 @@ argument_list|(
 literal|"Wireformat cannot not be renegotiated."
 argument_list|)
 throw|;
+block|}
 name|this
 operator|.
 name|setVersion
@@ -2925,6 +2880,11 @@ name|marshallCacheMap
 operator|=
 operator|new
 name|HashMap
+argument_list|<
+name|DataStructure
+argument_list|,
+name|Short
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}

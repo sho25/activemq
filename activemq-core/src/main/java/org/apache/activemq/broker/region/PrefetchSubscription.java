@@ -347,10 +347,16 @@ decl_stmt|;
 specifier|protected
 specifier|final
 name|LinkedList
+argument_list|<
+name|MessageReference
+argument_list|>
 name|dispatched
 init|=
 operator|new
 name|LinkedList
+argument_list|<
+name|MessageReference
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|protected
@@ -829,6 +835,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|MessageReference
+argument_list|>
 name|iter
 init|=
 name|dispatched
@@ -847,9 +856,6 @@ specifier|final
 name|MessageReference
 name|node
 init|=
-operator|(
-name|MessageReference
-operator|)
 name|iter
 operator|.
 name|next
@@ -1136,6 +1142,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|MessageReference
+argument_list|>
 name|iter
 init|=
 name|dispatched
@@ -1156,9 +1165,6 @@ specifier|final
 name|MessageReference
 name|node
 init|=
-operator|(
-name|MessageReference
-operator|)
 name|iter
 operator|.
 name|next
@@ -1235,6 +1241,7 @@ operator|.
 name|isInTransaction
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|JMSException
@@ -1244,6 +1251,7 @@ operator|+
 name|ack
 argument_list|)
 throw|;
+block|}
 comment|// Acknowledge all dispatched messages up till the message id of the
 comment|// acknowledgment.
 name|int
@@ -1259,6 +1267,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|MessageReference
+argument_list|>
 name|iter
 init|=
 name|dispatched
@@ -1277,9 +1288,6 @@ specifier|final
 name|MessageReference
 name|node
 init|=
-operator|(
-name|MessageReference
-operator|)
 name|iter
 operator|.
 name|next
@@ -1837,7 +1845,9 @@ name|node
 operator|==
 literal|null
 condition|)
+block|{
 break|break;
+block|}
 if|if
 condition|(
 name|canDispatch

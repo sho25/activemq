@@ -223,10 +223,12 @@ name|messages
 operator|.
 name|length
 condition|)
+block|{
 name|tail
 operator|=
 literal|0
 expr_stmt|;
+block|}
 return|return
 literal|true
 return|;
@@ -264,10 +266,12 @@ index|]
 operator|==
 literal|null
 condition|)
+block|{
 name|t
 operator|=
 literal|0
 expr_stmt|;
+block|}
 comment|// Well the buffer is really empty then.
 if|if
 condition|(
@@ -278,7 +282,9 @@ index|]
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 comment|// Keep dispatching until t hit's tail again.
 do|do
 block|{
@@ -310,10 +316,12 @@ name|messages
 operator|.
 name|length
 condition|)
+block|{
 name|t
 operator|=
 literal|0
 expr_stmt|;
+block|}
 block|}
 do|while
 condition|(
@@ -389,10 +397,16 @@ throws|throws
 name|Exception
 block|{
 name|List
+argument_list|<
+name|Message
+argument_list|>
 name|result
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Message
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|DestinationFilter
@@ -419,10 +433,12 @@ index|]
 operator|==
 literal|null
 condition|)
+block|{
 name|t
 operator|=
 literal|0
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|messages
@@ -483,10 +499,12 @@ name|messages
 operator|.
 name|length
 condition|)
+block|{
 name|t
 operator|=
 literal|0
 expr_stmt|;
+block|}
 block|}
 do|while
 condition|(
@@ -497,10 +515,6 @@ condition|)
 do|;
 block|}
 return|return
-operator|(
-name|Message
-index|[]
-operator|)
 name|result
 operator|.
 name|toArray

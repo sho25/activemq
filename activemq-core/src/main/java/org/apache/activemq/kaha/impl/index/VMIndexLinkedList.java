@@ -78,6 +78,8 @@ operator|.
 name|next
 operator|=
 name|root
+expr_stmt|;
+name|root
 operator|.
 name|prev
 operator|=
@@ -105,9 +107,11 @@ name|size
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 return|return
 name|root
 operator|.
@@ -126,9 +130,11 @@ name|size
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 return|return
 name|root
 operator|.
@@ -182,9 +188,11 @@ name|size
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|StoreEntry
 name|result
 init|=
@@ -292,6 +300,8 @@ operator|.
 name|next
 operator|=
 name|root
+expr_stmt|;
+name|root
 operator|.
 name|prev
 operator|=
@@ -393,6 +403,7 @@ name|index
 operator|>=
 name|size
 condition|)
+block|{
 throw|throw
 operator|new
 name|IndexOutOfBoundsException
@@ -406,6 +417,7 @@ operator|+
 name|size
 argument_list|)
 throw|;
+block|}
 name|IndexItem
 name|e
 init|=
@@ -634,7 +646,9 @@ name|e
 operator|==
 name|root
 condition|)
+block|{
 return|return;
+block|}
 name|e
 operator|.
 name|prev

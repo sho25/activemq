@@ -142,18 +142,18 @@ name|INDEXES_ONLY_SIZE
 init|=
 literal|19
 decl_stmt|;
+specifier|protected
+name|long
+name|offset
+init|=
+name|POSITION_NOT_SET
+decl_stmt|;
 comment|// used by linked list
 name|IndexItem
 name|next
 decl_stmt|;
 name|IndexItem
 name|prev
-decl_stmt|;
-specifier|protected
-name|long
-name|offset
-init|=
-name|POSITION_NOT_SET
 decl_stmt|;
 specifier|private
 name|long

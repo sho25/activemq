@@ -827,19 +827,39 @@ decl_stmt|;
 specifier|protected
 specifier|final
 name|ConcurrentHashMap
+argument_list|<
+name|ConsumerId
+argument_list|,
+name|DemandSubscription
+argument_list|>
 name|subscriptionMapByLocalId
 init|=
 operator|new
 name|ConcurrentHashMap
+argument_list|<
+name|ConsumerId
+argument_list|,
+name|DemandSubscription
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|protected
 specifier|final
 name|ConcurrentHashMap
+argument_list|<
+name|ConsumerId
+argument_list|,
+name|DemandSubscription
+argument_list|>
 name|subscriptionMapByRemoteId
 init|=
 operator|new
 name|ConcurrentHashMap
+argument_list|<
+name|ConsumerId
+argument_list|,
+name|DemandSubscription
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|protected
@@ -901,22 +921,6 @@ specifier|protected
 name|NetworkBridgeConfiguration
 name|configuration
 decl_stmt|;
-specifier|private
-name|NetworkBridgeListener
-name|networkBridgeListener
-decl_stmt|;
-specifier|private
-name|boolean
-name|createdByDuplex
-decl_stmt|;
-specifier|private
-name|BrokerInfo
-name|localBrokerInfo
-decl_stmt|;
-specifier|private
-name|BrokerInfo
-name|remoteBrokerInfo
-decl_stmt|;
 specifier|final
 name|AtomicLong
 name|enqueueCounter
@@ -932,6 +936,22 @@ init|=
 operator|new
 name|AtomicLong
 argument_list|()
+decl_stmt|;
+specifier|private
+name|NetworkBridgeListener
+name|networkBridgeListener
+decl_stmt|;
+specifier|private
+name|boolean
+name|createdByDuplex
+decl_stmt|;
+specifier|private
+name|BrokerInfo
+name|localBrokerInfo
+decl_stmt|;
+specifier|private
+name|BrokerInfo
+name|remoteBrokerInfo
 decl_stmt|;
 specifier|private
 name|AtomicBoolean
@@ -2386,11 +2406,9 @@ expr_stmt|;
 name|remoteBrokerInfo
 operator|=
 operator|(
-operator|(
 name|BrokerInfo
 operator|)
 name|command
-operator|)
 expr_stmt|;
 name|serviceRemoteBrokerInfo
 argument_list|(
@@ -2554,6 +2572,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -2564,6 +2583,7 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 break|break;
 default|default:
 if|if
@@ -2573,6 +2593,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -2582,6 +2603,7 @@ operator|+
 name|command
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -2708,6 +2730,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -2728,6 +2751,7 @@ operator|+
 literal|" network hops only"
 argument_list|)
 expr_stmt|;
+block|}
 return|return;
 block|}
 if|if
@@ -2755,6 +2779,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -2771,6 +2796,7 @@ operator|+
 literal|" already routed through this broker once"
 argument_list|)
 expr_stmt|;
+block|}
 return|return;
 block|}
 if|if
@@ -2793,6 +2819,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -2816,6 +2843,7 @@ operator|+
 literal|" is not permiited"
 argument_list|)
 expr_stmt|;
+block|}
 return|return;
 block|}
 if|if
@@ -2833,6 +2861,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -2856,6 +2885,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
 block|{
 if|if
@@ -2865,6 +2895,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -2883,6 +2914,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 elseif|else
 if|if
 condition|(
@@ -2897,7 +2929,7 @@ name|class
 condition|)
 block|{
 comment|// It's a destination info - we want to pass up
-comment|// infomation about temporary destinations
+comment|// information about temporary destinations
 name|DestinationInfo
 name|destInfo
 init|=
@@ -3263,9 +3295,6 @@ name|md
 parameter_list|)
 block|{
 return|return
-operator|(
-name|DemandSubscription
-operator|)
 name|subscriptionMapByLocalId
 operator|.
 name|get
@@ -3341,6 +3370,7 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 name|message
 operator|.
 name|setOriginalTransactionId
@@ -3351,6 +3381,7 @@ name|getTransactionId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|message
 operator|.
 name|setTransactionId
@@ -3415,9 +3446,6 @@ decl_stmt|;
 name|DemandSubscription
 name|sub
 init|=
-operator|(
-name|DemandSubscription
-operator|)
 name|subscriptionMapByLocalId
 operator|.
 name|get
@@ -3447,6 +3475,7 @@ if|if
 condition|(
 name|trace
 condition|)
+block|{
 name|LOG
 operator|.
 name|trace
@@ -3467,6 +3496,7 @@ operator|+
 name|message
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -3624,6 +3654,7 @@ if|if
 condition|(
 name|trace
 condition|)
+block|{
 name|LOG
 operator|.
 name|trace
@@ -3645,6 +3676,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 elseif|else
 if|if
 condition|(
@@ -3657,11 +3689,9 @@ block|{
 name|localBrokerInfo
 operator|=
 operator|(
-operator|(
 name|BrokerInfo
 operator|)
 name|command
-operator|)
 expr_stmt|;
 name|serviceLocalBrokerInfo
 argument_list|(
@@ -3991,9 +4021,11 @@ name|i
 index|]
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 block|}
 return|return
@@ -4026,9 +4058,11 @@ name|length
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|pathsToAppend
 return|;
+block|}
 name|BrokerId
 name|rc
 index|[]
@@ -4110,6 +4144,7 @@ name|length
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 operator|new
 name|BrokerId
@@ -4118,6 +4153,7 @@ block|{
 name|idToAppend
 block|}
 return|;
+block|}
 name|BrokerId
 name|rc
 index|[]
@@ -4417,6 +4453,7 @@ operator|.
 name|isTraceEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|trace
@@ -4426,6 +4463,7 @@ operator|+
 name|dest
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -4828,9 +4866,6 @@ block|{
 name|DemandSubscription
 name|sub
 init|=
-operator|(
-name|DemandSubscription
-operator|)
 name|subscriptionMapByRemoteId
 operator|.
 name|remove
@@ -4857,6 +4892,7 @@ operator|.
 name|isTraceEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|trace
@@ -4877,6 +4913,7 @@ name|getRemoteInfo
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|protected

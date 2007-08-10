@@ -80,6 +80,14 @@ name|VolumeTest
 extends|extends
 name|TestCase
 block|{
+specifier|protected
+specifier|static
+specifier|final
+name|int
+name|NUMBER
+init|=
+literal|1
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -103,14 +111,6 @@ decl_stmt|;
 specifier|protected
 name|String
 name|name
-decl_stmt|;
-specifier|protected
-specifier|static
-specifier|final
-name|int
-name|NUMBER
-init|=
-literal|1
 decl_stmt|;
 comment|/*      * dump a large number of messages into a list - then retreive them      */
 specifier|public

@@ -26,10 +26,6 @@ name|DataArrayResponse
 extends|extends
 name|Response
 block|{
-name|DataStructure
-name|data
-index|[]
-decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -39,6 +35,10 @@ init|=
 name|CommandTypes
 operator|.
 name|DATA_ARRAY_RESPONSE
+decl_stmt|;
+name|DataStructure
+name|data
+index|[]
 decl_stmt|;
 specifier|public
 name|DataArrayResponse

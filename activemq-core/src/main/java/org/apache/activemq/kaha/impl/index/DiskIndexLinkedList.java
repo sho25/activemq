@@ -134,9 +134,11 @@ name|size
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 return|return
 name|getNextEntry
 argument_list|(
@@ -157,9 +159,11 @@ name|size
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 if|if
 condition|(
 name|last
@@ -235,9 +239,11 @@ name|size
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|StoreEntry
 name|result
 init|=
@@ -450,6 +456,7 @@ name|index
 operator|>=
 name|size
 condition|)
+block|{
 throw|throw
 operator|new
 name|IndexOutOfBoundsException
@@ -463,6 +470,7 @@ operator|+
 name|size
 argument_list|)
 throw|;
+block|}
 name|IndexItem
 name|e
 init|=
@@ -969,7 +977,9 @@ argument_list|(
 name|root
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|e

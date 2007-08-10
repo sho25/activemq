@@ -446,21 +446,6 @@ name|ConfigTest
 extends|extends
 name|TestCase
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOG
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|ConfigTest
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|protected
 specifier|static
 specifier|final
@@ -484,6 +469,21 @@ name|String
 name|CONF_ROOT
 init|=
 literal|"src/test/resources/org/apache/activemq/config/sample-conf/"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOG
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|ConfigTest
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 static|static
 block|{
@@ -668,17 +668,11 @@ expr_stmt|;
 comment|// Check persistence factory configurations
 comment|// System.out.print("Checking persistence adapter factory
 comment|// settings... ");
-name|JournalPersistenceAdapter
-name|pa
-init|=
-operator|(
-name|JournalPersistenceAdapter
-operator|)
 name|broker
 operator|.
 name|getPersistenceAdapter
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|LOG
 operator|.
 name|info

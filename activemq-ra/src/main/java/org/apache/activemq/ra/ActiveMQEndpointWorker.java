@@ -310,10 +310,16 @@ specifier|private
 specifier|static
 specifier|final
 name|ThreadLocal
+argument_list|<
+name|Session
+argument_list|>
 name|threadLocal
 init|=
 operator|new
 name|ThreadLocal
+argument_list|<
+name|Session
+argument_list|>
 argument_list|()
 decl_stmt|;
 static|static

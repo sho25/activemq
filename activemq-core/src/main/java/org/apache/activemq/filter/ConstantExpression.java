@@ -168,6 +168,7 @@ argument_list|(
 literal|"L"
 argument_list|)
 condition|)
+block|{
 name|text
 operator|=
 name|text
@@ -184,6 +185,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|Number
 name|value
 decl_stmt|;

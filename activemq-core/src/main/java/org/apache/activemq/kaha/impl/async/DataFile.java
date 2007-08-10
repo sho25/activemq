@@ -93,6 +93,7 @@ specifier|final
 name|int
 name|preferedSize
 decl_stmt|;
+specifier|private
 name|int
 name|length
 decl_stmt|;

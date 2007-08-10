@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The Command Pattern so that we can send and receive commands  * on the different transports  *  * @version $Revision: 1.7 $  */
+comment|/**  * The Command Pattern so that we can send and receive commands on the different  * transports  *   * @version $Revision: 1.7 $  */
 end_comment
 
 begin_interface
@@ -104,7 +104,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * The endpoint within the transport where this message came from which could be null if the       * transport only supports a single endpoint.      */
+comment|/**      * The endpoint within the transport where this message came from which      * could be null if the transport only supports a single endpoint.      */
 name|Endpoint
 name|getFrom
 parameter_list|()
@@ -116,7 +116,7 @@ name|Endpoint
 name|from
 parameter_list|)
 function_decl|;
-comment|/**      * The endpoint within the transport where this message is going to - null means all endpoints.      */
+comment|/**      * The endpoint within the transport where this message is going to - null      * means all endpoints.      */
 name|Endpoint
 name|getTo
 parameter_list|()

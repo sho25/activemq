@@ -41,6 +41,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|CopyOnWriteArrayList
@@ -141,11 +151,17 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|CopyOnWriteArrayList
+name|List
+argument_list|<
+name|CacheEvictor
+argument_list|>
 name|evictors
 init|=
 operator|new
 name|CopyOnWriteArrayList
+argument_list|<
+name|CacheEvictor
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -240,8 +256,6 @@ name|evictMessages
 parameter_list|()
 block|{
 comment|// Try to take the memory usage down below the low mark.
-try|try
-block|{
 name|LOG
 operator|.
 name|debug
@@ -254,11 +268,17 @@ name|getPercentUsage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|LinkedList
+name|List
+argument_list|<
+name|CacheEvictor
+argument_list|>
 name|list
 init|=
 operator|new
 name|LinkedList
+argument_list|<
+name|CacheEvictor
+argument_list|>
 argument_list|(
 name|evictors
 argument_list|)
@@ -284,6 +304,9 @@ comment|// Evenly evict messages from all evictors
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|CacheEvictor
+argument_list|>
 name|iter
 init|=
 name|list
@@ -301,9 +324,6 @@ block|{
 name|CacheEvictor
 name|evictor
 init|=
-operator|(
-name|CacheEvictor
-operator|)
 name|iter
 operator|.
 name|next
@@ -318,6 +338,7 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 name|iter
 operator|.
 name|remove
@@ -326,8 +347,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-finally|finally
-block|{         }
 return|return
 literal|false
 return|;

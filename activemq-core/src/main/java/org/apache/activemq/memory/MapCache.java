@@ -51,6 +51,11 @@ block|{
 specifier|protected
 specifier|final
 name|Map
+argument_list|<
+name|Object
+argument_list|,
+name|Object
+argument_list|>
 name|map
 decl_stmt|;
 specifier|public
@@ -69,6 +74,11 @@ specifier|public
 name|MapCache
 parameter_list|(
 name|Map
+argument_list|<
+name|Object
+argument_list|,
+name|Object
+argument_list|>
 name|map
 parameter_list|)
 block|{

@@ -49,6 +49,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|ConcurrentHashMap
@@ -72,16 +82,6 @@ operator|.
 name|jms
 operator|.
 name|TransactionInProgressException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|TransactionRolledBackException
 import|;
 end_import
 
@@ -334,10 +334,26 @@ specifier|private
 specifier|static
 specifier|final
 name|ConcurrentHashMap
+argument_list|<
+name|TransactionId
+argument_list|,
+name|List
+argument_list|<
+name|TransactionContext
+argument_list|>
+argument_list|>
 name|ENDED_XA_TRANSACTION_CONTEXTS
 init|=
 operator|new
 name|ConcurrentHashMap
+argument_list|<
+name|TransactionId
+argument_list|,
+name|List
+argument_list|<
+name|TransactionContext
+argument_list|>
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -356,7 +372,10 @@ name|ConnectionId
 name|connectionId
 decl_stmt|;
 specifier|private
-name|ArrayList
+name|List
+argument_list|<
+name|Synchronization
+argument_list|>
 name|synchornizations
 decl_stmt|;
 comment|// To track XA transactions.
@@ -485,14 +504,19 @@ name|synchornizations
 operator|==
 literal|null
 condition|)
+block|{
 name|synchornizations
 operator|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Synchronization
+argument_list|>
 argument_list|(
 literal|10
 argument_list|)
 expr_stmt|;
+block|}
 name|synchornizations
 operator|.
 name|add
@@ -514,7 +538,9 @@ name|synchornizations
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|int
 name|size
 init|=
@@ -540,17 +566,12 @@ name|i
 operator|++
 control|)
 block|{
-operator|(
-operator|(
-name|Synchronization
-operator|)
 name|synchornizations
 operator|.
 name|get
 argument_list|(
 name|i
 argument_list|)
-operator|)
 operator|.
 name|afterRollback
 argument_list|()
@@ -596,7 +617,9 @@ name|synchornizations
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|int
 name|size
 init|=
@@ -622,17 +645,12 @@ name|i
 operator|++
 control|)
 block|{
-operator|(
-operator|(
-name|Synchronization
-operator|)
 name|synchornizations
 operator|.
 name|get
 argument_list|(
 name|i
 argument_list|)
-operator|)
 operator|.
 name|afterCommit
 argument_list|()
@@ -678,7 +696,9 @@ name|synchornizations
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|int
 name|size
 init|=
@@ -704,17 +724,12 @@ name|i
 operator|++
 control|)
 block|{
-operator|(
-operator|(
-name|Synchronization
-operator|)
 name|synchornizations
 operator|.
 name|get
 argument_list|(
 name|i
 argument_list|)
-operator|)
 operator|.
 name|beforeEnd
 argument_list|()
@@ -774,6 +789,7 @@ condition|(
 name|isInXATransaction
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|TransactionInProgressException
@@ -781,6 +797,7 @@ argument_list|(
 literal|"Cannot start local transaction.  XA transaction is already in progress."
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|transactionId
@@ -868,6 +885,7 @@ condition|(
 name|isInXATransaction
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|TransactionInProgressException
@@ -875,6 +893,7 @@ argument_list|(
 literal|"Cannot rollback() if an XA transaction is already in progress "
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|transactionId
@@ -945,6 +964,7 @@ condition|(
 name|isInXATransaction
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|TransactionInProgressException
@@ -952,6 +972,7 @@ argument_list|(
 literal|"Cannot commit() if an XA transaction is already in progress "
 argument_list|)
 throw|;
+block|}
 name|beforeEnd
 argument_list|()
 expr_stmt|;
@@ -1137,6 +1158,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -1146,11 +1168,13 @@ operator|+
 name|xid
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|isInLocalTransaction
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|XAException
@@ -1160,6 +1184,7 @@ operator|.
 name|XAER_PROTO
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 operator|(
@@ -1303,9 +1328,11 @@ name|xid1
 operator|==
 name|xid2
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|xid1
@@ -1316,9 +1343,11 @@ name|xid2
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 return|return
 name|xid1
 operator|.
@@ -1378,6 +1407,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -1387,6 +1417,7 @@ operator|+
 name|xid
 argument_list|)
 expr_stmt|;
+block|}
 comment|// We allow interleaving multiple transactions, so
 comment|// we don't limit prepare to the associated xid.
 name|XATransactionId
@@ -1504,6 +1535,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -1513,6 +1545,7 @@ operator|+
 name|xid
 argument_list|)
 expr_stmt|;
+block|}
 comment|// We allow interleaving multiple transactions, so
 comment|// we don't limit rollback to the associated xid.
 name|XATransactionId
@@ -1608,12 +1641,12 @@ argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
-name|ArrayList
+name|List
+argument_list|<
+name|TransactionContext
+argument_list|>
 name|l
 init|=
-operator|(
-name|ArrayList
-operator|)
 name|ENDED_XA_TRANSACTION_CONTEXTS
 operator|.
 name|remove
@@ -1637,6 +1670,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|TransactionContext
+argument_list|>
 name|iter
 init|=
 name|l
@@ -1654,9 +1690,6 @@ block|{
 name|TransactionContext
 name|ctx
 init|=
-operator|(
-name|TransactionContext
-operator|)
 name|iter
 operator|.
 name|next
@@ -1705,6 +1738,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -1714,6 +1748,7 @@ operator|+
 name|xid
 argument_list|)
 expr_stmt|;
+block|}
 comment|// We allow interleaving multiple transactions, so
 comment|// we don't limit commit to the associated xid.
 name|XATransactionId
@@ -1806,12 +1841,12 @@ argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
-name|ArrayList
+name|List
+argument_list|<
+name|TransactionContext
+argument_list|>
 name|l
 init|=
-operator|(
-name|ArrayList
-operator|)
 name|ENDED_XA_TRANSACTION_CONTEXTS
 operator|.
 name|remove
@@ -1899,6 +1934,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -1908,6 +1944,7 @@ operator|+
 name|xid
 argument_list|)
 expr_stmt|;
+block|}
 comment|// We allow interleaving multiple transactions, so
 comment|// we don't limit forget to the associated xid.
 name|XATransactionId
@@ -2102,6 +2139,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -2111,6 +2149,7 @@ operator|+
 name|flag
 argument_list|)
 expr_stmt|;
+block|}
 name|TransactionInfo
 name|info
 init|=
@@ -2377,6 +2416,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -2386,6 +2426,7 @@ operator|+
 name|transactionId
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2443,6 +2484,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -2452,6 +2494,7 @@ operator|+
 name|transactionId
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2468,12 +2511,12 @@ throw|;
 block|}
 comment|// Add our self to the list of contexts that are interested in
 comment|// post commit/rollback events.
-name|ArrayList
+name|List
+argument_list|<
+name|TransactionContext
+argument_list|>
 name|l
 init|=
-operator|(
-name|ArrayList
-operator|)
 name|ENDED_XA_TRANSACTION_CONTEXTS
 operator|.
 name|get
@@ -2492,6 +2535,9 @@ name|l
 operator|=
 operator|new
 name|ArrayList
+argument_list|<
+name|TransactionContext
+argument_list|>
 argument_list|(
 literal|3
 argument_list|)

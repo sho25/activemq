@@ -799,6 +799,8 @@ else|else
 block|{
 name|lastFree
 operator|=
+name|page
+expr_stmt|;
 name|firstFree
 operator|=
 name|page
@@ -920,6 +922,8 @@ literal|null
 expr_stmt|;
 name|firstFree
 operator|=
+literal|null
+expr_stmt|;
 name|lastFree
 operator|=
 literal|null
@@ -1439,6 +1443,8 @@ condition|)
 block|{
 name|firstFree
 operator|=
+name|page
+expr_stmt|;
 name|lastFree
 operator|=
 name|page
@@ -1503,6 +1509,8 @@ name|firstFree
 expr_stmt|;
 name|firstFree
 operator|=
+literal|null
+expr_stmt|;
 name|lastFree
 operator|=
 literal|null

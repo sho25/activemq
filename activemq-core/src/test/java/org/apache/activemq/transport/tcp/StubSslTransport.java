@@ -119,13 +119,11 @@ name|this
 operator|.
 name|wantClientAuthStatus
 operator|=
-operator|(
 name|arg0
 condition|?
 name|TRUE
 else|:
 name|FALSE
-operator|)
 expr_stmt|;
 block|}
 specifier|public
@@ -140,13 +138,11 @@ name|this
 operator|.
 name|needClientAuthStatus
 operator|=
-operator|(
 name|arg0
 condition|?
 name|TRUE
 else|:
 name|FALSE
-operator|)
 expr_stmt|;
 block|}
 specifier|public

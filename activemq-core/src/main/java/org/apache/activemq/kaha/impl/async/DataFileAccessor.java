@@ -45,6 +45,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|ConcurrentHashMap
@@ -121,7 +131,7 @@ name|dataFile
 decl_stmt|;
 specifier|private
 specifier|final
-name|ConcurrentHashMap
+name|Map
 argument_list|<
 name|WriteKey
 argument_list|,
@@ -196,7 +206,9 @@ if|if
 condition|(
 name|disposed
 condition|)
+block|{
 return|return;
+block|}
 name|disposed
 operator|=
 literal|true
@@ -242,6 +254,7 @@ operator|.
 name|isValid
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -251,6 +264,7 @@ operator|+
 name|location
 argument_list|)
 throw|;
+block|}
 name|WriteCommand
 name|asyncWrite
 init|=

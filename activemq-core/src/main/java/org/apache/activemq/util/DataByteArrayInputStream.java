@@ -131,14 +131,18 @@ name|this
 operator|.
 name|offset
 operator|=
-name|this
-operator|.
-name|pos
-operator|=
 name|sequence
 operator|.
 name|getOffset
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|pos
+operator|=
+name|this
+operator|.
+name|offset
 expr_stmt|;
 block|}
 comment|/**      * Creates<code>WireByteArrayInputStream</code> with a minmalist byte      * array      */
@@ -586,7 +590,6 @@ argument_list|()
 decl_stmt|;
 return|return
 operator|(
-operator|(
 name|ch1
 operator|<<
 literal|8
@@ -596,7 +599,6 @@ operator|(
 name|ch2
 operator|<<
 literal|0
-operator|)
 operator|)
 return|;
 block|}
@@ -667,7 +669,6 @@ argument_list|()
 decl_stmt|;
 return|return
 operator|(
-operator|(
 name|ch1
 operator|<<
 literal|24
@@ -689,7 +690,6 @@ operator|(
 name|ch4
 operator|<<
 literal|0
-operator|)
 operator|)
 return|;
 block|}

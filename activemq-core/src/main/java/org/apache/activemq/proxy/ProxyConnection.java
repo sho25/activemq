@@ -347,9 +347,11 @@ if|if
 condition|(
 name|shutdown
 condition|)
+block|{
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

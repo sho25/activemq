@@ -910,7 +910,7 @@ argument_list|(
 name|createAuthorizationMap
 argument_list|()
 argument_list|)
-block|, }
+block|,}
 argument_list|)
 expr_stmt|;
 name|addCombinationValues
@@ -928,7 +928,7 @@ block|,
 operator|new
 name|JaasAuthenticationPlugin
 argument_list|()
-block|, }
+block|,}
 argument_list|)
 expr_stmt|;
 block|}

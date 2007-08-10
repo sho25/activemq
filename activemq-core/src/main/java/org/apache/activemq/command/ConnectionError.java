@@ -50,10 +50,11 @@ name|CommandTypes
 operator|.
 name|CONNECTION_ERROR
 decl_stmt|;
-specifier|protected
+specifier|private
 name|ConnectionId
 name|connectionId
 decl_stmt|;
+specifier|private
 name|Throwable
 name|exception
 decl_stmt|;

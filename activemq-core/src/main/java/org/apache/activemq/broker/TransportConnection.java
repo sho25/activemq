@@ -1727,6 +1727,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|TRANSPORTLOG
 operator|.
 name|debug
@@ -1738,6 +1739,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 name|ServiceSupport
 operator|.
 name|dispose
@@ -1820,8 +1822,6 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Handle the case where the broker is stopped
-comment|// But the client is still connected.
 elseif|else
 if|if
 condition|(
@@ -1835,6 +1835,8 @@ operator|.
 name|class
 condition|)
 block|{
+comment|// Handle the case where the broker is stopped
+comment|// But the client is still connected.
 if|if
 condition|(
 operator|!
@@ -1851,6 +1853,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
+block|{
 name|SERVICELOG
 operator|.
 name|debug
@@ -1858,6 +1861,7 @@ argument_list|(
 literal|"Broker has been stopped.  Notifying client and closing his connection."
 argument_list|)
 expr_stmt|;
+block|}
 name|ConnectionError
 name|ce
 init|=
@@ -2053,6 +2057,7 @@ name|BrokerStoppedException
 operator|.
 name|class
 condition|)
+block|{
 name|SERVICELOG
 operator|.
 name|debug
@@ -2064,6 +2069,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 name|response
 operator|=
 operator|new
@@ -2482,6 +2488,7 @@ name|transactionState
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -2494,6 +2501,7 @@ name|getTransactionId
 argument_list|()
 argument_list|)
 throw|;
+block|}
 comment|// Avoid dups.
 if|if
 condition|(
@@ -3122,6 +3130,7 @@ name|ss
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -3131,6 +3140,7 @@ operator|+
 name|sessionId
 argument_list|)
 throw|;
+block|}
 comment|// Avoid replaying dup commands
 if|if
 condition|(
@@ -3246,6 +3256,7 @@ name|ss
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -3255,6 +3266,7 @@ operator|+
 name|sessionId
 argument_list|)
 throw|;
+block|}
 name|ProducerState
 name|ps
 init|=
@@ -3271,6 +3283,7 @@ name|ps
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -3280,6 +3293,7 @@ operator|+
 name|id
 argument_list|)
 throw|;
+block|}
 name|removeProducerBrokerExchange
 argument_list|(
 name|id
@@ -3358,6 +3372,7 @@ name|ss
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -3367,6 +3382,7 @@ operator|+
 name|sessionId
 argument_list|)
 throw|;
+block|}
 comment|// Avoid replaying dup commands
 if|if
 condition|(
@@ -3482,6 +3498,7 @@ name|ss
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -3491,6 +3508,7 @@ operator|+
 name|sessionId
 argument_list|)
 throw|;
+block|}
 name|ConsumerState
 name|consumerState
 init|=
@@ -3507,6 +3525,7 @@ name|consumerState
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -3516,6 +3535,7 @@ operator|+
 name|id
 argument_list|)
 throw|;
+block|}
 name|broker
 operator|.
 name|removeConsumer
@@ -3677,6 +3697,7 @@ name|session
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -3686,6 +3707,7 @@ operator|+
 name|id
 argument_list|)
 throw|;
+block|}
 comment|// Don't let new consumers or producers get added while we are closing
 comment|// this down.
 name|session
@@ -5259,11 +5281,13 @@ name|taskRunner
 operator|!=
 literal|null
 condition|)
+block|{
 name|taskRunner
 operator|.
 name|shutdown
 argument_list|()
 expr_stmt|;
+block|}
 comment|// Run the MessageDispatch callbacks so that message references get
 comment|// cleaned up.
 for|for
@@ -5785,7 +5809,7 @@ comment|// We have been requested to create a two way pipe ...
 try|try
 block|{
 name|Properties
-name|props
+name|properties
 init|=
 name|MarshallingSupport
 operator|.
@@ -5795,6 +5819,20 @@ name|info
 operator|.
 name|getNetworkProperties
 argument_list|()
+argument_list|)
+decl_stmt|;
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|props
+init|=
+operator|new
+name|HashMap
+argument_list|(
+name|properties
 argument_list|)
 decl_stmt|;
 name|NetworkBridgeConfiguration
@@ -5834,10 +5872,20 @@ name|getVmConnectorURI
 argument_list|()
 decl_stmt|;
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|map
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|(
 name|URISupport
 operator|.
@@ -6121,6 +6169,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|cs
 operator|.
@@ -6130,6 +6179,7 @@ operator|.
 name|getClientId
 argument_list|()
 return|;
+block|}
 return|return
 name|cs
 operator|.
@@ -6618,6 +6668,7 @@ argument_list|(
 literal|"shutdown"
 argument_list|)
 condition|)
+block|{
 name|System
 operator|.
 name|exit
@@ -6625,6 +6676,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 literal|null
 return|;
@@ -6753,7 +6805,7 @@ argument_list|>
 name|listConnectionStates
 parameter_list|()
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|TransportConnectionState
 argument_list|>
@@ -6804,6 +6856,7 @@ name|cs
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -6813,6 +6866,7 @@ operator|+
 name|connectionId
 argument_list|)
 throw|;
+block|}
 return|return
 name|cs
 return|;
@@ -6836,6 +6890,7 @@ name|cs
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -6851,6 +6906,7 @@ name|getParentId
 argument_list|()
 argument_list|)
 throw|;
+block|}
 return|return
 name|cs
 return|;
@@ -6874,6 +6930,7 @@ name|cs
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -6889,6 +6946,7 @@ name|getParentId
 argument_list|()
 argument_list|)
 throw|;
+block|}
 return|return
 name|cs
 return|;
@@ -6912,6 +6970,7 @@ name|cs
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -6924,6 +6983,7 @@ name|getParentId
 argument_list|()
 argument_list|)
 throw|;
+block|}
 return|return
 name|cs
 return|;
@@ -6947,6 +7007,7 @@ name|cs
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -6956,6 +7017,7 @@ operator|+
 name|connectionId
 argument_list|)
 throw|;
+block|}
 return|return
 name|cs
 return|;

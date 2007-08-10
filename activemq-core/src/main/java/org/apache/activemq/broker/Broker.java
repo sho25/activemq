@@ -477,6 +477,9 @@ parameter_list|()
 function_decl|;
 comment|/**      * @return a Set of all durable destinations      */
 name|Set
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 name|getDurableDestinations
 parameter_list|()
 function_decl|;

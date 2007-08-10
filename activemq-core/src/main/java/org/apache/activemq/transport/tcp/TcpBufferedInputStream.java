@@ -148,6 +148,8 @@ name|internalBuffer
 decl_stmt|;
 name|count
 operator|=
+literal|0
+expr_stmt|;
 name|position
 operator|=
 literal|0

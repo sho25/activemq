@@ -170,7 +170,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version $Revision$  */
+comment|/**  * @version $Revision$  */
 end_comment
 
 begin_class

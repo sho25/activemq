@@ -137,10 +137,16 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|CopyOnWriteArrayList
+argument_list|<
+name|SecurityContext
+argument_list|>
 name|securityContexts
 init|=
 operator|new
 name|CopyOnWriteArrayList
+argument_list|<
+name|SecurityContext
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|public
@@ -231,6 +237,7 @@ name|getPassword
 argument_list|()
 argument_list|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|SecurityException
@@ -238,6 +245,7 @@ argument_list|(
 literal|"User name or password is invalid."
 argument_list|)
 throw|;
+block|}
 specifier|final
 name|Set
 name|groups
@@ -361,6 +369,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|SecurityContext
+argument_list|>
 name|iter
 init|=
 name|securityContexts
@@ -378,9 +389,6 @@ block|{
 name|SecurityContext
 name|sc
 init|=
-operator|(
-name|SecurityContext
-operator|)
 name|iter
 operator|.
 name|next

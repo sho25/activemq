@@ -182,7 +182,9 @@ if|if
 condition|(
 name|DISABLE_FILE_LOCK
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|lock
@@ -233,7 +235,9 @@ if|if
 condition|(
 name|DISABLE_FILE_LOCK
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|lock
@@ -261,7 +265,9 @@ if|if
 condition|(
 name|disposed
 condition|)
+block|{
 return|return;
+block|}
 name|disposed
 operator|=
 literal|true
@@ -275,7 +281,7 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|e
+name|ignore
 parameter_list|)
 block|{         }
 try|try
@@ -289,7 +295,7 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|e
+name|ignore
 parameter_list|)
 block|{         }
 block|}

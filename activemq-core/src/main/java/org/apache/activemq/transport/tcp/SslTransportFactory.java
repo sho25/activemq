@@ -366,13 +366,6 @@ name|SslTransportFactory
 extends|extends
 name|TcpTransportFactory
 block|{
-comment|// The context used to creat ssl sockets.
-specifier|private
-name|SSLContext
-name|sslContext
-init|=
-literal|null
-decl_stmt|;
 comment|// The log this uses.,
 specifier|private
 specifier|static
@@ -388,6 +381,11 @@ name|SslTransportFactory
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+comment|// The context used to creat ssl sockets.
+specifier|private
+name|SSLContext
+name|sslContext
 decl_stmt|;
 comment|/**      * Constructor. Nothing special.      */
 specifier|public

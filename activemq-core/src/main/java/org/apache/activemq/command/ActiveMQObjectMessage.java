@@ -224,6 +224,17 @@ name|ActiveMQMessage
 implements|implements
 name|ObjectMessage
 block|{
+comment|// TODO: verify classloader
+specifier|public
+specifier|static
+specifier|final
+name|byte
+name|DATA_STRUCTURE_TYPE
+init|=
+name|CommandTypes
+operator|.
+name|ACTIVEMQ_OBJECT_MESSAGE
+decl_stmt|;
 specifier|static
 specifier|final
 name|ClassLoader
@@ -235,19 +246,6 @@ name|class
 operator|.
 name|getClassLoader
 argument_list|()
-decl_stmt|;
-comment|// TODO
-comment|// verify
-comment|// classloader
-specifier|public
-specifier|static
-specifier|final
-name|byte
-name|DATA_STRUCTURE_TYPE
-init|=
-name|CommandTypes
-operator|.
-name|ACTIVEMQ_OBJECT_MESSAGE
 decl_stmt|;
 specifier|protected
 specifier|transient

@@ -317,7 +317,6 @@ name|getValue
 argument_list|()
 decl_stmt|;
 return|return
-operator|(
 name|value
 operator|!=
 literal|null
@@ -328,7 +327,6 @@ name|toString
 argument_list|()
 else|:
 literal|""
-operator|)
 return|;
 block|}
 block|}

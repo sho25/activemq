@@ -28,10 +28,16 @@ specifier|private
 specifier|static
 specifier|final
 name|ThreadLocal
+argument_list|<
+name|InboundContext
+argument_list|>
 name|threadLocal
 init|=
 operator|new
 name|ThreadLocal
+argument_list|<
+name|InboundContext
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|/**      * Returns the current {@link InboundContext} used by the current thread which is processing a message.      * This allows us to access the current Session to send a message using the same underlying      * session to avoid unnecessary XA or to use regular JMS transactions while using message driven POJOs.      *      * @return      */
@@ -42,9 +48,6 @@ name|getActiveSessionAndProducer
 parameter_list|()
 block|{
 return|return
-operator|(
-name|InboundContext
-operator|)
 name|threadLocal
 operator|.
 name|get

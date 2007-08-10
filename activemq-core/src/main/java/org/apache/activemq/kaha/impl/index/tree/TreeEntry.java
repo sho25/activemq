@@ -207,6 +207,8 @@ parameter_list|()
 block|{
 name|prevPageId
 operator|=
+name|NOT_SET
+expr_stmt|;
 name|nextPageId
 operator|=
 name|NOT_SET

@@ -291,10 +291,20 @@ decl_stmt|;
 specifier|protected
 specifier|transient
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|map
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|public
@@ -1622,6 +1632,9 @@ block|}
 comment|/**      * Returns an<CODE>Enumeration</CODE> of all the names in the      *<CODE>MapMessage</CODE> object.      *       * @return an enumeration of all the names in this<CODE>MapMessage</CODE>      * @throws JMSException      */
 specifier|public
 name|Enumeration
+argument_list|<
+name|String
+argument_list|>
 name|getMapNames
 parameter_list|()
 throws|throws
@@ -2198,6 +2211,11 @@ return|;
 block|}
 specifier|public
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|getContentMap
 parameter_list|()
 throws|throws

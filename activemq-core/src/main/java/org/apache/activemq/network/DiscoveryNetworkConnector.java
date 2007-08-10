@@ -214,7 +214,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A network connector which uses a discovery agent to detect the remote brokers  * available and setup a connection to each available remote broker  *   * @org.apache.xbean.XBean element="networkConnector"  *   * @version $Revision$  */
+comment|/**  * A network connector which uses a discovery agent to detect the remote brokers  * available and setup a connection to each available remote broker  *   * @org.apache.xbean.XBean element="networkConnector"  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -247,10 +247,20 @@ name|discoveryAgent
 decl_stmt|;
 specifier|private
 name|ConcurrentHashMap
+argument_list|<
+name|URI
+argument_list|,
+name|NetworkBridge
+argument_list|>
 name|bridges
 init|=
 operator|new
 name|ConcurrentHashMap
+argument_list|<
+name|URI
+argument_list|,
+name|NetworkBridge
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|public
@@ -329,7 +339,9 @@ operator|.
 name|isStopping
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|url
 init|=
@@ -413,7 +425,9 @@ name|uri
 argument_list|)
 operator|)
 condition|)
+block|{
 return|return;
+block|}
 name|URI
 name|connectUri
 init|=
@@ -695,9 +709,6 @@ block|}
 name|NetworkBridge
 name|bridge
 init|=
-operator|(
-name|NetworkBridge
-operator|)
 name|bridges
 operator|.
 name|remove
@@ -711,7 +722,9 @@ name|bridge
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|ServiceSupport
 operator|.
 name|dispose
@@ -820,6 +833,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|NetworkBridge
+argument_list|>
 name|i
 init|=
 name|bridges
@@ -840,9 +856,6 @@ block|{
 name|NetworkBridge
 name|bridge
 init|=
-operator|(
-name|NetworkBridge
-operator|)
 name|i
 operator|.
 name|next

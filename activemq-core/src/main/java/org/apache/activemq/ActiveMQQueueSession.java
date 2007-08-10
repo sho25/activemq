@@ -378,6 +378,7 @@ name|destination
 operator|instanceof
 name|Topic
 condition|)
+block|{
 throw|throw
 operator|new
 name|InvalidDestinationException
@@ -385,6 +386,7 @@ argument_list|(
 literal|"Topics are not supported by a QueueSession"
 argument_list|)
 throw|;
+block|}
 return|return
 name|next
 operator|.
@@ -414,6 +416,7 @@ name|destination
 operator|instanceof
 name|Topic
 condition|)
+block|{
 throw|throw
 operator|new
 name|InvalidDestinationException
@@ -421,6 +424,7 @@ argument_list|(
 literal|"Topics are not supported by a QueueSession"
 argument_list|)
 throw|;
+block|}
 return|return
 name|next
 operator|.
@@ -609,6 +613,7 @@ name|destination
 operator|instanceof
 name|Topic
 condition|)
+block|{
 throw|throw
 operator|new
 name|InvalidDestinationException
@@ -616,6 +621,7 @@ argument_list|(
 literal|"Topics are not supported by a QueueSession"
 argument_list|)
 throw|;
+block|}
 return|return
 name|next
 operator|.

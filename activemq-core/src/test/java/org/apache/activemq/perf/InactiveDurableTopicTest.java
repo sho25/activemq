@@ -308,9 +308,11 @@ specifier|private
 name|Session
 name|session
 decl_stmt|;
+specifier|private
 name|ActiveMQConnectionFactory
 name|connectionFactory
 decl_stmt|;
+specifier|private
 name|BrokerService
 name|broker
 decl_stmt|;

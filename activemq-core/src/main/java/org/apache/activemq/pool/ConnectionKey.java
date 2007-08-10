@@ -220,7 +220,6 @@ literal|true
 return|;
 block|}
 return|return
-operator|(
 name|o1
 operator|!=
 literal|null
@@ -235,7 +234,6 @@ name|equals
 argument_list|(
 name|o2
 argument_list|)
-operator|)
 return|;
 block|}
 block|}
