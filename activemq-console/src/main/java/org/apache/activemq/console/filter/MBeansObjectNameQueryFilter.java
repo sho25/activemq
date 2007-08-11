@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -19,13 +19,91 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|MalformedURLException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|management
 operator|.
-name|remote
+name|MBeanServerConnection
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
 operator|.
-name|JMXServiceURL
+name|management
+operator|.
+name|MalformedObjectNameException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|ObjectName
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|QueryExp
 import|;
 end_import
 
@@ -59,87 +137,9 @@ name|javax
 operator|.
 name|management
 operator|.
-name|ObjectName
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
+name|remote
 operator|.
-name|management
-operator|.
-name|MalformedObjectNameException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|MBeanServerConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|QueryExp
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|MalformedURLException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
+name|JMXServiceURL
 import|;
 end_import
 
@@ -170,7 +170,7 @@ specifier|private
 name|JMXServiceURL
 name|jmxServiceUrl
 decl_stmt|;
-comment|/**      * Creates an mbeans object name query filter that will query on the given JMX Service URL      * @param jmxUrl - JMX service URL to connect to      * @throws MalformedURLException      */
+comment|/**      * Creates an mbeans object name query filter that will query on the given      * JMX Service URL      *       * @param jmxUrl - JMX service URL to connect to      * @throws MalformedURLException      */
 specifier|public
 name|MBeansObjectNameQueryFilter
 parameter_list|(
@@ -190,7 +190,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates an mbeans objecet name query filter that will query on the given JMX Service URL      * @param jmxUrl - JMX service URL to connect to      */
+comment|/**      * Creates an mbeans objecet name query filter that will query on the given      * JMX Service URL      *       * @param jmxUrl - JMX service URL to connect to      */
 specifier|public
 name|MBeansObjectNameQueryFilter
 parameter_list|(
@@ -210,7 +210,7 @@ operator|=
 name|jmxUrl
 expr_stmt|;
 block|}
-comment|/**      * Queries the JMX service using a mapping of keys and values to construct the object name      * @param queries - mapping of keys and values      * @return collection of ObjectInstance that matches the query      * @throws MalformedObjectNameException - if the given string is an invalid object name      * @throws IOException - if there is a problem querying the JMX context      */
+comment|/**      * Queries the JMX service using a mapping of keys and values to construct      * the object name      *       * @param queries - mapping of keys and values      * @return collection of ObjectInstance that matches the query      * @throws MalformedObjectNameException - if the given string is an invalid      *                 object name      * @throws IOException - if there is a problem querying the JMX context      */
 specifier|public
 name|List
 name|query
@@ -350,13 +350,21 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|!
 name|key
-operator|!=
+operator|.
+name|equals
+argument_list|(
 literal|""
+argument_list|)
 operator|&&
+operator|!
 name|val
-operator|!=
+operator|.
+name|equals
+argument_list|(
 literal|""
+argument_list|)
 condition|)
 block|{
 name|objNameQuery
@@ -397,7 +405,7 @@ name|queryExp
 argument_list|)
 return|;
 block|}
-comment|/**      * Advance query that enables you to specify both the object name and the query expression to use.      * Note: Query expression is currently unsupported.      * @param objName - object name to use for query      * @param queryExpStr - query expression string      * @return set of mbeans that matches the query      * @throws IOException - if there is a problem querying the JMX context      */
+comment|/**      * Advance query that enables you to specify both the object name and the      * query expression to use. Note: Query expression is currently unsupported.      *       * @param objName - object name to use for query      * @param queryExpStr - query expression string      * @return set of mbeans that matches the query      * @throws IOException - if there is a problem querying the JMX context      */
 specifier|protected
 name|List
 name|queryMBeans
@@ -433,7 +441,8 @@ argument_list|(
 name|queryExpStr
 argument_list|)
 decl_stmt|;
-comment|// Convert mbeans set to list to make it standard throughout the query filter
+comment|// Convert mbeans set to list to make it standard throughout the query
+comment|// filter
 name|List
 name|mbeans
 init|=
@@ -459,7 +468,7 @@ return|return
 name|mbeans
 return|;
 block|}
-comment|/**      * Get the JMX service URL the query is connecting to.      * @return JMX service URL      */
+comment|/**      * Get the JMX service URL the query is connecting to.      *       * @return JMX service URL      */
 specifier|public
 name|JMXServiceURL
 name|getJmxServiceUrl
@@ -469,7 +478,7 @@ return|return
 name|jmxServiceUrl
 return|;
 block|}
-comment|/**      * Sets the JMX service URL the query is going to connect to.      * @param jmxServiceUrl - new JMX service URL      */
+comment|/**      * Sets the JMX service URL the query is going to connect to.      *       * @param jmxServiceUrl - new JMX service URL      */
 specifier|public
 name|void
 name|setJmxServiceUrl
@@ -485,7 +494,7 @@ operator|=
 name|jmxServiceUrl
 expr_stmt|;
 block|}
-comment|/**      * Sets the JMX service URL the query is going to connect to.      * @param jmxServiceUrl - new JMX service URL      */
+comment|/**      * Sets the JMX service URL the query is going to connect to.      *       * @param jmxServiceUrl - new JMX service URL      */
 specifier|public
 name|void
 name|setJmxServiceUrl
@@ -506,7 +515,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a JMX connector      * @return JMX connector      * @throws IOException      */
+comment|/**      * Creates a JMX connector      *       * @return JMX connector      * @throws IOException      */
 specifier|protected
 name|JMXConnector
 name|createJmxConnector
@@ -524,7 +533,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a query expression based on the query expression string      * Note: currently unsupported      * @param queryExpStr - query expression string      * @return the created query expression      */
+comment|/**      * Creates a query expression based on the query expression string Note:      * currently unsupported      *       * @param queryExpStr - query expression string      * @return the created query expression      */
 specifier|protected
 name|QueryExp
 name|createQueryExp

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -23,9 +23,27 @@ name|java
 operator|.
 name|util
 operator|.
-name|regex
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|Pattern
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
 import|;
 end_import
 
@@ -55,27 +73,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|regex
 operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
+name|Pattern
 import|;
 end_import
 
@@ -95,7 +95,7 @@ name|REGEX_PREFIX
 init|=
 literal|"REGEX:QUERY:"
 decl_stmt|;
-comment|/**      * Creates a regular expression query that is able to match an object using key-value pattern regex filtering      * @param next      */
+comment|/**      * Creates a regular expression query that is able to match an object using      * key-value pattern regex filtering      *       * @param next      */
 specifier|protected
 name|RegExQueryFilter
 parameter_list|(
@@ -109,7 +109,7 @@ name|next
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Separates the regular expressions queries from the usual queries. A query is a regex query, if it is key-value pair      * with the format<key>=<value>, and value is a pattern that satisfies the isRegularExpression method.      * @param queries - list of queries      * @return filtered objects that matches the regex query      * @throws Exception      */
+comment|/**      * Separates the regular expressions queries from the usual queries. A query      * is a regex query, if it is key-value pair with the format<key>=<value>,      * and value is a pattern that satisfies the isRegularExpression method.      *       * @param queries - list of queries      * @return filtered objects that matches the regex query      * @throws Exception      */
 specifier|public
 name|List
 name|query
@@ -214,7 +214,8 @@ name|pos
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Add the regex query to list and make it a non-factor in the succeeding queries
+comment|// Add the regex query to list and make it a non-factor in the
+comment|// succeeding queries
 if|if
 condition|(
 name|isRegularExpression
@@ -263,7 +264,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Checks if a given string is a regular expression query. Currently, a pattern is a regex query, if it starts with      * the RegExQueryFilter.REGEX_PREFIX.      * @param query      * @return      */
+comment|/**      * Checks if a given string is a regular expression query. Currently, a      * pattern is a regex query, if it starts with the      * RegExQueryFilter.REGEX_PREFIX.      *       * @param query      * @return      */
 specifier|protected
 name|boolean
 name|isRegularExpression
@@ -281,7 +282,7 @@ name|REGEX_PREFIX
 argument_list|)
 return|;
 block|}
-comment|/**      * Compiles the regex query to a pattern.      * @param query - query string to compile      * @return regex pattern      */
+comment|/**      * Compiles the regex query to a pattern.      *       * @param query - query string to compile      * @return regex pattern      */
 specifier|protected
 name|Pattern
 name|compileQuery
@@ -307,7 +308,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Filter the specified colleciton using the regex patterns extracted.      * @param regex - regex map      * @param data - list of objects to filter      * @return filtered list of objects that matches the regex map      * @throws Exception      */
+comment|/**      * Filter the specified colleciton using the regex patterns extracted.      *       * @param regex - regex map      * @param data - list of objects to filter      * @return filtered list of objects that matches the regex map      * @throws Exception      */
 specifier|protected
 name|List
 name|filterCollectionUsingRegEx
@@ -395,7 +396,7 @@ return|return
 name|filteredElems
 return|;
 block|}
-comment|/**      * Determines how the object is to be matched to the regex map.      * @param data - object to match      * @param regex - regex map      * @return true, if the object matches the regex map, false otherwise      * @throws Exception      */
+comment|/**      * Determines how the object is to be matched to the regex map.      *       * @param data - object to match      * @param regex - regex map      * @return true, if the object matches the regex map, false otherwise      * @throws Exception      */
 specifier|protected
 specifier|abstract
 name|boolean

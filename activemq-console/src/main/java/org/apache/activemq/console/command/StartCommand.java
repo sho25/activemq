@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -16,6 +16,56 @@ operator|.
 name|command
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URI
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URISyntaxException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
 
 begin_import
 import|import
@@ -61,56 +111,6 @@ name|GlobalWriter
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URI
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URISyntaxException
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -126,26 +126,93 @@ name|DEFAULT_CONFIG_URI
 init|=
 literal|"xbean:activemq.xml"
 decl_stmt|;
+specifier|protected
+name|String
+index|[]
+name|helpFile
+init|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"Task Usage: Main start [start-options] [uri]"
+block|,
+literal|"Description: Creates and starts a broker using a configuration file, or a broker URI."
+block|,
+literal|""
+block|,
+literal|"Start Options:"
+block|,
+literal|"    -D<name>=<value>      Define a system property."
+block|,
+literal|"    --version             Display the version information."
+block|,
+literal|"    -h,-?,--help          Display the start broker help information."
+block|,
+literal|""
+block|,
+literal|"URI:"
+block|,
+literal|""
+block|,
+literal|"    XBean based broker configuration:"
+block|,
+literal|""
+block|,
+literal|"        Example: Main xbean:file:activemq.xml"
+block|,
+literal|"            Loads the xbean configuration file from the current working directory"
+block|,
+literal|"        Example: Main xbean:activemq.xml"
+block|,
+literal|"            Loads the xbean configuration file from the classpath"
+block|,
+literal|""
+block|,
+literal|"    URI Parameter based broker configuration:"
+block|,
+literal|""
+block|,
+literal|"        Example: Main broker:(tcp://localhost:61616, tcp://localhost:5000)?useJmx=true"
+block|,
+literal|"            Configures the broker with 2 transport connectors and jmx enabled"
+block|,
+literal|"        Example: Main broker:(tcp://localhost:61616, network:tcp://localhost:5000)?persistent=false"
+block|,
+literal|"            Configures the broker with 1 transport connector, and 1 network connector and persistence disabled"
+block|,
+literal|""
+block|}
+decl_stmt|;
 specifier|private
 name|URI
 name|configURI
 decl_stmt|;
 specifier|private
 name|List
+argument_list|<
+name|BrokerService
+argument_list|>
 name|brokers
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|BrokerService
+argument_list|>
 argument_list|(
 literal|5
 argument_list|)
 decl_stmt|;
-comment|/**      * The default task to start a broker or a group of brokers      * @param brokerURIs      */
+comment|/**      * The default task to start a broker or a group of brokers      *       * @param brokerURIs      */
 specifier|protected
 name|void
 name|runTask
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|brokerURIs
 parameter_list|)
 throws|throws
@@ -177,7 +244,8 @@ name|getConfigUri
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Set configuration data, if available, which in this case would be the config URI
+comment|// Set configuration data, if available, which in this case
+comment|// would be the config URI
 block|}
 else|else
 block|{
@@ -240,7 +308,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// Prevent the main thread from exiting unless it is terminated elsewhere
+comment|// Prevent the main thread from exiting unless it is terminated
+comment|// elsewhere
 name|waitForShutdown
 argument_list|()
 expr_stmt|;
@@ -275,7 +344,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Create and run a broker specified by the given configuration URI      * @param configURI      * @throws Exception      */
+comment|/**      * Create and run a broker specified by the given configuration URI      *       * @param configURI      * @throws Exception      */
 specifier|public
 name|void
 name|startBroker
@@ -320,7 +389,7 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Wait for a shutdown invocation elsewhere      * @throws Exception      */
+comment|/**      * Wait for a shutdown invocation elsewhere      *       * @throws Exception      */
 specifier|protected
 name|void
 name|waitForShutdown
@@ -413,6 +482,9 @@ comment|// Stop each broker
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|BrokerService
+argument_list|>
 name|i
 init|=
 name|brokers
@@ -430,9 +502,6 @@ block|{
 name|BrokerService
 name|broker
 init|=
-operator|(
-name|BrokerService
-operator|)
 name|i
 operator|.
 name|next
@@ -445,7 +514,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sets the current configuration URI used by the start task      * @param uri      */
+comment|/**      * Sets the current configuration URI used by the start task      *       * @param uri      */
 specifier|public
 name|void
 name|setConfigUri
@@ -459,7 +528,7 @@ operator|=
 name|uri
 expr_stmt|;
 block|}
-comment|/**      * Gets the current configuration URI used by the start task      * @return current configuration URI      */
+comment|/**      * Gets the current configuration URI used by the start task      *       * @return current configuration URI      */
 specifier|public
 name|URI
 name|getConfigUri
@@ -483,64 +552,6 @@ name|helpFile
 argument_list|)
 expr_stmt|;
 block|}
-specifier|protected
-name|String
-index|[]
-name|helpFile
-init|=
-operator|new
-name|String
-index|[]
-block|{
-literal|"Task Usage: Main start [start-options] [uri]"
-block|,
-literal|"Description: Creates and starts a broker using a configuration file, or a broker URI."
-block|,
-literal|""
-block|,
-literal|"Start Options:"
-block|,
-literal|"    -D<name>=<value>      Define a system property."
-block|,
-literal|"    --version             Display the version information."
-block|,
-literal|"    -h,-?,--help          Display the start broker help information."
-block|,
-literal|""
-block|,
-literal|"URI:"
-block|,
-literal|""
-block|,
-literal|"    XBean based broker configuration:"
-block|,
-literal|""
-block|,
-literal|"        Example: Main xbean:file:activemq.xml"
-block|,
-literal|"            Loads the xbean configuration file from the current working directory"
-block|,
-literal|"        Example: Main xbean:activemq.xml"
-block|,
-literal|"            Loads the xbean configuration file from the classpath"
-block|,
-literal|""
-block|,
-literal|"    URI Parameter based broker configuration:"
-block|,
-literal|""
-block|,
-literal|"        Example: Main broker:(tcp://localhost:61616, tcp://localhost:5000)?useJmx=true"
-block|,
-literal|"            Configures the broker with 2 transport connectors and jmx enabled"
-block|,
-literal|"        Example: Main broker:(tcp://localhost:61616, network:tcp://localhost:5000)?persistent=false"
-block|,
-literal|"            Configures the broker with 1 transport connector, and 1 network connector and persistence disabled"
-block|,
-literal|""
-block|}
-decl_stmt|;
 block|}
 end_class
 

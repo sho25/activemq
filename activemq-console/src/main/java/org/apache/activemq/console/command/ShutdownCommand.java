@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -16,100 +16,6 @@ operator|.
 name|command
 package|;
 end_package
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|console
-operator|.
-name|util
-operator|.
-name|JmxMBeansUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|console
-operator|.
-name|formatter
-operator|.
-name|GlobalWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|MBeanServerConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|ObjectName
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|ObjectInstance
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|remote
-operator|.
-name|JMXServiceURL
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
 
 begin_import
 import|import
@@ -131,6 +37,100 @@ name|HashSet
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|MBeanServerConnection
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|ObjectInstance
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|ObjectName
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|remote
+operator|.
+name|JMXServiceURL
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|console
+operator|.
+name|formatter
+operator|.
+name|GlobalWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|console
+operator|.
+name|util
+operator|.
+name|JmxMBeansUtil
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -138,13 +138,49 @@ name|ShutdownCommand
 extends|extends
 name|AbstractJmxCommand
 block|{
+specifier|protected
+name|String
+index|[]
+name|helpFile
+init|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"Task Usage: Main stop [stop-options] [broker-name1] [broker-name2] ..."
+block|,
+literal|"Description: Stops a running broker."
+block|,
+literal|""
+block|,
+literal|"Stop Options:"
+block|,
+literal|"    --jmxurl<url>      Set the JMX URL to connect to."
+block|,
+literal|"    --all               Stop all brokers."
+block|,
+literal|"    --version           Display the version information."
+block|,
+literal|"    -h,-?,--help        Display the stop broker help information."
+block|,
+literal|""
+block|,
+literal|"Broker Names:"
+block|,
+literal|"    Name of the brokers that will be stopped."
+block|,
+literal|"    If omitted, it is assumed that there is only one broker running, and it will be stopped."
+block|,
+literal|"    Use -all to stop all running brokers."
+block|,
+literal|""
+block|}
+decl_stmt|;
 specifier|private
 name|boolean
 name|isStopAllBrokers
-init|=
-literal|false
 decl_stmt|;
-comment|/**      * Shuts down the specified broker or brokers      * @param brokerNames - names of brokers to shutdown      * @throws Exception      */
+comment|/**      * Shuts down the specified broker or brokers      *       * @param brokerNames - names of brokers to shutdown      * @throws Exception      */
 specifier|protected
 name|void
 name|runTask
@@ -182,7 +218,6 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Stop the default broker
 elseif|else
 if|if
 condition|(
@@ -192,6 +227,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+comment|// Stop the default broker
 name|mbeans
 operator|=
 name|JmxMBeansUtil
@@ -269,9 +305,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// Stop each specified broker
 else|else
 block|{
+comment|// Stop each specified broker
 name|String
 name|brokerName
 decl_stmt|;
@@ -383,7 +419,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Stops the list of brokers.      * @param jmxServiceUrl - JMX service url to connect to      * @param brokerBeans - broker mbeans to stop      * @throws Exception      */
+comment|/**      * Stops the list of brokers.      *       * @param jmxServiceUrl - JMX service url to connect to      * @param brokerBeans - broker mbeans to stop      * @throws Exception      */
 specifier|protected
 name|void
 name|stopBrokers
@@ -507,14 +543,15 @@ name|e
 parameter_list|)
 block|{
 comment|// TODO: Check exceptions throwned
-comment|//System.out.println("Failed to stop broker: [ " + brokerName + " ]. Reason: " + e.getMessage());
+comment|// System.out.println("Failed to stop broker: [ " + brokerName +
+comment|// " ]. Reason: " + e.getMessage());
 block|}
 block|}
 name|closeJmxConnector
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Handle the --all option.      * @param token - option token to handle      * @param tokens - succeeding command arguments      * @throws Exception      */
+comment|/**      * Handle the --all option.      *       * @param token - option token to handle      * @param tokens - succeeding command arguments      * @throws Exception      */
 specifier|protected
 name|void
 name|handleOption
@@ -523,6 +560,9 @@ name|String
 name|token
 parameter_list|,
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|tokens
 parameter_list|)
 throws|throws
@@ -572,44 +612,6 @@ name|helpFile
 argument_list|)
 expr_stmt|;
 block|}
-specifier|protected
-name|String
-index|[]
-name|helpFile
-init|=
-operator|new
-name|String
-index|[]
-block|{
-literal|"Task Usage: Main stop [stop-options] [broker-name1] [broker-name2] ..."
-block|,
-literal|"Description: Stops a running broker."
-block|,
-literal|""
-block|,
-literal|"Stop Options:"
-block|,
-literal|"    --jmxurl<url>      Set the JMX URL to connect to."
-block|,
-literal|"    --all               Stop all brokers."
-block|,
-literal|"    --version           Display the version information."
-block|,
-literal|"    -h,-?,--help        Display the stop broker help information."
-block|,
-literal|""
-block|,
-literal|"Broker Names:"
-block|,
-literal|"    Name of the brokers that will be stopped."
-block|,
-literal|"    If omitted, it is assumed that there is only one broker running, and it will be stopped."
-block|,
-literal|"    Use -all to stop all running brokers."
-block|,
-literal|""
-block|}
-decl_stmt|;
 block|}
 end_class
 

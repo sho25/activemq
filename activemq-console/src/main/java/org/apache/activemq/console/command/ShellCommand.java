@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -19,17 +19,51 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|io
 operator|.
-name|activemq
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|console
+name|io
 operator|.
-name|formatter
+name|PrintStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|GlobalWriter
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -51,51 +85,17 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|activemq
 operator|.
-name|util
+name|console
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|formatter
 operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|PrintStream
+name|GlobalWriter
 import|;
 end_import
 
@@ -146,13 +146,11 @@ operator|new
 name|String
 index|[]
 block|{
-operator|(
 name|interactive
 condition|?
 literal|"Usage: [task] [task-options] [task data]"
 else|:
 literal|"Usage: Main [--extdir<dir>] [task] [task-options] [task data]"
-operator|)
 block|,
 literal|""
 block|,
@@ -198,7 +196,7 @@ literal|""
 block|}
 expr_stmt|;
 block|}
-comment|/**      * Main method to run a command shell client.      * @param args - command line arguments      * @param in - input stream to use      * @param out - output stream to use      * @return 0 for a successful run, -1 if there are any exception      */
+comment|/**      * Main method to run a command shell client.      *       * @param args - command line arguments      * @param in - input stream to use      * @param out - output stream to use      * @return 0 for a successful run, -1 if there are any exception      */
 specifier|public
 specifier|static
 name|int
@@ -228,10 +226,16 @@ argument_list|)
 expr_stmt|;
 comment|// Convert arguments to list for easier management
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|tokens
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|Arrays
 operator|.
@@ -304,12 +308,15 @@ operator|=
 name|interactive
 expr_stmt|;
 block|}
-comment|/**      * Parses for specific command task.      * @param tokens - command arguments      * @throws Exception      */
+comment|/**      * Parses for specific command task.      *       * @param tokens - command arguments      * @throws Exception      */
 specifier|protected
 name|void
 name|runTask
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|tokens
 parameter_list|)
 throws|throws

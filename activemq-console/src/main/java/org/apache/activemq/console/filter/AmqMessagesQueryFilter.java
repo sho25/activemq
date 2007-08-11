@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -16,96 +16,6 @@ operator|.
 name|filter
 package|;
 end_package
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQTopic
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Destination
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Connection
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Session
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|QueueBrowser
-import|;
-end_import
 
 begin_import
 import|import
@@ -133,7 +43,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Iterator
 import|;
 end_import
 
@@ -143,7 +53,97 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Connection
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Destination
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|QueueBrowser
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Session
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|ActiveMQConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQQueue
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQTopic
 import|;
 end_import
 
@@ -162,7 +162,7 @@ specifier|private
 name|Destination
 name|destination
 decl_stmt|;
-comment|/**      * Create a JMS message query filter      * @param brokerUrl - broker url to connect to      * @param destination - JMS destination to query      */
+comment|/**      * Create a JMS message query filter      *       * @param brokerUrl - broker url to connect to      * @param destination - JMS destination to query      */
 specifier|public
 name|AmqMessagesQueryFilter
 parameter_list|(
@@ -191,7 +191,7 @@ operator|=
 name|destination
 expr_stmt|;
 block|}
-comment|/**      * Queries the specified destination using the message selector format query      * @param queries - message selector queries      * @return list messages that matches the selector      * @throws Exception      */
+comment|/**      * Queries the specified destination using the message selector format query      *       * @param queries - message selector queries      * @return list messages that matches the selector      * @throws Exception      */
 specifier|public
 name|List
 name|query
@@ -245,9 +245,13 @@ block|}
 comment|// Remove last AND
 if|if
 condition|(
+operator|!
 name|selector
-operator|!=
+operator|.
+name|equals
+argument_list|(
 literal|""
+argument_list|)
 condition|)
 block|{
 name|selector
@@ -301,7 +305,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Query the messages of a queue destination using a queue browser      * @param queue - queue destination      * @param selector - message selector      * @return list of messages that matches the selector      * @throws Exception      */
+comment|/**      * Query the messages of a queue destination using a queue browser      *       * @param queue - queue destination      * @param selector - message selector      * @return list of messages that matches the selector      * @throws Exception      */
 specifier|protected
 name|List
 name|queryMessages
@@ -372,7 +376,7 @@ return|return
 name|messages
 return|;
 block|}
-comment|/**      * Query the messages of a topic destination using a message consumer      * @param topic - topic destination      * @param selector - message selector      * @return list of messages that matches the selector      * @throws Exception      */
+comment|/**      * Query the messages of a topic destination using a message consumer      *       * @param topic - topic destination      * @param selector - message selector      * @return list of messages that matches the selector      * @throws Exception      */
 specifier|protected
 name|List
 name|queryMessages
@@ -386,13 +390,15 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// TODO: should we use a durable subscriber or a retroactive non-durable subscriber?
-comment|// TODO: if a durable subscriber is used, how do we manage it? subscribe/unsubscribe tasks?
+comment|// TODO: should we use a durable subscriber or a retroactive non-durable
+comment|// subscriber?
+comment|// TODO: if a durable subscriber is used, how do we manage it?
+comment|// subscribe/unsubscribe tasks?
 return|return
 literal|null
 return|;
 block|}
-comment|/**      * Create and start a JMS connection      * @param brokerUrl - broker url to connect to.      * @return JMS connection      * @throws JMSException      */
+comment|/**      * Create and start a JMS connection      *       * @param brokerUrl - broker url to connect to.      * @return JMS connection      * @throws JMSException      */
 specifier|protected
 name|Connection
 name|createConnection
@@ -426,7 +432,7 @@ return|return
 name|conn
 return|;
 block|}
-comment|/**      * Get the broker url being used.      * @return broker url      */
+comment|/**      * Get the broker url being used.      *       * @return broker url      */
 specifier|public
 name|URI
 name|getBrokerUrl
@@ -436,7 +442,7 @@ return|return
 name|brokerUrl
 return|;
 block|}
-comment|/**      * Set the broker url to use.      * @param brokerUrl - broker url      */
+comment|/**      * Set the broker url to use.      *       * @param brokerUrl - broker url      */
 specifier|public
 name|void
 name|setBrokerUrl
@@ -452,7 +458,7 @@ operator|=
 name|brokerUrl
 expr_stmt|;
 block|}
-comment|/**      * Get the destination being used.      * @return - JMS destination      */
+comment|/**      * Get the destination being used.      *       * @return - JMS destination      */
 specifier|public
 name|Destination
 name|getDestination
@@ -462,7 +468,7 @@ return|return
 name|destination
 return|;
 block|}
-comment|/**      * Set the destination to use.      * @param destination - JMS destination      */
+comment|/**      * Set the destination to use.      *       * @param destination - JMS destination      */
 specifier|public
 name|void
 name|setDestination

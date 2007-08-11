@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -24,7 +24,7 @@ name|WildcardToRegExTransformFilter
 extends|extends
 name|WildcardTransformFilter
 block|{
-comment|/**      * Creates a filter that is able to transform a wildcard query to a regular expression query string      * @param next - next query filter      */
+comment|/**      * Creates a filter that is able to transform a wildcard query to a regular      * expression query string      *       * @param next - next query filter      */
 specifier|public
 name|WildcardToRegExTransformFilter
 parameter_list|(
@@ -38,7 +38,7 @@ name|next
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Use to determine if a query string is a wildcard query. A query string is a wildcard query if it is a key-value      * pair with the format<key>=<value> and the value contains '*' and '?'.      * @param query - query string      * @return true, if the query string is a wildcard query, false otherwise      */
+comment|/**      * Use to determine if a query string is a wildcard query. A query string is      * a wildcard query if it is a key-value pair with the format<key>=<value>      * and the value contains '*' and '?'.      *       * @param query - query string      * @return true, if the query string is a wildcard query, false otherwise      */
 specifier|protected
 name|boolean
 name|isWildcardQuery
@@ -90,7 +90,6 @@ block|}
 comment|// If the value contains wildcards
 return|return
 operator|(
-operator|(
 name|val
 operator|.
 name|indexOf
@@ -111,10 +110,9 @@ argument_list|)
 operator|>=
 literal|0
 operator|)
-operator|)
 return|;
 block|}
-comment|/**      * Transform a wildcard query to regular expression format      * @param query - query string to transform      * @return regex query string      */
+comment|/**      * Transform a wildcard query to regular expression format      *       * @param query - query string to transform      * @return regex query string      */
 specifier|protected
 name|String
 name|transformWildcardQuery
@@ -185,7 +183,8 @@ argument_list|,
 literal|"\\\\."
 argument_list|)
 expr_stmt|;
-comment|// Escape all dot characters. From (.) to (\.)
+comment|// Escape all dot characters.
+comment|// From (.) to (\.)
 name|val
 operator|=
 name|val
@@ -209,7 +208,8 @@ argument_list|,
 literal|".*?"
 argument_list|)
 expr_stmt|;
-comment|// Match all characters, use reluctant quantifier
+comment|// Match all characters, use
+comment|// reluctant quantifier
 name|val
 operator|=
 literal|"("
@@ -227,7 +227,8 @@ name|REGEX_PREFIX
 operator|+
 name|val
 expr_stmt|;
-comment|// Flag as a regular expression query
+comment|// Flag as a regular
+comment|// expression query
 return|return
 name|key
 operator|+

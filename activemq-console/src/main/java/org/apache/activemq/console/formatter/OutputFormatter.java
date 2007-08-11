@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -19,31 +19,31 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|management
+name|io
 operator|.
-name|ObjectInstance
+name|OutputStream
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|management
+name|util
 operator|.
-name|ObjectName
+name|Collection
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|management
+name|util
 operator|.
-name|AttributeList
+name|Map
 import|;
 end_import
 
@@ -59,47 +59,44 @@ end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|util
+name|management
 operator|.
-name|Collection
+name|AttributeList
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|util
+name|management
 operator|.
-name|Map
+name|ObjectInstance
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|io
+name|management
 operator|.
-name|OutputStream
+name|ObjectName
 import|;
 end_import
 
 begin_interface
-specifier|public
 interface|interface
 name|OutputFormatter
 block|{
 comment|/**      * Retrieve the output stream being used by the formatter      * @return      */
-specifier|public
 name|OutputStream
 name|getOutputStream
 parameter_list|()
 function_decl|;
 comment|/**      * Print an ObjectInstance format of an mbean      * @param mbean - mbean to print      */
-specifier|public
 name|void
 name|printMBean
 parameter_list|(
@@ -108,7 +105,6 @@ name|mbean
 parameter_list|)
 function_decl|;
 comment|/**      * Print an ObjectName format of an mbean      * @param mbean - mbean to print      */
-specifier|public
 name|void
 name|printMBean
 parameter_list|(
@@ -117,7 +113,6 @@ name|mbean
 parameter_list|)
 function_decl|;
 comment|/**      * Print an AttributeList format of an mbean      * @param mbean - mbean to print      */
-specifier|public
 name|void
 name|printMBean
 parameter_list|(
@@ -126,7 +121,6 @@ name|mbean
 parameter_list|)
 function_decl|;
 comment|/**      * Print a Map format of an mbean      * @param mbean - mbean to print      */
-specifier|public
 name|void
 name|printMBean
 parameter_list|(
@@ -135,7 +129,6 @@ name|mbean
 parameter_list|)
 function_decl|;
 comment|/**      * Print a Collection format of mbeans      * @param mbean - collection of mbeans      */
-specifier|public
 name|void
 name|printMBean
 parameter_list|(
@@ -144,7 +137,6 @@ name|mbean
 parameter_list|)
 function_decl|;
 comment|/**      * Print a Map format of a JMS message      * @param msg      */
-specifier|public
 name|void
 name|printMessage
 parameter_list|(
@@ -153,7 +145,6 @@ name|msg
 parameter_list|)
 function_decl|;
 comment|/**      * Print a Message format of a JMS message      * @param msg - JMS message to print      */
-specifier|public
 name|void
 name|printMessage
 parameter_list|(
@@ -162,7 +153,6 @@ name|msg
 parameter_list|)
 function_decl|;
 comment|/**      * Print a Collection format of JMS messages      * @param msg - collection of JMS messages      */
-specifier|public
 name|void
 name|printMessage
 parameter_list|(
@@ -171,7 +161,6 @@ name|msg
 parameter_list|)
 function_decl|;
 comment|/**      * Print help messages      * @param helpMsgs - help messages to print      */
-specifier|public
 name|void
 name|printHelp
 parameter_list|(
@@ -181,7 +170,6 @@ name|helpMsgs
 parameter_list|)
 function_decl|;
 comment|/**      * Print an information message      * @param info - information message to print      */
-specifier|public
 name|void
 name|printInfo
 parameter_list|(
@@ -190,7 +178,6 @@ name|info
 parameter_list|)
 function_decl|;
 comment|/**      * Print an exception message      * @param e - exception to print      */
-specifier|public
 name|void
 name|printException
 parameter_list|(
@@ -199,7 +186,6 @@ name|e
 parameter_list|)
 function_decl|;
 comment|/**      * Print a version information      * @param version - version info to print      */
-specifier|public
 name|void
 name|printVersion
 parameter_list|(
@@ -208,7 +194,6 @@ name|version
 parameter_list|)
 function_decl|;
 comment|/**      * Print a generic key value mapping      * @param map to print      */
-specifier|public
 name|void
 name|print
 parameter_list|(
@@ -217,7 +202,6 @@ name|map
 parameter_list|)
 function_decl|;
 comment|/**      * Print a generic array of strings      * @param strings - string array to print      */
-specifier|public
 name|void
 name|print
 parameter_list|(
@@ -227,7 +211,6 @@ name|strings
 parameter_list|)
 function_decl|;
 comment|/**      * Print a collection of objects      * @param collection - collection to print      */
-specifier|public
 name|void
 name|print
 parameter_list|(
@@ -236,7 +219,6 @@ name|collection
 parameter_list|)
 function_decl|;
 comment|/**      * Print a java string      * @param string - string to print      */
-specifier|public
 name|void
 name|print
 parameter_list|(

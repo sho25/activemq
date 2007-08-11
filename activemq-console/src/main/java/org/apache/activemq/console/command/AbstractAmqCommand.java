@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -16,6 +16,86 @@ operator|.
 name|command
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URI
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URISyntaxException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Connection
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|ConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
+import|;
+end_import
 
 begin_import
 import|import
@@ -45,86 +125,6 @@ name|GlobalWriter
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|ConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Connection
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URI
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URISyntaxException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
 begin_class
 specifier|public
 specifier|abstract
@@ -144,13 +144,19 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|List
+argument_list|<
+name|Connection
+argument_list|>
 name|connections
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Connection
+argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**      * Establishes a connection to the remote broker specified by the broker url.      * @return - connection to the broker      * @throws JMSException      */
+comment|/**      * Establishes a connection to the remote broker specified by the broker      * url.      *       * @return - connection to the broker      * @throws JMSException      */
 specifier|protected
 name|Connection
 name|createConnection
@@ -173,7 +179,9 @@ argument_list|(
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"You must specify a broker URL to connect to using the --amqurl option."
+literal|"You must specify a broker "
+operator|+
+literal|"URL to connect to using the --amqurl option."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -217,7 +225,7 @@ return|return
 name|conn
 return|;
 block|}
-comment|/**      * Establishes a connection to the remote broker specified by the broker url.      * @param username - username for the connection      * @param password - password for the connection      * @return - connection to the broker      * @throws JMSException      */
+comment|/**      * Establishes a connection to the remote broker specified by the broker      * url.      *       * @param username - username for the connection      * @param password - password for the connection      * @return - connection to the broker      * @throws JMSException      */
 specifier|protected
 name|Connection
 name|createConnection
@@ -308,6 +316,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Connection
+argument_list|>
 name|i
 init|=
 name|connections
@@ -324,15 +335,10 @@ control|)
 block|{
 try|try
 block|{
-operator|(
-operator|(
-name|Connection
-operator|)
 name|i
 operator|.
 name|next
 argument_list|()
-operator|)
 operator|.
 name|close
 argument_list|()
@@ -343,7 +349,7 @@ parameter_list|(
 name|Exception
 name|e
 parameter_list|)
-block|{ }
+block|{             }
 block|}
 name|connections
 operator|.
@@ -351,7 +357,7 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Handle the --amqurl option.      * @param token - current option      * @param tokens - succeeding list of arguments      * @throws Exception      */
+comment|/**      * Handle the --amqurl option.      *       * @param token - current option      * @param tokens - succeeding list of arguments      * @throws Exception      */
 specifier|protected
 name|void
 name|handleOption
@@ -507,7 +513,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Set the broker url.      * @param brokerUrl - new broker url      */
+comment|/**      * Set the broker url.      *       * @param brokerUrl - new broker url      */
 specifier|protected
 name|void
 name|setBrokerUrl
@@ -523,7 +529,7 @@ operator|=
 name|brokerUrl
 expr_stmt|;
 block|}
-comment|/**      * Set the broker url.      * @param address - address of the new broker url      * @throws URISyntaxException      */
+comment|/**      * Set the broker url.      *       * @param address - address of the new broker url      * @throws URISyntaxException      */
 specifier|protected
 name|void
 name|setBrokerUrl
@@ -545,7 +551,7 @@ name|address
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the current broker url.      * @return current broker url      */
+comment|/**      * Get the current broker url.      *       * @return current broker url      */
 specifier|protected
 name|URI
 name|getBrokerUrl

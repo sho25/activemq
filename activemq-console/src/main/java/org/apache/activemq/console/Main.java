@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -155,6 +155,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Iterator
 import|;
 end_import
@@ -195,22 +205,12 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|StringTokenizer
 import|;
 end_import
 
 begin_comment
-comment|/**  * Main class that can bootstrap an ActiveMQ broker console. Handles command line  * argument parsing to set up and run broker tasks.  *  * @version $Revision$  */
+comment|/**  * Main class that can bootstrap an ActiveMQ broker console. Handles command  * line argument parsing to set up and run broker tasks.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -227,6 +227,13 @@ init|=
 literal|"org.apache.activemq.console.command.ShellCommand"
 decl_stmt|;
 specifier|private
+specifier|static
+name|boolean
+name|useDefExt
+init|=
+literal|true
+decl_stmt|;
+specifier|private
 name|File
 name|activeMQHome
 decl_stmt|;
@@ -240,30 +247,35 @@ name|classLoader
 decl_stmt|;
 specifier|private
 name|Set
+argument_list|<
+name|File
+argument_list|>
 name|extensions
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|File
+argument_list|>
 argument_list|(
 literal|5
 argument_list|)
 decl_stmt|;
 specifier|private
 name|Set
+argument_list|<
+name|File
+argument_list|>
 name|activeMQClassPath
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|File
+argument_list|>
 argument_list|(
 literal|5
 argument_list|)
-decl_stmt|;
-specifier|private
-specifier|static
-name|boolean
-name|useDefExt
-init|=
-literal|true
 decl_stmt|;
 specifier|public
 specifier|static
@@ -284,10 +296,16 @@ argument_list|()
 decl_stmt|;
 comment|// Convert arguments to collection for easier management
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|tokens
 init|=
 operator|new
 name|LinkedList
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|Arrays
 operator|.
@@ -310,7 +328,8 @@ comment|//
 comment|// ${activemq.base}/conf
 comment|// ${activemq.base}/lib/* (only if activemq.base != activemq.home)
 comment|// ${activemq.home}/lib/*
-comment|// ${activemq.base}/lib/optional/* (only if activemq.base != activemq.home)
+comment|// ${activemq.base}/lib/optional/* (only if activemq.base !=
+comment|// activemq.home)
 comment|// ${activemq.home}/lib/optional/*
 comment|// ${activemq.base}/lib/web/* (only if activemq.base != activemq.home)
 comment|// ${activemq.home}/lib/web/*
@@ -450,7 +469,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Add any custom classpath specified from the system property activemq.classpath
+comment|// Add any custom classpath specified from the system property
+comment|// activemq.classpath
 name|app
 operator|.
 name|addClassPathList
@@ -552,7 +572,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Print out what's in the classloader tree being used.      *      * @param cl      * @return depth      */
+comment|/**      * Print out what's in the classloader tree being used.      *       * @param cl      * @return depth      */
 specifier|private
 specifier|static
 name|int
@@ -738,6 +758,9 @@ name|void
 name|parseExtensions
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|tokens
 parameter_list|)
 block|{
@@ -775,9 +798,6 @@ block|{
 name|String
 name|token
 init|=
-operator|(
-name|String
-operator|)
 name|tokens
 operator|.
 name|get
@@ -807,24 +827,20 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
-comment|// If no extension directory is specified, or next token is another option
+comment|// If no extension directory is specified, or next token is
+comment|// another option
 if|if
 condition|(
 name|i
 operator|>=
 name|count
 operator|||
-operator|(
-operator|(
-name|String
-operator|)
 name|tokens
 operator|.
 name|get
 argument_list|(
 name|i
 argument_list|)
-operator|)
 operator|.
 name|startsWith
 argument_list|(
@@ -862,9 +878,6 @@ init|=
 operator|new
 name|File
 argument_list|(
-operator|(
-name|String
-operator|)
 name|tokens
 operator|.
 name|remove
@@ -950,7 +963,8 @@ literal|"--noDefExt"
 argument_list|)
 condition|)
 block|{
-comment|// If token is --noDefExt option
+comment|// If token is
+comment|// --noDefExt option
 name|count
 operator|--
 expr_stmt|;
@@ -979,6 +993,9 @@ name|void
 name|runTaskClass
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|tokens
 parameter_list|)
 throws|throws
@@ -1021,10 +1038,6 @@ name|String
 index|[]
 name|args
 init|=
-operator|(
-name|String
-index|[]
-operator|)
 name|tokens
 operator|.
 name|toArray
@@ -1205,7 +1218,7 @@ name|classpath
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * The extension directory feature will not work if the broker factory is already in the classpath      * since we have to load him from a child ClassLoader we build for it to work correctly.      *      * @return true, if extension dir can be used. false otherwise.      */
+comment|/**      * The extension directory feature will not work if the broker factory is      * already in the classpath since we have to load him from a child      * ClassLoader we build for it to work correctly.      *       * @return true, if extension dir can be used. false otherwise.      */
 specifier|public
 name|boolean
 name|canUseExtdir
@@ -1280,15 +1293,24 @@ argument_list|()
 condition|)
 block|{
 name|ArrayList
+argument_list|<
+name|URL
+argument_list|>
 name|urls
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|URL
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|File
+argument_list|>
 name|iter
 init|=
 name|activeMQClassPath
@@ -1306,15 +1328,13 @@ block|{
 name|File
 name|dir
 init|=
-operator|(
-name|File
-operator|)
 name|iter
 operator|.
 name|next
 argument_list|()
 decl_stmt|;
-comment|// try{ System.out.println("Adding to classpath: " + dir.getCanonicalPath()); }catch(Exception e){}
+comment|// try{ System.out.println("Adding to classpath: " +
+comment|// dir.getCanonicalPath()); }catch(Exception e){}
 name|urls
 operator|.
 name|add
@@ -1329,6 +1349,9 @@ block|}
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|File
+argument_list|>
 name|iter
 init|=
 name|extensions
@@ -1346,9 +1369,6 @@ block|{
 name|File
 name|dir
 init|=
-operator|(
-name|File
-operator|)
 name|iter
 operator|.
 name|next
@@ -1378,8 +1398,10 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// Sort the jars so that classpath built is consistently
-comment|// in the same order.  Also allows us to use jar names to control
+comment|// Sort the jars so that classpath built is
+comment|// consistently
+comment|// in the same order. Also allows us to use jar
+comment|// names to control
 comment|// classpath order.
 name|Arrays
 operator|.
@@ -1482,7 +1504,10 @@ literal|".jar"
 argument_list|)
 condition|)
 block|{
-comment|// try{ System.out.println("Adding to classpath: " + files[j].getCanonicalPath()); }catch(Exception e){}
+comment|// try{ System.out.println("Adding to
+comment|// classpath: " +
+comment|// files[j].getCanonicalPath());
+comment|// }catch(Exception e){}
 name|urls
 operator|.
 name|add

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -16,6 +16,76 @@ operator|.
 name|command
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|StringTokenizer
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|ObjectInstance
+import|;
+end_import
 
 begin_import
 import|import
@@ -62,76 +132,6 @@ operator|.
 name|util
 operator|.
 name|JmxMBeansUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|ObjectInstance
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|StringTokenizer
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
 import|;
 end_import
 
@@ -182,13 +182,87 @@ name|VIEW_GROUP_BODY
 init|=
 literal|"body:"
 decl_stmt|;
+specifier|protected
+name|String
+index|[]
+name|helpFile
+init|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"Task Usage: Main browse [browse-options]<destinations>"
+block|,
+literal|"Description: Display selected destination's messages."
+block|,
+literal|""
+block|,
+literal|"Browse Options:"
+block|,
+literal|"    --msgsel<msgsel1,msglsel2>   Add to the search list messages matched by the query similar to"
+block|,
+literal|"                                  the messages selector format."
+block|,
+literal|"    -V<header|custom|body>        Predefined view that allows you to view the message header, custom"
+block|,
+literal|"                                  message header, or the message body."
+block|,
+literal|"    --view<attr1>,<attr2>,...    Select the specific attribute of the message to view."
+block|,
+literal|"    --jmxurl<url>                Set the JMX URL to connect to."
+block|,
+literal|"    --version                     Display the version information."
+block|,
+literal|"    -h,-?,--help                  Display the browse broker help information."
+block|,
+literal|""
+block|,
+literal|"Examples:"
+block|,
+literal|"    Main browse FOO.BAR"
+block|,
+literal|"        - Print the message header, custom message header, and message body of all messages in the"
+block|,
+literal|"          queue FOO.BAR"
+block|,
+literal|""
+block|,
+literal|"    Main browse -Vheader,body queue:FOO.BAR"
+block|,
+literal|"        - Print only the message header and message body of all messages in the queue FOO.BAR"
+block|,
+literal|""
+block|,
+literal|"    Main browse -Vheader --view custom:MyField queue:FOO.BAR"
+block|,
+literal|"        - Print the message header and the custom field 'MyField' of all messages in the queue FOO.BAR"
+block|,
+literal|""
+block|,
+literal|"    Main browse --msgsel JMSMessageID='*:10',JMSPriority>5 FOO.BAR"
+block|,
+literal|"        - Print all the message fields that has a JMSMessageID in the header field that matches the"
+block|,
+literal|"          wildcard *:10, and has a JMSPriority field> 5 in the queue FOO.BAR"
+block|,
+literal|"        * To use wildcard queries, the field must be a string and the query enclosed in ''"
+block|,
+literal|""
+block|}
+decl_stmt|;
 specifier|private
 specifier|final
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|queryAddObjects
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 literal|10
 argument_list|)
@@ -196,10 +270,16 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|querySubObjects
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 literal|10
 argument_list|)
@@ -207,10 +287,16 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|groupViews
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 literal|10
 argument_list|)
@@ -226,12 +312,15 @@ argument_list|(
 literal|10
 argument_list|)
 decl_stmt|;
-comment|/**      * Execute the browse command, which allows you to browse the messages in a given JMS destination      * @param tokens - command arguments      * @throws Exception      */
+comment|/**      * Execute the browse command, which allows you to browse the messages in a      * given JMS destination      *       * @param tokens - command arguments      * @throws Exception      */
 specifier|protected
 name|void
 name|runTask
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|tokens
 parameter_list|)
 throws|throws
@@ -260,6 +349,9 @@ comment|// Iterate through the queue names
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|i
 init|=
 name|tokens
@@ -388,7 +480,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Handle the --msgsel, --xmsgsel, --view, -V options.      * @param token - option token to handle      * @param tokens - succeeding command arguments      * @throws Exception      */
+comment|/**      * Handle the --msgsel, --xmsgsel, --view, -V options.      *       * @param token - option token to handle      * @param tokens - succeeding command arguments      * @throws Exception      */
 specifier|protected
 name|void
 name|handleOption
@@ -397,6 +489,9 @@ name|String
 name|token
 parameter_list|,
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|tokens
 parameter_list|)
 throws|throws
@@ -413,7 +508,8 @@ literal|"--msgsel"
 argument_list|)
 condition|)
 block|{
-comment|// If no message selector is specified, or next token is a new option
+comment|// If no message selector is specified, or next token is a new
+comment|// option
 if|if
 condition|(
 name|tokens
@@ -491,7 +587,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// If token is a substractive message selector option
 elseif|else
 if|if
 condition|(
@@ -503,7 +598,9 @@ literal|"--xmsgsel"
 argument_list|)
 condition|)
 block|{
-comment|// If no message selector is specified, or next token is a new option
+comment|// If token is a substractive message selector option
+comment|// If no message selector is specified, or next token is a new
+comment|// option
 if|if
 condition|(
 name|tokens
@@ -581,7 +678,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// If token is a view option
 elseif|else
 if|if
 condition|(
@@ -593,6 +689,7 @@ literal|"--view"
 argument_list|)
 condition|)
 block|{
+comment|// If token is a view option
 comment|// If no view specified, or next token is a new option
 if|if
 condition|(
@@ -698,7 +795,8 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// If view is explicitly specified to belong to the JMS custom header
+comment|// If view is explicitly specified to belong to the JMS
+comment|// custom header
 block|}
 elseif|else
 if|if
@@ -762,7 +860,8 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// If no view explicitly specified, let's check the view for each group
+comment|// If no view explicitly specified, let's check the view for
+comment|// each group
 block|}
 else|else
 block|{
@@ -802,7 +901,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|// If token is a predefined group view option
 elseif|else
 if|if
 condition|(
@@ -814,6 +912,7 @@ literal|"-V"
 argument_list|)
 condition|)
 block|{
+comment|// If token is a predefined group view option
 name|String
 name|viewGroup
 init|=
@@ -905,9 +1004,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// Let super class handle unknown option
 else|else
 block|{
+comment|// Let super class handle unknown option
 name|super
 operator|.
 name|handleOption
@@ -933,74 +1032,6 @@ name|helpFile
 argument_list|)
 expr_stmt|;
 block|}
-specifier|protected
-name|String
-index|[]
-name|helpFile
-init|=
-operator|new
-name|String
-index|[]
-block|{
-literal|"Task Usage: Main browse [browse-options]<destinations>"
-block|,
-literal|"Description: Display selected destination's messages."
-block|,
-literal|""
-block|,
-literal|"Browse Options:"
-block|,
-literal|"    --msgsel<msgsel1,msglsel2>   Add to the search list messages matched by the query similar to"
-block|,
-literal|"                                  the messages selector format."
-block|,
-literal|"    -V<header|custom|body>        Predefined view that allows you to view the message header, custom"
-block|,
-literal|"                                  message header, or the message body."
-block|,
-literal|"    --view<attr1>,<attr2>,...    Select the specific attribute of the message to view."
-block|,
-literal|"    --jmxurl<url>                Set the JMX URL to connect to."
-block|,
-literal|"    --version                     Display the version information."
-block|,
-literal|"    -h,-?,--help                  Display the browse broker help information."
-block|,
-literal|""
-block|,
-literal|"Examples:"
-block|,
-literal|"    Main browse FOO.BAR"
-block|,
-literal|"        - Print the message header, custom message header, and message body of all messages in the"
-block|,
-literal|"          queue FOO.BAR"
-block|,
-literal|""
-block|,
-literal|"    Main browse -Vheader,body queue:FOO.BAR"
-block|,
-literal|"        - Print only the message header and message body of all messages in the queue FOO.BAR"
-block|,
-literal|""
-block|,
-literal|"    Main browse -Vheader --view custom:MyField queue:FOO.BAR"
-block|,
-literal|"        - Print the message header and the custom field 'MyField' of all messages in the queue FOO.BAR"
-block|,
-literal|""
-block|,
-literal|"    Main browse --msgsel JMSMessageID='*:10',JMSPriority>5 FOO.BAR"
-block|,
-literal|"        - Print all the message fields that has a JMSMessageID in the header field that matches the"
-block|,
-literal|"          wildcard *:10, and has a JMSPriority field> 5 in the queue FOO.BAR"
-block|,
-literal|"        * To use wildcard queries, the field must be a string and the query enclosed in ''"
-block|,
-literal|""
-block|,     }
-decl_stmt|;
 block|}
 end_class
 

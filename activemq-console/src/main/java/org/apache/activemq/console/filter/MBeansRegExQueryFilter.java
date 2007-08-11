@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -16,6 +16,70 @@ operator|.
 name|filter
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|reflect
+operator|.
+name|Method
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|Attribute
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|AttributeList
+import|;
+end_import
 
 begin_import
 import|import
@@ -37,70 +101,6 @@ name|ObjectName
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|AttributeList
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|Attribute
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|reflect
-operator|.
-name|Method
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -108,7 +108,7 @@ name|MBeansRegExQueryFilter
 extends|extends
 name|RegExQueryFilter
 block|{
-comment|/**      * Creates a regular expression query that is able to match the values of specific mbeans      * @param next - next query filter      */
+comment|/**      * Creates a regular expression query that is able to match the values of      * specific mbeans      *       * @param next - next query filter      */
 specifier|public
 name|MBeansRegExQueryFilter
 parameter_list|(
@@ -122,7 +122,7 @@ name|next
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Try to match the object data using the regular expression map. The regex map contains a key-value mapping of an attribute      * key to a regular expression the value of the key should match. The basic rule of matching is that the data must contain      * a property key that is included in the regex map, and that the value of the property key should match the regex specified.      * @param data - object data to match      * @param regex - regex map      * @return true if the data matches the regex map specified      * @throws Exception      */
+comment|/**      * Try to match the object data using the regular expression map. The regex      * map contains a key-value mapping of an attribute key to a regular      * expression the value of the key should match. The basic rule of matching      * is that the data must contain a property key that is included in the      * regex map, and that the value of the property key should match the regex      * specified.      *       * @param data - object data to match      * @param regex - regex map      * @return true if the data matches the regex map specified      * @throws Exception      */
 specifier|protected
 name|boolean
 name|matches
@@ -204,7 +204,7 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**      * Try to match the object instance using the regular expression map      * @param data - object instance to match      * @param regex - regex map      * @return true if the object instance matches the regex map      */
+comment|/**      * Try to match the object instance using the regular expression map      *       * @param data - object instance to match      * @param regex - regex map      * @return true if the object instance matches the regex map      */
 specifier|protected
 name|boolean
 name|matches
@@ -228,7 +228,7 @@ name|regex
 argument_list|)
 return|;
 block|}
-comment|/**      * Try to match the object name instance using the regular expression map      * @param data - object name to match      * @param regex - regex map      * @return true if the object name matches the regex map      */
+comment|/**      * Try to match the object name instance using the regular expression map      *       * @param data - object name to match      * @param regex - regex map      * @return true if the object name matches the regex map      */
 specifier|protected
 name|boolean
 name|matches
@@ -319,7 +319,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Try to match the attribute list using the regular expression map      * @param data - attribute list to match      * @param regex - regex map      * @return true if the attribute list matches the regex map      */
+comment|/**      * Try to match the attribute list using the regular expression map      *       * @param data - attribute list to match      * @param regex - regex map      * @return true if the attribute list matches the regex map      */
 specifier|protected
 name|boolean
 name|matches
@@ -362,7 +362,8 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-comment|// Try to match each regex to the attributes of the mbean including its ObjectName
+comment|// Try to match each regex to the attributes of the mbean including
+comment|// its ObjectName
 for|for
 control|(
 name|Iterator

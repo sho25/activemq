@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -19,51 +19,11 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|management
+name|io
 operator|.
-name|ObjectInstance
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|ObjectName
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|AttributeList
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|Attribute
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Message
+name|OutputStream
 import|;
 end_import
 
@@ -71,9 +31,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|io
 operator|.
-name|Map
+name|PrintStream
 import|;
 end_import
 
@@ -101,19 +61,59 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|PrintStream
+name|Map
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|io
+name|jms
 operator|.
-name|OutputStream
+name|Message
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|Attribute
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|AttributeList
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|ObjectInstance
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|ObjectName
 import|;
 end_import
 
@@ -176,7 +176,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Retrieve the output stream being used by the formatter      * @return      */
+comment|/**      * Retrieve the output stream being used by the formatter      *       * @return      */
 specifier|public
 name|OutputStream
 name|getOutputStream
@@ -186,7 +186,7 @@ return|return
 name|outputStream
 return|;
 block|}
-comment|/**      * Print an ObjectInstance format of an mbean      * @param mbean - mbean to print      */
+comment|/**      * Print an ObjectInstance format of an mbean      *       * @param mbean - mbean to print      */
 specifier|public
 name|void
 name|printMBean
@@ -204,7 +204,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print an ObjectName format of an mbean      * @param mbean - mbean to print      */
+comment|/**      * Print an ObjectName format of an mbean      *       * @param mbean - mbean to print      */
 specifier|public
 name|void
 name|printMBean
@@ -222,7 +222,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print an AttributeList format of an mbean      * @param mbean - mbean to print      */
+comment|/**      * Print an AttributeList format of an mbean      *       * @param mbean - mbean to print      */
 specifier|public
 name|void
 name|printMBean
@@ -334,7 +334,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Print a Map format of an mbean      * @param mbean - mbean to print      */
+comment|/**      * Print a Map format of an mbean      *       * @param mbean - mbean to print      */
 specifier|public
 name|void
 name|printMBean
@@ -405,7 +405,7 @@ name|println
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Print a collection of mbean      * @param mbean - collection of mbeans      */
+comment|/**      * Print a collection of mbean      *       * @param mbean - collection of mbeans      */
 specifier|public
 name|void
 name|printMBean
@@ -545,7 +545,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Print a Map format of a JMS message      * @param msg      */
+comment|/**      * Print a Map format of a JMS message      *       * @param msg      */
 specifier|public
 name|void
 name|printMessage
@@ -616,7 +616,7 @@ name|println
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Print a Message format of a JMS message      * @param msg - JMS message to print      */
+comment|/**      * Print a Message format of a JMS message      *       * @param msg - JMS message to print      */
 specifier|public
 name|void
 name|printMessage
@@ -627,7 +627,7 @@ parameter_list|)
 block|{
 comment|// TODO
 block|}
-comment|/**      * Print a collection of JMS messages      * @param msg - collection of JMS messages      */
+comment|/**      * Print a collection of JMS messages      *       * @param msg - collection of JMS messages      */
 specifier|public
 name|void
 name|printMessage
@@ -733,7 +733,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Print help messages      * @param helpMsgs - help messages to print      */
+comment|/**      * Print help messages      *       * @param helpMsgs - help messages to print      */
 specifier|public
 name|void
 name|printHelp
@@ -777,7 +777,7 @@ name|println
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Print an information message      * @param info - information message to print      */
+comment|/**      * Print an information message      *       * @param info - information message to print      */
 specifier|public
 name|void
 name|printInfo
@@ -796,7 +796,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print an exception message      * @param e - exception to print      */
+comment|/**      * Print an exception message      *       * @param e - exception to print      */
 specifier|public
 name|void
 name|printException
@@ -822,7 +822,7 @@ name|out
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print a version information      * @param version - version info to print      */
+comment|/**      * Print a version information      *       * @param version - version info to print      */
 specifier|public
 name|void
 name|printVersion
@@ -862,7 +862,7 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print a generic key value mapping      * @param map to print      */
+comment|/**      * Print a generic key value mapping      *       * @param map to print      */
 specifier|public
 name|void
 name|print
@@ -933,7 +933,7 @@ name|println
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Print a generic array of strings      * @param strings - string array to print      */
+comment|/**      * Print a generic array of strings      *       * @param strings - string array to print      */
 specifier|public
 name|void
 name|print
@@ -977,7 +977,7 @@ name|println
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Print a collection of objects      * @param collection - collection to print      */
+comment|/**      * Print a collection of objects      *       * @param collection - collection to print      */
 specifier|public
 name|void
 name|print
@@ -1023,7 +1023,7 @@ name|println
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Print a java string      * @param string - string to print      */
+comment|/**      * Print a java string      *       * @param string - string to print      */
 specifier|public
 name|void
 name|print

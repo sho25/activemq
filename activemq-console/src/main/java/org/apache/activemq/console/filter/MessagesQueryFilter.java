@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -19,37 +19,51 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|management
+name|io
 operator|.
-name|remote
-operator|.
-name|JMXConnector
+name|IOException
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|management
+name|net
 operator|.
-name|remote
-operator|.
-name|JMXServiceURL
+name|MalformedURLException
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|management
+name|util
 operator|.
-name|remote
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|JMXConnectorFactory
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -87,51 +101,37 @@ end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|net
+name|management
 operator|.
-name|MalformedURLException
+name|remote
+operator|.
+name|JMXConnector
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|util
+name|management
 operator|.
-name|List
+name|remote
+operator|.
+name|JMXConnectorFactory
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|util
+name|management
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|remote
 operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
+name|JMXServiceURL
 import|;
 end_import
 
@@ -150,7 +150,7 @@ specifier|private
 name|ObjectName
 name|destName
 decl_stmt|;
-comment|/**      * Create a JMS message query filter      * @param jmxServiceUrl - JMX service URL to connect to      * @param destName - object name query to retrieve the destination      */
+comment|/**      * Create a JMS message query filter      *       * @param jmxServiceUrl - JMX service URL to connect to      * @param destName - object name query to retrieve the destination      */
 specifier|public
 name|MessagesQueryFilter
 parameter_list|(
@@ -179,7 +179,7 @@ operator|=
 name|destName
 expr_stmt|;
 block|}
-comment|/**      * Queries the specified destination using the message selector format query      * @param queries - message selector queries      * @return list messages that matches the selector      * @throws Exception      */
+comment|/**      * Queries the specified destination using the message selector format query      *       * @param queries - message selector queries      * @return list messages that matches the selector      * @throws Exception      */
 specifier|public
 name|List
 name|query
@@ -233,9 +233,13 @@ block|}
 comment|// Remove last AND
 if|if
 condition|(
+operator|!
 name|selector
-operator|!=
+operator|.
+name|equals
+argument_list|(
 literal|""
+argument_list|)
 condition|)
 block|{
 name|selector
@@ -262,7 +266,7 @@ name|selector
 argument_list|)
 return|;
 block|}
-comment|/**      * Query the messages of a queue destination using JMX      * @param selector - message selector      * @return list of messages that matches the selector      * @throws Exception      */
+comment|/**      * Query the messages of a queue destination using JMX      *       * @param selector - message selector      * @return list of messages that matches the selector      * @throws Exception      */
 specifier|protected
 name|List
 name|queryMessages
@@ -328,7 +332,7 @@ name|messages
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the JMX service URL the query is connecting to.      * @return JMX service URL      */
+comment|/**      * Get the JMX service URL the query is connecting to.      *       * @return JMX service URL      */
 specifier|public
 name|JMXServiceURL
 name|getJmxServiceUrl
@@ -338,7 +342,7 @@ return|return
 name|jmxServiceUrl
 return|;
 block|}
-comment|/**      * Sets the JMX service URL the query is going to connect to.      * @param jmxServiceUrl - new JMX service URL      */
+comment|/**      * Sets the JMX service URL the query is going to connect to.      *       * @param jmxServiceUrl - new JMX service URL      */
 specifier|public
 name|void
 name|setJmxServiceUrl
@@ -354,7 +358,7 @@ operator|=
 name|jmxServiceUrl
 expr_stmt|;
 block|}
-comment|/**      * Sets the JMX service URL the query is going to connect to.      * @param jmxServiceUrl - new JMX service URL      */
+comment|/**      * Sets the JMX service URL the query is going to connect to.      *       * @param jmxServiceUrl - new JMX service URL      */
 specifier|public
 name|void
 name|setJmxServiceUrl
@@ -375,7 +379,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a JMX connector      * @return JMX connector      * @throws java.io.IOException      */
+comment|/**      * Creates a JMX connector      *       * @return JMX connector      * @throws java.io.IOException      */
 specifier|protected
 name|JMXConnector
 name|createJmxConnector

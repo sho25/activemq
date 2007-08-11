@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -23,37 +23,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
+name|ArrayList
 import|;
 end_import
 
@@ -73,7 +43,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
 import|;
 end_import
 
@@ -84,6 +64,26 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -102,7 +102,7 @@ specifier|protected
 name|Set
 name|viewFilter
 decl_stmt|;
-comment|/**      * Creates a filter that will select the properties of a map object to view      * @param next - the next query filter that will return a collection of maps      */
+comment|/**      * Creates a filter that will select the properties of a map object to view      *       * @param next - the next query filter that will return a collection of maps      */
 specifier|public
 name|PropertiesViewFilter
 parameter_list|(
@@ -118,7 +118,7 @@ name|next
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a filter that will select the properties of a map object to view      * @param viewFilter - the properties to view      * @param next - the next query filter that will return a collection of maps      */
+comment|/**      * Creates a filter that will select the properties of a map object to view      *       * @param viewFilter - the properties to view      * @param next - the next query filter that will return a collection of maps      */
 specifier|public
 name|PropertiesViewFilter
 parameter_list|(
@@ -142,9 +142,17 @@ operator|=
 name|viewFilter
 expr_stmt|;
 block|}
-comment|/**      * Filter the properties to view of the query result      * @param query - the query string      * @return list of objects that has been view filtered      */
+comment|/**      * Filter the properties to view of the query result      *       * @param query - the query string      * @return list of objects that has been view filtered      */
 specifier|public
 name|List
+argument_list|<
+name|Map
+argument_list|<
+name|Object
+argument_list|,
+name|Object
+argument_list|>
+argument_list|>
 name|query
 parameter_list|(
 name|String
@@ -167,9 +175,17 @@ name|viewFilter
 argument_list|)
 return|;
 block|}
-comment|/**      * Filter the properties to view of the query result      * @param queries - the query map      * @return list of objects that has been view filtered      * @throws Exception      */
+comment|/**      * Filter the properties to view of the query result      *       * @param queries - the query map      * @return list of objects that has been view filtered      * @throws Exception      */
 specifier|public
 name|List
+argument_list|<
+name|Map
+argument_list|<
+name|Object
+argument_list|,
+name|Object
+argument_list|>
+argument_list|>
 name|query
 parameter_list|(
 name|List
@@ -192,12 +208,28 @@ name|viewFilter
 argument_list|)
 return|;
 block|}
-comment|/**      * Filter the view of each element in the collection      * @param result - the lists to filter the view from      * @param viewFilter - the views to select      * @return lsit of objects whose view has been filtered      */
+comment|/**      * Filter the view of each element in the collection      *       * @param result - the lists to filter the view from      * @param viewFilter - the views to select      * @return list of objects whose view has been filtered      */
 specifier|protected
 name|List
+argument_list|<
+name|Map
+argument_list|<
+name|Object
+argument_list|,
+name|Object
+argument_list|>
+argument_list|>
 name|filterViewCollection
 parameter_list|(
 name|Collection
+argument_list|<
+name|Map
+argument_list|<
+name|Object
+argument_list|,
+name|Object
+argument_list|>
+argument_list|>
 name|result
 parameter_list|,
 name|Set
@@ -206,15 +238,39 @@ parameter_list|)
 block|{
 comment|// Use a list to allow duplicate entries
 name|List
+argument_list|<
+name|Map
+argument_list|<
+name|Object
+argument_list|,
+name|Object
+argument_list|>
+argument_list|>
 name|newCollection
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Map
+argument_list|<
+name|Object
+argument_list|,
+name|Object
+argument_list|>
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Map
+argument_list|<
+name|Object
+argument_list|,
+name|Object
+argument_list|>
+argument_list|>
 name|i
 init|=
 name|result
@@ -235,9 +291,6 @@ name|add
 argument_list|(
 name|filterView
 argument_list|(
-operator|(
-name|Map
-operator|)
 name|i
 operator|.
 name|next
@@ -250,12 +303,22 @@ return|return
 name|newCollection
 return|;
 block|}
-comment|/**      * Select only the attributes to view from the map data      * @param data - data to filter the view from      * @return - data with the view filtered      */
+comment|/**      * Select only the attributes to view from the map data      *       * @param data - data to filter the view from      * @return - data with the view filtered      */
 specifier|protected
 name|Map
+argument_list|<
+name|Object
+argument_list|,
+name|Object
+argument_list|>
 name|filterView
 parameter_list|(
 name|Map
+argument_list|<
+name|Object
+argument_list|,
+name|Object
+argument_list|>
 name|data
 parameter_list|)
 block|{
@@ -277,6 +340,11 @@ name|data
 return|;
 block|}
 name|Map
+argument_list|<
+name|Object
+argument_list|,
+name|Object
+argument_list|>
 name|newData
 decl_stmt|;
 try|try
@@ -284,9 +352,6 @@ block|{
 comment|// Lets try to use the same class as the original
 name|newData
 operator|=
-operator|(
-name|Map
-operator|)
 name|data
 operator|.
 name|getClass
@@ -307,6 +372,11 @@ name|newData
 operator|=
 operator|new
 name|HashMap
+argument_list|<
+name|Object
+argument_list|,
+name|Object
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}

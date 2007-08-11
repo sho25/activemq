@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -23,7 +23,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|ArrayList
 import|;
 end_import
 
@@ -43,7 +43,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|List
 import|;
 end_import
 
@@ -54,22 +54,65 @@ name|BstatCommand
 extends|extends
 name|QueryCommand
 block|{
+specifier|protected
+name|String
+index|[]
+name|helpFile
+init|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"Task Usage: activemq-admin bstat [bstat-options] [broker-name]"
+block|,
+literal|"Description: Performs a predefined query that displays useful statistics regarding the specified broker."
+block|,
+literal|"             If no broker name is specified, it will try and select from all registered brokers."
+block|,
+literal|""
+block|,
+literal|"Bstat Options:"
+block|,
+literal|"    --jmxurl<url>                Set the JMX URL to connect to."
+block|,
+literal|"    --version                     Display the version information."
+block|,
+literal|"    -h,-?,--help                  Display the query broker help information."
+block|,
+literal|""
+block|,
+literal|"Examples:"
+block|,
+literal|"    activemq-admin bstat localhost"
+block|,
+literal|"        - Display a summary of statistics for the broker 'localhost'"
+block|}
+decl_stmt|;
 comment|/**      * Performs a predefiend query option      * @param tokens - command arguments      * @throws Exception      */
 specifier|protected
 name|void
 name|runTask
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|tokens
 parameter_list|)
 throws|throws
 name|Exception
 block|{
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|queryTokens
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// Find the first non-option token
@@ -186,40 +229,6 @@ name|queryTokens
 argument_list|)
 expr_stmt|;
 block|}
-specifier|protected
-name|String
-index|[]
-name|helpFile
-init|=
-operator|new
-name|String
-index|[]
-block|{
-literal|"Task Usage: activemq-admin bstat [bstat-options] [broker-name]"
-block|,
-literal|"Description: Performs a predefined query that displays useful statistics regarding the specified broker."
-block|,
-literal|"             If no broker name is specified, it will try and select from all registered brokers."
-block|,
-literal|""
-block|,
-literal|"Bstat Options:"
-block|,
-literal|"    --jmxurl<url>                Set the JMX URL to connect to."
-block|,
-literal|"    --version                     Display the version information."
-block|,
-literal|"    -h,-?,--help                  Display the query broker help information."
-block|,
-literal|""
-block|,
-literal|"Examples:"
-block|,
-literal|"    activemq-admin bstat localhost"
-block|,
-literal|"        - Display a summary of statistics for the broker 'localhost'"
-block|}
-decl_stmt|;
 block|}
 end_class
 

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -16,6 +16,16 @@ operator|.
 name|command
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
 
 begin_import
 import|import
@@ -45,16 +55,6 @@ name|GlobalWriter
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_class
 specifier|public
 specifier|abstract
@@ -74,21 +74,20 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|isPrintHelp
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
 name|isPrintVersion
-init|=
-literal|false
 decl_stmt|;
-comment|/**      * Exceute a generic command, which includes parsing the options for the command and running the specific task.      * @param tokens - command arguments      * @throws Exception      */
+comment|/**      * Execute a generic command, which includes parsing the options for the      * command and running the specific task.      *       * @param tokens - command arguments      * @throws Exception      */
 specifier|public
 name|void
 name|execute
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|tokens
 parameter_list|)
 throws|throws
@@ -137,12 +136,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Parse any option parameters in the command arguments specified by a '-' as the first character of the token.      * @param tokens - command arguments      * @throws Exception      */
+comment|/**      * Parse any option parameters in the command arguments specified by a '-'      * as the first character of the token.      *       * @param tokens - command arguments      * @throws Exception      */
 specifier|protected
 name|void
 name|parseOptions
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|tokens
 parameter_list|)
 throws|throws
@@ -160,9 +162,6 @@ block|{
 name|String
 name|token
 init|=
-operator|(
-name|String
-operator|)
 name|tokens
 operator|.
 name|remove
@@ -205,7 +204,7 @@ return|return;
 block|}
 block|}
 block|}
-comment|/**      * Handle the general options for each command, which includes -h, -?, --help, -D, --version.      * @param token - option token to handle      * @param tokens - succeeding command arguments      * @throws Exception      */
+comment|/**      * Handle the general options for each command, which includes -h, -?,      * --help, -D, --version.      *       * @param token - option token to handle      * @param tokens - succeeding command arguments      * @throws Exception      */
 specifier|protected
 name|void
 name|handleOption
@@ -214,6 +213,9 @@ name|String
 name|token
 parameter_list|,
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|tokens
 parameter_list|)
 throws|throws
@@ -276,7 +278,6 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-comment|// If token is a system property define option
 elseif|else
 if|if
 condition|(
@@ -288,6 +289,7 @@ literal|"-D"
 argument_list|)
 condition|)
 block|{
+comment|// If token is a system property define option
 name|String
 name|key
 init|=
@@ -353,9 +355,9 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Token is unrecognized
 else|else
 block|{
+comment|// Token is unrecognized
 name|GlobalWriter
 operator|.
 name|printInfo
@@ -371,21 +373,24 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Run the specific task.      * @param tokens - command arguments      * @throws Exception      */
-specifier|abstract
+comment|/**      * Run the specific task.      *       * @param tokens - command arguments      * @throws Exception      */
 specifier|protected
+specifier|abstract
 name|void
 name|runTask
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|tokens
 parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Print the help messages for the specific task      */
-specifier|abstract
 specifier|protected
+specifier|abstract
 name|void
 name|printHelp
 parameter_list|()
