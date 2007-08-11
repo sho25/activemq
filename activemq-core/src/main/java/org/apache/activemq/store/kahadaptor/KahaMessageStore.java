@@ -196,8 +196,6 @@ decl_stmt|;
 specifier|protected
 name|StoreEntry
 name|batchEntry
-init|=
-literal|null
 decl_stmt|;
 specifier|public
 name|KahaMessageStore

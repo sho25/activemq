@@ -30,9 +30,11 @@ specifier|final
 name|long
 name|interval
 decl_stmt|;
+specifier|private
 name|long
 name|percentDone
 decl_stmt|;
+specifier|private
 name|long
 name|counter
 decl_stmt|;

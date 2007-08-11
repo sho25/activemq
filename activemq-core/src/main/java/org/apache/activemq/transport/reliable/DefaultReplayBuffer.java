@@ -112,6 +112,11 @@ name|listener
 decl_stmt|;
 specifier|private
 name|Map
+argument_list|<
+name|Integer
+argument_list|,
+name|Object
+argument_list|>
 name|map
 decl_stmt|;
 specifier|private
@@ -374,6 +379,11 @@ block|}
 block|}
 specifier|protected
 name|Map
+argument_list|<
+name|Integer
+argument_list|,
+name|Object
+argument_list|>
 name|createMap
 parameter_list|(
 name|int
@@ -383,6 +393,11 @@ block|{
 return|return
 operator|new
 name|HashMap
+argument_list|<
+name|Integer
+argument_list|,
+name|Object
+argument_list|>
 argument_list|(
 name|maximumSize
 argument_list|)

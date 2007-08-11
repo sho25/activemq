@@ -150,8 +150,6 @@ decl_stmt|;
 specifier|private
 name|int
 name|pendingCount
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|Queue

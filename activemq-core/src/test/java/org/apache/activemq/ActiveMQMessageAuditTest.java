@@ -126,6 +126,20 @@ name|ActiveMQMessageAuditTest
 extends|extends
 name|TestCase
 block|{
+comment|/**      * Constructor for ActiveMQMessageAuditTest.      *       * @param name      */
+specifier|public
+name|ActiveMQMessageAuditTest
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 specifier|static
 name|void
@@ -160,20 +174,6 @@ name|super
 operator|.
 name|tearDown
 argument_list|()
-expr_stmt|;
-block|}
-comment|/**      * Constructor for ActiveMQMessageAuditTest.      *       * @param arg0      */
-specifier|public
-name|ActiveMQMessageAuditTest
-parameter_list|(
-name|String
-name|arg0
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|arg0
-argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * test case for isDuplicate      */

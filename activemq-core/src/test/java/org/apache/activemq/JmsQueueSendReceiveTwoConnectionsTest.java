@@ -66,21 +66,6 @@ name|JmsQueueSendReceiveTwoConnectionsTest
 extends|extends
 name|JmsTopicSendReceiveWithTwoConnectionsTest
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOG
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|JmsQueueSendReceiveTwoConnectionsTest
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 comment|/**      * Set up the test with a queue and using two connections.      *       * @see junit.framework.TestCase#setUp()      */
 specifier|protected
 name|void

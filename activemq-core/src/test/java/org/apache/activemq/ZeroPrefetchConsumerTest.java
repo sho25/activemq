@@ -472,17 +472,13 @@ argument_list|(
 name|queue
 argument_list|)
 decl_stmt|;
-comment|// noinspection UNUSED_SYMBOL
-name|MessageConsumer
-name|idleConsumer
-init|=
 name|session
 operator|.
 name|createConsumer
 argument_list|(
 name|queue
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|TextMessage
 name|answer
 init|=

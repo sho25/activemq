@@ -65,15 +65,6 @@ name|DataStructure
 name|objectId
 decl_stmt|;
 specifier|public
-name|byte
-name|getDataStructureType
-parameter_list|()
-block|{
-return|return
-name|DATA_STRUCTURE_TYPE
-return|;
-block|}
-specifier|public
 name|RemoveInfo
 parameter_list|()
 block|{     }
@@ -90,6 +81,15 @@ name|objectId
 operator|=
 name|objectId
 expr_stmt|;
+block|}
+specifier|public
+name|byte
+name|getDataStructureType
+parameter_list|()
+block|{
+return|return
+name|DATA_STRUCTURE_TYPE
+return|;
 block|}
 comment|/**      * @openwire:property version=1 cache=true      */
 specifier|public

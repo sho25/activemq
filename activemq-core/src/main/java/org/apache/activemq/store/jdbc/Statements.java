@@ -26,12 +26,6 @@ specifier|public
 class|class
 name|Statements
 block|{
-specifier|private
-name|String
-name|tablePrefix
-init|=
-literal|""
-decl_stmt|;
 specifier|protected
 name|String
 name|messageTableName
@@ -89,8 +83,12 @@ decl_stmt|;
 specifier|protected
 name|boolean
 name|useExternalMessageReferences
+decl_stmt|;
+specifier|private
+name|String
+name|tablePrefix
 init|=
-literal|false
+literal|""
 decl_stmt|;
 specifier|private
 name|String
@@ -409,7 +407,7 @@ name|getFullMessageTableName
 argument_list|()
 operator|+
 literal|""
-block|,}
+block|}
 expr_stmt|;
 block|}
 return|return

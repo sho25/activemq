@@ -47,9 +47,14 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|StoreFactory
 block|{
+specifier|private
+name|StoreFactory
+parameter_list|()
+block|{     }
 comment|/**      * open or create a Store      *       * @param name      * @param mode      * @return the opened/created store      * @throws IOException      */
 specifier|public
 specifier|static

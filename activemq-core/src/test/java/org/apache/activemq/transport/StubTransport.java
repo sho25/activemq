@@ -74,10 +74,16 @@ name|TransportSupport
 block|{
 specifier|private
 name|Queue
+argument_list|<
+name|Object
+argument_list|>
 name|queue
 init|=
 operator|new
 name|ConcurrentLinkedQueue
+argument_list|<
+name|Object
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|protected
@@ -117,6 +123,9 @@ expr_stmt|;
 block|}
 specifier|public
 name|Queue
+argument_list|<
+name|Object
+argument_list|>
 name|getQueue
 parameter_list|()
 block|{

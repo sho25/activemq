@@ -36,15 +36,6 @@ name|CommandTypes
 operator|.
 name|DISCOVERY_EVENT
 decl_stmt|;
-specifier|public
-name|byte
-name|getDataStructureType
-parameter_list|()
-block|{
-return|return
-name|DATA_STRUCTURE_TYPE
-return|;
-block|}
 specifier|protected
 name|String
 name|serviceName
@@ -70,6 +61,15 @@ name|serviceName
 operator|=
 name|serviceName
 expr_stmt|;
+block|}
+specifier|public
+name|byte
+name|getDataStructureType
+parameter_list|()
+block|{
+return|return
+name|DATA_STRUCTURE_TYPE
+return|;
 block|}
 comment|/**      * @openwire:property version=1      */
 specifier|public

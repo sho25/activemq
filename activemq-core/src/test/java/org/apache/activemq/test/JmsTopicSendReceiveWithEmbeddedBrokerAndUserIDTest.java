@@ -138,7 +138,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -262,7 +262,7 @@ argument_list|(
 literal|"JMSXUserID"
 argument_list|)
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

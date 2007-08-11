@@ -673,10 +673,16 @@ operator|=
 literal|true
 expr_stmt|;
 name|List
+argument_list|<
+name|IndexItem
+argument_list|>
 name|indexList
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|IndexItem
+argument_list|>
 argument_list|()
 decl_stmt|;
 try|try
@@ -765,9 +771,6 @@ block|{
 name|IndexItem
 name|item
 init|=
-operator|(
-name|IndexItem
-operator|)
 name|indexList
 operator|.
 name|get

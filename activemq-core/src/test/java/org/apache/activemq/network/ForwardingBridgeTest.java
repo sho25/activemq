@@ -210,7 +210,7 @@ name|ActiveMQDestination
 operator|.
 name|TOPIC_TYPE
 argument_list|)
-block|,}
+block|}
 argument_list|)
 expr_stmt|;
 block|}

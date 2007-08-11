@@ -221,10 +221,16 @@ name|replayStrategy
 decl_stmt|;
 specifier|private
 name|SortedSet
+argument_list|<
+name|Command
+argument_list|>
 name|commands
 init|=
 operator|new
 name|TreeSet
+argument_list|<
+name|Command
+argument_list|>
 argument_list|(
 operator|new
 name|CommandIdComparator
@@ -645,9 +651,6 @@ block|{
 name|Command
 name|nextAvailable
 init|=
-operator|(
-name|Command
-operator|)
 name|commands
 operator|.
 name|first
@@ -734,9 +737,6 @@ comment|// lets see if the first item in the set is the next
 comment|// expected
 name|command
 operator|=
-operator|(
-name|Command
-operator|)
 name|commands
 operator|.
 name|first
@@ -815,9 +815,6 @@ comment|// lets see if the first item in the set is the next
 comment|// expected
 name|command
 operator|=
-operator|(
-name|Command
-operator|)
 name|commands
 operator|.
 name|first

@@ -135,6 +135,7 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|SimpleConsumer
 block|{
@@ -169,6 +170,10 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+name|SimpleConsumer
+parameter_list|()
+block|{     }
 comment|/**      * @param args the queue used by the example      */
 specifier|public
 specifier|static

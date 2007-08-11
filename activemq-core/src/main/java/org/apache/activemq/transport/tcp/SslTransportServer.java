@@ -136,15 +136,11 @@ comment|// Specifies if sockets created from this server should needClientAuth.
 specifier|private
 name|boolean
 name|needClientAuth
-init|=
-literal|false
 decl_stmt|;
 comment|// Specifies if sockets created from this server should wantClientAuth.
 specifier|private
 name|boolean
 name|wantClientAuth
-init|=
-literal|false
 decl_stmt|;
 comment|/**      * Creates a ssl transport server for the specified url using the provided      * serverSocketFactory      *       * @param transportFactory The factory used to create transports when connections arrive.      * @param location The location of the broker to bind to.      * @param serverSocketFactory The factory used to create this server.      * @throws IOException passed up from TcpTransportFactory.      * @throws URISyntaxException passed up from TcpTransportFactory.      */
 specifier|public

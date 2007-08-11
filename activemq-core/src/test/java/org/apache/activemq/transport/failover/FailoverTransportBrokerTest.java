@@ -532,9 +532,6 @@ comment|// The message will be sent to one of the brokers.
 name|FailoverTransport
 name|ft
 init|=
-operator|(
-name|FailoverTransport
-operator|)
 name|connection3
 operator|.
 name|getTransport

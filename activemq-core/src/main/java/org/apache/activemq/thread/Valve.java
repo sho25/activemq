@@ -41,14 +41,10 @@ decl_stmt|;
 specifier|private
 name|int
 name|turningOff
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|int
 name|usage
-init|=
-literal|0
 decl_stmt|;
 specifier|public
 name|Valve

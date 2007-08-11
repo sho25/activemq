@@ -31,9 +31,14 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|MapHelper
 block|{
+specifier|private
+name|MapHelper
+parameter_list|()
+block|{     }
 comment|/**      * Extracts the value from the map and coerces to a String      */
 specifier|public
 specifier|static

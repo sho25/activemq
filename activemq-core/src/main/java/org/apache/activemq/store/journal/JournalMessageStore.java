@@ -1290,6 +1290,11 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @return      * @throws IOException      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|RecordLocation
 name|checkpoint

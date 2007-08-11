@@ -116,10 +116,16 @@ name|buffer
 decl_stmt|;
 specifier|private
 name|LinkedList
+argument_list|<
+name|MessageReference
+argument_list|>
 name|list
 init|=
 operator|new
 name|LinkedList
+argument_list|<
+name|MessageReference
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -322,6 +328,9 @@ block|}
 comment|/**      * Returns a copy of the list      */
 specifier|public
 name|List
+argument_list|<
+name|MessageReference
+argument_list|>
 name|getList
 parameter_list|()
 block|{
@@ -333,6 +342,9 @@ block|{
 return|return
 operator|new
 name|ArrayList
+argument_list|<
+name|MessageReference
+argument_list|>
 argument_list|(
 name|list
 argument_list|)
@@ -344,6 +356,9 @@ name|void
 name|appendMessages
 parameter_list|(
 name|List
+argument_list|<
+name|MessageReference
+argument_list|>
 name|answer
 parameter_list|)
 block|{
@@ -355,6 +370,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|MessageReference
+argument_list|>
 name|iter
 init|=
 name|list

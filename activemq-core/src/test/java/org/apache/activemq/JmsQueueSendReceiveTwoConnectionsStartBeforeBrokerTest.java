@@ -105,10 +105,16 @@ argument_list|)
 decl_stmt|;
 specifier|private
 name|Queue
+argument_list|<
+name|Exception
+argument_list|>
 name|errors
 init|=
 operator|new
 name|ConcurrentLinkedQueue
+argument_list|<
+name|Exception
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -308,9 +314,6 @@ block|{
 name|Exception
 name|e
 init|=
-operator|(
-name|Exception
-operator|)
 name|errors
 operator|.
 name|remove

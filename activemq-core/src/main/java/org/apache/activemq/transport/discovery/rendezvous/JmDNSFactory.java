@@ -85,6 +85,7 @@ end_import
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|JmDNSFactory
 block|{
@@ -123,6 +124,10 @@ name|JmDNS
 name|jmDNS
 decl_stmt|;
 block|}
+specifier|private
+name|JmDNSFactory
+parameter_list|()
+block|{             }
 specifier|static
 specifier|synchronized
 name|JmDNS

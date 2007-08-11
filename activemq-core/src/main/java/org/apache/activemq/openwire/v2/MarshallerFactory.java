@@ -51,6 +51,7 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|MarshallerFactory
 block|{
@@ -449,6 +450,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+specifier|private
+name|MarshallerFactory
+parameter_list|()
+block|{             }
 specifier|private
 specifier|static
 name|void

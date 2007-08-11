@@ -349,8 +349,6 @@ decl_stmt|;
 specifier|protected
 name|int
 name|soTimeout
-init|=
-literal|0
 decl_stmt|;
 specifier|protected
 name|int
@@ -415,6 +413,11 @@ argument_list|()
 decl_stmt|;
 specifier|private
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|socketOptions
 decl_stmt|;
 specifier|private
@@ -1530,6 +1533,11 @@ name|void
 name|setSocketOptions
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|socketOptions
 parameter_list|)
 block|{
@@ -1539,6 +1547,11 @@ name|socketOptions
 operator|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 argument_list|(
 name|socketOptions
 argument_list|)

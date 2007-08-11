@@ -282,6 +282,9 @@ name|objectMessage
 decl_stmt|;
 specifier|private
 name|List
+argument_list|<
+name|Message
+argument_list|>
 name|messages
 init|=
 name|createConcurrentList
@@ -714,6 +717,9 @@ name|Message
 name|message
 parameter_list|,
 name|List
+argument_list|<
+name|Message
+argument_list|>
 name|messageList
 parameter_list|)
 block|{
@@ -751,6 +757,9 @@ block|}
 block|}
 specifier|protected
 name|List
+argument_list|<
+name|Message
+argument_list|>
 name|createConcurrentList
 parameter_list|()
 block|{
@@ -761,6 +770,9 @@ name|synchronizedList
 argument_list|(
 operator|new
 name|ArrayList
+argument_list|<
+name|Message
+argument_list|>
 argument_list|()
 argument_list|)
 return|;

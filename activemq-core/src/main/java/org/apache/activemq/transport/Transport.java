@@ -144,10 +144,16 @@ name|commandListener
 parameter_list|)
 function_decl|;
 comment|/**      * @param target      * @return the target      */
-name|Object
+parameter_list|<
+name|T
+parameter_list|>
+name|T
 name|narrow
 parameter_list|(
 name|Class
+argument_list|<
+name|T
+argument_list|>
 name|target
 parameter_list|)
 function_decl|;

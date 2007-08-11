@@ -343,7 +343,7 @@ name|ActiveMQDestination
 operator|.
 name|TOPIC_TYPE
 argument_list|)
-block|,}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -820,7 +820,7 @@ name|DeliveryMode
 operator|.
 name|NON_PERSISTENT
 argument_list|)
-block|,}
+block|}
 argument_list|)
 expr_stmt|;
 name|addCombinationValues

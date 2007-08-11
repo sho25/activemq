@@ -185,13 +185,17 @@ decl_stmt|;
 specifier|protected
 name|int
 name|msgsClient1
-decl_stmt|,
+decl_stmt|;
+specifier|protected
+name|int
 name|msgsClient2
 decl_stmt|;
 specifier|protected
 name|String
 name|broker1
-decl_stmt|,
+decl_stmt|;
+specifier|protected
+name|String
 name|broker2
 decl_stmt|;
 specifier|public
@@ -1462,7 +1466,8 @@ expr_stmt|;
 comment|// Configure broker connection factory
 name|ActiveMQConnectionFactory
 name|factoryA
-decl_stmt|,
+decl_stmt|;
+name|ActiveMQConnectionFactory
 name|factoryB
 decl_stmt|;
 name|factoryA

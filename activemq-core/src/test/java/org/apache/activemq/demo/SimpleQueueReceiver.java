@@ -139,14 +139,8 @@ name|NamingException
 import|;
 end_import
 
-begin_class
-specifier|public
-class|class
-name|SimpleQueueReceiver
-block|{
-specifier|private
-specifier|static
-specifier|final
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -156,8 +150,11 @@ operator|.
 name|logging
 operator|.
 name|Log
-name|LOG
-init|=
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -167,6 +164,22 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
+import|;
+end_import
+
+begin_class
+specifier|public
+specifier|final
+class|class
+name|SimpleQueueReceiver
+block|{
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOG
+init|=
+name|LogFactory
 operator|.
 name|getLog
 argument_list|(
@@ -175,6 +188,10 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+name|SimpleQueueReceiver
+parameter_list|()
+block|{     }
 comment|/**      * Main method.      *       * @param args the queue used by the example      */
 specifier|public
 specifier|static

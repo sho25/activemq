@@ -209,10 +209,16 @@ name|consumerEventSource
 decl_stmt|;
 specifier|protected
 name|BlockingQueue
+argument_list|<
+name|ConsumerEvent
+argument_list|>
 name|eventQueue
 init|=
 operator|new
 name|ArrayBlockingQueue
+argument_list|<
+name|ConsumerEvent
+argument_list|>
 argument_list|(
 literal|1000
 argument_list|)
@@ -626,9 +632,6 @@ block|{
 name|ConsumerEvent
 name|answer
 init|=
-operator|(
-name|ConsumerEvent
-operator|)
 name|eventQueue
 operator|.
 name|poll

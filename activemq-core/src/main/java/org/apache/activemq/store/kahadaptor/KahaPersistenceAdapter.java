@@ -432,7 +432,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @org.apache.xbean.XBean  *   * @version $Revision: 1.4 $  */
+comment|/**  * @org.apache.xbean.XBean  * @version $Revision: 1.4 $  */
 end_comment
 
 begin_class
@@ -467,6 +467,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -474,9 +475,19 @@ name|PREPARED_TRANSACTIONS_NAME
 init|=
 literal|"PreparedTransactions"
 decl_stmt|;
+specifier|protected
+name|OpenWireFormat
+name|wireFormat
+init|=
+operator|new
+name|OpenWireFormat
+argument_list|()
+decl_stmt|;
+specifier|protected
 name|KahaTransactionStore
 name|transactionStore
 decl_stmt|;
+specifier|protected
 name|ConcurrentHashMap
 argument_list|<
 name|ActiveMQTopic
@@ -494,6 +505,7 @@ name|TopicMessageStore
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|protected
 name|ConcurrentHashMap
 argument_list|<
 name|ActiveMQQueue
@@ -511,6 +523,7 @@ name|MessageStore
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|protected
 name|ConcurrentHashMap
 argument_list|<
 name|ActiveMQDestination
@@ -526,14 +539,6 @@ name|ActiveMQDestination
 argument_list|,
 name|MessageStore
 argument_list|>
-argument_list|()
-decl_stmt|;
-specifier|protected
-name|OpenWireFormat
-name|wireFormat
-init|=
-operator|new
-name|OpenWireFormat
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -1243,11 +1248,6 @@ return|;
 block|}
 specifier|protected
 name|MapContainer
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
 name|getSubsMapContainer
 parameter_list|(
 name|Object
@@ -1266,11 +1266,6 @@ name|getStore
 argument_list|()
 decl_stmt|;
 name|MapContainer
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
 name|container
 init|=
 name|store
@@ -1397,7 +1392,7 @@ return|return
 name|maxDataFileLength
 return|;
 block|}
-comment|/**      * @param maxDataFileLength the maxDataFileLength to set      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
+comment|/**      * @param maxDataFileLength the maxDataFileLength to set      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
 specifier|public
 name|void
 name|setMaxDataFileLength

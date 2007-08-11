@@ -133,8 +133,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|useExponentialBackOff
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|int
@@ -159,6 +157,7 @@ specifier|private
 name|DiscoveryListener
 name|listener
 decl_stmt|;
+specifier|private
 name|String
 name|services
 index|[]
@@ -168,6 +167,7 @@ name|String
 index|[]
 block|{}
 decl_stmt|;
+specifier|private
 name|String
 name|group
 init|=

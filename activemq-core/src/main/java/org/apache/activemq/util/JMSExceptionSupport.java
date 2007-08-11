@@ -51,6 +51,10 @@ specifier|final
 class|class
 name|JMSExceptionSupport
 block|{
+specifier|private
+name|JMSExceptionSupport
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|JMSException

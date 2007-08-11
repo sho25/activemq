@@ -438,8 +438,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|trace
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
@@ -458,8 +456,6 @@ decl_stmt|;
 specifier|private
 name|String
 name|description
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|IntSequenceGenerator

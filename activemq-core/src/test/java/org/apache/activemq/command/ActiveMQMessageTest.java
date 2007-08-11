@@ -254,6 +254,20 @@ name|long
 index|[]
 name|consumerIDs
 decl_stmt|;
+comment|/**      * Constructor for ActiveMQMessageTest.      *       * @param name      */
+specifier|public
+name|ActiveMQMessageTest
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 specifier|static
 name|void
@@ -408,20 +422,6 @@ name|super
 operator|.
 name|tearDown
 argument_list|()
-expr_stmt|;
-block|}
-comment|/**      * Constructor for ActiveMQMessageTest.      *       * @param arg0      */
-specifier|public
-name|ActiveMQMessageTest
-parameter_list|(
-name|String
-name|arg0
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|arg0
-argument_list|)
 expr_stmt|;
 block|}
 specifier|public

@@ -79,6 +79,7 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|DestinationPath
 block|{
@@ -90,6 +91,10 @@ name|SEPARATOR
 init|=
 literal|'.'
 decl_stmt|;
+specifier|private
+name|DestinationPath
+parameter_list|()
+block|{         }
 specifier|public
 specifier|static
 name|String

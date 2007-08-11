@@ -1665,6 +1665,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 specifier|protected
 name|String
 name|tightUnmarshalString
@@ -1719,6 +1724,8 @@ argument_list|(
 name|data
 argument_list|)
 expr_stmt|;
+comment|// Yes deprecated, but we know what we are doing.
+comment|// This allows us to create a String from a ASCII byte array. (no UTF-8 decoding)
 return|return
 operator|new
 name|String
@@ -1728,8 +1735,6 @@ argument_list|,
 literal|0
 argument_list|)
 return|;
-comment|// Yes deprecated, but we know what
-comment|// we are doing.
 block|}
 else|else
 block|{
@@ -1802,8 +1807,6 @@ index|]
 decl_stmt|;
 name|int
 name|c
-decl_stmt|,
-name|count
 init|=
 literal|0
 decl_stmt|;

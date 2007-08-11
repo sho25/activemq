@@ -51,6 +51,7 @@ end_import
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|TypeConversionSupport
 block|{
@@ -166,10 +167,20 @@ specifier|private
 specifier|static
 specifier|final
 name|HashMap
+argument_list|<
+name|ConversionKey
+argument_list|,
+name|Converter
+argument_list|>
 name|CONVERSION_MAP
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|ConversionKey
+argument_list|,
+name|Converter
+argument_list|>
 argument_list|()
 decl_stmt|;
 static|static
@@ -986,6 +997,10 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+specifier|private
+name|TypeConversionSupport
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|Object
@@ -1024,9 +1039,6 @@ block|}
 name|Converter
 name|c
 init|=
-operator|(
-name|Converter
-operator|)
 name|CONVERSION_MAP
 operator|.
 name|get

@@ -284,14 +284,10 @@ decl_stmt|;
 specifier|private
 name|int
 name|weight
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|int
 name|priority
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|DiscoveryListener
@@ -306,10 +302,16 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|CopyOnWriteArrayList
+argument_list|<
+name|ServiceInfo
+argument_list|>
 name|serviceInfos
 init|=
 operator|new
 name|CopyOnWriteArrayList
+argument_list|<
+name|ServiceInfo
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// DiscoveryAgent interface
@@ -436,6 +438,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|ServiceInfo
+argument_list|>
 name|iter
 init|=
 name|serviceInfos
@@ -453,9 +458,6 @@ block|{
 name|ServiceInfo
 name|si
 init|=
-operator|(
-name|ServiceInfo
-operator|)
 name|iter
 operator|.
 name|next

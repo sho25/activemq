@@ -507,10 +507,16 @@ name|c
 parameter_list|)
 block|{
 name|List
+argument_list|<
+name|Object
+argument_list|>
 name|tmpList
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Object
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -559,6 +565,9 @@ block|}
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Object
+argument_list|>
 name|i
 init|=
 name|tmpList

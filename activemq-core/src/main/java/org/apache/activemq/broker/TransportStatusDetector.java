@@ -147,10 +147,16 @@ name|connector
 decl_stmt|;
 specifier|private
 name|Set
+argument_list|<
+name|TransportConnection
+argument_list|>
 name|collectionCandidates
 init|=
 operator|new
 name|CopyOnWriteArraySet
+argument_list|<
+name|TransportConnection
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -220,6 +226,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|TransportConnection
+argument_list|>
 name|i
 init|=
 name|collectionCandidates
@@ -237,9 +246,6 @@ block|{
 name|TransportConnection
 name|tc
 init|=
-operator|(
-name|TransportConnection
-operator|)
 name|i
 operator|.
 name|next

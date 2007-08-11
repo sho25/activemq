@@ -381,6 +381,9 @@ expr_stmt|;
 block|}
 specifier|public
 name|List
+argument_list|<
+name|MessageReference
+argument_list|>
 name|getMessages
 parameter_list|(
 name|Subscription
@@ -402,6 +405,9 @@ return|;
 block|}
 specifier|public
 name|List
+argument_list|<
+name|MessageReference
+argument_list|>
 name|getMessages
 parameter_list|(
 name|ActiveMQDestination
@@ -429,10 +435,16 @@ argument_list|)
 expr_stmt|;
 block|}
 name|List
+argument_list|<
+name|MessageReference
+argument_list|>
 name|answer
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|MessageReference
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -485,6 +497,9 @@ name|destination
 parameter_list|)
 block|{
 name|List
+argument_list|<
+name|MessageReference
+argument_list|>
 name|result
 init|=
 name|getMessages
@@ -493,10 +508,6 @@ name|destination
 argument_list|)
 decl_stmt|;
 return|return
-operator|(
-name|Message
-index|[]
-operator|)
 name|result
 operator|.
 name|toArray

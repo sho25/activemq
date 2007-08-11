@@ -141,16 +141,18 @@ extends|extends
 name|TestCase
 block|{
 specifier|private
+specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|getClass
-argument_list|()
+name|SimpleTopicTest
+operator|.
+name|class
 argument_list|)
 decl_stmt|;
 specifier|protected
@@ -292,7 +294,7 @@ argument_list|,
 name|destinationName
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -301,7 +303,7 @@ operator|+
 name|destination
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -735,7 +737,7 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -898,7 +900,7 @@ name|producers
 operator|.
 name|length
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -999,7 +1001,7 @@ name|consumers
 operator|.
 name|length
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

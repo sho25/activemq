@@ -155,14 +155,10 @@ name|int
 name|i
 init|=
 literal|0
-init|,
-name|size
-init|=
-name|length
 init|;
 name|i
 operator|<
-name|size
+name|length
 condition|;
 name|i
 operator|++

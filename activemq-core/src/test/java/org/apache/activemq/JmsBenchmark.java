@@ -1082,14 +1082,6 @@ operator|+
 literal|" seconds"
 argument_list|)
 expr_stmt|;
-name|long
-name|now
-init|=
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|int

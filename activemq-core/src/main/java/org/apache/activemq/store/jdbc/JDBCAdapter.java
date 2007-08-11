@@ -411,6 +411,9 @@ throws|,
 name|IOException
 function_decl|;
 name|Set
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 name|doGetDestinations
 parameter_list|(
 name|TransactionContext

@@ -326,16 +326,13 @@ argument_list|(
 name|topic
 argument_list|)
 expr_stmt|;
-name|MessageProducer
-name|anotherProducer
-init|=
 name|consumerSession
 operator|.
 name|createProducer
 argument_list|(
 name|topic
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 synchronized|synchronized
 init|(
 name|lock

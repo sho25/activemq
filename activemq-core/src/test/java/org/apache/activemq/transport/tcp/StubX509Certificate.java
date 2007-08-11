@@ -86,6 +86,11 @@ name|StubX509Certificate
 extends|extends
 name|X509Certificate
 block|{
+specifier|private
+specifier|final
+name|Principal
+name|id
+decl_stmt|;
 specifier|public
 name|StubX509Certificate
 parameter_list|(
@@ -111,11 +116,6 @@ operator|.
 name|id
 return|;
 block|}
-specifier|private
-specifier|final
-name|Principal
-name|id
-decl_stmt|;
 comment|// --- Stubbed Methods ---
 specifier|public
 name|void
@@ -344,6 +344,11 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|Set
 name|getCriticalExtensionOIDs
@@ -354,6 +359,11 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|Set
 name|getNonCriticalExtensionOIDs

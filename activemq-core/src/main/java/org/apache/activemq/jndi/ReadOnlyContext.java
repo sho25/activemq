@@ -222,6 +222,11 @@ comment|/**  * A read-only Context<p/> This version assumes it and all its subco
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 class|class
 name|ReadOnlyContext

@@ -17,9 +17,14 @@ end_package
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|JMXSupport
 block|{
+specifier|private
+name|JMXSupport
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|String
@@ -29,7 +34,7 @@ name|String
 name|part
 parameter_list|)
 block|{
-comment|//return ObjectName.quote(part);
+comment|// return ObjectName.quote(part);
 name|String
 name|answer
 init|=

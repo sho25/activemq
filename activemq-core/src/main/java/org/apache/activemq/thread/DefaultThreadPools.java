@@ -57,6 +57,7 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|DefaultThreadPools
 block|{
@@ -123,6 +124,10 @@ operator|new
 name|TaskRunnerFactory
 argument_list|()
 decl_stmt|;
+specifier|private
+name|DefaultThreadPools
+parameter_list|()
+block|{             }
 specifier|public
 specifier|static
 name|Executor

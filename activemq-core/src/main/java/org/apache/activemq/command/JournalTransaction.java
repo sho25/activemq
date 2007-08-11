@@ -103,15 +103,6 @@ name|TransactionId
 name|transactionId
 decl_stmt|;
 specifier|public
-name|byte
-name|getDataStructureType
-parameter_list|()
-block|{
-return|return
-name|DATA_STRUCTURE_TYPE
-return|;
-block|}
-specifier|public
 name|JournalTransaction
 parameter_list|(
 name|byte
@@ -147,6 +138,15 @@ specifier|public
 name|JournalTransaction
 parameter_list|()
 block|{     }
+specifier|public
+name|byte
+name|getDataStructureType
+parameter_list|()
+block|{
+return|return
+name|DATA_STRUCTURE_TYPE
+return|;
+block|}
 comment|/**      * @openwire:property version=1      */
 specifier|public
 name|TransactionId

@@ -43,6 +43,9 @@ expr_stmt|;
 block|}
 specifier|public
 name|Set
+argument_list|<
+name|?
+argument_list|>
 name|getPrincipals
 parameter_list|()
 block|{

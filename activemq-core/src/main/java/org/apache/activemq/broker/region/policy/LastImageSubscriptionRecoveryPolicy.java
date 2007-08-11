@@ -246,10 +246,16 @@ throws|throws
 name|Exception
 block|{
 name|List
+argument_list|<
+name|Message
+argument_list|>
 name|result
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Message
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|DestinationFilter
@@ -290,10 +296,6 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-operator|(
-name|Message
-index|[]
-operator|)
 name|result
 operator|.
 name|toArray

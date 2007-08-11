@@ -259,6 +259,9 @@ name|producerDestination
 decl_stmt|;
 specifier|protected
 name|List
+argument_list|<
+name|Message
+argument_list|>
 name|messages
 init|=
 name|createConcurrentList
@@ -643,12 +646,18 @@ name|void
 name|assertMessagesReceivedAreValid
 parameter_list|(
 name|List
+argument_list|<
+name|Message
+argument_list|>
 name|receivedMessages
 parameter_list|)
 throws|throws
 name|JMSException
 block|{
 name|List
+argument_list|<
+name|Object
+argument_list|>
 name|copyOfMessages
 init|=
 name|Arrays
@@ -681,6 +690,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Object
+argument_list|>
 name|iter
 init|=
 name|copyOfMessages
@@ -753,9 +765,6 @@ block|{
 name|Message
 name|received
 init|=
-operator|(
-name|Message
-operator|)
 name|receivedMessages
 operator|.
 name|get
@@ -949,6 +958,9 @@ name|Message
 name|message
 parameter_list|,
 name|List
+argument_list|<
+name|Message
+argument_list|>
 name|messageList
 parameter_list|)
 block|{
@@ -1002,6 +1014,9 @@ block|}
 comment|/**      * Creates a synchronized list.      *       * @return a synchronized view of the specified list.      */
 specifier|protected
 name|List
+argument_list|<
+name|Message
+argument_list|>
 name|createConcurrentList
 parameter_list|()
 block|{
@@ -1012,6 +1027,9 @@ name|synchronizedList
 argument_list|(
 operator|new
 name|ArrayList
+argument_list|<
+name|Message
+argument_list|>
 argument_list|()
 argument_list|)
 return|;

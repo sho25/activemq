@@ -150,6 +150,9 @@ name|MessageEvaluationContext
 name|msgContext
 parameter_list|,
 name|List
+argument_list|<
+name|Subscription
+argument_list|>
 name|consumers
 parameter_list|)
 throws|throws
@@ -178,6 +181,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Subscription
+argument_list|>
 name|iter
 init|=
 name|consumers
@@ -195,9 +201,6 @@ block|{
 name|Subscription
 name|sub
 init|=
-operator|(
-name|Subscription
-operator|)
 name|iter
 operator|.
 name|next

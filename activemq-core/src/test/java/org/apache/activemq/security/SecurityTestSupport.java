@@ -896,7 +896,7 @@ name|ActiveMQTopic
 argument_list|(
 literal|"GUEST.BAR"
 argument_list|)
-block|,}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -980,7 +980,7 @@ name|ActiveMQTopic
 argument_list|(
 literal|"USERS.FOO"
 argument_list|)
-block|,}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1033,7 +1033,7 @@ name|ActiveMQTopic
 argument_list|(
 literal|"GUEST.BAR"
 argument_list|)
-block|,}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1098,7 +1098,7 @@ name|ActiveMQTopic
 argument_list|(
 literal|"USERS.FOO"
 argument_list|)
-block|,}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1163,7 +1163,7 @@ name|ActiveMQTopic
 argument_list|(
 literal|"GUEST.BAR"
 argument_list|)
-block|,}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1216,7 +1216,7 @@ name|ActiveMQTopic
 argument_list|(
 literal|"TEST"
 argument_list|)
-block|,}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1334,7 +1334,7 @@ name|ActiveMQTopic
 argument_list|(
 literal|"GUEST.BAR"
 argument_list|)
-block|,}
+block|}
 argument_list|)
 expr_stmt|;
 block|}

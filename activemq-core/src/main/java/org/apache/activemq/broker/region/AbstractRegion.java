@@ -1388,9 +1388,6 @@ comment|// inactive state for the
 comment|// destination which has reduced memory usage.
 comment|//
 name|DestinationFilter
-name|destinationFilter
-init|=
-name|DestinationFilter
 operator|.
 name|parseFilter
 argument_list|(
@@ -1399,7 +1396,7 @@ operator|.
 name|getDestination
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|Subscription
 name|sub
 init|=

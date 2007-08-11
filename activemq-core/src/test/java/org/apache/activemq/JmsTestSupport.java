@@ -228,6 +228,9 @@ name|broker
 decl_stmt|;
 specifier|protected
 name|List
+argument_list|<
+name|Connection
+argument_list|>
 name|connections
 init|=
 name|Collections
@@ -236,6 +239,9 @@ name|synchronizedList
 argument_list|(
 operator|new
 name|ArrayList
+argument_list|<
+name|Connection
+argument_list|>
 argument_list|()
 argument_list|)
 decl_stmt|;

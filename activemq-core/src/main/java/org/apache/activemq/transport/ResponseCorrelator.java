@@ -178,10 +178,20 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|Map
+argument_list|<
+name|Integer
+argument_list|,
+name|FutureResponse
+argument_list|>
 name|requestMap
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|Integer
+argument_list|,
+name|FutureResponse
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -463,9 +473,6 @@ init|)
 block|{
 name|future
 operator|=
-operator|(
-name|FutureResponse
-operator|)
 name|requestMap
 operator|.
 name|remove
@@ -542,10 +549,16 @@ parameter_list|)
 block|{
 comment|// Copy and Clear the request Map
 name|ArrayList
+argument_list|<
+name|FutureResponse
+argument_list|>
 name|requests
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|FutureResponse
+argument_list|>
 argument_list|(
 name|requestMap
 operator|.
@@ -561,6 +574,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|FutureResponse
+argument_list|>
 name|iter
 init|=
 name|requests
@@ -578,9 +594,6 @@ block|{
 name|FutureResponse
 name|fr
 init|=
-operator|(
-name|FutureResponse
-operator|)
 name|iter
 operator|.
 name|next

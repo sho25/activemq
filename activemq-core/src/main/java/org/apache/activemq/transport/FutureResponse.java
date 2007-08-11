@@ -129,10 +129,16 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|ArrayBlockingQueue
+argument_list|<
+name|Response
+argument_list|>
 name|responseSlot
 init|=
 operator|new
 name|ArrayBlockingQueue
+argument_list|<
+name|Response
+argument_list|>
 argument_list|(
 literal|1
 argument_list|)
@@ -161,9 +167,6 @@ block|{
 try|try
 block|{
 return|return
-operator|(
-name|Response
-operator|)
 name|responseSlot
 operator|.
 name|take
@@ -226,9 +229,6 @@ block|{
 try|try
 block|{
 return|return
-operator|(
-name|Response
-operator|)
 name|responseSlot
 operator|.
 name|poll

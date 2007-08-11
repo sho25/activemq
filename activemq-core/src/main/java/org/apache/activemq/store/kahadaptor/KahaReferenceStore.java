@@ -196,14 +196,10 @@ decl_stmt|;
 specifier|private
 name|StoreEntry
 name|batchEntry
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|String
 name|lastBatchId
-init|=
-literal|null
 decl_stmt|;
 specifier|public
 name|KahaReferenceStore
@@ -212,6 +208,11 @@ name|KahaReferenceStoreAdapter
 name|adapter
 parameter_list|,
 name|MapContainer
+argument_list|<
+name|MessageId
+argument_list|,
+name|ReferenceRecord
+argument_list|>
 name|container
 parameter_list|,
 name|ActiveMQDestination

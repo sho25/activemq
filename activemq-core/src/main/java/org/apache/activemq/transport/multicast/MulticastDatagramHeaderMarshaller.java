@@ -110,11 +110,6 @@ name|DatagramHeaderMarshaller
 block|{
 specifier|private
 specifier|final
-name|String
-name|localUri
-decl_stmt|;
-specifier|private
-specifier|final
 name|byte
 index|[]
 name|localUriAsBytes
@@ -126,12 +121,6 @@ name|String
 name|localUri
 parameter_list|)
 block|{
-name|this
-operator|.
-name|localUri
-operator|=
-name|localUri
-expr_stmt|;
 name|this
 operator|.
 name|localUriAsBytes

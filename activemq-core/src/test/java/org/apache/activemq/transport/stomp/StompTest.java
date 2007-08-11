@@ -297,6 +297,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|protected
+name|String
+name|bindAddress
+init|=
+literal|"stomp://localhost:0"
+decl_stmt|;
 specifier|private
 name|BrokerService
 name|broker
@@ -324,12 +330,6 @@ decl_stmt|;
 specifier|private
 name|ActiveMQQueue
 name|queue
-decl_stmt|;
-specifier|protected
-name|String
-name|bindAddress
-init|=
-literal|"stomp://localhost:0"
 decl_stmt|;
 specifier|protected
 name|void

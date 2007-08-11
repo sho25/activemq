@@ -288,8 +288,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|useQuickJournal
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|File
@@ -298,8 +296,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|failIfJournalIsLocked
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|int

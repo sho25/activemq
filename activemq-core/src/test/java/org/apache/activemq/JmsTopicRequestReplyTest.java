@@ -179,17 +179,23 @@ implements|implements
 name|MessageListener
 block|{
 specifier|private
+specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|getClass
-argument_list|()
+name|JmsTopicRequestReplyTest
+operator|.
+name|class
 argument_list|)
+decl_stmt|;
+specifier|protected
+name|boolean
+name|useAsyncConsume
 decl_stmt|;
 specifier|private
 name|Connection
@@ -213,19 +219,21 @@ name|requestDestination
 decl_stmt|;
 specifier|private
 name|List
+argument_list|<
+name|JMSException
+argument_list|>
 name|failures
 init|=
 operator|new
 name|Vector
+argument_list|<
+name|JMSException
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
 name|boolean
 name|dynamicallyCreateProducer
-decl_stmt|;
-specifier|protected
-name|boolean
-name|useAsyncConsume
 decl_stmt|;
 specifier|private
 name|String
@@ -293,7 +301,7 @@ comment|// String value = ActiveMQDestination.getClientId((ActiveMQDestination)
 comment|// replyDestination);
 comment|// assertEquals("clientID from the temporary destination must be the
 comment|// same", clientSideClientID, value);
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -348,14 +356,14 @@ argument_list|(
 name|requestMessage
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
 literal|"Sent request."
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -390,14 +398,14 @@ name|TextMessage
 operator|)
 name|msg
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
 literal|"Received reply."
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -477,14 +485,14 @@ name|TextMessage
 operator|)
 name|message
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
 literal|"Received request."
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -567,14 +575,14 @@ name|replyMessage
 argument_list|)
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
 literal|"Sent reply."
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -634,7 +642,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -811,7 +819,7 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

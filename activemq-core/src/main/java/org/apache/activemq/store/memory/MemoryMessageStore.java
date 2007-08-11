@@ -210,6 +210,11 @@ decl_stmt|;
 specifier|protected
 specifier|final
 name|Map
+argument_list|<
+name|MessageId
+argument_list|,
+name|Message
+argument_list|>
 name|messageTable
 decl_stmt|;
 specifier|protected
@@ -229,6 +234,11 @@ name|destination
 argument_list|,
 operator|new
 name|LinkedHashMap
+argument_list|<
+name|MessageId
+argument_list|,
+name|Message
+argument_list|>
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -240,6 +250,11 @@ name|ActiveMQDestination
 name|destination
 parameter_list|,
 name|Map
+argument_list|<
+name|MessageId
+argument_list|,
+name|Message
+argument_list|>
 name|messageTable
 parameter_list|)
 block|{
@@ -312,9 +327,6 @@ throws|throws
 name|IOException
 block|{
 return|return
-operator|(
-name|Message
-operator|)
 name|messageTable
 operator|.
 name|get
@@ -418,6 +430,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Message
+argument_list|>
 name|iter
 init|=
 name|messageTable
@@ -438,9 +453,6 @@ block|{
 name|Object
 name|msg
 init|=
-operator|(
-name|Object
-operator|)
 name|iter
 operator|.
 name|next

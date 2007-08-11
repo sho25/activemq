@@ -302,16 +302,22 @@ name|JmsMultipleClientsTestSupport
 extends|extends
 name|CombinationTestSupport
 block|{
-specifier|private
-name|AtomicInteger
-name|producerLock
-decl_stmt|;
 specifier|protected
 name|Map
+argument_list|<
+name|MessageConsumer
+argument_list|,
+name|MessageIdList
+argument_list|>
 name|consumers
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|MessageConsumer
+argument_list|,
+name|MessageIdList
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// Map of consumer with messages
@@ -362,6 +368,9 @@ name|destination
 decl_stmt|;
 specifier|protected
 name|List
+argument_list|<
+name|Connection
+argument_list|>
 name|connections
 init|=
 name|Collections
@@ -370,6 +379,9 @@ name|synchronizedList
 argument_list|(
 operator|new
 name|ArrayList
+argument_list|<
+name|Connection
+argument_list|>
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -380,6 +392,10 @@ init|=
 operator|new
 name|MessageIdList
 argument_list|()
+decl_stmt|;
+specifier|private
+name|AtomicInteger
+name|producerLock
 decl_stmt|;
 specifier|protected
 name|void
@@ -1191,6 +1207,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Connection
+argument_list|>
 name|iter
 init|=
 name|connections
@@ -1208,9 +1227,6 @@ block|{
 name|Connection
 name|conn
 init|=
-operator|(
-name|Connection
-operator|)
 name|iter
 operator|.
 name|next
@@ -1267,9 +1283,6 @@ block|{
 name|MessageIdList
 name|messageIdList
 init|=
-operator|(
-name|MessageIdList
-operator|)
 name|consumers
 operator|.
 name|get
@@ -1299,9 +1312,6 @@ block|{
 name|MessageIdList
 name|messageIdList
 init|=
-operator|(
-name|MessageIdList
-operator|)
 name|consumers
 operator|.
 name|get
@@ -1331,9 +1341,6 @@ block|{
 name|MessageIdList
 name|messageIdList
 init|=
-operator|(
-name|MessageIdList
-operator|)
 name|consumers
 operator|.
 name|get
@@ -1360,6 +1367,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|MessageConsumer
+argument_list|>
 name|i
 init|=
 name|consumers
@@ -1379,9 +1389,6 @@ control|)
 block|{
 name|assertConsumerReceivedAtLeastXMessages
 argument_list|(
-operator|(
-name|MessageConsumer
-operator|)
 name|i
 operator|.
 name|next
@@ -1403,6 +1410,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|MessageConsumer
+argument_list|>
 name|i
 init|=
 name|consumers
@@ -1422,9 +1432,6 @@ control|)
 block|{
 name|assertConsumerReceivedAtMostXMessages
 argument_list|(
-operator|(
-name|MessageConsumer
-operator|)
 name|i
 operator|.
 name|next
@@ -1446,6 +1453,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|MessageConsumer
+argument_list|>
 name|i
 init|=
 name|consumers
@@ -1465,9 +1475,6 @@ control|)
 block|{
 name|assertConsumerReceivedXMessages
 argument_list|(
-operator|(
-name|MessageConsumer
-operator|)
 name|i
 operator|.
 name|next
@@ -1502,6 +1509,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|MessageConsumer
+argument_list|>
 name|i
 init|=
 name|consumers
@@ -1522,9 +1532,6 @@ block|{
 name|MessageIdList
 name|messageIdList
 init|=
-operator|(
-name|MessageIdList
-operator|)
 name|consumers
 operator|.
 name|get

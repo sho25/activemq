@@ -141,6 +141,13 @@ begin_class
 class|class
 name|TreePage
 block|{
+specifier|static
+specifier|final
+name|int
+name|PAGE_HEADER_SIZE
+init|=
+literal|18
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -156,13 +163,6 @@ name|TreePage
 operator|.
 name|class
 argument_list|)
-decl_stmt|;
-specifier|static
-specifier|final
-name|int
-name|PAGE_HEADER_SIZE
-init|=
-literal|18
 decl_stmt|;
 specifier|static
 enum|enum
@@ -2220,13 +2220,12 @@ argument_list|,
 name|copy
 argument_list|)
 expr_stmt|;
+comment|// if we overflow - the page the replacement ends up on
 name|TreePage
 name|landed
 init|=
 literal|null
 decl_stmt|;
-comment|// if we overflow - the page the
-comment|// replacement ends up on
 name|TreeEntry
 name|removed
 init|=

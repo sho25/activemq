@@ -1108,44 +1108,15 @@ return|return
 name|result
 return|;
 block|}
-specifier|private
-name|int
-name|getInsertPageNo
-parameter_list|(
-name|int
-name|index
-parameter_list|)
-block|{
-name|int
-name|result
-init|=
-name|index
-operator|/
-name|maximumEntries
-decl_stmt|;
-return|return
-name|result
-return|;
-block|}
-specifier|private
-name|int
-name|getOffset
-parameter_list|(
-name|int
-name|index
-parameter_list|)
-block|{
-name|int
-name|result
-init|=
-name|index
-operator|%
-name|maximumEntries
-decl_stmt|;
-return|return
-name|result
-return|;
-block|}
+comment|//    private int getInsertPageNo(int index) {
+comment|//        int result = index / maximumEntries;
+comment|//        return result;
+comment|//    }
+comment|//
+comment|//    private int getOffset(int index) {
+comment|//        int result = index % maximumEntries;
+comment|//        return result;
+comment|//    }
 specifier|private
 name|void
 name|doOverFlow

@@ -313,9 +313,14 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|ActiveMQMessageTransformation
 block|{
+specifier|private
+name|ActiveMQMessageTransformation
+parameter_list|()
+block|{         }
 comment|/**      * Creates a an available JMS message from another provider.      *       * @param destination - Destination to be converted into ActiveMQ's      *                implementation.      * @return ActiveMQDestination - ActiveMQ's implementation of the      *         destination.      * @throws JMSException if an error occurs      */
 specifier|public
 specifier|static
@@ -464,7 +469,6 @@ block|}
 comment|/**      * Creates a fast shallow copy of the current ActiveMQMessage or creates a      * whole new message instance from an available JMS message from another      * provider.      *       * @param message - Message to be converted into ActiveMQ's implementation.      * @param connection      * @return ActiveMQMessage - ActiveMQ's implementation object of the      *         message.      * @throws JMSException if an error occurs      */
 specifier|public
 specifier|static
-specifier|final
 name|ActiveMQMessage
 name|transformMessage
 parameter_list|(

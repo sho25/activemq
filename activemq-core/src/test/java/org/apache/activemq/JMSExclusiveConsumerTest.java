@@ -99,6 +99,10 @@ extends|extends
 name|JmsTestSupport
 block|{
 specifier|public
+name|int
+name|deliveryMode
+decl_stmt|;
+specifier|public
 specifier|static
 name|Test
 name|suite
@@ -136,10 +140,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-specifier|public
-name|int
-name|deliveryMode
-decl_stmt|;
 specifier|public
 name|void
 name|initCombosForTestRoundRobinDispatchOnNonExclusive

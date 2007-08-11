@@ -200,6 +200,11 @@ name|connection
 decl_stmt|;
 specifier|private
 name|Map
+argument_list|<
+name|SessionKey
+argument_list|,
+name|SessionPool
+argument_list|>
 name|cache
 decl_stmt|;
 specifier|private
@@ -264,6 +269,11 @@ name|connection
 argument_list|,
 operator|new
 name|HashMap
+argument_list|<
+name|SessionKey
+argument_list|,
+name|SessionPool
+argument_list|>
 argument_list|()
 argument_list|,
 name|poolFactory
@@ -332,6 +342,11 @@ name|ActiveMQConnection
 name|connection
 parameter_list|,
 name|Map
+argument_list|<
+name|SessionKey
+argument_list|,
+name|SessionPool
+argument_list|>
 name|cache
 parameter_list|,
 name|ObjectPoolFactory
@@ -463,9 +478,6 @@ decl_stmt|;
 name|SessionPool
 name|pool
 init|=
-operator|(
-name|SessionPool
-operator|)
 name|cache
 operator|.
 name|get
@@ -631,6 +643,9 @@ block|{
 try|try
 block|{
 name|Iterator
+argument_list|<
+name|SessionPool
+argument_list|>
 name|i
 init|=
 name|cache
@@ -652,9 +667,6 @@ block|{
 name|SessionPool
 name|pool
 init|=
-operator|(
-name|SessionPool
-operator|)
 name|i
 operator|.
 name|next

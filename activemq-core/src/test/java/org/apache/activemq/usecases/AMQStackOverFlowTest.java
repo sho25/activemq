@@ -37,6 +37,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -619,7 +629,7 @@ name|memoryManager
 argument_list|)
 expr_stmt|;
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|PolicyEntry
 argument_list|>

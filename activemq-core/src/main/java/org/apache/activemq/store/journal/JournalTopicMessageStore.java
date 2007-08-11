@@ -277,10 +277,20 @@ name|longTermStore
 decl_stmt|;
 specifier|private
 name|HashMap
+argument_list|<
+name|SubscriptionKey
+argument_list|,
+name|MessageId
+argument_list|>
 name|ackedLastAckLocations
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|SubscriptionKey
+argument_list|,
+name|MessageId
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|public
@@ -908,6 +918,11 @@ name|IOException
 block|{
 specifier|final
 name|HashMap
+argument_list|<
+name|SubscriptionKey
+argument_list|,
+name|MessageId
+argument_list|>
 name|cpAckedLastAckLocations
 decl_stmt|;
 comment|// swap out the hash maps..
@@ -928,6 +943,11 @@ name|ackedLastAckLocations
 operator|=
 operator|new
 name|HashMap
+argument_list|<
+name|SubscriptionKey
+argument_list|,
+name|MessageId
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -949,6 +969,9 @@ name|Exception
 block|{
 comment|// Checkpoint the acknowledged messages.
 name|Iterator
+argument_list|<
+name|SubscriptionKey
+argument_list|>
 name|iterator
 init|=
 name|cpAckedLastAckLocations
@@ -970,9 +993,6 @@ block|{
 name|SubscriptionKey
 name|subscriptionKey
 init|=
-operator|(
-name|SubscriptionKey
-operator|)
 name|iterator
 operator|.
 name|next
@@ -981,9 +1001,6 @@ decl_stmt|;
 name|MessageId
 name|identity
 init|=
-operator|(
-name|MessageId
-operator|)
 name|cpAckedLastAckLocations
 operator|.
 name|get

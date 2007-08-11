@@ -89,10 +89,6 @@ specifier|private
 name|int
 name|count
 decl_stmt|;
-specifier|private
-name|boolean
-name|closed
-decl_stmt|;
 comment|/**      * Constructor      *       * @param out      */
 specifier|public
 name|TcpBufferedOutputStream
@@ -317,32 +313,6 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|closed
-operator|=
-literal|true
-expr_stmt|;
-block|}
-comment|/**      * Checks that the stream has not been closed      *       * @throws IOException      */
-specifier|private
-name|void
-name|checkClosed
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-if|if
-condition|(
-name|closed
-condition|)
-block|{
-throw|throw
-operator|new
-name|EOFException
-argument_list|(
-literal|"Cannot write to the stream any more it has already been closed"
-argument_list|)
-throw|;
-block|}
 block|}
 block|}
 end_class

@@ -379,10 +379,16 @@ name|open
 argument_list|()
 decl_stmt|;
 name|HashSet
+argument_list|<
+name|String
+argument_list|>
 name|set
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|NamingEnumeration

@@ -1846,10 +1846,16 @@ return|;
 block|}
 specifier|protected
 name|Set
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 name|getInactiveDestinations
 parameter_list|()
 block|{
 name|Set
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 name|inactiveDestinations
 init|=
 name|super
@@ -1860,6 +1866,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 name|iter
 init|=
 name|inactiveDestinations
@@ -1877,9 +1886,6 @@ block|{
 name|ActiveMQDestination
 name|dest
 init|=
-operator|(
-name|ActiveMQDestination
-operator|)
 name|iter
 operator|.
 name|next

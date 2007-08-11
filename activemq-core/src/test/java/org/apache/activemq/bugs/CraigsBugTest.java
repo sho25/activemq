@@ -188,16 +188,13 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
-name|Message
-name|msg
-init|=
 name|consumer
 operator|.
 name|receive
 argument_list|(
 literal|1000
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(

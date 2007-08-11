@@ -127,10 +127,16 @@ expr_stmt|;
 block|}
 comment|/**      * narrow acceptance      *       * @param target      * @return 'this' if assignable      */
 specifier|public
-name|Object
+parameter_list|<
+name|T
+parameter_list|>
+name|T
 name|narrow
 parameter_list|(
 name|Class
+argument_list|<
+name|T
+argument_list|>
 name|target
 parameter_list|)
 block|{
@@ -151,7 +157,12 @@ name|assignableFrom
 condition|)
 block|{
 return|return
+name|target
+operator|.
+name|cast
+argument_list|(
 name|this
+argument_list|)
 return|;
 block|}
 return|return

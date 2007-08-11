@@ -50,6 +50,10 @@ name|CommandTypes
 operator|.
 name|CONTROL_COMMAND
 decl_stmt|;
+specifier|private
+name|String
+name|command
+decl_stmt|;
 specifier|public
 name|byte
 name|getDataStructureType
@@ -59,10 +63,6 @@ return|return
 name|DATA_STRUCTURE_TYPE
 return|;
 block|}
-specifier|private
-name|String
-name|command
-decl_stmt|;
 comment|/**      * @openwire:property version=1      */
 specifier|public
 name|String

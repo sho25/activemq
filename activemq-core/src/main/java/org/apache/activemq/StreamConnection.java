@@ -201,6 +201,11 @@ name|Destination
 name|dest
 parameter_list|,
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|streamProperties
 parameter_list|,
 name|int

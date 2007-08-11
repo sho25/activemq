@@ -60,10 +60,16 @@ literal|1024
 decl_stmt|;
 specifier|private
 name|LinkedList
+argument_list|<
+name|MessageQueue
+argument_list|>
 name|list
 init|=
 operator|new
 name|LinkedList
+argument_list|<
+name|MessageQueue
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -166,9 +172,6 @@ block|{
 name|MessageQueue
 name|biggest
 init|=
-operator|(
-name|MessageQueue
-operator|)
 name|list
 operator|.
 name|removeFirst
@@ -197,6 +200,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|MessageQueue
+argument_list|>
 name|iter
 init|=
 name|list
@@ -214,9 +220,6 @@ block|{
 name|MessageQueue
 name|queue
 init|=
-operator|(
-name|MessageQueue
-operator|)
 name|iter
 operator|.
 name|next

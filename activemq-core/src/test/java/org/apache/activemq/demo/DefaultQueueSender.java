@@ -89,16 +89,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|QueueSession
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|Session
 import|;
 end_import
@@ -115,18 +105,8 @@ name|ActiveMQConnectionFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  * A simple queue sender which does not use JNDI  *   * @version $Revision: 1.1 $  */
-end_comment
-
-begin_class
-specifier|public
-class|class
-name|DefaultQueueSender
-block|{
-specifier|private
-specifier|static
-specifier|final
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -136,8 +116,11 @@ operator|.
 name|logging
 operator|.
 name|Log
-name|LOG
-init|=
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -147,6 +130,26 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
+import|;
+end_import
+
+begin_comment
+comment|/**  * A simple queue sender which does not use JNDI  *   * @version $Revision: 1.1 $  */
+end_comment
+
+begin_class
+specifier|public
+specifier|final
+class|class
+name|DefaultQueueSender
+block|{
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOG
+init|=
+name|LogFactory
 operator|.
 name|getLog
 argument_list|(
@@ -155,6 +158,10 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+name|DefaultQueueSender
+parameter_list|()
+block|{         }
 specifier|public
 specifier|static
 name|void
@@ -177,11 +184,6 @@ literal|"Hello World!"
 decl_stmt|;
 name|Connection
 name|connection
-init|=
-literal|null
-decl_stmt|;
-name|QueueSession
-name|queueSession
 init|=
 literal|null
 decl_stmt|;

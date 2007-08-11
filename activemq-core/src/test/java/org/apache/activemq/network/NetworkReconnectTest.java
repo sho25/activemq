@@ -311,10 +311,16 @@ name|destination
 decl_stmt|;
 specifier|private
 name|ArrayList
+argument_list|<
+name|Connection
+argument_list|>
 name|connections
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Connection
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|public
@@ -898,6 +904,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Connection
+argument_list|>
 name|iter
 init|=
 name|connections
@@ -915,9 +924,6 @@ block|{
 name|Connection
 name|connection
 init|=
-operator|(
-name|Connection
-operator|)
 name|iter
 operator|.
 name|next

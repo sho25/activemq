@@ -129,10 +129,20 @@ comment|// we may want to evict endpoints that disconnect
 comment|// from a transport - e.g. for multicast
 specifier|private
 name|Map
+argument_list|<
+name|SocketAddress
+argument_list|,
+name|Endpoint
+argument_list|>
 name|endpoints
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|SocketAddress
+argument_list|,
+name|Endpoint
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|/**      * Reads any header if applicable and then creates an endpoint object      */
@@ -211,9 +221,6 @@ block|{
 name|Endpoint
 name|endpoint
 init|=
-operator|(
-name|Endpoint
-operator|)
 name|endpoints
 operator|.
 name|get

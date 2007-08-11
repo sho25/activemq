@@ -468,6 +468,7 @@ specifier|private
 name|ProducerInfo
 name|producerInfo
 decl_stmt|;
+specifier|private
 specifier|final
 name|AtomicBoolean
 name|masterActive

@@ -97,12 +97,6 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|protected
-specifier|abstract
-name|MessageBuffer
-name|createMessageBuffer
-parameter_list|()
-function_decl|;
-specifier|protected
 name|MessageBuffer
 name|buffer
 init|=
@@ -140,6 +134,12 @@ specifier|protected
 name|int
 name|messageCount
 decl_stmt|;
+specifier|protected
+specifier|abstract
+name|MessageBuffer
+name|createMessageBuffer
+parameter_list|()
+function_decl|;
 specifier|protected
 name|void
 name|setUp

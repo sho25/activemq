@@ -570,10 +570,20 @@ block|}
 block|}
 comment|// Parse the headers
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|headers
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|(
 literal|25
 argument_list|)
@@ -729,9 +739,6 @@ decl_stmt|;
 name|String
 name|contentLength
 init|=
-operator|(
-name|String
-operator|)
 name|headers
 operator|.
 name|get

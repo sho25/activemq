@@ -67,6 +67,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -175,6 +185,20 @@ name|name
 init|=
 literal|"testName"
 decl_stmt|;
+comment|/**      * Constructor for ActiveMQMapMessageTest.      *       * @param name      */
+specifier|public
+name|ActiveMQMapMessageTest
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 specifier|static
 name|void
@@ -225,20 +249,6 @@ name|super
 operator|.
 name|tearDown
 argument_list|()
-expr_stmt|;
-block|}
-comment|/**      * Constructor for ActiveMQMapMessageTest.      *       * @param arg0      */
-specifier|public
-name|ActiveMQMapMessageTest
-parameter_list|(
-name|String
-name|arg0
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|arg0
-argument_list|)
 expr_stmt|;
 block|}
 specifier|public
@@ -2176,6 +2186,9 @@ name|copy
 argument_list|()
 expr_stmt|;
 name|Enumeration
+argument_list|<
+name|String
+argument_list|>
 name|mapNamesEnum
 init|=
 name|msg
@@ -2183,7 +2196,10 @@ operator|.
 name|getMapNames
 argument_list|()
 decl_stmt|;
-name|ArrayList
+name|List
+argument_list|<
+name|String
+argument_list|>
 name|mapNamesList
 init|=
 name|Collections

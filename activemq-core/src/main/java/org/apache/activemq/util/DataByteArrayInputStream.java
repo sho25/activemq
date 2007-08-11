@@ -964,9 +964,11 @@ index|]
 decl_stmt|;
 name|int
 name|c
-decl_stmt|,
+decl_stmt|;
+name|int
 name|c2
-decl_stmt|,
+decl_stmt|;
+name|int
 name|c3
 decl_stmt|;
 name|int

@@ -166,10 +166,16 @@ name|BrokerTestSupport
 block|{
 specifier|protected
 name|ArrayList
+argument_list|<
+name|StubConnection
+argument_list|>
 name|connections
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|StubConnection
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|protected
@@ -409,6 +415,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|StubConnection
+argument_list|>
 name|iter
 init|=
 name|connections
@@ -426,9 +435,6 @@ block|{
 name|StubConnection
 name|connection
 init|=
-operator|(
-name|StubConnection
-operator|)
 name|iter
 operator|.
 name|next

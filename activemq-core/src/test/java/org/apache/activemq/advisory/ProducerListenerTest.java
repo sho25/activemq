@@ -177,10 +177,16 @@ name|producerEventSource
 decl_stmt|;
 specifier|protected
 name|BlockingQueue
+argument_list|<
+name|ProducerEvent
+argument_list|>
 name|eventQueue
 init|=
 operator|new
 name|ArrayBlockingQueue
+argument_list|<
+name|ProducerEvent
+argument_list|>
 argument_list|(
 literal|1000
 argument_list|)
@@ -561,9 +567,6 @@ block|{
 name|ProducerEvent
 name|answer
 init|=
-operator|(
-name|ProducerEvent
-operator|)
 name|eventQueue
 operator|.
 name|poll

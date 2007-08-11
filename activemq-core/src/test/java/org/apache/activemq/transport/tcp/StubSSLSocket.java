@@ -113,6 +113,7 @@ name|useClientModeStatus
 init|=
 name|UNTOUCHED
 decl_stmt|;
+specifier|private
 specifier|final
 name|StubSSLSession
 name|session

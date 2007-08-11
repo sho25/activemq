@@ -55,6 +55,7 @@ end_import
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|AdvisorySupport
 block|{
@@ -280,6 +281,10 @@ argument_list|(
 name|AGENT_TOPIC
 argument_list|)
 decl_stmt|;
+specifier|private
+name|AdvisorySupport
+parameter_list|()
+block|{             }
 specifier|public
 specifier|static
 name|ActiveMQTopic

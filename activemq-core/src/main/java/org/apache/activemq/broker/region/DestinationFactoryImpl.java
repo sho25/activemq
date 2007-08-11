@@ -342,6 +342,9 @@ expr_stmt|;
 block|}
 specifier|public
 name|Set
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 name|getDestinations
 parameter_list|()
 block|{

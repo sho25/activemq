@@ -35,6 +35,10 @@ specifier|final
 class|class
 name|ByteSequenceData
 block|{
+specifier|private
+name|ByteSequenceData
+parameter_list|()
+block|{         }
 specifier|public
 specifier|static
 name|byte

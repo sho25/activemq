@@ -101,6 +101,16 @@ name|junit
 operator|.
 name|framework
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|junit
+operator|.
+name|framework
+operator|.
 name|AssertionFailedError
 import|;
 end_import
@@ -695,7 +705,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|this
+name|Assert
 operator|.
 name|assertEquals
 argument_list|(

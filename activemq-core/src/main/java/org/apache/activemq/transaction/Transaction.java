@@ -118,10 +118,16 @@ literal|3
 decl_stmt|;
 specifier|private
 name|ArrayList
+argument_list|<
+name|Synchronization
+argument_list|>
 name|synchronizations
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Synchronization
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -257,6 +263,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Synchronization
+argument_list|>
 name|iter
 init|=
 name|synchronizations
@@ -274,9 +283,6 @@ block|{
 name|Synchronization
 name|s
 init|=
-operator|(
-name|Synchronization
-operator|)
 name|iter
 operator|.
 name|next
@@ -299,6 +305,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Synchronization
+argument_list|>
 name|iter
 init|=
 name|synchronizations
@@ -316,9 +325,6 @@ block|{
 name|Synchronization
 name|s
 init|=
-operator|(
-name|Synchronization
-operator|)
 name|iter
 operator|.
 name|next

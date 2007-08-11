@@ -107,6 +107,7 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|Main
 block|{
@@ -115,6 +116,10 @@ specifier|static
 name|boolean
 name|createConsumers
 decl_stmt|;
+specifier|private
+name|Main
+parameter_list|()
+block|{             }
 comment|/**      * @param args      */
 specifier|public
 specifier|static
@@ -126,28 +131,6 @@ index|[]
 name|args
 parameter_list|)
 block|{
-name|String
-name|brokerURI
-init|=
-literal|"broker:(tcp://localhost:61616,stomp://localhost:61613)?persistent=false&useJmx=true"
-decl_stmt|;
-if|if
-condition|(
-name|args
-operator|.
-name|length
-operator|>
-literal|0
-condition|)
-block|{
-name|brokerURI
-operator|=
-name|args
-index|[
-literal|0
-index|]
-expr_stmt|;
-block|}
 try|try
 block|{
 comment|// TODO - this seems to break interceptors for some reason
@@ -285,9 +268,6 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 decl_stmt|;
-name|MessageConsumer
-name|consumer1
-init|=
 name|session
 operator|.
 name|createConsumer
@@ -298,10 +278,7 @@ argument_list|(
 literal|"Orders.IBM"
 argument_list|)
 argument_list|)
-decl_stmt|;
-name|MessageConsumer
-name|consumer2
-init|=
+expr_stmt|;
 name|session
 operator|.
 name|createConsumer
@@ -314,7 +291,7 @@ argument_list|)
 argument_list|,
 literal|"price> 100"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|Session
 name|session2
 init|=
@@ -329,9 +306,6 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 decl_stmt|;
-name|MessageConsumer
-name|consumer3
-init|=
 name|session2
 operator|.
 name|createConsumer
@@ -344,7 +318,7 @@ argument_list|)
 argument_list|,
 literal|"price> 200"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 block|}
 else|else
 block|{

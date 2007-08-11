@@ -114,9 +114,6 @@ argument_list|(
 literal|"test"
 argument_list|)
 expr_stmt|;
-name|Session
-name|session
-init|=
 name|connection
 operator|.
 name|createSession
@@ -127,7 +124,7 @@ name|Session
 operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 try|try
 block|{
 name|connection

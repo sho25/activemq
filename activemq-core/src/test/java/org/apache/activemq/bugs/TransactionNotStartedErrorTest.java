@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -127,11 +127,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activemq
+name|commons
 operator|.
-name|bugs
+name|logging
 operator|.
-name|Receiver
+name|Log
 import|;
 end_import
 
@@ -141,16 +141,16 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activemq
+name|commons
 operator|.
-name|bugs
+name|logging
 operator|.
-name|MessageSender
+name|LogFactory
 import|;
 end_import
 
 begin_comment
-comment|/*  * simulate message flow which  cause the following exception  * in the broker (exception logged by client)  *<p/>  * 2007-07-24 13:51:23,624 com.easynet.halo.Halo ERROR (LoggingErrorHandler.java: 23) JMS failure  * javax.jms.JMSException: Transaction 'TX:ID:dmt-53625-1185281414694-1:0:344' has not been started.  * at org.apache.activemq.broker.TransactionBroker.getTransaction(TransactionBroker.java:230)  *   *   * This appears to be consistent in a MacBook. Haven't been able to replicate it on Windows though  */
+comment|/*  * simulate message flow which cause the following exception in the broker  * (exception logged by client)<p/> 2007-07-24 13:51:23,624  * com.easynet.halo.Halo ERROR (LoggingErrorHandler.java: 23) JMS failure  * javax.jms.JMSException: Transaction 'TX:ID:dmt-53625-1185281414694-1:0:344'  * has not been started. at  * org.apache.activemq.broker.TransactionBroker.getTransaction(TransactionBroker.java:230)  * This appears to be consistent in a MacBook. Haven't been able to replicate it  * on Windows though  */
 end_comment
 
 begin_class
@@ -163,25 +163,9 @@ block|{
 specifier|private
 specifier|static
 specifier|final
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
 name|Log
-name|log
+name|LOG
 init|=
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
 name|LogFactory
 operator|.
 name|getLog
@@ -190,6 +174,43 @@ name|TransactionNotStartedErrorTest
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+name|int
+name|counter
+init|=
+literal|500
+decl_stmt|;
+specifier|private
+specifier|static
+name|int
+name|hectorToHaloCtr
+decl_stmt|;
+specifier|private
+specifier|static
+name|int
+name|xenaToHaloCtr
+decl_stmt|;
+specifier|private
+specifier|static
+name|int
+name|troyToHaloCtr
+decl_stmt|;
+specifier|private
+specifier|static
+name|int
+name|haloToHectorCtr
+decl_stmt|;
+specifier|private
+specifier|static
+name|int
+name|haloToXenaCtr
+decl_stmt|;
+specifier|private
+specifier|static
+name|int
+name|haloToTroyCtr
 decl_stmt|;
 specifier|private
 name|String
@@ -226,55 +247,6 @@ name|String
 name|haloToTroy
 init|=
 literal|"haloToTroy"
-decl_stmt|;
-specifier|private
-specifier|static
-name|int
-name|counter
-init|=
-literal|500
-decl_stmt|;
-specifier|private
-specifier|static
-name|int
-name|hectorToHaloCtr
-init|=
-literal|0
-decl_stmt|;
-specifier|private
-specifier|static
-name|int
-name|xenaToHaloCtr
-init|=
-literal|0
-decl_stmt|;
-specifier|private
-specifier|static
-name|int
-name|troyToHaloCtr
-init|=
-literal|0
-decl_stmt|;
-specifier|private
-specifier|static
-name|int
-name|haloToHectorCtr
-init|=
-literal|0
-decl_stmt|;
-specifier|private
-specifier|static
-name|int
-name|haloToXenaCtr
-init|=
-literal|0
-decl_stmt|;
-specifier|private
-specifier|static
-name|int
-name|haloToTroyCtr
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|BrokerService
@@ -405,7 +377,7 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -916,7 +888,7 @@ expr_stmt|;
 name|waitForMessagesToBeDelivered
 argument_list|()
 expr_stmt|;
-comment|//number of messages received should match messages sent
+comment|// number of messages received should match messages sent
 name|assertEquals
 argument_list|(
 name|hectorToHaloCtr
@@ -924,7 +896,7 @@ argument_list|,
 name|counter
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -942,7 +914,7 @@ argument_list|,
 name|counter
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -960,7 +932,7 @@ argument_list|,
 name|counter
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -978,7 +950,7 @@ argument_list|,
 name|counter
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -996,7 +968,7 @@ argument_list|,
 name|counter
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1014,7 +986,7 @@ argument_list|,
 name|counter
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1095,7 +1067,7 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1103,7 +1075,7 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-comment|//check if all messages have been received
+comment|// check if all messages have been received
 name|hasMessages
 operator|=
 name|hectorToHaloCtr

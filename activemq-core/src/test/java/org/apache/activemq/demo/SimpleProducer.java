@@ -123,18 +123,8 @@ name|NamingException
 import|;
 end_import
 
-begin_comment
-comment|/**  * A simple polymorphic JMS producer which can work with Queues or Topics which  * uses JNDI to lookup the JMS connection factory and destination  *   * @version $Revision: 1.2 $  */
-end_comment
-
-begin_class
-specifier|public
-class|class
-name|SimpleProducer
-block|{
-specifier|private
-specifier|static
-specifier|final
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -144,8 +134,11 @@ operator|.
 name|logging
 operator|.
 name|Log
-name|LOG
-init|=
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -155,6 +148,26 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
+import|;
+end_import
+
+begin_comment
+comment|/**  * A simple polymorphic JMS producer which can work with Queues or Topics which  * uses JNDI to lookup the JMS connection factory and destination  *   * @version $Revision: 1.2 $  */
+end_comment
+
+begin_class
+specifier|public
+specifier|final
+class|class
+name|SimpleProducer
+block|{
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOG
+init|=
+name|LogFactory
 operator|.
 name|getLog
 argument_list|(
@@ -163,6 +176,10 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+name|SimpleProducer
+parameter_list|()
+block|{     }
 comment|/**      * @param args the destination name to send to and optionally, the number of      *                messages to send      */
 specifier|public
 specifier|static

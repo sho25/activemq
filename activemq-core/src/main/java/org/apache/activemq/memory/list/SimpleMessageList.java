@@ -181,10 +181,16 @@ argument_list|)
 decl_stmt|;
 specifier|private
 name|LinkedList
+argument_list|<
+name|MessageReference
+argument_list|>
 name|list
 init|=
 operator|new
 name|LinkedList
+argument_list|<
+name|MessageReference
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -272,9 +278,6 @@ block|{
 name|MessageReference
 name|evicted
 init|=
-operator|(
-name|MessageReference
-operator|)
 name|list
 operator|.
 name|removeFirst
@@ -295,6 +298,9 @@ block|}
 block|}
 specifier|public
 name|List
+argument_list|<
+name|MessageReference
+argument_list|>
 name|getMessages
 parameter_list|(
 name|ActiveMQDestination
@@ -316,10 +322,16 @@ name|destination
 parameter_list|)
 block|{
 name|List
+argument_list|<
+name|Message
+argument_list|>
 name|result
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Message
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|DestinationFilter
@@ -340,6 +352,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|MessageReference
+argument_list|>
 name|i
 init|=
 name|list
@@ -357,9 +372,6 @@ block|{
 name|MessageReference
 name|ref
 init|=
-operator|(
-name|MessageReference
-operator|)
 name|i
 operator|.
 name|next
@@ -420,10 +432,6 @@ block|}
 block|}
 block|}
 return|return
-operator|(
-name|Message
-index|[]
-operator|)
 name|result
 operator|.
 name|toArray
@@ -442,6 +450,9 @@ block|}
 comment|/**      * Returns a copy of the list      */
 specifier|public
 name|List
+argument_list|<
+name|MessageReference
+argument_list|>
 name|getList
 parameter_list|()
 block|{
@@ -453,6 +464,9 @@ block|{
 return|return
 operator|new
 name|ArrayList
+argument_list|<
+name|MessageReference
+argument_list|>
 argument_list|(
 name|list
 argument_list|)

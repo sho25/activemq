@@ -62,10 +62,16 @@ name|ByteBufferPool
 block|{
 specifier|private
 name|List
+argument_list|<
+name|ByteBuffer
+argument_list|>
 name|buffers
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|ByteBuffer
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -126,9 +132,6 @@ literal|0
 condition|)
 block|{
 return|return
-operator|(
-name|ByteBuffer
-operator|)
 name|buffers
 operator|.
 name|remove

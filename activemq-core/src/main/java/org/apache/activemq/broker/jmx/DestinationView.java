@@ -722,10 +722,16 @@ name|browse
 argument_list|()
 decl_stmt|;
 name|ArrayList
+argument_list|<
+name|CompositeData
+argument_list|>
 name|c
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|CompositeData
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|MessageEvaluationContext
@@ -889,6 +895,9 @@ block|}
 comment|/**      * Browses the current destination returning a list of messages      */
 specifier|public
 name|List
+argument_list|<
+name|Object
+argument_list|>
 name|browseMessages
 parameter_list|()
 throws|throws
@@ -904,6 +913,9 @@ block|}
 comment|/**      * Browses the current destination with the given selector returning a list      * of messages      */
 specifier|public
 name|List
+argument_list|<
+name|Object
+argument_list|>
 name|browseMessages
 parameter_list|(
 name|String
@@ -922,10 +934,16 @@ name|browse
 argument_list|()
 decl_stmt|;
 name|ArrayList
+argument_list|<
+name|Object
+argument_list|>
 name|answer
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Object
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|MessageEvaluationContext

@@ -32,8 +32,6 @@ block|{
 specifier|private
 name|boolean
 name|daemon
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|Thread
@@ -43,8 +41,6 @@ comment|// should be a multiple of 128k
 specifier|private
 name|long
 name|stackSize
-init|=
-literal|0
 decl_stmt|;
 specifier|public
 name|boolean

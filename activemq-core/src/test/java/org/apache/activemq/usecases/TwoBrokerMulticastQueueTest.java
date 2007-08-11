@@ -239,7 +239,9 @@ decl_stmt|;
 specifier|public
 name|String
 name|sendUri
-decl_stmt|,
+decl_stmt|;
+specifier|public
+name|String
 name|recvUri
 decl_stmt|;
 specifier|private

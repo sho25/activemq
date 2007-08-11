@@ -69,6 +69,7 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|BrokerFactory
 block|{
@@ -84,6 +85,10 @@ argument_list|(
 literal|"META-INF/services/org/apache/activemq/broker/"
 argument_list|)
 decl_stmt|;
+specifier|private
+name|BrokerFactory
+parameter_list|()
+block|{             }
 specifier|public
 specifier|static
 name|BrokerFactoryHandler

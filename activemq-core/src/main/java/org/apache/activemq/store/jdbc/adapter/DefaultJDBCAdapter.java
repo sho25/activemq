@@ -474,9 +474,6 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
-name|boolean
-name|rc
-init|=
 name|s
 operator|.
 name|execute
@@ -486,7 +483,7 @@ index|[
 name|i
 index|]
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -670,9 +667,6 @@ comment|// This will fail usually since the tables will be
 comment|// created already.
 try|try
 block|{
-name|boolean
-name|rc
-init|=
 name|s
 operator|.
 name|execute
@@ -682,7 +676,7 @@ index|[
 name|i
 index|]
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -2995,10 +2989,16 @@ name|executeQuery
 argument_list|()
 expr_stmt|;
 name|ArrayList
+argument_list|<
+name|SubscriptionInfo
+argument_list|>
 name|rc
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|SubscriptionInfo
+argument_list|>
 argument_list|()
 decl_stmt|;
 while|while
@@ -3089,10 +3089,6 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-operator|(
-name|SubscriptionInfo
-index|[]
-operator|)
 name|rc
 operator|.
 name|toArray
@@ -3585,6 +3581,9 @@ block|{         }
 block|}
 specifier|public
 name|Set
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 name|doGetDestinations
 parameter_list|(
 name|TransactionContext
@@ -3596,10 +3595,16 @@ throws|,
 name|IOException
 block|{
 name|HashSet
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 name|rc
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|PreparedStatement

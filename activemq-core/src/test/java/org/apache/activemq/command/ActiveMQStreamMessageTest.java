@@ -86,6 +86,20 @@ name|ActiveMQStreamMessageTest
 extends|extends
 name|TestCase
 block|{
+comment|/**      * Constructor for ActiveMQStreamMessageTest.      *       * @param name      */
+specifier|public
+name|ActiveMQStreamMessageTest
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 specifier|static
 name|void
@@ -136,20 +150,6 @@ name|super
 operator|.
 name|tearDown
 argument_list|()
-expr_stmt|;
-block|}
-comment|/**      * Constructor for ActiveMQStreamMessageTest.      *       * @param arg0      */
-specifier|public
-name|ActiveMQStreamMessageTest
-parameter_list|(
-name|String
-name|arg0
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|arg0
-argument_list|)
 expr_stmt|;
 block|}
 specifier|public

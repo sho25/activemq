@@ -441,6 +441,11 @@ name|stateMap
 decl_stmt|;
 specifier|private
 name|MapContainer
+argument_list|<
+name|TransactionId
+argument_list|,
+name|AMQTx
+argument_list|>
 name|preparedTransactions
 decl_stmt|;
 specifier|private
@@ -463,6 +468,9 @@ argument_list|()
 decl_stmt|;
 specifier|private
 name|ListContainer
+argument_list|<
+name|SubscriptionInfo
+argument_list|>
 name|durableSubscribers
 decl_stmt|;
 specifier|private
@@ -903,6 +911,9 @@ literal|"blob"
 argument_list|)
 decl_stmt|;
 name|ListContainer
+argument_list|<
+name|TopicSubAck
+argument_list|>
 name|ackContainer
 init|=
 name|store
@@ -1274,6 +1285,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|SubscriptionInfo
+argument_list|>
 name|i
 init|=
 name|durableSubscribers
@@ -1291,9 +1305,6 @@ block|{
 name|SubscriptionInfo
 name|info
 init|=
-operator|(
-name|SubscriptionInfo
-operator|)
 name|i
 operator|.
 name|next
@@ -1361,6 +1372,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|TransactionId
+argument_list|>
 name|i
 init|=
 name|preparedTransactions
@@ -1381,9 +1395,6 @@ block|{
 name|TransactionId
 name|key
 init|=
-operator|(
-name|TransactionId
-operator|)
 name|i
 operator|.
 name|next
@@ -1392,9 +1403,6 @@ decl_stmt|;
 name|AMQTx
 name|value
 init|=
-operator|(
-name|AMQTx
-operator|)
 name|preparedTransactions
 operator|.
 name|get

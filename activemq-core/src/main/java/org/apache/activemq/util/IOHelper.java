@@ -21,9 +21,14 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|IOHelper
 block|{
+specifier|private
+name|IOHelper
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|String

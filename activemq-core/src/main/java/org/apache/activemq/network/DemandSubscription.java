@@ -98,10 +98,16 @@ name|localInfo
 decl_stmt|;
 specifier|private
 name|Set
+argument_list|<
+name|ConsumerId
+argument_list|>
 name|remoteSubsIds
 init|=
 operator|new
 name|CopyOnWriteArraySet
+argument_list|<
+name|ConsumerId
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private

@@ -394,6 +394,11 @@ return|;
 block|}
 specifier|public
 name|Map
+argument_list|<
+name|ActiveMQDestination
+argument_list|,
+name|Destination
+argument_list|>
 name|getDestinationMap
 parameter_list|()
 block|{
@@ -1107,6 +1112,9 @@ return|;
 block|}
 specifier|public
 name|Set
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 name|getDurableDestinations
 parameter_list|()
 block|{

@@ -35,9 +35,14 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|NetworkBridgeFactory
 block|{
+specifier|private
+name|NetworkBridgeFactory
+parameter_list|()
+block|{     }
 comment|/**      * Create a network bridge      *       * @param config      * @param localTransport      * @param remoteTransport      * @return the NetworkBridge      */
 specifier|public
 specifier|static

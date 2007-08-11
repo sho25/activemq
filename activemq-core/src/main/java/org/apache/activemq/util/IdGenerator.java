@@ -258,17 +258,6 @@ operator|=
 name|stub
 expr_stmt|;
 block|}
-comment|/**      * As we have to find the hostname as a side-affect of generating a unique      * stub, we allow it's easy retrevial here      *       * @return the local host name      */
-specifier|public
-specifier|static
-name|String
-name|getHostName
-parameter_list|()
-block|{
-return|return
-name|hostName
-return|;
-block|}
 comment|/**      * Construct an IdGenerator      */
 specifier|public
 name|IdGenerator
@@ -310,6 +299,17 @@ operator|+
 name|hostName
 argument_list|)
 expr_stmt|;
+block|}
+comment|/**      * As we have to find the hostname as a side-affect of generating a unique      * stub, we allow it's easy retrevial here      *       * @return the local host name      */
+specifier|public
+specifier|static
+name|String
+name|getHostName
+parameter_list|()
+block|{
+return|return
+name|hostName
+return|;
 block|}
 comment|/**      * Generate a unqiue id      *       * @return a unique id      */
 specifier|public

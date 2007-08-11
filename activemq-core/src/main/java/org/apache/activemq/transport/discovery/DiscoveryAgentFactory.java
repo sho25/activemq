@@ -99,10 +99,20 @@ specifier|private
 specifier|static
 specifier|final
 name|ConcurrentHashMap
+argument_list|<
+name|String
+argument_list|,
+name|DiscoveryAgentFactory
+argument_list|>
 name|DISCOVERY_AGENT_FACTORYS
 init|=
 operator|new
 name|ConcurrentHashMap
+argument_list|<
+name|String
+argument_list|,
+name|DiscoveryAgentFactory
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|/**      * @param uri      * @return      * @throws IOException      */
@@ -147,9 +157,6 @@ block|}
 name|DiscoveryAgentFactory
 name|daf
 init|=
-operator|(
-name|DiscoveryAgentFactory
-operator|)
 name|DISCOVERY_AGENT_FACTORYS
 operator|.
 name|get

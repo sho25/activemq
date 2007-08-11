@@ -38,13 +38,6 @@ specifier|final
 name|ProducerInfo
 name|info
 decl_stmt|;
-specifier|private
-name|long
-name|lastSequenceId
-init|=
-operator|-
-literal|1
-decl_stmt|;
 specifier|public
 name|ProducerState
 parameter_list|(

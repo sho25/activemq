@@ -21,6 +21,7 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|HexSupport
 block|{
@@ -548,6 +549,10 @@ block|,
 literal|"ff"
 block|,     }
 decl_stmt|;
+specifier|private
+name|HexSupport
+parameter_list|()
+block|{     }
 comment|/**      * @param hex      * @return      */
 specifier|public
 specifier|static

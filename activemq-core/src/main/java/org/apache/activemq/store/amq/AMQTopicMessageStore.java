@@ -59,6 +59,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -290,7 +300,7 @@ name|TopicReferenceStore
 name|topicReferenceStore
 decl_stmt|;
 specifier|private
-name|HashMap
+name|Map
 argument_list|<
 name|SubscriptionKey
 argument_list|,
@@ -953,7 +963,7 @@ throws|throws
 name|IOException
 block|{
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|SubscriptionKey
 argument_list|,

@@ -39,6 +39,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -116,7 +126,7 @@ name|Location
 name|location
 decl_stmt|;
 specifier|private
-name|ArrayList
+name|List
 argument_list|<
 name|AMQTxOperation
 argument_list|>
@@ -254,7 +264,7 @@ index|[]
 name|getMessages
 parameter_list|()
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|Object
 argument_list|>
@@ -349,7 +359,7 @@ index|[]
 name|getAcks
 parameter_list|()
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|Object
 argument_list|>
@@ -451,7 +461,7 @@ name|location
 return|;
 block|}
 specifier|public
-name|ArrayList
+name|List
 argument_list|<
 name|AMQTxOperation
 argument_list|>
@@ -466,7 +476,7 @@ specifier|public
 name|void
 name|setOperations
 parameter_list|(
-name|ArrayList
+name|List
 argument_list|<
 name|AMQTxOperation
 argument_list|>

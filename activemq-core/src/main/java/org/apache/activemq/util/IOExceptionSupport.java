@@ -31,6 +31,10 @@ specifier|final
 class|class
 name|IOExceptionSupport
 block|{
+specifier|private
+name|IOExceptionSupport
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|IOException

@@ -101,9 +101,14 @@ end_import
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|BrokerSupport
 block|{
+specifier|private
+name|BrokerSupport
+parameter_list|()
+block|{             }
 comment|/**      * @param context      * @param message      * @param deadLetterDestination      * @throws Exception      */
 specifier|public
 specifier|static

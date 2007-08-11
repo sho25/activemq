@@ -50,21 +50,33 @@ name|AuthorizationMap
 block|{
 comment|/**      * Returns the set of all ACLs capable of administering temp destination      */
 name|Set
+argument_list|<
+name|?
+argument_list|>
 name|getTempDestinationAdminACLs
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the set of all ACLs capable of reading from temp destination      */
 name|Set
+argument_list|<
+name|?
+argument_list|>
 name|getTempDestinationReadACLs
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the set of all ACLs capable of writing to temp destination      */
 name|Set
+argument_list|<
+name|?
+argument_list|>
 name|getTempDestinationWriteACLs
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the set of all ACLs capable of administering the given      * destination      */
 name|Set
+argument_list|<
+name|?
+argument_list|>
 name|getAdminACLs
 parameter_list|(
 name|ActiveMQDestination
@@ -73,6 +85,9 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns the set of all ACLs capable of reading (consuming from) the given      * destination      */
 name|Set
+argument_list|<
+name|?
+argument_list|>
 name|getReadACLs
 parameter_list|(
 name|ActiveMQDestination
@@ -81,6 +96,9 @@ parameter_list|)
 function_decl|;
 comment|/**      * Returns the set of all ACLs capable of writing to the given destination      */
 name|Set
+argument_list|<
+name|?
+argument_list|>
 name|getWriteACLs
 parameter_list|(
 name|ActiveMQDestination

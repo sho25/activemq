@@ -128,6 +128,9 @@ name|ThreeBrokerTopicNetworkTest
 block|{
 specifier|protected
 name|List
+argument_list|<
+name|DemandForwardingBridge
+argument_list|>
 name|bridges
 decl_stmt|;
 specifier|protected
@@ -161,7 +164,8 @@ argument_list|()
 decl_stmt|;
 name|URI
 name|remoteURI
-decl_stmt|,
+decl_stmt|;
+name|URI
 name|localURI
 decl_stmt|;
 if|if
@@ -332,6 +336,9 @@ name|bridges
 operator|=
 operator|new
 name|ArrayList
+argument_list|<
+name|DemandForwardingBridge
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}

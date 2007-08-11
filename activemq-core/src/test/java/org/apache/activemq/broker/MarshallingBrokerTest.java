@@ -154,7 +154,7 @@ block|{
 name|wf1
 block|,
 name|wf2
-block|,}
+block|, }
 argument_list|)
 expr_stmt|;
 block|}

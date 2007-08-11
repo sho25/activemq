@@ -2455,7 +2455,7 @@ argument_list|)
 expr_stmt|;
 name|info
 operator|.
-name|setSubcriptionName
+name|setSubscriptionName
 argument_list|(
 name|subscriptionKey
 operator|.
@@ -3208,11 +3208,6 @@ literal|"Should not be called."
 argument_list|)
 throw|;
 block|}
-specifier|public
-name|void
-name|finished
-parameter_list|()
-block|{                 }
 specifier|public
 name|boolean
 name|hasSpace
