@@ -98,8 +98,6 @@ decl_stmt|;
 specifier|protected
 name|File
 name|propsConfigFile
-init|=
-literal|null
 decl_stmt|;
 specifier|protected
 name|String
@@ -116,8 +114,6 @@ decl_stmt|;
 specifier|protected
 name|String
 name|reportName
-init|=
-literal|null
 decl_stmt|;
 specifier|protected
 name|String

@@ -45,8 +45,6 @@ comment|// Receive a specific count of messages
 specifier|protected
 name|boolean
 name|durable
-init|=
-literal|false
 decl_stmt|;
 comment|// Consumer is a durable subscriber
 specifier|protected

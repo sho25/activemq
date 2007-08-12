@@ -72,7 +72,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A mutable version of {@link ServerStartupConfiguration}.  *  * @version $Rev: 233391 $ $Date: 2005-08-18 16:38:47 -0600 (Thu, 18 Aug 2005) $  */
+comment|/**  * A mutable version of {@link ServerStartupConfiguration}.  *   * @version $Rev: 233391 $ $Date: 2005-08-18 16:38:47 -0600 (Thu, 18 Aug 2005) $  */
 end_comment
 
 begin_class

@@ -192,7 +192,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -246,7 +246,7 @@ operator|)
 name|wireFormat
 return|;
 block|}
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(

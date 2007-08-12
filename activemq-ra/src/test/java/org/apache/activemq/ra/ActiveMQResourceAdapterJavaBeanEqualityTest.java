@@ -17,20 +17,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ra
-operator|.
-name|ActiveMQResourceAdapter
-import|;
-end_import
-
-begin_import
-import|import
 name|junit
 operator|.
 name|framework

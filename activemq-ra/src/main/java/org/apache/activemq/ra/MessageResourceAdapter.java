@@ -74,18 +74,16 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Knows how to connect to one ActiveMQ server. It can then activate endpoints  * and deliver messages to those end points using the connection configure in  * the resource adapter.<p/>Must override equals and hashCode (JCA spec 16.4)  *  * @org.apache.xbean.XBean element="resourceAdapter" rootElement="true"  * description="The JCA Resource Adaptor for ActiveMQ"  * @version $Revision$  */
+comment|/**  * Knows how to connect to one ActiveMQ server. It can then activate endpoints  * and deliver messages to those end points using the connection configure in  * the resource adapter.<p/>Must override equals and hashCode (JCA spec 16.4)  *   * @org.apache.xbean.XBean element="resourceAdapter" rootElement="true"  *                         description="The JCA Resource Adaptor for ActiveMQ"  * @version $Revision$  */
 end_comment
 
 begin_interface
-specifier|public
 interface|interface
 name|MessageResourceAdapter
 extends|extends
 name|ResourceAdapter
 block|{
 comment|/**      */
-specifier|public
 name|ActiveMQConnection
 name|makeConnection
 parameter_list|()
@@ -93,7 +91,6 @@ throws|throws
 name|JMSException
 function_decl|;
 comment|/**      */
-specifier|public
 name|ActiveMQConnection
 name|makeConnection
 parameter_list|(
@@ -104,7 +101,6 @@ throws|throws
 name|JMSException
 function_decl|;
 comment|/**      */
-specifier|public
 name|ActiveMQConnection
 name|makeConnection
 parameter_list|(
@@ -117,8 +113,7 @@ parameter_list|)
 throws|throws
 name|JMSException
 function_decl|;
-comment|/** 	 * @param activationSpec      */
-specifier|public
+comment|/**      * @param activationSpec      */
 name|ActiveMQConnection
 name|makeConnection
 parameter_list|(
@@ -128,26 +123,22 @@ parameter_list|)
 throws|throws
 name|JMSException
 function_decl|;
-comment|/** 	 * @return bootstrap context      */
-specifier|public
+comment|/**      * @return bootstrap context      */
 name|BootstrapContext
 name|getBootstrapContext
 parameter_list|()
 function_decl|;
 comment|/**      */
-specifier|public
 name|String
 name|getBrokerXmlConfig
 parameter_list|()
 function_decl|;
 comment|/**      * @return Returns the info.      */
-specifier|public
 name|ActiveMQConnectionRequestInfo
 name|getInfo
 parameter_list|()
 function_decl|;
 comment|/**      */
-specifier|public
 name|ActiveMQConnectionFactory
 name|getConnectionFactory
 parameter_list|()

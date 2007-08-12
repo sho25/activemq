@@ -16,11 +16,12 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A helper class used to provide access to the current active  * {@link InboundContext} instance being used to process a message  * in the current thread so that messages can be produced using the same  * session.  *  * @version $Revision$  */
+comment|/**  * A helper class used to provide access to the current active  * {@link InboundContext} instance being used to process a message in the  * current thread so that messages can be produced using the same session.  *   * @version $Revision$  */
 end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|InboundContextSupport
 block|{
@@ -31,7 +32,7 @@ name|ThreadLocal
 argument_list|<
 name|InboundContext
 argument_list|>
-name|threadLocal
+name|THREAD_LOCAL
 init|=
 operator|new
 name|ThreadLocal
@@ -40,7 +41,11 @@ name|InboundContext
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**      * Returns the current {@link InboundContext} used by the current thread which is processing a message.      * This allows us to access the current Session to send a message using the same underlying      * session to avoid unnecessary XA or to use regular JMS transactions while using message driven POJOs.      *      * @return      */
+specifier|private
+name|InboundContextSupport
+parameter_list|()
+block|{     }
+comment|/**      * Returns the current {@link InboundContext} used by the current thread      * which is processing a message. This allows us to access the current      * Session to send a message using the same underlying session to avoid      * unnecessary XA or to use regular JMS transactions while using message      * driven POJOs.      *       * @return      */
 specifier|public
 specifier|static
 name|InboundContext
@@ -48,13 +53,13 @@ name|getActiveSessionAndProducer
 parameter_list|()
 block|{
 return|return
-name|threadLocal
+name|THREAD_LOCAL
 operator|.
 name|get
 argument_list|()
 return|;
 block|}
-comment|/**      * Registers the session and producer which should be called before the      * {@link javax.resource.spi.endpoint.MessageEndpoint#beforeDelivery(java.lang.reflect.Method)}      * method is called.      *      * @param sessionAndProducer      */
+comment|/**      * Registers the session and producer which should be called before the      * {@link javax.resource.spi.endpoint.MessageEndpoint#beforeDelivery(java.lang.reflect.Method)}      * method is called.      *       * @param sessionAndProducer      */
 specifier|public
 specifier|static
 name|void
@@ -64,7 +69,7 @@ name|InboundContext
 name|sessionAndProducer
 parameter_list|)
 block|{
-name|threadLocal
+name|THREAD_LOCAL
 operator|.
 name|set
 argument_list|(
@@ -72,7 +77,7 @@ name|sessionAndProducer
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Unregisters the session and producer which should be called after the      * {@link javax.resource.spi.endpoint.MessageEndpoint#afterDelivery()}      * method is called.      *      * @param sessionAndProducer      */
+comment|/**      * Unregisters the session and producer which should be called after the      * {@link javax.resource.spi.endpoint.MessageEndpoint#afterDelivery()}      * method is called.      *       * @param sessionAndProducer      */
 specifier|public
 specifier|static
 name|void
@@ -82,7 +87,7 @@ name|InboundContext
 name|sessionAndProducer
 parameter_list|)
 block|{
-name|threadLocal
+name|THREAD_LOCAL
 operator|.
 name|set
 argument_list|(

@@ -105,12 +105,12 @@ name|String
 name|getDestination
 parameter_list|()
 function_decl|;
-comment|/** 	 */
+comment|/**      */
 name|int
 name|getMaxSessionsIntValue
 parameter_list|()
 function_decl|;
-comment|/**     *      */
+comment|/**      *      */
 name|int
 name|getAcknowledgeModeForSession
 parameter_list|()

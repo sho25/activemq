@@ -121,20 +121,6 @@ name|ActiveMQDestination
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ra
-operator|.
-name|ActiveMQActivationSpec
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version $Revision$  */
 end_comment
@@ -168,6 +154,14 @@ name|getName
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|static
+specifier|final
+name|String
+name|EMPTY_STRING
+init|=
+literal|"   "
+decl_stmt|;
+specifier|private
 name|ActiveMQActivationSpec
 name|activationSpec
 decl_stmt|;
@@ -194,14 +188,6 @@ decl_stmt|;
 specifier|private
 name|PropertyDescriptor
 name|subscriptionNameProperty
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|EMPTY_STRING
-init|=
-literal|"   "
 decl_stmt|;
 specifier|public
 name|ActiveMQActivationSpecTest
@@ -1462,6 +1448,9 @@ name|length
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|PropertyDescriptor
+argument_list|>
 name|expectedList
 init|=
 name|Arrays
@@ -1472,6 +1461,9 @@ name|expected
 argument_list|)
 decl_stmt|;
 name|List
+argument_list|<
+name|PropertyDescriptor
+argument_list|>
 name|actualList
 init|=
 name|Arrays

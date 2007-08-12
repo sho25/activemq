@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Allows us to switch between using a shared transaction context,  * or using a local transaction context.  *   * @version $Revision$  */
+comment|/**  * Allows us to switch between using a shared transaction context, or using a  * local transaction context.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -117,10 +117,9 @@ specifier|final
 name|TransactionContext
 name|sharedContext
 decl_stmt|;
+specifier|private
 name|boolean
 name|useSharedTxContext
-init|=
-literal|false
 decl_stmt|;
 specifier|public
 name|ManagedTransactionContext
@@ -170,6 +169,7 @@ operator|||
 name|isInXATransaction
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|JMSException
@@ -177,6 +177,7 @@ argument_list|(
 literal|"The resource is allready being used in transaction context."
 argument_list|)
 throw|;
+block|}
 name|useSharedTxContext
 operator|=
 name|enable
@@ -193,17 +194,21 @@ if|if
 condition|(
 name|useSharedTxContext
 condition|)
+block|{
 name|sharedContext
 operator|.
 name|begin
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 name|super
 operator|.
 name|begin
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -216,17 +221,21 @@ if|if
 condition|(
 name|useSharedTxContext
 condition|)
+block|{
 name|sharedContext
 operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 name|super
 operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -245,6 +254,7 @@ if|if
 condition|(
 name|useSharedTxContext
 condition|)
+block|{
 name|sharedContext
 operator|.
 name|commit
@@ -254,7 +264,9 @@ argument_list|,
 name|onePhase
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|super
 operator|.
 name|commit
@@ -264,6 +276,7 @@ argument_list|,
 name|onePhase
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -282,6 +295,7 @@ if|if
 condition|(
 name|useSharedTxContext
 condition|)
+block|{
 name|sharedContext
 operator|.
 name|end
@@ -291,7 +305,9 @@ argument_list|,
 name|flags
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|super
 operator|.
 name|end
@@ -301,6 +317,7 @@ argument_list|,
 name|flags
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -316,6 +333,7 @@ if|if
 condition|(
 name|useSharedTxContext
 condition|)
+block|{
 name|sharedContext
 operator|.
 name|forget
@@ -323,7 +341,9 @@ argument_list|(
 name|xid
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|super
 operator|.
 name|forget
@@ -331,6 +351,7 @@ argument_list|(
 name|xid
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|TransactionId
@@ -341,19 +362,23 @@ if|if
 condition|(
 name|useSharedTxContext
 condition|)
+block|{
 return|return
 name|sharedContext
 operator|.
 name|getTransactionId
 argument_list|()
 return|;
+block|}
 else|else
+block|{
 return|return
 name|super
 operator|.
 name|getTransactionId
 argument_list|()
 return|;
+block|}
 block|}
 specifier|public
 name|int
@@ -366,19 +391,23 @@ if|if
 condition|(
 name|useSharedTxContext
 condition|)
+block|{
 return|return
 name|sharedContext
 operator|.
 name|getTransactionTimeout
 argument_list|()
 return|;
+block|}
 else|else
+block|{
 return|return
 name|super
 operator|.
 name|getTransactionTimeout
 argument_list|()
 return|;
+block|}
 block|}
 specifier|public
 name|boolean
@@ -389,19 +418,23 @@ if|if
 condition|(
 name|useSharedTxContext
 condition|)
+block|{
 return|return
 name|sharedContext
 operator|.
 name|isInLocalTransaction
 argument_list|()
 return|;
+block|}
 else|else
+block|{
 return|return
 name|super
 operator|.
 name|isInLocalTransaction
 argument_list|()
 return|;
+block|}
 block|}
 specifier|public
 name|boolean
@@ -412,19 +445,23 @@ if|if
 condition|(
 name|useSharedTxContext
 condition|)
+block|{
 return|return
 name|sharedContext
 operator|.
 name|isInXATransaction
 argument_list|()
 return|;
+block|}
 else|else
+block|{
 return|return
 name|super
 operator|.
 name|isInXATransaction
 argument_list|()
 return|;
+block|}
 block|}
 specifier|public
 name|boolean
@@ -440,6 +477,7 @@ if|if
 condition|(
 name|useSharedTxContext
 condition|)
+block|{
 return|return
 name|sharedContext
 operator|.
@@ -448,7 +486,9 @@ argument_list|(
 name|xaResource
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 name|super
 operator|.
@@ -457,6 +497,7 @@ argument_list|(
 name|xaResource
 argument_list|)
 return|;
+block|}
 block|}
 specifier|public
 name|int
@@ -472,6 +513,7 @@ if|if
 condition|(
 name|useSharedTxContext
 condition|)
+block|{
 return|return
 name|sharedContext
 operator|.
@@ -480,7 +522,9 @@ argument_list|(
 name|xid
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 name|super
 operator|.
@@ -489,6 +533,7 @@ argument_list|(
 name|xid
 argument_list|)
 return|;
+block|}
 block|}
 specifier|public
 name|Xid
@@ -505,6 +550,7 @@ if|if
 condition|(
 name|useSharedTxContext
 condition|)
+block|{
 return|return
 name|sharedContext
 operator|.
@@ -513,7 +559,9 @@ argument_list|(
 name|flag
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 name|super
 operator|.
@@ -522,6 +570,7 @@ argument_list|(
 name|flag
 argument_list|)
 return|;
+block|}
 block|}
 specifier|public
 name|void
@@ -534,17 +583,21 @@ if|if
 condition|(
 name|useSharedTxContext
 condition|)
+block|{
 name|sharedContext
 operator|.
 name|rollback
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 name|super
 operator|.
 name|rollback
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -560,6 +613,7 @@ if|if
 condition|(
 name|useSharedTxContext
 condition|)
+block|{
 name|sharedContext
 operator|.
 name|rollback
@@ -567,7 +621,9 @@ argument_list|(
 name|xid
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|super
 operator|.
 name|rollback
@@ -575,6 +631,7 @@ argument_list|(
 name|xid
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|boolean
@@ -590,6 +647,7 @@ if|if
 condition|(
 name|useSharedTxContext
 condition|)
+block|{
 return|return
 name|sharedContext
 operator|.
@@ -598,7 +656,9 @@ argument_list|(
 name|seconds
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 name|super
 operator|.
@@ -607,6 +667,7 @@ argument_list|(
 name|seconds
 argument_list|)
 return|;
+block|}
 block|}
 specifier|public
 name|void
@@ -625,6 +686,7 @@ if|if
 condition|(
 name|useSharedTxContext
 condition|)
+block|{
 name|sharedContext
 operator|.
 name|start
@@ -634,7 +696,9 @@ argument_list|,
 name|flags
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|super
 operator|.
 name|start
@@ -644,6 +708,7 @@ argument_list|,
 name|flags
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -657,6 +722,7 @@ if|if
 condition|(
 name|useSharedTxContext
 condition|)
+block|{
 name|sharedContext
 operator|.
 name|addSynchronization
@@ -664,7 +730,9 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|super
 operator|.
 name|addSynchronization
@@ -672,6 +740,7 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

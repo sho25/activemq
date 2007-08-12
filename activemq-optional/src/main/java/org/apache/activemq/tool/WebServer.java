@@ -73,6 +73,7 @@ end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|WebServer
 block|{
@@ -84,7 +85,7 @@ name|PORT
 init|=
 literal|8080
 decl_stmt|;
-comment|//public static final String WEBAPP_DIR = "target/activemq";
+comment|// public static final String WEBAPP_DIR = "target/activemq";
 specifier|public
 specifier|static
 specifier|final
@@ -101,6 +102,10 @@ name|WEBAPP_CTX
 init|=
 literal|"/"
 decl_stmt|;
+specifier|private
+name|WebServer
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|void

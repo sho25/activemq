@@ -262,7 +262,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A HTTP {@link org.apache.activemq.transport.TransportChannel} which uses the<a  * href="http://jakarta.apache.org/commons/httpclient/">commons-httpclient</a>  * library  *   * @version $Revision$  */
+comment|/**  * A HTTP {@link org.apache.activemq.transport.TransportChannel} which uses the  *<a href="http://jakarta.apache.org/commons/httpclient/">commons-httpclient</a>  * library  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -272,21 +272,6 @@ name|HttpClientTransport
 extends|extends
 name|HttpTransportSupport
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|log
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|HttpClientTransport
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -298,8 +283,23 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
+name|Log
+name|LOG
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|HttpClientTransport
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
 name|IdGenerator
-name|clientIdGenerator
+name|CLIENT_ID_GENERATOR
 init|=
 operator|new
 name|IdGenerator
@@ -318,7 +318,7 @@ specifier|final
 name|String
 name|clientID
 init|=
-name|clientIdGenerator
+name|CLIENT_ID_GENERATOR
 operator|.
 name|generateId
 argument_list|()
@@ -482,7 +482,7 @@ name|answer
 argument_list|)
 throw|;
 block|}
-comment|//            checkSession(httpMethod);
+comment|// checkSession(httpMethod);
 block|}
 catch|catch
 parameter_list|(
@@ -540,7 +540,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -619,7 +619,7 @@ operator|.
 name|SC_REQUEST_TIMEOUT
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -674,7 +674,7 @@ block|}
 block|}
 else|else
 block|{
-comment|//                    checkSession(httpMethod);
+comment|// checkSession(httpMethod);
 name|DataInputStream
 name|stream
 init|=
@@ -708,7 +708,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -857,7 +857,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -1025,17 +1025,17 @@ operator|=
 name|trace
 expr_stmt|;
 block|}
-comment|//    protected void checkSession(HttpMethod client) {
-comment|//        Header header = client.getRequestHeader("Set-Cookie");
-comment|//        if (header != null) {
-comment|//            String set_cookie = header.getValue();
+comment|// protected void checkSession(HttpMethod client) {
+comment|// Header header = client.getRequestHeader("Set-Cookie");
+comment|// if (header != null) {
+comment|// String set_cookie = header.getValue();
 comment|//
-comment|//            if (set_cookie != null&& set_cookie.startsWith("JSESSIONID=")) {
-comment|//                String[] bits = set_cookie.split("[=;]");
-comment|//                sessionID = bits[1];
-comment|//            }
-comment|//        }
-comment|//    }
+comment|// if (set_cookie != null&& set_cookie.startsWith("JSESSIONID=")) {
+comment|// String[] bits = set_cookie.split("[=;]");
+comment|// sessionID = bits[1];
+comment|// }
+comment|// }
+comment|// }
 block|}
 end_class
 

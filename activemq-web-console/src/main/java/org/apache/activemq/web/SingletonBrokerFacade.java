@@ -25,7 +25,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|BrokerService
+name|BrokerRegistry
 import|;
 end_import
 
@@ -39,7 +39,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|BrokerRegistry
+name|BrokerService
 import|;
 end_import
 
@@ -93,9 +93,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"No BrokerService is registered with the BrokerRegistry."
-operator|+
-literal|" Are you sure there is a configured broker in the same ClassLoader?"
+literal|"No BrokerService is registered with the BrokerRegistry. Are you sure there is a configured broker in the same ClassLoader?"
 argument_list|)
 throw|;
 block|}

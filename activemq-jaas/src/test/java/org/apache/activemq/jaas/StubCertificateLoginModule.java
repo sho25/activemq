@@ -68,14 +68,10 @@ name|groupNames
 decl_stmt|;
 name|String
 name|lastUserName
-init|=
-literal|null
 decl_stmt|;
 name|X509Certificate
 index|[]
 name|lastCertChain
-init|=
-literal|null
 decl_stmt|;
 specifier|public
 name|StubCertificateLoginModule

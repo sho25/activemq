@@ -156,7 +156,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version $Revision: 383749 $  */
+comment|/**  * @version $Revision: 383749 $  */
 end_comment
 
 begin_class
@@ -254,13 +254,6 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|" *"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
 literal|" * Licensed to the Apache Software Foundation (ASF) under one or more"
 argument_list|)
 expr_stmt|;
@@ -310,7 +303,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|" * http://www.apache.org/licenses/LICENSE-2.0"
+literal|" *      http://www.apache.org/licenses/LICENSE-2.0"
 argument_list|)
 expr_stmt|;
 name|out
@@ -684,6 +677,7 @@ name|getSuperclass
 argument_list|()
 argument_list|)
 condition|)
+block|{
 name|rc
 operator|.
 name|put
@@ -693,6 +687,7 @@ argument_list|,
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// now lets add the rest
 for|for
@@ -733,6 +728,7 @@ argument_list|(
 name|c
 argument_list|)
 condition|)
+block|{
 name|rc
 operator|.
 name|put
@@ -742,6 +738,7 @@ argument_list|,
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 operator|new
@@ -925,16 +922,7 @@ argument_list|(
 literal|"openwire:property"
 argument_list|)
 decl_stmt|;
-name|JAnnotationValue
-name|size
-init|=
-name|annotation
-operator|.
-name|getValue
-argument_list|(
-literal|"size"
-argument_list|)
-decl_stmt|;
+comment|//            JAnnotationValue size = annotation.getValue("size");
 name|String
 name|name
 init|=
@@ -946,14 +934,7 @@ name|getSimpleName
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|boolean
-name|cached
-init|=
-name|isCachedProperty
-argument_list|(
-name|property
-argument_list|)
-decl_stmt|;
+comment|//            boolean cached = isCachedProperty(property);
 name|String
 name|type
 init|=
@@ -1622,7 +1603,8 @@ operator|+
 literal|" {"
 argument_list|)
 expr_stmt|;
-comment|// This recusivly generates the field definitions of the class and it's supper classes.
+comment|// This recusivly generates the field definitions of the class and it's
+comment|// supper classes.
 name|generateFields
 argument_list|(
 name|out

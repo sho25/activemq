@@ -297,10 +297,9 @@ specifier|final
 name|ActiveMQSession
 name|session
 decl_stmt|;
+specifier|private
 name|boolean
 name|closed
-init|=
-literal|false
 decl_stmt|;
 specifier|public
 name|ManagedSessionProxy
@@ -365,7 +364,7 @@ name|cleanup
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Called by the ActiveMQManagedConnection to invalidate this proxy.      * @throws JMSException       *       * @throws JMSException      */
+comment|/**      * Called by the ActiveMQManagedConnection to invalidate this proxy.      *       * @throws JMSException      * @throws JMSException      */
 specifier|public
 name|void
 name|cleanup
@@ -533,7 +532,7 @@ name|messageSelector
 argument_list|)
 return|;
 block|}
-comment|/**      * @param destination      * @param messageSelector      * @param NoLocal      * @return      * @throws JMSException      */
+comment|/**      * @param destination      * @param messageSelector      * @param noLocal      * @return      * @throws JMSException      */
 specifier|public
 name|MessageConsumer
 name|createConsumer
@@ -545,7 +544,7 @@ name|String
 name|messageSelector
 parameter_list|,
 name|boolean
-name|NoLocal
+name|noLocal
 parameter_list|)
 throws|throws
 name|JMSException
@@ -560,7 +559,7 @@ name|destination
 argument_list|,
 name|messageSelector
 argument_list|,
-name|NoLocal
+name|noLocal
 argument_list|)
 return|;
 block|}

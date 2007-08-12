@@ -275,7 +275,8 @@ argument_list|(
 name|destination
 argument_list|)
 decl_stmt|;
-comment|// lets clear the transformer on this consumer so we see the message as it really is
+comment|// lets clear the transformer on this consumer so we see the message as
+comment|// it really is
 operator|(
 operator|(
 name|ActiveMQMessageConsumer
@@ -596,7 +597,8 @@ argument_list|(
 name|destination
 argument_list|)
 decl_stmt|;
-comment|// lets clear the transformer on this consumer so we see the message as it really is
+comment|// lets clear the transformer on this consumer so we see the message as
+comment|// it really is
 operator|(
 operator|(
 name|ActiveMQMessageConsumer
@@ -906,7 +908,8 @@ argument_list|(
 name|destination
 argument_list|)
 decl_stmt|;
-comment|// lets clear the transformer on this consumer so we see the message as it really is
+comment|// lets clear the transformer on this consumer so we see the message as
+comment|// it really is
 operator|(
 operator|(
 name|ActiveMQMessageConsumer

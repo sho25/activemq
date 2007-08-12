@@ -158,7 +158,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple implementation of a ConnectionManager that can be extended so that it can  * see how the RA connections are interacting with it.  *    * @version $Revision$  */
+comment|/**  * A simple implementation of a ConnectionManager that can be extended so that  * it can see how the RA connections are interacting with it.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -182,7 +182,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -194,20 +194,32 @@ name|class
 argument_list|)
 decl_stmt|;
 name|ArrayList
+argument_list|<
+name|ConnectionEventListener
+argument_list|>
 name|listners
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|ConnectionEventListener
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|ArrayList
+argument_list|<
+name|ManagedConnection
+argument_list|>
 name|connections
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|ManagedConnection
+argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**      * Adds a listner to all connections created by this connection manager.      * This listner will be added to all previously created connections.       *       * @param l      */
+comment|/**      * Adds a listener to all connections created by this connection manager.      * This listener will be added to all previously created connections.      *       * @param l      */
 specifier|public
 name|void
 name|addConnectionEventListener
@@ -219,6 +231,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|ManagedConnection
+argument_list|>
 name|iter
 init|=
 name|connections
@@ -236,9 +251,6 @@ block|{
 name|ManagedConnection
 name|c
 init|=
-operator|(
-name|ManagedConnection
-operator|)
 name|iter
 operator|.
 name|next
@@ -260,7 +272,7 @@ name|l
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @see javax.resource.spi.ConnectionManager#allocateConnection(javax.resource.spi.ManagedConnectionFactory, javax.resource.spi.ConnectionRequestInfo)      */
+comment|/**      * @see javax.resource.spi.ConnectionManager#allocateConnection(javax.resource.spi.ManagedConnectionFactory,      *      javax.resource.spi.ConnectionRequestInfo)      */
 specifier|public
 name|Object
 name|allocateConnection
@@ -301,6 +313,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|ConnectionEventListener
+argument_list|>
 name|iter
 init|=
 name|listners
@@ -318,9 +333,6 @@ block|{
 name|ConnectionEventListener
 name|l
 init|=
-operator|(
-name|ConnectionEventListener
-operator|)
 name|iter
 operator|.
 name|next
@@ -393,7 +405,7 @@ name|ResourceException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -425,7 +437,7 @@ name|ResourceException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -472,7 +484,7 @@ name|ConnectionEvent
 name|event
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -506,7 +518,7 @@ name|ResourceException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -538,7 +550,7 @@ name|ResourceException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(

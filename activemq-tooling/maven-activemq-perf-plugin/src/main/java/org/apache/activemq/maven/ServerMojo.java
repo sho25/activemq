@@ -17,48 +17,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|console
-operator|.
-name|Main
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|maven
-operator|.
-name|plugin
-operator|.
-name|AbstractMojo
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|maven
-operator|.
-name|plugin
-operator|.
-name|MojoExecutionException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -119,8 +77,50 @@ name|FileChannel
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|console
+operator|.
+name|Main
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|maven
+operator|.
+name|plugin
+operator|.
+name|AbstractMojo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|maven
+operator|.
+name|plugin
+operator|.
+name|MojoExecutionException
+import|;
+end_import
+
 begin_comment
-comment|/**  * Goal which starts activemq broker.  *  * @goal broker  * @phase process-sources  */
+comment|/**  * Goal which starts activemq broker.  *   * @goal broker  * @phase process-sources  */
 end_comment
 
 begin_class
@@ -130,27 +130,27 @@ name|ServerMojo
 extends|extends
 name|AbstractMojo
 block|{
-comment|/**      * Location of the output directory. Defaults to target.      *      * @parameter expression="${project.build.directory}"      * @required      */
+comment|/**      * Location of the output directory. Defaults to target.      *       * @parameter expression="${project.build.directory}"      * @required      */
 specifier|private
 name|File
 name|outputDirectory
 decl_stmt|;
-comment|/**      * Location of the predefined config files.      *      * @parameter expression="${configDirectory}" default-value="${basedir}/src/main/resources/broker-conf"      * @required      */
+comment|/**      * Location of the predefined config files.      *       * @parameter expression="${configDirectory}"      *            default-value="${basedir}/src/main/resources/broker-conf"      * @required      */
 specifier|private
 name|String
 name|configDirectory
 decl_stmt|;
-comment|/**      * Type of activemq configuration to use. This is also the filename used.      *      * @parameter expression="${configType}" default-value="activemq"      * @required      */
+comment|/**      * Type of activemq configuration to use. This is also the filename used.      *       * @parameter expression="${configType}" default-value="activemq"      * @required      */
 specifier|private
 name|String
 name|configType
 decl_stmt|;
-comment|/**      * Location of activemq config file other those found in resources/config.      *      * @parameter expression="${configFile}"      */
+comment|/**      * Location of activemq config file other those found in resources/config.      *       * @parameter expression="${configFile}"      */
 specifier|private
 name|File
 name|configFile
 decl_stmt|;
-comment|/**      * Broker URL.      *      * @parameter expression="${url}"      */
+comment|/**      * Broker URL.      *       * @parameter expression="${url}"      */
 specifier|private
 name|String
 name|url
@@ -311,7 +311,7 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Copy activemq configuration file to output directory.      *      * @param source      * @return      * @throws IOException      */
+comment|/**      * Copy activemq configuration file to output directory.      *       * @param source      * @return      * @throws IOException      */
 specifier|public
 name|File
 name|copy
@@ -326,7 +326,8 @@ name|FileChannel
 name|in
 init|=
 literal|null
-decl_stmt|,
+decl_stmt|;
+name|FileChannel
 name|out
 init|=
 literal|null
@@ -415,22 +416,26 @@ name|in
 operator|!=
 literal|null
 condition|)
+block|{
 name|in
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|out
 operator|!=
 literal|null
 condition|)
+block|{
 name|out
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 return|return
 name|dest

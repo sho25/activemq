@@ -143,8 +143,6 @@ decl_stmt|;
 specifier|private
 name|long
 name|sleepTime
-init|=
-literal|0L
 decl_stmt|;
 specifier|private
 name|boolean
@@ -195,20 +193,14 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|topic
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
 name|transacted
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
 name|persistent
-init|=
-literal|false
 decl_stmt|;
 specifier|public
 specifier|static
@@ -493,6 +485,7 @@ name|timeToLive
 operator|!=
 literal|0
 condition|)
+block|{
 name|producer
 operator|.
 name|setTimeToLive
@@ -500,6 +493,7 @@ argument_list|(
 name|timeToLive
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Start sending messages
 name|sendLoop
 argument_list|(
@@ -517,7 +511,8 @@ argument_list|(
 literal|"Done."
 argument_list|)
 expr_stmt|;
-comment|// Use the ActiveMQConnection interface to dump the connection stats.
+comment|// Use the ActiveMQConnection interface to dump the connection
+comment|// stats.
 name|ActiveMQConnection
 name|c
 init|=
@@ -577,7 +572,7 @@ parameter_list|(
 name|Throwable
 name|ignore
 parameter_list|)
-block|{ 			}
+block|{             }
 block|}
 block|}
 specifier|protected

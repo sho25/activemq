@@ -98,13 +98,11 @@ name|sendType
 init|=
 name|TIME_BASED_SENDING
 decl_stmt|;
+comment|// If true, create a different message on each send, otherwise reuse.
 specifier|protected
 name|boolean
 name|createNewMsg
-init|=
-literal|false
 decl_stmt|;
-comment|// If true, create a different message on each send, otherwise reuse.
 specifier|public
 name|String
 name|getDeliveryMode

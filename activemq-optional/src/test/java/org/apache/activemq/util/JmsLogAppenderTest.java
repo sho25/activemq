@@ -17,16 +17,6 @@ end_package
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -47,37 +37,61 @@ end_import
 
 begin_import
 import|import
-name|org
+name|javax
 operator|.
-name|apache
+name|jms
 operator|.
-name|log4j
-operator|.
-name|Logger
+name|Connection
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|javax
 operator|.
-name|apache
+name|jms
 operator|.
-name|log4j
-operator|.
-name|PropertyConfigurator
+name|JMSException
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|javax
 operator|.
-name|apache
+name|jms
 operator|.
-name|log4j
+name|MessageConsumer
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
 operator|.
-name|Level
+name|jms
+operator|.
+name|Session
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|TextMessage
+import|;
+end_import
+
+begin_import
+import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|TestCase
 import|;
 end_import
 
@@ -123,51 +137,37 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jms
+name|apache
 operator|.
-name|JMSException
+name|log4j
+operator|.
+name|Level
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jms
+name|apache
 operator|.
-name|Connection
+name|log4j
+operator|.
+name|Logger
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jms
+name|apache
 operator|.
-name|MessageConsumer
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
+name|log4j
 operator|.
-name|jms
-operator|.
-name|Session
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|TextMessage
+name|PropertyConfigurator
 import|;
 end_import
 
@@ -194,9 +194,11 @@ block|{
 comment|// Setup the consumers
 name|MessageConsumer
 name|info
-decl_stmt|,
+decl_stmt|;
+name|MessageConsumer
 name|debug
-decl_stmt|,
+decl_stmt|;
+name|MessageConsumer
 name|warn
 decl_stmt|;
 name|ActiveMQConnectionFactory
@@ -317,9 +319,11 @@ argument_list|)
 expr_stmt|;
 name|Logger
 name|warnLog
-decl_stmt|,
+decl_stmt|;
+name|Logger
 name|infoLog
-decl_stmt|,
+decl_stmt|;
+name|Logger
 name|debugLog
 decl_stmt|;
 name|warnLog
@@ -487,7 +491,8 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
-comment|// We should not receive anymore message because our level is warning only
+comment|// We should not receive anymore message because our
+comment|// level is warning only
 comment|// Test info level
 name|msg
 operator|=

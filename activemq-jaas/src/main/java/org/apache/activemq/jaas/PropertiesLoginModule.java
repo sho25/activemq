@@ -39,6 +39,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|Principal
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Enumeration
@@ -177,7 +187,7 @@ name|auth
 operator|.
 name|login
 operator|.
-name|LoginException
+name|FailedLoginException
 import|;
 end_import
 
@@ -191,7 +201,7 @@ name|auth
 operator|.
 name|login
 operator|.
-name|FailedLoginException
+name|LoginException
 import|;
 end_import
 
@@ -268,7 +278,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -321,10 +331,16 @@ name|user
 decl_stmt|;
 specifier|private
 name|Set
+argument_list|<
+name|Principal
+argument_list|>
 name|principals
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|Principal
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -450,7 +466,7 @@ condition|(
 name|debug
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -715,6 +731,7 @@ name|tmpPassword
 operator|==
 literal|null
 condition|)
+block|{
 name|tmpPassword
 operator|=
 operator|new
@@ -723,6 +740,7 @@ index|[
 literal|0
 index|]
 expr_stmt|;
+block|}
 name|String
 name|password
 init|=
@@ -739,6 +757,7 @@ name|password
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|FailedLoginException
@@ -746,6 +765,7 @@ argument_list|(
 literal|"User does exist"
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 operator|!
@@ -760,6 +780,7 @@ name|tmpPassword
 argument_list|)
 argument_list|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|FailedLoginException
@@ -767,6 +788,7 @@ argument_list|(
 literal|"Password does not match"
 argument_list|)
 throw|;
+block|}
 name|users
 operator|.
 name|clear
@@ -777,7 +799,7 @@ condition|(
 name|debug
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -923,7 +945,7 @@ condition|(
 name|debug
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -950,7 +972,7 @@ condition|(
 name|debug
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -989,7 +1011,7 @@ condition|(
 name|debug
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(

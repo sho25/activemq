@@ -34,7 +34,6 @@ specifier|public
 interface|interface
 name|ReportPlugin
 block|{
-specifier|public
 name|void
 name|handleCsvData
 parameter_list|(
@@ -42,7 +41,6 @@ name|String
 name|csvData
 parameter_list|)
 function_decl|;
-specifier|public
 name|Map
 name|getSummary
 parameter_list|()

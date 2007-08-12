@@ -19,6 +19,76 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|PrintWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Comparator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|codehaus
@@ -65,28 +135,8 @@ name|JProperty
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|*
-import|;
-end_import
-
 begin_comment
-comment|/**  *  * @version $Revision: 384390 $  */
+comment|/**  * @version $Revision: 384390 $  */
 end_comment
 
 begin_class
@@ -139,9 +189,9 @@ name|run
 argument_list|()
 return|;
 block|}
-comment|//////////////////////////////////////////////////////////////////////////////////////
+comment|// ////////////////////////////////////////////////////////////////////////////////////
 comment|// This section is for the tight wire format encoding generator
-comment|//////////////////////////////////////////////////////////////////////////////////////
+comment|// ////////////////////////////////////////////////////////////////////////////////////
 specifier|protected
 name|void
 name|generateTightUnmarshalBodyForProperty
@@ -1544,9 +1594,9 @@ block|}
 block|}
 block|}
 block|}
-comment|//////////////////////////////////////////////////////////////////////////////////////
+comment|// ////////////////////////////////////////////////////////////////////////////////////
 comment|// This section is for the loose wire format encoding generator
-comment|//////////////////////////////////////////////////////////////////////////////////////
+comment|// ////////////////////////////////////////////////////////////////////////////////////
 specifier|protected
 name|void
 name|generateLooseUnmarshalBodyForProperty
@@ -2596,7 +2646,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"/*"
+literal|"/**"
 argument_list|)
 expr_stmt|;
 name|out
@@ -2652,7 +2702,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|" * http://www.apache.org/licenses/LICENSE-2.0"
+literal|" *      http://www.apache.org/licenses/LICENSE-2.0"
 argument_list|)
 expr_stmt|;
 name|out
@@ -3012,7 +3062,7 @@ literal|"    }"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*  * Generate the tight encoding marshallers  */
+comment|/*          * Generate the tight encoding marshallers          */
 name|out
 operator|.
 name|println
@@ -3892,21 +3942,21 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"	///<summary>"
+literal|"    ///<summary>"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"	/// Used to create marshallers for a specific version of the wire protocol"
+literal|"    /// Used to create marshallers for a specific version of the wire protocol"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"	///</summary>"
+literal|"    ///</summary>"
 argument_list|)
 expr_stmt|;
 name|out
@@ -4063,7 +4113,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"    	}"
+literal|"        }"
 argument_list|)
 expr_stmt|;
 name|out

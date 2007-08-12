@@ -35,6 +35,10 @@ name|Consumer
 argument_list|()
 decl_stmt|;
 specifier|public
+name|ProducerConsumer
+parameter_list|()
+block|{     }
+specifier|public
 specifier|static
 name|void
 name|main
@@ -196,10 +200,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-specifier|public
-name|ProducerConsumer
-parameter_list|()
-block|{     }
 specifier|public
 name|void
 name|run

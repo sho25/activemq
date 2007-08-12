@@ -59,6 +59,7 @@ name|name
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -66,6 +67,7 @@ argument_list|(
 literal|"name cannot be null"
 argument_list|)
 throw|;
+block|}
 name|this
 operator|.
 name|name
@@ -96,9 +98,11 @@ name|this
 operator|==
 name|o
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|o
@@ -113,9 +117,11 @@ operator|.
 name|getClass
 argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 specifier|final
 name|UserPrincipal
 name|that
@@ -137,9 +143,11 @@ operator|.
 name|name
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 return|return
 literal|true
 return|;

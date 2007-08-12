@@ -19,6 +19,92 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|reflect
+operator|.
+name|Constructor
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|reflect
+operator|.
+name|InvocationTargetException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|reflect
+operator|.
+name|Method
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Properties
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|StringTokenizer
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -45,92 +131,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|StringTokenizer
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Properties
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|reflect
-operator|.
-name|Method
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|reflect
-operator|.
-name|InvocationTargetException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|reflect
-operator|.
-name|Constructor
-import|;
-end_import
-
 begin_class
 specifier|public
 specifier|final
@@ -141,7 +141,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -223,7 +223,8 @@ operator|.
 name|countTokens
 argument_list|()
 decl_stmt|;
-comment|// For nested settings, get the object first. -1, do not count the last token
+comment|// For nested settings, get the object first. -1, do not count the
+comment|// last token
 for|for
 control|(
 name|int
@@ -277,10 +278,14 @@ return|return;
 block|}
 else|else
 block|{
-comment|// This will reduce the key, so that it will be recognize by the next object. i.e.
+comment|// This will reduce the key, so that it will be recognize by
+comment|// the next object. i.e.
 comment|// Property name: factory.prefetchPolicy.queuePrefetch
-comment|// Calling order: this.getFactory().prefetchPolicy().queuePrefetch();
-comment|// If factory does not accept the config, it should be given prefetchPolicy.queuePrefetch as the key
+comment|// Calling order:
+comment|// this.getFactory().prefetchPolicy().queuePrefetch();
+comment|// If factory does not accept the config, it should be given
+comment|// prefetchPolicy.queuePrefetch as the key
+comment|// +1 to account for the '.'
 name|keySubString
 operator|=
 name|keySubString
@@ -295,7 +300,6 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
-comment|// +1 to account for the '.'
 block|}
 name|String
 name|getMethod
@@ -356,13 +360,11 @@ argument_list|()
 expr_stmt|;
 name|debugInfo
 operator|+=
-operator|(
 literal|"."
 operator|+
 name|getMethod
 operator|+
 literal|"()"
-operator|)
 expr_stmt|;
 block|}
 comment|// Property name
@@ -410,7 +412,8 @@ argument_list|,
 name|property
 argument_list|)
 decl_stmt|;
-comment|// Get the first parameter type. This assumes that there is only one parameter.
+comment|// Get the first parameter type. This assumes that there is only one
+comment|// parameter.
 if|if
 condition|(
 name|setterMethod
@@ -442,7 +445,6 @@ decl_stmt|;
 comment|// Set primitive type
 name|debugInfo
 operator|+=
-operator|(
 literal|"."
 operator|+
 name|setterMethod
@@ -459,7 +461,6 @@ operator|+
 name|val
 operator|+
 literal|")"
-operator|)
 expr_stmt|;
 if|if
 condition|(
@@ -739,7 +740,8 @@ name|val
 block|}
 argument_list|)
 expr_stmt|;
-comment|// For unknown object type, try to create an instance of the object using a String constructor
+comment|// For unknown object type, try to create an instance of the
+comment|// object using a String constructor
 block|}
 else|else
 block|{
@@ -791,7 +793,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -805,7 +807,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -885,7 +887,8 @@ name|Throwable
 name|t
 parameter_list|)
 block|{
-comment|// Let's catch any exception as this could be cause by the foreign class
+comment|// Let's catch any exception as this could be cause by the
+comment|// foreign class
 name|t
 operator|.
 name|printStackTrace
@@ -936,7 +939,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1057,7 +1060,8 @@ operator|.
 name|class
 condition|)
 block|{
-comment|// Check for an appropriate setter method to consider it as a property
+comment|// Check for an appropriate setter method to consider it
+comment|// as a property
 if|if
 condition|(
 name|findSetterMethod
@@ -1210,7 +1214,8 @@ name|Throwable
 name|t
 parameter_list|)
 block|{
-comment|// Let's catch any exception, cause this could be cause by the foreign class
+comment|// Let's catch any exception, cause this could be cause by
+comment|// the foreign class
 name|t
 operator|.
 name|printStackTrace
@@ -1557,7 +1562,6 @@ comment|// Method must not belong to the Object class to prevent infinite loop
 return|return
 operator|(
 operator|(
-operator|(
 name|method
 operator|.
 name|getName
@@ -1619,7 +1623,6 @@ operator|!=
 name|Object
 operator|.
 name|class
-operator|)
 return|;
 block|}
 specifier|private
@@ -1673,7 +1676,8 @@ operator|==
 literal|1
 condition|)
 block|{
-comment|// Check if parameter is a primitive or can accept a String parameter
+comment|// Check if parameter is a primitive or can accept a String
+comment|// parameter
 if|if
 condition|(
 name|paramType

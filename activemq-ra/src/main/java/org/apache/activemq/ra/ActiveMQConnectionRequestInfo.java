@@ -17,6 +17,40 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|resource
+operator|.
+name|spi
+operator|.
+name|ConnectionRequestInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|ActiveMQConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -39,42 +73,8 @@ name|RedeliveryPolicy
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|resource
-operator|.
-name|spi
-operator|.
-name|ConnectionRequestInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|Serializable
-import|;
-end_import
-
 begin_comment
-comment|/**  * @version $Revision$  *   * Must override equals and hashCode (JCA spec 16.4)  */
+comment|/**  * @version $Revision$ Must override equals and hashCode (JCA spec 16.4)  */
 end_comment
 
 begin_class
@@ -181,7 +181,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Returns true if this object will configure an ActiveMQConnectionFactory in any way      */
+comment|/**      * Returns true if this object will configure an ActiveMQConnectionFactory      * in any way      */
 specifier|public
 name|boolean
 name|isConnectionFactoryConfigured
@@ -451,7 +451,7 @@ return|return
 name|serverUrl
 return|;
 block|}
-comment|/**      * @param url      *            The url to set.      */
+comment|/**      * @param url The url to set.      */
 specifier|public
 name|void
 name|setServerUrl
@@ -477,7 +477,7 @@ return|return
 name|password
 return|;
 block|}
-comment|/**      * @param password      *            The password to set.      */
+comment|/**      * @param password The password to set.      */
 specifier|public
 name|void
 name|setPassword
@@ -503,7 +503,7 @@ return|return
 name|userName
 return|;
 block|}
-comment|/**      * @param userid      *            The userid to set.      */
+comment|/**      * @param userid The userid to set.      */
 specifier|public
 name|void
 name|setUserName
@@ -529,7 +529,7 @@ return|return
 name|clientid
 return|;
 block|}
-comment|/**      * @param clientid      *            The clientid to set.      */
+comment|/**      * @param clientid The clientid to set.      */
 specifier|public
 name|void
 name|setClientid
@@ -1092,7 +1092,7 @@ return|return
 name|redeliveryPolicy
 return|;
 block|}
-comment|/**      * Returns the prefetch policy; not using bean properties to avoid      * breaking compatibility with JCA configuration in J2EE      */
+comment|/**      * Returns the prefetch policy; not using bean properties to avoid breaking      * compatibility with JCA configuration in J2EE      */
 specifier|public
 name|ActiveMQPrefetchPolicy
 name|prefetchPolicy

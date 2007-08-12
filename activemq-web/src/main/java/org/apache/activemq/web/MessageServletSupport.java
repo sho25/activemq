@@ -17,71 +17,51 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|io
 operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQDestination
+name|BufferedReader
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|io
 operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQQueue
+name|IOException
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQTopic
+name|HashMap
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
+name|Iterator
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|Map
 import|;
 end_import
 
@@ -161,56 +141,76 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|io
+name|apache
 operator|.
-name|BufferedReader
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQDestination
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|io
+name|apache
 operator|.
-name|IOException
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQQueue
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|HashMap
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQTopic
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|Iterator
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|Map
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
 begin_comment
-comment|/**  * A useful base class for any JMS related servlet;  * there are various ways to map JMS operations to web requests  * so we put most of the common behaviour in a reusable base class.  *  * This servlet can be configured with the following init paramters<dl>  *<dt>topic</dt><dd>Set to 'true' if the servle should default to using topics rather than channels</dd>  *<dt>destination</dt><dd>The default destination to use if one is not specifiied</dd>  *<dt></dt><dd></dd>  *</dl>  * @version $Revision: 1.1.1.1 $  */
+comment|/**  * A useful base class for any JMS related servlet; there are various ways to  * map JMS operations to web requests so we put most of the common behaviour in  * a reusable base class. This servlet can be configured with the following init  * paramters  *<dl>  *<dt>topic</dt>  *<dd>Set to 'true' if the servle should default to using topics rather than  * channels</dd>  *<dt>destination</dt>  *<dd>The default destination to use if one is not specifiied</dd>  *<dt></dt>  *<dd></dd>  *</dl>  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -226,7 +226,7 @@ specifier|static
 specifier|final
 specifier|transient
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -280,8 +280,6 @@ decl_stmt|;
 specifier|private
 name|long
 name|defaultMessageTimeToLive
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|String
@@ -340,13 +338,13 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -760,7 +758,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -785,18 +783,19 @@ name|value
 operator|=
 literal|null
 expr_stmt|;
+name|int
+name|size
+init|=
+name|array
+operator|.
+name|length
+decl_stmt|;
 for|for
 control|(
 name|int
 name|i
 init|=
 literal|0
-init|,
-name|size
-init|=
-name|array
-operator|.
-name|length
 init|;
 name|i
 operator|<
@@ -806,7 +805,7 @@ name|i
 operator|++
 control|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -942,8 +941,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-if|if
-condition|(
+return|return
 name|text
 operator|.
 name|trim
@@ -953,18 +951,7 @@ name|equalsIgnoreCase
 argument_list|(
 literal|"persistent"
 argument_list|)
-condition|)
-block|{
-return|return
-literal|true
 return|;
-block|}
-else|else
-block|{
-return|return
-literal|false
-return|;
-block|}
 block|}
 return|return
 name|defaultMessagePersistent
@@ -1358,7 +1345,7 @@ name|destinationName
 argument_list|)
 return|;
 block|}
-comment|/**      * @return the destination to use for the current request using the relative URI from      *         where this servlet was invoked as the destination name      */
+comment|/**      * @return the destination to use for the current request using the relative      *         URI from where this servlet was invoked as the destination name      */
 specifier|protected
 name|Destination
 name|getDestinationFromURI
@@ -1386,9 +1373,11 @@ name|uri
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 comment|// replace URI separator with JMS destination separator
 if|if
 condition|(
@@ -1418,9 +1407,11 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 name|uri
 operator|=
@@ -1474,7 +1465,7 @@ name|JMSException
 block|{
 comment|// TODO cache destinations ???
 name|boolean
-name|is_topic
+name|isTopic
 init|=
 name|defaultTopicFlag
 decl_stmt|;
@@ -1488,7 +1479,7 @@ literal|"topic://"
 argument_list|)
 condition|)
 block|{
-name|is_topic
+name|isTopic
 operator|=
 literal|true
 expr_stmt|;
@@ -1513,7 +1504,7 @@ literal|"channel://"
 argument_list|)
 condition|)
 block|{
-name|is_topic
+name|isTopic
 operator|=
 literal|false
 expr_stmt|;
@@ -1528,13 +1519,15 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
-name|is_topic
+block|{
+name|isTopic
 operator|=
 name|isTopic
 argument_list|(
 name|request
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|destinationOptions
@@ -1551,7 +1544,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|is_topic
+name|isTopic
 condition|)
 block|{
 return|return
@@ -1581,7 +1574,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * @return true if the current request is for a topic destination, else false if its for a queue      */
+comment|/**      * @return true if the current request is for a topic destination, else      *         false if its for a queue      */
 specifier|protected
 name|boolean
 name|isTopic

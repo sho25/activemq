@@ -254,7 +254,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -281,7 +281,7 @@ specifier|private
 name|String
 name|clientID
 decl_stmt|;
-comment|//    private String sessionID;
+comment|// private String sessionID;
 specifier|public
 name|HttpTransport
 parameter_list|(
@@ -470,7 +470,7 @@ name|answer
 argument_list|)
 throw|;
 block|}
-comment|//            checkSession(connection);
+comment|// checkSession(connection);
 block|}
 catch|catch
 parameter_list|(
@@ -501,7 +501,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -557,7 +557,7 @@ operator|.
 name|HTTP_CLIENT_TIMEOUT
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -567,7 +567,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -584,7 +584,7 @@ block|}
 block|}
 else|else
 block|{
-comment|//                    checkSession(connection);
+comment|// checkSession(connection);
 comment|// Create a String for the UTF content
 name|InputStream
 name|is
@@ -692,7 +692,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -725,7 +725,7 @@ name|isStopped
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -743,7 +743,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -873,15 +873,15 @@ return|return
 name|conn
 return|;
 block|}
-comment|//    protected void checkSession(HttpURLConnection connection)
-comment|//    {
-comment|//        String set_cookie=connection.getHeaderField("Set-Cookie");
-comment|//        if (set_cookie!=null&& set_cookie.startsWith("JSESSIONID="))
-comment|//        {
-comment|//            String[] bits=set_cookie.split("[=;]");
-comment|//            sessionID=bits[1];
-comment|//        }
-comment|//    }
+comment|// protected void checkSession(HttpURLConnection connection)
+comment|// {
+comment|// String set_cookie=connection.getHeaderField("Set-Cookie");
+comment|// if (set_cookie!=null&& set_cookie.startsWith("JSESSIONID="))
+comment|// {
+comment|// String[] bits=set_cookie.split("[=;]");
+comment|// sessionID=bits[1];
+comment|// }
+comment|// }
 specifier|protected
 name|void
 name|configureConnection
@@ -890,10 +890,10 @@ name|HttpURLConnection
 name|connection
 parameter_list|)
 block|{
-comment|//        if (sessionID !=null) {
-comment|//            connection.addRequestProperty("Cookie", "JSESSIONID="+sessionID);
-comment|//        }
-comment|//        else
+comment|// if (sessionID !=null) {
+comment|// connection.addRequestProperty("Cookie", "JSESSIONID="+sessionID);
+comment|// }
+comment|// else
 if|if
 condition|(
 name|clientID
@@ -998,7 +998,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Don't start the background thread until the clientId has been established.
+comment|// Don't start the background thread until the clientId has been
+comment|// established.
 if|if
 condition|(
 name|clientID
@@ -1074,7 +1075,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param connection TODO      *       */
+comment|/**      * @param connection TODO      */
 specifier|private
 name|void
 name|safeClose

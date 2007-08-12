@@ -106,7 +106,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version $Revision: 384826 $  */
+comment|/**  * @version $Revision: 384826 $  */
 end_comment
 
 begin_class
@@ -272,10 +272,12 @@ name|getSuperclass
 argument_list|()
 argument_list|)
 condition|)
+block|{
 name|answer
 operator|+=
 literal|"Support"
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
@@ -913,14 +915,7 @@ operator|.
 name|getSimpleName
 argument_list|()
 decl_stmt|;
-name|boolean
-name|cached
-init|=
-name|isCachedProperty
-argument_list|(
-name|property
-argument_list|)
-decl_stmt|;
+comment|//            boolean cached = isCachedProperty(property);
 name|String
 name|propertyName
 init|=
@@ -938,7 +933,9 @@ argument_list|(
 name|testSize
 argument_list|)
 condition|)
+block|{
 continue|continue;
+block|}
 name|String
 name|setterName
 init|=
@@ -1311,10 +1308,12 @@ name|size
 operator|==
 literal|null
 condition|)
+block|{
 name|size
 operator|=
 literal|"2"
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|arrayType
@@ -1324,10 +1323,12 @@ operator|.
 name|getSimpleName
 argument_list|()
 condition|)
+block|{
 name|size
 operator|=
 literal|"0"
 expr_stmt|;
+block|}
 name|out
 operator|.
 name|println

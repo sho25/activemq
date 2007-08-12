@@ -60,7 +60,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This servlet embeds an ActiveMQ broker inside a servlet engine which is  * ideal for deploying ActiveMQ inside a WAR and using this servlet as a HTTP tunnel.  *  * @version $Revision$  */
+comment|/**  * This servlet embeds an ActiveMQ broker inside a servlet engine which is ideal  * for deploying ActiveMQ inside a WAR and using this servlet as a HTTP tunnel.  *   * @version $Revision$  */
 end_comment
 
 begin_class

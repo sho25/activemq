@@ -32,7 +32,6 @@ specifier|public
 interface|interface
 name|ReflectionConfigurable
 block|{
-specifier|public
 name|void
 name|configureProperties
 parameter_list|(
@@ -40,7 +39,6 @@ name|Properties
 name|props
 parameter_list|)
 function_decl|;
-specifier|public
 name|Properties
 name|retrieveProperties
 parameter_list|(
@@ -48,7 +46,6 @@ name|Properties
 name|props
 parameter_list|)
 function_decl|;
-specifier|public
 name|boolean
 name|acceptConfig
 parameter_list|(

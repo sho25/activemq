@@ -159,8 +159,6 @@ decl_stmt|;
 specifier|private
 name|long
 name|sleepTime
-init|=
-literal|0L
 decl_stmt|;
 specifier|private
 name|boolean
@@ -191,8 +189,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|topic
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|String
@@ -221,14 +217,10 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|transacted
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
 name|persistent
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|String
@@ -504,6 +496,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|replyDest
 operator|=
 name|session
@@ -511,7 +504,9 @@ operator|.
 name|createTemporaryTopic
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 name|replyDest
 operator|=
 name|session
@@ -521,6 +516,7 @@ argument_list|(
 name|replySubject
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -546,6 +542,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|replyDest
 operator|=
 name|session
@@ -553,7 +550,9 @@ operator|.
 name|createTemporaryQueue
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 name|replyDest
 operator|=
 name|session
@@ -563,6 +562,7 @@ argument_list|(
 name|replySubject
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|System
 operator|.
@@ -663,7 +663,8 @@ argument_list|(
 literal|"Done."
 argument_list|)
 expr_stmt|;
-comment|// Use the ActiveMQConnection interface to dump the connection stats.
+comment|// Use the ActiveMQConnection interface to dump the connection
+comment|// stats.
 name|ActiveMQConnection
 name|c
 init|=
@@ -723,7 +724,7 @@ parameter_list|(
 name|Throwable
 name|ignore
 parameter_list|)
-block|{ 			}
+block|{             }
 block|}
 block|}
 specifier|protected
@@ -917,7 +918,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * @param i 	 * @return 	 */
+comment|/**      * @param i      * @return      */
 specifier|private
 name|String
 name|createMessageText

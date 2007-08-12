@@ -88,8 +88,6 @@ specifier|protected
 specifier|static
 name|boolean
 name|block
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|XmppBroker
@@ -130,12 +128,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//ConnectionConfiguration config = new ConnectionConfiguration("localhost", 61222);
-comment|//config.setDebuggerEnabled(true);
+comment|// ConnectionConfiguration config = new
+comment|// ConnectionConfiguration("localhost", 61222);
+comment|// config.setDebuggerEnabled(true);
 try|try
 block|{
-comment|//SmackConfiguration.setPacketReplyTimeout(1000);
-comment|//XMPPConnection con = new XMPPConnection(config);
+comment|// SmackConfiguration.setPacketReplyTimeout(1000);
+comment|// XMPPConnection con = new XMPPConnection(config);
 name|XMPPConnection
 name|con
 init|=

@@ -208,7 +208,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Configures the inbound JMS consumer specification using ActiveMQ  *   * @org.apache.xbean.XBean element="activationSpec"  *   * @version $Revision$ $Date$  */
+comment|/**  * Configures the inbound JMS consumer specification using ActiveMQ  *   * @org.apache.xbean.XBean element="activationSpec"  * @version $Revision$ $Date: 2007-08-11 17:29:21 -0400 (Sat, 11 Aug  *          2007) $  */
 end_comment
 
 begin_class
@@ -220,16 +220,7 @@ name|MessageActivationSpec
 implements|,
 name|Serializable
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|7153087544100459975L
-decl_stmt|;
-comment|/** Auto-acknowledge constant for<code>acknowledgeMode</code> property **/
+comment|/** Auto-acknowledge constant for<code>acknowledgeMode</code> property * */
 specifier|public
 specifier|static
 specifier|final
@@ -265,7 +256,6 @@ name|NON_DURABLE_SUBSCRIPTION
 init|=
 literal|"NonDurable"
 decl_stmt|;
-comment|/**      *       */
 specifier|public
 specifier|static
 specifier|final
@@ -274,6 +264,15 @@ name|INVALID_ACKNOWLEDGE_MODE
 init|=
 operator|-
 literal|1
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|7153087544100459975L
 decl_stmt|;
 specifier|private
 specifier|transient
@@ -369,17 +368,29 @@ throws|throws
 name|InvalidPropertyException
 block|{
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|errorMessages
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|List
+argument_list|<
+name|PropertyDescriptor
+argument_list|>
 name|propsNotSet
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|PropertyDescriptor
+argument_list|>
 argument_list|()
 decl_stmt|;
 try|try
@@ -392,6 +403,7 @@ argument_list|(
 name|errorMessages
 argument_list|)
 condition|)
+block|{
 name|propsNotSet
 operator|.
 name|add
@@ -407,6 +419,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -415,6 +428,7 @@ argument_list|(
 name|errorMessages
 argument_list|)
 condition|)
+block|{
 name|propsNotSet
 operator|.
 name|add
@@ -430,6 +444,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -438,6 +453,7 @@ argument_list|(
 name|errorMessages
 argument_list|)
 condition|)
+block|{
 name|propsNotSet
 operator|.
 name|add
@@ -453,6 +469,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -461,6 +478,7 @@ argument_list|(
 name|errorMessages
 argument_list|)
 condition|)
+block|{
 name|propsNotSet
 operator|.
 name|add
@@ -476,6 +494,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -484,6 +503,7 @@ argument_list|(
 name|errorMessages
 argument_list|)
 condition|)
+block|{
 name|propsNotSet
 operator|.
 name|add
@@ -499,6 +519,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -507,6 +528,7 @@ argument_list|(
 name|errorMessages
 argument_list|)
 condition|)
+block|{
 name|propsNotSet
 operator|.
 name|add
@@ -522,6 +544,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -530,6 +553,7 @@ argument_list|(
 name|errorMessages
 argument_list|)
 condition|)
+block|{
 name|propsNotSet
 operator|.
 name|add
@@ -545,6 +569,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -553,6 +578,7 @@ argument_list|(
 name|errorMessages
 argument_list|)
 condition|)
+block|{
 name|propsNotSet
 operator|.
 name|add
@@ -568,6 +594,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -576,6 +603,7 @@ argument_list|(
 name|errorMessages
 argument_list|)
 condition|)
+block|{
 name|propsNotSet
 operator|.
 name|add
@@ -591,6 +619,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -599,6 +628,7 @@ argument_list|(
 name|errorMessages
 argument_list|)
 condition|)
+block|{
 name|propsNotSet
 operator|.
 name|add
@@ -614,6 +644,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -622,6 +653,7 @@ argument_list|(
 name|errorMessages
 argument_list|)
 condition|)
+block|{
 name|propsNotSet
 operator|.
 name|add
@@ -637,6 +669,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -645,6 +678,7 @@ argument_list|(
 name|errorMessages
 argument_list|)
 condition|)
+block|{
 name|propsNotSet
 operator|.
 name|add
@@ -660,6 +694,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -668,6 +703,7 @@ argument_list|(
 name|errorMessages
 argument_list|)
 condition|)
+block|{
 name|propsNotSet
 operator|.
 name|add
@@ -683,6 +719,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -723,6 +760,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|iter
 init|=
 name|errorMessages
@@ -772,10 +812,6 @@ name|PropertyDescriptor
 index|[]
 name|descriptors
 init|=
-operator|(
-name|PropertyDescriptor
-index|[]
-operator|)
 name|propsNotSet
 operator|.
 name|toArray
@@ -807,6 +843,9 @@ name|boolean
 name|isValidUseRAManagedTransaction
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|errorMessages
 parameter_list|)
 block|{
@@ -846,6 +885,9 @@ name|boolean
 name|isValidNoLocal
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|errorMessages
 parameter_list|)
 block|{
@@ -885,6 +927,9 @@ name|boolean
 name|isValidMessageSelector
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|errorMessages
 parameter_list|)
 block|{
@@ -941,6 +986,9 @@ name|boolean
 name|isValidMaxSessions
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|errorMessages
 parameter_list|)
 block|{
@@ -987,6 +1035,9 @@ name|boolean
 name|isValidMaxMessagesPerSessions
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|errorMessages
 parameter_list|)
 block|{
@@ -1033,6 +1084,9 @@ name|boolean
 name|isValidMaxMessagesPerBatch
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|errorMessages
 parameter_list|)
 block|{
@@ -1079,6 +1133,9 @@ name|boolean
 name|isValidEnableBatch
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|errorMessages
 parameter_list|)
 block|{
@@ -1134,7 +1191,7 @@ parameter_list|)
 throws|throws
 name|ResourceException
 block|{
-comment|//spec section 5.3.3
+comment|// spec section 5.3.3
 if|if
 condition|(
 name|this
@@ -1187,11 +1244,11 @@ operator|)
 name|resourceAdapter
 expr_stmt|;
 block|}
-comment|/////////////////////////////////////////////////////////////////////////
+comment|// ///////////////////////////////////////////////////////////////////////
 comment|//
 comment|// Java Bean getters and setters for this ActivationSpec class.
 comment|//
-comment|/////////////////////////////////////////////////////////////////////////
+comment|// ///////////////////////////////////////////////////////////////////////
 comment|/**      * @return Returns the destinationType.      */
 specifier|public
 name|String
@@ -1582,6 +1639,9 @@ name|boolean
 name|isValidSubscriptionName
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|errorMessages
 parameter_list|)
 block|{
@@ -1628,6 +1688,9 @@ name|boolean
 name|isValidClientId
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|errorMessages
 parameter_list|)
 block|{
@@ -1689,6 +1752,9 @@ name|boolean
 name|isValidSubscriptionDurability
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|errorMessages
 parameter_list|)
 block|{
@@ -1771,9 +1837,11 @@ argument_list|(
 name|subscriptionDurability
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 name|errorMessages
 operator|.
 name|add
@@ -1798,6 +1866,9 @@ name|boolean
 name|isValidAcknowledgeMode
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|errorMessages
 parameter_list|)
 block|{
@@ -1817,9 +1888,11 @@ argument_list|(
 name|acknowledgeMode
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 name|errorMessages
 operator|.
 name|add
@@ -1844,6 +1917,9 @@ name|boolean
 name|isValidDestinationType
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|errorMessages
 parameter_list|)
 block|{
@@ -1873,9 +1949,11 @@ argument_list|(
 name|destinationType
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 name|errorMessages
 operator|.
 name|add
@@ -1910,6 +1988,9 @@ name|boolean
 name|isValidDestination
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|errorMessages
 parameter_list|)
 block|{
@@ -1929,9 +2010,11 @@ literal|""
 argument_list|)
 operator|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 name|errorMessages
 operator|.
 name|add
@@ -2068,7 +2151,7 @@ name|INVALID_ACKNOWLEDGE_MODE
 return|;
 block|}
 block|}
-comment|/**      * A helper method mostly for use in Dependency Injection containers      * which allows you to customize the destination and destinationType properties      * from a single ActiveMQDestination POJO      */
+comment|/**      * A helper method mostly for use in Dependency Injection containers which      * allows you to customize the destination and destinationType properties      * from a single ActiveMQDestination POJO      */
 specifier|public
 name|void
 name|setActiveMQDestination
@@ -2135,9 +2218,11 @@ argument_list|(
 name|destination
 argument_list|)
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|ActiveMQDestination
 name|dest
 init|=

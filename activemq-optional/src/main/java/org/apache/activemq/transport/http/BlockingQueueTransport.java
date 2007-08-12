@@ -21,6 +21,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Queue
@@ -79,16 +89,6 @@ name|ServiceStopper
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
 comment|/**  * A server side HTTP based TransportChannel which processes incoming packets  * and adds outgoing packets onto a {@link Queue} so that they can be dispatched  * by the HTTP GET requests from the client.  *   * @version $Revision$  */
 end_comment
@@ -110,12 +110,18 @@ literal|30000L
 decl_stmt|;
 specifier|private
 name|BlockingQueue
+argument_list|<
+name|Object
+argument_list|>
 name|queue
 decl_stmt|;
 specifier|public
 name|BlockingQueueTransport
 parameter_list|(
 name|BlockingQueue
+argument_list|<
+name|Object
+argument_list|>
 name|channel
 parameter_list|)
 block|{
@@ -128,6 +134,9 @@ expr_stmt|;
 block|}
 specifier|public
 name|BlockingQueue
+argument_list|<
+name|Object
+argument_list|>
 name|getQueue
 parameter_list|()
 block|{
@@ -168,6 +177,7 @@ condition|(
 operator|!
 name|success
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -184,6 +194,7 @@ name|size
 argument_list|()
 argument_list|)
 throw|;
+block|}
 block|}
 catch|catch
 parameter_list|(

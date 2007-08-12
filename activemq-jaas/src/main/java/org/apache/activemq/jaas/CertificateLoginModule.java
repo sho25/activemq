@@ -17,29 +17,11 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|io
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|IOException
 import|;
 end_import
 
@@ -47,9 +29,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|security
 operator|.
-name|IOException
+name|Principal
 import|;
 end_import
 
@@ -201,8 +183,36 @@ name|LoginModule
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * A LoginModule that allows for authentication based on SSL certificates.  *   * Allows for subclasses to define methods used to verify user certificates and find user groups.   * Uses CertificateCallbacks to retrieve certificates.  *    * @author sepandm@gmail.com (Sepand)  *  */
+comment|/**  * A LoginModule that allows for authentication based on SSL certificates.  * Allows for subclasses to define methods used to verify user certificates and  * find user groups. Uses CertificateCallbacks to retrieve certificates.  *   * @author sepandm@gmail.com (Sepand)  */
 end_comment
 
 begin_class
@@ -213,6 +223,21 @@ name|CertificateLoginModule
 implements|implements
 name|LoginModule
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOG
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|CertificateLoginModule
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 name|CallbackHandler
 name|callbackHandler
@@ -229,43 +254,30 @@ decl_stmt|;
 specifier|private
 name|String
 name|username
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|Set
 name|groups
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|Set
+argument_list|<
+name|Principal
+argument_list|>
 name|principals
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|Principal
+argument_list|>
 argument_list|()
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|log
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|CertificateLoginModule
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 specifier|private
 name|boolean
 name|debug
 decl_stmt|;
-comment|/**      * Overriding to allow for proper initialization.      *       * Standard JAAS.      */
+comment|/**      * Overriding to allow for proper initialization. Standard JAAS.      */
 specifier|public
 name|void
 name|initialize
@@ -317,7 +329,7 @@ condition|(
 name|debug
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -326,7 +338,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Overriding to allow for certificate-based login.      *       * Standard JAAS.      */
+comment|/**      * Overriding to allow for certificate-based login. Standard JAAS.      */
 specifier|public
 name|boolean
 name|login
@@ -427,6 +439,7 @@ name|username
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|FailedLoginException
@@ -439,6 +452,7 @@ name|certificates
 argument_list|)
 argument_list|)
 throw|;
+block|}
 name|groups
 operator|=
 name|getUserGroups
@@ -451,7 +465,7 @@ condition|(
 name|debug
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -465,7 +479,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Overriding to complete login process.      *       * Standard JAAS.      */
+comment|/**      * Overriding to complete login process. Standard JAAS.      */
 specifier|public
 name|boolean
 name|commit
@@ -546,7 +560,7 @@ condition|(
 name|debug
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -574,7 +588,7 @@ condition|(
 name|debug
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -612,7 +626,7 @@ condition|(
 name|debug
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -640,7 +654,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/**      * Should return a unique name corresponding to the certificates given.      *       * The name returned will be used to look up access levels as well as      *      group associations.      *            * @param dn The distinguished name.      * @return The unique name if the certificate is recognized, null otherwise.      */
+comment|/**      * Should return a unique name corresponding to the certificates given. The      * name returned will be used to look up access levels as well as group      * associations.      *       * @param dn The distinguished name.      * @return The unique name if the certificate is recognized, null otherwise.      */
 specifier|protected
 specifier|abstract
 name|String
@@ -654,7 +668,7 @@ parameter_list|)
 throws|throws
 name|LoginException
 function_decl|;
-comment|/**      * Should return a set of the groups this user belongs to.      *       * The groups returned will be added to the user's credentials.      *       * @param username The username of the client. This is the same name that      *      getUserNameForDn returned for the user's DN.      * @return A Set of the names of the groups this user belongs to.      */
+comment|/**      * Should return a set of the groups this user belongs to. The groups      * returned will be added to the user's credentials.      *       * @param username The username of the client. This is the same name that      *                getUserNameForDn returned for the user's DN.      * @return A Set of the names of the groups this user belongs to.      */
 specifier|protected
 specifier|abstract
 name|Set

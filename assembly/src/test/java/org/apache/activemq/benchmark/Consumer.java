@@ -109,6 +109,10 @@ implements|implements
 name|MessageListener
 block|{
 specifier|public
+name|Consumer
+parameter_list|()
+block|{     }
+specifier|public
 specifier|static
 name|void
 name|main
@@ -268,10 +272,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-specifier|public
-name|Consumer
-parameter_list|()
-block|{     }
 specifier|public
 name|void
 name|run
@@ -444,21 +444,18 @@ operator|)
 name|message
 decl_stmt|;
 comment|// lets force the content to be deserialized
-name|String
-name|text
-init|=
 name|textMessage
 operator|.
 name|getText
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|count
 argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
 comment|// lets count the messages
-comment|//message.acknowledge();
+comment|// message.acknowledge();
 block|}
 catch|catch
 parameter_list|(

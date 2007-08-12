@@ -187,34 +187,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|activemq
 operator|.
 name|ActiveMQConnection
@@ -245,8 +217,36 @@ name|TransactionContext
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * ActiveMQManagedConnection maps to real physical connection to the  * server.  Since a ManagedConnection has to provide a transaction  * managment interface to the physical connection, and sessions  * are the objects implement transaction managment interfaces in  * the JMS API, this object also maps to a singe physical JMS session.  *<p/>  * The side-effect is that JMS connection the application gets  * will allways create the same session object.  This is good if  * running in an app server since the sessions are elisted in the  * context transaction.  This is bad if used outside of an app  * server since the user may be trying to create 2 different  * sessions to coordinate 2 different uow.  *  * @version $Revision$  */
+comment|/**  * ActiveMQManagedConnection maps to real physical connection to the server.  * Since a ManagedConnection has to provide a transaction managment interface to  * the physical connection, and sessions are the objects implement transaction  * managment interfaces in the JMS API, this object also maps to a singe  * physical JMS session.<p/> The side-effect is that JMS connection the  * application gets will allways create the same session object. This is good if  * running in an app server since the sessions are elisted in the context  * transaction. This is bad if used outside of an app server since the user may  * be trying to create 2 different sessions to coordinate 2 different uow.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -258,12 +258,15 @@ name|ManagedConnection
 implements|,
 name|ExceptionListener
 block|{
-comment|// TODO: , DissociatableManagedConnection {
+comment|// TODO:
+comment|// ,
+comment|// DissociatableManagedConnection
+comment|// {
 specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -291,19 +294,31 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|ArrayList
+argument_list|<
+name|ManagedConnectionProxy
+argument_list|>
 name|proxyConnections
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|ManagedConnectionProxy
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
 name|ArrayList
+argument_list|<
+name|ConnectionEventListener
+argument_list|>
 name|listeners
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|ConnectionEventListener
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -396,6 +411,9 @@ name|inManagedTx
 argument_list|)
 expr_stmt|;
 name|Iterator
+argument_list|<
+name|ManagedConnectionProxy
+argument_list|>
 name|iterator
 init|=
 name|proxyConnections
@@ -414,9 +432,6 @@ block|{
 name|ManagedConnectionProxy
 name|proxy
 init|=
-operator|(
-name|ManagedConnectionProxy
-operator|)
 name|iterator
 operator|.
 name|next
@@ -515,8 +530,8 @@ name|isInManagedTx
 argument_list|()
 return|;
 block|}
-specifier|static
 specifier|public
+specifier|static
 name|boolean
 name|matches
 parameter_list|(
@@ -655,6 +670,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|physicalConnection
 operator|.
 name|setClientID
@@ -665,6 +681,7 @@ name|getClientid
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|this
 operator|.
 name|subject
@@ -708,6 +725,9 @@ name|LOCAL_TRANSACTION_STARTED
 argument_list|)
 decl_stmt|;
 name|Iterator
+argument_list|<
+name|ConnectionEventListener
+argument_list|>
 name|iterator
 init|=
 name|listeners
@@ -726,9 +746,6 @@ block|{
 name|ConnectionEventListener
 name|l
 init|=
-operator|(
-name|ConnectionEventListener
-operator|)
 name|iterator
 operator|.
 name|next
@@ -764,6 +781,9 @@ name|LOCAL_TRANSACTION_COMMITTED
 argument_list|)
 decl_stmt|;
 name|Iterator
+argument_list|<
+name|ConnectionEventListener
+argument_list|>
 name|iterator
 init|=
 name|listeners
@@ -782,9 +802,6 @@ block|{
 name|ConnectionEventListener
 name|l
 init|=
-operator|(
-name|ConnectionEventListener
-operator|)
 name|iterator
 operator|.
 name|next
@@ -820,6 +837,9 @@ name|LOCAL_TRANSACTION_ROLLEDBACK
 argument_list|)
 decl_stmt|;
 name|Iterator
+argument_list|<
+name|ConnectionEventListener
+argument_list|>
 name|iterator
 init|=
 name|listeners
@@ -838,9 +858,6 @@ block|{
 name|ConnectionEventListener
 name|l
 init|=
-operator|(
-name|ConnectionEventListener
-operator|)
 name|iterator
 operator|.
 name|next
@@ -886,6 +903,9 @@ name|proxy
 argument_list|)
 expr_stmt|;
 name|Iterator
+argument_list|<
+name|ConnectionEventListener
+argument_list|>
 name|iterator
 init|=
 name|listeners
@@ -904,9 +924,6 @@ block|{
 name|ConnectionEventListener
 name|l
 init|=
-operator|(
-name|ConnectionEventListener
-operator|)
 name|iterator
 operator|.
 name|next
@@ -947,6 +964,9 @@ name|error
 argument_list|)
 decl_stmt|;
 name|Iterator
+argument_list|<
+name|ConnectionEventListener
+argument_list|>
 name|iterator
 init|=
 name|listeners
@@ -965,9 +985,6 @@ block|{
 name|ConnectionEventListener
 name|l
 init|=
-operator|(
-name|ConnectionEventListener
-operator|)
 name|iterator
 operator|.
 name|next
@@ -1025,7 +1042,7 @@ return|return
 name|destoryed
 return|;
 block|}
-comment|/**      * Close down the physical connection to the server.      *      * @see javax.resource.spi.ManagedConnection#destroy()      */
+comment|/**      * Close down the physical connection to the server.      *       * @see javax.resource.spi.ManagedConnection#destroy()      */
 specifier|public
 name|void
 name|destroy
@@ -1063,7 +1080,7 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1092,6 +1109,9 @@ block|{
 return|return;
 block|}
 name|Iterator
+argument_list|<
+name|ManagedConnectionProxy
+argument_list|>
 name|iterator
 init|=
 name|proxyConnections
@@ -1110,9 +1130,6 @@ block|{
 name|ManagedConnectionProxy
 name|proxy
 init|=
-operator|(
-name|ManagedConnectionProxy
-operator|)
 name|iterator
 operator|.
 name|next
@@ -1592,7 +1609,7 @@ name|info
 argument_list|)
 return|;
 block|}
-comment|/**      * When a proxy is closed this cleans up the proxy and notifys the      * ConnectionEventListeners that a connection closed.      *      * @param proxy      */
+comment|/**      * When a proxy is closed this cleans up the proxy and notifys the      * ConnectionEventListeners that a connection closed.      *       * @param proxy      */
 specifier|public
 name|void
 name|proxyClosedEvent
@@ -1627,7 +1644,7 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1636,7 +1653,7 @@ operator|+
 name|e
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1649,6 +1666,9 @@ comment|// Let any active proxy connections know that exception occured.
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|ManagedConnectionProxy
+argument_list|>
 name|iter
 init|=
 name|proxyConnections
@@ -1666,9 +1686,6 @@ block|{
 name|ManagedConnectionProxy
 name|proxy
 init|=
-operator|(
-name|ManagedConnectionProxy
-operator|)
 name|iter
 operator|.
 name|next

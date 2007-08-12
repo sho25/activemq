@@ -164,7 +164,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version $Revision: 386442 $  */
+comment|/**  * @version $Revision: 386442 $  */
 end_comment
 
 begin_class
@@ -177,10 +177,16 @@ name|OpenWireGenerator
 block|{
 specifier|protected
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|manuallyMaintainedClasses
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|protected
@@ -209,6 +215,9 @@ name|baseClass
 decl_stmt|;
 specifier|protected
 name|List
+argument_list|<
+name|JClass
+argument_list|>
 name|sortedClasses
 decl_stmt|;
 specifier|public
@@ -267,10 +276,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|ArrayList
+argument_list|<
+name|JClass
+argument_list|>
 name|classes
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|JClass
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|JamClassIterator
@@ -326,6 +341,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|JClass
+argument_list|>
 name|iterator
 init|=
 name|sortedClasses
@@ -342,9 +360,6 @@ control|)
 block|{
 name|jclass
 operator|=
-operator|(
-name|JClass
-operator|)
 name|iterator
 operator|.
 name|next
@@ -437,7 +452,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|// Use the FixCRLF Ant Task to make sure the file has consistent newlines
+comment|// Use the FixCRLF Ant Task to make sure the file has consistent
+comment|// newlines
 comment|// so that SVN does not complain on checkin.
 name|Project
 name|project
@@ -496,9 +512,15 @@ return|;
 block|}
 specifier|protected
 name|List
+argument_list|<
+name|JClass
+argument_list|>
 name|sort
 parameter_list|(
 name|List
+argument_list|<
+name|JClass
+argument_list|>
 name|classes
 parameter_list|)
 block|{
@@ -513,7 +535,7 @@ parameter_list|(
 name|PrintWriter
 name|out
 parameter_list|)
-block|{ 	}
+block|{     }
 specifier|protected
 name|void
 name|generateSetup
@@ -521,18 +543,27 @@ parameter_list|(
 name|PrintWriter
 name|out
 parameter_list|)
-block|{ 	}
+block|{     }
 comment|/**      * Returns all the valid properties available on the current class      */
 specifier|public
 name|List
+argument_list|<
+name|JProperty
+argument_list|>
 name|getProperties
 parameter_list|()
 block|{
 name|List
+argument_list|<
+name|JProperty
+argument_list|>
 name|answer
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|JProperty
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|JProperty
@@ -621,7 +652,7 @@ block|}
 return|return
 literal|true
 return|;
-comment|//return !manuallyMaintainedClasses.contains(jclass.getSimpleName());
+comment|// return !manuallyMaintainedClasses.contains(jclass.getSimpleName());
 block|}
 specifier|protected
 specifier|abstract
@@ -914,6 +945,9 @@ expr_stmt|;
 block|}
 specifier|public
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|getManuallyMaintainedClasses
 parameter_list|()
 block|{
@@ -926,6 +960,9 @@ name|void
 name|setManuallyMaintainedClasses
 parameter_list|(
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|manuallyMaintainedClasses
 parameter_list|)
 block|{

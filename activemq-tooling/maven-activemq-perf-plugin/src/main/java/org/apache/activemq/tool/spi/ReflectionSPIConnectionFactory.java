@@ -19,17 +19,11 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|activemq
-operator|.
-name|tool
-operator|.
-name|properties
-operator|.
-name|ReflectionUtil
+name|Properties
 import|;
 end_import
 
@@ -45,11 +39,17 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|Properties
+name|activemq
+operator|.
+name|tool
+operator|.
+name|properties
+operator|.
+name|ReflectionUtil
 import|;
 end_import
 

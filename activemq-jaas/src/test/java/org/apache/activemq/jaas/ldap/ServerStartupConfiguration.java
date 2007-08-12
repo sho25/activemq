@@ -136,8 +136,6 @@ decl_stmt|;
 specifier|private
 name|InetAddress
 name|host
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|boolean

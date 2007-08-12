@@ -17,6 +17,28 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|security
+operator|.
+name|cert
+operator|.
+name|X509Certificate
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|security
@@ -53,62 +75,12 @@ name|auth
 operator|.
 name|callback
 operator|.
-name|NameCallback
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|security
-operator|.
-name|auth
-operator|.
-name|callback
-operator|.
-name|PasswordCallback
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|security
-operator|.
-name|auth
-operator|.
-name|callback
-operator|.
 name|UnsupportedCallbackException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|security
-operator|.
-name|cert
-operator|.
-name|X509Certificate
-import|;
-end_import
-
 begin_comment
-comment|/**  * A Standard JAAS callback handler for SSL certificate requests.  *   * Will only handle callbacks of type CertificateCallback.  *   * @author sepandm@gmail.com (Sepand)  *  */
+comment|/**  * A Standard JAAS callback handler for SSL certificate requests. Will only  * handle callbacks of type CertificateCallback.  *   * @author sepandm@gmail.com (Sepand)  */
 end_comment
 
 begin_class
@@ -137,7 +109,7 @@ operator|=
 name|certs
 expr_stmt|;
 block|}
-comment|/**      * Overriding handle method to handle certificates.      *       * @param callbacks The callbacks requested.      * @throws IOException      * @throws UnsupportedCallbackException Thrown if an unkown Callback type is encountered.      */
+comment|/**      * Overriding handle method to handle certificates.      *       * @param callbacks The callbacks requested.      * @throws IOException      * @throws UnsupportedCallbackException Thrown if an unkown Callback type is      *                 encountered.      */
 specifier|public
 name|void
 name|handle

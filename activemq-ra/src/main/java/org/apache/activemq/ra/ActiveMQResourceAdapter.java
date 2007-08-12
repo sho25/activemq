@@ -284,7 +284,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Knows how to connect to one ActiveMQ server. It can then activate endpoints  * and deliver messages to those end points using the connection configure in the  * resource adapter.<p/>Must override equals and hashCode (JCA spec 16.4)  *  * @org.apache.xbean.XBean element="resourceAdapter" rootElement="true"  * description="The JCA Resource Adaptor for ActiveMQ"  *  * @version $Revision$  */
+comment|/**  * Knows how to connect to one ActiveMQ server. It can then activate endpoints  * and deliver messages to those end points using the connection configure in  * the resource adapter.<p/>Must override equals and hashCode (JCA spec 16.4)  *   * @org.apache.xbean.XBean element="resourceAdapter" rootElement="true"  *                         description="The JCA Resource Adaptor for ActiveMQ"  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -309,7 +309,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -323,10 +323,20 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|HashMap
+argument_list|<
+name|ActiveMQEndpointActivationKey
+argument_list|,
+name|ActiveMQEndpointWorker
+argument_list|>
 name|endpointWorkers
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|ActiveMQEndpointActivationKey
+argument_list|,
+name|ActiveMQEndpointWorker
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -501,7 +511,7 @@ name|connectionFactory
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.activemq.ra.MessageResourceAdapter#makeConnection(org.apache.activemq.ra.ActiveMQConnectionRequestInfo, org.apache.activemq.ActiveMQConnectionFactory)      */
+comment|/**      * @see org.apache.activemq.ra.MessageResourceAdapter#makeConnection(org.apache.activemq.ra.ActiveMQConnectionRequestInfo,      *      org.apache.activemq.ActiveMQConnectionFactory)      */
 specifier|public
 name|ActiveMQConnection
 name|makeConnection
@@ -664,7 +674,7 @@ name|isDurableSubscription
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -719,8 +729,8 @@ name|physicalConnection
 return|;
 block|}
 comment|/**      * @param info      * @throws JMSException      * @throws URISyntaxException      */
-specifier|synchronized
 specifier|private
+specifier|synchronized
 name|ActiveMQConnectionFactory
 name|createConnectionFactory
 parameter_list|(
@@ -798,9 +808,11 @@ name|value
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|value
 return|;
+block|}
 return|return
 name|defaultValue
 return|;
@@ -824,9 +836,6 @@ block|{
 name|ActiveMQEndpointActivationKey
 name|key
 init|=
-operator|(
-name|ActiveMQEndpointActivationKey
-operator|)
 name|endpointWorkers
 operator|.
 name|keySet
@@ -1053,9 +1062,6 @@ decl_stmt|;
 name|ActiveMQEndpointWorker
 name|worker
 init|=
-operator|(
-name|ActiveMQEndpointWorker
-operator|)
 name|endpointWorkers
 operator|.
 name|remove
@@ -1104,7 +1110,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * We only connect to one resource manager per ResourceAdapter instance, so      * any ActivationSpec will return the same XAResource.      *      * @see javax.resource.spi.ResourceAdapter#getXAResources(javax.resource.spi.ActivationSpec[])      */
+comment|/**      * We only connect to one resource manager per ResourceAdapter instance, so      * any ActivationSpec will return the same XAResource.      *       * @see javax.resource.spi.ResourceAdapter#getXAResources(javax.resource.spi.ActivationSpec[])      */
 specifier|public
 name|XAResource
 index|[]
@@ -1351,7 +1357,7 @@ return|return
 name|brokerXmlConfig
 return|;
 block|}
-comment|/**      * Sets the<a href="http://activemq.org/Xml+Configuration">XML      * configuration file</a> used to configure the ActiveMQ broker via Spring      * if using embedded mode.      *      * @param brokerXmlConfig      *            is the filename which is assumed to be on the classpath unless      *            a URL is specified. So a value of<code>foo/bar.xml</code>      *            would be assumed to be on the classpath whereas      *<code>file:dir/file.xml</code> would use the file system.      *            Any valid URL string is supported.      */
+comment|/**      * Sets the<a href="http://activemq.org/Xml+Configuration">XML      * configuration file</a> used to configure the ActiveMQ broker via Spring      * if using embedded mode.      *       * @param brokerXmlConfig is the filename which is assumed to be on the      *                classpath unless a URL is specified. So a value of      *<code>foo/bar.xml</code> would be assumed to be on the      *                classpath whereas<code>file:dir/file.xml</code> would      *                use the file system. Any valid URL string is supported.      */
 specifier|public
 name|void
 name|setBrokerXmlConfig
@@ -1905,7 +1911,7 @@ return|return
 name|connectionFactory
 return|;
 block|}
-comment|/**      * This allows a connection factory to be configured and shared between a ResourceAdaptor and outbound messaging.      * Note that setting the connectionFactory will overload many of the properties on this POJO such as the redelivery      * and prefetch policies; the properties on the connectionFactory will be used instead.      */
+comment|/**      * This allows a connection factory to be configured and shared between a      * ResourceAdaptor and outbound messaging. Note that setting the      * connectionFactory will overload many of the properties on this POJO such      * as the redelivery and prefetch policies; the properties on the      * connectionFactory will be used instead.      */
 specifier|public
 name|void
 name|setConnectionFactory

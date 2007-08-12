@@ -29,6 +29,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|Principal
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|text
 operator|.
 name|MessageFormat
@@ -329,7 +339,7 @@ name|auth
 operator|.
 name|login
 operator|.
-name|LoginException
+name|FailedLoginException
 import|;
 end_import
 
@@ -343,7 +353,7 @@ name|auth
 operator|.
 name|login
 operator|.
-name|FailedLoginException
+name|LoginException
 import|;
 end_import
 
@@ -400,28 +410,6 @@ name|LDAPLoginModule
 implements|implements
 name|LoginModule
 block|{
-specifier|private
-specifier|static
-name|Log
-name|log
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|LDAPLoginModule
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
-specifier|private
-name|Subject
-name|subject
-decl_stmt|;
-specifier|private
-name|CallbackHandler
-name|handler
-decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -535,6 +523,32 @@ init|=
 literal|"userRoleName"
 decl_stmt|;
 specifier|private
+specifier|static
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|LDAPLoginModule
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+specifier|protected
+name|DirContext
+name|context
+decl_stmt|;
+specifier|private
+name|Subject
+name|subject
+decl_stmt|;
+specifier|private
+name|CallbackHandler
+name|handler
+decl_stmt|;
+specifier|private
 name|String
 name|initialContextFactory
 decl_stmt|;
@@ -578,12 +592,6 @@ specifier|private
 name|String
 name|username
 decl_stmt|;
-specifier|protected
-name|DirContext
-name|context
-init|=
-literal|null
-decl_stmt|;
 specifier|private
 name|MessageFormat
 name|userSearchMatchingFormat
@@ -595,20 +603,23 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|userSearchSubtreeBool
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
 name|roleSearchSubtreeBool
-init|=
-literal|false
 decl_stmt|;
+specifier|private
 name|Set
+argument_list|<
+name|GroupPrincipal
+argument_list|>
 name|groups
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|GroupPrincipal
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|public
@@ -1085,6 +1096,9 @@ throws|throws
 name|LoginException
 block|{
 name|Set
+argument_list|<
+name|Principal
+argument_list|>
 name|principals
 init|=
 name|subject
@@ -1104,6 +1118,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|Iterator
+argument_list|<
+name|GroupPrincipal
+argument_list|>
 name|iter
 init|=
 name|groups
@@ -1254,12 +1271,18 @@ name|ONELEVEL_SCOPE
 argument_list|)
 expr_stmt|;
 block|}
-comment|//setup attributes
+comment|// setup attributes
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|list
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 if|if
@@ -1354,7 +1377,7 @@ name|hasMore
 argument_list|()
 condition|)
 block|{
-comment|//ignore for now
+comment|// ignore for now
 block|}
 name|NameParser
 name|parser
@@ -1449,6 +1472,9 @@ literal|false
 return|;
 block|}
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|roles
 init|=
 literal|null
@@ -1472,7 +1498,7 @@ name|roles
 argument_list|)
 expr_stmt|;
 block|}
-comment|//check the credentials by binding to server
+comment|// check the credentials by binding to server
 if|if
 condition|(
 name|bindUser
@@ -1485,7 +1511,7 @@ name|password
 argument_list|)
 condition|)
 block|{
-comment|//if authenticated add more roles
+comment|// if authenticated add more roles
 name|roles
 operator|=
 name|getRoles
@@ -1524,9 +1550,6 @@ argument_list|(
 operator|new
 name|GroupPrincipal
 argument_list|(
-operator|(
-name|String
-operator|)
 name|roles
 operator|.
 name|get
@@ -1580,6 +1603,9 @@ return|;
 block|}
 specifier|protected
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|getRoles
 parameter_list|(
 name|DirContext
@@ -1592,12 +1618,18 @@ name|String
 name|username
 parameter_list|,
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|currentRoles
 parameter_list|)
 throws|throws
 name|NamingException
 block|{
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|list
 init|=
 name|currentRoles
@@ -1613,6 +1645,9 @@ name|list
 operator|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -2027,6 +2062,9 @@ return|;
 block|}
 specifier|private
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|addAttributeValues
 parameter_list|(
 name|String
@@ -2036,6 +2074,9 @@ name|Attributes
 name|attrs
 parameter_list|,
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|values
 parameter_list|)
 throws|throws
@@ -2067,6 +2108,9 @@ name|values
 operator|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -2088,9 +2132,7 @@ literal|null
 condition|)
 block|{
 return|return
-operator|(
 name|values
-operator|)
 return|;
 block|}
 name|NamingEnumeration
@@ -2153,10 +2195,20 @@ block|}
 try|try
 block|{
 name|Hashtable
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|env
 init|=
 operator|new
 name|Hashtable
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|env

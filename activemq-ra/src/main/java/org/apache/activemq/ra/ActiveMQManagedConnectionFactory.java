@@ -150,7 +150,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @version $Revisio n$  *   * TODO: Must override equals and hashCode (JCA spec 16.4)  *   * @org.apache.xbean.XBean element="managedConnectionFactory"    */
+comment|/**  * @version $Revisio n$ TODO: Must override equals and hashCode (JCA spec 16.4)  * @org.apache.xbean.XBean element="managedConnectionFactory"  */
 end_comment
 
 begin_class
@@ -253,6 +253,7 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 name|info
 operator|.
 name|setClientid
@@ -263,6 +264,7 @@ name|getClientid
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|info
@@ -272,6 +274,7 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 name|info
 operator|.
 name|setPassword
@@ -282,6 +285,7 @@ name|getPassword
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|info
@@ -291,6 +295,7 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 name|info
 operator|.
 name|setServerUrl
@@ -301,6 +306,7 @@ name|getServerUrl
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|info
@@ -310,6 +316,7 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 name|info
 operator|.
 name|setUseInboundSession
@@ -320,6 +327,7 @@ name|getUseInboundSession
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|info
@@ -329,6 +337,7 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 name|info
 operator|.
 name|setUserName
@@ -339,6 +348,7 @@ name|getUserName
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * @see java.lang.Object#equals(java.lang.Object)      */
 annotation|@

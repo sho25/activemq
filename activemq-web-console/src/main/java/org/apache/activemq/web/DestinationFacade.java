@@ -17,6 +17,18 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletRequest
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -49,34 +61,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQTopic
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|springframework
 operator|.
 name|web
@@ -87,20 +71,8 @@ name|ModelAndView
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|servlet
-operator|.
-name|http
-operator|.
-name|HttpServletRequest
-import|;
-end_import
-
 begin_comment
-comment|/**  *  * @version $Revision$  */
+comment|/**  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -110,11 +82,11 @@ name|DestinationFacade
 block|{
 specifier|private
 name|String
-name|JMSDestination
+name|jmsDestination
 decl_stmt|;
 specifier|private
 name|String
-name|JMSDestinationType
+name|jmsDestinationType
 decl_stmt|;
 specifier|private
 name|BrokerFacade
@@ -147,11 +119,11 @@ argument_list|()
 operator|+
 literal|"[destination:"
 operator|+
-name|JMSDestination
+name|jmsDestination
 operator|+
 literal|"; type="
 operator|+
-name|JMSDestinationType
+name|jmsDestinationType
 operator|+
 literal|"]"
 return|;
@@ -265,11 +237,11 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|JMSDestinationType
+name|jmsDestinationType
 operator|!=
 literal|null
 operator|&&
-name|JMSDestinationType
+name|jmsDestinationType
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -291,7 +263,7 @@ name|getJMSDestination
 parameter_list|()
 block|{
 return|return
-name|JMSDestination
+name|jmsDestination
 return|;
 block|}
 specifier|public
@@ -304,7 +276,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|JMSDestination
+name|jmsDestination
 operator|=
 name|destination
 expr_stmt|;
@@ -315,7 +287,7 @@ name|getJMSDestinationType
 parameter_list|()
 block|{
 return|return
-name|JMSDestinationType
+name|jmsDestinationType
 return|;
 block|}
 specifier|public
@@ -328,7 +300,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|JMSDestinationType
+name|jmsDestinationType
 operator|=
 name|type
 expr_stmt|;
@@ -371,7 +343,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|JMSDestination
+name|jmsDestination
 operator|==
 literal|null
 condition|)
@@ -385,7 +357,7 @@ argument_list|)
 throw|;
 block|}
 return|return
-name|JMSDestination
+name|jmsDestination
 return|;
 block|}
 specifier|protected
@@ -406,7 +378,7 @@ operator|.
 name|getRequestURI
 argument_list|()
 decl_stmt|;
-comment|//        System.out.println("Redirecting to: " + view);
+comment|// System.out.println("Redirecting to: " + view);
 return|return
 operator|new
 name|ModelAndView

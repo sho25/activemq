@@ -17,27 +17,41 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|io
 operator|.
-name|log4j
-operator|.
-name|AppenderSkeleton
+name|Serializable
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|log4j
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|spi
+name|util
 operator|.
-name|LoggingEvent
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -113,46 +127,32 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|io
+name|apache
 operator|.
-name|Serializable
+name|log4j
+operator|.
+name|AppenderSkeleton
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|log4j
 operator|.
-name|util
+name|spi
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
+name|LoggingEvent
 import|;
 end_import
 
 begin_comment
-comment|/**  * An abstract base class for implementation inheritence for a log4j JMS appender  *  * @version $Revision$  */
+comment|/**  * An abstract base class for implementation inheritence for a log4j JMS  * appender  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -328,10 +328,16 @@ name|close
 parameter_list|()
 block|{
 name|List
+argument_list|<
+name|JMSException
+argument_list|>
 name|errors
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|JMSException
+argument_list|>
 argument_list|()
 decl_stmt|;
 if|if
@@ -427,6 +433,9 @@ block|}
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|JMSException
+argument_list|>
 name|iter
 init|=
 name|errors
@@ -444,9 +453,6 @@ block|{
 name|JMSException
 name|e
 init|=
-operator|(
-name|JMSException
-operator|)
 name|iter
 operator|.
 name|next
@@ -512,7 +518,7 @@ expr_stmt|;
 block|}
 block|}
 comment|// Implementation methods
-comment|//-------------------------------------------------------------------------
+comment|// -------------------------------------------------------------------------
 specifier|protected
 specifier|abstract
 name|Connection

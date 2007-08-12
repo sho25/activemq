@@ -92,7 +92,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @version $Revision: 383749 $  */
+comment|/**  * @version $Revision: 383749 $  */
 end_comment
 
 begin_class
@@ -801,7 +801,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"    			"
+literal|"                "
 argument_list|)
 expr_stmt|;
 name|List
@@ -904,7 +904,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"		public override int GetHashCode() {"
+literal|"        public override int GetHashCode() {"
 argument_list|)
 expr_stmt|;
 name|out
@@ -922,7 +922,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"		}"
+literal|"        }"
 argument_list|)
 expr_stmt|;
 block|}
@@ -949,14 +949,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"		public override bool Equals(object that) {"
+literal|"        public override bool Equals(object that) {"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"	    	if (that is "
+literal|"            if (that is "
 operator|+
 name|className
 operator|+
@@ -967,7 +967,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"	    	    return Equals(("
+literal|"                return Equals(("
 operator|+
 name|className
 operator|+
@@ -978,21 +978,21 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"			}"
+literal|"            }"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"			return false;"
+literal|"            return false;"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"    	}"
+literal|"        }"
 argument_list|)
 expr_stmt|;
 name|out
@@ -1006,7 +1006,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"		public virtual bool Equals("
+literal|"        public virtual bool Equals("
 operator|+
 name|className
 operator|+
@@ -1028,7 +1028,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"		}"
+literal|"        }"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1055,7 +1055,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"		public override string ToString() {"
+literal|"        public override string ToString() {"
 argument_list|)
 expr_stmt|;
 name|out
@@ -1073,7 +1073,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"		}"
+literal|"        }"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1188,34 +1188,6 @@ name|property
 operator|.
 name|getSimpleName
 argument_list|()
-decl_stmt|;
-name|String
-name|getter
-init|=
-name|capitalize
-argument_list|(
-name|property
-operator|.
-name|getGetter
-argument_list|()
-operator|.
-name|getSimpleName
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|String
-name|setter
-init|=
-name|capitalize
-argument_list|(
-name|property
-operator|.
-name|getSetter
-argument_list|()
-operator|.
-name|getSimpleName
-argument_list|()
-argument_list|)
 decl_stmt|;
 name|out
 operator|.

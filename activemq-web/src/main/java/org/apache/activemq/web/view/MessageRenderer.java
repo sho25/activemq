@@ -19,6 +19,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|PrintWriter
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -81,26 +101,6 @@ name|HttpServletResponse
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|PrintWriter
-import|;
-end_import
-
 begin_comment
 comment|/**  * Represents a rendering of the messages  *   * @version $Revision: $  */
 end_comment
@@ -110,7 +110,6 @@ specifier|public
 interface|interface
 name|MessageRenderer
 block|{
-specifier|public
 name|void
 name|renderMessages
 parameter_list|(
@@ -130,7 +129,6 @@ name|JMSException
 throws|,
 name|ServletException
 function_decl|;
-specifier|public
 name|void
 name|renderMessage
 parameter_list|(

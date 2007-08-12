@@ -17,29 +17,11 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|io
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|Serializable
 import|;
 end_import
 
@@ -79,16 +61,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|QueueConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|QueueConnection
 import|;
 end_import
@@ -99,7 +71,7 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|TopicConnectionFactory
+name|QueueConnectionFactory
 import|;
 end_import
 
@@ -110,6 +82,16 @@ operator|.
 name|jms
 operator|.
 name|TopicConnection
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|TopicConnectionFactory
 import|;
 end_import
 
@@ -157,11 +139,29 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|io
+name|apache
 operator|.
-name|Serializable
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -197,7 +197,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -212,8 +212,8 @@ specifier|private
 name|ConnectionManager
 name|manager
 decl_stmt|;
-specifier|transient
 specifier|private
+specifier|transient
 name|ActiveMQManagedConnectionFactory
 name|factory
 decl_stmt|;
@@ -277,7 +277,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * @see javax.jms.ConnectionFactory#createConnection(java.lang.String, java.lang.String)      */
+comment|/**      * @see javax.jms.ConnectionFactory#createConnection(java.lang.String,      *      java.lang.String)      */
 specifier|public
 name|Connection
 name|createConnection
@@ -403,7 +403,7 @@ name|getCause
 argument_list|()
 throw|;
 block|}
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(

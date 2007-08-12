@@ -191,7 +191,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|TransactionContext
+name|ActiveMQSession
+operator|.
+name|DeliveryListener
 import|;
 end_import
 
@@ -203,9 +205,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|ActiveMQSession
-operator|.
-name|DeliveryListener
+name|TransactionContext
 import|;
 end_import
 
@@ -260,6 +260,11 @@ specifier|final
 name|Method
 name|ON_MESSAGE_METHOD
 decl_stmt|;
+specifier|private
+specifier|static
+name|int
+name|nextLogId
+decl_stmt|;
 static|static
 block|{
 try|try
@@ -299,25 +304,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-block|}
-specifier|private
-specifier|static
-name|int
-name|nextLogId
-init|=
-literal|0
-decl_stmt|;
-specifier|synchronized
-specifier|static
-specifier|private
-name|int
-name|getNextLogId
-parameter_list|()
-block|{
-return|return
-name|nextLogId
-operator|++
-return|;
 block|}
 specifier|private
 name|int
@@ -379,10 +365,8 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|runningFlag
-init|=
-literal|false
 decl_stmt|;
-comment|/**       * True if an error was detected that cause this session to be stale.  When a session       * is stale, it should not be used again for proccessing.      */
+comment|/**      * True if an error was detected that cause this session to be stale. When a      * session is stale, it should not be used again for proccessing.      */
 specifier|private
 name|boolean
 name|stale
@@ -486,6 +470,18 @@ operator|=
 name|batchSize
 expr_stmt|;
 block|}
+specifier|private
+specifier|static
+specifier|synchronized
+name|int
+name|getNextLogId
+parameter_list|()
+block|{
+return|return
+name|nextLogId
+operator|++
+return|;
+block|}
 specifier|public
 name|Session
 name|getSession
@@ -584,7 +580,7 @@ operator|new
 name|WorkListener
 argument_list|()
 block|{
-comment|//The work listener is useful only for debugging...
+comment|// The work listener is useful only for debugging...
 specifier|public
 name|void
 name|workAccepted
@@ -832,7 +828,7 @@ literal|"Run finished"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * The ActiveMQSession's run method will call back to this method before       * dispactching a message to the MessageListener.      */
+comment|/**      * The ActiveMQSession's run method will call back to this method before      * dispactching a message to the MessageListener.      */
 specifier|public
 name|void
 name|beforeDelivery
@@ -879,7 +875,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * The ActiveMQSession's run method will call back to this method after       * dispactching a message to the MessageListener.      */
+comment|/**      * The ActiveMQSession's run method will call back to this method after      * dispactching a message to the MessageListener.      */
 specifier|public
 name|void
 name|afterDelivery
@@ -961,7 +957,8 @@ operator|!
 name|useRAManagedTx
 condition|)
 block|{
-comment|// Sanitiy Check: If the local transaction has not been commited..
+comment|// Sanitiy Check: If the local transaction has not been
+comment|// commited..
 comment|// Commit it now.
 name|log
 operator|.

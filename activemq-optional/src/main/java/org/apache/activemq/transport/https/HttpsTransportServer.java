@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URI
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -44,16 +54,6 @@ operator|.
 name|security
 operator|.
 name|SslSocketConnector
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URI
 import|;
 end_import
 
@@ -100,32 +100,22 @@ decl_stmt|;
 specifier|private
 name|String
 name|keyStoreType
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|String
 name|secureRandomCertficateAlgorithm
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|String
 name|trustCertificateAlgorithm
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|String
 name|keyCertificateAlgorithm
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|String
 name|protocol
-init|=
-literal|null
 decl_stmt|;
 specifier|public
 name|HttpsTransportServer
@@ -272,7 +262,7 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// Properties
-comment|//--------------------------------------------------------------------------------
+comment|// --------------------------------------------------------------------------------
 specifier|public
 name|String
 name|getKeyStore

@@ -55,7 +55,6 @@ interface|interface
 name|InboundContext
 block|{
 comment|/**      * Returns the current session being used to process a JMS message in the current thread.      */
-specifier|public
 name|Session
 name|getSession
 parameter_list|()
@@ -63,7 +62,6 @@ throws|throws
 name|JMSException
 function_decl|;
 comment|/**      * Lazily creates a message producer that can be used to send messages using the      * same JMS Session which is being used to dispatch messages which minimises the XA      * overheard of consuming and producing or allows JMS transactions to be used for consuming      * and producing messages.      *      * @return the current message producer or a new one is lazily created, using a null      *         destination so the destination must be specified on a send() method.      * @throws javax.jms.JMSException      */
-specifier|public
 name|MessageProducer
 name|getMessageProducer
 parameter_list|()

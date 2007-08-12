@@ -17,6 +17,36 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|servlet
+operator|.
+name|ServletContext
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|servlet
+operator|.
+name|ServletContextEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|servlet
+operator|.
+name|ServletContextListener
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -73,38 +103,8 @@ name|ServletContextResource
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|servlet
-operator|.
-name|ServletContext
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|servlet
-operator|.
-name|ServletContextEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|servlet
-operator|.
-name|ServletContextListener
-import|;
-end_import
-
 begin_comment
-comment|/**  * Used to configure and instance of ActiveMQ<tt>BrokerService</tt> using  * ActiveMQ/Spring's xml configuration.<p/> The configuration file is specified  * via the context init parameter<tt>brokerURI</tt>, typically:<code>  *&lt;context-param&gt;  *&lt;param-name&gt;brokerURI&lt;/param-name&gt;  *&lt;param-value&gt;/WEB-INF/activemq.xml&lt;/param-value&gt;  *&lt;/context-param&gt;  *</code>  *   * As a a default, if a<tt>brokerURI</tt> is not specified it will look up  * for<tt>activemq.xml</tt>  *   * @version $Revision: 1.1 $  */
+comment|/**  * Used to configure and instance of ActiveMQ<tt>BrokerService</tt> using  * ActiveMQ/Spring's xml configuration.<p/> The configuration file is specified  * via the context init parameter<tt>brokerURI</tt>, typically:<code>  *&lt;context-param&gt;  *&lt;param-name&gt;brokerURI&lt;/param-name&gt;  *&lt;param-value&gt;/WEB-INF/activemq.xml&lt;/param-value&gt;  *&lt;/context-param&gt;  *</code>  * As a a default, if a<tt>brokerURI</tt> is not specified it will look up  * for<tt>activemq.xml</tt>  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
@@ -128,7 +128,7 @@ specifier|private
 name|BrokerService
 name|brokerContainer
 decl_stmt|;
-comment|/**      * Set the broker container to be used by this listener      *       * @param container      *            the container to be used.      */
+comment|/**      * Set the broker container to be used by this listener      *       * @param container the container to be used.      */
 specifier|protected
 name|void
 name|setBrokerService

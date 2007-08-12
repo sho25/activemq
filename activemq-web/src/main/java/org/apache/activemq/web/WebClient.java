@@ -107,6 +107,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Semaphore
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -329,20 +341,8 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Semaphore
-import|;
-end_import
-
 begin_comment
-comment|/**  * Represents a messaging client used from inside a web container typically  * stored inside a HttpSession  *   * TODO controls to prevent DOS attacks with users requesting many consumers  * TODO configure consumers with small prefetch.  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Represents a messaging client used from inside a web container typically  * stored inside a HttpSession TODO controls to prevent DOS attacks with users  * requesting many consumers TODO configure consumers with small prefetch.  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -360,7 +360,7 @@ specifier|public
 specifier|static
 specifier|final
 name|String
-name|webClientAttribute
+name|WEB_CLIENT_ATTRIBUTE
 init|=
 literal|"org.apache.activemq.webclient"
 decl_stmt|;
@@ -368,7 +368,7 @@ specifier|public
 specifier|static
 specifier|final
 name|String
-name|connectionFactoryAttribute
+name|CONNECTION_FACTORY_ATTRIBUTE
 init|=
 literal|"org.apache.activemq.connectionFactory"
 decl_stmt|;
@@ -376,7 +376,7 @@ specifier|public
 specifier|static
 specifier|final
 name|String
-name|connectionFactoryPrefetchParam
+name|CONNECTION_FACTORY_PREFETCH_PARAM
 init|=
 literal|"org.apache.activemq.connectionFactory.prefetch"
 decl_stmt|;
@@ -384,7 +384,7 @@ specifier|public
 specifier|static
 specifier|final
 name|String
-name|connectionFactoryOptimizeAckParam
+name|CONNECTION_FACTORY_OPTIMIZE_ACK_PARAM
 init|=
 literal|"org.apache.activemq.connectionFactory.optimizeAck"
 decl_stmt|;
@@ -392,7 +392,7 @@ specifier|public
 specifier|static
 specifier|final
 name|String
-name|brokerUrlInitParam
+name|BROKER_URL_INIT_PARAM
 init|=
 literal|"org.apache.activemq.brokerURL"
 decl_stmt|;
@@ -400,7 +400,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -420,10 +420,20 @@ decl_stmt|;
 specifier|private
 specifier|transient
 name|Map
+argument_list|<
+name|Destination
+argument_list|,
+name|MessageConsumer
+argument_list|>
 name|consumers
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|Destination
+argument_list|,
+name|MessageConsumer
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -460,7 +470,27 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-comment|/**      * Helper method to get the client for the current session, lazily creating      * a client if there is none currently      *      * @param request is the current HTTP request      * @return the current client or a newly creates      */
+specifier|public
+name|WebClient
+parameter_list|()
+block|{
+if|if
+condition|(
+name|factory
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"initContext(ServletContext) not called"
+argument_list|)
+throw|;
+block|}
+block|}
+comment|/**      * Helper method to get the client for the current session, lazily creating      * a client if there is none currently      *       * @param request is the current HTTP request      * @return the current client or a newly creates      */
 specifier|public
 specifier|static
 name|WebClient
@@ -513,7 +543,7 @@ name|session
 operator|.
 name|setAttribute
 argument_list|(
-name|webClientAttribute
+name|WEB_CLIENT_ATTRIBUTE
 argument_list|,
 name|client
 argument_list|)
@@ -541,7 +571,7 @@ name|session
 operator|.
 name|getAttribute
 argument_list|(
-name|webClientAttribute
+name|WEB_CLIENT_ATTRIBUTE
 argument_list|)
 return|;
 block|}
@@ -559,24 +589,6 @@ argument_list|(
 name|context
 argument_list|)
 expr_stmt|;
-block|}
-specifier|public
-name|WebClient
-parameter_list|()
-block|{
-if|if
-condition|(
-name|factory
-operator|==
-literal|null
-condition|)
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"initContext(ServletContext) not called"
-argument_list|)
-throw|;
 block|}
 specifier|public
 name|int
@@ -611,6 +623,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|MessageConsumer
+argument_list|>
 name|it
 init|=
 name|consumers
@@ -631,9 +646,6 @@ block|{
 name|MessageConsumer
 name|consumer
 init|=
-operator|(
-name|MessageConsumer
-operator|)
 name|it
 operator|.
 name|next
@@ -659,6 +671,7 @@ name|consumer
 operator|instanceof
 name|MessageAvailableConsumer
 condition|)
+block|{
 operator|(
 operator|(
 name|MessageAvailableConsumer
@@ -671,6 +684,7 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 name|consumer
 operator|.
 name|close
@@ -683,7 +697,7 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -712,11 +726,13 @@ name|connection
 operator|!=
 literal|null
 condition|)
+block|{
 name|connection
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -724,7 +740,7 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -754,11 +770,13 @@ name|consumers
 operator|!=
 literal|null
 condition|)
+block|{
 name|consumers
 operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+block|}
 name|consumers
 operator|=
 literal|null
@@ -804,6 +822,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|Iterator
+argument_list|<
+name|Destination
+argument_list|>
 name|i
 init|=
 name|consumers
@@ -821,6 +842,7 @@ operator|.
 name|hasNext
 argument_list|()
 condition|)
+block|{
 name|out
 operator|.
 name|writeObject
@@ -835,7 +857,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|out
 operator|.
 name|write
@@ -844,6 +868,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -876,6 +901,11 @@ name|consumers
 operator|=
 operator|new
 name|HashMap
+argument_list|<
+name|Destination
+argument_list|,
+name|MessageConsumer
+argument_list|>
 argument_list|()
 expr_stmt|;
 for|for
@@ -959,7 +989,7 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1031,13 +1061,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1105,13 +1135,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1197,6 +1227,7 @@ name|factory
 operator|==
 literal|null
 condition|)
+block|{
 name|factory
 operator|=
 operator|(
@@ -1206,9 +1237,10 @@ name|servletContext
 operator|.
 name|getAttribute
 argument_list|(
-name|connectionFactoryAttribute
+name|CONNECTION_FACTORY_ATTRIBUTE
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|factory
@@ -1223,16 +1255,16 @@ name|servletContext
 operator|.
 name|getInitParameter
 argument_list|(
-name|brokerUrlInitParam
+name|BROKER_URL_INIT_PARAM
 argument_list|)
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
 literal|"Value of: "
 operator|+
-name|brokerUrlInitParam
+name|BROKER_URL_INIT_PARAM
 operator|+
 literal|" is: "
 operator|+
@@ -1252,7 +1284,7 @@ name|IllegalStateException
 argument_list|(
 literal|"missing brokerURL (specified via "
 operator|+
-name|brokerUrlInitParam
+name|BROKER_URL_INIT_PARAM
 operator|+
 literal|" init-Param"
 argument_list|)
@@ -1274,7 +1306,7 @@ name|servletContext
 operator|.
 name|getInitParameter
 argument_list|(
-name|connectionFactoryPrefetchParam
+name|CONNECTION_FACTORY_PREFETCH_PARAM
 argument_list|)
 operator|!=
 literal|null
@@ -1291,7 +1323,7 @@ name|servletContext
 operator|.
 name|getInitParameter
 argument_list|(
-name|connectionFactoryPrefetchParam
+name|CONNECTION_FACTORY_PREFETCH_PARAM
 argument_list|)
 argument_list|)
 operator|.
@@ -1316,7 +1348,7 @@ name|servletContext
 operator|.
 name|getInitParameter
 argument_list|(
-name|connectionFactoryOptimizeAckParam
+name|CONNECTION_FACTORY_OPTIMIZE_ACK_PARAM
 argument_list|)
 operator|!=
 literal|null
@@ -1333,7 +1365,7 @@ name|servletContext
 operator|.
 name|getInitParameter
 argument_list|(
-name|connectionFactoryOptimizeAckParam
+name|CONNECTION_FACTORY_OPTIMIZE_ACK_PARAM
 argument_list|)
 argument_list|)
 operator|.
@@ -1356,7 +1388,7 @@ name|servletContext
 operator|.
 name|setAttribute
 argument_list|(
-name|connectionFactoryAttribute
+name|CONNECTION_FACTORY_ATTRIBUTE
 argument_list|,
 name|factory
 argument_list|)
@@ -1452,9 +1484,6 @@ block|{
 name|MessageConsumer
 name|consumer
 init|=
-operator|(
-name|MessageConsumer
-operator|)
 name|consumers
 operator|.
 name|get
@@ -1509,9 +1538,6 @@ block|{
 name|MessageConsumer
 name|consumer
 init|=
-operator|(
-name|MessageConsumer
-operator|)
 name|consumers
 operator|.
 name|get
@@ -1546,6 +1572,7 @@ name|consumer
 operator|instanceof
 name|MessageAvailableConsumer
 condition|)
+block|{
 operator|(
 operator|(
 name|MessageAvailableConsumer
@@ -1558,6 +1585,7 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 name|consumer
 operator|.
 name|close
@@ -1568,12 +1596,18 @@ block|}
 specifier|public
 specifier|synchronized
 name|List
+argument_list|<
+name|MessageConsumer
+argument_list|>
 name|getConsumers
 parameter_list|()
 block|{
 return|return
 operator|new
 name|ArrayList
+argument_list|<
+name|MessageConsumer
+argument_list|>
 argument_list|(
 name|consumers
 operator|.

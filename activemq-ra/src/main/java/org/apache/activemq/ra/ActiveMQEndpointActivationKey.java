@@ -34,36 +34,16 @@ specifier|public
 class|class
 name|ActiveMQEndpointActivationKey
 block|{
-specifier|final
 specifier|private
+specifier|final
 name|MessageEndpointFactory
 name|messageEndpointFactory
 decl_stmt|;
-specifier|final
 specifier|private
+specifier|final
 name|MessageActivationSpec
 name|activationSpec
 decl_stmt|;
-comment|/**      * @return Returns the activationSpec.      */
-specifier|public
-name|MessageActivationSpec
-name|getActivationSpec
-parameter_list|()
-block|{
-return|return
-name|activationSpec
-return|;
-block|}
-comment|/**      * @return Returns the messageEndpointFactory.      */
-specifier|public
-name|MessageEndpointFactory
-name|getMessageEndpointFactory
-parameter_list|()
-block|{
-return|return
-name|messageEndpointFactory
-return|;
-block|}
 comment|/**      * For testing      */
 name|ActiveMQEndpointActivationKey
 parameter_list|()
@@ -99,6 +79,26 @@ name|activationSpec
 operator|=
 name|activationSpec
 expr_stmt|;
+block|}
+comment|/**      * @return Returns the activationSpec.      */
+specifier|public
+name|MessageActivationSpec
+name|getActivationSpec
+parameter_list|()
+block|{
+return|return
+name|activationSpec
+return|;
+block|}
+comment|/**      * @return Returns the messageEndpointFactory.      */
+specifier|public
+name|MessageEndpointFactory
+name|getMessageEndpointFactory
+parameter_list|()
+block|{
+return|return
+name|messageEndpointFactory
+return|;
 block|}
 comment|/**      * @see java.lang.Object#hashCode()      */
 specifier|public

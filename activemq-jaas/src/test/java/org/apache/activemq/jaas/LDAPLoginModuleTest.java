@@ -333,6 +333,11 @@ name|void
 name|testNothing
 parameter_list|()
 block|{     }
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|void
 name|testRunning
@@ -514,7 +519,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|XtestLogin
+name|xtestLogin
 parameter_list|()
 throws|throws
 name|LoginException
@@ -646,6 +651,11 @@ name|logout
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|void
 name|setUp
@@ -790,6 +800,11 @@ name|env
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|void
 name|tearDown

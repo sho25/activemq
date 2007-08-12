@@ -82,11 +82,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple bootstrap class for starting Jetty in your IDE using the local web application.  *   * @version $Revision$  */
+comment|/**  * A simple bootstrap class for starting Jetty in your IDE using the local web  * application.  *   * @version $Revision$  */
 end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|Main
 block|{
@@ -114,6 +115,10 @@ name|WEBAPP_CTX
 init|=
 literal|"/"
 decl_stmt|;
+specifier|private
+name|Main
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|void

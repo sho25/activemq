@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple tool for producing and consuming messages  *  * @version $Revision: 1.1.1.1 $  */
+comment|/**  * A simple tool for producing and consuming messages  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -77,10 +77,16 @@ name|args
 argument_list|)
 decl_stmt|;
 name|HashSet
+argument_list|<
+name|String
+argument_list|>
 name|set1
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|Arrays
 operator|.
@@ -109,10 +115,16 @@ name|args
 argument_list|)
 expr_stmt|;
 name|HashSet
+argument_list|<
+name|String
+argument_list|>
 name|set2
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|Arrays
 operator|.

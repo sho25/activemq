@@ -72,7 +72,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @version $Revision: 379734 $  */
+comment|/**  * @version $Revision: 379734 $  */
 end_comment
 
 begin_class
@@ -300,7 +300,9 @@ operator|.
 name|isPrimitiveType
 argument_list|()
 condition|)
-continue|continue ;
+block|{
+continue|continue;
+block|}
 block|}
 if|if
 condition|(
@@ -311,6 +313,7 @@ argument_list|(
 literal|"array<"
 argument_list|)
 condition|)
+block|{
 name|includeName
 operator|=
 name|includeName
@@ -327,6 +330,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -337,6 +341,7 @@ argument_list|(
 literal|"p<"
 argument_list|)
 condition|)
+block|{
 name|includeName
 operator|=
 name|includeName
@@ -353,6 +358,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|includeName

@@ -17,17 +17,15 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|activemq
+name|concurrent
 operator|.
-name|tool
+name|atomic
 operator|.
-name|sampler
-operator|.
-name|MeasurableClient
+name|AtomicLong
 import|;
 end_import
 
@@ -43,15 +41,17 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|concurrent
+name|activemq
 operator|.
-name|atomic
+name|tool
 operator|.
-name|AtomicLong
+name|sampler
+operator|.
+name|MeasurableClient
 import|;
 end_import
 

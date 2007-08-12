@@ -27,18 +27,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQConnection
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -57,8 +45,20 @@ name|JMSException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|ActiveMQConnection
+import|;
+end_import
+
 begin_comment
-comment|/**  * A JMS 1.1 log4j appender which uses ActiveMQ by default and does not require any JNDI  * configurations  *  * @version $Revision$  */
+comment|/**  * A JMS 1.1 log4j appender which uses ActiveMQ by default and does not require  * any JNDI configurations  *   * @version $Revision$  */
 end_comment
 
 begin_class

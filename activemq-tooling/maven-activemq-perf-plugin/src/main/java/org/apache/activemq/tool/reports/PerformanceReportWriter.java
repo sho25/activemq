@@ -32,17 +32,14 @@ specifier|public
 interface|interface
 name|PerformanceReportWriter
 block|{
-specifier|public
 name|void
 name|openReportWriter
 parameter_list|()
 function_decl|;
-specifier|public
 name|void
 name|closeReportWriter
 parameter_list|()
 function_decl|;
-specifier|public
 name|void
 name|writeInfo
 parameter_list|(
@@ -50,7 +47,6 @@ name|String
 name|info
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|writeCsvData
 parameter_list|(
@@ -61,7 +57,6 @@ name|String
 name|csvData
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|writeProperties
 parameter_list|(
@@ -72,7 +67,6 @@ name|Properties
 name|props
 parameter_list|)
 function_decl|;
-specifier|public
 name|void
 name|writeProperties
 parameter_list|(

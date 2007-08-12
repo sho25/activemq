@@ -17,34 +17,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|resource
@@ -137,8 +109,36 @@ name|Subject
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * A simple implementation of a ConnectionManager.  * An Application Server will have a better implementation with pooling and security etc.  *   * @version $Revision$  */
+comment|/**  * A simple implementation of a ConnectionManager. An Application Server will  * have a better implementation with pooling and security etc.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -163,7 +163,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -174,7 +174,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * @see javax.resource.spi.ConnectionManager#allocateConnection(javax.resource.spi.ManagedConnectionFactory, javax.resource.spi.ConnectionRequestInfo)      */
+comment|/**      * @see javax.resource.spi.ConnectionManager#allocateConnection(javax.resource.spi.ManagedConnectionFactory,      *      javax.resource.spi.ConnectionRequestInfo)      */
 specifier|public
 name|Object
 name|allocateConnection
@@ -254,7 +254,7 @@ name|ResourceException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -286,7 +286,7 @@ name|ResourceException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -333,7 +333,7 @@ name|ConnectionEvent
 name|event
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -367,7 +367,7 @@ name|ResourceException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -399,7 +399,7 @@ name|ResourceException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(

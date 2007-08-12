@@ -272,7 +272,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A servlet for sending and receiving messages to/from JMS destinations using  * HTTP POST for sending and HTTP GET for receiving.<p/> You can specify the  * destination and whether it is a topic or queue via configuration details on  * the servlet or as request parameters.<p/> For reading messages you can  * specify a readTimeout parameter to determine how long the servlet should  * block for.  *   * The servlet can be configured with the following init parameters:<dl>  *<dt>defaultReadTimeout</dt><dd>The default time in ms to wait for messages.   * May be overridden by a request using the 'timeout' parameter</dd>  *<dt>maximumReadTimeout</dt><dd>The maximum value a request may specify for the 'timeout' parameter</dd>  *<dt>maximumMessages</dt><dd>maximum messages to send per response</dd>  *<dt></dt><dd></dd>  *</dl>  *    *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * A servlet for sending and receiving messages to/from JMS destinations using  * HTTP POST for sending and HTTP GET for receiving.<p/> You can specify the  * destination and whether it is a topic or queue via configuration details on  * the servlet or as request parameters.<p/> For reading messages you can  * specify a readTimeout parameter to determine how long the servlet should  * block for. The servlet can be configured with the following init parameters:  *<dl>  *<dt>defaultReadTimeout</dt>  *<dd>The default time in ms to wait for messages. May be overridden by a  * request using the 'timeout' parameter</dd>  *<dt>maximumReadTimeout</dt>  *<dd>The maximum value a request may specify for the 'timeout' parameter</dd>  *<dt>maximumMessages</dt>  *<dd>maximum messages to send per response</dd>  *<dt></dt>  *<dd></dd>  *</dl>  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
 
 begin_class
@@ -286,7 +286,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -412,7 +412,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sends a message to a destination or manage subscriptions.      *       * If the the content type of the POST is<code>application/x-www-form-urlencoded</code>, then the form parameters       * "destination", "message" and "type" are used to pass a message or a subscription.  If multiple messages      * or subscriptions are passed in a single post, then additional parameters are shortened to "dN", "mN" and "tN"      * where N is an index starting from 1. The type is either "send", "listen" or "unlisten".  For send types,      * the message is the text of the TextMessage, otherwise it is the ID to be used for the subscription.      *       * If the content type is not<code>application/x-www-form-urlencoded</code>, then the body of the post is      * sent as the message to a destination that is derived from a query parameter, the URL or the default destination.      *       * @param request      * @param response      * @throws ServletException      * @throws IOException      */
+comment|/**      * Sends a message to a destination or manage subscriptions. If the the      * content type of the POST is      *<code>application/x-www-form-urlencoded</code>, then the form      * parameters "destination", "message" and "type" are used to pass a message      * or a subscription. If multiple messages or subscriptions are passed in a      * single post, then additional parameters are shortened to "dN", "mN" and      * "tN" where N is an index starting from 1. The type is either "send",      * "listen" or "unlisten". For send types, the message is the text of the      * TextMessage, otherwise it is the ID to be used for the subscription. If      * the content type is not<code>application/x-www-form-urlencoded</code>,      * then the body of the post is sent as the message to a destination that is      * derived from a query parameter, the URL or the default destination.      *       * @param request      * @param response      * @throws ServletException      * @throws IOException      */
 specifier|protected
 name|void
 name|doPost
@@ -440,7 +440,7 @@ name|request
 argument_list|)
 decl_stmt|;
 name|String
-name|message_ids
+name|messageIds
 init|=
 literal|""
 decl_stmt|;
@@ -451,13 +451,13 @@ init|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -503,9 +503,10 @@ condition|(
 literal|true
 condition|)
 block|{
-comment|// Get the message parameters.   Multiple messages are encoded with more compact parameter names.
+comment|// Get the message parameters. Multiple messages are encoded
+comment|// with more compact parameter names.
 name|String
-name|destination_name
+name|destinationName
 init|=
 name|request
 operator|.
@@ -526,11 +527,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|destination_name
+name|destinationName
 operator|==
 literal|null
 condition|)
-name|destination_name
+block|{
+name|destinationName
 operator|=
 name|request
 operator|.
@@ -539,6 +541,7 @@ argument_list|(
 literal|"destination"
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|message
 init|=
@@ -581,7 +584,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|destination_name
+name|destinationName
 operator|==
 literal|null
 operator|||
@@ -593,7 +596,9 @@ name|type
 operator|==
 literal|null
 condition|)
+block|{
 break|break;
+block|}
 try|try
 block|{
 name|Destination
@@ -605,18 +610,18 @@ name|client
 argument_list|,
 name|request
 argument_list|,
-name|destination_name
+name|destinationName
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -624,7 +629,7 @@ name|messages
 operator|+
 literal|" destination="
 operator|+
-name|destination_name
+name|destinationName
 operator|+
 literal|" message="
 operator|+
@@ -635,7 +640,7 @@ operator|+
 name|type
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -675,6 +680,11 @@ name|request
 argument_list|)
 decl_stmt|;
 name|Map
+argument_list|<
+name|MessageAvailableConsumer
+argument_list|,
+name|String
+argument_list|>
 name|consumerIdMap
 init|=
 name|getConsumerIdMap
@@ -683,6 +693,11 @@ name|request
 argument_list|)
 decl_stmt|;
 name|Map
+argument_list|<
+name|MessageAvailableConsumer
+argument_list|,
+name|String
+argument_list|>
 name|consumerDestinationMap
 init|=
 name|getConsumerDestinationNameMap
@@ -697,7 +712,8 @@ argument_list|(
 name|destination
 argument_list|)
 expr_stmt|;
-comment|// drop any existing consumer.
+comment|// drop any existing
+comment|// consumer.
 name|MessageAvailableConsumer
 name|consumer
 init|=
@@ -733,18 +749,18 @@ name|put
 argument_list|(
 name|consumer
 argument_list|,
-name|destination_name
+name|destinationName
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -775,6 +791,11 @@ argument_list|)
 condition|)
 block|{
 name|Map
+argument_list|<
+name|MessageAvailableConsumer
+argument_list|,
+name|String
+argument_list|>
 name|consumerIdMap
 init|=
 name|getConsumerIdMap
@@ -833,13 +854,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -890,7 +911,7 @@ argument_list|,
 name|text
 argument_list|)
 expr_stmt|;
-name|message_ids
+name|messageIds
 operator|+=
 name|text
 operator|.
@@ -901,13 +922,13 @@ literal|"\n"
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -923,7 +944,8 @@ expr_stmt|;
 block|}
 block|}
 else|else
-name|log
+block|{
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -933,13 +955,14 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 catch|catch
 parameter_list|(
 name|JMSException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1085,13 +1108,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1105,7 +1128,7 @@ name|body
 argument_list|)
 expr_stmt|;
 block|}
-name|message_ids
+name|messageIds
 operator|+=
 name|message
 operator|.
@@ -1153,7 +1176,7 @@ argument_list|()
 operator|.
 name|print
 argument_list|(
-name|message_ids
+name|messageIds
 argument_list|)
 expr_stmt|;
 block|}
@@ -1188,13 +1211,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1257,7 +1280,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Reads a message from a destination up to some specific timeout period      *       * @param client      *            The webclient      * @param request      * @param response      * @throws ServletException      * @throws IOException      */
+comment|/**      * Reads a message from a destination up to some specific timeout period      *       * @param client The webclient      * @param request      * @param response      * @throws ServletException      * @throws IOException      */
 specifier|protected
 name|void
 name|doMessages
@@ -1292,13 +1315,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1344,11 +1367,13 @@ operator|.
 name|isPending
 argument_list|()
 condition|)
+block|{
 name|listener
 operator|.
 name|access
 argument_list|()
 expr_stmt|;
+block|}
 name|Message
 name|message
 init|=
@@ -1416,7 +1441,9 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
+block|}
 comment|// Look for any available messages
 name|message
 operator|=
@@ -1427,13 +1454,13 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1516,6 +1543,11 @@ name|swriter
 argument_list|)
 decl_stmt|;
 name|Map
+argument_list|<
+name|MessageAvailableConsumer
+argument_list|,
+name|String
+argument_list|>
 name|consumerIdMap
 init|=
 name|getConsumerIdMap
@@ -1563,9 +1595,6 @@ block|{
 name|String
 name|id
 init|=
-operator|(
-name|String
-operator|)
 name|consumerIdMap
 operator|.
 name|get
@@ -1610,6 +1639,7 @@ name|destinationName
 operator|!=
 literal|null
 condition|)
+block|{
 name|writer
 operator|.
 name|print
@@ -1621,6 +1651,7 @@ operator|+
 literal|"' "
 argument_list|)
 expr_stmt|;
+block|}
 name|writer
 operator|.
 name|print
@@ -1690,7 +1721,9 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
+block|}
 comment|// Look for any available messages
 while|while
 condition|(
@@ -1721,9 +1754,6 @@ expr_stmt|;
 name|String
 name|id
 init|=
-operator|(
-name|String
-operator|)
 name|consumerIdMap
 operator|.
 name|get
@@ -1768,6 +1798,7 @@ name|destinationName
 operator|!=
 literal|null
 condition|)
+block|{
 name|writer
 operator|.
 name|print
@@ -1779,6 +1810,7 @@ operator|+
 literal|"' "
 argument_list|)
 expr_stmt|;
+block|}
 name|writer
 operator|.
 name|print
@@ -1803,7 +1835,8 @@ expr_stmt|;
 block|}
 block|}
 comment|// Add poll message
-comment|// writer.println("<response type='object' id='amqPoll'><ok/></response>");
+comment|// writer.println("<response type='object'
+comment|// id='amqPoll'><ok/></response>");
 name|writer
 operator|.
 name|print
@@ -2011,6 +2044,11 @@ return|;
 block|}
 specifier|protected
 name|Map
+argument_list|<
+name|MessageAvailableConsumer
+argument_list|,
+name|String
+argument_list|>
 name|getConsumerIdMap
 parameter_list|(
 name|HttpServletRequest
@@ -2028,10 +2066,20 @@ literal|true
 argument_list|)
 decl_stmt|;
 name|Map
+argument_list|<
+name|MessageAvailableConsumer
+argument_list|,
+name|String
+argument_list|>
 name|map
 init|=
 operator|(
 name|Map
+argument_list|<
+name|MessageAvailableConsumer
+argument_list|,
+name|String
+argument_list|>
 operator|)
 name|session
 operator|.
@@ -2051,6 +2099,11 @@ name|map
 operator|=
 operator|new
 name|HashMap
+argument_list|<
+name|MessageAvailableConsumer
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|session
@@ -2091,10 +2144,20 @@ literal|true
 argument_list|)
 decl_stmt|;
 name|Map
+argument_list|<
+name|MessageAvailableConsumer
+argument_list|,
+name|String
+argument_list|>
 name|map
 init|=
 operator|(
 name|Map
+argument_list|<
+name|MessageAvailableConsumer
+argument_list|,
+name|String
+argument_list|>
 operator|)
 name|session
 operator|.
@@ -2267,8 +2330,8 @@ name|currentTimeMillis
 argument_list|()
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|setContinuation
 parameter_list|(
@@ -2283,8 +2346,8 @@ operator|=
 name|continuation
 expr_stmt|;
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|onMessageAvailable
 parameter_list|(
@@ -2294,13 +2357,13 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2320,11 +2383,13 @@ name|continuation
 operator|!=
 literal|null
 condition|)
+block|{
 name|continuation
 operator|.
 name|resume
 argument_list|()
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(

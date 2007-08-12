@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|ConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -37,12 +27,21 @@ name|Properties
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|ConnectionFactory
+import|;
+end_import
+
 begin_interface
 specifier|public
 interface|interface
 name|SPIConnectionFactory
 block|{
-specifier|public
 name|ConnectionFactory
 name|createConnectionFactory
 parameter_list|(
@@ -52,7 +51,6 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-specifier|public
 name|void
 name|configureConnectionFactory
 parameter_list|(

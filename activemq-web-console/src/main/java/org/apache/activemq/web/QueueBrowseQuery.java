@@ -17,20 +17,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|springframework
-operator|.
-name|beans
-operator|.
-name|factory
-operator|.
-name|DisposableBean
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -66,6 +52,20 @@ operator|.
 name|jms
 operator|.
 name|Session
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|springframework
+operator|.
+name|beans
+operator|.
+name|factory
+operator|.
+name|DisposableBean
 import|;
 end_import
 

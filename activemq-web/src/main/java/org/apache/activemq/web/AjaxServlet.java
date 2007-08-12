@@ -162,7 +162,7 @@ comment|/* ------------------------------------------------------------ */
 end_comment
 
 begin_comment
-comment|/** AjaxServlet.  * The AjaxServlet extends the {@link MessageListenerServlet} with the capability to   * server the<code>amq.js</code> script and associated scripts from resources   * within the activemq-web jar.  The amq.js script is the client side companion to  * the MessageListenerServlet and supports sending messages and long polling for   * receiving messages (Also called Comet style Ajax).  *   */
+comment|/**  * AjaxServlet. The AjaxServlet extends the {@link MessageListenerServlet} with  * the capability to server the<code>amq.js</code> script and associated  * scripts from resources within the activemq-web jar. The amq.js script is the  * client side companion to the MessageListenerServlet and supports sending  * messages and long polling for receiving messages (Also called Comet style  * Ajax).  */
 end_comment
 
 begin_class
@@ -174,10 +174,22 @@ name|MessageListenerServlet
 block|{
 specifier|private
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|byte
+index|[]
+argument_list|>
 name|jsCache
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|byte
+index|[]
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -229,6 +241,7 @@ argument_list|(
 literal|".js"
 argument_list|)
 condition|)
+block|{
 name|doJavaScript
 argument_list|(
 name|request
@@ -236,7 +249,9 @@ argument_list|,
 name|response
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|super
 operator|.
 name|doGet
@@ -246,6 +261,7 @@ argument_list|,
 name|response
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|protected
 name|void
@@ -331,10 +347,6 @@ name|byte
 index|[]
 name|data
 init|=
-operator|(
-name|byte
-index|[]
-operator|)
 name|jsCache
 operator|.
 name|get
@@ -463,7 +475,7 @@ literal|null
 condition|)
 block|{
 name|long
-name|if_modified
+name|ifModified
 init|=
 name|request
 operator|.
@@ -474,7 +486,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|if_modified
+name|ifModified
 operator|==
 name|jsLastModified
 condition|)
@@ -529,6 +541,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|response
 operator|.
 name|sendError
@@ -538,6 +551,7 @@ operator|.
 name|SC_NOT_FOUND
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

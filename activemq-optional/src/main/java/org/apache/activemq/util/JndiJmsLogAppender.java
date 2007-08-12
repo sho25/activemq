@@ -17,15 +17,11 @@ end_package
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|util
 operator|.
-name|log4j
-operator|.
-name|helpers
-operator|.
-name|LogLog
+name|Hashtable
 import|;
 end_import
 
@@ -91,16 +87,20 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|Hashtable
+name|log4j
+operator|.
+name|helpers
+operator|.
+name|LogLog
 import|;
 end_import
 
 begin_comment
-comment|/**  * A JMS 1.1 log4j appender which uses JNDI to locate a JMS ConnectionFactory  * to use for logging events.  *  * @version $Revision$  */
+comment|/**  * A JMS 1.1 log4j appender which uses JNDI to locate a JMS ConnectionFactory to  * use for logging events.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -219,7 +219,7 @@ name|password
 expr_stmt|;
 block|}
 comment|// to customize the JNDI context
-comment|//-------------------------------------------------------------------------
+comment|// -------------------------------------------------------------------------
 specifier|public
 name|String
 name|getInitialContextFactoryName
@@ -341,7 +341,7 @@ name|securityCredentials
 expr_stmt|;
 block|}
 comment|// Implementation methods
-comment|//-------------------------------------------------------------------------
+comment|// -------------------------------------------------------------------------
 specifier|protected
 name|Connection
 name|createConnection

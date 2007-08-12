@@ -223,62 +223,6 @@ name|ActiveMQConnectionFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ra
-operator|.
-name|ActiveMQConnectionRequestInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ra
-operator|.
-name|ActiveMQManagedConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ra
-operator|.
-name|ActiveMQResourceAdapter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ra
-operator|.
-name|ManagedConnectionProxy
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version $Revision$  */
 end_comment
@@ -413,7 +357,8 @@ name|ResourceException
 throws|,
 name|JMSException
 block|{
-comment|// Make sure that the ConnectionFactory is asking the connection manager to
+comment|// Make sure that the ConnectionFactory is asking the connection manager
+comment|// to
 comment|// allocate the connection.
 specifier|final
 name|boolean
@@ -496,7 +441,8 @@ name|ConnectionFactory
 operator|)
 name|cf
 decl_stmt|;
-comment|// Make sure that the connection factory is using the ConnectionManager..
+comment|// Make sure that the connection factory is using the
+comment|// ConnectionManager..
 name|Connection
 name|connection
 init|=
@@ -641,10 +587,16 @@ name|connection2
 argument_list|)
 expr_stmt|;
 name|HashSet
+argument_list|<
+name|ManagedConnection
+argument_list|>
 name|set
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|ManagedConnection
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|set

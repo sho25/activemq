@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @version $Revision: 381410 $  */
+comment|/**  * @version $Revision: 381410 $  */
 end_comment
 
 begin_class
@@ -110,14 +110,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"/*"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|" *"
+literal|"/**"
 argument_list|)
 expr_stmt|;
 name|out
@@ -173,7 +166,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|" * http://www.apache.org/licenses/LICENSE-2.0"
+literal|" *      http://www.apache.org/licenses/LICENSE-2.0"
 argument_list|)
 expr_stmt|;
 name|out
@@ -949,7 +942,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"	  virtual void configure(ProtocolFormat& format) ;"
+literal|"    virtual void configure(ProtocolFormat& format) ;"
 argument_list|)
 expr_stmt|;
 name|out

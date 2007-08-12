@@ -116,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Use in conjunction with TopicPublisher to test the performance of ActiveMQ Topics.  */
+comment|/**  * Use in conjunction with TopicPublisher to test the performance of ActiveMQ  * Topics.  */
 end_comment
 
 begin_class
@@ -154,7 +154,6 @@ specifier|private
 name|Topic
 name|control
 decl_stmt|;
-comment|//	private String url="tcp://localhost:61616?jms.dispatchAsync=true&jms.useAsyncSend=true&jms.optimizeAcknowledge=true&jms.disableTimeStampsByDefault=true&jms.optimizedMessageDispatch=true&wireFormat.cacheEnabled=false&wireFormat.tightEncodingEnabled=false";
 specifier|private
 name|String
 name|url
@@ -443,14 +442,12 @@ block|{
 name|long
 name|time
 init|=
-operator|(
 name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
 operator|-
 name|start
-operator|)
 decl_stmt|;
 name|String
 name|msg
@@ -525,6 +522,7 @@ literal|1000
 operator|==
 literal|0
 condition|)
+block|{
 name|System
 operator|.
 name|out
@@ -538,6 +536,7 @@ operator|+
 literal|" messages."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public

@@ -108,7 +108,7 @@ specifier|protected
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -121,10 +121,16 @@ argument_list|)
 decl_stmt|;
 specifier|private
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|messageIds
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -252,6 +258,9 @@ block|}
 comment|/**      * @return all the messages on the list so far, clearing the buffer      */
 specifier|public
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|flushMessages
 parameter_list|()
 block|{
@@ -261,10 +270,16 @@ name|semaphore
 init|)
 block|{
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|answer
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|messageIds
 argument_list|)
@@ -282,6 +297,9 @@ block|}
 specifier|public
 specifier|synchronized
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|getMessageIds
 parameter_list|()
 block|{
@@ -293,6 +311,9 @@ block|{
 return|return
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|messageIds
 argument_list|)
@@ -344,7 +365,7 @@ condition|(
 name|verbose
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -409,7 +430,7 @@ name|int
 name|messageCount
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -496,7 +517,7 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -517,7 +538,7 @@ argument_list|()
 operator|-
 name|start
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(

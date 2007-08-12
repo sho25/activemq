@@ -138,7 +138,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A LoginModule allowing for SSL certificate based authentication based on Distinguished Names (DN) stored in text  *      files.  *        * The DNs are parsed using a Properties class where each line is<user_name>=<user_DN>.  * This class also uses a group definition file where each line is<group_name>=<user_name_1>,<user_name_2>,etc.  * The user and group files' locations must be specified in the org.apache.activemq.jaas.textfiledn.user and  *      org.apache.activemq.jaas.textfiledn.user properties respectively.  *   * NOTE: This class will re-read user and group files for every authentication (i.e it does live updates of allowed  *      groups and users).  *   * @author sepandm@gmail.com (Sepand)  */
+comment|/**  * A LoginModule allowing for SSL certificate based authentication based on  * Distinguished Names (DN) stored in text files. The DNs are parsed using a  * Properties class where each line is<user_name>=<user_DN>. This class also  * uses a group definition file where each line is<group_name>=<user_name_1>,<user_name_2>,etc.  * The user and group files' locations must be specified in the  * org.apache.activemq.jaas.textfiledn.user and  * org.apache.activemq.jaas.textfiledn.user properties respectively. NOTE: This  * class will re-read user and group files for every authentication (i.e it does  * live updates of allowed groups and users).  *   * @author sepandm@gmail.com (Sepand)  */
 end_comment
 
 begin_class
@@ -176,7 +176,7 @@ specifier|private
 name|String
 name|groupsFilePathname
 decl_stmt|;
-comment|/**      * Performs initialization of file paths.      *       * A standard JAAS override.      */
+comment|/**      * Performs initialization of file paths. A standard JAAS override.      */
 specifier|public
 name|void
 name|initialize
@@ -276,7 +276,7 @@ operator|+
 literal|""
 expr_stmt|;
 block|}
-comment|/**      * Overriding to allow DN authorization based on DNs specified in text files.      *        * @param certs The certificate the incoming connection provided.      * @return The user's authenticated name or null if unable to authenticate the user.      * @throws LoginException Thrown if unable to find user file or connection certificate.       */
+comment|/**      * Overriding to allow DN authorization based on DNs specified in text      * files.      *       * @param certs The certificate the incoming connection provided.      * @return The user's authenticated name or null if unable to authenticate      *         the user.      * @throws LoginException Thrown if unable to find user file or connection      *                 certificate.      */
 specifier|protected
 name|String
 name|getUserNameForCertificates
@@ -378,6 +378,17 @@ argument_list|(
 name|certs
 argument_list|)
 decl_stmt|;
+name|Enumeration
+argument_list|<
+name|Object
+argument_list|>
+name|keys
+init|=
+name|users
+operator|.
+name|keys
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|Enumeration
@@ -386,13 +397,6 @@ init|=
 name|users
 operator|.
 name|elements
-argument_list|()
-init|,
-name|keys
-init|=
-name|users
-operator|.
-name|keys
 argument_list|()
 init|;
 name|vals
@@ -443,9 +447,12 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Overriding to allow for group discovery based on text files.      *       * @param username The name of the user being examined. This is the same name returned by      *      getUserNameForCertificates.      * @return A Set of name Strings for groups this user belongs to.      * @throws LoginException Thrown if unable to find group definition file.      */
+comment|/**      * Overriding to allow for group discovery based on text files.      *       * @param username The name of the user being examined. This is the same      *                name returned by getUserNameForCertificates.      * @return A Set of name Strings for groups this user belongs to.      * @throws LoginException Thrown if unable to find group definition file.      */
 specifier|protected
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|getUserGroups
 parameter_list|(
 name|String
@@ -521,10 +528,16 @@ argument_list|)
 throw|;
 block|}
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|userGroups
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for

@@ -165,12 +165,11 @@ argument_list|()
 operator|!=
 literal|null
 operator|&&
+operator|!
 name|getter
 operator|.
 name|isStatic
 argument_list|()
-operator|==
-literal|false
 operator|&&
 name|getter
 operator|.
@@ -206,9 +205,11 @@ argument_list|(
 name|it
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|JAnnotationValue
 name|value
 init|=

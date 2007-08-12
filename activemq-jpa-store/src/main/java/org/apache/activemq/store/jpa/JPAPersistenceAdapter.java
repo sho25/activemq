@@ -330,7 +330,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link PersistenceAdapter} that uses JPA to  * store it's messages.  *   * @org.apache.xbean.XBean element="jpaPersistenceAdapter"  *   * @version $Revision: 1.17 $  */
+comment|/**  * An implementation of {@link PersistenceAdapter} that uses JPA to store it's  * messages.  *   * @org.apache.xbean.XBean element="jpaPersistenceAdapter"  * @version $Revision: 1.17 $  */
 end_comment
 
 begin_class
@@ -340,21 +340,6 @@ name|JPAPersistenceAdapter
 implements|implements
 name|PersistenceAdapter
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|log
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|JPAPersistenceAdapter
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 name|String
 name|entityManagerName
 init|=
@@ -398,6 +383,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -405,6 +391,7 @@ argument_list|(
 literal|"Transation already started."
 argument_list|)
 throw|;
+block|}
 name|EntityManager
 name|manager
 init|=
@@ -457,6 +444,7 @@ name|manager
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -464,6 +452,7 @@ argument_list|(
 literal|"Transation not started."
 argument_list|)
 throw|;
+block|}
 name|context
 operator|.
 name|setLongTermStoreContext
@@ -512,6 +501,7 @@ name|manager
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -519,6 +509,7 @@ argument_list|(
 literal|"Transation not started."
 argument_list|)
 throw|;
+block|}
 name|context
 operator|.
 name|setLongTermStoreContext
@@ -1073,14 +1064,14 @@ parameter_list|(
 name|UsageManager
 name|usageManager
 parameter_list|)
-block|{ 	}
+block|{     }
 specifier|public
 name|void
 name|start
 parameter_list|()
 throws|throws
 name|Exception
-block|{ 	}
+block|{     }
 specifier|public
 name|void
 name|stop
@@ -1270,7 +1261,7 @@ name|sync
 parameter_list|)
 throws|throws
 name|IOException
-block|{             }
+block|{     }
 specifier|public
 name|void
 name|setBrokerName
@@ -1278,7 +1269,7 @@ parameter_list|(
 name|String
 name|brokerName
 parameter_list|)
-block|{             }
+block|{     }
 specifier|public
 name|void
 name|setDirectory
@@ -1286,7 +1277,7 @@ parameter_list|(
 name|File
 name|dir
 parameter_list|)
-block|{             }
+block|{     }
 block|}
 end_class
 

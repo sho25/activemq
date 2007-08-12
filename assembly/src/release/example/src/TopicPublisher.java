@@ -19,7 +19,97 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|*
+name|BytesMessage
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Connection
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|DeliveryMode
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Message
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|MessageListener
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|MessageProducer
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Session
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|TextMessage
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Topic
 import|;
 end_import
 
@@ -36,7 +126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Use in conjunction with TopicListener to test the performance of ActiveMQ Topics.  */
+comment|/**  * Use in conjunction with TopicListener to test the performance of ActiveMQ  * Topics.  */
 end_comment
 
 begin_class
@@ -46,6 +136,18 @@ name|TopicPublisher
 implements|implements
 name|MessageListener
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|char
+index|[]
+name|DATA
+init|=
+literal|"abcdefghijklmnopqrstuvwxyz"
+operator|.
+name|toCharArray
+argument_list|()
+decl_stmt|;
 specifier|private
 specifier|final
 name|Object
@@ -75,7 +177,6 @@ specifier|private
 name|Topic
 name|control
 decl_stmt|;
-comment|//	private String url="tcp://localhost:61616?jms.dispatchAsync=true&jms.useAsyncSend=true&jms.optimizeAcknowledge=true&jms.disableTimeStampsByDefault=true&jms.optimizedMessageDispatch=true&wireFormat.cacheEnabled=false&wireFormat.tightEncodingEnabled=false";
 specifier|private
 name|String
 name|url
@@ -118,18 +219,6 @@ specifier|private
 name|byte
 index|[]
 name|payload
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|char
-index|[]
-name|DATA
-init|=
-literal|"abcdefghijklmnopqrstuvwxyz"
-operator|.
-name|toCharArray
-argument_list|()
 decl_stmt|;
 specifier|public
 specifier|static
@@ -364,6 +453,7 @@ name|i
 operator|>
 literal|0
 condition|)
+block|{
 name|Thread
 operator|.
 name|sleep
@@ -373,6 +463,7 @@ operator|*
 literal|1000
 argument_list|)
 expr_stmt|;
+block|}
 name|times
 index|[
 name|i
@@ -454,7 +545,7 @@ name|max
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//request shutdown
+comment|// request shutdown
 name|publisher
 operator|.
 name|send
@@ -522,7 +613,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//send events
+comment|// send events
 name|BytesMessage
 name|msg
 init|=
@@ -592,7 +683,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//request report
+comment|// request report
 name|publisher
 operator|.
 name|send
@@ -911,7 +1002,6 @@ operator|-=
 name|max
 expr_stmt|;
 return|return
-operator|(
 name|sum
 operator|/
 name|times
@@ -919,7 +1009,6 @@ operator|.
 name|length
 operator|-
 literal|2
-operator|)
 return|;
 block|}
 specifier|public

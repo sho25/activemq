@@ -17,11 +17,11 @@ end_package
 
 begin_import
 import|import
-name|junit
+name|java
 operator|.
-name|framework
+name|io
 operator|.
-name|TestCase
+name|File
 import|;
 end_import
 
@@ -37,27 +37,11 @@ end_import
 
 begin_import
 import|import
-name|java
+name|junit
 operator|.
-name|io
+name|framework
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|tool
-operator|.
-name|properties
-operator|.
-name|ReflectionUtil
+name|TestCase
 import|;
 end_import
 
@@ -74,6 +58,22 @@ operator|.
 name|properties
 operator|.
 name|ReflectionConfigurable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|tool
+operator|.
+name|properties
+operator|.
+name|ReflectionUtil
 import|;
 end_import
 
@@ -1568,8 +1568,6 @@ block|{
 specifier|public
 name|boolean
 name|intercepted
-init|=
-literal|false
 decl_stmt|;
 specifier|public
 name|boolean
@@ -1580,8 +1578,6 @@ decl_stmt|;
 specifier|public
 name|TestClass5
 name|nest
-init|=
-literal|null
 decl_stmt|;
 specifier|public
 name|void
@@ -1657,14 +1653,10 @@ block|{
 specifier|public
 name|TestClass6
 name|nestNotConfig
-init|=
-literal|null
 decl_stmt|;
 specifier|public
 name|TestClass5
 name|nestConfig
-init|=
-literal|null
 decl_stmt|;
 specifier|public
 name|TestClass6

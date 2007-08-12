@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -95,18 +105,8 @@ name|Topic
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
-comment|/**  * A simple tool for consuming messages  *  * @version $Revision$  */
+comment|/**  * A simple tool for consuming messages  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -121,8 +121,6 @@ block|{
 specifier|protected
 name|int
 name|count
-init|=
-literal|0
 decl_stmt|;
 specifier|protected
 name|int
@@ -139,8 +137,6 @@ decl_stmt|;
 specifier|protected
 name|int
 name|maxiumMessages
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|boolean
@@ -499,6 +495,7 @@ argument_list|()
 operator|>
 literal|50
 condition|)
+block|{
 name|msg
 operator|=
 name|msg
@@ -512,6 +509,7 @@ argument_list|)
 operator|+
 literal|"..."
 expr_stmt|;
+block|}
 name|System
 operator|.
 name|out
@@ -545,7 +543,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/*             if (++count % dumpCount == 0) {                 dumpStats(connection);             }             */
+comment|/*              * if (++count % dumpCount == 0) { dumpStats(connection); }              */
 block|}
 catch|catch
 parameter_list|(

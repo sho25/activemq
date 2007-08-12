@@ -28,17 +28,22 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helper utility that can be used to set the properties on any object  * using command line arguments.  *   * @author<a href="http://hiramchirino.com">Hiram Chirino</a>  */
+comment|/**  * Helper utility that can be used to set the properties on any object using  * command line arguments.  *   * @author<a href="http://hiramchirino.com">Hiram Chirino</a>  */
 end_comment
 
 begin_class
 specifier|public
+specifier|final
 class|class
 name|CommandLineSupport
 block|{
-comment|/** 	 * Sets the properties of an object given the command line args. 	 *  	 * if args contains: --ack-mode=AUTO --url=tcp://localhost:61616 --persistent  	 *  	 * then it will try to call the following setters on the target object. 	 *  	 * target.setAckMode("AUTO"); 	 * target.setURL(new URI("tcp://localhost:61616") ); 	 * target.setPersistent(true); 	 *  	 * Notice the the proper conversion for the argument is determined by examining the  	 * setter arguement type.   	 *  	 * @param target the object that will have it's properties set 	 * @param args the commline options 	 * @return any arguments that are not valid options for the target 	 */
-specifier|static
+specifier|private
+name|CommandLineSupport
+parameter_list|()
+block|{     }
+comment|/**      * Sets the properties of an object given the command line args.      *       * if args contains: --ack-mode=AUTO --url=tcp://localhost:61616 --persistent       *       * then it will try to call the following setters on the target object.      *       * target.setAckMode("AUTO");      * target.setURL(new URI("tcp://localhost:61616") );      * target.setPersistent(true);      *       * Notice the the proper conversion for the argument is determined by examining the       * setter arguement type.        *       * @param target the object that will have it's properties set      * @param args the commline options      * @return any arguments that are not valid options for the target      */
 specifier|public
+specifier|static
 name|String
 index|[]
 name|setOptions
@@ -52,10 +57,16 @@ name|args
 parameter_list|)
 block|{
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|rc
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -84,7 +95,9 @@ index|]
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 name|args
@@ -98,7 +111,8 @@ literal|"--"
 argument_list|)
 condition|)
 block|{
-comment|// --options without a specified value are considered boolean flags that are enabled.
+comment|// --options without a specified value are considered boolean
+comment|// flags that are enabled.
 name|String
 name|value
 init|=
@@ -242,7 +256,7 @@ return|return
 name|r
 return|;
 block|}
-comment|/** 	 * converts strings like: test-enabled to testEnabled 	 * @param name 	 * @return 	 */
+comment|/**      * converts strings like: test-enabled to testEnabled      *       * @param name      * @return      */
 specifier|private
 specifier|static
 name|String
@@ -257,7 +271,8 @@ name|rc
 init|=
 literal|""
 decl_stmt|;
-comment|// Look for '-' and strip and then convert the subsequent char to uppercase
+comment|// Look for '-' and strip and then convert the subsequent char to
+comment|// uppercase
 name|int
 name|p
 init|=

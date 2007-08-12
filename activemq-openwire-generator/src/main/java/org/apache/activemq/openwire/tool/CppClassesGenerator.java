@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -82,7 +82,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version $Revision: 409828 $  */
+comment|/**  * @version $Revision: 409828 $  */
 end_comment
 
 begin_class
@@ -191,10 +191,12 @@ argument_list|(
 literal|"byte[]"
 argument_list|)
 condition|)
+block|{
 name|name
 operator|=
 literal|"char[]"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -205,10 +207,12 @@ argument_list|(
 literal|"DataStructure[]"
 argument_list|)
 condition|)
+block|{
 name|name
 operator|=
 literal|"IDataStructure[]"
 expr_stmt|;
+block|}
 return|return
 literal|"array<"
 operator|+
@@ -414,7 +418,7 @@ literal|"0"
 return|;
 block|}
 block|}
-comment|/**      * Converts the Java type to the name of the C++ marshal method      * to be used      */
+comment|/**      * Converts the Java type to the name of the C++ marshal method to be used      */
 specifier|public
 name|String
 name|toMarshalMethodName
@@ -471,13 +475,17 @@ argument_list|(
 literal|"byte[]"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"marshalByteArray"
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|"marshalObjectArray"
 return|;
+block|}
 block|}
 elseif|else
 if|if
@@ -620,7 +628,7 @@ name|name
 return|;
 block|}
 block|}
-comment|/**      * Converts the Java type to the name of the C++ unmarshal method      * to be used      */
+comment|/**      * Converts the Java type to the name of the C++ unmarshal method to be used      */
 specifier|public
 name|String
 name|toUnmarshalMethodName
@@ -677,13 +685,17 @@ argument_list|(
 literal|"byte[]"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"unmarshalByteArray"
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|"unmarshalObjectArray"
 return|;
+block|}
 block|}
 elseif|else
 if|if
@@ -852,6 +864,7 @@ argument_list|(
 literal|"p<"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"p_cast<"
 operator|+
@@ -862,6 +875,7 @@ argument_list|(
 literal|2
 argument_list|)
 return|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -899,6 +913,7 @@ argument_list|(
 literal|"ByteSequence"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"array_cast<"
 operator|+
@@ -909,10 +924,13 @@ argument_list|(
 literal|6
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|""
 return|;
+block|}
 block|}
 specifier|protected
 name|void
@@ -926,14 +944,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"/*"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|" *"
+literal|"/**"
 argument_list|)
 expr_stmt|;
 name|out
@@ -989,7 +1000,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|" * http://www.apache.org/licenses/LICENSE-2.0"
+literal|" *      http://www.apache.org/licenses/LICENSE-2.0"
 argument_list|)
 expr_stmt|;
 name|out

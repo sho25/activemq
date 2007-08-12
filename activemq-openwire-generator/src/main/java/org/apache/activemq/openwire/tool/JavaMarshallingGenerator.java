@@ -158,7 +158,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version $Revision: 384826 $  */
+comment|/**  * @version $Revision: 384826 $  */
 end_comment
 
 begin_class
@@ -170,10 +170,16 @@ name|MultiSourceGenerator
 block|{
 specifier|protected
 name|List
+argument_list|<
+name|JClass
+argument_list|>
 name|concreteClasses
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|JClass
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|protected
@@ -1864,10 +1870,16 @@ literal|""
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|JClass
+argument_list|>
 name|list
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|JClass
+argument_list|>
 argument_list|(
 name|getConcreteClasses
 argument_list|()
@@ -1931,6 +1943,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|JClass
+argument_list|>
 name|iter
 init|=
 name|list
@@ -1948,9 +1963,6 @@ block|{
 name|JClass
 name|jclass
 init|=
-operator|(
-name|JClass
-operator|)
 name|iter
 operator|.
 name|next
@@ -2180,7 +2192,7 @@ specifier|protected
 name|void
 name|initialiseManuallyMaintainedClasses
 parameter_list|()
-block|{ 	}
+block|{     }
 specifier|protected
 name|void
 name|generateTightUnmarshalBody
@@ -3577,14 +3589,6 @@ literal|"byte[]"
 argument_list|)
 condition|)
 block|{
-name|String
-name|mandatory
-init|=
-name|getMandatoryFlag
-argument_list|(
-name|annotation
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|size
@@ -4915,7 +4919,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Returns whether or not the given annotation has a mandatory flag on it or 	 * not 	 */
+comment|/**      * Returns whether or not the given annotation has a mandatory flag on it or      * not      */
 specifier|protected
 name|String
 name|getMandatoryFlag
@@ -4974,6 +4978,9 @@ return|;
 block|}
 specifier|public
 name|List
+argument_list|<
+name|JClass
+argument_list|>
 name|getConcreteClasses
 parameter_list|()
 block|{
@@ -4986,6 +4993,9 @@ name|void
 name|setConcreteClasses
 parameter_list|(
 name|List
+argument_list|<
+name|JClass
+argument_list|>
 name|concreteClasses
 parameter_list|)
 block|{

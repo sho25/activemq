@@ -209,62 +209,6 @@ name|ActiveMQConnectionFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ra
-operator|.
-name|ActiveMQManagedConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ra
-operator|.
-name|ActiveMQManagedConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ra
-operator|.
-name|ActiveMQResourceAdapter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ra
-operator|.
-name|ManagedConnectionProxy
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version $Revision$  */
 end_comment
@@ -715,7 +659,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|// Begin the transaction...  that should kick off the event.
+comment|// Begin the transaction... that should kick off the event.
 name|managedConnection
 operator|.
 name|getLocalTransaction
@@ -750,7 +694,7 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * A managed connection that has been clean up should throw exceptions      * when it used.      */
+comment|/**      * A managed connection that has been clean up should throw exceptions when      * it used.      */
 specifier|public
 name|void
 name|testCleanup
@@ -906,7 +850,7 @@ name|e
 parameter_list|)
 block|{         }
 block|}
-comment|/**      * Does some work so that we can test commit/rollback etc.      * @throws JMSException      */
+comment|/**      * Does some work so that we can test commit/rollback etc.      *       * @throws JMSException      */
 specifier|public
 name|void
 name|doWork

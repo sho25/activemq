@@ -107,6 +107,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|xml
+operator|.
+name|sax
+operator|.
+name|InputSource
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|apache
 operator|.
 name|activemq
@@ -131,18 +143,6 @@ name|ByteArrayInputStream
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|xml
-operator|.
-name|sax
-operator|.
-name|InputSource
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -156,7 +156,7 @@ specifier|private
 specifier|static
 specifier|final
 name|XPathFactory
-name|factory
+name|FACTORY
 init|=
 name|XPathFactory
 operator|.
@@ -185,7 +185,7 @@ block|{
 name|XPath
 name|xpath
 init|=
-name|factory
+name|FACTORY
 operator|.
 name|newXPath
 argument_list|()

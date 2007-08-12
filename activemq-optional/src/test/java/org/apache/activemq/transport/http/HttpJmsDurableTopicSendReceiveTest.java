@@ -25,7 +25,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|JmsDurableTopicSendReceiveTest
+name|ActiveMQConnectionFactory
 import|;
 end_import
 
@@ -37,7 +37,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|ActiveMQConnectionFactory
+name|JmsDurableTopicSendReceiveTest
 import|;
 end_import
 

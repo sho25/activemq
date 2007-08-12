@@ -17,6 +17,46 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|BufferedReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|FileReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -75,46 +115,6 @@ name|Session
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|BufferedReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|FileReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
 comment|/**  * @author James Strachan  * @version $Revision$  */
 end_comment
@@ -143,6 +143,10 @@ name|messageSize
 init|=
 literal|1000
 decl_stmt|;
+specifier|public
+name|Producer
+parameter_list|()
+block|{     }
 specifier|public
 specifier|static
 name|void
@@ -329,10 +333,6 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-name|Producer
-parameter_list|()
-block|{     }
-specifier|public
 name|void
 name|run
 parameter_list|()
@@ -347,7 +347,7 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// Properties
-comment|//-------------------------------------------------------------------------
+comment|// -------------------------------------------------------------------------
 specifier|public
 name|int
 name|getMessageSize
@@ -397,7 +397,7 @@ name|loopSize
 expr_stmt|;
 block|}
 comment|// Implementation methods
-comment|//-------------------------------------------------------------------------
+comment|// -------------------------------------------------------------------------
 specifier|protected
 name|void
 name|publish

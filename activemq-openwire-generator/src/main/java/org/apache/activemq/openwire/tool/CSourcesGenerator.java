@@ -116,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version $Revision: 383749 $  */
+comment|/**  * @version $Revision: 383749 $  */
 end_comment
 
 begin_class
@@ -311,10 +311,16 @@ throws|throws
 name|Exception
 block|{
 name|ArrayList
+argument_list|<
+name|JProperty
+argument_list|>
 name|properties
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|JProperty
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|jclass
@@ -752,6 +758,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|JProperty
+argument_list|>
 name|iter
 init|=
 name|properties
@@ -769,9 +778,6 @@ block|{
 name|JProperty
 name|property
 init|=
-operator|(
-name|JProperty
-operator|)
 name|iter
 operator|.
 name|next
@@ -861,7 +867,7 @@ argument_list|(
 literal|"byte"
 argument_list|)
 condition|)
-block|{                    }
+block|{             }
 elseif|else
 if|if
 condition|(
@@ -872,7 +878,7 @@ argument_list|(
 literal|"char"
 argument_list|)
 condition|)
-block|{                    }
+block|{             }
 elseif|else
 if|if
 condition|(
@@ -883,7 +889,7 @@ argument_list|(
 literal|"short"
 argument_list|)
 condition|)
-block|{                    }
+block|{             }
 elseif|else
 if|if
 condition|(
@@ -894,7 +900,7 @@ argument_list|(
 literal|"int"
 argument_list|)
 condition|)
-block|{                    }
+block|{             }
 elseif|else
 if|if
 condition|(
@@ -1135,7 +1141,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"	return APR_SUCCESS;"
+literal|"   return APR_SUCCESS;"
 argument_list|)
 expr_stmt|;
 name|out
@@ -1185,6 +1191,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|JProperty
+argument_list|>
 name|iter
 init|=
 name|properties
@@ -1202,9 +1211,6 @@ block|{
 name|JProperty
 name|property
 init|=
-operator|(
-name|JProperty
-operator|)
 name|iter
 operator|.
 name|next
@@ -1670,7 +1676,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"	return APR_SUCCESS;"
+literal|"   return APR_SUCCESS;"
 argument_list|)
 expr_stmt|;
 name|out
@@ -1727,6 +1733,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|JProperty
+argument_list|>
 name|iter
 init|=
 name|properties
@@ -1744,9 +1753,6 @@ block|{
 name|JProperty
 name|property
 init|=
-operator|(
-name|JProperty
-operator|)
 name|iter
 operator|.
 name|next
@@ -2216,7 +2222,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"	return APR_SUCCESS;"
+literal|"   return APR_SUCCESS;"
 argument_list|)
 expr_stmt|;
 name|out

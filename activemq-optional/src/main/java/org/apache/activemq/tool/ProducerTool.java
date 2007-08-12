@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple tool for publishing messages  *  * @version $Revision$  */
+comment|/**  * A simple tool for publishing messages  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -105,8 +105,6 @@ decl_stmt|;
 specifier|protected
 name|long
 name|sleepTime
-init|=
-literal|0L
 decl_stmt|;
 specifier|protected
 name|boolean
@@ -377,7 +375,7 @@ argument_list|(
 name|session
 argument_list|)
 decl_stmt|;
-comment|//connection.start();
+comment|// connection.start();
 name|sendLoop
 argument_list|(
 name|session
@@ -540,6 +538,7 @@ argument_list|()
 operator|>
 literal|50
 condition|)
+block|{
 name|msg
 operator|=
 name|msg
@@ -553,6 +552,7 @@ argument_list|)
 operator|+
 literal|"..."
 expr_stmt|;
+block|}
 name|System
 operator|.
 name|out
@@ -591,7 +591,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @param i 	 * @return 	 */
+comment|/**      * @param i      * @return      */
 specifier|private
 name|String
 name|createMessageText
@@ -662,6 +662,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|buffer
 operator|.
 name|append
@@ -669,6 +670,7 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|buffer
 operator|.

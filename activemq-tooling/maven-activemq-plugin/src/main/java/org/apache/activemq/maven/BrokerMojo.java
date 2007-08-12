@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+end_comment
+
 begin_package
 package|package
 name|org
@@ -14,6 +18,16 @@ end_package
 begin_comment
 comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Properties
+import|;
+end_import
 
 begin_import
 import|import
@@ -85,18 +99,8 @@ name|MavenProject
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Properties
-import|;
-end_import
-
 begin_comment
-comment|/**  * Goal which starts an activemq broker.  *  * @goal run  * @phase process-sources  */
+comment|/**  * Goal which starts an activemq broker.  *   * @goal run  * @phase process-sources  */
 end_comment
 
 begin_class
@@ -106,22 +110,22 @@ name|BrokerMojo
 extends|extends
 name|AbstractMojo
 block|{
-comment|/** 	 * The maven project. 	 * 	 * @parameter expression="${project}" 	 * @required 	 * @readonly 	 */
+comment|/**      * The maven project.      *       * @parameter expression="${project}"      * @required      * @readonly      */
 specifier|protected
 name|MavenProject
 name|project
 decl_stmt|;
-comment|/**      * The broker configuration uri      *      * The list of currently supported URI syntaxes is described      *<a href="http://activemq.apache.org/how-do-i-embed-a-broker-inside-a-connection.html">here</a>      *      * @parameter expression="${configUri}" default-value="broker:(tcp://localhost:61616)?useJmx=false&persistent=false"      * @required      */
+comment|/**      * The broker configuration uri The list of currently supported URI syntaxes      * is described<a      * href="http://activemq.apache.org/how-do-i-embed-a-broker-inside-a-connection.html">here</a>      *       * @parameter expression="${configUri}"      *            default-value="broker:(tcp://localhost:61616)?useJmx=false&persistent=false"      * @required      */
 specifier|private
 name|String
 name|configUri
 decl_stmt|;
-comment|/**      * Indicates whether to fork the broker, useful for integration tests.      *      * @parameter expression="${fork}" default-value="false"      */
+comment|/**      * Indicates whether to fork the broker, useful for integration tests.      *       * @parameter expression="${fork}" default-value="false"      */
 specifier|private
 name|boolean
 name|fork
 decl_stmt|;
-comment|/**      * System properties to add      * @parameter expression="${systemProperties}"      */
+comment|/**      * System properties to add      *       * @parameter expression="${systemProperties}"      */
 specifier|private
 name|Properties
 name|systemProperties
@@ -240,7 +244,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Wait for a shutdown invocation elsewhere      * @throws Exception      */
+comment|/**      * Wait for a shutdown invocation elsewhere      *       * @throws Exception      */
 specifier|protected
 name|void
 name|waitForShutdown

@@ -398,7 +398,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Adds additional bootstrapping for server socket listeners when firing  * up the server.  *  * @version $Rev: 233391 $ $Date: 2005-08-18 16:38:47 -0600 (Thu, 18 Aug 2005) $  * @see javax.naming.spi.InitialContextFactory  */
+comment|/**  * Adds additional bootstrapping for server socket listeners when firing up the  * server.  *   * @version $Rev: 233391 $ $Date: 2005-08-18 16:38:47 -0600 (Thu, 18 Aug 2005) $  * @see javax.naming.spi.InitialContextFactory  */
 end_comment
 
 begin_class
@@ -412,7 +412,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -478,13 +478,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isInfoEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -515,13 +515,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isInfoEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -626,7 +626,7 @@ name|getMinaServiceRegistry
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Starts the Kerberos protocol provider which is backed by the LDAP store.      *      * @throws NamingException if there are problems starting up the Kerberos provider      */
+comment|/**      * Starts the Kerberos protocol provider which is backed by the LDAP store.      *       * @throws NamingException if there are problems starting up the Kerberos      *                 provider      */
 specifier|private
 name|void
 name|startKerberosProtocol
@@ -637,7 +637,7 @@ parameter_list|)
 throws|throws
 name|NamingException
 block|{
-comment|/*          * Looks like KdcConfiguration takes properties and we use Hashtable for JNDI          * so I'm copying over the String based properties into a new Properties obj.          */
+comment|/*          * Looks like KdcConfiguration takes properties and we use Hashtable for          * JNDI so I'm copying over the String based properties into a new          * Properties obj.          */
 name|Properties
 name|props
 init|=
@@ -706,7 +706,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// construct the configuration, get the port, create the service, and prepare kdc objects
+comment|// construct the configuration, get the port, create the service, and
+comment|// prepare kdc objects
 name|KdcConfiguration
 name|config
 init|=
@@ -816,13 +817,13 @@ name|service
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isInfoEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -839,7 +840,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -854,7 +855,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Maps a Kerberos Realm name to a position within the DIT.  The primary realm of      * the KDC will use this area for configuration and for storing user entries.      *      * @param config the KDC's configuration      * @param env    the JNDI environment properties      * @return the base context for the primary realm of the KDC      * @throws NamingException      */
+comment|/**      * Maps a Kerberos Realm name to a position within the DIT. The primary      * realm of the KDC will use this area for configuration and for storing      * user entries.      *       * @param config the KDC's configuration      * @param env the JNDI environment properties      * @return the base context for the primary realm of the KDC      * @throws NamingException      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|private
 name|LdapContext
 name|getBaseRealmContext
@@ -905,13 +911,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isInfoEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -941,7 +947,7 @@ block|{}
 argument_list|)
 return|;
 block|}
-comment|/**      * Starts up the LDAP protocol provider to service LDAP requests      *      * @throws NamingException if there are problems starting the LDAP provider      */
+comment|/**      * Starts up the LDAP protocol provider to service LDAP requests      *       * @throws NamingException if there are problems starting the LDAP provider      */
 specifier|private
 name|void
 name|startLdapProtocol
@@ -1019,13 +1025,13 @@ name|service
 expr_stmt|;
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isInfoEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1065,7 +1071,7 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(

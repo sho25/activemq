@@ -244,7 +244,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link ReferenceStoreAdapter} that uses JPA to  * store it's message references.  *   * @org.apache.xbean.XBean element="jpaReferenceStoreAdapter"  *   * @version $Revision: 1.17 $  */
+comment|/**  * An implementation of {@link ReferenceStoreAdapter} that uses JPA to store  * it's message references.  *   * @org.apache.xbean.XBean element="jpaReferenceStoreAdapter"  * @version $Revision: 1.17 $  */
 end_comment
 
 begin_class
@@ -723,13 +723,13 @@ specifier|public
 name|void
 name|clearMessages
 parameter_list|()
-block|{             }
+block|{     }
 comment|/**      * @see org.apache.activemq.store.ReferenceStoreAdapter#recoverState()      */
 specifier|public
 name|void
 name|recoverState
 parameter_list|()
-block|{             }
+block|{     }
 specifier|public
 name|Map
 argument_list|<
@@ -760,7 +760,7 @@ name|map
 parameter_list|)
 throws|throws
 name|IOException
-block|{             }
+block|{     }
 block|}
 end_class
 

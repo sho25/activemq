@@ -17,17 +17,11 @@ end_package
 
 begin_import
 import|import
-name|org
+name|javax
 operator|.
-name|apache
+name|jms
 operator|.
-name|activemq
-operator|.
-name|tool
-operator|.
-name|properties
-operator|.
-name|JmsClientSystemProperties
+name|JMSException
 import|;
 end_import
 
@@ -43,7 +37,23 @@ name|tool
 operator|.
 name|properties
 operator|.
-name|JmsProducerSystemProperties
+name|JmsClientProperties
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|tool
+operator|.
+name|properties
+operator|.
+name|JmsClientSystemProperties
 import|;
 end_import
 
@@ -75,7 +85,7 @@ name|tool
 operator|.
 name|properties
 operator|.
-name|JmsClientProperties
+name|JmsProducerSystemProperties
 import|;
 end_import
 
@@ -92,26 +102,6 @@ operator|.
 name|sampler
 operator|.
 name|ThroughputSamplerTask
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Properties
 import|;
 end_import
 

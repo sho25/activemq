@@ -114,7 +114,7 @@ comment|/* ------------------------------------------------------------ */
 end_comment
 
 begin_comment
-comment|/** SessionFilter.  * Simple filter to ensure that all clients have a session.  * Prevents problems with AJAX requests.   */
+comment|/**  * SessionFilter. Simple filter to ensure that all clients have a session.  * Prevents problems with AJAX requests.  */
 end_comment
 
 begin_class
@@ -152,9 +152,6 @@ name|IOException
 throws|,
 name|ServletException
 block|{
-name|HttpSession
-name|session
-init|=
 operator|(
 operator|(
 name|HttpServletRequest
@@ -166,9 +163,10 @@ name|getSession
 argument_list|(
 literal|true
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// if (session.isNew())
-comment|//    System.err.println("NEW SESSION "+session.getId()+" for "+((HttpServletRequest)request).getRequestURI());
+comment|// System.err.println("NEW SESSION "+session.getId()+" for
+comment|// "+((HttpServletRequest)request).getRequestURI());
 name|chain
 operator|.
 name|doFilter

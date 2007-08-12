@@ -108,8 +108,8 @@ name|XAResource
 implements|,
 name|LocalTransaction
 block|{
-specifier|final
 specifier|private
+specifier|final
 name|TransactionContext
 name|transactionContext
 decl_stmt|;
@@ -152,11 +152,13 @@ condition|(
 operator|!
 name|inManagedTx
 condition|)
+block|{
 name|transactionContext
 operator|.
 name|cleanup
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -445,9 +447,11 @@ name|xaresource
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 comment|// Do we have to unwrap?
 if|if
 condition|(

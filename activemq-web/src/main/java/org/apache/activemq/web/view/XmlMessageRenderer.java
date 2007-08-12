@@ -19,13 +19,11 @@ end_package
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|thoughtworks
+name|io
 operator|.
-name|xstream
-operator|.
-name|XStream
+name|PrintWriter
 import|;
 end_import
 
@@ -85,11 +83,13 @@ end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|io
+name|thoughtworks
 operator|.
-name|PrintWriter
+name|xstream
+operator|.
+name|XStream
 import|;
 end_import
 

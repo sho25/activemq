@@ -222,7 +222,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Acts as a pass through proxy for a JMS Connection object.  * It intercepts events that are of interest of the ActiveMQManagedConnection.  *  * @version $Revision$  */
+comment|/**  * Acts as a pass through proxy for a JMS Connection object. It intercepts  * events that are of interest of the ActiveMQManagedConnection.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -244,10 +244,16 @@ name|managedConnection
 decl_stmt|;
 specifier|private
 name|ArrayList
+argument_list|<
+name|ManagedSessionProxy
+argument_list|>
 name|sessions
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|ManagedSessionProxy
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -268,7 +274,7 @@ operator|=
 name|managedConnection
 expr_stmt|;
 block|}
-comment|/**      * Used to let the ActiveMQManagedConnection that this connection      * handel is not needed by the app.      *      * @throws JMSException      */
+comment|/**      * Used to let the ActiveMQManagedConnection that this connection handel is      * not needed by the app.      *       * @throws JMSException      */
 specifier|public
 name|void
 name|close
@@ -309,6 +315,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|ManagedSessionProxy
+argument_list|>
 name|iter
 init|=
 name|sessions
@@ -326,9 +335,6 @@ block|{
 name|ManagedSessionProxy
 name|p
 init|=
-operator|(
-name|ManagedSessionProxy
-operator|)
 name|iter
 operator|.
 name|next
@@ -500,6 +506,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|ManagedSessionProxy
+argument_list|>
 name|iter
 init|=
 name|sessions
@@ -517,9 +526,6 @@ block|{
 name|ManagedSessionProxy
 name|p
 init|=
-operator|(
-name|ManagedSessionProxy
-operator|)
 name|iter
 operator|.
 name|next

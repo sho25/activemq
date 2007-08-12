@@ -1,50 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+end_comment
+
+begin_comment
 comment|//========================================================================
 end_comment
 
 begin_comment
 comment|//Copyright 2007 CSC - Scientific Computing Ltd.
-end_comment
-
-begin_comment
-comment|//------------------------------------------------------------------------
-end_comment
-
-begin_comment
-comment|//Licensed under the Apache License, Version 2.0 (the "License");
-end_comment
-
-begin_comment
-comment|//you may not use this file except in compliance with the License.
-end_comment
-
-begin_comment
-comment|//You may obtain a copy of the License at
-end_comment
-
-begin_comment
-comment|//http://www.apache.org/licenses/LICENSE-2.0
-end_comment
-
-begin_comment
-comment|//Unless required by applicable law or agreed to in writing, software
-end_comment
-
-begin_comment
-comment|//distributed under the License is distributed on an "AS IS" BASIS,
-end_comment
-
-begin_comment
-comment|//WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-end_comment
-
-begin_comment
-comment|//See the License for the specific language governing permissions and
-end_comment
-
-begin_comment
-comment|//limitations under the License.
 end_comment
 
 begin_comment
@@ -250,7 +214,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** *<p>Adds support for HTTP PUT, MOVE and  * DELETE methods. If init parameters read-permission-role and write-permission-role * are defined then all requests are authorized using the defined roles. Also GET methods are * authorized.</p> *    * @author Aleksi Kallio * */
+comment|/**  *<p>  * Adds support for HTTP PUT, MOVE and DELETE methods. If init parameters  * read-permission-role and write-permission-role are defined then all requests  * are authorized using the defined roles. Also GET methods are authorized.  *</p>  *   * @author Aleksi Kallio  */
 end_comment
 
 begin_class
@@ -303,14 +267,10 @@ decl_stmt|;
 specifier|private
 name|String
 name|readPermissionRole
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|String
 name|writePermissionRole
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|FilterConfig
@@ -544,7 +504,8 @@ argument_list|,
 name|httpResponse
 argument_list|)
 expr_stmt|;
-comment|// actual processing done elsewhere
+comment|// actual processing
+comment|// done elsewhere
 block|}
 block|}
 elseif|else
@@ -732,7 +693,11 @@ operator|.
 name|HTTP_INTERNAL_ERROR
 argument_list|)
 expr_stmt|;
-comment|// file could not be moved
+comment|// file
+comment|// could
+comment|// not
+comment|// be
+comment|// moved
 return|return;
 block|}
 name|response
@@ -744,7 +709,8 @@ operator|.
 name|HTTP_NO_CONTENT
 argument_list|)
 expr_stmt|;
-comment|// we return no content
+comment|// we return no
+comment|// content
 block|}
 specifier|protected
 name|boolean
@@ -919,7 +885,13 @@ operator|.
 name|HTTP_INTERNAL_ERROR
 argument_list|)
 expr_stmt|;
-comment|// file existed and could not be deleted
+comment|// file
+comment|// existed
+comment|// and
+comment|// could
+comment|// not
+comment|// be
+comment|// deleted
 return|return;
 block|}
 block|}
@@ -971,9 +943,7 @@ name|close
 argument_list|()
 expr_stmt|;
 throw|throw
-operator|(
 name|e
-operator|)
 throw|;
 block|}
 name|response
@@ -985,7 +955,8 @@ operator|.
 name|HTTP_NO_CONTENT
 argument_list|)
 expr_stmt|;
-comment|// we return no content
+comment|// we return no
+comment|// content
 block|}
 specifier|protected
 name|void
@@ -1075,7 +1046,8 @@ operator|.
 name|HTTP_NOT_FOUND
 argument_list|)
 expr_stmt|;
-comment|// file not found
+comment|// file not
+comment|// found
 return|return;
 block|}
 name|boolean
@@ -1103,7 +1075,9 @@ operator|.
 name|HTTP_NO_CONTENT
 argument_list|)
 expr_stmt|;
-comment|// we return no content
+comment|// we return
+comment|// no
+comment|// content
 block|}
 else|else
 block|{
@@ -1116,7 +1090,14 @@ operator|.
 name|HTTP_INTERNAL_ERROR
 argument_list|)
 expr_stmt|;
-comment|// could not be deleted due to internal error
+comment|// could
+comment|// not
+comment|// be
+comment|// deleted
+comment|// due
+comment|// to
+comment|// internal
+comment|// error
 block|}
 block|}
 specifier|public

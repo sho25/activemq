@@ -179,6 +179,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|ActiveMQConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|util
 operator|.
 name|FactoryFinder
@@ -215,28 +227,20 @@ name|MessageRenderer
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQConnectionFactory
-import|;
-end_import
-
 begin_comment
-comment|/**  * Renders the contents of a queue using some kind of view. The URI is assumed  * to be the queue. The following parameters can be used  *   *<ul>  *<li>view - specifies the type of the view such as simple, xml, rss</li>  *<li>selector - specifies the SQL 92 selector to apply to the queue</li>  *</ul>  *   * @version $Revision: $  */
+comment|/**  * Renders the contents of a queue using some kind of view. The URI is assumed  * to be the queue. The following parameters can be used  *<ul>  *<li>view - specifies the type of the view such as simple, xml, rss</li>  *<li>selector - specifies the SQL 92 selector to apply to the queue</li>  *</ul>  *   * @version $Revision: $  */
 end_comment
 
 begin_comment
-comment|//TODO Why do we implement our own session pool?
+comment|// TODO Why do we implement our own session pool?
 end_comment
 
 begin_comment
-comment|//TODO This doesn't work, since nobody will be setting the connection factory (because nobody is able to). Just use the WebClient?
+comment|// TODO This doesn't work, since nobody will be setting the connection factory
+end_comment
+
+begin_comment
+comment|// (because nobody is able to). Just use the WebClient?
 end_comment
 
 begin_class
@@ -267,10 +271,16 @@ name|connection
 decl_stmt|;
 specifier|private
 name|LinkedList
+argument_list|<
+name|Session
+argument_list|>
 name|sessions
 init|=
 operator|new
 name|LinkedList
+argument_list|<
+name|Session
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|public
@@ -622,10 +632,20 @@ name|renderer
 parameter_list|)
 block|{
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|properties
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -716,9 +736,6 @@ else|else
 block|{
 name|answer
 operator|=
-operator|(
-name|Session
-operator|)
 name|sessions
 operator|.
 name|removeLast
@@ -825,9 +842,11 @@ name|uri
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 comment|// replace URI separator with JMS destination separator
 if|if
 condition|(
@@ -857,9 +876,11 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 name|uri
 operator|=

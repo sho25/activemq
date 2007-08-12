@@ -5,6 +5,26 @@ end_comment
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -147,26 +167,6 @@ name|ActiveMQConnectionFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
-
 begin_comment
 comment|/**  * A simple tool for consuming messages  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
@@ -209,8 +209,6 @@ decl_stmt|;
 specifier|private
 name|int
 name|maxiumMessages
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|String
@@ -221,8 +219,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|topic
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|String
@@ -251,14 +247,10 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|transacted
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|boolean
 name|durable
-init|=
-literal|false
 decl_stmt|;
 specifier|private
 name|String
@@ -281,14 +273,10 @@ decl_stmt|;
 specifier|private
 name|long
 name|sleepTime
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 name|long
 name|receiveTimeOut
-init|=
-literal|0
 decl_stmt|;
 specifier|public
 specifier|static
@@ -859,12 +847,12 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{ 				}
+block|{                 }
 block|}
 block|}
 block|}
-specifier|synchronized
 specifier|public
+specifier|synchronized
 name|void
 name|onException
 parameter_list|(

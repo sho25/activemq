@@ -254,7 +254,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -401,20 +401,22 @@ name|destination
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|NoDestinationSuppliedException
 argument_list|()
 throw|;
+block|}
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -634,11 +636,13 @@ name|destination
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|NoDestinationSuppliedException
 argument_list|()
 throw|;
+block|}
 name|long
 name|timeout
 init|=
@@ -660,19 +664,21 @@ condition|(
 operator|!
 name|ajax
 condition|)
+block|{
 name|maxMessages
 operator|=
 literal|1
 expr_stmt|;
+block|}
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -806,6 +812,7 @@ name|message
 operator|==
 literal|null
 condition|)
+block|{
 name|message
 operator|=
 name|consumer
@@ -813,6 +820,7 @@ operator|.
 name|receiveNoWait
 argument_list|()
 expr_stmt|;
+block|}
 comment|// write a responds
 name|response
 operator|.
@@ -833,6 +841,7 @@ if|if
 condition|(
 name|ajax
 condition|)
+block|{
 name|writer
 operator|.
 name|println
@@ -840,6 +849,7 @@ argument_list|(
 literal|"<ajax-response>"
 argument_list|)
 expr_stmt|;
+block|}
 comment|// handle any message(s)
 if|if
 condition|(
@@ -891,6 +901,7 @@ name|type
 operator|!=
 literal|null
 condition|)
+block|{
 name|response
 operator|.
 name|setContentType
@@ -898,6 +909,7 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
+block|}
 comment|// send a response for each available message (up to max
 comment|// messages)
 while|while
@@ -951,6 +963,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 comment|// only ever 1 message for non ajax!
 name|setResponseHeaders
 argument_list|(
@@ -959,6 +972,7 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
+block|}
 name|writeMessageResponse
 argument_list|(
 name|writer
@@ -970,6 +984,7 @@ if|if
 condition|(
 name|ajax
 condition|)
+block|{
 name|writer
 operator|.
 name|println
@@ -977,6 +992,7 @@ argument_list|(
 literal|"</response>"
 argument_list|)
 expr_stmt|;
+block|}
 comment|// look for next message
 name|message
 operator|=
@@ -1034,13 +1050,13 @@ finally|finally
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1121,19 +1137,21 @@ condition|(
 operator|!
 name|ajax
 condition|)
+block|{
 name|maxMessages
 operator|=
 literal|1
 expr_stmt|;
+block|}
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1160,16 +1178,6 @@ argument_list|(
 name|destination
 argument_list|)
 decl_stmt|;
-name|Continuation
-name|continuation
-init|=
-literal|null
-decl_stmt|;
-name|Listener
-name|listener
-init|=
-literal|null
-decl_stmt|;
 name|Message
 name|message
 init|=
@@ -1195,6 +1203,7 @@ if|if
 condition|(
 name|ajax
 condition|)
+block|{
 name|writer
 operator|.
 name|println
@@ -1202,6 +1211,7 @@ argument_list|(
 literal|"<ajax-response>"
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Only one client thread at a time should poll for messages.
 if|if
 condition|(
@@ -1279,6 +1289,7 @@ name|type
 operator|!=
 literal|null
 condition|)
+block|{
 name|response
 operator|.
 name|setContentType
@@ -1286,6 +1297,7 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
+block|}
 comment|// send a response for each available message (up to
 comment|// max
 comment|// messages)
@@ -1340,6 +1352,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 comment|// only ever 1 message for non ajax!
 name|setResponseHeaders
 argument_list|(
@@ -1348,6 +1361,7 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
+block|}
 name|writeMessageResponse
 argument_list|(
 name|writer
@@ -1359,6 +1373,7 @@ if|if
 condition|(
 name|ajax
 condition|)
+block|{
 name|writer
 operator|.
 name|println
@@ -1366,6 +1381,7 @@ argument_list|(
 literal|"</response>"
 argument_list|)
 expr_stmt|;
+block|}
 comment|// look for next message
 name|message
 operator|=
@@ -1454,13 +1470,13 @@ finally|finally
 block|{
 if|if
 condition|(
-name|log
+name|LOG
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1838,11 +1854,13 @@ name|continuation
 operator|!=
 literal|null
 condition|)
+block|{
 name|continuation
 operator|.
 name|resume
 argument_list|()
 expr_stmt|;
+block|}
 name|continuation
 operator|=
 literal|null

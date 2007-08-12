@@ -29,6 +29,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|thoughtworks
+operator|.
+name|xstream
+operator|.
+name|XStream
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -68,18 +80,6 @@ operator|.
 name|wireformat
 operator|.
 name|WireFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|thoughtworks
-operator|.
-name|xstream
-operator|.
-name|XStream
 import|;
 end_import
 
@@ -197,7 +197,7 @@ name|command
 argument_list|)
 return|;
 block|}
-comment|/**      * Can this wireformat process packets of this version      *       * @param version      *            the version number to test      * @return true if can accept the version      */
+comment|/**      * Can this wireformat process packets of this version      *       * @param version the version number to test      * @return true if can accept the version      */
 specifier|public
 name|boolean
 name|canProcessWireFormatVersion

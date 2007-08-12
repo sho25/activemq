@@ -108,8 +108,6 @@ specifier|private
 specifier|static
 name|int
 name|proxyCount
-init|=
-literal|0
 decl_stmt|;
 specifier|private
 specifier|final
@@ -132,17 +130,6 @@ name|state
 init|=
 name|ALIVE
 decl_stmt|;
-specifier|private
-specifier|static
-name|int
-name|getID
-parameter_list|()
-block|{
-return|return
-operator|++
-name|proxyCount
-return|;
-block|}
 specifier|public
 name|MessageEndpointProxy
 parameter_list|(
@@ -186,6 +173,17 @@ name|endpoint
 operator|=
 name|endpoint
 expr_stmt|;
+block|}
+specifier|private
+specifier|static
+name|int
+name|getID
+parameter_list|()
+block|{
+return|return
+operator|++
+name|proxyCount
+return|;
 block|}
 specifier|public
 name|void
@@ -381,7 +379,7 @@ parameter_list|(
 name|MessageEndpointProxy
 name|proxy
 parameter_list|)
-block|{                     }
+block|{         }
 block|}
 specifier|private
 specifier|static

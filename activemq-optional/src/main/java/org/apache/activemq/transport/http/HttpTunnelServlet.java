@@ -69,6 +69,30 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ArrayBlockingQueue
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|servlet
@@ -215,30 +239,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ArrayBlockingQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
 begin_comment
 comment|/**  * A servlet which handles server side HTTP transport, delegating to the  * ActiveMQ broker. This servlet is designed for being embedded inside an  * ActiveMQ Broker using an embedded Jetty or Tomcat instance.  *   * @version $Revision$  */
 end_comment
@@ -263,7 +263,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOG
 init|=
 name|LogFactory
 operator|.
@@ -284,10 +284,20 @@ name|wireFormat
 decl_stmt|;
 specifier|private
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|BlockingQueueTransport
+argument_list|>
 name|clients
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|BlockingQueueTransport
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -430,7 +440,9 @@ name|transportChannel
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|packet
 operator|=
 operator|(
@@ -462,7 +474,7 @@ name|getOutputStream
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|//            while( packet !=null ) {
+comment|// while( packet !=null ) {
 name|wireFormat
 operator|.
 name|marshal
@@ -475,8 +487,9 @@ expr_stmt|;
 name|count
 operator|++
 expr_stmt|;
-comment|//            	packet = (Command) transportChannel.getQueue().poll(0, TimeUnit.MILLISECONDS);
-comment|//            }
+comment|// packet = (Command) transportChannel.getQueue().poll(0,
+comment|// TimeUnit.MILLISECONDS);
+comment|// }
 block|}
 catch|catch
 parameter_list|(
@@ -597,7 +610,9 @@ name|transport
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|transport
 operator|.
 name|doConsume
@@ -733,7 +748,7 @@ argument_list|,
 literal|"No clientID header specified"
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -752,9 +767,6 @@ block|{
 name|BlockingQueueTransport
 name|answer
 init|=
-operator|(
-name|BlockingQueueTransport
-operator|)
 name|clients
 operator|.
 name|get
@@ -769,7 +781,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -828,7 +840,7 @@ argument_list|,
 literal|"No clientID header specified"
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -847,9 +859,6 @@ block|{
 name|BlockingQueueTransport
 name|answer
 init|=
-operator|(
-name|BlockingQueueTransport
-operator|)
 name|clients
 operator|.
 name|get
@@ -879,7 +888,7 @@ operator|+
 literal|"' has allready been established"
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(

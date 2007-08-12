@@ -29,16 +29,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|PrintWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -82,6 +72,58 @@ operator|.
 name|util
 operator|.
 name|Random
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|CountDownLatch
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicBoolean
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicInteger
 import|;
 end_import
 
@@ -211,58 +253,6 @@ name|ActiveMQQueue
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CountDownLatch
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicBoolean
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicInteger
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version $Revision$  */
 end_comment
@@ -274,25 +264,6 @@ name|AcidTestTool
 extends|extends
 name|TestCase
 block|{
-specifier|private
-name|Random
-name|random
-init|=
-operator|new
-name|Random
-argument_list|()
-decl_stmt|;
-specifier|private
-name|byte
-name|data
-index|[]
-decl_stmt|;
-specifier|private
-name|int
-name|workerCount
-init|=
-literal|10
-decl_stmt|;
 comment|// Worker configuration.
 specifier|protected
 name|int
@@ -312,6 +283,30 @@ name|workerThinkTime
 init|=
 literal|500
 decl_stmt|;
+specifier|protected
+name|Destination
+name|target
+decl_stmt|;
+specifier|private
+name|Random
+name|random
+init|=
+operator|new
+name|Random
+argument_list|()
+decl_stmt|;
+specifier|private
+name|byte
+name|data
+index|[]
+decl_stmt|;
+specifier|private
+name|int
+name|workerCount
+init|=
+literal|10
+decl_stmt|;
+specifier|private
 name|AtomicBoolean
 name|ignoreJMSErrors
 init|=
@@ -321,10 +316,6 @@ argument_list|(
 literal|false
 argument_list|)
 decl_stmt|;
-specifier|protected
-name|Destination
-name|target
-decl_stmt|;
 specifier|private
 name|ActiveMQConnectionFactory
 name|factory
@@ -333,6 +324,7 @@ specifier|private
 name|Connection
 name|connection
 decl_stmt|;
+specifier|private
 name|AtomicInteger
 name|publishedBatches
 init|=
@@ -342,6 +334,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+specifier|private
 name|AtomicInteger
 name|consumedBatches
 init|=
@@ -351,6 +344,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+specifier|private
 name|List
 argument_list|<
 name|Throwable
@@ -375,7 +369,6 @@ name|Worker
 extends|extends
 name|Runnable
 block|{
-specifier|public
 name|boolean
 name|waitForExit
 parameter_list|(
@@ -393,6 +386,7 @@ name|ProducerWorker
 implements|implements
 name|Worker
 block|{
+specifier|private
 name|Session
 name|session
 decl_stmt|;
@@ -404,6 +398,7 @@ specifier|private
 name|BytesMessage
 name|message
 decl_stmt|;
+specifier|private
 name|CountDownLatch
 name|doneLatch
 init|=
@@ -492,7 +487,8 @@ name|batchId
 operator|++
 control|)
 block|{
-comment|//				    System.out.println("Sending batch: "+workerId+" "+batchId);
+comment|// System.out.println("Sending batch: "+workerId+"
+comment|// "+batchId);
 for|for
 control|(
 name|int
@@ -508,7 +504,8 @@ name|msgId
 operator|++
 control|)
 block|{
-comment|// Sleep some random amount of time less than workerThinkTime
+comment|// Sleep some random amount of time less than
+comment|// workerThinkTime
 try|try
 block|{
 name|Thread
@@ -568,7 +565,8 @@ operator|.
 name|incrementAndGet
 argument_list|()
 expr_stmt|;
-comment|//				    System.out.println("Commited send batch: "+workerId+" "+batchId);
+comment|// System.out.println("Commited send batch: "+workerId+"
+comment|// "+batchId);
 block|}
 block|}
 catch|catch
@@ -670,6 +668,7 @@ name|ConsumerWorker
 implements|implements
 name|Worker
 block|{
+specifier|private
 name|Session
 name|session
 decl_stmt|;
@@ -682,6 +681,7 @@ specifier|final
 name|long
 name|timeout
 decl_stmt|;
+specifier|private
 name|CountDownLatch
 name|doneLatch
 init|=
@@ -765,7 +765,8 @@ name|msgId
 operator|++
 control|)
 block|{
-comment|// Sleep some random amount of time less than workerThinkTime
+comment|// Sleep some random amount of time less than
+comment|// workerThinkTime
 try|try
 block|{
 name|Thread
@@ -877,7 +878,8 @@ argument_list|(
 literal|"batch-id"
 argument_list|)
 expr_stmt|;
-comment|//	    				    System.out.println("Receiving batch: "+workerId+" "+batchId);
+comment|// System.out.println("Receiving batch: "+workerId+"
+comment|// "+batchId);
 block|}
 block|}
 name|session
@@ -890,7 +892,8 @@ operator|.
 name|incrementAndGet
 argument_list|()
 expr_stmt|;
-comment|//				    System.out.println("Commited receive batch: "+workerId+" "+batchId);
+comment|// System.out.println("Commited receive batch: "+workerId+"
+comment|// "+batchId);
 block|}
 block|}
 catch|catch
@@ -1043,14 +1046,14 @@ parameter_list|(
 name|Throwable
 name|ignore
 parameter_list|)
-block|{}
+block|{             }
 name|connection
 operator|=
 literal|null
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @throws InterruptedException      * @throws JMSException      * @throws JMSException      *       */
+comment|/**      * @throws InterruptedException      * @throws JMSException      * @throws JMSException      */
 specifier|private
 name|void
 name|reconnect
@@ -1080,7 +1083,7 @@ parameter_list|(
 name|Throwable
 name|ignore
 parameter_list|)
-block|{}
+block|{             }
 name|connection
 operator|=
 literal|null
@@ -1149,7 +1152,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * @throws Throwable       * @throws IOException      *       */
+comment|/**      * @throws Throwable      * @throws IOException      */
 specifier|public
 name|void
 name|testAcidTransactions
@@ -1393,7 +1396,8 @@ literal|" batches to be delivered."
 argument_list|)
 expr_stmt|;
 comment|//
-comment|// Wait for about 5 batches of messages per worker to be consumed before restart.
+comment|// Wait for about 5 batches of messages per worker to be consumed before
+comment|// restart.
 comment|//
 while|while
 condition|(
@@ -1582,7 +1586,7 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-comment|// No errors should have occured so far.
+comment|// No errors should have occurred so far.
 if|if
 condition|(
 name|errors
@@ -1592,6 +1596,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 throw|throw
 name|errors
 operator|.
@@ -1600,6 +1605,7 @@ argument_list|(
 literal|0
 argument_list|)
 throw|;
+block|}
 name|System
 operator|.
 name|out
@@ -1639,7 +1645,8 @@ argument_list|(
 literal|"Restarted."
 argument_list|)
 expr_stmt|;
-comment|// Validate the all transactions were commited as a uow.  Looking for partial commits.
+comment|// Validate the all transactions were commited as a uow. Looking for
+comment|// partial commits.
 for|for
 control|(
 name|int
@@ -1841,6 +1848,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 throw|throw
 name|errors
 operator|.
@@ -1849,6 +1857,7 @@ argument_list|(
 literal|0
 argument_list|)
 throw|;
+block|}
 block|}
 specifier|public
 specifier|static

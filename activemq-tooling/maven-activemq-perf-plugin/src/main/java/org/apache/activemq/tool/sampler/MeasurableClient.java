@@ -22,17 +22,14 @@ specifier|public
 interface|interface
 name|MeasurableClient
 block|{
-specifier|public
 name|void
 name|reset
 parameter_list|()
 function_decl|;
-specifier|public
 name|String
 name|getClientName
 parameter_list|()
 function_decl|;
-specifier|public
 name|long
 name|getThroughput
 parameter_list|()
