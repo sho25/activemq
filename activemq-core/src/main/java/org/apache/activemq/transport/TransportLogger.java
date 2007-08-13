@@ -39,20 +39,6 @@ name|Log
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version $Revision$  */
 end_comment
@@ -65,45 +51,23 @@ extends|extends
 name|TransportFilter
 block|{
 specifier|private
-specifier|static
-name|int
-name|lastId
-decl_stmt|;
-specifier|private
 specifier|final
 name|Log
 name|log
 decl_stmt|;
-specifier|public
-name|TransportLogger
-parameter_list|(
-name|Transport
-name|next
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|next
-argument_list|,
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|TransportLogger
-operator|.
-name|class
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|".Connection:"
-operator|+
-name|getNextId
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
+specifier|private
+name|boolean
+name|logging
+decl_stmt|;
+specifier|private
+specifier|final
+name|LogWriter
+name|logWriter
+decl_stmt|;
+specifier|private
+name|TransportLoggerView
+name|view
+decl_stmt|;
 specifier|public
 name|TransportLogger
 parameter_list|(
@@ -112,8 +76,16 @@ name|next
 parameter_list|,
 name|Log
 name|log
+parameter_list|,
+name|boolean
+name|startLogging
+parameter_list|,
+name|LogWriter
+name|logWriter
 parameter_list|)
 block|{
+comment|// Changed constructor to pass the implementation of the LogWriter interface
+comment|// that will be used to write the messages.
 name|super
 argument_list|(
 name|next
@@ -125,18 +97,44 @@ name|log
 operator|=
 name|log
 expr_stmt|;
+name|this
+operator|.
+name|logging
+operator|=
+name|startLogging
+expr_stmt|;
+name|this
+operator|.
+name|logWriter
+operator|=
+name|logWriter
+expr_stmt|;
 block|}
-specifier|private
-specifier|static
-specifier|synchronized
-name|int
-name|getNextId
+comment|/**      * Returns true if logging is activated for this TransportLogger, false otherwise.      * @return true if logging is activated for this TransportLogger, false otherwise.      */
+specifier|public
+name|boolean
+name|isLogging
 parameter_list|()
 block|{
 return|return
-operator|++
-name|lastId
+name|logging
 return|;
+block|}
+comment|/**      * Sets if logging should be activated for this TransportLogger.      * @param logging true to activate logging, false to deactivate.      */
+specifier|public
+name|void
+name|setLogging
+parameter_list|(
+name|boolean
+name|logging
+parameter_list|)
+block|{
+name|this
+operator|.
+name|logging
+operator|=
+name|logging
+expr_stmt|;
 block|}
 specifier|public
 name|Object
@@ -148,12 +146,19 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|log
+comment|// Changed this method to use a LogWriter object to actually
+comment|// print the messages to the log, and only in case of logging
+comment|// being active, instead of logging the message directly.
+if|if
+condition|(
+name|logging
+condition|)
+name|logWriter
 operator|.
-name|debug
+name|logRequest
 argument_list|(
-literal|"SENDING REQUEST: "
-operator|+
+name|log
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
@@ -167,13 +172,17 @@ argument_list|(
 name|command
 argument_list|)
 decl_stmt|;
-name|log
+if|if
+condition|(
+name|logging
+condition|)
+name|logWriter
 operator|.
-name|debug
+name|logResponse
 argument_list|(
-literal|"GOT RESPONSE: "
-operator|+
-name|rc
+name|log
+argument_list|,
+name|command
 argument_list|)
 expr_stmt|;
 return|return
@@ -193,12 +202,19 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|log
+comment|// Changed this method to use a LogWriter object to actually
+comment|// print the messages to the log, and only in case of logging
+comment|// being active, instead of logging the message directly.
+if|if
+condition|(
+name|logging
+condition|)
+name|logWriter
 operator|.
-name|debug
+name|logRequest
 argument_list|(
-literal|"SENDING REQUEST: "
-operator|+
+name|log
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
@@ -214,13 +230,17 @@ argument_list|,
 name|timeout
 argument_list|)
 decl_stmt|;
-name|log
+if|if
+condition|(
+name|logging
+condition|)
+name|logWriter
 operator|.
-name|debug
+name|logResponse
 argument_list|(
-literal|"GOT RESPONSE: "
-operator|+
-name|rc
+name|log
+argument_list|,
+name|command
 argument_list|)
 expr_stmt|;
 return|return
@@ -240,12 +260,19 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|log
+comment|// Changed this method to use a LogWriter object to actually
+comment|// print the messages to the log, and only in case of logging
+comment|// being active, instead of logging the message directly.
+if|if
+condition|(
+name|logging
+condition|)
+name|logWriter
 operator|.
-name|debug
+name|logAsyncRequest
 argument_list|(
-literal|"SENDING ASNYC REQUEST: "
-operator|+
+name|log
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
@@ -275,20 +302,25 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// Changed this method to use a LogWriter object to actually
+comment|// print the messages to the log, and only in case of logging
+comment|// being active, instead of logging the message directly.
 if|if
 condition|(
+name|logging
+operator|&&
 name|log
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|logWriter
 operator|.
-name|debug
+name|logOneWay
 argument_list|(
-literal|"SENDING: "
-operator|+
+name|log
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
@@ -309,20 +341,25 @@ name|Object
 name|command
 parameter_list|)
 block|{
+comment|// Changed this method to use a LogWriter object to actually
+comment|// print the messages to the log, and only in case of logging
+comment|// being active, instead of logging the message directly.
 if|if
 condition|(
+name|logging
+operator|&&
 name|log
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|logWriter
 operator|.
-name|debug
+name|logReceivedCommand
 argument_list|(
-literal|"RECEIVED: "
-operator|+
+name|log
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
@@ -344,21 +381,24 @@ name|IOException
 name|error
 parameter_list|)
 block|{
+comment|// Changed this method to use a LogWriter object to actually
+comment|// print the messages to the log, and only in case of logging
+comment|// being active, instead of logging the message directly.
 if|if
 condition|(
+name|logging
+operator|&&
 name|log
 operator|.
 name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
-name|log
+name|logWriter
 operator|.
-name|debug
+name|logReceivedException
 argument_list|(
-literal|"RECEIVED Exception: "
-operator|+
-name|error
+name|log
 argument_list|,
 name|error
 argument_list|)
@@ -373,6 +413,32 @@ name|error
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Gets the associated MBean for this TransportLogger.      * @return the associated MBean for this TransportLogger.      */
+specifier|public
+name|TransportLoggerView
+name|getView
+parameter_list|()
+block|{
+return|return
+name|view
+return|;
+block|}
+comment|/**      * Sets the associated MBean for this TransportLogger.      * @param view the associated MBean for this TransportLogger.      */
+specifier|public
+name|void
+name|setView
+parameter_list|(
+name|TransportLoggerView
+name|view
+parameter_list|)
+block|{
+name|this
+operator|.
+name|view
+operator|=
+name|view
+expr_stmt|;
+block|}
 specifier|public
 name|String
 name|toString
@@ -384,6 +450,28 @@ operator|.
 name|toString
 argument_list|()
 return|;
+block|}
+comment|/**      * We need to override this method      * so that we can unregister the associated      * MBean to avoid a memory leak.      */
+specifier|public
+name|void
+name|finalize
+parameter_list|()
+throws|throws
+name|Throwable
+block|{
+if|if
+condition|(
+name|view
+operator|!=
+literal|null
+condition|)
+block|{
+name|view
+operator|.
+name|unregister
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

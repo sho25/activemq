@@ -242,6 +242,14 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Reloads log4j.properties from the classpath.      * This methods calls org.apache.activemq.transport.TransportLoggerControl.reloadLog4jProperties      * @throws Exception      */
+specifier|public
+name|void
+name|reloadLog4jProperties
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
 block|}
 end_interface
 
