@@ -838,7 +838,7 @@ name|e
 throw|;
 block|}
 block|}
-specifier|private
+specifier|public
 name|boolean
 name|isValidUseRAManagedTransaction
 parameter_list|(
@@ -880,7 +880,7 @@ return|return
 literal|false
 return|;
 block|}
-specifier|private
+specifier|public
 name|boolean
 name|isValidNoLocal
 parameter_list|(
@@ -922,7 +922,7 @@ return|return
 literal|false
 return|;
 block|}
-specifier|private
+specifier|public
 name|boolean
 name|isValidMessageSelector
 parameter_list|(
@@ -981,7 +981,7 @@ literal|false
 return|;
 block|}
 block|}
-specifier|private
+specifier|public
 name|boolean
 name|isValidMaxSessions
 parameter_list|(
@@ -1030,7 +1030,7 @@ return|return
 literal|false
 return|;
 block|}
-specifier|private
+specifier|public
 name|boolean
 name|isValidMaxMessagesPerSessions
 parameter_list|(
@@ -1079,7 +1079,7 @@ return|return
 literal|false
 return|;
 block|}
-specifier|private
+specifier|public
 name|boolean
 name|isValidMaxMessagesPerBatch
 parameter_list|(
@@ -1128,7 +1128,7 @@ return|return
 literal|false
 return|;
 block|}
-specifier|private
+specifier|public
 name|boolean
 name|isValidEnableBatch
 parameter_list|(
@@ -1170,7 +1170,6 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * @see javax.resource.spi.ResourceAdapterAssociation#getResourceAdapter()      */
 specifier|public
 name|ResourceAdapter
 name|getResourceAdapter
@@ -1249,7 +1248,6 @@ comment|//
 comment|// Java Bean getters and setters for this ActivationSpec class.
 comment|//
 comment|// ///////////////////////////////////////////////////////////////////////
-comment|/**      * @return Returns the destinationType.      */
 specifier|public
 name|String
 name|getDestinationType
@@ -1288,7 +1286,6 @@ operator|=
 name|destinationType
 expr_stmt|;
 block|}
-comment|/**      *       */
 specifier|public
 name|String
 name|getPassword
@@ -1327,7 +1324,6 @@ operator|=
 name|password
 expr_stmt|;
 block|}
-comment|/**      *       */
 specifier|public
 name|String
 name|getUserName
@@ -1366,7 +1362,6 @@ operator|=
 name|userName
 expr_stmt|;
 block|}
-comment|/**      * @return Returns the messageSelector.      */
 specifier|public
 name|String
 name|getMessageSelector
@@ -1405,7 +1400,6 @@ operator|=
 name|messageSelector
 expr_stmt|;
 block|}
-comment|/**      * @return Returns the noLocal.      */
 specifier|public
 name|String
 name|getNoLocal
@@ -1439,7 +1433,6 @@ name|noLocal
 expr_stmt|;
 block|}
 block|}
-comment|/**      *       */
 specifier|public
 name|String
 name|getAcknowledgeMode
@@ -1478,7 +1471,6 @@ operator|=
 name|acknowledgeMode
 expr_stmt|;
 block|}
-comment|/**      *       */
 specifier|public
 name|String
 name|getClientId
@@ -1517,7 +1509,6 @@ operator|=
 name|clientId
 expr_stmt|;
 block|}
-comment|/**      *       */
 specifier|public
 name|String
 name|getDestination
@@ -1556,7 +1547,6 @@ operator|=
 name|destination
 expr_stmt|;
 block|}
-comment|/**      *       */
 specifier|public
 name|String
 name|getSubscriptionDurability
@@ -1595,7 +1585,6 @@ operator|=
 name|subscriptionDurability
 expr_stmt|;
 block|}
-comment|/**      *       */
 specifier|public
 name|String
 name|getSubscriptionName
@@ -1634,7 +1623,7 @@ operator|=
 name|subscriptionName
 expr_stmt|;
 block|}
-specifier|private
+specifier|public
 name|boolean
 name|isValidSubscriptionName
 parameter_list|(
@@ -1683,7 +1672,7 @@ return|return
 literal|false
 return|;
 block|}
-specifier|private
+specifier|public
 name|boolean
 name|isValidClientId
 parameter_list|(
@@ -1732,7 +1721,6 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      *       */
 specifier|public
 name|boolean
 name|isDurableSubscription
@@ -1747,7 +1735,7 @@ name|subscriptionDurability
 argument_list|)
 return|;
 block|}
-specifier|private
+specifier|public
 name|boolean
 name|isValidSubscriptionDurability
 parameter_list|(
@@ -1861,7 +1849,7 @@ return|return
 literal|false
 return|;
 block|}
-specifier|private
+specifier|public
 name|boolean
 name|isValidAcknowledgeMode
 parameter_list|(
@@ -1912,7 +1900,7 @@ return|return
 literal|false
 return|;
 block|}
-specifier|private
+specifier|public
 name|boolean
 name|isValidDestinationType
 parameter_list|(
@@ -1983,7 +1971,7 @@ return|return
 literal|false
 return|;
 block|}
-specifier|private
+specifier|public
 name|boolean
 name|isValidDestination
 parameter_list|(
@@ -2026,7 +2014,7 @@ return|return
 literal|false
 return|;
 block|}
-specifier|private
+specifier|public
 name|boolean
 name|isEmpty
 parameter_list|(
@@ -2322,7 +2310,6 @@ name|maxMessagesPerSessions
 expr_stmt|;
 block|}
 block|}
-comment|/**      *       */
 specifier|public
 name|String
 name|getMaxSessions
@@ -2356,7 +2343,6 @@ name|maxSessions
 expr_stmt|;
 block|}
 block|}
-comment|/**      *       */
 specifier|public
 name|String
 name|getUseRAManagedTransaction
@@ -2390,7 +2376,6 @@ name|useRAManagedTransaction
 expr_stmt|;
 block|}
 block|}
-comment|/**      *       */
 specifier|public
 name|int
 name|getMaxMessagesPerSessionsIntValue
@@ -2405,7 +2390,6 @@ name|maxMessagesPerSessions
 argument_list|)
 return|;
 block|}
-comment|/**      *       */
 specifier|public
 name|int
 name|getMaxSessionsIntValue
@@ -2437,7 +2421,6 @@ name|booleanValue
 argument_list|()
 return|;
 block|}
-comment|/**      *       */
 specifier|public
 name|boolean
 name|getNoLocalBooleanValue
@@ -2552,7 +2535,6 @@ name|maxMessagesPerBatch
 expr_stmt|;
 block|}
 block|}
-comment|/**      *       */
 specifier|public
 name|short
 name|getBackOffMultiplier
@@ -2576,7 +2558,6 @@ name|getBackOffMultiplier
 argument_list|()
 return|;
 block|}
-comment|/**      *       */
 specifier|public
 name|long
 name|getInitialRedeliveryDelay
@@ -2600,7 +2581,6 @@ name|getInitialRedeliveryDelay
 argument_list|()
 return|;
 block|}
-comment|/**      *       */
 specifier|public
 name|int
 name|getMaximumRedeliveries
@@ -2624,7 +2604,6 @@ name|getMaximumRedeliveries
 argument_list|()
 return|;
 block|}
-comment|/**      *       */
 specifier|public
 name|boolean
 name|isUseExponentialBackOff
@@ -2721,7 +2700,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// don't use getter to avoid causing introspection errors in containers
-comment|/**      *       */
 specifier|public
 name|RedeliveryPolicy
 name|redeliveryPolicy
@@ -2731,7 +2709,7 @@ return|return
 name|redeliveryPolicy
 return|;
 block|}
-specifier|protected
+specifier|public
 name|RedeliveryPolicy
 name|lazyCreateRedeliveryPolicy
 parameter_list|()
