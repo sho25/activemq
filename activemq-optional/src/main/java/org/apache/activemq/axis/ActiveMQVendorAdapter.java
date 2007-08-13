@@ -386,6 +386,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|brokerURL
+operator|==
+literal|null
+operator|||
 operator|!
 name|brokerURL
 operator|.
