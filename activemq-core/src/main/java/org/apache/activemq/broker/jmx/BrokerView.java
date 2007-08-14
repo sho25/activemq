@@ -179,29 +179,13 @@ name|RemoveSubscriptionInfo
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|log4j
-operator|.
-name|LogManager
-import|;
-end_import
+begin_comment
+comment|//import org.apache.log4j.LogManager;
+end_comment
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|log4j
-operator|.
-name|PropertyConfigurator
-import|;
-end_import
+begin_comment
+comment|//import org.apache.log4j.PropertyConfigurator;
+end_comment
 
 begin_class
 specifier|public
@@ -1085,47 +1069,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|LogManager
-operator|.
-name|resetConfiguration
-argument_list|()
-expr_stmt|;
-name|ClassLoader
-name|cl
-init|=
-name|this
-operator|.
-name|getClass
-argument_list|()
-operator|.
-name|getClassLoader
-argument_list|()
-decl_stmt|;
-name|URL
-name|log4jprops
-init|=
-name|cl
-operator|.
-name|getResource
-argument_list|(
-literal|"log4j.properties"
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|log4jprops
-operator|!=
-literal|null
-condition|)
-block|{
-name|PropertyConfigurator
-operator|.
-name|configure
-argument_list|(
-name|log4jprops
-argument_list|)
-expr_stmt|;
-block|}
+comment|/*         LogManager.resetConfiguration();         ClassLoader cl = this.getClass().getClassLoader();         URL log4jprops = cl.getResource("log4j.properties");         if (log4jprops != null) {             PropertyConfigurator.configure(log4jprops);         }         */
 block|}
 block|}
 end_class
