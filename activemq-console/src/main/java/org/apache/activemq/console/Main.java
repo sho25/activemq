@@ -323,6 +323,29 @@ argument_list|(
 name|tokens
 argument_list|)
 expr_stmt|;
+comment|// lets add the conf directory first, to find the log4j.properties just in case its not
+comment|// in the activemq.classpath system property or some jar incorrectly includes one
+name|File
+name|confDir
+init|=
+operator|new
+name|File
+argument_list|(
+name|app
+operator|.
+name|getActiveMQBase
+argument_list|()
+argument_list|,
+literal|"conf"
+argument_list|)
+decl_stmt|;
+name|app
+operator|.
+name|addClassPath
+argument_list|(
+name|confDir
+argument_list|)
+expr_stmt|;
 comment|// Add the following to the classpath:
 comment|//
 comment|// ${activemq.base}/conf
@@ -1031,6 +1054,16 @@ init|=
 name|getClassLoader
 argument_list|()
 decl_stmt|;
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|setContextClassLoader
+argument_list|(
+name|cl
+argument_list|)
+expr_stmt|;
 comment|// Use reflection to run the task.
 try|try
 block|{
