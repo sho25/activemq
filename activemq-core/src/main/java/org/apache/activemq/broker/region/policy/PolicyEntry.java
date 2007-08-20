@@ -187,9 +187,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
+name|usage
 operator|.
-name|UsageManager
+name|SystemUsage
 import|;
 end_import
 
@@ -349,7 +349,7 @@ condition|)
 block|{
 name|queue
 operator|.
-name|getUsageManager
+name|getBrokerMemoryUsage
 argument_list|()
 operator|.
 name|setLimit
@@ -458,7 +458,7 @@ condition|)
 block|{
 name|topic
 operator|.
-name|getUsageManager
+name|getBrokerMemoryUsage
 argument_list|()
 operator|.
 name|setLimit
@@ -475,7 +475,7 @@ parameter_list|(
 name|Broker
 name|broker
 parameter_list|,
-name|UsageManager
+name|SystemUsage
 name|memoryManager
 parameter_list|,
 name|TopicSubscription
@@ -660,7 +660,7 @@ parameter_list|(
 name|Broker
 name|broker
 parameter_list|,
-name|UsageManager
+name|SystemUsage
 name|memoryManager
 parameter_list|,
 name|DurableTopicSubscription
@@ -719,7 +719,7 @@ argument_list|)
 decl_stmt|;
 name|cursor
 operator|.
-name|setUsageManager
+name|setSystemUsage
 argument_list|(
 name|memoryManager
 argument_list|)

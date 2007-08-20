@@ -167,9 +167,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
+name|thread
 operator|.
-name|UsageManager
+name|TaskRunnerFactory
 import|;
 end_import
 
@@ -181,9 +181,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|thread
+name|usage
 operator|.
-name|TaskRunnerFactory
+name|SystemUsage
 import|;
 end_import
 
@@ -208,7 +208,7 @@ parameter_list|,
 name|DestinationStatistics
 name|destinationStatistics
 parameter_list|,
-name|UsageManager
+name|SystemUsage
 name|memoryManager
 parameter_list|,
 name|TaskRunnerFactory

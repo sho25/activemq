@@ -197,7 +197,21 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
+name|usage
+operator|.
+name|Usage
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usage
 operator|.
 name|UsageListener
 import|;
@@ -211,9 +225,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
+name|usage
 operator|.
-name|UsageManager
+name|SystemUsage
 import|;
 end_import
 
@@ -333,7 +347,7 @@ name|keepDurableSubsActive
 decl_stmt|;
 specifier|private
 specifier|final
-name|UsageManager
+name|SystemUsage
 name|usageManager
 decl_stmt|;
 specifier|private
@@ -346,7 +360,7 @@ parameter_list|(
 name|Broker
 name|broker
 parameter_list|,
-name|UsageManager
+name|SystemUsage
 name|usageManager
 parameter_list|,
 name|ConnectionContext
@@ -544,7 +558,7 @@ specifier|synchronized
 name|void
 name|activate
 parameter_list|(
-name|UsageManager
+name|SystemUsage
 name|memoryManager
 parameter_list|,
 name|ConnectionContext
@@ -642,7 +656,7 @@ block|}
 block|}
 name|pending
 operator|.
-name|setUsageManager
+name|setSystemUsage
 argument_list|(
 name|memoryManager
 argument_list|)
@@ -714,6 +728,9 @@ name|this
 operator|.
 name|usageManager
 operator|.
+name|getMemoryUsage
+argument_list|()
+operator|.
 name|addUsageListener
 argument_list|(
 name|this
@@ -739,6 +756,9 @@ expr_stmt|;
 name|this
 operator|.
 name|usageManager
+operator|.
+name|getMemoryUsage
+argument_list|()
 operator|.
 name|removeUsageListener
 argument_list|(
@@ -1389,13 +1409,13 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @param memoryManager      * @param oldPercentUsage      * @param newPercentUsage      * @see org.apache.activemq.memory.UsageListener#onMemoryUseChanged(org.apache.activemq.memory.UsageManager,      *      int, int)      */
+comment|/**      * @param memoryManager      * @param oldPercentUsage      * @param newPercentUsage      * @see org.apache.activemq.usage.UsageListener#onMemoryUseChanged(org.apache.activemq.usage.SystemUsage,      *      int, int)      */
 specifier|public
 name|void
-name|onMemoryUseChanged
+name|onUsageChanged
 parameter_list|(
-name|UsageManager
-name|memoryManager
+name|Usage
+name|usage
 parameter_list|,
 name|int
 name|oldPercentUsage

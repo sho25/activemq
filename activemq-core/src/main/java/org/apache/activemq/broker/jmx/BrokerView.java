@@ -403,7 +403,10 @@ block|{
 return|return
 name|brokerService
 operator|.
-name|getMemoryManager
+name|getUsageManager
+argument_list|()
+operator|.
+name|getMemoryUsage
 argument_list|()
 operator|.
 name|getPercentUsage
@@ -418,7 +421,10 @@ block|{
 return|return
 name|brokerService
 operator|.
-name|getMemoryManager
+name|getUsageManager
+argument_list|()
+operator|.
+name|getMemoryUsage
 argument_list|()
 operator|.
 name|getLimit
@@ -435,7 +441,10 @@ parameter_list|)
 block|{
 name|brokerService
 operator|.
-name|getMemoryManager
+name|getUsageManager
+argument_list|()
+operator|.
+name|getMemoryUsage
 argument_list|()
 operator|.
 name|setLimit

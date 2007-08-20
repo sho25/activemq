@@ -463,9 +463,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
+name|store
 operator|.
-name|UsageManager
+name|PersistenceAdapter
 import|;
 end_import
 
@@ -477,9 +477,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|store
+name|usage
 operator|.
-name|PersistenceAdapter
+name|SystemUsage
 import|;
 end_import
 
@@ -574,7 +574,7 @@ init|=
 literal|4000
 decl_stmt|;
 specifier|protected
-name|UsageManager
+name|SystemUsage
 name|memoryManager
 decl_stmt|;
 specifier|protected

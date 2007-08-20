@@ -143,20 +143,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
-operator|.
-name|UsageManager
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|store
 operator|.
 name|MessageStore
@@ -202,6 +188,20 @@ operator|.
 name|store
 operator|.
 name|TransactionStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usage
+operator|.
+name|SystemUsage
 import|;
 end_import
 
@@ -805,7 +805,7 @@ specifier|public
 name|void
 name|setUsageManager
 parameter_list|(
-name|UsageManager
+name|SystemUsage
 name|usageManager
 parameter_list|)
 block|{     }
@@ -844,6 +844,15 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{     }
+specifier|public
+name|long
+name|size
+parameter_list|()
+block|{
+return|return
+literal|0
+return|;
+block|}
 block|}
 end_class
 

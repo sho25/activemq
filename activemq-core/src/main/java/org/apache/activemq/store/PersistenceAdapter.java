@@ -121,9 +121,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
+name|usage
 operator|.
-name|UsageManager
+name|SystemUsage
 import|;
 end_import
 
@@ -221,7 +221,7 @@ comment|/**      * @param usageManager The UsageManager that is controlling the 
 name|void
 name|setUsageManager
 parameter_list|(
-name|UsageManager
+name|SystemUsage
 name|usageManager
 parameter_list|)
 function_decl|;
@@ -250,6 +250,11 @@ name|sync
 parameter_list|)
 throws|throws
 name|IOException
+function_decl|;
+comment|/**      * A hint to return the size of the store on disk      * @return disk space used in bytes of 0 if not implemented      */
+name|long
+name|size
+parameter_list|()
 function_decl|;
 block|}
 end_interface

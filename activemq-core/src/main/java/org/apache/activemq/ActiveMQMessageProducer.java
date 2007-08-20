@@ -203,9 +203,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
+name|usage
 operator|.
-name|UsageManager
+name|MemoryUsage
 import|;
 end_import
 
@@ -263,7 +263,7 @@ name|MessageTransformer
 name|transformer
 decl_stmt|;
 specifier|private
-name|UsageManager
+name|MemoryUsage
 name|producerWindow
 decl_stmt|;
 specifier|protected
@@ -395,7 +395,7 @@ block|{
 name|producerWindow
 operator|=
 operator|new
-name|UsageManager
+name|MemoryUsage
 argument_list|(
 literal|"Producer Window: "
 operator|+

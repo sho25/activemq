@@ -43,6 +43,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicLong
+import|;
+end_import
+
+begin_import
+import|import
 name|junit
 operator|.
 name|framework
@@ -187,6 +201,10 @@ argument_list|,
 literal|"rw"
 argument_list|,
 literal|null
+argument_list|,
+operator|new
+name|AtomicLong
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this

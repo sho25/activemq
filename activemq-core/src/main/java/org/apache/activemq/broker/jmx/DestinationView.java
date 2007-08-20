@@ -571,7 +571,7 @@ block|{
 return|return
 name|destination
 operator|.
-name|getUsageManager
+name|getBrokerMemoryUsage
 argument_list|()
 operator|.
 name|getPercentUsage
@@ -586,7 +586,7 @@ block|{
 return|return
 name|destination
 operator|.
-name|getUsageManager
+name|getBrokerMemoryUsage
 argument_list|()
 operator|.
 name|getLimit
@@ -603,7 +603,7 @@ parameter_list|)
 block|{
 name|destination
 operator|.
-name|getUsageManager
+name|getBrokerMemoryUsage
 argument_list|()
 operator|.
 name|setLimit

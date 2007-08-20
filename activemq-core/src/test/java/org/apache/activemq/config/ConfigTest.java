@@ -239,20 +239,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
-operator|.
-name|UsageManager
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|store
 operator|.
 name|PersistenceAdapter
@@ -320,6 +306,20 @@ operator|.
 name|tcp
 operator|.
 name|TcpTransportServer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usage
+operator|.
+name|SystemUsage
 import|;
 end_import
 
@@ -1451,12 +1451,12 @@ argument_list|)
 expr_stmt|;
 comment|// Check usage manager
 comment|// System.out.print("Checking memory manager configurations... ");
-name|UsageManager
+name|SystemUsage
 name|memMgr
 init|=
 name|broker
 operator|.
-name|getMemoryManager
+name|getUsageManager
 argument_list|()
 decl_stmt|;
 name|assertTrue
@@ -1476,6 +1476,9 @@ literal|200000
 argument_list|,
 name|memMgr
 operator|.
+name|getMemoryUsage
+argument_list|()
+operator|.
 name|getLimit
 argument_list|()
 argument_list|)
@@ -1487,6 +1490,9 @@ argument_list|,
 literal|20
 argument_list|,
 name|memMgr
+operator|.
+name|getMemoryUsage
+argument_list|()
 operator|.
 name|getPercentUsageMinDelta
 argument_list|()

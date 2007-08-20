@@ -87,9 +87,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
+name|usage
 operator|.
-name|UsageManager
+name|SystemUsage
 import|;
 end_import
 
@@ -255,9 +255,9 @@ argument_list|)
 expr_stmt|;
 name|nonPersistent
 operator|.
-name|setUsageManager
+name|setSystemUsage
 argument_list|(
-name|usageManager
+name|systemUsage
 argument_list|)
 expr_stmt|;
 block|}
@@ -789,15 +789,15 @@ block|}
 specifier|public
 specifier|synchronized
 name|void
-name|setUsageManager
+name|setSystemUsage
 parameter_list|(
-name|UsageManager
+name|SystemUsage
 name|usageManager
 parameter_list|)
 block|{
 name|super
 operator|.
-name|setUsageManager
+name|setSystemUsage
 argument_list|(
 name|usageManager
 argument_list|)
@@ -811,7 +811,7 @@ condition|)
 block|{
 name|persistent
 operator|.
-name|setUsageManager
+name|setSystemUsage
 argument_list|(
 name|usageManager
 argument_list|)
@@ -826,7 +826,7 @@ condition|)
 block|{
 name|nonPersistent
 operator|.
-name|setUsageManager
+name|setSystemUsage
 argument_list|(
 name|usageManager
 argument_list|)

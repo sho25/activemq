@@ -181,9 +181,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
+name|usage
 operator|.
-name|UsageManager
+name|SystemUsage
 import|;
 end_import
 
@@ -485,9 +485,9 @@ argument_list|)
 expr_stmt|;
 name|tsp
 operator|.
-name|setUsageManager
+name|setSystemUsage
 argument_list|(
-name|usageManager
+name|systemUsage
 argument_list|)
 expr_stmt|;
 name|topics
@@ -1117,15 +1117,15 @@ block|}
 specifier|public
 specifier|synchronized
 name|void
-name|setUsageManager
+name|setSystemUsage
 parameter_list|(
-name|UsageManager
+name|SystemUsage
 name|usageManager
 parameter_list|)
 block|{
 name|super
 operator|.
-name|setUsageManager
+name|setSystemUsage
 argument_list|(
 name|usageManager
 argument_list|)
@@ -1160,7 +1160,7 @@ argument_list|()
 decl_stmt|;
 name|tsp
 operator|.
-name|setUsageManager
+name|setSystemUsage
 argument_list|(
 name|usageManager
 argument_list|)

@@ -333,22 +333,14 @@ name|long
 name|maxDataFileLength
 parameter_list|)
 function_decl|;
-comment|/**      * @see org.apache.activemq.kaha.IndexTypes      * @return the default index type      */
-name|String
-name|getIndexTypeAsString
-parameter_list|()
-function_decl|;
-comment|/**      * Set the default index type      *       * @param type      * @see org.apache.activemq.kaha.IndexTypes      */
-name|void
-name|setIndexTypeAsString
-parameter_list|(
-name|String
-name|type
-parameter_list|)
-function_decl|;
 comment|/**      * @return true if the store has been initialized      */
 name|boolean
 name|isInitialized
+parameter_list|()
+function_decl|;
+comment|/**      * @return the amount of disk space the store is occupying      */
+name|long
+name|size
 parameter_list|()
 function_decl|;
 block|}

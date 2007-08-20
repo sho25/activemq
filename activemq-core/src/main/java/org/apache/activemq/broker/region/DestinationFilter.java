@@ -157,9 +157,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
+name|store
 operator|.
-name|UsageManager
+name|MessageStore
 import|;
 end_import
 
@@ -171,9 +171,23 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|store
+name|usage
 operator|.
-name|MessageStore
+name|MemoryUsage
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usage
+operator|.
+name|SystemUsage
 import|;
 end_import
 
@@ -353,14 +367,14 @@ argument_list|()
 return|;
 block|}
 specifier|public
-name|UsageManager
-name|getUsageManager
+name|MemoryUsage
+name|getBrokerMemoryUsage
 parameter_list|()
 block|{
 return|return
 name|next
 operator|.
-name|getUsageManager
+name|getBrokerMemoryUsage
 argument_list|()
 return|;
 block|}

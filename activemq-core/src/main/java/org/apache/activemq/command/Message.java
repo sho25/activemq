@@ -1867,7 +1867,7 @@ condition|)
 block|{
 name|regionDestination
 operator|.
-name|getUsageManager
+name|getBrokerMemoryUsage
 argument_list|()
 operator|.
 name|increaseUsage
@@ -1923,7 +1923,7 @@ condition|)
 block|{
 name|regionDestination
 operator|.
-name|getUsageManager
+name|getBrokerMemoryUsage
 argument_list|()
 operator|.
 name|decreaseUsage

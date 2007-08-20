@@ -83,9 +83,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
+name|usage
 operator|.
-name|UsageManager
+name|SystemUsage
 import|;
 end_import
 
@@ -113,8 +113,8 @@ init|=
 literal|100
 decl_stmt|;
 specifier|protected
-name|UsageManager
-name|usageManager
+name|SystemUsage
+name|systemUsage
 decl_stmt|;
 specifier|public
 name|void
@@ -324,15 +324,15 @@ parameter_list|()
 block|{     }
 specifier|public
 name|void
-name|setUsageManager
+name|setSystemUsage
 parameter_list|(
-name|UsageManager
+name|SystemUsage
 name|usageManager
 parameter_list|)
 block|{
 name|this
 operator|.
-name|usageManager
+name|systemUsage
 operator|=
 name|usageManager
 expr_stmt|;
@@ -343,12 +343,15 @@ name|hasSpace
 parameter_list|()
 block|{
 return|return
-name|usageManager
+name|systemUsage
 operator|!=
 literal|null
 condition|?
 operator|(
-name|usageManager
+name|systemUsage
+operator|.
+name|getMemoryUsage
+argument_list|()
 operator|.
 name|getPercentUsage
 argument_list|()
@@ -365,11 +368,14 @@ name|isFull
 parameter_list|()
 block|{
 return|return
-name|usageManager
+name|systemUsage
 operator|!=
 literal|null
 condition|?
-name|usageManager
+name|systemUsage
+operator|.
+name|getMemoryUsage
+argument_list|()
 operator|.
 name|isFull
 argument_list|()
@@ -421,14 +427,14 @@ expr_stmt|;
 block|}
 comment|/**      * @return the usageManager      */
 specifier|public
-name|UsageManager
-name|getUsageManager
+name|SystemUsage
+name|getSystemUsage
 parameter_list|()
 block|{
 return|return
 name|this
 operator|.
-name|usageManager
+name|systemUsage
 return|;
 block|}
 comment|/**      * destroy the cursor      *       * @throws Exception      */

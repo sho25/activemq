@@ -281,9 +281,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
+name|transaction
 operator|.
-name|UsageManager
+name|Synchronization
 import|;
 end_import
 
@@ -295,9 +295,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|transaction
+name|usage
 operator|.
-name|Synchronization
+name|SystemUsage
 import|;
 end_import
 
@@ -369,7 +369,7 @@ name|matched
 decl_stmt|;
 specifier|protected
 specifier|final
-name|UsageManager
+name|SystemUsage
 name|usageManager
 decl_stmt|;
 specifier|protected
@@ -464,7 +464,7 @@ parameter_list|,
 name|ConsumerInfo
 name|info
 parameter_list|,
-name|UsageManager
+name|SystemUsage
 name|usageManager
 parameter_list|)
 throws|throws
@@ -534,7 +534,7 @@ name|this
 operator|.
 name|matched
 operator|.
-name|setUsageManager
+name|setSystemUsage
 argument_list|(
 name|usageManager
 argument_list|)
@@ -1468,7 +1468,7 @@ return|;
 block|}
 comment|/**      * @return the usageManager      */
 specifier|public
-name|UsageManager
+name|SystemUsage
 name|getUsageManager
 parameter_list|()
 block|{

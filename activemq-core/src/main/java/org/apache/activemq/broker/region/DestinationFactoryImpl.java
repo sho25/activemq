@@ -171,20 +171,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
-operator|.
-name|UsageManager
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|store
 operator|.
 name|MessageStore
@@ -233,6 +219,20 @@ name|TaskRunnerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usage
+operator|.
+name|SystemUsage
+import|;
+end_import
+
 begin_comment
 comment|/**  * Creates standard ActiveMQ implementations of  * {@link org.apache.activemq.broker.region.Destination}.  *   * @author fateev@amazon.com  * @version $Revision$  */
 end_comment
@@ -246,7 +246,7 @@ name|DestinationFactory
 block|{
 specifier|protected
 specifier|final
-name|UsageManager
+name|SystemUsage
 name|memoryManager
 decl_stmt|;
 specifier|protected
@@ -266,7 +266,7 @@ decl_stmt|;
 specifier|public
 name|DestinationFactoryImpl
 parameter_list|(
-name|UsageManager
+name|SystemUsage
 name|memoryManager
 parameter_list|,
 name|TaskRunnerFactory

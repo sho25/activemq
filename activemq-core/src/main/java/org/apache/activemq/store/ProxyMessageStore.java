@@ -103,9 +103,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
+name|usage
 operator|.
-name|UsageManager
+name|MemoryUsage
 import|;
 end_import
 
@@ -288,17 +288,17 @@ return|;
 block|}
 specifier|public
 name|void
-name|setUsageManager
+name|setMemoryUsage
 parameter_list|(
-name|UsageManager
-name|usageManager
+name|MemoryUsage
+name|memoryUsage
 parameter_list|)
 block|{
 name|delegate
 operator|.
-name|setUsageManager
+name|setMemoryUsage
 argument_list|(
-name|usageManager
+name|memoryUsage
 argument_list|)
 expr_stmt|;
 block|}

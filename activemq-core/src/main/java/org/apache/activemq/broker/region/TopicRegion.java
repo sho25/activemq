@@ -241,20 +241,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
-operator|.
-name|UsageManager
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|store
 operator|.
 name|TopicMessageStore
@@ -272,6 +258,20 @@ operator|.
 name|thread
 operator|.
 name|TaskRunnerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usage
+operator|.
+name|SystemUsage
 import|;
 end_import
 
@@ -418,7 +418,7 @@ parameter_list|,
 name|DestinationStatistics
 name|destinationStatistics
 parameter_list|,
-name|UsageManager
+name|SystemUsage
 name|memoryManager
 parameter_list|,
 name|TaskRunnerFactory
@@ -1020,6 +1020,9 @@ operator|+
 literal|", memory="
 operator|+
 name|memoryManager
+operator|.
+name|getMemoryUsage
+argument_list|()
 operator|.
 name|getPercentUsage
 argument_list|()

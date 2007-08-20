@@ -391,20 +391,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
-operator|.
-name|UsageManager
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|store
 operator|.
 name|MessageRecoveryListener
@@ -478,6 +464,34 @@ operator|.
 name|transaction
 operator|.
 name|Synchronization
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usage
+operator|.
+name|MemoryUsage
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usage
+operator|.
+name|SystemUsage
 import|;
 end_import
 
@@ -586,10 +600,15 @@ specifier|final
 name|TopicMessageStore
 name|store
 decl_stmt|;
-specifier|protected
+specifier|private
 specifier|final
-name|UsageManager
-name|usageManager
+name|SystemUsage
+name|systemUsage
+decl_stmt|;
+specifier|private
+specifier|final
+name|MemoryUsage
+name|memoryUsage
 decl_stmt|;
 specifier|protected
 specifier|final
@@ -687,7 +706,7 @@ block|{
 while|while
 condition|(
 operator|!
-name|usageManager
+name|memoryUsage
 operator|.
 name|isFull
 argument_list|()
@@ -735,8 +754,8 @@ parameter_list|,
 name|TopicMessageStore
 name|store
 parameter_list|,
-name|UsageManager
-name|memoryManager
+name|SystemUsage
+name|systemUsage
 parameter_list|,
 name|DestinationStatistics
 name|parentStats
@@ -766,12 +785,21 @@ expr_stmt|;
 comment|// this could be NULL! (If an advisory)
 name|this
 operator|.
-name|usageManager
+name|systemUsage
+operator|=
+name|systemUsage
+expr_stmt|;
+name|this
+operator|.
+name|memoryUsage
 operator|=
 operator|new
-name|UsageManager
+name|MemoryUsage
 argument_list|(
-name|memoryManager
+name|systemUsage
+operator|.
+name|getMemoryUsage
+argument_list|()
 argument_list|,
 name|destination
 operator|.
@@ -781,7 +809,7 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|usageManager
+name|memoryUsage
 operator|.
 name|setUsagePortion
 argument_list|(
@@ -800,9 +828,9 @@ condition|)
 block|{
 name|store
 operator|.
-name|setUsageManager
+name|setMemoryUsage
 argument_list|(
-name|usageManager
+name|memoryUsage
 argument_list|)
 expr_stmt|;
 block|}
@@ -1289,11 +1317,7 @@ name|getActiveMQDestination
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// This
-comment|// destination
-comment|// is an actual
-comment|// destination
-comment|// id.
+comment|// Thi destination is an actual destination id.
 name|info
 operator|.
 name|setSubscribedDestination
@@ -1307,11 +1331,7 @@ name|getDestination
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// This
-comment|// destination
-comment|// might
-comment|// be a
-comment|// pattern
+comment|// This destination might be a pattern
 name|store
 operator|.
 name|addSubsciption
@@ -1684,7 +1704,7 @@ operator|.
 name|isProducerFlowControl
 argument_list|()
 operator|&&
-name|usageManager
+name|memoryUsage
 operator|.
 name|isFull
 argument_list|()
@@ -1692,7 +1712,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|usageManager
+name|systemUsage
 operator|.
 name|isSendFailIfNoSpace
 argument_list|()
@@ -1902,7 +1922,7 @@ comment|// get called..
 if|if
 condition|(
 operator|!
-name|usageManager
+name|memoryUsage
 operator|.
 name|notifyCallbackWhenNotFull
 argument_list|(
@@ -1935,7 +1955,7 @@ comment|// by blocking this thread until there is space available.
 while|while
 condition|(
 operator|!
-name|usageManager
+name|memoryUsage
 operator|.
 name|waitForSpace
 argument_list|(
@@ -2051,6 +2071,14 @@ name|canOptimizeOutPersistence
 argument_list|()
 condition|)
 block|{
+name|systemUsage
+operator|.
+name|getStoreUsage
+argument_list|()
+operator|.
+name|waitForSpace
+argument_list|()
+expr_stmt|;
 name|store
 operator|.
 name|addMessage
@@ -2342,12 +2370,12 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|usageManager
+name|memoryUsage
 operator|!=
 literal|null
 condition|)
 block|{
-name|usageManager
+name|memoryUsage
 operator|.
 name|start
 argument_list|()
@@ -2370,12 +2398,12 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|usageManager
+name|memoryUsage
 operator|!=
 literal|null
 condition|)
 block|{
-name|usageManager
+name|memoryUsage
 operator|.
 name|stop
 argument_list|()
@@ -2557,12 +2585,12 @@ block|}
 comment|// Properties
 comment|// -------------------------------------------------------------------------
 specifier|public
-name|UsageManager
-name|getUsageManager
+name|MemoryUsage
+name|getBrokerMemoryUsage
 parameter_list|()
 block|{
 return|return
-name|usageManager
+name|memoryUsage
 return|;
 block|}
 specifier|public

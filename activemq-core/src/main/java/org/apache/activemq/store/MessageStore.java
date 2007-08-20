@@ -115,9 +115,23 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
+name|usage
 operator|.
-name|UsageManager
+name|MemoryUsage
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usage
+operator|.
+name|SystemUsage
 import|;
 end_import
 
@@ -193,12 +207,12 @@ name|ActiveMQDestination
 name|getDestination
 parameter_list|()
 function_decl|;
-comment|/**      * @param usageManager The UsageManager that is controlling the      *                destination's memory usage.      */
+comment|/**      * @param memoeyUSage The SystemUsage that is controlling the      *                destination's memory usage.      */
 name|void
-name|setUsageManager
+name|setMemoryUsage
 parameter_list|(
-name|UsageManager
-name|usageManager
+name|MemoryUsage
+name|memoeyUSage
 parameter_list|)
 function_decl|;
 comment|/**      * @return the number of messages ready to deliver      * @throws IOException      *       */

@@ -157,20 +157,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
-operator|.
-name|UsageManager
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|store
 operator|.
 name|MessageRecoveryListener
@@ -188,6 +174,34 @@ operator|.
 name|store
 operator|.
 name|MessageStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usage
+operator|.
+name|MemoryUsage
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usage
+operator|.
+name|SystemUsage
 import|;
 end_import
 
@@ -555,15 +569,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @param usageManager The UsageManager that is controlling the      *                destination's memory usage.      */
-specifier|public
-name|void
-name|setUsageManager
-parameter_list|(
-name|UsageManager
-name|usageManager
-parameter_list|)
-block|{     }
 specifier|public
 name|int
 name|getMessageCount
@@ -729,6 +734,17 @@ name|lastBatchId
 operator|=
 literal|null
 expr_stmt|;
+block|}
+comment|/**      * @param memoeyUSage      * @see org.apache.activemq.store.MessageStore#setMemoryUsage(org.apache.activemq.usage.MemoryUsage)      */
+specifier|public
+name|void
+name|setMemoryUsage
+parameter_list|(
+name|MemoryUsage
+name|memoeyUSage
+parameter_list|)
+block|{
+comment|// TODO Auto-generated method stub
 block|}
 block|}
 end_class

@@ -29,6 +29,20 @@ name|AtomicLong
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usage
+operator|.
+name|MemoryUsage
+import|;
+end_import
+
 begin_comment
 comment|/**  * Simple CacheFilter that increases/decreases usage on a UsageManager as  * objects are added/removed from the Cache.  *   * @version $Revision$  */
 end_comment
@@ -53,8 +67,8 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|UsageManager
-name|um
+name|MemoryUsage
+name|usage
 decl_stmt|;
 specifier|public
 name|UsageManagerCacheFilter
@@ -62,7 +76,7 @@ parameter_list|(
 name|Cache
 name|next
 parameter_list|,
-name|UsageManager
+name|MemoryUsage
 name|um
 parameter_list|)
 block|{
@@ -73,7 +87,7 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|um
+name|usage
 operator|=
 name|um
 expr_stmt|;
@@ -90,7 +104,7 @@ name|value
 parameter_list|)
 block|{
 name|long
-name|usage
+name|usageValue
 init|=
 name|getUsageOfAddedObject
 argument_list|(
@@ -116,7 +130,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|usage
+name|usageValue
 operator|-=
 name|getUsageOfRemovedObject
 argument_list|(
@@ -128,14 +142,14 @@ name|totalUsage
 operator|.
 name|addAndGet
 argument_list|(
-name|usage
+name|usageValue
 argument_list|)
 expr_stmt|;
-name|um
+name|usage
 operator|.
 name|increaseUsage
 argument_list|(
-name|usage
+name|usageValue
 argument_list|)
 expr_stmt|;
 return|return
@@ -168,7 +182,7 @@ literal|null
 condition|)
 block|{
 name|long
-name|usage
+name|usageValue
 init|=
 name|getUsageOfRemovedObject
 argument_list|(
@@ -180,14 +194,14 @@ operator|.
 name|addAndGet
 argument_list|(
 operator|-
-name|usage
+name|usageValue
 argument_list|)
 expr_stmt|;
-name|um
+name|usage
 operator|.
 name|decreaseUsage
 argument_list|(
-name|usage
+name|usageValue
 argument_list|)
 expr_stmt|;
 block|}
@@ -224,7 +238,7 @@ name|void
 name|close
 parameter_list|()
 block|{
-name|um
+name|usage
 operator|.
 name|decreaseUsage
 argument_list|(

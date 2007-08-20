@@ -105,9 +105,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
+name|usage
 operator|.
-name|UsageManager
+name|SystemUsage
 import|;
 end_import
 
@@ -262,17 +262,17 @@ name|void
 name|gc
 parameter_list|()
 function_decl|;
-comment|/**      * Set the UsageManager      *       * @param usageManager      * @see org.apache.activemq.memory.UsageManager      */
+comment|/**      * Set the UsageManager      *       * @param systemUsage      * @see org.apache.activemq.usage.SystemUsage      */
 name|void
-name|setUsageManager
+name|setSystemUsage
 parameter_list|(
-name|UsageManager
-name|usageManager
+name|SystemUsage
+name|systemUsage
 parameter_list|)
 function_decl|;
 comment|/**      * @return the usageManager      */
-name|UsageManager
-name|getUsageManager
+name|SystemUsage
+name|getSystemUsage
 parameter_list|()
 function_decl|;
 comment|/**      * @return the memoryUsageHighWaterMark      */

@@ -583,20 +583,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|memory
-operator|.
-name|UsageManager
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|store
 operator|.
 name|MessageRecoveryListener
@@ -642,6 +628,20 @@ operator|.
 name|thread
 operator|.
 name|TaskRunnerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usage
+operator|.
+name|SystemUsage
 import|;
 end_import
 
@@ -1010,7 +1010,7 @@ parameter_list|,
 name|TaskRunnerFactory
 name|taskRunnerFactory
 parameter_list|,
-name|UsageManager
+name|SystemUsage
 name|memoryManager
 parameter_list|,
 name|DestinationFactory
@@ -1164,7 +1164,7 @@ specifier|protected
 name|Region
 name|createQueueRegion
 parameter_list|(
-name|UsageManager
+name|SystemUsage
 name|memoryManager
 parameter_list|,
 name|TaskRunnerFactory
@@ -1194,7 +1194,7 @@ specifier|protected
 name|Region
 name|createTempQueueRegion
 parameter_list|(
-name|UsageManager
+name|SystemUsage
 name|memoryManager
 parameter_list|,
 name|TaskRunnerFactory
@@ -1224,7 +1224,7 @@ specifier|protected
 name|Region
 name|createTempTopicRegion
 parameter_list|(
-name|UsageManager
+name|SystemUsage
 name|memoryManager
 parameter_list|,
 name|TaskRunnerFactory
@@ -1254,7 +1254,7 @@ specifier|protected
 name|Region
 name|createTopicRegion
 parameter_list|(
-name|UsageManager
+name|SystemUsage
 name|memoryManager
 parameter_list|,
 name|TaskRunnerFactory
