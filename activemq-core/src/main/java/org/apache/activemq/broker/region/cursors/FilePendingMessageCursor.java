@@ -774,7 +774,7 @@ argument_list|()
 expr_stmt|;
 name|systemUsage
 operator|.
-name|getTempDiskUsage
+name|getTempUsage
 argument_list|()
 operator|.
 name|waitForSpace
@@ -848,7 +848,7 @@ argument_list|()
 expr_stmt|;
 name|systemUsage
 operator|.
-name|getTempDiskUsage
+name|getTempUsage
 argument_list|()
 operator|.
 name|waitForSpace

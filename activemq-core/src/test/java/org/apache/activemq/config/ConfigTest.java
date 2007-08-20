@@ -1452,29 +1452,33 @@ expr_stmt|;
 comment|// Check usage manager
 comment|// System.out.print("Checking memory manager configurations... ");
 name|SystemUsage
-name|memMgr
+name|systemUsage
 init|=
 name|broker
 operator|.
-name|getUsageManager
+name|getSystemUsage
 argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
-literal|"Should have a memory manager"
+literal|"Should have a SystemUsage"
 argument_list|,
-name|memMgr
+name|systemUsage
 operator|!=
 literal|null
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"UsageManager Config Error (limit)"
+literal|"SystemUsage Config Error (MemoryUsage.limit)"
 argument_list|,
-literal|200000
+literal|1024
+operator|*
+literal|1024
+operator|*
+literal|10
 argument_list|,
-name|memMgr
+name|systemUsage
 operator|.
 name|getMemoryUsage
 argument_list|()
@@ -1485,11 +1489,11 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"UsageManager Config Error (percentUsageMinDelta)"
+literal|"SystemUsage Config Error (MemoryUsage.percentUsageMinDelta)"
 argument_list|,
 literal|20
 argument_list|,
-name|memMgr
+name|systemUsage
 operator|.
 name|getMemoryUsage
 argument_list|()
@@ -1498,11 +1502,57 @@ name|getPercentUsageMinDelta
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
+name|assertEquals
 argument_list|(
-literal|"Success"
+literal|"SystemUsage Config Error (TempUsage.limit)"
+argument_list|,
+literal|1024
+operator|*
+literal|1024
+operator|*
+literal|100
+argument_list|,
+name|systemUsage
+operator|.
+name|getTempUsage
+argument_list|()
+operator|.
+name|getLimit
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"SystemUsage Config Error (StoreUsage.limit)"
+argument_list|,
+literal|1024
+operator|*
+literal|1024
+operator|*
+literal|1024
+argument_list|,
+name|systemUsage
+operator|.
+name|getStoreUsage
+argument_list|()
+operator|.
+name|getLimit
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"SystemUsage Config Error (StoreUsage.name)"
+argument_list|,
+literal|"foo"
+argument_list|,
+name|systemUsage
+operator|.
+name|getStoreUsage
+argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|LOG

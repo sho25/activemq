@@ -738,7 +738,7 @@ argument_list|)
 expr_stmt|;
 name|brokerService
 operator|.
-name|setUsageManager
+name|setSystemUsage
 argument_list|(
 name|memoryManager
 argument_list|)

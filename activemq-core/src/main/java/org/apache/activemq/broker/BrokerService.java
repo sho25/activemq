@@ -1077,7 +1077,7 @@ name|persistenceTaskRunnerFactory
 decl_stmt|;
 specifier|private
 name|SystemUsage
-name|usageManager
+name|systemUsage
 decl_stmt|;
 specifier|private
 name|SystemUsage
@@ -2961,19 +2961,19 @@ expr_stmt|;
 block|}
 specifier|public
 name|SystemUsage
-name|getUsageManager
+name|getSystemUsage
 parameter_list|()
 block|{
 try|try
 block|{
 if|if
 condition|(
-name|usageManager
+name|systemUsage
 operator|==
 literal|null
 condition|)
 block|{
-name|usageManager
+name|systemUsage
 operator|=
 operator|new
 name|SystemUsage
@@ -2987,7 +2987,7 @@ name|getTempDataStore
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|usageManager
+name|systemUsage
 operator|.
 name|getMemoryUsage
 argument_list|()
@@ -3001,10 +3001,10 @@ operator|*
 literal|64
 argument_list|)
 expr_stmt|;
-comment|// Default to 64 Meg
-name|usageManager
+comment|// Default 64 Meg
+name|systemUsage
 operator|.
-name|getTempDiskUsage
+name|getTempUsage
 argument_list|()
 operator|.
 name|setLimit
@@ -3018,8 +3018,8 @@ operator|*
 literal|100
 argument_list|)
 expr_stmt|;
-comment|//10 Gb
-name|usageManager
+comment|// 10 Gb
+name|systemUsage
 operator|.
 name|getStoreUsage
 argument_list|()
@@ -3035,10 +3035,10 @@ operator|*
 literal|100
 argument_list|)
 expr_stmt|;
-comment|//100 GB
+comment|// 100 GB
 block|}
 return|return
-name|usageManager
+name|systemUsage
 return|;
 block|}
 catch|catch
@@ -3072,7 +3072,7 @@ block|}
 block|}
 specifier|public
 name|void
-name|setUsageManager
+name|setSystemUsage
 parameter_list|(
 name|SystemUsage
 name|memoryManager
@@ -3080,7 +3080,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|usageManager
+name|systemUsage
 operator|=
 name|memoryManager
 expr_stmt|;
@@ -3105,7 +3105,7 @@ operator|=
 operator|new
 name|SystemUsage
 argument_list|(
-name|getUsageManager
+name|getSystemUsage
 argument_list|()
 argument_list|,
 literal|"Consumer"
@@ -3162,7 +3162,7 @@ operator|=
 operator|new
 name|SystemUsage
 argument_list|(
-name|getUsageManager
+name|getSystemUsage
 argument_list|()
 argument_list|,
 literal|"Producer"

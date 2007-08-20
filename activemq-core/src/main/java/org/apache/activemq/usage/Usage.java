@@ -108,7 +108,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to keep track of how much of something is being used so that a  * productive working set usage can be controlled.  *   * Main use case is manage memory usage.  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.3 $  */
+comment|/**  * Used to keep track of how much of something is being used so that a  * productive working set usage can be controlled. Main use case is manage  * memory usage.  *   * @org.apache.xbean.XBean  * @version $Revision: 1.3 $  */
 end_comment
 
 begin_class
@@ -116,6 +116,11 @@ specifier|public
 specifier|abstract
 class|class
 name|Usage
+parameter_list|<
+name|T
+extends|extends
+name|Usage
+parameter_list|>
 implements|implements
 name|Service
 block|{
@@ -147,9 +152,8 @@ specifier|protected
 name|int
 name|percentUsage
 decl_stmt|;
-specifier|private
-specifier|final
-name|Usage
+specifier|protected
+name|T
 name|parent
 decl_stmt|;
 specifier|private
@@ -194,8 +198,6 @@ decl_stmt|;
 specifier|private
 name|String
 name|name
-init|=
-literal|""
 decl_stmt|;
 specifier|private
 name|float
@@ -206,14 +208,14 @@ decl_stmt|;
 specifier|private
 name|List
 argument_list|<
-name|Usage
+name|T
 argument_list|>
 name|children
 init|=
 operator|new
 name|CopyOnWriteArrayList
 argument_list|<
-name|Usage
+name|T
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -241,7 +243,7 @@ decl_stmt|;
 specifier|public
 name|Usage
 parameter_list|(
-name|Usage
+name|T
 name|parent
 parameter_list|,
 name|String
@@ -289,8 +291,6 @@ name|portion
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
 name|name
 operator|=
 name|parent
@@ -298,12 +298,14 @@ operator|.
 name|name
 operator|+
 literal|":"
+operator|+
+name|name
 expr_stmt|;
 block|}
 name|this
 operator|.
 name|name
-operator|+=
+operator|=
 name|name
 expr_stmt|;
 block|}
@@ -327,7 +329,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param timeout       * @throws InterruptedException      *       * @return true if space      */
+comment|/**      * @param timeout      * @throws InterruptedException      * @return true if space      */
 specifier|public
 name|boolean
 name|waitForSpace
@@ -532,7 +534,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Sets the memory limit in bytes. Setting the limit in bytes will set the      * usagePortion to 0 since the UsageManager is not going to be portion based      * off the parent.      *       * When set using XBean, you can use values such as: "20 mb", "1024 kb", or      * "1 gb"      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
+comment|/**      * Sets the memory limit in bytes. Setting the limit in bytes will set the      * usagePortion to 0 since the UsageManager is not going to be portion based      * off the parent. When set using XBean, you can use values such as: "20      * mb", "1024 kb", or "1 gb"      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
 specifier|public
 name|void
 name|setLimit
@@ -581,7 +583,7 @@ name|onLimitChange
 argument_list|()
 expr_stmt|;
 block|}
-specifier|private
+specifier|protected
 name|void
 name|onLimitChange
 parameter_list|()
@@ -649,7 +651,7 @@ comment|// set
 comment|// their limits based on ours.
 for|for
 control|(
-name|Usage
+name|T
 name|child
 range|:
 name|children
@@ -1068,6 +1070,11 @@ operator|+
 literal|"%"
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|void
 name|start
@@ -1089,6 +1096,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|void
 name|stop
@@ -1114,7 +1126,7 @@ specifier|private
 name|void
 name|addChild
 parameter_list|(
-name|Usage
+name|T
 name|child
 parameter_list|)
 block|{
@@ -1130,7 +1142,7 @@ specifier|private
 name|void
 name|removeChild
 parameter_list|(
-name|Usage
+name|T
 name|child
 parameter_list|)
 block|{
@@ -1303,6 +1315,45 @@ operator|.
 name|pollingTime
 operator|=
 name|pollingTime
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|this
+operator|.
+name|name
+operator|=
+name|name
+expr_stmt|;
+block|}
+specifier|public
+name|T
+name|getParent
+parameter_list|()
+block|{
+return|return
+name|parent
+return|;
+block|}
+specifier|public
+name|void
+name|setParent
+parameter_list|(
+name|T
+name|parent
+parameter_list|)
+block|{
+name|this
+operator|.
+name|parent
+operator|=
+name|parent
 expr_stmt|;
 block|}
 block|}

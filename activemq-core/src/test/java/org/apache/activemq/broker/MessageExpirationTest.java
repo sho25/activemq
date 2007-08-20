@@ -535,7 +535,7 @@ comment|// Reduce the limit so that only 1 message can flow through the broker
 comment|// at a time.
 name|broker
 operator|.
-name|getUsageManager
+name|getSystemUsage
 argument_list|()
 operator|.
 name|getMemoryUsage

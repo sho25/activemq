@@ -403,7 +403,7 @@ block|{
 return|return
 name|brokerService
 operator|.
-name|getUsageManager
+name|getSystemUsage
 argument_list|()
 operator|.
 name|getMemoryUsage
@@ -421,7 +421,7 @@ block|{
 return|return
 name|brokerService
 operator|.
-name|getUsageManager
+name|getSystemUsage
 argument_list|()
 operator|.
 name|getMemoryUsage
@@ -441,7 +441,7 @@ parameter_list|)
 block|{
 name|brokerService
 operator|.
-name|getUsageManager
+name|getSystemUsage
 argument_list|()
 operator|.
 name|getMemoryUsage

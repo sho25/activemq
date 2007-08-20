@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Used to keep track of how much of something is being used so that a  * productive working set usage can be controlled.  *   * Main use case is manage memory usage.  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.3 $  */
+comment|/**  * Used to keep track of how much of something is being used so that a  * productive working set usage can be controlled. Main use case is manage  * memory usage.  *   * @org.apache.xbean.XBean  * @version $Revision: 1.3 $  */
 end_comment
 
 begin_class
@@ -25,11 +25,10 @@ class|class
 name|MemoryUsage
 extends|extends
 name|Usage
-block|{
-specifier|private
+argument_list|<
 name|MemoryUsage
-name|parent
-decl_stmt|;
+argument_list|>
+block|{
 specifier|private
 name|long
 name|usage
@@ -42,7 +41,7 @@ name|this
 argument_list|(
 literal|null
 argument_list|,
-literal|"default"
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -169,7 +168,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * @param timeout       * @throws InterruptedException      *       * @return true if space      */
+comment|/**      * @param timeout      * @throws InterruptedException      * @return true if space      */
 specifier|public
 name|boolean
 name|waitForSpace
@@ -263,7 +262,7 @@ literal|100
 return|;
 block|}
 block|}
-comment|/**      * Tries to increase the usage by value amount but blocks if this object is      * currently full.      * @param value       *       * @throws InterruptedException      */
+comment|/**      * Tries to increase the usage by value amount but blocks if this object is      * currently full.      *       * @param value      * @throws InterruptedException      */
 specifier|public
 name|void
 name|enqueueUsage
@@ -308,7 +307,12 @@ operator|!=
 literal|null
 condition|)
 block|{
+operator|(
+operator|(
+name|MemoryUsage
+operator|)
 name|parent
+operator|)
 operator|.
 name|increaseUsage
 argument_list|(
@@ -405,6 +409,30 @@ block|{
 return|return
 name|usage
 return|;
+block|}
+specifier|public
+name|long
+name|getUsage
+parameter_list|()
+block|{
+return|return
+name|usage
+return|;
+block|}
+specifier|public
+name|void
+name|setUsage
+parameter_list|(
+name|long
+name|usage
+parameter_list|)
+block|{
+name|this
+operator|.
+name|usage
+operator|=
+name|usage
+expr_stmt|;
 block|}
 block|}
 end_class
