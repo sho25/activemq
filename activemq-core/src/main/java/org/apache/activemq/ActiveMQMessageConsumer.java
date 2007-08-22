@@ -580,7 +580,7 @@ specifier|private
 name|boolean
 name|clearDispatchList
 decl_stmt|;
-comment|/**      * Create a MessageConsumer      *       * @param session      * @param dest      * @param name      * @param selector      * @param prefetch      * @param maximumPendingMessageCount TODO      * @param noLocal      * @param browser      * @param dispatchAsync      * @throws JMSException      */
+comment|/**      * Create a MessageConsumer      *       * @param session      * @param dest      * @param name      * @param selector      * @param prefetch      * @param maximumPendingMessageCount TODO      * @param noLocal      * @param browser      * @param dispatchAsync      * @param messageListener      * @throws JMSException      */
 specifier|public
 name|ActiveMQMessageConsumer
 parameter_list|(
@@ -613,6 +613,9 @@ name|browser
 parameter_list|,
 name|boolean
 name|dispatchAsync
+parameter_list|,
+name|MessageListener
+name|messageListener
 parameter_list|)
 throws|throws
 name|JMSException
@@ -1075,6 +1078,19 @@ operator|.
 name|optimizeAcknowledge
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|messageListener
+operator|!=
+literal|null
+condition|)
+block|{
+name|setMessageListener
+argument_list|(
+name|messageListener
+argument_list|)
+expr_stmt|;
+block|}
 try|try
 block|{
 name|this
