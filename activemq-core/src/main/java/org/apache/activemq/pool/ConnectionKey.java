@@ -40,10 +40,10 @@ specifier|public
 name|ConnectionKey
 parameter_list|(
 name|String
-name|password
+name|userName
 parameter_list|,
 name|String
-name|userName
+name|password
 parameter_list|)
 block|{
 name|this
