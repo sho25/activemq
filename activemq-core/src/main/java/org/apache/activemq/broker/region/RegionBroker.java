@@ -3431,6 +3431,11 @@ parameter_list|)
 block|{
 try|try
 block|{
+name|boolean
+name|sent
+init|=
+literal|false
+decl_stmt|;
 if|if
 condition|(
 name|node
@@ -3449,6 +3454,13 @@ decl_stmt|;
 if|if
 condition|(
 name|message
+operator|!=
+literal|null
+operator|&&
+name|node
+operator|.
+name|getRegionDestination
+argument_list|()
 operator|!=
 literal|null
 condition|)
@@ -3564,21 +3576,32 @@ argument_list|,
 name|deadLetterDestination
 argument_list|)
 expr_stmt|;
+name|sent
+operator|=
+literal|true
+expr_stmt|;
 block|}
 block|}
 block|}
-else|else
+block|}
+if|if
+condition|(
+name|sent
+operator|==
+literal|false
+condition|)
 block|{
 name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Null message for node: "
+literal|"Failed to send "
 operator|+
 name|node
+operator|+
+literal|" to dead letter queue"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 catch|catch
@@ -3592,6 +3615,8 @@ operator|.
 name|warn
 argument_list|(
 literal|"Failed to pass expired message to dead letter queue"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
