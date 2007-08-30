@@ -1684,9 +1684,6 @@ operator|.
 name|delete
 argument_list|(
 name|stateDirectory
-operator|.
-name|getAbsolutePath
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1723,9 +1720,6 @@ operator|.
 name|open
 argument_list|(
 name|stateDirectory
-operator|.
-name|getAbsolutePath
-argument_list|()
 argument_list|,
 literal|"rw"
 argument_list|)

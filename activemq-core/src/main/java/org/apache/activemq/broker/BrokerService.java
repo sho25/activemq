@@ -4378,9 +4378,6 @@ name|open
 argument_list|(
 name|getTmpDataDirectory
 argument_list|()
-operator|.
-name|getPath
-argument_list|()
 argument_list|,
 literal|"rw"
 argument_list|)

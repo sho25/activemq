@@ -210,7 +210,12 @@ operator|.
 name|getDefaultDataDirectory
 argument_list|()
 argument_list|,
+name|IOHelper
+operator|.
+name|toFileSystemSafeName
+argument_list|(
 name|brokerName
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
