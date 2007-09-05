@@ -740,7 +740,7 @@ name|getListContainer
 argument_list|(
 name|destination
 argument_list|,
-literal|"topic-subs-references-"
+literal|"TSR-"
 operator|+
 name|key
 argument_list|)
