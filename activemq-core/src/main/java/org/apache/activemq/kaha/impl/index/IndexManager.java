@@ -791,6 +791,14 @@ name|name
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|file
+operator|.
+name|getParentFile
+argument_list|()
+operator|.
+name|mkdirs
+argument_list|()
+expr_stmt|;
 name|indexFile
 operator|=
 operator|new
