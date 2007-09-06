@@ -2139,6 +2139,15 @@ operator|=
 name|brokerOutTime
 expr_stmt|;
 block|}
+specifier|public
+name|boolean
+name|isDropped
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_class
 

@@ -145,6 +145,11 @@ name|boolean
 name|isExpired
 parameter_list|()
 function_decl|;
+comment|/**      * Returns true if this message is dropped.      */
+name|boolean
+name|isDropped
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
