@@ -984,6 +984,10 @@ name|destination
 operator|.
 name|isTemporary
 argument_list|()
+operator|||
+name|tmpStore
+operator|==
+literal|null
 condition|)
 block|{
 name|this

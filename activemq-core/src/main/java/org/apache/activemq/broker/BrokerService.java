@@ -4243,6 +4243,17 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|isPersistent
+argument_list|()
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|boolean
 name|result
 init|=
