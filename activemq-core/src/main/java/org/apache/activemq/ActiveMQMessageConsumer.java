@@ -1593,7 +1593,10 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Received expired message: "
+name|getConsumerId
+argument_list|()
+operator|+
+literal|" received expired message: "
 operator|+
 name|md
 argument_list|)
@@ -1650,7 +1653,10 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Received message: "
+name|getConsumerId
+argument_list|()
+operator|+
+literal|" received message: "
 operator|+
 name|md
 argument_list|)
@@ -2234,7 +2240,10 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to delivered acknowledgements"
+name|getConsumerId
+argument_list|()
+operator|+
+literal|" failed to delivered acknowledgements"
 argument_list|,
 name|e
 argument_list|)
@@ -3792,7 +3801,10 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Exception while processing message: "
+name|getConsumerId
+argument_list|()
+operator|+
+literal|" Exception while processing message: "
 operator|+
 name|e
 argument_list|,
@@ -3842,7 +3854,10 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Ignoring Duplicate: "
+name|getConsumerId
+argument_list|()
+operator|+
+literal|" Ignoring Duplicate: "
 operator|+
 name|md
 operator|.

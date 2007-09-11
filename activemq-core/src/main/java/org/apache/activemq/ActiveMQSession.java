@@ -1195,6 +1195,25 @@ literal|"Not a transacted session"
 argument_list|)
 throw|;
 block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|getSessionId
+argument_list|()
+operator|+
+literal|" Transaction Commit"
+argument_list|)
+expr_stmt|;
+block|}
 name|transactionContext
 operator|.
 name|commit
@@ -1230,6 +1249,25 @@ argument_list|(
 literal|"Not a transacted session"
 argument_list|)
 throw|;
+block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|getSessionId
+argument_list|()
+operator|+
+literal|" Transaction Rollback"
+argument_list|)
+expr_stmt|;
 block|}
 name|transactionContext
 operator|.
@@ -3832,7 +3870,10 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Sending message: "
+name|getSessionId
+argument_list|()
+operator|+
+literal|" sending message: "
 operator|+
 name|msg
 argument_list|)
