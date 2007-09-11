@@ -228,7 +228,7 @@ specifier|final
 name|int
 name|MESSAGE_COUNT
 init|=
-literal|100000
+literal|1000000
 decl_stmt|;
 specifier|private
 specifier|static
@@ -344,15 +344,7 @@ operator|new
 name|BrokerService
 argument_list|()
 expr_stmt|;
-name|broker
-operator|.
-name|setPersistenceAdapter
-argument_list|(
-operator|new
-name|KahaPersistenceAdapter
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//broker.setPersistenceAdapter(new KahaPersistenceAdapter());
 comment|/*          * JournalPersistenceAdapterFactory factory = new          * JournalPersistenceAdapterFactory();          * factory.setDataDirectoryFile(broker.getDataDirectory());          * factory.setTaskRunnerFactory(broker.getTaskRunnerFactory());          * factory.setUseJournal(false); broker.setPersistenceFactory(factory);          */
 name|broker
 operator|.
@@ -687,14 +679,14 @@ if|if
 condition|(
 name|loop
 operator|%
-literal|500
+literal|5000
 operator|==
 literal|0
 condition|)
 block|{
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"Sent "
 operator|+
