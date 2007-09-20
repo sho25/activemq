@@ -219,6 +219,34 @@ name|BrokerService
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Test case demonstrating situation where messages are not delivered to consumers.  */
 end_comment
@@ -232,6 +260,21 @@ name|TestCase
 implements|implements
 name|MessageListener
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOG
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|QueueWorkerPrefetchTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -644,11 +687,9 @@ operator|==
 literal|0
 condition|)
 block|{
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Master now has ack count of: "
 operator|+
@@ -937,11 +978,9 @@ literal|" messages"
 argument_list|)
 expr_stmt|;
 block|}
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"First batch received"
 argument_list|)
@@ -1012,11 +1051,9 @@ literal|" messages"
 argument_list|)
 expr_stmt|;
 block|}
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Second batch received"
 argument_list|)
