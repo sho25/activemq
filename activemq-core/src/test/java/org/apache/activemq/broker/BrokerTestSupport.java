@@ -2148,7 +2148,20 @@ condition|)
 block|{
 name|fail
 argument_list|(
-literal|"Received a message."
+literal|"Received a message: "
+operator|+
+operator|(
+operator|(
+name|MessageDispatch
+operator|)
+name|o
+operator|)
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|getMessageId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

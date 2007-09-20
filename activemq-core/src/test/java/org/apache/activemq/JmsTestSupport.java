@@ -661,6 +661,11 @@ name|Throwable
 name|e
 parameter_list|)
 block|{             }
+name|iter
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
 block|}
 name|broker
 operator|.
