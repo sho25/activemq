@@ -585,20 +585,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|thread
-operator|.
-name|Valve
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|transaction
 operator|.
 name|Synchronization
@@ -719,17 +705,6 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|Valve
-name|dispatchValve
-init|=
-operator|new
-name|Valve
-argument_list|(
-literal|true
-argument_list|)
-decl_stmt|;
-specifier|private
-specifier|final
 name|SystemUsage
 name|systemUsage
 decl_stmt|;
@@ -834,15 +809,6 @@ specifier|private
 specifier|final
 name|Object
 name|exclusiveLockMutex
-init|=
-operator|new
-name|Object
-argument_list|()
-decl_stmt|;
-specifier|private
-specifier|final
-name|Object
-name|doDispatchMutex
 init|=
 operator|new
 name|Object
@@ -1314,6 +1280,7 @@ literal|true
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|addSubscription
 parameter_list|(
@@ -1363,6 +1330,7 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
+comment|//needs to be synchronized - so no contention with dispatching
 synchronized|synchronized
 init|(
 name|consumers
@@ -1430,22 +1398,18 @@ block|}
 block|}
 block|}
 block|}
-comment|// page in messages
-name|doPageIn
-argument_list|()
+comment|//we hold the lock on the dispatchValue - so lets build the paged in
+comment|//list directly;
+name|buildList
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 comment|// synchronize with dispatch method so that no new messages are sent
 comment|// while
 comment|// setting up a subscription. avoid out of order messages,
 comment|// duplicates
 comment|// etc.
-name|dispatchValve
-operator|.
-name|turnOff
-argument_list|()
-expr_stmt|;
-try|try
-block|{
 name|msgContext
 operator|.
 name|setDestination
@@ -1497,6 +1461,24 @@ name|node
 operator|.
 name|isDropped
 argument_list|()
+operator|||
+operator|(
+operator|!
+name|sub
+operator|.
+name|getConsumerInfo
+argument_list|()
+operator|.
+name|isBrowser
+argument_list|()
+operator|&&
+name|node
+operator|.
+name|getLockOwner
+argument_list|()
+operator|!=
+literal|null
+operator|)
 condition|)
 block|{
 continue|continue;
@@ -1554,15 +1536,6 @@ block|}
 block|}
 finally|finally
 block|{
-name|dispatchValve
-operator|.
-name|turnOn
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-finally|finally
-block|{
 name|msgContext
 operator|.
 name|clear
@@ -1571,6 +1544,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|removeSubscription
 parameter_list|(
@@ -1604,13 +1578,6 @@ expr_stmt|;
 comment|// synchronize with dispatch method so that no new messages are sent
 comment|// while
 comment|// removing up a subscription.
-name|dispatchValve
-operator|.
-name|turnOff
-argument_list|()
-expr_stmt|;
-try|try
-block|{
 synchronized|synchronized
 init|(
 name|consumers
@@ -1995,15 +1962,6 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-block|}
-finally|finally
-block|{
-name|dispatchValve
-operator|.
-name|turnOn
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 specifier|public
@@ -4885,23 +4843,39 @@ argument_list|<
 name|MessageReference
 argument_list|>
 name|doPageIn
-parameter_list|()
+parameter_list|(
+name|boolean
+name|force
+parameter_list|)
 throws|throws
 name|Exception
 block|{
-return|return
-name|doPageIn
-argument_list|(
-literal|true
-argument_list|)
-return|;
-block|}
-specifier|private
 name|List
 argument_list|<
 name|MessageReference
 argument_list|>
-name|doPageIn
+name|result
+init|=
+literal|null
+decl_stmt|;
+name|result
+operator|=
+name|buildList
+argument_list|(
+name|force
+argument_list|)
+expr_stmt|;
+return|return
+name|result
+return|;
+block|}
+specifier|private
+specifier|synchronized
+name|List
+argument_list|<
+name|MessageReference
+argument_list|>
+name|buildList
 parameter_list|(
 name|boolean
 name|force
@@ -4954,11 +4928,6 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|dispatchValve
-operator|.
-name|increment
-argument_list|()
-expr_stmt|;
 name|int
 name|count
 init|=
@@ -5097,11 +5066,6 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|dispatchValve
-operator|.
-name|decrement
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 return|return
@@ -5109,6 +5073,7 @@ name|result
 return|;
 block|}
 specifier|private
+specifier|synchronized
 name|void
 name|doDispatch
 parameter_list|(
@@ -5136,11 +5101,6 @@ condition|)
 block|{
 try|try
 block|{
-name|dispatchValve
-operator|.
-name|increment
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|int
@@ -5203,11 +5163,6 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|dispatchValve
-operator|.
-name|decrement
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}
@@ -5234,11 +5189,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-synchronized|synchronized
-init|(
-name|doDispatchMutex
-init|)
-block|{
 name|doDispatch
 argument_list|(
 name|doPageIn
@@ -5247,7 +5197,6 @@ name|force
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_class
