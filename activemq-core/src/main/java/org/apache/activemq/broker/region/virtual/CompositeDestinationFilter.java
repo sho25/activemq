@@ -134,7 +134,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|CompositeDestinationInterceptor
+name|CompositeDestinationFilter
 extends|extends
 name|DestinationFilter
 block|{
@@ -151,7 +151,7 @@ name|boolean
 name|copyMessage
 decl_stmt|;
 specifier|public
-name|CompositeDestinationInterceptor
+name|CompositeDestinationFilter
 parameter_list|(
 name|Destination
 name|next

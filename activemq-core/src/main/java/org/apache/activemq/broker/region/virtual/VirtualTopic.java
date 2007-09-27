@@ -218,31 +218,6 @@ operator|=
 name|name
 expr_stmt|;
 block|}
-comment|// Implementation methods
-comment|// -------------------------------------------------------------------------
-specifier|protected
-name|ActiveMQDestination
-name|getQueueConsumersWildcard
-parameter_list|(
-name|ActiveMQDestination
-name|original
-parameter_list|)
-block|{
-return|return
-operator|new
-name|ActiveMQQueue
-argument_list|(
-name|prefix
-operator|+
-name|original
-operator|.
-name|getPhysicalName
-argument_list|()
-operator|+
-name|postfix
-argument_list|)
-return|;
-block|}
 block|}
 end_class
 

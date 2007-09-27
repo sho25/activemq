@@ -190,6 +190,15 @@ argument_list|,
 name|queueConsumers
 argument_list|)
 expr_stmt|;
+name|super
+operator|.
+name|send
+argument_list|(
+name|context
+argument_list|,
+name|message
+argument_list|)
+expr_stmt|;
 block|}
 specifier|protected
 name|ActiveMQDestination

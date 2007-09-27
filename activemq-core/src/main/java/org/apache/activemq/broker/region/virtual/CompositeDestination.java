@@ -87,7 +87,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|CompositeDestinationInterceptor
+name|CompositeDestinationFilter
 argument_list|(
 name|destination
 argument_list|,
