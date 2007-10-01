@@ -507,8 +507,23 @@ init|=
 name|consumer
 operator|.
 name|receive
-argument_list|()
+argument_list|(
+literal|1000
+operator|*
+literal|5
+argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Message "
+operator|+
+name|i
+operator|+
+literal|" was missing."
+argument_list|,
+name|msg
+argument_list|)
+expr_stmt|;
 name|consumerList
 operator|.
 name|add

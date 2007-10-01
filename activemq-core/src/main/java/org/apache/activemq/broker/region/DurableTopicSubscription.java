@@ -382,7 +382,12 @@ argument_list|,
 name|context
 argument_list|,
 name|info
-argument_list|,
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|pending
+operator|=
 operator|new
 name|StoreDurableSubscriberCursor
 argument_list|(
@@ -405,7 +410,8 @@ name|info
 operator|.
 name|getPrefetchSize
 argument_list|()
-argument_list|)
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 name|this

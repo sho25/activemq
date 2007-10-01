@@ -1510,6 +1510,10 @@ argument_list|)
 decl_stmt|;
 name|assertNotNull
 argument_list|(
+literal|"Did not get message "
+operator|+
+name|i
+argument_list|,
 name|m2
 argument_list|)
 expr_stmt|;
