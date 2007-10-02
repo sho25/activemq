@@ -84,7 +84,7 @@ name|ActiveMQDestination
 argument_list|,
 name|ActiveMQMessageAudit
 argument_list|>
-name|queues
+name|destinations
 init|=
 operator|new
 name|LRUCache
@@ -179,7 +179,7 @@ block|{
 name|ActiveMQMessageAudit
 name|audit
 init|=
-name|queues
+name|destinations
 operator|.
 name|get
 argument_list|(
@@ -199,7 +199,7 @@ operator|new
 name|ActiveMQMessageAudit
 argument_list|()
 expr_stmt|;
-name|queues
+name|destinations
 operator|.
 name|put
 argument_list|(
@@ -321,7 +321,7 @@ block|{
 name|ActiveMQMessageAudit
 name|audit
 init|=
-name|queues
+name|destinations
 operator|.
 name|get
 argument_list|(
