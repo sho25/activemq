@@ -71,14 +71,16 @@ name|maxCacheSize
 init|=
 literal|10000
 decl_stmt|;
-comment|/**      * Default constructorfor an LRU Cache The default capacity is 10000      */
+comment|/**      * Default constructor for an LRU Cache The default capacity is 10000      */
 specifier|public
 name|LRUCache
 parameter_list|()
 block|{
-name|super
+name|this
 argument_list|(
-literal|1000
+literal|0
+argument_list|,
+literal|10000
 argument_list|,
 literal|0.75f
 argument_list|,
@@ -96,7 +98,7 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-name|maximumCacheSize
+literal|0
 argument_list|,
 name|maximumCacheSize
 argument_list|,
@@ -106,7 +108,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Constructs an empty<tt>LRUCache</tt> instance with the specified      * initial capacity, maximumCacheSize,load factor and ordering mode.      *       * @param initialCapacity the initial capacity.      * @param maximumCacheSize      * @param loadFactor the load factor.      * @param accessOrder the ordering mode -<tt>true</tt> for access-order,      *<tt>false</tt> for insertion-order.      * @throws IllegalArgumentException if the initial capacity is negative or      *                 the load factor is nonpositive.      */
+comment|/**      * Constructs an empty<tt>LRUCache</tt> instance with the specified      * initial capacity, maximumCacheSize,load factor and ordering mode.      *       * @param initialCapacity the initial capacity.      * @param maximumCacheSize      * @param loadFactor the load factor.      * @param accessOrder the ordering mode -<tt>true</tt> for access-order,      *<tt>false</tt> for insertion-order.      * @throws IllegalArgumentException if the initial capacity is negative or      *                 the load factor is non-positive.      */
 specifier|public
 name|LRUCache
 parameter_list|(
@@ -172,7 +174,12 @@ parameter_list|(
 name|Map
 operator|.
 name|Entry
-name|entry
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|eldest
 parameter_list|)
 block|{
 return|return
