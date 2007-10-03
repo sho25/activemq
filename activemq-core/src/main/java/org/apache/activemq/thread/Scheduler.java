@@ -208,6 +208,12 @@ operator|.
 name|cancel
 argument_list|()
 expr_stmt|;
+name|CLOCK_DAEMON
+operator|.
+name|purge
+argument_list|()
+expr_stmt|;
+comment|//remove cancelled TimerTasks
 block|}
 block|}
 specifier|public
