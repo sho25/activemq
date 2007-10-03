@@ -506,10 +506,6 @@ name|int
 name|additionalWindowSize
 decl_stmt|;
 specifier|private
-name|int
-name|rollbackCounter
-decl_stmt|;
-specifier|private
 name|long
 name|redeliveryDelay
 decl_stmt|;
@@ -2292,6 +2288,12 @@ name|isClosed
 argument_list|()
 condition|)
 block|{
+comment|//            if ( !deliveredMessages.isEmpty() ) {
+comment|//                // We need to let the broker know how many times that message
+comment|//                // was rolled back.
+comment|//                rollbackCounter++;
+comment|//                MessageDispatch lastMd = deliveredMessages.get(0);
+comment|//            }
 comment|// Do we have any acks we need to send out before closing?
 comment|// Ack any delivered messages now. (session may still
 comment|// commit/rollback the acks).
@@ -3217,10 +3219,6 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|rollbackCounter
-operator|=
-literal|0
-expr_stmt|;
 name|redeliveryDelay
 operator|=
 literal|0
@@ -3322,9 +3320,23 @@ block|{
 return|return;
 block|}
 comment|// Only increase the redlivery delay after the first redelivery..
+name|MessageDispatch
+name|lastMd
+init|=
+name|deliveredMessages
+operator|.
+name|getFirst
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
-name|rollbackCounter
+name|lastMd
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|getRedeliveryCounter
+argument_list|()
 operator|>
 literal|0
 condition|)
@@ -3339,9 +3351,43 @@ name|redeliveryDelay
 argument_list|)
 expr_stmt|;
 block|}
-name|rollbackCounter
-operator|++
+for|for
+control|(
+name|Iterator
+name|iter
+init|=
+name|deliveredMessages
+operator|.
+name|iterator
+argument_list|()
+init|;
+name|iter
+operator|.
+name|hasNext
+argument_list|()
+condition|;
+control|)
+block|{
+name|MessageDispatch
+name|md
+init|=
+operator|(
+name|MessageDispatch
+operator|)
+name|iter
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+name|md
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|onMessageRolledBack
+argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|redeliveryPolicy
@@ -3353,7 +3399,13 @@ name|RedeliveryPolicy
 operator|.
 name|NO_MAXIMUM_REDELIVERIES
 operator|&&
-name|rollbackCounter
+name|lastMd
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|getRedeliveryCounter
+argument_list|()
 operator|>
 name|redeliveryPolicy
 operator|.
@@ -3364,16 +3416,6 @@ block|{
 comment|// We need to NACK the messages so that they get sent to the
 comment|// DLQ.
 comment|// Acknowledge the last message.
-name|MessageDispatch
-name|lastMd
-init|=
-name|deliveredMessages
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
-decl_stmt|;
 name|MessageAck
 name|ack
 init|=
@@ -3431,10 +3473,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|rollbackCounter
-operator|=
-literal|0
-expr_stmt|;
 name|redeliveryDelay
 operator|=
 literal|0
@@ -3442,6 +3480,31 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|MessageAck
+name|ack
+init|=
+operator|new
+name|MessageAck
+argument_list|(
+name|lastMd
+argument_list|,
+name|MessageAck
+operator|.
+name|REDELIVERED_ACK_TYPE
+argument_list|,
+name|deliveredMessages
+operator|.
+name|size
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|session
+operator|.
+name|asyncSendPacket
+argument_list|(
+name|ack
+argument_list|)
+expr_stmt|;
 comment|// stop the delivery of messages.
 name|unconsumedMessages
 operator|.
@@ -3476,14 +3539,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|md
-operator|.
-name|getMessage
-argument_list|()
-operator|.
-name|onMessageRolledBack
-argument_list|()
-expr_stmt|;
 name|unconsumedMessages
 operator|.
 name|enqueueFirst

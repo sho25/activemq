@@ -77,6 +77,15 @@ name|POSION_ACK_TYPE
 init|=
 literal|1
 decl_stmt|;
+comment|/**      * In case the client want's to explicitly let the broker know that a      * message was not processed and it was re-delivered to the consumer      * but it was not yet considered to be a poison message.  The messageCount       * field will hold the number of times the message was re-delivered.       */
+specifier|public
+specifier|static
+specifier|final
+name|byte
+name|REDELIVERED_ACK_TYPE
+init|=
+literal|3
+decl_stmt|;
 specifier|protected
 name|byte
 name|ackType
@@ -271,6 +280,17 @@ return|return
 name|ackType
 operator|==
 name|DELIVERED_ACK_TYPE
+return|;
+block|}
+specifier|public
+name|boolean
+name|isRedeliveredAck
+parameter_list|()
+block|{
+return|return
+name|ackType
+operator|==
+name|REDELIVERED_ACK_TYPE
 return|;
 block|}
 comment|/**      * @openwire:property version=1 cache=true      */
