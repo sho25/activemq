@@ -55,6 +55,22 @@ name|MessageReference
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|QueueMessageReference
+import|;
+end_import
+
 begin_comment
 comment|/**  * hold pending messages in a linked list (messages awaiting disptach to a  * consumer) cursor  *   * @version $Revision$  */
 end_comment
@@ -139,6 +155,17 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|node
+operator|==
+name|QueueMessageReference
+operator|.
+name|NULL_MESSAGE
+condition|)
+block|{
+continue|continue;
+block|}
 if|if
 condition|(
 operator|!
