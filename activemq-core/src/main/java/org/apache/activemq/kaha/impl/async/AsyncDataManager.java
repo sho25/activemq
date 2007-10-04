@@ -995,6 +995,8 @@ expr_stmt|;
 block|}
 comment|// If we know the last location that was ok.. then we can skip lots
 comment|// of checking
+try|try
+block|{
 name|l
 operator|=
 name|recoveryCheck
@@ -1011,6 +1013,23 @@ argument_list|(
 name|l
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"recovery check failed"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|storeState
 argument_list|(
