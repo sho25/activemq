@@ -217,6 +217,24 @@ name|region
 operator|.
 name|policy
 operator|.
+name|NoSubscriptionRecoveryPolicy
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|policy
+operator|.
 name|SharedDeadLetterStrategy
 import|;
 end_import
@@ -630,10 +648,6 @@ decl_stmt|;
 specifier|private
 name|SubscriptionRecoveryPolicy
 name|subscriptionRecoveryPolicy
-init|=
-operator|new
-name|FixedSizedSubscriptionRecoveryPolicy
-argument_list|()
 decl_stmt|;
 specifier|private
 name|boolean
@@ -816,6 +830,39 @@ argument_list|(
 literal|1.0f
 argument_list|)
 expr_stmt|;
+comment|//set default subscription recovery policy
+if|if
+condition|(
+name|destination
+operator|.
+name|isTemporary
+argument_list|()
+operator|||
+name|AdvisorySupport
+operator|.
+name|isAdvisoryTopic
+argument_list|(
+name|destination
+argument_list|)
+condition|)
+block|{
+name|subscriptionRecoveryPolicy
+operator|=
+operator|new
+name|NoSubscriptionRecoveryPolicy
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|//set the default
+name|subscriptionRecoveryPolicy
+operator|=
+operator|new
+name|FixedSizedSubscriptionRecoveryPolicy
+argument_list|()
+expr_stmt|;
+block|}
 comment|// Let the store know what usage manager we are using so that he can
 comment|// flush messages to disk
 comment|// when usage gets high.
