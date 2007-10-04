@@ -1091,16 +1091,6 @@ argument_list|(
 name|usageManager
 argument_list|)
 expr_stmt|;
-name|usageManager
-operator|.
-name|getMemoryUsage
-argument_list|()
-operator|.
-name|addUsageListener
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
 block|}
 specifier|public
 name|void
