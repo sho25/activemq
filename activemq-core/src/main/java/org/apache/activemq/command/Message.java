@@ -209,7 +209,9 @@ specifier|final
 name|int
 name|AVERAGE_MESSAGE_SIZE_OVERHEAD
 init|=
-literal|500
+literal|8
+operator|*
+literal|1024
 decl_stmt|;
 specifier|protected
 name|MessageId
