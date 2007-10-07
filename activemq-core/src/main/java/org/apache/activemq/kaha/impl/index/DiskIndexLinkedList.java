@@ -615,7 +615,20 @@ condition|(
 name|current
 operator|!=
 literal|null
-operator|&&
+condition|)
+block|{
+name|current
+operator|=
+operator|(
+name|IndexItem
+operator|)
+name|refreshEntry
+argument_list|(
+name|current
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|current
 operator|.
 name|getNextItem
@@ -660,6 +673,7 @@ argument_list|,
 name|e
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 comment|// essential last get's updated consistently
