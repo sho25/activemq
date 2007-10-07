@@ -704,7 +704,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Retrive the prev entry after this entry      *       * @param entry      * @return prev entry      */
+comment|/** 	 * Retrive the prev entry after this entry 	 *  	 * @param entry 	 * @return prev entry 	 */
 specifier|public
 specifier|synchronized
 name|IndexItem
@@ -724,7 +724,10 @@ condition|(
 name|current
 operator|!=
 literal|null
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|current
 operator|.
 name|getPreviousItem
@@ -733,6 +736,16 @@ operator|>=
 literal|0
 condition|)
 block|{
+name|current
+operator|=
+operator|(
+name|IndexItem
+operator|)
+name|refreshEntry
+argument_list|(
+name|current
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|result
@@ -765,6 +778,7 @@ argument_list|,
 name|e
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 comment|// essential root get's updated consistently
