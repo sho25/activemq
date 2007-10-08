@@ -141,6 +141,8 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|persistentIndex
+init|=
+literal|true
 decl_stmt|;
 comment|/**      * @return a AMQPersistenceAdapter      * @see org.apache.activemq.store.PersistenceAdapterFactory#createPersistenceAdapter()      */
 specifier|public
