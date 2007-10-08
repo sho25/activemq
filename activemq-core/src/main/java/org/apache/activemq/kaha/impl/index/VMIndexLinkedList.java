@@ -87,6 +87,7 @@ name|root
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|IndexItem
 name|getRoot
 parameter_list|()
@@ -97,6 +98,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#getFirst()      */
 specifier|public
+specifier|synchronized
 name|IndexItem
 name|getFirst
 parameter_list|()
@@ -120,6 +122,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#getLast()      */
 specifier|public
+specifier|synchronized
 name|IndexItem
 name|getLast
 parameter_list|()
@@ -143,6 +146,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#removeFirst()      */
 specifier|public
+specifier|synchronized
 name|StoreEntry
 name|removeFirst
 parameter_list|()
@@ -178,6 +182,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#removeLast()      */
 specifier|public
+specifier|synchronized
 name|Object
 name|removeLast
 parameter_list|()
@@ -213,6 +218,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#addFirst(org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
+specifier|synchronized
 name|void
 name|addFirst
 parameter_list|(
@@ -232,6 +238,7 @@ expr_stmt|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#addLast(org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
+specifier|synchronized
 name|void
 name|addLast
 parameter_list|(
@@ -249,6 +256,7 @@ expr_stmt|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#size()      */
 specifier|public
+specifier|synchronized
 name|int
 name|size
 parameter_list|()
@@ -259,6 +267,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#isEmpty()      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|isEmpty
 parameter_list|()
@@ -271,6 +280,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#add(org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|add
 parameter_list|(
@@ -291,6 +301,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#clear()      */
 specifier|public
+specifier|synchronized
 name|void
 name|clear
 parameter_list|()
@@ -315,6 +326,7 @@ block|}
 comment|// Positional Access Operations
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#get(int)      */
 specifier|public
+specifier|synchronized
 name|IndexItem
 name|get
 parameter_list|(
@@ -331,6 +343,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#add(int,      *      org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
+specifier|synchronized
 name|void
 name|add
 parameter_list|(
@@ -360,6 +373,7 @@ expr_stmt|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#remove(int)      */
 specifier|public
+specifier|synchronized
 name|Object
 name|remove
 parameter_list|(
@@ -487,6 +501,7 @@ block|}
 comment|// Search Operations
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#indexOf(org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
+specifier|synchronized
 name|int
 name|indexOf
 parameter_list|(
@@ -541,6 +556,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#getNextEntry(org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
+specifier|synchronized
 name|IndexItem
 name|getNextEntry
 parameter_list|(
@@ -564,6 +580,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#getPrevEntry(org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
+specifier|synchronized
 name|IndexItem
 name|getPrevEntry
 parameter_list|(
@@ -587,6 +604,7 @@ return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#addBefore(org.apache.activemq.kaha.impl.IndexItem,      *      org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
+specifier|synchronized
 name|void
 name|addBefore
 parameter_list|(
@@ -633,6 +651,7 @@ expr_stmt|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see org.apache.activemq.kaha.impl.IndexLinkedList#remove(org.apache.activemq.kaha.impl.IndexItem)      */
 specifier|public
+specifier|synchronized
 name|void
 name|remove
 parameter_list|(
@@ -645,9 +664,48 @@ condition|(
 name|e
 operator|==
 name|root
+operator|||
+name|e
+operator|.
+name|equals
+argument_list|(
+name|root
+argument_list|)
 condition|)
 block|{
 return|return;
+block|}
+if|if
+condition|(
+name|e
+operator|.
+name|prev
+operator|==
+literal|null
+condition|)
+block|{
+name|e
+operator|.
+name|prev
+operator|=
+name|root
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|e
+operator|.
+name|next
+operator|==
+literal|null
+condition|)
+block|{
+name|e
+operator|.
+name|next
+operator|=
+name|root
+expr_stmt|;
 block|}
 name|e
 operator|.
@@ -675,6 +733,7 @@ expr_stmt|;
 block|}
 comment|/**      * @return clone      */
 specifier|public
+specifier|synchronized
 name|Object
 name|clone
 parameter_list|()
@@ -723,6 +782,7 @@ name|clone
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|StoreEntry
 name|getEntry
 parameter_list|(
@@ -736,6 +796,7 @@ return|;
 block|}
 comment|/**      * Update the indexes of a StoreEntry      *       * @param current      */
 specifier|public
+specifier|synchronized
 name|StoreEntry
 name|refreshEntry
 parameter_list|(
