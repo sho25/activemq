@@ -171,12 +171,10 @@ decl_stmt|;
 name|Map
 name|options
 init|=
-name|URISupport
+name|data
 operator|.
-name|parseParamters
-argument_list|(
-name|uri
-argument_list|)
+name|getParameters
+argument_list|()
 decl_stmt|;
 name|SimpleDiscoveryAgent
 name|rc
