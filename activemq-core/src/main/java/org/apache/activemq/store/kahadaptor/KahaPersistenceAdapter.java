@@ -445,6 +445,18 @@ name|LogFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|sun
+operator|.
+name|misc
+operator|.
+name|Perf
+operator|.
+name|GetPerfAction
+import|;
+end_import
+
 begin_comment
 comment|/**  * @org.apache.xbean.XBean  * @version $Revision: 1.4 $  */
 end_comment
@@ -585,6 +597,12 @@ specifier|private
 specifier|final
 name|AtomicLong
 name|storeSize
+decl_stmt|;
+specifier|private
+name|boolean
+name|persistentIndex
+init|=
+literal|true
 decl_stmt|;
 specifier|public
 name|KahaPersistenceAdapter
@@ -1437,6 +1455,30 @@ return|return
 name|maxDataFileLength
 return|;
 block|}
+specifier|public
+name|boolean
+name|isPersistentIndex
+parameter_list|()
+block|{
+return|return
+name|persistentIndex
+return|;
+block|}
+specifier|public
+name|void
+name|setPersistentIndex
+parameter_list|(
+name|boolean
+name|persistentIndex
+parameter_list|)
+block|{
+name|this
+operator|.
+name|persistentIndex
+operator|=
+name|persistentIndex
+expr_stmt|;
+block|}
 comment|/**      * @param maxDataFileLength the maxDataFileLength to set      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
 specifier|public
 name|void
@@ -1487,6 +1529,14 @@ operator|.
 name|setMaxDataFileLength
 argument_list|(
 name|maxDataFileLength
+argument_list|)
+expr_stmt|;
+name|theStore
+operator|.
+name|setPersistentIndex
+argument_list|(
+name|isPersistentIndex
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

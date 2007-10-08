@@ -343,6 +343,19 @@ name|long
 name|size
 parameter_list|()
 function_decl|;
+specifier|public
+name|boolean
+name|isPersistentIndex
+parameter_list|()
+function_decl|;
+specifier|public
+name|void
+name|setPersistentIndex
+parameter_list|(
+name|boolean
+name|persistentIndex
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
