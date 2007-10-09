@@ -180,7 +180,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Creates<a href="http://activemq.org/site/mirrored-queue.html">Mirrored  * Queue</a> using a prefix and postfix to define the topic name on which to mirror the queue to.  *  * @version $Revision$  * @org.apache.xbean.XBean  */
+comment|/**  * Creates<a href="http://activemq.org/site/mirrored-queues.html">Mirrored  * Queue</a> using a prefix and postfix to define the topic name on which to mirror the queue to.  *  * @version $Revision$  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
