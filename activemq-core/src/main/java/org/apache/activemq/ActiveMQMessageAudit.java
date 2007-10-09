@@ -340,9 +340,8 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * Checks if this message has beeb seen before      *       * @param message      * @return true if the message is a duplicate      */
+comment|/**      * Checks if this message has been seen before      *       * @param message      * @return true if the message is a duplicate      */
 specifier|public
-specifier|synchronized
 name|boolean
 name|isDuplicateMessageReference
 parameter_list|(
@@ -351,11 +350,6 @@ name|MessageReference
 name|message
 parameter_list|)
 block|{
-name|boolean
-name|answer
-init|=
-literal|false
-decl_stmt|;
 name|MessageId
 name|id
 init|=
@@ -363,6 +357,29 @@ name|message
 operator|.
 name|getMessageId
 argument_list|()
+decl_stmt|;
+return|return
+name|isDuplicateMessageId
+argument_list|(
+name|id
+argument_list|)
+return|;
+block|}
+comment|/**      * Checks if this messageId has been seen before      *       * @param id      * @return true if the message is a duplicate      */
+specifier|public
+specifier|synchronized
+name|boolean
+name|isDuplicateMessageId
+parameter_list|(
+specifier|final
+name|MessageId
+name|id
+parameter_list|)
+block|{
+name|boolean
+name|answer
+init|=
+literal|false
 decl_stmt|;
 if|if
 condition|(
@@ -441,9 +458,8 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * uun mark this messager as being received      *       * @param message      */
+comment|/**      * mark this message as being received      *       * @param message      */
 specifier|public
-specifier|synchronized
 name|void
 name|rollbackMessageReference
 parameter_list|(
@@ -460,6 +476,23 @@ operator|.
 name|getMessageId
 argument_list|()
 decl_stmt|;
+name|rollbackMessageId
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * mark this message as being received      *       * @param id      */
+specifier|public
+specifier|synchronized
+name|void
+name|rollbackMessageId
+parameter_list|(
+specifier|final
+name|MessageId
+name|id
+parameter_list|)
+block|{
 if|if
 condition|(
 name|id
