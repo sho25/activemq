@@ -13,7 +13,7 @@ name|activemq
 operator|.
 name|camel
 operator|.
-name|component
+name|converter
 package|;
 end_package
 
