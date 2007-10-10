@@ -545,7 +545,7 @@ block|}
 block|}
 specifier|public
 name|void
-name|xtestFiltering
+name|testFiltering
 parameter_list|()
 throws|throws
 name|Exception
@@ -590,11 +590,12 @@ argument_list|(
 name|excluded
 argument_list|)
 decl_stmt|;
+comment|// allow for consumer infos to perculate arround
 name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|1000
+literal|2000
 argument_list|)
 expr_stmt|;
 name|Message
@@ -627,7 +628,7 @@ name|excludedConsumer
 operator|.
 name|receive
 argument_list|(
-literal|500
+literal|1000
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -637,7 +638,7 @@ name|includedConsumer
 operator|.
 name|receive
 argument_list|(
-literal|500
+literal|1000
 argument_list|)
 argument_list|)
 expr_stmt|;
