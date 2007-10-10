@@ -366,20 +366,6 @@ operator|+
 name|messageList
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Received: "
-operator|+
-name|messageList
-operator|.
-name|flushMessages
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 specifier|protected
 name|Destination
