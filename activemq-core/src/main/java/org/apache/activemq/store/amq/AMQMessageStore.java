@@ -2162,6 +2162,13 @@ argument_list|(
 name|identity
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|location
+operator|!=
+literal|null
+condition|)
+block|{
 name|DataStructure
 name|rc
 init|=
@@ -2205,6 +2212,10 @@ name|rc
 argument_list|)
 throw|;
 block|}
+block|}
+return|return
+literal|null
+return|;
 block|}
 specifier|protected
 name|Location
