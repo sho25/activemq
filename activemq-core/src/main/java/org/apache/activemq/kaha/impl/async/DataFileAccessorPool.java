@@ -234,6 +234,7 @@ name|rc
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|closeDataFileReader
 parameter_list|(
@@ -243,10 +244,6 @@ parameter_list|)
 block|{
 name|openCounter
 operator|--
-expr_stmt|;
-name|used
-operator|=
-literal|true
 expr_stmt|;
 if|if
 condition|(
@@ -278,6 +275,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|clearUsedMark
 parameter_list|()
@@ -288,6 +286,7 @@ literal|false
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|boolean
 name|isUsed
 parameter_list|()
@@ -297,6 +296,7 @@ name|used
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|dispose
 parameter_list|()
@@ -326,6 +326,7 @@ literal|true
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|int
 name|getOpenCounter
 parameter_list|()

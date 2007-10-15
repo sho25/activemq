@@ -90,9 +90,9 @@ name|ReferenceStore
 extends|,
 name|TopicMessageStore
 block|{
-comment|/**      * Stores the last acknowledged messgeID for the given subscription so that      * we can recover and commence dispatching messages from the last checkpoint      *       * @param context      * @param clientId      * @param subscriptionName      * @param messageId      * @param subscriptionPersistentId      * @throws IOException      */
-name|void
-name|acknowledge
+comment|/**      * Removes the last acknowledged messgeID for the given subscription so that      * we can recover and commence dispatching messages from the last checkpoint      * N.B. - all messages previous to this one for a given subscriber      * should also be acknowledged      *       * @param context      * @param clientId      * @param subscriptionName      * @param messageId      * @param subscriptionPersistentId      * @return true if there are no more references to the message - or the message is null      * @throws IOException      */
+name|boolean
+name|acknowledgeReference
 parameter_list|(
 name|ConnectionContext
 name|context

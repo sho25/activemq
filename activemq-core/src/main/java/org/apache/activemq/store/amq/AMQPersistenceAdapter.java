@@ -755,7 +755,7 @@ name|cleanupInterval
 init|=
 literal|1000
 operator|*
-literal|60
+literal|15
 decl_stmt|;
 specifier|private
 name|long

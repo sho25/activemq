@@ -228,6 +228,16 @@ return|;
 block|}
 specifier|public
 specifier|synchronized
+name|int
+name|getReferenceCount
+parameter_list|()
+block|{
+return|return
+name|referenceCount
+return|;
+block|}
+specifier|public
+specifier|synchronized
 name|boolean
 name|isUnused
 parameter_list|()
