@@ -212,7 +212,7 @@ specifier|protected
 name|int
 name|numberOfMessagesOnQueue
 init|=
-literal|6500
+literal|650
 decl_stmt|;
 specifier|private
 name|Connection
