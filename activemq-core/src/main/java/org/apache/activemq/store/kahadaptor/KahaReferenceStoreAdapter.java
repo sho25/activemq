@@ -127,6 +127,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|ConnectionContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -799,6 +813,19 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|commitTransaction
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+comment|//we don;t need to force on a commit - as the reference store
+comment|//is rebuilt on a non clean shutdown
 block|}
 specifier|public
 name|boolean
