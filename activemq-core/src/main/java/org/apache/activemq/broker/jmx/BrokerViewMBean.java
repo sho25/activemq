@@ -51,6 +51,11 @@ name|String
 name|getBrokerId
 parameter_list|()
 function_decl|;
+comment|/**      * @return The name of the broker.      */
+name|String
+name|getBrokerName
+parameter_list|()
+function_decl|;
 comment|/**      * The Broker will fush it's caches so that the garbage collector can      * recalaim more memory.      *       * @throws Exception      */
 name|void
 name|gc
