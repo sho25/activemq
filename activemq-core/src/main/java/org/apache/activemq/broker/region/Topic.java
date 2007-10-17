@@ -591,8 +591,8 @@ begin_class
 specifier|public
 class|class
 name|Topic
-implements|implements
-name|Destination
+extends|extends
+name|BaseDestination
 block|{
 specifier|private
 specifier|static
@@ -1778,6 +1778,9 @@ return|return;
 block|}
 if|if
 condition|(
+name|isProducerFlowControl
+argument_list|()
+operator|&&
 name|context
 operator|.
 name|isProducerFlowControl

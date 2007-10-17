@@ -683,9 +683,9 @@ begin_class
 specifier|public
 class|class
 name|Queue
+extends|extends
+name|BaseDestination
 implements|implements
-name|Destination
-implements|,
 name|Task
 block|{
 specifier|final
@@ -2101,6 +2101,9 @@ return|return;
 block|}
 if|if
 condition|(
+name|isProducerFlowControl
+argument_list|()
+operator|&&
 name|context
 operator|.
 name|isProducerFlowControl

@@ -288,6 +288,17 @@ name|MessageStore
 name|getMessageStore
 parameter_list|()
 function_decl|;
+name|boolean
+name|isProducerFlowControl
+parameter_list|()
+function_decl|;
+name|void
+name|setProducerFlowControl
+parameter_list|(
+name|boolean
+name|value
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
