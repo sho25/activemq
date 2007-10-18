@@ -228,7 +228,7 @@ specifier|final
 name|int
 name|MESSAGE_COUNT
 init|=
-literal|1000000
+literal|2000
 decl_stmt|;
 specifier|private
 specifier|static

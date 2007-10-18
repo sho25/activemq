@@ -161,15 +161,15 @@ name|broker
 decl_stmt|;
 comment|// protected String
 comment|// bindAddress="tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=true&jms.useAsyncSend=false";
-comment|// protected String bindAddress="tcp://localhost:61616";
+comment|//protected String bindAddress="tcp://localhost:61616";
+comment|//protected String bindAddress = "tcp://localhost:61616";
+comment|//protected String bindAddress="vm://localhost?marshal=true";
 specifier|protected
 name|String
 name|bindAddress
 init|=
-literal|"tcp://localhost:61616"
+literal|"vm://localhost"
 decl_stmt|;
-comment|// protected String bindAddress="vm://localhost?marshal=true";
-comment|// protected String bindAddress="vm://localhost";
 specifier|protected
 name|PerfProducer
 index|[]
@@ -200,19 +200,19 @@ specifier|protected
 name|long
 name|sampleInternal
 init|=
-literal|1000
+literal|10000
 decl_stmt|;
 specifier|protected
 name|int
 name|numberOfConsumers
 init|=
-literal|10
+literal|1
 decl_stmt|;
 specifier|protected
 name|int
 name|numberofProducers
 init|=
-literal|1
+literal|2
 decl_stmt|;
 specifier|protected
 name|int
@@ -236,6 +236,8 @@ decl_stmt|;
 specifier|protected
 name|long
 name|consumerSleepDuration
+init|=
+literal|0
 decl_stmt|;
 comment|/**      * Sets up a test where the producer and consumer have their own connection.      *       * @see junit.framework.TestCase#setUp()      */
 specifier|protected
@@ -664,6 +666,13 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|answer
+operator|.
+name|setUseShutdownHook
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 specifier|protected
 name|ActiveMQConnectionFactory
@@ -900,9 +909,11 @@ name|producers
 operator|.
 name|length
 decl_stmt|;
-name|LOG
+name|System
 operator|.
-name|info
+name|out
+operator|.
+name|println
 argument_list|(
 literal|"Avg producer rate = "
 operator|+
@@ -1001,9 +1012,11 @@ name|consumers
 operator|.
 name|length
 decl_stmt|;
-name|LOG
+name|System
 operator|.
-name|info
+name|out
+operator|.
+name|println
 argument_list|(
 literal|"Avg consumer rate = "
 operator|+
