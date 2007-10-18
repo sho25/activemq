@@ -92,6 +92,10 @@ name|mutable
 init|=
 literal|true
 decl_stmt|;
+specifier|public
+name|ProducerBrokerExchange
+parameter_list|()
+block|{     }
 comment|/**      * @return the connectionContext      */
 specifier|public
 name|ConnectionContext
