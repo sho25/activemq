@@ -354,6 +354,8 @@ specifier|public
 name|void
 name|start
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 if|if
 condition|(
@@ -367,6 +369,11 @@ literal|true
 argument_list|)
 condition|)
 block|{
+name|super
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|systemUsage
@@ -391,6 +398,8 @@ specifier|public
 name|void
 name|stop
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 if|if
 condition|(
@@ -404,7 +413,9 @@ literal|false
 argument_list|)
 condition|)
 block|{
-name|gc
+name|super
+operator|.
+name|stop
 argument_list|()
 expr_stmt|;
 if|if
@@ -574,6 +585,8 @@ specifier|synchronized
 name|void
 name|destroy
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|stop
 argument_list|()

@@ -313,6 +313,47 @@ name|int
 name|maxItems
 parameter_list|)
 function_decl|;
+comment|/**      * set the maximum number of producers to track at one time      * @param value      */
+name|void
+name|setMaxProducersToAudit
+parameter_list|(
+name|int
+name|value
+parameter_list|)
+function_decl|;
+comment|/**      * @return the maximum number of producers to audit      */
+name|int
+name|getMaxProducersToAudit
+parameter_list|()
+function_decl|;
+comment|/**      * Set the maximum depth of message ids to track      * @param depth       */
+name|void
+name|setMaxAuditDepth
+parameter_list|(
+name|int
+name|depth
+parameter_list|)
+function_decl|;
+comment|/**      * @return the audit depth      */
+name|int
+name|getMaxAuditDepth
+parameter_list|()
+function_decl|;
+comment|/**      * @return the enableAudit      */
+specifier|public
+name|boolean
+name|isEnableAudit
+parameter_list|()
+function_decl|;
+comment|/**      * @param enableAudit the enableAudit to set      */
+specifier|public
+name|void
+name|setEnableAudit
+parameter_list|(
+name|boolean
+name|enableAudit
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

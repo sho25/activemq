@@ -357,6 +357,8 @@ specifier|synchronized
 name|void
 name|start
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 if|if
 condition|(
@@ -368,6 +370,11 @@ name|started
 operator|=
 literal|true
 expr_stmt|;
+name|super
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 name|safeFillBatch
 argument_list|()
 expr_stmt|;
@@ -378,6 +385,8 @@ specifier|synchronized
 name|void
 name|stop
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 if|if
 condition|(
@@ -387,6 +396,11 @@ block|{
 name|started
 operator|=
 literal|false
+expr_stmt|;
+name|super
+operator|.
+name|stop
+argument_list|()
 expr_stmt|;
 name|store
 operator|.

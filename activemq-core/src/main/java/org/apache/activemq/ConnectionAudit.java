@@ -214,7 +214,7 @@ name|result
 init|=
 name|audit
 operator|.
-name|isDuplicateMessageReference
+name|isDuplicate
 argument_list|(
 name|message
 argument_list|)
@@ -261,7 +261,7 @@ name|result
 init|=
 name|audit
 operator|.
-name|isDuplicateMessageReference
+name|isDuplicate
 argument_list|(
 name|message
 argument_list|)
@@ -337,7 +337,7 @@ condition|)
 block|{
 name|audit
 operator|.
-name|rollbackMessageReference
+name|rollback
 argument_list|(
 name|message
 argument_list|)
@@ -365,7 +365,7 @@ condition|)
 block|{
 name|audit
 operator|.
-name|rollbackMessageReference
+name|rollback
 argument_list|(
 name|message
 argument_list|)

@@ -172,7 +172,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * perist pending messages pending message (messages awaiting disptach to a  * consumer) cursor  *   * @version $Revision: 474985 $  */
+comment|/**  * persist pending messages pending message (messages awaiting dispatch to a  * consumer) cursor  *   * @version $Revision: 474985 $  */
 end_comment
 
 begin_class
@@ -225,6 +225,10 @@ specifier|private
 name|int
 name|size
 decl_stmt|;
+specifier|private
+name|boolean
+name|fillBatchDuplicates
+decl_stmt|;
 comment|/**      * @param topic      * @param clientId      * @param subscriberName      * @throws IOException      */
 specifier|public
 name|QueueStorePrefetch
@@ -259,6 +263,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|super
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 name|store
 operator|.
 name|resetBatching
@@ -277,7 +286,9 @@ operator|.
 name|resetBatching
 argument_list|()
 expr_stmt|;
-name|gc
+name|super
+operator|.
+name|stop
 argument_list|()
 expr_stmt|;
 block|}
@@ -493,6 +504,7 @@ name|finished
 parameter_list|()
 block|{     }
 specifier|public
+specifier|synchronized
 name|boolean
 name|recoverMessage
 parameter_list|(
@@ -501,6 +513,18 @@ name|message
 parameter_list|)
 throws|throws
 name|Exception
+block|{
+if|if
+condition|(
+operator|!
+name|isDuplicate
+argument_list|(
+name|message
+operator|.
+name|getMessageId
+argument_list|()
+argument_list|)
+condition|)
 block|{
 name|message
 operator|.
@@ -521,6 +545,32 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Ignoring batched duplicated from store: "
+operator|+
+name|message
+argument_list|)
+expr_stmt|;
+block|}
+name|fillBatchDuplicates
+operator|=
+literal|true
+expr_stmt|;
+block|}
 return|return
 literal|true
 return|;
@@ -611,6 +661,7 @@ expr_stmt|;
 block|}
 comment|// implementation
 specifier|protected
+specifier|synchronized
 name|void
 name|fillBatch
 parameter_list|()
@@ -625,6 +676,34 @@ name|maxBatchSize
 argument_list|,
 name|this
 argument_list|)
+expr_stmt|;
+while|while
+condition|(
+name|fillBatchDuplicates
+operator|&&
+name|batchList
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|fillBatchDuplicates
+operator|=
+literal|false
+expr_stmt|;
+name|store
+operator|.
+name|recoverNextMessages
+argument_list|(
+name|maxBatchSize
+argument_list|,
+name|this
+argument_list|)
+expr_stmt|;
+block|}
+name|fillBatchDuplicates
+operator|=
+literal|false
 expr_stmt|;
 block|}
 specifier|public
