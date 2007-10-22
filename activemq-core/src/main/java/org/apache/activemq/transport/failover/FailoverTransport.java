@@ -1327,6 +1327,12 @@ name|connectedTransport
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|reconnect
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
