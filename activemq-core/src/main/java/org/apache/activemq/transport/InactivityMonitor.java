@@ -642,11 +642,6 @@ name|stopMonitorThreads
 argument_list|()
 expr_stmt|;
 block|}
-synchronized|synchronized
-init|(
-name|readChecker
-init|)
-block|{
 name|transportListener
 operator|.
 name|onException
@@ -654,7 +649,6 @@ argument_list|(
 name|error
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 specifier|private
 specifier|synchronized
