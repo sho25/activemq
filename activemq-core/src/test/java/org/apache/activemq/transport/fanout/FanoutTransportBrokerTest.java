@@ -323,12 +323,6 @@ specifier|public
 name|int
 name|deliveryMode
 decl_stmt|;
-specifier|private
-name|String
-name|remoteURI
-init|=
-literal|"tcp://localhost:0?wireFormat.tcpNoDelayEnabled=true"
-decl_stmt|;
 specifier|public
 specifier|static
 name|Test
@@ -409,12 +403,6 @@ name|Object
 index|[]
 block|{
 operator|new
-name|ActiveMQQueue
-argument_list|(
-literal|"TEST"
-argument_list|)
-block|,
-operator|new
 name|ActiveMQTopic
 argument_list|(
 literal|"TEST"
@@ -425,7 +413,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|xtestPublisherFansout
+name|testPublisherFansout
 parameter_list|()
 throws|throws
 name|Exception
@@ -674,12 +662,6 @@ operator|new
 name|Object
 index|[]
 block|{
-operator|new
-name|ActiveMQQueue
-argument_list|(
-literal|"TEST"
-argument_list|)
-block|,
 operator|new
 name|ActiveMQTopic
 argument_list|(
@@ -1035,21 +1017,22 @@ argument_list|)
 expr_stmt|;
 comment|// Restart the remote server. State should be re-played and the publish
 comment|// should continue.
-name|remoteURI
-operator|=
-name|remoteConnector
+name|LOG
 operator|.
-name|getServer
-argument_list|()
-operator|.
-name|getConnectURI
-argument_list|()
-operator|.
-name|toString
-argument_list|()
+name|info
+argument_list|(
+literal|"Restarting Broker"
+argument_list|)
 expr_stmt|;
 name|restartRemoteBroker
 argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Broker Restarted"
+argument_list|)
 expr_stmt|;
 comment|// This should reconnect, and resend
 name|assertTrue
@@ -1058,7 +1041,7 @@ name|publishDone
 operator|.
 name|await
 argument_list|(
-literal|10
+literal|20
 argument_list|,
 name|TimeUnit
 operator|.
@@ -1073,7 +1056,7 @@ name|getLocalURI
 parameter_list|()
 block|{
 return|return
-literal|"tcp://localhost:0?wireFormat.tcpNoDelayEnabled=true"
+literal|"tcp://localhost:61616"
 return|;
 block|}
 specifier|protected
@@ -1082,7 +1065,7 @@ name|getRemoteURI
 parameter_list|()
 block|{
 return|return
-name|remoteURI
+literal|"tcp://localhost:61617"
 return|;
 block|}
 specifier|protected

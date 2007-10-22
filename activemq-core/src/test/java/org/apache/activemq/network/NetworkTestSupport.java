@@ -730,7 +730,7 @@ operator|=
 operator|new
 name|TransportConnector
 argument_list|(
-name|broker
+name|remoteBroker
 operator|.
 name|getBroker
 argument_list|()
