@@ -928,6 +928,11 @@ block|}
 if|if
 condition|(
 name|keepDurableSubsActive
+operator|&&
+name|pending
+operator|.
+name|isTransient
+argument_list|()
 condition|)
 block|{
 synchronized|synchronized
@@ -962,6 +967,11 @@ if|if
 condition|(
 operator|!
 name|keepDurableSubsActive
+operator|&&
+name|pending
+operator|.
+name|isTransient
+argument_list|()
 condition|)
 block|{
 synchronized|synchronized

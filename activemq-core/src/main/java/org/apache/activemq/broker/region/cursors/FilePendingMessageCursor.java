@@ -1233,6 +1233,15 @@ block|}
 block|}
 block|}
 block|}
+specifier|public
+name|boolean
+name|isTransient
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 specifier|protected
 name|boolean
 name|isSpaceInMemoryList

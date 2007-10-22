@@ -418,6 +418,15 @@ return|return
 name|list
 return|;
 block|}
+specifier|public
+name|boolean
+name|isTransient
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 end_class
 

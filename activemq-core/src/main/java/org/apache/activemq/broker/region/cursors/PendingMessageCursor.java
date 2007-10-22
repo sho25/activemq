@@ -354,6 +354,12 @@ name|boolean
 name|enableAudit
 parameter_list|)
 function_decl|;
+comment|/**      * @return true if the underlying state of this cursor       * disappears when the broker shuts down      */
+specifier|public
+name|boolean
+name|isTransient
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

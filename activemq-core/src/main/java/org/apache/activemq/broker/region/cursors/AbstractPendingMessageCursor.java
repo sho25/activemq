@@ -697,6 +697,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+specifier|public
+name|boolean
+name|isTransient
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 specifier|protected
 specifier|synchronized
 name|boolean
