@@ -610,7 +610,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|initCombosForTestQueuBrowserWith2Consumers
+name|initCombosForTestQueueBrowserWith2Consumers
 parameter_list|()
 block|{
 name|addCombinationValues
@@ -642,10 +642,9 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This test is being disabled for now since it is failing. Looks like the      * queue browser has changed in trunk. It now seems to not give you message      * that have been dispatched to another consumer but not yet acked. Created      * JIRA issue: https://issues.apache.org/activemq/browse/AMQ-1268      *       * @throws Exception      */
 specifier|public
 name|void
-name|xtestQueueBrowserWith2Consumers
+name|testQueueBrowserWith2Consumers
 parameter_list|()
 throws|throws
 name|Exception
