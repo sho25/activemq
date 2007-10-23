@@ -2160,6 +2160,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * do send the message - this needs to be synchronized to ensure messages are stored AND dispatched in       * the right order      * @param producerExchange      * @param message      * @throws IOException      * @throws Exception      */
+specifier|synchronized
 name|void
 name|doMessageSend
 parameter_list|(
