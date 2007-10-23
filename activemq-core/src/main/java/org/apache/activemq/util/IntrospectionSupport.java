@@ -1199,14 +1199,6 @@ operator|.
 name|length
 operator|==
 literal|1
-operator|&&
-name|isSettableType
-argument_list|(
-name|params
-index|[
-literal|0
-index|]
-argument_list|)
 condition|)
 block|{
 return|return
