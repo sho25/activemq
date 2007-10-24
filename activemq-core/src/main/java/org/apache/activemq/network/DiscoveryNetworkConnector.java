@@ -773,16 +773,6 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|discoveryAgent
-operator|.
-name|setBrokerName
-argument_list|(
-name|getBrokerName
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 specifier|protected

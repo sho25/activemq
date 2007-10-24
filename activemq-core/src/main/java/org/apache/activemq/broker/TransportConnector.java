@@ -1065,17 +1065,6 @@ condition|)
 block|{
 name|da
 operator|.
-name|setBrokerName
-argument_list|(
-name|getBrokerInfo
-argument_list|()
-operator|.
-name|getBrokerName
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|da
-operator|.
 name|registerService
 argument_list|(
 name|getConnectUri

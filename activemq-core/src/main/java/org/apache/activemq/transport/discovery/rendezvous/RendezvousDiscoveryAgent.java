@@ -1100,17 +1100,6 @@ name|IOException
 block|{
 comment|// TODO: is there a way to notify the JmDNS that the service failed?
 block|}
-comment|/**      * @param brokerName      * @see org.apache.activemq.transport.discovery.DiscoveryAgent#setBrokerName(java.lang.String)      */
-specifier|public
-name|void
-name|setBrokerName
-parameter_list|(
-name|String
-name|brokerName
-parameter_list|)
-block|{
-comment|// implementation of interface
-block|}
 block|}
 end_class
 

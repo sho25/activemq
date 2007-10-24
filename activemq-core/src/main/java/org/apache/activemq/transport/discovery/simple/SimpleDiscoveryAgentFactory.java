@@ -183,16 +183,6 @@ operator|new
 name|SimpleDiscoveryAgent
 argument_list|()
 decl_stmt|;
-name|rc
-operator|.
-name|setGroup
-argument_list|(
-name|uri
-operator|.
-name|getHost
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|IntrospectionSupport
 operator|.
 name|setProperties
