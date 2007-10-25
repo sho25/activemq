@@ -2079,7 +2079,6 @@ literal|null
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processWireFormat
 parameter_list|(
@@ -2175,7 +2174,6 @@ literal|null
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processBeginTransaction
 parameter_list|(
@@ -2274,7 +2272,6 @@ literal|null
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processEndTransaction
 parameter_list|(
@@ -2292,7 +2289,6 @@ literal|null
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processPrepareTransaction
 parameter_list|(
@@ -2452,7 +2448,6 @@ return|;
 block|}
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processCommitTransactionOnePhase
 parameter_list|(
@@ -2509,7 +2504,6 @@ literal|null
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processCommitTransactionTwoPhase
 parameter_list|(
@@ -2566,7 +2560,6 @@ literal|null
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processRollbackTransaction
 parameter_list|(
@@ -2621,7 +2614,6 @@ literal|null
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processForgetTransaction
 parameter_list|(
@@ -2666,7 +2658,6 @@ literal|null
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processRecoverTransactions
 parameter_list|(
@@ -2838,7 +2829,6 @@ literal|null
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processAddDestination
 parameter_list|(
@@ -2895,7 +2885,6 @@ literal|null
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processRemoveDestination
 parameter_list|(
@@ -2955,7 +2944,6 @@ literal|null
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processAddProducer
 parameter_list|(
@@ -3084,7 +3072,6 @@ literal|null
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processRemoveProducer
 parameter_list|(
@@ -3197,7 +3184,6 @@ literal|null
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processAddConsumer
 parameter_list|(
@@ -3331,7 +3317,6 @@ literal|null
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processRemoveConsumer
 parameter_list|(
@@ -3444,7 +3429,6 @@ literal|null
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processAddSession
 parameter_list|(
@@ -3543,7 +3527,6 @@ literal|null
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processRemoveSession
 parameter_list|(
@@ -4152,7 +4135,6 @@ literal|null
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processRemoveConnection
 parameter_list|(
@@ -5673,7 +5655,6 @@ name|pendingStop
 expr_stmt|;
 block|}
 specifier|public
-specifier|synchronized
 name|Response
 name|processBrokerInfo
 parameter_list|(
