@@ -1229,6 +1229,14 @@ name|in
 argument_list|)
 expr_stmt|;
 break|break;
+case|case
+name|NULL
+case|:
+name|value
+operator|=
+literal|null
+expr_stmt|;
+break|break;
 default|default:
 throw|throw
 operator|new
