@@ -2061,6 +2061,16 @@ parameter_list|()
 block|{
 try|try
 block|{
+comment|// Capture the lastDataFile so that we don't delete any data files
+comment|// after this one.
+name|Integer
+name|lastDataFile
+init|=
+name|asyncDataManager
+operator|.
+name|getCurrentDataFileId
+argument_list|()
+decl_stmt|;
 name|Set
 argument_list|<
 name|Integer
@@ -2077,6 +2087,8 @@ operator|.
 name|consolidateDataFilesNotIn
 argument_list|(
 name|inUse
+argument_list|,
+name|lastDataFile
 argument_list|)
 expr_stmt|;
 block|}
