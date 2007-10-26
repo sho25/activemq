@@ -2155,6 +2155,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Integer
+argument_list|>
 name|iterator
 init|=
 name|unUsed
@@ -2169,12 +2172,9 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|DataFile
-name|dataFile
+name|Integer
+name|i
 init|=
-operator|(
-name|DataFile
-operator|)
 name|iterator
 operator|.
 name|next
@@ -2182,10 +2182,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|dataFile
-operator|.
-name|getDataFileId
-argument_list|()
+name|i
 operator|>=
 name|lastDataFile
 condition|)
