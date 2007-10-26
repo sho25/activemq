@@ -1876,7 +1876,7 @@ name|s
 init|=
 name|c
 operator|.
-name|getAddMessageStatement
+name|getUpdateLastAckStatement
 argument_list|()
 decl_stmt|;
 try|try
