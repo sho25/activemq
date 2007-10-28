@@ -2113,7 +2113,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Cleans up the data files      *       * @return      * @throws IOException      */
+comment|/**      * Cleans up the data files      * @throws IOException      */
 specifier|public
 name|void
 name|cleanup
@@ -2121,8 +2121,6 @@ parameter_list|()
 block|{
 try|try
 block|{
-comment|// Capture the lastDataFile so that we don't delete any data files
-comment|// after this one.
 name|Set
 argument_list|<
 name|Integer
@@ -2130,7 +2128,7 @@ argument_list|>
 name|inProgress
 init|=
 operator|new
-name|CopyOnWriteArraySet
+name|HashSet
 argument_list|<
 name|Integer
 argument_list|>
