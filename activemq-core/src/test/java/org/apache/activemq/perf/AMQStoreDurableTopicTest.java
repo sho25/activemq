@@ -85,6 +85,13 @@ argument_list|(
 literal|"target/test-amq-data/perfTest/amqdb"
 argument_list|)
 decl_stmt|;
+name|answer
+operator|.
+name|setDeleteAllMessagesOnStartup
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|AMQPersistenceAdapter
 name|adaptor
 init|=
@@ -104,13 +111,6 @@ operator|.
 name|setPersistenceAdapter
 argument_list|(
 name|adaptor
-argument_list|)
-expr_stmt|;
-name|answer
-operator|.
-name|setDeleteAllMessagesOnStartup
-argument_list|(
-literal|true
 argument_list|)
 expr_stmt|;
 name|answer

@@ -161,15 +161,15 @@ name|broker
 decl_stmt|;
 comment|// protected String
 comment|// bindAddress="tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=true&jms.useAsyncSend=false";
-comment|//protected String bindAddress="tcp://localhost:61616";
-comment|//protected String bindAddress = "tcp://localhost:61616";
-comment|//protected String bindAddress="vm://localhost?marshal=true";
 specifier|protected
 name|String
 name|bindAddress
 init|=
-literal|"vm://localhost"
+literal|"tcp://localhost:61616"
 decl_stmt|;
+comment|//protected String bindAddress = "tcp://localhost:61616";
+comment|//protected String bindAddress="vm://localhost?marshal=true";
+comment|//protected String bindAddress="vm://localhost";
 specifier|protected
 name|PerfProducer
 index|[]
@@ -194,7 +194,7 @@ specifier|protected
 name|int
 name|samepleCount
 init|=
-literal|10
+literal|20
 decl_stmt|;
 specifier|protected
 name|long
