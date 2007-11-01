@@ -287,6 +287,45 @@ name|K
 name|key
 parameter_list|)
 function_decl|;
+comment|/**      * Set the index bin size      * @param size      */
+name|void
+name|setIndexBinSize
+parameter_list|(
+name|int
+name|size
+parameter_list|)
+function_decl|;
+comment|/**      * @return index bin size      */
+name|int
+name|getIndexBinSize
+parameter_list|()
+function_decl|;
+comment|/**      * Add the index key size      * @param size      */
+name|void
+name|setIndexKeySize
+parameter_list|(
+name|int
+name|size
+parameter_list|)
+function_decl|;
+comment|/**      * @return the index key size      */
+name|int
+name|getIndexKeySize
+parameter_list|()
+function_decl|;
+comment|/**      * Set the index page size      * @param size      */
+name|void
+name|setIndexPageSize
+parameter_list|(
+name|int
+name|size
+parameter_list|)
+function_decl|;
+comment|/**      * @return the index page size      */
+name|int
+name|getIndexPageSize
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

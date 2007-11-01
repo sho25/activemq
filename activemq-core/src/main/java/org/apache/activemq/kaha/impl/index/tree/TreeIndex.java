@@ -428,22 +428,6 @@ name|Marshaller
 name|marshaller
 parameter_list|)
 block|{
-if|if
-condition|(
-name|loaded
-operator|.
-name|get
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"Pages already loaded - can't set marshaller now"
-argument_list|)
-throw|;
-block|}
 name|this
 operator|.
 name|keyMarshaller
