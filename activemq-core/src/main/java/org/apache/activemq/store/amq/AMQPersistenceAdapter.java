@@ -4035,6 +4035,7 @@ return|return
 name|indexPageSize
 return|;
 block|}
+comment|/**      * When set using XBean, you can use values such as: "20      * mb", "1024 kb", or "1 gb"      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
 specifier|public
 name|void
 name|setIndexPageSize
