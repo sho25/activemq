@@ -403,6 +403,12 @@ name|name
 operator|=
 name|name
 expr_stmt|;
+name|this
+operator|.
+name|indexManager
+operator|=
+name|indexManager
+expr_stmt|;
 name|openIndexFile
 argument_list|()
 expr_stmt|;
@@ -686,12 +692,6 @@ literal|true
 argument_list|)
 condition|)
 block|{
-name|this
-operator|.
-name|indexManager
-operator|=
-name|indexManager
-expr_stmt|;
 name|int
 name|capacity
 init|=
