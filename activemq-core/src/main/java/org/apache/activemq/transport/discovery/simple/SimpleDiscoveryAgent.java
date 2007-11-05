@@ -99,6 +99,34 @@ name|DiscoveryListener
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * A simple DiscoveryAgent that allows static configuration of the discovered  * services.  *   * @version $Revision$  */
 end_comment
@@ -110,6 +138,21 @@ name|SimpleDiscoveryAgent
 implements|implements
 name|DiscoveryAgent
 block|{
+specifier|private
+specifier|final
+specifier|static
+name|Log
+name|LOG
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|SimpleDiscoveryAgent
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 name|long
 name|initialReconnectDelay
@@ -133,6 +176,8 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|useExponentialBackOff
+init|=
+literal|true
 decl_stmt|;
 specifier|private
 name|int
@@ -151,7 +196,7 @@ specifier|private
 name|long
 name|minConnectTime
 init|=
-literal|500
+literal|5000
 decl_stmt|;
 specifier|private
 name|DiscoveryListener
@@ -494,6 +539,15 @@ name|currentTimeMillis
 argument_list|()
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Failure occured soon after the discovery event was generated.  It will be clasified as a connection failure: "
+operator|+
+name|event
+argument_list|)
+expr_stmt|;
 name|event
 operator|.
 name|connectFailures
@@ -512,7 +566,17 @@ operator|>=
 name|maxReconnectAttempts
 condition|)
 block|{
-comment|// Don' try to re-connect
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Reconnect attempts exceeded "
+operator|+
+name|maxReconnectAttempts
+operator|+
+literal|" tries.  Reconnecting has been disabled."
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 synchronized|synchronized
@@ -533,6 +597,19 @@ condition|)
 block|{
 return|return;
 block|}
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Waiting "
+operator|+
+name|event
+operator|.
+name|reconnectDelay
+operator|+
+literal|" ms before attepting to reconnect."
+argument_list|)
+expr_stmt|;
 name|sleepMutex
 operator|.
 name|wait
