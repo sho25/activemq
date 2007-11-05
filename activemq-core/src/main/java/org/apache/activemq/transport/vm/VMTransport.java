@@ -630,6 +630,12 @@ argument_list|()
 operator|)
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|stopping
+operator|.
+name|get
+argument_list|()
 condition|)
 block|{
 name|transportListener
@@ -657,6 +663,20 @@ name|turnOn
 argument_list|()
 expr_stmt|;
 block|}
+comment|// If we get stopped while starting up, then do the actual stop now
+comment|// that the enqueueValve is back on.
+if|if
+condition|(
+name|stopping
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
+name|stop
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -665,13 +685,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|TaskRunner
-name|tr
-init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
 name|stopping
 operator|.
 name|set
@@ -679,6 +692,22 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+comment|// If stop() is called while being start()ed.. then we can't stop until we return to the start() method.
+if|if
+condition|(
+name|enqueueValve
+operator|.
+name|isOn
+argument_list|()
+condition|)
+block|{
+name|TaskRunner
+name|tr
+init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
 name|enqueueValve
 operator|.
 name|turnOff
@@ -745,6 +774,7 @@ argument_list|(
 literal|1000
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * @see org.apache.activemq.thread.Task#iterate()      */

@@ -4931,6 +4931,20 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+comment|// Force clean up on an error starting up.
+name|stop
+argument_list|()
+expr_stmt|;
+throw|throw
+name|e
+throw|;
+block|}
 finally|finally
 block|{
 comment|// stop() can be called from within the above block,

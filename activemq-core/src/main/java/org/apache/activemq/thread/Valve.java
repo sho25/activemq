@@ -95,6 +95,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+specifier|public
 name|boolean
 name|isOn
 parameter_list|()
