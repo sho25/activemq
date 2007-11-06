@@ -107,6 +107,9 @@ block|{
 name|ActiveMQMessage
 name|convertFrame
 parameter_list|(
+name|ProtocolConverter
+name|converter
+parameter_list|,
 name|StompFrame
 name|frame
 parameter_list|)
@@ -118,6 +121,9 @@ function_decl|;
 name|StompFrame
 name|convertMessage
 parameter_list|(
+name|ProtocolConverter
+name|converter
+parameter_list|,
 name|ActiveMQMessage
 name|message
 parameter_list|)
@@ -129,6 +135,9 @@ function_decl|;
 name|String
 name|convertDestination
 parameter_list|(
+name|ProtocolConverter
+name|converter
+parameter_list|,
 name|Destination
 name|d
 parameter_list|)
@@ -136,6 +145,9 @@ function_decl|;
 name|ActiveMQDestination
 name|convertDestination
 parameter_list|(
+name|ProtocolConverter
+name|converter
+parameter_list|,
 name|String
 name|name
 parameter_list|)
@@ -157,6 +169,9 @@ specifier|static
 name|void
 name|copyStandardHeadersFromMessageToFrame
 parameter_list|(
+name|ProtocolConverter
+name|converter
+parameter_list|,
 name|ActiveMQMessage
 name|message
 parameter_list|,
@@ -199,6 +214,8 @@ name|ft
 operator|.
 name|convertDestination
 argument_list|(
+name|converter
+argument_list|,
 name|message
 operator|.
 name|getDestination
@@ -343,6 +360,8 @@ name|ft
 operator|.
 name|convertDestination
 argument_list|(
+name|converter
+argument_list|,
 name|message
 operator|.
 name|getJMSReplyTo
@@ -465,6 +484,9 @@ specifier|static
 name|void
 name|copyStandardHeadersFromFrameToMessage
 parameter_list|(
+name|ProtocolConverter
+name|converter
+parameter_list|,
 name|StompFrame
 name|command
 parameter_list|,
@@ -527,6 +549,8 @@ name|ft
 operator|.
 name|convertDestination
 argument_list|(
+name|converter
+argument_list|,
 name|destination
 argument_list|)
 argument_list|)
@@ -690,6 +714,8 @@ name|ft
 operator|.
 name|convertDestination
 argument_list|(
+name|converter
+argument_list|,
 operator|(
 name|String
 operator|)
