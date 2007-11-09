@@ -202,7 +202,7 @@ name|COUNT
 init|=
 literal|1024
 operator|*
-literal|100
+literal|10
 decl_stmt|;
 specifier|private
 specifier|static
