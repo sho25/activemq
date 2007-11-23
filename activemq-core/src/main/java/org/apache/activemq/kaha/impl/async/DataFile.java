@@ -170,6 +170,14 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+name|File
+name|getFile
+parameter_list|()
+block|{
+return|return
+name|file
+return|;
+block|}
 specifier|public
 name|Integer
 name|getDataFileId

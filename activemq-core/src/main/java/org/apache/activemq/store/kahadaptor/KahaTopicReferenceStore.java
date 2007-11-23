@@ -1331,7 +1331,10 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-return|return
+name|SubscriptionInfo
+index|[]
+name|result
+init|=
 name|subscriberContainer
 operator|.
 name|values
@@ -1348,6 +1351,9 @@ name|size
 argument_list|()
 index|]
 argument_list|)
+decl_stmt|;
+return|return
+name|result
 return|;
 block|}
 specifier|public

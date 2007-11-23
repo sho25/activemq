@@ -678,6 +678,10 @@ operator|.
 name|load
 argument_list|()
 expr_stmt|;
+name|storeValid
+operator|=
+literal|true
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1487,6 +1491,10 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|//don't delete messages as it will clear state - call base
+comment|//class method to clear out the data instead
+name|super
+operator|.
 name|deleteAllMessages
 argument_list|()
 expr_stmt|;
@@ -1527,6 +1535,15 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Recovering subscriber state for durable subscriber: "
+operator|+
+name|info
+argument_list|)
+expr_stmt|;
 name|TopicReferenceStore
 name|ts
 init|=
