@@ -452,6 +452,10 @@ specifier|private
 name|Boolean
 name|tcpNoDelay
 decl_stmt|;
+specifier|private
+name|Thread
+name|runnerThread
+decl_stmt|;
 comment|/**      * Connect to a remote Node - e.g. a Broker      *       * @param wireFormat      * @param socketFactory      * @param remoteLocation      * @param localLocation - e.g. local InetAddress and local port      * @throws IOException      * @throws UnknownHostException      */
 specifier|public
 name|TcpTransport
@@ -634,6 +638,15 @@ name|trace
 argument_list|(
 literal|"TCP consumer thread starting"
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|runnerThread
+operator|=
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
 expr_stmt|;
 try|try
 block|{
@@ -1525,6 +1538,15 @@ condition|(
 name|countDownLatch
 operator|!=
 literal|null
+operator|&&
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|!=
+name|this
+operator|.
+name|runnerThread
 condition|)
 block|{
 name|countDownLatch
