@@ -107,6 +107,7 @@ return|return
 name|root
 return|;
 block|}
+specifier|public
 name|void
 name|setRoot
 parameter_list|(
@@ -397,8 +398,6 @@ condition|(
 name|index
 operator|==
 name|size
-operator|-
-literal|1
 condition|)
 block|{
 name|last
@@ -801,7 +800,7 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|root
+literal|null
 return|;
 block|}
 return|return
@@ -994,6 +993,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|e
+operator|==
+literal|null
+operator|||
 name|e
 operator|==
 name|root

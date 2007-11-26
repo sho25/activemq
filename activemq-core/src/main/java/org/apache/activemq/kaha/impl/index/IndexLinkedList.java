@@ -42,6 +42,14 @@ specifier|public
 interface|interface
 name|IndexLinkedList
 block|{
+comment|/**      * Set the new Root      * @param newRoot      */
+name|void
+name|setRoot
+parameter_list|(
+name|IndexItem
+name|newRoot
+parameter_list|)
+function_decl|;
 comment|/**      * @return the root used by the List      */
 name|IndexItem
 name|getRoot
