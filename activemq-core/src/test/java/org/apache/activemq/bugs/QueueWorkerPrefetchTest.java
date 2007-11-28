@@ -540,27 +540,6 @@ operator|.
 name|incrementAndGet
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|c
-operator|%
-literal|1
-operator|==
-literal|0
-condition|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Worker now has message count of: "
-operator|+
-name|c
-argument_list|)
-expr_stmt|;
-block|}
 comment|// Don't create a new work item for every BATCH_SIZE message. */
 if|if
 condition|(
