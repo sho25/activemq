@@ -125,6 +125,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|usage
+operator|.
+name|MemoryUsage
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|util
 operator|.
 name|ByteArrayInputStream
@@ -367,6 +381,11 @@ name|region
 operator|.
 name|Destination
 name|regionDestination
+decl_stmt|;
+specifier|private
+specifier|transient
+name|MemoryUsage
+name|memoryUsage
 decl_stmt|;
 specifier|private
 name|BrokerId
@@ -619,6 +638,14 @@ operator|.
 name|brokerOutTime
 operator|=
 name|brokerOutTime
+expr_stmt|;
+name|copy
+operator|.
+name|memoryUsage
+operator|=
+name|this
+operator|.
+name|memoryUsage
 expr_stmt|;
 comment|// copying the broker path breaks networks - if a consumer re-uses a
 comment|// consumed
@@ -1819,6 +1846,51 @@ name|regionDestination
 operator|=
 name|destination
 expr_stmt|;
+if|if
+condition|(
+name|this
+operator|.
+name|memoryUsage
+operator|==
+literal|null
+condition|)
+block|{
+name|this
+operator|.
+name|memoryUsage
+operator|=
+name|regionDestination
+operator|.
+name|getBrokerMemoryUsage
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+specifier|public
+name|MemoryUsage
+name|getMemoryUsage
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|memoryUsage
+return|;
+block|}
+specifier|public
+name|void
+name|setMemoryUsage
+parameter_list|(
+name|MemoryUsage
+name|usage
+parameter_list|)
+block|{
+name|this
+operator|.
+name|memoryUsage
+operator|=
+name|usage
+expr_stmt|;
 block|}
 specifier|public
 name|boolean
@@ -1862,14 +1934,13 @@ name|rc
 operator|==
 literal|1
 operator|&&
-name|regionDestination
+name|getMemoryUsage
+argument_list|()
 operator|!=
 literal|null
 condition|)
 block|{
-name|regionDestination
-operator|.
-name|getBrokerMemoryUsage
+name|getMemoryUsage
 argument_list|()
 operator|.
 name|increaseUsage
@@ -1878,14 +1949,12 @@ name|size
 argument_list|)
 expr_stmt|;
 block|}
-comment|// System.out.println(" + "+getDestination()+" :::: "+getMessageId()+"
-comment|// "+rc);
+comment|//System.out.println(" + "+getMemoryUsage().getName()+" :::: "+getMessageId()+"rc="+rc);
 return|return
 name|rc
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|int
 name|decrementReferenceCount
 parameter_list|()
@@ -1918,14 +1987,13 @@ name|rc
 operator|==
 literal|0
 operator|&&
-name|regionDestination
+name|getMemoryUsage
+argument_list|()
 operator|!=
 literal|null
 condition|)
 block|{
-name|regionDestination
-operator|.
-name|getBrokerMemoryUsage
+name|getMemoryUsage
 argument_list|()
 operator|.
 name|decreaseUsage
@@ -1934,8 +2002,7 @@ name|size
 argument_list|)
 expr_stmt|;
 block|}
-comment|// System.out.println(" - "+getDestination()+" :::: "+getMessageId()+"
-comment|// "+rc);
+comment|//System.out.println(" - "+getMemoryUsage().getName()+" :::: "+getMessageId()+"rc="+rc);
 return|return
 name|rc
 return|;

@@ -346,11 +346,6 @@ name|boolean
 name|keepDurableSubsActive
 decl_stmt|;
 specifier|private
-specifier|final
-name|SystemUsage
-name|usageManager
-decl_stmt|;
-specifier|private
 name|boolean
 name|active
 decl_stmt|;
@@ -378,6 +373,8 @@ block|{
 name|super
 argument_list|(
 name|broker
+argument_list|,
+name|usageManager
 argument_list|,
 name|context
 argument_list|,
@@ -416,9 +413,12 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|pending
+operator|.
+name|setSystemUsage
+argument_list|(
 name|usageManager
-operator|=
-name|usageManager
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -1198,7 +1198,6 @@ name|active
 return|;
 block|}
 specifier|protected
-specifier|synchronized
 name|void
 name|acknowledge
 parameter_list|(
@@ -1425,7 +1424,7 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @param memoryManager      * @param oldPercentUsage      * @param newPercentUsage      * @see org.apache.activemq.usage.UsageListener#onMemoryUseChanged(org.apache.activemq.usage.SystemUsage,      *      int, int)      */
+comment|/**      * @param usageManager      * @param oldPercentUsage      * @param newPercentUsage      * @see org.apache.activemq.usage.UsageListener#onMemoryUseChanged(org.apache.activemq.usage.SystemUsage,      *      int, int)      */
 specifier|public
 name|void
 name|onUsageChanged

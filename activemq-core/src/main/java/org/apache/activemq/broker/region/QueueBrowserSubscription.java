@@ -135,6 +135,20 @@ name|MessageEvaluationContext
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usage
+operator|.
+name|SystemUsage
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -151,6 +165,9 @@ parameter_list|(
 name|Broker
 name|broker
 parameter_list|,
+name|SystemUsage
+name|usageManager
+parameter_list|,
 name|ConnectionContext
 name|context
 parameter_list|,
@@ -163,6 +180,8 @@ block|{
 name|super
 argument_list|(
 name|broker
+argument_list|,
+name|usageManager
 argument_list|,
 name|context
 argument_list|,

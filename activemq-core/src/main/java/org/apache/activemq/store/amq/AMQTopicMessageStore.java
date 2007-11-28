@@ -953,6 +953,7 @@ name|lastLocation
 operator|=
 name|location
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|topicReferenceStore
@@ -990,7 +991,6 @@ argument_list|,
 name|ack
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 try|try
 block|{

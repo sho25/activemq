@@ -829,6 +829,7 @@ name|Object
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|TaskRunner
 name|taskRunner
 decl_stmt|;

@@ -442,7 +442,7 @@ decl_stmt|;
 specifier|protected
 specifier|final
 name|SystemUsage
-name|memoryManager
+name|usageManager
 decl_stmt|;
 specifier|protected
 specifier|final
@@ -550,7 +550,7 @@ name|destinationStatistics
 expr_stmt|;
 name|this
 operator|.
-name|memoryManager
+name|usageManager
 operator|=
 name|memoryManager
 expr_stmt|;

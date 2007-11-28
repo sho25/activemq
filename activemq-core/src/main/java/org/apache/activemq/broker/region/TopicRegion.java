@@ -755,7 +755,7 @@ name|sub
 operator|.
 name|activate
 argument_list|(
-name|memoryManager
+name|usageManager
 argument_list|,
 name|context
 argument_list|,
@@ -1019,7 +1019,7 @@ argument_list|()
 operator|+
 literal|", memory="
 operator|+
-name|memoryManager
+name|usageManager
 operator|.
 name|getMemoryUsage
 argument_list|()
@@ -1564,7 +1564,7 @@ name|DurableTopicSubscription
 argument_list|(
 name|broker
 argument_list|,
-name|memoryManager
+name|usageManager
 argument_list|,
 name|context
 argument_list|,
@@ -1621,7 +1621,7 @@ name|configure
 argument_list|(
 name|broker
 argument_list|,
-name|memoryManager
+name|usageManager
 argument_list|,
 name|sub
 argument_list|)
@@ -1666,7 +1666,7 @@ name|context
 argument_list|,
 name|info
 argument_list|,
-name|memoryManager
+name|usageManager
 argument_list|)
 decl_stmt|;
 comment|// lets configure the subscription depending on the destination
@@ -1718,7 +1718,7 @@ name|configure
 argument_list|(
 name|broker
 argument_list|,
-name|memoryManager
+name|usageManager
 argument_list|,
 name|answer
 argument_list|)

@@ -183,7 +183,7 @@ argument_list|()
 operator|+
 literal|", memory="
 operator|+
-name|memoryManager
+name|usageManager
 operator|.
 name|getMemoryUsage
 argument_list|()
@@ -221,6 +221,8 @@ name|QueueBrowserSubscription
 argument_list|(
 name|broker
 argument_list|,
+name|usageManager
+argument_list|,
 name|context
 argument_list|,
 name|info
@@ -234,6 +236,8 @@ operator|new
 name|QueueSubscription
 argument_list|(
 name|broker
+argument_list|,
+name|usageManager
 argument_list|,
 name|context
 argument_list|,

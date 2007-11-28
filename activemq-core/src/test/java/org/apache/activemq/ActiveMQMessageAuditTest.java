@@ -504,6 +504,16 @@ name|id
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertTrue
+argument_list|(
+name|audit
+operator|.
+name|isInOrder
+argument_list|(
+name|id
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
