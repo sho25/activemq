@@ -305,15 +305,28 @@ argument_list|(
 literal|"No message sent since last write check, sending a KeepAliveInfo"
 argument_list|)
 expr_stmt|;
-try|try
-block|{
-synchronized|synchronized
-init|(
-name|writeChecker
-init|)
-block|{
+comment|// TODO: use a thread pool for this..
+name|Thread
+name|thread
+init|=
+operator|new
+name|Thread
+argument_list|(
+literal|"ActiveMQ: Activity Generator: "
+operator|+
 name|next
 operator|.
+name|getRemoteAddress
+argument_list|()
+argument_list|)
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+try|try
+block|{
 name|oneway
 argument_list|(
 operator|new
@@ -321,7 +334,6 @@ name|KeepAliveInfo
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -335,6 +347,22 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+empty_stmt|;
+block|}
+decl_stmt|;
+name|thread
+operator|.
+name|setDaemon
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|thread
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -397,6 +425,26 @@ operator|+
 literal|"! Throwing InactivityIOException."
 argument_list|)
 expr_stmt|;
+comment|// TODO: use a thread pool for this..
+name|Thread
+name|thread
+init|=
+operator|new
+name|Thread
+argument_list|(
+literal|"ActiveMQ: Inactivity Handler: "
+operator|+
+name|next
+operator|.
+name|getRemoteAddress
+argument_list|()
+argument_list|)
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
 synchronized|synchronized
 init|(
 name|readChecker
@@ -407,11 +455,32 @@ argument_list|(
 operator|new
 name|InactivityIOException
 argument_list|(
-literal|"Channel was inactive for too long."
+literal|"Channel was inactive for too long: "
+operator|+
+name|next
+operator|.
+name|getRemoteAddress
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+empty_stmt|;
+block|}
+decl_stmt|;
+name|thread
+operator|.
+name|setDaemon
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|thread
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 block|}
 else|else
 block|{
