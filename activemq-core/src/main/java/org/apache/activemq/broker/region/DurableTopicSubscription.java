@@ -292,7 +292,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|PrefetchSubscription
+name|DurableTopicSubscription
 operator|.
 name|class
 argument_list|)
