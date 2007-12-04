@@ -484,7 +484,7 @@ init|=
 operator|new
 name|Integer
 argument_list|(
-literal|2
+literal|3
 argument_list|)
 decl_stmt|;
 specifier|private

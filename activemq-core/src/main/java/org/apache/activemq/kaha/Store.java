@@ -82,6 +82,14 @@ operator|new
 name|CommandMarshaller
 argument_list|()
 decl_stmt|;
+comment|/**      * MessageId marshaller      */
+name|Marshaller
+name|MESSAGEID_MARSHALLER
+init|=
+operator|new
+name|MessageIdMarshaller
+argument_list|()
+decl_stmt|;
 comment|/**      * close the store      *       * @throws IOException      */
 name|void
 name|close
