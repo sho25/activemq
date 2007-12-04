@@ -445,11 +445,6 @@ name|void
 name|run
 parameter_list|()
 block|{
-synchronized|synchronized
-init|(
-name|readChecker
-init|)
-block|{
 name|onException
 argument_list|(
 operator|new
@@ -464,7 +459,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 empty_stmt|;
 block|}
