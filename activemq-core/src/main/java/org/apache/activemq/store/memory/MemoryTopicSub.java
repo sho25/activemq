@@ -151,6 +151,7 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+specifier|synchronized
 name|void
 name|removeMessage
 parameter_list|(
@@ -190,6 +191,7 @@ name|size
 argument_list|()
 return|;
 block|}
+specifier|synchronized
 name|void
 name|recoverSubscription
 parameter_list|(
@@ -278,6 +280,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+specifier|synchronized
 name|void
 name|recoverNextMessages
 parameter_list|(
@@ -438,6 +441,7 @@ name|lastId
 expr_stmt|;
 block|}
 block|}
+specifier|synchronized
 name|void
 name|resetBatching
 parameter_list|()
