@@ -129,20 +129,6 @@ name|ByteSequence
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|ClassLoading
-import|;
-end_import
-
 begin_class
 specifier|public
 specifier|abstract
@@ -1246,11 +1232,13 @@ block|{
 name|Class
 name|clazz
 init|=
-name|ClassLoading
+name|Class
 operator|.
-name|loadClass
+name|forName
 argument_list|(
 name|className
+argument_list|,
+literal|false
 argument_list|,
 name|BaseDataStreamMarshaller
 operator|.
