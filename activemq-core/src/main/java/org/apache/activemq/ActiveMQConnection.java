@@ -2430,7 +2430,7 @@ block|{
 comment|// If we announced ourselfs to the broker.. Try to let
 comment|// the broker
 comment|// know that the connection is being shutdown.
-name|syncSendPacket
+name|doSyncSendPacket
 argument_list|(
 name|info
 operator|.
@@ -2440,7 +2440,7 @@ argument_list|,
 name|closeTimeout
 argument_list|)
 expr_stmt|;
-name|asyncSendPacket
+name|doAsyncSendPacket
 argument_list|(
 operator|new
 name|ShutdownInfo
@@ -3622,6 +3622,11 @@ if|if
 condition|(
 name|isClosed
 argument_list|()
+operator|||
+name|closing
+operator|.
+name|get
+argument_list|()
 condition|)
 block|{
 throw|throw
@@ -3631,6 +3636,23 @@ argument_list|()
 throw|;
 block|}
 else|else
+block|{
+name|doAsyncSendPacket
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+specifier|private
+name|void
+name|doAsyncSendPacket
+parameter_list|(
+name|Command
+name|command
+parameter_list|)
+throws|throws
+name|JMSException
 block|{
 try|try
 block|{
@@ -3658,7 +3680,6 @@ argument_list|(
 name|e
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 comment|/**      * Send a packet through a Connection - for internal use only      *       * @param command      * @return      * @throws JMSException      */
@@ -3793,6 +3814,11 @@ if|if
 condition|(
 name|isClosed
 argument_list|()
+operator|||
+name|closing
+operator|.
+name|get
+argument_list|()
 condition|)
 block|{
 throw|throw
@@ -3802,6 +3828,29 @@ argument_list|()
 throw|;
 block|}
 else|else
+block|{
+return|return
+name|doSyncSendPacket
+argument_list|(
+name|command
+argument_list|,
+name|timeout
+argument_list|)
+return|;
+block|}
+block|}
+specifier|private
+name|Response
+name|doSyncSendPacket
+parameter_list|(
+name|Command
+name|command
+parameter_list|,
+name|int
+name|timeout
+parameter_list|)
+throws|throws
+name|JMSException
 block|{
 try|try
 block|{
@@ -3895,7 +3944,6 @@ argument_list|(
 name|e
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 comment|/**      * @return statistics for this Connection      */
