@@ -131,6 +131,7 @@ specifier|private
 name|MessageId
 name|lastBatch
 decl_stmt|;
+specifier|synchronized
 name|void
 name|addMessage
 parameter_list|(
