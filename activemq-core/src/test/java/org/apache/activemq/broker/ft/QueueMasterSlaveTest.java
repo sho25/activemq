@@ -179,10 +179,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|messageCount
-operator|=
-literal|10000
-expr_stmt|;
 if|if
 condition|(
 name|System
