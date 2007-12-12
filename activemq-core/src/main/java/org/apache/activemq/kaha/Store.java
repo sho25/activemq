@@ -351,11 +351,13 @@ name|long
 name|size
 parameter_list|()
 function_decl|;
+comment|/**      * @return true if persistent indexes are used by default      */
 specifier|public
 name|boolean
 name|isPersistentIndex
 parameter_list|()
 function_decl|;
+comment|/** 	 * Set a persistent index as the default if the parameter is true 	 * @param persistentIndex 	 */
 specifier|public
 name|void
 name|setPersistentIndex
@@ -363,6 +365,14 @@ parameter_list|(
 name|boolean
 name|persistentIndex
 parameter_list|)
+function_decl|;
+comment|/** 	 * An explict call to initialize - this will also be called 	 * implicitly for any other operation on the store. 	 * @throws IOException 	 */
+specifier|public
+name|void
+name|initialize
+parameter_list|()
+throws|throws
+name|IOException
 function_decl|;
 block|}
 end_interface

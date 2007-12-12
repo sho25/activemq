@@ -2644,15 +2644,6 @@ operator|!
 name|initialized
 condition|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Kaha Store using data directory "
-operator|+
-name|directory
-argument_list|)
-expr_stmt|;
 name|lockFile
 operator|=
 operator|new
@@ -2671,6 +2662,15 @@ argument_list|)
 expr_stmt|;
 name|lock
 argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Kaha Store using data directory "
+operator|+
+name|directory
+argument_list|)
 expr_stmt|;
 name|DataManager
 name|defaultDM
@@ -2918,6 +2918,10 @@ operator|==
 literal|null
 condition|)
 block|{
+name|initialized
+operator|=
+literal|false
+expr_stmt|;
 throw|throw
 operator|new
 name|StoreLockedExcpetion
@@ -2955,6 +2959,10 @@ block|}
 else|else
 block|{
 comment|// already locked
+name|initialized
+operator|=
+literal|false
+expr_stmt|;
 throw|throw
 operator|new
 name|StoreLockedExcpetion
@@ -3000,10 +3008,7 @@ condition|)
 block|{
 name|System
 operator|.
-name|getProperties
-argument_list|()
-operator|.
-name|remove
+name|clearProperty
 argument_list|(
 name|getPropertyKey
 argument_list|()
@@ -3036,7 +3041,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// Is replaceAll() needed? Should test without it.
 return|return
 name|getClass
 argument_list|()
