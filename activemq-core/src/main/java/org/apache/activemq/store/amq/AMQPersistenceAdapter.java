@@ -1110,11 +1110,6 @@ name|brokerService
 operator|=
 name|brokerService
 expr_stmt|;
-name|Thread
-operator|.
-name|dumpStack
-argument_list|()
-expr_stmt|;
 block|}
 specifier|public
 specifier|synchronized
