@@ -3006,9 +3006,13 @@ name|lock
 operator|)
 condition|)
 block|{
+comment|//clear property doesn't work on some platforms
 name|System
 operator|.
-name|clearProperty
+name|getProperties
+argument_list|()
+operator|.
+name|remove
 argument_list|(
 name|getPropertyKey
 argument_list|()
@@ -3025,6 +3029,14 @@ block|{
 name|lock
 operator|.
 name|release
+argument_list|()
+expr_stmt|;
+name|lock
+operator|.
+name|channel
+argument_list|()
+operator|.
+name|close
 argument_list|()
 expr_stmt|;
 block|}
