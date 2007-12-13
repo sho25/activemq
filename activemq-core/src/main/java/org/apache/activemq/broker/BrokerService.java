@@ -3230,6 +3230,13 @@ name|persistenceAdapter
 operator|=
 name|persistenceAdapter
 expr_stmt|;
+name|configureService
+argument_list|(
+name|this
+operator|.
+name|persistenceAdapter
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|TaskRunnerFactory
