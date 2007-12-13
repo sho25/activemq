@@ -803,6 +803,11 @@ block|{
 name|unlock
 argument_list|()
 expr_stmt|;
+name|lockFile
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|ListContainerImpl
