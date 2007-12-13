@@ -267,11 +267,6 @@ operator|+
 literal|" could not be recovered from the data store!"
 argument_list|)
 expr_stmt|;
-name|Thread
-operator|.
-name|dumpStack
-argument_list|()
-expr_stmt|;
 block|}
 return|return
 literal|false
