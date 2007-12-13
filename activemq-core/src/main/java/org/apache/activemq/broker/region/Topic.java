@@ -2091,6 +2091,11 @@ block|{
 comment|// Producer flow control cannot be used, so we have do the flow
 comment|// control at the broker
 comment|// by blocking this thread until there is space available.
+name|int
+name|count
+init|=
+literal|0
+decl_stmt|;
 while|while
 condition|(
 operator|!
@@ -2120,6 +2125,47 @@ argument_list|(
 literal|"Connection closed, send aborted."
 argument_list|)
 throw|;
+block|}
+if|if
+condition|(
+name|count
+operator|>
+literal|2
+operator|&&
+name|context
+operator|.
+name|isInTransaction
+argument_list|()
+condition|)
+block|{
+name|count
+operator|=
+literal|0
+expr_stmt|;
+name|int
+name|size
+init|=
+name|context
+operator|.
+name|getTransaction
+argument_list|()
+operator|.
+name|size
+argument_list|()
+decl_stmt|;
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Waiting for space to send  transacted message - transaction elements = "
+operator|+
+name|size
+operator|+
+literal|" need more space to commit. Message = "
+operator|+
+name|message
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|// The usage manager could have delayed us by the time
