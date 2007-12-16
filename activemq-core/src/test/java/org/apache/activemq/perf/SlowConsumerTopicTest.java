@@ -361,7 +361,9 @@ init|=
 name|super
 operator|.
 name|createConnectionFactory
-argument_list|()
+argument_list|(
+name|bindAddress
+argument_list|)
 decl_stmt|;
 name|ActiveMQPrefetchPolicy
 name|policy

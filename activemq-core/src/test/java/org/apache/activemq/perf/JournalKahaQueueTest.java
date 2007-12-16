@@ -104,6 +104,9 @@ name|configureBroker
 parameter_list|(
 name|BrokerService
 name|answer
+parameter_list|,
+name|String
+name|uri
 parameter_list|)
 throws|throws
 name|Exception
@@ -189,7 +192,7 @@ name|answer
 operator|.
 name|addConnector
 argument_list|(
-name|bindAddress
+name|uri
 argument_list|)
 expr_stmt|;
 name|answer

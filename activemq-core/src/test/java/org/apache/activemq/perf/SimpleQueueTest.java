@@ -78,6 +78,25 @@ name|destinationName
 argument_list|)
 return|;
 block|}
+specifier|protected
+name|void
+name|setUp
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|this
+operator|.
+name|consumerSleepDuration
+operator|=
+literal|2000
+expr_stmt|;
+name|super
+operator|.
+name|setUp
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 
