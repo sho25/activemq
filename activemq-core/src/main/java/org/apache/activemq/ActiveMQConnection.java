@@ -3622,11 +3622,6 @@ if|if
 condition|(
 name|isClosed
 argument_list|()
-operator|||
-name|closing
-operator|.
-name|get
-argument_list|()
 condition|)
 block|{
 throw|throw
