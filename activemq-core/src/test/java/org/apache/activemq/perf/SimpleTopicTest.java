@@ -212,7 +212,7 @@ specifier|protected
 name|int
 name|numberofProducers
 init|=
-literal|2
+literal|0
 decl_stmt|;
 specifier|protected
 name|int
@@ -915,6 +915,19 @@ name|getTotalCount
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|producers
+operator|!=
+literal|null
+operator|&&
+name|producers
+operator|.
+name|length
+operator|>
+literal|0
+condition|)
+block|{
 name|int
 name|avgRate
 init|=
@@ -943,6 +956,7 @@ operator|+
 name|totalCount
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|protected
 name|void
