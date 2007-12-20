@@ -1592,7 +1592,7 @@ name|Thread
 argument_list|(
 name|r
 argument_list|,
-literal|"AcitveMQ Connection Worker: "
+literal|"ActiveMQ Connection Worker: "
 operator|+
 name|transport
 argument_list|)
