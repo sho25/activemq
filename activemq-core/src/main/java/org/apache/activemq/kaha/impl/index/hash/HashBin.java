@@ -1208,6 +1208,11 @@ name|maximumEntries
 condition|)
 block|{
 comment|// overflowed
+name|info
+operator|.
+name|begin
+argument_list|()
+expr_stmt|;
 name|HashEntry
 name|entry
 init|=
