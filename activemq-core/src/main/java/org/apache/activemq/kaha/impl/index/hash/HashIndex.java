@@ -373,7 +373,7 @@ specifier|private
 name|int
 name|pageCacheSize
 init|=
-literal|1
+literal|10
 decl_stmt|;
 comment|/**      * Constructor      *       * @param directory      * @param name      * @param indexManager      * @param numberOfBins      * @throws IOException      */
 specifier|public

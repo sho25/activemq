@@ -691,7 +691,9 @@ name|isSlave
 parameter_list|()
 block|{
 return|return
-name|getContext
+name|broker
+operator|.
+name|getBrokerService
 argument_list|()
 operator|.
 name|isSlave

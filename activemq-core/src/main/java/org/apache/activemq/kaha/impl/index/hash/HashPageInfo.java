@@ -236,7 +236,7 @@ name|page
 operator|=
 name|hashIndex
 operator|.
-name|getFullPage
+name|lookupPage
 argument_list|(
 name|id
 argument_list|)
