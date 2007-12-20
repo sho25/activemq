@@ -205,6 +205,34 @@ name|activemq
 operator|.
 name|broker
 operator|.
+name|BrokerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|BrokerPlugin
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
 name|BrokerService
 import|;
 end_import
@@ -259,11 +287,23 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|transport
+name|security
 operator|.
-name|reliable
+name|AuthorizationPlugin
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|UnreliableUdpTransportTest
+name|apache
+operator|.
+name|activemq
+operator|.
+name|security
+operator|.
+name|SimpleSecurityBrokerSystemTest
 import|;
 end_import
 
@@ -321,15 +361,17 @@ specifier|protected
 name|String
 name|bindAddress
 init|=
-literal|"stomp://localhost:0"
+literal|"stomp://localhost:61613"
+decl_stmt|;
+specifier|protected
+name|String
+name|confUri
+init|=
+literal|"xbean:org/apache/activemq/transport/stomp/stomp-auth-broker.xml"
 decl_stmt|;
 specifier|private
 name|BrokerService
 name|broker
-decl_stmt|;
-specifier|private
-name|TransportConnector
-name|connector
 decl_stmt|;
 specifier|private
 name|StompConnection
@@ -360,24 +402,15 @@ name|Exception
 block|{
 name|broker
 operator|=
+name|BrokerFactory
+operator|.
+name|createBroker
+argument_list|(
 operator|new
-name|BrokerService
-argument_list|()
-expr_stmt|;
-name|broker
-operator|.
-name|setPersistent
+name|URI
 argument_list|(
-literal|false
+name|confUri
 argument_list|)
-expr_stmt|;
-name|connector
-operator|=
-name|broker
-operator|.
-name|addConnector
-argument_list|(
-name|bindAddress
 argument_list|)
 expr_stmt|;
 name|broker
@@ -402,7 +435,11 @@ operator|=
 name|cf
 operator|.
 name|createConnection
-argument_list|()
+argument_list|(
+literal|"system"
+argument_list|,
+literal|"manager"
+argument_list|)
 expr_stmt|;
 name|session
 operator|=
@@ -446,21 +483,20 @@ block|{
 name|URI
 name|connectUri
 init|=
-name|connector
-operator|.
-name|getConnectUri
-argument_list|()
+operator|new
+name|URI
+argument_list|(
+name|bindAddress
+argument_list|)
 decl_stmt|;
 name|stompConnection
 operator|.
 name|open
 argument_list|(
-literal|"127.0.0.1"
-argument_list|,
+name|createSocket
+argument_list|(
 name|connectUri
-operator|.
-name|getPort
-argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -477,7 +513,14 @@ block|{
 return|return
 operator|new
 name|Socket
+argument_list|(
+literal|"127.0.0.1"
+argument_list|,
+name|connectUri
+operator|.
+name|getPort
 argument_list|()
+argument_list|)
 return|;
 block|}
 specifier|protected
@@ -673,9 +716,9 @@ name|connectFrame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: brianm\n"
+literal|"login: system\n"
 operator|+
-literal|"passcode: wombats\n"
+literal|"passcode: manager\n"
 operator|+
 literal|"request-id: 1\n"
 operator|+
@@ -745,9 +788,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: brianm\n"
+literal|"login: system\n"
 operator|+
-literal|"passcode: wombats\n\n"
+literal|"passcode: manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -884,9 +927,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: brianm\n"
+literal|"login: system\n"
 operator|+
-literal|"passcode: wombats\n\n"
+literal|"passcode: manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -1000,9 +1043,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: brianm\n"
+literal|"login: system\n"
 operator|+
-literal|"passcode: wombats\n\n"
+literal|"passcode: manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -1139,9 +1182,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: brianm\n"
+literal|"login: system\n"
 operator|+
-literal|"passcode: wombats\n\n"
+literal|"passcode: manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -1346,9 +1389,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: brianm\n"
+literal|"login: system\n"
 operator|+
-literal|"passcode: wombats\n\n"
+literal|"passcode: manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -1455,9 +1498,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: brianm\n"
+literal|"login: system\n"
 operator|+
-literal|"passcode: wombats\n\n"
+literal|"passcode: manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -1642,9 +1685,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: brianm\n"
+literal|"login: system\n"
 operator|+
-literal|"passcode: wombats\n\n"
+literal|"passcode: manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -1869,9 +1912,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: brianm\n"
+literal|"login: system\n"
 operator|+
-literal|"passcode: wombats\n\n"
+literal|"passcode: manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -2109,9 +2152,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: brianm\n"
+literal|"login: system\n"
 operator|+
-literal|"passcode: wombats\n\n"
+literal|"passcode: manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -2248,9 +2291,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: brianm\n"
+literal|"login: system\n"
 operator|+
-literal|"passcode: wombats\n\n"
+literal|"passcode: manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -2380,9 +2423,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: brianm\n"
+literal|"login: system\n"
 operator|+
-literal|"passcode: wombats\n\n"
+literal|"passcode: manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -2547,9 +2590,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: brianm\n"
+literal|"login: system\n"
 operator|+
-literal|"passcode: wombats\n\n"
+literal|"passcode: manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -2692,9 +2735,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: brianm\n"
+literal|"login: system\n"
 operator|+
-literal|"passcode: wombats\n\n"
+literal|"passcode: manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -2912,9 +2955,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: brianm\n"
+literal|"login: system\n"
 operator|+
-literal|"passcode: wombats\n\n"
+literal|"passcode: manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -2952,6 +2995,282 @@ expr_stmt|;
 name|assertClients
 argument_list|(
 literal|1
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testConnectNotAuthenticatedWrongUser
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|frame
+init|=
+literal|"CONNECT\n"
+operator|+
+literal|"login: dejanb\n"
+operator|+
+literal|"passcode: manager\n\n"
+operator|+
+name|Stomp
+operator|.
+name|NULL
+decl_stmt|;
+name|stompConnection
+operator|.
+name|sendFrame
+argument_list|(
+name|frame
+argument_list|)
+expr_stmt|;
+name|String
+name|f
+init|=
+name|stompConnection
+operator|.
+name|receiveFrame
+argument_list|()
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|f
+operator|.
+name|startsWith
+argument_list|(
+literal|"ERROR"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertClients
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testConnectNotAuthenticatedWrongPassword
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|frame
+init|=
+literal|"CONNECT\n"
+operator|+
+literal|"login: system\n"
+operator|+
+literal|"passcode: dejanb\n\n"
+operator|+
+name|Stomp
+operator|.
+name|NULL
+decl_stmt|;
+name|stompConnection
+operator|.
+name|sendFrame
+argument_list|(
+name|frame
+argument_list|)
+expr_stmt|;
+name|String
+name|f
+init|=
+name|stompConnection
+operator|.
+name|receiveFrame
+argument_list|()
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|f
+operator|.
+name|startsWith
+argument_list|(
+literal|"ERROR"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertClients
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testSendNotAuthorized
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|frame
+init|=
+literal|"CONNECT\n"
+operator|+
+literal|"login: guest\n"
+operator|+
+literal|"passcode: password\n\n"
+operator|+
+name|Stomp
+operator|.
+name|NULL
+decl_stmt|;
+name|stompConnection
+operator|.
+name|sendFrame
+argument_list|(
+name|frame
+argument_list|)
+expr_stmt|;
+name|frame
+operator|=
+name|stompConnection
+operator|.
+name|receiveFrame
+argument_list|()
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|frame
+operator|.
+name|startsWith
+argument_list|(
+literal|"CONNECTED"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|frame
+operator|=
+literal|"SEND\n"
+operator|+
+literal|"destination:/queue/USERS."
+operator|+
+name|getQueueName
+argument_list|()
+operator|+
+literal|"\n\n"
+operator|+
+literal|"Hello World"
+operator|+
+name|Stomp
+operator|.
+name|NULL
+expr_stmt|;
+name|stompConnection
+operator|.
+name|sendFrame
+argument_list|(
+name|frame
+argument_list|)
+expr_stmt|;
+name|String
+name|f
+init|=
+name|stompConnection
+operator|.
+name|receiveFrame
+argument_list|()
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|f
+operator|.
+name|startsWith
+argument_list|(
+literal|"ERROR"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testSubscribeNotAuthorized
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|frame
+init|=
+literal|"CONNECT\n"
+operator|+
+literal|"login: guest\n"
+operator|+
+literal|"passcode: password\n\n"
+operator|+
+name|Stomp
+operator|.
+name|NULL
+decl_stmt|;
+name|stompConnection
+operator|.
+name|sendFrame
+argument_list|(
+name|frame
+argument_list|)
+expr_stmt|;
+name|frame
+operator|=
+name|stompConnection
+operator|.
+name|receiveFrame
+argument_list|()
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|frame
+operator|.
+name|startsWith
+argument_list|(
+literal|"CONNECTED"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|frame
+operator|=
+literal|"SUBSCRIBE\n"
+operator|+
+literal|"destination:/queue/USERS."
+operator|+
+name|getQueueName
+argument_list|()
+operator|+
+literal|"\n"
+operator|+
+literal|"ack:auto\n\n"
+operator|+
+name|Stomp
+operator|.
+name|NULL
+expr_stmt|;
+name|stompConnection
+operator|.
+name|sendFrame
+argument_list|(
+name|frame
+argument_list|)
+expr_stmt|;
+name|String
+name|f
+init|=
+name|stompConnection
+operator|.
+name|receiveFrame
+argument_list|()
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|f
+operator|.
+name|startsWith
+argument_list|(
+literal|"ERROR"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
