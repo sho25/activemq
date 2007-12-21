@@ -602,7 +602,13 @@ expr_stmt|;
 name|stopped
 operator|.
 name|await
-argument_list|()
+argument_list|(
+literal|5
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
 expr_stmt|;
 block|}
 else|else
