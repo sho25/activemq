@@ -464,7 +464,6 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-specifier|synchronized
 name|boolean
 name|isActive
 parameter_list|()
@@ -474,7 +473,6 @@ name|active
 return|;
 block|}
 specifier|protected
-specifier|synchronized
 name|boolean
 name|isFull
 parameter_list|()
@@ -490,13 +488,11 @@ argument_list|()
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|gc
 parameter_list|()
 block|{     }
 specifier|public
-specifier|synchronized
 name|void
 name|add
 parameter_list|(
@@ -575,12 +571,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|dispatchMatched
+name|dispatchPending
 argument_list|()
 expr_stmt|;
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|activate
 parameter_list|(
@@ -680,6 +675,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+synchronized|synchronized
+init|(
+name|pending
+init|)
+block|{
 name|pending
 operator|.
 name|setSystemUsage
@@ -747,7 +747,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|dispatchMatched
+block|}
+name|dispatchPending
 argument_list|()
 expr_stmt|;
 name|this
@@ -765,7 +766,6 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|deactivate
 parameter_list|(
@@ -959,11 +959,17 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+synchronized|synchronized
+init|(
+name|dispatched
+init|)
+block|{
 name|dispatched
 operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1089,7 +1095,6 @@ name|md
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|add
 parameter_list|(
@@ -1124,7 +1129,6 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
-specifier|synchronized
 name|void
 name|doAddRecoveredMessage
 parameter_list|(
@@ -1134,6 +1138,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+synchronized|synchronized
+init|(
+name|pending
+init|)
+block|{
 name|pending
 operator|.
 name|addRecoveredMessage
@@ -1142,8 +1151,8 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 specifier|public
-specifier|synchronized
 name|int
 name|getPendingQueueSize
 parameter_list|()
@@ -1186,7 +1195,6 @@ argument_list|)
 throw|;
 block|}
 specifier|protected
-specifier|synchronized
 name|boolean
 name|canDispatch
 parameter_list|(
@@ -1331,17 +1339,16 @@ return|;
 block|}
 comment|/**      * Release any references that we are holding.      */
 specifier|public
-specifier|synchronized
 name|void
 name|destroy
 parameter_list|()
-block|{
-try|try
 block|{
 synchronized|synchronized
 init|(
 name|pending
 init|)
+block|{
+try|try
 block|{
 name|pending
 operator|.
@@ -1371,7 +1378,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-block|}
 finally|finally
 block|{
 name|pending
@@ -1385,6 +1391,12 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+synchronized|synchronized
+init|(
+name|dispatched
+init|)
+block|{
 for|for
 control|(
 name|Iterator
@@ -1425,6 +1437,7 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+block|}
 comment|/**      * @param usageManager      * @param oldPercentUsage      * @param newPercentUsage      * @see org.apache.activemq.usage.UsageListener#onMemoryUseChanged(org.apache.activemq.usage.SystemUsage,      *      int, int)      */
 specifier|public
 name|void
@@ -1453,7 +1466,7 @@ condition|)
 block|{
 try|try
 block|{
-name|dispatchMatched
+name|dispatchPending
 argument_list|()
 expr_stmt|;
 block|}

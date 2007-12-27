@@ -158,16 +158,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// Big synch here so that only 1 message gets dispatched at a time.
-comment|// Ensures
-comment|// Everyone sees the same order and that the consumer list is not used
-comment|// while
-comment|// it's being rotated.
-synchronized|synchronized
-init|(
-name|consumers
-init|)
-block|{
 name|int
 name|count
 init|=
@@ -282,7 +272,6 @@ name|count
 operator|>
 literal|0
 return|;
-block|}
 block|}
 block|}
 end_class

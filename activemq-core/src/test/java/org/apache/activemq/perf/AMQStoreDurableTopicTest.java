@@ -114,15 +114,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|adaptor
-operator|.
-name|setMaxFileLength
-argument_list|(
-literal|1024
-operator|*
-literal|64
-argument_list|)
-expr_stmt|;
+comment|//adaptor.setMaxFileLength(1024 * 64);
 name|answer
 operator|.
 name|setDataDirectoryFile
@@ -154,11 +146,11 @@ name|Exception
 block|{
 name|numberofProducers
 operator|=
-literal|6
+literal|2
 expr_stmt|;
 name|numberOfConsumers
 operator|=
-literal|6
+literal|10
 expr_stmt|;
 name|this
 operator|.

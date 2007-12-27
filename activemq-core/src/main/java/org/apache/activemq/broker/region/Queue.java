@@ -812,17 +812,17 @@ literal|2
 decl_stmt|;
 specifier|private
 specifier|final
-name|MessageEvaluationContext
-name|queueMsgConext
+name|Object
+name|exclusiveLockMutex
 init|=
 operator|new
-name|MessageEvaluationContext
+name|Object
 argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
 name|Object
-name|exclusiveLockMutex
+name|sendLock
 init|=
 operator|new
 name|Object
@@ -1319,7 +1319,6 @@ literal|true
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|addSubscription
 parameter_list|(
@@ -1362,14 +1361,11 @@ expr_stmt|;
 name|MessageEvaluationContext
 name|msgContext
 init|=
-name|context
-operator|.
-name|getMessageEvaluationContext
+operator|new
+name|MessageEvaluationContext
 argument_list|()
 decl_stmt|;
-try|try
-block|{
-comment|//needs to be synchronized - so no contention with dispatching
+comment|// needs to be synchronized - so no contention with dispatching
 synchronized|synchronized
 init|(
 name|consumers
@@ -1437,8 +1433,8 @@ block|}
 block|}
 block|}
 block|}
-comment|//we hold the lock on the dispatchValue - so lets build the paged in
-comment|//list directly;
+comment|// we hold the lock on the dispatchValue - so lets build the paged in
+comment|// list directly;
 name|buildList
 argument_list|(
 literal|false
@@ -1573,17 +1569,7 @@ block|}
 block|}
 block|}
 block|}
-finally|finally
-block|{
-name|msgContext
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 specifier|public
-specifier|synchronized
 name|void
 name|removeSubscription
 parameter_list|(
@@ -1815,13 +1801,10 @@ block|{
 name|MessageEvaluationContext
 name|msgContext
 init|=
-name|context
-operator|.
-name|getMessageEvaluationContext
+operator|new
+name|MessageEvaluationContext
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|msgContext
 operator|.
 name|setDestination
@@ -1990,15 +1973,6 @@ name|msgContext
 argument_list|,
 name|consumers
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-finally|finally
-block|{
-name|msgContext
-operator|.
-name|clear
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -2494,7 +2468,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|synchronized
 name|void
 name|doMessageSend
 parameter_list|(
@@ -2520,6 +2493,11 @@ operator|.
 name|getConnectionContext
 argument_list|()
 decl_stmt|;
+synchronized|synchronized
+init|(
+name|sendLock
+init|)
+block|{
 name|message
 operator|.
 name|setRegionDestination
@@ -2582,6 +2560,7 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -4919,7 +4898,6 @@ name|result
 return|;
 block|}
 specifier|private
-specifier|synchronized
 name|List
 argument_list|<
 name|MessageReference
@@ -4975,8 +4953,6 @@ argument_list|(
 name|toPageIn
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|int
 name|count
 init|=
@@ -5108,15 +5084,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-finally|finally
-block|{
-name|queueMsgConext
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 return|return
 name|result
 return|;
@@ -5148,8 +5115,13 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-try|try
-block|{
+name|MessageEvaluationContext
+name|msgContext
+init|=
+operator|new
+name|MessageEvaluationContext
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -5178,14 +5150,14 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-name|queueMsgConext
+name|msgContext
 operator|.
 name|setDestination
 argument_list|(
 name|destination
 argument_list|)
 expr_stmt|;
-name|queueMsgConext
+name|msgContext
 operator|.
 name|setMessageReference
 argument_list|(
@@ -5198,19 +5170,10 @@ name|dispatch
 argument_list|(
 name|node
 argument_list|,
-name|queueMsgConext
+name|msgContext
 argument_list|,
 name|consumers
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-finally|finally
-block|{
-name|queueMsgConext
-operator|.
-name|clear
-argument_list|()
 expr_stmt|;
 block|}
 block|}

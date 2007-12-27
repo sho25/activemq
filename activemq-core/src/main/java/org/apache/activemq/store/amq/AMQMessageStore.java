@@ -113,9 +113,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
-operator|.
-name|Entry
+name|Set
 import|;
 end_import
 
@@ -125,7 +123,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|Map
+operator|.
+name|Entry
 import|;
 end_import
 
@@ -396,20 +396,6 @@ operator|.
 name|usage
 operator|.
 name|MemoryUsage
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|usage
-operator|.
-name|SystemUsage
 import|;
 end_import
 

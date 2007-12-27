@@ -405,6 +405,13 @@ try|try
 block|{
 if|if
 condition|(
+name|msg
+operator|.
+name|getJMSDestination
+argument_list|()
+operator|instanceof
+name|Topic
+operator|&&
 operator|!
 name|this
 operator|.

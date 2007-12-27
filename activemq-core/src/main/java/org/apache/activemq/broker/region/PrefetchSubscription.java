@@ -454,6 +454,24 @@ operator|new
 name|ActiveMQMessageAudit
 argument_list|()
 decl_stmt|;
+specifier|private
+specifier|final
+name|Object
+name|pendingLock
+init|=
+operator|new
+name|Object
+argument_list|()
+decl_stmt|;
+specifier|private
+specifier|final
+name|Object
+name|dispatchLock
+init|=
+operator|new
+name|Object
+argument_list|()
+decl_stmt|;
 specifier|public
 name|PrefetchSubscription
 parameter_list|(
@@ -570,7 +588,7 @@ name|dispatchCounterBeforePull
 init|=
 name|dispatchCounter
 decl_stmt|;
-name|dispatchMatched
+name|dispatchPending
 argument_list|()
 expr_stmt|;
 comment|// If there was nothing dispatched.. we may need to setup a timeout.
@@ -601,7 +619,7 @@ operator|.
 name|NULL_MESSAGE
 argument_list|)
 expr_stmt|;
-name|dispatchMatched
+name|dispatchPending
 argument_list|()
 expr_stmt|;
 block|}
@@ -675,7 +693,7 @@ operator|.
 name|NULL_MESSAGE
 argument_list|)
 expr_stmt|;
-name|dispatchMatched
+name|dispatchPending
 argument_list|()
 expr_stmt|;
 block|}
@@ -699,7 +717,6 @@ block|}
 block|}
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|add
 parameter_list|(
@@ -714,6 +731,11 @@ name|pendingEmpty
 init|=
 literal|false
 decl_stmt|;
+synchronized|synchronized
+init|(
+name|pendingLock
+init|)
+block|{
 name|pendingEmpty
 operator|=
 name|pending
@@ -721,6 +743,7 @@ operator|.
 name|isEmpty
 argument_list|()
 expr_stmt|;
+block|}
 name|enqueueCounter
 operator|++
 expr_stmt|;
@@ -752,7 +775,7 @@ argument_list|()
 expr_stmt|;
 synchronized|synchronized
 init|(
-name|pending
+name|pendingLock
 init|)
 block|{
 if|if
@@ -783,14 +806,13 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
-name|dispatchMatched
+block|}
+name|dispatchPending
 argument_list|()
 expr_stmt|;
 block|}
 block|}
-block|}
 specifier|public
-specifier|synchronized
 name|void
 name|processMessageDispatchNotification
 parameter_list|(
@@ -799,6 +821,11 @@ name|mdn
 parameter_list|)
 throws|throws
 name|Exception
+block|{
+synchronized|synchronized
+init|(
+name|pendingLock
+init|)
 block|{
 try|try
 block|{
@@ -854,6 +881,11 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|dispatchLock
+init|)
+block|{
 name|dispatched
 operator|.
 name|add
@@ -861,6 +893,7 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
+block|}
 return|return;
 block|}
 block|}
@@ -872,6 +905,7 @@ operator|.
 name|release
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 throw|throw
 operator|new
@@ -889,7 +923,6 @@ argument_list|)
 throw|;
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|acknowledge
 parameter_list|(
@@ -910,6 +943,11 @@ name|callDispatchMatched
 init|=
 literal|false
 decl_stmt|;
+synchronized|synchronized
+init|(
+name|dispatchLock
+init|)
+block|{
 if|if
 condition|(
 name|ack
@@ -918,7 +956,8 @@ name|isStandardAck
 argument_list|()
 condition|)
 block|{
-comment|// Acknowledge all dispatched messages up till the message id of the
+comment|// Acknowledge all dispatched messages up till the message id of
+comment|// the
 comment|// acknowledgment.
 name|int
 name|index
@@ -1049,9 +1088,7 @@ name|Exception
 block|{
 synchronized|synchronized
 init|(
-name|PrefetchSubscription
-operator|.
-name|this
+name|dispatchLock
 init|)
 block|{
 name|dequeueCounter
@@ -1242,7 +1279,8 @@ condition|)
 block|{
 comment|// Message was delivered but not acknowledged: update pre-fetch
 comment|// counters.
-comment|// Acknowledge all dispatched messages up till the message id of the
+comment|// Acknowledge all dispatched messages up till the message id of
+comment|// the
 comment|// acknowledgment.
 name|int
 name|index
@@ -1342,9 +1380,11 @@ name|isRedeliveredAck
 argument_list|()
 condition|)
 block|{
-comment|// Message was re-delivered but it was not yet considered to be a
+comment|// Message was re-delivered but it was not yet considered to be
+comment|// a
 comment|// DLQ message.
-comment|// Acknowledge all dispatched messages up till the message id of the
+comment|// Acknowledge all dispatched messages up till the message id of
+comment|// the
 comment|// acknowledgment.
 name|boolean
 name|inAckRange
@@ -1451,7 +1491,8 @@ argument_list|()
 condition|)
 block|{
 comment|// TODO: what if the message is already in a DLQ???
-comment|// Handle the poison ACK case: we need to send the message to a DLQ
+comment|// Handle the poison ACK case: we need to send the message to a
+comment|// DLQ
 if|if
 condition|(
 name|ack
@@ -1470,7 +1511,8 @@ name|ack
 argument_list|)
 throw|;
 block|}
-comment|// Acknowledge all dispatched messages up till the message id of the
+comment|// Acknowledge all dispatched messages up till the message id of
+comment|// the
 comment|// acknowledgment.
 name|int
 name|index
@@ -1657,12 +1699,13 @@ argument_list|)
 throw|;
 block|}
 block|}
+block|}
 if|if
 condition|(
 name|callDispatchMatched
 condition|)
 block|{
-name|dispatchMatched
+name|dispatchPending
 argument_list|()
 expr_stmt|;
 block|}
@@ -1732,7 +1775,6 @@ expr_stmt|;
 block|}
 comment|/**      * Used to determine if the broker can dispatch to the consumer.      *       * @return      */
 specifier|protected
-specifier|synchronized
 name|boolean
 name|isFull
 parameter_list|()
@@ -1756,7 +1798,6 @@ return|;
 block|}
 comment|/**      * @return true when 60% or more room is left for dispatching messages      */
 specifier|public
-specifier|synchronized
 name|boolean
 name|isLowWaterMark
 parameter_list|()
@@ -1783,7 +1824,6 @@ return|;
 block|}
 comment|/**      * @return true when 10% or less room is left for dispatching messages      */
 specifier|public
-specifier|synchronized
 name|boolean
 name|isHighWaterMark
 parameter_list|()
@@ -1809,7 +1849,6 @@ operator|)
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|int
 name|countBeforeFull
 parameter_list|()
@@ -1829,7 +1868,6 @@ argument_list|()
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|int
 name|getPendingQueueSize
 parameter_list|()
@@ -1842,7 +1880,6 @@ argument_list|()
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|int
 name|getDispatchedQueueSize
 parameter_list|()
@@ -1855,7 +1892,6 @@ argument_list|()
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|long
 name|getDequeueCounter
 parameter_list|()
@@ -1865,7 +1901,6 @@ name|dequeueCounter
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|long
 name|getDispatchedCounter
 parameter_list|()
@@ -1875,7 +1910,6 @@ name|dispatchCounter
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|long
 name|getEnqueueCounter
 parameter_list|()
@@ -1897,7 +1931,6 @@ argument_list|()
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|PendingMessageCursor
 name|getPending
 parameter_list|()
@@ -1909,7 +1942,6 @@ name|pending
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|setPending
 parameter_list|(
@@ -1952,7 +1984,6 @@ block|{
 comment|/*          * if(info!=null&&info.isOptimizedAcknowledge()&&context!=null&&context.getConnection()!=null          *&&context.getConnection().isManageable()){          * if(info.getCurrentPrefetchSize()!=info.getPrefetchSize()&&          * isLowWaterMark()){          * info.setCurrentPrefetchSize(info.getPrefetchSize());          * updateConsumerPrefetch(info.getPrefetchSize()); }else          * if(info.getCurrentPrefetchSize()==info.getPrefetchSize()&&          * isHighWaterMark()){ // want to purge any outstanding acks held by the          * consumer info.setCurrentPrefetchSize(1); updateConsumerPrefetch(1); } }          */
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|add
 parameter_list|(
@@ -1964,6 +1995,11 @@ name|destination
 parameter_list|)
 throws|throws
 name|Exception
+block|{
+synchronized|synchronized
+init|(
+name|pendingLock
+init|)
 block|{
 name|super
 operator|.
@@ -1983,9 +2019,9 @@ argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|remove
 parameter_list|(
@@ -1997,6 +2033,11 @@ name|destination
 parameter_list|)
 throws|throws
 name|Exception
+block|{
+synchronized|synchronized
+init|(
+name|pendingLock
+init|)
 block|{
 name|super
 operator|.
@@ -2017,10 +2058,10 @@ name|destination
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 specifier|protected
-specifier|synchronized
 name|void
-name|dispatchMatched
+name|dispatchPending
 parameter_list|()
 throws|throws
 name|IOException
@@ -2031,6 +2072,11 @@ operator|!
 name|isSlave
 argument_list|()
 condition|)
+block|{
+synchronized|synchronized
+init|(
+name|pendingLock
+init|)
 block|{
 try|try
 block|{
@@ -2110,7 +2156,8 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-comment|// Message may have been sitting in the pending list
+comment|// Message may have been sitting in the pending
+comment|// list
 comment|// a while
 comment|// waiting for the consumer to ak the message.
 if|if
@@ -2166,8 +2213,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 specifier|protected
-specifier|synchronized
 name|boolean
 name|dispatch
 parameter_list|(
@@ -2248,6 +2295,11 @@ operator|!=
 literal|null
 condition|)
 block|{
+synchronized|synchronized
+init|(
+name|pendingLock
+init|)
+block|{
 name|pending
 operator|.
 name|dispatched
@@ -2255,6 +2307,7 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -2409,7 +2462,7 @@ condition|)
 block|{
 try|try
 block|{
-name|dispatchMatched
+name|dispatchPending
 argument_list|()
 expr_stmt|;
 block|}

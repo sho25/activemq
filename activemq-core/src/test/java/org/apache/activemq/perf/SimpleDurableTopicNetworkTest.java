@@ -107,11 +107,11 @@ literal|6
 expr_stmt|;
 name|samepleCount
 operator|=
-literal|100
+literal|1000
 expr_stmt|;
 name|playloadSize
 operator|=
-literal|1
+literal|1024
 expr_stmt|;
 name|super
 operator|.
