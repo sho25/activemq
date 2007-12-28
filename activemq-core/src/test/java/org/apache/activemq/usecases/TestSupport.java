@@ -606,7 +606,7 @@ return|return
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://localhost"
+literal|"vm://localhost?broker.persistent=false"
 argument_list|)
 return|;
 block|}

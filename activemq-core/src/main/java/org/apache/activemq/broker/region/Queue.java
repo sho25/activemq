@@ -69,18 +69,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CopyOnWriteArrayList
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -711,11 +699,13 @@ argument_list|>
 name|consumers
 init|=
 operator|new
-name|CopyOnWriteArrayList
+name|ArrayList
 argument_list|<
 name|Subscription
 argument_list|>
-argument_list|()
+argument_list|(
+literal|50
+argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final

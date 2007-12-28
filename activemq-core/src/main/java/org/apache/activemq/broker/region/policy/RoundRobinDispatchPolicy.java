@@ -168,6 +168,11 @@ name|firstMatchingConsumer
 init|=
 literal|null
 decl_stmt|;
+synchronized|synchronized
+init|(
+name|consumers
+init|)
+block|{
 for|for
 control|(
 name|Iterator
@@ -266,6 +271,7 @@ name|Throwable
 name|bestEffort
 parameter_list|)
 block|{                 }
+block|}
 block|}
 return|return
 name|count

@@ -784,6 +784,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+specifier|protected
+specifier|synchronized
+name|boolean
+name|isStarted
+parameter_list|()
+block|{
+return|return
+name|started
+return|;
+block|}
 block|}
 end_class
 

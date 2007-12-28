@@ -558,20 +558,6 @@ operator|.
 name|SECONDS
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|receivedText
-operator|==
-literal|null
-condition|)
-block|{
-comment|/*             Map<Thread,StackTraceElement[]> map = Thread.getAllStackTraces();             for (Map.Entry<Thread,StackTraceElement[]> entry: map.entrySet()) {                 System.out.println(entry.getKey());                 for (StackTraceElement element :entry.getValue()) {                     System.out.println(element);                 }             }             */
-name|fail
-argument_list|(
-literal|"No message received"
-argument_list|)
-expr_stmt|;
-block|}
 name|assertNotNull
 argument_list|(
 name|receivedText

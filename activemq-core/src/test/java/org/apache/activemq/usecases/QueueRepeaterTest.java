@@ -39,6 +39,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -270,7 +282,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://localhost"
+literal|"vm://localhost?broker.persistent=false"
 argument_list|)
 decl_stmt|;
 name|connection
@@ -528,7 +540,18 @@ expr_stmt|;
 name|latch
 operator|.
 name|await
-argument_list|()
+argument_list|(
+literal|2
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+name|receivedText
+argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
