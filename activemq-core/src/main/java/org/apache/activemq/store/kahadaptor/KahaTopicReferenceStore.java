@@ -1857,6 +1857,13 @@ argument_list|(
 name|subscriberKey
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|container
+operator|!=
+literal|null
+condition|)
+block|{
 for|for
 control|(
 name|Iterator
@@ -1957,6 +1964,7 @@ argument_list|,
 name|tsa
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
