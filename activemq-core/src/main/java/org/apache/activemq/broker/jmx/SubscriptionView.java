@@ -681,6 +681,16 @@ else|:
 literal|0
 return|;
 block|}
+specifier|public
+name|int
+name|getMessageCountAwaitingAcknowledge
+parameter_list|()
+block|{
+return|return
+name|getDispatchedQueueSize
+argument_list|()
+return|;
+block|}
 comment|/**      * @return number of messages that matched the subscription      */
 specifier|public
 name|long

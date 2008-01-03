@@ -108,6 +108,11 @@ name|int
 name|getDispatchedQueueSize
 parameter_list|()
 function_decl|;
+comment|/**      * The same as the number of messages dispatched -       * making it explicit      * @return      */
+name|int
+name|getMessageCountAwaitingAcknowledge
+parameter_list|()
+function_decl|;
 comment|/**      * @return number of messages that matched the subscription      */
 name|long
 name|getDispachedCounter
