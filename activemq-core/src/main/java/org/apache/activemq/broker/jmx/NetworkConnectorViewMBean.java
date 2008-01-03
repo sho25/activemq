@@ -72,6 +72,10 @@ name|boolean
 name|isDynamicOnly
 parameter_list|()
 function_decl|;
+name|boolean
+name|isDuplex
+parameter_list|()
+function_decl|;
 name|void
 name|setBridgeTempDestinations
 parameter_list|(

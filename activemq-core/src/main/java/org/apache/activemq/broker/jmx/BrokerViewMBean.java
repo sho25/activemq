@@ -110,6 +110,10 @@ name|long
 name|limit
 parameter_list|)
 function_decl|;
+name|boolean
+name|isPersistent
+parameter_list|()
+function_decl|;
 comment|/**      * Shuts down the JVM.      *       * @param exitCode the exit code that will be reported by the JVM process      *                when it exits.      */
 name|void
 name|terminateJVM
