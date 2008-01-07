@@ -739,6 +739,14 @@ range|:
 name|batchList
 control|)
 block|{
+name|rollback
+argument_list|(
+name|msg
+operator|.
+name|getMessageId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|msg
 operator|.
 name|decrementReferenceCount

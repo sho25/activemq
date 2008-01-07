@@ -196,7 +196,7 @@ specifier|protected
 name|int
 name|numberOfClients
 init|=
-literal|10
+literal|50
 decl_stmt|;
 specifier|protected
 name|int
@@ -216,7 +216,7 @@ specifier|protected
 name|int
 name|numberOfBatches
 init|=
-literal|4
+literal|10
 decl_stmt|;
 specifier|protected
 name|int
@@ -230,7 +230,7 @@ specifier|protected
 name|boolean
 name|connectionPerMessage
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|protected
 name|Connection
@@ -324,7 +324,15 @@ literal|"Running with "
 operator|+
 name|numberOfClients
 operator|+
-literal|" clients"
+literal|" clients - sending "
+operator|+
+name|numberOfBatches
+operator|+
+literal|" batches of "
+operator|+
+name|batchSize
+operator|+
+literal|" messages"
 argument_list|)
 expr_stmt|;
 name|controller
@@ -332,6 +340,8 @@ operator|=
 operator|new
 name|LoadController
 argument_list|(
+literal|"Controller"
+argument_list|,
 name|factory
 argument_list|)
 expr_stmt|;
@@ -372,7 +382,7 @@ argument_list|)
 expr_stmt|;
 name|controller
 operator|.
-name|setControlDestination
+name|setNextDestination
 argument_list|(
 name|endDestination
 argument_list|)
@@ -760,10 +770,19 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|assertEquals
+argument_list|(
+operator|(
+name|batchSize
+operator|*
+name|numberOfBatches
+operator|)
+argument_list|,
 name|controller
 operator|.
-name|stop
+name|awaitTestComplete
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
