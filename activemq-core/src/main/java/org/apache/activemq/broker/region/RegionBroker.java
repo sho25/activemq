@@ -1009,6 +1009,9 @@ return|;
 block|}
 specifier|public
 name|Set
+argument_list|<
+name|Destination
+argument_list|>
 name|getDestinations
 parameter_list|(
 name|ActiveMQDestination

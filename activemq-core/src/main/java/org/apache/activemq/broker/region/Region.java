@@ -347,6 +347,9 @@ parameter_list|()
 function_decl|;
 comment|/**      * Provide an exact or wildcard lookup of destinations in the region      *       * @return a set of matching destination objects.      */
 name|Set
+argument_list|<
+name|Destination
+argument_list|>
 name|getDestinations
 parameter_list|(
 name|ActiveMQDestination
