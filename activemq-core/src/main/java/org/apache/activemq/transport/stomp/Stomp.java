@@ -147,6 +147,11 @@ name|CONTENT_LENGTH
 init|=
 literal|"content-length"
 decl_stmt|;
+name|String
+name|TRANSFORMATION
+init|=
+literal|"transformation"
+decl_stmt|;
 specifier|public
 interface|interface
 name|Response
