@@ -718,15 +718,6 @@ name|MemoryUsage
 name|memoryUsage
 decl_stmt|;
 specifier|private
-specifier|final
-name|DestinationStatistics
-name|destinationStatistics
-init|=
-operator|new
-name|DestinationStatistics
-argument_list|()
-decl_stmt|;
-specifier|private
 name|PendingMessageCursor
 name|messages
 decl_stmt|;

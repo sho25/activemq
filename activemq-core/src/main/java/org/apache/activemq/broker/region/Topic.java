@@ -700,15 +700,6 @@ specifier|final
 name|MemoryUsage
 name|memoryUsage
 decl_stmt|;
-specifier|protected
-specifier|final
-name|DestinationStatistics
-name|destinationStatistics
-init|=
-operator|new
-name|DestinationStatistics
-argument_list|()
-decl_stmt|;
 specifier|private
 name|DispatchPolicy
 name|dispatchPolicy
