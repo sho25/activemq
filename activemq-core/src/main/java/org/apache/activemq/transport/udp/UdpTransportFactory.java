@@ -157,7 +157,7 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|TransportLogger
+name|TransportLoggerFactory
 import|;
 end_import
 
@@ -354,6 +354,10 @@ operator|.
 name|LogFactory
 import|;
 end_import
+
+begin_comment
+comment|/**  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  * @version $Revision$  */
+end_comment
 
 begin_class
 specifier|public
@@ -618,14 +622,45 @@ name|isTrace
 argument_list|()
 condition|)
 block|{
+try|try
+block|{
 name|transport
 operator|=
-operator|new
-name|TransportLogger
+name|TransportLoggerFactory
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|createTransportLogger
 argument_list|(
 name|transport
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Could not create TransportLogger object for: "
+operator|+
+name|TransportLoggerFactory
+operator|.
+name|defaultLogWriterName
+operator|+
+literal|", reason: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|transport
 operator|=
@@ -746,8 +781,12 @@ condition|)
 block|{
 name|transport
 operator|=
-operator|new
-name|TransportLogger
+name|TransportLoggerFactory
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|createTransportLogger
 argument_list|(
 name|transport
 argument_list|)

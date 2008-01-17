@@ -39,6 +39,10 @@ name|Service
 import|;
 end_import
 
+begin_comment
+comment|/**  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (for the reloadLog4jProperties method)  * @version $Revision$  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
@@ -287,13 +291,13 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Reloads log4j.properties from the classpath.      * This methods calls org.apache.activemq.transport.TransportLoggerControl.reloadLog4jProperties      * @throws Exception      */
+comment|/**      * Reloads log4j.properties from the classpath.      * This methods calls org.apache.activemq.transport.TransportLoggerControl.reloadLog4jProperties      * @throws Throwable       */
 specifier|public
 name|void
 name|reloadLog4jProperties
 parameter_list|()
 throws|throws
-name|Exception
+name|Throwable
 function_decl|;
 block|}
 end_interface

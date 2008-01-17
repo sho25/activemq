@@ -239,7 +239,7 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|TransportLogger
+name|TransportLoggerFactory
 import|;
 end_import
 
@@ -356,7 +356,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the TcpTransportFactory using SSL. The major  * contribution from this class is that it is aware of SslTransportServer and  * SslTransport classes. All Transports and TransportServers created from this  * factory will have their needClientAuth option set to false.  *   * @author sepandm@gmail.com (Sepand)  * @version $Revision: $  */
+comment|/**  * An implementation of the TcpTransportFactory using SSL. The major  * contribution from this class is that it is aware of SslTransportServer and  * SslTransport classes. All Transports and TransportServers created from this  * factory will have their needClientAuth option set to false.  *   * @author sepandm@gmail.com (Sepand)  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -594,14 +594,66 @@ name|isTrace
 argument_list|()
 condition|)
 block|{
+try|try
+block|{
 name|transport
 operator|=
-operator|new
-name|TransportLogger
+name|TransportLoggerFactory
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|createTransportLogger
 argument_list|(
 name|transport
+argument_list|,
+name|sslTransport
+operator|.
+name|getLogWriterName
+argument_list|()
+argument_list|,
+name|sslTransport
+operator|.
+name|isDynamicManagement
+argument_list|()
+argument_list|,
+name|sslTransport
+operator|.
+name|isStartLogging
+argument_list|()
+argument_list|,
+name|sslTransport
+operator|.
+name|getJmxPort
+argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Could not create TransportLogger object for: "
+operator|+
+name|sslTransport
+operator|.
+name|getLogWriterName
+argument_list|()
+operator|+
+literal|", reason: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|transport
 operator|=

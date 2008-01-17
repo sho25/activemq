@@ -267,6 +267,20 @@ name|activemq
 operator|.
 name|transport
 operator|.
+name|TransportLoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
 name|TransportThreadSupport
 import|;
 end_import
@@ -342,7 +356,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the {@link Transport} interface using raw tcp/ip  *   * @version $Revision$  */
+comment|/**  * An implementation of the {@link Transport} interface using raw tcp/ip  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -438,6 +452,15 @@ name|boolean
 name|trace
 init|=
 literal|false
+decl_stmt|;
+comment|/**      * Name of the LogWriter implementation to use.      * Names are mapped to classes in the resources/META-INF/services/org/apache/activemq/transport/logwriters directory.      * This parameter is most probably set in Connection or TransportConnector URIs.      */
+specifier|protected
+name|String
+name|logWriterName
+init|=
+name|TransportLoggerFactory
+operator|.
+name|defaultLogWriterName
 decl_stmt|;
 comment|/**      * Specifies if the TransportLogger will be manageable by JMX or not.      * Also, as long as there is at least 1 TransportLogger which is manageable,      * a TransportLoggerControl MBean will me created.      */
 specifier|protected
@@ -822,6 +845,30 @@ operator|.
 name|trace
 operator|=
 name|trace
+expr_stmt|;
+block|}
+specifier|public
+name|String
+name|getLogWriterName
+parameter_list|()
+block|{
+return|return
+name|logWriterName
+return|;
+block|}
+specifier|public
+name|void
+name|setLogWriterName
+parameter_list|(
+name|String
+name|logFormat
+parameter_list|)
+block|{
+name|this
+operator|.
+name|logWriterName
+operator|=
+name|logFormat
 expr_stmt|;
 block|}
 specifier|public
