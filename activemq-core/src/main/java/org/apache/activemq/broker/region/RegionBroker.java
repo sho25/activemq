@@ -2050,6 +2050,13 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|addDestination
+argument_list|(
+name|context
+argument_list|,
+name|destination
+argument_list|)
+expr_stmt|;
 switch|switch
 condition|(
 name|destination

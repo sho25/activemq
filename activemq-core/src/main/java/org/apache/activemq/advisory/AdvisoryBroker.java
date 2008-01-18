@@ -1044,9 +1044,14 @@ name|getDestination
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|fireAdvisory
+name|fireProducerAdvisory
 argument_list|(
 name|context
+argument_list|,
+name|info
+operator|.
+name|getDestination
+argument_list|()
 argument_list|,
 name|topic
 argument_list|,
@@ -2102,7 +2107,7 @@ operator|.
 name|getDestinationStatistics
 argument_list|()
 operator|.
-name|getConsumers
+name|getProducers
 argument_list|()
 operator|.
 name|getCount
