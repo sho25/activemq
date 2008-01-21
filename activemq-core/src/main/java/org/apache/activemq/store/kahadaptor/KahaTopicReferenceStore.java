@@ -471,6 +471,7 @@ argument_list|)
 throw|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|addMessageReference
 parameter_list|(
