@@ -1068,10 +1068,13 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|callback
-operator|.
-name|run
+name|getExecutor
 argument_list|()
+operator|.
+name|execute
+argument_list|(
+name|callback
+argument_list|)
 expr_stmt|;
 block|}
 name|callbacks
