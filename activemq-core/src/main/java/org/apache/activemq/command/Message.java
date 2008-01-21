@@ -1861,7 +1861,7 @@ name|memoryUsage
 operator|=
 name|regionDestination
 operator|.
-name|getBrokerMemoryUsage
+name|getMemoryUsage
 argument_list|()
 expr_stmt|;
 block|}

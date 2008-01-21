@@ -385,7 +385,7 @@ condition|)
 block|{
 name|queue
 operator|.
-name|getBrokerMemoryUsage
+name|getMemoryUsage
 argument_list|()
 operator|.
 name|setLimit
@@ -526,7 +526,7 @@ condition|)
 block|{
 name|topic
 operator|.
-name|getBrokerMemoryUsage
+name|getMemoryUsage
 argument_list|()
 operator|.
 name|setLimit

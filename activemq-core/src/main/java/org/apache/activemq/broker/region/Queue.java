@@ -1142,6 +1142,27 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|int
+name|messageCount
+init|=
+name|store
+operator|.
+name|getMessageCount
+argument_list|()
+decl_stmt|;
+name|destinationStatistics
+operator|.
+name|getMessages
+argument_list|()
+operator|.
+name|setCount
+argument_list|(
+name|messageCount
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Lock a node      *       * @param node      * @param lockOwner      * @return true if can be locked      * @see org.apache.activemq.broker.region.Destination#lock(org.apache.activemq.broker.region.MessageReference,      *      org.apache.activemq.broker.region.LockOwner)      */
@@ -1911,14 +1932,8 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-name|destinationStatistics
-operator|.
-name|getMessages
-argument_list|()
-operator|.
-name|decrement
-argument_list|()
-expr_stmt|;
+comment|//message not added to stats yet
+comment|//destinationStatistics.getMessages().decrement();
 if|if
 condition|(
 name|sendProducerAck
@@ -2049,14 +2064,8 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-name|destinationStatistics
-operator|.
-name|getMessages
-argument_list|()
-operator|.
-name|decrement
-argument_list|()
-expr_stmt|;
+comment|//message not added to stats yet
+comment|//destinationStatistics.getMessages().decrement();
 block|}
 else|else
 block|{
@@ -2475,14 +2484,8 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-name|destinationStatistics
-operator|.
-name|getMessages
-argument_list|()
-operator|.
-name|decrement
-argument_list|()
-expr_stmt|;
+comment|//message not added to stats yet
+comment|//destinationStatistics.getMessages().decrement();
 return|return;
 block|}
 name|sendMessage

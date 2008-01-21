@@ -704,6 +704,11 @@ argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
+name|topic
+operator|.
+name|initialize
+argument_list|()
+expr_stmt|;
 return|return
 name|topic
 return|;

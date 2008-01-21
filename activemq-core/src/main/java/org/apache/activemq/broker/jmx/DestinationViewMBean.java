@@ -118,6 +118,11 @@ name|long
 name|getConsumerCount
 parameter_list|()
 function_decl|;
+comment|/**      * @return the number of producers publishing to the destination      */
+name|long
+name|getProducerCount
+parameter_list|()
+function_decl|;
 comment|/**      * Returns the number of messages in this destination which are yet to be      * consumed      *       * @return Returns the number of messages in this destination which are yet      *         to be consumed      */
 name|long
 name|getQueueSize
@@ -186,19 +191,35 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * @return the percentage of amount of memory used      */
 name|int
 name|getMemoryPercentageUsed
 parameter_list|()
 function_decl|;
+comment|/**      * @return the amount of memory allocated to this destination      */
 name|long
 name|getMemoryLimit
 parameter_list|()
 function_decl|;
+comment|/**      * set the amount of memory allocated to this destination      * @param limit      */
 name|void
 name|setMemoryLimit
 parameter_list|(
 name|long
 name|limit
+parameter_list|)
+function_decl|;
+comment|/**      * @return the portion of memory from the broker memory limit for this destination      */
+name|float
+name|getMemoryLimitPortion
+parameter_list|()
+function_decl|;
+comment|/**      * set the portion of memory from the broker memory limit for this destination      * @param value      */
+name|void
+name|setMemoryLimitPortion
+parameter_list|(
+name|float
+name|value
 parameter_list|)
 function_decl|;
 comment|/**      * Browses the current destination returning a list of messages      */
@@ -232,6 +253,50 @@ comment|/**      * @return average time a message is held by a destination      
 name|double
 name|getAverageEnqueueTime
 parameter_list|()
+function_decl|;
+comment|/**      * @return the producerFlowControl      */
+name|boolean
+name|isProducerFlowControl
+parameter_list|()
+function_decl|;
+comment|/**      * @param producerFlowControl the producerFlowControl to set      */
+specifier|public
+name|void
+name|setProducerFlowControl
+parameter_list|(
+name|boolean
+name|producerFlowControl
+parameter_list|)
+function_decl|;
+comment|/**      * @return the maxProducersToAudit      */
+specifier|public
+name|int
+name|getMaxProducersToAudit
+parameter_list|()
+function_decl|;
+comment|/**      * @param maxProducersToAudit the maxProducersToAudit to set      */
+specifier|public
+name|void
+name|setMaxProducersToAudit
+parameter_list|(
+name|int
+name|maxProducersToAudit
+parameter_list|)
+function_decl|;
+comment|/**      * @return the maxAuditDepth      */
+specifier|public
+name|int
+name|getMaxAuditDepth
+parameter_list|()
+function_decl|;
+comment|/**      * @param maxAuditDepth the maxAuditDepth to set      */
+specifier|public
+name|void
+name|setMaxAuditDepth
+parameter_list|(
+name|int
+name|maxAuditDepth
+parameter_list|)
 function_decl|;
 block|}
 end_interface
