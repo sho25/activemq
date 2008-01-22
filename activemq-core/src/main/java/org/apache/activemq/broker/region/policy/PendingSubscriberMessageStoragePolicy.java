@@ -29,11 +29,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|region
-operator|.
-name|cursors
-operator|.
-name|PendingMessageCursor
+name|Broker
 import|;
 end_import
 
@@ -45,9 +41,13 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|kaha
+name|broker
 operator|.
-name|Store
+name|region
+operator|.
+name|cursors
+operator|.
+name|PendingMessageCursor
 import|;
 end_import
 
@@ -60,15 +60,15 @@ specifier|public
 interface|interface
 name|PendingSubscriberMessageStoragePolicy
 block|{
-comment|/**      * Retrieve the configured pending message storage cursor;      *       * @param name      * @param tmpStorage      * @param maxBatchSize      * @return the Pending Message cursor      */
+comment|/**      * Retrieve the configured pending message storage cursor;      * @param broker       *       * @param name      * @param maxBatchSize      * @return the Pending Message cursor      */
 name|PendingMessageCursor
 name|getSubscriberPendingMessageCursor
 parameter_list|(
+name|Broker
+name|broker
+parameter_list|,
 name|String
 name|name
-parameter_list|,
-name|Store
-name|tmpStorage
 parameter_list|,
 name|int
 name|maxBatchSize

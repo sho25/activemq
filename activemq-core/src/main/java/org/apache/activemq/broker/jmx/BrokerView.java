@@ -457,7 +457,7 @@ return|;
 block|}
 specifier|public
 name|int
-name|getMemoryPercentageUsed
+name|getMemoryPercentUsage
 parameter_list|()
 block|{
 return|return
@@ -533,7 +533,7 @@ return|;
 block|}
 specifier|public
 name|int
-name|getStorePercentageUsed
+name|getStorePercentUsage
 parameter_list|()
 block|{
 return|return
@@ -551,7 +551,7 @@ return|;
 block|}
 specifier|public
 name|long
-name|getTmpLimit
+name|getTempLimit
 parameter_list|()
 block|{
 return|return
@@ -569,7 +569,7 @@ return|;
 block|}
 specifier|public
 name|int
-name|getTmpPercentageUsed
+name|getTempPercentUsage
 parameter_list|()
 block|{
 return|return
@@ -609,7 +609,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|setTmpLimit
+name|setTempLimit
 parameter_list|(
 name|long
 name|limit
@@ -779,7 +779,7 @@ block|{
 return|return
 name|broker
 operator|.
-name|getTemporaryTopicSubscribers
+name|getTopicSubscribers
 argument_list|()
 return|;
 block|}

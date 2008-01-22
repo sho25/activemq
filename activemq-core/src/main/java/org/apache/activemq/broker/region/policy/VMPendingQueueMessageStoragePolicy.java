@@ -29,6 +29,20 @@ name|activemq
 operator|.
 name|broker
 operator|.
+name|Broker
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
 name|region
 operator|.
 name|Queue
@@ -71,20 +85,6 @@ name|VMPendingMessageCursor
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|kaha
-operator|.
-name|Store
-import|;
-end_import
-
 begin_comment
 comment|/**  * Creates a VMPendingMessageCursor *  *   * @org.apache.xbean.XBean element="vmQueueCursor" description="Pending messages  *                         held in the JVM"  *   * @version $Revision$  */
 end_comment
@@ -96,16 +96,16 @@ name|VMPendingQueueMessageStoragePolicy
 implements|implements
 name|PendingQueueMessageStoragePolicy
 block|{
-comment|/**      * @param queue      * @param tmpStore      * @return the cursor      */
+comment|/**      * @param broker       * @param queue      * @return the cursor      */
 specifier|public
 name|PendingMessageCursor
 name|getQueuePendingMessageCursor
 parameter_list|(
+name|Broker
+name|broker
+parameter_list|,
 name|Queue
 name|queue
-parameter_list|,
-name|Store
-name|tmpStore
 parameter_list|)
 block|{
 return|return

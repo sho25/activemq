@@ -29,6 +29,20 @@ name|activemq
 operator|.
 name|broker
 operator|.
+name|Broker
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
 name|region
 operator|.
 name|Subscription
@@ -68,20 +82,6 @@ operator|.
 name|cursors
 operator|.
 name|PendingMessageCursor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|kaha
-operator|.
-name|Store
 import|;
 end_import
 
@@ -96,19 +96,19 @@ name|FilePendingDurableSubscriberMessageStoragePolicy
 implements|implements
 name|PendingDurableSubscriberMessageStoragePolicy
 block|{
-comment|/**      * Retrieve the configured pending message storage cursor;      *       * @param clientId      * @param name      * @param tmpStorage      * @param maxBatchSize      * @return the Pending Message cursor      */
+comment|/**      * Retrieve the configured pending message storage cursor;      * @param broker       *       * @param clientId      * @param name      * @param maxBatchSize      * @param sub       * @return the Pending Message cursor      */
 specifier|public
 name|PendingMessageCursor
 name|getSubscriberPendingMessageCursor
 parameter_list|(
+name|Broker
+name|broker
+parameter_list|,
 name|String
 name|clientId
 parameter_list|,
 name|String
 name|name
-parameter_list|,
-name|Store
-name|tmpStorage
 parameter_list|,
 name|int
 name|maxBatchSize
@@ -121,9 +121,9 @@ return|return
 operator|new
 name|FilePendingMessageCursor
 argument_list|(
-name|name
+name|broker
 argument_list|,
-name|tmpStorage
+name|name
 argument_list|)
 return|;
 block|}

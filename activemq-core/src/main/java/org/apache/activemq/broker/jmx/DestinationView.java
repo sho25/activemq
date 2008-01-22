@@ -565,7 +565,7 @@ return|;
 block|}
 specifier|public
 name|int
-name|getMemoryPercentageUsed
+name|getMemoryPercentUsage
 parameter_list|()
 block|{
 return|return
@@ -1650,7 +1650,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|float
-name|getMemoryLimitPortion
+name|getMemoryUsagePortion
 parameter_list|()
 block|{
 return|return
@@ -1695,7 +1695,7 @@ return|;
 block|}
 specifier|public
 name|void
-name|setMemoryLimitPortion
+name|setMemoryUsagePortion
 parameter_list|(
 name|float
 name|value

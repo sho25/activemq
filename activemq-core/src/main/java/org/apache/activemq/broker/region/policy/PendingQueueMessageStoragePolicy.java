@@ -29,6 +29,20 @@ name|activemq
 operator|.
 name|broker
 operator|.
+name|Broker
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
 name|region
 operator|.
 name|Queue
@@ -53,20 +67,6 @@ name|PendingMessageCursor
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|kaha
-operator|.
-name|Store
-import|;
-end_import
-
 begin_comment
 comment|/**  * Abstraction to allow different policies for holding messages awaiting  * dispatch on a Queue  *   * @version $Revision$  */
 end_comment
@@ -76,15 +76,15 @@ specifier|public
 interface|interface
 name|PendingQueueMessageStoragePolicy
 block|{
-comment|/**      * Retrieve the configured pending message storage cursor;      *       * @param queue      * @param tmpStore      * @return the cursor      */
+comment|/**      * Retrieve the configured pending message storage cursor;      * @param broker       *       * @param queue      * @return the cursor      */
 name|PendingMessageCursor
 name|getQueuePendingMessageCursor
 parameter_list|(
+name|Broker
+name|broker
+parameter_list|,
 name|Queue
 name|queue
-parameter_list|,
-name|Store
-name|tmpStore
 parameter_list|)
 function_decl|;
 block|}

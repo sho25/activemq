@@ -393,8 +393,7 @@ if|if
 condition|(
 name|cacheEnabled
 operator|&&
-operator|!
-name|isFull
+name|hasSpace
 argument_list|()
 condition|)
 block|{

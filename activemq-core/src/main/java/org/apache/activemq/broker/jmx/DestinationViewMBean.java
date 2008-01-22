@@ -193,7 +193,7 @@ name|Exception
 function_decl|;
 comment|/**      * @return the percentage of amount of memory used      */
 name|int
-name|getMemoryPercentageUsed
+name|getMemoryPercentUsage
 parameter_list|()
 function_decl|;
 comment|/**      * @return the amount of memory allocated to this destination      */
@@ -211,12 +211,12 @@ parameter_list|)
 function_decl|;
 comment|/**      * @return the portion of memory from the broker memory limit for this destination      */
 name|float
-name|getMemoryLimitPortion
+name|getMemoryUsagePortion
 parameter_list|()
 function_decl|;
 comment|/**      * set the portion of memory from the broker memory limit for this destination      * @param value      */
 name|void
-name|setMemoryLimitPortion
+name|setMemoryUsagePortion
 parameter_list|(
 name|float
 name|value

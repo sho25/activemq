@@ -208,8 +208,6 @@ argument_list|,
 name|destinationStatistics
 argument_list|,
 name|taskRunnerFactory
-argument_list|,
-literal|null
 argument_list|)
 block|{
 specifier|public

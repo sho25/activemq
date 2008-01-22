@@ -3753,6 +3753,15 @@ literal|true
 expr_stmt|;
 block|}
 block|}
+else|else
+block|{
+comment|//don't want to warn about failing to send
+comment|// if there isn't a dead letter strategy
+name|sent
+operator|=
+literal|true
+expr_stmt|;
+block|}
 block|}
 block|}
 if|if
@@ -3770,7 +3779,7 @@ literal|"Failed to send "
 operator|+
 name|node
 operator|+
-literal|" to dead letter queue"
+literal|" to DLQ"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3785,7 +3794,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to pass expired message to dead letter queue"
+literal|"Caught an exception sending to DLQ: "
+operator|+
+name|node
 argument_list|,
 name|e
 argument_list|)

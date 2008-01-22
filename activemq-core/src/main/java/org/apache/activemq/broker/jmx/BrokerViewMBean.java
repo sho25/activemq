@@ -100,7 +100,7 @@ name|getTotalMessageCount
 parameter_list|()
 function_decl|;
 name|int
-name|getMemoryPercentageUsed
+name|getMemoryPercentUsage
 parameter_list|()
 function_decl|;
 name|long
@@ -115,7 +115,7 @@ name|limit
 parameter_list|)
 function_decl|;
 name|int
-name|getStorePercentageUsed
+name|getStorePercentUsage
 parameter_list|()
 function_decl|;
 name|long
@@ -130,15 +130,15 @@ name|limit
 parameter_list|)
 function_decl|;
 name|int
-name|getTmpPercentageUsed
+name|getTempPercentUsage
 parameter_list|()
 function_decl|;
 name|long
-name|getTmpLimit
+name|getTempLimit
 parameter_list|()
 function_decl|;
 name|void
-name|setTmpLimit
+name|setTempLimit
 parameter_list|(
 name|long
 name|limit
