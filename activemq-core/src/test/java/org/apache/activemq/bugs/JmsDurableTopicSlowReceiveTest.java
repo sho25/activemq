@@ -199,7 +199,7 @@ specifier|final
 name|int
 name|NMSG
 init|=
-literal|100
+literal|200
 decl_stmt|;
 specifier|static
 specifier|final

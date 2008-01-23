@@ -718,7 +718,43 @@ parameter_list|(
 name|MessageReference
 name|message
 parameter_list|)
-block|{        }
+block|{
+comment|//add it to the audit
+name|isDuplicate
+argument_list|(
+name|message
+operator|.
+name|getMessageId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * set the audit      * @param audit      */
+specifier|public
+name|void
+name|setMessageAudit
+parameter_list|(
+name|ActiveMQMessageAudit
+name|audit
+parameter_list|)
+block|{
+name|this
+operator|.
+name|audit
+operator|=
+name|audit
+expr_stmt|;
+block|}
+comment|/**      * @return the audit      */
+specifier|public
+name|ActiveMQMessageAudit
+name|getMessageAudit
+parameter_list|()
+block|{
+return|return
+name|audit
+return|;
+block|}
 specifier|protected
 specifier|synchronized
 name|boolean

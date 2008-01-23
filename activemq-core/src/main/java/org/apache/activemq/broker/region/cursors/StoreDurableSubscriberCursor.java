@@ -407,6 +407,14 @@ control|)
 block|{
 name|tsp
 operator|.
+name|setMessageAudit
+argument_list|(
+name|getMessageAudit
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|tsp
+operator|.
 name|start
 argument_list|()
 expr_stmt|;

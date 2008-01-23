@@ -47,6 +47,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|ActiveMQMessageAudit
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|Service
 import|;
 end_import
@@ -94,6 +106,20 @@ operator|.
 name|region
 operator|.
 name|MessageReference
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|MessageId
 import|;
 end_import
 
@@ -368,6 +394,21 @@ parameter_list|(
 name|MessageReference
 name|message
 parameter_list|)
+function_decl|;
+comment|/**      * set the audit      * @param audit      */
+specifier|public
+name|void
+name|setMessageAudit
+parameter_list|(
+name|ActiveMQMessageAudit
+name|audit
+parameter_list|)
+function_decl|;
+comment|/**      * @return the audit - could be null      */
+specifier|public
+name|ActiveMQMessageAudit
+name|getMessageAudit
+parameter_list|()
 function_decl|;
 block|}
 end_interface
