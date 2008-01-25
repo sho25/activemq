@@ -427,7 +427,7 @@ specifier|protected
 name|boolean
 name|optimizedDispatch
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|private
 name|int
