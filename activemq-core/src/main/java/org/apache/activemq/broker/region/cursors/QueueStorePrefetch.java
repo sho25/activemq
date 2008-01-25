@@ -458,6 +458,8 @@ literal|0
 operator|&&
 name|isStarted
 argument_list|()
+operator|&&
+name|cacheEnabled
 condition|)
 block|{
 name|cacheEnabled
