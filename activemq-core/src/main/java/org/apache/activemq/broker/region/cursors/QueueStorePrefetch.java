@@ -233,7 +233,13 @@ specifier|private
 name|boolean
 name|cacheEnabled
 decl_stmt|;
-comment|/**      * @param topic      * @param clientId      * @param subscriberName      * @throws IOException      */
+specifier|private
+name|boolean
+name|useCache
+init|=
+literal|false
+decl_stmt|;
+comment|/**      * Construct it      * @param queue      */
 specifier|public
 name|QueueStorePrefetch
 parameter_list|(
@@ -289,6 +295,8 @@ operator|.
 name|size
 operator|==
 literal|0
+operator|&&
+name|useCache
 condition|)
 block|{
 name|cacheEnabled
