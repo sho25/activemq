@@ -574,7 +574,7 @@ specifier|private
 name|int
 name|backupPoolSize
 init|=
-literal|2
+literal|1
 decl_stmt|;
 specifier|private
 specifier|final
