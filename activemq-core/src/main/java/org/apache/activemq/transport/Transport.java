@@ -162,7 +162,7 @@ name|String
 name|getRemoteAddress
 parameter_list|()
 function_decl|;
-comment|/**      * Indicates if the transport can handle faults      *       * @return tru if fault tolerant      */
+comment|/**      * Indicates if the transport can handle faults      *       * @return true if fault tolerant      */
 name|boolean
 name|isFaultTolerant
 parameter_list|()
