@@ -1392,6 +1392,33 @@ return|return
 literal|false
 return|;
 block|}
+specifier|public
+name|boolean
+name|isDisposed
+parameter_list|()
+block|{
+return|return
+name|disposed
+return|;
+block|}
+specifier|public
+name|void
+name|reconnect
+parameter_list|(
+name|URI
+name|uri
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Not supported"
+argument_list|)
+throw|;
+block|}
 block|}
 end_class
 

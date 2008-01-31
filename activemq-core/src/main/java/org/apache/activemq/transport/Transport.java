@@ -27,6 +27,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URI
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -166,6 +176,21 @@ comment|/**      * Indicates if the transport can handle faults      *       * @
 name|boolean
 name|isFaultTolerant
 parameter_list|()
+function_decl|;
+comment|/**      * @return true if the transport is disposed      */
+name|boolean
+name|isDisposed
+parameter_list|()
+function_decl|;
+comment|/**      * reconnect to another location      * @param uri      * @throws IOException on failure of if not supported      */
+name|void
+name|reconnect
+parameter_list|(
+name|URI
+name|uri
+parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 block|}
 end_interface
