@@ -403,7 +403,7 @@ return|;
 block|}
 specifier|public
 name|void
-name|testMessagesWaitingForUssageDecreaseExpire
+name|XtestMessagesWaitingForUssageDecreaseExpire
 parameter_list|()
 throws|throws
 name|Exception
