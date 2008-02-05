@@ -414,6 +414,8 @@ name|broker
 operator|=
 name|broker
 expr_stmt|;
+comment|//the store can be null if the BrokerService has persistence
+comment|//turned off
 name|this
 operator|.
 name|store
@@ -932,6 +934,12 @@ if|if
 condition|(
 name|hasSpace
 argument_list|()
+operator|||
+name|this
+operator|.
+name|store
+operator|==
+literal|null
 condition|)
 block|{
 name|memoryList

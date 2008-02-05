@@ -1243,11 +1243,6 @@ condition|)
 block|{
 return|return;
 block|}
-name|node
-operator|.
-name|incrementReferenceCount
-argument_list|()
-expr_stmt|;
 name|super
 operator|.
 name|add

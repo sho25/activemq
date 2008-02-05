@@ -410,6 +410,21 @@ name|ActiveMQMessageAudit
 name|getMessageAudit
 parameter_list|()
 function_decl|;
+comment|/**      * use a cache to improve performance      * @param useCache      */
+specifier|public
+name|void
+name|setUseCache
+parameter_list|(
+name|boolean
+name|useCache
+parameter_list|)
+function_decl|;
+comment|/**      * @return true if a cache is being used      */
+specifier|public
+name|boolean
+name|isUseCache
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

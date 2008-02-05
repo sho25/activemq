@@ -352,11 +352,6 @@ name|int
 name|newPrefetch
 parameter_list|)
 function_decl|;
-comment|/**      * optimize message consumer prefetch if the consumer supports it      *      */
-name|void
-name|optimizePrefetch
-parameter_list|()
-function_decl|;
 comment|/**      * Called when the subscription is destroyed.      */
 name|void
 name|destroy
