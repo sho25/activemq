@@ -182,6 +182,11 @@ name|boolean
 name|isDisposed
 parameter_list|()
 function_decl|;
+comment|/**      * @return true if the transport is connected      */
+name|boolean
+name|isConnected
+parameter_list|()
+function_decl|;
 comment|/**      * reconnect to another location      * @param uri      * @throws IOException on failure of if not supported      */
 name|void
 name|reconnect

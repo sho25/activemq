@@ -369,6 +369,16 @@ name|isStopped
 argument_list|()
 return|;
 block|}
+specifier|public
+name|boolean
+name|isConnected
+parameter_list|()
+block|{
+return|return
+name|isStarted
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
