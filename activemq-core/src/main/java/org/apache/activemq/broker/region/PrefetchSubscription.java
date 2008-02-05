@@ -735,10 +735,10 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
+block|}
 name|dispatchPending
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 specifier|public
 name|void
