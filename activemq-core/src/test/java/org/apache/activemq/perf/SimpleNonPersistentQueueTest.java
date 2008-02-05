@@ -108,6 +108,13 @@ operator|.
 name|NON_PERSISTENT
 argument_list|)
 expr_stmt|;
+name|pp
+operator|.
+name|setTimeToLive
+argument_list|(
+literal|100
+argument_list|)
+expr_stmt|;
 return|return
 name|pp
 return|;

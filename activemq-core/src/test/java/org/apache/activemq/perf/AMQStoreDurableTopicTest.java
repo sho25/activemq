@@ -146,11 +146,11 @@ name|Exception
 block|{
 name|numberofProducers
 operator|=
-literal|2
+literal|1
 expr_stmt|;
 name|numberOfConsumers
 operator|=
-literal|10
+literal|1
 expr_stmt|;
 name|this
 operator|.
