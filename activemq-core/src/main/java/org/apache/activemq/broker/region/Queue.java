@@ -659,13 +659,6 @@ implements|implements
 name|Task
 block|{
 specifier|private
-specifier|static
-name|int
-name|MAXIMUM_PAGE_SIZE
-init|=
-literal|1000
-decl_stmt|;
-specifier|private
 specifier|final
 name|Log
 name|log
@@ -4806,7 +4799,8 @@ specifier|final
 name|int
 name|toPageIn
 init|=
-name|MAXIMUM_PAGE_SIZE
+name|getMaxPageSize
+argument_list|()
 operator|-
 name|pagedInMessages
 operator|.
