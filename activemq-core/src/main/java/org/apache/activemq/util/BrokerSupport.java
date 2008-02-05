@@ -99,6 +99,10 @@ name|ProducerState
 import|;
 end_import
 
+begin_comment
+comment|/**  * Utility class for re-sending messages  *  */
+end_comment
+
 begin_class
 specifier|public
 specifier|final
@@ -109,7 +113,7 @@ specifier|private
 name|BrokerSupport
 parameter_list|()
 block|{             }
-comment|/**      * @param context      * @param message      * @param deadLetterDestination      * @throws Exception      */
+comment|/**      * @param context      * @param originalMessage       * @param deadLetterDestination      * @throws Exception      */
 specifier|public
 specifier|static
 name|void
@@ -120,7 +124,7 @@ name|ConnectionContext
 name|context
 parameter_list|,
 name|Message
-name|message
+name|originalMessage
 parameter_list|,
 name|ActiveMQDestination
 name|deadLetterDestination
@@ -128,16 +132,14 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
+name|Message
 name|message
+init|=
+name|originalMessage
 operator|.
-name|getOriginalDestination
+name|copy
 argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
+decl_stmt|;
 name|message
 operator|.
 name|setOriginalDestination
@@ -148,17 +150,6 @@ name|getDestination
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-if|if
-condition|(
-name|message
-operator|.
-name|getOriginalTransactionId
-argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
 name|message
 operator|.
 name|setOriginalTransactionId
@@ -169,7 +160,6 @@ name|getTransactionId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|message
 operator|.
 name|setDestination
