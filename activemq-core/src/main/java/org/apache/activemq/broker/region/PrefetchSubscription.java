@@ -2065,6 +2065,21 @@ break|break;
 block|}
 if|if
 condition|(
+name|isDropped
+argument_list|(
+name|node
+argument_list|)
+condition|)
+block|{
+name|pending
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
 name|canDispatch
 argument_list|(
 name|node
@@ -2572,6 +2587,15 @@ name|node
 parameter_list|)
 throws|throws
 name|IOException
+function_decl|;
+specifier|protected
+specifier|abstract
+name|boolean
+name|isDropped
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|)
 function_decl|;
 comment|/**      * Used during acknowledgment to remove the message.      *       * @throws IOException      */
 specifier|protected

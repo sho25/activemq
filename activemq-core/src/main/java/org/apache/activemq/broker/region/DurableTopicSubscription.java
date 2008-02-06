@@ -1587,6 +1587,18 @@ expr_stmt|;
 block|}
 block|}
 block|}
+specifier|protected
+name|boolean
+name|isDropped
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_class
 

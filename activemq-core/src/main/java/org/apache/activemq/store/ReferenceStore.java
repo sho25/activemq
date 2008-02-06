@@ -27,6 +27,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|locks
+operator|.
+name|Lock
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -208,6 +222,10 @@ parameter_list|(
 name|MessageId
 name|startAfter
 parameter_list|)
+function_decl|;
+name|Lock
+name|getStoreLock
+parameter_list|()
 function_decl|;
 block|}
 end_interface

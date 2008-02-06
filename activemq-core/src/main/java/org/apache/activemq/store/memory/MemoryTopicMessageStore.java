@@ -847,6 +847,8 @@ block|{
 name|MemoryTopicSub
 name|sub
 init|=
+name|this
+operator|.
 name|topicSubMap
 operator|.
 name|get

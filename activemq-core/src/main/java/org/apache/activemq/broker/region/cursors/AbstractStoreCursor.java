@@ -233,6 +233,14 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|protected
+specifier|static
+specifier|final
+name|int
+name|MAX_FILL_ATTEMPTS
+init|=
+literal|3
+decl_stmt|;
+specifier|protected
 specifier|final
 name|Destination
 name|regionDestination
@@ -894,8 +902,19 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
+comment|//we may have to move the store cursor past messages that have
+comment|//already been delivered - but we also don't want it to spin
+name|int
+name|fillAttempts
+init|=
+literal|0
+decl_stmt|;
 while|while
 condition|(
+name|fillAttempts
+operator|<
+name|MAX_FILL_ATTEMPTS
+operator|&&
 name|this
 operator|.
 name|batchList
@@ -908,6 +927,8 @@ name|this
 operator|.
 name|storeHasMessages
 operator|||
+name|this
+operator|.
 name|size
 operator|>
 literal|0
@@ -967,6 +988,9 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+name|fillAttempts
+operator|++
+expr_stmt|;
 block|}
 block|}
 specifier|public

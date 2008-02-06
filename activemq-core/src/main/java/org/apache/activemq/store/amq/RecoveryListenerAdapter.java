@@ -256,17 +256,9 @@ return|;
 block|}
 else|else
 block|{
-if|if
-condition|(
 name|LOG
 operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|debug
+name|error
 argument_list|(
 literal|"Message id "
 operator|+
@@ -275,7 +267,6 @@ operator|+
 literal|" could not be recovered from the data store - already dispatched"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 literal|false
