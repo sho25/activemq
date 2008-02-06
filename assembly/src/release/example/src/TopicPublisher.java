@@ -213,7 +213,7 @@ specifier|private
 name|int
 name|batch
 init|=
-literal|40
+literal|2000
 decl_stmt|;
 specifier|private
 name|byte
