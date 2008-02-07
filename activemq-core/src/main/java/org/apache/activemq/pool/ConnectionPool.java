@@ -334,6 +334,23 @@ block|{             }
 block|}
 argument_list|)
 expr_stmt|;
+comment|//
+comment|// make sure that we set the hasFailed flag, in case the transport already failed
+comment|// prior to the addition of our new TransportListener
+comment|//
+if|if
+condition|(
+name|connection
+operator|.
+name|isTransportFailed
+argument_list|()
+condition|)
+block|{
+name|hasFailed
+operator|=
+literal|true
+expr_stmt|;
+block|}
 block|}
 specifier|public
 name|ConnectionPool
