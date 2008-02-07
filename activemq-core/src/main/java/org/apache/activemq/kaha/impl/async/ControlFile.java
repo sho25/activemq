@@ -63,6 +63,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|channels
+operator|.
+name|OverlappingFileLockException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -72,6 +84,20 @@ operator|.
 name|util
 operator|.
 name|ByteSequence
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IOExceptionSupport
 import|;
 end_import
 
@@ -247,6 +273,8 @@ operator|==
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|lock
 operator|=
 name|randomAccessFile
@@ -257,6 +285,28 @@ operator|.
 name|tryLock
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|OverlappingFileLockException
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|IOExceptionSupport
+operator|.
+name|create
+argument_list|(
+literal|"Control file '"
+operator|+
+name|file
+operator|+
+literal|"' could not be locked."
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|lock
