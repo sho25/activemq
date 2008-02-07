@@ -4405,22 +4405,9 @@ name|run
 argument_list|()
 expr_stmt|;
 block|}
-synchronized|synchronized
-init|(
-name|messages
-init|)
-block|{
-name|result
-operator|=
-operator|!
-name|messages
-operator|.
-name|isEmpty
-argument_list|()
-expr_stmt|;
-block|}
+comment|//must return false  to prevent spinning
 return|return
-name|result
+literal|false
 return|;
 block|}
 specifier|protected
