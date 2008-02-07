@@ -152,7 +152,7 @@ specifier|protected
 name|int
 name|maxAuditDepth
 init|=
-literal|1
+literal|1000
 decl_stmt|;
 specifier|protected
 name|boolean
@@ -168,7 +168,7 @@ specifier|protected
 name|boolean
 name|useCache
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|private
 name|boolean

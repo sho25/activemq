@@ -565,10 +565,9 @@ block|{
 name|boolean
 name|result
 init|=
-name|pendingCount
-operator|>
-literal|0
+literal|true
 decl_stmt|;
+comment|//pendingCount> 0;
 if|if
 condition|(
 name|result

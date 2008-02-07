@@ -981,6 +981,14 @@ name|getMaxProducersToAudit
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|messages
+operator|.
+name|setUseCache
+argument_list|(
+name|isUseCache
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|messages

@@ -619,7 +619,8 @@ condition|)
 block|{
 name|size
 operator|=
-name|AVERAGE_MESSAGE_SIZE_OVERHEAD
+name|getMinimumMessageSize
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
