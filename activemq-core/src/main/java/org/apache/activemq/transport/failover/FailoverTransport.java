@@ -1421,7 +1421,6 @@ operator|=
 name|backupPoolSize
 expr_stmt|;
 block|}
-comment|/* * BEGIN Patch segment for issue AMQ-1116 */
 comment|/**      * @return Returns true if the command is one sent when a connection      * is being closed.      */
 specifier|private
 name|boolean
@@ -1450,7 +1449,6 @@ operator|)
 operator|)
 return|;
 block|}
-comment|/* * END Patch segment */
 specifier|public
 name|void
 name|oneway
