@@ -2038,6 +2038,10 @@ condition|(
 name|size
 operator|<
 name|minimumMessageSize
+operator|||
+name|size
+operator|==
+literal|0
 condition|)
 block|{
 name|size
