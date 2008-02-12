@@ -61,13 +61,6 @@ literal|1
 decl_stmt|;
 specifier|private
 name|long
-name|lastBitSet
-init|=
-operator|-
-literal|1
-decl_stmt|;
-specifier|private
-name|long
 name|lastInOrderBit
 init|=
 operator|-
@@ -204,20 +197,9 @@ if|if
 condition|(
 name|value
 condition|)
-block|{
-name|lastBitSet
-operator|=
-name|index
-expr_stmt|;
-block|}
+block|{             }
 else|else
-block|{
-name|lastBitSet
-operator|=
-operator|-
-literal|1
-expr_stmt|;
-block|}
+block|{             }
 block|}
 return|return
 name|answer
