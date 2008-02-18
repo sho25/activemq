@@ -125,7 +125,7 @@ name|IOExceptionSupport
 operator|.
 name|create
 argument_list|(
-literal|"Could load "
+literal|"Could not load "
 operator|+
 name|type
 operator|+
