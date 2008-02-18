@@ -1067,6 +1067,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|int
 name|size
 parameter_list|()
