@@ -258,6 +258,14 @@ specifier|public
 name|boolean
 name|durableConsumer
 decl_stmt|;
+specifier|protected
+specifier|static
+specifier|final
+name|int
+name|MAX_NULL_WAIT
+init|=
+literal|500
+decl_stmt|;
 specifier|public
 name|void
 name|initCombosForTestQueueOnlyOnceDeliveryWith2Consumers
@@ -377,7 +385,7 @@ argument_list|)
 expr_stmt|;
 name|connection1
 operator|.
-name|send
+name|request
 argument_list|(
 name|consumerInfo1
 argument_list|)
@@ -436,7 +444,7 @@ argument_list|)
 expr_stmt|;
 name|connection2
 operator|.
-name|send
+name|request
 argument_list|(
 name|consumerInfo2
 argument_list|)
@@ -486,7 +494,7 @@ argument_list|)
 expr_stmt|;
 name|connection1
 operator|.
-name|send
+name|request
 argument_list|(
 name|createMessage
 argument_list|(
@@ -775,9 +783,11 @@ name|deliveryMode
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//as the messages are sent async - need to synchronize the last
+comment|//one to ensure they arrive in the order we want
 name|connection1
 operator|.
-name|send
+name|request
 argument_list|(
 name|createMessage
 argument_list|(
@@ -1188,7 +1198,7 @@ argument_list|)
 expr_stmt|;
 name|connection
 operator|.
-name|send
+name|request
 argument_list|(
 name|createMessage
 argument_list|(
@@ -1520,6 +1530,22 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Now get the messages.
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+literal|4
+condition|;
+name|i
+operator|++
+control|)
+block|{
 comment|// Begin the transaction.
 name|LocalTransactionId
 name|txid
@@ -1541,22 +1567,6 @@ name|txid
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Now get the messages.
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|4
-condition|;
-name|i
-operator|++
-control|)
-block|{
 name|Message
 name|m1
 init|=
@@ -1600,7 +1610,6 @@ argument_list|(
 name|ack
 argument_list|)
 expr_stmt|;
-block|}
 comment|// Commit the transaction.
 name|connection1
 operator|.
@@ -1614,6 +1623,7 @@ name|txid
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|assertNoMessagesLeft
 argument_list|(
 name|connection1
@@ -1850,7 +1860,7 @@ argument_list|)
 expr_stmt|;
 name|connection1
 operator|.
-name|send
+name|request
 argument_list|(
 name|message
 argument_list|)
@@ -1863,6 +1873,8 @@ argument_list|(
 name|receiveMessage
 argument_list|(
 name|connection1
+argument_list|,
+name|MAX_NULL_WAIT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2689,7 +2701,7 @@ argument_list|)
 expr_stmt|;
 name|connection1
 operator|.
-name|send
+name|request
 argument_list|(
 name|createMessage
 argument_list|(
@@ -3176,7 +3188,7 @@ block|}
 comment|// Close the first consumer.
 name|connection1
 operator|.
-name|send
+name|request
 argument_list|(
 name|closeConsumerInfo
 argument_list|(
@@ -3219,7 +3231,7 @@ argument_list|)
 expr_stmt|;
 name|connection2
 operator|.
-name|send
+name|request
 argument_list|(
 name|createAck
 argument_list|(
@@ -3704,7 +3716,7 @@ argument_list|)
 expr_stmt|;
 name|connection1
 operator|.
-name|send
+name|request
 argument_list|(
 name|createMessage
 argument_list|(
@@ -4699,7 +4711,7 @@ argument_list|)
 decl_stmt|;
 name|connection1
 operator|.
-name|send
+name|request
 argument_list|(
 name|createMessage
 argument_list|(
@@ -5179,7 +5191,7 @@ argument_list|)
 expr_stmt|;
 name|connection1
 operator|.
-name|send
+name|request
 argument_list|(
 name|consumerInfo1
 argument_list|)
@@ -5257,7 +5269,7 @@ argument_list|)
 expr_stmt|;
 name|connection2
 operator|.
-name|send
+name|request
 argument_list|(
 name|consumerInfo2
 argument_list|)
@@ -5292,7 +5304,7 @@ control|)
 block|{
 name|connection1
 operator|.
-name|send
+name|request
 argument_list|(
 name|createMessage
 argument_list|(
@@ -5383,7 +5395,7 @@ argument_list|)
 expr_stmt|;
 name|connection1
 operator|.
-name|send
+name|request
 argument_list|(
 name|createAck
 argument_list|(
@@ -5401,7 +5413,7 @@ argument_list|)
 expr_stmt|;
 name|connection2
 operator|.
-name|send
+name|request
 argument_list|(
 name|createAck
 argument_list|(
@@ -5761,7 +5773,7 @@ expr_stmt|;
 comment|// Send another message, connection1 should not get the message.
 name|connection2
 operator|.
-name|send
+name|request
 argument_list|(
 name|createMessage
 argument_list|(
@@ -5782,7 +5794,7 @@ argument_list|()
 operator|.
 name|poll
 argument_list|(
-name|maxWait
+name|MAX_NULL_WAIT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -6103,7 +6115,7 @@ expr_stmt|;
 comment|// Send another message, connection1 should not get the message.
 name|connection2
 operator|.
-name|send
+name|request
 argument_list|(
 name|createMessage
 argument_list|(
@@ -6124,7 +6136,7 @@ argument_list|()
 operator|.
 name|poll
 argument_list|(
-name|maxWait
+name|MAX_NULL_WAIT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -6445,7 +6457,7 @@ expr_stmt|;
 comment|// Send another message, connection1 should not get the message.
 name|connection2
 operator|.
-name|send
+name|request
 argument_list|(
 name|createMessage
 argument_list|(
@@ -6466,7 +6478,7 @@ argument_list|()
 operator|.
 name|poll
 argument_list|(
-name|maxWait
+name|MAX_NULL_WAIT
 argument_list|,
 name|TimeUnit
 operator|.
@@ -9330,7 +9342,7 @@ argument_list|)
 expr_stmt|;
 name|connection
 operator|.
-name|send
+name|request
 argument_list|(
 name|consumerInfo
 argument_list|)
@@ -9366,7 +9378,7 @@ argument_list|)
 expr_stmt|;
 name|connection
 operator|.
-name|send
+name|request
 argument_list|(
 name|createMessage
 argument_list|(
@@ -9401,7 +9413,7 @@ comment|// Acknowledge the first message. This should cause the next message to
 comment|// get dispatched.
 name|connection
 operator|.
-name|send
+name|request
 argument_list|(
 name|createAck
 argument_list|(
@@ -9432,7 +9444,7 @@ argument_list|)
 expr_stmt|;
 name|connection
 operator|.
-name|send
+name|request
 argument_list|(
 name|createAck
 argument_list|(
@@ -9463,7 +9475,7 @@ argument_list|)
 expr_stmt|;
 name|connection
 operator|.
-name|send
+name|request
 argument_list|(
 name|createAck
 argument_list|(
