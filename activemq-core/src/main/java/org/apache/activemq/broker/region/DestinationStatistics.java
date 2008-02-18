@@ -113,6 +113,10 @@ name|CountStatisticImpl
 name|dispatched
 decl_stmt|;
 specifier|protected
+name|CountStatisticImpl
+name|inflight
+decl_stmt|;
+specifier|protected
 name|TimeStatisticImpl
 name|processTime
 decl_stmt|;

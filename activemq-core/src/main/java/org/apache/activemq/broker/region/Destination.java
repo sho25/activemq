@@ -169,20 +169,6 @@ name|MemoryUsage
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|usage
-operator|.
-name|SystemUsage
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version $Revision: 1.12 $  */
 end_comment
@@ -253,16 +239,6 @@ name|messageSend
 parameter_list|)
 throws|throws
 name|Exception
-function_decl|;
-name|boolean
-name|lock
-parameter_list|(
-name|MessageReference
-name|node
-parameter_list|,
-name|LockOwner
-name|lockOwner
-parameter_list|)
 function_decl|;
 name|void
 name|acknowledge

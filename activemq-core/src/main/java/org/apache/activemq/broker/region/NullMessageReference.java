@@ -147,13 +147,9 @@ name|boolean
 name|isDropped
 parameter_list|()
 block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"not implemented"
-argument_list|)
-throw|;
+return|return
+literal|false
+return|;
 block|}
 specifier|public
 name|boolean
@@ -184,10 +180,14 @@ argument_list|)
 throw|;
 block|}
 specifier|public
-name|void
+name|boolean
 name|unlock
 parameter_list|()
-block|{     }
+block|{
+return|return
+literal|true
+return|;
+block|}
 specifier|public
 name|int
 name|decrementReferenceCount

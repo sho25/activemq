@@ -552,7 +552,7 @@ return|return
 name|active
 return|;
 block|}
-specifier|protected
+specifier|public
 name|boolean
 name|isFull
 parameter_list|()

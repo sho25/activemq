@@ -29,6 +29,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -170,7 +180,7 @@ name|Subscription
 extends|extends
 name|SubscriptionRecovery
 block|{
-comment|/**      * Used to add messages that match the subscription.      * @param node      * @throws InterruptedException       * @throws IOException       */
+comment|/**      * Used to add messages that match the subscription.      * @param node      * @throws Exception       * @throws InterruptedException       * @throws IOException       */
 name|void
 name|add
 parameter_list|(
@@ -344,6 +354,11 @@ name|boolean
 name|isHighWaterMark
 parameter_list|()
 function_decl|;
+comment|/**      * @return true if there is no space to dispatch messages      */
+name|boolean
+name|isFull
+parameter_list|()
+function_decl|;
 comment|/**      * inform the MessageConsumer on the client to change it's prefetch      * @param newPrefetch      */
 name|void
 name|updateConsumerPrefetch
@@ -362,9 +377,32 @@ name|int
 name|getPrefetchSize
 parameter_list|()
 function_decl|;
+comment|/**      * @return the number of messages awaiting acknowledgement      */
+name|int
+name|getInFlightSize
+parameter_list|()
+function_decl|;
+comment|/**      * @return the in flight messages as a percentage of the prefetch size      */
+name|int
+name|getInFlightUsage
+parameter_list|()
+function_decl|;
 comment|/**      * Informs the Broker if the subscription needs to intervention to recover it's state      * e.g. DurableTopicSubscriber may do      * @see org.apache.activemq.region.cursors.PendingMessageCursor      * @return true if recovery required      */
 name|boolean
 name|isRecoveryRequired
+parameter_list|()
+function_decl|;
+comment|/**      * @return true if a browser      */
+name|boolean
+name|isBrowser
+parameter_list|()
+function_decl|;
+comment|/**      * Get the list of in flight messages      * @return list      */
+name|List
+argument_list|<
+name|MessageReference
+argument_list|>
+name|getInFlightMessages
 parameter_list|()
 function_decl|;
 block|}
