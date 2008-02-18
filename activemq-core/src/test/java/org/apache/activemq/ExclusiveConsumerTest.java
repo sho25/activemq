@@ -1150,7 +1150,7 @@ name|exclusiveConsumer2
 operator|.
 name|receive
 argument_list|(
-literal|100
+literal|1000
 argument_list|)
 argument_list|)
 expr_stmt|;
