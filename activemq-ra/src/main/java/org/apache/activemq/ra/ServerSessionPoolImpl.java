@@ -1002,13 +1002,11 @@ operator|>
 literal|0
 condition|)
 block|{
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
-literal|"ACtive Sessions = "
+literal|"Active Sessions = "
 operator|+
 name|activeSessions
 operator|.
