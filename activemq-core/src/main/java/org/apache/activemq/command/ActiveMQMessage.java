@@ -228,7 +228,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @openwire:marshaller code="23"  * @version $Revision:$  */
+comment|/**  * @version $Revision:$  * @openwire:marshaller code="23"  */
 end_comment
 
 begin_class
@@ -544,7 +544,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Seems to be invalid because the parameter doesn't initialize MessageId      * instance variables ProducerId and ProducerSequenceId      *       * @param value      * @throws JMSException      */
+comment|/**      * Seems to be invalid because the parameter doesn't initialize MessageId      * instance variables ProducerId and ProducerSequenceId      *      * @param value      * @throws JMSException      */
 specifier|public
 name|void
 name|setJMSMessageID
@@ -624,7 +624,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This will create an object of MessageId. For it to be valid, the instance      * variable ProducerId and producerSequenceId must be initialized.      *       * @param producerId      * @param producerSequenceId      * @throws JMSException      */
+comment|/**      * This will create an object of MessageId. For it to be valid, the instance      * variable ProducerId and producerSequenceId must be initialized.      *      * @param producerId      * @param producerSequenceId      * @throws JMSException      */
 specifier|public
 name|void
 name|setJMSMessageID
@@ -2151,6 +2151,10 @@ decl_stmt|;
 if|if
 condition|(
 name|setter
+operator|!=
+literal|null
+operator|&&
+name|value
 operator|!=
 literal|null
 condition|)

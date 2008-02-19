@@ -861,7 +861,7 @@ name|activeMessage
 return|;
 block|}
 block|}
-comment|/**      * Copies the standard JMS and user defined properties from the givem      * message to the specified message      *       * @param fromMessage the message to take the properties from      * @param toMesage the message to add the properties to      * @throws JMSException      */
+comment|/**      * Copies the standard JMS and user defined properties from the givem      * message to the specified message      *       * @param fromMessage the message to take the properties from      * @param toMessage the message to add the properties to      * @throws JMSException      */
 specifier|public
 specifier|static
 name|void
@@ -871,12 +871,12 @@ name|Message
 name|fromMessage
 parameter_list|,
 name|Message
-name|toMesage
+name|toMessage
 parameter_list|)
 throws|throws
 name|JMSException
 block|{
-name|toMesage
+name|toMessage
 operator|.
 name|setJMSMessageID
 argument_list|(
@@ -886,7 +886,7 @@ name|getJMSMessageID
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|toMesage
+name|toMessage
 operator|.
 name|setJMSCorrelationID
 argument_list|(
@@ -896,7 +896,7 @@ name|getJMSCorrelationID
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|toMesage
+name|toMessage
 operator|.
 name|setJMSReplyTo
 argument_list|(
@@ -909,7 +909,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|toMesage
+name|toMessage
 operator|.
 name|setJMSDestination
 argument_list|(
@@ -922,7 +922,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|toMesage
+name|toMessage
 operator|.
 name|setJMSDeliveryMode
 argument_list|(
@@ -932,7 +932,7 @@ name|getJMSDeliveryMode
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|toMesage
+name|toMessage
 operator|.
 name|setJMSRedelivered
 argument_list|(
@@ -942,7 +942,7 @@ name|getJMSRedelivered
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|toMesage
+name|toMessage
 operator|.
 name|setJMSType
 argument_list|(
@@ -952,7 +952,7 @@ name|getJMSType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|toMesage
+name|toMessage
 operator|.
 name|setJMSExpiration
 argument_list|(
@@ -962,7 +962,7 @@ name|getJMSExpiration
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|toMesage
+name|toMessage
 operator|.
 name|setJMSPriority
 argument_list|(
@@ -972,7 +972,7 @@ name|getJMSPriority
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|toMesage
+name|toMessage
 operator|.
 name|setJMSTimestamp
 argument_list|(
@@ -1019,7 +1019,7 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-name|toMesage
+name|toMessage
 operator|.
 name|setObjectProperty
 argument_list|(
