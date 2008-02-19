@@ -5066,12 +5066,16 @@ block|}
 block|}
 if|if
 condition|(
+name|target
+operator|==
+literal|null
+operator|&&
 name|targets
 operator|!=
 literal|null
 condition|)
 block|{
-comment|// pick the least loaded to add the messag too
+comment|// pick the least loaded to add the message too
 for|for
 control|(
 name|Subscription
