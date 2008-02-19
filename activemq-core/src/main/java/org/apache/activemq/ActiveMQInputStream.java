@@ -961,6 +961,12 @@ expr_stmt|;
 if|if
 condition|(
 name|eosReached
+operator|||
+name|buffer
+operator|.
+name|length
+operator|==
+literal|0
 condition|)
 block|{
 return|return
@@ -1001,6 +1007,12 @@ expr_stmt|;
 if|if
 condition|(
 name|eosReached
+operator|||
+name|buffer
+operator|.
+name|length
+operator|==
+literal|0
 condition|)
 block|{
 return|return

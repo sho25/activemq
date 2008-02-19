@@ -609,6 +609,13 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+name|count
+operator|!=
+literal|0
+condition|)
+block|{
 try|try
 block|{
 name|ActiveMQBytesMessage
@@ -656,6 +663,7 @@ name|count
 operator|=
 literal|0
 expr_stmt|;
+block|}
 block|}
 comment|/**      * @param msg      * @throws JMSException      */
 specifier|private
