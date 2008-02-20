@@ -761,6 +761,23 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{     }
+specifier|public
+name|long
+name|getMaxDataFileLength
+parameter_list|()
+block|{
+return|return
+literal|0
+return|;
+block|}
+specifier|public
+name|void
+name|setMaxDataFileLength
+parameter_list|(
+name|long
+name|maxDataFileLength
+parameter_list|)
+block|{             }
 block|}
 end_class
 
