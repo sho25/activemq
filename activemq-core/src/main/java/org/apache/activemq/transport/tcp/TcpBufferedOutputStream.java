@@ -207,6 +207,13 @@ name|IOException
 block|{
 if|if
 condition|(
+name|b
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
 operator|(
 name|bufferlen
 operator|-
@@ -262,6 +269,7 @@ argument_list|,
 name|len
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * flush the data to the output stream This doesn't call flush on the      * underlying outputstream, because Tcp is particularly efficent at doing      * this itself ....      *       * @throws IOException      */
