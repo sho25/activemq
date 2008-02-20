@@ -2171,7 +2171,7 @@ literal|0
 return|;
 block|}
 specifier|public
-name|int
+name|long
 name|getLockKeepAlivePeriod
 parameter_list|()
 block|{
@@ -2183,7 +2183,7 @@ specifier|public
 name|void
 name|setLockKeepAlivePeriod
 parameter_list|(
-name|int
+name|long
 name|lockKeepAlivePeriod
 parameter_list|)
 block|{
