@@ -286,6 +286,14 @@ name|SchedulerTimerTask
 name|readCheckerTask
 decl_stmt|;
 specifier|private
+name|long
+name|readCheckTime
+decl_stmt|;
+specifier|private
+name|long
+name|writeCheckTime
+decl_stmt|;
+specifier|private
 specifier|final
 name|Runnable
 name|readChecker
@@ -310,6 +318,15 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
+name|long
+name|elapsed
+init|=
+operator|(
+name|now
+operator|-
+name|lastRunTime
+operator|)
+decl_stmt|;
 if|if
 condition|(
 name|lastRunTime
@@ -328,15 +345,37 @@ name|debug
 argument_list|(
 literal|""
 operator|+
-operator|(
-name|now
-operator|-
-name|lastRunTime
-operator|)
+name|elapsed
 operator|+
 literal|" ms elapsed since last read check."
 argument_list|)
 expr_stmt|;
+block|}
+comment|// Perhaps the timer executed a read check late.. and then executes
+comment|// the next read check on time which causes the time elapsed between
+comment|// read checks to be small..
+comment|// If less than 90% of the read check Time elapsed then abort this readcheck.
+if|if
+condition|(
+name|elapsed
+operator|<
+operator|(
+name|readCheckTime
+operator|*
+literal|9
+operator|/
+literal|10
+operator|)
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Aborting read check.. Not enough time elapsed since last read check."
+argument_list|)
+expr_stmt|;
+return|return;
 block|}
 name|lastRunTime
 operator|=
@@ -941,9 +980,8 @@ condition|)
 block|{
 return|return;
 block|}
-name|long
-name|checkTime
-init|=
+name|readCheckTime
+operator|=
 name|Math
 operator|.
 name|min
@@ -958,10 +996,10 @@ operator|.
 name|getMaxInactivityDuration
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
-name|checkTime
+name|readCheckTime
 operator|>
 literal|0
 condition|)
@@ -989,13 +1027,12 @@ argument_list|(
 name|readChecker
 argument_list|)
 expr_stmt|;
-name|long
 name|writeCheckTime
-init|=
-name|checkTime
+operator|=
+name|readCheckTime
 operator|/
 literal|3
-decl_stmt|;
+expr_stmt|;
 synchronized|synchronized
 init|(
 name|InactivityMonitor
@@ -1047,9 +1084,9 @@ name|scheduleAtFixedRate
 argument_list|(
 name|readCheckerTask
 argument_list|,
-name|checkTime
+name|readCheckTime
 argument_list|,
-name|checkTime
+name|readCheckTime
 argument_list|)
 expr_stmt|;
 block|}
