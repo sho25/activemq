@@ -326,6 +326,11 @@ name|int
 name|getIndexPageSize
 parameter_list|()
 function_decl|;
+comment|/**      * @return the Index MBean      */
+name|IndexMBean
+name|getIndexMBean
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

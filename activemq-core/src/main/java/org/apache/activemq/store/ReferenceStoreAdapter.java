@@ -190,6 +190,19 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * @return the maxDataFileLength      */
+name|long
+name|getMaxDataFileLength
+parameter_list|()
+function_decl|;
+comment|/**      * set the max data length of a reference data log - if used      * @param maxDataFileLength      */
+name|void
+name|setMaxDataFileLength
+parameter_list|(
+name|long
+name|maxDataFileLength
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

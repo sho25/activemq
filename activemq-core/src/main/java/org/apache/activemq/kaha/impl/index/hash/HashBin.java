@@ -459,7 +459,7 @@ return|return
 name|result
 return|;
 block|}
-name|void
+name|boolean
 name|put
 parameter_list|(
 name|HashEntry
@@ -468,13 +468,13 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-try|try
-block|{
 name|boolean
 name|replace
 init|=
 literal|false
 decl_stmt|;
+try|try
+block|{
 name|int
 name|low
 init|=
@@ -596,6 +596,9 @@ name|end
 argument_list|()
 expr_stmt|;
 block|}
+return|return
+name|replace
+return|;
 block|}
 name|HashEntry
 name|remove

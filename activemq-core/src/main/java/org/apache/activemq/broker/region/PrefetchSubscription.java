@@ -984,6 +984,20 @@ operator|.
 name|increment
 argument_list|()
 expr_stmt|;
+name|node
+operator|.
+name|getRegionDestination
+argument_list|()
+operator|.
+name|getDestinationStatistics
+argument_list|()
+operator|.
+name|getInflight
+argument_list|()
+operator|.
+name|decrement
+argument_list|()
+expr_stmt|;
 name|removeList
 operator|.
 name|add
@@ -2376,6 +2390,20 @@ operator|.
 name|increment
 argument_list|()
 expr_stmt|;
+name|node
+operator|.
+name|getRegionDestination
+argument_list|()
+operator|.
+name|getDestinationStatistics
+argument_list|()
+operator|.
+name|getInflight
+argument_list|()
+operator|.
+name|increment
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 if|if
@@ -2611,6 +2639,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Used during acknowledgment to remove the message.      *       * @throws IOException      */
 specifier|protected
+specifier|abstract
 name|void
 name|acknowledge
 parameter_list|(
@@ -2627,7 +2656,7 @@ name|node
 parameter_list|)
 throws|throws
 name|IOException
-block|{     }
+function_decl|;
 specifier|public
 name|int
 name|getMaxProducersToAudit

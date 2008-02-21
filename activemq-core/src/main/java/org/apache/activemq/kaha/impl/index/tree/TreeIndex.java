@@ -2001,6 +2001,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|int
+name|getSize
+parameter_list|()
+block|{
+return|return
+literal|0
+return|;
+block|}
 block|}
 end_class
 

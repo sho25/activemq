@@ -141,6 +141,11 @@ name|Marshaller
 name|marshaller
 parameter_list|)
 function_decl|;
+comment|/**      * return the size of the index      * @return      */
+name|int
+name|getSize
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

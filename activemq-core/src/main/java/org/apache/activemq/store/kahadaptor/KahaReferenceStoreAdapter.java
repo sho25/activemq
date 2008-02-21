@@ -524,7 +524,7 @@ init|=
 operator|new
 name|Integer
 argument_list|(
-literal|3
+literal|4
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -1126,6 +1126,9 @@ init|=
 name|getMapReferenceContainer
 argument_list|(
 name|destination
+operator|.
+name|getPhysicalName
+argument_list|()
 argument_list|,
 literal|"topic-data"
 argument_list|)
@@ -1137,7 +1140,7 @@ name|getSubsMapContainer
 argument_list|(
 name|destination
 operator|.
-name|toString
+name|getPhysicalName
 argument_list|()
 operator|+
 literal|"-Subscriptions"
@@ -1157,7 +1160,7 @@ name|getListContainer
 argument_list|(
 name|destination
 operator|.
-name|toString
+name|getPhysicalName
 argument_list|()
 argument_list|,
 literal|"topic-acks"

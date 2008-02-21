@@ -656,6 +656,7 @@ literal|true
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|boolean
 name|isEmpty
 parameter_list|(
@@ -801,6 +802,7 @@ block|}
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|addRecoveredMessage
 parameter_list|(
@@ -1248,6 +1250,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|setMaxProducersToAudit
 parameter_list|(
@@ -1295,6 +1298,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|setMaxAuditDepth
 parameter_list|(
@@ -1390,6 +1394,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|setUseCache
 parameter_list|(
@@ -1438,6 +1443,7 @@ block|}
 block|}
 comment|/**      * Mark a message as already dispatched      * @param message      */
 specifier|public
+specifier|synchronized
 name|void
 name|dispatched
 parameter_list|(

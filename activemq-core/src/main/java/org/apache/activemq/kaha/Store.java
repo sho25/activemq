@@ -366,6 +366,21 @@ name|boolean
 name|persistentIndex
 parameter_list|)
 function_decl|;
+comment|/** 	 * @return the default container name 	 */
+specifier|public
+name|String
+name|getDefaultContainerName
+parameter_list|()
+function_decl|;
+comment|/** 	 * set the default container name 	 * @param defaultContainerName 	 */
+specifier|public
+name|void
+name|setDefaultContainerName
+parameter_list|(
+name|String
+name|defaultContainerName
+parameter_list|)
+function_decl|;
 comment|/** 	 * An explict call to initialize - this will also be called 	 * implicitly for any other operation on the store. 	 * @throws IOException 	 */
 specifier|public
 name|void

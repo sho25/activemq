@@ -59,6 +59,20 @@ name|activemq
 operator|.
 name|kaha
 operator|.
+name|IndexMBean
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|kaha
+operator|.
 name|Marshaller
 import|;
 end_import
@@ -74,24 +88,6 @@ operator|.
 name|kaha
 operator|.
 name|StoreEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|kaha
-operator|.
-name|impl
-operator|.
-name|container
-operator|.
-name|MapContainerImpl
 import|;
 end_import
 
@@ -133,6 +129,8 @@ class|class
 name|VMIndex
 implements|implements
 name|Index
+implements|,
+name|IndexMBean
 block|{
 specifier|private
 specifier|static
@@ -411,6 +409,18 @@ name|Marshaller
 name|marshaller
 parameter_list|)
 block|{     }
+specifier|public
+name|int
+name|getSize
+parameter_list|()
+block|{
+return|return
+name|map
+operator|.
+name|size
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

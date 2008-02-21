@@ -493,6 +493,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|SubscriptionInfo
 name|lookupSubscription
 parameter_list|(
@@ -631,6 +632,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|deleteSubscription
 parameter_list|(
@@ -676,6 +678,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|recoverSubscription
 parameter_list|(
@@ -724,6 +727,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|delete
 parameter_list|()
@@ -826,6 +830,7 @@ name|result
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|recoverNextMessages
 parameter_list|(
