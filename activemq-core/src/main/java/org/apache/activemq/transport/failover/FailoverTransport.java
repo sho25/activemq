@@ -185,7 +185,7 @@ name|activemq
 operator|.
 name|command
 operator|.
-name|Response
+name|RemoveInfo
 import|;
 end_import
 
@@ -199,7 +199,7 @@ name|activemq
 operator|.
 name|command
 operator|.
-name|RemoveInfo
+name|Response
 import|;
 end_import
 
@@ -228,20 +228,6 @@ operator|.
 name|state
 operator|.
 name|Tracked
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|thread
-operator|.
-name|DefaultThreadPools
 import|;
 end_import
 
@@ -1093,6 +1079,7 @@ block|}
 block|}
 return|;
 block|}
+specifier|public
 specifier|final
 name|void
 name|handleTransportFailure

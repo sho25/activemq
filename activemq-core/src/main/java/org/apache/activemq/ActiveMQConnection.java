@@ -4768,6 +4768,7 @@ throw|;
 block|}
 block|}
 comment|// Package protected so that it can be used in unit tests
+specifier|public
 name|Transport
 name|getTransport
 parameter_list|()
