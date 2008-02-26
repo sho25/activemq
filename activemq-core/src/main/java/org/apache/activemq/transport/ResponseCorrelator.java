@@ -515,7 +515,11 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Received unexpected response for command id: "
+literal|"Received unexpected response: {"
+operator|+
+name|command
+operator|+
+literal|"}for command id: "
 operator|+
 name|response
 operator|.
