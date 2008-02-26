@@ -1549,6 +1549,25 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|ClassNotFoundException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Probably not using JRE 1.4: "
+operator|+
+name|e
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
 name|Throwable
 name|e
 parameter_list|)
