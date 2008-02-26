@@ -47,6 +47,20 @@ name|activemq
 operator|.
 name|broker
 operator|.
+name|Connection
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
 name|ConnectionContext
 import|;
 end_import
@@ -121,6 +135,34 @@ name|SystemUsage
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision: 1.7 $  */
 end_comment
@@ -130,8 +172,23 @@ specifier|public
 class|class
 name|TempQueueRegion
 extends|extends
-name|AbstractRegion
+name|AbstractTempRegion
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOG
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|TempQueueRegion
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|public
 name|TempQueueRegion
 parameter_list|(
@@ -170,7 +227,7 @@ comment|// setAutoCreateDestinations(false);
 block|}
 specifier|protected
 name|Destination
-name|createDestination
+name|doCreateDestination
 parameter_list|(
 name|ConnectionContext
 name|context
@@ -225,8 +282,17 @@ name|Exception
 block|{
 comment|// Only consumers on the same connection can consume from
 comment|// the temporary destination
+comment|// However, we could have failed over - and we do this
+comment|// check client side anyways ....
 if|if
 condition|(
+operator|!
+name|context
+operator|.
+name|isFaultTolerant
+argument_list|()
+operator|&&
+operator|(
 operator|!
 name|context
 operator|.
@@ -252,17 +318,41 @@ operator|.
 name|getConnectionId
 argument_list|()
 argument_list|)
+operator|)
 condition|)
 block|{
-throw|throw
-operator|new
-name|JMSException
+name|tempDest
+operator|.
+name|setConnectionId
 argument_list|(
-literal|"Cannot subscribe to remote temporary destination: "
+name|sub
+operator|.
+name|getConsumerInfo
+argument_list|()
+operator|.
+name|getConsumerId
+argument_list|()
+operator|.
+name|getConnectionId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|" changed ownership of "
+operator|+
+name|this
+operator|+
+literal|" to "
 operator|+
 name|tempDest
+operator|.
+name|getConnectionId
+argument_list|()
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 name|super
 operator|.
