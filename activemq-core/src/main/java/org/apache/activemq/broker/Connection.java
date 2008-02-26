@@ -180,6 +180,11 @@ name|String
 name|getConnectionId
 parameter_list|()
 function_decl|;
+comment|/**      * return true if a network connection      * @return      */
+name|boolean
+name|isNetworkConnection
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
