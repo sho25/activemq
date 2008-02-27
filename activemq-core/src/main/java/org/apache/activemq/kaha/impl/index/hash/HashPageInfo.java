@@ -109,6 +109,16 @@ operator|.
 name|size
 return|;
 block|}
+name|boolean
+name|isEmpty
+parameter_list|()
+block|{
+return|return
+name|size
+operator|<=
+literal|0
+return|;
+block|}
 comment|/**      * @param size the size to set      */
 name|void
 name|setSize

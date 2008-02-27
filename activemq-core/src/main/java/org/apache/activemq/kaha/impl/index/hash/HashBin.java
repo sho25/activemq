@@ -79,6 +79,18 @@ name|LogFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|sun
+operator|.
+name|security
+operator|.
+name|action
+operator|.
+name|GetBooleanAction
+import|;
+end_import
+
 begin_comment
 comment|/**  * Bin in a HashIndex  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
@@ -967,6 +979,32 @@ argument_list|(
 name|offset
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|page
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|hashPages
+operator|.
+name|remove
+argument_list|(
+name|page
+argument_list|)
+expr_stmt|;
+name|hashIndex
+operator|.
+name|releasePage
+argument_list|(
+name|page
+operator|.
+name|getPage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|doUnderFlow
 argument_list|(
 name|index
@@ -1367,17 +1405,10 @@ specifier|private
 name|void
 name|doUnderFlow
 parameter_list|(
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
 name|int
 name|index
 parameter_list|)
-block|{
-comment|// does little
-block|}
+block|{     }
 specifier|private
 name|void
 name|end
