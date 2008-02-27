@@ -753,14 +753,17 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Wait for the brokers to finish starting up and establish thier network connections.
+comment|// Wait for the network connection to get setup.
+comment|// The wait is exponential since every broker has to connect to every other broker.
 name|Thread
 operator|.
 name|sleep
 argument_list|(
 name|BROKER_COUNT
 operator|*
-literal|400
+name|BROKER_COUNT
+operator|*
+literal|50
 argument_list|)
 expr_stmt|;
 name|forwardingClients
@@ -1645,6 +1648,16 @@ name|producer
 operator|.
 name|start
 argument_list|()
+expr_stmt|;
+comment|// Give the forwarding clients a chance to get going and fill the down stream broker queues..
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+name|BROKER_COUNT
+operator|*
+literal|200
+argument_list|)
 expr_stmt|;
 for|for
 control|(
