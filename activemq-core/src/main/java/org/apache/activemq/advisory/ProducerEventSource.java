@@ -667,11 +667,6 @@ operator|+
 name|message
 argument_list|)
 expr_stmt|;
-name|Thread
-operator|.
-name|dumpStack
-argument_list|()
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
