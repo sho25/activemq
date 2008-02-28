@@ -821,11 +821,14 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-comment|// TODO Auto-generated catch block
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|debug
+argument_list|(
+literal|"Reconnect task has been interrupted."
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1146,9 +1149,17 @@ condition|(
 name|started
 condition|)
 block|{
+if|if
+condition|(
 name|LOG
 operator|.
-name|warn
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
 argument_list|(
 literal|"Transport failed, attempting to automatically reconnect due to: "
 operator|+
@@ -1157,6 +1168,19 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Transport failed, attempting to automatically reconnect due to: "
+operator|+
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 name|reconnectOk
 operator|=
 literal|true
