@@ -311,6 +311,21 @@ operator|=
 name|page
 expr_stmt|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"Page["
+operator|+
+name|id
+operator|+
+literal|"] size="
+operator|+
+name|size
+return|;
+block|}
 block|}
 end_class
 
