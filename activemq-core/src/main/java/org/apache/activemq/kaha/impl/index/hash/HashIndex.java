@@ -904,17 +904,6 @@ operator|+=
 name|pageSize
 expr_stmt|;
 block|}
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"AFTER LOAD SIZE = "
-operator|+
-name|size
-argument_list|)
-expr_stmt|;
 name|length
 operator|=
 name|offset
@@ -1415,17 +1404,6 @@ argument_list|(
 name|HashEntry
 operator|.
 name|NOT_SET
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"ALLOCATED NEW PAGE  size = "
-operator|+
-name|size
 argument_list|)
 expr_stmt|;
 block|}
