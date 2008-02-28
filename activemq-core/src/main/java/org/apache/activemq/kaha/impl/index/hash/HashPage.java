@@ -247,7 +247,16 @@ literal|":"
 operator|+
 name|binId
 operator|+
-literal|"]"
+literal|":"
+operator|+
+name|id
+operator|+
+literal|"] size = "
+operator|+
+name|hashIndexEntries
+operator|.
+name|size
+argument_list|()
 return|;
 block|}
 specifier|public
