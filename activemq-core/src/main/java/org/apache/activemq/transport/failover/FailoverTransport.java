@@ -1149,28 +1149,6 @@ condition|(
 name|started
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"Transport failed, attempting to automatically reconnect due to: "
-operator|+
-name|e
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|LOG
 operator|.
 name|warn
@@ -1180,7 +1158,15 @@ operator|+
 name|e
 argument_list|)
 expr_stmt|;
-block|}
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Transport failed with the following exception:"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 name|reconnectOk
 operator|=
 literal|true
