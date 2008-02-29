@@ -255,7 +255,7 @@ name|activemq
 operator|.
 name|thread
 operator|.
-name|DeterministicTaskRunner
+name|DefaultThreadPools
 import|;
 end_import
 
@@ -745,13 +745,13 @@ expr_stmt|;
 comment|// Setup a task that is used to reconnect the a connection async.
 name|reconnectTask
 operator|=
-operator|new
-name|DeterministicTaskRunner
-argument_list|(
-name|this
+name|DefaultThreadPools
 operator|.
-name|executor
-argument_list|,
+name|getDefaultTaskRunnerFactory
+argument_list|()
+operator|.
+name|createTaskRunner
+argument_list|(
 operator|new
 name|Task
 argument_list|()
@@ -837,6 +837,15 @@ name|result
 return|;
 block|}
 block|}
+argument_list|,
+literal|"ActiveMQ Failover Worker: "
+operator|+
+name|System
+operator|.
+name|identityHashCode
+argument_list|(
+name|this
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
