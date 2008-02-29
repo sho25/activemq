@@ -29,16 +29,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -47,7 +37,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|Connection
+name|BrokerService
 import|;
 end_import
 
@@ -189,11 +179,19 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|final
+name|BrokerService
+name|brokerService
+decl_stmt|;
 specifier|public
 name|TempQueueRegion
 parameter_list|(
 name|RegionBroker
 name|broker
+parameter_list|,
+name|BrokerService
+name|brokerService
 parameter_list|,
 name|DestinationStatistics
 name|destinationStatistics
@@ -224,6 +222,12 @@ expr_stmt|;
 comment|// We should allow the following to be configurable via a Destination
 comment|// Policy
 comment|// setAutoCreateDestinations(false);
+name|this
+operator|.
+name|brokerService
+operator|=
+name|brokerService
+expr_stmt|;
 block|}
 specifier|protected
 name|Destination
@@ -251,14 +255,9 @@ return|return
 operator|new
 name|Queue
 argument_list|(
-name|broker
-operator|.
-name|getRoot
-argument_list|()
+name|brokerService
 argument_list|,
 name|destination
-argument_list|,
-name|usageManager
 argument_list|,
 literal|null
 argument_list|,

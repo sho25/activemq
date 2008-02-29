@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -28,6 +38,20 @@ operator|.
 name|broker
 operator|.
 name|Broker
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|BrokerService
 import|;
 end_import
 
@@ -143,12 +167,10 @@ name|MessageStore
 name|store
 decl_stmt|;
 specifier|protected
-specifier|final
 name|SystemUsage
 name|systemUsage
 decl_stmt|;
 specifier|protected
-specifier|final
 name|MemoryUsage
 name|memoryUsage
 decl_stmt|;
@@ -203,12 +225,17 @@ operator|new
 name|DestinationStatistics
 argument_list|()
 decl_stmt|;
-comment|/**      * @param broker       * @param store       * @param destination      * @param systemUsage       * @param parentStats      */
+specifier|protected
+specifier|final
+name|BrokerService
+name|brokerService
+decl_stmt|;
+comment|/**      * @param broker       * @param store       * @param destination      * @param parentStats      * @throws Exception       */
 specifier|public
 name|BaseDestination
 parameter_list|(
-name|Broker
-name|broker
+name|BrokerService
+name|brokerService
 parameter_list|,
 name|MessageStore
 name|store
@@ -216,18 +243,26 @@ parameter_list|,
 name|ActiveMQDestination
 name|destination
 parameter_list|,
-name|SystemUsage
-name|systemUsage
-parameter_list|,
 name|DestinationStatistics
 name|parentStats
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 name|this
 operator|.
+name|brokerService
+operator|=
+name|brokerService
+expr_stmt|;
+name|this
+operator|.
 name|broker
 operator|=
-name|broker
+name|brokerService
+operator|.
+name|getBroker
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -241,11 +276,36 @@ name|destination
 operator|=
 name|destination
 expr_stmt|;
+comment|// let's copy the enabled property from the parent DestinationStatistics
+name|this
+operator|.
+name|destinationStatistics
+operator|.
+name|setEnabled
+argument_list|(
+name|parentStats
+operator|.
+name|isEnabled
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|destinationStatistics
+operator|.
+name|setParent
+argument_list|(
+name|parentStats
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|systemUsage
 operator|=
-name|systemUsage
+name|brokerService
+operator|.
+name|getProducerSystemUsage
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -274,6 +334,15 @@ argument_list|(
 literal|1.0f
 argument_list|)
 expr_stmt|;
+block|}
+comment|/**      * initialize the destination      * @throws Exception      */
+specifier|public
+name|void
+name|initialize
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 comment|// Let the store know what usage manager we are using so that he can
 comment|// flush messages to disk when usage gets high.
 if|if
@@ -293,38 +362,7 @@ name|memoryUsage
 argument_list|)
 expr_stmt|;
 block|}
-comment|// let's copy the enabled property from the parent DestinationStatistics
-name|this
-operator|.
-name|destinationStatistics
-operator|.
-name|setEnabled
-argument_list|(
-name|parentStats
-operator|.
-name|isEnabled
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|destinationStatistics
-operator|.
-name|setParent
-argument_list|(
-name|parentStats
-argument_list|)
-expr_stmt|;
 block|}
-comment|/**      * initialize the destination      * @throws Exception      */
-specifier|public
-specifier|abstract
-name|void
-name|initialize
-parameter_list|()
-throws|throws
-name|Exception
-function_decl|;
 comment|/**      * @return the producerFlowControl      */
 specifier|public
 name|boolean

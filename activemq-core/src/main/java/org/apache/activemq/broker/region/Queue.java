@@ -177,7 +177,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|Broker
+name|BrokerService
 import|;
 end_import
 
@@ -681,20 +681,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|usage
-operator|.
-name|SystemUsage
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|util
 operator|.
 name|BrokerSupport
@@ -945,16 +931,12 @@ decl_stmt|;
 specifier|public
 name|Queue
 parameter_list|(
-name|Broker
-name|broker
+name|BrokerService
+name|brokerService
 parameter_list|,
 specifier|final
 name|ActiveMQDestination
 name|destination
-parameter_list|,
-specifier|final
-name|SystemUsage
-name|systemUsage
 parameter_list|,
 name|MessageStore
 name|store
@@ -970,13 +952,11 @@ name|Exception
 block|{
 name|super
 argument_list|(
-name|broker
+name|brokerService
 argument_list|,
 name|store
 argument_list|,
 name|destination
-argument_list|,
-name|systemUsage
 argument_list|,
 name|parentStats
 argument_list|)
@@ -1131,6 +1111,42 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// If a VMPendingMessageCursor don't use the default Producer System Usage
+comment|// since it turns into a shared blocking queue which can lead to a network deadlock.
+comment|// If we are ccursoring to disk..it's not and issue because it does not block due
+comment|// to large disk sizes.
+if|if
+condition|(
+name|messages
+operator|instanceof
+name|VMPendingMessageCursor
+condition|)
+block|{
+name|this
+operator|.
+name|systemUsage
+operator|=
+name|brokerService
+operator|.
+name|getSystemUsage
+argument_list|()
+expr_stmt|;
+name|memoryUsage
+operator|.
+name|setParent
+argument_list|(
+name|systemUsage
+operator|.
+name|getMemoryUsage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+name|super
+operator|.
+name|initialize
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|store

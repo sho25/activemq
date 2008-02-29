@@ -722,7 +722,7 @@ specifier|final
 name|Region
 name|tempTopicRegion
 decl_stmt|;
-specifier|private
+specifier|protected
 name|BrokerService
 name|brokerService
 decl_stmt|;
@@ -1167,6 +1167,8 @@ operator|new
 name|TempQueueRegion
 argument_list|(
 name|this
+argument_list|,
+name|brokerService
 argument_list|,
 name|destinationStatistics
 argument_list|,
