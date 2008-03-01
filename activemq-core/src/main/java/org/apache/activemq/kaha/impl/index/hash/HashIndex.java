@@ -2090,7 +2090,7 @@ name|getProperty
 argument_list|(
 literal|"defaultPageSize"
 argument_list|,
-literal|"8000"
+literal|"16384"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2106,7 +2106,7 @@ name|getProperty
 argument_list|(
 literal|"defaultKeySize"
 argument_list|,
-literal|"80"
+literal|"96"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2122,7 +2122,7 @@ name|getProperty
 argument_list|(
 literal|"defaultBinSize"
 argument_list|,
-literal|"128"
+literal|"1024"
 argument_list|)
 argument_list|)
 expr_stmt|;
