@@ -221,9 +221,10 @@ name|getMapContainer
 argument_list|(
 name|name
 argument_list|,
-name|Store
+name|store
 operator|.
-name|DEFAULT_CONTAINER_NAME
+name|getDefaultContainerName
+argument_list|()
 argument_list|,
 literal|true
 argument_list|)
