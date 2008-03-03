@@ -4457,6 +4457,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+synchronized|synchronized
+init|(
+name|messagesWaitingForSpace
+init|)
+block|{
 while|while
 condition|(
 operator|!
@@ -4485,6 +4490,7 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 return|return
 literal|false
