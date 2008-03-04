@@ -1184,6 +1184,12 @@ block|}
 block|}
 else|else
 block|{
+if|if
+condition|(
+operator|!
+name|sizePrefixDisabled
+condition|)
+block|{
 name|dataOut
 operator|.
 name|writeInt
@@ -1191,6 +1197,7 @@ argument_list|(
 name|size
 argument_list|)
 expr_stmt|;
+block|}
 name|dataOut
 operator|.
 name|writeByte
