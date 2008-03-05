@@ -127,6 +127,20 @@ name|MessageEvaluationContext
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|filter
+operator|.
+name|NonCachedMessageEvaluationContext
+import|;
+end_import
+
 begin_comment
 comment|/**  * Represents a composite {@link Destination} where send()s are replicated to  * each Destination instance.  *   * @version $Revision$  */
 end_comment
@@ -263,7 +277,7 @@ block|{
 name|messageContext
 operator|=
 operator|new
-name|MessageEvaluationContext
+name|NonCachedMessageEvaluationContext
 argument_list|()
 expr_stmt|;
 name|messageContext

@@ -79,6 +79,20 @@ name|MessageEvaluationContext
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|filter
+operator|.
+name|NonCachedMessageEvaluationContext
+import|;
+end_import
+
 begin_comment
 comment|/**  * Simple dispatch policy that determines if a message can be sent to a subscription  *  * @org.apache.xbean.XBean  * @version $Revision$  */
 end_comment
@@ -127,7 +141,7 @@ name|MessageEvaluationContext
 name|msgContext
 init|=
 operator|new
-name|MessageEvaluationContext
+name|NonCachedMessageEvaluationContext
 argument_list|()
 decl_stmt|;
 name|msgContext

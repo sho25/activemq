@@ -569,6 +569,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|filter
+operator|.
+name|NonCachedMessageEvaluationContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|selector
 operator|.
 name|SelectorParser
@@ -1410,7 +1424,7 @@ name|MessageEvaluationContext
 name|msgContext
 init|=
 operator|new
-name|MessageEvaluationContext
+name|NonCachedMessageEvaluationContext
 argument_list|()
 decl_stmt|;
 comment|// needs to be synchronized - so no contention with dispatching
@@ -4757,7 +4771,11 @@ name|answer
 init|=
 operator|new
 name|ConnectionContext
+argument_list|(
+operator|new
+name|NonCachedMessageEvaluationContext
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|answer
 operator|.

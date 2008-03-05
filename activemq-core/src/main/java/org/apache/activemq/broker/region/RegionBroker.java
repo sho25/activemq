@@ -1389,6 +1389,55 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|context
+operator|.
+name|isFaultTolerant
+argument_list|()
+operator|||
+name|context
+operator|.
+name|isNetworkConnection
+argument_list|()
+condition|)
+block|{
+comment|//remove the old connection
+try|try
+block|{
+name|removeConnection
+argument_list|(
+name|oldContext
+argument_list|,
+name|info
+argument_list|,
+operator|new
+name|Exception
+argument_list|(
+literal|"remove stale client"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Failed to remove stale connection "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
 throw|throw
 operator|new
 name|InvalidClientIDException
@@ -1413,6 +1462,7 @@ name|getRemoteAddress
 argument_list|()
 argument_list|)
 throw|;
+block|}
 block|}
 else|else
 block|{
@@ -3585,11 +3635,6 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|boolean
-name|sent
-init|=
-literal|false
-decl_stmt|;
 if|if
 condition|(
 name|node
@@ -3749,41 +3794,9 @@ argument_list|,
 name|deadLetterDestination
 argument_list|)
 expr_stmt|;
-name|sent
-operator|=
-literal|true
-expr_stmt|;
-block|}
-block|}
-else|else
-block|{
-comment|//don't want to warn about failing to send
-comment|// if there isn't a dead letter strategy
-name|sent
-operator|=
-literal|true
-expr_stmt|;
 block|}
 block|}
 block|}
-if|if
-condition|(
-name|sent
-operator|==
-literal|false
-condition|)
-block|{
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"Failed to send "
-operator|+
-name|node
-operator|+
-literal|" to DLQ"
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 catch|catch

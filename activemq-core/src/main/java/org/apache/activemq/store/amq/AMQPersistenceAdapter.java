@@ -377,6 +377,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|filter
+operator|.
+name|NonCachedMessageEvaluationContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|kaha
 operator|.
 name|impl
@@ -2906,7 +2920,11 @@ name|context
 init|=
 operator|new
 name|ConnectionContext
+argument_list|(
+operator|new
+name|NonCachedMessageEvaluationContext
 argument_list|()
+argument_list|)
 decl_stmt|;
 comment|// While we have records in the journal.
 while|while
