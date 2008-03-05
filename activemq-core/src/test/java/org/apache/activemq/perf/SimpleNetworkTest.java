@@ -101,16 +101,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -642,6 +632,13 @@ operator|.
 name|setBrokerName
 argument_list|(
 name|PRODUCER_BROKER_NAME
+argument_list|)
+expr_stmt|;
+name|answer
+operator|.
+name|setPersistent
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 name|answer
