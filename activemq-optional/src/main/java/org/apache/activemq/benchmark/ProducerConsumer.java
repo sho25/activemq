@@ -302,6 +302,15 @@ return|return
 literal|false
 return|;
 block|}
+specifier|public
+name|Consumer
+name|getConsumer
+parameter_list|()
+block|{
+return|return
+name|consumer
+return|;
+block|}
 block|}
 end_class
 
