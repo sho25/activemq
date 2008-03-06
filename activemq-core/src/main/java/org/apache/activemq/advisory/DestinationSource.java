@@ -397,7 +397,7 @@ return|;
 block|}
 specifier|public
 name|void
-name|setConsumerListener
+name|setDestinationListener
 parameter_list|(
 name|DestinationListener
 name|listener
