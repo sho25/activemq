@@ -333,6 +333,9 @@ name|Exception
 function_decl|;
 comment|/**      * Page in a restricted number of messages      *       * @param maxItems      * @return a list of paged in messages      */
 name|LinkedList
+argument_list|<
+name|MessageReference
+argument_list|>
 name|pageInList
 parameter_list|(
 name|int

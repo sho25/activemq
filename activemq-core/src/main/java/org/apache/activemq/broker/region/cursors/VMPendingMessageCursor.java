@@ -109,6 +109,7 @@ name|last
 decl_stmt|;
 comment|/**      * @return true if there are no pending messages      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|isEmpty
 parameter_list|()
@@ -193,6 +194,7 @@ block|}
 block|}
 comment|/**      * reset the cursor      */
 specifier|public
+specifier|synchronized
 name|void
 name|reset
 parameter_list|()
@@ -211,6 +213,7 @@ expr_stmt|;
 block|}
 comment|/**      * add message to await dispatch      *       * @param node      */
 specifier|public
+specifier|synchronized
 name|void
 name|addMessageLast
 parameter_list|(
@@ -233,6 +236,7 @@ expr_stmt|;
 block|}
 comment|/**      * add message to await dispatch      *       * @param position      * @param node      */
 specifier|public
+specifier|synchronized
 name|void
 name|addMessageFirst
 parameter_list|(
@@ -255,6 +259,7 @@ expr_stmt|;
 block|}
 comment|/**      * @return true if there pending messages to dispatch      */
 specifier|public
+specifier|synchronized
 name|boolean
 name|hasNext
 parameter_list|()
@@ -268,6 +273,7 @@ return|;
 block|}
 comment|/**      * @return the next pending message      */
 specifier|public
+specifier|synchronized
 name|MessageReference
 name|next
 parameter_list|()
@@ -288,6 +294,7 @@ return|;
 block|}
 comment|/**      * remove the message at the cursor position      */
 specifier|public
+specifier|synchronized
 name|void
 name|remove
 parameter_list|()
@@ -313,6 +320,7 @@ expr_stmt|;
 block|}
 comment|/**      * @return the number of pending messages      */
 specifier|public
+specifier|synchronized
 name|int
 name|size
 parameter_list|()
@@ -326,6 +334,7 @@ return|;
 block|}
 comment|/**      * clear all pending messages      */
 specifier|public
+specifier|synchronized
 name|void
 name|clear
 parameter_list|()
@@ -337,6 +346,7 @@ argument_list|()
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|remove
 parameter_list|(
