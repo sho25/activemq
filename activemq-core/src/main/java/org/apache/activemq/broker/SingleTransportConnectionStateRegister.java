@@ -453,23 +453,6 @@ name|cs
 init|=
 name|connectionState
 decl_stmt|;
-if|if
-condition|(
-name|cs
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"Cannot lookup a connection that had not been registered: "
-operator|+
-name|connectionId
-argument_list|)
-throw|;
-block|}
 return|return
 name|cs
 return|;

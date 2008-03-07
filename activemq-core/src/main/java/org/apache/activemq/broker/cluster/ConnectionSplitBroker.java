@@ -767,12 +767,31 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+comment|//remove connection states
+name|TransportConnection
+name|connection
+init|=
+operator|(
+name|TransportConnection
+operator|)
 name|old
 operator|.
 name|getConnection
 argument_list|()
+decl_stmt|;
+name|connection
 operator|.
-name|stop
+name|processRemoveConnection
+argument_list|(
+name|old
+operator|.
+name|getConnectionId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|stopAsync
 argument_list|()
 expr_stmt|;
 block|}
@@ -789,6 +808,8 @@ argument_list|(
 literal|"Failed to remove stale connection: "
 operator|+
 name|str
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}

@@ -4128,6 +4128,7 @@ literal|null
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|Response
 name|processRemoveConnection
 parameter_list|(
@@ -4145,6 +4146,13 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|cs
+operator|!=
+literal|null
+condition|)
+block|{
 comment|// Don't allow things to be added to the connection state while we are
 comment|// shutting down.
 name|cs
@@ -4370,6 +4378,7 @@ argument_list|(
 name|id
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
