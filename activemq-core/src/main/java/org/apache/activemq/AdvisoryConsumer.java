@@ -462,19 +462,25 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|connection
+comment|//This can happen across networks
+if|if
+condition|(
+name|LOG
 operator|.
-name|onAsyncException
-argument_list|(
-operator|new
-name|JMSException
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
 argument_list|(
 literal|"Unexpected message was dispatched to the AdvisoryConsumer: "
 operator|+
 name|md
 argument_list|)
-argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|private
