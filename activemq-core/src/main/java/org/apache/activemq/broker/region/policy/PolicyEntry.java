@@ -512,6 +512,14 @@ name|isStrictOrderDispatch
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|queue
+operator|.
+name|setOptimizedDispatch
+argument_list|(
+name|isOptimizedDispatch
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void

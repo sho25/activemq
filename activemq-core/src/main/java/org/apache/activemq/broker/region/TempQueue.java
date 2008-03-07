@@ -135,10 +135,6 @@ specifier|final
 name|ActiveMQTempDestination
 name|tempDest
 decl_stmt|;
-specifier|private
-name|TaskRunnerFactory
-name|taskFactory
-decl_stmt|;
 comment|/**      * @param brokerService      * @param destination      * @param store      * @param parentStats      * @param taskFactory      * @throws Exception      */
 specifier|public
 name|TempQueue
@@ -182,12 +178,6 @@ operator|(
 name|ActiveMQTempDestination
 operator|)
 name|destination
-expr_stmt|;
-name|this
-operator|.
-name|taskFactory
-operator|=
-name|taskFactory
 expr_stmt|;
 block|}
 specifier|public
