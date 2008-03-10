@@ -502,6 +502,9 @@ parameter_list|(
 name|Broker
 name|broker
 parameter_list|,
+name|Destination
+name|destination
+parameter_list|,
 name|ConnectionContext
 name|context
 parameter_list|,
@@ -517,6 +520,8 @@ block|{
 name|super
 argument_list|(
 name|broker
+argument_list|,
+name|destination
 argument_list|,
 name|context
 argument_list|,

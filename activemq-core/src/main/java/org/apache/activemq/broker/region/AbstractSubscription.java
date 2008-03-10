@@ -279,6 +279,10 @@ name|Broker
 name|broker
 decl_stmt|;
 specifier|protected
+name|Destination
+name|destination
+decl_stmt|;
+specifier|protected
 name|ConnectionContext
 name|context
 decl_stmt|;
@@ -320,6 +324,9 @@ parameter_list|(
 name|Broker
 name|broker
 parameter_list|,
+name|Destination
+name|destination
+parameter_list|,
 name|ConnectionContext
 name|context
 parameter_list|,
@@ -334,6 +341,12 @@ operator|.
 name|broker
 operator|=
 name|broker
+expr_stmt|;
+name|this
+operator|.
+name|destination
+operator|=
+name|destination
 expr_stmt|;
 name|this
 operator|.

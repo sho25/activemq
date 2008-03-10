@@ -2903,6 +2903,12 @@ expr_stmt|;
 block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
+specifier|public
+specifier|final
+name|void
+name|wakeup
+parameter_list|()
+block|{     }
 specifier|protected
 name|void
 name|dispatch

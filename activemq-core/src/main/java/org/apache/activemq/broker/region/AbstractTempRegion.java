@@ -23,6 +23,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashSet
 import|;
 end_import
@@ -64,18 +74,6 @@ operator|.
 name|util
 operator|.
 name|TimerTask
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ConcurrentHashMap
 import|;
 end_import
 
@@ -207,7 +205,7 @@ argument_list|>
 name|cachedDestinations
 init|=
 operator|new
-name|ConcurrentHashMap
+name|HashMap
 argument_list|<
 name|CachedDestination
 argument_list|,
@@ -342,6 +340,7 @@ throws|throws
 name|Exception
 function_decl|;
 specifier|protected
+specifier|synchronized
 name|Destination
 name|createDestination
 parameter_list|(
@@ -391,6 +390,7 @@ return|;
 block|}
 specifier|protected
 specifier|final
+specifier|synchronized
 name|void
 name|dispose
 parameter_list|(
@@ -471,6 +471,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|private
+specifier|synchronized
 name|void
 name|doPurge
 parameter_list|()
@@ -615,7 +616,7 @@ if|if
 condition|(
 name|o
 operator|instanceof
-name|ActiveMQDestination
+name|CachedDestination
 condition|)
 block|{
 name|CachedDestination

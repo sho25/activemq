@@ -325,7 +325,7 @@ argument_list|()
 decl_stmt|;
 specifier|public
 name|void
-name|testMultipleProducerBrokerRestarts
+name|xtestMultipleProducerBrokerRestarts
 parameter_list|()
 throws|throws
 name|Exception
@@ -355,7 +355,7 @@ block|}
 block|}
 specifier|public
 name|void
-name|testWithoutRestarts
+name|xtestWithoutRestarts
 parameter_list|()
 throws|throws
 name|Exception
@@ -540,7 +540,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testWithConsumerBrokerRestart
+name|xtestWithConsumerBrokerRestart
 parameter_list|()
 throws|throws
 name|Exception
@@ -661,7 +661,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testWithConsumerBrokerStartDelay
+name|xtestWithConsumerBrokerStartDelay
 parameter_list|()
 throws|throws
 name|Exception
@@ -737,7 +737,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testWithProducerBrokerStartDelay
+name|xtestWithProducerBrokerStartDelay
 parameter_list|()
 throws|throws
 name|Exception

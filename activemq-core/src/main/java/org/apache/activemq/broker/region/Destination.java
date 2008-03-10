@@ -388,6 +388,27 @@ name|int
 name|minimumMessageSize
 parameter_list|)
 function_decl|;
+comment|/**      * optionally called by a Subscriber - to inform the Destination its      * ready for more messages      */
+specifier|public
+name|void
+name|wakeup
+parameter_list|()
+function_decl|;
+comment|/**      * @return true if lazyDispatch is enabled      */
+specifier|public
+name|boolean
+name|isLazyDispatch
+parameter_list|()
+function_decl|;
+comment|/**      * set the lazy dispatch - default is false      * @param value      */
+specifier|public
+name|void
+name|setLazyDispatch
+parameter_list|(
+name|boolean
+name|value
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

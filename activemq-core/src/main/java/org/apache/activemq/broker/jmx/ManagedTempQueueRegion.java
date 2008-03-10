@@ -23,7 +23,7 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|InvalidSelectorException
+name|JMSException
 import|;
 end_import
 
@@ -268,7 +268,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|InvalidSelectorException
+name|JMSException
 block|{
 name|Subscription
 name|sub

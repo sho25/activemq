@@ -330,7 +330,7 @@ name|sub
 argument_list|)
 expr_stmt|;
 block|}
-specifier|protected
+specifier|public
 name|void
 name|wakeup
 parameter_list|()
