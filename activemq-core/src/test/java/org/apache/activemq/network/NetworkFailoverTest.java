@@ -27,16 +27,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URI
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -62,16 +52,6 @@ operator|.
 name|jms
 operator|.
 name|Destination
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
 import|;
 end_import
 
@@ -131,16 +111,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|QueueRequestor
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|Session
 import|;
 end_import
@@ -152,26 +122,6 @@ operator|.
 name|jms
 operator|.
 name|TextMessage
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|QueueRequestor
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|QueueSession
 import|;
 end_import
 
