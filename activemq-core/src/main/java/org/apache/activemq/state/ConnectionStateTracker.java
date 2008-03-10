@@ -433,6 +433,11 @@ name|currentCacheSize
 operator|>
 name|maxCacheSize
 decl_stmt|;
+if|if
+condition|(
+name|result
+condition|)
+block|{
 name|currentCacheSize
 operator|-=
 name|eldest
@@ -443,6 +448,7 @@ operator|.
 name|getSize
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|result
 return|;
@@ -601,7 +607,9 @@ literal|null
 condition|)
 block|{
 name|currentCacheSize
-operator|+=
+operator|=
+name|currentCacheSize
+operator|+
 name|message
 operator|.
 name|getSize
