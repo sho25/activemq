@@ -489,20 +489,6 @@ operator|.
 name|getText
 argument_list|()
 decl_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"REMOTE CONSUMER GOT MSG "
-operator|+
-name|textMsg
-operator|.
-name|getText
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|Destination
 name|replyTo
 decl_stmt|;
@@ -532,20 +518,6 @@ argument_list|(
 name|replyTo
 argument_list|,
 name|textMsg
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"REMOTE CONSUMER SENT BACK MSG "
-operator|+
-name|textMsg
-operator|.
-name|getText
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -603,15 +575,6 @@ name|tempQueue
 argument_list|)
 decl_stmt|;
 comment|// allow for consumer infos to perculate arround
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"SLEEPING ..."
-argument_list|)
-expr_stmt|;
 name|Thread
 operator|.
 name|sleep
@@ -658,17 +621,6 @@ argument_list|(
 name|tempQueue
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"SENDING REQUEST "
-operator|+
-name|payload
-argument_list|)
-expr_stmt|;
 name|requestProducer
 operator|.
 name|send
@@ -676,13 +628,11 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
-name|System
+name|LOG
 operator|.
-name|err
-operator|.
-name|println
+name|info
 argument_list|(
-literal|"FAILOVER"
+literal|"Failing over"
 argument_list|)
 expr_stmt|;
 operator|(
