@@ -694,9 +694,9 @@ name|result
 argument_list|)
 condition|)
 block|{
-name|result
-operator|=
 name|last
+operator|=
+name|result
 expr_stmt|;
 block|}
 return|return
