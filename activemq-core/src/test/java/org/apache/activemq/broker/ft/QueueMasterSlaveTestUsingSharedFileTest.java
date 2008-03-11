@@ -17,34 +17,6 @@ name|ft
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|xbean
-operator|.
-name|BrokerFactoryBean
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|springframework
-operator|.
-name|core
-operator|.
-name|io
-operator|.
-name|ClassPathResource
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -77,6 +49,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// Start the Brokers async since starting them up could be a blocking operation..
 operator|new
 name|Thread
 argument_list|(
