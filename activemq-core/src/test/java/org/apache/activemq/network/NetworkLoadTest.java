@@ -542,7 +542,7 @@ name|toConnection
 operator|=
 name|createConnection
 argument_list|(
-name|to
+name|from
 argument_list|)
 expr_stmt|;
 name|Session
