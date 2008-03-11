@@ -346,6 +346,8 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|lazyDispatch
+init|=
+literal|true
 decl_stmt|;
 specifier|public
 name|void
