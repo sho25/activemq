@@ -410,7 +410,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This test case is used to load test store and forwarding between brokers.  It sets up  * 10 brokers to which have a chain of queues which this test consumes and produces to.   *   * If the network bridges gets stuck at any point subsequent queues will not get messages.  This test   * samples the production and consumption stats every second and if the flow of messages  * get stuck then this tast fails.  The test monitors the flow of messages for 1 min.  *    * @author chirino  */
+comment|/**  * This test case is used to load test store and forwarding between brokers.  It sets up  * n brokers to which have a chain of queues which this test consumes and produces to.   *   * If the network bridges gets stuck at any point subsequent queues will not get messages.  This test   * samples the production and consumption stats every second and if the flow of messages  * get stuck then this tast fails.  The test monitors the flow of messages for 1 min.  *    * @author chirino  */
 end_comment
 
 begin_class
@@ -458,10 +458,11 @@ operator|+
 literal|60
 operator|*
 literal|1
+operator|/
+literal|5
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// 1 min since each sample is 1 sec long.
 comment|// Slower machines might need to make this bigger.
 specifier|private
 specifier|static
@@ -483,7 +484,7 @@ literal|""
 operator|+
 literal|1000
 operator|*
-literal|1
+literal|5
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -493,7 +494,7 @@ specifier|final
 name|int
 name|BROKER_COUNT
 init|=
-literal|10
+literal|4
 decl_stmt|;
 specifier|protected
 specifier|static
