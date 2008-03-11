@@ -115,16 +115,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|ExceptionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|JMSException
 import|;
 end_import
@@ -359,6 +349,14 @@ name|tcpUri
 decl_stmt|;
 specifier|private
 name|AtomicInteger
+name|resumedCount
+init|=
+operator|new
+name|AtomicInteger
+argument_list|()
+decl_stmt|;
+specifier|private
+name|AtomicInteger
 name|interruptedCount
 init|=
 operator|new
@@ -374,8 +372,6 @@ class|class
 name|Worker
 implements|implements
 name|Runnable
-implements|,
-name|ExceptionListener
 block|{
 specifier|public
 name|AtomicInteger
@@ -420,6 +416,7 @@ decl_stmt|;
 specifier|public
 name|Worker
 parameter_list|(
+specifier|final
 name|String
 name|name
 parameter_list|)
@@ -468,13 +465,6 @@ argument_list|()
 expr_stmt|;
 name|connection
 operator|.
-name|setExceptionListener
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
-name|connection
-operator|.
 name|addTransportListener
 argument_list|(
 operator|new
@@ -508,6 +498,17 @@ name|void
 name|transportInterupted
 parameter_list|()
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Worker "
+operator|+
+name|name
+operator|+
+literal|" was interrupted..."
+argument_list|)
+expr_stmt|;
 name|interruptedCount
 operator|.
 name|incrementAndGet
@@ -518,7 +519,24 @@ specifier|public
 name|void
 name|transportResumed
 parameter_list|()
-block|{                 }
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Worker "
+operator|+
+name|name
+operator|+
+literal|" was resummed..."
+argument_list|)
+expr_stmt|;
+name|resumedCount
+operator|.
+name|incrementAndGet
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 argument_list|)
 expr_stmt|;
@@ -801,23 +819,6 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-name|void
-name|onException
-parameter_list|(
-name|JMSException
-name|error
-parameter_list|)
-block|{
-name|setError
-argument_list|(
-name|error
-argument_list|)
-expr_stmt|;
-name|stop
-argument_list|()
-expr_stmt|;
-block|}
-specifier|public
 specifier|synchronized
 name|Throwable
 name|getError
@@ -863,7 +864,11 @@ argument_list|()
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"Got Exception: "
+literal|"Worker "
+operator|+
+name|name
+operator|+
+literal|" got Exception: "
 operator|+
 name|error
 argument_list|)
@@ -887,7 +892,7 @@ literal|1
 init|;
 name|k
 operator|<
-literal|5
+literal|10
 condition|;
 name|k
 operator|++
@@ -918,6 +923,11 @@ name|i
 operator|++
 control|)
 block|{
+name|int
+name|c
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -925,6 +935,16 @@ name|j
 init|=
 literal|0
 init|;
+name|j
+operator|<
+literal|30
+condition|;
+name|j
+operator|++
+control|)
+block|{
+name|c
+operator|=
 name|workers
 index|[
 name|i
@@ -932,19 +952,20 @@ index|]
 operator|.
 name|iterations
 operator|.
-name|get
-argument_list|()
-operator|==
+name|getAndSet
+argument_list|(
 literal|0
-operator|&&
-name|j
-operator|<
-literal|5
-condition|;
-name|j
-operator|++
-control|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|c
+operator|!=
+literal|0
+condition|)
 block|{
+break|break;
+block|}
 name|workers
 index|[
 name|i
@@ -957,7 +978,11 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Waiting for worker "
+literal|"Test run "
+operator|+
+name|k
+operator|+
+literal|": Waiting for worker "
 operator|+
 name|i
 operator|+
@@ -974,21 +999,17 @@ expr_stmt|;
 block|}
 name|assertTrue
 argument_list|(
-literal|"Worker "
+literal|"Test run "
+operator|+
+name|k
+operator|+
+literal|": Worker "
 operator|+
 name|i
 operator|+
 literal|" never completed an interation."
 argument_list|,
-name|workers
-index|[
-name|i
-index|]
-operator|.
-name|iterations
-operator|.
-name|get
-argument_list|()
+name|c
 operator|!=
 literal|0
 argument_list|)
@@ -1034,7 +1055,17 @@ name|failConnection
 argument_list|()
 expr_stmt|;
 block|}
+name|long
+name|start
+decl_stmt|;
 comment|// Wait for the connections to get interrupted...
+name|start
+operator|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+expr_stmt|;
 while|while
 condition|(
 name|interruptedCount
@@ -1045,11 +1076,35 @@ operator|<
 name|WORKER_COUNT
 condition|)
 block|{
+if|if
+condition|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|-
+name|start
+operator|>
+literal|1000
+operator|*
+literal|60
+condition|)
+block|{
+name|fail
+argument_list|(
+literal|"Timed out waiting for all connections to be interrupted."
+argument_list|)
+expr_stmt|;
+block|}
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Waiting for connections to get interrupted.. at: "
+literal|"Test run "
+operator|+
+name|k
+operator|+
+literal|": Waiting for connections to get interrupted.. at: "
 operator|+
 name|interruptedCount
 operator|.
@@ -1065,12 +1120,58 @@ literal|1000
 argument_list|)
 expr_stmt|;
 block|}
-comment|// let things stablize..
+comment|// Wait for the connections to re-establish...
+name|start
+operator|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+expr_stmt|;
+while|while
+condition|(
+name|resumedCount
+operator|.
+name|get
+argument_list|()
+operator|<
+name|WORKER_COUNT
+condition|)
+block|{
+if|if
+condition|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|-
+name|start
+operator|>
+literal|1000
+operator|*
+literal|60
+condition|)
+block|{
+name|fail
+argument_list|(
+literal|"Timed out waiting for all connections to be resumed."
+argument_list|)
+expr_stmt|;
+block|}
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Pausing before starting next iterations..."
+literal|"Test run "
+operator|+
+name|k
+operator|+
+literal|": Waiting for connections to get resumed.. at: "
+operator|+
+name|resumedCount
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Thread
@@ -1080,8 +1181,16 @@ argument_list|(
 literal|1000
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Reset the counters..
 name|interruptedCount
+operator|.
+name|set
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|resumedCount
 operator|.
 name|set
 argument_list|(
@@ -1116,6 +1225,13 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 specifier|protected
