@@ -1774,7 +1774,7 @@ name|put
 argument_list|(
 literal|"async"
 argument_list|,
-literal|"false"
+literal|"true"
 argument_list|)
 expr_stmt|;
 name|uri
