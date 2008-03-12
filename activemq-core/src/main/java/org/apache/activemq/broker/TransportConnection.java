@@ -5063,14 +5063,40 @@ name|run
 parameter_list|()
 block|{
 comment|// make sure we are not servicing client requests while we are shutting down.
+try|try
+block|{
+comment|//we could be waiting a long time if the network has gone - so only wait 1 second
 name|serviceLock
 operator|.
 name|writeLock
 argument_list|()
 operator|.
-name|lock
-argument_list|()
+name|tryLock
+argument_list|(
+literal|1
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Try get writeLock interrupted "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 try|try
 block|{
 name|doStop
