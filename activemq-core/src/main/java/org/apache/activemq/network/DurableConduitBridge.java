@@ -347,6 +347,17 @@ literal|null
 return|;
 comment|// don't want this subscription added
 block|}
+comment|//add our original id to ourselves
+name|info
+operator|.
+name|addNetworkConsumerId
+argument_list|(
+name|info
+operator|.
+name|getConsumerId
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// not matched so create a new one
 comment|// but first, if it's durable - changed set the
 comment|// ConsumerId here - so it won't be removed if the
