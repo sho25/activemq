@@ -63,16 +63,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|LinkedHashMap
 import|;
 end_import
@@ -4950,6 +4940,9 @@ if|if
 condition|(
 name|isLazyDispatch
 argument_list|()
+operator|&&
+operator|!
+name|force
 condition|)
 block|{
 comment|// Only page in the minimum number of messages which can be dispatched immediately.
