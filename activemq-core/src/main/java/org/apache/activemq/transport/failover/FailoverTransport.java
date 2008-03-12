@@ -506,6 +506,15 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|Object
+name|backupMutex
+init|=
+operator|new
+name|Object
+argument_list|()
+decl_stmt|;
+specifier|private
+specifier|final
+name|Object
 name|sleepMutex
 init|=
 operator|new
@@ -2965,6 +2974,11 @@ operator|=
 name|initialReconnectDelay
 expr_stmt|;
 block|}
+synchronized|synchronized
+init|(
+name|backupMutex
+init|)
+block|{
 if|if
 condition|(
 name|backup
@@ -3078,6 +3092,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|Iterator
@@ -3459,7 +3474,7 @@ parameter_list|()
 block|{
 synchronized|synchronized
 init|(
-name|reconnectMutex
+name|backupMutex
 init|)
 block|{
 if|if
