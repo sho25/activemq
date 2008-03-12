@@ -3510,6 +3510,13 @@ condition|(
 name|sub
 operator|!=
 literal|null
+operator|&&
+name|md
+operator|.
+name|getMessage
+argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
 name|Message
