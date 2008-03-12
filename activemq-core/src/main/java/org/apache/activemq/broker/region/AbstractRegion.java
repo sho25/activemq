@@ -1624,26 +1624,14 @@ name|getConsumerId
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|//The sub could be removed elsewhere - see ConnectionSplitBroker
 if|if
 condition|(
 name|sub
-operator|==
+operator|!=
 literal|null
 condition|)
 block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"The subscription does not exist: "
-operator|+
-name|info
-operator|.
-name|getConsumerId
-argument_list|()
-argument_list|)
-throw|;
-block|}
 comment|// remove the subscription from all the matching queues.
 for|for
 control|(
@@ -1696,6 +1684,7 @@ argument_list|(
 name|sub
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|consumerChangeMutexMap
