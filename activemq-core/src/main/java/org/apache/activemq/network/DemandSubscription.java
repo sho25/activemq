@@ -147,6 +147,13 @@ name|getBrokerPath
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|localInfo
+operator|.
+name|setNetworkSubscription
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|remoteSubsIds
 operator|.
 name|add
@@ -167,6 +174,21 @@ name|ConsumerId
 name|id
 parameter_list|)
 block|{
+if|if
+condition|(
+name|localInfo
+operator|!=
+literal|null
+condition|)
+block|{
+name|localInfo
+operator|.
+name|addNetworkConsumerId
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|remoteSubsIds
 operator|.
@@ -176,7 +198,7 @@ name|id
 argument_list|)
 return|;
 block|}
-comment|/**      * Increment the consumers associated with this subscription      *       * @param id      * @return true if added      */
+comment|/**      * Increment the consumers associated with this subscription      *       * @param id      * @return true if removed      */
 specifier|public
 name|boolean
 name|remove
@@ -185,6 +207,21 @@ name|ConsumerId
 name|id
 parameter_list|)
 block|{
+if|if
+condition|(
+name|localInfo
+operator|!=
+literal|null
+condition|)
+block|{
+name|localInfo
+operator|.
+name|removeNetworkConsumerId
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|remoteSubsIds
 operator|.
