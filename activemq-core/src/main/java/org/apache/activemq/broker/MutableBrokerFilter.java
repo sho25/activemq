@@ -356,7 +356,7 @@ name|MutableBrokerFilter
 implements|implements
 name|Broker
 block|{
-specifier|private
+specifier|protected
 name|AtomicReference
 argument_list|<
 name|Broker

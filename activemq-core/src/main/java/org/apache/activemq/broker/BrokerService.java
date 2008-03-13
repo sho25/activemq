@@ -1145,7 +1145,7 @@ specifier|private
 name|PersistenceAdapterFactory
 name|persistenceFactory
 decl_stmt|;
-specifier|private
+specifier|protected
 name|DestinationFactory
 name|destinationFactory
 decl_stmt|;
@@ -5588,22 +5588,11 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|MBeanServer
-name|mbeanServer
-init|=
-name|getManagementContext
-argument_list|()
-operator|.
-name|getMBeanServer
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|mbeanServer
-operator|!=
-literal|null
-condition|)
-block|{                     }
+comment|//        MBeanServer mbeanServer = getManagementContext().getMBeanServer();
+comment|//        if (mbeanServer != null) {
+comment|//
+comment|//
+comment|//        }
 return|return
 name|adaptor
 return|;
@@ -6292,7 +6281,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|setNext
+name|Broker
+name|old
+init|=
+name|this
+operator|.
+name|next
+operator|.
+name|getAndSet
 argument_list|(
 operator|new
 name|ErrorBroker
@@ -6312,8 +6308,8 @@ name|Exception
 block|{                     }
 block|}
 argument_list|)
-expr_stmt|;
-name|super
+decl_stmt|;
+name|old
 operator|.
 name|stop
 argument_list|()
@@ -6321,24 +6317,7 @@ expr_stmt|;
 block|}
 block|}
 expr_stmt|;
-name|RegionBroker
-name|rBroker
-init|=
-operator|(
-name|RegionBroker
-operator|)
-name|regionBroker
-decl_stmt|;
-name|rBroker
-operator|.
-name|getDestinationStatistics
-argument_list|()
-operator|.
-name|setEnabled
-argument_list|(
-name|enableStatistics
-argument_list|)
-expr_stmt|;
+comment|//        RegionBroker rBroker = (RegionBroker)regionBroker;
 if|if
 condition|(
 name|isUseJmx
@@ -6489,11 +6468,6 @@ argument_list|(
 name|destinationInterceptors
 argument_list|)
 decl_stmt|;
-name|RegionBroker
-name|regionBroker
-init|=
-literal|null
-decl_stmt|;
 if|if
 condition|(
 name|destinationFactory
@@ -6516,6 +6490,26 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|createRegionBroker
+argument_list|(
+name|destinationInterceptor
+argument_list|)
+return|;
+block|}
+specifier|protected
+name|Broker
+name|createRegionBroker
+parameter_list|(
+name|DestinationInterceptor
+name|destinationInterceptor
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|RegionBroker
+name|regionBroker
+decl_stmt|;
 if|if
 condition|(
 name|isUseJmx
@@ -6596,6 +6590,16 @@ name|setBrokerName
 argument_list|(
 name|getBrokerName
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|regionBroker
+operator|.
+name|getDestinationStatistics
+argument_list|()
+operator|.
+name|setEnabled
+argument_list|(
+name|enableStatistics
 argument_list|)
 expr_stmt|;
 return|return
