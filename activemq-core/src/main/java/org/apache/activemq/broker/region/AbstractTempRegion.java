@@ -162,7 +162,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  */
+comment|/**  *   */
 end_comment
 
 begin_class
@@ -173,13 +173,6 @@ name|AbstractTempRegion
 extends|extends
 name|AbstractRegion
 block|{
-specifier|private
-specifier|static
-name|int
-name|TIME_BEFORE_PURGE
-init|=
-literal|60000
-decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -215,11 +208,19 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
+name|boolean
+name|doCacheTempDestinations
+decl_stmt|;
+specifier|private
+specifier|final
+name|int
+name|purgeTime
+decl_stmt|;
+specifier|private
 name|Timer
 name|purgeTimer
 decl_stmt|;
 specifier|private
-specifier|final
 name|TimerTask
 name|purgeTask
 decl_stmt|;
@@ -258,6 +259,37 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|doCacheTempDestinations
+operator|=
+name|broker
+operator|.
+name|getBrokerService
+argument_list|()
+operator|.
+name|isCacheTempDestinations
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|purgeTime
+operator|=
+name|broker
+operator|.
+name|getBrokerService
+argument_list|()
+operator|.
+name|getTimeBeforePurgeTempDestinations
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|this
+operator|.
+name|doCacheTempDestinations
+condition|)
+block|{
+name|this
+operator|.
 name|purgeTimer
 operator|=
 operator|new
@@ -285,6 +317,7 @@ expr_stmt|;
 block|}
 block|}
 expr_stmt|;
+block|}
 name|this
 operator|.
 name|purgeTimer
@@ -293,9 +326,9 @@ name|schedule
 argument_list|(
 name|purgeTask
 argument_list|,
-name|TIME_BEFORE_PURGE
+name|purgeTime
 argument_list|,
-name|TIME_BEFORE_PURGE
+name|purgeTime
 argument_list|)
 expr_stmt|;
 block|}
@@ -403,7 +436,14 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|//add to cache
+comment|// add to cache
+if|if
+condition|(
+name|this
+operator|.
+name|doCacheTempDestinations
+condition|)
+block|{
 name|cachedDestinations
 operator|.
 name|put
@@ -420,6 +460,7 @@ argument_list|,
 name|dest
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|private
 name|void
@@ -527,7 +568,7 @@ name|key
 operator|.
 name|timeStamp
 operator|+
-name|TIME_BEFORE_PURGE
+name|purgeTime
 operator|)
 operator|<
 name|currentTime
