@@ -641,7 +641,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|idleSessions
+name|activeSessions
 operator|.
 name|size
 argument_list|()
@@ -649,11 +649,12 @@ operator|==
 literal|0
 condition|)
 block|{
+comment|//no idle sessions, no active sessions, and we can't create a new session....
 throw|throw
 operator|new
 name|JMSException
 argument_list|(
-literal|"Endpoint factory did not allows to any endpoints."
+literal|"Endpoint factory did not allow creation of any endpoints."
 argument_list|)
 throw|;
 block|}
