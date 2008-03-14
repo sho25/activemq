@@ -1396,6 +1396,8 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|monitorConnectionSplits
+init|=
+literal|true
 decl_stmt|;
 specifier|private
 name|int

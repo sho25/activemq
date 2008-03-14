@@ -240,6 +240,15 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+operator|!
+name|networkConsumerList
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|List
 argument_list|<
 name|ConsumerInfo
@@ -359,11 +368,12 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Removed stale network consumer"
+literal|"Removed stale network consumer "
 operator|+
 name|nc
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
