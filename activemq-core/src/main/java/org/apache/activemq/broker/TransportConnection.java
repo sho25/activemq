@@ -5062,10 +5062,17 @@ name|void
 name|run
 parameter_list|()
 block|{
+name|boolean
+name|locked
+init|=
+literal|false
+decl_stmt|;
 comment|// make sure we are not servicing client requests while we are shutting down.
 try|try
 block|{
 comment|//we could be waiting a long time if the network has gone - so only wait 1 second
+name|locked
+operator|=
 name|serviceLock
 operator|.
 name|writeLock
@@ -5149,6 +5156,11 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|locked
+condition|)
+block|{
 name|serviceLock
 operator|.
 name|writeLock
@@ -5157,6 +5169,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
