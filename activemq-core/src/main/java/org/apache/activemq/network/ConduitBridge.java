@@ -212,6 +212,17 @@ literal|null
 return|;
 comment|// don't want this subscription added
 block|}
+comment|//add our original id to ourselves
+name|info
+operator|.
+name|addNetworkConsumerId
+argument_list|(
+name|info
+operator|.
+name|getConsumerId
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|doCreateDemandSubscription
 argument_list|(
