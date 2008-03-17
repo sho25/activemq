@@ -5071,48 +5071,14 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|boolean
-name|locked
-init|=
-literal|false
-decl_stmt|;
-comment|// make sure we are not servicing client requests while we are shutting down.
-try|try
-block|{
-comment|//we could be waiting a long time if the network has gone - so only wait 1 second
-name|locked
-operator|=
 name|serviceLock
 operator|.
 name|writeLock
 argument_list|()
 operator|.
-name|tryLock
-argument_list|(
-literal|1
-argument_list|,
-name|TimeUnit
-operator|.
-name|SECONDS
-argument_list|)
+name|lock
+argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"Try get writeLock interrupted "
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
 try|try
 block|{
 name|doStop
@@ -5125,22 +5091,6 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Error occured while shutting down a connection to '"
-operator|+
-name|transport
-operator|.
-name|getRemoteAddress
-argument_list|()
-operator|+
-literal|"': "
-operator|+
-name|e
-argument_list|)
-expr_stmt|;
 name|LOG
 operator|.
 name|debug
@@ -5165,11 +5115,6 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|locked
-condition|)
-block|{
 name|serviceLock
 operator|.
 name|writeLock
@@ -5178,7 +5123,6 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
