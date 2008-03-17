@@ -1783,15 +1783,6 @@ argument_list|,
 literal|"true"
 argument_list|)
 expr_stmt|;
-name|map
-operator|.
-name|put
-argument_list|(
-literal|"async"
-argument_list|,
-literal|"false"
-argument_list|)
-expr_stmt|;
 name|uri
 operator|=
 name|URISupport
