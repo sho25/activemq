@@ -397,14 +397,6 @@ name|boolean
 name|isBrowser
 parameter_list|()
 function_decl|;
-comment|/**      * Get the list of in flight messages      * @return list      */
-name|List
-argument_list|<
-name|MessageReference
-argument_list|>
-name|getInFlightMessages
-parameter_list|()
-function_decl|;
 block|}
 end_interface
 

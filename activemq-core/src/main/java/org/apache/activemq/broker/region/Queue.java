@@ -4757,6 +4757,11 @@ operator|.
 name|decrement
 argument_list|()
 expr_stmt|;
+name|reference
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
 synchronized|synchronized
 init|(
 name|pagedInMessages
@@ -5224,6 +5229,11 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
+name|node
+operator|.
+name|incrementReferenceCount
+argument_list|()
+expr_stmt|;
 name|target
 operator|=
 name|s
@@ -5315,6 +5325,11 @@ name|add
 argument_list|(
 name|node
 argument_list|)
+expr_stmt|;
+name|node
+operator|.
+name|incrementReferenceCount
+argument_list|()
 expr_stmt|;
 block|}
 block|}
