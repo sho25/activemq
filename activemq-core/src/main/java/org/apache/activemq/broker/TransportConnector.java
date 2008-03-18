@@ -409,7 +409,7 @@ specifier|private
 name|boolean
 name|enableStatusMonitor
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|public
 name|TransportConnector
