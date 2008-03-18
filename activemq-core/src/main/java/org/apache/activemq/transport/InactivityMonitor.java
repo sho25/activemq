@@ -699,11 +699,12 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|inactive
 operator|.
 name|getAndSet
 argument_list|(
-literal|false
+literal|true
 argument_list|)
 condition|)
 block|{
