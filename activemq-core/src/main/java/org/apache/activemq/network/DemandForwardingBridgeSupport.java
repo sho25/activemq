@@ -764,7 +764,7 @@ specifier|private
 specifier|static
 specifier|final
 name|ThreadPoolExecutor
-name|STOP_TASKS
+name|ASYNC_TASKS
 decl_stmt|;
 specifier|protected
 specifier|final
@@ -1556,11 +1556,12 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|Thread
-name|thead
-init|=
+name|ASYNC_TASKS
+operator|.
+name|execute
+argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
 specifier|public
@@ -1588,11 +1589,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-decl_stmt|;
-name|thead
-operator|.
-name|start
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
@@ -2182,7 +2179,7 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-name|STOP_TASKS
+name|ASYNC_TASKS
 operator|.
 name|execute
 argument_list|(
@@ -5362,7 +5359,7 @@ return|;
 block|}
 static|static
 block|{
-name|STOP_TASKS
+name|ASYNC_TASKS
 operator|=
 operator|new
 name|ThreadPoolExecutor
@@ -5373,7 +5370,7 @@ name|Integer
 operator|.
 name|MAX_VALUE
 argument_list|,
-literal|10
+literal|30
 argument_list|,
 name|TimeUnit
 operator|.
