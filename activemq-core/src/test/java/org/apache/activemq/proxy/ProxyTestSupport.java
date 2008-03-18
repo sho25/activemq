@@ -468,7 +468,7 @@ name|getRemoteURI
 parameter_list|()
 block|{
 return|return
-literal|"tcp://localhost:7001"
+literal|"tcp://localhost:6171"
 return|;
 block|}
 specifier|protected
@@ -477,7 +477,7 @@ name|getLocalURI
 parameter_list|()
 block|{
 return|return
-literal|"tcp://localhost:6001"
+literal|"tcp://localhost:6161"
 return|;
 block|}
 specifier|protected
@@ -486,7 +486,7 @@ name|getRemoteProxyURI
 parameter_list|()
 block|{
 return|return
-literal|"tcp://localhost:7002"
+literal|"tcp://localhost:6162"
 return|;
 block|}
 specifier|protected
@@ -495,7 +495,7 @@ name|getLocalProxyURI
 parameter_list|()
 block|{
 return|return
-literal|"tcp://localhost:6002"
+literal|"tcp://localhost:6172"
 return|;
 block|}
 specifier|protected
