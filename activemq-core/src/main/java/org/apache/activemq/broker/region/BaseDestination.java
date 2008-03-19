@@ -192,7 +192,7 @@ specifier|private
 name|int
 name|maxPageSize
 init|=
-literal|1000
+literal|100
 decl_stmt|;
 specifier|private
 name|boolean
