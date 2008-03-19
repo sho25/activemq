@@ -4979,14 +4979,14 @@ block|{
 name|stopAsync
 argument_list|()
 expr_stmt|;
-if|if
+while|while
 condition|(
 operator|!
 name|stopped
 operator|.
 name|await
 argument_list|(
-literal|10
+literal|5
 argument_list|,
 name|TimeUnit
 operator|.
@@ -4998,14 +4998,14 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Could not shutdown the connection to '"
+literal|"The connection to '"
 operator|+
 name|transport
 operator|.
 name|getRemoteAddress
 argument_list|()
 operator|+
-literal|"' in a timely manner."
+literal|"' is taking a long time to shutdown."
 argument_list|)
 expr_stmt|;
 block|}
