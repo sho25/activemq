@@ -317,7 +317,6 @@ expr_stmt|;
 block|}
 block|}
 expr_stmt|;
-block|}
 name|this
 operator|.
 name|purgeTimer
@@ -331,6 +330,7 @@ argument_list|,
 name|purgeTime
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
