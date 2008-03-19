@@ -1397,7 +1397,7 @@ specifier|private
 name|boolean
 name|monitorConnectionSplits
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|private
 name|int
@@ -1415,7 +1415,7 @@ specifier|private
 name|boolean
 name|cacheTempDestinations
 init|=
-literal|true
+literal|false
 decl_stmt|;
 comment|//useful for failover
 specifier|private
