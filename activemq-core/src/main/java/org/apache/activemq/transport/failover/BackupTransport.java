@@ -153,6 +153,15 @@ name|transport
 operator|=
 name|transport
 expr_stmt|;
+name|this
+operator|.
+name|transport
+operator|.
+name|setTransportListener
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|URI

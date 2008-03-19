@@ -858,7 +858,7 @@ argument_list|()
 decl_stmt|;
 name|info
 operator|.
-name|seMaxInactivityDuration
+name|setMaxInactivityDuration
 argument_list|(
 literal|1000
 argument_list|)
