@@ -99,20 +99,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicReference
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -971,6 +957,14 @@ throws|throws
 name|IOException
 block|{
 comment|// Disable inactivity monitoring while processing a command.
+comment|//synchronize this method - its not synchronized
+comment|//further down the transport stack and gets called by more
+comment|//than one thread  by this class
+synchronized|synchronized
+init|(
+name|inSend
+init|)
+block|{
 name|inSend
 operator|.
 name|set
@@ -1054,6 +1048,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
