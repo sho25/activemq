@@ -1099,8 +1099,10 @@ condition|(
 operator|!
 name|failed
 operator|.
-name|getAndSet
+name|compareAndSet
 argument_list|(
+literal|false
+argument_list|,
 literal|true
 argument_list|)
 condition|)
