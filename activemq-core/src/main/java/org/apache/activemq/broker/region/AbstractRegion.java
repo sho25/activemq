@@ -1530,7 +1530,7 @@ operator|)
 name|sub
 operator|)
 operator|.
-name|browseDone
+name|destinationsAdded
 argument_list|()
 expr_stmt|;
 block|}

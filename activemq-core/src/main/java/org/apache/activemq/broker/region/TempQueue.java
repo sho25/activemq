@@ -391,6 +391,10 @@ name|messagesWaitingForSpace
 operator|.
 name|isEmpty
 argument_list|()
+operator|||
+operator|!
+name|isRecoveryDispatchEmpty
+argument_list|()
 condition|)
 block|{
 try|try
