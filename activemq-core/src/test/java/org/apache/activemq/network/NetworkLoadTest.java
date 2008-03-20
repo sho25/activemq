@@ -698,12 +698,12 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-name|fromConnection
+name|toConnection
 operator|.
 name|stop
 argument_list|()
 expr_stmt|;
-name|toConnection
+name|fromConnection
 operator|.
 name|stop
 argument_list|()
