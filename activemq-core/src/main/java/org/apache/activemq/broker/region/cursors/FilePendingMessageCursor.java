@@ -1023,11 +1023,6 @@ operator|.
 name|waitForSpace
 argument_list|()
 expr_stmt|;
-name|node
-operator|.
-name|decrementReferenceCount
-argument_list|()
-expr_stmt|;
 name|getDiskList
 argument_list|()
 operator|.

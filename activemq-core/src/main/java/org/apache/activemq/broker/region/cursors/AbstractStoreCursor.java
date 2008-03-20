@@ -620,6 +620,11 @@ operator|.
 name|getValue
 argument_list|()
 expr_stmt|;
+name|result
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
 name|i
 operator|.
 name|remove
