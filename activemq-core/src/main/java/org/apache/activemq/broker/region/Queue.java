@@ -4958,11 +4958,6 @@ operator|.
 name|decrement
 argument_list|()
 expr_stmt|;
-name|reference
-operator|.
-name|decrementReferenceCount
-argument_list|()
-expr_stmt|;
 synchronized|synchronized
 init|(
 name|pagedInMessages
@@ -5237,6 +5232,11 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|node
+operator|.
+name|incrementReferenceCount
+argument_list|()
+expr_stmt|;
 name|messages
 operator|.
 name|remove
@@ -5451,11 +5451,6 @@ name|add
 argument_list|(
 name|node
 argument_list|)
-expr_stmt|;
-name|node
-operator|.
-name|incrementReferenceCount
-argument_list|()
 expr_stmt|;
 name|target
 operator|=
