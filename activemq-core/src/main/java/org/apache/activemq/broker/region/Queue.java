@@ -5544,11 +5544,6 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
-name|node
-operator|.
-name|incrementReferenceCount
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 if|if
