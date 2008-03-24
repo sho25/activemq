@@ -284,6 +284,28 @@ name|minimumVersion
 operator|=
 name|minimumVersion
 expr_stmt|;
+comment|// Setup the initial negociation timeout to be the same as the inital max inactivity delay specified on the wireformat
+comment|// Does not make sense for us to take longer.
+try|try
+block|{
+name|setNegotiateTimeout
+argument_list|(
+name|wireFormat
+operator|.
+name|getPreferedWireFormatInfo
+argument_list|()
+operator|.
+name|getMaxInactivityDurationInitalDelay
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{         }
 block|}
 specifier|public
 name|void
