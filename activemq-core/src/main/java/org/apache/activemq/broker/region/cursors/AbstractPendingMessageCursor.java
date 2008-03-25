@@ -25,7 +25,27 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|LinkedList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -84,6 +104,22 @@ operator|.
 name|region
 operator|.
 name|MessageReference
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|QueueMessageReference
 import|;
 end_import
 
@@ -245,8 +281,16 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
-name|void
+name|List
+argument_list|<
+name|MessageReference
+argument_list|>
 name|remove
 parameter_list|(
 name|ConnectionContext
@@ -257,7 +301,13 @@ name|destination
 parameter_list|)
 throws|throws
 name|Exception
-block|{     }
+block|{
+return|return
+name|Collections
+operator|.
+name|EMPTY_LIST
+return|;
+block|}
 specifier|public
 name|boolean
 name|isRecoveryRequired

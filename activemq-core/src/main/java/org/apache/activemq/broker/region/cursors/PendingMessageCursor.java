@@ -41,6 +41,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -117,6 +127,22 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|QueueMessageReference
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|MessageId
@@ -162,7 +188,10 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * remove a destination      *       * @param context      * @param destination      * @throws Exception      */
-name|void
+name|List
+argument_list|<
+name|MessageReference
+argument_list|>
 name|remove
 parameter_list|(
 name|ConnectionContext

@@ -251,8 +251,11 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * The subscription will be no longer be receiving messages from the destination.      * @param context       * @param destination      */
-name|void
+comment|/**      * The subscription will be no longer be receiving messages from the destination.      * @param context       * @param destination      * @return a list of un-acked messages that were added to the subscription.      */
+name|List
+argument_list|<
+name|MessageReference
+argument_list|>
 name|remove
 parameter_list|(
 name|ConnectionContext

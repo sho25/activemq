@@ -35,6 +35,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashMap
 import|;
 end_import
@@ -56,6 +66,16 @@ operator|.
 name|util
 operator|.
 name|LinkedList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -140,6 +160,22 @@ operator|.
 name|region
 operator|.
 name|MessageReference
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|QueueMessageReference
 import|;
 end_import
 
@@ -658,7 +694,10 @@ block|}
 comment|/**      * remove a destination      *       * @param context      * @param destination      * @throws Exception      */
 specifier|public
 specifier|synchronized
-name|void
+name|List
+argument_list|<
+name|MessageReference
+argument_list|>
 name|remove
 parameter_list|(
 name|ConnectionContext
@@ -695,6 +734,11 @@ name|tsp
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|Collections
+operator|.
+name|EMPTY_LIST
+return|;
 block|}
 comment|/**      * @return true if there are no pending messages      */
 specifier|public
