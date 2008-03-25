@@ -288,6 +288,16 @@ comment|// Setup the initial negociation timeout to be the same as the inital ma
 comment|// Does not make sense for us to take longer.
 try|try
 block|{
+if|if
+condition|(
+name|wireFormat
+operator|.
+name|getPreferedWireFormatInfo
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|setNegotiateTimeout
 argument_list|(
 name|wireFormat
@@ -299,6 +309,7 @@ name|getMaxInactivityDurationInitalDelay
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
