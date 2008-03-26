@@ -2072,6 +2072,12 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// This seems to cause the destination to be added but without advisories firing...
+name|context
+operator|.
+name|getBroker
+argument_list|()
+operator|.
 name|addDestination
 argument_list|(
 name|context
@@ -2533,6 +2539,14 @@ name|getDestination
 argument_list|()
 decl_stmt|;
 comment|// ensure the destination is registered with the RegionBroker
+name|producerExchange
+operator|.
+name|getConnectionContext
+argument_list|()
+operator|.
+name|getBroker
+argument_list|()
+operator|.
 name|addDestination
 argument_list|(
 name|producerExchange
