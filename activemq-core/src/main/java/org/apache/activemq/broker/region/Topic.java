@@ -3230,6 +3230,22 @@ block|}
 block|}
 block|}
 block|}
+specifier|public
+name|void
+name|messageExpired
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|PrefetchSubscription
+name|prefetchSubscription
+parameter_list|,
+name|MessageReference
+name|node
+parameter_list|)
+block|{
+comment|// TODO Auto-generated method stub
+block|}
 block|}
 end_class
 
