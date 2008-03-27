@@ -268,9 +268,9 @@ argument_list|)
 expr_stmt|;
 name|factory
 operator|.
-name|setUseAsyncSend
+name|setAlwaysSyncSend
 argument_list|(
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 name|connection
