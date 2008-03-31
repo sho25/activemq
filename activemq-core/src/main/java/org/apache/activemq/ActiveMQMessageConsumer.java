@@ -3714,6 +3714,9 @@ block|}
 if|if
 condition|(
 name|messageListener
+operator|.
+name|get
+argument_list|()
 operator|!=
 literal|null
 condition|)
