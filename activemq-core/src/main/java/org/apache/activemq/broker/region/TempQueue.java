@@ -332,7 +332,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|wakeup
+name|xwakeup
 parameter_list|()
 block|{
 name|boolean
