@@ -574,6 +574,8 @@ block|{
 name|TextMessage
 name|msg
 decl_stmt|;
+try|try
+block|{
 for|for
 control|(
 specifier|final
@@ -631,6 +633,13 @@ literal|null
 condition|)
 do|;
 block|}
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{ 		}
 if|if
 condition|(
 name|connection
