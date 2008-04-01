@@ -154,15 +154,7 @@ argument_list|,
 literal|"buildSchema"
 argument_list|)
 expr_stmt|;
-name|props
-operator|.
-name|setProperty
-argument_list|(
-literal|"openjpa.Log"
-argument_list|,
-literal|"DefaultLevel=WARN,SQL=TRACE"
-argument_list|)
-expr_stmt|;
+comment|//        props.setProperty("openjpa.Log", "DefaultLevel=WARN,SQL=TRACE");
 name|pa
 operator|.
 name|setEntityManagerProperties
@@ -236,15 +228,7 @@ argument_list|,
 literal|"buildSchema"
 argument_list|)
 expr_stmt|;
-name|props
-operator|.
-name|setProperty
-argument_list|(
-literal|"openjpa.Log"
-argument_list|,
-literal|"DefaultLevel=WARN,SQL=TRACE"
-argument_list|)
-expr_stmt|;
+comment|//        props.setProperty("openjpa.Log", "DefaultLevel=WARN,SQL=TRACE");
 name|pa
 operator|.
 name|setEntityManagerProperties
