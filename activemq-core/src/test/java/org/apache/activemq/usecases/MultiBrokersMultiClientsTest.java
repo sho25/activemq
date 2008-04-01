@@ -159,7 +159,7 @@ specifier|final
 name|int
 name|MESSAGE_COUNT
 init|=
-literal|10
+literal|20
 decl_stmt|;
 comment|// messages per producer
 specifier|protected
@@ -360,7 +360,7 @@ name|latch
 operator|.
 name|await
 argument_list|(
-literal|30
+literal|45
 argument_list|,
 name|TimeUnit
 operator|.
@@ -537,13 +537,42 @@ expr_stmt|;
 block|}
 block|}
 comment|// wait for consumers to get propagated
-name|Thread
-operator|.
-name|sleep
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|1
+init|;
+name|i
+operator|<=
+name|BROKER_COUNT
+condition|;
+name|i
+operator|++
+control|)
+block|{
+comment|// all consumers on the remote brokers look like 1 consumer to the local broker.
+name|assertConsumersConnect
 argument_list|(
-literal|5000
+literal|"Broker"
+operator|+
+name|i
+argument_list|,
+name|dest
+argument_list|,
+operator|(
+name|BROKER_COUNT
+operator|-
+literal|1
+operator|)
+operator|+
+name|CONSUMER_COUNT
+argument_list|,
+literal|30000
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Send messages
 for|for
 control|(
@@ -604,7 +633,7 @@ name|latch
 operator|.
 name|await
 argument_list|(
-literal|30
+literal|45
 argument_list|,
 name|TimeUnit
 operator|.
