@@ -286,7 +286,6 @@ argument_list|(
 name|answer
 argument_list|)
 return|;
-comment|//return new PooledConnectionFactory(answer);
 block|}
 else|else
 block|{
@@ -328,6 +327,12 @@ name|type
 operator|.
 name|getConstructor
 argument_list|(
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|ActiveMQConnectionFactory
 operator|.
 name|class
