@@ -512,6 +512,10 @@ argument_list|)
 decl_stmt|;
 name|assertNotNull
 argument_list|(
+literal|"Missing message: "
+operator|+
+name|i
+argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
