@@ -553,7 +553,6 @@ expr_stmt|;
 block|}
 comment|/**      * Allows a message to be pulled on demand by a client      */
 specifier|public
-specifier|synchronized
 name|Response
 name|pullMessage
 parameter_list|(
@@ -583,18 +582,46 @@ name|isSlave
 argument_list|()
 condition|)
 block|{
-name|prefetchExtension
-operator|++
-expr_stmt|;
 specifier|final
 name|long
 name|dispatchCounterBeforePull
-init|=
-name|dispatchCounter
 decl_stmt|;
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
+name|prefetchExtension
+operator|++
+expr_stmt|;
+name|dispatchCounterBeforePull
+operator|=
+name|dispatchCounter
+expr_stmt|;
+block|}
+comment|// Have the destination push us some messages.
+for|for
+control|(
+name|Destination
+name|dest
+range|:
+name|destinations
+control|)
+block|{
+name|dest
+operator|.
+name|iterate
+argument_list|()
+expr_stmt|;
+block|}
 name|dispatchPending
 argument_list|()
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 comment|// If there was nothing dispatched.. we may need to setup a timeout.
 if|if
 condition|(
@@ -664,6 +691,7 @@ name|getTimeout
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

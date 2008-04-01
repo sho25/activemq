@@ -893,6 +893,16 @@ block|}
 block|}
 decl_stmt|;
 specifier|private
+specifier|final
+name|Object
+name|iteratingMutex
+init|=
+operator|new
+name|Object
+argument_list|()
+block|{}
+decl_stmt|;
+specifier|private
 specifier|static
 specifier|final
 name|Comparator
@@ -4465,6 +4475,11 @@ name|boolean
 name|iterate
 parameter_list|()
 block|{
+synchronized|synchronized
+init|(
+name|iteratingMutex
+init|)
+block|{
 name|RecoveryDispatch
 name|rd
 decl_stmt|;
@@ -4695,6 +4710,7 @@ block|}
 return|return
 literal|false
 return|;
+block|}
 block|}
 specifier|protected
 name|MessageReferenceFilter

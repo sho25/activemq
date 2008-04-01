@@ -872,6 +872,18 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|boolean
+name|iterate
+parameter_list|()
+block|{
+return|return
+name|next
+operator|.
+name|iterate
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
