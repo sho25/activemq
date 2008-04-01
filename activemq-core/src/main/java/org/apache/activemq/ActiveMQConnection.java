@@ -1023,6 +1023,8 @@ implements|,
 name|StreamConnection
 implements|,
 name|TransportListener
+implements|,
+name|EnhancedConnection
 block|{
 specifier|public
 specifier|static

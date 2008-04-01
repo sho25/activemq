@@ -191,6 +191,32 @@ name|AlreadyClosedException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|EnhancedConnection
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|advisory
+operator|.
+name|DestinationSource
+import|;
+end_import
+
 begin_comment
 comment|/**  * Represents a proxy {@link Connection} which is-a {@link TopicConnection} and  * {@link QueueConnection} which is pooled and on {@link #close()} will return  * itself to the sessionPool.  *   *<b>NOTE</b> this implementation is only intended for use when sending  * messages. It does not deal with pooling of consumers; for that look at a  * library like<a href="http://jencks.org/">Jencks</a> such as in<a  * href="http://jencks.org/Message+Driven+POJOs">this example</a>  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
@@ -203,6 +229,8 @@ implements|implements
 name|TopicConnection
 implements|,
 name|QueueConnection
+implements|,
+name|EnhancedConnection
 block|{
 specifier|private
 name|ConnectionPool
@@ -608,6 +636,23 @@ name|transacted
 argument_list|,
 name|ackMode
 argument_list|)
+return|;
+block|}
+comment|// EnhancedCollection API
+comment|// -------------------------------------------------------------------------
+specifier|public
+name|DestinationSource
+name|getDestinationSource
+parameter_list|()
+throws|throws
+name|JMSException
+block|{
+return|return
+name|getConnection
+argument_list|()
+operator|.
+name|getDestinationSource
+argument_list|()
 return|;
 block|}
 comment|// Implementation methods

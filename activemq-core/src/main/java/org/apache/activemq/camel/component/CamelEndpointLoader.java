@@ -67,6 +67,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|EnhancedConnection
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|advisory
 operator|.
 name|DestinationEvent
@@ -287,7 +299,7 @@ name|CamelContext
 name|camelContext
 decl_stmt|;
 specifier|private
-name|ActiveMQConnection
+name|EnhancedConnection
 name|connection
 decl_stmt|;
 specifier|private
@@ -352,13 +364,13 @@ if|if
 condition|(
 name|value
 operator|instanceof
-name|ActiveMQConnection
+name|EnhancedConnection
 condition|)
 block|{
 name|connection
 operator|=
 operator|(
-name|ActiveMQConnection
+name|EnhancedConnection
 operator|)
 name|value
 expr_stmt|;
@@ -369,7 +381,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Created JMS Connection is not an ActiveMQConnection: "
+literal|"Created JMS Connection is not an EnhancedConnection: "
 operator|+
 name|value
 argument_list|)
@@ -554,7 +566,7 @@ name|camelContext
 expr_stmt|;
 block|}
 specifier|public
-name|ActiveMQConnection
+name|EnhancedConnection
 name|getConnection
 parameter_list|()
 block|{
