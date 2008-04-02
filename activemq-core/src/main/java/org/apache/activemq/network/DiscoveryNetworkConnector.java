@@ -403,7 +403,21 @@ name|containsKey
 argument_list|(
 name|uri
 argument_list|)
-operator|||
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Discovery agent generated a duplicate onServiceAdd event for: "
+operator|+
+name|uri
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+if|if
+condition|(
 name|localURI
 operator|.
 name|equals
