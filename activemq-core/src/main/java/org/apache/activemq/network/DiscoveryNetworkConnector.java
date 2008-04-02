@@ -641,7 +641,22 @@ parameter_list|(
 name|IOException
 name|e1
 parameter_list|)
-block|{                 }
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Discovery agent failure while handling failure event: "
+operator|+
+name|e1
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|e1
+argument_list|)
+expr_stmt|;
+block|}
 return|return;
 block|}
 block|}
