@@ -322,6 +322,11 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+name|message
+operator|.
+name|incrementReferenceCount
+argument_list|()
+expr_stmt|;
 block|}
 comment|// public void addMessageReference(ConnectionContext context,MessageId
 comment|// messageId,long expirationTime,String messageRef)
@@ -389,13 +394,29 @@ init|(
 name|messageTable
 init|)
 block|{
+name|Message
+name|removed
+init|=
 name|messageTable
 operator|.
 name|remove
 argument_list|(
 name|msgId
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|removed
+operator|!=
+literal|null
+condition|)
+block|{
+name|removed
+operator|.
+name|decrementReferenceCount
+argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(

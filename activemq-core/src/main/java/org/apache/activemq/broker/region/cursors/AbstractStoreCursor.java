@@ -435,6 +435,16 @@ argument_list|(
 name|regionDestination
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|message
+operator|.
+name|getMemoryUsage
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
 name|message
 operator|.
 name|setMemoryUsage
@@ -448,6 +458,7 @@ name|getMemoryUsage
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|message
 operator|.
