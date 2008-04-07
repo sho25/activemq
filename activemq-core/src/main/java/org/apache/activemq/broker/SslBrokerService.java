@@ -288,8 +288,7 @@ name|TransportFactory
 operator|.
 name|bind
 argument_list|(
-name|getBrokerName
-argument_list|()
+name|this
 argument_list|,
 name|brokerURI
 argument_list|)

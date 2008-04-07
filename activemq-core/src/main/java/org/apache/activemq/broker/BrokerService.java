@@ -7047,8 +7047,7 @@ name|TransportFactory
 operator|.
 name|bind
 argument_list|(
-name|getBrokerName
-argument_list|()
+name|this
 argument_list|,
 name|brokerURI
 argument_list|)
@@ -7519,6 +7518,13 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|connector
+operator|.
+name|setBrokerService
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 name|al
 operator|.
 name|add
