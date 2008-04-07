@@ -244,7 +244,7 @@ specifier|public
 name|void
 name|doConsume
 parameter_list|(
-name|Command
+name|Object
 name|command
 parameter_list|)
 block|{
