@@ -2251,9 +2251,6 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-name|checkClosed
-argument_list|()
-expr_stmt|;
 try|try
 block|{
 comment|// If we were running, lets stop first.
