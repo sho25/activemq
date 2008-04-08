@@ -75,7 +75,11 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
 operator|.
 name|jmdns
 operator|.
