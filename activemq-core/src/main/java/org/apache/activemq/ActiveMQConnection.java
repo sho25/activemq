@@ -1103,6 +1103,8 @@ decl_stmt|;
 specifier|protected
 name|boolean
 name|dispatchAsync
+init|=
+literal|true
 decl_stmt|;
 specifier|protected
 name|boolean
@@ -1929,9 +1931,11 @@ else|:
 name|acknowledgeMode
 operator|)
 argument_list|,
-name|dispatchAsync
+name|isDispatchAsync
+argument_list|()
 argument_list|,
-name|alwaysSessionAsync
+name|isAlwaysSessionAsync
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -2696,7 +2700,8 @@ name|info
 operator|.
 name|setDispatchAsync
 argument_list|(
-name|dispatchAsync
+name|isDispatchAsync
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Allows the options on the destination to configure the consumerInfo
@@ -3517,7 +3522,8 @@ name|info
 operator|.
 name|setDispatchAsync
 argument_list|(
-name|dispatchAsync
+name|isDispatchAsync
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Allows the options on the destination to configure the consumerInfo

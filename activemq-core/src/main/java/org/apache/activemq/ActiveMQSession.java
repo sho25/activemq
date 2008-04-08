@@ -2463,7 +2463,8 @@ name|noLocal
 argument_list|,
 literal|false
 argument_list|,
-name|asyncDispatch
+name|isAsyncDispatch
+argument_list|()
 argument_list|,
 name|messageListener
 argument_list|)

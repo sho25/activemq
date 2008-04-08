@@ -483,6 +483,8 @@ decl_stmt|;
 specifier|protected
 name|boolean
 name|dispatchAsync
+init|=
+literal|true
 decl_stmt|;
 specifier|protected
 name|boolean
