@@ -187,7 +187,7 @@ specifier|protected
 name|boolean
 name|enableAudit
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|protected
 name|ActiveMQMessageAudit
@@ -427,6 +427,8 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|enableAudit
+operator|&&
 name|this
 operator|.
 name|audit

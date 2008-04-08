@@ -99,11 +99,11 @@ name|Exception
 block|{
 name|numberofProducers
 operator|=
-literal|6
+literal|60
 expr_stmt|;
 name|numberOfConsumers
 operator|=
-literal|6
+literal|60
 expr_stmt|;
 name|samepleCount
 operator|=
