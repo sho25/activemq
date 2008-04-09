@@ -73,6 +73,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|LinkedHashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -83,7 +93,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Random
+name|Map
 import|;
 end_import
 
@@ -93,9 +103,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|concurrent
-operator|.
-name|ConcurrentHashMap
+name|Random
 import|;
 end_import
 
@@ -510,7 +518,7 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|ConcurrentHashMap
+name|Map
 argument_list|<
 name|Integer
 argument_list|,
@@ -519,7 +527,7 @@ argument_list|>
 name|requestMap
 init|=
 operator|new
-name|ConcurrentHashMap
+name|LinkedHashMap
 argument_list|<
 name|Integer
 argument_list|,
@@ -859,6 +867,15 @@ block|{
 name|Object
 name|object
 init|=
+literal|null
+decl_stmt|;
+synchronized|synchronized
+init|(
+name|requestMap
+init|)
+block|{
+name|object
+operator|=
 name|requestMap
 operator|.
 name|remove
@@ -878,7 +895,8 @@ name|getCorrelationId
 argument_list|()
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|object
@@ -1952,6 +1970,11 @@ argument_list|(
 name|command
 argument_list|)
 decl_stmt|;
+synchronized|synchronized
+init|(
+name|requestMap
+init|)
+block|{
 if|if
 condition|(
 name|tracked
@@ -2012,6 +2035,7 @@ argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Send the message.
 try|try
@@ -2703,6 +2727,30 @@ argument_list|(
 name|t
 argument_list|)
 expr_stmt|;
+name|Map
+name|tmpMap
+init|=
+literal|null
+decl_stmt|;
+synchronized|synchronized
+init|(
+name|requestMap
+init|)
+block|{
+name|tmpMap
+operator|=
+operator|new
+name|LinkedHashMap
+argument_list|<
+name|Integer
+argument_list|,
+name|Command
+argument_list|>
+argument_list|(
+name|requestMap
+argument_list|)
+expr_stmt|;
+block|}
 for|for
 control|(
 name|Iterator
@@ -2711,7 +2759,7 @@ name|Command
 argument_list|>
 name|iter2
 init|=
-name|requestMap
+name|tmpMap
 operator|.
 name|values
 argument_list|()
