@@ -3916,6 +3916,12 @@ block|}
 if|if
 condition|(
 operator|!
+name|msg
+operator|.
+name|isResponseRequired
+argument_list|()
+operator|&&
+operator|!
 name|connection
 operator|.
 name|isAlwaysSyncSend
