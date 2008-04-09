@@ -88,6 +88,9 @@ name|session
 parameter_list|,
 name|ActiveMQDestination
 name|destination
+parameter_list|,
+name|int
+name|sendTimeout
 parameter_list|)
 throws|throws
 name|JMSException
@@ -102,6 +105,8 @@ name|getNextProducerId
 argument_list|()
 argument_list|,
 name|destination
+argument_list|,
+name|sendTimeout
 argument_list|)
 expr_stmt|;
 block|}

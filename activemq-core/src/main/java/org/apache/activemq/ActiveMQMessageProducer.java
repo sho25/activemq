@@ -277,6 +277,9 @@ name|producerId
 parameter_list|,
 name|ActiveMQDestination
 name|destination
+parameter_list|,
+name|int
+name|sendTimeout
 parameter_list|)
 throws|throws
 name|JMSException
@@ -489,6 +492,13 @@ operator|.
 name|asyncSendPacket
 argument_list|(
 name|info
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|setSendTimeout
+argument_list|(
+name|sendTimeout
 argument_list|)
 expr_stmt|;
 name|setTransformer
@@ -836,6 +846,8 @@ argument_list|,
 name|timeToLive
 argument_list|,
 name|producerWindow
+argument_list|,
+name|sendTimeout
 argument_list|)
 expr_stmt|;
 name|stats

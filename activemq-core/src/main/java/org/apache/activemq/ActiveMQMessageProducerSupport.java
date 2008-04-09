@@ -111,6 +111,12 @@ specifier|protected
 name|long
 name|defaultTimeToLive
 decl_stmt|;
+specifier|protected
+name|int
+name|sendTimeout
+init|=
+literal|0
+decl_stmt|;
 specifier|public
 name|ActiveMQMessageProducerSupport
 parameter_list|(
@@ -506,6 +512,32 @@ parameter_list|()
 throws|throws
 name|IllegalStateException
 function_decl|;
+comment|/**      * @return the sendTimeout      */
+specifier|public
+name|int
+name|getSendTimeout
+parameter_list|()
+block|{
+return|return
+name|sendTimeout
+return|;
+block|}
+comment|/**      * @param sendTimeout the sendTimeout to set      */
+specifier|public
+name|void
+name|setSendTimeout
+parameter_list|(
+name|int
+name|sendTimeout
+parameter_list|)
+block|{
+name|this
+operator|.
+name|sendTimeout
+operator|=
+name|sendTimeout
+expr_stmt|;
+block|}
 block|}
 end_class
 

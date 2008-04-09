@@ -1247,6 +1247,12 @@ init|=
 literal|500L
 decl_stmt|;
 specifier|private
+name|int
+name|sendTimeout
+init|=
+literal|0
+decl_stmt|;
+specifier|private
 specifier|final
 name|Transport
 name|transport
@@ -4789,6 +4795,32 @@ operator|.
 name|warnAboutUnstartedConnectionTimeout
 operator|=
 name|warnAboutUnstartedConnectionTimeout
+expr_stmt|;
+block|}
+comment|/**      * @return the sendTimeout      */
+specifier|public
+name|int
+name|getSendTimeout
+parameter_list|()
+block|{
+return|return
+name|sendTimeout
+return|;
+block|}
+comment|/**      * @param sendTimeout the sendTimeout to set      */
+specifier|public
+name|void
+name|setSendTimeout
+parameter_list|(
+name|int
+name|sendTimeout
+parameter_list|)
+block|{
+name|this
+operator|.
+name|sendTimeout
+operator|=
+name|sendTimeout
 expr_stmt|;
 block|}
 comment|/**      * Returns the time this connection was created      */
