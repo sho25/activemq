@@ -2454,11 +2454,17 @@ expr_stmt|;
 block|}
 block|}
 block|}
+synchronized|synchronized
+init|(
+name|deliveredMessages
+init|)
+block|{
 name|deliveredMessages
 operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+block|}
 name|List
 argument_list|<
 name|MessageDispatch
