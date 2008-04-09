@@ -1145,7 +1145,11 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Transport failed, attempting to automatically reconnect due to: "
+literal|"Transport failed to "
+operator|+
+name|connectedTransportURI
+operator|+
+literal|" , attempting to automatically reconnect due to: "
 operator|+
 name|e
 argument_list|)
@@ -1823,6 +1827,15 @@ operator|&&
 name|connectionFailure
 operator|==
 literal|null
+operator|&&
+operator|!
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|isInterrupted
+argument_list|()
 condition|)
 block|{
 name|LOG
