@@ -1976,7 +1976,7 @@ name|Exception
 block|{
 name|ArrayList
 argument_list|<
-name|Destination
+name|ActiveMQDestination
 argument_list|>
 name|l
 decl_stmt|;
@@ -1985,12 +1985,13 @@ operator|=
 operator|new
 name|ArrayList
 argument_list|<
-name|Destination
+name|ActiveMQDestination
 argument_list|>
 argument_list|(
-name|destinations
+name|getDestinationMap
+argument_list|()
 operator|.
-name|values
+name|keySet
 argument_list|()
 argument_list|)
 expr_stmt|;
