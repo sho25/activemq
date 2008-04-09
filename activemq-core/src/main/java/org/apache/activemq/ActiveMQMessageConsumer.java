@@ -765,6 +765,21 @@ literal|"Cannot use a Temporary destination that has been deleted"
 argument_list|)
 throw|;
 block|}
+if|if
+condition|(
+name|prefetch
+operator|<
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"Cannot have a prefetch size less than zero"
+argument_list|)
+throw|;
+block|}
 block|}
 name|this
 operator|.
