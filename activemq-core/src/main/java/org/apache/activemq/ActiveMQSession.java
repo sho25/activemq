@@ -3654,7 +3654,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|JMSException
+name|InvalidDestinationException
 argument_list|(
 literal|"Cannot publish to a deleted Destination: "
 operator|+
