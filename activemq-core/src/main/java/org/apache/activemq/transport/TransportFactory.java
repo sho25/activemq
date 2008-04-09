@@ -750,6 +750,29 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/**       * Allow registration of a transport factory without wiring via META-INF classes      * @param scheme      * @param tf      */
+specifier|public
+specifier|static
+name|void
+name|registerTransportFactory
+parameter_list|(
+name|String
+name|scheme
+parameter_list|,
+name|TransportFactory
+name|tf
+parameter_list|)
+block|{
+name|TRANSPORT_FACTORYS
+operator|.
+name|put
+argument_list|(
+name|scheme
+argument_list|,
+name|tf
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Factory method to create a new transport      *       * @throws IOException      * @throws UnknownHostException      */
 specifier|protected
 name|Transport
