@@ -70,6 +70,7 @@ name|boolean
 name|iterating
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|Thread
 name|runningThread
 decl_stmt|;
@@ -122,13 +123,19 @@ operator|.
 name|currentThread
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|runTask
 argument_list|()
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|runningThread
 operator|=
 literal|null
 expr_stmt|;
+block|}
 block|}
 block|}
 expr_stmt|;
@@ -186,7 +193,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * shut down the task      *       * @throws InterruptedException      */
+comment|/**      * shut down the task      *      * @throws InterruptedException      */
 specifier|public
 name|void
 name|shutdown
@@ -291,6 +298,8 @@ name|done
 init|=
 literal|false
 decl_stmt|;
+try|try
+block|{
 for|for
 control|(
 name|int
@@ -322,6 +331,9 @@ expr_stmt|;
 break|break;
 block|}
 block|}
+block|}
+finally|finally
+block|{
 synchronized|synchronized
 init|(
 name|runable
@@ -331,6 +343,13 @@ name|iterating
 operator|=
 literal|false
 expr_stmt|;
+block|}
+block|}
+synchronized|synchronized
+init|(
+name|runable
+init|)
+block|{
 if|if
 condition|(
 name|shutdown
