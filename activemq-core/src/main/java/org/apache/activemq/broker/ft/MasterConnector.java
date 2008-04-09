@@ -638,7 +638,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Starting a network connection between "
+literal|"Starting a slave connection between "
 operator|+
 name|localBroker
 operator|+
@@ -756,25 +756,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|masterActive
-operator|.
-name|set
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|Thread
-name|thead
-init|=
-operator|new
-name|Thread
-argument_list|()
-block|{
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
 try|try
 block|{
 name|localBroker
@@ -789,6 +770,13 @@ argument_list|()
 expr_stmt|;
 name|startBridge
 argument_list|()
+expr_stmt|;
+name|masterActive
+operator|.
+name|set
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -816,14 +804,6 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-block|}
-decl_stmt|;
-name|thead
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
 block|}
 specifier|protected
 name|void
