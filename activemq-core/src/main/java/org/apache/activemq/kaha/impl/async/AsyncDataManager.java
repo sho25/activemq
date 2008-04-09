@@ -3330,6 +3330,7 @@ block|}
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|ByteSequence
 name|read
 parameter_list|(

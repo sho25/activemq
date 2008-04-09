@@ -2902,6 +2902,7 @@ expr_stmt|;
 block|}
 comment|/**      * @param location      * @return      * @throws IOException      */
 specifier|public
+specifier|synchronized
 name|DataStructure
 name|readCommand
 parameter_list|(
