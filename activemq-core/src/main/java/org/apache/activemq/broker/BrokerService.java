@@ -1667,6 +1667,25 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+operator|!
+name|isAdvisorySupport
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|javax
+operator|.
+name|jms
+operator|.
+name|IllegalStateException
+argument_list|(
+literal|"Networks require advisory messages to function - advisories are currently disabled"
+argument_list|)
+throw|;
+block|}
 name|NetworkConnector
 name|connector
 init|=
