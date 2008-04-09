@@ -610,7 +610,7 @@ operator|.
 name|getRequestURI
 argument_list|()
 operator|+
-literal|"/"
+literal|"?msgId="
 operator|+
 name|title
 decl_stmt|;
