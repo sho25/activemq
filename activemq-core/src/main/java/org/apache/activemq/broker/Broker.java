@@ -582,6 +582,11 @@ name|MessageReference
 name|messageReference
 parameter_list|)
 function_decl|;
+comment|/**      * @return the broker sequence id      */
+name|long
+name|getBrokerSequenceId
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

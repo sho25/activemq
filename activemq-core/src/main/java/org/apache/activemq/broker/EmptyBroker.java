@@ -965,6 +965,16 @@ return|return
 literal|null
 return|;
 block|}
+specifier|public
+name|long
+name|getBrokerSequenceId
+parameter_list|()
+block|{
+return|return
+operator|-
+literal|1l
+return|;
+block|}
 block|}
 end_class
 

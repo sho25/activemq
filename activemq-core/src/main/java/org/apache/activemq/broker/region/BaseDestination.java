@@ -226,6 +226,11 @@ specifier|final
 name|BrokerService
 name|brokerService
 decl_stmt|;
+specifier|protected
+specifier|final
+name|Broker
+name|regionBroker
+decl_stmt|;
 comment|/**      * @param broker       * @param store       * @param destination      * @param parentStats      * @throws Exception       */
 specifier|public
 name|BaseDestination
@@ -329,6 +334,15 @@ name|setUsagePortion
 argument_list|(
 literal|1.0f
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|regionBroker
+operator|=
+name|brokerService
+operator|.
+name|getRegionBroker
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * initialize the destination      * @throws Exception      */
@@ -682,6 +696,18 @@ name|lazyDispatch
 operator|=
 name|lazyDispatch
 expr_stmt|;
+block|}
+specifier|protected
+name|long
+name|getDestinationSequenceId
+parameter_list|()
+block|{
+return|return
+name|regionBroker
+operator|.
+name|getBrokerSequenceId
+argument_list|()
+return|;
 block|}
 block|}
 end_class

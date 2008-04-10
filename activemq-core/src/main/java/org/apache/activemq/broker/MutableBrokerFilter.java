@@ -1438,6 +1438,19 @@ name|getRoot
 argument_list|()
 return|;
 block|}
+specifier|public
+name|long
+name|getBrokerSequenceId
+parameter_list|()
+block|{
+return|return
+name|getNext
+argument_list|()
+operator|.
+name|getBrokerSequenceId
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

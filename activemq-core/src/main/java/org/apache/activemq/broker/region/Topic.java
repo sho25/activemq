@@ -2180,6 +2180,17 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+name|message
+operator|.
+name|getMessageId
+argument_list|()
+operator|.
+name|setBrokerSequenceId
+argument_list|(
+name|getDestinationSequenceId
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|topicStore
