@@ -130,6 +130,11 @@ name|MulticastDiscoveryAgentFactory
 extends|extends
 name|DiscoveryAgentFactory
 block|{
+comment|//See AMQ-1489. There's something wrong here but it is difficult to tell what.
+comment|//It looks like to actually set the discovery URI you have to use something like
+comment|//<transportConnector uri="..." discoveryUri="multicast://239.3.7.0:37000?discoveryURI=multicast://239.3.7.0:37000" />
+comment|// or
+comment|//<networkConnector name="..." uri="multicast://239.3.7.0:37000?discoveryURI=multicast://239.3.7.0:37000">
 specifier|protected
 name|DiscoveryAgent
 name|doCreateDiscoveryAgent
