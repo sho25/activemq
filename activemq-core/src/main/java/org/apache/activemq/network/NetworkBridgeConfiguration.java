@@ -90,7 +90,7 @@ specifier|private
 name|String
 name|name
 init|=
-literal|"localhost"
+literal|null
 decl_stmt|;
 comment|/**      * @return the conduitSubscriptions      */
 specifier|public
@@ -434,6 +434,22 @@ name|String
 name|getName
 parameter_list|()
 block|{
+if|if
+condition|(
+name|this
+operator|.
+name|name
+operator|==
+literal|null
+condition|)
+block|{
+name|this
+operator|.
+name|name
+operator|=
+literal|"localhost"
+expr_stmt|;
+block|}
 return|return
 name|this
 operator|.

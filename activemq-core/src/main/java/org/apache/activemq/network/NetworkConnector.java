@@ -900,12 +900,6 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-specifier|public
-specifier|abstract
-name|String
-name|getName
-parameter_list|()
-function_decl|;
 specifier|protected
 name|void
 name|handleStart

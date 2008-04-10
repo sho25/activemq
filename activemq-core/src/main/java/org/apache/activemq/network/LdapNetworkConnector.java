@@ -443,6 +443,13 @@ name|context
 init|=
 literal|null
 decl_stmt|;
+comment|//currently in use URI
+specifier|private
+name|URI
+name|ldapURI
+init|=
+literal|null
+decl_stmt|;
 comment|/**     * returns the next URI from the configured list     *     * @return random URI from the configured list     */
 specifier|public
 name|URI
@@ -737,19 +744,22 @@ argument_list|,
 literal|"com.sun.jndi.ldap.LdapCtxFactory"
 argument_list|)
 expr_stmt|;
-name|URI
-name|uri
-init|=
+name|this
+operator|.
+name|ldapURI
+operator|=
 name|getUri
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|LOG
 operator|.
 name|debug
 argument_list|(
 literal|"    URI ["
 operator|+
-name|uri
+name|this
+operator|.
+name|ldapURI
 operator|+
 literal|"]"
 argument_list|)
@@ -762,7 +772,9 @@ name|Context
 operator|.
 name|PROVIDER_URL
 argument_list|,
-name|uri
+name|this
+operator|.
+name|ldapURI
 operator|.
 name|toString
 argument_list|()
@@ -865,7 +877,9 @@ condition|(
 name|failover
 condition|)
 block|{
-name|uri
+name|this
+operator|.
+name|ldapURI
 operator|=
 name|getUri
 argument_list|()
@@ -887,7 +901,9 @@ argument_list|)
 operator|+
 literal|"], failover connection to ["
 operator|+
-name|uri
+name|this
+operator|.
+name|ldapURI
 operator|.
 name|toString
 argument_list|()
@@ -903,7 +919,9 @@ name|Context
 operator|.
 name|PROVIDER_URL
 argument_list|,
-name|uri
+name|this
+operator|.
+name|ldapURI
 operator|.
 name|toString
 argument_list|()
@@ -1125,12 +1143,53 @@ name|String
 name|getName
 parameter_list|()
 block|{
-return|return
+name|String
+name|name
+init|=
+name|super
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|name
+operator|==
+literal|null
+condition|)
+block|{
+name|name
+operator|=
+name|this
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" ["
+operator|+
+name|ldapURI
+operator|.
 name|toString
 argument_list|()
+operator|+
+literal|"]"
+expr_stmt|;
+name|super
+operator|.
+name|setName
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|name
 return|;
 block|}
-comment|/**     * add connector of the given URI     *     * @param result search result of connector to add     */
+comment|/**      * add connector of the given URI      *       * @param result      *            search result of connector to add      */
 specifier|protected
 specifier|synchronized
 name|void
