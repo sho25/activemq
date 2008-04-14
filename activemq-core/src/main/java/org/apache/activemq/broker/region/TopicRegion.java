@@ -577,6 +577,11 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|destinationsMutex
+init|)
+block|{
 for|for
 control|(
 name|Iterator
@@ -620,6 +625,7 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|super
 operator|.
@@ -940,6 +946,11 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|destinationsMutex
+init|)
+block|{
 for|for
 control|(
 name|Iterator
@@ -983,6 +994,7 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|super
 operator|.

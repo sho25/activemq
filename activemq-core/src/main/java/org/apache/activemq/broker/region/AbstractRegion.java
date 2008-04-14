@@ -21,16 +21,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -711,6 +701,11 @@ name|dest
 argument_list|)
 expr_stmt|;
 block|}
+synchronized|synchronized
+init|(
+name|destinationsMutex
+init|)
+block|{
 for|for
 control|(
 name|Iterator
@@ -749,6 +744,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
 specifier|public
 name|void
 name|stop
@@ -760,6 +756,11 @@ name|started
 operator|=
 literal|false
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|destinationsMutex
+init|)
+block|{
 for|for
 control|(
 name|Iterator
@@ -796,6 +797,7 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 name|destinations
 operator|.
@@ -1469,6 +1471,11 @@ comment|// thread added, then removed, as would be allowed with
 comment|// no mutex held. Remove is only essentially run once
 comment|// so everything after this point would be leaked.
 comment|// Add the subscription to all the matching queues.
+synchronized|synchronized
+init|(
+name|destinationsMutex
+init|)
+block|{
 for|for
 control|(
 name|Iterator
@@ -1514,6 +1521,7 @@ argument_list|,
 name|sub
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -1572,6 +1580,11 @@ operator|.
 name|getDestinations
 argument_list|()
 decl_stmt|;
+synchronized|synchronized
+init|(
+name|destinationsMutex
+init|)
+block|{
 name|inactiveDests
 operator|.
 name|removeAll
@@ -1582,6 +1595,7 @@ name|keySet
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|inactiveDests
 return|;
@@ -1633,6 +1647,11 @@ literal|null
 condition|)
 block|{
 comment|// remove the subscription from all the matching queues.
+synchronized|synchronized
+init|(
+name|destinationsMutex
+init|)
+block|{
 for|for
 control|(
 name|Iterator
@@ -1678,6 +1697,7 @@ argument_list|,
 name|sub
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|destroySubscription
 argument_list|(
@@ -2152,6 +2172,11 @@ name|gc
 argument_list|()
 expr_stmt|;
 block|}
+synchronized|synchronized
+init|(
+name|destinationsMutex
+init|)
+block|{
 for|for
 control|(
 name|Iterator
@@ -2188,6 +2213,7 @@ operator|.
 name|gc
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|protected
@@ -2267,6 +2293,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+synchronized|synchronized
+init|(
+name|destinationsMutex
+init|)
+block|{
 for|for
 control|(
 name|Iterator
@@ -2314,6 +2345,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 comment|/**      * Removes a Producer.      * @param context the environment the operation is being executed under.      * @throws Exception TODO      */
 specifier|public
 name|void
@@ -2327,6 +2359,11 @@ name|info
 parameter_list|)
 throws|throws
 name|Exception
+block|{
+synchronized|synchronized
+init|(
+name|destinationsMutex
+init|)
 block|{
 for|for
 control|(
@@ -2373,6 +2410,7 @@ argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|protected
