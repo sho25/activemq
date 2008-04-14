@@ -113,8 +113,6 @@ class|class
 name|TempDestLoadTest
 extends|extends
 name|EmbeddedBrokerTestSupport
-implements|implements
-name|ConsumerListener
 block|{
 specifier|protected
 name|int
@@ -510,14 +508,6 @@ name|tearDown
 argument_list|()
 expr_stmt|;
 block|}
-specifier|public
-name|void
-name|onConsumerEvent
-parameter_list|(
-name|ConsumerEvent
-name|event
-parameter_list|)
-block|{             }
 block|}
 end_class
 
