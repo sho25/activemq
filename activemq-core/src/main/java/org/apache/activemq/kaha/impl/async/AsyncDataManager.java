@@ -1711,6 +1711,7 @@ name|decrement
 argument_list|()
 expr_stmt|;
 block|}
+specifier|synchronized
 name|DataFile
 name|getDataFile
 parameter_list|(
@@ -1784,6 +1785,7 @@ return|return
 name|dataFile
 return|;
 block|}
+specifier|synchronized
 name|File
 name|getFile
 parameter_list|(
@@ -2375,6 +2377,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|consolidateDataFilesNotIn
 parameter_list|(
