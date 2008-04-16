@@ -701,6 +701,7 @@ block|}
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|SubscriptionInfo
 name|lookupSubscription
 parameter_list|(
@@ -819,6 +820,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|recoverSubscription
 parameter_list|(
@@ -927,6 +929,7 @@ block|}
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|recoverNextMessages
 parameter_list|(
@@ -1132,6 +1135,7 @@ block|}
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|delete
 parameter_list|()
@@ -1279,6 +1283,7 @@ name|container
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|void
 name|removeSubscriberMessageContainer
 parameter_list|(
@@ -1433,6 +1438,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|int
 name|getMessageCount
 parameter_list|(
