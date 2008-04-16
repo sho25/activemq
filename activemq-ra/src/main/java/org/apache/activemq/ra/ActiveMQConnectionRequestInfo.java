@@ -545,45 +545,92 @@ operator|=
 name|clientid
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
 parameter_list|()
 block|{
 return|return
-literal|"ActiveMQConnectionRequestInfo{ "
-operator|+
-literal|"userName = '"
-operator|+
+operator|new
+name|StringBuffer
+argument_list|(
+literal|"ActiveMQConnectionRequestInfo{ userName = '"
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|userName
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"' "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|", serverUrl = '"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|serverUrl
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"' "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|", clientid = '"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|clientid
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"' "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|", userName = '"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|userName
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"' "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|", useInboundSession = '"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|useInboundSession
-operator|+
-literal|"' "
-operator|+
-literal|" }"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"'  }"
+argument_list|)
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 specifier|public

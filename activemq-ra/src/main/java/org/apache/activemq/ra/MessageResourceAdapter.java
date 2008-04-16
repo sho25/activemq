@@ -61,18 +61,6 @@ name|ActiveMQConnection
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQConnectionFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Knows how to connect to one ActiveMQ server. It can then activate endpoints  * and deliver messages to those end points using the connection configure in  * the resource adapter.<p/>Must override equals and hashCode (JCA spec 16.4)  *   * @version $Revision$  */
 end_comment
@@ -86,29 +74,9 @@ block|{
 comment|/**      */
 name|ActiveMQConnection
 name|makeConnection
-parameter_list|()
-throws|throws
-name|JMSException
-function_decl|;
-comment|/**      */
-name|ActiveMQConnection
-name|makeConnection
 parameter_list|(
 name|ActiveMQConnectionRequestInfo
 name|info
-parameter_list|)
-throws|throws
-name|JMSException
-function_decl|;
-comment|/**      */
-name|ActiveMQConnection
-name|makeConnection
-parameter_list|(
-name|ActiveMQConnectionRequestInfo
-name|info
-parameter_list|,
-name|ActiveMQConnectionFactory
-name|connectionFactory
 parameter_list|)
 throws|throws
 name|JMSException
@@ -136,11 +104,6 @@ function_decl|;
 comment|/**      * @return Returns the info.      */
 name|ActiveMQConnectionRequestInfo
 name|getInfo
-parameter_list|()
-function_decl|;
-comment|/**      */
-name|ActiveMQConnectionFactory
-name|getConnectionFactory
 parameter_list|()
 function_decl|;
 block|}

@@ -213,7 +213,6 @@ name|ConnectionManager
 name|manager
 decl_stmt|;
 specifier|private
-specifier|transient
 name|ActiveMQManagedConnectionFactory
 name|factory
 decl_stmt|;
@@ -226,7 +225,7 @@ specifier|final
 name|ActiveMQConnectionRequestInfo
 name|info
 decl_stmt|;
-comment|/**      * @param factory      * @param manager      * @param info      */
+comment|/**      * @param factory      * @param manager      * @param connectionRequestInfo      */
 specifier|public
 name|ActiveMQConnectionFactory
 parameter_list|(
@@ -237,7 +236,7 @@ name|ConnectionManager
 name|manager
 parameter_list|,
 name|ActiveMQConnectionRequestInfo
-name|info
+name|connectionRequestInfo
 parameter_list|)
 block|{
 name|this
@@ -256,7 +255,7 @@ name|this
 operator|.
 name|info
 operator|=
-name|info
+name|connectionRequestInfo
 expr_stmt|;
 block|}
 comment|/**      * @see javax.jms.ConnectionFactory#createConnection()      */
@@ -320,13 +319,13 @@ name|i
 argument_list|)
 return|;
 block|}
-comment|/**      * @param info      * @return      * @throws JMSException      */
+comment|/**      * @param connectionRequestInfo      * @return      * @throws JMSException      */
 specifier|private
 name|Connection
 name|createConnection
 parameter_list|(
 name|ActiveMQConnectionRequestInfo
-name|info
+name|connectionRequestInfo
 parameter_list|)
 throws|throws
 name|JMSException
@@ -335,7 +334,7 @@ try|try
 block|{
 if|if
 condition|(
-name|info
+name|connectionRequestInfo
 operator|.
 name|isUseInboundSessionEnabled
 argument_list|()
@@ -372,7 +371,7 @@ name|allocateConnection
 argument_list|(
 name|factory
 argument_list|,
-name|info
+name|connectionRequestInfo
 argument_list|)
 return|;
 block|}
