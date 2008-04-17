@@ -273,9 +273,6 @@ name|transportFactory
 operator|.
 name|doBind
 argument_list|(
-name|getBrokerName
-argument_list|()
-argument_list|,
 name|brokerURI
 argument_list|)
 return|;

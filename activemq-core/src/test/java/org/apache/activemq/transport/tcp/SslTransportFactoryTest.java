@@ -251,8 +251,6 @@ name|factory
 operator|.
 name|doBind
 argument_list|(
-literal|"brokerId"
-argument_list|,
 operator|new
 name|URI
 argument_list|(

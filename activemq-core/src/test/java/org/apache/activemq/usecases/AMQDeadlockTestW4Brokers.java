@@ -1204,13 +1204,6 @@ argument_list|)
 expr_stmt|;
 name|tConnector
 operator|.
-name|setBrokerName
-argument_list|(
-name|brokerName
-argument_list|)
-expr_stmt|;
-name|tConnector
-operator|.
 name|setName
 argument_list|(
 name|brokerName

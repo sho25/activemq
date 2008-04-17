@@ -163,17 +163,12 @@ parameter_list|,
 name|ObjectName
 name|connectorName
 parameter_list|,
-name|Broker
-name|next
-parameter_list|,
 name|TransportServer
 name|server
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|next
-argument_list|,
 name|server
 argument_list|)
 expr_stmt|;

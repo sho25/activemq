@@ -1460,16 +1460,6 @@ name|taskRunnerFactory
 operator|=
 name|taskRunnerFactory
 expr_stmt|;
-name|connector
-operator|.
-name|setBrokerName
-argument_list|(
-name|broker
-operator|.
-name|getBrokerName
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|transport

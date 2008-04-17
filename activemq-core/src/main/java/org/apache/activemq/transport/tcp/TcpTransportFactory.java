@@ -309,9 +309,6 @@ specifier|public
 name|TransportServer
 name|doBind
 parameter_list|(
-name|String
-name|brokerId
-parameter_list|,
 specifier|final
 name|URI
 name|location

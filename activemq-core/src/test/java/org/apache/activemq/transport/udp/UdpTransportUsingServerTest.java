@@ -313,8 +313,6 @@ name|TransportFactory
 operator|.
 name|bind
 argument_list|(
-literal|"byBroker"
-argument_list|,
 operator|new
 name|URI
 argument_list|(

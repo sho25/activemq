@@ -480,8 +480,6 @@ name|TransportFactory
 operator|.
 name|bind
 argument_list|(
-literal|"localhost"
-argument_list|,
 operator|new
 name|URI
 argument_list|(

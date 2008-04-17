@@ -611,11 +611,6 @@ name|TransportFactory
 operator|.
 name|bind
 argument_list|(
-operator|(
-name|String
-operator|)
-literal|null
-argument_list|,
 name|bind
 argument_list|)
 return|;
