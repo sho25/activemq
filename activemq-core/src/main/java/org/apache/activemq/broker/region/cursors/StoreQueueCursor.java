@@ -771,7 +771,6 @@ return|;
 block|}
 comment|/**      * Informs the Broker if the subscription needs to intervention to recover      * it's state e.g. DurableTopicSubscriber may do      *       * @see org.apache.activemq.region.cursors.PendingMessageCursor      * @return true if recovery required      */
 specifier|public
-specifier|synchronized
 name|boolean
 name|isRecoveryRequired
 parameter_list|()
@@ -782,7 +781,6 @@ return|;
 block|}
 comment|/**      * @return the nonPersistent Cursor      */
 specifier|public
-specifier|synchronized
 name|PendingMessageCursor
 name|getNonPersistent
 parameter_list|()
@@ -795,7 +793,6 @@ return|;
 block|}
 comment|/**      * @param nonPersistent cursor to set      */
 specifier|public
-specifier|synchronized
 name|void
 name|setNonPersistent
 parameter_list|(
@@ -811,7 +808,6 @@ name|nonPersistent
 expr_stmt|;
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|setMaxBatchSize
 parameter_list|(
@@ -850,7 +846,6 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|setMaxProducersToAudit
 parameter_list|(
@@ -897,7 +892,6 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|setMaxAuditDepth
 parameter_list|(
@@ -944,7 +938,6 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|setEnableAudit
 parameter_list|(
@@ -991,7 +984,6 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|setUseCache
 parameter_list|(
@@ -1071,7 +1063,6 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|setSystemUsage
 parameter_list|(

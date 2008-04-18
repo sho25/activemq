@@ -1211,7 +1211,6 @@ name|pendingCount
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|setMaxBatchSize
 parameter_list|(
@@ -1308,7 +1307,6 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|setSystemUsage
 parameter_list|(
@@ -1361,7 +1359,6 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|setMaxProducersToAudit
 parameter_list|(
@@ -1394,7 +1391,6 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|setMaxAuditDepth
 parameter_list|(
@@ -1427,7 +1423,6 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|setEnableAudit
 parameter_list|(
@@ -1460,7 +1455,6 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|setUseCache
 parameter_list|(
