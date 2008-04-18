@@ -1062,7 +1062,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
 name|failed
 operator|.
 name|compareAndSet
