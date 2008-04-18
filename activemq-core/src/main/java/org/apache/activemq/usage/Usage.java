@@ -454,6 +454,8 @@ init|(
 name|usageMutex
 init|)
 block|{
+name|percentUsage
+operator|=
 name|caclPercentUsage
 argument_list|()
 expr_stmt|;
@@ -494,6 +496,8 @@ operator|>
 literal|0
 condition|)
 block|{
+name|percentUsage
+operator|=
 name|caclPercentUsage
 argument_list|()
 expr_stmt|;
@@ -560,6 +564,8 @@ init|(
 name|usageMutex
 init|)
 block|{
+name|percentUsage
+operator|=
 name|caclPercentUsage
 argument_list|()
 expr_stmt|;
