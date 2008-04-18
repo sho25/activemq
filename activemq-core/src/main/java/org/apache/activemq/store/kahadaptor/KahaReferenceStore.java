@@ -417,15 +417,13 @@ name|hasSpace
 argument_list|()
 condition|)
 block|{
+return|return
 name|listener
 operator|.
 name|recoverMessageReference
 argument_list|(
 name|id
 argument_list|)
-expr_stmt|;
-return|return
-literal|true
 return|;
 block|}
 return|return
