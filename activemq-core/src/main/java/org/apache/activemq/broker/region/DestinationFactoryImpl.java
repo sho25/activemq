@@ -39,16 +39,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -230,20 +220,6 @@ operator|.
 name|thread
 operator|.
 name|TaskRunnerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|usage
-operator|.
-name|SystemUsage
 import|;
 end_import
 
