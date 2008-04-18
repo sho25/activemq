@@ -641,6 +641,7 @@ operator|=
 name|brokerInfo
 expr_stmt|;
 block|}
+comment|/**      *       * @deprecated use the {@link #setBrokerService(BrokerService)} method instead.      */
 annotation|@
 name|Deprecated
 specifier|public
@@ -1703,6 +1704,7 @@ operator|=
 name|enableStatusMonitor
 expr_stmt|;
 block|}
+comment|/**      * This is called by the BrokerService right before it starts the transport.      */
 specifier|public
 name|void
 name|setBrokerService
