@@ -174,6 +174,7 @@ index|[]
 name|virtualDestinations
 decl_stmt|;
 specifier|public
+specifier|synchronized
 name|Destination
 name|intercept
 parameter_list|(
@@ -298,6 +299,15 @@ return|return
 name|destination
 return|;
 block|}
+specifier|public
+specifier|synchronized
+name|void
+name|remove
+parameter_list|(
+name|Destination
+name|destination
+parameter_list|)
+block|{          }
 specifier|public
 name|VirtualDestination
 index|[]

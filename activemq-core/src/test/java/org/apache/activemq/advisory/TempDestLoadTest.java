@@ -103,6 +103,20 @@ name|RegionBroker
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQDestination
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision: 397249 $  */
 end_comment
@@ -275,8 +289,8 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|//there should be 3 destinations - advisories -
-comment|//1 for the connection + 2 generic ones
+comment|//there should be 2 destinations - advisories -
+comment|//1 for the connection + 1 generic ones
 name|assertTrue
 argument_list|(
 name|rb
@@ -287,7 +301,7 @@ operator|.
 name|size
 argument_list|()
 operator|==
-literal|3
+literal|2
 argument_list|)
 expr_stmt|;
 block|}
@@ -432,8 +446,8 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|//there should be 3 destinations - advisories -
-comment|//1 for the connection + 2 generic ones
+comment|//there should be 2 destinations - advisories -
+comment|//1 for the connection + 1 generic ones
 name|assertTrue
 argument_list|(
 name|rb
@@ -444,7 +458,7 @@ operator|.
 name|size
 argument_list|()
 operator|==
-literal|3
+literal|2
 argument_list|)
 expr_stmt|;
 block|}

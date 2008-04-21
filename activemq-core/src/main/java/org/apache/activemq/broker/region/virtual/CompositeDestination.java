@@ -103,6 +103,14 @@ argument_list|)
 return|;
 block|}
 specifier|public
+name|void
+name|remove
+parameter_list|(
+name|Destination
+name|destination
+parameter_list|)
+block|{             }
+specifier|public
 name|String
 name|getName
 parameter_list|()

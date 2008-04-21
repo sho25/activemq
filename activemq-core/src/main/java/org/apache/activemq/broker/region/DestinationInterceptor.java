@@ -33,6 +33,13 @@ name|Destination
 name|destination
 parameter_list|)
 function_decl|;
+name|void
+name|remove
+parameter_list|(
+name|Destination
+name|destination
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

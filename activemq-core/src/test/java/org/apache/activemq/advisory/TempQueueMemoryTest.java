@@ -472,7 +472,7 @@ operator|.
 name|size
 argument_list|()
 operator|==
-literal|7
+literal|6
 argument_list|)
 expr_stmt|;
 block|}

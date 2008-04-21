@@ -191,20 +191,6 @@ name|MemoryUsage
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|usage
-operator|.
-name|SystemUsage
-import|;
-end_import
-
 begin_comment
 comment|/**  *   * @version $Revision$  */
 end_comment
