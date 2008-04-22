@@ -79,18 +79,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|sun
-operator|.
-name|security
-operator|.
-name|action
-operator|.
-name|GetBooleanAction
-import|;
-end_import
-
 begin_comment
 comment|/**  * Bin in a HashIndex  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
