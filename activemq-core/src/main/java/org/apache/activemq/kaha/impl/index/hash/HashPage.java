@@ -182,28 +182,6 @@ name|active
 init|=
 literal|true
 decl_stmt|;
-comment|/**      * Constructor      *       * @param hashIndex      * @param id      * @param parentId      * @param maximumEntries      */
-name|HashPage
-parameter_list|(
-name|long
-name|id
-parameter_list|,
-name|int
-name|maximumEntries
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|maximumEntries
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|id
-operator|=
-name|id
-expr_stmt|;
-block|}
 comment|/**      * Constructor      *       * @param maximumEntries      */
 specifier|public
 name|HashPage

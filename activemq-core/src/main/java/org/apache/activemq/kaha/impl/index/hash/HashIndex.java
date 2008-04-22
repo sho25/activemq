@@ -320,8 +320,12 @@ specifier|private
 name|int
 name|keysPerPage
 init|=
+name|this
+operator|.
 name|pageSize
 operator|/
+name|this
+operator|.
 name|keySize
 decl_stmt|;
 specifier|private
@@ -385,8 +389,9 @@ specifier|private
 name|boolean
 name|enablePageCaching
 init|=
-literal|true
+literal|false
 decl_stmt|;
+comment|//this is off by default - see AMQ-1667
 specifier|private
 name|int
 name|pageCacheSize

@@ -156,7 +156,11 @@ name|entry
 argument_list|)
 expr_stmt|;
 name|size
-operator|++
+operator|=
+name|page
+operator|.
+name|size
+argument_list|()
 expr_stmt|;
 name|dirty
 operator|=
@@ -208,7 +212,11 @@ literal|null
 condition|)
 block|{
 name|size
-operator|--
+operator|=
+name|page
+operator|.
+name|size
+argument_list|()
 expr_stmt|;
 name|dirty
 operator|=
