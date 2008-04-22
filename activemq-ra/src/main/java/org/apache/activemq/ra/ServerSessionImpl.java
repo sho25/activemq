@@ -709,6 +709,14 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+if|if
+condition|(
+name|session
+operator|.
+name|isRunning
+argument_list|()
+condition|)
+block|{
 name|InboundContextSupport
 operator|.
 name|register
@@ -725,6 +733,21 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"JMS Session is no longer running (maybe due to loss of connection?), marking ServerSesison as stale"
+argument_list|)
+expr_stmt|;
+name|stale
+operator|=
+literal|true
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

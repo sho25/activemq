@@ -57,8 +57,6 @@ name|org
 operator|.
 name|jmock
 operator|.
-name|cglib
-operator|.
 name|Mock
 import|;
 end_import
@@ -127,7 +125,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|/*          * Constraint[] args = {isA(Topic.class),          * eq(stubActivationSpec.getSubscriptionId()), NULL, ANYTHING,          * ANYTHING}; mockConnection.expects(once())          * .method("createDurableConnectionConsumer") .with(args)          * .will(returnValue(null)); worker.start(); verifyMocks();          */
+comment|//         Constraint[] args = {isA(Topic.class),
+comment|//            eq(stubActivationSpec.getSubscriptionId()),
+comment|//            NULL,
+comment|//            ANYTHING,
+comment|//            ANYTHING};
+comment|//         mockConnection.expects(once()).method("createDurableConnectionConsumer").with(args)
+comment|//            .will(returnValue(null));
+comment|//         worker.start();
+comment|//         verifyMocks();
 block|}
 specifier|protected
 name|void
@@ -202,8 +208,7 @@ parameter_list|()
 block|{
 name|mockResourceAdapter
 operator|=
-operator|new
-name|Mock
+name|mock
 argument_list|(
 name|ActiveMQResourceAdapter
 operator|.
@@ -212,8 +217,7 @@ argument_list|)
 expr_stmt|;
 name|mockActivationKey
 operator|=
-operator|new
-name|Mock
+name|mock
 argument_list|(
 name|ActiveMQEndpointActivationKey
 operator|.
@@ -222,8 +226,7 @@ argument_list|)
 expr_stmt|;
 name|mockEndpointFactory
 operator|=
-operator|new
-name|Mock
+name|mock
 argument_list|(
 name|MessageEndpointFactory
 operator|.
@@ -232,15 +235,14 @@ argument_list|)
 expr_stmt|;
 name|mockBootstrapContext
 operator|=
-operator|new
-name|Mock
+name|mock
 argument_list|(
 name|BootstrapContext
 operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|//        mockConnection = new Mock(Connection.class);
+comment|//        mockConnection = mock(Connection.class);
 name|mockActivationKey
 operator|.
 name|expects

@@ -45,6 +45,7 @@ name|MessageActivationSpec
 name|activationSpec
 decl_stmt|;
 comment|/**      * For testing      */
+specifier|protected
 name|ActiveMQEndpointActivationKey
 parameter_list|()
 block|{
