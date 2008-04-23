@@ -217,13 +217,13 @@ specifier|protected
 name|int
 name|numberOfConsumers
 init|=
-literal|10
+literal|1
 decl_stmt|;
 specifier|protected
 name|int
 name|numberofProducers
 init|=
-literal|10
+literal|1
 decl_stmt|;
 specifier|protected
 name|int

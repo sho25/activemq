@@ -152,7 +152,7 @@ specifier|protected
 name|String
 name|consumerBindAddress
 init|=
-literal|"tcp://rexmac.home:61616?wireFormat.maxInactivityDuration=1000&wireFormat.maxInactivityDurationInitalDelay=2000&socket.tcpNoDelayEnabled=false"
+literal|"tcp://localhost:61616"
 decl_stmt|;
 specifier|protected
 name|String
@@ -206,7 +206,13 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// consumerBroker = createConsumerBroker(consumerBindAddress);
+name|consumerBroker
+operator|=
+name|createConsumerBroker
+argument_list|(
+name|consumerBindAddress
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -388,7 +394,7 @@ index|]
 operator|=
 name|createConsumer
 argument_list|(
-name|factory
+name|consumerFactory
 argument_list|,
 name|destination
 argument_list|,
@@ -467,7 +473,7 @@ index|]
 operator|=
 name|createProducer
 argument_list|(
-name|factory
+name|producerFactory
 argument_list|,
 name|destination
 argument_list|,
@@ -751,12 +757,20 @@ name|answer
 operator|.
 name|addNetworkConnector
 argument_list|(
-literal|"static://tcp://rexmac.home:61616?wireFormat.maxInactivityDuration=2000"
+literal|"static://"
+operator|+
+name|consumerBindAddress
 argument_list|)
 decl_stmt|;
 comment|//connector.setNetworkTTL(3);
 comment|//connector.setDynamicOnly(true);
-comment|//connector.setDuplex(true);
+name|connector
+operator|.
+name|setDuplex
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|answer
 operator|.
 name|addConnector

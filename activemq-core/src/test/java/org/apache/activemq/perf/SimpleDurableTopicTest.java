@@ -75,11 +75,11 @@ name|Exception
 block|{
 name|numberOfDestinations
 operator|=
-literal|6
+literal|1
 expr_stmt|;
 name|numberOfConsumers
 operator|=
-literal|1
+literal|4
 expr_stmt|;
 name|numberofProducers
 operator|=
