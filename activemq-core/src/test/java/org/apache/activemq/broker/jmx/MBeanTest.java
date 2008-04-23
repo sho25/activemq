@@ -171,9 +171,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|advisory
+name|broker
 operator|.
-name|TempDestDeleteTest
+name|BrokerService
 import|;
 end_import
 
@@ -187,7 +187,9 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|BrokerService
+name|region
+operator|.
+name|BaseDestination
 import|;
 end_import
 
@@ -283,10 +285,16 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 decl_stmt|;
 specifier|protected
+specifier|static
+specifier|final
 name|int
-name|messageCount
+name|MESSAGE_COUNT
 init|=
-literal|10
+literal|2
+operator|*
+name|BaseDestination
+operator|.
+name|DEFAULT_PAGE_SIZE
 decl_stmt|;
 comment|/**      * When you run this test case from the command line it will pause before      * terminating so that you can look at the MBeans state for debugging      * purposes.      */
 specifier|public
@@ -454,18 +462,23 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|int
+name|movedSize
+init|=
+name|MESSAGE_COUNT
+operator|-
+literal|3
+decl_stmt|;
+name|assertEquals
 argument_list|(
-literal|"Should have at least one message in the queue: "
-operator|+
-name|queueViewMBeanName
+literal|"Unexpected number of messages "
+argument_list|,
+name|movedSize
 argument_list|,
 name|queue
 operator|.
 name|getQueueSize
 argument_list|()
-operator|>
-literal|0
 argument_list|)
 expr_stmt|;
 comment|// now lets remove them by selector
@@ -576,17 +589,6 @@ argument_list|,
 name|newDestination
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Should have same number of messages in the queue: "
-operator|+
-name|queueViewMBeanName
-argument_list|,
-name|queueSize
-argument_list|,
-name|queueSize
-argument_list|)
-expr_stmt|;
 name|queueViewMBeanName
 operator|=
 name|assertRegisteredObjectName
@@ -638,18 +640,20 @@ operator|+
 literal|" message(s)"
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertEquals
 argument_list|(
-literal|"Should have at least one message in the queue: "
+literal|"Expected messages in a queue: "
 operator|+
 name|queueViewMBeanName
+argument_list|,
+name|MESSAGE_COUNT
+operator|-
+literal|3
 argument_list|,
 name|queue
 operator|.
 name|getQueueSize
 argument_list|()
-operator|>
-literal|0
 argument_list|)
 expr_stmt|;
 comment|// now lets remove them by selector
@@ -912,7 +916,7 @@ name|assertEquals
 argument_list|(
 literal|"Queue size"
 argument_list|,
-literal|10
+name|MESSAGE_COUNT
 argument_list|,
 name|proxy
 operator|.
@@ -957,7 +961,7 @@ name|assertEquals
 argument_list|(
 literal|"Queue size"
 argument_list|,
-literal|10
+name|MESSAGE_COUNT
 argument_list|,
 name|proxy
 operator|.
@@ -990,7 +994,9 @@ name|assertEquals
 argument_list|(
 literal|"Queue size"
 argument_list|,
-literal|9
+name|MESSAGE_COUNT
+operator|-
+literal|1
 argument_list|,
 name|proxy
 operator|.
@@ -1712,18 +1718,19 @@ argument_list|()
 decl_stmt|;
 name|answer
 operator|.
-name|setUseJmx
+name|setDeleteAllMessagesOnStartup
 argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
 name|answer
 operator|.
-name|setEnableStatistics
+name|setUseJmx
 argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+comment|//answer.setEnableStatistics(true);
 name|answer
 operator|.
 name|setPersistent
@@ -1800,7 +1807,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|messageCount
+name|MESSAGE_COUNT
 condition|;
 name|i
 operator|++

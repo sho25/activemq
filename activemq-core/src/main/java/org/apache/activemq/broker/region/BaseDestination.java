@@ -141,6 +141,14 @@ name|BaseDestination
 implements|implements
 name|Destination
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_PAGE_SIZE
+init|=
+literal|100
+decl_stmt|;
 specifier|protected
 specifier|final
 name|ActiveMQDestination
@@ -192,7 +200,7 @@ specifier|private
 name|int
 name|maxPageSize
 init|=
-literal|100
+name|DEFAULT_PAGE_SIZE
 decl_stmt|;
 specifier|private
 name|boolean
