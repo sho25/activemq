@@ -1857,6 +1857,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @return      * @throws IOException      */
+specifier|synchronized
 name|void
 name|asyncWrite
 parameter_list|()
