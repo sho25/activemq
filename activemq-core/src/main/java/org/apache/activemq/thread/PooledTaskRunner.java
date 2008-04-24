@@ -343,13 +343,11 @@ name|iterating
 operator|=
 literal|false
 expr_stmt|;
-block|}
-block|}
-synchronized|synchronized
-init|(
 name|runable
-init|)
-block|{
+operator|.
+name|notifyAll
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|shutdown
@@ -391,6 +389,7 @@ argument_list|(
 name|runable
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
