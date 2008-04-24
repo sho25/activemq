@@ -248,7 +248,7 @@ name|getConnectionId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(

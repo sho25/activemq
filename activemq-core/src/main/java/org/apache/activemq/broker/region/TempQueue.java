@@ -303,7 +303,7 @@ name|getConnectionId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -373,7 +373,7 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -411,7 +411,7 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
