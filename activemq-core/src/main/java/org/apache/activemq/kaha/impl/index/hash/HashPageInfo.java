@@ -31,6 +31,20 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|LinkedNode
+import|;
+end_import
+
 begin_comment
 comment|/**  * A Page within a HashPageInfo  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
@@ -38,6 +52,8 @@ end_comment
 begin_class
 class|class
 name|HashPageInfo
+extends|extends
+name|LinkedNode
 block|{
 specifier|private
 name|HashIndex

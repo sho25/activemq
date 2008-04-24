@@ -387,6 +387,9 @@ operator|==
 name|this
 condition|)
 block|{
+name|reset
+argument_list|()
+expr_stmt|;
 return|return;
 block|}
 if|if
@@ -415,6 +418,15 @@ operator|=
 name|next
 expr_stmt|;
 comment|// Update our links..
+name|reset
+argument_list|()
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|reset
+parameter_list|()
+block|{
 name|next
 operator|=
 name|this
