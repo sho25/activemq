@@ -152,7 +152,7 @@ name|MalformedURLException
 block|{
 return|return
 operator|new
-name|HttpsTransport
+name|HttpsClientTransport
 argument_list|(
 name|asTextWireFormat
 argument_list|(
