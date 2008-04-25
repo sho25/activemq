@@ -210,17 +210,6 @@ condition|)
 block|{
 if|if
 condition|(
-name|shutdown
-condition|)
-block|{
-name|o
-operator|=
-name|SHUTDOWN_COMMAND
-expr_stmt|;
-break|break;
-block|}
-if|if
-condition|(
 name|nextWriteBatch
 operator|!=
 literal|null
@@ -236,6 +225,13 @@ literal|null
 expr_stmt|;
 break|break;
 block|}
+if|if
+condition|(
+name|shutdown
+condition|)
+block|{
+return|return;
+block|}
 name|enqueueMutex
 operator|.
 name|wait
@@ -247,15 +243,6 @@ operator|.
 name|notify
 argument_list|()
 expr_stmt|;
-block|}
-if|if
-condition|(
-name|o
-operator|==
-name|SHUTDOWN_COMMAND
-condition|)
-block|{
-break|break;
 block|}
 name|WriteBatch
 name|wb
@@ -334,6 +321,11 @@ name|getOffset
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|boolean
+name|forceToDisk
+init|=
+literal|false
+decl_stmt|;
 comment|//
 comment|// is it just 1 big write?
 if|if
@@ -350,6 +342,18 @@ name|getSize
 argument_list|()
 condition|)
 block|{
+name|forceToDisk
+operator|=
+name|write
+operator|.
+name|sync
+operator||
+name|write
+operator|.
+name|onComplete
+operator|!=
+literal|null
+expr_stmt|;
 name|header
 operator|.
 name|clear
@@ -450,6 +454,18 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|forceToDisk
+operator||=
+name|write
+operator|.
+name|sync
+operator||
+name|write
+operator|.
+name|onComplete
+operator|!=
+literal|null
+expr_stmt|;
 name|header
 operator|.
 name|clear
@@ -590,6 +606,11 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|forceToDisk
+condition|)
+block|{
 name|file
 operator|.
 name|getChannel
@@ -600,6 +621,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 name|WriteCommand
 name|lastWrite
 init|=
@@ -622,24 +644,6 @@ operator|.
 name|location
 argument_list|)
 expr_stmt|;
-comment|// Signal any waiting threads that the write is on disk.
-if|if
-condition|(
-name|wb
-operator|.
-name|latch
-operator|!=
-literal|null
-condition|)
-block|{
-name|wb
-operator|.
-name|latch
-operator|.
-name|countDown
-argument_list|()
-expr_stmt|;
-block|}
 comment|// Now that the data is on disk, remove the writes from the in
 comment|// flight
 comment|// cache.
@@ -721,6 +725,14 @@ name|getNext
 argument_list|()
 expr_stmt|;
 block|}
+comment|// Signal any waiting threads that the write is on disk.
+name|wb
+operator|.
+name|latch
+operator|.
+name|countDown
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 catch|catch

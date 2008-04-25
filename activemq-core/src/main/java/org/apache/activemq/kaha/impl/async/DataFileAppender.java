@@ -139,10 +139,14 @@ decl_stmt|;
 specifier|protected
 specifier|static
 specifier|final
-name|String
-name|SHUTDOWN_COMMAND
+name|int
+name|DEFAULT_MAX_BATCH_SIZE
 init|=
-literal|"SHUTDOWN"
+literal|1024
+operator|*
+literal|1024
+operator|*
+literal|4
 decl_stmt|;
 specifier|protected
 specifier|final
@@ -196,11 +200,7 @@ specifier|protected
 name|int
 name|maxWriteBatchSize
 init|=
-literal|1024
-operator|*
-literal|1024
-operator|*
-literal|4
+name|DEFAULT_MAX_BATCH_SIZE
 decl_stmt|;
 specifier|private
 name|boolean
@@ -1208,17 +1208,6 @@ condition|)
 block|{
 if|if
 condition|(
-name|shutdown
-condition|)
-block|{
-name|o
-operator|=
-name|SHUTDOWN_COMMAND
-expr_stmt|;
-break|break;
-block|}
-if|if
-condition|(
 name|nextWriteBatch
 operator|!=
 literal|null
@@ -1234,6 +1223,13 @@ literal|null
 expr_stmt|;
 break|break;
 block|}
+if|if
+condition|(
+name|shutdown
+condition|)
+block|{
+return|return;
+block|}
 name|enqueueMutex
 operator|.
 name|wait
@@ -1245,15 +1241,6 @@ operator|.
 name|notify
 argument_list|()
 expr_stmt|;
-block|}
-if|if
-condition|(
-name|o
-operator|==
-name|SHUTDOWN_COMMAND
-condition|)
-block|{
-break|break;
 block|}
 name|WriteBatch
 name|wb
@@ -1325,6 +1312,11 @@ name|getOffset
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|boolean
+name|forceToDisk
+init|=
+literal|false
+decl_stmt|;
 comment|//
 comment|// is it just 1 big write?
 if|if
@@ -1341,6 +1333,18 @@ name|getSize
 argument_list|()
 condition|)
 block|{
+name|forceToDisk
+operator|=
+name|write
+operator|.
+name|sync
+operator||
+name|write
+operator|.
+name|onComplete
+operator|!=
+literal|null
+expr_stmt|;
 comment|// Just write it directly..
 name|file
 operator|.
@@ -1428,6 +1432,18 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|forceToDisk
+operator||=
+name|write
+operator|.
+name|sync
+operator||
+name|write
+operator|.
+name|onComplete
+operator|!=
+literal|null
+expr_stmt|;
 name|buff
 operator|.
 name|writeInt
@@ -1549,6 +1565,11 @@ name|reset
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|forceToDisk
+condition|)
+block|{
 name|file
 operator|.
 name|getFD
@@ -1557,6 +1578,7 @@ operator|.
 name|sync
 argument_list|()
 expr_stmt|;
+block|}
 name|WriteCommand
 name|lastWrite
 init|=
@@ -1578,14 +1600,6 @@ name|lastWrite
 operator|.
 name|location
 argument_list|)
-expr_stmt|;
-comment|// Signal any waiting threads that the write is on disk.
-name|wb
-operator|.
-name|latch
-operator|.
-name|countDown
-argument_list|()
 expr_stmt|;
 comment|// Now that the data is on disk, remove the writes from the in
 comment|// flight
@@ -1668,12 +1682,15 @@ name|getNext
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-name|buff
+comment|// Signal any waiting threads that the write is on disk.
+name|wb
 operator|.
-name|close
+name|latch
+operator|.
+name|countDown
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
