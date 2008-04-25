@@ -147,7 +147,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|//protected String consumerBindAddress = "tcp://rexmac.home:61616?wireFormat.maxInactivityDuration=1000,tcp://localhost:61617?wireFormat.maxInactivityDuration=1000";
 specifier|protected
 name|String
 name|consumerBindAddress
@@ -229,24 +228,13 @@ name|producerBindAddress
 argument_list|)
 expr_stmt|;
 block|}
-comment|//consumerFactory = createConnectionFactory("vm://"+CONSUMER_BROKER_NAME);
-comment|//producerFactory = createConnectionFactory("vm://"+ PRODUCER_BROKER_NAME);
 name|consumerFactory
 operator|=
 name|createConnectionFactory
 argument_list|(
-literal|"failover://("
-operator|+
 name|consumerBindAddress
-operator|+
-literal|","
-operator|+
-name|producerBindAddress
-operator|+
-literal|")?randomize=false&backup=false"
 argument_list|)
 expr_stmt|;
-comment|//consumerFactory = createConnectionFactory("failover://("+consumerBindAddress+")?backup=true");
 name|consumerFactory
 operator|.
 name|setDispatchAsync
@@ -324,16 +312,6 @@ operator|*
 name|numberOfDestinations
 index|]
 expr_stmt|;
-name|int
-name|consumerCount
-init|=
-literal|0
-decl_stmt|;
-name|int
-name|producerCount
-init|=
-literal|0
-decl_stmt|;
 for|for
 control|(
 name|int
@@ -389,7 +367,7 @@ control|)
 block|{
 name|consumers
 index|[
-name|consumerCount
+name|i
 index|]
 operator|=
 name|createConsumer
@@ -398,12 +376,12 @@ name|consumerFactory
 argument_list|,
 name|destination
 argument_list|,
-name|consumerCount
+name|i
 argument_list|)
 expr_stmt|;
 name|consumers
 index|[
-name|consumerCount
+name|i
 index|]
 operator|.
 name|setSleepDuration
@@ -411,8 +389,13 @@ argument_list|(
 name|consumerSleepDuration
 argument_list|)
 expr_stmt|;
-name|consumerCount
-operator|++
+name|consumers
+index|[
+name|i
+index|]
+operator|.
+name|start
+argument_list|()
 expr_stmt|;
 block|}
 for|for
@@ -468,7 +451,7 @@ expr_stmt|;
 block|}
 name|producers
 index|[
-name|producerCount
+name|i
 index|]
 operator|=
 name|createProducer
@@ -482,8 +465,13 @@ argument_list|,
 name|array
 argument_list|)
 expr_stmt|;
-name|producerCount
-operator|++
+name|producers
+index|[
+name|i
+index|]
+operator|.
+name|start
+argument_list|()
 expr_stmt|;
 block|}
 block|}
