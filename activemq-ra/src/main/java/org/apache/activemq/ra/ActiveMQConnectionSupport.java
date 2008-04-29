@@ -157,7 +157,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Creates a new physical connection to an Active MQ broker using a given      * connection factory and credentials supplied in connection request information.      *       * @param connectionRequestInfo the connection request information containing the credentials to use      * for the connection request      * @return the physical connection      * @throws JMSException if the connection could not be established      */
-specifier|protected
+specifier|public
 name|ActiveMQConnection
 name|makeConnection
 parameter_list|(
