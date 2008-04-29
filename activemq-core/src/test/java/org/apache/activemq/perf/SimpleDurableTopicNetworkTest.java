@@ -77,7 +77,7 @@ name|numberOfConsumers
 operator|=
 literal|1
 expr_stmt|;
-name|samepleCount
+name|sampleCount
 operator|=
 literal|1000
 expr_stmt|;

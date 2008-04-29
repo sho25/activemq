@@ -197,7 +197,7 @@ argument_list|()
 decl_stmt|;
 specifier|protected
 name|int
-name|samepleCount
+name|sampleCount
 init|=
 literal|20
 decl_stmt|;
@@ -835,7 +835,7 @@ name|info
 argument_list|(
 literal|"Sampling performance "
 operator|+
-name|samepleCount
+name|sampleCount
 operator|+
 literal|" times at a "
 operator|+
@@ -853,7 +853,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|samepleCount
+name|sampleCount
 condition|;
 name|i
 operator|++
