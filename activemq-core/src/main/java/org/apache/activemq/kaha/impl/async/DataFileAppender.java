@@ -655,10 +655,8 @@ name|sync
 argument_list|)
 decl_stmt|;
 comment|// Locate datafile and enqueue into the executor in sychronized block so
-comment|// that
-comment|// writes get equeued onto the executor in order that they were assigned
-comment|// by
-comment|// the data manager (which is basically just appending)
+comment|// that writes get equeued onto the executor in order that they were assigned
+comment|// by the data manager (which is basically just appending)
 synchronized|synchronized
 init|(
 name|this
@@ -810,10 +808,8 @@ name|onComplete
 argument_list|)
 decl_stmt|;
 comment|// Locate datafile and enqueue into the executor in sychronized block so
-comment|// that
-comment|// writes get equeued onto the executor in order that they were assigned
-comment|// by
-comment|// the data manager (which is basically just appending)
+comment|// that writes get equeued onto the executor in order that they were assigned
+comment|// by the data manager (which is basically just appending)
 synchronized|synchronized
 init|(
 name|this

@@ -290,21 +290,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-name|assertTrue
-argument_list|(
-literal|"writes are queued up"
-argument_list|,
-name|dataManager
-operator|.
-name|getInflightWrites
-argument_list|()
-operator|.
-name|size
-argument_list|()
-operator|>=
-name|iterations
-argument_list|)
-expr_stmt|;
+comment|// at this point most probably dataManager.getInflightWrites().size()>= 0
+comment|// as the Thread created in DataFileAppender.enqueue() may not have caught up.
 name|Thread
 operator|.
 name|sleep
@@ -401,33 +388,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-name|assertTrue
-argument_list|(
-literal|"writes are queued up"
-argument_list|,
-name|dataManager
-operator|.
-name|getInflightWrites
-argument_list|()
-operator|.
-name|size
-argument_list|()
-operator|>=
-name|iterations
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"none written"
-argument_list|,
-name|iterations
-argument_list|,
-name|latch
-operator|.
-name|getCount
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|// at this point most probably dataManager.getInflightWrites().size()>= 0
+comment|// as the Thread created in DataFileAppender.enqueue() may not have caught up.
 name|Thread
 operator|.
 name|sleep
