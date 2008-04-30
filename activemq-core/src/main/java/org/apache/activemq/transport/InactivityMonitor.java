@@ -1210,6 +1210,8 @@ operator|new
 name|Timer
 argument_list|(
 literal|"InactivityMonitor ReadCheck"
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|WRITE_CHECK_TIMER
@@ -1218,6 +1220,8 @@ operator|new
 name|Timer
 argument_list|(
 literal|"InactivityMonitor WriteCheck"
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
