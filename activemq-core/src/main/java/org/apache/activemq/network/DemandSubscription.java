@@ -139,6 +139,13 @@ argument_list|()
 expr_stmt|;
 name|localInfo
 operator|.
+name|setSelector
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|localInfo
+operator|.
 name|setBrokerPath
 argument_list|(
 name|info

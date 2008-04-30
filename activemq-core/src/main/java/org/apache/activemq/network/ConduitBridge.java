@@ -238,20 +238,6 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 block|{
-if|if
-condition|(
-name|info
-operator|.
-name|getSelector
-argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
 comment|// search through existing subscriptions and see if we have a match
 name|boolean
 name|matched
