@@ -302,6 +302,7 @@ name|result
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|RandomAccessFile
 name|openRandomAccessFile
 parameter_list|(
@@ -350,6 +351,7 @@ name|rc
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|closeRandomAccessFile
 parameter_list|(
