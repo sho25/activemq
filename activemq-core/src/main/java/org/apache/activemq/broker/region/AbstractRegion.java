@@ -1494,6 +1494,20 @@ comment|// thread added, then removed, as would be allowed with
 comment|// no mutex held. Remove is only essentially run once
 comment|// so everything after this point would be leaked.
 comment|// Add the subscription to all the matching queues.
+comment|// But copy the matches first - to prevent deadlocks
+name|List
+argument_list|<
+name|Destination
+argument_list|>
+name|addList
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|Destination
+argument_list|>
+argument_list|()
+decl_stmt|;
 synchronized|synchronized
 init|(
 name|destinationsMutex
@@ -1535,6 +1549,23 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|addList
+operator|.
+name|add
+argument_list|(
+name|dest
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+for|for
+control|(
+name|Destination
+name|dest
+range|:
+name|addList
+control|)
+block|{
 name|dest
 operator|.
 name|addSubscription
@@ -1544,7 +1575,6 @@ argument_list|,
 name|sub
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
