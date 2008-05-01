@@ -1214,6 +1214,10 @@ argument_list|(
 name|server
 argument_list|)
 expr_stmt|;
+name|server
+operator|=
+literal|null
+expr_stmt|;
 block|}
 if|if
 condition|(
