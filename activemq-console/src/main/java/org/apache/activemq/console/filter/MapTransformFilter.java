@@ -259,22 +259,6 @@ name|activemq
 operator|.
 name|console
 operator|.
-name|formatter
-operator|.
-name|GlobalWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|console
-operator|.
 name|util
 operator|.
 name|AmqMessagesUtil
@@ -364,23 +348,7 @@ name|NoSuchMethodException
 name|e
 parameter_list|)
 block|{
-name|GlobalWriter
-operator|.
-name|print
-argument_list|(
-literal|"Unable to transform mbean of type: "
-operator|+
-name|object
-operator|.
-name|getClass
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|". No corresponding transformToMap method found."
-argument_list|)
-expr_stmt|;
+comment|//            CommandContext.print("Unable to transform mbean of type: " + object.getClass().getName() + ". No corresponding transformToMap method found.");
 return|return
 literal|null
 return|;

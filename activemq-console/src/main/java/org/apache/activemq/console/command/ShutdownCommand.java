@@ -109,22 +109,6 @@ name|activemq
 operator|.
 name|console
 operator|.
-name|formatter
-operator|.
-name|GlobalWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|console
-operator|.
 name|util
 operator|.
 name|JmxMBeansUtil
@@ -247,7 +231,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|GlobalWriter
+name|context
 operator|.
 name|printInfo
 argument_list|(
@@ -268,7 +252,7 @@ operator|>
 literal|1
 condition|)
 block|{
-name|GlobalWriter
+name|context
 operator|.
 name|printInfo
 argument_list|(
@@ -359,7 +343,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|GlobalWriter
+name|context
 operator|.
 name|printInfo
 argument_list|(
@@ -397,7 +381,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|GlobalWriter
+name|context
 operator|.
 name|printException
 argument_list|(
@@ -487,7 +471,7 @@ argument_list|(
 literal|"BrokerName"
 argument_list|)
 decl_stmt|;
-name|GlobalWriter
+name|context
 operator|.
 name|print
 argument_list|(
@@ -526,7 +510,7 @@ literal|"int"
 block|}
 argument_list|)
 expr_stmt|;
-name|GlobalWriter
+name|context
 operator|.
 name|print
 argument_list|(
@@ -604,7 +588,7 @@ name|void
 name|printHelp
 parameter_list|()
 block|{
-name|GlobalWriter
+name|context
 operator|.
 name|printHelp
 argument_list|(

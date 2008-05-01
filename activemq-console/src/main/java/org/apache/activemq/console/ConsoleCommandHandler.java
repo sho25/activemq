@@ -113,22 +113,6 @@ name|CommandShellOutputFormatter
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|console
-operator|.
-name|formatter
-operator|.
-name|GlobalWriter
-import|;
-end_import
-
 begin_comment
 comment|/**  * A default implementation of the @{link CommandHandler} interface  *  * @version $Revision: $  */
 end_comment
@@ -170,9 +154,16 @@ operator|new
 name|ByteArrayOutputStream
 argument_list|()
 decl_stmt|;
-name|GlobalWriter
+name|CommandContext
+name|ctx
+init|=
+operator|new
+name|CommandContext
+argument_list|()
+decl_stmt|;
+name|ctx
 operator|.
-name|instantiate
+name|setFormatter
 argument_list|(
 operator|new
 name|CommandShellOutputFormatter
@@ -201,6 +192,13 @@ argument_list|(
 name|requestText
 argument_list|)
 decl_stmt|;
+name|command
+operator|.
+name|setCommandContext
+argument_list|(
+name|ctx
+argument_list|)
+expr_stmt|;
 name|command
 operator|.
 name|execute

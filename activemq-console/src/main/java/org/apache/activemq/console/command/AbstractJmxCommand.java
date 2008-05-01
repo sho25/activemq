@@ -83,22 +83,6 @@ name|JMXServiceURL
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|console
-operator|.
-name|formatter
-operator|.
-name|GlobalWriter
-import|;
-end_import
-
 begin_class
 specifier|public
 specifier|abstract
@@ -324,7 +308,7 @@ literal|"-"
 argument_list|)
 condition|)
 block|{
-name|GlobalWriter
+name|context
 operator|.
 name|printException
 argument_list|(
@@ -345,7 +329,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|GlobalWriter
+name|context
 operator|.
 name|printException
 argument_list|(
@@ -395,7 +379,7 @@ name|MalformedURLException
 name|e
 parameter_list|)
 block|{
-name|GlobalWriter
+name|context
 operator|.
 name|printException
 argument_list|(

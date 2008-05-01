@@ -12,8 +12,6 @@ operator|.
 name|activemq
 operator|.
 name|console
-operator|.
-name|formatter
 package|;
 end_package
 
@@ -87,42 +85,34 @@ name|ObjectName
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|console
+operator|.
+name|formatter
+operator|.
+name|OutputFormatter
+import|;
+end_import
+
 begin_class
 specifier|public
 specifier|final
 class|class
-name|GlobalWriter
+name|CommandContext
 block|{
 specifier|private
-specifier|static
 name|OutputFormatter
 name|formatter
 decl_stmt|;
-comment|/**      * Creates a singleton global writer      */
-specifier|private
-name|GlobalWriter
-parameter_list|()
-block|{     }
-comment|/**      * Maintains a global output formatter      *       * @param formatter - the output formatter to use      */
-specifier|public
-specifier|static
-name|void
-name|instantiate
-parameter_list|(
-name|OutputFormatter
-name|formatter
-parameter_list|)
-block|{
-name|GlobalWriter
-operator|.
-name|formatter
-operator|=
-name|formatter
-expr_stmt|;
-block|}
 comment|/**      * Retrieve the output stream being used by the global formatter      *       * @return      */
 specifier|public
-specifier|static
 name|OutputStream
 name|getOutputStream
 parameter_list|()
@@ -151,7 +141,6 @@ return|;
 block|}
 comment|/**      * Print an ObjectInstance format of an mbean      *       * @param mbean - mbean to print      */
 specifier|public
-specifier|static
 name|void
 name|printMBean
 parameter_list|(
@@ -184,7 +173,6 @@ expr_stmt|;
 block|}
 comment|/**      * Print an ObjectName format of an mbean      *       * @param mbean - mbean to print      */
 specifier|public
-specifier|static
 name|void
 name|printMBean
 parameter_list|(
@@ -217,7 +205,6 @@ expr_stmt|;
 block|}
 comment|/**      * Print an AttributeList format of an mbean      *       * @param mbean - mbean to print      */
 specifier|public
-specifier|static
 name|void
 name|printMBean
 parameter_list|(
@@ -250,7 +237,6 @@ expr_stmt|;
 block|}
 comment|/**      * Print a Map format of an mbean      *       * @param mbean      */
 specifier|public
-specifier|static
 name|void
 name|printMBean
 parameter_list|(
@@ -283,7 +269,6 @@ expr_stmt|;
 block|}
 comment|/**      * Print a Collection format of mbeans      *       * @param mbean - collection of mbeans      */
 specifier|public
-specifier|static
 name|void
 name|printMBean
 parameter_list|(
@@ -316,7 +301,6 @@ expr_stmt|;
 block|}
 comment|/**      * Print a Map format of a JMS message      *       * @param msg      */
 specifier|public
-specifier|static
 name|void
 name|printMessage
 parameter_list|(
@@ -349,7 +333,6 @@ expr_stmt|;
 block|}
 comment|/**      * Print a Message format of a JMS message      *       * @param msg - JMS message to print      */
 specifier|public
-specifier|static
 name|void
 name|printMessage
 parameter_list|(
@@ -382,7 +365,6 @@ expr_stmt|;
 block|}
 comment|/**      * Print a collection of JMS messages      *       * @param msg - collection of JMS messages      */
 specifier|public
-specifier|static
 name|void
 name|printMessage
 parameter_list|(
@@ -415,7 +397,6 @@ expr_stmt|;
 block|}
 comment|/**      * Print help messages      *       * @param helpMsgs - help messages to print      */
 specifier|public
-specifier|static
 name|void
 name|printHelp
 parameter_list|(
@@ -449,7 +430,6 @@ expr_stmt|;
 block|}
 comment|/**      * Print an information message      *       * @param info - information message to print      */
 specifier|public
-specifier|static
 name|void
 name|printInfo
 parameter_list|(
@@ -482,7 +462,6 @@ expr_stmt|;
 block|}
 comment|/**      * Print an exception message      *       * @param e - exception to print      */
 specifier|public
-specifier|static
 name|void
 name|printException
 parameter_list|(
@@ -515,7 +494,6 @@ expr_stmt|;
 block|}
 comment|/**      * Print a version information      *       * @param version - version info to print      */
 specifier|public
-specifier|static
 name|void
 name|printVersion
 parameter_list|(
@@ -548,7 +526,6 @@ expr_stmt|;
 block|}
 comment|/**      * Print a generic key value mapping      *       * @param map to print      */
 specifier|public
-specifier|static
 name|void
 name|print
 parameter_list|(
@@ -581,7 +558,6 @@ expr_stmt|;
 block|}
 comment|/**      * Print a generic array of strings      *       * @param strings - string array to print      */
 specifier|public
-specifier|static
 name|void
 name|print
 parameter_list|(
@@ -615,7 +591,6 @@ expr_stmt|;
 block|}
 comment|/**      * Print a collection of objects      *       * @param collection - collection to print      */
 specifier|public
-specifier|static
 name|void
 name|print
 parameter_list|(
@@ -648,7 +623,6 @@ expr_stmt|;
 block|}
 comment|/**      * Print a java string      *       * @param string - string to print      */
 specifier|public
-specifier|static
 name|void
 name|print
 parameter_list|(
@@ -677,6 +651,30 @@ name|print
 argument_list|(
 name|string
 argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|OutputFormatter
+name|getFormatter
+parameter_list|()
+block|{
+return|return
+name|formatter
+return|;
+block|}
+specifier|public
+name|void
+name|setFormatter
+parameter_list|(
+name|OutputFormatter
+name|formatter
+parameter_list|)
+block|{
+name|this
+operator|.
+name|formatter
+operator|=
+name|formatter
 expr_stmt|;
 block|}
 block|}

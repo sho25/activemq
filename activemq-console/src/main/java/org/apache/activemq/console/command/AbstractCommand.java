@@ -49,9 +49,7 @@ name|activemq
 operator|.
 name|console
 operator|.
-name|formatter
-operator|.
-name|GlobalWriter
+name|CommandContext
 import|;
 end_import
 
@@ -79,6 +77,25 @@ specifier|private
 name|boolean
 name|isPrintVersion
 decl_stmt|;
+specifier|protected
+name|CommandContext
+name|context
+decl_stmt|;
+specifier|public
+name|void
+name|setCommandContext
+parameter_list|(
+name|CommandContext
+name|context
+parameter_list|)
+block|{
+name|this
+operator|.
+name|context
+operator|=
+name|context
+expr_stmt|;
+block|}
 comment|/**      * Execute a generic command, which includes parsing the options for the      * command and running the specific task.      *       * @param tokens - command arguments      * @throws Exception      */
 specifier|public
 name|void
@@ -116,7 +133,7 @@ condition|(
 name|isPrintVersion
 condition|)
 block|{
-name|GlobalWriter
+name|context
 operator|.
 name|printVersion
 argument_list|(
@@ -358,7 +375,7 @@ block|}
 else|else
 block|{
 comment|// Token is unrecognized
-name|GlobalWriter
+name|context
 operator|.
 name|printInfo
 argument_list|(

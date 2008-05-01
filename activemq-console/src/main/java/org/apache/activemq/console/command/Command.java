@@ -27,11 +27,32 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|console
+operator|.
+name|CommandContext
+import|;
+end_import
+
 begin_interface
 specifier|public
 interface|interface
 name|Command
 block|{
+name|void
+name|setCommandContext
+parameter_list|(
+name|CommandContext
+name|context
+parameter_list|)
+function_decl|;
 comment|/**      * Execute the specified command      * @param tokens - arguments to the command      * @throws Exception      */
 name|void
 name|execute

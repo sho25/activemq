@@ -97,22 +97,6 @@ name|activemq
 operator|.
 name|console
 operator|.
-name|formatter
-operator|.
-name|GlobalWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|console
-operator|.
 name|util
 operator|.
 name|AmqMessagesUtil
@@ -433,7 +417,7 @@ argument_list|(
 name|queryAddObjects
 argument_list|)
 decl_stmt|;
-name|GlobalWriter
+name|context
 operator|.
 name|printMessage
 argument_list|(
@@ -458,7 +442,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|GlobalWriter
+name|context
 operator|.
 name|printException
 argument_list|(
@@ -535,7 +519,7 @@ literal|"-"
 argument_list|)
 condition|)
 block|{
-name|GlobalWriter
+name|context
 operator|.
 name|printException
 argument_list|(
@@ -626,7 +610,7 @@ literal|"-"
 argument_list|)
 condition|)
 block|{
-name|GlobalWriter
+name|context
 operator|.
 name|printException
 argument_list|(
@@ -716,7 +700,7 @@ literal|"-"
 argument_list|)
 condition|)
 block|{
-name|GlobalWriter
+name|context
 operator|.
 name|printException
 argument_list|(
@@ -991,7 +975,7 @@ comment|// Unknown group view
 block|}
 else|else
 block|{
-name|GlobalWriter
+name|context
 operator|.
 name|printInfo
 argument_list|(
@@ -1024,7 +1008,7 @@ name|void
 name|printHelp
 parameter_list|()
 block|{
-name|GlobalWriter
+name|context
 operator|.
 name|printHelp
 argument_list|(
