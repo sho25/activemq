@@ -515,6 +515,13 @@ argument_list|(
 name|tokens
 argument_list|)
 expr_stmt|;
+name|System
+operator|.
+name|exit
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -575,6 +582,13 @@ name|MalformedURLException
 name|e1
 parameter_list|)
 block|{             }
+name|System
+operator|.
+name|exit
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -591,6 +605,13 @@ argument_list|(
 literal|"Failed to execute main task. Reason: "
 operator|+
 name|e
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|exit
+argument_list|(
+literal|1
 argument_list|)
 expr_stmt|;
 block|}

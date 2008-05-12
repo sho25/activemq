@@ -2095,7 +2095,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to stop broker"
+literal|"Failure occured while stopping broker"
 argument_list|)
 expr_stmt|;
 block|}
