@@ -79,7 +79,7 @@ literal|1
 expr_stmt|;
 name|numberOfConsumers
 operator|=
-literal|4
+literal|1
 expr_stmt|;
 name|numberofProducers
 operator|=
@@ -161,7 +161,9 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{
-return|return
+name|PerfConsumer
+name|result
+init|=
 operator|new
 name|PerfConsumer
 argument_list|(
@@ -173,6 +175,16 @@ literal|"subs:"
 operator|+
 name|number
 argument_list|)
+decl_stmt|;
+name|result
+operator|.
+name|setInitialDelay
+argument_list|(
+literal|20000
+argument_list|)
+expr_stmt|;
+return|return
+name|result
 return|;
 block|}
 block|}
