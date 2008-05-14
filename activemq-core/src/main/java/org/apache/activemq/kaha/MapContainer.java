@@ -326,6 +326,19 @@ name|int
 name|getIndexPageSize
 parameter_list|()
 function_decl|;
+comment|/**      * set the meximum bin size      */
+name|void
+name|setMaxBinSize
+parameter_list|(
+name|int
+name|size
+parameter_list|)
+function_decl|;
+comment|/**      * @return the maximum bin size      * @return      */
+name|int
+name|getMaxBinSize
+parameter_list|()
+function_decl|;
 comment|/**      * @return the Index MBean      */
 name|IndexMBean
 name|getIndexMBean
