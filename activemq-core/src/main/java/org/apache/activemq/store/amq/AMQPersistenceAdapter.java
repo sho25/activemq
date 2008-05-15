@@ -2501,10 +2501,17 @@ name|Integer
 argument_list|>
 name|inUse
 init|=
+operator|new
+name|HashSet
+argument_list|<
+name|Integer
+argument_list|>
+argument_list|(
 name|referenceStoreAdapter
 operator|.
 name|getReferenceFileIdsInUse
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|asyncDataManager
 operator|.
