@@ -259,13 +259,11 @@ specifier|static
 specifier|final
 name|int
 name|MAXIMUM_CAPACITY
-init|=
-literal|16384
 decl_stmt|;
-comment|/**      * The load factor used when none specified in constructor.      **/
+specifier|public
 specifier|static
 specifier|final
-name|float
+name|int
 name|DEFAULT_LOAD_FACTOR
 decl_stmt|;
 specifier|private
@@ -431,10 +429,10 @@ init|=
 name|MAXIMUM_CAPACITY
 decl_stmt|;
 specifier|private
-name|float
+name|int
 name|loadFactor
 init|=
-literal|0.75f
+name|DEFAULT_LOAD_FACTOR
 decl_stmt|;
 comment|/**      * Constructor      *       * @param directory      * @param name      * @param indexManager      * @param numberOfBins      * @throws IOException      */
 specifier|public
@@ -763,7 +761,7 @@ expr_stmt|;
 block|}
 comment|/**      * @return the loadFactor      */
 specifier|public
-name|float
+name|int
 name|getLoadFactor
 parameter_list|()
 block|{
@@ -776,7 +774,7 @@ specifier|public
 name|void
 name|setLoadFactor
 parameter_list|(
-name|float
+name|int
 name|loadFactor
 parameter_list|)
 block|{
@@ -2683,8 +2681,6 @@ name|bins
 operator|.
 name|length
 operator|*
-literal|100
-operator|*
 name|loadFactor
 argument_list|)
 return|;
@@ -2835,11 +2831,27 @@ literal|"1024"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|MAXIMUM_CAPACITY
+operator|=
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"defaultPageSize"
+argument_list|,
+literal|"16384"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|DEFAULT_LOAD_FACTOR
 operator|=
-name|Float
+name|Integer
 operator|.
-name|parseFloat
+name|parseInt
 argument_list|(
 name|System
 operator|.
@@ -2847,7 +2859,7 @@ name|getProperty
 argument_list|(
 literal|"defaultLoadFactor"
 argument_list|,
-literal|"1.5f"
+literal|"50"
 argument_list|)
 argument_list|)
 expr_stmt|;

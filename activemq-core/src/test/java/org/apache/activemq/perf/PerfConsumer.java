@@ -261,7 +261,7 @@ literal|false
 argument_list|,
 name|Session
 operator|.
-name|DUPS_OK_ACKNOWLEDGE
+name|AUTO_ACKNOWLEDGE
 argument_list|)
 decl_stmt|;
 if|if

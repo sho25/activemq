@@ -328,7 +328,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * set the meximum bin size      */
 name|void
-name|setMaxBinSize
+name|setIndexMaxBinSize
 parameter_list|(
 name|int
 name|size
@@ -336,8 +336,23 @@ parameter_list|)
 function_decl|;
 comment|/**      * @return the maximum bin size      * @return      */
 name|int
-name|getMaxBinSize
+name|getIndexMaxBinSize
 parameter_list|()
+function_decl|;
+comment|/**      * @return the loadFactor      */
+specifier|public
+name|int
+name|getIndexLoadFactor
+parameter_list|()
+function_decl|;
+comment|/**      * @param loadFactor the loadFactor to set      */
+specifier|public
+name|void
+name|setIndexLoadFactor
+parameter_list|(
+name|int
+name|loadFactor
+parameter_list|)
 function_decl|;
 comment|/**      * @return the Index MBean      */
 name|IndexMBean
