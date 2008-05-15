@@ -1838,6 +1838,15 @@ argument_list|(
 name|str
 argument_list|)
 expr_stmt|;
+name|brokerInfo
+operator|.
+name|setBrokerId
+argument_list|(
+name|this
+operator|.
+name|localBrokerId
+argument_list|)
+expr_stmt|;
 name|remoteBroker
 operator|.
 name|oneway
