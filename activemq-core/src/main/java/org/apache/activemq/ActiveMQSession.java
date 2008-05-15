@@ -3796,6 +3796,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|//clear the brokerPath in case we are re-sending this message
+name|msg
+operator|.
+name|setBrokerPath
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 name|msg
 operator|.
 name|setJMSDestination
