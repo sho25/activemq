@@ -342,6 +342,14 @@ name|ActiveMQDispatcher
 block|{
 specifier|public
 specifier|static
+specifier|final
+name|int
+name|INDIVIDUAL_ACKNOWLEDGE
+init|=
+literal|4
+decl_stmt|;
+specifier|public
+specifier|static
 interface|interface
 name|DeliveryListener
 block|{
@@ -1753,6 +1761,9 @@ block|}
 if|if
 condition|(
 name|isClientAcknowledge
+argument_list|()
+operator|||
+name|isIndividualAcknowledge
 argument_list|()
 condition|)
 block|{
@@ -4164,6 +4175,19 @@ operator|==
 name|Session
 operator|.
 name|DUPS_OK_ACKNOWLEDGE
+return|;
+block|}
+specifier|public
+name|boolean
+name|isIndividualAcknowledge
+parameter_list|()
+block|{
+return|return
+name|acknowledgementMode
+operator|==
+name|ActiveMQSession
+operator|.
+name|INDIVIDUAL_ACKNOWLEDGE
 return|;
 block|}
 comment|/**      * Returns the message delivery listener.      *       * @return deliveryListener - message delivery listener.      */
