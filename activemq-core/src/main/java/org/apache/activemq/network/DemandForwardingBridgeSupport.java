@@ -3624,6 +3624,58 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// See if this consumer's brokerPath tells us it came from the broker at the other end
+comment|// of the bridge. I think we should be making this decision based on the message's
+comment|// broker bread crumbs and not the consumer's? However, the message's broker bread
+comment|// crumbs are null, which is another matter.
+name|boolean
+name|cameFromRemote
+init|=
+literal|false
+decl_stmt|;
+name|Object
+name|consumerInfo
+init|=
+name|md
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|getDataStructure
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|consumerInfo
+operator|!=
+literal|null
+operator|&&
+operator|(
+name|consumerInfo
+operator|instanceof
+name|ConsumerInfo
+operator|)
+condition|)
+name|cameFromRemote
+operator|=
+name|contains
+argument_list|(
+operator|(
+operator|(
+name|ConsumerInfo
+operator|)
+name|consumerInfo
+operator|)
+operator|.
+name|getBrokerPath
+argument_list|()
+argument_list|,
+name|remoteBrokerInfo
+operator|.
+name|getBrokerId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|Message
 name|message
 init|=
@@ -3657,6 +3709,15 @@ operator|+
 name|message
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"cameFromRemote = "
+operator|+
+name|cameFromRemote
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -3674,6 +3735,13 @@ comment|// If the message was originally sent using async
 comment|// send, we will preserve that QOS
 comment|// by bridging it using an async send (small chance
 comment|// of message loss).
+comment|// Don't send it off to the remote if it originally came from the remote.
+if|if
+condition|(
+operator|!
+name|cameFromRemote
+condition|)
+block|{
 name|remoteBroker
 operator|.
 name|oneway
@@ -3681,6 +3749,17 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Message not forwarded on to remote, because message came from remote"
+argument_list|)
+expr_stmt|;
+block|}
 name|localBroker
 operator|.
 name|oneway
