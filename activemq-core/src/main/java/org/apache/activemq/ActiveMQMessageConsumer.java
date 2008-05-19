@@ -3358,12 +3358,9 @@ name|md
 argument_list|,
 name|MessageAck
 operator|.
-name|STANDARD_ACK_TYPE
+name|INDIVIDUAL_ACK_TYPE
 argument_list|,
-name|deliveredMessages
-operator|.
-name|size
-argument_list|()
+literal|1
 argument_list|)
 decl_stmt|;
 name|session

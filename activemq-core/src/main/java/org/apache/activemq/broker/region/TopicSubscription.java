@@ -1070,6 +1070,11 @@ name|ack
 operator|.
 name|isPoisonAck
 argument_list|()
+operator|||
+name|ack
+operator|.
+name|isIndividualAck
+argument_list|()
 condition|)
 block|{
 if|if

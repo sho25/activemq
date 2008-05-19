@@ -86,6 +86,15 @@ name|REDELIVERED_ACK_TYPE
 init|=
 literal|3
 decl_stmt|;
+comment|/**      * The  ack case where a client wants only an individual message to be discarded.      */
+specifier|public
+specifier|static
+specifier|final
+name|byte
+name|INDIVIDUAL_ACK_TYPE
+init|=
+literal|4
+decl_stmt|;
 specifier|protected
 name|byte
 name|ackType
@@ -291,6 +300,17 @@ return|return
 name|ackType
 operator|==
 name|REDELIVERED_ACK_TYPE
+return|;
+block|}
+specifier|public
+name|boolean
+name|isIndividualAck
+parameter_list|()
+block|{
+return|return
+name|ackType
+operator|==
+name|INDIVIDUAL_ACK_TYPE
 return|;
 block|}
 comment|/**      * @openwire:property version=1 cache=true      */

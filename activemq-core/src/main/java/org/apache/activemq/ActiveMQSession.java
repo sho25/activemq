@@ -340,6 +340,7 @@ name|StatsCapable
 implements|,
 name|ActiveMQDispatcher
 block|{
+comment|/** 	 * Only acknowledge an individual message - using message.acknowledge() 	 * as opposed to CLIENT_ACKNOWLEDGE which  	 * acknowledges all messages consumed by a session at when acknowledge() 	 * is called 	 */
 specifier|public
 specifier|static
 specifier|final
