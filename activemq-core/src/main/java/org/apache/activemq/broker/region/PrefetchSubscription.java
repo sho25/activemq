@@ -753,6 +753,24 @@ init|(
 name|pendingLock
 init|)
 block|{
+comment|// The destination may have just been removed...
+if|if
+condition|(
+operator|!
+name|destinations
+operator|.
+name|contains
+argument_list|(
+name|node
+operator|.
+name|getRegionDestination
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// perhaps we should inform the caller that we are no longer valid to dispatch to?
+return|return;
+block|}
 name|enqueueCounter
 operator|++
 expr_stmt|;
