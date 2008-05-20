@@ -1253,6 +1253,12 @@ init|=
 literal|0
 decl_stmt|;
 specifier|private
+name|boolean
+name|sendAcksAsync
+init|=
+literal|true
+decl_stmt|;
+specifier|private
 specifier|final
 name|Transport
 name|transport
@@ -4821,6 +4827,32 @@ operator|.
 name|sendTimeout
 operator|=
 name|sendTimeout
+expr_stmt|;
+block|}
+comment|/**      * @return the sendAcksAsync      */
+specifier|public
+name|boolean
+name|isSendAcksAsync
+parameter_list|()
+block|{
+return|return
+name|sendAcksAsync
+return|;
+block|}
+comment|/**      * @param sendAcksAsync the sendAcksAsync to set      */
+specifier|public
+name|void
+name|setSendAcksAsync
+parameter_list|(
+name|boolean
+name|sendAcksAsync
+parameter_list|)
+block|{
+name|this
+operator|.
+name|sendAcksAsync
+operator|=
+name|sendAcksAsync
 expr_stmt|;
 block|}
 comment|/**      * Returns the time this connection was created      */

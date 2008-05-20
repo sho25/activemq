@@ -2323,9 +2323,11 @@ try|try
 block|{
 name|session
 operator|.
-name|asyncSendPacket
+name|sendAck
 argument_list|(
 name|ackToSend
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -2916,7 +2918,7 @@ argument_list|)
 decl_stmt|;
 name|session
 operator|.
-name|asyncSendPacket
+name|sendAck
 argument_list|(
 name|ack
 argument_list|)
@@ -2962,7 +2964,7 @@ argument_list|)
 decl_stmt|;
 name|session
 operator|.
-name|asyncSendPacket
+name|sendAck
 argument_list|(
 name|ack
 argument_list|)
@@ -3182,7 +3184,7 @@ argument_list|)
 expr_stmt|;
 name|session
 operator|.
-name|asyncSendPacket
+name|sendAck
 argument_list|(
 name|ack
 argument_list|)
@@ -3293,7 +3295,7 @@ expr_stmt|;
 block|}
 name|session
 operator|.
-name|asyncSendPacket
+name|sendAck
 argument_list|(
 name|ack
 argument_list|)
@@ -3365,7 +3367,7 @@ argument_list|)
 decl_stmt|;
 name|session
 operator|.
-name|asyncSendPacket
+name|sendAck
 argument_list|(
 name|ack
 argument_list|)
@@ -3630,9 +3632,11 @@ argument_list|)
 decl_stmt|;
 name|session
 operator|.
-name|asyncSendPacket
+name|sendAck
 argument_list|(
 name|ack
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 comment|// ensure we don't filter this as a duplicate
@@ -3694,9 +3698,11 @@ argument_list|)
 decl_stmt|;
 name|session
 operator|.
-name|asyncSendPacket
+name|sendAck
 argument_list|(
 name|ack
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 comment|// stop the delivery of messages.
