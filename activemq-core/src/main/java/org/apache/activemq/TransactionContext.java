@@ -681,6 +681,13 @@ name|e
 argument_list|)
 throw|;
 block|}
+finally|finally
+block|{
+name|synchornizations
+operator|=
+literal|null
+expr_stmt|;
+block|}
 block|}
 specifier|private
 name|void
@@ -759,6 +766,13 @@ argument_list|(
 name|e
 argument_list|)
 throw|;
+block|}
+finally|finally
+block|{
+name|synchornizations
+operator|=
+literal|null
+expr_stmt|;
 block|}
 block|}
 specifier|public
