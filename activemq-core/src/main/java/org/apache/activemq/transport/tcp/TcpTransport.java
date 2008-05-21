@@ -435,6 +435,12 @@ operator|*
 literal|1024
 decl_stmt|;
 specifier|protected
+name|boolean
+name|closeAsync
+init|=
+literal|true
+decl_stmt|;
+specifier|protected
 name|Socket
 name|socket
 decl_stmt|;
@@ -1145,6 +1151,32 @@ operator|=
 name|ioBufferSize
 expr_stmt|;
 block|}
+comment|/**      * @return the closeAsync      */
+specifier|public
+name|boolean
+name|isCloseAsync
+parameter_list|()
+block|{
+return|return
+name|closeAsync
+return|;
+block|}
+comment|/**      * @param closeAsync the closeAsync to set      */
+specifier|public
+name|void
+name|setCloseAsync
+parameter_list|(
+name|boolean
+name|closeAsync
+parameter_list|)
+block|{
+name|this
+operator|.
+name|closeAsync
+operator|=
+name|closeAsync
+expr_stmt|;
+block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
 specifier|protected
@@ -1604,6 +1636,11 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|closeAsync
+condition|)
+block|{
 comment|//closing the socket can hang also
 specifier|final
 name|CountDownLatch
@@ -1630,6 +1667,16 @@ parameter_list|()
 block|{
 try|try
 block|{
+name|socket
+operator|.
+name|shutdownInput
+argument_list|()
+expr_stmt|;
+name|socket
+operator|.
+name|shutdownOutput
+argument_list|()
+expr_stmt|;
 name|socket
 operator|.
 name|close
@@ -1675,6 +1722,34 @@ operator|.
 name|SECONDS
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+try|try
+block|{
+name|socket
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Caught exception closing socket"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 comment|/**      * Override so that stop() blocks until the run thread is no longer running.      */
@@ -1967,6 +2042,15 @@ operator|+
 name|runnable
 argument_list|)
 decl_stmt|;
+name|thread
+operator|.
+name|setPriority
+argument_list|(
+name|Thread
+operator|.
+name|MAX_PRIORITY
+argument_list|)
+expr_stmt|;
 name|thread
 operator|.
 name|setDaemon
