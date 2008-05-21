@@ -766,6 +766,12 @@ operator|.
 name|getRegionDestination
 argument_list|()
 argument_list|)
+operator|&&
+name|node
+operator|!=
+name|QueueMessageReference
+operator|.
+name|NULL_MESSAGE
 condition|)
 block|{
 comment|// perhaps we should inform the caller that we are no longer valid to dispatch to?
