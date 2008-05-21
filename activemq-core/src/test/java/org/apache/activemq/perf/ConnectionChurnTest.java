@@ -197,7 +197,7 @@ specifier|protected
 name|String
 name|bindAddress
 init|=
-name|ActiveMQConnection
+name|ActiveMQConnectionFactory
 operator|.
 name|DEFAULT_BROKER_BIND_URL
 operator|+
