@@ -1669,16 +1669,6 @@ try|try
 block|{
 name|socket
 operator|.
-name|shutdownInput
-argument_list|()
-expr_stmt|;
-name|socket
-operator|.
-name|shutdownOutput
-argument_list|()
-expr_stmt|;
-name|socket
-operator|.
 name|close
 argument_list|()
 expr_stmt|;
