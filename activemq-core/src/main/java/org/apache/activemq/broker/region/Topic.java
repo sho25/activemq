@@ -587,24 +587,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tools
-operator|.
-name|ant
-operator|.
-name|taskdefs
-operator|.
-name|condition
-operator|.
-name|IsFalse
-import|;
-end_import
-
 begin_comment
 comment|/**  * The Topic is a destination that sends a copy of a message to every active  * Subscription registered.  *   * @version $Revision: 1.21 $  */
 end_comment
