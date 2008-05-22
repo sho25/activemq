@@ -2383,6 +2383,15 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|clearBody
+parameter_list|()
+throws|throws
+name|JMSException
+block|{                             }
 block|}
 decl_stmt|;
 name|msg

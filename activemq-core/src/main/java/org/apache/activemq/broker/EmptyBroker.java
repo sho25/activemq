@@ -341,6 +341,20 @@ name|Store
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usage
+operator|.
+name|Usage
+import|;
+end_import
+
 begin_comment
 comment|/**  * Dumb implementation - used to be overriden by listeners  *   * @version $Revision$  */
 end_comment
@@ -975,6 +989,78 @@ operator|-
 literal|1l
 return|;
 block|}
+specifier|public
+name|void
+name|fastProducer
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|ProducerInfo
+name|producerInfo
+parameter_list|)
+block|{     }
+specifier|public
+name|void
+name|isFull
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|Destination
+name|destination
+parameter_list|,
+name|Usage
+name|usage
+parameter_list|)
+block|{     }
+specifier|public
+name|void
+name|messageConsumed
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|MessageReference
+name|messageReference
+parameter_list|)
+block|{     }
+specifier|public
+name|void
+name|messageDelivered
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|MessageReference
+name|messageReference
+parameter_list|)
+block|{     }
+specifier|public
+name|void
+name|messageDiscarded
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|MessageReference
+name|messageReference
+parameter_list|)
+block|{     }
+specifier|public
+name|void
+name|slowConsumer
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|Destination
+name|destination
+parameter_list|,
+name|Subscription
+name|subs
+parameter_list|)
+block|{     }
 block|}
 end_class
 

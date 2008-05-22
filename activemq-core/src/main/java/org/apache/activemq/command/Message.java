@@ -77,6 +77,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -417,6 +427,14 @@ specifier|abstract
 name|Message
 name|copy
 parameter_list|()
+function_decl|;
+specifier|public
+specifier|abstract
+name|void
+name|clearBody
+parameter_list|()
+throws|throws
+name|JMSException
 function_decl|;
 specifier|protected
 name|void

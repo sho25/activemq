@@ -1010,6 +1010,24 @@ operator|.
 name|MAX_VALUE
 return|;
 block|}
+comment|/**      * Add a destination      * @param destination      */
+specifier|public
+name|void
+name|addDestination
+parameter_list|(
+name|Destination
+name|destination
+parameter_list|)
+block|{              }
+comment|/**      * Remove a destination      * @param destination      */
+specifier|public
+name|void
+name|removeDestination
+parameter_list|(
+name|Destination
+name|destination
+parameter_list|)
+block|{              }
 specifier|protected
 name|void
 name|doAddRecoveredMessage

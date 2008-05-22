@@ -183,6 +183,20 @@ name|MemoryUsage
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usage
+operator|.
+name|Usage
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision: 1.12 $  */
 end_comment
@@ -436,6 +450,72 @@ name|prefetchSubscription
 parameter_list|,
 name|MessageReference
 name|node
+parameter_list|)
+function_decl|;
+comment|/**      * called when message is consumed      * @param context      * @param messageReference      */
+name|void
+name|messageConsumed
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|MessageReference
+name|messageReference
+parameter_list|)
+function_decl|;
+comment|/**      * Called when message is delivered to the broker      * @param context      * @param messageReference      */
+name|void
+name|messageDelivered
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|MessageReference
+name|messageReference
+parameter_list|)
+function_decl|;
+comment|/**      * Called when a message is discarded - e.g. running low on memory      * This will happen only if the policy is enabled - e.g. non durable topics      * @param context      * @param messageReference      */
+name|void
+name|messageDiscarded
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|MessageReference
+name|messageReference
+parameter_list|)
+function_decl|;
+comment|/**      * Called when there is a slow consumer      * @param context      * @param subs      */
+name|void
+name|slowConsumer
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|Subscription
+name|subs
+parameter_list|)
+function_decl|;
+comment|/**      * Called to notify a producer is too fast      * @param context      * @param producerInfo      */
+name|void
+name|fastProducer
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|ProducerInfo
+name|producerInfo
+parameter_list|)
+function_decl|;
+comment|/**      * Called when a Usage reaches a limit      * @param context      * @param usage      */
+name|void
+name|isFull
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|Usage
+name|usage
 parameter_list|)
 function_decl|;
 block|}

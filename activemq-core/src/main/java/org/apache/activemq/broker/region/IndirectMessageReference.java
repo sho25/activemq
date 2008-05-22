@@ -472,6 +472,18 @@ name|getSize
 argument_list|()
 return|;
 block|}
+specifier|public
+name|boolean
+name|isAdvisory
+parameter_list|()
+block|{
+return|return
+name|message
+operator|.
+name|isAdvisory
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

@@ -150,6 +150,11 @@ name|boolean
 name|isDropped
 parameter_list|()
 function_decl|;
+comment|/**      * @return true if the message is an advisory      */
+name|boolean
+name|isAdvisory
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

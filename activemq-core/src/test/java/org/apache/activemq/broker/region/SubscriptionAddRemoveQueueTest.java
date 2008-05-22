@@ -1266,6 +1266,22 @@ return|return
 literal|false
 return|;
 block|}
+specifier|public
+name|void
+name|addDestination
+parameter_list|(
+name|Destination
+name|destination
+parameter_list|)
+block|{                     }
+specifier|public
+name|void
+name|removeDestination
+parameter_list|(
+name|Destination
+name|destination
+parameter_list|)
+block|{                     }
 block|}
 block|}
 end_class
