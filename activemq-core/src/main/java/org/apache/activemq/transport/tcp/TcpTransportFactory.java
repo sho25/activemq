@@ -818,6 +818,8 @@ specifier|protected
 name|ServerSocketFactory
 name|createServerSocketFactory
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 return|return
 name|ServerSocketFactory
@@ -830,6 +832,8 @@ specifier|protected
 name|SocketFactory
 name|createSocketFactory
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 return|return
 name|SocketFactory
