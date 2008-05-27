@@ -5318,11 +5318,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-synchronized|synchronized
-init|(
-name|messages
-init|)
-block|{
 name|messages
 operator|.
 name|addMessageLast
@@ -5330,7 +5325,6 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
-block|}
 name|destinationStatistics
 operator|.
 name|getEnqueues
