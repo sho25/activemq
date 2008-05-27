@@ -277,6 +277,30 @@ literal|"User is not authenticated."
 argument_list|)
 throw|;
 block|}
+name|Destination
+name|existing
+init|=
+name|this
+operator|.
+name|getDestinationMap
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|destination
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|existing
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|existing
+return|;
+block|}
 comment|// if(!((ActiveMQTempDestination)destination).getConnectionId().equals(context.getConnectionId().getValue())
 comment|// ) {
 if|if
