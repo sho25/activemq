@@ -51,7 +51,13 @@ name|apache
 operator|.
 name|camel
 operator|.
-name|CamelTemplate
+name|component
+operator|.
+name|uface
+operator|.
+name|swing
+operator|.
+name|SwingBrowser
 import|;
 end_import
 
@@ -63,13 +69,9 @@ name|apache
 operator|.
 name|camel
 operator|.
-name|component
+name|impl
 operator|.
-name|uface
-operator|.
-name|swing
-operator|.
-name|SwingBrowser
+name|CamelTemplate
 import|;
 end_import
 
