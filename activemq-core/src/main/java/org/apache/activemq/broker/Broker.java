@@ -705,6 +705,11 @@ name|Usage
 name|usage
 parameter_list|)
 function_decl|;
+comment|/**      *  called when the broker becomes the master in a master/slave      *  configuration      */
+name|void
+name|nowMasterBroker
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

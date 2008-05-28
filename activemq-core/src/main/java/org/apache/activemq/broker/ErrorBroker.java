@@ -1543,6 +1543,21 @@ name|message
 argument_list|)
 throw|;
 block|}
+specifier|public
+name|void
+name|nowMasterBroker
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|BrokerStoppedException
+argument_list|(
+name|this
+operator|.
+name|message
+argument_list|)
+throw|;
+block|}
 block|}
 end_class
 

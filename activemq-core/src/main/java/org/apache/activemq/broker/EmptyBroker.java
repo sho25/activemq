@@ -899,6 +899,8 @@ parameter_list|,
 name|MessagePull
 name|pull
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 return|return
 literal|null
@@ -1061,6 +1063,11 @@ name|Subscription
 name|subs
 parameter_list|)
 block|{     }
+specifier|public
+name|void
+name|nowMasterBroker
+parameter_list|()
+block|{             }
 block|}
 end_class
 

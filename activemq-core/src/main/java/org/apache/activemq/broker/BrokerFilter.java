@@ -1494,6 +1494,17 @@ name|subs
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|nowMasterBroker
+parameter_list|()
+block|{
+name|next
+operator|.
+name|nowMasterBroker
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 

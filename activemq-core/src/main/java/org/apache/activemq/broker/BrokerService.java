@@ -2270,6 +2270,11 @@ block|{
 name|startAllConnectors
 argument_list|()
 expr_stmt|;
+name|broker
+operator|.
+name|nowMasterBroker
+argument_list|()
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
