@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  *  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -55,37 +55,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|command
-operator|.
-name|DataStructure
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ProducerInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|openwire
 operator|.
-name|BooleanStream
+name|*
 import|;
 end_import
 
@@ -97,14 +69,14 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|openwire
+name|command
 operator|.
-name|OpenWireFormat
+name|*
 import|;
 end_import
 
 begin_comment
-comment|/**  * Marshalling code for Open Wire Format for ProducerInfoMarshaller  *   *   * NOTE!: This file is auto generated - do not modify! if you need to make a  * change, please see the modify the groovy scripts in the under src/gram/script  * and then use maven openwire:generate to regenerate this file.  *   * @version $Revision$  */
+comment|/**  * Marshalling code for Open Wire Format for ProducerInfoMarshaller  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -114,7 +86,7 @@ name|ProducerInfoMarshaller
 extends|extends
 name|BaseCommandMarshaller
 block|{
-comment|/**      * Return the type of Data Structure we marshal      *       * @return short representation of the type data structure      */
+comment|/**      * Return the type of Data Structure we marshal      * @return short representation of the type data structure      */
 specifier|public
 name|byte
 name|getDataStructureType
@@ -138,7 +110,7 @@ name|ProducerInfo
 argument_list|()
 return|;
 block|}
-comment|/**      * Un-marshal an object instance from the data input stream      *       * @param o the object to un-marshal      * @param dataIn the data input stream to build the object from      * @throws IOException      */
+comment|/**      * Un-marshal an object instance from the data input stream      *      * @param o the object to un-marshal      * @param dataIn the data input stream to build the object from      * @throws IOException      */
 specifier|public
 name|void
 name|tightUnmarshal
@@ -454,7 +426,7 @@ operator|+
 literal|4
 return|;
 block|}
-comment|/**      * Write a object instance to data output stream      *       * @param o the instance to be marshaled      * @param dataOut the output stream      * @throws IOException thrown if an error occurs      */
+comment|/**      * Write a object instance to data output stream      *      * @param o the instance to be marshaled      * @param dataOut the output stream      * @throws IOException thrown if an error occurs      */
 specifier|public
 name|void
 name|tightMarshal2
@@ -559,7 +531,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Un-marshal an object instance from the data input stream      *       * @param o the object to un-marshal      * @param dataIn the data input stream to build the object from      * @throws IOException      */
+comment|/**      * Un-marshal an object instance from the data input stream      *      * @param o the object to un-marshal      * @param dataIn the data input stream to build the object from      * @throws IOException      */
 specifier|public
 name|void
 name|looseUnmarshal

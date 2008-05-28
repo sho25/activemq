@@ -207,7 +207,12 @@ name|service
 operator|.
 name|addNetworkConnector
 argument_list|(
-literal|"multicast://default"
+literal|"multicast://group-"
+operator|+
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|service
@@ -268,7 +273,12 @@ name|service
 operator|.
 name|addNetworkConnector
 argument_list|(
-literal|"multicast://default"
+literal|"multicast://group-"
+operator|+
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|service
