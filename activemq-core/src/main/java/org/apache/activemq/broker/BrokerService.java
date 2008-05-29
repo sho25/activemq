@@ -2379,12 +2379,6 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-name|startDestinations
-argument_list|()
-expr_stmt|;
-name|addShutdownHook
-argument_list|()
-expr_stmt|;
 name|LOG
 operator|.
 name|info
@@ -2392,6 +2386,24 @@ argument_list|(
 literal|"Using Persistence Adapter: "
 operator|+
 name|getPersistenceAdapter
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|getPersistenceAdapter
+argument_list|()
+operator|.
+name|setUsageManager
+argument_list|(
+name|getProducerSystemUsage
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|getPersistenceAdapter
+argument_list|()
+operator|.
+name|setBrokerName
+argument_list|(
+name|getBrokerName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2404,6 +2416,18 @@ name|deleteAllMessages
 argument_list|()
 expr_stmt|;
 block|}
+name|getPersistenceAdapter
+argument_list|()
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+name|startDestinations
+argument_list|()
+expr_stmt|;
+name|addShutdownHook
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|isUseJmx
@@ -6747,24 +6771,6 @@ name|Exception
 block|{
 comment|// we must start the persistence adaptor before we can create the region
 comment|// broker
-name|getPersistenceAdapter
-argument_list|()
-operator|.
-name|setUsageManager
-argument_list|(
-name|getProducerSystemUsage
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|getPersistenceAdapter
-argument_list|()
-operator|.
-name|setBrokerName
-argument_list|(
-name|getBrokerName
-argument_list|()
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|this
@@ -6779,12 +6785,7 @@ name|deleteAllMessages
 argument_list|()
 expr_stmt|;
 block|}
-name|getPersistenceAdapter
-argument_list|()
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
+comment|//        getPersistenceAdapter().start();
 if|if
 condition|(
 name|destinationInterceptors
