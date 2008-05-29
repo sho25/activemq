@@ -184,10 +184,12 @@ name|getDefaultDataDirectory
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|directory
+name|IOHelper
 operator|.
 name|mkdirs
-argument_list|()
+argument_list|(
+name|directory
+argument_list|)
 expr_stmt|;
 name|IOHelper
 operator|.

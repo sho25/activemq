@@ -2379,16 +2379,6 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Using Persistence Adapter: "
-operator|+
-name|getPersistenceAdapter
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|getPersistenceAdapter
 argument_list|()
 operator|.
@@ -2404,6 +2394,16 @@ operator|.
 name|setBrokerName
 argument_list|(
 name|getBrokerName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Using Persistence Adapter: "
+operator|+
+name|getPersistenceAdapter
 argument_list|()
 argument_list|)
 expr_stmt|;

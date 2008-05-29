@@ -787,12 +787,14 @@ name|directory
 operator|=
 name|directory
 expr_stmt|;
+name|IOHelper
+operator|.
+name|mkdirs
+argument_list|(
 name|this
 operator|.
 name|directory
-operator|.
-name|mkdirs
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 specifier|public
