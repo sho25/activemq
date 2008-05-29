@@ -96,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TODO why does this class not inherit from DurableSubscriptionView?  *   * @version $Revision: 1.5 $  */
+comment|/**  *   * @version $Revision: 1.5 $  */
 end_comment
 
 begin_class
@@ -104,14 +104,10 @@ specifier|public
 class|class
 name|InactiveDurableSubscriptionView
 extends|extends
-name|SubscriptionView
+name|DurableSubscriptionView
 implements|implements
 name|DurableSubscriptionViewMBean
 block|{
-specifier|protected
-name|ManagedRegionBroker
-name|broker
-decl_stmt|;
 specifier|protected
 name|SubscriptionInfo
 name|subscriptionInfo
@@ -132,6 +128,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|broker
+argument_list|,
 name|clientId
 argument_list|,
 literal|null

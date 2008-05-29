@@ -127,36 +127,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
-operator|.
-name|region
-operator|.
-name|QueueMessageReference
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|MessageId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|usage
 operator|.
 name|SystemUsage
@@ -346,6 +316,12 @@ function_decl|;
 comment|/**      * @return true if the cursor is full      */
 name|boolean
 name|isFull
+parameter_list|()
+function_decl|;
+comment|/**      * @return true if the cursor has space to page messages into      */
+specifier|public
+name|boolean
+name|hasSpace
 parameter_list|()
 function_decl|;
 comment|/**      * @return true if the cursor has buffered messages ready to deliver      */

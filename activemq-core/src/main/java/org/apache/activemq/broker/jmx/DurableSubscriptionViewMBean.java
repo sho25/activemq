@@ -91,6 +91,42 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * @return true if the message cursor has memory space available      * to page in more messages      */
+specifier|public
+name|boolean
+name|doesCursorHaveSpace
+parameter_list|()
+function_decl|;
+comment|/**      * @return true if the cursor has reached its memory limit for      * paged in messages      */
+specifier|public
+name|boolean
+name|isCursorFull
+parameter_list|()
+function_decl|;
+comment|/**      * @return true if the cursor has messages buffered to deliver      */
+specifier|public
+name|boolean
+name|doesCursorHaveMessagesBuffered
+parameter_list|()
+function_decl|;
+comment|/**      * @return the cursor memory usage in bytes      */
+specifier|public
+name|long
+name|getCursorMemoryUsage
+parameter_list|()
+function_decl|;
+comment|/**      * @return the cursor memory usage as a percentage      */
+specifier|public
+name|int
+name|getCursorPercentUsage
+parameter_list|()
+function_decl|;
+comment|/**      * @return the number of messages available to be paged in       * by the cursor      */
+specifier|public
+name|int
+name|cursorSize
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

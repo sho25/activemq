@@ -303,6 +303,36 @@ name|int
 name|maxAuditDepth
 parameter_list|)
 function_decl|;
+comment|/**      * @return the maximum number of message to be paged into the       * destination      */
+specifier|public
+name|int
+name|getMaxPageSize
+parameter_list|()
+function_decl|;
+comment|/**      * @param pageSize      * Set the maximum number of messages to page into the destination      */
+specifier|public
+name|void
+name|setMaxPageSize
+parameter_list|(
+name|int
+name|pageSize
+parameter_list|)
+function_decl|;
+comment|/**      * @return true if caching is enabled of for the destination      */
+specifier|public
+name|boolean
+name|isUseCache
+parameter_list|()
+function_decl|;
+comment|/**      * @param value      * enable/disable caching on the destination      */
+specifier|public
+name|void
+name|setUseCache
+parameter_list|(
+name|boolean
+name|value
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
