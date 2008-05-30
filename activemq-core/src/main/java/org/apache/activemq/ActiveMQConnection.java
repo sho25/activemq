@@ -3489,7 +3489,7 @@ name|createConsumerId
 argument_list|()
 decl_stmt|;
 name|ConsumerInfo
-name|info
+name|consumerInfo
 init|=
 operator|new
 name|ConsumerInfo
@@ -3497,7 +3497,7 @@ argument_list|(
 name|consumerId
 argument_list|)
 decl_stmt|;
-name|info
+name|consumerInfo
 operator|.
 name|setDestination
 argument_list|(
@@ -3509,28 +3509,28 @@ name|destination
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|info
+name|consumerInfo
 operator|.
 name|setSelector
 argument_list|(
 name|messageSelector
 argument_list|)
 expr_stmt|;
-name|info
+name|consumerInfo
 operator|.
 name|setPrefetchSize
 argument_list|(
 name|maxMessages
 argument_list|)
 expr_stmt|;
-name|info
+name|consumerInfo
 operator|.
 name|setNoLocal
 argument_list|(
 name|noLocal
 argument_list|)
 expr_stmt|;
-name|info
+name|consumerInfo
 operator|.
 name|setDispatchAsync
 argument_list|(
@@ -3541,7 +3541,7 @@ expr_stmt|;
 comment|// Allows the options on the destination to configure the consumerInfo
 if|if
 condition|(
-name|info
+name|consumerInfo
 operator|.
 name|getDestination
 argument_list|()
@@ -3568,7 +3568,7 @@ argument_list|,
 name|String
 argument_list|>
 argument_list|(
-name|info
+name|consumerInfo
 operator|.
 name|getDestination
 argument_list|()
@@ -3581,7 +3581,7 @@ name|IntrospectionSupport
 operator|.
 name|setProperties
 argument_list|(
-name|info
+name|consumerInfo
 argument_list|,
 name|options
 argument_list|,
@@ -3597,7 +3597,7 @@ name|this
 argument_list|,
 name|sessionPool
 argument_list|,
-name|info
+name|consumerInfo
 argument_list|)
 return|;
 block|}
