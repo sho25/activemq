@@ -402,6 +402,11 @@ operator|new
 name|BrokerService
 argument_list|()
 decl_stmt|;
+name|brokerService
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 name|ActiveMQDestination
 name|destination
 init|=
