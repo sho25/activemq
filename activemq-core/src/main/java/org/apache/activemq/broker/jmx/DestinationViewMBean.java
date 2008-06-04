@@ -196,6 +196,41 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Sends a TextMesage to the destination.      * @param body the text to send      * @param user      * @param password      * @return      * @throws Exception      */
+name|String
+name|sendTextMessage
+parameter_list|(
+name|String
+name|body
+parameter_list|,
+name|String
+name|user
+parameter_list|,
+name|String
+name|password
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      *       * @param headers the message headers and properties to set. Can only      *                container Strings maped to primitive types.      * @param body the text to send      * @param user      * @param password      * @return      * @throws Exception      */
+name|String
+name|sendTextMessage
+parameter_list|(
+name|Map
+name|headers
+parameter_list|,
+name|String
+name|body
+parameter_list|,
+name|String
+name|user
+parameter_list|,
+name|String
+name|password
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
 comment|/**      * @return the percentage of amount of memory used      */
 name|int
 name|getMemoryPercentUsage
