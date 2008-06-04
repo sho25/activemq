@@ -4176,7 +4176,7 @@ name|session
 operator|.
 name|connection
 operator|.
-name|onAsyncException
+name|onClientInternalException
 argument_list|(
 name|e
 argument_list|)
@@ -4351,7 +4351,7 @@ name|session
 operator|.
 name|connection
 operator|.
-name|onAsyncException
+name|onClientInternalException
 argument_list|(
 name|e
 argument_list|)

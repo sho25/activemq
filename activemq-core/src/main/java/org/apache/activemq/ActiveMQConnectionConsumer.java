@@ -438,7 +438,7 @@ else|else
 block|{
 name|connection
 operator|.
-name|onAsyncException
+name|onClientInternalException
 argument_list|(
 operator|new
 name|JMSException

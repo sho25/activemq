@@ -1824,11 +1824,10 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|RuntimeException
 name|e
 parameter_list|)
 block|{
-comment|// TODO: figure out proper way to handle error.
 name|LOG
 operator|.
 name|error
@@ -1838,9 +1837,15 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+comment|// A problem while invoking the MessageListener does not
+comment|// in general indicate a problem with the connection to the broker, i.e.
+comment|// it will usually be sufficient to let the afterDelivery() method either
+comment|// commit or roll back in order to deal with the exception.
+comment|// However, we notify any registered client internal exception listener
+comment|// of the problem.
 name|connection
 operator|.
-name|onAsyncException
+name|onClientInternalException
 argument_list|(
 name|e
 argument_list|)
@@ -2136,7 +2141,7 @@ parameter_list|)
 block|{
 name|connection
 operator|.
-name|onAsyncException
+name|onClientInternalException
 argument_list|(
 name|e
 argument_list|)
@@ -3255,7 +3260,7 @@ argument_list|()
 expr_stmt|;
 name|connection
 operator|.
-name|onAsyncException
+name|onClientInternalException
 argument_list|(
 name|e
 argument_list|)
