@@ -2843,7 +2843,7 @@ name|System
 operator|.
 name|getProperty
 argument_list|(
-literal|"defaultPageSize"
+literal|"maximumCapacity"
 argument_list|,
 literal|"16384"
 argument_list|)
