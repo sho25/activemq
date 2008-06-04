@@ -4866,11 +4866,6 @@ init|(
 name|this
 init|)
 block|{
-name|transport
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|taskRunnerFactory
@@ -4900,6 +4895,11 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+name|transport
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 name|active
 operator|=
 literal|true
