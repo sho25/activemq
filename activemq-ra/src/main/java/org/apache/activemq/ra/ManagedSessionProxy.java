@@ -933,8 +933,12 @@ name|JMSException
 block|{
 name|getSession
 argument_list|()
+operator|.
+name|setMessageListener
+argument_list|(
+name|listener
+argument_list|)
 expr_stmt|;
-comment|// .setMessageListener(listener);
 block|}
 comment|/**      * @param name      * @throws JMSException      */
 specifier|public
