@@ -3369,7 +3369,12 @@ name|failure
 expr_stmt|;
 comment|// Make sure on initial startup, that the transportListener has been initialized
 comment|// for this instance.
-while|while
+synchronized|synchronized
+init|(
+name|listenerMutex
+init|)
+block|{
+if|if
 condition|(
 name|transportListener
 operator|==
@@ -3378,20 +3383,21 @@ condition|)
 block|{
 try|try
 block|{
-name|Thread
+name|listenerMutex
 operator|.
-name|sleep
+name|wait
 argument_list|(
-literal|100
+literal|2000
 argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
 name|InterruptedException
-name|iEx
+name|ex
 parameter_list|)
 block|{}
+block|}
 block|}
 if|if
 condition|(
