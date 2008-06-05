@@ -509,6 +509,15 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
+name|Object
+name|listenerMutex
+init|=
+operator|new
+name|Object
+argument_list|()
+decl_stmt|;
+specifier|private
+specifier|final
 name|ConnectionStateTracker
 name|stateTracker
 init|=
@@ -2612,12 +2621,23 @@ name|TransportListener
 name|commandListener
 parameter_list|)
 block|{
+synchronized|synchronized
+init|(
+name|listenerMutex
+init|)
+block|{
 name|this
 operator|.
 name|transportListener
 operator|=
 name|commandListener
 expr_stmt|;
+name|listenerMutex
+operator|.
+name|notifyAll
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 specifier|public
 parameter_list|<
@@ -3197,6 +3217,40 @@ name|connectFailures
 operator|=
 literal|0
 expr_stmt|;
+comment|// Make sure on initial startup, that the transportListener
+comment|// has been initialized for this instance.
+synchronized|synchronized
+init|(
+name|listenerMutex
+init|)
+block|{
+if|if
+condition|(
+name|transportListener
+operator|==
+literal|null
+condition|)
+block|{
+try|try
+block|{
+comment|//if it isn't set after 2secs - it
+comment|//probably never will be
+name|listenerMutex
+operator|.
+name|wait
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|ex
+parameter_list|)
+block|{}
+block|}
+block|}
 if|if
 condition|(
 name|transportListener
@@ -3208,6 +3262,16 @@ name|transportListener
 operator|.
 name|transportResumed
 argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"transport resumed by transport listener not set"
+argument_list|)
 expr_stmt|;
 block|}
 if|if
