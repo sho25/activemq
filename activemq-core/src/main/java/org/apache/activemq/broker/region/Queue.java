@@ -5291,6 +5291,15 @@ argument_list|)
 decl_stmt|;
 name|answer
 operator|.
+name|setBroker
+argument_list|(
+name|this
+operator|.
+name|broker
+argument_list|)
+expr_stmt|;
+name|answer
+operator|.
 name|getMessageEvaluationContext
 argument_list|()
 operator|.
