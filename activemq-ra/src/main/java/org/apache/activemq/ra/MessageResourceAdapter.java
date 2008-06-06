@@ -66,6 +66,7 @@ comment|/**  * Knows how to connect to one ActiveMQ server. It can then activate
 end_comment
 
 begin_interface
+specifier|public
 interface|interface
 name|MessageResourceAdapter
 extends|extends

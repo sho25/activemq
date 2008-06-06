@@ -71,6 +71,34 @@ name|MessageEndpoint
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * @author<a href="mailto:michael.gaffney@panacya.com">Michael Gaffney</a>  */
 end_comment
@@ -103,6 +131,21 @@ init|=
 operator|new
 name|MessageEndpointDead
 argument_list|()
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOG
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|MessageEndpointProxy
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 specifier|private
 specifier|static
@@ -197,6 +240,13 @@ name|NoSuchMethodException
 throws|,
 name|ResourceException
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Invoking MessageEndpoint.beforeDelivery()"
+argument_list|)
+expr_stmt|;
 name|state
 operator|.
 name|beforeDelivery
@@ -215,6 +265,13 @@ name|Message
 name|message
 parameter_list|)
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Invoking MessageEndpoint.onMethod()"
+argument_list|)
+expr_stmt|;
 name|state
 operator|.
 name|onMessage
@@ -232,6 +289,13 @@ parameter_list|()
 throws|throws
 name|ResourceException
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Invoking MessageEndpoint.afterDelivery()"
+argument_list|)
+expr_stmt|;
 name|state
 operator|.
 name|afterDelivery
@@ -245,6 +309,13 @@ name|void
 name|release
 parameter_list|()
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Invoking MessageEndpoint.release()"
+argument_list|)
+expr_stmt|;
 name|state
 operator|.
 name|release

@@ -493,6 +493,21 @@ return|return
 name|session
 return|;
 block|}
+specifier|protected
+name|boolean
+name|isStale
+parameter_list|()
+block|{
+return|return
+name|stale
+operator|||
+operator|!
+name|session
+operator|.
+name|isRunning
+argument_list|()
+return|;
+block|}
 specifier|public
 name|MessageProducer
 name|getMessageProducer
@@ -695,6 +710,10 @@ argument_list|(
 literal|"Running"
 argument_list|)
 expr_stmt|;
+name|currentBatchSize
+operator|=
+literal|0
+expr_stmt|;
 while|while
 condition|(
 literal|true
@@ -709,6 +728,13 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+name|InboundContextSupport
+operator|.
+name|register
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|session
@@ -717,17 +743,6 @@ name|isRunning
 argument_list|()
 condition|)
 block|{
-name|InboundContextSupport
-operator|.
-name|register
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
-name|currentBatchSize
-operator|=
-literal|0
-expr_stmt|;
 name|session
 operator|.
 name|run
@@ -759,6 +774,36 @@ name|stale
 operator|=
 literal|true
 expr_stmt|;
+if|if
+condition|(
+name|log
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Endpoint failed to process message. Reason: "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|log
 operator|.
 name|debug
@@ -768,15 +813,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"Endpoint failed to process message. Reason: "
-operator|+
-name|e
-argument_list|)
-expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
@@ -987,7 +1024,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Local transaction had not been commited.  Commiting now."
+literal|"Local transaction had not been commited. Commiting now."
 argument_list|)
 expr_stmt|;
 block|}
@@ -1034,6 +1071,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @see java.lang.Object#toString()      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -1071,6 +1110,9 @@ argument_list|(
 literal|"Endpoint did not release properly: "
 operator|+
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|,
 name|e
 argument_list|)
@@ -1097,6 +1139,9 @@ argument_list|(
 literal|"Session did not close properly: "
 operator|+
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|,
 name|e
 argument_list|)
