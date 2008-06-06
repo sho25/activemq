@@ -221,7 +221,7 @@ name|this
 operator|.
 name|connection
 operator|.
-name|syncSendPacket
+name|asyncSendPacket
 argument_list|(
 name|this
 operator|.
