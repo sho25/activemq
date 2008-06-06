@@ -1942,6 +1942,15 @@ argument_list|()
 operator|.
 name|isNetworkConnection
 argument_list|()
+operator|&&
+operator|!
+name|consumerExchange
+operator|.
+name|getConnectionContext
+argument_list|()
+operator|.
+name|isInRecoveryMode
+argument_list|()
 condition|)
 block|{
 throw|throw
