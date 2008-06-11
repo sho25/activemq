@@ -238,6 +238,14 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|isPrintHelp
+operator|=
+literal|false
+expr_stmt|;
+name|isPrintVersion
+operator|=
+literal|false
+expr_stmt|;
 comment|// If token is a help option
 if|if
 condition|(

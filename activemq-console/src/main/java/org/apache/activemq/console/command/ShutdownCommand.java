@@ -89,18 +89,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|remote
-operator|.
-name|JMXServiceURL
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -139,13 +127,19 @@ literal|""
 block|,
 literal|"Stop Options:"
 block|,
-literal|"    --jmxurl<url>      Set the JMX URL to connect to."
+literal|"    --jmxurl<url>             Set the JMX URL to connect to."
 block|,
-literal|"    --all               Stop all brokers."
+literal|"    --jmxuser<user>           Set the JMX user used for authenticating."
 block|,
-literal|"    --version           Display the version information."
+literal|"    --jmxpassword<password>   Set the JMX password used for authenticating."
 block|,
-literal|"    -h,-?,--help        Display the stop broker help information."
+literal|"    --jmxlocal                 Use the local JMX server instead of a remote one."
+block|,
+literal|"    --all                      Stop all brokers."
+block|,
+literal|"    --version                  Display the version information."
+block|,
+literal|"    -h,-?,--help               Display the stop broker help information."
 block|,
 literal|""
 block|,
@@ -192,7 +186,7 @@ name|JmxMBeansUtil
 operator|.
 name|getAllBrokers
 argument_list|(
-name|useJmxServiceUrl
+name|createJmxConnection
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -218,7 +212,7 @@ name|JmxMBeansUtil
 operator|.
 name|getAllBrokers
 argument_list|(
-name|useJmxServiceUrl
+name|createJmxConnection
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -329,7 +323,7 @@ name|JmxMBeansUtil
 operator|.
 name|getBrokersByName
 argument_list|(
-name|useJmxServiceUrl
+name|createJmxConnection
 argument_list|()
 argument_list|,
 name|brokerName
@@ -368,7 +362,7 @@ block|}
 comment|// Stop all brokers in set
 name|stopBrokers
 argument_list|(
-name|useJmxServiceUrl
+name|createJmxConnection
 argument_list|()
 argument_list|,
 name|mbeans
@@ -403,13 +397,13 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Stops the list of brokers.      *       * @param jmxServiceUrl - JMX service url to connect to      * @param brokerBeans - broker mbeans to stop      * @throws Exception      */
+comment|/**      * Stops the list of brokers.      *       * @param jmxConnection - connection to the mbean server      * @param brokerBeans - broker mbeans to stop @throws Exception      */
 specifier|protected
 name|void
 name|stopBrokers
 parameter_list|(
-name|JMXServiceURL
-name|jmxServiceUrl
+name|MBeanServerConnection
+name|jmxConnection
 parameter_list|,
 name|Collection
 name|brokerBeans
@@ -417,15 +411,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|MBeanServerConnection
-name|server
-init|=
-name|createJmxConnector
-argument_list|()
-operator|.
-name|getMBeanServerConnection
-argument_list|()
-decl_stmt|;
 name|ObjectName
 name|brokerObjName
 decl_stmt|;
@@ -482,7 +467,7 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|server
+name|jmxConnection
 operator|.
 name|invoke
 argument_list|(
@@ -531,7 +516,7 @@ comment|// System.out.println("Failed to stop broker: [ " + brokerName +
 comment|// " ]. Reason: " + e.getMessage());
 block|}
 block|}
-name|closeJmxConnector
+name|closeJmxConnection
 argument_list|()
 expr_stmt|;
 block|}

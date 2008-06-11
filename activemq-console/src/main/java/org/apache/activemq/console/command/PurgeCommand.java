@@ -157,6 +157,12 @@ literal|"                                  the messages selector format."
 block|,
 literal|"    --jmxurl<url>                Set the JMX URL to connect to."
 block|,
+literal|"    --jmxuser<user>              Set the JMX user used for authenticating."
+block|,
+literal|"    --jmxpassword<password>      Set the JMX password used for authenticating."
+block|,
+literal|"    --jmxlocal                    Use the local JMX server instead of a remote one."
+block|,
 literal|"    --version                     Display the version information."
 block|,
 literal|"    -h,-?,--help                  Display the browse broker help information."
@@ -277,7 +283,7 @@ name|JmxMBeansUtil
 operator|.
 name|queryMBeans
 argument_list|(
-name|useJmxServiceUrl
+name|createJmxConnection
 argument_list|()
 argument_list|,
 literal|"Type=Queue,Destination="
@@ -346,7 +352,7 @@ name|JmxMBeansUtil
 operator|.
 name|createMessageQueryFilter
 argument_list|(
-name|useJmxServiceUrl
+name|createJmxConnection
 argument_list|()
 argument_list|,
 name|queueName
@@ -407,20 +413,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|JMXConnector
-name|conn
-init|=
-name|createJmxConnector
-argument_list|()
-decl_stmt|;
-name|MBeanServerConnection
-name|server
-init|=
-name|conn
-operator|.
-name|getMBeanServerConnection
-argument_list|()
-decl_stmt|;
 name|context
 operator|.
 name|printInfo
@@ -435,7 +427,8 @@ literal|"Destination"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|server
+name|createJmxConnection
+argument_list|()
 operator|.
 name|invoke
 argument_list|(
@@ -454,11 +447,6 @@ index|[]
 block|{}
 argument_list|)
 expr_stmt|;
-name|conn
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 comment|/**      * Purge selected messages in the queue      *       * @param queue - ObjectName of the queue to purge the messages from      * @param messages - List of messages to purge      * @throws Exception      */
 specifier|public
@@ -474,20 +462,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|JMXConnector
-name|conn
-init|=
-name|createJmxConnector
-argument_list|()
-decl_stmt|;
-name|MBeanServerConnection
-name|server
-init|=
-name|conn
-operator|.
-name|getMBeanServerConnection
-argument_list|()
-decl_stmt|;
 name|Object
 index|[]
 name|param
@@ -561,7 +535,8 @@ literal|"Destination"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|server
+name|createJmxConnection
+argument_list|()
 operator|.
 name|invoke
 argument_list|(
@@ -580,11 +555,6 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-name|conn
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 comment|/**      * Handle the --msgsel, --xmsgsel.      *       * @param token - option token to handle      * @param tokens - succeeding command arguments      * @throws Exception      */
 specifier|protected

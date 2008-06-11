@@ -87,11 +87,17 @@ literal|""
 block|,
 literal|"List Options:"
 block|,
-literal|"    --jmxurl<url>      Set the JMX URL to connect to."
+literal|"    --jmxurl<url>             Set the JMX URL to connect to."
 block|,
-literal|"    --version           Display the version information."
+literal|"    --jmxuser<user>           Set the JMX user used for authenticating."
 block|,
-literal|"    -h,-?,--help        Display the stop broker help information."
+literal|"    --jmxpassword<password>   Set the JMX password used for authenticating."
+block|,
+literal|"    --jmxlocal                 Use the local JMX server instead of a remote one."
+block|,
+literal|"    --version                  Display the version information."
+block|,
+literal|"    -h,-?,--help               Display the stop broker help information."
 block|,
 literal|""
 block|}
@@ -141,7 +147,7 @@ name|JmxMBeansUtil
 operator|.
 name|getAllBrokers
 argument_list|(
-name|useJmxServiceUrl
+name|createJmxConnection
 argument_list|()
 argument_list|)
 argument_list|,

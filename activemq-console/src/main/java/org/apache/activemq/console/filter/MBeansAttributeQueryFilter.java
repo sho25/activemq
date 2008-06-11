@@ -219,19 +219,19 @@ init|=
 literal|"Attribute:ObjectName:"
 decl_stmt|;
 specifier|private
-name|JMXServiceURL
-name|jmxServiceUrl
+name|MBeanServerConnection
+name|jmxConnection
 decl_stmt|;
 specifier|private
 name|Set
 name|attribView
 decl_stmt|;
-comment|/**      * Create an mbean attributes query filter that is able to select specific      * mbean attributes based on the object name to get.      *       * @param jmxServiceUrl - JMX service url to connect to.      * @param attribView - the attributes to extract      * @param next - the next query filter      */
+comment|/**      * Create an mbean attributes query filter that is able to select specific      * mbean attributes based on the object name to get.      *       * @param jmxConnection - JMX connection to use.      * @param attribView - the attributes to extract      * @param next - the next query filter      */
 specifier|public
 name|MBeansAttributeQueryFilter
 parameter_list|(
-name|JMXServiceURL
-name|jmxServiceUrl
+name|MBeanServerConnection
+name|jmxConnection
 parameter_list|,
 name|Set
 name|attribView
@@ -247,9 +247,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|jmxServiceUrl
+name|jmxConnection
 operator|=
-name|jmxServiceUrl
+name|jmxConnection
 expr_stmt|;
 name|this
 operator|.
@@ -459,24 +459,6 @@ name|InstanceNotFoundException
 throws|,
 name|IntrospectionException
 block|{
-name|JMXConnector
-name|jmxConnector
-init|=
-name|JMXConnectorFactory
-operator|.
-name|connect
-argument_list|(
-name|jmxServiceUrl
-argument_list|)
-decl_stmt|;
-name|MBeanServerConnection
-name|server
-init|=
-name|jmxConnector
-operator|.
-name|getMBeanServerConnection
-argument_list|()
-decl_stmt|;
 comment|// If no attribute view specified, get all attributes
 name|String
 index|[]
@@ -498,7 +480,7 @@ name|MBeanAttributeInfo
 index|[]
 name|infos
 init|=
-name|server
+name|jmxConnection
 operator|.
 name|getMBeanInfo
 argument_list|(
@@ -617,7 +599,7 @@ block|}
 name|AttributeList
 name|attribList
 init|=
-name|server
+name|jmxConnection
 operator|.
 name|getAttributes
 argument_list|(
@@ -626,11 +608,6 @@ argument_list|,
 name|attribs
 argument_list|)
 decl_stmt|;
-name|jmxConnector
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 name|attribList
 operator|.
 name|add

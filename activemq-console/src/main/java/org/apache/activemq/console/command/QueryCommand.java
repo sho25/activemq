@@ -218,6 +218,12 @@ literal|"                                  By default all attributes will be dis
 block|,
 literal|"    --jmxurl<url>                Set the JMX URL to connect to."
 block|,
+literal|"    --jmxuser<user>              Set the JMX user used for authenticating."
+block|,
+literal|"    --jmxpassword<password>      Set the JMX password used for authenticating."
+block|,
+literal|"    --jmxlocal                    Use the local JMX server instead of a remote one."
+block|,
 literal|"    --version                     Display the version information."
 block|,
 literal|"    -h,-?,--help                  Display the query broker help information."
@@ -356,7 +362,7 @@ name|JmxMBeansUtil
 operator|.
 name|queryMBeans
 argument_list|(
-name|useJmxServiceUrl
+name|createJmxConnection
 argument_list|()
 argument_list|,
 name|queryAddObjects
@@ -382,7 +388,7 @@ name|JmxMBeansUtil
 operator|.
 name|queryMBeans
 argument_list|(
-name|useJmxServiceUrl
+name|createJmxConnection
 argument_list|()
 argument_list|,
 name|querySubObjects
