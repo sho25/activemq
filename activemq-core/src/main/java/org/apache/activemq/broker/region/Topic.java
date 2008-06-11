@@ -2536,6 +2536,13 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|super
+operator|.
+name|dispose
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|topicStore
@@ -2551,13 +2558,6 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-name|destinationStatistics
-operator|.
-name|setParent
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
 block|}
 specifier|public
 name|void
