@@ -2422,6 +2422,16 @@ name|void
 name|reconnect
 parameter_list|()
 block|{
+synchronized|synchronized
+init|(
+name|reconnectMutex
+init|)
+block|{
+if|if
+condition|(
+name|started
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -2451,6 +2461,18 @@ operator|.
 name|interrupt
 argument_list|()
 expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Reconnect was triggered but transport is not started yet. Wait for start to connect the transport."
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 specifier|private
