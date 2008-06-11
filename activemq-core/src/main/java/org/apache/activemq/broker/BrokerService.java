@@ -1515,10 +1515,6 @@ decl_stmt|;
 specifier|private
 name|SslContext
 name|sslContext
-init|=
-operator|new
-name|SslContext
-argument_list|()
 decl_stmt|;
 static|static
 block|{
