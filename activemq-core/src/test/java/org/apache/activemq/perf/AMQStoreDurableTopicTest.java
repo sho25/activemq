@@ -152,12 +152,6 @@ name|numberOfConsumers
 operator|=
 literal|1
 expr_stmt|;
-name|this
-operator|.
-name|consumerSleepDuration
-operator|=
-literal|0
-expr_stmt|;
 name|super
 operator|.
 name|setUp

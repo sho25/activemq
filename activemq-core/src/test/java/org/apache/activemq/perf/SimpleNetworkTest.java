@@ -384,16 +384,6 @@ index|[
 name|i
 index|]
 operator|.
-name|setSleepDuration
-argument_list|(
-name|consumerSleepDuration
-argument_list|)
-expr_stmt|;
-name|consumers
-index|[
-name|i
-index|]
-operator|.
 name|start
 argument_list|()
 expr_stmt|;

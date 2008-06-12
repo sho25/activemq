@@ -248,12 +248,6 @@ specifier|protected
 name|ConnectionFactory
 name|factory
 decl_stmt|;
-specifier|protected
-name|long
-name|consumerSleepDuration
-init|=
-literal|0
-decl_stmt|;
 comment|/**      * Sets up a test where the producer and consumer have their own connection.      *       * @see junit.framework.TestCase#setUp()      */
 specifier|protected
 name|void
@@ -428,16 +422,6 @@ argument_list|,
 name|destination
 argument_list|,
 name|consumerCount
-argument_list|)
-expr_stmt|;
-name|consumers
-index|[
-name|consumerCount
-index|]
-operator|.
-name|setSleepDuration
-argument_list|(
-name|consumerSleepDuration
 argument_list|)
 expr_stmt|;
 name|consumerCount

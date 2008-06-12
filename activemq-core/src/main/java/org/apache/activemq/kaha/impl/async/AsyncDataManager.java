@@ -488,6 +488,16 @@ literal|1024
 operator|*
 literal|32
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_CLEANUP_INTERVAL
+init|=
+literal|1000
+operator|*
+literal|30
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -1108,9 +1118,7 @@ name|executePeriodically
 argument_list|(
 name|cleanupTask
 argument_list|,
-literal|1000
-operator|*
-literal|30
+name|DEFAULT_CLEANUP_INTERVAL
 argument_list|)
 expr_stmt|;
 block|}
@@ -1636,6 +1644,17 @@ name|isUnused
 argument_list|()
 condition|)
 block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"remove current file unused:"
+operator|+
+name|currentWriteFile
+argument_list|)
+expr_stmt|;
 name|removeDataFile
 argument_list|(
 name|currentWriteFile
@@ -1788,8 +1807,6 @@ literal|"Could not locate data file "
 operator|+
 name|filePrefix
 operator|+
-literal|"-"
-operator|+
 name|item
 operator|.
 name|getDataFileId
@@ -1861,8 +1878,6 @@ argument_list|(
 literal|"Could not locate data file "
 operator|+
 name|filePrefix
-operator|+
-literal|"-"
 operator|+
 name|item
 operator|.
@@ -2385,11 +2400,25 @@ range|:
 name|purgeList
 control|)
 block|{
+if|if
+condition|(
+name|dataFile
+operator|.
+name|getDataFileId
+argument_list|()
+operator|!=
+name|currentWriteFile
+operator|.
+name|getDataFileId
+argument_list|()
+condition|)
+block|{
 name|forceRemoveDataFile
 argument_list|(
 name|dataFile
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
@@ -2694,7 +2723,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"moced data file "
+literal|"moved data file "
 operator|+
 name|dataFile
 operator|+
@@ -2717,7 +2746,7 @@ argument_list|()
 decl_stmt|;
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"discarding data file "
 operator|+

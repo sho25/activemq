@@ -3872,6 +3872,8 @@ throw|;
 block|}
 else|else
 block|{
+try|try
+block|{
 throw|throw
 name|JMSExceptionSupport
 operator|.
@@ -3883,6 +3885,23 @@ name|getException
 argument_list|()
 argument_list|)
 throw|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Caught an exception trying to create a JMSException"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 return|return

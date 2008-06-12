@@ -1426,6 +1426,7 @@ block|}
 block|}
 comment|/**      * @return      * @throws IOException      * @see org.apache.activemq.store.ReferenceStoreAdapter#getReferenceFileIdsInUse()      */
 specifier|public
+specifier|synchronized
 name|Set
 argument_list|<
 name|Integer
@@ -1436,10 +1437,17 @@ throws|throws
 name|IOException
 block|{
 return|return
+operator|new
+name|HashSet
+argument_list|<
+name|Integer
+argument_list|>
+argument_list|(
 name|recordReferences
 operator|.
 name|keySet
 argument_list|()
+argument_list|)
 return|;
 block|}
 comment|/**      *       * @throws IOException      * @see org.apache.activemq.store.ReferenceStoreAdapter#clearMessages()      */

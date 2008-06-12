@@ -79,6 +79,9 @@ name|connection
 parameter_list|,
 name|boolean
 name|useTransactedSession
+parameter_list|,
+name|boolean
+name|topic
 parameter_list|)
 throws|throws
 name|Exception
@@ -115,6 +118,15 @@ name|session
 operator|.
 name|createProducer
 argument_list|(
+name|topic
+condition|?
+name|session
+operator|.
+name|createTopic
+argument_list|(
+name|queueName
+argument_list|)
+else|:
 name|session
 operator|.
 name|createQueue
