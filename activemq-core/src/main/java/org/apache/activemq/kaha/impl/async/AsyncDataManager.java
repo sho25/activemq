@@ -1644,17 +1644,6 @@ name|isUnused
 argument_list|()
 condition|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"remove current file unused:"
-operator|+
-name|currentWriteFile
-argument_list|)
-expr_stmt|;
 name|removeDataFile
 argument_list|(
 name|currentWriteFile
