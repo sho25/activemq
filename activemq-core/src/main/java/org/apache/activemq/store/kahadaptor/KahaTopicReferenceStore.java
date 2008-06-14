@@ -81,20 +81,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|locks
-operator|.
-name|Lock
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -258,20 +244,6 @@ operator|.
 name|store
 operator|.
 name|TopicReferenceStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|SubscriptionKey
 import|;
 end_import
 
@@ -974,6 +946,16 @@ operator|.
 name|getAckEntry
 argument_list|()
 decl_stmt|;
+comment|//ensure we get up to-date pointers
+name|entry
+operator|=
+name|ackContainer
+operator|.
+name|refresh
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
 name|TopicSubAck
 name|tsa
 init|=
@@ -1001,15 +983,6 @@ operator|<=
 literal|0
 condition|)
 block|{
-name|entry
-operator|=
-name|ackContainer
-operator|.
-name|refresh
-argument_list|(
-name|entry
-argument_list|)
-expr_stmt|;
 name|ackContainer
 operator|.
 name|remove
