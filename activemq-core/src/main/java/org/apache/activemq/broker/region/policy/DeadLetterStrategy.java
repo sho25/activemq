@@ -72,6 +72,36 @@ name|ActiveMQDestination
 name|originalDestination
 parameter_list|)
 function_decl|;
+comment|/**      * @return true if processes expired messages      */
+specifier|public
+name|boolean
+name|isProcessExpired
+parameter_list|()
+function_decl|;
+comment|/**      * @param processExpired the processExpired to set      */
+specifier|public
+name|void
+name|setProcessExpired
+parameter_list|(
+name|boolean
+name|processExpired
+parameter_list|)
+function_decl|;
+comment|/**      * @return the processNonPersistent      */
+specifier|public
+name|boolean
+name|isProcessNonPersistent
+parameter_list|()
+function_decl|;
+comment|/**      * @param processNonPersistent the processNonPersistent to set      */
+specifier|public
+name|void
+name|setProcessNonPersistent
+parameter_list|(
+name|boolean
+name|processNonPersistent
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

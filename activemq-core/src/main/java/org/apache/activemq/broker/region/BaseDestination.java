@@ -77,6 +77,24 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|policy
+operator|.
+name|DeadLetterStrategy
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -287,6 +305,12 @@ specifier|protected
 specifier|final
 name|Broker
 name|regionBroker
+decl_stmt|;
+specifier|protected
+name|DeadLetterStrategy
+name|deadLetterStrategy
+init|=
+name|DEFAULT_DEAD_LETTER_STRATEGY
 decl_stmt|;
 comment|/**      * @param broker       * @param store       * @param destination      * @param parentStats      * @throws Exception       */
 specifier|public
@@ -920,6 +944,32 @@ operator|.
 name|advisdoryForFastProducers
 operator|=
 name|advisdoryForFastProducers
+expr_stmt|;
+block|}
+comment|/**      * @return the dead letter strategy      */
+specifier|public
+name|DeadLetterStrategy
+name|getDeadLetterStrategy
+parameter_list|()
+block|{
+return|return
+name|deadLetterStrategy
+return|;
+block|}
+comment|/**      * set the dead letter strategy      * @param deadLetterStrategy      */
+specifier|public
+name|void
+name|setDeadLetterStrategy
+parameter_list|(
+name|DeadLetterStrategy
+name|deadLetterStrategy
+parameter_list|)
+block|{
+name|this
+operator|.
+name|deadLetterStrategy
+operator|=
+name|deadLetterStrategy
 expr_stmt|;
 block|}
 comment|/**      * called when message is consumed      * @param context      * @param messageReference      */
