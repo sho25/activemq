@@ -10,6 +10,8 @@ operator|.
 name|apache
 operator|.
 name|activemq
+operator|.
+name|usecases
 package|;
 end_package
 
@@ -197,16 +199,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -331,6 +323,18 @@ name|org
 operator|.
 name|apache
 operator|.
+name|activemq
+operator|.
+name|ActiveMQConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|commons
 operator|.
 name|logging
@@ -400,7 +404,15 @@ specifier|public
 class|class
 name|AMQDeadlockTest3
 extends|extends
-name|TestCase
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|test
+operator|.
+name|TestSupport
 block|{
 specifier|private
 specifier|static
