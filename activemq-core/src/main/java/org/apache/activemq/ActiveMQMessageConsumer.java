@@ -1251,7 +1251,7 @@ name|transformer
 expr_stmt|;
 block|}
 comment|/**      * @return Returns the value.      */
-specifier|protected
+specifier|public
 name|ConsumerId
 name|getConsumerId
 parameter_list|()
@@ -1264,7 +1264,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return the consumer name - used for durable consumers      */
-specifier|protected
+specifier|public
 name|String
 name|getConsumerName
 parameter_list|()

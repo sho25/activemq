@@ -3892,11 +3892,28 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+name|er
+operator|.
+name|getException
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Caught an exception trying to create a JMSException"
+literal|"Caught an exception trying to create a JMSException for "
+operator|+
+name|er
+operator|.
+name|getException
+argument_list|()
 argument_list|,
 name|e
 argument_list|)

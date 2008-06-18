@@ -174,6 +174,13 @@ name|DurableTopicSubscription
 operator|)
 name|sub
 expr_stmt|;
+if|if
+condition|(
+name|sub
+operator|!=
+literal|null
+condition|)
+block|{
 name|this
 operator|.
 name|subscriptionName
@@ -186,6 +193,7 @@ operator|.
 name|getSubscriptionName
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/**      * @return name of the durable consumer      */
 specifier|public
