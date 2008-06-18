@@ -2555,6 +2555,16 @@ argument_list|(
 name|lastDataFile
 argument_list|)
 expr_stmt|;
+name|lastDataFile
+operator|=
+name|asyncDataManager
+operator|.
+name|getMark
+argument_list|()
+operator|.
+name|getDataFileId
+argument_list|()
+expr_stmt|;
 name|inProgress
 operator|.
 name|addAll

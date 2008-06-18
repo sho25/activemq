@@ -448,7 +448,7 @@ name|setLimit
 argument_list|(
 literal|1024
 operator|*
-literal|10
+literal|1024
 argument_list|)
 expr_stmt|;
 comment|// Just a few messags
@@ -484,7 +484,7 @@ name|factory
 operator|.
 name|setCleanupInterval
 argument_list|(
-literal|5000
+literal|1000
 argument_list|)
 expr_stmt|;
 comment|// every few second
