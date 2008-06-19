@@ -1601,6 +1601,19 @@ argument_list|,
 name|preferedFileLength
 argument_list|)
 decl_stmt|;
+comment|//actually allocate the disk space
+name|nextWriteFile
+operator|.
+name|closeRandomAccessFile
+argument_list|(
+name|nextWriteFile
+operator|.
+name|openRandomAccessFile
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|fileMap
 operator|.
 name|put
