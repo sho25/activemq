@@ -101,16 +101,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|transaction
-operator|.
-name|TransactionManager
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -218,7 +208,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A JMS provider which pools Connection, Session and MessageProducer instances  * so it can be used with tools like Spring's<a  * href="http://activemq.org/Spring+Support">JmsTemplate</a>.  *   *<b>NOTE</b> this implementation is only intended for use when sending  * messages. It does not deal with pooling of consumers; for that look at a  * library like<a href="http://jencks.org/">Jencks</a> such as in<a  * href="http://jencks.org/Message+Driven+POJOs">this example</a>  *   * @version $Revision: 1.1 $  */
+comment|/**  * A JMS provider which pools Connection, Session and MessageProducer instances  * so it can be used with tools like Spring's<a  * href="http://activemq.org/Spring+Support">JmsTemplate</a>.  *   *<b>NOTE</b> this implementation is only intended for use when sending  * messages. It does not deal with pooling of consumers; for that look at a  * library like<a href="http://jencks.org/">Jencks</a> such as in<a  * href="http://jencks.org/Message+Driven+POJOs">this example</a>  *   * @org.apache.xbean.XBean element="pooledConnectionFactory"  *   * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
