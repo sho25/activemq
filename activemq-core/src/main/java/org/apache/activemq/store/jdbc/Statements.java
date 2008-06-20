@@ -1123,7 +1123,7 @@ operator|+
 name|getFullLockTableName
 argument_list|()
 operator|+
-literal|" SET time = ? WHERE ID = 1"
+literal|" SET TIME = ? WHERE ID = 1"
 expr_stmt|;
 block|}
 return|return
