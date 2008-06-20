@@ -4904,9 +4904,7 @@ name|active
 operator|=
 literal|true
 expr_stmt|;
-name|this
-operator|.
-name|processDispatch
+name|dispatchAsync
 argument_list|(
 name|connector
 operator|.
