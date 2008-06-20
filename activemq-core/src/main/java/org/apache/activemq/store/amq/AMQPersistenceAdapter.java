@@ -1048,9 +1048,9 @@ specifier|private
 name|int
 name|maxReferenceFileLength
 init|=
-name|AsyncDataManager
+name|AMQPersistenceAdapterFactory
 operator|.
-name|DEFAULT_MAX_FILE_LENGTH
+name|DEFAULT_MAX_REFERNCE_FILE_LENGTH
 decl_stmt|;
 specifier|private
 name|Map
