@@ -2590,6 +2590,10 @@ operator|<<=
 literal|1
 expr_stmt|;
 block|}
+name|newCapacity
+operator|=
+name|capacity
+expr_stmt|;
 if|if
 condition|(
 name|newCapacity
