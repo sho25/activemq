@@ -1046,6 +1046,13 @@ operator|.
 name|increment
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|isSlave
+argument_list|()
+condition|)
+block|{
 name|node
 operator|.
 name|getRegionDestination
@@ -1060,6 +1067,7 @@ operator|.
 name|decrement
 argument_list|()
 expr_stmt|;
+block|}
 name|removeList
 operator|.
 name|add

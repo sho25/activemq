@@ -271,6 +271,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|super
+operator|.
+name|messageCount
+operator|=
+literal|500
+expr_stmt|;
 name|failureCount
 operator|=
 name|super

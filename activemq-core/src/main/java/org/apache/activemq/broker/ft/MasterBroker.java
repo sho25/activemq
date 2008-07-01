@@ -1180,15 +1180,22 @@ name|xid
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Notifiy the Broker that a dispatch has happened      *       * @param messageDispatch      */
+comment|/**      * Notifiy the Broker that a dispatch will happen      * Do in 'pre' so that slave will avoid getting ack before dispatch      * similar logic to send() below.      * @param messageDispatch      */
 specifier|public
 name|void
-name|postProcessDispatch
+name|preProcessDispatch
 parameter_list|(
 name|MessageDispatch
 name|messageDispatch
 parameter_list|)
 block|{
+name|super
+operator|.
+name|preProcessDispatch
+argument_list|(
+name|messageDispatch
+argument_list|)
+expr_stmt|;
 name|MessageDispatchNotification
 name|mdn
 init|=
@@ -1260,13 +1267,6 @@ name|mdn
 argument_list|)
 expr_stmt|;
 block|}
-name|super
-operator|.
-name|postProcessDispatch
-argument_list|(
-name|messageDispatch
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**      * @param context      * @param message      * @throws Exception      */
 specifier|public
