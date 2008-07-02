@@ -5264,7 +5264,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Stopped connection: "
+literal|"Stopped transport: "
 operator|+
 name|transport
 operator|.

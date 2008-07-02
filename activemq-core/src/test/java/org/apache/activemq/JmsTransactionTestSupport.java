@@ -593,6 +593,9 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+name|messageSent
+argument_list|()
+expr_stmt|;
 name|session
 operator|.
 name|commit
@@ -673,6 +676,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+specifier|protected
+name|void
+name|messageSent
+parameter_list|()
+throws|throws
+name|Exception
+block|{     }
 comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * not consumed.      *       * @throws Exception      */
 specifier|public
 name|void
