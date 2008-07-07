@@ -209,6 +209,18 @@ name|redeliveryDelay
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+specifier|static
+name|void
+name|shutdown
+parameter_list|()
+block|{
+name|CLOCK_DAEMON
+operator|.
+name|cancel
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 
