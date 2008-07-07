@@ -1309,6 +1309,13 @@ condition|(
 name|destinationName
 operator|==
 literal|null
+operator|||
+name|destinationName
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
 condition|)
 block|{
 if|if
