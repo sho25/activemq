@@ -155,9 +155,9 @@ literal|"\022G\n\rbyte_property\030\010 \003(\01320.org.apache.act"
 operator|+
 literal|"ivemq.protocolbuffer.ByteProperty\"\306\006\n\007Me"
 operator|+
-literal|"ssage\022\023\n\013producer_id\030\001 \002(\005\022\030\n\020producer_c"
+literal|"ssage\022\023\n\013producer_id\030\001 \001(\005\022\030\n\020producer_c"
 operator|+
-literal|"ounter\030\002 \002(\005\022D\n\013destination\030\003 \002(\0132/.org."
+literal|"ounter\030\002 \001(\005\022D\n\013destination\030\003 \002(\0132/.org."
 operator|+
 literal|"apache.activemq.protocolbuffer.Destinati"
 operator|+
@@ -27645,7 +27645,7 @@ operator|.
 name|internal_static_org_apache_activemq_protocolbuffer_Message_fieldAccessorTable
 return|;
 block|}
-comment|// required int32 producer_id = 1;
+comment|// optional int32 producer_id = 1;
 specifier|private
 name|boolean
 name|hasProducerId
@@ -27674,7 +27674,7 @@ return|return
 name|producerId_
 return|;
 block|}
-comment|// required int32 producer_counter = 2;
+comment|// optional int32 producer_counter = 2;
 specifier|private
 name|boolean
 name|hasProducerCounter
@@ -28720,22 +28720,6 @@ name|boolean
 name|isInitialized
 parameter_list|()
 block|{
-if|if
-condition|(
-operator|!
-name|hasProducerId
-condition|)
-return|return
-literal|false
-return|;
-if|if
-condition|(
-operator|!
-name|hasProducerCounter
-condition|)
-return|return
-literal|false
-return|;
 if|if
 condition|(
 operator|!
@@ -32272,7 +32256,7 @@ block|}
 block|}
 block|}
 block|}
-comment|// required int32 producer_id = 1;
+comment|// optional int32 producer_id = 1;
 specifier|public
 name|boolean
 name|hasProducerId
@@ -32342,7 +32326,7 @@ return|return
 name|this
 return|;
 block|}
-comment|// required int32 producer_counter = 2;
+comment|// optional int32 producer_counter = 2;
 specifier|public
 name|boolean
 name|hasProducerCounter
