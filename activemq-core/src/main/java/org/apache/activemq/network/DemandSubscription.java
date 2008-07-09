@@ -89,10 +89,12 @@ class|class
 name|DemandSubscription
 block|{
 specifier|private
+specifier|final
 name|ConsumerInfo
 name|remoteInfo
 decl_stmt|;
 specifier|private
+specifier|final
 name|ConsumerInfo
 name|localInfo
 decl_stmt|;
@@ -306,22 +308,6 @@ return|return
 name|localInfo
 return|;
 block|}
-comment|/**      * @param localInfo The localInfo to set.      */
-specifier|public
-name|void
-name|setLocalInfo
-parameter_list|(
-name|ConsumerInfo
-name|localInfo
-parameter_list|)
-block|{
-name|this
-operator|.
-name|localInfo
-operator|=
-name|localInfo
-expr_stmt|;
-block|}
 comment|/**      * @return Returns the remoteInfo.      */
 specifier|public
 name|ConsumerInfo
@@ -331,22 +317,6 @@ block|{
 return|return
 name|remoteInfo
 return|;
-block|}
-comment|/**      * @param remoteInfo The remoteInfo to set.      */
-specifier|public
-name|void
-name|setRemoteInfo
-parameter_list|(
-name|ConsumerInfo
-name|remoteInfo
-parameter_list|)
-block|{
-name|this
-operator|.
-name|remoteInfo
-operator|=
-name|remoteInfo
-expr_stmt|;
 block|}
 block|}
 end_class
