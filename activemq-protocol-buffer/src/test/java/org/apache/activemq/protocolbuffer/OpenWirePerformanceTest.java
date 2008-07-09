@@ -189,20 +189,12 @@ argument_list|)
 expr_stmt|;
 name|message
 operator|.
-name|setType
-argument_list|(
-literal|"type:"
-operator|+
-name|i
-argument_list|)
-expr_stmt|;
-name|message
-operator|.
 name|setCorrelationId
 argument_list|(
 literal|"ABCD"
 argument_list|)
 expr_stmt|;
+comment|//message.setType("type:" + i);
 if|if
 condition|(
 name|useProducerId
@@ -266,11 +258,6 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-name|out
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
 name|out
 operator|.
 name|close

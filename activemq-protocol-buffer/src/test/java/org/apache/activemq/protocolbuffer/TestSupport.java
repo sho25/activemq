@@ -40,7 +40,7 @@ specifier|protected
 name|int
 name|messageCount
 init|=
-literal|10000000
+literal|1000000
 decl_stmt|;
 specifier|protected
 name|boolean
