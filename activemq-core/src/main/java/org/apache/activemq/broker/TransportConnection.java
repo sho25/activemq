@@ -41,16 +41,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|HashMap
 import|;
 end_import
@@ -6029,6 +6019,8 @@ name|duplexBridge
 operator|.
 name|duplexStart
 argument_list|(
+name|this
+argument_list|,
 name|brokerInfo
 argument_list|,
 name|info
