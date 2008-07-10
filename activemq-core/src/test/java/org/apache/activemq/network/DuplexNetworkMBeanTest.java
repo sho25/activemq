@@ -170,7 +170,7 @@ specifier|final
 name|int
 name|numRestarts
 init|=
-literal|2
+literal|10
 decl_stmt|;
 specifier|protected
 name|BrokerService
@@ -239,7 +239,7 @@ name|broker
 operator|.
 name|addNetworkConnector
 argument_list|(
-literal|"static://tcp://localhost:61617"
+literal|"static:(tcp://localhost:61617)?maxReconnectDelay=1000&useExponentialBackOff=false"
 argument_list|)
 decl_stmt|;
 name|networkConnector
@@ -510,7 +510,7 @@ name|networkedBroker
 argument_list|,
 literal|"NetworkBridge"
 argument_list|,
-literal|5000
+literal|10000
 argument_list|)
 argument_list|)
 expr_stmt|;

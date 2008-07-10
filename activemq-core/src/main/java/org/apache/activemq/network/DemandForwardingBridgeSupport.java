@@ -2742,6 +2742,14 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|started
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
 operator|!
 name|addConsumerInfo
 argument_list|(
@@ -2770,6 +2778,20 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
+else|else
+block|{
+comment|// received a subscription whilst stopping
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Stopping - ignoring ConsumerInfo: "
+operator|+
+name|command
+argument_list|)
+expr_stmt|;
 block|}
 break|break;
 default|default:
