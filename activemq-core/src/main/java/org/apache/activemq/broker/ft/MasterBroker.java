@@ -1282,8 +1282,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|/**          * A message can be dispatched before the super.send() method returns so -          * here the order is switched to avoid problems on the slave with          * receiving acks for messages not received yey          */
-name|sendToSlave
+comment|/**          * A message can be dispatched before the super.send() method returns so -          * here the order is switched to avoid problems on the slave with          * receiving acks for messages not received yet          */
+name|sendSyncToSlave
 argument_list|(
 name|message
 argument_list|)
