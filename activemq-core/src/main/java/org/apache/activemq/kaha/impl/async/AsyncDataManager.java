@@ -498,6 +498,16 @@ literal|1000
 operator|*
 literal|30
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|PREFERED_DIFF
+init|=
+literal|1024
+operator|*
+literal|512
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -584,9 +594,7 @@ name|preferedFileLength
 init|=
 name|DEFAULT_MAX_FILE_LENGTH
 operator|-
-literal|1024
-operator|*
-literal|512
+name|PREFERED_DIFF
 decl_stmt|;
 specifier|protected
 name|DataFileAppender
@@ -723,6 +731,20 @@ block|}
 name|started
 operator|=
 literal|true
+expr_stmt|;
+name|preferedFileLength
+operator|=
+name|Math
+operator|.
+name|max
+argument_list|(
+name|PREFERED_DIFF
+argument_list|,
+name|getMaxFileLength
+argument_list|()
+operator|-
+name|PREFERED_DIFF
+argument_list|)
 expr_stmt|;
 name|lock
 argument_list|()
@@ -2487,6 +2509,17 @@ name|unUsed
 control|)
 block|{
 comment|// Only add files less than the lastFile..
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"LAST FILE IS: "
+operator|+
+name|lastFile
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|key
@@ -2522,6 +2555,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"PURGE LIST IS: "
+operator|+
+name|purgeList
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|DataFile
@@ -2723,7 +2767,7 @@ argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"moved data file "
 operator|+

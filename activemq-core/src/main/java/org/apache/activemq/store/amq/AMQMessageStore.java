@@ -1473,13 +1473,6 @@ argument_list|(
 name|location
 argument_list|)
 expr_stmt|;
-name|removeMessage
-argument_list|(
-name|ack
-argument_list|,
-name|location
-argument_list|)
-expr_stmt|;
 block|}
 finally|finally
 block|{
@@ -1489,6 +1482,13 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
+name|removeMessage
+argument_list|(
+name|ack
+argument_list|,
+name|location
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
