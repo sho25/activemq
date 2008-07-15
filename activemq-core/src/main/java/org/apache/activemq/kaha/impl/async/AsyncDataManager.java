@@ -2509,17 +2509,6 @@ name|unUsed
 control|)
 block|{
 comment|// Only add files less than the lastFile..
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"LAST FILE IS: "
-operator|+
-name|lastFile
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|key
@@ -2555,17 +2544,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"PURGE LIST IS: "
-operator|+
-name|purgeList
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|DataFile
