@@ -5882,12 +5882,12 @@ literal|null
 operator|||
 name|target
 operator|.
-name|getInFlightUsage
+name|getPendingQueueSize
 argument_list|()
 operator|>
 name|s
 operator|.
-name|getInFlightUsage
+name|getPendingQueueSize
 argument_list|()
 condition|)
 block|{
