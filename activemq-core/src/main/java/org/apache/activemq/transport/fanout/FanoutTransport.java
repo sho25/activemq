@@ -522,6 +522,8 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|fanOutQueues
+init|=
+literal|false
 decl_stmt|;
 specifier|static
 class|class

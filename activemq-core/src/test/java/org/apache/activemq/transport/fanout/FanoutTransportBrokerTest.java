@@ -407,6 +407,12 @@ name|ActiveMQTopic
 argument_list|(
 literal|"TEST"
 argument_list|)
+block|,
+operator|new
+name|ActiveMQQueue
+argument_list|(
+literal|"TEST"
+argument_list|)
 block|}
 argument_list|)
 expr_stmt|;
@@ -1081,7 +1087,7 @@ init|=
 operator|new
 name|URI
 argument_list|(
-literal|"fanout://static://("
+literal|"fanout://(static://("
 operator|+
 name|connector
 operator|.
@@ -1103,7 +1109,7 @@ operator|.
 name|getConnectURI
 argument_list|()
 operator|+
-literal|")"
+literal|"))?fanOutQueues=true"
 argument_list|)
 decl_stmt|;
 name|Transport

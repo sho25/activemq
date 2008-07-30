@@ -343,7 +343,7 @@ throws|,
 name|URISyntaxException
 block|{
 name|CompositeData
-name|compositData
+name|compositeData
 init|=
 name|URISupport
 operator|.
@@ -368,7 +368,7 @@ argument_list|,
 name|String
 argument_list|>
 argument_list|(
-name|compositData
+name|compositeData
 operator|.
 name|getParameters
 argument_list|()
@@ -393,7 +393,7 @@ name|DiscoveryAgentFactory
 operator|.
 name|createDiscoveryAgent
 argument_list|(
-name|compositData
+name|compositeData
 operator|.
 name|getComponents
 argument_list|()
