@@ -701,21 +701,6 @@ name|DestinationEvent
 name|event
 parameter_list|)
 block|{
-if|if
-condition|(
-name|listener
-operator|!=
-literal|null
-condition|)
-block|{
-name|listener
-operator|.
-name|onDestinationEvent
-argument_list|(
-name|event
-argument_list|)
-expr_stmt|;
-block|}
 comment|// now lets update the data structures
 name|ActiveMQDestination
 name|destination
@@ -901,6 +886,21 @@ argument_list|(
 literal|"Unknown destination type: "
 operator|+
 name|destination
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|listener
+operator|!=
+literal|null
+condition|)
+block|{
+name|listener
+operator|.
+name|onDestinationEvent
+argument_list|(
+name|event
 argument_list|)
 expr_stmt|;
 block|}
