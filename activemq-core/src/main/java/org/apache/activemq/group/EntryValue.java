@@ -80,6 +80,22 @@ operator|.
 name|value
 return|;
 block|}
+comment|/**      * set the value      * @param value      */
+specifier|public
+name|void
+name|setValue
+parameter_list|(
+name|V
+name|value
+parameter_list|)
+block|{
+name|this
+operator|.
+name|value
+operator|=
+name|value
+expr_stmt|;
+block|}
 specifier|public
 name|int
 name|hashCode

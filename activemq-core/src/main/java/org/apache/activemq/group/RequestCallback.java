@@ -16,60 +16,20 @@ package|;
 end_package
 
 begin_comment
-comment|/**  *Get notifications about changes to the state of the map  *  */
+comment|/**  * Return information about map update  *   */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|MapChangedListener
+name|RequestCallback
 block|{
-comment|/**      * Called when a key/value pair is inserted into the map      * @param owner       * @param key      * @param value       */
+comment|/**      * Optionally called when a request is finished      * @param id      */
 name|void
-name|mapInsert
+name|finished
 parameter_list|(
-name|Member
-name|owner
-parameter_list|,
-name|Object
-name|key
-parameter_list|,
-name|Object
-name|value
-parameter_list|)
-function_decl|;
-comment|/**      * Called when a key value is updated in the map      * @param owner      * @param Key      * @param oldValue      * @param newValue      */
-name|void
-name|mapUpdate
-parameter_list|(
-name|Member
-name|owner
-parameter_list|,
-name|Object
-name|Key
-parameter_list|,
-name|Object
-name|oldValue
-parameter_list|,
-name|Object
-name|newValue
-parameter_list|)
-function_decl|;
-comment|/**      * Called when a key value is removed from the map      * @param owner      * @param key      * @param value      * @param expired      */
-name|void
-name|mapRemove
-parameter_list|(
-name|Member
-name|owner
-parameter_list|,
-name|Object
-name|key
-parameter_list|,
-name|Object
-name|value
-parameter_list|,
-name|boolean
-name|expired
+name|String
+name|id
 parameter_list|)
 function_decl|;
 block|}

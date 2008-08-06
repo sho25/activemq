@@ -16,43 +16,64 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * thrown when updating a key to map that the local client doesn't own  *  */
+comment|/**  * Default implementation of a MapChangedListener  *  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|IllegalAccessException
-extends|extends
-name|java
-operator|.
-name|lang
-operator|.
-name|IllegalStateException
+name|DefaultMapChangedListener
+implements|implements
+name|MapChangedListener
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|7584658017201604560L
-decl_stmt|;
-comment|/**      * @param message      */
 specifier|public
-name|IllegalAccessException
+name|void
+name|mapInsert
 parameter_list|(
-name|String
-name|message
+name|Member
+name|owner
+parameter_list|,
+name|Object
+name|key
+parameter_list|,
+name|Object
+name|value
 parameter_list|)
-block|{
-name|super
-argument_list|(
-name|message
-argument_list|)
-expr_stmt|;
-block|}
+block|{             }
+specifier|public
+name|void
+name|mapRemove
+parameter_list|(
+name|Member
+name|owner
+parameter_list|,
+name|Object
+name|key
+parameter_list|,
+name|Object
+name|value
+parameter_list|,
+name|boolean
+name|expired
+parameter_list|)
+block|{             }
+specifier|public
+name|void
+name|mapUpdate
+parameter_list|(
+name|Member
+name|owner
+parameter_list|,
+name|Object
+name|Key
+parameter_list|,
+name|Object
+name|oldValue
+parameter_list|,
+name|Object
+name|newValue
+parameter_list|)
+block|{             }
 block|}
 end_class
 
