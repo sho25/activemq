@@ -16,28 +16,26 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A listener for membership changes to a group  *  */
+comment|/**  * A listener for message communication  *  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|MemberChangedListener
+name|GroupMessageListener
 block|{
-comment|/**      * Notification a member has started      * @param member      */
+comment|/**      * Called when a message is delivered to the<CODE>Group</CODE> from another member      * @param sender the member who sent the message      * @param replyId the id to use to respond to a message      * @param message the message object      */
 name|void
-name|memberStarted
+name|messageDelivered
 parameter_list|(
 name|Member
-name|member
-parameter_list|)
-function_decl|;
-comment|/**      * Notification a member has stopped      * @param member      */
-name|void
-name|memberStopped
-parameter_list|(
-name|Member
-name|member
+name|sender
+parameter_list|,
+name|String
+name|replyId
+parameter_list|,
+name|Object
+name|message
 parameter_list|)
 function_decl|;
 block|}

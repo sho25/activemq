@@ -39,7 +39,7 @@ parameter_list|,
 name|Object
 name|value
 parameter_list|)
-block|{             }
+block|{        }
 specifier|public
 name|void
 name|mapRemove
@@ -56,7 +56,7 @@ parameter_list|,
 name|boolean
 name|expired
 parameter_list|)
-block|{             }
+block|{       }
 specifier|public
 name|void
 name|mapUpdate
@@ -65,7 +65,7 @@ name|Member
 name|owner
 parameter_list|,
 name|Object
-name|Key
+name|key
 parameter_list|,
 name|Object
 name|oldValue
@@ -73,7 +73,7 @@ parameter_list|,
 name|Object
 name|newValue
 parameter_list|)
-block|{             }
+block|{     }
 block|}
 end_class
 

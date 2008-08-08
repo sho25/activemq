@@ -27,8 +27,8 @@ name|V
 parameter_list|>
 block|{
 specifier|private
-name|Member
-name|owner
+name|EntryKey
+name|key
 decl_stmt|;
 specifier|private
 name|V
@@ -36,8 +36,8 @@ name|value
 decl_stmt|;
 name|EntryValue
 parameter_list|(
-name|Member
-name|owner
+name|EntryKey
+name|key
 parameter_list|,
 name|V
 name|value
@@ -45,9 +45,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|owner
+name|key
 operator|=
-name|owner
+name|key
 expr_stmt|;
 name|this
 operator|.
@@ -58,14 +58,14 @@ expr_stmt|;
 block|}
 comment|/**      * @return the owner      */
 specifier|public
-name|Member
-name|getOwner
+name|EntryKey
+name|getKey
 parameter_list|()
 block|{
 return|return
 name|this
 operator|.
-name|owner
+name|key
 return|;
 block|}
 comment|/**      * @return the key      */
