@@ -1621,23 +1621,6 @@ name|incrementQueueRef
 argument_list|()
 expr_stmt|;
 block|}
-comment|//                System.out.println(new Date()+": Locked pagedInMessages: "+sub.getConsumerInfo().getConsumerId());
-comment|//                // Add all the matching messages in the queue to the
-comment|//                // subscription.
-comment|//
-comment|//                for (QueueMessageReference node:pagedInMessages.values()){
-comment|//                    if (!node.isDropped()&& !node.isAcked()&& (!node.isDropped() ||sub.getConsumerInfo().isBrowser())) {
-comment|//                        msgContext.setMessageReference(node);
-comment|//                        if (sub.matches(node, msgContext)) {
-comment|//                            sub.add(node);
-comment|//                        }
-comment|//                    }
-comment|//                }
-comment|//
-comment|//            }
-name|wakeup
-argument_list|()
-expr_stmt|;
 block|}
 finally|finally
 block|{
@@ -1647,6 +1630,11 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
+comment|// Outside of dispatchLock() to maintain the lock hierarchy of
+comment|// iteratingMutex -> dispatchLock. - see https://issues.apache.org/activemq/browse/AMQ-1878
+name|wakeup
+argument_list|()
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -1904,9 +1892,6 @@ name|gc
 argument_list|()
 expr_stmt|;
 block|}
-name|wakeup
-argument_list|()
-expr_stmt|;
 block|}
 finally|finally
 block|{
@@ -1916,6 +1901,11 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
+comment|// Outside of dispatchLock() to maintain the lock hierarchy of
+comment|// iteratingMutex -> dispatchLock. - see https://issues.apache.org/activemq/browse/AMQ-1878
+name|wakeup
+argument_list|()
+expr_stmt|;
 block|}
 specifier|public
 name|void
