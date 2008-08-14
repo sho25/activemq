@@ -3353,7 +3353,7 @@ argument_list|()
 operator|.
 name|setLimit
 argument_list|(
-literal|1024
+literal|1024L
 operator|*
 literal|1024
 operator|*
@@ -3370,7 +3370,7 @@ argument_list|()
 operator|.
 name|setLimit
 argument_list|(
-literal|1024
+literal|1024L
 operator|*
 literal|1024
 operator|*
