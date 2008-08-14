@@ -406,14 +406,10 @@ if|if
 condition|(
 operator|++
 name|inflightMessageCount
-operator|>=
+operator|==
 name|failureCount
 condition|)
 block|{
-name|inflightMessageCount
-operator|=
-literal|0
-expr_stmt|;
 name|Thread
 operator|.
 name|sleep

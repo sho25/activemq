@@ -488,10 +488,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|producer
-operator|.
-name|send
+name|sendToProducer
 argument_list|(
+name|producer
+argument_list|,
 name|producerDestination
 argument_list|,
 name|message
@@ -515,6 +515,33 @@ operator|.
 name|length
 operator|+
 literal|" messages(s) received, closing down connections"
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Sends a message to a destination using the supplied producer      * @param producer      * @param producerDestination      * @param message      * @throws JMSException      */
+specifier|protected
+name|void
+name|sendToProducer
+parameter_list|(
+name|MessageProducer
+name|producer
+parameter_list|,
+name|Destination
+name|producerDestination
+parameter_list|,
+name|Message
+name|message
+parameter_list|)
+throws|throws
+name|JMSException
+block|{
+name|producer
+operator|.
+name|send
+argument_list|(
+name|producerDestination
+argument_list|,
+name|message
 argument_list|)
 expr_stmt|;
 block|}

@@ -667,6 +667,18 @@ comment|// This will fail usually since the tables will be
 comment|// created already.
 try|try
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Executing SQL: "
+operator|+
+name|dropStatments
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
 name|s
 operator|.
 name|execute
@@ -1085,11 +1097,19 @@ operator|!
 name|batchStatments
 condition|)
 block|{
+if|if
+condition|(
+name|s
+operator|!=
+literal|null
+condition|)
+block|{
 name|s
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
