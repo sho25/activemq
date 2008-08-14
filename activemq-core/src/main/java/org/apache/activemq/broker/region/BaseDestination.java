@@ -190,7 +190,7 @@ specifier|final
 name|int
 name|DEFAULT_PAGE_SIZE
 init|=
-literal|100
+literal|200
 decl_stmt|;
 specifier|protected
 specifier|final

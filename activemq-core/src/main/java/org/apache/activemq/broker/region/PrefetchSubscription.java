@@ -1893,20 +1893,13 @@ operator|!=
 literal|null
 condition|)
 block|{
-if|if
-condition|(
-name|destination
-operator|.
-name|isLazyDispatch
-argument_list|()
-condition|)
-block|{
+comment|//            if (destination.isLazyDispatch()) {
 name|destination
 operator|.
 name|wakeup
 argument_list|()
 expr_stmt|;
-block|}
+comment|//            }
 name|dispatchPending
 argument_list|()
 expr_stmt|;
