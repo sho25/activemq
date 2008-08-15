@@ -3052,6 +3052,11 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+name|msgContext
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 block|}
 finally|finally
 block|{
