@@ -1275,6 +1275,17 @@ name|Destination
 name|destination
 parameter_list|)
 block|{                     }
+comment|/* (non-Javadoc)          * @see org.apache.activemq.broker.region.Subscription#countBeforeFull()          */
+specifier|public
+name|int
+name|countBeforeFull
+parameter_list|()
+block|{
+comment|// TODO Auto-generated method stub
+return|return
+literal|10
+return|;
+block|}
 block|}
 block|}
 end_class

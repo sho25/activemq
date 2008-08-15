@@ -294,7 +294,7 @@ literal|2
 operator|*
 name|BaseDestination
 operator|.
-name|DEFAULT_PAGE_SIZE
+name|MAX_PAGE_SIZE
 decl_stmt|;
 comment|/**      * When you run this test case from the command line it will pause before      * terminating so that you can look at the MBeans state for debugging      * purposes.      */
 specifier|public
