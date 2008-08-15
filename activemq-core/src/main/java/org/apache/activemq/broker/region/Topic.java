@@ -1449,30 +1449,18 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-name|Thread
-operator|.
-name|currentThread
-argument_list|()
-operator|.
-name|interrupt
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
 name|IOException
 name|e
 parameter_list|)
 block|{
-comment|// TODO: Need to handle this better.
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Failed to recover this message "
+operator|+
+name|message
+argument_list|)
 expr_stmt|;
 block|}
 return|return

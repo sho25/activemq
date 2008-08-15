@@ -400,6 +400,11 @@ name|boolean
 name|isBrowser
 parameter_list|()
 function_decl|;
+comment|/**      * @return the number of messages this subscription can accept before its full      */
+name|int
+name|countBeforeFull
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

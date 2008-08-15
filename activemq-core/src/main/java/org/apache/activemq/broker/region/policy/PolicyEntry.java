@@ -353,7 +353,9 @@ specifier|private
 name|int
 name|maxPageSize
 init|=
-literal|100
+name|BaseDestination
+operator|.
+name|MAX_PAGE_SIZE
 decl_stmt|;
 specifier|private
 name|boolean

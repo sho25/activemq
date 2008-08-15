@@ -1028,6 +1028,21 @@ name|Destination
 name|destination
 parameter_list|)
 block|{              }
+specifier|public
+name|int
+name|countBeforeFull
+parameter_list|()
+block|{
+return|return
+name|getDispatchedQueueSize
+argument_list|()
+operator|-
+name|info
+operator|.
+name|getPrefetchSize
+argument_list|()
+return|;
+block|}
 specifier|protected
 name|void
 name|doAddRecoveredMessage

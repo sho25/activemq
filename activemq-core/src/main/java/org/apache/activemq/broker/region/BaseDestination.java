@@ -183,12 +183,12 @@ name|BaseDestination
 implements|implements
 name|Destination
 block|{
-comment|/**      * The default number of messages to page in to the destination      * from persistent storage      */
+comment|/**      * The maximum number of messages to page in to the destination      * from persistent storage      */
 specifier|public
 specifier|static
 specifier|final
 name|int
-name|DEFAULT_PAGE_SIZE
+name|MAX_PAGE_SIZE
 init|=
 literal|200
 decl_stmt|;
@@ -243,7 +243,7 @@ specifier|private
 name|int
 name|maxPageSize
 init|=
-name|DEFAULT_PAGE_SIZE
+name|MAX_PAGE_SIZE
 decl_stmt|;
 specifier|private
 name|boolean

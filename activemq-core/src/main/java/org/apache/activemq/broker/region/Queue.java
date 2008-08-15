@@ -1560,7 +1560,6 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|//            msgContext.setDestination(destination);
 synchronized|synchronized
 init|(
 name|pagedInMessages
@@ -1621,6 +1620,18 @@ name|incrementQueueRef
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|this
+operator|.
+name|optimizedDispatch
+condition|)
+block|{
+name|wakeup
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
@@ -1630,11 +1641,19 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|this
+operator|.
+name|optimizedDispatch
+condition|)
+block|{
 comment|// Outside of dispatchLock() to maintain the lock hierarchy of
 comment|// iteratingMutex -> dispatchLock. - see https://issues.apache.org/activemq/browse/AMQ-1878
 name|wakeup
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -1892,6 +1911,18 @@ name|gc
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|this
+operator|.
+name|optimizedDispatch
+condition|)
+block|{
+name|wakeup
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
@@ -1901,11 +1932,19 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|this
+operator|.
+name|optimizedDispatch
+condition|)
+block|{
 comment|// Outside of dispatchLock() to maintain the lock hierarchy of
 comment|// iteratingMutex -> dispatchLock. - see https://issues.apache.org/activemq/browse/AMQ-1878
 name|wakeup
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -5544,6 +5583,18 @@ operator|.
 name|size
 argument_list|()
 decl_stmt|;
+name|toPageIn
+operator|=
+name|Math
+operator|.
+name|min
+argument_list|(
+name|toPageIn
+argument_list|,
+name|getMaxPageSize
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|isLazyDispatch
@@ -5774,7 +5825,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|//                System.out.println(getName()+": dispatching from pending: "+pagedInPendingDispatch.size());
+comment|//              System.out.println(getName()+": dispatching from pending: "+pagedInPendingDispatch.size());
 comment|// Try to first dispatch anything that had not been dispatched before.
 name|pagedInPendingDispatch
 operator|=
@@ -6166,17 +6217,9 @@ range|:
 name|consumers
 control|)
 block|{
-name|PrefetchSubscription
-name|ps
-init|=
-operator|(
-name|PrefetchSubscription
-operator|)
-name|s
-decl_stmt|;
 name|zeroPrefetch
 operator||=
-name|ps
+name|s
 operator|.
 name|getPrefetchSize
 argument_list|()
@@ -6186,7 +6229,7 @@ expr_stmt|;
 name|int
 name|countBeforeFull
 init|=
-name|ps
+name|s
 operator|.
 name|countBeforeFull
 argument_list|()
