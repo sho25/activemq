@@ -39,6 +39,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -80,6 +90,26 @@ operator|.
 name|openmbean
 operator|.
 name|TabularData
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|ObjectName
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|MalformedObjectNameException
 import|;
 end_import
 
@@ -367,6 +397,16 @@ parameter_list|(
 name|boolean
 name|value
 parameter_list|)
+function_decl|;
+comment|/**      * Returns all the current subscription MBeans matching this destination      *       * @return the names of the subscriptions for this destination      */
+name|ObjectName
+index|[]
+name|getSubscriptions
+parameter_list|()
+throws|throws
+name|IOException
+throws|,
+name|MalformedObjectNameException
 function_decl|;
 block|}
 end_interface

@@ -405,6 +405,10 @@ name|int
 name|countBeforeFull
 parameter_list|()
 function_decl|;
+name|ConnectionContext
+name|getContext
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

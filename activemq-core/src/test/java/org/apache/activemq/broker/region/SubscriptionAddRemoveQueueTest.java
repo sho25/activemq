@@ -893,6 +893,16 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+name|ConnectionContext
+name|getContext
+parameter_list|()
+block|{
+comment|// TODO
+return|return
+literal|null
+return|;
+block|}
+specifier|public
 name|void
 name|add
 parameter_list|(

@@ -49,6 +49,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -463,6 +473,21 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
+specifier|public
+name|List
+argument_list|<
+name|Subscription
+argument_list|>
+name|getConsumers
+parameter_list|()
+block|{
+return|return
+name|next
+operator|.
+name|getConsumers
+argument_list|()
+return|;
 block|}
 comment|/**      * Sends a message to the given destination which may be a wildcard      */
 specifier|protected

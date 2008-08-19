@@ -29,6 +29,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -546,6 +556,13 @@ parameter_list|,
 name|Usage
 name|usage
 parameter_list|)
+function_decl|;
+name|List
+argument_list|<
+name|Subscription
+argument_list|>
+name|getConsumers
+parameter_list|()
 function_decl|;
 block|}
 end_interface
