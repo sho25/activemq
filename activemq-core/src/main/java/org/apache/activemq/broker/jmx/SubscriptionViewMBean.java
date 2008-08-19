@@ -168,6 +168,22 @@ name|String
 name|getSubcriptionName
 parameter_list|()
 function_decl|;
+comment|/**      * Returns true if this subscription (which may be using wildcards) matches the given queue name      *      * @param queueName the JMS queue name to match against      * @return true if this subscription matches the given queue or false if not      */
+name|boolean
+name|isMatchingQueue
+parameter_list|(
+name|String
+name|queueName
+parameter_list|)
+function_decl|;
+comment|/**      * Returns true if this subscription (which may be using wildcards) matches the given topic name      *      * @param topicName the JMS topic name to match against      * @return true if this subscription matches the given topic or false if not      */
+name|boolean
+name|isMatchingTopic
+parameter_list|(
+name|String
+name|topicName
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
