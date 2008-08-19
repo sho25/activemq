@@ -36,12 +36,11 @@ name|TestSupport
 extends|extends
 name|TestCase
 block|{
-comment|// TODO seems like 4m messages cause Protocol Buffers to barf but 3m is fine :)
 specifier|protected
 name|long
 name|messageCount
 init|=
-literal|4
+literal|10
 operator|*
 literal|1000
 operator|*
@@ -57,7 +56,7 @@ specifier|protected
 name|boolean
 name|doAssertions
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|protected
 name|boolean

@@ -369,6 +369,11 @@ argument_list|)
 decl_stmt|;
 name|cin
 operator|.
+name|resetBytesReadCounter
+argument_list|()
+expr_stmt|;
+name|cin
+operator|.
 name|popLimit
 argument_list|(
 name|previous
