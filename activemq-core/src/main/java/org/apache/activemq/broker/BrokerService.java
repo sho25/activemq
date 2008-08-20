@@ -2362,19 +2362,6 @@ block|}
 name|processHelperProperties
 argument_list|()
 expr_stmt|;
-name|BrokerRegistry
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|bind
-argument_list|(
-name|getBrokerName
-argument_list|()
-argument_list|,
-name|this
-argument_list|)
-expr_stmt|;
 name|getPersistenceAdapter
 argument_list|()
 operator|.
@@ -2442,6 +2429,19 @@ argument_list|()
 operator|.
 name|start
 argument_list|()
+expr_stmt|;
+name|BrokerRegistry
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|bind
+argument_list|(
+name|getBrokerName
+argument_list|()
+argument_list|,
+name|this
+argument_list|)
 expr_stmt|;
 comment|// see if there is a MasterBroker service and if so, configure
 comment|// it and start it.

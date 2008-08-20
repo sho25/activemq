@@ -297,6 +297,11 @@ argument_list|,
 name|broker
 argument_list|)
 expr_stmt|;
+name|mutex
+operator|.
+name|notifyAll
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|/**      * @param brokerName      */
