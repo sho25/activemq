@@ -69,16 +69,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|Destination
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|MessageConsumer
 import|;
 end_import
@@ -456,7 +446,6 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Failing
 specifier|public
 name|void
 name|testConsumerSlowDownPrefetch0
@@ -472,7 +461,6 @@ name|doTestConsumerSlowDown
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Failing
 specifier|public
 name|void
 name|testConsumerSlowDownPrefetch10
@@ -488,7 +476,6 @@ name|doTestConsumerSlowDown
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Passing
 specifier|public
 name|void
 name|testConsumerSlowDownDefaultPrefetch
@@ -621,6 +608,11 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|int
+name|totalReceived
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -682,17 +674,29 @@ operator|+
 name|c2Counter
 argument_list|)
 expr_stmt|;
+name|totalReceived
+operator|+=
+name|c1Counter
+expr_stmt|;
+name|totalReceived
+operator|+=
+name|c2Counter
+expr_stmt|;
 comment|// Once message have been flowing for a few seconds, start asserting that c2 always gets messages.  It should be receiving about 100 / sec
 if|if
 condition|(
 name|i
 operator|>
-literal|3
+literal|10
 condition|)
 block|{
 name|assertTrue
 argument_list|(
-literal|"Consumer 2 should be receiving new messages every second."
+literal|"Total received="
+operator|+
+name|totalReceived
+operator|+
+literal|", Consumer 2 should be receiving new messages every second."
 argument_list|,
 name|c2Counter
 operator|>
@@ -984,17 +988,17 @@ operator|=
 literal|1
 expr_stmt|;
 block|}
+name|counter
+operator|.
+name|incrementAndGet
+argument_list|()
+expr_stmt|;
 name|Thread
 operator|.
 name|sleep
 argument_list|(
 name|sleepingTime
 argument_list|)
-expr_stmt|;
-name|counter
-operator|.
-name|incrementAndGet
-argument_list|()
 expr_stmt|;
 block|}
 block|}
