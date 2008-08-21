@@ -937,6 +937,22 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
+comment|// TODO DELETE ME
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+comment|// TODO DELETE ME
 name|LOG
 operator|.
 name|warn
