@@ -153,6 +153,16 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Moves a message back to its original destination      */
+name|boolean
+name|retryMessage
+parameter_list|(
+name|String
+name|messageId
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
 comment|/**      * Moves the messages matching the given selector      *       * @return the number of messages removed      */
 name|int
 name|moveMatchingMessagesTo
