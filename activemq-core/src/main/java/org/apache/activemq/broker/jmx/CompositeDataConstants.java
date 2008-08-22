@@ -61,6 +61,11 @@ name|MESSAGE_TEXT
 init|=
 literal|"Text"
 decl_stmt|;
+name|String
+name|ORIGINAL_DESTINATION
+init|=
+literal|"OriginalDestination"
+decl_stmt|;
 comment|// User properties
 name|String
 name|STRING_PROPERTIES
