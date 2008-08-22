@@ -814,6 +814,11 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+name|proxy
+operator|.
+name|purge
+argument_list|()
+expr_stmt|;
 name|int
 name|count
 init|=
@@ -865,7 +870,7 @@ literal|"JMSDeliveryMode"
 argument_list|,
 name|Boolean
 operator|.
-name|TRUE
+name|FALSE
 argument_list|)
 expr_stmt|;
 name|headers
@@ -893,6 +898,8 @@ argument_list|(
 literal|"JMSPriority"
 argument_list|,
 name|i
+operator|+
+literal|1
 argument_list|)
 expr_stmt|;
 name|headers
@@ -1018,6 +1025,8 @@ expr_stmt|;
 block|}
 name|assertComplexData
 argument_list|(
+name|i
+argument_list|,
 name|cdata
 argument_list|,
 literal|"JMSCorrelationID"
@@ -1027,15 +1036,21 @@ argument_list|)
 expr_stmt|;
 name|assertComplexData
 argument_list|(
+name|i
+argument_list|,
 name|cdata
 argument_list|,
 literal|"JMSPriority"
 argument_list|,
 name|i
+operator|+
+literal|1
 argument_list|)
 expr_stmt|;
 name|assertComplexData
 argument_list|(
+name|i
+argument_list|,
 name|cdata
 argument_list|,
 literal|"JMSType"
@@ -1045,6 +1060,8 @@ argument_list|)
 expr_stmt|;
 name|assertComplexData
 argument_list|(
+name|i
+argument_list|,
 name|cdata
 argument_list|,
 literal|"JMSCorrelationID"
@@ -1054,6 +1071,19 @@ argument_list|)
 expr_stmt|;
 name|assertComplexData
 argument_list|(
+name|i
+argument_list|,
+name|cdata
+argument_list|,
+literal|"JMSDeliveryMode"
+argument_list|,
+literal|"NON-PERSISTENT"
+argument_list|)
+expr_stmt|;
+name|assertComplexData
+argument_list|(
+name|i
+argument_list|,
 name|cdata
 argument_list|,
 literal|"PropertiesText"
@@ -1205,6 +1235,8 @@ argument_list|)
 expr_stmt|;
 name|assertComplexData
 argument_list|(
+name|i
+argument_list|,
 name|cdata
 argument_list|,
 literal|"JMSXGroupSeq"
@@ -1214,6 +1246,8 @@ argument_list|)
 expr_stmt|;
 name|assertComplexData
 argument_list|(
+name|i
+argument_list|,
 name|cdata
 argument_list|,
 literal|"JMSXGroupID"
@@ -1223,6 +1257,8 @@ argument_list|)
 expr_stmt|;
 name|assertComplexData
 argument_list|(
+name|i
+argument_list|,
 name|cdata
 argument_list|,
 literal|"Text"
@@ -1238,6 +1274,9 @@ specifier|protected
 name|void
 name|assertComplexData
 parameter_list|(
+name|int
+name|messageIndex
+parameter_list|,
 name|CompositeData
 name|cdata
 parameter_list|,
@@ -1260,7 +1299,11 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"CData field: "
+literal|"Message "
+operator|+
+name|messageIndex
+operator|+
+literal|" CData field: "
 operator|+
 name|name
 argument_list|,
