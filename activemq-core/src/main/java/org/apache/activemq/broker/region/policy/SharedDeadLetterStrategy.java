@@ -58,6 +58,14 @@ name|SharedDeadLetterStrategy
 extends|extends
 name|AbstractDeadLetterStrategy
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DEFAULT_DEAD_LETTER_QUEUE_NAME
+init|=
+literal|"ActiveMQ.DLQ"
+decl_stmt|;
 specifier|private
 name|ActiveMQDestination
 name|deadLetterQueue
@@ -65,7 +73,7 @@ init|=
 operator|new
 name|ActiveMQQueue
 argument_list|(
-literal|"ActiveMQ.DLQ"
+name|DEFAULT_DEAD_LETTER_QUEUE_NAME
 argument_list|)
 decl_stmt|;
 specifier|public
