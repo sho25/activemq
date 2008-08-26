@@ -43,6 +43,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -705,10 +715,31 @@ name|originalDestination
 argument_list|)
 return|;
 block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"No original destination for message: "
+operator|+
+name|messageId
+argument_list|)
+throw|;
 block|}
-return|return
-literal|false
-return|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"Could not find message: "
+operator|+
+name|messageId
+argument_list|)
+throw|;
+block|}
 block|}
 specifier|public
 name|int
