@@ -159,6 +159,12 @@ name|CompositeData
 argument_list|>
 name|values
 init|=
+operator|(
+name|Collection
+argument_list|<
+name|CompositeData
+argument_list|>
+operator|)
 name|tabularData
 operator|.
 name|values
