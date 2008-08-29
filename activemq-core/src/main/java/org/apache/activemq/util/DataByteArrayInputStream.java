@@ -1105,7 +1105,7 @@ if|if
 condition|(
 name|pos
 operator|>
-name|length
+name|total
 condition|)
 block|{
 throw|throw
@@ -1186,7 +1186,7 @@ if|if
 condition|(
 name|pos
 operator|>
-name|length
+name|total
 condition|)
 block|{
 throw|throw
