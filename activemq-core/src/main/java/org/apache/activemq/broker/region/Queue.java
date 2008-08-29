@@ -1484,6 +1484,9 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+comment|// synchronize with dispatch method so that no new messages are sent
+comment|// while setting up a subscription. avoid out of order messages,
+comment|// duplicates, etc.
 name|dispatchLock
 operator|.
 name|lock
@@ -1508,7 +1511,6 @@ operator|.
 name|increment
 argument_list|()
 expr_stmt|;
-comment|//            MessageEvaluationContext msgContext = new NonCachedMessageEvaluationContext();
 comment|// needs to be synchronized - so no contention with dispatching
 synchronized|synchronized
 init|(
@@ -1585,11 +1587,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// synchronize with dispatch method so that no new messages are sent
-comment|// while
-comment|// setting up a subscription. avoid out of order messages,
-comment|// duplicates
-comment|// etc.
+comment|// any newly paged in messages that are not dispatched are added to pagedInPending in iterate()
 name|doPageIn
 argument_list|(
 literal|false
@@ -1711,6 +1709,8 @@ operator|.
 name|decrement
 argument_list|()
 expr_stmt|;
+comment|// synchronize with dispatch method so that no new messages are sent
+comment|// while removing up a subscription.
 name|dispatchLock
 operator|.
 name|lock
@@ -1718,9 +1718,6 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-comment|// synchronize with dispatch method so that no new messages are sent
-comment|// while
-comment|// removing up a subscription.
 synchronized|synchronized
 init|(
 name|consumers
@@ -1996,7 +1993,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|//        System.out.println(getName()+" send "+message.getMessageId());
 specifier|final
 name|ConnectionContext
 name|context
@@ -4749,6 +4745,33 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// make sure it gets queued for dispatched again
+name|dispatchLock
+operator|.
+name|lock
+argument_list|()
+expr_stmt|;
+try|try
+block|{
+name|pagedInPendingDispatch
+operator|.
+name|add
+argument_list|(
+name|node
+argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|dispatchLock
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 if|if
@@ -4788,7 +4811,7 @@ expr_stmt|;
 block|}
 block|}
 name|boolean
-name|result
+name|pageInMoreMessages
 init|=
 literal|false
 decl_stmt|;
@@ -4797,7 +4820,7 @@ init|(
 name|messages
 init|)
 block|{
-name|result
+name|pageInMoreMessages
 operator|=
 operator|!
 name|messages
@@ -4815,7 +4838,7 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-name|result
+name|pageInMoreMessages
 operator||=
 operator|!
 name|pagedInPendingDispatch
@@ -4837,7 +4860,7 @@ comment|// !messages.isEmpty(), and then if !pagedInPendingDispatch.isEmpty()
 comment|// then we do a dispatch.
 if|if
 condition|(
-name|result
+name|pageInMoreMessages
 condition|)
 block|{
 try|try
@@ -5860,7 +5883,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|//              System.out.println(getName()+": dispatching from pending: "+pagedInPendingDispatch.size());
 comment|// Try to first dispatch anything that had not been dispatched before.
 name|pagedInPendingDispatch
 operator|=
@@ -5869,7 +5891,6 @@ argument_list|(
 name|pagedInPendingDispatch
 argument_list|)
 expr_stmt|;
-comment|//                System.out.println(getName()+": new pending list1: "+pagedInPendingDispatch.size());
 block|}
 comment|// and now see if we can dispatch the new stuff.. and append to the pending
 comment|// list anything that does not actually get dispatched.
@@ -5886,7 +5907,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|//                System.out.println(getName()+": dispatching from paged in: "+list.size());
 if|if
 condition|(
 name|pagedInPendingDispatch
@@ -5916,7 +5936,6 @@ name|list
 argument_list|)
 expr_stmt|;
 block|}
-comment|//                System.out.println(getName()+": new pending list2: "+pagedInPendingDispatch.size());
 block|}
 block|}
 finally|finally
@@ -6076,7 +6095,6 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
-comment|//System.err.println(getName()+" Dispatched to "+s.getConsumerInfo().getConsumerId()+", "+node.getMessageId());
 name|target
 operator|=
 name|s
