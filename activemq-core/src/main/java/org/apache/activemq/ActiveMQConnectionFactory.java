@@ -1301,6 +1301,14 @@ argument_list|)
 expr_stmt|;
 name|connection
 operator|.
+name|setExclusiveConsumer
+argument_list|(
+name|isExclusiveConsumer
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
 name|setRedeliveryPolicy
 argument_list|(
 name|getRedeliveryPolicy
