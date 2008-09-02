@@ -523,12 +523,10 @@ name|initialQueueSize
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO uncommenting this line causes a hang!
-comment|//int messageCount = initialQueueSize;
 name|int
 name|messageCount
 init|=
-literal|10
+name|initialQueueSize
 decl_stmt|;
 name|String
 index|[]
@@ -659,8 +657,17 @@ operator|+
 name|actualCount
 argument_list|)
 expr_stmt|;
-comment|// TODO we seem to have browsed the queue and now there are messages missing!
-comment|//assertEquals("Should now have empty queue but was", initialQueueSize - messageCount, actualCount);
+name|assertEquals
+argument_list|(
+literal|"Should now have empty queue but was"
+argument_list|,
+name|initialQueueSize
+operator|-
+name|messageCount
+argument_list|,
+name|actualCount
+argument_list|)
+expr_stmt|;
 name|echo
 argument_list|(
 literal|"Now browsing the second queue"
@@ -726,7 +733,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|TODO_testRetryMessages
+name|testRetryMessages
 parameter_list|()
 throws|throws
 name|Exception
@@ -1059,12 +1066,10 @@ name|dlqQueueSize
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO uncommenting this line causes a hang!
-comment|//int messageCount = dlqQueueSize;
 name|int
 name|messageCount
 init|=
-literal|10
+name|dlqQueueSize
 decl_stmt|;
 name|String
 index|[]

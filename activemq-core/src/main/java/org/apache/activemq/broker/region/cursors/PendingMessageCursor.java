@@ -127,6 +127,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|MessageId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|usage
 operator|.
 name|SystemUsage
@@ -432,6 +446,15 @@ specifier|public
 name|boolean
 name|isUseCache
 parameter_list|()
+function_decl|;
+comment|/**      * remove from auditing the message id      * @param id      */
+specifier|public
+name|void
+name|rollback
+parameter_list|(
+name|MessageId
+name|id
+parameter_list|)
 function_decl|;
 block|}
 end_interface
