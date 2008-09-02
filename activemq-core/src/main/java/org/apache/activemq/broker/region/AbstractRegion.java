@@ -2135,7 +2135,15 @@ argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
-comment|// dest = addDestination(context, destination);
+name|dest
+operator|=
+name|addDestination
+argument_list|(
+name|context
+argument_list|,
+name|destination
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(

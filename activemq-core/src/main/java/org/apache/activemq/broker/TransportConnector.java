@@ -1733,6 +1733,15 @@ return|return
 name|broker
 return|;
 block|}
+specifier|public
+name|BrokerService
+name|getBrokerService
+parameter_list|()
+block|{
+return|return
+name|brokerService
+return|;
+block|}
 block|}
 end_class
 
