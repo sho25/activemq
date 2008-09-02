@@ -1927,6 +1927,26 @@ expr_stmt|;
 name|ensureConnectionInfoSent
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|transacted
+operator|&&
+name|acknowledgeMode
+operator|==
+name|Session
+operator|.
+name|SESSION_TRANSACTED
+condition|)
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"acknowledgeMode SESSION_TRANSACTED cannot be used for an non-transacted Session"
+argument_list|)
+throw|;
+block|}
 return|return
 operator|new
 name|ActiveMQSession
