@@ -1550,13 +1550,13 @@ name|options
 operator|.
 name|put
 argument_list|(
-literal|"soTimeout"
+literal|"socketBufferSize"
 argument_list|,
 name|Integer
 operator|.
 name|valueOf
 argument_list|(
-name|soTimeout
+name|socketBufferSize
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1570,7 +1570,7 @@ name|Integer
 operator|.
 name|valueOf
 argument_list|(
-name|socketBufferSize
+name|connectionTimeout
 argument_list|)
 argument_list|)
 expr_stmt|;
