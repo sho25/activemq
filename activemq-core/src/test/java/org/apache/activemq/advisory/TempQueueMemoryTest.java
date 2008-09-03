@@ -506,7 +506,9 @@ name|createSession
 argument_list|(
 literal|false
 argument_list|,
-literal|0
+name|Session
+operator|.
+name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
 name|clientConnection
@@ -527,7 +529,9 @@ name|createSession
 argument_list|(
 literal|false
 argument_list|,
-literal|0
+name|Session
+operator|.
+name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
 name|serverDestination

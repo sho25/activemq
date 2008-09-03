@@ -292,7 +292,7 @@ literal|false
 argument_list|,
 name|Session
 operator|.
-name|SESSION_TRANSACTED
+name|AUTO_ACKNOWLEDGE
 argument_list|)
 decl_stmt|;
 name|destination
