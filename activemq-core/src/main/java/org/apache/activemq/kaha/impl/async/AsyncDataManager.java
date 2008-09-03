@@ -2730,6 +2730,16 @@ name|getFile
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|fileMap
+operator|.
+name|remove
+argument_list|(
+name|dataFile
+operator|.
+name|getFile
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|storeSize
 operator|.
 name|addAndGet
