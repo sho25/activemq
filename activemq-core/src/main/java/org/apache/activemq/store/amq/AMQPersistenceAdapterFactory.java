@@ -374,6 +374,14 @@ argument_list|)
 expr_stmt|;
 name|result
 operator|.
+name|setCheckpointInterval
+argument_list|(
+name|getCheckpointInterval
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|result
+operator|.
 name|setIndexBinSize
 argument_list|(
 name|getIndexBinSize

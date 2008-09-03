@@ -2544,6 +2544,35 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"lastFileId="
+operator|+
+name|lastFile
+operator|+
+literal|", purgeList: ("
+operator|+
+name|purgeList
+operator|.
+name|size
+argument_list|()
+operator|+
+literal|") "
+operator|+
+name|purgeList
+argument_list|)
+expr_stmt|;
+block|}
 for|for
 control|(
 name|DataFile
@@ -2701,19 +2730,6 @@ name|getFile
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|DataFile
-name|removed
-init|=
-name|fileMap
-operator|.
-name|remove
-argument_list|(
-name|dataFile
-operator|.
-name|getDataFileId
-argument_list|()
-argument_list|)
-decl_stmt|;
 name|storeSize
 operator|.
 name|addAndGet
@@ -2745,7 +2761,7 @@ argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"moved data file "
 operator|+
@@ -2768,23 +2784,22 @@ operator|.
 name|delete
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|result
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"discarding data file "
+literal|"Failed to discard data file "
 operator|+
 name|dataFile
-operator|+
-operator|(
-name|result
-condition|?
-literal|"successful "
-else|:
-literal|"failed"
-operator|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * @return the maxFileLength      */
