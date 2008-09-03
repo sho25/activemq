@@ -2736,7 +2736,7 @@ name|remove
 argument_list|(
 name|dataFile
 operator|.
-name|getFile
+name|getDataFileId
 argument_list|()
 argument_list|)
 expr_stmt|;
