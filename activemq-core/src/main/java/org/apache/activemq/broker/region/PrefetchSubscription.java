@@ -1032,6 +1032,17 @@ block|{
 name|dequeueCounter
 operator|++
 expr_stmt|;
+if|if
+condition|(
+name|this
+operator|.
+name|getConsumerInfo
+argument_list|()
+operator|.
+name|isBrowser
+argument_list|()
+condition|)
+block|{
 name|node
 operator|.
 name|getRegionDestination
@@ -1046,6 +1057,7 @@ operator|.
 name|increment
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
