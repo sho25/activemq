@@ -477,11 +477,11 @@ name|writeWithIndent
 argument_list|(
 literal|2
 argument_list|,
-literal|"<test-result checkpoint_interval_in_sec="
+literal|"<test-result checkpoint_interval_in_sec='"
 operator|+
 name|intervalInSec
 operator|+
-literal|">"
+literal|"'>"
 argument_list|)
 expr_stmt|;
 block|}

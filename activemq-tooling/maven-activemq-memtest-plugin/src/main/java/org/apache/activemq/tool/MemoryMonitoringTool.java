@@ -563,15 +563,15 @@ name|writeWithIndent
 argument_list|(
 literal|6
 argument_list|,
-literal|"<memory_usage index="
+literal|"<memory_usage index='"
 operator|+
 name|resultIndex
 operator|+
-literal|" non_heap_mb="
+literal|"' non_heap_mb='"
 operator|+
 name|nonHeapMB
 operator|+
-literal|" non_heap_bytes="
+literal|"' non_heap_bytes='"
 operator|+
 name|memoryBean
 operator|.
@@ -581,11 +581,11 @@ operator|.
 name|getUsed
 argument_list|()
 operator|+
-literal|" heap_mb="
+literal|"' heap_mb='"
 operator|+
 name|heapMB
 operator|+
-literal|" heap_bytes="
+literal|"' heap_bytes='"
 operator|+
 name|memoryBean
 operator|.
@@ -595,7 +595,7 @@ operator|.
 name|getUsed
 argument_list|()
 operator|+
-literal|"/>"
+literal|"'/>"
 argument_list|)
 expr_stmt|;
 name|resultIndex
