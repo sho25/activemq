@@ -300,6 +300,11 @@ name|CLIENT
 init|=
 literal|"client"
 decl_stmt|;
+name|String
+name|INDIVIDUAL
+init|=
+literal|"client-individual"
+decl_stmt|;
 block|}
 block|}
 specifier|public
