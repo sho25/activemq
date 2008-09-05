@@ -197,6 +197,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|DestinationInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|ExceptionResponse
 import|;
 end_import
@@ -834,7 +848,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Removes a producer.      *       * @param context the enviorment the operation is being executed under.      * @param info      * @throws Exception      */
+comment|/**      * Removes a producer.      *       * @param context the environment the operation is being executed under.      * @param info      * @throws Exception      */
 specifier|public
 name|void
 name|removeProducer
@@ -870,7 +884,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * add a consumer      *       * @param context      * @param info      * @return the assocated subscription      * @throws Exception      */
+comment|/**      * add a consumer      *       * @param context      * @param info      * @return the associated subscription      * @throws Exception      */
 specifier|public
 name|Subscription
 name|addConsumer
@@ -933,6 +947,46 @@ argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|removeDestinationInfo
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|DestinationInfo
+name|info
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|super
+operator|.
+name|removeDestinationInfo
+argument_list|(
+name|context
+argument_list|,
+name|info
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|info
+operator|.
+name|getDestination
+argument_list|()
+operator|.
+name|isTemporary
+argument_list|()
+condition|)
+block|{
+name|sendAsyncToSlave
+argument_list|(
+name|info
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * begin a transaction      *       * @param context      * @param xid      * @throws Exception      */
 specifier|public

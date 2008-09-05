@@ -2027,9 +2027,6 @@ name|isFull
 parameter_list|()
 block|{
 return|return
-name|isSlave
-argument_list|()
-operator|||
 name|dispatched
 operator|.
 name|size
