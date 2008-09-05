@@ -123,6 +123,34 @@ name|URISupport
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -130,11 +158,21 @@ name|MulticastDiscoveryAgentFactory
 extends|extends
 name|DiscoveryAgentFactory
 block|{
-comment|//See AMQ-1489. There's something wrong here but it is difficult to tell what.
-comment|//It looks like to actually set the discovery URI you have to use something like
-comment|//<transportConnector uri="..." discoveryUri="multicast://239.3.7.0:37000?discoveryURI=multicast://239.3.7.0:37000" />
-comment|// or
-comment|//<networkConnector name="..." uri="multicast://239.3.7.0:37000?discoveryURI=multicast://239.3.7.0:37000">
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOG
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|MulticastDiscoveryAgentFactory
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|protected
 name|DiscoveryAgent
 name|doCreateDiscoveryAgent
@@ -147,6 +185,43 @@ name|IOException
 block|{
 try|try
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"doCreateDiscoveryAgent: uri = "
+operator|+
+name|uri
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+name|MulticastDiscoveryAgent
+name|mda
+init|=
+operator|new
+name|MulticastDiscoveryAgent
+argument_list|()
+decl_stmt|;
+name|mda
+operator|.
+name|setDiscoveryURI
+argument_list|(
+name|uri
+argument_list|)
+expr_stmt|;
+comment|// allow MDA's params to be set via query arguments
+comment|// (e.g., multicast://default?group=foo
 name|Map
 name|options
 init|=
@@ -157,36 +232,17 @@ argument_list|(
 name|uri
 argument_list|)
 decl_stmt|;
-name|MulticastDiscoveryAgent
-name|rc
-init|=
-operator|new
-name|MulticastDiscoveryAgent
-argument_list|()
-decl_stmt|;
-name|rc
-operator|.
-name|setGroup
-argument_list|(
-name|uri
-operator|.
-name|getHost
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// allow the discoveryURI to be set via a query argument on the URI
-comment|// ?discoveryURI=someURI
 name|IntrospectionSupport
 operator|.
 name|setProperties
 argument_list|(
-name|rc
+name|mda
 argument_list|,
 name|options
 argument_list|)
 expr_stmt|;
 return|return
-name|rc
+name|mda
 return|;
 block|}
 catch|catch
