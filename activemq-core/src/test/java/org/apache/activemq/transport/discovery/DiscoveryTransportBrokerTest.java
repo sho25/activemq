@@ -715,7 +715,7 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
-literal|"multicast://"
+literal|"multicast://default?group="
 operator|+
 name|groupName
 return|;

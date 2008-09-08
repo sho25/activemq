@@ -724,7 +724,7 @@ argument_list|(
 operator|new
 name|URI
 argument_list|(
-literal|"multicast://"
+literal|"multicast://default?group="
 operator|+
 name|groupId
 argument_list|)
@@ -734,7 +734,7 @@ name|container
 operator|.
 name|addNetworkConnector
 argument_list|(
-literal|"multicast://"
+literal|"multicast://default?group="
 operator|+
 name|groupId
 argument_list|)

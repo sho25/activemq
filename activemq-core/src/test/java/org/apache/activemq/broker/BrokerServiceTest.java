@@ -207,7 +207,7 @@ name|service
 operator|.
 name|addNetworkConnector
 argument_list|(
-literal|"multicast://group-"
+literal|"multicast://default?group=group-"
 operator|+
 name|System
 operator|.
@@ -273,7 +273,7 @@ name|service
 operator|.
 name|addNetworkConnector
 argument_list|(
-literal|"multicast://group-"
+literal|"multicast://default?group=group-"
 operator|+
 name|System
 operator|.

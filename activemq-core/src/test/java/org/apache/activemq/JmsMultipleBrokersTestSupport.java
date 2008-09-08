@@ -879,7 +879,7 @@ argument_list|(
 operator|new
 name|URI
 argument_list|(
-literal|"multicast://"
+literal|"multicast://default?group="
 operator|+
 name|groupName
 argument_list|)
@@ -889,7 +889,7 @@ name|broker
 operator|.
 name|addNetworkConnector
 argument_list|(
-literal|"multicast://"
+literal|"multicast://default?group="
 operator|+
 name|groupName
 argument_list|)
