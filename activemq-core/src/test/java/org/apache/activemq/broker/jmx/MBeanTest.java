@@ -2687,6 +2687,17 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+name|assertTrue
+argument_list|(
+literal|"broker is not a slave"
+argument_list|,
+operator|!
+name|broker
+operator|.
+name|isSlave
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// create 2 topics
 name|broker
 operator|.
