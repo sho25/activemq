@@ -185,6 +185,13 @@ argument_list|(
 literal|500
 argument_list|)
 expr_stmt|;
+name|persistenceAdapter
+operator|.
+name|setLockAcquireSleepInterval
+argument_list|(
+literal|500
+argument_list|)
+expr_stmt|;
 name|master
 operator|.
 name|setPersistenceAdapter
