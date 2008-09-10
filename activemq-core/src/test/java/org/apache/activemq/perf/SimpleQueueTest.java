@@ -95,6 +95,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|numberOfConsumers
+operator|=
+literal|1
+expr_stmt|;
 name|super
 operator|.
 name|setUp
@@ -128,6 +132,8 @@ argument_list|,
 name|dest
 argument_list|)
 decl_stmt|;
+comment|//consumer.setInitialDelay(2000);
+comment|//consumer.setSleepDuration(10);
 name|boolean
 name|enableAudit
 init|=

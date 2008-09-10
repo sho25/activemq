@@ -55,6 +55,20 @@ name|AMQPersistenceAdapter
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|kahadb
+operator|.
+name|store
+operator|.
+name|KahaDBPersistenceAdaptor
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision: 1.3 $  */
 end_comment
@@ -100,21 +114,17 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|AMQPersistenceAdapter
+comment|//AMQPersistenceAdapter adaptor = new AMQPersistenceAdapter();
+comment|//adaptor.setArchiveDataLogs(true);
+comment|//adaptor.setMaxFileLength(1024 * 64);
+name|KahaDBPersistenceAdaptor
 name|adaptor
 init|=
 operator|new
-name|AMQPersistenceAdapter
+name|KahaDBPersistenceAdaptor
 argument_list|()
 decl_stmt|;
-name|adaptor
-operator|.
-name|setArchiveDataLogs
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-comment|//adaptor.setMaxFileLength(1024 * 64);
+comment|//adaptor.setDirectory(dataFileDir);
 name|answer
 operator|.
 name|setDataDirectoryFile
