@@ -164,9 +164,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// if (session.isNew())
-comment|// System.err.println("NEW SESSION "+session.getId()+" for
-comment|// "+((HttpServletRequest)request).getRequestURI());
 name|chain
 operator|.
 name|doFilter

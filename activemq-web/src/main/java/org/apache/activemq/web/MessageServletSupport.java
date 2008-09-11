@@ -1431,11 +1431,9 @@ argument_list|,
 literal|'.'
 argument_list|)
 expr_stmt|;
-name|System
+name|LOG
 operator|.
-name|err
-operator|.
-name|println
+name|debug
 argument_list|(
 literal|"destination uri="
 operator|+
@@ -1549,6 +1547,25 @@ operator|+
 name|destinationOptions
 expr_stmt|;
 block|}
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|destinationName
+operator|+
+literal|" ("
+operator|+
+operator|(
+name|isTopic
+condition|?
+literal|"topic"
+else|:
+literal|"queue"
+operator|)
+operator|+
+literal|")"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|isTopic

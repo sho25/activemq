@@ -929,7 +929,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// System.err.println("message["+messages+"]="+message);
 if|if
 condition|(
 name|ajax
@@ -1318,7 +1317,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// System.err.println("message["+messages+"]="+message);
 if|if
 condition|(
 name|ajax
