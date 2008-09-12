@@ -168,13 +168,13 @@ specifier|private
 name|Destination
 name|serverDestination
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|static
 specifier|final
 name|int
 name|COUNT
 init|=
-literal|1000
+literal|2000
 decl_stmt|;
 specifier|public
 name|void
