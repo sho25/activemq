@@ -206,7 +206,7 @@ specifier|protected
 name|boolean
 name|useCache
 init|=
-literal|false
+literal|true
 decl_stmt|;
 specifier|private
 name|boolean

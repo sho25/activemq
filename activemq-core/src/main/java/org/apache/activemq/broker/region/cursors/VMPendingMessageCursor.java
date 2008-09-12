@@ -157,6 +157,17 @@ specifier|private
 name|MessageReference
 name|last
 decl_stmt|;
+specifier|public
+name|VMPendingMessageCursor
+parameter_list|()
+block|{
+name|this
+operator|.
+name|useCache
+operator|=
+literal|false
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
