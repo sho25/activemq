@@ -105,6 +105,20 @@ name|InitializingBean
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|springframework
+operator|.
+name|beans
+operator|.
+name|factory
+operator|.
+name|DisposableBean
+import|;
+end_import
+
 begin_comment
 comment|/**  * Simple factory bean used to create a jencks connection pool.  * Depending on the properties set, it will create a simple pool,  * a transaction aware connection pool, or a jca aware connection pool.  *  *<pre class="code">  *<bean id="pooledConnectionFactory" class="javax.script.ScriptEngineFactory.PooledConnectionFactoryFactoryBean">  *<property name="connectionFactory" ref="connectionFactory" />  *<property name="transactionManager" ref="transactionManager" />  *<property name="resourceName" value="ResourceName" />  *</bean>  *</pre>  *  * The<code>resourceName</code> property should be used along with the {@link ActiveMQResourceManager} and have  * the same value than its<code>resourceName</code> property. This will make sure the transaction manager  * maps correctly the connection factory to the recovery process.  *  */
 end_comment
@@ -117,6 +131,8 @@ implements|implements
 name|FactoryBean
 implements|,
 name|InitializingBean
+implements|,
+name|DisposableBean
 block|{
 specifier|private
 specifier|static
@@ -134,7 +150,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
-name|ConnectionFactory
+name|PooledConnectionFactory
 name|pooledConnectionFactory
 decl_stmt|;
 specifier|private
@@ -631,6 +647,31 @@ argument_list|(
 literal|"Unable to create pooled connection factory.  Enable DEBUG log level for more informations"
 argument_list|)
 throw|;
+block|}
+block|}
+specifier|public
+name|void
+name|destroy
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+if|if
+condition|(
+name|pooledConnectionFactory
+operator|!=
+literal|null
+condition|)
+block|{
+name|pooledConnectionFactory
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
+name|pooledConnectionFactory
+operator|=
+literal|null
+expr_stmt|;
 block|}
 block|}
 block|}
