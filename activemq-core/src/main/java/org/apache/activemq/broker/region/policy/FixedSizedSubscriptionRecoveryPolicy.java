@@ -196,8 +196,6 @@ specifier|private
 name|int
 name|maximumSize
 init|=
-literal|100
-operator|*
 literal|64
 operator|*
 literal|1024
@@ -208,6 +206,10 @@ name|useSharedBuffer
 init|=
 literal|true
 decl_stmt|;
+specifier|public
+name|FixedSizedSubscriptionRecoveryPolicy
+parameter_list|()
+block|{              }
 specifier|public
 name|SubscriptionRecoveryPolicy
 name|copy
