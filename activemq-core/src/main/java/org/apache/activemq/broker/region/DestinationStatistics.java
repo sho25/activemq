@@ -73,6 +73,24 @@ name|TimeStatisticImpl
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tools
+operator|.
+name|ant
+operator|.
+name|taskdefs
+operator|.
+name|condition
+operator|.
+name|IsReference
+import|;
+end_import
+
 begin_comment
 comment|/**  * The J2EE Statistics for the a Destination.  *   * @version $Revision$  */
 end_comment
@@ -174,6 +192,13 @@ argument_list|,
 literal|"The number of consumers that that are subscribing to messages from the destination"
 argument_list|)
 expr_stmt|;
+name|consumers
+operator|.
+name|setDoReset
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|producers
 operator|=
 operator|new
@@ -182,6 +207,13 @@ argument_list|(
 literal|"producers"
 argument_list|,
 literal|"The number of producers that that are publishing messages to the destination"
+argument_list|)
+expr_stmt|;
+name|producers
+operator|.
+name|setDoReset
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 name|messages
@@ -251,7 +283,7 @@ argument_list|)
 expr_stmt|;
 name|addStatistic
 argument_list|(
-literal|"prodcuers"
+literal|"producers"
 argument_list|,
 name|producers
 argument_list|)
@@ -381,6 +413,14 @@ name|void
 name|reset
 parameter_list|()
 block|{
+if|if
+condition|(
+name|this
+operator|.
+name|isDoReset
+argument_list|()
+condition|)
+block|{
 name|super
 operator|.
 name|reset
@@ -406,6 +446,7 @@ operator|.
 name|reset
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void

@@ -122,6 +122,12 @@ name|void
 name|reset
 parameter_list|()
 block|{
+if|if
+condition|(
+name|isDoReset
+argument_list|()
+condition|)
+block|{
 name|super
 operator|.
 name|reset
@@ -143,6 +149,7 @@ name|totalTime
 operator|=
 literal|0
 expr_stmt|;
+block|}
 block|}
 specifier|public
 specifier|synchronized

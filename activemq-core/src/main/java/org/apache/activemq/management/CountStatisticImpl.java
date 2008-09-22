@@ -146,6 +146,12 @@ name|void
 name|reset
 parameter_list|()
 block|{
+if|if
+condition|(
+name|isDoReset
+argument_list|()
+condition|)
+block|{
 name|super
 operator|.
 name|reset
@@ -158,6 +164,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|long
