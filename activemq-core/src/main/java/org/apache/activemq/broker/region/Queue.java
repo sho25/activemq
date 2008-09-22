@@ -3864,6 +3864,24 @@ do|;
 name|gc
 argument_list|()
 expr_stmt|;
+name|this
+operator|.
+name|destinationStatistics
+operator|.
+name|getMessages
+argument_list|()
+operator|.
+name|setCount
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|getMessages
+argument_list|()
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Removes the message matching the given messageId      */
 specifier|public
@@ -6106,7 +6124,8 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// Try to first dispatch anything that had not been dispatched before.
+comment|// Try to first dispatch anything that had not been
+comment|// dispatched before.
 name|pagedInPendingDispatch
 operator|=
 name|doActualDispatch
@@ -6115,7 +6134,8 @@ name|pagedInPendingDispatch
 argument_list|)
 expr_stmt|;
 block|}
-comment|// and now see if we can dispatch the new stuff.. and append to the pending
+comment|// and now see if we can dispatch the new stuff.. and append to
+comment|// the pending
 comment|// list anything that does not actually get dispatched.
 if|if
 condition|(
@@ -6151,13 +6171,34 @@ expr_stmt|;
 block|}
 else|else
 block|{
+for|for
+control|(
+name|QueueMessageReference
+name|qmr
+range|:
+name|list
+control|)
+block|{
+if|if
+condition|(
+operator|!
 name|pagedInPendingDispatch
 operator|.
-name|addAll
+name|contains
 argument_list|(
-name|list
+name|qmr
+argument_list|)
+condition|)
+block|{
+name|pagedInPendingDispatch
+operator|.
+name|add
+argument_list|(
+name|qmr
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 block|}
@@ -6171,7 +6212,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @return list of messages that could get dispatched to consumers if they were not full.      */
+comment|/**      * @return list of messages that could get dispatched to consumers if they      *         were not full.      */
 specifier|private
 name|List
 argument_list|<

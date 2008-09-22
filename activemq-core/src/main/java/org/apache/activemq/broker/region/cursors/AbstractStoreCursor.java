@@ -979,6 +979,10 @@ name|cacheEnabled
 operator|=
 literal|false
 expr_stmt|;
+name|size
+operator|=
+literal|0
+expr_stmt|;
 block|}
 specifier|protected
 specifier|final
