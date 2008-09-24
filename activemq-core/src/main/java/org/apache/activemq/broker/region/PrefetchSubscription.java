@@ -1180,6 +1180,26 @@ argument_list|,
 name|node
 argument_list|)
 expr_stmt|;
+comment|// ActiveMQ workaround for AMQ-1730 - Please Ignore next line
+name|node
+operator|.
+name|incrementRedeliveryCounter
+argument_list|()
+expr_stmt|;
+name|node
+operator|.
+name|getRegionDestination
+argument_list|()
+operator|.
+name|getDestinationStatistics
+argument_list|()
+operator|.
+name|getInflight
+argument_list|()
+operator|.
+name|decrement
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 block|}

@@ -3154,26 +3154,9 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-comment|// Only pick up the first message.
-name|Message
-name|message1
-init|=
-name|consumer
-operator|.
-name|receive
-argument_list|(
-literal|1000
-argument_list|)
-decl_stmt|;
-name|assertNotNull
-argument_list|(
-name|message1
-argument_list|)
-expr_stmt|;
-comment|// Don't acknowledge yet. This should keep our prefetch full.
+comment|// The prefetch should fill up with 1 message.
 comment|// Since prefetch is still full, the 2nd message should get dispatched
-comment|// to
-comment|// another consumer.. lets create the 2nd consumer test that it does
+comment|// to another consumer.. lets create the 2nd consumer test that it does
 comment|// make sure it does.
 name|ActiveMQConnection
 name|connection2
@@ -3205,18 +3188,37 @@ argument_list|,
 literal|0
 argument_list|)
 decl_stmt|;
+name|MessageConsumer
+name|consumer2
+init|=
 name|session2
 operator|.
 name|createConsumer
 argument_list|(
 name|destination
 argument_list|)
+decl_stmt|;
+comment|// Pick up the first message.
+name|Message
+name|message1
+init|=
+name|consumer
+operator|.
+name|receive
+argument_list|(
+literal|1000
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|message1
+argument_list|)
 expr_stmt|;
-comment|// Only pick up the 2nd messages.
+comment|// Pick up the 2nd messages.
 name|Message
 name|message2
 init|=
-name|consumer
+name|consumer2
 operator|.
 name|receive
 argument_list|(
