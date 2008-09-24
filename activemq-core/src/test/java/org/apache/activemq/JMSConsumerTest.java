@@ -3169,6 +3169,11 @@ operator|.
 name|createConnection
 argument_list|()
 decl_stmt|;
+name|connection2
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 name|connections
 operator|.
 name|add
