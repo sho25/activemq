@@ -1883,11 +1883,6 @@ name|QueueMessageReference
 operator|)
 name|ref
 decl_stmt|;
-name|qmr
-operator|.
-name|incrementRedeliveryCounter
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|qmr
