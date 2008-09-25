@@ -407,6 +407,13 @@ name|getFullMessageTableName
 argument_list|()
 operator|+
 literal|""
+block|,
+literal|"DROP TABLE "
+operator|+
+name|getFullLockTableName
+argument_list|()
+operator|+
+literal|""
 block|}
 expr_stmt|;
 block|}
