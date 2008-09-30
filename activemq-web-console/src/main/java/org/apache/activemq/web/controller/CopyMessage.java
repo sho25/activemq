@@ -144,13 +144,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @version $Revision$  */
+comment|/**  * Copies a message from one to another queue  *   * @author<a href="http://www.nighttale.net">Dejan Bosanac</a>  * @version $Revision$  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|DeleteMessage
+name|CopyMessage
 extends|extends
 name|DestinationFacade
 implements|implements
@@ -159,6 +159,10 @@ block|{
 specifier|private
 name|String
 name|messageId
+decl_stmt|;
+specifier|private
+name|String
+name|destination
 decl_stmt|;
 specifier|private
 specifier|static
@@ -170,13 +174,13 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|DeleteMessage
+name|CopyMessage
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
 specifier|public
-name|DeleteMessage
+name|CopyMessage
 parameter_list|(
 name|BrokerFacade
 name|brokerFacade
@@ -225,8 +229,6 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Removing message "
-operator|+
 name|getJMSDestination
 argument_list|()
 operator|+
@@ -235,13 +237,19 @@ operator|+
 name|messageId
 operator|+
 literal|")"
+operator|+
+literal|" copy to "
+operator|+
+name|destination
 argument_list|)
 expr_stmt|;
 name|queueView
 operator|.
-name|removeMessage
+name|copyMessageTo
 argument_list|(
 name|messageId
+argument_list|,
+name|destination
 argument_list|)
 expr_stmt|;
 block|}
@@ -286,6 +294,30 @@ operator|.
 name|messageId
 operator|=
 name|messageId
+expr_stmt|;
+block|}
+specifier|public
+name|String
+name|getDestination
+parameter_list|()
+block|{
+return|return
+name|destination
+return|;
+block|}
+specifier|public
+name|void
+name|setDestination
+parameter_list|(
+name|String
+name|destination
+parameter_list|)
+block|{
+name|this
+operator|.
+name|destination
+operator|=
+name|destination
 expr_stmt|;
 block|}
 block|}
