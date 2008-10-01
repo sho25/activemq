@@ -3395,6 +3395,10 @@ argument_list|(
 name|ack
 argument_list|)
 expr_stmt|;
+name|pendingAck
+operator|=
+literal|null
+expr_stmt|;
 comment|// Adjust the counters
 name|deliveredCounter
 operator|-=
