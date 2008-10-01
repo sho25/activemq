@@ -1666,9 +1666,14 @@ block|}
 if|if
 condition|(
 operator|!
+operator|(
 name|this
 operator|.
 name|optimizedDispatch
+operator|||
+name|isSlave
+argument_list|()
+operator|)
 condition|)
 block|{
 name|wakeup
@@ -1689,6 +1694,9 @@ condition|(
 name|this
 operator|.
 name|optimizedDispatch
+operator|||
+name|isSlave
+argument_list|()
 condition|)
 block|{
 comment|// Outside of dispatchLock() to maintain the lock hierarchy of
@@ -1951,9 +1959,14 @@ block|}
 if|if
 condition|(
 operator|!
+operator|(
 name|this
 operator|.
 name|optimizedDispatch
+operator|||
+name|isSlave
+argument_list|()
+operator|)
 condition|)
 block|{
 name|wakeup
@@ -1974,6 +1987,9 @@ condition|(
 name|this
 operator|.
 name|optimizedDispatch
+operator|||
+name|isSlave
+argument_list|()
 condition|)
 block|{
 comment|// Outside of dispatchLock() to maintain the lock hierarchy of
