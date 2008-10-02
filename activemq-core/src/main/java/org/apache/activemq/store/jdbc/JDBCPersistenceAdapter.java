@@ -1339,6 +1339,9 @@ condition|(
 name|databaseLocker
 operator|==
 literal|null
+operator|&&
+name|isUseDatabaseLock
+argument_list|()
 condition|)
 block|{
 name|databaseLocker
