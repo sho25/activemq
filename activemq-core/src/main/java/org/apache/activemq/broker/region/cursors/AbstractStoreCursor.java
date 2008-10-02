@@ -981,7 +981,8 @@ literal|false
 expr_stmt|;
 name|size
 operator|=
-literal|0
+name|getStoreSize
+argument_list|()
 expr_stmt|;
 block|}
 specifier|protected
