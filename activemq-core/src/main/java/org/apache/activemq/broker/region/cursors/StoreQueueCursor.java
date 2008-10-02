@@ -362,11 +362,6 @@ name|started
 operator|=
 literal|false
 expr_stmt|;
-name|super
-operator|.
-name|stop
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|nonPersistent
@@ -393,6 +388,11 @@ expr_stmt|;
 name|persistent
 operator|.
 name|gc
+argument_list|()
+expr_stmt|;
+name|super
+operator|.
+name|stop
 argument_list|()
 expr_stmt|;
 name|pendingCount
