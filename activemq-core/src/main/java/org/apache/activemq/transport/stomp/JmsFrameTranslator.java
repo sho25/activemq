@@ -1136,15 +1136,6 @@ operator|==
 literal|null
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"is null"
-argument_list|)
-expr_stmt|;
 name|xstream
 operator|=
 operator|new
