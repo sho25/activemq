@@ -170,7 +170,7 @@ specifier|final
 name|int
 name|numRestarts
 init|=
-literal|10
+literal|5
 decl_stmt|;
 specifier|protected
 name|BrokerService
@@ -197,7 +197,7 @@ name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://localhost:61617"
+literal|"tcp://localhost:61617?transport.reuseAddress=true"
 argument_list|)
 expr_stmt|;
 return|return
@@ -229,7 +229,7 @@ name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://localhost:62617"
+literal|"tcp://localhost:62617?transport.reuseAddress=true"
 argument_list|)
 expr_stmt|;
 name|NetworkConnector
@@ -239,7 +239,7 @@ name|broker
 operator|.
 name|addNetworkConnector
 argument_list|(
-literal|"static:(tcp://localhost:61617)?maxReconnectDelay=1000&useExponentialBackOff=false"
+literal|"static:(tcp://localhost:61617?wireFormat.maxInactivityDuration=500)?useExponentialBackOff=false"
 argument_list|)
 decl_stmt|;
 name|networkConnector
@@ -510,12 +510,16 @@ name|networkedBroker
 argument_list|,
 literal|"NetworkBridge"
 argument_list|,
-literal|10000
+literal|5000
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|"restart number: "
+operator|+
+name|i
+argument_list|,
 literal|1
 argument_list|,
 name|countMbeans
@@ -523,6 +527,8 @@ argument_list|(
 name|broker
 argument_list|,
 literal|"Connection"
+argument_list|,
+literal|10000
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -535,6 +541,18 @@ name|broker
 operator|.
 name|waitUntilStopped
 argument_list|()
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|0
+argument_list|,
+name|countMbeans
+argument_list|(
+name|broker
+argument_list|,
+literal|"stopped"
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 name|assertEquals
