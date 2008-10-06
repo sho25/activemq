@@ -850,6 +850,13 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+comment|// Synchronize between dispatched list and removal of messages from pending list
+comment|// related to remove subscription action
+synchronized|synchronized
+init|(
+name|dispatchLock
+init|)
+block|{
 name|pending
 operator|.
 name|remove
@@ -865,11 +872,6 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-synchronized|synchronized
-init|(
-name|dispatchLock
-init|)
-block|{
 name|dispatched
 operator|.
 name|add
@@ -2509,6 +2511,12 @@ argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
+comment|// Synchronized to DispatchLock
+synchronized|synchronized
+init|(
+name|dispatchLock
+init|)
+block|{
 for|for
 control|(
 name|MessageReference
@@ -2539,6 +2547,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+comment|// TODO Dispatched messages should be decremented from Inflight stat
+comment|// Here is a potential problem concerning Inflight stat:
+comment|// Messages not already committed or rolled back may not be removed from dispatched list at the moment
+comment|// Except if each commit or rollback callback action comes before remove of subscriber.
 name|rc
 operator|.
 name|addAll
@@ -2646,6 +2659,13 @@ condition|)
 block|{
 break|break;
 block|}
+comment|// Synchronize between dispatched list and remove of messageg from pending list
+comment|// related to remove subscription action
+synchronized|synchronized
+init|(
+name|dispatchLock
+init|)
+block|{
 name|pending
 operator|.
 name|remove
@@ -2709,6 +2729,7 @@ expr_stmt|;
 name|count
 operator|++
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -2804,14 +2825,9 @@ return|return
 literal|false
 return|;
 block|}
-comment|// Make sure we can dispatch a message.
+comment|// No reentrant lock - Patch needed to IndirectMessageReference on method lock
 if|if
 condition|(
-name|canDispatch
-argument_list|(
-name|node
-argument_list|)
-operator|&&
 operator|!
 name|isSlave
 argument_list|()

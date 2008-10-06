@@ -260,15 +260,9 @@ if|if
 condition|(
 name|dropped
 operator|||
-operator|(
 name|lockOwner
 operator|!=
 literal|null
-operator|&&
-name|lockOwner
-operator|!=
-name|subscription
-operator|)
 condition|)
 block|{
 return|return
