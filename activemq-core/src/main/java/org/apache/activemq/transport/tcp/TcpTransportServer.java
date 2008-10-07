@@ -896,6 +896,13 @@ argument_list|(
 literal|2000
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|transportOptions
+operator|!=
+literal|null
+condition|)
+block|{
 name|IntrospectionSupport
 operator|.
 name|setProperties
@@ -905,6 +912,7 @@ argument_list|,
 name|transportOptions
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * @return Returns the wireFormatFactory.      */
 specifier|public
