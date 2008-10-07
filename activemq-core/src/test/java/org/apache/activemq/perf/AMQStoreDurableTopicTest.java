@@ -107,22 +107,8 @@ operator|new
 name|AMQPersistenceAdapter
 argument_list|()
 decl_stmt|;
-name|adaptor
-operator|.
-name|setArchiveDataLogs
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|adaptor
-operator|.
-name|setMaxFileLength
-argument_list|(
-literal|1024
-operator|*
-literal|64
-argument_list|)
-expr_stmt|;
+comment|//adaptor.setArchiveDataLogs(true);
+comment|//adaptor.setMaxFileLength(1024 * 64);
 name|answer
 operator|.
 name|setDataDirectoryFile
