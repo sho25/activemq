@@ -555,18 +555,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|assertEquals
-argument_list|(
-literal|0
-argument_list|,
-name|countMbeans
-argument_list|(
-name|networkedBroker
-argument_list|,
-literal|"NetworkBridge"
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|//assertEquals(0, countMbeans(networkedBroker, "NetworkBridge"));
 name|assertEquals
 argument_list|(
 literal|1

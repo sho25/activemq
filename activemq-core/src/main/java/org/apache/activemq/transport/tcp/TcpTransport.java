@@ -719,7 +719,11 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"TCP consumer thread starting"
+literal|"TCP consumer thread for "
+operator|+
+name|this
+operator|+
+literal|" starting"
 argument_list|)
 expr_stmt|;
 name|this

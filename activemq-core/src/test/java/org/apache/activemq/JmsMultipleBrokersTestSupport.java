@@ -1685,6 +1685,13 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
+name|onSend
+argument_list|(
+name|i
+argument_list|,
+name|msg
+argument_list|)
+expr_stmt|;
 block|}
 name|producer
 operator|.
@@ -1711,6 +1718,17 @@ name|conn
 argument_list|)
 expr_stmt|;
 block|}
+specifier|protected
+name|void
+name|onSend
+parameter_list|(
+name|int
+name|i
+parameter_list|,
+name|TextMessage
+name|msg
+parameter_list|)
+block|{     }
 specifier|protected
 name|TextMessage
 name|createTextMessage
