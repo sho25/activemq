@@ -408,15 +408,6 @@ name|boolean
 name|isTransient
 parameter_list|()
 function_decl|;
-comment|/**      * Mark a message as already dispatched      * @param message      */
-specifier|public
-name|void
-name|dispatched
-parameter_list|(
-name|MessageReference
-name|message
-parameter_list|)
-function_decl|;
 comment|/**      * set the audit      * @param audit      */
 specifier|public
 name|void

@@ -768,25 +768,6 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Mark a message as already dispatched      * @param message      */
-specifier|public
-name|void
-name|dispatched
-parameter_list|(
-name|MessageReference
-name|message
-parameter_list|)
-block|{
-comment|//add it to the audit
-name|isDuplicate
-argument_list|(
-name|message
-operator|.
-name|getMessageId
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * set the audit      * @param audit      */
 specifier|public
 name|void
