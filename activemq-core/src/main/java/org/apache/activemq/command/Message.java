@@ -2297,6 +2297,30 @@ return|return
 literal|false
 return|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+try|try
+block|{
+name|getProperties
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{         }
+return|return
+name|super
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
