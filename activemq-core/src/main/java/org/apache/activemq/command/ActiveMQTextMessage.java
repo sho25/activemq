@@ -654,6 +654,30 @@ name|getSize
 argument_list|()
 return|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+try|try
+block|{
+name|getText
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|e
+parameter_list|)
+block|{         }
+return|return
+name|super
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
