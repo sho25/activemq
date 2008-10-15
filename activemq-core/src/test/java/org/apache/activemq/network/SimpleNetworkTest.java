@@ -645,7 +645,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|xtestConduitBridge
+name|testConduitBridge
 parameter_list|()
 throws|throws
 name|Exception
@@ -775,7 +775,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|xtestDurableStoreAndForward
+name|testDurableStoreAndForward
 parameter_list|()
 throws|throws
 name|Exception

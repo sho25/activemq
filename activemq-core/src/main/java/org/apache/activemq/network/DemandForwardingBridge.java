@@ -303,6 +303,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"counting down remoteBrokerNameKnownLatch with: "
+operator|+
+name|command
+argument_list|)
+expr_stmt|;
 name|remoteBrokerNameKnownLatch
 operator|.
 name|countDown

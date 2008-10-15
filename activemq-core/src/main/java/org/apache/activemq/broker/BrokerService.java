@@ -6805,23 +6805,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// we must start the persistence adaptor before we can create the region
-comment|// broker
-if|if
-condition|(
-name|this
-operator|.
-name|deleteAllMessagesOnStartup
-condition|)
-block|{
-name|getPersistenceAdapter
-argument_list|()
-operator|.
-name|deleteAllMessages
-argument_list|()
-expr_stmt|;
-block|}
-comment|//        getPersistenceAdapter().start();
 if|if
 condition|(
 name|destinationInterceptors

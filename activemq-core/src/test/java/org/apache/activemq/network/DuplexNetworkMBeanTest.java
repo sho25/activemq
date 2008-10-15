@@ -170,7 +170,7 @@ specifier|final
 name|int
 name|numRestarts
 init|=
-literal|5
+literal|3
 decl_stmt|;
 specifier|protected
 name|BrokerService
@@ -552,6 +552,13 @@ name|broker
 argument_list|,
 literal|"stopped"
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
 argument_list|)
 expr_stmt|;
 block|}

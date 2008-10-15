@@ -2166,7 +2166,7 @@ name|JMSException
 argument_list|(
 literal|"Unmatched acknowledege: Could not find Message-ID "
 operator|+
-name|firstAckedMsg
+name|lastAckedMsg
 operator|+
 literal|" in dispatched-list (end of ack)"
 argument_list|)
