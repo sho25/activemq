@@ -249,11 +249,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-literal|true
-condition|)
-return|return;
 name|bridgeAllBrokers
 argument_list|()
 expr_stmt|;

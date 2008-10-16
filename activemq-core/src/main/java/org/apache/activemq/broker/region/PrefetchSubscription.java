@@ -2144,7 +2144,11 @@ throw|throw
 operator|new
 name|JMSException
 argument_list|(
-literal|"Unmatched acknowledege: Could not find Message-ID "
+literal|"Unmatched acknowledege: "
+operator|+
+name|ack
+operator|+
+literal|"; Could not find Message-ID "
 operator|+
 name|firstAckedMsg
 operator|+
@@ -2164,7 +2168,11 @@ throw|throw
 operator|new
 name|JMSException
 argument_list|(
-literal|"Unmatched acknowledege: Could not find Message-ID "
+literal|"Unmatched acknowledege: "
+operator|+
+name|ack
+operator|+
+literal|"; Could not find Message-ID "
 operator|+
 name|lastAckedMsg
 operator|+
@@ -2179,13 +2187,22 @@ name|getMessageCount
 argument_list|()
 operator|!=
 name|checkCount
+operator|&&
+name|ack
+operator|.
+name|isStandardAck
+argument_list|()
 condition|)
 block|{
 throw|throw
 operator|new
 name|JMSException
 argument_list|(
-literal|"Unmatched acknowledege: Expected message count ("
+literal|"Unmatched acknowledege: "
+operator|+
+name|ack
+operator|+
+literal|"; Expected message count ("
 operator|+
 name|ack
 operator|.
