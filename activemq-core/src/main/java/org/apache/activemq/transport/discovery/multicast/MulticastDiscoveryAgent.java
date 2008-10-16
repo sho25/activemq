@@ -314,7 +314,14 @@ specifier|final
 name|String
 name|DEFAULT_HOST_IP
 init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"activemq.partition.discovery"
+argument_list|,
 literal|"239.255.2.3"
+argument_list|)
 decl_stmt|;
 specifier|public
 specifier|static
@@ -1234,15 +1241,6 @@ argument_list|(
 literal|"start - myPort = "
 operator|+
 name|myPort
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|trace
-argument_list|(
-literal|"start - myHost = "
-operator|+
-name|myHost
 argument_list|)
 expr_stmt|;
 name|LOG
