@@ -747,6 +747,7 @@ block|}
 block|}
 do|while
 condition|(
+operator|(
 name|mbeans
 operator|==
 literal|null
@@ -755,6 +756,7 @@ name|mbeans
 operator|.
 name|isEmpty
 argument_list|()
+operator|)
 operator|&&
 name|expiryTime
 operator|>
