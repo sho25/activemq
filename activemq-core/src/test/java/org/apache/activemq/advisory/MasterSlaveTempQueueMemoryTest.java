@@ -303,6 +303,21 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|deleteTempQueue
+condition|)
+block|{
+comment|// give temp destination removes a chance to perculate on connection.close
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
+block|}
 name|assertEquals
 argument_list|(
 literal|"the temp queues should not be visible as they are removed"
@@ -431,7 +446,7 @@ argument_list|()
 operator|+
 literal|2
 operator|*
-name|COUNT
+name|messagesToSend
 operator|>=
 name|masterRb
 operator|.
@@ -547,7 +562,6 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-comment|// TODO Auto-generated catch block
 name|e
 operator|.
 name|printStackTrace
@@ -743,6 +757,25 @@ operator|.
 name|getCount
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testLoadRequestReplyWithNoTempQueueDelete
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|deleteTempQueue
+operator|=
+literal|false
+expr_stmt|;
+name|messagesToSend
+operator|=
+literal|10
+expr_stmt|;
+name|testLoadRequestReply
+argument_list|()
 expr_stmt|;
 block|}
 block|}
