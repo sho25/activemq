@@ -3940,6 +3940,21 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|MessageFormatException
+argument_list|(
+literal|"Unsupported Object type: "
+operator|+
+name|value
+operator|.
+name|getClass
+argument_list|()
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/**      * Puts the message body in read-only mode and repositions the stream of      * bytes to the beginning.      *       * @throws JMSException if an internal error occurs      */
 specifier|public
