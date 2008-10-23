@@ -234,13 +234,7 @@ parameter_list|(
 name|Exception
 name|expected
 parameter_list|)
-block|{
-name|expected
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
+block|{         }
 block|}
 specifier|protected
 name|void

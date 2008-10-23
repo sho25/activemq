@@ -664,12 +664,9 @@ operator|.
 name|info
 argument_list|(
 literal|"Server transport error:"
-argument_list|)
-expr_stmt|;
+argument_list|,
 name|error
-operator|.
-name|printStackTrace
-argument_list|()
+argument_list|)
 expr_stmt|;
 name|serverErrorCount
 operator|.
@@ -718,10 +715,12 @@ name|Exception
 name|error
 parameter_list|)
 block|{
-name|error
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|trace
+argument_list|(
+name|error
+argument_list|)
 expr_stmt|;
 block|}
 specifier|public
