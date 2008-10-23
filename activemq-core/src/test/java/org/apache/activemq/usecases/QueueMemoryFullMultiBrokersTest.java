@@ -394,15 +394,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-name|internalQueue
-argument_list|)
-expr_stmt|;
 name|assertTrue
 argument_list|(
 literal|"All messages are consumed and acked from source:"

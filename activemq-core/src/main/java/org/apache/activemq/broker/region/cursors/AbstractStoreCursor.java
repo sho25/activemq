@@ -575,6 +575,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|size
+argument_list|()
+expr_stmt|;
 block|}
 specifier|public
 specifier|synchronized
@@ -851,7 +854,7 @@ operator|&&
 name|isStarted
 argument_list|()
 operator|&&
-name|cacheEnabled
+name|useCache
 condition|)
 block|{
 name|cacheEnabled
@@ -889,6 +892,16 @@ expr_stmt|;
 name|cacheEnabled
 operator|=
 literal|false
+expr_stmt|;
+name|batchList
+operator|.
+name|remove
+argument_list|(
+name|node
+operator|.
+name|getMessageId
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 specifier|public
@@ -1135,9 +1148,10 @@ name|boolean
 name|isEmpty
 parameter_list|()
 block|{
+comment|// negative means more messages added to store through queue.send since last reset
 return|return
 name|size
-operator|<=
+operator|==
 literal|0
 return|;
 block|}
@@ -1165,14 +1179,11 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|isStarted
-argument_list|()
+name|size
+operator|<
+literal|0
 condition|)
 block|{
-return|return
-name|size
-return|;
-block|}
 name|this
 operator|.
 name|size
@@ -1180,6 +1191,7 @@ operator|=
 name|getStoreSize
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|size
 return|;
