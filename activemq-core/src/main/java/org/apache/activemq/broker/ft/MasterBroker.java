@@ -1111,7 +1111,7 @@ operator|.
 name|PREPARE
 argument_list|)
 decl_stmt|;
-name|sendAsyncToSlave
+name|sendSyncToSlave
 argument_list|(
 name|info
 argument_list|)
