@@ -79,7 +79,7 @@ expr_stmt|;
 block|}
 name|lockCreateStatement
 operator|+=
-literal|" WITH XLOCK"
+literal|" WITH (UPDLOCK, ROWLOCK)"
 expr_stmt|;
 name|statements
 operator|.
