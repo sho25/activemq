@@ -255,6 +255,9 @@ name|Exception
 block|{
 comment|// because master will wait for slave to connect it needs
 comment|// to be in a separate thread
+name|Thread
+name|starterThread
+init|=
 operator|new
 name|Thread
 argument_list|()
@@ -300,6 +303,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+decl_stmt|;
+name|starterThread
 operator|.
 name|start
 argument_list|()
@@ -308,6 +313,15 @@ name|slave
 operator|.
 name|start
 argument_list|()
+expr_stmt|;
+name|starterThread
+operator|.
+name|join
+argument_list|(
+literal|60
+operator|*
+literal|1000
+argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
@@ -377,6 +391,8 @@ if|if
 condition|(
 operator|!
 name|deleteTempQueue
+operator|||
+name|serverTransactional
 condition|)
 block|{
 comment|// give temp destination removes a chance to perculate on connection.close

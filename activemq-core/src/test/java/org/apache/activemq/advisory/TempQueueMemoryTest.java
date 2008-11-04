@@ -482,6 +482,12 @@ block|}
 block|}
 catch|catch
 parameter_list|(
+name|IllegalStateException
+name|IgnoredAsCanOcurrDuringShutdown
+parameter_list|)
+block|{                 }
+catch|catch
+parameter_list|(
 name|JMSException
 name|e
 parameter_list|)
