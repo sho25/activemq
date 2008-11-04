@@ -282,10 +282,8 @@ finally|finally
 block|{
 name|writeTimestamp
 operator|=
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
+operator|-
+literal|1
 expr_stmt|;
 block|}
 block|}
