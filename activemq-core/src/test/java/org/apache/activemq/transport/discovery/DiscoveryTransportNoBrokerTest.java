@@ -165,7 +165,12 @@ parameter_list|)
 block|{
 name|assertTrue
 argument_list|(
-literal|"reason is  java.net.UnknownHostException"
+literal|"reason is java.io.IOException, was: "
+operator|+
+name|expected
+operator|.
+name|getCause
+argument_list|()
 argument_list|,
 name|expected
 operator|.
@@ -174,9 +179,9 @@ argument_list|()
 operator|instanceof
 name|java
 operator|.
-name|net
+name|io
 operator|.
-name|UnknownHostException
+name|IOException
 argument_list|)
 expr_stmt|;
 block|}

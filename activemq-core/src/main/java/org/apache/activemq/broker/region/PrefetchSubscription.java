@@ -1046,13 +1046,6 @@ name|inAckRange
 condition|)
 block|{
 comment|// Don't remove the nodes until we are committed.
-name|removeList
-operator|.
-name|add
-argument_list|(
-name|node
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1106,6 +1099,13 @@ operator|.
 name|decrement
 argument_list|()
 expr_stmt|;
+name|removeList
+operator|.
+name|add
+argument_list|(
+name|node
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -1136,6 +1136,13 @@ init|)
 block|{
 name|dequeueCounter
 operator|++
+expr_stmt|;
+name|dispatched
+operator|.
+name|remove
+argument_list|(
+name|node
+argument_list|)
 expr_stmt|;
 name|node
 operator|.
@@ -1177,21 +1184,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Need to put it back in the front.
 synchronized|synchronized
 init|(
 name|dispatchLock
 init|)
 block|{
-name|dispatched
-operator|.
-name|add
-argument_list|(
-literal|0
-argument_list|,
-name|node
-argument_list|)
-expr_stmt|;
 comment|// ActiveMQ workaround for AMQ-1730 - Please Ignore next line
 name|node
 operator|.
@@ -1611,11 +1608,9 @@ argument_list|()
 condition|)
 block|{
 comment|// Message was re-delivered but it was not yet considered to be
-comment|// a
-comment|// DLQ message.
+comment|// a DLQ message.
 comment|// Acknowledge all dispatched messages up till the message id of
-comment|// the
-comment|// acknowledgment.
+comment|// the ack.
 name|boolean
 name|inAckRange
 init|=
@@ -2188,9 +2183,10 @@ argument_list|()
 operator|!=
 name|checkCount
 operator|&&
+operator|!
 name|ack
 operator|.
-name|isStandardAck
+name|isInTransaction
 argument_list|()
 condition|)
 block|{
@@ -2686,7 +2682,7 @@ condition|)
 block|{
 break|break;
 block|}
-comment|// Synchronize between dispatched list and remove of messageg from pending list
+comment|// Synchronize between dispatched list and remove of message from pending list
 comment|// related to remove subscription action
 synchronized|synchronized
 init|(
