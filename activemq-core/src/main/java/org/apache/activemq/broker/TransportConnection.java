@@ -2005,11 +2005,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|responseRequired
-condition|)
-block|{
-if|if
-condition|(
 name|SERVICELOG
 operator|.
 name|isDebugEnabled
@@ -2029,7 +2024,21 @@ name|SERVICELOG
 operator|.
 name|debug
 argument_list|(
-literal|"Error occured while processing sync command: "
+literal|"Error occured while processing "
+operator|+
+operator|(
+name|responseRequired
+condition|?
+literal|"sync"
+else|:
+literal|"async"
+operator|)
+operator|+
+literal|" command: "
+operator|+
+name|command
+operator|+
+literal|", exception: "
 operator|+
 name|e
 argument_list|,
@@ -2037,6 +2046,11 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|responseRequired
+condition|)
+block|{
 name|response
 operator|=
 operator|new
