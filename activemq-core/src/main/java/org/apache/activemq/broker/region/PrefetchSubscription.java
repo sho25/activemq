@@ -1469,9 +1469,6 @@ condition|)
 block|{
 comment|// Message was delivered but not acknowledged: update pre-fetch
 comment|// counters.
-comment|// Acknowledge all dispatched messages up till the message id of
-comment|// the
-comment|// acknowledgment.
 name|int
 name|index
 init|=

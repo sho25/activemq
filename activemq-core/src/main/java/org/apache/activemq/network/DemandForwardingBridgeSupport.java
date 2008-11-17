@@ -3144,15 +3144,17 @@ operator|.
 name|getBrokerName
 argument_list|()
 operator|+
-literal|" Ignoring Subscription "
+literal|" Ignoring sub  from "
 operator|+
-name|info
+name|remoteBrokerName
 operator|+
-literal|" restricted to "
+literal|", restricted to "
 operator|+
 name|networkTTL
 operator|+
-literal|" network hops only"
+literal|" network hops only : "
+operator|+
+name|info
 argument_list|)
 expr_stmt|;
 block|}
@@ -3193,11 +3195,13 @@ operator|.
 name|getBrokerName
 argument_list|()
 operator|+
-literal|" Ignoring sub "
+literal|" Ignoring sub from "
+operator|+
+name|remoteBrokerName
+operator|+
+literal|", already routed through this broker once : "
 operator|+
 name|info
-operator|+
-literal|" already routed through this broker once"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3215,7 +3219,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-comment|// ignore if not in the permited or in the excluded list
+comment|// ignore if not in the permitted or in the excluded list
 if|if
 condition|(
 name|LOG
@@ -3233,18 +3237,20 @@ operator|.
 name|getBrokerName
 argument_list|()
 operator|+
-literal|" Ignoring sub "
+literal|" Ignoring sub from "
 operator|+
-name|info
+name|remoteBrokerName
 operator|+
-literal|" destination "
+literal|", destination "
 operator|+
 name|info
 operator|.
 name|getDestination
 argument_list|()
 operator|+
-literal|" is not permiited"
+literal|" is not permiited :"
+operator|+
+name|info
 argument_list|)
 expr_stmt|;
 block|}
@@ -3283,7 +3289,7 @@ literal|" from "
 operator|+
 name|remoteBrokerName
 operator|+
-literal|" :  "
+literal|" : "
 operator|+
 name|info
 argument_list|)
@@ -3309,11 +3315,13 @@ operator|.
 name|getBrokerName
 argument_list|()
 operator|+
-literal|" Ignoring sub "
+literal|" Ignoring sub from "
+operator|+
+name|remoteBrokerName
+operator|+
+literal|" as already subscribed to matching destination : "
 operator|+
 name|info
-operator|+
-literal|" already subscribed to matching destination"
 argument_list|)
 expr_stmt|;
 block|}

@@ -454,6 +454,15 @@ argument_list|)
 operator|)
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"not connecting loopback: "
+operator|+
+name|uri
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|URI
@@ -465,7 +474,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Establishing network connection between from "
+literal|"Establishing network connection from "
 operator|+
 name|localURIName
 operator|+
@@ -1112,7 +1121,6 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
-empty_stmt|;
 name|super
 operator|.
 name|setName
@@ -1123,6 +1131,25 @@ expr_stmt|;
 block|}
 return|return
 name|name
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"DiscoveryNetworkConnector:"
+operator|+
+name|getName
+argument_list|()
+operator|+
+literal|":"
+operator|+
+name|getBrokerService
+argument_list|()
 return|;
 block|}
 block|}
