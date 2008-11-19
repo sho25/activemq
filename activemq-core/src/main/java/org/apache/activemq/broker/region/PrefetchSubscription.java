@@ -389,6 +389,17 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|protected
+specifier|static
+specifier|final
+name|Scheduler
+name|scheduler
+init|=
+name|Scheduler
+operator|.
+name|getInstance
+argument_list|()
+decl_stmt|;
+specifier|protected
 name|PendingMessageCursor
 name|pending
 decl_stmt|;
@@ -658,7 +669,7 @@ operator|>
 literal|0
 condition|)
 block|{
-name|Scheduler
+name|scheduler
 operator|.
 name|executeAfterDelay
 argument_list|(

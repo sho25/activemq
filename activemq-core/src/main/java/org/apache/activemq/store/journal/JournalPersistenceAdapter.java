@@ -774,6 +774,17 @@ name|UsageListener
 implements|,
 name|BrokerServiceAware
 block|{
+specifier|protected
+specifier|static
+specifier|final
+name|Scheduler
+name|scheduler
+init|=
+name|Scheduler
+operator|.
+name|getInstance
+argument_list|()
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -1504,7 +1515,7 @@ name|recover
 argument_list|()
 expr_stmt|;
 comment|// Do a checkpoint periodically.
-name|Scheduler
+name|scheduler
 operator|.
 name|executePeriodically
 argument_list|(
@@ -1550,7 +1561,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|Scheduler
+name|scheduler
 operator|.
 name|cancel
 argument_list|(

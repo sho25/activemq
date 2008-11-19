@@ -524,6 +524,16 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|protected
+specifier|static
+name|Scheduler
+name|scheduler
+init|=
+name|Scheduler
+operator|.
+name|getInstance
+argument_list|()
+decl_stmt|;
+specifier|protected
 specifier|final
 name|Map
 argument_list|<
@@ -1134,7 +1144,7 @@ expr_stmt|;
 block|}
 block|}
 expr_stmt|;
-name|Scheduler
+name|scheduler
 operator|.
 name|executePeriodically
 argument_list|(
@@ -1951,7 +1961,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|Scheduler
+name|scheduler
 operator|.
 name|cancel
 argument_list|(

@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @version $Revision$  */
+comment|/**  * Singelton, references maintained by users  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -55,8 +55,7 @@ specifier|final
 class|class
 name|Scheduler
 block|{
-specifier|public
-specifier|static
+specifier|private
 specifier|final
 name|Timer
 name|CLOCK_DAEMON
@@ -70,7 +69,6 @@ literal|true
 argument_list|)
 decl_stmt|;
 specifier|private
-specifier|static
 specifier|final
 name|HashMap
 argument_list|<
@@ -90,11 +88,34 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|static
+name|Scheduler
+name|instance
+decl_stmt|;
+static|static
+block|{
+name|instance
+operator|=
+operator|new
+name|Scheduler
+argument_list|()
+expr_stmt|;
+block|}
+specifier|private
 name|Scheduler
 parameter_list|()
 block|{     }
 specifier|public
 specifier|static
+name|Scheduler
+name|getInstance
+parameter_list|()
+block|{
+return|return
+name|instance
+return|;
+block|}
+specifier|public
 specifier|synchronized
 name|void
 name|executePeriodically
@@ -138,7 +159,6 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-specifier|static
 specifier|synchronized
 name|void
 name|cancel
@@ -178,7 +198,6 @@ comment|//remove cancelled TimerTasks
 block|}
 block|}
 specifier|public
-specifier|static
 name|void
 name|executeAfterDelay
 parameter_list|(
@@ -210,7 +229,6 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-specifier|static
 name|void
 name|shutdown
 parameter_list|()

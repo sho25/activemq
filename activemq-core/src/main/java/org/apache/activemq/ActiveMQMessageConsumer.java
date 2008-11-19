@@ -488,6 +488,17 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|protected
+specifier|static
+specifier|final
+name|Scheduler
+name|scheduler
+init|=
+name|Scheduler
+operator|.
+name|getInstance
+argument_list|()
+decl_stmt|;
+specifier|protected
 specifier|final
 name|ActiveMQSession
 name|session
@@ -3893,7 +3904,7 @@ literal|0
 condition|)
 block|{
 comment|// Start up the delivery again a little later.
-name|Scheduler
+name|scheduler
 operator|.
 name|executeAfterDelay
 argument_list|(

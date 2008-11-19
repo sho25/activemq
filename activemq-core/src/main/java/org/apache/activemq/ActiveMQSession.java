@@ -391,6 +391,17 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|protected
+specifier|static
+specifier|final
+name|Scheduler
+name|scheduler
+init|=
+name|Scheduler
+operator|.
+name|getInstance
+argument_list|()
+decl_stmt|;
+specifier|protected
 name|int
 name|acknowledgementMode
 decl_stmt|;
@@ -2087,7 +2098,7 @@ name|redeliveryDelay
 argument_list|)
 expr_stmt|;
 block|}
-name|Scheduler
+name|scheduler
 operator|.
 name|executeAfterDelay
 argument_list|(

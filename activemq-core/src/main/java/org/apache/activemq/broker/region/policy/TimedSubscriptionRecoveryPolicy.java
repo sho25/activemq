@@ -220,6 +220,17 @@ name|GC_INTERVAL
 init|=
 literal|1000
 decl_stmt|;
+specifier|protected
+specifier|static
+specifier|final
+name|Scheduler
+name|scheduler
+init|=
+name|Scheduler
+operator|.
+name|getInstance
+argument_list|()
+decl_stmt|;
 comment|// TODO: need to get a better synchronized linked list that has little
 comment|// contention between enqueuing and dequeuing
 specifier|private
@@ -465,7 +476,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Scheduler
+name|scheduler
 operator|.
 name|executePeriodically
 argument_list|(
@@ -482,7 +493,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Scheduler
+name|scheduler
 operator|.
 name|cancel
 argument_list|(
