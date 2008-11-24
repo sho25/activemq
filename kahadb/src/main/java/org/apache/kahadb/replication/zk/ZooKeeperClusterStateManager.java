@@ -360,7 +360,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @author chirino  * @org.apache.xbean.XBean element="zookeeper-cluster"  */
+comment|/**  *   * @author chirino  * @org.apache.xbean.XBean element="zookeeperCluster"  */
 end_comment
 
 begin_class

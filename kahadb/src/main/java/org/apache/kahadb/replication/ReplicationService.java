@@ -166,7 +166,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Handles interfacing with the ClusterStateManager and handles activating the  * slave or master facets of the broker.  *   * @author chirino  * @org.apache.xbean.XBean element="kahadb-replication"  */
+comment|/**  * Handles interfacing with the ClusterStateManager and handles activating the  * slave or master facets of the broker.  *   * @author chirino  * @org.apache.xbean.XBean element="kahadbReplication"  */
 end_comment
 
 begin_class
@@ -233,10 +233,10 @@ name|ClusterStateManager
 name|cluster
 decl_stmt|;
 specifier|private
-name|boolean
-name|asyncReplication
+name|int
+name|minimumReplicas
 init|=
-literal|false
+literal|1
 decl_stmt|;
 specifier|private
 name|KahaDBStore
@@ -1227,28 +1227,28 @@ name|cluster
 expr_stmt|;
 block|}
 specifier|public
+name|int
+name|getMinimumReplicas
+parameter_list|()
+block|{
+return|return
+name|minimumReplicas
+return|;
+block|}
+specifier|public
 name|void
-name|setAsyncReplication
+name|setMinimumReplicas
 parameter_list|(
-name|boolean
-name|asyncReplication
+name|int
+name|minimumReplicas
 parameter_list|)
 block|{
 name|this
 operator|.
-name|asyncReplication
+name|minimumReplicas
 operator|=
-name|asyncReplication
+name|minimumReplicas
 expr_stmt|;
-block|}
-specifier|public
-name|boolean
-name|isAsyncReplication
-parameter_list|()
-block|{
-return|return
-name|asyncReplication
-return|;
 block|}
 block|}
 end_class

@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This broker service actually does not do anything.  It allows you to create an activemq.xml file  * which does not actually start a broker.  Used in conjunction with the ReplicationService since  * he will create the actual BrokerService  *   * @author chirino  * @org.apache.xbean.XBean element="kahadb-replication-broker"  */
+comment|/**  * This broker service actually does not do anything.  It allows you to create an activemq.xml file  * which does not actually start a broker.  Used in conjunction with the ReplicationService since  * he will create the actual BrokerService  *   * @author chirino  * @org.apache.xbean.XBean element="kahadbReplicationBroker"  */
 end_comment
 
 begin_class

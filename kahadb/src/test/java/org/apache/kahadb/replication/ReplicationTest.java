@@ -214,9 +214,9 @@ argument_list|()
 decl_stmt|;
 name|rs1
 operator|.
-name|setAsyncReplication
+name|setMinimumReplicas
 argument_list|(
-literal|true
+literal|0
 argument_list|)
 expr_stmt|;
 name|rs1
@@ -269,9 +269,9 @@ argument_list|()
 decl_stmt|;
 name|rs2
 operator|.
-name|setAsyncReplication
+name|setMinimumReplicas
 argument_list|(
-literal|true
+literal|0
 argument_list|)
 expr_stmt|;
 name|rs2

@@ -91,16 +91,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedHashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Map
 import|;
 end_import
@@ -114,6 +104,30 @@ operator|.
 name|Map
 operator|.
 name|Entry
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|CountDownLatch
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
 import|;
 end_import
 
@@ -451,46 +465,6 @@ name|ByteSequence
 import|;
 end_import
 
-begin_import
-import|import
-name|edu
-operator|.
-name|emory
-operator|.
-name|mathcs
-operator|.
-name|backport
-operator|.
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CountDownLatch
-import|;
-end_import
-
-begin_import
-import|import
-name|edu
-operator|.
-name|emory
-operator|.
-name|mathcs
-operator|.
-name|backport
-operator|.
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -529,7 +503,7 @@ init|=
 operator|new
 name|Object
 argument_list|()
-block|{}
+block|{     }
 decl_stmt|;
 specifier|private
 name|TransportServer
@@ -560,22 +534,25 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|Map
-argument_list|<
-name|Location
-argument_list|,
-name|CountDownLatch
-argument_list|>
-name|requestMap
+name|Object
+name|requestMutex
 init|=
 operator|new
-name|LinkedHashMap
-argument_list|<
-name|Location
-argument_list|,
-name|CountDownLatch
-argument_list|>
+name|Object
 argument_list|()
+block|{}
+decl_stmt|;
+specifier|private
+name|Location
+name|requestLocation
+decl_stmt|;
+specifier|private
+name|CountDownLatch
+name|requestLatch
+decl_stmt|;
+specifier|private
+name|int
+name|minimumReplicas
 decl_stmt|;
 specifier|public
 name|ReplicationMaster
@@ -589,6 +566,13 @@ operator|.
 name|replicationService
 operator|=
 name|replicationService
+expr_stmt|;
+name|minimumReplicas
+operator|=
+name|replicationService
+operator|.
+name|getMinimumReplicas
+argument_list|()
 expr_stmt|;
 block|}
 specifier|public
@@ -902,7 +886,7 @@ parameter_list|)
 block|{
 comment|// For now, we don't really care about changes in the slave config..
 block|}
-comment|/** 	 * This is called by the Journal so that we can replicate the update to the  	 * slaves. 	 */
+comment|/**      * This is called by the Journal so that we can replicate the update to the      * slaves.      */
 specifier|public
 name|void
 name|replicate
@@ -938,13 +922,12 @@ operator|.
 name|sessions
 expr_stmt|;
 block|}
-comment|// We may be configured to always do async replication..
+comment|// We may be able to always async replicate...
 if|if
 condition|(
-name|replicationService
-operator|.
-name|isAsyncReplication
-argument_list|()
+name|minimumReplicas
+operator|==
+literal|0
 condition|)
 block|{
 name|sync
@@ -967,22 +950,21 @@ operator|=
 operator|new
 name|CountDownLatch
 argument_list|(
-literal|1
+name|minimumReplicas
 argument_list|)
 expr_stmt|;
 synchronized|synchronized
 init|(
-name|requestMap
+name|requestMutex
 init|)
 block|{
-name|requestMap
-operator|.
-name|put
-argument_list|(
-name|location
-argument_list|,
+name|requestLatch
+operator|=
 name|latch
-argument_list|)
+expr_stmt|;
+name|requestLocation
+operator|=
+name|location
 expr_stmt|;
 block|}
 block|}
@@ -1009,7 +991,8 @@ name|get
 argument_list|()
 condition|)
 block|{
-comment|// Lazy create the frame since we may have not avilable sessions to send to.
+comment|// Lazy create the frame since we may have not avilable sessions
+comment|// to send to.
 if|if
 condition|(
 name|frame
@@ -1105,7 +1088,8 @@ name|payload
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO: use async send threads so that the frames can be pushed out in parallel.
+comment|// TODO: use async send threads so that the frames can be pushed
+comment|// out in parallel.
 try|try
 block|{
 name|session
@@ -1177,19 +1161,6 @@ name|MILLISECONDS
 argument_list|)
 condition|)
 block|{
-synchronized|synchronized
-init|(
-name|requestMap
-init|)
-block|{
-name|requestMap
-operator|.
-name|remove
-argument_list|(
-name|location
-argument_list|)
-expr_stmt|;
-block|}
 return|return;
 block|}
 if|if
@@ -1254,84 +1225,41 @@ name|Location
 name|newAck
 parameter_list|)
 block|{
+name|Location
+name|l
+decl_stmt|;
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|CountDownLatch
+name|latch
+decl_stmt|;
+synchronized|synchronized
+init|(
+name|requestMutex
+init|)
+block|{
+name|latch
+operator|=
+name|requestLatch
+expr_stmt|;
+name|l
+operator|=
+name|requestLocation
+expr_stmt|;
+block|}
 if|if
 condition|(
-name|replicationService
-operator|.
-name|isAsyncReplication
-argument_list|()
+name|l
+operator|==
+literal|null
 condition|)
 block|{
 return|return;
 block|}
-name|ArrayList
-argument_list|<
-name|Entry
-argument_list|<
-name|Location
-argument_list|,
-name|CountDownLatch
-argument_list|>
-argument_list|>
-name|entries
-decl_stmt|;
-synchronized|synchronized
-init|(
-name|requestMap
-init|)
-block|{
-name|entries
-operator|=
-operator|new
-name|ArrayList
-argument_list|<
-name|Entry
-argument_list|<
-name|Location
-argument_list|,
-name|CountDownLatch
-argument_list|>
-argument_list|>
-argument_list|(
-name|requestMap
-operator|.
-name|entrySet
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-name|boolean
-name|inRange
-init|=
-literal|false
-decl_stmt|;
-for|for
-control|(
-name|Entry
-argument_list|<
-name|Location
-argument_list|,
-name|CountDownLatch
-argument_list|>
-name|entry
-range|:
-name|entries
-control|)
-block|{
-name|Location
-name|l
-init|=
-name|entry
-operator|.
-name|getKey
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|inRange
-condition|)
-block|{
 if|if
 condition|(
 name|lastAck
@@ -1348,25 +1276,6 @@ operator|<
 literal|0
 condition|)
 block|{
-name|inRange
-operator|=
-literal|true
-expr_stmt|;
-block|}
-block|}
-if|if
-condition|(
-name|inRange
-condition|)
-block|{
-name|entry
-operator|.
-name|getValue
-argument_list|()
-operator|.
-name|countDown
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|newAck
@@ -1383,8 +1292,12 @@ operator|<=
 literal|0
 condition|)
 block|{
+name|latch
+operator|.
+name|countDown
+argument_list|()
+expr_stmt|;
 return|return;
-block|}
 block|}
 block|}
 block|}
@@ -1734,18 +1647,18 @@ parameter_list|(
 name|Exception
 name|ignore
 parameter_list|)
-block|{ 			}
+block|{             }
 block|}
 specifier|public
 name|void
 name|transportInterupted
 parameter_list|()
-block|{ 		}
+block|{         }
 specifier|public
 name|void
 name|transportResumed
 parameter_list|()
-block|{ 		}
+block|{         }
 specifier|private
 name|void
 name|deleteReplicationData
@@ -2035,7 +1948,8 @@ name|values
 argument_list|()
 control|)
 block|{
-comment|// Look at what the slave has so that only the missing bits are transfered.
+comment|// Look at what the slave has so that only the missing
+comment|// bits are transfered.
 name|String
 name|name
 init|=
@@ -2056,7 +1970,8 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-comment|// Use the checksum info to see if the slave has the file already.. Checksums are less acurrate for
+comment|// Use the checksum info to see if the slave has the
+comment|// file already.. Checksums are less acurrate for
 comment|// small amounts of data.. so ignore small files.
 if|if
 condition|(
@@ -2074,7 +1989,8 @@ operator|*
 literal|512
 condition|)
 block|{
-comment|// If the slave's file checksum matches what we have..
+comment|// If the slave's file checksum matches what we
+comment|// have..
 if|if
 condition|(
 name|ReplicationSupport
@@ -2100,7 +2016,8 @@ name|getChecksum
 argument_list|()
 condition|)
 block|{
-comment|// is Our file longer? then we need to continue transferring the rest of the file.
+comment|// is Our file longer? then we need to continue
+comment|// transferring the rest of the file.
 if|if
 condition|(
 name|df
@@ -2160,7 +2077,8 @@ continue|continue;
 block|}
 block|}
 block|}
-comment|// If we got here then it means we need to transfer the whole file.
+comment|// If we got here then it means we need to transfer the
+comment|// whole file.
 name|snapshotInfos
 operator|.
 name|add
@@ -2467,11 +2385,11 @@ parameter_list|(
 name|Throwable
 name|e
 parameter_list|)
-block|{ 				}
+block|{                 }
 block|}
 block|}
 block|}
-comment|/** 	 * Looks at all the journal files being currently replicated and informs the KahaDB so that 	 * it does not delete them while the replication is occuring. 	 */
+comment|/**      * Looks at all the journal files being currently replicated and informs the      * KahaDB so that it does not delete them while the replication is occuring.      */
 specifier|private
 name|void
 name|updateJournalReplicatedFiles
