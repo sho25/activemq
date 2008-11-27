@@ -17,26 +17,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|org
-operator|.
-name|apache
-operator|.
-name|bcel
-operator|.
-name|internal
-operator|.
-name|generic
-operator|.
-name|AllocationInstruction
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
