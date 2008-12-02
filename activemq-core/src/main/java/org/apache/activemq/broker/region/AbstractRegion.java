@@ -2091,21 +2091,26 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|Destination
+name|dest
+init|=
+literal|null
+decl_stmt|;
 synchronized|synchronized
 init|(
 name|destinationsMutex
 init|)
 block|{
-name|Destination
 name|dest
-init|=
+operator|=
 name|destinations
 operator|.
 name|get
 argument_list|(
 name|destination
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|dest
@@ -2155,6 +2160,11 @@ comment|// if the destination already exists then lets ignore
 comment|// this error
 block|}
 comment|// We should now have the dest created.
+synchronized|synchronized
+init|(
+name|destinationsMutex
+init|)
+block|{
 name|dest
 operator|=
 name|destinations
@@ -2164,6 +2174,7 @@ argument_list|(
 name|destination
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -2188,7 +2199,6 @@ block|}
 return|return
 name|dest
 return|;
-block|}
 block|}
 specifier|public
 name|void
