@@ -995,6 +995,9 @@ name|tmpSet
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|MessageId
+argument_list|>
 argument_list|(
 name|messageContainer
 operator|.
@@ -1188,7 +1191,33 @@ parameter_list|(
 name|MessageId
 name|startAfter
 parameter_list|)
-block|{     }
+block|{
+name|lock
+operator|.
+name|lock
+argument_list|()
+expr_stmt|;
+try|try
+block|{
+name|batchEntry
+operator|=
+name|messageContainer
+operator|.
+name|getEntry
+argument_list|(
+name|startAfter
+argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|lock
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 block|}
 end_class
 

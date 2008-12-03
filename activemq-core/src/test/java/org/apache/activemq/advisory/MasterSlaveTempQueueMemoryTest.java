@@ -147,6 +147,20 @@ name|RegionBroker
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQDestination
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -368,6 +382,13 @@ operator|.
 name|testLoadRequestReply
 argument_list|()
 expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
 comment|// some checks on the slave
 name|AdvisoryBroker
 name|ab
@@ -387,23 +408,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|deleteTempQueue
-operator|||
-name|serverTransactional
-condition|)
-block|{
-comment|// give temp destination removes a chance to perculate on connection.close
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|2000
-argument_list|)
-expr_stmt|;
-block|}
 name|assertEquals
 argument_list|(
 literal|"the temp queues should not be visible as they are removed"

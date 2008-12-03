@@ -272,6 +272,10 @@ specifier|protected
 name|int
 name|size
 decl_stmt|;
+specifier|private
+name|MessageId
+name|lastCachedId
+decl_stmt|;
 specifier|protected
 name|AbstractStoreCursor
 parameter_list|(
@@ -803,9 +807,28 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+name|lastCachedId
+operator|=
+name|node
+operator|.
+name|getMessageId
+argument_list|()
+expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|cacheEnabled
+condition|)
+block|{
+comment|// sync with store on disabling the cache
+name|setBatch
+argument_list|(
+name|lastCachedId
+argument_list|)
+expr_stmt|;
+block|}
 name|cacheEnabled
 operator|=
 literal|false
@@ -815,6 +838,14 @@ name|size
 operator|++
 expr_stmt|;
 block|}
+specifier|protected
+name|void
+name|setBatch
+parameter_list|(
+name|MessageId
+name|messageId
+parameter_list|)
+block|{     }
 specifier|public
 specifier|final
 specifier|synchronized
