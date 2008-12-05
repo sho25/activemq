@@ -35,6 +35,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicBoolean
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -190,6 +204,14 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|startedOrWarnedThatNotStarted
+decl_stmt|;
+specifier|private
+name|AtomicBoolean
+name|taskRunnerCreated
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|()
 decl_stmt|;
 name|ActiveMQSessionExecutor
 parameter_list|(
@@ -365,6 +387,18 @@ try|try
 block|{
 if|if
 condition|(
+name|taskRunnerCreated
+operator|.
+name|compareAndSet
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
 name|taskRunner
 operator|==
 literal|null
@@ -391,6 +425,7 @@ name|getSessionId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|taskRunner
 operator|.
@@ -421,7 +456,7 @@ condition|(
 name|iterate
 argument_list|()
 condition|)
-block|{                                     }
+block|{                 }
 block|}
 block|}
 block|}
@@ -606,6 +641,13 @@ expr_stmt|;
 name|taskRunner
 operator|=
 literal|null
+expr_stmt|;
+name|taskRunnerCreated
+operator|.
+name|set
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 block|}
 block|}
