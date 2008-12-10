@@ -281,6 +281,13 @@ name|remoteURI
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|bridge
+operator|.
+name|setBrokerService
+argument_list|(
+name|localBroker
+argument_list|)
+expr_stmt|;
 name|bridges
 operator|.
 name|add

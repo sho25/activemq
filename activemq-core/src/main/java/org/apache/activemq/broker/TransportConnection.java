@@ -6170,6 +6170,16 @@ argument_list|,
 name|remoteBridgeTransport
 argument_list|)
 expr_stmt|;
+name|duplexBridge
+operator|.
+name|setBrokerService
+argument_list|(
+name|broker
+operator|.
+name|getBrokerService
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// now turn duplex off this side
 name|info
 operator|.

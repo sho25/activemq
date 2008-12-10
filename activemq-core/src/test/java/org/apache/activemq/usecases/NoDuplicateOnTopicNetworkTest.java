@@ -333,7 +333,7 @@ specifier|private
 name|int
 name|ttl
 init|=
-literal|1
+literal|3
 decl_stmt|;
 annotation|@
 name|Override
@@ -675,17 +675,32 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Started Consumer"
+argument_list|)
+expr_stmt|;
+comment|// ensure subscription has percolated though the network
 name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|1000
+literal|2000
 argument_list|)
 expr_stmt|;
 name|producerThread
 operator|.
 name|start
 argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Started Producer"
+argument_list|)
 expr_stmt|;
 name|producerThread
 operator|.

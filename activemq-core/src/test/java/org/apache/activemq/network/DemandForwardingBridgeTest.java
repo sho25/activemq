@@ -675,6 +675,13 @@ argument_list|)
 expr_stmt|;
 name|bridge
 operator|.
+name|setBrokerService
+argument_list|(
+name|broker
+argument_list|)
+expr_stmt|;
+name|bridge
+operator|.
 name|start
 argument_list|()
 expr_stmt|;

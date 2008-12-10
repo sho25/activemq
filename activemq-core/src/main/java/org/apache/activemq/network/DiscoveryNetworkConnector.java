@@ -1087,6 +1087,14 @@ argument_list|,
 name|listener
 argument_list|)
 decl_stmt|;
+name|result
+operator|.
+name|setBrokerService
+argument_list|(
+name|getBrokerService
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|configureBridge
 argument_list|(
