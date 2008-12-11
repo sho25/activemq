@@ -2539,6 +2539,15 @@ expr_stmt|;
 block|}
 block|}
 block|}
+if|if
+condition|(
+operator|!
+name|session
+operator|.
+name|isTransacted
+argument_list|()
+condition|)
+block|{
 synchronized|synchronized
 init|(
 name|deliveredMessages
@@ -2549,6 +2558,7 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 name|List
 argument_list|<
@@ -3636,7 +3646,7 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// Only increase the redlivery delay after the first redelivery..
+comment|// Only increase the redelivery delay after the first redelivery..
 name|MessageDispatch
 name|lastMd
 init|=
@@ -3645,8 +3655,10 @@ operator|.
 name|getFirst
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
+specifier|final
+name|int
+name|currentRedeliveryCount
+init|=
 name|lastMd
 operator|.
 name|getMessage
@@ -3654,6 +3666,10 @@ argument_list|()
 operator|.
 name|getRedeliveryCounter
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|currentRedeliveryCount
 operator|>
 literal|0
 condition|)
@@ -3685,6 +3701,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|MessageDispatch
+argument_list|>
 name|iter
 init|=
 name|deliveredMessages
@@ -3702,9 +3721,6 @@ block|{
 name|MessageDispatch
 name|md
 init|=
-operator|(
-name|MessageDispatch
-operator|)
 name|iter
 operator|.
 name|next
@@ -3717,6 +3733,21 @@ argument_list|()
 operator|.
 name|onMessageRolledBack
 argument_list|()
+expr_stmt|;
+comment|// ensure we don't filter this as a duplicate
+name|session
+operator|.
+name|connection
+operator|.
+name|rollbackDuplicate
+argument_list|(
+name|this
+argument_list|,
+name|md
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 if|if
@@ -3781,21 +3812,6 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// ensure we don't filter this as a duplicate
-name|session
-operator|.
-name|connection
-operator|.
-name|rollbackDuplicate
-argument_list|(
-name|this
-argument_list|,
-name|lastMd
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|// Adjust the window size.
 name|additionalWindowSize
 operator|=
@@ -3819,6 +3835,14 @@ literal|0
 expr_stmt|;
 block|}
 else|else
+block|{
+comment|// only redelivery_ack after first delivery
+if|if
+condition|(
+name|currentRedeliveryCount
+operator|>
+literal|0
+condition|)
 block|{
 name|MessageAck
 name|ack
@@ -3854,6 +3878,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 comment|// stop the delivery of messages.
 name|unconsumedMessages
 operator|.
@@ -3863,6 +3888,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|MessageDispatch
+argument_list|>
 name|iter
 init|=
 name|deliveredMessages
@@ -3880,9 +3908,6 @@ block|{
 name|MessageDispatch
 name|md
 init|=
-operator|(
-name|MessageDispatch
-operator|)
 name|iter
 operator|.
 name|next
@@ -3901,6 +3926,12 @@ condition|(
 name|redeliveryDelay
 operator|>
 literal|0
+operator|&&
+operator|!
+name|unconsumedMessages
+operator|.
+name|isClosed
+argument_list|()
 condition|)
 block|{
 comment|// Start up the delivery again a little later.
