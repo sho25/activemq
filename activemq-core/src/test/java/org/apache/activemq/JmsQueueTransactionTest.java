@@ -728,6 +728,11 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+name|session
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
 name|QueueBrowser
 name|browser
 init|=

@@ -907,6 +907,9 @@ literal|"Cannot rollback() if an XA transaction is already in progress "
 argument_list|)
 throw|;
 block|}
+name|beforeEnd
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|transactionId
