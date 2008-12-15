@@ -1639,6 +1639,13 @@ operator|.
 name|TRANSACTION
 argument_list|)
 decl_stmt|;
+name|headers
+operator|.
+name|remove
+argument_list|(
+literal|"transaction"
+argument_list|)
+expr_stmt|;
 name|ActiveMQMessage
 name|message
 init|=
