@@ -1278,8 +1278,6 @@ argument_list|(
 name|prefetchExtension
 argument_list|,
 name|index
-operator|+
-literal|1
 argument_list|)
 expr_stmt|;
 block|}
@@ -1296,11 +1294,7 @@ literal|0
 argument_list|,
 name|prefetchExtension
 operator|-
-operator|(
 name|index
-operator|+
-literal|1
-operator|)
 argument_list|)
 expr_stmt|;
 block|}
