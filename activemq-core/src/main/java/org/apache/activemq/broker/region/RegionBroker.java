@@ -3654,6 +3654,29 @@ name|message
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|node
+operator|.
+name|getRegionDestination
+argument_list|()
+operator|.
+name|getActiveMQDestination
+argument_list|()
+operator|.
+name|isTopic
+argument_list|()
+condition|)
+block|{
+comment|// message may be inflight to other subscriptions so do not modify
+name|message
+operator|=
+name|message
+operator|.
+name|copy
+argument_list|()
+expr_stmt|;
+block|}
 name|long
 name|expiration
 init|=
@@ -3709,8 +3732,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// The original destination and transaction id do
-comment|// not get filled when the message is first
-comment|// sent,
+comment|// not get filled when the message is first sent,
 comment|// it is only populated if the message is routed to
 comment|// another destination like the DLQ
 name|ActiveMQDestination
