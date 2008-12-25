@@ -245,7 +245,7 @@ return|return
 name|info
 return|;
 block|}
-comment|/**      * Sets the connection request information as a whole.      *       * @param the connection request information      */
+comment|/**      * Sets the connection request information as a whole.      *       * @param connectionRequestInfo the connection request information      */
 specifier|protected
 name|void
 name|setInfo

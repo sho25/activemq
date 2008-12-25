@@ -39,16 +39,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -375,7 +365,7 @@ name|List
 argument_list|<
 name|Synchronization
 argument_list|>
-name|synchornizations
+name|synchronizations
 decl_stmt|;
 comment|// To track XA transactions.
 specifier|private
@@ -499,12 +489,12 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|synchornizations
+name|synchronizations
 operator|==
 literal|null
 condition|)
 block|{
-name|synchornizations
+name|synchronizations
 operator|=
 operator|new
 name|ArrayList
@@ -516,7 +506,7 @@ literal|10
 argument_list|)
 expr_stmt|;
 block|}
-name|synchornizations
+name|synchronizations
 operator|.
 name|add
 argument_list|(
@@ -533,7 +523,7 @@ name|JMSException
 block|{
 if|if
 condition|(
-name|synchornizations
+name|synchronizations
 operator|==
 literal|null
 condition|)
@@ -543,7 +533,7 @@ block|}
 name|int
 name|size
 init|=
-name|synchornizations
+name|synchronizations
 operator|.
 name|size
 argument_list|()
@@ -565,7 +555,7 @@ name|i
 operator|++
 control|)
 block|{
-name|synchornizations
+name|synchronizations
 operator|.
 name|get
 argument_list|(
@@ -604,7 +594,7 @@ throw|;
 block|}
 finally|finally
 block|{
-name|synchornizations
+name|synchronizations
 operator|=
 literal|null
 expr_stmt|;
@@ -619,7 +609,7 @@ name|JMSException
 block|{
 if|if
 condition|(
-name|synchornizations
+name|synchronizations
 operator|==
 literal|null
 condition|)
@@ -629,7 +619,7 @@ block|}
 name|int
 name|size
 init|=
-name|synchornizations
+name|synchronizations
 operator|.
 name|size
 argument_list|()
@@ -651,7 +641,7 @@ name|i
 operator|++
 control|)
 block|{
-name|synchornizations
+name|synchronizations
 operator|.
 name|get
 argument_list|(
@@ -690,7 +680,7 @@ throw|;
 block|}
 finally|finally
 block|{
-name|synchornizations
+name|synchronizations
 operator|=
 literal|null
 expr_stmt|;
@@ -705,7 +695,7 @@ name|JMSException
 block|{
 if|if
 condition|(
-name|synchornizations
+name|synchronizations
 operator|==
 literal|null
 condition|)
@@ -715,7 +705,7 @@ block|}
 name|int
 name|size
 init|=
-name|synchornizations
+name|synchronizations
 operator|.
 name|size
 argument_list|()
@@ -737,7 +727,7 @@ name|i
 operator|++
 control|)
 block|{
-name|synchornizations
+name|synchronizations
 operator|.
 name|get
 argument_list|(
@@ -789,7 +779,7 @@ comment|//
 comment|// Local transaction interface.
 comment|//
 comment|// ///////////////////////////////////////////////////////////
-comment|/**      * Start a local transaction.      */
+comment|/**      * Start a local transaction.      * @throws javax.jms.JMSException on internal error      */
 specifier|public
 name|void
 name|begin
@@ -818,7 +808,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|synchornizations
+name|synchronizations
 operator|=
 literal|null
 expr_stmt|;
@@ -967,7 +957,7 @@ name|afterRollback
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Commits all work done in this transaction and releases any locks      * currently held.      *       * @throws JMSException if the JMS provider fails to commit the transaction      *                 due to some internal error.      * @throws TransactionRolledBackException if the transaction is rolled back      *                 due to some internal error during commit.      * @throws javax.jms.IllegalStateException if the method is not called by a      *                 transacted session.      */
+comment|/**      * Commits all work done in this transaction and releases any locks      * currently held.      *       * @throws JMSException if the JMS provider fails to commit the transaction      *                 due to some internal error.      * @throws javax.jms.IllegalStateException if the method is not called by a      *                 transacted session.      */
 specifier|public
 name|void
 name|commit
@@ -1128,7 +1118,7 @@ comment|// if ((flags& TMJOIN) == TMRESUME) {
 comment|// // TODO: verify that the xid was suspended.
 comment|// }
 comment|// associate
-name|synchornizations
+name|synchronizations
 operator|=
 literal|null
 expr_stmt|;
@@ -1138,7 +1128,7 @@ name|xid
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @return      */
+comment|/**      * @return connectionId for connection      */
 specifier|private
 name|ConnectionId
 name|getConnectionId
@@ -1685,32 +1675,12 @@ condition|)
 block|{
 for|for
 control|(
-name|Iterator
-argument_list|<
-name|TransactionContext
-argument_list|>
-name|iter
-init|=
-name|l
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
 name|TransactionContext
 name|ctx
-init|=
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
+range|:
+name|l
+control|)
+block|{
 name|ctx
 operator|.
 name|afterRollback
@@ -1885,32 +1855,12 @@ condition|)
 block|{
 for|for
 control|(
-name|Iterator
-name|iter
-init|=
-name|l
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
 name|TransactionContext
 name|ctx
-init|=
-operator|(
-name|TransactionContext
-operator|)
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
+range|:
+name|l
+control|)
+block|{
 name|ctx
 operator|.
 name|afterCommit
@@ -2225,8 +2175,6 @@ decl_stmt|;
 name|XATransactionId
 index|[]
 name|answer
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -2607,7 +2555,7 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Converts a JMSException from the server to an XAException. if the      * JMSException contained a linked XAException that is returned instead.      *       * @param e      * @return      */
+comment|/**      * Converts a JMSException from the server to an XAException. if the      * JMSException contained a linked XAException that is returned instead.      *       * @param e JMSException to convert      * @return XAException wrapping original exception or its message      */
 specifier|private
 name|XAException
 name|toXAException
