@@ -635,7 +635,7 @@ operator|==
 name|dispatchCounter
 condition|)
 block|{
-comment|// imediate timeout used by receiveNoWait()
+comment|// immediate timeout used by receiveNoWait()
 if|if
 condition|(
 name|pull
@@ -706,7 +706,6 @@ return|;
 block|}
 comment|/**      * Occurs when a pull times out. If nothing has been dispatched since the      * timeout was setup, then send the NULL message.      */
 specifier|final
-specifier|synchronized
 name|void
 name|pullTimeout
 parameter_list|(
@@ -720,6 +719,11 @@ name|dispatchCounterBeforePull
 operator|==
 name|dispatchCounter
 condition|)
+block|{
+synchronized|synchronized
+init|(
+name|pendingLock
+init|)
 block|{
 try|try
 block|{
@@ -750,6 +754,7 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
