@@ -95,7 +95,37 @@ name|java
 operator|.
 name|util
 operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TreeSet
 import|;
 end_import
 
@@ -250,7 +280,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implements all the default JDBC operations that are used by the  * JDBCPersistenceAdapter.<p/> sub-classing is encouraged to override the  * default implementation of methods to account for differences in JDBC Driver  * implementations.<p/> The JDBCAdapter inserts and extracts BLOB data using  * the getBytes()/setBytes() operations.<p/> The databases/JDBC drivers that  * use this adapter are:  *<ul>  *<li></li>  *</ul>  *   * @org.apache.xbean.XBean element="defaultJDBCAdapter"  *   * @version $Revision: 1.10 $  */
+comment|/**  * Implements all the default JDBC operations that are used by the JDBCPersistenceAdapter.<p/> sub-classing is  * encouraged to override the default implementation of methods to account for differences in JDBC Driver  * implementations.<p/> The JDBCAdapter inserts and extracts BLOB data using the getBytes()/setBytes() operations.<p/>  * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li></li>  *</ul>  *   * @org.apache.xbean.XBean element="defaultJDBCAdapter"  *   * @version $Revision: 1.10 $  */
 end_comment
 
 begin_class
@@ -284,6 +314,20 @@ name|boolean
 name|batchStatments
 init|=
 literal|true
+decl_stmt|;
+specifier|private
+name|Set
+argument_list|<
+name|Long
+argument_list|>
+name|lastRecoveredMessagesIds
+init|=
+operator|new
+name|TreeSet
+argument_list|<
+name|Long
+argument_list|>
+argument_list|()
 decl_stmt|;
 specifier|protected
 name|void
@@ -387,6 +431,8 @@ literal|null
 argument_list|,
 literal|null
 argument_list|,
+name|this
+operator|.
 name|statements
 operator|.
 name|getFullMessageTableName
@@ -436,6 +482,8 @@ name|String
 index|[]
 name|createStatments
 init|=
+name|this
+operator|.
 name|statements
 operator|.
 name|getCreateSchemaStatements
@@ -641,6 +689,8 @@ name|String
 index|[]
 name|dropStatments
 init|=
+name|this
+operator|.
 name|statements
 operator|.
 name|getDropSchemaStatements
@@ -802,6 +852,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getFindLastSequenceIdInMsgsStatement
@@ -857,6 +909,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getFindLastSequenceIdInAcksStatement
@@ -969,6 +1023,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getAddMessageStatement
@@ -977,6 +1033,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|this
+operator|.
 name|batchStatments
 condition|)
 block|{
@@ -1060,6 +1118,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|this
+operator|.
 name|batchStatments
 condition|)
 block|{
@@ -1094,6 +1154,8 @@ block|{
 if|if
 condition|(
 operator|!
+name|this
+operator|.
 name|batchStatments
 condition|)
 block|{
@@ -1163,6 +1225,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getAddMessageStatement
@@ -1171,6 +1235,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|this
+operator|.
 name|batchStatments
 condition|)
 block|{
@@ -1254,6 +1320,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|this
+operator|.
 name|batchStatments
 condition|)
 block|{
@@ -1288,6 +1356,8 @@ block|{
 if|if
 condition|(
 operator|!
+name|this
+operator|.
 name|batchStatments
 condition|)
 block|{
@@ -1335,6 +1405,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getFindMessageSequenceIdStatement
@@ -1448,6 +1520,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getFindMessageStatement
@@ -1542,6 +1616,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getFindMessageStatement
@@ -1641,6 +1717,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getRemoveMessageStatment
@@ -1649,6 +1727,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|this
+operator|.
 name|batchStatments
 condition|)
 block|{
@@ -1672,6 +1752,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|this
+operator|.
 name|batchStatments
 condition|)
 block|{
@@ -1706,6 +1788,8 @@ block|{
 if|if
 condition|(
 operator|!
+name|this
+operator|.
 name|batchStatments
 condition|)
 block|{
@@ -1754,6 +1838,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getFindAllMessagesStatement
@@ -1781,6 +1867,8 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|this
+operator|.
 name|statements
 operator|.
 name|isUseExternalMessageReferences
@@ -1917,6 +2005,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getUpdateLastAckOfDurableSubStatement
@@ -1925,6 +2015,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|this
+operator|.
 name|batchStatments
 condition|)
 block|{
@@ -1978,6 +2070,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|this
+operator|.
 name|batchStatments
 condition|)
 block|{
@@ -2012,6 +2106,8 @@ block|{
 if|if
 condition|(
 operator|!
+name|this
+operator|.
 name|batchStatments
 condition|)
 block|{
@@ -2068,6 +2164,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getFindAllDurableSubMessagesStatement
@@ -2113,6 +2211,8 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|this
+operator|.
 name|statements
 operator|.
 name|isUseExternalMessageReferences
@@ -2248,6 +2348,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getFindDurableSubMessagesStatement
@@ -2314,6 +2416,8 @@ literal|0
 decl_stmt|;
 if|if
 condition|(
+name|this
+operator|.
 name|statements
 operator|.
 name|isUseExternalMessageReferences
@@ -2465,6 +2569,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getDurableSubscriberMessageCountStatement
@@ -2544,7 +2650,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * @see org.apache.activemq.store.jdbc.JDBCAdapter#doSetSubscriberEntry(java.sql.Connection,      *      java.lang.Object, org.apache.activemq.service.SubscriptionInfo)      */
+comment|/**      * @param c       * @param info       * @param retroactive       * @throws SQLException       * @throws IOException       * @see org.apache.activemq.store.jdbc.JDBCAdapter#doSetSubscriberEntry(java.sql.Connection, java.lang.Object,      *      org.apache.activemq.service.SubscriptionInfo)      */
 specifier|public
 name|void
 name|doSetSubscriberEntry
@@ -2593,6 +2699,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getFindLastSequenceIdInMsgsStatement
@@ -2655,6 +2763,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getCreateDurableSubStatement
@@ -2811,6 +2921,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getFindDurableSubStatement
@@ -2983,6 +3095,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getFindAllDurableSubsStatement
@@ -3169,6 +3283,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getRemoveAllMessagesStatement
@@ -3206,6 +3322,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getRemoveAllSubscriptionsStatement
@@ -3276,6 +3394,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getDeleteSubscriptionStatement
@@ -3352,6 +3472,8 @@ name|debug
 argument_list|(
 literal|"Executing SQL: "
 operator|+
+name|this
+operator|.
 name|statements
 operator|.
 name|getDeleteOldMessagesStatement
@@ -3367,6 +3489,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getDeleteOldMessagesStatement
@@ -3462,6 +3586,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getLastAckedDurableSubscriberMessageStatement
@@ -3648,6 +3774,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getFindAllDestinationsStatement
@@ -3709,15 +3837,19 @@ return|return
 name|rc
 return|;
 block|}
+comment|/**      * @return true if batchStements      */
 specifier|public
 name|boolean
 name|isBatchStatments
 parameter_list|()
 block|{
 return|return
+name|this
+operator|.
 name|batchStatments
 return|;
 block|}
+comment|/**      * @param batchStatments      */
 specifier|public
 name|void
 name|setBatchStatments
@@ -3741,6 +3873,8 @@ name|boolean
 name|useExternalMessageReferences
 parameter_list|)
 block|{
+name|this
+operator|.
 name|statements
 operator|.
 name|setUseExternalMessageReferences
@@ -3749,12 +3883,15 @@ name|useExternalMessageReferences
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @return the statements      */
 specifier|public
 name|Statements
 name|getStatements
 parameter_list|()
 block|{
 return|return
+name|this
+operator|.
 name|statements
 return|;
 block|}
@@ -3773,6 +3910,7 @@ operator|=
 name|statements
 expr_stmt|;
 block|}
+comment|/**      * @param c      * @param destination      * @param clientId      * @param subscriberName      * @return      * @throws SQLException      * @throws IOException      */
 specifier|public
 name|byte
 index|[]
@@ -3816,6 +3954,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getNextDurableSubscriberMessageStatement
@@ -3936,6 +4076,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getDestinationMessageCountStatement
@@ -4029,6 +4171,29 @@ name|rs
 init|=
 literal|null
 decl_stmt|;
+name|long
+name|id
+init|=
+literal|0
+decl_stmt|;
+name|List
+argument_list|<
+name|Long
+argument_list|>
+name|cleanupIds
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|Long
+argument_list|>
+argument_list|()
+decl_stmt|;
+name|int
+name|index
+init|=
+literal|0
+decl_stmt|;
 try|try
 block|{
 name|s
@@ -4040,6 +4205,8 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
+name|this
+operator|.
 name|statements
 operator|.
 name|getFindNextMessagesStatement
@@ -4051,6 +4218,8 @@ operator|.
 name|setMaxRows
 argument_list|(
 name|maxReturned
+operator|*
+literal|2
 argument_list|)
 expr_stmt|;
 name|s
@@ -4072,6 +4241,8 @@ argument_list|(
 literal|2
 argument_list|,
 name|nextSeq
+operator|-
+name|maxReturned
 argument_list|)
 expr_stmt|;
 name|rs
@@ -4088,6 +4259,8 @@ literal|0
 decl_stmt|;
 if|if
 condition|(
+name|this
+operator|.
 name|statements
 operator|.
 name|isUseExternalMessageReferences
@@ -4106,6 +4279,37 @@ operator|<
 name|maxReturned
 condition|)
 block|{
+name|id
+operator|=
+name|rs
+operator|.
+name|getLong
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|this
+operator|.
+name|lastRecoveredMessagesIds
+operator|.
+name|contains
+argument_list|(
+name|id
+argument_list|)
+condition|)
+block|{
+comment|// this message was already recovered
+name|cleanupIds
+operator|.
+name|add
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
 if|if
 condition|(
 name|listener
@@ -4124,6 +4328,15 @@ block|{
 name|count
 operator|++
 expr_stmt|;
+name|this
+operator|.
+name|lastRecoveredMessagesIds
+operator|.
+name|add
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -4134,7 +4347,6 @@ argument_list|(
 literal|"Stopped recover next messages"
 argument_list|)
 expr_stmt|;
-break|break;
 block|}
 block|}
 block|}
@@ -4152,6 +4364,37 @@ operator|<
 name|maxReturned
 condition|)
 block|{
+name|id
+operator|=
+name|rs
+operator|.
+name|getLong
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|this
+operator|.
+name|lastRecoveredMessagesIds
+operator|.
+name|contains
+argument_list|(
+name|id
+argument_list|)
+condition|)
+block|{
+comment|// this message was already recovered
+name|cleanupIds
+operator|.
+name|add
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
 if|if
 condition|(
 name|listener
@@ -4177,6 +4420,15 @@ block|{
 name|count
 operator|++
 expr_stmt|;
+name|this
+operator|.
+name|lastRecoveredMessagesIds
+operator|.
+name|add
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -4187,9 +4439,49 @@ argument_list|(
 literal|"Stopped recover next messages"
 argument_list|)
 expr_stmt|;
-break|break;
 block|}
 block|}
+block|}
+comment|// not cleanup the list of recovered messages
+name|index
+operator|=
+literal|0
+expr_stmt|;
+name|Iterator
+argument_list|<
+name|Long
+argument_list|>
+name|it
+init|=
+name|cleanupIds
+operator|.
+name|iterator
+argument_list|()
+decl_stmt|;
+while|while
+condition|(
+name|it
+operator|.
+name|hasNext
+argument_list|()
+operator|&&
+name|index
+operator|<
+name|count
+condition|)
+block|{
+name|this
+operator|.
+name|lastRecoveredMessagesIds
+operator|.
+name|remove
+argument_list|(
+name|it
+operator|.
+name|next
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 catch|catch
@@ -4218,7 +4510,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/*      * Useful for debugging. public void dumpTables(Connection c, String      * destinationName, String clientId, String subscriptionName) throws      * SQLException { printQuery(c, "Select * from ACTIVEMQ_MSGS", System.out);      * printQuery(c, "Select * from ACTIVEMQ_ACKS", System.out);      * PreparedStatement s = c.prepareStatement("SELECT M.ID, D.LAST_ACKED_ID      * FROM " +"ACTIVEMQ_MSGS M, " +"ACTIVEMQ_ACKS D " +"WHERE D.CONTAINER=? AND      * D.CLIENT_ID=? AND D.SUB_NAME=?" +" AND M.CONTAINER=D.CONTAINER AND M.ID>      * D.LAST_ACKED_ID" +" ORDER BY M.ID"); s.setString(1,destinationName);      * s.setString(2,clientId); s.setString(3,subscriptionName);      * printQuery(s,System.out); }      *       * public void dumpTables(Connection c) throws SQLException { printQuery(c,      * "Select * from ACTIVEMQ_MSGS", System.out); printQuery(c, "Select * from      * ACTIVEMQ_ACKS", System.out); }      *       * private void printQuery(Connection c, String query, PrintStream out)      * throws SQLException { printQuery(c.prepareStatement(query), out); }      *       * private void printQuery(PreparedStatement s, PrintStream out) throws      * SQLException {      *       * ResultSet set=null; try { set = s.executeQuery(); ResultSetMetaData      * metaData = set.getMetaData(); for( int i=1; i<=      * metaData.getColumnCount(); i++ ) { if(i==1) out.print("||");      * out.print(metaData.getColumnName(i)+"||"); } out.println();      * while(set.next()) { for( int i=1; i<= metaData.getColumnCount(); i++ ) {      * if(i==1) out.print("|"); out.print(set.getString(i)+"|"); }      * out.println(); } } finally { try { set.close(); } catch (Throwable      * ignore) {} try { s.close(); } catch (Throwable ignore) {} } }      */
+comment|/*      * Useful for debugging. public void dumpTables(Connection c, String destinationName, String clientId, String      * subscriptionName) throws SQLException { printQuery(c, "Select * from ACTIVEMQ_MSGS", System.out); printQuery(c,      * "Select * from ACTIVEMQ_ACKS", System.out); PreparedStatement s = c.prepareStatement("SELECT M.ID,      * D.LAST_ACKED_ID FROM " +"ACTIVEMQ_MSGS M, " +"ACTIVEMQ_ACKS D " +"WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND      * D.SUB_NAME=?" +" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID" +" ORDER BY M.ID");      * s.setString(1,destinationName); s.setString(2,clientId); s.setString(3,subscriptionName);      * printQuery(s,System.out); }      *       * public void dumpTables(Connection c) throws SQLException { printQuery(c, "Select * from ACTIVEMQ_MSGS",      * System.out); printQuery(c, "Select * from ACTIVEMQ_ACKS", System.out); }      *       * private void printQuery(Connection c, String query, PrintStream out) throws SQLException {      * printQuery(c.prepareStatement(query), out); }      *       * private void printQuery(PreparedStatement s, PrintStream out) throws SQLException {      *       * ResultSet set=null; try { set = s.executeQuery(); ResultSetMetaData metaData = set.getMetaData(); for( int i=1; i<=      * metaData.getColumnCount(); i++ ) { if(i==1) out.print("||"); out.print(metaData.getColumnName(i)+"||"); }      * out.println(); while(set.next()) { for( int i=1; i<= metaData.getColumnCount(); i++ ) { if(i==1) out.print("|");      * out.print(set.getString(i)+"|"); } out.println(); } } finally { try { set.close(); } catch (Throwable ignore) {}      * try { s.close(); } catch (Throwable ignore) {} } }      */
 block|}
 end_class
 
