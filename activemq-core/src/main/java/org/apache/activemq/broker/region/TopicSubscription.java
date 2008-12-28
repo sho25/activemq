@@ -1275,6 +1275,13 @@ name|getMessageCount
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|destination
+operator|!=
+literal|null
+condition|)
+block|{
 name|destination
 operator|.
 name|getDestinationStatistics
@@ -1291,6 +1298,7 @@ name|getMessageCount
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|dispatchMatched
 argument_list|()
 expr_stmt|;
@@ -2023,6 +2031,13 @@ operator|.
 name|incrementAndGet
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|destination
+operator|!=
+literal|null
+condition|)
+block|{
 name|destination
 operator|.
 name|getDestinationStatistics
@@ -2045,6 +2060,7 @@ operator|.
 name|decrement
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|LOG
