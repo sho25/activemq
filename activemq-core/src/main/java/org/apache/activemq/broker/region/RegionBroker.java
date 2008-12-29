@@ -723,6 +723,7 @@ name|Region
 name|tempTopicRegion
 decl_stmt|;
 specifier|protected
+specifier|final
 name|BrokerService
 name|brokerService
 decl_stmt|;
@@ -801,6 +802,7 @@ name|String
 name|brokerName
 decl_stmt|;
 specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -1052,7 +1054,8 @@ default|default:
 return|return
 name|Collections
 operator|.
-name|EMPTY_SET
+name|emptySet
+argument_list|()
 return|;
 block|}
 block|}
@@ -2516,8 +2519,6 @@ argument_list|)
 expr_stmt|;
 name|Region
 name|region
-init|=
-literal|null
 decl_stmt|;
 switch|switch
 condition|(
@@ -2634,8 +2635,6 @@ argument_list|()
 decl_stmt|;
 name|Region
 name|region
-init|=
-literal|null
 decl_stmt|;
 switch|switch
 condition|(
