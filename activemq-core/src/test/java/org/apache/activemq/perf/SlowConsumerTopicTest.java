@@ -186,7 +186,9 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{
-return|return
+name|PerfConsumer
+name|result
+init|=
 operator|new
 name|SlowConsumer
 argument_list|(
@@ -194,6 +196,9 @@ name|fac
 argument_list|,
 name|dest
 argument_list|)
+decl_stmt|;
+return|return
+name|result
 return|;
 block|}
 specifier|protected
@@ -241,6 +246,13 @@ operator|.
 name|NON_PERSISTENT
 argument_list|)
 expr_stmt|;
+name|result
+operator|.
+name|setSleep
+argument_list|(
+literal|10
+argument_list|)
+expr_stmt|;
 return|return
 name|result
 return|;
@@ -248,7 +260,10 @@ block|}
 specifier|protected
 name|BrokerService
 name|createBroker
-parameter_list|()
+parameter_list|(
+name|String
+name|url
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -261,6 +276,17 @@ argument_list|(
 literal|"org/apache/activemq/perf/slowConsumerBroker.xml"
 argument_list|)
 decl_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"CREATE BROKER FROM "
+operator|+
+name|resource
+argument_list|)
+expr_stmt|;
 name|BrokerFactoryBean
 name|factory
 init|=
@@ -295,7 +321,10 @@ block|}
 specifier|protected
 name|ActiveMQConnectionFactory
 name|createConnectionFactory
-parameter_list|()
+parameter_list|(
+name|String
+name|uri
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -306,7 +335,7 @@ name|super
 operator|.
 name|createConnectionFactory
 argument_list|(
-name|bindAddress
+name|uri
 argument_list|)
 decl_stmt|;
 name|ActiveMQPrefetchPolicy
@@ -320,7 +349,7 @@ name|policy
 operator|.
 name|setTopicPrefetch
 argument_list|(
-literal|1000
+literal|10
 argument_list|)
 expr_stmt|;
 name|result

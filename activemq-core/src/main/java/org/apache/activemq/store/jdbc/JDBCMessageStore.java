@@ -157,9 +157,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|usage
+name|store
 operator|.
-name|MemoryUsage
+name|AbstractMessageStore
 import|;
 end_import
 
@@ -173,7 +173,7 @@ name|activemq
 operator|.
 name|usage
 operator|.
-name|SystemUsage
+name|MemoryUsage
 import|;
 end_import
 
@@ -241,18 +241,13 @@ begin_class
 specifier|public
 class|class
 name|JDBCMessageStore
-implements|implements
-name|MessageStore
+extends|extends
+name|AbstractMessageStore
 block|{
 specifier|protected
 specifier|final
 name|WireFormat
 name|wireFormat
-decl_stmt|;
-specifier|protected
-specifier|final
-name|ActiveMQDestination
-name|destination
 decl_stmt|;
 specifier|protected
 specifier|final
@@ -291,6 +286,11 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|destination
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|persistenceAdapter
@@ -308,12 +308,6 @@ operator|.
 name|wireFormat
 operator|=
 name|wireFormat
-expr_stmt|;
-name|this
-operator|.
-name|destination
-operator|=
-name|destination
 expr_stmt|;
 block|}
 specifier|public
@@ -1038,16 +1032,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-specifier|public
-name|void
-name|start
-parameter_list|()
-block|{     }
-specifier|public
-name|void
-name|stop
-parameter_list|()
-block|{     }
 comment|/**      * @see org.apache.activemq.store.MessageStore#removeAllMessages(ConnectionContext)      */
 specifier|public
 name|void
@@ -1118,25 +1102,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-specifier|public
-name|ActiveMQDestination
-name|getDestination
-parameter_list|()
-block|{
-return|return
-name|destination
-return|;
-block|}
-specifier|public
-name|void
-name|setMemoryUsage
-parameter_list|(
-name|MemoryUsage
-name|memoryUsage
-parameter_list|)
-block|{
-comment|//can ignore as messages aren't buffered
 block|}
 specifier|public
 name|int

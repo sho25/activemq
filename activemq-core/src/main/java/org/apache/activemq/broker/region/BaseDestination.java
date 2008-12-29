@@ -183,7 +183,7 @@ name|BaseDestination
 implements|implements
 name|Destination
 block|{
-comment|/**      * The maximum number of messages to page in to the destination      * from persistent storage      */
+comment|/**      * The maximum number of messages to page in to the destination from persistent storage      */
 specifier|public
 specifier|static
 specifier|final
@@ -328,7 +328,7 @@ name|deadLetterStrategy
 init|=
 name|DEFAULT_DEAD_LETTER_STRATEGY
 decl_stmt|;
-comment|/**      * @param broker       * @param store       * @param destination      * @param parentStats      * @throws Exception       */
+comment|/**      * @param broker      * @param store      * @param destination      * @param parentStats      * @throws Exception      */
 specifier|public
 name|BaseDestination
 parameter_list|(
@@ -442,7 +442,7 @@ name|getRegionBroker
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * initialize the destination      * @throws Exception      */
+comment|/**      * initialize the destination      *       * @throws Exception      */
 specifier|public
 name|void
 name|initialize
@@ -480,7 +480,7 @@ return|return
 name|producerFlowControl
 return|;
 block|}
-comment|/**      * @param producerFlowControl the producerFlowControl to set      */
+comment|/**      * @param producerFlowControl      *            the producerFlowControl to set      */
 specifier|public
 name|void
 name|setProducerFlowControl
@@ -506,7 +506,7 @@ return|return
 name|maxProducersToAudit
 return|;
 block|}
-comment|/**      * @param maxProducersToAudit the maxProducersToAudit to set      */
+comment|/**      * @param maxProducersToAudit      *            the maxProducersToAudit to set      */
 specifier|public
 name|void
 name|setMaxProducersToAudit
@@ -532,7 +532,7 @@ return|return
 name|maxAuditDepth
 return|;
 block|}
-comment|/**      * @param maxAuditDepth the maxAuditDepth to set      */
+comment|/**      * @param maxAuditDepth      *            the maxAuditDepth to set      */
 specifier|public
 name|void
 name|setMaxAuditDepth
@@ -558,7 +558,7 @@ return|return
 name|enableAudit
 return|;
 block|}
-comment|/**      * @param enableAudit the enableAudit to set      */
+comment|/**      * @param enableAudit      *            the enableAudit to set      */
 specifier|public
 name|void
 name|setEnableAudit
@@ -842,7 +842,7 @@ return|return
 name|advisoryForSlowConsumers
 return|;
 block|}
-comment|/**      * @param advisoryForSlowConsumers the advisoryForSlowConsumers to set      */
+comment|/**      * @param advisoryForSlowConsumers      *            the advisoryForSlowConsumers to set      */
 specifier|public
 name|void
 name|setAdvisoryForSlowConsumers
@@ -868,7 +868,7 @@ return|return
 name|advisoryForDiscardingMessages
 return|;
 block|}
-comment|/**      * @param advisoryForDiscardingMessages the advisoryForDiscardingMessages to set      */
+comment|/**      * @param advisoryForDiscardingMessages      *            the advisoryForDiscardingMessages to set      */
 specifier|public
 name|void
 name|setAdvisoryForDiscardingMessages
@@ -894,7 +894,7 @@ return|return
 name|advisoryWhenFull
 return|;
 block|}
-comment|/**      * @param advisoryWhenFull the advisoryWhenFull to set      */
+comment|/**      * @param advisoryWhenFull      *            the advisoryWhenFull to set      */
 specifier|public
 name|void
 name|setAdvisoryWhenFull
@@ -920,7 +920,7 @@ return|return
 name|advisoryForDelivery
 return|;
 block|}
-comment|/**      * @param advisoryForDelivery the advisoryForDelivery to set      */
+comment|/**      * @param advisoryForDelivery      *            the advisoryForDelivery to set      */
 specifier|public
 name|void
 name|setAdvisoryForDelivery
@@ -946,7 +946,7 @@ return|return
 name|advisoryForConsumed
 return|;
 block|}
-comment|/**      * @param advisoryForConsumed the advisoryForConsumed to set      */
+comment|/**      * @param advisoryForConsumed      *            the advisoryForConsumed to set      */
 specifier|public
 name|void
 name|setAdvisoryForConsumed
@@ -972,7 +972,7 @@ return|return
 name|advisdoryForFastProducers
 return|;
 block|}
-comment|/**      * @param advisdoryForFastProducers the advisdoryForFastProducers to set      */
+comment|/**      * @param advisdoryForFastProducers      *            the advisdoryForFastProducers to set      */
 specifier|public
 name|void
 name|setAdvisdoryForFastProducers
@@ -998,7 +998,7 @@ return|return
 name|deadLetterStrategy
 return|;
 block|}
-comment|/**      * set the dead letter strategy      * @param deadLetterStrategy      */
+comment|/**      * set the dead letter strategy      *       * @param deadLetterStrategy      */
 specifier|public
 name|void
 name|setDeadLetterStrategy
@@ -1014,7 +1014,7 @@ operator|=
 name|deadLetterStrategy
 expr_stmt|;
 block|}
-comment|/**      * called when message is consumed      * @param context      * @param messageReference      */
+comment|/**      * called when message is consumed      *       * @param context      * @param messageReference      */
 specifier|public
 name|void
 name|messageConsumed
@@ -1042,7 +1042,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Called when message is delivered to the broker      * @param context      * @param messageReference      */
+comment|/**      * Called when message is delivered to the broker      *       * @param context      * @param messageReference      */
 specifier|public
 name|void
 name|messageDelivered
@@ -1070,7 +1070,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Called when a message is discarded - e.g. running low on memory      * This will happen only if the policy is enabled - e.g. non durable topics      * @param context      * @param messageReference      */
+comment|/**      * Called when a message is discarded - e.g. running low on memory This will happen only if the policy is enabled -      * e.g. non durable topics      *       * @param context      * @param messageReference      */
 specifier|public
 name|void
 name|messageDiscarded
@@ -1098,7 +1098,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Called when there is a slow consumer      * @param context      * @param subs      */
+comment|/**      * Called when there is a slow consumer      *       * @param context      * @param subs      */
 specifier|public
 name|void
 name|slowConsumer
@@ -1128,7 +1128,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Called to notify a producer is too fast      * @param context      * @param producerInfo      */
+comment|/**      * Called to notify a producer is too fast      *       * @param context      * @param producerInfo      */
 specifier|public
 name|void
 name|fastProducer
@@ -1156,7 +1156,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Called when a Usage reaches a limit      * @param context      * @param usage      */
+comment|/**      * Called when a Usage reaches a limit      *       * @param context      * @param usage      */
 specifier|public
 name|void
 name|isFull
@@ -1196,6 +1196,27 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+name|this
+operator|.
+name|store
+operator|!=
+literal|null
+condition|)
+block|{
+name|this
+operator|.
+name|store
+operator|.
+name|dispose
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
+block|}
+name|this
+operator|.
 name|destinationStatistics
 operator|.
 name|setParent

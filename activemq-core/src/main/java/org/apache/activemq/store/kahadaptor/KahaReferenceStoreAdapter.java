@@ -221,6 +221,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|ActiveMQDestination
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|kaha
 operator|.
 name|CommandMarshaller
@@ -1205,6 +1219,56 @@ return|return
 name|rc
 return|;
 block|}
+specifier|public
+name|void
+name|removeReferenceStore
+parameter_list|(
+name|KahaReferenceStore
+name|store
+parameter_list|)
+block|{
+name|ActiveMQDestination
+name|destination
+init|=
+name|store
+operator|.
+name|getDestination
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|destination
+operator|.
+name|isQueue
+argument_list|()
+condition|)
+block|{
+name|queues
+operator|.
+name|remove
+argument_list|(
+name|destination
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|topics
+operator|.
+name|remove
+argument_list|(
+name|destination
+argument_list|)
+expr_stmt|;
+block|}
+name|messageStores
+operator|.
+name|remove
+argument_list|(
+name|destination
+argument_list|)
+expr_stmt|;
+block|}
 comment|/*     public void buildReferenceFileIdsInUse() throws IOException {         recordReferences = new HashMap<Integer, AtomicInteger>();         Set<ActiveMQDestination> destinations = getDestinations();         for (ActiveMQDestination destination : destinations) {             if (destination.isQueue()) {                 KahaReferenceStore store = (KahaReferenceStore)createQueueReferenceStore((ActiveMQQueue)destination);                 store.addReferenceFileIdsInUse();             } else {                 KahaTopicReferenceStore store = (KahaTopicReferenceStore)createTopicReferenceStore((ActiveMQTopic)destination);                 store.addReferenceFileIdsInUse();             }         }     }     */
 specifier|protected
 name|MapContainer
@@ -1450,7 +1514,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      *       * @throws IOException      * @see org.apache.activemq.store.ReferenceStoreAdapter#clearMessages()      */
+comment|/**      *      * @throws IOException      * @see org.apache.activemq.store.ReferenceStoreAdapter#clearMessages()      */
 specifier|public
 name|void
 name|clearMessages
@@ -1466,7 +1530,7 @@ name|deleteAllMessages
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      *       * @throws IOException      * @see org.apache.activemq.store.ReferenceStoreAdapter#recoverState()      */
+comment|/**      *      * @throws IOException      * @see org.apache.activemq.store.ReferenceStoreAdapter#recoverState()      */
 specifier|public
 name|void
 name|recoverState

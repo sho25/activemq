@@ -239,6 +239,13 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+name|void
+name|dispose
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

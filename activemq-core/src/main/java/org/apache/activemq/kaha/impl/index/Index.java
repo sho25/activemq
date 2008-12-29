@@ -146,6 +146,13 @@ name|int
 name|getSize
 parameter_list|()
 function_decl|;
+comment|/**      * delete all state associated with the index      *      * @throws IOException      */
+name|void
+name|delete
+parameter_list|()
+throws|throws
+name|IOException
+function_decl|;
 block|}
 end_interface
 

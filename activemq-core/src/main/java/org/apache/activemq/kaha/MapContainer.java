@@ -359,6 +359,11 @@ name|IndexMBean
 name|getIndexMBean
 parameter_list|()
 function_decl|;
+comment|/**      * Clean up all state associated with this container.      */
+name|void
+name|delete
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

@@ -120,7 +120,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Index implementation using a HashMap  *   * @version $Revision: 1.2 $  */
+comment|/**  * Index implementation using a HashMap  *  * @version $Revision: 1.2 $  */
 end_comment
 
 begin_class
@@ -183,7 +183,7 @@ operator|=
 name|manager
 expr_stmt|;
 block|}
-comment|/**      *       * @see org.apache.activemq.kaha.impl.index.Index#clear()      */
+comment|/**      *      * @see org.apache.activemq.kaha.impl.index.Index#clear()      */
 specifier|public
 name|void
 name|clear
@@ -398,6 +398,17 @@ block|{
 name|map
 operator|.
 name|clear
+argument_list|()
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|delete
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|unload
 argument_list|()
 expr_stmt|;
 block|}

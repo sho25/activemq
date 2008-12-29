@@ -163,14 +163,14 @@ specifier|protected
 name|String
 name|clientURI
 init|=
-literal|"tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=true&jms.useAsyncSend=false&wireFormat.maxInactivityDuration=50000"
+literal|"tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=true&jms.useAsyncSend=false&wireFormat.maxInactivityDuration=0"
 decl_stmt|;
 comment|//protected String clientURI="tcp://localhost:61616";
 specifier|protected
 name|String
 name|bindAddress
 init|=
-literal|"tcp://localhost:61616"
+literal|"tcp://localhost:61616?wireFormat.maxInactivityDuration=0"
 decl_stmt|;
 comment|//protected String bindAddress = "tcp://localhost:61616";
 comment|//protected String bindAddress="vm://localhost?marshal=true";
@@ -237,7 +237,7 @@ specifier|protected
 name|int
 name|playloadSize
 init|=
-literal|1024
+literal|12
 decl_stmt|;
 specifier|protected
 name|byte

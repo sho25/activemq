@@ -309,7 +309,7 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|MessageRecoveryListener
+name|AbstractMessageStore
 import|;
 end_import
 
@@ -323,7 +323,7 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|MessageStore
+name|MessageRecoveryListener
 import|;
 end_import
 
@@ -491,8 +491,8 @@ begin_class
 specifier|public
 class|class
 name|AMQMessageStore
-implements|implements
-name|MessageStore
+extends|extends
+name|AbstractMessageStore
 block|{
 specifier|private
 specifier|static
@@ -523,11 +523,6 @@ specifier|protected
 specifier|final
 name|ReferenceStore
 name|referenceStore
-decl_stmt|;
-specifier|protected
-specifier|final
-name|ActiveMQDestination
-name|destination
 decl_stmt|;
 specifier|protected
 specifier|final
@@ -650,6 +645,11 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|destination
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|peristenceAdapter
@@ -679,12 +679,6 @@ operator|.
 name|referenceStore
 operator|=
 name|referenceStore
-expr_stmt|;
-name|this
-operator|.
-name|destination
-operator|=
-name|destination
 expr_stmt|;
 name|this
 operator|.
@@ -753,7 +747,7 @@ name|memoryUsage
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Not synchronize since the Journal has better throughput if you increase      * the number of concurrent writes that it is doing.      */
+comment|/**      * Not synchronize since the Journal has better throughput if you increase the number of concurrent writes that it      * is doing.      */
 specifier|public
 specifier|final
 name|void
@@ -2582,7 +2576,7 @@ return|return
 name|location
 return|;
 block|}
-comment|/**      * Replays the referenceStore first as those messages are the oldest ones,      * then messages are replayed from the transaction log and then the cache is      * updated.      *       * @param listener      * @throws Exception      */
+comment|/**      * Replays the referenceStore first as those messages are the oldest ones, then messages are replayed from the      * transaction log and then the cache is updated.      *       * @param listener      * @throws Exception      */
 specifier|public
 name|void
 name|recover
@@ -2676,15 +2670,6 @@ argument_list|(
 name|context
 argument_list|)
 expr_stmt|;
-block|}
-specifier|public
-name|ActiveMQDestination
-name|getDestination
-parameter_list|()
-block|{
-return|return
-name|destination
-return|;
 block|}
 specifier|public
 name|void
@@ -2909,6 +2894,50 @@ operator|.
 name|get
 argument_list|()
 return|;
+block|}
+specifier|public
+name|void
+name|dispose
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|)
+block|{
+try|try
+block|{
+name|flush
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedIOException
+name|e
+parameter_list|)
+block|{
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
+argument_list|()
+expr_stmt|;
+block|}
+name|referenceStore
+operator|.
+name|dispose
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
+name|super
+operator|.
+name|dispose
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

@@ -185,6 +185,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|store
+operator|.
+name|AbstractMessageStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|usage
 operator|.
 name|MemoryUsage
@@ -213,14 +227,9 @@ begin_class
 specifier|public
 class|class
 name|MemoryMessageStore
-implements|implements
-name|MessageStore
+extends|extends
+name|AbstractMessageStore
 block|{
-specifier|protected
-specifier|final
-name|ActiveMQDestination
-name|destination
-decl_stmt|;
 specifier|protected
 specifier|final
 name|Map
@@ -272,11 +281,10 @@ argument_list|>
 name|messageTable
 parameter_list|)
 block|{
-name|this
-operator|.
+name|super
+argument_list|(
 name|destination
-operator|=
-name|destination
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -534,16 +542,6 @@ block|}
 block|}
 specifier|public
 name|void
-name|start
-parameter_list|()
-block|{     }
-specifier|public
-name|void
-name|stop
-parameter_list|()
-block|{     }
-specifier|public
-name|void
 name|removeAllMessages
 parameter_list|(
 name|ConnectionContext
@@ -563,15 +561,6 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-specifier|public
-name|ActiveMQDestination
-name|getDestination
-parameter_list|()
-block|{
-return|return
-name|destination
-return|;
 block|}
 specifier|public
 name|void
@@ -755,17 +744,6 @@ name|lastBatchId
 operator|=
 literal|null
 expr_stmt|;
-block|}
-comment|/**      * @param memoeyUSage      * @see org.apache.activemq.store.MessageStore#setMemoryUsage(org.apache.activemq.usage.MemoryUsage)      */
-specifier|public
-name|void
-name|setMemoryUsage
-parameter_list|(
-name|MemoryUsage
-name|memoeyUSage
-parameter_list|)
-block|{
-comment|// TODO Auto-generated method stub
 block|}
 block|}
 end_class
