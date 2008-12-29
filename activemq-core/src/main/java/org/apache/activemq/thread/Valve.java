@@ -60,7 +60,7 @@ operator|=
 name|on
 expr_stmt|;
 block|}
-comment|/**      * Turns the valve on. This method blocks until the valve is off.      *       * @throws InterruptedException      */
+comment|/**      * Turns the valve on. This method blocks until the valve is off.      *       * @throws InterruptedException if wait is interrupted      */
 specifier|public
 name|void
 name|turnOn
@@ -110,7 +110,7 @@ name|on
 return|;
 block|}
 block|}
-comment|/**      * Turns the valve off. This method blocks until the valve is on and the      * valve is not in use.      *       * @throws InterruptedException      */
+comment|/**      * Turns the valve off. This method blocks until the valve is on and the      * valve is not in use.      *       * @throws InterruptedException if wait is interrupted      */
 specifier|public
 name|void
 name|turnOff
@@ -123,6 +123,23 @@ init|(
 name|mutex
 init|)
 block|{
+if|if
+condition|(
+name|turningOff
+operator|<
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Unbalanced turningOff: "
+operator|+
+name|turningOff
+argument_list|)
+throw|;
+block|}
 try|try
 block|{
 operator|++
@@ -162,7 +179,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Increments the use counter of the valve. This method blocks if the valve      * is off, or is being turned off.      *       * @throws InterruptedException      */
+comment|/**      * Increments the use counter of the valve. This method blocks if the valve      * is off, or is being turned off.      *       * @throws InterruptedException  if wait is interrupted      */
 specifier|public
 name|void
 name|increment
@@ -175,6 +192,40 @@ init|(
 name|mutex
 init|)
 block|{
+if|if
+condition|(
+name|turningOff
+operator|<
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Unbalanced turningOff: "
+operator|+
+name|turningOff
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+name|usage
+operator|<
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Unbalanced usage: "
+operator|+
+name|usage
+argument_list|)
+throw|;
+block|}
 comment|// Do we have to wait for the value to be on?
 while|while
 condition|(
@@ -211,6 +262,40 @@ block|{
 name|usage
 operator|--
 expr_stmt|;
+if|if
+condition|(
+name|turningOff
+operator|<
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Unbalanced turningOff: "
+operator|+
+name|turningOff
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+name|usage
+operator|<
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Unbalanced usage: "
+operator|+
+name|usage
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|turningOff

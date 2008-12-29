@@ -517,11 +517,6 @@ operator|.
 name|transportListener
 expr_stmt|;
 block|}
-name|enqueueValve
-operator|.
-name|decrement
-argument_list|()
-expr_stmt|;
 block|}
 else|else
 block|{
