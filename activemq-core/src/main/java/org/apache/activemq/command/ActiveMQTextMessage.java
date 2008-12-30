@@ -680,6 +680,10 @@ decl_stmt|;
 if|if
 condition|(
 name|text
+operator|!=
+literal|null
+operator|&&
+name|text
 operator|.
 name|length
 argument_list|()
