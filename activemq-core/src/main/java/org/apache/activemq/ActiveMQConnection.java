@@ -377,6 +377,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|InvalidDestinationException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -4279,6 +4289,7 @@ condition|)
 block|{
 return|return;
 block|}
+comment|//TODO shouldn't this check be on userSpecifiedClientID rather than the value of clientID?
 if|if
 condition|(
 name|info
@@ -4316,6 +4327,9 @@ block|}
 name|syncSendPacket
 argument_list|(
 name|info
+operator|.
+name|copy
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
@@ -6830,6 +6844,8 @@ name|String
 name|name
 parameter_list|)
 throws|throws
+name|InvalidDestinationException
+throws|,
 name|JMSException
 block|{
 name|checkClosedOrFailed

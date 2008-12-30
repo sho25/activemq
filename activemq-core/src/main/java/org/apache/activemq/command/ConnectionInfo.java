@@ -118,6 +118,27 @@ name|DATA_STRUCTURE_TYPE
 return|;
 block|}
 specifier|public
+name|ConnectionInfo
+name|copy
+parameter_list|()
+block|{
+name|ConnectionInfo
+name|copy
+init|=
+operator|new
+name|ConnectionInfo
+argument_list|()
+decl_stmt|;
+name|copy
+argument_list|(
+name|copy
+argument_list|)
+expr_stmt|;
+return|return
+name|copy
+return|;
+block|}
+specifier|private
 name|void
 name|copy
 parameter_list|(
@@ -134,6 +155,12 @@ argument_list|)
 expr_stmt|;
 name|copy
 operator|.
+name|connectionId
+operator|=
+name|connectionId
+expr_stmt|;
+name|copy
+operator|.
 name|clientId
 operator|=
 name|clientId
@@ -167,6 +194,18 @@ operator|.
 name|manageable
 operator|=
 name|manageable
+expr_stmt|;
+name|copy
+operator|.
+name|clientMaster
+operator|=
+name|clientMaster
+expr_stmt|;
+name|copy
+operator|.
+name|transportContext
+operator|=
+name|transportContext
 expr_stmt|;
 block|}
 comment|/**      * @openwire:property version=1 cache=true      */
@@ -352,7 +391,7 @@ return|return
 name|brokerMasterConnector
 return|;
 block|}
-comment|/**      * @param brokerMasterConnector The brokerMasterConnector to set.      */
+comment|/**      * @param slaveBroker The brokerMasterConnector to set.      */
 specifier|public
 name|void
 name|setBrokerMasterConnector
