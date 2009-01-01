@@ -550,15 +550,6 @@ operator|.
 name|getKey
 argument_list|()
 decl_stmt|;
-name|name
-operator|=
-name|IOHelper
-operator|.
-name|toFileSystemSafeName
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 name|HashIndex

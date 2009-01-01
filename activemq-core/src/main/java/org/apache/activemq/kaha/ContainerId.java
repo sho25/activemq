@@ -291,20 +291,6 @@ operator|+
 literal|"}"
 return|;
 block|}
-specifier|public
-name|String
-name|getFileSystemSafeContainerName
-parameter_list|()
-block|{
-return|return
-name|IOHelper
-operator|.
-name|toFileSystemSafeName
-argument_list|(
-name|dataContainerName
-argument_list|)
-return|;
-block|}
 block|}
 end_class
 

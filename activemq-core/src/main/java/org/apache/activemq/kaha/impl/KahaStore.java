@@ -536,6 +536,7 @@ name|IndexRootContainer
 name|listsContainer
 decl_stmt|;
 specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|ContainerId
@@ -554,6 +555,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|ContainerId
@@ -572,6 +574,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -590,6 +593,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -607,11 +611,6 @@ name|IndexManager
 argument_list|>
 argument_list|()
 decl_stmt|;
-specifier|private
-name|IndexManager
-name|rootIndexManager
-decl_stmt|;
-comment|// contains all the root indexes
 specifier|private
 name|boolean
 name|closed
@@ -1500,20 +1499,12 @@ operator|==
 literal|null
 condition|)
 block|{
-name|String
-name|fileSystemSafeContainerName
-init|=
-name|containerId
-operator|.
-name|getFileSystemSafeContainerName
-argument_list|()
-decl_stmt|;
 name|DataManager
 name|dm
 init|=
 name|getDataManager
 argument_list|(
-name|fileSystemSafeContainerName
+name|containerName
 argument_list|)
 decl_stmt|;
 name|IndexManager
@@ -1523,7 +1514,7 @@ name|getIndexManager
 argument_list|(
 name|dm
 argument_list|,
-name|fileSystemSafeContainerName
+name|containerName
 argument_list|)
 decl_stmt|;
 name|IndexItem
@@ -1916,20 +1907,12 @@ operator|==
 literal|null
 condition|)
 block|{
-name|String
-name|fileSystemSafeContainerName
-init|=
-name|containerId
-operator|.
-name|getFileSystemSafeContainerName
-argument_list|()
-decl_stmt|;
 name|DataManager
 name|dm
 init|=
 name|getDataManager
 argument_list|(
-name|fileSystemSafeContainerName
+name|containerName
 argument_list|)
 decl_stmt|;
 name|IndexManager
@@ -1939,7 +1922,7 @@ name|getIndexManager
 argument_list|(
 name|dm
 argument_list|,
-name|fileSystemSafeContainerName
+name|containerName
 argument_list|)
 decl_stmt|;
 name|IndexItem
@@ -2525,7 +2508,7 @@ operator|=
 name|maxDataFileLength
 expr_stmt|;
 block|}
-comment|/**      * @see org.apache.activemq.kaha.IndexTypes      * @return the default index type      */
+comment|/**      * @return the default index type      */
 specifier|public
 specifier|synchronized
 name|String
@@ -2540,7 +2523,7 @@ else|:
 literal|"VM"
 return|;
 block|}
-comment|/**      * Set the default index type      *       * @param type      * @see org.apache.activemq.kaha.IndexTypes      */
+comment|/**      * Set the default index type      *       * @param type "PERSISTENT" or "VM"      */
 specifier|public
 specifier|synchronized
 name|void
@@ -2623,7 +2606,7 @@ operator|=
 name|useAsyncWriter
 expr_stmt|;
 block|}
-comment|/**      * @return      * @see org.apache.activemq.kaha.Store#size()      */
+comment|/**      * @return size of store      * @see org.apache.activemq.kaha.Store#size()      */
 specifier|public
 name|long
 name|size
@@ -2723,15 +2706,16 @@ argument_list|(
 name|defaultContainerName
 argument_list|)
 decl_stmt|;
+name|IndexManager
 name|rootIndexManager
-operator|=
+init|=
 name|getIndexManager
 argument_list|(
 name|defaultDM
 argument_list|,
 name|defaultContainerName
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|IndexItem
 name|mapRoot
 init|=
@@ -3102,7 +3086,7 @@ name|getCanonicalPath
 argument_list|()
 return|;
 block|}
-comment|/**      * scans the directory and builds up the IndexManager and DataManager      *       * @throws IOException      */
+comment|/**      * scans the directory and builds up the IndexManager and DataManager      *       * @throws IOException if there is a problem accessing an index or data file      */
 specifier|private
 name|void
 name|generateInterestInListDataFiles
@@ -3241,7 +3225,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * scans the directory and builds up the IndexManager and DataManager      *       * @throws IOException      */
+comment|/**      * scans the directory and builds up the IndexManager and DataManager      *       * @throws IOException if there is a problem accessing an index or data file      */
 specifier|private
 name|void
 name|generateInterestInMapDataFiles

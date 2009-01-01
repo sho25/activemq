@@ -3777,7 +3777,12 @@ name|this
 operator|.
 name|filePrefix
 operator|=
+name|IOHelper
+operator|.
+name|toFileSystemSafeName
+argument_list|(
 name|filePrefix
+argument_list|)
 expr_stmt|;
 block|}
 specifier|public
