@@ -55,6 +55,20 @@ name|ObjectOutput
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IOHelper
+import|;
+end_import
+
 begin_comment
 comment|/**  * Used by RootContainers  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
@@ -120,22 +134,6 @@ return|return
 name|dataContainerName
 return|;
 block|}
-comment|/**      * @param dataContainerName The dataContainerPrefix to set.      */
-specifier|public
-name|void
-name|setDataContainerName
-parameter_list|(
-name|String
-name|dataContainerName
-parameter_list|)
-block|{
-name|this
-operator|.
-name|dataContainerName
-operator|=
-name|dataContainerName
-expr_stmt|;
-block|}
 comment|/**      * @return Returns the key.      */
 specifier|public
 name|Object
@@ -145,22 +143,6 @@ block|{
 return|return
 name|key
 return|;
-block|}
-comment|/**      * @param key The key to set.      */
-specifier|public
-name|void
-name|setKey
-parameter_list|(
-name|Object
-name|key
-parameter_list|)
-block|{
-name|this
-operator|.
-name|key
-operator|=
-name|key
-expr_stmt|;
 block|}
 specifier|public
 name|int
@@ -307,6 +289,20 @@ operator|+
 name|key
 operator|+
 literal|"}"
+return|;
+block|}
+specifier|public
+name|String
+name|getFileSystemSafeContainerName
+parameter_list|()
+block|{
+return|return
+name|IOHelper
+operator|.
+name|toFileSystemSafeName
+argument_list|(
+name|dataContainerName
+argument_list|)
 return|;
 block|}
 block|}
