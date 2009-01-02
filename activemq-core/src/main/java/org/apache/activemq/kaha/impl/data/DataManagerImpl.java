@@ -195,6 +195,20 @@ name|org
 operator|.
 name|apache
 operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IOHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|commons
 operator|.
 name|logging
@@ -386,11 +400,16 @@ name|storeSize
 expr_stmt|;
 name|dataFilePrefix
 operator|=
+name|IOHelper
+operator|.
+name|toFileSystemSafeName
+argument_list|(
 name|NAME_PREFIX
 operator|+
 name|name
 operator|+
 literal|"-"
+argument_list|)
 expr_stmt|;
 comment|// build up list of current dataFiles
 name|File

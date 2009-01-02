@@ -68,10 +68,12 @@ class|class
 name|DataFile
 block|{
 specifier|private
+specifier|final
 name|File
 name|file
 decl_stmt|;
 specifier|private
+specifier|final
 name|Integer
 name|number
 decl_stmt|;
