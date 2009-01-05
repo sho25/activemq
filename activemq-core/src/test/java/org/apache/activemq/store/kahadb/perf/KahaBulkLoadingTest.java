@@ -9,9 +9,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|store
+operator|.
+name|kahadb
 operator|.
 name|perf
 package|;
@@ -63,6 +65,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicInteger
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -88,6 +104,16 @@ operator|.
 name|jms
 operator|.
 name|DeliveryMode
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Message
 import|;
 end_import
 
@@ -179,6 +205,20 @@ name|activemq
 operator|.
 name|broker
 operator|.
+name|ProgressPrinter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
 name|TransportConnector
 import|;
 end_import
@@ -245,16 +285,18 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|store
+operator|.
+name|kahadb
 operator|.
 name|KahaDBStore
 import|;
 end_import
 
 begin_comment
-comment|/**  * This tests bulk loading and unloading of messages to a Queue.s  *   * @version $Revision$  */
+comment|/**  * This tests bulk loading and unloading of messages to a Queue.s  *   * @version $Revision: 712224 $  */
 end_comment
 
 begin_class

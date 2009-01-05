@@ -9,9 +9,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|store
+operator|.
+name|kahadb
 package|;
 end_package
 
@@ -22,6 +24,16 @@ operator|.
 name|io
 operator|.
 name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URI
 import|;
 end_import
 
@@ -42,6 +54,20 @@ operator|.
 name|framework
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|BrokerFactory
 import|;
 end_import
 
@@ -200,7 +226,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to verify that recovery works correctly against   *   * @version $Revision$  */
+comment|/**  * Used to verify that recovery works correctly against   *   * @version $Revision: 712224 $  */
 end_comment
 
 begin_class

@@ -9,9 +9,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|store
+operator|.
+name|kahadb
 package|;
 end_package
 
@@ -69,9 +71,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|store
+operator|.
+name|kahadb
 operator|.
 name|data
 operator|.
@@ -85,9 +89,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|store
+operator|.
+name|kahadb
 operator|.
 name|data
 operator|.
@@ -101,9 +107,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|store
+operator|.
+name|kahadb
 operator|.
 name|data
 operator|.
@@ -117,9 +125,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|store
+operator|.
+name|kahadb
 operator|.
 name|data
 operator|.

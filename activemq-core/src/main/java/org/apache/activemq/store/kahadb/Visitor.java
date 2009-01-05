@@ -9,9 +9,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|store
+operator|.
+name|kahadb
 package|;
 end_package
 
@@ -31,9 +33,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|store
+operator|.
+name|kahadb
 operator|.
 name|data
 operator|.
@@ -47,9 +51,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|store
+operator|.
+name|kahadb
 operator|.
 name|data
 operator|.
@@ -63,9 +69,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|store
+operator|.
+name|kahadb
 operator|.
 name|data
 operator|.
@@ -79,9 +87,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|store
+operator|.
+name|kahadb
 operator|.
 name|data
 operator|.
@@ -95,9 +105,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|store
+operator|.
+name|kahadb
 operator|.
 name|data
 operator|.
@@ -111,9 +123,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|store
+operator|.
+name|kahadb
 operator|.
 name|data
 operator|.
@@ -127,13 +141,15 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|store
 operator|.
+name|kahadb
+operator|.
 name|data
 operator|.
-name|KahaTraceCommand
+name|KahaSubscriptionCommand
 import|;
 end_import
 
@@ -143,13 +159,15 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|store
 operator|.
+name|kahadb
+operator|.
 name|data
 operator|.
-name|KahaSubscriptionCommand
+name|KahaTraceCommand
 import|;
 end_import
 
