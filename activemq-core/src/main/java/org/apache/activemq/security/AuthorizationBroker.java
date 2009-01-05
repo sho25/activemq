@@ -298,11 +298,16 @@ literal|null
 condition|)
 block|{
 return|return
-name|existing
+name|super
+operator|.
+name|addDestination
+argument_list|(
+name|context
+argument_list|,
+name|destination
+argument_list|)
 return|;
 block|}
-comment|// if(!((ActiveMQTempDestination)destination).getConnectionId().equals(context.getConnectionId().getValue())
-comment|// ) {
 if|if
 condition|(
 operator|!
@@ -382,7 +387,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|// }
 return|return
 name|super
 operator|.
