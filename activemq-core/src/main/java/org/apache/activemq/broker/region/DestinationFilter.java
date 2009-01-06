@@ -33,7 +33,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
+name|List
 import|;
 end_import
 
@@ -44,16 +44,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -489,7 +479,7 @@ name|getConsumers
 argument_list|()
 return|;
 block|}
-comment|/**      * Sends a message to the given destination which may be a wildcard      */
+comment|/**      * Sends a message to the given destination which may be a wildcard      * @param context broker context      * @param message message to send      * @param destination possibly wildcard destination to send the message to      * @throws Exception on error      */
 specifier|protected
 name|void
 name|send
@@ -518,6 +508,9 @@ name|getBroker
 argument_list|()
 decl_stmt|;
 name|Set
+argument_list|<
+name|Destination
+argument_list|>
 name|destinations
 init|=
 name|broker
@@ -529,32 +522,12 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|Iterator
-name|iter
-init|=
-name|destinations
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
 name|Destination
 name|dest
-init|=
-operator|(
-name|Destination
-operator|)
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
+range|:
+name|destinations
+control|)
+block|{
 name|dest
 operator|.
 name|send
