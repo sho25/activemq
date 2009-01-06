@@ -554,8 +554,6 @@ name|getMemoryUsageHighWaterMark
 parameter_list|()
 block|{
 return|return
-name|this
-operator|.
 name|memoryUsageHighWaterMark
 return|;
 block|}
@@ -599,9 +597,12 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Page in a restricted number of messages      *       * @param maxItems      * @return a list of paged in messages      */
+comment|/**      * Page in a restricted number of messages      *       * @param maxItems maximum number of messages to return      * @return a list of paged in messages      */
 specifier|public
 name|LinkedList
+argument_list|<
+name|MessageReference
+argument_list|>
 name|pageInList
 parameter_list|(
 name|int
@@ -649,8 +650,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|this
-operator|.
 name|audit
 operator|.
 name|setMaximumNumberOfProducersToTrack
@@ -667,8 +666,6 @@ name|getMaxAuditDepth
 parameter_list|()
 block|{
 return|return
-name|this
-operator|.
 name|maxAuditDepth
 return|;
 block|}
@@ -695,8 +692,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|this
-operator|.
 name|audit
 operator|.
 name|setAuditDepth
@@ -713,8 +708,6 @@ name|isEnableAudit
 parameter_list|()
 block|{
 return|return
-name|this
-operator|.
 name|enableAudit
 return|;
 block|}
@@ -736,8 +729,6 @@ name|enableAudit
 expr_stmt|;
 if|if
 condition|(
-name|this
-operator|.
 name|enableAudit
 operator|&&
 name|started
@@ -768,7 +759,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * set the audit      * @param audit      */
+comment|/**      * set the audit      * @param audit new audit component      */
 specifier|public
 name|void
 name|setMessageAudit
@@ -830,12 +821,8 @@ block|{
 if|if
 condition|(
 operator|!
-name|this
-operator|.
 name|enableAudit
 operator|||
-name|this
-operator|.
 name|audit
 operator|==
 literal|null
@@ -846,8 +833,6 @@ literal|false
 return|;
 block|}
 return|return
-name|this
-operator|.
 name|audit
 operator|.
 name|isDuplicate
@@ -867,8 +852,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|this
-operator|.
 name|audit
 operator|!=
 literal|null
