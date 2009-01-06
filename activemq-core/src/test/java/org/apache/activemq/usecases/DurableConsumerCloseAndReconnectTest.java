@@ -390,7 +390,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Now lets create the consumer again and because we didn't ack, we should get it again"
+literal|"Now lets create the consumer again and because we did ack, we should not get it again"
 argument_list|)
 expr_stmt|;
 name|makeConsumer
