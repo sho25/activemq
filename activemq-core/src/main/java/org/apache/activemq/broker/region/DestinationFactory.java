@@ -121,6 +121,15 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+specifier|public
+specifier|abstract
+name|void
+name|removeDestination
+parameter_list|(
+name|Destination
+name|dest
+parameter_list|)
+function_decl|;
 comment|/**      * Returns a set of all the {@link org.apache.activemq.command.ActiveMQDestination}      * objects that the persistence store is aware exist.      */
 specifier|public
 specifier|abstract

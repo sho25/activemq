@@ -1261,6 +1261,9 @@ block|}
 comment|/**      * Provide an exact or wildcard lookup of destinations in the region      *       * @return a set of matching destination objects.      */
 specifier|public
 name|Set
+argument_list|<
+name|Destination
+argument_list|>
 name|getDestinations
 parameter_list|(
 name|ActiveMQDestination
@@ -2560,6 +2563,13 @@ name|dest
 operator|.
 name|stop
 argument_list|()
+expr_stmt|;
+name|destinationFactory
+operator|.
+name|removeDestination
+argument_list|(
+name|dest
+argument_list|)
 expr_stmt|;
 block|}
 block|}

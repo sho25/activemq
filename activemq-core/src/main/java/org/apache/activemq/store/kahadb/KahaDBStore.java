@@ -3099,6 +3099,24 @@ name|destination
 argument_list|)
 return|;
 block|}
+comment|/**      * Cleanup method to remove any state associated with the given destination.      * This method does not stop the message store (it might not be cached).      *      * @param destination Destination to forget      */
+specifier|public
+name|void
+name|removeQueueMessageStore
+parameter_list|(
+name|ActiveMQQueue
+name|destination
+parameter_list|)
+block|{     }
+comment|/**      * Cleanup method to remove any state associated with the given destination      * This method does not stop the message store (it might not be cached).      *      * @param destination Destination to forget      */
+specifier|public
+name|void
+name|removeTopicMessageStore
+parameter_list|(
+name|ActiveMQTopic
+name|destination
+parameter_list|)
+block|{     }
 specifier|public
 name|void
 name|deleteAllMessages

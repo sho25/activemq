@@ -4415,7 +4415,7 @@ return|return
 name|movedCounter
 return|;
 block|}
-comment|/**      * Move a message      * @param context      * @param r      * @param dest      * @throws Exception      */
+comment|/**      * Move a message      * @param context connection context      * @param m message      * @param dest ActiveMQDestination      * @throws Exception      */
 specifier|public
 name|boolean
 name|moveMessageTo

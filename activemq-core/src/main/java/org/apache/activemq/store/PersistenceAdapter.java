@@ -79,6 +79,22 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|Destination
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -165,6 +181,22 @@ name|destination
 parameter_list|)
 throws|throws
 name|IOException
+function_decl|;
+comment|/**      * Cleanup method to remove any state associated with the given destination.      * This method does not stop the message store (it might not be cached).      * @param destination Destination to forget      */
+name|void
+name|removeQueueMessageStore
+parameter_list|(
+name|ActiveMQQueue
+name|destination
+parameter_list|)
+function_decl|;
+comment|/**      * Cleanup method to remove any state associated with the given destination      * This method does not stop the message store (it might not be cached).      * @param destination Destination to forget      */
+name|void
+name|removeTopicMessageStore
+parameter_list|(
+name|ActiveMQTopic
+name|destination
+parameter_list|)
 function_decl|;
 comment|/**      * Factory method to create a new persistent prepared transaction store for XA recovery      * @return transaction store      * @throws IOException       */
 name|TransactionStore
