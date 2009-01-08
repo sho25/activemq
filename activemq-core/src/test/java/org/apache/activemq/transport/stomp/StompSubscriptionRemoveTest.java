@@ -59,6 +59,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|net
+operator|.
+name|Socket
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -390,9 +400,13 @@ name|stompConnection
 operator|.
 name|open
 argument_list|(
+operator|new
+name|Socket
+argument_list|(
 literal|"localhost"
 argument_list|,
 name|STOMP_PORT
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|String
@@ -546,9 +560,13 @@ name|stompConnection
 operator|.
 name|open
 argument_list|(
+operator|new
+name|Socket
+argument_list|(
 literal|"localhost"
 argument_list|,
 name|STOMP_PORT
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|connectFrame
