@@ -315,7 +315,7 @@ name|head
 operator|=
 name|head
 operator|.
-name|getNext
+name|getNextCircular
 argument_list|()
 return|;
 block|}
