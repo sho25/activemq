@@ -355,11 +355,6 @@ operator|=
 name|rightHead
 expr_stmt|;
 comment|// this->list
-name|list
-operator|.
-name|size
-operator|++
-expr_stmt|;
 block|}
 comment|/**      * @param node      *            the node to link after this node.      * @return      * @return this      */
 specifier|public
