@@ -315,6 +315,7 @@ init|=
 literal|100
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|ThreadPoolExecutor
 name|executor
 decl_stmt|;
@@ -1207,7 +1208,6 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 specifier|public
-specifier|synchronized
 name|void
 name|start
 parameter_list|()
@@ -1261,7 +1261,6 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 specifier|public
-specifier|synchronized
 name|void
 name|stop
 parameter_list|()
@@ -1637,10 +1636,23 @@ name|parent
 expr_stmt|;
 block|}
 specifier|protected
-specifier|synchronized
 name|Executor
 name|getExecutor
 parameter_list|()
+block|{
+if|if
+condition|(
+name|this
+operator|.
+name|executor
+operator|==
+literal|null
+condition|)
+block|{
+synchronized|synchronized
+init|(
+name|usageMutex
+init|)
 block|{
 if|if
 condition|(
@@ -1715,6 +1727,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 return|return
 name|this
