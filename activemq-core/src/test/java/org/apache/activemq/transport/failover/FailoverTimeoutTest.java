@@ -275,11 +275,6 @@ name|JMSException
 name|jmse
 parameter_list|)
 block|{
-name|jmse
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Failover timeout of "
