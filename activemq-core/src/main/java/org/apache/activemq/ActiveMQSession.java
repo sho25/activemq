@@ -1321,7 +1321,10 @@ condition|)
 block|{
 if|if
 condition|(
-name|getTransacted
+name|getTransactionContext
+argument_list|()
+operator|.
+name|isInXATransaction
 argument_list|()
 condition|)
 block|{

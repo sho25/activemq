@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test failover for Queues  */
+comment|/**  * Test failover for Topics  */
 end_comment
 
 begin_class
