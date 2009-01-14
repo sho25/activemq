@@ -1822,12 +1822,10 @@ if|if
 condition|(
 name|destinations
 operator|.
-name|remove
+name|containsKey
 argument_list|(
 name|destination
 argument_list|)
-operator|!=
-literal|null
 condition|)
 block|{
 switch|switch
@@ -1914,6 +1912,13 @@ name|destination
 argument_list|)
 throw|;
 block|}
+name|destinations
+operator|.
+name|remove
+argument_list|(
+name|destination
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 specifier|public
