@@ -351,6 +351,14 @@ literal|4
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
+name|int
+name|MAX_ACK_CONSTANT
+init|=
+name|INDIVIDUAL_ACKNOWLEDGE
+decl_stmt|;
+specifier|public
+specifier|static
 interface|interface
 name|DeliveryListener
 block|{

@@ -361,7 +361,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      *       */
+comment|/**      *      * @return "physical" underlying activemq connection, if proxy is associated with a managed connection      * @throws javax.jms.JMSException if managed connection is null      */
 specifier|private
 name|Connection
 name|getConnection
@@ -391,7 +391,7 @@ name|getPhysicalConnection
 argument_list|()
 return|;
 block|}
-comment|/**      * @param transacted      * @param acknowledgeMode      * @return      * @throws JMSException      */
+comment|/**      * @param transacted Whether session is transacted      * @param acknowledgeMode session acknowledge mode      * @return session proxy      * @throws JMSException on error      */
 specifier|public
 name|Session
 name|createSession
@@ -414,7 +414,7 @@ name|acknowledgeMode
 argument_list|)
 return|;
 block|}
-comment|/**      * @param acknowledgeMode      * @param transacted      * @return      * @throws JMSException      */
+comment|/**      * @param transacted Whether session is transacted      * @param acknowledgeMode session acknowledge mode      * @return session proxy      * @throws JMSException on error      */
 specifier|private
 name|ManagedSessionProxy
 name|createSessionProxy
@@ -428,6 +428,26 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{
+if|if
+condition|(
+operator|!
+name|transacted
+operator|&&
+name|acknowledgeMode
+operator|==
+name|Session
+operator|.
+name|SESSION_TRANSACTED
+condition|)
+block|{
+name|acknowledgeMode
+operator|=
+name|Session
+operator|.
+name|AUTO_ACKNOWLEDGE
+expr_stmt|;
+block|}
+comment|//        ActiveMQSession session = (ActiveMQSession)getConnection().createSession(true, acknowledgeMode);
 name|ActiveMQSession
 name|session
 init|=
@@ -505,32 +525,12 @@ name|JMSException
 block|{
 for|for
 control|(
-name|Iterator
-argument_list|<
-name|ManagedSessionProxy
-argument_list|>
-name|iter
-init|=
-name|sessions
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
 name|ManagedSessionProxy
 name|p
-init|=
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
+range|:
+name|sessions
+control|)
+block|{
 name|p
 operator|.
 name|setUseSharedTxContext
@@ -540,7 +540,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @param transacted      * @param acknowledgeMode      * @return      * @throws JMSException      */
+comment|/**      * @param transacted Whether session is transacted      * @param acknowledgeMode session acknowledge mode      * @return session proxy      * @throws JMSException on error      */
 specifier|public
 name|QueueSession
 name|createQueueSession
@@ -567,7 +567,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * @param transacted      * @param acknowledgeMode      * @return      * @throws JMSException      */
+comment|/**      * @param transacted Whether session is transacted      * @param acknowledgeMode session acknowledge mode      * @return session proxy      * @throws JMSException on error      */
 specifier|public
 name|TopicSession
 name|createTopicSession

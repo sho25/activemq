@@ -1941,7 +1941,10 @@ if|if
 condition|(
 operator|!
 name|transacted
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|acknowledgeMode
 operator|==
 name|Session
@@ -1956,6 +1959,37 @@ argument_list|(
 literal|"acknowledgeMode SESSION_TRANSACTED cannot be used for an non-transacted Session"
 argument_list|)
 throw|;
+block|}
+elseif|else
+if|if
+condition|(
+name|acknowledgeMode
+argument_list|<
+name|Session
+operator|.
+name|SESSION_TRANSACTED
+operator|||
+name|acknowledgeMode
+argument_list|>
+name|ActiveMQSession
+operator|.
+name|MAX_ACK_CONSTANT
+condition|)
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"invalid acknowledgeMode: "
+operator|+
+name|acknowledgeMode
+operator|+
+literal|". Valid values are Session.AUTO_ACKNOWLEDGE (1), "
+operator|+
+literal|"Session.CLIENT_ACKNOWLEDGE (2), Session.DUPS_OK_ACKNOWLEDGE (3), ActiveMQSession.INDIVIDUAL_ACKNOWLEDGE (4) or for transacted sessions Session.SESSION_TRANSACTED (0)"
+argument_list|)
+throw|;
+block|}
 block|}
 return|return
 operator|new
