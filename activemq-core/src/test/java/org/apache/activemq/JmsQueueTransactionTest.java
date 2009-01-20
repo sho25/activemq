@@ -227,6 +227,9 @@ argument_list|)
 block|}
 decl_stmt|;
 comment|// lets consume any outstanding messages from previous test runs
+name|beginTx
+argument_list|()
+expr_stmt|;
 while|while
 condition|(
 name|consumer
@@ -239,9 +242,10 @@ operator|!=
 literal|null
 condition|)
 block|{         }
-name|session
-operator|.
-name|commit
+name|commitTx
+argument_list|()
+expr_stmt|;
+name|beginTx
 argument_list|()
 expr_stmt|;
 name|producer
@@ -264,9 +268,7 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 name|LOG
@@ -306,6 +308,9 @@ name|Message
 argument_list|>
 argument_list|()
 decl_stmt|;
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|Message
 name|message
 init|=
@@ -356,6 +361,9 @@ argument_list|()
 expr_stmt|;
 comment|// Consume again.. the previous message should
 comment|// get redelivered.
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|message
 operator|=
 name|consumer
@@ -422,9 +430,7 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 name|Message
@@ -502,6 +508,12 @@ argument_list|(
 name|connection
 argument_list|)
 decl_stmt|;
+name|this
+operator|.
+name|session
+operator|=
+name|session
+expr_stmt|;
 name|MessageProducer
 name|producer
 init|=
@@ -516,6 +528,9 @@ argument_list|)
 decl_stmt|;
 comment|// consumer = resourceProvider.createConsumer(session,
 comment|// destination);
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|producer
 operator|.
 name|send
@@ -530,9 +545,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 name|session
@@ -553,6 +566,12 @@ argument_list|(
 name|connection
 argument_list|)
 decl_stmt|;
+name|this
+operator|.
+name|session
+operator|=
+name|session
+expr_stmt|;
 name|MessageConsumer
 name|consumer
 init|=
@@ -565,6 +584,9 @@ argument_list|,
 name|destination
 argument_list|)
 decl_stmt|;
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|TextMessage
 name|message
 init|=
@@ -603,9 +625,7 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 name|session
@@ -655,6 +675,9 @@ argument_list|)
 block|}
 decl_stmt|;
 comment|// lets consume any outstanding messages from previous test runs
+name|beginTx
+argument_list|()
+expr_stmt|;
 while|while
 condition|(
 name|consumer
@@ -667,9 +690,10 @@ operator|!=
 literal|null
 condition|)
 block|{         }
-name|session
-operator|.
-name|commit
+name|commitTx
+argument_list|()
+expr_stmt|;
+name|beginTx
 argument_list|()
 expr_stmt|;
 name|producer
@@ -702,12 +726,13 @@ literal|2
 index|]
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 comment|// Get the first.
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|assertEquals
 argument_list|(
 name|outbound
@@ -728,9 +753,10 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
+argument_list|()
+expr_stmt|;
+name|beginTx
 argument_list|()
 expr_stmt|;
 name|QueueBrowser
@@ -906,9 +932,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 block|}

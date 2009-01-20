@@ -425,6 +425,23 @@ name|isTopic
 argument_list|()
 expr_stmt|;
 comment|// We will be using transacted sessions.
+name|setSessionTransacted
+argument_list|()
+expr_stmt|;
+name|connectionFactory
+operator|=
+name|newConnectionFactory
+argument_list|()
+expr_stmt|;
+name|reconnect
+argument_list|()
+expr_stmt|;
+block|}
+specifier|protected
+name|void
+name|setSessionTransacted
+parameter_list|()
+block|{
 name|resourceProvider
 operator|.
 name|setTransacted
@@ -432,14 +449,53 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|connectionFactory
-operator|=
+block|}
+specifier|protected
+name|ConnectionFactory
+name|newConnectionFactory
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
 name|resourceProvider
 operator|.
 name|createConnectionFactory
 argument_list|()
+return|;
+block|}
+specifier|protected
+name|void
+name|beginTx
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//no-op for local tx
+block|}
+specifier|protected
+name|void
+name|commitTx
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|session
+operator|.
+name|commit
+argument_list|()
 expr_stmt|;
-name|reconnect
+block|}
+specifier|protected
+name|void
+name|rollbackTx
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|session
+operator|.
+name|rollback
 argument_list|()
 expr_stmt|;
 block|}
@@ -570,6 +626,9 @@ operator|+
 literal|" messages"
 argument_list|)
 expr_stmt|;
+name|beginTx
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -596,9 +655,7 @@ block|}
 name|messageSent
 argument_list|()
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 name|LOG
@@ -615,6 +672,9 @@ name|batchSize
 operator|+
 literal|" messages"
 argument_list|)
+expr_stmt|;
+name|beginTx
+argument_list|()
 expr_stmt|;
 for|for
 control|(
@@ -669,9 +729,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 block|}
@@ -715,6 +773,9 @@ argument_list|)
 block|}
 decl_stmt|;
 comment|// sends a message
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|producer
 operator|.
 name|send
@@ -725,12 +786,13 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 comment|// sends a message that gets rollbacked
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|producer
 operator|.
 name|send
@@ -743,12 +805,13 @@ literal|"I'm going to get rolled back."
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|rollback
+name|rollbackTx
 argument_list|()
 expr_stmt|;
 comment|// sends a message
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|producer
 operator|.
 name|send
@@ -759,12 +822,13 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 comment|// receives the first message
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|ArrayList
 argument_list|<
 name|Message
@@ -845,9 +909,7 @@ name|message
 argument_list|)
 expr_stmt|;
 comment|// validates that the rollbacked was not consumed
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 name|Message
@@ -880,7 +942,148 @@ name|inbound
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends a batch of messages and validates that the message sent before      * session close is not consumed.      *       * @throws Exception      */
+comment|/**      * spec section 3.6 acking a message with automation acks has no effect.      * @throws Exception      */
+specifier|public
+name|void
+name|testAckMessageInTx
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Message
+index|[]
+name|outbound
+init|=
+operator|new
+name|Message
+index|[]
+block|{
+name|session
+operator|.
+name|createTextMessage
+argument_list|(
+literal|"First Message"
+argument_list|)
+block|}
+decl_stmt|;
+comment|// sends a message
+name|beginTx
+argument_list|()
+expr_stmt|;
+name|producer
+operator|.
+name|send
+argument_list|(
+name|outbound
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
+name|outbound
+index|[
+literal|0
+index|]
+operator|.
+name|acknowledge
+argument_list|()
+expr_stmt|;
+name|commitTx
+argument_list|()
+expr_stmt|;
+name|outbound
+index|[
+literal|0
+index|]
+operator|.
+name|acknowledge
+argument_list|()
+expr_stmt|;
+comment|// receives the first message
+name|beginTx
+argument_list|()
+expr_stmt|;
+name|ArrayList
+argument_list|<
+name|Message
+argument_list|>
+name|messages
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|Message
+argument_list|>
+argument_list|()
+decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"About to consume message 1"
+argument_list|)
+expr_stmt|;
+name|Message
+name|message
+init|=
+name|consumer
+operator|.
+name|receive
+argument_list|(
+literal|1000
+argument_list|)
+decl_stmt|;
+name|messages
+operator|.
+name|add
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Received: "
+operator|+
+name|message
+argument_list|)
+expr_stmt|;
+comment|// validates that the rollbacked was not consumed
+name|commitTx
+argument_list|()
+expr_stmt|;
+name|Message
+name|inbound
+index|[]
+init|=
+operator|new
+name|Message
+index|[
+name|messages
+operator|.
+name|size
+argument_list|()
+index|]
+decl_stmt|;
+name|messages
+operator|.
+name|toArray
+argument_list|(
+name|inbound
+argument_list|)
+expr_stmt|;
+name|assertTextMessagesEqual
+argument_list|(
+literal|"Message not delivered."
+argument_list|,
+name|outbound
+argument_list|,
+name|inbound
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Sends a batch of messages and validates that the message sent before      * session close is not consumed.      *      * This test only works with local transactions, not xa.      * @throws Exception      */
 specifier|public
 name|void
 name|testSendSessionClose
@@ -912,6 +1115,9 @@ argument_list|)
 block|}
 decl_stmt|;
 comment|// sends a message
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|producer
 operator|.
 name|send
@@ -922,12 +1128,13 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 comment|// sends a message that gets rollbacked
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|producer
 operator|.
 name|send
@@ -959,9 +1166,7 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 comment|// receives the first message
@@ -984,6 +1189,9 @@ name|info
 argument_list|(
 literal|"About to consume message 1"
 argument_list|)
+expr_stmt|;
+name|beginTx
+argument_list|()
 expr_stmt|;
 name|Message
 name|message
@@ -1045,9 +1253,7 @@ name|message
 argument_list|)
 expr_stmt|;
 comment|// validates that the rollbacked was not consumed
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 name|Message
@@ -1112,6 +1318,9 @@ argument_list|)
 block|}
 decl_stmt|;
 comment|// sends a message
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|producer
 operator|.
 name|send
@@ -1122,12 +1331,13 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 comment|// sends a message that gets rollbacked
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|producer
 operator|.
 name|send
@@ -1154,6 +1364,9 @@ name|reconnect
 argument_list|()
 expr_stmt|;
 comment|// sends a message
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|producer
 operator|.
 name|send
@@ -1164,9 +1377,7 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 comment|// receives the first message
@@ -1189,6 +1400,9 @@ name|info
 argument_list|(
 literal|"About to consume message 1"
 argument_list|)
+expr_stmt|;
+name|beginTx
+argument_list|()
 expr_stmt|;
 name|Message
 name|message
@@ -1250,9 +1464,7 @@ name|message
 argument_list|)
 expr_stmt|;
 comment|// validates that the rollbacked was not consumed
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 name|Message
@@ -1317,6 +1529,9 @@ argument_list|)
 block|}
 decl_stmt|;
 comment|// lets consume any outstanding messages from prev test runs
+name|beginTx
+argument_list|()
+expr_stmt|;
 while|while
 condition|(
 name|consumer
@@ -1329,12 +1544,13 @@ operator|!=
 literal|null
 condition|)
 block|{         }
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 comment|// sent both messages
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|producer
 operator|.
 name|send
@@ -1355,9 +1571,7 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 name|LOG
@@ -1397,6 +1611,9 @@ name|Message
 argument_list|>
 argument_list|()
 decl_stmt|;
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|Message
 name|message
 init|=
@@ -1424,12 +1641,13 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 comment|// rollback so we can get that last message again.
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|message
 operator|=
 name|consumer
@@ -1454,13 +1672,14 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|rollback
+name|rollbackTx
 argument_list|()
 expr_stmt|;
 comment|// Consume again.. the prev message should
 comment|// get redelivered.
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|message
 operator|=
 name|consumer
@@ -1484,9 +1703,7 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 name|Message
@@ -1551,6 +1768,9 @@ argument_list|)
 block|}
 decl_stmt|;
 comment|// lets consume any outstanding messages from prev test runs
+name|beginTx
+argument_list|()
+expr_stmt|;
 while|while
 condition|(
 name|consumer
@@ -1563,12 +1783,13 @@ operator|!=
 literal|null
 condition|)
 block|{         }
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 comment|//
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|producer
 operator|.
 name|send
@@ -1589,9 +1810,7 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 name|LOG
@@ -1631,6 +1850,9 @@ name|Message
 argument_list|>
 argument_list|()
 decl_stmt|;
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|Message
 name|message
 init|=
@@ -1675,13 +1897,14 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|rollback
+name|rollbackTx
 argument_list|()
 expr_stmt|;
 comment|// Consume again.. the prev message should
 comment|// get redelivered.
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|message
 operator|=
 name|consumer
@@ -1756,9 +1979,7 @@ name|receiveNoWait
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 name|Message
@@ -1839,6 +2060,9 @@ literal|"Fourth Message"
 argument_list|)
 block|}
 decl_stmt|;
+name|beginTx
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -1868,12 +2092,13 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 comment|// receives the first message
+name|beginTx
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -1924,9 +2149,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// validates that the rollbacked was not consumed
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 block|}
@@ -2020,6 +2243,9 @@ argument_list|)
 block|}
 decl_stmt|;
 comment|// lets consume any outstanding messages from prev test runs
+name|beginTx
+argument_list|()
+expr_stmt|;
 while|while
 condition|(
 name|consumer
@@ -2030,12 +2256,13 @@ operator|!=
 literal|null
 condition|)
 block|{         }
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 comment|// sends the messages
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|producer
 operator|.
 name|send
@@ -2056,9 +2283,7 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 name|LOG
@@ -2084,6 +2309,9 @@ index|[
 literal|1
 index|]
 argument_list|)
+expr_stmt|;
+name|beginTx
+argument_list|()
 expr_stmt|;
 name|TextMessage
 name|message
@@ -2122,9 +2350,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 comment|// Create a new consumer
@@ -2147,6 +2373,9 @@ literal|"Created consumer: "
 operator|+
 name|consumer
 argument_list|)
+expr_stmt|;
+name|beginTx
+argument_list|()
 expr_stmt|;
 name|message
 operator|=
@@ -2176,9 +2405,7 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 block|}
@@ -2228,6 +2455,9 @@ argument_list|,
 literal|"abc"
 argument_list|)
 expr_stmt|;
+name|beginTx
+argument_list|()
+expr_stmt|;
 name|producer
 operator|.
 name|send
@@ -2235,9 +2465,7 @@ argument_list|(
 name|outbound
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 name|LOG
@@ -2246,6 +2474,9 @@ name|info
 argument_list|(
 literal|"About to consume message 1"
 argument_list|)
+expr_stmt|;
+name|beginTx
+argument_list|()
 expr_stmt|;
 name|Message
 name|message
@@ -2316,9 +2547,10 @@ argument_list|(
 literal|"This should never be seen!"
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|rollback
+name|rollbackTx
+argument_list|()
+expr_stmt|;
+name|beginTx
 argument_list|()
 expr_stmt|;
 name|message
@@ -2350,9 +2582,7 @@ argument_list|,
 name|body
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 block|}
@@ -2476,7 +2706,7 @@ name|void
 name|reconnect
 parameter_list|()
 throws|throws
-name|JMSException
+name|Exception
 block|{
 if|if
 condition|(
@@ -2588,13 +2818,6 @@ block|{
 name|ActiveMQPrefetchPolicy
 name|prefetchPolicy
 init|=
-operator|(
-operator|(
-name|ActiveMQConnection
-operator|)
-name|connection
-operator|)
-operator|.
 name|getPrefetchPolicy
 argument_list|()
 decl_stmt|;
@@ -2627,6 +2850,24 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+specifier|protected
+name|ActiveMQPrefetchPolicy
+name|getPrefetchPolicy
+parameter_list|()
+block|{
+return|return
+operator|(
+operator|(
+name|ActiveMQConnection
+operator|)
+name|connection
+operator|)
+operator|.
+name|getPrefetchPolicy
+argument_list|()
+return|;
+block|}
+comment|//This test won't work with xa tx so no beginTx() has been added.
 specifier|public
 name|void
 name|testMessageListener
@@ -2665,9 +2906,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 name|consumer
@@ -2760,9 +2999,7 @@ condition|)
 block|{
 try|try
 block|{
-name|session
-operator|.
-name|rollback
+name|rollbackTx
 argument_list|()
 expr_stmt|;
 name|resendPhase
@@ -2805,9 +3042,7 @@ condition|)
 block|{
 try|try
 block|{
-name|session
-operator|.
-name|commit
+name|commitTx
 argument_list|()
 expr_stmt|;
 block|}

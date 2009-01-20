@@ -541,6 +541,19 @@ name|transacted
 operator|=
 name|transacted
 expr_stmt|;
+if|if
+condition|(
+name|transacted
+condition|)
+block|{
+name|setAckMode
+argument_list|(
+name|Session
+operator|.
+name|SESSION_TRANSACTED
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Returns the delivery mode.      *       * @return deliveryMode      */
 specifier|public
