@@ -315,6 +315,12 @@ expr_stmt|;
 if|if
 condition|(
 name|result
+operator|&&
+operator|!
+name|subscription
+operator|.
+name|isFull
+argument_list|()
 condition|)
 block|{
 name|QueueMessageReference
