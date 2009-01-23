@@ -425,9 +425,10 @@ name|connector
 operator|.
 name|getConnectUri
 argument_list|()
+operator|+
+literal|"?jms.prefetchPolicy.all=1"
 argument_list|)
 decl_stmt|;
-comment|//ActiveMQConnectionFactory connFactory = new ActiveMQConnectionFactory("vm://localhost?broker.persistent=false");
 name|connection
 operator|=
 name|connFactory
