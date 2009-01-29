@@ -311,6 +311,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|RemoveInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|management
 operator|.
 name|JMSConsumerStatsImpl
@@ -520,7 +534,7 @@ argument_list|()
 decl_stmt|;
 comment|// The are the messages that were delivered to the consumer but that have
 comment|// not been acknowledged. It's kept in reverse order since we
-comment|// Always walk list in reverse order. Only used when session is client ack.
+comment|// Always walk list in reverse order.
 specifier|private
 specifier|final
 name|LinkedList
@@ -629,6 +643,10 @@ decl_stmt|;
 specifier|private
 name|MessageAck
 name|pendingAck
+decl_stmt|;
+specifier|private
+name|long
+name|lastDeliveredSequenceId
 decl_stmt|;
 comment|/**      * Create a MessageConsumer      *       * @param session      * @param dest      * @param name      * @param selector      * @param prefetch      * @param maximumPendingMessageCount TODO      * @param noLocal      * @param browser      * @param dispatchAsync      * @param messageListener      * @throws JMSException      */
 specifier|public
@@ -2267,16 +2285,28 @@ block|{
 name|dispose
 argument_list|()
 expr_stmt|;
+name|RemoveInfo
+name|removeCommand
+init|=
+name|info
+operator|.
+name|createRemoveCommand
+argument_list|()
+decl_stmt|;
+name|removeCommand
+operator|.
+name|setLastDeliveredSequenceId
+argument_list|(
+name|lastDeliveredSequenceId
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|session
 operator|.
 name|asyncSendPacket
 argument_list|(
-name|info
-operator|.
-name|createRemoveCommand
-argument_list|()
+name|removeCommand
 argument_list|)
 expr_stmt|;
 block|}
@@ -2490,15 +2520,8 @@ name|isClosed
 argument_list|()
 condition|)
 block|{
-comment|//            if ( !deliveredMessages.isEmpty() ) {
-comment|//                // We need to let the broker know how many times that message
-comment|//                // was rolled back.
-comment|//                rollbackCounter++;
-comment|//                MessageDispatch lastMd = deliveredMessages.get(0);
-comment|//            }
 comment|// Do we have any acks we need to send out before closing?
 comment|// Ack any delivered messages now.
-comment|// only processes optimized acknowledgements
 if|if
 condition|(
 operator|!
@@ -2854,6 +2877,19 @@ operator|.
 name|getNextDeliveryId
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|lastDeliveredSequenceId
+operator|=
+name|md
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|getMessageId
+argument_list|()
+operator|.
+name|getBrokerSequenceId
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -4636,6 +4672,15 @@ name|equals
 argument_list|(
 name|destination
 argument_list|)
+return|;
+block|}
+specifier|public
+name|long
+name|getLastDeliveredSequenceId
+parameter_list|()
+block|{
+return|return
+name|lastDeliveredSequenceId
 return|;
 block|}
 block|}

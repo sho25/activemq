@@ -1202,6 +1202,8 @@ argument_list|(
 name|context
 argument_list|,
 name|sub
+argument_list|,
+literal|0l
 argument_list|)
 expr_stmt|;
 block|}
@@ -1795,6 +1797,11 @@ argument_list|(
 name|context
 argument_list|,
 name|sub
+argument_list|,
+name|info
+operator|.
+name|getLastDeliveredSequenceId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

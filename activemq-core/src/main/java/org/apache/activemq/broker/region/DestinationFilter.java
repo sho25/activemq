@@ -401,6 +401,9 @@ name|context
 parameter_list|,
 name|Subscription
 name|sub
+parameter_list|,
+name|long
+name|lastDeliveredSequenceId
 parameter_list|)
 throws|throws
 name|Exception
@@ -412,6 +415,8 @@ argument_list|(
 name|context
 argument_list|,
 name|sub
+argument_list|,
+name|lastDeliveredSequenceId
 argument_list|)
 expr_stmt|;
 block|}

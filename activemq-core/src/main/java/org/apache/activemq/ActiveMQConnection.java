@@ -731,6 +731,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|RemoveInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|RemoveSubscriptionInfo
 import|;
 end_import
@@ -2453,6 +2467,11 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+name|long
+name|lastDeliveredSequenceId
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 name|Iterator
@@ -2487,6 +2506,20 @@ name|s
 operator|.
 name|dispose
 argument_list|()
+expr_stmt|;
+name|lastDeliveredSequenceId
+operator|=
+name|Math
+operator|.
+name|max
+argument_list|(
+name|lastDeliveredSequenceId
+argument_list|,
+name|s
+operator|.
+name|getLastDeliveredSequenceId
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 for|for
@@ -2605,6 +2638,21 @@ block|{
 comment|// If we announced ourselfs to the broker.. Try to let
 comment|// the broker
 comment|// know that the connection is being shutdown.
+name|RemoveInfo
+name|removeCommand
+init|=
+name|info
+operator|.
+name|createRemoveCommand
+argument_list|()
+decl_stmt|;
+name|removeCommand
+operator|.
+name|setLastDeliveredSequenceId
+argument_list|(
+name|lastDeliveredSequenceId
+argument_list|)
+expr_stmt|;
 name|doSyncSendPacket
 argument_list|(
 name|info

@@ -439,6 +439,9 @@ name|processRemoveConnection
 parameter_list|(
 name|ConnectionId
 name|id
+parameter_list|,
+name|long
+name|lastDeliveredSequenceId
 parameter_list|)
 throws|throws
 name|Exception
@@ -448,6 +451,9 @@ name|processRemoveSession
 parameter_list|(
 name|SessionId
 name|id
+parameter_list|,
+name|long
+name|lastDeliveredSequenceId
 parameter_list|)
 throws|throws
 name|Exception
@@ -466,6 +472,9 @@ name|processRemoveConsumer
 parameter_list|(
 name|ConsumerId
 name|id
+parameter_list|,
+name|long
+name|lastDeliveredSequenceId
 parameter_list|)
 throws|throws
 name|Exception

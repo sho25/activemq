@@ -318,7 +318,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|1000
+literal|2000
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -337,7 +337,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|1000
+literal|2000
 argument_list|)
 expr_stmt|;
 name|assertNotNull
@@ -370,7 +370,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|2000
 argument_list|)
 expr_stmt|;
 name|assertNotNull

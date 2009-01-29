@@ -206,6 +206,13 @@ argument_list|>
 name|networkConsumerIds
 decl_stmt|;
 comment|// the original consumerId
+comment|// not marshalled, populated from RemoveInfo, the last message delivered, used
+comment|// to suppress redelivery on prefetched messages after close
+specifier|private
+specifier|transient
+name|long
+name|lastDeliveredSequenceId
+decl_stmt|;
 comment|// originated from a
 comment|// network connection
 specifier|public
@@ -1175,6 +1182,30 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+specifier|public
+name|void
+name|setLastDeliveredSequenceId
+parameter_list|(
+name|long
+name|lastDeliveredSequenceId
+parameter_list|)
+block|{
+name|this
+operator|.
+name|lastDeliveredSequenceId
+operator|=
+name|lastDeliveredSequenceId
+expr_stmt|;
+block|}
+specifier|public
+name|long
+name|getLastDeliveredSequenceId
+parameter_list|()
+block|{
+return|return
+name|lastDeliveredSequenceId
+return|;
 block|}
 block|}
 end_class
