@@ -146,7 +146,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @version $Rev:$ $Date:$  */
+comment|/**  * @version $Rev$ $Date$  */
 end_comment
 
 begin_class
@@ -189,6 +189,49 @@ specifier|private
 name|Xid
 name|xid
 decl_stmt|;
+comment|// TODO fix for XA
+specifier|public
+name|void
+name|testReceiveTwoThenCloseConnection
+parameter_list|()
+throws|throws
+name|Exception
+block|{}
+specifier|public
+name|void
+name|testReceiveRollback
+parameter_list|()
+throws|throws
+name|Exception
+block|{}
+specifier|public
+name|void
+name|testReceiveTwoThenRollback
+parameter_list|()
+throws|throws
+name|Exception
+block|{}
+specifier|public
+name|void
+name|testReceiveTwoThenRollbackManyTimes
+parameter_list|()
+throws|throws
+name|Exception
+block|{}
+specifier|public
+name|void
+name|testReceiveRollbackWithPrefetchOfOne
+parameter_list|()
+throws|throws
+name|Exception
+block|{}
+specifier|public
+name|void
+name|testChangeMutableObjectInObjectMessageThenRollback
+parameter_list|()
+throws|throws
+name|Exception
+block|{}
 annotation|@
 name|Override
 specifier|protected
