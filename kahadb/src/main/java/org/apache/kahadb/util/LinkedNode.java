@@ -719,7 +719,7 @@ block|}
 block|}
 comment|/**      * Removes this node out of the linked list it is chained in.      */
 specifier|public
-name|void
+name|boolean
 name|unlink
 parameter_list|()
 block|{
@@ -731,7 +731,9 @@ operator|==
 literal|null
 condition|)
 block|{
-return|return;
+return|return
+literal|false
+return|;
 block|}
 if|if
 condition|(
@@ -789,6 +791,9 @@ name|list
 operator|=
 literal|null
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 comment|/**      * Splits the list into 2 lists. This node becomes the tail of this list.      * Then 2nd list is returned.      *       * @return An empty list if this is a tail node.      */
 specifier|public
@@ -1095,6 +1100,18 @@ return|return
 name|list
 operator|!=
 literal|null
+return|;
+block|}
+specifier|public
+name|LinkedNodeList
+argument_list|<
+name|T
+argument_list|>
+name|getList
+parameter_list|()
+block|{
+return|return
+name|list
 return|;
 block|}
 block|}
