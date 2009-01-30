@@ -507,6 +507,19 @@ operator|new
 name|PolicyEntry
 argument_list|()
 decl_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"testing with consumersBeforeDispatchStarts="
+operator|+
+name|consumersBeforeDispatchStarts
+operator|+
+literal|" and timeBeforeDispatchStarts="
+operator|+
+name|timeBeforeDispatchStarts
+argument_list|)
+expr_stmt|;
 name|policy
 operator|.
 name|setConsumersBeforeDispatchStarts
@@ -981,6 +994,28 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|"worker "
+operator|+
+name|worker
+operator|+
+literal|" received "
+operator|+
+name|messageCount
+operator|.
+name|get
+argument_list|(
+name|worker
+argument_list|)
+operator|+
+literal|" messages from groups "
+operator|+
+name|messageGroups
+operator|.
+name|get
+argument_list|(
+name|worker
+argument_list|)
+argument_list|,
 literal|10
 argument_list|,
 name|messageCount
@@ -996,6 +1031,28 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|"worker "
+operator|+
+name|worker
+operator|+
+literal|" received "
+operator|+
+name|messageCount
+operator|.
+name|get
+argument_list|(
+name|worker
+argument_list|)
+operator|+
+literal|" messages from groups "
+operator|+
+name|messageGroups
+operator|.
+name|get
+argument_list|(
+name|worker
+argument_list|)
+argument_list|,
 literal|1
 argument_list|,
 name|messageGroups
