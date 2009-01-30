@@ -1664,11 +1664,6 @@ condition|(
 name|inAckRange
 condition|)
 block|{
-name|node
-operator|.
-name|incrementRedeliveryCounter
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|ack

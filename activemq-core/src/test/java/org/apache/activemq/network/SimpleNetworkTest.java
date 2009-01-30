@@ -894,11 +894,15 @@ control|)
 block|{
 name|assertNotNull
 argument_list|(
+literal|"message count: "
+operator|+
+name|i
+argument_list|,
 name|remoteConsumer
 operator|.
 name|receive
 argument_list|(
-literal|500
+literal|1000
 argument_list|)
 argument_list|)
 expr_stmt|;
