@@ -1205,12 +1205,6 @@ init|(
 name|dispatchLock
 init|)
 block|{
-comment|// ActiveMQ workaround for AMQ-1730 - Please Ignore next line
-name|node
-operator|.
-name|incrementRedeliveryCounter
-argument_list|()
-expr_stmt|;
 name|node
 operator|.
 name|getRegionDestination
