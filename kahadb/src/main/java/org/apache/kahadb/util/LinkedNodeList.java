@@ -314,6 +314,15 @@ name|T
 name|rotate
 parameter_list|()
 block|{
+if|if
+condition|(
+name|head
+operator|==
+literal|null
+condition|)
+return|return
+literal|null
+return|;
 return|return
 name|head
 operator|=
