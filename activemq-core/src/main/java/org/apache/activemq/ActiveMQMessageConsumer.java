@@ -2217,18 +2217,11 @@ if|if
 condition|(
 name|session
 operator|.
-name|isTransacted
-argument_list|()
-operator|&&
-name|session
-operator|.
 name|getTransactionContext
 argument_list|()
 operator|.
-name|getTransactionId
+name|isInTransaction
 argument_list|()
-operator|!=
-literal|null
 condition|)
 block|{
 name|session
@@ -2527,7 +2520,7 @@ condition|(
 operator|!
 name|session
 operator|.
-name|isTransacted
+name|getTransacted
 argument_list|()
 condition|)
 block|{
@@ -2917,7 +2910,7 @@ if|if
 condition|(
 name|session
 operator|.
-name|isTransacted
+name|getTransacted
 argument_list|()
 condition|)
 block|{
@@ -2982,7 +2975,7 @@ if|if
 condition|(
 name|session
 operator|.
-name|isTransacted
+name|getTransacted
 argument_list|()
 condition|)
 block|{
@@ -3269,7 +3262,7 @@ if|if
 condition|(
 name|session
 operator|.
-name|isTransacted
+name|getTransacted
 argument_list|()
 condition|)
 block|{
@@ -3505,7 +3498,7 @@ if|if
 condition|(
 name|session
 operator|.
-name|isTransacted
+name|getTransacted
 argument_list|()
 condition|)
 block|{
@@ -3568,7 +3561,7 @@ condition|(
 operator|!
 name|session
 operator|.
-name|isTransacted
+name|getTransacted
 argument_list|()
 condition|)
 block|{

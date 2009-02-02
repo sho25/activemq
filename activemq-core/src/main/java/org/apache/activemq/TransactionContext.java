@@ -447,6 +447,17 @@ name|isLocalTransaction
 argument_list|()
 return|;
 block|}
+specifier|public
+name|boolean
+name|isInTransaction
+parameter_list|()
+block|{
+return|return
+name|transactionId
+operator|!=
+literal|null
+return|;
+block|}
 comment|/**      * @return Returns the localTransactionEventListener.      */
 specifier|public
 name|LocalTransactionEventListener

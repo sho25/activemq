@@ -5054,7 +5054,7 @@ operator|.
 name|isSendAcksAsync
 argument_list|()
 operator|||
-name|isTransacted
+name|getTransacted
 argument_list|()
 condition|)
 block|{
