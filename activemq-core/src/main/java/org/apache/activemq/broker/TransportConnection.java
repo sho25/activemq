@@ -1498,6 +1498,24 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
+if|if
+condition|(
+operator|!
+operator|(
+name|o
+operator|instanceof
+name|Command
+operator|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Protocol violation - Command corrupted"
+argument_list|)
+throw|;
+block|}
 name|Command
 name|command
 init|=
