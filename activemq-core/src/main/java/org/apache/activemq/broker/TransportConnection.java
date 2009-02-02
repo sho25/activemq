@@ -1512,7 +1512,12 @@ throw|throw
 operator|new
 name|RuntimeException
 argument_list|(
-literal|"Protocol violation - Command corrupted"
+literal|"Protocol violation - Command corrupted: "
+operator|+
+name|o
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 throw|;
 block|}
