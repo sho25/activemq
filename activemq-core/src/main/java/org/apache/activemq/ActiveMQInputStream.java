@@ -514,9 +514,7 @@ operator|=
 literal|"JMSType='org.apache.activemq.Stream'"
 expr_stmt|;
 block|}
-operator|new
 name|SelectorParser
-argument_list|()
 operator|.
 name|parse
 argument_list|(

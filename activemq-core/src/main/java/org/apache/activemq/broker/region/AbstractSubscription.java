@@ -419,9 +419,7 @@ condition|)
 block|{
 name|rc
 operator|=
-operator|new
 name|SelectorParser
-argument_list|()
 operator|.
 name|parse
 argument_list|(

@@ -424,9 +424,7 @@ throws|throws
 name|Exception
 block|{
 return|return
-operator|new
 name|SelectorParser
-argument_list|()
 operator|.
 name|parse
 argument_list|(

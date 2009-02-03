@@ -5595,9 +5595,7 @@ specifier|final
 name|BooleanExpression
 name|selectorExpression
 init|=
-operator|new
 name|SelectorParser
-argument_list|()
 operator|.
 name|parse
 argument_list|(

@@ -205,9 +205,7 @@ name|selector
 expr_stmt|;
 name|setFilter
 argument_list|(
-operator|new
 name|SelectorParser
-argument_list|()
 operator|.
 name|parse
 argument_list|(

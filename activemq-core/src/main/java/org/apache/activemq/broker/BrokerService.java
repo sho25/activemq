@@ -225,6 +225,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|selector
+operator|.
+name|SelectorParser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|advisory
 operator|.
 name|AdvisoryBroker
@@ -2752,6 +2766,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Clear SelectorParser cache to free memory
+name|SelectorParser
+operator|.
+name|clearCache
+argument_list|()
+expr_stmt|;
 name|stopped
 operator|.
 name|set

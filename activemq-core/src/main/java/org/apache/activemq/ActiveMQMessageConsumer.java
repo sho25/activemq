@@ -1041,9 +1041,7 @@ literal|0
 condition|)
 block|{
 comment|// Validate the selector
-operator|new
 name|SelectorParser
-argument_list|()
 operator|.
 name|parse
 argument_list|(
@@ -1078,9 +1076,7 @@ literal|null
 condition|)
 block|{
 comment|// Validate the selector
-operator|new
 name|SelectorParser
-argument_list|()
 operator|.
 name|parse
 argument_list|(

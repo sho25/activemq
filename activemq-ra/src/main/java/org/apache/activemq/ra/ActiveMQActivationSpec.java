@@ -944,9 +944,7 @@ name|messageSelector
 argument_list|)
 condition|)
 block|{
-operator|new
 name|SelectorParser
-argument_list|()
 operator|.
 name|parse
 argument_list|(

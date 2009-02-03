@@ -840,9 +840,7 @@ literal|null
 condition|?
 literal|null
 else|:
-operator|new
 name|SelectorParser
-argument_list|()
 operator|.
 name|parse
 argument_list|(
@@ -1068,9 +1066,7 @@ literal|null
 condition|?
 literal|null
 else|:
-operator|new
 name|SelectorParser
-argument_list|()
 operator|.
 name|parse
 argument_list|(
@@ -1301,9 +1297,7 @@ literal|null
 condition|?
 literal|null
 else|:
-operator|new
 name|SelectorParser
-argument_list|()
 operator|.
 name|parse
 argument_list|(

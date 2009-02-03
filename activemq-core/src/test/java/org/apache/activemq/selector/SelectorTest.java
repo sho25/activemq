@@ -1914,9 +1914,7 @@ name|JMSException
 block|{
 try|try
 block|{
-operator|new
 name|SelectorParser
-argument_list|()
 operator|.
 name|parse
 argument_list|(
@@ -1955,9 +1953,7 @@ block|{
 name|BooleanExpression
 name|selector
 init|=
-operator|new
 name|SelectorParser
-argument_list|()
 operator|.
 name|parse
 argument_list|(
