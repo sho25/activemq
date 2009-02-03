@@ -332,6 +332,38 @@ name|getNextCircular
 argument_list|()
 return|;
 block|}
+comment|/**      * Move the head to the tail and returns the new head node.      *       * @return      */
+specifier|public
+name|void
+name|rotateTo
+parameter_list|(
+name|T
+name|head
+parameter_list|)
+block|{
+assert|assert
+name|head
+operator|!=
+literal|null
+operator|:
+literal|"Cannot rotate to a null head"
+assert|;
+assert|assert
+name|head
+operator|.
+name|list
+operator|==
+name|this
+operator|:
+literal|"Cannot rotate to a node not linked to this list"
+assert|;
+name|this
+operator|.
+name|head
+operator|=
+name|head
+expr_stmt|;
+block|}
 specifier|public
 name|int
 name|size
