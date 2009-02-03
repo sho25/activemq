@@ -164,7 +164,7 @@ name|LocalAndXATransaction
 argument_list|(
 name|session
 operator|.
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|getTransactionContext

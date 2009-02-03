@@ -334,10 +334,7 @@ block|{
 return|return
 name|session
 operator|.
-name|getSession
-argument_list|()
-operator|.
-name|getTransactionContext
+name|getXAResource
 argument_list|()
 return|;
 block|}

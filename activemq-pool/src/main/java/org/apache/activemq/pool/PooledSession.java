@@ -269,6 +269,38 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|XASession
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Session
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|transaction
+operator|.
+name|xa
+operator|.
+name|XAResource
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -364,9 +396,13 @@ specifier|public
 class|class
 name|PooledSession
 implements|implements
+name|Session
+implements|,
 name|TopicSession
 implements|,
 name|QueueSession
+implements|,
+name|XASession
 block|{
 specifier|private
 specifier|static
@@ -515,7 +551,7 @@ condition|)
 block|{
 comment|// TODO a cleaner way to reset??
 comment|// lets reset the session
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|setMessageListener
@@ -610,7 +646,7 @@ condition|)
 block|{
 try|try
 block|{
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|rollback
@@ -685,7 +721,7 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|commit
@@ -700,7 +736,7 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createBytesMessage
@@ -715,7 +751,7 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createMapMessage
@@ -730,7 +766,7 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createMessage
@@ -745,7 +781,7 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createObjectMessage
@@ -763,7 +799,7 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createObjectMessage
@@ -783,7 +819,7 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createQueue
@@ -800,7 +836,7 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createStreamMessage
@@ -815,7 +851,7 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createTemporaryQueue
@@ -830,7 +866,7 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createTemporaryTopic
@@ -847,7 +883,7 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|unsubscribe
@@ -864,7 +900,7 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createTextMessage
@@ -882,7 +918,7 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createTextMessage
@@ -902,7 +938,7 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createTopic
@@ -919,7 +955,7 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|getAcknowledgeMode
@@ -934,7 +970,7 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|getTransacted
@@ -948,7 +984,7 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|recover
@@ -962,12 +998,48 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|rollback
 argument_list|()
 expr_stmt|;
+block|}
+specifier|public
+name|XAResource
+name|getXAResource
+parameter_list|()
+block|{
+if|if
+condition|(
+name|session
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Session is closed"
+argument_list|)
+throw|;
+block|}
+return|return
+name|session
+operator|.
+name|getTransactionContext
+argument_list|()
+return|;
+block|}
+specifier|public
+name|Session
+name|getSession
+parameter_list|()
+block|{
+return|return
+name|this
+return|;
 block|}
 specifier|public
 name|void
@@ -1003,7 +1075,7 @@ block|{
 return|return
 name|addQueueBrowser
 argument_list|(
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createBrowser
@@ -1029,7 +1101,7 @@ block|{
 return|return
 name|addQueueBrowser
 argument_list|(
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createBrowser
@@ -1054,7 +1126,7 @@ block|{
 return|return
 name|addConsumer
 argument_list|(
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createConsumer
@@ -1080,7 +1152,7 @@ block|{
 return|return
 name|addConsumer
 argument_list|(
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createConsumer
@@ -1111,7 +1183,7 @@ block|{
 return|return
 name|addConsumer
 argument_list|(
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createConsumer
@@ -1141,7 +1213,7 @@ block|{
 return|return
 name|addTopicSubscriber
 argument_list|(
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createDurableSubscriber
@@ -1175,7 +1247,7 @@ block|{
 return|return
 name|addTopicSubscriber
 argument_list|(
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createDurableSubscriber
@@ -1199,7 +1271,7 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|getMessageListener
@@ -1216,7 +1288,7 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|setMessageListener
@@ -1238,7 +1310,7 @@ block|{
 return|return
 name|addTopicSubscriber
 argument_list|(
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createSubscriber
@@ -1267,7 +1339,7 @@ block|{
 return|return
 name|addTopicSubscriber
 argument_list|(
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createSubscriber
@@ -1294,7 +1366,7 @@ block|{
 return|return
 name|addQueueReceiver
 argument_list|(
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createReceiver
@@ -1320,7 +1392,7 @@ block|{
 return|return
 name|addQueueReceiver
 argument_list|(
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createReceiver
@@ -1401,7 +1473,7 @@ comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
 specifier|protected
 name|ActiveMQSession
-name|getSession
+name|getInternalSession
 parameter_list|()
 throws|throws
 name|AlreadyClosedException
@@ -1444,7 +1516,7 @@ operator|=
 operator|(
 name|ActiveMQMessageProducer
 operator|)
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createProducer
@@ -1476,7 +1548,7 @@ operator|=
 operator|(
 name|ActiveMQQueueSender
 operator|)
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createSender
@@ -1508,7 +1580,7 @@ operator|=
 operator|(
 name|ActiveMQTopicPublisher
 operator|)
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|createPublisher

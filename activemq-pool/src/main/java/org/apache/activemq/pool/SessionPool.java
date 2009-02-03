@@ -326,7 +326,7 @@ name|o
 decl_stmt|;
 name|session
 operator|.
-name|getSession
+name|getInternalSession
 argument_list|()
 operator|.
 name|close
