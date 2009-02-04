@@ -37,6 +37,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|MessageId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|broker
 operator|.
 name|ConnectionContext
@@ -121,6 +135,14 @@ name|setMemoryUsage
 parameter_list|(
 name|MemoryUsage
 name|memoryUsage
+parameter_list|)
+block|{     }
+specifier|public
+name|void
+name|setBatch
+parameter_list|(
+name|MessageId
+name|messageId
 parameter_list|)
 block|{     }
 block|}

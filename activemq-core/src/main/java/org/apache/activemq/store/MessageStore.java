@@ -246,6 +246,14 @@ name|ConnectionContext
 name|context
 parameter_list|)
 function_decl|;
+comment|/**      * allow caching cursors to set the current batch offset when cache is exhausted      * @param messageId      */
+name|void
+name|setBatch
+parameter_list|(
+name|MessageId
+name|messageId
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
