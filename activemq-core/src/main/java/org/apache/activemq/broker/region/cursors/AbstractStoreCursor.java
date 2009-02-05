@@ -845,6 +845,8 @@ parameter_list|(
 name|MessageId
 name|messageId
 parameter_list|)
+throws|throws
+name|Exception
 block|{     }
 specifier|public
 specifier|final

@@ -577,9 +577,46 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"max = "
+literal|"Max Violation = "
 operator|+
 name|max
+operator|+
+literal|" - Total SLA violations: "
+operator|+
+name|slaViolations
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"/"
+operator|+
+name|total
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|" ("
+operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%.6f"
+argument_list|,
+literal|100.0
+operator|*
+name|slaViolations
+operator|.
+name|get
+argument_list|()
+operator|/
+name|total
+operator|.
+name|get
+argument_list|()
+argument_list|)
+operator|+
+literal|"%)"
 argument_list|)
 expr_stmt|;
 block|}

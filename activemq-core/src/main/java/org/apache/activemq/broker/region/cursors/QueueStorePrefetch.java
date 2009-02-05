@@ -334,6 +334,8 @@ parameter_list|(
 name|MessageId
 name|messageId
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 name|store
 operator|.

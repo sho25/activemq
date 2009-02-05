@@ -253,6 +253,8 @@ parameter_list|(
 name|MessageId
 name|messageId
 parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
 block|}
 end_interface
