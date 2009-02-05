@@ -6556,6 +6556,15 @@ argument_list|,
 literal|"db"
 argument_list|)
 decl_stmt|;
+name|pf
+operator|.
+name|setEnableAsyncWrites
+argument_list|(
+operator|!
+name|isSyncWrites
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|pf
 return|;
