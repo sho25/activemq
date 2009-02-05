@@ -1966,6 +1966,8 @@ block|{
 name|cursorPos
 operator|=
 name|location
+operator|+
+literal|1
 expr_stmt|;
 block|}
 block|}

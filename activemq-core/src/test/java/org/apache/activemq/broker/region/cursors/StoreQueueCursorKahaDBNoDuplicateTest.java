@@ -86,17 +86,6 @@ name|StoreQueueCursorNoDuplicateTest
 block|{
 annotation|@
 name|Override
-specifier|public
-name|void
-name|testNoDuplicateAfterCacheFullAndReadPast
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// TODO - check out how best to implement setBatch on the store
-block|}
-annotation|@
-name|Override
 specifier|protected
 name|BrokerService
 name|createBroker
