@@ -807,24 +807,6 @@ literal|"target/activemq-data/kahadb"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|kaha
-operator|.
-name|deleteAllMessages
-argument_list|()
-expr_stmt|;
-name|kaha
-operator|.
-name|setCleanupInterval
-argument_list|(
-literal|1000
-operator|*
-literal|60
-operator|*
-literal|60
-operator|*
-literal|60
-argument_list|)
-expr_stmt|;
 comment|// The setEnableJournalDiskSyncs(false) setting is a little dangerous right now, as I have not verified
 comment|// what happens if the index is updated but a journal update is lost.
 comment|// Index is going to be in consistent, but can it be repaired?
@@ -833,6 +815,21 @@ operator|.
 name|setEnableJournalDiskSyncs
 argument_list|(
 literal|false
+argument_list|)
+expr_stmt|;
+comment|// Using a bigger journal file size makes he take fewer spikes as it is not switching files as often.
+name|kaha
+operator|.
+name|getJournal
+argument_list|()
+operator|.
+name|setMaxFileLength
+argument_list|(
+literal|1024
+operator|*
+literal|1024
+operator|*
+literal|100
 argument_list|)
 expr_stmt|;
 name|kaha
