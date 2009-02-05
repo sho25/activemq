@@ -156,6 +156,8 @@ name|messageId
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|Exception
 block|{     }
 block|}
 end_class
