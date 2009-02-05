@@ -1161,7 +1161,7 @@ block|}
 comment|/** 	 * Convert a stomp command 	 *  	 * @param command 	 */
 specifier|public
 name|void
-name|onStompCommad
+name|onStompCommand
 parameter_list|(
 name|StompFrame
 name|command
@@ -3051,6 +3051,13 @@ literal|"No subscription matched."
 argument_list|)
 throw|;
 block|}
+name|ConnectionInfo
+name|connectionInfo
+init|=
+operator|new
+name|ConnectionInfo
+argument_list|()
+decl_stmt|;
 specifier|protected
 name|void
 name|onStompConnect
@@ -3140,14 +3147,6 @@ name|Connect
 operator|.
 name|CLIENT_ID
 argument_list|)
-decl_stmt|;
-specifier|final
-name|ConnectionInfo
-name|connectionInfo
-init|=
-operator|new
-name|ConnectionInfo
-argument_list|()
 decl_stmt|;
 name|IntrospectionSupport
 operator|.
@@ -3550,6 +3549,19 @@ argument_list|()
 expr_stmt|;
 name|sendToActiveMQ
 argument_list|(
+name|connectionInfo
+operator|.
+name|createRemoveCommand
+argument_list|()
+argument_list|,
+name|createResponseHandler
+argument_list|(
+name|command
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|sendToActiveMQ
+argument_list|(
 operator|new
 name|ShutdownInfo
 argument_list|()
@@ -3596,7 +3608,7 @@ block|}
 comment|/**      * Dispatch a ActiveMQ command      *       * @param command      * @throws IOException      */
 specifier|public
 name|void
-name|onActiveMQCommad
+name|onActiveMQCommand
 parameter_list|(
 name|Command
 name|command

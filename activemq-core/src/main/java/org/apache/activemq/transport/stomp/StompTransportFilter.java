@@ -249,7 +249,7 @@ name|o
 decl_stmt|;
 name|protocolConverter
 operator|.
-name|onActiveMQCommad
+name|onActiveMQCommand
 argument_list|(
 name|command
 argument_list|)
@@ -298,7 +298,7 @@ expr_stmt|;
 block|}
 name|protocolConverter
 operator|.
-name|onStompCommad
+name|onStompCommand
 argument_list|(
 operator|(
 name|StompFrame
