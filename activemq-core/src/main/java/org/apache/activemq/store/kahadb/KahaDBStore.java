@@ -1233,7 +1233,7 @@ name|store
 argument_list|(
 name|command
 argument_list|,
-name|isSyncWrites
+name|isEnableJournalDiskSyncs
 argument_list|()
 operator|&&
 name|message
@@ -1300,7 +1300,7 @@ name|store
 argument_list|(
 name|command
 argument_list|,
-name|isSyncWrites
+name|isEnableJournalDiskSyncs
 argument_list|()
 operator|&&
 name|ack
@@ -2091,7 +2091,7 @@ name|store
 argument_list|(
 name|command
 argument_list|,
-name|isSyncWrites
+name|isEnableJournalDiskSyncs
 argument_list|()
 operator|&&
 literal|true
@@ -2141,7 +2141,7 @@ name|store
 argument_list|(
 name|command
 argument_list|,
-name|isSyncWrites
+name|isEnableJournalDiskSyncs
 argument_list|()
 operator|&&
 literal|true
