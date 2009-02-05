@@ -743,6 +743,16 @@ operator|.
 name|deleteAllMessages
 argument_list|()
 expr_stmt|;
+name|kaha
+operator|.
+name|getPageFile
+argument_list|()
+operator|.
+name|setWriteBatchSize
+argument_list|(
+literal|10
+argument_list|)
+expr_stmt|;
 name|broker
 operator|.
 name|setPersistenceAdapter

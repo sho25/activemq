@@ -598,6 +598,13 @@ operator|new
 name|AtomicBoolean
 argument_list|()
 decl_stmt|;
+comment|// The number of pages we are aiming to write every time we
+comment|// write to disk.
+name|int
+name|writeBatchSize
+init|=
+literal|1000
+decl_stmt|;
 comment|// We keep a cache of pages recently used?
 specifier|private
 name|LRUCache
@@ -3290,7 +3297,7 @@ operator|*
 literal|100
 operator|)
 operator|/
-literal|1000
+name|writeBatchSize
 operator|)
 decl_stmt|;
 if|if
@@ -4338,6 +4345,30 @@ return|return
 name|getMainPageFile
 argument_list|()
 return|;
+block|}
+specifier|public
+name|int
+name|getWriteBatchSize
+parameter_list|()
+block|{
+return|return
+name|writeBatchSize
+return|;
+block|}
+specifier|public
+name|void
+name|setWriteBatchSize
+parameter_list|(
+name|int
+name|writeBatchSize
+parameter_list|)
+block|{
+name|this
+operator|.
+name|writeBatchSize
+operator|=
+name|writeBatchSize
+expr_stmt|;
 block|}
 block|}
 end_class
