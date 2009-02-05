@@ -1377,6 +1377,27 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setBatch
+parameter_list|(
+name|MessageId
+name|messageId
+parameter_list|)
+block|{
+name|lastMessageId
+operator|.
+name|set
+argument_list|(
+name|messageId
+operator|.
+name|getBrokerSequenceId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

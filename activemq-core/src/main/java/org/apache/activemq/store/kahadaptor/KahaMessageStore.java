@@ -736,6 +736,26 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setBatch
+parameter_list|(
+name|MessageId
+name|messageId
+parameter_list|)
+block|{
+name|batchEntry
+operator|=
+name|messageContainer
+operator|.
+name|getEntry
+argument_list|(
+name|messageId
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

@@ -4241,8 +4241,6 @@ argument_list|(
 literal|2
 argument_list|,
 name|nextSeq
-operator|-
-name|maxReturned
 argument_list|)
 expr_stmt|;
 name|rs

@@ -822,6 +822,10 @@ condition|(
 name|cacheEnabled
 condition|)
 block|{
+name|cacheEnabled
+operator|=
+literal|false
+expr_stmt|;
 comment|// sync with store on disabling the cache
 name|setBatch
 argument_list|(
@@ -829,10 +833,6 @@ name|lastCachedId
 argument_list|)
 expr_stmt|;
 block|}
-name|cacheEnabled
-operator|=
-literal|false
-expr_stmt|;
 block|}
 name|size
 operator|++

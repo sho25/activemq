@@ -1868,6 +1868,16 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setBatch
+parameter_list|(
+name|MessageId
+name|messageId
+parameter_list|)
+block|{         }
 specifier|public
 name|void
 name|setMemoryUsage

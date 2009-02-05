@@ -745,6 +745,21 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setBatch
+parameter_list|(
+name|MessageId
+name|messageId
+parameter_list|)
+block|{
+name|lastBatchId
+operator|=
+name|messageId
+expr_stmt|;
+block|}
 block|}
 end_class
 
