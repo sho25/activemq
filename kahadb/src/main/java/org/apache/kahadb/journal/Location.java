@@ -228,20 +228,6 @@ operator|=
 name|size
 expr_stmt|;
 block|}
-comment|/**      * @return the size of the payload of the record.      */
-specifier|public
-name|int
-name|getPaylodSize
-parameter_list|()
-block|{
-return|return
-name|size
-operator|-
-name|Journal
-operator|.
-name|ITEM_HEAD_FOOT_SPACE
-return|;
-block|}
 specifier|public
 name|int
 name|getOffset

@@ -87,7 +87,7 @@ block|{
 specifier|private
 specifier|final
 name|Journal
-name|dataManager
+name|journal
 decl_stmt|;
 specifier|private
 specifier|final
@@ -192,7 +192,7 @@ operator|=
 operator|new
 name|DataFileAccessor
 argument_list|(
-name|dataManager
+name|journal
 argument_list|,
 name|file
 argument_list|)
@@ -202,9 +202,6 @@ else|else
 block|{
 name|rc
 operator|=
-operator|(
-name|DataFileAccessor
-operator|)
 name|pool
 operator|.
 name|remove
@@ -341,7 +338,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|dataManager
+name|journal
 operator|=
 name|dataManager
 expr_stmt|;
@@ -354,6 +351,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Pool
+argument_list|>
 name|iter
 init|=
 name|pools
@@ -374,9 +374,6 @@ block|{
 name|Pool
 name|pool
 init|=
-operator|(
-name|Pool
-operator|)
 name|iter
 operator|.
 name|next

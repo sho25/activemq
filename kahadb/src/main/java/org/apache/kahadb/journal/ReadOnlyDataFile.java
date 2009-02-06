@@ -45,20 +45,6 @@ name|RandomAccessFile
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|kahadb
-operator|.
-name|util
-operator|.
-name|IOHelper
-import|;
-end_import
-
 begin_comment
 comment|/**  * Allows you to open a data file in read only mode.  Useful when working with   * archived data files.  */
 end_comment

@@ -165,15 +165,7 @@ parameter_list|(
 name|Journal
 name|dataManager
 parameter_list|)
-block|{
-name|dataManager
-operator|.
-name|setUseNio
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
+block|{     }
 annotation|@
 name|Override
 specifier|public

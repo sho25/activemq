@@ -7180,13 +7180,6 @@ name|getJournalMaxFileLength
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|manager
-operator|.
-name|setUseNio
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 return|return
 name|manager
 return|;

@@ -303,18 +303,14 @@ name|readInt
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|file
-operator|.
-name|seek
-argument_list|(
 name|location
 operator|.
-name|getOffset
-argument_list|()
-operator|+
-name|Journal
+name|setType
+argument_list|(
+name|file
 operator|.
-name|ITEM_HEAD_SPACE
+name|readByte
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -331,7 +327,7 @@ argument_list|()
 operator|+
 name|Journal
 operator|.
-name|ITEM_HEAD_SPACE
+name|RECORD_HEAD_SPACE
 argument_list|)
 expr_stmt|;
 block|}
@@ -349,7 +345,7 @@ argument_list|()
 operator|-
 name|Journal
 operator|.
-name|ITEM_HEAD_FOOT_SPACE
+name|RECORD_HEAD_SPACE
 index|]
 decl_stmt|;
 name|file
@@ -393,6 +389,35 @@ name|e
 argument_list|)
 throw|;
 block|}
+block|}
+specifier|public
+name|void
+name|read
+parameter_list|(
+name|long
+name|offset
+parameter_list|,
+name|byte
+name|data
+index|[]
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|file
+operator|.
+name|seek
+argument_list|(
+name|offset
+argument_list|)
+expr_stmt|;
+name|file
+operator|.
+name|readFully
+argument_list|(
+name|data
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -487,256 +512,38 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|public
-name|boolean
-name|readLocationDetailsAndValidate
-parameter_list|(
-name|Location
-name|location
-parameter_list|)
-block|{
-try|try
-block|{
-name|WriteCommand
-name|asyncWrite
-init|=
-operator|(
-name|WriteCommand
-operator|)
-name|inflightWrites
-operator|.
-name|get
-argument_list|(
-operator|new
-name|WriteKey
-argument_list|(
-name|location
-argument_list|)
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|asyncWrite
-operator|!=
-literal|null
-condition|)
-block|{
-name|location
-operator|.
-name|setSize
-argument_list|(
-name|asyncWrite
-operator|.
-name|location
-operator|.
-name|getSize
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|location
-operator|.
-name|setType
-argument_list|(
-name|asyncWrite
-operator|.
-name|location
-operator|.
-name|getType
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|file
-operator|.
-name|seek
-argument_list|(
-name|location
-operator|.
-name|getOffset
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|location
-operator|.
-name|setSize
-argument_list|(
-name|file
-operator|.
-name|readInt
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|location
-operator|.
-name|setType
-argument_list|(
-name|file
-operator|.
-name|readByte
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|byte
-name|data
-index|[]
-init|=
-operator|new
-name|byte
-index|[
-literal|3
-index|]
-decl_stmt|;
-name|file
-operator|.
-name|seek
-argument_list|(
-name|location
-operator|.
-name|getOffset
-argument_list|()
-operator|+
-name|Journal
-operator|.
-name|ITEM_HEAD_OFFSET_TO_SOR
-argument_list|)
-expr_stmt|;
-name|file
-operator|.
-name|readFully
-argument_list|(
-name|data
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|data
-index|[
-literal|0
-index|]
-operator|!=
-name|Journal
-operator|.
-name|ITEM_HEAD_SOR
-index|[
-literal|0
-index|]
-operator|||
-name|data
-index|[
-literal|1
-index|]
-operator|!=
-name|Journal
-operator|.
-name|ITEM_HEAD_SOR
-index|[
-literal|1
-index|]
-operator|||
-name|data
-index|[
-literal|2
-index|]
-operator|!=
-name|Journal
-operator|.
-name|ITEM_HEAD_SOR
-index|[
-literal|2
-index|]
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-name|file
-operator|.
-name|seek
-argument_list|(
-name|location
-operator|.
-name|getOffset
-argument_list|()
-operator|+
-name|location
-operator|.
-name|getSize
-argument_list|()
-operator|-
-name|Journal
-operator|.
-name|ITEM_FOOT_SPACE
-argument_list|)
-expr_stmt|;
-name|file
-operator|.
-name|readFully
-argument_list|(
-name|data
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|data
-index|[
-literal|0
-index|]
-operator|!=
-name|Journal
-operator|.
-name|ITEM_HEAD_EOR
-index|[
-literal|0
-index|]
-operator|||
-name|data
-index|[
-literal|1
-index|]
-operator|!=
-name|Journal
-operator|.
-name|ITEM_HEAD_EOR
-index|[
-literal|1
-index|]
-operator|||
-name|data
-index|[
-literal|2
-index|]
-operator|!=
-name|Journal
-operator|.
-name|ITEM_HEAD_EOR
-index|[
-literal|2
-index|]
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-return|return
-literal|true
-return|;
-block|}
+comment|//    public boolean readLocationDetailsAndValidate(Location location) {
+comment|//        try {
+comment|//            WriteCommand asyncWrite = (WriteCommand)inflightWrites.get(new WriteKey(location));
+comment|//            if (asyncWrite != null) {
+comment|//                location.setSize(asyncWrite.location.getSize());
+comment|//                location.setType(asyncWrite.location.getType());
+comment|//            } else {
+comment|//                file.seek(location.getOffset());
+comment|//                location.setSize(file.readInt());
+comment|//                location.setType(file.readByte());
+comment|//
+comment|//                byte data[] = new byte[3];
+comment|//                file.seek(location.getOffset() + Journal.ITEM_HEAD_OFFSET_TO_SOR);
+comment|//                file.readFully(data);
+comment|//                if (data[0] != Journal.ITEM_HEAD_SOR[0]
+comment|//                    || data[1] != Journal.ITEM_HEAD_SOR[1]
+comment|//                    || data[2] != Journal.ITEM_HEAD_SOR[2]) {
+comment|//                    return false;
+comment|//                }
+comment|//                file.seek(location.getOffset() + location.getSize() - Journal.ITEM_FOOT_SPACE);
+comment|//                file.readFully(data);
+comment|//                if (data[0] != Journal.ITEM_HEAD_EOR[0]
+comment|//                    || data[1] != Journal.ITEM_HEAD_EOR[1]
+comment|//                    || data[2] != Journal.ITEM_HEAD_EOR[2]) {
+comment|//                    return false;
+comment|//                }
+comment|//            }
+comment|//        } catch (IOException e) {
+comment|//            return false;
+comment|//        }
+comment|//        return true;
+comment|//    }
 specifier|public
 name|void
 name|updateRecord
@@ -764,7 +571,7 @@ argument_list|()
 operator|+
 name|Journal
 operator|.
-name|ITEM_HEAD_SPACE
+name|RECORD_HEAD_SPACE
 argument_list|)
 expr_stmt|;
 name|int
