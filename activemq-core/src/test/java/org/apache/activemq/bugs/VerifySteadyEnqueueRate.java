@@ -297,7 +297,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testForDataFileNotDeleted
+name|testEnqueueRateCanMeetSLA
 parameter_list|()
 throws|throws
 name|Exception
@@ -362,10 +362,11 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|long
-name|reportTime
+specifier|final
+name|int
+name|numThreads
 init|=
-literal|0
+literal|6
 decl_stmt|;
 name|Runnable
 name|runner
@@ -630,11 +631,6 @@ operator|.
 name|newCachedThreadPool
 argument_list|()
 decl_stmt|;
-name|int
-name|numThreads
-init|=
-literal|6
-decl_stmt|;
 for|for
 control|(
 name|int
@@ -732,13 +728,7 @@ operator|new
 name|BrokerService
 argument_list|()
 expr_stmt|;
-name|broker
-operator|.
-name|setDeleteAllMessagesOnStartup
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
+comment|//broker.setDeleteAllMessagesOnStartup(true);
 name|broker
 operator|.
 name|setPersistent
@@ -857,10 +847,7 @@ expr_stmt|;
 comment|// Using a bigger journal file size makes he take fewer spikes as it is not switching files as often.
 name|kaha
 operator|.
-name|getJournal
-argument_list|()
-operator|.
-name|setMaxFileLength
+name|setJournalMaxFileLength
 argument_list|(
 literal|1024
 operator|*
@@ -869,22 +856,18 @@ operator|*
 literal|100
 argument_list|)
 expr_stmt|;
+comment|// small batch means more frequent and smaller writes
 name|kaha
 operator|.
-name|getPageFile
-argument_list|()
-operator|.
-name|setWriteBatchSize
+name|setIndexWriteBatchSize
 argument_list|(
 literal|100
 argument_list|)
 expr_stmt|;
+comment|// do the index write in a separate thread
 name|kaha
 operator|.
-name|getPageFile
-argument_list|()
-operator|.
-name|setEnableWriteThread
+name|setEnableIndexWriteAsync
 argument_list|(
 literal|true
 argument_list|)

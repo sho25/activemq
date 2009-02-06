@@ -441,6 +441,28 @@ literal|4
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_WRITE_BATCH_SIZE
+init|=
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"defaultWriteBatchSize"
+argument_list|,
+literal|""
+operator|+
+literal|1000
+argument_list|)
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -543,7 +565,7 @@ comment|// write to disk.
 name|int
 name|writeBatchSize
 init|=
-literal|1000
+name|DEFAULT_WRITE_BATCH_SIZE
 decl_stmt|;
 comment|// We keep a cache of pages recently used?
 specifier|private
