@@ -360,6 +360,16 @@ return|return
 literal|0
 return|;
 block|}
+specifier|public
+name|boolean
+name|inReceive
+parameter_list|()
+block|{
+comment|// TODO implement the inactivity monitor
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_class
 

@@ -665,6 +665,8 @@ operator|new
 name|InactivityMonitor
 argument_list|(
 name|transport
+argument_list|,
+name|format
 argument_list|)
 expr_stmt|;
 if|if
@@ -795,6 +797,8 @@ operator|new
 name|InactivityMonitor
 argument_list|(
 name|transport
+argument_list|,
+name|format
 argument_list|)
 expr_stmt|;
 if|if

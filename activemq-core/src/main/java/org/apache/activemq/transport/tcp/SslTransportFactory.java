@@ -714,6 +714,8 @@ operator|new
 name|InactivityMonitor
 argument_list|(
 name|transport
+argument_list|,
+name|format
 argument_list|)
 expr_stmt|;
 comment|// Only need the WireFormatNegotiator if using openwire

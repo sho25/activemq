@@ -733,6 +733,11 @@ operator|new
 name|InactivityMonitor
 argument_list|(
 name|transport
+argument_list|,
+name|serverTransport
+operator|.
+name|getWireFormat
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|getAcceptListener
