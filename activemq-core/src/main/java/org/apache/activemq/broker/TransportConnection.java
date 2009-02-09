@@ -1941,7 +1941,7 @@ try|try
 block|{
 name|SERVICELOG
 operator|.
-name|error
+name|warn
 argument_list|(
 literal|"Async error occurred: "
 operator|+
