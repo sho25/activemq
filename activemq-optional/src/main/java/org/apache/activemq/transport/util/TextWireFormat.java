@@ -301,6 +301,16 @@ name|dis
 argument_list|)
 return|;
 block|}
+specifier|public
+name|boolean
+name|inReceive
+parameter_list|()
+block|{
+comment|// TODO Implement for inactivity monitor
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_class
 
