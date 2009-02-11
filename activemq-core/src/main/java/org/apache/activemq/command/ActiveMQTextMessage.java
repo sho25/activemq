@@ -569,6 +569,8 @@ name|writeUTF8
 argument_list|(
 name|dataOut
 argument_list|,
+name|this
+operator|.
 name|text
 argument_list|)
 expr_stmt|;
@@ -584,6 +586,13 @@ operator|.
 name|toByteSequence
 argument_list|()
 argument_list|)
+expr_stmt|;
+comment|//see https://issues.apache.org/activemq/browse/AMQ-2103
+name|this
+operator|.
+name|text
+operator|=
+literal|null
 expr_stmt|;
 block|}
 block|}
