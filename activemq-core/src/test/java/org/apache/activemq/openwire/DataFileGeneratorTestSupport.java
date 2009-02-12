@@ -796,6 +796,15 @@ argument_list|(
 name|dis
 argument_list|)
 decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Parsed: "
+operator|+
+name|actual
+argument_list|)
+expr_stmt|;
 name|assertBeansEqual
 argument_list|(
 literal|""
@@ -809,15 +818,6 @@ argument_list|()
 argument_list|,
 name|expected
 argument_list|,
-name|actual
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Parsed: "
-operator|+
 name|actual
 argument_list|)
 expr_stmt|;
