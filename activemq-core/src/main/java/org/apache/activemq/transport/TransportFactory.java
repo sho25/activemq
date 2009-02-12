@@ -1038,7 +1038,7 @@ name|String
 operator|)
 name|options
 operator|.
-name|get
+name|remove
 argument_list|(
 literal|"wireFormat"
 argument_list|)
