@@ -119,7 +119,7 @@ specifier|abstract
 class|class
 name|EmbeddedBrokerTestSupport
 extends|extends
-name|TestCase
+name|CombinationTestSupport
 block|{
 specifier|protected
 name|BrokerService
