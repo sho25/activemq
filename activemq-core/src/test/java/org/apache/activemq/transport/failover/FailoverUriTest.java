@@ -76,10 +76,13 @@ name|Object
 index|[]
 block|{
 literal|")?initialReconnectDelay=1000&maxReconnectDelay=1000"
+block|,
+literal|"?wireFormat.tightEncodingEnabled=false)?jms.useAsyncSend=true&jms.copyMessageOnSend=false"
+block|,
+literal|"?wireFormat.maxInactivityDuration=0&keepAlive=true)?jms.prefetchPolicy.all=500&initialReconnectDelay=10000&useExponentialBackOff=false&maxReconnectAttempts=0&randomize=false"
 block|}
 argument_list|)
 expr_stmt|;
-comment|//, "?jms.useAsyncSend=true&jms.copyMessageOnSend=false&wireFormat.tightEncodingEnabled=false"});
 block|}
 specifier|public
 name|void
