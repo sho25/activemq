@@ -6241,6 +6241,24 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|// give the async ack a chance to perculate and validate all are currently consumed
+name|assertNull
+argument_list|(
+name|connection1
+operator|.
+name|getDispatchQueue
+argument_list|()
+operator|.
+name|poll
+argument_list|(
+name|MAX_NULL_WAIT
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Close the consumer.
 name|connection1
 operator|.
