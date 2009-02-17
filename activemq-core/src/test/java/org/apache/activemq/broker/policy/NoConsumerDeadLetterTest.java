@@ -141,13 +141,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
-specifier|public
-name|void
-name|testTransientQueueMessage
-parameter_list|()
-throws|throws
-name|Exception
-block|{     }
 specifier|protected
 name|void
 name|doTest
@@ -256,6 +249,13 @@ name|Destination
 name|createDlqDestination
 parameter_list|()
 block|{
+if|if
+condition|(
+name|this
+operator|.
+name|topic
+condition|)
+block|{
 return|return
 name|AdvisorySupport
 operator|.
@@ -268,6 +268,22 @@ name|getDestination
 argument_list|()
 argument_list|)
 return|;
+block|}
+else|else
+block|{
+return|return
+name|AdvisorySupport
+operator|.
+name|getNoQueueConsumersAdvisoryTopic
+argument_list|(
+operator|(
+name|ActiveMQDestination
+operator|)
+name|getDestination
+argument_list|()
+argument_list|)
+return|;
+block|}
 block|}
 block|}
 end_class

@@ -640,13 +640,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|topic
-operator|.
-name|setSendAdvisoryIfNoConsumers
-argument_list|(
-name|sendAdvisoryIfNoConsumers
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|memoryLimit
@@ -795,6 +788,13 @@ name|setAdvisoryWhenFull
 argument_list|(
 name|isAdvisoryWhenFull
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|destination
+operator|.
+name|setSendAdvisoryIfNoConsumers
+argument_list|(
+name|sendAdvisoryIfNoConsumers
 argument_list|)
 expr_stmt|;
 block|}
