@@ -3377,6 +3377,9 @@ comment|// a network subscription so there is a need to synchronise on a shared 
 synchronized|synchronized
 init|(
 name|brokerService
+operator|.
+name|getVmConnectorURI
+argument_list|()
 init|)
 block|{
 if|if
