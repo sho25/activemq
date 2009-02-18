@@ -729,6 +729,8 @@ argument_list|,
 name|dynamicOnly
 argument_list|,
 name|networkTTL
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|connector

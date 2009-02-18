@@ -223,6 +223,13 @@ name|getConsumerId
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|info
+operator|.
+name|setSelector
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 return|return
 name|doCreateDemandSubscription
 argument_list|(

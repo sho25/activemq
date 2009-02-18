@@ -534,6 +534,8 @@ argument_list|,
 literal|false
 argument_list|,
 literal|1
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
@@ -586,6 +588,8 @@ argument_list|,
 name|dynamicOnly
 argument_list|,
 literal|1
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -604,6 +608,9 @@ name|dynamicOnly
 parameter_list|,
 name|int
 name|networkTTL
+parameter_list|,
+name|boolean
+name|conduit
 parameter_list|)
 throws|throws
 name|Exception
@@ -642,6 +649,8 @@ argument_list|,
 name|dynamicOnly
 argument_list|,
 name|networkTTL
+argument_list|,
+name|conduit
 argument_list|)
 return|;
 block|}
@@ -663,6 +672,9 @@ name|dynamicOnly
 parameter_list|,
 name|int
 name|networkTTL
+parameter_list|,
+name|boolean
+name|conduit
 parameter_list|)
 throws|throws
 name|Exception
@@ -731,6 +743,13 @@ operator|.
 name|setNetworkTTL
 argument_list|(
 name|networkTTL
+argument_list|)
+expr_stmt|;
+name|connector
+operator|.
+name|setConduitSubscriptions
+argument_list|(
+name|conduit
 argument_list|)
 expr_stmt|;
 name|localBroker
