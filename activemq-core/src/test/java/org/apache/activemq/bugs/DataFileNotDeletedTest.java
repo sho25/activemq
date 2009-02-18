@@ -492,6 +492,28 @@ argument_list|,
 name|messageCounter
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Sent and received + "
+operator|+
+name|messageCounter
+operator|+
+literal|", file count "
+operator|+
+name|persistentAdapter
+operator|.
+name|getAsyncDataManager
+argument_list|()
+operator|.
+name|getFiles
+argument_list|()
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|waitFordataFilesToBeCleanedUp
 argument_list|(
 name|persistentAdapter
@@ -499,7 +521,7 @@ operator|.
 name|getAsyncDataManager
 argument_list|()
 argument_list|,
-literal|30000
+literal|60000
 argument_list|,
 literal|2
 argument_list|)
@@ -550,13 +572,9 @@ argument_list|()
 operator|.
 name|size
 argument_list|()
-operator|<=
+operator|>
 name|numExpected
 condition|)
-block|{
-break|break;
-block|}
-else|else
 block|{
 name|Thread
 operator|.
@@ -566,12 +584,16 @@ literal|1000
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+break|break;
+block|}
 block|}
 name|assertEquals
 argument_list|(
 literal|"persistence adapter dataManager has correct number of files"
 argument_list|,
-literal|2
+name|numExpected
 argument_list|,
 name|asyncDataManager
 operator|.
