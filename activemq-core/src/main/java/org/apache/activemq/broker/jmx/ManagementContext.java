@@ -291,6 +291,8 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|findTigerMbeanServer
+init|=
+literal|true
 decl_stmt|;
 specifier|private
 name|int
@@ -1193,7 +1195,6 @@ name|result
 return|;
 block|}
 specifier|public
-specifier|static
 name|MBeanServer
 name|findTigerMBeanServer
 parameter_list|()
@@ -1273,6 +1274,20 @@ operator|instanceof
 name|MBeanServer
 condition|)
 block|{
+if|if
+condition|(
+name|createConnector
+condition|)
+block|{
+name|createConnector
+argument_list|(
+operator|(
+name|MBeanServer
+operator|)
+name|answer
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 operator|(
 name|MBeanServer
