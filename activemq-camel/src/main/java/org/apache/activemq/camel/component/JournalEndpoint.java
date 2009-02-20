@@ -297,9 +297,6 @@ class|class
 name|JournalEndpoint
 extends|extends
 name|DefaultEndpoint
-argument_list|<
-name|Exchange
-argument_list|>
 block|{
 specifier|private
 specifier|static
@@ -327,9 +324,6 @@ specifier|final
 name|AtomicReference
 argument_list|<
 name|DefaultConsumer
-argument_list|<
-name|Exchange
-argument_list|>
 argument_list|>
 name|consumer
 init|=
@@ -337,9 +331,6 @@ operator|new
 name|AtomicReference
 argument_list|<
 name|DefaultConsumer
-argument_list|<
-name|Exchange
-argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -456,9 +447,6 @@ return|;
 block|}
 specifier|public
 name|Consumer
-argument_list|<
-name|Exchange
-argument_list|>
 name|createConsumer
 parameter_list|(
 name|Processor
@@ -470,9 +458,6 @@ block|{
 return|return
 operator|new
 name|DefaultConsumer
-argument_list|<
-name|Exchange
-argument_list|>
 argument_list|(
 name|this
 argument_list|,
@@ -647,9 +632,6 @@ name|void
 name|deactivateConsumer
 parameter_list|(
 name|DefaultConsumer
-argument_list|<
-name|Exchange
-argument_list|>
 name|consumer
 parameter_list|)
 throws|throws
@@ -719,9 +701,6 @@ name|void
 name|activateConsumer
 parameter_list|(
 name|DefaultConsumer
-argument_list|<
-name|Exchange
-argument_list|>
 name|consumer
 parameter_list|)
 throws|throws
@@ -815,9 +794,6 @@ block|{
 try|try
 block|{
 name|DefaultConsumer
-argument_list|<
-name|Exchange
-argument_list|>
 name|consumer
 decl_stmt|;
 while|while
@@ -986,9 +962,6 @@ block|}
 block|}
 specifier|public
 name|Producer
-argument_list|<
-name|Exchange
-argument_list|>
 name|createProducer
 parameter_list|()
 throws|throws
@@ -997,9 +970,6 @@ block|{
 return|return
 operator|new
 name|DefaultProducer
-argument_list|<
-name|Exchange
-argument_list|>
 argument_list|(
 name|this
 argument_list|)

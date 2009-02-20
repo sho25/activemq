@@ -218,7 +218,7 @@ name|class
 argument_list|,
 name|producer
 operator|.
-name|getTemplate
+name|getInOutTemplate
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -281,7 +281,7 @@ name|class
 argument_list|,
 name|producer
 operator|.
-name|getTemplate
+name|getInOutTemplate
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -359,7 +359,7 @@ name|class
 argument_list|,
 name|producer
 operator|.
-name|getTemplate
+name|getInOutTemplate
 argument_list|()
 argument_list|)
 decl_stmt|;

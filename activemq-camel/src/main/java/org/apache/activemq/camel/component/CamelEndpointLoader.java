@@ -712,7 +712,7 @@ argument_list|)
 decl_stmt|;
 name|camelContext
 operator|.
-name|addSingletonEndpoint
+name|addEndpoint
 argument_list|(
 name|queueUri
 argument_list|,
@@ -757,7 +757,7 @@ argument_list|)
 decl_stmt|;
 name|camelContext
 operator|.
-name|removeSingletonEndpoint
+name|removeEndpoints
 argument_list|(
 name|queueUri
 argument_list|)

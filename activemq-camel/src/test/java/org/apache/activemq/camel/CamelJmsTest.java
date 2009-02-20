@@ -139,7 +139,7 @@ name|apache
 operator|.
 name|camel
 operator|.
-name|CamelTemplate
+name|ProducerTemplate
 import|;
 end_import
 

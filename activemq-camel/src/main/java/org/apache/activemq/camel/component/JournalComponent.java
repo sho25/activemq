@@ -85,17 +85,11 @@ class|class
 name|JournalComponent
 extends|extends
 name|DefaultComponent
-argument_list|<
-name|Exchange
-argument_list|>
 block|{
 annotation|@
 name|Override
 specifier|protected
 name|Endpoint
-argument_list|<
-name|Exchange
-argument_list|>
 name|createEndpoint
 parameter_list|(
 name|String

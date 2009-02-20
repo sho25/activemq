@@ -67,7 +67,7 @@ name|apache
 operator|.
 name|camel
 operator|.
-name|CamelTemplate
+name|ProducerTemplate
 import|;
 end_import
 
@@ -158,10 +158,7 @@ name|CamelContext
 name|camelContext
 decl_stmt|;
 specifier|protected
-name|CamelTemplate
-argument_list|<
-name|Exchange
-argument_list|>
+name|ProducerTemplate
 name|template
 decl_stmt|;
 annotation|@
@@ -204,14 +201,10 @@ argument_list|()
 expr_stmt|;
 name|template
 operator|=
-operator|new
-name|CamelTemplate
-argument_list|<
-name|Exchange
-argument_list|>
-argument_list|(
 name|camelContext
-argument_list|)
+operator|.
+name|createProducerTemplate
+argument_list|()
 expr_stmt|;
 name|template
 operator|.

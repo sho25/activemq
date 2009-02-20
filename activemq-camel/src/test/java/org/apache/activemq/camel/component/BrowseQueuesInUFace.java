@@ -69,7 +69,7 @@ name|apache
 operator|.
 name|camel
 operator|.
-name|CamelTemplate
+name|ProducerTemplate
 import|;
 end_import
 
@@ -199,7 +199,7 @@ decl_stmt|;
 annotation|@
 name|Autowired
 specifier|protected
-name|CamelTemplate
+name|ProducerTemplate
 name|template
 decl_stmt|;
 specifier|protected
