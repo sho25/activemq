@@ -291,7 +291,7 @@ name|broker
 argument_list|,
 literal|"Connector"
 argument_list|,
-literal|5000
+literal|10000
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -473,7 +473,7 @@ name|networkedBroker
 argument_list|,
 literal|"Connector"
 argument_list|,
-literal|2000
+literal|10000
 argument_list|)
 argument_list|)
 expr_stmt|;
