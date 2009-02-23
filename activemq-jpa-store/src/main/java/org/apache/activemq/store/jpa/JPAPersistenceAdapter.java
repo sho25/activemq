@@ -1104,6 +1104,11 @@ condition|(
 name|entityManagerFactory
 operator|!=
 literal|null
+operator|&&
+name|entityManagerFactory
+operator|.
+name|isOpen
+argument_list|()
 condition|)
 block|{
 name|entityManagerFactory

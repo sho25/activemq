@@ -2644,13 +2644,6 @@ name|getBrokerName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|stopper
-operator|.
-name|stop
-argument_list|(
-name|persistenceAdapter
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|broker
@@ -2679,6 +2672,13 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+name|stopper
+operator|.
+name|stop
+argument_list|(
+name|persistenceAdapter
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|isUseJmx
