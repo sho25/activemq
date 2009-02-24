@@ -358,57 +358,6 @@ name|getConsumerId
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// not matched so create a new one
-comment|// but first, if it's durable - changed set the
-comment|// ConsumerId here - so it won't be removed if the
-comment|// durable subscriber goes away on the other end
-if|if
-condition|(
-name|info
-operator|.
-name|isDurable
-argument_list|()
-operator|||
-operator|(
-name|info
-operator|.
-name|getDestination
-argument_list|()
-operator|.
-name|isQueue
-argument_list|()
-operator|&&
-operator|!
-name|info
-operator|.
-name|getDestination
-argument_list|()
-operator|.
-name|isTemporary
-argument_list|()
-operator|)
-condition|)
-block|{
-name|info
-operator|.
-name|setConsumerId
-argument_list|(
-operator|new
-name|ConsumerId
-argument_list|(
-name|localSessionInfo
-operator|.
-name|getSessionId
-argument_list|()
-argument_list|,
-name|consumerIdGenerator
-operator|.
-name|getNextSequenceId
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|info
@@ -427,6 +376,27 @@ argument_list|(
 name|info
 operator|.
 name|getDestination
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// and override the consumerId with something unique so that it won't
+comment|// be removed if the durable subscriber (at the other end) goes away
+name|info
+operator|.
+name|setConsumerId
+argument_list|(
+operator|new
+name|ConsumerId
+argument_list|(
+name|localSessionInfo
+operator|.
+name|getSessionId
+argument_list|()
+argument_list|,
+name|consumerIdGenerator
+operator|.
+name|getNextSequenceId
 argument_list|()
 argument_list|)
 argument_list|)
