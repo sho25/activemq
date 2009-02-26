@@ -1834,7 +1834,7 @@ operator|)
 name|sub
 decl_stmt|;
 comment|// do again in iterate to ensure new messages are dispatched
-name|doPageIn
+name|pageInMessages
 argument_list|(
 literal|false
 argument_list|)
@@ -6757,6 +6757,18 @@ range|:
 name|consumers
 control|)
 block|{
+if|if
+condition|(
+name|s
+operator|instanceof
+name|QueueBrowserSubscription
+condition|)
+block|{
+name|interestCount
+operator|++
+expr_stmt|;
+continue|continue;
+block|}
 if|if
 condition|(
 name|dispatchSelector
