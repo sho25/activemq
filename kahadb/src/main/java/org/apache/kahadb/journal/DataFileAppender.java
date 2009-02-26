@@ -763,6 +763,26 @@ comment|// Locate datafile and enqueue into the executor in sychronized block so
 comment|// that writes get equeued onto the executor in order that they were
 comment|// assigned
 comment|// by the data manager (which is basically just appending)
+if|if
+condition|(
+operator|!
+name|sync
+condition|)
+block|{
+name|inflightWrites
+operator|.
+name|put
+argument_list|(
+operator|new
+name|WriteKey
+argument_list|(
+name|location
+argument_list|)
+argument_list|,
+name|write
+argument_list|)
+expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|this
@@ -812,22 +832,6 @@ name|InterruptedIOException
 argument_list|()
 throw|;
 block|}
-block|}
-else|else
-block|{
-name|inflightWrites
-operator|.
-name|put
-argument_list|(
-operator|new
-name|WriteKey
-argument_list|(
-name|location
-argument_list|)
-argument_list|,
-name|write
-argument_list|)
-expr_stmt|;
 block|}
 return|return
 name|location
