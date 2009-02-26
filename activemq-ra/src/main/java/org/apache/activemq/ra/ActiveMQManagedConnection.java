@@ -1025,11 +1025,6 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|localAndXATransaction
-operator|.
-name|cleanup
-argument_list|()
-expr_stmt|;
 try|try
 block|{
 operator|(
@@ -1061,6 +1056,12 @@ name|e
 argument_list|)
 throw|;
 block|}
+comment|// defer transaction cleanup till after close so that close is aware of the current tx
+name|localAndXATransaction
+operator|.
+name|cleanup
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * @see javax.resource.spi.ManagedConnection#associateConnection(java.lang.Object)      */
 specifier|public
