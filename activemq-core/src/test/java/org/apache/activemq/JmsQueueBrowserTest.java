@@ -593,7 +593,7 @@ decl_stmt|;
 comment|// browse the first message
 name|assertTrue
 argument_list|(
-literal|"should have received the fisrts message"
+literal|"should have received the first message"
 argument_list|,
 name|enumeration
 operator|.
