@@ -398,6 +398,32 @@ operator|.
 name|getSocketFactory
 argument_list|()
 decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Connecting to broker: "
+operator|+
+name|broker
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" on: "
+operator|+
+name|brokerUri
+operator|.
+name|getHost
+argument_list|()
+operator|+
+literal|":"
+operator|+
+name|brokerUri
+operator|.
+name|getPort
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|SSLSocket
 name|socket
 init|=
