@@ -479,6 +479,15 @@ argument_list|(
 literal|false
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|final
+name|Object
+name|addConsumerLock
+init|=
+operator|new
+name|Object
+argument_list|()
+decl_stmt|;
 comment|/**      * Constructor      *       * @param parent      * @param transport      */
 specifier|public
 name|MasterBroker
@@ -898,14 +907,19 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|sendAsyncToSlave
+comment|// as master and slave do independent dispatch, the consumer add order between master and slave
+comment|// needs to be maintained
+synchronized|synchronized
+init|(
+name|addConsumerLock
+init|)
+block|{
+name|sendSyncToSlave
 argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
-name|Subscription
-name|answer
-init|=
+return|return
 name|super
 operator|.
 name|addConsumer
@@ -914,10 +928,8 @@ name|context
 argument_list|,
 name|info
 argument_list|)
-decl_stmt|;
-return|return
-name|answer
 return|;
+block|}
 block|}
 comment|/**      * remove a subscription      *       * @param context      * @param info      * @throws Exception      */
 specifier|public
@@ -1359,7 +1371,7 @@ name|getMessageId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|sendAsyncToSlave
+name|sendSyncToSlave
 argument_list|(
 name|mdn
 argument_list|)
