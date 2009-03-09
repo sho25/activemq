@@ -196,6 +196,20 @@ name|brokerService
 return|;
 block|}
 specifier|public
+name|String
+name|getBrokerName
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
+name|brokerService
+operator|.
+name|getBrokerName
+argument_list|()
+return|;
+block|}
+specifier|public
 name|Broker
 name|getBroker
 parameter_list|()
@@ -228,7 +242,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// TODO could use JMX to look this up
 return|return
 name|brokerService
 operator|.
