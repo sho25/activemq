@@ -128,7 +128,7 @@ specifier|public
 class|class
 name|ActiveMQMessageAudit
 block|{
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|int
@@ -136,7 +136,7 @@ name|DEFAULT_WINDOW_SIZE
 init|=
 literal|2048
 decl_stmt|;
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|int
@@ -161,7 +161,7 @@ name|BitArrayBin
 argument_list|>
 name|map
 decl_stmt|;
-comment|/**      * Default Constructor windowSize = 1024, maximumNumberOfProducersToTrack =      * 128      */
+comment|/**      * Default Constructor windowSize = 2048, maximumNumberOfProducersToTrack =      * 64      */
 specifier|public
 name|ActiveMQMessageAudit
 parameter_list|()
