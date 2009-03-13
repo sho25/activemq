@@ -29,6 +29,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -154,6 +164,20 @@ operator|.
 name|command
 operator|.
 name|Message
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|MessageDispatchNotification
 import|;
 end_import
 
@@ -1550,6 +1574,16 @@ block|}
 block|}
 block|}
 block|}
+specifier|public
+name|void
+name|processDispatchNotification
+parameter_list|(
+name|MessageDispatchNotification
+name|messageDispatchNotification
+parameter_list|)
+throws|throws
+name|Exception
+block|{     }
 block|}
 end_class
 

@@ -179,6 +179,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|MessageDispatchNotification
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|ProducerInfo
 import|;
 end_import
@@ -593,6 +607,16 @@ name|Subscription
 argument_list|>
 name|getConsumers
 parameter_list|()
+function_decl|;
+comment|/**      * called on Queues in slave mode to allow dispatch to follow subscription choice of master      * @param messageDispatchNotification      * @throws Exception      */
+name|void
+name|processDispatchNotification
+parameter_list|(
+name|MessageDispatchNotification
+name|messageDispatchNotification
+parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
 block|}
 end_interface

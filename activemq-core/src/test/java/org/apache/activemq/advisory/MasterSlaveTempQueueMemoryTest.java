@@ -473,11 +473,60 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// REVISIT the following two are not dependable at the moment, off by a small number
-comment|// for some reason? The work for a COUNT< ~500
-comment|//
-comment|//assertEquals("inflight match", rb.getDestinationStatistics().getInflight().getCount(), masterRb.getDestinationStatistics().getInflight().getCount());
-comment|//assertEquals("enqueues match", rb.getDestinationStatistics().getEnqueues().getCount(), masterRb.getDestinationStatistics().getEnqueues().getCount());
+name|assertEquals
+argument_list|(
+literal|"inflight match"
+argument_list|,
+name|rb
+operator|.
+name|getDestinationStatistics
+argument_list|()
+operator|.
+name|getInflight
+argument_list|()
+operator|.
+name|getCount
+argument_list|()
+argument_list|,
+name|masterRb
+operator|.
+name|getDestinationStatistics
+argument_list|()
+operator|.
+name|getInflight
+argument_list|()
+operator|.
+name|getCount
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"enqueues match"
+argument_list|,
+name|rb
+operator|.
+name|getDestinationStatistics
+argument_list|()
+operator|.
+name|getEnqueues
+argument_list|()
+operator|.
+name|getCount
+argument_list|()
+argument_list|,
+name|masterRb
+operator|.
+name|getDestinationStatistics
+argument_list|()
+operator|.
+name|getEnqueues
+argument_list|()
+operator|.
+name|getCount
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"dequeues match"
