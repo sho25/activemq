@@ -2026,11 +2026,11 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 name|close
 argument_list|()
 expr_stmt|;
-block|}
-block|}
 block|}
 comment|/**      * @return      */
 specifier|private
