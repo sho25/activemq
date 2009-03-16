@@ -307,6 +307,8 @@ operator|instanceof
 name|ObjectMessage
 condition|)
 block|{
+try|try
+block|{
 return|return
 operator|(
 operator|(
@@ -318,6 +320,18 @@ operator|.
 name|getObject
 argument_list|()
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|e
+parameter_list|)
+block|{
+comment|//message could not be parsed, make the reason available
+return|return
+name|e
+return|;
+block|}
 block|}
 if|if
 condition|(
