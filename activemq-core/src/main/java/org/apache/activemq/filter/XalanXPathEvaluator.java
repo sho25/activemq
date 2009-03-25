@@ -81,6 +81,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|xpath
+operator|.
+name|XPath
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|w3c
@@ -154,6 +166,20 @@ operator|.
 name|xpath
 operator|.
 name|CachedXPathAPI
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|xpath
+operator|.
+name|objects
+operator|.
+name|XObject
 import|;
 end_import
 
@@ -336,6 +362,30 @@ operator|new
 name|CachedXPathAPI
 argument_list|()
 decl_stmt|;
+name|XObject
+name|result
+init|=
+name|cachedXPathAPI
+operator|.
+name|eval
+argument_list|(
+name|doc
+argument_list|,
+name|xpath
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|result
+operator|.
+name|bool
+argument_list|()
+condition|)
+return|return
+literal|true
+return|;
+else|else
+block|{
 name|NodeIterator
 name|iterator
 init|=
@@ -349,13 +399,16 @@ name|xpath
 argument_list|)
 decl_stmt|;
 return|return
+operator|(
 name|iterator
 operator|.
 name|nextNode
 argument_list|()
 operator|!=
 literal|null
+operator|)
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -424,9 +477,10 @@ argument_list|(
 name|inputSource
 argument_list|)
 decl_stmt|;
-comment|// We should associated the cachedXPathAPI object with the message
-comment|// being evaluated
-comment|// since that should speedup subsequent xpath expressions.
+comment|//An XPath expression could return a true or false value instead of a node.
+comment|//eval() is a better way to determine the boolean value of the exp.
+comment|//For compliance with legacy behavior where selecting an empty node returns true,
+comment|//selectNodeIterator is attempted in case of a failure.
 name|CachedXPathAPI
 name|cachedXPathAPI
 init|=
@@ -434,6 +488,30 @@ operator|new
 name|CachedXPathAPI
 argument_list|()
 decl_stmt|;
+name|XObject
+name|result
+init|=
+name|cachedXPathAPI
+operator|.
+name|eval
+argument_list|(
+name|doc
+argument_list|,
+name|xpath
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|result
+operator|.
+name|bool
+argument_list|()
+condition|)
+return|return
+literal|true
+return|;
+else|else
+block|{
 name|NodeIterator
 name|iterator
 init|=
@@ -447,13 +525,16 @@ name|xpath
 argument_list|)
 decl_stmt|;
 return|return
+operator|(
 name|iterator
 operator|.
 name|nextNode
 argument_list|()
 operator|!=
 literal|null
+operator|)
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(

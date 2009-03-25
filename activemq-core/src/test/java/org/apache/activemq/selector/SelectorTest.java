@@ -193,7 +193,7 @@ name|message
 operator|.
 name|setText
 argument_list|(
-literal|"<root><a key='first'/><b key='second'/></root>"
+literal|"<root><a key='first' num='1'/><b key='second' num='2'>b</b></root>"
 argument_list|)
 expr_stmt|;
 name|assertSelector
@@ -227,6 +227,42 @@ name|assertSelector
 argument_list|(
 name|message
 argument_list|,
+literal|"XPATH '//root/b/text()=\"b\"'"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"XPATH '//root/b=\"b\"'"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"XPATH '//root/b=\"c\"'"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"XPATH '//root/b!=\"c\"'"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
 literal|"XPATH '//root/*[@key=''second'']'"
 argument_list|,
 literal|true
@@ -254,9 +290,144 @@ name|assertSelector
 argument_list|(
 name|message
 argument_list|,
+literal|"XPATH '//root/a[@num=1]'"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
 literal|"XPATH '//root/a[@key=''second'']'"
 argument_list|,
 literal|false
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"XPATH '/root/*[@key=''first'' or @key=''third'']'"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"XPATH '//root/*[@key=''third'' or @key=''forth'']'"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"XPATH '/root/b=''b'' and /root/b[@key=''second'']'"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"XPATH '/root/b=''b'' and /root/b[@key=''first'']'"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"XPATH 'not(//root/a)'"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"XPATH 'not(//root/c)'"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"XPATH '//root/a[not(@key=''first'')]'"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"XPATH '//root/a[not(not(@key=''first''))]'"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"XPATH 'string(//root/b)'"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"XPATH 'string(//root/a)'"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"XPATH 'sum(//@num)< 10'"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"XPATH 'sum(//@num)> 10'"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"XPATH '//root/a[@num> 1]'"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"XPATH '//root/b[@num> 1]'"
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
