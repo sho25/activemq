@@ -992,10 +992,6 @@ block|{
 name|ByteSequence
 name|body
 init|=
-literal|null
-decl_stmt|;
-name|body
-operator|=
 name|exchange
 operator|.
 name|getIn
@@ -1007,7 +1003,7 @@ name|ByteSequence
 operator|.
 name|class
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|body
