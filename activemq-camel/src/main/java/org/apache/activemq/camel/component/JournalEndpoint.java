@@ -994,8 +994,6 @@ name|body
 init|=
 literal|null
 decl_stmt|;
-try|try
-block|{
 name|body
 operator|=
 name|exchange
@@ -1010,12 +1008,12 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|NoTypeConversionAvailableException
-name|e
-parameter_list|)
+if|if
+condition|(
+name|body
+operator|==
+literal|null
+condition|)
 block|{
 name|byte
 index|[]
