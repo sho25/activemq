@@ -74,6 +74,13 @@ name|boolean
 name|hasSpace
 parameter_list|()
 function_decl|;
+name|boolean
+name|isDuplicate
+parameter_list|(
+name|MessageId
+name|ref
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

@@ -496,7 +496,7 @@ argument_list|)
 throw|;
 block|}
 specifier|public
-name|void
+name|boolean
 name|addMessageReference
 parameter_list|(
 specifier|final
@@ -681,6 +681,9 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
+return|return
+literal|true
+return|;
 block|}
 specifier|public
 name|ReferenceData

@@ -177,6 +177,23 @@ return|;
 block|}
 specifier|public
 name|boolean
+name|isDuplicate
+parameter_list|(
+name|MessageId
+name|id
+parameter_list|)
+block|{
+return|return
+name|listener
+operator|.
+name|isDuplicate
+argument_list|(
+name|id
+argument_list|)
+return|;
+block|}
+specifier|public
+name|boolean
 name|recoverMessage
 parameter_list|(
 name|Message
@@ -264,7 +281,17 @@ literal|"Message id "
 operator|+
 name|ref
 operator|+
-literal|" could not be recovered from the data store - already dispatched"
+literal|" could not be recovered from the data store for: "
+operator|+
+name|store
+operator|.
+name|getDestination
+argument_list|()
+operator|.
+name|getQualifiedName
+argument_list|()
+operator|+
+literal|" - already dispatched"
 argument_list|)
 throw|;
 block|}

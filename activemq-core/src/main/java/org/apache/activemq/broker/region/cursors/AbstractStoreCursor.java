@@ -376,6 +376,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|boolean
+name|recovered
+init|=
+literal|false
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -448,6 +453,10 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|recovered
+operator|=
+literal|true
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -463,7 +472,15 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Ignoring batched duplicated from store: "
+name|regionDestination
+operator|.
+name|getActiveMQDestination
+argument_list|()
+operator|.
+name|getPhysicalName
+argument_list|()
+operator|+
+literal|" cursor got duplicate: "
 operator|+
 name|message
 argument_list|)
@@ -475,7 +492,7 @@ literal|true
 expr_stmt|;
 block|}
 return|return
-literal|true
+name|recovered
 return|;
 block|}
 specifier|public

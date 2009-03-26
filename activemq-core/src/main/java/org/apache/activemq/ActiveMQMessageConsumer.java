@@ -3505,7 +3505,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Acknowledge all the messages that have been delivered to the client upto      * this point.      *       * @throws JMSException      */
+comment|/**      * Acknowledge all the messages that have been delivered to the client up to      * this point.      *       * @throws JMSException      */
 specifier|public
 name|void
 name|acknowledge
@@ -4457,13 +4457,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|ackLater
+name|acknowledge
 argument_list|(
 name|md
-argument_list|,
-name|MessageAck
-operator|.
-name|STANDARD_ACK_TYPE
 argument_list|)
 expr_stmt|;
 block|}

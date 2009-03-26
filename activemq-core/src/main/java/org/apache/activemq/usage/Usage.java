@@ -1149,6 +1149,14 @@ block|}
 block|}
 block|}
 decl_stmt|;
+if|if
+condition|(
+name|started
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
 name|getExecutor
 argument_list|()
 operator|.
@@ -1157,6 +1165,17 @@ argument_list|(
 name|listenerNotifier
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"not notifying usage change to listeners on shutdown"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public

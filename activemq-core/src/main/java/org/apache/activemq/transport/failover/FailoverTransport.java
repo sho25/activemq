@@ -2231,6 +2231,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -2239,9 +2247,12 @@ literal|"Send oneway attempt: "
 operator|+
 name|i
 operator|+
-literal|" failed."
+literal|" failed for command:"
+operator|+
+name|command
 argument_list|)
 expr_stmt|;
+block|}
 name|handleTransportFailure
 argument_list|(
 name|e
@@ -2933,6 +2944,24 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"restore, replay: "
+operator|+
+name|command
+argument_list|)
+expr_stmt|;
+block|}
 name|t
 operator|.
 name|oneway

@@ -2162,6 +2162,8 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
+if|if
+condition|(
 name|referenceStore
 operator|.
 name|addMessageReference
@@ -2178,7 +2180,43 @@ operator|.
 name|getValue
 argument_list|()
 argument_list|)
+condition|)
+block|{
+name|size
+operator|++
 expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"not adding duplicate reference: "
+operator|+
+name|entry
+operator|.
+name|getKey
+argument_list|()
+operator|+
+literal|", "
+operator|+
+name|entry
+operator|.
+name|getValue
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 name|AMQMessageStore
 operator|.
 name|this
@@ -2222,9 +2260,6 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-name|size
-operator|++
-expr_stmt|;
 comment|// Commit the batch if it's getting too big
 if|if
 condition|(

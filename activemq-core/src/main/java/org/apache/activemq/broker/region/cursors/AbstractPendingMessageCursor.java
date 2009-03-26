@@ -809,7 +809,7 @@ operator|=
 name|useCache
 expr_stmt|;
 block|}
-specifier|protected
+specifier|public
 specifier|synchronized
 name|boolean
 name|isDuplicate

@@ -1555,6 +1555,18 @@ return|return
 literal|true
 return|;
 block|}
+specifier|public
+name|boolean
+name|isDuplicate
+parameter_list|(
+name|MessageId
+name|id
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 argument_list|)
 expr_stmt|;
@@ -3048,8 +3060,7 @@ name|isPersistent
 argument_list|()
 condition|)
 block|{
-comment|// the original ack may be a ranged ack, but we are trying to delete
-comment|// a specific
+comment|// the original ack may be a ranged ack, but we are trying to delete a specific
 comment|// message store here so we need to convert to a non ranged ack.
 if|if
 condition|(
@@ -7601,26 +7612,6 @@ operator|>
 name|newPercentUsage
 condition|)
 block|{
-synchronized|synchronized
-init|(
-name|messagesWaitingForSpace
-init|)
-block|{
-if|if
-condition|(
-operator|!
-name|messagesWaitingForSpace
-operator|.
-name|isEmpty
-argument_list|()
-operator|&&
-operator|!
-name|memoryUsage
-operator|.
-name|isFull
-argument_list|()
-condition|)
-block|{
 try|try
 block|{
 name|this
@@ -7649,8 +7640,6 @@ operator|+
 name|e
 argument_list|)
 expr_stmt|;
-block|}
-block|}
 block|}
 block|}
 block|}

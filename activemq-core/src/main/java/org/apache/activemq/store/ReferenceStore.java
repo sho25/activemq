@@ -185,8 +185,8 @@ name|expiration
 return|;
 block|}
 block|}
-comment|/**      * Adds a message reference to the message store      */
-name|void
+comment|/**      * Adds a message reference to the message store      * @return true if reference was added, false if it is a duplicate and not added      */
+name|boolean
 name|addMessageReference
 parameter_list|(
 name|ConnectionContext

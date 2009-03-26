@@ -420,7 +420,7 @@ argument_list|)
 throw|;
 block|}
 specifier|public
-name|void
+name|boolean
 name|addMessageReference
 parameter_list|(
 name|ConnectionContext
@@ -552,6 +552,9 @@ argument_list|,
 name|manager
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 specifier|public
 name|ReferenceData
