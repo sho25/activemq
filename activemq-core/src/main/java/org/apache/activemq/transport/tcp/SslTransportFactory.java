@@ -1015,7 +1015,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      *       * @param km      * @param tm      * @param object      * @deprecated "Do not use anymore... using static initializers like this method only allows the JVM to use 1 SSL configuration per broker."      */
+comment|/**      *       * @param km      * @param tm      * @param random      * @deprecated "Do not use anymore... using static initializers like this method only allows the JVM to use 1 SSL configuration per broker."      * @see org.apache.activemq.broker.SslContext#setCurrentSslContext(SslContext)      * @see org.apache.activemq.broker.SslContext#getSSLContext()      */
 specifier|public
 name|void
 name|setKeyAndTrustManagers
