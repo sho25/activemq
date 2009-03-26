@@ -661,7 +661,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-literal|"activemq:test.b"
+literal|"activemq:test.b?preserveMessageQos=true"
 argument_list|)
 expr_stmt|;
 name|from
