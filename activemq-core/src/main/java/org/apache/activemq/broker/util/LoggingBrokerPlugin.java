@@ -712,7 +712,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Achknowledging message for client ID : "
+literal|"Acknowledging message for client ID : "
 operator|+
 name|consumerExchange
 operator|.
@@ -721,6 +721,24 @@ argument_list|()
 operator|.
 name|getClientId
 argument_list|()
+operator|+
+operator|(
+name|ack
+operator|.
+name|getMessageCount
+argument_list|()
+operator|==
+literal|1
+condition|?
+literal|", "
+operator|+
+name|ack
+operator|.
+name|getLastMessageId
+argument_list|()
+else|:
+literal|""
+operator|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -729,13 +747,27 @@ name|LOG
 operator|.
 name|isTraceEnabled
 argument_list|()
+operator|&&
+name|ack
+operator|.
+name|getMessageCount
+argument_list|()
+operator|>
+literal|1
 condition|)
 block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"First Message Id: "
+literal|"Message count: "
+operator|+
+name|ack
+operator|.
+name|getMessageCount
+argument_list|()
+operator|+
+literal|", First Message Id: "
 operator|+
 name|ack
 operator|.
