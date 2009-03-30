@@ -796,7 +796,6 @@ name|onLimitChange
 argument_list|()
 expr_stmt|;
 block|}
-comment|/*      * Sets the minimum number of percentage points the usage has to change      * before a UsageListener event is fired by the manager.      */
 specifier|public
 name|int
 name|getPercentUsage
@@ -998,7 +997,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"Memory usage change.  from: "
 operator|+

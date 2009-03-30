@@ -281,7 +281,7 @@ name|maximumNumberOfProducersToTrack
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Checks if this message has beeb seen before      *       * @param message      * @return true if the message is a duplicate      * @throws JMSException      */
+comment|/**      * Checks if this message has been seen before      *       * @param message      * @return true if the message is a duplicate      * @throws JMSException      */
 specifier|public
 name|boolean
 name|isDuplicate

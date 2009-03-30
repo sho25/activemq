@@ -74,6 +74,7 @@ name|boolean
 name|hasSpace
 parameter_list|()
 function_decl|;
+comment|/**      * check if ref is a duplicate but do not record the reference      * @param ref      * @return true if ref is a duplicate      */
 name|boolean
 name|isDuplicate
 parameter_list|(
