@@ -314,6 +314,13 @@ argument_list|(
 name|in
 argument_list|)
 decl_stmt|;
+name|cin
+operator|.
+name|setSizeLimit
+argument_list|(
+literal|0x7FFFFFFF
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|long
@@ -352,7 +359,6 @@ argument_list|(
 name|size
 argument_list|)
 decl_stmt|;
-comment|//cin.setSizeLimit(size + 4);
 name|OpenWire
 operator|.
 name|Message
@@ -367,11 +373,6 @@ argument_list|(
 name|cin
 argument_list|)
 decl_stmt|;
-name|cin
-operator|.
-name|resetBytesReadCounter
-argument_list|()
-expr_stmt|;
 name|cin
 operator|.
 name|popLimit
