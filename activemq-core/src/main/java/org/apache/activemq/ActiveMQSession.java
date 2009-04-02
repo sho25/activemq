@@ -1569,6 +1569,16 @@ argument_list|()
 decl_stmt|;
 name|consumer
 operator|.
+name|setFailureError
+argument_list|(
+name|connection
+operator|.
+name|getFirstFailureError
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|consumer
+operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
