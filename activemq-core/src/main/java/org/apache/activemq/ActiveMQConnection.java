@@ -6181,9 +6181,11 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+comment|// deliverAcks at this point is too early as acks can arrive at the broker
+comment|// before redispatch of messages and hence be out or order
 name|s
 operator|.
-name|deliverAcks
+name|transportResumed
 argument_list|()
 expr_stmt|;
 block|}

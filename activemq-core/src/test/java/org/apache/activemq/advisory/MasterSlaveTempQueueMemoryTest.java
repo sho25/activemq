@@ -147,20 +147,6 @@ name|RegionBroker
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQDestination
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class

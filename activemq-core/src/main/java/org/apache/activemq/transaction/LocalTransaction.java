@@ -206,6 +206,29 @@ name|XAException
 throws|,
 name|IOException
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"commit: "
+operator|+
+name|xid
+operator|+
+literal|" syncCount: "
+operator|+
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Get ready for commit.
 try|try
 block|{
@@ -358,6 +381,29 @@ name|XAException
 throws|,
 name|IOException
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"rollback: "
+operator|+
+name|xid
+operator|+
+literal|" syncCount: "
+operator|+
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|setState
 argument_list|(
 name|Transaction

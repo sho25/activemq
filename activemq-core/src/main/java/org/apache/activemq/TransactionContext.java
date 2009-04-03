@@ -884,7 +884,6 @@ name|beginEvent
 argument_list|()
 expr_stmt|;
 block|}
-block|}
 if|if
 condition|(
 name|LOG
@@ -897,11 +896,12 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Being:"
+literal|"Begin:"
 operator|+
 name|transactionId
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Rolls back any work done in this transaction and releases any locks      * currently held.      *       * @throws JMSException if the JMS provider fails to roll back the      *                 transaction due to some internal error.      * @throws javax.jms.IllegalStateException if the method is not called by a      *                 transacted session.      */
@@ -948,9 +948,24 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Rollback:"
+literal|"Rollback: "
 operator|+
 name|transactionId
+operator|+
+literal|" syncCount: "
+operator|+
+operator|(
+name|synchronizations
+operator|!=
+literal|null
+condition|?
+name|synchronizations
+operator|.
+name|size
+argument_list|()
+else|:
+literal|0
+operator|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1049,9 +1064,24 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Commit:"
+literal|"Commit: "
 operator|+
 name|transactionId
+operator|+
+literal|" syncCount: "
+operator|+
+operator|(
+name|synchronizations
+operator|!=
+literal|null
+condition|?
+name|synchronizations
+operator|.
+name|size
+argument_list|()
+else|:
+literal|0
+operator|)
 argument_list|)
 expr_stmt|;
 block|}

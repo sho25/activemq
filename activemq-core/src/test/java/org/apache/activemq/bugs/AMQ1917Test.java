@@ -795,6 +795,11 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|working
+condition|)
+block|{
 name|errorLatch
 operator|.
 name|countDown
@@ -807,6 +812,7 @@ operator|+
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

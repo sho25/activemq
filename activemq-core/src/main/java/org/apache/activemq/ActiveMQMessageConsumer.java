@@ -1795,13 +1795,13 @@ if|if
 condition|(
 name|LOG
 operator|.
-name|isDebugEnabled
+name|isTraceEnabled
 argument_list|()
 condition|)
 block|{
 name|LOG
 operator|.
-name|debug
+name|trace
 argument_list|(
 name|getConsumerId
 argument_list|()
@@ -2446,6 +2446,10 @@ block|{
 name|ack
 operator|=
 name|pendingAck
+expr_stmt|;
+name|pendingAck
+operator|=
+literal|null
 expr_stmt|;
 block|}
 if|if
@@ -3342,8 +3346,7 @@ throws|throws
 name|JMSException
 block|{
 comment|// Don't acknowledge now, but we may need to let the broker know the
-comment|// consumer got the message
-comment|// to expand the pre-fetch window
+comment|// consumer got the message to expand the pre-fetch window
 if|if
 condition|(
 name|session
@@ -3428,8 +3431,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// The delivered message list is only needed for the recover method
-comment|// which is only used with client ack.
 name|deliveredCounter
 operator|++
 expr_stmt|;
@@ -3450,6 +3451,19 @@ argument_list|,
 name|deliveredCounter
 argument_list|)
 expr_stmt|;
+name|pendingAck
+operator|.
+name|setTransactionId
+argument_list|(
+name|session
+operator|.
+name|getTransactionContext
+argument_list|()
+operator|.
+name|getTransactionId
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|oldPendingAck
@@ -3468,7 +3482,19 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|oldPendingAck
+operator|.
+name|getAckType
+argument_list|()
+operator|==
+name|pendingAck
+operator|.
+name|getAckType
+argument_list|()
+condition|)
 block|{
 name|pendingAck
 operator|.
@@ -3481,19 +3507,75 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|pendingAck
+else|else
+block|{
+comment|// old pending ack being superseded by ack of another type, if is is not a delivered
+comment|// ack and hence important, send it now so it is not lost.
+if|if
+condition|(
+operator|!
+name|oldPendingAck
 operator|.
-name|setTransactionId
+name|isDeliveredAck
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
 argument_list|(
-name|session
-operator|.
-name|getTransactionContext
-argument_list|()
-operator|.
-name|getTransactionId
-argument_list|()
+literal|"Sending old pending ack "
+operator|+
+name|oldPendingAck
+operator|+
+literal|", new pending: "
+operator|+
+name|pendingAck
 argument_list|)
 expr_stmt|;
+block|}
+name|session
+operator|.
+name|sendAck
+argument_list|(
+name|oldPendingAck
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"dropping old pending ack "
+operator|+
+name|oldPendingAck
+operator|+
+literal|", new pending: "
+operator|+
+name|pendingAck
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
 if|if
 condition|(
 operator|(
@@ -3620,11 +3702,20 @@ literal|null
 expr_stmt|;
 comment|// Adjust the counters
 name|deliveredCounter
-operator|-=
+operator|=
+name|Math
+operator|.
+name|max
+argument_list|(
+literal|0
+argument_list|,
+name|deliveredCounter
+operator|-
 name|deliveredMessages
 operator|.
 name|size
 argument_list|()
+argument_list|)
 expr_stmt|;
 name|additionalWindowSize
 operator|=
@@ -4491,7 +4582,7 @@ argument_list|(
 name|getConsumerId
 argument_list|()
 operator|+
-literal|" Ignoring Duplicate: "
+literal|" ignoring duplicate: "
 operator|+
 name|md
 operator|.
@@ -4500,9 +4591,24 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|acknowledge
+comment|// in a transaction ack delivery of duplicates to ensure prefetch extension kicks in.
+comment|// the normal ack will happen in the transaction.
+name|ackLater
 argument_list|(
 name|md
+argument_list|,
+name|session
+operator|.
+name|isTransacted
+argument_list|()
+condition|?
+name|MessageAck
+operator|.
+name|DELIVERED_ACK_TYPE
+else|:
+name|MessageAck
+operator|.
+name|STANDARD_ACK_TYPE
 argument_list|)
 expr_stmt|;
 block|}
@@ -4757,6 +4863,25 @@ block|{
 return|return
 name|lastDeliveredSequenceId
 return|;
+block|}
+comment|// on resumption re deliveries will percolate acks in their own good time
+specifier|public
+name|void
+name|transportResumed
+parameter_list|()
+block|{
+name|pendingAck
+operator|=
+literal|null
+expr_stmt|;
+name|additionalWindowSize
+operator|=
+literal|0
+expr_stmt|;
+name|deliveredCounter
+operator|=
+literal|0
+expr_stmt|;
 block|}
 specifier|public
 name|IOException

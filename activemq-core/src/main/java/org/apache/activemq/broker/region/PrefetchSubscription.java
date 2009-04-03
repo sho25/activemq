@@ -2050,13 +2050,11 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//            if (destination.isLazyDispatch()) {
 name|destination
 operator|.
 name|wakeup
 argument_list|()
 expr_stmt|;
-comment|//            }
 name|dispatchPending
 argument_list|()
 expr_stmt|;

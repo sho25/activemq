@@ -6307,6 +6307,46 @@ operator|.
 name|size
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|destination
+operator|.
+name|getPhysicalName
+argument_list|()
+operator|+
+literal|" toPageIn: "
+operator|+
+name|toPageIn
+operator|+
+literal|", Inflight: "
+operator|+
+name|destinationStatistics
+operator|.
+name|getInflight
+argument_list|()
+operator|.
+name|getCount
+argument_list|()
+operator|+
+literal|", pagedInMessages.size "
+operator|+
+name|pagedInMessages
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|toPageIn
 operator|=
 name|Math
