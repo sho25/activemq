@@ -1547,7 +1547,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testOrderWithRestart
+name|x_testOrderWithRestart
 parameter_list|()
 throws|throws
 name|Exception
@@ -1628,7 +1628,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testTopicOrderWithRestart
+name|x_testTopicOrderWithRestart
 parameter_list|()
 throws|throws
 name|Exception
@@ -1737,18 +1737,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// with transactions there may be lots of re deliveries, in the case
-comment|// or a commit every 500 messages there could be up to 500 re deliveries
-comment|// In order to ensure these are acked and don't block new message receipt,
-comment|// the prefetch should be less than double the commit window.
-comment|// In addition there needs to be sufficient memory to available to dispatch
-comment|// transaction size + redeliveries - so 2*transaction size
-name|brokerURL
-operator|=
-name|DEFAULT_BROKER_URL
-operator|+
-literal|"&jms.prefetchPolicy.all=240"
-expr_stmt|;
 name|numtoSend
 operator|=
 literal|15000
@@ -1758,35 +1746,6 @@ operator|=
 literal|30
 operator|*
 literal|1000
-expr_stmt|;
-specifier|final
-name|PolicyMap
-name|policyMap
-init|=
-operator|new
-name|PolicyMap
-argument_list|()
-decl_stmt|;
-name|PolicyEntry
-name|policy
-init|=
-operator|new
-name|PolicyEntry
-argument_list|()
-decl_stmt|;
-name|policy
-operator|.
-name|setMaxPageSize
-argument_list|(
-literal|500
-argument_list|)
-expr_stmt|;
-name|policyMap
-operator|.
-name|setDefaultEntry
-argument_list|(
-name|policy
-argument_list|)
 expr_stmt|;
 name|createBroker
 argument_list|(
@@ -1809,13 +1768,6 @@ operator|.
 name|deleteAllMessages
 argument_list|()
 expr_stmt|;
-name|broker
-operator|.
-name|setDestinationPolicy
-argument_list|(
-name|policyMap
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 argument_list|)
@@ -1832,29 +1784,7 @@ name|schedualRestartTask
 argument_list|(
 name|timer
 argument_list|,
-operator|new
-name|Configurer
-argument_list|()
-block|{
-specifier|public
-name|void
-name|configure
-parameter_list|(
-name|BrokerService
-name|broker
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-name|broker
-operator|.
-name|setDestinationPolicy
-argument_list|(
-name|policyMap
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+literal|null
 argument_list|)
 expr_stmt|;
 try|try
