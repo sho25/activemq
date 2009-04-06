@@ -290,7 +290,14 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Disconnecting loop back connection."
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" disconnecting remote loop back connection: "
+operator|+
+name|remoteBrokerName
 argument_list|)
 expr_stmt|;
 comment|// waitStarted();
@@ -399,7 +406,12 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Disconnecting loop back connection."
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" disconnecting local loop back connection."
 argument_list|)
 expr_stmt|;
 name|waitStarted

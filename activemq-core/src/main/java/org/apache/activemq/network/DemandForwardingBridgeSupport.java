@@ -3562,7 +3562,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Ignoring Subscription "
+literal|"Ignoring destination "
 operator|+
 name|destInfo
 operator|+
@@ -3606,7 +3606,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Ignoring sub "
+literal|"Ignoring destination "
 operator|+
 name|destInfo
 operator|+
