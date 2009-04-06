@@ -4392,6 +4392,43 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|pendingAck
+operator|!=
+literal|null
+operator|&&
+name|pendingAck
+operator|.
+name|isDeliveredAck
+argument_list|()
+condition|)
+block|{
+comment|// on resumption a pending delivered ack will be out of sync with
+comment|// re deliveries.
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"removing pending delivered ack on transport interupt: "
+operator|+
+name|pendingAck
+argument_list|)
+expr_stmt|;
+block|}
+name|pendingAck
+operator|=
+literal|null
+expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -4582,7 +4619,7 @@ argument_list|(
 name|getConsumerId
 argument_list|()
 operator|+
-literal|" ignoring duplicate: "
+literal|" ignoring(auto acking) duplicate: "
 operator|+
 name|md
 operator|.
@@ -4593,24 +4630,32 @@ expr_stmt|;
 block|}
 comment|// in a transaction ack delivery of duplicates to ensure prefetch extension kicks in.
 comment|// the normal ack will happen in the transaction.
-name|ackLater
-argument_list|(
-name|md
-argument_list|,
+if|if
+condition|(
 name|session
 operator|.
 name|isTransacted
 argument_list|()
-condition|?
+condition|)
+block|{
+name|ackLater
+argument_list|(
+name|md
+argument_list|,
 name|MessageAck
 operator|.
 name|DELIVERED_ACK_TYPE
-else|:
-name|MessageAck
-operator|.
-name|STANDARD_ACK_TYPE
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|acknowledge
+argument_list|(
+name|md
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -4863,25 +4908,6 @@ block|{
 return|return
 name|lastDeliveredSequenceId
 return|;
-block|}
-comment|// on resumption re deliveries will percolate acks in their own good time
-specifier|public
-name|void
-name|transportResumed
-parameter_list|()
-block|{
-name|pendingAck
-operator|=
-literal|null
-expr_stmt|;
-name|additionalWindowSize
-operator|=
-literal|0
-expr_stmt|;
-name|deliveredCounter
-operator|=
-literal|0
-expr_stmt|;
 block|}
 specifier|public
 name|IOException

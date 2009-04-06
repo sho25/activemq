@@ -6151,44 +6151,6 @@ name|transportResumed
 argument_list|()
 expr_stmt|;
 block|}
-for|for
-control|(
-name|Iterator
-argument_list|<
-name|ActiveMQSession
-argument_list|>
-name|i
-init|=
-name|this
-operator|.
-name|sessions
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
-name|ActiveMQSession
-name|s
-init|=
-name|i
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
-comment|// deliverAcks at this point is too early as acks can arrive at the broker
-comment|// before redispatch of messages and hence be out or order
-name|s
-operator|.
-name|transportResumed
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|/**      * Create the DestinationInfo object for the temporary destination.      *       * @param topic - if its true topic, else queue.      * @return DestinationInfo      * @throws JMSException      */
 specifier|protected
