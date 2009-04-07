@@ -92,6 +92,12 @@ name|name
 init|=
 literal|null
 decl_stmt|;
+specifier|private
+name|boolean
+name|suppressDuplicateQueueSubscriptions
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * @return the conduitSubscriptions      */
 specifier|public
 name|boolean
@@ -470,6 +476,29 @@ operator|.
 name|name
 operator|=
 name|name
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isSuppressDuplicateQueueSubscriptions
+parameter_list|()
+block|{
+return|return
+name|suppressDuplicateQueueSubscriptions
+return|;
+block|}
+comment|/**      *       * @param val if true, duplicate network queue subscriptions (in a cyclic network) will be suppressed      */
+specifier|public
+name|void
+name|setSuppressDuplicateQueueSubscriptions
+parameter_list|(
+name|boolean
+name|val
+parameter_list|)
+block|{
+name|suppressDuplicateQueueSubscriptions
+operator|=
+name|val
 expr_stmt|;
 block|}
 block|}
