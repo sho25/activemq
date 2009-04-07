@@ -463,15 +463,20 @@ if|if
 condition|(
 name|LOG
 operator|.
-name|isTraceEnabled
+name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
 name|LOG
 operator|.
-name|trace
+name|debug
 argument_list|(
-literal|"removing sub on "
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" removing sub on "
 operator|+
 name|localBroker
 operator|+

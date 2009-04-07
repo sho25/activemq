@@ -286,9 +286,17 @@ name|remoteBrokerId
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
 name|LOG
 operator|.
-name|info
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
 argument_list|(
 name|configuration
 operator|.
@@ -300,7 +308,7 @@ operator|+
 name|remoteBrokerName
 argument_list|)
 expr_stmt|;
-comment|// waitStarted();
+block|}
 name|ServiceSupport
 operator|.
 name|dispose
@@ -310,15 +318,24 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
 name|LOG
 operator|.
-name|debug
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
 argument_list|(
 literal|"counting down remoteBrokerNameKnownLatch with: "
 operator|+
 name|command
 argument_list|)
 expr_stmt|;
+block|}
 name|remoteBrokerNameKnownLatch
 operator|.
 name|countDown
@@ -402,9 +419,17 @@ name|localBrokerId
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
 name|LOG
 operator|.
-name|info
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
 argument_list|(
 name|configuration
 operator|.
@@ -414,6 +439,7 @@ operator|+
 literal|" disconnecting local loop back connection."
 argument_list|)
 expr_stmt|;
+block|}
 name|waitStarted
 argument_list|()
 expr_stmt|;

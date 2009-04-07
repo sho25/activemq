@@ -1849,15 +1849,29 @@ init|(
 name|this
 init|)
 block|{
+if|if
+condition|(
 name|LOG
 operator|.
-name|debug
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
 argument_list|(
-literal|"starting local Bridge, localBroker="
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" starting local Bridge, localBroker="
 operator|+
 name|localBroker
 argument_list|)
 expr_stmt|;
+block|}
 name|remoteBrokerNameKnownLatch
 operator|.
 name|await
@@ -2001,15 +2015,29 @@ literal|true
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
 name|LOG
 operator|.
-name|debug
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
 argument_list|(
-literal|"starting remote Bridge, localBroker="
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" starting remote Bridge, localBroker="
 operator|+
 name|localBroker
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|this
@@ -3458,7 +3486,7 @@ operator|.
 name|getBrokerName
 argument_list|()
 operator|+
-literal|" Forwarding sub on "
+literal|" bridging sub on "
 operator|+
 name|localBroker
 operator|+
@@ -3562,7 +3590,12 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Ignoring destination "
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" Ignoring destination "
 operator|+
 name|destInfo
 operator|+
@@ -3606,7 +3639,12 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Ignoring destination "
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" Ignoring destination "
 operator|+
 name|destInfo
 operator|+
@@ -3678,15 +3716,24 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|LOG
 operator|.
-name|debug
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
 argument_list|(
-literal|"Replying destination control command: "
+literal|"bridging destination control command: "
 operator|+
 name|destInfo
 argument_list|)
 expr_stmt|;
+block|}
 name|localBroker
 operator|.
 name|oneway
@@ -4015,15 +4062,6 @@ operator|!
 name|disposed
 condition|)
 block|{
-specifier|final
-name|boolean
-name|trace
-init|=
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-decl_stmt|;
 try|try
 block|{
 if|if
@@ -4138,12 +4176,15 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|trace
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
 condition|)
 block|{
 name|LOG
 operator|.
-name|trace
+name|debug
 argument_list|(
 literal|"bridging "
 operator|+
@@ -4159,22 +4200,6 @@ operator|+
 literal|": "
 operator|+
 name|message
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|trace
-argument_list|(
-literal|"cameFromRemote = "
-operator|+
-name|cameFromRemote
-operator|+
-literal|", repsonseRequired = "
-operator|+
-name|message
-operator|.
-name|isResponseRequired
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -4351,12 +4376,15 @@ else|else
 block|{
 if|if
 condition|(
-name|trace
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
 condition|)
 block|{
 name|LOG
 operator|.
-name|trace
+name|debug
 argument_list|(
 literal|"No subscription registered with this network bridge for consumerId "
 operator|+
@@ -5301,7 +5329,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Forwarding messages for static destination: "
+literal|"bridging messages for static destination: "
 operator|+
 name|dest
 argument_list|)
@@ -5503,7 +5531,12 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"subscription: "
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" subscription: "
 operator|+
 name|consumerInfo
 operator|+
@@ -5798,6 +5831,33 @@ name|length
 operator|+
 literal|1
 expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" using priority :"
+operator|+
+name|priority
+operator|+
+literal|" for subscription: "
+operator|+
+name|info
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|result
 operator|.
@@ -6042,15 +6102,20 @@ if|if
 condition|(
 name|LOG
 operator|.
-name|isTraceEnabled
+name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
 name|LOG
 operator|.
-name|trace
+name|debug
 argument_list|(
-literal|"removing sub on "
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" removing sub on "
 operator|+
 name|localBroker
 operator|+
