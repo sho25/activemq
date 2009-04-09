@@ -402,6 +402,11 @@ index|]
 operator|=
 name|localBrokerId
 expr_stmt|;
+name|localBrokerIdKnownLatch
+operator|.
+name|countDown
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|remoteBrokerId

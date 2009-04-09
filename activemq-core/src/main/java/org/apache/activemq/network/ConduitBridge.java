@@ -311,6 +311,36 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" matched exsting sub (add interest) for : "
+operator|+
+name|ds
+operator|.
+name|getRemoteInfo
+argument_list|()
+operator|+
+literal|" with sub: "
+operator|+
+name|info
+argument_list|)
+expr_stmt|;
+block|}
 comment|// add the interest in the subscription
 comment|// ds.add(ds.getRemoteInfo().getConsumerId());
 name|ds
@@ -411,6 +441,43 @@ argument_list|(
 name|ds
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" removing interest in sub on "
+operator|+
+name|localBroker
+operator|+
+literal|" from "
+operator|+
+name|remoteBrokerName
+operator|+
+literal|" :  "
+operator|+
+name|ds
+operator|.
+name|getRemoteInfo
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 for|for

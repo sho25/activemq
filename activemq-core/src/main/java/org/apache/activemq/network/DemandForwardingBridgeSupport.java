@@ -1084,6 +1084,16 @@ literal|1
 argument_list|)
 decl_stmt|;
 specifier|protected
+name|CountDownLatch
+name|localBrokerIdKnownLatch
+init|=
+operator|new
+name|CountDownLatch
+argument_list|(
+literal|1
+argument_list|)
+decl_stmt|;
+specifier|protected
 specifier|final
 name|AtomicBoolean
 name|remoteInterupted
@@ -3942,26 +3952,6 @@ expr_stmt|;
 block|}
 block|}
 specifier|protected
-name|DemandSubscription
-name|getDemandSubscription
-parameter_list|(
-name|MessageDispatch
-name|md
-parameter_list|)
-block|{
-return|return
-name|subscriptionMapByLocalId
-operator|.
-name|get
-argument_list|(
-name|md
-operator|.
-name|getConsumerId
-argument_list|()
-argument_list|)
-return|;
-block|}
-specifier|protected
 name|Message
 name|configureMessage
 parameter_list|(
@@ -4077,7 +4067,6 @@ operator|.
 name|incrementAndGet
 argument_list|()
 expr_stmt|;
-comment|//localStartedLatch.await();
 specifier|final
 name|MessageDispatch
 name|md
@@ -4233,13 +4222,22 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
 name|LOG
 operator|.
-name|info
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
 argument_list|(
 literal|"Message not forwarded on to remote, because message came from remote"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|localBroker
 operator|.
@@ -6088,6 +6086,41 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" remove request on "
+operator|+
+name|localBroker
+operator|+
+literal|" from "
+operator|+
+name|remoteBrokerName
+operator|+
+literal|" , consumer id: "
+operator|+
+name|id
+operator|+
+literal|", matching sub: "
+operator|+
+name|sub
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|sub
 operator|!=
 literal|null
@@ -6115,7 +6148,7 @@ operator|.
 name|getBrokerName
 argument_list|()
 operator|+
-literal|" removing sub on "
+literal|" removed sub on "
 operator|+
 name|localBroker
 operator|+
@@ -6142,6 +6175,11 @@ throws|throws
 name|InterruptedException
 block|{
 name|startedLatch
+operator|.
+name|await
+argument_list|()
+expr_stmt|;
+name|localBrokerIdKnownLatch
 operator|.
 name|await
 argument_list|()
