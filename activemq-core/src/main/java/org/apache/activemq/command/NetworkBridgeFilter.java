@@ -27,6 +27,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -304,7 +314,23 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Message all ready routed once through this broker - ignoring: "
+literal|"Message all ready routed once through this broker ("
+operator|+
+name|networkBrokerId
+operator|+
+literal|"), path: "
+operator|+
+name|Arrays
+operator|.
+name|toString
+argument_list|(
+name|message
+operator|.
+name|getBrokerPath
+argument_list|()
+argument_list|)
+operator|+
+literal|" - ignoring: "
 operator|+
 name|message
 argument_list|)

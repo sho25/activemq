@@ -822,7 +822,12 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Adding destination: "
+name|broker
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" adding destination: "
 operator|+
 name|destination
 argument_list|)
@@ -1333,11 +1338,23 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Adding consumer: "
+name|broker
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" adding consumer: "
 operator|+
 name|info
 operator|.
 name|getConsumerId
+argument_list|()
+operator|+
+literal|" for destination: "
+operator|+
+name|info
+operator|.
+name|getDestination
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1689,11 +1706,23 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Removing consumer: "
+name|broker
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" removing consumer: "
 operator|+
 name|info
 operator|.
 name|getConsumerId
+argument_list|()
+operator|+
+literal|" for destination: "
+operator|+
+name|info
+operator|.
+name|getDestination
 argument_list|()
 argument_list|)
 expr_stmt|;

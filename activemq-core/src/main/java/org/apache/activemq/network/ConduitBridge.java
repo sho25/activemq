@@ -328,7 +328,7 @@ operator|.
 name|getBrokerName
 argument_list|()
 operator|+
-literal|" matched exsting sub (add interest) for : "
+literal|" matched (add interest) to exsting sub for: "
 operator|+
 name|ds
 operator|.
@@ -419,30 +419,15 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
 name|ds
 operator|.
 name|remove
 argument_list|(
 name|id
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|ds
-operator|.
-name|isEmpty
-argument_list|()
 condition|)
-block|{
-name|tmpList
-operator|.
-name|add
-argument_list|(
-name|ds
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 if|if
 condition|(
@@ -469,7 +454,11 @@ literal|" from "
 operator|+
 name|remoteBrokerName
 operator|+
-literal|" :  "
+literal|" : sub: "
+operator|+
+name|id
+operator|+
+literal|" existing matched sub: "
 operator|+
 name|ds
 operator|.
@@ -478,6 +467,22 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+if|if
+condition|(
+name|ds
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|tmpList
+operator|.
+name|add
+argument_list|(
+name|ds
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 for|for
@@ -508,19 +513,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|subscriptionMapByLocalId
-operator|.
-name|remove
-argument_list|(
-name|ds
-operator|.
-name|getRemoteInfo
-argument_list|()
-operator|.
-name|getConsumerId
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|removeSubscription
 argument_list|(
 name|ds
