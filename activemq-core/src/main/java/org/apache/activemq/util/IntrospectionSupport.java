@@ -169,20 +169,6 @@ name|ActiveMQDestination
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|lang
-operator|.
-name|ArrayUtils
-import|;
-end_import
-
 begin_class
 specifier|public
 specifier|final
