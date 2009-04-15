@@ -460,13 +460,13 @@ argument_list|(
 literal|20
 argument_list|)
 expr_stmt|;
-comment|// REMIND: If I could pass in a name for the Timer thread,
-comment|//         I would pass 'JmDNS.Timer'.
 name|timer
 operator|=
 operator|new
 name|Timer
-argument_list|()
+argument_list|(
+literal|"JmDNS.Timer"
+argument_list|)
 expr_stmt|;
 operator|new
 name|RecordReaper

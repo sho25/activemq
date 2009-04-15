@@ -295,6 +295,8 @@ operator|=
 operator|new
 name|Timer
 argument_list|(
+literal|"ActiveMQ Temp destination purge timer"
+argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
