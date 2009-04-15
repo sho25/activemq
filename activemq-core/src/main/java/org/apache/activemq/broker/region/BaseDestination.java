@@ -1321,6 +1321,15 @@ name|this
 operator|.
 name|store
 operator|.
+name|removeAllMessages
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|store
+operator|.
 name|dispose
 argument_list|(
 name|context
