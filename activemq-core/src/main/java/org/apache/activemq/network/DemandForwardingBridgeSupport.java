@@ -3537,47 +3537,7 @@ name|info
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|debug
-argument_list|(
-name|configuration
-operator|.
-name|getBrokerName
-argument_list|()
-operator|+
-literal|" Ignoring sub from "
-operator|+
-name|remoteBrokerName
-operator|+
-literal|", destination "
-operator|+
-name|info
-operator|.
-name|getDestination
-argument_list|()
-operator|+
-literal|", for "
-operator|+
-name|info
-operator|.
-name|getConsumerId
-argument_list|()
-operator|+
-literal|" as a duplicate. Already subscribed via network subscription :"
-operator|+
-name|info
-argument_list|)
-expr_stmt|;
-block|}
+comment|// trace in method
 return|return;
 block|}
 if|if
@@ -5672,7 +5632,11 @@ operator|.
 name|getBrokerName
 argument_list|()
 operator|+
-literal|" subscription: "
+literal|" Ignoring duplicate subscription from "
+operator|+
+name|remoteBrokerName
+operator|+
+literal|", sub: "
 operator|+
 name|consumerInfo
 operator|+
