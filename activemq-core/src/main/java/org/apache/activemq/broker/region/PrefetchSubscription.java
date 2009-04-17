@@ -1017,14 +1017,14 @@ name|isSlave
 argument_list|()
 condition|)
 block|{
-while|while
+if|if
 condition|(
 operator|!
 name|okForAckAsDispatchDone
 operator|.
 name|await
 argument_list|(
-literal|100
+literal|0l
 argument_list|,
 name|TimeUnit
 operator|.
@@ -1032,15 +1032,17 @@ name|MILLISECONDS
 argument_list|)
 condition|)
 block|{
+comment|// suppress unexpected ack exception in this expected case
 name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Ack before disaptch, waiting for recovery dispatch: "
+literal|"Ignoring ack received before dispatch; result of failover with an outstanding ack. Acked messages will be replayed if present on this broker. Ignored ack: "
 operator|+
 name|ack
 argument_list|)
 expr_stmt|;
+return|return;
 block|}
 block|}
 if|if
