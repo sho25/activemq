@@ -1450,7 +1450,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|1000
+literal|2000
 argument_list|)
 expr_stmt|;
 comment|// Send messages
@@ -1557,7 +1557,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|500
+literal|2000
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -1601,7 +1601,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|500
+literal|2000
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -1621,7 +1621,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|500
+literal|2000
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -1812,7 +1812,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|500
+literal|2000
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -1872,7 +1872,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|500
+literal|2000
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -1892,7 +1892,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|500
+literal|2000
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -1918,7 +1918,7 @@ name|messagesReceived
 operator|.
 name|await
 argument_list|(
-literal|30
+literal|60
 argument_list|,
 name|TimeUnit
 operator|.
