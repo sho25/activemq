@@ -98,21 +98,6 @@ name|TimeStampingBrokerPlugin
 extends|extends
 name|BrokerPluginSupport
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOG
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|TimeStampingBrokerPlugin
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 comment|/**      * variable which (when non-zero) is used to override     * the expiration date for messages that arrive with     * no expiration date set (in Milliseconds).     */
 name|long
 name|zeroExpirationOverride
