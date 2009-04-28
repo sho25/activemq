@@ -222,7 +222,12 @@ name|getRemoteAddress
 parameter_list|()
 block|{
 return|return
-literal|"blockingQueue"
+literal|"blockingQueue_"
+operator|+
+name|queue
+operator|.
+name|hashCode
+argument_list|()
 return|;
 block|}
 specifier|protected
