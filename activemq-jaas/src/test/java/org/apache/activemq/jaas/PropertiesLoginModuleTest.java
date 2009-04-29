@@ -239,17 +239,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Path to login config: "
-operator|+
-name|path
-argument_list|)
-expr_stmt|;
 block|}
 specifier|public
 name|void
