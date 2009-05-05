@@ -337,6 +337,19 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+comment|// Add the default session id.
+name|addSession
+argument_list|(
+operator|new
+name|SessionInfo
+argument_list|(
+name|info
+argument_list|,
+operator|-
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
