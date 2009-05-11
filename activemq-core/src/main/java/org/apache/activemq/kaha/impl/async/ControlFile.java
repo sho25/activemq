@@ -748,6 +748,15 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+specifier|public
+name|boolean
+name|isDisposed
+parameter_list|()
+block|{
+return|return
+name|disposed
+return|;
+block|}
 block|}
 end_class
 

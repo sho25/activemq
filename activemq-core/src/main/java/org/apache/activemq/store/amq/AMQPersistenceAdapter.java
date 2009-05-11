@@ -1519,6 +1519,8 @@ literal|1000
 operator|)
 operator|+
 literal|" seconds for the journal to be unlocked."
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 try|try
@@ -2066,6 +2068,10 @@ name|referenceStoreAdapter
 operator|.
 name|stop
 argument_list|()
+expr_stmt|;
+name|referenceStoreAdapter
+operator|=
+literal|null
 expr_stmt|;
 try|try
 block|{

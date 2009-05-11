@@ -65,6 +65,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|rmi
+operator|.
+name|registry
+operator|.
+name|Registry
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|List
@@ -327,6 +339,10 @@ decl_stmt|;
 specifier|private
 name|ObjectName
 name|namingServiceObjectName
+decl_stmt|;
+specifier|private
+name|Registry
+name|registry
 decl_stmt|;
 specifier|public
 name|ManagementContext
@@ -629,6 +645,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|beanServer
+operator|=
+literal|null
+expr_stmt|;
 block|}
 block|}
 comment|/**      * @return Returns the jmxDomainName.      */
@@ -1478,6 +1498,15 @@ block|{
 comment|// Create the NamingService, needed by JSR 160
 try|try
 block|{
+if|if
+condition|(
+name|registry
+operator|==
+literal|null
+condition|)
+block|{
+name|registry
+operator|=
 name|LocateRegistry
 operator|.
 name|createRegistry
@@ -1485,6 +1514,7 @@ argument_list|(
 name|connectorPort
 argument_list|)
 expr_stmt|;
+block|}
 name|namingServiceObjectName
 operator|=
 name|ObjectName

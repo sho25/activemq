@@ -1315,6 +1315,27 @@ operator|.
 name|throwFirstException
 argument_list|()
 expr_stmt|;
+comment|// clear the state
+name|clientIdSet
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|connections
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|destinations
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|brokerInfos
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 block|}
 specifier|public
 name|PolicyMap
