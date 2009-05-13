@@ -65,6 +65,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|ShutdownInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|transport
 operator|.
 name|FutureResponse
@@ -181,7 +195,35 @@ name|commons
 operator|.
 name|httpclient
 operator|.
+name|HttpMethodRetryHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|httpclient
+operator|.
 name|HttpStatus
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|httpclient
+operator|.
+name|NoHttpResponseException
 import|;
 end_import
 
@@ -229,7 +271,55 @@ name|httpclient
 operator|.
 name|methods
 operator|.
+name|InputStreamRequestEntity
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|httpclient
+operator|.
+name|methods
+operator|.
 name|PostMethod
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|httpclient
+operator|.
+name|params
+operator|.
+name|HttpClientParams
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|httpclient
+operator|.
+name|params
+operator|.
+name|HttpMethodParams
 import|;
 end_import
 
@@ -327,6 +417,10 @@ specifier|private
 name|boolean
 name|trace
 decl_stmt|;
+specifier|private
+name|GetMethod
+name|httpMethod
+decl_stmt|;
 specifier|public
 name|HttpClientTransport
 parameter_list|(
@@ -423,15 +517,24 @@ argument_list|(
 literal|"UTF-8"
 argument_list|)
 decl_stmt|;
-name|httpMethod
-operator|.
-name|setRequestBody
+name|InputStreamRequestEntity
+name|entity
+init|=
+operator|new
+name|InputStreamRequestEntity
 argument_list|(
 operator|new
 name|ByteArrayInputStream
 argument_list|(
 name|bytes
 argument_list|)
+argument_list|)
+decl_stmt|;
+name|httpMethod
+operator|.
+name|setRequestEntity
+argument_list|(
+name|entity
 argument_list|)
 expr_stmt|;
 try|try
@@ -442,11 +545,25 @@ init|=
 name|getSendHttpClient
 argument_list|()
 decl_stmt|;
-name|client
+name|HttpClientParams
+name|params
+init|=
+operator|new
+name|HttpClientParams
+argument_list|()
+decl_stmt|;
+name|params
 operator|.
-name|setTimeout
+name|setSoTimeout
 argument_list|(
 name|MAX_CLIENT_TIMEOUT
+argument_list|)
+expr_stmt|;
+name|client
+operator|.
+name|setParams
+argument_list|(
+name|params
 argument_list|)
 expr_stmt|;
 name|int
@@ -482,7 +599,38 @@ name|answer
 argument_list|)
 throw|;
 block|}
-comment|// checkSession(httpMethod);
+if|if
+condition|(
+name|command
+operator|instanceof
+name|ShutdownInfo
+condition|)
+block|{
+try|try
+block|{
+name|stop
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Error trying to stop HTTP client: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -572,9 +720,8 @@ name|isStopping
 argument_list|()
 condition|)
 block|{
-name|GetMethod
 name|httpMethod
-init|=
+operator|=
 operator|new
 name|GetMethod
 argument_list|(
@@ -583,7 +730,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|configureMethod
 argument_list|(
 name|httpMethod
@@ -674,7 +821,6 @@ block|}
 block|}
 else|else
 block|{
-comment|// checkSession(httpMethod);
 name|DataInputStream
 name|stream
 init|=
@@ -759,11 +905,6 @@ break|break;
 block|}
 finally|finally
 block|{
-name|httpMethod
-operator|.
-name|getResponseBody
-argument_list|()
-expr_stmt|;
 name|httpMethod
 operator|.
 name|releaseConnection
@@ -943,7 +1084,13 @@ name|stopper
 parameter_list|)
 throws|throws
 name|Exception
-block|{     }
+block|{
+name|httpMethod
+operator|.
+name|abort
+argument_list|()
+expr_stmt|;
+block|}
 specifier|protected
 name|HttpClient
 name|createHttpClient
@@ -1025,17 +1172,6 @@ operator|=
 name|trace
 expr_stmt|;
 block|}
-comment|// protected void checkSession(HttpMethod client) {
-comment|// Header header = client.getRequestHeader("Set-Cookie");
-comment|// if (header != null) {
-comment|// String set_cookie = header.getValue();
-comment|//
-comment|// if (set_cookie != null&& set_cookie.startsWith("JSESSIONID=")) {
-comment|// String[] bits = set_cookie.split("[=;]");
-comment|// sessionID = bits[1];
-comment|// }
-comment|// }
-comment|// }
 block|}
 end_class
 

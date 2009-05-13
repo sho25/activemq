@@ -924,6 +924,33 @@ argument_list|(
 name|answer
 argument_list|)
 expr_stmt|;
+comment|//wait for the transport to connect
+while|while
+condition|(
+operator|!
+name|answer
+operator|.
+name|isConnected
+argument_list|()
+condition|)
+block|{
+try|try
+block|{
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|100
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|ignore
+parameter_list|)
+block|{             	}
+block|}
 return|return
 name|answer
 return|;
@@ -934,12 +961,16 @@ name|BlockingQueueTransport
 name|createTransportChannel
 parameter_list|()
 block|{
+comment|// return new BlockingQueueTransport(new LinkedBlockingQueue<Object>());
 return|return
 operator|new
 name|BlockingQueueTransport
 argument_list|(
 operator|new
 name|ArrayBlockingQueue
+argument_list|<
+name|Object
+argument_list|>
 argument_list|(
 literal|10
 argument_list|)

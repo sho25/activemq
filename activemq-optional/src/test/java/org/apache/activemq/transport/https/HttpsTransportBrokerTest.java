@@ -140,7 +140,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|5000
+literal|500
 argument_list|)
 expr_stmt|;
 block|}

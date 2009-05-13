@@ -981,13 +981,6 @@ block|}
 decl_stmt|;
 name|startThread
 operator|.
-name|setPriority
-argument_list|(
-literal|4
-argument_list|)
-expr_stmt|;
-name|startThread
-operator|.
 name|start
 argument_list|()
 expr_stmt|;
