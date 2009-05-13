@@ -393,6 +393,10 @@ name|Assert
 operator|.
 name|assertNotNull
 argument_list|(
+literal|"null on iteration: "
+operator|+
+name|i
+argument_list|,
 name|highConsumer
 operator|.
 name|receive
