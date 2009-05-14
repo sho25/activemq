@@ -295,10 +295,12 @@ literal|7
 condition|)
 block|{
 comment|// check custom expiration
-name|assertEquals
+name|assertTrue
 argument_list|(
-literal|2000
+literal|"expiration is in range, depends on two distinct calls to System.currentTimeMillis"
 argument_list|,
+literal|1500
+operator|<
 name|amqMsg
 operator|.
 name|getExpiration
@@ -320,10 +322,12 @@ literal|9
 condition|)
 block|{
 comment|// check ceiling
-name|assertEquals
+name|assertTrue
 argument_list|(
-literal|60000
+literal|"expiration ceeling is in range, depends on two distinct calls to System.currentTimeMillis"
 argument_list|,
+literal|59500
+operator|<
 name|amqMsg
 operator|.
 name|getExpiration
