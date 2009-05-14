@@ -1820,6 +1820,13 @@ name|RemoveInfo
 condition|)
 block|{
 comment|// Simulate response to RemoveInfo command
+name|stateTracker
+operator|.
+name|track
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
 name|Response
 name|response
 init|=
