@@ -1421,6 +1421,11 @@ argument_list|,
 name|ack
 argument_list|)
 expr_stmt|;
+name|queue
+operator|.
+name|wakeup
+argument_list|()
+expr_stmt|;
 block|}
 if|if
 condition|(

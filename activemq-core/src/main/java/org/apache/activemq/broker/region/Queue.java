@@ -5793,9 +5793,6 @@ argument_list|(
 name|reference
 argument_list|)
 expr_stmt|;
-name|wakeup
-argument_list|()
-expr_stmt|;
 block|}
 else|else
 block|{
