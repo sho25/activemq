@@ -174,6 +174,7 @@ name|maxChannelsPerWorker
 init|=
 literal|64
 decl_stmt|;
+specifier|public
 specifier|static
 name|SelectorManager
 name|getInstance
