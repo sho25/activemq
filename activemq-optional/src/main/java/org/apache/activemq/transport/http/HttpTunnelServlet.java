@@ -75,7 +75,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ArrayBlockingQueue
+name|LinkedBlockingQueue
 import|;
 end_import
 
@@ -961,19 +961,16 @@ name|BlockingQueueTransport
 name|createTransportChannel
 parameter_list|()
 block|{
-comment|// return new BlockingQueueTransport(new LinkedBlockingQueue<Object>());
 return|return
 operator|new
 name|BlockingQueueTransport
 argument_list|(
 operator|new
-name|ArrayBlockingQueue
+name|LinkedBlockingQueue
 argument_list|<
 name|Object
 argument_list|>
-argument_list|(
-literal|10
-argument_list|)
+argument_list|()
 argument_list|)
 return|;
 block|}
