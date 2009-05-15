@@ -188,6 +188,14 @@ name|void
 name|disable
 parameter_list|()
 block|{
+if|if
+condition|(
+name|key
+operator|.
+name|isValid
+argument_list|()
+condition|)
+block|{
 name|key
 operator|.
 name|interestOps
@@ -195,6 +203,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
