@@ -2742,7 +2742,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|warn
+name|info
 argument_list|(
 literal|"KahaDB Cleanup took "
 operator|+
@@ -2959,7 +2959,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|warn
+name|info
 argument_list|(
 literal|"KahaDB long enqueue time: Journal Add Took: "
 operator|+
