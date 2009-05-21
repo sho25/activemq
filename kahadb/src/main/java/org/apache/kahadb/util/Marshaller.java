@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marshaller for marshalling in/out objects to a RawContainer  *   * @version $Revision$  */
+comment|/**  * @version $Revision$  */
 end_comment
 
 begin_interface
@@ -57,14 +57,7 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
-name|Class
-argument_list|<
-name|T
-argument_list|>
-name|getType
-parameter_list|()
-function_decl|;
-comment|/**      * Write the payload of this entry to the RawContainer      * @param object       * @param dataOut      * @throws IOException      */
+comment|/**      * Write the payload of the object to the DataOutput stream.      *       * @param object       * @param dataOut      * @throws IOException      */
 name|void
 name|writePayload
 parameter_list|(
@@ -77,7 +70,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Read the entry from the RawContainer      * @param dataIn       * @return unmarshalled object      * @throws IOException      */
+comment|/**      * Read the payload of the object from the DataInput stream.      *       * @param dataIn       * @return unmarshalled object      * @throws IOException      */
 name|T
 name|readPayload
 parameter_list|(
@@ -86,6 +79,24 @@ name|dataIn
 parameter_list|)
 throws|throws
 name|IOException
+function_decl|;
+comment|/**       * @return -1 if the object do not always marshall to a fixed size, otherwise return that fixed size.      */
+name|int
+name|getFixedSize
+parameter_list|()
+function_decl|;
+comment|/**      *       * @return true if the {@link #deepCopy(Object)} operations is supported.      */
+name|boolean
+name|isDeepCopySupported
+parameter_list|()
+function_decl|;
+comment|/**      * @return a deep copy of the source object.      */
+name|T
+name|deepCopy
+parameter_list|(
+name|T
+name|source
+parameter_list|)
 function_decl|;
 block|}
 end_interface

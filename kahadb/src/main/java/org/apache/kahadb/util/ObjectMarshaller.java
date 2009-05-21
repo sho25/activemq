@@ -93,10 +93,12 @@ begin_class
 specifier|public
 class|class
 name|ObjectMarshaller
-implements|implements
-name|Marshaller
+extends|extends
+name|VariableMarshaller
+argument_list|<
+name|Object
+argument_list|>
 block|{
-comment|/**      * Write the payload of this entry to the RawContainer      *       * @param object      * @param dataOut      * @throws IOException      */
 specifier|public
 name|void
 name|writePayload
@@ -164,7 +166,6 @@ name|data
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Read the entry from the RawContainer      *       * @param dataIn      * @return unmarshalled object      * @throws IOException      */
 specifier|public
 name|Object
 name|readPayload
@@ -244,17 +245,6 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-block|}
-specifier|public
-name|Class
-name|getType
-parameter_list|()
-block|{
-return|return
-name|Object
-operator|.
-name|class
-return|;
 block|}
 block|}
 end_class

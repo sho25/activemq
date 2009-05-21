@@ -69,7 +69,6 @@ operator|new
 name|LongMarshaller
 argument_list|()
 decl_stmt|;
-comment|/**      * Write the payload of this entry to the RawContainer      *       * @param object      * @param dataOut      * @throws IOException      */
 specifier|public
 name|void
 name|writePayload
@@ -91,7 +90,6 @@ name|object
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Read the entry from the RawContainer      *       * @param dataIn      * @return unmarshalled object      * @throws IOException      */
 specifier|public
 name|Long
 name|readPayload
@@ -110,17 +108,33 @@ argument_list|()
 return|;
 block|}
 specifier|public
-name|Class
-argument_list|<
-name|Long
-argument_list|>
-name|getType
+name|int
+name|getFixedSize
 parameter_list|()
 block|{
 return|return
+literal|8
+return|;
+block|}
+specifier|public
 name|Long
-operator|.
-name|class
+name|deepCopy
+parameter_list|(
+name|Long
+name|source
+parameter_list|)
+block|{
+return|return
+name|source
+return|;
+block|}
+specifier|public
+name|boolean
+name|isDeepCopySupported
+parameter_list|()
+block|{
+return|return
+literal|true
 return|;
 block|}
 block|}
