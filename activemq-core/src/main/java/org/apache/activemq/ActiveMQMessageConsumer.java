@@ -3044,15 +3044,8 @@ condition|(
 name|messageExpired
 condition|)
 block|{
-name|ackLater
-argument_list|(
-name|md
-argument_list|,
-name|MessageAck
-operator|.
-name|DELIVERED_ACK_TYPE
-argument_list|)
-expr_stmt|;
+comment|// do nothing since STANDARD_ACK will be sent
+return|return;
 block|}
 else|else
 block|{
