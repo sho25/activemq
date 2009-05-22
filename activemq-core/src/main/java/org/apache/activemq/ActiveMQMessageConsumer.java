@@ -3626,20 +3626,6 @@ name|pendingAck
 operator|=
 literal|null
 expr_stmt|;
-name|additionalWindowSize
-operator|=
-name|deliveredCounter
-expr_stmt|;
-comment|// When using DUPS ok, we do a real ack.
-if|if
-condition|(
-name|ackType
-operator|==
-name|MessageAck
-operator|.
-name|STANDARD_ACK_TYPE
-condition|)
-block|{
 name|deliveredCounter
 operator|=
 literal|0
@@ -3648,7 +3634,6 @@ name|additionalWindowSize
 operator|=
 literal|0
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|/**      * Acknowledge all the messages that have been delivered to the client up to      * this point.      *       * @throws JMSException      */

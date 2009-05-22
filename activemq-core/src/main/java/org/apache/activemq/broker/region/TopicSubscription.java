@@ -1265,21 +1265,36 @@ condition|)
 block|{
 comment|// Message was delivered but not acknowledged: update pre-fetch
 comment|// counters.
+comment|// also. get these for a consumer expired message.
 if|if
 condition|(
+name|destination
+operator|!=
+literal|null
+operator|&&
+operator|!
 name|ack
 operator|.
 name|isInTransaction
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
 name|destination
-operator|!=
-literal|null
-condition|)
-block|{
+operator|.
+name|getDestinationStatistics
+argument_list|()
+operator|.
+name|getDequeues
+argument_list|()
+operator|.
+name|add
+argument_list|(
+name|ack
+operator|.
+name|getMessageCount
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|destination
 operator|.
 name|getDestinationStatistics
@@ -1297,10 +1312,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-else|else
-block|{
-comment|// expired message - expired message in a transacion
 name|dequeueCounter
 operator|.
 name|addAndGet
@@ -1311,7 +1322,6 @@ name|getMessageCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|dispatchMatched
 argument_list|()
 expr_stmt|;

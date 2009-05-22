@@ -371,7 +371,7 @@ name|createSession
 argument_list|(
 literal|false
 argument_list|,
-name|session
+name|Session
 operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
@@ -571,7 +571,7 @@ argument_list|(
 name|destination
 argument_list|)
 decl_stmt|;
-name|assertTrue
+name|assertEquals
 argument_list|(
 literal|"Wrong inFlightCount: "
 operator|+
@@ -580,7 +580,6 @@ operator|.
 name|getInFlightCount
 argument_list|()
 argument_list|,
-operator|(
 name|view
 operator|.
 name|getDispatchCount
@@ -590,14 +589,11 @@ name|view
 operator|.
 name|getDequeueCount
 argument_list|()
-operator|)
-operator|-
+argument_list|,
 name|view
 operator|.
 name|getInFlightCount
 argument_list|()
-operator|<
-literal|5
 argument_list|)
 expr_stmt|;
 block|}
