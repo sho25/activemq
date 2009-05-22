@@ -1265,16 +1265,14 @@ condition|)
 block|{
 comment|// Message was delivered but not acknowledged: update pre-fetch
 comment|// counters.
-name|dequeueCounter
-operator|.
-name|addAndGet
-argument_list|(
+if|if
+condition|(
 name|ack
 operator|.
-name|getMessageCount
+name|isInTransaction
 argument_list|()
-argument_list|)
-expr_stmt|;
+condition|)
+block|{
 if|if
 condition|(
 name|destination
@@ -1291,6 +1289,21 @@ name|getInflight
 argument_list|()
 operator|.
 name|subtract
+argument_list|(
+name|ack
+operator|.
+name|getMessageCount
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+comment|// expired message - expired message in a transacion
+name|dequeueCounter
+operator|.
+name|addAndGet
 argument_list|(
 name|ack
 operator|.
