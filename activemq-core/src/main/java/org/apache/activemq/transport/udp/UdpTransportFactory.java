@@ -463,12 +463,14 @@ decl_stmt|;
 name|UdpTransport
 name|transport
 init|=
-operator|new
+operator|(
 name|UdpTransport
+operator|)
+name|createTransport
 argument_list|(
-name|openWireFormat
+name|location
 argument_list|,
-name|port
+name|wf
 argument_list|)
 decl_stmt|;
 name|Transport
