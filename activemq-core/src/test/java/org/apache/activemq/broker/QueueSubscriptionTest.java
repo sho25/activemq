@@ -400,7 +400,7 @@ name|Exception
 block|{
 name|consumerCount
 operator|=
-literal|50
+literal|200
 expr_stmt|;
 name|producerCount
 operator|=
