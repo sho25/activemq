@@ -1469,9 +1469,7 @@ name|topic
 argument_list|)
 return|;
 block|}
-comment|// Implementation methods
-comment|// -------------------------------------------------------------------------
-specifier|protected
+specifier|public
 name|ActiveMQSession
 name|getInternalSession
 parameter_list|()
