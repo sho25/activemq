@@ -1063,9 +1063,6 @@ operator|+
 literal|": "
 operator|+
 name|error
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -1075,9 +1072,6 @@ argument_list|(
 literal|"Reason: "
 operator|+
 name|error
-operator|.
-name|getMessage
-argument_list|()
 argument_list|,
 name|error
 argument_list|)
