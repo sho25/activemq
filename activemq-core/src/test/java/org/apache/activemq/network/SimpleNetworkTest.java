@@ -902,7 +902,7 @@ name|remoteConsumer
 operator|.
 name|receive
 argument_list|(
-literal|1000
+literal|2500
 argument_list|)
 argument_list|)
 expr_stmt|;

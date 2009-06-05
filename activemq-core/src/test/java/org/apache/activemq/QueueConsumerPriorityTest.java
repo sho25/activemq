@@ -401,7 +401,7 @@ name|highConsumer
 operator|.
 name|receive
 argument_list|(
-literal|100
+literal|200
 argument_list|)
 argument_list|)
 expr_stmt|;
