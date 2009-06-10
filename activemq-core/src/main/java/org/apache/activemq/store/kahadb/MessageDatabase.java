@@ -1568,18 +1568,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-if|if
-condition|(
-name|opened
-operator|.
-name|compareAndSet
-argument_list|(
-literal|false
-argument_list|,
-literal|true
-argument_list|)
-condition|)
-block|{
 name|File
 name|lockFileName
 init|=
@@ -1670,10 +1658,22 @@ parameter_list|(
 name|InterruptedException
 name|e1
 parameter_list|)
-block|{ 	                    }
+block|{ 		            }
 block|}
 block|}
 block|}
+if|if
+condition|(
+name|opened
+operator|.
+name|compareAndSet
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+condition|)
+block|{
 name|getJournal
 argument_list|()
 operator|.
@@ -1966,6 +1966,10 @@ init|)
 block|{
 if|if
 condition|(
+name|pageFile
+operator|!=
+literal|null
+operator|&&
 name|pageFile
 operator|.
 name|isLoaded
