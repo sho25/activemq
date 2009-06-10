@@ -1650,7 +1650,9 @@ operator|/
 literal|1000
 operator|)
 operator|+
-literal|" seconds for the database to be unlocked."
+literal|" seconds for the database to be unlocked. Reason: "
+operator|+
+name|e
 argument_list|)
 expr_stmt|;
 try|try
