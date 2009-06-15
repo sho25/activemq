@@ -66,7 +66,7 @@ specifier|protected
 name|String
 name|sequenceDataType
 init|=
-literal|"INTEGER"
+literal|"BIGINT"
 decl_stmt|;
 specifier|protected
 name|String

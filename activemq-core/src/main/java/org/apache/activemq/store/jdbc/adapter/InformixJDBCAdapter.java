@@ -77,6 +77,13 @@ argument_list|)
 expr_stmt|;
 name|statements
 operator|.
+name|setSequenceDataType
+argument_list|(
+literal|"INT8"
+argument_list|)
+expr_stmt|;
+name|statements
+operator|.
 name|setBinaryDataType
 argument_list|(
 literal|"BYTE"

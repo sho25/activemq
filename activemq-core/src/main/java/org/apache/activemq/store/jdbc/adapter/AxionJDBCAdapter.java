@@ -265,6 +265,13 @@ argument_list|(
 literal|"LONG"
 argument_list|)
 expr_stmt|;
+name|statements
+operator|.
+name|setSequenceDataType
+argument_list|(
+literal|"LONG"
+argument_list|)
+expr_stmt|;
 name|super
 operator|.
 name|setStatements
