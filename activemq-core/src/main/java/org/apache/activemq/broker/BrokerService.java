@@ -2283,6 +2283,8 @@ operator|.
 name|error
 argument_list|(
 literal|"Failed to startAllConnectors"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
