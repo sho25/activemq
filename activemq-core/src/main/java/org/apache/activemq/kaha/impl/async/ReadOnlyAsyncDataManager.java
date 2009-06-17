@@ -211,6 +211,14 @@ name|started
 operator|=
 literal|true
 expr_stmt|;
+name|accessorPool
+operator|=
+operator|new
+name|DataFileAccessorPool
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 name|ArrayList
 argument_list|<
 name|File
