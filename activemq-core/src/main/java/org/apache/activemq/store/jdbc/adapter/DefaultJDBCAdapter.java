@@ -1791,6 +1791,10 @@ operator|!
 name|this
 operator|.
 name|batchStatments
+operator|&&
+name|s
+operator|!=
+literal|null
 condition|)
 block|{
 name|s
