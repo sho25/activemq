@@ -1011,6 +1011,21 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|newPercentUsage
+operator|>=
+literal|80
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Memory usage is now over 80%!"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|started
 operator|.
 name|get
