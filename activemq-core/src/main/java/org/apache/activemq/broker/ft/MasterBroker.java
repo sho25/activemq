@@ -706,11 +706,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|stop
-argument_list|()
-expr_stmt|;
 name|stopProcessing
 argument_list|()
 expr_stmt|;
