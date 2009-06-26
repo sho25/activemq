@@ -33,26 +33,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Iterator
 import|;
 end_import
@@ -79,11 +59,13 @@ end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|util
+name|transaction
 operator|.
-name|Set
+name|xa
+operator|.
+name|XAException
 import|;
 end_import
 
@@ -228,6 +210,7 @@ name|AMQTransactionStore
 implements|implements
 name|TransactionStore
 block|{
+specifier|protected
 name|Map
 argument_list|<
 name|TransactionId
@@ -446,7 +429,6 @@ argument_list|(
 name|txid
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|tx
@@ -471,6 +453,7 @@ argument_list|,
 name|tx
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|tx
