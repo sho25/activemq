@@ -652,7 +652,16 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+name|super
+operator|.
+name|compositeConfigure
+argument_list|(
 name|transport
+argument_list|,
+name|format
+argument_list|,
+name|options
+argument_list|)
 return|;
 block|}
 specifier|private

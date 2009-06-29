@@ -108,7 +108,7 @@ specifier|protected
 name|String
 name|uriString
 init|=
-literal|"failover://(tcp://localhost:62001,tcp://localhost:62002)?randomize=false"
+literal|"failover://(tcp://localhost:62001?soWriteTimeout=15000,tcp://localhost:62002?soWriteTimeout=15000)?randomize=false"
 decl_stmt|;
 specifier|private
 name|boolean
