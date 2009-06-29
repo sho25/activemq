@@ -964,17 +964,6 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"subscribed "
-operator|+
-name|i
-operator|+
-literal|" of 100"
-argument_list|)
-expr_stmt|;
 block|}
 name|Thread
 operator|.
@@ -999,7 +988,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|5000
+literal|10000
 argument_list|)
 expr_stmt|;
 name|assertEquals

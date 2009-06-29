@@ -3191,11 +3191,6 @@ operator|.
 name|clearMessages
 argument_list|()
 expr_stmt|;
-name|referenceStoreAdapter
-operator|.
-name|recoverState
-argument_list|()
-expr_stmt|;
 name|Location
 name|pos
 init|=
