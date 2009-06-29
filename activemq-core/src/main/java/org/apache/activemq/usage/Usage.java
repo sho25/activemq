@@ -999,13 +999,15 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Memory usage change.  from: "
+literal|"Memory usage change from: "
 operator|+
 name|oldPercentUsage
 operator|+
-literal|", to: "
+literal|"% of available memory, to: "
 operator|+
 name|newPercentUsage
+operator|+
+literal|"% of available memory"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1186,7 +1188,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"not notifying usage change to listeners on shutdown"
+literal|"Not notifying memory usage change to listeners on shutdown"
 argument_list|)
 expr_stmt|;
 block|}
