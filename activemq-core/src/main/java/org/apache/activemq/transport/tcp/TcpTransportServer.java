@@ -1609,7 +1609,21 @@ name|this
 operator|.
 name|maximumConnections
 condition|)
-block|{                              }
+block|{
+throw|throw
+operator|new
+name|ExceededMaximumConnectionsException
+argument_list|(
+literal|"Exceeded the maximum "
+operator|+
+literal|"number of allowed client connections. See the 'maximumConnections' "
+operator|+
+literal|"property on the TCP transport configuration URI in the ActiveMQ "
+operator|+
+literal|"configuration file (e.g., activemq.xml)"
+argument_list|)
+throw|;
+block|}
 else|else
 block|{
 name|HashMap
