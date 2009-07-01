@@ -434,6 +434,15 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|peristenceAdapter
+operator|.
+name|writeCommand
+argument_list|(
+name|subscriptionInfo
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 name|topicReferenceStore
 operator|.
 name|addSubsciption

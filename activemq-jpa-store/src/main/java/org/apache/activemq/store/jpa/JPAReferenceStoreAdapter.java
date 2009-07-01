@@ -139,6 +139,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|SubscriptionInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|TransactionId
 import|;
 end_import
@@ -778,6 +792,16 @@ name|long
 name|maxDataFileLength
 parameter_list|)
 block|{             }
+specifier|public
+name|void
+name|recoverSubscription
+parameter_list|(
+name|SubscriptionInfo
+name|info
+parameter_list|)
+throws|throws
+name|IOException
+block|{     }
 block|}
 end_class
 

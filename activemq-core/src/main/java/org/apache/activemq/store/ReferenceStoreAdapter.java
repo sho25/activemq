@@ -83,6 +83,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|SubscriptionInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|TransactionId
 import|;
 end_import
@@ -202,6 +216,16 @@ parameter_list|(
 name|long
 name|maxDataFileLength
 parameter_list|)
+function_decl|;
+comment|/**      * Recover particular subscription. Used for recovery of durable consumers      * @param info      * @throws IOException      */
+name|void
+name|recoverSubscription
+parameter_list|(
+name|SubscriptionInfo
+name|info
+parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 block|}
 end_interface
