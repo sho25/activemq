@@ -148,6 +148,11 @@ name|long
 name|getInFlightCount
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the number of messages that have expired      *       * @return The number of messages that have expired      */
+name|long
+name|getExpiredCount
+parameter_list|()
+function_decl|;
 comment|/**      * Returns the number of consumers subscribed this destination.      *       * @return The number of consumers subscribed this destination.      */
 name|long
 name|getConsumerCount

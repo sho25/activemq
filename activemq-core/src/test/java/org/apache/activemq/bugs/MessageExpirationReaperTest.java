@@ -24,6 +24,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -164,6 +176,42 @@ operator|.
 name|jmx
 operator|.
 name|DestinationViewMBean
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|policy
+operator|.
+name|PolicyEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|policy
+operator|.
+name|PolicyMap
 import|;
 end_import
 
@@ -320,6 +368,13 @@ comment|//        broker.setPersistent(false);
 comment|//        broker.setUseJmx(true);
 name|broker
 operator|.
+name|setDeleteAllMessagesOnStartup
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
 name|setBrokerName
 argument_list|(
 name|brokerName
@@ -330,6 +385,41 @@ operator|.
 name|addConnector
 argument_list|(
 name|brokerUrl
+argument_list|)
+expr_stmt|;
+name|PolicyMap
+name|policyMap
+init|=
+operator|new
+name|PolicyMap
+argument_list|()
+decl_stmt|;
+name|PolicyEntry
+name|defaultEntry
+init|=
+operator|new
+name|PolicyEntry
+argument_list|()
+decl_stmt|;
+name|defaultEntry
+operator|.
+name|setExpireMessagesPeriod
+argument_list|(
+literal|500
+argument_list|)
+expr_stmt|;
+name|policyMap
+operator|.
+name|setDefaultEntry
+argument_list|(
+name|defaultEntry
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
+name|setDestinationPolicy
+argument_list|(
+name|policyMap
 argument_list|)
 expr_stmt|;
 name|broker
@@ -465,7 +555,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|1000
+literal|2000
 argument_list|)
 expr_stmt|;
 name|DestinationViewMBean
@@ -476,12 +566,9 @@ argument_list|(
 name|destination
 argument_list|)
 decl_stmt|;
-comment|/*################### CURRENT EXPECTED FAILURE ####################*/
-comment|// The messages expire and should be reaped but they're not currently
-comment|// reaped until there is an active consumer placed on the queue
 name|assertEquals
 argument_list|(
-literal|"Incorrect count: "
+literal|"Incorrect inflight count: "
 operator|+
 name|view
 operator|.
@@ -493,6 +580,30 @@ argument_list|,
 name|view
 operator|.
 name|getInFlightCount
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Incorrect queue size count"
+argument_list|,
+literal|0
+argument_list|,
+name|view
+operator|.
+name|getQueueSize
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Incorrect expired size count"
+argument_list|,
+literal|3
+argument_list|,
+name|view
+operator|.
+name|getEnqueueCount
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -532,6 +643,14 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Let the messages expire
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
 comment|// Simply browse the queue
 name|Session
 name|browserSession
@@ -552,10 +671,18 @@ operator|)
 name|destination
 argument_list|)
 decl_stmt|;
+name|assertFalse
+argument_list|(
+literal|"no message in the browser"
+argument_list|,
 name|browser
 operator|.
 name|getEnumeration
 argument_list|()
+operator|.
+name|hasMoreElements
+argument_list|()
+argument_list|)
 expr_stmt|;
 comment|// The messages expire and should be reaped because of the presence of
 comment|// the queue browser

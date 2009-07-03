@@ -3805,6 +3805,25 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+else|else
+block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Expired message with no DLQ strategy in place"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 block|}
