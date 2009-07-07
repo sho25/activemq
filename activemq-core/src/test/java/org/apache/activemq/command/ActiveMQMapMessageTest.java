@@ -2445,27 +2445,16 @@ name|getContent
 argument_list|()
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|assertNull
+argument_list|(
 name|mapMessage
 operator|.
 name|getString
 argument_list|(
 literal|"String"
 argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Should throw a Null pointer"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|NullPointerException
-name|e
-parameter_list|)
-block|{                      }
 name|mapMessage
 operator|.
 name|clearBody

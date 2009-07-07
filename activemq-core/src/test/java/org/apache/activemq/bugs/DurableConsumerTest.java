@@ -1547,6 +1547,10 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"no exceptions, but: "
+operator|+
+name|exceptions
+argument_list|,
 name|exceptions
 operator|.
 name|isEmpty

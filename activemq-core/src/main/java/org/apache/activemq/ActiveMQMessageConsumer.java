@@ -2428,6 +2428,17 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+else|else
+block|{
+name|ack
+operator|=
+name|pendingAck
+expr_stmt|;
+name|pendingAck
+operator|=
+literal|null
+expr_stmt|;
+block|}
 block|}
 block|}
 elseif|else

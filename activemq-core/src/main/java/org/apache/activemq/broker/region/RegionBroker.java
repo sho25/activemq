@@ -640,6 +640,14 @@ name|RegionBroker
 extends|extends
 name|EmptyBroker
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ORIGINAL_EXPIRATION
+init|=
+literal|"originalExpiration"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -3721,7 +3729,7 @@ name|message
 operator|.
 name|setProperty
 argument_list|(
-literal|"originalExpiration"
+name|ORIGINAL_EXPIRATION
 argument_list|,
 operator|new
 name|Long
