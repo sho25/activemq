@@ -218,6 +218,13 @@ argument_list|,
 name|parameters
 argument_list|)
 expr_stmt|;
+name|transport
+operator|.
+name|setParameters
+argument_list|(
+name|parameters
+argument_list|)
+expr_stmt|;
 return|return
 name|transport
 return|;
