@@ -759,7 +759,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|2
+literal|3
 operator|*
 name|expiryPeriod
 argument_list|)

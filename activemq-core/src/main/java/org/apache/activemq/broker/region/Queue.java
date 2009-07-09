@@ -1532,8 +1532,20 @@ argument_list|(
 name|createConnectionContext
 argument_list|()
 argument_list|,
+name|createMessageReference
+argument_list|(
 name|message
 argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// drop message will decrement so counter balance here
+name|destinationStatistics
+operator|.
+name|getMessages
+argument_list|()
+operator|.
+name|increment
+argument_list|()
 expr_stmt|;
 return|return
 literal|true
