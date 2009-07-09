@@ -4303,7 +4303,13 @@ operator|)
 name|services
 operator|.
 name|toArray
-argument_list|()
+argument_list|(
+operator|new
+name|Service
+index|[
+literal|0
+index|]
+argument_list|)
 return|;
 block|}
 comment|/**      * Sets the services associated with this broker such as a      * {@link MasterConnector}      */
