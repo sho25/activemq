@@ -276,7 +276,7 @@ decl_stmt|;
 name|int
 name|attempts
 init|=
-literal|5
+literal|40
 decl_stmt|;
 while|while
 condition|(
