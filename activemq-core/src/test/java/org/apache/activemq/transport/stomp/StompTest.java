@@ -5574,7 +5574,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|100
+literal|400
 argument_list|)
 expr_stmt|;
 block|}
