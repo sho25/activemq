@@ -374,7 +374,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A ConnectionFactory is an an Administered object, and is used for creating  * Connections.<p/> This class also implements QueueConnectionFactory and  * TopicConnectionFactory. You can use this connection to create both  * QueueConnections and TopicConnections.  *   * @org.apache.xbean.XBean element="connectionFactory"  * @version $Revision: 1.9 $  * @see javax.jms.ConnectionFactory  */
+comment|/**  * A ConnectionFactory is an an Administered object, and is used for creating  * Connections.<p/> This class also implements QueueConnectionFactory and  * TopicConnectionFactory. You can use this connection to create both  * QueueConnections and TopicConnections.  *   * @version $Revision: 1.9 $  * @see javax.jms.ConnectionFactory  */
 end_comment
 
 begin_class
