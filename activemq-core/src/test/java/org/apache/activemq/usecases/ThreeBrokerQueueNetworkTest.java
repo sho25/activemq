@@ -2630,6 +2630,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|createBroker
+argument_list|(
+literal|"BrokerD"
+argument_list|)
+expr_stmt|;
 name|bridgeAllBrokers
 argument_list|(
 literal|"default"
@@ -2754,7 +2759,7 @@ name|verifyConsumerCount
 argument_list|(
 name|broker
 argument_list|,
-literal|2
+literal|3
 argument_list|,
 name|dest
 argument_list|)
