@@ -201,16 +201,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -230,6 +220,18 @@ operator|.
 name|activemq
 operator|.
 name|ActiveMQConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|CombinationTestSupport
 import|;
 end_import
 
@@ -292,7 +294,7 @@ specifier|public
 class|class
 name|AMQ2102Test
 extends|extends
-name|TestCase
+name|CombinationTestSupport
 implements|implements
 name|UncaughtExceptionHandler
 block|{
@@ -2238,6 +2240,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|setAutoFail
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|master
 operator|.
 name|setBrokerName
