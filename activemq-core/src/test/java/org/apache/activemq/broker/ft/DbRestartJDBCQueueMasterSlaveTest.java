@@ -133,6 +133,13 @@ operator|==
 name|failureCount
 condition|)
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"STOPPING DB!@!!!!"
+argument_list|)
+expr_stmt|;
 specifier|final
 name|EmbeddedDataSource
 name|ds
