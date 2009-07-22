@@ -5302,7 +5302,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|1000
+literal|2000
 argument_list|)
 expr_stmt|;
 name|producer
@@ -5388,6 +5388,13 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"message has \"no expiry\" text: "
+operator|+
+name|msg
+operator|.
+name|getText
+argument_list|()
+argument_list|,
 name|msg
 operator|.
 name|getText
