@@ -59,16 +59,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
-import|;
-end_import
-
-begin_import
-import|import
 name|junit
 operator|.
 name|framework
@@ -144,20 +134,6 @@ operator|.
 name|command
 operator|.
 name|ConsumerInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|DestinationInfo
 import|;
 end_import
 
@@ -6907,8 +6883,9 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// give the async ack a chance to perculate and validate all are currently consumed
-name|assertNull
-argument_list|(
+name|Object
+name|result
+init|=
 name|connection1
 operator|.
 name|getDispatchQueue
@@ -6922,6 +6899,14 @@ name|TimeUnit
 operator|.
 name|MILLISECONDS
 argument_list|)
+decl_stmt|;
+name|assertNull
+argument_list|(
+literal|"no more messages "
+operator|+
+name|result
+argument_list|,
+name|result
 argument_list|)
 expr_stmt|;
 comment|// Close the consumer.
