@@ -6566,8 +6566,9 @@ name|deliveryMode
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertNull
-argument_list|(
+name|Object
+name|msg
+init|=
 name|connection1
 operator|.
 name|getDispatchQueue
@@ -6581,6 +6582,12 @@ name|TimeUnit
 operator|.
 name|MILLISECONDS
 argument_list|)
+decl_stmt|;
+name|assertNull
+argument_list|(
+literal|"no message received from connection1 after session close"
+argument_list|,
+name|msg
 argument_list|)
 expr_stmt|;
 block|}
