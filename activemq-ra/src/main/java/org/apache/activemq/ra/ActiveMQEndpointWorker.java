@@ -1234,10 +1234,10 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 name|disconnect
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 specifier|private
 name|boolean
