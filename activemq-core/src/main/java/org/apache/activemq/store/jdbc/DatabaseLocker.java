@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -40,10 +50,28 @@ name|DatabaseLocker
 extends|extends
 name|Service
 block|{
+comment|/**      * allow the injection of a jdbc persistence adapter      * @param adapter the persistence adapter to use      * @throws IOException       */
+name|void
+name|setPersistenceAdapter
+parameter_list|(
+name|JDBCPersistenceAdapter
+name|adapter
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 comment|/**      * Used by a timer to keep alive the lock.      * If the method returns false the broker should be terminated      */
 name|boolean
 name|keepAlive
 parameter_list|()
+function_decl|;
+comment|/**      * set the delay interval in milliseconds between lock acquire attempts      * @param lockAcquireSleepInterval the sleep interval in miliseconds      */
+name|void
+name|setLockAcquireSleepInterval
+parameter_list|(
+name|long
+name|lockAcquireSleepInterval
+parameter_list|)
 function_decl|;
 block|}
 end_interface
