@@ -1013,25 +1013,6 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|newPercentUsage
-operator|>=
-literal|100
-condition|)
-block|{
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"Memory usage is now at "
-operator|+
-name|newPercentUsage
-operator|+
-literal|"%"
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
 name|started
 operator|.
 name|get
