@@ -364,8 +364,6 @@ operator|new
 name|BrokerService
 argument_list|()
 expr_stmt|;
-comment|//        broker.setPersistent(false);
-comment|//        broker.setUseJmx(true);
 name|broker
 operator|.
 name|setDeleteAllMessagesOnStartup
@@ -599,11 +597,14 @@ name|assertEquals
 argument_list|(
 literal|"Incorrect expired size count"
 argument_list|,
-literal|3
-argument_list|,
 name|view
 operator|.
 name|getEnqueueCount
+argument_list|()
+argument_list|,
+name|view
+operator|.
+name|getExpiredCount
 argument_list|()
 argument_list|)
 expr_stmt|;
