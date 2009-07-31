@@ -3000,9 +3000,6 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// TODO: this should persist the broker id so that subsequent
-comment|// startup
-comment|// uses the same broker id.
 name|brokerId
 operator|=
 operator|new

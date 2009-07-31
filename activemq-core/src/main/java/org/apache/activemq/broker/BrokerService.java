@@ -1242,20 +1242,6 @@ decl_stmt|;
 specifier|private
 name|List
 argument_list|<
-name|ObjectName
-argument_list|>
-name|registeredMBeanNames
-init|=
-operator|new
-name|CopyOnWriteArrayList
-argument_list|<
-name|ObjectName
-argument_list|>
-argument_list|()
-decl_stmt|;
-specifier|private
-name|List
-argument_list|<
 name|JmsConnector
 argument_list|>
 name|jmsConnectors
@@ -1477,7 +1463,7 @@ name|cacheTempDestinations
 init|=
 literal|false
 decl_stmt|;
-comment|//useful for failover
+comment|// useful for failover
 specifier|private
 name|int
 name|timeBeforePurgeTempDestinations
@@ -2179,7 +2165,7 @@ return|return
 name|masterConnectorURI
 return|;
 block|}
-comment|/**      * @param masterConnectorURI The masterConnectorURI to set.      */
+comment|/**      * @param masterConnectorURI      *            The masterConnectorURI to set.      */
 specifier|public
 name|void
 name|setMasterConnectorURI
@@ -2474,29 +2460,14 @@ argument_list|,
 name|managedBroker
 argument_list|)
 expr_stmt|;
-name|MBeanServer
-name|mbeanServer
-init|=
-name|getManagementContext
-argument_list|()
-operator|.
-name|getMBeanServer
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|mbeanServer
-operator|!=
-literal|null
-condition|)
-block|{
 name|ObjectName
 name|objectName
 init|=
 name|getBrokerObjectName
 argument_list|()
 decl_stmt|;
-name|mbeanServer
+name|getManagementContext
+argument_list|()
 operator|.
 name|registerMBean
 argument_list|(
@@ -2505,14 +2476,6 @@ argument_list|,
 name|objectName
 argument_list|)
 expr_stmt|;
-name|registeredMBeanNames
-operator|.
-name|add
-argument_list|(
-name|objectName
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 name|BrokerRegistry
 operator|.
@@ -2802,83 +2765,6 @@ name|isUseJmx
 argument_list|()
 condition|)
 block|{
-name|MBeanServer
-name|mbeanServer
-init|=
-name|getManagementContext
-argument_list|()
-operator|.
-name|getMBeanServer
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|mbeanServer
-operator|!=
-literal|null
-condition|)
-block|{
-for|for
-control|(
-name|Iterator
-argument_list|<
-name|ObjectName
-argument_list|>
-name|iter
-init|=
-name|registeredMBeanNames
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
-name|ObjectName
-name|name
-init|=
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
-try|try
-block|{
-name|mbeanServer
-operator|.
-name|unregisterMBean
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|stopper
-operator|.
-name|onException
-argument_list|(
-name|mbeanServer
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
-name|registeredMBeanNames
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
 name|stopper
 operator|.
 name|stop
@@ -3296,7 +3182,7 @@ name|brokerDir
 argument_list|)
 return|;
 block|}
-comment|/**      * Sets the directory in which the data files will be stored by default for      * the JDBC and Journal persistence adaptors.      *       * @param dataDirectory the directory to store data files      */
+comment|/**      * Sets the directory in which the data files will be stored by default for      * the JDBC and Journal persistence adaptors.      *       * @param dataDirectory      *            the directory to store data files      */
 specifier|public
 name|void
 name|setDataDirectory
@@ -3315,7 +3201,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets the directory in which the data files will be stored by default for      * the JDBC and Journal persistence adaptors.      *       * @param dataDirectoryFile the directory to store data files      */
+comment|/**      * Sets the directory in which the data files will be stored by default for      * the JDBC and Journal persistence adaptors.      *       * @param dataDirectoryFile      *            the directory to store data files      */
 specifier|public
 name|void
 name|setDataDirectoryFile
@@ -3360,7 +3246,7 @@ return|return
 name|tmpDataDirectory
 return|;
 block|}
-comment|/**      * @param tmpDataDirectory the tmpDataDirectory to set      */
+comment|/**      * @param tmpDataDirectory      *            the tmpDataDirectory to set      */
 specifier|public
 name|void
 name|setTmpDataDirectory
@@ -3498,7 +3384,9 @@ operator|*
 literal|64
 argument_list|)
 expr_stmt|;
-comment|// Default 64 Meg
+comment|// Default
+comment|// 64
+comment|// Meg
 name|systemUsage
 operator|.
 name|getTempUsage
@@ -3515,7 +3403,8 @@ operator|*
 literal|100
 argument_list|)
 expr_stmt|;
-comment|// 10 Gb
+comment|// 10
+comment|// Gb
 name|systemUsage
 operator|.
 name|getStoreUsage
@@ -3532,7 +3421,8 @@ operator|*
 literal|100
 argument_list|)
 expr_stmt|;
-comment|// 100 GB
+comment|// 100
+comment|// GB
 name|addService
 argument_list|(
 name|this
@@ -3613,7 +3503,7 @@ name|systemUsage
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @return the consumerUsageManager      * @throws IOException       */
+comment|/**      * @return the consumerUsageManager      * @throws IOException      */
 specifier|public
 name|SystemUsage
 name|getConsumerSystemUsage
@@ -3690,7 +3580,7 @@ operator|.
 name|consumerSystemUsaage
 return|;
 block|}
-comment|/**      * @param consumerSystemUsaage the storeSystemUsage to set      */
+comment|/**      * @param consumerSystemUsaage      *            the storeSystemUsage to set      */
 specifier|public
 name|void
 name|setConsumerSystemUsage
@@ -3730,7 +3620,7 @@ name|consumerSystemUsaage
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @return the producerUsageManager      * @throws IOException       */
+comment|/**      * @return the producerUsageManager      * @throws IOException      */
 specifier|public
 name|SystemUsage
 name|getProducerSystemUsage
@@ -3797,7 +3687,7 @@ return|return
 name|producerSystemUsage
 return|;
 block|}
-comment|/**      * @param producerUsageManager the producerUsageManager to set      */
+comment|/**      * @param producerUsageManager      *            the producerUsageManager to set      */
 specifier|public
 name|void
 name|setProducerSystemUsage
@@ -3875,7 +3765,7 @@ return|return
 name|persistenceAdapter
 return|;
 block|}
-comment|/**      * Sets the persistence adaptor implementation to use for this broker      * @throws IOException       */
+comment|/**      * Sets the persistence adaptor implementation to use for this broker      *       * @throws IOException      */
 specifier|public
 name|void
 name|setPersistenceAdapter
@@ -4272,7 +4162,7 @@ return|return
 name|jmsBridgeConnectors
 return|;
 block|}
-comment|/**      * @param jmsConnectors The jmsBridgeConnectors to set.      */
+comment|/**      * @param jmsConnectors      *            The jmsBridgeConnectors to set.      */
 specifier|public
 name|void
 name|setJmsBridgeConnectors
@@ -4495,7 +4385,7 @@ name|transportConnectors
 argument_list|)
 return|;
 block|}
-comment|/**      * Sets the transport connectors which this broker will listen on for new      * clients      *       * @org.apache.xbean.Property nestedType="org.apache.activemq.broker.TransportConnector"      */
+comment|/**      * Sets the transport connectors which this broker will listen on for new      * clients      *       * @org.apache.xbean.Property       *                            nestedType="org.apache.activemq.broker.TransportConnector"      */
 specifier|public
 name|void
 name|setTransportConnectors
@@ -4582,7 +4472,7 @@ name|proxyConnectors
 argument_list|)
 return|;
 block|}
-comment|/**      * Sets the network connectors which this broker will use to connect to      * other brokers in a federated network      *       * @org.apache.xbean.Property nestedType="org.apache.activemq.network.NetworkConnector"      */
+comment|/**      * Sets the network connectors which this broker will use to connect to      * other brokers in a federated network      *       * @org.apache.xbean.Property       *                            nestedType="org.apache.activemq.network.NetworkConnector"      */
 specifier|public
 name|void
 name|setNetworkConnectors
@@ -4873,7 +4763,7 @@ return|return
 name|shutdownOnMasterFailure
 return|;
 block|}
-comment|/**      * @param shutdownOnMasterFailure The shutdownOnMasterFailure to set.      */
+comment|/**      * @param shutdownOnMasterFailure      *            The shutdownOnMasterFailure to set.      */
 specifier|public
 name|void
 name|setShutdownOnMasterFailure
@@ -5201,7 +5091,7 @@ return|return
 name|tempDataStore
 return|;
 block|}
-comment|/**      * @param tempDataStore the tempDataStore to set      */
+comment|/**      * @param tempDataStore      *            the tempDataStore to set      */
 specifier|public
 name|void
 name|setTempDataStore
@@ -5253,7 +5143,7 @@ operator|.
 name|useLocalHostBrokerName
 return|;
 block|}
-comment|/**      * @param useLocalHostBrokerName the useLocalHostBrokerName to set      */
+comment|/**      * @param useLocalHostBrokerName      *            the useLocalHostBrokerName to set      */
 specifier|public
 name|void
 name|setUseLocalHostBrokerName
@@ -5305,7 +5195,7 @@ operator|.
 name|supportFailOver
 return|;
 block|}
-comment|/**      * @param supportFailOver the supportFailOver to set      */
+comment|/**      * @param supportFailOver      *            the supportFailOver to set      */
 specifier|public
 name|void
 name|setSupportFailOver
@@ -5321,7 +5211,7 @@ operator|=
 name|supportFailOver
 expr_stmt|;
 block|}
-comment|/**      * Looks up and lazily creates if necessary the destination for the given JMS name      */
+comment|/**      * Looks up and lazily creates if necessary the destination for the given      * JMS name      */
 specifier|public
 name|Destination
 name|getDestination
@@ -5940,22 +5830,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|MBeanServer
-name|mbeanServer
-init|=
-name|getManagementContext
-argument_list|()
-operator|.
-name|getMBeanServer
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|mbeanServer
-operator|!=
-literal|null
-condition|)
-block|{
 try|try
 block|{
 name|ObjectName
@@ -5974,9 +5848,6 @@ name|asManagedConnector
 argument_list|(
 name|getManagementContext
 argument_list|()
-operator|.
-name|getMBeanServer
-argument_list|()
 argument_list|,
 name|objectName
 argument_list|)
@@ -5990,19 +5861,13 @@ argument_list|(
 name|connector
 argument_list|)
 decl_stmt|;
-name|mbeanServer
+name|getManagementContext
+argument_list|()
 operator|.
 name|registerMBean
 argument_list|(
 name|view
 argument_list|,
-name|objectName
-argument_list|)
-expr_stmt|;
-name|registeredMBeanNames
-operator|.
-name|add
-argument_list|(
 name|objectName
 argument_list|)
 expr_stmt|;
@@ -6032,10 +5897,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-block|}
-return|return
-name|connector
-return|;
 block|}
 specifier|protected
 name|void
@@ -6053,22 +5914,6 @@ name|isUseJmx
 argument_list|()
 condition|)
 block|{
-name|MBeanServer
-name|mbeanServer
-init|=
-name|getManagementContext
-argument_list|()
-operator|.
-name|getMBeanServer
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|mbeanServer
-operator|!=
-literal|null
-condition|)
-block|{
 try|try
 block|{
 name|ObjectName
@@ -6079,24 +5924,14 @@ argument_list|(
 name|connector
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|registeredMBeanNames
-operator|.
-name|remove
-argument_list|(
-name|objectName
-argument_list|)
-condition|)
-block|{
-name|mbeanServer
+name|getManagementContext
+argument_list|()
 operator|.
 name|unregisterMBean
 argument_list|(
 name|objectName
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -6122,7 +5957,6 @@ throw|;
 block|}
 block|}
 block|}
-block|}
 specifier|protected
 name|PersistenceAdapter
 name|registerPersistenceAdapterMBean
@@ -6133,11 +5967,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|//        MBeanServer mbeanServer = getManagementContext().getMBeanServer();
-comment|//        if (mbeanServer != null) {
-comment|//
-comment|//
-comment|//        }
 return|return
 name|adaptor
 return|;
@@ -6157,24 +5986,7 @@ condition|(
 name|isUseJmx
 argument_list|()
 condition|)
-block|{
-name|MBeanServer
-name|mbeanServer
-init|=
-name|getManagementContext
-argument_list|()
-operator|.
-name|getMBeanServer
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|mbeanServer
-operator|!=
-literal|null
-condition|)
-block|{                              }
-block|}
+block|{         }
 block|}
 specifier|private
 name|ObjectName
@@ -6190,7 +6002,8 @@ return|return
 operator|new
 name|ObjectName
 argument_list|(
-name|managementContext
+name|getManagementContext
+argument_list|()
 operator|.
 name|getJmxDomainName
 argument_list|()
@@ -6235,22 +6048,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|MBeanServer
-name|mbeanServer
-init|=
-name|getManagementContext
-argument_list|()
-operator|.
-name|getMBeanServer
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|mbeanServer
-operator|!=
-literal|null
-condition|)
-block|{
 name|NetworkConnectorViewMBean
 name|view
 init|=
@@ -6277,19 +6074,13 @@ argument_list|(
 name|objectName
 argument_list|)
 expr_stmt|;
-name|mbeanServer
+name|getManagementContext
+argument_list|()
 operator|.
 name|registerMBean
 argument_list|(
 name|view
 argument_list|,
-name|objectName
-argument_list|)
-expr_stmt|;
-name|registeredMBeanNames
-operator|.
-name|add
-argument_list|(
 name|objectName
 argument_list|)
 expr_stmt|;
@@ -6317,7 +6108,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-block|}
 specifier|protected
 name|ObjectName
 name|createNetworkConnectorObjectName
@@ -6332,7 +6122,8 @@ return|return
 operator|new
 name|ObjectName
 argument_list|(
-name|managementContext
+name|getManagementContext
+argument_list|()
 operator|.
 name|getJmxDomainName
 argument_list|()
@@ -6381,22 +6172,6 @@ name|isUseJmx
 argument_list|()
 condition|)
 block|{
-name|MBeanServer
-name|mbeanServer
-init|=
-name|getManagementContext
-argument_list|()
-operator|.
-name|getMBeanServer
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|mbeanServer
-operator|!=
-literal|null
-condition|)
-block|{
 try|try
 block|{
 name|ObjectName
@@ -6407,24 +6182,14 @@ argument_list|(
 name|connector
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|registeredMBeanNames
-operator|.
-name|remove
-argument_list|(
-name|objectName
-argument_list|)
-condition|)
-block|{
-name|mbeanServer
+name|getManagementContext
+argument_list|()
 operator|.
 name|unregisterMBean
 argument_list|(
 name|objectName
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -6446,7 +6211,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
 specifier|protected
 name|void
 name|registerProxyConnectorMBean
@@ -6456,22 +6220,6 @@ name|connector
 parameter_list|)
 throws|throws
 name|IOException
-block|{
-name|MBeanServer
-name|mbeanServer
-init|=
-name|getManagementContext
-argument_list|()
-operator|.
-name|getMBeanServer
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|mbeanServer
-operator|!=
-literal|null
-condition|)
 block|{
 name|ProxyConnectorView
 name|view
@@ -6490,7 +6238,8 @@ init|=
 operator|new
 name|ObjectName
 argument_list|(
-name|managementContext
+name|getManagementContext
+argument_list|()
 operator|.
 name|getJmxDomainName
 argument_list|()
@@ -6524,19 +6273,13 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|mbeanServer
+name|getManagementContext
+argument_list|()
 operator|.
 name|registerMBean
 argument_list|(
 name|view
 argument_list|,
-name|objectName
-argument_list|)
-expr_stmt|;
-name|registeredMBeanNames
-operator|.
-name|add
-argument_list|(
 name|objectName
 argument_list|)
 expr_stmt|;
@@ -6564,7 +6307,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-block|}
 specifier|protected
 name|void
 name|registerFTConnectorMBean
@@ -6574,22 +6316,6 @@ name|connector
 parameter_list|)
 throws|throws
 name|IOException
-block|{
-name|MBeanServer
-name|mbeanServer
-init|=
-name|getManagementContext
-argument_list|()
-operator|.
-name|getMBeanServer
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|mbeanServer
-operator|!=
-literal|null
-condition|)
 block|{
 name|FTConnectorView
 name|view
@@ -6608,7 +6334,8 @@ init|=
 operator|new
 name|ObjectName
 argument_list|(
-name|managementContext
+name|getManagementContext
+argument_list|()
 operator|.
 name|getJmxDomainName
 argument_list|()
@@ -6630,19 +6357,13 @@ operator|+
 literal|"Type=MasterConnector"
 argument_list|)
 decl_stmt|;
-name|mbeanServer
+name|getManagementContext
+argument_list|()
 operator|.
 name|registerMBean
 argument_list|(
 name|view
 argument_list|,
-name|objectName
-argument_list|)
-expr_stmt|;
-name|registeredMBeanNames
-operator|.
-name|add
-argument_list|(
 name|objectName
 argument_list|)
 expr_stmt|;
@@ -6670,7 +6391,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-block|}
 specifier|protected
 name|void
 name|registerJmsConnectorMBean
@@ -6680,22 +6400,6 @@ name|connector
 parameter_list|)
 throws|throws
 name|IOException
-block|{
-name|MBeanServer
-name|mbeanServer
-init|=
-name|getManagementContext
-argument_list|()
-operator|.
-name|getMBeanServer
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|mbeanServer
-operator|!=
-literal|null
-condition|)
 block|{
 name|JmsConnectorView
 name|view
@@ -6714,7 +6418,8 @@ init|=
 operator|new
 name|ObjectName
 argument_list|(
-name|managementContext
+name|getManagementContext
+argument_list|()
 operator|.
 name|getJmxDomainName
 argument_list|()
@@ -6748,19 +6453,13 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|mbeanServer
+name|getManagementContext
+argument_list|()
 operator|.
 name|registerMBean
 argument_list|(
 name|view
 argument_list|,
-name|objectName
-argument_list|)
-expr_stmt|;
-name|registeredMBeanNames
-operator|.
-name|add
-argument_list|(
 name|objectName
 argument_list|)
 expr_stmt|;
@@ -6786,7 +6485,6 @@ argument_list|,
 name|e
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 comment|/**      * Factory method to create a new broker      *       * @throws Exception      * @throws      * @throws      */
@@ -6984,15 +6682,6 @@ name|isUseJmx
 argument_list|()
 condition|)
 block|{
-name|MBeanServer
-name|mbeanServer
-init|=
-name|getManagementContext
-argument_list|()
-operator|.
-name|getMBeanServer
-argument_list|()
-decl_stmt|;
 name|regionBroker
 operator|=
 operator|new
@@ -7000,7 +6689,8 @@ name|ManagedRegionBroker
 argument_list|(
 name|this
 argument_list|,
-name|mbeanServer
+name|getManagementContext
+argument_list|()
 argument_list|,
 name|getBrokerObjectName
 argument_list|()

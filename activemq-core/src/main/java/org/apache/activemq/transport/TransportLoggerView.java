@@ -392,9 +392,6 @@ name|this
 operator|.
 name|managementContext
 operator|.
-name|getMBeanServer
-argument_list|()
-operator|.
 name|registerMBean
 argument_list|(
 name|this
@@ -457,9 +454,6 @@ block|{
 name|this
 operator|.
 name|managementContext
-operator|.
-name|getMBeanServer
-argument_list|()
 operator|.
 name|unregisterMBean
 argument_list|(
