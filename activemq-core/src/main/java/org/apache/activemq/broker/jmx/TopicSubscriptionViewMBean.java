@@ -29,11 +29,21 @@ extends|extends
 name|SubscriptionViewMBean
 block|{
 comment|/**      * @return the number of messages discarded due to being a slow consumer      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of messages discared due to being a slow consumer"
+argument_list|)
 name|int
 name|getDiscardedCount
 parameter_list|()
 function_decl|;
 comment|/**      * @return the maximun number of messages that can be pending.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Maximum number of messages that can be pending"
+argument_list|)
 name|int
 name|getMaximumPendingQueueSize
 parameter_list|()

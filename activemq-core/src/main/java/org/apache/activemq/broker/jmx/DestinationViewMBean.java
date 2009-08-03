@@ -119,56 +119,111 @@ interface|interface
 name|DestinationViewMBean
 block|{
 comment|/**      * Returns the name of this destination      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Name of this destination."
+argument_list|)
 name|String
 name|getName
 parameter_list|()
 function_decl|;
 comment|/**      * Resets the managment counters.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Resets statistics."
+argument_list|)
 name|void
 name|resetStatistics
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the number of messages that have been sent to the destination.      *       * @return The number of messages that have been sent to the destination.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of messages that have been sent to the destination."
+argument_list|)
 name|long
 name|getEnqueueCount
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the number of messages that have been delivered (potentially not      * acknowledged) to consumers.      *       * @return The number of messages that have been delivered (potentially not      *         acknowledged) to consumers.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of messages that have been delivered (but potentially not acknowledged) to consumers."
+argument_list|)
 name|long
 name|getDispatchCount
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the number of messages that have been acknowledged from the      * destination.      *       * @return The number of messages that have been acknowledged from the      *         destination.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of messages that have been acknowledged (and removed from) from the destination."
+argument_list|)
 name|long
 name|getDequeueCount
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the number of messages that have been dispatched but not      * acknowledged      *       * @return The number of messages that have been dispatched but not      * acknowledged      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of messages that have been dispatched to, but not acknowledged by, consumers."
+argument_list|)
 name|long
 name|getInFlightCount
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the number of messages that have expired      *       * @return The number of messages that have expired      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of messages that have been expired."
+argument_list|)
 name|long
 name|getExpiredCount
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the number of consumers subscribed this destination.      *       * @return The number of consumers subscribed this destination.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of consumers subscribed to this destination."
+argument_list|)
 name|long
 name|getConsumerCount
 parameter_list|()
 function_decl|;
 comment|/**      * @return the number of producers publishing to the destination      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of producers publishing to this destination"
+argument_list|)
 name|long
 name|getProducerCount
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the number of messages in this destination which are yet to be      * consumed      *       * @return Returns the number of messages in this destination which are yet      *         to be consumed      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of messages in the destination which are yet to be consumed.  Potentially dispatched but unacknowledged."
+argument_list|)
 name|long
 name|getQueueSize
 parameter_list|()
 function_decl|;
 comment|/**      * @return An array of all the messages in the destination's queue.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"An array of all messages in the destination. Not HTML friendly."
+argument_list|)
 name|CompositeData
 index|[]
 name|browse
@@ -177,6 +232,11 @@ throws|throws
 name|OpenDataException
 function_decl|;
 comment|/**      * @return A list of all the messages in the destination's queue.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"A list of all messages in the destination. Not HTML friendly."
+argument_list|)
 name|TabularData
 name|browseAsTable
 parameter_list|()
@@ -184,10 +244,20 @@ throws|throws
 name|OpenDataException
 function_decl|;
 comment|/**      * @return An array of all the messages in the destination's queue.      * @throws InvalidSelectorException      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"An array of all messages in the destination based on an SQL-92 selection on the message headers or XPATH on the body. Not HTML friendly."
+argument_list|)
 name|CompositeData
 index|[]
 name|browse
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"selector"
+argument_list|)
 name|String
 name|selector
 parameter_list|)
@@ -197,9 +267,19 @@ throws|,
 name|InvalidSelectorException
 function_decl|;
 comment|/**      * @return A list of all the messages in the destination's queue.      * @throws InvalidSelectorException      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"A list of all messages in the destination based on an SQL-92 selection on the message headers or XPATH on the body. Not HTML friendly."
+argument_list|)
 name|TabularData
 name|browseAsTable
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"selector"
+argument_list|)
 name|String
 name|selector
 parameter_list|)
@@ -209,9 +289,19 @@ throws|,
 name|InvalidSelectorException
 function_decl|;
 comment|/**      * Sends a TextMesage to the destination.      *       * @param body the text to send      * @return the message id of the message sent.      * @throws Exception      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Sends a TextMessage to the destination."
+argument_list|)
 name|String
 name|sendTextMessage
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"body"
+argument_list|)
 name|String
 name|body
 parameter_list|)
@@ -219,12 +309,32 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Sends a TextMesage to the destination.      *       * @param headers the message headers and properties to set. Can only      *                container Strings maped to primitive types.      * @param body the text to send      * @return the message id of the message sent.      * @throws Exception      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Sends a TextMessage to the destination."
+argument_list|)
 name|String
 name|sendTextMessage
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"headers"
+argument_list|)
 name|Map
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
 name|headers
 parameter_list|,
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"body"
+argument_list|)
 name|String
 name|body
 parameter_list|)
@@ -232,15 +342,35 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Sends a TextMesage to the destination.      * @param body the text to send      * @param user      * @param password      * @return      * @throws Exception      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Sends a TextMessage to a password-protected destination."
+argument_list|)
 name|String
 name|sendTextMessage
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"body"
+argument_list|)
 name|String
 name|body
 parameter_list|,
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"user"
+argument_list|)
 name|String
 name|user
 parameter_list|,
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"password"
+argument_list|)
 name|String
 name|password
 parameter_list|)
@@ -248,18 +378,48 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      *       * @param headers the message headers and properties to set. Can only      *                container Strings maped to primitive types.      * @param body the text to send      * @param user      * @param password      * @return      * @throws Exception      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Sends a TextMessage to a password-protected destination."
+argument_list|)
 name|String
 name|sendTextMessage
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"headers"
+argument_list|)
 name|Map
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
 name|headers
 parameter_list|,
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"body"
+argument_list|)
 name|String
 name|body
 parameter_list|,
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"user"
+argument_list|)
 name|String
 name|user
 parameter_list|,
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"password"
+argument_list|)
 name|String
 name|password
 parameter_list|)
@@ -267,11 +427,21 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * @return the percentage of amount of memory used      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The percentage of the memory limit used"
+argument_list|)
 name|int
 name|getMemoryPercentUsage
 parameter_list|()
 function_decl|;
 comment|/**      * @return the amount of memory allocated to this destination      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Memory limit, in bytes, used for holding undelivered messages before paging to temporary storage."
+argument_list|)
 name|long
 name|getMemoryLimit
 parameter_list|()
@@ -285,6 +455,11 @@ name|limit
 parameter_list|)
 function_decl|;
 comment|/**      * @return the portion of memory from the broker memory limit for this destination      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Portion of memory from the broker memory limit for this destination"
+argument_list|)
 name|float
 name|getMemoryUsagePortion
 parameter_list|()
@@ -293,19 +468,40 @@ comment|/**      * set the portion of memory from the broker memory limit for th
 name|void
 name|setMemoryUsagePortion
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"bytes"
+argument_list|)
 name|float
 name|value
 parameter_list|)
 function_decl|;
 comment|/**      * Browses the current destination returning a list of messages      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"A list of all messages in the destination. Not HTML friendly."
+argument_list|)
 name|List
+argument_list|<
+name|?
+argument_list|>
 name|browseMessages
 parameter_list|()
 throws|throws
 name|InvalidSelectorException
 function_decl|;
 comment|/**      * Browses the current destination with the given selector returning a list      * of messages      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"A list of all messages in the destination based on an SQL-92 selection on the message headers or XPATH on the body. Not HTML friendly."
+argument_list|)
 name|List
+argument_list|<
+name|?
+argument_list|>
 name|browseMessages
 parameter_list|(
 name|String
@@ -315,21 +511,41 @@ throws|throws
 name|InvalidSelectorException
 function_decl|;
 comment|/**      * @return longest time a message is held by a destination      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The longest time a message has been held this destination."
+argument_list|)
 name|long
 name|getMaxEnqueueTime
 parameter_list|()
 function_decl|;
 comment|/**      * @return shortest time a message is held by a destination      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The shortest time a message has been held this destination."
+argument_list|)
 name|long
 name|getMinEnqueueTime
 parameter_list|()
 function_decl|;
 comment|/**      * @return average time a message is held by a destination      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Average time a message has been held this destination."
+argument_list|)
 name|double
 name|getAverageEnqueueTime
 parameter_list|()
 function_decl|;
 comment|/**      * @return the producerFlowControl      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Producers are flow controlled"
+argument_list|)
 name|boolean
 name|isProducerFlowControl
 parameter_list|()
@@ -339,11 +555,21 @@ specifier|public
 name|void
 name|setProducerFlowControl
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"producerFlowControl"
+argument_list|)
 name|boolean
 name|producerFlowControl
 parameter_list|)
 function_decl|;
 comment|/**      * @return the maxProducersToAudit      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Maximum number of producers to audit"
+argument_list|)
 specifier|public
 name|int
 name|getMaxProducersToAudit
@@ -354,11 +580,21 @@ specifier|public
 name|void
 name|setMaxProducersToAudit
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"maxProducersToAudit"
+argument_list|)
 name|int
 name|maxProducersToAudit
 parameter_list|)
 function_decl|;
 comment|/**      * @return the maxAuditDepth      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Max audit depth"
+argument_list|)
 specifier|public
 name|int
 name|getMaxAuditDepth
@@ -369,11 +605,21 @@ specifier|public
 name|void
 name|setMaxAuditDepth
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"maxAuditDepth"
+argument_list|)
 name|int
 name|maxAuditDepth
 parameter_list|)
 function_decl|;
 comment|/**      * @return the maximum number of message to be paged into the       * destination      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Maximum number of messages to be paged in"
+argument_list|)
 specifier|public
 name|int
 name|getMaxPageSize
@@ -384,11 +630,21 @@ specifier|public
 name|void
 name|setMaxPageSize
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"pageSize"
+argument_list|)
 name|int
 name|pageSize
 parameter_list|)
 function_decl|;
 comment|/**      * @return true if caching is enabled of for the destination      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Caching is enabled"
+argument_list|)
 specifier|public
 name|boolean
 name|isUseCache
@@ -399,11 +655,21 @@ specifier|public
 name|void
 name|setUseCache
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"cache"
+argument_list|)
 name|boolean
 name|value
 parameter_list|)
 function_decl|;
 comment|/**      * Returns all the current subscription MBeans matching this destination      *       * @return the names of the subscriptions for this destination      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"returns all the current subscription MBeans matching this destination"
+argument_list|)
 name|ObjectName
 index|[]
 name|getSubscriptions

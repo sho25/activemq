@@ -37,31 +37,61 @@ extends|extends
 name|Service
 block|{
 comment|/**      * Resets the statistics      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Resets the statistics"
+argument_list|)
 name|void
 name|resetStatistics
 parameter_list|()
 function_decl|;
 comment|/**      * enable statistics gathering      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Enables statistics gathering"
+argument_list|)
 name|void
 name|enableStatistics
 parameter_list|()
 function_decl|;
 comment|/**      * disable statistics gathering      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Disables statistics gathering"
+argument_list|)
 name|void
 name|disableStatistics
 parameter_list|()
 function_decl|;
 comment|/**      * Returns true if statistics is enabled      *       * @return true if statistics is enabled      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Statistics gathering enabled"
+argument_list|)
 name|boolean
 name|isStatisticsEnabled
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the number of messages enqueued on this connector      *       * @return the number of messages enqueued on this connector      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of messages enqueued on this connector"
+argument_list|)
 name|long
 name|getEnqueueCount
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the number of messages dequeued on this connector      *       * @return the number of messages dequeued on this connector      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of messages dequeued on this connector"
+argument_list|)
 name|long
 name|getDequeueCount
 parameter_list|()

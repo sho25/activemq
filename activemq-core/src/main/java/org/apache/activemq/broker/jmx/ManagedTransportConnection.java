@@ -464,10 +464,12 @@ condition|)
 block|{
 try|try
 block|{
-name|managementContext
+name|AnnotatedMBean
 operator|.
 name|registerMBean
 argument_list|(
+name|managementContext
+argument_list|,
 name|mbean
 argument_list|,
 name|name

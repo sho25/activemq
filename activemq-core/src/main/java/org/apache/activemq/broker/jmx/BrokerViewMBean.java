@@ -51,58 +51,123 @@ extends|extends
 name|Service
 block|{
 comment|/**      * @return The unique id of the broker.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The unique id of the broker."
+argument_list|)
 name|String
 name|getBrokerId
 parameter_list|()
 function_decl|;
 comment|/**      * @return The name of the broker.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The name of the broker."
+argument_list|)
 name|String
 name|getBrokerName
 parameter_list|()
 function_decl|;
 comment|/**      * The Broker will fush it's caches so that the garbage collector can      * recalaim more memory.      *       * @throws Exception      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Runs the Garbage Collector."
+argument_list|)
 name|void
 name|gc
 parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Reset all broker statistics."
+argument_list|)
 name|void
 name|resetStatistics
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Enable broker statistics."
+argument_list|)
 name|void
 name|enableStatistics
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Disable broker statistics."
+argument_list|)
 name|void
 name|disableStatistics
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Broker statistics enabled."
+argument_list|)
 name|boolean
 name|isStatisticsEnabled
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of messages that have been sent to the broker."
+argument_list|)
 name|long
 name|getTotalEnqueueCount
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of messages that have been acknowledged on the broker."
+argument_list|)
 name|long
 name|getTotalDequeueCount
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of message consumers subscribed to destinations on the broker."
+argument_list|)
 name|long
 name|getTotalConsumerCount
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of unacknowledged messages on the broker."
+argument_list|)
 name|long
 name|getTotalMessageCount
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Percent of memory limit used."
+argument_list|)
 name|int
 name|getMemoryPercentUsage
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Memory limit, in bytes, used for holding undelivered messages before paging to temporary storage."
+argument_list|)
 name|long
 name|getMemoryLimit
 parameter_list|()
@@ -110,14 +175,29 @@ function_decl|;
 name|void
 name|setMemoryLimit
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"bytes"
+argument_list|)
 name|long
 name|limit
 parameter_list|)
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Percent of store limit used."
+argument_list|)
 name|int
 name|getStorePercentUsage
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Disk limit, in bytes, used for persistent messages before producers are blocked."
+argument_list|)
 name|long
 name|getStoreLimit
 parameter_list|()
@@ -125,14 +205,29 @@ function_decl|;
 name|void
 name|setStoreLimit
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"bytes"
+argument_list|)
 name|long
 name|limit
 parameter_list|)
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Percent of temp limit used."
+argument_list|)
 name|int
 name|getTempPercentUsage
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Disk limit, in bytes, used for non-persistent messages and temporary date before producers are blocked."
+argument_list|)
 name|long
 name|getTempLimit
 parameter_list|()
@@ -140,22 +235,47 @@ function_decl|;
 name|void
 name|setTempLimit
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"bytes"
+argument_list|)
 name|long
 name|limit
 parameter_list|)
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Messages are synchronized to disk."
+argument_list|)
 name|boolean
 name|isPersistent
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Slave broker."
+argument_list|)
 name|boolean
 name|isSlave
 parameter_list|()
 function_decl|;
 comment|/**      * Shuts down the JVM.      *       * @param exitCode the exit code that will be reported by the JVM process      *                when it exits.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Shuts down the JVM."
+argument_list|)
 name|void
 name|terminateJVM
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"exitCode"
+argument_list|)
 name|int
 name|exitCode
 parameter_list|)
@@ -167,86 +287,176 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Topics (broadcasted 'queues'); generally system information."
+argument_list|)
 name|ObjectName
 index|[]
 name|getTopics
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Standard Queues containing AIE messages."
+argument_list|)
 name|ObjectName
 index|[]
 name|getQueues
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Temporary Topics; generally unused."
+argument_list|)
 name|ObjectName
 index|[]
 name|getTemporaryTopics
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Temporary Queues; generally temporary message response holders."
+argument_list|)
 name|ObjectName
 index|[]
 name|getTemporaryQueues
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Topic Subscribers"
+argument_list|)
 name|ObjectName
 index|[]
 name|getTopicSubscribers
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Durable (persistent) topic subscribers"
+argument_list|)
 name|ObjectName
 index|[]
 name|getDurableTopicSubscribers
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Inactive (disconnected persistent) topic subscribers"
+argument_list|)
 name|ObjectName
 index|[]
 name|getInactiveDurableTopicSubscribers
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Queue Subscribers."
+argument_list|)
 name|ObjectName
 index|[]
 name|getQueueSubscribers
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Temporary Topic Subscribers."
+argument_list|)
 name|ObjectName
 index|[]
 name|getTemporaryTopicSubscribers
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Temporary Queue Subscribers."
+argument_list|)
 name|ObjectName
 index|[]
 name|getTemporaryQueueSubscribers
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Adds a Connector to the broker."
+argument_list|)
 name|String
 name|addConnector
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"discoveryAddress"
+argument_list|)
 name|String
 name|discoveryAddress
 parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Adds a Network Connector to the broker."
+argument_list|)
 name|String
 name|addNetworkConnector
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"discoveryAddress"
+argument_list|)
 name|String
 name|discoveryAddress
 parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Removes a Connector from the broker."
+argument_list|)
 name|boolean
 name|removeConnector
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"connectorName"
+argument_list|)
 name|String
 name|connectorName
 parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Removes a Network Connector from the broker."
+argument_list|)
 name|boolean
 name|removeNetworkConnector
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"connectorName"
+argument_list|)
 name|String
 name|connectorName
 parameter_list|)
@@ -254,9 +464,19 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Adds a Topic destination to the broker.      *       * @param name The name of the Topic      * @throws Exception      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Adds a Topic destination to the broker."
+argument_list|)
 name|void
 name|addTopic
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"name"
+argument_list|)
 name|String
 name|name
 parameter_list|)
@@ -264,9 +484,19 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Adds a Queue destination to the broker.      *       * @param name The name of the Queue      * @throws Exception      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Adds a Queue destination to the broker."
+argument_list|)
 name|void
 name|addQueue
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"name"
+argument_list|)
 name|String
 name|name
 parameter_list|)
@@ -274,9 +504,19 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Removes a Topic destination from the broker.      *       * @param name The name of the Topic      * @throws Exception      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Removes a Topic destination from the broker."
+argument_list|)
 name|void
 name|removeTopic
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"name"
+argument_list|)
 name|String
 name|name
 parameter_list|)
@@ -284,9 +524,19 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Removes a Queue destination from the broker.      *       * @param name The name of the Queue      * @throws Exception      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Removes a Queue destination from the broker."
+argument_list|)
 name|void
 name|removeQueue
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"name"
+argument_list|)
 name|String
 name|name
 parameter_list|)
@@ -294,18 +544,45 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Creates a new durable topic subscriber      *       * @param clientId the JMS client ID      * @param subscriberName the durable subscriber name      * @param topicName the name of the topic to subscribe to      * @param selector a selector or null      * @return the object name of the MBean registered in JMX      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+name|value
+operator|=
+literal|"Creates a new durable topic subscriber."
+argument_list|)
 name|ObjectName
 name|createDurableSubscriber
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"clientId"
+argument_list|)
 name|String
 name|clientId
 parameter_list|,
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"subscriberName"
+argument_list|)
 name|String
 name|subscriberName
 parameter_list|,
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"topicName"
+argument_list|)
 name|String
 name|topicName
 parameter_list|,
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"selector"
+argument_list|)
 name|String
 name|selector
 parameter_list|)
@@ -313,12 +590,29 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Destroys a durable subscriber      *       * @param clientId the JMS client ID      * @param subscriberName the durable subscriber name      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+name|value
+operator|=
+literal|"Destroys a durable subscriber."
+argument_list|)
 name|void
 name|destroyDurableSubscriber
 parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"clientId"
+argument_list|)
 name|String
 name|clientId
 parameter_list|,
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"subscriberName"
+argument_list|)
 name|String
 name|subscriberName
 parameter_list|)
@@ -326,6 +620,13 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Reloads log4j.properties from the classpath.      * This methods calls org.apache.activemq.transport.TransportLoggerControl.reloadLog4jProperties      * @throws Throwable       */
+annotation|@
+name|MBeanInfo
+argument_list|(
+name|value
+operator|=
+literal|"Reloads log4j.properties from the classpath."
+argument_list|)
 specifier|public
 name|void
 name|reloadLog4jProperties
