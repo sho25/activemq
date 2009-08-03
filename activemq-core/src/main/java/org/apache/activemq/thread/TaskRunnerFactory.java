@@ -205,7 +205,7 @@ name|dedicatedTaskRunner
 operator|||
 literal|"true"
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|System
 operator|.
