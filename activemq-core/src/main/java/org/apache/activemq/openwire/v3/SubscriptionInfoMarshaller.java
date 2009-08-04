@@ -230,7 +230,7 @@ argument_list|)
 expr_stmt|;
 name|info
 operator|.
-name|setSubcriptionName
+name|setSubscriptionName
 argument_list|(
 name|tightUnmarshalString
 argument_list|(
@@ -352,7 +352,7 @@ name|tightMarshalString1
 argument_list|(
 name|info
 operator|.
-name|getSubcriptionName
+name|getSubscriptionName
 argument_list|()
 argument_list|,
 name|bs
@@ -467,7 +467,7 @@ name|tightMarshalString2
 argument_list|(
 name|info
 operator|.
-name|getSubcriptionName
+name|getSubscriptionName
 argument_list|()
 argument_list|,
 name|dataOut
@@ -574,7 +574,7 @@ argument_list|)
 expr_stmt|;
 name|info
 operator|.
-name|setSubcriptionName
+name|setSubscriptionName
 argument_list|(
 name|looseUnmarshalString
 argument_list|(
@@ -681,7 +681,7 @@ name|looseMarshalString
 argument_list|(
 name|info
 operator|.
-name|getSubcriptionName
+name|getSubscriptionName
 argument_list|()
 argument_list|,
 name|dataOut

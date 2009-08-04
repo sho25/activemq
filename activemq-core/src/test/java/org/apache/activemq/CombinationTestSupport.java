@@ -568,6 +568,10 @@ name|getMethod
 argument_list|(
 literal|"initCombos"
 argument_list|,
+operator|(
+name|Class
+index|[]
+operator|)
 literal|null
 argument_list|)
 decl_stmt|;
@@ -577,6 +581,10 @@ name|invoke
 argument_list|(
 name|this
 argument_list|,
+operator|(
+name|Object
+index|[]
+operator|)
 literal|null
 argument_list|)
 expr_stmt|;
@@ -637,6 +645,10 @@ name|getMethod
 argument_list|(
 name|comboSetupMethodName
 argument_list|,
+operator|(
+name|Class
+index|[]
+operator|)
 literal|null
 argument_list|)
 decl_stmt|;
@@ -646,6 +658,10 @@ name|invoke
 argument_list|(
 name|this
 argument_list|,
+operator|(
+name|Object
+index|[]
+operator|)
 literal|null
 argument_list|)
 expr_stmt|;

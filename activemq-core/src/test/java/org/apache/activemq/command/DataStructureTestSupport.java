@@ -817,6 +817,9 @@ name|invoke
 argument_list|(
 name|expect
 argument_list|,
+operator|(
+name|Object
+operator|)
 literal|null
 argument_list|)
 argument_list|,
@@ -826,6 +829,9 @@ name|invoke
 argument_list|(
 name|was
 argument_list|,
+operator|(
+name|Object
+operator|)
 literal|null
 argument_list|)
 argument_list|)
