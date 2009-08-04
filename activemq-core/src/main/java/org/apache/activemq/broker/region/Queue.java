@@ -2943,17 +2943,6 @@ condition|)
 block|{
 if|if
 condition|(
-name|isProducerFlowControl
-argument_list|()
-operator|&&
-name|context
-operator|.
-name|isProducerFlowControl
-argument_list|()
-condition|)
-block|{
-if|if
-condition|(
 name|systemUsage
 operator|.
 name|isSendFailIfNoSpace
@@ -2979,7 +2968,6 @@ argument_list|(
 literal|"Usage Manager Store is Full"
 argument_list|)
 throw|;
-block|}
 block|}
 while|while
 condition|(
