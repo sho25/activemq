@@ -369,6 +369,12 @@ init|=
 literal|true
 decl_stmt|;
 specifier|private
+name|String
+name|connectorHost
+init|=
+literal|"localhost"
+decl_stmt|;
+specifier|private
 name|int
 name|connectorPort
 init|=
@@ -1888,7 +1894,12 @@ comment|// This is handy to use if you have a firewall and need to
 comment|// force JMX to use fixed ports.
 name|rmiServer
 operator|=
-literal|"localhost:"
+literal|""
+operator|+
+name|getConnectorHost
+argument_list|()
+operator|+
+literal|":"
 operator|+
 name|rmiServerPort
 expr_stmt|;
@@ -1900,7 +1911,12 @@ literal|"service:jmx:rmi://"
 operator|+
 name|rmiServer
 operator|+
-literal|"/jndi/rmi://localhost:"
+literal|"/jndi/rmi://"
+operator|+
+name|getConnectorHost
+argument_list|()
+operator|+
+literal|":"
 operator|+
 name|connectorPort
 operator|+
@@ -2023,6 +2039,34 @@ operator|.
 name|createConnector
 operator|=
 name|createConnector
+expr_stmt|;
+block|}
+comment|/**      * Get the connectorHost      * @return the connectorHost      */
+specifier|public
+name|String
+name|getConnectorHost
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|connectorHost
+return|;
+block|}
+comment|/**      * Set the connectorHost      * @param connectorHost the connectorHost to set      */
+specifier|public
+name|void
+name|setConnectorHost
+parameter_list|(
+name|String
+name|connectorHost
+parameter_list|)
+block|{
+name|this
+operator|.
+name|connectorHost
+operator|=
+name|connectorHost
 expr_stmt|;
 block|}
 block|}
