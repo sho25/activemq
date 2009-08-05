@@ -5811,11 +5811,13 @@ name|SocketTimeoutException
 name|soe
 parameter_list|)
 block|{}
-name|Thread
+name|stompConnection
 operator|.
-name|sleep
+name|ack
 argument_list|(
-literal|100
+name|frame1
+argument_list|,
+literal|"tx1"
 argument_list|)
 expr_stmt|;
 name|stompConnection
