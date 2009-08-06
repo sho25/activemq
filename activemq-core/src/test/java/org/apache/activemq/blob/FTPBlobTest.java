@@ -307,10 +307,6 @@ name|CustomAction
 import|;
 end_import
 
-begin_comment
-comment|/**  * To start this test make sure an ftp server is running with user: activemq and  * password: activemq  */
-end_comment
-
 begin_class
 specifier|public
 class|class
