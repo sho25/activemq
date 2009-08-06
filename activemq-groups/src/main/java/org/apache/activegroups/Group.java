@@ -560,7 +560,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<P>  * A<CODE>Group</CODE> is a distributed collaboration implementation that is  * used to shared state and process messages amongst a distributed group of  * other<CODE>Group</CODE> instances. Membership of a group is handled  * automatically using discovery.  *<P>  * The underlying transport is JMS and there are some optimizations that occur  * for membership if used with ActiveMQ - but<CODE>Group</CODE> can be used  * with any JMS implementation.  *   *<P>  * Updates to the group shared map are controlled by a coordinator. The  * coordinator is elected by the member with the lowest lexicographical id -  * based on the bully algorithm [Silberschatz et al. 1993]  *<P>  * The {@link #selectCordinator(Collection<Member> members)} method may be  * overridden to implement a custom mechanism for choosing how the coordinator  * is elected for the map.  *<P>  * New<CODE>Group</CODE> instances have their state updated by the  * coordinator, and coordinator failure is handled automatically within the  * group.  *<P>  * All map updates are totally ordered through the coordinator, whilst read  * operations happen locally.  *<P>  * A<CODE>Group</CODE> supports the concept of owner only updates(write  * locks), shared updates, entry expiration times and removal on owner exit -  * all of which are optional. In addition, you can grab and release locks for  * values in the map, independently of who created them.  *<P>  * In addition, members of a group can broadcast messages and implement  * request/response with other<CODE>Group</CODE> instances.  *   *<P>  *   * @param<K>  *            the key type  * @param<V>  *            the value type  *   */
+comment|/**  *<P>  * A<CODE>Group</CODE> is a distributed collaboration implementation that is used to shared state and process  * messages amongst a distributed group of other<CODE>Group</CODE> instances. Membership of a group is handled  * automatically using discovery.  *<P>  * The underlying transport is JMS and there are some optimizations that occur for membership if used with ActiveMQ -  * but<CODE>Group</CODE> can be used with any JMS implementation.  *   *<P>  * Updates to the group shared map are controlled by a coordinator. The coordinator is elected by the member with the  * lowest lexicographical id - based on the bully algorithm [Silberschatz et al. 1993]  *<P>  * The {@link #selectCordinator(Collection<Member> members)} method may be overridden to implement a custom mechanism  * for choosing how the coordinator is elected for the map.  *<P>  * New<CODE>Group</CODE> instances have their state updated by the coordinator, and coordinator failure is handled  * automatically within the group.  *<P>  * All map updates are totally ordered through the coordinator, whilst read operations happen locally.  *<P>  * A<CODE>Group</CODE> supports the concept of owner only updates(write locks), shared updates, entry expiration  * times and removal on owner exit - all of which are optional. In addition, you can grab and release locks for values  * in the map, independently of who created them.  *<P>  * In addition, members of a group can broadcast messages and implement request/response with other<CODE>Group</CODE>  * instances.  *   *<P>  *   * @param<K>  *            the key type  * @param<V>  *            the value type  *   */
 end_comment
 
 begin_class
@@ -1014,7 +1014,7 @@ operator|=
 name|groupName
 expr_stmt|;
 block|}
-comment|/**      * Set the local map implementation to be used By default its a HashMap -      * but you could use a Cache for example      *       * @param map      */
+comment|/**      * Set the local map implementation to be used By default its a HashMap - but you could use a Cache for example      *       * @param map      */
 specifier|public
 name|void
 name|setLocalMap
@@ -2227,7 +2227,7 @@ operator|.
 name|alwaysLock
 return|;
 block|}
-comment|/**      * @param alwaysLock -      *            set true if objects inserted will always be locked (default is      *            false)      */
+comment|/**      * @param alwaysLock -      *            set true if objects inserted will always be locked (default is false)      */
 specifier|public
 name|void
 name|setAlwaysLock
@@ -2425,7 +2425,7 @@ operator|.
 name|removeOwnedObjectsOnExit
 return|;
 block|}
-comment|/**      * Sets the policy for owned objects in the group If set to true, when this      *<code>GroupMap<code> stops,      * any objects it owns will be removed from the group map      * @param removeOwnedObjectsOnExit the removeOwnedObjectsOnExit to set      */
+comment|/**      * Sets the policy for owned objects in the group If set to true, when this<code>GroupMap<code> stops,      * any objects it owns will be removed from the group map      * @param removeOwnedObjectsOnExit the removeOwnedObjectsOnExit to set      */
 specifier|public
 name|void
 name|setRemoveOwnedObjectsOnExit
@@ -3714,7 +3714,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * @return the local member that represents this<CODE>Group</CODE>      *         instance      */
+comment|/**      * @return the local member that represents this<CODE>Group</CODE> instance      */
 specifier|public
 name|Member
 name|getLocalMember
@@ -4144,7 +4144,7 @@ operator|)
 name|result
 return|;
 block|}
-comment|/**      * Send a message to the group - but only the least loaded member will      * process it      *       * @param message      * @throws JMSException      */
+comment|/**      * Send a message to the group - but only the least loaded member will process it      *       * @param message      * @throws JMSException      */
 specifier|public
 name|void
 name|sendMessage
@@ -4518,7 +4518,7 @@ name|objMsg
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Select a coordinator - coordinator weighting is used - or if everything      * is equal - a comparison of member ids.      *       * @param members      * @return      */
+comment|/**      * Select a coordinator - coordinator weighting is used - or if everything is equal - a comparison of member ids.      *       * @param members      * @return      */
 specifier|protected
 name|Member
 name|selectCordinator
@@ -6981,6 +6981,7 @@ name|EntryKey
 argument_list|>
 argument_list|()
 expr_stmt|;
+block|}
 name|expiredMessages
 operator|.
 name|add
@@ -6988,7 +6989,6 @@ argument_list|(
 name|k
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 elseif|else
 if|if
@@ -7023,13 +7023,6 @@ argument_list|<
 name|EntryKey
 argument_list|>
 argument_list|()
-expr_stmt|;
-name|expiredLocks
-operator|.
-name|add
-argument_list|(
-name|k
-argument_list|)
 expr_stmt|;
 block|}
 name|expiredLocks
@@ -8374,7 +8367,7 @@ argument_list|()
 operator|&&
 name|this
 operator|.
-name|stateExecutor
+name|electionExecutor
 operator|!=
 literal|null
 operator|&&
