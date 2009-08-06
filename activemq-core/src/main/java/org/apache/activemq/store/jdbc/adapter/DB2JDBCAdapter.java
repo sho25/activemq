@@ -77,15 +77,6 @@ extends|extends
 name|DefaultJDBCAdapter
 block|{
 specifier|public
-name|DB2JDBCAdapter
-parameter_list|()
-block|{
-name|batchStatments
-operator|=
-literal|false
-expr_stmt|;
-block|}
-specifier|public
 name|void
 name|setStatements
 parameter_list|(
