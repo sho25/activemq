@@ -729,6 +729,15 @@ name|transactionId
 parameter_list|)
 block|{
 comment|// ack all messages
+if|if
+condition|(
+operator|!
+name|unconsumedMessage
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|MessageAck
 name|ack
 init|=
@@ -830,11 +839,7 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|dispatchedMessage
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
+block|}
 block|}
 specifier|synchronized
 name|MessageAck
@@ -1037,14 +1042,11 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
 name|iter
 operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-block|}
 name|count
 operator|++
 expr_stmt|;
