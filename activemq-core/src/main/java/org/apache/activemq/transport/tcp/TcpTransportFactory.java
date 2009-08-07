@@ -623,6 +623,15 @@ argument_list|,
 name|format
 argument_list|)
 expr_stmt|;
+name|IntrospectionSupport
+operator|.
+name|setProperties
+argument_list|(
+name|transport
+argument_list|,
+name|options
+argument_list|)
+expr_stmt|;
 block|}
 comment|// Only need the WireFormatNegotiator if using openwire
 if|if
