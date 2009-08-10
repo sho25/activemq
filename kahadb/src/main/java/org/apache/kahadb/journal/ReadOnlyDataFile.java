@@ -64,7 +64,7 @@ parameter_list|,
 name|int
 name|number
 parameter_list|,
-name|int
+name|long
 name|preferedSize
 parameter_list|)
 block|{
