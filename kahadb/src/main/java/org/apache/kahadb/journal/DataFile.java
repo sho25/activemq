@@ -103,7 +103,7 @@ name|Integer
 name|dataFileId
 decl_stmt|;
 specifier|protected
-name|long
+name|int
 name|length
 decl_stmt|;
 name|DataFile
@@ -114,7 +114,7 @@ parameter_list|,
 name|int
 name|number
 parameter_list|,
-name|long
+name|int
 name|preferedSize
 parameter_list|)
 block|{
@@ -175,7 +175,7 @@ return|;
 block|}
 specifier|public
 specifier|synchronized
-name|long
+name|int
 name|getLength
 parameter_list|()
 block|{
@@ -187,7 +187,7 @@ specifier|public
 name|void
 name|setLength
 parameter_list|(
-name|long
+name|int
 name|length
 parameter_list|)
 block|{

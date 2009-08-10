@@ -527,7 +527,7 @@ expr_stmt|;
 block|}
 comment|/**      * Get the journalMaxFileLength      * @return the journalMaxFileLength      */
 specifier|public
-name|long
+name|int
 name|getJournalMaxFileLength
 parameter_list|()
 block|{
@@ -545,7 +545,7 @@ specifier|public
 name|void
 name|setJournalMaxFileLength
 parameter_list|(
-name|long
+name|int
 name|journalMaxFileLength
 parameter_list|)
 block|{

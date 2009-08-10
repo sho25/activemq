@@ -537,13 +537,13 @@ name|boolean
 name|started
 decl_stmt|;
 specifier|protected
-name|long
+name|int
 name|maxFileLength
 init|=
 name|DEFAULT_MAX_FILE_LENGTH
 decl_stmt|;
 specifier|protected
-name|long
+name|int
 name|preferedFileLength
 init|=
 name|DEFAULT_MAX_FILE_LENGTH
@@ -2039,7 +2039,7 @@ block|}
 block|}
 comment|/**      * @return the maxFileLength      */
 specifier|public
-name|long
+name|int
 name|getMaxFileLength
 parameter_list|()
 block|{
@@ -2052,7 +2052,7 @@ specifier|public
 name|void
 name|setMaxFileLength
 parameter_list|(
-name|long
+name|int
 name|maxFileLength
 parameter_list|)
 block|{
