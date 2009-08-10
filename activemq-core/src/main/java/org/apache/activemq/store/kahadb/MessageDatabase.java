@@ -1048,7 +1048,7 @@ literal|30
 operator|*
 literal|1000
 decl_stmt|;
-name|int
+name|long
 name|journalMaxFileLength
 init|=
 name|Journal
@@ -7678,7 +7678,7 @@ specifier|public
 name|void
 name|setJournalMaxFileLength
 parameter_list|(
-name|int
+name|long
 name|journalMaxFileLength
 parameter_list|)
 block|{
@@ -7690,7 +7690,7 @@ name|journalMaxFileLength
 expr_stmt|;
 block|}
 specifier|public
-name|int
+name|long
 name|getJournalMaxFileLength
 parameter_list|()
 block|{
