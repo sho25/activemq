@@ -31,16 +31,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -348,7 +338,7 @@ name|info
 decl_stmt|;
 specifier|private
 name|boolean
-name|destoryed
+name|destroyed
 decl_stmt|;
 specifier|public
 name|ActiveMQManagedConnection
@@ -622,12 +612,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-operator|(
-operator|(
-name|ActiveMQConnection
-operator|)
 name|physicalConnection
-operator|)
 operator|.
 name|changeUserInfo
 argument_list|(
@@ -937,7 +922,7 @@ name|isDestroyed
 parameter_list|()
 block|{
 return|return
-name|destoryed
+name|destroyed
 return|;
 block|}
 comment|/**      * Close down the physical connection to the server.      *       * @see javax.resource.spi.ManagedConnection#destroy()      */
@@ -967,7 +952,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|destoryed
+name|destroyed
 operator|=
 literal|true
 expr_stmt|;
@@ -1027,12 +1012,7 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-operator|(
-operator|(
-name|ActiveMQConnection
-operator|)
 name|physicalConnection
-operator|)
 operator|.
 name|cleanup
 argument_list|()
@@ -1398,7 +1378,7 @@ return|return
 name|logWriter
 return|;
 block|}
-comment|/**      * @param subject      * @param info      * @return      */
+comment|/**      * @param subject subject to match      * @param info cri to match      * @return whether the subject and cri match sufficiently to allow using this connection under the new circumstances      */
 specifier|public
 name|boolean
 name|matches
