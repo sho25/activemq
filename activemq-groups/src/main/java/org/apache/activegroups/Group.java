@@ -6778,9 +6778,14 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 operator|-
+operator|(
+literal|2
+operator|*
 name|getHeartBeatInterval
 argument_list|()
+operator|)
 decl_stmt|;
+comment|// give it a bit more time since scheduler can be late
 name|boolean
 name|doElection
 init|=
