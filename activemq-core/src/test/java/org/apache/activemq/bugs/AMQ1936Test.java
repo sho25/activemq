@@ -1136,7 +1136,7 @@ return|;
 block|}
 block|}
 argument_list|,
-literal|20
+literal|1
 operator|*
 literal|60
 operator|*
