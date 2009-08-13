@@ -217,6 +217,34 @@ name|IOExceptionSupport
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * A Transport implementation that uses direct method invocations.  *   * @version $Revision$  */
 end_comment
@@ -728,21 +756,6 @@ name|isOn
 argument_list|()
 condition|)
 block|{
-comment|// let the peer know that we are disconnecting..
-try|try
-block|{
-name|oneway
-argument_list|(
-name|DISCONNECT
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|ignore
-parameter_list|)
-block|{             }
 name|TaskRunner
 name|tr
 init|=
@@ -817,6 +830,21 @@ literal|1000
 argument_list|)
 expr_stmt|;
 block|}
+comment|// let the peer know that we are disconnecting..
+try|try
+block|{
+name|oneway
+argument_list|(
+name|DISCONNECT
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ignore
+parameter_list|)
+block|{             }
 block|}
 block|}
 comment|/**      * @see org.apache.activemq.thread.Task#iterate()      */
