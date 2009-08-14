@@ -527,7 +527,7 @@ expr_stmt|;
 block|}
 comment|/**      * Get the journalMaxFileLength      * @return the journalMaxFileLength      */
 specifier|public
-name|int
+name|long
 name|getJournalMaxFileLength
 parameter_list|()
 block|{
@@ -540,12 +540,12 @@ name|getJournalMaxFileLength
 argument_list|()
 return|;
 block|}
-comment|/**      * @param journalMaxFileLength       * When set using XBean, you can use values such as: "20      * mb", "1024 kb", or "1 gb"      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
+comment|/**      * @param journalMaxFileLength which is rounded to an integer      * When set using XBean, you can use values such as: "20      * mb", "1024 kb", or "1 gb"      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
 specifier|public
 name|void
 name|setJournalMaxFileLength
 parameter_list|(
-name|int
+name|long
 name|journalMaxFileLength
 parameter_list|)
 block|{
@@ -555,7 +555,15 @@ name|letter
 operator|.
 name|setJournalMaxFileLength
 argument_list|(
+name|Long
+operator|.
+name|valueOf
+argument_list|(
 name|journalMaxFileLength
+argument_list|)
+operator|.
+name|intValue
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
