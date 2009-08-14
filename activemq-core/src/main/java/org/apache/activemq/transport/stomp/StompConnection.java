@@ -1088,6 +1088,44 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+comment|// discard all content on the wire before
+comment|// aborting the transaction
+try|try
+block|{
+name|StompFrame
+name|discarded
+init|=
+name|this
+operator|.
+name|receive
+argument_list|(
+literal|100
+argument_list|)
+decl_stmt|;
+while|while
+condition|(
+name|discarded
+operator|!=
+literal|null
+condition|)
+block|{
+name|discarded
+operator|=
+name|this
+operator|.
+name|receive
+argument_list|(
+literal|100
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{    		     	}
 name|HashMap
 argument_list|<
 name|String
