@@ -2387,8 +2387,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|sub
 operator|.
 name|onStompAbort
@@ -2396,25 +2394,6 @@ argument_list|(
 name|activemqTx
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|ProtocolException
-argument_list|(
-literal|"Transaction abort failed"
-argument_list|,
-literal|false
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 name|TransactionInfo
 name|tx

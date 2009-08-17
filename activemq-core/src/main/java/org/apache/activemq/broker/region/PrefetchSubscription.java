@@ -1241,9 +1241,6 @@ operator|.
 name|decrement
 argument_list|()
 expr_stmt|;
-name|prefetchExtension
-operator|--
-expr_stmt|;
 block|}
 block|}
 specifier|public
