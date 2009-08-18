@@ -73,6 +73,20 @@ name|LinkedNode
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|kahadb
+operator|.
+name|util
+operator|.
+name|SequenceSet
+import|;
+end_import
+
 begin_comment
 comment|/**  * DataFile  *   * @version $Revision$  */
 end_comment
@@ -105,6 +119,15 @@ decl_stmt|;
 specifier|protected
 name|int
 name|length
+decl_stmt|;
+specifier|protected
+specifier|final
+name|SequenceSet
+name|corruptedBlocks
+init|=
+operator|new
+name|SequenceSet
+argument_list|()
 decl_stmt|;
 name|DataFile
 parameter_list|(
@@ -303,6 +326,15 @@ argument_list|,
 name|targetDirectory
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|SequenceSet
+name|getCorruptedBlocks
+parameter_list|()
+block|{
+return|return
+name|corruptedBlocks
+return|;
 block|}
 specifier|public
 name|int
