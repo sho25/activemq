@@ -200,44 +200,6 @@ name|isEnabled
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns the number of messages enqueued on this connector      *       * @return the number of messages enqueued on this connector      */
-specifier|public
-name|long
-name|getEnqueueCount
-parameter_list|()
-block|{
-return|return
-name|connector
-operator|.
-name|getStatistics
-argument_list|()
-operator|.
-name|getEnqueues
-argument_list|()
-operator|.
-name|getCount
-argument_list|()
-return|;
-block|}
-comment|/**      * Returns the number of messages dequeued on this connector      *       * @return the number of messages dequeued on this connector      */
-specifier|public
-name|long
-name|getDequeueCount
-parameter_list|()
-block|{
-return|return
-name|connector
-operator|.
-name|getStatistics
-argument_list|()
-operator|.
-name|getDequeues
-argument_list|()
-operator|.
-name|getCount
-argument_list|()
-return|;
-block|}
 block|}
 end_class
 

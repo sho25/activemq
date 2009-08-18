@@ -76,26 +76,6 @@ name|boolean
 name|isStatisticsEnabled
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of messages enqueued on this connector      *       * @return the number of messages enqueued on this connector      */
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"Number of messages enqueued on this connector"
-argument_list|)
-name|long
-name|getEnqueueCount
-parameter_list|()
-function_decl|;
-comment|/**      * Returns the number of messages dequeued on this connector      *       * @return the number of messages dequeued on this connector      */
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"Number of messages dequeued on this connector"
-argument_list|)
-name|long
-name|getDequeueCount
-parameter_list|()
-function_decl|;
 block|}
 end_interface
 

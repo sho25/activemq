@@ -76,16 +76,6 @@ name|boolean
 name|isActive
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of messages to be dispatched to this connection      */
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"The number of messages dispatched to this connection"
-argument_list|)
-name|int
-name|getDispatchQueueSize
-parameter_list|()
-function_decl|;
 comment|/**      * Resets the statistics      */
 annotation|@
 name|MBeanInfo
@@ -94,26 +84,6 @@ literal|"Resets the statistics"
 argument_list|)
 name|void
 name|resetStatistics
-parameter_list|()
-function_decl|;
-comment|/**      * Returns the number of messages enqueued on this connection      *       * @return the number of messages enqueued on this connection      */
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"Number of messages enqueued on this connection"
-argument_list|)
-name|long
-name|getEnqueueCount
-parameter_list|()
-function_decl|;
-comment|/**      * Returns the number of messages dequeued on this connection      *       * @return the number of messages dequeued on this connection      */
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"Number of messages dequeued on this connection"
-argument_list|)
-name|long
-name|getDequeueCount
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the source address for this connection      *       * @return the souce address for this connection      */

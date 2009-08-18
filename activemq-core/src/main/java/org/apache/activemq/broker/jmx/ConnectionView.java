@@ -135,19 +135,6 @@ name|isActive
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns the number of messages to be dispatched to this connection      */
-specifier|public
-name|int
-name|getDispatchQueueSize
-parameter_list|()
-block|{
-return|return
-name|connection
-operator|.
-name|getDispatchQueueSize
-argument_list|()
-return|;
-block|}
 comment|/**      * Resets the statistics      */
 specifier|public
 name|void
@@ -162,44 +149,6 @@ operator|.
 name|reset
 argument_list|()
 expr_stmt|;
-block|}
-comment|/**      * Returns the number of messages enqueued on this connection      *       * @return the number of messages enqueued on this connection      */
-specifier|public
-name|long
-name|getEnqueueCount
-parameter_list|()
-block|{
-return|return
-name|connection
-operator|.
-name|getStatistics
-argument_list|()
-operator|.
-name|getEnqueues
-argument_list|()
-operator|.
-name|getCount
-argument_list|()
-return|;
-block|}
-comment|/**      * Returns the number of messages dequeued on this connection      *       * @return the number of messages dequeued on this connection      */
-specifier|public
-name|long
-name|getDequeueCount
-parameter_list|()
-block|{
-return|return
-name|connection
-operator|.
-name|getStatistics
-argument_list|()
-operator|.
-name|getDequeues
-argument_list|()
-operator|.
-name|getCount
-argument_list|()
-return|;
 block|}
 specifier|public
 name|String
