@@ -764,7 +764,7 @@ block|}
 block|}
 name|assertEquals
 argument_list|(
-literal|"Not enough messages received"
+literal|"Invalid number of messages received"
 argument_list|,
 name|data
 operator|.
