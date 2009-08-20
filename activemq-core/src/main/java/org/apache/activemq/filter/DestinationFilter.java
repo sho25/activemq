@@ -253,6 +253,11 @@ operator|new
 name|PrefixDestinationFilter
 argument_list|(
 name|paths
+argument_list|,
+name|destination
+operator|.
+name|getDestinationType
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -288,6 +293,11 @@ operator|new
 name|WildcardDestinationFilter
 argument_list|(
 name|paths
+argument_list|,
+name|destination
+operator|.
+name|getDestinationType
+argument_list|()
 argument_list|)
 return|;
 block|}

@@ -45,6 +45,10 @@ name|String
 index|[]
 name|prefixes
 decl_stmt|;
+specifier|private
+name|byte
+name|destinationType
+decl_stmt|;
 comment|/**      * An array of paths containing * characters      *      * @param prefixes      */
 specifier|public
 name|WildcardDestinationFilter
@@ -52,6 +56,9 @@ parameter_list|(
 name|String
 index|[]
 name|prefixes
+parameter_list|,
+name|byte
+name|destinationType
 parameter_list|)
 block|{
 name|this
@@ -113,6 +120,12 @@ name|prefix
 expr_stmt|;
 block|}
 block|}
+name|this
+operator|.
+name|destinationType
+operator|=
+name|destinationType
+expr_stmt|;
 block|}
 specifier|public
 name|boolean
@@ -122,6 +135,18 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 block|{
+if|if
+condition|(
+name|destination
+operator|.
+name|getDestinationType
+argument_list|()
+operator|!=
+name|destinationType
+condition|)
+return|return
+literal|false
+return|;
 name|String
 index|[]
 name|path

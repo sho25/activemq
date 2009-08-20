@@ -45,6 +45,10 @@ name|String
 index|[]
 name|prefixes
 decl_stmt|;
+specifier|private
+name|byte
+name|destinationType
+decl_stmt|;
 comment|/**      * An array of paths, the last path is '>'      *      * @param prefixes      */
 specifier|public
 name|PrefixDestinationFilter
@@ -52,6 +56,9 @@ parameter_list|(
 name|String
 index|[]
 name|prefixes
+parameter_list|,
+name|byte
+name|destinationType
 parameter_list|)
 block|{
 name|this
@@ -59,6 +66,12 @@ operator|.
 name|prefixes
 operator|=
 name|prefixes
+expr_stmt|;
+name|this
+operator|.
+name|destinationType
+operator|=
+name|destinationType
 expr_stmt|;
 block|}
 specifier|public
@@ -69,6 +82,18 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 block|{
+if|if
+condition|(
+name|destination
+operator|.
+name|getDestinationType
+argument_list|()
+operator|!=
+name|destinationType
+condition|)
+return|return
+literal|false
+return|;
 name|String
 index|[]
 name|path
