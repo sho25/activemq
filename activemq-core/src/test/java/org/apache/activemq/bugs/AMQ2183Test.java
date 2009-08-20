@@ -630,6 +630,7 @@ argument_list|(
 name|counterA
 argument_list|)
 expr_stmt|;
+specifier|final
 name|MessageCounter
 name|counterB
 init|=
@@ -746,6 +747,13 @@ return|return
 name|maxSent
 operator|==
 name|counterA
+operator|.
+name|getCount
+argument_list|()
+operator|&&
+name|maxSent
+operator|==
+name|counterB
 operator|.
 name|getCount
 argument_list|()
