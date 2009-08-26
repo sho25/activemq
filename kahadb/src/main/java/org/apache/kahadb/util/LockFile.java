@@ -178,6 +178,13 @@ name|getParentFile
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|readFile
+operator|==
+literal|null
+condition|)
+block|{
 name|readFile
 operator|=
 operator|new
@@ -188,6 +195,7 @@ argument_list|,
 literal|"rw"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|lock
