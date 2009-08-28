@@ -747,6 +747,13 @@ argument_list|,
 name|event
 argument_list|)
 decl_stmt|;
+try|try
+block|{
+name|bridge
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 name|bridges
 operator|.
 name|put
@@ -755,13 +762,6 @@ name|uri
 argument_list|,
 name|bridge
 argument_list|)
-expr_stmt|;
-try|try
-block|{
-name|bridge
-operator|.
-name|start
-argument_list|()
 expr_stmt|;
 block|}
 catch|catch

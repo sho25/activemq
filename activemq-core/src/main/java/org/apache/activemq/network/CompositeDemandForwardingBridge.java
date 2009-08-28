@@ -353,6 +353,9 @@ if|if
 condition|(
 operator|!
 name|disposed
+operator|.
+name|get
+argument_list|()
 condition|)
 block|{
 name|triggerLocalStartBridge
