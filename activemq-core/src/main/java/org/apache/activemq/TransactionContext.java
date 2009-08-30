@@ -991,11 +991,12 @@ name|transactionId
 operator|=
 literal|null
 expr_stmt|;
+comment|//make this synchronous - see https://issues.apache.org/activemq/browse/AMQ-2364
 name|this
 operator|.
 name|connection
 operator|.
-name|asyncSendPacket
+name|syncSendPacket
 argument_list|(
 name|info
 argument_list|)
