@@ -205,6 +205,24 @@ name|broker
 operator|=
 name|broker
 expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"XA Transaction new/begin : "
+operator|+
+name|xid
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
