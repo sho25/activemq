@@ -173,6 +173,22 @@ name|JmsBinding
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|camel
+operator|.
+name|component
+operator|.
+name|jms
+operator|.
+name|JmsEndpoint
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision: $  */
 end_comment
@@ -198,13 +214,19 @@ specifier|private
 name|CamelContext
 name|camelContext
 decl_stmt|;
+comment|// add in dummy endpoint pending camel release with
+comment|// https://issues.apache.org/activemq/browse/CAMEL-1982
 specifier|private
 name|JmsBinding
 name|binding
 init|=
 operator|new
 name|JmsBinding
+argument_list|(
+operator|new
+name|JmsEndpoint
 argument_list|()
+argument_list|)
 decl_stmt|;
 specifier|public
 name|CamelDestination

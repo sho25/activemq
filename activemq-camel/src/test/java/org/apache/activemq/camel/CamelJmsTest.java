@@ -427,18 +427,25 @@ argument_list|,
 literal|"connectionFactory"
 argument_list|)
 decl_stmt|;
-name|DefaultProducerTemplate
+name|ProducerTemplate
 name|template
 init|=
 name|getMandatoryBean
 argument_list|(
-name|DefaultProducerTemplate
+name|ProducerTemplate
 operator|.
 name|class
 argument_list|,
 literal|"camelTemplate"
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"template is valid"
+argument_list|,
+name|template
+argument_list|)
+expr_stmt|;
 name|Connection
 name|connection
 init|=
