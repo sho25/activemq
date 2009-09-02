@@ -109,7 +109,7 @@ name|ActiveMQTopic
 argument_list|(
 name|destination
 operator|.
-name|toString
+name|getPhysicalName
 argument_list|()
 operator|+
 literal|"."
@@ -120,7 +120,6 @@ operator|++
 operator|)
 argument_list|)
 decl_stmt|;
-comment|// System.out.println("Sending to destination: " + topic);
 name|producer
 operator|.
 name|send
@@ -164,7 +163,7 @@ name|ActiveMQTopic
 argument_list|(
 name|destination
 operator|.
-name|toString
+name|getPhysicalName
 argument_list|()
 operator|+
 literal|".>"

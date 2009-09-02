@@ -15,41 +15,15 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jms
+name|apache
 operator|.
-name|Connection
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
+name|activemq
 operator|.
-name|jms
+name|broker
 operator|.
-name|ConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Destination
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
+name|BrokerService
 import|;
 end_import
 
@@ -61,9 +35,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
+name|command
 operator|.
-name|BrokerService
+name|ActiveMQDestination
 import|;
 end_import
 
@@ -109,6 +83,36 @@ name|JmsTemplate
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Connection
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|ConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Destination
+import|;
+end_import
+
 begin_comment
 comment|/**  * A useful base class which creates and closes an embedded broker  *   * @version $Revision: 1.1 $  */
 end_comment
@@ -141,7 +145,7 @@ name|boolean
 name|useTopic
 decl_stmt|;
 specifier|protected
-name|Destination
+name|ActiveMQDestination
 name|destination
 decl_stmt|;
 specifier|protected
@@ -243,7 +247,7 @@ return|;
 block|}
 comment|/**      * Factory method to create a new {@link Destination}      *       * @return newly created Destinaiton      */
 specifier|protected
-name|Destination
+name|ActiveMQDestination
 name|createDestination
 parameter_list|()
 block|{
@@ -257,7 +261,7 @@ return|;
 block|}
 comment|/**      * Factory method to create the destination in either the queue or topic      * space based on the value of the {@link #useTopic} field      */
 specifier|protected
-name|Destination
+name|ActiveMQDestination
 name|createDestination
 parameter_list|(
 name|String
