@@ -294,6 +294,8 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+try|try
+block|{
 if|if
 condition|(
 name|stopping
@@ -303,7 +305,9 @@ throw|throw
 operator|new
 name|Exception
 argument_list|(
-literal|"Cannot start broker as being asked to shut down. Interrupted attempt to acquire lock: "
+literal|"Cannot start broker as being asked to shut down. "
+operator|+
+literal|"Interrupted attempt to acquire lock: "
 operator|+
 name|e
 argument_list|,
@@ -374,6 +378,51 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+finally|finally
+block|{
+comment|// Let's make sure the database connection is properly
+comment|// closed when an error occurs so that we're not leaking
+comment|// connections
+if|if
+condition|(
+literal|null
+operator|!=
+name|connection
+condition|)
+block|{
+try|try
+block|{
+name|connection
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SQLException
+name|e1
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Caught exception while closing connection: "
+operator|+
+name|e1
+argument_list|,
+name|e1
+argument_list|)
+expr_stmt|;
+block|}
+name|connection
+operator|=
+literal|null
+expr_stmt|;
+block|}
 block|}
 block|}
 finally|finally
