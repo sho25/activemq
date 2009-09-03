@@ -4738,7 +4738,7 @@ name|get
 argument_list|()
 condition|)
 block|{
-name|asyncSendPacket
+name|syncSendPacket
 argument_list|(
 name|info
 operator|.

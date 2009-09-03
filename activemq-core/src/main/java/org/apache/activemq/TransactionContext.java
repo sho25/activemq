@@ -322,6 +322,7 @@ decl_stmt|;
 comment|// XATransactionId -> ArrayList of TransactionContext objects
 specifier|private
 specifier|final
+specifier|static
 name|ConcurrentHashMap
 argument_list|<
 name|TransactionId
