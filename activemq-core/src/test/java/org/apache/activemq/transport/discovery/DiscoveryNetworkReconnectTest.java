@@ -836,7 +836,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|1000
+literal|3000
 argument_list|)
 expr_stmt|;
 comment|// force an inactivity timeout timeout
@@ -850,7 +850,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|3000
+literal|6000
 argument_list|)
 expr_stmt|;
 comment|// let a reconnect succeed
