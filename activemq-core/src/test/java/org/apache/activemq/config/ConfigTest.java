@@ -819,6 +819,22 @@ block|{
 comment|// System.out.print("Checking jdbc persistence adapter configuration...
 comment|// ");
 name|File
+name|journalFile
+init|=
+operator|new
+name|File
+argument_list|(
+name|JOURNAL_ROOT
+operator|+
+literal|"testJDBCConfig/journal"
+argument_list|)
+decl_stmt|;
+name|recursiveDelete
+argument_list|(
+name|journalFile
+argument_list|)
+expr_stmt|;
+name|File
 name|derbyFile
 init|=
 operator|new
