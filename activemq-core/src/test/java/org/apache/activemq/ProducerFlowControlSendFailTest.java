@@ -282,6 +282,13 @@ name|VMPendingQueueMessageStoragePolicy
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|policy
+operator|.
+name|setProducerFlowControl
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|policyMap
 operator|.
 name|setDefaultEntry
