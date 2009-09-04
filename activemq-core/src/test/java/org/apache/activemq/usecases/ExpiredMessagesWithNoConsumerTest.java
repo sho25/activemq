@@ -454,6 +454,13 @@ argument_list|()
 decl_stmt|;
 name|defaultEntry
 operator|.
+name|setOptimizedDispatch
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|defaultEntry
+operator|.
 name|setExpireMessagesPeriod
 argument_list|(
 literal|100
