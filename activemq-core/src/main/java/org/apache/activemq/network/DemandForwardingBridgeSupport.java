@@ -2534,7 +2534,7 @@ name|sendShutdown
 operator|.
 name|await
 argument_list|(
-literal|5
+literal|10
 argument_list|,
 name|TimeUnit
 operator|.
@@ -2544,7 +2544,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"Network Could not shutdown in a timely manner"
 argument_list|)
