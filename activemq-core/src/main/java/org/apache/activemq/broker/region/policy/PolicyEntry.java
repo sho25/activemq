@@ -385,7 +385,7 @@ specifier|private
 name|boolean
 name|producerFlowControl
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|private
 name|boolean
