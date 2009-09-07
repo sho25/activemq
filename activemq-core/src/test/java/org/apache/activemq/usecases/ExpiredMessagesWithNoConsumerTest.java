@@ -446,7 +446,13 @@ name|PolicyEntry
 argument_list|()
 decl_stmt|;
 comment|// TODO Optimize dispatch makes this test hang
-comment|//defaultEntry.setOptimizedDispatch(true);
+name|defaultEntry
+operator|.
+name|setOptimizedDispatch
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|defaultEntry
 operator|.
 name|setExpireMessagesPeriod
