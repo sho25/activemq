@@ -766,10 +766,6 @@ argument_list|()
 return|;
 block|}
 block|}
-argument_list|,
-literal|5
-operator|*
-literal|1000l
 argument_list|)
 expr_stmt|;
 name|LOG
