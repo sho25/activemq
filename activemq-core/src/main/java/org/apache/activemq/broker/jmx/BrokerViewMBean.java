@@ -634,6 +634,51 @@ parameter_list|()
 throws|throws
 name|Throwable
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The url of the openwire connector"
+argument_list|)
+name|String
+name|getOpenWireURL
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The url of the stomp connector"
+argument_list|)
+name|String
+name|getStompURL
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The url of the SSL connector"
+argument_list|)
+name|String
+name|getSslURL
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The url of the Stomp SSL connector"
+argument_list|)
+name|String
+name|getStompSslURL
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The url of the VM connector"
+argument_list|)
+name|String
+name|getVMURL
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
