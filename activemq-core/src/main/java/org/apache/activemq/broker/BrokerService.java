@@ -4218,19 +4218,6 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-name|scheme
-operator|+
-literal|" = "
-operator|+
-name|uri
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 catch|catch
