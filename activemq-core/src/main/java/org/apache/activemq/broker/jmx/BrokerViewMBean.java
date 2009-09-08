@@ -679,6 +679,16 @@ name|String
 name|getVMURL
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The location of the data directory"
+argument_list|)
+specifier|public
+name|String
+name|getDataDirectory
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

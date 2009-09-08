@@ -72,13 +72,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Plugin which allows to force every incoming message to be PERSISTENT or NON-PERSISTENT.   *   * Useful, if you have set the broker usage policy to process ONLY persistent or ONLY non-persistent  * messages.   *  @org.apache.xbean.XBean element="forcePersistencyModeBrokerPlugin"  */
+comment|/**  * A StatisticsBrokerPlugin  * @org.apache.xbean.XBean element="statisticsBrokerPlugin"  *  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|ForcePersistencyModeBrokerPlugin
+name|StatisticsBrokerPlugin
 implements|implements
 name|BrokerPlugin
 block|{
@@ -91,23 +91,12 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|ForcePersistencyModeBrokerPlugin
+name|StatisticsBrokerPlugin
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|private
-name|boolean
-name|persistenceFlag
-init|=
-literal|false
-decl_stmt|;
-comment|/**  * Constructor  */
-specifier|public
-name|ForcePersistencyModeBrokerPlugin
-parameter_list|()
-block|{   }
-comment|/**   * @param broker  * @return the Broker  * @throws Exception  * @see org.apache.activemq.broker.BrokerPlugin#installPlugin(org.apache.activemq.broker.Broker)  */
+comment|/**       * @param broker      * @return the plug-in      * @throws Exception      * @see org.apache.activemq.broker.BrokerPlugin#installPlugin(org.apache.activemq.broker.Broker)      */
 specifier|public
 name|Broker
 name|installPlugin
@@ -118,65 +107,24 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|ForcePersistencyModeBroker
-name|pB
+name|StatisticsBroker
+name|answer
 init|=
 operator|new
-name|ForcePersistencyModeBroker
+name|StatisticsBroker
 argument_list|(
 name|broker
 argument_list|)
 decl_stmt|;
-name|pB
-operator|.
-name|setPersistenceFlag
-argument_list|(
-name|isPersistenceForced
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Installing ForcePersistencyModeBroker plugin: persistency enforced="
-operator|+
-name|pB
-operator|.
-name|isPersistent
-argument_list|()
+literal|"Installing StaticsBroker"
 argument_list|)
 expr_stmt|;
 return|return
-name|pB
-return|;
-block|}
-comment|/** Sets the persistency mode.    *      * @param persistenceFlag    */
-specifier|public
-name|void
-name|setPersistenceFlag
-parameter_list|(
-specifier|final
-name|boolean
-name|persistenceFlag
-parameter_list|)
-block|{
-name|this
-operator|.
-name|persistenceFlag
-operator|=
-name|persistenceFlag
-expr_stmt|;
-block|}
-comment|/**    * @return the mode the (activated) plugin will set the message delivery mode     */
-specifier|public
-specifier|final
-name|boolean
-name|isPersistenceForced
-parameter_list|()
-block|{
-return|return
-name|persistenceFlag
+name|answer
 return|;
 block|}
 block|}
