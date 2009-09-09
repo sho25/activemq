@@ -88,10 +88,10 @@ name|boolean
 name|useExponentialBackOff
 decl_stmt|;
 specifier|private
-name|short
+name|double
 name|backOffMultiplier
 init|=
-literal|5
+literal|5.0
 decl_stmt|;
 specifier|public
 name|RedeliveryPolicy
@@ -132,7 +132,7 @@ throw|;
 block|}
 block|}
 specifier|public
-name|short
+name|double
 name|getBackOffMultiplier
 parameter_list|()
 block|{
@@ -144,7 +144,7 @@ specifier|public
 name|void
 name|setBackOffMultiplier
 parameter_list|(
-name|short
+name|double
 name|backOffMultiplier
 parameter_list|)
 block|{
@@ -274,9 +274,14 @@ condition|)
 block|{
 name|redeliveryDelay
 operator|=
+call|(
+name|long
+call|)
+argument_list|(
 name|previousDelay
 operator|*
 name|backOffMultiplier
+argument_list|)
 expr_stmt|;
 block|}
 else|else
