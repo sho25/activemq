@@ -1032,7 +1032,7 @@ specifier|protected
 name|boolean
 name|enableJournalDiskSyncs
 init|=
-literal|true
+literal|false
 decl_stmt|;
 name|long
 name|checkpointInterval
