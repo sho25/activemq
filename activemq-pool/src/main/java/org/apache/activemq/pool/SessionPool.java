@@ -286,6 +286,47 @@ argument_list|)
 throw|;
 block|}
 block|}
+specifier|public
+name|void
+name|invalidateSession
+parameter_list|(
+name|PooledSession
+name|session
+parameter_list|)
+throws|throws
+name|JMSException
+block|{
+try|try
+block|{
+name|getSessionPool
+argument_list|()
+operator|.
+name|invalidateObject
+argument_list|(
+name|session
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|JMSExceptionSupport
+operator|.
+name|create
+argument_list|(
+literal|"Failed to invalidate session: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
 comment|// PoolableObjectFactory methods
 comment|// -------------------------------------------------------------------------
 specifier|public

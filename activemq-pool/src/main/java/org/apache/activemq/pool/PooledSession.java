@@ -702,6 +702,13 @@ name|session
 operator|=
 literal|null
 expr_stmt|;
+name|sessionPool
+operator|.
+name|invalidateSession
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 block|}
