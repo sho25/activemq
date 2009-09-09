@@ -2534,7 +2534,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
-name|short
+name|double
 name|getBackOffMultiplier
 parameter_list|()
 block|{

@@ -309,7 +309,7 @@ name|String
 name|getMaxMessagesPerBatch
 parameter_list|()
 function_decl|;
-name|short
+name|double
 name|getBackOffMultiplier
 parameter_list|()
 function_decl|;

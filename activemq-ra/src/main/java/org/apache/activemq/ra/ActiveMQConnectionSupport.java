@@ -849,7 +849,7 @@ expr_stmt|;
 block|}
 comment|/**      * @return redelivery backoff multiplier      */
 specifier|public
-name|Short
+name|Double
 name|getRedeliveryBackOffMultiplier
 parameter_list|()
 block|{

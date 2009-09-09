@@ -674,12 +674,12 @@ argument_list|()
 return|;
 block|}
 specifier|public
-name|Short
+name|Double
 name|getRedeliveryBackOffMultiplier
 parameter_list|()
 block|{
 return|return
-name|Short
+name|Double
 operator|.
 name|valueOf
 argument_list|(
