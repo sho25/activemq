@@ -41,9 +41,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|net
 operator|.
-name|Map
+name|URI
 import|;
 end_import
 
@@ -54,6 +54,16 @@ operator|.
 name|util
 operator|.
 name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
 import|;
 end_import
 
@@ -83,6 +93,16 @@ name|javax
 operator|.
 name|jms
 operator|.
+name|MessageConsumer
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
 name|MessageProducer
 import|;
 end_import
@@ -94,16 +114,6 @@ operator|.
 name|jms
 operator|.
 name|Session
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|MessageConsumer
 import|;
 end_import
 
@@ -189,18 +199,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|EmbeddedBrokerTestSupport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|ActiveMQConnectionFactory
 import|;
 end_import
@@ -213,9 +211,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|command
-operator|.
-name|ActiveMQQueue
+name|EmbeddedBrokerTestSupport
 import|;
 end_import
 
@@ -264,6 +260,20 @@ operator|.
 name|policy
 operator|.
 name|SharedDeadLetterStrategy
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQQueue
 import|;
 end_import
 
@@ -435,16 +445,30 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"openwire URL doesn't equal bind Address"
+literal|"openwire URL port doesn't equal bind Address"
 argument_list|,
+operator|new
+name|URI
+argument_list|(
 name|broker
 operator|.
 name|getOpenWireURL
 argument_list|()
+argument_list|)
+operator|.
+name|getPort
+argument_list|()
 argument_list|,
+operator|new
+name|URI
+argument_list|(
 name|this
 operator|.
 name|bindAddress
+argument_list|)
+operator|.
+name|getPort
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
