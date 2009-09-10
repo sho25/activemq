@@ -100,7 +100,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Plugin which allows to force every incoming message to be PERSISTENT or NON-PERSISTENT.   *   * Useful, if you have set the broker usage policy to process ONLY persistent or ONLY non-persistent  * messages.   */
+comment|/**  * A Plugin which allows to force every incoming message to be PERSISTENT or NON-PERSISTENT.   *   * Useful, if you have set the broker usage policy to process ONLY persistent or ONLY non-persistent  * messages.   * @org.apache.xbean.XBean element="forcePersistencyModeBroker"  */
 end_comment
 
 begin_class

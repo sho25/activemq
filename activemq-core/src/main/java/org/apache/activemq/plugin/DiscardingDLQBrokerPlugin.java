@@ -104,7 +104,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Filip Hanik  *  @org.apache.xbean.XBean element="discardingDLQBrokerPlugin"  * @version 1.0  */
+comment|/**  * @author Filip Hanik  * @org.apache.xbean.XBean element="discardingDLQBrokerPlugin"  * @version 1.0  */
 end_comment
 
 begin_class

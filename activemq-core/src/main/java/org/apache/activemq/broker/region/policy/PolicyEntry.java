@@ -1470,7 +1470,7 @@ return|return
 name|memoryLimit
 return|;
 block|}
-comment|/**      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
+comment|/**      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
 specifier|public
 name|void
 name|setMemoryLimit

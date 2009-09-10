@@ -386,7 +386,7 @@ return|return
 name|journalLogFileSize
 return|;
 block|}
-comment|/**      * Sets the size of the journal log files      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryIntPropertyEditor"      */
+comment|/**      * Sets the size of the journal log files      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryIntPropertyEditor"      */
 specifier|public
 name|void
 name|setJournalLogFileSize

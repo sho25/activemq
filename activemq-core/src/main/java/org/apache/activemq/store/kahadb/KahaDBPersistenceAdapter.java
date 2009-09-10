@@ -188,7 +188,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with a  * {@link Journal} and then check pointing asynchronously on a timeout with some  * other long term persistent storage.  *   * @org.apache.xbean.XBean element="KahaDB"  * @version $Revision: 1.17 $  */
+comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with a  * {@link Journal} and then check pointing asynchronously on a timeout with some  * other long term persistent storage.  *   * @org.apache.xbean.XBean element="kahaDB"  * @version $Revision: 1.17 $  */
 end_comment
 
 begin_class
@@ -527,7 +527,7 @@ expr_stmt|;
 block|}
 comment|/**      * Get the journalMaxFileLength      * @return the journalMaxFileLength      */
 specifier|public
-name|long
+name|int
 name|getJournalMaxFileLength
 parameter_list|()
 block|{
@@ -540,12 +540,12 @@ name|getJournalMaxFileLength
 argument_list|()
 return|;
 block|}
-comment|/**      * @param journalMaxFileLength which is rounded to an integer      * When set using XBean, you can use values such as: "20      * mb", "1024 kb", or "1 gb"      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
+comment|/**      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryIntPropertyEditor"      */
 specifier|public
 name|void
 name|setJournalMaxFileLength
 parameter_list|(
-name|long
+name|int
 name|journalMaxFileLength
 parameter_list|)
 block|{
@@ -555,15 +555,7 @@ name|letter
 operator|.
 name|setJournalMaxFileLength
 argument_list|(
-name|Long
-operator|.
-name|valueOf
-argument_list|(
 name|journalMaxFileLength
-argument_list|)
-operator|.
-name|intValue
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -666,6 +658,40 @@ operator|.
 name|setIndexWriteBatchSize
 argument_list|(
 name|indexWriteBatchSize
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Get the journalMaxWriteBatchSize      * @return the journalMaxWriteBatchSize      */
+specifier|public
+name|int
+name|getJournalMaxWriteBatchSize
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|letter
+operator|.
+name|getJournalMaxWriteBatchSize
+argument_list|()
+return|;
+block|}
+comment|/**      * Set the journalMaxWriteBatchSize      * @param journalMaxWriteBatchSize the journalMaxWriteBatchSize to set      */
+specifier|public
+name|void
+name|setJournalMaxWriteBatchSize
+parameter_list|(
+name|int
+name|journalMaxWriteBatchSize
+parameter_list|)
+block|{
+name|this
+operator|.
+name|letter
+operator|.
+name|setJournalMaxWriteBatchSize
+argument_list|(
+name|journalMaxWriteBatchSize
 argument_list|)
 expr_stmt|;
 block|}
