@@ -404,7 +404,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|32
+literal|32d
 argument_list|,
 name|connectionFactory
 operator|.
