@@ -1683,9 +1683,7 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|broker
-operator|.
-name|stop
+name|doStop
 argument_list|()
 expr_stmt|;
 name|bService

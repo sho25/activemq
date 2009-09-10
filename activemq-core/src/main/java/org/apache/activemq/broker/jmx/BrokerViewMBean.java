@@ -281,9 +281,37 @@ name|exitCode
 parameter_list|)
 function_decl|;
 comment|/**      * Stop the broker and all it's components.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Stop the broker and all its components."
+argument_list|)
 name|void
 name|stop
 parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Poll for queues matching queueName are empty before stopping"
+argument_list|)
+name|void
+name|stopGracefully
+parameter_list|(
+name|String
+name|connectorName
+parameter_list|,
+name|String
+name|queueName
+parameter_list|,
+name|long
+name|timeout
+parameter_list|,
+name|long
+name|pollInterval
+parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
