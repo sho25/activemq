@@ -511,6 +511,10 @@ name|firstConnection
 init|=
 literal|true
 decl_stmt|;
+specifier|private
+name|boolean
+name|failedToStart
+decl_stmt|;
 specifier|public
 name|MasterConnector
 parameter_list|()
@@ -1041,6 +1045,11 @@ literal|"Slave stopped before connected to the master."
 argument_list|)
 expr_stmt|;
 block|}
+name|setFailedToStart
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 specifier|protected
@@ -1742,6 +1751,34 @@ operator|.
 name|get
 argument_list|()
 return|;
+block|}
+comment|/**      * Get the failedToStart      * @return the failedToStart      */
+specifier|public
+name|boolean
+name|isFailedToStart
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|failedToStart
+return|;
+block|}
+comment|/**      * Set the failedToStart      * @param failedToStart the failedToStart to set      */
+specifier|public
+name|void
+name|setFailedToStart
+parameter_list|(
+name|boolean
+name|failedToStart
+parameter_list|)
+block|{
+name|this
+operator|.
+name|failedToStart
+operator|=
+name|failedToStart
+expr_stmt|;
 block|}
 block|}
 end_class
