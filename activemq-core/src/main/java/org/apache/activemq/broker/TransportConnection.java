@@ -1377,7 +1377,7 @@ operator|new
 name|ReentrantReadWriteLock
 argument_list|()
 decl_stmt|;
-comment|/**      * @param connector      * @param transport      * @param broker      * @param taskRunnerFactory - can be null if you want direct dispatch to the      *                transport else commands are sent async.      */
+comment|/**      * @param connector      * @param transport      * @param broker      * @param taskRunnerFactory      *            - can be null if you want direct dispatch to the transport      *            else commands are sent async.      */
 specifier|public
 name|TransportConnection
 parameter_list|(
@@ -3857,7 +3857,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|//if the broker service has slave attached, wait for the slave to be attached to allow client connection. slave connection is fine
+comment|// if the broker service has slave attached, wait for the slave to be
+comment|// attached to allow client connection. slave connection is fine
 if|if
 condition|(
 operator|!
@@ -3907,7 +3908,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|// Older clients should have been defaulting this field to true.. but they were not.
+comment|// Older clients should have been defaulting this field to true.. but
+comment|// they were not.
 if|if
 condition|(
 name|wireFormatInfo
@@ -4338,7 +4340,8 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// Don't allow things to be added to the connection state while we are
+comment|// Don't allow things to be added to the connection state while we
+comment|// are
 comment|// shutting down.
 name|cs
 operator|.
@@ -4605,7 +4608,7 @@ name|Command
 name|message
 parameter_list|)
 block|{
-comment|//getStatistics().getEnqueues().increment();
+comment|// getStatistics().getEnqueues().increment();
 try|try
 block|{
 name|processDispatch
@@ -4644,7 +4647,7 @@ name|get
 argument_list|()
 condition|)
 block|{
-comment|//getStatistics().getEnqueues().increment();
+comment|// getStatistics().getEnqueues().increment();
 if|if
 condition|(
 name|taskRunner
@@ -4846,7 +4849,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|//getStatistics().getDequeues().increment();
+comment|// getStatistics().getDequeues().increment();
 block|}
 block|}
 specifier|public
@@ -5718,7 +5721,7 @@ return|return
 name|blockedCandidate
 return|;
 block|}
-comment|/**      * @param blockedCandidate The blockedCandidate to set.      */
+comment|/**      * @param blockedCandidate      *            The blockedCandidate to set.      */
 specifier|public
 name|void
 name|setBlockedCandidate
@@ -5744,7 +5747,7 @@ return|return
 name|markedCandidate
 return|;
 block|}
-comment|/**      * @param markedCandidate The markedCandidate to set.      */
+comment|/**      * @param markedCandidate      *            The markedCandidate to set.      */
 specifier|public
 name|void
 name|setMarkedCandidate
@@ -5775,7 +5778,7 @@ literal|false
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @param slow The slow to set.      */
+comment|/**      * @param slow      *            The slow to set.      */
 specifier|public
 name|void
 name|setSlow
@@ -5853,7 +5856,7 @@ return|return
 name|connected
 return|;
 block|}
-comment|/**      * @param blocked The blocked to set.      */
+comment|/**      * @param blocked      *            The blocked to set.      */
 specifier|public
 name|void
 name|setBlocked
@@ -5869,7 +5872,7 @@ operator|=
 name|blocked
 expr_stmt|;
 block|}
-comment|/**      * @param connected The connected to set.      */
+comment|/**      * @param connected      *            The connected to set.      */
 specifier|public
 name|void
 name|setConnected
@@ -5895,7 +5898,7 @@ return|return
 name|active
 return|;
 block|}
-comment|/**      * @param active The active to set.      */
+comment|/**      * @param active      *            The active to set.      */
 specifier|public
 name|void
 name|setActive
@@ -5991,6 +5994,36 @@ name|isSlaveBroker
 argument_list|()
 condition|)
 block|{
+name|BrokerService
+name|bService
+init|=
+name|connector
+operator|.
+name|getBrokerService
+argument_list|()
+decl_stmt|;
+comment|// Do we only support passive slaves - or does the slave want to be
+comment|// passive ?
+name|boolean
+name|passive
+init|=
+name|bService
+operator|.
+name|isPassiveSlave
+argument_list|()
+operator|||
+name|info
+operator|.
+name|isPassiveSlave
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|passive
+operator|==
+literal|false
+condition|)
+block|{
 comment|// stream messages from this broker (the master) to
 comment|// the slave
 name|MutableBrokerFilter
@@ -6023,11 +6056,20 @@ operator|.
 name|startProcessing
 argument_list|()
 expr_stmt|;
+block|}
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Slave Broker "
+operator|(
+name|passive
+condition|?
+literal|"Passive"
+else|:
+literal|"Active"
+operator|)
+operator|+
+literal|" Slave Broker "
 operator|+
 name|info
 operator|.
@@ -6037,14 +6079,6 @@ operator|+
 literal|" is attached"
 argument_list|)
 expr_stmt|;
-name|BrokerService
-name|bService
-init|=
-name|connector
-operator|.
-name|getBrokerService
-argument_list|()
-decl_stmt|;
 name|bService
 operator|.
 name|slaveConnectionEstablished
@@ -7021,7 +7055,7 @@ name|doesHandleMultipleConnectionStates
 argument_list|()
 condition|)
 block|{
-comment|//swap implementations
+comment|// swap implementations
 name|TransportConnectionStateRegister
 name|newRegister
 init|=

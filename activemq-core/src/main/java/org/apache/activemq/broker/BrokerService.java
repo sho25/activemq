@@ -1138,6 +1138,10 @@ name|boolean
 name|waitForSlave
 decl_stmt|;
 specifier|private
+name|boolean
+name|passiveSlave
+decl_stmt|;
+specifier|private
 name|String
 name|brokerName
 init|=
@@ -6525,7 +6529,7 @@ name|IOExceptionSupport
 operator|.
 name|create
 argument_list|(
-literal|"Transport Connector could not be registered in JMX: "
+literal|"Transport Connector could not be unregistered in JMX: "
 operator|+
 name|e
 operator|.
@@ -8992,6 +8996,34 @@ block|{
 return|return
 name|slaveStartSignal
 return|;
+block|}
+comment|/**      * Get the passiveSlave      * @return the passiveSlave      */
+specifier|public
+name|boolean
+name|isPassiveSlave
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|passiveSlave
+return|;
+block|}
+comment|/**      * Set the passiveSlave      * @param passiveSlave the passiveSlave to set      */
+specifier|public
+name|void
+name|setPassiveSlave
+parameter_list|(
+name|boolean
+name|passiveSlave
+parameter_list|)
+block|{
+name|this
+operator|.
+name|passiveSlave
+operator|=
+name|passiveSlave
+expr_stmt|;
 block|}
 block|}
 end_class
