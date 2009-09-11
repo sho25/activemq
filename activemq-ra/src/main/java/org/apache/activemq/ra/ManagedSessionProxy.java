@@ -278,7 +278,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Acts as a pass through proxy for a JMS Session object. It intercepts events  * that are of interest of the ActiveMQManagedConnection.  *   * @version $Revision$  */
+comment|/**  * Acts as a pass through proxy for a JMS Session object. It intercepts events  * that are of interest of the ActiveMQManagedConnection. There is one proxy for each session.  *   * @version $Revision$  */
 end_comment
 
 begin_class
@@ -301,11 +301,18 @@ specifier|private
 name|boolean
 name|closed
 decl_stmt|;
+specifier|private
+name|ManagedConnectionProxy
+name|connectionProxy
+decl_stmt|;
 specifier|public
 name|ManagedSessionProxy
 parameter_list|(
 name|ActiveMQSession
 name|session
+parameter_list|,
+name|ManagedConnectionProxy
+name|connectionProxy
 parameter_list|)
 block|{
 name|this
@@ -313,6 +320,12 @@ operator|.
 name|session
 operator|=
 name|session
+expr_stmt|;
+name|this
+operator|.
+name|connectionProxy
+operator|=
+name|connectionProxy
 expr_stmt|;
 block|}
 specifier|public
@@ -360,11 +373,25 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
+if|if
+condition|(
+name|closed
+condition|)
+block|{
+return|return;
+block|}
 name|cleanup
 argument_list|()
 expr_stmt|;
+name|connectionProxy
+operator|.
+name|sessionClosed
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 block|}
-comment|/**      * Called by the ActiveMQManagedConnection to invalidate this proxy.      *       * @throws JMSException      * @throws JMSException      */
+comment|/**      * Called by the ManagedConnectionProxy to invalidate this proxy.      *       * @throws JMSException if session proxy has a problem      */
 specifier|public
 name|void
 name|cleanup
@@ -382,7 +409,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      *       */
+comment|/**      *      * @return underlying session, unless this proxy is closed      * @throws javax.jms.JMSException if session is closed      */
 specifier|private
 name|Session
 name|getSession

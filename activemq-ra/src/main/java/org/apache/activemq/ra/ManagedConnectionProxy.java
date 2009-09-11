@@ -31,7 +31,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
+name|List
 import|;
 end_import
 
@@ -222,7 +222,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Acts as a pass through proxy for a JMS Connection object. It intercepts  * events that are of interest of the ActiveMQManagedConnection.  *   * @version $Revision$  */
+comment|/**  * Acts as a pass through proxy for a JMS Connection object. It intercepts  * events that are of interest of the ActiveMQManagedConnection.  *  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -243,7 +243,8 @@ name|ActiveMQManagedConnection
 name|managedConnection
 decl_stmt|;
 specifier|private
-name|ArrayList
+specifier|final
+name|List
 argument_list|<
 name|ManagedSessionProxy
 argument_list|>
@@ -274,7 +275,7 @@ operator|=
 name|managedConnection
 expr_stmt|;
 block|}
-comment|/**      * Used to let the ActiveMQManagedConnection that this connection handel is      * not needed by the app.      *       * @throws JMSException      */
+comment|/**      * Used to let the ActiveMQManagedConnection that this connection handel is      * not needed by the app.      *      * @throws JMSException      */
 specifier|public
 name|void
 name|close
@@ -312,36 +313,22 @@ name|managedConnection
 operator|=
 literal|null
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|sessions
+init|)
+block|{
 for|for
 control|(
-name|Iterator
-argument_list|<
-name|ManagedSessionProxy
-argument_list|>
-name|iter
-init|=
-name|sessions
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
 name|ManagedSessionProxy
 name|p
-init|=
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
+range|:
+name|sessions
+control|)
+block|{
 try|try
 block|{
+comment|//TODO is this dangerous?  should we copy the list before iterating?
 name|p
 operator|.
 name|cleanup
@@ -353,15 +340,16 @@ parameter_list|(
 name|JMSException
 name|ignore
 parameter_list|)
-block|{             }
-name|iter
+block|{                 }
+block|}
+name|sessions
 operator|.
-name|remove
+name|clear
 argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      *      * @return "physical" underlying activemq connection, if proxy is associated with a managed connection      * @throws javax.jms.JMSException if managed connection is null      */
+comment|/**      * @return "physical" underlying activemq connection, if proxy is associated with a managed connection      * @throws javax.jms.JMSException if managed connection is null      */
 specifier|private
 name|Connection
 name|getConnection
@@ -391,7 +379,7 @@ name|getPhysicalConnection
 argument_list|()
 return|;
 block|}
-comment|/**      * @param transacted Whether session is transacted      * @param acknowledgeMode session acknowledge mode      * @return session proxy      * @throws JMSException on error      */
+comment|/**      * @param transacted      Whether session is transacted      * @param acknowledgeMode session acknowledge mode      * @return session proxy      * @throws JMSException on error      */
 specifier|public
 name|Session
 name|createSession
@@ -414,7 +402,7 @@ name|acknowledgeMode
 argument_list|)
 return|;
 block|}
-comment|/**      * @param transacted Whether session is transacted      * @param acknowledgeMode session acknowledge mode      * @return session proxy      * @throws JMSException on error      */
+comment|/**      * @param transacted      Whether session is transacted      * @param acknowledgeMode session acknowledge mode      * @return session proxy      * @throws JMSException on error      */
 specifier|private
 name|ManagedSessionProxy
 name|createSessionProxy
@@ -447,7 +435,6 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 expr_stmt|;
 block|}
-comment|//        ActiveMQSession session = (ActiveMQSession)getConnection().createSession(true, acknowledgeMode);
 name|ActiveMQSession
 name|session
 init|=
@@ -490,6 +477,8 @@ operator|new
 name|ManagedSessionProxy
 argument_list|(
 name|session
+argument_list|,
+name|this
 argument_list|)
 decl_stmt|;
 name|p
@@ -502,6 +491,11 @@ name|isInManagedTx
 argument_list|()
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|sessions
+init|)
+block|{
 name|sessions
 operator|.
 name|add
@@ -509,9 +503,32 @@ argument_list|(
 name|p
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|p
 return|;
+block|}
+specifier|protected
+name|void
+name|sessionClosed
+parameter_list|(
+name|ManagedSessionProxy
+name|session
+parameter_list|)
+block|{
+synchronized|synchronized
+init|(
+name|sessions
+init|)
+block|{
+name|sessions
+operator|.
+name|remove
+argument_list|(
+name|session
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -522,6 +539,11 @@ name|enable
 parameter_list|)
 throws|throws
 name|JMSException
+block|{
+synchronized|synchronized
+init|(
+name|sessions
+init|)
 block|{
 for|for
 control|(
@@ -540,7 +562,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @param transacted Whether session is transacted      * @param acknowledgeMode session acknowledge mode      * @return session proxy      * @throws JMSException on error      */
+block|}
+comment|/**      * @param transacted      Whether session is transacted      * @param acknowledgeMode session acknowledge mode      * @return session proxy      * @throws JMSException on error      */
 specifier|public
 name|QueueSession
 name|createQueueSession
@@ -567,7 +590,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * @param transacted Whether session is transacted      * @param acknowledgeMode session acknowledge mode      * @return session proxy      * @throws JMSException on error      */
+comment|/**      * @param transacted      Whether session is transacted      * @param acknowledgeMode session acknowledge mode      * @return session proxy      * @throws JMSException on error      */
 specifier|public
 name|TopicSession
 name|createTopicSession
@@ -594,7 +617,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * @return      * @throws JMSException      */
+comment|/**      * @return client id from delegate      * @throws JMSException      */
 specifier|public
 name|String
 name|getClientID
@@ -610,7 +633,7 @@ name|getClientID
 argument_list|()
 return|;
 block|}
-comment|/**      * @return      * @throws JMSException      */
+comment|/**      * @return exception listener from delegate      * @throws JMSException      */
 specifier|public
 name|ExceptionListener
 name|getExceptionListener
@@ -626,7 +649,7 @@ name|getExceptionListener
 argument_list|()
 return|;
 block|}
-comment|/**      * @return      * @throws JMSException      */
+comment|/**      * @return connection metadata from delegate      * @throws JMSException      */
 specifier|public
 name|ConnectionMetaData
 name|getMetaData
@@ -642,7 +665,7 @@ name|getMetaData
 argument_list|()
 return|;
 block|}
-comment|/**      * @param clientID      * @throws JMSException      */
+comment|/**      * Sets client id on delegate      * @param clientID new clientId      * @throws JMSException      */
 specifier|public
 name|void
 name|setClientID
@@ -662,7 +685,7 @@ name|clientID
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param listener      * @throws JMSException      */
+comment|/**      * sets exception listener on delegate      * @param listener new listener      * @throws JMSException      */
 specifier|public
 name|void
 name|setExceptionListener
