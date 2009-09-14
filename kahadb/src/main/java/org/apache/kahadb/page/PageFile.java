@@ -4405,6 +4405,13 @@ argument_list|)
 expr_stmt|;
 name|writerThread
 operator|.
+name|setDaemon
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|writerThread
+operator|.
 name|start
 argument_list|()
 expr_stmt|;
