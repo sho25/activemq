@@ -365,7 +365,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testBrokerRestartFails
+name|testBrokerRestartIsAllowed
 parameter_list|()
 throws|throws
 name|Exception
@@ -380,26 +380,11 @@ operator|.
 name|waitUntilStopped
 argument_list|()
 expr_stmt|;
-try|try
-block|{
+comment|// redundant start is now ignored
 name|brokerService
 operator|.
 name|start
 argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-return|return;
-block|}
-name|fail
-argument_list|(
-literal|"Error broker should have prevented us from starting it again"
-argument_list|)
 expr_stmt|;
 block|}
 specifier|public
