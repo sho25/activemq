@@ -581,10 +581,10 @@ operator|*
 literal|30
 decl_stmt|;
 specifier|private
-name|long
+name|double
 name|backOffMultiplier
 init|=
-literal|2
+literal|2d
 decl_stmt|;
 specifier|private
 name|long
@@ -1504,7 +1504,7 @@ name|reconnectDelay
 expr_stmt|;
 block|}
 specifier|public
-name|long
+name|double
 name|getReconnectDelayExponent
 parameter_list|()
 block|{
@@ -1516,7 +1516,7 @@ specifier|public
 name|void
 name|setReconnectDelayExponent
 parameter_list|(
-name|long
+name|double
 name|reconnectDelayExponent
 parameter_list|)
 block|{
