@@ -733,8 +733,6 @@ operator|+
 literal|" and "
 operator|+
 name|remoteBroker
-operator|+
-literal|" has been established."
 argument_list|)
 expr_stmt|;
 name|localBroker
