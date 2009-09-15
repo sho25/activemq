@@ -830,11 +830,6 @@ name|started
 operator|.
 name|get
 argument_list|()
-operator|&&
-name|remoteBroker
-operator|.
-name|isDisposed
-argument_list|()
 condition|)
 block|{
 name|serviceRemoteException
