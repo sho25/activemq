@@ -336,11 +336,33 @@ name|int
 name|messageCount
 parameter_list|)
 block|{
+specifier|final
+name|long
+name|maxRemainingMessageCount
+init|=
+name|Math
+operator|.
+name|max
+argument_list|(
+literal|0
+argument_list|,
+name|messageCount
+operator|-
+name|messages
+operator|.
+name|size
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Waiting for message to arrive"
+literal|"Waiting for ("
+operator|+
+name|maxRemainingMessageCount
+operator|+
+literal|") message(s) to arrive"
 argument_list|)
 expr_stmt|;
 name|long
@@ -360,7 +382,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|10
+name|maxRemainingMessageCount
 condition|;
 name|i
 operator|++
