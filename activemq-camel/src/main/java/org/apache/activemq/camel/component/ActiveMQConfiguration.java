@@ -617,6 +617,17 @@ throw|;
 block|}
 block|}
 block|}
+else|else
+block|{
+return|return
+name|loader
+operator|.
+name|loadClass
+argument_list|(
+name|name
+argument_list|)
+return|;
+block|}
 return|return
 literal|null
 return|;
