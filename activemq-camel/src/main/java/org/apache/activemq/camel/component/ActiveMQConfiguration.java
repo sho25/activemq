@@ -628,9 +628,6 @@ name|name
 argument_list|)
 return|;
 block|}
-return|return
-literal|null
-return|;
 block|}
 block|}
 end_class
