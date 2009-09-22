@@ -1704,6 +1704,36 @@ name|isProducerFlowControl
 argument_list|()
 condition|)
 block|{
+specifier|final
+name|String
+name|logMessage
+init|=
+literal|"Usage Manager memory limit reached. Stopping producer ("
+operator|+
+name|message
+operator|.
+name|getProducerId
+argument_list|()
+operator|+
+literal|") to prevent flooding "
+operator|+
+name|getActiveMQDestination
+argument_list|()
+operator|.
+name|getQualifiedName
+argument_list|()
+operator|+
+literal|"."
+operator|+
+literal|" See http://activemq.apache.org/producer-flow-control.html for more info"
+decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+name|logMessage
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|systemUsage
@@ -1720,7 +1750,7 @@ name|jms
 operator|.
 name|ResourceAllocationException
 argument_list|(
-literal|"Usage Manager memory limit reached"
+name|logMessage
 argument_list|)
 throw|;
 block|}
@@ -2185,15 +2215,48 @@ if|if
 condition|(
 name|systemUsage
 operator|.
-name|isSendFailIfNoSpace
-argument_list|()
-operator|&&
-name|systemUsage
-operator|.
 name|getStoreUsage
 argument_list|()
 operator|.
 name|isFull
+argument_list|()
+condition|)
+block|{
+specifier|final
+name|String
+name|logMessage
+init|=
+literal|"Usage Manager Store is Full. Stopping producer ("
+operator|+
+name|message
+operator|.
+name|getProducerId
+argument_list|()
+operator|+
+literal|") to prevent flooding "
+operator|+
+name|getActiveMQDestination
+argument_list|()
+operator|.
+name|getQualifiedName
+argument_list|()
+operator|+
+literal|"."
+operator|+
+literal|" See http://activemq.apache.org/producer-flow-control.html for more info"
+decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+name|logMessage
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|systemUsage
+operator|.
+name|isSendFailIfNoSpace
 argument_list|()
 condition|)
 block|{
@@ -2205,9 +2268,10 @@ name|jms
 operator|.
 name|ResourceAllocationException
 argument_list|(
-literal|"Usage Manager Store is Full"
+name|logMessage
 argument_list|)
 throw|;
+block|}
 block|}
 while|while
 condition|(
