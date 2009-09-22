@@ -325,6 +325,12 @@ name|producerFlowControl
 init|=
 literal|false
 decl_stmt|;
+specifier|protected
+name|boolean
+name|warnOnProducerFlowControl
+init|=
+literal|true
+decl_stmt|;
 specifier|private
 name|int
 name|maxProducersToAudit

@@ -2500,10 +2500,49 @@ name|isProducerFlowControl
 argument_list|()
 condition|)
 block|{
-specifier|final
-name|String
-name|logMessage
-init|=
+if|if
+condition|(
+name|warnOnProducerFlowControl
+condition|)
+block|{
+name|warnOnProducerFlowControl
+operator|=
+literal|false
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Usage Manager memory limit reached on "
+operator|+
+name|getActiveMQDestination
+argument_list|()
+operator|.
+name|getQualifiedName
+argument_list|()
+operator|+
+literal|". Producers will be throttled to the rate at which messages are removed from this destination to prevent flooding it."
+operator|+
+literal|" See http://activemq.apache.org/producer-flow-control.html for more info"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|systemUsage
+operator|.
+name|isSendFailIfNoSpace
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|javax
+operator|.
+name|jms
+operator|.
+name|ResourceAllocationException
+argument_list|(
 literal|"Usage Manager memory limit reached. Stopping producer ("
 operator|+
 name|message
@@ -2522,31 +2561,6 @@ operator|+
 literal|"."
 operator|+
 literal|" See http://activemq.apache.org/producer-flow-control.html for more info"
-decl_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-name|logMessage
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|systemUsage
-operator|.
-name|isSendFailIfNoSpace
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|javax
-operator|.
-name|jms
-operator|.
-name|ResourceAllocationException
-argument_list|(
-literal|"SystemUsage memory limit reached"
 argument_list|)
 throw|;
 block|}
