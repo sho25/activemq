@@ -283,24 +283,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|derby
-operator|.
-name|impl
-operator|.
-name|sql
-operator|.
-name|compile
-operator|.
-name|GetCurrentConnectionNode
-import|;
-end_import
-
 begin_comment
 comment|/**  * Represents an entry in a {@link PolicyMap} for assigning policies to a  * specific destination or a hierarchical wildcard area of destinations.  *   * @org.apache.xbean.XBean  * @version $Revision: 1.1 $  */
 end_comment
