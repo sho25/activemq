@@ -590,6 +590,34 @@ specifier|public
 class|class
 name|MessageDatabase
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PROPERTY_LOG_SLOW_ACCESS_TIME
+init|=
+literal|"org.apache.activemq.store.kahadb.LOG_SLOW_ACCESS_TIME"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|LOG_SLOW_ACCESS_TIME
+init|=
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+name|PROPERTY_LOG_SLOW_ACCESS_TIME
+argument_list|,
+literal|"500"
+argument_list|)
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -3295,18 +3323,22 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|LOG_SLOW_ACCESS_TIME
+operator|>
+literal|0
+operator|&&
 name|end
 operator|-
 name|start
 operator|>
-literal|100
+name|LOG_SLOW_ACCESS_TIME
 condition|)
 block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"KahaDB Cleanup took "
+literal|"Slow KahaDB access: cleanup took "
 operator|+
 operator|(
 name|end
@@ -3512,18 +3544,22 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|LOG_SLOW_ACCESS_TIME
+operator|>
+literal|0
+operator|&&
 name|end
 operator|-
 name|start
 operator|>
-literal|100
+name|LOG_SLOW_ACCESS_TIME
 condition|)
 block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"KahaDB long enqueue time: Journal Add Took: "
+literal|"Slow KahaDB access: Journal append took: "
 operator|+
 operator|(
 name|start2
@@ -3531,7 +3567,7 @@ operator|-
 name|start
 operator|)
 operator|+
-literal|" ms, Index Update took "
+literal|" ms, Index update took "
 operator|+
 operator|(
 name|end
