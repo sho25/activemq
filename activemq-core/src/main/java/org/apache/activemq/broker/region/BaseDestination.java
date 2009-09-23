@@ -323,7 +323,7 @@ specifier|private
 name|boolean
 name|producerFlowControl
 init|=
-literal|false
+literal|true
 decl_stmt|;
 specifier|protected
 name|boolean
@@ -443,6 +443,12 @@ name|int
 name|maxExpirePageSize
 init|=
 name|MAX_BROWSE_PAGE_SIZE
+decl_stmt|;
+specifier|protected
+name|int
+name|cursorMemoryHighWaterMark
+init|=
+literal|70
 decl_stmt|;
 comment|/**      * @param broker      * @param store      * @param destination      * @param parentStats      * @throws Exception      */
 specifier|public
@@ -1204,6 +1210,32 @@ operator|.
 name|deadLetterStrategy
 operator|=
 name|deadLetterStrategy
+expr_stmt|;
+block|}
+specifier|public
+name|int
+name|getCursorMemoryHighWaterMark
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|cursorMemoryHighWaterMark
+return|;
+block|}
+specifier|public
+name|void
+name|setCursorMemoryHighWaterMark
+parameter_list|(
+name|int
+name|cursorMemoryHighWaterMark
+parameter_list|)
+block|{
+name|this
+operator|.
+name|cursorMemoryHighWaterMark
+operator|=
+name|cursorMemoryHighWaterMark
 expr_stmt|;
 block|}
 comment|/**      * called when message is consumed      *       * @param context      * @param messageReference      */

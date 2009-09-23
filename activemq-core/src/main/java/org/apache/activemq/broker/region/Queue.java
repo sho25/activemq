@@ -1458,6 +1458,14 @@ name|isUseCache
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|messages
+operator|.
+name|setMemoryUsageHighWaterMark
+argument_list|(
+name|getCursorMemoryHighWaterMark
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|messages

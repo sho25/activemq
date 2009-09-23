@@ -2492,6 +2492,16 @@ argument_list|(
 name|usageManager
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|pending
+operator|.
+name|setMemoryUsageHighWaterMark
+argument_list|(
+name|getCursorMemoryHighWaterMark
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 specifier|public

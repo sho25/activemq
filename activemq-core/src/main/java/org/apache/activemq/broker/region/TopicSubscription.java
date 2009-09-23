@@ -608,6 +608,16 @@ name|this
 operator|.
 name|matched
 operator|.
+name|setMemoryUsageHighWaterMark
+argument_list|(
+name|getCursorMemoryHighWaterMark
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|matched
+operator|.
 name|start
 argument_list|()
 expr_stmt|;

@@ -500,6 +500,19 @@ name|int
 name|minimumMessageSize
 parameter_list|)
 function_decl|;
+specifier|public
+name|int
+name|getCursorMemoryHighWaterMark
+parameter_list|()
+function_decl|;
+specifier|public
+name|void
+name|setCursorMemoryHighWaterMark
+parameter_list|(
+name|int
+name|cursorMemoryHighWaterMark
+parameter_list|)
+function_decl|;
 comment|/**      * optionally called by a Subscriber - to inform the Destination its      * ready for more messages      */
 specifier|public
 name|void

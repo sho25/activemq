@@ -197,6 +197,16 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
+name|messages
+operator|.
+name|setMemoryUsageHighWaterMark
+argument_list|(
+name|getCursorMemoryHighWaterMark
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
 name|systemUsage
 operator|=
 name|brokerService
