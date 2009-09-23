@@ -300,6 +300,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|transportListener
 operator|.
 name|onException
@@ -307,6 +309,26 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|RuntimeException
+name|e2
+parameter_list|)
+block|{
+comment|// Handle any unexpected runtime exceptions by debug logging them.
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Unexpected runtime exception: "
+operator|+
+name|e2
+argument_list|,
+name|e2
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 specifier|protected
