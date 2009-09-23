@@ -33,7 +33,13 @@ class|class
 name|PolicyConfigTest
 extends|extends
 name|TestCase
-block|{  }
+block|{
+specifier|public
+name|void
+name|testNoop
+parameter_list|()
+block|{     }
+block|}
 end_class
 
 end_unit
