@@ -2260,7 +2260,7 @@ name|valueOf
 argument_list|(
 name|Session
 operator|.
-name|DUPS_OK_ACKNOWLEDGE
+name|CLIENT_ACKNOWLEDGE
 argument_list|)
 block|}
 argument_list|)
@@ -2465,6 +2465,11 @@ name|countDown
 argument_list|()
 expr_stmt|;
 block|}
+name|tm
+operator|.
+name|acknowledge
+argument_list|()
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -2679,7 +2684,7 @@ argument_list|(
 literal|200
 argument_list|)
 expr_stmt|;
-comment|// assert msg 2 was redelivered as close() from onMessages() will only ack in auto_ack mode
+comment|// assert msg 2 was redelivered as close() from onMessages() will only ack in auto_ack and dups_ok mode
 name|assertEquals
 argument_list|(
 literal|5
