@@ -351,7 +351,7 @@ specifier|static
 name|long
 name|TEST_MESSAGE_COUNT
 init|=
-literal|60000
+literal|6000
 decl_stmt|;
 comment|// The number of test messages to use
 comment|//
