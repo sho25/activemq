@@ -462,7 +462,7 @@ name|defaultEntry
 operator|.
 name|setExpireMessagesPeriod
 argument_list|(
-literal|100
+literal|800
 argument_list|)
 expr_stmt|;
 name|defaultEntry
