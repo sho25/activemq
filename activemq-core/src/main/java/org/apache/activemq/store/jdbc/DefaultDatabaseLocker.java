@@ -238,6 +238,23 @@ argument_list|(
 literal|"Attempting to acquire the exclusive lock to become the Master broker"
 argument_list|)
 expr_stmt|;
+name|String
+name|sql
+init|=
+name|statements
+operator|.
+name|getLockCreateStatement
+argument_list|()
+decl_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Locking Query is "
+operator|+
+name|sql
+argument_list|)
+expr_stmt|;
 name|PreparedStatement
 name|statement
 init|=
@@ -264,14 +281,6 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|String
-name|sql
-init|=
-name|statements
-operator|.
-name|getLockCreateStatement
-argument_list|()
-decl_stmt|;
 name|statement
 operator|=
 name|connection
@@ -369,9 +378,9 @@ else|else
 block|{
 name|LOG
 operator|.
-name|error
+name|debug
 argument_list|(
-literal|"Failed to acquire lock: "
+literal|"Lock failure: "
 operator|+
 name|e
 argument_list|,
@@ -450,7 +459,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"Caught while closing statement: "
 operator|+
@@ -468,13 +477,13 @@ block|}
 block|}
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
-literal|"Sleeping for "
+literal|"Failed to acquire lock.  Sleeping for "
 operator|+
 name|lockAcquireSleepInterval
 operator|+
-literal|" milli(s) before trying again to get the lock..."
+literal|" milli(s) before trying again..."
 argument_list|)
 expr_stmt|;
 try|try
