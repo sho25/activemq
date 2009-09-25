@@ -171,6 +171,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
+specifier|synchronized
 name|List
 argument_list|<
 name|MessageReference
