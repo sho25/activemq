@@ -628,7 +628,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
 name|c
 operator|.
 name|getConnection
@@ -637,6 +636,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
