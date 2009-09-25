@@ -188,7 +188,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Keeps track of the STOMP subscription so that acking is correctly done.  *   * @author<a href="http://hiramchirino.com">chirino</a>  */
+comment|/**  * Keeps track of the STOMP subscription so that acking is correctly done.  *  * @author<a href="http://hiramchirino.com">chirino</a>  */
 end_comment
 
 begin_class
@@ -966,7 +966,7 @@ name|dispatchedMessage
 operator|.
 name|remove
 argument_list|(
-name|messageId
+name|msgId
 argument_list|)
 expr_stmt|;
 block|}
