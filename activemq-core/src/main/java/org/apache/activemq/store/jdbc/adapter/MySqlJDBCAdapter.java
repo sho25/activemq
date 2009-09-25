@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version $Revision$  */
+comment|/**  *   * @org.apache.xbean.XBean element="mysql-jdbc-adapter"  * @version $Revision$  */
 end_comment
 
 begin_class

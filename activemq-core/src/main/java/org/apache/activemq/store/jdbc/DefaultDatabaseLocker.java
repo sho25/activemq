@@ -110,7 +110,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents an exclusive lock on a database to avoid multiple brokers running  * against the same logical database.  *   * @version $Revision: $  */
+comment|/**  * Represents an exclusive lock on a database to avoid multiple brokers running  * against the same logical database.  *   * @org.apache.xbean.XBean element="database-locker"  * @version $Revision: $  */
 end_comment
 
 begin_class

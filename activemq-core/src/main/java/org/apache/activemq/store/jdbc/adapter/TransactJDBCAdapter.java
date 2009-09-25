@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A JDBC Adapter for Transact-SQL based databases such as SQL Server or Sybase  *  * @version $Revision$  */
+comment|/**  * A JDBC Adapter for Transact-SQL based databases such as SQL Server or Sybase  *  * @org.apache.xbean.XBean element="transact-jdbc-adapter"  *   * @version $Revision$  */
 end_comment
 
 begin_class

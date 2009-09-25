@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @version $Revision: 1.2 $  */
+comment|/**  * @version $Revision: 1.2 $  * @org.apache.xbean.XBean element="hsqldb-jdbc-adapter"  */
 end_comment
 
 begin_class

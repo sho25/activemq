@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * JDBC Adapter for the MaxDB database.  */
+comment|/**  * JDBC Adapter for the MaxDB database.  * @org.apache.xbean.XBean element="maxdb-jdbc-adapter"  */
 end_comment
 
 begin_class

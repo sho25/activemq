@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implements all the default JDBC operations that are used  * by the JDBCPersistenceAdapter.  *<p/>  * Subclassing is encouraged to override the default  * implementation of methods to account for differences  * in JDBC Driver implementations.  *<p/>  * The JDBCAdapter inserts and extracts BLOB data using the  * getBytes()/setBytes() operations.  *<p/>  * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li></li>  *</ul>  *  * @version $Revision: 1.1 $  */
+comment|/**  * Implements all the default JDBC operations that are used  * by the JDBCPersistenceAdapter.  *<p/>  * Subclassing is encouraged to override the default  * implementation of methods to account for differences  * in JDBC Driver implementations.  *<p/>  * The JDBCAdapter inserts and extracts BLOB data using the  * getBytes()/setBytes() operations.  *<p/>  * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li></li>  *</ul>  *  * @org.apache.xbean.XBean element="postgresql-jdbc-adapter"  * @version $Revision: 1.1 $  */
 end_comment
 
 begin_class
