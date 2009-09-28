@@ -997,6 +997,16 @@ name|SECONDS
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|count
+operator|.
+name|get
+argument_list|()
+operator|==
+name|SEND_COUNT
+condition|)
+break|break;
 throw|throw
 operator|new
 name|TimeoutException
