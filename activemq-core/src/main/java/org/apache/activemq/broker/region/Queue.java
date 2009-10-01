@@ -2590,6 +2590,17 @@ name|isResponseRequired
 argument_list|()
 condition|)
 block|{
+comment|// copy the exchange state since the context will be modified while we are waiting
+comment|// for space.
+specifier|final
+name|ProducerBrokerExchange
+name|producerExchangeCopy
+init|=
+name|producerExchange
+operator|.
+name|copy
+argument_list|()
+decl_stmt|;
 synchronized|synchronized
 init|(
 name|messagesWaitingForSpace
@@ -2642,7 +2653,7 @@ else|else
 block|{
 name|doMessageSend
 argument_list|(
-name|producerExchange
+name|producerExchangeCopy
 argument_list|,
 name|message
 argument_list|)
