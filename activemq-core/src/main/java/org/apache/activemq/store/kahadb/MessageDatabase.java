@@ -4828,13 +4828,6 @@ name|command
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|", on: "
-operator|+
-name|command
-operator|.
-name|getDestination
-argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// TODO: consider just rolling back the tx.
