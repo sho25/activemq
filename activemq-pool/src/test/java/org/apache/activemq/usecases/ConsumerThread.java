@@ -155,6 +155,10 @@ specifier|private
 name|int
 name|numberOfQueues
 decl_stmt|;
+specifier|private
+name|String
+name|consumerName
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -257,7 +261,12 @@ name|generator
 init|=
 operator|new
 name|Random
+argument_list|(
+name|consumerName
+operator|.
+name|hashCode
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|int
 name|queueSuffix
@@ -329,6 +338,17 @@ name|container
 operator|.
 name|afterPropertiesSet
 argument_list|()
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"subscribing to "
+operator|+
+name|destination
+operator|+
+name|queueSuffix
+argument_list|)
 expr_stmt|;
 return|return
 name|container
@@ -407,6 +427,21 @@ name|this
 operator|.
 name|numberOfQueues
 return|;
+block|}
+specifier|public
+name|void
+name|setConsumerName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|this
+operator|.
+name|consumerName
+operator|=
+name|name
+expr_stmt|;
 block|}
 comment|/** 	 * @param connectionFactory the connectionFactory to set 	 */
 specifier|public

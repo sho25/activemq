@@ -4364,6 +4364,7 @@ argument_list|(
 literal|"Stopped recover next messages"
 argument_list|)
 expr_stmt|;
+break|break;
 block|}
 block|}
 block|}
@@ -4456,6 +4457,7 @@ argument_list|(
 literal|"Stopped recover next messages"
 argument_list|)
 expr_stmt|;
+break|break;
 block|}
 block|}
 block|}
