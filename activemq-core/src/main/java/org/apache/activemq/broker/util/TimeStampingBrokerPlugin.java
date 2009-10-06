@@ -110,6 +110,12 @@ name|ttlCeiling
 init|=
 literal|0
 decl_stmt|;
+comment|/**      * If true, the plugin will not update timestamp to past values      * False by default      */
+name|boolean
+name|futureOnly
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * setter method for zeroExpirationOverride     */
 specifier|public
 name|void
@@ -140,6 +146,21 @@ operator|.
 name|ttlCeiling
 operator|=
 name|ttlCeiling
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setFutureOnly
+parameter_list|(
+name|boolean
+name|futureOnly
+parameter_list|)
+block|{
+name|this
+operator|.
+name|futureOnly
+operator|=
+name|futureOnly
 expr_stmt|;
 block|}
 specifier|public
@@ -200,13 +221,6 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
-name|message
-operator|.
-name|setTimestamp
-argument_list|(
-name|newTimeStamp
-argument_list|)
-expr_stmt|;
 name|long
 name|timeToLive
 init|=
@@ -261,6 +275,19 @@ name|timeToLive
 operator|+
 name|newTimeStamp
 decl_stmt|;
+comment|//In the scenario that the Broker is behind the clients we never want to set the Timestamp and Expiration in the past
+if|if
+condition|(
+operator|!
+name|futureOnly
+operator|||
+operator|(
+name|expiration
+operator|>
+name|oldExpiration
+operator|)
+condition|)
+block|{
 if|if
 condition|(
 name|timeToLive
@@ -277,6 +304,14 @@ operator|.
 name|setExpiration
 argument_list|(
 name|expiration
+argument_list|)
+expr_stmt|;
+block|}
+name|message
+operator|.
+name|setTimestamp
+argument_list|(
+name|newTimeStamp
 argument_list|)
 expr_stmt|;
 block|}
