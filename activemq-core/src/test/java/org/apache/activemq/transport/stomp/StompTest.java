@@ -464,7 +464,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// The order of the entries is different when using the ibm jdk.
+comment|// The order of the entries is different when using ibm jdk 5.
 if|if
 condition|(
 name|System
@@ -477,6 +477,18 @@ operator|.
 name|equals
 argument_list|(
 literal|"IBM Corporation"
+argument_list|)
+operator|&&
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"java.version"
+argument_list|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"1.5"
 argument_list|)
 condition|)
 block|{

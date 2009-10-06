@@ -57,6 +57,30 @@ name|jivesoftware
 operator|.
 name|smack
 operator|.
+name|ConnectionConfiguration
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jivesoftware
+operator|.
+name|smack
+operator|.
+name|MessageListener
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jivesoftware
+operator|.
+name|smack
+operator|.
 name|XMPPConnection
 import|;
 end_import
@@ -70,6 +94,20 @@ operator|.
 name|smack
 operator|.
 name|XMPPException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jivesoftware
+operator|.
+name|smack
+operator|.
+name|packet
+operator|.
+name|Message
 import|;
 end_import
 
@@ -128,24 +166,35 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// ConnectionConfiguration config = new
-comment|// ConnectionConfiguration("localhost", 61222);
-comment|// config.setDebuggerEnabled(true);
-try|try
-block|{
-comment|// SmackConfiguration.setPacketReplyTimeout(1000);
-comment|// XMPPConnection con = new XMPPConnection(config);
-name|XMPPConnection
-name|con
+name|ConnectionConfiguration
+name|config
 init|=
 operator|new
-name|XMPPConnection
+name|ConnectionConfiguration
 argument_list|(
 literal|"localhost"
 argument_list|,
 literal|61222
 argument_list|)
 decl_stmt|;
+comment|// config.setDebuggerEnabled(true);
+try|try
+block|{
+comment|// SmackConfiguration.setPacketReplyTimeout(1000);
+name|XMPPConnection
+name|con
+init|=
+operator|new
+name|XMPPConnection
+argument_list|(
+name|config
+argument_list|)
+decl_stmt|;
+name|con
+operator|.
+name|connect
+argument_list|()
+expr_stmt|;
 name|con
 operator|.
 name|login
@@ -160,9 +209,31 @@ name|chat
 init|=
 name|con
 operator|.
+name|getChatManager
+argument_list|()
+operator|.
 name|createChat
 argument_list|(
 literal|"test@localhost"
+argument_list|,
+operator|new
+name|MessageListener
+argument_list|()
+block|{
+specifier|public
+name|void
+name|processMessage
+parameter_list|(
+name|Chat
+name|chat
+parameter_list|,
+name|Message
+name|message
+parameter_list|)
+block|{
+comment|//
+block|}
+block|}
 argument_list|)
 decl_stmt|;
 for|for
@@ -209,6 +280,11 @@ name|println
 argument_list|(
 literal|"Sent all messages!"
 argument_list|)
+expr_stmt|;
+name|con
+operator|.
+name|disconnect
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
