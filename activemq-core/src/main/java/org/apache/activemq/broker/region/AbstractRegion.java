@@ -2012,29 +2012,15 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|//networked subscriptions are going to acknowledge in flight messages
-comment|//on behalf a subscription that is no more ...
-if|if
-condition|(
-operator|!
-name|consumerExchange
+name|LOG
 operator|.
-name|getConnectionContext
-argument_list|()
-operator|.
-name|isNetworkConnection
-argument_list|()
-operator|&&
-operator|!
-name|consumerExchange
-operator|.
-name|getConnectionContext
-argument_list|()
-operator|.
-name|isInRecoveryMode
-argument_list|()
-condition|)
-block|{
+name|warn
+argument_list|(
+literal|"Ack for non existent subscription, ack:"
+operator|+
+name|ack
+argument_list|)
+expr_stmt|;
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -2047,11 +2033,6 @@ name|getConsumerId
 argument_list|()
 argument_list|)
 throw|;
-block|}
-else|else
-block|{
-return|return;
-block|}
 block|}
 name|consumerExchange
 operator|.
