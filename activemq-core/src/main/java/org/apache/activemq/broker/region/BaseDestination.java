@@ -139,6 +139,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|ActiveMQMessage
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|ActiveMQTopic
 import|;
 end_import
@@ -1474,7 +1488,7 @@ name|ConnectionContext
 name|context
 parameter_list|,
 name|Message
-name|message
+name|msg
 parameter_list|)
 throws|throws
 name|Exception
@@ -1482,7 +1496,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|message
+name|msg
 operator|.
 name|isPersistent
 argument_list|()
@@ -1512,6 +1526,14 @@ name|destination
 argument_list|)
 condition|)
 block|{
+name|Message
+name|message
+init|=
+name|msg
+operator|.
+name|copy
+argument_list|()
+decl_stmt|;
 comment|// The original destination and transaction id do not get
 comment|// filled when the message is first sent,
 comment|// it is only populated if the message is routed to another
