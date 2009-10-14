@@ -369,6 +369,12 @@ name|confUri
 init|=
 literal|"xbean:org/apache/activemq/transport/stomp/stomp-auth-broker.xml"
 decl_stmt|;
+specifier|protected
+name|String
+name|jmsUri
+init|=
+literal|"vm://localhost"
+decl_stmt|;
 specifier|private
 name|BrokerService
 name|broker
@@ -556,7 +562,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://localhost"
+name|jmsUri
 argument_list|)
 decl_stmt|;
 name|connection
@@ -677,6 +683,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+block|{
 name|connection
 operator|.
 name|close
@@ -685,11 +693,23 @@ expr_stmt|;
 name|stompDisconnect
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+comment|// Some tests explicitly disconnect from stomp so can ignore
+block|}
+finally|finally
+block|{
 name|broker
 operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|private
 name|void

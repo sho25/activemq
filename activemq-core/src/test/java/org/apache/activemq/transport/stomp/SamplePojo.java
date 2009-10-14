@@ -53,6 +53,14 @@ name|SamplePojo
 implements|implements
 name|Serializable
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|9118938642100015088L
+decl_stmt|;
 annotation|@
 name|XStreamAlias
 argument_list|(
