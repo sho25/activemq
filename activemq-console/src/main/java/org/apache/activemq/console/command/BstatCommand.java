@@ -235,6 +235,20 @@ name|queryTokens
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Print the help messages for the browse command      */
+specifier|protected
+name|void
+name|printHelp
+parameter_list|()
+block|{
+name|context
+operator|.
+name|printHelp
+argument_list|(
+name|helpFile
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
