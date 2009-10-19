@@ -401,7 +401,7 @@ name|highConsumer
 operator|.
 name|receive
 argument_list|(
-literal|200
+literal|500
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -414,7 +414,7 @@ name|lowConsumer
 operator|.
 name|receive
 argument_list|(
-literal|500
+literal|2000
 argument_list|)
 argument_list|)
 expr_stmt|;

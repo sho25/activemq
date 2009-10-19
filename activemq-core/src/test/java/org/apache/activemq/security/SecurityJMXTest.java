@@ -244,7 +244,7 @@ init|=
 operator|new
 name|JMXServiceURL
 argument_list|(
-literal|"service:jmx:rmi:///jndi/rmi://localhost:1099/jmxrmi"
+literal|"service:jmx:rmi:///jndi/rmi://localhost:1199/jmxrmi"
 argument_list|)
 decl_stmt|;
 name|JMXConnector
