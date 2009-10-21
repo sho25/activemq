@@ -969,9 +969,6 @@ argument_list|(
 literal|"messageSelector not set to valid message selector: "
 operator|+
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
