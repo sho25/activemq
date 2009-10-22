@@ -204,7 +204,7 @@ name|System
 operator|.
 name|getProperty
 argument_list|(
-name|PROPERTY_JMX_USER
+name|PROPERTY_JMX_PASSWORD
 argument_list|)
 return|;
 block|}
@@ -218,7 +218,7 @@ name|System
 operator|.
 name|getProperty
 argument_list|(
-name|PROPERTY_JMX_PASSWORD
+name|PROPERTY_JMX_USER
 argument_list|)
 return|;
 block|}
