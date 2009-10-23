@@ -91,6 +91,26 @@ name|activemq
 operator|.
 name|console
 operator|.
+name|command
+operator|.
+name|store
+operator|.
+name|amq
+operator|.
+name|AMQJournalToolCommand
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|console
+operator|.
 name|formatter
 operator|.
 name|CommandShellOutputFormatter
@@ -156,6 +176,8 @@ literal|"Tasks (default task is start):"
 block|,
 literal|"    start           - Creates and starts a broker using a configuration file, or a broker URI."
 block|,
+literal|"    create          - Creates a runnable broker instance in the specified path"
+block|,
 literal|"    stop            - Stops a running broker specified by the broker name."
 block|,
 literal|"    list            - Lists all available brokers in the specified JMX context."
@@ -163,6 +185,8 @@ block|,
 literal|"    query           - Display selected broker component's attributes and statistics."
 block|,
 literal|"    browse          - Display selected messages in a specified destination."
+block|,
+literal|"    journal-audit   - Allows you to view records stored in the persistent journal."
 block|,
 literal|""
 block|,
@@ -387,6 +411,24 @@ name|taskToken
 operator|.
 name|equals
 argument_list|(
+literal|"create"
+argument_list|)
+condition|)
+block|{
+name|command
+operator|=
+operator|new
+name|CreateCommand
+argument_list|()
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|taskToken
+operator|.
+name|equals
+argument_list|(
 literal|"stop"
 argument_list|)
 condition|)
@@ -485,6 +527,24 @@ name|command
 operator|=
 operator|new
 name|PurgeCommand
+argument_list|()
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|taskToken
+operator|.
+name|equals
+argument_list|(
+literal|"journal-audit"
+argument_list|)
+condition|)
+block|{
+name|command
+operator|=
+operator|new
+name|AMQJournalToolCommand
 argument_list|()
 expr_stmt|;
 block|}
