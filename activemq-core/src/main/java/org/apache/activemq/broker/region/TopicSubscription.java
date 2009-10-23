@@ -637,11 +637,6 @@ operator|.
 name|incrementAndGet
 argument_list|()
 expr_stmt|;
-name|node
-operator|.
-name|incrementReferenceCount
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -658,10 +653,8 @@ name|isSlave
 argument_list|()
 condition|)
 block|{
-comment|// if maximumPendingMessages is set we will only discard messages
-comment|// which
-comment|// have not been dispatched (i.e. we allow the prefetch buffer to be
-comment|// filled)
+comment|// if maximumPendingMessages is set we will only discard messages which
+comment|// have not been dispatched (i.e. we allow the prefetch buffer to be filled)
 name|dispatch
 argument_list|(
 name|node
@@ -1850,6 +1843,11 @@ name|Message
 operator|)
 name|node
 decl_stmt|;
+name|node
+operator|.
+name|incrementReferenceCount
+argument_list|()
+expr_stmt|;
 comment|// Make sure we can dispatch a message.
 name|MessageDispatch
 name|md

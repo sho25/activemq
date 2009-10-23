@@ -2510,6 +2510,26 @@ operator|<
 name|expiry
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|exceptions
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|exceptions
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 name|assertTrue
 argument_list|(
 literal|"No exceptions"
