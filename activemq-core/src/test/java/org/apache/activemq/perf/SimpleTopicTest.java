@@ -256,9 +256,21 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//if (broker == null) {
-comment|//    broker = createBroker(bindAddress);
-comment|//}
+if|if
+condition|(
+name|broker
+operator|==
+literal|null
+condition|)
+block|{
+name|broker
+operator|=
+name|createBroker
+argument_list|(
+name|bindAddress
+argument_list|)
+expr_stmt|;
+block|}
 name|factory
 operator|=
 name|createConnectionFactory
