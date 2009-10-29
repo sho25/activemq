@@ -1065,7 +1065,7 @@ operator|=
 name|getScheduledThreadPoolExecutor
 argument_list|()
 operator|.
-name|scheduleAtFixedRate
+name|scheduleWithFixedDelay
 argument_list|(
 operator|new
 name|Runnable
