@@ -4593,8 +4593,10 @@ literal|null
 decl_stmt|;
 do|do
 block|{
-name|pageInMessages
-argument_list|()
+name|doPageIn
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 synchronized|synchronized
 init|(
@@ -4808,8 +4810,10 @@ argument_list|()
 decl_stmt|;
 do|do
 block|{
-name|pageInMessages
-argument_list|()
+name|doPageIn
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 synchronized|synchronized
 init|(
@@ -5094,8 +5098,10 @@ name|getCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|pageInMessages
-argument_list|()
+name|doPageIn
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 name|setMaxPageSize
 argument_list|(
@@ -5959,7 +5965,7 @@ name|isEmpty
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Perhaps we should page always into the pagedInPendingDispatch list is
+comment|// Perhaps we should page always into the pagedInPendingDispatch list if
 comment|// !messages.isEmpty(), and then if !pagedInPendingDispatch.isEmpty()
 comment|// then we do a dispatch.
 if|if
@@ -6162,6 +6168,25 @@ argument_list|,
 name|r
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|dispatchMutex
+init|)
+block|{
+synchronized|synchronized
+init|(
+name|pagedInPendingDispatch
+init|)
+block|{
+name|pagedInPendingDispatch
+operator|.
+name|remove
+argument_list|(
+name|r
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 specifier|protected
 name|void
@@ -6923,19 +6948,29 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|toPageIn
+operator|>
+literal|0
+operator|&&
 operator|(
 name|force
 operator|||
+operator|(
 operator|!
 name|consumers
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 operator|&&
-name|toPageIn
-operator|>
-literal|0
+name|pagedInPendingDispatch
+operator|.
+name|size
+argument_list|()
+operator|<
+name|getMaxPageSize
+argument_list|()
+operator|)
+operator|)
 condition|)
 block|{
 name|int
@@ -7188,8 +7223,7 @@ name|pagedInPendingDispatch
 argument_list|)
 expr_stmt|;
 block|}
-comment|// and now see if we can dispatch the new stuff.. and append to
-comment|// the pending
+comment|// and now see if we can dispatch the new stuff.. and append to the pending
 comment|// list anything that does not actually get dispatched.
 if|if
 condition|(
@@ -7266,7 +7300,8 @@ condition|(
 name|doWakeUp
 condition|)
 block|{
-name|wakeup
+comment|// avoid lock order contention
+name|asyncWakeup
 argument_list|()
 expr_stmt|;
 block|}
@@ -7614,19 +7649,6 @@ block|}
 return|return
 name|rc
 return|;
-block|}
-specifier|private
-name|void
-name|pageInMessages
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|pageInMessages
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 block|}
 specifier|protected
 name|void
