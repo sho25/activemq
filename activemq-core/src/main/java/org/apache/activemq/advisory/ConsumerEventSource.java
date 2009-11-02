@@ -89,16 +89,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|MessageConsumer
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|MessageListener
 import|;
 end_import

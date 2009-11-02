@@ -233,6 +233,11 @@ argument_list|)
 decl_stmt|;
 specifier|protected
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|MessageConsumer
+argument_list|>
 name|consumerMap
 decl_stmt|;
 name|Map
@@ -263,6 +268,9 @@ name|bridgeAllBrokers
 argument_list|()
 expr_stmt|;
 name|startAllBrokers
+argument_list|()
+expr_stmt|;
+name|waitForBridgeFormation
 argument_list|()
 expr_stmt|;
 comment|// Setup topic destination
@@ -598,6 +606,11 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
+name|this
+operator|.
+name|waitForBridgeFormation
+argument_list|()
+expr_stmt|;
 comment|// Setup topic destination
 name|Destination
 name|dest
@@ -829,9 +842,6 @@ literal|"Broker"
 operator|+
 name|i
 argument_list|,
-operator|(
-name|MessageConsumer
-operator|)
 name|consumerMap
 operator|.
 name|get
@@ -935,6 +945,11 @@ name|consumerMap
 operator|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|MessageConsumer
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}

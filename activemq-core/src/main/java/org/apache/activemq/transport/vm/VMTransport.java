@@ -217,34 +217,6 @@ name|IOExceptionSupport
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * A Transport implementation that uses direct method invocations.  *   * @version $Revision$  */
 end_comment

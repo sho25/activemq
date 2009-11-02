@@ -391,6 +391,9 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
+name|waitForBridgeFormation
+argument_list|()
+expr_stmt|;
 comment|// Setup destination
 name|Destination
 name|dest
@@ -477,6 +480,9 @@ literal|"BrokerC"
 argument_list|)
 expr_stmt|;
 name|startAllBrokers
+argument_list|()
+expr_stmt|;
+name|waitForBridgeFormation
 argument_list|()
 expr_stmt|;
 comment|// Setup destination
@@ -611,6 +617,9 @@ literal|false
 argument_list|)
 expr_stmt|;
 name|startAllBrokers
+argument_list|()
+expr_stmt|;
+name|waitForBridgeFormation
 argument_list|()
 expr_stmt|;
 comment|// Setup destination
@@ -804,6 +813,9 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
+name|waitForBridgeFormation
+argument_list|()
+expr_stmt|;
 comment|// Setup destination
 name|Destination
 name|dest
@@ -989,6 +1001,9 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
+name|waitForBridgeFormation
+argument_list|()
+expr_stmt|;
 comment|// Setup destination
 name|Destination
 name|dest
@@ -1115,6 +1130,9 @@ literal|"BrokerA"
 argument_list|)
 expr_stmt|;
 name|startAllBrokers
+argument_list|()
+expr_stmt|;
+name|waitForBridgeFormation
 argument_list|()
 expr_stmt|;
 comment|// Setup destination
@@ -1261,6 +1279,9 @@ name|bridgeAllBrokers
 argument_list|()
 expr_stmt|;
 name|startAllBrokers
+argument_list|()
+expr_stmt|;
+name|waitForBridgeFormation
 argument_list|()
 expr_stmt|;
 comment|// Setup destination
@@ -1505,6 +1526,9 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
+name|waitForBridgeFormation
+argument_list|()
+expr_stmt|;
 comment|// Setup destination
 name|Destination
 name|dest
@@ -1614,6 +1638,9 @@ literal|false
 argument_list|)
 expr_stmt|;
 name|startAllBrokers
+argument_list|()
+expr_stmt|;
+name|waitForBridgeFormation
 argument_list|()
 expr_stmt|;
 comment|// Setup destination
@@ -1732,6 +1759,9 @@ name|suppressQueueDuplicateSubscriptions
 argument_list|)
 expr_stmt|;
 name|startAllBrokers
+argument_list|()
+expr_stmt|;
+name|waitForBridgeFormation
 argument_list|()
 expr_stmt|;
 comment|// Setup destination
@@ -1989,6 +2019,9 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
+name|waitForBridgeFormation
+argument_list|()
+expr_stmt|;
 comment|// Setup destination
 name|Destination
 name|dest
@@ -2167,6 +2200,9 @@ literal|true
 argument_list|)
 expr_stmt|;
 name|startAllBrokers
+argument_list|()
+expr_stmt|;
+name|waitForBridgeFormation
 argument_list|()
 expr_stmt|;
 comment|// Setup destination
@@ -2499,6 +2535,12 @@ argument_list|()
 expr_stmt|;
 end_expr_stmt
 
+begin_expr_stmt
+name|waitForBridgeFormation
+argument_list|()
+expr_stmt|;
+end_expr_stmt
+
 begin_comment
 comment|// Setup consumers
 end_comment
@@ -2645,6 +2687,9 @@ literal|false
 argument_list|)
 expr_stmt|;
 name|startAllBrokers
+argument_list|()
+expr_stmt|;
+name|waitForBridgeFormation
 argument_list|()
 expr_stmt|;
 comment|// Setup destination
