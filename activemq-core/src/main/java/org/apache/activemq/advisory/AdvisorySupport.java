@@ -277,7 +277,7 @@ name|FAST_PRODUCER_TOPIC_PREFIX
 init|=
 name|ADVISORY_TOPIC_PREFIX
 operator|+
-literal|"FastPorducer."
+literal|"FastProducer."
 decl_stmt|;
 specifier|public
 specifier|static
