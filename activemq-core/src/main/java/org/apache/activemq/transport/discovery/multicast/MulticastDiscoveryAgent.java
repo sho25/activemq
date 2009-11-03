@@ -2258,6 +2258,11 @@ condition|(
 name|discoveryListener
 operator|!=
 literal|null
+operator|&&
+name|started
+operator|.
+name|get
+argument_list|()
 condition|)
 block|{
 specifier|final
@@ -2341,6 +2346,11 @@ condition|(
 name|discoveryListener
 operator|!=
 literal|null
+operator|&&
+name|started
+operator|.
+name|get
+argument_list|()
 condition|)
 block|{
 specifier|final
