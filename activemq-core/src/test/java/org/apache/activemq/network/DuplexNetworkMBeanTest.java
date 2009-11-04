@@ -291,7 +291,7 @@ name|broker
 argument_list|,
 literal|"Connector"
 argument_list|,
-literal|10000
+literal|30000
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -473,7 +473,7 @@ name|networkedBroker
 argument_list|,
 literal|"Connector"
 argument_list|,
-literal|10000
+literal|30000
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -903,7 +903,17 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{         }
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"getMBeanServer ex: "
+operator|+
+name|ignored
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|mbsc
 return|;
