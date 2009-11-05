@@ -324,7 +324,7 @@ literal|"rw"
 argument_list|)
 decl_stmt|;
 comment|// When we start to write files size them up so that the OS has a chance
-comment|// to allocate the file contigously.
+comment|// to allocate the file contiguously.
 if|if
 condition|(
 name|appender
@@ -337,6 +337,9 @@ operator|<
 name|preferedSize
 condition|)
 block|{
+try|try
+block|{
+comment|// this can throw if we run out of disk space
 name|rc
 operator|.
 name|setLength
@@ -344,6 +347,31 @@ argument_list|(
 name|preferedSize
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ioe
+parameter_list|)
+block|{
+try|try
+block|{
+name|rc
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ignored
+parameter_list|)
+block|{                     }
+throw|throw
+name|ioe
+throw|;
+block|}
 block|}
 block|}
 return|return
