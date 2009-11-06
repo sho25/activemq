@@ -1270,10 +1270,16 @@ name|SECONDS
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// whack all connections
+name|proxy
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 comment|// let a reconnect succeed
 name|proxy
 operator|.
-name|goOn
+name|reopen
 argument_list|()
 expr_stmt|;
 block|}

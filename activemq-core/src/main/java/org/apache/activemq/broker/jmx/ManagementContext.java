@@ -318,7 +318,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Flow provides different dispatch policies within the NMR  *   * @org.apache.xbean.XBean  * @version $Revision$  */
+comment|/**  * An abstraction over JMX mbean registration  *   * @org.apache.xbean.XBean  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -524,17 +524,7 @@ parameter_list|(
 name|Throwable
 name|ignore
 parameter_list|)
-block|{
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"ignored error on start invocation"
-argument_list|,
-name|ignore
-argument_list|)
-expr_stmt|;
-block|}
+block|{                 }
 name|Thread
 name|t
 init|=
@@ -572,7 +562,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Starting JMX JMXConnectorServer..."
+literal|"Starting JMXConnectorServer..."
 argument_list|)
 expr_stmt|;
 name|server
