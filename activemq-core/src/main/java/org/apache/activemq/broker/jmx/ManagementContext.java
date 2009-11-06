@@ -963,6 +963,10 @@ parameter_list|()
 block|{
 return|return
 name|connectorServer
+operator|!=
+literal|null
+operator|&&
+name|connectorServer
 operator|.
 name|isActive
 argument_list|()
