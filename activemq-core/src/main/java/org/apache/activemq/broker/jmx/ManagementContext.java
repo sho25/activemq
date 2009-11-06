@@ -966,6 +966,18 @@ return|return
 name|findTigerMbeanServer
 return|;
 block|}
+specifier|public
+name|boolean
+name|isConnectorStarted
+parameter_list|()
+block|{
+return|return
+name|connectorServer
+operator|.
+name|isActive
+argument_list|()
+return|;
+block|}
 comment|/**      * Enables/disables the searching for the Java 5 platform MBeanServer      */
 specifier|public
 name|void
