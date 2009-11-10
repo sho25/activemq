@@ -1017,6 +1017,60 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Stats: received: "
+operator|+
+name|received
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|", size= "
+operator|+
+name|view
+operator|.
+name|getQueueSize
+argument_list|()
+operator|+
+literal|", enqueues: "
+operator|+
+name|view
+operator|.
+name|getDequeueCount
+argument_list|()
+operator|+
+literal|", dequeues: "
+operator|+
+name|view
+operator|.
+name|getDequeueCount
+argument_list|()
+operator|+
+literal|", dispatched: "
+operator|+
+name|view
+operator|.
+name|getDispatchCount
+argument_list|()
+operator|+
+literal|", inflight: "
+operator|+
+name|view
+operator|.
+name|getInFlightCount
+argument_list|()
+operator|+
+literal|", expiries: "
+operator|+
+name|view
+operator|.
+name|getExpiredCount
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|view
 operator|.

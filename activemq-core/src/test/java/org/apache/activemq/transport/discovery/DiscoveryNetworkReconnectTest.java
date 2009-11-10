@@ -661,6 +661,14 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+name|allowing
+argument_list|(
+name|managementContext
+argument_list|)
+operator|.
+name|isConnectorStarted
+argument_list|()
+expr_stmt|;
 comment|// expected MBeans
 name|allowing
 argument_list|(
