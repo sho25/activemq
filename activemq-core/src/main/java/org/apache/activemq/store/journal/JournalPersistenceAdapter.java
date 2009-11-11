@@ -3803,6 +3803,8 @@ operator|.
 name|warn
 argument_list|(
 literal|"Failure occured while stopping broker"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
