@@ -2395,9 +2395,12 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|System
+name|Runtime
 operator|.
-name|exit
+name|getRuntime
+argument_list|()
+operator|.
+name|halt
 argument_list|(
 name|systemExitOnShutdownExitCode
 argument_list|)
