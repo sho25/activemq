@@ -1203,6 +1203,31 @@ name|getQueueSize
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// memory check
+name|assertEquals
+argument_list|(
+literal|"memory usage is back to duck egg"
+argument_list|,
+literal|0
+argument_list|,
+name|view
+operator|.
+name|getMemoryPercentUsage
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"memory usage is increased "
+argument_list|,
+literal|0
+operator|<
+name|dlqView
+operator|.
+name|getMemoryPercentUsage
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// verify DQL
 name|MessageConsumer
 name|dlqConsumer
