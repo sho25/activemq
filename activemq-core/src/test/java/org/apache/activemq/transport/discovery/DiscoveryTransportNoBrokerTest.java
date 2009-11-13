@@ -627,6 +627,10 @@ argument_list|(
 literal|"took at least initialReconnectDelay time: "
 operator|+
 name|duration
+operator|+
+literal|" e:"
+operator|+
+name|expected
 argument_list|,
 name|duration
 operator|>=

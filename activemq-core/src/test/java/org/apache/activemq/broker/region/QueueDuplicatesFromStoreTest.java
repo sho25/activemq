@@ -375,11 +375,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|store
+name|thread
 operator|.
-name|amq
-operator|.
-name|AMQPersistenceAdapter
+name|TaskRunnerFactory
 import|;
 end_import
 
@@ -674,7 +672,10 @@ name|queueMessageStore
 argument_list|,
 name|destinationStatistics
 argument_list|,
-literal|null
+name|brokerService
+operator|.
+name|getTaskRunnerFactory
+argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// a workaround for this issue

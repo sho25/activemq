@@ -287,6 +287,10 @@ literal|1000
 operator|*
 literal|20
 decl_stmt|;
+specifier|private
+name|boolean
+name|useDedicatedTaskRunner
+decl_stmt|;
 comment|/**      * @return a AMQPersistenceAdapter      * @see org.apache.activemq.store.PersistenceAdapterFactory#createPersistenceAdapter()      */
 specifier|public
 name|PersistenceAdapter
@@ -528,6 +532,30 @@ operator|=
 name|dataDirectory
 expr_stmt|;
 block|}
+specifier|public
+name|boolean
+name|isUseDedicatedTaskRunner
+parameter_list|()
+block|{
+return|return
+name|useDedicatedTaskRunner
+return|;
+block|}
+specifier|public
+name|void
+name|setUseDedicatedTaskRunner
+parameter_list|(
+name|boolean
+name|useDedicatedTaskRunner
+parameter_list|)
+block|{
+name|this
+operator|.
+name|useDedicatedTaskRunner
+operator|=
+name|useDedicatedTaskRunner
+expr_stmt|;
+block|}
 comment|/**      * @return the taskRunnerFactory      */
 specifier|public
 name|TaskRunnerFactory
@@ -553,6 +581,9 @@ argument_list|,
 literal|true
 argument_list|,
 literal|1000
+argument_list|,
+name|isUseDedicatedTaskRunner
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

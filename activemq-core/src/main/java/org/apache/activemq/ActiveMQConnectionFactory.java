@@ -666,6 +666,10 @@ name|ActiveMQMessageAudit
 operator|.
 name|MAXIMUM_PRODUCER_COUNT
 decl_stmt|;
+specifier|private
+name|boolean
+name|useDedicatedTaskRunner
+decl_stmt|;
 comment|// /////////////////////////////////////////////
 comment|//
 comment|// ConnectionFactory, QueueConnectionFactory, TopicConnectionFactory Methods
@@ -1419,6 +1423,14 @@ operator|.
 name|setAuditMaximumProducerNumber
 argument_list|(
 name|getAuditMaximumProducerNumber
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|setUseDedicatedTaskRunner
+argument_list|(
+name|isUseDedicatedTaskRunner
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3136,6 +3148,30 @@ name|auditMaximumProducerNumber
 operator|=
 name|auditMaximumProducerNumber
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setUseDedicatedTaskRunner
+parameter_list|(
+name|boolean
+name|useDedicatedTaskRunner
+parameter_list|)
+block|{
+name|this
+operator|.
+name|useDedicatedTaskRunner
+operator|=
+name|useDedicatedTaskRunner
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isUseDedicatedTaskRunner
+parameter_list|()
+block|{
+return|return
+name|useDedicatedTaskRunner
+return|;
 block|}
 block|}
 end_class

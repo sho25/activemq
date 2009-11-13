@@ -5278,6 +5278,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+try|try
+block|{
 operator|new
 name|Thread
 argument_list|(
@@ -5355,6 +5357,28 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|t
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"cannot create async transport stopper thread.. not waiting for stop to complete, reason:"
+argument_list|,
+name|t
+argument_list|)
+expr_stmt|;
+name|stopped
+operator|.
+name|countDown
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 annotation|@

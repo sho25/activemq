@@ -252,6 +252,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+comment|// still possible to configure dedicated task runner through system property but not programmatically
 specifier|private
 specifier|static
 specifier|final
@@ -270,6 +271,8 @@ argument_list|,
 literal|true
 argument_list|,
 literal|1000
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 specifier|protected

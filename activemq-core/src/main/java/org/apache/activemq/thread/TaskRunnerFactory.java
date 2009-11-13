@@ -122,7 +122,7 @@ literal|1000
 argument_list|)
 expr_stmt|;
 block|}
-specifier|public
+specifier|private
 name|TaskRunnerFactory
 parameter_list|(
 name|String

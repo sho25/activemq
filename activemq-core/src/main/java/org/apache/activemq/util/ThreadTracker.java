@@ -267,6 +267,8 @@ block|{
 specifier|public
 name|int
 name|count
+init|=
+literal|1
 decl_stmt|;
 specifier|public
 specifier|final
