@@ -4361,6 +4361,11 @@ name|getMessage
 argument_list|()
 operator|!=
 literal|null
+operator|&&
+name|sub
+operator|.
+name|incrementOutstandingResponses
+argument_list|()
 condition|)
 block|{
 comment|// See if this consumer's brokerPath tells us it came from the broker at the other end
@@ -4465,6 +4470,8 @@ comment|// If the message was originally sent using async
 comment|// send, we will preserve that QOS
 comment|// by bridging it using an async send (small chance
 comment|// of message loss).
+try|try
+block|{
 comment|// Don't send it off to the remote if it originally came from the remote.
 if|if
 condition|(
@@ -4521,6 +4528,15 @@ operator|.
 name|incrementAndGet
 argument_list|()
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|sub
+operator|.
+name|decrementOutstandingResponses
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -4635,11 +4651,6 @@ name|message
 argument_list|,
 name|callback
 argument_list|)
-expr_stmt|;
-name|sub
-operator|.
-name|incrementOutstandingResponses
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -4830,7 +4841,7 @@ return|return
 name|dynamicallyIncludedDestinations
 return|;
 block|}
-comment|/**      * @param dynamicallyIncludedDestinations The      *                dynamicallyIncludedDestinations to set.      */
+comment|/**      * @param dynamicallyIncludedDestinations The      *            dynamicallyIncludedDestinations to set.      */
 specifier|public
 name|void
 name|setDynamicallyIncludedDestinations
@@ -4886,7 +4897,7 @@ return|return
 name|staticallyIncludedDestinations
 return|;
 block|}
-comment|/**      * @param staticallyIncludedDestinations The staticallyIncludedDestinations      *                to set.      */
+comment|/**      * @param staticallyIncludedDestinations The staticallyIncludedDestinations      *            to set.      */
 specifier|public
 name|void
 name|setStaticallyIncludedDestinations
