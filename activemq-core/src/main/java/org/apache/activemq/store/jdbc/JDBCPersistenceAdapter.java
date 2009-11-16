@@ -1665,7 +1665,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|warn
+name|info
 argument_list|(
 literal|"Database "
 operator|+
