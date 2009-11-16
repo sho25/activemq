@@ -540,6 +540,12 @@ name|PersistenceAdapter
 name|persistenceAdapter
 decl_stmt|;
 specifier|protected
+name|String
+name|queueName
+init|=
+literal|"TEST"
+decl_stmt|;
+specifier|protected
 name|int
 name|maxWait
 init|=
@@ -1809,7 +1815,7 @@ name|ActiveMQDestination
 operator|.
 name|createDestination
 argument_list|(
-literal|"TEST"
+name|queueName
 argument_list|,
 name|destinationType
 argument_list|)
