@@ -710,6 +710,22 @@ init|(
 name|matchedListMutex
 init|)
 block|{
+while|while
+condition|(
+name|matched
+operator|.
+name|isFull
+argument_list|()
+condition|)
+block|{
+name|matchedListMutex
+operator|.
+name|wait
+argument_list|(
+literal|20
+argument_list|)
+expr_stmt|;
+block|}
 name|matched
 operator|.
 name|addMessageLast
@@ -717,6 +733,12 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
+block|}
+synchronized|synchronized
+init|(
+name|matchedListMutex
+init|)
+block|{
 comment|// NOTE - be careful about the slaveBroker!
 if|if
 condition|(
@@ -812,6 +834,9 @@ name|pageInSize
 argument_list|)
 expr_stmt|;
 name|LinkedList
+argument_list|<
+name|MessageReference
+argument_list|>
 name|list
 init|=
 literal|null
