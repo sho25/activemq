@@ -815,6 +815,20 @@ operator|==
 literal|null
 return|;
 block|}
+name|boolean
+name|isDone
+parameter_list|()
+block|{
+return|return
+name|diskBound
+operator|==
+literal|null
+operator|&&
+name|current
+operator|==
+literal|null
+return|;
+block|}
 block|}
 comment|/**      * The MetaData object hold the persistent data associated with a PageFile object.       */
 specifier|public
@@ -3696,46 +3710,17 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// build a write batch from the current write cache.
-name|Iterator
-argument_list|<
-name|Long
-argument_list|>
-name|it
-init|=
-name|writes
-operator|.
-name|keySet
-argument_list|()
-operator|.
-name|iterator
-argument_list|()
-decl_stmt|;
-while|while
-condition|(
-name|it
-operator|.
-name|hasNext
-argument_list|()
-condition|)
-block|{
-name|Long
-name|key
-init|=
-name|it
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
+for|for
+control|(
 name|PageWrite
 name|write
-init|=
+range|:
 name|writes
 operator|.
-name|get
-argument_list|(
-name|key
-argument_list|)
-decl_stmt|;
+name|values
+argument_list|()
+control|)
+block|{
 name|batch
 operator|.
 name|add
@@ -3783,13 +3768,17 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+try|try
+block|{
 if|if
 condition|(
 name|enableRecoveryFile
 condition|)
 block|{
-comment|// Using Adler-32 instead of CRC-32 because it's much faster and it's
-comment|// weakness for short messages with few hundred bytes is not a factor in this case since we know
+comment|// Using Adler-32 instead of CRC-32 because it's much faster and
+comment|// it's
+comment|// weakness for short messages with few hundred bytes is not a
+comment|// factor in this case since we know
 comment|// our write batches are going to much larger.
 name|Checksum
 name|checksum
@@ -3895,7 +3884,8 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Store the checksum for thw write batch so that on recovery we know if we have a consistent
+comment|// Store the checksum for thw write batch so that on recovery we
+comment|// know if we have a consistent
 comment|// write batch on disk.
 name|recoveryFile
 operator|.
@@ -4019,6 +4009,11 @@ argument_list|,
 name|pageSize
 argument_list|)
 expr_stmt|;
+name|w
+operator|.
+name|done
+argument_list|()
+expr_stmt|;
 block|}
 comment|// Sync again
 if|if
@@ -4035,6 +4030,9 @@ name|sync
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+finally|finally
+block|{
 synchronized|synchronized
 init|(
 name|writes
@@ -4048,12 +4046,13 @@ range|:
 name|batch
 control|)
 block|{
-comment|// If there are no more pending writes, then remove it from the write cache.
+comment|// If there are no more pending writes, then remove it from
+comment|// the write cache.
 if|if
 condition|(
 name|w
 operator|.
-name|done
+name|isDone
 argument_list|()
 condition|)
 block|{
@@ -4084,6 +4083,7 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|private
