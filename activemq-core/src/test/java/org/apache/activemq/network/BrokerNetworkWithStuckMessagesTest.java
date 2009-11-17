@@ -13,6 +13,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -56,6 +76,20 @@ operator|.
 name|command
 operator|.
 name|ActiveMQDestination
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|Command
 import|;
 end_import
 
@@ -149,6 +183,62 @@ name|org
 operator|.
 name|apache
 operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|Transport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|TransportListener
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|Wait
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|io
+operator|.
+name|FileUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|commons
 operator|.
 name|logging
@@ -232,6 +322,258 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|Transport
+name|localTransport
+init|=
+name|createTransport
+argument_list|()
+decl_stmt|;
+name|localTransport
+operator|.
+name|setTransportListener
+argument_list|(
+operator|new
+name|TransportListener
+argument_list|()
+block|{
+name|Command
+name|command
+init|=
+literal|null
+decl_stmt|;
+specifier|public
+name|void
+name|onCommand
+parameter_list|(
+name|Object
+name|o
+parameter_list|)
+block|{
+name|this
+operator|.
+name|command
+operator|=
+operator|(
+name|Command
+operator|)
+name|o
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Command from ["
+operator|+
+name|command
+operator|.
+name|getFrom
+argument_list|()
+operator|+
+literal|"] to ["
+operator|+
+name|command
+operator|.
+name|getTo
+argument_list|()
+operator|+
+literal|"]"
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|onException
+parameter_list|(
+name|IOException
+name|error
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Command from ["
+operator|+
+name|command
+operator|.
+name|getFrom
+argument_list|()
+operator|+
+literal|"] to ["
+operator|+
+name|command
+operator|.
+name|getTo
+argument_list|()
+operator|+
+literal|"]"
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Exception: "
+operator|+
+name|error
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|transportInterupted
+parameter_list|()
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Interruption on local transport"
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|transportResumed
+parameter_list|()
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Resumption on local transport"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+name|Transport
+name|remoteTransport
+init|=
+name|createRemoteTransport
+argument_list|()
+decl_stmt|;
+name|remoteTransport
+operator|.
+name|setTransportListener
+argument_list|(
+operator|new
+name|TransportListener
+argument_list|()
+block|{
+name|Command
+name|command
+init|=
+literal|null
+decl_stmt|;
+specifier|public
+name|void
+name|onCommand
+parameter_list|(
+name|Object
+name|o
+parameter_list|)
+block|{
+name|this
+operator|.
+name|command
+operator|=
+operator|(
+name|Command
+operator|)
+name|o
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Command from ["
+operator|+
+name|command
+operator|.
+name|getFrom
+argument_list|()
+operator|+
+literal|"] to ["
+operator|+
+name|command
+operator|.
+name|getTo
+argument_list|()
+operator|+
+literal|"]"
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|onException
+parameter_list|(
+name|IOException
+name|error
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Command from ["
+operator|+
+name|command
+operator|.
+name|getFrom
+argument_list|()
+operator|+
+literal|"] to ["
+operator|+
+name|command
+operator|.
+name|getTo
+argument_list|()
+operator|+
+literal|"]"
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Exception: "
+operator|+
+name|error
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|transportInterupted
+parameter_list|()
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Interruption on remote transport"
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|transportResumed
+parameter_list|()
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Resumption on remote transport"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 name|bridge
 operator|=
 operator|new
@@ -239,11 +581,9 @@ name|DemandForwardingBridge
 argument_list|(
 name|config
 argument_list|,
-name|createTransport
-argument_list|()
+name|localTransport
 argument_list|,
-name|createRemoteTransport
-argument_list|()
+name|remoteTransport
 argument_list|)
 expr_stmt|;
 name|bridge
@@ -259,33 +599,47 @@ name|start
 argument_list|()
 expr_stmt|;
 comment|// Enable JMX support on the local and remote brokers
+comment|//        broker.setUseJmx(true);
+comment|//        remoteBroker.setUseJmx(true);
+comment|// Make sure persistence is disabled
 name|broker
 operator|.
-name|setUseJmx
+name|setPersistent
 argument_list|(
-literal|true
+literal|false
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
+name|setPersistenceAdapter
+argument_list|(
+literal|null
 argument_list|)
 expr_stmt|;
 name|remoteBroker
 operator|.
-name|setUseJmx
+name|setPersistent
 argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-comment|// Set the names of teh local and remote brokers
-name|broker
-operator|.
-name|setBrokerName
-argument_list|(
-literal|"local"
+literal|false
 argument_list|)
 expr_stmt|;
 name|remoteBroker
 operator|.
-name|setBrokerName
+name|setPersistenceAdapter
 argument_list|(
-literal|"remote"
+literal|null
+argument_list|)
+expr_stmt|;
+comment|// Remove the activemq-data directory from the creation of the remote broker
+name|FileUtils
+operator|.
+name|deleteDirectory
+argument_list|(
+operator|new
+name|File
+argument_list|(
+literal|"activemq-data"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -408,9 +762,10 @@ operator|.
 name|QUEUE_TYPE
 argument_list|)
 expr_stmt|;
+comment|//	        connection1.send(createMessage(producerInfo, destinationInfo1, DeliveryMode.NON_PERSISTENT));
 name|connection1
 operator|.
-name|send
+name|request
 argument_list|(
 name|createMessage
 argument_list|(
@@ -426,8 +781,9 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Ensure that there are 10 messages on the local broker
-name|assertTrue
-argument_list|(
+name|int
+name|messageCount1
+init|=
 name|countMessagesInQueue
 argument_list|(
 name|connection1
@@ -436,11 +792,16 @@ name|connectionInfo1
 argument_list|,
 name|destinationInfo1
 argument_list|)
-operator|==
+decl_stmt|;
+name|assertEquals
+argument_list|(
 literal|10
+argument_list|,
+name|messageCount1
 argument_list|)
 expr_stmt|;
 comment|// Create a consumer on the remote broker
+specifier|final
 name|StubConnection
 name|connection2
 init|=
@@ -489,6 +850,7 @@ operator|.
 name|QUEUE_TYPE
 argument_list|)
 decl_stmt|;
+specifier|final
 name|ConsumerInfo
 name|consumerInfo2
 init|=
@@ -507,8 +869,9 @@ name|consumerInfo2
 argument_list|)
 expr_stmt|;
 comment|// Consume 5 of the messages from the remote broker and ack them.
-comment|// Because the prefetch size is set to 1000, this will cause the
-comment|// messages on the local broker to be forwarded to the remote broker.
+comment|// Because the prefetch size is set to 1000 in the createConsumerInfo()
+comment|// method, this will cause the messages on the local broker to be
+comment|// forwarded to the remote broker.
 for|for
 control|(
 name|int
@@ -523,6 +886,31 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
+name|assertTrue
+argument_list|(
+literal|"Message "
+operator|+
+name|i
+operator|+
+literal|" was not received"
+argument_list|,
+name|Wait
+operator|.
+name|waitFor
+argument_list|(
+operator|new
+name|Wait
+operator|.
+name|Condition
+argument_list|()
+block|{
+specifier|public
+name|boolean
+name|isSatisified
+parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|Message
 name|message1
@@ -555,6 +943,19 @@ name|STANDARD_ACK_TYPE
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+name|message1
+operator|!=
+literal|null
+return|;
+block|}
+block|}
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//	        Message message1 = receiveMessage(connection2);
+comment|//	        assertNotNull(message1);
+comment|//          connection2.send(createAck(consumerInfo2, message1, 1, MessageAck.STANDARD_ACK_TYPE));
 block|}
 comment|// Close the consumer on the remote broker
 name|connection2
@@ -570,8 +971,9 @@ expr_stmt|;
 comment|// Ensure that there are zero messages on the local broker. This tells
 comment|// us that those messages have been prefetched to the remote broker
 comment|// where the demand exists.
-name|assertTrue
-argument_list|(
+name|int
+name|messageCount2
+init|=
 name|countMessagesInQueue
 argument_list|(
 name|connection1
@@ -580,23 +982,33 @@ name|connectionInfo1
 argument_list|,
 name|destinationInfo1
 argument_list|)
-operator|==
+decl_stmt|;
+comment|// Sometimes it fails here
+name|assertEquals
+argument_list|(
 literal|0
+argument_list|,
+name|messageCount2
 argument_list|)
 expr_stmt|;
 comment|// There should now be 5 messages stuck on the remote broker
-name|assertTrue
-argument_list|(
+name|int
+name|messageCount3
+init|=
 name|countMessagesInQueue
 argument_list|(
 name|connection2
 argument_list|,
 name|connectionInfo2
 argument_list|,
-name|destinationInfo1
+name|destinationInfo2
 argument_list|)
-operator|==
+decl_stmt|;
+name|assertEquals
+argument_list|(
 literal|5
+argument_list|,
+name|messageCount3
 argument_list|)
 expr_stmt|;
 comment|// Create a consumer on the local broker just to confirm that it doesn't
@@ -629,32 +1041,38 @@ decl_stmt|;
 comment|//////////////////////////////////////////////////////
 comment|// An assertNull() is done here because this is currently the correct
 comment|// behavior. This is actually the purpose of this test - to prove that
-comment|// messages are stuck on the remote broker. AMQ-2324 aims to fix this
-comment|// situation so that messages don't get stuck.
+comment|// messages are stuck on the remote broker. AMQ-2324 and AMQ-2484 aim
+comment|// to fix this situation so that messages don't get stuck.
 name|assertNull
 argument_list|(
 name|message1
 argument_list|)
 expr_stmt|;
 comment|//////////////////////////////////////////////////////
-name|consumerInfo2
-operator|=
+name|ConsumerInfo
+name|consumerInfo3
+init|=
 name|createConsumerInfo
 argument_list|(
 name|sessionInfo2
 argument_list|,
 name|destinationInfo2
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|connection2
 operator|.
 name|send
 argument_list|(
-name|consumerInfo2
+name|consumerInfo3
 argument_list|)
 expr_stmt|;
 comment|// Consume the last 5 messages from the remote broker and ack them just
 comment|// to clean up the queue.
+name|int
+name|counter
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -688,7 +1106,7 @@ name|send
 argument_list|(
 name|createAck
 argument_list|(
-name|consumerInfo2
+name|consumerInfo3
 argument_list|,
 name|message1
 argument_list|,
@@ -700,32 +1118,66 @@ name|STANDARD_ACK_TYPE
 argument_list|)
 argument_list|)
 expr_stmt|;
+operator|++
+name|counter
+expr_stmt|;
 block|}
-comment|// Close the consumer on the remote broker
-name|connection2
-operator|.
-name|send
+comment|// Ensure that 5 messages were received
+name|assertEquals
 argument_list|(
-name|consumerInfo2
+name|receiveNumMessages
+argument_list|,
+name|counter
+argument_list|)
+expr_stmt|;
+name|Thread
 operator|.
-name|createRemoveCommand
-argument_list|()
+name|sleep
+argument_list|(
+literal|2000
 argument_list|)
 expr_stmt|;
 comment|// Ensure that the queue on the remote broker is empty
-name|assertTrue
-argument_list|(
+name|int
+name|messageCount4
+init|=
 name|countMessagesInQueue
 argument_list|(
 name|connection2
 argument_list|,
 name|connectionInfo2
 argument_list|,
-name|destinationInfo2
+name|destinationInfo1
 argument_list|)
-operator|==
+decl_stmt|;
+comment|// Sometimes it fails here
+name|assertEquals
+argument_list|(
 literal|0
+argument_list|,
+name|messageCount4
 argument_list|)
+expr_stmt|;
+comment|// Close the consumer on the remote broker
+name|connection2
+operator|.
+name|send
+argument_list|(
+name|consumerInfo3
+operator|.
+name|createRemoveCommand
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|connection1
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
+name|connection2
+operator|.
+name|stop
+argument_list|()
 expr_stmt|;
 block|}
 specifier|public
