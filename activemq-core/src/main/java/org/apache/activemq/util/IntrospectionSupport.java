@@ -1657,6 +1657,9 @@ operator|.
 name|toString
 argument_list|()
 operator|.
+name|toLowerCase
+argument_list|()
+operator|.
 name|contains
 argument_list|(
 literal|"password"
