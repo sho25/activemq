@@ -214,6 +214,12 @@ name|started
 init|=
 literal|false
 decl_stmt|;
+specifier|protected
+name|MessageReference
+name|last
+init|=
+literal|null
+decl_stmt|;
 specifier|public
 specifier|synchronized
 name|void

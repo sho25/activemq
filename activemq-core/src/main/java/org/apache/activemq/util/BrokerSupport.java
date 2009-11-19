@@ -241,6 +241,13 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+name|message
+operator|.
+name|setMemoryUsage
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 name|boolean
 name|originalFlowControl
 init|=

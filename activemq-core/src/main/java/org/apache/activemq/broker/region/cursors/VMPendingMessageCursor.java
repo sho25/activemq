@@ -153,10 +153,6 @@ name|MessageReference
 argument_list|>
 name|iter
 decl_stmt|;
-specifier|private
-name|MessageReference
-name|last
-decl_stmt|;
 specifier|public
 name|VMPendingMessageCursor
 parameter_list|()

@@ -3877,15 +3877,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Clear out the memory usage for the old queue.
-comment|// We'll reset it to the DLQ below:
-name|message
-operator|.
-name|setMemoryUsage
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
 name|BrokerSupport
 operator|.
 name|resendNoCopy

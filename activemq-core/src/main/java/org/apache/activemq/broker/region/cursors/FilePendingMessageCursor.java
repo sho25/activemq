@@ -405,12 +405,6 @@ operator|new
 name|AtomicBoolean
 argument_list|()
 decl_stmt|;
-specifier|private
-name|MessageReference
-name|last
-init|=
-literal|null
-decl_stmt|;
 comment|/**      * @param name      * @param store      */
 specifier|public
 name|FilePendingMessageCursor
