@@ -500,6 +500,21 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Browse size"
+argument_list|,
+name|proxy
+operator|.
+name|browseMessages
+argument_list|()
+operator|.
+name|size
+argument_list|()
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 comment|// Queues have a special case once there are more than a thousand
 comment|// dead messages, make sure we hit that.
 name|messageCount
@@ -574,6 +589,21 @@ argument_list|(
 literal|"Queue size"
 argument_list|,
 name|count
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Browse size"
+argument_list|,
+name|proxy
+operator|.
+name|browseMessages
+argument_list|()
+operator|.
+name|size
+argument_list|()
 argument_list|,
 literal|0
 argument_list|)
