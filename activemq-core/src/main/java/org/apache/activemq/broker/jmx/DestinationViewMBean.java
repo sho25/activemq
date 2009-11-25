@@ -564,6 +564,31 @@ name|boolean
 name|producerFlowControl
 parameter_list|)
 function_decl|;
+comment|/**      * Set's the interval at which warnings about producers being blocked by      * resource usage will be triggered. Values of 0 or less will disable      * warnings      *       * @param blockedProducerWarningInterval the interval at which warning about      *            blocked producers will be triggered.      */
+specifier|public
+name|void
+name|setBlockedProducerWarningInterval
+parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"blockedProducerWarningInterval"
+argument_list|)
+name|long
+name|blockedProducerWarningInterval
+parameter_list|)
+function_decl|;
+comment|/**      *       * @return the interval at which warning about blocked producers will be      *         triggered.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Blocked Producer Warning Interval"
+argument_list|)
+specifier|public
+name|long
+name|getBlockedProducerWarningInterval
+parameter_list|()
+function_decl|;
 comment|/**      * @return the maxProducersToAudit      */
 annotation|@
 name|MBeanInfo

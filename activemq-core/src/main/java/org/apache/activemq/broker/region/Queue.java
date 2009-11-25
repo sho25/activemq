@@ -1561,7 +1561,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/*      * Holder for subscription and pagedInMessages as a browser      * needs access to existing messages in the queue that have      * already been dispatched      */
+comment|/*      * Holder for subscription and pagedInMessages as a browser needs access to      * existing messages in the queue that have already been dispatched      */
 class|class
 name|BrowserDispatch
 block|{
@@ -2427,7 +2427,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Usage Manager memory limit reached on "
+literal|"Usage Manager Memory Limit reached on "
 operator|+
 name|getActiveMQDestination
 argument_list|()
@@ -2457,7 +2457,7 @@ name|jms
 operator|.
 name|ResourceAllocationException
 argument_list|(
-literal|"Usage Manager memory limit reached. Stopping producer ("
+literal|"Usage Manager Memory Limit reached. Stopping producer ("
 operator|+
 name|message
 operator|.
@@ -2721,39 +2721,40 @@ block|}
 block|}
 else|else
 block|{
-comment|// Producer flow control cannot be used, so we have do the flow
-comment|// control at the broker
-comment|// by blocking this thread until there is space available.
-while|while
-condition|(
-operator|!
-name|memoryUsage
-operator|.
-name|waitForSpace
-argument_list|(
-literal|1000
-argument_list|)
-condition|)
-block|{
 if|if
 condition|(
-name|context
+name|memoryUsage
 operator|.
-name|getStopping
-argument_list|()
-operator|.
-name|get
+name|isFull
 argument_list|()
 condition|)
 block|{
-throw|throw
-operator|new
-name|IOException
+name|waitForSpace
 argument_list|(
-literal|"Connection closed, send aborted."
+name|context
+argument_list|,
+name|memoryUsage
+argument_list|,
+literal|"Usage Manager Memory Limit is full. Producer ("
+operator|+
+name|message
+operator|.
+name|getProducerId
+argument_list|()
+operator|+
+literal|") stopped to prevent flooding "
+operator|+
+name|getActiveMQDestination
+argument_list|()
+operator|.
+name|getQualifiedName
+argument_list|()
+operator|+
+literal|"."
+operator|+
+literal|" See http://activemq.apache.org/producer-flow-control.html for more info"
 argument_list|)
-throw|;
-block|}
+expr_stmt|;
 block|}
 comment|// The usage manager could have delayed us by the time
 comment|// we unblock the message could have expired..
@@ -2894,18 +2895,17 @@ name|isFull
 argument_list|()
 condition|)
 block|{
-specifier|final
 name|String
 name|logMessage
 init|=
-literal|"Usage Manager Store is Full. Stopping producer ("
+literal|"Usage Manager Store is Full. Producer ("
 operator|+
 name|message
 operator|.
 name|getProducerId
 argument_list|()
 operator|+
-literal|") to prevent flooding "
+literal|") stopped to prevent flooding "
 operator|+
 name|getActiveMQDestination
 argument_list|()
@@ -2917,13 +2917,6 @@ literal|"."
 operator|+
 literal|" See http://activemq.apache.org/producer-flow-control.html for more info"
 decl_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-name|logMessage
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|systemUsage
@@ -2944,49 +2937,16 @@ name|logMessage
 argument_list|)
 throw|;
 block|}
-block|}
-while|while
-condition|(
-operator|!
+name|waitForSpace
+argument_list|(
+name|context
+argument_list|,
 name|systemUsage
 operator|.
 name|getStoreUsage
 argument_list|()
-operator|.
-name|waitForSpace
-argument_list|(
-literal|1000
-argument_list|)
-condition|)
-block|{
-if|if
-condition|(
-name|context
-operator|.
-name|getStopping
-argument_list|()
-operator|.
-name|get
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-literal|"Connection closed, send aborted."
-argument_list|)
-throw|;
-block|}
-name|LOG
-operator|.
-name|debug
-argument_list|(
-name|this
-operator|+
-literal|", waiting for store space... msg: "
-operator|+
-name|message
+argument_list|,
+name|logMessage
 argument_list|)
 expr_stmt|;
 block|}
@@ -5160,7 +5120,7 @@ return|return
 name|movedCounter
 return|;
 block|}
-comment|/**      * Move a message      * @param context connection context      * @param m message      * @param dest ActiveMQDestination      * @throws Exception      */
+comment|/**      * Move a message      *       * @param context connection context      * @param m message      * @param dest ActiveMQDestination      * @throws Exception      */
 specifier|public
 name|boolean
 name|moveMessageTo
@@ -6575,13 +6535,6 @@ literal|"."
 operator|+
 literal|" See http://activemq.apache.org/producer-flow-control.html for more info"
 decl_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-name|logMessage
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|systemUsage
@@ -6602,7 +6555,10 @@ name|logMessage
 argument_list|)
 throw|;
 block|}
-block|}
+name|waitForSpace
+argument_list|(
+name|context
+argument_list|,
 name|messages
 operator|.
 name|getSystemUsage
@@ -6610,10 +6566,11 @@ argument_list|()
 operator|.
 name|getTempUsage
 argument_list|()
-operator|.
-name|waitForSpace
-argument_list|()
+argument_list|,
+name|logMessage
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 synchronized|synchronized
 init|(
@@ -7731,7 +7688,7 @@ return|return
 name|total
 return|;
 block|}
-comment|/*       * In slave mode, dispatch is ignored till we get this notification as the dispatch      * process is non deterministic between master and slave.      * On a notification, the actual dispatch to the subscription (as chosen by the master)       * is completed.       * (non-Javadoc)      * @see org.apache.activemq.broker.region.BaseDestination#processDispatchNotification(org.apache.activemq.command.MessageDispatchNotification)      */
+comment|/*      * In slave mode, dispatch is ignored till we get this notification as the      * dispatch process is non deterministic between master and slave. On a      * notification, the actual dispatch to the subscription (as chosen by the      * master) is completed. (non-Javadoc)      *       * @see      * org.apache.activemq.broker.region.BaseDestination#processDispatchNotification      * (org.apache.activemq.command.MessageDispatchNotification)      */
 specifier|public
 name|void
 name|processDispatchNotification
@@ -8045,7 +8002,7 @@ return|return
 name|message
 return|;
 block|}
-comment|/**      * Find a consumer that matches the id in the message dispatch notification      * @param messageDispatchNotification      * @return sub or null if the subscription has been removed before dispatch      * @throws JMSException      */
+comment|/**      * Find a consumer that matches the id in the message dispatch notification      *       * @param messageDispatchNotification      * @return sub or null if the subscription has been removed before dispatch      * @throws JMSException      */
 specifier|private
 name|Subscription
 name|getMatchingSubscription
@@ -8129,6 +8086,116 @@ block|{
 name|asyncWakeup
 argument_list|()
 expr_stmt|;
+block|}
+block|}
+specifier|private
+specifier|final
+name|void
+name|waitForSpace
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|Usage
+argument_list|<
+name|?
+argument_list|>
+name|usage
+parameter_list|,
+name|String
+name|warning
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|InterruptedException
+block|{
+name|long
+name|start
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
+name|long
+name|nextWarn
+init|=
+name|start
+operator|+
+name|blockedProducerWarningInterval
+decl_stmt|;
+while|while
+condition|(
+operator|!
+name|usage
+operator|.
+name|waitForSpace
+argument_list|(
+literal|1000
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|context
+operator|.
+name|getStopping
+argument_list|()
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Connection closed, send aborted."
+argument_list|)
+throw|;
+block|}
+name|long
+name|now
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|now
+operator|>=
+name|nextWarn
+condition|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+name|warning
+operator|+
+literal|" (blocking for: "
+operator|+
+operator|(
+name|now
+operator|-
+name|start
+operator|)
+operator|/
+literal|1000
+operator|+
+literal|"s)"
+argument_list|)
+expr_stmt|;
+name|nextWarn
+operator|=
+name|now
+operator|+
+name|blockedProducerWarningInterval
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}

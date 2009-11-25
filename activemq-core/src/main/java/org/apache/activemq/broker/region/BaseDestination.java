@@ -267,7 +267,7 @@ name|BaseDestination
 implements|implements
 name|Destination
 block|{
-comment|/**      * The maximum number of messages to page in to the destination from persistent storage      */
+comment|/**      * The maximum number of messages to page in to the destination from      * persistent storage      */
 specifier|public
 specifier|static
 specifier|final
@@ -330,6 +330,12 @@ name|boolean
 name|warnOnProducerFlowControl
 init|=
 literal|true
+decl_stmt|;
+specifier|protected
+name|long
+name|blockedProducerWarningInterval
+init|=
+name|DEFAULT_BLOCKED_PRODUCER_WARNING_INTERVAL
 decl_stmt|;
 specifier|private
 name|int
@@ -604,7 +610,7 @@ return|return
 name|producerFlowControl
 return|;
 block|}
-comment|/**      * @param producerFlowControl      *            the producerFlowControl to set      */
+comment|/**      * @param producerFlowControl the producerFlowControl to set      */
 specifier|public
 name|void
 name|setProducerFlowControl
@@ -620,6 +626,32 @@ operator|=
 name|producerFlowControl
 expr_stmt|;
 block|}
+comment|/**      * Set's the interval at which warnings about producers being blocked by      * resource usage will be triggered. Values of 0 or less will disable      * warnings      *       * @param blockedProducerWarningInterval the interval at which warning about      *            blocked producers will be triggered.      */
+specifier|public
+name|void
+name|setBlockedProducerWarningInterval
+parameter_list|(
+name|long
+name|blockedProducerWarningInterval
+parameter_list|)
+block|{
+name|this
+operator|.
+name|blockedProducerWarningInterval
+operator|=
+name|blockedProducerWarningInterval
+expr_stmt|;
+block|}
+comment|/**      *       * @return the interval at which warning about blocked producers will be      *         triggered.      */
+specifier|public
+name|long
+name|getBlockedProducerWarningInterval
+parameter_list|()
+block|{
+return|return
+name|blockedProducerWarningInterval
+return|;
+block|}
 comment|/**      * @return the maxProducersToAudit      */
 specifier|public
 name|int
@@ -630,7 +662,7 @@ return|return
 name|maxProducersToAudit
 return|;
 block|}
-comment|/**      * @param maxProducersToAudit      *            the maxProducersToAudit to set      */
+comment|/**      * @param maxProducersToAudit the maxProducersToAudit to set      */
 specifier|public
 name|void
 name|setMaxProducersToAudit
@@ -656,7 +688,7 @@ return|return
 name|maxAuditDepth
 return|;
 block|}
-comment|/**      * @param maxAuditDepth      *            the maxAuditDepth to set      */
+comment|/**      * @param maxAuditDepth the maxAuditDepth to set      */
 specifier|public
 name|void
 name|setMaxAuditDepth
@@ -682,7 +714,7 @@ return|return
 name|enableAudit
 return|;
 block|}
-comment|/**      * @param enableAudit      *            the enableAudit to set      */
+comment|/**      * @param enableAudit the enableAudit to set      */
 specifier|public
 name|void
 name|setEnableAudit
@@ -1016,7 +1048,7 @@ return|return
 name|advisoryForSlowConsumers
 return|;
 block|}
-comment|/**      * @param advisoryForSlowConsumers      *            the advisoryForSlowConsumers to set      */
+comment|/**      * @param advisoryForSlowConsumers the advisoryForSlowConsumers to set      */
 specifier|public
 name|void
 name|setAdvisoryForSlowConsumers
@@ -1042,7 +1074,7 @@ return|return
 name|advisoryForDiscardingMessages
 return|;
 block|}
-comment|/**      * @param advisoryForDiscardingMessages      *            the advisoryForDiscardingMessages to set      */
+comment|/**      * @param advisoryForDiscardingMessages the advisoryForDiscardingMessages to      *            set      */
 specifier|public
 name|void
 name|setAdvisoryForDiscardingMessages
@@ -1068,7 +1100,7 @@ return|return
 name|advisoryWhenFull
 return|;
 block|}
-comment|/**      * @param advisoryWhenFull      *            the advisoryWhenFull to set      */
+comment|/**      * @param advisoryWhenFull the advisoryWhenFull to set      */
 specifier|public
 name|void
 name|setAdvisoryWhenFull
@@ -1094,7 +1126,7 @@ return|return
 name|advisoryForDelivery
 return|;
 block|}
-comment|/**      * @param advisoryForDelivery      *            the advisoryForDelivery to set      */
+comment|/**      * @param advisoryForDelivery the advisoryForDelivery to set      */
 specifier|public
 name|void
 name|setAdvisoryForDelivery
@@ -1120,7 +1152,7 @@ return|return
 name|advisoryForConsumed
 return|;
 block|}
-comment|/**      * @param advisoryForConsumed      *            the advisoryForConsumed to set      */
+comment|/**      * @param advisoryForConsumed the advisoryForConsumed to set      */
 specifier|public
 name|void
 name|setAdvisoryForConsumed
@@ -1146,7 +1178,7 @@ return|return
 name|advisdoryForFastProducers
 return|;
 block|}
-comment|/**      * @param advisdoryForFastProducers      *            the advisdoryForFastProducers to set      */
+comment|/**      * @param advisdoryForFastProducers the advisdoryForFastProducers to set      */
 specifier|public
 name|void
 name|setAdvisdoryForFastProducers
@@ -1294,7 +1326,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Called when a message is discarded - e.g. running low on memory This will happen only if the policy is enabled -      * e.g. non durable topics      *       * @param context      * @param messageReference      */
+comment|/**      * Called when a message is discarded - e.g. running low on memory This will      * happen only if the policy is enabled - e.g. non durable topics      *       * @param context      * @param messageReference      */
 specifier|public
 name|void
 name|messageDiscarded

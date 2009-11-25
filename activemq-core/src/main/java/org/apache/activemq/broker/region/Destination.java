@@ -276,6 +276,14 @@ operator|new
 name|SharedDeadLetterStrategy
 argument_list|()
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|long
+name|DEFAULT_BLOCKED_PRODUCER_WARNING_INTERVAL
+init|=
+literal|30000
+decl_stmt|;
 name|void
 name|addSubscription
 parameter_list|(
@@ -412,6 +420,21 @@ name|boolean
 name|value
 parameter_list|)
 function_decl|;
+comment|/**      * Set's the interval at which warnings about producers being blocked by      * resource usage will be triggered. Values of 0 or less will disable      * warnings      *       * @param blockedProducerWarningInterval the interval at which warning about      *            blocked producers will be triggered.      */
+specifier|public
+name|void
+name|setBlockedProducerWarningInterval
+parameter_list|(
+name|long
+name|blockedProducerWarningInterval
+parameter_list|)
+function_decl|;
+comment|/**      *       * @return the interval at which warning about blocked producers will be      *         triggered.      */
+specifier|public
+name|long
+name|getBlockedProducerWarningInterval
+parameter_list|()
+function_decl|;
 name|int
 name|getMaxProducersToAudit
 parameter_list|()
@@ -513,7 +536,7 @@ name|int
 name|cursorMemoryHighWaterMark
 parameter_list|)
 function_decl|;
-comment|/**      * optionally called by a Subscriber - to inform the Destination its      * ready for more messages      */
+comment|/**      * optionally called by a Subscriber - to inform the Destination its ready      * for more messages      */
 specifier|public
 name|void
 name|wakeup
@@ -525,7 +548,7 @@ name|boolean
 name|isLazyDispatch
 parameter_list|()
 function_decl|;
-comment|/**      * set the lazy dispatch - default is false      * @param value      */
+comment|/**      * set the lazy dispatch - default is false      *       * @param value      */
 specifier|public
 name|void
 name|setLazyDispatch
@@ -534,7 +557,7 @@ name|boolean
 name|value
 parameter_list|)
 function_decl|;
-comment|/**      * Inform the Destination a message has expired      * @param context      * @param subs       * @param node      */
+comment|/**      * Inform the Destination a message has expired      *       * @param context      * @param subs      * @param node      */
 name|void
 name|messageExpired
 parameter_list|(
@@ -548,7 +571,7 @@ name|MessageReference
 name|node
 parameter_list|)
 function_decl|;
-comment|/**      * called when message is consumed      * @param context      * @param messageReference      */
+comment|/**      * called when message is consumed      *       * @param context      * @param messageReference      */
 name|void
 name|messageConsumed
 parameter_list|(
@@ -559,7 +582,7 @@ name|MessageReference
 name|messageReference
 parameter_list|)
 function_decl|;
-comment|/**      * Called when message is delivered to the broker      * @param context      * @param messageReference      */
+comment|/**      * Called when message is delivered to the broker      *       * @param context      * @param messageReference      */
 name|void
 name|messageDelivered
 parameter_list|(
@@ -570,7 +593,7 @@ name|MessageReference
 name|messageReference
 parameter_list|)
 function_decl|;
-comment|/**      * Called when a message is discarded - e.g. running low on memory      * This will happen only if the policy is enabled - e.g. non durable topics      * @param context      * @param messageReference      */
+comment|/**      * Called when a message is discarded - e.g. running low on memory This will      * happen only if the policy is enabled - e.g. non durable topics      *       * @param context      * @param messageReference      */
 name|void
 name|messageDiscarded
 parameter_list|(
@@ -581,7 +604,7 @@ name|MessageReference
 name|messageReference
 parameter_list|)
 function_decl|;
-comment|/**      * Called when there is a slow consumer      * @param context      * @param subs      */
+comment|/**      * Called when there is a slow consumer      *       * @param context      * @param subs      */
 name|void
 name|slowConsumer
 parameter_list|(
@@ -592,7 +615,7 @@ name|Subscription
 name|subs
 parameter_list|)
 function_decl|;
-comment|/**      * Called to notify a producer is too fast      * @param context      * @param producerInfo      */
+comment|/**      * Called to notify a producer is too fast      *       * @param context      * @param producerInfo      */
 name|void
 name|fastProducer
 parameter_list|(
@@ -603,7 +626,7 @@ name|ProducerInfo
 name|producerInfo
 parameter_list|)
 function_decl|;
-comment|/**      * Called when a Usage reaches a limit      * @param context      * @param usage      */
+comment|/**      * Called when a Usage reaches a limit      *       * @param context      * @param usage      */
 name|void
 name|isFull
 parameter_list|(
@@ -621,7 +644,7 @@ argument_list|>
 name|getConsumers
 parameter_list|()
 function_decl|;
-comment|/**      * called on Queues in slave mode to allow dispatch to follow subscription choice of master      * @param messageDispatchNotification      * @throws Exception      */
+comment|/**      * called on Queues in slave mode to allow dispatch to follow subscription      * choice of master      *       * @param messageDispatchNotification      * @throws Exception      */
 name|void
 name|processDispatchNotification
 parameter_list|(

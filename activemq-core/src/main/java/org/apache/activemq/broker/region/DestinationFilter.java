@@ -498,7 +498,7 @@ name|getConsumers
 argument_list|()
 return|;
 block|}
-comment|/**      * Sends a message to the given destination which may be a wildcard      * @param context broker context      * @param message message to send      * @param destination possibly wildcard destination to send the message to      * @throws Exception on error      */
+comment|/**      * Sends a message to the given destination which may be a wildcard      *       * @param context broker context      * @param message message to send      * @param destination possibly wildcard destination to send the message to      * @throws Exception on error      */
 specifier|protected
 name|void
 name|send
@@ -600,6 +600,34 @@ argument_list|(
 name|value
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setBlockedProducerWarningInterval
+parameter_list|(
+name|long
+name|blockedProducerWarningInterval
+parameter_list|)
+block|{
+name|next
+operator|.
+name|setBlockedProducerWarningInterval
+argument_list|(
+name|blockedProducerWarningInterval
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|long
+name|getBlockedProducerWarningInterval
+parameter_list|()
+block|{
+return|return
+name|next
+operator|.
+name|getBlockedProducerWarningInterval
+argument_list|()
+return|;
 block|}
 specifier|public
 name|void

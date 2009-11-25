@@ -388,6 +388,14 @@ init|=
 literal|true
 decl_stmt|;
 specifier|private
+name|long
+name|blockedProducerWarningInterval
+init|=
+name|Destination
+operator|.
+name|DEFAULT_BLOCKED_PRODUCER_WARNING_INTERVAL
+decl_stmt|;
+specifier|private
 name|boolean
 name|optimizedDispatch
 init|=
@@ -764,6 +772,14 @@ operator|.
 name|setProducerFlowControl
 argument_list|(
 name|isProducerFlowControl
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|destination
+operator|.
+name|setBlockedProducerWarningInterval
+argument_list|(
+name|getBlockedProducerWarningInterval
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1672,6 +1688,32 @@ name|producerFlowControl
 operator|=
 name|producerFlowControl
 expr_stmt|;
+block|}
+comment|/**      * Set's the interval at which warnings about producers being blocked by      * resource usage will be triggered. Values of 0 or less will disable      * warnings      *       * @param blockedProducerWarningInterval the interval at which warning about      *            blocked producers will be triggered.      */
+specifier|public
+name|void
+name|setBlockedProducerWarningInterval
+parameter_list|(
+name|long
+name|blockedProducerWarningInterval
+parameter_list|)
+block|{
+name|this
+operator|.
+name|blockedProducerWarningInterval
+operator|=
+name|blockedProducerWarningInterval
+expr_stmt|;
+block|}
+comment|/**      *       * @return the interval at which warning about blocked producers will be      *         triggered.      */
+specifier|public
+name|long
+name|getBlockedProducerWarningInterval
+parameter_list|()
+block|{
+return|return
+name|blockedProducerWarningInterval
+return|;
 block|}
 comment|/**      * @return the maxProducersToAudit      */
 specifier|public
