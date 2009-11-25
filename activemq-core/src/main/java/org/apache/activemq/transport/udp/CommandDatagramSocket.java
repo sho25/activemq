@@ -279,6 +279,11 @@ operator|new
 name|Object
 argument_list|()
 decl_stmt|;
+specifier|private
+specifier|volatile
+name|int
+name|receiveCounter
+decl_stmt|;
 specifier|public
 name|CommandDatagramSocket
 parameter_list|(
@@ -377,6 +382,9 @@ argument_list|)
 expr_stmt|;
 comment|// TODO could use a DataInput implementation that talks direct
 comment|// to the byte[] to avoid object allocation
+name|receiveCounter
+operator|++
+expr_stmt|;
 name|DataInputStream
 name|dataIn
 init|=
@@ -389,6 +397,13 @@ argument_list|(
 name|datagram
 operator|.
 name|getData
+argument_list|()
+argument_list|,
+literal|0
+argument_list|,
+name|datagram
+operator|.
+name|getLength
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1130,6 +1145,15 @@ name|ByteArrayOutputStream
 argument_list|(
 name|datagramSize
 argument_list|)
+return|;
+block|}
+specifier|public
+name|int
+name|getReceiveCounter
+parameter_list|()
+block|{
+return|return
+name|receiveCounter
 return|;
 block|}
 block|}

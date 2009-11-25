@@ -281,6 +281,11 @@ specifier|private
 name|String
 name|clientID
 decl_stmt|;
+specifier|private
+specifier|volatile
+name|int
+name|receiveCounter
+decl_stmt|;
 comment|// private String sessionID;
 specifier|public
 name|HttpTransport
@@ -586,6 +591,9 @@ else|else
 block|{
 comment|// checkSession(connection);
 comment|// Create a String for the UTF content
+name|receiveCounter
+operator|++
+expr_stmt|;
 name|InputStream
 name|is
 init|=
@@ -1097,6 +1105,15 @@ name|disconnect
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+specifier|public
+name|int
+name|getReceiveCounter
+parameter_list|()
+block|{
+return|return
+name|receiveCounter
+return|;
 block|}
 block|}
 end_class

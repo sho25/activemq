@@ -299,6 +299,11 @@ literal|64
 operator|*
 literal|1024
 decl_stmt|;
+specifier|private
+specifier|volatile
+name|int
+name|receiveCounter
+decl_stmt|;
 specifier|public
 name|CommandDatagramChannel
 parameter_list|(
@@ -449,6 +454,9 @@ condition|)
 block|{
 continue|continue;
 block|}
+name|receiveCounter
+operator|++
+expr_stmt|;
 name|from
 operator|=
 name|headerMarshaller
@@ -1180,6 +1188,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+specifier|public
+name|int
+name|getReceiveCounter
+parameter_list|()
+block|{
+return|return
+name|receiveCounter
+return|;
 block|}
 block|}
 end_class

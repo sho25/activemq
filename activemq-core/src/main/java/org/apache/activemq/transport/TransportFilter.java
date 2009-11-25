@@ -449,6 +449,18 @@ name|uri
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|int
+name|getReceiveCounter
+parameter_list|()
+block|{
+return|return
+name|next
+operator|.
+name|getReceiveCounter
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

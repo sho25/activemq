@@ -170,6 +170,11 @@ name|ReplayBuffer
 name|replayBuffer
 parameter_list|)
 function_decl|;
+specifier|public
+name|int
+name|getReceiveCounter
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

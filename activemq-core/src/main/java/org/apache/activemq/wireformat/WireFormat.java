@@ -124,11 +124,6 @@ name|int
 name|getVersion
 parameter_list|()
 function_decl|;
-comment|/**      * @return true if message is being received      */
-name|boolean
-name|inReceive
-parameter_list|()
-function_decl|;
 block|}
 end_interface
 

@@ -377,6 +377,11 @@ specifier|private
 name|GetMethod
 name|httpMethod
 decl_stmt|;
+specifier|private
+specifier|volatile
+name|int
+name|receiveCounter
+decl_stmt|;
 specifier|public
 name|HttpClientTransport
 parameter_list|(
@@ -777,6 +782,9 @@ block|}
 block|}
 else|else
 block|{
+name|receiveCounter
+operator|++
+expr_stmt|;
 name|DataInputStream
 name|stream
 init|=
@@ -1135,6 +1143,15 @@ name|trace
 operator|=
 name|trace
 expr_stmt|;
+block|}
+specifier|public
+name|int
+name|getReceiveCounter
+parameter_list|()
+block|{
+return|return
+name|receiveCounter
+return|;
 block|}
 block|}
 end_class

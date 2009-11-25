@@ -133,7 +133,7 @@ name|size
 index|]
 expr_stmt|;
 block|}
-specifier|private
+specifier|protected
 name|void
 name|fill
 parameter_list|()

@@ -361,6 +361,11 @@ operator|new
 name|AtomicBoolean
 argument_list|()
 decl_stmt|;
+specifier|private
+specifier|volatile
+name|int
+name|receiveCounter
+decl_stmt|;
 specifier|public
 name|VMTransport
 parameter_list|(
@@ -596,6 +601,11 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|peer
+operator|.
+name|receiveCounter
+operator|++
+expr_stmt|;
 name|transportListener
 operator|.
 name|onCommand
@@ -668,6 +678,9 @@ name|get
 argument_list|()
 condition|)
 block|{
+name|receiveCounter
+operator|++
+expr_stmt|;
 name|transportListener
 operator|.
 name|onCommand
@@ -1416,6 +1429,15 @@ argument_list|(
 literal|"Not supported"
 argument_list|)
 throw|;
+block|}
+specifier|public
+name|int
+name|getReceiveCounter
+parameter_list|()
+block|{
+return|return
+name|receiveCounter
+return|;
 block|}
 block|}
 end_class

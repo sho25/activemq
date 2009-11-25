@@ -247,6 +247,15 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{     }
+specifier|public
+name|int
+name|getReceiveCounter
+parameter_list|()
+block|{
+return|return
+literal|0
+return|;
+block|}
 block|}
 end_class
 

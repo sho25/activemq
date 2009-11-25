@@ -86,6 +86,11 @@ name|Object
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|private
+specifier|volatile
+name|int
+name|receiveCounter
+decl_stmt|;
 specifier|protected
 name|void
 name|doStop
@@ -113,6 +118,9 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|receiveCounter
+operator|++
+expr_stmt|;
 name|queue
 operator|.
 name|add
@@ -140,6 +148,15 @@ parameter_list|()
 block|{
 return|return
 literal|null
+return|;
+block|}
+specifier|public
+name|int
+name|getReceiveCounter
+parameter_list|()
+block|{
+return|return
+name|receiveCounter
 return|;
 block|}
 block|}
