@@ -198,7 +198,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|3000
+literal|100
 argument_list|)
 expr_stmt|;
 block|}
@@ -247,7 +247,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"ConsumerThread1 closing down"
+literal|"ConsumerThread closing down"
 argument_list|)
 expr_stmt|;
 block|}
@@ -328,12 +328,6 @@ argument_list|(
 name|sessionTransacted
 argument_list|)
 expr_stmt|;
-comment|//container.setCacheLevel(DefaultMessageListenerContainer.CACHE_CONSUMER);
-comment|//container.setMaxConcurrentConsumers(concurrentConsumers);
-comment|//container.setAcceptMessagesWhileStopping(false);
-comment|//container.setAutoStartup(false);
-comment|//without setting a tx manager, this will use local JMS tx.
-comment|/* 		if (durable) { 			container.setSubscriptionDurable(true); 			container.setDurableSubscriptionName("ConsumerThread1" + Thread.currentThread().getId()); 		} 		*/
 name|container
 operator|.
 name|afterPropertiesSet
