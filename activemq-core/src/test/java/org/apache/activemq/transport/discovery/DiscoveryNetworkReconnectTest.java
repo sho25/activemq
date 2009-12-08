@@ -658,6 +658,14 @@ argument_list|(
 name|managementContext
 argument_list|)
 operator|.
+name|isCreateConnector
+argument_list|()
+expr_stmt|;
+name|allowing
+argument_list|(
+name|managementContext
+argument_list|)
+operator|.
 name|stop
 argument_list|()
 expr_stmt|;
