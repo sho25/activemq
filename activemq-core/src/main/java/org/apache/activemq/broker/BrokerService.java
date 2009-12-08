@@ -2514,6 +2514,12 @@ condition|)
 block|{
 if|if
 condition|(
+name|getManagementContext
+argument_list|()
+operator|.
+name|isCreateConnector
+argument_list|()
+operator|&&
 operator|!
 name|getManagementContext
 argument_list|()
