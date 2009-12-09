@@ -2441,7 +2441,14 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Usage Manager Memory Limit reached on "
+literal|"Usage Manager Memory Limit ("
+operator|+
+name|memoryUsage
+operator|.
+name|getLimit
+argument_list|()
+operator|+
+literal|") reached on "
 operator|+
 name|getActiveMQDestination
 argument_list|()
