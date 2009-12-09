@@ -236,7 +236,7 @@ argument_list|()
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"unexpected exception:"
+literal|"unexpected exception: "
 operator|+
 name|e
 argument_list|)
@@ -316,7 +316,7 @@ name|gotConnection
 operator|.
 name|await
 argument_list|(
-literal|200
+literal|400
 argument_list|,
 name|TimeUnit
 operator|.

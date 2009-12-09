@@ -3753,11 +3753,6 @@ operator|.
 name|getMessage
 argument_list|()
 decl_stmt|;
-name|stampAsExpired
-argument_list|(
-name|message
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|message
@@ -3807,6 +3802,11 @@ name|message
 operator|.
 name|copy
 argument_list|()
+expr_stmt|;
+name|stampAsExpired
+argument_list|(
+name|message
+argument_list|)
 expr_stmt|;
 name|message
 operator|.

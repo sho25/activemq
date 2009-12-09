@@ -16,6 +16,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -42,16 +66,6 @@ operator|.
 name|jms
 operator|.
 name|ConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|MessageConsumer
 import|;
 end_import
 
@@ -128,16 +142,6 @@ operator|.
 name|remote
 operator|.
 name|JMXServiceURL
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -235,12 +239,20 @@ name|LogFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
 name|NetworkBrokerDetachTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 specifier|final
@@ -377,6 +389,8 @@ return|return
 name|broker
 return|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testNetworkedBrokerDetach
@@ -923,6 +937,14 @@ name|ignored
 argument_list|)
 expr_stmt|;
 block|}
+comment|// If port 1099 is in use when the Broker starts, starting the jmx
+comment|// connector will fail.  So, if we have no mbsc to query, skip the
+comment|// test.
+name|assumeNotNull
+argument_list|(
+name|mbsc
+argument_list|)
+expr_stmt|;
 return|return
 name|mbsc
 return|;

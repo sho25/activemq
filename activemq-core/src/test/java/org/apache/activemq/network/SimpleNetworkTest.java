@@ -483,7 +483,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|2000
+literal|5000
 argument_list|)
 expr_stmt|;
 for|for
@@ -693,7 +693,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|1000
+literal|2000
 argument_list|)
 expr_stmt|;
 for|for
@@ -736,7 +736,7 @@ name|consumer1
 operator|.
 name|receive
 argument_list|(
-literal|500
+literal|1000
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -746,7 +746,7 @@ name|consumer2
 operator|.
 name|receive
 argument_list|(
-literal|500
+literal|1000
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -758,7 +758,7 @@ name|consumer1
 operator|.
 name|receive
 argument_list|(
-literal|500
+literal|1000
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -768,7 +768,7 @@ name|consumer2
 operator|.
 name|receive
 argument_list|(
-literal|500
+literal|1000
 argument_list|)
 argument_list|)
 expr_stmt|;

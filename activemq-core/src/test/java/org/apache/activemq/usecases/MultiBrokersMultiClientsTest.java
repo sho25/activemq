@@ -391,7 +391,7 @@ operator|)
 operator|+
 name|CONSUMER_COUNT
 argument_list|,
-literal|30000
+literal|65000
 argument_list|)
 expr_stmt|;
 block|}
@@ -725,7 +725,7 @@ operator|)
 operator|+
 name|CONSUMER_COUNT
 argument_list|,
-literal|30000
+literal|65000
 argument_list|)
 expr_stmt|;
 block|}

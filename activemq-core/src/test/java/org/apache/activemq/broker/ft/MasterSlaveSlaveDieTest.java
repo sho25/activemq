@@ -252,11 +252,14 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+comment|// The wireformat negotiation timeout (defaults to same as
+comment|// MaxInactivityDurationInitalDelay) needs to be a bit longer
+comment|// on slow running machines - set it to 90 seconds.
 name|master
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://localhost:0"
+literal|"tcp://localhost:0?wireFormat.maxInactivityDurationInitalDelay=90000"
 argument_list|)
 expr_stmt|;
 name|master
@@ -376,6 +379,15 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Exception starting master: "
+operator|+
+name|e
+argument_list|)
+expr_stmt|;
 name|e
 operator|.
 name|printStackTrace
