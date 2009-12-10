@@ -121,7 +121,7 @@ name|PersistenceAdapterTestSupport
 extends|extends
 name|TestCase
 block|{
-specifier|private
+specifier|protected
 name|PersistenceAdapter
 name|pa
 decl_stmt|;

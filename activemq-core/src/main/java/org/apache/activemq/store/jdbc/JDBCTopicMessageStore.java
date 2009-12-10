@@ -81,6 +81,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|ActiveMQMessageAudit
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|broker
 operator|.
 name|ConnectionContext
@@ -258,6 +270,9 @@ name|wireFormat
 parameter_list|,
 name|ActiveMQTopic
 name|topic
+parameter_list|,
+name|ActiveMQMessageAudit
+name|audit
 parameter_list|)
 block|{
 name|super
@@ -269,6 +284,8 @@ argument_list|,
 name|wireFormat
 argument_list|,
 name|topic
+argument_list|,
+name|audit
 argument_list|)
 expr_stmt|;
 block|}
