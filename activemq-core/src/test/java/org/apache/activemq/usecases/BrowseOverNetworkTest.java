@@ -359,15 +359,6 @@ name|nextElement
 argument_list|()
 expr_stmt|;
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|browsedMessage
-argument_list|)
-expr_stmt|;
 block|}
 specifier|public
 name|void
