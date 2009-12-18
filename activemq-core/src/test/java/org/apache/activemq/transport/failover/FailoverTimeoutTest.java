@@ -113,20 +113,6 @@ name|BrokerService
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|TransportConnector
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -202,6 +188,8 @@ operator|+
 literal|")?timeout="
 operator|+
 name|timeout
+operator|+
+literal|"&useExponentialBackOff=false"
 argument_list|)
 decl_stmt|;
 name|Connection
@@ -317,6 +305,11 @@ expr_stmt|;
 name|bs
 operator|.
 name|start
+argument_list|()
+expr_stmt|;
+name|bs
+operator|.
+name|waitUntilStarted
 argument_list|()
 expr_stmt|;
 name|producer
