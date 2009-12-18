@@ -579,6 +579,34 @@ return|;
 block|}
 specifier|public
 name|String
+name|getFindAllMessageIds
+parameter_list|()
+block|{
+comment|//  this needs to be limited maybe need to use getFindLastSequenceIdInMsgsStatement
+comment|// and work back for X
+if|if
+condition|(
+name|findAllMessagesStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|findAllMessagesStatement
+operator|=
+literal|"SELECT ID, MSGID_PROD, MSGID_SEQ FROM "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" WHERE CONTAINER=? ORDER BY ID DESC"
+expr_stmt|;
+block|}
+return|return
+name|findAllMessagesStatement
+return|;
+block|}
+specifier|public
+name|String
 name|getFindLastSequenceIdInMsgsStatement
 parameter_list|()
 block|{

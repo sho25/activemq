@@ -521,6 +521,26 @@ name|SQLException
 throws|,
 name|IOException
 function_decl|;
+name|void
+name|doMessageIdScan
+parameter_list|(
+name|TransactionContext
+name|c
+parameter_list|,
+name|ActiveMQDestination
+name|destination
+parameter_list|,
+name|long
+name|limit
+parameter_list|,
+name|JDBCMessageIdScanListener
+name|listener
+parameter_list|)
+throws|throws
+name|SQLException
+throws|,
+name|IOException
+function_decl|;
 block|}
 end_interface
 

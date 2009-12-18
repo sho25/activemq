@@ -3440,6 +3440,23 @@ argument_list|(
 name|connectionId
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|cs
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Cannot remove a consumer from a connection that had not been registered: "
+operator|+
+name|connectionId
+argument_list|)
+throw|;
+block|}
 name|SessionState
 name|ss
 init|=
@@ -3660,6 +3677,23 @@ argument_list|(
 name|connectionId
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|cs
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Cannot remove session from connection that had not been registered: "
+operator|+
+name|connectionId
+argument_list|)
+throw|;
+block|}
 name|SessionState
 name|session
 init|=
@@ -4087,7 +4121,14 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Setting up new connection: "
+literal|"Setting up new connection id: "
+operator|+
+name|info
+operator|.
+name|getConnectionId
+argument_list|()
+operator|+
+literal|", address: "
 operator|+
 name|getRemoteAddress
 argument_list|()
@@ -4325,6 +4366,15 @@ parameter_list|)
 throws|throws
 name|InterruptedException
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"remove connection id: "
+operator|+
+name|id
+argument_list|)
+expr_stmt|;
 name|TransportConnectionState
 name|cs
 init|=

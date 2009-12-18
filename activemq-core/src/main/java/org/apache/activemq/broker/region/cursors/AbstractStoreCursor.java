@@ -459,17 +459,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-if|if
-condition|(
 name|LOG
 operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|debug
+name|error
 argument_list|(
 name|regionDestination
 operator|.
@@ -484,7 +476,6 @@ operator|+
 name|message
 argument_list|)
 expr_stmt|;
-block|}
 name|storeHasMessages
 operator|=
 literal|true
