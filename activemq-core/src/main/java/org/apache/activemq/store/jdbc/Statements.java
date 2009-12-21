@@ -208,6 +208,10 @@ specifier|private
 name|boolean
 name|useLockCreateWhereClause
 decl_stmt|;
+specifier|private
+name|String
+name|findAllMessageIdsStatement
+decl_stmt|;
 specifier|public
 name|String
 index|[]
@@ -579,19 +583,19 @@ return|;
 block|}
 specifier|public
 name|String
-name|getFindAllMessageIds
+name|getFindAllMessageIdsStatement
 parameter_list|()
 block|{
 comment|//  this needs to be limited maybe need to use getFindLastSequenceIdInMsgsStatement
 comment|// and work back for X
 if|if
 condition|(
-name|findAllMessagesStatement
+name|findAllMessageIdsStatement
 operator|==
 literal|null
 condition|)
 block|{
-name|findAllMessagesStatement
+name|findAllMessageIdsStatement
 operator|=
 literal|"SELECT ID, MSGID_PROD, MSGID_SEQ FROM "
 operator|+
@@ -602,7 +606,7 @@ literal|" WHERE CONTAINER=? ORDER BY ID DESC"
 expr_stmt|;
 block|}
 return|return
-name|findAllMessagesStatement
+name|findAllMessageIdsStatement
 return|;
 block|}
 specifier|public

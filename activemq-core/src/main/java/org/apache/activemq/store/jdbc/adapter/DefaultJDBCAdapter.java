@@ -2036,7 +2036,7 @@ name|this
 operator|.
 name|statements
 operator|.
-name|getFindAllMessageIds
+name|getFindAllMessageIdsStatement
 argument_list|()
 argument_list|)
 expr_stmt|;
