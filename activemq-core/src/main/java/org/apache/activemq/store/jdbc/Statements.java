@@ -602,7 +602,7 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" WHERE CONTAINER=? ORDER BY ID DESC"
+literal|" ORDER BY ID DESC"
 expr_stmt|;
 block|}
 return|return

@@ -1997,10 +1997,7 @@ parameter_list|(
 name|TransactionContext
 name|c
 parameter_list|,
-name|ActiveMQDestination
-name|destination
-parameter_list|,
-name|long
+name|int
 name|limit
 parameter_list|,
 name|JDBCMessageIdScanListener
@@ -2042,18 +2039,11 @@ argument_list|)
 expr_stmt|;
 name|s
 operator|.
-name|setString
+name|setMaxRows
 argument_list|(
-literal|1
-argument_list|,
-name|destination
-operator|.
-name|getQualifiedName
-argument_list|()
+name|limit
 argument_list|)
 expr_stmt|;
-comment|// limit the query. just need the the last few messages that could be replayed
-comment|// on recovery. send or commit reply lost so it gets replayed.
 name|rs
 operator|=
 name|s
@@ -2069,9 +2059,6 @@ name|next
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-operator|!
 name|listener
 operator|.
 name|messageId
@@ -2094,10 +2081,7 @@ literal|3
 argument_list|)
 argument_list|)
 argument_list|)
-condition|)
-block|{
-break|break;
-block|}
+expr_stmt|;
 block|}
 block|}
 finally|finally

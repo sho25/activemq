@@ -527,10 +527,7 @@ parameter_list|(
 name|TransactionContext
 name|c
 parameter_list|,
-name|ActiveMQDestination
-name|destination
-parameter_list|,
-name|long
+name|int
 name|limit
 parameter_list|,
 name|JDBCMessageIdScanListener

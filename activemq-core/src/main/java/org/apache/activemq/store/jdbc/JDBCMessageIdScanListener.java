@@ -36,7 +36,7 @@ specifier|public
 interface|interface
 name|JDBCMessageIdScanListener
 block|{
-name|boolean
+name|void
 name|messageId
 parameter_list|(
 name|MessageId
