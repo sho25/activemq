@@ -2335,7 +2335,7 @@ expr_stmt|;
 block|}
 name|LOG
 operator|.
-name|debug
+name|warn
 argument_list|(
 name|s
 argument_list|,
