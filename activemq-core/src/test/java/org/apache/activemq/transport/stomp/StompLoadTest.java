@@ -173,7 +173,7 @@ specifier|final
 name|int
 name|testTime
 init|=
-literal|10
+literal|30
 operator|*
 literal|60
 operator|*
@@ -183,7 +183,7 @@ specifier|final
 name|String
 name|bindAddress
 init|=
-literal|"stomp://0.0.0.0:61613"
+literal|"stomp://0.0.0.0:61612"
 decl_stmt|;
 specifier|public
 name|void
