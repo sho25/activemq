@@ -341,6 +341,17 @@ annotation|@
 name|Override
 specifier|public
 name|void
+name|testAsyncPubisherRecoverAfterBlock
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// sendFail means no flowControllwindow as there is no producer ack, just an exception
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
 name|testPubisherRecoverAfterBlock
 parameter_list|()
 throws|throws

@@ -2500,8 +2500,7 @@ argument_list|)
 throw|;
 block|}
 comment|// We can avoid blocking due to low usage if the producer is sending
-comment|// a sync message or
-comment|// if it is using a producer window
+comment|// a sync message or if it is using a producer window
 if|if
 condition|(
 name|producerInfo
@@ -2705,31 +2704,28 @@ name|response
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"unexpected exception on deferred send of :"
+operator|+
+name|message
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|// If the user manager is not full, then the task will not
-comment|// get called..
-if|if
-condition|(
-operator|!
-name|memoryUsage
-operator|.
-name|notifyCallbackWhenNotFull
-argument_list|(
-name|sendMessagesWaitingForSpaceTask
-argument_list|)
-condition|)
-block|{
-comment|// so call it directly here.
-name|sendMessagesWaitingForSpaceTask
-operator|.
-name|run
+name|registerCallbackForNotFullNotification
 argument_list|()
 expr_stmt|;
-block|}
 name|context
 operator|.
 name|setDontSendReponse
@@ -2860,6 +2856,32 @@ name|dispatchAsync
 argument_list|(
 name|ack
 argument_list|)
+expr_stmt|;
+block|}
+block|}
+specifier|private
+name|void
+name|registerCallbackForNotFullNotification
+parameter_list|()
+block|{
+comment|// If the usage manager is not full, then the task will not
+comment|// get called..
+if|if
+condition|(
+operator|!
+name|memoryUsage
+operator|.
+name|notifyCallbackWhenNotFull
+argument_list|(
+name|sendMessagesWaitingForSpaceTask
+argument_list|)
+condition|)
+block|{
+comment|// so call it directly here.
+name|sendMessagesWaitingForSpaceTask
+operator|.
+name|run
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -5537,7 +5559,10 @@ name|messagesWaitingForSpace
 operator|.
 name|isEmpty
 argument_list|()
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 operator|!
 name|memoryUsage
 operator|.
@@ -5558,6 +5583,14 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
+block|}
+else|else
+block|{
+name|registerCallbackForNotFullNotification
+argument_list|()
+expr_stmt|;
+break|break;
+block|}
 block|}
 block|}
 name|BrowserDispatch
