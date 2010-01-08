@@ -2180,7 +2180,7 @@ throw|throw
 operator|new
 name|JMSException
 argument_list|(
-literal|"Unmatched acknowledege: "
+literal|"Unmatched acknowledge: "
 operator|+
 name|ack
 operator|+
@@ -2204,7 +2204,7 @@ throw|throw
 operator|new
 name|JMSException
 argument_list|(
-literal|"Unmatched acknowledege: "
+literal|"Unmatched acknowledge: "
 operator|+
 name|ack
 operator|+
@@ -2235,7 +2235,7 @@ throw|throw
 operator|new
 name|JMSException
 argument_list|(
-literal|"Unmatched acknowledege: "
+literal|"Unmatched acknowledge: "
 operator|+
 name|ack
 operator|+
@@ -3158,10 +3158,7 @@ name|trace
 argument_list|(
 name|info
 operator|.
-name|getDestination
-argument_list|()
-operator|.
-name|getPhysicalName
+name|getConsumerId
 argument_list|()
 operator|+
 literal|" dispatched: "
@@ -3173,34 +3170,13 @@ argument_list|()
 operator|+
 literal|", dispatched: "
 operator|+
-name|node
-operator|.
-name|getRegionDestination
-argument_list|()
-operator|.
-name|getDestinationStatistics
-argument_list|()
-operator|.
-name|getDispatched
-argument_list|()
-operator|.
-name|getCount
-argument_list|()
+name|dispatchCounter
 operator|+
 literal|", inflight: "
 operator|+
-name|node
+name|dispatched
 operator|.
-name|getRegionDestination
-argument_list|()
-operator|.
-name|getDestinationStatistics
-argument_list|()
-operator|.
-name|getInflight
-argument_list|()
-operator|.
-name|getCount
+name|size
 argument_list|()
 argument_list|)
 expr_stmt|;

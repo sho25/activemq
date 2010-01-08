@@ -2061,7 +2061,7 @@ operator|.
 name|executeQuery
 argument_list|()
 expr_stmt|;
-comment|// jdbc scrollable cursor requires jdbc ver> 1.0 andis  often implemented locally so avoid
+comment|// jdbc scrollable cursor requires jdbc ver> 1.0 and is often implemented locally so avoid
 name|LinkedList
 argument_list|<
 name|MessageId
@@ -2104,6 +2104,33 @@ argument_list|(
 literal|3
 argument_list|)
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"messageIdScan with limit ("
+operator|+
+name|limit
+operator|+
+literal|"), resulted in: "
+operator|+
+name|reverseOrderIds
+operator|.
+name|size
+argument_list|()
+operator|+
+literal|" ids"
 argument_list|)
 expr_stmt|;
 block|}
