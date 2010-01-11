@@ -1160,16 +1160,16 @@ argument_list|(
 name|transport
 argument_list|)
 expr_stmt|;
-synchronized|synchronized
-init|(
-name|reconnectMutex
-init|)
-block|{
 name|boolean
 name|reconnectOk
 init|=
 literal|false
 decl_stmt|;
+synchronized|synchronized
+init|(
+name|reconnectMutex
+init|)
+block|{
 if|if
 condition|(
 name|started
@@ -1218,18 +1218,7 @@ name|connected
 operator|=
 literal|false
 expr_stmt|;
-if|if
-condition|(
-name|reconnectOk
-condition|)
-block|{
-name|reconnectTask
-operator|.
-name|wakeup
-argument_list|()
-expr_stmt|;
-block|}
-block|}
+comment|// notify before any reconnect attempt so ack state can be whacked
 if|if
 condition|(
 name|transportListener
@@ -1242,6 +1231,18 @@ operator|.
 name|transportInterupted
 argument_list|()
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|reconnectOk
+condition|)
+block|{
+name|reconnectTask
+operator|.
+name|wakeup
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -1877,9 +1878,14 @@ condition|(
 name|command
 operator|instanceof
 name|RemoveInfo
+operator|||
+name|command
+operator|.
+name|isMessageAck
+argument_list|()
 condition|)
 block|{
-comment|// Simulate response to RemoveInfo command
+comment|// Simulate response to RemoveInfo command or ack (as it will be stale)
 name|stateTracker
 operator|.
 name|track
@@ -1980,7 +1986,9 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Waiting for transport to reconnect."
+literal|"Waiting for transport to reconnect..: "
+operator|+
+name|command
 argument_list|)
 expr_stmt|;
 name|long

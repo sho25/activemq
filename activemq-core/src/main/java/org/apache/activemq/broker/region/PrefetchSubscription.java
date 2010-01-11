@@ -1055,7 +1055,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|trace
+name|info
 argument_list|(
 literal|"ack:"
 operator|+
@@ -1330,22 +1330,6 @@ name|index
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-else|else
-block|{
-name|prefetchExtension
-operator|=
-name|Math
-operator|.
-name|max
-argument_list|(
-literal|0
-argument_list|,
-name|prefetchExtension
-operator|-
-name|index
-argument_list|)
-expr_stmt|;
 block|}
 name|destination
 operator|=
@@ -1671,8 +1655,6 @@ condition|)
 block|{
 comment|// Message was re-delivered but it was not yet considered to be
 comment|// a DLQ message.
-comment|// Acknowledge all dispatched messages up till the message id of
-comment|// the ack.
 name|boolean
 name|inAckRange
 init|=
@@ -1800,9 +1782,6 @@ name|ack
 argument_list|)
 throw|;
 block|}
-comment|// Acknowledge all dispatched messages up till the message id of
-comment|// the
-comment|// acknowledgment.
 name|int
 name|index
 init|=
