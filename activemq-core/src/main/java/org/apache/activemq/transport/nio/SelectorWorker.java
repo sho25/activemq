@@ -509,7 +509,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-comment|// Don't accept any more slections
+comment|// Don't accept any more selections
 name|manager
 operator|.
 name|onWorkerEmptyEvent
@@ -640,6 +640,19 @@ name|readLock
 argument_list|()
 operator|.
 name|unlock
+argument_list|()
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|close
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|selector
+operator|.
+name|close
 argument_list|()
 expr_stmt|;
 block|}
