@@ -813,7 +813,11 @@ argument_list|(
 operator|new
 name|InactivityIOException
 argument_list|(
-literal|"Channel was inactive for too long: "
+literal|"Channel was inactive for too (>"
+operator|+
+name|readCheckTime
+operator|+
+literal|") long: "
 operator|+
 name|next
 operator|.

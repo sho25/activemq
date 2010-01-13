@@ -855,6 +855,15 @@ argument_list|()
 decl_stmt|;
 name|info
 operator|.
+name|setVersion
+argument_list|(
+name|OpenWireFormat
+operator|.
+name|DEFAULT_VERSION
+argument_list|)
+expr_stmt|;
+name|info
+operator|.
 name|setMaxInactivityDuration
 argument_list|(
 literal|1000
@@ -893,7 +902,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|3000
+literal|6000
 argument_list|)
 expr_stmt|;
 name|assertEquals
