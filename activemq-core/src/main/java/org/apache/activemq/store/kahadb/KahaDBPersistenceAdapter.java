@@ -968,7 +968,6 @@ name|brokerService
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @return the archiveDataLogs      */
 specifier|public
 name|boolean
 name|isArchiveDataLogs
@@ -981,7 +980,6 @@ name|isArchiveDataLogs
 argument_list|()
 return|;
 block|}
-comment|/**      * @param archiveDataLogs the archiveDataLogs to set      */
 specifier|public
 name|void
 name|setArchiveDataLogs
@@ -995,6 +993,34 @@ operator|.
 name|setArchiveDataLogs
 argument_list|(
 name|archiveDataLogs
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|File
+name|getDirectoryArchive
+parameter_list|()
+block|{
+return|return
+name|letter
+operator|.
+name|getDirectoryArchive
+argument_list|()
+return|;
+block|}
+specifier|public
+name|void
+name|setDirectoryArchive
+parameter_list|(
+name|File
+name|directoryArchive
+parameter_list|)
+block|{
+name|letter
+operator|.
+name|setDirectoryArchive
+argument_list|(
+name|directoryArchive
 argument_list|)
 expr_stmt|;
 block|}
