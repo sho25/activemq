@@ -839,20 +839,6 @@ name|VariableMarshaller
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|springframework
-operator|.
-name|core
-operator|.
-name|enums
-operator|.
-name|LetterCodedLabeledEnum
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -1259,6 +1245,10 @@ name|boolean
 name|enableJournalDiskSyncs
 init|=
 literal|true
+decl_stmt|;
+specifier|protected
+name|boolean
+name|archiveDataLogs
 decl_stmt|;
 name|long
 name|checkpointInterval
@@ -1732,6 +1722,8 @@ argument_list|(
 literal|"ActiveMQ Journal Checkpoint Worker"
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -3226,6 +3218,8 @@ argument_list|(
 name|missingPredicates
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|matched
@@ -7989,6 +7983,8 @@ operator|=
 name|command
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -8050,6 +8046,8 @@ operator|=
 name|command
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -8174,6 +8172,14 @@ operator|.
 name|setWriteBatchSize
 argument_list|(
 name|getJournalMaxWriteBatchSize
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|manager
+operator|.
+name|setArchiveDataLogs
+argument_list|(
+name|isArchiveDataLogs
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -8573,6 +8579,34 @@ operator|.
 name|brokerService
 operator|=
 name|brokerService
+expr_stmt|;
+block|}
+comment|/**      * @return the archiveDataLogs      */
+specifier|public
+name|boolean
+name|isArchiveDataLogs
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|archiveDataLogs
+return|;
+block|}
+comment|/**      * @param archiveDataLogs the archiveDataLogs to set      */
+specifier|public
+name|void
+name|setArchiveDataLogs
+parameter_list|(
+name|boolean
+name|archiveDataLogs
+parameter_list|)
+block|{
+name|this
+operator|.
+name|archiveDataLogs
+operator|=
+name|archiveDataLogs
 expr_stmt|;
 block|}
 block|}
