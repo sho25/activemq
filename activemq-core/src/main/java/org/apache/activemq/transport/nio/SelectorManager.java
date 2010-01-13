@@ -310,21 +310,6 @@ argument_list|(
 name|worker
 argument_list|)
 expr_stmt|;
-try|try
-block|{
-comment|// no more connections on worker, close it
-name|worker
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{         }
 block|}
 specifier|public
 specifier|synchronized
