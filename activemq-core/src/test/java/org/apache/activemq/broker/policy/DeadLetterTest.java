@@ -261,6 +261,11 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+name|session
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
 block|}
 specifier|protected
 name|void

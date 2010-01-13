@@ -1055,7 +1055,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|info
+name|trace
 argument_list|(
 literal|"ack:"
 operator|+
@@ -1255,6 +1255,12 @@ init|(
 name|dispatchLock
 init|)
 block|{
+if|if
+condition|(
+name|isSlave
+argument_list|()
+condition|)
+block|{
 name|node
 operator|.
 name|getRegionDestination
@@ -1269,6 +1275,11 @@ operator|.
 name|decrement
 argument_list|()
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// poisionAck will decrement - otherwise still inflight on client
+block|}
 block|}
 block|}
 block|}
@@ -1896,7 +1907,7 @@ operator|.
 name|getInflight
 argument_list|()
 operator|.
-name|increment
+name|decrement
 argument_list|()
 expr_stmt|;
 name|removeList

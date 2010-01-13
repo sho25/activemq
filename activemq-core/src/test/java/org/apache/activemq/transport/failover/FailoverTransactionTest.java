@@ -2900,8 +2900,8 @@ literal|7
 argument_list|)
 expr_stmt|;
 comment|// should not get a second message as there are two messages and two consumers
-comment|// but with failover and unordered connection reinit it can get the second
-comment|// message which will have a problem for the ack
+comment|// but with failover and unordered connection restore it can get the second
+comment|// message which could create a problem for a pending ack
 name|msg
 operator|=
 name|consumer1
@@ -3109,7 +3109,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_comment
-comment|// consumer2 should get other message
+comment|// consumer2 should get other message provided consumer1 did not get 2
 end_comment
 
 begin_expr_stmt
@@ -3136,15 +3136,26 @@ argument_list|)
 expr_stmt|;
 end_expr_stmt
 
-begin_expr_stmt
+begin_if
+if|if
+condition|(
+name|receivedMessages
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|1
+condition|)
+block|{
 name|assertNotNull
 argument_list|(
-literal|"got message on consumer2"
+literal|"got second message on consumer2"
 argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
-end_expr_stmt
+block|}
+end_if
 
 begin_expr_stmt
 name|consumerSession2
@@ -3331,7 +3342,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Received: "
+literal|"Sweep received: "
 operator|+
 name|msg
 argument_list|)
