@@ -165,6 +165,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|ScheduledMessage
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|filter
 operator|.
 name|PropertyExpression
@@ -245,6 +257,8 @@ operator|.
 name|activemq
 operator|.
 name|Message
+implements|,
+name|ScheduledMessage
 block|{
 specifier|public
 specifier|static
@@ -290,6 +304,8 @@ return|return
 name|DATA_STRUCTURE_TYPE
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|copy
@@ -333,6 +349,8 @@ operator|=
 name|acknowledgeCallback
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -368,6 +386,8 @@ argument_list|()
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals
@@ -496,6 +516,8 @@ throw|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|clearBody
@@ -1129,6 +1151,8 @@ name|priority
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|clearProperties
