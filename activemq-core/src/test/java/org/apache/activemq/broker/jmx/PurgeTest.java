@@ -234,7 +234,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A specific test of Queue.purge() functionality  *   * @version $Revision$  */
+comment|/**  * A specific test of Queue.purge() functionality  *  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -607,6 +607,11 @@ argument_list|()
 argument_list|,
 literal|0
 argument_list|)
+expr_stmt|;
+name|producer
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 specifier|public
