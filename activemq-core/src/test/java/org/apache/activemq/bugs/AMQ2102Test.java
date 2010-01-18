@@ -394,6 +394,7 @@ name|Thread
 name|thread
 decl_stmt|;
 specifier|private
+specifier|final
 name|int
 name|numToProcessPerIteration
 decl_stmt|;
@@ -1101,6 +1102,9 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+name|numToProcess
+operator|--
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1126,15 +1130,24 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+else|else
+block|{
+name|info
+argument_list|(
+literal|"got null message on: "
+operator|+
+name|numToProcess
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 do|while
 condition|(
 operator|(
-name|numToProcess
+name|numToProcessPerIteration
 operator|==
 name|CONSUME_ALL
 operator|||
-operator|--
 name|numToProcess
 operator|>
 literal|0
@@ -1827,7 +1840,7 @@ block|}
 block|}
 name|messageCount
 operator|.
-name|notify
+name|notifyAll
 argument_list|()
 expr_stmt|;
 block|}
@@ -2242,7 +2255,7 @@ name|Exception
 block|{
 name|setMaxTestTime
 argument_list|(
-literal|10
+literal|6
 operator|*
 literal|60
 operator|*
