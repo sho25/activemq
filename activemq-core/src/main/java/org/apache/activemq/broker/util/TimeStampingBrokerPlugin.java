@@ -98,6 +98,21 @@ name|TimeStampingBrokerPlugin
 extends|extends
 name|BrokerPluginSupport
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOG
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|TimeStampingBrokerPlugin
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * variable which (when non-zero) is used to override     * the expiration date for messages that arrive with     * no expiration date set (in Milliseconds).     */
 name|long
 name|zeroExpirationOverride
@@ -163,6 +178,8 @@ operator|=
 name|futureOnly
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
@@ -226,13 +243,6 @@ name|timeToLive
 init|=
 name|zeroExpirationOverride
 decl_stmt|;
-if|if
-condition|(
-name|oldExpiration
-operator|>
-literal|0
-condition|)
-block|{
 name|long
 name|oldTimestamp
 init|=
@@ -241,6 +251,13 @@ operator|.
 name|getTimestamp
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|oldExpiration
+operator|>
+literal|0
+condition|)
+block|{
 name|timeToLive
 operator|=
 name|oldExpiration
@@ -314,6 +331,35 @@ argument_list|(
 name|newTimeStamp
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Set message "
+operator|+
+name|message
+operator|.
+name|getMessageId
+argument_list|()
+operator|+
+literal|" timestamp from "
+operator|+
+name|oldTimestamp
+operator|+
+literal|" to "
+operator|+
+name|newTimeStamp
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 name|super
