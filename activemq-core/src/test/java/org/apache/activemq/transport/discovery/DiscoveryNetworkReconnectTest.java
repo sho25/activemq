@@ -1297,13 +1297,13 @@ expr_stmt|;
 comment|// wait for the inactivity timeout and network shutdown
 name|assertTrue
 argument_list|(
-literal|"network connector mbean unregistered within 1 minute"
+literal|"network connector mbean unregistered within 2 minute"
 argument_list|,
 name|mbeanUnregistered
 operator|.
 name|tryAcquire
 argument_list|(
-literal|60
+literal|120
 argument_list|,
 name|TimeUnit
 operator|.
