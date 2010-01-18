@@ -590,6 +590,11 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|brokerA
+operator|.
+name|waitUntilStarted
+argument_list|()
+expr_stmt|;
 name|proxy
 operator|=
 operator|new
@@ -1062,9 +1067,19 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+name|brokerA
+operator|.
+name|waitUntilStopped
+argument_list|()
+expr_stmt|;
 name|brokerB
 operator|.
 name|stop
+argument_list|()
+expr_stmt|;
+name|brokerB
+operator|.
+name|waitUntilStopped
 argument_list|()
 expr_stmt|;
 name|proxy
@@ -1151,6 +1166,11 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|brokerB
+operator|.
+name|waitUntilStarted
+argument_list|()
+expr_stmt|;
 name|doReconnect
 argument_list|()
 expr_stmt|;
@@ -1181,6 +1201,11 @@ expr_stmt|;
 name|brokerB
 operator|.
 name|start
+argument_list|()
+expr_stmt|;
+name|brokerB
+operator|.
+name|waitUntilStarted
 argument_list|()
 expr_stmt|;
 name|doReconnect
@@ -1249,13 +1274,13 @@ expr_stmt|;
 comment|// wait for network connector
 name|assertTrue
 argument_list|(
-literal|"network connector mbean registered within 1 minute"
+literal|"network connector mbean registered within 2 minute"
 argument_list|,
 name|mbeanRegistered
 operator|.
 name|tryAcquire
 argument_list|(
-literal|60
+literal|120
 argument_list|,
 name|TimeUnit
 operator|.
