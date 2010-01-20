@@ -1311,39 +1311,6 @@ name|messageId
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|context
-operator|.
-name|isInTransaction
-argument_list|()
-condition|)
-block|{
-comment|// extend prefetch window only if not a pulling
-comment|// consumer
-if|if
-condition|(
-name|getPrefetchSize
-argument_list|()
-operator|!=
-literal|0
-condition|)
-block|{
-name|prefetchExtension
-operator|=
-name|Math
-operator|.
-name|max
-argument_list|(
-name|prefetchExtension
-argument_list|,
-name|index
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-else|else
-block|{
 comment|// contract prefetch if dispatch required a pull
 if|if
 condition|(
@@ -1367,6 +1334,27 @@ name|index
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|context
+operator|.
+name|isInTransaction
+argument_list|()
+condition|)
+block|{
+comment|// extend prefetch window only if not a pulling consumer
+name|prefetchExtension
+operator|=
+name|Math
+operator|.
+name|max
+argument_list|(
+name|prefetchExtension
+argument_list|,
+name|index
+argument_list|)
+expr_stmt|;
 block|}
 name|destination
 operator|=
