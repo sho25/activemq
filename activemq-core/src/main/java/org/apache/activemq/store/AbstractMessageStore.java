@@ -33,6 +33,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|ConnectionContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -50,20 +64,6 @@ operator|.
 name|command
 operator|.
 name|MessageId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|ConnectionContext
 import|;
 end_import
 
@@ -159,6 +159,21 @@ name|IOException
 throws|,
 name|Exception
 block|{     }
+comment|/**      * flag to indicate if the store is empty      * @return true if the message count is 0      * @throws Exception       */
+specifier|public
+name|boolean
+name|isEmpty
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
+name|getMessageCount
+argument_list|()
+operator|==
+literal|0
+return|;
+block|}
 block|}
 end_class
 

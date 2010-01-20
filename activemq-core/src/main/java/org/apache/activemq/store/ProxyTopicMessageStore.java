@@ -123,20 +123,6 @@ name|MemoryUsage
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|usage
-operator|.
-name|SystemUsage
-import|;
-end_import
-
 begin_comment
 comment|/**  * A simple proxy that delegates to another MessageStore.  */
 end_comment
@@ -635,6 +621,20 @@ argument_list|(
 name|messageId
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isEmpty
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
+name|delegate
+operator|.
+name|isEmpty
+argument_list|()
+return|;
 block|}
 block|}
 end_class

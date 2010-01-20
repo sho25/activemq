@@ -260,6 +260,8 @@ operator|=
 name|destination
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -321,6 +323,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -485,6 +489,8 @@ return|return
 name|recovered
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 name|void
@@ -538,6 +544,8 @@ name|size
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -627,6 +635,8 @@ name|void
 name|finished
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -684,6 +694,8 @@ name|hasNext
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -735,6 +747,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -840,6 +854,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -860,6 +876,8 @@ name|size
 operator|++
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -910,10 +928,8 @@ operator|&&
 name|hasSpace
 argument_list|()
 operator|&&
-name|getStoreSize
+name|isStoreEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 if|if
@@ -946,6 +962,8 @@ literal|true
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -974,6 +992,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -985,6 +1005,8 @@ name|gc
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -1057,6 +1079,8 @@ literal|0
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 specifier|final
 specifier|synchronized
@@ -1156,6 +1180,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -1170,6 +1196,8 @@ operator|==
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -1185,6 +1213,8 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -1229,6 +1259,12 @@ specifier|protected
 specifier|abstract
 name|int
 name|getStoreSize
+parameter_list|()
+function_decl|;
+specifier|protected
+specifier|abstract
+name|boolean
+name|isStoreEmpty
 parameter_list|()
 function_decl|;
 block|}

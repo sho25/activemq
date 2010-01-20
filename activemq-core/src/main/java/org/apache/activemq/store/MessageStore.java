@@ -121,20 +121,6 @@ name|MemoryUsage
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|usage
-operator|.
-name|SystemUsage
-import|;
-end_import
-
 begin_comment
 comment|/**  * Represents a message store which is used by the persistent implementations  *   * @version $Revision: 1.5 $  */
 end_comment
@@ -246,13 +232,20 @@ name|ConnectionContext
 name|context
 parameter_list|)
 function_decl|;
-comment|/**      * allow caching cursors to set the current batch offset when cache is exhausted      * @param messageId      */
+comment|/**      * allow caching cursors to set the current batch offset when cache is exhausted      * @param messageId      * @throws Exception       */
 name|void
 name|setBatch
 parameter_list|(
 name|MessageId
 name|messageId
 parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * flag to indicate if the store is empty      * @return true if the message count is 0      * @throws Exception       */
+name|boolean
+name|isEmpty
+parameter_list|()
 throws|throws
 name|Exception
 function_decl|;

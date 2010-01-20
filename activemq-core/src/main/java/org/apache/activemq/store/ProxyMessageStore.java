@@ -384,6 +384,20 @@ name|messageId
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|boolean
+name|isEmpty
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
+name|delegate
+operator|.
+name|isEmpty
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
