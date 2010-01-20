@@ -2420,7 +2420,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|4
+literal|3
 condition|;
 name|i
 operator|++
