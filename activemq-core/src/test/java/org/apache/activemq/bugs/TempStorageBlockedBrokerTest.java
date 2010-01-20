@@ -28,18 +28,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -229,9 +217,11 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|kaha
+name|store
 operator|.
-name|Store
+name|amq
+operator|.
+name|AMQPersistenceAdapter
 import|;
 end_import
 
@@ -245,9 +235,11 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|amq
+name|kahadb
 operator|.
-name|AMQPersistenceAdapter
+name|plist
+operator|.
+name|PListStore
 import|;
 end_import
 
@@ -587,6 +579,8 @@ argument_list|(
 literal|"Producing thread"
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1108,27 +1102,25 @@ argument_list|(
 name|tmpDir
 argument_list|)
 expr_stmt|;
-name|Store
+name|PListStore
 name|tempStore
 init|=
 operator|new
-name|org
+name|PListStore
+argument_list|()
+decl_stmt|;
+name|tempStore
 operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|kaha
-operator|.
-name|impl
-operator|.
-name|KahaStore
+name|setDirectory
 argument_list|(
 name|tmpDir
-argument_list|,
-literal|"rw"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+name|tempStore
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 name|SystemUsage
 name|sysUsage
 init|=

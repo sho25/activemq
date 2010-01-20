@@ -497,9 +497,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|kaha
+name|state
 operator|.
-name|Store
+name|ConnectionState
 import|;
 end_import
 
@@ -511,9 +511,13 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|state
+name|store
 operator|.
-name|ConnectionState
+name|kahadb
+operator|.
+name|plist
+operator|.
+name|PListStore
 import|;
 end_import
 
@@ -948,6 +952,8 @@ name|destinationFactory
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Map
 argument_list|<
@@ -987,6 +993,8 @@ return|return
 name|answer
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -1067,6 +1075,8 @@ argument_list|()
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Broker
 name|getAdaptor
@@ -1251,6 +1261,8 @@ name|destinationFactory
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -1295,6 +1307,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -1363,6 +1377,8 @@ else|:
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addConnection
@@ -1520,6 +1536,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeConnection
@@ -1651,6 +1669,8 @@ argument_list|)
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Connection
 index|[]
@@ -1698,6 +1718,8 @@ return|return
 name|rc
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Destination
 name|addDestination
@@ -1831,6 +1853,8 @@ return|return
 name|answer
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeDestination
@@ -1950,6 +1974,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addDestinationInfo
@@ -1974,6 +2000,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeDestinationInfo
@@ -2003,6 +2031,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ActiveMQDestination
 index|[]
@@ -2056,6 +2086,8 @@ return|return
 name|rc
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addProducer
@@ -2168,6 +2200,8 @@ break|break;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeProducer
@@ -2267,6 +2301,8 @@ break|break;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Subscription
 name|addConsumer
@@ -2365,6 +2401,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeConsumer
@@ -2463,6 +2501,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeSubscription
@@ -2486,6 +2526,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
@@ -2631,6 +2673,8 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|acknowledge
@@ -2747,6 +2791,8 @@ name|ack
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|messagePull
@@ -2845,6 +2891,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TransactionId
 index|[]
@@ -2864,6 +2912,8 @@ literal|"Transaction operation not implemented by this broker."
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beginTransaction
@@ -2885,6 +2935,8 @@ literal|"Transaction operation not implemented by this broker."
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|prepareTransaction
@@ -2906,6 +2958,8 @@ literal|"Transaction operation not implemented by this broker."
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollbackTransaction
@@ -2927,6 +2981,8 @@ literal|"Transaction operation not implemented by this broker."
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commitTransaction
@@ -2951,6 +3007,8 @@ literal|"Transaction operation not implemented by this broker."
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|forgetTransaction
@@ -2972,6 +3030,8 @@ literal|"Transaction operation not implemented by this broker."
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|gc
@@ -2988,6 +3048,8 @@ name|gc
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|BrokerId
 name|getBrokerId
@@ -3031,6 +3093,8 @@ operator|=
 name|brokerId
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getBrokerName
@@ -3124,6 +3188,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -3144,6 +3210,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -3172,6 +3240,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|BrokerInfo
@@ -3205,6 +3275,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|preProcessDispatch
@@ -3281,6 +3353,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|postProcessDispatch
@@ -3289,6 +3363,8 @@ name|MessageDispatch
 name|messageDispatch
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|processDispatchNotification
@@ -3388,6 +3464,8 @@ name|isSlave
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isStopped
@@ -3398,6 +3476,8 @@ operator|!
 name|started
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -3483,6 +3563,8 @@ return|return
 name|destinationInterceptor
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ConnectionContext
 name|getAdminConnectionContext
@@ -3492,6 +3574,8 @@ return|return
 name|adminConnectionContext
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setAdminConnectionContext
@@ -3521,8 +3605,10 @@ return|return
 name|connectionStates
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
-name|Store
+name|PListStore
 name|getTempDataStore
 parameter_list|()
 block|{
@@ -3533,6 +3619,8 @@ name|getTempDataStore
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|URI
 name|getVmConnectorURI
@@ -3545,11 +3633,15 @@ name|getVmConnectorURI
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|brokerServiceStarted
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|BrokerService
 name|getBrokerService
@@ -3559,6 +3651,8 @@ return|return
 name|brokerService
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isExpired
@@ -3685,6 +3779,8 @@ return|return
 name|stamped
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageExpired
@@ -3725,6 +3821,8 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|sendToDeadLetterQueue
@@ -3931,6 +4029,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Broker
 name|getRoot
@@ -3971,6 +4071,8 @@ throw|;
 block|}
 block|}
 comment|/**      * @return the broker sequence id      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getBrokerSequenceId

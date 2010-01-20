@@ -66,6 +66,8 @@ name|SimpleQueueTest
 extends|extends
 name|SimpleTopicTest
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|Destination
 name|createDestination
@@ -88,6 +90,8 @@ name|destinationName
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -105,6 +109,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|PerfConsumer
 name|createConsumer
@@ -132,7 +138,13 @@ argument_list|,
 name|dest
 argument_list|)
 decl_stmt|;
-comment|//consumer.setInitialDelay(2000);
+name|consumer
+operator|.
+name|setInitialDelay
+argument_list|(
+literal|10000
+argument_list|)
+expr_stmt|;
 comment|//consumer.setSleepDuration(10);
 name|boolean
 name|enableAudit
@@ -143,7 +155,7 @@ literal|1
 decl_stmt|;
 name|System
 operator|.
-name|out
+name|err
 operator|.
 name|println
 argument_list|(

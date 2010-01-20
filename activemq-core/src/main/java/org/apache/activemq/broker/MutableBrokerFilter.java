@@ -339,9 +339,13 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|kaha
+name|store
 operator|.
-name|Store
+name|kahadb
+operator|.
+name|plist
+operator|.
+name|PListStore
 import|;
 end_import
 
@@ -1327,7 +1331,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|Store
+name|PListStore
 name|getTempDataStore
 parameter_list|()
 block|{

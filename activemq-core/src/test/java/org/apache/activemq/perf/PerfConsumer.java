@@ -214,6 +214,10 @@ init|=
 literal|true
 decl_stmt|;
 specifier|protected
+name|String
+name|lastMsgId
+decl_stmt|;
+specifier|protected
 name|PerfRate
 name|rate
 init|=
@@ -468,6 +472,13 @@ argument_list|(
 literal|"Message out of order!!"
 operator|+
 name|msg
+operator|.
+name|getJMSMessageID
+argument_list|()
+operator|+
+literal|" LAST = "
+operator|+
+name|lastMsgId
 argument_list|)
 expr_stmt|;
 block|}
@@ -495,6 +506,13 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+name|lastMsgId
+operator|=
+name|msg
+operator|.
+name|getJMSMessageID
+argument_list|()
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(

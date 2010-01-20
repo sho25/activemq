@@ -57,9 +57,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|kaha
+name|store
 operator|.
-name|Store
+name|PersistenceAdapter
 import|;
 end_import
 
@@ -73,7 +73,11 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|PersistenceAdapter
+name|kahadb
+operator|.
+name|plist
+operator|.
+name|PListStore
 import|;
 end_import
 
@@ -118,6 +122,7 @@ name|boolean
 name|sendFailIfNoSpace
 decl_stmt|;
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|SystemUsage
@@ -154,7 +159,7 @@ parameter_list|,
 name|PersistenceAdapter
 name|adapter
 parameter_list|,
-name|Store
+name|PListStore
 name|tempStore
 parameter_list|)
 block|{
@@ -327,6 +332,8 @@ operator|.
 name|tempUsage
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

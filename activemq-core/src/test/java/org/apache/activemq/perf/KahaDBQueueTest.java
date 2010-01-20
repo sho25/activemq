@@ -66,6 +66,8 @@ name|KahaDBQueueTest
 extends|extends
 name|SimpleQueueTest
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|configureBroker
@@ -88,6 +90,17 @@ argument_list|(
 literal|"target/test-amq-data/perfTest/kahadb"
 argument_list|)
 decl_stmt|;
+name|File
+name|archiveDir
+init|=
+operator|new
+name|File
+argument_list|(
+name|dataFileDir
+argument_list|,
+literal|"archive"
+argument_list|)
+decl_stmt|;
 name|KahaDBStore
 name|kaha
 init|=
@@ -102,6 +115,20 @@ argument_list|(
 name|dataFileDir
 argument_list|)
 expr_stmt|;
+name|kaha
+operator|.
+name|setDirectoryArchive
+argument_list|(
+name|archiveDir
+argument_list|)
+expr_stmt|;
+name|kaha
+operator|.
+name|setArchiveDataLogs
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 comment|// The setEnableJournalDiskSyncs(false) setting is a little dangerous right now, as I have not verified
 comment|// what happens if the index is updated but a journal update is lost.
 comment|// Index is going to be in consistent, but can it be repaired?
@@ -113,15 +140,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 comment|// Using a bigger journal file size makes he take fewer spikes as it is not switching files as often.
-name|kaha
-operator|.
-name|setJournalMaxFileLength
-argument_list|(
-literal|1024
-operator|*
-literal|100
-argument_list|)
-expr_stmt|;
+comment|//kaha.setJournalMaxFileLength(1024*1024*100);
 comment|// small batch means more frequent and smaller writes
 name|kaha
 operator|.

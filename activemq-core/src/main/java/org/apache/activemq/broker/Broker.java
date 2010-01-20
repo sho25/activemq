@@ -245,9 +245,13 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|kaha
+name|store
 operator|.
-name|Store
+name|kahadb
+operator|.
+name|plist
+operator|.
+name|PListStore
 import|;
 end_import
 
@@ -574,7 +578,7 @@ name|adminConnectionContext
 parameter_list|)
 function_decl|;
 comment|/**      * @return the temp data store      */
-name|Store
+name|PListStore
 name|getTempDataStore
 parameter_list|()
 function_decl|;
