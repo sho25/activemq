@@ -1737,9 +1737,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/*      * This test is disabled - as it fails with a fix for       * http://issues.apache.org/activemq/browse/AMQ-2530 - which highlights that       * For a Conduit bridge - local subscription Ids weren't removed in a ConduitBridge      * The test fails because on closing clientA - clientB correctly receives all the       * messages - ie. half dont get stuck on BrokerA -       */
 specifier|public
 name|void
-name|testMigrateConsumerStuckMessages
+name|XtestMigrateConsumerStuckMessages
 parameter_list|()
 throws|throws
 name|Exception
@@ -3085,6 +3086,8 @@ block|}
 end_function
 
 begin_function
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp
