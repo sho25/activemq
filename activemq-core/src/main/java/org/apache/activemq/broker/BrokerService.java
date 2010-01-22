@@ -2802,12 +2802,8 @@ condition|(
 operator|!
 name|started
 operator|.
-name|compareAndSet
-argument_list|(
-literal|true
-argument_list|,
-literal|false
-argument_list|)
+name|get
+argument_list|()
 condition|)
 block|{
 return|return;
