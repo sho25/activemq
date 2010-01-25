@@ -169,6 +169,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|ConsumerControl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|ConsumerInfo
 import|;
 end_import
@@ -1072,6 +1086,17 @@ name|void
 name|nowMasterBroker
 parameter_list|()
 block|{             }
+specifier|public
+name|void
+name|processConsumerControl
+parameter_list|(
+name|ConsumerBrokerExchange
+name|consumerExchange
+parameter_list|,
+name|ConsumerControl
+name|control
+parameter_list|)
+block|{          }
 block|}
 end_class
 

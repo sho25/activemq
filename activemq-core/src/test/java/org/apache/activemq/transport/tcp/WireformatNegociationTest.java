@@ -1071,7 +1071,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|5
+name|CommandTypes
+operator|.
+name|PROTOCOL_VERSION
 argument_list|,
 name|clientWF
 operator|.
@@ -1092,7 +1094,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|5
+name|CommandTypes
+operator|.
+name|PROTOCOL_VERSION
 argument_list|,
 name|serverWF
 operator|.
