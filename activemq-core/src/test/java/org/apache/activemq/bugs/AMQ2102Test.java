@@ -2255,7 +2255,7 @@ name|Exception
 block|{
 name|setMaxTestTime
 argument_list|(
-literal|6
+literal|12
 operator|*
 literal|60
 operator|*
@@ -2271,6 +2271,13 @@ name|super
 operator|.
 name|setUp
 argument_list|()
+expr_stmt|;
+name|master
+operator|.
+name|setUseShutdownHook
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 name|master
 operator|.
@@ -2380,6 +2387,13 @@ argument_list|(
 literal|"masterUrl: "
 operator|+
 name|masterUrl
+argument_list|)
+expr_stmt|;
+name|slave
+operator|.
+name|setUseShutdownHook
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 name|slave
