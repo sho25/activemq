@@ -365,9 +365,25 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|store
+operator|.
+name|kahadb
+operator|.
+name|KahaDBStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|util
 operator|.
-name|ThreadTracker
+name|IOHelper
 import|;
 end_import
 
@@ -414,7 +430,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @version $Revision: 1.5 $  * A Test case for AMQ-1479  */
+comment|/**  * @version $Revision: 1.5 $ A Test case for AMQ-1479  */
 end_comment
 
 begin_class
@@ -1138,7 +1154,7 @@ decl_stmt|;
 name|int
 name|numConsumers
 init|=
-literal|20
+literal|1
 decl_stmt|;
 specifier|final
 name|CountDownLatch
@@ -2130,6 +2146,49 @@ operator|.
 name|setDeleteAllMessagesOnStartup
 argument_list|(
 name|deleteStore
+argument_list|)
+expr_stmt|;
+name|KahaDBStore
+name|kaha
+init|=
+operator|new
+name|KahaDBStore
+argument_list|()
+decl_stmt|;
+name|File
+name|directory
+init|=
+operator|new
+name|File
+argument_list|(
+literal|"target/activemq-data/kahadb"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|deleteStore
+condition|)
+block|{
+name|IOHelper
+operator|.
+name|deleteChildren
+argument_list|(
+name|directory
+argument_list|)
+expr_stmt|;
+block|}
+name|kaha
+operator|.
+name|setDirectory
+argument_list|(
+name|directory
+argument_list|)
+expr_stmt|;
+name|answer
+operator|.
+name|setPersistenceAdapter
+argument_list|(
+name|kaha
 argument_list|)
 expr_stmt|;
 name|answer

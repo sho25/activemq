@@ -126,7 +126,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|AMQ2571
+name|AMQ2571Test
 extends|extends
 name|EmbeddedBrokerTestSupport
 block|{
