@@ -3355,13 +3355,25 @@ block|{
 name|Message
 name|msg
 init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|store
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// can be null for a temp q
+name|msg
+operator|=
 name|store
 operator|.
 name|getMessage
 argument_list|(
 name|messageId
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|msg
@@ -3376,6 +3388,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|msg
