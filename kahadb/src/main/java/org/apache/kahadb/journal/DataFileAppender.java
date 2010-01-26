@@ -1113,7 +1113,7 @@ argument_list|)
 expr_stmt|;
 name|enqueueMutex
 operator|.
-name|notify
+name|notifyAll
 argument_list|()
 expr_stmt|;
 break|break;
@@ -1365,7 +1365,7 @@ expr_stmt|;
 block|}
 name|enqueueMutex
 operator|.
-name|notify
+name|notifyAll
 argument_list|()
 expr_stmt|;
 block|}
