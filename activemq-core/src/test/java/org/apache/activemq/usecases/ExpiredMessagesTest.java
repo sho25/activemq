@@ -1737,8 +1737,8 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|InstanceNotFoundException
-name|expectedOnSlowMachines
+name|Exception
+name|notFoundExpectedOnSlowMachines
 parameter_list|)
 block|{                 }
 return|return
