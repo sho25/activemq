@@ -2847,7 +2847,10 @@ name|put
 argument_list|(
 name|subscriptionKey
 argument_list|,
-name|cursorPos
+name|entry
+operator|.
+name|getKey
+argument_list|()
 operator|+
 literal|1
 argument_list|)

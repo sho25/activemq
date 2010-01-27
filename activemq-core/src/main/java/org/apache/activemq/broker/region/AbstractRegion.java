@@ -2778,9 +2778,17 @@ name|getPrefetch
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|LOG
 operator|.
-name|info
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
 argument_list|(
 literal|"setting prefetch: "
 operator|+
@@ -2797,6 +2805,7 @@ name|getConsumerId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 try|try
 block|{
 name|lookup
