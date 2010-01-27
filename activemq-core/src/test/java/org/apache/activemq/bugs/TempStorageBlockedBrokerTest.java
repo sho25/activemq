@@ -28,12 +28,48 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
 name|io
 operator|.
 name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|CountDownLatch
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
 import|;
 end_import
 
@@ -570,6 +606,16 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+specifier|final
+name|CountDownLatch
+name|producerHasSentTenMessages
+init|=
+operator|new
+name|CountDownLatch
+argument_list|(
+literal|10
+argument_list|)
+decl_stmt|;
 name|Thread
 name|producingThread
 init|=
@@ -662,6 +708,11 @@ operator|.
 name|incrementAndGet
 argument_list|()
 expr_stmt|;
+name|producerHasSentTenMessages
+operator|.
+name|countDown
+argument_list|()
+expr_stmt|;
 name|Thread
 operator|.
 name|sleep
@@ -669,6 +720,19 @@ argument_list|(
 literal|10
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|idx
+operator|!=
+literal|0
+operator|&&
+name|idx
+operator|%
+literal|100
+operator|==
+literal|0
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
@@ -696,6 +760,7 @@ name|getUsage
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|producer
 operator|.
@@ -728,6 +793,22 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"producer has sent 10 in a reasonable time"
+argument_list|,
+name|producerHasSentTenMessages
+operator|.
+name|await
+argument_list|(
+literal|30
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|int
 name|count
 init|=
@@ -757,6 +838,19 @@ block|{
 name|count
 operator|++
 expr_stmt|;
+if|if
+condition|(
+name|count
+operator|!=
+literal|0
+operator|&&
+name|count
+operator|%
+literal|10
+operator|==
+literal|0
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
@@ -770,6 +864,7 @@ operator|+
 name|m
 argument_list|)
 expr_stmt|;
+block|}
 name|messagesConsumed
 operator|.
 name|incrementAndGet
@@ -804,16 +899,11 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Connection Timeout: Retrying"
+literal|"Connection Timeout: Retrying.. count: "
+operator|+
+name|count
 argument_list|)
 expr_stmt|;
-comment|// session.close();
-comment|// consumerConnection.close();
-comment|//
-comment|// consumerConnection2.start();
-comment|// session2 = consumerConnection2.createSession(false,
-comment|// Session.AUTO_ACKNOWLEDGE);
-comment|// consumer = session2.createConsumer(destination);
 while|while
 condition|(
 operator|(
@@ -833,6 +923,19 @@ block|{
 name|count
 operator|++
 expr_stmt|;
+if|if
+condition|(
+name|count
+operator|!=
+literal|0
+operator|&&
+name|count
+operator|%
+literal|10
+operator|==
+literal|0
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
@@ -846,6 +949,7 @@ operator|+
 name|m
 argument_list|)
 expr_stmt|;
+block|}
 name|messagesConsumed
 operator|.
 name|incrementAndGet
