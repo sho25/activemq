@@ -754,24 +754,9 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|int
-name|messageCount
-init|=
-name|store
-operator|.
-name|getMessageCount
-argument_list|()
-decl_stmt|;
-name|destinationStatistics
-operator|.
-name|getMessages
-argument_list|()
-operator|.
-name|setCount
-argument_list|(
-name|messageCount
-argument_list|)
-expr_stmt|;
+comment|// AMQ-2586: Better to leave this stat at zero than to give the user misleading metrics.
+comment|// int messageCount = store.getMessageCount();
+comment|// destinationStatistics.getMessages().setCount(messageCount);
 block|}
 block|}
 specifier|public
@@ -3008,14 +2993,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|destinationStatistics
-operator|.
-name|getMessages
-argument_list|()
-operator|.
-name|increment
-argument_list|()
-expr_stmt|;
+comment|// AMQ-2586: Better to leave this stat at zero than to give the user misleading metrics.
+comment|// destinationStatistics.getMessages().increment();
 name|destinationStatistics
 operator|.
 name|getEnqueues
@@ -3164,14 +3143,8 @@ argument_list|,
 name|reference
 argument_list|)
 expr_stmt|;
-name|destinationStatistics
-operator|.
-name|getMessages
-argument_list|()
-operator|.
-name|decrement
-argument_list|()
-expr_stmt|;
+comment|// AMQ-2586: Better to leave this stat at zero than to give the user misleading metrics.
+comment|// destinationStatistics.getMessages().decrement();
 name|destinationStatistics
 operator|.
 name|getEnqueues
