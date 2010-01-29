@@ -335,11 +335,19 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|e
+operator|instanceof
+name|ResourceAllocationException
+condition|)
+block|{
 name|exceptionCount
 operator|.
 name|incrementAndGet
 argument_list|()
 expr_stmt|;
+block|}
 return|return;
 block|}
 block|}
@@ -379,6 +387,8 @@ expr_stmt|;
 comment|// We should have a few timeout exceptions as memory store will fill up
 name|assertTrue
 argument_list|(
+literal|"No exception from the broker"
+argument_list|,
 name|exceptionCount
 operator|.
 name|get
