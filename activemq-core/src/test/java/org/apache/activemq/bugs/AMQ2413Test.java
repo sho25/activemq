@@ -43,18 +43,6 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|CountDownLatch
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
 name|Semaphore
 import|;
 end_import
@@ -203,6 +191,16 @@ end_import
 
 begin_import
 import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -305,30 +303,6 @@ name|VMPendingQueueMessageStoragePolicy
 import|;
 end_import
 
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_comment
-comment|/**  * An AMQ-1282 Test  *   */
-end_comment
-
 begin_class
 specifier|public
 class|class
@@ -351,7 +325,7 @@ specifier|final
 name|int
 name|HANG_THRESHOLD
 init|=
-literal|5
+literal|30
 decl_stmt|;
 specifier|private
 specifier|static
