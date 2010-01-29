@@ -657,7 +657,7 @@ argument_list|()
 expr_stmt|;
 block|}
 name|size
-operator|=
+operator|+=
 name|text
 operator|.
 name|length
