@@ -5078,6 +5078,13 @@ argument_list|,
 name|sequenceId
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|keys
+operator|!=
+literal|null
+condition|)
+block|{
 name|sd
 operator|.
 name|locationIndex
@@ -5091,6 +5098,7 @@ operator|.
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
