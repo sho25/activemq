@@ -1634,7 +1634,7 @@ return|;
 block|}
 block|}
 argument_list|,
-literal|60
+literal|120
 operator|*
 literal|1000
 argument_list|)
