@@ -213,6 +213,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|TransactionRolledBackException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -2901,7 +2911,8 @@ argument_list|)
 expr_stmt|;
 comment|// should not get a second message as there are two messages and two consumers
 comment|// but with failover and unordered connection restore it can get the second
-comment|// message which could create a problem for a pending ack
+comment|// message which could create a problem for a pending ack and also invalidate
+comment|// the transaction in which the first was consumed and acked
 name|msg
 operator|=
 name|consumer1
@@ -2949,11 +2960,52 @@ operator|+
 literal|" messsage(s)"
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|consumerSession1
 operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|expectedSometimes
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"got rollback ex on commit"
+argument_list|,
+name|expectedSometimes
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|expectedSometimes
+operator|instanceof
+name|TransactionRolledBackException
+operator|&&
+name|receivedMessages
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|2
+condition|)
+block|{
+comment|// ok, message one was not replayed so we expect the rollback
+block|}
+else|else
+block|{
+throw|throw
+name|expectedSometimes
+throw|;
+block|}
+block|}
 name|commitDoneLatch
 operator|.
 name|countDown
@@ -3043,7 +3095,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_comment
-comment|// getting 2 is indicative of a problem - proven with dangling message found after restart
+comment|// getting 2 is indicative of orderiing issue. a problem if dangling message found after restart
 end_comment
 
 begin_expr_stmt
@@ -3090,15 +3142,36 @@ argument_list|)
 expr_stmt|;
 end_expr_stmt
 
-begin_expr_stmt
+begin_if
+if|if
+condition|(
+name|receivedMessages
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|1
+condition|)
+block|{
 name|assertNull
 argument_list|(
-literal|"should be nothing left for consumer1"
+literal|"should be nothing left for consumer as recieve should have committed"
 argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
-end_expr_stmt
+block|}
+else|else
+block|{
+name|assertNotNull
+argument_list|(
+literal|"should be available again after commit rollback ex"
+argument_list|,
+name|msg
+argument_list|)
+expr_stmt|;
+block|}
+end_if
 
 begin_expr_stmt
 name|consumerSession1
@@ -3109,7 +3182,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_comment
-comment|// consumer2 should get other message provided consumer1 did not get 2
+comment|// consumer2 should get other message
 end_comment
 
 begin_expr_stmt
@@ -3136,17 +3209,7 @@ argument_list|)
 expr_stmt|;
 end_expr_stmt
 
-begin_if
-if|if
-condition|(
-name|receivedMessages
-operator|.
-name|size
-argument_list|()
-operator|==
-literal|1
-condition|)
-block|{
+begin_expr_stmt
 name|assertNotNull
 argument_list|(
 literal|"got second message on consumer2"
@@ -3154,8 +3217,7 @@ argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
-block|}
-end_if
+end_expr_stmt
 
 begin_expr_stmt
 name|consumerSession2

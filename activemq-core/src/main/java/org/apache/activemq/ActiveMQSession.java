@@ -1783,20 +1783,8 @@ name|checkClosed
 argument_list|()
 expr_stmt|;
 return|return
-operator|(
-name|acknowledgementMode
-operator|==
-name|Session
-operator|.
-name|SESSION_TRANSACTED
-operator|)
-operator|||
-operator|(
-name|transactionContext
-operator|.
-name|isInXATransaction
+name|isTransacted
 argument_list|()
-operator|)
 return|;
 block|}
 comment|/**      * Returns the acknowledgement mode of the session. The acknowledgement mode      * is set at the time that the session is created. If the session is      * transacted, the acknowledgement mode is ignored.      *       * @return If the session is not transacted, returns the current      *         acknowledgement mode for the session. If the session is      *         transacted, returns SESSION_TRANSACTED.      * @throws JMSException      * @see javax.jms.Connection#createSession(boolean,int)      * @since 1.1 exception JMSException if there is some internal error.      */
@@ -4907,6 +4895,13 @@ operator|==
 name|Session
 operator|.
 name|SESSION_TRANSACTED
+operator|||
+operator|(
+name|transactionContext
+operator|.
+name|isInXATransaction
+argument_list|()
+operator|)
 return|;
 block|}
 comment|/**      * Checks whether the session used client acknowledgment.      *       * @return true - if the session uses client acknowledgment.      */
