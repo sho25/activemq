@@ -196,7 +196,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to make sure that commands are arriving periodically from the peer of  * the transport.  *   * @version $Revision$  */
+comment|/**  * Used to make sure that commands are arriving periodically from the peer of  * the transport.  *  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -334,6 +334,12 @@ decl_stmt|;
 specifier|private
 name|SchedulerTimerTask
 name|readCheckerTask
+decl_stmt|;
+specifier|private
+name|boolean
+name|ignoreRemoteWireFormat
+init|=
+literal|false
 decl_stmt|;
 specifier|private
 name|long
@@ -1179,6 +1185,19 @@ operator|=
 name|val
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|setIgnoreRemoteWireFormat
+parameter_list|(
+name|boolean
+name|val
+parameter_list|)
+block|{
+name|ignoreRemoteWireFormat
+operator|=
+name|val
+expr_stmt|;
+block|}
 specifier|private
 specifier|synchronized
 name|void
@@ -1215,6 +1234,12 @@ condition|)
 block|{
 return|return;
 block|}
+if|if
+condition|(
+operator|!
+name|ignoreRemoteWireFormat
+condition|)
+block|{
 name|readCheckTime
 operator|=
 name|Math
@@ -1249,6 +1274,24 @@ name|getMaxInactivityDurationInitalDelay
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|readCheckTime
+operator|=
+name|localWireFormatInfo
+operator|.
+name|getMaxInactivityDuration
+argument_list|()
+expr_stmt|;
+name|initialDelayTime
+operator|=
+name|localWireFormatInfo
+operator|.
+name|getMaxInactivityDurationInitalDelay
+argument_list|()
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|readCheckTime
