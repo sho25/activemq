@@ -133,6 +133,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicBoolean
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -2430,7 +2444,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|3
+literal|4
 condition|;
 name|i
 operator|++
@@ -2439,7 +2453,9 @@ block|{
 try|try
 block|{
 name|doTestFailoverConsumerAckLost
-argument_list|()
+argument_list|(
+name|i
+argument_list|)
 expr_stmt|;
 block|}
 finally|finally
@@ -2456,7 +2472,11 @@ begin_function
 specifier|public
 name|void
 name|doTestFailoverConsumerAckLost
-parameter_list|()
+parameter_list|(
+specifier|final
+name|int
+name|pauseSeconds
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -2848,6 +2868,19 @@ argument_list|)
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+specifier|final
+name|AtomicBoolean
+name|gotTransactionRolledBackException
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|(
+literal|false
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
 begin_expr_stmt
 name|Executors
 operator|.
@@ -2900,19 +2933,25 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
+comment|// give some variance to the runs
 name|TimeUnit
 operator|.
 name|SECONDS
 operator|.
 name|sleep
 argument_list|(
-literal|7
+name|pauseSeconds
+operator|*
+literal|2
 argument_list|)
 expr_stmt|;
 comment|// should not get a second message as there are two messages and two consumers
-comment|// but with failover and unordered connection restore it can get the second
-comment|// message which could create a problem for a pending ack and also invalidate
-comment|// the transaction in which the first was consumed and acked
+comment|// and prefetch=1, but with failover and unordered connection restore it can get the second
+comment|// message.
+comment|// For the transaction to complete it needs to get the same one or two messages
+comment|// again so that the acks line up.
+comment|// If redelivery order is different, the commit should fail with an ex
+comment|//
 name|msg
 operator|=
 name|consumer1
@@ -2978,7 +3017,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"got rollback ex on commit"
+literal|"got exception ex on commit"
 argument_list|,
 name|expectedSometimes
 argument_list|)
@@ -2988,15 +3027,15 @@ condition|(
 name|expectedSometimes
 operator|instanceof
 name|TransactionRolledBackException
-operator|&&
-name|receivedMessages
-operator|.
-name|size
-argument_list|()
-operator|==
-literal|2
 condition|)
 block|{
+name|gotTransactionRolledBackException
+operator|.
+name|set
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 comment|// ok, message one was not replayed so we expect the rollback
 block|}
 else|else
@@ -3094,10 +3133,6 @@ argument_list|)
 expr_stmt|;
 end_expr_stmt
 
-begin_comment
-comment|// getting 2 is indicative of orderiing issue. a problem if dangling message found after restart
-end_comment
-
 begin_expr_stmt
 name|LOG
 operator|.
@@ -3125,7 +3160,14 @@ name|consumer1
 operator|.
 name|receive
 argument_list|(
-literal|2000
+name|gotTransactionRolledBackException
+operator|.
+name|get
+argument_list|()
+condition|?
+literal|5000
+else|:
+literal|20000
 argument_list|)
 decl_stmt|;
 end_decl_stmt
@@ -3145,17 +3187,15 @@ end_expr_stmt
 begin_if
 if|if
 condition|(
-name|receivedMessages
+name|gotTransactionRolledBackException
 operator|.
-name|size
+name|get
 argument_list|()
-operator|==
-literal|1
 condition|)
 block|{
-name|assertNull
+name|assertNotNull
 argument_list|(
-literal|"should be nothing left for consumer as recieve should have committed"
+literal|"should be available again after commit rollback ex"
 argument_list|,
 name|msg
 argument_list|)
@@ -3163,9 +3203,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|assertNotNull
+name|assertNull
 argument_list|(
-literal|"should be available again after commit rollback ex"
+literal|"should be nothing left for consumer as recieve should have committed"
 argument_list|,
 name|msg
 argument_list|)
@@ -3181,23 +3221,39 @@ argument_list|()
 expr_stmt|;
 end_expr_stmt
 
-begin_comment
+begin_if
+if|if
+condition|(
+name|gotTransactionRolledBackException
+operator|.
+name|get
+argument_list|()
+operator|||
+operator|!
+name|gotTransactionRolledBackException
+operator|.
+name|get
+argument_list|()
+operator|&&
+name|receivedMessages
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|1
+condition|)
+block|{
+comment|// just one message successfully consumed or none consumed
 comment|// consumer2 should get other message
-end_comment
-
-begin_expr_stmt
 name|msg
 operator|=
 name|consumer2
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|10000
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|LOG
 operator|.
 name|info
@@ -3207,9 +3263,6 @@ operator|+
 name|msg
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|assertNotNull
 argument_list|(
 literal|"got second message on consumer2"
@@ -3217,15 +3270,13 @@ argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|consumerSession2
 operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-end_expr_stmt
+block|}
+end_if
 
 begin_for
 for|for
