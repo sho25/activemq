@@ -1352,13 +1352,16 @@ argument_list|(
 name|sequenceId
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|listener
 operator|.
 name|recoverMessage
 argument_list|(
 name|msg
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
 name|lastMessageId
 operator|.
 name|set
@@ -1366,6 +1369,7 @@ argument_list|(
 name|sequenceId
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 literal|true
 return|;

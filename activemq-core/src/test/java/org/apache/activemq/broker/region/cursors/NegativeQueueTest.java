@@ -45,6 +45,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Date
 import|;
 end_import
@@ -804,6 +814,10 @@ name|session
 operator|.
 name|createTextMessage
 argument_list|(
+name|i
+operator|+
+literal|" "
+operator|+
 name|formatter
 operator|.
 name|format
@@ -1610,6 +1624,11 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+name|broker
+operator|.
+name|waitUntilStopped
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 specifier|protected
@@ -1701,6 +1720,11 @@ expr_stmt|;
 name|answer
 operator|.
 name|start
+argument_list|()
+expr_stmt|;
+name|answer
+operator|.
+name|waitUntilStarted
 argument_list|()
 expr_stmt|;
 return|return
