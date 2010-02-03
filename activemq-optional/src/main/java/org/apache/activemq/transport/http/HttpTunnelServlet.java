@@ -51,6 +51,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|InputStreamReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|HashMap
@@ -98,6 +108,16 @@ operator|.
 name|servlet
 operator|.
 name|ServletException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|servlet
+operator|.
+name|ServletInputStream
 import|;
 end_import
 
@@ -283,6 +303,7 @@ name|TextWireFormat
 name|wireFormat
 decl_stmt|;
 specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -301,11 +322,14 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|long
 name|requestTimeout
 init|=
 literal|30000L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|init
@@ -373,6 +397,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doHead
@@ -396,6 +422,8 @@ name|response
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doGet
@@ -515,6 +543,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doPost
@@ -530,7 +560,15 @@ name|ServletException
 throws|,
 name|IOException
 block|{
-comment|// Read the command directly from the reader
+comment|// Read the command directly from the reader, assuming UTF8 encoding
+name|ServletInputStream
+name|sis
+init|=
+name|request
+operator|.
+name|getInputStream
+argument_list|()
+decl_stmt|;
 name|Command
 name|command
 init|=
@@ -541,10 +579,13 @@ name|wireFormat
 operator|.
 name|unmarshalText
 argument_list|(
-name|request
-operator|.
-name|getReader
-argument_list|()
+operator|new
+name|InputStreamReader
+argument_list|(
+name|sis
+argument_list|,
+literal|"UTF-8"
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
