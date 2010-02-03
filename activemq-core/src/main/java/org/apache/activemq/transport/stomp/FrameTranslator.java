@@ -788,6 +788,20 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Stomp specific headers
+name|o
+operator|=
+name|headers
+operator|.
+name|remove
+argument_list|(
+name|Stomp
+operator|.
+name|Headers
+operator|.
+name|RECEIPT_REQUESTED
+argument_list|)
+expr_stmt|;
 comment|// now the general headers
 name|msg
 operator|.
