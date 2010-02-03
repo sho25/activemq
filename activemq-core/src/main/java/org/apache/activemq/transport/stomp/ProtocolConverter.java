@@ -1158,7 +1158,7 @@ return|return
 name|translator
 return|;
 block|}
-comment|/** 	 * Convert a stomp command 	 *  	 * @param command 	 */
+comment|/**      * Convert a stomp command      *      * @param command      */
 specifier|public
 name|void
 name|onStompCommand
@@ -2547,6 +2547,21 @@ argument_list|,
 name|destination
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|actualDest
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|ProtocolException
+argument_list|(
+literal|"Invalid Destination."
+argument_list|)
+throw|;
+block|}
 name|ConsumerId
 name|id
 init|=
@@ -3615,7 +3630,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Dispatch a ActiveMQ command      *       * @param command      * @throws IOException      */
+comment|/**      * Dispatch a ActiveMQ command      *      * @param command      * @throws IOException      */
 specifier|public
 name|void
 name|onActiveMQCommand
