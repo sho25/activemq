@@ -19,6 +19,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|lang
 operator|.
 name|reflect
@@ -612,6 +622,42 @@ name|m2
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|/**      * Test if base directory contains spaces      */
+specifier|protected
+name|void
+name|assertBaseDirectoryContainsSpaces
+parameter_list|()
+block|{
+name|assertFalse
+argument_list|(
+literal|"Base directory cannot contain spaces."
+argument_list|,
+operator|new
+name|File
+argument_list|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"basedir"
+argument_list|,
+literal|"."
+argument_list|)
+argument_list|)
+operator|.
+name|getAbsoluteFile
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|" "
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Creates an ActiveMQConnectionFactory.      *       * @return ActiveMQConnectionFactory      * @throws Exception      */
 specifier|protected

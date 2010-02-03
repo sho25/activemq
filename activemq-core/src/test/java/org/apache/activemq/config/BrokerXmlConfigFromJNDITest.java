@@ -99,8 +99,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// START SNIPPET: example
-comment|//        System.err.print(System.getProperties());
+name|assertBaseDirectoryContainsSpaces
+argument_list|()
+expr_stmt|;
 comment|// we could put these properties into a jndi.properties
 comment|// on the classpath instead
 name|Hashtable
