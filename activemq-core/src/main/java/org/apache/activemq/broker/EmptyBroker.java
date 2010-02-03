@@ -664,6 +664,9 @@ name|context
 parameter_list|,
 name|ActiveMQDestination
 name|destination
+parameter_list|,
+name|boolean
+name|flag
 parameter_list|)
 throws|throws
 name|Exception

@@ -243,6 +243,8 @@ name|next
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|acknowledge
@@ -303,6 +305,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addConnection
@@ -363,6 +367,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Subscription
 name|addConsumer
@@ -429,6 +435,8 @@ return|return
 name|answer
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addProducer
@@ -489,6 +497,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commitTransaction
@@ -556,6 +566,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeSubscription
@@ -616,6 +628,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|prepareTransaction
@@ -683,6 +697,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeConnection
@@ -750,6 +766,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeConsumer
@@ -810,6 +828,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeProducer
@@ -870,6 +890,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollbackTransaction
@@ -930,6 +952,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
@@ -990,6 +1014,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beginTransaction
@@ -1050,6 +1076,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|forgetTransaction
@@ -1110,6 +1138,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Destination
 name|addDestination
@@ -1119,6 +1149,9 @@ name|context
 parameter_list|,
 name|ActiveMQDestination
 name|destination
+parameter_list|,
+name|boolean
+name|createIfTemporary
 parameter_list|)
 throws|throws
 name|Exception
@@ -1133,6 +1166,8 @@ argument_list|(
 name|context
 argument_list|,
 name|destination
+argument_list|,
+name|createIfTemporary
 argument_list|)
 decl_stmt|;
 name|Broker
@@ -1169,6 +1204,8 @@ argument_list|(
 name|context
 argument_list|,
 name|destination
+argument_list|,
+name|createIfTemporary
 argument_list|)
 expr_stmt|;
 block|}
@@ -1176,6 +1213,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeDestination
@@ -1243,6 +1282,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -1289,6 +1330,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -1335,6 +1378,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addSession
@@ -1395,6 +1440,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeSession
@@ -1455,6 +1502,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|gc
@@ -1499,6 +1548,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addBroker

@@ -913,6 +913,9 @@ name|context
 parameter_list|,
 name|ActiveMQDestination
 name|destination
+parameter_list|,
+name|boolean
+name|createIfTemporary
 parameter_list|)
 throws|throws
 name|Exception
@@ -926,6 +929,8 @@ argument_list|(
 name|context
 argument_list|,
 name|destination
+argument_list|,
+name|createIfTemporary
 argument_list|)
 return|;
 block|}

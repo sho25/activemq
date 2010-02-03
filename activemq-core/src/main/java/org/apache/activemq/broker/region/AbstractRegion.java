@@ -712,6 +712,8 @@ argument_list|(
 name|context
 argument_list|,
 name|dest
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -828,6 +830,9 @@ name|context
 parameter_list|,
 name|ActiveMQDestination
 name|destination
+parameter_list|,
+name|boolean
+name|createIfTemporary
 parameter_list|)
 throws|throws
 name|Exception
@@ -866,6 +871,18 @@ condition|(
 name|dest
 operator|==
 literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|destination
+operator|.
+name|isTemporary
+argument_list|()
+operator|==
+literal|false
+operator|||
+name|createIfTemporary
 condition|)
 block|{
 name|dest
@@ -933,6 +950,26 @@ argument_list|,
 name|dest
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|dest
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"The destination "
+operator|+
+name|destination
+operator|+
+literal|" does not exist."
+argument_list|)
+throw|;
+block|}
 block|}
 return|return
 name|dest
@@ -1405,6 +1442,8 @@ argument_list|(
 name|context
 argument_list|,
 name|destination
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -1753,7 +1792,7 @@ name|getConsumerId
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|//The sub could be removed elsewhere - see ConnectionSplitBroker
+comment|// The sub could be removed elsewhere - see ConnectionSplitBroker
 if|if
 condition|(
 name|sub
@@ -1956,6 +1995,8 @@ name|messageSend
 operator|.
 name|getDestination
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|producerExchange
@@ -2152,6 +2193,9 @@ name|context
 parameter_list|,
 name|ActiveMQDestination
 name|destination
+parameter_list|,
+name|boolean
+name|createTemporary
 parameter_list|)
 throws|throws
 name|Exception
@@ -2185,7 +2229,8 @@ condition|)
 block|{
 if|if
 condition|(
-name|autoCreateDestinations
+name|isAutoCreateDestinations
+argument_list|()
 condition|)
 block|{
 comment|// Try to auto create the destination... re-invoke broker
@@ -2203,6 +2248,8 @@ argument_list|(
 name|context
 argument_list|,
 name|destination
+argument_list|,
+name|createTemporary
 argument_list|)
 expr_stmt|;
 name|dest
@@ -2212,6 +2259,8 @@ argument_list|(
 name|context
 argument_list|,
 name|destination
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -2333,7 +2382,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/*      * For a Queue/TempQueue, dispatch order is imperative to match acks, so the dispatch is deferred till       * the notification to ensure that the subscription chosen by the master is used. AMQ-2102      */
+comment|/*      * For a Queue/TempQueue, dispatch order is imperative to match acks, so the      * dispatch is deferred till the notification to ensure that the      * subscription chosen by the master is used. AMQ-2102      */
 specifier|protected
 name|void
 name|processDispatchNotificationViaDestination
@@ -2628,7 +2677,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Removes a Producer.      * @param context the environment the operation is being executed under.      * @throws Exception TODO      */
+comment|/**      * Removes a Producer.      *       * @param context      *            the environment the operation is being executed under.      * @throws Exception      *             TODO      */
 specifier|public
 name|void
 name|removeProducer
@@ -2819,6 +2868,8 @@ name|control
 operator|.
 name|getDestination
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 operator|.
 name|wakeup

@@ -242,7 +242,7 @@ name|Region
 extends|extends
 name|Service
 block|{
-comment|/**      * Used to create a destination.  Usually, this method is invoked as a side-effect of sending      * a message to a destination that does not exist yet.      *       * @param context      * @param destination the destination to create.      * @return TODO      * @throws Exception TODO      */
+comment|/**      * Used to create a destination.  Usually, this method is invoked as a side-effect of sending      * a message to a destination that does not exist yet.      *       * @param context      * @param destination the destination to create.      * @param createIfTemporary       * @return TODO      * @throws Exception TODO      */
 name|Destination
 name|addDestination
 parameter_list|(
@@ -251,6 +251,9 @@ name|context
 parameter_list|,
 name|ActiveMQDestination
 name|destination
+parameter_list|,
+name|boolean
+name|createIfTemporary
 parameter_list|)
 throws|throws
 name|Exception

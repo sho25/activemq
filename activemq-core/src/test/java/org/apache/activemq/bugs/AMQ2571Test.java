@@ -270,7 +270,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|5000
+literal|100000
 condition|;
 name|i
 operator|++
@@ -319,13 +319,7 @@ argument_list|()
 expr_stmt|;
 comment|// Sleep for a while to make sure that we should know that the
 comment|// TempQueue is gone.
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|5000
-argument_list|)
-expr_stmt|;
+comment|//Thread.sleep(50);
 comment|// Now we test if we are able to send again.
 try|try
 block|{

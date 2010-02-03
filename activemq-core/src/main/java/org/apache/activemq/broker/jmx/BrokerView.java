@@ -1096,6 +1096,8 @@ name|ActiveMQTopic
 argument_list|(
 name|name
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -1126,6 +1128,8 @@ name|ActiveMQQueue
 argument_list|(
 name|name
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}

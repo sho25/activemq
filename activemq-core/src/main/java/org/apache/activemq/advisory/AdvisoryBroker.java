@@ -594,6 +594,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addConnection
@@ -669,6 +671,8 @@ name|copy
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Subscription
 name|addConsumer
@@ -1062,6 +1066,8 @@ return|return
 name|answer
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addProducer
@@ -1147,6 +1153,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Destination
 name|addDestination
@@ -1156,6 +1164,9 @@ name|context
 parameter_list|,
 name|ActiveMQDestination
 name|destination
+parameter_list|,
+name|boolean
+name|create
 parameter_list|)
 throws|throws
 name|Exception
@@ -1170,6 +1181,8 @@ argument_list|(
 name|context
 argument_list|,
 name|destination
+argument_list|,
+name|create
 argument_list|)
 decl_stmt|;
 if|if
@@ -1245,6 +1258,8 @@ return|return
 name|answer
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addDestinationInfo
@@ -1327,6 +1342,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeDestination
@@ -1466,6 +1483,8 @@ parameter_list|)
 block|{             }
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeDestinationInfo
@@ -1609,6 +1628,8 @@ parameter_list|)
 block|{             }
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeConnection
@@ -1667,6 +1688,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeConsumer
@@ -1762,6 +1785,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeProducer
@@ -1864,6 +1889,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageExpired
@@ -1981,6 +2008,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageConsumed
@@ -2070,6 +2099,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageDelivered
@@ -2159,6 +2190,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageDiscarded
@@ -2248,6 +2281,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|slowConsumer
@@ -2347,6 +2382,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|fastProducer
@@ -2435,6 +2472,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|isFull
@@ -2525,6 +2564,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|nowMasterBroker

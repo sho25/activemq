@@ -93,6 +93,8 @@ decl_stmt|;
 name|BrokerService
 name|broker
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -143,6 +145,8 @@ return|return
 name|broker
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -258,10 +262,9 @@ operator|.
 name|getAdminConnectionContext
 argument_list|()
 argument_list|,
-operator|(
-name|ActiveMQDestination
-operator|)
 name|amqDestination
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 specifier|final

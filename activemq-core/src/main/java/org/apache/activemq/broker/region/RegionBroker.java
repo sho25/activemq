@@ -1743,6 +1743,9 @@ name|context
 parameter_list|,
 name|ActiveMQDestination
 name|destination
+parameter_list|,
+name|boolean
+name|create
 parameter_list|)
 throws|throws
 name|Exception
@@ -1792,6 +1795,8 @@ argument_list|(
 name|context
 argument_list|,
 name|destination
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1809,6 +1814,8 @@ argument_list|(
 name|context
 argument_list|,
 name|destination
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1826,6 +1833,8 @@ argument_list|(
 name|context
 argument_list|,
 name|destination
+argument_list|,
+name|create
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1843,6 +1852,8 @@ argument_list|(
 name|context
 argument_list|,
 name|destination
+argument_list|,
+name|create
 argument_list|)
 expr_stmt|;
 break|break;
@@ -2011,6 +2022,8 @@ name|info
 operator|.
 name|getDestination
 argument_list|()
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -2141,6 +2154,8 @@ argument_list|(
 name|context
 argument_list|,
 name|destination
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 switch|switch
@@ -2605,6 +2620,8 @@ name|getConnectionContext
 argument_list|()
 argument_list|,
 name|destination
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|Region

@@ -138,13 +138,7 @@ argument_list|,
 name|dest
 argument_list|)
 decl_stmt|;
-name|consumer
-operator|.
-name|setInitialDelay
-argument_list|(
-literal|10000
-argument_list|)
-expr_stmt|;
+comment|//consumer.setInitialDelay(10000);
 comment|//consumer.setSleepDuration(10);
 name|boolean
 name|enableAudit

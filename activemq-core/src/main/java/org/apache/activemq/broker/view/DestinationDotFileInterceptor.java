@@ -170,6 +170,8 @@ name|file
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Destination
 name|addDestination
@@ -179,6 +181,9 @@ name|context
 parameter_list|,
 name|ActiveMQDestination
 name|destination
+parameter_list|,
+name|boolean
+name|create
 parameter_list|)
 throws|throws
 name|Exception
@@ -193,6 +198,8 @@ argument_list|(
 name|context
 argument_list|,
 name|destination
+argument_list|,
+name|create
 argument_list|)
 decl_stmt|;
 name|generateFile
@@ -202,6 +209,8 @@ return|return
 name|answer
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeDestination
@@ -233,6 +242,8 @@ name|generateFile
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|generateFile

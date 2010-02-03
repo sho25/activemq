@@ -251,6 +251,8 @@ operator|=
 name|authorizationMap
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addDestinationInfo
@@ -272,6 +274,8 @@ name|info
 operator|.
 name|getDestination
 argument_list|()
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|super
@@ -284,6 +288,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Destination
 name|addDestination
@@ -293,6 +299,9 @@ name|context
 parameter_list|,
 name|ActiveMQDestination
 name|destination
+parameter_list|,
+name|boolean
+name|create
 parameter_list|)
 throws|throws
 name|Exception
@@ -301,9 +310,6 @@ specifier|final
 name|SecurityContext
 name|securityContext
 init|=
-operator|(
-name|SecurityContext
-operator|)
 name|context
 operator|.
 name|getSecurityContext
@@ -352,6 +358,8 @@ argument_list|(
 name|context
 argument_list|,
 name|destination
+argument_list|,
+name|create
 argument_list|)
 return|;
 block|}
@@ -442,9 +450,13 @@ argument_list|(
 name|context
 argument_list|,
 name|destination
+argument_list|,
+name|create
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeDestination
@@ -465,9 +477,6 @@ specifier|final
 name|SecurityContext
 name|securityContext
 init|=
-operator|(
-name|SecurityContext
-operator|)
 name|context
 operator|.
 name|getSecurityContext
@@ -575,6 +584,8 @@ name|timeout
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Subscription
 name|addConsumer
@@ -592,9 +603,6 @@ specifier|final
 name|SecurityContext
 name|subject
 init|=
-operator|(
-name|SecurityContext
-operator|)
 name|context
 operator|.
 name|getSecurityContext
@@ -729,6 +737,8 @@ name|info
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addProducer
@@ -745,9 +755,6 @@ block|{
 name|SecurityContext
 name|subject
 init|=
-operator|(
-name|SecurityContext
-operator|)
 name|context
 operator|.
 name|getSecurityContext
@@ -891,6 +898,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
@@ -907,9 +916,6 @@ block|{
 name|SecurityContext
 name|subject
 init|=
-operator|(
-name|SecurityContext
-operator|)
 name|producerExchange
 operator|.
 name|getConnectionContext

@@ -442,6 +442,8 @@ name|destinationFactory
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Subscription
 name|addConsumer
@@ -486,6 +488,8 @@ argument_list|(
 name|context
 argument_list|,
 name|destination
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -800,6 +804,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeConsumer
@@ -877,6 +883,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeSubscription
@@ -1037,6 +1045,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -1521,6 +1531,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|Subscription
 name|createSubscription
@@ -1879,6 +1891,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|Set
 argument_list|<

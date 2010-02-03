@@ -5968,6 +5968,8 @@ name|getAdminConnectionContext
 argument_list|()
 argument_list|,
 name|destination
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -8249,6 +8251,8 @@ argument_list|(
 name|adminConnectionContext
 argument_list|,
 name|destination
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -9076,6 +9080,8 @@ argument_list|(
 name|adminConnectionContext
 argument_list|,
 name|destination
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}

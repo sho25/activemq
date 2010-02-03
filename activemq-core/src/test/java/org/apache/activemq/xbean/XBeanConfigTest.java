@@ -362,6 +362,8 @@ name|ActiveMQTopic
 argument_list|(
 literal|"FOO.BAR"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|DispatchPolicy
@@ -445,6 +447,8 @@ name|ActiveMQTopic
 argument_list|(
 literal|"ORDERS.BOOKS"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|dispatchPolicy
@@ -531,6 +535,8 @@ name|subscriptionRecoveryPolicy
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -643,6 +649,8 @@ literal|"No broker created!"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown

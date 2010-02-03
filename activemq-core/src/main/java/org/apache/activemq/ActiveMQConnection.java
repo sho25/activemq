@@ -281,6 +281,16 @@ name|javax
 operator|.
 name|jms
 operator|.
+name|InvalidDestinationException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
 name|JMSException
 import|;
 end_import
@@ -377,11 +387,15 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jms
+name|apache
 operator|.
-name|InvalidDestinationException
+name|activemq
+operator|.
+name|advisory
+operator|.
+name|DestinationSource
 import|;
 end_import
 
@@ -1009,20 +1023,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activemq
-operator|.
-name|advisory
-operator|.
-name|DestinationSource
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|commons
 operator|.
 name|logging
@@ -1550,6 +1550,7 @@ decl_stmt|;
 comment|// Assume that protocol is the latest. Change to the actual protocol
 comment|// version when a WireFormatInfo is received.
 specifier|private
+specifier|final
 name|AtomicInteger
 name|protocolVersion
 init|=
@@ -1562,10 +1563,12 @@ name|PROTOCOL_VERSION
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|long
 name|timeCreated
 decl_stmt|;
 specifier|private
+specifier|final
 name|ConnectionAudit
 name|connectionAudit
 init|=
@@ -6459,13 +6462,13 @@ name|destination
 argument_list|)
 expr_stmt|;
 name|DestinationInfo
-name|info
+name|destInfo
 init|=
 operator|new
 name|DestinationInfo
 argument_list|()
 decl_stmt|;
-name|info
+name|destInfo
 operator|.
 name|setConnectionId
 argument_list|(
@@ -6477,7 +6480,7 @@ name|getConnectionId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|info
+name|destInfo
 operator|.
 name|setOperationType
 argument_list|(
@@ -6486,14 +6489,14 @@ operator|.
 name|REMOVE_OPERATION_TYPE
 argument_list|)
 expr_stmt|;
-name|info
+name|destInfo
 operator|.
 name|setDestination
 argument_list|(
 name|destination
 argument_list|)
 expr_stmt|;
-name|info
+name|destInfo
 operator|.
 name|setTimeout
 argument_list|(
@@ -6502,7 +6505,7 @@ argument_list|)
 expr_stmt|;
 name|syncSendPacket
 argument_list|(
-name|info
+name|destInfo
 argument_list|)
 expr_stmt|;
 block|}
@@ -7609,6 +7612,8 @@ operator|=
 name|copyMessageOnSend
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
