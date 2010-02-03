@@ -261,6 +261,11 @@ name|SUBSCRIPTION
 init|=
 literal|"subscription"
 decl_stmt|;
+name|String
+name|USERID
+init|=
+literal|"JMSXUserID"
+decl_stmt|;
 block|}
 specifier|public
 interface|interface
