@@ -929,7 +929,7 @@ name|stripPrefix
 argument_list|(
 name|uri
 operator|.
-name|getSchemeSpecificPart
+name|getRawSchemeSpecificPart
 argument_list|()
 operator|.
 name|trim
