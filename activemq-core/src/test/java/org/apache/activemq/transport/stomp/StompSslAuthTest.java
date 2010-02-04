@@ -222,6 +222,20 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+specifier|public
+name|void
+name|testJMSXUserIDIsSetInMessage
+parameter_list|()
+throws|throws
+name|Exception
+block|{     }
+specifier|public
+name|void
+name|testJMSXUserIDIsSetInStompMessage
+parameter_list|()
+throws|throws
+name|Exception
+block|{     }
 block|}
 end_class
 
