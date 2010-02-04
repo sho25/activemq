@@ -25,6 +25,18 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|assertNotNull
 import|;
 end_import
@@ -50,6 +62,16 @@ operator|.
 name|Assert
 operator|.
 name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
 import|;
 end_import
 
@@ -86,6 +108,20 @@ operator|.
 name|concurrent
 operator|.
 name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicBoolean
 import|;
 end_import
 
@@ -374,6 +410,14 @@ name|String
 name|QUEUE_NAME
 init|=
 literal|"FailoverWithOutstandingCommit"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|MESSAGE_TEXT
+init|=
+literal|"Test message "
 decl_stmt|;
 specifier|private
 name|String
@@ -744,7 +788,7 @@ name|createQueue
 argument_list|(
 name|QUEUE_NAME
 operator|+
-literal|"?jms.consumer.prefetch="
+literal|"?consumer.prefetchSize="
 operator|+
 name|prefetch
 argument_list|)
@@ -974,12 +1018,50 @@ expr_stmt|;
 end_expr_stmt
 
 begin_function
-unit|}  	@
+unit|}      @
 name|Test
 specifier|public
 name|void
-name|testFailoverConsumerOutstandingSendTx
+name|TestFailoverConsumerOutstandingSendTxIncomplete
 parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|doTestFailoverConsumerOutstandingSendTx
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+annotation|@
+name|Test
+specifier|public
+name|void
+name|TestFailoverConsumerOutstandingSendTxComplete
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|doTestFailoverConsumerOutstandingSendTx
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+specifier|public
+name|void
+name|doTestFailoverConsumerOutstandingSendTx
+parameter_list|(
+specifier|final
+name|boolean
+name|doActualBrokerCommit
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -1026,6 +1108,30 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|doActualBrokerCommit
+condition|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"doing actual broker commit..."
+argument_list|)
+expr_stmt|;
+name|super
+operator|.
+name|commitTransaction
+argument_list|(
+name|context
+argument_list|,
+name|xid
+argument_list|,
+name|onePhase
+argument_list|)
+expr_stmt|;
+block|}
 comment|// so commit will hang as if reply is lost
 name|context
 operator|.
@@ -1033,7 +1139,7 @@ name|setDontSendReponse
 argument_list|(
 literal|true
 argument_list|)
-expr_stmt|;
+argument_list|;
 name|Executors
 operator|.
 name|newSingleThreadExecutor
@@ -1078,15 +1184,14 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
+argument_list|)
+argument_list|;
+block|}
 end_function
 
 begin_empty_stmt
-unit|})
-empty_stmt|;
-end_empty_stmt
-
-begin_empty_stmt
-unit|}         } })
+unit|} })
 empty_stmt|;
 end_empty_stmt
 
@@ -1186,7 +1291,7 @@ name|createQueue
 argument_list|(
 name|QUEUE_NAME
 operator|+
-literal|"?jms.consumer.prefetch="
+literal|"?consumer.prefetchSize="
 operator|+
 name|prefetch
 argument_list|)
@@ -1232,8 +1337,38 @@ init|=
 operator|new
 name|CountDownLatch
 argument_list|(
-literal|2
+literal|3
 argument_list|)
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|final
+name|AtomicBoolean
+name|gotCommitException
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|(
+literal|false
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|final
+name|ArrayList
+argument_list|<
+name|TextMessage
+argument_list|>
+name|receivedMessages
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|TextMessage
+argument_list|>
+argument_list|()
 decl_stmt|;
 end_decl_stmt
 
@@ -1272,13 +1407,25 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"consume one and commit"
+literal|"consume one and commit: "
+operator|+
+name|message
 argument_list|)
 expr_stmt|;
 name|assertNotNull
 argument_list|(
 literal|"got message"
 argument_list|,
+name|message
+argument_list|)
+expr_stmt|;
+name|receivedMessages
+operator|.
+name|add
+argument_list|(
+operator|(
+name|TextMessage
+operator|)
 name|message
 argument_list|)
 expr_stmt|;
@@ -1305,10 +1452,21 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|info
+argument_list|(
+literal|"commit exception"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+name|gotCommitException
+operator|.
+name|set
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 name|commitDoneLatch
@@ -1381,7 +1539,7 @@ end_expr_stmt
 begin_expr_stmt
 name|assertTrue
 argument_list|(
-literal|"consumer added through failover"
+literal|"commit done through failover"
 argument_list|,
 name|commitDoneLatch
 operator|.
@@ -1393,6 +1551,19 @@ name|TimeUnit
 operator|.
 name|SECONDS
 argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|assertTrue
+argument_list|(
+literal|"commit failed"
+argument_list|,
+name|gotCommitException
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 end_expr_stmt
@@ -1412,6 +1583,95 @@ name|TimeUnit
 operator|.
 name|SECONDS
 argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|assertEquals
+argument_list|(
+literal|"get message 0 first"
+argument_list|,
+name|MESSAGE_TEXT
+operator|+
+literal|"0"
+argument_list|,
+name|receivedMessages
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_comment
+comment|// it was redelivered
+end_comment
+
+begin_expr_stmt
+name|assertEquals
+argument_list|(
+literal|"get message 0 second"
+argument_list|,
+name|MESSAGE_TEXT
+operator|+
+literal|"0"
+argument_list|,
+name|receivedMessages
+operator|.
+name|get
+argument_list|(
+literal|1
+argument_list|)
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|assertTrue
+argument_list|(
+literal|"another message was received"
+argument_list|,
+name|messagesReceived
+operator|.
+name|await
+argument_list|(
+literal|20
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|assertEquals
+argument_list|(
+literal|"get message 1 eventually"
+argument_list|,
+name|MESSAGE_TEXT
+operator|+
+literal|"1"
+argument_list|,
+name|receivedMessages
+operator|.
+name|get
+argument_list|(
+literal|2
+argument_list|)
+operator|.
+name|getText
+argument_list|()
 argument_list|)
 expr_stmt|;
 end_expr_stmt
@@ -1459,6 +1719,13 @@ operator|+
 literal|")"
 argument_list|)
 decl_stmt|;
+name|cf
+operator|.
+name|setConsumerFailoverRedeliveryWaitPeriod
+argument_list|(
+literal|10000
+argument_list|)
+expr_stmt|;
 specifier|final
 name|ActiveMQConnection
 name|connection
@@ -1781,7 +2048,7 @@ name|producerSession
 operator|.
 name|createTextMessage
 argument_list|(
-literal|"Test message "
+name|MESSAGE_TEXT
 operator|+
 name|i
 argument_list|)

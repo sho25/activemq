@@ -91,6 +91,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|TransactionRolledBackException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -184,6 +194,20 @@ operator|.
 name|command
 operator|.
 name|DestinationInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ExceptionResponse
 import|;
 end_import
 
@@ -835,14 +859,14 @@ name|IOException
 block|{
 name|Vector
 argument_list|<
-name|Command
+name|TransactionInfo
 argument_list|>
-name|toIgnore
+name|toRollback
 init|=
 operator|new
 name|Vector
 argument_list|<
-name|Command
+name|TransactionInfo
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -878,18 +902,19 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// ignore any empty (ack) transaction
+comment|// rollback any completed transactions - no way to know if commit got there
+comment|// or if reply went missing
+comment|//
 if|if
 condition|(
+operator|!
 name|transactionState
 operator|.
 name|getCommands
 argument_list|()
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|2
 condition|)
 block|{
 name|Command
@@ -902,6 +927,14 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
+name|transactionState
+operator|.
+name|getCommands
+argument_list|()
+operator|.
+name|size
+argument_list|()
+operator|-
 literal|1
 argument_list|)
 decl_stmt|;
@@ -944,7 +977,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"not replaying empty (ack) tx: "
+literal|"rolling back potentially completed tx: "
 operator|+
 name|transactionState
 operator|.
@@ -953,11 +986,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|toIgnore
+name|toRollback
 operator|.
 name|add
 argument_list|(
-name|lastCommand
+name|transactionInfo
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -1100,20 +1133,36 @@ block|}
 block|}
 for|for
 control|(
-name|Command
+name|TransactionInfo
 name|command
 range|:
-name|toIgnore
+name|toRollback
 control|)
 block|{
 comment|// respond to the outstanding commit
-name|Response
+name|ExceptionResponse
 name|response
 init|=
 operator|new
-name|Response
+name|ExceptionResponse
 argument_list|()
 decl_stmt|;
+name|response
+operator|.
+name|setException
+argument_list|(
+operator|new
+name|TransactionRolledBackException
+argument_list|(
+literal|"Transaction completion in doubt due to failover. Forcing rollback of "
+operator|+
+name|command
+operator|.
+name|getTransactionId
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|response
 operator|.
 name|setCorrelationId

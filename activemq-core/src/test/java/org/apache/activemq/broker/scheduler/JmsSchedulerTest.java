@@ -465,7 +465,7 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 operator|+
-literal|1000
+literal|4000
 decl_stmt|;
 name|message
 operator|.

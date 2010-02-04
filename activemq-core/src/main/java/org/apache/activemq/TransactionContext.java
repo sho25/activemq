@@ -1193,6 +1193,8 @@ operator|=
 literal|null
 expr_stmt|;
 comment|// Notify the listener that the tx was committed back
+try|try
+block|{
 name|syncSendPacketWithInterruptionHandling
 argument_list|(
 name|info
@@ -1214,6 +1216,47 @@ block|}
 name|afterCommit
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|cause
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"commit failed for transaction "
+operator|+
+name|info
+operator|.
+name|getTransactionId
+argument_list|()
+argument_list|,
+name|cause
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|localTransactionEventListener
+operator|!=
+literal|null
+condition|)
+block|{
+name|localTransactionEventListener
+operator|.
+name|rollbackEvent
+argument_list|()
+expr_stmt|;
+block|}
+name|afterRollback
+argument_list|()
+expr_stmt|;
+throw|throw
+name|cause
+throw|;
+block|}
 block|}
 block|}
 comment|// ///////////////////////////////////////////////////////////

@@ -1287,6 +1287,11 @@ name|connected
 operator|=
 literal|false
 expr_stmt|;
+name|stateTracker
+operator|.
+name|transportInterrupted
+argument_list|()
+expr_stmt|;
 comment|// notify before any reconnect attempt so ack state can be whacked
 if|if
 condition|(
@@ -1301,11 +1306,6 @@ name|transportInterupted
 argument_list|()
 expr_stmt|;
 block|}
-name|stateTracker
-operator|.
-name|transportInterrupted
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|reconnectOk

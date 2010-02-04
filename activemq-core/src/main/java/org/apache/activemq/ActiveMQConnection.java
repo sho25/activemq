@@ -1597,6 +1597,10 @@ specifier|protected
 name|CountDownLatch
 name|transportInterruptionProcessingComplete
 decl_stmt|;
+specifier|private
+name|long
+name|consumerFailoverRedeliveryWaitPeriod
+decl_stmt|;
 comment|/**      * Construct an<code>ActiveMQConnection</code>      *       * @param transport      * @param factoryStats      * @throws Exception      */
 specifier|protected
 name|ActiveMQConnection
@@ -7824,7 +7828,7 @@ name|transportInterruptionProcessingComplete
 operator|.
 name|await
 argument_list|(
-literal|15
+literal|10
 argument_list|,
 name|TimeUnit
 operator|.
@@ -7905,6 +7909,30 @@ name|SECONDS
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"transportInterruptionProcessingComplete for: "
+operator|+
+name|this
+operator|.
+name|getConnectionInfo
+argument_list|()
+operator|.
+name|getConnectionId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|this
@@ -7958,7 +7986,11 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"transportInterruptionProcessingComplete for: "
+literal|"notified failover transport ("
+operator|+
+name|failoverTransport
+operator|+
+literal|") of interruption completion for: "
 operator|+
 name|this
 operator|.
@@ -7973,6 +8005,31 @@ block|}
 block|}
 block|}
 block|}
+block|}
+comment|/*      * specify the amount of time in milliseconds that a consumer with a transaction pending recovery      * will wait to receive re dispatched messages.      * default value is 0 so there is no wait by default.      */
+specifier|public
+name|void
+name|setConsumerFailoverRedeliveryWaitPeriod
+parameter_list|(
+name|long
+name|consumerFailoverRedeliveryWaitPeriod
+parameter_list|)
+block|{
+name|this
+operator|.
+name|consumerFailoverRedeliveryWaitPeriod
+operator|=
+name|consumerFailoverRedeliveryWaitPeriod
+expr_stmt|;
+block|}
+specifier|public
+name|long
+name|getConsumerFailoverRedeliveryWaitPeriod
+parameter_list|()
+block|{
+return|return
+name|consumerFailoverRedeliveryWaitPeriod
+return|;
 block|}
 block|}
 end_class
