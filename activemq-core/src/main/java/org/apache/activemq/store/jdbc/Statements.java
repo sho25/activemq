@@ -1216,7 +1216,7 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" WHERE CONTAINER=? AND ID>= ? ORDER BY ID"
+literal|" WHERE CONTAINER=? AND ID> ? ORDER BY ID"
 expr_stmt|;
 block|}
 return|return
