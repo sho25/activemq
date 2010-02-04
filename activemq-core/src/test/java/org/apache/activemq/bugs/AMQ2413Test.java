@@ -985,7 +985,14 @@ throw|throw
 operator|new
 name|TimeoutException
 argument_list|(
-literal|"Message not received for more than "
+literal|"@count="
+operator|+
+name|count
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|" Message not received for more than "
 operator|+
 name|HANG_THRESHOLD
 operator|+
