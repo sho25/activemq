@@ -147,6 +147,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|TransactionRolledBackException
+import|;
+end_import
+
+begin_import
+import|import
 name|junit
 operator|.
 name|framework
@@ -949,6 +959,12 @@ return|return
 name|nextExpectedSeqNum
 return|;
 block|}
+specifier|final
+name|int
+name|TRANSACITON_BATCH
+init|=
+literal|500
+decl_stmt|;
 specifier|public
 name|void
 name|onMessage
@@ -975,7 +991,7 @@ condition|(
 operator|(
 name|seqNum
 operator|%
-literal|500
+name|TRANSACITON_BATCH
 operator|)
 operator|==
 literal|0
@@ -1071,6 +1087,31 @@ name|message
 operator|.
 name|getJMSMessageID
 argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|TransactionRolledBackException
+name|expectedSometimesOnFailoverRecovery
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"got rollback: "
+operator|+
+name|expectedSometimesOnFailoverRecovery
+argument_list|)
+expr_stmt|;
+comment|// batch will be replayed
+name|nextExpectedSeqNum
+operator|-=
+operator|(
+name|TRANSACITON_BATCH
+operator|-
+literal|1
+operator|)
 expr_stmt|;
 block|}
 catch|catch
