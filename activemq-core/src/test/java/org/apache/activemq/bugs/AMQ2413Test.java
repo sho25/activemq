@@ -325,7 +325,7 @@ specifier|final
 name|int
 name|HANG_THRESHOLD
 init|=
-literal|30
+literal|60
 decl_stmt|;
 specifier|private
 specifier|static
@@ -629,6 +629,11 @@ literal|"tcp://0.0.0.0:2401"
 argument_list|)
 expr_stmt|;
 comment|//factory = new ActiveMQConnectionFactory("vm://localhost?broker.useJmx=false&broker.persistent=false");
+name|setAutoFail
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|super
 operator|.
 name|setUp
@@ -820,9 +825,7 @@ argument_list|)
 expr_stmt|;
 block|}
 name|waitForMessageReceipt
-argument_list|(
-literal|300000
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 finally|finally
@@ -934,16 +937,12 @@ comment|/**      * @throws InterruptedException      * @throws TimeoutException 
 specifier|private
 name|void
 name|waitForMessageReceipt
-parameter_list|(
-name|long
-name|timeout
-parameter_list|)
+parameter_list|()
 throws|throws
 name|InterruptedException
 throws|,
 name|TimeoutException
 block|{
-comment|// TODO Auto-generated method stub
 try|try
 block|{
 while|while
