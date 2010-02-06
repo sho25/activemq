@@ -1835,7 +1835,7 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
-comment|// restart with out standing delivered message
+comment|// restart with outstanding delivered message
 name|broker
 operator|.
 name|stop
