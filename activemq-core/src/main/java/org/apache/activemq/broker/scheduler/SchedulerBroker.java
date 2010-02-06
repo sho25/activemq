@@ -459,6 +459,22 @@ name|directory
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+specifier|synchronized
+name|JobScheduler
+name|getJobScheduler
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
+operator|new
+name|JobSchedulerFacade
+argument_list|(
+name|this
+argument_list|)
+return|;
+block|}
 comment|/**      * @return the directory      */
 specifier|public
 name|File
@@ -738,7 +754,7 @@ argument_list|(
 name|messageSend
 argument_list|)
 decl_stmt|;
-name|getScheduler
+name|getInternalScheduler
 argument_list|()
 operator|.
 name|schedule
@@ -927,6 +943,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//Add the jobId as a property
+name|messageSend
+operator|.
+name|setProperty
+argument_list|(
+literal|"scheduledJobId"
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
 comment|//if this goes across a network - we don't want it rescheduled
 name|messageSend
 operator|.
@@ -1019,9 +1045,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|private
+specifier|protected
+specifier|synchronized
 name|JobScheduler
-name|getScheduler
+name|getInternalScheduler
 parameter_list|()
 throws|throws
 name|Exception
@@ -1054,7 +1081,7 @@ argument_list|()
 operator|.
 name|getJobScheduler
 argument_list|(
-literal|"ActiveMQ"
+literal|"JMS"
 argument_list|)
 expr_stmt|;
 name|this

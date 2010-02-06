@@ -413,6 +413,7 @@ init|=
 literal|"/jmxrmi"
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicBoolean
 name|started
 init|=
@@ -423,6 +424,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicBoolean
 name|connectorStarting
 init|=
@@ -445,6 +447,7 @@ name|Registry
 name|registry
 decl_stmt|;
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|ObjectName
@@ -544,6 +547,8 @@ argument_list|(
 literal|"JMX connector"
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1403,6 +1408,26 @@ argument_list|(
 name|name
 argument_list|,
 name|query
+argument_list|)
+return|;
+block|}
+specifier|public
+name|ObjectInstance
+name|getObjectInstance
+parameter_list|(
+name|ObjectName
+name|name
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+return|return
+name|getMBeanServer
+argument_list|()
+operator|.
+name|getObjectInstance
+argument_list|(
+name|name
 argument_list|)
 return|;
 block|}

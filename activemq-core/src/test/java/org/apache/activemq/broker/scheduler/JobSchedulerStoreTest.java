@@ -258,7 +258,7 @@ expr_stmt|;
 block|}
 name|List
 argument_list|<
-name|ByteSequence
+name|Job
 argument_list|>
 name|test
 init|=
@@ -367,7 +367,7 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getData
+name|getPayload
 argument_list|()
 argument_list|)
 decl_stmt|;

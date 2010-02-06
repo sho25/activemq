@@ -21,16 +21,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|List
@@ -52,17 +42,20 @@ import|;
 end_import
 
 begin_interface
+specifier|public
 interface|interface
 name|JobScheduler
 block|{
-comment|/**      * @return the name of the scheduler      */
+comment|/**      * @return the name of the scheduler      * @throws Exception       */
 specifier|public
 specifier|abstract
 name|String
 name|getName
 parameter_list|()
+throws|throws
+name|Exception
 function_decl|;
-comment|/**  * Add a Job listener  * @param l  */
+comment|/**  * Add a Job listener  * @param l  * @throws Exception   */
 specifier|public
 specifier|abstract
 name|void
@@ -71,8 +64,10 @@ parameter_list|(
 name|JobListener
 name|l
 parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
-comment|/**  * remove a JobListener  * @param l  */
+comment|/**  * remove a JobListener  * @param l  * @throws Exception   */
 specifier|public
 specifier|abstract
 name|void
@@ -81,8 +76,10 @@ parameter_list|(
 name|JobListener
 name|l
 parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
-comment|/**      * Add a job to be scheduled      * @param jobId a unique identifier for the job      * @param payload the message to be sent when the job is scheduled      * @param delay the time in milliseconds before the job will be run      * @throws IOException      */
+comment|/**      * Add a job to be scheduled      * @param jobId a unique identifier for the job      * @param payload the message to be sent when the job is scheduled      * @param delay the time in milliseconds before the job will be run      * @throws Exception      */
 specifier|public
 specifier|abstract
 name|void
@@ -98,9 +95,9 @@ name|long
 name|delay
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 function_decl|;
-comment|/**      * Add a job to be scheduled      * @param jobId a unique identifier for the job      * @param payload the message to be sent when the job is scheduled      * @param start       * @param period the time in milliseconds between successive executions of the Job      * @param repeat the number of times to execute the job - less than 0 will be repeated forever      * @throws IOException      */
+comment|/**      * Add a job to be scheduled      * @param jobId a unique identifier for the job      * @param payload the message to be sent when the job is scheduled      * @param start       * @param period the time in milliseconds between successive executions of the Job      * @param repeat the number of times to execute the job - less than 0 will be repeated forever      * @throws Exception      */
 specifier|public
 specifier|abstract
 name|void
@@ -122,9 +119,9 @@ name|int
 name|repeat
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 function_decl|;
-comment|/**      * remove all jobs scheduled to run at this time      * @param time      * @throws IOException      */
+comment|/**      * remove all jobs scheduled to run at this time      * @param time      * @throws Exception       */
 specifier|public
 specifier|abstract
 name|void
@@ -134,9 +131,9 @@ name|long
 name|time
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 function_decl|;
-comment|/**      * remove a job with the matching jobId      * @param jobId      * @throws IOException      */
+comment|/**      * remove a job with the matching jobId      * @param jobId      * @throws Exception       */
 specifier|public
 specifier|abstract
 name|void
@@ -146,28 +143,82 @@ name|String
 name|jobId
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 function_decl|;
-comment|/**      * Get all the jobs scheduled to run next      * @return a list of messages that will be scheduled next      * @throws IOException      */
+comment|/**      * remove all the Jobs from the scheduler      * @throws Exception      */
 specifier|public
 specifier|abstract
-name|List
-argument_list|<
-name|ByteSequence
-argument_list|>
-name|getNextScheduleJobs
+name|void
+name|removeAllJobs
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 function_decl|;
-comment|/**      * Get the next time jobs will be fired      * @return the time in milliseconds      * @throws IOException       */
+comment|/**      * remove all the Jobs from the scheduler that are due between the start and finish times      * @param start time in milliseconds      * @param finish time in milliseconds      * @throws Exception      */
+specifier|public
+specifier|abstract
+name|void
+name|removeAllJobs
+parameter_list|(
+name|long
+name|start
+parameter_list|,
+name|long
+name|finish
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Get the next time jobs will be fired      * @return the time in milliseconds      * @throws Exception       */
 specifier|public
 specifier|abstract
 name|long
 name|getNextScheduleTime
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
+function_decl|;
+comment|/**      * Get all the jobs scheduled to run next      * @return a list of jobs that will be scheduled next      * @throws Exception      */
+specifier|public
+specifier|abstract
+name|List
+argument_list|<
+name|Job
+argument_list|>
+name|getNextScheduleJobs
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Get all the outstanding Jobs      * @return a  list of all jobs      * @throws Exception       */
+specifier|public
+specifier|abstract
+name|List
+argument_list|<
+name|Job
+argument_list|>
+name|getAllJobs
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Get all outstanding jobs due to run between start and finish      * @param start      * @param finish      * @return a list of jobs      * @throws Exception      */
+specifier|public
+specifier|abstract
+name|List
+argument_list|<
+name|Job
+argument_list|>
+name|getAllJobs
+parameter_list|(
+name|long
+name|start
+parameter_list|,
+name|long
+name|finish
+parameter_list|)
+throws|throws
+name|Exception
 function_decl|;
 block|}
 end_interface

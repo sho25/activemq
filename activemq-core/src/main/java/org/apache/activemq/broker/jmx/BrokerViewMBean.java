@@ -717,6 +717,15 @@ name|String
 name|getDataDirectory
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"JMSJobScheduler"
+argument_list|)
+name|ObjectName
+name|getJMSJobScheduler
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

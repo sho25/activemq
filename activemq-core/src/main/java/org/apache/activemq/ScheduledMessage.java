@@ -45,6 +45,15 @@ name|AMQ_SCHEDULED_REPEAT
 init|=
 literal|"AMQ_SCHEDULED_REPEAT"
 decl_stmt|;
+comment|/**      * Use a Cron tab entry to set the schedule      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|AMQ_SCHEDULED_CRON
+init|=
+literal|"AMQ_SCHEDULED_CRON"
+decl_stmt|;
 block|}
 end_interface
 
