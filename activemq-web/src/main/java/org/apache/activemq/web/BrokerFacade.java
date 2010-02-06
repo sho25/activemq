@@ -101,6 +101,22 @@ name|broker
 operator|.
 name|jmx
 operator|.
+name|JobSchedulerViewMBean
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|jmx
+operator|.
 name|NetworkConnectorViewMBean
 import|;
 end_import
@@ -336,6 +352,23 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/** 	 * Get the JobScheduler MBean 	 * @return the jobScheduler or null if not configured 	 * @throws Exception 	 */
+name|JobSchedulerViewMBean
+name|getJobScheduler
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Get the JobScheduler MBean      * @return the jobScheduler or null if not configured      * @throws Exception      */
+name|Collection
+argument_list|<
+name|JobFacade
+argument_list|>
+name|getScheduledJobs
+parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
