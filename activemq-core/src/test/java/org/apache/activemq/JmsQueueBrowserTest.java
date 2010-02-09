@@ -135,6 +135,22 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|BaseDestination
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -1067,13 +1083,18 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|assertEquals
+comment|// currently browse max page size is ignored for a queue browser consumer
+comment|// only guarantee is a page size - but a snapshot of pagedinpending is
+comment|// used so it is most likely more
+name|assertTrue
 argument_list|(
-literal|"got all: "
-argument_list|,
-name|numMessages
+literal|"got at least our expected minimum in the browser: "
 argument_list|,
 name|i
+operator|>
+name|BaseDestination
+operator|.
+name|MAX_PAGE_SIZE
 argument_list|)
 expr_stmt|;
 name|assertFalse
