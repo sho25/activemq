@@ -854,7 +854,7 @@ block|{
 operator|new
 name|Boolean
 argument_list|(
-name|noLocal
+name|useRAManagedTransaction
 argument_list|)
 expr_stmt|;
 return|return
@@ -873,7 +873,7 @@ name|errorMessages
 operator|.
 name|add
 argument_list|(
-literal|"noLocal must be set to: true or false."
+literal|"useRAManagedTransaction must be set to: true or false."
 argument_list|)
 expr_stmt|;
 return|return
