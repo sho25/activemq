@@ -31,6 +31,26 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|PostConstruct
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|PreDestroy
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|jms
 operator|.
 name|Connection
@@ -253,36 +273,8 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|springframework
-operator|.
-name|beans
-operator|.
-name|factory
-operator|.
-name|DisposableBean
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|springframework
-operator|.
-name|beans
-operator|.
-name|factory
-operator|.
-name|InitializingBean
-import|;
-end_import
-
 begin_comment
-comment|/**  * A helper bean which populates a {@link CamelContext} with ActiveMQ Queue endpoints  *  * @version $Revision: 1.1 $  */
+comment|/**  * A helper bean which populates a {@link CamelContext} with ActiveMQ Queue endpoints  *  * @version $Revision: 1.1 $  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
@@ -290,10 +282,6 @@ specifier|public
 class|class
 name|CamelEndpointLoader
 implements|implements
-name|InitializingBean
-implements|,
-name|DisposableBean
-implements|,
 name|CamelContextAware
 block|{
 specifier|private
@@ -346,6 +334,9 @@ operator|=
 name|camelContext
 expr_stmt|;
 block|}
+comment|/**      *      * @throws Exception      * @org.apache.xbean.InitMethod      */
+annotation|@
+name|PostConstruct
 specifier|public
 name|void
 name|afterPropertiesSet
@@ -596,6 +587,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      *      * @throws Exception      * @org.apache.xbean.DestroyMethod      */
+annotation|@
+name|PreDestroy
 specifier|public
 name|void
 name|destroy

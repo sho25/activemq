@@ -179,6 +179,26 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|PostConstruct
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|PreDestroy
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|management
 operator|.
 name|MalformedObjectNameException
@@ -1106,7 +1126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Manages the lifecycle of an ActiveMQ Broker. A BrokerService consists of a  * number of transport connectors, network connectors and a bunch of properties  * which can be used to configure the broker as its lazily created.  *   * @version $Revision: 1.1 $  */
+comment|/**  * Manages the lifecycle of an ActiveMQ Broker. A BrokerService consists of a  * number of transport connectors, network connectors and a bunch of properties  * which can be used to configure the broker as its lazily created.  *   * @version $Revision: 1.1 $  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
@@ -2453,6 +2473,9 @@ expr_stmt|;
 block|}
 comment|// Service interface
 comment|// -------------------------------------------------------------------------
+comment|/**      *      * @throws Exception      * @org. apache.xbean.InitMethod      */
+annotation|@
+name|PostConstruct
 specifier|public
 name|void
 name|start
@@ -2822,6 +2845,9 @@ name|e
 throw|;
 block|}
 block|}
+comment|/**      *      * @throws Exception      * @org.apache .xbean.DestroyMethod      */
+annotation|@
+name|PreDestroy
 specifier|public
 name|void
 name|stop

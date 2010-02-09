@@ -17,15 +17,11 @@ end_package
 
 begin_import
 import|import
-name|org
+name|javax
 operator|.
-name|springframework
+name|annotation
 operator|.
-name|beans
-operator|.
-name|factory
-operator|.
-name|BeanNameAware
+name|PostConstruct
 import|;
 end_import
 
@@ -39,7 +35,7 @@ name|beans
 operator|.
 name|factory
 operator|.
-name|InitializingBean
+name|BeanNameAware
 import|;
 end_import
 
@@ -60,8 +56,6 @@ name|activemq
 operator|.
 name|ActiveMQConnectionFactory
 implements|implements
-name|InitializingBean
-implements|,
 name|BeanNameAware
 block|{
 specifier|private
@@ -72,6 +66,9 @@ specifier|private
 name|boolean
 name|useBeanNameAsClientIdPrefix
 decl_stmt|;
+comment|/**      *      * @throws Exception      * @org.apache.xbean.InitMethod      */
+annotation|@
+name|PostConstruct
 specifier|public
 name|void
 name|afterPropertiesSet

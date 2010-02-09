@@ -39,6 +39,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|PostConstruct
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -407,20 +417,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|springframework
-operator|.
-name|beans
-operator|.
-name|factory
-operator|.
-name|InitializingBean
-import|;
-end_import
-
 begin_comment
 comment|/**  * A simple Broker intercepter which allows you to enable/disable logging.  *   * @org.apache.xbean.XBean  */
 end_comment
@@ -431,8 +427,6 @@ class|class
 name|LoggingBrokerPlugin
 extends|extends
 name|BrokerPluginSupport
-implements|implements
-name|InitializingBean
 block|{
 specifier|private
 specifier|static
@@ -491,6 +485,9 @@ name|logInternalEvents
 init|=
 literal|false
 decl_stmt|;
+comment|/**      *      * @throws Exception      * @org.apache.xbean.InitMethod      */
+annotation|@
+name|PostConstruct
 specifier|public
 name|void
 name|afterPropertiesSet

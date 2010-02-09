@@ -89,6 +89,16 @@ begin_import
 import|import
 name|javax
 operator|.
+name|annotation
+operator|.
+name|PostConstruct
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
 name|net
 operator|.
 name|ssl
@@ -153,20 +163,6 @@ name|org
 operator|.
 name|springframework
 operator|.
-name|beans
-operator|.
-name|factory
-operator|.
-name|InitializingBean
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|springframework
-operator|.
 name|core
 operator|.
 name|io
@@ -185,8 +181,6 @@ class|class
 name|SpringSslContext
 extends|extends
 name|SslContext
-implements|implements
-name|InitializingBean
 block|{
 specifier|private
 name|String
@@ -240,6 +234,9 @@ specifier|private
 name|String
 name|trustStorePassword
 decl_stmt|;
+comment|/**      *      * @throws Exception      * @org.apache.xbean.InitMethod      */
+annotation|@
+name|PostConstruct
 specifier|public
 name|void
 name|afterPropertiesSet

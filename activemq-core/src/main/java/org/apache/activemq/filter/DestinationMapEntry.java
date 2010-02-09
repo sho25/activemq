@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|PostConstruct
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -57,22 +67,8 @@ name|ActiveMQTopic
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|springframework
-operator|.
-name|beans
-operator|.
-name|factory
-operator|.
-name|InitializingBean
-import|;
-end_import
-
 begin_comment
-comment|/**  * A base class for entry objects used to construct a destination based policy  * map.  *   * @version $Revision: 1.1 $  */
+comment|/**  * A base class for entry objects used to construct a destination based policy  * map.  *   * @version $Revision: 1.1 $  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
@@ -81,8 +77,6 @@ specifier|abstract
 class|class
 name|DestinationMapEntry
 implements|implements
-name|InitializingBean
-implements|,
 name|Comparable
 block|{
 specifier|private
@@ -221,6 +215,9 @@ operator|=
 name|destination
 expr_stmt|;
 block|}
+comment|/**      *      * @throws Exception      * @org.apache.xbean.InitMethod      */
+annotation|@
+name|PostConstruct
 specifier|public
 name|void
 name|afterPropertiesSet

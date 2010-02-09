@@ -27,6 +27,26 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|PostConstruct
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|PreDestroy
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -196,10 +216,6 @@ name|XBeanBrokerService
 extends|extends
 name|BrokerService
 implements|implements
-name|InitializingBean
-implements|,
-name|DisposableBean
-implements|,
 name|ApplicationContextAware
 block|{
 specifier|private
@@ -240,6 +256,9 @@ specifier|public
 name|XBeanBrokerService
 parameter_list|()
 block|{     }
+comment|/**      *      * @throws Exception      * @org.apache.xbean.InitMethod      */
+annotation|@
+name|PostConstruct
 specifier|public
 name|void
 name|afterPropertiesSet
@@ -405,6 +424,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      *      * @throws Exception      * @org.apache.xbean.DestroyMethod      */
+annotation|@
+name|PreDestroy
 specifier|public
 name|void
 name|destroy

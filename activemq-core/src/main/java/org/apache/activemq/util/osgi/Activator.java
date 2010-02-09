@@ -230,7 +230,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An OSGi bundle activator for ActiveMQ which adapts the {@link org.apache.activemq.util.FactoryFinder}  * to the OSGi enviorment.  *  */
+comment|/**  * An OSGi bundle activator for ActiveMQ which adapts the {@link org.apache.activemq.util.FactoryFinder}  * to the OSGi environment.  *  */
 end_comment
 
 begin_class
@@ -301,6 +301,22 @@ specifier|private
 name|BundleContext
 name|bundleContext
 decl_stmt|;
+comment|/**      * constructor for use as a blueprint bean rather than bundle activator      * @param bundleContext      */
+specifier|public
+name|Activator
+parameter_list|(
+name|BundleContext
+name|bundleContext
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|start
+argument_list|(
+name|bundleContext
+argument_list|)
+expr_stmt|;
+block|}
 comment|// ================================================================
 comment|// BundleActivator interface impl
 comment|// ================================================================
