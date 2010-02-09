@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Configuration based on JNDI values.  *   * @version $Revision: $  */
+comment|/**  * Configuration based on JNDI values.  *  * @version $Revision: $  */
 end_comment
 
 begin_class
@@ -383,7 +383,7 @@ block|{
 return|return
 name|getJndiString
 argument_list|(
-name|JNDI_JMX_USER
+name|JNDI_JMX_PASSWORD
 argument_list|)
 return|;
 block|}
@@ -395,7 +395,7 @@ block|{
 return|return
 name|getJndiString
 argument_list|(
-name|JNDI_JMX_PASSWORD
+name|JNDI_JMX_USER
 argument_list|)
 return|;
 block|}
