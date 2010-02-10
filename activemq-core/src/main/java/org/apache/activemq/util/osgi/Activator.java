@@ -301,22 +301,6 @@ specifier|private
 name|BundleContext
 name|bundleContext
 decl_stmt|;
-comment|/**      * constructor for use as a blueprint bean rather than bundle activator      * @param bundleContext      */
-specifier|public
-name|Activator
-parameter_list|(
-name|BundleContext
-name|bundleContext
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-name|start
-argument_list|(
-name|bundleContext
-argument_list|)
-expr_stmt|;
-block|}
 comment|// ================================================================
 comment|// BundleActivator interface impl
 comment|// ================================================================
