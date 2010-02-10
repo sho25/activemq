@@ -41,20 +41,6 @@ name|jetty
 operator|.
 name|server
 operator|.
-name|Handler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jetty
-operator|.
-name|server
-operator|.
 name|Server
 import|;
 end_import
@@ -239,7 +225,13 @@ argument_list|(
 name|server
 argument_list|)
 expr_stmt|;
-comment|/*server.setHandlers(new Handler[] {             context         });*/
+name|server
+operator|.
+name|setHandler
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
 name|server
 operator|.
 name|setConnectors

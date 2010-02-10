@@ -319,7 +319,13 @@ argument_list|(
 name|server
 argument_list|)
 expr_stmt|;
-comment|/*server.setHandlers(new Handler[] {             context         });*/
+name|server
+operator|.
+name|setHandler
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
 name|server
 operator|.
 name|setConnectors

@@ -991,6 +991,13 @@ comment|// Get the continuation object (may wait and/or retry
 comment|// request here).
 name|continuation
 operator|.
+name|setTimeout
+argument_list|(
+name|timeout
+argument_list|)
+expr_stmt|;
+name|continuation
+operator|.
 name|suspend
 argument_list|()
 expr_stmt|;
