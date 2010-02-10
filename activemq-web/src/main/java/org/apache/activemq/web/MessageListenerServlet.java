@@ -1341,13 +1341,6 @@ argument_list|(
 name|request
 argument_list|)
 decl_stmt|;
-name|continuation
-operator|.
-name|setTimeout
-argument_list|(
-name|timeout
-argument_list|)
-expr_stmt|;
 name|Listener
 name|listener
 init|=
@@ -1369,7 +1362,7 @@ operator|&&
 operator|!
 name|continuation
 operator|.
-name|isSuspended
+name|isInitial
 argument_list|()
 condition|)
 block|{
@@ -1487,6 +1480,11 @@ condition|(
 name|message
 operator|==
 literal|null
+operator|&&
+name|continuation
+operator|.
+name|isInitial
+argument_list|()
 condition|)
 block|{
 comment|// register this continuation with our listener.
@@ -1501,17 +1499,18 @@ comment|// Get the continuation object (may wait and/or retry
 comment|// request here).
 name|continuation
 operator|.
+name|setTimeout
+argument_list|(
+name|timeout
+argument_list|)
+expr_stmt|;
+name|continuation
+operator|.
 name|suspend
 argument_list|()
 expr_stmt|;
+return|return;
 block|}
-name|listener
-operator|.
-name|setContinuation
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
 comment|// prepare the responds
 name|response
 operator|.
