@@ -1341,6 +1341,13 @@ argument_list|(
 name|request
 argument_list|)
 decl_stmt|;
+name|continuation
+operator|.
+name|setTimeout
+argument_list|(
+name|timeout
+argument_list|)
+expr_stmt|;
 name|Listener
 name|listener
 init|=
