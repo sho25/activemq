@@ -97,7 +97,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Add a job to be scheduled      * @param jobId a unique identifier for the job      * @param payload the message to be sent when the job is scheduled      * @param start       * @param period the time in milliseconds between successive executions of the Job      * @param repeat the number of times to execute the job - less than 0 will be repeated forever      * @throws Exception      */
+comment|/**      * Add a job to be scheduled      * @param jobId a unique identifier for the job      * @param payload the message to be sent when the job is scheduled      * @param cronEntry - cron entry      * @throws Exception      */
 specifier|public
 specifier|abstract
 name|void
@@ -109,8 +109,29 @@ parameter_list|,
 name|ByteSequence
 name|payload
 parameter_list|,
+name|String
+name|cronEntry
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Add a job to be scheduled      * @param jobId a unique identifier for the job      * @param payload the message to be sent when the job is scheduled      * @param cronEntry - cron entry      * @param delay time in ms to wait before scheduling      * @param period the time in milliseconds between successive executions of the Job      * @param repeat the number of times to execute the job - less than 0 will be repeated forever      * @throws Exception      */
+specifier|public
+specifier|abstract
+name|void
+name|schedule
+parameter_list|(
+name|String
+name|jobId
+parameter_list|,
+name|ByteSequence
+name|payload
+parameter_list|,
+name|String
+name|cronEntry
+parameter_list|,
 name|long
-name|start
+name|delay
 parameter_list|,
 name|long
 name|period

@@ -43,6 +43,13 @@ name|long
 name|getStart
 parameter_list|()
 function_decl|;
+comment|/**      * @return the Delay      */
+specifier|public
+specifier|abstract
+name|long
+name|getDelay
+parameter_list|()
+function_decl|;
 comment|/**      * @return the period      */
 specifier|public
 specifier|abstract

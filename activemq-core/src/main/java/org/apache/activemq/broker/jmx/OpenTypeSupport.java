@@ -2844,6 +2844,17 @@ argument_list|)
 expr_stmt|;
 name|addItem
 argument_list|(
+literal|"delay"
+argument_list|,
+literal|"initial delay"
+argument_list|,
+name|SimpleType
+operator|.
+name|LONG
+argument_list|)
+expr_stmt|;
+name|addItem
+argument_list|(
 literal|"next"
 argument_list|,
 literal|"next time"
@@ -2951,6 +2962,18 @@ argument_list|,
 name|job
 operator|.
 name|getStartTime
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|rc
+operator|.
+name|put
+argument_list|(
+literal|"delay"
+argument_list|,
+name|job
+operator|.
+name|getDelay
 argument_list|()
 argument_list|)
 expr_stmt|;

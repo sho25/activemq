@@ -219,11 +219,6 @@ decl_stmt|;
 name|long
 name|startTime
 init|=
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-operator|+
 literal|10000
 decl_stmt|;
 for|for
@@ -247,6 +242,8 @@ operator|)
 argument_list|,
 name|job
 argument_list|,
+literal|""
+argument_list|,
 name|startTime
 argument_list|,
 literal|10000
@@ -264,7 +261,7 @@ name|test
 init|=
 name|js
 operator|.
-name|getNextScheduleJobs
+name|getAllJobs
 argument_list|()
 decl_stmt|;
 name|assertEquals
@@ -303,7 +300,7 @@ name|test
 operator|=
 name|js
 operator|.
-name|getNextScheduleJobs
+name|getAllJobs
 argument_list|()
 expr_stmt|;
 name|assertEquals

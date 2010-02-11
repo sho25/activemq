@@ -2075,7 +2075,7 @@ block|}
 block|}
 specifier|synchronized
 name|ByteSequence
-name|getJob
+name|getPayload
 parameter_list|(
 name|Location
 name|location

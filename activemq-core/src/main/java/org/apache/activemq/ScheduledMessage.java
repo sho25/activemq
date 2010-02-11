@@ -18,14 +18,14 @@ specifier|public
 interface|interface
 name|ScheduledMessage
 block|{
-comment|/**      * The time in milliseconds that a message will be scheduled to be delivered by the broker      */
+comment|/**      * The time in milliseconds that a message will wait before being scheduled to be       * delivered by the broker      */
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|AMQ_SCHEDULED_START
+name|AMQ_SCHEDULED_DELAY
 init|=
-literal|"AMQ_SCHEDULED_START_TIME"
+literal|"AMQ_SCHEDULED_DELAY"
 decl_stmt|;
 comment|/**      * The time in milliseconds to wait after the start time to wait before scheduling the message again      */
 specifier|public
