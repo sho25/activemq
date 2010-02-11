@@ -443,11 +443,11 @@ name|latch
 operator|.
 name|await
 argument_list|(
-literal|2
+literal|120
 argument_list|,
 name|TimeUnit
 operator|.
-name|MINUTES
+name|SECONDS
 argument_list|)
 expr_stmt|;
 name|assertEquals
