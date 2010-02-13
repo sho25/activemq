@@ -167,7 +167,7 @@ specifier|final
 name|int
 name|COUNT
 init|=
-literal|100
+literal|1000
 decl_stmt|;
 name|Map
 argument_list|<
@@ -357,7 +357,7 @@ specifier|final
 name|int
 name|COUNT
 init|=
-literal|100
+literal|1000
 decl_stmt|;
 name|Map
 argument_list|<
@@ -552,7 +552,7 @@ specifier|final
 name|int
 name|COUNT
 init|=
-literal|200
+literal|2000
 decl_stmt|;
 name|Map
 argument_list|<
