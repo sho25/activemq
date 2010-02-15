@@ -544,7 +544,7 @@ condition|)
 block|{
 name|host
 operator|=
-name|data
+name|brokerData
 operator|.
 name|getPath
 argument_list|()
