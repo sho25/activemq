@@ -2667,6 +2667,15 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+name|super
+operator|.
+name|sendToDeadLetterQueue
+argument_list|(
+name|context
+argument_list|,
+name|messageReference
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
