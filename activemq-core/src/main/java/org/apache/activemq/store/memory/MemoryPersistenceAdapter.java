@@ -938,6 +938,26 @@ return|return
 literal|0
 return|;
 block|}
+specifier|public
+name|void
+name|setCreateTransactionStore
+parameter_list|(
+name|boolean
+name|create
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+if|if
+condition|(
+name|create
+condition|)
+block|{
+name|createTransactionStore
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 block|}
 end_class
 
