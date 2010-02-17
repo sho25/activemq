@@ -70,6 +70,29 @@ annotation|@
 name|Override
 specifier|protected
 name|void
+name|setUp
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|this
+operator|.
+name|initialConsumerDelay
+operator|=
+literal|10
+operator|*
+literal|1000
+expr_stmt|;
+name|super
+operator|.
+name|setUp
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|protected
+name|void
 name|configureBroker
 parameter_list|(
 name|BrokerService
@@ -132,13 +155,7 @@ expr_stmt|;
 comment|// The setEnableJournalDiskSyncs(false) setting is a little dangerous right now, as I have not verified
 comment|// what happens if the index is updated but a journal update is lost.
 comment|// Index is going to be in consistent, but can it be repaired?
-name|kaha
-operator|.
-name|setEnableJournalDiskSyncs
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
+comment|//kaha.setEnableJournalDiskSyncs(false);
 comment|// Using a bigger journal file size makes he take fewer spikes as it is not switching files as often.
 comment|//kaha.setJournalMaxFileLength(1024*1024*100);
 comment|// small batch means more frequent and smaller writes
