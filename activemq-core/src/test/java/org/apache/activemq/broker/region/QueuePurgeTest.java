@@ -822,6 +822,18 @@ name|getQueueSize
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"usage goes to duck"
+argument_list|,
+literal|0
+argument_list|,
+name|proxy
+operator|.
+name|getMemoryPercentUsage
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 name|QueueViewMBean

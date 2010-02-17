@@ -449,17 +449,9 @@ comment|// start from the first
 name|EntryLocation
 name|entry
 init|=
-name|loadEntry
+name|getFirst
 argument_list|(
 name|tx
-argument_list|,
-name|getRoot
-argument_list|(
-name|tx
-argument_list|)
-operator|.
-name|getNext
-argument_list|()
 argument_list|)
 decl_stmt|;
 while|while
@@ -479,7 +471,7 @@ argument_list|()
 decl_stmt|;
 name|entry
 operator|=
-name|loadEntry
+name|getNext
 argument_list|(
 name|tx
 argument_list|,
