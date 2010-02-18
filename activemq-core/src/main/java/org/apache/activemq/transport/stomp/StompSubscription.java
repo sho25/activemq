@@ -448,7 +448,7 @@ argument_list|)
 decl_stmt|;
 name|protocolConverter
 operator|.
-name|getTransportFilter
+name|getStompTransport
 argument_list|()
 operator|.
 name|sendToActiveMQ
@@ -565,7 +565,7 @@ expr_stmt|;
 block|}
 name|protocolConverter
 operator|.
-name|getTransportFilter
+name|getStompTransport
 argument_list|()
 operator|.
 name|sendToStomp

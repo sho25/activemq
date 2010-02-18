@@ -764,8 +764,8 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|StompTransportFilter
-name|transportFilter
+name|StompTransport
+name|stompTransport
 decl_stmt|;
 specifier|private
 specifier|final
@@ -815,8 +815,8 @@ decl_stmt|;
 specifier|public
 name|ProtocolConverter
 parameter_list|(
-name|StompTransportFilter
-name|stompTransportFilter
+name|StompTransport
+name|stompTransport
 parameter_list|,
 name|FrameTranslator
 name|translator
@@ -827,9 +827,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|transportFilter
+name|stompTransport
 operator|=
-name|stompTransportFilter
+name|stompTransport
 expr_stmt|;
 name|this
 operator|.
@@ -997,7 +997,7 @@ argument_list|,
 name|receiptId
 argument_list|)
 expr_stmt|;
-name|transportFilter
+name|stompTransport
 operator|.
 name|sendToStomp
 argument_list|(
@@ -1064,7 +1064,7 @@ name|handler
 argument_list|)
 expr_stmt|;
 block|}
-name|transportFilter
+name|stompTransport
 operator|.
 name|sendToActiveMQ
 argument_list|(
@@ -1082,7 +1082,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|transportFilter
+name|stompTransport
 operator|.
 name|sendToStomp
 argument_list|(
@@ -1428,7 +1428,7 @@ name|isFatal
 argument_list|()
 condition|)
 block|{
-name|getTransportFilter
+name|getStompTransport
 argument_list|()
 operator|.
 name|onException
@@ -3239,7 +3239,7 @@ name|connectionInfo
 operator|.
 name|setTransportContext
 argument_list|(
-name|transportFilter
+name|stompTransport
 operator|.
 name|getPeerCertificates
 argument_list|()
@@ -3295,7 +3295,7 @@ argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
-name|getTransportFilter
+name|getStompTransport
 argument_list|()
 operator|.
 name|onException
@@ -3387,7 +3387,7 @@ argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
-name|getTransportFilter
+name|getStompTransport
 argument_list|()
 operator|.
 name|onException
@@ -3913,12 +3913,12 @@ return|;
 block|}
 block|}
 specifier|public
-name|StompTransportFilter
-name|getTransportFilter
+name|StompTransport
+name|getStompTransport
 parameter_list|()
 block|{
 return|return
-name|transportFilter
+name|stompTransport
 return|;
 block|}
 specifier|public

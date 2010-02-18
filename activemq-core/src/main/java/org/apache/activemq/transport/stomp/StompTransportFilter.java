@@ -185,6 +185,8 @@ class|class
 name|StompTransportFilter
 extends|extends
 name|TransportFilter
+implements|implements
+name|StompTransport
 block|{
 specifier|private
 specifier|static
