@@ -245,7 +245,7 @@ name|boolean
 name|hasNext
 parameter_list|()
 function_decl|;
-comment|/**      * @return the next pending message      */
+comment|/**      * @return the next pending message with its reference count increment      */
 name|MessageReference
 name|next
 parameter_list|()

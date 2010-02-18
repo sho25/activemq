@@ -884,6 +884,11 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|node
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|node
@@ -2783,6 +2788,11 @@ block|{
 name|pending
 operator|.
 name|remove
+argument_list|()
+expr_stmt|;
+name|node
+operator|.
+name|decrementReferenceCount
 argument_list|()
 expr_stmt|;
 if|if

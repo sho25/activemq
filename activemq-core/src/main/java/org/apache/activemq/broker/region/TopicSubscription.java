@@ -980,6 +980,11 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|node
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|broker
@@ -1078,6 +1083,11 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|node
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|node
@@ -1807,6 +1817,11 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|message
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
 name|matched
 operator|.
 name|remove

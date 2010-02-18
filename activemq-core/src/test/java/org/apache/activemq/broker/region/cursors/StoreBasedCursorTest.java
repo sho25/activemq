@@ -49,16 +49,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|ConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|DeliveryMode
 import|;
 end_import
@@ -100,6 +90,16 @@ operator|.
 name|jms
 operator|.
 name|TextMessage
+import|;
+end_import
+
+begin_import
+import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|TestCase
 import|;
 end_import
 
@@ -179,16 +179,6 @@ name|SystemUsage
 import|;
 end_import
 
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -205,7 +195,7 @@ decl_stmt|;
 name|BrokerService
 name|broker
 decl_stmt|;
-name|ConnectionFactory
+name|ActiveMQConnectionFactory
 name|factory
 decl_stmt|;
 name|Connection
@@ -222,10 +212,13 @@ name|messageSize
 init|=
 literal|1024
 decl_stmt|;
+comment|// actual message is messageSize*2, and 4*MessageSize would allow 2 messages be delivered, but the flush of the cache is async so the flush
+comment|// triggered on 2nd message maxing out the usage may not be in effect for the 3rd message to succeed. Making the memory usage more lenient
+comment|// gives the usageChange listener in the cursor an opportunity to kick in.
 name|int
 name|memoryLimit
 init|=
-literal|5
+literal|12
 operator|*
 name|messageSize
 decl_stmt|;
@@ -253,6 +246,13 @@ operator|=
 operator|new
 name|BrokerService
 argument_list|()
+expr_stmt|;
+name|broker
+operator|.
+name|setAdvisorySupport
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -304,6 +304,13 @@ operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
 literal|"vm://localhost?jms.alwaysSyncSend=true"
+argument_list|)
+expr_stmt|;
+name|factory
+operator|.
+name|setWatchTopicAdvisories
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 name|connection

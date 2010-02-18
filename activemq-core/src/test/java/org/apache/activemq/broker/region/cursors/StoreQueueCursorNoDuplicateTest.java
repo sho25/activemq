@@ -542,6 +542,11 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|ref
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
 name|underTest
 operator|.
 name|remove

@@ -900,6 +900,11 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|ref
+operator|.
+name|incrementReferenceCount
+argument_list|()
+expr_stmt|;
 name|result
 operator|.
 name|add
@@ -1430,12 +1435,12 @@ name|getMemoryUsage
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|message
 operator|.
 name|incrementReferenceCount
 argument_list|()
 expr_stmt|;
-block|}
 return|return
 name|message
 return|;

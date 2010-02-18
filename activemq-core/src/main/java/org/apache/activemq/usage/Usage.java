@@ -1674,13 +1674,11 @@ operator|=
 operator|new
 name|ThreadPoolExecutor
 argument_list|(
-literal|10
-argument_list|,
-name|Integer
-operator|.
-name|MAX_VALUE
+literal|1
 argument_list|,
 literal|10
+argument_list|,
+literal|30
 argument_list|,
 name|TimeUnit
 operator|.
