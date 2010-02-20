@@ -7608,6 +7608,11 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|//no point in iterating the in-order sequences anymore
+break|break;
+block|}
 block|}
 comment|// Do the actual deletes.
 for|for
