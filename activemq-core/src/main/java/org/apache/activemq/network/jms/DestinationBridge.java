@@ -390,7 +390,12 @@ name|Message
 name|message
 parameter_list|)
 block|{
-if|if
+name|int
+name|attempt
+init|=
+literal|0
+decl_stmt|;
+while|while
 condition|(
 name|started
 operator|.
@@ -402,11 +407,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|int
-name|attempt
-init|=
-literal|0
-decl_stmt|;
 try|try
 block|{
 if|if
@@ -500,6 +500,7 @@ operator|.
 name|acknowledge
 argument_list|()
 expr_stmt|;
+return|return;
 block|}
 catch|catch
 parameter_list|(
@@ -642,6 +643,14 @@ name|NamingException
 block|{
 try|try
 block|{
+comment|//don't reconnect immediately
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
 name|getConnectionForProducer
 argument_list|()
 operator|.
