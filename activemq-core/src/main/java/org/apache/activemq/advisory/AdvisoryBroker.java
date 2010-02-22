@@ -2499,6 +2499,21 @@ argument_list|,
 name|usage
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|AdvisorySupport
+operator|.
+name|isAdvisoryTopic
+argument_list|(
+name|destination
+operator|.
+name|getActiveMQDestination
+argument_list|()
+argument_list|)
+operator|==
+literal|false
+condition|)
+block|{
 try|try
 block|{
 name|ActiveMQTopic
@@ -2562,6 +2577,7 @@ argument_list|(
 literal|"Failed to fire message is full advisory"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 annotation|@
