@@ -463,23 +463,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|LOG
-operator|.
-name|error
-argument_list|(
-name|regionDestination
-operator|.
-name|getActiveMQDestination
-argument_list|()
-operator|.
-name|getPhysicalName
-argument_list|()
-operator|+
-literal|" cursor got duplicate: "
-operator|+
-name|message
-argument_list|)
-expr_stmt|;
+comment|/*              * we should expect to get these - as the message is recorded as it before it goes into              * the cache. If subsequently, we pull out that message from the store (before its deleted)              * it will be a duplicate - but should be ignored              */
+comment|//LOG.error(regionDestination.getActiveMQDestination().getPhysicalName() + " cursor got duplicate: " + message);
 name|storeHasMessages
 operator|=
 literal|true

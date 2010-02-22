@@ -133,6 +133,7 @@ extends|extends
 name|AbstractPendingMessageCursor
 block|{
 specifier|private
+specifier|final
 name|LinkedList
 argument_list|<
 name|MessageReference
@@ -258,6 +259,8 @@ name|rc
 return|;
 block|}
 comment|/**      * @return true if there are no pending messages      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|boolean
@@ -343,6 +346,8 @@ return|;
 block|}
 block|}
 comment|/**      * reset the cursor      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -362,6 +367,8 @@ literal|null
 expr_stmt|;
 block|}
 comment|/**      * add message to await dispatch      *       * @param node      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -385,6 +392,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * add message to await dispatch      *       * @param position      * @param node      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -408,6 +417,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @return true if there pending messages to dispatch      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|boolean
@@ -422,6 +433,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return the next pending message      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|MessageReference
@@ -430,9 +443,6 @@ parameter_list|()
 block|{
 name|last
 operator|=
-operator|(
-name|MessageReference
-operator|)
 name|iter
 operator|.
 name|next
@@ -456,6 +466,8 @@ name|last
 return|;
 block|}
 comment|/**      * remove the message at the cursor position      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -482,6 +494,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @return the number of pending messages      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|int
@@ -496,18 +510,56 @@ argument_list|()
 return|;
 block|}
 comment|/**      * clear all pending messages      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
 name|clear
 parameter_list|()
 block|{
+for|for
+control|(
+name|Iterator
+argument_list|<
+name|MessageReference
+argument_list|>
+name|i
+init|=
+name|list
+operator|.
+name|iterator
+argument_list|()
+init|;
+name|i
+operator|.
+name|hasNext
+argument_list|()
+condition|;
+control|)
+block|{
+name|MessageReference
+name|ref
+init|=
+name|i
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+name|ref
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
+block|}
 name|list
 operator|.
 name|clear
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -576,6 +628,8 @@ block|}
 block|}
 block|}
 comment|/**      * Page in a restricted number of messages      *       * @param maxItems      * @return a list of paged in messages      */
+annotation|@
+name|Override
 specifier|public
 name|LinkedList
 argument_list|<
@@ -591,6 +645,8 @@ return|return
 name|list
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isTransient
@@ -599,6 +655,24 @@ block|{
 return|return
 literal|true
 return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|destroy
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|super
+operator|.
+name|destroy
+argument_list|()
+expr_stmt|;
+name|clear
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class
