@@ -27,6 +27,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|UUID
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|servlet
@@ -152,6 +162,7 @@ name|IOException
 throws|,
 name|ServletException
 block|{
+comment|// set secret to prevent CSRF attacks
 operator|(
 operator|(
 name|HttpServletRequest
@@ -163,7 +174,21 @@ name|getSession
 argument_list|(
 literal|true
 argument_list|)
+operator|.
+name|setAttribute
+argument_list|(
+literal|"secret"
+argument_list|,
+name|UUID
+operator|.
+name|randomUUID
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+argument_list|)
 expr_stmt|;
+empty_stmt|;
 name|chain
 operator|.
 name|doFilter

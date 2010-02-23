@@ -1099,6 +1099,21 @@ literal|"JMS"
 argument_list|)
 return|;
 block|}
+specifier|public
+name|String
+index|[]
+name|getSupportedHttpMethods
+parameter_list|()
+block|{
+return|return
+operator|new
+name|String
+index|[]
+block|{
+literal|"POST"
+block|}
+return|;
+block|}
 block|}
 end_class
 
