@@ -2017,6 +2017,18 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
+name|nextId
+operator|=
+name|entry
+operator|.
+name|getNext
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// not found
+break|break;
 block|}
 block|}
 return|return
@@ -2096,6 +2108,18 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
+name|nextId
+operator|=
+name|entry
+operator|.
+name|getNext
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// not found
+break|break;
 block|}
 name|count
 operator|++
@@ -2647,6 +2671,13 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|entry
+operator|!=
+literal|null
+condition|)
+block|{
 name|entry
 operator|.
 name|setPage
@@ -2654,6 +2685,7 @@ argument_list|(
 name|page
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|entry
 return|;

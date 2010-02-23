@@ -2045,6 +2045,15 @@ operator|.
 name|getDataFileId
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|logId
+operator|!=
+name|Location
+operator|.
+name|NOT_SET
+condition|)
+block|{
 name|int
 name|refCount
 init|=
@@ -2131,6 +2140,7 @@ argument_list|,
 name|refCount
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|synchronized
