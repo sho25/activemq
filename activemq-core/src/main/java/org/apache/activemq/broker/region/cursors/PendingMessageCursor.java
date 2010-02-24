@@ -350,7 +350,7 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Page in a restricted number of messages      *       * @param maxItems      * @return a list of paged in messages      */
+comment|/**      * Page in a restricted number of messages and increment the reference count      *       * @param maxItems      * @return a list of paged in messages      */
 name|LinkedList
 argument_list|<
 name|MessageReference

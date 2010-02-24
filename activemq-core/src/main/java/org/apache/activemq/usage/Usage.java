@@ -999,7 +999,10 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Memory usage change from: "
+name|getName
+argument_list|()
+operator|+
+literal|": usage change from: "
 operator|+
 name|oldPercentUsage
 operator|+

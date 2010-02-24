@@ -1716,7 +1716,14 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Usage Manager memory limit reached for "
+literal|"Usage Manager memory limit ("
+operator|+
+name|memoryUsage
+operator|.
+name|getLimit
+argument_list|()
+operator|+
+literal|") reached for "
 operator|+
 name|getActiveMQDestination
 argument_list|()
@@ -1746,7 +1753,14 @@ name|jms
 operator|.
 name|ResourceAllocationException
 argument_list|(
-literal|"Usage Manager memory limit reached. Stopping producer ("
+literal|"Usage Manager memory limit ("
+operator|+
+name|memoryUsage
+operator|.
+name|getLimit
+argument_list|()
+operator|+
+literal|") reached. Stopping producer ("
 operator|+
 name|message
 operator|.

@@ -66,6 +66,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -927,7 +939,36 @@ argument_list|)
 expr_stmt|;
 end_expr_stmt
 
+begin_comment
+comment|// may block if broker shutodwn happens quickly
+end_comment
+
 begin_expr_stmt
+name|Executors
+operator|.
+name|newSingleThreadExecutor
+argument_list|()
+operator|.
+name|execute
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"producer started"
+argument_list|)
+expr_stmt|;
+try|try
+block|{
 name|produceMessage
 argument_list|(
 name|producerSession
@@ -937,6 +978,37 @@ argument_list|,
 name|prefetch
 operator|*
 literal|2
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|e
+parameter_list|)
+block|{
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"unexpceted ex on producer: "
+operator|+
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"producer done"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 end_expr_stmt
@@ -1492,7 +1564,36 @@ argument_list|)
 expr_stmt|;
 end_expr_stmt
 
+begin_comment
+comment|// may block if broker shutdown happens quickly
+end_comment
+
 begin_expr_stmt
+name|Executors
+operator|.
+name|newSingleThreadExecutor
+argument_list|()
+operator|.
+name|execute
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"producer started"
+argument_list|)
+expr_stmt|;
+try|try
+block|{
 name|produceMessage
 argument_list|(
 name|producerSession
@@ -1502,6 +1603,37 @@ argument_list|,
 name|prefetch
 operator|*
 literal|2
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|e
+parameter_list|)
+block|{
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"unexpceted ex on producer: "
+operator|+
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"producer done"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 end_expr_stmt

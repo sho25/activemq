@@ -1211,6 +1211,11 @@ name|long
 name|size
 parameter_list|()
 block|{
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 if|if
 condition|(
 operator|!
@@ -1220,6 +1225,7 @@ block|{
 return|return
 literal|0
 return|;
+block|}
 block|}
 try|try
 block|{

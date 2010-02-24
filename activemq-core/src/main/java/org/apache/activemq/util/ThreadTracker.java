@@ -176,6 +176,11 @@ name|void
 name|result
 parameter_list|()
 block|{
+synchronized|synchronized
+init|(
+name|trackers
+init|)
+block|{
 for|for
 control|(
 name|Entry
@@ -258,6 +263,7 @@ operator|+
 literal|", done."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
