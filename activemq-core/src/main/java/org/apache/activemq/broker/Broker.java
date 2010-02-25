@@ -659,12 +659,15 @@ name|MessageReference
 name|messageReference
 parameter_list|)
 function_decl|;
-comment|/**      * Called when a message is discarded - e.g. running low on memory      * This will happen only if the policy is enabled - e.g. non durable topics      * @param context      * @param messageReference      */
+comment|/**      * Called when a message is discarded - e.g. running low on memory      * This will happen only if the policy is enabled - e.g. non durable topics      * @param context      * @param sub       * @param messageReference      */
 name|void
 name|messageDiscarded
 parameter_list|(
 name|ConnectionContext
 name|context
+parameter_list|,
+name|Subscription
+name|sub
 parameter_list|,
 name|MessageReference
 name|messageReference

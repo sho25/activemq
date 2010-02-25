@@ -1066,6 +1066,9 @@ parameter_list|(
 name|ConnectionContext
 name|context
 parameter_list|,
+name|Subscription
+name|sub
+parameter_list|,
 name|MessageReference
 name|messageReference
 parameter_list|)

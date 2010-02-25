@@ -1023,6 +1023,9 @@ parameter_list|(
 name|ConnectionContext
 name|context
 parameter_list|,
+name|Subscription
+name|sub
+parameter_list|,
 name|MessageReference
 name|messageReference
 parameter_list|)
@@ -1032,6 +1035,8 @@ operator|.
 name|messageDiscarded
 argument_list|(
 name|context
+argument_list|,
+name|sub
 argument_list|,
 name|messageReference
 argument_list|)

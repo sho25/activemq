@@ -2195,6 +2195,8 @@ argument_list|(
 name|getContext
 argument_list|()
 argument_list|,
+name|this
+argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
