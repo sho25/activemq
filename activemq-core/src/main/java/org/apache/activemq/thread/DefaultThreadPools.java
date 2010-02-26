@@ -61,59 +61,16 @@ specifier|final
 class|class
 name|DefaultThreadPools
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Executor
-name|DEFAULT_POOL
-decl_stmt|;
-static|static
-block|{
-name|DEFAULT_POOL
-operator|=
-operator|new
-name|ScheduledThreadPoolExecutor
-argument_list|(
-literal|5
-argument_list|,
-operator|new
-name|ThreadFactory
-argument_list|()
-block|{
-specifier|public
-name|Thread
-name|newThread
-parameter_list|(
-name|Runnable
-name|runnable
-parameter_list|)
-block|{
-name|Thread
-name|thread
-init|=
-operator|new
-name|Thread
-argument_list|(
-name|runnable
-argument_list|,
-literal|"ActiveMQ Default Thread Pool Thread"
-argument_list|)
-decl_stmt|;
-name|thread
-operator|.
-name|setDaemon
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-return|return
-name|thread
-return|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
-block|}
+comment|//    private static final Executor DEFAULT_POOL;
+comment|//    static {
+comment|//        DEFAULT_POOL = new ScheduledThreadPoolExecutor(5, new ThreadFactory() {
+comment|//            public Thread newThread(Runnable runnable) {
+comment|//                Thread thread = new Thread(runnable, "ActiveMQ Default Thread Pool Thread");
+comment|//                thread.setDaemon(true);
+comment|//                return thread;
+comment|//            }
+comment|//        });
+comment|//    }
 specifier|private
 specifier|static
 specifier|final
@@ -128,16 +85,9 @@ specifier|private
 name|DefaultThreadPools
 parameter_list|()
 block|{             }
-specifier|public
-specifier|static
-name|Executor
-name|getDefaultPool
-parameter_list|()
-block|{
-return|return
-name|DEFAULT_POOL
-return|;
-block|}
+comment|//    public static Executor getDefaultPool() {
+comment|//        return DEFAULT_POOL;
+comment|//    }
 specifier|public
 specifier|static
 name|TaskRunnerFactory

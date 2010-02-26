@@ -101,6 +101,20 @@ name|activemq
 operator|.
 name|thread
 operator|.
+name|DefaultThreadPools
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|thread
+operator|.
 name|TaskRunnerFactory
 import|;
 end_import
@@ -246,6 +260,22 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|thread
+operator|.
+name|DefaultThreadPools
+operator|.
+name|*
 import|;
 end_import
 
@@ -926,21 +956,14 @@ parameter_list|)
 block|{
 try|try
 block|{
-comment|// Starting the connection could block due to
-comment|// wireformat negotiation, so start it in an async thread.
-name|Thread
-name|startThread
-init|=
-operator|new
-name|Thread
-argument_list|(
-literal|"ActiveMQ Transport Initiator: "
-operator|+
-name|transport
-operator|.
-name|getRemoteAddress
+name|getDefaultTaskRunnerFactory
 argument_list|()
-argument_list|)
+operator|.
+name|execute
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
 block|{
 specifier|public
 name|void
@@ -984,11 +1007,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-decl_stmt|;
-name|startThread
-operator|.
-name|start
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
