@@ -826,7 +826,7 @@ name|percentUsageMinDelta
 return|;
 block|}
 block|}
-comment|/**      * Sets the minimum number of percentage points the usage has to change      * before a UsageListener event is fired by the manager.      *       * @param percentUsageMinDelta      */
+comment|/**      * Sets the minimum number of percentage points the usage has to change      * before a UsageListener event is fired by the manager.      *       * @param percentUsageMinDelta      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
 specifier|public
 name|void
 name|setPercentUsageMinDelta

@@ -961,6 +961,10 @@ name|taskRunnerFactory
 decl_stmt|;
 specifier|public
 name|JournalPersistenceAdapter
+parameter_list|()
+block|{             }
+specifier|public
+name|JournalPersistenceAdapter
 parameter_list|(
 name|Journal
 name|journal

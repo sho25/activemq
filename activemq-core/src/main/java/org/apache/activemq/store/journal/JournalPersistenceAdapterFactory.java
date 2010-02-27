@@ -218,7 +218,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Factory class that can create PersistenceAdapter objects.  *   * @version $Revision: 1.4 $  */
+comment|/**  * Factory class that can create PersistenceAdapter objects.  *   * @org.apache.xbean.XBean  * @version $Revision: 1.4 $  */
 end_comment
 
 begin_class
