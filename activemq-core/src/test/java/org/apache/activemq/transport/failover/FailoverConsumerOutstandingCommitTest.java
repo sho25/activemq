@@ -1180,6 +1180,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+comment|// from the consumer perspective whether the commit completed on the broker or
+comment|// not is irrelevant, the transaction is still in doubt in the absence of a reply
 if|if
 condition|(
 name|doActualBrokerCommit
@@ -1372,6 +1374,26 @@ end_decl_stmt
 
 begin_decl_stmt
 specifier|final
+name|Queue
+name|signalDestination
+init|=
+name|producerSession
+operator|.
+name|createQueue
+argument_list|(
+name|QUEUE_NAME
+operator|+
+literal|".signal"
+operator|+
+literal|"?consumer.prefetchSize="
+operator|+
+name|prefetch
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|final
 name|Session
 name|consumerSession
 init|=
@@ -1507,7 +1529,7 @@ name|produceMessage
 argument_list|(
 name|consumerSession
 argument_list|,
-name|destination
+name|signalDestination
 argument_list|,
 literal|1
 argument_list|)
