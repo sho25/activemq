@@ -174,8 +174,9 @@ name|next
 operator|-
 name|current
 decl_stmt|;
-name|assertEquals
-argument_list|(
+name|long
+name|expected
+init|=
 literal|60
 operator|*
 literal|1000
@@ -183,6 +184,10 @@ operator|*
 literal|60
 operator|*
 literal|18
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|expected
 argument_list|,
 name|result
 argument_list|)
