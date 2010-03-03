@@ -96,6 +96,14 @@ operator|.
 name|setUp
 argument_list|()
 expr_stmt|;
+name|WaitForJettyListener
+operator|.
+name|waitForJettySocketToAccept
+argument_list|(
+name|getBrokerURL
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 specifier|protected
 name|void
