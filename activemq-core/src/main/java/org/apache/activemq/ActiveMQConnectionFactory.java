@@ -676,6 +676,10 @@ name|consumerFailoverRedeliveryWaitPeriod
 init|=
 literal|0
 decl_stmt|;
+specifier|private
+name|ClientInternalExceptionListener
+name|clientInternalExceptionListener
+decl_stmt|;
 comment|// /////////////////////////////////////////////
 comment|//
 comment|// ConnectionFactory, QueueConnectionFactory, TopicConnectionFactory Methods
@@ -1475,6 +1479,21 @@ operator|.
 name|setExceptionListener
 argument_list|(
 name|exceptionListener
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|clientInternalExceptionListener
+operator|!=
+literal|null
+condition|)
+block|{
+name|connection
+operator|.
+name|setClientInternalExceptionListener
+argument_list|(
+name|clientInternalExceptionListener
 argument_list|)
 expr_stmt|;
 block|}
@@ -3210,6 +3229,31 @@ block|{
 return|return
 name|consumerFailoverRedeliveryWaitPeriod
 return|;
+block|}
+specifier|public
+name|ClientInternalExceptionListener
+name|getClientInternalExceptionListener
+parameter_list|()
+block|{
+return|return
+name|clientInternalExceptionListener
+return|;
+block|}
+comment|/**      * Allows an {@link ClientInternalExceptionListener} to be configured on the ConnectionFactory so that when this factory      * is used by frameworks which don't expose the Connection such as Spring JmsTemplate, you can register      * an exception listener.      *<p> Note: access to this clientInternalExceptionListener will<b>not</b> be serialized if it is associated with more than      * on connection (as it will be if more than one connection is subsequently created by this connection factory)      * @param clientInternalExceptionListener sets the exception listener to be registered on all connections      * created by this factory      */
+specifier|public
+name|void
+name|setClientInternalExceptionListener
+parameter_list|(
+name|ClientInternalExceptionListener
+name|clientInternalExceptionListener
+parameter_list|)
+block|{
+name|this
+operator|.
+name|clientInternalExceptionListener
+operator|=
+name|clientInternalExceptionListener
+expr_stmt|;
 block|}
 block|}
 end_class
