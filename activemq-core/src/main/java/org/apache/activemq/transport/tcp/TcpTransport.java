@@ -458,6 +458,20 @@ name|buffOut
 init|=
 literal|null
 decl_stmt|;
+comment|/**      * Differentiated Services Code Point. Determines the Traffic Class to be      * set on the socket.      */
+specifier|protected
+name|int
+name|dscp
+init|=
+literal|0
+decl_stmt|;
+comment|/**      * Keeps track of attempts to set the Traffic Class.      */
+specifier|private
+name|boolean
+name|trafficClassSet
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * trace=true -> the Transport stack where this TcpTransport      * object will be, will have a TransportLogger layer      * trace=false -> the Transport stack where this TcpTransport      * object will be, will NOT have a TransportLogger layer, and therefore      * will never be able to print logging messages.      * This parameter is most probably set in Connection or TransportConnector URIs.      */
 specifier|protected
 name|boolean
@@ -882,6 +896,46 @@ return|;
 block|}
 comment|// Properties
 comment|// -------------------------------------------------------------------------
+specifier|public
+name|String
+name|getDiffServ
+parameter_list|()
+block|{
+comment|// This is the value requested by the user by setting the Tcp Transport
+comment|// options. If the socket hasn't been created, then this value may not
+comment|// reflect the value returned by Socket.getTrafficClass().
+return|return
+name|Integer
+operator|.
+name|toString
+argument_list|(
+name|dscp
+argument_list|)
+return|;
+block|}
+specifier|public
+name|void
+name|setDiffServ
+parameter_list|(
+name|String
+name|diffServ
+parameter_list|)
+throws|throws
+name|IllegalArgumentException
+block|{
+name|this
+operator|.
+name|dscp
+operator|=
+name|QualityOfServiceUtils
+operator|.
+name|getDSCP
+argument_list|(
+name|diffServ
+argument_list|)
+expr_stmt|;
+block|}
+comment|// TODO: Add methods for setting and getting a ToS value.
 specifier|public
 name|boolean
 name|isTrace
@@ -1397,6 +1451,20 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|trafficClassSet
+condition|)
+block|{
+name|trafficClassSet
+operator|=
+name|setTrafficClass
+argument_list|(
+name|sock
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -1524,6 +1592,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Set the traffic class before the socket is connected when possible so
+comment|// that the connection packets are given the correct traffic class.
+name|trafficClassSet
+operator|=
+name|setTrafficClass
+argument_list|(
+name|socket
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|socket
@@ -2236,6 +2313,68 @@ parameter_list|()
 block|{
 return|return
 name|receiveCounter
+return|;
+block|}
+comment|/**      * @return Whether or not the Traffic Class was set on the given socket.      */
+specifier|private
+name|boolean
+name|setTrafficClass
+parameter_list|(
+name|Socket
+name|sock
+parameter_list|)
+block|{
+comment|// TODO: Add in ToS support.
+if|if
+condition|(
+name|sock
+operator|==
+literal|null
+condition|)
+return|return
+literal|false
+return|;
+name|boolean
+name|success
+init|=
+literal|false
+decl_stmt|;
+try|try
+block|{
+name|sock
+operator|.
+name|setTrafficClass
+argument_list|(
+name|this
+operator|.
+name|dscp
+argument_list|)
+expr_stmt|;
+name|success
+operator|=
+literal|true
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SocketException
+name|e
+parameter_list|)
+block|{
+comment|// The system does not support setting the traffic class through
+comment|// setTrafficClass.
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Unable to set the traffic class: "
+operator|+
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|success
 return|;
 block|}
 block|}
