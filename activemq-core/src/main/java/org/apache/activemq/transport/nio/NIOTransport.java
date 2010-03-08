@@ -700,7 +700,7 @@ name|Exception
 block|{
 name|selection
 operator|.
-name|disable
+name|close
 argument_list|()
 expr_stmt|;
 name|super
