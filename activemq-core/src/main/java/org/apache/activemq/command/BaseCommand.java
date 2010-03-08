@@ -140,6 +140,8 @@ operator|=
 name|responseRequired
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -255,6 +257,15 @@ block|}
 specifier|public
 name|boolean
 name|isShutdownInfo
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+specifier|public
+name|boolean
+name|isConnectionControl
 parameter_list|()
 block|{
 return|return

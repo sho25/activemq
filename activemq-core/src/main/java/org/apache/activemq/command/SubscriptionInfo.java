@@ -154,7 +154,7 @@ operator|=
 name|selector
 expr_stmt|;
 block|}
-comment|/**      * @openwire:property version=1      * @deprecated      */
+comment|/**      * @openwire:property version=1      */
 specifier|public
 name|String
 name|getSubcriptionName
@@ -164,7 +164,7 @@ return|return
 name|subscriptionName
 return|;
 block|}
-comment|/**      * @param subscriptionName *      * @deprecated      */
+comment|/**      * @param subscriptionName *      */
 specifier|public
 name|void
 name|setSubcriptionName
@@ -213,6 +213,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -227,6 +229,8 @@ name|this
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -268,6 +272,8 @@ operator|^
 name|h2
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals

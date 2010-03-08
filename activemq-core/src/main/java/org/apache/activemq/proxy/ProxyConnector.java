@@ -252,6 +252,7 @@ name|String
 name|name
 decl_stmt|;
 specifier|private
+specifier|final
 name|CopyOnWriteArrayList
 argument_list|<
 name|ProxyConnection
@@ -635,9 +636,6 @@ decl_stmt|;
 name|CompositeTransport
 name|ct
 init|=
-operator|(
-name|CompositeTransport
-operator|)
 name|transport
 operator|.
 name|narrow
@@ -662,6 +660,8 @@ name|ct
 operator|.
 name|add
 argument_list|(
+literal|false
+argument_list|,
 operator|new
 name|URI
 index|[]
@@ -680,6 +680,8 @@ argument_list|(
 name|transport
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop

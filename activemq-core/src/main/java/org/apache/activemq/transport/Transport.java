@@ -187,12 +187,36 @@ name|boolean
 name|isConnected
 parameter_list|()
 function_decl|;
+comment|/**      * @return true if reconnect is supported      */
+name|boolean
+name|isReconnectSupported
+parameter_list|()
+function_decl|;
+comment|/**      * @return true if updating uris is supported      */
+name|boolean
+name|isUpdateURIsSupported
+parameter_list|()
+function_decl|;
 comment|/**      * reconnect to another location      * @param uri      * @throws IOException on failure of if not supported      */
 name|void
 name|reconnect
 parameter_list|(
 name|URI
 name|uri
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * Provide a list of available alternative locations      * @param rebalance       * @param uris      * @throws IOException      */
+name|void
+name|updateURIs
+parameter_list|(
+name|boolean
+name|rebalance
+parameter_list|,
+name|URI
+index|[]
+name|uris
 parameter_list|)
 throws|throws
 name|IOException

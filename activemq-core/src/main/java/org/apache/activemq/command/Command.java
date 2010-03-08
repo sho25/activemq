@@ -95,6 +95,10 @@ name|boolean
 name|isShutdownInfo
 parameter_list|()
 function_decl|;
+name|boolean
+name|isConnectionControl
+parameter_list|()
+function_decl|;
 name|Response
 name|visit
 parameter_list|(

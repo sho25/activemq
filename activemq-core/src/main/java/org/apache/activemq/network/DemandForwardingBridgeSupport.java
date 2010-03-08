@@ -1198,6 +1198,7 @@ name|BrokerInfo
 name|remoteBrokerInfo
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicBoolean
 name|started
 init|=
@@ -1317,6 +1318,8 @@ operator|new
 name|DefaultTransportListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onCommand
@@ -1339,6 +1342,8 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onException
@@ -2174,6 +2179,16 @@ argument_list|(
 name|configuration
 operator|.
 name|getBrokerName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|brokerInfo
+operator|.
+name|setBrokerURL
+argument_list|(
+name|configuration
+operator|.
+name|getBrokerURL
 argument_list|()
 argument_list|)
 expr_stmt|;

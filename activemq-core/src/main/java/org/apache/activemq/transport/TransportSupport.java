@@ -316,7 +316,8 @@ name|RuntimeException
 name|e2
 parameter_list|)
 block|{
-comment|// Handle any unexpected runtime exceptions by debug logging them.
+comment|// Handle any unexpected runtime exceptions by debug logging
+comment|// them.
 name|LOG
 operator|.
 name|debug
@@ -369,6 +370,46 @@ name|reconnect
 parameter_list|(
 name|URI
 name|uri
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Not supported"
+argument_list|)
+throw|;
+block|}
+specifier|public
+name|boolean
+name|isReconnectSupported
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+specifier|public
+name|boolean
+name|isUpdateURIsSupported
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+specifier|public
+name|void
+name|updateURIs
+parameter_list|(
+name|boolean
+name|reblance
+parameter_list|,
+name|URI
+index|[]
+name|uris
 parameter_list|)
 throws|throws
 name|IOException

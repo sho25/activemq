@@ -72,6 +72,7 @@ extends|extends
 name|DefaultTransportListener
 block|{
 specifier|private
+specifier|final
 name|FailoverTransport
 name|failoverTransport
 decl_stmt|;
@@ -100,6 +101,8 @@ operator|=
 name|ft
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onException
@@ -126,7 +129,9 @@ operator|.
 name|failoverTransport
 operator|.
 name|reconnect
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -220,6 +225,8 @@ operator|=
 name|disposed
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -239,6 +246,8 @@ operator|-
 literal|1
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals

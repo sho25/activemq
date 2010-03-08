@@ -98,6 +98,12 @@ literal|"localhost"
 decl_stmt|;
 specifier|private
 name|String
+name|brokerURL
+init|=
+literal|""
+decl_stmt|;
+specifier|private
+name|String
 name|userName
 decl_stmt|;
 specifier|private
@@ -634,6 +640,34 @@ block|{
 name|suppressDuplicateQueueSubscriptions
 operator|=
 name|val
+expr_stmt|;
+block|}
+comment|/**      * @return the brokerURL      */
+specifier|public
+name|String
+name|getBrokerURL
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|brokerURL
+return|;
+block|}
+comment|/**      * @param brokerURL the brokerURL to set      */
+specifier|public
+name|void
+name|setBrokerURL
+parameter_list|(
+name|String
+name|brokerURL
+parameter_list|)
+block|{
+name|this
+operator|.
+name|brokerURL
+operator|=
+name|brokerURL
 expr_stmt|;
 block|}
 block|}

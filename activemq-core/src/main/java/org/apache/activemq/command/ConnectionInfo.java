@@ -86,6 +86,12 @@ init|=
 literal|true
 decl_stmt|;
 specifier|protected
+name|boolean
+name|faultTolerant
+init|=
+literal|false
+decl_stmt|;
+specifier|protected
 specifier|transient
 name|Object
 name|transportContext
@@ -206,6 +212,12 @@ operator|.
 name|transportContext
 operator|=
 name|transportContext
+expr_stmt|;
+name|copy
+operator|.
+name|faultTolerant
+operator|=
+name|faultTolerant
 expr_stmt|;
 block|}
 comment|/**      * @openwire:property version=1 cache=true      */
@@ -485,6 +497,34 @@ operator|.
 name|clientMaster
 operator|=
 name|clientMaster
+expr_stmt|;
+block|}
+comment|/**      * @openwire:property version=6 cache=false      * @return the faultTolerant      */
+specifier|public
+name|boolean
+name|isFaultTolerant
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|faultTolerant
+return|;
+block|}
+comment|/**      * @param faultTolerant the faultTolerant to set      */
+specifier|public
+name|void
+name|setFaultTolerant
+parameter_list|(
+name|boolean
+name|faultTolerant
+parameter_list|)
+block|{
+name|this
+operator|.
+name|faultTolerant
+operator|=
+name|faultTolerant
 expr_stmt|;
 block|}
 block|}

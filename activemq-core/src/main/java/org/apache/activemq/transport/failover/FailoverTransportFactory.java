@@ -178,6 +178,8 @@ name|FailoverTransportFactory
 extends|extends
 name|TransportFactory
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Transport
 name|doConnect
@@ -240,6 +242,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Transport
 name|doCompositeConnect
@@ -331,6 +335,8 @@ name|transport
 operator|.
 name|add
 argument_list|(
+literal|false
+argument_list|,
 name|compositData
 operator|.
 name|getComponents
@@ -371,6 +377,8 @@ return|return
 name|transport
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TransportServer
 name|doBind

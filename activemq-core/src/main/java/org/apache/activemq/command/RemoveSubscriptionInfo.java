@@ -96,7 +96,7 @@ operator|=
 name|connectionId
 expr_stmt|;
 block|}
-comment|/**      * @openwire:property version=1      * @deprecated      */
+comment|/**      * @openwire:property version=1      */
 specifier|public
 name|String
 name|getSubcriptionName
@@ -106,7 +106,7 @@ return|return
 name|subscriptionName
 return|;
 block|}
-comment|/**      * @deprecated      */
+comment|/**      */
 specifier|public
 name|void
 name|setSubcriptionName

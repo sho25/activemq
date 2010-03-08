@@ -77,6 +77,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|ConnectionControl
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|Response
 import|;
 end_import
@@ -113,7 +127,7 @@ name|Command
 name|command
 parameter_list|)
 function_decl|;
-comment|/**      * Services a client command and submits it to the broker.      *       * @param command      */
+comment|/**      * Services a client command and submits it to the broker.      *       * @param command      * @return Response      */
 name|Response
 name|service
 parameter_list|(
@@ -184,6 +198,18 @@ comment|/**      * return true if a network connection      * @return      */
 name|boolean
 name|isNetworkConnection
 parameter_list|()
+function_decl|;
+comment|/**      * @return true if a fault tolerant connection      */
+name|boolean
+name|isFaultTolerantConnection
+parameter_list|()
+function_decl|;
+name|void
+name|updateClient
+parameter_list|(
+name|ConnectionControl
+name|control
+parameter_list|)
 function_decl|;
 block|}
 end_interface

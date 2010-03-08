@@ -35,6 +35,9 @@ block|{
 name|void
 name|add
 parameter_list|(
+name|boolean
+name|rebalance
+parameter_list|,
 name|URI
 index|[]
 name|uris
@@ -43,6 +46,9 @@ function_decl|;
 name|void
 name|remove
 parameter_list|(
+name|boolean
+name|rebalance
+parameter_list|,
 name|URI
 index|[]
 name|uris

@@ -68,7 +68,7 @@ name|Connector
 extends|extends
 name|Service
 block|{
-comment|/**      *       * @return      */
+comment|/**      * @return brokerInfo      */
 name|BrokerInfo
 name|getBrokerInfo
 parameter_list|()
@@ -76,6 +76,24 @@ function_decl|;
 comment|/**      * @return the statistics for this connector      */
 name|ConnectorStatistics
 name|getStatistics
+parameter_list|()
+function_decl|;
+comment|/**      * @return true if update client connections when brokers leave/join a cluster      */
+specifier|public
+name|boolean
+name|isUpdateClusterClients
+parameter_list|()
+function_decl|;
+comment|/**      * @return true if clients should be re-balanced across the cluster      */
+specifier|public
+name|boolean
+name|isRebalanceClusterClients
+parameter_list|()
+function_decl|;
+comment|/**      * Update all the connections with information      * about the connected brokers in the cluster      */
+specifier|public
+name|void
+name|updateClientClusterInfo
 parameter_list|()
 function_decl|;
 block|}

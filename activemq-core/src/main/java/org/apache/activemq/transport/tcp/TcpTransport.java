@@ -699,6 +699,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @return pretty print of 'this'      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -1396,6 +1398,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStart
@@ -1649,6 +1653,8 @@ name|initializeStreams
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStop
