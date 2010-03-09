@@ -255,8 +255,10 @@ elseif|else
 if|if
 condition|(
 name|use
-operator|<
+operator|==
 name|maxChannelsPerWorker
+operator|-
+literal|1
 condition|)
 block|{
 name|manager
@@ -303,15 +305,10 @@ argument_list|()
 expr_stmt|;
 block|}
 specifier|private
-name|boolean
+name|void
 name|processIoTasks
 parameter_list|()
 block|{
-name|boolean
-name|rc
-init|=
-literal|false
-decl_stmt|;
 name|Runnable
 name|task
 decl_stmt|;
@@ -331,10 +328,6 @@ condition|)
 block|{
 try|try
 block|{
-name|rc
-operator|=
-literal|true
-expr_stmt|;
 name|task
 operator|.
 name|run
@@ -354,9 +347,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-return|return
-name|rc
-return|;
 block|}
 specifier|public
 name|void
@@ -395,14 +385,9 @@ name|isReleased
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
 name|processIoTasks
 argument_list|()
-condition|)
-block|{
-continue|continue;
-block|}
+expr_stmt|;
 name|int
 name|count
 init|=
@@ -570,6 +555,11 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 comment|// Notify all the selections that the error occurred.
 name|Set
 name|keys
@@ -649,7 +639,13 @@ parameter_list|(
 name|IOException
 name|ignore
 parameter_list|)
-block|{             }
+block|{
+name|ignore
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 name|Thread
 operator|.
 name|currentThread

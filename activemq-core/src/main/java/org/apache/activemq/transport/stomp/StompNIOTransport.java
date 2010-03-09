@@ -753,7 +753,13 @@ parameter_list|(
 name|Exception
 name|e
 parameter_list|)
-block|{         }
+block|{
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 name|super
 operator|.
 name|doStop
