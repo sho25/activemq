@@ -172,7 +172,7 @@ specifier|private
 name|int
 name|maxChannelsPerWorker
 init|=
-literal|64
+literal|1024
 decl_stmt|;
 specifier|protected
 name|ExecutorService
@@ -187,13 +187,15 @@ name|ThreadPoolExecutor
 argument_list|(
 literal|0
 argument_list|,
-literal|200
+name|Integer
+operator|.
+name|MAX_VALUE
 argument_list|,
-literal|1
+literal|10
 argument_list|,
 name|TimeUnit
 operator|.
-name|SECONDS
+name|MILLISECONDS
 argument_list|,
 operator|new
 name|SynchronousQueue
