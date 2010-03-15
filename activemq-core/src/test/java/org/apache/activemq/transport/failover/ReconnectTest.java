@@ -348,6 +348,7 @@ name|URI
 name|tcpUri
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicInteger
 name|resumedCount
 init|=
@@ -356,6 +357,7 @@ name|AtomicInteger
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicInteger
 name|interruptedCount
 init|=
@@ -392,10 +394,12 @@ literal|1
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|ActiveMQConnection
 name|connection
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicBoolean
 name|stop
 init|=
@@ -410,6 +414,7 @@ name|Throwable
 name|error
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|name
 decl_stmt|;
@@ -441,7 +446,7 @@ literal|"failover://(mock://("
 operator|+
 name|tcpUri
 operator|+
-literal|"))"
+literal|"))?updateURIsSupported=false"
 argument_list|)
 decl_stmt|;
 name|ActiveMQConnectionFactory
@@ -554,9 +559,6 @@ block|{
 name|MockTransport
 name|mockTransport
 init|=
-operator|(
-name|MockTransport
-operator|)
 name|connection
 operator|.
 name|getTransportChannel
@@ -1234,6 +1236,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -1329,6 +1333,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
