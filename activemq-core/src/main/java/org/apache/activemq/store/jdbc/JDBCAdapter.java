@@ -133,6 +133,9 @@ parameter_list|(
 name|TransactionContext
 name|c
 parameter_list|,
+name|long
+name|sequence
+parameter_list|,
 name|MessageId
 name|messageID
 parameter_list|,
@@ -156,6 +159,9 @@ name|doAddMessageReference
 parameter_list|(
 name|TransactionContext
 name|c
+parameter_list|,
+name|long
+name|sequence
 parameter_list|,
 name|MessageId
 name|messageId
@@ -181,8 +187,8 @@ parameter_list|(
 name|TransactionContext
 name|c
 parameter_list|,
-name|long
-name|seq
+name|MessageId
+name|id
 parameter_list|)
 throws|throws
 name|SQLException
@@ -341,7 +347,7 @@ throws|,
 name|IOException
 function_decl|;
 name|long
-name|getBrokerSequenceId
+name|getStoreSequenceId
 parameter_list|(
 name|TransactionContext
 name|c

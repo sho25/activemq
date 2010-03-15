@@ -819,6 +819,32 @@ operator|+
 literal|" disabling cache on size:"
 operator|+
 name|size
+operator|+
+literal|", lastCachedIdSeq: "
+operator|+
+operator|(
+name|lastCachedId
+operator|==
+literal|null
+condition|?
+operator|-
+literal|1
+else|:
+name|lastCachedId
+operator|.
+name|getBrokerSequenceId
+argument_list|()
+operator|)
+operator|+
+literal|" current node seqId: "
+operator|+
+name|node
+operator|.
+name|getMessageId
+argument_list|()
+operator|.
+name|getBrokerSequenceId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -308,14 +308,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|long
-name|seq
-init|=
-name|messageId
-operator|.
-name|getBrokerSequenceId
-argument_list|()
-decl_stmt|;
 comment|// Get a connection and insert the message into the DB.
 name|TransactionContext
 name|c
@@ -329,6 +321,18 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
+name|long
+name|seq
+init|=
+name|adapter
+operator|.
+name|getStoreSequenceId
+argument_list|(
+name|c
+argument_list|,
+name|messageId
+argument_list|)
+decl_stmt|;
 name|adapter
 operator|.
 name|doSetLastAck

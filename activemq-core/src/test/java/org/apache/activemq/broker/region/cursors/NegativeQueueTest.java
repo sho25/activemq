@@ -652,6 +652,10 @@ name|PREFETCH_SIZE
 operator|=
 literal|1
 expr_stmt|;
+name|NUM_CONSUMERS
+operator|=
+literal|20
+expr_stmt|;
 name|blastAndConsume
 argument_list|()
 expr_stmt|;
@@ -1131,7 +1135,7 @@ name|latch1
 operator|.
 name|await
 argument_list|(
-literal|300000
+literal|200000
 argument_list|,
 name|TimeUnit
 operator|.
@@ -1764,6 +1768,9 @@ name|StorePendingQueueMessageStoragePolicy
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// disable the cache to be sure setBatch is the problem
+comment|// will get lots of duplicates
+comment|// policy.setUseCache(false);
 name|PolicyMap
 name|pMap
 init|=

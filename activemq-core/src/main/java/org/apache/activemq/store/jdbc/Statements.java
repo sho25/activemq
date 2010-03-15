@@ -548,7 +548,7 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" WHERE ID=?"
+literal|" WHERE MSGID_PROD=? AND MSGID_SEQ=?"
 expr_stmt|;
 block|}
 return|return
