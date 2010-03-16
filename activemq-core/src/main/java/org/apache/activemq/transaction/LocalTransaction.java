@@ -310,6 +310,11 @@ argument_list|(
 name|xid
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|transactionStore
+init|)
+block|{
 name|transactionStore
 operator|.
 name|commit
@@ -372,6 +377,7 @@ name|xae
 throw|;
 block|}
 block|}
+block|}
 specifier|public
 name|void
 name|rollback
@@ -421,6 +427,11 @@ argument_list|(
 name|xid
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|transactionStore
+init|)
+block|{
 name|transactionStore
 operator|.
 name|rollback
@@ -477,6 +488,7 @@ expr_stmt|;
 throw|throw
 name|xae
 throw|;
+block|}
 block|}
 block|}
 specifier|public
