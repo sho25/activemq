@@ -310,6 +310,8 @@ argument_list|(
 name|xid
 argument_list|)
 expr_stmt|;
+comment|// Sync on transaction store to avoid out of order messages in the cursor
+comment|// https://issues.apache.org/activemq/browse/AMQ-2594
 synchronized|synchronized
 init|(
 name|transactionStore
@@ -427,6 +429,8 @@ argument_list|(
 name|xid
 argument_list|)
 expr_stmt|;
+comment|// Sync on transaction store to avoid out of order messages in the cursor
+comment|// https://issues.apache.org/activemq/browse/AMQ-2594
 synchronized|synchronized
 init|(
 name|transactionStore
