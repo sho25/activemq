@@ -1746,7 +1746,7 @@ condition|)
 block|{
 name|persistentMode
 operator|+=
-literal|"Durable, subscriptionID="
+literal|"Durable,subscriptionID="
 operator|+
 name|JMXSupport
 operator|.
