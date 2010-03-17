@@ -478,11 +478,17 @@ specifier|private
 name|boolean
 name|updateClusterClients
 init|=
-literal|false
+literal|true
 decl_stmt|;
 specifier|private
 name|boolean
 name|rebalanceClusterClients
+decl_stmt|;
+specifier|private
+name|boolean
+name|updateClusterClientsOnRemove
+init|=
+literal|false
 decl_stmt|;
 specifier|private
 name|String
@@ -2261,6 +2267,34 @@ operator|.
 name|rebalanceClusterClients
 operator|=
 name|rebalanceClusterClients
+expr_stmt|;
+block|}
+comment|/**      * @return the updateClusterClientsOnRemove      */
+specifier|public
+name|boolean
+name|isUpdateClusterClientsOnRemove
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|updateClusterClientsOnRemove
+return|;
+block|}
+comment|/**      * @param updateClusterClientsOnRemove the updateClusterClientsOnRemove to set      */
+specifier|public
+name|void
+name|setUpdateClusterClientsOnRemove
+parameter_list|(
+name|boolean
+name|updateClusterClientsOnRemove
+parameter_list|)
+block|{
+name|this
+operator|.
+name|updateClusterClientsOnRemove
+operator|=
+name|updateClusterClientsOnRemove
 expr_stmt|;
 block|}
 comment|/**      * @return the updateClusterFilter      */

@@ -96,6 +96,12 @@ name|void
 name|updateClientClusterInfo
 parameter_list|()
 function_decl|;
+comment|/**      * @return true if clients should be updated when      * a broker is removed from a broker      */
+specifier|public
+name|boolean
+name|isUpdateClusterClientsOnRemove
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
