@@ -112,6 +112,10 @@ name|findMessageStatement
 decl_stmt|;
 specifier|private
 name|String
+name|findMessageByIdStatement
+decl_stmt|;
+specifier|private
+name|String
 name|findAllMessagesStatement
 decl_stmt|;
 specifier|private
@@ -549,6 +553,32 @@ name|getFullMessageTableName
 argument_list|()
 operator|+
 literal|" WHERE MSGID_PROD=? AND MSGID_SEQ=?"
+expr_stmt|;
+block|}
+return|return
+name|findMessageStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getFindMessageByIdStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|findMessageStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|findMessageStatement
+operator|=
+literal|"SELECT MSG FROM "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" WHERE ID=?"
 expr_stmt|;
 block|}
 return|return
