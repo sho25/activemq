@@ -575,7 +575,7 @@ name|setLongProperty
 argument_list|(
 name|ScheduledMessage
 operator|.
-name|AMQ_SCHEDULED_PERIOD
+name|AMQ_SCHEDULED_DELAY
 argument_list|,
 name|time
 argument_list|)
