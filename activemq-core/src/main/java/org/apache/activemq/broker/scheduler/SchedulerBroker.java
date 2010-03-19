@@ -685,6 +685,22 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|//clear transaction context
+name|Message
+name|msg
+init|=
+name|messageSend
+operator|.
+name|copy
+argument_list|()
+decl_stmt|;
+name|msg
+operator|.
+name|setTransactionId
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 name|org
 operator|.
 name|apache
@@ -700,7 +716,7 @@ name|wireFormat
 operator|.
 name|marshal
 argument_list|(
-name|messageSend
+name|msg
 argument_list|)
 decl_stmt|;
 if|if
@@ -769,7 +785,7 @@ block|}
 name|Object
 name|repeatValue
 init|=
-name|messageSend
+name|msg
 operator|.
 name|getProperty
 argument_list|(
@@ -807,7 +823,7 @@ argument_list|()
 operator|.
 name|schedule
 argument_list|(
-name|messageSend
+name|msg
 operator|.
 name|getMessageId
 argument_list|()
