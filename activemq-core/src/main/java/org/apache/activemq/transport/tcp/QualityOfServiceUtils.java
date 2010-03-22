@@ -72,7 +72,7 @@ specifier|final
 name|int
 name|MAX_DIFF_SERV
 init|=
-literal|64
+literal|63
 decl_stmt|;
 specifier|private
 specifier|static
@@ -223,7 +223,23 @@ literal|38
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param The value to be used for Differentiated Services.      * @return The corresponding Differentiated Services Code Point (DSCP).      * @throws IllegalArgumentException if the value does not correspond to a      *         Differentiated Services Code Point or setting the DSCP is not      *         supported.      */
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MAX_TOS
+init|=
+literal|255
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MIN_TOS
+init|=
+literal|0
+decl_stmt|;
+comment|/**      * @param value A potential value to be used for Differentiated Services.      * @return The corresponding Differentiated Services Code Point (DSCP).      * @throws IllegalArgumentException if the value does not correspond to a      *         Differentiated Services Code Point or setting the DSCP is not      *         supported.      */
 specifier|public
 specifier|static
 name|int
@@ -278,7 +294,7 @@ expr_stmt|;
 if|if
 condition|(
 name|intValue
-operator|>=
+operator|>
 name|MAX_DIFF_SERV
 operator|||
 name|intValue
@@ -290,25 +306,21 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Differentiated Services "
+literal|"Differentiated Services"
 operator|+
-literal|"value: "
+literal|" value: "
 operator|+
 name|intValue
 operator|+
-literal|" must be between "
+literal|" not in legal range ["
 operator|+
 name|MIN_DIFF_SERV
 operator|+
-literal|" and "
+literal|", "
 operator|+
-operator|(
 name|MAX_DIFF_SERV
-operator|-
-literal|1
-operator|)
 operator|+
-literal|"."
+literal|"]."
 argument_list|)
 throw|;
 block|}
@@ -340,14 +352,61 @@ name|intValue
 argument_list|)
 return|;
 block|}
-comment|/**      * The Differentiated Services values use only 6 of the 8 bits in the field      * in the TCP/IP packet header. Make sure any values the system has set for      * the other two bits (the ECN bits) are maintained.      *      * @param The Differentiated Services Code Point.      * @return A Differentiated Services Code Point that respects the ECN bits      *         set on the system.      * @throws IllegalArgumentException if setting Differentiated Services is      *         not supported.      */
+comment|/**      * @param value A potential value to be used for Type of Service.      * @return A valid value that can be used to set the Type of Service in the      *         packet headers.      * @throws IllegalArgumentException if the value is not a legal Type of      *         Service value.      */
+specifier|public
+specifier|static
+name|int
+name|getToS
+parameter_list|(
+name|int
+name|value
+parameter_list|)
+throws|throws
+name|IllegalArgumentException
+block|{
+if|if
+condition|(
+name|value
+operator|>
+name|MAX_TOS
+operator|||
+name|value
+operator|<
+name|MIN_TOS
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Type of Service value: "
+operator|+
+name|value
+operator|+
+literal|" not in legal range ["
+operator|+
+name|MIN_TOS
+operator|+
+literal|", "
+operator|+
+name|MAX_TOS
+operator|+
+literal|"."
+argument_list|)
+throw|;
+block|}
+return|return
+name|value
+return|;
+block|}
+comment|/**      * The Differentiated Services values use only 6 of the 8 bits in the field      * in the TCP/IP packet header. Make sure any values the system has set for      * the other two bits (the ECN bits) are maintained.      *      * @param dscp The Differentiated Services Code Point.      * @return A Differentiated Services Code Point that respects the ECN bits      *         set on the system.      * @throws IllegalArgumentException if setting Differentiated Services is      *         not supported.      */
 specifier|private
 specifier|static
 name|int
 name|adjustDSCPForECN
 parameter_list|(
 name|int
-name|value
+name|dscp
 parameter_list|)
 throws|throws
 name|IllegalArgumentException
@@ -374,7 +433,7 @@ argument_list|()
 decl_stmt|;
 comment|// The 7th and 8th bits of the system traffic class are the ECN bits.
 return|return
-name|value
+name|dscp
 operator||
 operator|(
 name|systemTrafficClass
@@ -393,16 +452,15 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Setting Differentiated Services "
+literal|"Setting Differentiated Services"
 operator|+
-literal|"not supported: "
+literal|" not supported: "
 operator|+
 name|e
 argument_list|)
 throw|;
 block|}
 block|}
-comment|// TODO: Add getter methods for ToS values.
 block|}
 end_class
 

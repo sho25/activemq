@@ -458,17 +458,30 @@ name|buffOut
 init|=
 literal|null
 decl_stmt|;
-comment|/**      * Differentiated Services Code Point. Determines the Traffic Class to be      * set on the socket.      */
+comment|/**      * The Traffic Class to be set on the socket.      */
 specifier|protected
 name|int
-name|dscp
+name|trafficClass
 init|=
 literal|0
 decl_stmt|;
-comment|/**      * Keeps track of attempts to set the Traffic Class.      */
+comment|/**      * Keeps track of attempts to set the Traffic Class on the socket.      */
 specifier|private
 name|boolean
 name|trafficClassSet
+init|=
+literal|false
+decl_stmt|;
+comment|/**      * Prevents setting both the Differentiated Services and Type of Service      * transport options at the same time, since they share the same spot in      * the TCP/IP packet headers.      */
+specifier|protected
+name|boolean
+name|diffServChosen
+init|=
+literal|false
+decl_stmt|;
+specifier|protected
+name|boolean
+name|typeOfServiceChosen
 init|=
 literal|false
 decl_stmt|;
@@ -909,7 +922,9 @@ name|Integer
 operator|.
 name|toString
 argument_list|(
-name|dscp
+name|this
+operator|.
+name|trafficClass
 argument_list|)
 return|;
 block|}
@@ -925,7 +940,7 @@ name|IllegalArgumentException
 block|{
 name|this
 operator|.
-name|dscp
+name|trafficClass
 operator|=
 name|QualityOfServiceUtils
 operator|.
@@ -934,8 +949,53 @@ argument_list|(
 name|diffServ
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|diffServChosen
+operator|=
+literal|true
+expr_stmt|;
 block|}
-comment|// TODO: Add methods for setting and getting a ToS value.
+specifier|public
+name|int
+name|getTypeOfService
+parameter_list|()
+block|{
+comment|// This is the value requested by the user by setting the Tcp Transport
+comment|// options. If the socket hasn't been created, then this value may not
+comment|// reflect the value returned by Socket.getTrafficClass().
+return|return
+name|this
+operator|.
+name|trafficClass
+return|;
+block|}
+specifier|public
+name|void
+name|setTypeOfService
+parameter_list|(
+name|int
+name|typeOfService
+parameter_list|)
+block|{
+name|this
+operator|.
+name|trafficClass
+operator|=
+name|QualityOfServiceUtils
+operator|.
+name|getToS
+argument_list|(
+name|typeOfService
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|typeOfServiceChosen
+operator|=
+literal|true
+expr_stmt|;
+block|}
 specifier|public
 name|boolean
 name|isTrace
@@ -1336,7 +1396,7 @@ return|return
 name|host
 return|;
 block|}
-comment|/**      * Configures the socket for use      *       * @param sock      * @throws SocketException      */
+comment|/**      * Configures the socket for use      *       * @param sock      * @throws SocketException, IllegalArgumentException if setting the options      *         on the socket failed.      */
 specifier|protected
 name|void
 name|initialiseSocket
@@ -1346,6 +1406,8 @@ name|sock
 parameter_list|)
 throws|throws
 name|SocketException
+throws|,
+name|IllegalArgumentException
 block|{
 if|if
 condition|(
@@ -1454,9 +1516,13 @@ block|}
 if|if
 condition|(
 operator|!
+name|this
+operator|.
 name|trafficClassSet
 condition|)
 block|{
+name|this
+operator|.
 name|trafficClassSet
 operator|=
 name|setTrafficClass
@@ -1594,6 +1660,8 @@ expr_stmt|;
 block|}
 comment|// Set the traffic class before the socket is connected when possible so
 comment|// that the connection packets are given the correct traffic class.
+name|this
+operator|.
 name|trafficClassSet
 operator|=
 name|setTrafficClass
@@ -2315,7 +2383,7 @@ return|return
 name|receiveCounter
 return|;
 block|}
-comment|/**      * @return Whether or not the Traffic Class was set on the given socket.      */
+comment|/**      * @param sock The socket on which to set the Traffic Class.      * @return Whether or not the Traffic Class was set on the given socket.      * @throws SocketException if the system does not support setting the      *         Traffic Class.      * @throws IllegalArgumentException if both the Differentiated Services and      *         Type of Services transport options have been set on the same      *         connection.      */
 specifier|private
 name|boolean
 name|setTrafficClass
@@ -2323,58 +2391,83 @@ parameter_list|(
 name|Socket
 name|sock
 parameter_list|)
+throws|throws
+name|SocketException
+throws|,
+name|IllegalArgumentException
 block|{
-comment|// TODO: Add in ToS support.
 if|if
 condition|(
 name|sock
 operator|==
 literal|null
+operator|||
+operator|(
+operator|!
+name|this
+operator|.
+name|diffServChosen
+operator|&&
+operator|!
+name|this
+operator|.
+name|typeOfServiceChosen
+operator|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
-name|boolean
-name|success
-init|=
-literal|false
-decl_stmt|;
-try|try
+block|}
+if|if
+condition|(
+name|this
+operator|.
+name|diffServChosen
+operator|&&
+name|this
+operator|.
+name|typeOfServiceChosen
+condition|)
 block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Cannot set both the "
+operator|+
+literal|" Differentiated Services and Type of Services transport "
+operator|+
+literal|" options on the same connection."
+argument_list|)
+throw|;
+block|}
 name|sock
 operator|.
 name|setTrafficClass
 argument_list|(
 name|this
 operator|.
-name|dscp
+name|trafficClass
 argument_list|)
 expr_stmt|;
-name|success
-operator|=
-literal|true
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|SocketException
-name|e
-parameter_list|)
-block|{
-comment|// The system does not support setting the traffic class through
-comment|// setTrafficClass.
-name|LOG
+comment|// Reset the guards that prevent both the Differentiated Services
+comment|// option and the Type of Service option from being set on the same
+comment|// connection.
+name|this
 operator|.
-name|error
-argument_list|(
-literal|"Unable to set the traffic class: "
-operator|+
-name|e
-argument_list|)
+name|diffServChosen
+operator|=
+literal|false
 expr_stmt|;
-block|}
+name|this
+operator|.
+name|typeOfServiceChosen
+operator|=
+literal|false
+expr_stmt|;
 return|return
-name|success
+literal|true
 return|;
 block|}
 block|}
