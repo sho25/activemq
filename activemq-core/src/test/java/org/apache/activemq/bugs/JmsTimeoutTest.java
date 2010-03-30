@@ -41,16 +41,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|ExceptionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|JMSException
 import|;
 end_import
@@ -139,9 +129,25 @@ name|org
 operator|.
 name|apache
 operator|.
-name|log4j
+name|commons
 operator|.
-name|Logger
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -152,15 +158,14 @@ name|JmsTimeoutTest
 extends|extends
 name|EmbeddedBrokerTestSupport
 block|{
-specifier|private
-specifier|final
 specifier|static
-name|Logger
-name|logger
+specifier|final
+name|Log
+name|LOG
 init|=
-name|Logger
+name|LogFactory
 operator|.
-name|getLogger
+name|getLog
 argument_list|(
 name|JmsTimeoutTest
 operator|.
@@ -241,7 +246,7 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -316,7 +321,7 @@ comment|// Currently after the timeout producer just
 comment|// returns but there is no way to know that
 comment|// the send timed out
 block|}
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
