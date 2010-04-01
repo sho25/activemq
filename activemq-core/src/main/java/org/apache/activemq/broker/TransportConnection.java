@@ -189,6 +189,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|transaction
+operator|.
+name|xa
+operator|.
+name|XAResource
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -2494,7 +2506,7 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"Cannot prepare a transaction that had not been started: "
+literal|"Cannot prepare a transaction that had not been started or previously returned XA_RDONLY: "
 operator|+
 name|info
 operator|.
@@ -2542,6 +2554,27 @@ argument_list|(
 name|result
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|result
+operator|==
+name|XAResource
+operator|.
+name|XA_RDONLY
+condition|)
+block|{
+comment|// we are done, no further rollback or commit from TM
+name|cs
+operator|.
+name|removeTransactionState
+argument_list|(
+name|info
+operator|.
+name|getTransactionId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|IntegerResponse
 name|response
 init|=

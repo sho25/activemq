@@ -1007,7 +1007,9 @@ name|object
 operator|)
 operator|.
 name|onResponses
-argument_list|()
+argument_list|(
+name|command
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -4854,6 +4856,15 @@ name|connectionId
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+specifier|public
+name|ConnectionStateTracker
+name|getStateTracker
+parameter_list|()
+block|{
+return|return
+name|stateTracker
+return|;
 block|}
 specifier|private
 name|boolean
