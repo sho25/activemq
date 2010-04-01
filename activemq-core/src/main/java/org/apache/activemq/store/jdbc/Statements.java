@@ -566,12 +566,12 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|findMessageStatement
+name|findMessageByIdStatement
 operator|==
 literal|null
 condition|)
 block|{
-name|findMessageStatement
+name|findMessageByIdStatement
 operator|=
 literal|"SELECT MSG FROM "
 operator|+
@@ -582,7 +582,7 @@ literal|" WHERE ID=?"
 expr_stmt|;
 block|}
 return|return
-name|findMessageStatement
+name|findMessageByIdStatement
 return|;
 block|}
 specifier|public
@@ -1822,6 +1822,21 @@ operator|.
 name|findMessageStatement
 operator|=
 name|findMessageStatment
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setFindMessageByIdStatement
+parameter_list|(
+name|String
+name|findMessageByIdStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|findMessageByIdStatement
+operator|=
+name|findMessageByIdStatement
 expr_stmt|;
 block|}
 specifier|public
