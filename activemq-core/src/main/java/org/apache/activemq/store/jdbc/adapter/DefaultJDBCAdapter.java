@@ -1821,7 +1821,7 @@ name|this
 operator|.
 name|statements
 operator|.
-name|getRemoveMessageStatment
+name|getRemoveMessageStatement
 argument_list|()
 argument_list|)
 expr_stmt|;

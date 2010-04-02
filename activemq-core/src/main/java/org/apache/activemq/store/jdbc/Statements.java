@@ -100,7 +100,7 @@ name|updateMessageStatement
 decl_stmt|;
 specifier|private
 name|String
-name|removeMessageStatment
+name|removeMessageStatement
 decl_stmt|;
 specifier|private
 name|String
@@ -483,17 +483,17 @@ return|;
 block|}
 specifier|public
 name|String
-name|getRemoveMessageStatment
+name|getRemoveMessageStatement
 parameter_list|()
 block|{
 if|if
 condition|(
-name|removeMessageStatment
+name|removeMessageStatement
 operator|==
 literal|null
 condition|)
 block|{
-name|removeMessageStatment
+name|removeMessageStatement
 operator|=
 literal|"DELETE FROM "
 operator|+
@@ -504,7 +504,7 @@ literal|" WHERE ID=?"
 expr_stmt|;
 block|}
 return|return
-name|removeMessageStatment
+name|removeMessageStatement
 return|;
 block|}
 specifier|public
@@ -1874,14 +1874,14 @@ name|void
 name|setRemoveMessageStatment
 parameter_list|(
 name|String
-name|removeMessageStatment
+name|removeMessageStatement
 parameter_list|)
 block|{
 name|this
 operator|.
-name|removeMessageStatment
+name|removeMessageStatement
 operator|=
-name|removeMessageStatment
+name|removeMessageStatement
 expr_stmt|;
 block|}
 specifier|public
