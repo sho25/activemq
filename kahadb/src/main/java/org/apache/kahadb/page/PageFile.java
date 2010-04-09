@@ -4202,7 +4202,7 @@ expr_stmt|;
 name|long
 name|nextTxId
 init|=
-name|readFile
+name|recoveryFile
 operator|.
 name|readLong
 argument_list|()
@@ -4210,7 +4210,7 @@ decl_stmt|;
 name|long
 name|expectedChecksum
 init|=
-name|readFile
+name|recoveryFile
 operator|.
 name|readLong
 argument_list|()
@@ -4218,7 +4218,7 @@ decl_stmt|;
 name|int
 name|pageCounter
 init|=
-name|readFile
+name|recoveryFile
 operator|.
 name|readInt
 argument_list|()
