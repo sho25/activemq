@@ -198,6 +198,13 @@ name|ActiveMQDestination
 index|[]
 name|dests
 init|=
+name|configuration
+operator|.
+name|isDynamicOnly
+argument_list|()
+condition|?
+literal|null
+else|:
 name|durableDestinations
 decl_stmt|;
 if|if
@@ -427,6 +434,8 @@ block|{
 name|String
 name|subscriberName
 init|=
+name|DURABLE_SUB_PREFIX
+operator|+
 name|configuration
 operator|.
 name|getBrokerName

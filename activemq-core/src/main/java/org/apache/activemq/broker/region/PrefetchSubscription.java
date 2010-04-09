@@ -1454,6 +1454,9 @@ argument_list|)
 condition|)
 block|{
 comment|// this should never be within a transaction
+name|dequeueCounter
+operator|++
+expr_stmt|;
 name|node
 operator|.
 name|getRegionDestination

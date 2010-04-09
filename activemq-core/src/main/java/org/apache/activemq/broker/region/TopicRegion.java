@@ -1187,7 +1187,7 @@ name|debug
 argument_list|(
 literal|"Restoring durable subscription: "
 operator|+
-name|infos
+name|info
 argument_list|)
 expr_stmt|;
 name|SubscriptionKey
@@ -1983,6 +1983,25 @@ name|keepDurableSubsActive
 operator|=
 name|keepDurableSubsActive
 expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|durableSubscriptionExists
+parameter_list|(
+name|SubscriptionKey
+name|key
+parameter_list|)
+block|{
+return|return
+name|this
+operator|.
+name|durableSubscriptions
+operator|.
+name|containsKey
+argument_list|(
+name|key
+argument_list|)
+return|;
 block|}
 block|}
 end_class
