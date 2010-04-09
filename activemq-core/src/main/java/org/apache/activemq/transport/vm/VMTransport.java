@@ -590,6 +590,30 @@ name|decrement
 argument_list|()
 expr_stmt|;
 block|}
+name|dispatch
+argument_list|(
+name|peer
+argument_list|,
+name|transportListener
+argument_list|,
+name|command
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|dispatch
+parameter_list|(
+name|VMTransport
+name|transport
+parameter_list|,
+name|TransportListener
+name|transportListener
+parameter_list|,
+name|Object
+name|command
+parameter_list|)
+block|{
 if|if
 condition|(
 name|transportListener
@@ -625,7 +649,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|peer
+name|transport
 operator|.
 name|receiveCounter
 operator|++
@@ -705,10 +729,12 @@ block|{
 name|receiveCounter
 operator|++
 expr_stmt|;
-name|transportListener
-operator|.
-name|onCommand
+name|dispatch
 argument_list|(
+name|this
+argument_list|,
+name|transportListener
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
@@ -768,6 +794,36 @@ name|isOn
 argument_list|()
 condition|)
 block|{
+comment|// let the peer know that we are disconnecting..
+try|try
+block|{
+name|peer
+operator|.
+name|transportListener
+operator|.
+name|onException
+argument_list|(
+operator|new
+name|TransportDisposedIOException
+argument_list|(
+literal|"Peer ("
+operator|+
+name|peer
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|") disposed."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ignore
+parameter_list|)
+block|{             }
 name|TaskRunner
 name|tr
 init|=
@@ -842,21 +898,6 @@ literal|1000
 argument_list|)
 expr_stmt|;
 block|}
-comment|// let the peer know that we are disconnecting..
-try|try
-block|{
-name|oneway
-argument_list|(
-name|DISCONNECT
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|ignore
-parameter_list|)
-block|{             }
 block|}
 block|}
 comment|/**      * @see org.apache.activemq.thread.Task#iterate()      */
