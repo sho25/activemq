@@ -2357,12 +2357,10 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|Thread
+name|master
 operator|.
-name|sleep
-argument_list|(
-literal|2000
-argument_list|)
+name|waitUntilStarted
+argument_list|()
 expr_stmt|;
 name|masterUrl
 operator|=
@@ -2425,6 +2423,11 @@ expr_stmt|;
 name|slave
 operator|.
 name|start
+argument_list|()
+expr_stmt|;
+name|slave
+operator|.
+name|waitUntilStarted
 argument_list|()
 expr_stmt|;
 block|}
