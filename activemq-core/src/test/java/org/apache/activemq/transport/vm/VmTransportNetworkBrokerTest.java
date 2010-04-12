@@ -253,7 +253,7 @@ argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
-literal|"things are ok w.r.t.threads, threadCount="
+literal|"Threads are leaking, threadCount="
 operator|+
 name|threadCount
 operator|+
@@ -265,7 +265,7 @@ name|threadCountAfterSleep
 operator|<
 name|threadCount
 operator|+
-literal|2
+literal|5
 argument_list|)
 expr_stmt|;
 name|broker
