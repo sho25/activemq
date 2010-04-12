@@ -797,6 +797,9 @@ specifier|private
 name|boolean
 name|clearDispatchList
 decl_stmt|;
+name|boolean
+name|inProgressClearRequiredFlag
+decl_stmt|;
 specifier|private
 name|MessageAck
 name|pendingAck
@@ -2603,14 +2606,28 @@ argument_list|)
 expr_stmt|;
 block|}
 name|void
-name|clearMessagesInProgress
+name|inProgressClearRequired
 parameter_list|()
 block|{
+name|inProgressClearRequiredFlag
+operator|=
+literal|true
+expr_stmt|;
 comment|// deal with delivered messages async to avoid lock contention with in progress acks
 name|clearDispatchList
 operator|=
 literal|true
 expr_stmt|;
+block|}
+name|void
+name|clearMessagesInProgress
+parameter_list|()
+block|{
+if|if
+condition|(
+name|inProgressClearRequiredFlag
+condition|)
+block|{
 synchronized|synchronized
 init|(
 name|unconsumedMessages
@@ -2618,6 +2635,11 @@ operator|.
 name|getMutex
 argument_list|()
 init|)
+block|{
+if|if
+condition|(
+name|inProgressClearRequiredFlag
+condition|)
 block|{
 if|if
 condition|(
@@ -2692,7 +2714,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
 comment|// allow dispatch on this connection to resume
 name|session
 operator|.
@@ -2701,6 +2722,13 @@ operator|.
 name|transportInterruptionProcessingComplete
 argument_list|()
 expr_stmt|;
+name|inProgressClearRequiredFlag
+operator|=
+literal|false
+expr_stmt|;
+block|}
+block|}
+block|}
 block|}
 name|void
 name|deliverAcks
@@ -5157,6 +5185,9 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
+name|clearMessagesInProgress
+argument_list|()
+expr_stmt|;
 name|clearDispatchList
 argument_list|()
 expr_stmt|;

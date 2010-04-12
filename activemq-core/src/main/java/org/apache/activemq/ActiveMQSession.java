@@ -2063,6 +2063,11 @@ range|:
 name|consumers
 control|)
 block|{
+name|consumer
+operator|.
+name|inProgressClearRequired
+argument_list|()
+expr_stmt|;
 name|scheduler
 operator|.
 name|executeAfterDelay
