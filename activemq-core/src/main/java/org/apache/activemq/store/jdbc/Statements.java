@@ -1104,7 +1104,7 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" WHERE ( EXPIRATION<>0 AND EXPIRATION<?) OR ID<= "
+literal|" WHERE ( EXPIRATION<>0 AND EXPIRATION<?) OR ID< "
 operator|+
 literal|"( SELECT min("
 operator|+

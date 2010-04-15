@@ -587,7 +587,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// variants for each store....
-specifier|private
+specifier|protected
 name|void
 name|configureBroker
 parameter_list|(
