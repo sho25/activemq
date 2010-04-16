@@ -63,6 +63,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Date
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -570,6 +580,47 @@ return|return
 name|this
 operator|.
 name|location
+return|;
+block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"Job [id="
+operator|+
+name|jobId
+operator|+
+literal|", startTime="
+operator|+
+operator|new
+name|Date
+argument_list|(
+name|startTime
+argument_list|)
+operator|+
+literal|", delay="
+operator|+
+name|delay
+operator|+
+literal|", period="
+operator|+
+name|period
+operator|+
+literal|", repeat="
+operator|+
+name|repeat
+operator|+
+literal|", nextTime="
+operator|+
+operator|new
+name|Date
+argument_list|(
+name|nextTime
+argument_list|)
+operator|+
+literal|"]"
 return|;
 block|}
 specifier|static

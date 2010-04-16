@@ -453,7 +453,7 @@ name|latch
 operator|.
 name|await
 argument_list|(
-literal|120
+literal|240
 argument_list|,
 name|TimeUnit
 operator|.
