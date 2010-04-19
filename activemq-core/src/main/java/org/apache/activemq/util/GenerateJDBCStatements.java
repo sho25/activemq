@@ -420,6 +420,10 @@ name|invoke
 argument_list|(
 name|s
 argument_list|,
+operator|(
+name|Object
+index|[]
+operator|)
 literal|null
 argument_list|)
 argument_list|)
@@ -528,6 +532,10 @@ name|invoke
 argument_list|(
 name|s
 argument_list|,
+operator|(
+name|Object
+index|[]
+operator|)
 literal|null
 argument_list|)
 argument_list|)
