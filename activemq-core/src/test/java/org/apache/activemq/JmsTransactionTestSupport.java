@@ -412,6 +412,11 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|broker
+operator|.
+name|waitUntilStarted
+argument_list|()
+expr_stmt|;
 name|resourceProvider
 operator|=
 name|getJmsResourceProvider
@@ -558,6 +563,11 @@ expr_stmt|;
 name|broker
 operator|.
 name|stop
+argument_list|()
+expr_stmt|;
+name|broker
+operator|.
+name|waitUntilStopped
 argument_list|()
 expr_stmt|;
 name|broker
