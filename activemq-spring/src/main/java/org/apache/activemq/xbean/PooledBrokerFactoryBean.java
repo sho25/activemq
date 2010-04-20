@@ -363,9 +363,6 @@ return|;
 block|}
 specifier|public
 name|Class
-argument_list|<
-name|BrokerService
-argument_list|>
 name|getObjectType
 parameter_list|()
 block|{
