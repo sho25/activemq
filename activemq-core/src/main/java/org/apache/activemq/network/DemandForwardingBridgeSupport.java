@@ -53,6 +53,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collection
 import|;
 end_import
@@ -4407,7 +4417,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|originallyCameFromRemote
+name|suppressMessageDispatch
 argument_list|(
 name|md
 argument_list|,
@@ -4436,7 +4446,22 @@ literal|" message not forwarded to "
 operator|+
 name|remoteBrokerName
 operator|+
-literal|" because message came from there or fails networkTTL: "
+literal|" because message came from there or fails networkTTL, brokerPath: "
+operator|+
+name|Arrays
+operator|.
+name|toString
+argument_list|(
+name|md
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|getBrokerPath
+argument_list|()
+argument_list|)
+operator|+
+literal|", message: "
 operator|+
 name|md
 operator|.
@@ -4507,7 +4532,19 @@ literal|" -> "
 operator|+
 name|remoteBrokerName
 operator|+
-literal|": "
+literal|", brokerPath: "
+operator|+
+name|Arrays
+operator|.
+name|toString
+argument_list|(
+name|message
+operator|.
+name|getBrokerPath
+argument_list|()
+argument_list|)
+operator|+
+literal|", message: "
 operator|+
 name|message
 argument_list|)
@@ -4861,7 +4898,7 @@ block|}
 block|}
 specifier|private
 name|boolean
-name|originallyCameFromRemote
+name|suppressMessageDispatch
 parameter_list|(
 name|MessageDispatch
 name|md
@@ -4877,7 +4914,7 @@ comment|// of the bridge. I think we should be making this decision based on the
 comment|// broker bread crumbs and not the consumer's? However, the message's broker bread
 comment|// crumbs are null, which is another matter.
 name|boolean
-name|cameFromRemote
+name|suppress
 init|=
 literal|false
 decl_stmt|;
@@ -4905,7 +4942,7 @@ name|ConsumerInfo
 operator|)
 condition|)
 block|{
-name|cameFromRemote
+name|suppress
 operator|=
 name|contains
 argument_list|(
@@ -4931,7 +4968,7 @@ comment|// check here and allow the ack irrespective
 if|if
 condition|(
 operator|!
-name|cameFromRemote
+name|suppress
 operator|&&
 name|sub
 operator|.
@@ -4959,7 +4996,7 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|cameFromRemote
+name|suppress
 operator|=
 operator|!
 name|createNetworkBridgeFilter
@@ -4974,7 +5011,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|cameFromRemote
+name|suppress
 return|;
 block|}
 comment|/**      * @return Returns the dynamicallyIncludedDestinations.      */
@@ -6750,7 +6787,7 @@ block|}
 else|else
 block|{
 comment|// need to ack this message if it is ignored as it is durable so
-comment|// we check before we send. see: originallyCameFromRemote()
+comment|// we check before we send. see: suppressMessageDispatch()
 block|}
 block|}
 specifier|protected
