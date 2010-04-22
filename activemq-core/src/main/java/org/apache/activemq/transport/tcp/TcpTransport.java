@@ -734,6 +734,14 @@ name|toString
 parameter_list|()
 block|{
 return|return
+literal|""
+operator|+
+operator|(
+name|socket
+operator|.
+name|isConnected
+argument_list|()
+condition|?
 literal|"tcp://"
 operator|+
 name|socket
@@ -747,6 +755,17 @@ name|socket
 operator|.
 name|getPort
 argument_list|()
+else|:
+operator|(
+name|localLocation
+operator|!=
+literal|null
+condition|?
+name|localLocation
+else|:
+name|remoteLocation
+operator|)
+operator|)
 return|;
 block|}
 comment|/**      * reads packets from a Socket      */

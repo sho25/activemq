@@ -1971,7 +1971,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
 name|message
 argument_list|)
@@ -2357,11 +2357,6 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|master
-operator|.
-name|waitUntilStarted
-argument_list|()
-expr_stmt|;
 name|masterUrl
 operator|=
 name|master
@@ -2429,6 +2424,16 @@ name|slave
 operator|.
 name|waitUntilStarted
 argument_list|()
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"master started"
+argument_list|,
+name|master
+operator|.
+name|waitUntilStarted
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 specifier|public

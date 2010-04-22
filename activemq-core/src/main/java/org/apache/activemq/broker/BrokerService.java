@@ -3599,9 +3599,9 @@ comment|// ignore
 block|}
 block|}
 block|}
-comment|/**      * A helper method to block the caller thread until the broker has been      * started      */
+comment|/**      * A helper method to block the caller thread until the broker has fully started      * @return boolean true if wait succeeded false if broker was not started or was stopped      */
 specifier|public
-name|void
+name|boolean
 name|waitUntilStarted
 parameter_list|()
 block|{
@@ -3648,6 +3648,9 @@ name|ignore
 parameter_list|)
 block|{             }
 block|}
+return|return
+name|waitSucceeded
+return|;
 block|}
 comment|// Properties
 comment|// -------------------------------------------------------------------------
