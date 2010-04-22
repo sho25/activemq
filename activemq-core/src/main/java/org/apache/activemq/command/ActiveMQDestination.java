@@ -81,6 +81,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -102,6 +112,16 @@ operator|.
 name|util
 operator|.
 name|Properties
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -1346,14 +1366,14 @@ name|composite
 condition|)
 block|{
 comment|// Check to see if it is a composite.
-name|List
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|l
 init|=
 operator|new
-name|ArrayList
+name|HashSet
 argument_list|<
 name|String
 argument_list|>
@@ -1411,16 +1431,6 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|l
-operator|.
-name|size
-argument_list|()
-operator|>
-literal|1
-condition|)
-block|{
 name|compositeDestinations
 operator|=
 operator|new
@@ -1456,7 +1466,6 @@ argument_list|(
 name|dest
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
