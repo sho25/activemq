@@ -661,6 +661,13 @@ name|textMessage
 operator|.
 name|getText
 argument_list|()
+operator|+
+literal|", "
+operator|+
+name|textMessage
+operator|.
+name|getJMSMessageID
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -673,6 +680,13 @@ operator|+
 name|textMessage
 operator|.
 name|getText
+argument_list|()
+operator|+
+literal|", "
+operator|+
+name|textMessage
+operator|.
+name|getJMSMessageID
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1767,6 +1781,13 @@ operator|+
 name|textReply
 operator|.
 name|getText
+argument_list|()
+operator|+
+literal|", "
+operator|+
+name|textReply
+operator|.
+name|getJMSMessageID
 argument_list|()
 argument_list|)
 expr_stmt|;
