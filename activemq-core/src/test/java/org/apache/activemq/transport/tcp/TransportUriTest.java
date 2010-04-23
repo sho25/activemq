@@ -273,6 +273,22 @@ index|[]
 name|validNameOptions
 init|=
 block|{
+literal|"CS0"
+block|,
+literal|"CS1"
+block|,
+literal|"CS2"
+block|,
+literal|"CS3"
+block|,
+literal|"CS4"
+block|,
+literal|"CS5"
+block|,
+literal|"CS6"
+block|,
+literal|"CS7"
+block|,
 literal|"EF"
 block|,
 literal|"AF11"
@@ -790,6 +806,8 @@ name|expected
 parameter_list|)
 block|{         }
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -807,6 +825,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -848,6 +868,8 @@ name|tearDown
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|BrokerService
 name|createBroker
