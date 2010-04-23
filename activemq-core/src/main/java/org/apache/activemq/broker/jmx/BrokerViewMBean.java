@@ -70,6 +70,16 @@ name|String
 name|getBrokerName
 parameter_list|()
 function_decl|;
+comment|/**      * @return The name of the broker.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The version of the broker."
+argument_list|)
+name|String
+name|getBrokerVersion
+parameter_list|()
+function_decl|;
 comment|/**      * The Broker will fush it's caches so that the garbage collector can      * recalaim more memory.      *       * @throws Exception      */
 annotation|@
 name|MBeanInfo
