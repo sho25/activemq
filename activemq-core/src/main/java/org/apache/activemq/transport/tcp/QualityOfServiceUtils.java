@@ -102,7 +102,7 @@ name|Integer
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|// TODO: Find other names used for Differentiated Services values.
+comment|/** Common names used for Differentiated Services values. */
 static|static
 block|{
 name|DIFF_SERV_NAMES
@@ -431,14 +431,19 @@ operator|.
 name|getTrafficClass
 argument_list|()
 decl_stmt|;
-comment|// The 7th and 8th bits of the system traffic class are the ECN bits.
+comment|// The 1st and 2nd bits of the system traffic class are the ECN
+comment|// bits.
 return|return
+operator|(
 name|dscp
+operator|<<
+literal|2
+operator|)
 operator||
 operator|(
 name|systemTrafficClass
 operator|&
-literal|192
+literal|3
 operator|)
 return|;
 block|}

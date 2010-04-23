@@ -2470,6 +2470,104 @@ operator|.
 name|trafficClass
 argument_list|)
 expr_stmt|;
+name|int
+name|resultTrafficClass
+init|=
+name|sock
+operator|.
+name|getTrafficClass
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|this
+operator|.
+name|trafficClass
+operator|!=
+name|resultTrafficClass
+condition|)
+block|{
+comment|// In the case where the user has specified the ECN bits (e.g. in
+comment|// Type of Service) but the system won't allow the ECN bits to be
+comment|// set or in the case where setting the traffic class failed for
+comment|// other reasons, emit a warning.
+if|if
+condition|(
+operator|(
+name|this
+operator|.
+name|trafficClass
+operator|>>
+literal|2
+operator|)
+operator|==
+operator|(
+name|resultTrafficClass
+operator|>>
+literal|2
+operator|)
+operator|&&
+operator|(
+name|this
+operator|.
+name|trafficClass
+operator|&
+literal|3
+operator|)
+operator|!=
+operator|(
+name|resultTrafficClass
+operator|&
+literal|3
+operator|)
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Attempted to set the Traffic Class to "
+operator|+
+name|this
+operator|.
+name|trafficClass
+operator|+
+literal|" but the result Traffic Class was "
+operator|+
+name|resultTrafficClass
+operator|+
+literal|". Please check that your system "
+operator|+
+literal|"allows you to set the ECN bits (the first two bits)."
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Attempted to set the Traffic Class to "
+operator|+
+name|this
+operator|.
+name|trafficClass
+operator|+
+literal|" but the result Traffic Class was "
+operator|+
+name|resultTrafficClass
+operator|+
+literal|". Please check that your system "
+operator|+
+literal|"supports java.net.setTrafficClass."
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+literal|false
+return|;
+block|}
 comment|// Reset the guards that prevent both the Differentiated Services
 comment|// option and the Type of Service option from being set on the same
 comment|// connection.
