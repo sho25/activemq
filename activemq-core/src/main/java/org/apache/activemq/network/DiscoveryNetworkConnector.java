@@ -395,21 +395,6 @@ name|DiscoveryEvent
 name|event
 parameter_list|)
 block|{
-name|String
-name|localURIName
-init|=
-name|localURI
-operator|.
-name|getScheme
-argument_list|()
-operator|+
-literal|"://"
-operator|+
-name|localURI
-operator|.
-name|getHost
-argument_list|()
-decl_stmt|;
 comment|// Ignore events once we start stopping.
 if|if
 condition|(
@@ -582,7 +567,7 @@ name|info
 argument_list|(
 literal|"Establishing network connection from "
 operator|+
-name|localURIName
+name|localURI
 operator|+
 literal|" to "
 operator|+
@@ -683,7 +668,7 @@ name|warn
 argument_list|(
 literal|"Could not connect to local URI: "
 operator|+
-name|localURIName
+name|localURI
 operator|+
 literal|": "
 operator|+
@@ -772,7 +757,7 @@ name|warn
 argument_list|(
 literal|"Could not start network bridge between: "
 operator|+
-name|localURIName
+name|localURI
 operator|+
 literal|" and: "
 operator|+

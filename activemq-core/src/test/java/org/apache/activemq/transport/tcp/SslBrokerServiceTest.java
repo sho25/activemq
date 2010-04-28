@@ -744,7 +744,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
+specifier|public
+specifier|static
 name|TrustManager
 index|[]
 name|getTrustManager
@@ -816,7 +817,8 @@ return|return
 name|trustStoreManagers
 return|;
 block|}
-specifier|private
+specifier|public
+specifier|static
 name|KeyManager
 index|[]
 name|getKeyManager
