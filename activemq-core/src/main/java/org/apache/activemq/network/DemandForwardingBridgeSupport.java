@@ -4532,6 +4532,13 @@ literal|" -> "
 operator|+
 name|remoteBrokerName
 operator|+
+literal|", consumer: "
+operator|+
+name|md
+operator|.
+name|getConsumerId
+argument_list|()
+operator|+
 literal|", brokerPath: "
 operator|+
 name|Arrays
