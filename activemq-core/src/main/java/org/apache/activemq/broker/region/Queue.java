@@ -924,6 +924,20 @@ literal|100
 argument_list|)
 decl_stmt|;
 specifier|private
+name|List
+argument_list|<
+name|QueueMessageReference
+argument_list|>
+name|redeliveredWaitingDispatch
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|QueueMessageReference
+argument_list|>
+argument_list|()
+decl_stmt|;
+specifier|private
 name|MessageGroupMap
 name|messageGroupOwners
 decl_stmt|;
@@ -2458,19 +2472,6 @@ name|consumerId
 argument_list|)
 expr_stmt|;
 comment|// redeliver inflight messages
-name|List
-argument_list|<
-name|QueueMessageReference
-argument_list|>
-name|list
-init|=
-operator|new
-name|ArrayList
-argument_list|<
-name|QueueMessageReference
-argument_list|>
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|MessageReference
@@ -2534,7 +2535,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|list
+name|redeliveredWaitingDispatch
 operator|.
 name|add
 argument_list|(
@@ -2545,7 +2546,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|list
+name|redeliveredWaitingDispatch
 operator|.
 name|isEmpty
 argument_list|()
@@ -2553,7 +2554,9 @@ condition|)
 block|{
 name|doDispatch
 argument_list|(
-name|list
+operator|new
+name|ArrayList
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -6308,6 +6311,12 @@ operator|||
 name|pendingBrowserDispatch
 operator|!=
 literal|null
+operator|||
+operator|!
+name|redeliveredWaitingDispatch
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 try|try
@@ -7777,13 +7786,31 @@ block|{
 if|if
 condition|(
 operator|!
+name|redeliveredWaitingDispatch
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+comment|// Try first to dispatch redelivered messages to keep an proper order
+name|redeliveredWaitingDispatch
+operator|=
+name|doActualDispatch
+argument_list|(
+name|redeliveredWaitingDispatch
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
 name|pagedInPendingDispatch
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// Try to first dispatch anything that had not been
+comment|// Next dispatch anything that had not been
 comment|// dispatched before.
 name|pagedInPendingDispatch
 operator|=
