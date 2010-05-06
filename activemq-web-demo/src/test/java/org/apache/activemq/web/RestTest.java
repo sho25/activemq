@@ -107,7 +107,7 @@ name|contentExchange
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/message/test?timeout=1000&type=queue"
+literal|"http://localhost:8080/message/test?readTimeout=1000&type=queue"
 argument_list|)
 expr_stmt|;
 name|httpClient
@@ -224,7 +224,7 @@ name|contentExchange
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/message/test?timeout=1000&type=queue"
+literal|"http://localhost:8080/message/test?readTimeout=1000&type=queue"
 argument_list|)
 expr_stmt|;
 name|contentExchange
