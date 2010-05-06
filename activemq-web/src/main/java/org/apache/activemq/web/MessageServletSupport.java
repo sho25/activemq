@@ -1789,7 +1789,7 @@ name|getHeader
 argument_list|(
 name|WebClient
 operator|.
-name|SELECTOR_NAME
+name|selectorName
 argument_list|)
 return|;
 block|}

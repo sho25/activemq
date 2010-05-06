@@ -231,9 +231,7 @@ name|contentExchange
 operator|.
 name|setRequestHeader
 argument_list|(
-name|WebClient
-operator|.
-name|SELECTOR_NAME
+literal|"selector"
 argument_list|,
 literal|"test=2"
 argument_list|)

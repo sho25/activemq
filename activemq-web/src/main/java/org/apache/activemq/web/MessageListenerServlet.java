@@ -732,7 +732,7 @@ name|getHeader
 argument_list|(
 name|WebClient
 operator|.
-name|SELECTOR_NAME
+name|selectorName
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -838,7 +838,7 @@ name|getHeader
 argument_list|(
 name|WebClient
 operator|.
-name|SELECTOR_NAME
+name|selectorName
 argument_list|)
 argument_list|)
 decl_stmt|;
