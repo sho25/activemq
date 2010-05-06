@@ -1772,6 +1772,27 @@ return|return
 name|answer
 return|;
 block|}
+specifier|protected
+name|String
+name|getSelector
+parameter_list|(
+name|HttpServletRequest
+name|request
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|request
+operator|.
+name|getHeader
+argument_list|(
+name|WebClient
+operator|.
+name|SELECTOR_NAME
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

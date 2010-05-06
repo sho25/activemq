@@ -480,6 +480,14 @@ name|BROKER_URL_INIT_PARAM
 init|=
 literal|"org.apache.activemq.brokerURL"
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SELECTOR_NAME
+init|=
+literal|"org.apache.activemq.selector"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -1103,6 +1111,8 @@ name|getConsumer
 argument_list|(
 name|destination
 argument_list|,
+literal|null
+argument_list|,
 literal|true
 argument_list|)
 argument_list|)
@@ -1689,6 +1699,9 @@ name|getConsumer
 parameter_list|(
 name|Destination
 name|destination
+parameter_list|,
+name|String
+name|selector
 parameter_list|)
 throws|throws
 name|JMSException
@@ -1697,6 +1710,8 @@ return|return
 name|getConsumer
 argument_list|(
 name|destination
+argument_list|,
+name|selector
 argument_list|,
 literal|true
 argument_list|)
@@ -1709,6 +1724,9 @@ name|getConsumer
 parameter_list|(
 name|Destination
 name|destination
+parameter_list|,
+name|String
+name|selector
 parameter_list|,
 name|boolean
 name|create
@@ -1743,6 +1761,8 @@ operator|.
 name|createConsumer
 argument_list|(
 name|destination
+argument_list|,
+name|selector
 argument_list|)
 expr_stmt|;
 name|consumers
