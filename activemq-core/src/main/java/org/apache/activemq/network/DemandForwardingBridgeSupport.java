@@ -3199,6 +3199,16 @@ operator|.
 name|getDestination
 argument_list|()
 argument_list|)
+operator|||
+name|AdvisorySupport
+operator|.
+name|isDestinationAdvisoryTopic
+argument_list|(
+name|message
+operator|.
+name|getDestination
+argument_list|()
+argument_list|)
 condition|)
 block|{
 name|serviceRemoteConsumerAdvisory
