@@ -265,7 +265,7 @@ name|threadCountAfterSleep
 operator|<
 name|threadCount
 operator|+
-literal|5
+literal|8
 argument_list|)
 expr_stmt|;
 name|broker
