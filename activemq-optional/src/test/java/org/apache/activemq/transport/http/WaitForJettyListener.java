@@ -211,7 +211,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"verify jettty available, failed to connect to "
+literal|"verify jetty available, failed to connect to "
 operator|+
 name|url
 operator|+
