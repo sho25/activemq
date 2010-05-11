@@ -571,7 +571,7 @@ name|assertTrue
 argument_list|(
 literal|"Consumer got third message after block"
 argument_list|,
-name|twoNewMessages
+name|thirdMessageReceived
 operator|.
 name|await
 argument_list|(
