@@ -173,6 +173,15 @@ extends|extends
 name|MessageListenerServlet
 block|{
 specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|3875280764356406114L
+decl_stmt|;
+specifier|private
 name|Map
 argument_list|<
 name|String
