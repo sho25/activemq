@@ -827,6 +827,11 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+name|int
+name|advisoriesReceived
+init|=
+literal|0
+decl_stmt|;
 specifier|public
 name|void
 name|onMessage
@@ -868,7 +873,8 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|1
+operator|++
+name|advisoriesReceived
 argument_list|,
 name|activeMQMessage
 operator|.
@@ -1115,6 +1121,18 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|SECONDS
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"acking: "
+operator|+
+name|message
+operator|.
+name|getJMSMessageID
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|message
