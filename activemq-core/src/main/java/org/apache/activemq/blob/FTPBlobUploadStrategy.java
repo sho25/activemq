@@ -87,6 +87,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -429,6 +439,9 @@ name|toString
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
 name|ftp
 operator|.
 name|storeFile
@@ -437,7 +450,21 @@ name|filename
 argument_list|,
 name|in
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"FTP store failed: "
+operator|+
+name|ftp
+operator|.
+name|getReplyString
+argument_list|()
+argument_list|)
+throw|;
+block|}
 name|ftp
 operator|.
 name|quit
