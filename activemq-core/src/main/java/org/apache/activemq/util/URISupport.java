@@ -451,6 +451,23 @@ name|URISyntaxException
 block|{
 try|try
 block|{
+name|uri
+operator|=
+name|uri
+operator|.
+name|substring
+argument_list|(
+name|uri
+operator|.
+name|lastIndexOf
+argument_list|(
+literal|"?"
+argument_list|)
+operator|+
+literal|1
+argument_list|)
+expr_stmt|;
+comment|// get only the relevant part of the query
 name|Map
 argument_list|<
 name|String

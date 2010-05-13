@@ -64,6 +64,8 @@ name|Object
 index|[]
 block|{
 literal|"failover:("
+block|,
+literal|"failover://("
 block|}
 argument_list|)
 expr_stmt|;
