@@ -203,7 +203,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|private
+specifier|protected
 name|Connection
 name|connection
 decl_stmt|;
