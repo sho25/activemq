@@ -358,13 +358,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// 3. Delete
-name|strategy
-operator|.
-name|deleteFile
-argument_list|(
-name|msg
-argument_list|)
-expr_stmt|;
+comment|//strategy.deleteFile(msg);
 block|}
 block|}
 end_class

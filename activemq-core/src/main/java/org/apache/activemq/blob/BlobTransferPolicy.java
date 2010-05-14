@@ -421,7 +421,9 @@ name|strategy
 operator|=
 operator|new
 name|FTPBlobDownloadStrategy
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -430,7 +432,9 @@ name|strategy
 operator|=
 operator|new
 name|DefaultBlobDownloadStrategy
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -444,7 +448,9 @@ name|strategy
 operator|=
 operator|new
 name|DefaultBlobDownloadStrategy
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 return|return

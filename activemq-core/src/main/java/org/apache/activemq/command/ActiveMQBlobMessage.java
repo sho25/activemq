@@ -594,6 +594,23 @@ throw|;
 block|}
 block|}
 block|}
+specifier|public
+name|void
+name|deleteFile
+parameter_list|()
+throws|throws
+name|IOException
+throws|,
+name|JMSException
+block|{
+name|blobDownloader
+operator|.
+name|deleteFile
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

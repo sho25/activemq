@@ -79,6 +79,17 @@ name|IOException
 throws|,
 name|JMSException
 function_decl|;
+name|void
+name|deleteFile
+parameter_list|(
+name|ActiveMQBlobMessage
+name|message
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|JMSException
+function_decl|;
 block|}
 end_interface
 
