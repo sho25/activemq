@@ -155,6 +155,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|CancellationException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|CopyOnWriteArraySet
 import|;
 end_import
@@ -204,6 +216,18 @@ operator|.
 name|concurrent
 operator|.
 name|ExecutorService
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Future
 import|;
 end_import
 
@@ -1016,6 +1040,7 @@ init|=
 literal|false
 decl_stmt|;
 specifier|private
+specifier|final
 name|QueueDispatchSelector
 name|dispatchSelector
 decl_stmt|;
@@ -1048,6 +1073,7 @@ name|CountDownLatch
 name|consumersBeforeStartsLatch
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicLong
 name|pendingWakeups
 init|=
@@ -1281,6 +1307,8 @@ name|FlowControlTimeoutTask
 extends|extends
 name|Thread
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1590,6 +1618,8 @@ name|queue
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|initialize
@@ -3265,6 +3295,14 @@ operator|.
 name|getConnectionContext
 argument_list|()
 decl_stmt|;
+name|Future
+argument_list|<
+name|Object
+argument_list|>
+name|result
+init|=
+literal|null
+decl_stmt|;
 synchronized|synchronized
 init|(
 name|sendLock
@@ -3376,6 +3414,14 @@ name|getDestinationSequenceId
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|context
+operator|.
+name|isInTransaction
+argument_list|()
+condition|)
+block|{
 name|store
 operator|.
 name|addMessage
@@ -3385,6 +3431,21 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|result
+operator|=
+name|store
+operator|.
+name|asyncAddQueueMessage
+argument_list|(
+name|context
+argument_list|,
+name|message
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 if|if
@@ -3414,6 +3475,8 @@ operator|new
 name|Synchronization
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterCommit
@@ -3501,6 +3564,37 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|result
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|result
+operator|.
+name|isCancelled
+argument_list|()
+condition|)
+block|{
+try|try
+block|{
+name|result
+operator|.
+name|get
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|CancellationException
+name|e
+parameter_list|)
+block|{
+comment|//ignore - the task has been cancelled if the message
+comment|// has already been deleted
+block|}
 block|}
 block|}
 specifier|private
@@ -3706,7 +3800,7 @@ expr_stmt|;
 block|}
 name|store
 operator|.
-name|removeMessage
+name|removeAsyncMessage
 argument_list|(
 name|context
 argument_list|,
@@ -3766,6 +3860,8 @@ return|return
 name|msg
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -4014,6 +4110,8 @@ block|}
 block|}
 comment|// Properties
 comment|// -------------------------------------------------------------------------
+annotation|@
+name|Override
 specifier|public
 name|ActiveMQDestination
 name|getActiveMQDestination
@@ -5020,9 +5118,6 @@ name|removeMessage
 argument_list|(
 name|c
 argument_list|,
-operator|(
-name|IndirectMessageReference
-operator|)
 name|r
 argument_list|)
 expr_stmt|;
@@ -6588,6 +6683,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -6882,6 +6979,8 @@ operator|new
 name|Synchronization
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterCommit
@@ -6907,6 +7006,8 @@ name|wakeup
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterRollback
@@ -8396,6 +8497,8 @@ name|total
 return|;
 block|}
 comment|/*      * In slave mode, dispatch is ignored till we get this notification as the      * dispatch process is non deterministic between master and slave. On a      * notification, the actual dispatch to the subscription (as chosen by the      * master) is completed. (non-Javadoc)      *       * @see      * org.apache.activemq.broker.region.BaseDestination#processDispatchNotification      * (org.apache.activemq.command.MessageDispatchNotification)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|processDispatchNotification

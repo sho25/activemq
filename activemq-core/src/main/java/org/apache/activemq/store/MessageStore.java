@@ -27,6 +27,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Future
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -145,6 +157,38 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Adds a message to the message store      *       * @param context context      * @param message      * @param l       * @return a Future to track when this is complete      * @throws IOException       * @throws IOException      */
+name|Future
+argument_list|<
+name|Object
+argument_list|>
+name|asyncAddQueueMessage
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|Message
+name|message
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * Adds a message to the message store      *       * @param context context      * @param message      * @param l       * @return a Future to track when this is complete      * @throws IOException       * @throws IOException      */
+name|Future
+argument_list|<
+name|Object
+argument_list|>
+name|asyncAddTopicMessage
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|Message
+name|message
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 comment|/**      * Looks up a message using either the String messageID or the      * messageNumber. Implementations are encouraged to fill in the missing key      * if its easy to do so.      *       * @param identity which contains either the messageID or the messageNumber      * @return the message or null if it does not exist      * @throws IOException      */
 name|Message
 name|getMessage
@@ -158,6 +202,18 @@ function_decl|;
 comment|/**      * Removes a message from the message store.      *       * @param context      * @param ack the ack request that cause the message to be removed. It      *                conatins the identity which contains the messageID of the      *                message that needs to be removed.      * @throws IOException      */
 name|void
 name|removeMessage
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|MessageAck
+name|ack
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+name|void
+name|removeAsyncMessage
 parameter_list|(
 name|ConnectionContext
 name|context
