@@ -5829,7 +5829,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|removeQueueTask
+name|removeTopicTask
 argument_list|(
 name|this
 operator|.
