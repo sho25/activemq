@@ -261,6 +261,7 @@ name|int
 name|messageCounter
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|destinationName
 init|=
@@ -306,6 +307,8 @@ literal|512
 index|]
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp
@@ -341,6 +344,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|tearDown
@@ -672,6 +677,15 @@ operator|.
 name|setName
 argument_list|(
 literal|"Default"
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
+name|setPersistenceFactory
+argument_list|(
+operator|new
+name|AMQPersistenceAdapterFactory
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|AMQPersistenceAdapterFactory
