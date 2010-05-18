@@ -64,7 +64,7 @@ init|=
 operator|new
 name|Timer
 argument_list|(
-literal|"ActiveMQ Scheduler"
+literal|"KahaDB Scheduler"
 argument_list|,
 literal|true
 argument_list|)
