@@ -79,6 +79,22 @@ name|WritableByteChannel
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|tcp
+operator|.
+name|TimeStampStream
+import|;
+end_import
+
 begin_comment
 comment|/**  * An optimized buffered outputstream for Tcp  *   * @version $Revision: 1.1.1.1 $  */
 end_comment
@@ -89,6 +105,8 @@ class|class
 name|NIOOutputStream
 extends|extends
 name|OutputStream
+implements|implements
+name|TimeStampStream
 block|{
 specifier|private
 specifier|static
@@ -122,6 +140,15 @@ specifier|private
 name|boolean
 name|closed
 decl_stmt|;
+specifier|private
+specifier|volatile
+name|long
+name|writeTimestamp
+init|=
+operator|-
+literal|1
+decl_stmt|;
+comment|//concurrent reads of this value
 comment|/**      * Constructor      *       * @param out      */
 specifier|public
 name|NIOOutputStream
@@ -434,6 +461,15 @@ name|delay
 init|=
 literal|1
 decl_stmt|;
+try|try
+block|{
+name|writeTimestamp
+operator|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+expr_stmt|;
 while|while
 condition|(
 name|remaining
@@ -518,6 +554,37 @@ name|remaining
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+finally|finally
+block|{
+name|writeTimestamp
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+block|}
+block|}
+comment|/* (non-Javadoc)      * @see org.apache.activemq.transport.tcp.TimeStampStream#isWriting()      */
+specifier|public
+name|boolean
+name|isWriting
+parameter_list|()
+block|{
+return|return
+name|writeTimestamp
+operator|>
+literal|0
+return|;
+block|}
+comment|/* (non-Javadoc)      * @see org.apache.activemq.transport.tcp.TimeStampStream#getWriteTimestamp()      */
+specifier|public
+name|long
+name|getWriteTimestamp
+parameter_list|()
+block|{
+return|return
+name|writeTimestamp
+return|;
 block|}
 block|}
 end_class

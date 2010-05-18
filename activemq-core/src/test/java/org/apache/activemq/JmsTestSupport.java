@@ -238,6 +238,12 @@ specifier|public
 name|String
 name|password
 decl_stmt|;
+specifier|public
+name|String
+name|messageTextPrefix
+init|=
+literal|""
+decl_stmt|;
 specifier|protected
 name|ConnectionFactory
 name|factory
@@ -562,7 +568,7 @@ name|session
 operator|.
 name|createTextMessage
 argument_list|(
-literal|""
+name|messageTextPrefix
 operator|+
 name|i
 argument_list|)

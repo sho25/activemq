@@ -57,6 +57,8 @@ class|class
 name|TcpBufferedOutputStream
 extends|extends
 name|FilterOutputStream
+implements|implements
+name|TimeStampStream
 block|{
 specifier|private
 specifier|static
@@ -357,6 +359,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+comment|/* (non-Javadoc)      * @see org.apache.activemq.transport.tcp.TimeStampStream#isWriting()      */
 specifier|public
 name|boolean
 name|isWriting
@@ -368,6 +371,7 @@ operator|>
 literal|0
 return|;
 block|}
+comment|/* (non-Javadoc)      * @see org.apache.activemq.transport.tcp.TimeStampStream#getWriteTimestamp()      */
 specifier|public
 name|long
 name|getWriteTimestamp

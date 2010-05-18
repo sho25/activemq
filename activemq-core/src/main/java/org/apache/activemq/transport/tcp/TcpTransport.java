@@ -453,7 +453,7 @@ name|DataInputStream
 name|dataIn
 decl_stmt|;
 specifier|protected
-name|TcpBufferedOutputStream
+name|TimeStampStream
 name|buffOut
 init|=
 literal|null
@@ -2144,8 +2144,9 @@ argument_list|(
 name|buffIn
 argument_list|)
 expr_stmt|;
-name|buffOut
-operator|=
+name|TcpBufferedOutputStream
+name|outputStream
+init|=
 operator|new
 name|TcpBufferedOutputStream
 argument_list|(
@@ -2156,7 +2157,7 @@ argument_list|()
 argument_list|,
 name|ioBufferSize
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|this
 operator|.
 name|dataOut
@@ -2164,8 +2165,14 @@ operator|=
 operator|new
 name|DataOutputStream
 argument_list|(
-name|buffOut
+name|outputStream
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|buffOut
+operator|=
+name|outputStream
 expr_stmt|;
 block|}
 specifier|protected
@@ -2295,7 +2302,7 @@ if|if
 condition|(
 name|target
 operator|==
-name|TcpBufferedOutputStream
+name|TimeStampStream
 operator|.
 name|class
 condition|)
