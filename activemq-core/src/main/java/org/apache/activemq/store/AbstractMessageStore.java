@@ -153,6 +153,7 @@ name|AbstractMessageStore
 implements|implements
 name|MessageStore
 block|{
+specifier|public
 specifier|static
 specifier|final
 name|FutureTask
