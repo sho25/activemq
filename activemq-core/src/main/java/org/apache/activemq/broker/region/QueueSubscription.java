@@ -572,7 +572,13 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{     }
+block|{
+name|setSlowConsumer
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
 specifier|protected
 name|boolean
 name|isDropped

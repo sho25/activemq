@@ -350,7 +350,7 @@ specifier|protected
 name|boolean
 name|durable
 decl_stmt|;
-specifier|protected
+specifier|public
 name|boolean
 name|topic
 decl_stmt|;
@@ -612,6 +612,13 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|connections
+operator|.
+name|add
+argument_list|(
+name|connection
+argument_list|)
+expr_stmt|;
 name|connection
 operator|.
 name|start
@@ -1090,6 +1097,29 @@ operator|+
 name|getName
 argument_list|()
 decl_stmt|;
+comment|// ensure not inadvertently composite because of combos
+name|name
+operator|=
+name|name
+operator|.
+name|replace
+argument_list|(
+literal|' '
+argument_list|,
+literal|'_'
+argument_list|)
+expr_stmt|;
+name|name
+operator|=
+name|name
+operator|.
+name|replace
+argument_list|(
+literal|','
+argument_list|,
+literal|'&'
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|topic

@@ -1547,6 +1547,11 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+name|setSlowConsumer
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * @param usageManager      * @param oldPercentUsage      * @param newPercentUsage      * @see org.apache.activemq.usage.UsageListener#onMemoryUseChanged(org.apache.activemq.usage.SystemUsage,      *      int, int)      */
 specifier|public

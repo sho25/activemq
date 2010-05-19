@@ -474,10 +474,6 @@ name|memoryUsageHighWaterMark
 init|=
 literal|95
 decl_stmt|;
-specifier|private
-name|boolean
-name|slowConsumer
-decl_stmt|;
 comment|// allow duplicate suppression in a ring network of brokers
 specifier|protected
 name|int
@@ -701,9 +697,10 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
-name|slowConsumer
-operator|=
+name|setSlowConsumer
+argument_list|(
 literal|false
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -712,12 +709,14 @@ comment|//we are slow
 if|if
 condition|(
 operator|!
-name|slowConsumer
+name|isSlowConsumer
+argument_list|()
 condition|)
 block|{
-name|slowConsumer
-operator|=
+name|setSlowConsumer
+argument_list|(
 literal|true
+argument_list|)
 expr_stmt|;
 for|for
 control|(
@@ -2542,6 +2541,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|setSlowConsumer
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|int

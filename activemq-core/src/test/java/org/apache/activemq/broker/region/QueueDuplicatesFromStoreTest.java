@@ -1326,6 +1326,15 @@ name|int
 name|cursorMemoryHighWaterMark
 parameter_list|)
 block|{				 			}
+specifier|public
+name|boolean
+name|isSlowConsumer
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 decl_stmt|;
 name|queue

@@ -422,6 +422,10 @@ name|int
 name|cursorMemoryHighWaterMark
 parameter_list|)
 function_decl|;
+name|boolean
+name|isSlowConsumer
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
