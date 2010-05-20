@@ -45,6 +45,20 @@ name|Subscription
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|thread
+operator|.
+name|Scheduler
+import|;
+end_import
+
 begin_comment
 comment|/*  * a strategy for dealing with slow consumers  */
 end_comment
@@ -62,6 +76,13 @@ name|context
 parameter_list|,
 name|Subscription
 name|subs
+parameter_list|)
+function_decl|;
+name|void
+name|setScheduler
+parameter_list|(
+name|Scheduler
+name|scheduler
 parameter_list|)
 function_decl|;
 block|}

@@ -49,6 +49,20 @@ name|activemq
 operator|.
 name|broker
 operator|.
+name|Broker
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
 name|ConnectionContext
 import|;
 end_import
@@ -530,6 +544,14 @@ index|]
 argument_list|)
 return|;
 block|}
+specifier|public
+name|void
+name|setBroker
+parameter_list|(
+name|Broker
+name|broker
+parameter_list|)
+block|{             }
 block|}
 end_class
 

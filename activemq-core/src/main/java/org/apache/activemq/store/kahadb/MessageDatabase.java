@@ -890,7 +890,7 @@ name|ServiceSupport
 implements|implements
 name|BrokerServiceAware
 block|{
-specifier|private
+specifier|protected
 name|BrokerService
 name|brokerService
 decl_stmt|;
@@ -2161,6 +2161,43 @@ init|)
 block|{
 name|pageFile
 operator|.
+name|tx
+argument_list|()
+operator|.
+name|execute
+argument_list|(
+operator|new
+name|Transaction
+operator|.
+name|Closure
+argument_list|<
+name|IOException
+argument_list|>
+argument_list|()
+block|{
+specifier|public
+name|void
+name|execute
+parameter_list|(
+name|Transaction
+name|tx
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|checkpointUpdate
+argument_list|(
+name|tx
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+name|pageFile
+operator|.
 name|unload
 argument_list|()
 expr_stmt|;
@@ -2420,6 +2457,13 @@ name|redoCounter
 init|=
 literal|0
 decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Recoverying from the journal ..."
+argument_list|)
+expr_stmt|;
 while|while
 condition|(
 name|recoveryPosition
@@ -2473,7 +2517,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Replayed "
+literal|"Recovery replayed "
 operator|+
 name|redoCounter
 operator|+
@@ -4054,7 +4098,6 @@ comment|// Journaled record processing methods. Once the record is journaled,
 comment|// these methods handle applying the index updates. These may be called
 comment|// from the recovery method too so they need to be idempotent
 comment|// /////////////////////////////////////////////////////////////////
-specifier|private
 name|void
 name|process
 parameter_list|(
@@ -4220,7 +4263,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
+specifier|protected
 name|void
 name|process
 parameter_list|(
@@ -4277,6 +4320,17 @@ name|location
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|TransactionId
+name|key
+init|=
+name|key
+argument_list|(
+name|command
+operator|.
+name|getTransactionInfo
+argument_list|()
+argument_list|)
+decl_stmt|;
 block|}
 block|}
 else|else
@@ -4826,7 +4880,6 @@ name|Integer
 argument_list|>
 argument_list|()
 decl_stmt|;
-specifier|private
 name|void
 name|upadateIndex
 parameter_list|(
@@ -5012,7 +5065,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|private
 name|void
 name|updateIndex
 parameter_list|(
@@ -5190,7 +5242,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-specifier|private
 name|void
 name|updateIndex
 parameter_list|(
@@ -5409,7 +5460,6 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
 name|void
 name|updateIndex
 parameter_list|(
@@ -5573,7 +5623,6 @@ block|}
 block|}
 block|}
 comment|/**      * @param tx      * @throws IOException      */
-specifier|private
 name|void
 name|checkpointUpdate
 parameter_list|(

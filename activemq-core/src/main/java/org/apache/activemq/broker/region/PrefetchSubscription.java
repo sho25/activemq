@@ -413,15 +413,9 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|protected
-specifier|static
 specifier|final
 name|Scheduler
 name|scheduler
-init|=
-name|Scheduler
-operator|.
-name|getInstance
-argument_list|()
 decl_stmt|;
 specifier|protected
 name|PendingMessageCursor
@@ -508,6 +502,7 @@ name|ActiveMQMessageAudit
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|CountDownLatch
 name|okForAckAsDispatchDone
 init|=
@@ -556,6 +551,15 @@ expr_stmt|;
 name|pending
 operator|=
 name|cursor
+expr_stmt|;
+name|this
+operator|.
+name|scheduler
+operator|=
+name|broker
+operator|.
+name|getScheduler
+argument_list|()
 expr_stmt|;
 block|}
 specifier|public
@@ -1212,6 +1216,8 @@ operator|new
 name|Synchronization
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterCommit
@@ -1250,6 +1256,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterRollback
@@ -2389,6 +2397,8 @@ literal|.9
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|countBeforeFull
@@ -2459,6 +2469,8 @@ return|return
 name|enqueueCounter
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isRecoveryRequired
@@ -2526,6 +2538,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|add
@@ -2564,6 +2578,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|List
 argument_list|<
@@ -2652,9 +2668,6 @@ name|rc
 operator|.
 name|add
 argument_list|(
-operator|(
-name|QueueMessageReference
-operator|)
 name|r
 argument_list|)
 expr_stmt|;

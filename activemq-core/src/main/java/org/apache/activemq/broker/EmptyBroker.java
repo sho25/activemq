@@ -57,6 +57,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ThreadPoolExecutor
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -356,6 +368,20 @@ operator|.
 name|plist
 operator|.
 name|PListStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|thread
+operator|.
+name|Scheduler
 import|;
 end_import
 
@@ -1103,6 +1129,24 @@ name|ConsumerControl
 name|control
 parameter_list|)
 block|{          }
+specifier|public
+name|Scheduler
+name|getScheduler
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+specifier|public
+name|ThreadPoolExecutor
+name|getExecutor
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
 block|}
 end_class
 

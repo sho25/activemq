@@ -300,6 +300,8 @@ operator|=
 name|persistenceAdapter
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setRegionBroker
@@ -330,6 +332,8 @@ operator|=
 name|broker
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -346,6 +350,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return instance of {@link Queue} or {@link Topic}      */
+annotation|@
+name|Override
 specifier|public
 name|Destination
 name|createDestination
@@ -562,6 +568,8 @@ name|topic
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeDestination
@@ -759,12 +767,16 @@ name|entry
 operator|.
 name|configure
 argument_list|(
+name|broker
+argument_list|,
 name|topic
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastMessageBrokerSequenceId
@@ -788,6 +800,8 @@ return|return
 name|persistenceAdapter
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|SubscriptionInfo
 index|[]

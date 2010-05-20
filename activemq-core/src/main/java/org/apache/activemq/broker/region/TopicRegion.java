@@ -1525,6 +1525,8 @@ name|entry
 operator|.
 name|configure
 argument_list|(
+name|broker
+argument_list|,
 name|topic
 argument_list|)
 expr_stmt|;

@@ -247,6 +247,7 @@ name|boolean
 name|closed
 decl_stmt|;
 specifier|private
+specifier|final
 name|JMSProducerStatsImpl
 name|stats
 decl_stmt|;
@@ -255,6 +256,7 @@ name|AtomicLong
 name|messageSequence
 decl_stmt|;
 specifier|private
+specifier|final
 name|long
 name|startTime
 decl_stmt|;
@@ -403,6 +405,16 @@ argument_list|(
 literal|"Producer Window: "
 operator|+
 name|producerId
+argument_list|)
+expr_stmt|;
+name|producerWindow
+operator|.
+name|setExecutor
+argument_list|(
+name|session
+operator|.
+name|getConnectionExecutor
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|producerWindow
@@ -624,6 +636,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Check if the instance of this producer has been closed.      *       * @throws IllegalStateException      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|checkClosed
@@ -976,6 +990,8 @@ operator|=
 name|info
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

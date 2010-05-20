@@ -37,6 +37,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ThreadPoolExecutor
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -252,6 +264,20 @@ operator|.
 name|plist
 operator|.
 name|PListStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|thread
+operator|.
+name|Scheduler
 import|;
 end_import
 
@@ -715,6 +741,14 @@ function_decl|;
 comment|/**      *  called when the broker becomes the master in a master/slave      *  configuration      */
 name|void
 name|nowMasterBroker
+parameter_list|()
+function_decl|;
+name|Scheduler
+name|getScheduler
+parameter_list|()
+function_decl|;
+name|ThreadPoolExecutor
+name|getExecutor
 parameter_list|()
 function_decl|;
 block|}

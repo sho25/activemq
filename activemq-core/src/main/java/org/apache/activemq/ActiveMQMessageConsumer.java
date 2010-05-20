@@ -649,15 +649,9 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|protected
-specifier|static
 specifier|final
 name|Scheduler
 name|scheduler
-init|=
-name|Scheduler
-operator|.
-name|getInstance
-argument_list|()
 decl_stmt|;
 specifier|protected
 specifier|final
@@ -743,6 +737,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|JMSConsumerStatsImpl
 name|stats
 decl_stmt|;
@@ -756,6 +751,7 @@ name|boolean
 name|synchronizationRegistered
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicBoolean
 name|started
 init|=
@@ -778,6 +774,7 @@ name|boolean
 name|optimizeAcknowledge
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicBoolean
 name|deliveryingAcknowledgements
 init|=
@@ -822,6 +819,7 @@ name|currentTimeMillis
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|long
 name|optimizeAckTimeout
 init|=
@@ -1018,6 +1016,15 @@ operator|.
 name|session
 operator|=
 name|session
+expr_stmt|;
+name|this
+operator|.
+name|scheduler
+operator|=
+name|session
+operator|.
+name|getScheduler
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -2521,6 +2528,8 @@ operator|new
 name|Synchronization
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterCommit
@@ -2532,6 +2541,8 @@ name|doClose
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterRollback
@@ -3812,6 +3823,8 @@ operator|new
 name|Synchronization
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beforeEnd
@@ -3827,6 +3840,8 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterCommit
@@ -3842,6 +3857,8 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterRollback
@@ -5842,6 +5859,8 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

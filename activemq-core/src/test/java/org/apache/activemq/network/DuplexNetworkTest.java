@@ -56,6 +56,8 @@ name|DuplexNetworkTest
 extends|extends
 name|SimpleNetworkTest
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|String
 name|getLocalBrokerURI
@@ -65,6 +67,8 @@ return|return
 literal|"org/apache/activemq/network/duplexLocalBroker.xml"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|BrokerService
 name|createRemoteBroker
