@@ -1500,10 +1500,13 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|/**          * A message can be dispatched before the super.send() method returns so -          * here the order is switched to avoid problems on the slave with          * receiving acks for messages not received yet          */
+comment|/**          * A message can be dispatched before the super.send() method returns so -          * here the order is switched to avoid problems on the slave with          * receiving acks for messages not received yet          * copy ensures we don't mess with the correlator and command ids          */
 name|sendSyncToSlave
 argument_list|(
 name|message
+operator|.
+name|copy
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|super
