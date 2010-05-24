@@ -469,6 +469,9 @@ name|txid
 parameter_list|,
 name|boolean
 name|wasPrepared
+parameter_list|,
+name|Runnable
+name|done
 parameter_list|)
 throws|throws
 name|IOException
@@ -522,6 +525,11 @@ operator|==
 literal|null
 condition|)
 block|{
+name|done
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
 return|return;
 block|}
 if|if
@@ -578,6 +586,11 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+name|done
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * @throws XAException      * @see org.apache.activemq.store.TransactionStore#commit(org.apache.activemq.service.Transaction)      */
 specifier|public

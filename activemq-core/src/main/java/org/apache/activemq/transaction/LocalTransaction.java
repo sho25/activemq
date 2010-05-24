@@ -312,11 +312,6 @@ argument_list|)
 expr_stmt|;
 comment|// Sync on transaction store to avoid out of order messages in the cursor
 comment|// https://issues.apache.org/activemq/browse/AMQ-2594
-synchronized|synchronized
-init|(
-name|transactionStore
-init|)
-block|{
 name|transactionStore
 operator|.
 name|commit
@@ -325,60 +320,17 @@ name|getTransactionId
 argument_list|()
 argument_list|,
 literal|false
-argument_list|)
-expr_stmt|;
-try|try
-block|{
-name|fireAfterCommit
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|e
-parameter_list|)
-block|{
-comment|// I guess this could happen. Post commit task failed
-comment|// to execute properly.
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"POST COMMIT FAILED: "
 argument_list|,
-name|e
+name|postCommitTask
 argument_list|)
 expr_stmt|;
-name|XAException
-name|xae
-init|=
-operator|new
-name|XAException
+name|this
+operator|.
+name|waitPostCommitDone
 argument_list|(
-literal|"POST COMMIT FAILED"
-argument_list|)
-decl_stmt|;
-name|xae
-operator|.
-name|errorCode
-operator|=
-name|XAException
-operator|.
-name|XAER_RMERR
-expr_stmt|;
-name|xae
-operator|.
-name|initCause
-argument_list|(
-name|e
+name|postCommitTask
 argument_list|)
 expr_stmt|;
-throw|throw
-name|xae
-throw|;
-block|}
-block|}
 block|}
 specifier|public
 name|void
@@ -530,6 +482,17 @@ parameter_list|()
 block|{
 return|return
 name|xid
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|Log
+name|getLog
+parameter_list|()
+block|{
+return|return
+name|LOG
 return|;
 block|}
 block|}

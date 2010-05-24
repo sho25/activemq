@@ -27,6 +27,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|FutureTask
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -79,6 +91,9 @@ name|txid
 parameter_list|,
 name|boolean
 name|wasPrepared
+parameter_list|,
+name|Runnable
+name|done
 parameter_list|)
 throws|throws
 name|IOException

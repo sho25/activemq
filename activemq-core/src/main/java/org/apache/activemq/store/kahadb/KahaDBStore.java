@@ -1661,6 +1661,9 @@ name|txid
 parameter_list|,
 name|boolean
 name|wasPrepared
+parameter_list|,
+name|Runnable
+name|done
 parameter_list|)
 throws|throws
 name|IOException
@@ -1680,6 +1683,8 @@ argument_list|)
 argument_list|)
 argument_list|,
 literal|true
+argument_list|,
+name|done
 argument_list|)
 expr_stmt|;
 block|}
@@ -1708,6 +1713,8 @@ argument_list|)
 argument_list|)
 argument_list|,
 literal|true
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -1736,6 +1743,8 @@ argument_list|)
 argument_list|)
 argument_list|,
 literal|false
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -2285,6 +2294,8 @@ name|message
 operator|.
 name|isResponseRequired
 argument_list|()
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -2394,6 +2405,8 @@ name|ack
 operator|.
 name|isResponseRequired
 argument_list|()
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -2426,6 +2439,8 @@ argument_list|(
 name|command
 argument_list|,
 literal|true
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -3438,6 +3453,8 @@ argument_list|(
 name|command
 argument_list|,
 literal|false
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -3548,6 +3565,8 @@ name|isEnableJournalDiskSyncs
 argument_list|()
 operator|&&
 literal|true
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|this
@@ -3605,6 +3624,8 @@ name|isEnableJournalDiskSyncs
 argument_list|()
 operator|&&
 literal|true
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|this

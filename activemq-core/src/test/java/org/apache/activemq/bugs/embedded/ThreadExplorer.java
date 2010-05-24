@@ -171,6 +171,11 @@ literal|null
 return|;
 block|}
 comment|/**      * Allow for killing threads      *       * @param threadName      * @param isStarredExp      *            (regular expressions with *)      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 specifier|public
 specifier|static
 name|int

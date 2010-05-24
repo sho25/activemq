@@ -659,6 +659,9 @@ name|txid
 parameter_list|,
 name|boolean
 name|wasPrepared
+parameter_list|,
+name|Runnable
+name|done
 parameter_list|)
 throws|throws
 name|IOException
@@ -667,6 +670,11 @@ name|processCommit
 argument_list|(
 name|txid
 argument_list|)
+expr_stmt|;
+name|done
+operator|.
+name|run
+argument_list|()
 expr_stmt|;
 block|}
 specifier|public

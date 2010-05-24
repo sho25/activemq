@@ -201,6 +201,34 @@ name|NetworkConnector
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision: 1.1 $  */
 end_comment
@@ -212,6 +240,21 @@ name|ConnectorXBeanConfigTest
 extends|extends
 name|TestCase
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOG
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|ConnectorXBeanConfigTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|protected
 name|BrokerService
 name|brokerService
@@ -416,6 +459,13 @@ name|brokerService
 operator|.
 name|waitUntilStarted
 argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"try and connect to restarted broker"
+argument_list|)
 expr_stmt|;
 comment|//send and receive a message from a restarted broker
 name|ActiveMQConnectionFactory

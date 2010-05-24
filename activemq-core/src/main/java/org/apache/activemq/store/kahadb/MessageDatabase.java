@@ -3802,10 +3802,12 @@ argument_list|(
 name|data
 argument_list|,
 literal|false
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}
-comment|/**      * All updated are are funneled through this method. The updates are converted      * to a JournalMessage which is logged to the journal and then the data from      * the JournalMessage is used to update the index just like it would be done      * during a recovery process.      */
+comment|/**      * All updated are are funneled through this method. The updates are converted      * to a JournalMessage which is logged to the journal and then the data from      * the JournalMessage is used to update the index just like it would be done      * during a recovery process.      * @param done       */
 specifier|public
 name|Location
 name|store
@@ -3815,6 +3817,9 @@ name|data
 parameter_list|,
 name|boolean
 name|sync
+parameter_list|,
+name|Runnable
+name|done
 parameter_list|)
 throws|throws
 name|IOException
@@ -3972,6 +3977,19 @@ literal|"KahaDB: Recovering checkpoint thread after exception"
 argument_list|)
 expr_stmt|;
 name|startCheckpoint
+argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|done
+operator|!=
+literal|null
+condition|)
+block|{
+name|done
+operator|.
+name|run
 argument_list|()
 expr_stmt|;
 block|}

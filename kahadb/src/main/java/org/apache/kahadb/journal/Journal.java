@@ -3357,7 +3357,6 @@ name|rc
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Location
 name|write
 parameter_list|(
@@ -3393,7 +3392,6 @@ name|loc
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|Location
 name|write
 parameter_list|(
