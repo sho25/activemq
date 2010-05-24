@@ -54,7 +54,7 @@ specifier|public
 class|class
 name|KahaDBDurableTransactedTopicTest
 extends|extends
-name|SimpleDurableTopicTest
+name|KahaDBDurableTopicTest
 block|{
 annotation|@
 name|Override
@@ -87,6 +87,8 @@ argument_list|,
 name|dest
 argument_list|,
 name|payload
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
