@@ -687,6 +687,18 @@ argument_list|(
 literal|2000
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"MessagesA: "
+operator|+
+name|msgsA
+operator|.
+name|getMessageIds
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|10
@@ -835,6 +847,18 @@ operator|.
 name|sleep
 argument_list|(
 literal|5000
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Extra MessagesA: "
+operator|+
+name|msgsA
+operator|.
+name|getMessageIds
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertEquals

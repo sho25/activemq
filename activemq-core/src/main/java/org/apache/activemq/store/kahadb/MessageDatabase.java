@@ -4338,17 +4338,6 @@ name|location
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|TransactionId
-name|key
-init|=
-name|key
-argument_list|(
-name|command
-operator|.
-name|getTransactionInfo
-argument_list|()
-argument_list|)
-decl_stmt|;
 block|}
 block|}
 else|else
