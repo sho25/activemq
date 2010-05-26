@@ -745,6 +745,11 @@ operator|!=
 literal|0
 condition|)
 block|{
+name|boolean
+name|warnedAboutWait
+init|=
+literal|false
+decl_stmt|;
 synchronized|synchronized
 init|(
 name|matchedListMutex
@@ -774,7 +779,10 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"stopped waiting for space in pendingMessage cursor for: "
+name|toString
+argument_list|()
+operator|+
+literal|": stopped waiting for space in pendingMessage cursor for: "
 operator|+
 name|node
 operator|.
@@ -788,6 +796,58 @@ name|decrementAndGet
 argument_list|()
 expr_stmt|;
 return|return;
+block|}
+if|if
+condition|(
+operator|!
+name|warnedAboutWait
+condition|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+name|toString
+argument_list|()
+operator|+
+literal|": Pending message cursor ["
+operator|+
+name|matched
+operator|+
+literal|"] is full, temp usage ("
+operator|+
+operator|+
+name|matched
+operator|.
+name|getSystemUsage
+argument_list|()
+operator|.
+name|getTempUsage
+argument_list|()
+operator|.
+name|getPercentUsage
+argument_list|()
+operator|+
+literal|"%) or memory usage ("
+operator|+
+name|matched
+operator|.
+name|getSystemUsage
+argument_list|()
+operator|.
+name|getMemoryUsage
+argument_list|()
+operator|.
+name|getPercentUsage
+argument_list|()
+operator|+
+literal|"%) limit reached, blocking message add() pending the release of resources."
+argument_list|)
+expr_stmt|;
+name|warnedAboutWait
+operator|=
+literal|true
+expr_stmt|;
 block|}
 name|matchedListMutex
 operator|.
