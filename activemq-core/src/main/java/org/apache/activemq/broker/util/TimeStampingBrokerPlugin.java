@@ -131,6 +131,12 @@ name|futureOnly
 init|=
 literal|false
 decl_stmt|;
+comment|/**      * if true, update timestamp even if message has passed through a network      * default false      */
+name|boolean
+name|processNetworkMessages
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * setter method for zeroExpirationOverride     */
 specifier|public
 name|void
@@ -178,6 +184,21 @@ operator|=
 name|futureOnly
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|setProcessNetworkMessages
+parameter_list|(
+name|Boolean
+name|processNetworkMessages
+parameter_list|)
+block|{
+name|this
+operator|.
+name|processNetworkMessages
+operator|=
+name|processNetworkMessages
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -203,6 +224,9 @@ operator|>
 literal|0
 operator|&&
 operator|(
+name|processNetworkMessages
+operator|||
+operator|(
 name|message
 operator|.
 name|getBrokerPath
@@ -219,9 +243,10 @@ name|length
 operator|==
 literal|0
 operator|)
+operator|)
 condition|)
 block|{
-comment|// timestamp not been disabled and has not passed through a network
+comment|// timestamp not been disabled and has not passed through a network or processNetworkMessages=true
 name|long
 name|oldExpiration
 init|=
