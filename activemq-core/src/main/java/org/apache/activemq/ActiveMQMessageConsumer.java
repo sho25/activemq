@@ -5368,6 +5368,16 @@ block|}
 block|}
 else|else
 block|{
+if|if
+condition|(
+operator|!
+name|unconsumedMessages
+operator|.
+name|isRunning
+argument_list|()
+condition|)
+block|{
+comment|// delayed redelivery, ensure it can be re delivered
 name|session
 operator|.
 name|connection
@@ -5382,6 +5392,7 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|unconsumedMessages
 operator|.
 name|enqueue
