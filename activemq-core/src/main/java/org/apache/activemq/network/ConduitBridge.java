@@ -448,6 +448,9 @@ operator|+
 literal|" with sub: "
 operator|+
 name|info
+operator|.
+name|getConsumerId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -507,13 +510,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|super
-operator|.
-name|removeDemandSubscription
-argument_list|(
-name|id
-argument_list|)
-expr_stmt|;
 name|List
 argument_list|<
 name|DemandSubscription
