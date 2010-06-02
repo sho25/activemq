@@ -419,7 +419,7 @@ operator|.
 name|prefetchSize
 return|;
 block|}
-comment|/**      * @param prefetchSize the prefetchSize to set      */
+comment|/**      * @param prefetchSize the prefetchSize to set      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryIntPropertyEditor"      */
 specifier|public
 name|void
 name|setPrefetchSize
