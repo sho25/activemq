@@ -251,6 +251,13 @@ specifier|private
 name|String
 name|name
 decl_stmt|;
+comment|/**      * Should we proxy commands to the local broker using VM transport as well?      */
+specifier|private
+name|boolean
+name|proxyToLocalBroker
+init|=
+literal|true
+decl_stmt|;
 specifier|private
 specifier|final
 name|CopyOnWriteArrayList
@@ -654,6 +661,8 @@ operator|&&
 name|localUri
 operator|!=
 literal|null
+operator|&&
+name|proxyToLocalBroker
 condition|)
 block|{
 name|ct
@@ -671,7 +680,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Add a transport filter so that can track the transport life cycle
+comment|// Add a transport filter so that we can track the transport life cycle
 name|transport
 operator|=
 operator|new
@@ -770,6 +779,30 @@ operator|.
 name|name
 operator|=
 name|name
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isProxyToLocalBroker
+parameter_list|()
+block|{
+return|return
+name|proxyToLocalBroker
+return|;
+block|}
+specifier|public
+name|void
+name|setProxyToLocalBroker
+parameter_list|(
+name|boolean
+name|proxyToLocalBroker
+parameter_list|)
+block|{
+name|this
+operator|.
+name|proxyToLocalBroker
+operator|=
+name|proxyToLocalBroker
 expr_stmt|;
 block|}
 block|}

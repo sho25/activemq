@@ -234,6 +234,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|service
+operator|.
+name|setUseJmx
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|connector
 operator|=
 name|service
@@ -318,6 +325,13 @@ expr_stmt|;
 name|service
 operator|.
 name|setPersistent
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|service
+operator|.
+name|setUseJmx
 argument_list|(
 literal|false
 argument_list|)
