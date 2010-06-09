@@ -795,6 +795,13 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|add
+argument_list|(
+name|context
+argument_list|,
+name|topic
+argument_list|)
+expr_stmt|;
 name|topic
 operator|.
 name|activate
