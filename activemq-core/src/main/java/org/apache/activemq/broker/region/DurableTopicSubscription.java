@@ -516,6 +516,22 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+comment|// do it just once per destination
+if|if
+condition|(
+name|destinations
+operator|.
+name|containsKey
+argument_list|(
+name|destination
+operator|.
+name|getActiveMQDestination
+argument_list|()
+argument_list|)
+condition|)
+block|{
+return|return;
+block|}
 name|super
 operator|.
 name|add
