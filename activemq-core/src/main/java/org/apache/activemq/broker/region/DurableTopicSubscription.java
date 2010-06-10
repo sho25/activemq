@@ -516,6 +516,15 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|super
+operator|.
+name|add
+argument_list|(
+name|context
+argument_list|,
+name|destination
+argument_list|)
+expr_stmt|;
 comment|// do it just once per destination
 if|if
 condition|(
@@ -532,15 +541,6 @@ condition|)
 block|{
 return|return;
 block|}
-name|super
-operator|.
-name|add
-argument_list|(
-name|context
-argument_list|,
-name|destination
-argument_list|)
-expr_stmt|;
 name|destinations
 operator|.
 name|put
