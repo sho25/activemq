@@ -1041,7 +1041,7 @@ name|SubscriptionKey
 name|key
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 if|if
 condition|(
@@ -1063,7 +1063,7 @@ operator|.
 name|subscriptionName
 argument_list|)
 expr_stmt|;
-name|Object
+name|DurableTopicSubscription
 name|removed
 init|=
 name|durableSubcribers
@@ -1089,6 +1089,21 @@ name|decrement
 argument_list|()
 expr_stmt|;
 block|}
+comment|// deactivate and remove
+name|removed
+operator|.
+name|deactivate
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|consumers
+operator|.
+name|remove
+argument_list|(
+name|removed
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 specifier|public
