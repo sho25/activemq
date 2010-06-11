@@ -6245,6 +6245,11 @@ literal|1
 else|:
 literal|0
 operator|)
+operator|-
+name|connectionConsumers
+operator|.
+name|size
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
