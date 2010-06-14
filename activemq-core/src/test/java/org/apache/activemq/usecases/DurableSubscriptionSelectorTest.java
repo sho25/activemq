@@ -169,16 +169,15 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|amq
-operator|.
-name|AMQPersistenceAdapter
+name|PersistenceAdapter
 import|;
 end_import
 
 begin_class
+specifier|abstract
 specifier|public
 class|class
-name|SubscriptionSelectorTest
+name|DurableSubscriptionSelectorTest
 extends|extends
 name|org
 operator|.
@@ -635,8 +634,6 @@ argument_list|(
 literal|"test-broker"
 argument_list|)
 expr_stmt|;
-comment|//TODO create variants for different stores
-comment|//broker.setPersistenceAdapter(new AMQPersistenceAdapter());
 if|if
 condition|(
 name|deleteMessages
@@ -679,6 +676,14 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+specifier|abstract
+specifier|public
+name|PersistenceAdapter
+name|createPersistenceAdapter
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
 specifier|protected
 name|ActiveMQConnectionFactory
 name|createConnectionFactory
