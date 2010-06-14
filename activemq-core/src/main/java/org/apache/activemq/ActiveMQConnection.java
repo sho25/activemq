@@ -1303,6 +1303,12 @@ init|=
 literal|true
 decl_stmt|;
 specifier|private
+name|boolean
+name|checkForDuplicates
+init|=
+literal|true
+decl_stmt|;
+specifier|private
 specifier|final
 name|Transport
 name|transport
@@ -7860,6 +7866,8 @@ name|message
 parameter_list|)
 block|{
 return|return
+name|checkForDuplicates
+operator|&&
 name|connectionAudit
 operator|.
 name|isDuplicate
@@ -8175,6 +8183,34 @@ name|this
 operator|.
 name|executor
 return|;
+block|}
+comment|/**      * @return the checkForDuplicates      */
+specifier|public
+name|boolean
+name|isCheckForDuplicates
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|checkForDuplicates
+return|;
+block|}
+comment|/**      * @param checkForDuplicates the checkForDuplicates to set      */
+specifier|public
+name|void
+name|setCheckForDuplicates
+parameter_list|(
+name|boolean
+name|checkForDuplicates
+parameter_list|)
+block|{
+name|this
+operator|.
+name|checkForDuplicates
+operator|=
+name|checkForDuplicates
+expr_stmt|;
 block|}
 block|}
 end_class
