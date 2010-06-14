@@ -51,7 +51,7 @@ name|store
 operator|.
 name|kahadb
 operator|.
-name|KahaDBStore
+name|KahaDBPersistenceAdapter
 import|;
 end_import
 
@@ -75,7 +75,18 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// this.initialConsumerDelay = 10 * 1000;
+name|this
+operator|.
+name|numberOfDestinations
+operator|=
+literal|25
+expr_stmt|;
+name|this
+operator|.
+name|numberofProducers
+operator|=
+literal|1
+expr_stmt|;
 name|super
 operator|.
 name|setUp
@@ -117,11 +128,11 @@ argument_list|,
 literal|"archive"
 argument_list|)
 decl_stmt|;
-name|KahaDBStore
+name|KahaDBPersistenceAdapter
 name|kaha
 init|=
 operator|new
-name|KahaDBStore
+name|KahaDBPersistenceAdapter
 argument_list|()
 decl_stmt|;
 name|kaha
@@ -142,7 +153,7 @@ name|kaha
 operator|.
 name|setArchiveDataLogs
 argument_list|(
-literal|true
+literal|false
 argument_list|)
 expr_stmt|;
 comment|// The setEnableJournalDiskSyncs(false) setting is a little dangerous right now, as I have not verified
@@ -152,19 +163,13 @@ name|kaha
 operator|.
 name|setEnableJournalDiskSyncs
 argument_list|(
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 comment|// Using a bigger journal file size makes he take fewer spikes as it is not switching files as often.
 comment|//kaha.setJournalMaxFileLength(1024*1024*100);
 comment|// small batch means more frequent and smaller writes
-name|kaha
-operator|.
-name|setIndexWriteBatchSize
-argument_list|(
-literal|100
-argument_list|)
-expr_stmt|;
+comment|//kaha.setIndexWriteBatchSize(100);
 comment|// do the index write in a separate thread
 name|kaha
 operator|.

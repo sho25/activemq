@@ -49,9 +49,9 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|kahadaptor
+name|kahadb
 operator|.
-name|KahaPersistenceAdapter
+name|KahaDBPersistenceAdapter
 import|;
 end_import
 
@@ -63,11 +63,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|store
+name|util
 operator|.
-name|kahadb
-operator|.
-name|KahaDBStore
+name|IOHelper
 import|;
 end_import
 
@@ -88,11 +86,11 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|KahaPersistenceAdapter
-name|adaptor
+name|KahaDBPersistenceAdapter
+name|kahaDB
 init|=
 operator|new
-name|KahaPersistenceAdapter
+name|KahaDBPersistenceAdapter
 argument_list|()
 decl_stmt|;
 name|File
@@ -104,6 +102,13 @@ argument_list|(
 literal|"target/test-amq-data/perfTest/kahadb"
 argument_list|)
 decl_stmt|;
+name|IOHelper
+operator|.
+name|deleteChildren
+argument_list|(
+name|dataFileDir
+argument_list|)
+expr_stmt|;
 name|File
 name|archiveDir
 init|=
@@ -115,13 +120,6 @@ argument_list|,
 literal|"archive"
 argument_list|)
 decl_stmt|;
-name|KahaDBStore
-name|kahaDB
-init|=
-operator|new
-name|KahaDBStore
-argument_list|()
-decl_stmt|;
 name|kahaDB
 operator|.
 name|setDirectory
@@ -129,26 +127,15 @@ argument_list|(
 name|dataFileDir
 argument_list|)
 expr_stmt|;
-name|kahaDB
-operator|.
-name|setDirectoryArchive
-argument_list|(
-name|archiveDir
-argument_list|)
-expr_stmt|;
-name|kahaDB
-operator|.
-name|setArchiveDataLogs
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-comment|// The setEnableJournalDiskSyncs(false) setting is a little dangerous right now, as I have not verified
-comment|// what happens if the index is updated but a journal update is lost.
+comment|// The setEnableJournalDiskSyncs(false) setting is a little
+comment|// dangerous right now, as I have not verified
+comment|// what happens if the index is updated but a journal update is
+comment|// lost.
 comment|// Index is going to be in consistent, but can it be repaired?
-comment|//kaha.setEnableJournalDiskSyncs(false);
-comment|// Using a bigger journal file size makes he take fewer spikes as it is not switching files as often.
-comment|//kaha.setJournalMaxFileLength(1024*1024*100);
+comment|// kaha.setEnableJournalDiskSyncs(false);
+comment|// Using a bigger journal file size makes he take fewer spikes as it
+comment|// is not switching files as often.
+comment|// kaha.setJournalMaxFileLength(1024*1024*100);
 comment|// small batch means more frequent and smaller writes
 name|kahaDB
 operator|.
@@ -165,13 +152,7 @@ literal|10000
 argument_list|)
 expr_stmt|;
 comment|// do the index write in a separate thread
-name|kahaDB
-operator|.
-name|setEnableIndexWriteAsync
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
+comment|// kahaDB.setEnableIndexWriteAsync(true);
 name|BrokerService
 name|broker
 init|=
@@ -186,15 +167,15 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|//broker.setPersistenceAdapter(adaptor);
-comment|//broker.setPersistenceAdapter(kahaDB);
+comment|// broker.setPersistenceAdapter(adaptor);
 name|broker
 operator|.
-name|setPersistent
+name|setPersistenceAdapter
 argument_list|(
-literal|false
+name|kahaDB
 argument_list|)
 expr_stmt|;
+comment|// broker.setPersistent(false);
 name|broker
 operator|.
 name|setDeleteAllMessagesOnStartup

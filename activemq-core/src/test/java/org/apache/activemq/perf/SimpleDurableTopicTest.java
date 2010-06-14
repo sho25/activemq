@@ -129,7 +129,7 @@ literal|1
 expr_stmt|;
 name|numberOfConsumers
 operator|=
-literal|2
+literal|1
 expr_stmt|;
 name|numberofProducers
 operator|=
@@ -143,10 +143,10 @@ name|getProperty
 argument_list|(
 literal|"SimpleDurableTopicTest.numberofProducers"
 argument_list|,
-literal|"1"
+literal|"20"
 argument_list|)
 argument_list|,
-literal|10
+literal|20
 argument_list|)
 expr_stmt|;
 name|sampleCount
