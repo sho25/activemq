@@ -930,7 +930,8 @@ name|QueueMessageReference
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|// Messages that are paged in but have not yet been targeted at a subscription
+comment|// Messages that are paged in but have not yet been targeted at a
+comment|// subscription
 specifier|private
 name|List
 argument_list|<
@@ -1129,7 +1130,7 @@ init|=
 operator|new
 name|Object
 argument_list|()
-block|{}
+block|{     }
 decl_stmt|;
 specifier|private
 specifier|final
@@ -1477,7 +1478,7 @@ name|Subscription
 name|s2
 parameter_list|)
 block|{
-comment|//We want the list sorted in descending order
+comment|// We want the list sorted in descending order
 return|return
 name|s2
 operator|.
@@ -1585,7 +1586,8 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|// make the queue easily visible in the debugger from its task runner threads
+comment|// make the queue easily visible in the debugger from its task runner
+comment|// threads
 specifier|final
 class|class
 name|QueueThread
@@ -1683,9 +1685,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// If a VMPendingMessageCursor don't use the default Producer System Usage
-comment|// since it turns into a shared blocking queue which can lead to a network deadlock.
-comment|// If we are cursoring to disk..it's not and issue because it does not block due
+comment|// If a VMPendingMessageCursor don't use the default Producer System
+comment|// Usage
+comment|// since it turns into a shared blocking queue which can lead to a
+comment|// network deadlock.
+comment|// If we are cursoring to disk..it's not and issue because it does not
+comment|// block due
 comment|// to large disk sizes.
 if|if
 condition|(
@@ -1847,7 +1852,8 @@ name|message
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// drop message will decrement so counter balance here
+comment|// drop message will decrement so counter
+comment|// balance here
 name|destinationStatistics
 operator|.
 name|getMessages
@@ -1990,7 +1996,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/*      * Holder for subscription that needs attention on next iterate      * browser needs access to existing messages in the queue that have already been dispatched      */
+comment|/*      * Holder for subscription that needs attention on next iterate browser      * needs access to existing messages in the queue that have already been      * dispatched      */
 class|class
 name|BrowserDispatch
 block|{
@@ -2300,7 +2306,8 @@ argument_list|()
 condition|)
 block|{
 comment|// Outside of dispatchLock() to maintain the lock hierarchy of
-comment|// iteratingMutex -> dispatchLock. - see https://issues.apache.org/activemq/browse/AMQ-1878
+comment|// iteratingMutex -> dispatchLock. - see
+comment|// https://issues.apache.org/activemq/browse/AMQ-1878
 name|wakeup
 argument_list|()
 expr_stmt|;
@@ -2546,7 +2553,8 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
-comment|// only increment redelivery if it was delivered or we have no delivery information
+comment|// only increment redelivery if it was delivered or we
+comment|// have no delivery information
 if|if
 condition|(
 name|lastDeiveredSequenceId
@@ -2626,7 +2634,8 @@ argument_list|()
 condition|)
 block|{
 comment|// Outside of dispatchLock() to maintain the lock hierarchy of
-comment|// iteratingMutex -> dispatchLock. - see https://issues.apache.org/activemq/browse/AMQ-1878
+comment|// iteratingMutex -> dispatchLock. - see
+comment|// https://issues.apache.org/activemq/browse/AMQ-1878
 name|wakeup
 argument_list|()
 expr_stmt|;
@@ -2708,7 +2717,7 @@ name|isExpired
 argument_list|()
 condition|)
 block|{
-comment|//message not stored - or added to stats yet - so chuck here
+comment|// message not stored - or added to stats yet - so chuck here
 name|broker
 operator|.
 name|getRoot
@@ -2856,7 +2865,8 @@ literal|" See http://activemq.apache.org/producer-flow-control.html for more inf
 argument_list|)
 throw|;
 block|}
-comment|// We can avoid blocking due to low usage if the producer is sending
+comment|// We can avoid blocking due to low usage if the producer is
+comment|// sending
 comment|// a sync message or if it is using a producer window
 if|if
 condition|(
@@ -2873,7 +2883,8 @@ name|isResponseRequired
 argument_list|()
 condition|)
 block|{
-comment|// copy the exchange state since the context will be modified while we are waiting
+comment|// copy the exchange state since the context will be
+comment|// modified while we are waiting
 comment|// for space.
 specifier|final
 name|ProducerBrokerExchange
@@ -3420,26 +3431,6 @@ name|getDestinationSequenceId
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|context
-operator|.
-name|isInTransaction
-argument_list|()
-condition|)
-block|{
-name|store
-operator|.
-name|addMessage
-argument_list|(
-name|context
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|result
 operator|=
 name|store
@@ -3451,7 +3442,6 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 if|if
@@ -3598,7 +3588,7 @@ name|CancellationException
 name|e
 parameter_list|)
 block|{
-comment|//ignore - the task has been cancelled if the message
+comment|// ignore - the task has been cancelled if the message
 comment|// has already been deleted
 block|}
 block|}
@@ -3744,7 +3734,8 @@ name|isPersistent
 argument_list|()
 condition|)
 block|{
-comment|// the original ack may be a ranged ack, but we are trying to delete a specific
+comment|// the original ack may be a ranged ack, but we are trying to delete
+comment|// a specific
 comment|// message store here so we need to convert to a non ranged ack.
 if|if
 condition|(
@@ -5156,7 +5147,8 @@ name|e
 parameter_list|)
 block|{                 }
 block|}
-comment|// don't spin/hang if stats are out and there is nothing left in the store
+comment|// don't spin/hang if stats are out and there is nothing left in the
+comment|// store
 block|}
 do|while
 condition|(
@@ -5785,7 +5777,7 @@ return|return
 name|movedCounter
 return|;
 block|}
-comment|/**      * Move a message      *       * @param context connection context      * @param m message      * @param dest ActiveMQDestination      * @throws Exception      */
+comment|/**      * Move a message      *       * @param context      *            connection context      * @param m      *            message      * @param dest      *            ActiveMQDestination      * @throws Exception      */
 specifier|public
 name|boolean
 name|moveMessageTo
@@ -6256,7 +6248,8 @@ name|timeout
 init|=
 literal|1000
 decl_stmt|;
-comment|// wait one second by default if consumer count isn't reached
+comment|// wait one second by default if
+comment|// consumer count isn't reached
 if|if
 condition|(
 name|timeBeforeDispatchStarts
@@ -6407,7 +6400,8 @@ name|isEmpty
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Kinda ugly.. but I think dispatchLock is the only mutex protecting the
+comment|// Kinda ugly.. but I think dispatchLock is the only mutex
+comment|// protecting the
 comment|// pagedInPendingDispatch variable.
 synchronized|synchronized
 init|(
@@ -6423,8 +6417,10 @@ name|isEmpty
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Perhaps we should page always into the pagedInPendingDispatch list if
-comment|// !messages.isEmpty(), and then if !pagedInPendingDispatch.isEmpty()
+comment|// Perhaps we should page always into the pagedInPendingDispatch
+comment|// list if
+comment|// !messages.isEmpty(), and then if
+comment|// !pagedInPendingDispatch.isEmpty()
 comment|// then we do a dispatch.
 if|if
 condition|(
@@ -7620,7 +7616,8 @@ operator|!
 name|force
 condition|)
 block|{
-comment|// Only page in the minimum number of messages which can be dispatched immediately.
+comment|// Only page in the minimum number of messages which can be
+comment|// dispatched immediately.
 name|toPageIn
 operator|=
 name|Math
@@ -7792,7 +7789,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|// Only add new messages, not already pagedIn to avoid multiple dispatch attempts
+comment|// Only add new messages, not already pagedIn to avoid multiple
+comment|// dispatch attempts
 synchronized|synchronized
 init|(
 name|pagedInMessages
@@ -7920,7 +7918,8 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// Try first to dispatch redelivered messages to keep an proper order
+comment|// Try first to dispatch redelivered messages to keep an
+comment|// proper order
 name|redeliveredWaitingDispatch
 operator|=
 name|doActualDispatch
@@ -7948,7 +7947,8 @@ name|pagedInPendingDispatch
 argument_list|)
 expr_stmt|;
 block|}
-comment|// and now see if we can dispatch the new stuff.. and append to the pending
+comment|// and now see if we can dispatch the new stuff.. and append to
+comment|// the pending
 comment|// list anything that does not actually get dispatched.
 if|if
 condition|(
@@ -8217,7 +8217,8 @@ break|break;
 block|}
 else|else
 block|{
-comment|// no further dispatch of list to a full consumer to avoid out of order message receipt
+comment|// no further dispatch of list to a full consumer to
+comment|// avoid out of order message receipt
 name|fullConsumers
 operator|.
 name|add
@@ -8296,7 +8297,8 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// This means all subs were full or that there are no consumers...
+comment|// This means all subs were full or that there are no
+comment|// consumers...
 name|rc
 operator|.
 name|add
@@ -8308,7 +8310,8 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
-comment|// If it got dispatched, rotate the consumer list to get round robin distribution.
+comment|// If it got dispatched, rotate the consumer list to get round robin
+comment|// distribution.
 if|if
 condition|(
 name|target
@@ -8523,7 +8526,7 @@ return|return
 name|total
 return|;
 block|}
-comment|/*      * In slave mode, dispatch is ignored till we get this notification as the      * dispatch process is non deterministic between master and slave. On a      * notification, the actual dispatch to the subscription (as chosen by the      * master) is completed. (non-Javadoc)      *       * @see      * org.apache.activemq.broker.region.BaseDestination#processDispatchNotification      * (org.apache.activemq.command.MessageDispatchNotification)      */
+comment|/*      * In slave mode, dispatch is ignored till we get this notification as the      * dispatch process is non deterministic between master and slave. On a      * notification, the actual dispatch to the subscription (as chosen by the      * master) is completed. (non-Javadoc)      * @see      * org.apache.activemq.broker.region.BaseDestination#processDispatchNotification      * (org.apache.activemq.command.MessageDispatchNotification)      */
 annotation|@
 name|Override
 specifier|public

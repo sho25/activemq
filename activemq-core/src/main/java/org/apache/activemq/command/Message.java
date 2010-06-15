@@ -1997,6 +1997,7 @@ argument_list|(
 name|size
 argument_list|)
 expr_stmt|;
+comment|//System.err.println("INCREASE USAGE " + System.identityHashCode(getMemoryUsage()) + " PERCENT = " + getMemoryUsage().getPercentUsage());
 block|}
 comment|//System.out.println(" + "+getMemoryUsage().getName()+" :::: "+getMessageId()+"rc="+rc);
 return|return
@@ -2050,6 +2051,8 @@ argument_list|(
 name|size
 argument_list|)
 expr_stmt|;
+comment|//Thread.dumpStack();
+comment|//System.err.println("DECREADED USAGE " + System.identityHashCode(getMemoryUsage()) + " PERCENT = " + getMemoryUsage().getPercentUsage());
 block|}
 comment|//System.out.println(" - "+getMemoryUsage().getName()+" :::: "+getMessageId()+"rc="+rc);
 return|return

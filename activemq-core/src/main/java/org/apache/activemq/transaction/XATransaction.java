@@ -224,6 +224,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commit
@@ -297,6 +299,8 @@ argument_list|()
 argument_list|,
 literal|false
 argument_list|,
+name|preCommitTask
+argument_list|,
 name|postCommitTask
 argument_list|)
 expr_stmt|;
@@ -322,6 +326,8 @@ name|getTransactionId
 argument_list|()
 argument_list|,
 literal|true
+argument_list|,
+name|preCommitTask
 argument_list|,
 name|postCommitTask
 argument_list|)
@@ -485,6 +491,8 @@ name|xae
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollback
@@ -633,6 +641,8 @@ name|xae
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|prepare
@@ -738,6 +748,8 @@ name|xid
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TransactionId
 name|getTransactionId

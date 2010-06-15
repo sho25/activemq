@@ -27,18 +27,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|FutureTask
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -93,7 +81,10 @@ name|boolean
 name|wasPrepared
 parameter_list|,
 name|Runnable
-name|done
+name|preCommit
+parameter_list|,
+name|Runnable
+name|postCommit
 parameter_list|)
 throws|throws
 name|IOException

@@ -1088,7 +1088,6 @@ operator|.
 name|decrement
 argument_list|()
 expr_stmt|;
-block|}
 comment|// deactivate and remove
 name|removed
 operator|.
@@ -1104,6 +1103,7 @@ argument_list|(
 name|removed
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
@@ -2408,28 +2408,6 @@ name|logMessage
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|context
-operator|.
-name|isInTransaction
-argument_list|()
-condition|)
-block|{
-name|topicStore
-operator|.
-name|addMessage
-argument_list|(
-name|context
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|result
-operator|=
 name|topicStore
 operator|.
 name|asyncAddTopicMessage
@@ -2439,7 +2417,6 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|message
 operator|.

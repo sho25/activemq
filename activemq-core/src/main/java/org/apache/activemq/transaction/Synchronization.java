@@ -33,6 +33,13 @@ name|Exception
 block|{     }
 specifier|public
 name|void
+name|beforeCommit
+parameter_list|()
+throws|throws
+name|Exception
+block|{     }
+specifier|public
+name|void
 name|afterCommit
 parameter_list|()
 throws|throws
