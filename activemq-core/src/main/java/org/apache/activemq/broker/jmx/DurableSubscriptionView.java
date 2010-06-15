@@ -548,6 +548,20 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isActive
+parameter_list|()
+block|{
+return|return
+name|durableSub
+operator|.
+name|isActive
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
