@@ -571,7 +571,7 @@ name|getJournalMaxFileLength
 argument_list|()
 return|;
 block|}
-comment|/**      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can      * be used      *       * @org.apache.xbean.Property       *                            propertyEditor="org.apache.activemq.util.MemoryIntPropertyEditor"      */
+comment|/**      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can      * be used      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryIntPropertyEditor"      */
 specifier|public
 name|void
 name|setJournalMaxFileLength
@@ -673,7 +673,7 @@ name|getIndexWriteBatchSize
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the indexWriteBatchSize      *       * @param indexWriteBatchSize      *            the indexWriteBatchSize to set      */
+comment|/**      * Set the indexWriteBatchSize      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      * @param indexWriteBatchSize      *            the indexWriteBatchSize to set      */
 specifier|public
 name|void
 name|setIndexWriteBatchSize
@@ -707,7 +707,7 @@ name|getJournalMaxWriteBatchSize
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the journalMaxWriteBatchSize      *       * @param journalMaxWriteBatchSize      *            the journalMaxWriteBatchSize to set      */
+comment|/**      * Set the journalMaxWriteBatchSize      *  * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      * @param journalMaxWriteBatchSize      *            the journalMaxWriteBatchSize to set      */
 specifier|public
 name|void
 name|setJournalMaxWriteBatchSize
@@ -843,7 +843,7 @@ name|getIndexCacheSize
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the indexCacheSize      *       * @param indexCacheSize      *            the indexCacheSize to set      */
+comment|/**      * Set the indexCacheSize      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      * @param indexCacheSize      *            the indexCacheSize to set      */
 specifier|public
 name|void
 name|setIndexCacheSize
