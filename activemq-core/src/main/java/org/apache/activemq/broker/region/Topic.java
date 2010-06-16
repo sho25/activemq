@@ -2408,6 +2408,8 @@ name|logMessage
 argument_list|)
 expr_stmt|;
 block|}
+name|result
+operator|=
 name|topicStore
 operator|.
 name|asyncAddTopicMessage

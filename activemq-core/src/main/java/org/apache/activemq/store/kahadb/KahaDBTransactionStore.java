@@ -1224,6 +1224,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+return|return
 name|KahaDBTransactionStore
 operator|.
 name|this
@@ -1237,11 +1238,6 @@ argument_list|()
 argument_list|,
 name|message
 argument_list|)
-expr_stmt|;
-return|return
-name|AbstractMessageStore
-operator|.
-name|FUTURE
 return|;
 block|}
 annotation|@
