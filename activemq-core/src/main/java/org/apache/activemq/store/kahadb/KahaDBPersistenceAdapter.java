@@ -1139,6 +1139,36 @@ name|maxAsyncJobs
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @return the databaseLockedWaitDelay      */
+specifier|public
+name|int
+name|getDatabaseLockedWaitDelay
+parameter_list|()
+block|{
+return|return
+name|letter
+operator|.
+name|getDatabaseLockedWaitDelay
+argument_list|()
+return|;
+block|}
+comment|/**      * @param databaseLockedWaitDelay the databaseLockedWaitDelay to set      */
+specifier|public
+name|void
+name|setDatabaseLockedWaitDelay
+parameter_list|(
+name|int
+name|databaseLockedWaitDelay
+parameter_list|)
+block|{
+name|letter
+operator|.
+name|setDatabaseLockedWaitDelay
+argument_list|(
+name|databaseLockedWaitDelay
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public

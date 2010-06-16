@@ -941,7 +941,7 @@ specifier|private
 specifier|static
 specifier|final
 name|int
-name|DATABASE_LOCKED_WAIT_DELAY
+name|DEFAULT_DATABASE_LOCKED_WAIT_DELAY
 init|=
 literal|10
 operator|*
@@ -1390,6 +1390,12 @@ name|boolean
 name|checksumJournalFiles
 init|=
 literal|false
+decl_stmt|;
+specifier|private
+name|int
+name|databaseLockedWaitDelay
+init|=
+name|DEFAULT_DATABASE_LOCKED_WAIT_DELAY
 decl_stmt|;
 specifier|public
 name|MessageDatabase
@@ -2030,7 +2036,8 @@ operator|+
 literal|" is locked... waiting "
 operator|+
 operator|(
-name|DATABASE_LOCKED_WAIT_DELAY
+name|getDatabaseLockedWaitDelay
+argument_list|()
 operator|/
 literal|1000
 operator|)
@@ -2046,7 +2053,8 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-name|DATABASE_LOCKED_WAIT_DELAY
+name|getDatabaseLockedWaitDelay
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -8837,6 +8845,34 @@ operator|.
 name|directoryArchive
 operator|=
 name|directoryArchive
+expr_stmt|;
+block|}
+comment|/**      * @return the databaseLockedWaitDelay      */
+specifier|public
+name|int
+name|getDatabaseLockedWaitDelay
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|databaseLockedWaitDelay
+return|;
+block|}
+comment|/**      * @param databaseLockedWaitDelay the databaseLockedWaitDelay to set      */
+specifier|public
+name|void
+name|setDatabaseLockedWaitDelay
+parameter_list|(
+name|int
+name|databaseLockedWaitDelay
+parameter_list|)
+block|{
+name|this
+operator|.
+name|databaseLockedWaitDelay
+operator|=
+name|databaseLockedWaitDelay
 expr_stmt|;
 block|}
 block|}
