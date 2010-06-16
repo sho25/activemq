@@ -1386,6 +1386,31 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+comment|//drain down async jobs
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Stopping async queue tasks"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|globalQueueSemaphore
+operator|.
+name|tryAcquire
+argument_list|(
+name|this
+operator|.
+name|maxAsyncJobs
+argument_list|,
+literal|60
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
+expr_stmt|;
 synchronized|synchronized
 init|(
 name|this
@@ -1420,6 +1445,30 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Stopping async topic tasks"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|globalTopicSemaphore
+operator|.
+name|tryAcquire
+argument_list|(
+name|this
+operator|.
+name|maxAsyncJobs
+argument_list|,
+literal|60
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
+expr_stmt|;
 synchronized|synchronized
 init|(
 name|this
@@ -1522,6 +1571,13 @@ name|shutdownNow
 argument_list|()
 expr_stmt|;
 block|}
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Stopped KahaDB"
+argument_list|)
+expr_stmt|;
 name|super
 operator|.
 name|doStop
