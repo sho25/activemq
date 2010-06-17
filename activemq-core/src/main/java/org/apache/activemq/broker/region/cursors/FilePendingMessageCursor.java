@@ -1002,7 +1002,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * add message to await dispatch      *       * @param node      */
+comment|/**      * add message to await dispatch      *       * @param node      * @throws Exception       */
 annotation|@
 name|Override
 specifier|public
@@ -1013,6 +1013,30 @@ parameter_list|(
 name|MessageReference
 name|node
 parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|tryAddMessageLast
+argument_list|(
+name|node
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+specifier|synchronized
+name|boolean
+name|tryAddMessageLast
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|,
+name|long
+name|maxWaitTime
+parameter_list|)
+throws|throws
+name|Exception
 block|{
 if|if
 condition|(
@@ -1065,7 +1089,9 @@ operator|.
 name|incrementReferenceCount
 argument_list|()
 expr_stmt|;
-return|return;
+return|return
+literal|true
+return|;
 block|}
 block|}
 if|if
@@ -1102,7 +1128,9 @@ operator|.
 name|incrementReferenceCount
 argument_list|()
 expr_stmt|;
-return|return;
+return|return
+literal|true
+return|;
 block|}
 else|else
 block|{
@@ -1112,14 +1140,19 @@ expr_stmt|;
 block|}
 block|}
 block|}
+if|if
+condition|(
 name|systemUsage
 operator|.
 name|getTempUsage
 argument_list|()
 operator|.
 name|waitForSpace
-argument_list|()
-expr_stmt|;
+argument_list|(
+name|maxWaitTime
+argument_list|)
+condition|)
+block|{
 name|ByteSequence
 name|bs
 init|=
@@ -1147,6 +1180,13 @@ argument_list|,
 name|bs
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
+return|return
+literal|false
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -1184,6 +1224,9 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 comment|/**      * add message to await dispatch      *       * @param node      */
 annotation|@

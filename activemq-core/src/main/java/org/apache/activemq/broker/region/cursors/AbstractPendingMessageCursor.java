@@ -157,6 +157,7 @@ end_comment
 
 begin_class
 specifier|public
+specifier|abstract
 class|class
 name|AbstractPendingMessageCursor
 implements|implements
@@ -345,6 +346,28 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{     }
+specifier|public
+name|boolean
+name|tryAddMessageLast
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|,
+name|long
+name|maxWaitTime
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|addMessageLast
+argument_list|(
+name|node
+argument_list|)
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
 specifier|public
 name|void
 name|addRecoveredMessage

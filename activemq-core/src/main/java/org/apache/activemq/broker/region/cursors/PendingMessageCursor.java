@@ -220,6 +220,19 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * add message to await dispatch - if it can      *       * @param node      * @param maxWaitTime       * @return true if successful      * @throws IOException      * @throws Exception      */
+name|boolean
+name|tryAddMessageLast
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|,
+name|long
+name|maxWaitTime
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
 comment|/**      * add message to await dispatch      *       * @param node      * @throws Exception      */
 name|void
 name|addMessageFirst
