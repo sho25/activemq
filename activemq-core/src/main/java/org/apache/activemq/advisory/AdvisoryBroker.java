@@ -1778,7 +1778,7 @@ argument_list|()
 operator|||
 name|destinations
 operator|.
-name|contains
+name|containsKey
 argument_list|(
 name|dest
 argument_list|)
