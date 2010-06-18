@@ -518,7 +518,7 @@ name|SECONDS
 operator|.
 name|sleep
 argument_list|(
-literal|4
+literal|10
 argument_list|)
 expr_stmt|;
 name|proxy
