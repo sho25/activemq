@@ -1394,6 +1394,15 @@ argument_list|(
 literal|"Stopping async queue tasks"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|this
+operator|.
+name|globalQueueSemaphore
+operator|!=
+literal|null
+condition|)
+block|{
 name|this
 operator|.
 name|globalQueueSemaphore
@@ -1411,6 +1420,7 @@ operator|.
 name|SECONDS
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|this
@@ -1452,6 +1462,15 @@ argument_list|(
 literal|"Stopping async topic tasks"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|this
+operator|.
+name|globalTopicSemaphore
+operator|!=
+literal|null
+condition|)
+block|{
 name|this
 operator|.
 name|globalTopicSemaphore
@@ -1469,6 +1488,7 @@ operator|.
 name|SECONDS
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|this
