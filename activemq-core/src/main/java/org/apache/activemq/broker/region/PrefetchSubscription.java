@@ -2305,6 +2305,9 @@ name|Exception
 block|{
 name|broker
 operator|.
+name|getRoot
+argument_list|()
+operator|.
 name|sendToDeadLetterQueue
 argument_list|(
 name|context
