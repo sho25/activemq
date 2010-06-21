@@ -1144,6 +1144,12 @@ operator|.
 name|first
 operator|<=
 name|first
+operator|&&
+name|first
+operator|<=
+name|sequence
+operator|.
+name|last
 condition|)
 block|{
 return|return
