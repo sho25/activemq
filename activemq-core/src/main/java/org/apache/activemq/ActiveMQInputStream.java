@@ -295,7 +295,7 @@ name|MessageDispatchChannel
 name|unconsumedMessages
 init|=
 operator|new
-name|MessageDispatchChannel
+name|FifoMessageDispatchChannel
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -660,6 +660,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
@@ -946,6 +948,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|read
@@ -982,6 +986,8 @@ operator|&
 literal|0xff
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|read
@@ -1297,6 +1303,8 @@ name|md
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

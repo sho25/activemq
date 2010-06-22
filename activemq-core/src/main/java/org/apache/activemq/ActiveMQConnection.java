@@ -1627,6 +1627,12 @@ specifier|final
 name|Scheduler
 name|scheduler
 decl_stmt|;
+specifier|private
+name|boolean
+name|messagePrioritySupported
+init|=
+literal|true
+decl_stmt|;
 comment|/**      * Construct an<code>ActiveMQConnection</code>      *       * @param transport      * @param factoryStats      * @throws Exception      */
 specifier|protected
 name|ActiveMQConnection
@@ -4729,6 +4735,34 @@ operator|.
 name|alwaysSyncSend
 operator|=
 name|alwaysSyncSend
+expr_stmt|;
+block|}
+comment|/**      * @return the messagePrioritySupported      */
+specifier|public
+name|boolean
+name|isMessagePrioritySupported
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|messagePrioritySupported
+return|;
+block|}
+comment|/**      * @param messagePrioritySupported the messagePrioritySupported to set      */
+specifier|public
+name|void
+name|setMessagePrioritySupported
+parameter_list|(
+name|boolean
+name|messagePrioritySupported
+parameter_list|)
+block|{
+name|this
+operator|.
+name|messagePrioritySupported
+operator|=
+name|messagePrioritySupported
 expr_stmt|;
 block|}
 comment|/**      * Cleans up this connection so that it's state is as if the connection was      * just created. This allows the Resource Adapter to clean up a connection      * so that it can be reused without having to close and recreate the      * connection.      */

@@ -686,6 +686,12 @@ specifier|private
 name|ClientInternalExceptionListener
 name|clientInternalExceptionListener
 decl_stmt|;
+specifier|private
+name|boolean
+name|messagePrioritySupported
+init|=
+literal|true
+decl_stmt|;
 comment|// /////////////////////////////////////////////
 comment|//
 comment|// ConnectionFactory, QueueConnectionFactory, TopicConnectionFactory Methods
@@ -1466,6 +1472,14 @@ name|isCheckForDuplicates
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|connection
+operator|.
+name|setMessagePrioritySupported
+argument_list|(
+name|isMessagePrioritySupported
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|transportListener
@@ -2092,6 +2106,34 @@ operator|.
 name|sendAcksAsync
 operator|=
 name|sendAcksAsync
+expr_stmt|;
+block|}
+comment|/**      * @return the messagePrioritySupported      */
+specifier|public
+name|boolean
+name|isMessagePrioritySupported
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|messagePrioritySupported
+return|;
+block|}
+comment|/**      * @param messagePrioritySupported the messagePrioritySupported to set      */
+specifier|public
+name|void
+name|setMessagePrioritySupported
+parameter_list|(
+name|boolean
+name|messagePrioritySupported
+parameter_list|)
+block|{
+name|this
+operator|.
+name|messagePrioritySupported
+operator|=
+name|messagePrioritySupported
 expr_stmt|;
 block|}
 comment|/**      * Sets the transformer used to transform messages before they are sent on      * to the JMS bus or when they are received from the bus but before they are      * delivered to the JMS client      */
@@ -2766,6 +2808,21 @@ operator|.
 name|toString
 argument_list|(
 name|isCheckForDuplicates
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|props
+operator|.
+name|setProperty
+argument_list|(
+literal|"messagePrioritySupported"
+argument_list|,
+name|Boolean
+operator|.
+name|toString
+argument_list|(
+name|isMessagePrioritySupported
 argument_list|()
 argument_list|)
 argument_list|)

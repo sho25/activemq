@@ -668,10 +668,6 @@ specifier|protected
 specifier|final
 name|MessageDispatchChannel
 name|unconsumedMessages
-init|=
-operator|new
-name|MessageDispatchChannel
-argument_list|()
 decl_stmt|;
 comment|// The are the messages that were delivered to the consumer but that have
 comment|// not been acknowledged. It's kept in reverse order since we
@@ -1010,6 +1006,36 @@ literal|"Cannot have a prefetch size less than zero"
 argument_list|)
 throw|;
 block|}
+block|}
+if|if
+condition|(
+name|session
+operator|.
+name|connection
+operator|.
+name|isMessagePrioritySupported
+argument_list|()
+condition|)
+block|{
+name|this
+operator|.
+name|unconsumedMessages
+operator|=
+operator|new
+name|SimplePriorityMessageDispatchChannel
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|this
+operator|.
+name|unconsumedMessages
+operator|=
+operator|new
+name|FifoMessageDispatchChannel
+argument_list|()
+expr_stmt|;
 block|}
 name|this
 operator|.
