@@ -1249,8 +1249,6 @@ operator|=
 name|store
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|boolean
 name|recoverMessageReference
@@ -1312,8 +1310,6 @@ return|return
 literal|true
 return|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|boolean
 name|recoverMessage
@@ -1378,8 +1374,6 @@ return|return
 literal|true
 return|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|boolean
 name|isDuplicate
@@ -1392,8 +1386,6 @@ return|return
 literal|false
 return|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|boolean
 name|hasSpace
