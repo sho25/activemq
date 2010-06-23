@@ -1288,6 +1288,12 @@ decl_stmt|;
 specifier|protected
 name|File
 name|directory
+init|=
+operator|new
+name|File
+argument_list|(
+literal|"KahaDB"
+argument_list|)
 decl_stmt|;
 specifier|protected
 name|Thread
