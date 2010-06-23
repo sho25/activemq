@@ -649,6 +649,14 @@ expr_stmt|;
 block|}
 name|broker
 operator|.
+name|setPersistenceAdapter
+argument_list|(
+name|createPersistenceAdapter
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
 name|start
 argument_list|()
 expr_stmt|;

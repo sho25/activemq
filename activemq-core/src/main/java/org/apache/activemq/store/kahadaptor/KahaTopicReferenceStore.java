@@ -2010,7 +2010,7 @@ name|msg
 init|=
 name|messageContainer
 operator|.
-name|get
+name|getValue
 argument_list|(
 name|ref
 operator|.
