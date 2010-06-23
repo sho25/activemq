@@ -199,6 +199,14 @@ operator|.
 name|session
 operator|.
 name|connection
+operator|!=
+literal|null
+operator|&&
+name|this
+operator|.
+name|session
+operator|.
+name|connection
 operator|.
 name|isMessagePrioritySupported
 argument_list|()
