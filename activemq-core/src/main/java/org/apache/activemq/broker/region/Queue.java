@@ -1010,7 +1010,6 @@ operator|new
 name|MessageGroupHashBucketFactory
 argument_list|()
 decl_stmt|;
-specifier|private
 specifier|final
 name|Lock
 name|sendLock
@@ -3444,16 +3443,6 @@ operator|.
 name|lockInterruptibly
 argument_list|()
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|afterCommit
-parameter_list|()
-throws|throws
-name|Exception
-block|{
 try|try
 block|{
 comment|// It could take while before we receive the commit

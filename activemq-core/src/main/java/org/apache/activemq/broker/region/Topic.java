@@ -719,7 +719,7 @@ name|topicStore
 operator|=
 name|store
 expr_stmt|;
-comment|//set default subscription recovery policy
+comment|// set default subscription recovery policy
 name|subscriptionRecoveryPolicy
 operator|=
 operator|new
@@ -766,7 +766,8 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// AMQ-2586: Better to leave this stat at zero than to give the user misleading metrics.
+comment|// AMQ-2586: Better to leave this stat at zero than to give the user
+comment|// misleading metrics.
 comment|// int messageCount = store.getMessageCount();
 comment|// destinationStatistics.getMessages().setCount(messageCount);
 block|}
@@ -1808,7 +1809,8 @@ literal|" See http://activemq.apache.org/producer-flow-control.html for more inf
 argument_list|)
 throw|;
 block|}
-comment|// We can avoid blocking due to low usage if the producer is sending
+comment|// We can avoid blocking due to low usage if the producer is
+comment|// sending
 comment|// a sync message or
 comment|// if it is using a producer window
 if|if
@@ -2002,7 +2004,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|// If the user manager is not full, then the task will not
+comment|// If the user manager is not full, then the task will
+comment|// not
 comment|// get called..
 if|if
 condition|(
@@ -2034,7 +2037,8 @@ block|}
 block|}
 else|else
 block|{
-comment|// Producer flow control cannot be used, so we have do the flow
+comment|// Producer flow control cannot be used, so we have do the
+comment|// flow
 comment|// control at the broker
 comment|// by blocking this thread until there is space available.
 if|if
@@ -2448,7 +2452,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|afterCommit
+name|beforeCommit
 parameter_list|()
 throws|throws
 name|Exception
@@ -2562,7 +2566,7 @@ name|CancellationException
 name|e
 parameter_list|)
 block|{
-comment|//ignore - the task has been cancelled if the message
+comment|// ignore - the task has been cancelled if the message
 comment|// has already been deleted
 block|}
 block|}
@@ -3100,7 +3104,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// AMQ-2586: Better to leave this stat at zero than to give the user misleading metrics.
+comment|// AMQ-2586: Better to leave this stat at zero than to give the user
+comment|// misleading metrics.
 comment|// destinationStatistics.getMessages().increment();
 name|destinationStatistics
 operator|.
@@ -3250,7 +3255,8 @@ argument_list|,
 name|reference
 argument_list|)
 expr_stmt|;
-comment|// AMQ-2586: Better to leave this stat at zero than to give the user misleading metrics.
+comment|// AMQ-2586: Better to leave this stat at zero than to give the user
+comment|// misleading metrics.
 comment|// destinationStatistics.getMessages().decrement();
 name|destinationStatistics
 operator|.
