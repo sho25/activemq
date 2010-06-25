@@ -361,6 +361,17 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// http://java.sun.com/javase/javaseforbusiness/docs/TLSReadme.html
+comment|// work around: javax.net.ssl.SSLHandshakeException: renegotiation is not allowed
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"sun.security.ssl.allowUnsafeRenegotiation"
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
 name|SslBrokerService
 name|service
 init|=
