@@ -66,6 +66,7 @@ name|MessageDispatchChannel
 block|{
 specifier|private
 specifier|static
+specifier|final
 name|Integer
 name|MAX_PRIORITY
 init|=
@@ -679,6 +680,10 @@ block|{
 name|int
 name|priority
 init|=
+name|javax
+operator|.
+name|jms
+operator|.
 name|Message
 operator|.
 name|DEFAULT_PRIORITY

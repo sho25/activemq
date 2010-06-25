@@ -592,7 +592,9 @@ name|info
 argument_list|,
 operator|new
 name|VMPendingMessageCursor
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

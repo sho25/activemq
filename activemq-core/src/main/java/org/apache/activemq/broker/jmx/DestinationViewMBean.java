@@ -21,6 +21,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|List
@@ -39,11 +49,11 @@ end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|io
+name|jms
 operator|.
-name|IOException
+name|InvalidSelectorException
 import|;
 end_import
 
@@ -51,9 +61,19 @@ begin_import
 import|import
 name|javax
 operator|.
-name|jms
+name|management
 operator|.
-name|InvalidSelectorException
+name|MalformedObjectNameException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|ObjectName
 import|;
 end_import
 
@@ -90,26 +110,6 @@ operator|.
 name|openmbean
 operator|.
 name|TabularData
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|ObjectName
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|MalformedObjectNameException
 import|;
 end_import
 
@@ -673,6 +673,17 @@ argument_list|)
 specifier|public
 name|boolean
 name|isUseCache
+parameter_list|()
+function_decl|;
+comment|/**      * @return true if prioritized messages are enabled for the destination      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Prioritized messages is enabled"
+argument_list|)
+specifier|public
+name|boolean
+name|isPrioritizedMessages
 parameter_list|()
 function_decl|;
 comment|/**      * @param value      * enable/disable caching on the destination      */

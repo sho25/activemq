@@ -111,7 +111,12 @@ block|{
 return|return
 operator|new
 name|VMPendingMessageCursor
+argument_list|(
+name|queue
+operator|.
+name|isPrioritizedMessages
 argument_list|()
+argument_list|)
 return|;
 block|}
 block|}

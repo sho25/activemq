@@ -586,7 +586,9 @@ name|matched
 operator|=
 operator|new
 name|VMPendingMessageCursor
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -601,6 +603,8 @@ argument_list|(
 name|broker
 argument_list|,
 name|matchedName
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}

@@ -1843,8 +1843,6 @@ specifier|public
 name|Message
 name|getMessage
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 return|return
 name|this

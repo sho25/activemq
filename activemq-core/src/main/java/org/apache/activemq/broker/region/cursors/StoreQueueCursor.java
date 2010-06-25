@@ -148,6 +148,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|Broker
 name|broker
 decl_stmt|;
@@ -156,6 +157,7 @@ name|int
 name|pendingCount
 decl_stmt|;
 specifier|private
+specifier|final
 name|Queue
 name|queue
 decl_stmt|;
@@ -164,6 +166,7 @@ name|PendingMessageCursor
 name|nonPersistent
 decl_stmt|;
 specifier|private
+specifier|final
 name|QueueStorePrefetch
 name|persistent
 decl_stmt|;
@@ -175,7 +178,7 @@ specifier|private
 name|PendingMessageCursor
 name|currentCursor
 decl_stmt|;
-comment|/**      * Construct      *       * @param queue      * @param tmpStore      */
+comment|/**      * Construct      * @param broker       * @param queue      */
 specifier|public
 name|StoreQueueCursor
 parameter_list|(
@@ -186,6 +189,22 @@ name|Queue
 name|queue
 parameter_list|)
 block|{
+name|super
+argument_list|(
+operator|(
+name|queue
+operator|!=
+literal|null
+condition|?
+name|queue
+operator|.
+name|isPrioritizedMessages
+argument_list|()
+else|:
+literal|false
+operator|)
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|broker
@@ -259,6 +278,10 @@ name|queue
 operator|.
 name|getName
 argument_list|()
+argument_list|,
+name|this
+operator|.
+name|prioritizedMessages
 argument_list|)
 expr_stmt|;
 block|}
@@ -268,7 +291,11 @@ name|nonPersistent
 operator|=
 operator|new
 name|VMPendingMessageCursor
-argument_list|()
+argument_list|(
+name|this
+operator|.
+name|prioritizedMessages
+argument_list|)
 expr_stmt|;
 block|}
 name|nonPersistent
@@ -988,6 +1015,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUseCache
@@ -1034,6 +1063,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMemoryUsageHighWaterMark

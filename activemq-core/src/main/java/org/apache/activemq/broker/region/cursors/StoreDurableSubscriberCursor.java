@@ -337,6 +337,18 @@ name|Subscription
 name|subscription
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|AbstractPendingMessageCursor
+operator|.
+name|isPrioritizedMessageSubscriber
+argument_list|(
+name|broker
+argument_list|,
+name|subscription
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|subscription
@@ -378,6 +390,10 @@ argument_list|,
 name|clientId
 operator|+
 name|subscriberName
+argument_list|,
+name|this
+operator|.
+name|prioritizedMessages
 argument_list|)
 expr_stmt|;
 block|}
@@ -389,7 +405,11 @@ name|nonPersistent
 operator|=
 operator|new
 name|VMPendingMessageCursor
-argument_list|()
+argument_list|(
+name|this
+operator|.
+name|prioritizedMessages
+argument_list|)
 expr_stmt|;
 block|}
 name|this
@@ -422,6 +442,8 @@ name|nonPersistent
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -466,6 +488,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -502,6 +526,8 @@ block|}
 block|}
 block|}
 comment|/**      * Add a destination      *       * @param context      * @param destination      * @throws Exception      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -632,6 +658,8 @@ block|}
 block|}
 block|}
 comment|/**      * remove a destination      *       * @param context      * @param destination      * @throws Exception      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|List
@@ -681,6 +709,8 @@ name|EMPTY_LIST
 return|;
 block|}
 comment|/**      * @return true if there are no pending messages      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|boolean
@@ -711,6 +741,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|boolean
@@ -755,6 +787,8 @@ name|result
 return|;
 block|}
 comment|/**      * Informs the Broker if the subscription needs to intervention to recover      * it's state e.g. DurableTopicSubscriber may do      *       * @see org.apache.activemq.broker.region.cursors.AbstractPendingMessageCursor      * @return true if recovery required      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isRecoveryRequired
@@ -764,6 +798,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -858,6 +894,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -877,6 +915,8 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -898,6 +938,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|boolean
@@ -963,6 +1005,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|MessageReference
@@ -987,6 +1031,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1007,6 +1053,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1032,6 +1080,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1053,6 +1103,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1074,6 +1126,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|int
@@ -1105,6 +1159,8 @@ return|return
 name|pendingCount
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxBatchSize
@@ -1137,6 +1193,8 @@ name|maxBatchSize
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1158,6 +1216,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setSystemUsage
@@ -1190,6 +1250,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMemoryUsageHighWaterMark
@@ -1222,6 +1284,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxProducersToAudit
@@ -1254,6 +1318,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxAuditDepth
@@ -1286,6 +1352,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setEnableAudit
@@ -1318,6 +1386,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUseCache
@@ -1431,6 +1501,8 @@ return|return
 name|currentCursor
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

@@ -21,16 +21,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -180,6 +170,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|LinkedList
 argument_list|<
 name|MessageReference
@@ -208,6 +199,7 @@ name|int
 name|size
 decl_stmt|;
 specifier|private
+specifier|final
 name|Object
 name|lock
 init|=
@@ -380,8 +372,6 @@ decl_stmt|;
 name|Message
 name|msg
 decl_stmt|;
-try|try
-block|{
 name|msg
 operator|=
 name|ref
@@ -407,25 +397,6 @@ operator|.
 name|add
 argument_list|(
 name|msg
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|LOG
-operator|.
-name|error
-argument_list|(
-literal|"Failed to get Message from MessageReference: "
-operator|+
-name|ref
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}

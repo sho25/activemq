@@ -21,16 +21,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Set
@@ -485,7 +475,7 @@ name|logInternalEvents
 init|=
 literal|false
 decl_stmt|;
-comment|/**      *      * @throws Exception      * @org.apache.xbean.InitMethod      */
+comment|/**      *       * @throws Exception      * @org.apache.xbean.InitMethod      */
 annotation|@
 name|PostConstruct
 specifier|public
@@ -2572,8 +2562,6 @@ name|msg
 init|=
 literal|"Unable to display message."
 decl_stmt|;
-try|try
-block|{
 name|msg
 operator|=
 name|message
@@ -2584,13 +2572,6 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ioe
-parameter_list|)
-block|{             }
 name|LOG
 operator|.
 name|info
@@ -2638,8 +2619,6 @@ name|msg
 init|=
 literal|"Unable to display message."
 decl_stmt|;
-try|try
-block|{
 name|msg
 operator|=
 name|messageReference
@@ -2650,13 +2629,6 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ioe
-parameter_list|)
-block|{             }
 name|LOG
 operator|.
 name|info
@@ -2805,8 +2777,6 @@ name|msg
 init|=
 literal|"Unable to display message."
 decl_stmt|;
-try|try
-block|{
 name|msg
 operator|=
 name|messageReference
@@ -2817,13 +2787,6 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ioe
-parameter_list|)
-block|{             }
 name|LOG
 operator|.
 name|info
@@ -2874,8 +2837,6 @@ name|msg
 init|=
 literal|"Unable to display message."
 decl_stmt|;
-try|try
-block|{
 name|msg
 operator|=
 name|messageReference
@@ -2886,13 +2847,6 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ioe
-parameter_list|)
-block|{             }
 name|LOG
 operator|.
 name|info
@@ -2943,8 +2897,6 @@ name|msg
 init|=
 literal|"Unable to display message."
 decl_stmt|;
-try|try
-block|{
 name|msg
 operator|=
 name|messageReference
@@ -2955,13 +2907,6 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ioe
-parameter_list|)
-block|{             }
 name|LOG
 operator|.
 name|info

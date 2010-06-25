@@ -1666,7 +1666,10 @@ name|messages
 operator|=
 operator|new
 name|VMPendingMessageCursor
+argument_list|(
+name|isPrioritizedMessages
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -4904,8 +4907,6 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
-try|try
-block|{
 synchronized|synchronized
 init|(
 name|pagedInMessages
@@ -4957,8 +4958,6 @@ operator|.
 name|hasNext
 argument_list|()
 condition|)
-block|{
-try|try
 block|{
 name|MessageReference
 name|r
@@ -5018,23 +5017,6 @@ block|}
 break|break;
 block|}
 block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|LOG
-operator|.
-name|error
-argument_list|(
-literal|"got an exception retrieving message "
-operator|+
-name|id
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 block|}
 finally|finally
 block|{
@@ -5044,23 +5026,6 @@ name|release
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|LOG
-operator|.
-name|error
-argument_list|(
-literal|"got an exception retrieving message "
-operator|+
-name|id
-argument_list|)
-expr_stmt|;
 block|}
 return|return
 literal|null
