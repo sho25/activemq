@@ -394,6 +394,10 @@ name|Transformations
 block|{
 name|JMS_BYTE
 block|,
+name|JMS_XML
+block|,
+name|JMS_JSON
+block|,
 name|JMS_OBJECT_XML
 block|,
 name|JMS_OBJECT_JSON
@@ -401,6 +405,10 @@ block|,
 name|JMS_MAP_XML
 block|,
 name|JMS_MAP_JSON
+block|,
+name|JMS_ADVISORY_XML
+block|,
+name|JMS_ADVISORY_JSON
 block|;
 specifier|public
 name|String
