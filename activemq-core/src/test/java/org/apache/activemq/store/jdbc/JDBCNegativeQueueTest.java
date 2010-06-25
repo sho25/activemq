@@ -195,7 +195,21 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|/*Connection conn = dataSource.getConnection();         printQuery(conn, "Select * from ACTIVEMQ_MSGS", System.out); */
+if|if
+condition|(
+name|DEBUG
+condition|)
+block|{
+name|printQuery
+argument_list|(
+literal|"Select * from ACTIVEMQ_MSGS"
+argument_list|,
+name|System
+operator|.
+name|out
+argument_list|)
+expr_stmt|;
+block|}
 name|super
 operator|.
 name|tearDown
@@ -206,9 +220,6 @@ specifier|private
 name|void
 name|printQuery
 parameter_list|(
-name|Connection
-name|c
-parameter_list|,
 name|String
 name|query
 parameter_list|,
@@ -218,9 +229,17 @@ parameter_list|)
 throws|throws
 name|SQLException
 block|{
+name|Connection
+name|conn
+init|=
+name|dataSource
+operator|.
+name|getConnection
+argument_list|()
+decl_stmt|;
 name|printQuery
 argument_list|(
-name|c
+name|conn
 operator|.
 name|prepareStatement
 argument_list|(
@@ -229,6 +248,11 @@ argument_list|)
 argument_list|,
 name|out
 argument_list|)
+expr_stmt|;
+name|conn
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 specifier|private

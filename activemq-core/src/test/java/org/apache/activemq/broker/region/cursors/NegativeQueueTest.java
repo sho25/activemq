@@ -45,16 +45,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Date
 import|;
 end_import
@@ -409,6 +399,34 @@ name|Wait
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Modified CursorSupport Unit test to reproduce the negative queue issue.  *   * Keys to reproducing:  * 1) Consecutive queues with listener on first sending to second queue  * 2) Push each queue to the memory limit  *      This seems to help reproduce the issue more consistently, but  *      we have seen times in our production environment where the  *      negative queue can occur without. Our memory limits are  *      very high in production and it still happens in varying   *      frequency.  * 3) Prefetch  *      Lowering the prefetch down to 10 and below seems to help   *      reduce occurrences.   * 4) # of consumers per queue  *      The issue occurs less with fewer consumers  *   * Things that do not affect reproduction:  * 1) Spring - we use spring in our production applications, but this test case works  *      with or without it.  * 2) transacted  *   */
 end_comment
@@ -420,6 +438,21 @@ name|NegativeQueueTest
 extends|extends
 name|TestCase
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOG
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|NegativeQueueTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|public
 specifier|static
 name|SimpleDateFormat
@@ -667,6 +700,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|ConnectionFactory
 name|factory
 init|=
@@ -1272,6 +1313,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|assertTrue
+argument_list|(
+literal|"got all expected messages on 2"
+argument_list|,
 name|latch2
 operator|.
 name|await
@@ -1281,6 +1326,7 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|MILLISECONDS
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|producerConnection
@@ -1770,6 +1816,8 @@ argument_list|)
 expr_stmt|;
 comment|// disable the cache to be sure setBatch is the problem
 comment|// will get lots of duplicates
+comment|// real problem is sync between cursor and store add - leads to out or order messages
+comment|// in the cursor so setBatch can break.
 comment|// policy.setUseCache(false);
 name|PolicyMap
 name|pMap
