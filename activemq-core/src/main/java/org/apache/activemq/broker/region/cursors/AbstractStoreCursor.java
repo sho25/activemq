@@ -949,9 +949,6 @@ name|useCache
 operator|&&
 name|hasSpace
 argument_list|()
-operator|&&
-name|isStoreEmpty
-argument_list|()
 condition|)
 block|{
 if|if
