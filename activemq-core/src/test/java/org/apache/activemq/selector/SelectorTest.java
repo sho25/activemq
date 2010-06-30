@@ -167,6 +167,15 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"trueProp"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
