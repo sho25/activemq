@@ -4706,7 +4706,12 @@ operator|=
 operator|new
 name|TaskRunnerFactory
 argument_list|(
-literal|"BrokerService"
+literal|"BrokerService["
+operator|+
+name|getBrokerName
+argument_list|()
+operator|+
+literal|"] Task"
 argument_list|,
 name|getTaskRunnerPriority
 argument_list|()
