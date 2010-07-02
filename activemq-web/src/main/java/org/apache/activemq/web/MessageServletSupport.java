@@ -1555,6 +1555,19 @@ name|request
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|destinationName
+operator|.
+name|indexOf
+argument_list|(
+literal|"://"
+argument_list|)
+operator|!=
+operator|-
+literal|1
+condition|)
+block|{
 name|destinationName
 operator|=
 name|destinationName
@@ -1571,6 +1584,7 @@ operator|+
 literal|3
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|destinationOptions
