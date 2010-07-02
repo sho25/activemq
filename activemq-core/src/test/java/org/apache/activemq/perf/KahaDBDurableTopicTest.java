@@ -135,6 +135,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|answer
+operator|.
+name|setEnableStatistics
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
