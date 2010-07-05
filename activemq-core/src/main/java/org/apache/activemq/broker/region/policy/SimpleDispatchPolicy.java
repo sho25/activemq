@@ -25,16 +25,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -120,11 +110,6 @@ name|count
 init|=
 literal|0
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|consumers
-init|)
-block|{
 for|for
 control|(
 name|Subscription
@@ -173,7 +158,6 @@ expr_stmt|;
 name|count
 operator|++
 expr_stmt|;
-block|}
 block|}
 return|return
 name|count
