@@ -1236,7 +1236,7 @@ operator|.
 name|concurrentStoreAndDispatchTransactions
 return|;
 block|}
-comment|/**      * @param concurrentStoreAndDispatchTransactions the concurrentStoreAndDispatchTransactions to set      */
+comment|/**      * @param concurrentStoreAndDispatchTransactions      *            the concurrentStoreAndDispatchTransactions to set      */
 specifier|public
 name|void
 name|setConcurrentStoreAndDispatchTransactions
@@ -1469,7 +1469,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|//drain down async jobs
+comment|// drain down async jobs
 name|LOG
 operator|.
 name|info
@@ -5515,6 +5515,11 @@ name|KahaTransactionInfo
 argument_list|()
 decl_stmt|;
 comment|// Link it up to the previous record that was part of the transaction.
+synchronized|synchronized
+init|(
+name|inflightTransactions
+init|)
+block|{
 name|ArrayList
 argument_list|<
 name|Operation
@@ -5557,6 +5562,7 @@ name|location
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
