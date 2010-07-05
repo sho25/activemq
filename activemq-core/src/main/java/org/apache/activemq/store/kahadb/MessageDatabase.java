@@ -947,7 +947,6 @@ literal|10
 operator|*
 literal|1000
 decl_stmt|;
-specifier|public
 specifier|static
 specifier|final
 name|int
@@ -955,7 +954,6 @@ name|CLOSED_STATE
 init|=
 literal|1
 decl_stmt|;
-specifier|public
 specifier|static
 specifier|final
 name|int
@@ -963,7 +961,6 @@ name|OPEN_STATE
 init|=
 literal|2
 decl_stmt|;
-specifier|private
 specifier|static
 specifier|final
 name|long
@@ -1352,14 +1349,6 @@ init|=
 name|PageFile
 operator|.
 name|DEFAULT_WRITE_BATCH_SIZE
-decl_stmt|;
-specifier|protected
-name|AtomicBoolean
-name|started
-init|=
-operator|new
-name|AtomicBoolean
-argument_list|()
 decl_stmt|;
 specifier|protected
 name|AtomicBoolean

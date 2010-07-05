@@ -5326,9 +5326,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|started
-operator|.
-name|get
+name|isStarted
 argument_list|()
 condition|)
 block|{
