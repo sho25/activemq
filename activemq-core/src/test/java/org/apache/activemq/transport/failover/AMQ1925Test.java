@@ -173,6 +173,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|TransactionRolledBackException
+import|;
+end_import
+
+begin_import
+import|import
 name|junit
 operator|.
 name|framework
@@ -1351,6 +1361,11 @@ name|QUEUE_NAME
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|boolean
+name|restartDone
+init|=
+literal|false
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -1386,6 +1401,9 @@ condition|(
 name|i
 operator|==
 literal|222
+operator|&&
+operator|!
+name|restartDone
 condition|)
 block|{
 comment|// Simulate broker failure& restart
@@ -1426,6 +1444,10 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|restartDone
+operator|=
+literal|true
+expr_stmt|;
 block|}
 name|assertEquals
 argument_list|(
@@ -1439,11 +1461,33 @@ name|PROPERTY_MSG_NUMBER
 argument_list|)
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|session
 operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|TransactionRolledBackException
+name|expectedOnOccasion
+parameter_list|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"got rollback: "
+operator|+
+name|expectedOnOccasion
+argument_list|)
+expr_stmt|;
+name|i
+operator|--
+expr_stmt|;
+block|}
 block|}
 name|assertNull
 argument_list|(
