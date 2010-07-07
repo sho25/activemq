@@ -1508,7 +1508,10 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Producer Flow Control Timeout Task is stopping"
+name|getName
+argument_list|()
+operator|+
+literal|"P roducer Flow Control Timeout Task is stopping"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3153,6 +3156,33 @@ init|(
 name|messagesWaitingForSpace
 init|)
 block|{
+comment|// Start flow control timeout task
+comment|// Prevent trying to start it multiple times
+if|if
+condition|(
+operator|!
+name|flowControlTimeoutTask
+operator|.
+name|isAlive
+argument_list|()
+condition|)
+block|{
+name|flowControlTimeoutTask
+operator|.
+name|setName
+argument_list|(
+name|getName
+argument_list|()
+operator|+
+literal|" Producer Flow Control Timeout Task"
+argument_list|)
+expr_stmt|;
+name|flowControlTimeoutTask
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+block|}
 name|messagesWaitingForSpace
 operator|.
 name|put
@@ -4376,30 +4406,6 @@ argument_list|,
 name|getExpireMessagesPeriod
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-name|flowControlTimeoutTask
-operator|.
-name|setName
-argument_list|(
-literal|"Producer Flow Control Timeout Task"
-argument_list|)
-expr_stmt|;
-comment|// Start flow control timeout task
-comment|// Prevent trying to start it multiple times
-if|if
-condition|(
-operator|!
-name|flowControlTimeoutTask
-operator|.
-name|isAlive
-argument_list|()
-condition|)
-block|{
-name|flowControlTimeoutTask
-operator|.
-name|start
-argument_list|()
 expr_stmt|;
 block|}
 name|doPageIn
