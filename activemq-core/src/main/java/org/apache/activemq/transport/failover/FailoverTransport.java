@@ -3572,7 +3572,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"restore, replay: "
+literal|"restore requestMap, replay: "
 operator|+
 name|command
 argument_list|)

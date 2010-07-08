@@ -288,7 +288,7 @@ argument_list|)
 decl_stmt|;
 name|LOG
 operator|.
-name|error
+name|info
 argument_list|(
 literal|"id: "
 operator|+

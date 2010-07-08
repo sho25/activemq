@@ -948,6 +948,13 @@ name|get
 argument_list|()
 condition|)
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Blocked...."
+argument_list|)
+expr_stmt|;
 break|break;
 block|}
 name|done

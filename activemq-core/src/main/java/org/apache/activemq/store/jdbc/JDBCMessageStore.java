@@ -1594,6 +1594,8 @@ name|getStoreSequenceId
 argument_list|(
 name|c
 argument_list|,
+name|destination
+argument_list|,
 name|messageId
 argument_list|)
 expr_stmt|;

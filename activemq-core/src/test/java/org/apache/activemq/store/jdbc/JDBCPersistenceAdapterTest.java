@@ -103,6 +103,15 @@ operator|new
 name|JDBCPersistenceAdapter
 argument_list|()
 decl_stmt|;
+comment|// explicitly enable audit as it is now off by default
+comment|// due to org.apache.activemq.broker.ProducerBrokerExchange.canDispatch(Message)
+name|jdbc
+operator|.
+name|setEnableAudit
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|brokerService
 operator|.
 name|setSchedulerSupport

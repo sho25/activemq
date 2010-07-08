@@ -216,6 +216,10 @@ specifier|private
 name|String
 name|findAllMessageIdsStatement
 decl_stmt|;
+specifier|private
+name|String
+name|lastProducerSequenceIdStatement
+decl_stmt|;
 specifier|public
 name|String
 index|[]
@@ -526,7 +530,7 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" WHERE MSGID_PROD=? AND MSGID_SEQ=?"
+literal|" WHERE MSGID_PROD=? AND MSGID_SEQ=? AND CONTAINER=?"
 expr_stmt|;
 block|}
 return|return
@@ -661,6 +665,32 @@ expr_stmt|;
 block|}
 return|return
 name|findLastSequenceIdInMsgsStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getLastProducerSequenceIdStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|lastProducerSequenceIdStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|lastProducerSequenceIdStatement
+operator|=
+literal|"SELECT MAX(MSGID_SEQ) FROM "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" WHERE MSGID_PROD=?"
+expr_stmt|;
+block|}
+return|return
+name|lastProducerSequenceIdStatement
 return|;
 block|}
 specifier|public
@@ -2062,6 +2092,21 @@ operator|.
 name|lastAckedDurableSubscriberMessageStatement
 operator|=
 name|lastAckedDurableSubscriberMessageStatement
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setLastProducerSequenceIdStatement
+parameter_list|(
+name|String
+name|lastProducerSequenceIdStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|lastProducerSequenceIdStatement
+operator|=
+name|lastProducerSequenceIdStatement
 expr_stmt|;
 block|}
 block|}

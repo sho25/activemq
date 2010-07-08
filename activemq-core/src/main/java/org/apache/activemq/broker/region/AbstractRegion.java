@@ -2103,6 +2103,15 @@ throw|;
 block|}
 else|else
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Ack for non existent subscription in recovery, ack:"
+operator|+
+name|ack
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 block|}

@@ -137,6 +137,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|ProducerId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|usage
 operator|.
 name|SystemUsage
@@ -287,6 +301,16 @@ comment|/**      * A hint to return the size of the store on disk      * @return
 name|long
 name|size
 parameter_list|()
+function_decl|;
+comment|/**      * return the last stored producer sequenceId for this producer Id      * used to suppress duplicate sends on failover reconnect at the transport      * when a reconnect occurs      * @param id the producerId to find a sequenceId for      * @return the last stored sequence id or -1 if no suppression needed      */
+name|long
+name|getLastProducerSequenceId
+parameter_list|(
+name|ProducerId
+name|id
+parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 block|}
 end_interface
