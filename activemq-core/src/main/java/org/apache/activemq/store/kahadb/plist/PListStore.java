@@ -1667,7 +1667,7 @@ name|PageFile
 argument_list|(
 name|directory
 argument_list|,
-literal|"scheduleDB"
+literal|"tmpDB"
 argument_list|)
 expr_stmt|;
 name|this
