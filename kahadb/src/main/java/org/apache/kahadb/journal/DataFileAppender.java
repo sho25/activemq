@@ -768,9 +768,6 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
-name|WriteBatch
-name|batch
-decl_stmt|;
 name|WriteCommand
 name|write
 init|=
@@ -784,23 +781,14 @@ argument_list|,
 name|sync
 argument_list|)
 decl_stmt|;
-comment|// Locate datafile and enqueue into the executor in sychronized block so
-comment|// that writes get equeued onto the executor in order that they were
-comment|// assigned
-comment|// by the data manager (which is basically just appending)
-synchronized|synchronized
-init|(
-name|this
-init|)
-block|{
+name|WriteBatch
 name|batch
-operator|=
+init|=
 name|enqueue
 argument_list|(
 name|write
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 name|location
 operator|.
 name|setLatch
@@ -914,9 +902,6 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
-name|WriteBatch
-name|batch
-decl_stmt|;
 name|WriteCommand
 name|write
 init|=
@@ -930,19 +915,14 @@ argument_list|,
 name|onComplete
 argument_list|)
 decl_stmt|;
-synchronized|synchronized
-init|(
-name|this
-init|)
-block|{
+name|WriteBatch
 name|batch
-operator|=
+init|=
 name|enqueue
 argument_list|(
 name|write
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 name|location
 operator|.
 name|setLatch
