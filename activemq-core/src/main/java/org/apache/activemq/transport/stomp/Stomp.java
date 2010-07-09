@@ -201,7 +201,7 @@ name|TYPE
 init|=
 literal|"type"
 decl_stmt|;
-name|Object
+name|String
 name|PERSISTENT
 init|=
 literal|"persistent"
