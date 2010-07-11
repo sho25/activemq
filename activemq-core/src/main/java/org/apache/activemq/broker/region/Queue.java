@@ -2199,6 +2199,15 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|super
+operator|.
+name|addSubscription
+argument_list|(
+name|context
+argument_list|,
+name|sub
+argument_list|)
+expr_stmt|;
 comment|// synchronize with dispatch method so that no new messages are sent
 comment|// while setting up a subscription. avoid out of order messages,
 comment|// duplicates, etc.
@@ -2220,14 +2229,6 @@ name|context
 argument_list|,
 name|this
 argument_list|)
-expr_stmt|;
-name|destinationStatistics
-operator|.
-name|getConsumers
-argument_list|()
-operator|.
-name|increment
-argument_list|()
 expr_stmt|;
 comment|// needs to be synchronized - so no contention with dispatching
 comment|// consumersLock.
@@ -2493,13 +2494,16 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|destinationStatistics
+name|super
 operator|.
-name|getConsumers
-argument_list|()
-operator|.
-name|decrement
-argument_list|()
+name|removeSubscription
+argument_list|(
+name|context
+argument_list|,
+name|sub
+argument_list|,
+name|lastDeiveredSequenceId
+argument_list|)
 expr_stmt|;
 comment|// synchronize with dispatch method so that no new messages are sent
 comment|// while removing up a subscription.
