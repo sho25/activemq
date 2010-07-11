@@ -1234,8 +1234,9 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
+comment|//message expired
 return|return
-literal|false
+literal|true
 return|;
 block|}
 comment|/**      * add message to await dispatch      *       * @param node      */
