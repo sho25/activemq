@@ -3465,7 +3465,7 @@ name|getCount
 argument_list|()
 expr_stmt|;
 name|count
-operator|=
+operator|+=
 name|queueSize
 expr_stmt|;
 if|if
