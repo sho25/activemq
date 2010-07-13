@@ -579,6 +579,13 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
+literal|"should not have redelivery flag set, id: "
+operator|+
+name|msg
+operator|.
+name|getJMSMessageID
+argument_list|()
+argument_list|,
 name|msg
 operator|.
 name|getJMSRedelivered

@@ -4828,6 +4828,8 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"redelivered flag set"
+argument_list|,
 name|msg
 operator|.
 name|getJMSRedelivered
