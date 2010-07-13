@@ -1780,7 +1780,7 @@ name|Entry
 argument_list|<
 name|TransactionId
 argument_list|,
-name|ArrayList
+name|List
 argument_list|<
 name|Operation
 argument_list|>
