@@ -157,7 +157,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Adds a message to the message store      *       * @param context context      * @param message      * @param l       * @return a Future to track when this is complete      * @throws IOException       * @throws IOException      */
+comment|/**      * Adds a message to the message store      *       * @param context context      * @param message      * @return a Future to track when this is complete      * @throws IOException       * @throws IOException      */
 name|Future
 argument_list|<
 name|Object
@@ -173,7 +173,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Adds a message to the message store      *       * @param context context      * @param message      * @param l       * @return a Future to track when this is complete      * @throws IOException       * @throws IOException      */
+comment|/**      * Adds a message to the message store      *       * @param context context      * @param message      * @return a Future to track when this is complete      * @throws IOException       * @throws IOException      */
 name|Future
 argument_list|<
 name|Object

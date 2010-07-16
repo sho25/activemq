@@ -75,6 +75,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashSet
 import|;
 end_import
@@ -3257,7 +3267,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Move all the messages that were in the journal into long term storage. We      * just replay and do a checkpoint.      *       * @throws IOException      * @throws IOException      * @throws InvalidLocationException      * @throws IllegalStateException      */
+comment|/**      * Move all the messages that were in the journal into long term storage. We      * just replay and do a checkpoint.      *       * @throws IOException      * @throws IOException      * @throws IllegalStateException      */
 specifier|private
 name|void
 name|recover
