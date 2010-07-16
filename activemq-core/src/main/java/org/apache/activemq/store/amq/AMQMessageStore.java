@@ -2377,7 +2377,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Batch update done."
+literal|"Batch update done. lastLocation:"
+operator|+
+name|lastLocation
 argument_list|)
 expr_stmt|;
 name|lock
