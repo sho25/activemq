@@ -8550,6 +8550,35 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|/**      * Sets hooks to be executed when broker shut down      *       * @org.apache.xbean.Property      */
+specifier|public
+name|void
+name|setShutdownHooks
+parameter_list|(
+name|List
+argument_list|<
+name|Runnable
+argument_list|>
+name|hooks
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+for|for
+control|(
+name|Runnable
+name|hook
+range|:
+name|hooks
+control|)
+block|{
+name|addShutdownHook
+argument_list|(
+name|hook
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 comment|/**      * Causes a clean shutdown of the container when the VM is being shut down      */
 specifier|protected
 name|void
