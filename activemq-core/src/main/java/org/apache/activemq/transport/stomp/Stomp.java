@@ -157,6 +157,12 @@ name|TRANSFORMATION_ERROR
 init|=
 literal|"transformation-error"
 decl_stmt|;
+comment|/**          * This header is used to instruct ActiveMQ to construct the message          * based with a specific type.          */
+name|String
+name|AMQ_MESSAGE_TYPE
+init|=
+literal|"amq-msg-type"
+decl_stmt|;
 specifier|public
 interface|interface
 name|Response
