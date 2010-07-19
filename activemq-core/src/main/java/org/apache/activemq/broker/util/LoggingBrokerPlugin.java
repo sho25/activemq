@@ -1430,6 +1430,9 @@ argument_list|(
 literal|"Sending message : "
 operator|+
 name|messageSend
+operator|.
+name|copy
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
