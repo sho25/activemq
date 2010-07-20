@@ -57,6 +57,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|BrokerContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|Command
@@ -163,18 +177,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|springframework
-operator|.
-name|context
-operator|.
-name|ApplicationContext
-import|;
-end_import
-
 begin_comment
 comment|/**  * The StompTransportFilter normally sits on top of a TcpTransport that has been  * configured with the StompWireFormat and is used to convert STOMP commands to  * ActiveMQ commands. All of the conversion work is done by delegating to the  * ProtocolConverter.  *   * @author<a href="http://hiramchirino.com">chirino</a>  */
 end_comment
@@ -226,8 +228,8 @@ parameter_list|,
 name|FrameTranslator
 name|translator
 parameter_list|,
-name|ApplicationContext
-name|applicationContext
+name|BrokerContext
+name|brokerContext
 parameter_list|)
 block|{
 name|super
@@ -252,7 +254,7 @@ name|this
 argument_list|,
 name|translator
 argument_list|,
-name|applicationContext
+name|brokerContext
 argument_list|)
 expr_stmt|;
 block|}
