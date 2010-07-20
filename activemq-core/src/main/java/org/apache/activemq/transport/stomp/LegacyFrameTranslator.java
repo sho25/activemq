@@ -1073,7 +1073,7 @@ name|name
 operator|+
 literal|"] -- ActiveMQ STOMP destinations "
 operator|+
-literal|"must begine with one of: /queue/ /topic/ /temp-queue/ /temp-topic/"
+literal|"must begin with one of: /queue/ /topic/ /temp-queue/ /temp-topic/"
 argument_list|)
 throw|;
 block|}
