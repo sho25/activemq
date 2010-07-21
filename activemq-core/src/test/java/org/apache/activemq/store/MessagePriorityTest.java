@@ -820,6 +820,12 @@ argument_list|)
 decl_stmt|;
 name|assertNotNull
 argument_list|(
+literal|"Message "
+operator|+
+name|i
+operator|+
+literal|" was null"
+argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;

@@ -120,6 +120,13 @@ name|statementProvider
 parameter_list|)
 function_decl|;
 name|void
+name|setPrioritizedMessages
+parameter_list|(
+name|boolean
+name|prioritizedMessages
+parameter_list|)
+function_decl|;
+name|void
 name|doCreateTables
 parameter_list|(
 name|TransactionContext
@@ -162,6 +169,9 @@ name|data
 parameter_list|,
 name|long
 name|expiration
+parameter_list|,
+name|byte
+name|priority
 parameter_list|)
 throws|throws
 name|SQLException

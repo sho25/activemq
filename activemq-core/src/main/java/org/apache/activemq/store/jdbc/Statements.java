@@ -209,6 +209,10 @@ name|String
 name|findNextMessagesStatement
 decl_stmt|;
 specifier|private
+name|String
+name|findNextMessagesByPriorityStatement
+decl_stmt|;
+specifier|private
 name|boolean
 name|useLockCreateWhereClause
 decl_stmt|;
@@ -268,6 +272,10 @@ literal|", EXPIRATION "
 operator|+
 name|longDataType
 operator|+
+literal|", PRIORITY "
+operator|+
+name|sequenceDataType
+operator|+
 literal|", MSG "
 operator|+
 operator|(
@@ -315,6 +323,18 @@ name|getFullMessageTableName
 argument_list|()
 operator|+
 literal|" (EXPIRATION)"
+block|,
+literal|"CREATE INDEX "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|"_PIDX ON "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" (PRIORITY)"
 block|,
 literal|"CREATE TABLE "
 operator|+
@@ -452,7 +472,7 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|"(ID, MSGID_PROD, MSGID_SEQ, CONTAINER, EXPIRATION, MSG) VALUES (?, ?, ?, ?, ?, ?)"
+literal|"(ID, MSGID_PROD, MSGID_SEQ, CONTAINER, EXPIRATION, PRIORITY, MSG) VALUES (?, ?, ?, ?, ?, ?, ?)"
 expr_stmt|;
 block|}
 return|return
@@ -1281,6 +1301,33 @@ expr_stmt|;
 block|}
 return|return
 name|findNextMessagesStatement
+return|;
+block|}
+comment|/**      * @return the findNextMessagesStatement      */
+specifier|public
+name|String
+name|getFindNextMessagesByPriorityStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|findNextMessagesByPriorityStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|findNextMessagesByPriorityStatement
+operator|=
+literal|"SELECT ID, MSG FROM "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" WHERE CONTAINER=? ORDER BY PRIORITY DESC, ID"
+expr_stmt|;
+block|}
+return|return
+name|findNextMessagesByPriorityStatement
 return|;
 block|}
 comment|/**      * @return the lastAckedDurableSubscriberMessageStatement      */
