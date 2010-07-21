@@ -305,6 +305,21 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * A hint to the store to try recover messages according to priority      * @param prioritizedMessages      */
+specifier|public
+name|void
+name|setPrioritizedMessages
+parameter_list|(
+name|boolean
+name|prioritizedMessages
+parameter_list|)
+function_decl|;
+comment|/**      *       * @return true if store is trying to recover messages according to priority      */
+specifier|public
+name|boolean
+name|isPrioritizedMessages
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

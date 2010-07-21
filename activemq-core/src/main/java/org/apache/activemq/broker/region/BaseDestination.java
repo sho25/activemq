@@ -2197,6 +2197,21 @@ name|prioritizedMessages
 operator|=
 name|prioritizedMessages
 expr_stmt|;
+if|if
+condition|(
+name|store
+operator|!=
+literal|null
+condition|)
+block|{
+name|store
+operator|.
+name|setPrioritizedMessages
+argument_list|(
+name|prioritizedMessages
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * @return the inactiveTimoutBeforeGC      */
 specifier|public
