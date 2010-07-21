@@ -715,6 +715,20 @@ name|IOException
 throws|,
 name|MalformedObjectNameException
 function_decl|;
+comment|/**      * Returns the slow consumer strategy MBean for this destination      *      * @return the name of the slow consumer handler MBean for this destination      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"returns the optional slowConsumer handler MBeans for this destination"
+argument_list|)
+name|ObjectName
+name|getSlowConsumerStrategy
+parameter_list|()
+throws|throws
+name|IOException
+throws|,
+name|MalformedObjectNameException
+function_decl|;
 block|}
 end_interface
 

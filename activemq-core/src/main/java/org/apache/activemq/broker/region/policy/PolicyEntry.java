@@ -1010,12 +1010,9 @@ condition|)
 block|{
 name|scs
 operator|.
-name|setScheduler
+name|setBrokerService
 argument_list|(
 name|broker
-operator|.
-name|getScheduler
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -2609,9 +2609,17 @@ operator|.
 name|createRemoveCommand
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
 name|LOG
 operator|.
-name|info
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
 argument_list|(
 literal|"remove: "
 operator|+
@@ -2620,11 +2628,12 @@ operator|.
 name|getConsumerId
 argument_list|()
 operator|+
-literal|", lasteDeliveredSequenceId:"
+literal|", lastDeliveredSequenceId:"
 operator|+
 name|lastDeliveredSequenceId
 argument_list|)
 expr_stmt|;
+block|}
 name|removeCommand
 operator|.
 name|setLastDeliveredSequenceId

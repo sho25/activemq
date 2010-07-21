@@ -2082,7 +2082,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Checks an ack versus the contents of the dispatched list.      *       * @param ack      * @param firstAckedMsg      * @param lastAckedMsg      * @throws JMSException if it does not match      */
+comment|/**      * Checks an ack versus the contents of the dispatched list.      *       * @param ack      * @throws JMSException if it does not match      */
 specifier|protected
 name|void
 name|assertAckMatchesDispatched

@@ -2173,6 +2173,17 @@ name|slowConsumerStrategy
 expr_stmt|;
 block|}
 specifier|public
+name|SlowConsumerStrategy
+name|getSlowConsumerStrategy
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|slowConsumerStrategy
+return|;
+block|}
+specifier|public
 name|boolean
 name|isPrioritizedMessages
 parameter_list|()
