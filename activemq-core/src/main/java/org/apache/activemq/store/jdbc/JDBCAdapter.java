@@ -294,6 +294,9 @@ name|subscriptionName
 parameter_list|,
 name|long
 name|seq
+parameter_list|,
+name|long
+name|prio
 parameter_list|)
 throws|throws
 name|SQLException
@@ -338,6 +341,9 @@ name|subscriptionName
 parameter_list|,
 name|long
 name|seq
+parameter_list|,
+name|long
+name|priority
 parameter_list|,
 name|int
 name|maxReturned
@@ -386,6 +392,7 @@ throws|,
 name|IOException
 function_decl|;
 name|long
+index|[]
 name|getStoreSequenceId
 parameter_list|(
 name|TransactionContext

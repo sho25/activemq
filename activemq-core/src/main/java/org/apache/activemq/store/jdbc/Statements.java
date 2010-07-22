@@ -156,6 +156,10 @@ name|findDurableSubMessagesStatement
 decl_stmt|;
 specifier|private
 name|String
+name|findDurableSubMessagesByPriorityStatement
+decl_stmt|;
+specifier|private
+name|String
 name|findAllDestinationsStatement
 decl_stmt|;
 specifier|private
@@ -373,6 +377,10 @@ literal|", LAST_ACKED_ID "
 operator|+
 name|sequenceDataType
 operator|+
+literal|", PRIORITY "
+operator|+
+name|sequenceDataType
+operator|+
 literal|", PRIMARY KEY ( CONTAINER, CLIENT_ID, SUB_NAME))"
 block|,
 literal|"CREATE TABLE "
@@ -545,7 +553,7 @@ condition|)
 block|{
 name|findMessageSequenceIdStatement
 operator|=
-literal|"SELECT ID FROM "
+literal|"SELECT ID, PRIORITY FROM "
 operator|+
 name|getFullMessageTableName
 argument_list|()
@@ -756,9 +764,9 @@ operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
-literal|"(CONTAINER, CLIENT_ID, SUB_NAME, SELECTOR, LAST_ACKED_ID, SUB_DEST) "
+literal|"(CONTAINER, CLIENT_ID, SUB_NAME, SELECTOR, LAST_ACKED_ID, SUB_DEST, PRIORITY) "
 operator|+
-literal|"VALUES (?, ?, ?, ?, ?, ?)"
+literal|"VALUES (?, ?, ?, ?, ?, ?, ?)"
 expr_stmt|;
 block|}
 return|return
@@ -840,7 +848,7 @@ operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
-literal|" SET LAST_ACKED_ID=?"
+literal|" SET LAST_ACKED_ID=?, PRIORITY=?"
 operator|+
 literal|" WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=?"
 expr_stmt|;
@@ -947,6 +955,45 @@ expr_stmt|;
 block|}
 return|return
 name|findDurableSubMessagesStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getFindDurableSubMessagesByPriorityStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|findDurableSubMessagesByPriorityStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|findDurableSubMessagesByPriorityStatement
+operator|=
+literal|"SELECT M.ID, M.MSG FROM "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" M, "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" D "
+operator|+
+literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
+operator|+
+literal|" AND M.CONTAINER=D.CONTAINER AND "
+operator|+
+literal|"((M.ID> ? AND M.PRIORITY = ?) OR M.PRIORITY< ?)"
+operator|+
+literal|" ORDER BY M.PRIORITY DESC, M.ID"
+expr_stmt|;
+block|}
+return|return
+name|findDurableSubMessagesByPriorityStatement
 return|;
 block|}
 specifier|public

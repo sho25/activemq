@@ -1603,6 +1603,9 @@ name|destination
 argument_list|,
 name|messageId
 argument_list|)
+index|[
+literal|0
+index|]
 expr_stmt|;
 block|}
 catch|catch
