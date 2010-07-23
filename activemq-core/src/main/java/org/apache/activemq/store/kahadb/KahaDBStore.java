@@ -5031,6 +5031,8 @@ operator|.
 name|next
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
 name|listener
 operator|.
 name|recoverMessage
@@ -5045,10 +5047,12 @@ operator|.
 name|location
 argument_list|)
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
 name|counter
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|counter

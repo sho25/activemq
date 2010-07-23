@@ -2797,13 +2797,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|s
-operator|.
-name|setMaxRows
-argument_list|(
-name|maxReturned
-argument_list|)
-expr_stmt|;
+comment|// no set max rows as selectors may need to scan more than maxReturned messages to get what they need
 name|s
 operator|.
 name|setString
@@ -2921,10 +2915,6 @@ name|count
 operator|++
 expr_stmt|;
 block|}
-else|else
-block|{
-break|break;
-block|}
 block|}
 block|}
 else|else
@@ -2966,10 +2956,6 @@ block|{
 name|count
 operator|++
 expr_stmt|;
-block|}
-else|else
-block|{
-break|break;
 block|}
 block|}
 block|}

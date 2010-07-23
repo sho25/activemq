@@ -1883,10 +1883,6 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-break|break;
-block|}
 block|}
 else|else
 block|{

@@ -210,13 +210,16 @@ name|hasSpace
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
 name|listener
 operator|.
 name|recoverMessage
 argument_list|(
 name|message
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
 name|lastRecovered
 operator|=
 name|message
@@ -230,6 +233,7 @@ expr_stmt|;
 return|return
 literal|true
 return|;
+block|}
 block|}
 return|return
 literal|false

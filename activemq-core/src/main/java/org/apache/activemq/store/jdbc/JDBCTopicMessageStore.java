@@ -800,13 +800,16 @@ argument_list|(
 name|sequenceId
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|listener
 operator|.
 name|recoverMessage
 argument_list|(
 name|msg
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
 name|finalLast
 operator|.
 name|set
@@ -827,6 +830,7 @@ expr_stmt|;
 return|return
 literal|true
 return|;
+block|}
 block|}
 return|return
 literal|false
