@@ -843,13 +843,9 @@ argument_list|(
 name|queue
 argument_list|)
 decl_stmt|;
-name|camelContext
-operator|.
-name|removeEndpoints
-argument_list|(
-name|queueUri
-argument_list|)
-expr_stmt|;
+comment|// lur cache of endpoints so they will disappear in time
+comment|// this feature needs a new component api - list available endpoints
+comment|//camelContext.removeEndpoints(queueUri);
 block|}
 specifier|protected
 name|void
@@ -943,13 +939,9 @@ argument_list|(
 name|topic
 argument_list|)
 decl_stmt|;
-name|camelContext
-operator|.
-name|removeEndpoints
-argument_list|(
-name|topicUri
-argument_list|)
-expr_stmt|;
+comment|// lur cache of endpoints so they will disappear in time
+comment|// this feature needs a new component api - list available endpoints
+comment|//camelContext.removeEndpoints(topicUri);
 block|}
 block|}
 end_class
