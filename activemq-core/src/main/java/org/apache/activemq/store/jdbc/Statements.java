@@ -276,10 +276,6 @@ literal|", EXPIRATION "
 operator|+
 name|longDataType
 operator|+
-literal|", PRIORITY "
-operator|+
-name|sequenceDataType
-operator|+
 literal|", MSG "
 operator|+
 operator|(
@@ -328,18 +324,6 @@ argument_list|()
 operator|+
 literal|" (EXPIRATION)"
 block|,
-literal|"CREATE INDEX "
-operator|+
-name|getFullMessageTableName
-argument_list|()
-operator|+
-literal|"_PIDX ON "
-operator|+
-name|getFullMessageTableName
-argument_list|()
-operator|+
-literal|" (PRIORITY)"
-block|,
 literal|"CREATE TABLE "
 operator|+
 name|getFullAckTableName
@@ -377,10 +361,6 @@ literal|", LAST_ACKED_ID "
 operator|+
 name|sequenceDataType
 operator|+
-literal|", PRIORITY "
-operator|+
-name|sequenceDataType
-operator|+
 literal|", PRIMARY KEY ( CONTAINER, CLIENT_ID, SUB_NAME))"
 block|,
 literal|"CREATE TABLE "
@@ -408,7 +388,37 @@ name|getFullLockTableName
 argument_list|()
 operator|+
 literal|"(ID) VALUES (1)"
-block|,              }
+block|,
+literal|"ALTER TABLE "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" ADD PRIORITY "
+operator|+
+name|sequenceDataType
+block|,
+literal|"CREATE INDEX "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|"_PIDX ON "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" (PRIORITY)"
+block|,
+literal|"ALTER TABLE "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" ADD PRIORITY "
+operator|+
+name|sequenceDataType
+block|,             }
 expr_stmt|;
 block|}
 return|return
