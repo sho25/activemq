@@ -608,6 +608,13 @@ argument_list|(
 name|list
 argument_list|)
 expr_stmt|;
+name|size
+operator|-=
+name|list
+operator|.
+name|size
+argument_list|()
+expr_stmt|;
 name|list
 operator|.
 name|clear
