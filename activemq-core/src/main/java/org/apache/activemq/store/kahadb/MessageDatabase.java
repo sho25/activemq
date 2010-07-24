@@ -5942,7 +5942,6 @@ operator|.
 name|location
 argument_list|)
 expr_stmt|;
-block|}
 name|recordAckMessageReferenceLocation
 argument_list|(
 name|ackLocation
@@ -5952,6 +5951,7 @@ operator|.
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
