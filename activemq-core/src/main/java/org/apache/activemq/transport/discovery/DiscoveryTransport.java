@@ -354,6 +354,26 @@ argument_list|(
 name|url
 argument_list|)
 decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Adding new broker connection URL: "
+operator|+
+name|uri
+argument_list|)
+expr_stmt|;
+name|uri
+operator|=
+name|URISupport
+operator|.
+name|applyParameters
+argument_list|(
+name|uri
+argument_list|,
+name|parameters
+argument_list|)
+expr_stmt|;
 name|serviceURIs
 operator|.
 name|put
@@ -363,15 +383,6 @@ operator|.
 name|getServiceName
 argument_list|()
 argument_list|,
-name|uri
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Adding new broker connection URL: "
-operator|+
 name|uri
 argument_list|)
 expr_stmt|;
@@ -385,14 +396,7 @@ operator|new
 name|URI
 index|[]
 block|{
-name|URISupport
-operator|.
-name|applyParameters
-argument_list|(
 name|uri
-argument_list|,
-name|parameters
-argument_list|)
 block|}
 argument_list|)
 expr_stmt|;
