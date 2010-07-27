@@ -775,6 +775,27 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+else|else
+block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"no subscribers or duplicate add for: "
+operator|+
+name|messageId
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 finally|finally
 block|{
@@ -1243,6 +1264,14 @@ name|removeMessage
 operator|=
 literal|true
 expr_stmt|;
+comment|// ensure we don't later add a reference
+name|dispatchAudit
+operator|.
+name|isDuplicate
+argument_list|(
+name|messageId
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|LOG
@@ -1260,7 +1289,7 @@ operator|.
 name|getPhysicalName
 argument_list|()
 operator|+
-literal|" remove with no outstanding reference (dup ack): "
+literal|" remove with no outstanding reference (ack before add): "
 operator|+
 name|messageId
 argument_list|)
