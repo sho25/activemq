@@ -1258,13 +1258,43 @@ else|else
 block|{
 name|assertTrue
 argument_list|(
-literal|"we got some duplicates"
+literal|"we can get some duplicates: "
+operator|+
+name|duplicateCount
 argument_list|,
 name|duplicateCount
-operator|>
+operator|>=
 literal|0
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|duplicateCount
+operator|==
+literal|0
+condition|)
+block|{
+name|assertEquals
+argument_list|(
+literal|"got all required messages: "
+operator|+
+name|map
+operator|.
+name|size
+argument_list|()
+argument_list|,
+name|consumer
+operator|.
+name|getNumMessages
+argument_list|()
+argument_list|,
+name|map
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 class|class
