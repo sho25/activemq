@@ -67,18 +67,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ConcurrentHashMap
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -146,6 +134,20 @@ operator|.
 name|discovery
 operator|.
 name|DiscoveryAgent
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|TransportDisposedIOException
 import|;
 end_import
 
@@ -728,6 +730,28 @@ argument_list|(
 name|uri
 argument_list|,
 name|bridge
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|TransportDisposedIOException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Network bridge between: "
+operator|+
+name|localURI
+operator|+
+literal|" and: "
+operator|+
+name|uri
+operator|+
+literal|" was correctly stopped before it was correctly started."
 argument_list|)
 expr_stmt|;
 block|}

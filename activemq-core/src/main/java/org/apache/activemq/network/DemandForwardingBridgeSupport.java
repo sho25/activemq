@@ -1712,6 +1712,15 @@ name|await
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|disposed
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
 try|try
 block|{
 name|triggerRemoteStartBridge
@@ -1755,6 +1764,22 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Bridge was disposed before the start() method was fully executed."
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|TransportDisposedIOException
+argument_list|()
+throw|;
 block|}
 block|}
 block|}
@@ -1970,6 +1995,15 @@ operator|.
 name|await
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|disposed
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
 name|localConnectionInfo
 operator|=
 operator|new
@@ -2127,6 +2161,17 @@ operator|+
 literal|") has been established."
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Bridge was disposed before the startLocalBridge() method was fully executed."
+argument_list|)
+expr_stmt|;
+block|}
 name|startedLatch
 operator|.
 name|countDown
@@ -2137,9 +2182,41 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|disposed
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
 name|setupStaticDestinations
 argument_list|()
 expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Network connection between "
+operator|+
+name|localBroker
+operator|+
+literal|" and "
+operator|+
+name|remoteBroker
+operator|+
+literal|"("
+operator|+
+name|remoteBrokerName
+operator|+
+literal|") was interrupted during establishment."
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -2756,6 +2833,11 @@ name|remoteBrokerName
 operator|+
 literal|" stopped"
 argument_list|)
+expr_stmt|;
+name|remoteBrokerNameKnownLatch
+operator|.
+name|countDown
+argument_list|()
 expr_stmt|;
 block|}
 block|}
