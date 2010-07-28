@@ -779,14 +779,6 @@ name|isDirectory
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|dest
-operator|.
-name|isDirectory
-argument_list|()
-condition|)
-block|{
 name|mkdirs
 argument_list|(
 name|dest
@@ -849,7 +841,6 @@ argument_list|,
 name|target
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
