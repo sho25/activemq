@@ -629,6 +629,8 @@ parameter_list|(
 name|BrokerService
 name|brokerService
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 name|AMQPersistenceAdapterFactory
 name|persistenceFactory
