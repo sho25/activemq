@@ -162,7 +162,7 @@ specifier|final
 name|String
 name|DEFAULT_HOST
 init|=
-literal|"vm://localhost"
+literal|"vm://localhost?create=false"
 decl_stmt|;
 specifier|private
 name|ConnectionManagerAdapter
