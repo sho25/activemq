@@ -337,7 +337,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"@green Unknown type '"
+literal|"@|green Unknown type '"
 operator|+
 name|type
 operator|+
