@@ -555,7 +555,7 @@ argument_list|(
 operator|new
 name|URI
 argument_list|(
-literal|"multicast://default?group=TESTERIC"
+literal|"multicast://default?group=TESTERIC&useLocalHost=false"
 argument_list|)
 argument_list|)
 decl_stmt|;
