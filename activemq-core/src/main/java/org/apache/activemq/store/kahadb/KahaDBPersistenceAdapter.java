@@ -1179,36 +1179,6 @@ name|concurrentStoreAndDispatch
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @return the concurrentStoreAndDispatchTransactions      */
-specifier|public
-name|boolean
-name|isConcurrentStoreAndDispatchTransactions
-parameter_list|()
-block|{
-return|return
-name|letter
-operator|.
-name|isConcurrentStoreAndDispatchTransactions
-argument_list|()
-return|;
-block|}
-comment|/**      * @param concurrentStoreAndDispatchTransactions      *            the concurrentStoreAndDispatchTransactions to set      */
-specifier|public
-name|void
-name|setConcurrentStoreAndDispatchTransactions
-parameter_list|(
-name|boolean
-name|concurrentStoreAndDispatchTransactions
-parameter_list|)
-block|{
-name|letter
-operator|.
-name|setConcurrentStoreAndDispatchTransactions
-argument_list|(
-name|concurrentStoreAndDispatchTransactions
-argument_list|)
-expr_stmt|;
-block|}
 specifier|public
 name|int
 name|getMaxAsyncJobs

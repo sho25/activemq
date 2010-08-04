@@ -1119,7 +1119,7 @@ specifier|private
 name|boolean
 name|concurrentStoreAndDispatchTransactions
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|private
 name|int
@@ -1237,7 +1237,6 @@ operator|=
 name|concurrentStoreAndDispatch
 expr_stmt|;
 block|}
-comment|/**      * @return the concurrentStoreAndDispatchTransactions      */
 specifier|public
 name|boolean
 name|isConcurrentStoreAndDispatchTransactions
@@ -1248,22 +1247,6 @@ name|this
 operator|.
 name|concurrentStoreAndDispatchTransactions
 return|;
-block|}
-comment|/**      * @param concurrentStoreAndDispatchTransactions      *            the concurrentStoreAndDispatchTransactions to set      */
-specifier|public
-name|void
-name|setConcurrentStoreAndDispatchTransactions
-parameter_list|(
-name|boolean
-name|concurrentStoreAndDispatchTransactions
-parameter_list|)
-block|{
-name|this
-operator|.
-name|concurrentStoreAndDispatchTransactions
-operator|=
-name|concurrentStoreAndDispatchTransactions
-expr_stmt|;
 block|}
 comment|/**      * @return the maxAsyncJobs      */
 specifier|public

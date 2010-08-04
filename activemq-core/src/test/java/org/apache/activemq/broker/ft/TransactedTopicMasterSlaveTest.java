@@ -194,13 +194,6 @@ argument_list|(
 name|dir
 argument_list|)
 expr_stmt|;
-name|adapter
-operator|.
-name|setConcurrentStoreAndDispatchTransactions
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 name|broker
 operator|.
 name|start
@@ -353,13 +346,6 @@ operator|.
 name|setDirectory
 argument_list|(
 name|dir
-argument_list|)
-expr_stmt|;
-name|adapter
-operator|.
-name|setConcurrentStoreAndDispatchTransactions
-argument_list|(
-literal|false
 argument_list|)
 expr_stmt|;
 name|BrokerService

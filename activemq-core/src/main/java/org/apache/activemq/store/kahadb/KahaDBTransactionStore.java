@@ -1396,7 +1396,7 @@ return|return
 name|tx
 return|;
 block|}
-comment|/**      * @throws XAException      * @see org.apache.activemq.store.TransactionStore#commit(org.apache.activemq.service.Transaction)      */
+comment|/**      * @see org.apache.activemq.store.TransactionStore#commit(org.apache.activemq.service.Transaction)      */
 specifier|public
 name|void
 name|commit
