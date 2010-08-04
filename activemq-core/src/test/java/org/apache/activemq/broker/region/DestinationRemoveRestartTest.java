@@ -89,6 +89,10 @@ decl_stmt|;
 specifier|public
 name|byte
 name|destinationType
+init|=
+name|ActiveMQDestination
+operator|.
+name|QUEUE_TYPE
 decl_stmt|;
 name|BrokerService
 name|broker
@@ -132,6 +136,13 @@ expr_stmt|;
 name|broker
 operator|.
 name|setPersistent
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
+name|setDeleteAllMessagesOnStartup
 argument_list|(
 literal|true
 argument_list|)
