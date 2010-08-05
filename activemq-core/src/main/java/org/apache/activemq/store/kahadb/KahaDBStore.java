@@ -5162,6 +5162,13 @@ block|{
 break|break;
 block|}
 block|}
+name|sd
+operator|.
+name|orderIndex
+operator|.
+name|stoppedIterating
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|entry
@@ -5181,11 +5188,6 @@ operator|.
 name|copy
 argument_list|()
 decl_stmt|;
-name|copy
-operator|.
-name|increment
-argument_list|()
-expr_stmt|;
 name|sd
 operator|.
 name|subscriptionCursors
