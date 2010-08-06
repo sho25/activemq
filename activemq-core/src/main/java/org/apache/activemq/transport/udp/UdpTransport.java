@@ -443,7 +443,7 @@ specifier|private
 name|boolean
 name|useLocalHost
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|private
 name|int
