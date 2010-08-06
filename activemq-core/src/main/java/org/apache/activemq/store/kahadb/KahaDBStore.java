@@ -4736,6 +4736,13 @@ operator|++
 expr_stmt|;
 block|}
 block|}
+name|sd
+operator|.
+name|orderIndex
+operator|.
+name|resetCursorPosition
+argument_list|()
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
