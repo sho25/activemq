@@ -318,7 +318,7 @@ name|ACTIVEMQ_BROKER_URL
 init|=
 name|ACTIVEMQ_BROKER_BIND
 operator|+
-literal|"?jms.redeliveryPolicy.maximumRedeliveries=1"
+literal|"?jms.redeliveryPolicy.maximumRedeliveries=1&jms.redeliveryPolicy.initialRedeliveryDelay=0"
 decl_stmt|;
 specifier|private
 name|int

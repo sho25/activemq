@@ -4683,7 +4683,7 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// Only increase the redelivery delay after the first redelivery..
+comment|// use initial delay for first redelivery
 name|MessageDispatch
 name|lastMd
 init|=
@@ -4715,10 +4715,20 @@ name|redeliveryDelay
 operator|=
 name|redeliveryPolicy
 operator|.
-name|getRedeliveryDelay
+name|getNextRedeliveryDelay
 argument_list|(
 name|redeliveryDelay
 argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|redeliveryDelay
+operator|=
+name|redeliveryPolicy
+operator|.
+name|getInitialRedeliveryDelay
+argument_list|()
 expr_stmt|;
 block|}
 name|MessageId

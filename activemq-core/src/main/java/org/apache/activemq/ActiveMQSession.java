@@ -2861,7 +2861,10 @@ comment|// this message.
 name|long
 name|redeliveryDelay
 init|=
-literal|0
+name|redeliveryPolicy
+operator|.
+name|getInitialRedeliveryDelay
+argument_list|()
 decl_stmt|;
 for|for
 control|(
@@ -2882,7 +2885,7 @@ name|redeliveryDelay
 operator|=
 name|redeliveryPolicy
 operator|.
-name|getRedeliveryDelay
+name|getNextRedeliveryDelay
 argument_list|(
 name|redeliveryDelay
 argument_list|)
