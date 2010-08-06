@@ -166,7 +166,11 @@ throws|throws
 name|JMSException
 block|{
 return|return
-literal|true
+name|getTransactionContext
+argument_list|()
+operator|.
+name|isInXATransaction
+argument_list|()
 return|;
 block|}
 specifier|public
@@ -250,7 +254,16 @@ name|this
 argument_list|)
 return|;
 block|}
-comment|/**      * This is called before transacted work is done by      * the session.  XA Work can only be done when this      * XA resource is associated with an Xid.      *      * @throws JMSException not associated with an Xid      */
+comment|/*      * when there is no XA transaction it is auto ack      */
+specifier|public
+name|boolean
+name|isAutoAcknowledge
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 specifier|protected
 name|void
 name|doStartTransaction
@@ -258,24 +271,8 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-if|if
-condition|(
-operator|!
-name|getTransactionContext
-argument_list|()
-operator|.
-name|isInXATransaction
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|JMSException
-argument_list|(
-literal|"Session's XAResource has not been enlisted in a distributed transaction."
-argument_list|)
-throw|;
-block|}
+comment|// allow non transactional auto ack work on an XASession
+comment|// Seems ok by the spec that an XAConnection can be used without an XA tx
 block|}
 block|}
 end_class
