@@ -291,20 +291,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|Wait
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|commons
 operator|.
 name|logging
@@ -369,6 +355,16 @@ name|MAX_WAIT_MILLIS
 init|=
 literal|10000
 decl_stmt|;
+interface|interface
+name|Condition
+block|{
+name|boolean
+name|isSatisified
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
+block|}
 comment|/**      * BrokerA -> BrokerB -> BrokerC      */
 specifier|public
 name|void
@@ -395,13 +391,8 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Bridge formation incomplete"
-argument_list|,
 name|waitForBridgeFormation
 argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Setup destination
 name|Destination
@@ -491,13 +482,8 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Bridge formation incomplete"
-argument_list|,
 name|waitForBridgeFormation
 argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Setup destination
 name|Destination
@@ -633,13 +619,8 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Bridge formation incomplete"
-argument_list|,
 name|waitForBridgeFormation
 argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Setup destination
 name|Destination
@@ -832,13 +813,8 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Bridge formation incomplete"
-argument_list|,
 name|waitForBridgeFormation
 argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Setup destination
 name|Destination
@@ -1025,13 +1001,8 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Bridge formation incomplete"
-argument_list|,
 name|waitForBridgeFormation
 argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Setup destination
 name|Destination
@@ -1161,13 +1132,8 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Bridge formation incomplete"
-argument_list|,
 name|waitForBridgeFormation
 argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Setup destination
 name|Destination
@@ -1315,13 +1281,8 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Bridge formation incomplete"
-argument_list|,
 name|waitForBridgeFormation
 argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Setup destination
 name|Destination
@@ -1433,17 +1394,9 @@ argument_list|,
 name|clientC
 argument_list|)
 decl_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Messaged not received within time limit"
-argument_list|,
-name|Wait
-operator|.
 name|waitFor
 argument_list|(
 operator|new
-name|Wait
-operator|.
 name|Condition
 argument_list|()
 block|{
@@ -1462,9 +1415,6 @@ name|MESSAGE_COUNT
 return|;
 block|}
 block|}
-argument_list|,
-name|MAX_WAIT_MILLIS
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1490,6 +1440,73 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// on slow machines some more waiting is required on account of slow advisories
+specifier|private
+name|void
+name|waitFor
+parameter_list|(
+name|Condition
+name|condition
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+specifier|final
+name|long
+name|expiry
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|+
+name|MAX_WAIT_MILLIS
+decl_stmt|;
+while|while
+condition|(
+operator|!
+name|condition
+operator|.
+name|isSatisified
+argument_list|()
+operator|&&
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|<
+name|expiry
+condition|)
+block|{
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|>=
+name|expiry
+condition|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"expired while waiting for condition "
+operator|+
+name|condition
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 specifier|public
 name|void
 name|testAllConnectedUsingMulticastProducerConsumerOnA
@@ -1509,13 +1526,8 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Bridge formation incomplete"
-argument_list|,
 name|waitForBridgeFormation
 argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Setup destination
 name|Destination
@@ -1628,13 +1640,8 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Bridge formation incomplete"
-argument_list|,
 name|waitForBridgeFormation
 argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Setup destination
 name|Destination
@@ -1730,7 +1737,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * This test is disabled - as it fails with a fix for       * http://issues.apache.org/activemq/browse/AMQ-2530 - which highlights that       * For a Conduit bridge - local subscription Ids weren't removed in a ConduitBridge      * The test fails because on closing clientA - clientB correctly receives all the       * messages - ie. half don't get stuck on BrokerA -       */
+comment|/*      * This test is disabled - as it fails with a fix for       * http://issues.apache.org/activemq/browse/AMQ-2530 - which highlights that       * For a Conduit bridge - local subscription Ids weren't removed in a ConduitBridge      * The test fails because on closing clientA - clientB correctly receives all the       * messages - ie. half dont get stuck on BrokerA -       */
 specifier|public
 name|void
 name|XtestMigrateConsumerStuckMessages
@@ -1738,25 +1745,25 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|boolean
+name|suppressQueueDuplicateSubscriptions
+init|=
+literal|false
+decl_stmt|;
 name|bridgeAllBrokers
 argument_list|(
 literal|"default"
 argument_list|,
 literal|3
 argument_list|,
-literal|false
+name|suppressQueueDuplicateSubscriptions
 argument_list|)
 expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Bridge formation incomplete"
-argument_list|,
 name|waitForBridgeFormation
 argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Setup destination
 name|Destination
@@ -2013,13 +2020,8 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Bridge formation incomplete"
-argument_list|,
 name|waitForBridgeFormation
 argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Setup destination
 name|Destination
@@ -2201,13 +2203,8 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Bridge formation incomplete"
-argument_list|,
 name|waitForBridgeFormation
 argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Setup destination
 name|Destination
@@ -2540,13 +2537,8 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
-name|assertTrue
-argument_list|(
-literal|"Bridge formation incomplete"
-argument_list|,
 name|waitForBridgeFormation
 argument_list|()
-argument_list|)
 expr_stmt|;
 end_expr_stmt
 
@@ -2698,13 +2690,8 @@ expr_stmt|;
 name|startAllBrokers
 argument_list|()
 expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Bridge formation incomplete"
-argument_list|,
 name|waitForBridgeFormation
 argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Setup destination
 name|Destination
@@ -2922,17 +2909,9 @@ operator|.
 name|getRegionBroker
 argument_list|()
 decl_stmt|;
-name|assertTrue
-argument_list|(
-literal|"RegionBroker should have at least one destination"
-argument_list|,
-name|Wait
-operator|.
 name|waitFor
 argument_list|(
 operator|new
-name|Wait
-operator|.
 name|Condition
 argument_list|()
 block|{
@@ -2962,9 +2941,6 @@ argument_list|()
 return|;
 block|}
 block|}
-argument_list|,
-name|MAX_WAIT_MILLIS
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|Queue
