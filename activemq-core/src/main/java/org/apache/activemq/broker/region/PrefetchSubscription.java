@@ -1417,7 +1417,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|error
+name|warn
 argument_list|(
 literal|"Could not correlate acknowledgment with dispatched message: "
 operator|+
