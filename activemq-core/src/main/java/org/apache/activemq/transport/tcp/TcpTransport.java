@@ -1375,6 +1375,12 @@ parameter_list|)
 throws|throws
 name|UnknownHostException
 block|{
+if|if
+condition|(
+name|isUseLocalHost
+argument_list|()
+condition|)
+block|{
 name|String
 name|localName
 init|=
@@ -1392,12 +1398,6 @@ name|localName
 operator|!=
 literal|null
 operator|&&
-name|isUseLocalHost
-argument_list|()
-condition|)
-block|{
-if|if
-condition|(
 name|localName
 operator|.
 name|equals
