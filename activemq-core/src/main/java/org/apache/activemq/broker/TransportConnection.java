@@ -1811,13 +1811,13 @@ if|if
 condition|(
 name|TRANSPORTLOG
 operator|.
-name|isDebugEnabled
+name|isInfoEnabled
 argument_list|()
 condition|)
 block|{
 name|TRANSPORTLOG
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"Transport failed: "
 operator|+
