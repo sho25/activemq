@@ -1193,6 +1193,8 @@ name|getChild
 argument_list|(
 name|tx
 argument_list|,
+name|cur
+operator|.
 name|keys
 operator|.
 name|length
