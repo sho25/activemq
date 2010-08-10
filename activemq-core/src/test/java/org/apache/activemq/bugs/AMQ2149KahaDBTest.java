@@ -65,8 +65,24 @@ throws|throws
 name|Exception
 block|{
 comment|// nothing to do as kahaDB is now the default
-comment|//KahaDBPersistenceAdapter kahaDB = (KahaDBPersistenceAdapter) brokerService.getPersistenceAdapter();
-comment|//kahaDB.setConcurrentStoreAndDispatchTopics(true);
+name|KahaDBPersistenceAdapter
+name|kahaDB
+init|=
+operator|(
+name|KahaDBPersistenceAdapter
+operator|)
+name|brokerService
+operator|.
+name|getPersistenceAdapter
+argument_list|()
+decl_stmt|;
+name|kahaDB
+operator|.
+name|setConcurrentStoreAndDispatchTopics
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
