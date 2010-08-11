@@ -149,7 +149,7 @@ literal|"Description: Delete selected destination's messages that matches the me
 block|,
 literal|""
 block|,
-literal|"Browse Options:"
+literal|"Purge Options:"
 block|,
 literal|"    --msgsel<msgsel1,msglsel2>   Add to the search list messages matched by the query similar to"
 block|,
