@@ -188,6 +188,8 @@ literal|"    browse          - Display selected messages in a specified destinat
 block|,
 literal|"    journal-audit   - Allows you to view records stored in the persistent journal."
 block|,
+literal|"    purge           - Delete selected destination's messages that matches the message selector"
+block|,
 literal|""
 block|,
 literal|"Task Options (Options specific to each task):"
