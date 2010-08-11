@@ -705,6 +705,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|priority
+operator|=
 name|Math
 operator|.
 name|max
