@@ -412,7 +412,7 @@ argument_list|>
 argument_list|(
 name|URISupport
 operator|.
-name|parseParamters
+name|parseParameters
 argument_list|(
 name|location
 argument_list|)

@@ -147,7 +147,7 @@ name|options
 init|=
 name|URISupport
 operator|.
-name|parseParamters
+name|parseParameters
 argument_list|(
 name|uri
 argument_list|)

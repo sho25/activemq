@@ -817,7 +817,7 @@ name|parameters
 init|=
 name|URISupport
 operator|.
-name|parseParamters
+name|parseParameters
 argument_list|(
 name|discoveredServiceURI
 argument_list|)
