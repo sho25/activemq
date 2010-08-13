@@ -1623,6 +1623,9 @@ name|add
 argument_list|(
 name|dir
 operator|.
+name|toURI
+argument_list|()
+operator|.
 name|toURL
 argument_list|()
 argument_list|)
@@ -1798,6 +1801,9 @@ name|files
 index|[
 name|j
 index|]
+operator|.
+name|toURI
+argument_list|()
 operator|.
 name|toURL
 argument_list|()
