@@ -129,6 +129,11 @@ name|engineType
 init|=
 name|INNODB
 decl_stmt|;
+name|String
+name|typeStatement
+init|=
+literal|"ENGINE"
+decl_stmt|;
 specifier|public
 name|void
 name|setStatements
@@ -190,7 +195,9 @@ expr_stmt|;
 name|String
 name|typeClause
 init|=
-literal|" TYPE="
+name|typeStatement
+operator|+
+literal|"="
 operator|+
 name|type
 decl_stmt|;
@@ -207,7 +214,9 @@ block|{
 comment|// in the NDBCLUSTER case we will create as INNODB and then alter to NDBCLUSTER
 name|typeClause
 operator|=
-literal|" TYPE="
+name|typeStatement
+operator|+
+literal|"="
 operator|+
 name|INNODB
 expr_stmt|;
@@ -261,6 +270,8 @@ name|s
 index|[
 name|i
 index|]
+operator|+
+literal|" "
 operator|+
 name|typeClause
 expr_stmt|;
@@ -406,6 +417,30 @@ operator|.
 name|engineType
 operator|=
 name|engineType
+expr_stmt|;
+block|}
+specifier|public
+name|String
+name|getTypeStatement
+parameter_list|()
+block|{
+return|return
+name|typeStatement
+return|;
+block|}
+specifier|public
+name|void
+name|setTypeStatement
+parameter_list|(
+name|String
+name|typeStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|typeStatement
+operator|=
+name|typeStatement
 expr_stmt|;
 block|}
 block|}
