@@ -1648,6 +1648,12 @@ argument_list|(
 name|txid
 argument_list|)
 decl_stmt|;
+comment|// ensure message order w.r.t to cursor and store for setBatch()
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 name|theStore
 operator|.
 name|store
@@ -1668,6 +1674,7 @@ argument_list|,
 name|postCommit
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else

@@ -1143,6 +1143,12 @@ expr_stmt|;
 block|}
 return|return;
 block|}
+comment|// ensure message order w.r.t to cursor and store for setBatch()
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 name|tx
 operator|.
 name|commit
@@ -1160,6 +1166,7 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * @see org.apache.activemq.store.TransactionStore#rollback(TransactionId)      */
