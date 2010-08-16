@@ -426,6 +426,15 @@ name|boolean
 name|isSlowConsumer
 parameter_list|()
 function_decl|;
+name|void
+name|unmatched
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 block|}
 end_interface
 

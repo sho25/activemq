@@ -1115,6 +1115,18 @@ name|getPrefetchSize
 argument_list|()
 return|;
 block|}
+specifier|public
+name|void
+name|unmatched
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+comment|// only durable topic subs have something to do here
+block|}
 specifier|protected
 name|void
 name|doAddRecoveredMessage

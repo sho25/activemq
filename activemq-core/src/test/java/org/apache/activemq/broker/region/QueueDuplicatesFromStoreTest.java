@@ -1335,6 +1335,16 @@ return|return
 literal|false
 return|;
 block|}
+specifier|public
+name|void
+name|unmatched
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|)
+throws|throws
+name|IOException
+block|{             }
 block|}
 decl_stmt|;
 name|queue
