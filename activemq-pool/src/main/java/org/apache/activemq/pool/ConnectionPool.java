@@ -266,22 +266,6 @@ operator|.
 name|this
 init|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"HasFaile=true on :"
-operator|+
-name|error
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|dumpStack
-argument_list|()
-expr_stmt|;
 name|hasFailed
 operator|=
 literal|true
