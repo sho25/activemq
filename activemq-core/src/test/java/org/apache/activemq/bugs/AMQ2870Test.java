@@ -358,7 +358,6 @@ name|getStorePercentUsage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Failo
 for|for
 control|(
 name|int
