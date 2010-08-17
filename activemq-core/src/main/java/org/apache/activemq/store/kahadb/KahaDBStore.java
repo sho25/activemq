@@ -1109,11 +1109,13 @@ name|concurrentStoreAndDispatchQueues
 init|=
 literal|true
 decl_stmt|;
+comment|// when true, message order may be compromised when cache is exhausted if store is out
+comment|// or order w.r.t cache
 specifier|private
 name|boolean
 name|concurrentStoreAndDispatchTopics
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|private
 name|boolean

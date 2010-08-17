@@ -29,22 +29,6 @@ name|BrokerService
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|store
-operator|.
-name|kahadb
-operator|.
-name|KahaDBPersistenceAdapter
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -64,25 +48,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// nothing to do as kahaDB is now the default
-name|KahaDBPersistenceAdapter
-name|kahaDB
-init|=
-operator|(
-name|KahaDBPersistenceAdapter
-operator|)
-name|brokerService
-operator|.
-name|getPersistenceAdapter
-argument_list|()
-decl_stmt|;
-name|kahaDB
-operator|.
-name|setConcurrentStoreAndDispatchTopics
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
+comment|// nothing to do as kahaDB is now the default and concurrent store and dispatch topics defaults to false
 block|}
 block|}
 end_class
