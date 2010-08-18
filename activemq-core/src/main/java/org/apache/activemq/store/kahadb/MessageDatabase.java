@@ -5895,6 +5895,17 @@ argument_list|,
 name|previous
 argument_list|)
 expr_stmt|;
+name|sd
+operator|.
+name|locationIndex
+operator|.
+name|remove
+argument_list|(
+name|tx
+argument_list|,
+name|location
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 else|else
