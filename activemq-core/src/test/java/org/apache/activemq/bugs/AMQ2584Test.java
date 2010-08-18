@@ -362,7 +362,10 @@ operator|new
 name|Object
 index|[]
 block|{
-comment|// PersistenceAdapterChoice.AMQ,
+name|PersistenceAdapterChoice
+operator|.
+name|AMQ
+block|,
 name|PersistenceAdapterChoice
 operator|.
 name|KahaDB
