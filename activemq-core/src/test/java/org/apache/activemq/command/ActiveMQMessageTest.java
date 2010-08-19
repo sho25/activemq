@@ -2085,7 +2085,7 @@ expr_stmt|;
 name|String
 name|name2
 init|=
-literal|"intProperty"
+literal|"JMSXDeliveryCount"
 decl_stmt|;
 name|msg
 operator|.
