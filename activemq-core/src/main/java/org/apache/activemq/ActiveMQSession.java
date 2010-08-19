@@ -1224,13 +1224,6 @@ name|connection
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|connection
-operator|.
-name|addSession
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
 name|stats
 operator|=
 operator|new
@@ -1290,6 +1283,13 @@ name|executor
 operator|=
 operator|new
 name|ActiveMQSessionExecutor
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|addSession
 argument_list|(
 name|this
 argument_list|)
