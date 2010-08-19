@@ -2085,13 +2085,13 @@ expr_stmt|;
 name|String
 name|name2
 init|=
-literal|"JMSXDeliveryCount"
+literal|"intProperty"
 decl_stmt|;
 name|msg
 operator|.
 name|setIntProperty
 argument_list|(
-literal|"name2"
+name|name2
 argument_list|,
 literal|1
 argument_list|)

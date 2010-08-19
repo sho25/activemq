@@ -1263,23 +1263,7 @@ name|keySet
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|result
-operator|.
-name|addAll
-argument_list|(
-operator|new
-name|Vector
-argument_list|<
-name|String
-argument_list|>
-argument_list|(
-name|JMS_PROPERTY_SETERS
-operator|.
-name|keySet
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// omit stand jms props are per spec
 return|return
 name|result
 operator|.
