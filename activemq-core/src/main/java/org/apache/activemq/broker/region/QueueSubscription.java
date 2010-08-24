@@ -300,8 +300,10 @@ name|isExpired
 argument_list|()
 condition|)
 block|{
+comment|// sync with message expiry processing
 if|if
 condition|(
+operator|!
 name|broker
 operator|.
 name|isExpired
@@ -310,23 +312,9 @@ name|n
 argument_list|)
 condition|)
 block|{
-name|queue
-operator|.
-name|messageExpired
-argument_list|(
-name|context
-argument_list|,
-name|this
-argument_list|,
-name|node
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|LOG
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"ignoring ack "
 operator|+
@@ -337,8 +325,8 @@ operator|+
 name|n
 argument_list|)
 expr_stmt|;
-block|}
 return|return;
+block|}
 block|}
 name|queue
 operator|.
