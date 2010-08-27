@@ -124,11 +124,16 @@ name|HttpsTransportServer
 parameter_list|(
 name|URI
 name|uri
+parameter_list|,
+name|HttpsTransportFactory
+name|factory
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|uri
+argument_list|,
+name|factory
 argument_list|)
 expr_stmt|;
 block|}

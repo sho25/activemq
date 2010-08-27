@@ -134,6 +134,8 @@ operator|new
 name|HttpsTransportServer
 argument_list|(
 name|location
+argument_list|,
+name|this
 argument_list|)
 return|;
 block|}
@@ -152,6 +154,8 @@ operator|new
 name|HttpsTransportServer
 argument_list|(
 name|location
+argument_list|,
+name|this
 argument_list|)
 return|;
 block|}

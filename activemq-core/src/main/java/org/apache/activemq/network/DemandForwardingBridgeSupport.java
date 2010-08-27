@@ -945,7 +945,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|DemandForwardingBridge
+name|DemandForwardingBridgeSupport
 operator|.
 name|class
 argument_list|)
@@ -3489,6 +3489,33 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
+break|break;
+case|case
+name|ShutdownInfo
+operator|.
+name|DATA_STRUCTURE_TYPE
+case|:
+comment|// initiator is shutting down, controlled case
+comment|// abortive close dealt with by inactivity monitor
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Stopping network bridge on shutdown of remote broker"
+argument_list|)
+expr_stmt|;
+name|serviceRemoteException
+argument_list|(
+operator|new
+name|IOException
+argument_list|(
+name|command
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 break|break;
 default|default:
 if|if
