@@ -5018,7 +5018,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"testWaitForMissingRedeliveries()"
+literal|"testPoisonOnDeliveryWhilePending()"
 argument_list|)
 expr_stmt|;
 name|broker
@@ -5151,6 +5151,24 @@ argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
+comment|// add another consumer into the mix that may get the message after restart
+name|MessageConsumer
+name|consumer2
+init|=
+name|consumerSession
+operator|.
+name|createConsumer
+argument_list|(
+name|consumerSession
+operator|.
+name|createQueue
+argument_list|(
+name|QUEUE_NAME
+operator|+
+literal|"?consumer.prefetchSize=1"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|broker
 operator|.
 name|stop
@@ -5178,9 +5196,22 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-comment|// with prefetch=0, it will not get redelivered as there will not be another receive
-comment|// for this consumer. so it will block till it timeout with an exception
-comment|// will block pending re-deliveries
+specifier|final
+name|Vector
+argument_list|<
+name|Exception
+argument_list|>
+name|exceptions
+init|=
+operator|new
+name|Vector
+argument_list|<
+name|Exception
+argument_list|>
+argument_list|()
+decl_stmt|;
+comment|// commit may fail if other consumer gets the message on restart, it will be seen a a duplicate on teh connection
+comment|// but with no transaciton and it pending on another consumer it will be posion
 name|Executors
 operator|.
 name|newSingleThreadExecutor
@@ -5215,8 +5246,18 @@ block|}
 catch|catch
 parameter_list|(
 name|JMSException
-name|ignored
+name|ex
 parameter_list|)
+block|{
+name|exceptions
+operator|.
+name|add
+argument_list|(
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+finally|finally
 block|{
 name|commitDone
 operator|.
@@ -5228,27 +5269,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|// pull the pending message to this consumer where it will be poison as it is a duplicate without a tx
-name|MessageConsumer
-name|consumer2
-init|=
-name|consumerSession
-operator|.
-name|createConsumer
-argument_list|(
-name|consumerSession
-operator|.
-name|createQueue
-argument_list|(
-name|QUEUE_NAME
-operator|+
-literal|"?consumer.prefetchSize=1"
-argument_list|)
-argument_list|)
-decl_stmt|;
 name|assertNull
 argument_list|(
-literal|"consumer2 not get a message while pending to 1"
+literal|"consumer2 not get a message while pending to 1 or consumed by 1"
 argument_list|,
 name|consumer2
 operator|.
@@ -5260,7 +5283,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"commit completed with ex"
+literal|"commit completed "
 argument_list|,
 name|commitDone
 operator|.
@@ -5274,9 +5297,11 @@ name|SECONDS
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// either message consumed or sent to dlq via poison on redelivery to wrong consumer
+comment|// message should not be available again in any event
 name|assertNull
 argument_list|(
-literal|"consumer should not get rolledback and non redelivered message"
+literal|"consumer should not get rolledback on non redelivered message or duplicate"
 argument_list|,
 name|consumer
 operator|.
@@ -5286,6 +5311,19 @@ literal|5000
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// consumer replay is hashmap order dependent on a failover connection state recover so need to deal with both cases
+if|if
+condition|(
+name|exceptions
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+comment|// commit succeeded, message was redelivered to the correct consumer after restart so commit was fine
+block|}
+else|else
+block|{
 comment|// message should be in dlq
 name|MessageConsumer
 name|dlqConsumer
@@ -5339,6 +5377,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+block|}
 name|connection
 operator|.
 name|close
