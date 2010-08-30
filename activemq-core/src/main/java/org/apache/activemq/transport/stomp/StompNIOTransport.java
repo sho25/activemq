@@ -318,7 +318,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the {@link Transport} interface for using Stomp over NIO  *   * @version $Revision$  */
+comment|/**  * An implementation of the {@link Transport} interface for using Stomp over NIO  *  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -855,6 +855,10 @@ condition|)
 block|{
 name|processCommand
 argument_list|()
+expr_stmt|;
+name|readLength
+operator|=
+literal|0
 expr_stmt|;
 block|}
 else|else
