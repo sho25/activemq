@@ -444,6 +444,12 @@ literal|"conf/jetty.xml"
 block|}
 block|,
 block|{
+literal|"conf/jetty-realm.properties"
+block|,
+literal|"conf/jetty-realm.properties"
+block|}
+block|,
+block|{
 literal|"conf/credentials.properties"
 block|,
 literal|"conf/credentials.properties"
