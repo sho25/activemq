@@ -314,6 +314,8 @@ argument_list|)
 expr_stmt|;
 comment|// Sync on transaction store to avoid out of order messages in the cursor
 comment|// https://issues.apache.org/activemq/browse/AMQ-2594
+try|try
+block|{
 name|transactionStore
 operator|.
 name|commit
@@ -335,6 +337,53 @@ argument_list|(
 name|postCommitTask
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|t
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Store COMMIT FAILED: "
+argument_list|,
+name|t
+argument_list|)
+expr_stmt|;
+name|rollback
+argument_list|()
+expr_stmt|;
+name|XAException
+name|xae
+init|=
+operator|new
+name|XAException
+argument_list|(
+literal|"STORE COMMIT FAILED: Transaction rolled back."
+argument_list|)
+decl_stmt|;
+name|xae
+operator|.
+name|errorCode
+operator|=
+name|XAException
+operator|.
+name|XA_RBOTHER
+expr_stmt|;
+name|xae
+operator|.
+name|initCause
+argument_list|(
+name|t
+argument_list|)
+expr_stmt|;
+throw|throw
+name|xae
+throw|;
+block|}
 block|}
 annotation|@
 name|Override
