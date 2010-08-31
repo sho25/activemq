@@ -865,7 +865,7 @@ specifier|public
 name|void
 name|setRedeliveryBackOffMultiplier
 parameter_list|(
-name|Short
+name|Double
 name|value
 parameter_list|)
 block|{

@@ -749,7 +749,7 @@ specifier|public
 name|void
 name|setRedeliveryBackOffMultiplier
 parameter_list|(
-name|Short
+name|Double
 name|value
 parameter_list|)
 block|{
@@ -766,9 +766,6 @@ operator|.
 name|setBackOffMultiplier
 argument_list|(
 name|value
-operator|.
-name|shortValue
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
