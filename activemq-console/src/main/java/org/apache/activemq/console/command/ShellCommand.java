@@ -190,6 +190,10 @@ literal|"    journal-audit   - Allows you to view records stored in the persiste
 block|,
 literal|"    purge           - Delete selected destination's messages that matches the message selector"
 block|,
+literal|"    encrypt         - Encrypts given text"
+block|,
+literal|"    decrypt         - Decrypts given text"
+block|,
 literal|""
 block|,
 literal|"Task Options (Options specific to each task):"
@@ -547,6 +551,42 @@ name|command
 operator|=
 operator|new
 name|AMQJournalToolCommand
+argument_list|()
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|taskToken
+operator|.
+name|equals
+argument_list|(
+literal|"encrypt"
+argument_list|)
+condition|)
+block|{
+name|command
+operator|=
+operator|new
+name|EncryptCommand
+argument_list|()
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|taskToken
+operator|.
+name|equals
+argument_list|(
+literal|"decrypt"
+argument_list|)
+condition|)
+block|{
+name|command
+operator|=
+operator|new
+name|DecryptCommand
 argument_list|()
 expr_stmt|;
 block|}
