@@ -1909,6 +1909,19 @@ operator|new
 name|MessageRecoveryListener
 argument_list|()
 block|{
+name|double
+name|totalMessageCount
+init|=
+name|store
+operator|.
+name|getMessageCount
+argument_list|()
+decl_stmt|;
+name|int
+name|recoveredMessageCount
+init|=
+literal|0
+decl_stmt|;
 specifier|public
 name|boolean
 name|recoverMessage
@@ -1919,6 +1932,51 @@ parameter_list|)
 block|{
 comment|// Message could have expired while it was being
 comment|// loaded..
+if|if
+condition|(
+operator|(
+operator|++
+name|recoveredMessageCount
+operator|%
+literal|50000
+operator|)
+operator|==
+literal|0
+condition|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"cursor for "
+operator|+
+name|getActiveMQDestination
+argument_list|()
+operator|.
+name|getQualifiedName
+argument_list|()
+operator|+
+literal|" has recovered "
+operator|+
+name|recoveredMessageCount
+operator|+
+literal|" messages. "
+operator|+
+call|(
+name|int
+call|)
+argument_list|(
+name|recoveredMessageCount
+operator|*
+literal|100
+operator|/
+name|totalMessageCount
+argument_list|)
+operator|+
+literal|"% complete"
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|message
