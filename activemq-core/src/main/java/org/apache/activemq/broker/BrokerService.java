@@ -2559,9 +2559,36 @@ expr_stmt|;
 block|}
 comment|// Service interface
 comment|// -------------------------------------------------------------------------
+specifier|protected
+name|boolean
+name|shouldAutostart
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 comment|/**      *      * @throws Exception      * @org. apache.xbean.InitMethod      */
 annotation|@
 name|PostConstruct
+specifier|public
+name|void
+name|autoStart
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+if|if
+condition|(
+name|shouldAutostart
+argument_list|()
+condition|)
+block|{
+name|start
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 specifier|public
 name|void
 name|start
