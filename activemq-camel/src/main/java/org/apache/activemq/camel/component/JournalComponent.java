@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The<a href="http://activemq.apache.org/camel/activemq.html">ActiveMQ Component</a>  *  * @version $Revision$  */
+comment|/**  * The<a href="http://camel.apache.org/activemq-journal.html">ActiveMQ Journal Component</a>  *  * @version $Revision$  */
 end_comment
 
 begin_class

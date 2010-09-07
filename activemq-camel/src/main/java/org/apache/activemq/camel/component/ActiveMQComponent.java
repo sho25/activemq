@@ -148,7 +148,7 @@ specifier|private
 name|CamelEndpointLoader
 name|endpointLoader
 decl_stmt|;
-comment|/**      * Creates an<a href="http://activemq.apache.org/camel/activemq.html">ActiveMQ Component</a>      *      * @return the created component      */
+comment|/**      * Creates an<a href="http://camel.apache.org/activemq.html">ActiveMQ Component</a>      *      * @return the created component      */
 specifier|public
 specifier|static
 name|ActiveMQComponent
@@ -161,7 +161,7 @@ name|ActiveMQComponent
 argument_list|()
 return|;
 block|}
-comment|/**      * Creates an<a href="http://activemq.apache.org/camel/activemq.html">ActiveMQ Component</a>      * connecting to the given<a href="http://activemq.apache.org/configuring-transports.html">broker URL</a>      *      * @param brokerURL the URL to connect to      * @return the created component      */
+comment|/**      * Creates an<a href="http://camel.apache.org/activemq.html">ActiveMQ Component</a>      * connecting to the given<a href="http://activemq.apache.org/configuring-transports.html">broker URL</a>      *      * @param brokerURL the URL to connect to      * @return the created component      */
 specifier|public
 specifier|static
 name|ActiveMQComponent
