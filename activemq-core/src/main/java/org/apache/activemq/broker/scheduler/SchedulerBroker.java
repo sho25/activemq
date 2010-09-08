@@ -521,6 +521,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|getInternalScheduler
+argument_list|()
+expr_stmt|;
 name|super
 operator|.
 name|start
