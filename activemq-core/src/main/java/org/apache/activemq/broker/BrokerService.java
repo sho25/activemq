@@ -10123,9 +10123,7 @@ operator|=
 operator|new
 name|File
 argument_list|(
-name|IOHelper
-operator|.
-name|getDefaultDataDirectory
+name|getBrokerDataDirectory
 argument_list|()
 argument_list|,
 literal|"scheduler"
