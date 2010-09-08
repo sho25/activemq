@@ -211,6 +211,20 @@ name|JMSExceptionSupport
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|wireformat
+operator|.
+name|WireFormat
+import|;
+end_import
+
 begin_comment
 comment|/**  * An<CODE>ObjectMessage</CODE> object is used to send a message that  * contains a serializable object in the Java programming language ("Java  * object"). It inherits from the<CODE>Message</CODE> interface and adds a  * body containing a single reference to an object. Only  *<CODE>Serializable</CODE> Java objects can be used.<p/>  *<P>  * If a collection of Java objects must be sent, one of the  *<CODE>Collection</CODE> classes provided since JDK 1.2 can be used.<p/>  *<P>  * When a client receives an<CODE>ObjectMessage</CODE>, it is in read-only  * mode. If a client attempts to write to the message at this point, a  *<CODE>MessageNotWriteableException</CODE> is thrown. If  *<CODE>clearBody</CODE> is called, the message can now be both read from and  * written to.  *   * @openwire:marshaller code="26"  * @see javax.jms.Session#createObjectMessage()  * @see javax.jms.Session#createObjectMessage(Serializable)  * @see javax.jms.BytesMessage  * @see javax.jms.MapMessage  * @see javax.jms.Message  * @see javax.jms.StreamMessage  * @see javax.jms.TextMessage  */
 end_comment
@@ -687,6 +701,30 @@ name|this
 operator|.
 name|object
 return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|beforeMarshall
+parameter_list|(
+name|WireFormat
+name|wireFormat
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|super
+operator|.
+name|beforeMarshall
+argument_list|(
+name|wireFormat
+argument_list|)
+expr_stmt|;
+comment|// may have initiated on vm transport with deferred marshalling
+name|storeContent
+argument_list|()
+expr_stmt|;
 block|}
 specifier|public
 name|void
