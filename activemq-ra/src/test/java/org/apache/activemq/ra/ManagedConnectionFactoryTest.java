@@ -230,7 +230,7 @@ specifier|final
 name|String
 name|DEFAULT_HOST
 init|=
-literal|"vm://localhost?broker.persistent=false"
+literal|"vm://localhost?broker.persistent=false&broker.schedulerSupport=false"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -238,7 +238,7 @@ specifier|final
 name|String
 name|REMOTE_HOST
 init|=
-literal|"vm://remotehost?broker.persistent=false"
+literal|"vm://remotehost?broker.persistent=false&broker.schedulerSupport=false"
 decl_stmt|;
 specifier|private
 name|ActiveMQManagedConnectionFactory
