@@ -583,6 +583,11 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+name|broker
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
 block|}
 specifier|public
 name|void
