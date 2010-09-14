@@ -867,9 +867,17 @@ parameter_list|()
 block|{
 try|try
 block|{
+if|if
+condition|(
+name|consumers
+operator|!=
+literal|null
+condition|)
+block|{
 name|closeConsumers
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|connection
