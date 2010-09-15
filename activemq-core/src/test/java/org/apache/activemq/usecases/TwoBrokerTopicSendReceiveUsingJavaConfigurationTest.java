@@ -85,6 +85,13 @@ argument_list|()
 expr_stmt|;
 name|receiveBroker
 operator|.
+name|setBrokerName
+argument_list|(
+literal|"receiveBroker"
+argument_list|)
+expr_stmt|;
+name|receiveBroker
+operator|.
 name|setUseJmx
 argument_list|(
 literal|false
@@ -159,6 +166,13 @@ operator|=
 operator|new
 name|BrokerService
 argument_list|()
+expr_stmt|;
+name|sendBroker
+operator|.
+name|setBrokerName
+argument_list|(
+literal|"sendBroker"
+argument_list|)
 expr_stmt|;
 name|sendBroker
 operator|.
