@@ -1426,6 +1426,14 @@ argument_list|)
 expr_stmt|;
 name|connection
 operator|.
+name|setCloseTimeout
+argument_list|(
+name|getCloseTimeout
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
 name|setSendAcksAsync
 argument_list|(
 name|isSendAcksAsync
