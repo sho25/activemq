@@ -489,6 +489,13 @@ argument_list|)
 expr_stmt|;
 name|policy
 operator|.
+name|setRedeliveryDelay
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|policy
+operator|.
 name|setInitialRedeliveryDelay
 argument_list|(
 literal|0
