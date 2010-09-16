@@ -365,6 +365,10 @@ name|VariableMarshaller
 import|;
 end_import
 
+begin_comment
+comment|/**  * @org.apache.xbean.XBean  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -494,6 +498,23 @@ name|PList
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|final
+name|Object
+name|indexLock
+init|=
+operator|new
+name|Object
+argument_list|()
+decl_stmt|;
+specifier|public
+name|Object
+name|getIndexLock
+parameter_list|()
+block|{
+return|return
+name|indexLock
+return|;
+block|}
 specifier|protected
 class|class
 name|MetaData
@@ -1256,6 +1277,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+specifier|synchronized
 specifier|public
 name|PList
 name|getPList
