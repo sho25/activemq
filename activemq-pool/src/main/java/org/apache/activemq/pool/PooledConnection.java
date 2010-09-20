@@ -657,6 +657,7 @@ return|;
 block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
+specifier|public
 name|ActiveMQConnection
 name|getConnection
 parameter_list|()
