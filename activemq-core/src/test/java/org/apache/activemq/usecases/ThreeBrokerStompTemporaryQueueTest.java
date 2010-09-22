@@ -259,6 +259,9 @@ name|networkTTL
 parameter_list|,
 name|boolean
 name|conduit
+parameter_list|,
+name|boolean
+name|failover
 parameter_list|)
 throws|throws
 name|Exception
