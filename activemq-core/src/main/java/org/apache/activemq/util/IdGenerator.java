@@ -37,6 +37,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicLong
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -108,8 +122,18 @@ name|String
 name|seed
 decl_stmt|;
 specifier|private
-name|long
+name|AtomicLong
 name|sequence
+init|=
+operator|new
+name|AtomicLong
+argument_list|(
+literal|1
+argument_list|)
+decl_stmt|;
+specifier|private
+name|int
+name|length
 decl_stmt|;
 static|static
 block|{
@@ -283,6 +307,28 @@ operator|)
 operator|+
 literal|":"
 expr_stmt|;
+name|this
+operator|.
+name|length
+operator|=
+name|this
+operator|.
+name|seed
+operator|.
+name|length
+argument_list|()
+operator|+
+operator|(
+literal|""
+operator|+
+name|Long
+operator|.
+name|MAX_VALUE
+operator|)
+operator|.
+name|length
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 specifier|public
@@ -297,7 +343,7 @@ name|hostName
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * As we have to find the hostname as a side-affect of generating a unique      * stub, we allow it's easy retrevial here      *       * @return the local host name      */
+comment|/**      * As we have to find the hostname as a side-affect of generating a unique      * stub, we allow it's easy retrevial here      *      * @return the local host name      */
 specifier|public
 specifier|static
 name|String
@@ -308,27 +354,47 @@ return|return
 name|hostName
 return|;
 block|}
-comment|/**      * Generate a unqiue id      *       * @return a unique id      */
+comment|/**      * Generate a unqiue id      *      * @return a unique id      */
 specifier|public
 specifier|synchronized
 name|String
 name|generateId
 parameter_list|()
 block|{
-return|return
-name|this
+name|StringBuilder
+name|sb
+init|=
+operator|new
+name|StringBuilder
+argument_list|(
+name|length
+argument_list|)
+decl_stmt|;
+name|sb
 operator|.
+name|append
+argument_list|(
 name|seed
-operator|+
-operator|(
-name|this
+argument_list|)
+expr_stmt|;
+name|sb
 operator|.
+name|append
+argument_list|(
 name|sequence
-operator|++
-operator|)
+operator|.
+name|getAndIncrement
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+name|sb
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
-comment|/**      * Generate a unique ID - that is friendly for a URL or file system      *       * @return a unique id      */
+comment|/**      * Generate a unique ID - that is friendly for a URL or file system      *      * @return a unique id      */
 specifier|public
 name|String
 name|generateSanitizedId
@@ -377,7 +443,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * From a generated id - return the seed (i.e. minus the count)      *       * @param id the generated identifer      * @return the seed      */
+comment|/**      * From a generated id - return the seed (i.e. minus the count)      *      * @param id the generated identifer      * @return the seed      */
 specifier|public
 specifier|static
 name|String
@@ -446,7 +512,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * From a generated id - return the generator count      *       * @param id      * @return the count      */
+comment|/**      * From a generated id - return the generator count      *      * @param id      * @return the count      */
 specifier|public
 specifier|static
 name|long
@@ -529,7 +595,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Does a proper compare on the ids      *       * @param id1      * @param id2      * @return 0 if equal else a positive if id1 is> id2 ...      */
+comment|/**      * Does a proper compare on the ids      *      * @param id1      * @param id2      * @return 0 if equal else a positive if id1 is> id2 ...      */
 specifier|public
 specifier|static
 name|int
