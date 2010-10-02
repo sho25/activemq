@@ -712,11 +712,6 @@ name|Message
 name|message
 parameter_list|)
 block|{
-name|latch
-operator|.
-name|countDown
-argument_list|()
-expr_stmt|;
 try|try
 block|{
 name|session
@@ -737,6 +732,11 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
+name|latch
+operator|.
+name|countDown
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 argument_list|)
