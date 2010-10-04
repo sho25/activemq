@@ -18,7 +18,7 @@ specifier|public
 interface|interface
 name|ScheduledMessage
 block|{
-comment|/**      * The time in milliseconds that a message will wait before being scheduled to be       * delivered by the broker      */
+comment|/**      * The time in milliseconds that a message will wait before being scheduled to be      * delivered by the broker      */
 specifier|public
 specifier|static
 specifier|final
@@ -53,6 +53,78 @@ name|String
 name|AMQ_SCHEDULED_CRON
 init|=
 literal|"AMQ_SCHEDULED_CRON"
+decl_stmt|;
+comment|/**      * An Id that is assigned to a Scheduled Message, this value is only available once the      * Message is scheduled, Messages sent to the Browse Destination or delivered to the      * assigned Destination will have this value set.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|AMQ_SCHEDULED_ID
+init|=
+literal|"scheduledJobId"
+decl_stmt|;
+comment|/**      * Special destination to send Message's to with an assigned "action" that the Scheduler      * should perform such as removing a message.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|AMQ_SCHEDULER_MANAGEMENT_DESTINATION
+init|=
+literal|"ActiveMQ.Scheduler.Management"
+decl_stmt|;
+comment|/**      * Used to specify that a some operation should be performed on the Scheduled Message,      * the Message must have an assigned Id for this action to be taken.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|AMQ_SCHEDULER_ACTION
+init|=
+literal|"AMQ_SCHEDULER_ACTION"
+decl_stmt|;
+comment|/**      * Indicates that a browse of the Scheduled Messages is being requested.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|AMQ_SCHEDULER_ACTION_BROWSE
+init|=
+literal|"BROWSE"
+decl_stmt|;
+comment|/**      * Indicates that a Scheduled Message is to be remove from the Scheduler, the Id of      * the scheduled message must be set as a property in order for this action to have      * any effect.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|AMQ_SCHEDULER_ACTION_REMOVE
+init|=
+literal|"REMOVE"
+decl_stmt|;
+comment|/**      * Indicates that all scheduled Messages should be removed.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|AMQ_SCHEDULER_ACTION_REMOVEALL
+init|=
+literal|"REMOVEALL"
+decl_stmt|;
+comment|/**      * A property that holds the beginning of the time interval that the specified action should      * be applied within.  Maps to a long value that specified time in milliseconds since UTC.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|AMQ_SCHEDULER_ACTION_START_TIME
+init|=
+literal|"ACTION_START_TIME"
+decl_stmt|;
+comment|/**      * A property that holds the end of the time interval that the specified action should be      * applied within.  Maps to a long value that specified time in milliseconds since UTC.      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|AMQ_SCHEDULER_ACTION_END_TIME
+init|=
+literal|"ACTION_END_TIME"
 decl_stmt|;
 block|}
 end_interface
