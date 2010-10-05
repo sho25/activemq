@@ -3988,7 +3988,27 @@ specifier|final
 name|String
 name|logMessage
 init|=
-literal|"Usage Manager Temp Store is Full. Stopping producer ("
+literal|"Usage Manager Temp Store is Full ("
+operator|+
+name|systemUsage
+operator|.
+name|getTempUsage
+argument_list|()
+operator|.
+name|getPercentUsage
+argument_list|()
+operator|+
+literal|"% of "
+operator|+
+name|systemUsage
+operator|.
+name|getTempUsage
+argument_list|()
+operator|.
+name|getLimit
+argument_list|()
+operator|+
+literal|"). Stopping producer ("
 operator|+
 name|message
 operator|.
