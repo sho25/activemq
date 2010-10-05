@@ -1380,7 +1380,10 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Recovering page file..."
+name|toString
+argument_list|()
+operator|+
+literal|", Recovering page file..."
 argument_list|)
 expr_stmt|;
 name|nextTxid
@@ -4398,16 +4401,14 @@ name|writeFile
 operator|.
 name|seek
 argument_list|(
+name|toOffset
+argument_list|(
 name|e
 operator|.
 name|getKey
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|e
-operator|.
-name|getValue
-argument_list|()
+argument_list|)
 expr_stmt|;
 name|writeFile
 operator|.

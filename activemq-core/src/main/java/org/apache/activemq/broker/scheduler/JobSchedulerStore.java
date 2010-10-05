@@ -1377,6 +1377,13 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+name|this
+operator|.
+name|pageFile
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 block|}
 return|return
 name|result
