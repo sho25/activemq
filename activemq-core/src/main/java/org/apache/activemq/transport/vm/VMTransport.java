@@ -95,6 +95,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|ShutdownInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|thread
 operator|.
 name|Task
@@ -801,20 +815,11 @@ name|peer
 operator|.
 name|transportListener
 operator|.
-name|onException
+name|onCommand
 argument_list|(
 operator|new
-name|TransportDisposedIOException
-argument_list|(
-literal|"Peer ("
-operator|+
-name|peer
-operator|.
-name|toString
+name|ShutdownInfo
 argument_list|()
-operator|+
-literal|") disposed."
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

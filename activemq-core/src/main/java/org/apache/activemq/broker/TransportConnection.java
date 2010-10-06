@@ -1811,6 +1811,27 @@ if|if
 condition|(
 name|TRANSPORTLOG
 operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|TRANSPORTLOG
+operator|.
+name|debug
+argument_list|(
+literal|"Transport failed: "
+operator|+
+name|e
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|TRANSPORTLOG
+operator|.
 name|isInfoEnabled
 argument_list|()
 condition|)
@@ -1821,8 +1842,6 @@ name|info
 argument_list|(
 literal|"Transport failed: "
 operator|+
-name|e
-argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
