@@ -1056,6 +1056,15 @@ name|answer
 decl_stmt|;
 try|try
 block|{
+name|HashMap
+name|options
+init|=
+operator|new
+name|HashMap
+argument_list|(
+name|transportOptions
+argument_list|)
+decl_stmt|;
 name|transport
 operator|=
 name|transportFactory
@@ -1066,7 +1075,7 @@ name|answer
 argument_list|,
 literal|null
 argument_list|,
-name|transportOptions
+name|options
 argument_list|)
 expr_stmt|;
 block|}
