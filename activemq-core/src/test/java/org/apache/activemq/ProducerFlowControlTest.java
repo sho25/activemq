@@ -1962,12 +1962,12 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
 name|super
 operator|.
 name|tearDown
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 specifier|protected
 name|ConnectionFactory
