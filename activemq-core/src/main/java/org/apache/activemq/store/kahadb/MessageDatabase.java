@@ -7139,6 +7139,22 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// check we are not deleting file with ack for in-use journal files
+specifier|final
+name|TreeSet
+argument_list|<
+name|Integer
+argument_list|>
+name|gcCandidates
+init|=
+operator|new
+name|TreeSet
+argument_list|<
+name|Integer
+argument_list|>
+argument_list|(
+name|gcCandidateSet
+argument_list|)
+decl_stmt|;
 name|Iterator
 argument_list|<
 name|Integer
@@ -7207,7 +7223,7 @@ name|referencedFileId
 argument_list|)
 operator|&&
 operator|!
-name|gcCandidateSet
+name|gcCandidates
 operator|.
 name|contains
 argument_list|(
