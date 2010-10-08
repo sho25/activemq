@@ -587,14 +587,35 @@ name|toByteSequence
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|afterMarshall
+parameter_list|(
+name|WireFormat
+name|wireFormat
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|super
+operator|.
+name|afterMarshall
+argument_list|(
+name|wireFormat
+argument_list|)
+expr_stmt|;
 comment|//see https://issues.apache.org/activemq/browse/AMQ-2103
+comment|// and https://issues.apache.org/activemq/browse/AMQ-2966
 name|this
 operator|.
 name|text
 operator|=
 literal|null
 expr_stmt|;
-block|}
 block|}
 comment|/**      * Clears out the message body. Clearing a message's body does not clear its      * header values or property entries.<p/>      *<P>      * If this message body was read-only, calling this method leaves the      * message body in the same state as an empty body in a newly created      * message.      *       * @throws JMSException if the JMS provider fails to clear the message body      *                 due to some internal error.      */
 specifier|public
