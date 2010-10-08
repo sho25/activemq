@@ -399,7 +399,7 @@ name|Map
 argument_list|<
 name|TransactionId
 argument_list|,
-name|Transaction
+name|XATransaction
 argument_list|>
 name|xaTransactions
 init|=
@@ -408,7 +408,7 @@ name|LinkedHashMap
 argument_list|<
 name|TransactionId
 argument_list|,
-name|Transaction
+name|XATransaction
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -759,7 +759,7 @@ for|for
 control|(
 name|Iterator
 argument_list|<
-name|Transaction
+name|XATransaction
 argument_list|>
 name|iter
 init|=
@@ -894,7 +894,7 @@ name|isXATransaction
 argument_list|()
 condition|)
 block|{
-name|Transaction
+name|XATransaction
 name|transaction
 init|=
 literal|null
@@ -935,6 +935,11 @@ operator|)
 name|xid
 argument_list|,
 name|this
+argument_list|,
+name|context
+operator|.
+name|getConnectionId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|xaTransactions
@@ -1518,7 +1523,7 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|Transaction
+name|XATransaction
 name|tx
 range|:
 name|xaTransactions
@@ -1531,6 +1536,19 @@ try|try
 block|{
 if|if
 condition|(
+name|tx
+operator|.
+name|getConnectionId
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|info
+operator|.
+name|getConnectionId
+argument_list|()
+argument_list|)
+operator|&&
 operator|!
 name|tx
 operator|.
