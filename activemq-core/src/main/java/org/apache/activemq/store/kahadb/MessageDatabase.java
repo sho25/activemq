@@ -944,7 +944,7 @@ name|getProperty
 argument_list|(
 name|PROPERTY_LOG_SLOW_ACCESS_TIME
 argument_list|,
-literal|"500"
+literal|"0"
 argument_list|)
 argument_list|)
 decl_stmt|;
