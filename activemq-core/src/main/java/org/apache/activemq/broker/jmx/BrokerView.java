@@ -1108,6 +1108,9 @@ name|Exception
 block|{
 name|broker
 operator|.
+name|getContextBroker
+argument_list|()
+operator|.
 name|addDestination
 argument_list|(
 name|getConnectionContext
@@ -1139,6 +1142,9 @@ throws|throws
 name|Exception
 block|{
 name|broker
+operator|.
+name|getContextBroker
+argument_list|()
 operator|.
 name|addDestination
 argument_list|(
@@ -1172,6 +1178,9 @@ name|Exception
 block|{
 name|broker
 operator|.
+name|getContextBroker
+argument_list|()
+operator|.
 name|removeDestination
 argument_list|(
 name|getConnectionContext
@@ -1203,6 +1212,9 @@ throws|throws
 name|Exception
 block|{
 name|broker
+operator|.
+name|getContextBroker
+argument_list|()
 operator|.
 name|removeDestination
 argument_list|(
