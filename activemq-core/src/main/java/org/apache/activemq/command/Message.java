@@ -436,6 +436,19 @@ parameter_list|()
 throws|throws
 name|JMSException
 function_decl|;
+comment|// useful to reduce the memory footprint of a persisted message
+specifier|public
+name|void
+name|clearMarshalledState
+parameter_list|()
+throws|throws
+name|JMSException
+block|{
+name|properties
+operator|=
+literal|null
+expr_stmt|;
+block|}
 specifier|protected
 name|void
 name|copy

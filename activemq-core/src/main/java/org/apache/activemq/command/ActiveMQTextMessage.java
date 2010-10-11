@@ -589,27 +589,20 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|Override
+comment|// see https://issues.apache.org/activemq/browse/AMQ-2103
+comment|// and https://issues.apache.org/activemq/browse/AMQ-2966
 specifier|public
 name|void
-name|afterMarshall
-parameter_list|(
-name|WireFormat
-name|wireFormat
-parameter_list|)
+name|clearMarshalledState
+parameter_list|()
 throws|throws
-name|IOException
+name|JMSException
 block|{
 name|super
 operator|.
-name|afterMarshall
-argument_list|(
-name|wireFormat
-argument_list|)
+name|clearMarshalledState
+argument_list|()
 expr_stmt|;
-comment|//see https://issues.apache.org/activemq/browse/AMQ-2103
-comment|// and https://issues.apache.org/activemq/browse/AMQ-2966
 name|this
 operator|.
 name|text
