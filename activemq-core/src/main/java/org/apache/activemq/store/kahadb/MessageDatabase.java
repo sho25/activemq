@@ -7139,6 +7139,15 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// check we are not deleting file with ack for in-use journal files
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"gc candidates: "
+operator|+
+name|gcCandidateSet
+argument_list|)
+expr_stmt|;
 specifier|final
 name|TreeSet
 argument_list|<
