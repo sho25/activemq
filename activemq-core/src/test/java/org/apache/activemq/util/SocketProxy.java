@@ -371,6 +371,13 @@ operator|new
 name|ServerSocket
 argument_list|()
 expr_stmt|;
+name|serverSocket
+operator|.
+name|setReuseAddress
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|receiveBufferSize
