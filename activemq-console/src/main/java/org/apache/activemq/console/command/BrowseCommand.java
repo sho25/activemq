@@ -195,6 +195,8 @@ literal|"    --view<attr1>,<attr2>,...    Select the specific attribute of the m
 block|,
 literal|"    --jmxurl<url>                Set the JMX URL to connect to."
 block|,
+literal|"    --pid<pid>                   Set the pid to connect to (only on Sun JVM)."
+block|,
 literal|"    --jmxuser<user>              Set the JMX user used for authenticating."
 block|,
 literal|"    --jmxpassword<password>      Set the JMX password used for authenticating."
