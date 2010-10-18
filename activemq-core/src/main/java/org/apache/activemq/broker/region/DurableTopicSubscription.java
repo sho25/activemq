@@ -999,6 +999,15 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Dectivating "
+operator|+
+name|this
+argument_list|)
+expr_stmt|;
 name|active
 operator|=
 literal|false

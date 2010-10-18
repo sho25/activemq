@@ -11344,7 +11344,7 @@ name|compareTo
 argument_list|(
 name|sequenceId
 argument_list|)
-operator|<=
+operator|==
 literal|0
 condition|)
 block|{
