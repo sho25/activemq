@@ -273,6 +273,20 @@ name|NetworkConnector
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|security
+operator|.
+name|SecurityContext
+import|;
+end_import
+
 begin_comment
 comment|/**  * @version $Revision$  */
 end_comment
@@ -1516,6 +1530,15 @@ operator|.
 name|setBroker
 argument_list|(
 name|broker
+argument_list|)
+expr_stmt|;
+name|context
+operator|.
+name|setSecurityContext
+argument_list|(
+name|SecurityContext
+operator|.
+name|BROKER_SECURITY_CONTEXT
 argument_list|)
 expr_stmt|;
 return|return
