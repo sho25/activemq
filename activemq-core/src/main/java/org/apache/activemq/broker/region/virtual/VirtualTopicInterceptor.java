@@ -170,6 +170,15 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+operator|!
+name|message
+operator|.
+name|isAdvisory
+argument_list|()
+condition|)
+block|{
 name|ActiveMQDestination
 name|queueConsumers
 init|=
@@ -190,6 +199,7 @@ argument_list|,
 name|queueConsumers
 argument_list|)
 expr_stmt|;
+block|}
 name|super
 operator|.
 name|send
