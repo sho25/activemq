@@ -8098,6 +8098,33 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Message "
+operator|+
+name|msg
+operator|.
+name|getMessageId
+argument_list|()
+operator|+
+literal|" sent to "
+operator|+
+name|this
+operator|.
+name|destination
+argument_list|)
+expr_stmt|;
+block|}
 name|wakeup
 argument_list|()
 expr_stmt|;

@@ -3219,6 +3219,13 @@ operator|.
 name|getMessageId
 argument_list|()
 operator|+
+literal|" - "
+operator|+
+name|message
+operator|.
+name|getDestination
+argument_list|()
+operator|+
 literal|", dispatched: "
 operator|+
 name|dispatchCounter
