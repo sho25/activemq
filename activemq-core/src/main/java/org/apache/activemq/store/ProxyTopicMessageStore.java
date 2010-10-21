@@ -339,6 +339,9 @@ name|subscriptionName
 parameter_list|,
 name|MessageId
 name|messageId
+parameter_list|,
+name|MessageAck
+name|ack
 parameter_list|)
 throws|throws
 name|IOException
@@ -354,6 +357,8 @@ argument_list|,
 name|subscriptionName
 argument_list|,
 name|messageId
+argument_list|,
+name|ack
 argument_list|)
 expr_stmt|;
 block|}

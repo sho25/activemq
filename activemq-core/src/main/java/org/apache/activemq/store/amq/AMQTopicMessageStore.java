@@ -543,6 +543,10 @@ parameter_list|,
 specifier|final
 name|MessageId
 name|messageId
+parameter_list|,
+specifier|final
+name|MessageAck
+name|originalAck
 parameter_list|)
 throws|throws
 name|IOException
@@ -923,6 +927,8 @@ argument_list|,
 name|subscritionName
 argument_list|,
 name|messageId
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 return|return

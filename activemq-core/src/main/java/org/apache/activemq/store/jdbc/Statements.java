@@ -1109,7 +1109,7 @@ literal|" D "
 operator|+
 literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
 operator|+
-literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID"
+literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID AND M.PRIORITY<= D.PRIORITY"
 expr_stmt|;
 block|}
 return|return
@@ -1211,16 +1211,18 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" WHERE ( EXPIRATION<>0 AND EXPIRATION<?) OR ID< "
+literal|" WHERE ( EXPIRATION<>0 AND EXPIRATION<?)"
 operator|+
-literal|"( SELECT min("
+literal|" OR (ID< "
+operator|+
+literal|"   ( SELECT min("
 operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
-literal|".LAST_ACKED_ID) "
+literal|".LAST_ACKED_ID)"
 operator|+
-literal|"FROM "
+literal|"      FROM "
 operator|+
 name|getFullAckTableName
 argument_list|()
@@ -1235,7 +1237,33 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|".CONTAINER)"
+literal|".CONTAINER )"
+operator|+
+literal|"   AND PRIORITY>= "
+operator|+
+literal|"   ( SELECT min("
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|".PRIORITY) "
+operator|+
+literal|"     FROM "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" WHERE "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|".CONTAINER="
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|".CONTAINER ))"
 expr_stmt|;
 block|}
 return|return
@@ -1380,7 +1408,11 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" WHERE CONTAINER=? ORDER BY PRIORITY DESC, ID"
+literal|" WHERE CONTAINER=?"
+operator|+
+literal|" AND ((ID> ? AND PRIORITY = ?) OR PRIORITY< ?)"
+operator|+
+literal|" ORDER BY PRIORITY DESC, ID"
 expr_stmt|;
 block|}
 return|return
@@ -1402,12 +1434,16 @@ condition|)
 block|{
 name|lastAckedDurableSubscriberMessageStatement
 operator|=
-literal|"SELECT MAX(LAST_ACKED_ID) FROM "
+literal|"SELECT MAX(LAST_ACKED_ID), PRIORITY FROM "
 operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
 literal|" WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=?"
+operator|+
+literal|" GROUP BY PRIORITY"
+operator|+
+literal|" ORDER BY PRIORITY ASC"
 expr_stmt|;
 block|}
 return|return

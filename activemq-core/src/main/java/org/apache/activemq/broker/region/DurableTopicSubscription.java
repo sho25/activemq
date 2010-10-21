@@ -537,6 +537,15 @@ argument_list|()
 decl_stmt|;
 name|ack
 operator|.
+name|setAckType
+argument_list|(
+name|MessageAck
+operator|.
+name|UNMATCHED_ACK_TYPE
+argument_list|)
+expr_stmt|;
+name|ack
+operator|.
 name|setMessageID
 argument_list|(
 name|node
@@ -752,15 +761,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"Activating "
-operator|+
-name|this
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -784,6 +784,15 @@ operator|.
 name|info
 operator|=
 name|info
+expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Activating "
+operator|+
+name|this
+argument_list|)
 expr_stmt|;
 name|int
 name|prefetch
@@ -1003,7 +1012,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Dectivating "
+literal|"Deactivating "
 operator|+
 name|this
 argument_list|)

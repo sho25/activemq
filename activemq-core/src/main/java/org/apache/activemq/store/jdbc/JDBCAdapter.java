@@ -547,6 +547,9 @@ parameter_list|,
 name|long
 name|nextSeq
 parameter_list|,
+name|long
+name|priority
+parameter_list|,
 name|int
 name|maxReturned
 parameter_list|,
@@ -557,6 +560,7 @@ throws|throws
 name|Exception
 function_decl|;
 name|long
+index|[]
 name|doGetLastAckedDurableSubscriberMessageId
 parameter_list|(
 name|TransactionContext

@@ -3795,6 +3795,9 @@ name|subscriptionName
 parameter_list|,
 name|MessageId
 name|messageId
+parameter_list|,
+name|MessageAck
+name|ack
 parameter_list|)
 throws|throws
 name|IOException

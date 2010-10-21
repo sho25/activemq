@@ -1118,6 +1118,36 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"fillBatch - batchResetNeeded="
+operator|+
+name|batchResetNeeded
+operator|+
+literal|", hasMessages="
+operator|+
+name|this
+operator|.
+name|storeHasMessages
+operator|+
+literal|", size="
+operator|+
+name|this
+operator|.
+name|size
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|batchResetNeeded
 condition|)
 block|{

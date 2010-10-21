@@ -2483,6 +2483,13 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Persistence store purged."
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
