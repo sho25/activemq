@@ -109,6 +109,20 @@ name|Message
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|BrokerSupport
+import|;
+end_import
+
 begin_comment
 comment|/**  * Provides a JMX Management view of a Queue.  */
 end_comment
@@ -296,7 +310,7 @@ block|{
 name|ConnectionContext
 name|context
 init|=
-name|BrokerView
+name|BrokerSupport
 operator|.
 name|getConnectionContext
 argument_list|(
@@ -354,7 +368,7 @@ block|{
 name|ConnectionContext
 name|context
 init|=
-name|BrokerView
+name|BrokerSupport
 operator|.
 name|getConnectionContext
 argument_list|(
@@ -415,7 +429,7 @@ block|{
 name|ConnectionContext
 name|context
 init|=
-name|BrokerView
+name|BrokerSupport
 operator|.
 name|getConnectionContext
 argument_list|(
@@ -475,7 +489,7 @@ block|{
 name|ConnectionContext
 name|context
 init|=
-name|BrokerView
+name|BrokerSupport
 operator|.
 name|getConnectionContext
 argument_list|(
@@ -533,7 +547,7 @@ block|{
 name|ConnectionContext
 name|context
 init|=
-name|BrokerView
+name|BrokerSupport
 operator|.
 name|getConnectionContext
 argument_list|(
@@ -594,7 +608,7 @@ block|{
 name|ConnectionContext
 name|context
 init|=
-name|BrokerView
+name|BrokerSupport
 operator|.
 name|getConnectionContext
 argument_list|(
@@ -709,7 +723,7 @@ block|{
 name|ConnectionContext
 name|context
 init|=
-name|BrokerView
+name|BrokerSupport
 operator|.
 name|getConnectionContext
 argument_list|(
