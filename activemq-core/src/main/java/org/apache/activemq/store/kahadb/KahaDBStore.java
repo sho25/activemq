@@ -4652,12 +4652,13 @@ name|tx
 argument_list|,
 operator|(
 name|selectorExpression
-operator|!=
+operator|==
 literal|null
 condition|?
-literal|0
-else|:
 name|cursorPos
+else|:
+operator|-
+literal|1
 operator|)
 argument_list|)
 expr_stmt|;
@@ -4914,7 +4915,8 @@ literal|null
 condition|?
 name|cursorPos
 else|:
-literal|0
+operator|-
+literal|1
 operator|)
 argument_list|)
 expr_stmt|;
@@ -5147,7 +5149,8 @@ literal|null
 condition|?
 name|pos
 else|:
-literal|0
+operator|-
+literal|1
 operator|)
 argument_list|)
 expr_stmt|;

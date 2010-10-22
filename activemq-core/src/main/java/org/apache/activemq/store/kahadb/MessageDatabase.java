@@ -6116,6 +6116,16 @@ argument_list|,
 name|sequence
 argument_list|)
 decl_stmt|;
+comment|// Add it to the new location set.
+name|addAckLocation
+argument_list|(
+name|sd
+argument_list|,
+name|sequence
+argument_list|,
+name|subscriptionKey
+argument_list|)
+expr_stmt|;
 comment|// The following method handles deleting un-referenced messages.
 name|removeAckLocation
 argument_list|(
@@ -6125,17 +6135,7 @@ name|sd
 argument_list|,
 name|subscriptionKey
 argument_list|,
-name|prev
-argument_list|)
-expr_stmt|;
-comment|// Add it to the new location set.
-name|addAckLocation
-argument_list|(
-name|sd
-argument_list|,
 name|sequence
-argument_list|,
-name|subscriptionKey
 argument_list|)
 expr_stmt|;
 block|}
@@ -6803,16 +6803,37 @@ block|{
 break|break;
 block|}
 block|}
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"gc candidates after first tx:"
+operator|+
+name|firstTxLocation
+operator|.
+name|getDataFileId
+argument_list|()
+operator|+
+literal|", "
+operator|+
+name|gcCandidateSet
+argument_list|)
+expr_stmt|;
 block|}
 comment|// Go through all the destinations to see if any of them can remove GC candidates.
 for|for
 control|(
+name|Entry
+argument_list|<
+name|String
+argument_list|,
 name|StoredDestination
-name|sd
+argument_list|>
+name|entry
 range|:
 name|storedDestinations
 operator|.
-name|values
+name|entrySet
 argument_list|()
 control|)
 block|{
@@ -6827,7 +6848,10 @@ block|{
 break|break;
 block|}
 comment|// Use a visitor to cut down the number of pages that we load
-name|sd
+name|entry
+operator|.
+name|getValue
+argument_list|()
 operator|.
 name|locationIndex
 operator|.
@@ -7137,11 +7161,27 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"gc candidates after dest:"
+operator|+
+name|entry
+operator|.
+name|getKey
+argument_list|()
+operator|+
+literal|", "
+operator|+
+name|gcCandidateSet
+argument_list|)
+expr_stmt|;
 block|}
 comment|// check we are not deleting file with ack for in-use journal files
 name|LOG
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"gc candidates: "
 operator|+
@@ -7271,7 +7311,7 @@ else|else
 block|{
 name|LOG
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"not removing data file: "
 operator|+
@@ -8911,25 +8951,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|HashSet
-argument_list|<
-name|String
-argument_list|>
-name|firstSet
-init|=
-name|sd
-operator|.
-name|ackPositions
-operator|.
-name|values
-argument_list|()
-operator|.
-name|iterator
-argument_list|()
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|sd
 operator|.
 name|ackPositions
@@ -8939,17 +8960,6 @@ argument_list|(
 name|sequenceId
 argument_list|)
 expr_stmt|;
-comment|// Did we just empty out the first set in the
-comment|// ordered list of ack locations? Then it's time to
-comment|// delete some messages.
-if|if
-condition|(
-name|hs
-operator|==
-name|firstSet
-condition|)
-block|{
-comment|// Find all the entries that need to get deleted.
 name|ArrayList
 argument_list|<
 name|Entry
@@ -8986,7 +8996,7 @@ argument_list|,
 name|sequenceId
 argument_list|)
 expr_stmt|;
-comment|// Do the actual deletes.
+comment|// Do the actual delete.
 for|for
 control|(
 name|Entry
@@ -9046,7 +9056,6 @@ name|getKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -11293,8 +11302,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-for|for
-control|(
 name|Iterator
 argument_list|<
 name|Entry
@@ -11311,60 +11318,20 @@ operator|.
 name|iterator
 argument_list|(
 name|tx
-argument_list|)
-init|;
-name|iterator
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
-name|Entry
-argument_list|<
-name|Long
 argument_list|,
-name|MessageKeys
-argument_list|>
-name|entry
-init|=
-name|iterator
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|entry
-operator|.
-name|getKey
-argument_list|()
-operator|.
-name|compareTo
-argument_list|(
 name|sequenceId
 argument_list|)
-operator|==
-literal|0
-condition|)
-block|{
-comment|// We don't do the actually delete while we are
-comment|// iterating the BTree since
-comment|// iterating would fail.
+decl_stmt|;
 name|deletes
 operator|.
 name|add
 argument_list|(
-name|entry
+name|iterator
+operator|.
+name|next
+argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-comment|// no point in iterating the in-order sequences anymore
-break|break;
-block|}
-block|}
 block|}
 name|long
 name|getNextMessageId

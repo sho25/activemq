@@ -8293,11 +8293,21 @@ operator|.
 name|size
 argument_list|()
 operator|+
-literal|", enqueueSize: "
+literal|", enqueueCount: "
 operator|+
 name|destinationStatistics
 operator|.
 name|getEnqueues
+argument_list|()
+operator|.
+name|getCount
+argument_list|()
+operator|+
+literal|", dequeueCount: "
+operator|+
+name|destinationStatistics
+operator|.
+name|getDequeues
 argument_list|()
 operator|.
 name|getCount
