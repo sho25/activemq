@@ -953,7 +953,11 @@ specifier|static
 specifier|final
 name|Buffer
 name|UNMATCHED
-init|=
+decl_stmt|;
+static|static
+block|{
+name|UNMATCHED
+operator|=
 operator|new
 name|Buffer
 argument_list|(
@@ -962,7 +966,8 @@ name|byte
 index|[]
 block|{}
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
 specifier|private
 specifier|static
 specifier|final
