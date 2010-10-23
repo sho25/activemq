@@ -948,6 +948,21 @@ literal|"0"
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|protected
+specifier|static
+specifier|final
+name|Buffer
+name|UNMATCHED
+init|=
+operator|new
+name|Buffer
+argument_list|(
+operator|new
+name|byte
+index|[]
+block|{}
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -6116,16 +6131,30 @@ argument_list|,
 name|sequence
 argument_list|)
 decl_stmt|;
-comment|// Add it to the new location set.
-name|addAckLocation
-argument_list|(
+if|if
+condition|(
+name|command
+operator|.
+name|getAck
+argument_list|()
+operator|==
+name|UNMATCHED
+condition|)
+block|{
 name|sd
-argument_list|,
-name|sequence
+operator|.
+name|subscriptionAcks
+operator|.
+name|put
+argument_list|(
+name|tx
 argument_list|,
 name|subscriptionKey
+argument_list|,
+name|prev
 argument_list|)
 expr_stmt|;
+block|}
 comment|// The following method handles deleting un-referenced messages.
 name|removeAckLocation
 argument_list|(
@@ -6135,7 +6164,17 @@ name|sd
 argument_list|,
 name|subscriptionKey
 argument_list|,
+name|prev
+argument_list|)
+expr_stmt|;
+comment|// Add it to the new location set.
+name|addAckLocation
+argument_list|(
+name|sd
+argument_list|,
 name|sequence
+argument_list|,
+name|subscriptionKey
 argument_list|)
 expr_stmt|;
 block|}
@@ -8951,6 +8990,25 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|HashSet
+argument_list|<
+name|String
+argument_list|>
+name|firstSet
+init|=
+name|sd
+operator|.
+name|ackPositions
+operator|.
+name|values
+argument_list|()
+operator|.
+name|iterator
+argument_list|()
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
 name|sd
 operator|.
 name|ackPositions
@@ -8960,6 +9018,17 @@ argument_list|(
 name|sequenceId
 argument_list|)
 expr_stmt|;
+comment|// Did we just empty out the first set in the
+comment|// ordered list of ack locations? Then it's time to
+comment|// delete some messages.
+if|if
+condition|(
+name|hs
+operator|==
+name|firstSet
+condition|)
+block|{
+comment|// Find all the entries that need to get deleted.
 name|ArrayList
 argument_list|<
 name|Entry
@@ -8996,7 +9065,7 @@ argument_list|,
 name|sequenceId
 argument_list|)
 expr_stmt|;
-comment|// Do the actual delete.
+comment|// Do the actual deletes.
 for|for
 control|(
 name|Entry
@@ -9056,6 +9125,7 @@ name|getKey
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
