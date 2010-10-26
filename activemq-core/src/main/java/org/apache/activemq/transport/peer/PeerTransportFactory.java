@@ -575,7 +575,7 @@ name|service
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://localhost:0"
+literal|"tcp://0.0.0.0:0"
 argument_list|)
 decl_stmt|;
 name|c
