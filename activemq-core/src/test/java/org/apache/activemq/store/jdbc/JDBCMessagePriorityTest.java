@@ -193,6 +193,13 @@ argument_list|(
 literal|"create"
 argument_list|)
 expr_stmt|;
+name|dataSource
+operator|.
+name|setShutdownDatabase
+argument_list|(
+literal|"false"
+argument_list|)
+expr_stmt|;
 name|jdbc
 operator|.
 name|setDataSource
