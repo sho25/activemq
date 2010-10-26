@@ -1710,6 +1710,8 @@ name|theStore
 operator|.
 name|isConcurrentStoreAndDispatchTransactions
 argument_list|()
+operator|==
+literal|false
 condition|)
 block|{
 name|KahaTransactionInfo
