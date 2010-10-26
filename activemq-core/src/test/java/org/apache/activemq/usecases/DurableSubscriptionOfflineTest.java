@@ -471,7 +471,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|initCombosForTestOfflineSubscription
+name|x_initCombosForTestConsumeOnlyMatchedMessages
 parameter_list|()
 throws|throws
 name|Exception
@@ -519,7 +519,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testOfflineSubscription
+name|testConsumeOnlyMatchedMessages
 parameter_list|()
 throws|throws
 name|Exception
@@ -754,7 +754,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testOfflineSubscription2
+name|testConsumeAllMatchedMessages
 parameter_list|()
 throws|throws
 name|Exception
@@ -981,7 +981,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testOfflineSubscription3
+name|testVerifyAllConsumedAreAcked
 parameter_list|()
 throws|throws
 name|Exception
@@ -1294,7 +1294,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testOfflineSubscription4
+name|testTwoOfflineSubscriptionCanConsume
 parameter_list|()
 throws|throws
 name|Exception
