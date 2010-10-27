@@ -315,6 +315,20 @@ name|activemq
 operator|.
 name|util
 operator|.
+name|InetAddressUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
 name|IntrospectionSupport
 import|;
 end_import
@@ -1332,12 +1346,9 @@ block|{
 comment|// make it more human readable and useful, an alternative to 0.0.0.0
 name|result
 operator|=
-name|InetAddress
+name|InetAddressUtil
 operator|.
-name|getLocalHost
-argument_list|()
-operator|.
-name|getHostName
+name|getLocalHostName
 argument_list|()
 expr_stmt|;
 block|}
