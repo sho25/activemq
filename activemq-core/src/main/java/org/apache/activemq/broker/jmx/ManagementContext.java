@@ -2142,6 +2142,7 @@ return|return
 name|connectorPort
 return|;
 block|}
+comment|/**      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryIntPropertyEditor"      */
 specifier|public
 name|void
 name|setConnectorPort
@@ -2166,6 +2167,7 @@ return|return
 name|rmiServerPort
 return|;
 block|}
+comment|/**      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryIntPropertyEditor"      */
 specifier|public
 name|void
 name|setRmiServerPort
