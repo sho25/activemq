@@ -270,6 +270,17 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ioe
+parameter_list|)
+block|{
+name|reason
+operator|=
+name|ioe
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|lock
