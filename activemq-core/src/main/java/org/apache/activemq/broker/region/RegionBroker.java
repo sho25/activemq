@@ -4370,7 +4370,19 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Expired message with no DLQ strategy in place"
+literal|"Dead Letter message with no DLQ strategy in place, message id: "
+operator|+
+name|message
+operator|.
+name|getMessageId
+argument_list|()
+operator|+
+literal|", destination: "
+operator|+
+name|message
+operator|.
+name|getDestination
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

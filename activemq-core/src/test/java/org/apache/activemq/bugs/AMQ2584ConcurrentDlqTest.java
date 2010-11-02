@@ -1423,15 +1423,12 @@ argument_list|,
 literal|"2000"
 argument_list|)
 expr_stmt|;
-name|properties
-operator|.
-name|put
-argument_list|(
-literal|"concurrentStoreAndDispatchQueues"
-argument_list|,
-literal|"false"
-argument_list|)
-expr_stmt|;
+comment|// there are problems with duplicate dispatch in the cursor, which maintain
+comment|// a map of messages. A dup dispatch can be dropped.
+comment|// see: org.apache.activemq.broker.region.cursors.OrderedPendingList
+comment|// Adding duplicate detection to the default DLQ strategy removes the problem
+comment|// which means we can leave the default for concurrent store and dispatch q
+comment|//properties.put("concurrentStoreAndDispatchQueues", "false");
 name|IntrospectionSupport
 operator|.
 name|setProperties
