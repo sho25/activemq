@@ -239,12 +239,22 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/** 	 * All durable subscribers to topics of the broker. 	 *  	 * @return not<code>null</code> 	 * @throws Exception 	 */
+comment|/** 	 * Active durable subscribers to topics of the broker. 	 *  	 * @return not<code>null</code> 	 * @throws Exception 	 */
 name|Collection
 argument_list|<
 name|DurableSubscriptionViewMBean
 argument_list|>
 name|getDurableTopicSubscribers
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
+comment|/** 	 * Inactive durable subscribers to topics of the broker. 	 * 	 * @return not<code>null</code> 	 * @throws Exception 	 */
+name|Collection
+argument_list|<
+name|DurableSubscriptionViewMBean
+argument_list|>
+name|getInactiveDurableTopicSubscribers
 parameter_list|()
 throws|throws
 name|Exception

@@ -356,7 +356,7 @@ operator|.
 name|getAdminView
 argument_list|()
 operator|.
-name|getDurableTopicSubscribers
+name|getInactiveDurableTopicSubscribers
 argument_list|()
 decl_stmt|;
 name|mbs

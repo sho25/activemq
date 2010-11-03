@@ -2876,7 +2876,7 @@ literal|2
 argument_list|,
 name|broker
 operator|.
-name|getDurableTopicSubscribers
+name|getInactiveDurableTopicSubscribers
 argument_list|()
 operator|.
 name|length
@@ -2916,7 +2916,7 @@ literal|1
 argument_list|,
 name|broker
 operator|.
-name|getDurableTopicSubscribers
+name|getInactiveDurableTopicSubscribers
 argument_list|()
 operator|.
 name|length
