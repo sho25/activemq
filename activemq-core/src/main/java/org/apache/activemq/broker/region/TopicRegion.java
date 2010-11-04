@@ -920,7 +920,7 @@ name|sub
 init|=
 name|durableSubscriptions
 operator|.
-name|get
+name|remove
 argument_list|(
 name|key
 argument_list|)
