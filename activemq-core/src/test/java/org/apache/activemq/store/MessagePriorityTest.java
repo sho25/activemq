@@ -293,12 +293,20 @@ decl_stmt|;
 specifier|public
 name|boolean
 name|useCache
+init|=
+literal|true
 decl_stmt|;
 specifier|public
 name|boolean
 name|dispatchAsync
 init|=
-literal|false
+literal|true
+decl_stmt|;
+specifier|public
+name|boolean
+name|prioritizeMessages
+init|=
+literal|true
 decl_stmt|;
 specifier|public
 name|int
@@ -387,7 +395,7 @@ name|policy
 operator|.
 name|setPrioritizedMessages
 argument_list|(
-literal|true
+name|prioritizeMessages
 argument_list|)
 expr_stmt|;
 name|policy
@@ -511,6 +519,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+block|{
 name|sess
 operator|.
 name|close
@@ -521,6 +531,15 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ignored
+parameter_list|)
+block|{         }
+finally|finally
+block|{
 name|broker
 operator|.
 name|stop
@@ -531,6 +550,7 @@ operator|.
 name|waitUntilStopped
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -962,7 +982,7 @@ specifier|final
 name|String
 name|text
 init|=
-literal|"Message with priority "
+literal|"priority "
 operator|+
 name|priority
 decl_stmt|;
@@ -1204,9 +1224,24 @@ argument_list|)
 block|}
 argument_list|)
 expr_stmt|;
+comment|// REVISIT = is dispatchAsync = true a problem or is it just the test?
 name|addCombinationValues
 argument_list|(
 literal|"dispatchAsync"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
+name|Boolean
+operator|.
+name|FALSE
+block|}
+argument_list|)
+expr_stmt|;
+name|addCombinationValues
+argument_list|(
+literal|"useCache"
 argument_list|,
 operator|new
 name|Object
@@ -1355,7 +1390,7 @@ name|sub
 operator|.
 name|receive
 argument_list|(
-literal|30000
+literal|15000
 argument_list|)
 decl_stmt|;
 name|LOG

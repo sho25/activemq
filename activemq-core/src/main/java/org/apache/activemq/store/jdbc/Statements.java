@@ -228,6 +228,18 @@ specifier|private
 name|String
 name|lastProducerSequenceIdStatement
 decl_stmt|;
+specifier|private
+name|String
+name|selectDurablePriorityAckStatement
+decl_stmt|;
+specifier|private
+name|String
+name|insertDurablePriorityAckStatement
+decl_stmt|;
+specifier|private
+name|String
+name|updateDurableLastAckStatement
+decl_stmt|;
 specifier|public
 name|String
 index|[]
@@ -418,6 +430,22 @@ operator|+
 literal|" ADD PRIORITY "
 operator|+
 name|sequenceDataType
+operator|+
+literal|" NOT NULL DEFAULT 5"
+block|,
+literal|"ALTER TABLE "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" DROP PRIMARY KEY"
+block|,
+literal|"ALTER TABLE "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" ADD PRIMARY KEY (CONTAINER, CLIENT_ID, SUB_NAME, PRIORITY)"
 block|,             }
 expr_stmt|;
 block|}
@@ -804,7 +832,7 @@ operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
-literal|" WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=?"
+literal|" WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=? AND SUB_DEST IS NOT NULL"
 expr_stmt|;
 block|}
 return|return
@@ -832,7 +860,7 @@ operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
-literal|" WHERE CONTAINER=?"
+literal|" WHERE CONTAINER=? AND SUB_DEST IS NOT NULL"
 expr_stmt|;
 block|}
 return|return
@@ -858,9 +886,9 @@ operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
-literal|" SET LAST_ACKED_ID=?, PRIORITY=?"
+literal|" SET LAST_ACKED_ID=?"
 operator|+
-literal|" WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=?"
+literal|" WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=? AND PRIORITY=?"
 expr_stmt|;
 block|}
 return|return
@@ -997,7 +1025,37 @@ literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
 operator|+
 literal|" AND M.CONTAINER=D.CONTAINER AND "
 operator|+
-literal|"((M.ID> ? AND M.PRIORITY = ?) OR M.PRIORITY< ?)"
+literal|"((M.ID> ? AND M.PRIORITY = ?) "
+operator|+
+literal|"   OR (M.PRIORITY<> ? "
+operator|+
+literal|"     AND ( M.ID>"
+operator|+
+literal|"          ( SELECT LAST_ACKED_ID FROM "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|"           WHERE CONTAINER=D.CONTAINER AND CLIENT_ID=D.CLIENT_ID"
+operator|+
+literal|"           AND SUB_NAME=D.SUB_NAME AND PRIORITY=M.PRIORITY )"
+operator|+
+literal|"          OR "
+operator|+
+literal|"          ( (SELECT COUNT(LAST_ACKED_ID) FROM "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|"           WHERE CONTAINER=D.CONTAINER AND CLIENT_ID=D.CLIENT_ID"
+operator|+
+literal|"           AND SUB_NAME=D.SUB_NAME AND PRIORITY=M.PRIORITY) = 0)"
+operator|+
+literal|"        )"
+operator|+
+literal|"   )"
+operator|+
+literal|")"
 operator|+
 literal|" ORDER BY M.PRIORITY DESC, M.ID"
 expr_stmt|;
@@ -1107,9 +1165,33 @@ argument_list|()
 operator|+
 literal|" D "
 operator|+
-literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
+literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=? AND D.SUB_DEST IS NOT NULL"
 operator|+
-literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID AND M.PRIORITY<= D.PRIORITY"
+literal|" AND M.CONTAINER=D.CONTAINER "
+operator|+
+literal|"     AND ( M.ID>"
+operator|+
+literal|"          ( SELECT LAST_ACKED_ID FROM "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|"           WHERE CONTAINER=D.CONTAINER AND CLIENT_ID=D.CLIENT_ID"
+operator|+
+literal|"           AND SUB_NAME=D.SUB_NAME AND PRIORITY=M.PRIORITY )"
+operator|+
+literal|"          OR "
+operator|+
+literal|"          ( (SELECT COUNT(LAST_ACKED_ID) FROM "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|"           WHERE CONTAINER=D.CONTAINER AND CLIENT_ID=D.CLIENT_ID"
+operator|+
+literal|"           AND SUB_NAME=D.SUB_NAME AND PRIORITY=M.PRIORITY) = 0)"
+operator|+
+literal|"        )"
 expr_stmt|;
 block|}
 return|return
@@ -1215,14 +1297,14 @@ literal|" WHERE ( EXPIRATION<>0 AND EXPIRATION<?)"
 operator|+
 literal|" OR (ID< "
 operator|+
-literal|"   ( SELECT min("
+literal|"     ( SELECT min("
 operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
 literal|".LAST_ACKED_ID)"
 operator|+
-literal|"      FROM "
+literal|"       FROM "
 operator|+
 name|getFullAckTableName
 argument_list|()
@@ -1237,18 +1319,37 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|".CONTAINER )"
+literal|".CONTAINER"
 operator|+
-literal|"   AND PRIORITY>= "
-operator|+
-literal|"   ( SELECT min("
+literal|"        AND "
 operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
-literal|".PRIORITY) "
+literal|".SUB_DEST IS NULL"
 operator|+
-literal|"     FROM "
+literal|"        AND "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|".PRIORITY="
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|".PRIORITY )"
+operator|+
+literal|"    AND ID<"
+operator|+
+literal|"     ( SELECT min("
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|".LAST_ACKED_ID)"
+operator|+
+literal|"       FROM "
 operator|+
 name|getFullAckTableName
 argument_list|()
@@ -1263,7 +1364,16 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|".CONTAINER ))"
+literal|".CONTAINER"
+operator|+
+literal|"        AND "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|".SUB_DEST IS NOT NULL )"
+operator|+
+literal|"   )"
 expr_stmt|;
 block|}
 return|return
@@ -1448,6 +1558,98 @@ expr_stmt|;
 block|}
 return|return
 name|lastAckedDurableSubscriberMessageStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getSelectDurablePriorityAckStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|selectDurablePriorityAckStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|selectDurablePriorityAckStatement
+operator|=
+literal|"SELECT LAST_ACKED_ID FROM "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=?"
+operator|+
+literal|" AND PRIORITY = ?"
+expr_stmt|;
+block|}
+return|return
+name|selectDurablePriorityAckStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getInsertDurablePriorityAckStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|insertDurablePriorityAckStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|insertDurablePriorityAckStatement
+operator|=
+literal|"INSERT INTO "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|"(CONTAINER, CLIENT_ID, SUB_NAME, PRIORITY)"
+operator|+
+literal|" VALUES (?, ?, ?, ?)"
+expr_stmt|;
+block|}
+return|return
+name|insertDurablePriorityAckStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getUpdateDurableLastAckStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|updateDurableLastAckStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|updateDurableLastAckStatement
+operator|=
+literal|"UPDATE "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" SET LAST_ACKED_ID = ? WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=?"
+operator|+
+literal|" AND PRIORITY = "
+operator|+
+operator|(
+name|Byte
+operator|.
+name|MAX_VALUE
+operator|-
+literal|1
+operator|)
+expr_stmt|;
+block|}
+return|return
+name|updateDurableLastAckStatement
 return|;
 block|}
 specifier|public
@@ -2247,6 +2449,51 @@ operator|.
 name|lastProducerSequenceIdStatement
 operator|=
 name|lastProducerSequenceIdStatement
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setSelectDurablePriorityAckStatement
+parameter_list|(
+name|String
+name|selectDurablePriorityAckStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|selectDurablePriorityAckStatement
+operator|=
+name|selectDurablePriorityAckStatement
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setInsertDurablePriorityAckStatement
+parameter_list|(
+name|String
+name|insertDurablePriorityAckStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|insertDurablePriorityAckStatement
+operator|=
+name|insertDurablePriorityAckStatement
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setUpdateDurableLastAckStatement
+parameter_list|(
+name|String
+name|updateDurableLastAckStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|updateDurableLastAckStatement
+operator|=
+name|updateDurableLastAckStatement
 expr_stmt|;
 block|}
 block|}

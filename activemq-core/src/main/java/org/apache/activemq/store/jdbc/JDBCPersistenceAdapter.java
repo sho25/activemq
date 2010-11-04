@@ -2956,7 +2956,7 @@ operator|=
 name|lockAcquireSleepInterval
 expr_stmt|;
 block|}
-comment|/**      * set the Transaction isolation level to something other that TRANSACTION_READ_UNCOMMITTED      * This allowable dirty isolation level may not be achievable in clustered DB environments      * so a more restrictive and expensive option may be needed like TRANSACTION_REPEATABE_READ      * see isolation level constants in {@link java.sql.Connection}      * @param transactionIsolation the isolation level to use      */
+comment|/**      * set the Transaction isolation level to something other that TRANSACTION_READ_UNCOMMITTED      * This allowable dirty isolation level may not be achievable in clustered DB environments      * so a more restrictive and expensive option may be needed like TRANSACTION_REPEATABLE_READ      * see isolation level constants in {@link java.sql.Connection}      * @param transactionIsolation the isolation level to use      */
 specifier|public
 name|void
 name|setTransactionIsolation
