@@ -1333,12 +1333,53 @@ name|XAER_PROTO
 argument_list|)
 throw|;
 block|}
-comment|// if ((flags& TMJOIN) == TMJOIN) {
-comment|// // TODO: verify that the server has seen the xid
-comment|// }
-comment|// if ((flags& TMJOIN) == TMRESUME) {
-comment|// // TODO: verify that the xid was suspended.
-comment|// }
+name|String
+name|txSuspendResumeNotSupportMsg
+init|=
+literal|"The suspend/resume of a transaction "
+operator|+
+literal|"is not supported. Instead it is recommended that a new JMS session be created."
+decl_stmt|;
+if|if
+condition|(
+operator|(
+name|flags
+operator|&
+name|TMJOIN
+operator|)
+operator|==
+name|TMJOIN
+condition|)
+block|{
+throw|throw
+operator|new
+name|XAException
+argument_list|(
+name|txSuspendResumeNotSupportMsg
+argument_list|)
+throw|;
+comment|// TODO: verify that the server has seen the xid
+block|}
+if|if
+condition|(
+operator|(
+name|flags
+operator|&
+name|TMRESUME
+operator|)
+operator|==
+name|TMRESUME
+condition|)
+block|{
+throw|throw
+operator|new
+name|XAException
+argument_list|(
+name|txSuspendResumeNotSupportMsg
+argument_list|)
+throw|;
+comment|// TODO: verify that the xid was suspended.
+block|}
 comment|// associate
 name|synchronizations
 operator|=
