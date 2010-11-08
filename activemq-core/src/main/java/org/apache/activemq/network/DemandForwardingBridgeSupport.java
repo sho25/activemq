@@ -4640,7 +4640,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"bridging "
+literal|"bridging ("
 operator|+
 name|configuration
 operator|.
@@ -4656,6 +4656,13 @@ operator|+
 name|md
 operator|.
 name|getConsumerId
+argument_list|()
+operator|+
+literal|", destination "
+operator|+
+name|message
+operator|.
+name|getDestination
 argument_list|()
 operator|+
 literal|", brokerPath: "
