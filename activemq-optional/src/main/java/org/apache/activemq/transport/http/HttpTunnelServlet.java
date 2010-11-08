@@ -73,7 +73,21 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|concurrent
+operator|.
+name|ConcurrentMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentHashMap
 import|;
 end_import
 
@@ -165,6 +179,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|Service
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|Command
@@ -182,20 +208,6 @@ operator|.
 name|command
 operator|.
 name|WireFormatInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|InactivityMonitor
 import|;
 end_import
 
@@ -279,6 +291,20 @@ name|org
 operator|.
 name|apache
 operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|ServiceListener
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|commons
 operator|.
 name|logging
@@ -349,8 +375,7 @@ name|TextWireFormat
 name|wireFormat
 decl_stmt|;
 specifier|private
-specifier|final
-name|Map
+name|ConcurrentMap
 argument_list|<
 name|String
 argument_list|,
@@ -359,7 +384,7 @@ argument_list|>
 name|clients
 init|=
 operator|new
-name|HashMap
+name|ConcurrentHashMap
 argument_list|<
 name|String
 argument_list|,
@@ -891,11 +916,6 @@ return|return
 literal|null
 return|;
 block|}
-synchronized|synchronized
-init|(
-name|this
-init|)
-block|{
 name|BlockingQueueTransport
 name|answer
 init|=
@@ -930,7 +950,6 @@ return|return
 name|answer
 return|;
 block|}
-block|}
 specifier|protected
 name|BlockingQueueTransport
 name|createTransportChannel
@@ -944,6 +963,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+specifier|final
 name|String
 name|clientID
 init|=
@@ -983,24 +1003,25 @@ return|return
 literal|null
 return|;
 block|}
-synchronized|synchronized
-init|(
-name|this
-init|)
-block|{
+comment|// Optimistically create the client's transport; this transport may be thrown away if the client has already registered.
 name|BlockingQueueTransport
 name|answer
 init|=
-name|clients
-operator|.
-name|get
-argument_list|(
-name|clientID
-argument_list|)
+name|createTransportChannel
+argument_list|()
 decl_stmt|;
+comment|// Record the client's transport and ensure that it has not already registered; this is thread-safe and only allows one
+comment|// thread to register the client
 if|if
 condition|(
+name|clients
+operator|.
+name|putIfAbsent
+argument_list|(
+name|clientID
+argument_list|,
 name|answer
+argument_list|)
 operator|!=
 literal|null
 condition|)
@@ -1035,20 +1056,52 @@ return|return
 literal|null
 return|;
 block|}
+comment|// Ensure that the client's transport is cleaned up when no longer
+comment|// needed.
 name|answer
-operator|=
-name|createTransportChannel
+operator|.
+name|addServiceListener
+argument_list|(
+operator|new
+name|ServiceListener
 argument_list|()
-expr_stmt|;
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|started
+parameter_list|(
+name|Service
+name|service
+parameter_list|)
+block|{
+comment|// Nothing to do.
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|stopped
+parameter_list|(
+name|Service
+name|service
+parameter_list|)
+block|{
 name|clients
 operator|.
-name|put
+name|remove
 argument_list|(
 name|clientID
-argument_list|,
-name|answer
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+comment|// Configure the transport with any additional properties or filters.  Although the returned transport is not explicitly
+comment|// persisted, if it is a filter (e.g., InactivityMonitor) it will be linked to the client's transport as a TransportListener
+comment|// and not GC'd until the client's transport is disposed.
 name|Transport
 name|transport
 init|=
@@ -1056,6 +1109,7 @@ name|answer
 decl_stmt|;
 try|try
 block|{
+comment|// Preserve the transportOptions for future use by making a copy before applying (they are removed when applied).
 name|HashMap
 name|options
 init|=
@@ -1093,6 +1147,7 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Wait for the transport to be connected or disposed.
 name|listener
 operator|.
 name|onAccept
@@ -1100,13 +1155,18 @@ argument_list|(
 name|transport
 argument_list|)
 expr_stmt|;
-comment|//wait for the transport to connect
 while|while
 condition|(
 operator|!
-name|answer
+name|transport
 operator|.
 name|isConnected
+argument_list|()
+operator|&&
+operator|!
+name|transport
+operator|.
+name|isDisposed
 argument_list|()
 condition|)
 block|{
@@ -1125,12 +1185,50 @@ parameter_list|(
 name|InterruptedException
 name|ignore
 parameter_list|)
-block|{             	}
+block|{             }
+block|}
+comment|// Ensure that the transport was not prematurely disposed.
+if|if
+condition|(
+name|transport
+operator|.
+name|isDisposed
+argument_list|()
+condition|)
+block|{
+name|response
+operator|.
+name|sendError
+argument_list|(
+name|HttpServletResponse
+operator|.
+name|SC_BAD_REQUEST
+argument_list|,
+literal|"The session for clientID '"
+operator|+
+name|clientID
+operator|+
+literal|"' was prematurely disposed"
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"The session for clientID '"
+operator|+
+name|clientID
+operator|+
+literal|"' was prematurely disposed"
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
+return|;
 block|}
 return|return
 name|answer
 return|;
-block|}
 block|}
 specifier|protected
 name|BlockingQueueTransport

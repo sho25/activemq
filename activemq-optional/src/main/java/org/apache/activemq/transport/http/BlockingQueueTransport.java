@@ -89,8 +89,20 @@ name|ServiceStopper
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|CountDownLatch
+import|;
+end_import
+
 begin_comment
-comment|/**  * A server side HTTP based TransportChannel which processes incoming packets  * and adds outgoing packets onto a {@link Queue} so that they can be dispatched  * by the HTTP GET requests from the client.  *   * @version $Revision$  */
+comment|/**  * A server side HTTP based TransportChannel which processes incoming packets  * and adds outgoing packets onto a {@link Queue} so that they can be dispatched  * by the HTTP GET requests from the client.  *  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -100,6 +112,11 @@ name|BlockingQueueTransport
 extends|extends
 name|TransportSupport
 block|{
+specifier|public
+specifier|static
+name|CountDownLatch
+name|finalizeLatch
+decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -130,6 +147,19 @@ operator|.
 name|queue
 operator|=
 name|channel
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|finalize
+parameter_list|()
+block|{
+name|finalizeLatch
+operator|.
+name|countDown
+argument_list|()
 expr_stmt|;
 block|}
 specifier|public
