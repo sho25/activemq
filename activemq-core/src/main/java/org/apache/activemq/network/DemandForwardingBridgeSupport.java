@@ -3664,6 +3664,41 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|info
+operator|.
+name|isBrowser
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" Ignoring sub from "
+operator|+
+name|remoteBrokerName
+operator|+
+literal|", browsers explicitly suppressed"
+argument_list|)
+expr_stmt|;
+block|}
+return|return;
+block|}
+if|if
+condition|(
 name|path
 operator|!=
 literal|null
@@ -3692,7 +3727,7 @@ operator|.
 name|getBrokerName
 argument_list|()
 operator|+
-literal|" Ignoring sub  from "
+literal|" Ignoring sub from "
 operator|+
 name|remoteBrokerName
 operator|+
