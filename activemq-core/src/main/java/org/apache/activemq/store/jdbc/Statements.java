@@ -140,7 +140,7 @@ name|findAllDurableSubsStatement
 decl_stmt|;
 specifier|private
 name|String
-name|updateLastAckOfDurableSubStatement
+name|updateLastPriorityAckRowOfDurableSubStatement
 decl_stmt|;
 specifier|private
 name|String
@@ -239,6 +239,14 @@ decl_stmt|;
 specifier|private
 name|String
 name|updateDurableLastAckStatement
+decl_stmt|;
+specifier|private
+name|String
+name|deleteOldMessagesStatementWithPriority
+decl_stmt|;
+specifier|private
+name|String
+name|durableSubscriberMessageCountStatementWithPriority
 decl_stmt|;
 specifier|public
 name|String
@@ -832,7 +840,7 @@ operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
-literal|" WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=? AND SUB_DEST IS NOT NULL"
+literal|" WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=?"
 expr_stmt|;
 block|}
 return|return
@@ -860,7 +868,7 @@ operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
-literal|" WHERE CONTAINER=? AND SUB_DEST IS NOT NULL"
+literal|" WHERE CONTAINER=? AND PRIORITY=0"
 expr_stmt|;
 block|}
 return|return
@@ -869,17 +877,17 @@ return|;
 block|}
 specifier|public
 name|String
-name|getUpdateLastAckOfDurableSubStatement
+name|getUpdateLastPriorityAckRowOfDurableSubStatement
 parameter_list|()
 block|{
 if|if
 condition|(
-name|updateLastAckOfDurableSubStatement
+name|updateLastPriorityAckRowOfDurableSubStatement
 operator|==
 literal|null
 condition|)
 block|{
-name|updateLastAckOfDurableSubStatement
+name|updateLastPriorityAckRowOfDurableSubStatement
 operator|=
 literal|"UPDATE "
 operator|+
@@ -892,7 +900,7 @@ literal|" WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=? AND PRIORITY=?"
 expr_stmt|;
 block|}
 return|return
-name|updateLastAckOfDurableSubStatement
+name|updateLastPriorityAckRowOfDurableSubStatement
 return|;
 block|}
 specifier|public
@@ -951,7 +959,7 @@ literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
 operator|+
 literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID"
 operator|+
-literal|" ORDER BY M.ID"
+literal|" ORDER BY M.PRIORITY DESC, M.ID"
 expr_stmt|;
 block|}
 return|return
@@ -986,7 +994,7 @@ literal|" D "
 operator|+
 literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
 operator|+
-literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> ?"
+literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID"
 operator|+
 literal|" ORDER BY M.ID"
 expr_stmt|;
@@ -1023,39 +1031,9 @@ literal|" D "
 operator|+
 literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
 operator|+
-literal|" AND M.CONTAINER=D.CONTAINER AND "
+literal|" AND M.CONTAINER=D.CONTAINER"
 operator|+
-literal|"((M.ID> ? AND M.PRIORITY = ?) "
-operator|+
-literal|"   OR (M.PRIORITY<> ? "
-operator|+
-literal|"     AND ( M.ID>"
-operator|+
-literal|"          ( SELECT LAST_ACKED_ID FROM "
-operator|+
-name|getFullAckTableName
-argument_list|()
-operator|+
-literal|"           WHERE CONTAINER=D.CONTAINER AND CLIENT_ID=D.CLIENT_ID"
-operator|+
-literal|"           AND SUB_NAME=D.SUB_NAME AND PRIORITY=M.PRIORITY )"
-operator|+
-literal|"          OR "
-operator|+
-literal|"          ( (SELECT COUNT(LAST_ACKED_ID) FROM "
-operator|+
-name|getFullAckTableName
-argument_list|()
-operator|+
-literal|"           WHERE CONTAINER=D.CONTAINER AND CLIENT_ID=D.CLIENT_ID"
-operator|+
-literal|"           AND SUB_NAME=D.SUB_NAME AND PRIORITY=M.PRIORITY) = 0)"
-operator|+
-literal|"        )"
-operator|+
-literal|"   )"
-operator|+
-literal|")"
+literal|" AND M.PRIORITY=D.PRIORITY AND M.ID> D.LAST_ACKED_ID"
 operator|+
 literal|" ORDER BY M.PRIORITY DESC, M.ID"
 expr_stmt|;
@@ -1165,11 +1143,11 @@ argument_list|()
 operator|+
 literal|" D "
 operator|+
-literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=? AND D.SUB_DEST IS NOT NULL"
+literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
 operator|+
 literal|" AND M.CONTAINER=D.CONTAINER "
 operator|+
-literal|"     AND ( M.ID>"
+literal|"     AND M.ID>"
 operator|+
 literal|"          ( SELECT LAST_ACKED_ID FROM "
 operator|+
@@ -1178,24 +1156,50 @@ argument_list|()
 operator|+
 literal|"           WHERE CONTAINER=D.CONTAINER AND CLIENT_ID=D.CLIENT_ID"
 operator|+
-literal|"           AND SUB_NAME=D.SUB_NAME AND PRIORITY=M.PRIORITY )"
-operator|+
-literal|"          OR "
-operator|+
-literal|"          ( (SELECT COUNT(LAST_ACKED_ID) FROM "
-operator|+
-name|getFullAckTableName
-argument_list|()
-operator|+
-literal|"           WHERE CONTAINER=D.CONTAINER AND CLIENT_ID=D.CLIENT_ID"
-operator|+
-literal|"           AND SUB_NAME=D.SUB_NAME AND PRIORITY=M.PRIORITY) = 0)"
-operator|+
-literal|"        )"
+literal|"           AND SUB_NAME=D.SUB_NAME )"
 expr_stmt|;
 block|}
 return|return
 name|durableSubscriberMessageCountStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getDurableSubscriberMessageCountStatementWithPriority
+parameter_list|()
+block|{
+if|if
+condition|(
+name|durableSubscriberMessageCountStatementWithPriority
+operator|==
+literal|null
+condition|)
+block|{
+name|durableSubscriberMessageCountStatementWithPriority
+operator|=
+literal|"SELECT COUNT(*) FROM "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" M, "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" D "
+operator|+
+literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
+operator|+
+literal|" AND M.CONTAINER=D.CONTAINER "
+operator|+
+literal|" AND M.PRIORITY=D.PRIORITY "
+operator|+
+literal|" AND M.ID> D.LAST_ACKED_ID"
+expr_stmt|;
+block|}
+return|return
+name|durableSubscriberMessageCountStatementWithPriority
 return|;
 block|}
 specifier|public
@@ -1276,6 +1280,72 @@ return|;
 block|}
 specifier|public
 name|String
+name|getDeleteOldMessagesStatementWithPriority
+parameter_list|()
+block|{
+if|if
+condition|(
+name|deleteOldMessagesStatementWithPriority
+operator|==
+literal|null
+condition|)
+block|{
+name|deleteOldMessagesStatementWithPriority
+operator|=
+literal|"DELETE FROM "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" WHERE ( EXPIRATION<>0 AND EXPIRATION<?)"
+operator|+
+literal|" OR (ID<= "
+operator|+
+literal|"     ( SELECT min("
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|".LAST_ACKED_ID)"
+operator|+
+literal|"       FROM "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" WHERE "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|".CONTAINER="
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|".CONTAINER"
+operator|+
+literal|"        AND "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|".PRIORITY="
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|".PRIORITY )"
+operator|+
+literal|"   )"
+expr_stmt|;
+block|}
+return|return
+name|deleteOldMessagesStatementWithPriority
+return|;
+block|}
+specifier|public
+name|String
 name|getDeleteOldMessagesStatement
 parameter_list|()
 block|{
@@ -1295,7 +1365,7 @@ argument_list|()
 operator|+
 literal|" WHERE ( EXPIRATION<>0 AND EXPIRATION<?)"
 operator|+
-literal|" OR (ID< "
+literal|" OR (ID<= "
 operator|+
 literal|"     ( SELECT min("
 operator|+
@@ -1319,59 +1389,7 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|".CONTAINER"
-operator|+
-literal|"        AND "
-operator|+
-name|getFullAckTableName
-argument_list|()
-operator|+
-literal|".SUB_DEST IS NULL"
-operator|+
-literal|"        AND "
-operator|+
-name|getFullAckTableName
-argument_list|()
-operator|+
-literal|".PRIORITY="
-operator|+
-name|getFullMessageTableName
-argument_list|()
-operator|+
-literal|".PRIORITY )"
-operator|+
-literal|"    AND ID<"
-operator|+
-literal|"     ( SELECT min("
-operator|+
-name|getFullAckTableName
-argument_list|()
-operator|+
-literal|".LAST_ACKED_ID)"
-operator|+
-literal|"       FROM "
-operator|+
-name|getFullAckTableName
-argument_list|()
-operator|+
-literal|" WHERE "
-operator|+
-name|getFullAckTableName
-argument_list|()
-operator|+
-literal|".CONTAINER="
-operator|+
-name|getFullMessageTableName
-argument_list|()
-operator|+
-literal|".CONTAINER"
-operator|+
-literal|"        AND "
-operator|+
-name|getFullAckTableName
-argument_list|()
-operator|+
-literal|".SUB_DEST IS NOT NULL )"
+literal|".CONTAINER )"
 operator|+
 literal|"   )"
 expr_stmt|;
@@ -1544,16 +1562,12 @@ condition|)
 block|{
 name|lastAckedDurableSubscriberMessageStatement
 operator|=
-literal|"SELECT MAX(LAST_ACKED_ID), PRIORITY FROM "
+literal|"SELECT MAX(LAST_ACKED_ID) FROM "
 operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
 literal|" WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=?"
-operator|+
-literal|" GROUP BY PRIORITY"
-operator|+
-literal|" ORDER BY PRIORITY ASC"
 expr_stmt|;
 block|}
 return|return
@@ -1636,16 +1650,6 @@ name|getFullAckTableName
 argument_list|()
 operator|+
 literal|" SET LAST_ACKED_ID = ? WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=?"
-operator|+
-literal|" AND PRIORITY = "
-operator|+
-operator|(
-name|Byte
-operator|.
-name|MAX_VALUE
-operator|-
-literal|1
-operator|)
 expr_stmt|;
 block|}
 return|return
@@ -2032,6 +2036,21 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
+name|setDeleteOldMessagesStatementWithPriority
+parameter_list|(
+name|String
+name|deleteOldMessagesStatmentWithPriority
+parameter_list|)
+block|{
+name|this
+operator|.
+name|deleteOldMessagesStatementWithPriority
+operator|=
+name|deleteOldMessagesStatmentWithPriority
+expr_stmt|;
+block|}
+specifier|public
+name|void
 name|setDeleteSubscriptionStatement
 parameter_list|(
 name|String
@@ -2258,17 +2277,17 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|setUpdateLastAckOfDurableSubStatement
+name|setUpdateLastPriorityAckRowOfDurableSubStatement
 parameter_list|(
 name|String
-name|updateLastAckOfDurableSub
+name|updateLastPriorityAckRowOfDurableSubStatement
 parameter_list|)
 block|{
 name|this
 operator|.
-name|updateLastAckOfDurableSubStatement
+name|updateLastPriorityAckRowOfDurableSubStatement
 operator|=
-name|updateLastAckOfDurableSub
+name|updateLastPriorityAckRowOfDurableSubStatement
 expr_stmt|;
 block|}
 specifier|public
@@ -2386,6 +2405,21 @@ operator|.
 name|durableSubscriberMessageCountStatement
 operator|=
 name|durableSubscriberMessageCountStatement
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setDurableSubscriberMessageCountStatementWithPriority
+parameter_list|(
+name|String
+name|durableSubscriberMessageCountStatementWithPriority
+parameter_list|)
+block|{
+name|this
+operator|.
+name|durableSubscriberMessageCountStatementWithPriority
+operator|=
+name|durableSubscriberMessageCountStatementWithPriority
 expr_stmt|;
 block|}
 comment|/**      * @param findNextMessagesStatement the findNextMessagesStatement to set      */
