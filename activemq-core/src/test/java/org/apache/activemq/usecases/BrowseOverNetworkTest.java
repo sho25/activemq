@@ -1003,6 +1003,13 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
 name|Browser
 name|browser2
 init|=
@@ -1018,6 +1025,13 @@ name|browser2
 operator|.
 name|start
 argument_list|()
+expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
 expr_stmt|;
 name|sendMessages
 argument_list|(
