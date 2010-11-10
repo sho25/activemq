@@ -280,9 +280,11 @@ decl_stmt|;
 name|PersistenceAdapter
 name|adapter
 decl_stmt|;
+specifier|protected
 name|ActiveMQConnectionFactory
 name|factory
 decl_stmt|;
+specifier|protected
 name|Connection
 name|conn
 decl_stmt|;
