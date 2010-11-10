@@ -1498,9 +1498,12 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"DurableTopicSubscription:"
+literal|"DurableTopicSubscription-"
 operator|+
-literal|" consumer="
+name|getSubscriptionKey
+argument_list|()
+operator|+
+literal|", id="
 operator|+
 name|info
 operator|.
