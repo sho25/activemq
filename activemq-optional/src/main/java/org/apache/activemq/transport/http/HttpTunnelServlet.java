@@ -1066,8 +1066,6 @@ operator|new
 name|ServiceListener
 argument_list|()
 block|{
-annotation|@
-name|Override
 specifier|public
 name|void
 name|started
@@ -1078,8 +1076,6 @@ parameter_list|)
 block|{
 comment|// Nothing to do.
 block|}
-annotation|@
-name|Override
 specifier|public
 name|void
 name|stopped
