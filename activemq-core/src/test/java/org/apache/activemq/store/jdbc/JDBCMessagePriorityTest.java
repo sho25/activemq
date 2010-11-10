@@ -503,7 +503,7 @@ argument_list|)
 decl_stmt|;
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"received i="
 operator|+
@@ -857,26 +857,9 @@ argument_list|(
 literal|10000
 argument_list|)
 decl_stmt|;
-name|assertNull
-argument_list|(
-literal|"no duplicate message"
-argument_list|,
-name|dups
-operator|.
-name|put
-argument_list|(
-name|msg
-operator|.
-name|getJMSMessageID
-argument_list|()
-argument_list|,
-name|subName
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"received i="
 operator|+
@@ -903,6 +886,28 @@ argument_list|()
 else|:
 literal|null
 operator|)
+argument_list|)
+expr_stmt|;
+name|assertNull
+argument_list|(
+literal|"no duplicate message failed on : "
+operator|+
+name|msg
+operator|.
+name|getJMSMessageID
+argument_list|()
+argument_list|,
+name|dups
+operator|.
+name|put
+argument_list|(
+name|msg
+operator|.
+name|getJMSMessageID
+argument_list|()
+argument_list|,
+name|subName
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertNotNull
