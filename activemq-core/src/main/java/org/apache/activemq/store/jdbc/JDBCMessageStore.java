@@ -1333,6 +1333,9 @@ argument_list|()
 argument_list|,
 name|maxReturned
 argument_list|,
+name|isPrioritizedMessages
+argument_list|()
+argument_list|,
 operator|new
 name|JDBCMessageRecoveryListener
 argument_list|()
@@ -1748,13 +1751,6 @@ name|prioritizedMessages
 parameter_list|)
 block|{
 name|super
-operator|.
-name|setPrioritizedMessages
-argument_list|(
-name|prioritizedMessages
-argument_list|)
-expr_stmt|;
-name|adapter
 operator|.
 name|setPrioritizedMessages
 argument_list|(
