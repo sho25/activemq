@@ -343,6 +343,14 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|MAX_ROWS
+init|=
+literal|10000
+decl_stmt|;
 specifier|protected
 name|Statements
 name|statements
@@ -365,12 +373,12 @@ operator|new
 name|ReentrantReadWriteLock
 argument_list|()
 decl_stmt|;
-comment|// needs to be min twice the prefetch for a durable sub
+comment|// needs to be min twice the prefetch for a durable sub and large enough for selector range
 specifier|protected
 name|int
 name|maxRows
 init|=
-literal|2000
+name|MAX_ROWS
 decl_stmt|;
 specifier|protected
 name|void
@@ -3204,9 +3212,16 @@ name|s
 operator|.
 name|setMaxRows
 argument_list|(
+name|Math
+operator|.
+name|max
+argument_list|(
 name|maxReturned
 operator|*
 literal|2
+argument_list|,
+name|maxRows
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|s
@@ -5603,9 +5618,16 @@ name|s
 operator|.
 name|setMaxRows
 argument_list|(
+name|Math
+operator|.
+name|max
+argument_list|(
 name|maxReturned
 operator|*
 literal|2
+argument_list|,
+name|maxRows
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|s

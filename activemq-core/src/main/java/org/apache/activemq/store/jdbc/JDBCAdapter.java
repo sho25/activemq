@@ -671,6 +671,19 @@ name|SQLException
 throws|,
 name|IOException
 function_decl|;
+specifier|public
+name|int
+name|getMaxRows
+parameter_list|()
+function_decl|;
+specifier|public
+name|void
+name|setMaxRows
+parameter_list|(
+name|int
+name|maxRows
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
