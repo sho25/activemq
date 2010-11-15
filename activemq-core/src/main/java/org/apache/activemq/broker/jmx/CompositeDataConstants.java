@@ -62,6 +62,11 @@ init|=
 literal|"Text"
 decl_stmt|;
 name|String
+name|MESSAGE_URL
+init|=
+literal|"Url"
+decl_stmt|;
+name|String
 name|ORIGINAL_DESTINATION
 init|=
 literal|"OriginalDestination"
