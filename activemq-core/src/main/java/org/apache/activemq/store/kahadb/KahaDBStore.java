@@ -5817,7 +5817,9 @@ operator|.
 name|ackPositions
 operator|.
 name|isEmpty
-argument_list|()
+argument_list|(
+name|tx
+argument_list|)
 condition|)
 block|{
 name|isEmptyTopic

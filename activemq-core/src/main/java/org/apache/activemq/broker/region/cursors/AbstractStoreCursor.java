@@ -278,12 +278,12 @@ name|isStarted
 argument_list|()
 condition|)
 block|{
+name|clear
+argument_list|()
+expr_stmt|;
 name|super
 operator|.
 name|start
-argument_list|()
-expr_stmt|;
-name|clear
 argument_list|()
 expr_stmt|;
 name|resetBatch
