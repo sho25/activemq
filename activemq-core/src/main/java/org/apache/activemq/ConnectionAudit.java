@@ -300,6 +300,7 @@ literal|false
 return|;
 block|}
 specifier|protected
+specifier|synchronized
 name|void
 name|rollbackDuplicate
 parameter_list|(
