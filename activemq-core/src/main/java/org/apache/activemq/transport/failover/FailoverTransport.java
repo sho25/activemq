@@ -754,9 +754,8 @@ specifier|private
 name|long
 name|reconnectDelay
 init|=
-name|this
-operator|.
-name|initialReconnectDelay
+operator|-
+literal|1
 decl_stmt|;
 specifier|private
 name|Exception
@@ -3888,6 +3887,11 @@ if|if
 condition|(
 operator|!
 name|useExponentialBackOff
+operator|||
+name|reconnectDelay
+operator|==
+operator|-
+literal|1
 condition|)
 block|{
 name|reconnectDelay
