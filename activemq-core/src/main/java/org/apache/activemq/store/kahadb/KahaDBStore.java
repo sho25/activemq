@@ -5609,7 +5609,7 @@ if|if
 condition|(
 name|loadedStore
 operator|.
-name|ackPositions
+name|subscriptionAcks
 operator|.
 name|isEmpty
 argument_list|(
