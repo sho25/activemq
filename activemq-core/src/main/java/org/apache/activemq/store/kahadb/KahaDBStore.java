@@ -5030,6 +5030,16 @@ argument_list|,
 name|subscriptionKey
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|pos
+operator|==
+literal|null
+condition|)
+block|{
+comment|// sub deleted
+return|return;
+block|}
 name|sd
 operator|.
 name|orderIndex

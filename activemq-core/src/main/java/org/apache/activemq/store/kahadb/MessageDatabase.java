@@ -7791,7 +7791,7 @@ name|priority
 operator|=
 name|MessageOrderIndex
 operator|.
-name|HI
+name|LO
 expr_stmt|;
 block|}
 specifier|public
