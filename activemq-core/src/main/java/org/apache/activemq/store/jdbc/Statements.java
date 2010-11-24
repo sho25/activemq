@@ -439,7 +439,7 @@ literal|" ADD PRIORITY "
 operator|+
 name|sequenceDataType
 operator|+
-literal|" NOT NULL DEFAULT 5"
+literal|" DEFAULT 5 NOT NULL"
 block|,
 literal|"ALTER TABLE "
 operator|+
