@@ -487,17 +487,24 @@ name|URISyntaxException
 name|e
 parameter_list|)
 block|{
-throw|throw
+name|IOException
+name|ioe
+init|=
 operator|new
 name|IOException
 argument_list|(
 literal|"Unable to open file for message "
 operator|+
 name|message
-argument_list|,
+argument_list|)
+decl_stmt|;
+name|ioe
+operator|.
+name|initCause
+argument_list|(
 name|e
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 block|}
 comment|//replace all : with _ to make windows more happy
