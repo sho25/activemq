@@ -1037,26 +1037,6 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-comment|// if there is no such message, ignore the value
-if|if
-condition|(
-name|this
-operator|.
-name|doGetMessageById
-argument_list|(
-name|c
-argument_list|,
-name|seq2
-argument_list|)
-operator|==
-literal|null
-condition|)
-block|{
-name|seq2
-operator|=
-literal|0
-expr_stmt|;
-block|}
 block|}
 name|long
 name|seq
@@ -3254,6 +3234,15 @@ argument_list|,
 name|subscriptionName
 argument_list|)
 expr_stmt|;
+name|s
+operator|.
+name|setLong
+argument_list|(
+literal|4
+argument_list|,
+name|seq
+argument_list|)
+expr_stmt|;
 name|rs
 operator|=
 name|s
@@ -3442,8 +3431,6 @@ name|getFindDurableSubMessagesByPriorityStatement
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// maxRows needs to be twice prefetch as the db will replay all unacked, so inflight messages will
-comment|// be returned and suppressed by the cursor audit. It is faster this way.
 name|s
 operator|.
 name|setMaxRows
@@ -3479,6 +3466,24 @@ argument_list|(
 literal|3
 argument_list|,
 name|subscriptionName
+argument_list|)
+expr_stmt|;
+name|s
+operator|.
+name|setLong
+argument_list|(
+literal|4
+argument_list|,
+name|seq
+argument_list|)
+expr_stmt|;
+name|s
+operator|.
+name|setLong
+argument_list|(
+literal|5
+argument_list|,
+name|priority
 argument_list|)
 expr_stmt|;
 name|rs

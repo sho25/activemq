@@ -996,6 +996,8 @@ literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
 operator|+
 literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID"
 operator|+
+literal|" AND M.ID> ?"
+operator|+
 literal|" ORDER BY M.ID"
 expr_stmt|;
 block|}
@@ -1034,6 +1036,8 @@ operator|+
 literal|" AND M.CONTAINER=D.CONTAINER"
 operator|+
 literal|" AND M.PRIORITY=D.PRIORITY AND M.ID> D.LAST_ACKED_ID"
+operator|+
+literal|" AND ( (M.ID> ?) OR (M.PRIORITY< ?) )"
 operator|+
 literal|" ORDER BY M.PRIORITY DESC, M.ID"
 expr_stmt|;
@@ -1218,7 +1222,7 @@ name|findAllDestinationsStatement
 operator|=
 literal|"SELECT DISTINCT CONTAINER FROM "
 operator|+
-name|getFullMessageTableName
+name|getFullAckTableName
 argument_list|()
 expr_stmt|;
 block|}
