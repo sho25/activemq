@@ -1620,6 +1620,18 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
+elseif|else
+if|if
+condition|(
+name|ack
+operator|.
+name|isRedeliveredAck
+argument_list|()
+condition|)
+block|{
+comment|// nothing to do atm
+return|return;
+block|}
 throw|throw
 operator|new
 name|JMSException
