@@ -179,7 +179,7 @@ name|iterator
 init|=
 literal|null
 decl_stmt|;
-specifier|private
+specifier|protected
 name|boolean
 name|cacheEnabled
 init|=
