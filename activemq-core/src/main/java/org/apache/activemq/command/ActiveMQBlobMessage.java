@@ -249,6 +249,14 @@ name|getBlobUploader
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|copy
+operator|.
+name|setName
+argument_list|(
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|byte

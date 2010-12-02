@@ -256,6 +256,13 @@ argument_list|(
 name|file
 argument_list|)
 decl_stmt|;
+name|message
+operator|.
+name|setName
+argument_list|(
+literal|"fileName"
+argument_list|)
+expr_stmt|;
 name|producer
 operator|.
 name|send
@@ -288,6 +295,23 @@ argument_list|(
 name|msg
 operator|instanceof
 name|ActiveMQBlobMessage
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"name is correct"
+argument_list|,
+literal|"fileName"
+argument_list|,
+operator|(
+operator|(
+name|ActiveMQBlobMessage
+operator|)
+name|msg
+operator|)
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|InputStream
