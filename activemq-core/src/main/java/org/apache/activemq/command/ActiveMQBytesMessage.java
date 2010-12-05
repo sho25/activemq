@@ -244,7 +244,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A<CODE>BytesMessage</CODE> object is used to send a message containing a  * stream of uninterpreted bytes. It inherits from the<CODE>Message</CODE>  * interface and adds a bytes message body. The receiver of the message supplies  * the interpretation of the bytes.  *<P>  * The<CODE>BytesMessage</CODE> methods are based largely on those found in  *<CODE>java.io.DataInputStream</CODE> and  *<CODE>java.io.DataOutputStream</CODE>.  *<P>  * This message type is for client encoding of existing message formats. If  * possible, one of the other self-defining message types should be used  * instead.  *<P>  * Although the JMS API allows the use of message properties with byte messages,  * they are typically not used, since the inclusion of properties may affect the  * format.  *<P>  * The primitive types can be written explicitly using methods for each type.  * They may also be written generically as objects. For instance, a call to  *<CODE>BytesMessage.writeInt(6)</CODE> is equivalent to  *<CODE> BytesMessage.writeObject(new Integer(6))</CODE>. Both forms are  * provided, because the explicit form is convenient for static programming, and  * the object form is needed when types are not known at compile time.  *<P>  * When the message is first created, and when<CODE>clearBody</CODE> is  * called, the body of the message is in write-only mode. After the first call  * to<CODE>reset</CODE> has been made, the message body is in read-only mode.  * After a message has been sent, the client that sent it can retain and modify  * it without affecting the message that has been sent. The same message object  * can be sent multiple times. When a message has been received, the provider  * has called<CODE>reset</CODE> so that the message body is in read-only mode  * for the client.  *<P>  * If<CODE>clearBody</CODE> is called on a message in read-only mode, the  * message body is cleared and the message is in write-only mode.  *<P>  * If a client attempts to read a message in write-only mode, a  *<CODE>MessageNotReadableException</CODE> is thrown.  *<P>  * If a client attempts to write a message in read-only mode, a  *<CODE>MessageNotWriteableException</CODE> is thrown.  *   * @openwire:marshaller code=24  * @see javax.jms.Session#createBytesMessage()  * @see javax.jms.MapMessage  * @see javax.jms.Message  * @see javax.jms.ObjectMessage  * @see javax.jms.StreamMessage  * @see javax.jms.TextMessage  */
+comment|/**  * A<CODE>BytesMessage</CODE> object is used to send a message containing a  * stream of uninterpreted bytes. It inherits from the<CODE>Message</CODE>  * interface and adds a bytes message body. The receiver of the message supplies  * the interpretation of the bytes.  *<P>  * The<CODE>BytesMessage</CODE> methods are based largely on those found in  *<CODE>java.io.DataInputStream</CODE> and  *<CODE>java.io.DataOutputStream</CODE>.  *<P>  * This message type is for client encoding of existing message formats. If  * possible, one of the other self-defining message types should be used  * instead.  *<P>  * Although the JMS API allows the use of message properties with byte messages,  * they are typically not used, since the inclusion of properties may affect the  * format.  *<P>  * The primitive types can be written explicitly using methods for each type.  * They may also be written generically as objects. For instance, a call to  *<CODE>BytesMessage.writeInt(6)</CODE> is equivalent to  *<CODE> BytesMessage.writeObject(new Integer(6))</CODE>. Both forms are  * provided, because the explicit form is convenient for static programming, and  * the object form is needed when types are not known at compile time.  *<P>  * When the message is first created, and when<CODE>clearBody</CODE> is  * called, the body of the message is in write-only mode. After the first call  * to<CODE>reset</CODE> has been made, the message body is in read-only mode.  * After a message has been sent, the client that sent it can retain and modify  * it without affecting the message that has been sent. The same message object  * can be sent multiple times. When a message has been received, the provider  * has called<CODE>reset</CODE> so that the message body is in read-only mode  * for the client.  *<P>  * If<CODE>clearBody</CODE> is called on a message in read-only mode, the  * message body is cleared and the message is in write-only mode.  *<P>  * If a client attempts to read a message in write-only mode, a  *<CODE>MessageNotReadableException</CODE> is thrown.  *<P>  * If a client attempts to write a message in read-only mode, a  *<CODE>MessageNotWriteableException</CODE> is thrown.  *  * @openwire:marshaller code=24  * @see javax.jms.Session#createBytesMessage()  * @see javax.jms.MapMessage  * @see javax.jms.Message  * @see javax.jms.ObjectMessage  * @see javax.jms.StreamMessage  * @see javax.jms.TextMessage  */
 end_comment
 
 begin_class
@@ -470,7 +470,7 @@ return|return
 literal|"jms/bytes-message"
 return|;
 block|}
-comment|/**      * Clears out the message body. Clearing a message's body does not clear its      * header values or property entries.      *<P>      * If this message body was read-only, calling this method leaves the      * message body in the same state as an empty body in a newly created      * message.      *       * @throws JMSException if the JMS provider fails to clear the message body      *                 due to some internal error.      */
+comment|/**      * Clears out the message body. Clearing a message's body does not clear its      * header values or property entries.      *<P>      * If this message body was read-only, calling this method leaves the      * message body in the same state as an empty body in a newly created      * message.      *      * @throws JMSException if the JMS provider fails to clear the message body      *                 due to some internal error.      */
 specifier|public
 name|void
 name|clearBody
@@ -502,7 +502,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/**      * Gets the number of bytes of the message body when the message is in      * read-only mode. The value returned can be used to allocate a byte array.      * The value returned is the entire length of the message body, regardless      * of where the pointer for reading the message is currently located.      *       * @return number of bytes in the message      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageNotReadableException if the message is in write-only mode.      * @since 1.1      */
+comment|/**      * Gets the number of bytes of the message body when the message is in      * read-only mode. The value returned can be used to allocate a byte array.      * The value returned is the entire length of the message body, regardless      * of where the pointer for reading the message is currently located.      *      * @return number of bytes in the message      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageNotReadableException if the message is in write-only mode.      * @since 1.1      */
 specifier|public
 name|long
 name|getBodyLength
@@ -517,7 +517,7 @@ return|return
 name|length
 return|;
 block|}
-comment|/**      * Reads a<code>boolean</code> from the bytes message stream.      *       * @return the<code>boolean</code> value read      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+comment|/**      * Reads a<code>boolean</code> from the bytes message stream.      *      * @return the<code>boolean</code> value read      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
 specifier|public
 name|boolean
 name|readBoolean
@@ -570,7 +570,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Reads a signed 8-bit value from the bytes message stream.      *       * @return the next byte from the bytes message stream as a signed 8-bit      *<code>byte</code>      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+comment|/**      * Reads a signed 8-bit value from the bytes message stream.      *      * @return the next byte from the bytes message stream as a signed 8-bit      *<code>byte</code>      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
 specifier|public
 name|byte
 name|readByte
@@ -623,7 +623,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Reads an unsigned 8-bit number from the bytes message stream.      *       * @return the next byte from the bytes message stream, interpreted as an      *         unsigned 8-bit number      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+comment|/**      * Reads an unsigned 8-bit number from the bytes message stream.      *      * @return the next byte from the bytes message stream, interpreted as an      *         unsigned 8-bit number      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
 specifier|public
 name|int
 name|readUnsignedByte
@@ -676,7 +676,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Reads a signed 16-bit number from the bytes message stream.      *       * @return the next two bytes from the bytes message stream, interpreted as      *         a signed 16-bit number      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+comment|/**      * Reads a signed 16-bit number from the bytes message stream.      *      * @return the next two bytes from the bytes message stream, interpreted as      *         a signed 16-bit number      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
 specifier|public
 name|short
 name|readShort
@@ -729,7 +729,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Reads an unsigned 16-bit number from the bytes message stream.      *       * @return the next two bytes from the bytes message stream, interpreted as      *         an unsigned 16-bit integer      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+comment|/**      * Reads an unsigned 16-bit number from the bytes message stream.      *      * @return the next two bytes from the bytes message stream, interpreted as      *         an unsigned 16-bit integer      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
 specifier|public
 name|int
 name|readUnsignedShort
@@ -782,7 +782,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Reads a Unicode character value from the bytes message stream.      *       * @return the next two bytes from the bytes message stream as a Unicode      *         character      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+comment|/**      * Reads a Unicode character value from the bytes message stream.      *      * @return the next two bytes from the bytes message stream as a Unicode      *         character      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
 specifier|public
 name|char
 name|readChar
@@ -835,7 +835,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Reads a signed 32-bit integer from the bytes message stream.      *       * @return the next four bytes from the bytes message stream, interpreted as      *         an<code>int</code>      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+comment|/**      * Reads a signed 32-bit integer from the bytes message stream.      *      * @return the next four bytes from the bytes message stream, interpreted as      *         an<code>int</code>      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
 specifier|public
 name|int
 name|readInt
@@ -888,7 +888,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Reads a signed 64-bit integer from the bytes message stream.      *       * @return the next eight bytes from the bytes message stream, interpreted      *         as a<code>long</code>      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+comment|/**      * Reads a signed 64-bit integer from the bytes message stream.      *      * @return the next eight bytes from the bytes message stream, interpreted      *         as a<code>long</code>      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
 specifier|public
 name|long
 name|readLong
@@ -941,7 +941,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Reads a<code>float</code> from the bytes message stream.      *       * @return the next four bytes from the bytes message stream, interpreted as      *         a<code>float</code>      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+comment|/**      * Reads a<code>float</code> from the bytes message stream.      *      * @return the next four bytes from the bytes message stream, interpreted as      *         a<code>float</code>      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
 specifier|public
 name|float
 name|readFloat
@@ -994,7 +994,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Reads a<code>double</code> from the bytes message stream.      *       * @return the next eight bytes from the bytes message stream, interpreted      *         as a<code>double</code>      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+comment|/**      * Reads a<code>double</code> from the bytes message stream.      *      * @return the next eight bytes from the bytes message stream, interpreted      *         as a<code>double</code>      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
 specifier|public
 name|double
 name|readDouble
@@ -1047,7 +1047,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Reads a string that has been encoded using a modified UTF-8 format from      * the bytes message stream.      *<P>      * For more information on the UTF-8 format, see "File System Safe UCS      * Transformation Format (FSS_UTF)", X/Open Preliminary Specification,      * X/Open Company Ltd., Document Number: P316. This information also appears      * in ISO/IEC 10646, Annex P.      *       * @return a Unicode string from the bytes message stream      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+comment|/**      * Reads a string that has been encoded using a modified UTF-8 format from      * the bytes message stream.      *<P>      * For more information on the UTF-8 format, see "File System Safe UCS      * Transformation Format (FSS_UTF)", X/Open Preliminary Specification,      * X/Open Company Ltd., Document Number: P316. This information also appears      * in ISO/IEC 10646, Annex P.      *      * @return a Unicode string from the bytes message stream      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of bytes stream has been      *                 reached.      * @throws MessageNotReadableException if the message is in write-only mode.      */
 specifier|public
 name|String
 name|readUTF
@@ -1100,7 +1100,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Reads a byte array from the bytes message stream.      *<P>      * If the length of array<code>value</code> is less than the number of      * bytes remaining to be read from the stream, the array should be filled. A      * subsequent call reads the next increment, and so on.      *<P>      * If the number of bytes remaining in the stream is less than the length of      * array<code>value</code>, the bytes should be read into the array. The      * return value of the total number of bytes read will be less than the      * length of the array, indicating that there are no more bytes left to be      * read from the stream. The next read of the stream returns -1.      *       * @param value the buffer into which the data is read      * @return the total number of bytes read into the buffer, or -1 if there is      *         no more data because the end of the stream has been reached      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+comment|/**      * Reads a byte array from the bytes message stream.      *<P>      * If the length of array<code>value</code> is less than the number of      * bytes remaining to be read from the stream, the array should be filled. A      * subsequent call reads the next increment, and so on.      *<P>      * If the number of bytes remaining in the stream is less than the length of      * array<code>value</code>, the bytes should be read into the array. The      * return value of the total number of bytes read will be less than the      * length of the array, indicating that there are no more bytes left to be      * read from the stream. The next read of the stream returns -1.      *      * @param value the buffer into which the data is read      * @return the total number of bytes read into the buffer, or -1 if there is      *         no more data because the end of the stream has been reached      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageNotReadableException if the message is in write-only mode.      */
 specifier|public
 name|int
 name|readBytes
@@ -1123,7 +1123,7 @@ name|length
 argument_list|)
 return|;
 block|}
-comment|/**      * Reads a portion of the bytes message stream.      *<P>      * If the length of array<code>value</code> is less than the number of      * bytes remaining to be read from the stream, the array should be filled. A      * subsequent call reads the next increment, and so on.      *<P>      * If the number of bytes remaining in the stream is less than the length of      * array<code>value</code>, the bytes should be read into the array. The      * return value of the total number of bytes read will be less than the      * length of the array, indicating that there are no more bytes left to be      * read from the stream. The next read of the stream returns -1.<p/> If      *<code>length</code> is negative, or<code>length</code> is greater      * than the length of the array<code>value</code>, then an      *<code>IndexOutOfBoundsException</code> is thrown. No bytes will be read      * from the stream for this exception case.      *       * @param value the buffer into which the data is read      * @param length the number of bytes to read; must be less than or equal to      *<code>value.length</code>      * @return the total number of bytes read into the buffer, or -1 if there is      *         no more data because the end of the stream has been reached      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+comment|/**      * Reads a portion of the bytes message stream.      *<P>      * If the length of array<code>value</code> is less than the number of      * bytes remaining to be read from the stream, the array should be filled. A      * subsequent call reads the next increment, and so on.      *<P>      * If the number of bytes remaining in the stream is less than the length of      * array<code>value</code>, the bytes should be read into the array. The      * return value of the total number of bytes read will be less than the      * length of the array, indicating that there are no more bytes left to be      * read from the stream. The next read of the stream returns -1.<p/> If      *<code>length</code> is negative, or<code>length</code> is greater      * than the length of the array<code>value</code>, then an      *<code>IndexOutOfBoundsException</code> is thrown. No bytes will be read      * from the stream for this exception case.      *      * @param value the buffer into which the data is read      * @param length the number of bytes to read; must be less than or equal to      *<code>value.length</code>      * @return the total number of bytes read into the buffer, or -1 if there is      *         no more data because the end of the stream has been reached      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageNotReadableException if the message is in write-only mode.      */
 specifier|public
 name|int
 name|readBytes
@@ -1239,7 +1239,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Writes a<code>boolean</code> to the bytes message stream as a 1-byte      * value. The value<code>true</code> is written as the value      *<code>(byte)1</code>; the value<code>false</code> is written as the      * value<code>(byte)0</code>.      *       * @param value the<code>boolean</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+comment|/**      * Writes a<code>boolean</code> to the bytes message stream as a 1-byte      * value. The value<code>true</code> is written as the value      *<code>(byte)1</code>; the value<code>false</code> is written as the      * value<code>(byte)0</code>.      *      * @param value the<code>boolean</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
 specifier|public
 name|void
 name|writeBoolean
@@ -1281,7 +1281,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Writes a<code>byte</code> to the bytes message stream as a 1-byte      * value.      *       * @param value the<code>byte</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+comment|/**      * Writes a<code>byte</code> to the bytes message stream as a 1-byte      * value.      *      * @param value the<code>byte</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
 specifier|public
 name|void
 name|writeByte
@@ -1323,7 +1323,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Writes a<code>short</code> to the bytes message stream as two bytes,      * high byte first.      *       * @param value the<code>short</code> to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+comment|/**      * Writes a<code>short</code> to the bytes message stream as two bytes,      * high byte first.      *      * @param value the<code>short</code> to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
 specifier|public
 name|void
 name|writeShort
@@ -1365,7 +1365,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Writes a<code>char</code> to the bytes message stream as a 2-byte      * value, high byte first.      *       * @param value the<code>char</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+comment|/**      * Writes a<code>char</code> to the bytes message stream as a 2-byte      * value, high byte first.      *      * @param value the<code>char</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
 specifier|public
 name|void
 name|writeChar
@@ -1407,7 +1407,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Writes an<code>int</code> to the bytes message stream as four bytes,      * high byte first.      *       * @param value the<code>int</code> to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+comment|/**      * Writes an<code>int</code> to the bytes message stream as four bytes,      * high byte first.      *      * @param value the<code>int</code> to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
 specifier|public
 name|void
 name|writeInt
@@ -1449,7 +1449,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Writes a<code>long</code> to the bytes message stream as eight bytes,      * high byte first.      *       * @param value the<code>long</code> to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+comment|/**      * Writes a<code>long</code> to the bytes message stream as eight bytes,      * high byte first.      *      * @param value the<code>long</code> to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
 specifier|public
 name|void
 name|writeLong
@@ -1491,7 +1491,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Converts the<code>float</code> argument to an<code>int</code> using      * the<code>floatToIntBits</code> method in class<code>Float</code>,      * and then writes that<code>int</code> value to the bytes message stream      * as a 4-byte quantity, high byte first.      *       * @param value the<code>float</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+comment|/**      * Converts the<code>float</code> argument to an<code>int</code> using      * the<code>floatToIntBits</code> method in class<code>Float</code>,      * and then writes that<code>int</code> value to the bytes message stream      * as a 4-byte quantity, high byte first.      *      * @param value the<code>float</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
 specifier|public
 name|void
 name|writeFloat
@@ -1533,7 +1533,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Converts the<code>double</code> argument to a<code>long</code>      * using the<code>doubleToLongBits</code> method in class      *<code>Double</code>, and then writes that<code>long</code> value to      * the bytes message stream as an 8-byte quantity, high byte first.      *       * @param value the<code>double</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+comment|/**      * Converts the<code>double</code> argument to a<code>long</code>      * using the<code>doubleToLongBits</code> method in class      *<code>Double</code>, and then writes that<code>long</code> value to      * the bytes message stream as an 8-byte quantity, high byte first.      *      * @param value the<code>double</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
 specifier|public
 name|void
 name|writeDouble
@@ -1575,7 +1575,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Writes a string to the bytes message stream using UTF-8 encoding in a      * machine-independent manner.      *<P>      * For more information on the UTF-8 format, see "File System Safe UCS      * Transformation Format (FSS_UTF)", X/Open Preliminary Specification,      * X/Open Company Ltd., Document Number: P316. This information also appears      * in ISO/IEC 10646, Annex P.      *       * @param value the<code>String</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+comment|/**      * Writes a string to the bytes message stream using UTF-8 encoding in a      * machine-independent manner.      *<P>      * For more information on the UTF-8 format, see "File System Safe UCS      * Transformation Format (FSS_UTF)", X/Open Preliminary Specification,      * X/Open Company Ltd., Document Number: P316. This information also appears      * in ISO/IEC 10646, Annex P.      *      * @param value the<code>String</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
 specifier|public
 name|void
 name|writeUTF
@@ -1617,7 +1617,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Writes a byte array to the bytes message stream.      *       * @param value the byte array to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+comment|/**      * Writes a byte array to the bytes message stream.      *      * @param value the byte array to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
 specifier|public
 name|void
 name|writeBytes
@@ -1660,7 +1660,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Writes a portion of a byte array to the bytes message stream.      *       * @param value the byte array value to be written      * @param offset the initial offset within the byte array      * @param length the number of bytes to use      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+comment|/**      * Writes a portion of a byte array to the bytes message stream.      *      * @param value the byte array value to be written      * @param offset the initial offset within the byte array      * @param length the number of bytes to use      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
 specifier|public
 name|void
 name|writeBytes
@@ -1713,7 +1713,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Writes an object to the bytes message stream.      *<P>      * This method works only for the objectified primitive object types (<code>Integer</code>,<code>Double</code>,      *<code>Long</code>&nbsp;...),<code>String</code> objects, and byte      * arrays.      *       * @param value the object in the Java programming language ("Java object")      *                to be written; it must not be null      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageFormatException if the object is of an invalid type.      * @throws MessageNotWriteableException if the message is in read-only mode.      * @throws java.lang.NullPointerException if the parameter      *<code>value</code> is null.      */
+comment|/**      * Writes an object to the bytes message stream.      *<P>      * This method works only for the objectified primitive object types (<code>Integer</code>,<code>Double</code>,      *<code>Long</code>&nbsp;...),<code>String</code> objects, and byte      * arrays.      *      * @param value the object in the Java programming language ("Java object")      *                to be written; it must not be null      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageFormatException if the object is of an invalid type.      * @throws MessageNotWriteableException if the message is in read-only mode.      * @throws java.lang.NullPointerException if the parameter      *<code>value</code> is null.      */
 specifier|public
 name|void
 name|writeObject
@@ -1967,7 +1967,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Puts the message body in read-only mode and repositions the stream of      * bytes to the beginning.      *       * @throws JMSException if an internal error occurs      */
+comment|/**      * Puts the message body in read-only mode and repositions the stream of      * bytes to the beginning.      *      * @throws JMSException if an internal error occurs      */
 specifier|public
 name|void
 name|reset
@@ -2205,14 +2205,14 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|deflater
-operator|.
-name|end
-argument_list|()
-expr_stmt|;
 name|super
 operator|.
 name|close
+argument_list|()
+expr_stmt|;
+name|deflater
+operator|.
+name|end
 argument_list|()
 expr_stmt|;
 block|}
