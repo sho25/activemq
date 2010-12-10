@@ -1155,7 +1155,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// Get a connection and insert the message into the DB.
 name|TransactionContext
 name|c
 init|=
