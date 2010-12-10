@@ -558,6 +558,14 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_INITIAL_RECONNECT_DELAY
+init|=
+literal|10
+decl_stmt|;
+specifier|private
 name|TransportListener
 name|transportListener
 decl_stmt|;
@@ -703,7 +711,7 @@ specifier|private
 name|long
 name|initialReconnectDelay
 init|=
-literal|10
+name|DEFAULT_INITIAL_RECONNECT_DELAY
 decl_stmt|;
 specifier|private
 name|long
@@ -754,8 +762,7 @@ specifier|private
 name|long
 name|reconnectDelay
 init|=
-operator|-
-literal|1
+name|DEFAULT_INITIAL_RECONNECT_DELAY
 decl_stmt|;
 specifier|private
 name|Exception
@@ -3890,8 +3897,7 @@ name|useExponentialBackOff
 operator|||
 name|reconnectDelay
 operator|==
-operator|-
-literal|1
+name|DEFAULT_INITIAL_RECONNECT_DELAY
 condition|)
 block|{
 name|reconnectDelay
