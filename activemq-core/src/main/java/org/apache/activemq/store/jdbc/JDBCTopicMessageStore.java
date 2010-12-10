@@ -532,6 +532,10 @@ name|res
 index|[
 literal|1
 index|]
+operator|+
+literal|" mid:"
+operator|+
+name|messageId
 argument_list|)
 expr_stmt|;
 block|}
@@ -1042,6 +1046,26 @@ argument_list|,
 name|maxReturned
 argument_list|,
 name|jdbcListener
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+name|key
+operator|+
+literal|" last recovered: "
+operator|+
+name|lastRecovered
 argument_list|)
 expr_stmt|;
 block|}

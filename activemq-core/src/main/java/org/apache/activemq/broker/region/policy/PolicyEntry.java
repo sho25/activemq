@@ -1395,7 +1395,10 @@ name|clientId
 argument_list|,
 name|subName
 argument_list|,
-name|prefetch
+name|sub
+operator|.
+name|getPrefetchSize
+argument_list|()
 argument_list|,
 name|sub
 argument_list|)
