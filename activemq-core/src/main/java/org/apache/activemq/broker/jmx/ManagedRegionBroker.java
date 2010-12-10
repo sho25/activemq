@@ -2232,6 +2232,13 @@ argument_list|(
 name|inactiveName
 argument_list|)
 expr_stmt|;
+name|managementContext
+operator|.
+name|unregisterMBean
+argument_list|(
+name|inactiveName
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 catch|catch
