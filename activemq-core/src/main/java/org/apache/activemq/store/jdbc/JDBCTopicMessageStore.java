@@ -993,6 +993,26 @@ block|}
 decl_stmt|;
 if|if
 condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+name|key
+operator|+
+literal|" existing last recovered: "
+operator|+
+name|lastRecovered
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|isPrioritizedMessages
 argument_list|()
 condition|)

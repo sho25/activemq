@@ -328,7 +328,7 @@ name|subscription
 decl_stmt|;
 specifier|private
 name|int
-name|cacheCurrentPriority
+name|cacheCurrentLowestPriority
 init|=
 name|UNKNOWN
 decl_stmt|;
@@ -912,8 +912,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// tps becomes a highest priority only cache when we have a new higher priority
-comment|// message and we are not currently caching
+comment|// cache can be come high priority cache for immediate dispatch
 specifier|final
 name|int
 name|priority
@@ -946,11 +945,10 @@ name|priority
 operator|>
 name|tsp
 operator|.
-name|getLastDispatchPriority
+name|getCurrentLowestPriority
 argument_list|()
 condition|)
 block|{
-comment|// go get the latest priority message
 if|if
 condition|(
 name|LOG
@@ -966,6 +964,13 @@ argument_list|(
 literal|"enabling cache for cursor on high priority message "
 operator|+
 name|priority
+operator|+
+literal|", current lowest: "
+operator|+
+name|tsp
+operator|.
+name|getCurrentLowestPriority
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -975,35 +980,29 @@ name|cacheEnabled
 operator|=
 literal|true
 expr_stmt|;
-name|cacheCurrentPriority
+name|cacheCurrentLowestPriority
 operator|=
-name|priority
+name|tsp
+operator|.
+name|getCurrentLowestPriority
+argument_list|()
 expr_stmt|;
 block|}
 block|}
 elseif|else
 if|if
 condition|(
-name|cacheCurrentPriority
-operator|>
-literal|0
+name|cacheCurrentLowestPriority
+operator|!=
+name|UNKNOWN
 operator|&&
 name|priority
-operator|<
-name|cacheCurrentPriority
+operator|<=
+name|cacheCurrentLowestPriority
 condition|)
 block|{
 comment|// go to the store to get next priority message as lower priority messages may be recovered
-comment|// already
-name|tsp
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-name|cacheCurrentPriority
-operator|=
-name|UNKNOWN
-expr_stmt|;
+comment|// already and need to acked sequence order
 if|if
 condition|(
 name|LOG
@@ -1019,9 +1018,30 @@ argument_list|(
 literal|"disabling/clearing cache for cursor on lower priority message "
 operator|+
 name|priority
+operator|+
+literal|", tsp current lowest: "
+operator|+
+name|tsp
+operator|.
+name|getCurrentLowestPriority
+argument_list|()
+operator|+
+literal|" cache lowest: "
+operator|+
+name|cacheCurrentLowestPriority
 argument_list|)
 expr_stmt|;
 block|}
+name|tsp
+operator|.
+name|cacheEnabled
+operator|=
+literal|false
+expr_stmt|;
+name|cacheCurrentLowestPriority
+operator|=
+name|UNKNOWN
+expr_stmt|;
 block|}
 name|tsp
 operator|.
@@ -1355,6 +1375,10 @@ name|gc
 argument_list|()
 expr_stmt|;
 block|}
+name|cacheCurrentLowestPriority
+operator|=
+name|UNKNOWN
+expr_stmt|;
 block|}
 annotation|@
 name|Override

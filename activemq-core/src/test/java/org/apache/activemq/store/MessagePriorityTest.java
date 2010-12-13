@@ -347,6 +347,12 @@ init|=
 literal|true
 decl_stmt|;
 specifier|public
+name|boolean
+name|immediatePriorityDispatch
+init|=
+literal|true
+decl_stmt|;
+specifier|public
 name|int
 name|prefetchVal
 init|=
@@ -454,7 +460,7 @@ name|durableSubPending
 operator|.
 name|setImmediatePriorityDispatch
 argument_list|(
-literal|true
+name|immediatePriorityDispatch
 argument_list|)
 expr_stmt|;
 name|policy
