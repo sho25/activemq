@@ -802,14 +802,6 @@ decl_stmt|;
 specifier|private
 name|Timer
 name|timer
-init|=
-operator|new
-name|Timer
-argument_list|(
-literal|"KahaDB Scheduler"
-argument_list|,
-literal|true
-argument_list|)
 decl_stmt|;
 specifier|public
 specifier|synchronized
