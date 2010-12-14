@@ -248,6 +248,10 @@ specifier|private
 name|String
 name|durableSubscriberMessageCountStatementWithPriority
 decl_stmt|;
+specifier|private
+name|String
+name|dropAckPKAlterStatementEnd
+decl_stmt|;
 specifier|public
 name|String
 index|[]
@@ -446,7 +450,10 @@ operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
-literal|" DROP PRIMARY KEY"
+literal|" "
+operator|+
+name|getDropAckPKAlterStatementEnd
+argument_list|()
 block|,
 literal|"ALTER TABLE "
 operator|+
@@ -460,6 +467,42 @@ block|}
 return|return
 name|createSchemaStatements
 return|;
+block|}
+specifier|public
+name|String
+name|getDropAckPKAlterStatementEnd
+parameter_list|()
+block|{
+if|if
+condition|(
+name|dropAckPKAlterStatementEnd
+operator|==
+literal|null
+condition|)
+block|{
+name|dropAckPKAlterStatementEnd
+operator|=
+literal|"DROP PRIMARY KEY"
+expr_stmt|;
+block|}
+return|return
+name|dropAckPKAlterStatementEnd
+return|;
+block|}
+specifier|public
+name|void
+name|setDropAckPKAlterStatementEnd
+parameter_list|(
+name|String
+name|dropAckPKAlterStatementEnd
+parameter_list|)
+block|{
+name|this
+operator|.
+name|dropAckPKAlterStatementEnd
+operator|=
+name|dropAckPKAlterStatementEnd
+expr_stmt|;
 block|}
 specifier|public
 name|String
