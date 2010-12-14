@@ -127,6 +127,22 @@ name|NetworkConnector
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|thread
+operator|.
+name|DefaultThreadPools
+operator|.
+name|shutdown
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -310,7 +326,7 @@ argument_list|)
 expr_stmt|;
 name|connection
 operator|.
-name|stop
+name|close
 argument_list|()
 expr_stmt|;
 name|broker
@@ -371,12 +387,43 @@ name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://localhost:61616"
+literal|"tcp://localhost:61616?wireFormat.maxInactivityDuration=1000&wireFormat.maxInactivityDurationInitalDelay=1000"
 argument_list|)
 expr_stmt|;
 name|broker
 operator|.
 name|start
+argument_list|()
+expr_stmt|;
+name|ActiveMQConnectionFactory
+name|cf
+init|=
+operator|new
+name|ActiveMQConnectionFactory
+argument_list|(
+literal|"tcp://localhost:61616?wireFormat.maxInactivityDuration=1000&wireFormat.maxInactivityDurationInitalDelay=1000"
+argument_list|)
+decl_stmt|;
+name|Connection
+name|connection
+init|=
+name|cf
+operator|.
+name|createConnection
+argument_list|(
+literal|"system"
+argument_list|,
+literal|"manager"
+argument_list|)
+decl_stmt|;
+name|connection
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+name|connection
+operator|.
+name|close
 argument_list|()
 expr_stmt|;
 name|broker
@@ -388,6 +435,19 @@ name|broker
 operator|.
 name|waitUntilStopped
 argument_list|()
+expr_stmt|;
+name|shutdown
+argument_list|()
+expr_stmt|;
+comment|// let it settle
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|sleep
+argument_list|(
+literal|5
+argument_list|)
 expr_stmt|;
 name|int
 name|threadCountAfterStop
@@ -405,7 +465,7 @@ name|ThreadExplorer
 operator|.
 name|show
 argument_list|(
-literal|"active afer stop"
+literal|"active after stop"
 argument_list|)
 operator|+
 literal|". threadCount="

@@ -98,6 +98,19 @@ return|return
 name|DEFAULT_TASK_RUNNER_FACTORY
 return|;
 block|}
+comment|/**      * Useful to cleanup when it is known that all brokers and connections are      * close and stopped, eg: when un deploying from web container.      */
+specifier|public
+specifier|static
+name|void
+name|shutdown
+parameter_list|()
+block|{
+name|DEFAULT_TASK_RUNNER_FACTORY
+operator|.
+name|shutdown
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 
