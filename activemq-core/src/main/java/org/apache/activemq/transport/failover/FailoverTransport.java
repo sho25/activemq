@@ -2952,6 +2952,7 @@ control|)
 block|{
 if|if
 condition|(
+operator|!
 name|contains
 argument_list|(
 name|u
@@ -2959,16 +2960,12 @@ index|[
 name|i
 index|]
 argument_list|)
-operator|==
-literal|false
 condition|)
 block|{
 name|uris
 operator|.
 name|add
 argument_list|(
-name|i
-argument_list|,
 name|u
 index|[
 name|i
