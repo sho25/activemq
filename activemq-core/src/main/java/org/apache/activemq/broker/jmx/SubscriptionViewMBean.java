@@ -190,7 +190,7 @@ argument_list|(
 literal|"Number of messages that sent to the client."
 argument_list|)
 name|long
-name|getDispachedCounter
+name|getDispatchedCounter
 parameter_list|()
 function_decl|;
 comment|/**      * @return number of messages that matched the subscription      */

@@ -736,7 +736,7 @@ block|}
 comment|/**      * @return number of messages that matched the subscription      */
 specifier|public
 name|long
-name|getDispachedCounter
+name|getDispatchedCounter
 parameter_list|()
 block|{
 return|return
