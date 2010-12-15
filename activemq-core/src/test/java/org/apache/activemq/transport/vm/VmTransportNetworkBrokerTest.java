@@ -128,7 +128,7 @@ import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
 name|apache
@@ -138,8 +138,6 @@ operator|.
 name|thread
 operator|.
 name|DefaultThreadPools
-operator|.
-name|shutdown
 import|;
 end_import
 
@@ -178,11 +176,20 @@ argument_list|)
 decl_stmt|;
 specifier|public
 name|void
-name|testNoThreadLeakWithActiveVMConnection
+name|testNoThreadLeak
 parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// with VMConnection and simple discovery network connector
+name|int
+name|originalThreadCount
+init|=
+name|Thread
+operator|.
+name|activeCount
+argument_list|()
+decl_stmt|;
 name|BrokerService
 name|broker
 init|=
@@ -274,7 +281,7 @@ literal|5
 argument_list|)
 expr_stmt|;
 name|int
-name|threadCount
+name|threadCountAfterStart
 init|=
 name|Thread
 operator|.
@@ -311,7 +318,7 @@ argument_list|)
 operator|+
 literal|", threadCount="
 operator|+
-name|threadCount
+name|threadCountAfterStart
 operator|+
 literal|" threadCountAfterSleep="
 operator|+
@@ -319,7 +326,7 @@ name|threadCountAfterSleep
 argument_list|,
 name|threadCountAfterSleep
 operator|<
-name|threadCount
+name|threadCountAfterStart
 operator|+
 literal|8
 argument_list|)
@@ -339,29 +346,13 @@ operator|.
 name|waitUntilStopped
 argument_list|()
 expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testNoDanglingThreadsAfterStop
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|int
-name|threadCount
-init|=
-name|Thread
-operator|.
-name|activeCount
-argument_list|()
-decl_stmt|;
-name|BrokerService
+comment|// testNoDanglingThreadsAfterStop with tcp transport
 name|broker
-init|=
+operator|=
 operator|new
 name|BrokerService
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|broker
 operator|.
 name|setSchedulerSupport
@@ -395,18 +386,16 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|ActiveMQConnectionFactory
 name|cf
-init|=
+operator|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
 literal|"tcp://localhost:61616?wireFormat.maxInactivityDuration=1000&wireFormat.maxInactivityDurationInitalDelay=1000"
 argument_list|)
-decl_stmt|;
-name|Connection
+expr_stmt|;
 name|connection
-init|=
+operator|=
 name|cf
 operator|.
 name|createConnection
@@ -415,7 +404,7 @@ literal|"system"
 argument_list|,
 literal|"manager"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|connection
 operator|.
 name|start
@@ -436,6 +425,9 @@ operator|.
 name|waitUntilStopped
 argument_list|()
 expr_stmt|;
+comment|// must only be called when all brokers and connections are done!
+name|DefaultThreadPools
+operator|.
 name|shutdown
 argument_list|()
 expr_stmt|;
@@ -468,9 +460,9 @@ argument_list|(
 literal|"active after stop"
 argument_list|)
 operator|+
-literal|". threadCount="
+literal|". originalThreadCount="
 operator|+
-name|threadCount
+name|originalThreadCount
 operator|+
 literal|" threadCountAfterStop="
 operator|+
@@ -478,7 +470,7 @@ name|threadCountAfterStop
 argument_list|,
 name|threadCountAfterStop
 operator|==
-name|threadCount
+name|originalThreadCount
 argument_list|)
 expr_stmt|;
 block|}
