@@ -1795,9 +1795,16 @@ operator|/
 name|TO_SEND
 operator|)
 decl_stmt|;
+specifier|final
+name|int
+name|reasonableMultiplier
+init|=
+literal|4
+decl_stmt|;
+comment|// not so reasonable, but on slow disks it can be
 name|assertTrue
 argument_list|(
-literal|"max three times as slow with consumer:"
+literal|"max X times as slow with consumer:"
 operator|+
 name|withConsumerAve
 operator|+
@@ -1809,7 +1816,7 @@ name|withConsumerAve
 operator|<
 name|noConsumerAve
 operator|*
-literal|3
+name|reasonableMultiplier
 argument_list|)
 expr_stmt|;
 name|Wait
