@@ -1370,6 +1370,12 @@ operator|==
 name|ActiveMQPrefetchPolicy
 operator|.
 name|DEFAULT_DURABLE_TOPIC_PREFETCH
+operator|||
+name|prefetch
+operator|==
+name|ActiveMQPrefetchPolicy
+operator|.
+name|DEFAULT_OPTIMIZE_DURABLE_TOPIC_PREFETCH
 condition|)
 block|{
 name|sub
