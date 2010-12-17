@@ -1323,7 +1323,7 @@ name|ObjectName
 name|name
 parameter_list|)
 throws|throws
-name|Exception
+name|InstanceNotFoundException
 block|{
 return|return
 name|getMBeanServer
