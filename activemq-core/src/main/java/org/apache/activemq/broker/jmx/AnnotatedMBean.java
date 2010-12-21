@@ -1026,6 +1026,9 @@ block|{
 name|caller
 operator|+=
 name|principal
+operator|.
+name|getName
+argument_list|()
 operator|+
 literal|" "
 expr_stmt|;
@@ -1036,6 +1039,9 @@ operator|.
 name|info
 argument_list|(
 name|caller
+operator|.
+name|trim
+argument_list|()
 operator|+
 literal|" called "
 operator|+
