@@ -1063,8 +1063,6 @@ name|toString
 argument_list|(
 name|objects
 argument_list|)
-operator|+
-literal|""
 argument_list|)
 expr_stmt|;
 block|}
