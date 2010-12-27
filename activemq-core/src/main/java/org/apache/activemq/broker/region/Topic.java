@@ -2008,27 +2008,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|// If the user manager is not full, then the task will
-comment|// not
-comment|// get called..
-if|if
-condition|(
-operator|!
-name|memoryUsage
-operator|.
-name|notifyCallbackWhenNotFull
-argument_list|(
-name|sendMessagesWaitingForSpaceTask
-argument_list|)
-condition|)
-block|{
-comment|// so call it directly here.
-name|sendMessagesWaitingForSpaceTask
-operator|.
-name|run
+name|registerCallbackForNotFullNotification
 argument_list|()
 expr_stmt|;
-block|}
 name|context
 operator|.
 name|setDontSendReponse
@@ -3033,10 +3015,49 @@ name|run
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|messagesWaitingForSpace
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|registerCallbackForNotFullNotification
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 return|return
 literal|false
 return|;
+block|}
+specifier|private
+name|void
+name|registerCallbackForNotFullNotification
+parameter_list|()
+block|{
+comment|// If the usage manager is not full, then the task will not
+comment|// get called..
+if|if
+condition|(
+operator|!
+name|memoryUsage
+operator|.
+name|notifyCallbackWhenNotFull
+argument_list|(
+name|sendMessagesWaitingForSpaceTask
+argument_list|)
+condition|)
+block|{
+comment|// so call it directly here.
+name|sendMessagesWaitingForSpaceTask
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 comment|// Properties
 comment|// -------------------------------------------------------------------------
