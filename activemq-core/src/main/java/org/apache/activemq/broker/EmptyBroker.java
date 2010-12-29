@@ -1120,6 +1120,22 @@ parameter_list|()
 block|{             }
 specifier|public
 name|void
+name|networkBridgeStarted
+parameter_list|(
+name|BrokerInfo
+name|brokerInfo
+parameter_list|)
+block|{     }
+specifier|public
+name|void
+name|networkBridgeStopped
+parameter_list|(
+name|BrokerInfo
+name|brokerInfo
+parameter_list|)
+block|{     }
+specifier|public
+name|void
 name|processConsumerControl
 parameter_list|(
 name|ConsumerBrokerExchange
