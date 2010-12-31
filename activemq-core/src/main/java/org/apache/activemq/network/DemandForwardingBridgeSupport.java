@@ -2146,6 +2146,10 @@ operator|.
 name|networkBridgeStarted
 argument_list|(
 name|remoteBrokerInfo
+argument_list|,
+name|this
+operator|.
+name|createdByDuplex
 argument_list|)
 expr_stmt|;
 name|LOG

@@ -1624,6 +1624,9 @@ name|networkBridgeStarted
 parameter_list|(
 name|BrokerInfo
 name|brokerInfo
+parameter_list|,
+name|boolean
+name|createdByDuplex
 parameter_list|)
 block|{
 name|next
@@ -1631,6 +1634,8 @@ operator|.
 name|networkBridgeStarted
 argument_list|(
 name|brokerInfo
+argument_list|,
+name|createdByDuplex
 argument_list|)
 expr_stmt|;
 block|}

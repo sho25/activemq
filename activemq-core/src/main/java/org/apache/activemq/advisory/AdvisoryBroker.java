@@ -2689,6 +2689,9 @@ name|networkBridgeStarted
 parameter_list|(
 name|BrokerInfo
 name|brokerInfo
+parameter_list|,
+name|boolean
+name|createdByDuplex
 parameter_list|)
 block|{
 try|try
@@ -2714,6 +2717,15 @@ argument_list|(
 literal|"started"
 argument_list|,
 literal|true
+argument_list|)
+expr_stmt|;
+name|advisoryMessage
+operator|.
+name|setBooleanProperty
+argument_list|(
+literal|"createdByDuplex"
+argument_list|,
+name|createdByDuplex
 argument_list|)
 expr_stmt|;
 name|ActiveMQTopic

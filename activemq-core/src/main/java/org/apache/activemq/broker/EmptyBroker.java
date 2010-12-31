@@ -1124,6 +1124,9 @@ name|networkBridgeStarted
 parameter_list|(
 name|BrokerInfo
 name|brokerInfo
+parameter_list|,
+name|boolean
+name|createdByDuplex
 parameter_list|)
 block|{     }
 specifier|public

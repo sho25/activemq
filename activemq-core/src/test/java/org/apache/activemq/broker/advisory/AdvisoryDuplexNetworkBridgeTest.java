@@ -149,6 +149,20 @@ name|waitUntilStarted
 argument_list|()
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|assertCreatedByDuplex
+parameter_list|(
+name|boolean
+name|createdByDuplex
+parameter_list|)
+block|{
+name|assertTrue
+argument_list|(
+name|createdByDuplex
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
