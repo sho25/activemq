@@ -1318,16 +1318,6 @@ argument_list|(
 name|remoteBrokerInfo
 argument_list|)
 expr_stmt|;
-name|brokerService
-operator|.
-name|getBroker
-argument_list|()
-operator|.
-name|networkBridgeStarted
-argument_list|(
-name|remoteBrokerInfo
-argument_list|)
-expr_stmt|;
 block|}
 specifier|public
 name|void
