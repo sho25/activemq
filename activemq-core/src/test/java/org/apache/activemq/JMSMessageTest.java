@@ -235,6 +235,10 @@ decl_stmt|;
 specifier|public
 name|int
 name|deliveryMode
+init|=
+name|DeliveryMode
+operator|.
+name|NON_PERSISTENT
 decl_stmt|;
 specifier|public
 name|int
@@ -247,6 +251,10 @@ decl_stmt|;
 specifier|public
 name|byte
 name|destinationType
+init|=
+name|ActiveMQDestination
+operator|.
+name|QUEUE_TYPE
 decl_stmt|;
 specifier|public
 name|boolean
@@ -255,6 +263,8 @@ decl_stmt|;
 specifier|public
 name|String
 name|connectURL
+init|=
+literal|"vm://localhost?marshal=false"
 decl_stmt|;
 comment|/**      * Run all these tests in both marshaling and non-marshaling mode.      */
 specifier|public
@@ -2022,10 +2032,9 @@ decl_stmt|;
 comment|//validate jms spec 1.1 section 3.4.11 table 3.1
 comment|// JMSDestination, JMSDeliveryMode,  JMSExpiration, JMSPriority, JMSMessageID, and JMSTimestamp
 comment|//must be set by sending a message.
-name|assertEquals
+comment|// exception for jms destination as the format is provider defined so it is only set on the copy
+name|assertNull
 argument_list|(
-name|destination
-argument_list|,
 name|message
 operator|.
 name|getJMSDestination

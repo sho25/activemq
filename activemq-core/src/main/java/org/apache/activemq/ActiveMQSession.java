@@ -4541,14 +4541,7 @@ operator|.
 name|getMessageSequence
 argument_list|()
 decl_stmt|;
-comment|//Set the "JMS" header fields on the orriginal message, see 1.1 spec section 3.4.11
-name|message
-operator|.
-name|setJMSDestination
-argument_list|(
-name|destination
-argument_list|)
-expr_stmt|;
+comment|//Set the "JMS" header fields on the original message, see 1.1 spec section 3.4.11
 name|message
 operator|.
 name|setJMSDeliveryMode
@@ -4703,6 +4696,14 @@ operator|.
 name|setBrokerPath
 argument_list|(
 literal|null
+argument_list|)
+expr_stmt|;
+comment|// destination format is provider specific so only set on transformed message
+name|msg
+operator|.
+name|setJMSDestination
+argument_list|(
+name|destination
 argument_list|)
 expr_stmt|;
 name|msg
