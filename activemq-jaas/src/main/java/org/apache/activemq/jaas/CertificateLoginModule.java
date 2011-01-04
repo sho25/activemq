@@ -654,7 +654,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/**      * Should return a unique name corresponding to the certificates given. The      * name returned will be used to look up access levels as well as group      * associations.      *       * @param dn The distinguished name.      * @return The unique name if the certificate is recognized, null otherwise.      */
+comment|/**      * Should return a unique name corresponding to the certificates given. The      * name returned will be used to look up access levels as well as group      * associations.      *       * @param certs The distinguished name.      * @return The unique name if the certificate is recognized, null otherwise.      */
 specifier|protected
 specifier|abstract
 name|String
