@@ -244,6 +244,14 @@ name|getDestFilter
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|cb
+operator|.
+name|setReportInterval
+argument_list|(
+name|getReportInterval
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|cb
 return|;
