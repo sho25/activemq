@@ -679,7 +679,7 @@ literal|false
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Construct a Store writer      *       * @param fileId      */
+comment|/**      * Construct a Store writer      */
 specifier|public
 name|DataFileAppender
 parameter_list|(
@@ -716,7 +716,6 @@ name|getWriteBatchSize
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @param type      * @param marshaller      * @param payload      * @param type      * @param sync      * @return      * @throws IOException      * @throws      * @throws      */
 specifier|public
 name|Location
 name|storeItem
@@ -2016,19 +2015,19 @@ condition|)
 block|{
 name|wb
 operator|.
-name|latch
-operator|.
-name|countDown
-argument_list|()
-expr_stmt|;
-name|wb
-operator|.
 name|exception
 operator|.
 name|set
 argument_list|(
 name|e
 argument_list|)
+expr_stmt|;
+name|wb
+operator|.
+name|latch
+operator|.
+name|countDown
+argument_list|()
 expr_stmt|;
 block|}
 if|if
@@ -2040,19 +2039,19 @@ condition|)
 block|{
 name|nextWriteBatch
 operator|.
-name|latch
-operator|.
-name|countDown
-argument_list|()
-expr_stmt|;
-name|nextWriteBatch
-operator|.
 name|exception
 operator|.
 name|set
 argument_list|(
 name|e
 argument_list|)
+expr_stmt|;
+name|nextWriteBatch
+operator|.
+name|latch
+operator|.
+name|countDown
+argument_list|()
 expr_stmt|;
 block|}
 block|}

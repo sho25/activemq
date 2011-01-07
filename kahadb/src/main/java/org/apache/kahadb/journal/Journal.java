@@ -1064,6 +1064,28 @@ range|:
 name|l
 control|)
 block|{
+if|if
+condition|(
+name|df
+operator|.
+name|getLength
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+comment|// possibly the result of a previous failed write
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"ignoring zero length, partially initialised journal data file: "
+operator|+
+name|df
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
 name|dataFiles
 operator|.
 name|addLast
