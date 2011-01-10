@@ -219,6 +219,27 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|// need an app to input to console in intellij idea
+specifier|public
+specifier|static
+name|void
+name|main
+parameter_list|(
+name|String
+index|[]
+name|args
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+operator|new
+name|NoSpaceIOTest
+argument_list|()
+operator|.
+name|testRunOutOfSpace
+argument_list|()
+expr_stmt|;
+block|}
 comment|// handy way to validate some out of space related errors with a usb key
 comment|// allow it to run out of space, delete toDelete and see it recover
 annotation|@
@@ -271,6 +292,13 @@ name|exists
 argument_list|()
 condition|)
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"using up some space..."
+argument_list|)
+expr_stmt|;
 name|RandomAccessFile
 name|filler
 init|=
@@ -290,10 +318,15 @@ literal|1024
 operator|*
 literal|1024
 operator|*
-literal|1412
+literal|1212
 argument_list|)
 expr_stmt|;
-comment|// use ~1.5G of 2G (usb) volume
+comment|// use ~1.xG of 2G (usb) volume
+name|filler
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 name|File
 name|toDelete
 init|=
@@ -329,6 +362,11 @@ literal|10
 argument_list|)
 expr_stmt|;
 comment|// 10 data files
+name|filler
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 name|broker
 operator|.
@@ -390,7 +428,81 @@ name|produce
 argument_list|(
 name|sent
 argument_list|,
-literal|100
+literal|200
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|expected
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"got ex, sent: "
+operator|+
+name|sent
+argument_list|)
+expr_stmt|;
+block|}
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"sent: "
+operator|+
+name|sent
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Remove toDelete file and press any key to continue"
+argument_list|)
+expr_stmt|;
+name|int
+name|read
+init|=
+name|System
+operator|.
+name|in
+operator|.
+name|read
+argument_list|()
+decl_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"read:"
+operator|+
+name|read
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Trying to send again: "
+operator|+
+name|sent
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|produce
+argument_list|(
+name|sent
+argument_list|,
+literal|200
 argument_list|)
 expr_stmt|;
 block|}
@@ -442,6 +554,8 @@ operator|.
 name|createConnection
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 name|c
 operator|.
 name|start
@@ -494,6 +608,15 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+finally|finally
+block|{
+name|c
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 specifier|private
 name|void
 name|produce
@@ -519,6 +642,8 @@ operator|.
 name|createConnection
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 name|c
 operator|.
 name|start
@@ -603,6 +728,15 @@ expr_stmt|;
 name|sent
 operator|.
 name|incrementAndGet
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+finally|finally
+block|{
+name|c
+operator|.
+name|close
 argument_list|()
 expr_stmt|;
 block|}
