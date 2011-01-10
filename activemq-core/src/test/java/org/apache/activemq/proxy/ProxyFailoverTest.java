@@ -311,17 +311,16 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+comment|//ActiveMQConnectionFactory consumerFactory = new ActiveMQConnectionFactory("tcp://localhost:51618?wireFormat.cacheEnabled=false");
 name|ActiveMQConnectionFactory
 name|consumerFactory
 init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"tcp://localhost:51618?wireFormat.cacheEnabled=false"
+literal|"tcp://localhost:51618"
 argument_list|)
 decl_stmt|;
-comment|// if used with cached enabled it will fail
-comment|//ActiveMQConnectionFactory consumerFactory = new ActiveMQConnectionFactory("tcp://localhost:51618");
 name|Connection
 name|consumerConnection
 init|=
