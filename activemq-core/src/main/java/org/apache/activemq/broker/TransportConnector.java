@@ -1251,7 +1251,7 @@ literal|" Started"
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
+specifier|public
 name|String
 name|getPublishableConnectString
 parameter_list|()
@@ -1844,9 +1844,15 @@ literal|""
 decl_stmt|;
 if|if
 condition|(
+name|isUpdateClusterClients
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
 name|brokerService
 operator|.
-name|getDefaultSocketURI
+name|getDefaultSocketURIString
 argument_list|()
 operator|!=
 literal|null
@@ -1856,10 +1862,7 @@ name|self
 operator|+=
 name|brokerService
 operator|.
-name|getDefaultSocketURI
-argument_list|()
-operator|.
-name|toString
+name|getDefaultSocketURIString
 argument_list|()
 expr_stmt|;
 name|self
@@ -1938,6 +1941,7 @@ name|connectedBrokers
 operator|+=
 name|self
 expr_stmt|;
+block|}
 block|}
 name|ConnectionControl
 name|control

@@ -1384,8 +1384,8 @@ name|URI
 name|vmConnectorURI
 decl_stmt|;
 specifier|private
-name|URI
-name|defaultSocketURI
+name|String
+name|defaultSocketURIString
 decl_stmt|;
 specifier|private
 name|PolicyMap
@@ -5688,8 +5688,8 @@ name|vmConnectorURI
 expr_stmt|;
 block|}
 specifier|public
-name|URI
-name|getDefaultSocketURI
+name|String
+name|getDefaultSocketURIString
 parameter_list|()
 block|{
 if|if
@@ -5704,7 +5704,7 @@ if|if
 condition|(
 name|this
 operator|.
-name|defaultSocketURI
+name|defaultSocketURIString
 operator|==
 literal|null
 condition|)
@@ -5719,7 +5719,7 @@ operator|.
 name|transportConnectors
 control|)
 block|{
-name|URI
+name|String
 name|result
 init|=
 literal|null
@@ -5730,7 +5730,7 @@ name|result
 operator|=
 name|tc
 operator|.
-name|getConnectUri
+name|getPublishableConnectString
 argument_list|()
 expr_stmt|;
 block|}
@@ -5761,7 +5761,7 @@ condition|)
 block|{
 name|this
 operator|.
-name|defaultSocketURI
+name|defaultSocketURIString
 operator|=
 name|result
 expr_stmt|;
@@ -5772,7 +5772,7 @@ block|}
 return|return
 name|this
 operator|.
-name|defaultSocketURI
+name|defaultSocketURIString
 return|;
 block|}
 return|return
@@ -9141,7 +9141,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|getDefaultSocketURI
+name|getDefaultSocketURIString
 argument_list|()
 operator|!=
 literal|null
@@ -9151,10 +9151,7 @@ name|connector
 operator|.
 name|setBrokerURL
 argument_list|(
-name|getDefaultSocketURI
-argument_list|()
-operator|.
-name|toString
+name|getDefaultSocketURIString
 argument_list|()
 argument_list|)
 expr_stmt|;

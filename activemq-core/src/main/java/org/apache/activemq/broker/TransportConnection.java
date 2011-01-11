@@ -3697,6 +3697,10 @@ decl_stmt|;
 comment|// Avoid replaying dup commands
 if|if
 condition|(
+name|cs
+operator|!=
+literal|null
+operator|&&
 operator|!
 name|cs
 operator|.
