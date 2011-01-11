@@ -1258,20 +1258,31 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|String
+name|publishableConnectString
+init|=
+literal|null
+decl_stmt|;
 name|URI
 name|theConnectURI
 init|=
 name|getConnectUri
 argument_list|()
 decl_stmt|;
-name|String
+if|if
+condition|(
+name|theConnectURI
+operator|!=
+literal|null
+condition|)
+block|{
 name|publishableConnectString
-init|=
+operator|=
 name|theConnectURI
 operator|.
 name|toString
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 comment|// strip off server side query parameters which may not be compatible to
 comment|// clients
 if|if
@@ -1305,6 +1316,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
