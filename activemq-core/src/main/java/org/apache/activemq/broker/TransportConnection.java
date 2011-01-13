@@ -5906,23 +5906,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-if|if
-condition|(
-name|brokerInfo
-operator|!=
-literal|null
-condition|)
-block|{
-name|broker
-operator|.
-name|removeBroker
-argument_list|(
-name|this
-argument_list|,
-name|brokerInfo
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 name|LOG
 operator|.
@@ -6338,7 +6321,7 @@ comment|// so this TransportConnection is the rear end of a network bridge
 comment|// We have been requested to create a two way pipe ...
 try|try
 block|{
-comment|// We first look if existing network connection already exists for the same broker Id
+comment|// We first look if existing network connection already exists for the same broker Id and network connector name
 comment|// It's possible in case of brief network fault to have this transport connector side of the connection always active
 comment|// and the duplex network connector side wanting to open a new one
 comment|// In this case, the old connection must be broken
@@ -6769,15 +6752,6 @@ operator|.
 name|brokerInfo
 operator|=
 name|info
-expr_stmt|;
-name|broker
-operator|.
-name|addBroker
-argument_list|(
-name|this
-argument_list|,
-name|info
-argument_list|)
 expr_stmt|;
 name|networkConnection
 operator|=
