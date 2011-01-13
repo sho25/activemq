@@ -337,8 +337,9 @@ condition|)
 block|{
 name|auditLog
 operator|=
-operator|new
 name|AuditLogService
+operator|.
+name|getAuditLog
 argument_list|()
 expr_stmt|;
 block|}
