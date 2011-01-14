@@ -4073,7 +4073,13 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Expiring messages .."
+name|getActiveMQDestination
+argument_list|()
+operator|.
+name|getQualifiedName
+argument_list|()
+operator|+
+literal|" expiring messages .."
 argument_list|)
 expr_stmt|;
 block|}
@@ -4153,6 +4159,28 @@ expr_stmt|;
 name|asyncWakeup
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|getActiveMQDestination
+argument_list|()
+operator|.
+name|getQualifiedName
+argument_list|()
+operator|+
+literal|" expiring messages done."
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
