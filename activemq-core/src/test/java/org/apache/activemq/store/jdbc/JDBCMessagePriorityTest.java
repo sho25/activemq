@@ -317,7 +317,7 @@ name|dataSource
 operator|.
 name|setShutdownDatabase
 argument_list|(
-literal|"false"
+literal|null
 argument_list|)
 expr_stmt|;
 name|jdbc
@@ -357,11 +357,19 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
+if|if
+condition|(
+name|dataSource
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// ref http://svn.apache.org/viewvc/db/derby/code/trunk/java/testing/org/apache/derbyTesting/junit/JDBCDataSource.java?view=markup
 name|dataSource
 operator|.
 name|setShutdownDatabase
 argument_list|(
-literal|"true"
+literal|"shutdown"
 argument_list|)
 expr_stmt|;
 name|dataSource
@@ -370,12 +378,23 @@ name|getConnection
 argument_list|()
 expr_stmt|;
 block|}
+block|}
 catch|catch
 parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
 block|{        }
+finally|finally
+block|{
+name|dataSource
+operator|.
+name|setShutdownDatabase
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|// this cannot be a general test as kahaDB just has support for 3 priority levels
 specifier|public
