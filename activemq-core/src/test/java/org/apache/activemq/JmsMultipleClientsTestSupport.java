@@ -348,6 +348,12 @@ literal|true
 decl_stmt|;
 specifier|protected
 name|boolean
+name|autoFail
+init|=
+literal|true
+decl_stmt|;
+specifier|protected
+name|boolean
 name|durable
 decl_stmt|;
 specifier|public
@@ -1208,7 +1214,7 @@ name|super
 operator|.
 name|setAutoFail
 argument_list|(
-literal|true
+name|autoFail
 argument_list|)
 expr_stmt|;
 name|super
