@@ -37,6 +37,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|ActiveMQConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|Service
 import|;
 end_import
@@ -204,6 +216,18 @@ name|brokerURL
 argument_list|)
 expr_stmt|;
 block|}
+comment|// set the connection factory with the provided broker url
+name|answer
+operator|.
+name|setConnectionFactory
+argument_list|(
+operator|new
+name|ActiveMQConnectionFactory
+argument_list|(
+name|brokerURL
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 name|answer
 return|;
