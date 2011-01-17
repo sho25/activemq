@@ -1159,6 +1159,12 @@ operator|+
 name|this
 operator|.
 name|size
+operator|+
+literal|", cacheEnabled="
+operator|+
+name|this
+operator|.
+name|cacheEnabled
 argument_list|)
 expr_stmt|;
 block|}
