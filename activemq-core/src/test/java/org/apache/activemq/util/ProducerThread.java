@@ -121,6 +121,11 @@ name|sleep
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|sentCount
+init|=
+literal|0
+decl_stmt|;
 specifier|public
 name|ProducerThread
 parameter_list|(
@@ -167,16 +172,15 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|int
-name|i
-init|=
+name|sentCount
+operator|=
 literal|0
 init|;
-name|i
+name|sentCount
 operator|<
 name|messageCount
 condition|;
-name|i
+name|sentCount
 operator|++
 control|)
 block|{
@@ -190,7 +194,7 @@ name|createTextMessage
 argument_list|(
 literal|"test message: "
 operator|+
-name|i
+name|sentCount
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -200,7 +204,7 @@ name|info
 argument_list|(
 literal|"Sent 'test message: "
 operator|+
-name|i
+name|sentCount
 operator|+
 literal|"'"
 argument_list|)
@@ -295,6 +299,24 @@ name|sleep
 operator|=
 name|sleep
 expr_stmt|;
+block|}
+specifier|public
+name|int
+name|getMessageCount
+parameter_list|()
+block|{
+return|return
+name|messageCount
+return|;
+block|}
+specifier|public
+name|int
+name|getSentCount
+parameter_list|()
+block|{
+return|return
+name|sentCount
+return|;
 block|}
 block|}
 end_class
