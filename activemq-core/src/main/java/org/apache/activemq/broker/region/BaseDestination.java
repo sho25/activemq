@@ -2383,7 +2383,7 @@ name|this
 operator|.
 name|lastActiveTime
 operator|)
-operator|>
+operator|>=
 name|getInactiveTimoutBeforeGC
 argument_list|()
 condition|)
