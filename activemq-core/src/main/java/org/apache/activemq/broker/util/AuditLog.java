@@ -26,8 +26,8 @@ specifier|public
 name|void
 name|log
 parameter_list|(
-name|String
-name|message
+name|AuditLogEntry
+name|entry
 parameter_list|)
 function_decl|;
 block|}

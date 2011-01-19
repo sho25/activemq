@@ -70,8 +70,8 @@ specifier|public
 name|void
 name|log
 parameter_list|(
-name|String
-name|message
+name|AuditLogEntry
+name|entry
 parameter_list|)
 block|{
 for|for
@@ -89,7 +89,7 @@ name|log
 operator|.
 name|log
 argument_list|(
-name|message
+name|entry
 argument_list|)
 expr_stmt|;
 block|}
