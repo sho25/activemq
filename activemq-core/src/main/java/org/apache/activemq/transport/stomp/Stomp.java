@@ -272,6 +272,11 @@ name|USERID
 init|=
 literal|"JMSXUserID"
 decl_stmt|;
+name|String
+name|ORIGINAL_DESTINATION
+init|=
+literal|"original-destination"
+decl_stmt|;
 block|}
 specifier|public
 interface|interface
