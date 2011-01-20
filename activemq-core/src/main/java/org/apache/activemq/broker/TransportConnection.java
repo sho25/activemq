@@ -4603,7 +4603,7 @@ name|iter
 init|=
 name|cs
 operator|.
-name|getTempDesinations
+name|getTempDestinations
 argument_list|()
 operator|.
 name|iterator

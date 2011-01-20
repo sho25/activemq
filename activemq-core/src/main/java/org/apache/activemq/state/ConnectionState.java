@@ -655,7 +655,7 @@ name|List
 argument_list|<
 name|DestinationInfo
 argument_list|>
-name|getTempDesinations
+name|getTempDestinations
 parameter_list|()
 block|{
 return|return

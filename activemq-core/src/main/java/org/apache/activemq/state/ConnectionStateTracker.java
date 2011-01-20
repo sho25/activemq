@@ -1736,7 +1736,7 @@ name|iter2
 init|=
 name|connectionState
 operator|.
-name|getTempDesinations
+name|getTempDestinations
 argument_list|()
 operator|.
 name|iterator
