@@ -4956,9 +4956,12 @@ block|{
 name|ConnectionContext
 name|context
 init|=
-operator|new
-name|ConnectionContext
-argument_list|()
+name|BrokerSupport
+operator|.
+name|getConnectionContext
+argument_list|(
+name|this
+argument_list|)
 decl_stmt|;
 name|context
 operator|.
