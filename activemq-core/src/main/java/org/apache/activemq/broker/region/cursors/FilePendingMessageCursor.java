@@ -453,7 +453,7 @@ operator|new
 name|OpenWireFormat
 argument_list|()
 decl_stmt|;
-comment|/**      * @param broker      * @param name      * @param prioritizedMessages       * @param store      */
+comment|/**      * @param broker      * @param name      * @param prioritizedMessages      */
 specifier|public
 name|FilePendingMessageCursor
 parameter_list|(
@@ -471,12 +471,6 @@ name|super
 argument_list|(
 name|prioritizedMessages
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|useCache
-operator|=
-literal|false
 expr_stmt|;
 name|this
 operator|.
@@ -1099,6 +1093,10 @@ operator|.
 name|incrementReferenceCount
 argument_list|()
 expr_stmt|;
+name|cacheEnabled
+operator|=
+literal|true
+expr_stmt|;
 return|return
 literal|true
 return|;
@@ -1295,6 +1293,10 @@ name|node
 operator|.
 name|incrementReferenceCount
 argument_list|()
+expr_stmt|;
+name|cacheEnabled
+operator|=
+literal|true
 expr_stmt|;
 return|return;
 block|}
@@ -2001,6 +2003,10 @@ name|memoryList
 operator|.
 name|clear
 argument_list|()
+expr_stmt|;
+name|cacheEnabled
+operator|=
+literal|false
 expr_stmt|;
 block|}
 block|}

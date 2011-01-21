@@ -204,7 +204,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author gtully  * @see https://issues.apache.org/activemq/browse/AMQ-2020  **/
+comment|/**  * @author gtully  * https://issues.apache.org/activemq/browse/AMQ-2020  **/
 end_comment
 
 begin_class
@@ -447,6 +447,21 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"cache enabled"
+argument_list|,
+name|underTest
+operator|.
+name|isUseCache
+argument_list|()
+operator|&&
+name|underTest
+operator|.
+name|isCacheEnabled
+argument_list|()
+argument_list|)
+expr_stmt|;
 specifier|final
 name|ConnectionContext
 name|contextNotInTx
@@ -505,6 +520,17 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+name|assertTrue
+argument_list|(
+literal|"cache is disabled as limit reached"
+argument_list|,
+operator|!
+name|underTest
+operator|.
+name|isCacheEnabled
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|int
 name|dequeueCount
 init|=

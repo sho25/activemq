@@ -144,7 +144,7 @@ literal|4
 decl_stmt|;
 specifier|public
 name|void
-name|testHog
+name|testImmediateDispatchWhenCacheDisabled
 parameter_list|()
 throws|throws
 name|Exception
@@ -268,7 +268,7 @@ name|ad
 operator|.
 name|setConcurrentStoreAndDispatchQueues
 argument_list|(
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 return|return

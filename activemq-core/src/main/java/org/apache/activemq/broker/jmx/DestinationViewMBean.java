@@ -664,11 +664,11 @@ name|int
 name|pageSize
 parameter_list|)
 function_decl|;
-comment|/**      * @return true if caching is enabled of for the destination      */
+comment|/**      * @return true if caching is allowed of for the destination      */
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"Caching is enabled"
+literal|"Caching is allowed"
 argument_list|)
 specifier|public
 name|boolean

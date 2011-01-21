@@ -418,6 +418,16 @@ name|int
 name|cursorSize
 parameter_list|()
 function_decl|;
+comment|/**      * @return true if caching is currently enabled of for the destination      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Caching is enabled"
+argument_list|)
+name|boolean
+name|isCacheEnabled
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

@@ -957,6 +957,26 @@ name|getMemoryPercentUsage
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"use cache"
+argument_list|,
+name|queueNew
+operator|.
+name|isUseCache
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"cache enabled"
+argument_list|,
+name|queueNew
+operator|.
+name|isCacheEnabled
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void

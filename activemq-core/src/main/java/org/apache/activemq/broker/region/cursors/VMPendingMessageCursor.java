@@ -156,12 +156,6 @@ argument_list|(
 name|prioritizedMessages
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|useCache
-operator|=
-literal|false
-expr_stmt|;
 if|if
 condition|(
 name|this

@@ -445,7 +445,7 @@ name|boolean
 name|useCache
 parameter_list|)
 function_decl|;
-comment|/**      * @return true if a cache is being used      */
+comment|/**      * @return true if a cache may be used      */
 specifier|public
 name|boolean
 name|isUseCache
@@ -459,6 +459,12 @@ parameter_list|(
 name|MessageId
 name|id
 parameter_list|)
+function_decl|;
+comment|/**      * @return true if cache is being used      */
+specifier|public
+name|boolean
+name|isCacheEnabled
+parameter_list|()
 function_decl|;
 block|}
 end_interface
