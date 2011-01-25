@@ -160,6 +160,13 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
+if|if
+condition|(
+name|connection
+operator|!=
+literal|null
+condition|)
+block|{
 name|connection
 operator|.
 name|deleteTempDestination
@@ -167,6 +174,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|ActiveMQConnection
