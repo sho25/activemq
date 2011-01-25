@@ -1385,7 +1385,7 @@ argument_list|(
 name|getName
 argument_list|()
 operator|+
-literal|"P roducer Flow Control Timeout Task is stopping"
+literal|"Producer Flow Control Timeout Task is stopping"
 argument_list|)
 expr_stmt|;
 block|}
@@ -4456,6 +4456,25 @@ literal|null
 condition|)
 block|{
 name|memoryUsage
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|systemUsage
+operator|.
+name|getStoreUsage
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|systemUsage
+operator|.
+name|getStoreUsage
+argument_list|()
 operator|.
 name|start
 argument_list|()
