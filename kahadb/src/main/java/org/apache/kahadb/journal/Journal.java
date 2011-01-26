@@ -3712,6 +3712,7 @@ argument_list|()
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|Map
 argument_list|<
 name|Integer
