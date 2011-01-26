@@ -6811,7 +6811,7 @@ name|TreeSet
 argument_list|<
 name|Integer
 argument_list|>
-name|gcCandidateSet
+name|completeFileSet
 init|=
 operator|new
 name|TreeSet
@@ -6826,6 +6826,22 @@ argument_list|()
 operator|.
 name|keySet
 argument_list|()
+argument_list|)
+decl_stmt|;
+specifier|final
+name|TreeSet
+argument_list|<
+name|Integer
+argument_list|>
+name|gcCandidateSet
+init|=
+operator|new
+name|TreeSet
+argument_list|<
+name|Integer
+argument_list|>
+argument_list|(
+name|completeFileSet
 argument_list|)
 decl_stmt|;
 comment|// Don't GC files under replication
@@ -7373,12 +7389,9 @@ control|)
 block|{
 if|if
 condition|(
-name|journal
+name|completeFileSet
 operator|.
-name|getFileMap
-argument_list|()
-operator|.
-name|containsKey
+name|contains
 argument_list|(
 name|referencedFileId
 argument_list|)
