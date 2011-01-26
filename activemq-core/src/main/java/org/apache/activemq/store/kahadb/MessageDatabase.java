@@ -6997,9 +6997,6 @@ argument_list|(
 literal|"gc candidates after first tx:"
 operator|+
 name|firstTxLocation
-operator|.
-name|getDataFileId
-argument_list|()
 operator|+
 literal|", "
 operator|+
