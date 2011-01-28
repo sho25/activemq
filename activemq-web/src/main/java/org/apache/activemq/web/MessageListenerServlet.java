@@ -1387,6 +1387,8 @@ name|message
 init|=
 literal|null
 decl_stmt|;
+comment|// this is non-null if we're resuming the continuation.
+comment|// attributes set in AjaxListener
 name|message
 operator|=
 operator|(
@@ -1644,6 +1646,15 @@ operator|.
 name|suspend
 argument_list|()
 expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Suspending continuation "
+operator|+
+name|continuation
+argument_list|)
+expr_stmt|;
 comment|// Fetch the listeners
 name|AjaxListener
 name|listener
@@ -1849,17 +1860,42 @@ operator|+
 literal|" unconsumed messages"
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|unconsumedMessages
+init|)
+block|{
 for|for
 control|(
+name|Iterator
+argument_list|<
 name|Message
-name|msg
-range|:
+argument_list|>
+name|it
+init|=
 name|unconsumedMessages
+operator|.
+name|iterator
+argument_list|()
+init|;
+name|it
+operator|.
+name|hasNext
+argument_list|()
+condition|;
 control|)
 block|{
 name|messages
 operator|++
 expr_stmt|;
+name|Message
+name|msg
+init|=
+name|it
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
 name|String
 name|id
 init|=
@@ -1891,6 +1927,11 @@ argument_list|,
 name|destinationName
 argument_list|)
 expr_stmt|;
+name|it
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|messages
@@ -1899,6 +1940,7 @@ name|maximumMessages
 condition|)
 block|{
 break|break;
+block|}
 block|}
 block|}
 comment|// Look for any available messages

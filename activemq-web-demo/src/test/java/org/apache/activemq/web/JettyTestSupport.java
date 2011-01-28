@@ -287,6 +287,13 @@ argument_list|)
 expr_stmt|;
 name|broker
 operator|.
+name|addConnector
+argument_list|(
+literal|"stomp://localhost:61613"
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
 name|start
 argument_list|()
 expr_stmt|;
