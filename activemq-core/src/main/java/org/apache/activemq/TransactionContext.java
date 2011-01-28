@@ -2113,6 +2113,10 @@ argument_list|(
 literal|"Commit: "
 operator|+
 name|xid
+operator|+
+literal|", onePhase="
+operator|+
+name|onePhase
 argument_list|)
 expr_stmt|;
 block|}
@@ -2267,6 +2271,11 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|onePhase
+condition|)
+block|{
 name|List
 argument_list|<
 name|TransactionContext
@@ -2338,6 +2347,7 @@ argument_list|,
 name|ignored
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -3210,6 +3220,23 @@ name|transactionId
 operator|=
 literal|null
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"TransactionContext{"
+operator|+
+literal|"transactionId="
+operator|+
+name|transactionId
+operator|+
+literal|'}'
+return|;
 block|}
 block|}
 end_class
