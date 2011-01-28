@@ -3204,14 +3204,14 @@ argument_list|(
 name|tx
 argument_list|)
 init|;
-name|iterator
-operator|.
-name|hasNext
-argument_list|()
-operator|&&
 name|listener
 operator|.
 name|hasSpace
+argument_list|()
+operator|&&
+name|iterator
+operator|.
+name|hasNext
 argument_list|()
 condition|;
 control|)
@@ -3236,7 +3236,6 @@ operator|.
 name|location
 argument_list|)
 decl_stmt|;
-comment|//System.err.println("RECOVER " + msg.getMessageId().getProducerSequenceId());
 name|listener
 operator|.
 name|recoverMessage
@@ -3252,13 +3251,6 @@ condition|(
 name|counter
 operator|>=
 name|maxReturned
-operator|||
-name|listener
-operator|.
-name|hasSpace
-argument_list|()
-operator|==
-literal|false
 condition|)
 block|{
 break|break;
@@ -3399,7 +3391,7 @@ comment|// operations... but for now we must
 comment|// externally synchronize...
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|lock
@@ -3485,7 +3477,7 @@ finally|finally
 block|{
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|unlock

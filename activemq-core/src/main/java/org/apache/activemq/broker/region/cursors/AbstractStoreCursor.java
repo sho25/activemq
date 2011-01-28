@@ -763,6 +763,12 @@ name|Exception
 block|{
 if|if
 condition|(
+name|hasSpace
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
 operator|!
 name|cacheEnabled
 operator|&&
@@ -774,22 +780,19 @@ name|isStarted
 argument_list|()
 operator|&&
 name|useCache
-operator|&&
-name|hasSpace
-argument_list|()
 condition|)
 block|{
 if|if
 condition|(
 name|LOG
 operator|.
-name|isDebugEnabled
+name|isTraceEnabled
 argument_list|()
 condition|)
 block|{
 name|LOG
 operator|.
-name|debug
+name|trace
 argument_list|(
 name|regionDestination
 operator|.
@@ -799,7 +802,12 @@ operator|.
 name|getPhysicalName
 argument_list|()
 operator|+
-literal|" enabling cache on empty add"
+literal|" enabling cache for empty store "
+operator|+
+name|node
+operator|.
+name|getMessageId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -811,9 +819,6 @@ block|}
 if|if
 condition|(
 name|cacheEnabled
-operator|&&
-name|hasSpace
-argument_list|()
 condition|)
 block|{
 name|recoverMessage
@@ -834,8 +839,8 @@ name|getMessageId
 argument_list|()
 expr_stmt|;
 block|}
-else|else
-block|{
+block|}
+elseif|else
 if|if
 condition|(
 name|cacheEnabled
@@ -845,6 +850,14 @@ name|cacheEnabled
 operator|=
 literal|false
 expr_stmt|;
+comment|// sync with store on disabling the cache
+if|if
+condition|(
+name|lastCachedId
+operator|!=
+literal|null
+condition|)
+block|{
 if|if
 condition|(
 name|LOG
@@ -869,48 +882,28 @@ literal|" disabling cache on size:"
 operator|+
 name|size
 operator|+
-literal|", lastCachedIdSeq: "
+literal|", lastCachedId: "
 operator|+
-operator|(
 name|lastCachedId
-operator|==
-literal|null
-condition|?
-operator|-
-literal|1
-else|:
-name|lastCachedId
-operator|.
-name|getBrokerSequenceId
-argument_list|()
-operator|)
 operator|+
-literal|" current node seqId: "
+literal|" current node Id: "
 operator|+
 name|node
 operator|.
 name|getMessageId
 argument_list|()
-operator|.
-name|getBrokerSequenceId
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// sync with store on disabling the cache
-if|if
-condition|(
-name|lastCachedId
-operator|!=
-literal|null
-condition|)
-block|{
 name|setBatch
 argument_list|(
 name|lastCachedId
 argument_list|)
 expr_stmt|;
-block|}
+name|lastCachedId
+operator|=
+literal|null
+expr_stmt|;
 block|}
 block|}
 name|this

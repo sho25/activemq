@@ -12207,7 +12207,7 @@ condition|)
 block|{
 name|lastDefaultKey
 operator|=
-name|nextPosition
+name|sequence
 expr_stmt|;
 name|cursor
 operator|.
@@ -12241,7 +12241,7 @@ condition|)
 block|{
 name|lastHighKey
 operator|=
-name|nextPosition
+name|sequence
 expr_stmt|;
 name|cursor
 operator|.
@@ -12268,7 +12268,7 @@ condition|)
 block|{
 name|lastLowKey
 operator|=
-name|nextPosition
+name|sequence
 expr_stmt|;
 name|cursor
 operator|.
@@ -12285,7 +12285,7 @@ else|else
 block|{
 name|lastDefaultKey
 operator|=
-name|nextPosition
+name|sequence
 expr_stmt|;
 name|cursor
 operator|.
