@@ -598,7 +598,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Rolling back transaction (just in case, no need to do this as it is implicit in a commit failure) "
+literal|"Rolling back transaction (just in case, no need to do this as it is implicit in a 1pc commit failure) "
 operator|+
 name|tid
 argument_list|)

@@ -474,6 +474,7 @@ name|isInXATransaction
 parameter_list|()
 block|{
 return|return
+operator|(
 name|transactionId
 operator|!=
 literal|null
@@ -481,6 +482,13 @@ operator|&&
 name|transactionId
 operator|.
 name|isXATransaction
+argument_list|()
+operator|)
+operator|||
+operator|!
+name|ENDED_XA_TRANSACTION_CONTEXTS
+operator|.
+name|isEmpty
 argument_list|()
 return|;
 block|}
@@ -2478,6 +2486,13 @@ name|e
 argument_list|)
 throw|;
 block|}
+name|ENDED_XA_TRANSACTION_CONTEXTS
+operator|.
+name|remove
+argument_list|(
+name|x
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|boolean
