@@ -447,6 +447,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|schedule
 parameter_list|(
@@ -519,6 +520,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|schedule
 parameter_list|(
@@ -591,6 +593,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|schedule
 parameter_list|(

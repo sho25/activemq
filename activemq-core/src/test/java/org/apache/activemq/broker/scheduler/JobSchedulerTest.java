@@ -1305,7 +1305,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-literal|"target/test/ScheduledDB"
+literal|"target/test/ScheduledJobsDB"
 argument_list|)
 decl_stmt|;
 name|IOHelper
