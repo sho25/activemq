@@ -2951,6 +2951,14 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
+comment|// Reads the list of the next entries and removes them from the store in one atomic step.
+comment|// Prevents race conditions on short delays, when storeJob() tries to append new items to the
+comment|// existing list during this read operation (see AMQ-3141).
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 name|Map
 operator|.
 name|Entry
@@ -3293,6 +3301,7 @@ operator|-
 name|currentTime
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|this
