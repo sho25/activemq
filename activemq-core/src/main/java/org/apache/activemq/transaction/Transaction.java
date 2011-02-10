@@ -131,13 +131,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
+name|Logger
 import|;
 end_import
 
@@ -592,7 +588,7 @@ parameter_list|()
 function_decl|;
 specifier|public
 specifier|abstract
-name|Log
+name|Logger
 name|getLog
 parameter_list|()
 function_decl|;

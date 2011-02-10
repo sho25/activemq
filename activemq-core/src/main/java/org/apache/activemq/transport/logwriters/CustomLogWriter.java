@@ -157,13 +157,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
+name|Logger
 import|;
 end_import
 
@@ -183,7 +179,7 @@ specifier|public
 name|void
 name|initialMessage
 parameter_list|(
-name|Log
+name|Logger
 name|log
 parameter_list|)
 block|{              }
@@ -192,7 +188,7 @@ specifier|public
 name|void
 name|logRequest
 parameter_list|(
-name|Log
+name|Logger
 name|log
 parameter_list|,
 name|Object
@@ -219,7 +215,7 @@ specifier|public
 name|void
 name|logResponse
 parameter_list|(
-name|Log
+name|Logger
 name|log
 parameter_list|,
 name|Object
@@ -241,7 +237,7 @@ specifier|public
 name|void
 name|logAsyncRequest
 parameter_list|(
-name|Log
+name|Logger
 name|log
 parameter_list|,
 name|Object
@@ -263,7 +259,7 @@ specifier|public
 name|void
 name|logOneWay
 parameter_list|(
-name|Log
+name|Logger
 name|log
 parameter_list|,
 name|Object
@@ -290,7 +286,7 @@ specifier|public
 name|void
 name|logReceivedCommand
 parameter_list|(
-name|Log
+name|Logger
 name|log
 parameter_list|,
 name|Object
@@ -317,7 +313,7 @@ specifier|public
 name|void
 name|logReceivedException
 parameter_list|(
-name|Log
+name|Logger
 name|log
 parameter_list|,
 name|IOException

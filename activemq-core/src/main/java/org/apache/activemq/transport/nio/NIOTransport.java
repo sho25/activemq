@@ -228,7 +228,7 @@ name|NIOTransport
 extends|extends
 name|TcpTransport
 block|{
-comment|// private static final Log log = LogFactory.getLog(NIOTransport.class);
+comment|// private static final Logger log = LoggerFactory.getLogger(NIOTransport.class);
 specifier|private
 name|SocketChannel
 name|channel

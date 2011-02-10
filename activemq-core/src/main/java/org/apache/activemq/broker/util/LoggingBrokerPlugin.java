@@ -383,13 +383,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
+name|Logger
 import|;
 end_import
 
@@ -397,13 +393,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
+name|LoggerFactory
 import|;
 end_import
 
@@ -421,12 +413,12 @@ block|{
 specifier|private
 specifier|static
 specifier|final
-name|Log
+name|Logger
 name|LOG
 init|=
-name|LogFactory
+name|LoggerFactory
 operator|.
-name|getLog
+name|getLogger
 argument_list|(
 name|LoggingBrokerPlugin
 operator|.
@@ -507,7 +499,7 @@ return|return
 name|logAll
 return|;
 block|}
-comment|/**      * Log all Events that go through the Plugin      */
+comment|/**      * Logger all Events that go through the Plugin      */
 specifier|public
 name|void
 name|setLogAll
@@ -532,7 +524,7 @@ return|return
 name|logMessageEvents
 return|;
 block|}
-comment|/**      * Log Events that are related to message processing      */
+comment|/**      * Logger Events that are related to message processing      */
 specifier|public
 name|void
 name|setLogMessageEvents
@@ -557,7 +549,7 @@ return|return
 name|logConnectionEvents
 return|;
 block|}
-comment|/**      * Log Events that are related to connections and sessions      */
+comment|/**      * Logger Events that are related to connections and sessions      */
 specifier|public
 name|void
 name|setLogConnectionEvents
@@ -582,7 +574,7 @@ return|return
 name|logTransactionEvents
 return|;
 block|}
-comment|/**      * Log Events that are related to transaction processing      */
+comment|/**      * Logger Events that are related to transaction processing      */
 specifier|public
 name|void
 name|setLogTransactionEvents
@@ -607,7 +599,7 @@ return|return
 name|logConsumerEvents
 return|;
 block|}
-comment|/**      * Log Events that are related to Consumers      */
+comment|/**      * Logger Events that are related to Consumers      */
 specifier|public
 name|void
 name|setLogConsumerEvents
@@ -632,7 +624,7 @@ return|return
 name|logProducerEvents
 return|;
 block|}
-comment|/**      * Log Events that are related to Producers      */
+comment|/**      * Logger Events that are related to Producers      */
 specifier|public
 name|void
 name|setLogProducerEvents
@@ -657,7 +649,7 @@ return|return
 name|logInternalEvents
 return|;
 block|}
-comment|/**      * Log Events that are normally internal to the broker      */
+comment|/**      * Logger Events that are normally internal to the broker      */
 specifier|public
 name|void
 name|setLogInternalEvents
@@ -3032,6 +3024,9 @@ operator|.
 name|info
 argument_list|(
 name|buf
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
