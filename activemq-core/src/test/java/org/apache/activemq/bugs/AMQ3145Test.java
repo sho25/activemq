@@ -17,18 +17,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -436,6 +424,16 @@ operator|.
 name|setUseJmx
 argument_list|(
 literal|true
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
+name|getManagementContext
+argument_list|()
+operator|.
+name|setCreateConnector
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 name|broker
