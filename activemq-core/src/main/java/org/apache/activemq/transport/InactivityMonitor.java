@@ -1133,7 +1133,7 @@ throw|throw
 operator|new
 name|InactivityIOException
 argument_list|(
-literal|"Channel was inactive for too long: "
+literal|"Cannot send, channel has already failed: "
 operator|+
 name|next
 operator|.

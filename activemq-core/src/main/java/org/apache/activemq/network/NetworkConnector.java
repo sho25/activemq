@@ -988,8 +988,7 @@ name|info
 argument_list|(
 literal|"Network Connector "
 operator|+
-name|getName
-argument_list|()
+name|this
 operator|+
 literal|" Started"
 argument_list|)
@@ -1011,8 +1010,7 @@ name|info
 argument_list|(
 literal|"Network Connector "
 operator|+
-name|getName
-argument_list|()
+name|this
 operator|+
 literal|" Stopped"
 argument_list|)

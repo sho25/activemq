@@ -737,7 +737,7 @@ argument_list|(
 operator|new
 name|ObjectName
 argument_list|(
-literal|"Test:BrokerName=BrokerNC,Type=NetworkConnector,NetworkConnectorName=localhost"
+literal|"Test:BrokerName=BrokerNC,Type=NetworkConnector,NetworkConnectorName=NC"
 argument_list|)
 argument_list|)
 argument_list|)
@@ -868,7 +868,7 @@ argument_list|(
 operator|new
 name|ObjectName
 argument_list|(
-literal|"Test:BrokerName=BrokerNC,Type=NetworkBridge,NetworkConnectorName=localhost,Name=localhost/127.0.0.1_"
+literal|"Test:BrokerName=BrokerNC,Type=NetworkBridge,NetworkConnectorName=NC,Name=localhost/127.0.0.1_"
 operator|+
 name|proxy
 operator|.
@@ -965,7 +965,7 @@ argument_list|(
 operator|new
 name|ObjectName
 argument_list|(
-literal|"Test:BrokerName=BrokerNC,Type=NetworkBridge,NetworkConnectorName=localhost,Name=localhost/127.0.0.1_"
+literal|"Test:BrokerName=BrokerNC,Type=NetworkBridge,NetworkConnectorName=NC,Name=localhost/127.0.0.1_"
 operator|+
 name|proxy
 operator|.
@@ -1057,7 +1057,7 @@ argument_list|(
 operator|new
 name|ObjectName
 argument_list|(
-literal|"Test:BrokerName=BrokerNC,Type=NetworkConnector,NetworkConnectorName=localhost"
+literal|"Test:BrokerName=BrokerNC,Type=NetworkConnector,NetworkConnectorName=NC"
 argument_list|)
 argument_list|)
 argument_list|)

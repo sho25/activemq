@@ -470,6 +470,18 @@ return|return
 literal|null
 return|;
 block|}
+specifier|public
+name|int
+name|getConnectionCount
+parameter_list|()
+block|{
+return|return
+name|connectionCount
+operator|.
+name|intValue
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

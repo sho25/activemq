@@ -1137,29 +1137,12 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**     * returns the name of the connector     *     * @return connector name     */
 specifier|public
 name|String
-name|getName
+name|toString
 parameter_list|()
 block|{
-name|String
-name|name
-init|=
-name|super
-operator|.
-name|getName
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|name
-operator|==
-literal|null
-condition|)
-block|{
-name|name
-operator|=
+return|return
 name|this
 operator|.
 name|getClass
@@ -1168,7 +1151,10 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|" ["
+name|getName
+argument_list|()
+operator|+
+literal|"["
 operator|+
 name|ldapURI
 operator|.
@@ -1176,17 +1162,6 @@ name|toString
 argument_list|()
 operator|+
 literal|"]"
-expr_stmt|;
-name|super
-operator|.
-name|setName
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|name
 return|;
 block|}
 comment|/**      * add connector of the given URI      *       * @param result      *            search result of connector to add      */
