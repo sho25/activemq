@@ -377,6 +377,14 @@ name|session
 operator|.
 name|getTransacted
 argument_list|()
+operator|&&
+name|session
+operator|.
+name|getTransactionContext
+argument_list|()
+operator|.
+name|isInLocalTransaction
+argument_list|()
 condition|)
 block|{
 name|session

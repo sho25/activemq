@@ -446,10 +446,12 @@ condition|(
 name|useSharedTxContext
 condition|)
 block|{
+comment|// context considers endesd XA transactions as active, so just check for presence
+comment|// of tx when it is shared
 return|return
 name|sharedContext
 operator|.
-name|isInXATransaction
+name|isInTransaction
 argument_list|()
 return|;
 block|}
