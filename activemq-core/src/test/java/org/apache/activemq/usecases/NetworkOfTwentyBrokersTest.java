@@ -712,6 +712,29 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Waiting for complete reformation"
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|10000
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{         }
 name|verifyPeerBrokerInfos
 argument_list|(
 name|X
