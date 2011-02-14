@@ -2435,7 +2435,7 @@ argument_list|(
 name|BODY_PREVIEW
 argument_list|,
 operator|new
-name|byte
+name|Byte
 index|[]
 block|{}
 argument_list|)
