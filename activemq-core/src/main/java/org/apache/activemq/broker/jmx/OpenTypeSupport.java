@@ -2264,6 +2264,13 @@ name|ActiveMQBytesMessage
 operator|)
 name|o
 decl_stmt|;
+name|m
+operator|.
+name|setReadOnlyBody
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|Map
 argument_list|<
 name|String
