@@ -6814,6 +6814,14 @@ argument_list|(
 literal|"Checkpoint started."
 argument_list|)
 expr_stmt|;
+comment|// reflect last update exclusive of current checkpoint
+name|Location
+name|firstTxLocation
+init|=
+name|metadata
+operator|.
+name|lastUpdate
+decl_stmt|;
 name|metadata
 operator|.
 name|state
@@ -6895,6 +6903,19 @@ argument_list|(
 name|completeFileSet
 argument_list|)
 decl_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Last update: "
+operator|+
+name|firstTxLocation
+operator|+
+literal|", full gc candidates set: "
+operator|+
+name|gcCandidateSet
+argument_list|)
+expr_stmt|;
 comment|// Don't GC files under replication
 if|if
 condition|(
@@ -6912,13 +6933,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Don't GC files after the first in progress tx
-name|Location
-name|firstTxLocation
-init|=
-name|metadata
-operator|.
-name|lastUpdate
-decl_stmt|;
 if|if
 condition|(
 name|metadata
@@ -6928,12 +6942,29 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|metadata
+operator|.
+name|firstInProgressTransactionLocation
+operator|.
+name|getDataFileId
+argument_list|()
+operator|<
+name|firstTxLocation
+operator|.
+name|getDataFileId
+argument_list|()
+condition|)
+block|{
 name|firstTxLocation
 operator|=
 name|metadata
 operator|.
 name|firstInProgressTransactionLocation
 expr_stmt|;
+block|}
+empty_stmt|;
 block|}
 if|if
 condition|(
