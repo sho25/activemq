@@ -280,6 +280,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|PropertyEditorManager
 operator|.
 name|setEditorSearchPath
@@ -301,6 +303,19 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|java
+operator|.
+name|security
+operator|.
+name|AccessControlException
+name|ignore
+parameter_list|)
+block|{
+comment|// we might be in an applet...
+block|}
 block|}
 block|}
 specifier|private
