@@ -130,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Holds a real JMS connection along with the session pools associated with it.  *   * @version $Revision$  */
+comment|/**  * Holds a real JMS connection along with the session pools associated with it.  *   *   */
 end_comment
 
 begin_class

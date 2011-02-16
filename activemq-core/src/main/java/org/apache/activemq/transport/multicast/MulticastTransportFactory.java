@@ -106,7 +106,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A factory of multicast transport classes  *   * @version $Revision$  */
+comment|/**  * A factory of multicast transport classes  *   *   */
 end_comment
 
 begin_class

@@ -120,7 +120,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link BrokerFactoryHandler} which uses a properties file to configure the  * broker's various policies.  *   * @version $Revision$  */
+comment|/**  * A {@link BrokerFactoryHandler} which uses a properties file to configure the  * broker's various policies.  *   *   */
 end_comment
 
 begin_class

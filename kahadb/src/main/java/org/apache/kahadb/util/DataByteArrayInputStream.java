@@ -56,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Optimized ByteArrayInputStream that can be used more than once  *   * @version $Revision$  */
+comment|/**  * Optimized ByteArrayInputStream that can be used more than once  *   *   */
 end_comment
 
 begin_class

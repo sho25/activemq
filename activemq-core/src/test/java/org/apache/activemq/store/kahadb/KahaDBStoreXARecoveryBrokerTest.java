@@ -90,7 +90,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to verify that recovery works correctly against   *   * @version $Revision: 712224 $  */
+comment|/**  * Used to verify that recovery works correctly against   *   *   */
 end_comment
 
 begin_class

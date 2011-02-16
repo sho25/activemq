@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a node in the {@link DestinationMap} tree  *  * @version $Revision$  */
+comment|/**  * Represents a node in the {@link DestinationMap} tree  *  *   */
 end_comment
 
 begin_interface

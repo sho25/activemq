@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper class which provides a factory method to create a default  * {@link DataSource) if one is not provided.  *   * @version $Revision$  */
+comment|/**  * A helper class which provides a factory method to create a default  * {@link DataSource) if one is not provided.  *   *   */
 end_comment
 
 begin_class

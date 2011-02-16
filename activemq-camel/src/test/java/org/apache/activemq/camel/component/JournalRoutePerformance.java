@@ -96,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to get an idea of what kind of performance can be expected from   * the journal.  *   * @version $Revision$  */
+comment|/**  * Used to get an idea of what kind of performance can be expected from   * the journal.  *   *   */
 end_comment
 
 begin_class

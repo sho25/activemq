@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A useful base class for implementation inheritence.  *   * @version $Revision$  */
+comment|/**  * A useful base class for implementation inheritence.  *   *   */
 end_comment
 
 begin_class

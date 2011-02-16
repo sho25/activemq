@@ -54,7 +54,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple interactive console which can be used to communicate with a running  * broker assuming that the classpath is fully setup  *   * @version $Revision$  */
+comment|/**  * A simple interactive console which can be used to communicate with a running  * broker assuming that the classpath is fully setup  *   *   */
 end_comment
 
 begin_class

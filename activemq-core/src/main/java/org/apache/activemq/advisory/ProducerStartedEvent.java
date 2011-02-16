@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An event when a new consumer has started.  *   * @version $Revision: 359679 $  */
+comment|/**  * An event when a new consumer has started.  *   *   */
 end_comment
 
 begin_class

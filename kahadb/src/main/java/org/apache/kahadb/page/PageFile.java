@@ -320,7 +320,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A PageFile provides you random access to fixed sized disk pages. This object is not thread safe and therefore access to it should   * be externally synchronized.  *   * The file has 3 parts:  * Metadata Space: 4k : Reserved metadata area. Used to store persistent config about the file.  * Recovery Buffer Space: Page Size * 1000 : This is a redo log used to prevent partial page writes from making the file inconsistent  * Page Space: The pages in the page file.  *   * @version $Revision$  */
+comment|/**  * A PageFile provides you random access to fixed sized disk pages. This object is not thread safe and therefore access to it should   * be externally synchronized.  *   * The file has 3 parts:  * Metadata Space: 4k : Reserved metadata area. Used to store persistent config about the file.  * Recovery Buffer Space: Page Size * 1000 : This is a redo log used to prevent partial page writes from making the file inconsistent  * Page Space: The pages in the page file.  *   *   */
 end_comment
 
 begin_class

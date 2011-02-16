@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * MBean used to manage all of the TransportLoggers at once.  * Avalaible operations:  *  -Enable logging for all TransportLoggers at once.  *  -Disable logging for all TransportLoggers at once.  *    * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  * @version $Revision$  */
+comment|/**  * MBean used to manage all of the TransportLoggers at once.  * Avalaible operations:  *  -Enable logging for all TransportLoggers at once.  *  -Disable logging for all TransportLoggers at once.  *    * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  *   */
 end_comment
 
 begin_interface

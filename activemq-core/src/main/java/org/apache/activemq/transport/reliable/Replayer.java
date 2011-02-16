@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used by a {@link ReplayBuffer} to replay buffers back over an unreliable transport  *   * @version $Revision$  */
+comment|/**  * Used by a {@link ReplayBuffer} to replay buffers back over an unreliable transport  *   *   */
 end_comment
 
 begin_interface

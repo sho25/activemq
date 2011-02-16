@@ -54,7 +54,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Adds a JAAS based authentication security plugin  *   * @org.apache.xbean.XBean description="Provides a JAAS based authentication plugin"  *   * @version $Revision$  */
+comment|/**  * Adds a JAAS based authentication security plugin  *   * @org.apache.xbean.XBean description="Provides a JAAS based authentication plugin"  *   *   */
 end_comment
 
 begin_class

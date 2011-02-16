@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to pull messages on demand.  *   * @openwire:marshaller code="20"  *   * @version $Revision$  */
+comment|/**  * Used to pull messages on demand.  *   * @openwire:marshaller code="20"  *   *   */
 end_comment
 
 begin_class

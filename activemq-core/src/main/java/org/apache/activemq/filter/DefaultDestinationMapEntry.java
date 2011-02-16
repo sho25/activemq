@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A default entry in a DestinationMap which holds a single value.  *   * @org.apache.xbean.XBean element="destinationEntry"  *   * @version $Revision$  */
+comment|/**  * A default entry in a DestinationMap which holds a single value.  *   * @org.apache.xbean.XBean element="destinationEntry"  *   *   */
 end_comment
 
 begin_class

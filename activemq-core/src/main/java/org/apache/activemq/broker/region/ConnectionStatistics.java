@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The J2EE Statistics for the Connection.  *   * @version $Revision$  */
+comment|/**  * The J2EE Statistics for the Connection.  *   *   */
 end_comment
 
 begin_class

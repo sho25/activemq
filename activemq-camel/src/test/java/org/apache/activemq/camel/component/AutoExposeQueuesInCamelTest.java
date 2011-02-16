@@ -202,7 +202,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Shows that we can see the queues inside ActiveMQ via Camel  * by enabling the {@link ActiveMQComponent#setExposeAllQueues(boolean)} flag  *  * @version $Revision$  */
+comment|/**  * Shows that we can see the queues inside ActiveMQ via Camel  * by enabling the {@link ActiveMQComponent#setExposeAllQueues(boolean)} flag  *  *   */
 end_comment
 
 begin_class

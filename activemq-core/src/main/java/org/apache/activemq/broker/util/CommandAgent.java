@@ -180,7 +180,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An agent which listens to commands on a JMS destination  *   * @version $Revision$  * @org.apache.xbean.XBean  */
+comment|/**  * An agent which listens to commands on a JMS destination  *   *   * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class

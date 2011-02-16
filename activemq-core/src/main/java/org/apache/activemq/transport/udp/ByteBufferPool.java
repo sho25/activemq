@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a pool of {@link ByteBuffer} instances.   * This strategy could just create new buffers for each call or  * it could pool them.  *   * @version $Revision$  */
+comment|/**  * Represents a pool of {@link ByteBuffer} instances.   * This strategy could just create new buffers for each call or  * it could pool them.  *   *   */
 end_comment
 
 begin_interface

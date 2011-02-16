@@ -94,7 +94,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents an entry in a {@link DefaultAuthorizationMap} for assigning  * different operations (read, write, admin) of user roles to a specific  * destination or a hierarchical wildcard area of destinations.  *   * @org.apache.xbean.XBean  * @version $Revision$  */
+comment|/**  * Represents an entry in a {@link DefaultAuthorizationMap} for assigning  * different operations (read, write, admin) of user roles to a specific  * destination or a hierarchical wildcard area of destinations.  *   * @org.apache.xbean.XBean  *   */
 end_comment
 
 begin_class

@@ -58,7 +58,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A JMS 1.1 log4j appender which uses ActiveMQ by default and does not require  * any JNDI configurations  *   * @version $Revision$  */
+comment|/**  * A JMS 1.1 log4j appender which uses ActiveMQ by default and does not require  * any JNDI configurations  *   *   */
 end_comment
 
 begin_class

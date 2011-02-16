@@ -112,7 +112,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests that a Message can have nested Map and List properties attached.  *   * @version $Revision$  */
+comment|/**  * Tests that a Message can have nested Map and List properties attached.  *   *   */
 end_comment
 
 begin_class

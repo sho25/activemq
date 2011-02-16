@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A plugin to allow custom message-level security checks to be performed before  * a message is consumed.  *   * @version $Revision$  */
+comment|/**  * A plugin to allow custom message-level security checks to be performed before  * a message is consumed.  *   *   */
 end_comment
 
 begin_interface

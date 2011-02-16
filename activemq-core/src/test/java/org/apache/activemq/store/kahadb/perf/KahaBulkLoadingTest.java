@@ -288,7 +288,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This tests bulk loading and unloading of messages to a Queue.s  *   * @version $Revision: 712224 $  */
+comment|/**  * This tests bulk loading and unloading of messages to a Queue.s  *   *   */
 end_comment
 
 begin_class

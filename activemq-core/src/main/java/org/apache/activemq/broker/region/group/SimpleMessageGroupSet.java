@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple implementation which just uses a {@link Set}  *   * @version $Revision$  */
+comment|/**  * A simple implementation which just uses a {@link Set}  *   *   */
 end_comment
 
 begin_class

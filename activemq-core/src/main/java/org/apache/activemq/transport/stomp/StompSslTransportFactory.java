@@ -128,7 +128,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A<a href="http://stomp.codehaus.org/">STOMP</a> over SSL transport factory  *   * @version $Revision$  */
+comment|/**  * A<a href="http://stomp.codehaus.org/">STOMP</a> over SSL transport factory  *   *   */
 end_comment
 
 begin_class

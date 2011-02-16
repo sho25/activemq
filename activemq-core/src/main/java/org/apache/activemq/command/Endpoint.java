@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Represents the logical endpoint where commands come from or are sent to.  *   * For connection based transports like TCP / VM then there is a single endpoint  * for all commands. For transports like multicast there could be different  * endpoints being used on the same transport.  *   * @version $Revision$  */
+comment|/**  * Represents the logical endpoint where commands come from or are sent to.  *   * For connection based transports like TCP / VM then there is a single endpoint  * for all commands. For transports like multicast there could be different  * endpoints being used on the same transport.  *   *   */
 end_comment
 
 begin_interface

@@ -192,7 +192,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract method holder for pending message (messages awaiting disptach to a  * consumer) cursor  *   * @version $Revision$  */
+comment|/**  * Abstract method holder for pending message (messages awaiting disptach to a  * consumer) cursor  *   *   */
 end_comment
 
 begin_class

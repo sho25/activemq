@@ -54,7 +54,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An AuthorizationMap which is configured with individual DestinationMaps for  * each operation.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * An AuthorizationMap which is configured with individual DestinationMaps for  * each operation.  *   * @org.apache.xbean.XBean  *   *   */
 end_comment
 
 begin_class

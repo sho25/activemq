@@ -58,7 +58,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used as a location in the data store.  *   * @version $Revision$  */
+comment|/**  * Used as a location in the data store.  *   *   */
 end_comment
 
 begin_class

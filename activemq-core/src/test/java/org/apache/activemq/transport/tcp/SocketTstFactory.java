@@ -110,7 +110,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @version $Revision$  *  * Automatically generated socket.close() calls to simulate network faults  */
+comment|/**  *   *  * Automatically generated socket.close() calls to simulate network faults  */
 end_comment
 
 begin_class

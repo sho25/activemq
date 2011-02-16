@@ -420,7 +420,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A test case of the various MBeans in ActiveMQ. If you want to look at the  * various MBeans after the test has been run then run this test case as a  * command line application.  *   * @version $Revision$  */
+comment|/**  * A test case of the various MBeans in ActiveMQ. If you want to look at the  * various MBeans after the test has been run then run this test case as a  * command line application.  *   *   */
 end_comment
 
 begin_class

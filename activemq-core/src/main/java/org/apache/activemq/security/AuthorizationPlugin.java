@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An authorization plugin where each operation on a destination is checked  * against an authorizationMap  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * An authorization plugin where each operation on a destination is checked  * against an authorizationMap  *   * @org.apache.xbean.XBean  *   *   */
 end_comment
 
 begin_class

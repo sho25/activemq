@@ -56,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A facade for either a local in JVM broker or a remote broker over JMX  *  *   * @version $Revision$  */
+comment|/**  * A facade for either a local in JVM broker or a remote broker over JMX  *  *   *   */
 end_comment
 
 begin_interface

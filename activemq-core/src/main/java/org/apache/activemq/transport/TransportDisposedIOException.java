@@ -26,7 +26,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This is exception is thrown when the transport is disposed  *   * @version $Revision$  */
+comment|/**  * This is exception is thrown when the transport is disposed  *   *   */
 end_comment
 
 begin_class

@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Represents a set of Message Group IDs  *   * @version $Revision$  */
+comment|/**  * Represents a set of Message Group IDs  *   *   */
 end_comment
 
 begin_interface

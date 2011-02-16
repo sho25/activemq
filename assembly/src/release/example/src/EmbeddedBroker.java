@@ -18,7 +18,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This example demonstrates how to run an embedded broker inside your Java code  *   * @version $Revision$  */
+comment|/**  * This example demonstrates how to run an embedded broker inside your Java code  *   *   */
 end_comment
 
 begin_class

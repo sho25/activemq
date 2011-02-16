@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Simple LRU Cache  *   * @version $Revision$  * @param<K>  * @param<V>  */
+comment|/**  * A Simple LRU Cache  *   *   * @param<K>  * @param<V>  */
 end_comment
 
 begin_class

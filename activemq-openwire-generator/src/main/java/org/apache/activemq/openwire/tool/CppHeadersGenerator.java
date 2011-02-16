@@ -72,7 +72,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @version $Revision: 379734 $  */
+comment|/**  *   */
 end_comment
 
 begin_class

@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of a Marshaller for a Integer  *   * @version $Revision$  */
+comment|/**  * Implementation of a Marshaller for a Integer  *   *   */
 end_comment
 
 begin_class

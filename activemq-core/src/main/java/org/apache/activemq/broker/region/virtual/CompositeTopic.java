@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a virtual topic which forwards to a number of other destinations.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * Represents a virtual topic which forwards to a number of other destinations.  *   * @org.apache.xbean.XBean  *   *   */
 end_comment
 
 begin_class

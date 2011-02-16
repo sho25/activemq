@@ -144,7 +144,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A wire format which uses XMPP format of messages  *  * @version $Revision$  */
+comment|/**  * A wire format which uses XMPP format of messages  *  *   */
 end_comment
 
 begin_class

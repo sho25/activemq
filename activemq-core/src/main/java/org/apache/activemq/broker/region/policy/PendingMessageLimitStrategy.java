@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A pluggable strategy to calculate the maximum number of messages that are allowed to be pending on   * consumers (in addition to their prefetch sizes).  *   * Once the limit is reached, non-durable topics can then start discarding old messages.  * This allows us to keep dispatching messages to slow consumers while not blocking fast consumers  * and discarding the messages oldest first.  *    * @version $Revision$  */
+comment|/**  * A pluggable strategy to calculate the maximum number of messages that are allowed to be pending on   * consumers (in addition to their prefetch sizes).  *   * Once the limit is reached, non-durable topics can then start discarding old messages.  * This allows us to keep dispatching messages to slow consumers while not blocking fast consumers  * and discarding the messages oldest first.  *    *   */
 end_comment
 
 begin_interface

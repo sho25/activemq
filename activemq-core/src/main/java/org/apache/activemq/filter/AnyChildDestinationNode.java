@@ -56,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link DestinationNode} which navigates all the children of the given node  * ignoring the name of the current path (so for navigating using * in a wildcard).  *  * @version $Revision$  */
+comment|/**  * An implementation of {@link DestinationNode} which navigates all the children of the given node  * ignoring the name of the current path (so for navigating using * in a wildcard).  *  *   */
 end_comment
 
 begin_class

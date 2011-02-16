@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A pluggable strategy for how to deal with dropped packets.  *   * @version $Revision$  */
+comment|/**  * A pluggable strategy for how to deal with dropped packets.  *   *   */
 end_comment
 
 begin_interface

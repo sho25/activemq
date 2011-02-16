@@ -172,7 +172,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Extends the SslContext so that it's easier to configure from spring.  *   * @org.apache.xbean.XBean element="sslContext"  *   * @version $Revision$  */
+comment|/**  * Extends the SslContext so that it's easier to configure from spring.  *   * @org.apache.xbean.XBean element="sslContext"  *   *   */
 end_comment
 
 begin_class

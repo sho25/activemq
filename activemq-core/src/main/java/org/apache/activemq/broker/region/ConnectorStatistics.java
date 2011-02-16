@@ -60,7 +60,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The J2EE Statistics for the a Destination.  *   * @version $Revision$  */
+comment|/**  * The J2EE Statistics for the a Destination.  *   *   */
 end_comment
 
 begin_class

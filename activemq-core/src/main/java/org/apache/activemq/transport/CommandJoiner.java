@@ -136,7 +136,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Joins together of partial commands which were split into individual chunks of  * data.  *   * @version $Revision$  */
+comment|/**  * Joins together of partial commands which were split into individual chunks of  * data.  *   *   */
 end_comment
 
 begin_class

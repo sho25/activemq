@@ -196,7 +196,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A specific test of Queue.purge() functionality  *  * @version $Revision$  */
+comment|/**  * A specific test of Queue.purge() functionality  *  *   */
 end_comment
 
 begin_class

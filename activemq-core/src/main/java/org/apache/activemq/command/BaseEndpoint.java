@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A default endpoint.  *   * @version $Revision$  */
+comment|/**  * A default endpoint.  *   *   */
 end_comment
 
 begin_class

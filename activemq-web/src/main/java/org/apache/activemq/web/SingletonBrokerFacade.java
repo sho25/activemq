@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A facade for the broker in the same JVM and ClassLoader  *   * @version $Revision$  */
+comment|/**  * A facade for the broker in the same JVM and ClassLoader  *   *   */
 end_comment
 
 begin_class

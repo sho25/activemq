@@ -242,7 +242,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper class which keeps track of the Destinations available in a broker and allows you to listen to them  * being created or deleted.  *  * @version $Revision$  */
+comment|/**  * A helper class which keeps track of the Destinations available in a broker and allows you to listen to them  * being created or deleted.  *  *   */
 end_comment
 
 begin_class

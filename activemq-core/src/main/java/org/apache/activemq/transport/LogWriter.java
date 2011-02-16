@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Interface for classes that will be called by the TransportLogger  * class to actually write to a log file.  * Every class that implements this interface has do be declared in  * the resources/META-INF/services/org/apache/activemq/transport/logwriters  * directory, by creating a file with the name of the writer (for example  * "default") and including the line  * class=org.apache.activemq.transport.logwriters.(Name of the LogWriter class)  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  * @version $Revision$  */
+comment|/**  * Interface for classes that will be called by the TransportLogger  * class to actually write to a log file.  * Every class that implements this interface has do be declared in  * the resources/META-INF/services/org/apache/activemq/transport/logwriters  * directory, by creating a file with the name of the writer (for example  * "default") and including the line  * class=org.apache.activemq.transport.logwriters.(Name of the LogWriter class)  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  *   */
 end_comment
 
 begin_interface

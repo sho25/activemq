@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A base class for comparators which works on JMS {@link Message} objects  *   * @version $Revision$  */
+comment|/**  * A base class for comparators which works on JMS {@link Message} objects  *   *   */
 end_comment
 
 begin_class

@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Represents a plugin into a Broker  *   * @version $Revision$  */
+comment|/**  * Represents a plugin into a Broker  *   *   */
 end_comment
 
 begin_interface

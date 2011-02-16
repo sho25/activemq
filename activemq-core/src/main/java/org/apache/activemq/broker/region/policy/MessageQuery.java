@@ -58,7 +58,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents some kind of query which will load initial messages from some source for a new topic subscriber.  *   * @version $Revision$  */
+comment|/**  * Represents some kind of query which will load initial messages from some source for a new topic subscriber.  *   *   */
 end_comment
 
 begin_interface

@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An exception thrown if a destination is attempted to be created when it already exists.  *   * @version $Revision$  */
+comment|/**  * An exception thrown if a destination is attempted to be created when it already exists.  *   *   */
 end_comment
 
 begin_class

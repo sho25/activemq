@@ -142,7 +142,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * persist pendingCount messages pendingCount message (messages awaiting disptach  * to a consumer) cursor  *   * @version $Revision$  */
+comment|/**  * persist pendingCount messages pendingCount message (messages awaiting disptach  * to a consumer) cursor  *   *   */
 end_comment
 
 begin_class

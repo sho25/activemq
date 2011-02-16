@@ -94,7 +94,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to create Destinations. One instance of DestinationFactory is used per BrokerService.   *   * @author fateev@amazon.com  * @version $Revision$  */
+comment|/**  * Used to create Destinations. One instance of DestinationFactory is used per BrokerService.   *   * @author fateev@amazon.com  *   */
 end_comment
 
 begin_class

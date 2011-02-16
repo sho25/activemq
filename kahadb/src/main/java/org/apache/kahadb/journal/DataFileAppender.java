@@ -162,7 +162,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An optimized writer to do batch appends to a data file. This object is thread  * safe and gains throughput as you increase the number of concurrent writes it  * does.  *   * @version $Revision$  */
+comment|/**  * An optimized writer to do batch appends to a data file. This object is thread  * safe and gains throughput as you increase the number of concurrent writes it  * does.  *   *   */
 end_comment
 
 begin_class

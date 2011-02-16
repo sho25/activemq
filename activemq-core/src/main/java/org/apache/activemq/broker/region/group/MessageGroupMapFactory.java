@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Represents a factory used to create new instances of {@link MessageGroupMap}  * for a destination.  *   * @version $Revision$  */
+comment|/**  * Represents a factory used to create new instances of {@link MessageGroupMap}  * for a destination.  *   *   */
 end_comment
 
 begin_interface

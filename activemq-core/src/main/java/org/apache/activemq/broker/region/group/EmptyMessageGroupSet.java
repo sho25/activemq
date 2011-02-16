@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Represents an empty {@link MessageGroupSet}  *   * @version $Revision$  */
+comment|/**  * Represents an empty {@link MessageGroupSet}  *   *   */
 end_comment
 
 begin_class

@@ -52,7 +52,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Query for Queue consumers.  *   * @version $Revision: 504235 $  */
+comment|/**  * Query for Queue consumers.  *   *   */
 end_comment
 
 begin_class

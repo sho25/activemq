@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Creates<a href="http://activemq.org/site/virtual-destinations.html">Virtual  * Topics</a> using a prefix and postfix. The virtual destination creates a  * wildcard that is then used to look up all active queue subscriptions which  * match.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * Creates<a href="http://activemq.org/site/virtual-destinations.html">Virtual  * Topics</a> using a prefix and postfix. The virtual destination creates a  * wildcard that is then used to look up all active queue subscriptions which  * match.  *   * @org.apache.xbean.XBean  *   *   */
 end_comment
 
 begin_class

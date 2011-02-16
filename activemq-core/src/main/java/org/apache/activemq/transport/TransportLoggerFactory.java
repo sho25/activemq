@@ -116,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Singleton class to create TransportLogger objects.  * When the method getInstance() is called for the first time,  * a TransportLoggerControlMBean is created and registered.  * This MBean permits enabling and disabling the logging for  * all TransportLogger objects at once.  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  * @version $Revision$  * @see TransportLoggerControlMBean  */
+comment|/**  * Singleton class to create TransportLogger objects.  * When the method getInstance() is called for the first time,  * a TransportLoggerControlMBean is created and registered.  * This MBean permits enabling and disabling the logging for  * all TransportLogger objects at once.  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  *   * @see TransportLoggerControlMBean  */
 end_comment
 
 begin_class

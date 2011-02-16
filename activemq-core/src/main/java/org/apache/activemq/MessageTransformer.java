@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A plugin strategy for transforming a message before it is sent by the JMS client or before it is  * dispatched to the JMS consumer  *  * @version $Revision$  */
+comment|/**  * A plugin strategy for transforming a message before it is sent by the JMS client or before it is  * dispatched to the JMS consumer  *  *   */
 end_comment
 
 begin_interface

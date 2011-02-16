@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Represents an interceptor on destination instances.  *   * @version $Revision$  */
+comment|/**  * Represents an interceptor on destination instances.  *   *   */
 end_comment
 
 begin_interface

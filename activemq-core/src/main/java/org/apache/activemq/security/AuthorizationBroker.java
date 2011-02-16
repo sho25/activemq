@@ -212,7 +212,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Verifies if a authenticated user can do an operation against the broker using  * an authorization map.  *   * @version $Revision$  */
+comment|/**  * Verifies if a authenticated user can do an operation against the broker using  * an authorization map.  *   *   */
 end_comment
 
 begin_class

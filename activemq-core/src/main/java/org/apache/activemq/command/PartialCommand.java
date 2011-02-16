@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a partial command; a large command that has been split up into  * pieces.  *   * @openwire:marshaller code="60"  * @version $Revision$  */
+comment|/**  * Represents a partial command; a large command that has been split up into  * pieces.  *   * @openwire:marshaller code="60"  *   */
 end_comment
 
 begin_class

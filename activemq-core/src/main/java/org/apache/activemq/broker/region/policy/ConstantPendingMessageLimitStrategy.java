@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This PendingMessageLimitStrategy is configured to a constant value for all subscriptions.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * This PendingMessageLimitStrategy is configured to a constant value for all subscriptions.  *   * @org.apache.xbean.XBean  *   *   */
 end_comment
 
 begin_class

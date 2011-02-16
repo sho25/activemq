@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This PendingMessageLimitStrategy sets the maximum pending message limit value to be  * a multiplier of the prefetch limit of the subscription.  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * This PendingMessageLimitStrategy sets the maximum pending message limit value to be  * a multiplier of the prefetch limit of the subscription.  *   * @org.apache.xbean.XBean  *   *   */
 end_comment
 
 begin_class

@@ -164,7 +164,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Custom implementation of LogWriter interface.  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  * @version $Revision$  */
+comment|/**  * Custom implementation of LogWriter interface.  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  *   */
 end_comment
 
 begin_class

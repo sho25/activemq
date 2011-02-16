@@ -128,7 +128,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple authentication plugin  *   * @org.apache.xbean.XBean element="simpleAuthenticationPlugin"  *                         description="Provides a simple authentication plugin  *                         configured with a map of user-passwords and a map of  *                         user-groups or a list of authentication users"  *   * @version $Revision$  */
+comment|/**  * A simple authentication plugin  *   * @org.apache.xbean.XBean element="simpleAuthenticationPlugin"  *                         description="Provides a simple authentication plugin  *                         configured with a map of user-passwords and a map of  *                         user-groups or a list of authentication users"  *   *   */
 end_comment
 
 begin_class

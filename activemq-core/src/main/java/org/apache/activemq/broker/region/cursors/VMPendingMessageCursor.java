@@ -122,7 +122,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * hold pending messages in a linked list (messages awaiting disptach to a  * consumer) cursor  *   * @version $Revision$  */
+comment|/**  * hold pending messages in a linked list (messages awaiting disptach to a  * consumer) cursor  *   *   */
 end_comment
 
 begin_class

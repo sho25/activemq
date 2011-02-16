@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A useful base class for message transformers.  *  * @version $Revision$  */
+comment|/**  * A useful base class for message transformers.  *  *   */
 end_comment
 
 begin_class

@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple implementation of {@link BufferPool} which does no pooling and just  * creates new buffers each time  *   * @version $Revision$  */
+comment|/**  * A simple implementation of {@link BufferPool} which does no pooling and just  * creates new buffers each time  *   *   */
 end_comment
 
 begin_class

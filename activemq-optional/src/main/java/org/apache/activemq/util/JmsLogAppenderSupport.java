@@ -152,7 +152,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An abstract base class for implementation inheritence for a log4j JMS  * appender  *   * @version $Revision$  */
+comment|/**  * An abstract base class for implementation inheritence for a log4j JMS  * appender  *   *   */
 end_comment
 
 begin_class

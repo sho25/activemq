@@ -216,7 +216,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Transforms object messages to text messages and vice versa using  * {@link XStream}  *   * @deprecated as of 5.3.0 release replaced by {@link org.apache.activemq.util.oxm.XStreamMessageTransformer}  *   * @version $Revision$  */
+comment|/**  * Transforms object messages to text messages and vice versa using  * {@link XStream}  *   * @deprecated as of 5.3.0 release replaced by {@link org.apache.activemq.util.oxm.XStreamMessageTransformer}  *   *   */
 end_comment
 
 begin_class

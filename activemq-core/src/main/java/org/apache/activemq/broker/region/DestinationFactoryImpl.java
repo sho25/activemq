@@ -224,7 +224,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Creates standard ActiveMQ implementations of  * {@link org.apache.activemq.broker.region.Destination}.  *   * @author fateev@amazon.com  * @version $Revision$  */
+comment|/**  * Creates standard ActiveMQ implementations of  * {@link org.apache.activemq.broker.region.Destination}.  *   * @author fateev@amazon.com  *   */
 end_comment
 
 begin_class

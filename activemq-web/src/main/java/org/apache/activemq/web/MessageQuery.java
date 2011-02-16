@@ -106,7 +106,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Allow the user to browse a message on a queue by its ID  *   * @version $Revision$  */
+comment|/**  * Allow the user to browse a message on a queue by its ID  *   *   */
 end_comment
 
 begin_class

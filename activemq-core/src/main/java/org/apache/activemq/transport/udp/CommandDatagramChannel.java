@@ -228,7 +228,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A strategy for reading datagrams and de-fragmenting them together.  *   * @version $Revision$  */
+comment|/**  * A strategy for reading datagrams and de-fragmenting them together.  *   *   */
 end_comment
 
 begin_class

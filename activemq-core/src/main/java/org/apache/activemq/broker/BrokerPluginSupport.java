@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A useful base class for implementing broker plugins.  *   * @version $Revision$  */
+comment|/**  * A useful base class for implementing broker plugins.  *   *   */
 end_comment
 
 begin_class

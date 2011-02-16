@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple pool of JMS Session objects intended for use by Queue browsers.  *   * @version $Revision$  */
+comment|/**  * A simple pool of JMS Session objects intended for use by Queue browsers.  *   *   */
 end_comment
 
 begin_class

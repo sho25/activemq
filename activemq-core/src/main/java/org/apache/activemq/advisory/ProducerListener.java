@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Listen to the changes in the number of active consumers available for a given destination.  *   * @version $Revision: 359679 $  */
+comment|/**  * Listen to the changes in the number of active consumers available for a given destination.  *   *   */
 end_comment
 
 begin_interface

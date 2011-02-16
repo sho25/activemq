@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simpler than a Map  *   * @version $Revision$  */
+comment|/**  * Simpler than a Map  *   *   */
 end_comment
 
 begin_interface

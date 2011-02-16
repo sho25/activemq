@@ -52,7 +52,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of LogWriter interface to keep ActiveMQ's  * old logging format.  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  * @version $Revision$  */
+comment|/**  * Implementation of LogWriter interface to keep ActiveMQ's  * old logging format.  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  *   */
 end_comment
 
 begin_class

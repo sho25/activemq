@@ -230,7 +230,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An object which can be used to listen to the number of active consumers  * available on a given destination.  *   * @version $Revision: 359679 $  */
+comment|/**  * An object which can be used to listen to the number of active consumers  * available on a given destination.  *   *   */
 end_comment
 
 begin_class

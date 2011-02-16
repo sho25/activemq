@@ -532,7 +532,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Broker interceptor which allows you to trace all operations to a UDP  * socket.  *   * @org.apache.xbean.XBean element="udpTraceBrokerPlugin"  * @version $Revision: 427613 $  */
+comment|/**  * A Broker interceptor which allows you to trace all operations to a UDP  * socket.  *   * @org.apache.xbean.XBean element="udpTraceBrokerPlugin"  *   */
 end_comment
 
 begin_class

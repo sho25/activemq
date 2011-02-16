@@ -156,7 +156,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * BTreeIndex represents a Variable Magnitude B+Tree in a Page File.  * A BTree is a bit flexible in that it can be used for set or  * map-based indexing.  Leaf nodes are linked together for faster  * iteration of the values.   *  *<br>  * The Variable Magnitude attribute means that the BTree attempts  * to store as many values and pointers on one page as is possible.  *   *<br>  * The implementation can optionally a be Simple-Prefix B+Tree.  *   *<br>  * For those who don't know how a Simple-Prefix B+Tree works, the primary  * distinction is that instead of promoting actual keys to branch pages,  * when leaves are split, a shortest-possible separator is generated at  * the pivot.  That separator is what is promoted to the parent branch  * (and continuing up the list).  As a result, actual keys and pointers  * can only be found at the leaf level.  This also affords the index the  * ability to ignore costly merging and redistribution of pages when  * deletions occur.  Deletions only affect leaf pages in this  * implementation, and so it is entirely possible for a leaf page to be  * completely empty after all of its keys have been removed.  *  * @version $Revision$, $Date$  */
+comment|/**  * BTreeIndex represents a Variable Magnitude B+Tree in a Page File.  * A BTree is a bit flexible in that it can be used for set or  * map-based indexing.  Leaf nodes are linked together for faster  * iteration of the values.   *  *<br>  * The Variable Magnitude attribute means that the BTree attempts  * to store as many values and pointers on one page as is possible.  *   *<br>  * The implementation can optionally a be Simple-Prefix B+Tree.  *   *<br>  * For those who don't know how a Simple-Prefix B+Tree works, the primary  * distinction is that instead of promoting actual keys to branch pages,  * when leaves are split, a shortest-possible separator is generated at  * the pivot.  That separator is what is promoted to the parent branch  * (and continuing up the list).  As a result, actual keys and pointers  * can only be found at the leaf level.  This also affords the index the  * ability to ignore costly merging and redistribution of pages when  * deletions occur.  Deletions only affect leaf pages in this  * implementation, and so it is entirely possible for a leaf page to be  * completely empty after all of its keys have been removed.  *  * , $Date$  */
 end_comment
 
 begin_class
@@ -191,7 +191,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Interface used to determine the simple prefix of two keys.      *      * @version $Revision$, $Date$      */
+comment|/**      * Interface used to determine the simple prefix of two keys.      *      * , $Date$      */
 specifier|static
 specifier|public
 interface|interface

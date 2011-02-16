@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a map of JMSXGroupID values to consumer IDs  *   * @version $Revision$  */
+comment|/**  * Represents a map of JMSXGroupID values to consumer IDs  *   *   */
 end_comment
 
 begin_interface

@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Listens to events on a {@link ReplayBuffer}  *   * @version $Revision$  */
+comment|/**  * Listens to events on a {@link ReplayBuffer}  *   *   */
 end_comment
 
 begin_interface

@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A strategy for choosing which destination is used for dead letter queue  * messages.  *   * @version $Revision: 426366 $  */
+comment|/**  * A strategy for choosing which destination is used for dead letter queue  * messages.  *   *   */
 end_comment
 
 begin_class

@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Inteface to LinkedList of Indexes  *   * @version $Revision$  */
+comment|/**  * Inteface to LinkedList of Indexes  *   *   */
 end_comment
 
 begin_interface

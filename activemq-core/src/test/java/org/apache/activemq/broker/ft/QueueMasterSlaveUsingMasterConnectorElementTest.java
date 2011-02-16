@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Lets test using a<masterConnector/> element instead of the old masterConnectorURI attribute  *   * @version $Revision$  */
+comment|/**  * Lets test using a<masterConnector/> element instead of the old masterConnectorURI attribute  *   *   */
 end_comment
 
 begin_class

@@ -244,7 +244,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A<a href="http://stomp.codehaus.org/">STOMP</a> over NIO transport factory  *   * @version $Revision: 645574 $  */
+comment|/**  * A<a href="http://stomp.codehaus.org/">STOMP</a> over NIO transport factory  *   *   */
 end_comment
 
 begin_class

@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents some kind of virtual destination.  *   * @version $Revision$  */
+comment|/**  * Represents some kind of virtual destination.  *   *   */
 end_comment
 
 begin_interface

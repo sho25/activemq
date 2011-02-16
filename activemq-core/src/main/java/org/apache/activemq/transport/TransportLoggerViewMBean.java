@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * MBean to manage a single Transport Logger.  * It can inform if the logger is currently writing to a log file or not,  * by setting the logging property or by using the operations  * enableLogging() and disableLogging().  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  * @version $Revision$  */
+comment|/**  * MBean to manage a single Transport Logger.  * It can inform if the logger is currently writing to a log file or not,  * by setting the logging property or by using the operations  * enableLogging() and disableLogging().  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  *   */
 end_comment
 
 begin_interface

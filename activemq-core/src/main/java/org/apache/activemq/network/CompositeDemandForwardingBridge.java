@@ -158,7 +158,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A demand forwarding bridge which works with multicast style transports where  * a single Transport could be communicating with multiple remote brokers  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * A demand forwarding bridge which works with multicast style transports where  * a single Transport could be communicating with multiple remote brokers  *   * @org.apache.xbean.XBean  *   *   */
 end_comment
 
 begin_class

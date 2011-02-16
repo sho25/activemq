@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Listen to the changes in destinations being created or destroyed  *  * @version $Revision$  */
+comment|/**  * Listen to the changes in destinations being created or destroyed  *  *   */
 end_comment
 
 begin_interface

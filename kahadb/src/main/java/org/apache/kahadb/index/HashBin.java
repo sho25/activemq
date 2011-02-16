@@ -108,7 +108,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Bin in a HashIndex  *   * @version $Revision$  */
+comment|/**  * Bin in a HashIndex  *   *   */
 end_comment
 
 begin_class

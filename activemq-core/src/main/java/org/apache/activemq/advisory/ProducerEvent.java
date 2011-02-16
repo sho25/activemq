@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An event when the number of producers on a given destination changes.  *   * @version $Revision: 359679 $  */
+comment|/**  * An event when the number of producers on a given destination changes.  *   *   */
 end_comment
 
 begin_class

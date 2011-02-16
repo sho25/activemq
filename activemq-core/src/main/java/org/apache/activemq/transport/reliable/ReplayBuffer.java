@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class keeps around a buffer of old commands which have been sent on  * an unreliable transport. The buffers are of type Object as they could be datagrams  * or byte[] or ByteBuffer - depending on the underlying transport implementation.  *   * @version $Revision$  */
+comment|/**  * This class keeps around a buffer of old commands which have been sent on  * an unreliable transport. The buffers are of type Object as they could be datagrams  * or byte[] or ByteBuffer - depending on the underlying transport implementation.  *   *   */
 end_comment
 
 begin_interface

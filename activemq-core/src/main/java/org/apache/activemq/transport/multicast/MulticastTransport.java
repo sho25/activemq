@@ -220,7 +220,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A multicast based transport.  *   * @version $Revision$  */
+comment|/**  * A multicast based transport.  *   *   */
 end_comment
 
 begin_class

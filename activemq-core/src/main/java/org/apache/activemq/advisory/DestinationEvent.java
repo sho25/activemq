@@ -78,7 +78,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An event caused when a destination is created or deleted  *  * @version $Revision$  */
+comment|/**  * An event caused when a destination is created or deleted  *  *   */
 end_comment
 
 begin_class

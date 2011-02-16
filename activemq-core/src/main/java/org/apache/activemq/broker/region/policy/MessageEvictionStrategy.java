@@ -56,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A strategy for evicting messages from slow consumers.  *   * @version $Revision$  */
+comment|/**  * A strategy for evicting messages from slow consumers.  *   *   */
 end_comment
 
 begin_interface

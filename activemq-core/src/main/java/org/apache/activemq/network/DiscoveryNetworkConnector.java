@@ -310,7 +310,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A network connector which uses a discovery agent to detect the remote brokers  * available and setup a connection to each available remote broker  *   * @org.apache.xbean.XBean element="networkConnector"  * @version $Revision$  */
+comment|/**  * A network connector which uses a discovery agent to detect the remote brokers  * available and setup a connection to each available remote broker  *   * @org.apache.xbean.XBean element="networkConnector"  *   */
 end_comment
 
 begin_class

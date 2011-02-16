@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A general purpose replay command for some kind of producer where ranges of  * messages are asked to be replayed. This command is typically used over a  * non-reliable transport such as UDP or multicast but could also be used on  * TCP/IP if a socket has been re-established.  *   * @openwire:marshaller code="65"  * @version $Revision$  */
+comment|/**  * A general purpose replay command for some kind of producer where ranges of  * messages are asked to be replayed. This command is typically used over a  * non-reliable transport such as UDP or multicast but could also be used on  * TCP/IP if a socket has been re-established.  *   * @openwire:marshaller code="65"  *   */
 end_comment
 
 begin_class

@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Queue specific MessageReference.  *   * @author fateev@amazon.com  * @version $Revision$  */
+comment|/**  * Queue specific MessageReference.  *   * @author fateev@amazon.com  *   */
 end_comment
 
 begin_interface

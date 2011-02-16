@@ -286,7 +286,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A UDP based implementation of {@link TransportServer}  *   * @version $Revision$  */
+comment|/**  * A UDP based implementation of {@link TransportServer}  *   *   */
 end_comment
 
 begin_class

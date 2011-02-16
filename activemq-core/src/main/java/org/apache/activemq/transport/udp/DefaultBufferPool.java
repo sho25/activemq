@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A default implementation of {@link BufferPool} which keeps a pool of direct  * byte buffers.  *   * @version $Revision$  */
+comment|/**  * A default implementation of {@link BufferPool} which keeps a pool of direct  * byte buffers.  *   *   */
 end_comment
 
 begin_class

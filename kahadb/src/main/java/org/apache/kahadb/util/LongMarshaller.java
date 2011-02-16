@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of a Marshaller for a Long  *   * @version $Revision$  */
+comment|/**  * Implementation of a Marshaller for a Long  *   *   */
 end_comment
 
 begin_class

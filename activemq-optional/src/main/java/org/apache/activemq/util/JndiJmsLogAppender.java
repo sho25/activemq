@@ -100,7 +100,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A JMS 1.1 log4j appender which uses JNDI to locate a JMS ConnectionFactory to  * use for logging events.  *   * @version $Revision$  */
+comment|/**  * A JMS 1.1 log4j appender which uses JNDI to locate a JMS ConnectionFactory to  * use for logging events.  *   *   */
 end_comment
 
 begin_class

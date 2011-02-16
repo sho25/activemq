@@ -114,7 +114,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Store based Cursor for Queues  *   * @version $Revision: 474985 $  */
+comment|/**  * Store based Cursor for Queues  *   *   */
 end_comment
 
 begin_class

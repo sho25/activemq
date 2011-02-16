@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An eviction strategy which evicts the oldest message first (which is the  * default).  *   * @org.apache.xbean.XBean  *   * @version $Revision$  */
+comment|/**  * An eviction strategy which evicts the oldest message first (which is the  * default).  *   * @org.apache.xbean.XBean  *   *   */
 end_comment
 
 begin_class

@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A @{link Comparator} of commands using their {@link Command#getCommandId()}  *   * @version $Revision$  */
+comment|/**  * A @{link Comparator} of commands using their {@link Command#getCommandId()}  *   *   */
 end_comment
 
 begin_class

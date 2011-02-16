@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @author Neil Clayton  * @version $Revision$  */
+comment|/**  *   * @author Neil Clayton  *   */
 end_comment
 
 begin_class

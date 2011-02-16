@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents the end marker of a stream of {@link PartialCommand} instances.  *   * @openwire:marshaller code="61"  * @version $Revision$  */
+comment|/**  * Represents the end marker of a stream of {@link PartialCommand} instances.  *   * @openwire:marshaller code="61"  *   */
 end_comment
 
 begin_class

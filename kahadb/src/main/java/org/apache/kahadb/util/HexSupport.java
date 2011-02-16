@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Used to convert to hex from byte arrays and back.  *   * @version $Revision$  */
+comment|/**  * Used to convert to hex from byte arrays and back.  *   *   */
 end_comment
 
 begin_class

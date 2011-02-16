@@ -194,7 +194,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link BrokerFacade} which uses a local in JVM broker  *   * @version $Revision$  */
+comment|/**  * An implementation of {@link BrokerFacade} which uses a local in JVM broker  *   *   */
 end_comment
 
 begin_class

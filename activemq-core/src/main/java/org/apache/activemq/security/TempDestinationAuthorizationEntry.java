@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Represents an entry in a {@link DefaultAuthorizationMap} for assigning  * different operations (read, write, admin) of user roles to a temporary  * destination  *   * @org.apache.xbean.XBean  * @version $Revision: 426366 $  */
+comment|/**  * Represents an entry in a {@link DefaultAuthorizationMap} for assigning  * different operations (read, write, admin) of user roles to a temporary  * destination  *   * @org.apache.xbean.XBean  *   */
 end_comment
 
 begin_class

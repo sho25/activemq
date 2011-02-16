@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of the TransportLoggerControlMBean interface,  * which is an MBean used to control all TransportLoggers at once.  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  * @version $Revision$  */
+comment|/**  * Implementation of the TransportLoggerControlMBean interface,  * which is an MBean used to control all TransportLoggers at once.  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  *   */
 end_comment
 
 begin_class

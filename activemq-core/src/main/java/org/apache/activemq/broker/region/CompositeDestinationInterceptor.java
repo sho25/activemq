@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Represents a Composite Pattern of a {@link DestinationInterceptor}  *   * @version $Revision$  */
+comment|/**  * Represents a Composite Pattern of a {@link DestinationInterceptor}  *   *   */
 end_comment
 
 begin_class

@@ -116,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class used to find a LogWriter implementation, and returning  * a LogWriter object, taking as argument the name of a log writer.  * The mapping between the log writer names and the classes  * implementing LogWriter is specified by the files in the  * resources/META-INF/services/org/apache/activemq/transport/logwriters  * directory.  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  * @version $Revision$  */
+comment|/**  * Class used to find a LogWriter implementation, and returning  * a LogWriter object, taking as argument the name of a log writer.  * The mapping between the log writer names and the classes  * implementing LogWriter is specified by the files in the  * resources/META-INF/services/org/apache/activemq/transport/logwriters  * directory.  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  *   */
 end_comment
 
 begin_class

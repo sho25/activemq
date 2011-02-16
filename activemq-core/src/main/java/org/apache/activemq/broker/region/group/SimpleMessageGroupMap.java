@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple implementation which tracks every individual GroupID value but  * which can become a memory leak if clients die before they complete a message  * group.  *   * @version $Revision$  */
+comment|/**  * A simple implementation which tracks every individual GroupID value but  * which can become a memory leak if clients die before they complete a message  * group.  *   *   */
 end_comment
 
 begin_class

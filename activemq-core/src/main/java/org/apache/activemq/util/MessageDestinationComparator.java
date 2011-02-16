@@ -60,7 +60,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A comparator which works on SendCommand objects to compare the destinations  *   * @version $Revision$  */
+comment|/**  * A comparator which works on SendCommand objects to compare the destinations  *   *   */
 end_comment
 
 begin_class

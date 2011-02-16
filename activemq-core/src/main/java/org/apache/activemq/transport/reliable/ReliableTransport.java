@@ -182,7 +182,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This interceptor deals with out of order commands together with being able to  * handle dropped commands and the re-requesting dropped commands.  *   * @version $Revision$  */
+comment|/**  * This interceptor deals with out of order commands together with being able to  * handle dropped commands and the re-requesting dropped commands.  *   *   */
 end_comment
 
 begin_class

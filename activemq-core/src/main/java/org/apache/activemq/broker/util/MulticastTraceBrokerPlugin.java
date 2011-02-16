@@ -68,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Broker interceptor which allows you to trace all operations to a Multicast  * socket.  *   * @org.apache.xbean.XBean  *   * @version $Revision: 427613 $  */
+comment|/**  * A Broker interceptor which allows you to trace all operations to a Multicast  * socket.  *   * @org.apache.xbean.XBean  *   *   */
 end_comment
 
 begin_class

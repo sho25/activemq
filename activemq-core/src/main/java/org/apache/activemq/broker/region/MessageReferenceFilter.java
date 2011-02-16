@@ -42,7 +42,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a filter on message references  *   * @version $Revision$  */
+comment|/**  * Represents a filter on message references  *   *   */
 end_comment
 
 begin_interface

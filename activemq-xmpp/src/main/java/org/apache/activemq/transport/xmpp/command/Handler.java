@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Represents a handler of a type of event  *  * @version $Revision$  */
+comment|/**  * Represents a handler of a type of event  *  *   */
 end_comment
 
 begin_interface

@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An eviction strategy which evicts the oldest message with the lowest priority first.  *   * @org.apache.xbean.XBean  *   * @version $Revision$messageEvictionStrategy  */
+comment|/**  * An eviction strategy which evicts the oldest message with the lowest priority first.  *   * @org.apache.xbean.XBean  *   * messageEvictionStrategy  */
 end_comment
 
 begin_class

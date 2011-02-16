@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of a Marshaller for Objects  *   * @version $Revision$  */
+comment|/**  * Implementation of a Marshaller for Objects  *   *   */
 end_comment
 
 begin_class

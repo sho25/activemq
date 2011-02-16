@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An event generated when a consumer stops.  *   * @version $Revision$  */
+comment|/**  * An event generated when a consumer stops.  *   *   */
 end_comment
 
 begin_class

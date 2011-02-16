@@ -130,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides basic audit functions for Messages without sync  *   * @version $Revision$  */
+comment|/**  * Provides basic audit functions for Messages without sync  *   *   */
 end_comment
 
 begin_class

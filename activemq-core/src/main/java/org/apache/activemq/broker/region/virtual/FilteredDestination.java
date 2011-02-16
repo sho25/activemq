@@ -96,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a destination which is filtered using some predicate such as a selector  * so that messages are only dispatched to the destination if they match the filter.  *  * @org.apache.xbean.XBean  *  * @version $Revision$  */
+comment|/**  * Represents a destination which is filtered using some predicate such as a selector  * so that messages are only dispatched to the destination if they match the filter.  *  * @org.apache.xbean.XBean  *  *   */
 end_comment
 
 begin_class

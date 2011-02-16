@@ -286,7 +286,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This implementation of {@link SubscriptionRecoveryPolicy} will perform a user  * specific query mechanism to load any messages they may have missed.  *   * @org.apache.xbean.XBean  * @version $Revision$  */
+comment|/**  * This implementation of {@link SubscriptionRecoveryPolicy} will perform a user  * specific query mechanism to load any messages they may have missed.  *   * @org.apache.xbean.XBean  *   */
 end_comment
 
 begin_class

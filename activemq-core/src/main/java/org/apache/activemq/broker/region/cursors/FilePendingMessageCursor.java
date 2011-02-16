@@ -340,7 +340,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * persist pending messages pending message (messages awaiting dispatch to a  * consumer) cursor  *   * @version $Revision$  */
+comment|/**  * persist pending messages pending message (messages awaiting dispatch to a  * consumer) cursor  *   *   */
 end_comment
 
 begin_class

@@ -26,7 +26,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents the interface used to create a broker from a URI scheme.  *  * @version $Revision$ */
+comment|/**  * Represents the interface used to create a broker from a URI scheme.  *  *  */
 end_comment
 
 begin_interface

@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Throws an exception if packets are dropped causing the transport to be  * closed.  *   * @version $Revision$  */
+comment|/**  * Throws an exception if packets are dropped causing the transport to be  * closed.  *   *   */
 end_comment
 
 begin_class

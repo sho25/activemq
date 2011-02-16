@@ -350,7 +350,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the {@link Transport} interface using raw UDP  *   * @version $Revision$  */
+comment|/**  * An implementation of the {@link Transport} interface using raw UDP  *   *   */
 end_comment
 
 begin_class

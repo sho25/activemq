@@ -148,7 +148,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Interface to pending message (messages awaiting disptach to a consumer)  * cursor  *   * @version $Revision$  */
+comment|/**  * Interface to pending message (messages awaiting disptach to a consumer)  * cursor  *   *   */
 end_comment
 
 begin_interface

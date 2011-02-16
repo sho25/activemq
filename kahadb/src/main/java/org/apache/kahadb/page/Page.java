@@ -132,7 +132,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Page within a file.  *   * @version $Revision$  */
+comment|/**  * A Page within a file.  *   *   */
 end_comment
 
 begin_class

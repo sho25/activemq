@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Uses hash-code buckets to associate consumers with sets of message group IDs.  *   * @version $Revision$  */
+comment|/**  * Uses hash-code buckets to associate consumers with sets of message group IDs.  *   *   */
 end_comment
 
 begin_class

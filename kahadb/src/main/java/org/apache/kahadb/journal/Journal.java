@@ -366,7 +366,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Manages DataFiles  *   * @version $Revision$  */
+comment|/**  * Manages DataFiles  *   *   */
 end_comment
 
 begin_class

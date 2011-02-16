@@ -348,7 +348,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  * @version $Revision$  */
+comment|/**  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  *   */
 end_comment
 
 begin_class

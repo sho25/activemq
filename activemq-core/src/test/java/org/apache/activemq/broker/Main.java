@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper class which can be handy for running a broker in your IDE from the  * activemq-core module.  *   * @version $Revision$  */
+comment|/**  * A helper class which can be handy for running a broker in your IDE from the  * activemq-core module.  *   *   */
 end_comment
 
 begin_class

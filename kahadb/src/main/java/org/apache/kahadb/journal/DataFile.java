@@ -88,7 +88,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * DataFile  *   * @version $Revision$  */
+comment|/**  * DataFile  *   *   */
 end_comment
 
 begin_class

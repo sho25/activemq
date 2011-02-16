@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An event when the number of consumers on a given destination changes.  *   * @version $Revision$  */
+comment|/**  * An event when the number of consumers on a given destination changes.  *   *   */
 end_comment
 
 begin_class
