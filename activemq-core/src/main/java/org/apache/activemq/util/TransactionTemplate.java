@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper class for running code with a PersistenceAdapter in a transaction.  *   * @version $Revision: 1.2 $  */
+comment|/**  * A helper class for running code with a PersistenceAdapter in a transaction.  *   *   */
 end_comment
 
 begin_class

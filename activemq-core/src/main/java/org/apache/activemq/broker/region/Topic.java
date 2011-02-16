@@ -528,7 +528,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The Topic is a destination that sends a copy of a message to every active  * Subscription registered.  *   * @version $Revision: 1.21 $  */
+comment|/**  * The Topic is a destination that sends a copy of a message to every active  * Subscription registered.  *   *   */
 end_comment
 
 begin_class

@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Create an Outbound Queue Bridge  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Create an Outbound Queue Bridge  *   * @org.apache.xbean.XBean  *   *   */
 end_comment
 
 begin_class

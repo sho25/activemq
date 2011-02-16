@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Enforces a test case to run for only an allotted time to prevent them from  * hanging and breaking the whole testing.  *   * @version $Revision: 1.0 $  */
+comment|/**  * Enforces a test case to run for only an allotted time to prevent them from  * hanging and breaking the whole testing.  *   *   */
 end_comment
 
 begin_class

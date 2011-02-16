@@ -114,7 +114,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A an Item with a relative position and location to other Items in the Store  *   * @version $Revision: 1.2 $  */
+comment|/**  * A an Item with a relative position and location to other Items in the Store  *   *   */
 end_comment
 
 begin_class

@@ -68,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper class used to stop a bunch of services, catching and logging any  * exceptions and then throwing the first exception when everything is stoped.  *   * @version $Revision: 1.1 $  */
+comment|/**  * A helper class used to stop a bunch of services, catching and logging any  * exceptions and then throwing the first exception when everything is stoped.  *   *   */
 end_comment
 
 begin_class

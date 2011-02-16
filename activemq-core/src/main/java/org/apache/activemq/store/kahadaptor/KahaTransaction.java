@@ -124,7 +124,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Stores a messages/acknowledgements for a transaction  *   * @version $Revision: 1.4 $  */
+comment|/**  * Stores a messages/acknowledgements for a transaction  *   *   */
 end_comment
 
 begin_class

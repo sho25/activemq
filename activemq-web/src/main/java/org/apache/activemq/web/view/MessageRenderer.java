@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a rendering of the messages  *   * @version $Revision: $  */
+comment|/**  * Represents a rendering of the messages  *   *   */
 end_comment
 
 begin_interface

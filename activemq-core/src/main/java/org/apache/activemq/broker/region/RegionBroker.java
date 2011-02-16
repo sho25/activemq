@@ -718,7 +718,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Routes Broker operations to the correct messaging regions for processing.  *   * @version $Revision$  */
+comment|/**  * Routes Broker operations to the correct messaging regions for processing.  *   *   */
 end_comment
 
 begin_class

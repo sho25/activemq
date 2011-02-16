@@ -142,7 +142,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper class for test cases which use an embedded broker and use Camel to do the routing  *  * @version $Revision: 1.1 $  */
+comment|/**  * A helper class for test cases which use an embedded broker and use Camel to do the routing  *  *   */
 end_comment
 
 begin_class

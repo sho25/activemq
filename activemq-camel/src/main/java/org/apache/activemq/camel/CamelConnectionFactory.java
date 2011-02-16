@@ -82,7 +82,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A JMS ConnectionFactory which resolves non-JMS destinations or instances of  * {@link CamelDestination} to use the {@link CamelContext} to perform smart routing etc  *  * @version $Revision: $  */
+comment|/**  * A JMS ConnectionFactory which resolves non-JMS destinations or instances of  * {@link CamelDestination} to use the {@link CamelContext} to perform smart routing etc  *  *   */
 end_comment
 
 begin_class

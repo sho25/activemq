@@ -114,7 +114,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A useful base class which creates and closes an embedded broker  *   * @version $Revision: 1.1 $  */
+comment|/**  * A useful base class which creates and closes an embedded broker  *   *   */
 end_comment
 
 begin_class

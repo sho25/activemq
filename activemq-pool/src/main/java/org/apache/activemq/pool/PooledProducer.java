@@ -68,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A pooled {@link MessageProducer}  *   * @version $Revision: 1.1 $  */
+comment|/**  * A pooled {@link MessageProducer}  *   *   */
 end_comment
 
 begin_class

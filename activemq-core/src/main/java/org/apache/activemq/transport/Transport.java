@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents the client side of a transport allowing messages to be sent  * synchronously, asynchronously and consumed.  *   * @version $Revision: 1.5 $  */
+comment|/**  * Represents the client side of a transport allowing messages to be sent  * synchronously, asynchronously and consumed.  *   *   */
 end_comment
 
 begin_interface

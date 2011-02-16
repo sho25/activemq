@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An agent used to discover other instances of a service.   *   * We typically use a discovery agent to auto-discover JMS clients and JMS brokers on a network  *  * @version $Revision$  */
+comment|/**  * An agent used to discover other instances of a service.   *   * We typically use a discovery agent to auto-discover JMS clients and JMS brokers on a network  *  *   */
 end_comment
 
 begin_interface

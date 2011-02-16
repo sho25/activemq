@@ -94,7 +94,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An ActiveMQ Message Broker. It consists of a number of transport  * connectors, network connectors and a bunch of properties which can be used to  * configure the broker as its lazily created.  *   * @org.apache.xbean.XBean element="broker" rootElement="true"  * @org.apache.xbean.Defaults {code:xml}   *<broker test="foo.bar">  *   lets.  *   see what it includes.  *</broker>     * {code}  * @version $Revision: 1.1 $  */
+comment|/**  * An ActiveMQ Message Broker. It consists of a number of transport  * connectors, network connectors and a bunch of properties which can be used to  * configure the broker as its lazily created.  *   * @org.apache.xbean.XBean element="broker" rootElement="true"  * @org.apache.xbean.Defaults {code:xml}   *<broker test="foo.bar">  *   lets.  *   see what it includes.  *</broker>     * {code}  *   */
 end_comment
 
 begin_class

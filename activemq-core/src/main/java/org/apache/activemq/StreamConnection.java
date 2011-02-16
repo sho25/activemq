@@ -94,7 +94,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The StreamConnection interface allows you to send and receive data from a  * Destination in using standard java InputStream and OutputStream objects. It's  * best use case is to send and receive large amounts of data that would be to  * large to hold in a single JMS message.  *   * @version $Revision$  */
+comment|/**  * The StreamConnection interface allows you to send and receive data from a  * Destination in using standard java InputStream and OutputStream objects. It's  * best use case is to send and receive large amounts of data that would be to  * large to hold in a single JMS message.  *   *   */
 end_comment
 
 begin_interface

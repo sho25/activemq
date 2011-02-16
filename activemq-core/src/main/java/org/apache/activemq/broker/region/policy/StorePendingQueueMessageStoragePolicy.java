@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Creates a StoreQueueCursor *  *   * @org.apache.xbean.XBean element="storeCursor" description="Pending messages  *                         paged in from the Store"  *   * @version $Revision$  */
+comment|/**  * Creates a StoreQueueCursor *  *   * @org.apache.xbean.XBean element="storeCursor" description="Pending messages  *                         paged in from the Store"  *   *   */
 end_comment
 
 begin_class

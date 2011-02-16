@@ -418,7 +418,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a messaging client used from inside a web container typically  * stored inside a HttpSession TODO controls to prevent DOS attacks with users  * requesting many consumers TODO configure consumers with small prefetch.  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Represents a messaging client used from inside a web container typically  * stored inside a HttpSession TODO controls to prevent DOS attacks with users  * requesting many consumers TODO configure consumers with small prefetch.  *   *   */
 end_comment
 
 begin_class

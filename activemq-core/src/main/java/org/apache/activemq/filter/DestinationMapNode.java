@@ -96,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation class used to implement {@link DestinationMap}  *   * @version $Revision: 1.2 $  */
+comment|/**  * An implementation class used to implement {@link DestinationMap}  *   *   */
 end_comment
 
 begin_class

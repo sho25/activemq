@@ -194,7 +194,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test case for AMQ-268  *   * @author Paul Smith  * @version $Revision: 1.1 $  */
+comment|/**  * Test case for AMQ-268  *   * @author Paul Smith  *   */
 end_comment
 
 begin_class

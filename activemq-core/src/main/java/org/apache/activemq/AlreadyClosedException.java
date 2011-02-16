@@ -24,7 +24,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An exception which is closed if you try to access a resource which has already  * been closed  *  * @version $Revision: 1.2 $  */
+comment|/**  * An exception which is closed if you try to access a resource which has already  * been closed  *  *   */
 end_comment
 
 begin_class

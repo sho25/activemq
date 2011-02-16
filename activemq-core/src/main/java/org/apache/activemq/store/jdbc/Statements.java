@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * @version $Revision: 1.4 $  *   * @org.apache.xbean.XBean element="statements"  *   */
+comment|/**  *   *   * @org.apache.xbean.XBean element="statements"  *   */
 end_comment
 
 begin_class

@@ -232,7 +232,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @version $Revision$  * @deprecated  * @see HttpClientTransport  */
+comment|/**  *   * @deprecated  * @see HttpClientTransport  */
 end_comment
 
 begin_class

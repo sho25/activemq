@@ -380,7 +380,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Transport that fans out a connection to multiple brokers.  *   * @version $Revision$  */
+comment|/**  * A Transport that fans out a connection to multiple brokers.  *   *   */
 end_comment
 
 begin_class

@@ -216,7 +216,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * BTree implementation  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * BTree implementation  *   *   */
 end_comment
 
 begin_class

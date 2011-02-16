@@ -84,7 +84,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link WireFormat} implementation which uses the<a  * href="http://xstream.codehaus.org/>XStream</a> library to marshall commands  * onto the wire  *   * @version $Revision$  */
+comment|/**  * A {@link WireFormat} implementation which uses the<a  * href="http://xstream.codehaus.org/>XStream</a> library to marshall commands  * onto the wire  *   *   */
 end_comment
 
 begin_class

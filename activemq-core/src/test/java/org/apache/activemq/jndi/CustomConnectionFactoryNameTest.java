@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test case for AMQ-141  *  * @version $Revision: 1.2 $  */
+comment|/**  * Test case for AMQ-141  *  *   */
 end_comment
 
 begin_class

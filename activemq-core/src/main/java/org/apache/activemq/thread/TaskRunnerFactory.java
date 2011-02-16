@@ -88,7 +88,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Manages the thread pool for long running tasks. Long running tasks are not  * always active but when they are active, they may need a few iterations of  * processing for them to become idle. The manager ensures that each task is  * processes but that no one task overtakes the system. This is kina like  * cooperative multitasking.  *   * @version $Revision: 1.5 $  */
+comment|/**  * Manages the thread pool for long running tasks. Long running tasks are not  * always active but when they are active, they may need a few iterations of  * processing for them to become idle. The manager ensures that each task is  * processes but that no one task overtakes the system. This is kina like  * cooperative multitasking.  *   *   */
 end_comment
 
 begin_class

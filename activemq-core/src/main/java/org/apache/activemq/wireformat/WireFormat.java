@@ -60,7 +60,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides a mechanism to marshal commands into and out of packets  * or into and out of streams, Channels and Datagrams.  *  * @version $Revision: 1.1 $  */
+comment|/**  * Provides a mechanism to marshal commands into and out of packets  * or into and out of streams, Channels and Datagrams.  *  *   */
 end_comment
 
 begin_interface

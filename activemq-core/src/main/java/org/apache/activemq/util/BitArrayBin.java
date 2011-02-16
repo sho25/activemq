@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Holder for many bitArrays - used for message audit  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Holder for many bitArrays - used for message audit  *   *   */
 end_comment
 
 begin_class

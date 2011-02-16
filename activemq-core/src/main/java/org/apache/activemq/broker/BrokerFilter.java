@@ -404,7 +404,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Allows you to intercept broker operation so that features such as security  * can be implemented as a pluggable filter.  *   * @version $Revision: 1.10 $  */
+comment|/**  * Allows you to intercept broker operation so that features such as security  * can be implemented as a pluggable filter.  *   *   */
 end_comment
 
 begin_class

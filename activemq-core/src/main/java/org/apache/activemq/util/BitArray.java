@@ -56,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simple BitArray to enable setting multiple boolean values efficently Used  * instead of BitSet because BitSet does not allow for efficent serialization.  * Will store up to 64 boolean values  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Simple BitArray to enable setting multiple boolean values efficently Used  * instead of BitSet because BitSet does not allow for efficent serialization.  * Will store up to 64 boolean values  *   *   */
 end_comment
 
 begin_class

@@ -240,7 +240,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ActiveMQManagedConnection maps to real physical connection to the server.  * Since a ManagedConnection has to provide a transaction managment interface to  * the physical connection, and sessions are the objects implement transaction  * managment interfaces in the JMS API, this object also maps to a singe  * physical JMS session.<p/> The side-effect is that JMS connection the  * application gets will allways create the same session object. This is good if  * running in an app server since the sessions are elisted in the context  * transaction. This is bad if used outside of an app server since the user may  * be trying to create 2 different sessions to coordinate 2 different uow.  *   * @version $Revision$  */
+comment|/**  * ActiveMQManagedConnection maps to real physical connection to the server.  * Since a ManagedConnection has to provide a transaction managment interface to  * the physical connection, and sessions are the objects implement transaction  * managment interfaces in the JMS API, this object also maps to a singe  * physical JMS session.<p/> The side-effect is that JMS connection the  * application gets will allways create the same session object. This is good if  * running in an app server since the sessions are elisted in the context  * transaction. This is bad if used outside of an app server since the user may  * be trying to create 2 different sessions to coordinate 2 different uow.  *   *   */
 end_comment
 
 begin_class

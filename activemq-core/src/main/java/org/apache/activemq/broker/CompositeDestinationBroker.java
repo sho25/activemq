@@ -58,7 +58,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This broker filter handles composite destinations. If a broker operation is  * invoked using a composite destination, this filter repeats the operation  * using each destination of the composite. HRC: I think this filter is  * dangerous to use to with the consumer operations. Multiple Subscription  * objects will be associated with a single JMS consumer each having a different  * idea of what the current pre-fetch dispatch size is. If this is used, then  * the client has to expect many more messages to be dispatched than the  * pre-fetch setting allows.  *   * @version $Revision: 1.8 $  */
+comment|/**  * This broker filter handles composite destinations. If a broker operation is  * invoked using a composite destination, this filter repeats the operation  * using each destination of the composite. HRC: I think this filter is  * dangerous to use to with the consumer operations. Multiple Subscription  * objects will be associated with a single JMS consumer each having a different  * idea of what the current pre-fetch dispatch size is. If this is used, then  * the client has to expect many more messages to be dispatched than the  * pre-fetch setting allows.  *   *   */
 end_comment
 
 begin_class

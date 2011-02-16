@@ -206,7 +206,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author pragmasoft  * @version $Revision: 1.1.1.1 $  */
+comment|/**  * @author pragmasoft  *   */
 end_comment
 
 begin_class

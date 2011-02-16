@@ -70,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * MessageEvaluationContext is used to cache selection results. A message  * usually has multiple selectors applied against it. Some selector have a high  * cost of evaluating against the message. Those selectors may whish to cache  * evaluation results associated with the message in the  * MessageEvaluationContext.  *   * @version $Revision: 1.4 $  */
+comment|/**  * MessageEvaluationContext is used to cache selection results. A message  * usually has multiple selectors applied against it. Some selector have a high  * cost of evaluating against the message. Those selectors may whish to cache  * evaluation results associated with the message in the  * MessageEvaluationContext.  *   *   */
 end_comment
 
 begin_class

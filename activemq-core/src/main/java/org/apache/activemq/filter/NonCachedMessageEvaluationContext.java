@@ -56,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * NonCached version of the MessageEvaluationContext  *   * @version $Revision: 1.4 $  */
+comment|/**  * NonCached version of the MessageEvaluationContext  *   *   */
 end_comment
 
 begin_class

@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A cache key for the session details  *  * @version $Revision: 1.1 $  */
+comment|/**  * A cache key for the session details  *  *   */
 end_comment
 
 begin_class

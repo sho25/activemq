@@ -58,7 +58,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A connector creates and manages client connections that talk to the Broker.  *   * @version $Revision: 1.3 $  */
+comment|/**  * A connector creates and manages client connections that talk to the Broker.  *   *   */
 end_comment
 
 begin_interface

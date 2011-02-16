@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link MessageBuffer} which evicts from the largest buffers first.  *   * @version $Revision: 1.1 $  */
+comment|/**  * A {@link MessageBuffer} which evicts from the largest buffers first.  *   *   */
 end_comment
 
 begin_class

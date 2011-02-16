@@ -414,7 +414,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the TcpTransportFactory using SSL. The major  * contribution from this class is that it is aware of SslTransportServer and  * SslTransport classes. All Transports and TransportServers created from this  * factory will have their needClientAuth option set to false.  *   * @author sepandm@gmail.com (Sepand)  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  * @version $Revision$  */
+comment|/**  * An implementation of the TcpTransportFactory using SSL. The major  * contribution from this class is that it is aware of SslTransportServer and  * SslTransport classes. All Transports and TransportServers created from this  * factory will have their needClientAuth option set to false.  *   * @author sepandm@gmail.com (Sepand)  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  *   */
 end_comment
 
 begin_class

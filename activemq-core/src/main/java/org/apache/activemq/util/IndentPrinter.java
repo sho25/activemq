@@ -26,7 +26,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper class for printing indented text  *  * @version $Revision: 1.2 $  */
+comment|/**  * A helper class for printing indented text  *  *   */
 end_comment
 
 begin_class

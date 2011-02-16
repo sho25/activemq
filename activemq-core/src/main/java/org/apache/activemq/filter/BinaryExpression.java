@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * An expression which performs an operation on two expression values.  *   * @version $Revision: 1.2 $  */
+comment|/**  * An expression which performs an operation on two expression values.  *   *   */
 end_comment
 
 begin_class

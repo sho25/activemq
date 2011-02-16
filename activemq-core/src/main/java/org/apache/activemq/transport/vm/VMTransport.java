@@ -256,7 +256,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Transport implementation that uses direct method invocations.  *   * @version $Revision$  */
+comment|/**  * A Transport implementation that uses direct method invocations.  *   *   */
 end_comment
 
 begin_class

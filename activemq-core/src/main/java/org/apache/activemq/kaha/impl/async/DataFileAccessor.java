@@ -104,7 +104,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Optimized Store reader and updater. Single threaded and synchronous. Use in  * conjunction with the DataFileAccessorPool of concurrent use.  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Optimized Store reader and updater. Single threaded and synchronous. Use in  * conjunction with the DataFileAccessorPool of concurrent use.  *   *   */
 end_comment
 
 begin_class

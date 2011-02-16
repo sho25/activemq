@@ -88,7 +88,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marshall a Message or a MessageReference  *   * @version $Revision: 1.10 $  */
+comment|/**  * Marshall a Message or a MessageReference  *   *   */
 end_comment
 
 begin_class

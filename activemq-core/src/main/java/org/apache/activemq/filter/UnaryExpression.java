@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An expression which performs an operation on two expression values  *   * @version $Revision: 1.3 $  */
+comment|/**  * An expression which performs an operation on two expression values  *   *   */
 end_comment
 
 begin_class

@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Store test  *   * @version $Revision: 1.2 $  */
+comment|/**  * Store test  *   *   */
 end_comment
 
 begin_class

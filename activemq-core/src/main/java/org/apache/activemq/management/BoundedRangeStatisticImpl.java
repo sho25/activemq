@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A bounded range statistic implementation  *  * @version $Revision: 1.2 $  */
+comment|/**  * A bounded range statistic implementation  *  *   */
 end_comment
 
 begin_class

@@ -214,7 +214,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to simulate the recovery that occurs when a broker shuts down.  *   * @version $Revision$  */
+comment|/**  * Used to simulate the recovery that occurs when a broker shuts down.  *   *   */
 end_comment
 
 begin_class

@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a message which has a typically out of band Binary Large Object  * (BLOB)  *   * @version $Revision: $  */
+comment|/**  * Represents a message which has a typically out of band Binary Large Object  * (BLOB)  *   *   */
 end_comment
 
 begin_interface

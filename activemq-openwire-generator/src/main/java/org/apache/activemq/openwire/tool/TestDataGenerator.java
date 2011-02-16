@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A simple helper class to help auto-generate test data when code generating test cases  *   * @version $Revision: 1.1 $  */
+comment|/**  * A simple helper class to help auto-generate test data when code generating test cases  *   *   */
 end_comment
 
 begin_class

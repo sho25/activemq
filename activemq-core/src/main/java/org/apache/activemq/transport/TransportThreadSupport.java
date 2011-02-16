@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A useful base class for a transport implementation which has a background  * reading thread.  *   * @version $Revision: 1.1 $  */
+comment|/**  * A useful base class for a transport implementation which has a background  * reading thread.  *   *   */
 end_comment
 
 begin_class

@@ -26,7 +26,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a destination based policy  *   * @version $Revision: 1.1 $  */
+comment|/**  * Represents a destination based policy  *   *   */
 end_comment
 
 begin_class

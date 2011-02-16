@@ -138,7 +138,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Handles authenticating a users against a simple user name/password map.  *   * @version $Revision$  */
+comment|/**  * Handles authenticating a users against a simple user name/password map.  *   *   */
 end_comment
 
 begin_class

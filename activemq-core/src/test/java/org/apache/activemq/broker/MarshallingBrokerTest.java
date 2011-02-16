@@ -92,7 +92,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Runs against the broker but marshals all request and response commands.  *   * @version $Revision$  */
+comment|/**  * Runs against the broker but marshals all request and response commands.  *   *   */
 end_comment
 
 begin_class

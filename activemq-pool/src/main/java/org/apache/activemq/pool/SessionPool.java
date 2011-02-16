@@ -104,7 +104,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents the session pool for a given JMS connection.  *   * @version $Revision: 1.1 $  */
+comment|/**  * Represents the session pool for a given JMS connection.  *   *   */
 end_comment
 
 begin_class

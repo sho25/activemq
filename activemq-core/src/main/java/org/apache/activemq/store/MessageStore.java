@@ -134,7 +134,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a message store which is used by the persistent implementations  *   * @version $Revision: 1.5 $  */
+comment|/**  * Represents a message store which is used by the persistent implementations  *   *   */
 end_comment
 
 begin_interface

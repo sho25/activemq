@@ -400,7 +400,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of the broker where all it's methods throw an  * BrokerStoppedException.  *   * @version $Revision$  */
+comment|/**  * Implementation of the broker where all it's methods throw an  * BrokerStoppedException.  *   *   */
 end_comment
 
 begin_class

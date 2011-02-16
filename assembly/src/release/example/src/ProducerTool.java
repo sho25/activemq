@@ -142,7 +142,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple tool for publishing messages  *   * @version $Revision: 1.2 $  */
+comment|/**  * A simple tool for publishing messages  *   *   */
 end_comment
 
 begin_class

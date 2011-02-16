@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A JAAS based SSL certificate authentication plugin.  *  * @org.apache.xbean.XBean description="Provides a JAAS based authentication plugin  * which uses properties for non-SSL and certificates for SSL"  *   * @version $Revision: $  */
+comment|/**  * A JAAS based SSL certificate authentication plugin.  *  * @org.apache.xbean.XBean description="Provides a JAAS based authentication plugin  * which uses properties for non-SSL and certificates for SSL"  *   *   */
 end_comment
 
 begin_class

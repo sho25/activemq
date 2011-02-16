@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Use any Map to implement the Cache.  No cache eviction going on here.  Just gives  * a Map a Cache interface.  *   * @version $Revision$  */
+comment|/**  * Use any Map to implement the Cache.  No cache eviction going on here.  Just gives  * a Map a Cache interface.  *   *   */
 end_comment
 
 begin_class

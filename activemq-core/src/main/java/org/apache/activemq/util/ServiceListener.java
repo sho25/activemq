@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A listener for service start, stop events  *   * @version $Revision: 1.1 $  */
+comment|/**  * A listener for service start, stop events  *   *   */
 end_comment
 
 begin_interface

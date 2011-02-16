@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to verify that recovery works correctly against   *   * @version $Revision$  */
+comment|/**  * Used to verify that recovery works correctly against   *   *   */
 end_comment
 
 begin_class

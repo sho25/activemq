@@ -104,7 +104,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Creates a PendIngMessageCursor for Durable subscribers *  *   * @org.apache.xbean.XBean element="fileCursor" description="Pending messages  *                         for durable subscribers held in temporary files"  *   * @version $Revision$  */
+comment|/**  * Creates a PendIngMessageCursor for Durable subscribers *  *   * @org.apache.xbean.XBean element="fileCursor" description="Pending messages  *                         for durable subscribers held in temporary files"  *   *   */
 end_comment
 
 begin_class

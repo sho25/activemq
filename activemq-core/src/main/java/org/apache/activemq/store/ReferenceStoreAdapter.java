@@ -118,7 +118,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Adapter to the actual persistence mechanism used with ActiveMQ  *   * @version $Revision: 1.3 $  */
+comment|/**  * Adapter to the actual persistence mechanism used with ActiveMQ  *   *   */
 end_comment
 
 begin_interface

@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Page within a HashPageInfo  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * A Page within a HashPageInfo  *   *   */
 end_comment
 
 begin_class

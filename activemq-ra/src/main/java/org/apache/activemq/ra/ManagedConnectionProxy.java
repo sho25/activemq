@@ -222,7 +222,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Acts as a pass through proxy for a JMS Connection object. It intercepts  * events that are of interest of the ActiveMQManagedConnection.  *  * @version $Revision$  */
+comment|/**  * Acts as a pass through proxy for a JMS Connection object. It intercepts  * events that are of interest of the ActiveMQManagedConnection.  *  *   */
 end_comment
 
 begin_class

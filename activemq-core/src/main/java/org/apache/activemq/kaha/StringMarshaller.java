@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of a Marshaller for Strings  *   * @version $Revision: 1.2 $  */
+comment|/**  * Implementation of a Marshaller for Strings  *   *   */
 end_comment
 
 begin_class

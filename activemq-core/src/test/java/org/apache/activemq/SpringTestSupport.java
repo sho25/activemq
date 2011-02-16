@@ -88,7 +88,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A useful base class for spring based unit test cases  *   * @version $Revision: 1.1 $  */
+comment|/**  * A useful base class for spring based unit test cases  *   *   */
 end_comment
 
 begin_class

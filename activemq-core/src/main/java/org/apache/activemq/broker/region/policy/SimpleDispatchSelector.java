@@ -94,7 +94,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simple dispatch policy that determines if a message can be sent to a subscription  *  * @org.apache.xbean.XBean  * @version $Revision$  */
+comment|/**  * Simple dispatch policy that determines if a message can be sent to a subscription  *  * @org.apache.xbean.XBean  *   */
 end_comment
 
 begin_class

@@ -62,7 +62,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A TransportServer asynchronously accepts {@see Transport} objects and then  * delivers those objects to a {@see TransportAcceptListener}.  *   * @version $Revision: 1.4 $  */
+comment|/**  * A TransportServer asynchronously accepts {@see Transport} objects and then  * delivers those objects to a {@see TransportAcceptListener}.  *   *   */
 end_comment
 
 begin_interface

@@ -126,7 +126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple queue sender which does not use JNDI  *   * @version $Revision: 1.1 $  */
+comment|/**  * A simple queue sender which does not use JNDI  *   *   */
 end_comment
 
 begin_class

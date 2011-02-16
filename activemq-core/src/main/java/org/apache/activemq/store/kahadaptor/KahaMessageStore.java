@@ -196,7 +196,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link org.apache.activemq.store.MessageStore} which  * uses a JPS Container  *   * @version $Revision: 1.7 $  */
+comment|/**  * An implementation of {@link org.apache.activemq.store.MessageStore} which  * uses a JPS Container  *   *   */
 end_comment
 
 begin_class

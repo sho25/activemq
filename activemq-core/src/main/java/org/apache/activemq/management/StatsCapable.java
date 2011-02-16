@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Represents an object which is capable of providing some stats  *  * @version $Revision: 1.2 $  */
+comment|/**  * Represents an object which is capable of providing some stats  *  *   */
 end_comment
 
 begin_interface

@@ -232,7 +232,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Region is used to implement the different QOS options available to   * a broker.  A Broker is composed of multiple message processing Regions that  * provide different QOS options.  *   * @version $Revision$  */
+comment|/**  * A Region is used to implement the different QOS options available to   * a broker.  A Broker is composed of multiple message processing Regions that  * provide different QOS options.  *   *   */
 end_comment
 
 begin_interface

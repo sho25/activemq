@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helper class for decomposing a Destination into a number of paths  *   * @version $Revision: 1.3 $  */
+comment|/**  * Helper class for decomposing a Destination into a number of paths  *   *   */
 end_comment
 
 begin_class

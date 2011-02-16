@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A Valve is a synchronization object used enable or disable the "flow" of  * concurrent processing.  *   * @version $Revision: 1.2 $  */
+comment|/**  * A Valve is a synchronization object used enable or disable the "flow" of  * concurrent processing.  *   *   */
 end_comment
 
 begin_class

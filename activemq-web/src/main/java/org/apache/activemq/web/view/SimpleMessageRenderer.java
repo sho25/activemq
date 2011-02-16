@@ -112,7 +112,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple rendering of the contents of a queue appear as a list of message  * elements which just contain an ID attribute.  *   * @version $Revision: $  */
+comment|/**  * A simple rendering of the contents of a queue appear as a list of message  * elements which just contain an ID attribute.  *   *   */
 end_comment
 
 begin_class

@@ -72,7 +72,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A useful base class for implementations of {@link TransportServer} which uses  * a background thread to accept new connections.  *   * @version $Revision: 1.1 $  */
+comment|/**  * A useful base class for implementations of {@link TransportServer} which uses  * a background thread to accept new connections.  *   *   */
 end_comment
 
 begin_class

@@ -254,7 +254,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Small burn test moves sends a moderate amount of messages through the broker,  * to checking to make sure that the broker does not lock up after a while of  * sustained messaging.  *   * @version $Revision$  */
+comment|/**  * Small burn test moves sends a moderate amount of messages through the broker,  * to checking to make sure that the broker does not lock up after a while of  * sustained messaging.  *   *   */
 end_comment
 
 begin_class

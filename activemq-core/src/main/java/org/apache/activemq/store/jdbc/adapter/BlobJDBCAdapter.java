@@ -140,7 +140,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This JDBCAdapter inserts and extracts BLOB data using the getBlob()/setBlob()  * operations. This is a little more involved since to insert a blob you have  * to:  *   * 1: insert empty blob. 2: select the blob 3: finally update the blob with data  * value.  *   * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li></li>  *</ul>  *   * @org.apache.xbean.XBean element="blobJDBCAdapter"  *   * @version $Revision: 1.2 $  */
+comment|/**  * This JDBCAdapter inserts and extracts BLOB data using the getBlob()/setBlob()  * operations. This is a little more involved since to insert a blob you have  * to:  *   * 1: insert empty blob. 2: select the blob 3: finally update the blob with data  * value.  *   * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li></li>  *</ul>  *   * @org.apache.xbean.XBean element="blobJDBCAdapter"  *   *   */
 end_comment
 
 begin_class

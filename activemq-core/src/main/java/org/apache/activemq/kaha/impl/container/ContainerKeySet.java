@@ -88,7 +88,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Set of keys for the container  *   * @version $Revision: 1.2 $  */
+comment|/**  * A Set of keys for the container  *   *   */
 end_comment
 
 begin_class

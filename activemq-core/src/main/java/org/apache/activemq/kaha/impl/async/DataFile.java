@@ -78,7 +78,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * DataFile  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * DataFile  *   *   */
 end_comment
 
 begin_class

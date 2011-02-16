@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents an object which has-a {@link Session} instance and  * an optional, lazily created {@link MessageProducer} instance  * which can them be used by a pooling based JMS provider for publishing  * messages using the session used by the current thread.  *  * @version $Revision$  */
+comment|/**  * Represents an object which has-a {@link Session} instance and  * an optional, lazily created {@link MessageProducer} instance  * which can them be used by a pooling based JMS provider for publishing  * messages using the session used by the current thread.  *  *   */
 end_comment
 
 begin_interface

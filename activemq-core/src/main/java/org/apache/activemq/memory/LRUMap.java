@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple least-recently-used cache of a fixed size.  *   * @version $Revision:$  */
+comment|/**  * A simple least-recently-used cache of a fixed size.  *   *   */
 end_comment
 
 begin_class

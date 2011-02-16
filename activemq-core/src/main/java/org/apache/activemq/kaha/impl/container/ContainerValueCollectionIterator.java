@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Values collection iterator for the MapContainer  *   * @version $Revision: 1.2 $  */
+comment|/**  * Values collection iterator for the MapContainer  *   *   */
 end_comment
 
 begin_class

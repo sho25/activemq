@@ -208,7 +208,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to add listeners for Broker actions  *   * @version $Revision: 1.10 $  */
+comment|/**  * Used to add listeners for Broker actions  *   *   */
 end_comment
 
 begin_class

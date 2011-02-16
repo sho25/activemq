@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Allows messages to be added to the end of the buffer such that they are kept  * around and evicted in a FIFO manner.  *   * @version $Revision: 1.1 $  */
+comment|/**  * Allows messages to be added to the end of the buffer such that they are kept  * around and evicted in a FIFO manner.  *   *   */
 end_comment
 
 begin_class

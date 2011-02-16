@@ -14,7 +14,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Represents the JMS extension methods in Apache ActiveMQ  *  * @version $Revision: $  */
+comment|/**  * Represents the JMS extension methods in Apache ActiveMQ  *  *   */
 end_comment
 
 begin_interface

@@ -58,7 +58,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Converts Message from one JMS to another  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Converts Message from one JMS to another  *   * @org.apache.xbean.XBean  *   *   */
 end_comment
 
 begin_class

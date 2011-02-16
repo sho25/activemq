@@ -90,7 +90,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A server side HTTP based TransportChannel which processes incoming packets  * and adds outgoing packets onto a {@link Queue} so that they can be dispatched  * by the HTTP GET requests from the client.  *  * @version $Revision$  */
+comment|/**  * A server side HTTP based TransportChannel which processes incoming packets  * and adds outgoing packets onto a {@link Queue} so that they can be dispatched  * by the HTTP GET requests from the client.  *  *   */
 end_comment
 
 begin_class

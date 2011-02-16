@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This TransportFilter implementation writes output to a log  * as it intercepts commands / events before sending them to the  * following layer in the Transport stack.  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  * @version $Revision$  */
+comment|/**  * This TransportFilter implementation writes output to a log  * as it intercepts commands / events before sending them to the  * following layer in the Transport stack.  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  *   */
 end_comment
 
 begin_class

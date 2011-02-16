@@ -62,7 +62,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Knows how to connect to one ActiveMQ server. It can then activate endpoints  * and deliver messages to those end points using the connection configure in  * the resource adapter.<p/>Must override equals and hashCode (JCA spec 16.4)  *   * @version $Revision$  */
+comment|/**  * Knows how to connect to one ActiveMQ server. It can then activate endpoints  * and deliver messages to those end points using the connection configure in  * the resource adapter.<p/>Must override equals and hashCode (JCA spec 16.4)  *   *   */
 end_comment
 
 begin_interface

@@ -32,7 +32,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ResponseHolder utility  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * ResponseHolder utility  *   *   */
 end_comment
 
 begin_class

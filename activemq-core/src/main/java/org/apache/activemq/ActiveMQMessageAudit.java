@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides basic audit functions for Messages  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Provides basic audit functions for Messages  *   *   */
 end_comment
 
 begin_class

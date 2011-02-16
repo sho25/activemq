@@ -116,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ActiveMQMessageAuditTest  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * ActiveMQMessageAuditTest  *   *   */
 end_comment
 
 begin_class

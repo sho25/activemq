@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An exception thrown when the a connection failure is detected (peer might  * close the connection, or a keep alive times out, etc.)  *   * @version $Revision$  */
+comment|/**  * An exception thrown when the a connection failure is detected (peer might  * close the connection, or a keep alive times out, etc.)  *   *   */
 end_comment
 
 begin_class

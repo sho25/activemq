@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An interface for recoverying transient messages held by the broker for  * retractive recovery for subscribers  *   * @version $Revision$  */
+comment|/**  * An interface for recoverying transient messages held by the broker for  * retractive recovery for subscribers  *   *   */
 end_comment
 
 begin_interface

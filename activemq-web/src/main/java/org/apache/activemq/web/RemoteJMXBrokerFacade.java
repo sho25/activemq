@@ -270,7 +270,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link BrokerFacade} which uses a JMX-Connection to communicate with a  * broker  *   * @version $Revision: 1.1 $  */
+comment|/**  * A {@link BrokerFacade} which uses a JMX-Connection to communicate with a  * broker  *   *   */
 end_comment
 
 begin_class

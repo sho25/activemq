@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a processor of text based commands  *  * @version $Revision: $  */
+comment|/**  * Represents a processor of text based commands  *  *   */
 end_comment
 
 begin_interface

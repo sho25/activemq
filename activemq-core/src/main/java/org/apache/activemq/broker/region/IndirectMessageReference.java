@@ -60,7 +60,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Keeps track of a message that is flowing through the Broker. This object may  * hold a hard reference to the message or only hold the id of the message if  * the message has been persisted on in a MessageStore.  *   * @version $Revision: 1.15 $  */
+comment|/**  * Keeps track of a message that is flowing through the Broker. This object may  * hold a hard reference to the message or only hold the id of the message if  * the message has been persisted on in a MessageStore.  *   *   */
 end_comment
 
 begin_class

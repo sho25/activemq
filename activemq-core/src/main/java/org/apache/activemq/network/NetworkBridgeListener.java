@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * called when a bridge fails  *   * @version $Revision: 1.1 $  */
+comment|/**  * called when a bridge fails  *   *   */
 end_comment
 
 begin_interface

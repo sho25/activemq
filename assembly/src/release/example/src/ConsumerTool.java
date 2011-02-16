@@ -188,7 +188,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple tool for consuming messages  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * A simple tool for consuming messages  *   *   */
 end_comment
 
 begin_class

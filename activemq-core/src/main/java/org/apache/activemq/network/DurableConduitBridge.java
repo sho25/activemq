@@ -126,7 +126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Consolidates subscriptions  *   * @version $Revision: 1.1 $  */
+comment|/**  * Consolidates subscriptions  *   *   */
 end_comment
 
 begin_class

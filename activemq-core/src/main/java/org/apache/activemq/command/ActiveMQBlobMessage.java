@@ -120,7 +120,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link BlobMessage} for out of band BLOB transfer  *   * @version $Revision: $  * @openwire:marshaller code="29"  */
+comment|/**  * An implementation of {@link BlobMessage} for out of band BLOB transfer  *   *   * @openwire:marshaller code="29"  */
 end_comment
 
 begin_class

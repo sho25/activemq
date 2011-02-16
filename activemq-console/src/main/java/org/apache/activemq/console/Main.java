@@ -222,7 +222,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Main class that can bootstrap an ActiveMQ broker console. Handles command  * line argument parsing to set up and run broker tasks.  *   * @version $Revision$  */
+comment|/**  * Main class that can bootstrap an ActiveMQ broker console. Handles command  * line argument parsing to set up and run broker tasks.  *   *   */
 end_comment
 
 begin_class

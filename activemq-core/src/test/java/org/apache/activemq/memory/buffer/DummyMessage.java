@@ -32,7 +32,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A message implementation which is useful for testing as we can spoof its size  *    * @version $Revision: 1.1 $  */
+comment|/**  * A message implementation which is useful for testing as we can spoof its size  *    *   */
 end_comment
 
 begin_class

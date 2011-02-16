@@ -24,7 +24,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An exception thrown when an operation is invoked on a service  * which has not yet been started.  *  * @version $Revision: 1.2 $  */
+comment|/**  * An exception thrown when an operation is invoked on a service  * which has not yet been started.  *  *   */
 end_comment
 
 begin_class

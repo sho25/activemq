@@ -114,7 +114,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A default implementation of the @{link CommandHandler} interface  *  * @version $Revision: $  */
+comment|/**  * A default implementation of the @{link CommandHandler} interface  *  *   */
 end_comment
 
 begin_class

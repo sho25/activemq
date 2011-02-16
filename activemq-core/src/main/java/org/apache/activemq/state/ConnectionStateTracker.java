@@ -412,7 +412,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tracks the state of a connection so a newly established transport can be  * re-initialized to the state that was tracked.  *   * @version $Revision$  */
+comment|/**  * Tracks the state of a connection so a newly established transport can be  * re-initialized to the state that was tracked.  *   *   */
 end_comment
 
 begin_class

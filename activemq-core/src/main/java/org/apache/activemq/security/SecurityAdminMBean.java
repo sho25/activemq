@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * An MBean for adding and removing users, roles  * and destinations.  *   * @version $Revision: 1.1 $  */
+comment|/**  * An MBean for adding and removing users, roles  * and destinations.  *   *   */
 end_comment
 
 begin_interface

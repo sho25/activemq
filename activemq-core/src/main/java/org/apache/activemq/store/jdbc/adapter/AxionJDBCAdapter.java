@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Axion specific Adapter.  *   * Axion does not seem to support ALTER statements or sub-selects.  This means:  * - We cannot auto upgrade the schema was we roll out new versions of ActiveMQ  * - We cannot delete durable sub messages that have be acknowledged by all consumers.  *   * @org.apache.xbean.XBean element="axionJDBCAdapter"  * @version $Revision: 1.4 $  */
+comment|/**  * Axion specific Adapter.  *   * Axion does not seem to support ALTER statements or sub-selects.  This means:  * - We cannot auto upgrade the schema was we roll out new versions of ActiveMQ  * - We cannot delete durable sub messages that have be acknowledged by all consumers.  *   * @org.apache.xbean.XBean element="axionJDBCAdapter"  *   */
 end_comment
 
 begin_class

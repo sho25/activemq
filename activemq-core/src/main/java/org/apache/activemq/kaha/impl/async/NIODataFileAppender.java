@@ -62,7 +62,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An AsyncDataFileAppender that uses NIO ByteBuffers and File chanels to more  * efficently copy data to files.  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * An AsyncDataFileAppender that uses NIO ByteBuffers and File chanels to more  * efficently copy data to files.  *   *   */
 end_comment
 
 begin_class

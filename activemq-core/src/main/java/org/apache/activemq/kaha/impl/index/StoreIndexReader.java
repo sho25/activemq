@@ -54,7 +54,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Optimized Store reader  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Optimized Store reader  *   *   */
 end_comment
 
 begin_class

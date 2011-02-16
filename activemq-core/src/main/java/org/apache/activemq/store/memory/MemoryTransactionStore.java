@@ -266,7 +266,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides a TransactionStore implementation that can create transaction aware  * MessageStore objects from non transaction aware MessageStore objects.  *   * @version $Revision: 1.4 $  */
+comment|/**  * Provides a TransactionStore implementation that can create transaction aware  * MessageStore objects from non transaction aware MessageStore objects.  *   *   */
 end_comment
 
 begin_class

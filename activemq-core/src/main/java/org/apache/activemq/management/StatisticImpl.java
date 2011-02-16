@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for a Statistic implementation  *   * @version $Revision: 1.2 $  */
+comment|/**  * Base class for a Statistic implementation  *   *   */
 end_comment
 
 begin_class

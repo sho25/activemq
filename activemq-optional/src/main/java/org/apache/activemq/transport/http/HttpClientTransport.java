@@ -300,7 +300,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A HTTP {@link org.apache.activemq.transport.TransportChannel} which uses the  *<a href="http://jakarta.apache.org/commons/httpclient/">commons-httpclient</a>  * library  *   * @version $Revision$  */
+comment|/**  * A HTTP {@link org.apache.activemq.transport.TransportChannel} which uses the  *<a href="http://jakarta.apache.org/commons/httpclient/">commons-httpclient</a>  * library  *   *   */
 end_comment
 
 begin_class

@@ -100,7 +100,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An adapter for using ActiveMQ inside<a  * href="http://ws.apache.org/axis/">Apache Axis</a>  *   * @version $Revision$  */
+comment|/**  * An adapter for using ActiveMQ inside<a  * href="http://ws.apache.org/axis/">Apache Axis</a>  *   *   */
 end_comment
 
 begin_class

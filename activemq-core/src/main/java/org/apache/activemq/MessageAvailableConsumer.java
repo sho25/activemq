@@ -24,7 +24,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An extended JMS interface that adds the ability to be notified when a   * message is available for consumption using the receive*() methods  * which is useful in Ajax style subscription models.  *   * @version $Revision: 1.1 $  */
+comment|/**  * An extended JMS interface that adds the ability to be notified when a   * message is available for consumption using the receive*() methods  * which is useful in Ajax style subscription models.  *   *   */
 end_comment
 
 begin_interface

@@ -142,7 +142,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A<a href="http://stomp.codehaus.org/">STOMP</a> transport factory  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * A<a href="http://stomp.codehaus.org/">STOMP</a> transport factory  *   *   */
 end_comment
 
 begin_class

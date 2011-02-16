@@ -136,7 +136,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The XAConnection interface extends the capability of Connection by providing  * an XASession (optional).  *<p/>  * The XAConnection interface is optional. JMS providers are not required to  * support this interface. This interface is for use by JMS providers to  * support transactional environments. Client programs are strongly encouraged  * to use the transactional support  available in their environment, rather  * than use these XA  interfaces directly.  *  * @version $Revision: 1.6 $  * @see javax.jms.Connection  * @see javax.jms.ConnectionFactory  * @see javax.jms.QueueConnection  * @see javax.jms.TopicConnection  * @see javax.jms.TopicConnectionFactory  * @see javax.jms.QueueConnection  * @see javax.jms.QueueConnectionFactory  */
+comment|/**  * The XAConnection interface extends the capability of Connection by providing  * an XASession (optional).  *<p/>  * The XAConnection interface is optional. JMS providers are not required to  * support this interface. This interface is for use by JMS providers to  * support transactional environments. Client programs are strongly encouraged  * to use the transactional support  available in their environment, rather  * than use these XA  interfaces directly.  *  *   * @see javax.jms.Connection  * @see javax.jms.ConnectionFactory  * @see javax.jms.QueueConnection  * @see javax.jms.TopicConnection  * @see javax.jms.TopicConnectionFactory  * @see javax.jms.QueueConnection  * @see javax.jms.QueueConnectionFactory  */
 end_comment
 
 begin_class

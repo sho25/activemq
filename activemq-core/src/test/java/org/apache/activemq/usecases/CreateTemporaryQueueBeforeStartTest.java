@@ -146,7 +146,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Peter Henning  * @version $Revision: 1.1.1.1 $  */
+comment|/**  * @author Peter Henning  *   */
 end_comment
 
 begin_class

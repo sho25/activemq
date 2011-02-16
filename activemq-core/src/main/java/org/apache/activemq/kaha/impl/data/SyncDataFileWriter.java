@@ -68,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Optimized Store writer. Synchronously marshalls and writes to the data file.  * Simple but may introduce a bit of contention when put under load.  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Optimized Store writer. Synchronously marshalls and writes to the data file.  * Simple but may introduce a bit of contention when put under load.  *   *   */
 end_comment
 
 begin_class

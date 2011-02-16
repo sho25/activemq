@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Defines the interface used to cache messages.  *   * @version $Revision$  */
+comment|/**  * Defines the interface used to cache messages.  *   *   */
 end_comment
 
 begin_interface

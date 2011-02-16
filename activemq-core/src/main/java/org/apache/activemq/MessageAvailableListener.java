@@ -24,7 +24,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A listener which is notified if a message is available for processing via the  * receive methods. Typically on receiving this notification you can call   * {@link MessageConsumer#receiveNoWait()} to get the new message immediately.  *   * Note that this notification just indicates a message is available for synchronous consumption,  * it does not actually consume the message.  *   * @version $Revision: 1.1 $  */
+comment|/**  * A listener which is notified if a message is available for processing via the  * receive methods. Typically on receiving this notification you can call   * {@link MessageConsumer#receiveNoWait()} to get the new message immediately.  *   * Note that this notification just indicates a message is available for synchronous consumption,  * it does not actually consume the message.  *   *   */
 end_comment
 
 begin_interface

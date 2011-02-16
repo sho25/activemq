@@ -266,7 +266,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper bean which populates a {@link CamelContext} with ActiveMQ Queue endpoints  *  * @version $Revision: 1.1 $  * @org.apache.xbean.XBean  */
+comment|/**  * A helper bean which populates a {@link CamelContext} with ActiveMQ Queue endpoints  *  *   * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class

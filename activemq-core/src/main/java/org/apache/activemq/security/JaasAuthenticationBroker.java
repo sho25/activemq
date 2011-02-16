@@ -154,7 +154,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Logs a user in using JAAS.  *   * @version $Revision$  */
+comment|/**  * Logs a user in using JAAS.  *   *   */
 end_comment
 
 begin_class

@@ -306,7 +306,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Benchmarks the broker by starting many consumer and producers against the  * same destination. Make sure you run with jvm option -server (makes a big  * difference). The tests simulate storing 1000 1k jms messages to see the rate  * of processing msg/sec.  *   * @version $Revision$  */
+comment|/**  * Benchmarks the broker by starting many consumer and producers against the  * same destination. Make sure you run with jvm option -server (makes a big  * difference). The tests simulate storing 1000 1k jms messages to see the rate  * of processing msg/sec.  *   *   */
 end_comment
 
 begin_class

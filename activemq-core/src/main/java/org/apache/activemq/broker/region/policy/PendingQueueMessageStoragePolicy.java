@@ -68,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstraction to allow different policies for holding messages awaiting  * dispatch on a Queue  *   * @version $Revision$  */
+comment|/**  * Abstraction to allow different policies for holding messages awaiting  * dispatch on a Queue  *   *   */
 end_comment
 
 begin_interface

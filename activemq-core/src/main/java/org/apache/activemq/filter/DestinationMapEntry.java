@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A base class for entry objects used to construct a destination based policy  * map.  *   * @version $Revision: 1.1 $  * @org.apache.xbean.XBean  */
+comment|/**  * A base class for entry objects used to construct a destination based policy  * map.  *   *   * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class

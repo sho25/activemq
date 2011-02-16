@@ -136,7 +136,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link PersistenceAdapterFactory}  *   * @org.apache.xbean.XBean element="amqPersistenceAdapterFactory"  *   * @version $Revision: 1.17 $  */
+comment|/**  * An implementation of {@link PersistenceAdapterFactory}  *   * @org.apache.xbean.XBean element="amqPersistenceAdapterFactory"  *   *   */
 end_comment
 
 begin_class

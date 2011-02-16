@@ -404,7 +404,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Like a BrokerFilter but it allows you to switch the getNext().broker. This  * has more overhead than a BrokerFilter since access to the getNext().broker  * has to synchronized since it is mutable  *   * @version $Revision: 1.10 $  */
+comment|/**  * Like a BrokerFilter but it allows you to switch the getNext().broker. This  * has more overhead than a BrokerFilter since access to the getNext().broker  * has to synchronized since it is mutable  *   *   */
 end_comment
 
 begin_class

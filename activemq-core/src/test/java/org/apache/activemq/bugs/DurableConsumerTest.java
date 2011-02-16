@@ -504,7 +504,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @version $Revision: 1.5 $ A Test case for AMQ-1479  */
+comment|/**  *  A Test case for AMQ-1479  */
 end_comment
 
 begin_class

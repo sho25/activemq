@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Factory for creating stores  *   * @version $Revision: 1.2 $  */
+comment|/**  * Factory for creating stores  *   *   */
 end_comment
 
 begin_class

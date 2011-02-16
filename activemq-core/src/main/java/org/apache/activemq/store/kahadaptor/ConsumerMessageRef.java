@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Holds information for location of message  *   * @version $Revision: 1.10 $  */
+comment|/**  * Holds information for location of message  *   *   */
 end_comment
 
 begin_class

@@ -486,7 +486,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test case support that allows the easy management and connection of several  * brokers.  *   * @version $Revision$  */
+comment|/**  * Test case support that allows the easy management and connection of several  * brokers.  *   *   */
 end_comment
 
 begin_class

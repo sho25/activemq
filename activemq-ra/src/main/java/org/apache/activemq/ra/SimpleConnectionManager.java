@@ -130,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple implementation of a ConnectionManager. An Application Server will  * have a better implementation with pooling and security etc.  *   * @version $Revision$  */
+comment|/**  * A simple implementation of a ConnectionManager. An Application Server will  * have a better implementation with pooling and security etc.  *   *   */
 end_comment
 
 begin_class

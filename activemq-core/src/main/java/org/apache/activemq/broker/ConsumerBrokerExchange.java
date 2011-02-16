@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Holds internal state in the broker for a essageConsumer  *   * @version $Revision: 1.8 $  */
+comment|/**  * Holds internal state in the broker for a essageConsumer  *   *   */
 end_comment
 
 begin_class

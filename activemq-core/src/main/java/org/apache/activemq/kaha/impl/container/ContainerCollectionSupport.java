@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Base class for container collections  *   * @version $Revision: 1.2 $  */
+comment|/**  * Base class for container collections  *   *   */
 end_comment
 
 begin_class

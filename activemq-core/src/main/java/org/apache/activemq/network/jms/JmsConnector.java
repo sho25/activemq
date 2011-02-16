@@ -198,7 +198,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This bridge joins the gap between foreign JMS providers and ActiveMQ As some  * JMS providers are still only 1.0.1 compliant, this bridge itself aimed to be  * JMS 1.0.2 compliant.  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * This bridge joins the gap between foreign JMS providers and ActiveMQ As some  * JMS providers are still only 1.0.1 compliant, this bridge itself aimed to be  * JMS 1.0.2 compliant.  *   *   */
 end_comment
 
 begin_class

@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Once the wire format is completed we can test against real persistence storage.  *   * @version $Revision$  */
+comment|/**  * Once the wire format is completed we can test against real persistence storage.  *   *   */
 end_comment
 
 begin_class

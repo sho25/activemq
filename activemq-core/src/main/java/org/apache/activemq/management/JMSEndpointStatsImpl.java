@@ -90,7 +90,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Statistics for a JMS endpoint, typically a MessageProducer or MessageConsumer  * but this class can also be used to represent statistics on a  * {@link Destination} as well.  *   * @version $Revision: 1.3 $  */
+comment|/**  * Statistics for a JMS endpoint, typically a MessageProducer or MessageConsumer  * but this class can also be used to represent statistics on a  * {@link Destination} as well.  *   *   */
 end_comment
 
 begin_class

@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A count statistic implementation  *   * @version $Revision: 1.3 $  */
+comment|/**  * A count statistic implementation  *   *   */
 end_comment
 
 begin_class

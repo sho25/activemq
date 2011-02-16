@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Factory for network bridges  *   * @version $Revision: 1.1 $  */
+comment|/**  * Factory for network bridges  *   *   */
 end_comment
 
 begin_class

@@ -250,7 +250,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A servlet for sending and receiving messages to/from JMS destinations using  * HTTP POST for sending and HTTP GET for receiving.<p/> You can specify the  * destination and whether it is a topic or queue via configuration details on  * the servlet or as request parameters.<p/> For reading messages you can  * specify a readTimeout parameter to determine how long the servlet should  * block for.  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * A servlet for sending and receiving messages to/from JMS destinations using  * HTTP POST for sending and HTTP GET for receiving.<p/> You can specify the  * destination and whether it is a topic or queue via configuration details on  * the servlet or as request parameters.<p/> For reading messages you can  * specify a readTimeout parameter to determine how long the servlet should  * block for.  *   *   */
 end_comment
 
 begin_class

@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  Identify if a limit has been reached  *   * @org.apache.xbean.XBean  *   * @version $Revision: 1.3 $  */
+comment|/**  Identify if a limit has been reached  *   * @org.apache.xbean.XBean  *   *   */
 end_comment
 
 begin_class

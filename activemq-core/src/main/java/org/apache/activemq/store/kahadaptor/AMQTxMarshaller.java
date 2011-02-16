@@ -146,7 +146,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marshall an AMQTx  *   * @version $Revision: 1.10 $  */
+comment|/**  * Marshall an AMQTx  *   *   */
 end_comment
 
 begin_class

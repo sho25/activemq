@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * An interface used to represent a component that wants the {@link BrokerService}   * to be injected  *   * @version $Revision: $  */
+comment|/**  * An interface used to represent a component that wants the {@link BrokerService}   * to be injected  *   *   */
 end_comment
 
 begin_interface

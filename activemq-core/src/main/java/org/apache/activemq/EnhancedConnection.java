@@ -58,7 +58,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A set of enhanced APIs for a JMS provider  *  * @version $Revision: 1.1 $  */
+comment|/**  * A set of enhanced APIs for a JMS provider  *  *   */
 end_comment
 
 begin_interface

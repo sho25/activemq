@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link MessageBuffer} which evicts messages in arrival order so the oldest  * messages are removed first.  *   * @version $Revision: 1.1 $  */
+comment|/**  * A {@link MessageBuffer} which evicts messages in arrival order so the oldest  * messages are removed first.  *   *   */
 end_comment
 
 begin_class

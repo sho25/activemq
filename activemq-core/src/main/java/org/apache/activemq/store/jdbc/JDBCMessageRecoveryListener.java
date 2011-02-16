@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * @version $Revision: 1.3 $  */
+comment|/**  *   */
 end_comment
 
 begin_interface

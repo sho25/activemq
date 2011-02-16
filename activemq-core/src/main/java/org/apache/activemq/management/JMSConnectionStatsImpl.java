@@ -52,7 +52,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Statistics for a JMS connection  *   * @version $Revision: 1.2 $  */
+comment|/**  * Statistics for a JMS connection  *   *   */
 end_comment
 
 begin_class

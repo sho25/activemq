@@ -70,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used by RootContainers  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Used by RootContainers  *   *   */
 end_comment
 
 begin_class

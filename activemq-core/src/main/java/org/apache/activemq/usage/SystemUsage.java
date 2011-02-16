@@ -94,7 +94,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Holder for Usage instances for memory, store and temp files Main use case is  * manage memory usage.  *   * @org.apache.xbean.XBean  * @version $Revision: 1.3 $  */
+comment|/**  * Holder for Usage instances for memory, store and temp files Main use case is  * manage memory usage.  *   * @org.apache.xbean.XBean  *   */
 end_comment
 
 begin_class

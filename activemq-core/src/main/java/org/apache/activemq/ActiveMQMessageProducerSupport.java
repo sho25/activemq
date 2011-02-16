@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A useful base class for implementing a {@link MessageProducer}  *  * @version $Revision: $  */
+comment|/**  * A useful base class for implementing a {@link MessageProducer}  *  *   */
 end_comment
 
 begin_class

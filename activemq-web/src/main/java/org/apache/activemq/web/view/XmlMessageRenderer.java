@@ -94,7 +94,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This renderer uses XStream to render messages on a queue as full XML elements  *   * @version $Revision: $  */
+comment|/**  * This renderer uses XStream to render messages on a queue as full XML elements  *   *   */
 end_comment
 
 begin_class

@@ -106,7 +106,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Page within a HashPage  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * A Page within a HashPage  *   *   */
 end_comment
 
 begin_class

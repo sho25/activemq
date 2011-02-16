@@ -1070,7 +1070,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Manages the lifecycle of an ActiveMQ Broker. A BrokerService consists of a  * number of transport connectors, network connectors and a bunch of properties  * which can be used to configure the broker as its lazily created.  *   * @version $Revision: 1.1 $  * @org.apache.xbean.XBean  */
+comment|/**  * Manages the lifecycle of an ActiveMQ Broker. A BrokerService consists of a  * number of transport connectors, network connectors and a bunch of properties  * which can be used to configure the broker as its lazily created.  *   *   * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class

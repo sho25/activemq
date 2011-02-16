@@ -96,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link MessageProducer} which uses the ActiveMQ JCA ResourceAdapter's  * current thread's JMS {@link javax.jms.Session} to send messages.  *  * @version $Revision$  */
+comment|/**  * An implementation of {@link MessageProducer} which uses the ActiveMQ JCA ResourceAdapter's  * current thread's JMS {@link javax.jms.Session} to send messages.  *  *   */
 end_comment
 
 begin_class

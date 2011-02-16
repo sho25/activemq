@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A holder for a durable subscriber  *   * @version $Revision: 1.7 $  */
+comment|/**  * A holder for a durable subscriber  *   *   */
 end_comment
 
 begin_class

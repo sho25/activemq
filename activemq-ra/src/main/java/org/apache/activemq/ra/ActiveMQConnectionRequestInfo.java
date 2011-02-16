@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @version $Revision$ Must override equals and hashCode (JCA spec 16.4)  */
+comment|/**  *  Must override equals and hashCode (JCA spec 16.4)  */
 end_comment
 
 begin_class

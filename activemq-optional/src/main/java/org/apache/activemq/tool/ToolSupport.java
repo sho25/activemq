@@ -94,7 +94,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract base class useful for implementation inheritence  *   * @version $Revision$  */
+comment|/**  * Abstract base class useful for implementation inheritence  *   *   */
 end_comment
 
 begin_class

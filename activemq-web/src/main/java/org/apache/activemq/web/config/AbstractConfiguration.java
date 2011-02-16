@@ -82,7 +82,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for configurations.  *   * @version $Revision: $  */
+comment|/**  * Base class for configurations.  *   *   */
 end_comment
 
 begin_class

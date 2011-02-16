@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Matches messages sent to an exact destination  *  * @version $Revision: 1.3 $  */
+comment|/**  * Matches messages sent to an exact destination  *  *   */
 end_comment
 
 begin_class

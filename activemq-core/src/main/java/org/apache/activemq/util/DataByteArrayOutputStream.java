@@ -56,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Optimized ByteArrayOutputStream  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Optimized ByteArrayOutputStream  *   *   */
 end_comment
 
 begin_class

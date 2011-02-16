@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *Marshaller for marshalling in/out objects to a RawContainer  *   * @version $Revision: 1.2 $  */
+comment|/**  *Marshaller for marshalling in/out objects to a RawContainer  *   *   */
 end_comment
 
 begin_interface

@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to start and stop transports as well as terminating clients.  *   * @openwire:marshaller code="17"  * @version $Revision: 1.1 $  */
+comment|/**  * Used to start and stop transports as well as terminating clients.  *   * @openwire:marshaller code="17"  *   */
 end_comment
 
 begin_class

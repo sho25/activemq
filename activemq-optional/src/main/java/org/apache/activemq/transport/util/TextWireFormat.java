@@ -134,7 +134,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Adds the extra methods available to text based wire format implementations  *   * @version $Revision: 1.1 $  */
+comment|/**  * Adds the extra methods available to text based wire format implementations  *   *   */
 end_comment
 
 begin_class

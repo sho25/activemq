@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The TraceBrokerPathPlugin can be used in a network of Brokers. Each Broker   * that has the plugin configured, will add it's brokerName to the content   * of a JMS Property. If all Brokers have this property enabled, the path the   * message actually took through the network can be seen in the defined property.  *   * @org.apache.xbean.XBean element="traceBrokerPathPlugin"  *   * @version $Revision$  */
+comment|/**  * The TraceBrokerPathPlugin can be used in a network of Brokers. Each Broker   * that has the plugin configured, will add it's brokerName to the content   * of a JMS Property. If all Brokers have this property enabled, the path the   * message actually took through the network can be seen in the defined property.  *   * @org.apache.xbean.XBean element="traceBrokerPathPlugin"  *   *   */
 end_comment
 
 begin_class

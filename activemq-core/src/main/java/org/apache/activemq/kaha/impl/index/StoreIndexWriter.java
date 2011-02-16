@@ -70,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Optimized Store writer  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Optimized Store writer  *   *   */
 end_comment
 
 begin_class

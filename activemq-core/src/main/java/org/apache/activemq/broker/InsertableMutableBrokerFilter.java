@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Inserts itself into the BrokerStack  *   * @version $Revision: 1.10 $  */
+comment|/**  * Inserts itself into the BrokerStack  *   *   */
 end_comment
 
 begin_class

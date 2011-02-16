@@ -214,7 +214,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A container of roots for other Containers  *   * @version $Revision: 1.2 $  */
+comment|/**  * A container of roots for other Containers  *   *   */
 end_comment
 
 begin_class

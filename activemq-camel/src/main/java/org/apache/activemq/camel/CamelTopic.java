@@ -68,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A JMS {@link javax.jms.Topic} object which refers to a Camel endpoint  *  * @version $Revision: $  */
+comment|/**  * A JMS {@link javax.jms.Topic} object which refers to a Camel endpoint  *  *   */
 end_comment
 
 begin_class

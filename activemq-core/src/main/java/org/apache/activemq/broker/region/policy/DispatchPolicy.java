@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstraction to allow different dispatching policies to be plugged  * into the region implementations.  This is used by a queue to deliver  * messages to the matching subscriptions.  *   * @version $Revision$  */
+comment|/**  * Abstraction to allow different dispatching policies to be plugged  * into the region implementations.  This is used by a queue to deliver  * messages to the matching subscriptions.  *   *   */
 end_comment
 
 begin_interface

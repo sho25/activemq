@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The policy for configuring how BLOBs (Binary Large OBjects) are transferred  * out of band between producers, brokers and consumers.  *  * @version $Revision: $  */
+comment|/**  * The policy for configuring how BLOBs (Binary Large OBjects) are transferred  * out of band between producers, brokers and consumers.  *  *   */
 end_comment
 
 begin_class

@@ -202,7 +202,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This implementation of {@link SubscriptionRecoveryPolicy} will keep a timed  * buffer of messages around in memory and use that to recover new  * subscriptions.  *   * @org.apache.xbean.XBean  * @version $Revision$  */
+comment|/**  * This implementation of {@link SubscriptionRecoveryPolicy} will keep a timed  * buffer of messages around in memory and use that to recover new  * subscriptions.  *   * @org.apache.xbean.XBean  *   */
 end_comment
 
 begin_class

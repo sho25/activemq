@@ -96,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author James Strachan  * @version $Revision$  */
+comment|/**  * @author James Strachan  *   */
 end_comment
 
 begin_class

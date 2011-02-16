@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Occurs when bad magic occurs in reading a file  *   * @version $Revision: 1.2 $  */
+comment|/**  * Occurs when bad magic occurs in reading a file  *   *   */
 end_comment
 
 begin_class

@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple tool for publishing messages  *   * @version $Revision$  */
+comment|/**  * A simple tool for publishing messages  *   *   */
 end_comment
 
 begin_class

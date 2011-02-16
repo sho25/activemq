@@ -108,7 +108,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @openwire:marshaller code="91"  * @version $Revision: 1.12 $  */
+comment|/**  * @openwire:marshaller code="91"  *   */
 end_comment
 
 begin_class

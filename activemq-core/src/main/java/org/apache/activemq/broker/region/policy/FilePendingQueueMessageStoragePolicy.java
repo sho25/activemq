@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Creates a FilePendingMessageCursor *  *   * @org.apache.xbean.XBean element="fileQueueCursor" description="Pending  *                         messages paged in from file"  *   * @version $Revision$  */
+comment|/**  * Creates a FilePendingMessageCursor *  *   * @org.apache.xbean.XBean element="fileQueueCursor" description="Pending  *                         messages paged in from file"  *   *   */
 end_comment
 
 begin_class

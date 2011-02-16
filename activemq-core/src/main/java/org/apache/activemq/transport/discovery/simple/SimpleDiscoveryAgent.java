@@ -182,7 +182,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple DiscoveryAgent that allows static configuration of the discovered  * services.  *   * @version $Revision$  */
+comment|/**  * A simple DiscoveryAgent that allows static configuration of the discovered  * services.  *   *   */
 end_comment
 
 begin_class

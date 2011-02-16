@@ -524,7 +524,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Transport that is made reliable by being able to fail over to another  * transport when a transport failure is detected.  *   * @version $Revision$  */
+comment|/**  * A Transport that is made reliable by being able to fail over to another  * transport when a transport failure is detected.  *   *   */
 end_comment
 
 begin_class

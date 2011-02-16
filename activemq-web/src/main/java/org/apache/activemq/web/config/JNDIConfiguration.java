@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Configuration based on JNDI values.  *  * @version $Revision: $  */
+comment|/**  * Configuration based on JNDI values.  *  *   */
 end_comment
 
 begin_class

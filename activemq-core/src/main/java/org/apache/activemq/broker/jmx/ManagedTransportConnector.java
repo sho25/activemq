@@ -114,7 +114,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A managed transport connector which can create multiple managed connections  * as clients connect.  *   * @version $Revision: 1.1 $  */
+comment|/**  * A managed transport connector which can create multiple managed connections  * as clients connect.  *   *   */
 end_comment
 
 begin_class

@@ -14,7 +14,7 @@ package|;
 end_package
 
 begin_comment
-comment|/** * A holder for different thread priorites used in ActiveMQ *  * @version $Revision: 1.9 $ */
+comment|/** * A holder for different thread priorites used in ActiveMQ *  *  */
 end_comment
 
 begin_interface

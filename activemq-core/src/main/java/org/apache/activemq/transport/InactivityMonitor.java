@@ -188,7 +188,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to make sure that commands are arriving periodically from the peer of  * the transport.  *  * @version $Revision$  */
+comment|/**  * Used to make sure that commands are arriving periodically from the peer of  * the transport.  *  *   */
 end_comment
 
 begin_class

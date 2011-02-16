@@ -26,7 +26,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This is exception is thrown when the transport layer detects that the underlying socket has been inactive for   * too long.  *   * @version $Revision$  */
+comment|/**  * This is exception is thrown when the transport layer detects that the underlying socket has been inactive for   * too long.  *   *   */
 end_comment
 
 begin_class

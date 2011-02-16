@@ -501,7 +501,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|" * @version $Revision$"
+literal|" * "
 argument_list|)
 expr_stmt|;
 name|out
@@ -1803,7 +1803,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|" * @version $Revision$"
+literal|" * "
 argument_list|)
 expr_stmt|;
 name|out

@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Represents some statistic that is capable of being reset  *  * @version $Revision: 1.2 $  */
+comment|/**  * Represents some statistic that is capable of being reset  *  *   */
 end_comment
 
 begin_interface

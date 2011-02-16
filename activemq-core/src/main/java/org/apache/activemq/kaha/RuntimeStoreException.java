@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Runtime exception for the Store  *   * @version $Revision: 1.2 $  */
+comment|/**  * Runtime exception for the Store  *   *   */
 end_comment
 
 begin_class

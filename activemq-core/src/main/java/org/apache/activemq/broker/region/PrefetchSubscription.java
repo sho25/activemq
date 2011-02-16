@@ -366,7 +366,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A subscription that honors the pre-fetch option of the ConsumerInfo.  *   * @version $Revision: 1.15 $  */
+comment|/**  * A subscription that honors the pre-fetch option of the ConsumerInfo.  *   *   */
 end_comment
 
 begin_class

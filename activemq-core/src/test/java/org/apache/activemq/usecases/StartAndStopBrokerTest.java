@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Oliver Belikan  * @version $Revision: 1.1.1.1 $  */
+comment|/**  * @author Oliver Belikan  *   */
 end_comment
 
 begin_class

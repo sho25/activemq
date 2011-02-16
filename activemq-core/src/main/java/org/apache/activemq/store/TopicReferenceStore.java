@@ -78,7 +78,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A MessageStore for durable topic subscriptions  *   * @version $Revision: 1.4 $  */
+comment|/**  * A MessageStore for durable topic subscriptions  *   *   */
 end_comment
 
 begin_interface

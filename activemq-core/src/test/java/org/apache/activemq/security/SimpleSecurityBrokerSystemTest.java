@@ -210,7 +210,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests that the broker allows/fails access to destinations based on the  * security policy installed on the broker.  *   * @version $Revision$  */
+comment|/**  * Tests that the broker allows/fails access to destinations based on the  * security policy installed on the broker.  *   *   */
 end_comment
 
 begin_class

@@ -126,7 +126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Page in a BTree  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Page in a BTree  *   *   */
 end_comment
 
 begin_class

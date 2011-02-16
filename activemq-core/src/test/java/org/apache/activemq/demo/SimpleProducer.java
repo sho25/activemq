@@ -144,7 +144,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple polymorphic JMS producer which can work with Queues or Topics which  * uses JNDI to lookup the JMS connection factory and destination  *   * @version $Revision: 1.2 $  */
+comment|/**  * A simple polymorphic JMS producer which can work with Queues or Topics which  * uses JNDI to lookup the JMS connection factory and destination  *   *   */
 end_comment
 
 begin_class

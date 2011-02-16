@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Use to reliably store fixed sized state data. It stores the state in record  * that is versioned and repeated twice in the file so that a failure in the  * middle of the write of the first or second record do not not result in an  * unknown state.  *   * @version $Revision: 1.1 $  */
+comment|/**  * Use to reliably store fixed sized state data. It stores the state in record  * that is versioned and repeated twice in the file so that a failure in the  * middle of the write of the first or second record do not not result in an  * unknown state.  *   *   */
 end_comment
 
 begin_class

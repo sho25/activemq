@@ -126,7 +126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract base class for some simple benchmark tools  *   * @author James Strachan  * @version $Revision$  */
+comment|/**  * Abstract base class for some simple benchmark tools  *   * @author James Strachan  *   */
 end_comment
 
 begin_class

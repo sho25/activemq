@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Matches messages which contain wildcards like "A.B.*.*"  *  * @version $Revision: 1.2 $  */
+comment|/**  * Matches messages which contain wildcards like "A.B.*.*"  *  *   */
 end_comment
 
 begin_class

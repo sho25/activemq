@@ -188,7 +188,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests the AsyncDataManager based Journal  *   * @version $Revision: 1.1 $  */
+comment|/**  * Tests the AsyncDataManager based Journal  *   *   */
 end_comment
 
 begin_class

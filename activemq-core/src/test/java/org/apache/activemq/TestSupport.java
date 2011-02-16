@@ -314,7 +314,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Useful base class for unit test cases  *   * @version $Revision: 1.5 $  */
+comment|/**  * Useful base class for unit test cases  *   *   */
 end_comment
 
 begin_class

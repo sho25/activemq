@@ -210,7 +210,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An abstraction over JMX mbean registration  *   * @org.apache.xbean.XBean  * @version $Revision$  */
+comment|/**  * An abstraction over JMX mbean registration  *   * @org.apache.xbean.XBean  *   */
 end_comment
 
 begin_class

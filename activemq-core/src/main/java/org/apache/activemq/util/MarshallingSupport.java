@@ -136,7 +136,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The fixed version of the UTF8 encoding function. Some older JVM's UTF8  * encoding function breaks when handling large strings.  *   * @version $Revision$  */
+comment|/**  * The fixed version of the UTF8 encoding function. Some older JVM's UTF8  * encoding function breaks when handling large strings.  *   *   */
 end_comment
 
 begin_class

@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An indication to the transport layer that a flush is required.  *   * @openwire:marshaller code="15"  * @version $Revision$  */
+comment|/**  * An indication to the transport layer that a flush is required.  *   * @openwire:marshaller code="15"  *   */
 end_comment
 
 begin_class

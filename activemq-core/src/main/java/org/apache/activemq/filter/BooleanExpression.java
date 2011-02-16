@@ -26,7 +26,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A BooleanExpression is an expression that always  * produces a Boolean result.  *  * @version $Revision: 1.2 $  */
+comment|/**  * A BooleanExpression is an expression that always  * produces a Boolean result.  *  *   */
 end_comment
 
 begin_interface

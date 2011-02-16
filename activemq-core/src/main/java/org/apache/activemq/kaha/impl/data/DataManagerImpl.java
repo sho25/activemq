@@ -224,7 +224,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Manages DataFiles  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Manages DataFiles  *   *   */
 end_comment
 
 begin_class

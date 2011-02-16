@@ -468,7 +468,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The Message Broker which passes messages to a slave  *   * @version $Revision: 1.8 $  */
+comment|/**  * The Message Broker which passes messages to a slave  *   *   */
 end_comment
 
 begin_class

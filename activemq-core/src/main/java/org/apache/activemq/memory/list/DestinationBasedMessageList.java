@@ -214,7 +214,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link MessageList} which maintains a separate message  * list for each destination to reduce contention on the list and to speed up  * recovery times by only recovering the interested topics.  *   * @version $Revision: 1.1 $  */
+comment|/**  * An implementation of {@link MessageList} which maintains a separate message  * list for each destination to reduce contention on the list and to speed up  * recovery times by only recovering the interested topics.  *   *   */
 end_comment
 
 begin_class

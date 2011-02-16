@@ -128,7 +128,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides a Journal Facade to the DataManager.  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Provides a Journal Facade to the DataManager.  *   *   */
 end_comment
 
 begin_class

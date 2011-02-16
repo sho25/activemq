@@ -334,7 +334,7 @@ name|data
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Operations      *       * @version $Revision: 1.6 $      */
+comment|/**      * Operations      *       *       */
 specifier|public
 specifier|static
 class|class

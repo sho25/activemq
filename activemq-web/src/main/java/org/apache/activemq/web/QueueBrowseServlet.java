@@ -222,7 +222,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Renders the contents of a queue using some kind of view. The URI is assumed  * to be the queue. The following parameters can be used  *<p/>  *<ul>  *<li>view - specifies the type of the view such as simple, xml, rss</li>  *<li>selector - specifies the SQL 92 selector to apply to the queue</li>  *</ul>  *  * @version $Revision: $  */
+comment|/**  * Renders the contents of a queue using some kind of view. The URI is assumed  * to be the queue. The following parameters can be used  *<p/>  *<ul>  *<li>view - specifies the type of the view such as simple, xml, rss</li>  *<li>selector - specifies the SQL 92 selector to apply to the queue</li>  *</ul>  *  *   */
 end_comment
 
 begin_class

@@ -72,7 +72,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * This example demonstrates Stomp Java API  *   * @version $Revision$  *  */
+comment|/**  *   * This example demonstrates Stomp Java API  *   *   *  */
 end_comment
 
 begin_class

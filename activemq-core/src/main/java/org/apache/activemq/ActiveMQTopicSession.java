@@ -234,7 +234,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A TopicSession implementation that throws IllegalStateExceptions when Queue  * operations are attempted but which delegates to another TopicSession for all  * other operations. The ActiveMQSessions implement both Topic and Queue  * Sessions methods but the spec states that TopicSession should throw  * Exceptions if queue operations are attempted on it.  *   * @version $Revision: 1.2 $  */
+comment|/**  * A TopicSession implementation that throws IllegalStateExceptions when Queue  * operations are attempted but which delegates to another TopicSession for all  * other operations. The ActiveMQSessions implement both Topic and Queue  * Sessions methods but the spec states that TopicSession should throw  * Exceptions if queue operations are attempted on it.  *   *   */
 end_comment
 
 begin_class

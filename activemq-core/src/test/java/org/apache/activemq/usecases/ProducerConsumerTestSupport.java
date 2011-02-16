@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for simple test cases using a single connection, session  * producer and consumer  *  * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Base class for simple test cases using a single connection, session  * producer and consumer  *  *   */
 end_comment
 
 begin_class

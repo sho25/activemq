@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Useful base class  *   * @version $Revision: $  */
+comment|/**  * Useful base class  *   *   */
 end_comment
 
 begin_class

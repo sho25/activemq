@@ -400,7 +400,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Dumb implementation - used to be overriden by listeners  *   * @version $Revision$  */
+comment|/**  * Dumb implementation - used to be overriden by listeners  *   *   */
 end_comment
 
 begin_class

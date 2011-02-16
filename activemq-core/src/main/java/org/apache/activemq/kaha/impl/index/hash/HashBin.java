@@ -32,7 +32,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Bin in a HashIndex  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Bin in a HashIndex  *   *   */
 end_comment
 
 begin_class

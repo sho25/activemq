@@ -490,7 +490,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A MessageStore that uses a Journal to store it's messages.  *   * @version $Revision: 1.14 $  */
+comment|/**  * A MessageStore that uses a Journal to store it's messages.  *   *   */
 end_comment
 
 begin_class

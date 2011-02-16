@@ -106,7 +106,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple tool for consuming messages  *   * @version $Revision$  */
+comment|/**  * A simple tool for consuming messages  *   *   */
 end_comment
 
 begin_class

@@ -26,7 +26,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstraction that allows you to control which brokers a NetworkConnector connects bridges to.  *   * @version $Revision$  */
+comment|/**  * Abstraction that allows you to control which brokers a NetworkConnector connects bridges to.  *   *   */
 end_comment
 
 begin_interface

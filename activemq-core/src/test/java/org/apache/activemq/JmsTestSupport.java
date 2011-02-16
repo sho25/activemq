@@ -210,7 +210,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test cases used to test the JMS message consumer.  *   * @version $Revision$  */
+comment|/**  * Test cases used to test the JMS message consumer.  *   *   */
 end_comment
 
 begin_class

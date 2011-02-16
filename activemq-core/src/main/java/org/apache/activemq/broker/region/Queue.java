@@ -760,7 +760,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The Queue is a List of MessageEntry objects that are dispatched to matching  * subscriptions.  *   * @version $Revision: 1.28 $  */
+comment|/**  * The Queue is a List of MessageEntry objects that are dispatched to matching  * subscriptions.  *   *   */
 end_comment
 
 begin_class

@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A helper class used to provide access to the current active  * {@link InboundContext} instance being used to process a message in the  * current thread so that messages can be produced using the same session.  *   * @version $Revision$  */
+comment|/**  * A helper class used to provide access to the current active  * {@link InboundContext} instance being used to process a message in the  * current thread so that messages can be produced using the same session.  *   *   */
 end_comment
 
 begin_class

@@ -100,7 +100,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests the Location Class  *   * @version $Revision: 1.1 $  */
+comment|/**  * Tests the Location Class  *   *   */
 end_comment
 
 begin_class

@@ -316,7 +316,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This broker filter handles the transaction related operations in the Broker  * interface.  *   * @version $Revision: 1.10 $  */
+comment|/**  * This broker filter handles the transaction related operations in the Broker  * interface.  *   *   */
 end_comment
 
 begin_class

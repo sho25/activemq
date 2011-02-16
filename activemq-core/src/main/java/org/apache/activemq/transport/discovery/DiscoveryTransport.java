@@ -150,7 +150,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link ReliableTransportChannel} which uses a {@link DiscoveryAgent} to  * discover remote broker instances and dynamically connect to them.  *   * @version $Revision$  */
+comment|/**  * A {@link ReliableTransportChannel} which uses a {@link DiscoveryAgent} to  * discover remote broker instances and dynamically connect to them.  *   *   */
 end_comment
 
 begin_class

@@ -24,7 +24,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides a uniform interface that can be used to close all the JMS obejcts  * that provide a close() method. Useful for when you want to collect a  * heterogeous set of JMS object in a collection to be closed at a later time.  *   * @version $Revision: 1.2 $  */
+comment|/**  * Provides a uniform interface that can be used to close all the JMS obejcts  * that provide a close() method. Useful for when you want to collect a  * heterogeous set of JMS object in a collection to be closed at a later time.  *   *   */
 end_comment
 
 begin_interface

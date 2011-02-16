@@ -72,7 +72,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A container of messages which is used to store messages and then   * replay them later for a given subscription.  *   * @version $Revision: 1.1 $  */
+comment|/**  * A container of messages which is used to store messages and then   * replay them later for a given subscription.  *   *   */
 end_comment
 
 begin_interface

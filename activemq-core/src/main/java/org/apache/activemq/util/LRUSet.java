@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Simple LRU Set  *   * @version $Revision$  * @param<K>  * @param<V>  */
+comment|/**  * A Simple LRU Set  *   *   * @param<K>  * @param<V>  */
 end_comment
 
 begin_class

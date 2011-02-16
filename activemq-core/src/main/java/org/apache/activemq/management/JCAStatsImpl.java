@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Statistics for a number of JCA connections and connection pools  *  * @version $Revision: 1.2 $  */
+comment|/**  * Statistics for a number of JCA connections and connection pools  *  *   */
 end_comment
 
 begin_class

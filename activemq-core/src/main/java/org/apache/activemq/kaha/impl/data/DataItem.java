@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A a wrapper for a data in the store  *   * @version $Revision: 1.2 $  */
+comment|/**  * A a wrapper for a data in the store  *   *   */
 end_comment
 
 begin_class

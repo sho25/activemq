@@ -112,7 +112,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helps keep track of the current transaction/JDBC connection.  *   * @version $Revision: 1.2 $  */
+comment|/**  * Helps keep track of the current transaction/JDBC connection.  *   *   */
 end_comment
 
 begin_class

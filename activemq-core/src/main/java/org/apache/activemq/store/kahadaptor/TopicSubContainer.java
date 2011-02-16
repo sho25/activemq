@@ -70,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Holds information for the subscriber  *   * @version $Revision: 1.10 $  */
+comment|/**  * Holds information for the subscriber  *   *   */
 end_comment
 
 begin_class

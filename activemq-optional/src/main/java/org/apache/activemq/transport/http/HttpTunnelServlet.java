@@ -320,7 +320,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A servlet which handles server side HTTP transport, delegating to the  * ActiveMQ broker. This servlet is designed for being embedded inside an  * ActiveMQ Broker using an embedded Jetty or Tomcat instance.  *   * @version $Revision$  */
+comment|/**  * A servlet which handles server side HTTP transport, delegating to the  * ActiveMQ broker. This servlet is designed for being embedded inside an  * ActiveMQ Broker using an embedded Jetty or Tomcat instance.  *   *   */
 end_comment
 
 begin_class

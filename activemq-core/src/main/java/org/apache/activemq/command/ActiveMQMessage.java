@@ -256,7 +256,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @version $Revision:$  * @openwire:marshaller code="23"  */
+comment|/**  *   * @openwire:marshaller code="23"  */
 end_comment
 
 begin_class

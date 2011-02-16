@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A JMS {@link javax.jms.TopicPublisher} which sends message exchanges to a  * Camel {@link Endpoint}  *  * @version $Revision: $  */
+comment|/**  * A JMS {@link javax.jms.TopicPublisher} which sends message exchanges to a  * Camel {@link Endpoint}  *  *   */
 end_comment
 
 begin_class

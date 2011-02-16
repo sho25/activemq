@@ -114,7 +114,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a network bridge interface  *   * @version $Revision: 1.1 $  */
+comment|/**  * Represents a network bridge interface  *   *   */
 end_comment
 
 begin_class

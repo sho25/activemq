@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Configuration based on system-properties.  *   * @version $Revision: $  */
+comment|/**  * Configuration based on system-properties.  *   *   */
 end_comment
 
 begin_class

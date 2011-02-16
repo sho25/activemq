@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Statistics for a JMS consumer  *   * @version $Revision: 1.2 $  */
+comment|/**  * Statistics for a JMS consumer  *   *   */
 end_comment
 
 begin_class

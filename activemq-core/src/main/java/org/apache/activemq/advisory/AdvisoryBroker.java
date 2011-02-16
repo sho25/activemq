@@ -282,7 +282,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This broker filter handles tracking the state of the broker for purposes of  * publishing advisory messages to advisory consumers.  *   * @version $Revision$  */
+comment|/**  * This broker filter handles tracking the state of the broker for purposes of  * publishing advisory messages to advisory consumers.  *   *   */
 end_comment
 
 begin_class

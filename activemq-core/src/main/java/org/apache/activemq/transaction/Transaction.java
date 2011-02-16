@@ -138,7 +138,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Keeps track of all the actions the need to be done when a transaction does a  * commit or rollback.  *   * @version $Revision: 1.5 $  */
+comment|/**  * Keeps track of all the actions the need to be done when a transaction does a  * commit or rollback.  *   *   */
 end_comment
 
 begin_class

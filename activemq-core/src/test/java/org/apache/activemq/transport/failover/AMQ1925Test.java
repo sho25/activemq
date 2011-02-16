@@ -304,7 +304,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TestCase showing the message-destroying described in AMQ-1925  *   * @version $Revision: 1.1 $  */
+comment|/**  * TestCase showing the message-destroying described in AMQ-1925  *   *   */
 end_comment
 
 begin_class

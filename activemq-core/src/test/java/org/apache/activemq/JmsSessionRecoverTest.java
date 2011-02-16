@@ -176,7 +176,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Testcases to see if Session.recover() work.  *   * @version $Revision: 1.3 $  */
+comment|/**  * Testcases to see if Session.recover() work.  *   *   */
 end_comment
 
 begin_class

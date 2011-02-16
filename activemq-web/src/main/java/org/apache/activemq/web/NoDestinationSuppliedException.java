@@ -26,7 +26,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Exception thrown if there was no destination available  *  * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Exception thrown if there was no destination available  *  *   */
 end_comment
 
 begin_class

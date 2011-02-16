@@ -70,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract base class providing support for creating physical  * connections to an ActiveMQ instance.  *   * @version $Revision$  */
+comment|/**  * Abstract base class providing support for creating physical  * connections to an ActiveMQ instance.  *   *   */
 end_comment
 
 begin_class

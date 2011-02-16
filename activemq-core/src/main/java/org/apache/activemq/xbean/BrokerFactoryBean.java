@@ -196,7 +196,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Spring {@link FactoryBean} which creates an embedded broker inside a Spring  * XML using an external<a href="http://gbean.org/Custom+XML">XBean Spring XML  * configuration file</a> which provides a much neater and more concise XML  * format.  *   * @version $Revision: 1.1 $  */
+comment|/**  * A Spring {@link FactoryBean} which creates an embedded broker inside a Spring  * XML using an external<a href="http://gbean.org/Custom+XML">XBean Spring XML  * configuration file</a> which provides a much neater and more concise XML  * format.  *   *   */
 end_comment
 
 begin_class

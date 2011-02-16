@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A simple callback object used by the  * {@link org.apache.activemq.util.TransactionTemplate}  * and {@link org.apache.activemq.util.ExceptionTemplate}    objects to provide automatic transactional or exception handling blocks.  *  * @version $Revision: 1.2 $  */
+comment|/**  * A simple callback object used by the  * {@link org.apache.activemq.util.TransactionTemplate}  * and {@link org.apache.activemq.util.ExceptionTemplate}    objects to provide automatic transactional or exception handling blocks.  *  *   */
 end_comment
 
 begin_interface

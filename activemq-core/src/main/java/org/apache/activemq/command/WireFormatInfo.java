@@ -170,7 +170,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @openwire:marshaller code="1"  * @version $Revision$  */
+comment|/**  * @openwire:marshaller code="1"  *   */
 end_comment
 
 begin_class

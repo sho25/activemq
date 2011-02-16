@@ -228,7 +228,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents an ActiveMQ message  *   * @openwire:marshaller  * @version $Revision$  */
+comment|/**  * Represents an ActiveMQ message  *   * @openwire:marshaller  *   */
 end_comment
 
 begin_class

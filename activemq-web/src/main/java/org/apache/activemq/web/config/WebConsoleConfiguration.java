@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The configuration used for the web console.  *   * @version $Revision: $  */
+comment|/**  * The configuration used for the web console.  *   *   */
 end_comment
 
 begin_interface

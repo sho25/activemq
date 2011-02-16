@@ -122,7 +122,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a property expression  *   * @version $Revision: 1.5 $  */
+comment|/**  * Represents a property expression  *   *   */
 end_comment
 
 begin_class

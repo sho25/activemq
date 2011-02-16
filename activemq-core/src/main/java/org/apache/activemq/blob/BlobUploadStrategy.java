@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a strategy of uploading a file/stream to some remote  *  * @version $Revision: $  */
+comment|/**  * Represents a strategy of uploading a file/stream to some remote  *  *   */
 end_comment
 
 begin_interface

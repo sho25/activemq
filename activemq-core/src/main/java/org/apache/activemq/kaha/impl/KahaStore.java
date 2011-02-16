@@ -420,7 +420,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Store Implementation  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Store Implementation  *   *   */
 end_comment
 
 begin_class

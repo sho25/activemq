@@ -96,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Holds internal state in the broker for a MessageProducer  *   * @version $Revision: 1.8 $  */
+comment|/**  * Holds internal state in the broker for a MessageProducer  *   *   */
 end_comment
 
 begin_class

@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A ProducerAck command is sent by a broker to a producer to let it know it has  * received and processed messages that it has produced. The producer will be  * flow controlled if it does not receive ProducerAck commands back from the  * broker.  *   * @openwire:marshaller code="19" version="3"  * @version $Revision: 1.11 $  */
+comment|/**  * A ProducerAck command is sent by a broker to a producer to let it know it has  * received and processed messages that it has produced. The producer will be  * flow controlled if it does not receive ProducerAck commands back from the  * broker.  *   * @openwire:marshaller code="19" version="3"  *   */
 end_comment
 
 begin_class

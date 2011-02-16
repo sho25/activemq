@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Filters another Cache implementation.  *   * @version $Revision$  */
+comment|/**  * Filters another Cache implementation.  *   *   */
 end_comment
 
 begin_class

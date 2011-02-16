@@ -152,7 +152,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A JMS {@link javax.jms.MessageConsumer} which consumes message exchanges from  * a Camel {@link Endpoint}  *   * @version $Revision: $  */
+comment|/**  * A JMS {@link javax.jms.MessageConsumer} which consumes message exchanges from  * a Camel {@link Endpoint}  *   *   */
 end_comment
 
 begin_class

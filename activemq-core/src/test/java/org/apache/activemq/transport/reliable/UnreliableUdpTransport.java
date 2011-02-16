@@ -104,7 +104,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An unreliable UDP transport that will randomly discard packets to simulate a  * bad network (or UDP buffers being flooded).  *   * @version $Revision: $  */
+comment|/**  * An unreliable UDP transport that will randomly discard packets to simulate a  * bad network (or UDP buffers being flooded).  *   *   */
 end_comment
 
 begin_class

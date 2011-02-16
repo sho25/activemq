@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simple CacheFilter that increases/decreases usage on a UsageManager as  * objects are added/removed from the Cache.  *   * @version $Revision$  */
+comment|/**  * Simple CacheFilter that increases/decreases usage on a UsageManager as  * objects are added/removed from the Cache.  *   *   */
 end_comment
 
 begin_class

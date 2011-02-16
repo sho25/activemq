@@ -180,7 +180,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to hold context information needed to process requests sent to a broker.  *   * @version $Revision: 1.5 $  */
+comment|/**  * Used to hold context information needed to process requests sent to a broker.  *   *   */
 end_comment
 
 begin_class

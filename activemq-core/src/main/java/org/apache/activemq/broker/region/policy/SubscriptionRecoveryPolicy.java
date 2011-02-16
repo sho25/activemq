@@ -136,7 +136,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstraction to allow different recovery policies to be plugged  * into the region implementations.  This is used by a topic to retroactively recover  * messages that the subscription missed.  *   * @version $Revision$  */
+comment|/**  * Abstraction to allow different recovery policies to be plugged  * into the region implementations.  This is used by a topic to retroactively recover  * messages that the subscription missed.  *   *   */
 end_comment
 
 begin_interface

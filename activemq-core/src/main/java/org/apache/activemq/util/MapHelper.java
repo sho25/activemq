@@ -26,7 +26,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A bunch of utility methods for working with maps  *   * @version $Revision$  */
+comment|/**  * A bunch of utility methods for working with maps  *   *   */
 end_comment
 
 begin_class

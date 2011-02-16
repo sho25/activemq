@@ -56,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A default implementation of {@link NameParser}  *  * @version $Revision: 1.2 $  */
+comment|/**  * A default implementation of {@link NameParser}  *  *   */
 end_comment
 
 begin_class

@@ -90,7 +90,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simple BrokerFactorySPI which using the brokerURI to extract the  * configuration parameters for the broker service. This directly configures the  * pojo model so there is no dependency on spring for configuration.  *   * @version $Revision$  */
+comment|/**  * Simple BrokerFactorySPI which using the brokerURI to extract the  * configuration parameters for the broker service. This directly configures the  * pojo model so there is no dependency on spring for configuration.  *   *   */
 end_comment
 
 begin_class

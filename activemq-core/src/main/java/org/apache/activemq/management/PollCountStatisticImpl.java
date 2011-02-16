@@ -60,7 +60,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A count statistic implementation  *   * @version $Revision$  */
+comment|/**  * A count statistic implementation  *   *   */
 end_comment
 
 begin_class

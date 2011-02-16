@@ -26,7 +26,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Factory class that can create PersistenceAdapter objects.  *  * @version $Revision: 1.3 $  */
+comment|/**  * Factory class that can create PersistenceAdapter objects.  *  *   */
 end_comment
 
 begin_interface

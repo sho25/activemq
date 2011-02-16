@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to represent a durable subscription.  *   * @openwire:marshaller code="55"  * @version $Revision: 1.6 $  */
+comment|/**  * Used to represent a durable subscription.  *   * @openwire:marshaller code="55"  *   */
 end_comment
 
 begin_class

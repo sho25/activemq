@@ -254,7 +254,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @org.apache.xbean.XBean  * @version $Revision: 1.4 $  */
+comment|/**  * @org.apache.xbean.XBean  *   */
 end_comment
 
 begin_class

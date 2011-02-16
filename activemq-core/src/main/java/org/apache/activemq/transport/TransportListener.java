@@ -26,7 +26,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An asynchronous listener of commands  *  * @version $Revision$  */
+comment|/**  * An asynchronous listener of commands  *  *   */
 end_comment
 
 begin_interface

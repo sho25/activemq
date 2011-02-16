@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A time statistic implementation  *  * @version $Revision: 1.2 $  */
+comment|/**  * A time statistic implementation  *  *   */
 end_comment
 
 begin_class

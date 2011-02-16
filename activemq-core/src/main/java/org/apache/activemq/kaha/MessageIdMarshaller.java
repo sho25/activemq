@@ -60,7 +60,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of a Marshaller for MessageIds  *   * @version $Revision: 1.2 $  */
+comment|/**  * Implementation of a Marshaller for MessageIds  *   *   */
 end_comment
 
 begin_class

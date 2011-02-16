@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The Command Pattern so that we can send and receive commands on the different  * transports  *   * @version $Revision: 1.7 $  */
+comment|/**  * The Command Pattern so that we can send and receive commands on the different  * transports  *   *   */
 end_comment
 
 begin_interface

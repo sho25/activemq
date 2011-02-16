@@ -256,7 +256,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link Session} implementation which can be used with the ActiveMQ JCA  * Resource Adapter to publish messages using the same JMS session that is used  * to dispatch messages.  *   * @version $Revision$  */
+comment|/**  * A {@link Session} implementation which can be used with the ActiveMQ JCA  * Resource Adapter to publish messages using the same JMS session that is used  * to dispatch messages.  *   *   */
 end_comment
 
 begin_class

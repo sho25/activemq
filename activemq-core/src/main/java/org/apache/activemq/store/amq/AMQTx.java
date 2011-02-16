@@ -112,7 +112,7 @@ comment|/**  */
 end_comment
 
 begin_comment
-comment|/**  * Operations  *   * @version $Revision: 1.6 $  */
+comment|/**  * Operations  *   *   */
 end_comment
 
 begin_class

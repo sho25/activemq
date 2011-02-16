@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This broker filter will append the producer's user ID into the JMSXUserID header  * to allow folks to know reliably who the user was who produced a message.  * Note that you cannot trust the client, especially if working over the internet  * as they can spoof headers to be anything they like.  *   * @version $Revision: 1.8 $  */
+comment|/**  * This broker filter will append the producer's user ID into the JMSXUserID header  * to allow folks to know reliably who the user was who produced a message.  * Note that you cannot trust the client, especially if working over the internet  * as they can spoof headers to be anything they like.  *   *   */
 end_comment
 
 begin_class

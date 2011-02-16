@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Key and index for DiskBased Hash Index  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * Key and index for DiskBased Hash Index  *   *   */
 end_comment
 
 begin_class

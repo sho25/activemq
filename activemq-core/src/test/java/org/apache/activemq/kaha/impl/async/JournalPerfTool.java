@@ -68,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Performance statistics gathering tool for the AsyncDataManager based  * Journal.  *   * @version $Revision: 1.1 $  */
+comment|/**  * A Performance statistics gathering tool for the AsyncDataManager based  * Journal.  *   *   */
 end_comment
 
 begin_class

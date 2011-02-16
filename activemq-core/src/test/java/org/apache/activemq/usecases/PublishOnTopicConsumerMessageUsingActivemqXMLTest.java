@@ -114,7 +114,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test Publish/Consume topic  using the release activemq.xml configuration file  *  * @version $Revision: 1.2 $  */
+comment|/**  * Test Publish/Consume topic  using the release activemq.xml configuration file  *  *   */
 end_comment
 
 begin_class

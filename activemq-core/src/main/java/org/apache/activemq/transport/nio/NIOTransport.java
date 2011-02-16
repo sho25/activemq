@@ -218,7 +218,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the {@link Transport} interface using raw tcp/ip  *   * @version $Revision$  */
+comment|/**  * An implementation of the {@link Transport} interface using raw tcp/ip  *   *   */
 end_comment
 
 begin_class

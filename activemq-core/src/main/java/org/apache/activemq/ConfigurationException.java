@@ -24,7 +24,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An exception thrown when a service is not correctly configured  *  * @version $Revision: 1.2 $  */
+comment|/**  * An exception thrown when a service is not correctly configured  *  *   */
 end_comment
 
 begin_class

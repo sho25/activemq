@@ -292,7 +292,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test case support used to test multiple message comsumers and message  * producers connecting to a single broker.  *   * @version $Revision$  */
+comment|/**  * Test case support used to test multiple message comsumers and message  * producers connecting to a single broker.  *   *   */
 end_comment
 
 begin_class

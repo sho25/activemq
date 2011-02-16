@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @version $Revision: 1.2 $  * @org.apache.xbean.XBean element="db2JDBCAdapter"  */
+comment|/**  *   * @org.apache.xbean.XBean element="db2JDBCAdapter"  */
 end_comment
 
 begin_class

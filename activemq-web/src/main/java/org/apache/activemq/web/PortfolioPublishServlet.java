@@ -130,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A servlet which will publish dummy market data prices  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * A servlet which will publish dummy market data prices  *   *   */
 end_comment
 
 begin_class

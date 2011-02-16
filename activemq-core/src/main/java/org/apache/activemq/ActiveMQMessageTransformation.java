@@ -360,7 +360,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper class for converting normal JMS interfaces into ActiveMQ specific  * ones.  *   * @version $Revision: 1.1 $  */
+comment|/**  * A helper class for converting normal JMS interfaces into ActiveMQ specific  * ones.  *   *   */
 end_comment
 
 begin_class

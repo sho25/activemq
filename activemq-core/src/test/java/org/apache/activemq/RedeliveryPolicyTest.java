@@ -78,7 +78,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test cases used to test the JMS message exclusive consumers.  *   * @version $Revision$  */
+comment|/**  * Test cases used to test the JMS message exclusive consumers.  *   *   */
 end_comment
 
 begin_class

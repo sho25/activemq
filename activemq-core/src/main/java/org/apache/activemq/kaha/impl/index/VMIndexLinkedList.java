@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A linked list used by IndexItems  *   * @version $Revision: 1.2 $  */
+comment|/**  * A linked list used by IndexItems  *   *   */
 end_comment
 
 begin_class

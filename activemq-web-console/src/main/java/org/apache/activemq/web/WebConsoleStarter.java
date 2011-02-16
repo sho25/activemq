@@ -122,7 +122,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Starts the WebConsole.  *   * @version $Revision: 1.1 $  */
+comment|/**  * Starts the WebConsole.  *   *   */
 end_comment
 
 begin_class

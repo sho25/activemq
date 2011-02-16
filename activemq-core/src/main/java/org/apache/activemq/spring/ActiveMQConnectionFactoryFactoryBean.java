@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper class for creating a failover configured {@link ActiveMQConnectionFactory}  * which supports one or more TCP based hostname/ports which can all be configured in a  * consistent way without too much URL hacking.  *  * @version $Revision: 1.1 $  */
+comment|/**  * A helper class for creating a failover configured {@link ActiveMQConnectionFactory}  * which supports one or more TCP based hostname/ports which can all be configured in a  * consistent way without too much URL hacking.  *  *   */
 end_comment
 
 begin_class

@@ -310,7 +310,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The Message Broker which routes messages, maintains subscriptions and  * connections, acknowledges messages and handles transactions.  *   * @version $Revision: 1.8 $  */
+comment|/**  * The Message Broker which routes messages, maintains subscriptions and  * connections, acknowledges messages and handles transactions.  *   *   */
 end_comment
 
 begin_interface

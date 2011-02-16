@@ -94,7 +94,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a hook to allow the support of custom destinations  * such as to support<a href="http://activemq.apache.org/camel/">Apache Camel</a>  * to create and manage endpoints  *  * @version $Revision: $  */
+comment|/**  * Represents a hook to allow the support of custom destinations  * such as to support<a href="http://activemq.apache.org/camel/">Apache Camel</a>  * to create and manage endpoints  *  *   */
 end_comment
 
 begin_interface

@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Allows you to request a thread execute the associated Task.  *   * @version $Revision: 1.3 $  */
+comment|/**  * Allows you to request a thread execute the associated Task.  *   *   */
 end_comment
 
 begin_interface

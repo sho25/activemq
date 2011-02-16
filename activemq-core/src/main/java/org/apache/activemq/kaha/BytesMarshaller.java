@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of a Marshaller for byte arrays  *   * @version $Revision: 1.2 $  */
+comment|/**  * Implementation of a Marshaller for byte arrays  *   *   */
 end_comment
 
 begin_class

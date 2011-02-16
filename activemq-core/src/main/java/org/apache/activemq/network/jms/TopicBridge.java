@@ -128,7 +128,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Destination bridge is used to bridge between to different JMS systems  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * A Destination bridge is used to bridge between to different JMS systems  *   *   */
 end_comment
 
 begin_class

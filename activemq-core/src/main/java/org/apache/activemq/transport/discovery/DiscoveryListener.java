@@ -32,7 +32,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A listener of services being added or removed from a network  *   * @version $Revision$  */
+comment|/**  * A listener of services being added or removed from a network  *   *   */
 end_comment
 
 begin_interface

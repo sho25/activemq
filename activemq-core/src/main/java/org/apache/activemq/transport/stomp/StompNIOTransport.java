@@ -318,7 +318,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the {@link Transport} interface for using Stomp over NIO  *  * @version $Revision$  */
+comment|/**  * An implementation of the {@link Transport} interface for using Stomp over NIO  *  *   */
 end_comment
 
 begin_class

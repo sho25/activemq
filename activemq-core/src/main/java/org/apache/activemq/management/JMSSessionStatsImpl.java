@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Statistics for a JMS session  *   * @version $Revision: 1.2 $  */
+comment|/**  * Statistics for a JMS session  *   *   */
 end_comment
 
 begin_class

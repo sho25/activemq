@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a container of persistent objects in the store Acts as a map, but  * values can be retrieved in insertion order  *   * @version $Revision: 1.2 $  */
+comment|/**  * Represents a container of persistent objects in the store Acts as a map, but  * values can be retrieved in insertion order  *   *   */
 end_comment
 
 begin_interface

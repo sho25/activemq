@@ -268,7 +268,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of a ListContainer  *   * @version $Revision: 1.2 $  */
+comment|/**  * Implementation of a ListContainer  *   *   */
 end_comment
 
 begin_class

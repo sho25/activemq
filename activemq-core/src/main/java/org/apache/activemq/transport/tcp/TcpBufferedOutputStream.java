@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An optimized buffered outputstream for Tcp  *   * @version $Revision: 1.1.1.1 $  */
+comment|/**  * An optimized buffered outputstream for Tcp  *   *   */
 end_comment
 
 begin_class

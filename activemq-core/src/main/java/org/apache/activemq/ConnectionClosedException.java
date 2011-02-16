@@ -24,7 +24,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An exception thrown when attempt is made to use a connection when the connection has been closed.  *  * @version $Revision: 1.2 $  */
+comment|/**  * An exception thrown when attempt is made to use a connection when the connection has been closed.  *  *   */
 end_comment
 
 begin_class

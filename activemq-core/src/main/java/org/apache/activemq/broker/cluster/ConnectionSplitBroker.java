@@ -158,7 +158,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Monitors for client connections that may fail to another broker - but this  * broker isn't aware they've gone. Can occur with network glitches or client  * error  *   * @version $Revision$  */
+comment|/**  * Monitors for client connections that may fail to another broker - but this  * broker isn't aware they've gone. Can occur with network glitches or client  * error  *   *   */
 end_comment
 
 begin_class

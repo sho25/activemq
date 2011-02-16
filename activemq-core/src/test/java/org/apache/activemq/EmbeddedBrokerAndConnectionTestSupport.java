@@ -24,7 +24,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A base class for a test case which creates an embedded broker and uses a connection and session  *  * @version $Revision: 1.1 $  */
+comment|/**  * A base class for a test case which creates an embedded broker and uses a connection and session  *  *   */
 end_comment
 
 begin_class

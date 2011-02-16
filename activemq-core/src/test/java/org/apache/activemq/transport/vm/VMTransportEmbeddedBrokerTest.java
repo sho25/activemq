@@ -216,7 +216,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to see if the VM transport starts an embedded broker on demand.  *   * @version $Revision$  */
+comment|/**  * Used to see if the VM transport starts an embedded broker on demand.  *   *   */
 end_comment
 
 begin_class

@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Allows us to switch between using a shared transaction context, or using a  * local transaction context.  *   * @version $Revision$  */
+comment|/**  * Allows us to switch between using a shared transaction context, or using a  * local transaction context.  *   *   */
 end_comment
 
 begin_class

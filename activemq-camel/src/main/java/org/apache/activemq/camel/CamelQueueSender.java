@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A JMS {@link javax.jms.QueueSender} which sends message exchanges to a Camel  * {@link org.apache.camel.Endpoint}  *   * @version $Revision: $  */
+comment|/**  * A JMS {@link javax.jms.QueueSender} which sends message exchanges to a Camel  * {@link org.apache.camel.Endpoint}  *   *   */
 end_comment
 
 begin_class

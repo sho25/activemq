@@ -136,7 +136,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Moves a message from one to another queue  *   * @author<a href="http://www.nighttale.net">Dejan Bosanac</a>  * @version $Revision$  */
+comment|/**  * Moves a message from one to another queue  *   * @author<a href="http://www.nighttale.net">Dejan Bosanac</a>  *   */
 end_comment
 
 begin_class

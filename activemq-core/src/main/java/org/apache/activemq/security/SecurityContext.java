@@ -82,7 +82,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to cache up authorizations so that subsequent requests are faster.  *   * @version $Revision$  */
+comment|/**  * Used to cache up authorizations so that subsequent requests are faster.  *   *   */
 end_comment
 
 begin_class

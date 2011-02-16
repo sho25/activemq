@@ -282,7 +282,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link DiscoveryAgent} using a multicast address and heartbeat packets  * encoded using any wireformat, but openwire by default.  *   * @version $Revision$  */
+comment|/**  * A {@link DiscoveryAgent} using a multicast address and heartbeat packets  * encoded using any wireformat, but openwire by default.  *   *   */
 end_comment
 
 begin_class

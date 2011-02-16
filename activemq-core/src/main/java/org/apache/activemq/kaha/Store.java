@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Store is holds persistent containers  *   * @version $Revision: 1.2 $  */
+comment|/**  * A Store is holds persistent containers  *   *   */
 end_comment
 
 begin_interface

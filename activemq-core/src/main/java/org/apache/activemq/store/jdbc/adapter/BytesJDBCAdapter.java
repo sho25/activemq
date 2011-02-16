@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This JDBCAdapter inserts and extracts BLOB data using the  * setBytes()/getBytes() operations. The databases/JDBC drivers that use this  * adapter are:  *   * @org.apache.xbean.XBean element="bytesJDBCAdapter"  * @version $Revision: 1.2 $  */
+comment|/**  * This JDBCAdapter inserts and extracts BLOB data using the  * setBytes()/getBytes() operations. The databases/JDBC drivers that use this  * adapter are:  *   * @org.apache.xbean.XBean element="bytesJDBCAdapter"  *   */
 end_comment
 
 begin_class

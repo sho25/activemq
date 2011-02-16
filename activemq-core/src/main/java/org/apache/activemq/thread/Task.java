@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Represents a task that may take a few iterations to complete.  *   * @version $Revision: 1.3 $  */
+comment|/**  * Represents a task that may take a few iterations to complete.  *   *   */
 end_comment
 
 begin_interface

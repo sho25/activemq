@@ -112,7 +112,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Index implementation using a HashMap  *  * @version $Revision: 1.2 $  */
+comment|/**  * Index implementation using a HashMap  *  *   */
 end_comment
 
 begin_class

@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents some kind of lock service to ensure that a broker is the only master  *   * @version $Revision: $  */
+comment|/**  * Represents some kind of lock service to ensure that a broker is the only master  *   *   */
 end_comment
 
 begin_interface

@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Holds the command id constants used by the command objects.  *   * @version $Revision: 1.21 $  */
+comment|/**  * Holds the command id constants used by the command objects.  *   *   */
 end_comment
 
 begin_interface

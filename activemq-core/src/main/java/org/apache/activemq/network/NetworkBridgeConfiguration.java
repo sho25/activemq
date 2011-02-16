@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Configuration for a NetworkBridge  *   * @version $Revision: 1.1 $  */
+comment|/**  * Configuration for a NetworkBridge  *   *   */
 end_comment
 
 begin_class

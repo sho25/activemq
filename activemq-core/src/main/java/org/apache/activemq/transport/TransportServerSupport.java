@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A useful base class for implementations of {@link TransportServer}  *   * @version $Revision: 1.1 $  */
+comment|/**  * A useful base class for implementations of {@link TransportServer}  *   *   */
 end_comment
 
 begin_class

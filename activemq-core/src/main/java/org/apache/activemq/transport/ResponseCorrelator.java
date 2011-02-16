@@ -142,7 +142,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Adds the incrementing sequence number to commands along with performing the  * corelation of responses to requests to create a blocking request-response  * semantics.  *   * @version $Revision: 1.4 $  */
+comment|/**  * Adds the incrementing sequence number to commands along with performing the  * corelation of responses to requests to create a blocking request-response  * semantics.  *   *   */
 end_comment
 
 begin_class

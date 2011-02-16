@@ -52,7 +52,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents the durable store of the commit/rollback operations taken against  * the broker.  *   * @version $Revision: 1.2 $  */
+comment|/**  * Represents the durable store of the commit/rollback operations taken against  * the broker.  *   *   */
 end_comment
 
 begin_interface

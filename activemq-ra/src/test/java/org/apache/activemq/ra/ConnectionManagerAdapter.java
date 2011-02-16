@@ -150,7 +150,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple implementation of a ConnectionManager that can be extended so that  * it can see how the RA connections are interacting with it.  *   * @version $Revision$  */
+comment|/**  * A simple implementation of a ConnectionManager that can be extended so that  * it can see how the RA connections are interacting with it.  *   *   */
 end_comment
 
 begin_class

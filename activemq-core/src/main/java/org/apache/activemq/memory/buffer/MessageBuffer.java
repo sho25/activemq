@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Represents a collection of MessageQueue instances which are all bound by the  * same memory buffer to fix the amount of RAM used to some uppper bound.  *   * @version $Revision: 1.1 $  */
+comment|/**  * Represents a collection of MessageQueue instances which are all bound by the  * same memory buffer to fix the amount of RAM used to some uppper bound.  *   *   */
 end_comment
 
 begin_interface

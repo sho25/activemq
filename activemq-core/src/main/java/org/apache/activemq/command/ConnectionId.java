@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * @openwire:marshaller code="120"  * @version $Revision$  */
+comment|/**  * @openwire:marshaller code="120"  *   */
 end_comment
 
 begin_class
