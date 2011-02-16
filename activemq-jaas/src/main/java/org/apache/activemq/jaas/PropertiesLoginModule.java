@@ -339,6 +339,10 @@ specifier|private
 name|File
 name|baseDir
 decl_stmt|;
+specifier|private
+name|boolean
+name|loginSucceeded
+decl_stmt|;
 specifier|public
 name|void
 name|initialize
@@ -367,6 +371,10 @@ operator|.
 name|callbackHandler
 operator|=
 name|callbackHandler
+expr_stmt|;
+name|loginSucceeded
+operator|=
+literal|false
 expr_stmt|;
 if|if
 condition|(
@@ -781,6 +789,10 @@ literal|"Password does not match"
 argument_list|)
 throw|;
 block|}
+name|loginSucceeded
+operator|=
+literal|true
+expr_stmt|;
 name|users
 operator|.
 name|clear
@@ -802,7 +814,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-literal|true
+name|loginSucceeded
 return|;
 block|}
 specifier|public
@@ -811,6 +823,16 @@ name|commit
 parameter_list|()
 throws|throws
 name|LoginException
+block|{
+name|boolean
+name|result
+init|=
+name|loginSucceeded
+decl_stmt|;
+if|if
+condition|(
+name|result
+condition|)
 block|{
 name|principals
 operator|.
@@ -929,6 +951,8 @@ argument_list|(
 name|principals
 argument_list|)
 expr_stmt|;
+block|}
+comment|// will whack loginSucceeded
 name|clear
 argument_list|()
 expr_stmt|;
@@ -941,12 +965,14 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"commit"
+literal|"commit, result: "
+operator|+
+name|result
 argument_list|)
 expr_stmt|;
 block|}
 return|return
-literal|true
+name|result
 return|;
 block|}
 specifier|public
@@ -998,6 +1024,9 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+name|clear
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|debug
@@ -1028,6 +1057,10 @@ expr_stmt|;
 name|user
 operator|=
 literal|null
+expr_stmt|;
+name|loginSucceeded
+operator|=
+literal|false
 expr_stmt|;
 block|}
 block|}
