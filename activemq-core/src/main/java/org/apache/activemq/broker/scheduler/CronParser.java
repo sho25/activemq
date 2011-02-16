@@ -248,7 +248,7 @@ name|entries
 operator|.
 name|get
 argument_list|(
-name|DAY_OF_MONTH
+name|DAY_OF_WEEK
 argument_list|)
 decl_stmt|;
 name|int
@@ -493,7 +493,7 @@ name|getNext
 argument_list|(
 name|dayOfMonth
 argument_list|,
-name|currentMonth
+name|currentDayOfMonth
 argument_list|)
 decl_stmt|;
 name|working
