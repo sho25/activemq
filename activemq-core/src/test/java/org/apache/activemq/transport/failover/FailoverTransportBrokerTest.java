@@ -806,7 +806,7 @@ condition|(
 name|count
 operator|++
 operator|<
-literal|5
+literal|20
 operator|&&
 name|info
 index|[
@@ -826,6 +826,16 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+name|assertNotNull
+argument_list|(
+literal|"got a valid brokerInfo after 20 secs"
+argument_list|,
+name|info
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
 name|assertNull
 argument_list|(
 literal|"no peer brokers present"
