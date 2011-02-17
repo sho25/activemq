@@ -1266,6 +1266,16 @@ name|forceRecoverIndex
 argument_list|)
 expr_stmt|;
 block|}
+comment|//  for testing
+specifier|public
+name|KahaDBStore
+name|getStore
+parameter_list|()
+block|{
+return|return
+name|letter
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
