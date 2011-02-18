@@ -739,6 +739,15 @@ name|Object
 name|command
 parameter_list|)
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Got command: "
+operator|+
+name|command
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|command
