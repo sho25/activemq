@@ -202,6 +202,9 @@ decl_stmt|;
 name|JmsProducer
 name|producer
 init|=
+operator|(
+name|JmsProducer
+operator|)
 name|endpoint
 operator|.
 name|createProducer
@@ -265,6 +268,9 @@ decl_stmt|;
 name|JmsProducer
 name|producer
 init|=
+operator|(
+name|JmsProducer
+operator|)
 name|endpoint
 operator|.
 name|createProducer
@@ -343,6 +349,9 @@ decl_stmt|;
 name|JmsProducer
 name|producer
 init|=
+operator|(
+name|JmsProducer
+operator|)
 name|endpoint
 operator|.
 name|createProducer
