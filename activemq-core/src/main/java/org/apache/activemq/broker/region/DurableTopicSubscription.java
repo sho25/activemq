@@ -904,7 +904,7 @@ block|}
 block|}
 synchronized|synchronized
 init|(
-name|pending
+name|pendingLock
 init|)
 block|{
 name|pending

@@ -1067,12 +1067,14 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" M, "
+literal|" M,"
+operator|+
+literal|" "
 operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
-literal|" D "
+literal|" D"
 operator|+
 literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
 operator|+
@@ -1080,9 +1082,9 @@ literal|" AND M.CONTAINER=D.CONTAINER"
 operator|+
 literal|" AND M.PRIORITY=D.PRIORITY AND M.ID> D.LAST_ACKED_ID"
 operator|+
-literal|" AND ( (M.ID> ?) OR (M.PRIORITY< ?) )"
+literal|" AND M.ID> ? AND M.PRIORITY = ?"
 operator|+
-literal|" ORDER BY M.PRIORITY DESC, M.ID"
+literal|" ORDER BY M.ID"
 expr_stmt|;
 block|}
 return|return

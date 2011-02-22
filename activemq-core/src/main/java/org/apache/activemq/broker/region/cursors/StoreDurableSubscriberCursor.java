@@ -904,7 +904,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// cache can be come high priority cache for immediate dispatch
+comment|// cache can become high priority cache for immediate dispatch
 specifier|final
 name|int
 name|priority
@@ -928,7 +928,8 @@ operator|&&
 operator|!
 name|tsp
 operator|.
-name|cacheEnabled
+name|isCacheEnabled
+argument_list|()
 condition|)
 block|{
 if|if
@@ -968,9 +969,10 @@ expr_stmt|;
 block|}
 name|tsp
 operator|.
-name|cacheEnabled
-operator|=
+name|setCacheEnabled
+argument_list|(
 literal|true
+argument_list|)
 expr_stmt|;
 name|cacheCurrentLowestPriority
 operator|=
@@ -1026,9 +1028,10 @@ expr_stmt|;
 block|}
 name|tsp
 operator|.
-name|cacheEnabled
-operator|=
+name|setCacheEnabled
+argument_list|(
 literal|false
+argument_list|)
 expr_stmt|;
 name|cacheCurrentLowestPriority
 operator|=

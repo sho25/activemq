@@ -1257,11 +1257,12 @@ name|boolean
 name|isCacheEnabled
 parameter_list|()
 block|{
+name|boolean
 name|cacheEnabled
-operator|=
+init|=
 name|isUseCache
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|cacheEnabled
@@ -1297,6 +1298,11 @@ name|isCacheEnabled
 argument_list|()
 expr_stmt|;
 block|}
+name|setCacheEnabled
+argument_list|(
+name|cacheEnabled
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 name|cacheEnabled

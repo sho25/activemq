@@ -455,7 +455,7 @@ specifier|final
 name|SystemUsage
 name|usageManager
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|final
 name|Object
 name|pendingLock

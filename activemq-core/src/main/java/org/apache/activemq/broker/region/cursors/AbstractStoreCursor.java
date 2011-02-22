@@ -298,14 +298,15 @@ name|size
 operator|>
 literal|0
 expr_stmt|;
-name|cacheEnabled
-operator|=
+name|setCacheEnabled
+argument_list|(
 operator|!
 name|this
 operator|.
 name|storeHasMessages
 operator|&&
 name|useCache
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -459,15 +460,9 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-name|regionDestination
-operator|.
-name|getActiveMQDestination
-argument_list|()
-operator|.
-name|getPhysicalName
-argument_list|()
+name|this
 operator|+
-literal|" cursor got duplicate: "
+literal|" - cursor got duplicate: "
 operator|+
 name|message
 operator|.
@@ -518,7 +513,9 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to fill batch"
+name|this
+operator|+
+literal|" - Failed to fill batch"
 argument_list|,
 name|e
 argument_list|)
@@ -654,7 +651,9 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to fill batch"
+name|this
+operator|+
+literal|" - Failed to fill batch"
 argument_list|,
 name|e
 argument_list|)
@@ -762,7 +761,8 @@ block|{
 if|if
 condition|(
 operator|!
-name|cacheEnabled
+name|isCacheEnabled
+argument_list|()
 operator|&&
 name|size
 operator|==
@@ -786,15 +786,9 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-name|regionDestination
-operator|.
-name|getActiveMQDestination
-argument_list|()
-operator|.
-name|getPhysicalName
-argument_list|()
+name|this
 operator|+
-literal|" enabling cache for empty store "
+literal|" - enabling cache for empty store "
 operator|+
 name|node
 operator|.
@@ -803,14 +797,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|cacheEnabled
-operator|=
+name|setCacheEnabled
+argument_list|(
 literal|true
+argument_list|)
 expr_stmt|;
 block|}
 if|if
 condition|(
-name|cacheEnabled
+name|isCacheEnabled
+argument_list|()
 condition|)
 block|{
 name|recoverMessage
@@ -835,12 +831,14 @@ block|}
 elseif|else
 if|if
 condition|(
-name|cacheEnabled
+name|isCacheEnabled
+argument_list|()
 condition|)
 block|{
-name|cacheEnabled
-operator|=
+name|setCacheEnabled
+argument_list|(
 literal|false
+argument_list|)
 expr_stmt|;
 comment|// sync with store on disabling the cache
 if|if
@@ -862,17 +860,9 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-name|regionDestination
-operator|.
-name|getActiveMQDestination
-argument_list|()
-operator|.
-name|getPhysicalName
-argument_list|()
+name|this
 operator|+
-literal|" disabling cache on size:"
-operator|+
-name|size
+literal|" - disabling cache"
 operator|+
 literal|", lastCachedId: "
 operator|+
@@ -930,9 +920,10 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|cacheEnabled
-operator|=
+name|setCacheEnabled
+argument_list|(
 literal|false
+argument_list|)
 expr_stmt|;
 name|size
 operator|++
@@ -988,9 +979,10 @@ block|{
 name|size
 operator|--
 expr_stmt|;
-name|cacheEnabled
-operator|=
+name|setCacheEnabled
+argument_list|(
 literal|false
+argument_list|)
 expr_stmt|;
 name|batchList
 operator|.
@@ -1073,11 +1065,10 @@ name|batchResetNeeded
 operator|=
 literal|true
 expr_stmt|;
-name|this
-operator|.
-name|cacheEnabled
-operator|=
+name|setCacheEnabled
+argument_list|(
 literal|false
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -1117,27 +1108,9 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"fillBatch - batchResetNeeded="
-operator|+
-name|batchResetNeeded
-operator|+
-literal|", hasMessages="
-operator|+
 name|this
-operator|.
-name|storeHasMessages
 operator|+
-literal|", size="
-operator|+
-name|this
-operator|.
-name|size
-operator|+
-literal|", cacheEnabled="
-operator|+
-name|this
-operator|.
-name|cacheEnabled
+literal|" - fillBatch"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1198,7 +1171,9 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to fill batch"
+name|this
+operator|+
+literal|" - Failed to fill batch"
 argument_list|,
 name|e
 argument_list|)
@@ -1287,6 +1262,42 @@ expr_stmt|;
 block|}
 return|return
 name|size
+return|;
+block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|regionDestination
+operator|.
+name|getActiveMQDestination
+argument_list|()
+operator|.
+name|getPhysicalName
+argument_list|()
+operator|+
+literal|",batchResetNeeded="
+operator|+
+name|batchResetNeeded
+operator|+
+literal|",storeHasMessages="
+operator|+
+name|this
+operator|.
+name|storeHasMessages
+operator|+
+literal|",size="
+operator|+
+name|this
+operator|.
+name|size
+operator|+
+literal|",cacheEnabled="
+operator|+
+name|isCacheEnabled
+argument_list|()
 return|;
 block|}
 specifier|protected

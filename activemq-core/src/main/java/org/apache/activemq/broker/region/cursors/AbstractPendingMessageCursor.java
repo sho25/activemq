@@ -253,7 +253,7 @@ name|useCache
 init|=
 literal|true
 decl_stmt|;
-specifier|protected
+specifier|private
 name|boolean
 name|cacheEnabled
 init|=
@@ -1072,6 +1072,7 @@ name|result
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|boolean
 name|isCacheEnabled
 parameter_list|()
@@ -1079,6 +1080,20 @@ block|{
 return|return
 name|cacheEnabled
 return|;
+block|}
+specifier|public
+specifier|synchronized
+name|void
+name|setCacheEnabled
+parameter_list|(
+name|boolean
+name|val
+parameter_list|)
+block|{
+name|cacheEnabled
+operator|=
+name|val
+expr_stmt|;
 block|}
 block|}
 end_class
