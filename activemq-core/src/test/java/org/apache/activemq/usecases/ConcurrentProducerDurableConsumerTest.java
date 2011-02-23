@@ -520,10 +520,7 @@ name|PersistenceAdapterChoice
 operator|.
 name|KahaDB
 block|,
-name|PersistenceAdapterChoice
-operator|.
-name|JDBC
-block|,
+comment|/* too slow for hudson - PersistenceAdapterChoice.JDBC,*/
 name|PersistenceAdapterChoice
 operator|.
 name|MEM
