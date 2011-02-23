@@ -418,6 +418,13 @@ name|JDBCPersistenceAdapter
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|answer
+operator|.
+name|setDeleteAllMessagesOnStartup
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 return|return
 name|answer
 return|;
