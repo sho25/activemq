@@ -456,6 +456,9 @@ expr_stmt|;
 name|incThroughput
 argument_list|()
 expr_stmt|;
+name|sleep
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|// Send to only one actual destination
@@ -487,6 +490,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|incThroughput
+argument_list|()
+expr_stmt|;
+name|sleep
 argument_list|()
 expr_stmt|;
 block|}
@@ -562,6 +568,9 @@ expr_stmt|;
 name|incThroughput
 argument_list|()
 expr_stmt|;
+name|sleep
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|// Send to only one actual destination
@@ -599,6 +608,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|incThroughput
+argument_list|()
+expr_stmt|;
+name|sleep
 argument_list|()
 expr_stmt|;
 block|}
@@ -776,6 +788,9 @@ expr_stmt|;
 name|incThroughput
 argument_list|()
 expr_stmt|;
+name|sleep
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|// Send to only one actual destination
@@ -802,6 +817,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|incThroughput
+argument_list|()
+expr_stmt|;
+name|sleep
 argument_list|()
 expr_stmt|;
 block|}
@@ -878,6 +896,9 @@ expr_stmt|;
 name|incThroughput
 argument_list|()
 expr_stmt|;
+name|sleep
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|// Send to only one actual destination
@@ -911,6 +932,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|incThroughput
+argument_list|()
+expr_stmt|;
+name|sleep
 argument_list|()
 expr_stmt|;
 block|}
@@ -1322,6 +1346,71 @@ argument_list|(
 name|data
 argument_list|)
 return|;
+block|}
+specifier|protected
+name|void
+name|sleep
+parameter_list|()
+block|{
+if|if
+condition|(
+name|client
+operator|.
+name|getSendDelay
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+try|try
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Sleeping for "
+operator|+
+name|client
+operator|.
+name|getSendDelay
+argument_list|()
+operator|+
+literal|" milliseconds"
+argument_list|)
+expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+name|client
+operator|.
+name|getSendDelay
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|java
+operator|.
+name|lang
+operator|.
+name|InterruptedException
+name|ex
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+name|ex
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 end_class

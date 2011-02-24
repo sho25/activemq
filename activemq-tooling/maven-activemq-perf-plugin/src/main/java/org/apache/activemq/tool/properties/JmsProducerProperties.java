@@ -98,6 +98,13 @@ name|sendType
 init|=
 name|TIME_BASED_SENDING
 decl_stmt|;
+specifier|protected
+name|long
+name|sendDelay
+init|=
+literal|0
+decl_stmt|;
+comment|// delay in milliseconds between each producer send
 comment|// If true, create a different message on each send, otherwise reuse.
 specifier|protected
 name|boolean
@@ -246,6 +253,32 @@ name|createNewMsg
 operator|=
 name|createNewMsg
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setSendDelay
+parameter_list|(
+name|long
+name|delay
+parameter_list|)
+block|{
+name|this
+operator|.
+name|sendDelay
+operator|=
+name|delay
+expr_stmt|;
+block|}
+specifier|public
+name|long
+name|getSendDelay
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|sendDelay
+return|;
 block|}
 block|}
 end_class

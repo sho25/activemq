@@ -80,6 +80,13 @@ literal|1000
 decl_stmt|;
 comment|// Receive for 5 mins by default
 specifier|protected
+name|long
+name|recvDelay
+init|=
+literal|0
+decl_stmt|;
+comment|// delay in milliseconds for processing received msg
+specifier|protected
 name|String
 name|recvType
 init|=
@@ -228,6 +235,32 @@ name|recvType
 operator|=
 name|recvType
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setRecvDelay
+parameter_list|(
+name|long
+name|delay
+parameter_list|)
+block|{
+name|this
+operator|.
+name|recvDelay
+operator|=
+name|delay
+expr_stmt|;
+block|}
+specifier|public
+name|long
+name|getRecvDelay
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|recvDelay
+return|;
 block|}
 block|}
 end_class
