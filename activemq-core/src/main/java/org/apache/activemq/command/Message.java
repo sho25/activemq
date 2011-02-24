@@ -151,6 +151,22 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|RegionBroker
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|usage
 operator|.
 name|MemoryUsage
@@ -228,7 +244,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents an ActiveMQ message  *   * @openwire:marshaller  *   */
+comment|/**  * Represents an ActiveMQ message  *  * @openwire:marshaller  *  */
 end_comment
 
 begin_class
@@ -601,6 +617,18 @@ name|Object
 argument_list|>
 argument_list|(
 name|properties
+argument_list|)
+expr_stmt|;
+comment|// The new message hasn't expired, so remove this feild.
+name|copy
+operator|.
+name|properties
+operator|.
+name|remove
+argument_list|(
+name|RegionBroker
+operator|.
+name|ORIGINAL_EXPIRATION
 argument_list|)
 expr_stmt|;
 block|}
@@ -1533,7 +1561,7 @@ operator|=
 name|data
 expr_stmt|;
 block|}
-comment|/**      * Can be used to route the message to a specific consumer. Should be null      * to allow the broker use normal JMS routing semantics. If the target      * consumer id is an active consumer on the broker, the message is dropped.      * Used by the AdvisoryBroker to replay advisory messages to a specific      * consumer.      *       * @openwire:property version=1 cache=true      */
+comment|/**      * Can be used to route the message to a specific consumer. Should be null      * to allow the broker use normal JMS routing semantics. If the target      * consumer id is an active consumer on the broker, the message is dropped.      * Used by the AdvisoryBroker to replay advisory messages to a specific      * consumer.      *      * @openwire:property version=1 cache=true      */
 specifier|public
 name|ConsumerId
 name|getTargetConsumerId
@@ -1715,7 +1743,7 @@ operator|=
 name|deliveryCounter
 expr_stmt|;
 block|}
-comment|/**      * The route of brokers the command has moved through.      *       * @openwire:property version=1 cache=true      */
+comment|/**      * The route of brokers the command has moved through.      *      * @openwire:property version=1 cache=true      */
 specifier|public
 name|BrokerId
 index|[]
@@ -1816,7 +1844,7 @@ operator|=
 name|connection
 expr_stmt|;
 block|}
-comment|/**      * Used to schedule the arrival time of a message to a broker. The broker      * will not dispatch a message to a consumer until it's arrival time has      * elapsed.      *       * @openwire:property version=1      */
+comment|/**      * Used to schedule the arrival time of a message to a broker. The broker      * will not dispatch a message to a consumer until it's arrival time has      * elapsed.      *      * @openwire:property version=1      */
 specifier|public
 name|long
 name|getArrival
@@ -1841,7 +1869,7 @@ operator|=
 name|arrival
 expr_stmt|;
 block|}
-comment|/**      * Only set by the broker and defines the userID of the producer connection      * who sent this message. This is an optional field, it needs to be enabled      * on the broker to have this field populated.      *       * @openwire:property version=1      */
+comment|/**      * Only set by the broker and defines the userID of the producer connection      * who sent this message. This is an optional field, it needs to be enabled      * on the broker to have this field populated.      *      * @openwire:property version=1      */
 specifier|public
 name|String
 name|getUserID
@@ -2258,7 +2286,7 @@ operator|=
 name|droppable
 expr_stmt|;
 block|}
-comment|/**      * If a message is stored in multiple nodes on a cluster, all the cluster      * members will be listed here. Otherwise, it will be null.      *       * @openwire:property version=3 cache=true      */
+comment|/**      * If a message is stored in multiple nodes on a cluster, all the cluster      * members will be listed here. Otherwise, it will be null.      *      * @openwire:property version=3 cache=true      */
 specifier|public
 name|BrokerId
 index|[]
