@@ -266,7 +266,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper bean which populates a {@link CamelContext} with ActiveMQ Queue endpoints  *  *   * @org.apache.xbean.XBean  */
+comment|/**  * A helper bean which populates a {@link CamelContext} with ActiveMQ Queue endpoints  *  *  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
@@ -837,7 +837,13 @@ argument_list|)
 decl_stmt|;
 comment|// lur cache of endpoints so they will disappear in time
 comment|// this feature needs a new component api - list available endpoints
-comment|//camelContext.removeEndpoints(queueUri);
+name|camelContext
+operator|.
+name|removeEndpoints
+argument_list|(
+name|queueUri
+argument_list|)
+expr_stmt|;
 block|}
 specifier|protected
 name|void
@@ -933,7 +939,13 @@ argument_list|)
 decl_stmt|;
 comment|// lur cache of endpoints so they will disappear in time
 comment|// this feature needs a new component api - list available endpoints
-comment|//camelContext.removeEndpoints(topicUri);
+name|camelContext
+operator|.
+name|removeEndpoints
+argument_list|(
+name|topicUri
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
