@@ -367,7 +367,7 @@ argument_list|(
 literal|true
 argument_list|)
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|final
 name|AtomicBoolean
 name|stopping
