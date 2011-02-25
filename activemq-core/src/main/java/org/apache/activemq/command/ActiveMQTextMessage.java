@@ -226,7 +226,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @openwire:marshaller code="28"  *   */
+comment|/**  * @openwire:marshaller code="28"  *  */
 end_comment
 
 begin_class
@@ -428,6 +428,11 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+name|setCompressed
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 catch|catch
@@ -610,7 +615,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/**      * Clears out the message body. Clearing a message's body does not clear its      * header values or property entries.<p/>      *<P>      * If this message body was read-only, calling this method leaves the      * message body in the same state as an empty body in a newly created      * message.      *       * @throws JMSException if the JMS provider fails to clear the message body      *                 due to some internal error.      */
+comment|/**      * Clears out the message body. Clearing a message's body does not clear its      * header values or property entries.<p/>      *<P>      * If this message body was read-only, calling this method leaves the      * message body in the same state as an empty body in a newly created      * message.      *      * @throws JMSException if the JMS provider fails to clear the message body      *                 due to some internal error.      */
 specifier|public
 name|void
 name|clearBody
