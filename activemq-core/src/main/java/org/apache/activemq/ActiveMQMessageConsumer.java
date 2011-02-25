@@ -5529,7 +5529,7 @@ argument_list|(
 name|getConsumerId
 argument_list|()
 operator|+
-literal|" tracking transacted redlivery of duplicate: "
+literal|" tracking transacted redelivery of duplicate: "
 operator|+
 name|md
 operator|.
