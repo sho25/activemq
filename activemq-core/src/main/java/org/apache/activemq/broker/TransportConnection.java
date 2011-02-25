@@ -4432,11 +4432,32 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to add Connection"
+literal|"Failed to add Connection, reason: "
+operator|+
+name|e
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Failure detail"
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 throw|throw
 name|e
 throw|;
