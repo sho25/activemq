@@ -272,7 +272,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  *   */
+comment|/**  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  *  */
 end_comment
 
 begin_class
@@ -418,7 +418,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Allows subclasses of TcpTransportFactory to create custom instances of      * TcpTransportServer.      *       * @param location      * @param serverSocketFactory      * @return      * @throws IOException      * @throws URISyntaxException      */
+comment|/**      * Allows subclasses of TcpTransportFactory to create custom instances of      * TcpTransportServer.      *      * @param location      * @param serverSocketFactory      * @return      * @throws IOException      * @throws URISyntaxException      */
 specifier|protected
 name|TcpTransportServer
 name|createTcpTransportServer
@@ -786,8 +786,29 @@ argument_list|(
 literal|"path isn't a valid local location for TcpTransport to use"
 argument_list|,
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Failure detail"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 name|SocketFactory
@@ -809,7 +830,7 @@ name|localLocation
 argument_list|)
 return|;
 block|}
-comment|/**      * Allows subclasses of TcpTransportFactory to provide a create custom      * TcpTransport intances.      *       * @param location      * @param wf      * @param socketFactory      * @param localLocation      * @return      * @throws UnknownHostException      * @throws IOException      */
+comment|/**      * Allows subclasses of TcpTransportFactory to provide a create custom      * TcpTransport intances.      *      * @param location      * @param wf      * @param socketFactory      * @param localLocation      * @return      * @throws UnknownHostException      * @throws IOException      */
 specifier|protected
 name|TcpTransport
 name|createTcpTransport
