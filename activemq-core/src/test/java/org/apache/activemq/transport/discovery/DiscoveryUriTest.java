@@ -177,7 +177,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"discovery:(multicast://default?group=test)?reconnectDelay=1000&maxReconnectAttempts=30&useExponentialBackOff=false"
+literal|"discovery:(multicast://default?group=test&reconnectDelay=1000&maxReconnectAttempts=30&useExponentialBackOff=false)"
 argument_list|)
 decl_stmt|;
 name|Connection
