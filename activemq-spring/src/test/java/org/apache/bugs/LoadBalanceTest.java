@@ -517,6 +517,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|network1
+operator|.
+name|setDispatchAsync
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|brokerService1
 operator|.
 name|start
@@ -609,6 +616,13 @@ expr_stmt|;
 name|network2
 operator|.
 name|setDecreaseNetworkConsumerPriority
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|network2
+operator|.
+name|setDispatchAsync
 argument_list|(
 literal|false
 argument_list|)
