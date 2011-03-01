@@ -788,6 +788,11 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+name|remoteBroker
+operator|.
+name|waitUntilStopped
+argument_list|()
+expr_stmt|;
 name|remotePersistenceAdapter
 operator|.
 name|stop
