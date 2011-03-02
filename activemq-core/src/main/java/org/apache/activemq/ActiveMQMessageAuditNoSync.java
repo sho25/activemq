@@ -889,6 +889,17 @@ return|return
 name|result
 return|;
 block|}
+specifier|public
+name|void
+name|clear
+parameter_list|()
+block|{
+name|map
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 
