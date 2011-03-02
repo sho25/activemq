@@ -367,6 +367,8 @@ argument_list|(
 name|fanoutTransport
 argument_list|,
 name|compositeData
+argument_list|,
+name|parameters
 argument_list|)
 decl_stmt|;
 return|return

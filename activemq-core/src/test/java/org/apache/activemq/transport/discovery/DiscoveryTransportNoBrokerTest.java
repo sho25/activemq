@@ -761,6 +761,11 @@ argument_list|(
 name|compositeTransport
 argument_list|,
 name|compositeData
+argument_list|,
+name|compositeData
+operator|.
+name|getParameters
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|discoveryTransport
@@ -885,6 +890,11 @@ argument_list|(
 name|compositeTransport
 argument_list|,
 name|compositeData
+argument_list|,
+name|compositeData
+operator|.
+name|getParameters
+argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|final
