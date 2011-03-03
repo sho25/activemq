@@ -29,35 +29,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|BrokerService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|BrokerServiceAware
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|ProducerBrokerExchange
+name|*
 import|;
 end_import
 
@@ -457,6 +429,20 @@ expr_stmt|;
 block|}
 block|}
 block|}
+specifier|public
+name|void
+name|create
+parameter_list|(
+name|Broker
+name|broker
+parameter_list|,
+name|ConnectionContext
+name|context
+parameter_list|,
+name|ActiveMQDestination
+name|destination
+parameter_list|)
+block|{}
 comment|// Properties
 comment|// -------------------------------------------------------------------------
 specifier|public

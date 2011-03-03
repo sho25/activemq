@@ -443,10 +443,9 @@ literal|false
 argument_list|,
 literal|1
 argument_list|,
-literal|2
+literal|1
 argument_list|)
 expr_stmt|;
-comment|// duplicates due to wildcard queue pre-created
 name|sendReceive
 argument_list|(
 literal|"Consumer.a.global.test.>"
@@ -474,10 +473,9 @@ literal|false
 argument_list|,
 literal|1
 argument_list|,
-literal|2
+literal|1
 argument_list|)
 expr_stmt|;
-comment|// duplicates due to wildcard queue pre-created
 name|destroyAllBrokers
 argument_list|()
 expr_stmt|;
@@ -641,29 +639,6 @@ argument_list|(
 name|uri
 argument_list|)
 decl_stmt|;
-comment|// without this  testVirtualDestinationsWithWildcardWithoutIndividualVirtualQueue will fail
-name|broker
-operator|.
-name|setDestinations
-argument_list|(
-operator|new
-name|ActiveMQDestination
-index|[]
-block|{
-operator|new
-name|ActiveMQQueue
-argument_list|(
-literal|"Consumer.a.local.test.1"
-argument_list|)
-block|,
-operator|new
-name|ActiveMQQueue
-argument_list|(
-literal|"Consumer.a.global.test.1"
-argument_list|)
-block|}
-argument_list|)
-expr_stmt|;
 name|configurePersistenceAdapter
 argument_list|(
 name|broker

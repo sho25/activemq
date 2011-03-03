@@ -1280,6 +1280,11 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|broker
+operator|.
+name|waitUntilStarted
+argument_list|()
+expr_stmt|;
 block|}
 name|Thread
 operator|.

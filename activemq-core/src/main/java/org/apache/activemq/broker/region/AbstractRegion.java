@@ -935,6 +935,18 @@ argument_list|,
 name|dest
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|dest
+operator|.
+name|getActiveMQDestination
+argument_list|()
+operator|.
+name|isPattern
+argument_list|()
+condition|)
+block|{
 name|addSubscriptionsForDestination
 argument_list|(
 name|context
@@ -942,6 +954,7 @@ argument_list|,
 name|dest
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
