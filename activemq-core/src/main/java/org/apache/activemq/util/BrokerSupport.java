@@ -276,6 +276,13 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+name|message
+operator|.
+name|setRedeliveryCounter
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
 name|boolean
 name|originalFlowControl
 init|=

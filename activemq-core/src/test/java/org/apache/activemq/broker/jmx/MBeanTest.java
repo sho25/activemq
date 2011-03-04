@@ -1790,18 +1790,6 @@ name|getMemoryPercentUsage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"dlq still has memory usage"
-argument_list|,
-name|dlqMemUsage
-argument_list|,
-name|dlq
-operator|.
-name|getMemoryPercentUsage
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 specifier|public
 name|void

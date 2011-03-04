@@ -529,7 +529,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|""
+name|this
+operator|+
+literal|" "
 operator|+
 operator|(
 name|now
@@ -675,7 +677,9 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"No message sent since last write check, sending a KeepAliveInfo"
+name|this
+operator|+
+literal|" no message sent since last write check, sending a KeepAliveInfo"
 argument_list|)
 expr_stmt|;
 block|}
@@ -755,7 +759,9 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Message sent since last write check, resetting flag"
+name|this
+operator|+
+literal|" message sent since last write check, resetting flag"
 argument_list|)
 expr_stmt|;
 block|}
