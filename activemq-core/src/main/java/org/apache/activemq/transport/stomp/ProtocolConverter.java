@@ -1507,13 +1507,36 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Exception occured processing: \n"
+literal|"Exception occurred processing: \n"
 operator|+
 name|command
+operator|+
+literal|": "
+operator|+
+name|exception
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Exception detail"
 argument_list|,
 name|exception
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Let the stomp client know about any protocol errors.
 name|ByteArrayOutputStream
 name|baos

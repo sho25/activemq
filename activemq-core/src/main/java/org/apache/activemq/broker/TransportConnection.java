@@ -4452,7 +4452,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Failure detail"
+literal|"Exception detail:"
 argument_list|,
 name|e
 argument_list|)
