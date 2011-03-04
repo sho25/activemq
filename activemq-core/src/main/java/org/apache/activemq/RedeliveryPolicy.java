@@ -34,7 +34,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Configuration options used to control how messages are re-delivered when they  * are rolled back.  *   * @org.apache.xbean.XBean element="redeliveryPolicy"  *   */
+comment|/**  * Configuration options used to control how messages are re-delivered when they  * are rolled back.  *  * @org.apache.xbean.XBean element="redeliveryPolicy"  *  */
 end_comment
 
 begin_class
@@ -72,6 +72,13 @@ name|int
 name|maximumRedeliveries
 init|=
 literal|6
+decl_stmt|;
+specifier|private
+name|long
+name|maximumRedeliveryDelay
+init|=
+operator|-
+literal|1
 decl_stmt|;
 specifier|private
 name|long
@@ -222,6 +229,30 @@ name|initialRedeliveryDelay
 expr_stmt|;
 block|}
 specifier|public
+name|long
+name|getMaximumRedeliveryDelay
+parameter_list|()
+block|{
+return|return
+name|maximumRedeliveryDelay
+return|;
+block|}
+specifier|public
+name|void
+name|setMaximumRedeliveryDelay
+parameter_list|(
+name|long
+name|maximumRedeliveryDelay
+parameter_list|)
+block|{
+name|this
+operator|.
+name|maximumRedeliveryDelay
+operator|=
+name|maximumRedeliveryDelay
+expr_stmt|;
+block|}
+specifier|public
 name|int
 name|getMaximumRedeliveries
 parameter_list|()
@@ -289,6 +320,31 @@ operator|*
 name|backOffMultiplier
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|maximumRedeliveryDelay
+operator|!=
+operator|-
+literal|1
+operator|&&
+name|nextDelay
+operator|>
+name|maximumRedeliveryDelay
+condition|)
+block|{
+comment|// in case the user made max redelivery delay less than redelivery delay for some reason.
+name|nextDelay
+operator|=
+name|Math
+operator|.
+name|max
+argument_list|(
+name|maximumRedeliveryDelay
+argument_list|,
+name|redeliveryDelay
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
