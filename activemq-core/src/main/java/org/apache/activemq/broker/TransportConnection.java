@@ -4421,18 +4421,42 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+synchronized|synchronized
+init|(
+name|brokerConnectionStates
+init|)
+block|{
 name|brokerConnectionStates
 operator|.
 name|remove
 argument_list|(
 name|info
+operator|.
+name|getConnectionId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+name|unregisterConnectionState
+argument_list|(
+name|info
+operator|.
+name|getConnectionId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to add Connection, reason: "
+literal|"Failed to add Connection "
+operator|+
+name|info
+operator|.
+name|getConnectionId
+argument_list|()
+operator|+
+literal|", reason: "
 operator|+
 name|e
 operator|.
@@ -4723,10 +4747,33 @@ name|cs
 operator|.
 name|getInfo
 argument_list|()
+operator|+
+literal|", reason: "
+operator|+
+name|e
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|SERVICELOG
+operator|.
+name|debug
+argument_list|(
+literal|"Exception detail:"
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|TransportConnectionState
 name|state
