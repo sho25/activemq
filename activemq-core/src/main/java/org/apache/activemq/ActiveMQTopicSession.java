@@ -234,7 +234,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A TopicSession implementation that throws IllegalStateExceptions when Queue  * operations are attempted but which delegates to another TopicSession for all  * other operations. The ActiveMQSessions implement both Topic and Queue  * Sessions methods but the spec states that TopicSession should throw  * Exceptions if queue operations are attempted on it.  *   *   */
+comment|/**  * A TopicSession implementation that throws IllegalStateExceptions when Queue  * operations are attempted but which delegates to another TopicSession for all  * other operations. The ActiveMQSessions implement both Topic and Queue  * Sessions methods but the spec states that TopicSession should throw  * Exceptions if queue operations are attempted on it.  *  *  */
 end_comment
 
 begin_class
@@ -817,7 +817,7 @@ name|topicName
 argument_list|)
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see java.lang.Object#equals(java.lang.Object)      */
+comment|/*      * (non-Javadoc)      *      * @see java.lang.Object#equals(java.lang.Object)      */
 specifier|public
 name|boolean
 name|equals
@@ -826,6 +826,13 @@ name|Object
 name|arg0
 parameter_list|)
 block|{
+if|if
+condition|(
+name|this
+operator|!=
+name|arg0
+condition|)
+block|{
 return|return
 name|next
 operator|.
@@ -833,6 +840,10 @@ name|equals
 argument_list|(
 name|arg0
 argument_list|)
+return|;
+block|}
+return|return
+literal|true
 return|;
 block|}
 comment|/**      * @return      * @throws JMSException      */
@@ -880,7 +891,7 @@ name|getTransacted
 argument_list|()
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see java.lang.Object#hashCode()      */
+comment|/*      * (non-Javadoc)      *      * @see java.lang.Object#hashCode()      */
 specifier|public
 name|int
 name|hashCode
@@ -921,7 +932,7 @@ name|rollback
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      *       */
+comment|/**      *      */
 specifier|public
 name|void
 name|run
@@ -952,7 +963,7 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see java.lang.Object#toString()      */
+comment|/*      * (non-Javadoc)      *      * @see java.lang.Object#toString()      */
 specifier|public
 name|String
 name|toString
