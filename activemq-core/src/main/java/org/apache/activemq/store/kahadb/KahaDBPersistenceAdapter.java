@@ -1294,7 +1294,7 @@ condition|?
 name|getDirectory
 argument_list|()
 operator|.
-name|toString
+name|getAbsolutePath
 argument_list|()
 else|:
 literal|"DIRECTORY_NOT_SET"

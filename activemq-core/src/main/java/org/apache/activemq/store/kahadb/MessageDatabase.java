@@ -6780,6 +6780,15 @@ argument_list|,
 name|tx
 argument_list|)
 decl_stmt|;
+specifier|final
+name|String
+name|subscriptionKey
+init|=
+name|command
+operator|.
+name|getSubscriptionKey
+argument_list|()
+decl_stmt|;
 comment|// If set then we are creating it.. otherwise we are destroying the sub
 if|if
 condition|(
@@ -6789,14 +6798,6 @@ name|hasSubscriptionInfo
 argument_list|()
 condition|)
 block|{
-name|String
-name|subscriptionKey
-init|=
-name|command
-operator|.
-name|getSubscriptionKey
-argument_list|()
-decl_stmt|;
 name|sd
 operator|.
 name|subscriptions
@@ -6870,14 +6871,6 @@ block|}
 else|else
 block|{
 comment|// delete the sub...
-name|String
-name|subscriptionKey
-init|=
-name|command
-operator|.
-name|getSubscriptionKey
-argument_list|()
-decl_stmt|;
 name|sd
 operator|.
 name|subscriptions
@@ -10478,6 +10471,23 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+comment|// update
+name|sd
+operator|.
+name|ackPositions
+operator|.
+name|put
+argument_list|(
+name|tx
+argument_list|,
+name|sequenceId
+argument_list|,
+name|hs
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
