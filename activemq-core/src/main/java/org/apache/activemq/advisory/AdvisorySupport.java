@@ -447,10 +447,16 @@ operator|new
 name|ActiveMQTopic
 argument_list|(
 name|TEMP_QUEUE_ADVISORY_TOPIC
+operator|.
+name|getPhysicalName
+argument_list|()
 operator|+
 literal|","
 operator|+
 name|TEMP_TOPIC_ADVISORY_TOPIC
+operator|.
+name|getPhysicalName
+argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|private
