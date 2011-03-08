@@ -286,7 +286,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|3000
+literal|5000
 argument_list|)
 expr_stmt|;
 name|Set
@@ -367,7 +367,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|3000
+literal|5000
 argument_list|)
 expr_stmt|;
 name|Set
