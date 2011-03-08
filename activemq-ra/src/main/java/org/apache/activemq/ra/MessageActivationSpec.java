@@ -314,6 +314,10 @@ name|getBackOffMultiplier
 parameter_list|()
 function_decl|;
 name|long
+name|getMaximumRedeliveryDelay
+parameter_list|()
+function_decl|;
+name|long
 name|getInitialRedeliveryDelay
 parameter_list|()
 function_decl|;

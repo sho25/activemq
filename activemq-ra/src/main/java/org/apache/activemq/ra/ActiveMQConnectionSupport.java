@@ -647,6 +647,54 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @return initial redelivery delay      */
+specifier|public
+name|Long
+name|getMaximumRedeliveryDelay
+parameter_list|()
+block|{
+return|return
+name|info
+operator|.
+name|getMaximumRedeliveryDelay
+argument_list|()
+return|;
+block|}
+comment|/**      * @param value      */
+specifier|public
+name|void
+name|setMaximumRedeliveryDelay
+parameter_list|(
+name|Long
+name|value
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"setting [maximumRedeliveryDelay] to: "
+operator|+
+name|value
+argument_list|)
+expr_stmt|;
+block|}
+name|info
+operator|.
+name|setMaximumRedeliveryDelay
+argument_list|(
+name|value
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * @return input stream prefetch      */
 specifier|public
 name|Integer
