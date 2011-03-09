@@ -736,11 +736,14 @@ return|;
 block|}
 block|}
 argument_list|,
+literal|5
+operator|*
 literal|60
 operator|*
 literal|1000
 argument_list|)
 expr_stmt|;
+comment|// give it plenty of time before failing
 name|assertEquals
 argument_list|(
 literal|"Didn't produce all messages"
