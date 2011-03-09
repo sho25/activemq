@@ -4437,6 +4437,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|unregisterConnectionState
+argument_list|(
+name|info
+operator|.
+name|getConnectionId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|LOG
 operator|.
 name|warn
