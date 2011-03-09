@@ -998,6 +998,25 @@ argument_list|(
 literal|"?"
 argument_list|)
 decl_stmt|;
+comment|// make sure question mark is not within parentheses
+if|if
+condition|(
+name|questionMark
+operator|<
+name|schemeSpecificPart
+operator|.
+name|lastIndexOf
+argument_list|(
+literal|")"
+argument_list|)
+condition|)
+block|{
+name|questionMark
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|questionMark
