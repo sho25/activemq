@@ -1492,6 +1492,28 @@ operator|!
 name|ignoreRemoteWireFormat
 condition|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Using min of local: "
+operator|+
+name|localWireFormatInfo
+operator|+
+literal|" and remote: "
+operator|+
+name|remoteWireFormatInfo
+argument_list|)
+expr_stmt|;
+block|}
 name|readCheckTime
 operator|=
 name|Math
@@ -1529,6 +1551,24 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Using local: "
+operator|+
+name|localWireFormatInfo
+argument_list|)
+expr_stmt|;
+block|}
 name|readCheckTime
 operator|=
 name|localWireFormatInfo
