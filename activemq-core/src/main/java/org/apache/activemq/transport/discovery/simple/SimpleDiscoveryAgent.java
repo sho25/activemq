@@ -45,6 +45,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|SynchronousQueue
@@ -158,6 +168,20 @@ operator|.
 name|discovery
 operator|.
 name|DiscoveryListener
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|MDCHelper
 import|;
 end_import
 
@@ -564,6 +588,15 @@ argument_list|(
 name|event
 argument_list|)
 expr_stmt|;
+specifier|final
+name|Map
+name|context
+init|=
+name|MDCHelper
+operator|.
+name|getCopyOfContextMap
+argument_list|()
+decl_stmt|;
 name|DefaultThreadPools
 operator|.
 name|getDefaultTaskRunnerFactory
@@ -580,6 +613,13 @@ name|void
 name|run
 parameter_list|()
 block|{
+name|MDCHelper
+operator|.
+name|setContextMap
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
 comment|// We detect a failed connection attempt because the service
 comment|// fails right
 comment|// away.

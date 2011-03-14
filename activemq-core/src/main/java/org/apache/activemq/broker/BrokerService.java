@@ -1081,6 +1081,16 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|MDC
+import|;
+end_import
+
 begin_comment
 comment|/**  * Manages the lifecycle of an ActiveMQ Broker. A BrokerService consists of a  * number of transport connectors, network connectors and a bunch of properties  * which can be used to configure the broker as its lazily created.  *   *   * @org.apache.xbean.XBean  */
 end_comment
@@ -2530,6 +2540,15 @@ comment|// mechanisms
 comment|// throw new IllegalStateException("Allready started.");
 return|return;
 block|}
+name|MDC
+operator|.
+name|put
+argument_list|(
+literal|"broker"
+argument_list|,
+name|brokerName
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 if|if
@@ -2878,6 +2897,16 @@ throw|throw
 name|e
 throw|;
 block|}
+finally|finally
+block|{
+name|MDC
+operator|.
+name|remove
+argument_list|(
+literal|"broker"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      *      * @throws Exception      * @org.apache .xbean.DestroyMethod      */
 annotation|@
@@ -2900,6 +2929,15 @@ condition|)
 block|{
 return|return;
 block|}
+name|MDC
+operator|.
+name|put
+argument_list|(
+literal|"broker"
+argument_list|,
+name|brokerName
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|systemExitOnShutdown
@@ -3314,6 +3352,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|MDC
+operator|.
+name|remove
+argument_list|(
+literal|"broker"
+argument_list|)
+expr_stmt|;
 name|stopper
 operator|.
 name|throwFirstException
@@ -9275,6 +9320,15 @@ operator|!=
 literal|null
 condition|)
 block|{
+specifier|final
+name|Map
+name|context
+init|=
+name|MDCHelper
+operator|.
+name|getCopyOfContextMap
+argument_list|()
+decl_stmt|;
 name|networkConnectorStartExecutor
 operator|.
 name|execute
@@ -9290,6 +9344,13 @@ parameter_list|()
 block|{
 try|try
 block|{
+name|MDCHelper
+operator|.
+name|setContextMap
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
 name|LOG
 operator|.
 name|info
