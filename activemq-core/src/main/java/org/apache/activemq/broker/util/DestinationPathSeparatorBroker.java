@@ -190,6 +190,10 @@ block|{
 if|if
 condition|(
 name|destination
+operator|!=
+literal|null
+operator|&&
+name|destination
 operator|.
 name|getPhysicalName
 argument_list|()
