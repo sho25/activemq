@@ -364,6 +364,8 @@ argument_list|(
 name|uri
 argument_list|,
 name|parameters
+argument_list|,
+name|DISCOVERED_OPTION_PREFIX
 argument_list|)
 expr_stmt|;
 name|serviceURIs

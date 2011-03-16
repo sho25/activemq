@@ -968,7 +968,7 @@ block|}
 else|else
 block|{
 comment|// build backups on the next iteration
-name|result
+name|buildBackup
 operator|=
 literal|true
 expr_stmt|;

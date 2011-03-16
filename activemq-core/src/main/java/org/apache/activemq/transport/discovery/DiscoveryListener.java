@@ -40,6 +40,14 @@ specifier|public
 interface|interface
 name|DiscoveryListener
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DISCOVERED_OPTION_PREFIX
+init|=
+literal|"discovered."
+decl_stmt|;
 name|void
 name|onServiceAdd
 parameter_list|(

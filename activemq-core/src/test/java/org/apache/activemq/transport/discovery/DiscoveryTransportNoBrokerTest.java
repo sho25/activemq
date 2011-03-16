@@ -727,6 +727,10 @@ name|URI
 argument_list|(
 literal|"discovery:(multicast://default)?initialReconnectDelay=100&"
 operator|+
+name|DiscoveryListener
+operator|.
+name|DISCOVERED_OPTION_PREFIX
+operator|+
 name|extraParameterName
 operator|+
 literal|"="

@@ -87,8 +87,22 @@ name|TimeUnit
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicLong
+import|;
+end_import
+
 begin_comment
-comment|/**  * Manages the thread pool for long running tasks. Long running tasks are not  * always active but when they are active, they may need a few iterations of  * processing for them to become idle. The manager ensures that each task is  * processes but that no one task overtakes the system. This is kina like  * cooperative multitasking.  *   *   */
+comment|/**  * Manages the thread pool for long running tasks. Long running tasks are not  * always active but when they are active, they may need a few iterations of  * processing for them to become idle. The manager ensures that each task is  * processes but that no one task overtakes the system. This is kinda like  * cooperative multitasking.  *   *   */
 end_comment
 
 begin_class
@@ -117,6 +131,16 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|daemon
+decl_stmt|;
+specifier|private
+name|AtomicLong
+name|id
+init|=
+operator|new
+name|AtomicLong
+argument_list|(
+literal|0
+argument_list|)
 decl_stmt|;
 specifier|public
 name|TaskRunnerFactory
@@ -360,6 +384,13 @@ argument_list|(
 name|runnable
 argument_list|,
 name|name
+operator|+
+literal|"-"
+operator|+
+name|id
+operator|.
+name|incrementAndGet
+argument_list|()
 argument_list|)
 operator|.
 name|start
@@ -418,6 +449,13 @@ argument_list|(
 name|runnable
 argument_list|,
 name|name
+operator|+
+literal|"-"
+operator|+
+name|id
+operator|.
+name|incrementAndGet
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|thread
