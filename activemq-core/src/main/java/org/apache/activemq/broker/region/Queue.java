@@ -759,6 +759,16 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|MDC
+import|;
+end_import
+
 begin_comment
 comment|/**  * The Queue is a List of MessageEntry objects that are dispatched to matching  * subscriptions.  *   *   */
 end_comment
@@ -6854,6 +6864,16 @@ name|boolean
 name|iterate
 parameter_list|()
 block|{
+name|MDC
+operator|.
+name|put
+argument_list|(
+literal|"destination"
+argument_list|,
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|boolean
 name|pageInMoreMessages
 init|=
@@ -7408,6 +7428,13 @@ name|decrementAndGet
 argument_list|()
 expr_stmt|;
 block|}
+name|MDC
+operator|.
+name|remove
+argument_list|(
+literal|"destination"
+argument_list|)
+expr_stmt|;
 return|return
 name|pendingWakeups
 operator|.

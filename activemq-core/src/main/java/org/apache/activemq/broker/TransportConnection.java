@@ -1018,6 +1018,16 @@ import|;
 end_import
 
 begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|MDC
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -2018,6 +2028,21 @@ name|Command
 name|command
 parameter_list|)
 block|{
+name|MDC
+operator|.
+name|put
+argument_list|(
+literal|"connector"
+argument_list|,
+name|connector
+operator|.
+name|getUri
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|Response
 name|response
 init|=
@@ -2184,6 +2209,13 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+name|MDC
+operator|.
+name|remove
+argument_list|(
+literal|"connector"
+argument_list|)
+expr_stmt|;
 return|return
 name|response
 return|;
