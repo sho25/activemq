@@ -397,7 +397,7 @@ name|connection
 operator|.
 name|setClientID
 argument_list|(
-name|toString
+name|createClientId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -417,6 +417,16 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+block|}
+specifier|protected
+name|String
+name|createClientId
+parameter_list|()
+block|{
+return|return
+name|toString
+argument_list|()
+return|;
 block|}
 specifier|protected
 name|void

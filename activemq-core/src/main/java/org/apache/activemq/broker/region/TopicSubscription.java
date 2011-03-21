@@ -1263,6 +1263,8 @@ name|getContext
 argument_list|()
 argument_list|,
 name|node
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 break|break;
@@ -2554,6 +2556,8 @@ name|getContext
 argument_list|()
 argument_list|,
 name|message
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 block|}

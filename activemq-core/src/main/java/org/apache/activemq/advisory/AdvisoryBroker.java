@@ -1740,6 +1740,9 @@ name|context
 parameter_list|,
 name|MessageReference
 name|messageReference
+parameter_list|,
+name|Subscription
+name|subscription
 parameter_list|)
 block|{
 name|super
@@ -1749,6 +1752,8 @@ argument_list|(
 name|context
 argument_list|,
 name|messageReference
+argument_list|,
+name|subscription
 argument_list|)
 expr_stmt|;
 try|try
@@ -2579,6 +2584,9 @@ name|context
 parameter_list|,
 name|MessageReference
 name|messageReference
+parameter_list|,
+name|Subscription
+name|subscription
 parameter_list|)
 block|{
 name|super
@@ -2588,6 +2596,8 @@ argument_list|(
 name|context
 argument_list|,
 name|messageReference
+argument_list|,
+name|subscription
 argument_list|)
 expr_stmt|;
 try|try

@@ -27,6 +27,38 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|MessageReference
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|Subscription
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -64,12 +96,15 @@ name|Message
 name|message
 parameter_list|)
 function_decl|;
-comment|/**      * Returns the dead letter queue for the given destination.      */
+comment|/**      * Returns the dead letter queue for the given message and subscription.      */
 name|ActiveMQDestination
 name|getDeadLetterQueueFor
 parameter_list|(
-name|ActiveMQDestination
-name|originalDestination
+name|Message
+name|message
+parameter_list|,
+name|Subscription
+name|subscription
 parameter_list|)
 function_decl|;
 comment|/**      * @return true if processes expired messages      */

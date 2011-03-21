@@ -650,7 +650,7 @@ name|MessageReference
 name|messageReference
 parameter_list|)
 function_decl|;
-comment|/**      * A Message has Expired      *       * @param context      * @param messageReference      */
+comment|/**      * A Message has Expired      *      * @param context      * @param messageReference      * @param subscription, may be null      */
 name|void
 name|messageExpired
 parameter_list|(
@@ -659,9 +659,12 @@ name|context
 parameter_list|,
 name|MessageReference
 name|messageReference
+parameter_list|,
+name|Subscription
+name|subscription
 parameter_list|)
 function_decl|;
-comment|/**      * A message needs to go the a DLQ      *       * @param context      * @param messageReference      */
+comment|/**      * A message needs to go the a DLQ      *       * @param context      * @param messageReference      * @param subscription, may be null      */
 name|void
 name|sendToDeadLetterQueue
 parameter_list|(
@@ -670,6 +673,9 @@ name|context
 parameter_list|,
 name|MessageReference
 name|messageReference
+parameter_list|,
+name|Subscription
+name|subscription
 parameter_list|)
 function_decl|;
 comment|/**      * @return the broker sequence id      */

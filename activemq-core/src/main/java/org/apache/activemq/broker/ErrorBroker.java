@@ -1395,6 +1395,9 @@ name|context
 parameter_list|,
 name|MessageReference
 name|message
+parameter_list|,
+name|Subscription
+name|subscription
 parameter_list|)
 block|{
 throw|throw
@@ -1416,6 +1419,9 @@ name|context
 parameter_list|,
 name|MessageReference
 name|messageReference
+parameter_list|,
+name|Subscription
+name|subscription
 parameter_list|)
 block|{
 throw|throw

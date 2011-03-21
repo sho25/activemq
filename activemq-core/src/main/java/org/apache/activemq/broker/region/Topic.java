@@ -1648,6 +1648,8 @@ argument_list|(
 name|context
 argument_list|,
 name|message
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|getDestinationStatistics
@@ -1861,6 +1863,8 @@ argument_list|(
 name|context
 argument_list|,
 name|message
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|getDestinationStatistics
@@ -2464,6 +2468,8 @@ argument_list|(
 name|context
 argument_list|,
 name|message
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|message
@@ -3272,6 +3278,8 @@ argument_list|(
 name|context
 argument_list|,
 name|reference
+argument_list|,
+name|subs
 argument_list|)
 expr_stmt|;
 comment|// AMQ-2586: Better to leave this stat at zero than to give the user

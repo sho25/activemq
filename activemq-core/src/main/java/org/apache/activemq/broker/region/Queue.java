@@ -3088,6 +3088,8 @@ argument_list|(
 name|context
 argument_list|,
 name|message
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 if|if
@@ -3331,6 +3333,8 @@ argument_list|(
 name|context
 argument_list|,
 name|message
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|destinationStatistics
@@ -3600,6 +3604,8 @@ argument_list|(
 name|context
 argument_list|,
 name|message
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 return|return;
@@ -3851,6 +3857,8 @@ argument_list|(
 name|context
 argument_list|,
 name|message
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|destinationStatistics
@@ -8009,6 +8017,8 @@ argument_list|(
 name|context
 argument_list|,
 name|reference
+argument_list|,
+name|subs
 argument_list|)
 expr_stmt|;
 name|destinationStatistics

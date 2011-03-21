@@ -4330,6 +4330,9 @@ name|context
 parameter_list|,
 name|MessageReference
 name|node
+parameter_list|,
+name|Subscription
+name|subscription
 parameter_list|)
 block|{
 if|if
@@ -4358,6 +4361,8 @@ argument_list|(
 name|context
 argument_list|,
 name|node
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -4372,6 +4377,9 @@ name|context
 parameter_list|,
 name|MessageReference
 name|node
+parameter_list|,
+name|Subscription
+name|subscription
 parameter_list|)
 block|{
 try|try
@@ -4491,9 +4499,8 @@ operator|.
 name|getDeadLetterQueueFor
 argument_list|(
 name|message
-operator|.
-name|getDestination
-argument_list|()
+argument_list|,
+name|subscription
 argument_list|)
 decl_stmt|;
 if|if
