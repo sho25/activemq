@@ -245,6 +245,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|junit
 operator|.
 name|framework
@@ -254,7 +274,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An AMQ-2401 Test  *   */
+comment|/**  * An AMQ-2401 Test  *  */
 end_comment
 
 begin_class
@@ -304,6 +324,21 @@ name|int
 name|LOG_INTERVAL
 init|=
 literal|10
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|AMQ2401Test
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 specifier|private
 name|ArrayList
@@ -573,7 +608,14 @@ expr_stmt|;
 block|}
 name|waitForMessageReceipt
 argument_list|(
-literal|3000
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|30
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -607,7 +649,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/*      * (non-Javadoc)      *       * @see javax.jms.MessageListener#onMessage(javax.jms.Message)      */
+comment|/*      * (non-Javadoc)      *      * @see javax.jms.MessageListener#onMessage(javax.jms.Message)      */
 specifier|public
 name|void
 name|onMessage
@@ -631,11 +673,9 @@ operator|==
 literal|0
 condition|)
 block|{
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 literal|"Received message "
 operator|+
@@ -646,9 +686,6 @@ block|}
 try|try
 block|{
 name|Thread
-operator|.
-name|currentThread
-argument_list|()
 operator|.
 name|sleep
 argument_list|(
@@ -672,7 +709,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @throws InterruptedException      * @throws TimeoutException      *       */
+comment|/**      * @throws InterruptedException      * @throws TimeoutException      *      */
 specifier|private
 name|void
 name|waitForMessageReceipt
@@ -685,7 +722,6 @@ name|InterruptedException
 throws|,
 name|TimeoutException
 block|{
-comment|// TODO Auto-generated method stub
 if|if
 condition|(
 operator|!
@@ -705,7 +741,19 @@ throw|throw
 operator|new
 name|TimeoutException
 argument_list|(
-literal|"Consumner didn't receive messages"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Consumner didn't receive expected # of messages, %d of %d received."
+argument_list|,
+name|latch
+operator|.
+name|getCount
+argument_list|()
+argument_list|,
+name|SEND_COUNT
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -856,11 +904,9 @@ operator|==
 literal|0
 condition|)
 block|{
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 literal|"Sending: "
 operator|+
@@ -946,9 +992,6 @@ name|session
 decl_stmt|;
 name|MessageConsumer
 name|consumer
-decl_stmt|;
-name|Thread
-name|thread
 decl_stmt|;
 name|TestConsumer
 parameter_list|()
@@ -1042,7 +1085,7 @@ name|e
 parameter_list|)
 block|{             }
 block|}
-comment|/*          * (non-Javadoc)          *           * @see java.lang.Runnable#run()          */
+comment|/*          * (non-Javadoc)          *          * @see java.lang.Runnable#run()          */
 specifier|public
 name|void
 name|run
