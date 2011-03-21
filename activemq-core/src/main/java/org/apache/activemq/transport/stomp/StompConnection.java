@@ -608,6 +608,11 @@ name|headers
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|headers
@@ -660,7 +665,7 @@ name|sendFrame
 argument_list|(
 name|frame
 operator|.
-name|toString
+name|marshal
 argument_list|()
 argument_list|)
 expr_stmt|;
