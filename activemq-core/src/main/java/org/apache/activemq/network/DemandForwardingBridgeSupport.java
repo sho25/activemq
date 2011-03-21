@@ -5304,7 +5304,7 @@ comment|/**      * @return Returns the staticallyIncludedDestinations.      */
 specifier|public
 name|ActiveMQDestination
 index|[]
-name|getStaticallyIncludedestinations
+name|getStaticallyIncludedDestinations
 parameter_list|()
 block|{
 return|return
