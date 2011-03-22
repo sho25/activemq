@@ -4837,6 +4837,16 @@ argument_list|)
 decl_stmt|;
 name|ack
 operator|.
+name|setPoisonCause
+argument_list|(
+name|lastMd
+operator|.
+name|getRollbackCause
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|ack
+operator|.
 name|setFirstMessageId
 argument_list|(
 name|firstMsgId
@@ -5385,6 +5395,13 @@ argument_list|()
 condition|)
 block|{
 comment|// schedual redelivery and possible dlq processing
+name|md
+operator|.
+name|setRollbackCause
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
 name|rollback
 argument_list|()
 expr_stmt|;

@@ -16,22 +16,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|thread
-operator|.
-name|DefaultThreadPools
-operator|.
-name|getDefaultTaskRunnerFactory
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -212,6 +196,20 @@ operator|.
 name|security
 operator|.
 name|MessageAuthorizationPolicy
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|thread
+operator|.
+name|DefaultThreadPools
 import|;
 end_import
 
@@ -1050,6 +1048,8 @@ parameter_list|)
 block|{
 try|try
 block|{
+name|DefaultThreadPools
+operator|.
 name|getDefaultTaskRunnerFactory
 argument_list|()
 operator|.

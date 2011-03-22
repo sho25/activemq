@@ -18,150 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|jmx
-operator|.
-name|CompositeDataConstants
-operator|.
-name|BODY_LENGTH
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|jmx
-operator|.
-name|CompositeDataConstants
-operator|.
-name|BODY_PREVIEW
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|jmx
-operator|.
-name|CompositeDataConstants
-operator|.
-name|CONTENT_MAP
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|jmx
-operator|.
-name|CompositeDataConstants
-operator|.
-name|JMSXGROUP_ID
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|jmx
-operator|.
-name|CompositeDataConstants
-operator|.
-name|JMSXGROUP_SEQ
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|jmx
-operator|.
-name|CompositeDataConstants
-operator|.
-name|MESSAGE_TEXT
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|jmx
-operator|.
-name|CompositeDataConstants
-operator|.
-name|ORIGINAL_DESTINATION
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|jmx
-operator|.
-name|CompositeDataConstants
-operator|.
-name|MESSAGE_URL
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -371,22 +227,6 @@ name|broker
 operator|.
 name|region
 operator|.
-name|Subscription
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|region
-operator|.
 name|policy
 operator|.
 name|SlowConsumerEntry
@@ -504,20 +344,6 @@ operator|.
 name|command
 operator|.
 name|ActiveMQTextMessage
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|Message
 import|;
 end_import
 
@@ -1009,6 +835,8 @@ argument_list|)
 expr_stmt|;
 name|addItem
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|JMSXGROUP_ID
 argument_list|,
 literal|"Message Group ID"
@@ -1020,6 +848,8 @@ argument_list|)
 expr_stmt|;
 name|addItem
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|JMSXGROUP_SEQ
 argument_list|,
 literal|"Message Group Sequence Number"
@@ -1031,6 +861,8 @@ argument_list|)
 expr_stmt|;
 name|addItem
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|ORIGINAL_DESTINATION
 argument_list|,
 literal|"Original Destination Before Senting To DLQ"
@@ -1443,6 +1275,8 @@ name|rc
 operator|.
 name|put
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|JMSXGROUP_ID
 argument_list|,
 name|m
@@ -1455,6 +1289,8 @@ name|rc
 operator|.
 name|put
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|JMSXGROUP_SEQ
 argument_list|,
 name|m
@@ -1467,6 +1303,8 @@ name|rc
 operator|.
 name|put
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|ORIGINAL_DESTINATION
 argument_list|,
 name|toString
@@ -2212,6 +2050,8 @@ argument_list|()
 expr_stmt|;
 name|addItem
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|BODY_LENGTH
 argument_list|,
 literal|"Body length"
@@ -2223,6 +2063,8 @@ argument_list|)
 expr_stmt|;
 name|addItem
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|BODY_PREVIEW
 argument_list|,
 literal|"Body preview"
@@ -2304,6 +2146,8 @@ name|rc
 operator|.
 name|put
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|BODY_LENGTH
 argument_list|,
 name|Long
@@ -2325,6 +2169,8 @@ name|rc
 operator|.
 name|put
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|BODY_LENGTH
 argument_list|,
 name|Long
@@ -2416,6 +2262,8 @@ name|rc
 operator|.
 name|put
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|BODY_PREVIEW
 argument_list|,
 name|data
@@ -2432,6 +2280,8 @@ name|rc
 operator|.
 name|put
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|BODY_PREVIEW
 argument_list|,
 operator|new
@@ -2484,6 +2334,8 @@ argument_list|()
 expr_stmt|;
 name|addItem
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|CONTENT_MAP
 argument_list|,
 literal|"Content map"
@@ -2540,6 +2392,8 @@ name|rc
 operator|.
 name|put
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|CONTENT_MAP
 argument_list|,
 literal|""
@@ -2561,6 +2415,8 @@ name|rc
 operator|.
 name|put
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|CONTENT_MAP
 argument_list|,
 literal|""
@@ -2758,8 +2614,12 @@ argument_list|()
 expr_stmt|;
 name|addItem
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|MESSAGE_TEXT
 argument_list|,
+name|CompositeDataConstants
+operator|.
 name|MESSAGE_TEXT
 argument_list|,
 name|SimpleType
@@ -2814,6 +2674,8 @@ name|rc
 operator|.
 name|put
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|MESSAGE_TEXT
 argument_list|,
 literal|""
@@ -2835,6 +2697,8 @@ name|rc
 operator|.
 name|put
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|MESSAGE_TEXT
 argument_list|,
 literal|""
@@ -3129,6 +2993,8 @@ argument_list|()
 expr_stmt|;
 name|addItem
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|MESSAGE_URL
 argument_list|,
 literal|"Body Url"
@@ -3185,6 +3051,8 @@ name|rc
 operator|.
 name|put
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|MESSAGE_URL
 argument_list|,
 literal|""
@@ -3209,6 +3077,8 @@ name|rc
 operator|.
 name|put
 argument_list|(
+name|CompositeDataConstants
+operator|.
 name|MESSAGE_URL
 argument_list|,
 literal|""

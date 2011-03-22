@@ -251,6 +251,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|thread
+operator|.
+name|DefaultThreadPools
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|transport
 operator|.
 name|Transport
@@ -358,22 +372,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|thread
-operator|.
-name|DefaultThreadPools
-operator|.
-name|getDefaultTaskRunnerFactory
 import|;
 end_import
 
@@ -1886,6 +1884,8 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
+name|DefaultThreadPools
+operator|.
 name|getDefaultTaskRunnerFactory
 argument_list|()
 operator|.

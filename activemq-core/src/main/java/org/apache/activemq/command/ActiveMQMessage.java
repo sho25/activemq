@@ -286,6 +286,14 @@ name|CommandTypes
 operator|.
 name|ACTIVEMQ_MESSAGE
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DLQ_DELIVERY_FAILURE_CAUSE_PROPERTY
+init|=
+literal|"DLQ_DELIVERY_FAILURE_CAUSE"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
