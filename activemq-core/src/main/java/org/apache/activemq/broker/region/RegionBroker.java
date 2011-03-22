@@ -4362,7 +4362,7 @@ name|context
 argument_list|,
 name|node
 argument_list|,
-literal|null
+name|subscription
 argument_list|)
 expr_stmt|;
 block|}
