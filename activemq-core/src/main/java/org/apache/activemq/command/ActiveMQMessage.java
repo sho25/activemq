@@ -292,7 +292,7 @@ specifier|final
 name|String
 name|DLQ_DELIVERY_FAILURE_CAUSE_PROPERTY
 init|=
-literal|"DLQ_DELIVERY_FAILURE_CAUSE"
+literal|"dlqDeliveryFailureCause"
 decl_stmt|;
 specifier|private
 specifier|static
