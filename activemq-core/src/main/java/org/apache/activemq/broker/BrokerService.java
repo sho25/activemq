@@ -9895,7 +9895,7 @@ operator|.
 name|executor
 return|;
 block|}
-specifier|protected
+specifier|public
 specifier|synchronized
 name|Scheduler
 name|getScheduler

@@ -1808,7 +1808,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * When we checkpoint we move all the journalled data to long term storage.      *       * @param stopping      * @param b      */
+comment|/**      * When we checkpoint we move all the journalled data to long term storage.      *       */
 specifier|public
 name|void
 name|checkpoint
