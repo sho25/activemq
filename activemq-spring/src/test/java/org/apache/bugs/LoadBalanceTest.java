@@ -1048,11 +1048,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|pool
-operator|.
-name|shutdown
-argument_list|()
-expr_stmt|;
 name|waitForBridgeFormation
 argument_list|(
 literal|10000
@@ -1061,6 +1056,11 @@ expr_stmt|;
 name|startProducer
 operator|.
 name|countDown
+argument_list|()
+expr_stmt|;
+name|pool
+operator|.
+name|shutdown
 argument_list|()
 expr_stmt|;
 name|pool
