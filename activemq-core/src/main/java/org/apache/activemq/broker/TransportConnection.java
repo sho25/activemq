@@ -2026,7 +2026,7 @@ name|MDC
 operator|.
 name|put
 argument_list|(
-literal|"connector"
+literal|"activemq.connector"
 argument_list|,
 name|connector
 operator|.
@@ -2207,7 +2207,7 @@ name|MDC
 operator|.
 name|remove
 argument_list|(
-literal|"connector"
+literal|"activemq.connector"
 argument_list|)
 expr_stmt|;
 return|return

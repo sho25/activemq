@@ -6888,7 +6888,7 @@ name|MDC
 operator|.
 name|put
 argument_list|(
-literal|"destination"
+literal|"activemq.destination"
 argument_list|,
 name|getName
 argument_list|()
@@ -7452,7 +7452,7 @@ name|MDC
 operator|.
 name|remove
 argument_list|(
-literal|"destination"
+literal|"activemq.destination"
 argument_list|)
 expr_stmt|;
 return|return

@@ -2544,7 +2544,7 @@ name|MDC
 operator|.
 name|put
 argument_list|(
-literal|"broker"
+literal|"activemq.broker"
 argument_list|,
 name|brokerName
 argument_list|)
@@ -2903,7 +2903,7 @@ name|MDC
 operator|.
 name|remove
 argument_list|(
-literal|"broker"
+literal|"activemq.broker"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2933,7 +2933,7 @@ name|MDC
 operator|.
 name|put
 argument_list|(
-literal|"broker"
+literal|"activemq.broker"
 argument_list|,
 name|brokerName
 argument_list|)
@@ -3356,7 +3356,7 @@ name|MDC
 operator|.
 name|remove
 argument_list|(
-literal|"broker"
+literal|"activemq.broker"
 argument_list|)
 expr_stmt|;
 name|stopper
