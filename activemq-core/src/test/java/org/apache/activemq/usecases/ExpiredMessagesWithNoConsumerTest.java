@@ -1360,6 +1360,12 @@ argument_list|()
 return|;
 block|}
 block|}
+argument_list|,
+name|Wait
+operator|.
+name|MAX_WAIT_MILLIS
+operator|*
+literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
