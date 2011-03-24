@@ -118,6 +118,14 @@ name|StoreUsageTest
 extends|extends
 name|EmbeddedBrokerTestSupport
 block|{
+specifier|final
+name|int
+name|WAIT_TIME_MILLS
+init|=
+literal|20
+operator|*
+literal|1000
+decl_stmt|;
 annotation|@
 name|Override
 specifier|protected
@@ -249,7 +257,9 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|5000
+name|WAIT_TIME_MILLS
+operator|/
+literal|2
 argument_list|)
 expr_stmt|;
 name|broker
@@ -268,7 +278,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|5000
+name|WAIT_TIME_MILLS
 argument_list|)
 expr_stmt|;
 name|Wait
@@ -302,7 +312,9 @@ return|;
 block|}
 block|}
 argument_list|,
-literal|5000
+name|WAIT_TIME_MILLS
+operator|*
+literal|2
 argument_list|)
 expr_stmt|;
 name|assertEquals
