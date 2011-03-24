@@ -130,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A client uses a<CODE>QueueBrowser</CODE> object to look at messages on a  * queue without removing them.<p/>  *<P>  * The<CODE>getEnumeration</CODE> method returns a<CODE>  * java.util.Enumeration</CODE>  * that is used to scan the queue's messages. It may be an enumeration of the  * entire content of a queue, or it may contain only the messages matching a  * message selector.<p/>  *<P>  * Messages may be arriving and expiring while the scan is done. The JMS API  * does not require the content of an enumeration to be a static snapshot of  * queue content. Whether these changes are visible or not depends on the JMS  * provider.<p/>  *<P>  * A<CODE>QueueBrowser</CODE> can be created from either a<CODE>Session  *</CODE>  * or a<CODE>QueueSession</CODE>.  *   * @see javax.jms.Session#createBrowser  * @see javax.jms.QueueSession#createBrowser  * @see javax.jms.QueueBrowser  * @see javax.jms.QueueReceiver  */
+comment|/**  * A client uses a<CODE>QueueBrowser</CODE> object to look at messages on a  * queue without removing them.<p/>  *<P>  * The<CODE>getEnumeration</CODE> method returns a<CODE>  * java.util.Enumeration</CODE>  * that is used to scan the queue's messages. It may be an enumeration of the  * entire content of a queue, or it may contain only the messages matching a  * message selector.<p/>  *<P>  * Messages may be arriving and expiring while the scan is done. The JMS API  * does not require the content of an enumeration to be a static snapshot of  * queue content. Whether these changes are visible or not depends on the JMS  * provider.<p/>  *<P>  * A<CODE>QueueBrowser</CODE> can be created from either a<CODE>Session  *</CODE>  * or a<CODE>QueueSession</CODE>.  *  * @see javax.jms.Session#createBrowser  * @see javax.jms.QueueSession#createBrowser  * @see javax.jms.QueueBrowser  * @see javax.jms.QueueReceiver  */
 end_comment
 
 begin_class
@@ -194,7 +194,7 @@ operator|new
 name|Object
 argument_list|()
 decl_stmt|;
-comment|/**      * Constructor for an ActiveMQQueueBrowser - used internally      *       * @param theSession      * @param dest      * @param selector      * @throws JMSException      */
+comment|/**      * Constructor for an ActiveMQQueueBrowser - used internally      *      * @param theSession      * @param dest      * @param selector      * @throws JMSException      */
 specifier|protected
 name|ActiveMQQueueBrowser
 parameter_list|(
@@ -416,7 +416,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Gets an enumeration for browsing the current queue messages in the order      * they would be received.      *       * @return an enumeration for browsing the messages      * @throws JMSException if the JMS provider fails to get the enumeration for      *                 this browser due to some internal error.      */
+comment|/**      * Gets an enumeration for browsing the current queue messages in the order      * they would be received.      *      * @return an enumeration for browsing the messages      * @throws JMSException if the JMS provider fails to get the enumeration for      *                 this browser due to some internal error.      */
 specifier|public
 name|Enumeration
 name|getEnumeration
@@ -646,7 +646,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|/**      * Gets the queue associated with this queue browser.      *       * @return the queue      * @throws JMSException if the JMS provider fails to get the queue      *                 associated with this browser due to some internal error.      */
+comment|/**      * Gets the queue associated with this queue browser.      *      * @return the queue      * @throws JMSException if the JMS provider fails to get the queue      *                 associated with this browser due to some internal error.      */
 specifier|public
 name|Queue
 name|getQueue
@@ -674,7 +674,7 @@ return|;
 block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
-comment|/**      * Wait on a semaphore for a fixed amount of time for a message to come in.      */
+comment|/**      * Wait on a semaphore for a fixed amount of time for a message to come in.      * @throws JMSException      */
 specifier|protected
 name|void
 name|waitForMessage
@@ -682,6 +682,14 @@ parameter_list|()
 block|{
 try|try
 block|{
+name|consumer
+operator|.
+name|sendPullCommand
+argument_list|(
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
 synchronized|synchronized
 init|(
 name|semaphore
@@ -711,6 +719,12 @@ name|interrupt
 argument_list|()
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|e
+parameter_list|)
+block|{         }
 block|}
 specifier|protected
 name|void
