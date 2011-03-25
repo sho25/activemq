@@ -1844,11 +1844,11 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|warn
+name|handleFireFailure
 argument_list|(
-literal|"Failed to fire message expired advisory"
+literal|"expired"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -1935,11 +1935,11 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|warn
+name|handleFireFailure
 argument_list|(
-literal|"Failed to fire message consumed advisory"
+literal|"consumed"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -2026,11 +2026,11 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|warn
+name|handleFireFailure
 argument_list|(
-literal|"Failed to fire message delivered advisory"
+literal|"delivered"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -2180,11 +2180,11 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|warn
+name|handleFireFailure
 argument_list|(
-literal|"Failed to fire message discarded advisory"
+literal|"discarded"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -2281,11 +2281,11 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|warn
+name|handleFireFailure
 argument_list|(
-literal|"Failed to fire message slow consumer advisory"
+literal|"slow consumer"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -2371,11 +2371,11 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|warn
+name|handleFireFailure
 argument_list|(
-literal|"Failed to fire message fast producer advisory"
+literal|"fast producer"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -2478,11 +2478,11 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|warn
+name|handleFireFailure
 argument_list|(
-literal|"Failed to fire message is full advisory"
+literal|"is full"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -2564,11 +2564,11 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|warn
+name|handleFireFailure
 argument_list|(
-literal|"Failed to fire message master broker advisory"
+literal|"now master broker"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -2660,11 +2660,11 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|warn
+name|handleFireFailure
 argument_list|(
-literal|"Failed to fire message consumed advisory"
+literal|"add to DLQ"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -2772,11 +2772,11 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|warn
+name|handleFireFailure
 argument_list|(
-literal|"Failed to fire network bridge advisory"
+literal|"network bridge started"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -2872,11 +2872,56 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|handleFireFailure
+argument_list|(
+literal|"network bridge stopped"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+specifier|private
+name|void
+name|handleFireFailure
+parameter_list|(
+name|String
+name|message
+parameter_list|,
+name|Throwable
+name|cause
+parameter_list|)
+block|{
 name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to fire network bridge advisory"
+literal|"Failed to fire "
+operator|+
+name|message
+operator|+
+literal|" advisory, reason: "
+operator|+
+name|cause
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|message
+operator|+
+literal|" detail"
+argument_list|,
+name|cause
 argument_list|)
 expr_stmt|;
 block|}
