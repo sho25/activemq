@@ -373,7 +373,9 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|5000
+literal|10
+operator|*
+literal|1000
 argument_list|)
 expr_stmt|;
 name|remoteBroker
