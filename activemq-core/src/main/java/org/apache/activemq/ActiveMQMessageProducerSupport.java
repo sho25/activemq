@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A useful base class for implementing a {@link MessageProducer}  *  *   */
+comment|/**  * A useful base class for implementing a {@link MessageProducer}  *  *  */
 end_comment
 
 begin_class
@@ -250,7 +250,7 @@ name|jms
 operator|.
 name|IllegalStateException
 argument_list|(
-literal|"unkown delivery mode: "
+literal|"unknown delivery mode: "
 operator|+
 name|newDeliveryMode
 argument_list|)
