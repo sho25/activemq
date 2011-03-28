@@ -209,7 +209,7 @@ name|DEFAULT_VERSION
 init|=
 name|CommandTypes
 operator|.
-name|PROTOCOL_VERSION
+name|PROTOCOL_STORE_VERSION
 decl_stmt|;
 specifier|static
 specifier|final
