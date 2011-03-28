@@ -6759,7 +6759,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-specifier|protected
+specifier|public
 name|void
 name|stopAllConnectors
 parameter_list|(
@@ -8966,7 +8966,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Start all transport and network connections, proxies and bridges      *       * @throws Exception      */
-specifier|protected
+specifier|public
 name|void
 name|startAllConnectors
 parameter_list|()
@@ -10209,6 +10209,7 @@ operator|=
 name|passiveSlave
 expr_stmt|;
 block|}
+comment|/**      * override the Default IOException handler, called when persistence adapter      * has experiences File or JDBC I/O Exceptions      *      * @param ioExceptionHandler      */
 specifier|public
 name|void
 name|setIoExceptionHandler
@@ -10217,11 +10218,9 @@ name|IOExceptionHandler
 name|ioExceptionHandler
 parameter_list|)
 block|{
-name|ioExceptionHandler
-operator|.
-name|setBrokerService
+name|configureService
 argument_list|(
-name|this
+name|ioExceptionHandler
 argument_list|)
 expr_stmt|;
 name|this
@@ -10230,6 +10229,15 @@ name|ioExceptionHandler
 operator|=
 name|ioExceptionHandler
 expr_stmt|;
+block|}
+specifier|public
+name|IOExceptionHandler
+name|getIoExceptionHandler
+parameter_list|()
+block|{
+return|return
+name|ioExceptionHandler
+return|;
 block|}
 comment|/**      * @return the schedulerSupport      */
 specifier|public

@@ -357,7 +357,7 @@ literal|" threw this exception: "
 operator|+
 name|handlerException
 operator|+
-literal|" while trying to handle this excpetion: "
+literal|" while trying to handle this exception: "
 operator|+
 name|e
 argument_list|,

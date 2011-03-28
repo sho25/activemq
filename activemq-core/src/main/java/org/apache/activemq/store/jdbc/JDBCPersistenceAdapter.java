@@ -43,6 +43,16 @@ name|java
 operator|.
 name|sql
 operator|.
+name|Connection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
 name|SQLException
 import|;
 end_import
@@ -2344,8 +2354,7 @@ init|=
 operator|new
 name|TransactionContext
 argument_list|(
-name|getDataSource
-argument_list|()
+name|this
 argument_list|)
 decl_stmt|;
 if|if
@@ -2825,7 +2834,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failure occured while stopping broker"
+literal|"Failure occurred while stopping broker"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2909,6 +2918,7 @@ name|File
 name|dir
 parameter_list|)
 block|{     }
+comment|// interesting bit here is proof that DB is ok
 specifier|public
 name|void
 name|checkpoint
@@ -2918,7 +2928,74 @@ name|sync
 parameter_list|)
 throws|throws
 name|IOException
-block|{     }
+block|{
+comment|// by pass TransactionContext to avoid IO Exception handler
+name|Connection
+name|connection
+init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+name|connection
+operator|=
+name|getDataSource
+argument_list|()
+operator|.
+name|getConnection
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SQLException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Could not get JDBC connection for checkpoint: "
+operator|+
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+name|IOExceptionSupport
+operator|.
+name|create
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
+finally|finally
+block|{
+if|if
+condition|(
+name|connection
+operator|!=
+literal|null
+condition|)
+block|{
+try|try
+block|{
+name|connection
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|ignored
+parameter_list|)
+block|{                 }
+block|}
+block|}
+block|}
 specifier|public
 name|long
 name|size
