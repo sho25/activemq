@@ -410,10 +410,14 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|String
+name|Object
 name|shutdownMutex
 init|=
+operator|new
+name|String
+argument_list|(
 literal|"shutdownMutex"
+argument_list|)
 decl_stmt|;
 specifier|private
 name|ActiveMQConnection
