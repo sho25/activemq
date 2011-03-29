@@ -231,6 +231,13 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|session
+operator|.
+name|setIsXa
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|transactionManager
 operator|.
 name|getTransaction
@@ -394,6 +401,13 @@ name|session
 operator|.
 name|close
 argument_list|()
+expr_stmt|;
+name|session
+operator|.
+name|setIsXa
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 name|decrementReferenceCount
 argument_list|()

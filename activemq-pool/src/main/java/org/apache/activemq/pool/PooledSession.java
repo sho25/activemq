@@ -472,6 +472,10 @@ name|QueueBrowser
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|private
+name|boolean
+name|isXa
+decl_stmt|;
 specifier|public
 name|PooledSession
 parameter_list|(
@@ -630,10 +634,12 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-comment|// maybe do a rollback?
 if|if
 condition|(
 name|transactional
+operator|&&
+operator|!
+name|isXa
 condition|)
 block|{
 try|try
@@ -1678,6 +1684,21 @@ name|session
 operator|+
 literal|" }"
 return|;
+block|}
+specifier|public
+name|void
+name|setIsXa
+parameter_list|(
+name|boolean
+name|isXa
+parameter_list|)
+block|{
+name|this
+operator|.
+name|isXa
+operator|=
+name|isXa
+expr_stmt|;
 block|}
 block|}
 end_class
