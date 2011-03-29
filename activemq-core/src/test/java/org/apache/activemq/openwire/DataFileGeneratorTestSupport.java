@@ -1985,7 +1985,7 @@ name|setVersion
 argument_list|(
 name|OpenWireFormat
 operator|.
-name|DEFAULT_VERSION
+name|DEFAULT_WIRE_VERSION
 argument_list|)
 expr_stmt|;
 return|return

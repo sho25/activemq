@@ -211,6 +211,16 @@ name|CommandTypes
 operator|.
 name|PROTOCOL_STORE_VERSION
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_WIRE_VERSION
+init|=
+name|CommandTypes
+operator|.
+name|PROTOCOL_VERSION
+decl_stmt|;
 specifier|static
 specifier|final
 name|byte
