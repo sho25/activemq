@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @openwire:marshaller code="103"  *   */
+comment|/**  * @org.apache.xbean.XBean element="tempTopic" description="An ActiveMQ Temporary Topic Destination"  * @openwire:marshaller code="103"  *   */
 end_comment
 
 begin_class

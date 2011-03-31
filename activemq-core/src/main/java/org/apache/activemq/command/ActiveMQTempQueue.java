@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @openwire:marshaller code="102"  *   */
+comment|/**  * @org.apache.xbean.XBean element="tempQueue" description="An ActiveMQ Temporary Queue Destination"  * @openwire:marshaller code="102"  *   */
 end_comment
 
 begin_class

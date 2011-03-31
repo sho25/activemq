@@ -666,7 +666,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Reconnect attempts exceeded "
 operator|+
@@ -693,6 +693,13 @@ name|get
 argument_list|()
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Reconnecting disabled: stopped"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|LOG
@@ -724,6 +731,15 @@ name|InterruptedException
 name|ie
 parameter_list|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Reconnecting disabled: "
+operator|+
+name|ie
+argument_list|)
+expr_stmt|;
 name|Thread
 operator|.
 name|currentThread
@@ -799,6 +815,13 @@ name|get
 argument_list|()
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Reconnecting disabled: stopped"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|event

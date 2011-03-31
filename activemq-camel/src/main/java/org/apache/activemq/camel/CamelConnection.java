@@ -119,6 +119,9 @@ parameter_list|,
 name|IdGenerator
 name|clientIdGenerator
 parameter_list|,
+name|IdGenerator
+name|connectionIdGenerator
+parameter_list|,
 name|JMSStatsImpl
 name|factoryStats
 parameter_list|)
@@ -130,6 +133,8 @@ argument_list|(
 name|transport
 argument_list|,
 name|clientIdGenerator
+argument_list|,
+name|connectionIdGenerator
 argument_list|,
 name|factoryStats
 argument_list|)

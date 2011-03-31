@@ -4496,11 +4496,9 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
-literal|"Queue: destination="
-operator|+
 name|destination
 operator|.
-name|getPhysicalName
+name|getQualifiedName
 argument_list|()
 operator|+
 literal|", subscriptions="

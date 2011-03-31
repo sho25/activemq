@@ -152,6 +152,9 @@ argument_list|,
 name|getClientIdGenerator
 argument_list|()
 argument_list|,
+name|getConnectionIdGenerator
+argument_list|()
+argument_list|,
 name|stats
 argument_list|)
 decl_stmt|;

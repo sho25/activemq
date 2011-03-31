@@ -1636,6 +1636,9 @@ parameter_list|,
 name|IdGenerator
 name|clientIdGenerator
 parameter_list|,
+name|IdGenerator
+name|connectionIdGenerator
+parameter_list|,
 name|JMSStatsImpl
 name|factoryStats
 parameter_list|)
@@ -1727,7 +1730,7 @@ comment|// asyncConnectionThread.allowCoreThreadTimeOut(true);
 name|String
 name|uniqueId
 init|=
-name|CONNECTION_ID_GENERATOR
+name|connectionIdGenerator
 operator|.
 name|generateId
 argument_list|()
