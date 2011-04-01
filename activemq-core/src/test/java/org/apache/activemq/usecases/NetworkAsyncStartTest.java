@@ -299,7 +299,7 @@ argument_list|(
 name|brokerBUri
 argument_list|)
 expr_stmt|;
-name|brokerC
+name|brokerB
 operator|.
 name|start
 argument_list|()
