@@ -1544,6 +1544,13 @@ argument_list|)
 expr_stmt|;
 name|tempReplyQPolicy
 operator|.
+name|setGcWithNetworkConsumers
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|tempReplyQPolicy
+operator|.
 name|setInactiveTimoutBeforeGC
 argument_list|(
 literal|10
