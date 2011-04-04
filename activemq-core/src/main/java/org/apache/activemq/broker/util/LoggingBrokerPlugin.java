@@ -400,7 +400,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple Broker intercepter which allows you to enable/disable logging.  *   * @org.apache.xbean.XBean  */
+comment|/**  * A simple Broker intercepter which allows you to enable/disable logging.  *  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
@@ -445,6 +445,12 @@ literal|true
 decl_stmt|;
 specifier|private
 name|boolean
+name|logSessionEvents
+init|=
+literal|true
+decl_stmt|;
+specifier|private
+name|boolean
 name|logTransactionEvents
 init|=
 literal|false
@@ -467,7 +473,7 @@ name|logInternalEvents
 init|=
 literal|false
 decl_stmt|;
-comment|/**      *       * @throws Exception      * @org.apache.xbean.InitMethod      */
+comment|/**      * @throws Exception      * @org.apache.xbean.InitMethod      */
 annotation|@
 name|PostConstruct
 specifier|public
@@ -549,7 +555,7 @@ return|return
 name|logConnectionEvents
 return|;
 block|}
-comment|/**      * Logger Events that are related to connections and sessions      */
+comment|/**      * Logger Events that are related to connections      */
 specifier|public
 name|void
 name|setLogConnectionEvents
@@ -563,6 +569,31 @@ operator|.
 name|logConnectionEvents
 operator|=
 name|logConnectionEvents
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isLogSessionEvents
+parameter_list|()
+block|{
+return|return
+name|logSessionEvents
+return|;
+block|}
+comment|/**      * Logger Events that are related to sessions      */
+specifier|public
+name|void
+name|setLogSessionEvents
+parameter_list|(
+name|boolean
+name|logSessionEvents
+parameter_list|)
+block|{
+name|this
+operator|.
+name|logSessionEvents
+operator|=
+name|logSessionEvents
 expr_stmt|;
 block|}
 specifier|public
@@ -1958,7 +1989,7 @@ condition|(
 name|isLogAll
 argument_list|()
 operator|||
-name|isLogConnectionEvents
+name|isLogSessionEvents
 argument_list|()
 condition|)
 block|{
@@ -2002,7 +2033,7 @@ condition|(
 name|isLogAll
 argument_list|()
 operator|||
-name|isLogConnectionEvents
+name|isLogSessionEvents
 argument_list|()
 condition|)
 block|{
@@ -3133,6 +3164,21 @@ operator|.
 name|append
 argument_list|(
 name|isLogConnectionEvents
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|buf
+operator|.
+name|append
+argument_list|(
+literal|", logSessionEvents="
+argument_list|)
+expr_stmt|;
+name|buf
+operator|.
+name|append
+argument_list|(
+name|isLogSessionEvents
 argument_list|()
 argument_list|)
 expr_stmt|;
