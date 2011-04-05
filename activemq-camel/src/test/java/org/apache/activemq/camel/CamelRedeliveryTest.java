@@ -530,13 +530,11 @@ block|{
 name|ActiveMQDestination
 name|originalDestination
 init|=
-operator|new
-name|ActiveMQQueue
-argument_list|(
-literal|"camelRedeliveryQ"
-argument_list|)
+name|body
+operator|.
+name|getOriginalDestination
+argument_list|()
 decl_stmt|;
-comment|// or pull value from the message; body.getOriginalDestination();
 return|return
 literal|"activemq:"
 operator|+
