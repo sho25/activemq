@@ -248,6 +248,12 @@ name|tryLock
 argument_list|(
 literal|0
 argument_list|,
+name|Math
+operator|.
+name|max
+argument_list|(
+literal|1
+argument_list|,
 name|readFile
 operator|.
 name|getChannel
@@ -255,6 +261,7 @@ argument_list|()
 operator|.
 name|size
 argument_list|()
+argument_list|)
 argument_list|,
 literal|false
 argument_list|)
