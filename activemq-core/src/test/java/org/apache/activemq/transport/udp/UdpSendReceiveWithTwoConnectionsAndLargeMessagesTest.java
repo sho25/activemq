@@ -39,7 +39,10 @@ name|largeMessages
 operator|=
 literal|true
 expr_stmt|;
-comment|//messageCount = 2;
+name|messageCount
+operator|=
+literal|2
+expr_stmt|;
 name|super
 operator|.
 name|setUp
