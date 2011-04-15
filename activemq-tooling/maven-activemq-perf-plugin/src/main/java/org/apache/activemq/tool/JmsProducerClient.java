@@ -469,6 +469,9 @@ expr_stmt|;
 name|sleep
 argument_list|()
 expr_stmt|;
+name|commitTxIfNecessary
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|// Send to only one actual destination
@@ -503,6 +506,9 @@ name|incThroughput
 argument_list|()
 expr_stmt|;
 name|sleep
+argument_list|()
+expr_stmt|;
+name|commitTxIfNecessary
 argument_list|()
 expr_stmt|;
 block|}
@@ -581,6 +587,9 @@ expr_stmt|;
 name|sleep
 argument_list|()
 expr_stmt|;
+name|commitTxIfNecessary
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|// Send to only one actual destination
@@ -621,6 +630,9 @@ name|incThroughput
 argument_list|()
 expr_stmt|;
 name|sleep
+argument_list|()
+expr_stmt|;
+name|commitTxIfNecessary
 argument_list|()
 expr_stmt|;
 block|}
@@ -801,6 +813,9 @@ expr_stmt|;
 name|sleep
 argument_list|()
 expr_stmt|;
+name|commitTxIfNecessary
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|// Send to only one actual destination
@@ -830,6 +845,9 @@ name|incThroughput
 argument_list|()
 expr_stmt|;
 name|sleep
+argument_list|()
+expr_stmt|;
+name|commitTxIfNecessary
 argument_list|()
 expr_stmt|;
 block|}
@@ -909,6 +927,9 @@ expr_stmt|;
 name|sleep
 argument_list|()
 expr_stmt|;
+name|commitTxIfNecessary
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|// Send to only one actual destination
@@ -945,6 +966,9 @@ name|incThroughput
 argument_list|()
 expr_stmt|;
 name|sleep
+argument_list|()
+expr_stmt|;
+name|commitTxIfNecessary
 argument_list|()
 expr_stmt|;
 block|}
