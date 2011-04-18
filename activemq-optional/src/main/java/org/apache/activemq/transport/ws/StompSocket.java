@@ -461,7 +461,7 @@ name|SENTINEL_FRAME
 argument_list|,
 name|command
 operator|.
-name|toString
+name|format
 argument_list|()
 argument_list|)
 expr_stmt|;
