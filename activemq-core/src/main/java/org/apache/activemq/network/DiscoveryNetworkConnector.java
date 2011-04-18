@@ -779,28 +779,6 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|TransportDisposedIOException
-name|e
-parameter_list|)
-block|{
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"Network bridge between: "
-operator|+
-name|localURI
-operator|+
-literal|" and: "
-operator|+
-name|uri
-operator|+
-literal|" was correctly stopped before it was correctly started."
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
 name|Exception
 name|e
 parameter_list|)
@@ -878,7 +856,6 @@ name|e1
 argument_list|)
 expr_stmt|;
 block|}
-return|return;
 block|}
 block|}
 block|}
