@@ -46,6 +46,8 @@ name|InformixJDBCAdapter
 extends|extends
 name|BlobJDBCAdapter
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setStatements

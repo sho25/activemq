@@ -134,6 +134,8 @@ name|typeStatement
 init|=
 literal|"ENGINE"
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setStatements

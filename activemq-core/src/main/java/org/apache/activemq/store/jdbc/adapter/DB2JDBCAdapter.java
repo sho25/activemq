@@ -76,6 +76,8 @@ name|DB2JDBCAdapter
 extends|extends
 name|DefaultJDBCAdapter
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setStatements
@@ -111,6 +113,8 @@ name|statements
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|byte
 index|[]

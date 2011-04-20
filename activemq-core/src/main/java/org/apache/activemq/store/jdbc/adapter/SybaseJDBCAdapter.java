@@ -46,6 +46,8 @@ name|SybaseJDBCAdapter
 extends|extends
 name|ImageBasedJDBCAdaptor
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setStatements

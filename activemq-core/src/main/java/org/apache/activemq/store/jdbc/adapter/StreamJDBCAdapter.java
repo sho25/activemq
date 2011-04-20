@@ -105,6 +105,8 @@ extends|extends
 name|DefaultJDBCAdapter
 block|{
 comment|/**      * @see org.apache.activemq.store.jdbc.adapter.DefaultJDBCAdapter#getBinaryData(java.sql.ResultSet,      *      int)      */
+annotation|@
+name|Override
 specifier|protected
 name|byte
 index|[]
@@ -210,6 +212,8 @@ throw|;
 block|}
 block|}
 comment|/**      * @see org.apache.activemq.store.jdbc.adapter.DefaultJDBCAdapter#setBinaryData(java.sql.PreparedStatement,      *      int, byte[])      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setBinaryData

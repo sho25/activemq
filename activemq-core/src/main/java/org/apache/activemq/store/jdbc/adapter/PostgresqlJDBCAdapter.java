@@ -52,6 +52,8 @@ name|acksPkName
 init|=
 literal|"activemq_acks_pkey"
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setStatements

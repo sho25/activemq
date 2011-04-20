@@ -4973,7 +4973,7 @@ return|return
 name|result
 return|;
 block|}
-specifier|private
+specifier|protected
 specifier|static
 name|void
 name|close
@@ -4997,7 +4997,7 @@ name|e
 parameter_list|)
 block|{         }
 block|}
-specifier|private
+specifier|protected
 specifier|static
 name|void
 name|close

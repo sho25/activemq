@@ -46,6 +46,8 @@ name|HsqldbJDBCAdapter
 extends|extends
 name|BytesJDBCAdapter
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setStatements
