@@ -1072,6 +1072,10 @@ name|delegate
 operator|.
 name|hasSpace
 argument_list|()
+operator|&&
+name|recoveredCount
+operator|<
+name|maxMessages
 condition|)
 block|{
 name|Message
@@ -1101,6 +1105,12 @@ argument_list|(
 name|sequenceId
 argument_list|)
 expr_stmt|;
+name|lastRecovered
+operator|.
+name|recovered
+operator|=
+name|sequenceId
+expr_stmt|;
 if|if
 condition|(
 name|delegate
@@ -1111,12 +1121,6 @@ name|msg
 argument_list|)
 condition|)
 block|{
-name|lastRecovered
-operator|.
-name|recovered
-operator|=
-name|sequenceId
-expr_stmt|;
 name|recoveredCount
 operator|++
 expr_stmt|;
@@ -1384,7 +1388,7 @@ argument_list|,
 name|recoveredAwareListener
 argument_list|)
 expr_stmt|;
-comment|//microDuration.end(entry);
+comment|//microDuration.end(new String(entry + " recoveredCount:" + recoveredAwareListener.recoveredCount));
 if|if
 condition|(
 name|recoveredAwareListener

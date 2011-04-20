@@ -339,13 +339,9 @@ name|boolean
 name|isExpired
 parameter_list|()
 block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"not implemented"
-argument_list|)
-throw|;
+return|return
+literal|false
+return|;
 block|}
 specifier|public
 name|boolean

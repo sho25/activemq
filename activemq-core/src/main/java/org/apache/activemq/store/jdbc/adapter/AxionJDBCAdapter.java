@@ -246,20 +246,6 @@ argument_list|)
 expr_stmt|;
 name|statements
 operator|.
-name|setDeleteOldMessagesStatement
-argument_list|(
-literal|"DELETE FROM "
-operator|+
-name|statements
-operator|.
-name|getFullMessageTableName
-argument_list|()
-operator|+
-literal|" WHERE ( EXPIRATION<>0 AND EXPIRATION<?)"
-argument_list|)
-expr_stmt|;
-name|statements
-operator|.
 name|setLongDataType
 argument_list|(
 literal|"LONG"

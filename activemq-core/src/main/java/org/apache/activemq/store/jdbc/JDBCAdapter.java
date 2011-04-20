@@ -474,9 +474,6 @@ name|doDeleteOldMessages
 parameter_list|(
 name|TransactionContext
 name|c
-parameter_list|,
-name|boolean
-name|isPrioritizedMessages
 parameter_list|)
 throws|throws
 name|SQLException

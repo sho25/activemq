@@ -2440,7 +2440,7 @@ throws|throws
 name|Exception
 block|{
 comment|// It could take while before we receive the commit
-comment|// operration.. by that time the message could have
+comment|// operation.. by that time the message could have
 comment|// expired..
 if|if
 condition|(

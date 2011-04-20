@@ -596,10 +596,17 @@ operator|.
 name|getExpiration
 argument_list|()
 argument_list|,
+name|this
+operator|.
+name|isPrioritizedMessages
+argument_list|()
+condition|?
 name|message
 operator|.
 name|getPriority
 argument_list|()
+else|:
+literal|0
 argument_list|)
 expr_stmt|;
 block|}

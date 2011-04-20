@@ -1442,12 +1442,9 @@ name|MessageReference
 name|next
 parameter_list|()
 block|{
-name|Message
-name|message
+name|MessageReference
+name|reference
 init|=
-operator|(
-name|Message
-operator|)
 name|iter
 operator|.
 name|next
@@ -1455,7 +1452,7 @@ argument_list|()
 decl_stmt|;
 name|last
 operator|=
-name|message
+name|reference
 expr_stmt|;
 if|if
 condition|(
@@ -1465,14 +1462,20 @@ argument_list|()
 condition|)
 block|{
 comment|// got from disk
-name|message
+name|reference
+operator|.
+name|getMessage
+argument_list|()
 operator|.
 name|setRegionDestination
 argument_list|(
 name|regionDestination
 argument_list|)
 expr_stmt|;
-name|message
+name|reference
+operator|.
+name|getMessage
+argument_list|()
 operator|.
 name|setMemoryUsage
 argument_list|(
@@ -1486,13 +1489,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|message
+name|reference
 operator|.
 name|incrementReferenceCount
 argument_list|()
 expr_stmt|;
 return|return
-name|message
+name|reference
 return|;
 block|}
 comment|/**      * remove the message at the cursor position      */

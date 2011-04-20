@@ -1341,6 +1341,15 @@ argument_list|,
 name|message
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|node
+operator|!=
+name|QueueMessageReference
+operator|.
+name|NULL_MESSAGE
+condition|)
+block|{
 name|Integer
 name|count
 init|=
@@ -1371,6 +1380,7 @@ name|intValue
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|md

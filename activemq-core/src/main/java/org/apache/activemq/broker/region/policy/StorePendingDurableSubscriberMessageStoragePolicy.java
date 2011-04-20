@@ -131,6 +131,11 @@ name|immediatePriorityDispatch
 init|=
 literal|true
 decl_stmt|;
+name|boolean
+name|useCache
+init|=
+literal|true
+decl_stmt|;
 specifier|public
 name|boolean
 name|isImmediatePriorityDispatch
@@ -140,7 +145,7 @@ return|return
 name|immediatePriorityDispatch
 return|;
 block|}
-comment|/**      * Ensure that new higher priority messages will get an immediate dispatch      * rather than wait for the end of the current cursor batch.      *      * @param immediatePriorityDispatch      */
+comment|/**      * Ensure that new higher priority messages will get an immediate dispatch      * rather than wait for the end of the current cursor batch.      * Useful when there is a large message backlog and intermittent high priority messages.      *      * @param immediatePriorityDispatch      */
 specifier|public
 name|void
 name|setImmediatePriorityDispatch
@@ -154,6 +159,30 @@ operator|.
 name|immediatePriorityDispatch
 operator|=
 name|immediatePriorityDispatch
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isUseCache
+parameter_list|()
+block|{
+return|return
+name|useCache
+return|;
+block|}
+specifier|public
+name|void
+name|setUseCache
+parameter_list|(
+name|boolean
+name|useCache
+parameter_list|)
+block|{
+name|this
+operator|.
+name|useCache
+operator|=
+name|useCache
 expr_stmt|;
 block|}
 comment|/**      * Retrieve the configured pending message storage cursor;      * @param broker       *       * @param clientId      * @param name      * @param maxBatchSize      * @param sub       * @return the Pending Message cursor      */
@@ -194,6 +223,14 @@ argument_list|,
 name|sub
 argument_list|)
 decl_stmt|;
+name|cursor
+operator|.
+name|setUseCache
+argument_list|(
+name|isUseCache
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|cursor
 operator|.
 name|setImmediatePriorityDispatch

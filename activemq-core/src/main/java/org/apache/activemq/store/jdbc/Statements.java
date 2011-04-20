@@ -172,10 +172,6 @@ name|removeAllSubscriptionsStatement
 decl_stmt|;
 specifier|private
 name|String
-name|deleteOldMessagesStatement
-decl_stmt|;
-specifier|private
-name|String
 index|[]
 name|createSchemaStatements
 decl_stmt|;
@@ -1346,9 +1342,7 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" WHERE ( EXPIRATION<>0 AND EXPIRATION<?)"
-operator|+
-literal|" OR (ID<= "
+literal|" WHERE (PRIORITY=? AND ID<= "
 operator|+
 literal|"     ( SELECT min("
 operator|+
@@ -1379,72 +1373,13 @@ operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
-literal|".PRIORITY="
-operator|+
-name|getFullMessageTableName
-argument_list|()
-operator|+
-literal|".PRIORITY )"
+literal|".PRIORITY=?)"
 operator|+
 literal|"   )"
 expr_stmt|;
 block|}
 return|return
 name|deleteOldMessagesStatementWithPriority
-return|;
-block|}
-specifier|public
-name|String
-name|getDeleteOldMessagesStatement
-parameter_list|()
-block|{
-if|if
-condition|(
-name|deleteOldMessagesStatement
-operator|==
-literal|null
-condition|)
-block|{
-name|deleteOldMessagesStatement
-operator|=
-literal|"DELETE FROM "
-operator|+
-name|getFullMessageTableName
-argument_list|()
-operator|+
-literal|" WHERE ( EXPIRATION<>0 AND EXPIRATION<?)"
-operator|+
-literal|" OR (ID<= "
-operator|+
-literal|"     ( SELECT min("
-operator|+
-name|getFullAckTableName
-argument_list|()
-operator|+
-literal|".LAST_ACKED_ID)"
-operator|+
-literal|"       FROM "
-operator|+
-name|getFullAckTableName
-argument_list|()
-operator|+
-literal|" WHERE "
-operator|+
-name|getFullAckTableName
-argument_list|()
-operator|+
-literal|".CONTAINER="
-operator|+
-name|getFullMessageTableName
-argument_list|()
-operator|+
-literal|".CONTAINER )"
-operator|+
-literal|"   )"
-expr_stmt|;
-block|}
-return|return
-name|deleteOldMessagesStatement
 return|;
 block|}
 specifier|public
@@ -2070,32 +2005,17 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|setDeleteOldMessagesStatement
-parameter_list|(
-name|String
-name|deleteOldMessagesStatment
-parameter_list|)
-block|{
-name|this
-operator|.
-name|deleteOldMessagesStatement
-operator|=
-name|deleteOldMessagesStatment
-expr_stmt|;
-block|}
-specifier|public
-name|void
 name|setDeleteOldMessagesStatementWithPriority
 parameter_list|(
 name|String
-name|deleteOldMessagesStatmentWithPriority
+name|deleteOldMessagesStatementWithPriority
 parameter_list|)
 block|{
 name|this
 operator|.
 name|deleteOldMessagesStatementWithPriority
 operator|=
-name|deleteOldMessagesStatmentWithPriority
+name|deleteOldMessagesStatementWithPriority
 expr_stmt|;
 block|}
 specifier|public

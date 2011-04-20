@@ -157,7 +157,7 @@ specifier|final
 name|Destination
 name|regionDestination
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|final
 name|PendingList
 name|batchList
@@ -485,6 +485,7 @@ return|;
 block|}
 specifier|public
 specifier|final
+specifier|synchronized
 name|void
 name|reset
 parameter_list|()
@@ -873,6 +874,13 @@ operator|+
 name|node
 operator|.
 name|getMessageId
+argument_list|()
+operator|+
+literal|" batchList size: "
+operator|+
+name|batchList
+operator|.
+name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
