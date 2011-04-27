@@ -323,12 +323,12 @@ operator|.
 name|getPath
 argument_list|()
 argument_list|,
-name|actualURI
+name|bindURI
 operator|.
 name|getQuery
 argument_list|()
 argument_list|,
-name|actualURI
+name|bindURI
 operator|.
 name|getFragment
 argument_list|()
