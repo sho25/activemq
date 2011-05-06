@@ -5054,6 +5054,13 @@ operator|.
 name|getConnectUri
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|uri
+operator|!=
+literal|null
+condition|)
+block|{
 name|String
 name|scheme
 init|=
@@ -5084,6 +5091,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch
