@@ -2854,6 +2854,11 @@ name|txid
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Message
+name|m
+init|=
+literal|null
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -2869,19 +2874,19 @@ name|i
 operator|++
 control|)
 block|{
-name|Message
 name|m
-init|=
+operator|=
 name|receiveMessage
 argument_list|(
 name|connection
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|assertNotNull
 argument_list|(
 name|m
 argument_list|)
 expr_stmt|;
+block|}
 name|MessageAck
 name|ack
 init|=
@@ -2891,7 +2896,7 @@ name|consumerInfo
 argument_list|,
 name|m
 argument_list|,
-literal|1
+name|NUMBER
 argument_list|,
 name|MessageAck
 operator|.
@@ -2912,7 +2917,6 @@ argument_list|(
 name|ack
 argument_list|)
 expr_stmt|;
-block|}
 comment|// Don't commit
 comment|// restart the broker.
 name|restartBroker
@@ -2982,14 +2986,13 @@ name|i
 operator|++
 control|)
 block|{
-name|Message
 name|m
-init|=
+operator|=
 name|receiveMessage
 argument_list|(
 name|connection
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|assertNotNull
 argument_list|(
 name|m

@@ -546,6 +546,13 @@ name|ignoreClose
 condition|)
 block|{
 comment|// TODO a cleaner way to reset??
+name|boolean
+name|invalidate
+init|=
+literal|false
+decl_stmt|;
+try|try
+block|{
 comment|// lets reset the session
 name|getInternalSession
 argument_list|()
@@ -590,11 +597,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|consumers
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|Iterator
@@ -629,11 +631,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|browsers
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|transactional
@@ -657,19 +654,73 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
+name|invalidate
+operator|=
+literal|true
+expr_stmt|;
 name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Caught exception trying rollback() when putting session back into the pool: "
+literal|"Caught exception trying rollback() when putting session back into the pool, will invalidate. "
 operator|+
 name|e
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|ex
+parameter_list|)
+block|{
+name|invalidate
+operator|=
+literal|true
+expr_stmt|;
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Caught exception trying close() when putting session back into the pool, will invalidate. "
+operator|+
+name|ex
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|consumers
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|browsers
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|invalidate
+condition|)
+block|{
 comment|// lets close the session and not put the session back into
 comment|// the pool
+if|if
+condition|(
+name|session
+operator|!=
+literal|null
+condition|)
+block|{
 try|try
 block|{
 name|session
@@ -688,7 +739,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Ignoring exception as discarding session: "
+literal|"Ignoring exception on close as discarding session: "
 operator|+
 name|e1
 argument_list|,
@@ -700,6 +751,7 @@ name|session
 operator|=
 literal|null
 expr_stmt|;
+block|}
 name|sessionPool
 operator|.
 name|invalidateSession
@@ -707,9 +759,9 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
-block|}
+else|else
+block|{
 name|sessionPool
 operator|.
 name|returnSession
@@ -717,6 +769,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public

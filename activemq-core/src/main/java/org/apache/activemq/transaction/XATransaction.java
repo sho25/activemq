@@ -270,7 +270,11 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"XA Transaction commit: "
+literal|"XA Transaction commit onePhase:"
+operator|+
+name|onePhase
+operator|+
+literal|", xid: "
 operator|+
 name|xid
 argument_list|)
