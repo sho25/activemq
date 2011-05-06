@@ -905,6 +905,15 @@ return|return
 name|LOG
 return|;
 block|}
+specifier|public
+name|XATransactionId
+name|getXid
+parameter_list|()
+block|{
+return|return
+name|xid
+return|;
+block|}
 block|}
 end_class
 
