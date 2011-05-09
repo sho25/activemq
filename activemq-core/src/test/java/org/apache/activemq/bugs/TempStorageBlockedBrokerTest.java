@@ -1053,6 +1053,37 @@ name|getUsage
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// do a cleanup
+name|broker
+operator|.
+name|getTempDataStore
+argument_list|()
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Subscrition Usage: "
+operator|+
+name|tempUsageBySubscription
+operator|+
+literal|", endUsage: "
+operator|+
+name|broker
+operator|.
+name|getSystemUsage
+argument_list|()
+operator|.
+name|getTempUsage
+argument_list|()
+operator|.
+name|getUsage
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Incorrect number of Messages Sent: "
@@ -1210,6 +1241,15 @@ operator|.
 name|setDirectory
 argument_list|(
 name|tmpDir
+argument_list|)
+expr_stmt|;
+name|tempStore
+operator|.
+name|setJournalMaxFileLength
+argument_list|(
+literal|50
+operator|*
+literal|1024
 argument_list|)
 expr_stmt|;
 name|tempStore

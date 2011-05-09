@@ -6155,6 +6155,11 @@ name|getTmpDataDirectory
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|configureService
+argument_list|(
+name|tempDataStore
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|tempDataStore
@@ -6196,6 +6201,11 @@ operator|.
 name|tempDataStore
 operator|=
 name|tempDataStore
+expr_stmt|;
+name|configureService
+argument_list|(
+name|tempDataStore
+argument_list|)
 expr_stmt|;
 try|try
 block|{
