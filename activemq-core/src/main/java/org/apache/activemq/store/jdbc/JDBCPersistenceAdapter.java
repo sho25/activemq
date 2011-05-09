@@ -1535,9 +1535,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|cleanup
-argument_list|()
-expr_stmt|;
 comment|// Cleanup the db periodically.
 if|if
 condition|(
@@ -1568,7 +1565,7 @@ expr_stmt|;
 block|}
 block|}
 argument_list|,
-name|cleanupPeriod
+literal|0
 argument_list|,
 name|cleanupPeriod
 argument_list|,
