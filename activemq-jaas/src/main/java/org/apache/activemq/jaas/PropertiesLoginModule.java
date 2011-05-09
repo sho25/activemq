@@ -355,6 +355,8 @@ specifier|private
 name|boolean
 name|loginSucceeded
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|initialize
@@ -791,6 +793,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|login
@@ -1012,6 +1016,8 @@ return|return
 name|loginSucceeded
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|commit
@@ -1043,6 +1049,9 @@ expr_stmt|;
 for|for
 control|(
 name|Enumeration
+argument_list|<
+name|?
+argument_list|>
 name|enumeration
 init|=
 name|groups
@@ -1170,6 +1179,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|abort
@@ -1197,6 +1208,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|logout

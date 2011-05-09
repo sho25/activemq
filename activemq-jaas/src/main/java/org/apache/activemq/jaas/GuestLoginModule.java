@@ -269,6 +269,8 @@ specifier|private
 name|boolean
 name|loginSucceeded
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|initialize
@@ -428,6 +430,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|login
@@ -536,6 +540,8 @@ return|return
 name|loginSucceeded
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|commit
@@ -576,6 +582,8 @@ return|return
 name|loginSucceeded
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|abort
@@ -600,6 +608,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|logout

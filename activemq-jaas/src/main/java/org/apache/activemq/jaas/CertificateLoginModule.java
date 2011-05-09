@@ -249,6 +249,9 @@ name|username
 decl_stmt|;
 specifier|private
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|groups
 decl_stmt|;
 specifier|private
@@ -270,6 +273,8 @@ name|boolean
 name|debug
 decl_stmt|;
 comment|/**      * Overriding to allow for proper initialization. Standard JAAS.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|initialize
@@ -331,6 +336,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Overriding to allow for certificate-based login. Standard JAAS.      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|login
@@ -472,6 +479,8 @@ literal|true
 return|;
 block|}
 comment|/**      * Overriding to complete login process. Standard JAAS.      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|commit
@@ -490,38 +499,14 @@ name|username
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|String
-name|currentGroup
-init|=
-literal|null
-decl_stmt|;
 for|for
 control|(
-name|Iterator
-name|iter
-init|=
+name|String
+name|group
+range|:
 name|groups
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|currentGroup
-operator|=
-operator|(
-name|String
-operator|)
-name|iter
-operator|.
-name|next
-argument_list|()
-expr_stmt|;
 name|principals
 operator|.
 name|add
@@ -529,7 +514,7 @@ argument_list|(
 operator|new
 name|GroupPrincipal
 argument_list|(
-name|currentGroup
+name|group
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -565,6 +550,8 @@ literal|true
 return|;
 block|}
 comment|/**      * Standard JAAS override.      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|abort
@@ -593,6 +580,8 @@ literal|true
 return|;
 block|}
 comment|/**      * Standard JAAS override.      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|logout
@@ -664,6 +653,9 @@ comment|/**      * Should return a set of the groups this user belongs to. The g
 specifier|protected
 specifier|abstract
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|getUserGroups
 parameter_list|(
 specifier|final

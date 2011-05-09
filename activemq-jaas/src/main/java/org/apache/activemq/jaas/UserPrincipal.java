@@ -75,6 +75,8 @@ operator|=
 name|name
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -84,6 +86,8 @@ return|return
 name|name
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals
@@ -152,6 +156,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -176,6 +182,8 @@ return|return
 name|hash
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

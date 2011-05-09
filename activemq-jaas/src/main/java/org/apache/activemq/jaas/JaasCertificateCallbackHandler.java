@@ -110,6 +110,8 @@ name|certs
 expr_stmt|;
 block|}
 comment|/**      * Overriding handle method to handle certificates.      *       * @param callbacks The callbacks requested.      * @throws IOException      * @throws UnsupportedCallbackException Thrown if an unkown Callback type is      *                 encountered.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|handle

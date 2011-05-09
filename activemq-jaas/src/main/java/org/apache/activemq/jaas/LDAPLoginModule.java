@@ -81,7 +81,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
+name|List
 import|;
 end_import
 
@@ -563,6 +563,8 @@ name|GroupPrincipal
 argument_list|>
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|initialize
@@ -824,6 +826,8 @@ argument_list|)
 block|,         		}
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|login
@@ -1037,6 +1041,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|logout
@@ -1052,6 +1058,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|commit
@@ -1081,33 +1089,19 @@ name|username
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Iterator
-argument_list|<
+for|for
+control|(
 name|GroupPrincipal
-argument_list|>
-name|iter
-init|=
+name|gp
+range|:
 name|groups
-operator|.
-name|iterator
-argument_list|()
-decl_stmt|;
-while|while
-condition|(
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|)
+control|)
 block|{
 name|principals
 operator|.
 name|add
 argument_list|(
-name|iter
-operator|.
-name|next
-argument_list|()
+name|gp
 argument_list|)
 expr_stmt|;
 block|}
@@ -1115,6 +1109,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|abort
@@ -1282,7 +1278,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// setup attributes
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1342,6 +1338,9 @@ name|attribs
 argument_list|)
 expr_stmt|;
 name|NamingEnumeration
+argument_list|<
+name|SearchResult
+argument_list|>
 name|results
 init|=
 name|context
@@ -1378,9 +1377,6 @@ block|}
 name|SearchResult
 name|result
 init|=
-operator|(
-name|SearchResult
-operator|)
 name|results
 operator|.
 name|next
@@ -1491,7 +1487,7 @@ return|return
 literal|false
 return|;
 block|}
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1626,7 +1622,7 @@ literal|true
 return|;
 block|}
 specifier|protected
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1641,7 +1637,7 @@ parameter_list|,
 name|String
 name|username
 parameter_list|,
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1650,7 +1646,7 @@ parameter_list|)
 throws|throws
 name|NamingException
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1775,6 +1771,9 @@ argument_list|)
 expr_stmt|;
 block|}
 name|NamingEnumeration
+argument_list|<
+name|SearchResult
+argument_list|>
 name|results
 init|=
 name|context
@@ -1802,9 +1801,6 @@ block|{
 name|SearchResult
 name|result
 init|=
-operator|(
-name|SearchResult
-operator|)
 name|results
 operator|.
 name|next
@@ -2126,7 +2122,7 @@ name|isValid
 return|;
 block|}
 specifier|private
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -2138,7 +2134,7 @@ parameter_list|,
 name|Attributes
 name|attrs
 parameter_list|,
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -2201,6 +2197,9 @@ name|values
 return|;
 block|}
 name|NamingEnumeration
+argument_list|<
+name|?
+argument_list|>
 name|e
 init|=
 name|attr

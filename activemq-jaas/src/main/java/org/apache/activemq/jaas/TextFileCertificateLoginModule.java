@@ -177,6 +177,8 @@ name|String
 name|groupsFilePathname
 decl_stmt|;
 comment|/**      * Performs initialization of file paths. A standard JAAS override.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|initialize
@@ -277,6 +279,8 @@ literal|""
 expr_stmt|;
 block|}
 comment|/**      * Overriding to allow DN authorization based on DNs specified in text      * files.      *       * @param certs The certificate the incoming connection provided.      * @return The user's authenticated name or null if unable to authenticate      *         the user.      * @throws LoginException Thrown if unable to find user file or connection      *                 certificate.      */
+annotation|@
+name|Override
 specifier|protected
 name|String
 name|getUserNameForCertificates
@@ -392,6 +396,9 @@ decl_stmt|;
 for|for
 control|(
 name|Enumeration
+argument_list|<
+name|Object
+argument_list|>
 name|vals
 init|=
 name|users
@@ -448,6 +455,8 @@ literal|null
 return|;
 block|}
 comment|/**      * Overriding to allow for group discovery based on text files.      *       * @param username The name of the user being examined. This is the same      *                name returned by getUserNameForCertificates.      * @return A Set of name Strings for groups this user belongs to.      * @throws LoginException Thrown if unable to find group definition file.      */
+annotation|@
+name|Override
 specifier|protected
 name|Set
 argument_list|<
@@ -543,6 +552,9 @@ decl_stmt|;
 for|for
 control|(
 name|Enumeration
+argument_list|<
+name|Object
+argument_list|>
 name|enumeration
 init|=
 name|groups
