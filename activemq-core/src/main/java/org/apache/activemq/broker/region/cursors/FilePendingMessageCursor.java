@@ -1688,6 +1688,10 @@ name|isFull
 argument_list|()
 operator|||
 operator|(
+operator|!
+name|isDiskListEmpty
+argument_list|()
+operator|&&
 name|systemUsage
 operator|!=
 literal|null
