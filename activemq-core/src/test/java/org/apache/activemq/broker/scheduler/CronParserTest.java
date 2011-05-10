@@ -1910,7 +1910,21 @@ name|CronParser
 operator|.
 name|validate
 argument_list|(
-literal|"30 08 10 06 * "
+literal|"30 08 10 06 ? "
+argument_list|)
+expr_stmt|;
+name|CronParser
+operator|.
+name|validate
+argument_list|(
+literal|"30 08 ? 06 5 "
+argument_list|)
+expr_stmt|;
+name|CronParser
+operator|.
+name|validate
+argument_list|(
+literal|"30 08 ? 06 * "
 argument_list|)
 expr_stmt|;
 name|CronParser

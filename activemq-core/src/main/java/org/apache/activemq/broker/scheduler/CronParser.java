@@ -1734,6 +1734,7 @@ argument_list|()
 operator|==
 literal|1
 operator|&&
+operator|(
 name|token
 operator|.
 name|charAt
@@ -1742,6 +1743,16 @@ literal|0
 argument_list|)
 operator|==
 literal|'*'
+operator|||
+name|token
+operator|.
+name|charAt
+argument_list|(
+literal|0
+argument_list|)
+operator|==
+literal|'?'
+operator|)
 return|;
 block|}
 specifier|protected
