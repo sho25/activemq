@@ -598,8 +598,7 @@ name|eldest
 operator|.
 name|getValue
 argument_list|()
-name|instance
-name|of
+operator|instanceof
 name|MessagePull
 condition|)
 block|{
