@@ -6326,9 +6326,6 @@ name|boolean
 name|cancel
 parameter_list|()
 block|{
-name|releaseLocks
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|this
