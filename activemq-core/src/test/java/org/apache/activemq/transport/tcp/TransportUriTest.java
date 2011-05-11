@@ -640,7 +640,7 @@ operator|new
 name|Object
 index|[]
 block|{
-literal|"?tcpNoDelay=true&keepAlive=true"
+literal|"?tcpNoDelay=true&keepAlive=true&soLinger=0"
 block|}
 argument_list|)
 expr_stmt|;
