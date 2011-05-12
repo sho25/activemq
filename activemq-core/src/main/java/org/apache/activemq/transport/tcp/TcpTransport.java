@@ -578,8 +578,9 @@ specifier|private
 name|int
 name|soLinger
 init|=
-operator|-
-literal|1
+name|Integer
+operator|.
+name|MIN_VALUE
 decl_stmt|;
 specifier|private
 name|Boolean
@@ -1305,7 +1306,7 @@ operator|=
 name|keepAlive
 expr_stmt|;
 block|}
-comment|/**      * Enable soLinger with the specified soLinger      * @param soLinger enabled if> -1      */
+comment|/**      * Enable/disable soLinger      * @param soLinger enabled if> -1, disabled if == -1, system default otherwise      */
 specifier|public
 name|void
 name|setSoLinger
@@ -1560,7 +1561,7 @@ block|}
 if|if
 condition|(
 name|soLinger
-operator|!=
+operator|>
 operator|-
 literal|1
 condition|)
@@ -1572,6 +1573,25 @@ argument_list|(
 literal|true
 argument_list|,
 name|soLinger
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|soLinger
+operator|==
+operator|-
+literal|1
+condition|)
+block|{
+name|sock
+operator|.
+name|setSoLinger
+argument_list|(
+literal|false
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
