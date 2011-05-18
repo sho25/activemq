@@ -2374,6 +2374,16 @@ name|getPassword
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|remoteConnectionInfo
+operator|.
+name|setClientIp
+argument_list|(
+name|remoteBroker
+operator|.
+name|getRemoteAddress
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|remoteBroker
 operator|.
 name|oneway

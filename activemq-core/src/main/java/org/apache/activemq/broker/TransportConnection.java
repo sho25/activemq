@@ -4387,6 +4387,16 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|info
+operator|.
+name|getClientIp
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
 name|info
 operator|.
 name|setClientIp
@@ -4395,6 +4405,7 @@ name|getRemoteAddress
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 try|try
 block|{
 name|broker

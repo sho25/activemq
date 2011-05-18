@@ -568,6 +568,7 @@ operator|=
 name|failoverReconnect
 expr_stmt|;
 block|}
+comment|/**      * @openwire:property version=8      */
 specifier|public
 name|String
 name|getClientIp
