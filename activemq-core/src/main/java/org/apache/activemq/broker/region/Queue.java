@@ -167,18 +167,6 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|CopyOnWriteArraySet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
 name|CountDownLatch
 import|;
 end_import
@@ -770,7 +758,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The Queue is a List of MessageEntry objects that are dispatched to matching  * subscriptions.  *   *   */
+comment|/**  * The Queue is a List of MessageEntry objects that are dispatched to matching  * subscriptions.  *  *  */
 end_comment
 
 begin_class
@@ -5974,7 +5962,7 @@ operator|>
 literal|0
 return|;
 block|}
-comment|/**      * Removes the messages matching the given selector      *       * @return the number of messages removed      */
+comment|/**      * Removes the messages matching the given selector      *      * @return the number of messages removed      */
 specifier|public
 name|int
 name|removeMatchingMessages
@@ -5995,7 +5983,7 @@ literal|1
 argument_list|)
 return|;
 block|}
-comment|/**      * Removes the messages matching the given selector up to the maximum number      * of matched messages      *       * @return the number of messages removed      */
+comment|/**      * Removes the messages matching the given selector up to the maximum number      * of matched messages      *      * @return the number of messages removed      */
 specifier|public
 name|int
 name|removeMatchingMessages
@@ -6021,7 +6009,7 @@ name|maximumMessages
 argument_list|)
 return|;
 block|}
-comment|/**      * Removes the messages matching the given filter up to the maximum number      * of matched messages      *       * @return the number of messages removed      */
+comment|/**      * Removes the messages matching the given filter up to the maximum number      * of matched messages      *      * @return the number of messages removed      */
 specifier|public
 name|int
 name|removeMatchingMessages
@@ -6047,7 +6035,7 @@ argument_list|>
 name|set
 init|=
 operator|new
-name|CopyOnWriteArraySet
+name|HashSet
 argument_list|<
 name|MessageReference
 argument_list|>
@@ -6231,7 +6219,7 @@ operator|>
 literal|0
 return|;
 block|}
-comment|/**      * Copies the messages matching the given selector      *       * @return the number of messages copied      */
+comment|/**      * Copies the messages matching the given selector      *      * @return the number of messages copied      */
 specifier|public
 name|int
 name|copyMatchingMessagesTo
@@ -6262,7 +6250,7 @@ literal|1
 argument_list|)
 return|;
 block|}
-comment|/**      * Copies the messages matching the given selector up to the maximum number      * of matched messages      *       * @return the number of messages copied      */
+comment|/**      * Copies the messages matching the given selector up to the maximum number      * of matched messages      *      * @return the number of messages copied      */
 specifier|public
 name|int
 name|copyMatchingMessagesTo
@@ -6298,7 +6286,7 @@ name|maximumMessages
 argument_list|)
 return|;
 block|}
-comment|/**      * Copies the messages matching the given filter up to the maximum number of      * matched messages      *       * @return the number of messages copied      */
+comment|/**      * Copies the messages matching the given filter up to the maximum number of      * matched messages      *      * @return the number of messages copied      */
 specifier|public
 name|int
 name|copyMatchingMessages
@@ -6335,7 +6323,7 @@ argument_list|>
 name|set
 init|=
 operator|new
-name|CopyOnWriteArraySet
+name|HashSet
 argument_list|<
 name|MessageReference
 argument_list|>
@@ -6635,7 +6623,7 @@ operator|>
 literal|0
 return|;
 block|}
-comment|/**      * Moves the messages matching the given selector      *       * @return the number of messages removed      */
+comment|/**      * Moves the messages matching the given selector      *      * @return the number of messages removed      */
 specifier|public
 name|int
 name|moveMatchingMessagesTo
@@ -6735,7 +6723,7 @@ argument_list|>
 name|set
 init|=
 operator|new
-name|CopyOnWriteArraySet
+name|HashSet
 argument_list|<
 name|QueueMessageReference
 argument_list|>
@@ -10231,7 +10219,7 @@ return|return
 name|message
 return|;
 block|}
-comment|/**      * Find a consumer that matches the id in the message dispatch notification      *       * @param messageDispatchNotification      * @return sub or null if the subscription has been removed before dispatch      * @throws JMSException      */
+comment|/**      * Find a consumer that matches the id in the message dispatch notification      *      * @param messageDispatchNotification      * @return sub or null if the subscription has been removed before dispatch      * @throws JMSException      */
 specifier|private
 name|Subscription
 name|getMatchingSubscription
