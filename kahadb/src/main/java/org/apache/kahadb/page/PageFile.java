@@ -2489,7 +2489,7 @@ operator|.
 name|enablePageCaching
 return|;
 block|}
-comment|/**      * @param allows you to enable read page caching      */
+comment|/**      * @param enablePageCaching allows you to enable read page caching      */
 specifier|public
 name|void
 name|setEnablePageCaching
@@ -2520,7 +2520,7 @@ operator|.
 name|pageCacheSize
 return|;
 block|}
-comment|/**      * @param Sets the maximum number of pages that will get stored in the read page cache.      */
+comment|/**      * @param pageCacheSize Sets the maximum number of pages that will get stored in the read page cache.      */
 specifier|public
 name|void
 name|setPageCacheSize
@@ -2603,6 +2603,21 @@ parameter_list|()
 block|{
 return|return
 name|recoveryFileMinPageCount
+return|;
+block|}
+specifier|public
+name|long
+name|getFreePageCount
+parameter_list|()
+block|{
+name|assertLoaded
+argument_list|()
+expr_stmt|;
+return|return
+name|freeList
+operator|.
+name|size
+argument_list|()
 return|;
 block|}
 specifier|public
@@ -3551,7 +3566,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      *       * @param timeout      * @param unit      * @return true if there are still pending writes to do.      * @throws InterruptedException       * @throws IOException       */
+comment|/**      *       * @return true if there are still pending writes to do.      * @throws InterruptedException       * @throws IOException       */
 specifier|private
 name|void
 name|writeBatch

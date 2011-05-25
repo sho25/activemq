@@ -111,8 +111,14 @@ parameter_list|()
 block|{
 return|return
 name|head
+operator|!=
+literal|null
+condition|?
+name|head
 operator|.
 name|prev
+else|:
+literal|null
 return|;
 block|}
 specifier|public
