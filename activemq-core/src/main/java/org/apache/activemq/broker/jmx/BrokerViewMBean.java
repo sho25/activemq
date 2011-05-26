@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (for the reloadLog4jProperties method)  *   */
+comment|/**  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (for the reloadLog4jProperties method)  *  */
 end_comment
 
 begin_interface
@@ -80,7 +80,7 @@ name|String
 name|getBrokerVersion
 parameter_list|()
 function_decl|;
-comment|/**      * The Broker will fush it's caches so that the garbage collector can      * recalaim more memory.      *       * @throws Exception      */
+comment|/**      * The Broker will fush it's caches so that the garbage collector can      * recalaim more memory.      *      * @throws Exception      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -153,6 +153,15 @@ literal|"Number of message consumers subscribed to destinations on the broker."
 argument_list|)
 name|long
 name|getTotalConsumerCount
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of message producers active on destinations on the broker."
+argument_list|)
+name|long
+name|getTotalProducerCount
 parameter_list|()
 function_decl|;
 annotation|@
@@ -272,7 +281,7 @@ name|boolean
 name|isSlave
 parameter_list|()
 function_decl|;
-comment|/**      * Shuts down the JVM.      *       * @param exitCode the exit code that will be reported by the JVM process      *                when it exits.      */
+comment|/**      * Shuts down the JVM.      *      * @param exitCode the exit code that will be reported by the JVM process      *                when it exits.      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -428,6 +437,50 @@ function_decl|;
 annotation|@
 name|MBeanInfo
 argument_list|(
+literal|"Topic Producers."
+argument_list|)
+specifier|public
+name|ObjectName
+index|[]
+name|getTopicProducers
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Queue Producers."
+argument_list|)
+specifier|public
+name|ObjectName
+index|[]
+name|getQueueProducers
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Temporary Topic Producers."
+argument_list|)
+specifier|public
+name|ObjectName
+index|[]
+name|getTemporaryTopicProducers
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Temporary Queue Producers."
+argument_list|)
+specifier|public
+name|ObjectName
+index|[]
+name|getTemporaryQueueProducers
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
 literal|"Adds a Connector to the broker."
 argument_list|)
 name|String
@@ -501,7 +554,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Adds a Topic destination to the broker.      *       * @param name The name of the Topic      * @throws Exception      */
+comment|/**      * Adds a Topic destination to the broker.      *      * @param name The name of the Topic      * @throws Exception      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -521,7 +574,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Adds a Queue destination to the broker.      *       * @param name The name of the Queue      * @throws Exception      */
+comment|/**      * Adds a Queue destination to the broker.      *      * @param name The name of the Queue      * @throws Exception      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -541,7 +594,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Removes a Topic destination from the broker.      *       * @param name The name of the Topic      * @throws Exception      */
+comment|/**      * Removes a Topic destination from the broker.      *      * @param name The name of the Topic      * @throws Exception      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -561,7 +614,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Removes a Queue destination from the broker.      *       * @param name The name of the Queue      * @throws Exception      */
+comment|/**      * Removes a Queue destination from the broker.      *      * @param name The name of the Queue      * @throws Exception      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -581,7 +634,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Creates a new durable topic subscriber      *       * @param clientId the JMS client ID      * @param subscriberName the durable subscriber name      * @param topicName the name of the topic to subscribe to      * @param selector a selector or null      * @return the object name of the MBean registered in JMX      */
+comment|/**      * Creates a new durable topic subscriber      *      * @param clientId the JMS client ID      * @param subscriberName the durable subscriber name      * @param topicName the name of the topic to subscribe to      * @param selector a selector or null      * @return the object name of the MBean registered in JMX      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -627,7 +680,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Destroys a durable subscriber      *       * @param clientId the JMS client ID      * @param subscriberName the durable subscriber name      */
+comment|/**      * Destroys a durable subscriber      *      * @param clientId the JMS client ID      * @param subscriberName the durable subscriber name      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -657,7 +710,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Reloads log4j.properties from the classpath.      * This methods calls org.apache.activemq.transport.TransportLoggerControl.reloadLog4jProperties      * @throws Throwable       */
+comment|/**      * Reloads log4j.properties from the classpath.      * This methods calls org.apache.activemq.transport.TransportLoggerControl.reloadLog4jProperties      * @throws Throwable      */
 annotation|@
 name|MBeanInfo
 argument_list|(
