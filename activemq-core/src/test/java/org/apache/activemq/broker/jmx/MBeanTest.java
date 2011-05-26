@@ -631,10 +631,18 @@ argument_list|)
 expr_stmt|;
 comment|// test all the various MBeans now we have a producer, consumer and
 comment|// messages on a queue
-comment|//        assertSendViaMBean();
-comment|//        assertQueueBrowseWorks();
-comment|//        assertCreateAndDestroyDurableSubscriptions();
-comment|//        assertConsumerCounts();
+name|assertSendViaMBean
+argument_list|()
+expr_stmt|;
+name|assertQueueBrowseWorks
+argument_list|()
+expr_stmt|;
+name|assertCreateAndDestroyDurableSubscriptions
+argument_list|()
+expr_stmt|;
+name|assertConsumerCounts
+argument_list|()
+expr_stmt|;
 name|assertProducerCounts
 argument_list|()
 expr_stmt|;
