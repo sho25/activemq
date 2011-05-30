@@ -174,7 +174,7 @@ throw|throw
 operator|new
 name|JMSException
 argument_list|(
-literal|"The resource is allready being used in transaction context."
+literal|"The resource is already being used in transaction context."
 argument_list|)
 throw|;
 block|}
