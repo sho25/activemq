@@ -462,6 +462,16 @@ argument_list|(
 literal|"Connecting to URL: "
 operator|+
 name|url
+operator|+
+literal|" ("
+operator|+
+name|user
+operator|+
+literal|":"
+operator|+
+name|password
+operator|+
+literal|")"
 argument_list|)
 expr_stmt|;
 name|System
