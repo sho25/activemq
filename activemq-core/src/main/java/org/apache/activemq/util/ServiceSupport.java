@@ -218,6 +218,13 @@ name|success
 init|=
 literal|false
 decl_stmt|;
+name|stopped
+operator|.
+name|set
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|doStart

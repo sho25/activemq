@@ -1089,6 +1089,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|bridges
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 try|try
 block|{
 name|this
