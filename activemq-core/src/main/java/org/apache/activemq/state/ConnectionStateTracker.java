@@ -261,20 +261,6 @@ name|activemq
 operator|.
 name|command
 operator|.
-name|MessageId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|MessagePull
 import|;
 end_import
@@ -449,6 +435,14 @@ argument_list|(
 literal|null
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MESSAGE_PULL_SIZE
+init|=
+literal|400
+decl_stmt|;
 specifier|protected
 specifier|final
 name|ConcurrentHashMap
@@ -604,7 +598,7 @@ condition|)
 block|{
 name|currentCacheSize
 operator|-=
-literal|400
+name|MESSAGE_PULL_SIZE
 expr_stmt|;
 block|}
 block|}
@@ -851,7 +845,7 @@ block|{
 comment|// just needs to be a rough estimate of size, ~4 identifiers
 name|currentCacheSize
 operator|+=
-literal|400
+name|MESSAGE_PULL_SIZE
 expr_stmt|;
 block|}
 block|}
@@ -2639,9 +2633,6 @@ name|getMessageId
 argument_list|()
 argument_list|,
 name|send
-operator|.
-name|copy
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
