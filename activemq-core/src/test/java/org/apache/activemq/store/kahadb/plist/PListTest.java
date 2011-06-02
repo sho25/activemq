@@ -93,6 +93,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|LinkedHashMap
 import|;
 end_import
@@ -585,7 +595,7 @@ argument_list|,
 name|COUNT
 argument_list|)
 expr_stmt|;
-name|int
+name|long
 name|count
 init|=
 name|plist
@@ -812,7 +822,7 @@ name|remove
 argument_list|(
 name|entry
 operator|.
-name|copy
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -966,16 +976,6 @@ argument_list|,
 name|plist
 operator|.
 name|size
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertNull
-argument_list|(
-literal|"no first entry"
-argument_list|,
-name|plist
-operator|.
-name|getFirst
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1958,7 +1958,7 @@ specifier|final
 name|int
 name|iterations
 init|=
-literal|500
+literal|5000
 decl_stmt|;
 specifier|final
 name|int
@@ -1968,6 +1968,13 @@ literal|10
 decl_stmt|;
 comment|// prime the store
 comment|// create/delete
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"create"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -2001,6 +2008,13 @@ name|run
 argument_list|()
 expr_stmt|;
 block|}
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"delete"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -2034,7 +2048,13 @@ name|run
 argument_list|()
 expr_stmt|;
 block|}
-comment|// fill
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"fill"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -2068,7 +2088,13 @@ name|run
 argument_list|()
 expr_stmt|;
 block|}
-comment|// empty
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"remove"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -2102,7 +2128,57 @@ name|run
 argument_list|()
 expr_stmt|;
 block|}
-comment|// empty
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"check empty"
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|numLists
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|assertEquals
+argument_list|(
+literal|"empty "
+operator|+
+name|i
+argument_list|,
+literal|0
+argument_list|,
+name|store
+operator|.
+name|getPList
+argument_list|(
+literal|"List-"
+operator|+
+name|i
+argument_list|)
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"delete again"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -2136,7 +2212,13 @@ name|run
 argument_list|()
 expr_stmt|;
 block|}
-comment|// fill
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"fill again"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -2170,7 +2252,13 @@ name|run
 argument_list|()
 expr_stmt|;
 block|}
-comment|// parallel
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"parallel add and remove"
+argument_list|)
+expr_stmt|;
 name|ExecutorService
 name|executor
 init|=
@@ -2178,7 +2266,9 @@ name|Executors
 operator|.
 name|newFixedThreadPool
 argument_list|(
-literal|100
+name|numLists
+operator|*
+literal|2
 argument_list|)
 decl_stmt|;
 for|for
@@ -2233,6 +2323,13 @@ operator|.
 name|shutdown
 argument_list|()
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"wait for parallel work to complete"
+argument_list|)
+expr_stmt|;
 name|executor
 operator|.
 name|awaitTermination
@@ -2248,7 +2345,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"no excepitons"
+literal|"no exceptions"
 argument_list|,
 name|exceptions
 operator|.
@@ -2458,9 +2555,11 @@ name|int
 name|j
 init|=
 name|iterations
+operator|-
+literal|1
 init|;
 name|j
-operator|>
+operator|>=
 literal|0
 condition|;
 name|j
@@ -2525,29 +2624,36 @@ operator|+
 name|id
 argument_list|)
 expr_stmt|;
+name|Iterator
+argument_list|<
 name|PListEntry
-name|element
+argument_list|>
+name|iterator
 init|=
 name|plist
 operator|.
-name|getFirst
+name|iterator
 argument_list|()
+decl_stmt|;
+name|PListEntry
+name|element
+init|=
+literal|null
 decl_stmt|;
 while|while
 condition|(
-name|element
-operator|!=
-literal|null
+name|iterator
+operator|.
+name|hasNext
+argument_list|()
 condition|)
 block|{
 name|element
 operator|=
-name|plist
+name|iterator
 operator|.
-name|getNext
-argument_list|(
-name|element
-argument_list|)
+name|next
+argument_list|()
 expr_stmt|;
 block|}
 break|break;

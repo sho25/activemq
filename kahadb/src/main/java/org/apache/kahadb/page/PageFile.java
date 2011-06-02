@@ -399,6 +399,29 @@ literal|1000
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_PAGE_CACHE_SIZE
+init|=
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"defaultPageCacheSize"
+argument_list|,
+literal|""
+operator|+
+literal|100
+argument_list|)
+argument_list|)
+decl_stmt|;
+empty_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -525,7 +548,7 @@ specifier|private
 name|int
 name|pageCacheSize
 init|=
-literal|100
+name|DEFAULT_PAGE_CACHE_SIZE
 decl_stmt|;
 comment|// Should first log the page write to the recovery buffer? Avoids partial
 comment|// page write failures..
@@ -2616,7 +2639,7 @@ expr_stmt|;
 return|return
 name|freeList
 operator|.
-name|size
+name|rangeSize
 argument_list|()
 return|;
 block|}

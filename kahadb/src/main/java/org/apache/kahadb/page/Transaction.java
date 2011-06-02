@@ -476,7 +476,7 @@ return|return
 name|rc
 return|;
 block|}
-comment|/**      * Frees up a previously allocated page so that it can be re-allocated again.      *       * @param page the page to free up      * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
+comment|/**      * Frees up a previously allocated page so that it can be re-allocated again.      *       * @param pageId the page to free up      * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
 specifier|public
 name|void
 name|free
@@ -498,7 +498,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Frees up a previously allocated sequence of pages so that it can be re-allocated again.      *       * @param page the initial page of the sequence that will be getting freed      * @param count the number of pages in the sequence      *       * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
+comment|/**      * Frees up a previously allocated sequence of pages so that it can be re-allocated again.      *       * @param pageId the initial page of the sequence that will be getting freed      * @param count the number of pages in the sequence      *       * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
 specifier|public
 name|void
 name|free
@@ -686,6 +686,17 @@ operator|.
 name|makeFree
 argument_list|(
 name|getWriteTransactionId
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// ensure free page is visible while write is pending
+name|pageFile
+operator|.
+name|addToCache
+argument_list|(
+name|page
+operator|.
+name|copy
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1602,12 +1613,14 @@ throw|throw
 operator|new
 name|EOFException
 argument_list|(
-literal|"Chunk stream does not exist at page: "
+literal|"Chunk stream does not exist, page: "
 operator|+
 name|page
 operator|.
 name|getPageId
 argument_list|()
+operator|+
+literal|" is marked free"
 argument_list|)
 throw|;
 block|}
@@ -2071,7 +2084,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Allows you to iterate through all active Pages in this object.  You can optionally include free pages in the pages      * iterated.      *       * @param includeFreePages - if true, free pages are included in the iteration      * @param tx - if not null, then the remove() opeation on the Iterator will operate in scope of that transaction.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
+comment|/**      * Allows you to iterate through all active Pages in this object.  You can optionally include free pages in the pages      * iterated.      *       * @param includeFreePages - if true, free pages are included in the iteration      * @throws IllegalStateException      *         if the PageFile is not loaded      */
 specifier|public
 name|Iterator
 argument_list|<

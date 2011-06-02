@@ -3533,7 +3533,7 @@ name|context
 argument_list|,
 name|memoryUsage
 argument_list|,
-literal|"Usage Manager Memory Limit is full. Producer ("
+literal|"Usage Manager Memory Limit reached. Producer ("
 operator|+
 name|message
 operator|.
@@ -4020,7 +4020,7 @@ specifier|final
 name|String
 name|logMessage
 init|=
-literal|"Usage Manager Store is Full, "
+literal|"Persistent store is Full, "
 operator|+
 name|getStoreUsageHighWaterMark
 argument_list|()
@@ -4094,7 +4094,7 @@ specifier|final
 name|String
 name|logMessage
 init|=
-literal|"Usage Manager Temp Store is Full ("
+literal|"Temp Store is Full ("
 operator|+
 name|systemUsage
 operator|.

@@ -2074,7 +2074,11 @@ argument_list|()
 operator|.
 name|debug
 argument_list|(
-literal|"sendFailIfNoSpace, forcing exception on send: "
+literal|"sendFailIfNoSpace, forcing exception on send, usage:  "
+operator|+
+name|usage
+operator|+
+literal|": "
 operator|+
 name|warning
 argument_list|)
@@ -2118,7 +2122,11 @@ argument_list|()
 operator|.
 name|debug
 argument_list|(
-literal|"sendFailIfNoSpaceAfterTimeout expired, forcing exception on send: "
+literal|"sendFailIfNoSpaceAfterTimeout expired, forcing exception on send, usage: "
+operator|+
+name|usage
+operator|+
+literal|": "
 operator|+
 name|warning
 argument_list|)
@@ -2199,6 +2207,12 @@ argument_list|()
 operator|.
 name|info
 argument_list|(
+literal|""
+operator|+
+name|usage
+operator|+
+literal|": "
+operator|+
 name|warning
 operator|+
 literal|" (blocking for: "

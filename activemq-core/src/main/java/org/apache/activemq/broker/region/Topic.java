@@ -1742,14 +1742,9 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Usage Manager memory limit ("
-operator|+
 name|memoryUsage
-operator|.
-name|getLimit
-argument_list|()
 operator|+
-literal|") reached for "
+literal|", Usage Manager memory limit reached for "
 operator|+
 name|getActiveMQDestination
 argument_list|()
@@ -1786,7 +1781,7 @@ operator|.
 name|getLimit
 argument_list|()
 operator|+
-literal|") reached. Stopping producer ("
+literal|") reached. Rejecting send for producer ("
 operator|+
 name|message
 operator|.
@@ -2125,7 +2120,7 @@ name|context
 argument_list|,
 name|memoryUsage
 argument_list|,
-literal|"Usage Manager memory limit reached. Stopping producer ("
+literal|"Usage Manager Memory Usage limit reached. Stopping producer ("
 operator|+
 name|message
 operator|.
@@ -2324,7 +2319,7 @@ specifier|final
 name|String
 name|logMessage
 init|=
-literal|"Usage Manager Store is Full, "
+literal|"Persistent store is Full, "
 operator|+
 name|getStoreUsageHighWaterMark
 argument_list|()
