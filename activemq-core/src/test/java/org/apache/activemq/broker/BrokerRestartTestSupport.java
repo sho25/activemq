@@ -202,7 +202,17 @@ parameter_list|(
 name|BrokerService
 name|broker
 parameter_list|)
-block|{     }
+throws|throws
+name|Exception
+block|{
+name|broker
+operator|.
+name|setDestinationPolicy
+argument_list|(
+name|policyMap
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Simulates a broker restart. The memory based persistence adapter is      * reused so that it does not "loose" it's "persistent" messages.      *       * @throws IOException      * @throws URISyntaxException      */
 specifier|protected
 name|void

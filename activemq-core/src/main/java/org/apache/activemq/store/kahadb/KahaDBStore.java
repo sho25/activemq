@@ -2881,9 +2881,10 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+comment|// recovery may involve expiry which will modify
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|lock
@@ -3023,7 +3024,7 @@ finally|finally
 block|{
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|unlock
