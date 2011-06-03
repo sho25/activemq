@@ -86,7 +86,7 @@ name|void
 name|resetStatistics
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the source address for this connection      *       * @return the souce address for this connection      */
+comment|/**      * Returns the source address for this connection      *       * @return the source address for this connection      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -94,6 +94,17 @@ literal|"Source address for this connection"
 argument_list|)
 name|String
 name|getRemoteAddress
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the number of messages to be dispatched to this connection      * @return the  number of messages pending dispatch      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The number of messages pending dispatch"
+argument_list|)
+specifier|public
+name|int
+name|getDispatchQueueSize
 parameter_list|()
 function_decl|;
 block|}

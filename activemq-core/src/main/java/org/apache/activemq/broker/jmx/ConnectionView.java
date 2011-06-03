@@ -135,6 +135,18 @@ name|isActive
 argument_list|()
 return|;
 block|}
+specifier|public
+name|int
+name|getDispatchQueueSize
+parameter_list|()
+block|{
+return|return
+name|connection
+operator|.
+name|getDispatchQueueSize
+argument_list|()
+return|;
+block|}
 comment|/**      * Resets the statistics      */
 specifier|public
 name|void
