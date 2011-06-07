@@ -472,6 +472,13 @@ name|buffOut
 init|=
 literal|null
 decl_stmt|;
+specifier|protected
+name|int
+name|maxFrameSize
+init|=
+literal|104857600
+decl_stmt|;
+comment|//100MB
 comment|/**      * The Traffic Class to be set on the socket.      */
 specifier|protected
 name|int
@@ -1214,6 +1221,30 @@ block|{
 return|return
 name|socketBufferSize
 return|;
+block|}
+specifier|public
+name|int
+name|getMaxFrameSize
+parameter_list|()
+block|{
+return|return
+name|maxFrameSize
+return|;
+block|}
+specifier|public
+name|void
+name|setMaxFrameSize
+parameter_list|(
+name|int
+name|maxFrameSize
+parameter_list|)
+block|{
+name|this
+operator|.
+name|maxFrameSize
+operator|=
+name|maxFrameSize
+expr_stmt|;
 block|}
 comment|/**      * Sets the buffer size to use on the socket      */
 specifier|public
