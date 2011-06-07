@@ -481,6 +481,17 @@ function_decl|;
 annotation|@
 name|MBeanInfo
 argument_list|(
+literal|"Dynamic Destination Producers."
+argument_list|)
+specifier|public
+name|ObjectName
+index|[]
+name|getDynamicDestinationProducers
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
 literal|"Adds a Connector to the broker."
 argument_list|)
 name|String
