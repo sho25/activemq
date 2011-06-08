@@ -5120,7 +5120,7 @@ condition|)
 block|{
 name|destinationType
 operator|+=
-literal|"dynamic"
+literal|"Dynamic"
 expr_stmt|;
 name|destinationName
 operator|=
