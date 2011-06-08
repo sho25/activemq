@@ -543,252 +543,1604 @@ name|class
 argument_list|)
 expr_stmt|;
 block|}
-comment|//    public void testConnectors() throws Exception{
-comment|//        ObjectName brokerName = assertRegisteredObjectName(domain + ":Type=Broker,BrokerName=localhost");
-comment|//        BrokerViewMBean broker = (BrokerViewMBean)MBeanServerInvocationHandler.newProxyInstance(mbeanServer, brokerName, BrokerViewMBean.class, true);
-comment|//        assertEquals("openwire URL port doesn't equal bind Address", new URI(broker.getOpenWireURL()).getPort(), new URI(this.bindAddress).getPort());
-comment|//
-comment|//    }
-comment|//
-comment|//    public void testMBeans() throws Exception {
-comment|//        connection = connectionFactory.createConnection();
-comment|//        useConnection(connection);
-comment|//
-comment|//        // test all the various MBeans now we have a producer, consumer and
-comment|//        // messages on a queue
-comment|//        assertSendViaMBean();
-comment|//        assertQueueBrowseWorks();
-comment|//        assertCreateAndDestroyDurableSubscriptions();
-comment|//        assertConsumerCounts();
-comment|//        assertProducerCounts();
-comment|//    }
-comment|//
-comment|//    public void testMoveMessages() throws Exception {
-comment|//        connection = connectionFactory.createConnection();
-comment|//        useConnection(connection);
-comment|//
-comment|//        ObjectName queueViewMBeanName = assertRegisteredObjectName(domain + ":Type=Queue,Destination=" + getDestinationString() + ",BrokerName=localhost");
-comment|//
-comment|//        QueueViewMBean queue = (QueueViewMBean)MBeanServerInvocationHandler.newProxyInstance(mbeanServer, queueViewMBeanName, QueueViewMBean.class, true);
-comment|//
-comment|//        CompositeData[] compdatalist = queue.browse();
-comment|//        int initialQueueSize = compdatalist.length;
-comment|//        if (initialQueueSize == 0) {
-comment|//            fail("There is no message in the queue:");
-comment|//        }
-comment|//        else {
-comment|//            echo("Current queue size: " + initialQueueSize);
-comment|//        }
-comment|//        int messageCount = initialQueueSize;
-comment|//        String[] messageIDs = new String[messageCount];
-comment|//        for (int i = 0; i< messageCount; i++) {
-comment|//            CompositeData cdata = compdatalist[i];
-comment|//            String messageID = (String) cdata.get("JMSMessageID");
-comment|//            assertNotNull("Should have a message ID for message " + i, messageID);
-comment|//            messageIDs[i] = messageID;
-comment|//        }
-comment|//
-comment|//        assertTrue("dest has some memory usage", queue.getMemoryPercentUsage()> 0);
-comment|//
-comment|//        echo("About to move " + messageCount + " messages");
-comment|//
-comment|//        String newDestination = getSecondDestinationString();
-comment|//        for (String messageID : messageIDs) {
-comment|//            echo("Moving message: " + messageID);
-comment|//            queue.moveMessageTo(messageID, newDestination);
-comment|//        }
-comment|//
-comment|//        echo("Now browsing the queue");
-comment|//        compdatalist = queue.browse();
-comment|//        int actualCount = compdatalist.length;
-comment|//        echo("Current queue size: " + actualCount);
-comment|//        assertEquals("Should now have empty queue but was", initialQueueSize - messageCount, actualCount);
-comment|//
-comment|//        echo("Now browsing the second queue");
-comment|//
-comment|//        queueViewMBeanName = assertRegisteredObjectName(domain + ":Type=Queue,Destination=" + newDestination + ",BrokerName=localhost");
-comment|//        QueueViewMBean queueNew = (QueueViewMBean)MBeanServerInvocationHandler.newProxyInstance(mbeanServer, queueViewMBeanName, QueueViewMBean.class, true);
-comment|//
-comment|//        long newQueuesize = queueNew.getQueueSize();
-comment|//        echo("Second queue size: " + newQueuesize);
-comment|//        assertEquals("Unexpected number of messages ",messageCount, newQueuesize);
-comment|//
-comment|//        // check memory usage migration
-comment|//        assertTrue("new dest has some memory usage", queueNew.getMemoryPercentUsage()> 0);
-comment|//        assertEquals("old dest has no memory usage", 0, queue.getMemoryPercentUsage());
-comment|//        assertTrue("use cache", queueNew.isUseCache());
-comment|//        assertTrue("cache enabled", queueNew.isCacheEnabled());
-comment|//    }
-comment|//
-comment|//    public void testRemoveMessages() throws Exception {
-comment|//        ObjectName brokerName = assertRegisteredObjectName(domain + ":Type=Broker,BrokerName=localhost");
-comment|//        BrokerViewMBean broker = (BrokerViewMBean)MBeanServerInvocationHandler.newProxyInstance(mbeanServer, brokerName, BrokerViewMBean.class, true);
-comment|//        broker.addQueue(getDestinationString());
-comment|//
-comment|//        ObjectName queueViewMBeanName = assertRegisteredObjectName(domain + ":Type=Queue,Destination=" + getDestinationString() + ",BrokerName=localhost");
-comment|//
-comment|//        QueueViewMBean queue = (QueueViewMBean)MBeanServerInvocationHandler.newProxyInstance(mbeanServer, queueViewMBeanName, QueueViewMBean.class, true);
-comment|//        String msg1 = queue.sendTextMessage("message 1");
-comment|//        String msg2 = queue.sendTextMessage("message 2");
-comment|//
-comment|//        assertTrue(queue.removeMessage(msg2));
-comment|//
-comment|//        connection = connectionFactory.createConnection();
-comment|//        connection.start();
-comment|//        Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-comment|//        ActiveMQDestination dest = createDestination();
-comment|//
-comment|//        MessageConsumer consumer = session.createConsumer(dest);
-comment|//        Message message = consumer.receive(1000);
-comment|//        assertNotNull(message);
-comment|//        assertEquals(msg1, message.getJMSMessageID());
-comment|//
-comment|//        String msg3 = queue.sendTextMessage("message 3");
-comment|//        message = consumer.receive(1000);
-comment|//        assertNotNull(message);
-comment|//        assertEquals(msg3, message.getJMSMessageID());
-comment|//
-comment|//        message = consumer.receive(1000);
-comment|//        assertNull(message);
-comment|//
-comment|//    }
-comment|//
-comment|//    public void testRetryMessages() throws Exception {
-comment|//        // lets speed up redelivery
-comment|//        ActiveMQConnectionFactory factory = (ActiveMQConnectionFactory) connectionFactory;
-comment|//        factory.getRedeliveryPolicy().setCollisionAvoidancePercent((short) 0);
-comment|//        factory.getRedeliveryPolicy().setMaximumRedeliveries(1);
-comment|//        factory.getRedeliveryPolicy().setInitialRedeliveryDelay(0);
-comment|//        factory.getRedeliveryPolicy().setUseCollisionAvoidance(false);
-comment|//        factory.getRedeliveryPolicy().setUseExponentialBackOff(false);
-comment|//        factory.getRedeliveryPolicy().setBackOffMultiplier((short) 0);
-comment|//
-comment|//        connection = connectionFactory.createConnection();
-comment|//        useConnection(connection);
-comment|//
-comment|//
-comment|//        ObjectName queueViewMBeanName = assertRegisteredObjectName(domain + ":Type=Queue,Destination=" + getDestinationString() + ",BrokerName=localhost");
-comment|//        QueueViewMBean queue = (QueueViewMBean)MBeanServerInvocationHandler.newProxyInstance(mbeanServer, queueViewMBeanName, QueueViewMBean.class, true);
-comment|//
-comment|//        long initialQueueSize = queue.getQueueSize();
-comment|//        echo("current queue size: " + initialQueueSize);
-comment|//        assertTrue("dest has some memory usage", queue.getMemoryPercentUsage()> 0);
-comment|//
-comment|//        // lets create a duff consumer which keeps rolling back...
-comment|//        Session session = connection.createSession(true, Session.SESSION_TRANSACTED);
-comment|//        MessageConsumer consumer = session.createConsumer(new ActiveMQQueue(getDestinationString()));
-comment|//        Message message = consumer.receive(5000);
-comment|//        while (message != null) {
-comment|//            echo("Message: " + message.getJMSMessageID() + " redelivered " + message.getJMSRedelivered() + " counter " + message.getObjectProperty("JMSXDeliveryCount"));
-comment|//            session.rollback();
-comment|//            message = consumer.receive(2000);
-comment|//        }
-comment|//        consumer.close();
-comment|//        session.close();
-comment|//
-comment|//
-comment|//        // now lets get the dead letter queue
-comment|//        Thread.sleep(1000);
-comment|//
-comment|//        ObjectName dlqQueueViewMBeanName = assertRegisteredObjectName(domain + ":Type=Queue,Destination=" + SharedDeadLetterStrategy.DEFAULT_DEAD_LETTER_QUEUE_NAME + ",BrokerName=localhost");
-comment|//        QueueViewMBean dlq = (QueueViewMBean)MBeanServerInvocationHandler.newProxyInstance(mbeanServer, dlqQueueViewMBeanName, QueueViewMBean.class, true);
-comment|//
-comment|//        long initialDlqSize = dlq.getQueueSize();
-comment|//        CompositeData[] compdatalist = dlq.browse();
-comment|//        int dlqQueueSize = compdatalist.length;
-comment|//        if (dlqQueueSize == 0) {
-comment|//            fail("There are no messages in the queue:");
-comment|//        }
-comment|//        else {
-comment|//            echo("Current DLQ queue size: " + dlqQueueSize);
-comment|//        }
-comment|//        int messageCount = dlqQueueSize;
-comment|//        String[] messageIDs = new String[messageCount];
-comment|//        for (int i = 0; i< messageCount; i++) {
-comment|//            CompositeData cdata = compdatalist[i];
-comment|//            String messageID = (String) cdata.get("JMSMessageID");
-comment|//            assertNotNull("Should have a message ID for message " + i, messageID);
-comment|//            messageIDs[i] = messageID;
-comment|//        }
-comment|//
-comment|//        int dlqMemUsage = dlq.getMemoryPercentUsage();
-comment|//        assertTrue("dlq has some memory usage", dlqMemUsage> 0);
-comment|//        assertEquals("dest has no memory usage", 0, queue.getMemoryPercentUsage());
-comment|//
-comment|//
-comment|//        echo("About to retry " + messageCount + " messages");
-comment|//
-comment|//        for (String messageID : messageIDs) {
-comment|//            echo("Retrying message: " + messageID);
-comment|//            dlq.retryMessage(messageID);
-comment|//        }
-comment|//
-comment|//        long queueSize = queue.getQueueSize();
-comment|//        compdatalist = queue.browse();
-comment|//        int actualCount = compdatalist.length;
-comment|//        echo("Orginal queue size is now " + queueSize);
-comment|//        echo("Original browse queue size: " + actualCount);
-comment|//
-comment|//        long dlqSize = dlq.getQueueSize();
-comment|//        echo("DLQ size: " + dlqSize);
-comment|//
-comment|//        assertEquals("DLQ size", initialDlqSize - messageCount, dlqSize);
-comment|//        assertEquals("queue size", initialQueueSize, queueSize);
-comment|//        assertEquals("browse queue size", initialQueueSize, actualCount);
-comment|//
-comment|//        assertEquals("dest has some memory usage", dlqMemUsage, queue.getMemoryPercentUsage());
-comment|//    }
-comment|//
-comment|//    public void testMoveMessagesBySelector() throws Exception {
-comment|//        connection = connectionFactory.createConnection();
-comment|//        useConnection(connection);
-comment|//
-comment|//        ObjectName queueViewMBeanName = assertRegisteredObjectName(domain + ":Type=Queue,Destination=" + getDestinationString() + ",BrokerName=localhost");
-comment|//
-comment|//        QueueViewMBean queue = (QueueViewMBean)MBeanServerInvocationHandler.newProxyInstance(mbeanServer, queueViewMBeanName, QueueViewMBean.class, true);
-comment|//
-comment|//        String newDestination = getSecondDestinationString();
-comment|//        queue.moveMatchingMessagesTo("counter> 2", newDestination);
-comment|//
-comment|//        queueViewMBeanName = assertRegisteredObjectName(domain + ":Type=Queue,Destination=" + newDestination + ",BrokerName=localhost");
-comment|//
-comment|//        queue = (QueueViewMBean)MBeanServerInvocationHandler.newProxyInstance(mbeanServer, queueViewMBeanName, QueueViewMBean.class, true);
-comment|//        int movedSize = MESSAGE_COUNT-3;
-comment|//        assertEquals("Unexpected number of messages ",movedSize,queue.getQueueSize());
-comment|//
-comment|//        // now lets remove them by selector
-comment|//        queue.removeMatchingMessages("counter> 2");
-comment|//
-comment|//        assertEquals("Should have no more messages in the queue: " + queueViewMBeanName, 0, queue.getQueueSize());
-comment|//        assertEquals("dest has no memory usage", 0, queue.getMemoryPercentUsage());
-comment|//    }
-comment|//
-comment|//    public void testCopyMessagesBySelector() throws Exception {
-comment|//        connection = connectionFactory.createConnection();
-comment|//        useConnection(connection);
-comment|//
-comment|//        ObjectName queueViewMBeanName = assertRegisteredObjectName(domain + ":Type=Queue,Destination=" + getDestinationString() + ",BrokerName=localhost");
-comment|//
-comment|//        QueueViewMBean queue = (QueueViewMBean)MBeanServerInvocationHandler.newProxyInstance(mbeanServer, queueViewMBeanName, QueueViewMBean.class, true);
-comment|//
-comment|//        String newDestination = getSecondDestinationString();
-comment|//        long queueSize = queue.getQueueSize();
-comment|//        queue.copyMatchingMessagesTo("counter> 2", newDestination);
-comment|//
-comment|//
-comment|//
-comment|//        queueViewMBeanName = assertRegisteredObjectName(domain + ":Type=Queue,Destination=" + newDestination + ",BrokerName=localhost");
-comment|//
-comment|//        queue = (QueueViewMBean)MBeanServerInvocationHandler.newProxyInstance(mbeanServer, queueViewMBeanName, QueueViewMBean.class, true);
-comment|//
-comment|//        LOG.info("Queue: " + queueViewMBeanName + " now has: " + queue.getQueueSize() + " message(s)");
-comment|//        assertEquals("Expected messages in a queue: " + queueViewMBeanName, MESSAGE_COUNT-3, queue.getQueueSize());
-comment|//        // now lets remove them by selector
-comment|//        queue.removeMatchingMessages("counter> 2");
-comment|//
-comment|//        assertEquals("Should have no more messages in the queue: " + queueViewMBeanName, 0, queue.getQueueSize());
-comment|//        assertEquals("dest has no memory usage", 0, queue.getMemoryPercentUsage());
-comment|//    }
+specifier|public
+name|void
+name|testConnectors
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|ObjectName
+name|brokerName
+init|=
+name|assertRegisteredObjectName
+argument_list|(
+name|domain
+operator|+
+literal|":Type=Broker,BrokerName=localhost"
+argument_list|)
+decl_stmt|;
+name|BrokerViewMBean
+name|broker
+init|=
+operator|(
+name|BrokerViewMBean
+operator|)
+name|MBeanServerInvocationHandler
+operator|.
+name|newProxyInstance
+argument_list|(
+name|mbeanServer
+argument_list|,
+name|brokerName
+argument_list|,
+name|BrokerViewMBean
+operator|.
+name|class
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"openwire URL port doesn't equal bind Address"
+argument_list|,
+operator|new
+name|URI
+argument_list|(
+name|broker
+operator|.
+name|getOpenWireURL
+argument_list|()
+argument_list|)
+operator|.
+name|getPort
+argument_list|()
+argument_list|,
+operator|new
+name|URI
+argument_list|(
+name|this
+operator|.
+name|bindAddress
+argument_list|)
+operator|.
+name|getPort
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testMBeans
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|connection
+operator|=
+name|connectionFactory
+operator|.
+name|createConnection
+argument_list|()
+expr_stmt|;
+name|useConnection
+argument_list|(
+name|connection
+argument_list|)
+expr_stmt|;
+comment|// test all the various MBeans now we have a producer, consumer and
+comment|// messages on a queue
+name|assertSendViaMBean
+argument_list|()
+expr_stmt|;
+name|assertQueueBrowseWorks
+argument_list|()
+expr_stmt|;
+name|assertCreateAndDestroyDurableSubscriptions
+argument_list|()
+expr_stmt|;
+name|assertConsumerCounts
+argument_list|()
+expr_stmt|;
+name|assertProducerCounts
+argument_list|()
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testMoveMessages
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|connection
+operator|=
+name|connectionFactory
+operator|.
+name|createConnection
+argument_list|()
+expr_stmt|;
+name|useConnection
+argument_list|(
+name|connection
+argument_list|)
+expr_stmt|;
+name|ObjectName
+name|queueViewMBeanName
+init|=
+name|assertRegisteredObjectName
+argument_list|(
+name|domain
+operator|+
+literal|":Type=Queue,Destination="
+operator|+
+name|getDestinationString
+argument_list|()
+operator|+
+literal|",BrokerName=localhost"
+argument_list|)
+decl_stmt|;
+name|QueueViewMBean
+name|queue
+init|=
+operator|(
+name|QueueViewMBean
+operator|)
+name|MBeanServerInvocationHandler
+operator|.
+name|newProxyInstance
+argument_list|(
+name|mbeanServer
+argument_list|,
+name|queueViewMBeanName
+argument_list|,
+name|QueueViewMBean
+operator|.
+name|class
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+name|CompositeData
+index|[]
+name|compdatalist
+init|=
+name|queue
+operator|.
+name|browse
+argument_list|()
+decl_stmt|;
+name|int
+name|initialQueueSize
+init|=
+name|compdatalist
+operator|.
+name|length
+decl_stmt|;
+if|if
+condition|(
+name|initialQueueSize
+operator|==
+literal|0
+condition|)
+block|{
+name|fail
+argument_list|(
+literal|"There is no message in the queue:"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|echo
+argument_list|(
+literal|"Current queue size: "
+operator|+
+name|initialQueueSize
+argument_list|)
+expr_stmt|;
+block|}
+name|int
+name|messageCount
+init|=
+name|initialQueueSize
+decl_stmt|;
+name|String
+index|[]
+name|messageIDs
+init|=
+operator|new
+name|String
+index|[
+name|messageCount
+index|]
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|messageCount
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|CompositeData
+name|cdata
+init|=
+name|compdatalist
+index|[
+name|i
+index|]
+decl_stmt|;
+name|String
+name|messageID
+init|=
+operator|(
+name|String
+operator|)
+name|cdata
+operator|.
+name|get
+argument_list|(
+literal|"JMSMessageID"
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Should have a message ID for message "
+operator|+
+name|i
+argument_list|,
+name|messageID
+argument_list|)
+expr_stmt|;
+name|messageIDs
+index|[
+name|i
+index|]
+operator|=
+name|messageID
+expr_stmt|;
+block|}
+name|assertTrue
+argument_list|(
+literal|"dest has some memory usage"
+argument_list|,
+name|queue
+operator|.
+name|getMemoryPercentUsage
+argument_list|()
+operator|>
+literal|0
+argument_list|)
+expr_stmt|;
+name|echo
+argument_list|(
+literal|"About to move "
+operator|+
+name|messageCount
+operator|+
+literal|" messages"
+argument_list|)
+expr_stmt|;
+name|String
+name|newDestination
+init|=
+name|getSecondDestinationString
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|String
+name|messageID
+range|:
+name|messageIDs
+control|)
+block|{
+name|echo
+argument_list|(
+literal|"Moving message: "
+operator|+
+name|messageID
+argument_list|)
+expr_stmt|;
+name|queue
+operator|.
+name|moveMessageTo
+argument_list|(
+name|messageID
+argument_list|,
+name|newDestination
+argument_list|)
+expr_stmt|;
+block|}
+name|echo
+argument_list|(
+literal|"Now browsing the queue"
+argument_list|)
+expr_stmt|;
+name|compdatalist
+operator|=
+name|queue
+operator|.
+name|browse
+argument_list|()
+expr_stmt|;
+name|int
+name|actualCount
+init|=
+name|compdatalist
+operator|.
+name|length
+decl_stmt|;
+name|echo
+argument_list|(
+literal|"Current queue size: "
+operator|+
+name|actualCount
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Should now have empty queue but was"
+argument_list|,
+name|initialQueueSize
+operator|-
+name|messageCount
+argument_list|,
+name|actualCount
+argument_list|)
+expr_stmt|;
+name|echo
+argument_list|(
+literal|"Now browsing the second queue"
+argument_list|)
+expr_stmt|;
+name|queueViewMBeanName
+operator|=
+name|assertRegisteredObjectName
+argument_list|(
+name|domain
+operator|+
+literal|":Type=Queue,Destination="
+operator|+
+name|newDestination
+operator|+
+literal|",BrokerName=localhost"
+argument_list|)
+expr_stmt|;
+name|QueueViewMBean
+name|queueNew
+init|=
+operator|(
+name|QueueViewMBean
+operator|)
+name|MBeanServerInvocationHandler
+operator|.
+name|newProxyInstance
+argument_list|(
+name|mbeanServer
+argument_list|,
+name|queueViewMBeanName
+argument_list|,
+name|QueueViewMBean
+operator|.
+name|class
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+name|long
+name|newQueuesize
+init|=
+name|queueNew
+operator|.
+name|getQueueSize
+argument_list|()
+decl_stmt|;
+name|echo
+argument_list|(
+literal|"Second queue size: "
+operator|+
+name|newQueuesize
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Unexpected number of messages "
+argument_list|,
+name|messageCount
+argument_list|,
+name|newQueuesize
+argument_list|)
+expr_stmt|;
+comment|// check memory usage migration
+name|assertTrue
+argument_list|(
+literal|"new dest has some memory usage"
+argument_list|,
+name|queueNew
+operator|.
+name|getMemoryPercentUsage
+argument_list|()
+operator|>
+literal|0
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"old dest has no memory usage"
+argument_list|,
+literal|0
+argument_list|,
+name|queue
+operator|.
+name|getMemoryPercentUsage
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"use cache"
+argument_list|,
+name|queueNew
+operator|.
+name|isUseCache
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"cache enabled"
+argument_list|,
+name|queueNew
+operator|.
+name|isCacheEnabled
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testRemoveMessages
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|ObjectName
+name|brokerName
+init|=
+name|assertRegisteredObjectName
+argument_list|(
+name|domain
+operator|+
+literal|":Type=Broker,BrokerName=localhost"
+argument_list|)
+decl_stmt|;
+name|BrokerViewMBean
+name|broker
+init|=
+operator|(
+name|BrokerViewMBean
+operator|)
+name|MBeanServerInvocationHandler
+operator|.
+name|newProxyInstance
+argument_list|(
+name|mbeanServer
+argument_list|,
+name|brokerName
+argument_list|,
+name|BrokerViewMBean
+operator|.
+name|class
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+name|broker
+operator|.
+name|addQueue
+argument_list|(
+name|getDestinationString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|ObjectName
+name|queueViewMBeanName
+init|=
+name|assertRegisteredObjectName
+argument_list|(
+name|domain
+operator|+
+literal|":Type=Queue,Destination="
+operator|+
+name|getDestinationString
+argument_list|()
+operator|+
+literal|",BrokerName=localhost"
+argument_list|)
+decl_stmt|;
+name|QueueViewMBean
+name|queue
+init|=
+operator|(
+name|QueueViewMBean
+operator|)
+name|MBeanServerInvocationHandler
+operator|.
+name|newProxyInstance
+argument_list|(
+name|mbeanServer
+argument_list|,
+name|queueViewMBeanName
+argument_list|,
+name|QueueViewMBean
+operator|.
+name|class
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+name|String
+name|msg1
+init|=
+name|queue
+operator|.
+name|sendTextMessage
+argument_list|(
+literal|"message 1"
+argument_list|)
+decl_stmt|;
+name|String
+name|msg2
+init|=
+name|queue
+operator|.
+name|sendTextMessage
+argument_list|(
+literal|"message 2"
+argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|queue
+operator|.
+name|removeMessage
+argument_list|(
+name|msg2
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|connection
+operator|=
+name|connectionFactory
+operator|.
+name|createConnection
+argument_list|()
+expr_stmt|;
+name|connection
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+name|Session
+name|session
+init|=
+name|connection
+operator|.
+name|createSession
+argument_list|(
+literal|false
+argument_list|,
+name|Session
+operator|.
+name|AUTO_ACKNOWLEDGE
+argument_list|)
+decl_stmt|;
+name|ActiveMQDestination
+name|dest
+init|=
+name|createDestination
+argument_list|()
+decl_stmt|;
+name|MessageConsumer
+name|consumer
+init|=
+name|session
+operator|.
+name|createConsumer
+argument_list|(
+name|dest
+argument_list|)
+decl_stmt|;
+name|Message
+name|message
+init|=
+name|consumer
+operator|.
+name|receive
+argument_list|(
+literal|1000
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|msg1
+argument_list|,
+name|message
+operator|.
+name|getJMSMessageID
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|String
+name|msg3
+init|=
+name|queue
+operator|.
+name|sendTextMessage
+argument_list|(
+literal|"message 3"
+argument_list|)
+decl_stmt|;
+name|message
+operator|=
+name|consumer
+operator|.
+name|receive
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|msg3
+argument_list|,
+name|message
+operator|.
+name|getJMSMessageID
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|message
+operator|=
+name|consumer
+operator|.
+name|receive
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
+name|assertNull
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testRetryMessages
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// lets speed up redelivery
+name|ActiveMQConnectionFactory
+name|factory
+init|=
+operator|(
+name|ActiveMQConnectionFactory
+operator|)
+name|connectionFactory
+decl_stmt|;
+name|factory
+operator|.
+name|getRedeliveryPolicy
+argument_list|()
+operator|.
+name|setCollisionAvoidancePercent
+argument_list|(
+operator|(
+name|short
+operator|)
+literal|0
+argument_list|)
+expr_stmt|;
+name|factory
+operator|.
+name|getRedeliveryPolicy
+argument_list|()
+operator|.
+name|setMaximumRedeliveries
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+name|factory
+operator|.
+name|getRedeliveryPolicy
+argument_list|()
+operator|.
+name|setInitialRedeliveryDelay
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|factory
+operator|.
+name|getRedeliveryPolicy
+argument_list|()
+operator|.
+name|setUseCollisionAvoidance
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|factory
+operator|.
+name|getRedeliveryPolicy
+argument_list|()
+operator|.
+name|setUseExponentialBackOff
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|factory
+operator|.
+name|getRedeliveryPolicy
+argument_list|()
+operator|.
+name|setBackOffMultiplier
+argument_list|(
+operator|(
+name|short
+operator|)
+literal|0
+argument_list|)
+expr_stmt|;
+name|connection
+operator|=
+name|connectionFactory
+operator|.
+name|createConnection
+argument_list|()
+expr_stmt|;
+name|useConnection
+argument_list|(
+name|connection
+argument_list|)
+expr_stmt|;
+name|ObjectName
+name|queueViewMBeanName
+init|=
+name|assertRegisteredObjectName
+argument_list|(
+name|domain
+operator|+
+literal|":Type=Queue,Destination="
+operator|+
+name|getDestinationString
+argument_list|()
+operator|+
+literal|",BrokerName=localhost"
+argument_list|)
+decl_stmt|;
+name|QueueViewMBean
+name|queue
+init|=
+operator|(
+name|QueueViewMBean
+operator|)
+name|MBeanServerInvocationHandler
+operator|.
+name|newProxyInstance
+argument_list|(
+name|mbeanServer
+argument_list|,
+name|queueViewMBeanName
+argument_list|,
+name|QueueViewMBean
+operator|.
+name|class
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+name|long
+name|initialQueueSize
+init|=
+name|queue
+operator|.
+name|getQueueSize
+argument_list|()
+decl_stmt|;
+name|echo
+argument_list|(
+literal|"current queue size: "
+operator|+
+name|initialQueueSize
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"dest has some memory usage"
+argument_list|,
+name|queue
+operator|.
+name|getMemoryPercentUsage
+argument_list|()
+operator|>
+literal|0
+argument_list|)
+expr_stmt|;
+comment|// lets create a duff consumer which keeps rolling back...
+name|Session
+name|session
+init|=
+name|connection
+operator|.
+name|createSession
+argument_list|(
+literal|true
+argument_list|,
+name|Session
+operator|.
+name|SESSION_TRANSACTED
+argument_list|)
+decl_stmt|;
+name|MessageConsumer
+name|consumer
+init|=
+name|session
+operator|.
+name|createConsumer
+argument_list|(
+operator|new
+name|ActiveMQQueue
+argument_list|(
+name|getDestinationString
+argument_list|()
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|Message
+name|message
+init|=
+name|consumer
+operator|.
+name|receive
+argument_list|(
+literal|5000
+argument_list|)
+decl_stmt|;
+while|while
+condition|(
+name|message
+operator|!=
+literal|null
+condition|)
+block|{
+name|echo
+argument_list|(
+literal|"Message: "
+operator|+
+name|message
+operator|.
+name|getJMSMessageID
+argument_list|()
+operator|+
+literal|" redelivered "
+operator|+
+name|message
+operator|.
+name|getJMSRedelivered
+argument_list|()
+operator|+
+literal|" counter "
+operator|+
+name|message
+operator|.
+name|getObjectProperty
+argument_list|(
+literal|"JMSXDeliveryCount"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|session
+operator|.
+name|rollback
+argument_list|()
+expr_stmt|;
+name|message
+operator|=
+name|consumer
+operator|.
+name|receive
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
+block|}
+name|consumer
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|session
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+comment|// now lets get the dead letter queue
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
+name|ObjectName
+name|dlqQueueViewMBeanName
+init|=
+name|assertRegisteredObjectName
+argument_list|(
+name|domain
+operator|+
+literal|":Type=Queue,Destination="
+operator|+
+name|SharedDeadLetterStrategy
+operator|.
+name|DEFAULT_DEAD_LETTER_QUEUE_NAME
+operator|+
+literal|",BrokerName=localhost"
+argument_list|)
+decl_stmt|;
+name|QueueViewMBean
+name|dlq
+init|=
+operator|(
+name|QueueViewMBean
+operator|)
+name|MBeanServerInvocationHandler
+operator|.
+name|newProxyInstance
+argument_list|(
+name|mbeanServer
+argument_list|,
+name|dlqQueueViewMBeanName
+argument_list|,
+name|QueueViewMBean
+operator|.
+name|class
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+name|long
+name|initialDlqSize
+init|=
+name|dlq
+operator|.
+name|getQueueSize
+argument_list|()
+decl_stmt|;
+name|CompositeData
+index|[]
+name|compdatalist
+init|=
+name|dlq
+operator|.
+name|browse
+argument_list|()
+decl_stmt|;
+name|int
+name|dlqQueueSize
+init|=
+name|compdatalist
+operator|.
+name|length
+decl_stmt|;
+if|if
+condition|(
+name|dlqQueueSize
+operator|==
+literal|0
+condition|)
+block|{
+name|fail
+argument_list|(
+literal|"There are no messages in the queue:"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|echo
+argument_list|(
+literal|"Current DLQ queue size: "
+operator|+
+name|dlqQueueSize
+argument_list|)
+expr_stmt|;
+block|}
+name|int
+name|messageCount
+init|=
+name|dlqQueueSize
+decl_stmt|;
+name|String
+index|[]
+name|messageIDs
+init|=
+operator|new
+name|String
+index|[
+name|messageCount
+index|]
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|messageCount
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|CompositeData
+name|cdata
+init|=
+name|compdatalist
+index|[
+name|i
+index|]
+decl_stmt|;
+name|String
+name|messageID
+init|=
+operator|(
+name|String
+operator|)
+name|cdata
+operator|.
+name|get
+argument_list|(
+literal|"JMSMessageID"
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Should have a message ID for message "
+operator|+
+name|i
+argument_list|,
+name|messageID
+argument_list|)
+expr_stmt|;
+name|messageIDs
+index|[
+name|i
+index|]
+operator|=
+name|messageID
+expr_stmt|;
+block|}
+name|int
+name|dlqMemUsage
+init|=
+name|dlq
+operator|.
+name|getMemoryPercentUsage
+argument_list|()
+decl_stmt|;
+name|assertTrue
+argument_list|(
+literal|"dlq has some memory usage"
+argument_list|,
+name|dlqMemUsage
+operator|>
+literal|0
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"dest has no memory usage"
+argument_list|,
+literal|0
+argument_list|,
+name|queue
+operator|.
+name|getMemoryPercentUsage
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|echo
+argument_list|(
+literal|"About to retry "
+operator|+
+name|messageCount
+operator|+
+literal|" messages"
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|String
+name|messageID
+range|:
+name|messageIDs
+control|)
+block|{
+name|echo
+argument_list|(
+literal|"Retrying message: "
+operator|+
+name|messageID
+argument_list|)
+expr_stmt|;
+name|dlq
+operator|.
+name|retryMessage
+argument_list|(
+name|messageID
+argument_list|)
+expr_stmt|;
+block|}
+name|long
+name|queueSize
+init|=
+name|queue
+operator|.
+name|getQueueSize
+argument_list|()
+decl_stmt|;
+name|compdatalist
+operator|=
+name|queue
+operator|.
+name|browse
+argument_list|()
+expr_stmt|;
+name|int
+name|actualCount
+init|=
+name|compdatalist
+operator|.
+name|length
+decl_stmt|;
+name|echo
+argument_list|(
+literal|"Orginal queue size is now "
+operator|+
+name|queueSize
+argument_list|)
+expr_stmt|;
+name|echo
+argument_list|(
+literal|"Original browse queue size: "
+operator|+
+name|actualCount
+argument_list|)
+expr_stmt|;
+name|long
+name|dlqSize
+init|=
+name|dlq
+operator|.
+name|getQueueSize
+argument_list|()
+decl_stmt|;
+name|echo
+argument_list|(
+literal|"DLQ size: "
+operator|+
+name|dlqSize
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"DLQ size"
+argument_list|,
+name|initialDlqSize
+operator|-
+name|messageCount
+argument_list|,
+name|dlqSize
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"queue size"
+argument_list|,
+name|initialQueueSize
+argument_list|,
+name|queueSize
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"browse queue size"
+argument_list|,
+name|initialQueueSize
+argument_list|,
+name|actualCount
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"dest has some memory usage"
+argument_list|,
+name|dlqMemUsage
+argument_list|,
+name|queue
+operator|.
+name|getMemoryPercentUsage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testMoveMessagesBySelector
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|connection
+operator|=
+name|connectionFactory
+operator|.
+name|createConnection
+argument_list|()
+expr_stmt|;
+name|useConnection
+argument_list|(
+name|connection
+argument_list|)
+expr_stmt|;
+name|ObjectName
+name|queueViewMBeanName
+init|=
+name|assertRegisteredObjectName
+argument_list|(
+name|domain
+operator|+
+literal|":Type=Queue,Destination="
+operator|+
+name|getDestinationString
+argument_list|()
+operator|+
+literal|",BrokerName=localhost"
+argument_list|)
+decl_stmt|;
+name|QueueViewMBean
+name|queue
+init|=
+operator|(
+name|QueueViewMBean
+operator|)
+name|MBeanServerInvocationHandler
+operator|.
+name|newProxyInstance
+argument_list|(
+name|mbeanServer
+argument_list|,
+name|queueViewMBeanName
+argument_list|,
+name|QueueViewMBean
+operator|.
+name|class
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+name|String
+name|newDestination
+init|=
+name|getSecondDestinationString
+argument_list|()
+decl_stmt|;
+name|queue
+operator|.
+name|moveMatchingMessagesTo
+argument_list|(
+literal|"counter> 2"
+argument_list|,
+name|newDestination
+argument_list|)
+expr_stmt|;
+name|queueViewMBeanName
+operator|=
+name|assertRegisteredObjectName
+argument_list|(
+name|domain
+operator|+
+literal|":Type=Queue,Destination="
+operator|+
+name|newDestination
+operator|+
+literal|",BrokerName=localhost"
+argument_list|)
+expr_stmt|;
+name|queue
+operator|=
+operator|(
+name|QueueViewMBean
+operator|)
+name|MBeanServerInvocationHandler
+operator|.
+name|newProxyInstance
+argument_list|(
+name|mbeanServer
+argument_list|,
+name|queueViewMBeanName
+argument_list|,
+name|QueueViewMBean
+operator|.
+name|class
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|int
+name|movedSize
+init|=
+name|MESSAGE_COUNT
+operator|-
+literal|3
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Unexpected number of messages "
+argument_list|,
+name|movedSize
+argument_list|,
+name|queue
+operator|.
+name|getQueueSize
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// now lets remove them by selector
+name|queue
+operator|.
+name|removeMatchingMessages
+argument_list|(
+literal|"counter> 2"
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Should have no more messages in the queue: "
+operator|+
+name|queueViewMBeanName
+argument_list|,
+literal|0
+argument_list|,
+name|queue
+operator|.
+name|getQueueSize
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"dest has no memory usage"
+argument_list|,
+literal|0
+argument_list|,
+name|queue
+operator|.
+name|getMemoryPercentUsage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testCopyMessagesBySelector
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|connection
+operator|=
+name|connectionFactory
+operator|.
+name|createConnection
+argument_list|()
+expr_stmt|;
+name|useConnection
+argument_list|(
+name|connection
+argument_list|)
+expr_stmt|;
+name|ObjectName
+name|queueViewMBeanName
+init|=
+name|assertRegisteredObjectName
+argument_list|(
+name|domain
+operator|+
+literal|":Type=Queue,Destination="
+operator|+
+name|getDestinationString
+argument_list|()
+operator|+
+literal|",BrokerName=localhost"
+argument_list|)
+decl_stmt|;
+name|QueueViewMBean
+name|queue
+init|=
+operator|(
+name|QueueViewMBean
+operator|)
+name|MBeanServerInvocationHandler
+operator|.
+name|newProxyInstance
+argument_list|(
+name|mbeanServer
+argument_list|,
+name|queueViewMBeanName
+argument_list|,
+name|QueueViewMBean
+operator|.
+name|class
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+name|String
+name|newDestination
+init|=
+name|getSecondDestinationString
+argument_list|()
+decl_stmt|;
+name|long
+name|queueSize
+init|=
+name|queue
+operator|.
+name|getQueueSize
+argument_list|()
+decl_stmt|;
+name|queue
+operator|.
+name|copyMatchingMessagesTo
+argument_list|(
+literal|"counter> 2"
+argument_list|,
+name|newDestination
+argument_list|)
+expr_stmt|;
+name|queueViewMBeanName
+operator|=
+name|assertRegisteredObjectName
+argument_list|(
+name|domain
+operator|+
+literal|":Type=Queue,Destination="
+operator|+
+name|newDestination
+operator|+
+literal|",BrokerName=localhost"
+argument_list|)
+expr_stmt|;
+name|queue
+operator|=
+operator|(
+name|QueueViewMBean
+operator|)
+name|MBeanServerInvocationHandler
+operator|.
+name|newProxyInstance
+argument_list|(
+name|mbeanServer
+argument_list|,
+name|queueViewMBeanName
+argument_list|,
+name|QueueViewMBean
+operator|.
+name|class
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Queue: "
+operator|+
+name|queueViewMBeanName
+operator|+
+literal|" now has: "
+operator|+
+name|queue
+operator|.
+name|getQueueSize
+argument_list|()
+operator|+
+literal|" message(s)"
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Expected messages in a queue: "
+operator|+
+name|queueViewMBeanName
+argument_list|,
+name|MESSAGE_COUNT
+operator|-
+literal|3
+argument_list|,
+name|queue
+operator|.
+name|getQueueSize
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// now lets remove them by selector
+name|queue
+operator|.
+name|removeMatchingMessages
+argument_list|(
+literal|"counter> 2"
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Should have no more messages in the queue: "
+operator|+
+name|queueViewMBeanName
+argument_list|,
+literal|0
+argument_list|,
+name|queue
+operator|.
+name|getQueueSize
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"dest has no memory usage"
+argument_list|,
+literal|0
+argument_list|,
+name|queue
+operator|.
+name|getMemoryPercentUsage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 specifier|protected
 name|void
 name|assertSendViaMBean
@@ -3935,105 +5287,607 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
-comment|//    public void testTempQueueJMXDelete() throws Exception {
-comment|//        connection = connectionFactory.createConnection();
-comment|//
-comment|//        connection.setClientID(clientID);
-comment|//        connection.start();
-comment|//        Session session = connection.createSession(transacted, authMode);
-comment|//        ActiveMQTempQueue tQueue = (ActiveMQTempQueue) session.createTemporaryQueue();
-comment|//        Thread.sleep(1000);
-comment|//        ObjectName queueViewMBeanName = assertRegisteredObjectName(domain + ":Type="+  JMXSupport.encodeObjectNamePart(tQueue.getDestinationTypeAsString())+",Destination=" + JMXSupport.encodeObjectNamePart(tQueue.getPhysicalName()) + ",BrokerName=localhost");
-comment|//
-comment|//        // should not throw an exception
-comment|//        mbeanServer.getObjectInstance(queueViewMBeanName);
-comment|//
-comment|//        tQueue.delete();
-comment|//        Thread.sleep(1000);
-comment|//        try {
-comment|//            // should throw an exception
-comment|//            mbeanServer.getObjectInstance(queueViewMBeanName);
-comment|//
-comment|//            fail("should be deleted already!");
-comment|//        } catch (Exception e) {
-comment|//            // expected!
-comment|//        }
-comment|//
-comment|//    }
-comment|//
-comment|//    // Test for AMQ-3029
-comment|//    public void testBrowseBlobMessages() throws Exception {
-comment|//        connection = connectionFactory.createConnection();
-comment|//        useConnectionWithBlobMessage(connection);
-comment|//
-comment|//        ObjectName queueViewMBeanName = assertRegisteredObjectName(domain + ":Type=Queue,Destination=" + getDestinationString() + ",BrokerName=localhost");
-comment|//
-comment|//        QueueViewMBean queue = (QueueViewMBean)MBeanServerInvocationHandler.newProxyInstance(mbeanServer, queueViewMBeanName, QueueViewMBean.class, true);
-comment|//
-comment|//        CompositeData[] compdatalist = queue.browse();
-comment|//        int initialQueueSize = compdatalist.length;
-comment|//        if (initialQueueSize == 0) {
-comment|//            fail("There is no message in the queue:");
-comment|//        }
-comment|//        else {
-comment|//            echo("Current queue size: " + initialQueueSize);
-comment|//        }
-comment|//        int messageCount = initialQueueSize;
-comment|//        String[] messageIDs = new String[messageCount];
-comment|//        for (int i = 0; i< messageCount; i++) {
-comment|//            CompositeData cdata = compdatalist[i];
-comment|//            String messageID = (String) cdata.get("JMSMessageID");
-comment|//            assertNotNull("Should have a message ID for message " + i, messageID);
-comment|//
-comment|//            messageIDs[i] = messageID;
-comment|//        }
-comment|//
-comment|//        assertTrue("dest has some memory usage", queue.getMemoryPercentUsage()> 0);
-comment|//    }
-comment|//
-comment|//    public void testBrowseBytesMessages() throws Exception {
-comment|//        connection = connectionFactory.createConnection();
-comment|//        useConnectionWithByteMessage(connection);
-comment|//
-comment|//        ObjectName queueViewMBeanName = assertRegisteredObjectName(domain + ":Type=Queue,Destination=" + getDestinationString() + ",BrokerName=localhost");
-comment|//
-comment|//        QueueViewMBean queue = (QueueViewMBean)MBeanServerInvocationHandler.newProxyInstance(mbeanServer, queueViewMBeanName, QueueViewMBean.class, true);
-comment|//
-comment|//        CompositeData[] compdatalist = queue.browse();
-comment|//        int initialQueueSize = compdatalist.length;
-comment|//        if (initialQueueSize == 0) {
-comment|//            fail("There is no message in the queue:");
-comment|//        }
-comment|//        else {
-comment|//            echo("Current queue size: " + initialQueueSize);
-comment|//        }
-comment|//        int messageCount = initialQueueSize;
-comment|//        String[] messageIDs = new String[messageCount];
-comment|//        for (int i = 0; i< messageCount; i++) {
-comment|//            CompositeData cdata = compdatalist[i];
-comment|//            String messageID = (String) cdata.get("JMSMessageID");
-comment|//            assertNotNull("Should have a message ID for message " + i, messageID);
-comment|//            messageIDs[i] = messageID;
-comment|//
-comment|//            Byte[] preview = (Byte[]) cdata.get(CompositeDataConstants.BODY_PREVIEW);
-comment|//            assertNotNull("should be a preview", preview);
-comment|//            assertTrue("not empty", preview.length> 0);
-comment|//        }
-comment|//
-comment|//        assertTrue("dest has some memory usage", queue.getMemoryPercentUsage()> 0);
-comment|//
-comment|//        // consume all the messages
-comment|//        echo("Attempting to consume all bytes messages from: " + destination);
-comment|//        Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-comment|//        MessageConsumer consumer = session.createConsumer(destination);
-comment|//        for (int i=0; i<MESSAGE_COUNT; i++) {
-comment|//            Message message = consumer.receive(5000);
-comment|//            assertNotNull(message);
-comment|//            assertTrue(message instanceof BytesMessage);
-comment|//        }
-comment|//        consumer.close();
-comment|//        session.close();
-comment|//    }
+specifier|public
+name|void
+name|testTempQueueJMXDelete
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|connection
+operator|=
+name|connectionFactory
+operator|.
+name|createConnection
+argument_list|()
+expr_stmt|;
+name|connection
+operator|.
+name|setClientID
+argument_list|(
+name|clientID
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+name|Session
+name|session
+init|=
+name|connection
+operator|.
+name|createSession
+argument_list|(
+name|transacted
+argument_list|,
+name|authMode
+argument_list|)
+decl_stmt|;
+name|ActiveMQTempQueue
+name|tQueue
+init|=
+operator|(
+name|ActiveMQTempQueue
+operator|)
+name|session
+operator|.
+name|createTemporaryQueue
+argument_list|()
+decl_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
+name|ObjectName
+name|queueViewMBeanName
+init|=
+name|assertRegisteredObjectName
+argument_list|(
+name|domain
+operator|+
+literal|":Type="
+operator|+
+name|JMXSupport
+operator|.
+name|encodeObjectNamePart
+argument_list|(
+name|tQueue
+operator|.
+name|getDestinationTypeAsString
+argument_list|()
+argument_list|)
+operator|+
+literal|",Destination="
+operator|+
+name|JMXSupport
+operator|.
+name|encodeObjectNamePart
+argument_list|(
+name|tQueue
+operator|.
+name|getPhysicalName
+argument_list|()
+argument_list|)
+operator|+
+literal|",BrokerName=localhost"
+argument_list|)
+decl_stmt|;
+comment|// should not throw an exception
+name|mbeanServer
+operator|.
+name|getObjectInstance
+argument_list|(
+name|queueViewMBeanName
+argument_list|)
+expr_stmt|;
+name|tQueue
+operator|.
+name|delete
+argument_list|()
+expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+comment|// should throw an exception
+name|mbeanServer
+operator|.
+name|getObjectInstance
+argument_list|(
+name|queueViewMBeanName
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"should be deleted already!"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+comment|// expected!
+block|}
+block|}
+comment|// Test for AMQ-3029
+specifier|public
+name|void
+name|testBrowseBlobMessages
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|connection
+operator|=
+name|connectionFactory
+operator|.
+name|createConnection
+argument_list|()
+expr_stmt|;
+name|useConnectionWithBlobMessage
+argument_list|(
+name|connection
+argument_list|)
+expr_stmt|;
+name|ObjectName
+name|queueViewMBeanName
+init|=
+name|assertRegisteredObjectName
+argument_list|(
+name|domain
+operator|+
+literal|":Type=Queue,Destination="
+operator|+
+name|getDestinationString
+argument_list|()
+operator|+
+literal|",BrokerName=localhost"
+argument_list|)
+decl_stmt|;
+name|QueueViewMBean
+name|queue
+init|=
+operator|(
+name|QueueViewMBean
+operator|)
+name|MBeanServerInvocationHandler
+operator|.
+name|newProxyInstance
+argument_list|(
+name|mbeanServer
+argument_list|,
+name|queueViewMBeanName
+argument_list|,
+name|QueueViewMBean
+operator|.
+name|class
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+name|CompositeData
+index|[]
+name|compdatalist
+init|=
+name|queue
+operator|.
+name|browse
+argument_list|()
+decl_stmt|;
+name|int
+name|initialQueueSize
+init|=
+name|compdatalist
+operator|.
+name|length
+decl_stmt|;
+if|if
+condition|(
+name|initialQueueSize
+operator|==
+literal|0
+condition|)
+block|{
+name|fail
+argument_list|(
+literal|"There is no message in the queue:"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|echo
+argument_list|(
+literal|"Current queue size: "
+operator|+
+name|initialQueueSize
+argument_list|)
+expr_stmt|;
+block|}
+name|int
+name|messageCount
+init|=
+name|initialQueueSize
+decl_stmt|;
+name|String
+index|[]
+name|messageIDs
+init|=
+operator|new
+name|String
+index|[
+name|messageCount
+index|]
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|messageCount
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|CompositeData
+name|cdata
+init|=
+name|compdatalist
+index|[
+name|i
+index|]
+decl_stmt|;
+name|String
+name|messageID
+init|=
+operator|(
+name|String
+operator|)
+name|cdata
+operator|.
+name|get
+argument_list|(
+literal|"JMSMessageID"
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Should have a message ID for message "
+operator|+
+name|i
+argument_list|,
+name|messageID
+argument_list|)
+expr_stmt|;
+name|messageIDs
+index|[
+name|i
+index|]
+operator|=
+name|messageID
+expr_stmt|;
+block|}
+name|assertTrue
+argument_list|(
+literal|"dest has some memory usage"
+argument_list|,
+name|queue
+operator|.
+name|getMemoryPercentUsage
+argument_list|()
+operator|>
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testBrowseBytesMessages
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|connection
+operator|=
+name|connectionFactory
+operator|.
+name|createConnection
+argument_list|()
+expr_stmt|;
+name|useConnectionWithByteMessage
+argument_list|(
+name|connection
+argument_list|)
+expr_stmt|;
+name|ObjectName
+name|queueViewMBeanName
+init|=
+name|assertRegisteredObjectName
+argument_list|(
+name|domain
+operator|+
+literal|":Type=Queue,Destination="
+operator|+
+name|getDestinationString
+argument_list|()
+operator|+
+literal|",BrokerName=localhost"
+argument_list|)
+decl_stmt|;
+name|QueueViewMBean
+name|queue
+init|=
+operator|(
+name|QueueViewMBean
+operator|)
+name|MBeanServerInvocationHandler
+operator|.
+name|newProxyInstance
+argument_list|(
+name|mbeanServer
+argument_list|,
+name|queueViewMBeanName
+argument_list|,
+name|QueueViewMBean
+operator|.
+name|class
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+name|CompositeData
+index|[]
+name|compdatalist
+init|=
+name|queue
+operator|.
+name|browse
+argument_list|()
+decl_stmt|;
+name|int
+name|initialQueueSize
+init|=
+name|compdatalist
+operator|.
+name|length
+decl_stmt|;
+if|if
+condition|(
+name|initialQueueSize
+operator|==
+literal|0
+condition|)
+block|{
+name|fail
+argument_list|(
+literal|"There is no message in the queue:"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|echo
+argument_list|(
+literal|"Current queue size: "
+operator|+
+name|initialQueueSize
+argument_list|)
+expr_stmt|;
+block|}
+name|int
+name|messageCount
+init|=
+name|initialQueueSize
+decl_stmt|;
+name|String
+index|[]
+name|messageIDs
+init|=
+operator|new
+name|String
+index|[
+name|messageCount
+index|]
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|messageCount
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|CompositeData
+name|cdata
+init|=
+name|compdatalist
+index|[
+name|i
+index|]
+decl_stmt|;
+name|String
+name|messageID
+init|=
+operator|(
+name|String
+operator|)
+name|cdata
+operator|.
+name|get
+argument_list|(
+literal|"JMSMessageID"
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Should have a message ID for message "
+operator|+
+name|i
+argument_list|,
+name|messageID
+argument_list|)
+expr_stmt|;
+name|messageIDs
+index|[
+name|i
+index|]
+operator|=
+name|messageID
+expr_stmt|;
+name|Byte
+index|[]
+name|preview
+init|=
+operator|(
+name|Byte
+index|[]
+operator|)
+name|cdata
+operator|.
+name|get
+argument_list|(
+name|CompositeDataConstants
+operator|.
+name|BODY_PREVIEW
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"should be a preview"
+argument_list|,
+name|preview
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"not empty"
+argument_list|,
+name|preview
+operator|.
+name|length
+operator|>
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
+name|assertTrue
+argument_list|(
+literal|"dest has some memory usage"
+argument_list|,
+name|queue
+operator|.
+name|getMemoryPercentUsage
+argument_list|()
+operator|>
+literal|0
+argument_list|)
+expr_stmt|;
+comment|// consume all the messages
+name|echo
+argument_list|(
+literal|"Attempting to consume all bytes messages from: "
+operator|+
+name|destination
+argument_list|)
+expr_stmt|;
+name|Session
+name|session
+init|=
+name|connection
+operator|.
+name|createSession
+argument_list|(
+literal|false
+argument_list|,
+name|Session
+operator|.
+name|AUTO_ACKNOWLEDGE
+argument_list|)
+decl_stmt|;
+name|MessageConsumer
+name|consumer
+init|=
+name|session
+operator|.
+name|createConsumer
+argument_list|(
+name|destination
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|MESSAGE_COUNT
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|Message
+name|message
+init|=
+name|consumer
+operator|.
+name|receive
+argument_list|(
+literal|5000
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|message
+operator|instanceof
+name|BytesMessage
+argument_list|)
+expr_stmt|;
+block|}
+name|consumer
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|session
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 
