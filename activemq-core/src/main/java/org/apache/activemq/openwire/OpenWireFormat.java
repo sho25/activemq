@@ -956,6 +956,45 @@ block|{
 comment|// throw new IOException("Packet size does not match marshaled
 comment|// size");
 block|}
+if|if
+condition|(
+name|size
+operator|>
+name|maxFrameSize
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Frame size of "
+operator|+
+operator|(
+name|size
+operator|/
+operator|(
+literal|1024
+operator|*
+literal|1024
+operator|)
+operator|)
+operator|+
+literal|" MB larger than max allowed "
+operator|+
+operator|(
+name|maxFrameSize
+operator|/
+operator|(
+literal|1024
+operator|*
+literal|1024
+operator|)
+operator|)
+operator|+
+literal|" MB"
+argument_list|)
+throw|;
+block|}
 block|}
 name|Object
 name|command
