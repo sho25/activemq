@@ -52,6 +52,16 @@ name|long
 name|getSessionId
 parameter_list|()
 function_decl|;
+comment|/**      * @return the id of Producer.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"ID of the Producer."
+argument_list|)
+name|String
+name|getProducerId
+parameter_list|()
+function_decl|;
 comment|/**      * @return the destination name      */
 annotation|@
 name|MBeanInfo
