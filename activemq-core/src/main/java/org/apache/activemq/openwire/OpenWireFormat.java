@@ -1261,11 +1261,53 @@ operator|!
 name|sizePrefixDisabled
 condition|)
 block|{
+name|int
+name|size
+init|=
 name|dis
 operator|.
 name|readInt
 argument_list|()
-expr_stmt|;
+decl_stmt|;
+if|if
+condition|(
+name|size
+operator|>
+name|maxFrameSize
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Frame size of "
+operator|+
+operator|(
+name|size
+operator|/
+operator|(
+literal|1024
+operator|*
+literal|1024
+operator|)
+operator|)
+operator|+
+literal|" MB larger than max allowed "
+operator|+
+operator|(
+name|maxFrameSize
+operator|/
+operator|(
+literal|1024
+operator|*
+literal|1024
+operator|)
+operator|)
+operator|+
+literal|" MB"
+argument_list|)
+throw|;
+block|}
 comment|// int size = dis.readInt();
 comment|// byte[] data = new byte[size];
 comment|// dis.readFully(data);
