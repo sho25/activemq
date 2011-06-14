@@ -787,7 +787,7 @@ init|=
 operator|new
 name|JMSException
 argument_list|(
-literal|"Failed to retrieve eunqueueCount from store "
+literal|"Failed to retrieve enqueueCount from store "
 operator|+
 name|e
 argument_list|)
@@ -1437,6 +1437,24 @@ name|dispatchPending
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+specifier|public
+name|void
+name|removePending
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|pending
+operator|.
+name|remove
+argument_list|(
+name|node
+argument_list|)
+expr_stmt|;
 block|}
 specifier|protected
 name|void
