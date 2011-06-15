@@ -1133,6 +1133,9 @@ name|brokerInfo
 parameter_list|,
 name|boolean
 name|createdByDuplex
+parameter_list|,
+name|String
+name|remoteIp
 parameter_list|)
 block|{     }
 specifier|public

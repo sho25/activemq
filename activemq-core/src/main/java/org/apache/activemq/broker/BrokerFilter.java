@@ -1623,6 +1623,9 @@ name|brokerInfo
 parameter_list|,
 name|boolean
 name|createdByDuplex
+parameter_list|,
+name|String
+name|remoteIp
 parameter_list|)
 block|{
 name|next
@@ -1632,6 +1635,8 @@ argument_list|(
 name|brokerInfo
 argument_list|,
 name|createdByDuplex
+argument_list|,
+name|remoteIp
 argument_list|)
 expr_stmt|;
 block|}

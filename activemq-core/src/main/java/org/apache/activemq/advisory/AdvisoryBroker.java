@@ -2680,6 +2680,9 @@ name|brokerInfo
 parameter_list|,
 name|boolean
 name|createdByDuplex
+parameter_list|,
+name|String
+name|remoteIp
 parameter_list|)
 block|{
 try|try
@@ -2714,6 +2717,15 @@ argument_list|(
 literal|"createdByDuplex"
 argument_list|,
 name|createdByDuplex
+argument_list|)
+expr_stmt|;
+name|advisoryMessage
+operator|.
+name|setStringProperty
+argument_list|(
+literal|"remoteIp"
+argument_list|,
+name|remoteIp
 argument_list|)
 expr_stmt|;
 name|ActiveMQTopic
