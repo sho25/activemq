@@ -259,9 +259,9 @@ specifier|private
 name|long
 name|maxTransactionSize
 init|=
-name|Integer
+name|Long
 operator|.
-name|parseInt
+name|parseLong
 argument_list|(
 name|System
 operator|.
