@@ -2875,7 +2875,7 @@ condition|)
 block|{
 for|for
 control|(
-name|Subscription
+name|DurableTopicSubscription
 name|sub
 range|:
 name|durableSubcribers
@@ -2883,6 +2883,15 @@ operator|.
 name|values
 argument_list|()
 control|)
+block|{
+if|if
+condition|(
+operator|!
+name|sub
+operator|.
+name|isActive
+argument_list|()
+condition|)
 block|{
 name|messageExpired
 argument_list|(
@@ -2893,6 +2902,7 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|result
