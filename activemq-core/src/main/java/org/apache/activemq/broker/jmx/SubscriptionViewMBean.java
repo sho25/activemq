@@ -319,6 +319,16 @@ name|String
 name|topicName
 parameter_list|)
 function_decl|;
+comment|/**      * Returns true if the subscription is slow      *      * @return true if the subscription is slow      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Returns true if the subscription is slow"
+argument_list|)
+name|boolean
+name|isSlowConsumer
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

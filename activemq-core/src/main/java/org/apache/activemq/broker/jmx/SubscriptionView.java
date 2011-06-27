@@ -939,6 +939,20 @@ name|destination
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isSlowConsumer
+parameter_list|()
+block|{
+return|return
+name|subscription
+operator|.
+name|isSlowConsumer
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
