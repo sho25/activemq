@@ -313,6 +313,15 @@ argument_list|,
 name|priority
 argument_list|)
 expr_stmt|;
+name|s
+operator|.
+name|setString
+argument_list|(
+literal|7
+argument_list|,
+literal|" "
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|s
