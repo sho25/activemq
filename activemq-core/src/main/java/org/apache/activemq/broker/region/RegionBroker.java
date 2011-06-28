@@ -718,7 +718,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Routes Broker operations to the correct messaging regions for processing.  *   *   */
+comment|/**  * Routes Broker operations to the correct messaging regions for processing.  *  *  */
 end_comment
 
 begin_class
@@ -2976,6 +2976,23 @@ argument_list|()
 argument_list|)
 operator|==
 literal|null
+operator|)
+operator|||
+operator|(
+name|producerExchange
+operator|.
+name|getRegionDestination
+argument_list|()
+operator|!=
+literal|null
+operator|&&
+name|producerExchange
+operator|.
+name|getRegionDestination
+argument_list|()
+operator|.
+name|isDisposed
+argument_list|()
 operator|)
 condition|)
 block|{

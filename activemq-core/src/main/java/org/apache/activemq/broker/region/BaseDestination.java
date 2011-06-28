@@ -356,7 +356,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -627,6 +627,12 @@ specifier|final
 name|Scheduler
 name|scheduler
 decl_stmt|;
+specifier|private
+name|boolean
+name|disposed
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * @param brokerService      * @param store      * @param destination      * @param parentStats      * @throws Exception      */
 specifier|public
 name|BaseDestination
@@ -755,7 +761,7 @@ name|getScheduler
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * initialize the destination      *       * @throws Exception      */
+comment|/**      * initialize the destination      *      * @throws Exception      */
 specifier|public
 name|void
 name|initialize
@@ -809,7 +815,7 @@ operator|=
 name|producerFlowControl
 expr_stmt|;
 block|}
-comment|/**      * Set's the interval at which warnings about producers being blocked by      * resource usage will be triggered. Values of 0 or less will disable      * warnings      *       * @param blockedProducerWarningInterval the interval at which warning about      *            blocked producers will be triggered.      */
+comment|/**      * Set's the interval at which warnings about producers being blocked by      * resource usage will be triggered. Values of 0 or less will disable      * warnings      *      * @param blockedProducerWarningInterval the interval at which warning about      *            blocked producers will be triggered.      */
 specifier|public
 name|void
 name|setBlockedProducerWarningInterval
@@ -825,7 +831,7 @@ operator|=
 name|blockedProducerWarningInterval
 expr_stmt|;
 block|}
-comment|/**      *       * @return the interval at which warning about blocked producers will be      *         triggered.      */
+comment|/**      *      * @return the interval at which warning about blocked producers will be      *         triggered.      */
 specifier|public
 name|long
 name|getBlockedProducerWarningInterval
@@ -1501,7 +1507,7 @@ return|return
 name|deadLetterStrategy
 return|;
 block|}
-comment|/**      * set the dead letter strategy      *       * @param deadLetterStrategy      */
+comment|/**      * set the dead letter strategy      *      * @param deadLetterStrategy      */
 specifier|public
 name|void
 name|setDeadLetterStrategy
@@ -1543,7 +1549,7 @@ operator|=
 name|cursorMemoryHighWaterMark
 expr_stmt|;
 block|}
-comment|/**      * called when message is consumed      *       * @param context      * @param messageReference      */
+comment|/**      * called when message is consumed      *      * @param context      * @param messageReference      */
 specifier|public
 name|void
 name|messageConsumed
@@ -1571,7 +1577,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Called when message is delivered to the broker      *       * @param context      * @param messageReference      */
+comment|/**      * Called when message is delivered to the broker      *      * @param context      * @param messageReference      */
 specifier|public
 name|void
 name|messageDelivered
@@ -1599,7 +1605,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Called when a message is discarded - e.g. running low on memory This will      * happen only if the policy is enabled - e.g. non durable topics      *       * @param context      * @param messageReference      */
+comment|/**      * Called when a message is discarded - e.g. running low on memory This will      * happen only if the policy is enabled - e.g. non durable topics      *      * @param context      * @param messageReference      */
 specifier|public
 name|void
 name|messageDiscarded
@@ -1632,7 +1638,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Called when there is a slow consumer      *       * @param context      * @param subs      */
+comment|/**      * Called when there is a slow consumer      *      * @param context      * @param subs      */
 specifier|public
 name|void
 name|slowConsumer
@@ -1679,7 +1685,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Called to notify a producer is too fast      *       * @param context      * @param producerInfo      */
+comment|/**      * Called to notify a producer is too fast      *      * @param context      * @param producerInfo      */
 specifier|public
 name|void
 name|fastProducer
@@ -1707,7 +1713,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Called when a Usage reaches a limit      *       * @param context      * @param usage      */
+comment|/**      * Called when a Usage reaches a limit      *      * @param context      * @param usage      */
 specifier|public
 name|void
 name|isFull
@@ -1791,6 +1797,23 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+name|this
+operator|.
+name|disposed
+operator|=
+literal|true
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isDisposed
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|disposed
+return|;
 block|}
 comment|/**      * Provides a hook to allow messages with no consumer to be processed in      * some way - such as to send to a dead letter queue or something..      */
 specifier|protected

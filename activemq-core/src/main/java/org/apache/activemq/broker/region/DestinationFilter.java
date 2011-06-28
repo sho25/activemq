@@ -238,7 +238,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   *   */
+comment|/**  *  *  */
 end_comment
 
 begin_class
@@ -353,6 +353,18 @@ argument_list|(
 name|context
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isDisposed
+parameter_list|()
+block|{
+return|return
+name|next
+operator|.
+name|isDisposed
+argument_list|()
+return|;
 block|}
 specifier|public
 name|void
@@ -517,7 +529,7 @@ name|getConsumers
 argument_list|()
 return|;
 block|}
-comment|/**      * Sends a message to the given destination which may be a wildcard      *       * @param context broker context      * @param message message to send      * @param destination possibly wildcard destination to send the message to      * @throws Exception on error      */
+comment|/**      * Sends a message to the given destination which may be a wildcard      *      * @param context broker context      * @param message message to send      * @param destination possibly wildcard destination to send the message to      * @throws Exception on error      */
 specifier|protected
 name|void
 name|send
