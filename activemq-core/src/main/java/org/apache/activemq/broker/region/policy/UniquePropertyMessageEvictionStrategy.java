@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An eviction strategy which evicts the oldest message with the lowest priority first.  *  * @org.apache.xbean.XBean  *  * messageEvictionStrategy  */
+comment|/**  * An eviction strategy which evicts the oldest message with the lowest priority first.  *  *  * @org.apache.xbean.XBean  *  * messageEvictionStrategy  */
 end_comment
 
 begin_class
@@ -313,6 +313,16 @@ name|ref
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|messages
+operator|.
+name|size
+argument_list|()
+operator|!=
+literal|0
+condition|)
+block|{
 return|return
 operator|(
 name|MessageReference
@@ -333,8 +343,7 @@ index|]
 argument_list|)
 return|;
 block|}
-else|else
-block|{
+block|}
 return|return
 operator|new
 name|MessageReference
@@ -349,7 +358,6 @@ name|removeFirst
 argument_list|()
 block|}
 return|;
-block|}
 block|}
 block|}
 end_class
