@@ -81,17 +81,7 @@ name|javax
 operator|.
 name|management
 operator|.
-name|ObjectName
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|QueryExp
+name|*
 import|;
 end_import
 
@@ -637,7 +627,7 @@ literal|"org.apache.activemq:BrokerName="
 operator|+
 name|brokerName
 operator|+
-literal|",Type=Connection,*"
+literal|",Type=Connection,ConnectorName=*,Connection=*"
 argument_list|)
 decl_stmt|;
 name|Set
@@ -714,7 +704,7 @@ literal|",Type=Connection,ConnectorName="
 operator|+
 name|connectorName
 operator|+
-literal|",*"
+literal|",Connection=*"
 argument_list|)
 decl_stmt|;
 name|Set
