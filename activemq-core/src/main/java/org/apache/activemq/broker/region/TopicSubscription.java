@@ -1101,9 +1101,22 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"No messages to evict returned from eviction strategy: "
+literal|"No messages to evict returned for "
+operator|+
+name|destination
+operator|+
+literal|" from eviction strategy: "
 operator|+
 name|messageEvictionStrategy
+operator|+
+literal|" out of "
+operator|+
+name|list
+operator|.
+name|size
+argument_list|()
+operator|+
+literal|" candidates"
 argument_list|)
 expr_stmt|;
 break|break;
