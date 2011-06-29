@@ -188,7 +188,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to make sure that commands are arriving periodically from the peer of  * the transport.  *  *   */
+comment|/**  * Used to make sure that commands are arriving periodically from the peer of  * the transport.  *  *  */
 end_comment
 
 begin_class
@@ -1727,7 +1727,9 @@ name|ThreadPoolExecutor
 name|createExecutor
 parameter_list|()
 block|{
-return|return
+name|ThreadPoolExecutor
+name|exec
+init|=
 operator|new
 name|ThreadPoolExecutor
 argument_list|(
@@ -1752,6 +1754,16 @@ argument_list|()
 argument_list|,
 name|factory
 argument_list|)
+decl_stmt|;
+name|exec
+operator|.
+name|allowCoreThreadTimeOut
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+return|return
+name|exec
 return|;
 block|}
 block|}
