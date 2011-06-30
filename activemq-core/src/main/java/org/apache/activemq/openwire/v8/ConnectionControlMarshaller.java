@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marshalling code for Open Wire Format for ConnectionControlMarshaller  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  *   */
+comment|/**  * Marshalling code for Open Wire Format for ConnectionControlMarshaller  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate  *        this file.  *  *  */
 end_comment
 
 begin_class
@@ -235,6 +235,18 @@ name|readBoolean
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|info
+operator|.
+name|setToken
+argument_list|(
+name|tightUnmarshalByteArray
+argument_list|(
+name|dataIn
+argument_list|,
+name|bs
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Write the booleans that this object uses to a BooleanStream      */
 specifier|public
@@ -359,6 +371,18 @@ name|isRebalanceConnection
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|rc
+operator|+=
+name|tightMarshalByteArray1
+argument_list|(
+name|info
+operator|.
+name|getToken
+argument_list|()
+argument_list|,
+name|bs
+argument_list|)
+expr_stmt|;
 return|return
 name|rc
 operator|+
@@ -459,6 +483,18 @@ name|bs
 operator|.
 name|readBoolean
 argument_list|()
+expr_stmt|;
+name|tightMarshalByteArray2
+argument_list|(
+name|info
+operator|.
+name|getToken
+argument_list|()
+argument_list|,
+name|dataOut
+argument_list|,
+name|bs
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Un-marshal an object instance from the data input stream      *      * @param o the object to un-marshal      * @param dataIn the data input stream to build the object from      * @throws IOException      */
@@ -577,6 +613,16 @@ name|readBoolean
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|info
+operator|.
+name|setToken
+argument_list|(
+name|looseUnmarshalByteArray
+argument_list|(
+name|dataIn
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Write the booleans that this object uses to a BooleanStream      */
 specifier|public
@@ -692,6 +738,18 @@ name|info
 operator|.
 name|isRebalanceConnection
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|looseMarshalByteArray
+argument_list|(
+name|wireFormat
+argument_list|,
+name|info
+operator|.
+name|getToken
+argument_list|()
+argument_list|,
+name|dataOut
 argument_list|)
 expr_stmt|;
 block|}

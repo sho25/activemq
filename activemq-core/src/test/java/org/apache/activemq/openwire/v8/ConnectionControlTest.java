@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test case for the OpenWire marshalling for ConnectionControl  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate   *        this file.  *  *   */
+comment|/**  * Test case for the OpenWire marshalling for ConnectionControl  *  *  * NOTE!: This file is auto generated - do not modify!  *        if you need to make a change, please see the modify the groovy scripts in the  *        under src/gram/script and then use maven openwire:generate to regenerate  *        this file.  *  *  */
 end_comment
 
 begin_class
@@ -197,6 +197,16 @@ operator|.
 name|setRebalanceConnection
 argument_list|(
 literal|false
+argument_list|)
+expr_stmt|;
+name|info
+operator|.
+name|setToken
+argument_list|(
+literal|"Token:3"
+operator|.
+name|getBytes
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
