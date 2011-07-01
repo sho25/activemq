@@ -1446,6 +1446,11 @@ argument_list|(
 name|brokerUri
 argument_list|)
 decl_stmt|;
+name|configureBroker
+argument_list|(
+name|broker
+argument_list|)
+expr_stmt|;
 name|brokers
 operator|.
 name|put
@@ -1466,6 +1471,14 @@ return|return
 name|broker
 return|;
 block|}
+specifier|protected
+name|void
+name|configureBroker
+parameter_list|(
+name|BrokerService
+name|broker
+parameter_list|)
+block|{     }
 specifier|protected
 name|BrokerService
 name|createBroker

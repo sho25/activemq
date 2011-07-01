@@ -269,6 +269,15 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
+specifier|public
+name|MessageReference
+name|getMessageReference
+parameter_list|()
+block|{
+return|return
+name|messageReference
+return|;
+block|}
 block|}
 end_class
 

@@ -144,11 +144,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|private
+specifier|protected
 name|BrokerId
 name|networkBrokerId
 decl_stmt|;
-specifier|private
+specifier|protected
 name|int
 name|networkTTL
 decl_stmt|;
@@ -160,7 +160,7 @@ specifier|public
 name|NetworkBridgeFilter
 parameter_list|(
 name|BrokerId
-name|remoteBrokerPath
+name|networkBrokerId
 parameter_list|,
 name|int
 name|networkTTL
@@ -170,7 +170,7 @@ name|this
 operator|.
 name|networkBrokerId
 operator|=
-name|remoteBrokerPath
+name|networkBrokerId
 expr_stmt|;
 name|this
 operator|.
@@ -229,6 +229,8 @@ operator|&&
 name|matchesForwardingFilter
 argument_list|(
 name|message
+argument_list|,
+name|mec
 argument_list|)
 return|;
 block|}
@@ -279,6 +281,9 @@ name|matchesForwardingFilter
 parameter_list|(
 name|Message
 name|message
+parameter_list|,
+name|MessageEvaluationContext
+name|mec
 parameter_list|)
 block|{
 if|if
@@ -306,7 +311,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Message all ready routed once through this broker ("
+literal|"Message all ready routed once through target broker ("
 operator|+
 name|networkBrokerId
 operator|+
@@ -384,7 +389,6 @@ return|return
 literal|false
 return|;
 block|}
-comment|// Don't propagate advisory messages about network subscriptions
 if|if
 condition|(
 name|message
@@ -473,6 +477,45 @@ block|}
 return|return
 literal|false
 return|;
+block|}
+if|if
+condition|(
+name|contains
+argument_list|(
+name|info
+operator|.
+name|getBrokerPath
+argument_list|()
+argument_list|,
+name|networkBrokerId
+argument_list|)
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"ConsumerInfo advisory all ready routed once through target broker ("
+operator|+
+name|networkBrokerId
+operator|+
+literal|"), path: "
+operator|+
+name|Arrays
+operator|.
+name|toString
+argument_list|(
+name|info
+operator|.
+name|getBrokerPath
+argument_list|()
+argument_list|)
+operator|+
+literal|" - ignoring: "
+operator|+
+name|message
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 return|return
