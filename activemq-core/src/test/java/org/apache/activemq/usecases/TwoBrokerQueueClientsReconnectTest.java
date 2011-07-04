@@ -341,6 +341,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// allow immediate replay back to origin
+name|applyRateLimitNetworkFilter
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
 comment|// Bridge brokers
 name|bridgeBrokers
 argument_list|(
@@ -489,6 +495,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// allow immediate replay back to origin
+name|applyRateLimitNetworkFilter
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
 comment|// Bridge brokers
 name|bridgeBrokers
 argument_list|(
