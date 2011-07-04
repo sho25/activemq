@@ -441,14 +441,10 @@ name|answer
 init|=
 operator|new
 name|OpenWireFormat
-argument_list|()
+argument_list|(
+name|version
+argument_list|)
 decl_stmt|;
-name|answer
-operator|.
-name|version
-operator|=
-name|version
-expr_stmt|;
 name|answer
 operator|.
 name|stackTraceEnabled
