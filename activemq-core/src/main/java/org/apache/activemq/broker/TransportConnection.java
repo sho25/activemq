@@ -5388,10 +5388,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|starting
-operator|=
-literal|true
-expr_stmt|;
 try|try
 block|{
 synchronized|synchronized
@@ -5399,6 +5395,10 @@ init|(
 name|this
 init|)
 block|{
+name|starting
+operator|=
+literal|true
+expr_stmt|;
 if|if
 condition|(
 name|taskRunnerFactory
@@ -5512,20 +5512,24 @@ block|{
 comment|// stop() can be called from within the above block,
 comment|// but we want to be sure start() completes before
 comment|// stop() runs, so queue the stop until right now:
-name|starting
-operator|=
+name|setStarting
+argument_list|(
 literal|false
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|pendingStop
+name|isPendingStop
+argument_list|()
 condition|)
 block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Calling the delayed stop()"
+literal|"Calling the delayed stop() after start() "
+operator|+
+name|this
 argument_list|)
 expr_stmt|;
 name|stop
@@ -5541,30 +5545,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-synchronized|synchronized
-init|(
-name|this
-init|)
-block|{
-name|pendingStop
-operator|=
-literal|true
-expr_stmt|;
-if|if
-condition|(
-name|starting
-condition|)
-block|{
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"stop() called in the middle of start(). Delaying..."
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
-block|}
 name|stopAsync
 argument_list|()
 expr_stmt|;
@@ -5604,8 +5584,31 @@ name|void
 name|stopAsync
 parameter_list|()
 block|{
-comment|// If we're in the middle of starting
-comment|// then go no further... for now.
+comment|// If we're in the middle of starting then go no further... for now.
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
+name|pendingStop
+operator|=
+literal|true
+expr_stmt|;
+if|if
+condition|(
+name|starting
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"stopAsync() called in the middle of start(). Delaying till start completes.."
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+block|}
 if|if
 condition|(
 name|stopping
@@ -5693,14 +5696,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Error occured while shutting down a connection to '"
+literal|"Error occurred while shutting down a connection "
 operator|+
-name|transport
-operator|.
-name|getRemoteAddress
-argument_list|()
-operator|+
-literal|"': "
+name|this
 argument_list|,
 name|e
 argument_list|)

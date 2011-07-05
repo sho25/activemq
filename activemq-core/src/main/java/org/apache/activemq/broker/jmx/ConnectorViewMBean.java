@@ -36,6 +36,15 @@ name|ConnectorViewMBean
 extends|extends
 name|Service
 block|{
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Connection count"
+argument_list|)
+name|int
+name|connectionCount
+parameter_list|()
+function_decl|;
 comment|/**      * Resets the statistics      */
 annotation|@
 name|MBeanInfo

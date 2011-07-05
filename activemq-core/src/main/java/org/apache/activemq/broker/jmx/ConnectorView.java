@@ -200,6 +200,19 @@ name|isEnabled
 argument_list|()
 return|;
 block|}
+comment|/**      * Returns the number of current connections      */
+specifier|public
+name|int
+name|connectionCount
+parameter_list|()
+block|{
+return|return
+name|connector
+operator|.
+name|connectionCount
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

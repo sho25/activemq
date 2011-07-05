@@ -564,7 +564,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// Build the object name for the destination
 name|Hashtable
 name|map
 init|=
@@ -674,7 +673,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// Build the object name for the destination
 name|Hashtable
 name|map
 init|=

@@ -102,6 +102,10 @@ name|boolean
 name|isUpdateClusterClientsOnRemove
 parameter_list|()
 function_decl|;
+name|int
+name|connectionCount
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

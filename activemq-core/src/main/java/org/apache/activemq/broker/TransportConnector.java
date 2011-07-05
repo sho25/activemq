@@ -2353,6 +2353,18 @@ operator|=
 name|updateClusterFilter
 expr_stmt|;
 block|}
+specifier|public
+name|int
+name|connectionCount
+parameter_list|()
+block|{
+return|return
+name|connections
+operator|.
+name|size
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
