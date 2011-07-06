@@ -320,7 +320,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A servlet which handles server side HTTP transport, delegating to the  * ActiveMQ broker. This servlet is designed for being embedded inside an  * ActiveMQ Broker using an embedded Jetty or Tomcat instance.  *   *   */
+comment|/**  * A servlet which handles server side HTTP transport, delegating to the  * ActiveMQ broker. This servlet is designed for being embedded inside an  * ActiveMQ Broker using an embedded Jetty or Tomcat instance.  *  *  */
 end_comment
 
 begin_class
@@ -1127,13 +1127,14 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+throw|throw
 name|IOExceptionSupport
 operator|.
 name|create
 argument_list|(
 name|e
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 comment|// Wait for the transport to be connected or disposed.
 name|listener
