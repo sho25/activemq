@@ -1633,7 +1633,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|/**      * Returns the number of messages to be dispatched to this connection      *       * @return size of dispatch queue      */
+comment|/**      * Returns the number of messages to be dispatched to this connection      *      * @return size of dispatch queue      */
 specifier|public
 name|int
 name|getDispatchQueueSize
@@ -1872,7 +1872,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/**      * Calls the serviceException method in an async thread. Since handling a      * service exception closes a socket, we should not tie up broker threads      * since client sockets may hang or cause deadlocks.      *       * @param e      */
+comment|/**      * Calls the serviceException method in an async thread. Since handling a      * service exception closes a socket, we should not tie up broker threads      * since client sockets may hang or cause deadlocks.      *      * @param e      */
 specifier|public
 name|void
 name|serviceExceptionAsync
@@ -7933,6 +7933,18 @@ return|return
 name|this
 operator|.
 name|duplexNetworkConnectorId
+return|;
+block|}
+specifier|public
+name|boolean
+name|isStopping
+parameter_list|()
+block|{
+return|return
+name|stopping
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 specifier|protected
