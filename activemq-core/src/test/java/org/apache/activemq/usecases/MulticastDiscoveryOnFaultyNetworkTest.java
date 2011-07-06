@@ -192,10 +192,6 @@ specifier|public
 name|boolean
 name|useDuplexNetworkBridge
 decl_stmt|;
-specifier|public
-name|boolean
-name|sumulateStalledNetwork
-decl_stmt|;
 specifier|private
 name|TransportConnector
 name|mCastTrpConnector

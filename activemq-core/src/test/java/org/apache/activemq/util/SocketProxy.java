@@ -663,7 +663,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"close, numConnectons="
+literal|"close, numConnections="
 operator|+
 name|connections
 operator|.
@@ -733,7 +733,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"halfClose, numConnectons="
+literal|"halfClose, numConnections="
 operator|+
 name|connections
 operator|.
@@ -818,7 +818,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/*      * pause accepting new connecitons and data transfer through existing proxy      * connections. All sockets remain open      */
+comment|/*      * pause accepting new connections and data transfer through existing proxy      * connections. All sockets remain open      */
 specifier|public
 name|void
 name|pause
@@ -833,7 +833,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"pause, numConnectons="
+literal|"pause, numConnections="
 operator|+
 name|connections
 operator|.
@@ -877,7 +877,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"goOn, numConnectons="
+literal|"goOn, numConnections="
 operator|+
 name|connections
 operator|.
