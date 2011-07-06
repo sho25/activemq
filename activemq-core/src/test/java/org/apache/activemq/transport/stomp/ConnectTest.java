@@ -195,7 +195,7 @@ name|brokerService
 operator|.
 name|addConnector
 argument_list|(
-literal|"stomp://0.0.0.0:61612"
+literal|"stomp://0.0.0.0:61612?transport.soLinger=0"
 argument_list|)
 expr_stmt|;
 name|brokerService
