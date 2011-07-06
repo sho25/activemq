@@ -2316,9 +2316,24 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|boolean
+name|locked
+init|=
+literal|false
+decl_stmt|;
 while|while
 condition|(
-literal|true
+operator|(
+operator|!
+name|isStopped
+argument_list|()
+operator|)
+operator|&&
+operator|(
+operator|!
+name|isStopping
+argument_list|()
+operator|)
 condition|)
 block|{
 try|try
@@ -2327,6 +2342,10 @@ name|lockFile
 operator|.
 name|lock
 argument_list|()
+expr_stmt|;
+name|locked
+operator|=
+literal|true
 expr_stmt|;
 break|break;
 block|}
@@ -2376,6 +2395,20 @@ name|e1
 parameter_list|)
 block|{                         }
 block|}
+block|}
+if|if
+condition|(
+operator|!
+name|locked
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"attempt to obtain lock aborted due to shutdown"
+argument_list|)
+throw|;
 block|}
 block|}
 block|}
@@ -2826,7 +2859,7 @@ return|return
 name|l
 return|;
 block|}
-comment|/**      * Move all the messages that were in the journal into long term storage. We      * just replay and do a checkpoint.      *       * @throws IOException      * @throws IOException      * @throws IllegalStateException      */
+comment|/**      * Move all the messages that were in the journal into long term storage. We      * just replay and do a checkpoint.      *      * @throws IOException      * @throws IOException      * @throws IllegalStateException      */
 specifier|private
 name|void
 name|recover
@@ -4877,7 +4910,7 @@ name|ioe
 throw|;
 block|}
 block|}
-comment|/**      * Loads a previously stored JournalMessage      *       * @param location      * @return      * @throws IOException      */
+comment|/**      * Loads a previously stored JournalMessage      *      * @param location      * @return      * @throws IOException      */
 specifier|public
 name|JournalCommand
 argument_list|<
