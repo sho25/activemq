@@ -1935,7 +1935,12 @@ argument_list|(
 name|getSessionId
 argument_list|()
 operator|+
-literal|" Transaction Rollback"
+literal|" Transaction Rollback, txid:"
+operator|+
+name|transactionContext
+operator|.
+name|getTransactionId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
