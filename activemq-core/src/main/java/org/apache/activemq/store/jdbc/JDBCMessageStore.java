@@ -652,6 +652,8 @@ expr_stmt|;
 block|}
 name|onAdd
 argument_list|(
+name|messageId
+argument_list|,
 name|sequenceId
 argument_list|,
 name|message
@@ -665,6 +667,9 @@ specifier|protected
 name|void
 name|onAdd
 parameter_list|(
+name|MessageId
+name|messageId
+parameter_list|,
 name|long
 name|sequenceId
 parameter_list|,
