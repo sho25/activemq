@@ -133,9 +133,6 @@ parameter_list|)
 block|{
 try|try
 block|{
-comment|// TODO - this seems to break interceptors for some reason
-comment|// BrokerService broker = BrokerFactory.createBroker(new
-comment|// URI(brokerURI));
 name|BrokerService
 name|broker
 init|=
@@ -150,6 +147,9 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+comment|// String brokerDir = "xbean:...;
+comment|// System.setProperty("activemq.base", brokerDir);
+comment|// BrokerService broker = BrokerFactory.createBroker(new URI(brokerDir + "/activemq.xml"));
 comment|// for running on Java 5 without mx4j
 name|ManagementContext
 name|managementContext
