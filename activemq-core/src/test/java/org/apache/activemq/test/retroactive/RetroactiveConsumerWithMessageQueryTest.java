@@ -463,7 +463,8 @@ argument_list|(
 name|bindAddress
 argument_list|)
 decl_stmt|;
-comment|//answer.setUseRetroactiveConsumer(true);
+comment|// answer.setUseRetroactiveConsumer(true);
+comment|// option applied via destination policy alwaysRetroactive
 return|return
 name|answer
 return|;
