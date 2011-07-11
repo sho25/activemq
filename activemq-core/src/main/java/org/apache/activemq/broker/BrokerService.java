@@ -1092,7 +1092,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Manages the lifecycle of an ActiveMQ Broker. A BrokerService consists of a  * number of transport connectors, network connectors and a bunch of properties  * which can be used to configure the broker as its lazily created.  *   *   * @org.apache.xbean.XBean  */
+comment|/**  * Manages the lifecycle of an ActiveMQ Broker. A BrokerService consists of a  * number of transport connectors, network connectors and a bunch of properties  * which can be used to configure the broker as its lazily created.  *  *  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
@@ -1635,6 +1635,12 @@ init|=
 literal|5000
 decl_stmt|;
 specifier|private
+name|int
+name|maxPurgedDestinationsPerSweep
+init|=
+literal|0
+decl_stmt|;
+specifier|private
 name|BrokerContext
 name|brokerContext
 decl_stmt|;
@@ -1700,7 +1706,7 @@ operator|+
 literal|"]"
 return|;
 block|}
-comment|/**      * Adds a new transport connector for the given bind address      *       * @return the newly created and added transport connector      * @throws Exception      */
+comment|/**      * Adds a new transport connector for the given bind address      *      * @return the newly created and added transport connector      * @throws Exception      */
 specifier|public
 name|TransportConnector
 name|addConnector
@@ -1722,7 +1728,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Adds a new transport connector for the given bind address      *       * @return the newly created and added transport connector      * @throws Exception      */
+comment|/**      * Adds a new transport connector for the given bind address      *      * @return the newly created and added transport connector      * @throws Exception      */
 specifier|public
 name|TransportConnector
 name|addConnector
@@ -1743,7 +1749,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Adds a new transport connector for the given TransportServer transport      *       * @return the newly created and added transport connector      * @throws Exception      */
+comment|/**      * Adds a new transport connector for the given TransportServer transport      *      * @return the newly created and added transport connector      * @throws Exception      */
 specifier|public
 name|TransportConnector
 name|addConnector
@@ -1765,7 +1771,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Adds a new transport connector      *       * @return the transport connector      * @throws Exception      */
+comment|/**      * Adds a new transport connector      *      * @return the transport connector      * @throws Exception      */
 specifier|public
 name|TransportConnector
 name|addConnector
@@ -1787,7 +1793,7 @@ return|return
 name|connector
 return|;
 block|}
-comment|/**      * Stops and removes a transport connector from the broker.      *       * @param connector      * @return true if the connector has been previously added to the broker      * @throws Exception      */
+comment|/**      * Stops and removes a transport connector from the broker.      *      * @param connector      * @return true if the connector has been previously added to the broker      * @throws Exception      */
 specifier|public
 name|boolean
 name|removeConnector
@@ -1823,7 +1829,7 @@ return|return
 name|rc
 return|;
 block|}
-comment|/**      * Adds a new network connector using the given discovery address      *       * @return the newly created and added network connector      * @throws Exception      */
+comment|/**      * Adds a new network connector using the given discovery address      *      * @return the newly created and added network connector      * @throws Exception      */
 specifier|public
 name|NetworkConnector
 name|addNetworkConnector
@@ -1845,7 +1851,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Adds a new proxy connector using the given bind address      *       * @return the newly created and added network connector      * @throws Exception      */
+comment|/**      * Adds a new proxy connector using the given bind address      *      * @return the newly created and added network connector      * @throws Exception      */
 specifier|public
 name|ProxyConnector
 name|addProxyConnector
@@ -1867,7 +1873,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Adds a new network connector using the given discovery address      *       * @return the newly created and added network connector      * @throws Exception      */
+comment|/**      * Adds a new network connector using the given discovery address      *      * @return the newly created and added network connector      * @throws Exception      */
 specifier|public
 name|NetworkConnector
 name|addNetworkConnector
@@ -1894,7 +1900,7 @@ name|connector
 argument_list|)
 return|;
 block|}
-comment|/**      * Adds a new proxy connector using the given bind address      *       * @return the newly created and added network connector      * @throws Exception      */
+comment|/**      * Adds a new proxy connector using the given bind address      *      * @return the newly created and added network connector      * @throws Exception      */
 specifier|public
 name|ProxyConnector
 name|addProxyConnector
@@ -3482,7 +3488,7 @@ operator|==
 literal|0
 return|;
 block|}
-comment|/**      * This method (both connectorName and queueName are using regex to match)      * 1. stop the connector (supposed the user input the connector which the      * clients connect to) 2. to check whether there is any pending message on      * the queues defined by queueName 3. supposedly, after stop the connector,      * client should failover to other broker and pending messages should be      * forwarded. if no pending messages, the method finally call stop to stop      * the broker.      *       * @param connectorName      * @param queueName      * @param timeout      * @param pollInterval      * @throws Exception      */
+comment|/**      * This method (both connectorName and queueName are using regex to match)      * 1. stop the connector (supposed the user input the connector which the      * clients connect to) 2. to check whether there is any pending message on      * the queues defined by queueName 3. supposedly, after stop the connector,      * client should failover to other broker and pending messages should be      * forwarded. if no pending messages, the method finally call stop to stop      * the broker.      *      * @param connectorName      * @param queueName      * @param timeout      * @param pollInterval      * @throws Exception      */
 specifier|public
 name|void
 name|stopGracefully
@@ -3891,7 +3897,7 @@ return|return
 name|brokerName
 return|;
 block|}
-comment|/**      * Sets the name of this broker; which must be unique in the network      *       * @param brokerName      */
+comment|/**      * Sets the name of this broker; which must be unique in the network      *      * @param brokerName      */
 specifier|public
 name|void
 name|setBrokerName
@@ -4021,7 +4027,7 @@ name|brokerDir
 argument_list|)
 return|;
 block|}
-comment|/**      * Sets the directory in which the data files will be stored by default for      * the JDBC and Journal persistence adaptors.      *       * @param dataDirectory      *            the directory to store data files      */
+comment|/**      * Sets the directory in which the data files will be stored by default for      * the JDBC and Journal persistence adaptors.      *      * @param dataDirectory      *            the directory to store data files      */
 specifier|public
 name|void
 name|setDataDirectory
@@ -4040,7 +4046,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets the directory in which the data files will be stored by default for      * the JDBC and Journal persistence adaptors.      *       * @param dataDirectoryFile      *            the directory to store data files      */
+comment|/**      * Sets the directory in which the data files will be stored by default for      * the JDBC and Journal persistence adaptors.      *      * @param dataDirectoryFile      *            the directory to store data files      */
 specifier|public
 name|void
 name|setDataDirectoryFile
@@ -4635,7 +4641,7 @@ return|return
 name|persistenceAdapter
 return|;
 block|}
-comment|/**      * Sets the persistence adaptor implementation to use for this broker      *       * @throws IOException      */
+comment|/**      * Sets the persistence adaptor implementation to use for this broker      *      * @throws IOException      */
 specifier|public
 name|void
 name|setPersistenceAdapter
@@ -5371,7 +5377,7 @@ name|transportConnectors
 argument_list|)
 return|;
 block|}
-comment|/**      * Sets the transport connectors which this broker will listen on for new      * clients      *       * @org.apache.xbean.Property       *                            nestedType="org.apache.activemq.broker.TransportConnector"      */
+comment|/**      * Sets the transport connectors which this broker will listen on for new      * clients      *      * @org.apache.xbean.Property      *                            nestedType="org.apache.activemq.broker.TransportConnector"      */
 specifier|public
 name|void
 name|setTransportConnectors
@@ -5458,7 +5464,7 @@ name|proxyConnectors
 argument_list|)
 return|;
 block|}
-comment|/**      * Sets the network connectors which this broker will use to connect to      * other brokers in a federated network      *       * @org.apache.xbean.Property       *                            nestedType="org.apache.activemq.network.NetworkConnector"      */
+comment|/**      * Sets the network connectors which this broker will use to connect to      * other brokers in a federated network      *      * @org.apache.xbean.Property      *                            nestedType="org.apache.activemq.network.NetworkConnector"      */
 specifier|public
 name|void
 name|setNetworkConnectors
@@ -5627,7 +5633,7 @@ operator|=
 name|messageAuthorizationPolicy
 expr_stmt|;
 block|}
-comment|/**      * Delete all messages from the persistent store      *       * @throws IOException      */
+comment|/**      * Delete all messages from the persistent store      *      * @throws IOException      */
 specifier|public
 name|void
 name|deleteAllMessages
@@ -6624,7 +6630,7 @@ block|}
 comment|//
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
-comment|/**      * Handles any lazy-creation helper properties which are added to make      * things easier to configure inside environments such as Spring      *       * @throws Exception      */
+comment|/**      * Handles any lazy-creation helper properties which are added to make      * things easier to configure inside environments such as Spring      *      * @throws Exception      */
 specifier|protected
 name|void
 name|processHelperProperties
@@ -7690,7 +7696,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Factory method to create a new broker      *       * @throws Exception      * @throws      * @throws      */
+comment|/**      * Factory method to create a new broker      *      * @throws Exception      * @throws      * @throws      */
 specifier|protected
 name|Broker
 name|createBroker
@@ -7808,7 +7814,7 @@ return|return
 name|broker
 return|;
 block|}
-comment|/**      * Factory method to create the core region broker onto which interceptors      * are added      *       * @throws Exception      */
+comment|/**      * Factory method to create the core region broker onto which interceptors      * are added      *      * @throws Exception      */
 specifier|protected
 name|Broker
 name|createRegionBroker
@@ -8123,7 +8129,7 @@ return|return
 name|array
 return|;
 block|}
-comment|/**      * Strategy method to add interceptors to the broker      *       * @throws IOException      */
+comment|/**      * Strategy method to add interceptors to the broker      *      * @throws IOException      */
 specifier|protected
 name|Broker
 name|addInterceptors
@@ -8672,7 +8678,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Sets hooks to be executed when broker shut down      *       * @org.apache.xbean.Property      */
+comment|/**      * Sets hooks to be executed when broker shut down      *      * @org.apache.xbean.Property      */
 specifier|public
 name|void
 name|setShutdownHooks
@@ -9019,7 +9025,7 @@ name|objectName
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Start all transport and network connections, proxies and bridges      *       * @throws Exception      */
+comment|/**      * Start all transport and network connections, proxies and bridges      *      * @throws Exception      */
 specifier|public
 name|void
 name|startAllConnectors
@@ -10396,6 +10402,32 @@ operator|.
 name|schedulePeriodForDestinationPurge
 operator|=
 name|schedulePeriodForDestinationPurge
+expr_stmt|;
+block|}
+specifier|public
+name|int
+name|getMaxPurgedDestinationsPerSweep
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|maxPurgedDestinationsPerSweep
+return|;
+block|}
+specifier|public
+name|void
+name|setMaxPurgedDestinationsPerSweep
+parameter_list|(
+name|int
+name|maxPurgedDestinationsPerSweep
+parameter_list|)
+block|{
+name|this
+operator|.
+name|maxPurgedDestinationsPerSweep
+operator|=
+name|maxPurgedDestinationsPerSweep
 expr_stmt|;
 block|}
 specifier|public
