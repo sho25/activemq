@@ -400,6 +400,12 @@ init|=
 literal|true
 decl_stmt|;
 specifier|private
+name|boolean
+name|alwaysRetroactive
+init|=
+literal|false
+decl_stmt|;
+specifier|private
 name|long
 name|blockedProducerWarningInterval
 init|=
@@ -862,6 +868,14 @@ operator|.
 name|setProducerFlowControl
 argument_list|(
 name|isProducerFlowControl
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|destination
+operator|.
+name|setAlwaysRetroactive
+argument_list|(
+name|isAlwaysRetroactive
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1947,6 +1961,32 @@ operator|.
 name|producerFlowControl
 operator|=
 name|producerFlowControl
+expr_stmt|;
+block|}
+comment|/**      * @return true if topic is always retroactive      */
+specifier|public
+name|boolean
+name|isAlwaysRetroactive
+parameter_list|()
+block|{
+return|return
+name|alwaysRetroactive
+return|;
+block|}
+comment|/**      * @param alwaysRetroactive      */
+specifier|public
+name|void
+name|setAlwaysRetroactive
+parameter_list|(
+name|boolean
+name|alwaysRetroactive
+parameter_list|)
+block|{
+name|this
+operator|.
+name|alwaysRetroactive
+operator|=
+name|alwaysRetroactive
 expr_stmt|;
 block|}
 comment|/**      * Set's the interval at which warnings about producers being blocked by      * resource usage will be triggered. Values of 0 or less will disable      * warnings      *       * @param blockedProducerWarningInterval the interval at which warning about      *            blocked producers will be triggered.      */

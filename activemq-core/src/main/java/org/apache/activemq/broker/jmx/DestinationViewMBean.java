@@ -564,6 +564,30 @@ name|boolean
 name|producerFlowControl
 parameter_list|)
 function_decl|;
+comment|/**      * @return if we treat consumers as alwaysRetroactive      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Always treat consumers as retroActive"
+argument_list|)
+name|boolean
+name|isAlwaysRetroactive
+parameter_list|()
+function_decl|;
+comment|/**      * @param alwaysRetroactive set as always retroActive      */
+specifier|public
+name|void
+name|setAlwaysRetroactive
+parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"alwaysRetroactive"
+argument_list|)
+name|boolean
+name|alwaysRetroactive
+parameter_list|)
+function_decl|;
 comment|/**      * Set's the interval at which warnings about producers being blocked by      * resource usage will be triggered. Values of 0 or less will disable      * warnings      *       * @param blockedProducerWarningInterval the interval at which warning about      *            blocked producers will be triggered.      */
 specifier|public
 name|void

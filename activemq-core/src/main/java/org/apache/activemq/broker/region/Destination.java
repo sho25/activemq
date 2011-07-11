@@ -428,6 +428,17 @@ name|boolean
 name|value
 parameter_list|)
 function_decl|;
+name|boolean
+name|isAlwaysRetroactive
+parameter_list|()
+function_decl|;
+name|void
+name|setAlwaysRetroactive
+parameter_list|(
+name|boolean
+name|value
+parameter_list|)
+function_decl|;
 comment|/**      * Set's the interval at which warnings about producers being blocked by      * resource usage will be triggered. Values of 0 or less will disable      * warnings      *      * @param blockedProducerWarningInterval the interval at which warning about      *            blocked producers will be triggered.      */
 specifier|public
 name|void

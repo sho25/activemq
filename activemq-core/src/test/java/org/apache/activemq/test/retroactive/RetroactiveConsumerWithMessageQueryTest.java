@@ -463,13 +463,7 @@ argument_list|(
 name|bindAddress
 argument_list|)
 decl_stmt|;
-name|answer
-operator|.
-name|setUseRetroactiveConsumer
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
+comment|//answer.setUseRetroactiveConsumer(true);
 return|return
 name|answer
 return|;

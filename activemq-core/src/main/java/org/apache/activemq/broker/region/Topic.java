@@ -849,6 +849,9 @@ argument_list|()
 operator|.
 name|isRetroactive
 argument_list|()
+operator|||
+name|isAlwaysRetroactive
+argument_list|()
 condition|)
 block|{
 comment|// synchronize with dispatch method so that no new messages are
