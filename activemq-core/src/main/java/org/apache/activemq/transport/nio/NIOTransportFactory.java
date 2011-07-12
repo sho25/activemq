@@ -460,6 +460,8 @@ specifier|protected
 name|SocketFactory
 name|createSocketFactory
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 return|return
 operator|new

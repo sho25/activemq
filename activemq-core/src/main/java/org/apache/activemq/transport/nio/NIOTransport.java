@@ -243,23 +243,23 @@ extends|extends
 name|TcpTransport
 block|{
 comment|// private static final Logger log = LoggerFactory.getLogger(NIOTransport.class);
-specifier|private
+specifier|protected
 name|SocketChannel
 name|channel
 decl_stmt|;
-specifier|private
+specifier|protected
 name|SelectorSelection
 name|selection
 decl_stmt|;
-specifier|private
+specifier|protected
 name|ByteBuffer
 name|inputBuffer
 decl_stmt|;
-specifier|private
+specifier|protected
 name|ByteBuffer
 name|currentBuffer
 decl_stmt|;
-specifier|private
+specifier|protected
 name|int
 name|nextFrameSize
 decl_stmt|;
@@ -469,7 +469,7 @@ operator|=
 name|outPutStream
 expr_stmt|;
 block|}
-specifier|private
+specifier|protected
 name|void
 name|serviceRead
 parameter_list|()
