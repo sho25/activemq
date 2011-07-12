@@ -183,18 +183,18 @@ name|System
 operator|.
 name|setProperty
 argument_list|(
-literal|"javax.net.ssl.keyStorePassword"
+literal|"javax.net.ssl.keyStoreType"
 argument_list|,
-name|PASSWORD
+name|KEYSTORE_TYPE
 argument_list|)
 expr_stmt|;
 name|System
 operator|.
 name|setProperty
 argument_list|(
-literal|"javax.net.ssl.keyStoreType"
+literal|"javax.net.ssl.keyStorePassword"
 argument_list|,
-name|KEYSTORE_TYPE
+name|PASSWORD
 argument_list|)
 expr_stmt|;
 comment|//System.setProperty("javax.net.debug", "ssl,handshake,data,trustmanager");
