@@ -53,6 +53,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|thread
+operator|.
+name|DefaultThreadPools
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|util
 operator|.
 name|IOExceptionSupport
@@ -1003,7 +1017,6 @@ operator|.
 name|CLOSED
 condition|)
 block|{
-comment|//TODO do shutdown
 name|sslEngine
 operator|.
 name|closeInbound
@@ -1075,7 +1088,6 @@ break|break;
 case|case
 name|NEED_TASK
 case|:
-comment|//TODO use the pool
 name|Runnable
 name|task
 decl_stmt|;
@@ -1093,10 +1105,15 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|task
+name|DefaultThreadPools
 operator|.
-name|run
+name|getDefaultTaskRunnerFactory
 argument_list|()
+operator|.
+name|execute
+argument_list|(
+name|task
+argument_list|)
 expr_stmt|;
 block|}
 break|break;
