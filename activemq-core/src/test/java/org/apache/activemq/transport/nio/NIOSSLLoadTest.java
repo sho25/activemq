@@ -340,7 +340,7 @@ name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"nio+ssl://localhost:0"
+literal|"nio+ssl://localhost:0?transport.needClientAuth=true&transport.enabledCipherSuites=SSL_RSA_WITH_RC4_128_SHA,SSL_DH_anon_WITH_3DES_EDE_CBC_SHA"
 argument_list|)
 decl_stmt|;
 name|broker
@@ -359,9 +359,14 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
+literal|"nio+ssl://localhost:"
+operator|+
 name|connector
 operator|.
 name|getConnectUri
+argument_list|()
+operator|.
+name|getPort
 argument_list|()
 argument_list|)
 decl_stmt|;

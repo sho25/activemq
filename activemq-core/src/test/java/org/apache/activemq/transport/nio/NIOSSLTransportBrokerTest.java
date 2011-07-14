@@ -116,7 +116,7 @@ name|getBindLocation
 parameter_list|()
 block|{
 return|return
-literal|"nio+ssl://localhost:0"
+literal|"nio+ssl://localhost:0?transport.soWriteTimeout=20000"
 return|;
 block|}
 annotation|@
@@ -132,7 +132,7 @@ return|return
 operator|new
 name|URI
 argument_list|(
-literal|"nio+ssl://localhost:0"
+literal|"nio+ssl://localhost:0?soWriteTimeout=20000"
 argument_list|)
 return|;
 block|}
