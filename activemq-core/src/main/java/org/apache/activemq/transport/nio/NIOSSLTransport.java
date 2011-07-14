@@ -366,6 +366,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|enabledCipherSuites
+operator|!=
+literal|null
+condition|)
+block|{
 name|sslEngine
 operator|.
 name|setEnabledCipherSuites
@@ -373,6 +380,7 @@ argument_list|(
 name|enabledCipherSuites
 argument_list|)
 expr_stmt|;
+block|}
 name|sslEngine
 operator|.
 name|setNeedClientAuth
