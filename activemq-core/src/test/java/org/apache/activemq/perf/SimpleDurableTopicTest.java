@@ -125,7 +125,7 @@ name|Exception
 block|{
 name|numberOfDestinations
 operator|=
-literal|1
+literal|10
 expr_stmt|;
 name|numberOfConsumers
 operator|=
@@ -143,10 +143,8 @@ name|getProperty
 argument_list|(
 literal|"SimpleDurableTopicTest.numberofProducers"
 argument_list|,
-literal|"20"
+literal|"1"
 argument_list|)
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|sampleCount

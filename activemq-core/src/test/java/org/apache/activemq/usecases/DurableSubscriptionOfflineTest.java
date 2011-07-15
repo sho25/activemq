@@ -6779,7 +6779,7 @@ operator|.
 name|getStore
 argument_list|()
 operator|.
-name|getJournal
+name|getJournalManager
 argument_list|()
 operator|.
 name|getFileMap
@@ -6863,7 +6863,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{                 }
 block|}
 block|}
 block|}

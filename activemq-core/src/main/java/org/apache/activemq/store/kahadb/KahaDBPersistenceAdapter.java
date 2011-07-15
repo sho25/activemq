@@ -230,7 +230,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with a  * {@link Journal} and then check pointing asynchronously on a timeout with some  * other long term persistent storage.  *   * @org.apache.xbean.XBean element="kahaDB"  *   */
+comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with a  * {@link Journal} and then check pointing asynchronously on a timeout with some  * other long term persistent storage.  */
 end_comment
 
 begin_class
@@ -251,7 +251,7 @@ operator|new
 name|KahaDBStore
 argument_list|()
 decl_stmt|;
-comment|/**      * @param context      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#beginTransaction(org.apache.activemq.broker.ConnectionContext)      */
+comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#beginTransaction(org.apache.activemq.broker.ConnectionContext)      */
 specifier|public
 name|void
 name|beginTransaction
@@ -272,7 +272,7 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param sync      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#checkpoint(boolean)      */
+comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#checkpoint(boolean)      */
 specifier|public
 name|void
 name|checkpoint
@@ -293,7 +293,7 @@ name|sync
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param context      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#commitTransaction(org.apache.activemq.broker.ConnectionContext)      */
+comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#commitTransaction(org.apache.activemq.broker.ConnectionContext)      */
 specifier|public
 name|void
 name|commitTransaction
@@ -314,7 +314,7 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param destination      * @return MessageStore      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#createQueueMessageStore(org.apache.activemq.command.ActiveMQQueue)      */
+comment|/**      * @return MessageStore      * @see org.apache.activemq.store.PersistenceAdapter#createQueueMessageStore(org.apache.activemq.command.ActiveMQQueue)      */
 specifier|public
 name|MessageStore
 name|createQueueMessageStore
@@ -336,7 +336,7 @@ name|destination
 argument_list|)
 return|;
 block|}
-comment|/**      * @param destination      * @return TopicMessageStore      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#createTopicMessageStore(org.apache.activemq.command.ActiveMQTopic)      */
+comment|/**      * @return TopicMessageStore      * @see org.apache.activemq.store.PersistenceAdapter#createTopicMessageStore(org.apache.activemq.command.ActiveMQTopic)      */
 specifier|public
 name|TopicMessageStore
 name|createTopicMessageStore
@@ -358,7 +358,7 @@ name|destination
 argument_list|)
 return|;
 block|}
-comment|/**      * @return TrandactionStore      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#createTransactionStore()      */
+comment|/**      * @return TrandactionStore      * @see org.apache.activemq.store.PersistenceAdapter#createTransactionStore()      */
 specifier|public
 name|TransactionStore
 name|createTransactionStore
@@ -375,7 +375,7 @@ name|createTransactionStore
 argument_list|()
 return|;
 block|}
-comment|/**      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#deleteAllMessages()      */
+comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#deleteAllMessages()      */
 specifier|public
 name|void
 name|deleteAllMessages
@@ -409,7 +409,7 @@ name|getDestinations
 argument_list|()
 return|;
 block|}
-comment|/**      * @return lastMessageBrokerSequenceId      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#getLastMessageBrokerSequenceId()      */
+comment|/**      * @return lastMessageBrokerSequenceId      * @see org.apache.activemq.store.PersistenceAdapter#getLastMessageBrokerSequenceId()      */
 specifier|public
 name|long
 name|getLastMessageBrokerSequenceId
@@ -447,7 +447,7 @@ name|id
 argument_list|)
 return|;
 block|}
-comment|/**      * @param destination      * @see org.apache.activemq.store.PersistenceAdapter#removeQueueMessageStore(org.apache.activemq.command.ActiveMQQueue)      */
+comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#removeQueueMessageStore(org.apache.activemq.command.ActiveMQQueue)      */
 specifier|public
 name|void
 name|removeQueueMessageStore
@@ -466,7 +466,7 @@ name|destination
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param destination      * @see org.apache.activemq.store.PersistenceAdapter#removeTopicMessageStore(org.apache.activemq.command.ActiveMQTopic)      */
+comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#removeTopicMessageStore(org.apache.activemq.command.ActiveMQTopic)      */
 specifier|public
 name|void
 name|removeTopicMessageStore
@@ -485,7 +485,7 @@ name|destination
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param context      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#rollbackTransaction(org.apache.activemq.broker.ConnectionContext)      */
+comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#rollbackTransaction(org.apache.activemq.broker.ConnectionContext)      */
 specifier|public
 name|void
 name|rollbackTransaction
@@ -506,7 +506,7 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param brokerName      * @see org.apache.activemq.store.PersistenceAdapter#setBrokerName(java.lang.String)      */
+comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#setBrokerName(java.lang.String)      */
 specifier|public
 name|void
 name|setBrokerName
@@ -525,7 +525,7 @@ name|brokerName
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param usageManager      * @see org.apache.activemq.store.PersistenceAdapter#setUsageManager(org.apache.activemq.usage.SystemUsage)      */
+comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#setUsageManager(org.apache.activemq.usage.SystemUsage)      */
 specifier|public
 name|void
 name|setUsageManager
@@ -559,7 +559,7 @@ name|size
 argument_list|()
 return|;
 block|}
-comment|/**      * @throws Exception      * @see org.apache.activemq.Service#start()      */
+comment|/**      * @see org.apache.activemq.Service#start()      */
 specifier|public
 name|void
 name|start
@@ -575,7 +575,7 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @throws Exception      * @see org.apache.activemq.Service#stop()      */
+comment|/**      * @see org.apache.activemq.Service#stop()      */
 specifier|public
 name|void
 name|stop
@@ -591,7 +591,7 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Get the journalMaxFileLength      *       * @return the journalMaxFileLength      */
+comment|/**      * Get the journalMaxFileLength      *      * @return the journalMaxFileLength      */
 specifier|public
 name|int
 name|getJournalMaxFileLength
@@ -606,7 +606,7 @@ name|getJournalMaxFileLength
 argument_list|()
 return|;
 block|}
-comment|/**      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can      * be used      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryIntPropertyEditor"      */
+comment|/**      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can      * be used      */
 specifier|public
 name|void
 name|setJournalMaxFileLength
@@ -689,7 +689,7 @@ name|getFailoverProducersAuditDepth
 argument_list|()
 return|;
 block|}
-comment|/**      * Get the checkpointInterval      *       * @return the checkpointInterval      */
+comment|/**      * Get the checkpointInterval      *      * @return the checkpointInterval      */
 specifier|public
 name|long
 name|getCheckpointInterval
@@ -704,7 +704,7 @@ name|getCheckpointInterval
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the checkpointInterval      *       * @param checkpointInterval      *            the checkpointInterval to set      */
+comment|/**      * Set the checkpointInterval      *      * @param checkpointInterval the checkpointInterval to set      */
 specifier|public
 name|void
 name|setCheckpointInterval
@@ -723,7 +723,7 @@ name|checkpointInterval
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the cleanupInterval      *       * @return the cleanupInterval      */
+comment|/**      * Get the cleanupInterval      *      * @return the cleanupInterval      */
 specifier|public
 name|long
 name|getCleanupInterval
@@ -738,7 +738,7 @@ name|getCleanupInterval
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the cleanupInterval      *       * @param cleanupInterval      *            the cleanupInterval to set      */
+comment|/**      * Set the cleanupInterval      *      * @param cleanupInterval the cleanupInterval to set      */
 specifier|public
 name|void
 name|setCleanupInterval
@@ -757,7 +757,7 @@ name|cleanupInterval
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the indexWriteBatchSize      *       * @return the indexWriteBatchSize      */
+comment|/**      * Get the indexWriteBatchSize      *      * @return the indexWriteBatchSize      */
 specifier|public
 name|int
 name|getIndexWriteBatchSize
@@ -772,7 +772,7 @@ name|getIndexWriteBatchSize
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the indexWriteBatchSize      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      * @param indexWriteBatchSize      *            the indexWriteBatchSize to set      */
+comment|/**      * Set the indexWriteBatchSize      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      *      * @param indexWriteBatchSize the indexWriteBatchSize to set      */
 specifier|public
 name|void
 name|setIndexWriteBatchSize
@@ -791,7 +791,7 @@ name|indexWriteBatchSize
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the journalMaxWriteBatchSize      *       * @return the journalMaxWriteBatchSize      */
+comment|/**      * Get the journalMaxWriteBatchSize      *      * @return the journalMaxWriteBatchSize      */
 specifier|public
 name|int
 name|getJournalMaxWriteBatchSize
@@ -806,7 +806,7 @@ name|getJournalMaxWriteBatchSize
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the journalMaxWriteBatchSize      *  * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      * @param journalMaxWriteBatchSize      *            the journalMaxWriteBatchSize to set      */
+comment|/**      * Set the journalMaxWriteBatchSize      * * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      *      * @param journalMaxWriteBatchSize the journalMaxWriteBatchSize to set      */
 specifier|public
 name|void
 name|setJournalMaxWriteBatchSize
@@ -825,7 +825,7 @@ name|journalMaxWriteBatchSize
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the enableIndexWriteAsync      *       * @return the enableIndexWriteAsync      */
+comment|/**      * Get the enableIndexWriteAsync      *      * @return the enableIndexWriteAsync      */
 specifier|public
 name|boolean
 name|isEnableIndexWriteAsync
@@ -840,7 +840,7 @@ name|isEnableIndexWriteAsync
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the enableIndexWriteAsync      *       * @param enableIndexWriteAsync      *            the enableIndexWriteAsync to set      */
+comment|/**      * Set the enableIndexWriteAsync      *      * @param enableIndexWriteAsync the enableIndexWriteAsync to set      */
 specifier|public
 name|void
 name|setEnableIndexWriteAsync
@@ -859,7 +859,7 @@ name|enableIndexWriteAsync
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the directory      *       * @return the directory      */
+comment|/**      * Get the directory      *      * @return the directory      */
 specifier|public
 name|File
 name|getDirectory
@@ -874,7 +874,7 @@ name|getDirectory
 argument_list|()
 return|;
 block|}
-comment|/**      * @param dir      * @see org.apache.activemq.store.PersistenceAdapter#setDirectory(java.io.File)      */
+comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#setDirectory(java.io.File)      */
 specifier|public
 name|void
 name|setDirectory
@@ -893,7 +893,7 @@ name|dir
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the enableJournalDiskSyncs      *       * @return the enableJournalDiskSyncs      */
+comment|/**      * Get the enableJournalDiskSyncs      *      * @return the enableJournalDiskSyncs      */
 specifier|public
 name|boolean
 name|isEnableJournalDiskSyncs
@@ -908,7 +908,7 @@ name|isEnableJournalDiskSyncs
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the enableJournalDiskSyncs      *       * @param enableJournalDiskSyncs      *            the enableJournalDiskSyncs to set      */
+comment|/**      * Set the enableJournalDiskSyncs      *      * @param enableJournalDiskSyncs the enableJournalDiskSyncs to set      */
 specifier|public
 name|void
 name|setEnableJournalDiskSyncs
@@ -927,7 +927,7 @@ name|enableJournalDiskSyncs
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the indexCacheSize      *       * @return the indexCacheSize      */
+comment|/**      * Get the indexCacheSize      *      * @return the indexCacheSize      */
 specifier|public
 name|int
 name|getIndexCacheSize
@@ -942,7 +942,7 @@ name|getIndexCacheSize
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the indexCacheSize      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      * @param indexCacheSize      *            the indexCacheSize to set      */
+comment|/**      * Set the indexCacheSize      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      *      * @param indexCacheSize the indexCacheSize to set      */
 specifier|public
 name|void
 name|setIndexCacheSize
@@ -961,7 +961,7 @@ name|indexCacheSize
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the ignoreMissingJournalfiles      *       * @return the ignoreMissingJournalfiles      */
+comment|/**      * Get the ignoreMissingJournalfiles      *      * @return the ignoreMissingJournalfiles      */
 specifier|public
 name|boolean
 name|isIgnoreMissingJournalfiles
@@ -976,7 +976,7 @@ name|isIgnoreMissingJournalfiles
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the ignoreMissingJournalfiles      *       * @param ignoreMissingJournalfiles      *            the ignoreMissingJournalfiles to set      */
+comment|/**      * Set the ignoreMissingJournalfiles      *      * @param ignoreMissingJournalfiles the ignoreMissingJournalfiles to set      */
 specifier|public
 name|void
 name|setIgnoreMissingJournalfiles
@@ -1191,7 +1191,7 @@ name|getMaxAsyncJobs
 argument_list|()
 return|;
 block|}
-comment|/**      * @param maxAsyncJobs      *            the maxAsyncJobs to set      */
+comment|/**      * @param maxAsyncJobs the maxAsyncJobs to set      */
 specifier|public
 name|void
 name|setMaxAsyncJobs
@@ -1263,6 +1263,34 @@ operator|.
 name|setForceRecoverIndex
 argument_list|(
 name|forceRecoverIndex
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isJournalPerDestination
+parameter_list|()
+block|{
+return|return
+name|letter
+operator|.
+name|isJournalPerDestination
+argument_list|()
+return|;
+block|}
+specifier|public
+name|void
+name|setJournalPerDestination
+parameter_list|(
+name|boolean
+name|journalPerDestination
+parameter_list|)
+block|{
+name|letter
+operator|.
+name|setJournalPerDestination
+argument_list|(
+name|journalPerDestination
 argument_list|)
 expr_stmt|;
 block|}
