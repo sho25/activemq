@@ -1665,7 +1665,7 @@ specifier|private
 name|int
 name|offlineDurableSubscriberTaskSchedule
 init|=
-literal|30000
+literal|300000
 decl_stmt|;
 static|static
 block|{
