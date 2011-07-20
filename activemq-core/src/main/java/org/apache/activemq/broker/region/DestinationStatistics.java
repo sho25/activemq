@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The J2EE Statistics for the a Destination.  *   *   */
+comment|/**  * The J2EE Statistics for the a Destination.  *  *  */
 end_comment
 
 begin_class
@@ -220,6 +220,13 @@ argument_list|(
 literal|"messages"
 argument_list|,
 literal|"The number of messages that that are being held by the destination"
+argument_list|)
+expr_stmt|;
+name|messages
+operator|.
+name|setDoReset
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 name|messagesCached
