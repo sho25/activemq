@@ -2590,6 +2590,15 @@ return|return
 literal|true
 return|;
 block|}
+specifier|public
+name|WireFormat
+name|getWireFormat
+parameter_list|()
+block|{
+return|return
+name|wireFormat
+return|;
+block|}
 block|}
 end_class
 
