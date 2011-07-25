@@ -1429,7 +1429,7 @@ operator|++
 expr_stmt|;
 name|WRITE_CHECK_TIMER
 operator|.
-name|scheduleAtFixedRate
+name|schedule
 argument_list|(
 name|writeCheckerTask
 argument_list|,
@@ -1440,7 +1440,7 @@ argument_list|)
 expr_stmt|;
 name|READ_CHECK_TIMER
 operator|.
-name|scheduleAtFixedRate
+name|schedule
 argument_list|(
 name|readCheckerTask
 argument_list|,
