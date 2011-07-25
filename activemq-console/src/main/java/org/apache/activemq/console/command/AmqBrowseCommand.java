@@ -474,7 +474,7 @@ name|AmqMessagesUtil
 operator|.
 name|getMessages
 argument_list|(
-name|getBrokerUrl
+name|getConnectionFactory
 argument_list|()
 argument_list|,
 name|dest
@@ -500,7 +500,7 @@ name|AmqMessagesUtil
 operator|.
 name|getMessages
 argument_list|(
-name|getBrokerUrl
+name|getConnectionFactory
 argument_list|()
 argument_list|,
 name|dest

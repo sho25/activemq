@@ -1360,8 +1360,6 @@ argument_list|(
 literal|"--msgsel"
 argument_list|)
 expr_stmt|;
-comment|//			String[] extras = MSG_SEL_WITH_PROPERTY.split(" ");
-comment|//			tokens.addAll(Arrays.asList(extras));
 name|tokens
 operator|.
 name|add

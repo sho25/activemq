@@ -73,6 +73,16 @@ name|javax
 operator|.
 name|jms
 operator|.
+name|ConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
 name|Destination
 import|;
 end_import
@@ -162,7 +172,11 @@ specifier|private
 name|Destination
 name|destination
 decl_stmt|;
-comment|/**      * Create a JMS message query filter      *       * @param brokerUrl - broker url to connect to      * @param destination - JMS destination to query      */
+specifier|private
+name|ConnectionFactory
+name|connectionFactory
+decl_stmt|;
+comment|/**      * Create a JMS message query filter      *      * @param brokerUrl   - broker url to connect to      * @param destination - JMS destination to query      */
 specifier|public
 name|AmqMessagesQueryFilter
 parameter_list|(
@@ -191,7 +205,36 @@ operator|=
 name|destination
 expr_stmt|;
 block|}
-comment|/**      * Queries the specified destination using the message selector format query      *       * @param queries - message selector queries      * @return list messages that matches the selector      * @throws Exception      */
+comment|/**      * Create a JMS message query filter      *      * @param brokerUrl   - broker url to connect to      * @param destination - JMS destination to query      */
+specifier|public
+name|AmqMessagesQueryFilter
+parameter_list|(
+name|ConnectionFactory
+name|connectionFactory
+parameter_list|,
+name|Destination
+name|destination
+parameter_list|)
+block|{
+name|super
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|destination
+operator|=
+name|destination
+expr_stmt|;
+name|this
+operator|.
+name|connectionFactory
+operator|=
+name|connectionFactory
+expr_stmt|;
+block|}
+comment|/**      * Queries the specified destination using the message selector format query      *      * @param queries - message selector queries      * @return list messages that matches the selector      * @throws Exception      */
 specifier|public
 name|List
 name|query
@@ -305,7 +348,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Query the messages of a queue destination using a queue browser      *       * @param queue - queue destination      * @param selector - message selector      * @return list of messages that matches the selector      * @throws Exception      */
+comment|/**      * Query the messages of a queue destination using a queue browser      *      * @param queue    - queue destination      * @param selector - message selector      * @return list of messages that matches the selector      * @throws Exception      */
 specifier|protected
 name|List
 name|queryMessages
@@ -323,10 +366,7 @@ name|Connection
 name|conn
 init|=
 name|createConnection
-argument_list|(
-name|getBrokerUrl
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|Session
 name|sess
@@ -376,7 +416,7 @@ return|return
 name|messages
 return|;
 block|}
-comment|/**      * Query the messages of a topic destination using a message consumer      *       * @param topic - topic destination      * @param selector - message selector      * @return list of messages that matches the selector      * @throws Exception      */
+comment|/**      * Query the messages of a topic destination using a message consumer      *      * @param topic    - topic destination      * @param selector - message selector      * @return list of messages that matches the selector      * @throws Exception      */
 specifier|protected
 name|List
 name|queryMessages
@@ -398,7 +438,9 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Create and start a JMS connection      *       * @param brokerUrl - broker url to connect to.      * @return JMS connection      * @throws JMSException      */
+comment|/**      * Create and start a JMS connection      *      * @param brokerUrl - broker url to connect to.      * @return JMS connection      * @throws JMSException      * @deprecated Use createConnection() instead, and pass the url to the ConnectionFactory when it's created.      */
+annotation|@
+name|Deprecated
 specifier|protected
 name|Connection
 name|createConnection
@@ -409,9 +451,9 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{
-name|Connection
-name|conn
-init|=
+comment|// maintain old behaviour, when called this way.
+name|connectionFactory
+operator|=
 operator|(
 operator|new
 name|ActiveMQConnectionFactory
@@ -419,6 +461,42 @@ argument_list|(
 name|brokerUrl
 argument_list|)
 operator|)
+expr_stmt|;
+return|return
+name|createConnection
+argument_list|()
+return|;
+block|}
+comment|/**      * Create and start a JMS connection      *      * @return JMS connection      * @throws JMSException      */
+specifier|protected
+name|Connection
+name|createConnection
+parameter_list|()
+throws|throws
+name|JMSException
+block|{
+comment|// maintain old behaviour, when called either way.
+if|if
+condition|(
+literal|null
+operator|==
+name|connectionFactory
+condition|)
+name|connectionFactory
+operator|=
+operator|(
+operator|new
+name|ActiveMQConnectionFactory
+argument_list|(
+name|getBrokerUrl
+argument_list|()
+argument_list|)
+operator|)
+expr_stmt|;
+name|Connection
+name|conn
+init|=
+name|connectionFactory
 operator|.
 name|createConnection
 argument_list|()
@@ -432,7 +510,7 @@ return|return
 name|conn
 return|;
 block|}
-comment|/**      * Get the broker url being used.      *       * @return broker url      */
+comment|/**      * Get the broker url being used.      *      * @return broker url      */
 specifier|public
 name|URI
 name|getBrokerUrl
@@ -442,7 +520,7 @@ return|return
 name|brokerUrl
 return|;
 block|}
-comment|/**      * Set the broker url to use.      *       * @param brokerUrl - broker url      */
+comment|/**      * Set the broker url to use.      *      * @param brokerUrl - broker url      */
 specifier|public
 name|void
 name|setBrokerUrl
@@ -458,7 +536,7 @@ operator|=
 name|brokerUrl
 expr_stmt|;
 block|}
-comment|/**      * Get the destination being used.      *       * @return - JMS destination      */
+comment|/**      * Get the destination being used.      *      * @return - JMS destination      */
 specifier|public
 name|Destination
 name|getDestination
@@ -468,7 +546,7 @@ return|return
 name|destination
 return|;
 block|}
-comment|/**      * Set the destination to use.      *       * @param destination - JMS destination      */
+comment|/**      * Set the destination to use.      *      * @param destination - JMS destination      */
 specifier|public
 name|void
 name|setDestination
