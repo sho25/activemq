@@ -627,7 +627,12 @@ name|setPublishedDate
 argument_list|(
 operator|new
 name|Date
+argument_list|(
+name|message
+operator|.
+name|getJMSTimestamp
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
