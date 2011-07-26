@@ -201,6 +201,16 @@ literal|"    --msgsel<msgsel1,msglsel2>   Add to the search list messages matche
 block|,
 literal|"                                  the messages selector format."
 block|,
+literal|"    --factory<className>         Load className as the javax.jms.ConnectionFactory to use for creating connections."
+block|,
+literal|"    --passwordFactory<className> Load className as the org.apache.activemq.console.command.PasswordFactory"
+block|,
+literal|"                                  for retrieving the password from a keystore."
+block|,
+literal|"    --user<username>             Username to use for JMS connections."
+block|,
+literal|"    --password<password>         Password to use for JMS connections."
+block|,
 literal|"    -V<header|custom|body>        Predefined view that allows you to view the message header, custom"
 block|,
 literal|"                                  message header, or the message body."
@@ -242,6 +252,24 @@ block|,
 literal|"          wildcard *:10, and has a JMSPriority field> 5 in the queue FOO.BAR"
 block|,
 literal|"        * To use wildcard queries, the field must be a string and the query enclosed in ''"
+block|,
+literal|""
+block|,
+literal|"    Main browse --amqurl tcp://localhost:61616 --user someUser --pass somePass FOO.BAR"
+block|,
+literal|"        - Print the message header, custom message header, and message body of all messages in the"
+block|,
+literal|"          queue FOO.BAR, using someUser as the user name, and somePass as the password"
+block|,
+literal|""
+block|,
+literal|"    Main browse --amqurl tcp://localhost:61616 --user someUser --pass somePass --factory org.apache.activemq.ActiveMQConnectionFactory --passwordFactory org.apache.activemq.AMQPasswordFactory FOO.BAR"
+block|,
+literal|"        - Print the message header, custom message header, and message body of all messages in the"
+block|,
+literal|"          queue FOO.BAR, using someUser as the user name, org.apache.activemq.AMQFactorySubClass to create JMS connections,"
+block|,
+literal|"          and org.apache.activemq.console.command.DefaultPasswordFactory to turn somePass into the password to be used."
 block|,
 literal|""
 block|,     }
