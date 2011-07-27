@@ -107,16 +107,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -151,9 +141,11 @@ name|apache
 operator|.
 name|camel
 operator|.
-name|impl
+name|test
 operator|.
-name|DefaultProducerTemplate
+name|junit4
+operator|.
+name|CamelSpringTestSupport
 import|;
 end_import
 
@@ -161,13 +153,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|junit
 operator|.
-name|camel
-operator|.
-name|spring
-operator|.
-name|SpringTestSupport
+name|Test
 import|;
 end_import
 
@@ -214,7 +202,7 @@ specifier|public
 class|class
 name|CamelJmsTest
 extends|extends
-name|SpringTestSupport
+name|CamelSpringTestSupport
 block|{
 specifier|private
 specifier|static
@@ -237,6 +225,8 @@ name|expectedBody
 init|=
 literal|"<hello>world!</hello>"
 decl_stmt|;
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testSendingViaJmsIsReceivedByCamel
@@ -387,6 +377,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testConsumingViaJMSReceivesMessageFromCamel
@@ -504,8 +496,6 @@ argument_list|(
 literal|5000
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 literal|"Should have received a message from destination: "
@@ -527,8 +517,6 @@ argument_list|,
 name|message
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Message body"

@@ -117,9 +117,21 @@ name|apache
 operator|.
 name|camel
 operator|.
-name|spring
+name|test
 operator|.
-name|SpringTestSupport
+name|junit4
+operator|.
+name|CamelSpringTestSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -176,7 +188,7 @@ specifier|public
 class|class
 name|DlqTest
 extends|extends
-name|SpringTestSupport
+name|CamelSpringTestSupport
 block|{
 specifier|private
 specifier|static
@@ -201,6 +213,8 @@ decl_stmt|;
 name|int
 name|messageCount
 decl_stmt|;
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testSendToDlq
