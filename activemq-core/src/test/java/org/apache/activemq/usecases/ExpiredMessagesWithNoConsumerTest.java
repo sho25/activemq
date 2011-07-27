@@ -782,7 +782,7 @@ argument_list|()
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"producer completed within time"
+literal|"producer failed to complete within allocated time"
 argument_list|,
 name|Wait
 operator|.
@@ -1289,7 +1289,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"producer completed within time "
+literal|"producer failed to complete within allocated time"
 argument_list|,
 name|Wait
 operator|.
@@ -1970,7 +1970,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"producer completed within time "
+literal|"producer failed to complete within allocated time"
 argument_list|,
 name|Wait
 operator|.
