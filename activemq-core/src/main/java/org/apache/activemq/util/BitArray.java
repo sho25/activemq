@@ -461,7 +461,7 @@ operator|.
 name|writeByte
 argument_list|(
 operator|(
-name|int
+name|byte
 operator|)
 name|bits
 argument_list|)
