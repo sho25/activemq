@@ -428,7 +428,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -624,7 +624,7 @@ name|taskRunnerFactory
 expr_stmt|;
 if|if
 condition|(
-name|broker
+name|destinationFactory
 operator|==
 literal|null
 condition|)
@@ -1409,7 +1409,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Provide an exact or wildcard lookup of destinations in the region      *       * @return a set of matching destination objects.      */
+comment|/**      * Provide an exact or wildcard lookup of destinations in the region      *      * @return a set of matching destination objects.      */
 specifier|public
 name|Set
 argument_list|<
@@ -1782,7 +1782,7 @@ name|sub
 return|;
 block|}
 block|}
-comment|/**      * Get all the Destinations that are in storage      *       * @return Set of all stored destinations      */
+comment|/**      * Get all the Destinations that are in storage      *      * @return Set of all stored destinations      */
 specifier|public
 name|Set
 name|getDurableDestinations
@@ -2779,7 +2779,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Removes a Producer.      *       * @param context      *            the environment the operation is being executed under.      * @throws Exception      *             TODO      */
+comment|/**      * Removes a Producer.      *      * @param context      *            the environment the operation is being executed under.      * @throws Exception      *             TODO      */
 specifier|public
 name|void
 name|removeProducer
