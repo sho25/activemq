@@ -158,7 +158,7 @@ name|page
 return|;
 block|}
 block|}
-comment|/**      * This closure interface is intended for the end user implement callbacks for the Transaction.exectue() method.      *       * @param<T> The type of exceptions that operation will throw.      */
+comment|/**      * This closure interface is intended for the end user implement callbacks for the Transaction.exectue() method.      *      * @param<T> The type of exceptions that operation will throw.      */
 specifier|public
 interface|interface
 name|Closure
@@ -179,7 +179,7 @@ throws|throws
 name|T
 function_decl|;
 block|}
-comment|/**      * This closure interface is intended for the end user implement callbacks for the Transaction.exectue() method.      *       * @param<R> The type of result that the closure produces.      * @param<T> The type of exceptions that operation will throw.      */
+comment|/**      * This closure interface is intended for the end user implement callbacks for the Transaction.exectue() method.      *      * @param<R> The type of result that the closure produces.      * @param<T> The type of exceptions that operation will throw.      */
 specifier|public
 interface|interface
 name|CallableClosure
@@ -306,7 +306,7 @@ operator|.
 name|pageFile
 return|;
 block|}
-comment|/**       * Allocates a free page that you can write data to.      *       * @return a newly allocated page.        * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
+comment|/**      * Allocates a free page that you can write data to.      *      * @return a newly allocated page.      * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
 specifier|public
 parameter_list|<
 name|T
@@ -327,7 +327,7 @@ literal|1
 argument_list|)
 return|;
 block|}
-comment|/**       * Allocates a block of free pages that you can write data to.      *       * @param count the number of sequential pages to allocate      * @return the first page of the sequential set.       * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
+comment|/**      * Allocates a block of free pages that you can write data to.      *      * @param count the number of sequential pages to allocate      * @return the first page of the sequential set.      * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
 specifier|public
 parameter_list|<
 name|T
@@ -386,7 +386,7 @@ return|return
 name|rc
 return|;
 block|}
-comment|/**      * Frees up a previously allocated page so that it can be re-allocated again.      *       * @param pageId the page to free up      * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
+comment|/**      * Frees up a previously allocated page so that it can be re-allocated again.      *      * @param pageId the page to free up      * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
 specifier|public
 name|void
 name|free
@@ -408,7 +408,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Frees up a previously allocated sequence of pages so that it can be re-allocated again.      *       * @param pageId the initial page of the sequence that will be getting freed      * @param count the number of pages in the sequence      *       * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
+comment|/**      * Frees up a previously allocated sequence of pages so that it can be re-allocated again.      *      * @param pageId the initial page of the sequence that will be getting freed      * @param count the number of pages in the sequence      *      * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
 specifier|public
 name|void
 name|free
@@ -435,7 +435,7 @@ name|count
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Frees up a previously allocated sequence of pages so that it can be re-allocated again.      *       * @param page the initial page of the sequence that will be getting freed      * @param count the number of pages in the sequence      *       * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
+comment|/**      * Frees up a previously allocated sequence of pages so that it can be re-allocated again.      *      * @param page the initial page of the sequence that will be getting freed      * @param count the number of pages in the sequence      *      * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
 specifier|public
 parameter_list|<
 name|T
@@ -513,7 +513,7 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Frees up a previously allocated page so that it can be re-allocated again.      *       * @param page the page to free up      * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
+comment|/**      * Frees up a previously allocated page so that it can be re-allocated again.      *      * @param page the page to free up      * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
 specifier|public
 parameter_list|<
 name|T
@@ -655,7 +655,7 @@ name|next
 expr_stmt|;
 block|}
 block|}
-comment|/**      *       * @param page      *        the page to write. The Page object must be fully populated with a valid pageId, type, and data.      * @param marshaller      *        the marshaler to use to load the data portion of the Page, may be null if you do not wish to write the data.      * @param overflow      *        If true, then if the page data marshalls to a bigger size than can fit in one page, then additional       *        overflow pages are automatically allocated and chained to this page to store all the data.  If false,      *        and the overflow condition would occur, then the PageOverflowIOException is thrown.       * @throws IOException      *         If an disk error occurred.      * @throws PageOverflowIOException      *         If the page data marshalls to size larger than maximum page size and overflow was false.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
+comment|/**      *      * @param page      *        the page to write. The Page object must be fully populated with a valid pageId, type, and data.      * @param marshaller      *        the marshaler to use to load the data portion of the Page, may be null if you do not wish to write the data.      * @param overflow      *        If true, then if the page data marshalls to a bigger size than can fit in one page, then additional      *        overflow pages are automatically allocated and chained to this page to store all the data.  If false,      *        and the overflow condition would occur, then the PageOverflowIOException is thrown.      * @throws IOException      *         If an disk error occurred.      * @throws PageOverflowIOException      *         If the page data marshalls to size larger than maximum page size and overflow was false.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
 specifier|public
 parameter_list|<
 name|T
@@ -1076,7 +1076,7 @@ return|return
 name|out
 return|;
 block|}
-comment|/**      * Loads a page from disk.      *       * @param pageId       *        the id of the page to load      * @param marshaller      *        the marshaler to use to load the data portion of the Page, may be null if you do not wish to load the data.      * @return The page with the given id      * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
+comment|/**      * Loads a page from disk.      *      * @param pageId      *        the id of the page to load      * @param marshaller      *        the marshaler to use to load the data portion of the Page, may be null if you do not wish to load the data.      * @return The page with the given id      * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
 specifier|public
 parameter_list|<
 name|T
@@ -1130,7 +1130,7 @@ return|return
 name|page
 return|;
 block|}
-comment|/**      * Loads a page from disk.      *       * @param page - The pageId field must be properly set       * @param marshaller      *        the marshaler to use to load the data portion of the Page, may be null if you do not wish to load the data.      * @throws IOException      *         If an disk error occurred.      * @throws InvalidPageIOException      *         If the page is is not valid.            * @throws IllegalStateException      *         if the PageFile is not loaded      */
+comment|/**      * Loads a page from disk.      *      * @param page - The pageId field must be properly set      * @param marshaller      *        the marshaler to use to load the data portion of the Page, may be null if you do not wish to load the data.      * @throws IOException      *         If an disk error occurred.      * @throws InvalidPageIOException      *         If the page is is not valid.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1967,7 +1967,7 @@ block|}
 block|}
 return|;
 block|}
-comment|/**      * Allows you to iterate through all active Pages in this object.  Pages with type Page.FREE_TYPE are       * not included in this iteration.       *       * Pages removed with Iterator.remove() will not actually get removed until the transaction commits.      *       * @throws IllegalStateException      *         if the PageFile is not loaded      */
+comment|/**      * Allows you to iterate through all active Pages in this object.  Pages with type Page.FREE_TYPE are      * not included in this iteration.      *      * Pages removed with Iterator.remove() will not actually get removed until the transaction commits.      *      * @throws IllegalStateException      *         if the PageFile is not loaded      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1994,7 +1994,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Allows you to iterate through all active Pages in this object.  You can optionally include free pages in the pages      * iterated.      *       * @param includeFreePages - if true, free pages are included in the iteration      * @throws IllegalStateException      *         if the PageFile is not loaded      */
+comment|/**      * Allows you to iterate through all active Pages in this object.  You can optionally include free pages in the pages      * iterated.      *      * @param includeFreePages - if true, free pages are included in the iteration      * @throws IllegalStateException      *         if the PageFile is not loaded      */
 specifier|public
 name|Iterator
 argument_list|<
@@ -2211,12 +2211,13 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+throw|throw
 operator|new
 name|RuntimeException
 argument_list|(
 name|e
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 block|}
 block|}
@@ -2713,7 +2714,7 @@ block|}
 comment|///////////////////////////////////////////////////////////////////
 comment|// Transaction closure helpers...
 comment|///////////////////////////////////////////////////////////////////
-comment|/**      * Executes a closure and if it does not throw any exceptions, then it commits the transaction.      * If the closure throws an Exception, then the transaction is rolled back.      *       * @param<T>      * @param closure - the work to get exectued.      * @throws T if the closure throws it      * @throws IOException If the commit fails.      */
+comment|/**      * Executes a closure and if it does not throw any exceptions, then it commits the transaction.      * If the closure throws an Exception, then the transaction is rolled back.      *      * @param<T>      * @param closure - the work to get exectued.      * @throws T if the closure throws it      * @throws IOException If the commit fails.      */
 specifier|public
 parameter_list|<
 name|T
@@ -2772,7 +2773,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Executes a closure and if it does not throw any exceptions, then it commits the transaction.      * If the closure throws an Exception, then the transaction is rolled back.      *       * @param<T>      * @param closure - the work to get exectued.      * @throws T if the closure throws it      * @throws IOException If the commit fails.      */
+comment|/**      * Executes a closure and if it does not throw any exceptions, then it commits the transaction.      * If the closure throws an Exception, then the transaction is rolled back.      *      * @param<T>      * @param closure - the work to get exectued.      * @throws T if the closure throws it      * @throws IOException If the commit fails.      */
 specifier|public
 parameter_list|<
 name|R
