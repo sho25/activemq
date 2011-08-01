@@ -3790,6 +3790,14 @@ operator|.
 name|incrementRefCount
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -3812,6 +3820,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|addBrokerInClusterUpdate
 argument_list|()
 expr_stmt|;
@@ -3875,6 +3884,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -3897,6 +3914,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|removeBrokerInClusterUpdate
 argument_list|()
 expr_stmt|;

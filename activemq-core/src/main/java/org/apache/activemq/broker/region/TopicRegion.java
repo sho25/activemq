@@ -1454,6 +1454,14 @@ index|[
 name|i
 index|]
 decl_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -1463,6 +1471,7 @@ operator|+
 name|info
 argument_list|)
 expr_stmt|;
+block|}
 name|SubscriptionKey
 name|key
 init|=

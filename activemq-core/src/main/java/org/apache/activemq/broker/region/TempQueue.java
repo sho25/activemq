@@ -364,6 +364,14 @@ name|getConnectionId
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -380,6 +388,7 @@ name|getConnectionId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|super
 operator|.
