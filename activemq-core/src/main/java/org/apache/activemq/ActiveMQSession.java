@@ -2380,6 +2380,16 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/**      * Checks if the session is closed.      *      * @return true if the session is closed, false otherwise.      */
+specifier|public
+name|boolean
+name|isClosed
+parameter_list|()
+block|{
+return|return
+name|closed
+return|;
+block|}
 comment|/**      * Stops message delivery in this session, and restarts message delivery      * with the oldest unacknowledged message.      *<P>      * All consumers deliver messages in a serial order. Acknowledging a      * received message automatically acknowledges all messages that have been      * delivered to the client.      *<P>      * Restarting a session causes it to take the following actions:      *<UL>      *<LI>Stop message delivery      *<LI>Mark all messages that might have been delivered but not      * acknowledged as "redelivered"      *<LI>Restart the delivery sequence including all unacknowledged messages      * that had been previously delivered. Redelivered messages do not have to      * be delivered in exactly their original delivery order.      *</UL>      *       * @throws JMSException if the JMS provider fails to stop and restart      *                 message delivery due to some internal error.      * @throws IllegalStateException if the method is called by a transacted      *                 session.      */
 specifier|public
 name|void

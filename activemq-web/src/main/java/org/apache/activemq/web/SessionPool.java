@@ -65,8 +65,40 @@ name|Session
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|ActiveMQSession
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * A simple pool of JMS Session objects intended for use by Queue browsers.  *   *   */
+comment|/**  * A simple pool of JMS Session objects intended for use by Queue browsers.  */
 end_comment
 
 begin_class
@@ -74,6 +106,21 @@ specifier|public
 class|class
 name|SessionPool
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|SessionPool
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 name|ConnectionFactory
 name|connectionFactory
@@ -253,6 +300,13 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Creating a new session."
+argument_list|)
+expr_stmt|;
 name|answer
 operator|=
 name|createSession
@@ -261,6 +315,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Serving session from the pool."
+argument_list|)
+expr_stmt|;
 name|answer
 operator|=
 name|sessions
@@ -287,6 +348,17 @@ condition|(
 name|session
 operator|!=
 literal|null
+operator|&&
+operator|!
+operator|(
+operator|(
+name|ActiveMQSession
+operator|)
+name|session
+operator|)
+operator|.
+name|isClosed
+argument_list|()
 condition|)
 block|{
 synchronized|synchronized
@@ -294,6 +366,13 @@ init|(
 name|sessions
 init|)
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Returning session to the pool."
+argument_list|)
+expr_stmt|;
 name|sessions
 operator|.
 name|add
@@ -302,6 +381,16 @@ name|session
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Session closed or null, not returning to the pool."
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 specifier|protected
