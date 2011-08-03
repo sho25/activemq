@@ -344,8 +344,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// TODO: we need to track allocated pages so that they can be returned if the
-comment|// transaction gets rolled back.
 name|Page
 argument_list|<
 name|T

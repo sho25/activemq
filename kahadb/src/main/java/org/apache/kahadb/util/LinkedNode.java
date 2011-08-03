@@ -669,7 +669,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"This node is already linked to a node"
+literal|"This node is already linked to a list"
 argument_list|)
 throw|;
 block|}

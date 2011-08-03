@@ -809,6 +809,8 @@ operator|.
 name|first
 operator|+
 name|count
+operator|-
+literal|1
 argument_list|)
 decl_stmt|;
 name|sequence
