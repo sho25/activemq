@@ -5500,8 +5500,9 @@ name|e
 parameter_list|)
 block|{
 comment|// Force clean up on an error starting up.
-name|stop
-argument_list|()
+name|pendingStop
+operator|=
+literal|true
 expr_stmt|;
 throw|throw
 name|e
