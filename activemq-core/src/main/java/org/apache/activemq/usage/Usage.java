@@ -213,7 +213,7 @@ operator|.
 name|isDebugEnabled
 argument_list|()
 decl_stmt|;
-specifier|private
+specifier|protected
 name|String
 name|name
 decl_stmt|;
@@ -1416,7 +1416,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-specifier|private
+specifier|protected
 name|void
 name|addChild
 parameter_list|(
@@ -1446,7 +1446,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-specifier|private
+specifier|protected
 name|void
 name|removeChild
 parameter_list|(

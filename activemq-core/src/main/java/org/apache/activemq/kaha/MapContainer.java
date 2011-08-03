@@ -122,7 +122,7 @@ comment|/**      * @param key      * @return true if the container contains the 
 name|boolean
 name|containsKey
 parameter_list|(
-name|K
+name|Object
 name|key
 parameter_list|)
 function_decl|;
@@ -130,7 +130,7 @@ comment|/**      * Get the value associated with the key      *       * @param k
 name|V
 name|get
 parameter_list|(
-name|K
+name|Object
 name|key
 parameter_list|)
 function_decl|;
@@ -138,7 +138,7 @@ comment|/**      * @param o      * @return true if the MapContainer contains the
 name|boolean
 name|containsValue
 parameter_list|(
-name|K
+name|Object
 name|o
 parameter_list|)
 function_decl|;
@@ -148,8 +148,12 @@ name|putAll
 parameter_list|(
 name|Map
 argument_list|<
+name|?
+extends|extends
 name|K
 argument_list|,
+name|?
+extends|extends
 name|V
 argument_list|>
 name|map
@@ -201,7 +205,7 @@ comment|/**      * remove an entry associated with the key      *       * @param
 name|V
 name|remove
 parameter_list|(
-name|K
+name|Object
 name|key
 parameter_list|)
 function_decl|;
