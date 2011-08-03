@@ -2158,7 +2158,7 @@ name|brokerService
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://0.0.0.0:61616"
+literal|"tcp://0.0.0.0:0"
 argument_list|)
 expr_stmt|;
 name|brokerService
@@ -2238,13 +2238,9 @@ argument_list|(
 name|policyMap
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-literal|false
-condition|)
-block|{
-comment|// external mysql works a lot faster
-comment|//
+comment|//        if (false) {
+comment|//            // external mysql works a lot faster
+comment|//            //
 comment|//            JDBCPersistenceAdapter jdbc = new JDBCPersistenceAdapter();
 comment|//            BasicDataSource ds = new BasicDataSource();
 comment|//            com.mysql.jdbc.Driver d = new com.mysql.jdbc.Driver();
@@ -2257,15 +2253,13 @@ comment|//            ds.setPoolPreparedStatements(true);
 comment|//            jdbc.setDataSource(ds);
 comment|//            brokerService.setPersistenceAdapter(jdbc);
 comment|/* add mysql bits to the pom in the testing dependencies<dependency><groupId>mysql</groupId><artifactId>mysql-connector-java</artifactId><version>5.1.10</version><scope>test</scope></dependency><dependency><groupId>commons-dbcp</groupId><artifactId>commons-dbcp</artifactId><version>1.2.2</version><scope>test</scope></dependency>              */
-block|}
-else|else
-block|{
+comment|//        } else {
 name|setDefaultPersistenceAdapter
 argument_list|(
 name|brokerService
 argument_list|)
 expr_stmt|;
-block|}
+comment|//        }
 return|return
 name|brokerService
 return|;
@@ -2283,7 +2277,18 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"tcp://localhost:61616"
+name|broker
+operator|.
+name|getTransportConnectors
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|getPublishableConnectString
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|ActiveMQPrefetchPolicy

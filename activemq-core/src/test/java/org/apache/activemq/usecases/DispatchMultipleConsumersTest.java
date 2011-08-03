@@ -182,7 +182,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Rajani Chennamaneni  *  */
+comment|/**  * @author Rajani Chennamaneni  */
 end_comment
 
 begin_class
@@ -252,8 +252,6 @@ name|consumerLatch
 decl_stmt|;
 name|String
 name|brokerURL
-init|=
-literal|"tcp://localhost:61616"
 decl_stmt|;
 name|String
 name|userName
@@ -308,12 +306,17 @@ name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://localhost:61616"
+literal|"tcp://localhost:0"
 argument_list|)
 expr_stmt|;
 name|broker
 operator|.
 name|start
+argument_list|()
+expr_stmt|;
+name|broker
+operator|.
+name|waitUntilStarted
 argument_list|()
 expr_stmt|;
 name|dest
@@ -327,6 +330,21 @@ expr_stmt|;
 name|resetCounters
 argument_list|()
 expr_stmt|;
+name|brokerURL
+operator|=
+name|broker
+operator|.
+name|getTransportConnectors
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|getPublishableConnectString
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -337,7 +355,16 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//      broker.stop();
+name|broker
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
+name|broker
+operator|.
+name|waitUntilStopped
+argument_list|()
+expr_stmt|;
 name|super
 operator|.
 name|tearDown
@@ -408,8 +435,6 @@ expr_stmt|;
 name|dispatch
 argument_list|()
 expr_stmt|;
-comment|/*try {                 System.out.print("Press Enter to continue/finish:");                 //pause to check the counts on JConsole                 System.in.read();                 System.in.read();             } catch (IOException e) {                 e.printStackTrace();             }*/
-comment|//check for consumed messages count
 name|assertEquals
 argument_list|(
 literal|"Incorrect messages in Iteration "
@@ -598,9 +623,6 @@ name|ConsumerThread
 extends|extends
 name|Thread
 block|{
-name|Connection
-name|conn
-decl_stmt|;
 name|Session
 name|session
 decl_stmt|;
@@ -622,12 +644,6 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|conn
-operator|=
-name|conn
-expr_stmt|;
-name|this
-operator|.
 name|setName
 argument_list|(
 name|name
@@ -635,7 +651,7 @@ argument_list|)
 expr_stmt|;
 name|logger
 operator|.
-name|info
+name|trace
 argument_list|(
 literal|"Created new consumer thread:"
 operator|+
@@ -774,9 +790,17 @@ argument_list|(
 literal|100
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|logger
 operator|.
-name|info
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|logger
+operator|.
+name|trace
 argument_list|(
 literal|"Message received:"
 operator|+
@@ -786,6 +810,7 @@ name|getJMSMessageID
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|msgCount
 operator|++
 expr_stmt|;
@@ -864,7 +889,7 @@ argument_list|()
 expr_stmt|;
 name|logger
 operator|.
-name|info
+name|trace
 argument_list|(
 literal|"Consumed "
 operator|+
@@ -927,7 +952,7 @@ argument_list|)
 expr_stmt|;
 name|logger
 operator|.
-name|info
+name|trace
 argument_list|(
 literal|"Created new producer thread:"
 operator|+
@@ -1091,9 +1116,17 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
 name|logger
 operator|.
-name|info
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|logger
+operator|.
+name|trace
 argument_list|(
 literal|"Sent "
 operator|+
@@ -1105,6 +1138,7 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

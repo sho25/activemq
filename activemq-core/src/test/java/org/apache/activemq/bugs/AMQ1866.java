@@ -226,7 +226,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This is a test case for the issue reported at:  * https://issues.apache.org/activemq/browse/AMQ-1866  *   * If you have a JMS producer sending messages to multiple fast consumers and   * one slow consumer, eventually all consumers will run as slow as   * the slowest consumer.    */
+comment|/**  * This is a test case for the issue reported at:  * https://issues.apache.org/activemq/browse/AMQ-1866  *  * If you have a JMS producer sending messages to multiple fast consumers and  * one slow consumer, eventually all consumers will run as slow as  * the slowest consumer.  */
 end_comment
 
 begin_class
@@ -269,15 +269,16 @@ name|Thread
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|private
+specifier|final
 name|String
 name|ACTIVEMQ_BROKER_BIND
 init|=
-literal|"tcp://localhost:61616"
+literal|"tcp://localhost:0"
 decl_stmt|;
+specifier|private
 name|String
 name|ACTIVEMQ_BROKER_URI
-init|=
-literal|"tcp://localhost:61616"
 decl_stmt|;
 name|AtomicBoolean
 name|shutdown
@@ -386,6 +387,21 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|ACTIVEMQ_BROKER_URI
+operator|=
+name|brokerService
+operator|.
+name|getTransportConnectors
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|getPublishableConnectString
+argument_list|()
+expr_stmt|;
 name|destination
 operator|=
 operator|new
@@ -447,7 +463,9 @@ name|Exception
 block|{
 name|ACTIVEMQ_BROKER_URI
 operator|=
-literal|"tcp://localhost:61616?jms.prefetchPolicy.queuePrefetch=0"
+name|ACTIVEMQ_BROKER_URI
+operator|+
+literal|"?jms.prefetchPolicy.queuePrefetch=0"
 expr_stmt|;
 name|doTestConsumerSlowDown
 argument_list|()
@@ -462,7 +480,9 @@ name|Exception
 block|{
 name|ACTIVEMQ_BROKER_URI
 operator|=
-literal|"tcp://localhost:61616?jms.prefetchPolicy.queuePrefetch=10"
+name|ACTIVEMQ_BROKER_URI
+operator|+
+literal|"?jms.prefetchPolicy.queuePrefetch=10"
 expr_stmt|;
 name|doTestConsumerSlowDown
 argument_list|()
@@ -475,10 +495,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ACTIVEMQ_BROKER_URI
-operator|=
-literal|"tcp://localhost:61616"
-expr_stmt|;
 name|doTestConsumerSlowDown
 argument_list|()
 expr_stmt|;
@@ -651,11 +667,9 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|System
+name|log
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 literal|"c1: "
 operator|+

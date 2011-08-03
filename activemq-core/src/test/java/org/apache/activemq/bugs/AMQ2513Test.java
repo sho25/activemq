@@ -134,7 +134,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This unit test verifies an issue when  * javax.management.InstanceNotFoundException is thrown after subsequent startups when   * managementContext createConnector="false"  *  */
+comment|/**  * This unit test verifies an issue when  * javax.management.InstanceNotFoundException is thrown after subsequent startups when  * managementContext createConnector="false"  *  */
 end_comment
 
 begin_class
@@ -144,8 +144,13 @@ name|AMQ2513Test
 extends|extends
 name|TestCase
 block|{
+specifier|private
 name|BrokerService
 name|broker
+decl_stmt|;
+specifier|private
+name|String
+name|connectionUri
 decl_stmt|;
 name|void
 name|createBroker
@@ -187,7 +192,7 @@ name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://localhost:61616"
+literal|"tcp://localhost:0"
 argument_list|)
 expr_stmt|;
 name|ManagementContext
@@ -222,6 +227,21 @@ operator|.
 name|waitUntilStarted
 argument_list|()
 expr_stmt|;
+name|connectionUri
+operator|=
+name|broker
+operator|.
+name|getTransportConnectors
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|getPublishableConnectString
+argument_list|()
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -241,7 +261,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"tcp://localhost:61616"
+name|connectionUri
 argument_list|)
 decl_stmt|;
 name|Connection
@@ -348,7 +368,7 @@ operator|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"tcp://localhost:61616"
+name|connectionUri
 argument_list|)
 expr_stmt|;
 name|connection

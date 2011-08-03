@@ -41,16 +41,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|Message
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|MessageConsumer
 import|;
 end_import
@@ -103,10 +93,6 @@ name|ActiveMQQueue
 import|;
 end_import
 
-begin_comment
-comment|/**  *   */
-end_comment
-
 begin_class
 specifier|public
 class|class
@@ -114,6 +100,10 @@ name|CraigsBugTest
 extends|extends
 name|EmbeddedBrokerTestSupport
 block|{
+specifier|private
+name|String
+name|connectionUri
+decl_stmt|;
 specifier|public
 name|void
 name|testConnectionFactory
@@ -128,7 +118,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"tcp://localhost:61616"
+name|connectionUri
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -261,11 +251,26 @@ name|Exception
 block|{
 name|bindAddress
 operator|=
-literal|"tcp://localhost:61616"
+literal|"tcp://localhost:0"
 expr_stmt|;
 name|super
 operator|.
 name|setUp
+argument_list|()
+expr_stmt|;
+name|connectionUri
+operator|=
+name|broker
+operator|.
+name|getTransportConnectors
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|getPublishableConnectString
 argument_list|()
 expr_stmt|;
 block|}

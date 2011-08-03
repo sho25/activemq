@@ -114,7 +114,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A useful base class which creates and closes an embedded broker  *   *   */
+comment|/**  * A useful base class which creates and closes an embedded broker  *  *  */
 end_comment
 
 begin_class
@@ -231,7 +231,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Factory method to create a new {@link JmsTemplate}      *       * @return a newly created JmsTemplate      */
+comment|/**      * Factory method to create a new {@link JmsTemplate}      *      * @return a newly created JmsTemplate      */
 specifier|protected
 name|JmsTemplate
 name|createJmsTemplate
@@ -245,7 +245,7 @@ name|connectionFactory
 argument_list|)
 return|;
 block|}
-comment|/**      * Factory method to create a new {@link Destination}      *       * @return newly created Destinaiton      */
+comment|/**      * Factory method to create a new {@link Destination}      *      * @return newly created Destinaiton      */
 specifier|protected
 name|ActiveMQDestination
 name|createDestination
@@ -311,7 +311,7 @@ name|getName
 argument_list|()
 return|;
 block|}
-comment|/**      * Factory method to create a new {@link ConnectionFactory} instance      *       * @return a newly created connection factory      */
+comment|/**      * Factory method to create a new {@link ConnectionFactory} instance      *      * @return a newly created connection factory      */
 specifier|protected
 name|ConnectionFactory
 name|createConnectionFactory
@@ -327,7 +327,7 @@ name|bindAddress
 argument_list|)
 return|;
 block|}
-comment|/**      * Factory method to create a new broker      *       * @throws Exception      */
+comment|/**      * Factory method to create a new broker      *      * @throws Exception      */
 specifier|protected
 name|BrokerService
 name|createBroker

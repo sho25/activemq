@@ -132,7 +132,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   *   */
+comment|/**  *  *  */
 end_comment
 
 begin_class
@@ -167,8 +167,6 @@ operator|+
 literal|"?jms.prefetchPolicy.all=5"
 argument_list|)
 return|;
-comment|//return super.createConnectionFactory();
-comment|//return new ActiveMQConnectionFactory("tcp://localhost:61616");
 block|}
 specifier|public
 name|void

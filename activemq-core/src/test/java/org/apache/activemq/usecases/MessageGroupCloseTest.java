@@ -228,7 +228,6 @@ specifier|final
 name|String
 name|connStr
 init|=
-comment|//"tcp://localhost:61616";
 literal|"vm://localhost?broker.persistent=false&broker.useJmx=false&jms.prefetchPolicy.all=1"
 decl_stmt|;
 specifier|public

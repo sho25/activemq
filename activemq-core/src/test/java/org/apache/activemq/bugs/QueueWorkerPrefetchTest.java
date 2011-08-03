@@ -240,7 +240,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test case demonstrating situation where messages are not delivered to consumers.  */
+comment|/**  * Test case demonstrating situation where messages are not delivered to  * consumers.  */
 end_comment
 
 begin_class
@@ -290,11 +290,11 @@ specifier|private
 specifier|static
 specifier|final
 name|String
-name|CONNECTION_URL
+name|BROKER_BIND_ADDRESS
 init|=
-literal|"tcp://localhost:61616"
+literal|"tcp://localhost:0"
 decl_stmt|;
-comment|/** The queue prefetch size to use. A value greater than 1 seems to make things work. */
+comment|/**      * The queue prefetch size to use. A value greater than 1 seems to make      * things work.      */
 specifier|private
 specifier|static
 specifier|final
@@ -303,7 +303,7 @@ name|QUEUE_PREFETCH_SIZE
 init|=
 literal|1
 decl_stmt|;
-comment|/** The number of workers to use.  A single worker with a prefetch of 1 works. */
+comment|/**      * The number of workers to use. A single worker with a prefetch of 1 works.      */
 specifier|private
 specifier|static
 specifier|final
@@ -329,6 +329,7 @@ name|masterItemConsumer
 decl_stmt|;
 comment|/** The number of acks received by the master. */
 specifier|private
+specifier|final
 name|AtomicLong
 name|acksReceived
 init|=
@@ -339,6 +340,7 @@ literal|0
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicReference
 argument_list|<
 name|CountDownLatch
@@ -352,6 +354,10 @@ name|CountDownLatch
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|private
+name|String
+name|connectionUri
+decl_stmt|;
 comment|/** Messages sent to the work-item queue. */
 specifier|private
 specifier|static
@@ -360,6 +366,14 @@ name|WorkMessage
 implements|implements
 name|Serializable
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 specifier|private
 specifier|final
 name|int
@@ -393,7 +407,7 @@ name|id
 return|;
 block|}
 block|}
-comment|/**      * The worker process.  Consume messages from the work-item queue, possibly creating      * more messages to submit to the work-item queue.  For each work item, send an ack      * to the master.      */
+comment|/**      * The worker process. Consume messages from the work-item queue, possibly      * creating more messages to submit to the work-item queue. For each work      * item, send an ack to the master.      */
 specifier|private
 specifier|static
 class|class
@@ -401,7 +415,7 @@ name|Worker
 implements|implements
 name|MessageListener
 block|{
-comment|/** Counter shared between workers to decided when new work-item messages are created. */
+comment|/**          * Counter shared between workers to decided when new work-item messages          * are created.          */
 specifier|private
 specifier|static
 name|AtomicInteger
@@ -620,7 +634,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** Master message handler.  Process ack messages. */
+comment|/** Master message handler. Process ack messages. */
 specifier|public
 name|void
 name|onMessage
@@ -706,12 +720,32 @@ name|broker
 operator|.
 name|addConnector
 argument_list|(
-name|CONNECTION_URL
+name|BROKER_BIND_ADDRESS
 argument_list|)
 expr_stmt|;
 name|broker
 operator|.
 name|start
+argument_list|()
+expr_stmt|;
+name|broker
+operator|.
+name|waitUntilStarted
+argument_list|()
+expr_stmt|;
+name|connectionUri
+operator|=
+name|broker
+operator|.
+name|getTransportConnectors
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|getPublishableConnectString
 argument_list|()
 expr_stmt|;
 block|}
@@ -753,7 +787,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-name|CONNECTION_URL
+name|connectionUri
 argument_list|)
 decl_stmt|;
 name|ActiveMQPrefetchPolicy
@@ -886,7 +920,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Send a message to the work queue, and wait for the BATCH_SIZE acks from the workers.
+comment|// Send a message to the work queue, and wait for the BATCH_SIZE acks
+comment|// from the workers.
 name|acksReceived
 operator|.
 name|set
@@ -956,9 +991,9 @@ argument_list|(
 literal|"First batch received"
 argument_list|)
 expr_stmt|;
-comment|// Send another message to the work queue, and wait for the next 1000 acks.  It is
+comment|// Send another message to the work queue, and wait for the next 1000 acks. It is
 comment|// at this point where the workers never get notified of this message, as they
-comment|// have a large pending queue.  Creating a new worker at this point however will
+comment|// have a large pending queue. Creating a new worker at this point however will
 comment|// receive this new message.
 name|acksReceived
 operator|.

@@ -19,16 +19,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|concurrent
@@ -36,6 +26,16 @@ operator|.
 name|atomic
 operator|.
 name|AtomicInteger
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|ConnectionFactory
 import|;
 end_import
 
@@ -108,6 +108,18 @@ operator|.
 name|activemq
 operator|.
 name|ActiveMQConnection
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|ActiveMQConnectionFactory
 import|;
 end_import
 
@@ -193,6 +205,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|int
 name|messageSize
 init|=
@@ -201,6 +214,7 @@ operator|*
 literal|64
 decl_stmt|;
 specifier|private
+specifier|final
 name|int
 name|messageCount
 init|=
@@ -217,7 +231,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-comment|/** 	     * Test the case where the broker is blocked due to a memory limit  	     * and a producer timeout is set on the connection. 	     * @throws Exception 	     */
+comment|/**      * Test the case where the broker is blocked due to a memory limit      * and a producer timeout is set on the connection.      * @throws Exception      */
 specifier|public
 name|void
 name|testBlockedProducerConnectionTimeout
@@ -426,7 +440,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	     * Test the case where the broker is blocked due to a memory limit 	     * with a fail timeout 	     * @throws Exception 	     */
+comment|/**      * Test the case where the broker is blocked due to a memory limit      * with a fail timeout      * @throws Exception      */
 specifier|public
 name|void
 name|testBlockedProducerUsageSendFailTimeout
@@ -657,7 +671,7 @@ argument_list|)
 expr_stmt|;
 name|bindAddress
 operator|=
-literal|"tcp://localhost:61616"
+literal|"tcp://localhost:0"
 expr_stmt|;
 name|broker
 operator|=
@@ -693,6 +707,34 @@ operator|.
 name|setUp
 argument_list|()
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|protected
+name|ConnectionFactory
+name|createConnectionFactory
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
+operator|new
+name|ActiveMQConnectionFactory
+argument_list|(
+name|broker
+operator|.
+name|getTransportConnectors
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|getPublishableConnectString
+argument_list|()
+argument_list|)
+return|;
 block|}
 specifier|private
 name|String

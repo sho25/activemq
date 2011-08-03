@@ -95,6 +95,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|ActiveMQConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|EmbeddedBrokerTestSupport
 import|;
 end_import
@@ -196,7 +208,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A specific test of Queue.purge() functionality  *  *   */
+comment|/**  * A specific test of Queue.purge() functionality  */
 end_comment
 
 begin_class
@@ -1188,7 +1200,7 @@ name|Exception
 block|{
 name|bindAddress
 operator|=
-literal|"tcp://localhost:61616"
+literal|"tcp://localhost:0"
 expr_stmt|;
 name|useTopic
 operator|=
@@ -1289,6 +1301,34 @@ argument_list|()
 expr_stmt|;
 return|return
 name|answer
+return|;
+block|}
+annotation|@
+name|Override
+specifier|protected
+name|ConnectionFactory
+name|createConnectionFactory
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
+operator|new
+name|ActiveMQConnectionFactory
+argument_list|(
+name|broker
+operator|.
+name|getTransportConnectors
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|getPublishableConnectString
+argument_list|()
+argument_list|)
 return|;
 block|}
 specifier|protected
