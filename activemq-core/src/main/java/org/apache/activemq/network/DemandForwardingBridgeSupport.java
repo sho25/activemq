@@ -6204,13 +6204,23 @@ name|networkConsumers
 argument_list|)
 condition|)
 block|{
-name|suppress
-operator|=
-name|isActiveDurableSub
+if|if
+condition|(
+name|isInActiveDurableSub
 argument_list|(
 name|sub
 argument_list|)
-operator|&&
+condition|)
+block|{
+name|suppress
+operator|=
+literal|false
+expr_stmt|;
+block|}
+else|else
+block|{
+name|suppress
+operator|=
 name|hasLowerPriority
 argument_list|(
 name|sub
@@ -6221,6 +6231,7 @@ name|getLocalInfo
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 break|break;
 block|}
 block|}
@@ -6231,7 +6242,7 @@ return|;
 block|}
 specifier|private
 name|boolean
-name|isActiveDurableSub
+name|isInActiveDurableSub
 parameter_list|(
 name|Subscription
 name|sub
@@ -6251,6 +6262,7 @@ name|sub
 operator|instanceof
 name|DurableTopicSubscription
 operator|&&
+operator|!
 operator|(
 operator|(
 name|DurableTopicSubscription
@@ -6323,11 +6335,8 @@ operator|+
 literal|" is duplicated by network subscription with equal or higher network priority: "
 operator|+
 name|existingSub
-operator|.
-name|getConsumerInfo
-argument_list|()
 operator|+
-literal|", networkComsumerIds: "
+literal|", networkConsumerIds: "
 operator|+
 name|existingSub
 operator|.

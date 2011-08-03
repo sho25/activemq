@@ -1649,6 +1649,11 @@ operator|.
 name|getConsumerId
 argument_list|()
 operator|+
+literal|", active="
+operator|+
+name|isActive
+argument_list|()
+operator|+
 literal|", destinations="
 operator|+
 name|destinations

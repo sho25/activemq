@@ -748,7 +748,13 @@ operator|new
 name|BrokerService
 argument_list|()
 decl_stmt|;
-comment|//broker.setDeleteAllMessagesOnStartup(true);
+name|broker
+operator|.
+name|setDeleteAllMessagesOnStartup
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|broker
 operator|.
 name|setBrokerName
