@@ -6857,6 +6857,28 @@ name|journalFilesBeingReplicated
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|metadata
+operator|.
+name|producerSequenceIdTrackerLocation
+operator|!=
+literal|null
+condition|)
+block|{
+name|gcCandidateSet
+operator|.
+name|remove
+argument_list|(
+name|metadata
+operator|.
+name|producerSequenceIdTrackerLocation
+operator|.
+name|getDataFileId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Don't GC files after the first in progress tx
 if|if
 condition|(
@@ -6889,7 +6911,6 @@ operator|.
 name|firstInProgressTransactionLocation
 expr_stmt|;
 block|}
-empty_stmt|;
 block|}
 if|if
 condition|(
