@@ -931,8 +931,6 @@ name|id
 operator|.
 name|toString
 argument_list|()
-operator|+
-literal|":"
 argument_list|)
 decl_stmt|;
 if|if
