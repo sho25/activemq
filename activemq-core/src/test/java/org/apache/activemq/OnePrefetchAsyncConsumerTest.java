@@ -761,7 +761,13 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
-comment|// commit the tx
+comment|// commit the tx and
+comment|// return ServerSession to pool
+synchronized|synchronized
+init|(
+name|pool
+init|)
+block|{
 try|try
 block|{
 name|session
@@ -775,13 +781,7 @@ parameter_list|(
 name|JMSException
 name|e
 parameter_list|)
-block|{                      }
-comment|// return ServerSession to pool
-synchronized|synchronized
-init|(
-name|pool
-init|)
-block|{
+block|{                         }
 name|pool
 operator|.
 name|serverSessionInUse
