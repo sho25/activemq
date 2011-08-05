@@ -298,6 +298,14 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|managementContext
+operator|.
+name|isAllowRemoteAddressInMBeanNames
+argument_list|()
+condition|)
+block|{
 name|byAddressName
 operator|=
 name|createByAddressObjectName
@@ -315,6 +323,7 @@ argument_list|(
 name|byAddressName
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -366,17 +375,6 @@ name|doStop
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Sets the connection ID of this connection. On startup this connection ID      * is set to an incrementing counter; once the client registers it is set to      * the clientID of the JMS client.      */
-specifier|public
-name|void
-name|setConnectionId
-parameter_list|(
-name|String
-name|connectionId
-parameter_list|)
-throws|throws
-name|IOException
-block|{     }
 specifier|public
 name|Response
 name|processAddConnection
