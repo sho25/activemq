@@ -325,19 +325,8 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-name|BrokerService
-name|broker
-decl_stmt|;
-name|Connection
-name|connection
-decl_stmt|;
-name|Session
-name|session
-decl_stmt|;
-name|MessageProducer
-name|producer
-decl_stmt|;
-specifier|public
+specifier|private
+specifier|final
 name|ActiveMQDestination
 name|destination
 init|=
@@ -347,15 +336,35 @@ argument_list|(
 literal|"test"
 argument_list|)
 decl_stmt|;
-specifier|public
+specifier|private
 name|boolean
 name|optimizedDispatch
 init|=
 literal|true
 decl_stmt|;
-specifier|public
+specifier|private
 name|PendingQueueMessageStoragePolicy
 name|pendingQueuePolicy
+decl_stmt|;
+specifier|private
+name|BrokerService
+name|broker
+decl_stmt|;
+specifier|private
+name|String
+name|connectionUri
+decl_stmt|;
+specifier|private
+name|Connection
+name|connection
+decl_stmt|;
+specifier|private
+name|Session
+name|session
+decl_stmt|;
+specifier|private
+name|MessageProducer
+name|producer
 decl_stmt|;
 specifier|public
 specifier|static
@@ -462,7 +471,7 @@ name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://localhost:61616"
+literal|"tcp://localhost:0"
 argument_list|)
 expr_stmt|;
 name|PolicyMap
@@ -554,6 +563,21 @@ operator|.
 name|waitUntilStarted
 argument_list|()
 expr_stmt|;
+name|connectionUri
+operator|=
+name|broker
+operator|.
+name|getTransportConnectors
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|getPublishableConnectString
+argument_list|()
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -615,7 +639,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"tcp://localhost:61616"
+name|connectionUri
 argument_list|)
 decl_stmt|;
 name|connection
@@ -805,7 +829,14 @@ name|producingThread
 operator|.
 name|join
 argument_list|(
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
 literal|1000
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -940,7 +971,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"All sent have expired"
+literal|"Not all sent messages have expired"
 argument_list|,
 name|sendCount
 argument_list|,
@@ -952,7 +983,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"memory usage goes to duck egg"
+literal|"memory usage doesn't go to duck egg"
 argument_list|,
 literal|0
 argument_list|,
@@ -986,7 +1017,9 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"tcp://localhost:61616?jms.prefetchPolicy.queuePrefetch="
+name|connectionUri
+operator|+
+literal|"?jms.prefetchPolicy.queuePrefetch="
 operator|+
 name|queuePrefetch
 argument_list|)
@@ -1105,11 +1138,11 @@ name|waitCondition
 operator|.
 name|await
 argument_list|(
-literal|60
+literal|6
 argument_list|,
 name|TimeUnit
 operator|.
-name|SECONDS
+name|MINUTES
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -1329,7 +1362,7 @@ name|Wait
 operator|.
 name|MAX_WAIT_MILLIS
 operator|*
-literal|2
+literal|10
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1378,7 +1411,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"All sent have expired "
+literal|"Not all sent have expired "
 argument_list|,
 name|Wait
 operator|.
@@ -1535,7 +1568,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"inflight reduces to half prefetch minus single delivered message"
+literal|"inflight didn't reduce to half prefetch minus single delivered message"
 argument_list|,
 operator|(
 name|queuePrefetch
@@ -1553,7 +1586,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"size gets back to 0 "
+literal|"size didn't get back to 0 "
 argument_list|,
 literal|0
 argument_list|,
@@ -1565,7 +1598,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"dequeues match sent/expired "
+literal|"dequeues didn't match sent/expired "
 argument_list|,
 name|sendCount
 argument_list|,
@@ -1654,7 +1687,9 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"tcp://localhost:61616?jms.prefetchPolicy.queuePrefetch="
+name|connectionUri
+operator|+
+literal|"?jms.prefetchPolicy.queuePrefetch="
 operator|+
 name|queuePrefetch
 argument_list|)
@@ -1763,15 +1798,24 @@ parameter_list|)
 block|{
 try|try
 block|{
+if|if
+condition|(
 name|LOG
 operator|.
-name|info
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
 argument_list|(
 literal|"Got my message: "
 operator|+
 name|message
 argument_list|)
 expr_stmt|;
+block|}
 name|receivedOneCondition
 operator|.
 name|countDown
@@ -1786,22 +1830,31 @@ name|waitCondition
 operator|.
 name|await
 argument_list|(
-literal|60
+literal|5
 argument_list|,
 name|TimeUnit
 operator|.
-name|SECONDS
+name|MINUTES
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|LOG
 operator|.
-name|info
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
 argument_list|(
 literal|"acking message: "
 operator|+
 name|message
 argument_list|)
 expr_stmt|;
+block|}
 name|message
 operator|.
 name|acknowledge
@@ -2005,6 +2058,12 @@ argument_list|()
 return|;
 block|}
 block|}
+argument_list|,
+name|Wait
+operator|.
+name|MAX_WAIT_MILLIS
+operator|*
+literal|10
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2019,7 +2078,7 @@ argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(
-literal|"all dispatched up to default prefetch "
+literal|"Not all dispatched up to default prefetch "
 argument_list|,
 name|Wait
 operator|.
@@ -2053,7 +2112,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"All sent have expired "
+literal|"All have not sent have expired "
 argument_list|,
 name|Wait
 operator|.
@@ -2210,7 +2269,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"inflight reduces to half prefetch minus single delivered message"
+literal|"inflight didn't reduce to half prefetch minus single delivered message"
 argument_list|,
 operator|(
 name|queuePrefetch
@@ -2228,7 +2287,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"size gets back to 0 "
+literal|"size doesn't get back to 0 "
 argument_list|,
 literal|0
 argument_list|,
@@ -2240,7 +2299,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"dequeues match sent/expired "
+literal|"dequeues don't match sent/expired "
 argument_list|,
 name|sendCount
 argument_list|,
@@ -2258,6 +2317,14 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+name|long
+name|tStamp
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -2287,6 +2354,49 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|i
+operator|%
+literal|100
+operator|==
+literal|0
+condition|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"sent: "
+operator|+
+name|i
+operator|+
+literal|" @ "
+operator|+
+operator|(
+operator|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|-
+name|tStamp
+operator|)
+operator|/
+literal|100
+operator|)
+operator|+
+literal|"m/ms"
+argument_list|)
+expr_stmt|;
+name|tStamp
+operator|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 name|Wait
 operator|.
@@ -2353,7 +2463,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"inflight goes to zeor on close"
+literal|"inflight did not go to zeor on close"
 argument_list|,
 literal|0
 argument_list|,
@@ -2390,7 +2500,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"tcp://localhost:61616"
+name|connectionUri
 argument_list|)
 decl_stmt|;
 name|connection
@@ -2849,6 +2959,58 @@ name|broker
 operator|.
 name|waitUntilStopped
 argument_list|()
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|getOptimizedDispatch
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|optimizedDispatch
+return|;
+block|}
+specifier|public
+name|void
+name|setOptimizedDispatch
+parameter_list|(
+name|boolean
+name|option
+parameter_list|)
+block|{
+name|this
+operator|.
+name|optimizedDispatch
+operator|=
+name|option
+expr_stmt|;
+block|}
+specifier|public
+name|PendingQueueMessageStoragePolicy
+name|getPendingQueuePolicy
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|pendingQueuePolicy
+return|;
+block|}
+specifier|public
+name|void
+name|setPendingQueuePolicy
+parameter_list|(
+name|PendingQueueMessageStoragePolicy
+name|policy
+parameter_list|)
+block|{
+name|this
+operator|.
+name|pendingQueuePolicy
+operator|=
+name|policy
 expr_stmt|;
 block|}
 block|}
