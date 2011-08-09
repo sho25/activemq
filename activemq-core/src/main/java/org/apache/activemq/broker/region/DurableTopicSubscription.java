@@ -386,7 +386,7 @@ name|ActiveMQDestination
 argument_list|,
 name|Destination
 argument_list|>
-name|destinations
+name|durableDestinations
 init|=
 operator|new
 name|ConcurrentHashMap
@@ -661,6 +661,17 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+operator|!
+name|destinations
+operator|.
+name|contains
+argument_list|(
+name|destination
+argument_list|)
+condition|)
+block|{
 name|super
 operator|.
 name|add
@@ -670,10 +681,11 @@ argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
+block|}
 comment|// do it just once per destination
 if|if
 condition|(
-name|destinations
+name|durableDestinations
 operator|.
 name|containsKey
 argument_list|(
@@ -686,7 +698,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|destinations
+name|durableDestinations
 operator|.
 name|put
 argument_list|(
@@ -892,7 +904,7 @@ name|Destination
 argument_list|>
 name|iter
 init|=
-name|destinations
+name|durableDestinations
 operator|.
 name|values
 argument_list|()
@@ -995,7 +1007,7 @@ name|Destination
 argument_list|>
 name|iter
 init|=
-name|destinations
+name|durableDestinations
 operator|.
 name|values
 argument_list|()
@@ -1128,12 +1140,6 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-if|if
-condition|(
-operator|!
-name|keepDurableSubsActive
-condition|)
-block|{
 for|for
 control|(
 name|Iterator
@@ -1142,7 +1148,7 @@ name|Destination
 argument_list|>
 name|iter
 init|=
-name|destinations
+name|durableDestinations
 operator|.
 name|values
 argument_list|()
@@ -1168,6 +1174,12 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|keepDurableSubsActive
+condition|)
+block|{
 name|topic
 operator|.
 name|deactivate
@@ -1175,6 +1187,25 @@ argument_list|(
 name|context
 argument_list|,
 name|this
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|topic
+operator|.
+name|getDestinationStatistics
+argument_list|()
+operator|.
+name|getInflight
+argument_list|()
+operator|.
+name|subtract
+argument_list|(
+name|dispatched
+operator|.
+name|size
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1656,7 +1687,7 @@ argument_list|()
 operator|+
 literal|", destinations="
 operator|+
-name|destinations
+name|durableDestinations
 operator|.
 name|size
 argument_list|()

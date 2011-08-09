@@ -75,6 +75,36 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|Subscription
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ConsumerInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|RemoveSubscriptionInfo
@@ -112,7 +142,7 @@ specifier|protected
 name|SubscriptionInfo
 name|subscriptionInfo
 decl_stmt|;
-comment|/**      * Constructor      *       * @param broker      * @param clientId      * @param sub      */
+comment|/**      * Constructor      *       * @param broker      * @param clientId      * @param subInfo      */
 specifier|public
 name|InactiveDurableSubscriptionView
 parameter_list|(
@@ -123,7 +153,10 @@ name|String
 name|clientId
 parameter_list|,
 name|SubscriptionInfo
-name|sub
+name|subInfo
+parameter_list|,
+name|Subscription
+name|subscription
 parameter_list|)
 block|{
 name|super
@@ -132,7 +165,7 @@ name|broker
 argument_list|,
 name|clientId
 argument_list|,
-literal|null
+name|subscription
 argument_list|)
 expr_stmt|;
 name|this
@@ -145,7 +178,7 @@ name|this
 operator|.
 name|subscriptionInfo
 operator|=
-name|sub
+name|subInfo
 expr_stmt|;
 block|}
 comment|/**      * @return the id of the Subscription      */
@@ -226,6 +259,18 @@ parameter_list|()
 block|{
 return|return
 literal|false
+return|;
+block|}
+annotation|@
+name|Override
+specifier|protected
+name|ConsumerInfo
+name|getConsumerInfo
+parameter_list|()
+block|{
+comment|// when inactive, consumer info is stale
+return|return
+literal|null
 return|;
 block|}
 comment|/**      * Browse messages for this durable subscriber      *       * @return messages      * @throws OpenDataException      */

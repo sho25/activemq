@@ -2113,6 +2113,9 @@ operator|.
 name|getSubscriptionObjectName
 argument_list|(
 name|subscription
+operator|.
+name|getConsumerInfo
+argument_list|()
 argument_list|,
 name|connectionClientId
 argument_list|,

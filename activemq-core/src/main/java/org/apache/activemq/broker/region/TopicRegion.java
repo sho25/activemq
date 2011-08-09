@@ -1687,7 +1687,7 @@ return|return
 name|rc
 return|;
 block|}
-specifier|private
+specifier|public
 name|ConsumerInfo
 name|createInactiveConsumerInfo
 parameter_list|(
