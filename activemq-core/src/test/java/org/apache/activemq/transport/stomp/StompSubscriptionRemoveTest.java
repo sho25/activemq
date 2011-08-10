@@ -69,6 +69,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URI
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -178,7 +188,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   *   */
+comment|/**  *  *  */
 end_comment
 
 begin_class
@@ -220,14 +230,6 @@ init|=
 literal|"message-id"
 decl_stmt|;
 specifier|private
-specifier|static
-specifier|final
-name|int
-name|STOMP_PORT
-init|=
-literal|61613
-decl_stmt|;
-specifier|private
 name|StompConnection
 name|stompConnection
 init|=
@@ -260,7 +262,7 @@ name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"stomp://localhost:61613"
+literal|"stomp://localhost:0"
 argument_list|)
 operator|.
 name|setName
@@ -272,7 +274,7 @@ name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://localhost:61616"
+literal|"tcp://localhost:0"
 argument_list|)
 operator|.
 name|setName
@@ -285,13 +287,54 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+specifier|final
+name|String
+name|stompUri
+init|=
+name|broker
+operator|.
+name|getConnectorByName
+argument_list|(
+literal|"Stomp"
+argument_list|)
+operator|.
+name|getPublishableConnectString
+argument_list|()
+decl_stmt|;
+specifier|final
+name|int
+name|stompPort
+init|=
+operator|new
+name|URI
+argument_list|(
+name|stompUri
+argument_list|)
+operator|.
+name|getPort
+argument_list|()
+decl_stmt|;
+specifier|final
+name|String
+name|openwireUri
+init|=
+name|broker
+operator|.
+name|getConnectorByName
+argument_list|(
+literal|"Default"
+argument_list|)
+operator|.
+name|getPublishableConnectString
+argument_list|()
+decl_stmt|;
 name|ActiveMQConnectionFactory
 name|factory
 init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"tcp://localhost:61616"
+name|openwireUri
 argument_list|)
 decl_stmt|;
 name|Connection
@@ -397,7 +440,7 @@ name|Socket
 argument_list|(
 literal|"localhost"
 argument_list|,
-name|STOMP_PORT
+name|stompPort
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -557,7 +600,7 @@ name|Socket
 argument_list|(
 literal|"localhost"
 argument_list|,
-name|STOMP_PORT
+name|stompPort
 argument_list|)
 argument_list|)
 expr_stmt|;

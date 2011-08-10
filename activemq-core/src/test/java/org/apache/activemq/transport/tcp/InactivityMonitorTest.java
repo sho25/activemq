@@ -260,6 +260,10 @@ name|Transport
 name|serverTransport
 decl_stmt|;
 specifier|private
+name|int
+name|serverPort
+decl_stmt|;
+specifier|private
 specifier|final
 name|AtomicInteger
 name|clientReceiveCount
@@ -360,7 +364,11 @@ argument_list|(
 operator|new
 name|URI
 argument_list|(
-literal|"tcp://localhost:61616?trace=true&wireFormat.maxInactivityDuration=1000"
+literal|"tcp://localhost:"
+operator|+
+name|serverPort
+operator|+
+literal|"?trace=true&wireFormat.maxInactivityDuration=1000"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -475,7 +483,7 @@ argument_list|(
 operator|new
 name|URI
 argument_list|(
-literal|"tcp://localhost:61616?trace=true&wireFormat.maxInactivityDuration=1000"
+literal|"tcp://localhost:0?trace=true&wireFormat.maxInactivityDuration=1000"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -489,6 +497,16 @@ expr_stmt|;
 name|server
 operator|.
 name|start
+argument_list|()
+expr_stmt|;
+name|serverPort
+operator|=
+name|server
+operator|.
+name|getSocketAddress
+argument_list|()
+operator|.
+name|getPort
 argument_list|()
 expr_stmt|;
 block|}
@@ -746,7 +764,9 @@ argument_list|,
 operator|new
 name|URI
 argument_list|(
-literal|"tcp://localhost:61616"
+literal|"tcp://localhost:"
+operator|+
+name|serverPort
 argument_list|)
 argument_list|,
 literal|null
@@ -979,7 +999,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Used to test when a operation blocks. This should not cause transport to      * get disconnected.      *       * @throws Exception      * @throws URISyntaxException      */
+comment|/**      * Used to test when a operation blocks. This should not cause transport to      * get disconnected.      *      * @throws Exception      * @throws URISyntaxException      */
 specifier|public
 name|void
 name|initCombosForTestNoClientHangWithServerBlock
