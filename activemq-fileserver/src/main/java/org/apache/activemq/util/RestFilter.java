@@ -192,7 +192,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<p>  * Adds support for HTTP PUT, MOVE and DELETE methods. If init parameters  * read-permission-role and write-permission-role are defined then all requests  * are authorized using the defined roles. Also GET methods are authorized.  *</p>  *   * @author Aleksi Kallio  */
+comment|/**  *<p>  * Adds support for HTTP PUT, MOVE and DELETE methods. If init parameters  * read-permission-role and write-permission-role are defined then all requests  * are authorized using the defined roles. Also GET methods are authorized.  *</p>  *  * @author Aleksi Kallio  */
 end_comment
 
 begin_class
@@ -922,14 +922,17 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+throw|throw
+name|e
+throw|;
+block|}
+finally|finally
+block|{
 name|out
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
-throw|throw
-name|e
-throw|;
 block|}
 name|response
 operator|.
