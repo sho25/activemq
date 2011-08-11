@@ -325,7 +325,7 @@ specifier|final
 name|String
 name|BROKER_URL
 init|=
-literal|"tcp://localhost:61616"
+literal|"tcp://localhost:0"
 decl_stmt|;
 specifier|private
 name|String
