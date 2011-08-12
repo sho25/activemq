@@ -229,22 +229,8 @@ name|WireFormat
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|xbean
-operator|.
-name|XBeanBrokerService
-import|;
-end_import
-
 begin_comment
-comment|/**  * A<a href="http://stomp.codehaus.org/">STOMP</a> over NIO transport factory  *   *   */
+comment|/**  * A<a href="http://stomp.codehaus.org/">STOMP</a> over NIO transport factory  *  *  */
 end_comment
 
 begin_class
@@ -358,6 +344,11 @@ name|localLocation
 argument_list|)
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|Transport
 name|compositeConfigure
@@ -379,9 +370,7 @@ name|StompTransportFilter
 argument_list|(
 name|transport
 argument_list|,
-operator|new
-name|LegacyFrameTranslator
-argument_list|()
+name|format
 argument_list|,
 name|brokerContext
 argument_list|)
@@ -406,20 +395,6 @@ name|format
 argument_list|,
 name|options
 argument_list|)
-return|;
-block|}
-specifier|protected
-name|boolean
-name|isUseInactivityMonitor
-parameter_list|(
-name|Transport
-name|transport
-parameter_list|)
-block|{
-comment|// lets disable the inactivity monitor as stomp does not use keep alive
-comment|// packets
-return|return
-literal|false
 return|;
 block|}
 specifier|public

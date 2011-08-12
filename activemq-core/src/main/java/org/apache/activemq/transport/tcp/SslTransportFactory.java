@@ -63,36 +63,6 @@ name|java
 operator|.
 name|security
 operator|.
-name|KeyManagementException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|security
-operator|.
-name|NoSuchAlgorithmException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|security
-operator|.
-name|NoSuchProviderException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|security
-operator|.
 name|SecureRandom
 import|;
 end_import
@@ -157,18 +127,6 @@ name|net
 operator|.
 name|ssl
 operator|.
-name|SSLContext
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|net
-operator|.
-name|ssl
-operator|.
 name|SSLServerSocketFactory
 import|;
 end_import
@@ -207,63 +165,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|BrokerService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|BrokerServiceAware
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
 name|SslContext
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|openwire
-operator|.
-name|OpenWireFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|InactivityMonitor
 import|;
 end_import
 
@@ -291,49 +193,7 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|TransportFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|TransportLoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
 name|TransportServer
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|WireFormatNegotiator
 import|;
 end_import
 
@@ -414,7 +274,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the TcpTransportFactory using SSL. The major  * contribution from this class is that it is aware of SslTransportServer and  * SslTransport classes. All Transports and TransportServers created from this  * factory will have their needClientAuth option set to false.  *   * @author sepandm@gmail.com (Sepand)  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  *   */
+comment|/**  * An implementation of the TcpTransportFactory using SSL. The major  * contribution from this class is that it is aware of SslTransportServer and  * SslTransport classes. All Transports and TransportServers created from this  * factory will have their needClientAuth option set to false.  *  * @author sepandm@gmail.com (Sepand)  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  *  */
 end_comment
 
 begin_class
@@ -569,6 +429,11 @@ throw|;
 block|}
 block|}
 comment|/**      * Overriding to allow for proper configuration through reflection but delegate to get common      * configuration      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|Transport
 name|compositeConfigure
@@ -758,7 +623,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a new SSL ServerSocketFactory. The given factory will use      * user-provided key and trust managers (if the user provided them).      *       * @return Newly created (Ssl)ServerSocketFactory.      * @throws IOException       */
+comment|/**      * Creates a new SSL ServerSocketFactory. The given factory will use      * user-provided key and trust managers (if the user provided them).      *      * @return Newly created (Ssl)ServerSocketFactory.      * @throws IOException      */
 specifier|protected
 name|ServerSocketFactory
 name|createServerSocketFactory
@@ -822,7 +687,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Creates a new SSL SocketFactory. The given factory will use user-provided      * key and trust managers (if the user provided them).      *       * @return Newly created (Ssl)SocketFactory.      * @throws IOException       */
+comment|/**      * Creates a new SSL SocketFactory. The given factory will use user-provided      * key and trust managers (if the user provided them).      *      * @return Newly created (Ssl)SocketFactory.      * @throws IOException      */
 specifier|protected
 name|SocketFactory
 name|createSocketFactory
@@ -886,7 +751,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      *       * @param km      * @param tm      * @param random      * @deprecated "Do not use anymore... using static initializers like this method only allows the JVM to use 1 SSL configuration per broker."      * @see org.apache.activemq.broker.SslContext#setCurrentSslContext(SslContext)      * @see org.apache.activemq.broker.SslContext#getSSLContext()      */
+comment|/**      *      * @param km      * @param tm      * @param random      * @deprecated "Do not use anymore... using static initializers like this method only allows the JVM to use 1 SSL configuration per broker."      * @see org.apache.activemq.broker.SslContext#setCurrentSslContext(SslContext)      * @see org.apache.activemq.broker.SslContext#getSSLContext()      */
 specifier|public
 name|void
 name|setKeyAndTrustManagers

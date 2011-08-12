@@ -63,20 +63,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|wireformat
-operator|.
-name|WireFormat
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io

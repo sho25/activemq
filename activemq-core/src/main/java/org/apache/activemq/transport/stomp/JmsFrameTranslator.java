@@ -215,30 +215,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|springframework
-operator|.
-name|beans
-operator|.
-name|BeansException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|springframework
-operator|.
-name|context
-operator|.
-name|ApplicationContext
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|thoughtworks
@@ -346,6 +322,11 @@ throws|,
 name|ProtocolException
 block|{
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|headers
 init|=
 name|command
@@ -1283,7 +1264,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/** 	 * Marshalls the Object to a string using XML or JSON encoding 	 */
+comment|/**      * Marshalls the Object to a string using XML or JSON encoding      */
 specifier|protected
 name|String
 name|marshall
@@ -1408,6 +1389,11 @@ return|return
 name|objMsg
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|protected
 name|ActiveMQMapMessage
 name|createMapMessage
@@ -1618,6 +1604,11 @@ expr_stmt|;
 block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|protected
 name|XStream
 name|createXStream

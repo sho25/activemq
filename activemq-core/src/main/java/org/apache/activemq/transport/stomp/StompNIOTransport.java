@@ -123,35 +123,11 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|net
 operator|.
 name|SocketFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|Command
 import|;
 end_import
 
@@ -243,48 +219,6 @@ name|activemq
 operator|.
 name|util
 operator|.
-name|ByteArrayOutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|ByteSequence
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|DataByteArrayInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
 name|IOExceptionSupport
 import|;
 end_import
@@ -318,7 +252,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the {@link Transport} interface for using Stomp over NIO  *  *   */
+comment|/**  * An implementation of the {@link Transport} interface for using Stomp over NIO  *  *  */
 end_comment
 
 begin_class

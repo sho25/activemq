@@ -94,6 +94,16 @@ name|IOException
 name|error
 parameter_list|)
 function_decl|;
+specifier|public
+name|StompInactivityMonitor
+name|getInactivityMonitor
+parameter_list|()
+function_decl|;
+specifier|public
+name|StompWireFormat
+name|getWireFormat
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

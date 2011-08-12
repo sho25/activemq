@@ -352,7 +352,7 @@ name|location
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a normal transport.      *       * @param location      * @return the transport      * @throws Exception      */
+comment|/**      * Creates a normal transport.      *      * @param location      * @return the transport      * @throws Exception      */
 specifier|public
 specifier|static
 name|Transport
@@ -381,7 +381,7 @@ name|location
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a normal transport.      *       * @param location      * @param ex      * @return the transport      * @throws Exception      */
+comment|/**      * Creates a normal transport.      *      * @param location      * @param ex      * @return the transport      * @throws Exception      */
 specifier|public
 specifier|static
 name|Transport
@@ -415,7 +415,7 @@ name|ex
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a slimmed down transport that is more efficient so that it can be      * used by composite transports like reliable and HA.      *       * @param location      * @return the Transport      * @throws Exception      */
+comment|/**      * Creates a slimmed down transport that is more efficient so that it can be      * used by composite transports like reliable and HA.      *      * @param location      * @return the Transport      * @throws Exception      */
 specifier|public
 specifier|static
 name|Transport
@@ -444,7 +444,7 @@ name|location
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a slimmed down transport that is more efficient so that it can be      * used by composite transports like reliable and HA.      *       * @param location      * @param ex      * @return the Transport      * @throws Exception      */
+comment|/**      * Creates a slimmed down transport that is more efficient so that it can be      * used by composite transports like reliable and HA.      *      * @param location      * @param ex      * @return the Transport      * @throws Exception      */
 specifier|public
 specifier|static
 name|Transport
@@ -506,7 +506,7 @@ name|location
 argument_list|)
 return|;
 block|}
-comment|/**      * @deprecated       */
+comment|/**      * @deprecated      */
 specifier|public
 specifier|static
 name|TransportServer
@@ -847,7 +847,7 @@ name|tf
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Factory method to create a new transport      *       * @throws IOException      * @throws UnknownHostException      */
+comment|/**      * Factory method to create a new transport      *      * @throws IOException      * @throws UnknownHostException      */
 specifier|protected
 name|Transport
 name|createTransport
@@ -1119,7 +1119,12 @@ return|return
 literal|"default"
 return|;
 block|}
-comment|/**      * Fully configures and adds all need transport filters so that the      * transport can be used by the JMS client.      *       * @param transport      * @param wf      * @param options      * @return      * @throws Exception      */
+comment|/**      * Fully configures and adds all need transport filters so that the      * transport can be used by the JMS client.      *      * @param transport      * @param wf      * @param options      * @return      * @throws Exception      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|Transport
 name|configure
@@ -1167,7 +1172,12 @@ return|return
 name|transport
 return|;
 block|}
-comment|/**      * Fully configures and adds all need transport filters so that the      * transport can be used by the ActiveMQ message broker. The main difference      * between this and the configure() method is that the broker does not issue      * requests to the client so the ResponseCorrelator is not needed.      *       * @param transport      * @param format      * @param options      * @return      * @throws Exception      */
+comment|/**      * Fully configures and adds all need transport filters so that the      * transport can be used by the ActiveMQ message broker. The main difference      * between this and the configure() method is that the broker does not issue      * requests to the client so the ResponseCorrelator is not needed.      *      * @param transport      * @param format      * @param options      * @return      * @throws Exception      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|Transport
 name|serverConfigure
@@ -1226,7 +1236,12 @@ return|return
 name|transport
 return|;
 block|}
-comment|/**      * Similar to configure(...) but this avoid adding in the MutexTransport and      * ResponseCorrelator transport layers so that the resulting transport can      * more efficiently be used as part of a composite transport.      *       * @param transport      * @param format      * @param options      * @return      */
+comment|/**      * Similar to configure(...) but this avoid adding in the MutexTransport and      * ResponseCorrelator transport layers so that the resulting transport can      * more efficiently be used as part of a composite transport.      *      * @param transport      * @param format      * @param options      * @return      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|Transport
 name|compositeConfigure
@@ -1311,6 +1326,11 @@ return|return
 name|transport
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|protected
 name|String
 name|getOption

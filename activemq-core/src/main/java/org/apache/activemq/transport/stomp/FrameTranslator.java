@@ -69,26 +69,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|MessageListener
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|MessageProducer
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -112,20 +92,6 @@ operator|.
 name|command
 operator|.
 name|ActiveMQMessage
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|Message
 import|;
 end_import
 

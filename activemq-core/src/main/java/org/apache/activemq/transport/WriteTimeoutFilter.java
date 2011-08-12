@@ -73,50 +73,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|locks
-operator|.
-name|Condition
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|locks
-operator|.
-name|ReentrantLock
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|tcp
-operator|.
-name|TcpBufferedOutputStream
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -152,7 +108,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This filter implements write timeouts for socket write operations.  * When using blocking IO, the Java implementation doesn't have an explicit flag  * to set a timeout, and can cause operations to block forever (or until the TCP stack implementation times out the retransmissions,  * which is usually around 13-30 minutes).<br/>  * To enable this transport, in the transport URI, simpley add<br/>  *<code>transport.soWriteTimeout=<value in millis></code>.<br/>  * For example (15 second timeout on write operations to the socket):</br>  *<pre><code>  *&lt;transportConnector   *     name=&quot;tcp1&quot;   *     uri=&quot;tcp://127.0.0.1:61616?transport.soTimeout=10000&amp;transport.soWriteTimeout=15000"  * /&gt;  *</code></pre><br/>  * For example (enable default timeout on the socket):</br>  *<pre><code>  *&lt;transportConnector   *     name=&quot;tcp1&quot;   *     uri=&quot;tcp://127.0.0.1:61616?transport.soTimeout=10000&amp;transport.soWriteTimeout=15000"  * /&gt;  *</code></pre>  * @author Filip Hanik  *  */
+comment|/**  * This filter implements write timeouts for socket write operations.  * When using blocking IO, the Java implementation doesn't have an explicit flag  * to set a timeout, and can cause operations to block forever (or until the TCP stack implementation times out the retransmissions,  * which is usually around 13-30 minutes).<br/>  * To enable this transport, in the transport URI, simpley add<br/>  *<code>transport.soWriteTimeout=<value in millis></code>.<br/>  * For example (15 second timeout on write operations to the socket):</br>  *<pre><code>  *&lt;transportConnector  *     name=&quot;tcp1&quot;  *     uri=&quot;tcp://127.0.0.1:61616?transport.soTimeout=10000&amp;transport.soWriteTimeout=15000"  * /&gt;  *</code></pre><br/>  * For example (enable default timeout on the socket):</br>  *<pre><code>  *&lt;transportConnector  *     name=&quot;tcp1&quot;  *     uri=&quot;tcp://127.0.0.1:61616?transport.soTimeout=10000&amp;transport.soWriteTimeout=15000"  * /&gt;  *</code></pre>  * @author Filip Hanik  *  */
 end_comment
 
 begin_class

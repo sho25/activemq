@@ -79,22 +79,6 @@ name|transport
 operator|.
 name|stomp
 operator|.
-name|LegacyFrameTranslator
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|stomp
-operator|.
 name|ProtocolConverter
 import|;
 end_import
@@ -112,6 +96,22 @@ operator|.
 name|stomp
 operator|.
 name|StompFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|stomp
+operator|.
+name|StompInactivityMonitor
 import|;
 end_import
 
@@ -204,7 +204,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * Implements web socket and mediates between servlet and the broker  *  */
+comment|/**  *  * Implements web socket and mediates between servlet and the broker  *  */
 end_comment
 
 begin_class
@@ -227,10 +227,6 @@ operator|new
 name|ProtocolConverter
 argument_list|(
 name|this
-argument_list|,
-operator|new
-name|LegacyFrameTranslator
-argument_list|()
 argument_list|,
 literal|null
 argument_list|)
@@ -465,6 +461,30 @@ name|format
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|StompInactivityMonitor
+name|getInactivityMonitor
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|StompWireFormat
+name|getWireFormat
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|wireFormat
+return|;
 block|}
 block|}
 end_class
