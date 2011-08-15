@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Standard JAAS callback handler for SSL certificate requests. Will only  * handle callbacks of type CertificateCallback.  *   * @author sepandm@gmail.com (Sepand)  */
+comment|/**  * A Standard JAAS callback handler for SSL certificate requests. Will only  * handle callbacks of type CertificateCallback.  *  * @author sepandm@gmail.com (Sepand)  */
 end_comment
 
 begin_class
@@ -95,7 +95,7 @@ name|X509Certificate
 name|certificates
 index|[]
 decl_stmt|;
-comment|/**      * Basic constructor.      *       * @param cert The certificate returned when calling back.      */
+comment|/**      * Basic constructor.      *      * @param certs The certificate returned when calling back.      */
 specifier|public
 name|JaasCertificateCallbackHandler
 parameter_list|(
@@ -109,7 +109,7 @@ operator|=
 name|certs
 expr_stmt|;
 block|}
-comment|/**      * Overriding handle method to handle certificates.      *       * @param callbacks The callbacks requested.      * @throws IOException      * @throws UnsupportedCallbackException Thrown if an unkown Callback type is      *                 encountered.      */
+comment|/**      * Overriding handle method to handle certificates.      *      * @param callbacks The callbacks requested.      * @throws IOException      * @throws UnsupportedCallbackException Thrown if an unkown Callback type is      *                 encountered.      */
 annotation|@
 name|Override
 specifier|public
