@@ -117,20 +117,6 @@ name|activemq
 operator|.
 name|console
 operator|.
-name|Main
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|console
-operator|.
 name|formatter
 operator|.
 name|CommandShellOutputFormatter
@@ -166,7 +152,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class launches activemq under Apache JSVC {@link http://commons.apache.org/daemon/jsvc.html}  *   * @author areese  *   */
+comment|/**  * This class launches ActiveMQ under<a href="http://commons.apache.org/daemon/jsvc.html">Apache JSVC</a>  *  * @author areese  *  */
 end_comment
 
 begin_class
@@ -183,18 +169,18 @@ name|String
 argument_list|>
 name|args
 decl_stmt|;
-comment|/**      *       */
+comment|/**      *      */
 specifier|public
 name|ActiveMQLauncher
 parameter_list|()
 block|{     }
-comment|/*      * (non-Javadoc)      *       * @see org.apache.commons.daemon.Daemon#destroy()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.commons.daemon.Daemon#destroy()      */
 specifier|public
 name|void
 name|destroy
 parameter_list|()
 block|{     }
-comment|/*      * (non-Javadoc)      *       * @see      * org.apache.commons.daemon.Daemon#init(org.apache.commons.daemon.DaemonContext      * )      */
+comment|/*      * (non-Javadoc)      *      * @see      * org.apache.commons.daemon.Daemon#init(org.apache.commons.daemon.DaemonContext      * )      */
 specifier|public
 name|void
 name|init
@@ -219,7 +205,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see org.apache.commons.daemon.Daemon#start()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.commons.daemon.Daemon#start()      */
 specifier|public
 name|void
 name|start
@@ -269,7 +255,7 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see org.apache.commons.daemon.Daemon#stop()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.commons.daemon.Daemon#stop()      */
 specifier|public
 name|void
 name|stop

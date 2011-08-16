@@ -214,7 +214,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Reads and iterates through data log files for the AMQMessage Store  *   */
+comment|/**  * Reads and iterates through data log files for the AMQMessage Store  *  */
 end_comment
 
 begin_class
@@ -247,7 +247,7 @@ specifier|private
 name|BooleanExpression
 name|expression
 decl_stmt|;
-comment|/**      * List all the data files in a directory      * @param directory      * @return      * @throws IOException      */
+comment|/**      * List all the data files in a directory      * @param directory      * @return result      * @throws IOException      */
 specifier|public
 specifier|static
 name|Set
@@ -358,7 +358,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Create the AMQReader to read a directory of amq data logs - or an      * individual data log file      *       * @param file the directory - or file      * @throws IOException       * @throws InvalidSelectorException       * @throws IOException      * @throws InvalidSelectorException       */
+comment|/**      * Create the AMQReader to read a directory of amq data logs - or an      * individual data log file      *      * @param file the directory - or file      * @throws IOException      * @throws InvalidSelectorException      * @throws IOException      * @throws InvalidSelectorException      */
 specifier|public
 name|AMQReader
 parameter_list|(
@@ -378,7 +378,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create the AMQReader to read a directory of amq data logs - or an      * individual data log file      *       * @param file the directory - or file      * @param selector the JMS selector or null to select all      * @throws IOException      * @throws InvalidSelectorException       */
+comment|/**      * Create the AMQReader to read a directory of amq data logs - or an      * individual data log file      *      * @param file the directory - or file      * @param selector the JMS selector or null to select all      * @throws IOException      * @throws InvalidSelectorException      */
 specifier|public
 name|AMQReader
 parameter_list|(

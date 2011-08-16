@@ -95,7 +95,7 @@ name|REGEX_PREFIX
 init|=
 literal|"REGEX:QUERY:"
 decl_stmt|;
-comment|/**      * Creates a regular expression query that is able to match an object using      * key-value pattern regex filtering      *       * @param next      */
+comment|/**      * Creates a regular expression query that is able to match an object using      * key-value pattern regex filtering      *      * @param next      */
 specifier|protected
 name|RegExQueryFilter
 parameter_list|(
@@ -109,7 +109,16 @@ name|next
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Separates the regular expressions queries from the usual queries. A query      * is a regex query, if it is key-value pair with the format<key>=<value>,      * and value is a pattern that satisfies the isRegularExpression method.      *       * @param queries - list of queries      * @return filtered objects that matches the regex query      * @throws Exception      */
+comment|/**      * Separates the regular expressions queries from the usual queries. A query      * is a regex query, if it is key-value pair with the format<key>=<value>,      * and value is a pattern that satisfies the isRegularExpression method.      *      * @param queries - list of queries      * @return filtered objects that matches the regex query      * @throws Exception      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 specifier|public
 name|List
 name|query
@@ -264,7 +273,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Checks if a given string is a regular expression query. Currently, a      * pattern is a regex query, if it starts with the      * RegExQueryFilter.REGEX_PREFIX.      *       * @param query      * @return      */
+comment|/**      * Checks if a given string is a regular expression query. Currently, a      * pattern is a regex query, if it starts with the      * RegExQueryFilter.REGEX_PREFIX.      *      * @param query      * @return boolean result of query check      */
 specifier|protected
 name|boolean
 name|isRegularExpression
@@ -282,7 +291,7 @@ name|REGEX_PREFIX
 argument_list|)
 return|;
 block|}
-comment|/**      * Compiles the regex query to a pattern.      *       * @param query - query string to compile      * @return regex pattern      */
+comment|/**      * Compiles the regex query to a pattern.      *      * @param query - query string to compile      * @return regex pattern      */
 specifier|protected
 name|Pattern
 name|compileQuery
@@ -308,7 +317,16 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Filter the specified colleciton using the regex patterns extracted.      *       * @param regex - regex map      * @param data - list of objects to filter      * @return filtered list of objects that matches the regex map      * @throws Exception      */
+comment|/**      * Filter the specified colleciton using the regex patterns extracted.      *      * @param regex - regex map      * @param data - list of objects to filter      * @return filtered list of objects that matches the regex map      * @throws Exception      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 specifier|protected
 name|List
 name|filterCollectionUsingRegEx
@@ -396,7 +414,12 @@ return|return
 name|filteredElems
 return|;
 block|}
-comment|/**      * Determines how the object is to be matched to the regex map.      *       * @param data - object to match      * @param regex - regex map      * @return true, if the object matches the regex map, false otherwise      * @throws Exception      */
+comment|/**      * Determines how the object is to be matched to the regex map.      *      * @param data - object to match      * @param regex - regex map      * @return true, if the object matches the regex map, false otherwise      * @throws Exception      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|protected
 specifier|abstract
 name|boolean

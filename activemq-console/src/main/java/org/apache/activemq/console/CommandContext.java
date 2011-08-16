@@ -111,7 +111,7 @@ specifier|private
 name|OutputFormatter
 name|formatter
 decl_stmt|;
-comment|/**      * Retrieve the output stream being used by the global formatter      *       * @return      */
+comment|/**      * Retrieve the output stream being used by the global formatter      *      * @return formatter's output stream      */
 specifier|public
 name|OutputStream
 name|getOutputStream
@@ -139,7 +139,7 @@ name|getOutputStream
 argument_list|()
 return|;
 block|}
-comment|/**      * Print an ObjectInstance format of an mbean      *       * @param mbean - mbean to print      */
+comment|/**      * Print an ObjectInstance format of an mbean      *      * @param mbean - mbean to print      */
 specifier|public
 name|void
 name|printMBean
@@ -171,7 +171,7 @@ name|mbean
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print an ObjectName format of an mbean      *       * @param mbean - mbean to print      */
+comment|/**      * Print an ObjectName format of an mbean      *      * @param mbean - mbean to print      */
 specifier|public
 name|void
 name|printMBean
@@ -203,7 +203,7 @@ name|mbean
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print an AttributeList format of an mbean      *       * @param mbean - mbean to print      */
+comment|/**      * Print an AttributeList format of an mbean      *      * @param mbean - mbean to print      */
 specifier|public
 name|void
 name|printMBean
@@ -235,7 +235,12 @@ name|mbean
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print a Map format of an mbean      *       * @param mbean      */
+comment|/**      * Print a Map format of an mbean      *      * @param mbean      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|void
 name|printMBean
@@ -267,7 +272,12 @@ name|mbean
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print a Collection format of mbeans      *       * @param mbean - collection of mbeans      */
+comment|/**      * Print a Collection format of mbeans      *      * @param mbean - collection of mbeans      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|void
 name|printMBean
@@ -299,7 +309,12 @@ name|mbean
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print a Map format of a JMS message      *       * @param msg      */
+comment|/**      * Print a Map format of a JMS message      *      * @param msg      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|void
 name|printMessage
@@ -331,7 +346,7 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print a Message format of a JMS message      *       * @param msg - JMS message to print      */
+comment|/**      * Print a Message format of a JMS message      *      * @param msg - JMS message to print      */
 specifier|public
 name|void
 name|printMessage
@@ -363,7 +378,12 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print a collection of JMS messages      *       * @param msg - collection of JMS messages      */
+comment|/**      * Print a collection of JMS messages      *      * @param msg - collection of JMS messages      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|void
 name|printMessage
@@ -395,7 +415,7 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print help messages      *       * @param helpMsgs - help messages to print      */
+comment|/**      * Print help messages      *      * @param helpMsgs - help messages to print      */
 specifier|public
 name|void
 name|printHelp
@@ -428,7 +448,7 @@ name|helpMsgs
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print an information message      *       * @param info - information message to print      */
+comment|/**      * Print an information message      *      * @param info - information message to print      */
 specifier|public
 name|void
 name|printInfo
@@ -460,7 +480,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print an exception message      *       * @param e - exception to print      */
+comment|/**      * Print an exception message      *      * @param e - exception to print      */
 specifier|public
 name|void
 name|printException
@@ -492,7 +512,7 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print a version information      *       * @param version - version info to print      */
+comment|/**      * Print a version information      *      * @param version - version info to print      */
 specifier|public
 name|void
 name|printVersion
@@ -524,7 +544,12 @@ name|version
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print a generic key value mapping      *       * @param map to print      */
+comment|/**      * Print a generic key value mapping      *      * @param map to print      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|void
 name|print
@@ -556,7 +581,7 @@ name|map
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print a generic array of strings      *       * @param strings - string array to print      */
+comment|/**      * Print a generic array of strings      *      * @param strings - string array to print      */
 specifier|public
 name|void
 name|print
@@ -589,7 +614,12 @@ name|strings
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print a collection of objects      *       * @param collection - collection to print      */
+comment|/**      * Print a collection of objects      *      * @param collection - collection to print      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|void
 name|print
@@ -621,7 +651,7 @@ name|collection
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Print a java string      *       * @param string - string to print      */
+comment|/**      * Print a java string      *      * @param string - string to print      */
 specifier|public
 name|void
 name|print

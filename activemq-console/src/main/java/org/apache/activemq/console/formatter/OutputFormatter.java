@@ -92,7 +92,7 @@ specifier|public
 interface|interface
 name|OutputFormatter
 block|{
-comment|/**      * Retrieve the output stream being used by the formatter      * @return      */
+comment|/**      * Retrieve the output stream being used by the formatter      */
 name|OutputStream
 name|getOutputStream
 parameter_list|()
@@ -122,6 +122,11 @@ name|mbean
 parameter_list|)
 function_decl|;
 comment|/**      * Print a Map format of an mbean      * @param mbean - mbean to print      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 name|void
 name|printMBean
 parameter_list|(
@@ -130,6 +135,11 @@ name|mbean
 parameter_list|)
 function_decl|;
 comment|/**      * Print a Collection format of mbeans      * @param mbean - collection of mbeans      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 name|void
 name|printMBean
 parameter_list|(
@@ -138,6 +148,11 @@ name|mbean
 parameter_list|)
 function_decl|;
 comment|/**      * Print a Map format of a JMS message      * @param msg      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 name|void
 name|printMessage
 parameter_list|(
@@ -154,6 +169,11 @@ name|msg
 parameter_list|)
 function_decl|;
 comment|/**      * Print a Collection format of JMS messages      * @param msg - collection of JMS messages      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 name|void
 name|printMessage
 parameter_list|(
@@ -195,6 +215,11 @@ name|version
 parameter_list|)
 function_decl|;
 comment|/**      * Print a generic key value mapping      * @param map to print      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 name|void
 name|print
 parameter_list|(
@@ -212,6 +237,11 @@ name|strings
 parameter_list|)
 function_decl|;
 comment|/**      * Print a collection of objects      * @param collection - collection to print      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 name|void
 name|print
 parameter_list|(
