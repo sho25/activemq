@@ -216,7 +216,6 @@ index|[]
 name|virtualDestinations
 decl_stmt|;
 specifier|public
-specifier|synchronized
 name|Destination
 name|intercept
 parameter_list|(
@@ -225,7 +224,7 @@ name|destination
 parameter_list|)
 block|{
 name|Set
-name|virtualDestinations
+name|matchingDestinations
 init|=
 name|destinationMap
 operator|.
@@ -255,7 +254,7 @@ control|(
 name|Iterator
 name|iter
 init|=
-name|virtualDestinations
+name|matchingDestinations
 operator|.
 name|iterator
 argument_list|()
