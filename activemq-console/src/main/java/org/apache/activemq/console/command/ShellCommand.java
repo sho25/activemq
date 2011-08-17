@@ -172,7 +172,7 @@ literal|"Usage: Main [--extdir<dir>] [task] [task-options] [task data]"
 block|,
 literal|""
 block|,
-literal|"Tasks (default task is start):"
+literal|"Tasks:"
 block|,
 literal|"    start           - Creates and starts a broker using a configuration file, or a broker URI."
 block|,
@@ -219,6 +219,16 @@ block|,
 literal|"Task Data:"
 block|,
 literal|"    - Information needed by each specific task."
+block|,
+literal|""
+block|,
+literal|"JMX system property options:"
+block|,
+literal|"    -Dactivemq.jmx.url=<jmx service uri> (default is: 'service:jmx:rmi:///jndi/rmi://localhost:1099/jmxrmi')"
+block|,
+literal|"    -Dactivemq.jmx.user=<user name>"
+block|,
+literal|"    -Dactivemq.jmx.password=<password>"
 block|,
 literal|""
 block|}
