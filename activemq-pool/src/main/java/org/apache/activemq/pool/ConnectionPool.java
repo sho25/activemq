@@ -603,6 +603,23 @@ block|{
 name|expiredCheck
 argument_list|()
 expr_stmt|;
+comment|// only clean up temp destinations when all users
+comment|// of this connection have called close
+if|if
+condition|(
+name|getConnection
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|getConnection
+argument_list|()
+operator|.
+name|cleanUpTempDestinations
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * @return true if this connection has expired.      */
