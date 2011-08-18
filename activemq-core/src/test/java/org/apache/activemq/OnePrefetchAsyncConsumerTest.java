@@ -371,6 +371,17 @@ argument_list|()
 expr_stmt|;
 comment|// wait for test to complete and the test result to get set
 comment|// this happens asynchronously since the messages are delivered asynchronously
+name|long
+name|done
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|+
+name|getMaxTestTime
+argument_list|()
+decl_stmt|;
 synchronized|synchronized
 init|(
 name|testMutex
@@ -382,6 +393,13 @@ operator|!
 name|testMutex
 operator|.
 name|testCompleted
+operator|&&
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|<
+name|done
 condition|)
 block|{
 name|testMutex
@@ -391,6 +409,15 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+name|assertTrue
+argument_list|(
+literal|"completed on time"
+argument_list|,
+name|testMutex
+operator|.
+name|testCompleted
+argument_list|)
+expr_stmt|;
 comment|//test completed, result is ready
 name|assertTrue
 argument_list|(
@@ -802,7 +829,7 @@ init|)
 block|{
 name|testMutex
 operator|.
-name|notify
+name|notifyAll
 argument_list|()
 expr_stmt|;
 block|}
@@ -889,6 +916,11 @@ operator|.
 name|testCompleted
 operator|=
 literal|true
+expr_stmt|;
+name|testMutex
+operator|.
+name|notifyAll
+argument_list|()
 expr_stmt|;
 block|}
 block|}
