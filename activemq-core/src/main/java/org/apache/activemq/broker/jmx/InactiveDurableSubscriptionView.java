@@ -388,6 +388,20 @@ name|getSubscriptionName
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getSelector
+parameter_list|()
+block|{
+return|return
+name|subscriptionInfo
+operator|.
+name|getSelector
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
