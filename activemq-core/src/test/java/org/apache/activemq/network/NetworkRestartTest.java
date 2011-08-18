@@ -17,11 +17,13 @@ end_package
 
 begin_import
 import|import
-name|junit
+name|org
 operator|.
-name|framework
+name|apache
 operator|.
-name|TestCase
+name|activemq
+operator|.
+name|ActiveMQConnectionFactory
 import|;
 end_import
 
@@ -33,7 +35,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|ActiveMQConnectionFactory
+name|TestSupport
 import|;
 end_import
 
@@ -142,7 +144,7 @@ specifier|public
 class|class
 name|NetworkRestartTest
 extends|extends
-name|TestCase
+name|TestSupport
 block|{
 specifier|private
 specifier|static
@@ -552,6 +554,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|setAutoFail
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|super
 operator|.
 name|setUp
