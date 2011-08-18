@@ -147,16 +147,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -276,7 +266,13 @@ specifier|public
 class|class
 name|SimpleNetworkTest
 extends|extends
-name|TestCase
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|TestSupport
 block|{
 specifier|protected
 specifier|static
@@ -1100,6 +1096,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|setAutoFail
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|super
 operator|.
 name|setUp
