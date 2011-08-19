@@ -2833,6 +2833,11 @@ argument_list|(
 name|tx
 argument_list|)
 init|;
+name|listener
+operator|.
+name|hasSpace
+argument_list|()
+operator|&&
 name|iterator
 operator|.
 name|hasNext
