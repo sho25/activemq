@@ -1002,7 +1002,7 @@ name|Wait
 operator|.
 name|MAX_WAIT_MILLIS
 operator|*
-literal|5
+literal|10
 argument_list|)
 expr_stmt|;
 name|LOG
