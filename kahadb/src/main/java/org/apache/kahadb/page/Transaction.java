@@ -88,7 +88,7 @@ name|File
 name|txFile
 decl_stmt|;
 specifier|private
-name|int
+name|long
 name|nextLocation
 init|=
 literal|0
@@ -818,6 +818,8 @@ condition|(
 name|overflow
 condition|)
 block|{
+do|do
+block|{
 name|Page
 name|next
 decl_stmt|;
@@ -970,6 +972,14 @@ name|current
 operator|=
 name|next
 expr_stmt|;
+block|}
+do|while
+condition|(
+name|pos
+operator|>
+name|pageSize
+condition|)
+do|;
 block|}
 else|else
 block|{
@@ -2536,7 +2546,7 @@ literal|"rw"
 argument_list|)
 expr_stmt|;
 block|}
-name|int
+name|long
 name|location
 init|=
 name|nextLocation
