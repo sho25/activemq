@@ -33,16 +33,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -1752,6 +1742,9 @@ name|ConnectionContext
 name|context
 parameter_list|,
 name|Usage
+argument_list|<
+name|?
+argument_list|>
 name|usage
 parameter_list|)
 block|{
