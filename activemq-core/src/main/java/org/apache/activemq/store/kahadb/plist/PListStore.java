@@ -2055,6 +2055,14 @@ parameter_list|()
 block|{
 try|try
 block|{
+if|if
+condition|(
+name|isStopping
+argument_list|()
+condition|)
+block|{
+return|return;
+block|}
 specifier|final
 name|int
 name|lastJournalFileId
