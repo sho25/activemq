@@ -1802,6 +1802,11 @@ if|if
 condition|(
 operator|!
 name|flushRequired
+operator|&&
+name|size
+argument_list|()
+operator|!=
+literal|0
 condition|)
 block|{
 name|flushRequired
