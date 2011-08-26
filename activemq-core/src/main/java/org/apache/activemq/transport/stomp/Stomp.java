@@ -407,6 +407,11 @@ name|ORIGINAL_DESTINATION
 init|=
 literal|"original-destination"
 decl_stmt|;
+name|String
+name|PERSISTENT
+init|=
+literal|"persistent"
+decl_stmt|;
 block|}
 specifier|public
 interface|interface
