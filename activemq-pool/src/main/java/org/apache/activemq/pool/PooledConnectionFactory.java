@@ -216,7 +216,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A JMS provider which pools Connection, Session and MessageProducer instances  * so it can be used with tools like<a href="http://camel.apache.org/activemq.html">Camel</a> and Spring's<a  * href="http://activemq.apache.org/spring-support.html">JmsTemplate and MessagListenerContainer</a>.  * Connections, sessions and producers are returned to a pool after use so that they can be reused later  * without having to undergo the cost of creating them again.  *   * b>NOTE:</b> while this implementation does allow the creation of a collection of active consumers,  * it does not 'pool' consumers. Pooling makes sense for connections, sessions and producers, which   * are expensive to create and can remain idle a minimal cost. Consumers, on the other hand, are usually  * just created at startup and left active, handling incoming messages as they come. When a consumer is  * complete, it is best to close it rather than return it to a pool for later reuse: this is because,   * even if a consumer is idle, ActiveMQ will keep delivering messages to the consumer's prefetch buffer,  * where they'll get held until the consumer is active again.  *   * If you are creating a collection of consumers (for example, for multi-threaded message consumption), you  * might want to consider using a lower prefetch value for each consumer (e.g. 10 or 20), to ensure that   * all messages don't end up going to just one of the consumers. See this FAQ entry for more detail:   * http://activemq.apache.org/i-do-not-receive-messages-in-my-second-consumer.html  *   * @org.apache.xbean.XBean element="pooledConnectionFactory"  *   *   */
+comment|/**  * A JMS provider which pools Connection, Session and MessageProducer instances  * so it can be used with tools like<a href="http://camel.apache.org/activemq.html">Camel</a> and Spring's<a  * href="http://activemq.apache.org/spring-support.html">JmsTemplate and MessagListenerContainer</a>.  * Connections, sessions and producers are returned to a pool after use so that they can be reused later  * without having to undergo the cost of creating them again.  *  * b>NOTE:</b> while this implementation does allow the creation of a collection of active consumers,  * it does not 'pool' consumers. Pooling makes sense for connections, sessions and producers, which  * are expensive to create and can remain idle a minimal cost. Consumers, on the other hand, are usually  * just created at startup and left active, handling incoming messages as they come. When a consumer is  * complete, it is best to close it rather than return it to a pool for later reuse: this is because,  * even if a consumer is idle, ActiveMQ will keep delivering messages to the consumer's prefetch buffer,  * where they'll get held until the consumer is active again.  *  * If you are creating a collection of consumers (for example, for multi-threaded message consumption), you  * might want to consider using a lower prefetch value for each consumer (e.g. 10 or 20), to ensure that  * all messages don't end up going to just one of the consumers. See this FAQ entry for more detail:  * http://activemq.apache.org/i-do-not-receive-messages-in-my-second-consumer.html  *  * @org.apache.xbean.XBean element="pooledConnectionFactory"  *  *  */
 end_comment
 
 begin_class
@@ -300,7 +300,7 @@ specifier|private
 name|boolean
 name|blockIfSessionPoolIsFull
 init|=
-literal|false
+literal|true
 decl_stmt|;
 specifier|private
 name|AtomicBoolean
@@ -863,7 +863,7 @@ operator|=
 name|maximumActive
 expr_stmt|;
 block|}
-comment|/**      * Controls the behavior of the internal session pool.       * By default the call to Connection.getSession() will       * return a JMSException if the session pool is full.      * If the argument true is given, it will change the       * default behavior and instead the call to getSession()      * will block until a session is available in the pool, which      * used to be the default behavior in ActiveMQ versions< 5.6.      *       * The size of the session pool is controlled by the @see #maximumActive       * property.      *       * @param block - if true, the call to getSession() blocks if the pool      * is full until a session object is available.       * defaults to false.      */
+comment|/**      * Controls the behavior of the internal session pool. By default the call to      * Connection.getSession() will block if the session pool is full.  If the      * argument false is given, it will change the default behavior and instead the      * call to getSession() will throw a JMSException.      *      * The size of the session pool is controlled by the @see #maximumActive      * property.      *      * @param block - if true, the call to getSession() blocks if the pool is full      * until a session object is available.  defaults to true.      */
 specifier|public
 name|void
 name|setBlockIfSessionPoolIsFull
@@ -905,7 +905,7 @@ operator|=
 name|maxConnections
 expr_stmt|;
 block|}
-comment|/**      * Creates an ObjectPoolFactory. Its behavior is controlled by the two      * properties @see #maximumActive and @see #blockIfSessionPoolIsFull.      *       * @return the newly created but empty ObjectPoolFactory      */
+comment|/**      * Creates an ObjectPoolFactory. Its behavior is controlled by the two      * properties @see #maximumActive and @see #blockIfSessionPoolIsFull.      *      * @return the newly created but empty ObjectPoolFactory      */
 specifier|protected
 name|ObjectPoolFactory
 name|createPoolFactory
@@ -971,7 +971,7 @@ operator|=
 name|idleTimeout
 expr_stmt|;
 block|}
-comment|/**      * allow connections to expire, irrespective of load or idle time. This is useful with failover      * to force a reconnect from the pool, to reestablish load balancing or use of the master post recovery      *       * @param expiryTimeout non zero in milliseconds      */
+comment|/**      * allow connections to expire, irrespective of load or idle time. This is useful with failover      * to force a reconnect from the pool, to reestablish load balancing or use of the master post recovery      *      * @param expiryTimeout non zero in milliseconds      */
 specifier|public
 name|void
 name|setExpiryTimeout

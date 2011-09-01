@@ -168,7 +168,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Checks the behavior of the PooledConnectionFactory when the maximum amount  * of sessions is being reached.   * Older versions simply block in the call to Connection.getSession(), which isn't good.  * An exception being returned is the better option, so JMS clients don't block.  * This test succeeds if an exception is returned and fails if the call to getSession()   * blocks.  *   */
+comment|/**  * Checks the behavior of the PooledConnectionFactory when the maximum amount  * of sessions is being reached.  * Older versions simply block in the call to Connection.getSession(), which isn't good.  * An exception being returned is the better option, so JMS clients don't block.  * This test succeeds if an exception is returned and fails if the call to getSession()  * blocks.  *  */
 end_comment
 
 begin_class
@@ -224,7 +224,7 @@ name|class
 argument_list|)
 return|;
 block|}
-comment|/**      * Tests the behavior of the sessionPool of the PooledConnectionFactory       * when maximum number of sessions are reached. In older versions the call to      * Connection.createSession() would simply block indefinitely if the maximum      * number of sessions got reached (controled by       * PooledConnectionFactory.setMaximumActive()).      * Rather than blocking the entire thread, it should raise an exception       * instead.      */
+comment|/**      * Tests the behavior of the sessionPool of the PooledConnectionFactory      * when maximum number of sessions are reached.      */
 specifier|public
 name|void
 name|testApp
@@ -346,7 +346,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/** 	 * @return true if test succeeded, false otherwise 	 */
+comment|/**      * @return true if test succeeded, false otherwise      */
 specifier|public
 name|Boolean
 name|call
@@ -397,8 +397,6 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-comment|// default should be false already but lets make sure a change to the default
-comment|// setting does not make this test fail.
 name|cf
 operator|.
 name|setBlockIfSessionPoolIsFull
