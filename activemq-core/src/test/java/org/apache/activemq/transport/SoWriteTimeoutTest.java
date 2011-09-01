@@ -778,7 +778,7 @@ name|SECONDS
 operator|.
 name|sleep
 argument_list|(
-literal|4
+literal|10
 argument_list|)
 expr_stmt|;
 name|proxy
@@ -816,7 +816,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|10
+literal|100
 condition|;
 name|i
 operator|++
@@ -833,9 +833,7 @@ operator|.
 name|getPhysicalName
 argument_list|()
 argument_list|,
-name|messageTextPrefix
-operator|+
-literal|"ReplyText"
+literal|"ShouldBeDeadConnectionText"
 operator|+
 name|i
 argument_list|)
