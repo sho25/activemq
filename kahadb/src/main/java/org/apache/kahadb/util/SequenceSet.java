@@ -1478,6 +1478,9 @@ decl_stmt|;
 specifier|private
 name|long
 name|lastReturned
+init|=
+operator|-
+literal|1
 decl_stmt|;
 specifier|public
 name|SequenceIterator
@@ -1488,6 +1491,13 @@ operator|=
 name|getHead
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|currentEntry
+operator|!=
+literal|null
+condition|)
+block|{
 name|lastReturned
 operator|=
 name|currentEntry
@@ -1496,6 +1506,7 @@ name|first
 operator|-
 literal|1
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|boolean
