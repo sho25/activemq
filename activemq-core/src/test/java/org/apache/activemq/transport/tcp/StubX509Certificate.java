@@ -121,9 +121,7 @@ specifier|public
 name|void
 name|checkValidity
 parameter_list|()
-block|{
-comment|// TODO Auto-generated method stub
-block|}
+block|{     }
 specifier|public
 name|void
 name|checkValidity
@@ -131,15 +129,12 @@ parameter_list|(
 name|Date
 name|arg0
 parameter_list|)
-block|{
-comment|// TODO Auto-generated method stub
-block|}
+block|{     }
 specifier|public
 name|int
 name|getVersion
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|0
 return|;
@@ -149,7 +144,6 @@ name|BigInteger
 name|getSerialNumber
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;
@@ -159,7 +153,6 @@ name|Principal
 name|getIssuerDN
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;
@@ -169,7 +162,6 @@ name|Date
 name|getNotBefore
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;
@@ -179,7 +171,6 @@ name|Date
 name|getNotAfter
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;
@@ -190,7 +181,6 @@ index|[]
 name|getTBSCertificate
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;
@@ -201,7 +191,6 @@ index|[]
 name|getSignature
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;
@@ -211,7 +200,6 @@ name|String
 name|getSigAlgName
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;
@@ -221,7 +209,6 @@ name|String
 name|getSigAlgOID
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;
@@ -232,7 +219,6 @@ index|[]
 name|getSigAlgParams
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;
@@ -243,7 +229,6 @@ index|[]
 name|getIssuerUniqueID
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;
@@ -254,7 +239,6 @@ index|[]
 name|getSubjectUniqueID
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;
@@ -265,7 +249,6 @@ index|[]
 name|getKeyUsage
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;
@@ -275,7 +258,6 @@ name|int
 name|getBasicConstraints
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|0
 return|;
@@ -286,7 +268,6 @@ index|[]
 name|getEncoded
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;
@@ -298,9 +279,7 @@ parameter_list|(
 name|PublicKey
 name|arg0
 parameter_list|)
-block|{
-comment|// TODO Auto-generated method stub
-block|}
+block|{     }
 specifier|public
 name|void
 name|verify
@@ -311,15 +290,12 @@ parameter_list|,
 name|String
 name|arg1
 parameter_list|)
-block|{
-comment|// TODO Auto-generated method stub
-block|}
+block|{     }
 specifier|public
 name|String
 name|toString
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;
@@ -329,7 +305,6 @@ name|PublicKey
 name|getPublicKey
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;
@@ -339,7 +314,6 @@ name|boolean
 name|hasUnsupportedCriticalExtension
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|false
 return|;
@@ -347,14 +321,17 @@ block|}
 annotation|@
 name|SuppressWarnings
 argument_list|(
+block|{
 literal|"unchecked"
+block|,
+literal|"rawtypes"
+block|}
 argument_list|)
 specifier|public
 name|Set
 name|getCriticalExtensionOIDs
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;
@@ -362,14 +339,17 @@ block|}
 annotation|@
 name|SuppressWarnings
 argument_list|(
+block|{
 literal|"unchecked"
+block|,
+literal|"rawtypes"
+block|}
 argument_list|)
 specifier|public
 name|Set
 name|getNonCriticalExtensionOIDs
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;
@@ -383,7 +363,6 @@ name|String
 name|arg0
 parameter_list|)
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;

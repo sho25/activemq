@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -144,7 +144,6 @@ name|AbstractApplicationContext
 name|createApplicationContext
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
 operator|new
 name|ClassPathXmlApplicationContext

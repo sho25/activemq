@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -63,7 +63,6 @@ block|{
 name|super
 argument_list|()
 expr_stmt|;
-comment|// TODO Auto-generated constructor stub
 block|}
 specifier|protected
 name|Destination
