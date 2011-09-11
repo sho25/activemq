@@ -522,6 +522,13 @@ operator|.
 name|ADD_OPERATION_TYPE
 condition|)
 block|{
+name|tempDest
+operator|.
+name|setConnection
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 name|connection
 operator|.
 name|activeTempDestinations
