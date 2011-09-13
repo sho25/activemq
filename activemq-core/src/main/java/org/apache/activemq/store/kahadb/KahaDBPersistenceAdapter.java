@@ -155,7 +155,63 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|LocalTransactionId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|ProducerId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|TransactionId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|XATransactionId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|protobuf
+operator|.
+name|Buffer
 import|;
 end_import
 
@@ -212,6 +268,60 @@ operator|.
 name|store
 operator|.
 name|TransactionStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|kahadb
+operator|.
+name|data
+operator|.
+name|KahaLocalTransactionId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|kahadb
+operator|.
+name|data
+operator|.
+name|KahaTransactionInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|kahadb
+operator|.
+name|data
+operator|.
+name|KahaXATransactionId
 import|;
 end_import
 
@@ -251,7 +361,7 @@ operator|new
 name|KahaDBStore
 argument_list|()
 decl_stmt|;
-comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#beginTransaction(org.apache.activemq.broker.ConnectionContext)      */
+comment|/**      * @param context      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#beginTransaction(org.apache.activemq.broker.ConnectionContext)      */
 specifier|public
 name|void
 name|beginTransaction
@@ -272,7 +382,7 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#checkpoint(boolean)      */
+comment|/**      * @param sync      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#checkpoint(boolean)      */
 specifier|public
 name|void
 name|checkpoint
@@ -293,7 +403,7 @@ name|sync
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#commitTransaction(org.apache.activemq.broker.ConnectionContext)      */
+comment|/**      * @param context      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#commitTransaction(org.apache.activemq.broker.ConnectionContext)      */
 specifier|public
 name|void
 name|commitTransaction
@@ -314,7 +424,7 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @return MessageStore      * @see org.apache.activemq.store.PersistenceAdapter#createQueueMessageStore(org.apache.activemq.command.ActiveMQQueue)      */
+comment|/**      * @param destination      * @return MessageStore      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#createQueueMessageStore(org.apache.activemq.command.ActiveMQQueue)      */
 specifier|public
 name|MessageStore
 name|createQueueMessageStore
@@ -336,7 +446,7 @@ name|destination
 argument_list|)
 return|;
 block|}
-comment|/**      * @return TopicMessageStore      * @see org.apache.activemq.store.PersistenceAdapter#createTopicMessageStore(org.apache.activemq.command.ActiveMQTopic)      */
+comment|/**      * @param destination      * @return TopicMessageStore      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#createTopicMessageStore(org.apache.activemq.command.ActiveMQTopic)      */
 specifier|public
 name|TopicMessageStore
 name|createTopicMessageStore
@@ -358,7 +468,7 @@ name|destination
 argument_list|)
 return|;
 block|}
-comment|/**      * @return TrandactionStore      * @see org.apache.activemq.store.PersistenceAdapter#createTransactionStore()      */
+comment|/**      * @return TransactionStore      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#createTransactionStore()      */
 specifier|public
 name|TransactionStore
 name|createTransactionStore
@@ -375,7 +485,7 @@ name|createTransactionStore
 argument_list|()
 return|;
 block|}
-comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#deleteAllMessages()      */
+comment|/**      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#deleteAllMessages()      */
 specifier|public
 name|void
 name|deleteAllMessages
@@ -409,7 +519,7 @@ name|getDestinations
 argument_list|()
 return|;
 block|}
-comment|/**      * @return lastMessageBrokerSequenceId      * @see org.apache.activemq.store.PersistenceAdapter#getLastMessageBrokerSequenceId()      */
+comment|/**      * @return lastMessageBrokerSequenceId      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#getLastMessageBrokerSequenceId()      */
 specifier|public
 name|long
 name|getLastMessageBrokerSequenceId
@@ -447,7 +557,7 @@ name|id
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#removeQueueMessageStore(org.apache.activemq.command.ActiveMQQueue)      */
+comment|/**      * @param destination      * @see org.apache.activemq.store.PersistenceAdapter#removeQueueMessageStore(org.apache.activemq.command.ActiveMQQueue)      */
 specifier|public
 name|void
 name|removeQueueMessageStore
@@ -466,7 +576,7 @@ name|destination
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#removeTopicMessageStore(org.apache.activemq.command.ActiveMQTopic)      */
+comment|/**      * @param destination      * @see org.apache.activemq.store.PersistenceAdapter#removeTopicMessageStore(org.apache.activemq.command.ActiveMQTopic)      */
 specifier|public
 name|void
 name|removeTopicMessageStore
@@ -485,7 +595,7 @@ name|destination
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#rollbackTransaction(org.apache.activemq.broker.ConnectionContext)      */
+comment|/**      * @param context      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#rollbackTransaction(org.apache.activemq.broker.ConnectionContext)      */
 specifier|public
 name|void
 name|rollbackTransaction
@@ -506,7 +616,7 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#setBrokerName(java.lang.String)      */
+comment|/**      * @param brokerName      * @see org.apache.activemq.store.PersistenceAdapter#setBrokerName(java.lang.String)      */
 specifier|public
 name|void
 name|setBrokerName
@@ -525,7 +635,7 @@ name|brokerName
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#setUsageManager(org.apache.activemq.usage.SystemUsage)      */
+comment|/**      * @param usageManager      * @see org.apache.activemq.store.PersistenceAdapter#setUsageManager(org.apache.activemq.usage.SystemUsage)      */
 specifier|public
 name|void
 name|setUsageManager
@@ -559,7 +669,7 @@ name|size
 argument_list|()
 return|;
 block|}
-comment|/**      * @see org.apache.activemq.Service#start()      */
+comment|/**      * @throws Exception      * @see org.apache.activemq.Service#start()      */
 specifier|public
 name|void
 name|start
@@ -575,7 +685,7 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @see org.apache.activemq.Service#stop()      */
+comment|/**      * @throws Exception      * @see org.apache.activemq.Service#stop()      */
 specifier|public
 name|void
 name|stop
@@ -591,7 +701,7 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Get the journalMaxFileLength      *      * @return the journalMaxFileLength      */
+comment|/**      * Get the journalMaxFileLength      *       * @return the journalMaxFileLength      */
 specifier|public
 name|int
 name|getJournalMaxFileLength
@@ -606,7 +716,7 @@ name|getJournalMaxFileLength
 argument_list|()
 return|;
 block|}
-comment|/**      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can      * be used      */
+comment|/**      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can      * be used      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryIntPropertyEditor"      */
 specifier|public
 name|void
 name|setJournalMaxFileLength
@@ -689,7 +799,7 @@ name|getFailoverProducersAuditDepth
 argument_list|()
 return|;
 block|}
-comment|/**      * Get the checkpointInterval      *      * @return the checkpointInterval      */
+comment|/**      * Get the checkpointInterval      *       * @return the checkpointInterval      */
 specifier|public
 name|long
 name|getCheckpointInterval
@@ -704,7 +814,7 @@ name|getCheckpointInterval
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the checkpointInterval      *      * @param checkpointInterval the checkpointInterval to set      */
+comment|/**      * Set the checkpointInterval      *       * @param checkpointInterval      *            the checkpointInterval to set      */
 specifier|public
 name|void
 name|setCheckpointInterval
@@ -723,7 +833,7 @@ name|checkpointInterval
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the cleanupInterval      *      * @return the cleanupInterval      */
+comment|/**      * Get the cleanupInterval      *       * @return the cleanupInterval      */
 specifier|public
 name|long
 name|getCleanupInterval
@@ -738,7 +848,7 @@ name|getCleanupInterval
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the cleanupInterval      *      * @param cleanupInterval the cleanupInterval to set      */
+comment|/**      * Set the cleanupInterval      *       * @param cleanupInterval      *            the cleanupInterval to set      */
 specifier|public
 name|void
 name|setCleanupInterval
@@ -757,7 +867,7 @@ name|cleanupInterval
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the indexWriteBatchSize      *      * @return the indexWriteBatchSize      */
+comment|/**      * Get the indexWriteBatchSize      *       * @return the indexWriteBatchSize      */
 specifier|public
 name|int
 name|getIndexWriteBatchSize
@@ -772,7 +882,7 @@ name|getIndexWriteBatchSize
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the indexWriteBatchSize      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      *      * @param indexWriteBatchSize the indexWriteBatchSize to set      */
+comment|/**      * Set the indexWriteBatchSize      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      * @param indexWriteBatchSize      *            the indexWriteBatchSize to set      */
 specifier|public
 name|void
 name|setIndexWriteBatchSize
@@ -791,7 +901,7 @@ name|indexWriteBatchSize
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the journalMaxWriteBatchSize      *      * @return the journalMaxWriteBatchSize      */
+comment|/**      * Get the journalMaxWriteBatchSize      *       * @return the journalMaxWriteBatchSize      */
 specifier|public
 name|int
 name|getJournalMaxWriteBatchSize
@@ -806,7 +916,7 @@ name|getJournalMaxWriteBatchSize
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the journalMaxWriteBatchSize      * * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      *      * @param journalMaxWriteBatchSize the journalMaxWriteBatchSize to set      */
+comment|/**      * Set the journalMaxWriteBatchSize      *  * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      * @param journalMaxWriteBatchSize      *            the journalMaxWriteBatchSize to set      */
 specifier|public
 name|void
 name|setJournalMaxWriteBatchSize
@@ -825,7 +935,7 @@ name|journalMaxWriteBatchSize
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the enableIndexWriteAsync      *      * @return the enableIndexWriteAsync      */
+comment|/**      * Get the enableIndexWriteAsync      *       * @return the enableIndexWriteAsync      */
 specifier|public
 name|boolean
 name|isEnableIndexWriteAsync
@@ -840,7 +950,7 @@ name|isEnableIndexWriteAsync
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the enableIndexWriteAsync      *      * @param enableIndexWriteAsync the enableIndexWriteAsync to set      */
+comment|/**      * Set the enableIndexWriteAsync      *       * @param enableIndexWriteAsync      *            the enableIndexWriteAsync to set      */
 specifier|public
 name|void
 name|setEnableIndexWriteAsync
@@ -859,7 +969,7 @@ name|enableIndexWriteAsync
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the directory      *      * @return the directory      */
+comment|/**      * Get the directory      *       * @return the directory      */
 specifier|public
 name|File
 name|getDirectory
@@ -874,7 +984,7 @@ name|getDirectory
 argument_list|()
 return|;
 block|}
-comment|/**      * @see org.apache.activemq.store.PersistenceAdapter#setDirectory(java.io.File)      */
+comment|/**      * @param dir      * @see org.apache.activemq.store.PersistenceAdapter#setDirectory(java.io.File)      */
 specifier|public
 name|void
 name|setDirectory
@@ -893,7 +1003,7 @@ name|dir
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the enableJournalDiskSyncs      *      * @return the enableJournalDiskSyncs      */
+comment|/**      * Get the enableJournalDiskSyncs      *       * @return the enableJournalDiskSyncs      */
 specifier|public
 name|boolean
 name|isEnableJournalDiskSyncs
@@ -908,7 +1018,7 @@ name|isEnableJournalDiskSyncs
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the enableJournalDiskSyncs      *      * @param enableJournalDiskSyncs the enableJournalDiskSyncs to set      */
+comment|/**      * Set the enableJournalDiskSyncs      *       * @param enableJournalDiskSyncs      *            the enableJournalDiskSyncs to set      */
 specifier|public
 name|void
 name|setEnableJournalDiskSyncs
@@ -927,7 +1037,7 @@ name|enableJournalDiskSyncs
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the indexCacheSize      *      * @return the indexCacheSize      */
+comment|/**      * Get the indexCacheSize      *       * @return the indexCacheSize      */
 specifier|public
 name|int
 name|getIndexCacheSize
@@ -942,7 +1052,7 @@ name|getIndexCacheSize
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the indexCacheSize      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      *      * @param indexCacheSize the indexCacheSize to set      */
+comment|/**      * Set the indexCacheSize      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      * @param indexCacheSize      *            the indexCacheSize to set      */
 specifier|public
 name|void
 name|setIndexCacheSize
@@ -961,7 +1071,7 @@ name|indexCacheSize
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the ignoreMissingJournalfiles      *      * @return the ignoreMissingJournalfiles      */
+comment|/**      * Get the ignoreMissingJournalfiles      *       * @return the ignoreMissingJournalfiles      */
 specifier|public
 name|boolean
 name|isIgnoreMissingJournalfiles
@@ -976,7 +1086,7 @@ name|isIgnoreMissingJournalfiles
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the ignoreMissingJournalfiles      *      * @param ignoreMissingJournalfiles the ignoreMissingJournalfiles to set      */
+comment|/**      * Set the ignoreMissingJournalfiles      *       * @param ignoreMissingJournalfiles      *            the ignoreMissingJournalfiles to set      */
 specifier|public
 name|void
 name|setIgnoreMissingJournalfiles
@@ -1191,7 +1301,7 @@ name|getMaxAsyncJobs
 argument_list|()
 return|;
 block|}
-comment|/**      * @param maxAsyncJobs the maxAsyncJobs to set      */
+comment|/**      * @param maxAsyncJobs      *            the maxAsyncJobs to set      */
 specifier|public
 name|void
 name|setMaxAsyncJobs
@@ -1267,41 +1377,159 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-name|boolean
-name|isJournalPerDestination
-parameter_list|()
-block|{
-return|return
-name|letter
-operator|.
-name|isJournalPerDestination
-argument_list|()
-return|;
-block|}
-specifier|public
-name|void
-name|setJournalPerDestination
-parameter_list|(
-name|boolean
-name|journalPerDestination
-parameter_list|)
-block|{
-name|letter
-operator|.
-name|setJournalPerDestination
-argument_list|(
-name|journalPerDestination
-argument_list|)
-expr_stmt|;
-block|}
-comment|//  for testing
-specifier|public
 name|KahaDBStore
 name|getStore
 parameter_list|()
 block|{
 return|return
 name|letter
+return|;
+block|}
+specifier|public
+name|KahaTransactionInfo
+name|createTransactionInfo
+parameter_list|(
+name|TransactionId
+name|txid
+parameter_list|)
+block|{
+if|if
+condition|(
+name|txid
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+name|KahaTransactionInfo
+name|rc
+init|=
+operator|new
+name|KahaTransactionInfo
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|txid
+operator|.
+name|isLocalTransaction
+argument_list|()
+condition|)
+block|{
+name|LocalTransactionId
+name|t
+init|=
+operator|(
+name|LocalTransactionId
+operator|)
+name|txid
+decl_stmt|;
+name|KahaLocalTransactionId
+name|kahaTxId
+init|=
+operator|new
+name|KahaLocalTransactionId
+argument_list|()
+decl_stmt|;
+name|kahaTxId
+operator|.
+name|setConnectionId
+argument_list|(
+name|t
+operator|.
+name|getConnectionId
+argument_list|()
+operator|.
+name|getValue
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|kahaTxId
+operator|.
+name|setTransacitonId
+argument_list|(
+name|t
+operator|.
+name|getValue
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|rc
+operator|.
+name|setLocalTransacitonId
+argument_list|(
+name|kahaTxId
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|XATransactionId
+name|t
+init|=
+operator|(
+name|XATransactionId
+operator|)
+name|txid
+decl_stmt|;
+name|KahaXATransactionId
+name|kahaTxId
+init|=
+operator|new
+name|KahaXATransactionId
+argument_list|()
+decl_stmt|;
+name|kahaTxId
+operator|.
+name|setBranchQualifier
+argument_list|(
+operator|new
+name|Buffer
+argument_list|(
+name|t
+operator|.
+name|getBranchQualifier
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|kahaTxId
+operator|.
+name|setGlobalTransactionId
+argument_list|(
+operator|new
+name|Buffer
+argument_list|(
+name|t
+operator|.
+name|getGlobalTransactionId
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|kahaTxId
+operator|.
+name|setFormatId
+argument_list|(
+name|t
+operator|.
+name|getFormatId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|rc
+operator|.
+name|setXaTransacitonId
+argument_list|(
+name|kahaTxId
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|rc
 return|;
 block|}
 annotation|@

@@ -2260,6 +2260,7 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
+specifier|protected
 specifier|synchronized
 name|void
 name|cleanup

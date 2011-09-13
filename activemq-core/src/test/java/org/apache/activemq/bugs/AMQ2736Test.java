@@ -323,7 +323,7 @@ comment|// test hack, close the journal to ensure no further journal updates whe
 comment|// mimic kill -9 in terms of no normal shutdown sequence
 name|store
 operator|.
-name|getJournalManager
+name|getJournal
 argument_list|()
 operator|.
 name|close
