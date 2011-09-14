@@ -3557,16 +3557,17 @@ name|stompSubscription
 argument_list|)
 expr_stmt|;
 block|}
+comment|// dispatch can beat the receipt so send it early
+name|sendReceipt
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
 name|sendToActiveMQ
 argument_list|(
 name|consumerInfo
 argument_list|,
 literal|null
-argument_list|)
-expr_stmt|;
-name|sendReceipt
-argument_list|(
-name|command
 argument_list|)
 expr_stmt|;
 block|}
