@@ -251,6 +251,26 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
+specifier|public
+name|ActiveMQDestination
+name|transform
+parameter_list|(
+name|String
+name|dest
+parameter_list|)
+throws|throws
+name|JMSException
+block|{
+return|return
+operator|new
+name|ActiveMQQueue
+argument_list|(
+name|dest
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

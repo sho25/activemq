@@ -50,6 +50,16 @@ parameter_list|)
 throws|throws
 name|JMSException
 function_decl|;
+specifier|public
+name|ActiveMQDestination
+name|transform
+parameter_list|(
+name|String
+name|dest
+parameter_list|)
+throws|throws
+name|JMSException
+function_decl|;
 block|}
 end_interface
 
