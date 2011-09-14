@@ -21,6 +21,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|EOFException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -1778,7 +1788,7 @@ if|if
 condition|(
 name|TRANSPORTLOG
 operator|.
-name|isInfoEnabled
+name|isWarnEnabled
 argument_list|()
 operator|&&
 operator|!
@@ -1790,7 +1800,7 @@ condition|)
 block|{
 name|TRANSPORTLOG
 operator|.
-name|info
+name|warn
 argument_list|(
 literal|"Transport failed: "
 operator|+
@@ -1812,12 +1822,14 @@ name|e
 parameter_list|)
 block|{
 return|return
+name|isStomp
+argument_list|()
+operator|&&
+operator|(
+operator|(
 name|e
 operator|instanceof
 name|SocketException
-operator|&&
-name|isStomp
-argument_list|()
 operator|&&
 name|e
 operator|.
@@ -1831,6 +1843,12 @@ argument_list|)
 operator|!=
 operator|-
 literal|1
+operator|)
+operator|||
+name|e
+operator|instanceof
+name|EOFException
+operator|)
 return|;
 block|}
 specifier|private
