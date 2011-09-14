@@ -171,6 +171,13 @@ literal|0
 decl_stmt|;
 comment|// delay in milliseconds between each producer send
 specifier|protected
+name|String
+name|msgFileName
+init|=
+literal|null
+decl_stmt|;
+comment|// for sending a particular msg from a file
+specifier|protected
 name|Map
 argument_list|<
 name|String
@@ -551,6 +558,41 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setMsgFileName
+parameter_list|(
+name|String
+name|file
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"\"producer.msgFileName\" specified. "
+operator|+
+literal|"Will ignore setting \"producer.messageSize\"."
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|msgFileName
+operator|=
+name|file
+expr_stmt|;
+block|}
+specifier|public
+name|String
+name|getMsgFileName
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|msgFileName
+return|;
 block|}
 block|}
 end_class
