@@ -384,7 +384,7 @@ specifier|static
 name|int
 name|numToSend
 init|=
-literal|10000
+literal|5000
 decl_stmt|;
 specifier|final
 name|Vector
@@ -1155,6 +1155,8 @@ name|executorService
 operator|.
 name|awaitTermination
 argument_list|(
+literal|5
+operator|*
 literal|60
 argument_list|,
 name|TimeUnit
