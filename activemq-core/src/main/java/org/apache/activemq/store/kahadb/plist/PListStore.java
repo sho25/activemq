@@ -1533,12 +1533,6 @@ operator|==
 literal|false
 condition|)
 block|{
-name|this
-operator|.
-name|initialized
-operator|=
-literal|true
-expr_stmt|;
 if|if
 condition|(
 name|this
@@ -1875,6 +1869,12 @@ name|cleanupInterval
 argument_list|)
 expr_stmt|;
 block|}
+name|this
+operator|.
+name|initialized
+operator|=
+literal|true
+expr_stmt|;
 name|LOG
 operator|.
 name|info
