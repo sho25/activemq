@@ -3082,6 +3082,14 @@ name|recoveryPosition
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
 name|long
 name|end
 init|=
@@ -3113,6 +3121,7 @@ operator|+
 literal|" seconds."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// We may have to undo some index updates.
 name|pageFile
@@ -3225,6 +3234,14 @@ range|:
 name|toRollback
 control|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -3234,6 +3251,7 @@ operator|+
 name|tx
 argument_list|)
 expr_stmt|;
+block|}
 name|store
 argument_list|(
 operator|new
@@ -3634,6 +3652,23 @@ expr_stmt|;
 comment|// TODO: do we need to modify the ack positions for the pub sub case?
 block|}
 block|}
+if|if
+condition|(
+name|undoCounter
+operator|>
+literal|0
+condition|)
+block|{
+comment|// The rolledback operations are basically in flight journal writes.  To avoid getting
+comment|// these the end user should do sync writes to the journal.
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
 name|long
 name|end
 init|=
@@ -3642,15 +3677,6 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|undoCounter
-operator|>
-literal|0
-condition|)
-block|{
-comment|// The rolledback operations are basically in flight journal writes.  To avoid getting these the end user
-comment|// should do sync writes to the journal.
 name|LOG
 operator|.
 name|info
@@ -3674,6 +3700,7 @@ operator|+
 literal|" seconds."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|undoCounter
 operator|=
@@ -3913,6 +3940,14 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
@@ -3922,6 +3957,7 @@ operator|+
 name|missingJournalFiles
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|ArrayList
 argument_list|<
@@ -4306,13 +4342,6 @@ block|}
 block|}
 block|}
 block|}
-name|end
-operator|=
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|undoCounter
@@ -4322,6 +4351,22 @@ condition|)
 block|{
 comment|// The rolledback operations are basically in flight journal writes.  To avoid getting these the end user
 comment|// should do sync writes to the journal.
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
+name|long
+name|end
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
 name|LOG
 operator|.
 name|info
@@ -4345,6 +4390,7 @@ operator|+
 literal|" seconds."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|private
@@ -4665,6 +4711,14 @@ operator|>
 name|LOG_SLOW_ACCESS_TIME
 condition|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
@@ -4678,6 +4732,7 @@ name|start
 operator|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
@@ -4926,6 +4981,14 @@ operator|>
 name|LOG_SLOW_ACCESS_TIME
 condition|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
@@ -4949,6 +5012,7 @@ operator|+
 literal|" ms"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -5105,6 +5169,14 @@ operator|>
 name|LOG_SLOW_ACCESS_TIME
 condition|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
@@ -5120,6 +5192,7 @@ operator|+
 literal|" ms"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|DataByteArrayInputStream
 name|is
@@ -7444,6 +7517,14 @@ argument_list|(
 name|completeFileSet
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|trace
@@ -7457,6 +7538,7 @@ operator|+
 name|gcCandidateSet
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Don't GC files under replication
 if|if
 condition|(
@@ -7575,6 +7657,14 @@ block|{
 break|break;
 block|}
 block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|trace
@@ -7588,6 +7678,7 @@ operator|+
 name|gcCandidateSet
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Go through all the destinations to see if any of them can remove GC candidates.
 for|for
@@ -7930,6 +8021,14 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|trace
@@ -7947,7 +8046,16 @@ name|gcCandidateSet
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|// check we are not deleting file with ack for in-use journal files
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|trace
@@ -7957,6 +8065,7 @@ operator|+
 name|gcCandidateSet
 argument_list|)
 expr_stmt|;
+block|}
 specifier|final
 name|TreeSet
 argument_list|<
@@ -8075,6 +8184,14 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|trace
@@ -8091,12 +8208,21 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 if|if
 condition|(
 operator|!
 name|gcCandidateSet
 operator|.
 name|isEmpty
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
@@ -8109,6 +8235,7 @@ operator|+
 name|gcCandidateSet
 argument_list|)
 expr_stmt|;
+block|}
 name|journal
 operator|.
 name|removeDataFiles
