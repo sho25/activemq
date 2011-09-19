@@ -1257,6 +1257,13 @@ argument_list|)
 expr_stmt|;
 name|store
 operator|.
+name|setLazyInit
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|store
+operator|.
 name|start
 argument_list|()
 expr_stmt|;
