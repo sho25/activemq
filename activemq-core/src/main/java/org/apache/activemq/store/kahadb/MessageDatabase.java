@@ -10784,7 +10784,7 @@ name|sd
 operator|.
 name|ackPositions
 operator|.
-name|put
+name|add
 argument_list|(
 name|tx
 argument_list|,
@@ -10807,7 +10807,7 @@ name|sd
 operator|.
 name|ackPositions
 operator|.
-name|add
+name|put
 argument_list|(
 name|tx
 argument_list|,
@@ -10925,7 +10925,7 @@ name|sd
 operator|.
 name|ackPositions
 operator|.
-name|put
+name|add
 argument_list|(
 name|tx
 argument_list|,
@@ -10948,7 +10948,7 @@ name|sd
 operator|.
 name|ackPositions
 operator|.
-name|add
+name|put
 argument_list|(
 name|tx
 argument_list|,
@@ -11085,7 +11085,7 @@ name|sd
 operator|.
 name|ackPositions
 operator|.
-name|put
+name|add
 argument_list|(
 name|tx
 argument_list|,
@@ -11116,7 +11116,7 @@ name|sd
 operator|.
 name|ackPositions
 operator|.
-name|add
+name|put
 argument_list|(
 name|tx
 argument_list|,
@@ -11479,7 +11479,7 @@ name|String
 name|subscriptionKey
 parameter_list|,
 name|Long
-name|sequenceId
+name|messageSequence
 parameter_list|)
 throws|throws
 name|IOException
@@ -11487,7 +11487,7 @@ block|{
 comment|// Remove the sub from the previous location set..
 if|if
 condition|(
-name|sequenceId
+name|messageSequence
 operator|!=
 literal|null
 condition|)
@@ -11523,7 +11523,7 @@ name|range
 operator|.
 name|remove
 argument_list|(
-name|sequenceId
+name|messageSequence
 argument_list|)
 expr_stmt|;
 if|if
@@ -11573,7 +11573,7 @@ name|messageReferences
 operator|.
 name|get
 argument_list|(
-name|sequenceId
+name|messageSequence
 argument_list|)
 decl_stmt|;
 name|long
@@ -11599,7 +11599,7 @@ name|messageReferences
 operator|.
 name|put
 argument_list|(
-name|sequenceId
+name|messageSequence
 argument_list|,
 name|Long
 operator|.
@@ -11619,7 +11619,7 @@ name|messageReferences
 operator|.
 name|remove
 argument_list|(
-name|sequenceId
+name|messageSequence
 argument_list|)
 expr_stmt|;
 block|}
@@ -11657,7 +11657,7 @@ name|tx
 argument_list|,
 name|deletes
 argument_list|,
-name|sequenceId
+name|messageSequence
 argument_list|)
 expr_stmt|;
 comment|// Do the actual deletes.
