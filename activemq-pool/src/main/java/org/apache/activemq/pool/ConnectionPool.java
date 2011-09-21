@@ -31,16 +31,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Iterator
 import|;
 end_import
@@ -51,7 +41,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|concurrent
+operator|.
+name|ConcurrentHashMap
 import|;
 end_import
 
@@ -130,7 +122,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Holds a real JMS connection along with the session pools associated with it.  *   *   */
+comment|/**  * Holds a real JMS connection along with the session pools associated with it.  *  *  */
 end_comment
 
 begin_class
@@ -143,7 +135,7 @@ name|ActiveMQConnection
 name|connection
 decl_stmt|;
 specifier|private
-name|Map
+name|ConcurrentHashMap
 argument_list|<
 name|SessionKey
 argument_list|,
@@ -221,7 +213,7 @@ argument_list|(
 name|connection
 argument_list|,
 operator|new
-name|HashMap
+name|ConcurrentHashMap
 argument_list|<
 name|SessionKey
 argument_list|,
@@ -309,7 +301,7 @@ parameter_list|(
 name|ActiveMQConnection
 name|connection
 parameter_list|,
-name|Map
+name|ConcurrentHashMap
 argument_list|<
 name|SessionKey
 argument_list|,
@@ -425,13 +417,17 @@ decl_stmt|;
 name|SessionPool
 name|pool
 init|=
+literal|null
+decl_stmt|;
+name|pool
+operator|=
 name|cache
 operator|.
 name|get
 argument_list|(
 name|key
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|pool
@@ -439,22 +435,75 @@ operator|==
 literal|null
 condition|)
 block|{
-name|pool
-operator|=
+name|SessionPool
+name|newPool
+init|=
 name|createSessionPool
 argument_list|(
 name|key
 argument_list|)
-expr_stmt|;
+decl_stmt|;
+name|SessionPool
+name|prevPool
+init|=
 name|cache
 operator|.
-name|put
+name|putIfAbsent
 argument_list|(
 name|key
 argument_list|,
+name|newPool
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|prevPool
+operator|!=
+literal|null
+operator|&&
+name|prevPool
+operator|!=
+name|newPool
+condition|)
+block|{
+comment|// newPool was not the first one to be associated with this
+comment|// key... close created session pool
+try|try
+block|{
+name|newPool
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+throw|;
+block|}
+block|}
 name|pool
+operator|=
+name|cache
+operator|.
+name|get
+argument_list|(
+name|key
 argument_list|)
 expr_stmt|;
+comment|// this will return a non-null value...
 block|}
 name|PooledSession
 name|session
