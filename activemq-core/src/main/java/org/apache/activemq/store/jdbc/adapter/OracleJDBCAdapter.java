@@ -100,6 +100,44 @@ argument_list|(
 literal|"NUMBER"
 argument_list|)
 expr_stmt|;
+name|String
+name|addMessageStatement
+init|=
+literal|"INSERT INTO "
+operator|+
+name|statements
+operator|.
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|"(ID, MSGID_PROD, MSGID_SEQ, CONTAINER, EXPIRATION, PRIORITY, MSG) VALUES (?, ?, ?, ?, ?, ?, empty_blob())"
+decl_stmt|;
+name|statements
+operator|.
+name|setAddMessageStatement
+argument_list|(
+name|addMessageStatement
+argument_list|)
+expr_stmt|;
+name|String
+name|findMessageByIdStatement
+init|=
+literal|"SELECT MSG FROM "
+operator|+
+name|statements
+operator|.
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" WHERE ID=? FOR UPDATE"
+decl_stmt|;
+name|statements
+operator|.
+name|setFindMessageByIdStatement
+argument_list|(
+name|findMessageByIdStatement
+argument_list|)
+expr_stmt|;
 name|super
 operator|.
 name|setStatements
