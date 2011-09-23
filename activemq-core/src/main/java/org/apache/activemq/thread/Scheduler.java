@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -150,7 +150,7 @@ argument_list|)
 decl_stmt|;
 name|timer
 operator|.
-name|scheduleAtFixedRate
+name|schedule
 argument_list|(
 name|timerTask
 argument_list|,
@@ -169,7 +169,7 @@ name|timerTask
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * execute on rough schedual based on termination of last execution. There is no      * compensation (two runs in quick succession) for delays      */
+comment|/*      * execute on rough schedule based on termination of last execution. There is no      * compensation (two runs in quick succession) for delays      */
 specifier|public
 specifier|synchronized
 name|void
