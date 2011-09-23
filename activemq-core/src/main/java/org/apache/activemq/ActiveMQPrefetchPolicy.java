@@ -44,10 +44,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Defines the prefetch message policies for different types of consumers  *   * @org.apache.xbean.XBean element="prefetchPolicy"  *   */
+comment|/**  * Defines the prefetch message policies for different types of consumers  *  * @org.apache.xbean.XBean element="prefetchPolicy"  *  */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 specifier|public
 class|class
 name|ActiveMQPrefetchPolicy
@@ -65,8 +70,6 @@ init|=
 name|Short
 operator|.
 name|MAX_VALUE
-operator|-
-literal|1
 decl_stmt|;
 specifier|public
 specifier|static
