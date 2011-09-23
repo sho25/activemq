@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -118,7 +118,7 @@ argument_list|)
 decl_stmt|;
 name|CLOCK_DAEMON
 operator|.
-name|scheduleAtFixedRate
+name|schedule
 argument_list|(
 name|timerTask
 argument_list|,
