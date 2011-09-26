@@ -399,7 +399,14 @@ throw|throw
 operator|new
 name|SecurityException
 argument_list|(
-literal|"User name or password is invalid."
+literal|"User name ["
+operator|+
+name|info
+operator|.
+name|getUserName
+argument_list|()
+operator|+
+literal|"] or password is invalid."
 argument_list|)
 throw|;
 block|}
