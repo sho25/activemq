@@ -334,7 +334,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A TransactionContext provides the means to control a JMS transaction. It  * provides a local transaction interface and also an XAResource interface.<p/>  * An application server controls the transactional assignment of an XASession  * by obtaining its XAResource. It uses the XAResource to assign the session to  * a transaction, prepare and commit work on the transaction, and so on.<p/> An  * XAResource provides some fairly sophisticated facilities for interleaving  * work on multiple transactions, recovering a list of transactions in progress,  * and so on. A JTA aware JMS provider must fully implement this functionality.  * This could be done by using the services of a database that supports XA, or a  * JMS provider may choose to implement this functionality from scratch.<p/>  *   *   * @see javax.jms.Session  * @see javax.jms.QueueSession  * @see javax.jms.TopicSession  * @see javax.jms.XASession  */
+comment|/**  * A TransactionContext provides the means to control a JMS transaction. It  * provides a local transaction interface and also an XAResource interface.<p/>  * An application server controls the transactional assignment of an XASession  * by obtaining its XAResource. It uses the XAResource to assign the session to  * a transaction, prepare and commit work on the transaction, and so on.<p/> An  * XAResource provides some fairly sophisticated facilities for interleaving  * work on multiple transactions, recovering a list of transactions in progress,  * and so on. A JTA aware JMS provider must fully implement this functionality.  * This could be done by using the services of a database that supports XA, or a  * JMS provider may choose to implement this functionality from scratch.<p/>  *  *  * @see javax.jms.Session  * @see javax.jms.QueueSession  * @see javax.jms.TopicSession  * @see javax.jms.XASession  */
 end_comment
 
 begin_class
@@ -477,11 +477,20 @@ name|isXATransaction
 argument_list|()
 operator|)
 operator|||
+operator|(
 operator|!
 name|ENDED_XA_TRANSACTION_CONTEXTS
 operator|.
 name|isEmpty
 argument_list|()
+operator|&&
+name|ENDED_XA_TRANSACTION_CONTEXTS
+operator|.
+name|containsValue
+argument_list|(
+name|this
+argument_list|)
+operator|)
 return|;
 block|}
 specifier|public
@@ -521,7 +530,7 @@ return|return
 name|localTransactionEventListener
 return|;
 block|}
-comment|/**      * Used by the resource adapter to listen to transaction events.      *       * @param localTransactionEventListener The localTransactionEventListener to      *                set.      */
+comment|/**      * Used by the resource adapter to listen to transaction events.      *      * @param localTransactionEventListener The localTransactionEventListener to      *                set.      */
 specifier|public
 name|void
 name|setLocalTransactionEventListener
@@ -1012,7 +1021,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Rolls back any work done in this transaction and releases any locks      * currently held.      *       * @throws JMSException if the JMS provider fails to roll back the      *                 transaction due to some internal error.      * @throws javax.jms.IllegalStateException if the method is not called by a      *                 transacted session.      */
+comment|/**      * Rolls back any work done in this transaction and releases any locks      * currently held.      *      * @throws JMSException if the JMS provider fails to roll back the      *                 transaction due to some internal error.      * @throws javax.jms.IllegalStateException if the method is not called by a      *                 transacted session.      */
 specifier|public
 name|void
 name|rollback
@@ -1147,7 +1156,7 @@ name|afterRollback
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Commits all work done in this transaction and releases any locks      * currently held.      *       * @throws JMSException if the JMS provider fails to commit the transaction      *                 due to some internal error.      * @throws javax.jms.IllegalStateException if the method is not called by a      *                 transacted session.      */
+comment|/**      * Commits all work done in this transaction and releases any locks      * currently held.      *      * @throws JMSException if the JMS provider fails to commit the transaction      *                 due to some internal error.      * @throws javax.jms.IllegalStateException if the method is not called by a      *                 transacted session.      */
 specifier|public
 name|void
 name|commit
@@ -3108,7 +3117,7 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sends the given command. Also sends the command in case of interruption,      * so that important commands like rollback and commit are never interrupted.      * If interruption occurred, set the interruption state of the current       * after performing the action again.       *       * @return the response      */
+comment|/**      * Sends the given command. Also sends the command in case of interruption,      * so that important commands like rollback and commit are never interrupted.      * If interruption occurred, set the interruption state of the current      * after performing the action again.      *      * @return the response      */
 specifier|private
 name|Response
 name|syncSendPacketWithInterruptionHandling
@@ -3183,7 +3192,7 @@ name|e
 throw|;
 block|}
 block|}
-comment|/**      * Converts a JMSException from the server to an XAException. if the      * JMSException contained a linked XAException that is returned instead.      *       * @param e JMSException to convert      * @return XAException wrapping original exception or its message      */
+comment|/**      * Converts a JMSException from the server to an XAException. if the      * JMSException contained a linked XAException that is returned instead.      *      * @param e JMSException to convert      * @return XAException wrapping original exception or its message      */
 specifier|private
 name|XAException
 name|toXAException
