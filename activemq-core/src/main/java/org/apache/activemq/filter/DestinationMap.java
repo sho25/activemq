@@ -31,16 +31,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -90,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Map-like data structure allowing values to be indexed by  * {@link ActiveMQDestination} and retrieved by destination - supporting both *  * and&gt; style of wildcard as well as composite destinations.<br>  * This class assumes that the index changes rarely but that fast lookup into  * the index is required. So this class maintains a pre-calculated index for  * destination steps. So looking up the values for "TEST.*" or "*.TEST" will be  * pretty fast.<br>  * Looking up of a value could return a single value or a List of matching  * values if a wildcard or composite destination is used.  *   *   */
+comment|/**  * A Map-like data structure allowing values to be indexed by  * {@link ActiveMQDestination} and retrieved by destination - supporting both *  * and&gt; style of wildcard as well as composite destinations.<br>  * This class assumes that the index changes rarely but that fast lookup into  * the index is required. So this class maintains a pre-calculated index for  * destination steps. So looking up the values for "TEST.*" or "*.TEST" will be  * pretty fast.<br>  * Looking up of a value could return a single value or a List of matching  * values if a wildcard or composite destination is used.  *  *  */
 end_comment
 
 begin_class
@@ -158,7 +148,16 @@ argument_list|(
 literal|null
 argument_list|)
 decl_stmt|;
-comment|/**      * Looks up the value(s) matching the given Destination key. For simple      * destinations this is typically a List of one single value, for wildcards      * or composite destinations this will typically be a List of matching      * values.      *       * @param key the destination to lookup      * @return a List of matching values or an empty list if there are no      *         matching values.      */
+comment|/**      * Looks up the value(s) matching the given Destination key. For simple      * destinations this is typically a List of one single value, for wildcards      * or composite destinations this will typically be a List of matching      * values.      *      * @param key the destination to lookup      * @return a List of matching values or an empty list if there are no      *         matching values.      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 specifier|public
 specifier|synchronized
 name|Set
@@ -515,43 +514,38 @@ block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
 comment|/**      * A helper method to allow the destination map to be populated from a      * dependency injection framework such as Spring      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|}
+argument_list|)
 specifier|protected
 name|void
 name|setEntries
 parameter_list|(
 name|List
+argument_list|<
+name|DestinationMapEntry
+argument_list|>
 name|entries
 parameter_list|)
 block|{
 for|for
 control|(
-name|Iterator
-name|iter
-init|=
-name|entries
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
 name|Object
 name|element
-init|=
-operator|(
-name|Object
-operator|)
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
+range|:
+name|entries
+control|)
+block|{
 name|Class
+argument_list|<
+name|?
+extends|extends
+name|DestinationMapEntry
+argument_list|>
 name|type
 init|=
 name|getEntryClass
@@ -611,8 +605,20 @@ block|}
 block|}
 block|}
 comment|/**      * Returns the type of the allowed entries which can be set via the      * {@link #setEntries(List)} method. This allows derived classes to further      * restrict the type of allowed entries to make a type safe destination map      * for custom policies.      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|}
+argument_list|)
 specifier|protected
 name|Class
+argument_list|<
+name|?
+extends|extends
+name|DestinationMapEntry
+argument_list|>
 name|getEntryClass
 parameter_list|()
 block|{
@@ -622,6 +628,15 @@ operator|.
 name|class
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 specifier|protected
 name|Set
 name|findWildcardMatches
@@ -665,6 +680,15 @@ name|answer
 return|;
 block|}
 comment|/**      * @param key      * @return      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 specifier|public
 name|Set
 name|removeAll
@@ -759,7 +783,16 @@ return|return
 name|rc
 return|;
 block|}
-comment|/**      * Returns the value which matches the given destination or null if there is      * no matching value. If there are multiple values, the results are sorted      * and the last item (the biggest) is returned.      *       * @param destination the destination to find the value for      * @return the largest matching value or null if no value matches      */
+comment|/**      * Returns the value which matches the given destination or null if there is      * no matching value. If there are multiple values, the results are sorted      * and the last item (the biggest) is returned.      *      * @param destination the destination to find the value for      * @return the largest matching value or null if no value matches      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 specifier|public
 name|Object
 name|chooseValue

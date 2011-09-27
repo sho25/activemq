@@ -83,8 +83,22 @@ name|DestinationMap
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|filter
+operator|.
+name|DestinationMapEntry
+import|;
+end_import
+
 begin_comment
-comment|/**  * Represents a destination based configuration of policies so that individual  * destinations or wildcard hierarchies of destinations can be configured using  * different policies. Each entry in the map represents the authorization ACLs  * for each operation.  *   * @org.apache.xbean.XBean element="authorizationMap"  *   */
+comment|/**  * Represents a destination based configuration of policies so that individual  * destinations or wildcard hierarchies of destinations can be configured using  * different policies. Each entry in the map represents the authorization ACLs  * for each operation.  *  * @org.apache.xbean.XBean element="authorizationMap"  *  */
 end_comment
 
 begin_class
@@ -108,10 +122,18 @@ specifier|public
 name|DefaultAuthorizationMap
 parameter_list|()
 block|{     }
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|DefaultAuthorizationMap
 parameter_list|(
 name|List
+argument_list|<
+name|DestinationMapEntry
+argument_list|>
 name|authorizationEntries
 parameter_list|)
 block|{
@@ -507,12 +529,20 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * Sets the individual entries on the authorization map      *       * @org.apache.xbean.ElementType class="org.apache.activemq.security.AuthorizationEntry"      */
+comment|/**      * Sets the individual entries on the authorization map      *      * @org.apache.xbean.ElementType class="org.apache.activemq.security.AuthorizationEntry"      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|void
 name|setAuthorizationEntries
 parameter_list|(
 name|List
+argument_list|<
+name|DestinationMapEntry
+argument_list|>
 name|entries
 parameter_list|)
 block|{
@@ -548,10 +578,17 @@ operator|=
 name|defaultEntry
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|protected
 name|Class
 argument_list|<
-name|AuthorizationEntry
+name|?
+extends|extends
+name|DestinationMapEntry
 argument_list|>
 name|getEntryClass
 parameter_list|()
@@ -562,6 +599,11 @@ operator|.
 name|class
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|protected
 name|Set
 argument_list|<

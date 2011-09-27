@@ -16,10 +16,15 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A default entry in a DestinationMap which holds a single value.  *   * @org.apache.xbean.XBean element="destinationEntry"  *   *   */
+comment|/**  * A default entry in a DestinationMap which holds a single value.  *  * @org.apache.xbean.XBean element="destinationEntry"  *  *  */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 class|class
 name|DefaultDestinationMapEntry
@@ -27,11 +32,11 @@ extends|extends
 name|DestinationMapEntry
 block|{
 specifier|private
-name|Object
+name|DestinationMapEntry
 name|value
 decl_stmt|;
 specifier|public
-name|Object
+name|DestinationMapEntry
 name|getValue
 parameter_list|()
 block|{
@@ -43,7 +48,7 @@ specifier|public
 name|void
 name|setValue
 parameter_list|(
-name|Object
+name|DestinationMapEntry
 name|value
 parameter_list|)
 block|{

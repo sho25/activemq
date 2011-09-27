@@ -57,6 +57,20 @@ name|DestinationMap
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|filter
+operator|.
+name|DestinationMapEntry
+import|;
+end_import
+
 begin_comment
 comment|/**  * Represents a destination based configuration of policies so that individual  * destinations or wildcard hierarchies of destinations can be configured using  * different policies.  *   * @org.apache.xbean.XBean  *   *   */
 end_comment
@@ -151,6 +165,11 @@ expr_stmt|;
 block|}
 specifier|protected
 name|Class
+argument_list|<
+name|?
+extends|extends
+name|DestinationMapEntry
+argument_list|>
 name|getEntryClass
 parameter_list|()
 block|{

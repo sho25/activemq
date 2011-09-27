@@ -19,6 +19,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|Principal
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Set
@@ -44,7 +54,7 @@ block|}
 specifier|public
 name|Set
 argument_list|<
-name|?
+name|Principal
 argument_list|>
 name|getPrincipals
 parameter_list|()

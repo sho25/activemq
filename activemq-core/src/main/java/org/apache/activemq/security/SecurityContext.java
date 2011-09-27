@@ -19,6 +19,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|Principal
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -82,7 +92,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to cache up authorizations so that subsequent requests are faster.  *   *   */
+comment|/**  * Used to cache up authorizations so that subsequent requests are faster.  *  *  */
 end_comment
 
 begin_class
@@ -114,15 +124,10 @@ return|return
 literal|true
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 specifier|public
 name|Set
 argument_list|<
-name|?
+name|Principal
 argument_list|>
 name|getPrincipals
 parameter_list|()
@@ -130,7 +135,8 @@ block|{
 return|return
 name|Collections
 operator|.
-name|EMPTY_SET
+name|emptySet
+argument_list|()
 return|;
 block|}
 block|}
@@ -201,6 +207,9 @@ name|allowedPrincipals
 parameter_list|)
 block|{
 name|Iterator
+argument_list|<
+name|?
+argument_list|>
 name|allowedIter
 init|=
 name|allowedPrincipals
@@ -233,6 +242,9 @@ argument_list|()
 condition|)
 block|{
 name|Iterator
+argument_list|<
+name|?
+argument_list|>
 name|userIter
 init|=
 name|userPrincipals
@@ -281,7 +293,7 @@ specifier|public
 specifier|abstract
 name|Set
 argument_list|<
-name|?
+name|Principal
 argument_list|>
 name|getPrincipals
 parameter_list|()

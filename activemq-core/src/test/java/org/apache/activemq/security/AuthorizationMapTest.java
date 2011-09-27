@@ -77,6 +77,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|filter
+operator|.
+name|DestinationMapEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|jaas
 operator|.
 name|GroupPrincipal
@@ -84,7 +98,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   *   */
+comment|/**  *  *  */
 end_comment
 
 begin_class
@@ -150,6 +164,9 @@ name|createAuthorizationMap
 argument_list|()
 decl_stmt|;
 name|Set
+argument_list|<
+name|?
+argument_list|>
 name|readACLs
 init|=
 name|map
@@ -214,6 +231,9 @@ name|createAuthorizationMapWithTempDest
 argument_list|()
 decl_stmt|;
 name|Set
+argument_list|<
+name|?
+argument_list|>
 name|readACLs
 init|=
 name|map
@@ -266,6 +286,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|Set
+argument_list|<
+name|?
+argument_list|>
 name|tempAdminACLs
 init|=
 name|map
@@ -300,6 +323,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|protected
 name|AuthorizationMap
 name|createAuthorizationMap
@@ -314,14 +342,14 @@ argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
-name|AuthorizationEntry
+name|DestinationMapEntry
 argument_list|>
 name|entries
 init|=
 operator|new
 name|ArrayList
 argument_list|<
-name|AuthorizationEntry
+name|DestinationMapEntry
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -435,6 +463,11 @@ return|return
 name|answer
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|protected
 name|AuthorizationMap
 name|createAuthorizationMapWithTempDest
@@ -449,14 +482,14 @@ argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
-name|AuthorizationEntry
+name|DestinationMapEntry
 argument_list|>
 name|entries
 init|=
 operator|new
 name|ArrayList
 argument_list|<
-name|AuthorizationEntry
+name|DestinationMapEntry
 argument_list|>
 argument_list|()
 decl_stmt|;

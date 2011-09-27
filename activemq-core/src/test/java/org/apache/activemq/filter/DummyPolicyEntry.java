@@ -25,6 +25,9 @@ class|class
 name|DummyPolicyEntry
 extends|extends
 name|DestinationMapEntry
+argument_list|<
+name|String
+argument_list|>
 block|{
 specifier|private
 name|String
@@ -55,7 +58,10 @@ name|description
 expr_stmt|;
 block|}
 specifier|public
-name|Object
+name|Comparable
+argument_list|<
+name|String
+argument_list|>
 name|getValue
 parameter_list|()
 block|{

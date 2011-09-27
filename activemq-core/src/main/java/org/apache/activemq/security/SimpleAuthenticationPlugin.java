@@ -19,6 +19,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|Principal
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|HashMap
@@ -128,7 +138,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple authentication plugin  *   * @org.apache.xbean.XBean element="simpleAuthenticationPlugin"  *                         description="Provides a simple authentication plugin  *                         configured with a map of user-passwords and a map of  *                         user-groups or a list of authentication users"  *   *   */
+comment|/**  * A simple authentication plugin  *  * @org.apache.xbean.XBean element="simpleAuthenticationPlugin"  *                         description="Provides a simple authentication plugin  *                         configured with a map of user-passwords and a map of  *                         user-groups or a list of authentication users"  *  *  */
 end_comment
 
 begin_class
@@ -154,7 +164,7 @@ name|String
 argument_list|,
 name|Set
 argument_list|<
-name|GroupPrincipal
+name|Principal
 argument_list|>
 argument_list|>
 name|userGroups
@@ -201,6 +211,9 @@ specifier|public
 name|SimpleAuthenticationPlugin
 parameter_list|(
 name|List
+argument_list|<
+name|?
+argument_list|>
 name|users
 parameter_list|)
 block|{
@@ -263,7 +276,7 @@ name|String
 argument_list|,
 name|Set
 argument_list|<
-name|GroupPrincipal
+name|Principal
 argument_list|>
 argument_list|>
 name|getUserGroups
@@ -273,12 +286,15 @@ return|return
 name|userGroups
 return|;
 block|}
-comment|/**      * Sets individual users for authentication      *       * @org.apache.xbean.ElementType class="org.apache.activemq.security.AuthenticationUser"      */
+comment|/**      * Sets individual users for authentication      *      * @org.apache.xbean.ElementType class="org.apache.activemq.security.AuthenticationUser"      */
 specifier|public
 name|void
 name|setUsers
 parameter_list|(
 name|List
+argument_list|<
+name|?
+argument_list|>
 name|users
 parameter_list|)
 block|{
@@ -302,7 +318,7 @@ name|String
 argument_list|,
 name|Set
 argument_list|<
-name|GroupPrincipal
+name|Principal
 argument_list|>
 argument_list|>
 argument_list|()
@@ -310,6 +326,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|?
+argument_list|>
 name|it
 init|=
 name|users
@@ -352,14 +371,14 @@ argument_list|)
 expr_stmt|;
 name|Set
 argument_list|<
-name|GroupPrincipal
+name|Principal
 argument_list|>
 name|groups
 init|=
 operator|new
 name|HashSet
 argument_list|<
-name|GroupPrincipal
+name|Principal
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -478,7 +497,7 @@ name|String
 argument_list|,
 name|Set
 argument_list|<
-name|GroupPrincipal
+name|Principal
 argument_list|>
 argument_list|>
 name|userGroups

@@ -61,16 +61,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -96,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation class used to implement {@link DestinationMap}  *   *   */
+comment|/**  * An implementation class used to implement {@link DestinationMap}  *  *  */
 end_comment
 
 begin_class
@@ -126,25 +116,41 @@ name|DestinationMap
 operator|.
 name|ANY_DESCENDENT
 decl_stmt|;
-comment|// we synchornize at the DestinationMap level
+comment|// we synchronize at the DestinationMap level
 specifier|private
 name|DestinationMapNode
 name|parent
 decl_stmt|;
 specifier|private
 name|List
+argument_list|<
+name|Object
+argument_list|>
 name|values
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Object
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|DestinationNode
+argument_list|>
 name|childNodes
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|DestinationNode
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -197,7 +203,7 @@ block|}
 block|}
 comment|/**      * Returns the child node for the given named path or null if it does not      * exist      */
 specifier|public
-name|DestinationMapNode
+name|DestinationNode
 name|getChild
 parameter_list|(
 name|String
@@ -205,9 +211,6 @@ name|path
 parameter_list|)
 block|{
 return|return
-operator|(
-name|DestinationMapNode
-operator|)
 name|childNodes
 operator|.
 name|get
@@ -219,6 +222,9 @@ block|}
 comment|/**      * Returns the child nodes      */
 specifier|public
 name|Collection
+argument_list|<
+name|DestinationNode
+argument_list|>
 name|getChildren
 parameter_list|()
 block|{
@@ -295,14 +301,16 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * Returns the node which represents all children (i.e. the * node)      */
-comment|// public DestinationMapNode getAnyChildNode() {
-comment|// if (anyChild == null) {
-comment|// anyChild = createChildNode();
-comment|// }
-comment|// return anyChild;
-comment|// }
 comment|/**      * Returns a mutable List of the values available at this node in the tree      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 specifier|public
 name|List
 name|getValues
@@ -313,6 +321,15 @@ name|values
 return|;
 block|}
 comment|/**      * Returns a mutable List of the values available at this node in the tree      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 specifier|public
 name|List
 name|removeValues
@@ -340,6 +357,15 @@ return|return
 name|v
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 specifier|public
 name|Set
 name|removeDesendentValues
@@ -361,6 +387,15 @@ return|return
 name|answer
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 specifier|protected
 name|void
 name|removeDesendentValues
@@ -369,9 +404,6 @@ name|Set
 name|answer
 parameter_list|)
 block|{
-comment|// if (anyChild != null) {
-comment|// anyChild.removeDesendentValues(answer);
-comment|// }
 name|answer
 operator|.
 name|addAll
@@ -382,6 +414,15 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns a list of all the values from this node down the tree      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 specifier|public
 name|Set
 name|getDesendentValues
@@ -437,12 +478,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// if (idx == paths.length - 1) {
-comment|// getAnyChildNode().getValues().add(value);
-comment|// }
-comment|// else {
-comment|// getAnyChildNode().add(paths, idx + 1, value);
-comment|// }
 name|getChildOrCreate
 argument_list|(
 name|paths
@@ -501,12 +536,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// if (idx == paths.length - 1) {
-comment|// getAnyChildNode().getValues().remove(value);
-comment|// }
-comment|// else {
-comment|// getAnyChildNode().remove(paths, idx + 1, value);
-comment|// }
 name|getChildOrCreate
 argument_list|(
 name|paths
@@ -532,6 +561,9 @@ name|void
 name|removeAll
 parameter_list|(
 name|Set
+argument_list|<
+name|DestinationNode
+argument_list|>
 name|answer
 parameter_list|,
 name|String
@@ -666,6 +698,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 specifier|public
 name|void
 name|appendDescendantValues
@@ -682,36 +723,17 @@ name|values
 argument_list|)
 expr_stmt|;
 comment|// lets add all the children too
-name|Iterator
-name|iter
-init|=
+for|for
+control|(
+name|DestinationNode
+name|child
+range|:
 name|childNodes
 operator|.
 name|values
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-decl_stmt|;
-while|while
-condition|(
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|)
+control|)
 block|{
-name|DestinationNode
-name|child
-init|=
-operator|(
-name|DestinationNode
-operator|)
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|child
 operator|.
 name|appendDescendantValues
@@ -720,10 +742,6 @@ name|answer
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO???
-comment|// if (anyChild != null) {
-comment|// anyChild.appendDescendantValues(answer);
-comment|// }
 block|}
 comment|/**      * Factory method to create a child node      */
 specifier|protected
@@ -740,6 +758,15 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Matches any entries in the map containing wildcards      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 specifier|public
 name|void
 name|appendMatchingWildcards
@@ -766,7 +793,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|DestinationMapNode
+name|DestinationNode
 name|wildCardNode
 init|=
 name|getChild
@@ -826,6 +853,9 @@ name|void
 name|appendMatchingValues
 parameter_list|(
 name|Set
+argument_list|<
+name|DestinationNode
+argument_list|>
 name|answer
 parameter_list|,
 name|String

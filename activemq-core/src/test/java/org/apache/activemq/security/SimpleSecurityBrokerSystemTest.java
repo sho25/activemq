@@ -29,6 +29,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|Principal
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Arrays
@@ -52,6 +62,26 @@ operator|.
 name|util
 operator|.
 name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -155,20 +185,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|command
-operator|.
-name|MessageSendTest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|filter
 operator|.
 name|DestinationMap
@@ -210,7 +226,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests that the broker allows/fails access to destinations based on the  * security policy installed on the broker.  *   *   */
+comment|/**  * Tests that the broker allows/fails access to destinations based on the  * security policy installed on the broker.  *  *  */
 end_comment
 
 begin_class
@@ -792,13 +808,13 @@ argument_list|,
 literal|"password"
 argument_list|)
 expr_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
-name|HashSet
+name|Set
 argument_list|<
-name|Object
+name|Principal
 argument_list|>
 argument_list|>
 name|groups
@@ -808,9 +824,9 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|HashSet
+name|Set
 argument_list|<
-name|Object
+name|Principal
 argument_list|>
 argument_list|>
 argument_list|()
@@ -824,7 +840,7 @@ argument_list|,
 operator|new
 name|HashSet
 argument_list|<
-name|Object
+name|Principal
 argument_list|>
 argument_list|(
 name|Arrays
@@ -832,7 +848,7 @@ operator|.
 name|asList
 argument_list|(
 operator|new
-name|Object
+name|Principal
 index|[]
 block|{
 name|ADMINS
@@ -852,7 +868,7 @@ argument_list|,
 operator|new
 name|HashSet
 argument_list|<
-name|Object
+name|Principal
 argument_list|>
 argument_list|(
 name|Arrays
@@ -860,7 +876,7 @@ operator|.
 name|asList
 argument_list|(
 operator|new
-name|Object
+name|Principal
 index|[]
 block|{
 name|USERS
@@ -878,7 +894,7 @@ argument_list|,
 operator|new
 name|HashSet
 argument_list|<
-name|Object
+name|Principal
 argument_list|>
 argument_list|(
 name|Arrays
@@ -886,7 +902,7 @@ operator|.
 name|asList
 argument_list|(
 operator|new
-name|Object
+name|Principal
 index|[]
 block|{
 name|GUESTS

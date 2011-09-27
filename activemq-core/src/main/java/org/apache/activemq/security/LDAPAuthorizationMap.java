@@ -254,7 +254,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An {@link AuthorizationMap} which uses LDAP  *   * @org.apache.xbean.XBean  * @author ngcutura  */
+comment|/**  * An {@link AuthorizationMap} which uses LDAP  *  * @org.apache.xbean.XBean  * @author ngcutura  */
 end_comment
 
 begin_class
@@ -571,14 +571,16 @@ specifier|public
 name|LDAPAuthorizationMap
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|options
 parameter_list|)
 block|{
 name|initialContextFactory
 operator|=
-operator|(
-name|String
-operator|)
 name|options
 operator|.
 name|get
@@ -588,9 +590,6 @@ argument_list|)
 expr_stmt|;
 name|connectionURL
 operator|=
-operator|(
-name|String
-operator|)
 name|options
 operator|.
 name|get
@@ -600,9 +599,6 @@ argument_list|)
 expr_stmt|;
 name|connectionUsername
 operator|=
-operator|(
-name|String
-operator|)
 name|options
 operator|.
 name|get
@@ -612,9 +608,6 @@ argument_list|)
 expr_stmt|;
 name|connectionPassword
 operator|=
-operator|(
-name|String
-operator|)
 name|options
 operator|.
 name|get
@@ -624,9 +617,6 @@ argument_list|)
 expr_stmt|;
 name|connectionProtocol
 operator|=
-operator|(
-name|String
-operator|)
 name|options
 operator|.
 name|get
@@ -636,9 +626,6 @@ argument_list|)
 expr_stmt|;
 name|authentication
 operator|=
-operator|(
-name|String
-operator|)
 name|options
 operator|.
 name|get
@@ -648,9 +635,6 @@ argument_list|)
 expr_stmt|;
 name|adminBase
 operator|=
-operator|(
-name|String
-operator|)
 name|options
 operator|.
 name|get
@@ -660,9 +644,6 @@ argument_list|)
 expr_stmt|;
 name|adminAttribute
 operator|=
-operator|(
-name|String
-operator|)
 name|options
 operator|.
 name|get
@@ -672,9 +653,6 @@ argument_list|)
 expr_stmt|;
 name|readBase
 operator|=
-operator|(
-name|String
-operator|)
 name|options
 operator|.
 name|get
@@ -684,9 +662,6 @@ argument_list|)
 expr_stmt|;
 name|readAttribute
 operator|=
-operator|(
-name|String
-operator|)
 name|options
 operator|.
 name|get
@@ -696,9 +671,6 @@ argument_list|)
 expr_stmt|;
 name|writeBase
 operator|=
-operator|(
-name|String
-operator|)
 name|options
 operator|.
 name|get
@@ -708,9 +680,6 @@ argument_list|)
 expr_stmt|;
 name|writeAttribute
 operator|=
-operator|(
-name|String
-operator|)
 name|options
 operator|.
 name|get
@@ -721,9 +690,6 @@ expr_stmt|;
 name|String
 name|topicSearchMatching
 init|=
-operator|(
-name|String
-operator|)
 name|options
 operator|.
 name|get
@@ -734,9 +700,6 @@ decl_stmt|;
 name|String
 name|topicSearchSubtree
 init|=
-operator|(
-name|String
-operator|)
 name|options
 operator|.
 name|get
@@ -747,9 +710,6 @@ decl_stmt|;
 name|String
 name|queueSearchMatching
 init|=
-operator|(
-name|String
-operator|)
 name|options
 operator|.
 name|get
@@ -760,9 +720,6 @@ decl_stmt|;
 name|String
 name|queueSearchSubtree
 init|=
-operator|(
-name|String
-operator|)
 name|options
 operator|.
 name|get
@@ -1985,6 +1942,9 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 name|NamingEnumeration
+argument_list|<
+name|?
+argument_list|>
 name|results
 init|=
 name|context
@@ -2212,6 +2172,9 @@ name|values
 return|;
 block|}
 name|NamingEnumeration
+argument_list|<
+name|?
+argument_list|>
 name|e
 init|=
 name|attr
