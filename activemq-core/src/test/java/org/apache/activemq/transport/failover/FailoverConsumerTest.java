@@ -367,13 +367,7 @@ argument_list|(
 literal|"You should restart remote broker now and press enter!"
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|in
-operator|.
-name|read
-argument_list|()
-expr_stmt|;
+comment|//System.in.read();
 comment|// Thread.sleep(20000);
 name|restartRemoteBroker
 argument_list|()
@@ -565,7 +559,7 @@ name|getRemoteURI
 parameter_list|()
 block|{
 return|return
-literal|"tcp://localhost:55555"
+literal|"tcp://localhost:61616"
 return|;
 block|}
 block|}

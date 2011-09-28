@@ -297,6 +297,11 @@ throws|throws
 name|IOException
 block|{
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|options
 init|=
 name|compositData
@@ -352,6 +357,11 @@ name|FailoverTransport
 name|createTransport
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|parameters
 parameter_list|)
 throws|throws
