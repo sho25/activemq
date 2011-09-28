@@ -91,20 +91,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|bind
-operator|.
-name|annotation
-operator|.
-name|XmlAnyAttribute
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -728,6 +714,15 @@ block|}
 block|}
 decl_stmt|;
 comment|/**      * Sets the  FilteredKahaDBPersistenceAdapter entries      *      * @org.apache.xbean.ElementType class="org.apache.activemq.store.kahadb.FilteredKahaDBPersistenceAdapter"      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 specifier|public
 name|void
 name|setFilteredPersistenceAdapters
@@ -1419,7 +1414,7 @@ name|void
 name|setDirectory
 parameter_list|(
 name|File
-name|dir
+name|directory
 parameter_list|)
 block|{
 name|this
