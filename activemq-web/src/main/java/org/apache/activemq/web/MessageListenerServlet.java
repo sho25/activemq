@@ -187,18 +187,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|MessageAvailableListener
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -244,10 +232,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A servlet for sending and receiving messages to/from JMS destinations using  * HTTP POST for sending and HTTP GET for receiving.<p/> You can specify the  * destination and whether it is a topic or queue via configuration details on  * the servlet or as request parameters.<p/> For reading messages you can  * specify a readTimeout parameter to determine how long the servlet should  * block for. The servlet can be configured with the following init parameters:  *<dl>  *<dt>defaultReadTimeout</dt>  *<dd>The default time in ms to wait for messages. May be overridden by a  * request using the 'timeout' parameter</dd>  *<dt>maximumReadTimeout</dt>  *<dd>The maximum value a request may specify for the 'timeout' parameter</dd>  *<dt>maximumMessages</dt>  *<dd>maximum messages to send per response</dd>  *<dt></dt>  *<dd></dd>  *</dl>  *   *   */
+comment|/**  * A servlet for sending and receiving messages to/from JMS destinations using  * HTTP POST for sending and HTTP GET for receiving.<p/> You can specify the  * destination and whether it is a topic or queue via configuration details on  * the servlet or as request parameters.<p/> For reading messages you can  * specify a readTimeout parameter to determine how long the servlet should  * block for. The servlet can be configured with the following init parameters:  *<dl>  *<dt>defaultReadTimeout</dt>  *<dd>The default time in ms to wait for messages. May be overridden by a  * request using the 'timeout' parameter</dd>  *<dt>maximumReadTimeout</dt>  *<dd>The maximum value a request may specify for the 'timeout' parameter</dd>  *<dt>maximumMessages</dt>  *<dd>maximum messages to send per response</dd>  *<dt></dt>  *<dd></dd>  *</dl>  *  *  */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 specifier|public
 class|class
 name|MessageListenerServlet
@@ -423,7 +416,7 @@ literal|60000
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends a message to a destination or manage subscriptions. If the the      * content type of the POST is      *<code>application/x-www-form-urlencoded</code>, then the form      * parameters "destination", "message" and "type" are used to pass a message      * or a subscription. If multiple messages or subscriptions are passed in a      * single post, then additional parameters are shortened to "dN", "mN" and      * "tN" where N is an index starting from 1. The type is either "send",      * "listen" or "unlisten". For send types, the message is the text of the      * TextMessage, otherwise it is the ID to be used for the subscription. If      * the content type is not<code>application/x-www-form-urlencoded</code>,      * then the body of the post is sent as the message to a destination that is      * derived from a query parameter, the URL or the default destination.      *       * @param request      * @param response      * @throws ServletException      * @throws IOException      */
+comment|/**      * Sends a message to a destination or manage subscriptions. If the the      * content type of the POST is      *<code>application/x-www-form-urlencoded</code>, then the form      * parameters "destination", "message" and "type" are used to pass a message      * or a subscription. If multiple messages or subscriptions are passed in a      * single post, then additional parameters are shortened to "dN", "mN" and      * "tN" where N is an index starting from 1. The type is either "send",      * "listen" or "unlisten". For send types, the message is the text of the      * TextMessage, otherwise it is the ID to be used for the subscription. If      * the content type is not<code>application/x-www-form-urlencoded</code>,      * then the body of the post is sent as the message to a destination that is      * derived from a query parameter, the URL or the default destination.      *      * @param request      * @param response      * @throws ServletException      * @throws IOException      */
 specifier|protected
 name|void
 name|doPost
@@ -831,6 +824,11 @@ name|getIdMap
 argument_list|()
 decl_stmt|;
 name|Map
+argument_list|<
+name|MessageAvailableConsumer
+argument_list|,
+name|String
+argument_list|>
 name|consumerDestinationNameMap
 init|=
 name|client
@@ -1323,7 +1321,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Reads a message from a destination up to some specific timeout period      *       * @param client The webclient      * @param request      * @param response      * @throws ServletException      * @throws IOException      */
+comment|/**      * Reads a message from a destination up to some specific timeout period      *      * @param client The webclient      * @param request      * @param response      * @throws ServletException      * @throws IOException      */
 specifier|protected
 name|void
 name|doMessages
@@ -1422,6 +1420,9 @@ name|client
 init|)
 block|{
 name|List
+argument_list|<
+name|MessageConsumer
+argument_list|>
 name|consumers
 init|=
 name|client
@@ -2298,18 +2299,6 @@ name|HttpServletRequest
 name|request
 parameter_list|)
 block|{
-name|long
-name|now
-init|=
-operator|(
-operator|new
-name|Date
-argument_list|()
-operator|)
-operator|.
-name|getTime
-argument_list|()
-decl_stmt|;
 name|HttpSession
 name|session
 init|=
@@ -2519,6 +2508,16 @@ name|ajaxWebClients
 init|)
 block|{
 name|Iterator
+argument_list|<
+name|Map
+operator|.
+name|Entry
+argument_list|<
+name|String
+argument_list|,
+name|AjaxWebClient
+argument_list|>
+argument_list|>
 name|it
 init|=
 name|ajaxWebClients
@@ -2547,16 +2546,6 @@ name|AjaxWebClient
 argument_list|>
 name|e
 init|=
-operator|(
-name|Map
-operator|.
-name|Entry
-argument_list|<
-name|String
-argument_list|,
-name|AjaxWebClient
-argument_list|>
-operator|)
 name|it
 operator|.
 name|next
@@ -2643,6 +2632,23 @@ block|}
 block|}
 block|}
 block|}
+block|}
+specifier|public
+name|void
+name|destroy
+parameter_list|()
+block|{
+comment|// make sure we cancel the timer
+name|clientCleanupTimer
+operator|.
+name|cancel
+argument_list|()
+expr_stmt|;
+name|super
+operator|.
+name|destroy
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class
