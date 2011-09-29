@@ -202,10 +202,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A useful base class for any JMS related servlet; there are various ways to  * map JMS operations to web requests so we put most of the common behaviour in  * a reusable base class. This servlet can be configured with the following init  * paramters  *<dl>  *<dt>topic</dt>  *<dd>Set to 'true' if the servle should default to using topics rather than  * channels</dd>  *<dt>destination</dt>  *<dd>The default destination to use if one is not specifiied</dd>  *<dt></dt>  *<dd></dd>  *</dl>  *   *   */
+comment|/**  * A useful base class for any JMS related servlet; there are various ways to  * map JMS operations to web requests so we put most of the common behaviour in  * a reusable base class. This servlet can be configured with the following init  * parameters  *<dl>  *<dt>topic</dt>  *<dd>Set to 'true' if the servlet should default to using topics rather than  * channels</dd>  *<dt>destination</dt>  *<dd>The default destination to use if one is not specifiied</dd>  *<dt></dt>  *<dd></dd>  *</dl>  *  *  */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 specifier|public
 specifier|abstract
 class|class
@@ -451,6 +456,15 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 specifier|protected
 name|void
 name|appendParametersToMessage
@@ -1702,20 +1716,32 @@ argument_list|(
 name|bodyParameter
 argument_list|)
 decl_stmt|;
+name|String
+name|contentType
+init|=
+name|request
+operator|.
+name|getContentType
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|answer
 operator|==
 literal|null
 operator|&&
-literal|"text/xml"
+name|contentType
+operator|!=
+literal|null
+operator|&&
+name|contentType
 operator|.
-name|equals
-argument_list|(
-name|request
-operator|.
-name|getContentType
+name|toLowerCase
 argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"text/xml"
 argument_list|)
 condition|)
 block|{
