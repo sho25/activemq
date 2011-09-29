@@ -865,6 +865,11 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|void
 name|testFailoverCommitReplyLost
@@ -1503,7 +1508,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_function
-unit|}       public
+unit|}      public
 name|void
 name|initCombosForTestFailoverSendReplyLost
 parameter_list|()
@@ -1531,6 +1536,11 @@ block|}
 end_function
 
 begin_function
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|void
 name|testFailoverSendReplyLost
@@ -2232,7 +2242,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_function
-unit|}       public
+unit|}      public
 name|void
 name|initCombosForTestFailoverConnectionSendReplyLost
 parameter_list|()
@@ -2260,6 +2270,11 @@ block|}
 end_function
 
 begin_function
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|void
 name|testFailoverConnectionSendReplyLost
@@ -3643,6 +3658,11 @@ block|}
 end_function
 
 begin_function
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|void
 name|doTestFailoverConsumerAckLost
