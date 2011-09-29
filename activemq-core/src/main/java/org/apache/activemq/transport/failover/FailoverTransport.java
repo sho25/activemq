@@ -2247,34 +2247,6 @@ operator|=
 name|maxCacheSize
 expr_stmt|;
 block|}
-comment|/**      * @return Returns true if the command is one sent when a connection is      *         being closed.      */
-specifier|private
-name|boolean
-name|isShutdownCommand
-parameter_list|(
-name|Command
-name|command
-parameter_list|)
-block|{
-return|return
-operator|(
-name|command
-operator|!=
-literal|null
-operator|&&
-operator|(
-name|command
-operator|.
-name|isShutdownInfo
-argument_list|()
-operator|||
-name|command
-operator|instanceof
-name|RemoveInfo
-operator|)
-operator|)
-return|;
-block|}
 specifier|public
 name|void
 name|oneway
@@ -2307,10 +2279,9 @@ init|)
 block|{
 if|if
 condition|(
-name|isShutdownCommand
-argument_list|(
 name|command
-argument_list|)
+operator|!=
+literal|null
 operator|&&
 name|connectedTransport
 operator|.
@@ -2328,10 +2299,10 @@ name|isShutdownInfo
 argument_list|()
 condition|)
 block|{
-comment|// Skipping send of ShutdownInfo command when not
-comment|// connected.
+comment|// Skipping send of ShutdownInfo command when not connected.
 return|return;
 block|}
+elseif|else
 if|if
 condition|(
 name|command
@@ -2344,8 +2315,7 @@ name|isMessageAck
 argument_list|()
 condition|)
 block|{
-comment|// Simulate response to RemoveInfo command or ack (as it
-comment|// will be stale)
+comment|// Simulate response to RemoveInfo command or MessageAck (as it will be stale)
 name|stateTracker
 operator|.
 name|track
@@ -2353,6 +2323,14 @@ argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|command
+operator|.
+name|isResponseRequired
+argument_list|()
+condition|)
+block|{
 name|Response
 name|response
 init|=
@@ -2377,6 +2355,7 @@ argument_list|(
 name|response
 argument_list|)
 expr_stmt|;
+block|}
 return|return;
 block|}
 block|}
