@@ -267,7 +267,7 @@ operator|.
 name|getPublishableConnectString
 argument_list|()
 operator|+
-literal|")?jms.immediateAck=true"
+literal|")?jms.transactedIndividualAck=true"
 argument_list|)
 decl_stmt|;
 name|ActiveMQConnection
@@ -645,7 +645,7 @@ operator|.
 name|getPublishableConnectString
 argument_list|()
 operator|+
-literal|"?jms.immediateAck=true"
+literal|"?jms.transactedIndividualAck=true"
 argument_list|)
 decl_stmt|;
 name|ActiveMQConnection
@@ -818,7 +818,7 @@ operator|.
 name|getPublishableConnectString
 argument_list|()
 operator|+
-literal|"?jms.immediateAck=true"
+literal|"?jms.transactedIndividualAck=true"
 argument_list|)
 expr_stmt|;
 name|connection

@@ -134,7 +134,7 @@ argument_list|)
 expr_stmt|;
 name|factory
 operator|.
-name|setImmediateAck
+name|setTransactedIndividualAck
 argument_list|(
 literal|true
 argument_list|)
