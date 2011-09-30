@@ -856,7 +856,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A useful base class for implementing demand forwarding bridges.  *   *   */
+comment|/**  * A useful base class for implementing demand forwarding bridges.  *  *  */
 end_comment
 
 begin_class
@@ -2328,6 +2328,11 @@ name|setNetworkProperties
 argument_list|(
 name|str
 argument_list|)
+expr_stmt|;
+name|localBrokerIdKnownLatch
+operator|.
+name|await
+argument_list|()
 expr_stmt|;
 name|brokerInfo
 operator|.
