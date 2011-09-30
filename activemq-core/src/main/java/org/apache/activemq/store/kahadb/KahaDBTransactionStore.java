@@ -2541,6 +2541,9 @@ annotation|@
 name|Override
 specifier|public
 name|Future
+argument_list|<
+name|Object
+argument_list|>
 name|run
 parameter_list|(
 name|ConnectionContext
@@ -2767,7 +2770,7 @@ condition|)
 block|{
 name|destination
 operator|.
-name|removeAsyncMessage
+name|removeMessage
 argument_list|(
 name|context
 argument_list|,

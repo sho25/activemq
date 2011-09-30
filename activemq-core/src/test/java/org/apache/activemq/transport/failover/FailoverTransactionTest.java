@@ -35,6 +35,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|ActiveMQConnection
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|ActiveMQConnectionFactory
 import|;
 end_import
@@ -721,6 +733,16 @@ return|;
 block|}
 specifier|public
 name|void
+name|configureConnectionFactory
+parameter_list|(
+name|ActiveMQConnectionFactory
+name|factory
+parameter_list|)
+block|{
+comment|// nothing to do
+block|}
+specifier|public
+name|void
 name|testFailoverProducerCloseBeforeTransaction
 parameter_list|()
 throws|throws
@@ -742,6 +764,11 @@ operator|+
 literal|")"
 argument_list|)
 decl_stmt|;
+name|configureConnectionFactory
+argument_list|(
+name|cf
+argument_list|)
+expr_stmt|;
 name|Connection
 name|connection
 init|=
@@ -1018,6 +1045,14 @@ literal|")"
 argument_list|)
 decl_stmt|;
 end_decl_stmt
+
+begin_expr_stmt
+name|configureConnectionFactory
+argument_list|(
+name|cf
+argument_list|)
+expr_stmt|;
+end_expr_stmt
 
 begin_decl_stmt
 name|Connection
@@ -1397,6 +1432,14 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
+name|configureConnectionFactory
+argument_list|(
+name|cf
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|connection
 operator|=
 name|cf
@@ -1694,6 +1737,14 @@ literal|")?jms.watchTopicAdvisories=false"
 argument_list|)
 decl_stmt|;
 end_decl_stmt
+
+begin_expr_stmt
+name|configureConnectionFactory
+argument_list|(
+name|cf
+argument_list|)
+expr_stmt|;
+end_expr_stmt
 
 begin_decl_stmt
 name|Connection
@@ -2131,6 +2182,14 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
+name|configureConnectionFactory
+argument_list|(
+name|cf
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|connection
 operator|=
 name|cf
@@ -2507,6 +2566,14 @@ literal|")?jms.watchTopicAdvisories=false"
 argument_list|)
 decl_stmt|;
 end_decl_stmt
+
+begin_expr_stmt
+name|configureConnectionFactory
+argument_list|(
+name|cf
+argument_list|)
+expr_stmt|;
+end_expr_stmt
 
 begin_decl_stmt
 name|Connection
@@ -2891,6 +2958,14 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
+name|configureConnectionFactory
+argument_list|(
+name|cf
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|connection
 operator|=
 name|cf
@@ -3025,6 +3100,11 @@ operator|+
 literal|")?trackTransactionProducers=false"
 argument_list|)
 decl_stmt|;
+name|configureConnectionFactory
+argument_list|(
+name|cf
+argument_list|)
+expr_stmt|;
 name|Connection
 name|connection
 init|=
@@ -3147,6 +3227,11 @@ operator|+
 literal|")"
 argument_list|)
 decl_stmt|;
+name|configureConnectionFactory
+argument_list|(
+name|cf
+argument_list|)
+expr_stmt|;
 name|Connection
 name|connection
 init|=
@@ -3343,6 +3428,11 @@ operator|+
 literal|")"
 argument_list|)
 decl_stmt|;
+name|configureConnectionFactory
+argument_list|(
+name|cf
+argument_list|)
+expr_stmt|;
 name|Connection
 name|connection
 init|=
@@ -3641,6 +3731,15 @@ control|)
 block|{
 try|try
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Iteration: "
+operator|+
+name|i
+argument_list|)
+expr_stmt|;
 name|doTestFailoverConsumerAckLost
 argument_list|(
 name|i
@@ -3822,6 +3921,14 @@ literal|")"
 argument_list|)
 decl_stmt|;
 end_decl_stmt
+
+begin_expr_stmt
+name|configureConnectionFactory
+argument_list|(
+name|cf
+argument_list|)
+expr_stmt|;
+end_expr_stmt
 
 begin_decl_stmt
 name|Connection
@@ -4563,6 +4670,14 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
+name|configureConnectionFactory
+argument_list|(
+name|cf
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|connection
 operator|=
 name|cf
@@ -4707,6 +4822,11 @@ operator|+
 literal|")"
 argument_list|)
 decl_stmt|;
+name|configureConnectionFactory
+argument_list|(
+name|cf
+argument_list|)
+expr_stmt|;
 name|Connection
 name|connection
 init|=
@@ -4922,6 +5042,11 @@ operator|+
 literal|")?jms.consumerFailoverRedeliveryWaitPeriod=30000"
 argument_list|)
 decl_stmt|;
+name|configureConnectionFactory
+argument_list|(
+name|cf
+argument_list|)
+expr_stmt|;
 name|Connection
 name|connection
 init|=
@@ -5206,6 +5331,11 @@ operator|+
 literal|")?jms.consumerFailoverRedeliveryWaitPeriod=10000"
 argument_list|)
 decl_stmt|;
+name|configureConnectionFactory
+argument_list|(
+name|cf
+argument_list|)
+expr_stmt|;
 name|Connection
 name|connection
 init|=

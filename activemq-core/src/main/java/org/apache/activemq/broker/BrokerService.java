@@ -3085,6 +3085,8 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+try|try
+block|{
 name|stopper
 operator|.
 name|stop
@@ -3125,6 +3127,9 @@ operator|.
 name|clearCache
 argument_list|()
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|stopped
 operator|.
 name|set
@@ -3137,6 +3142,7 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|masterConnectorURI

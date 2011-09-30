@@ -1631,6 +1631,12 @@ name|messagePrioritySupported
 init|=
 literal|true
 decl_stmt|;
+specifier|private
+name|boolean
+name|transactedIndividualAck
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * Construct an<code>ActiveMQConnection</code>      *      * @param transport      * @param factoryStats      * @throws Exception      */
 specifier|protected
 name|ActiveMQConnection
@@ -8491,6 +8497,30 @@ operator|.
 name|checkForDuplicates
 operator|=
 name|checkForDuplicates
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isTransactedIndividualAck
+parameter_list|()
+block|{
+return|return
+name|transactedIndividualAck
+return|;
+block|}
+specifier|public
+name|void
+name|setTransactedIndividualAck
+parameter_list|(
+name|boolean
+name|transactedIndividualAck
+parameter_list|)
+block|{
+name|this
+operator|.
+name|transactedIndividualAck
+operator|=
+name|transactedIndividualAck
 expr_stmt|;
 block|}
 comment|/**      * Removes any TempDestinations that this connection has cached, ignoring      * any exceptions generated because the destination is in use as they should      * not be removed.      */

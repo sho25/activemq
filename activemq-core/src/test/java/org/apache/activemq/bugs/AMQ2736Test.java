@@ -343,14 +343,6 @@ name|Exception
 name|expectedLotsAsJournalBorked
 parameter_list|)
 block|{         }
-name|store
-operator|.
-name|getLockFile
-argument_list|()
-operator|.
-name|unlock
-argument_list|()
-expr_stmt|;
 name|broker
 operator|.
 name|stop
