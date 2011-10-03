@@ -49,7 +49,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|HashMap
 import|;
 end_import
 
@@ -59,9 +59,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|concurrent
-operator|.
-name|ConcurrentHashMap
+name|List
 import|;
 end_import
 
@@ -363,7 +361,7 @@ comment|// XATransactionId -> ArrayList of TransactionContext objects
 specifier|private
 specifier|final
 specifier|static
-name|ConcurrentHashMap
+name|HashMap
 argument_list|<
 name|TransactionId
 argument_list|,
@@ -375,7 +373,7 @@ argument_list|>
 name|ENDED_XA_TRANSACTION_CONTEXTS
 init|=
 operator|new
-name|ConcurrentHashMap
+name|HashMap
 argument_list|<
 name|TransactionId
 argument_list|,
@@ -465,8 +463,8 @@ name|boolean
 name|isInXATransaction
 parameter_list|()
 block|{
-return|return
-operator|(
+if|if
+condition|(
 name|transactionId
 operator|!=
 literal|null
@@ -475,22 +473,62 @@ name|transactionId
 operator|.
 name|isXATransaction
 argument_list|()
-operator|)
-operator|||
-operator|(
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+else|else
+block|{
+if|if
+condition|(
 operator|!
 name|ENDED_XA_TRANSACTION_CONTEXTS
 operator|.
 name|isEmpty
 argument_list|()
-operator|&&
+condition|)
+block|{
+synchronized|synchronized
+init|(
+name|ENDED_XA_TRANSACTION_CONTEXTS
+init|)
+block|{
+for|for
+control|(
+name|List
+argument_list|<
+name|TransactionContext
+argument_list|>
+name|transactions
+range|:
 name|ENDED_XA_TRANSACTION_CONTEXTS
 operator|.
-name|containsValue
+name|values
+argument_list|()
+control|)
+block|{
+if|if
+condition|(
+name|transactions
+operator|.
+name|contains
 argument_list|(
 name|this
 argument_list|)
-operator|)
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+block|}
+block|}
+block|}
+block|}
+return|return
+literal|false
 return|;
 block|}
 specifier|public
@@ -1803,6 +1841,11 @@ argument_list|()
 condition|)
 block|{
 comment|// transaction stops now, may be syncs that need a callback
+synchronized|synchronized
+init|(
+name|ENDED_XA_TRANSACTION_CONTEXTS
+init|)
+block|{
 name|List
 argument_list|<
 name|TransactionContext
@@ -1863,6 +1906,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 return|return
 name|response
 operator|.
@@ -1891,6 +1935,11 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|ENDED_XA_TRANSACTION_CONTEXTS
+init|)
+block|{
 name|List
 argument_list|<
 name|TransactionContext
@@ -1962,6 +2011,7 @@ argument_list|,
 name|ignored
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -2093,6 +2143,11 @@ argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|ENDED_XA_TRANSACTION_CONTEXTS
+init|)
+block|{
 name|List
 argument_list|<
 name|TransactionContext
@@ -2132,6 +2187,7 @@ operator|.
 name|afterRollback
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -2273,6 +2329,11 @@ argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|ENDED_XA_TRANSACTION_CONTEXTS
+init|)
+block|{
 name|List
 argument_list|<
 name|TransactionContext
@@ -2336,6 +2397,7 @@ block|}
 block|}
 block|}
 block|}
+block|}
 catch|catch
 parameter_list|(
 name|JMSException
@@ -2361,6 +2423,11 @@ if|if
 condition|(
 name|onePhase
 condition|)
+block|{
+synchronized|synchronized
+init|(
+name|ENDED_XA_TRANSACTION_CONTEXTS
+init|)
 block|{
 name|List
 argument_list|<
@@ -2433,6 +2500,7 @@ argument_list|,
 name|ignored
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -2564,6 +2632,11 @@ name|e
 argument_list|)
 throw|;
 block|}
+synchronized|synchronized
+init|(
+name|ENDED_XA_TRANSACTION_CONTEXTS
+init|)
+block|{
 name|ENDED_XA_TRANSACTION_CONTEXTS
 operator|.
 name|remove
@@ -2571,6 +2644,7 @@ argument_list|(
 name|x
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|boolean
@@ -3037,6 +3111,11 @@ throw|;
 block|}
 comment|// Add our self to the list of contexts that are interested in
 comment|// post commit/rollback events.
+synchronized|synchronized
+init|(
+name|ENDED_XA_TRANSACTION_CONTEXTS
+init|)
+block|{
 name|List
 argument_list|<
 name|TransactionContext
@@ -3104,6 +3183,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// dis-associate
