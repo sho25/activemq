@@ -343,6 +343,10 @@ argument_list|(
 name|protocol
 operator|=
 literal|"LDAP"
+argument_list|,
+name|port
+operator|=
+literal|1024
 argument_list|)
 block|}
 argument_list|)
