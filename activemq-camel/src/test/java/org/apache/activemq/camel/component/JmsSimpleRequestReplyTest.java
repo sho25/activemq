@@ -196,7 +196,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testRequestReply2Messages
+name|testRequestReply
 parameter_list|()
 throws|throws
 name|Exception
