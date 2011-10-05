@@ -29,16 +29,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -86,10 +76,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The TraceBrokerPathPlugin can be used in a network of Brokers. Each Broker   * that has the plugin configured, will add it's brokerName to the content   * of a JMS Property. If all Brokers have this property enabled, the path the   * message actually took through the network can be seen in the defined property.  *   * @org.apache.xbean.XBean element="traceBrokerPathPlugin"  *   *   */
+comment|/**  * The TraceBrokerPathPlugin can be used in a network of Brokers. Each Broker  * that has the plugin configured, will add it's brokerName to the content  * of a JMS Property. If all Brokers have this property enabled, the path the  * message actually took through the network can be seen in the defined property.  *  * @org.apache.xbean.XBean element="traceBrokerPathPlugin"  *  */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 class|class
 name|TraceBrokerPathPlugin
@@ -134,12 +129,26 @@ name|String
 name|stampProperty
 parameter_list|)
 block|{
+if|if
+condition|(
+name|stampProperty
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|stampProperty
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|this
 operator|.
 name|stampProperty
 operator|=
 name|stampProperty
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -150,6 +159,20 @@ name|messageDispatch
 parameter_list|)
 block|{
 try|try
+block|{
+if|if
+condition|(
+name|messageDispatch
+operator|!=
+literal|null
+operator|&&
+name|messageDispatch
+operator|.
+name|getMessage
+argument_list|()
+operator|!=
+literal|null
+condition|)
 block|{
 name|String
 name|brokerStamp
@@ -204,6 +227,7 @@ argument_list|,
 name|brokerStamp
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
