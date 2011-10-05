@@ -199,9 +199,9 @@ name|org
 operator|.
 name|apache
 operator|.
-name|commons
+name|http
 operator|.
-name|httpclient
+name|client
 operator|.
 name|HttpClient
 import|;
@@ -213,13 +213,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|commons
+name|http
 operator|.
-name|httpclient
+name|client
 operator|.
-name|methods
-operator|.
-name|DeleteMethod
+name|ResponseHandler
 import|;
 end_import
 
@@ -229,13 +227,13 @@ name|org
 operator|.
 name|apache
 operator|.
-name|commons
+name|http
 operator|.
-name|httpclient
+name|client
 operator|.
 name|methods
 operator|.
-name|GetMethod
+name|HttpDelete
 import|;
 end_import
 
@@ -245,13 +243,61 @@ name|org
 operator|.
 name|apache
 operator|.
-name|commons
+name|http
 operator|.
-name|httpclient
+name|client
 operator|.
 name|methods
 operator|.
-name|PutMethod
+name|HttpGet
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|http
+operator|.
+name|client
+operator|.
+name|methods
+operator|.
+name|HttpPut
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|http
+operator|.
+name|impl
+operator|.
+name|client
+operator|.
+name|BasicResponseHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|http
+operator|.
+name|impl
+operator|.
+name|client
+operator|.
+name|DefaultHttpClient
 import|;
 end_import
 
@@ -308,7 +354,7 @@ name|HttpClient
 name|httpClient
 init|=
 operator|new
-name|HttpClient
+name|DefaultHttpClient
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -380,6 +426,11 @@ literal|1000
 operator|*
 literal|10
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 specifier|private
 name|String
 name|brokerName
@@ -561,33 +612,44 @@ name|registryURL
 decl_stmt|;
 try|try
 block|{
-name|PutMethod
+name|HttpPut
 name|method
 init|=
 operator|new
-name|PutMethod
+name|HttpPut
 argument_list|(
 name|url
 argument_list|)
 decl_stmt|;
-comment|//            method.setParams(createParams());
 name|method
 operator|.
-name|setRequestHeader
+name|addHeader
 argument_list|(
 literal|"service"
 argument_list|,
 name|service
 argument_list|)
 expr_stmt|;
-name|int
-name|responseCode
+name|ResponseHandler
+argument_list|<
+name|String
+argument_list|>
+name|handler
+init|=
+operator|new
+name|BasicResponseHandler
+argument_list|()
+decl_stmt|;
+name|String
+name|responseBody
 init|=
 name|httpClient
 operator|.
-name|executeMethod
+name|execute
 argument_list|(
 name|method
+argument_list|,
+name|handler
 argument_list|)
 decl_stmt|;
 name|LOG
@@ -600,7 +662,7 @@ name|url
 operator|+
 literal|" got a "
 operator|+
-name|responseCode
+name|responseBody
 argument_list|)
 expr_stmt|;
 block|}
@@ -625,6 +687,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 specifier|synchronized
 specifier|private
 name|void
@@ -641,33 +708,44 @@ name|registryURL
 decl_stmt|;
 try|try
 block|{
-name|DeleteMethod
+name|HttpDelete
 name|method
 init|=
 operator|new
-name|DeleteMethod
+name|HttpDelete
 argument_list|(
 name|url
 argument_list|)
 decl_stmt|;
-comment|//            method.setParams(createParams());
 name|method
 operator|.
-name|setRequestHeader
+name|addHeader
 argument_list|(
 literal|"service"
 argument_list|,
 name|service
 argument_list|)
 expr_stmt|;
-name|int
-name|responseCode
+name|ResponseHandler
+argument_list|<
+name|String
+argument_list|>
+name|handler
+init|=
+operator|new
+name|BasicResponseHandler
+argument_list|()
+decl_stmt|;
+name|String
+name|responseBody
 init|=
 name|httpClient
 operator|.
-name|executeMethod
+name|execute
 argument_list|(
 name|method
+argument_list|,
+name|handler
 argument_list|)
 decl_stmt|;
 name|LOG
@@ -680,7 +758,7 @@ name|url
 operator|+
 literal|" got a "
 operator|+
-name|responseCode
+name|responseBody
 argument_list|)
 expr_stmt|;
 block|}
@@ -705,11 +783,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//    private HttpMethodParams createParams() {
-comment|//        HttpMethodParams params = new HttpMethodParams();
-comment|//        params.setParameter(HttpMethodParams.RETRY_HANDLER, new DefaultHttpMethodRetryHandler(0,false));
-comment|//        return params;
-comment|//    }
 specifier|synchronized
 specifier|private
 name|Set
@@ -733,24 +806,35 @@ name|freshness
 decl_stmt|;
 try|try
 block|{
-name|GetMethod
+name|HttpGet
 name|method
 init|=
 operator|new
-name|GetMethod
+name|HttpGet
 argument_list|(
 name|url
 argument_list|)
 decl_stmt|;
-comment|//            method.setParams(createParams());
-name|int
-name|responseCode
+name|ResponseHandler
+argument_list|<
+name|String
+argument_list|>
+name|handler
+init|=
+operator|new
+name|BasicResponseHandler
+argument_list|()
+decl_stmt|;
+name|String
+name|response
 init|=
 name|httpClient
 operator|.
-name|executeMethod
+name|execute
 argument_list|(
 name|method
+argument_list|,
+name|handler
 argument_list|)
 decl_stmt|;
 name|LOG
@@ -763,16 +847,9 @@ name|url
 operator|+
 literal|" got a "
 operator|+
-name|responseCode
+name|response
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|responseCode
-operator|==
-literal|200
-condition|)
-block|{
 name|Set
 argument_list|<
 name|String
@@ -792,10 +869,7 @@ init|=
 operator|new
 name|Scanner
 argument_list|(
-name|method
-operator|.
-name|getResponseBodyAsStream
-argument_list|()
+name|response
 argument_list|)
 decl_stmt|;
 while|while
@@ -839,26 +913,6 @@ block|}
 return|return
 name|rc
 return|;
-block|}
-else|else
-block|{
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"GET to "
-operator|+
-name|url
-operator|+
-literal|" failed with response code: "
-operator|+
-name|responseCode
-argument_list|)
-expr_stmt|;
-return|return
-literal|null
-return|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -951,7 +1005,8 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|// We detect a failed connection attempt because the service
+comment|// We detect a failed connection attempt because the
+comment|// service
 comment|// fails right away.
 if|if
 condition|(
@@ -971,7 +1026,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Failure occured soon after the discovery event was generated.  It will be clasified as a connection failure: "
+literal|"Failure occured soon after the discovery event was generated.  "
+operator|+
+literal|"It will be clasified as a connection failure: "
 operator|+
 name|event
 argument_list|)
@@ -1262,10 +1319,20 @@ name|createEmbeddedJettyServer
 argument_list|()
 expr_stmt|;
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|props
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|props
@@ -1361,7 +1428,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Create the EmbeddedJettyServer instance via reflection so that we can avoid a hard runtime dependency on       * jetty.      *       * @return      * @throws Exception      */
+comment|/**      * Create the EmbeddedJettyServer instance via reflection so that we can      * avoid a hard runtime dependency on jetty.      *      * @return      * @throws Exception      */
 specifier|private
 name|Service
 name|createEmbeddedJettyServer
@@ -1370,6 +1437,9 @@ throws|throws
 name|Exception
 block|{
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|clazz
 init|=
 name|HTTPDiscoveryAgent
@@ -1451,7 +1521,8 @@ operator|*
 literal|3
 argument_list|)
 decl_stmt|;
-comment|// If there is error talking the the central server, then activeServices == null
+comment|// If there is error talking the the central server, then
+comment|// activeServices == null
 if|if
 condition|(
 name|activeServices
