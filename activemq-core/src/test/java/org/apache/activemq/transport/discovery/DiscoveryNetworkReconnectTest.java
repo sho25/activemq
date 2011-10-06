@@ -109,6 +109,22 @@ name|broker
 operator|.
 name|jmx
 operator|.
+name|AnnotatedMBean
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|jmx
+operator|.
 name|ManagementContext
 import|;
 end_import
@@ -360,7 +376,7 @@ specifier|final
 name|int
 name|maxReconnects
 init|=
-literal|5
+literal|2
 decl_stmt|;
 specifier|final
 name|String
@@ -467,6 +483,19 @@ name|ObjectName
 operator|)
 name|name
 decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Match: "
+operator|+
+name|mine
+operator|+
+literal|" vs: "
+operator|+
+name|other
+argument_list|)
+expr_stmt|;
 return|return
 name|other
 operator|.
@@ -922,7 +951,7 @@ name|invocation
 operator|.
 name|getParameter
 argument_list|(
-literal|0
+literal|1
 argument_list|)
 argument_list|,
 literal|"dscription"
