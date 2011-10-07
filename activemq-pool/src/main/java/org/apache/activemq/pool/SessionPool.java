@@ -104,7 +104,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents the session pool for a given JMS connection.  *   *   */
+comment|/**  * Represents the session pool for a given JMS connection.  *  *  */
 end_comment
 
 begin_class
@@ -257,6 +257,13 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
+name|connectionPool
+operator|.
+name|onSessionReturned
+argument_list|(
+name|session
+argument_list|)
+expr_stmt|;
 name|getSessionPool
 argument_list|()
 operator|.
@@ -298,6 +305,13 @@ name|JMSException
 block|{
 try|try
 block|{
+name|connectionPool
+operator|.
+name|onSessionInvalidated
+argument_list|(
+name|session
+argument_list|)
+expr_stmt|;
 name|getSessionPool
 argument_list|()
 operator|.
