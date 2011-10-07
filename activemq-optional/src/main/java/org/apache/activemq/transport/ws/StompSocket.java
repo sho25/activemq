@@ -486,6 +486,22 @@ operator|.
 name|wireFormat
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|asyncSendToActiveMQ
+parameter_list|(
+name|Command
+name|command
+parameter_list|)
+block|{
+name|doConsume
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

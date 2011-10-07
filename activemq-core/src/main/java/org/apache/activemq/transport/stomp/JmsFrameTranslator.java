@@ -287,6 +287,24 @@ name|XppReader
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|thoughtworks
+operator|.
+name|xstream
+operator|.
+name|io
+operator|.
+name|xml
+operator|.
+name|xppdom
+operator|.
+name|XppFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Frame translator implementation that uses XStream to convert messages to and  * from XML and JSON  *  * @author<a href="mailto:dejan@nighttale.net">Dejan Bosanac</a>  */
 end_comment
@@ -442,6 +460,11 @@ name|StringReader
 argument_list|(
 name|text
 argument_list|)
+argument_list|,
+name|XppFactory
+operator|.
+name|createDefaultParser
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|msg
@@ -491,6 +514,11 @@ name|StringReader
 argument_list|(
 name|text
 argument_list|)
+argument_list|,
+name|XppFactory
+operator|.
+name|createDefaultParser
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|msg
