@@ -89,6 +89,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -1430,7 +1442,14 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|5000
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|10
+argument_list|)
 argument_list|)
 expr_stmt|;
 try|try
@@ -1908,7 +1927,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|2000
+literal|4000
 argument_list|)
 expr_stmt|;
 name|stompConnection
