@@ -1263,7 +1263,7 @@ name|findAllDestinationsStatement
 operator|=
 literal|"SELECT DISTINCT CONTAINER FROM "
 operator|+
-name|getFullAckTableName
+name|getFullMessageTableName
 argument_list|()
 expr_stmt|;
 block|}
