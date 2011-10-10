@@ -2770,7 +2770,7 @@ condition|)
 block|{
 name|destination
 operator|.
-name|removeMessage
+name|removeAsyncMessage
 argument_list|(
 name|context
 argument_list|,

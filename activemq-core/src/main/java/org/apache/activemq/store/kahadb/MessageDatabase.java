@@ -6733,7 +6733,6 @@ name|getMessageId
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// TODO: consider just rolling back the tx.
 name|sd
 operator|.
 name|messageIdIndex
@@ -6771,7 +6770,6 @@ comment|// added message. We don't want to assign it a new id as the other
 comment|// indexes would
 comment|// be wrong..
 comment|//
-comment|// TODO: consider just rolling back the tx.
 name|sd
 operator|.
 name|locationIndex
@@ -6912,6 +6910,54 @@ name|location
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"message not found in order index: "
+operator|+
+name|sequenceId
+operator|+
+literal|" for: "
+operator|+
+name|command
+operator|.
+name|getMessageId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"message not found in sequence id index: "
+operator|+
+name|command
+operator|.
+name|getMessageId
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 else|else
