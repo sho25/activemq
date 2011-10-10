@@ -7061,6 +7061,35 @@ name|sequence
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"no message sequence exists for id: "
+operator|+
+name|command
+operator|.
+name|getMessageId
+argument_list|()
+operator|+
+literal|" and sub: "
+operator|+
+name|command
+operator|.
+name|getSubscriptionKey
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|metadata
 operator|.
@@ -11652,7 +11681,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * @param tx      * @param sd      * @param subscriptionKey      * @param sequenceId      * @throws IOException      */
+comment|/**      * @param tx      * @param sd      * @param subscriptionKey      * @param messageSequence      * @throws IOException      */
 specifier|private
 name|void
 name|removeAckLocation

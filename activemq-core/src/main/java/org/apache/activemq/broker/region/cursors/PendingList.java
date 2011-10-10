@@ -77,7 +77,7 @@ name|message
 parameter_list|)
 function_decl|;
 specifier|public
-name|void
+name|PendingNode
 name|remove
 parameter_list|(
 name|MessageReference
