@@ -721,7 +721,7 @@ operator|.
 name|getStompTransport
 argument_list|()
 operator|.
-name|sendToActiveMQ
+name|asyncSendToActiveMQ
 argument_list|(
 name|ack
 argument_list|)

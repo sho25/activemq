@@ -9970,14 +9970,6 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|long
-name|timestamp
-init|=
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-decl_stmt|;
 name|headers
 operator|.
 name|put
