@@ -17,6 +17,18 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -1235,6 +1247,15 @@ init|=
 name|receiveMessage
 argument_list|(
 name|connection
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|10
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|assertNotNull
