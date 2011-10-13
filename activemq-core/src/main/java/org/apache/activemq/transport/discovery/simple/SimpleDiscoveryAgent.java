@@ -276,6 +276,29 @@ name|service
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"["
+operator|+
+name|serviceName
+operator|+
+literal|", failed:"
+operator|+
+name|failed
+operator|+
+literal|", connectionFailures:"
+operator|+
+name|connectFailures
+operator|+
+literal|"]"
+return|;
+block|}
 block|}
 specifier|public
 name|void
@@ -584,7 +607,9 @@ literal|"Reconnect attempts exceeded "
 operator|+
 name|maxReconnectAttempts
 operator|+
-literal|" tries.  Reconnecting has been disabled."
+literal|" tries.  Reconnecting has been disabled for: "
+operator|+
+name|event
 argument_list|)
 expr_stmt|;
 return|return;

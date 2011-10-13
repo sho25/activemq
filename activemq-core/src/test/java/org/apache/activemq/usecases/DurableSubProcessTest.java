@@ -1584,7 +1584,7 @@ literal|"jms.producerWindowSize=20971520&"
 operator|+
 literal|"jms.copyMessageOnSend=false&"
 operator|+
-literal|"initialReconnectDelay=100&maxReconnectDelay=30000&maxReconnectAttempts=0&"
+literal|"initialReconnectDelay=100&maxReconnectDelay=30000&"
 operator|+
 literal|"useExponentialBackOff=true"
 decl_stmt|;
