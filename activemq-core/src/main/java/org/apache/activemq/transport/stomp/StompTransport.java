@@ -72,14 +72,6 @@ parameter_list|)
 function_decl|;
 specifier|public
 name|void
-name|asyncSendToActiveMQ
-parameter_list|(
-name|Command
-name|command
-parameter_list|)
-function_decl|;
-specifier|public
-name|void
 name|sendToStomp
 parameter_list|(
 name|StompFrame
