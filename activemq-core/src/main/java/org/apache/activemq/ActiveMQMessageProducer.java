@@ -223,8 +223,28 @@ name|IntrospectionSupport
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * A client uses a<CODE>MessageProducer</CODE> object to send messages to a  * destination. A<CODE>MessageProducer</CODE> object is created by passing a  *<CODE>Destination</CODE> object to a message-producer creation method  * supplied by a session.  *<P>  *<CODE>MessageProducer</CODE> is the parent interface for all message  * producers.  *<P>  * A client also has the option of creating a message producer without supplying  * a destination. In this case, a destination must be provided with every send  * operation. A typical use for this kind of message producer is to send replies  * to requests using the request's<CODE>JMSReplyTo</CODE> destination.  *<P>  * A client can specify a default delivery mode, priority, and time to live for  * messages sent by a message producer. It can also specify the delivery mode,  * priority, and time to live for an individual message.  *<P>  * A client can specify a time-to-live value in milliseconds for each message it  * sends. This value defines a message expiration time that is the sum of the  * message's time-to-live and the GMT when it is sent (for transacted sends,  * this is the time the client sends the message, not the time the transaction  * is committed).  *<P>  * A JMS provider should do its best to expire messages accurately; however, the  * JMS API does not define the accuracy provided.  *   *   * @see javax.jms.TopicPublisher  * @see javax.jms.QueueSender  * @see javax.jms.Session#createProducer  */
+comment|/**  * A client uses a<CODE>MessageProducer</CODE> object to send messages to a  * destination. A<CODE>MessageProducer</CODE> object is created by passing a  *<CODE>Destination</CODE> object to a message-producer creation method  * supplied by a session.  *<P>  *<CODE>MessageProducer</CODE> is the parent interface for all message  * producers.  *<P>  * A client also has the option of creating a message producer without supplying  * a destination. In this case, a destination must be provided with every send  * operation. A typical use for this kind of message producer is to send replies  * to requests using the request's<CODE>JMSReplyTo</CODE> destination.  *<P>  * A client can specify a default delivery mode, priority, and time to live for  * messages sent by a message producer. It can also specify the delivery mode,  * priority, and time to live for an individual message.  *<P>  * A client can specify a time-to-live value in milliseconds for each message it  * sends. This value defines a message expiration time that is the sum of the  * message's time-to-live and the GMT when it is sent (for transacted sends,  * this is the time the client sends the message, not the time the transaction  * is committed).  *<P>  * A JMS provider should do its best to expire messages accurately; however, the  * JMS API does not define the accuracy provided.  *  *  * @see javax.jms.TopicPublisher  * @see javax.jms.QueueSender  * @see javax.jms.Session#createProducer  */
 end_comment
 
 begin_class
@@ -238,6 +258,21 @@ name|StatsCapable
 implements|,
 name|Disposable
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|ActiveMQMessageProducer
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|protected
 name|ProducerInfo
 name|info
@@ -315,6 +350,7 @@ name|getProducerWindowSize
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Allows the options on the destination to configure the producerInfo
 if|if
 condition|(
 name|destination
@@ -364,6 +400,53 @@ argument_list|,
 literal|"producer."
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|options
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+name|String
+name|msg
+init|=
+literal|"There are "
+operator|+
+name|options
+operator|.
+name|size
+argument_list|()
+operator|+
+literal|" producer options that couldn't be set on the producer."
+operator|+
+literal|" Check the options are spelled correctly."
+operator|+
+literal|" Unknown parameters=["
+operator|+
+name|options
+operator|+
+literal|"]."
+operator|+
+literal|" This producer cannot be started."
+decl_stmt|;
+name|LOG
+operator|.
+name|warn
+argument_list|(
+name|msg
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|ConfigurationException
+argument_list|(
+name|msg
+argument_list|)
+throw|;
+block|}
 block|}
 name|this
 operator|.
@@ -545,7 +628,7 @@ return|return
 name|stats
 return|;
 block|}
-comment|/**      * Gets the destination associated with this<CODE>MessageProducer</CODE>.      *       * @return this producer's<CODE>Destination/<CODE>      * @throws JMSException if the JMS provider fails to close the producer due to      *                      some internal error.      * @since 1.1      */
+comment|/**      * Gets the destination associated with this<CODE>MessageProducer</CODE>.      *      * @return this producer's<CODE>Destination/<CODE>      * @throws JMSException if the JMS provider fails to close the producer due to      *                      some internal error.      * @since 1.1      */
 specifier|public
 name|Destination
 name|getDestination
@@ -565,7 +648,7 @@ name|getDestination
 argument_list|()
 return|;
 block|}
-comment|/**      * Closes the message producer.      *<P>      * Since a provider may allocate some resources on behalf of a<CODE>      * MessageProducer</CODE>      * outside the Java virtual machine, clients should close them when they are      * not needed. Relying on garbage collection to eventually reclaim these      * resources may not be timely enough.      *       * @throws JMSException if the JMS provider fails to close the producer due      *                 to some internal error.      */
+comment|/**      * Closes the message producer.      *<P>      * Since a provider may allocate some resources on behalf of a<CODE>      * MessageProducer</CODE>      * outside the Java virtual machine, clients should close them when they are      * not needed. Relying on garbage collection to eventually reclaim these      * resources may not be timely enough.      *      * @throws JMSException if the JMS provider fails to close the producer due      *                 to some internal error.      */
 specifier|public
 name|void
 name|close
@@ -635,7 +718,7 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Check if the instance of this producer has been closed.      *       * @throws IllegalStateException      */
+comment|/**      * Check if the instance of this producer has been closed.      *      * @throws IllegalStateException      */
 annotation|@
 name|Override
 specifier|protected
@@ -659,7 +742,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Sends a message to a destination for an unidentified message producer,      * specifying delivery mode, priority and time to live.      *<P>      * Typically, a message producer is assigned a destination at creation time;      * however, the JMS API also supports unidentified message producers, which      * require that the destination be supplied every time a message is sent.      *       * @param destination the destination to send this message to      * @param message the message to send      * @param deliveryMode the delivery mode to use      * @param priority the priority for this message      * @param timeToLive the message's lifetime (in milliseconds)      * @throws JMSException if the JMS provider fails to send the message due to      *                 some internal error.      * @throws UnsupportedOperationException if an invalid destination is      *                 specified.      * @throws InvalidDestinationException if a client uses this method with an      *                 invalid destination.      * @see javax.jms.Session#createProducer      * @since 1.1      */
+comment|/**      * Sends a message to a destination for an unidentified message producer,      * specifying delivery mode, priority and time to live.      *<P>      * Typically, a message producer is assigned a destination at creation time;      * however, the JMS API also supports unidentified message producers, which      * require that the destination be supplied every time a message is sent.      *      * @param destination the destination to send this message to      * @param message the message to send      * @param deliveryMode the delivery mode to use      * @param priority the priority for this message      * @param timeToLive the message's lifetime (in milliseconds)      * @throws JMSException if the JMS provider fails to send the message due to      *                 some internal error.      * @throws UnsupportedOperationException if an invalid destination is      *                 specified.      * @throws InvalidDestinationException if a client uses this method with an      *                 invalid destination.      * @see javax.jms.Session#createProducer      * @since 1.1      */
 specifier|public
 name|void
 name|send
