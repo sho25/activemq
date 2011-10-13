@@ -91,34 +91,6 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|MutexTransport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|ThreadNameFilter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
 name|Transport
 import|;
 end_import
@@ -274,7 +246,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  *   */
+comment|/**  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  */
 end_comment
 
 begin_class
@@ -467,6 +439,11 @@ name|location
 argument_list|)
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|Transport
 name|serverConfigure
@@ -494,6 +471,11 @@ name|options
 argument_list|)
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|Transport
 name|compositeConfigure

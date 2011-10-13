@@ -320,7 +320,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A servlet which handles server side HTTP transport, delegating to the  * ActiveMQ broker. This servlet is designed for being embedded inside an  * ActiveMQ Broker using an embedded Jetty or Tomcat instance.  *  *  */
+comment|/**  * A servlet which handles server side HTTP transport, delegating to the  * ActiveMQ broker. This servlet is designed for being embedded inside an  * ActiveMQ Broker using an embedded Jetty or Tomcat instance.  */
 end_comment
 
 begin_class
@@ -393,8 +393,18 @@ literal|30000L
 decl_stmt|;
 specifier|private
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|transportOptions
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 annotation|@
 name|Override
 specifier|public
@@ -469,6 +479,11 @@ name|transportOptions
 operator|=
 operator|(
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 operator|)
 name|getServletContext
 argument_list|()
@@ -1099,10 +1114,20 @@ try|try
 block|{
 comment|// Preserve the transportOptions for future use by making a copy before applying (they are removed when applied).
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|options
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 argument_list|(
 name|transportOptions
 argument_list|)
