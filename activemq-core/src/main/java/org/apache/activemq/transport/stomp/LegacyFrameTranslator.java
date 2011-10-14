@@ -1301,9 +1301,11 @@ block|{
 return|return
 name|converter
 operator|.
-name|createTempQueue
+name|createTempDestination
 argument_list|(
 name|name
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -1321,9 +1323,11 @@ block|{
 return|return
 name|converter
 operator|.
-name|createTempTopic
+name|createTempDestination
 argument_list|(
 name|name
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
