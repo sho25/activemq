@@ -1201,7 +1201,7 @@ operator|.
 name|getOptions
 argument_list|()
 argument_list|,
-literal|"producer."
+literal|"consumer."
 argument_list|)
 decl_stmt|;
 name|IntrospectionSupport
