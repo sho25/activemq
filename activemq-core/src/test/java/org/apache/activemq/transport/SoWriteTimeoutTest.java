@@ -673,6 +673,16 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|stompConnection
+operator|.
+name|getStompSocket
+argument_list|()
+operator|.
+name|setTcpNoDelay
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|String
 name|frame
 init|=
@@ -816,7 +826,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|100
+literal|200
 condition|;
 name|i
 operator|++
