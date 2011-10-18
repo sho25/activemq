@@ -543,8 +543,21 @@ name|equals
 argument_list|(
 name|uri
 argument_list|)
-operator|||
-operator|(
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"not connecting loopback: "
+operator|+
+name|uri
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+if|if
+condition|(
 name|connectionFilter
 operator|!=
 literal|null
@@ -556,14 +569,13 @@ name|connectTo
 argument_list|(
 name|uri
 argument_list|)
-operator|)
 condition|)
 block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"not connecting loopback: "
+literal|"connectionFilter disallows connection to: "
 operator|+
 name|uri
 argument_list|)

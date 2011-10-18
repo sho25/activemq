@@ -2858,7 +2858,16 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to start ActiveMQ JMS Message Broker. Reason: "
+literal|"Failed to start ActiveMQ JMS Message Broker ("
+operator|+
+name|getBrokerName
+argument_list|()
+operator|+
+literal|", "
+operator|+
+name|brokerId
+operator|+
+literal|"). Reason: "
 operator|+
 name|e
 argument_list|,
