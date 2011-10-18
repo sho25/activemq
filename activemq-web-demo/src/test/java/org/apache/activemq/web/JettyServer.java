@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple bootstrap class for starting Jetty in your IDE using the local web  * application.  *   *   */
+comment|/**  * A simple bootstrap class for starting Jetty in your IDE using the local web  * application.  *  *  */
 end_comment
 
 begin_class
@@ -177,14 +177,14 @@ name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://localhost:61616"
+literal|"tcp://localhost:0"
 argument_list|)
 expr_stmt|;
 name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"stomp://localhost:61613"
+literal|"stomp://localhost:0"
 argument_list|)
 expr_stmt|;
 name|broker
