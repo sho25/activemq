@@ -27,16 +27,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URI
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -133,20 +123,6 @@ name|BrokerService
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|TransportConnector
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -160,7 +136,7 @@ specifier|final
 name|String
 name|BROKER_URL
 init|=
-literal|"tcp://localhost:61216"
+literal|"tcp://localhost:0"
 decl_stmt|;
 comment|// The following text should compress well
 specifier|private
@@ -203,13 +179,17 @@ literal|"The quick red fox jumped over the lazy brown dog. "
 operator|+
 literal|"The quick red fox jumped over the lazy brown dog. "
 decl_stmt|;
-specifier|protected
+specifier|private
 name|BrokerService
 name|broker
 decl_stmt|;
 specifier|private
 name|ActiveMQQueue
 name|queue
+decl_stmt|;
+specifier|private
+name|String
+name|connectionUri
 decl_stmt|;
 specifier|protected
 name|void
@@ -224,30 +204,22 @@ operator|new
 name|BrokerService
 argument_list|()
 expr_stmt|;
-name|TransportConnector
-name|tc
-init|=
-operator|new
-name|TransportConnector
-argument_list|()
-decl_stmt|;
-name|tc
+name|connectionUri
+operator|=
+name|broker
 operator|.
-name|setUri
-argument_list|(
-operator|new
-name|URI
+name|addConnector
 argument_list|(
 name|BROKER_URL
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|tc
 operator|.
-name|setName
-argument_list|(
-literal|"tcp"
-argument_list|)
+name|getPublishableConnectString
+argument_list|()
+expr_stmt|;
+name|broker
+operator|.
+name|start
+argument_list|()
 expr_stmt|;
 name|queue
 operator|=
@@ -261,18 +233,6 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|broker
-operator|.
-name|addConnector
-argument_list|(
-name|tc
-argument_list|)
-expr_stmt|;
-name|broker
-operator|.
-name|start
-argument_list|()
 expr_stmt|;
 block|}
 specifier|protected
@@ -309,7 +269,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-name|BROKER_URL
+name|connectionUri
 argument_list|)
 decl_stmt|;
 name|factory
@@ -350,7 +310,7 @@ operator|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-name|BROKER_URL
+name|connectionUri
 argument_list|)
 expr_stmt|;
 name|factory
@@ -416,7 +376,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-name|BROKER_URL
+name|connectionUri
 argument_list|)
 decl_stmt|;
 name|factory
@@ -511,12 +471,20 @@ argument_list|,
 name|rcvString
 argument_list|)
 expr_stmt|;
+name|assertTrue
+argument_list|(
+name|message
+operator|.
+name|isCompressed
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|factory
 operator|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-name|BROKER_URL
+name|connectionUri
 argument_list|)
 expr_stmt|;
 name|factory
@@ -860,14 +828,6 @@ return|return
 name|rc
 return|;
 block|}
-comment|// public void testJavaUtilZip() throws Exception {
-comment|// String str = "When the going gets weird, the weird turn pro.";
-comment|// byte[] bytes = str.getBytes();
-comment|//
-comment|// ByteArrayOutputStream baos = new ByteArrayOutputStream(bytes.length);
-comment|// DeflaterOutputStream dos = new DeflaterOutputStream(baos);
-comment|// dos.
-comment|// }
 block|}
 end_class
 
