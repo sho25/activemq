@@ -742,6 +742,17 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
+if|if
+condition|(
+name|sendLock
+operator|.
+name|writeLock
+argument_list|()
+operator|.
+name|isHeldByCurrentThread
+argument_list|()
+condition|)
+block|{
 name|sendLock
 operator|.
 name|writeLock
@@ -750,6 +761,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
