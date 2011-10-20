@@ -134,7 +134,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Adds the extra methods available to text based wire format implementations  *   *   */
+comment|/**  * Adds the extra methods available to text based wire format implementations  *  *  */
 end_comment
 
 begin_class
@@ -153,6 +153,8 @@ parameter_list|(
 name|String
 name|text
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 specifier|public
 specifier|abstract
@@ -162,6 +164,8 @@ parameter_list|(
 name|Reader
 name|reader
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 specifier|public
 specifier|abstract
@@ -171,6 +175,8 @@ parameter_list|(
 name|Object
 name|command
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 specifier|public
 name|void
