@@ -4450,9 +4450,15 @@ block|}
 if|if
 condition|(
 operator|!
+name|configuration
+operator|.
+name|isAlwaysSyncSend
+argument_list|()
+operator|&&
+operator|!
 name|message
 operator|.
-name|isResponseRequired
+name|isPersistent
 argument_list|()
 condition|)
 block|{

@@ -155,6 +155,12 @@ name|suppressDuplicateTopicSubscriptions
 init|=
 literal|true
 decl_stmt|;
+specifier|private
+name|boolean
+name|alwaysSyncSend
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * @return the conduitSubscriptions      */
 specifier|public
 name|boolean
@@ -681,6 +687,31 @@ operator|.
 name|brokerURL
 operator|=
 name|brokerURL
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isAlwaysSyncSend
+parameter_list|()
+block|{
+return|return
+name|alwaysSyncSend
+return|;
+block|}
+comment|/**      * @param alwaysSyncSend  when true, both persistent and non persistent      * messages will be sent using a request. When false, non persistent messages      * are acked once the oneway send succeeds, which can potentially lead to      * message loss.      * Using an async request, allows multiple outstanding requests. This ensures      * that a bridge need not block all sending when the remote broker needs to      * flow control a single destination.      */
+specifier|public
+name|void
+name|setAlwaysSyncSend
+parameter_list|(
+name|boolean
+name|alwaysSyncSend
+parameter_list|)
+block|{
+name|this
+operator|.
+name|alwaysSyncSend
+operator|=
+name|alwaysSyncSend
 expr_stmt|;
 block|}
 block|}
