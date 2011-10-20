@@ -913,6 +913,16 @@ name|result
 init|=
 literal|false
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|started
+condition|)
+block|{
+return|return
+name|result
+return|;
+block|}
 name|boolean
 name|buildBackup
 init|=
