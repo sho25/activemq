@@ -3144,6 +3144,12 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
+name|context
+operator|.
+name|isNetworkConnection
+argument_list|()
+operator|&&
 name|systemUsage
 operator|.
 name|isSendFailIfNoSpace
@@ -3437,6 +3443,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|context
+operator|.
+name|isNetworkConnection
+argument_list|()
+operator|&&
 name|systemUsage
 operator|.
 name|getSendFailIfNoSpaceAfterTimeout

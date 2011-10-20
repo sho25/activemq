@@ -1757,6 +1757,12 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
+name|context
+operator|.
+name|isNetworkConnection
+argument_list|()
+operator|&&
 name|systemUsage
 operator|.
 name|isSendFailIfNoSpace
@@ -2352,6 +2358,12 @@ literal|" See http://activemq.apache.org/producer-flow-control.html for more inf
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|context
+operator|.
+name|isNetworkConnection
+argument_list|()
+operator|&&
 name|systemUsage
 operator|.
 name|isSendFailIfNoSpace
