@@ -101,16 +101,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -126,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  * Utility class that provides methods for parsing URI's  */
 end_comment
 
 begin_class
@@ -490,6 +480,12 @@ condition|(
 name|uri
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|uri
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|String
@@ -1818,6 +1814,11 @@ name|String
 name|createQueryString
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|options
 parameter_list|)
 throws|throws
@@ -1849,22 +1850,13 @@ literal|true
 decl_stmt|;
 for|for
 control|(
-name|Iterator
-name|iter
-init|=
+name|String
+name|key
+range|:
 name|options
 operator|.
 name|keySet
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
 if|if
@@ -1887,17 +1879,6 @@ literal|"&"
 argument_list|)
 expr_stmt|;
 block|}
-name|String
-name|key
-init|=
-operator|(
-name|String
-operator|)
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|String
 name|value
 init|=
@@ -1989,7 +1970,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Creates a URI from the original URI and the remaining paramaters      *       * @throws URISyntaxException      */
+comment|/**      * Creates a URI from the original URI and the remaining paramaters      *      * @throws URISyntaxException      */
 specifier|public
 specifier|static
 name|URI
@@ -1999,6 +1980,11 @@ name|URI
 name|originalURI
 parameter_list|,
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|params
 parameter_list|)
 throws|throws

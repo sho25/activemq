@@ -374,7 +374,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A ConnectionFactory is an an Administered object, and is used for creating  * Connections.<p/> This class also implements QueueConnectionFactory and  * TopicConnectionFactory. You can use this connection to create both  * QueueConnections and TopicConnections.  *   *   * @see javax.jms.ConnectionFactory  */
+comment|/**  * A ConnectionFactory is an an Administered object, and is used for creating  * Connections.<p/> This class also implements QueueConnectionFactory and  * TopicConnectionFactory. You can use this connection to create both  * QueueConnections and TopicConnections.  *  *  * @see javax.jms.ConnectionFactory  */
 end_comment
 
 begin_class
@@ -1041,7 +1041,7 @@ name|password
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a Transport based on this object's connection settings. Separated      * from createActiveMQConnection to allow for subclasses to override.      *       * @return The newly created Transport.      * @throws JMSException If unable to create trasnport.      * @author sepandm@gmail.com      */
+comment|/**      * Creates a Transport based on this object's connection settings. Separated      * from createActiveMQConnection to allow for subclasses to override.      *      * @return The newly created Transport.      * @throws JMSException If unable to create trasnport.      * @author sepandm@gmail.com      */
 specifier|protected
 name|Transport
 name|createTransport
@@ -1625,6 +1625,11 @@ comment|// It might be a standard URI or...
 try|try
 block|{
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|map
 init|=
 name|URISupport
@@ -1639,10 +1644,14 @@ name|getQuery
 argument_list|()
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|buildFromMap
-argument_list|(
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+name|jmsOptionsMap
+init|=
 name|IntrospectionSupport
 operator|.
 name|extractProperties
@@ -1651,9 +1660,54 @@ name|map
 argument_list|,
 literal|"jms."
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|buildFromMap
+argument_list|(
+name|jmsOptionsMap
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|jmsOptionsMap
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|String
+name|msg
+init|=
+literal|"There are "
+operator|+
+name|jmsOptionsMap
+operator|.
+name|size
+argument_list|()
+operator|+
+literal|" jms options that couldn't be set on the ConnectionFactory."
+operator|+
+literal|" Check the options are spelled correctly."
+operator|+
+literal|" Unknown parameters=["
+operator|+
+name|jmsOptionsMap
+operator|+
+literal|"]."
+operator|+
+literal|" This connection factory cannot be started."
+decl_stmt|;
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+name|msg
+argument_list|)
+throw|;
+block|}
 name|this
 operator|.
 name|brokerURL
@@ -1695,10 +1749,14 @@ operator|.
 name|brokerURL
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|buildFromMap
-argument_list|(
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+name|jmsOptionsMap
+init|=
 name|IntrospectionSupport
 operator|.
 name|extractProperties
@@ -1710,9 +1768,54 @@ argument_list|()
 argument_list|,
 literal|"jms."
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|buildFromMap
+argument_list|(
+name|jmsOptionsMap
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|jmsOptionsMap
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|String
+name|msg
+init|=
+literal|"There are "
+operator|+
+name|jmsOptionsMap
+operator|.
+name|size
+argument_list|()
+operator|+
+literal|" jms options that couldn't be set on the ConnectionFactory."
+operator|+
+literal|" Check the options are spelled correctly."
+operator|+
+literal|" Unknown parameters=["
+operator|+
+name|jmsOptionsMap
+operator|+
+literal|"]."
+operator|+
+literal|" This connection factory cannot be started."
+decl_stmt|;
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+name|msg
+argument_list|)
+throw|;
+block|}
 name|this
 operator|.
 name|brokerURL
@@ -1970,7 +2073,7 @@ operator|.
 name|alwaysSyncSend
 return|;
 block|}
-comment|/**      * Set true if always require messages to be sync sent      *       * @param alwaysSyncSend      */
+comment|/**      * Set true if always require messages to be sync sent      *      * @param alwaysSyncSend      */
 specifier|public
 name|void
 name|setAlwaysSyncSend
@@ -2045,7 +2148,7 @@ return|return
 name|exclusiveConsumer
 return|;
 block|}
-comment|/**      * Enables or disables whether or not queue consumers should be exclusive or      * not for example to preserve ordering when not using<a      * href="http://activemq.apache.org/message-groups.html">Message Groups</a>      *       * @param exclusiveConsumer      */
+comment|/**      * Enables or disables whether or not queue consumers should be exclusive or      * not for example to preserve ordering when not using<a      * href="http://activemq.apache.org/message-groups.html">Message Groups</a>      *      * @param exclusiveConsumer      */
 specifier|public
 name|void
 name|setExclusiveConsumer
@@ -2191,6 +2294,15 @@ operator|=
 name|transformer
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"unchecked"
+block|,
+literal|"rawtypes"
+block|}
+argument_list|)
 annotation|@
 name|Override
 specifier|public
@@ -2941,7 +3053,7 @@ return|return
 name|dispatchAsync
 return|;
 block|}
-comment|/**      * Enables or disables the default setting of whether or not consumers have      * their messages<a      * href="http://activemq.apache.org/consumer-dispatch-async.html">dispatched      * synchronously or asynchronously by the broker</a>. For non-durable      * topics for example we typically dispatch synchronously by default to      * minimize context switches which boost performance. However sometimes its      * better to go slower to ensure that a single blocked consumer socket does      * not block delivery to other consumers.      *       * @param asyncDispatch If true then consumers created on this connection      *                will default to having their messages dispatched      *                asynchronously. The default value is false.      */
+comment|/**      * Enables or disables the default setting of whether or not consumers have      * their messages<a      * href="http://activemq.apache.org/consumer-dispatch-async.html">dispatched      * synchronously or asynchronously by the broker</a>. For non-durable      * topics for example we typically dispatch synchronously by default to      * minimize context switches which boost performance. However sometimes its      * better to go slower to ensure that a single blocked consumer socket does      * not block delivery to other consumers.      *      * @param asyncDispatch If true then consumers created on this connection      *                will default to having their messages dispatched      *                asynchronously. The default value is false.      */
 specifier|public
 name|void
 name|setDispatchAsync
@@ -3094,7 +3206,7 @@ return|return
 name|clientIDPrefix
 return|;
 block|}
-comment|/**      * Sets the prefix used by autogenerated JMS Client ID values which are used      * if the JMS client does not explicitly specify on.      *       * @param clientIDPrefix      */
+comment|/**      * Sets the prefix used by autogenerated JMS Client ID values which are used      * if the JMS client does not explicitly specify on.      *      * @param clientIDPrefix      */
 specifier|public
 name|void
 name|setClientIDPrefix

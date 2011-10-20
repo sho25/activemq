@@ -90,7 +90,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simple BrokerFactorySPI which using the brokerURI to extract the  * configuration parameters for the broker service. This directly configures the  * pojo model so there is no dependency on spring for configuration.  *   *   */
+comment|/**  * Simple BrokerFactorySPI which using the brokerURI to extract the  * configuration parameters for the broker service. This directly configures the  * pojo model so there is no dependency on spring for configuration.  *  *  */
 end_comment
 
 begin_class
@@ -158,6 +158,45 @@ argument_list|,
 name|params
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|params
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|String
+name|msg
+init|=
+literal|"There are "
+operator|+
+name|params
+operator|.
+name|size
+argument_list|()
+operator|+
+literal|" Broker options that couldn't be set on the BrokerService."
+operator|+
+literal|" Check the options are spelled correctly."
+operator|+
+literal|" Unknown parameters=["
+operator|+
+name|params
+operator|+
+literal|"]."
+operator|+
+literal|" This BrokerService cannot be started."
+decl_stmt|;
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+name|msg
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|compositeData
