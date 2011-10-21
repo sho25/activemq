@@ -39,6 +39,20 @@ name|ActiveMQDestination
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ConsumerInfo
+import|;
+end_import
+
 begin_comment
 comment|/**  * Configuration for a NetworkBridge  *   *   */
 end_comment
@@ -67,6 +81,14 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|decreaseNetworkConsumerPriority
+decl_stmt|;
+specifier|private
+name|int
+name|consumerPriorityBase
+init|=
+name|ConsumerInfo
+operator|.
+name|NETWORK_CONSUMER_PRIORITY
 decl_stmt|;
 specifier|private
 name|boolean
@@ -712,6 +734,31 @@ operator|.
 name|alwaysSyncSend
 operator|=
 name|alwaysSyncSend
+expr_stmt|;
+block|}
+specifier|public
+name|int
+name|getConsumerPriorityBase
+parameter_list|()
+block|{
+return|return
+name|consumerPriorityBase
+return|;
+block|}
+comment|/**      * @param consumerPriorityBase , default -5. Sets the starting priority      * for consumers. This base value will be decremented by the length of the      * broker path when decreaseNetworkConsumerPriority is set.      */
+specifier|public
+name|void
+name|setConsumerPriorityBase
+parameter_list|(
+name|int
+name|consumerPriorityBase
+parameter_list|)
+block|{
+name|this
+operator|.
+name|consumerPriorityBase
+operator|=
+name|consumerPriorityBase
 expr_stmt|;
 block|}
 block|}
