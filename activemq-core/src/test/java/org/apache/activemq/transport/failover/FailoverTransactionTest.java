@@ -35,18 +35,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|ActiveMQConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|ActiveMQConnectionFactory
 import|;
 end_import
@@ -3663,7 +3651,7 @@ control|)
 block|{
 name|assertNotNull
 argument_list|(
-literal|"we got all the message: "
+literal|"Failed to get message: "
 operator|+
 name|count
 argument_list|,
@@ -3688,7 +3676,7 @@ argument_list|()
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"connectionconsumer got a message"
+literal|"connectionconsumer did not get a message"
 argument_list|,
 name|connectionConsumerGotOne
 operator|.
