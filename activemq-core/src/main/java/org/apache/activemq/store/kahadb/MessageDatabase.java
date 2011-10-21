@@ -2848,6 +2848,11 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// public for testing
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|Location
 name|getFirstInProgressTxLocation
@@ -5120,6 +5125,10 @@ block|}
 block|}
 if|if
 condition|(
+name|checkpointThread
+operator|==
+literal|null
+operator|||
 operator|!
 name|checkpointThread
 operator|.
@@ -5614,6 +5623,11 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|protected
 name|void
 name|process
@@ -5736,6 +5750,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|protected
 name|void
 name|process
@@ -6107,6 +6126,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|protected
 name|void
 name|process
@@ -6277,6 +6301,11 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|protected
 name|void
 name|process
@@ -6338,6 +6367,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|protected
 name|void
 name|process
@@ -6417,6 +6451,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|private
 name|void
 name|persistRedeliveryCount
@@ -9208,7 +9247,7 @@ name|metadata
 operator|.
 name|version
 operator|>=
-literal|3
+name|VERSION
 condition|)
 block|{
 name|value
@@ -12068,6 +12107,11 @@ block|}
 comment|// /////////////////////////////////////////////////////////////////
 comment|// Transaction related implementation methods.
 comment|// /////////////////////////////////////////////////////////////////
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|private
 specifier|final
 name|LinkedHashMap
@@ -12093,6 +12137,11 @@ argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|protected
 specifier|final
 name|LinkedHashMap
@@ -12266,6 +12315,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|private
 name|List
 argument_list|<
