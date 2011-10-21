@@ -773,6 +773,21 @@ name|matchAll
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|MessageDatabase
+operator|.
+name|DEFAULT_DIRECTORY
+operator|.
+name|equals
+argument_list|(
+name|adapter
+operator|.
+name|getDirectory
+argument_list|()
+argument_list|)
+condition|)
+block|{
 name|adapter
 operator|.
 name|setDirectory
@@ -793,6 +808,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// need a per store factory that will put the store in the branch qualifier to disiambiguate xid mbeans
 name|adapter
 operator|.
