@@ -625,7 +625,6 @@ name|getOutputStream
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// while( packet !=null ) {
 name|wireFormat
 operator|.
 name|marshal
@@ -638,9 +637,6 @@ expr_stmt|;
 name|count
 operator|++
 expr_stmt|;
-comment|// packet = (Command) transportChannel.getQueue().poll(0,
-comment|// TimeUnit.MILLISECONDS);
-comment|// }
 block|}
 catch|catch
 parameter_list|(
@@ -794,7 +790,6 @@ name|int
 name|version
 parameter_list|)
 block|{
-comment|// TODO:
 return|return
 literal|true
 return|;

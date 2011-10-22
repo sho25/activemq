@@ -133,9 +133,9 @@ name|jetty
 operator|.
 name|server
 operator|.
-name|handler
+name|session
 operator|.
-name|ContextHandler
+name|SessionHandler
 import|;
 end_import
 
@@ -147,11 +147,9 @@ name|eclipse
 operator|.
 name|jetty
 operator|.
-name|server
+name|servlet
 operator|.
-name|session
-operator|.
-name|SessionHandler
+name|ServletContextHandler
 import|;
 end_import
 
@@ -298,11 +296,11 @@ name|connector
 block|}
 argument_list|)
 expr_stmt|;
-name|ContextHandler
+name|ServletContextHandler
 name|contextHandler
 init|=
 operator|new
-name|ContextHandler
+name|ServletContextHandler
 argument_list|()
 decl_stmt|;
 name|contextHandler

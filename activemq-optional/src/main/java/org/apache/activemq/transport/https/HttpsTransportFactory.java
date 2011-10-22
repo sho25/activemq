@@ -178,7 +178,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Factory of HTTPS based transports  *   *   */
+comment|/**  * Factory of HTTPS based transports  */
 end_comment
 
 begin_class

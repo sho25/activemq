@@ -104,7 +104,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * Handle connection upgrade requests and creates web sockets  *  */
+comment|/**  * Handle connection upgrade requests and creates web sockets  */
 end_comment
 
 begin_class
@@ -199,7 +199,9 @@ name|response
 argument_list|)
 expr_stmt|;
 block|}
-specifier|protected
+annotation|@
+name|Override
+specifier|public
 name|WebSocket
 name|doWebSocketConnect
 parameter_list|(

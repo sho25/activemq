@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements. See the NOTICE file distributed with this  * work for additional information regarding copyright ownership. The ASF  * licenses this file to you under the Apache License, Version 2.0 (the  * "License"); you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *   * http://www.apache.org/licenses/LICENSE-2.0  *   * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the  * License for the specific language governing permissions and limitations under  * the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements. See the NOTICE file distributed with this  * work for additional information regarding copyright ownership. The ASF  * licenses this file to you under the Apache License, Version 2.0 (the  * "License"); you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the  * License for the specific language governing permissions and limitations under  * the License.  */
 end_comment
 
 begin_package
@@ -33,7 +33,7 @@ name|java
 operator|.
 name|net
 operator|.
-name|InetAddress
+name|ServerSocket
 import|;
 end_import
 
@@ -41,9 +41,29 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
+name|security
 operator|.
-name|ServerSocket
+name|KeyManagementException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|security
+operator|.
+name|NoSuchAlgorithmException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|security
+operator|.
+name|NoSuchProviderException
 import|;
 end_import
 
@@ -119,18 +139,6 @@ name|net
 operator|.
 name|ssl
 operator|.
-name|SSLServerSocketFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|net
-operator|.
-name|ssl
-operator|.
 name|SSLSocket
 import|;
 end_import
@@ -166,6 +174,22 @@ operator|.
 name|http
 operator|.
 name|HttpSchemes
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jetty
+operator|.
+name|http
+operator|.
+name|ssl
+operator|.
+name|SslContextFactory
 import|;
 end_import
 
@@ -230,7 +254,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Extend Jetty's {@link SslSocketConnector} to optionally also provide   * Kerberos5ized SSL sockets.  The only change in behavior from superclass  * is that we no longer honor requests to turn off NeedAuthentication when  * running with Kerberos support.  */
+comment|/**  * Extend Jetty's {@link SslSocketConnector} to optionally also provide  * Kerberos5ized SSL sockets. The only change in behavior from superclass is  * that we no longer honor requests to turn off NeedAuthentication when running  * with Kerberos support.  */
 end_comment
 
 begin_class
@@ -456,29 +480,50 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// @Override
+comment|// protected SSLServerSocketFactory createFactory() throws Exception {
+comment|// if(useCerts)
+comment|// return super.createFactory();
+comment|//
+comment|// SSLContext context = super.getProvider()==null
+comment|// ? SSLContext.getInstance(super.getProtocol())
+comment|// :SSLContext.getInstance(super.getProtocol(), super.getProvider());
+comment|// context.init(null, null, null);
+comment|//
+comment|// System.err.println("Creating socket factory");
+comment|// return context.getServerSocketFactory();
+comment|// }
 annotation|@
 name|Override
-specifier|protected
-name|SSLServerSocketFactory
-name|createFactory
+specifier|public
+name|SslContextFactory
+name|getSslContextFactory
 parameter_list|()
-throws|throws
-name|Exception
 block|{
+specifier|final
+name|SslContextFactory
+name|factory
+init|=
+name|super
+operator|.
+name|getSslContextFactory
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|useCerts
 condition|)
+block|{
 return|return
-name|super
-operator|.
-name|createFactory
-argument_list|()
+name|factory
 return|;
+block|}
+try|try
+block|{
 name|SSLContext
 name|context
 init|=
-name|super
+name|factory
 operator|.
 name|getProvider
 argument_list|()
@@ -489,7 +534,7 @@ name|SSLContext
 operator|.
 name|getInstance
 argument_list|(
-name|super
+name|factory
 operator|.
 name|getProtocol
 argument_list|()
@@ -499,12 +544,12 @@ name|SSLContext
 operator|.
 name|getInstance
 argument_list|(
-name|super
+name|factory
 operator|.
 name|getProtocol
 argument_list|()
 argument_list|,
-name|super
+name|factory
 operator|.
 name|getProvider
 argument_list|()
@@ -521,23 +566,37 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|System
+name|factory
 operator|.
-name|err
-operator|.
-name|println
+name|setSslContext
 argument_list|(
-literal|"Creating socket factory"
+name|context
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NoSuchAlgorithmException
+name|e
+parameter_list|)
+block|{         }
+catch|catch
+parameter_list|(
+name|NoSuchProviderException
+name|e
+parameter_list|)
+block|{         }
+catch|catch
+parameter_list|(
+name|KeyManagementException
+name|e
+parameter_list|)
+block|{         }
 return|return
-name|context
-operator|.
-name|getServerSocketFactory
-argument_list|()
+name|factory
 return|;
 block|}
-comment|/* (non-Javadoc)    * @see org.mortbay.jetty.security.SslSocketConnector#newServerSocket(java.lang.String, int, int)    */
+comment|/*      * (non-Javadoc)      *      * @see      * org.mortbay.jetty.security.SslSocketConnector#newServerSocket(java.lang      * .String, int, int)      */
 annotation|@
 name|Override
 specifier|protected
@@ -607,40 +666,18 @@ try|try
 block|{
 name|ss
 operator|=
-call|(
+operator|(
 name|SSLServerSocket
-call|)
+operator|)
+name|super
+operator|.
+name|newServerSocket
 argument_list|(
 name|host
-operator|==
-literal|null
-condition|?
-name|createFactory
-argument_list|()
-operator|.
-name|createServerSocket
-argument_list|(
+argument_list|,
 name|port
 argument_list|,
 name|backlog
-argument_list|)
-else|:
-name|createFactory
-argument_list|()
-operator|.
-name|createServerSocket
-argument_list|(
-name|port
-argument_list|,
-name|backlog
-argument_list|,
-name|InetAddress
-operator|.
-name|getByName
-argument_list|(
-name|host
-argument_list|)
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -880,7 +917,8 @@ operator|!
 name|useCerts
 condition|)
 block|{
-comment|// Add extra info that would have been added by super
+comment|// Add extra info that would have been added by
+comment|// super
 name|String
 name|cipherSuite
 init|=

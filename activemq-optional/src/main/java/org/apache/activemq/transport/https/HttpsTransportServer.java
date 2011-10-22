@@ -156,14 +156,20 @@ expr_stmt|;
 block|}
 name|sslConnector
 operator|.
-name|setKeystore
+name|getSslContextFactory
+argument_list|()
+operator|.
+name|setKeyStore
 argument_list|(
 name|keyStore
 argument_list|)
 expr_stmt|;
 name|sslConnector
 operator|.
-name|setPassword
+name|getSslContextFactory
+argument_list|()
+operator|.
+name|setKeyStorePassword
 argument_list|(
 name|keyStorePassword
 argument_list|)
@@ -179,7 +185,10 @@ condition|)
 block|{
 name|sslConnector
 operator|.
-name|setKeyPassword
+name|getSslContextFactory
+argument_list|()
+operator|.
+name|setKeyStorePassword
 argument_list|(
 name|keyStorePassword
 argument_list|)
@@ -194,7 +203,10 @@ condition|)
 block|{
 name|sslConnector
 operator|.
-name|setKeystoreType
+name|getSslContextFactory
+argument_list|()
+operator|.
+name|setKeyStoreType
 argument_list|(
 name|keyStoreType
 argument_list|)
@@ -208,6 +220,9 @@ literal|null
 condition|)
 block|{
 name|sslConnector
+operator|.
+name|getSslContextFactory
+argument_list|()
 operator|.
 name|setSecureRandomAlgorithm
 argument_list|(
@@ -224,6 +239,9 @@ condition|)
 block|{
 name|sslConnector
 operator|.
+name|getSslContextFactory
+argument_list|()
+operator|.
 name|setSslKeyManagerFactoryAlgorithm
 argument_list|(
 name|keyCertificateAlgorithm
@@ -239,7 +257,10 @@ condition|)
 block|{
 name|sslConnector
 operator|.
-name|setSslTrustManagerFactoryAlgorithm
+name|getSslContextFactory
+argument_list|()
+operator|.
+name|setTrustManagerFactoryAlgorithm
 argument_list|(
 name|trustCertificateAlgorithm
 argument_list|)
@@ -253,6 +274,9 @@ literal|null
 condition|)
 block|{
 name|sslConnector
+operator|.
+name|getSslContextFactory
+argument_list|()
 operator|.
 name|setProtocol
 argument_list|(
@@ -465,7 +489,7 @@ operator|=
 name|trustCertificateAlgorithm
 expr_stmt|;
 block|}
-comment|/** 	 * @return the auth 	 */
+comment|/**      * @return the auth      */
 specifier|public
 name|String
 name|getAuth
@@ -475,7 +499,7 @@ return|return
 name|auth
 return|;
 block|}
-comment|/** 	 * @param auth the auth to set 	 */
+comment|/**      * @param auth the auth to set      */
 specifier|public
 name|void
 name|setAuth

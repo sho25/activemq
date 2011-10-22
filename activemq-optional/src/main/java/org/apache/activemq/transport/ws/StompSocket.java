@@ -204,7 +204,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * Implements web socket and mediates between servlet and the broker  *  */
+comment|/**  * Implements web socket and mediates between servlet and the broker  */
 end_comment
 
 begin_class
@@ -214,10 +214,12 @@ extends|extends
 name|TransportSupport
 implements|implements
 name|WebSocket
+operator|.
+name|OnTextMessage
 implements|,
 name|StompTransport
 block|{
-name|Outbound
+name|Connection
 name|outbound
 decl_stmt|;
 name|ProtocolConverter
@@ -238,46 +240,42 @@ operator|new
 name|StompWireFormat
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
-name|onConnect
+name|onOpen
 parameter_list|(
-name|Outbound
-name|outbound
+name|Connection
+name|connection
 parameter_list|)
 block|{
 name|this
 operator|.
 name|outbound
 operator|=
-name|outbound
+name|connection
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
-name|onMessage
+name|onClose
 parameter_list|(
-name|byte
-name|frame
-parameter_list|,
-name|byte
-index|[]
-name|data
-parameter_list|,
 name|int
-name|offset
+name|closeCode
 parameter_list|,
-name|int
-name|length
+name|String
+name|message
 parameter_list|)
-block|{}
+block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
 parameter_list|(
-name|byte
-name|frame
-parameter_list|,
 name|String
 name|data
 parameter_list|)
@@ -327,11 +325,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|public
-name|void
-name|onDisconnect
-parameter_list|()
-block|{     }
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStart
@@ -339,6 +334,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStop
@@ -349,6 +346,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getReceiveCounter
@@ -358,6 +357,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getRemoteAddress
@@ -372,6 +373,8 @@ name|hashCode
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|oneway
@@ -413,6 +416,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|X509Certificate
 index|[]
@@ -423,6 +428,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|sendToActiveMQ
@@ -437,6 +444,8 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|sendToStomp
@@ -451,10 +460,6 @@ name|outbound
 operator|.
 name|sendMessage
 argument_list|(
-name|WebSocket
-operator|.
-name|SENTINEL_FRAME
-argument_list|,
 name|command
 operator|.
 name|format
