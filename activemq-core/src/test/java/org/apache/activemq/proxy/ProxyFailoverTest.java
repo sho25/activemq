@@ -81,6 +81,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -311,7 +323,6 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-comment|//ActiveMQConnectionFactory consumerFactory = new ActiveMQConnectionFactory("tcp://localhost:51618?wireFormat.cacheEnabled=false");
 name|ActiveMQConnectionFactory
 name|consumerFactory
 init|=
@@ -369,13 +380,13 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|Thread
+name|TimeUnit
+operator|.
+name|SECONDS
 operator|.
 name|sleep
 argument_list|(
-literal|10
-operator|*
-literal|1000
+literal|15
 argument_list|)
 expr_stmt|;
 name|remoteBroker
