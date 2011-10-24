@@ -5126,9 +5126,9 @@ block|}
 if|if
 condition|(
 name|checkpointThread
-operator|==
+operator|!=
 literal|null
-operator|||
+operator|&&
 operator|!
 name|checkpointThread
 operator|.
