@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/** gxfdgvdfg * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -350,7 +350,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the {@link Transport} interface using raw tcp/ip  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  *   */
+comment|/**  * An implementation of the {@link Transport} interface using raw tcp/ip  *  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  *  */
 end_comment
 
 begin_class
@@ -573,7 +573,7 @@ specifier|volatile
 name|int
 name|receiveCounter
 decl_stmt|;
-comment|/**      * Connect to a remote Node - e.g. a Broker      *       * @param wireFormat      * @param socketFactory      * @param remoteLocation      * @param localLocation - e.g. local InetAddress and local port      * @throws IOException      * @throws UnknownHostException      */
+comment|/**      * Connect to a remote Node - e.g. a Broker      *      * @param wireFormat      * @param socketFactory      * @param remoteLocation      * @param localLocation - e.g. local InetAddress and local port      * @throws IOException      * @throws UnknownHostException      */
 specifier|public
 name|TcpTransport
 parameter_list|(
@@ -649,7 +649,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Initialize from a server Socket      *       * @param wireFormat      * @param socket      * @throws IOException      */
+comment|/**      * Initialize from a server Socket      *      * @param wireFormat      * @param socket      * @throws IOException      */
 specifier|public
 name|TcpTransport
 parameter_list|(
@@ -1433,7 +1433,7 @@ return|return
 name|host
 return|;
 block|}
-comment|/**      * Configures the socket for use      *       * @param sock      * @throws SocketException, IllegalArgumentException if setting the options      *         on the socket failed.      */
+comment|/**      * Configures the socket for use      *      * @param sock      * @throws SocketException, IllegalArgumentException if setting the options      *         on the socket failed.      */
 specifier|protected
 name|void
 name|initialiseSocket
@@ -1958,6 +1958,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -1967,6 +1975,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
@@ -1980,6 +1989,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|latch
 operator|.
 name|await
@@ -1991,6 +2002,22 @@ operator|.
 name|SECONDS
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
