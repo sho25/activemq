@@ -293,6 +293,10 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_comment
+comment|/**  * This test covers the Message Compression feature of the ActiveMQConnectionFactory.setUseCompression  * and has no relation to Http transport level compression.  The Messages are compressed using the  * deflate algorithm by the ActiveMQ layer before marshalled to XML so only the Message body will  * be compressed.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
