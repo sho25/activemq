@@ -1683,7 +1683,7 @@ literal|null
 expr_stmt|;
 name|ASYNC_TASKS
 operator|.
-name|shutdownNow
+name|shutdown
 argument_list|()
 expr_stmt|;
 name|ASYNC_TASKS
