@@ -53,6 +53,52 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|policy
+operator|.
+name|DeadLetterStrategy
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQDestination
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQMessage
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|Message
@@ -80,7 +126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Broker interceptor which updates a JMS Client's timestamp on the message  * with a broker timestamp. Useful when the clocks on client machines are known  * to not be correct and you can only trust the time set on the broker machines.  *   * Enabling this plugin will break JMS compliance since the timestamp that the  * producer sees on the messages after as send() will be different from the  * timestamp the consumer will observe when he receives the message. This plugin  * is not enabled in the default ActiveMQ configuration.  *   * 2 new attributes have been added which will allow the administrator some override control  * over the expiration time for incoming messages:  *  * Attribute 'zeroExpirationOverride' can be used to apply an expiration  * time to incoming messages with no expiration defined (messages that would never expire)  *  * Attribute 'ttlCeiling' can be used to apply a limit to the expiration time  *  * @org.apache.xbean.XBean element="timeStampingBrokerPlugin"  *   *   */
+comment|/**  * A Broker interceptor which updates a JMS Client's timestamp on the message  * with a broker timestamp. Useful when the clocks on client machines are known  * to not be correct and you can only trust the time set on the broker machines.  *  * Enabling this plugin will break JMS compliance since the timestamp that the  * producer sees on the messages after as send() will be different from the  * timestamp the consumer will observe when he receives the message. This plugin  * is not enabled in the default ActiveMQ configuration.  *  * 2 new attributes have been added which will allow the administrator some override control  * over the expiration time for incoming messages:  *  * Attribute 'zeroExpirationOverride' can be used to apply an expiration  * time to incoming messages with no expiration defined (messages that would never expire)  *  * Attribute 'ttlCeiling' can be used to apply a limit to the expiration time  *  * @org.apache.xbean.XBean element="timeStampingBrokerPlugin"  *  *  */
 end_comment
 
 begin_class
@@ -105,13 +151,13 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * variable which (when non-zero) is used to override     * the expiration date for messages that arrive with     * no expiration date set (in Milliseconds).     */
+comment|/**     * variable which (when non-zero) is used to override     * the expiration date for messages that arrive with     * no expiration date set (in Milliseconds).     */
 name|long
 name|zeroExpirationOverride
 init|=
 literal|0
 decl_stmt|;
-comment|/**      * variable which (when non-zero) is used to limit     * the expiration date (in Milliseconds).       */
+comment|/**     * variable which (when non-zero) is used to limit     * the expiration date (in Milliseconds).     */
 name|long
 name|ttlCeiling
 init|=
@@ -129,7 +175,7 @@ name|processNetworkMessages
 init|=
 literal|false
 decl_stmt|;
-comment|/**      * setter method for zeroExpirationOverride     */
+comment|/**     * setter method for zeroExpirationOverride     */
 specifier|public
 name|void
 name|setZeroExpirationOverride
@@ -145,7 +191,7 @@ operator|=
 name|ttl
 expr_stmt|;
 block|}
-comment|/**      * setter method for ttlCeiling     */
+comment|/**     * setter method for ttlCeiling     */
 specifier|public
 name|void
 name|setTtlCeiling
@@ -214,6 +260,12 @@ name|getTimestamp
 argument_list|()
 operator|>
 literal|0
+operator|&&
+operator|!
+name|isDestinationDLQ
+argument_list|(
+name|message
+argument_list|)
 operator|&&
 operator|(
 name|processNetworkMessages
@@ -309,7 +361,8 @@ name|timeToLive
 operator|+
 name|newTimeStamp
 decl_stmt|;
-comment|//In the scenario that the Broker is behind the clients we never want to set the Timestamp and Expiration in the past
+comment|// In the scenario that the Broker is behind the clients we never want to set the
+comment|// Timestamp and Expiration in the past
 if|if
 condition|(
 operator|!
@@ -388,6 +441,114 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
+block|}
+specifier|private
+name|boolean
+name|isDestinationDLQ
+parameter_list|(
+name|Message
+name|message
+parameter_list|)
+block|{
+name|DeadLetterStrategy
+name|deadLetterStrategy
+decl_stmt|;
+name|Message
+name|tmp
+decl_stmt|;
+if|if
+condition|(
+name|message
+operator|!=
+literal|null
+operator|&&
+name|message
+operator|.
+name|getRegionDestination
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|deadLetterStrategy
+operator|=
+name|message
+operator|.
+name|getRegionDestination
+argument_list|()
+operator|.
+name|getDeadLetterStrategy
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|deadLetterStrategy
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// Cheap copy, since we only need two fields
+name|tmp
+operator|=
+operator|new
+name|ActiveMQMessage
+argument_list|()
+expr_stmt|;
+name|tmp
+operator|.
+name|setDestination
+argument_list|(
+name|message
+operator|.
+name|getOriginalDestination
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|tmp
+operator|.
+name|setRegionDestination
+argument_list|(
+name|message
+operator|.
+name|getRegionDestination
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Determine if we are headed for a DLQ
+name|ActiveMQDestination
+name|deadLetterDestination
+init|=
+name|deadLetterStrategy
+operator|.
+name|getDeadLetterQueueFor
+argument_list|(
+name|tmp
+argument_list|,
+literal|null
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|deadLetterDestination
+operator|.
+name|equals
+argument_list|(
+name|message
+operator|.
+name|getDestination
+argument_list|()
+argument_list|)
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+block|}
+block|}
+return|return
+literal|false
+return|;
 block|}
 block|}
 end_class
