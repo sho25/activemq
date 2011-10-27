@@ -5675,30 +5675,33 @@ name|isTransacted
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
 name|LOG
 operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|debug
+name|warn
 argument_list|(
+literal|"Duplicate dispatch on connection: "
+operator|+
+name|session
+operator|.
+name|getConnection
+argument_list|()
+operator|.
+name|getConnectionInfo
+argument_list|()
+operator|.
+name|getConnectionId
+argument_list|()
+operator|+
+literal|" to consumer: "
+operator|+
 name|getConsumerId
 argument_list|()
 operator|+
-literal|" ignoring (auto acking) duplicate: "
+literal|", ignoring (auto acking) duplicate: "
 operator|+
 name|md
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|MessageAck
 name|ack
 init|=
@@ -5709,7 +5712,7 @@ name|md
 argument_list|,
 name|MessageAck
 operator|.
-name|STANDARD_ACK_TYPE
+name|INDIVIDUAL_ACK_TYPE
 argument_list|,
 literal|1
 argument_list|)
@@ -5796,21 +5799,6 @@ condition|(
 name|needsPoisonAck
 condition|)
 block|{
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"acking duplicate delivery as poison, redelivery must be pending to another"
-operator|+
-literal|" consumer on this connection, failoverRedeliveryWaitPeriod="
-operator|+
-name|failoverRedeliveryWaitPeriod
-operator|+
-literal|". Message: "
-operator|+
-name|md
-argument_list|)
-expr_stmt|;
 name|MessageAck
 name|poisonAck
 init|=
@@ -5837,6 +5825,47 @@ argument_list|()
 operator|.
 name|getMessageId
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|poisonAck
+operator|.
+name|setPoisonCause
+argument_list|(
+operator|new
+name|JMSException
+argument_list|(
+literal|"Duplicate dispatch with transacted redeliver pending on another consumer, connection: "
+operator|+
+name|session
+operator|.
+name|getConnection
+argument_list|()
+operator|.
+name|getConnectionInfo
+argument_list|()
+operator|.
+name|getConnectionId
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"acking duplicate delivery as poison, redelivery must be pending to another"
+operator|+
+literal|" consumer on this connection, failoverRedeliveryWaitPeriod="
+operator|+
+name|failoverRedeliveryWaitPeriod
+operator|+
+literal|". Message: "
+operator|+
+name|md
+operator|+
+literal|", poisonAck: "
+operator|+
+name|poisonAck
 argument_list|)
 expr_stmt|;
 name|session

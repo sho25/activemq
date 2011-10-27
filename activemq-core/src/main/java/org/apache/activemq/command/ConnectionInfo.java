@@ -96,13 +96,13 @@ init|=
 literal|false
 decl_stmt|;
 specifier|protected
+name|boolean
+name|failoverReconnect
+decl_stmt|;
+specifier|protected
 specifier|transient
 name|Object
 name|transportContext
-decl_stmt|;
-specifier|private
-name|boolean
-name|failoverReconnect
 decl_stmt|;
 specifier|public
 name|ConnectionInfo
