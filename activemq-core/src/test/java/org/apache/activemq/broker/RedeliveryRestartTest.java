@@ -231,6 +231,13 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|kahaDBPersistenceAdapter
+operator|.
+name|setCleanupInterval
+argument_list|(
+literal|500
+argument_list|)
+expr_stmt|;
 name|broker
 operator|.
 name|addConnector
