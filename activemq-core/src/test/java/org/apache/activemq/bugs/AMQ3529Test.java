@@ -23,31 +23,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
+name|*
 import|;
 end_import
 
@@ -385,7 +361,18 @@ parameter_list|(
 name|JMSException
 name|e
 parameter_list|)
-block|{ 				}
+block|{                 }
+name|assertTrue
+argument_list|(
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|isInterrupted
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 decl_stmt|;
