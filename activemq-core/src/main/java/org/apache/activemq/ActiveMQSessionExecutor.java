@@ -124,7 +124,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A utility class used by the Session for dispatching messages asynchronously  * to consumers  *   *   * @see javax.jms.Session  */
+comment|/**  * A utility class used by the Session for dispatching messages asynchronously  * to consumers  *  * @see javax.jms.Session  */
 end_comment
 
 begin_class
@@ -822,6 +822,9 @@ return|;
 block|}
 block|}
 name|List
+argument_list|<
+name|MessageDispatch
+argument_list|>
 name|getUnconsumedMessages
 parameter_list|()
 block|{
