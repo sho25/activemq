@@ -78,6 +78,11 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 class|class
 name|ClassLoadingAwareObjectInputStream
@@ -97,7 +102,7 @@ operator|.
 name|getClassLoader
 argument_list|()
 decl_stmt|;
-comment|/**<p>Maps primitive type names to corresponding class objects.</p> */
+comment|/**      * Maps primitive type names to corresponding class objects.      */
 specifier|private
 specifier|static
 specifier|final
@@ -139,6 +144,9 @@ expr_stmt|;
 block|}
 specifier|protected
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|resolveClass
 parameter_list|(
 name|ObjectStreamClass
@@ -174,6 +182,9 @@ return|;
 block|}
 specifier|protected
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|resolveProxyClass
 parameter_list|(
 name|String
@@ -248,13 +259,7 @@ name|Proxy
 operator|.
 name|getProxyClass
 argument_list|(
-name|cinterfaces
-index|[
-literal|0
-index|]
-operator|.
-name|getClassLoader
-argument_list|()
+name|cl
 argument_list|,
 name|cinterfaces
 argument_list|)
@@ -266,6 +271,25 @@ name|IllegalArgumentException
 name|e
 parameter_list|)
 block|{
+try|try
+block|{
+return|return
+name|Proxy
+operator|.
+name|getProxyClass
+argument_list|(
+name|FALLBACK_CLASS_LOADER
+argument_list|,
+name|cinterfaces
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e1
+parameter_list|)
+block|{             }
 throw|throw
 operator|new
 name|ClassNotFoundException
@@ -279,6 +303,9 @@ block|}
 block|}
 specifier|private
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|load
 parameter_list|(
 name|String
@@ -313,10 +340,16 @@ parameter_list|)
 block|{
 specifier|final
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|clazz
 init|=
 operator|(
 name|Class
+argument_list|<
+name|?
+argument_list|>
 operator|)
 name|primClasses
 operator|.
