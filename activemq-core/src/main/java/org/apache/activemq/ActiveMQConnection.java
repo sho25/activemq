@@ -1627,6 +1627,12 @@ name|transactedIndividualAck
 init|=
 literal|false
 decl_stmt|;
+specifier|private
+name|boolean
+name|nonBlockingRedelivery
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * Construct an<code>ActiveMQConnection</code>      *      * @param transport      * @param factoryStats      * @throws Exception      */
 specifier|protected
 name|ActiveMQConnection
@@ -8535,6 +8541,30 @@ operator|.
 name|transactedIndividualAck
 operator|=
 name|transactedIndividualAck
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isNonBlockingRedelivery
+parameter_list|()
+block|{
+return|return
+name|nonBlockingRedelivery
+return|;
+block|}
+specifier|public
+name|void
+name|setNonBlockingRedelivery
+parameter_list|(
+name|boolean
+name|nonBlockingRedelivery
+parameter_list|)
+block|{
+name|this
+operator|.
+name|nonBlockingRedelivery
+operator|=
+name|nonBlockingRedelivery
 expr_stmt|;
 block|}
 comment|/**      * Removes any TempDestinations that this connection has cached, ignoring      * any exceptions generated because the destination is in use as they should      * not be removed.      */
