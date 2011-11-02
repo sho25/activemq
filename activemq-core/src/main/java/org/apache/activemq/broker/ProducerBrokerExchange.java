@@ -431,6 +431,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|canDispatch
+condition|)
+block|{
 name|lastSendSequenceNumber
 operator|.
 name|set
@@ -444,6 +449,7 @@ name|getProducerSequenceId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|canDispatch
 return|;
