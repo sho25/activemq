@@ -1049,15 +1049,6 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Pausing proxy"
-argument_list|)
-expr_stmt|;
 name|proxy
 operator|.
 name|pause
@@ -1094,15 +1085,6 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"sending messages"
-argument_list|)
-expr_stmt|;
 name|sendMessages
 argument_list|(
 name|pc
@@ -1110,15 +1092,6 @@ argument_list|,
 name|dest
 argument_list|,
 name|messageCount
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"messages sent"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1146,15 +1119,6 @@ operator|.
 name|sleep
 argument_list|(
 literal|7
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"go on"
 argument_list|)
 expr_stmt|;
 name|proxy
