@@ -166,6 +166,10 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
+specifier|private
+name|boolean
+name|auditProducerSequenceIds
+decl_stmt|;
 specifier|public
 name|ProducerBrokerExchange
 parameter_list|()
@@ -375,12 +379,7 @@ literal|true
 decl_stmt|;
 if|if
 condition|(
-name|lastSendSequenceNumber
-operator|.
-name|get
-argument_list|()
-operator|>
-literal|0
+name|auditProducerSequenceIds
 condition|)
 block|{
 if|if
@@ -430,12 +429,12 @@ name|lastSendSequenceNumber
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 if|if
 condition|(
 name|canDispatch
 condition|)
 block|{
+comment|// track current so we can suppress duplicates later in the stream
 name|lastSendSequenceNumber
 operator|.
 name|set
@@ -450,6 +449,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 return|return
 name|canDispatch
 return|;
@@ -462,6 +462,10 @@ name|long
 name|l
 parameter_list|)
 block|{
+name|auditProducerSequenceIds
+operator|=
+literal|true
+expr_stmt|;
 name|lastSendSequenceNumber
 operator|.
 name|set

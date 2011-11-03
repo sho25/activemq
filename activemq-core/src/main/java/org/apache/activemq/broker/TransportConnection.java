@@ -7255,6 +7255,12 @@ name|context
 operator|.
 name|isReconnect
 argument_list|()
+operator|&&
+operator|!
+name|context
+operator|.
+name|isNetworkConnection
+argument_list|()
 condition|)
 block|{
 name|result
