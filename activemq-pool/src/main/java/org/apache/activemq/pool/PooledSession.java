@@ -1527,6 +1527,23 @@ name|topic
 argument_list|)
 return|;
 block|}
+comment|/**      * Callback invoked when the consumer is closed.      *<p/>      * This is used to keep track of an explicit closed consumer created by this session,      * by which we know do not need to keep track of the consumer, as its already closed.      *      * @param consumer the consumer which is being closed      */
+specifier|protected
+name|void
+name|onConsumerClose
+parameter_list|(
+name|MessageConsumer
+name|consumer
+parameter_list|)
+block|{
+name|consumers
+operator|.
+name|remove
+argument_list|(
+name|consumer
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 name|ActiveMQSession
 name|getInternalSession
@@ -1683,8 +1700,17 @@ argument_list|(
 name|consumer
 argument_list|)
 expr_stmt|;
+comment|// must wrap in PooledMessageConsumer to ensure the onConsumerClose method is invoked
+comment|// when the returned consumer is closed, to avoid memory leak in this session class
+comment|// in case many consumers is created
 return|return
+operator|new
+name|PooledMessageConsumer
+argument_list|(
+name|this
+argument_list|,
 name|consumer
+argument_list|)
 return|;
 block|}
 specifier|private
@@ -1726,19 +1752,6 @@ name|receiver
 return|;
 block|}
 specifier|public
-name|String
-name|toString
-parameter_list|()
-block|{
-return|return
-literal|"PooledSession { "
-operator|+
-name|session
-operator|+
-literal|" }"
-return|;
-block|}
-specifier|public
 name|void
 name|setIsXa
 parameter_list|(
@@ -1752,6 +1765,19 @@ name|isXa
 operator|=
 name|isXa
 expr_stmt|;
+block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"PooledSession { "
+operator|+
+name|session
+operator|+
+literal|" }"
+return|;
 block|}
 block|}
 end_class
