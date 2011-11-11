@@ -233,16 +233,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -300,13 +290,6 @@ comment|/**  *  shows broker 'once only delivery' and recovery with XA  */
 end_comment
 
 begin_class
-annotation|@
-name|Ignore
-argument_list|(
-literal|"When upgrade to the Camel 2.8.0, this test will be hang due to camel-jdbc autoCommit issue CAMEL-4272."
-operator|+
-literal|"We should remove this Ignore annotation when upgrade Camel version again"
-argument_list|)
 specifier|public
 class|class
 name|JmsJdbcXATest
