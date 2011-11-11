@@ -609,7 +609,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|correlationID
+name|type
 operator|!=
 literal|null
 condition|)
