@@ -4174,7 +4174,7 @@ return|return
 name|persistent
 return|;
 block|}
-comment|/**      * Sets whether or not persistence is enabled or disabled.      */
+comment|/**      * Sets whether or not persistence is enabled or disabled.      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
 specifier|public
 name|void
 name|setPersistent
@@ -4847,7 +4847,7 @@ operator|=
 name|enableStatistics
 expr_stmt|;
 block|}
-comment|/**      * Sets whether or not the Broker's services should be exposed into JMX or      * not.      */
+comment|/**      * Sets whether or not the Broker's services should be exposed into JMX or      * not.      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
 specifier|public
 name|void
 name|setUseJmx
@@ -5370,7 +5370,7 @@ return|return
 name|advisorySupport
 return|;
 block|}
-comment|/**      * Allows the support of advisory messages to be disabled for performance      * reasons.      */
+comment|/**      * Allows the support of advisory messages to be disabled for performance      * reasons.      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
 specifier|public
 name|void
 name|setAdvisorySupport
@@ -5685,7 +5685,7 @@ return|return
 name|deleteAllMessagesOnStartup
 return|;
 block|}
-comment|/**      * Sets whether or not all messages are deleted on startup - mostly only      * useful for testing.      */
+comment|/**      * Sets whether or not all messages are deleted on startup - mostly only      * useful for testing.      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
 specifier|public
 name|void
 name|setDeleteAllMessagesOnStartup
@@ -10107,6 +10107,7 @@ return|return
 name|systemExitOnShutdown
 return|;
 block|}
+comment|/**      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
 specifier|public
 name|void
 name|setSystemExitOnShutdown
@@ -10179,6 +10180,7 @@ return|return
 name|shutdownOnSlaveFailure
 return|;
 block|}
+comment|/**      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
 specifier|public
 name|void
 name|setShutdownOnSlaveFailure
@@ -10203,6 +10205,7 @@ return|return
 name|waitForSlave
 return|;
 block|}
+comment|/**      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
 specifier|public
 name|void
 name|setWaitForSlave
@@ -10265,7 +10268,7 @@ operator|.
 name|passiveSlave
 return|;
 block|}
-comment|/**      * Set the passiveSlave      * @param passiveSlave the passiveSlave to set      */
+comment|/**      * Set the passiveSlave      * @param passiveSlave the passiveSlave to set      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
 specifier|public
 name|void
 name|setPassiveSlave
@@ -10323,7 +10326,7 @@ operator|.
 name|schedulerSupport
 return|;
 block|}
-comment|/**      * @param schedulerSupport the schedulerSupport to set      */
+comment|/**      * @param schedulerSupport the schedulerSupport to set      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
 specifier|public
 name|void
 name|setSchedulerSupport
