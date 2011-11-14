@@ -2097,6 +2097,7 @@ return|return
 name|createConnector
 return|;
 block|}
+comment|/**      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
 specifier|public
 name|void
 name|setCreateConnector
