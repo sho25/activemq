@@ -266,6 +266,15 @@ annotation|@
 name|Override
 specifier|public
 name|void
+name|testFailoverCommitReplyLostWithDestinationPathSeparator
+parameter_list|()
+throws|throws
+name|Exception
+block|{     }
+annotation|@
+name|Override
+specifier|public
+name|void
 name|initCombosForTestFailoverSendReplyLost
 parameter_list|()
 block|{     }
