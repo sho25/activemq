@@ -1269,7 +1269,11 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"found bridge to "
+literal|"found bridge["
+operator|+
+name|bridge
+operator|+
+literal|"] to "
 operator|+
 name|bridge
 operator|.

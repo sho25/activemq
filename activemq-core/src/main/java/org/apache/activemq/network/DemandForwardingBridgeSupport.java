@@ -4016,10 +4016,19 @@ name|remoteBrokerName
 operator|+
 literal|") "
 operator|+
+operator|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|?
+name|message
+else|:
 name|message
 operator|.
 name|getMessageId
 argument_list|()
+operator|)
 operator|+
 literal|", consumer: "
 operator|+

@@ -1695,6 +1695,30 @@ name|broker2
 operator|=
 literal|"BrokerB"
 expr_stmt|;
+comment|// enable producer audit for the network connector, off by default b/c of interference with composite
+comment|// dests and virtual topics
+name|brokers
+operator|.
+name|get
+argument_list|(
+name|broker2
+argument_list|)
+operator|.
+name|broker
+operator|.
+name|getTransportConnectors
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|setAuditNetworkProducers
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|bridgeBrokers
 argument_list|(
 name|broker1
@@ -1905,6 +1929,12 @@ end_comment
 
 begin_expr_stmt
 name|startAllBrokers
+argument_list|()
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|waitForBridgeFormation
 argument_list|()
 expr_stmt|;
 end_expr_stmt

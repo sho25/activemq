@@ -488,7 +488,7 @@ specifier|private
 name|boolean
 name|auditNetworkProducers
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|public
 name|TransportConnector
@@ -715,6 +715,14 @@ operator|.
 name|setUpdateClusterClientsOnRemove
 argument_list|(
 name|isUpdateClusterClientsOnRemove
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|rc
+operator|.
+name|setAuditNetworkProducers
+argument_list|(
+name|isAuditNetworkProducers
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2409,6 +2417,7 @@ return|return
 name|auditNetworkProducers
 return|;
 block|}
+comment|/**      * Enable a producer audit on network connections, Traps the case of a missing send reply and resend.      * Note: does not work with conduit=false, networked composite destinations or networked virtual topics      * @param auditNetworkProducers      */
 specifier|public
 name|void
 name|setAuditNetworkProducers

@@ -459,18 +459,35 @@ name|canDispatch
 operator|=
 literal|false
 expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"suppressing duplicate message send from network producer ["
+literal|"suppressing duplicate message send  ["
 operator|+
+operator|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|?
+name|messageSend
+else|:
 name|messageSend
 operator|.
 name|getMessageId
 argument_list|()
+operator|)
 operator|+
-literal|"] with producerSequenceId ["
+literal|"] from network producer with producerSequenceId ["
 operator|+
 name|producerSequenceId
 operator|+
@@ -479,6 +496,7 @@ operator|+
 name|lastStoredForMessageProducer
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 elseif|else
@@ -496,16 +514,33 @@ name|canDispatch
 operator|=
 literal|false
 expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
 literal|"suppressing duplicate message send ["
 operator|+
+operator|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|?
+name|messageSend
+else|:
 name|messageSend
 operator|.
 name|getMessageId
 argument_list|()
+operator|)
 operator|+
 literal|"] with producerSequenceId ["
 operator|+
@@ -516,6 +551,7 @@ operator|+
 name|lastSendSequenceNumber
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
