@@ -6206,6 +6206,20 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|after
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// since we don't push this after and we may find another, lets run it now
+name|after
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
+block|}
 return|return;
 block|}
 specifier|final
