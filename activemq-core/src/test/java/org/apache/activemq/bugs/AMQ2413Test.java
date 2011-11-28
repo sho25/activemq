@@ -432,7 +432,7 @@ specifier|final
 name|int
 name|SEND_COUNT
 init|=
-literal|10000
+literal|1000
 decl_stmt|;
 specifier|private
 specifier|static
