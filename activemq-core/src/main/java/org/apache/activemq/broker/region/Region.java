@@ -274,7 +274,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Returns a copy of the current destinations available in the region      *       * @return a copy of the regions currently active at the time of the call with the key the destination and the value the Destination.      */
+comment|/**      * Returns a reference to the concurrent hash map that holds known destinations, do not modify      */
 name|Map
 argument_list|<
 name|ActiveMQDestination

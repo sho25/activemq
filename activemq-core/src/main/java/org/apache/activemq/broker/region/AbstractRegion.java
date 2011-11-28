@@ -1556,16 +1556,7 @@ expr_stmt|;
 try|try
 block|{
 return|return
-operator|new
-name|HashMap
-argument_list|<
-name|ActiveMQDestination
-argument_list|,
-name|Destination
-argument_list|>
-argument_list|(
 name|destinations
-argument_list|)
 return|;
 block|}
 finally|finally
