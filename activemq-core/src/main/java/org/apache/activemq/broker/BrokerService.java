@@ -1632,7 +1632,7 @@ specifier|private
 name|int
 name|schedulePeriodForDestinationPurge
 init|=
-literal|5000
+literal|0
 decl_stmt|;
 specifier|private
 name|int

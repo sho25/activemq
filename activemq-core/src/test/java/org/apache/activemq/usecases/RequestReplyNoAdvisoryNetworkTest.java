@@ -1514,6 +1514,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|broker
+operator|.
+name|setSchedulePeriodForDestinationPurge
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
 name|PolicyMap
 name|map
 init|=
