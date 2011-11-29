@@ -1380,6 +1380,14 @@ argument_list|)
 expr_stmt|;
 name|connection
 operator|.
+name|setOptimizeAcknowledgeTimeOut
+argument_list|(
+name|getOptimizeAcknowledgeTimeOut
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
 name|setUseRetroactiveConsumer
 argument_list|(
 name|isUseRetroactiveConsumer
@@ -3181,7 +3189,7 @@ specifier|public
 name|void
 name|setOptimizeAcknowledgeTimeOut
 parameter_list|(
-name|int
+name|long
 name|optimizeAcknowledgeTimeOut
 parameter_list|)
 block|{

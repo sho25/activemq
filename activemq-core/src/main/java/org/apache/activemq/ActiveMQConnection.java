@@ -5356,7 +5356,7 @@ specifier|public
 name|void
 name|setOptimizeAcknowledgeTimeOut
 parameter_list|(
-name|int
+name|long
 name|optimizeAcknowledgeTimeOut
 parameter_list|)
 block|{

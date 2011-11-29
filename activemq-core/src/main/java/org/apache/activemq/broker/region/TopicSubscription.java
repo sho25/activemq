@@ -1178,7 +1178,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"ignoring duplicate add: "
+name|this
+operator|+
+literal|", ignoring duplicate add: "
 operator|+
 name|node
 operator|.
@@ -2524,7 +2526,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Discarding message "
+name|this
+operator|+
+literal|", discarding message "
 operator|+
 name|message
 argument_list|)
