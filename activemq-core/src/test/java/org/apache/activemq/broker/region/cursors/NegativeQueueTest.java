@@ -522,7 +522,7 @@ specifier|final
 name|int
 name|MESSAGE_COUNT
 init|=
-literal|2000
+literal|1100
 decl_stmt|;
 specifier|protected
 specifier|static
@@ -585,7 +585,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testWithDefaultPrefetchFiveConsumers
+name|x_testWithDefaultPrefetchFiveConsumers
 parameter_list|()
 throws|throws
 name|Exception
@@ -604,7 +604,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testWithDefaultPrefetchTwoConsumers
+name|x_testWithDefaultPrefetchTwoConsumers
 parameter_list|()
 throws|throws
 name|Exception
@@ -661,7 +661,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testWithSmallPrefetch
+name|x_testWithSmallPrefetch
 parameter_list|()
 throws|throws
 name|Exception

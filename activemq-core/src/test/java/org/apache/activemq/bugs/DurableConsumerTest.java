@@ -535,8 +535,6 @@ name|int
 name|COUNT
 init|=
 literal|1024
-operator|*
-literal|10
 decl_stmt|;
 specifier|private
 specifier|static

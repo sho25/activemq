@@ -1301,7 +1301,7 @@ specifier|final
 name|int
 name|iterations
 init|=
-literal|5000
+literal|1000
 decl_stmt|;
 specifier|final
 name|int
@@ -1837,7 +1837,6 @@ argument_list|(
 name|directory
 argument_list|)
 expr_stmt|;
-comment|//store.setJournalMaxFileLength(1024*5);
 name|store
 operator|.
 name|start
@@ -1853,7 +1852,7 @@ specifier|final
 name|int
 name|iterations
 init|=
-literal|2000
+literal|1000
 decl_stmt|;
 name|executor
 operator|=
@@ -2184,7 +2183,7 @@ specifier|final
 name|int
 name|iterations
 init|=
-literal|5000
+literal|500
 decl_stmt|;
 specifier|final
 name|int
@@ -2723,13 +2722,13 @@ specifier|final
 name|int
 name|iterations
 init|=
-literal|5000
+literal|500
 decl_stmt|;
 specifier|final
 name|int
 name|numLists
 init|=
-literal|50
+literal|10
 decl_stmt|;
 name|LOG
 operator|.
@@ -2837,7 +2836,7 @@ specifier|final
 name|int
 name|numConsumer
 init|=
-literal|50
+literal|10
 decl_stmt|;
 for|for
 control|(
