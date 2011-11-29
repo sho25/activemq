@@ -66,15 +66,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implements all the default JDBC operations that are used  * by the JDBCPersistenceAdapter.  *<p/>  * Subclassing is encouraged to override the default  * implementation of methods to account for differences  * in JDBC Driver implementations.  *<p/>  *  * @org.apache.xbean.XBean element="oracleJDBCAdapter"  *  *   */
+comment|/**  * Implements all the default JDBC operations that are used  * by the JDBCPersistenceAdapter.  *<p/>  * Subclassing is encouraged to override the default  * implementation of methods to account for differences  * in JDBC Driver implementations.  *<p/>  * The JDBCAdapter inserts and extracts BLOB data using the  * getBytes()/setBytes() operations.  *<p/>  * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li></li>  *</ul>  *  * @org.apache.xbean.XBean element="oracleBlobJDBCAdapter"  *  *   */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|OracleJDBCAdapter
+name|OracleBlobJDBCAdapter
 extends|extends
-name|DefaultJDBCAdapter
+name|BlobJDBCAdapter
 block|{
 annotation|@
 name|Override
@@ -100,6 +100,44 @@ argument_list|(
 literal|"NUMBER"
 argument_list|)
 expr_stmt|;
+name|String
+name|addMessageStatement
+init|=
+literal|"INSERT INTO "
+operator|+
+name|statements
+operator|.
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|"(ID, MSGID_PROD, MSGID_SEQ, CONTAINER, EXPIRATION, PRIORITY, MSG) VALUES (?, ?, ?, ?, ?, ?, empty_blob())"
+decl_stmt|;
+name|statements
+operator|.
+name|setAddMessageStatement
+argument_list|(
+name|addMessageStatement
+argument_list|)
+expr_stmt|;
+name|String
+name|findMessageByIdStatement
+init|=
+literal|"SELECT MSG FROM "
+operator|+
+name|statements
+operator|.
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" WHERE ID=? FOR UPDATE"
+decl_stmt|;
+name|statements
+operator|.
+name|setFindMessageByIdStatement
+argument_list|(
+name|findMessageByIdStatement
+argument_list|)
+expr_stmt|;
 name|super
 operator|.
 name|setStatements
@@ -107,6 +145,61 @@ argument_list|(
 name|statements
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|protected
+name|byte
+index|[]
+name|getBinaryData
+parameter_list|(
+name|ResultSet
+name|rs
+parameter_list|,
+name|int
+name|index
+parameter_list|)
+throws|throws
+name|SQLException
+block|{
+comment|// Get as a BLOB
+name|Blob
+name|aBlob
+init|=
+name|rs
+operator|.
+name|getBlob
+argument_list|(
+name|index
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|aBlob
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+return|return
+name|aBlob
+operator|.
+name|getBytes
+argument_list|(
+literal|1
+argument_list|,
+operator|(
+name|int
+operator|)
+name|aBlob
+operator|.
+name|length
+argument_list|()
+argument_list|)
+return|;
 block|}
 block|}
 end_class
