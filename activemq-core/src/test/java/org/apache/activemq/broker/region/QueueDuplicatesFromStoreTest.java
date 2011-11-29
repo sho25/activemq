@@ -501,7 +501,7 @@ specifier|protected
 name|int
 name|count
 init|=
-literal|20000
+literal|5000
 decl_stmt|;
 specifier|public
 name|void
