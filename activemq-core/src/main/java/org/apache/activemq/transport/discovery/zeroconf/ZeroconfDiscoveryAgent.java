@@ -15,7 +15,7 @@ name|transport
 operator|.
 name|discovery
 operator|.
-name|rendezvous
+name|zeroconf
 package|;
 end_package
 
@@ -248,7 +248,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|RendezvousDiscoveryAgent
+name|ZeroconfDiscoveryAgent
 implements|implements
 name|DiscoveryAgent
 implements|,
@@ -264,7 +264,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|RendezvousDiscoveryAgent
+name|ZeroconfDiscoveryAgent
 operator|.
 name|class
 argument_list|)

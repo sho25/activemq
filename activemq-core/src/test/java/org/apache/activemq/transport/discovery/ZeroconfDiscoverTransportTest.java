@@ -24,7 +24,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|RendezvousDiscoverTransportTest
+name|ZeroconfDiscoverTransportTest
 extends|extends
 name|DiscoveryTransportBrokerTest
 block|{
@@ -34,7 +34,7 @@ name|getDiscoveryUri
 parameter_list|()
 block|{
 return|return
-literal|"rendezvous://cheese"
+literal|"zeroconf://cheese"
 return|;
 block|}
 block|}
