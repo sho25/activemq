@@ -844,7 +844,9 @@ init|=
 operator|new
 name|IOException
 argument_list|(
-literal|"Unexpected error occured"
+literal|"Unexpected error occured: "
+operator|+
+name|e
 argument_list|)
 decl_stmt|;
 name|ioe
