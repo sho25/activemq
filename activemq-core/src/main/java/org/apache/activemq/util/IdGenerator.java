@@ -228,19 +228,36 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"could not generate unique stub"
+literal|"could not generate unique stub by using DNS and binding to local port"
 argument_list|,
 name|ioe
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-else|else
+comment|// fallback
+if|if
+condition|(
+name|hostName
+operator|==
+literal|null
+condition|)
 block|{
 name|hostName
 operator|=
 literal|"localhost"
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|stub
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
 name|stub
 operator|=
 literal|"-1-"
