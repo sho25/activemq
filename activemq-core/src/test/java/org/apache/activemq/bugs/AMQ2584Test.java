@@ -1093,7 +1093,7 @@ return|return
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://testStoreSize?jms.watchTopicAdvisories=false&jms.redeliveryPolicy.maximumRedeliveries=0&waitForStart=5000&create=false"
+literal|"vm://testStoreSize?jms.watchTopicAdvisories=false&jms.redeliveryPolicy.maximumRedeliveries=0&jms.closeTimeout=60000&waitForStart=5000&create=false"
 argument_list|)
 return|;
 block|}
