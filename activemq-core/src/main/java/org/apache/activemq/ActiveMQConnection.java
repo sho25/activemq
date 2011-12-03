@@ -4357,7 +4357,17 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-comment|//dispose of transport
+comment|//dispose of transport for security exceptions
+if|if
+condition|(
+name|er
+operator|.
+name|getException
+argument_list|()
+operator|instanceof
+name|SecurityException
+condition|)
+block|{
 name|Transport
 name|t
 init|=
@@ -4390,6 +4400,7 @@ block|{
 throw|throw
 name|jmsEx
 throw|;
+block|}
 block|}
 block|}
 block|}
@@ -5115,14 +5126,21 @@ parameter_list|()
 throws|throws
 name|Throwable
 block|{
+name|Scheduler
+name|s
+init|=
+name|this
+operator|.
+name|scheduler
+decl_stmt|;
 if|if
 condition|(
-name|scheduler
+name|s
 operator|!=
 literal|null
 condition|)
 block|{
-name|scheduler
+name|s
 operator|.
 name|stop
 argument_list|()
