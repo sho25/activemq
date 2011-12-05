@@ -1847,12 +1847,31 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|e
+operator|instanceof
+name|java
+operator|.
+name|lang
+operator|.
+name|SecurityException
+condition|)
+block|{
 comment|//still need to close this down - incase the peer of this transport doesn't play nice
 name|delayedStop
 argument_list|(
 literal|2000
+argument_list|,
+literal|"Failed with SecurityException: "
+operator|+
+name|e
+operator|.
+name|getLocalizedMessage
+argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -5227,6 +5246,10 @@ parameter_list|(
 specifier|final
 name|int
 name|waitTime
+parameter_list|,
+specifier|final
+name|String
+name|reason
 parameter_list|)
 block|{
 if|if
@@ -5265,6 +5288,22 @@ argument_list|)
 expr_stmt|;
 name|stopAsync
 argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Stopping "
+operator|+
+name|transport
+operator|.
+name|getRemoteAddress
+argument_list|()
+operator|+
+literal|" because "
+operator|+
+name|reason
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
