@@ -272,6 +272,13 @@ name|Message
 argument_list|>
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|lastImage
+operator|!=
+literal|null
+condition|)
+block|{
 name|DestinationFilter
 name|filter
 init|=
@@ -308,6 +315,7 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|result
