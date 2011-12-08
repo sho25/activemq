@@ -4390,6 +4390,7 @@ name|t
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 if|if
 condition|(
 name|jmsEx
@@ -4400,7 +4401,6 @@ block|{
 throw|throw
 name|jmsEx
 throw|;
-block|}
 block|}
 block|}
 block|}
