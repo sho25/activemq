@@ -35,6 +35,10 @@ name|length
 decl_stmt|;
 specifier|public
 name|ByteSequence
+parameter_list|()
+block|{     }
+specifier|public
+name|ByteSequence
 parameter_list|(
 name|byte
 name|data
