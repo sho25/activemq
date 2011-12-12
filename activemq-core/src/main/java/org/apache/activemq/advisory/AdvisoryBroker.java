@@ -1320,6 +1320,14 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// ensure we don't modify (and loose/overwrite) an in-flight add advisory, so duplicate
+name|info
+operator|=
+name|info
+operator|.
+name|copy
+argument_list|()
+expr_stmt|;
 name|info
 operator|.
 name|setDestination
@@ -1459,6 +1467,14 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// ensure we don't modify (and loose/overwrite) an in-flight add advisory, so duplicate
+name|info
+operator|=
+name|info
+operator|.
+name|copy
+argument_list|()
+expr_stmt|;
 name|info
 operator|.
 name|setDestination

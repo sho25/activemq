@@ -3440,7 +3440,12 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"bridging destination control command: "
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" bridging destination control command: "
 operator|+
 name|destInfo
 argument_list|)

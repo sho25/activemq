@@ -4117,6 +4117,13 @@ operator|.
 name|isManageable
 argument_list|()
 expr_stmt|;
+name|context
+operator|.
+name|setConnectionState
+argument_list|(
+name|state
+argument_list|)
+expr_stmt|;
 name|state
 operator|.
 name|setContext
