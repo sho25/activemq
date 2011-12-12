@@ -655,7 +655,7 @@ argument_list|)
 return|;
 block|}
 specifier|protected
-name|void
+name|NetworkConnector
 name|bridgeBrokers
 parameter_list|(
 name|String
@@ -694,6 +694,7 @@ argument_list|)
 operator|.
 name|broker
 decl_stmt|;
+return|return
 name|bridgeBrokers
 argument_list|(
 name|localBroker
@@ -708,7 +709,7 @@ literal|true
 argument_list|,
 literal|false
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 specifier|protected
 name|NetworkConnector

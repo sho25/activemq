@@ -1809,6 +1809,15 @@ argument_list|)
 expr_stmt|;
 comment|// Listen to consumer advisory messages on the remote broker to
 comment|// determine demand.
+if|if
+condition|(
+operator|!
+name|configuration
+operator|.
+name|isStaticBridge
+argument_list|()
+condition|)
+block|{
 name|demandConsumerInfo
 operator|=
 operator|new
@@ -1882,6 +1891,7 @@ argument_list|(
 name|demandConsumerInfo
 argument_list|)
 expr_stmt|;
+block|}
 name|startedLatch
 operator|.
 name|countDown
