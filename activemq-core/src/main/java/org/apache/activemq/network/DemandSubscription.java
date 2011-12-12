@@ -281,6 +281,18 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
+specifier|public
+name|int
+name|size
+parameter_list|()
+block|{
+return|return
+name|remoteSubsIds
+operator|.
+name|size
+argument_list|()
+return|;
+block|}
 comment|/**      * @return Returns the localInfo.      */
 specifier|public
 name|ConsumerInfo
