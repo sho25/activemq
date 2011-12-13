@@ -1387,7 +1387,9 @@ name|TRANSPORTLOG
 operator|.
 name|debug
 argument_list|(
-literal|"Transport failed: "
+name|this
+operator|+
+literal|" failed: "
 operator|+
 name|e
 argument_list|,
@@ -1414,7 +1416,9 @@ name|TRANSPORTLOG
 operator|.
 name|warn
 argument_list|(
-literal|"Transport failed: "
+name|this
+operator|+
+literal|" failed: "
 operator|+
 name|e
 argument_list|)
@@ -6768,7 +6772,11 @@ block|}
 annotation|@
 name|SuppressWarnings
 argument_list|(
+block|{
 literal|"unchecked"
+block|,
+literal|"rawtypes"
+block|}
 argument_list|)
 specifier|private
 name|HashMap

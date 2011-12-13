@@ -354,7 +354,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @org.apache.xbean.XBean  *   */
+comment|/**  * @org.apache.xbean.XBean  *  */
 end_comment
 
 begin_class
@@ -754,7 +754,7 @@ operator|=
 name|brokerInfo
 expr_stmt|;
 block|}
-comment|/**      *       * @deprecated use the {@link #setBrokerService(BrokerService)} method      *             instead.      */
+comment|/**      *      * @deprecated use the {@link #setBrokerService(BrokerService)} method      *             instead.      */
 annotation|@
 name|Deprecated
 specifier|public
@@ -866,7 +866,7 @@ return|return
 name|uri
 return|;
 block|}
-comment|/**      * Sets the server transport URI to use if there is not a      * {@link TransportServer} configured via the      * {@link #setServer(TransportServer)} method. This value is used to lazy      * create a {@link TransportServer} instance      *       * @param uri      */
+comment|/**      * Sets the server transport URI to use if there is not a      * {@link TransportServer} configured via the      * {@link #setServer(TransportServer)} method. This value is used to lazy      * create a {@link TransportServer} instance      *      * @param uri      */
 specifier|public
 name|void
 name|setUri
@@ -1067,6 +1067,14 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|String
+name|remoteHost
+init|=
+name|transport
+operator|.
+name|getRemoteAddress
+argument_list|()
+decl_stmt|;
 name|ServiceSupport
 operator|.
 name|dispose
@@ -1077,6 +1085,8 @@ expr_stmt|;
 name|onAcceptError
 argument_list|(
 name|e
+argument_list|,
+name|remoteHost
 argument_list|)
 expr_stmt|;
 block|}
