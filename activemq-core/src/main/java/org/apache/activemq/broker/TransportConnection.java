@@ -2686,6 +2686,13 @@ name|getConsumerId
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|consumerExchange
+operator|!=
+literal|null
+condition|)
+block|{
 name|broker
 operator|.
 name|acknowledge
@@ -2695,6 +2702,7 @@ argument_list|,
 name|ack
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 literal|null
 return|;
@@ -3211,6 +3219,14 @@ operator|.
 name|addConsumer
 argument_list|(
 name|info
+argument_list|)
+expr_stmt|;
+name|addConsumerBrokerExchange
+argument_list|(
+name|info
+operator|.
+name|getConsumerId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -4322,8 +4338,7 @@ literal|null
 condition|)
 block|{
 comment|// Don't allow things to be added to the connection state while we
-comment|// are
-comment|// shutting down.
+comment|// are shutting down.
 name|cs
 operator|.
 name|shutdown
@@ -4612,7 +4627,6 @@ name|Command
 name|message
 parameter_list|)
 block|{
-comment|// getStatistics().getEnqueues().increment();
 try|try
 block|{
 name|processDispatch
@@ -4651,7 +4665,6 @@ name|get
 argument_list|()
 condition|)
 block|{
-comment|// getStatistics().getEnqueues().increment();
 if|if
 condition|(
 name|taskRunner
@@ -4853,7 +4866,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|// getStatistics().getDequeues().increment();
 block|}
 block|}
 specifier|public
@@ -4865,6 +4877,8 @@ try|try
 block|{
 if|if
 condition|(
+name|pendingStop
+operator|||
 name|stopping
 operator|.
 name|get
@@ -7186,6 +7200,28 @@ block|}
 specifier|private
 name|ConsumerBrokerExchange
 name|getConsumerBrokerExchange
+parameter_list|(
+name|ConsumerId
+name|id
+parameter_list|)
+block|{
+name|ConsumerBrokerExchange
+name|result
+init|=
+name|consumerExchanges
+operator|.
+name|get
+argument_list|(
+name|id
+argument_list|)
+decl_stmt|;
+return|return
+name|result
+return|;
+block|}
+specifier|private
+name|ConsumerBrokerExchange
+name|addConsumerBrokerExchange
 parameter_list|(
 name|ConsumerId
 name|id
