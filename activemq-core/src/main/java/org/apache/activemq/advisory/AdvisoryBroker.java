@@ -282,7 +282,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This broker filter handles tracking the state of the broker for purposes of  * publishing advisory messages to advisory consumers.  *   *   */
+comment|/**  * This broker filter handles tracking the state of the broker for purposes of  * publishing advisory messages to advisory consumers.  *  *  */
 end_comment
 
 begin_class
@@ -685,9 +685,77 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// We need to replay all the previously collected destination
-comment|// objects
-comment|// for this newly added consumer.
+comment|// We check here whether the Destination is Temporary Destination specific or not since we
+comment|// can avoid sending advisory messages to the consumer if it only wants Temporary Destination
+comment|// notifications.  If its not just temporary destination related destinations then we have
+comment|// to send them all, a composite destination could want both.
+if|if
+condition|(
+name|AdvisorySupport
+operator|.
+name|isTempDestinationAdvisoryTopic
+argument_list|(
+name|info
+operator|.
+name|getDestination
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// Replay the temporary destinations.
+for|for
+control|(
+name|DestinationInfo
+name|destination
+range|:
+name|destinations
+operator|.
+name|values
+argument_list|()
+control|)
+block|{
+if|if
+condition|(
+name|destination
+operator|.
+name|getDestination
+argument_list|()
+operator|.
+name|isTemporary
+argument_list|()
+condition|)
+block|{
+name|ActiveMQTopic
+name|topic
+init|=
+name|AdvisorySupport
+operator|.
+name|getDestinationAdvisoryTopic
+argument_list|(
+name|destination
+operator|.
+name|getDestination
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|fireAdvisory
+argument_list|(
+name|context
+argument_list|,
+name|topic
+argument_list|,
+name|destination
+argument_list|,
+name|info
+operator|.
+name|getConsumerId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+elseif|else
 if|if
 condition|(
 name|AdvisorySupport
@@ -701,38 +769,18 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-comment|// Replay the destinations.
+comment|// Replay all the destinations.
 for|for
 control|(
-name|Iterator
-argument_list|<
 name|DestinationInfo
-argument_list|>
-name|iter
-init|=
+name|destination
+range|:
 name|destinations
 operator|.
 name|values
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|DestinationInfo
-name|value
-init|=
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|ActiveMQTopic
 name|topic
 init|=
@@ -740,7 +788,7 @@ name|AdvisorySupport
 operator|.
 name|getDestinationAdvisoryTopic
 argument_list|(
-name|value
+name|destination
 operator|.
 name|getDestination
 argument_list|()
@@ -752,7 +800,7 @@ name|context
 argument_list|,
 name|topic
 argument_list|,
-name|value
+name|destination
 argument_list|,
 name|info
 operator|.
@@ -1391,7 +1439,7 @@ parameter_list|(
 name|Exception
 name|expectedIfDestinationDidNotExistYet
 parameter_list|)
-block|{                             }
+block|{             }
 try|try
 block|{
 name|next
