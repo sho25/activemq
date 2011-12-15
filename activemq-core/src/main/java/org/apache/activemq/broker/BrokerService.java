@@ -9768,7 +9768,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Ignoring IO exception, "
+literal|"No IOExceptionHandler registered, ignoring IO exception, "
 operator|+
 name|exception
 argument_list|,

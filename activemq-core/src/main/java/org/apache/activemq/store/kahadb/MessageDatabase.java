@@ -2601,6 +2601,36 @@ argument_list|(
 name|recoveryPosition
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+operator|&&
+name|redoCounter
+operator|%
+literal|100000
+operator|==
+literal|0
+condition|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"@"
+operator|+
+name|recoveryPosition
+operator|+
+literal|", "
+operator|+
+name|redoCounter
+operator|+
+literal|" entries recovered .."
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
