@@ -296,7 +296,9 @@ argument_list|,
 operator|new
 name|Object
 index|[]
-block|{}
+block|{
+name|selector
+block|}
 argument_list|,
 operator|new
 name|String

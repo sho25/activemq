@@ -231,13 +231,17 @@ literal|"        - Print the message header and the custom field 'MyField' of al
 block|,
 literal|""
 block|,
-literal|"    Main browse --msgsel JMSMessageID='*:10',JMSPriority>5 FOO.BAR"
+literal|"    Main browse --msgsel \"JMSMessageID='*:10',JMSPriority>5\" FOO.BAR"
 block|,
 literal|"        - Print all the message fields that has a JMSMessageID in the header field that matches the"
 block|,
-literal|"          wildcard *:10, and has a JMSPriority field> 5 in the queue FOO.BAR"
+literal|"          wildcard *:10, and has a JMSPriority field> 5 in the queue FOO.BAR."
+block|,
+literal|"          SLQ92 syntax is also supported."
 block|,
 literal|"        * To use wildcard queries, the field must be a string and the query enclosed in ''"
+block|,
+literal|"          Use double quotes \"\" around the entire message selector string."
 block|,
 literal|""
 block|}

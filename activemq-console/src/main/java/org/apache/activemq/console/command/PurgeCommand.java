@@ -21,6 +21,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|net
+operator|.
+name|URI
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -54,6 +64,26 @@ operator|.
 name|util
 operator|.
 name|StringTokenizer
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Destination
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Message
 import|;
 end_import
 
@@ -145,6 +175,36 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|ActiveMQQueue
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|console
+operator|.
+name|util
+operator|.
+name|AmqMessagesUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|console
 operator|.
 name|util
@@ -203,18 +263,22 @@ literal|"    Main purge FOO.BAR"
 block|,
 literal|"        - Delete all the messages in queue FOO.BAR"
 block|,
-literal|"    Main purge --msgsel JMSMessageID='*:10',JMSPriority>5 FOO.*"
+literal|"    Main purge --msgsel \"JMSMessageID='*:10',JMSPriority>5\" FOO.*"
 block|,
 literal|"        - Delete all the messages in the destinations that matches FOO.* and has a JMSMessageID in"
 block|,
 literal|"          the header field that matches the wildcard *:10, and has a JMSPriority field> 5 in the"
 block|,
-literal|"          queue FOO.BAR"
+literal|"          queue FOO.BAR."
+block|,
+literal|"          SLQ92 syntax is also supported."
 block|,
 literal|"        * To use wildcard queries, the field must be a string and the query enclosed in ''"
 block|,
+literal|"          Use double quotes \"\" around the entire message selector string."
+block|,
 literal|""
-block|,     }
+block|}
 decl_stmt|;
 specifier|private
 specifier|final
@@ -400,21 +464,60 @@ name|removed
 init|=
 literal|0
 decl_stmt|;
-for|for
-control|(
+comment|// AMQ-3404: We support two syntaxes for the message
+comment|// selector query:
+comment|// 1) AMQ specific:
+comment|//    "JMSPriority>2,MyHeader='Foo'"
+comment|//
+comment|// 2) SQL-92 syntax:
+comment|//    "(JMSPriority>2) AND (MyHeader='Foo')"
+comment|//
+comment|// If syntax style 1) is used, the comma separated
+comment|// criterias are broken into List<String> elements.
+comment|// We then need to construct the SQL-92 query out of
+comment|// this list.
 name|String
-name|remove
-range|:
+name|sqlQuery
+init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
 name|queryAddObjects
-control|)
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|1
+condition|)
 block|{
+name|sqlQuery
+operator|=
+name|convertToSQL92
+argument_list|(
+name|queryAddObjects
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|sqlQuery
+operator|=
+name|queryAddObjects
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
 name|removed
 operator|=
 name|proxy
 operator|.
 name|removeMatchingMessages
 argument_list|(
-name|remove
+name|sqlQuery
 argument_list|)
 expr_stmt|;
 name|context
@@ -425,12 +528,14 @@ literal|"Removed: "
 operator|+
 name|removed
 operator|+
-literal|" messages for msgsel"
+literal|" messages for message selector "
 operator|+
-name|remove
+name|sqlQuery
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -720,6 +825,102 @@ name|tokens
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|/**      * Converts the message selector as provided on command line      * argument to activem-admin into an SQL-92 conform string.       * E.g.      *   "JMSMessageID='*:10',JMSPriority>5"      * gets converted into       *   "(JMSMessageID='%:10') AND (JMSPriority>5)"      *       * @param tokens - List of message selector query parameters       * @return SQL-92 string of that query.       */
+specifier|public
+name|String
+name|convertToSQL92
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|tokens
+parameter_list|)
+block|{
+name|String
+name|selector
+init|=
+literal|""
+decl_stmt|;
+comment|// Convert to message selector
+for|for
+control|(
+name|Iterator
+name|i
+init|=
+name|tokens
+operator|.
+name|iterator
+argument_list|()
+init|;
+name|i
+operator|.
+name|hasNext
+argument_list|()
+condition|;
+control|)
+block|{
+name|selector
+operator|=
+name|selector
+operator|+
+literal|"("
+operator|+
+name|i
+operator|.
+name|next
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|") AND "
+expr_stmt|;
+block|}
+comment|// Remove last AND and replace '*' with '%'
+if|if
+condition|(
+operator|!
+name|selector
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
+block|{
+name|selector
+operator|=
+name|selector
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|selector
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|5
+argument_list|)
+expr_stmt|;
+name|selector
+operator|=
+name|selector
+operator|.
+name|replace
+argument_list|(
+literal|'*'
+argument_list|,
+literal|'%'
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|selector
+return|;
 block|}
 comment|/**      * Print the help messages for the browse command      */
 specifier|protected
