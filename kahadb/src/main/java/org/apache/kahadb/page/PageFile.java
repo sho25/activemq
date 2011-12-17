@@ -17,60 +17,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|kahadb
-operator|.
-name|util
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|ByteArrayInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|ByteArrayOutputStream
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -85,7 +31,67 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|LinkedHashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
 import|;
 end_import
 
@@ -98,6 +104,26 @@ operator|.
 name|Map
 operator|.
 name|Entry
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Properties
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TreeMap
 import|;
 end_import
 
@@ -165,8 +191,140 @@ name|Checksum
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|kahadb
+operator|.
+name|util
+operator|.
+name|DataByteArrayOutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|kahadb
+operator|.
+name|util
+operator|.
+name|IOExceptionSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|kahadb
+operator|.
+name|util
+operator|.
+name|IOHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|kahadb
+operator|.
+name|util
+operator|.
+name|IntrospectionSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|kahadb
+operator|.
+name|util
+operator|.
+name|LFUCache
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|kahadb
+operator|.
+name|util
+operator|.
+name|LRUCache
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|kahadb
+operator|.
+name|util
+operator|.
+name|Sequence
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|kahadb
+operator|.
+name|util
+operator|.
+name|SequenceSet
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * A PageFile provides you random access to fixed sized disk pages. This object is not thread safe and therefore access to it should   * be externally synchronized.  *   * The file has 3 parts:  * Metadata Space: 4k : Reserved metadata area. Used to store persistent config about the file.  * Recovery Buffer Space: Page Size * 1000 : This is a redo log used to prevent partial page writes from making the file inconsistent  * Page Space: The pages in the page file.  *   *   */
+comment|/**  * A PageFile provides you random access to fixed sized disk pages. This object is not thread safe and therefore access to it should  * be externally synchronized.  *<p/>  * The file has 3 parts:  * Metadata Space: 4k : Reserved metadata area. Used to store persistent config about the file.  * Recovery Buffer Space: Page Size * 1000 : This is a redo log used to prevent partial page writes from making the file inconsistent  * Page Space: The pages in the page file.  */
 end_comment
 
 begin_class
@@ -498,6 +656,18 @@ argument_list|<
 name|File
 argument_list|>
 argument_list|()
+decl_stmt|;
+specifier|private
+name|boolean
+name|useLFRUEviction
+init|=
+literal|false
+decl_stmt|;
+specifier|private
+name|float
+name|LFUEvictionFactor
+init|=
+literal|0.2f
 decl_stmt|;
 comment|/**      * Use to keep track of updated pages which have not yet been committed.      */
 specifier|static
@@ -868,7 +1038,7 @@ literal|1
 return|;
 block|}
 block|}
-comment|/**      * The MetaData object hold the persistent data associated with a PageFile object.       */
+comment|/**      * The MetaData object hold the persistent data associated with a PageFile object.      */
 specifier|public
 specifier|static
 class|class
@@ -1083,7 +1253,7 @@ name|this
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a PageFile in the specified directory who's data files are named by name.      *       * @param directory      * @param name      */
+comment|/**      * Creates a PageFile in the specified directory who's data files are named by name.      */
 specifier|public
 name|PageFile
 parameter_list|(
@@ -1107,7 +1277,7 @@ operator|=
 name|name
 expr_stmt|;
 block|}
-comment|/**      * Deletes the files used by the PageFile object.  This method can only be used when this object is not loaded.      *       * @throws IOException       *         if the files cannot be deleted.      * @throws IllegalStateException       *         if this PageFile is loaded      */
+comment|/**      * Deletes the files used by the PageFile object.  This method can only be used when this object is not loaded.      *      * @throws IOException           if the files cannot be deleted.      * @throws IllegalStateException if this PageFile is loaded      */
 specifier|public
 name|void
 name|delete
@@ -1334,7 +1504,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * Loads the page file so that it can be accessed for read/write purposes.  This allocates OS resources.  If this is the       * first time the page file is loaded, then this creates the page file in the file system.      *       * @throws IOException      *         If the page file cannot be loaded. This could be cause the existing page file is corrupt is a bad version or if       *         there was a disk error.      * @throws IllegalStateException       *         If the page file was already loaded.      */
+comment|/**      * Loads the page file so that it can be accessed for read/write purposes.  This allocates OS resources.  If this is the      * first time the page file is loaded, then this creates the page file in the file system.      *      * @throws IOException           If the page file cannot be loaded. This could be cause the existing page file is corrupt is a bad version or if      *                               there was a disk error.      * @throws IllegalStateException If the page file was already loaded.      */
 specifier|public
 name|void
 name|load
@@ -1361,6 +1531,36 @@ condition|(
 name|enablePageCaching
 condition|)
 block|{
+if|if
+condition|(
+name|isUseLFRUEviction
+argument_list|()
+condition|)
+block|{
+name|pageCache
+operator|=
+name|Collections
+operator|.
+name|synchronizedMap
+argument_list|(
+operator|new
+name|LFUCache
+argument_list|<
+name|Long
+argument_list|,
+name|Page
+argument_list|>
+argument_list|(
+name|pageCacheSize
+argument_list|,
+name|getLFUEvictionFactor
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|pageCache
 operator|=
 name|Collections
@@ -1385,6 +1585,7 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|File
 name|file
@@ -1706,7 +1907,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Unloads a previously loaded PageFile.  This deallocates OS related resources like file handles.      * once unloaded, you can no longer use the page file to read or write Pages.      *       * @throws IOException      *         if there was a disk error occurred while closing the down the page file.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
+comment|/**      * Unloads a previously loaded PageFile.  This deallocates OS related resources like file handles.      * once unloaded, you can no longer use the page file to read or write Pages.      *      * @throws IOException           if there was a disk error occurred while closing the down the page file.      * @throws IllegalStateException if the PageFile is not loaded      */
 specifier|public
 name|void
 name|unload
@@ -1894,7 +2095,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**      * Flush and sync all write buffers to disk.      *       * @throws IOException      *         If an disk error occurred.      */
+comment|/**      * Flush and sync all write buffers to disk.      *      * @throws IOException If an disk error occurred.      */
 specifier|public
 name|void
 name|flush
@@ -2627,7 +2828,7 @@ block|}
 comment|///////////////////////////////////////////////////////////////////
 comment|// Property Accessors
 comment|///////////////////////////////////////////////////////////////////
-comment|/**      * Is the recovery buffer used to double buffer page writes.  Enabled by default.      *       * @return is the recovery buffer enabled.      */
+comment|/**      * Is the recovery buffer used to double buffer page writes.  Enabled by default.      *      * @return is the recovery buffer enabled.      */
 specifier|public
 name|boolean
 name|isEnableRecoveryFile
@@ -2666,7 +2867,7 @@ return|return
 name|enableDiskSyncs
 return|;
 block|}
-comment|/**      * Allows you enable syncing writes to disk.      * @param syncWrites      */
+comment|/**      * Allows you enable syncing writes to disk.      */
 specifier|public
 name|void
 name|setEnableDiskSyncs
@@ -2713,7 +2914,7 @@ operator|.
 name|PAGE_HEADER_SIZE
 return|;
 block|}
-comment|/**      * Configures the page size used by the page file.  By default it is 4k.  Once a page file is created on disk,      * subsequent loads of that file will use the original pageSize.  Once the PageFile is loaded, this setting      * can no longer be changed.      *       * @param pageSize the pageSize to set      * @throws IllegalStateException      *         once the page file is loaded.      */
+comment|/**      * Configures the page size used by the page file.  By default it is 4k.  Once a page file is created on disk,      * subsequent loads of that file will use the original pageSize.  Once the PageFile is loaded, this setting      * can no longer be changed.      *      * @param pageSize the pageSize to set      * @throws IllegalStateException once the page file is loaded.      */
 specifier|public
 name|void
 name|setPageSize
@@ -2949,6 +3150,54 @@ operator|=
 name|writeBatchSize
 expr_stmt|;
 block|}
+specifier|public
+name|float
+name|getLFUEvictionFactor
+parameter_list|()
+block|{
+return|return
+name|LFUEvictionFactor
+return|;
+block|}
+specifier|public
+name|void
+name|setLFUEvictionFactor
+parameter_list|(
+name|float
+name|LFUEvictionFactor
+parameter_list|)
+block|{
+name|this
+operator|.
+name|LFUEvictionFactor
+operator|=
+name|LFUEvictionFactor
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isUseLFRUEviction
+parameter_list|()
+block|{
+return|return
+name|useLFRUEviction
+return|;
+block|}
+specifier|public
+name|void
+name|setUseLFRUEviction
+parameter_list|(
+name|boolean
+name|useLFRUEviction
+parameter_list|)
+block|{
+name|this
+operator|.
+name|useLFRUEviction
+operator|=
+name|useLFRUEviction
+expr_stmt|;
+block|}
 comment|///////////////////////////////////////////////////////////////////
 comment|// Package Protected Methods exposed to Transaction
 comment|///////////////////////////////////////////////////////////////////
@@ -3000,7 +3249,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**       * Allocates a block of free pages that you can write data to.      *       * @param count the number of sequential pages to allocate      * @return the first page of the sequential set.       * @throws IOException      *         If an disk error occurred.      * @throws IllegalStateException      *         if the PageFile is not loaded      */
+comment|/**      * Allocates a block of free pages that you can write data to.      *      * @param count the number of sequential pages to allocate      * @return the first page of the sequential set.      * @throws IOException           If an disk error occurred.      * @throws IllegalStateException if the PageFile is not loaded      */
 parameter_list|<
 name|T
 parameter_list|>
@@ -3771,7 +4020,7 @@ block|}
 comment|///////////////////////////////////////////////////////////////////
 comment|// Internal Double write implementation follows...
 comment|///////////////////////////////////////////////////////////////////
-comment|/**      *       */
+comment|/**      *      */
 specifier|private
 name|void
 name|pollWrites
@@ -4366,7 +4615,7 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Inspects the recovery buffer and re-applies any       * partially applied page writes.      *       * @return the next transaction id that can be used.      * @throws IOException      */
+comment|/**      * Inspects the recovery buffer and re-applies any      * partially applied page writes.      *      * @return the next transaction id that can be used.      */
 specifier|private
 name|long
 name|redoRecoveryUpdates
