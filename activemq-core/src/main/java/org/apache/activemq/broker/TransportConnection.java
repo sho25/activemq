@@ -1021,6 +1021,12 @@ specifier|private
 name|String
 name|duplexNetworkConnectorId
 decl_stmt|;
+specifier|private
+name|Throwable
+name|stopError
+init|=
+literal|null
+decl_stmt|;
 comment|/**      * @param taskRunnerFactory - can be null if you want direct dispatch to the transport      *                          else commands are sent async.      */
 specifier|public
 name|TransportConnection
@@ -1134,31 +1140,6 @@ name|Object
 name|o
 parameter_list|)
 block|{
-if|if
-condition|(
-name|pendingStop
-condition|)
-block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|trace
-argument_list|(
-literal|"Ignoring Command due to pending stop: "
-operator|+
-name|o
-argument_list|)
-expr_stmt|;
-block|}
-return|return;
-block|}
 name|serviceLock
 operator|.
 name|readLock
@@ -1665,6 +1646,13 @@ argument_list|(
 name|ce
 argument_list|)
 expr_stmt|;
+comment|// Record the error that caused the transport to stop
+name|this
+operator|.
+name|stopError
+operator|=
+name|e
+expr_stmt|;
 comment|// Wait a little bit to try to get the output buffer to flush
 comment|// the exption notification to the client.
 try|try
@@ -1818,6 +1806,12 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
+if|if
+condition|(
+operator|!
+name|pendingStop
+condition|)
+block|{
 name|response
 operator|=
 name|command
@@ -1827,6 +1821,20 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|response
+operator|=
+operator|new
+name|ExceptionResponse
+argument_list|(
+name|this
+operator|.
+name|stopError
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1899,6 +1907,8 @@ name|e
 operator|.
 name|getLocalizedMessage
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -5288,6 +5298,9 @@ parameter_list|,
 specifier|final
 name|String
 name|reason
+parameter_list|,
+name|Throwable
+name|cause
 parameter_list|)
 block|{
 if|if
@@ -5305,6 +5318,10 @@ block|{
 name|pendingStop
 operator|=
 literal|true
+expr_stmt|;
+name|stopError
+operator|=
+name|cause
 expr_stmt|;
 block|}
 try|try
