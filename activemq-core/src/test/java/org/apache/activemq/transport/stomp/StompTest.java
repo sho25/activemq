@@ -9997,8 +9997,6 @@ operator|.
 name|REPLY_TO
 argument_list|)
 argument_list|,
-literal|"/queue/"
-operator|+
 literal|"JustAString"
 argument_list|)
 expr_stmt|;
