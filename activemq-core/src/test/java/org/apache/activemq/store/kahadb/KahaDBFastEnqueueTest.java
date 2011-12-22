@@ -237,6 +237,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -353,8 +363,9 @@ specifier|final
 name|long
 name|toSend
 init|=
-literal|500000
+literal|1000
 decl_stmt|;
+comment|//500000;
 annotation|@
 name|Ignore
 argument_list|(
@@ -613,8 +624,16 @@ literal|"%"
 argument_list|)
 expr_stmt|;
 comment|//System.out.println("Index writes %:       " + kahaDBPersistenceAdapter.getStore().getPageFile().totalWritten / (double)totalSent * 100 + "%");
-comment|//restartBroker(0);
-comment|//consumeMessages(toSend);
+name|restartBroker
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|consumeMessages
+argument_list|(
+name|toSend
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 name|void
@@ -1046,12 +1065,23 @@ literal|1000
 argument_list|)
 expr_stmt|;
 comment|// optimise for disk best batch rate
-comment|//kahaDBPersistenceAdapter.setJournalMaxWriteBatchSize(128*1024); //4mb default
+name|kahaDBPersistenceAdapter
+operator|.
+name|setJournalMaxWriteBatchSize
+argument_list|(
+literal|24
+operator|*
+literal|1024
+operator|*
+literal|1024
+argument_list|)
+expr_stmt|;
+comment|//4mb default
 name|kahaDBPersistenceAdapter
 operator|.
 name|setJournalMaxFileLength
 argument_list|(
-literal|1024
+literal|128
 operator|*
 literal|1024
 operator|*
@@ -1072,6 +1102,20 @@ operator|.
 name|setIndexWriteBatchSize
 argument_list|(
 literal|500000
+argument_list|)
+expr_stmt|;
+name|kahaDBPersistenceAdapter
+operator|.
+name|setEnableIndexRecoveryFile
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|kahaDBPersistenceAdapter
+operator|.
+name|setEnableIndexDiskSyncs
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 name|broker

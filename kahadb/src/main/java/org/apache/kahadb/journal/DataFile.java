@@ -117,6 +117,7 @@ name|Integer
 name|dataFileId
 decl_stmt|;
 specifier|protected
+specifier|volatile
 name|int
 name|length
 decl_stmt|;

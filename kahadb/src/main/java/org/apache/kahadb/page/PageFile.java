@@ -4221,6 +4221,11 @@ operator|new
 name|Adler32
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|enableRecoveryFile
+condition|)
+block|{
 name|recoveryFile
 operator|.
 name|seek
@@ -4228,6 +4233,7 @@ argument_list|(
 name|RECOVERY_FILE_HEADER_SIZE
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 name|PageWrite
@@ -4430,6 +4436,11 @@ name|enableDiskSyncs
 condition|)
 block|{
 comment|// Sync to make sure recovery buffer writes land on disk..
+if|if
+condition|(
+name|enableRecoveryFile
+condition|)
+block|{
 name|recoveryFile
 operator|.
 name|getFD
@@ -4438,6 +4449,7 @@ operator|.
 name|sync
 argument_list|()
 expr_stmt|;
+block|}
 name|writeFile
 operator|.
 name|getFD
