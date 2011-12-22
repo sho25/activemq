@@ -155,8 +155,28 @@ name|IdGenerator
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * ActiveMQMessageAuditTest  *   *   */
+comment|/**  * ActiveMQMessageAuditTest  *  *  */
 end_comment
 
 begin_class
@@ -166,7 +186,21 @@ name|ActiveMQMessageAuditTest
 extends|extends
 name|TestCase
 block|{
-comment|/**      * Constructor for ActiveMQMessageAuditTest.      *       * @param name      */
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|ActiveMQMessageAuditTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+comment|/**      * Constructor for ActiveMQMessageAuditTest.      *      * @param name      */
 specifier|public
 name|ActiveMQMessageAuditTest
 parameter_list|(
@@ -698,12 +732,12 @@ argument_list|(
 name|audit
 argument_list|)
 decl_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
+literal|"Length: "
+operator|+
 name|bytes
 operator|.
 name|length
@@ -772,11 +806,9 @@ argument_list|(
 name|j
 argument_list|)
 expr_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 literal|"producer "
 operator|+
@@ -872,12 +904,12 @@ argument_list|(
 name|audit
 argument_list|)
 expr_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
+literal|"Length: "
+operator|+
 name|bytes
 operator|.
 name|length
@@ -934,12 +966,12 @@ argument_list|(
 name|audit
 argument_list|)
 expr_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
+literal|"Length: "
+operator|+
 name|bytes
 operator|.
 name|length
