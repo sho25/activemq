@@ -343,7 +343,7 @@ specifier|final
 name|int
 name|parallelProducer
 init|=
-literal|2
+literal|20
 decl_stmt|;
 specifier|private
 name|Vector
@@ -363,14 +363,15 @@ specifier|final
 name|long
 name|toSend
 init|=
-literal|1000
+literal|500000
 decl_stmt|;
-comment|//500000;
 annotation|@
 name|Ignore
 argument_list|(
-literal|"not ready yet, exploring getting broker disk bound"
+literal|"too slow, exploring getting broker disk bound"
 argument_list|)
+comment|// use with:
+comment|// -Xmx4g -Dorg.apache.kahadb.journal.appender.WRITE_STAT_WINDOW=10000 -Dorg.apache.kahadb.journal.CALLER_BUFFER_APPENDER=true
 specifier|public
 name|void
 name|testPublishNoConsumer
@@ -772,6 +773,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|broker
+operator|!=
+literal|null
+condition|)
+block|{
 name|broker
 operator|.
 name|stop
@@ -782,6 +790,7 @@ operator|.
 name|waitUntilStopped
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|final
 name|double
@@ -1163,6 +1172,63 @@ operator|+
 name|options
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testRollover
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|byte
+name|flip
+init|=
+literal|0x1
+decl_stmt|;
+for|for
+control|(
+name|long
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|Short
+operator|.
+name|MAX_VALUE
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|assertEquals
+argument_list|(
+literal|"0 @:"
+operator|+
+name|i
+argument_list|,
+literal|0
+argument_list|,
+name|flip
+operator|^=
+literal|1
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"1 @:"
+operator|+
+name|i
+argument_list|,
+literal|1
+argument_list|,
+name|flip
+operator|^=
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class
