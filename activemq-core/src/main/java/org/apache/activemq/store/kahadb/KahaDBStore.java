@@ -5993,7 +5993,7 @@ name|super
 operator|.
 name|checkpointCleanup
 argument_list|(
-literal|false
+name|sync
 argument_list|)
 expr_stmt|;
 block|}
