@@ -80,7 +80,7 @@ name|String
 name|getBrokerVersion
 parameter_list|()
 function_decl|;
-comment|/**      * The Broker will fush it's caches so that the garbage collector can      * recalaim more memory.      *      * @throws Exception      */
+comment|/**      * The Broker will flush it's caches so that the garbage collector can      * reclaim more memory.      *      * @throws Exception      */
 annotation|@
 name|MBeanInfo
 argument_list|(
