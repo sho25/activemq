@@ -795,6 +795,8 @@ block|{
 return|return
 name|this
 operator|.
+name|letter
+operator|.
 name|getFailoverProducersAuditDepth
 argument_list|()
 return|;
@@ -1567,6 +1569,8 @@ name|isEnableIndexPageCaching
 parameter_list|()
 block|{
 return|return
+name|letter
+operator|.
 name|isEnableIndexPageCaching
 argument_list|()
 return|;

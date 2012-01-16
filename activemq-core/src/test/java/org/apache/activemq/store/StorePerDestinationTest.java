@@ -448,7 +448,7 @@ return|return
 name|broker
 return|;
 block|}
-specifier|private
+specifier|protected
 name|KahaDBPersistenceAdapter
 name|createStore
 parameter_list|(
@@ -1134,6 +1134,9 @@ argument_list|,
 name|otherStore
 operator|.
 name|getDirectory
+argument_list|()
+operator|.
+name|getParentFile
 argument_list|()
 argument_list|)
 expr_stmt|;
