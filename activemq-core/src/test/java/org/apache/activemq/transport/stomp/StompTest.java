@@ -4572,6 +4572,27 @@ name|format
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Need some time for the Ack to get processed.
+name|waitForFrameToTakeEffect
+argument_list|()
+expr_stmt|;
+name|frame
+operator|=
+literal|"DISCONNECT\n"
+operator|+
+literal|"\n\n"
+operator|+
+name|Stomp
+operator|.
+name|NULL
+expr_stmt|;
+name|stompConnection
+operator|.
+name|sendFrame
+argument_list|(
+name|frame
+argument_list|)
+expr_stmt|;
 name|stompDisconnect
 argument_list|()
 expr_stmt|;
