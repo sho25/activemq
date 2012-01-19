@@ -194,6 +194,8 @@ name|this
 init|)
 block|{
 return|return
+name|super
+operator|.
 name|isInOrder
 argument_list|(
 name|id
