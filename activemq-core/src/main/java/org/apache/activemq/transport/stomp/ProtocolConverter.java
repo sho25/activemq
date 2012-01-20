@@ -1613,7 +1613,7 @@ name|equals
 argument_list|(
 name|Stomp
 operator|.
-name|V1_1
+name|V1_0
 argument_list|)
 condition|)
 block|{
