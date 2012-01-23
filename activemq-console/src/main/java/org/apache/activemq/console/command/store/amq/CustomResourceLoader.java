@@ -234,6 +234,15 @@ argument_list|(
 name|configuration
 argument_list|)
 expr_stmt|;
+comment|// AMQ-3665: Turn on template caching as otherwise the journal reader
+comment|// could run out of memory on large journal files
+name|this
+operator|.
+name|setCachingOn
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      */
 specifier|public
