@@ -926,6 +926,15 @@ name|dir
 parameter_list|)
 block|{     }
 specifier|public
+name|File
+name|getDirectory
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+specifier|public
 name|void
 name|checkpoint
 parameter_list|(

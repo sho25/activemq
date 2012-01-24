@@ -79,22 +79,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
-operator|.
-name|region
-operator|.
-name|Destination
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -286,6 +270,11 @@ parameter_list|(
 name|File
 name|dir
 parameter_list|)
+function_decl|;
+comment|/**      * @return the directory used by the persistence adaptor      */
+name|File
+name|getDirectory
+parameter_list|()
 function_decl|;
 comment|/**      * checkpoint any      * @param sync       * @throws IOException       *      */
 name|void

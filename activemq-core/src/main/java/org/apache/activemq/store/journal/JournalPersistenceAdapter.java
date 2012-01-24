@@ -961,6 +961,10 @@ specifier|private
 name|TaskRunnerFactory
 name|taskRunnerFactory
 decl_stmt|;
+specifier|private
+name|File
+name|directory
+decl_stmt|;
 specifier|public
 name|JournalPersistenceAdapter
 parameter_list|()
@@ -3809,7 +3813,23 @@ parameter_list|(
 name|File
 name|dir
 parameter_list|)
-block|{     }
+block|{
+name|this
+operator|.
+name|directory
+operator|=
+name|dir
+expr_stmt|;
+block|}
+specifier|public
+name|File
+name|getDirectory
+parameter_list|()
+block|{
+return|return
+name|directory
+return|;
+block|}
 specifier|public
 name|long
 name|size
