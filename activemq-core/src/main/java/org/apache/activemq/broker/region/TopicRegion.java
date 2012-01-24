@@ -1292,6 +1292,9 @@ name|sub
 operator|.
 name|getConsumerInfo
 argument_list|()
+operator|.
+name|getConsumerId
+argument_list|()
 argument_list|)
 operator|!=
 literal|null
