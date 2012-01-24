@@ -1171,7 +1171,7 @@ name|sub
 init|=
 name|durableSubscriptions
 operator|.
-name|remove
+name|get
 argument_list|(
 name|key
 argument_list|)
@@ -1211,6 +1211,16 @@ argument_list|(
 literal|"Durable consumer is in use"
 argument_list|)
 throw|;
+block|}
+else|else
+block|{
+name|durableSubscriptions
+operator|.
+name|get
+argument_list|(
+name|key
+argument_list|)
+expr_stmt|;
 block|}
 name|destinationsLock
 operator|.
