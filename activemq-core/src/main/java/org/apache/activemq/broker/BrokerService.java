@@ -2448,7 +2448,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**      * Forces a start of the broker.       * By default a BrokerService instance that was       * previously stopped using BrokerService.stop() cannot be restarted      * using BrokerService.start().       * This method enforces a restart.       * It is not recommended to force a restart of the broker and will not work      * for most but some very trivial broker configurations.       * For restarting a broker instance we recommend to first call stop() on      * the old instance and then recreate a new BrokerService instance.      *       * @param force - if true enforces a restart.      * @throws Exception      */
+comment|/**      * Forces a start of the broker.      * By default a BrokerService instance that was      * previously stopped using BrokerService.stop() cannot be restarted      * using BrokerService.start().      * This method enforces a restart.      * It is not recommended to force a restart of the broker and will not work      * for most but some very trivial broker configurations.      * For restarting a broker instance we recommend to first call stop() on      * the old instance and then recreate a new BrokerService instance.      *      * @param force - if true enforces a restart.      * @throws Exception      */
 specifier|public
 name|void
 name|start
@@ -7021,6 +7021,24 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|tmpDir
+operator|.
+name|isAbsolute
+argument_list|()
+condition|)
+block|{
+name|tmpDir
+operator|=
+operator|new
+name|File
+argument_list|(
+name|tmpDirPath
+argument_list|)
+expr_stmt|;
+block|}
 name|long
 name|storeLimit
 init|=
