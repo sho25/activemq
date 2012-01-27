@@ -8902,6 +8902,7 @@ specifier|public
 name|StoredDestination
 name|readPayload
 parameter_list|(
+specifier|final
 name|DataInput
 name|dataIn
 parameter_list|)
@@ -9032,7 +9033,7 @@ name|metadata
 operator|.
 name|version
 operator|>=
-name|VERSION
+literal|4
 condition|)
 block|{
 name|value
@@ -9109,9 +9110,9 @@ argument_list|>
 argument_list|(
 name|pageFile
 argument_list|,
-name|tx
+name|dataIn
 operator|.
-name|allocate
+name|readLong
 argument_list|()
 argument_list|)
 decl_stmt|;
