@@ -353,9 +353,9 @@ literal|1024L
 operator|*
 literal|1024
 operator|*
-literal|1024
+literal|1000
 operator|*
-literal|100
+literal|50
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -375,7 +375,7 @@ literal|1024L
 operator|*
 literal|1024
 operator|*
-literal|1024
+literal|1000
 operator|*
 literal|100
 argument_list|)
