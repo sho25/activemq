@@ -1850,19 +1850,37 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-name|ioe
+name|Throwable
+name|t
 parameter_list|)
 block|{
 name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Index corrupted, trying to recover ..."
-argument_list|,
-name|ioe
+literal|"Index corrupted. Recovering the index through journal replay. Cause:"
+operator|+
+name|t
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Index load failure"
+argument_list|,
+name|t
+argument_list|)
+expr_stmt|;
+block|}
 comment|// try to recover index
 try|try
 block|{
@@ -1897,6 +1915,16 @@ name|delete
 argument_list|()
 expr_stmt|;
 block|}
+name|metadata
+operator|=
+operator|new
+name|Metadata
+argument_list|()
+expr_stmt|;
+name|pageFile
+operator|=
+literal|null
+expr_stmt|;
 name|loadPageFile
 argument_list|()
 expr_stmt|;
@@ -2200,6 +2228,15 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
+if|if
+condition|(
+name|metadata
+operator|.
+name|page
+operator|!=
+literal|null
+condition|)
+block|{
 name|pageFile
 operator|.
 name|tx
@@ -2237,6 +2274,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 name|pageFile
 operator|.
 name|unload
@@ -2347,6 +2385,15 @@ operator|=
 name|getFirstInProgressTxLocation
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|metadata
+operator|.
+name|page
+operator|!=
+literal|null
+condition|)
+block|{
 name|pageFile
 operator|.
 name|tx
@@ -2390,6 +2437,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 finally|finally
