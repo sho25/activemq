@@ -1060,6 +1060,34 @@ parameter_list|)
 block|{
 try|try
 block|{
+comment|// enqueue can block on blocking queue, preventing turnOff
+comment|// so avoid in that case: https://issues.apache.org/jira/browse/AMQ-3684
+if|if
+condition|(
+name|async
+operator|&&
+name|getMessageQueue
+argument_list|()
+operator|.
+name|remainingCapacity
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+comment|// enqueue blocked or will be
+name|this
+operator|.
+name|transportListener
+operator|=
+name|commandListener
+expr_stmt|;
+name|wakeup
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
 try|try
 block|{
 name|enqueueValve
@@ -1084,6 +1112,7 @@ operator|.
 name|turnOn
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch
