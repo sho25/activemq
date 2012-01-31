@@ -33,16 +33,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|Destination
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|JMSException
 import|;
 end_import
@@ -128,7 +118,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Destination bridge is used to bridge between to different JMS systems  *   *   */
+comment|/**  * A Destination bridge is used to bridge between to different JMS systems  *  *  */
 end_comment
 
 begin_class
@@ -220,6 +210,15 @@ throws|throws
 name|JMSException
 block|{
 comment|// set up the consumer
+if|if
+condition|(
+name|consumerConnection
+operator|==
+literal|null
+condition|)
+return|return
+literal|null
+return|;
 name|consumerSession
 operator|=
 name|consumerConnection
@@ -340,6 +339,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|consumer
+operator|.
+name|setMessageListener
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 return|return
 name|consumer
 return|;
@@ -352,6 +358,15 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
+if|if
+condition|(
+name|producerConnection
+operator|==
+literal|null
+condition|)
+return|return
+literal|null
+return|;
 name|producerSession
 operator|=
 name|producerConnection
@@ -394,12 +409,23 @@ condition|(
 name|producer
 operator|==
 literal|null
-condition|)
-block|{
+operator|&&
 name|createProducer
 argument_list|()
-expr_stmt|;
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"Producer for remote queue not available."
+argument_list|)
+throw|;
 block|}
+try|try
+block|{
 name|producer
 operator|.
 name|publish
@@ -409,6 +435,21 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|e
+parameter_list|)
+block|{
+name|producer
+operator|=
+literal|null
+expr_stmt|;
+throw|throw
+name|e
+throw|;
+block|}
 block|}
 comment|/**      * @return Returns the consumerConnection.      */
 specifier|public
@@ -435,6 +476,36 @@ name|consumerConnection
 operator|=
 name|consumerConnection
 expr_stmt|;
+if|if
+condition|(
+name|started
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
+try|try
+block|{
+name|createConsumer
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|jmsConnector
+operator|.
+name|handleConnectionFailure
+argument_list|(
+name|getConnnectionForConsumer
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 comment|/**      * @return Returns the subscriptionName.      */
 specifier|public

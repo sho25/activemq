@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Create an Outbound Topic Bridge  *   * @org.apache.xbean.XBean  *   *   */
+comment|/**  * Create an Outbound Topic Bridge.  By default the bridge uses the same  * name for both the inbound and outbound topics, however this can be altered  * by using the public setter methods to configure both inbound and outbound  * topic names.  *  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
@@ -34,7 +34,7 @@ decl_stmt|;
 name|String
 name|localTopicName
 decl_stmt|;
-comment|/**      * Constructor that takes a foreign destination as an argument      *       * @param outboundTopicName      */
+comment|/**      * Constructor that takes a foreign destination as an argument      *      * @param outboundTopicName      */
 specifier|public
 name|OutboundTopicBridge
 parameter_list|(
@@ -70,7 +70,7 @@ return|return
 name|outboundTopicName
 return|;
 block|}
-comment|/**      * @param outboundTopicName The outboundTopicName to set.      */
+comment|/**      * Sets the name of the outbound topic name.  If the inbound topic name      * has not been set already then this method uses the provided topic name      * to set the inbound topic name as well.      *      * @param outboundTopicName The outboundTopicName to set.      */
 specifier|public
 name|void
 name|setOutboundTopicName

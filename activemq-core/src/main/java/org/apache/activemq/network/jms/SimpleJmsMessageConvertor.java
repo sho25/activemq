@@ -58,7 +58,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Converts Message from one JMS to another  *   * @org.apache.xbean.XBean  *   *   */
+comment|/**  * Converts Message from one JMS to another  *  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
@@ -68,7 +68,7 @@ name|SimpleJmsMessageConvertor
 implements|implements
 name|JmsMesageConvertor
 block|{
-comment|/**      * Convert a foreign JMS Message to a native ActiveMQ Message - Inbound or      * visa-versa outbound      *       * @param message      * @return the converted message      * @throws JMSException      */
+comment|/**      * Convert a foreign JMS Message to a native ActiveMQ Message - Inbound or      * visa-versa outbound.      *      * @param message      *      The target message to convert to a native ActiveMQ message      * @return the converted message      * @throws JMSException      */
 specifier|public
 name|Message
 name|convert
@@ -83,6 +83,7 @@ return|return
 name|message
 return|;
 block|}
+comment|/**      * Convert a foreign JMS Message to a native ActiveMQ Message - Inbound or      * visa-versa outbound.  If the replyTo Destination instance is not null      * then the Message is configured with the given replyTo value.      *      * @param message      *      The target message to convert to a native ActiveMQ message      * @param replyTo      *      The replyTo Destination to set on the converted Message.      *      * @return the converted message      * @throws JMSException      */
 specifier|public
 name|Message
 name|convert

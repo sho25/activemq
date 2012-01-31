@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Create an Inbound Queue Bridge  *   * @org.apache.xbean.XBean  *   *   */
+comment|/**  * Create an Inbound Queue Bridge.  By default this class uses the sname name for  * both the inbound and outbound queue.  This behavior can be overridden however  * by using the setter methods to configure both the inbound and outboud queue names  * separately.  *  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
@@ -34,7 +34,7 @@ decl_stmt|;
 name|String
 name|localQueueName
 decl_stmt|;
-comment|/**      * Constructor that takes a foriegn destination as an argument      *       * @param inboundQueueName      */
+comment|/**      * Constructor that takes a foreign destination as an argument      *      * @param inboundQueueName      */
 specifier|public
 name|InboundQueueBridge
 parameter_list|(
@@ -55,7 +55,7 @@ operator|=
 name|inboundQueueName
 expr_stmt|;
 block|}
-comment|/**      * Default Contructor      */
+comment|/**      * Default Constructor      */
 specifier|public
 name|InboundQueueBridge
 parameter_list|()
@@ -70,7 +70,7 @@ return|return
 name|inboundQueueName
 return|;
 block|}
-comment|/**      * @param inboundQueueName The inboundQueueName to set.      */
+comment|/**      * Sets the queue name used for the inbound queue, if the outbound queue      * name has not been set, then this method uses the same name to configure      * the outbound queue name.      *      * @param inboundQueueName The inboundQueueName to set.      */
 specifier|public
 name|void
 name|setInboundQueueName

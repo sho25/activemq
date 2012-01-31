@@ -58,7 +58,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Converts Message from one JMS to another  *   *   */
+comment|/**  * Converts Message from one JMS to another  */
 end_comment
 
 begin_interface
@@ -66,7 +66,7 @@ specifier|public
 interface|interface
 name|JmsMesageConvertor
 block|{
-comment|/**      * Convert a foreign JMS Message to a native ActiveMQ Message      * @param message      * @return the converted message      * @throws JMSException      */
+comment|/**      * Convert a foreign JMS Message to a native ActiveMQ Message      *      * @param message      *      The target message to convert to a native ActiveMQ message      *      * @return the converted message      * @throws JMSException      */
 name|Message
 name|convert
 parameter_list|(
@@ -76,6 +76,7 @@ parameter_list|)
 throws|throws
 name|JMSException
 function_decl|;
+comment|/**      * Convert a foreign JMS Message to a native ActiveMQ Message - Inbound or      * visa-versa outbound.  If the replyTo Destination instance is not null      * then the Message is configured with the given replyTo value.      *      * @param message      *      The target message to convert to a native ActiveMQ message      * @param replyTo      *      The replyTo Destination to set on the converted Message.      *      * @return the converted message      * @throws JMSException      */
 name|Message
 name|convert
 parameter_list|(
