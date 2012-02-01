@@ -434,6 +434,10 @@ argument_list|(
 literal|"FooTwo"
 argument_list|)
 decl_stmt|;
+specifier|private
+name|String
+name|connectionUri
+decl_stmt|;
 specifier|public
 name|void
 name|testRunProducerWithHungConsumer
@@ -462,7 +466,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"tcp://localhost:61618"
+name|connectionUri
 argument_list|)
 decl_stmt|;
 comment|// ensure messages are spooled to disk for this consumer
@@ -1088,7 +1092,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"tcp://localhost:61618"
+name|connectionUri
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -1579,7 +1583,7 @@ name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://localhost:61618"
+literal|"tcp://localhost:0"
 argument_list|)
 operator|.
 name|setName
@@ -1590,6 +1594,21 @@ expr_stmt|;
 name|broker
 operator|.
 name|start
+argument_list|()
+expr_stmt|;
+name|connectionUri
+operator|=
+name|broker
+operator|.
+name|getTransportConnectors
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|getPublishableConnectString
 argument_list|()
 expr_stmt|;
 block|}
