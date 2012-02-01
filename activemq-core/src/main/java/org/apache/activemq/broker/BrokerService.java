@@ -7154,6 +7154,57 @@ literal|" mb of free space"
 argument_list|)
 expr_stmt|;
 block|}
+name|long
+name|maxJournalFileSize
+init|=
+name|usage
+operator|.
+name|getTempUsage
+argument_list|()
+operator|.
+name|getStore
+argument_list|()
+operator|.
+name|getJournalMaxFileLength
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|storeLimit
+operator|<
+name|maxJournalFileSize
+condition|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Temporary Store limit is "
+operator|+
+name|storeLimit
+operator|/
+operator|(
+literal|1024
+operator|*
+literal|1024
+operator|)
+operator|+
+literal|" mb, whilst the max journal file size for the temporary store is: "
+operator|+
+name|maxJournalFileSize
+operator|/
+operator|(
+literal|1024
+operator|*
+literal|1024
+operator|)
+operator|+
+literal|" mb, "
+operator|+
+literal|"the temp store will not accept any data when used."
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
