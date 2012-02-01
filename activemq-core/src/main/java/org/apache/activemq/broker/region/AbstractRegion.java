@@ -903,29 +903,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|debug
-argument_list|(
-name|broker
-operator|.
-name|getBrokerName
-argument_list|()
-operator|+
-literal|" adding destination: "
-operator|+
-name|destination
-argument_list|)
-expr_stmt|;
-block|}
 name|destinationsLock
 operator|.
 name|writeLock
@@ -965,6 +942,29 @@ operator|||
 name|createIfTemporary
 condition|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|broker
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" adding destination: "
+operator|+
+name|destination
+argument_list|)
+expr_stmt|;
+block|}
 name|dest
 operator|=
 name|createDestination
@@ -1426,9 +1426,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Destination doesn't exist: "
+literal|"Cannot remove a destination that doesn't exist: "
 operator|+
-name|dest
+name|destination
 argument_list|)
 expr_stmt|;
 block|}

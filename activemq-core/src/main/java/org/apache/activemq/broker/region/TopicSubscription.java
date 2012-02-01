@@ -721,6 +721,16 @@ name|isSlowConsumer
 argument_list|()
 condition|)
 block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+name|toString
+argument_list|()
+operator|+
+literal|": has reached its prefetch limit without an ack, it appears to be slow"
+argument_list|)
+expr_stmt|;
 name|setSlowConsumer
 argument_list|(
 literal|true

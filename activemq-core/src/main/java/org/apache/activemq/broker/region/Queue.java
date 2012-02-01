@@ -653,6 +653,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|state
+operator|.
+name|ProducerState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|store
 operator|.
 name|MessageRecoveryListener
@@ -3199,6 +3213,47 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+name|ProducerState
+name|state
+init|=
+name|producerExchange
+operator|.
+name|getProducerState
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|state
+operator|==
+literal|null
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Send failed for: "
+operator|+
+name|message
+operator|+
+literal|",  missing producer state for: "
+operator|+
+name|producerExchange
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"Cannot send message to "
+operator|+
+name|getActiveMQDestination
+argument_list|()
+operator|+
+literal|" with invalid (null) producer state"
+argument_list|)
+throw|;
+block|}
 specifier|final
 name|ProducerInfo
 name|producerInfo
@@ -8392,15 +8447,20 @@ if|if
 condition|(
 name|LOG
 operator|.
-name|isTraceEnabled
+name|isDebugEnabled
 argument_list|()
 condition|)
 block|{
 name|LOG
 operator|.
-name|trace
+name|debug
 argument_list|(
-literal|"Message "
+name|broker
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" Message "
 operator|+
 name|msg
 operator|.

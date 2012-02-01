@@ -491,6 +491,8 @@ literal|" http://activemq.apache.org/schema/core/activemq-core.xsd\">"
 operator|+
 literal|"<broker xmlns=\"http://activemq.apache.org/schema/core\" id=\"broker\""
 operator|+
+literal|"    allowTempAutoCreationOnSend=\"true\" schedulePeriodForDestinationPurge=\"1000\""
+operator|+
 literal|"    brokerName=\"%HOST%\" persistent=\"false\" advisorySupport=\"false\" useJmx=\"false\">"
 operator|+
 literal|"<destinationPolicy>"
@@ -499,7 +501,7 @@ literal|"<policyMap>"
 operator|+
 literal|"<policyEntries>"
 operator|+
-literal|"<policyEntry optimizedDispatch=\"true\">"
+literal|"<policyEntry optimizedDispatch=\"true\"  gcInactiveDestinations=\"true\" gcWithNetworkConsumers=\"true\" inactiveTimoutBeforeGC=\"1000\">"
 operator|+
 literal|"<destination>"
 operator|+
@@ -1521,6 +1523,13 @@ argument_list|(
 literal|1000
 argument_list|)
 expr_stmt|;
+name|broker
+operator|.
+name|setAllowTempAutoCreationOnSend
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|PolicyMap
 name|map
 init|=
@@ -1560,8 +1569,6 @@ name|tempReplyQPolicy
 operator|.
 name|setInactiveTimoutBeforeGC
 argument_list|(
-literal|10
-operator|*
 literal|1000
 argument_list|)
 expr_stmt|;
