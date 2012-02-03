@@ -451,6 +451,8 @@ parameter_list|,
 name|ActiveMQMessageAudit
 name|audit
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|super
 argument_list|(

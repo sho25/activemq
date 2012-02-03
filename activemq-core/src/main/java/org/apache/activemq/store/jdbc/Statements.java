@@ -1265,6 +1265,11 @@ literal|"SELECT DISTINCT CONTAINER FROM "
 operator|+
 name|getFullMessageTableName
 argument_list|()
+operator|+
+literal|" UNION DISTINCT SELECT DISTINCT CONTAINER FROM "
+operator|+
+name|getFullAckTableName
+argument_list|()
 expr_stmt|;
 block|}
 return|return

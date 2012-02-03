@@ -126,6 +126,13 @@ argument_list|(
 name|jdbc
 argument_list|)
 expr_stmt|;
+name|broker
+operator|.
+name|setUseVirtualTopics
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

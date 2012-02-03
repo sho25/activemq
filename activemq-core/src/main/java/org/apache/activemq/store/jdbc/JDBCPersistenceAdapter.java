@@ -706,7 +706,6 @@ argument_list|>
 name|getDestinations
 parameter_list|()
 block|{
-comment|// Get a connection and insert the message into the DB.
 name|TransactionContext
 name|c
 init|=
