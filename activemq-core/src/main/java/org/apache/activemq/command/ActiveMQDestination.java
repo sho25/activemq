@@ -238,7 +238,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @openwire:marshaller  *   */
+comment|/**  * @openwire:marshaller  *  */
 end_comment
 
 begin_class
@@ -256,6 +256,9 @@ implements|,
 name|Externalizable
 implements|,
 name|Comparable
+argument_list|<
+name|Object
+argument_list|>
 block|{
 specifier|public
 specifier|static
@@ -938,6 +941,8 @@ return|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|compareTo
@@ -1190,6 +1195,13 @@ name|String
 name|physicalName
 parameter_list|)
 block|{
+name|physicalName
+operator|=
+name|physicalName
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
 specifier|final
 name|int
 name|len
