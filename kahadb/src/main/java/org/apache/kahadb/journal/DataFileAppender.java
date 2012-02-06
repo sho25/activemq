@@ -147,8 +147,28 @@ name|LinkedNodeList
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * An optimized writer to do batch appends to a data file. This object is thread  * safe and gains throughput as you increase the number of concurrent writes it  * does.  *   *   */
+comment|/**  * An optimized writer to do batch appends to a data file. This object is thread  * safe and gains throughput as you increase the number of concurrent writes it  * does.  */
 end_comment
 
 begin_class
@@ -157,6 +177,21 @@ name|DataFileAppender
 implements|implements
 name|FileAppender
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|logger
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|DataFileAppender
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|protected
 specifier|final
 name|Journal
@@ -184,7 +219,6 @@ init|=
 operator|new
 name|Object
 argument_list|()
-block|{     }
 decl_stmt|;
 specifier|protected
 name|WriteBatch
@@ -1086,11 +1120,9 @@ operator|>
 literal|0
 condition|)
 block|{
-name|System
+name|logger
 operator|.
-name|err
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Watiting for write to finish with full batch... millis: "
 operator|+
@@ -1312,11 +1344,6 @@ condition|(
 literal|true
 condition|)
 block|{
-name|Object
-name|o
-init|=
-literal|null
-decl_stmt|;
 comment|// Block till we get a command.
 synchronized|synchronized
 init|(
@@ -1335,7 +1362,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|o
+name|wb
 operator|=
 name|nextWriteBatch
 expr_stmt|;
@@ -1364,13 +1391,6 @@ name|notifyAll
 argument_list|()
 expr_stmt|;
 block|}
-name|wb
-operator|=
-operator|(
-name|WriteBatch
-operator|)
-name|o
-expr_stmt|;
 if|if
 condition|(
 name|dataFile
@@ -1742,11 +1762,9 @@ name|statIdx
 index|]
 expr_stmt|;
 block|}
-name|System
+name|logger
 operator|.
-name|err
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Ave writeSize: "
 operator|+
@@ -2040,10 +2058,14 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|e
+name|logger
 operator|.
-name|printStackTrace
-argument_list|()
+name|info
+argument_list|(
+literal|"Add exception was raised while executing the run command for onComplete"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}

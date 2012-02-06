@@ -307,14 +307,7 @@ argument_list|)
 expr_stmt|;
 name|IOHelper
 operator|.
-name|mkdirs
-argument_list|(
-name|ROOT_DIR
-argument_list|)
-expr_stmt|;
-name|IOHelper
-operator|.
-name|deleteChildren
+name|delete
 argument_list|(
 name|ROOT_DIR
 argument_list|)
@@ -357,6 +350,11 @@ decl_stmt|;
 for|for
 control|(
 name|Index
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
 name|i
 range|:
 name|indexes

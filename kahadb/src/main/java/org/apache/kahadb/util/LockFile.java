@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to lock a File.  *   * @author chirino  */
+comment|/**  * Used to lock a File.  *  * @author chirino  */
 end_comment
 
 begin_class
@@ -94,18 +94,11 @@ specifier|final
 name|boolean
 name|DISABLE_FILE_LOCK
 init|=
-literal|"true"
+name|Boolean
 operator|.
-name|equals
-argument_list|(
-name|System
-operator|.
-name|getProperty
+name|getBoolean
 argument_list|(
 literal|"java.nio.channels.FileLock.broken"
-argument_list|,
-literal|"false"
-argument_list|)
 argument_list|)
 decl_stmt|;
 specifier|final

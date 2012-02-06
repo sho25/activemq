@@ -154,14 +154,7 @@ argument_list|)
 expr_stmt|;
 name|IOHelper
 operator|.
-name|mkdirs
-argument_list|(
-name|directory
-argument_list|)
-expr_stmt|;
-name|IOHelper
-operator|.
-name|deleteChildren
+name|delete
 argument_list|(
 name|directory
 argument_list|)

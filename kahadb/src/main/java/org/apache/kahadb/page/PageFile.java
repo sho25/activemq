@@ -365,20 +365,13 @@ name|DEFAULT_PAGE_SIZE
 init|=
 name|Integer
 operator|.
-name|parseInt
-argument_list|(
-name|System
-operator|.
-name|getProperty
+name|getInteger
 argument_list|(
 literal|"defaultPageSize"
 argument_list|,
-literal|""
-operator|+
 literal|1024
 operator|*
 literal|4
-argument_list|)
 argument_list|)
 decl_stmt|;
 specifier|public
@@ -389,18 +382,11 @@ name|DEFAULT_WRITE_BATCH_SIZE
 init|=
 name|Integer
 operator|.
-name|parseInt
-argument_list|(
-name|System
-operator|.
-name|getProperty
+name|getInteger
 argument_list|(
 literal|"defaultWriteBatchSize"
 argument_list|,
-literal|""
-operator|+
 literal|1000
-argument_list|)
 argument_list|)
 decl_stmt|;
 specifier|public
@@ -411,18 +397,11 @@ name|DEFAULT_PAGE_CACHE_SIZE
 init|=
 name|Integer
 operator|.
-name|parseInt
-argument_list|(
-name|System
-operator|.
-name|getProperty
+name|getInteger
 argument_list|(
 literal|"defaultPageCacheSize"
 argument_list|,
-literal|""
-operator|+
 literal|100
-argument_list|)
 argument_list|)
 decl_stmt|;
 empty_stmt|;
@@ -961,15 +940,6 @@ name|diskBoundLocation
 operator|=
 name|currentLocation
 expr_stmt|;
-name|currentLocation
-operator|=
-operator|-
-literal|1
-expr_stmt|;
-name|current
-operator|=
-literal|null
-expr_stmt|;
 block|}
 else|else
 block|{
@@ -977,6 +947,7 @@ name|diskBound
 operator|=
 name|current
 expr_stmt|;
+block|}
 name|current
 operator|=
 literal|null
@@ -986,7 +957,6 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
-block|}
 block|}
 comment|/**          * @return true if there is no pending writes to do.          */
 name|boolean
@@ -1408,10 +1378,7 @@ name|file
 operator|.
 name|exists
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 operator|!
 name|file
 operator|.
@@ -1431,7 +1398,6 @@ name|getPath
 argument_list|()
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 specifier|private
@@ -1789,6 +1755,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Page
+argument_list|>
 name|i
 init|=
 name|tx
@@ -1809,9 +1778,6 @@ block|{
 name|Page
 name|page
 init|=
-operator|(
-name|Page
-operator|)
 name|i
 operator|.
 name|next
@@ -1902,7 +1868,7 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"Cannot load the page file when it is allready loaded."
+literal|"Cannot load the page file when it is already loaded."
 argument_list|)
 throw|;
 block|}
@@ -2199,10 +2165,22 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-throw|throw
+name|InterruptedIOException
+name|ioe
+init|=
 operator|new
 name|InterruptedIOException
 argument_list|()
+decl_stmt|;
+name|ioe
+operator|.
+name|initCause
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+name|ioe
 throw|;
 block|}
 block|}
@@ -2621,7 +2599,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Configuation is to larger than: "
+literal|"Configuation is larger than: "
 operator|+
 name|PAGE_FILE_HEADER_SIZE
 operator|/
@@ -3140,9 +3118,6 @@ name|int
 name|writeBatchSize
 parameter_list|)
 block|{
-name|assertNotLoaded
-argument_list|()
-expr_stmt|;
 name|this
 operator|.
 name|writeBatchSize
@@ -3314,9 +3289,31 @@ name|c
 init|=
 name|count
 decl_stmt|;
+comment|// Perform the id's only once....
+name|long
+name|pageId
+init|=
+name|nextFreePageId
+operator|.
+name|getAndAdd
+argument_list|(
+name|count
+argument_list|)
+decl_stmt|;
+name|long
+name|writeTxnId
+init|=
+name|nextTxid
+operator|.
+name|getAndAdd
+argument_list|(
+name|count
+argument_list|)
+decl_stmt|;
 while|while
 condition|(
 name|c
+operator|--
 operator|>
 literal|0
 condition|)
@@ -3333,18 +3330,16 @@ argument_list|<
 name|T
 argument_list|>
 argument_list|(
-name|nextFreePageId
-operator|.
-name|getAndIncrement
-argument_list|()
+name|pageId
+operator|++
 argument_list|)
 decl_stmt|;
 name|page
 operator|.
 name|makeFree
 argument_list|(
-name|getNextWriteTransactionId
-argument_list|()
+name|writeTxnId
+operator|++
 argument_list|)
 expr_stmt|;
 if|if
@@ -3391,9 +3386,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// LOG.debug("allocate writing: "+page.getPageId());
-name|c
-operator|--
-expr_stmt|;
 block|}
 return|return
 name|first
@@ -4020,7 +4012,6 @@ block|}
 comment|///////////////////////////////////////////////////////////////////
 comment|// Internal Double write implementation follows...
 comment|///////////////////////////////////////////////////////////////////
-comment|/**      *      */
 specifier|private
 name|void
 name|pollWrites
@@ -4099,10 +4090,14 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|info
+argument_list|(
+literal|"An exception was raised while performing poll writes"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 finally|finally

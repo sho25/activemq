@@ -348,7 +348,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Manages DataFiles  *   *   */
+comment|/**  * Manages DataFiles  *  *  */
 end_comment
 
 begin_class
@@ -530,6 +530,8 @@ operator|new
 name|RuntimeException
 argument_list|(
 literal|"Could not create batch control record header."
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
@@ -934,31 +936,14 @@ condition|)
 block|{
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|File
+name|file
+range|:
 name|files
-operator|.
-name|length
-condition|;
-name|i
-operator|++
 control|)
 block|{
 try|try
 block|{
-name|File
-name|file
-init|=
-name|files
-index|[
-name|i
-index|]
-decl_stmt|;
 name|String
 name|n
 init|=
@@ -1456,7 +1441,7 @@ parameter_list|(
 name|IOException
 name|e
 parameter_list|)
-block|{ 		}
+block|{         }
 finally|finally
 block|{
 name|accessorPool
@@ -3724,7 +3709,7 @@ name|getDataFileId
 argument_list|()
 return|;
 block|}
-comment|/**      * Get a set of files - only valid after start()      *       * @return files currently being used      */
+comment|/**      * Get a set of files - only valid after start()      *      * @return files currently being used      */
 specifier|public
 name|Set
 argument_list|<
