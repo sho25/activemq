@@ -107,6 +107,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|locks
+operator|.
+name|ReentrantReadWriteLock
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -467,20 +481,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|thread
-operator|.
-name|Valve
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|transaction
 operator|.
 name|Synchronization
@@ -522,7 +522,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The Topic is a destination that sends a copy of a message to every active  * Subscription registered.  *   *   */
+comment|/**  * The Topic is a destination that sends a copy of a message to every active  * Subscription registered.  */
 end_comment
 
 begin_class
@@ -571,14 +571,12 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|Valve
-name|dispatchValve
+name|ReentrantReadWriteLock
+name|dispatchLock
 init|=
 operator|new
-name|Valve
-argument_list|(
-literal|true
-argument_list|)
+name|ReentrantReadWriteLock
+argument_list|()
 decl_stmt|;
 specifier|private
 name|DispatchPolicy
@@ -848,13 +846,14 @@ name|isAlwaysRetroactive
 argument_list|()
 condition|)
 block|{
-comment|// synchronize with dispatch method so that no new messages are
-comment|// sent
-comment|// while we are recovering a subscription to avoid out of order
-comment|// messages.
-name|dispatchValve
+comment|// synchronize with dispatch method so that no new messages are sent
+comment|// while we are recovering a subscription to avoid out of order messages.
+name|dispatchLock
 operator|.
-name|turnOff
+name|writeLock
+argument_list|()
+operator|.
+name|lock
 argument_list|()
 expr_stmt|;
 try|try
@@ -895,9 +894,12 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|dispatchValve
+name|dispatchLock
 operator|.
-name|turnOn
+name|writeLock
+argument_list|()
+operator|.
+name|unlock
 argument_list|()
 expr_stmt|;
 block|}
@@ -1115,11 +1117,13 @@ throws|throws
 name|Exception
 block|{
 comment|// synchronize with dispatch method so that no new messages are sent
-comment|// while
-comment|// we are recovering a subscription to avoid out of order messages.
-name|dispatchValve
+comment|// while we are recovering a subscription to avoid out of order messages.
+name|dispatchLock
 operator|.
-name|turnOff
+name|writeLock
+argument_list|()
+operator|.
+name|lock
 argument_list|()
 expr_stmt|;
 try|try
@@ -1489,9 +1493,12 @@ block|}
 block|}
 finally|finally
 block|{
-name|dispatchValve
+name|dispatchLock
 operator|.
-name|turnOn
+name|writeLock
+argument_list|()
+operator|.
+name|unlock
 argument_list|()
 expr_stmt|;
 block|}
@@ -2235,7 +2242,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * do send the message - this needs to be synchronized to ensure messages      * are stored AND dispatched in the right order      *       * @param producerExchange      * @param message      * @throws IOException      * @throws Exception      */
+comment|/**      * do send the message - this needs to be synchronized to ensure messages      * are stored AND dispatched in the right order      *      * @param producerExchange      * @param message      * @throws IOException      * @throws Exception      */
 specifier|synchronized
 name|void
 name|doMessageSend
@@ -3284,16 +3291,19 @@ operator|.
 name|increment
 argument_list|()
 expr_stmt|;
-name|dispatchValve
-operator|.
-name|increment
-argument_list|()
-expr_stmt|;
 name|MessageEvaluationContext
 name|msgContext
 init|=
 literal|null
 decl_stmt|;
+name|dispatchLock
+operator|.
+name|readLock
+argument_list|()
+operator|.
+name|lock
+argument_list|()
+expr_stmt|;
 try|try
 block|{
 if|if
@@ -3381,9 +3391,12 @@ block|}
 block|}
 finally|finally
 block|{
-name|dispatchValve
+name|dispatchLock
 operator|.
-name|decrement
+name|readLock
+argument_list|()
+operator|.
+name|unlock
 argument_list|()
 expr_stmt|;
 if|if
