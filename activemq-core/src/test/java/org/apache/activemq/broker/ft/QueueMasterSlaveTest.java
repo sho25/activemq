@@ -581,10 +581,10 @@ block|{
 name|MessageConsumer
 name|qConsumer
 init|=
+name|session
+operator|.
 name|createConsumer
 argument_list|(
-name|session
-argument_list|,
 operator|new
 name|ActiveMQQueue
 argument_list|(
@@ -656,10 +656,10 @@ argument_list|)
 expr_stmt|;
 name|qConsumer
 operator|=
+name|session
+operator|.
 name|createConsumer
 argument_list|(
-name|session
-argument_list|,
 operator|new
 name|ActiveMQQueue
 argument_list|(
