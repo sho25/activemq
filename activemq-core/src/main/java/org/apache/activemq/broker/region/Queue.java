@@ -816,7 +816,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The Queue is a List of MessageEntry objects that are dispatched to matching  * subscriptions.  *  *  */
+comment|/**  * The Queue is a List of MessageEntry objects that are dispatched to matching  * subscriptions.  */
 end_comment
 
 begin_class
@@ -980,7 +980,7 @@ specifier|private
 name|ExecutorService
 name|executor
 decl_stmt|;
-specifier|protected
+specifier|private
 specifier|final
 name|Map
 argument_list|<
@@ -990,10 +990,6 @@ name|Runnable
 argument_list|>
 name|messagesWaitingForSpace
 init|=
-name|Collections
-operator|.
-name|synchronizedMap
-argument_list|(
 operator|new
 name|LinkedHashMap
 argument_list|<
@@ -1002,7 +998,6 @@ argument_list|,
 name|Runnable
 argument_list|>
 argument_list|()
-argument_list|)
 decl_stmt|;
 specifier|private
 name|boolean
@@ -1024,6 +1019,12 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|optimizedDispatch
+init|=
+literal|false
+decl_stmt|;
+specifier|private
+name|boolean
+name|iterationRunning
 init|=
 literal|false
 decl_stmt|;
@@ -7126,6 +7127,13 @@ init|(
 name|iteratingMutex
 init|)
 block|{
+comment|// If optimize dispatch is on or this is a slave this method could be called recursively
+comment|// we set this state value to short-circuit wakeup in those cases to avoid that as it
+comment|// could lead to errors.
+name|iterationRunning
+operator|=
+literal|true
+expr_stmt|;
 comment|// do early to allow dispatch of these waiting messages
 synchronized|synchronized
 init|(
@@ -7680,6 +7688,10 @@ name|remove
 argument_list|(
 literal|"activemq.destination"
 argument_list|)
+expr_stmt|;
+name|iterationRunning
+operator|=
+literal|false
 expr_stmt|;
 return|return
 name|pendingWakeups
@@ -8486,10 +8498,15 @@ parameter_list|()
 block|{
 if|if
 condition|(
+operator|(
 name|optimizedDispatch
 operator|||
 name|isSlave
 argument_list|()
+operator|)
+operator|&&
+operator|!
+name|iterationRunning
 condition|)
 block|{
 name|iterate
