@@ -282,7 +282,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This broker filter handles tracking the state of the broker for purposes of  * publishing advisory messages to advisory consumers.  *  *  */
+comment|/**  * This broker filter handles tracking the state of the broker for purposes of  * publishing advisory messages to advisory consumers.  */
 end_comment
 
 begin_class
@@ -1411,6 +1411,25 @@ argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
+name|ActiveMQTopic
+index|[]
+name|advisoryDestinations
+init|=
+name|AdvisorySupport
+operator|.
+name|getAllDestinationAdvisoryTopics
+argument_list|(
+name|destination
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|ActiveMQTopic
+name|advisoryDestination
+range|:
+name|advisoryDestinations
+control|)
+block|{
 try|try
 block|{
 name|next
@@ -1419,15 +1438,7 @@ name|removeDestination
 argument_list|(
 name|context
 argument_list|,
-name|AdvisorySupport
-operator|.
-name|getConsumerAdvisoryTopic
-argument_list|(
-name|info
-operator|.
-name|getDestination
-argument_list|()
-argument_list|)
+name|advisoryDestination
 argument_list|,
 operator|-
 literal|1
@@ -1439,36 +1450,8 @@ parameter_list|(
 name|Exception
 name|expectedIfDestinationDidNotExistYet
 parameter_list|)
-block|{             }
-try|try
-block|{
-name|next
-operator|.
-name|removeDestination
-argument_list|(
-name|context
-argument_list|,
-name|AdvisorySupport
-operator|.
-name|getProducerAdvisoryTopic
-argument_list|(
-name|info
-operator|.
-name|getDestination
-argument_list|()
-argument_list|)
-argument_list|,
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
+block|{                 }
 block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|expectedIfDestinationDidNotExistYet
-parameter_list|)
-block|{             }
 block|}
 block|}
 annotation|@
@@ -1564,6 +1547,28 @@ argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
+name|ActiveMQTopic
+index|[]
+name|advisoryDestinations
+init|=
+name|AdvisorySupport
+operator|.
+name|getAllDestinationAdvisoryTopics
+argument_list|(
+name|destInfo
+operator|.
+name|getDestination
+argument_list|()
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|ActiveMQTopic
+name|advisoryDestination
+range|:
+name|advisoryDestinations
+control|)
+block|{
 try|try
 block|{
 name|next
@@ -1572,15 +1577,7 @@ name|removeDestination
 argument_list|(
 name|context
 argument_list|,
-name|AdvisorySupport
-operator|.
-name|getConsumerAdvisoryTopic
-argument_list|(
-name|info
-operator|.
-name|getDestination
-argument_list|()
-argument_list|)
+name|advisoryDestination
 argument_list|,
 operator|-
 literal|1
@@ -1592,36 +1589,8 @@ parameter_list|(
 name|Exception
 name|expectedIfDestinationDidNotExistYet
 parameter_list|)
-block|{             }
-try|try
-block|{
-name|next
-operator|.
-name|removeDestination
-argument_list|(
-name|context
-argument_list|,
-name|AdvisorySupport
-operator|.
-name|getProducerAdvisoryTopic
-argument_list|(
-name|info
-operator|.
-name|getDestination
-argument_list|()
-argument_list|)
-argument_list|,
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
+block|{                 }
 block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|expectedIfDestinationDidNotExistYet
-parameter_list|)
-block|{             }
 block|}
 block|}
 annotation|@
