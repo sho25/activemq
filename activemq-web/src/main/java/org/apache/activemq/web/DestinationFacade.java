@@ -88,7 +88,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -414,6 +414,11 @@ condition|(
 name|jmsDestination
 operator|==
 literal|null
+operator|||
+name|jmsDestination
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 throw|throw
