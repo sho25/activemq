@@ -804,6 +804,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// terminate the frame
+name|buffer
+operator|.
+name|append
+argument_list|(
+literal|'\u0000'
+argument_list|)
+expr_stmt|;
 return|return
 name|buffer
 operator|.

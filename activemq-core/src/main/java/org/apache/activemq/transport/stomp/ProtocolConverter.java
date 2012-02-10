@@ -3595,7 +3595,11 @@ throw|throw
 operator|new
 name|ProtocolException
 argument_list|(
-literal|"Invlid Protocol version, supported versions are: "
+literal|"Invalid Protocol version["
+operator|+
+name|accepts
+operator|+
+literal|"], supported versions are: "
 operator|+
 name|Arrays
 operator|.

@@ -225,13 +225,6 @@ argument_list|)
 expr_stmt|;
 name|outputStream
 operator|.
-name|write
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
-name|outputStream
-operator|.
 name|flush
 argument_list|()
 expr_stmt|;
@@ -281,13 +274,6 @@ operator|.
 name|write
 argument_list|(
 name|data
-argument_list|)
-expr_stmt|;
-name|outputStream
-operator|.
-name|write
-argument_list|(
-literal|0
 argument_list|)
 expr_stmt|;
 name|outputStream
