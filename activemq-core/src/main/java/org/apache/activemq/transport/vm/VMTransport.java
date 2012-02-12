@@ -304,31 +304,6 @@ operator|.
 name|asyncQueueDepth
 argument_list|)
 decl_stmt|;
-specifier|private
-name|TaskRunner
-name|taskRunner
-init|=
-name|DefaultThreadPools
-operator|.
-name|getDefaultTaskRunnerFactory
-argument_list|()
-operator|.
-name|createTaskRunner
-argument_list|(
-name|this
-argument_list|,
-literal|"VMTransport: "
-operator|+
-name|toString
-argument_list|()
-argument_list|)
-decl_stmt|;
-specifier|private
-specifier|volatile
-name|int
-name|receiveCounter
-decl_stmt|;
-comment|// Managed Sate access protected by locks.
 specifier|protected
 specifier|final
 name|AtomicBoolean
@@ -364,6 +339,31 @@ init|=
 operator|new
 name|AtomicBoolean
 argument_list|()
+decl_stmt|;
+comment|// thread can be eager, so initialisation needs to be last  so that partial state is not visible
+specifier|protected
+name|TaskRunner
+name|taskRunner
+init|=
+name|DefaultThreadPools
+operator|.
+name|getDefaultTaskRunnerFactory
+argument_list|()
+operator|.
+name|createTaskRunner
+argument_list|(
+name|this
+argument_list|,
+literal|"VMTransport: "
+operator|+
+name|toString
+argument_list|()
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|volatile
+name|int
+name|receiveCounter
 decl_stmt|;
 specifier|public
 name|VMTransport
