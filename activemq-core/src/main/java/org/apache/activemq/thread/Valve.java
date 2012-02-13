@@ -16,10 +16,12 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A Valve is a synchronization object used enable or disable the "flow" of  * concurrent processing.  *   *   */
+comment|/**  * A Valve is a synchronization object used enable or disable the "flow" of  * concurrent processing.  *  * @deprecated  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 class|class
@@ -60,7 +62,7 @@ operator|=
 name|on
 expr_stmt|;
 block|}
-comment|/**      * Turns the valve on. This method blocks until the valve is off.      *       * @throws InterruptedException if wait is interrupted      */
+comment|/**      * Turns the valve on. This method blocks until the valve is off.      *      * @throws InterruptedException if wait is interrupted      */
 specifier|public
 name|void
 name|turnOn
@@ -110,7 +112,7 @@ name|on
 return|;
 block|}
 block|}
-comment|/**      * Turns the valve off. This method blocks until the valve is on and the      * valve is not in use.      *       * @throws InterruptedException if wait is interrupted      */
+comment|/**      * Turns the valve off. This method blocks until the valve is on and the      * valve is not in use.      *      * @throws InterruptedException if wait is interrupted      */
 specifier|public
 name|void
 name|turnOff
@@ -179,7 +181,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Increments the use counter of the valve. This method blocks if the valve      * is off, or is being turned off.      *       * @throws InterruptedException  if wait is interrupted      */
+comment|/**      * Increments the use counter of the valve. This method blocks if the valve      * is off, or is being turned off.      *      * @throws InterruptedException  if wait is interrupted      */
 specifier|public
 name|void
 name|increment
