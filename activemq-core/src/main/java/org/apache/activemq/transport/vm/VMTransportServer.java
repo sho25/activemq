@@ -295,15 +295,6 @@ name|Exception
 block|{
 if|if
 condition|(
-name|stopping
-operator|.
-name|compareAndSet
-argument_list|(
-literal|false
-argument_list|,
-literal|true
-argument_list|)
-operator|&&
 operator|!
 name|disposed
 operator|.
@@ -378,7 +369,7 @@ return|return
 name|client
 return|;
 block|}
-comment|/**      * Configure transport      *       * @param transport      * @return the Transport      */
+comment|/**      * Configure transport      *      * @param transport      * @return the Transport      */
 specifier|public
 specifier|static
 name|Transport
@@ -408,7 +399,7 @@ return|return
 name|transport
 return|;
 block|}
-comment|/**      * Set the Transport accept listener for new Connections      *       * @param acceptListener      */
+comment|/**      * Set the Transport accept listener for new Connections      *      * @param acceptListener      */
 specifier|public
 specifier|synchronized
 name|void
