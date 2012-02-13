@@ -451,9 +451,11 @@ literal|"CONNECT\n"
 operator|+
 literal|"login: brianm\n"
 operator|+
-literal|"passcode: wombats\n"
+literal|"passcode: wombats\n\n"
 operator|+
-literal|"\n"
+name|Stomp
+operator|.
+name|NULL
 decl_stmt|;
 name|stompConnection
 operator|.
@@ -480,6 +482,10 @@ operator|+
 literal|"\n"
 operator|+
 literal|"ack:client\n\n"
+operator|+
+name|Stomp
+operator|.
+name|NULL
 decl_stmt|;
 name|stompConnection
 operator|.
@@ -556,6 +562,10 @@ operator|+
 name|messageId
 operator|+
 literal|"\n\n"
+operator|+
+name|Stomp
+operator|.
+name|NULL
 decl_stmt|;
 name|stompConnection
 operator|.
@@ -610,9 +620,11 @@ literal|"CONNECT\n"
 operator|+
 literal|"login: brianm\n"
 operator|+
-literal|"passcode: wombats\n"
+literal|"passcode: wombats\n\n"
 operator|+
-literal|"\n"
+name|Stomp
+operator|.
+name|NULL
 expr_stmt|;
 name|stompConnection
 operator|.
@@ -638,6 +650,10 @@ operator|+
 literal|"\n"
 operator|+
 literal|"ack:client\n\n"
+operator|+
+name|Stomp
+operator|.
+name|NULL
 expr_stmt|;
 name|stompConnection
 operator|.
@@ -709,6 +725,10 @@ name|trim
 argument_list|()
 operator|+
 literal|"\n\n"
+operator|+
+name|Stomp
+operator|.
+name|NULL
 decl_stmt|;
 name|stompConnection
 operator|.
