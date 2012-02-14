@@ -3823,6 +3823,19 @@ name|getConsumerId
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|subscriptionMapByRemoteId
+operator|.
+name|remove
+argument_list|(
+name|sub
+operator|.
+name|getRemoteInfo
+argument_list|()
+operator|.
+name|getConsumerId
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// continue removal in separate thread to free up this thread for outstanding responses
 name|asyncTaskRunner
 operator|.
