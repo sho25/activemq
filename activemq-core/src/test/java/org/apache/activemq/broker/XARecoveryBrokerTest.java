@@ -2907,24 +2907,6 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Setup the consumer and receive the message.
-name|ConsumerInfo
-name|consumerInfo
-init|=
-name|createConsumerInfo
-argument_list|(
-name|sessionInfo
-argument_list|,
-name|destination
-argument_list|)
-decl_stmt|;
-name|connection
-operator|.
-name|send
-argument_list|(
-name|consumerInfo
-argument_list|)
-expr_stmt|;
 comment|// Begin the transaction.
 name|XATransactionId
 name|txid
@@ -2947,10 +2929,39 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|Message
-name|m
+name|message
 init|=
 literal|null
 decl_stmt|;
+for|for
+control|(
+name|ActiveMQDestination
+name|dest
+range|:
+name|destinationList
+argument_list|(
+name|destination
+argument_list|)
+control|)
+block|{
+comment|// Setup the consumer and receive the message.
+name|ConsumerInfo
+name|consumerInfo
+init|=
+name|createConsumerInfo
+argument_list|(
+name|sessionInfo
+argument_list|,
+name|dest
+argument_list|)
+decl_stmt|;
+name|connection
+operator|.
+name|send
+argument_list|(
+name|consumerInfo
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -2966,7 +2977,7 @@ name|i
 operator|++
 control|)
 block|{
-name|m
+name|message
 operator|=
 name|receiveMessage
 argument_list|(
@@ -2975,7 +2986,7 @@ argument_list|)
 expr_stmt|;
 name|assertNotNull
 argument_list|(
-name|m
+name|message
 argument_list|)
 expr_stmt|;
 block|}
@@ -2986,7 +2997,7 @@ name|createAck
 argument_list|(
 name|consumerInfo
 argument_list|,
-name|m
+name|message
 argument_list|,
 literal|4
 argument_list|,
@@ -3009,6 +3020,7 @@ argument_list|(
 name|ack
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Don't commit
 comment|// restart the broker.
 name|restartBroker
@@ -3046,15 +3058,28 @@ argument_list|(
 name|sessionInfo
 argument_list|)
 expr_stmt|;
+for|for
+control|(
+name|ActiveMQDestination
+name|dest
+range|:
+name|destinationList
+argument_list|(
+name|destination
+argument_list|)
+control|)
+block|{
+comment|// Setup the consumer and receive the message.
+name|ConsumerInfo
 name|consumerInfo
-operator|=
+init|=
 name|createConsumerInfo
 argument_list|(
 name|sessionInfo
 argument_list|,
-name|destination
+name|dest
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|connection
 operator|.
 name|send
@@ -3062,7 +3087,6 @@ argument_list|(
 name|consumerInfo
 argument_list|)
 expr_stmt|;
-comment|// All messages should be re-delivered.
 for|for
 control|(
 name|int
@@ -3078,7 +3102,7 @@ name|i
 operator|++
 control|)
 block|{
-name|m
+name|message
 operator|=
 name|receiveMessage
 argument_list|(
@@ -3087,9 +3111,10 @@ argument_list|)
 expr_stmt|;
 name|assertNotNull
 argument_list|(
-name|m
+name|message
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|assertNoMessagesLeft
 argument_list|(
