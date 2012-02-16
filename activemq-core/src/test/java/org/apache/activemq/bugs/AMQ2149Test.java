@@ -445,7 +445,7 @@ specifier|final
 name|long
 name|DEFAULT_BROKER_STOP_PERIOD
 init|=
-literal|20
+literal|10
 operator|*
 literal|1000
 decl_stmt|;
@@ -487,7 +487,7 @@ specifier|static
 name|int
 name|MAX_BROKER_RESTARTS
 init|=
-literal|5
+literal|3
 decl_stmt|;
 name|BrokerService
 name|broker
