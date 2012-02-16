@@ -255,7 +255,7 @@ literal|"        * To use wildcard queries, the field must be a string and the q
 block|,
 literal|""
 block|,
-literal|"    Main browse --amqurl tcp://localhost:61616 --user someUser --pass somePass FOO.BAR"
+literal|"    Main browse --amqurl tcp://localhost:61616 --user someUser --password somePass FOO.BAR"
 block|,
 literal|"        - Print the message header, custom message header, and message body of all messages in the"
 block|,
@@ -263,7 +263,7 @@ literal|"          queue FOO.BAR, using someUser as the user name, and somePass 
 block|,
 literal|""
 block|,
-literal|"    Main browse --amqurl tcp://localhost:61616 --user someUser --pass somePass --factory org.apache.activemq.ActiveMQConnectionFactory --passwordFactory org.apache.activemq.AMQPasswordFactory FOO.BAR"
+literal|"    Main browse --amqurl tcp://localhost:61616 --user someUser --password somePass --factory org.apache.activemq.ActiveMQConnectionFactory --passwordFactory org.apache.activemq.AMQPasswordFactory FOO.BAR"
 block|,
 literal|"        - Print the message header, custom message header, and message body of all messages in the"
 block|,
@@ -336,7 +336,7 @@ argument_list|(
 literal|10
 argument_list|)
 decl_stmt|;
-comment|/**      * Execute the browse command, which allows you to browse the messages in a      * given JMS destination      *       * @param tokens - command arguments      * @throws Exception      */
+comment|/**      * Execute the browse command, which allows you to browse the messages in a      * given JMS destination      *      * @param tokens - command arguments      * @throws Exception      */
 specifier|protected
 name|void
 name|runTask
@@ -591,7 +591,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Handle the --msgsel, --xmsgsel, --view, -V options.      *       * @param token - option token to handle      * @param tokens - succeeding command arguments      * @throws Exception      */
+comment|/**      * Handle the --msgsel, --xmsgsel, --view, -V options.      *      * @param token - option token to handle      * @param tokens - succeeding command arguments      * @throws Exception      */
 specifier|protected
 name|void
 name|handleOption
@@ -707,8 +707,7 @@ argument_list|)
 condition|)
 block|{
 comment|// If token is a substractive message selector option
-comment|// If no message selector is specified, or next token is a new
-comment|// option
+comment|// If no message selector is specified, or next token is a new option
 if|if
 condition|(
 name|tokens
