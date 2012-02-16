@@ -489,20 +489,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|thread
-operator|.
-name|Scheduler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|transaction
 operator|.
 name|Synchronization
@@ -639,11 +625,6 @@ name|ActiveMQMessageConsumer
 operator|.
 name|class
 argument_list|)
-decl_stmt|;
-specifier|protected
-specifier|final
-name|Scheduler
-name|scheduler
 decl_stmt|;
 specifier|protected
 specifier|final
@@ -1045,15 +1026,6 @@ operator|.
 name|session
 operator|=
 name|session
-expr_stmt|;
-name|this
-operator|.
-name|scheduler
-operator|=
-name|session
-operator|.
-name|getScheduler
-argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -5198,7 +5170,10 @@ name|deliveredMessages
 argument_list|)
 decl_stmt|;
 comment|// Start up the delivery again a little later.
-name|scheduler
+name|session
+operator|.
+name|getScheduler
+argument_list|()
 operator|.
 name|executeAfterDelay
 argument_list|(
@@ -5301,7 +5276,10 @@ argument_list|()
 condition|)
 block|{
 comment|// Start up the delivery again a little later.
-name|scheduler
+name|session
+operator|.
+name|getScheduler
+argument_list|()
 operator|.
 name|executeAfterDelay
 argument_list|(
