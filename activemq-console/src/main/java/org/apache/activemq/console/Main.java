@@ -222,7 +222,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Main class that can bootstrap an ActiveMQ broker console. Handles command  * line argument parsing to set up and run broker tasks.  *   *   */
+comment|/**  * Main class that can bootstrap an ActiveMQ broker console. Handles command  * line argument parsing to set up and run broker tasks.  */
 end_comment
 
 begin_class
@@ -340,16 +340,10 @@ comment|// in the activemq.classpath system property or some jar incorrectly inc
 name|File
 name|confDir
 init|=
-operator|new
-name|File
-argument_list|(
 name|app
 operator|.
-name|getActiveMQBase
+name|getActiveMQConfig
 argument_list|()
-argument_list|,
-literal|"conf"
-argument_list|)
 decl_stmt|;
 name|app
 operator|.
@@ -628,7 +622,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Print out what's in the classloader tree being used.      *       * @param cl      * @return depth      */
+comment|/**      * Print out what's in the classloader tree being used.      *      * @param cl      * @return depth      */
 specifier|private
 specifier|static
 name|int
@@ -1222,6 +1216,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|?
+argument_list|>
 name|jvmArgs
 init|=
 name|ManagementFactory
@@ -1297,6 +1294,30 @@ name|getActiveMQBase
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"ACTIVEMQ_CONFIG: "
+operator|+
+name|getActiveMQConfig
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"ACTIVEMQ_DATA: "
+operator|+
+name|getActiveMQDataDir
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|ClassLoader
 name|cl
 init|=
@@ -1335,6 +1356,9 @@ index|]
 argument_list|)
 decl_stmt|;
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|task
 init|=
 name|cl
@@ -1500,7 +1524,7 @@ name|classpath
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * The extension directory feature will not work if the broker factory is      * already in the classpath since we have to load him from a child      * ClassLoader we build for it to work correctly.      *       * @return true, if extension dir can be used. false otherwise.      */
+comment|/**      * The extension directory feature will not work if the broker factory is      * already in the classpath since we have to load him from a child      * ClassLoader we build for it to work correctly.      *      * @return true, if extension dir can be used. false otherwise.      */
 specifier|public
 name|boolean
 name|canUseExtdir
@@ -1615,8 +1639,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-comment|// try{ System.out.println("Adding to classpath: " +
-comment|// dir.getCanonicalPath()); }catch(Exception e){}
 name|urls
 operator|.
 name|add
@@ -1683,11 +1705,8 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// Sort the jars so that classpath built is
-comment|// consistently
-comment|// in the same order. Also allows us to use jar
-comment|// names to control
-comment|// classpath order.
+comment|// Sort the jars so that classpath built is consistently in the same
+comment|// order. Also allows us to use jar names to control classpath order.
 name|Arrays
 operator|.
 name|sort
@@ -1696,35 +1715,22 @@ name|files
 argument_list|,
 operator|new
 name|Comparator
+argument_list|<
+name|File
+argument_list|>
 argument_list|()
 block|{
 specifier|public
 name|int
 name|compare
 parameter_list|(
-name|Object
-name|o1
-parameter_list|,
-name|Object
-name|o2
-parameter_list|)
-block|{
 name|File
 name|f1
-init|=
-operator|(
-name|File
-operator|)
-name|o1
-decl_stmt|;
+parameter_list|,
 name|File
 name|f2
-init|=
-operator|(
-name|File
-operator|)
-name|o2
-decl_stmt|;
+parameter_list|)
+block|{
 return|return
 name|f1
 operator|.
@@ -1789,10 +1795,6 @@ literal|".jar"
 argument_list|)
 condition|)
 block|{
-comment|// try{ System.out.println("Adding to
-comment|// classpath: " +
-comment|// files[j].getCanonicalPath());
-comment|// }catch(Exception e){}
 name|urls
 operator|.
 name|add
@@ -2111,6 +2113,114 @@ block|}
 block|}
 return|return
 name|activeMQBase
+return|;
+block|}
+specifier|public
+name|File
+name|getActiveMQConfig
+parameter_list|()
+block|{
+name|File
+name|activeMQConfig
+init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"activemq.conf"
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+name|activeMQConfig
+operator|=
+operator|new
+name|File
+argument_list|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"activemq.conf"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|activeMQConfig
+operator|=
+operator|new
+name|File
+argument_list|(
+name|getActiveMQBase
+argument_list|()
+operator|+
+literal|"/conf"
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|activeMQConfig
+return|;
+block|}
+specifier|public
+name|File
+name|getActiveMQDataDir
+parameter_list|()
+block|{
+name|File
+name|activeMQDataDir
+init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"activemq.data"
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+name|activeMQDataDir
+operator|=
+operator|new
+name|File
+argument_list|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"activemq.data"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|activeMQDataDir
+operator|=
+operator|new
+name|File
+argument_list|(
+name|getActiveMQBase
+argument_list|()
+operator|+
+literal|"/data"
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|activeMQDataDir
 return|;
 block|}
 block|}
