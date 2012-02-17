@@ -173,10 +173,22 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|this
-operator|.
-name|assertMessagesAreReceived
+name|waitForMessagesToBeDelivered
 argument_list|()
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Got all messages"
+argument_list|,
+name|data
+operator|.
+name|length
+argument_list|,
+name|messages
+operator|.
+name|size
+argument_list|()
+argument_list|)
 expr_stmt|;
 name|BrokerService
 name|broker
