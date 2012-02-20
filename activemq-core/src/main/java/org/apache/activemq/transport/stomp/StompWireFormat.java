@@ -993,7 +993,7 @@ name|line
 operator|.
 name|length
 operator|>
-literal|0
+literal|1
 condition|)
 block|{
 if|if
