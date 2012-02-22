@@ -1330,7 +1330,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"ACTIVEMQ_CONFIG: "
+literal|"ACTIVEMQ_CONF: "
 operator|+
 name|getActiveMQConfig
 argument_list|()
