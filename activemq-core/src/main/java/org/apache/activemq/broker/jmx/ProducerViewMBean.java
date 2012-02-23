@@ -122,6 +122,16 @@ name|boolean
 name|isDispatchAsync
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the User Name used to authorize creation of this Producer.      * This value can be null if display of user name information is disabled.      *      * @return the name of the user that created this Producer      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"User Name used to authorize creation of this Producer"
+argument_list|)
+name|String
+name|getUserName
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

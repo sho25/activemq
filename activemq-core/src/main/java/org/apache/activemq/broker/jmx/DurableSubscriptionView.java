@@ -114,7 +114,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -138,7 +138,7 @@ specifier|protected
 name|DurableTopicSubscription
 name|durableSub
 decl_stmt|;
-comment|/**      * Constructor      *       * @param clientId      * @param sub      */
+comment|/**      * Constructor      *      * @param clientId      * @param sub      */
 specifier|public
 name|DurableSubscriptionView
 parameter_list|(
@@ -148,6 +148,9 @@ parameter_list|,
 name|String
 name|clientId
 parameter_list|,
+name|String
+name|userName
+parameter_list|,
 name|Subscription
 name|sub
 parameter_list|)
@@ -155,6 +158,8 @@ block|{
 name|super
 argument_list|(
 name|clientId
+argument_list|,
+name|userName
 argument_list|,
 name|sub
 argument_list|)
@@ -205,7 +210,7 @@ return|return
 name|subscriptionName
 return|;
 block|}
-comment|/**      * Browse messages for this durable subscriber      *       * @return messages      * @throws OpenDataException      */
+comment|/**      * Browse messages for this durable subscriber      *      * @return messages      * @throws OpenDataException      */
 specifier|public
 name|CompositeData
 index|[]
@@ -223,7 +228,7 @@ name|this
 argument_list|)
 return|;
 block|}
-comment|/**      * Browse messages for this durable subscriber      *       * @return messages      * @throws OpenDataException      */
+comment|/**      * Browse messages for this durable subscriber      *      * @return messages      * @throws OpenDataException      */
 specifier|public
 name|TabularData
 name|browseAsTable

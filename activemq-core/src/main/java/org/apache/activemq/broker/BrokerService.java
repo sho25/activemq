@@ -1351,6 +1351,10 @@ name|useAuthenticatedPrincipalForJMSXUserID
 decl_stmt|;
 specifier|private
 name|boolean
+name|populateUserNameInMBeans
+decl_stmt|;
+specifier|private
+name|boolean
 name|useShutdownHook
 init|=
 literal|true
@@ -11308,6 +11312,34 @@ operator|.
 name|useAuthenticatedPrincipalForJMSXUserID
 operator|=
 name|useAuthenticatedPrincipalForJMSXUserID
+expr_stmt|;
+block|}
+comment|/**      * Should MBeans that support showing the Authenticated User Name information have this      * value filled in or not.      *      * @return true if user names should be exposed in MBeans      */
+specifier|public
+name|boolean
+name|isPopulateUserNameInMBeans
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|populateUserNameInMBeans
+return|;
+block|}
+comment|/**      * Sets whether Authenticated User Name information is shown in MBeans that support this field.      * @param true if MBeans should expose user name information.      */
+specifier|public
+name|void
+name|setPopulateUserNameInMBeans
+parameter_list|(
+name|boolean
+name|value
+parameter_list|)
+block|{
+name|this
+operator|.
+name|populateUserNameInMBeans
+operator|=
+name|value
 expr_stmt|;
 block|}
 specifier|public

@@ -86,7 +86,7 @@ name|void
 name|resetStatistics
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the source address for this connection      *       * @return the source address for this connection      */
+comment|/**      * Returns the source address for this connection      *      * @return the source address for this connection      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -105,6 +105,16 @@ argument_list|)
 specifier|public
 name|int
 name|getDispatchQueueSize
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the User Name used to authorize creation of this Connection.      * This value can be null if display of user name information is disabled.      *      * @return the name of the user that created this Connection      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"User Name used to authorize creation of this connection"
+argument_list|)
+name|String
+name|getUserName
 parameter_list|()
 function_decl|;
 block|}

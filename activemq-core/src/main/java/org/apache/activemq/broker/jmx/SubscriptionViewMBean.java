@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_interface
@@ -173,7 +173,7 @@ name|int
 name|getDispatchedQueueSize
 parameter_list|()
 function_decl|;
-comment|/**      * The same as the number of messages dispatched -       * making it explicit      * @return      */
+comment|/**      * The same as the number of messages dispatched -      * making it explicit      * @return      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -327,6 +327,16 @@ literal|"Returns true if the subscription is slow"
 argument_list|)
 name|boolean
 name|isSlowConsumer
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the User Name used to authorize creation of this Subscription.      * This value can be null if display of user name information is disabled.      *      * @return the name of the user that created this Subscription      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"User Name used to authorize creation of this Subscription"
+argument_list|)
+name|String
+name|getUserName
 parameter_list|()
 function_decl|;
 block|}

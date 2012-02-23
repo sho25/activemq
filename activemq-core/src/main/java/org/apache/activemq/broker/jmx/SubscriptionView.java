@@ -67,20 +67,6 @@ name|activemq
 operator|.
 name|command
 operator|.
-name|ConsumerInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|ActiveMQQueue
 import|;
 end_import
@@ -107,6 +93,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|ConsumerInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|filter
 operator|.
 name|DestinationFilter
@@ -114,7 +114,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -134,12 +134,20 @@ specifier|final
 name|String
 name|clientId
 decl_stmt|;
-comment|/**      * Constructor      *       * @param subs      */
+specifier|protected
+specifier|final
+name|String
+name|userName
+decl_stmt|;
+comment|/**      * Constructor      *      * @param subs      */
 specifier|public
 name|SubscriptionView
 parameter_list|(
 name|String
 name|clientId
+parameter_list|,
+name|String
+name|userName
 parameter_list|,
 name|Subscription
 name|subs
@@ -156,6 +164,12 @@ operator|.
 name|subscription
 operator|=
 name|subs
+expr_stmt|;
+name|this
+operator|.
+name|userName
+operator|=
+name|userName
 expr_stmt|;
 block|}
 comment|/**      * @return the clientId      */
@@ -951,6 +965,17 @@ name|subscription
 operator|.
 name|isSlowConsumer
 argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getUserName
+parameter_list|()
+block|{
+return|return
+name|userName
 return|;
 block|}
 block|}

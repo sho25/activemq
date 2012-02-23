@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   *   */
+comment|/**  *  *  */
 end_comment
 
 begin_class
@@ -68,6 +68,9 @@ parameter_list|(
 name|String
 name|clientId
 parameter_list|,
+name|String
+name|userName
+parameter_list|,
 name|TopicSubscription
 name|subs
 parameter_list|)
@@ -75,6 +78,8 @@ block|{
 name|super
 argument_list|(
 name|clientId
+argument_list|,
+name|userName
 argument_list|,
 name|subs
 argument_list|)
@@ -142,7 +147,7 @@ else|:
 literal|0
 return|;
 block|}
-comment|/**      *       */
+comment|/**      *      */
 specifier|public
 name|void
 name|setMaximumPendingQueueSize

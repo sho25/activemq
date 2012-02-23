@@ -126,7 +126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   *   */
+comment|/**  *  *  */
 end_comment
 
 begin_class
@@ -142,7 +142,7 @@ specifier|protected
 name|SubscriptionInfo
 name|subscriptionInfo
 decl_stmt|;
-comment|/**      * Constructor      *       * @param broker      * @param clientId      * @param subInfo      */
+comment|/**      * Constructor      *      * @param broker      * @param clientId      * @param userName      * @param subInfo      */
 specifier|public
 name|InactiveDurableSubscriptionView
 parameter_list|(
@@ -164,6 +164,8 @@ argument_list|(
 name|broker
 argument_list|,
 name|clientId
+argument_list|,
+literal|null
 argument_list|,
 name|subscription
 argument_list|)
@@ -273,7 +275,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Browse messages for this durable subscriber      *       * @return messages      * @throws OpenDataException      */
+comment|/**      * Browse messages for this durable subscriber      *      * @return messages      * @throws OpenDataException      */
 specifier|public
 name|CompositeData
 index|[]
@@ -291,7 +293,7 @@ name|this
 argument_list|)
 return|;
 block|}
-comment|/**      * Browse messages for this durable subscriber      *       * @return messages      * @throws OpenDataException      */
+comment|/**      * Browse messages for this durable subscriber      *      * @return messages      * @throws OpenDataException      */
 specifier|public
 name|TabularData
 name|browseAsTable
