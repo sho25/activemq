@@ -522,7 +522,6 @@ block|{
 comment|//
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|run
 parameter_list|()
