@@ -702,6 +702,17 @@ name|SlowConsumerStrategy
 name|getSlowConsumerStrategy
 parameter_list|()
 function_decl|;
+name|boolean
+name|isDoOptimzeMessageStorage
+parameter_list|()
+function_decl|;
+name|void
+name|setDoOptimzeMessageStorage
+parameter_list|(
+name|boolean
+name|doOptimzeMessageStorage
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

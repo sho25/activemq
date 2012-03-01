@@ -157,6 +157,22 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Adds a message to the message store      *      * @param context context      * @param message      * @param canOptimizeHint - give a hint to the store that the message may be consumed before it hits the disk      * @throws IOException      */
+name|void
+name|addMessage
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|Message
+name|message
+parameter_list|,
+name|boolean
+name|canOptimizeHint
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 comment|/**      * Adds a message to the message store      *       * @param context context      * @param message      * @return a Future to track when this is complete      * @throws IOException       * @throws IOException      */
 name|Future
 argument_list|<
@@ -173,6 +189,25 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Adds a message to the message store      *      * @param context context      * @param message      * @param canOptimizeHint - give a hint to the store that the message may be consumed before it hits the disk      * @return a Future to track when this is complete      * @throws IOException      * @throws IOException      */
+name|Future
+argument_list|<
+name|Object
+argument_list|>
+name|asyncAddQueueMessage
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|Message
+name|message
+parameter_list|,
+name|boolean
+name|canOptimizeHint
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 comment|/**      * Adds a message to the message store      *       * @param context context      * @param message      * @return a Future to track when this is complete      * @throws IOException       * @throws IOException      */
 name|Future
 argument_list|<
@@ -185,6 +220,25 @@ name|context
 parameter_list|,
 name|Message
 name|message
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * Adds a message to the message store      *      * @param context context      * @param message      *  @param canOptimizeHint - give a hint to the store that the message may be consumed before it hits the disk      * @return a Future to track when this is complete      * @throws IOException      * @throws IOException      */
+name|Future
+argument_list|<
+name|Object
+argument_list|>
+name|asyncAddTopicMessage
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|Message
+name|message
+parameter_list|,
+name|boolean
+name|canOptimizeHint
 parameter_list|)
 throws|throws
 name|IOException
