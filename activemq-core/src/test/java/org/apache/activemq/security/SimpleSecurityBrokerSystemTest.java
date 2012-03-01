@@ -409,7 +409,7 @@ name|DestinationMap
 name|readAccess
 init|=
 operator|new
-name|DestinationMap
+name|DefaultAuthorizationMap
 argument_list|()
 decl_stmt|;
 name|readAccess
@@ -494,7 +494,7 @@ name|DestinationMap
 name|writeAccess
 init|=
 operator|new
-name|DestinationMap
+name|DefaultAuthorizationMap
 argument_list|()
 decl_stmt|;
 name|writeAccess
@@ -657,7 +657,7 @@ name|DestinationMap
 name|adminAccess
 init|=
 operator|new
-name|DestinationMap
+name|DefaultAuthorizationMap
 argument_list|()
 decl_stmt|;
 name|adminAccess

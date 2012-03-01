@@ -876,6 +876,12 @@ block|{
 operator|new
 name|ActiveMQQueue
 argument_list|(
+literal|"USERS.BY_PASS, TEST"
+argument_list|)
+block|,
+operator|new
+name|ActiveMQQueue
+argument_list|(
 literal|"TEST"
 argument_list|)
 block|,
@@ -1078,6 +1084,12 @@ block|{
 operator|new
 name|ActiveMQQueue
 argument_list|(
+literal|"GUESTS.BY_PASS,TEST"
+argument_list|)
+block|,
+operator|new
+name|ActiveMQQueue
+argument_list|(
 literal|"TEST"
 argument_list|)
 block|,
@@ -1208,6 +1220,12 @@ block|{
 operator|new
 name|ActiveMQQueue
 argument_list|(
+literal|"USERS.BY_PASS,TEST"
+argument_list|)
+block|,
+operator|new
+name|ActiveMQQueue
+argument_list|(
 literal|"TEST"
 argument_list|)
 block|,
@@ -1258,6 +1276,12 @@ operator|new
 name|Object
 index|[]
 block|{
+operator|new
+name|ActiveMQQueue
+argument_list|(
+literal|"GUESTS.BY_PASS,TEST"
+argument_list|)
+block|,
 operator|new
 name|ActiveMQQueue
 argument_list|(
