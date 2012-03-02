@@ -518,6 +518,34 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{
+comment|// ignore repeated calls to setClientID() with the same client id
+comment|// this could happen when a JMS component such as Spring that uses a
+comment|// PooledConnectionFactory shuts down and reinitializes.
+comment|//
+if|if
+condition|(
+name|this
+operator|.
+name|getConnection
+argument_list|()
+operator|.
+name|getClientID
+argument_list|()
+operator|==
+literal|null
+operator|||
+operator|!
+name|this
+operator|.
+name|getClientID
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|clientID
+argument_list|)
+condition|)
+block|{
 name|getConnection
 argument_list|()
 operator|.
@@ -526,6 +554,7 @@ argument_list|(
 name|clientID
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|ConnectionConsumer
