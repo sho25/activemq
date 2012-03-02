@@ -1766,6 +1766,9 @@ operator|.
 name|shutdown
 argument_list|()
 expr_stmt|;
+name|boolean
+name|finishedInTime
+init|=
 name|executor
 operator|.
 name|awaitTermination
@@ -1776,7 +1779,7 @@ name|TimeUnit
 operator|.
 name|SECONDS
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|assertTrue
 argument_list|(
 literal|"no exceptions"
@@ -1785,6 +1788,13 @@ name|exceptions
 operator|.
 name|isEmpty
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"finished ok"
+argument_list|,
+name|finishedInTime
 argument_list|)
 expr_stmt|;
 block|}
@@ -1973,6 +1983,9 @@ operator|.
 name|shutdown
 argument_list|()
 expr_stmt|;
+name|boolean
+name|finishedInTime
+init|=
 name|executor
 operator|.
 name|awaitTermination
@@ -1984,6 +1997,13 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|SECONDS
+argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+literal|"finished ok"
+argument_list|,
+name|finishedInTime
 argument_list|)
 expr_stmt|;
 block|}
@@ -2554,6 +2574,9 @@ argument_list|(
 literal|"wait for parallel work to complete"
 argument_list|)
 expr_stmt|;
+name|boolean
+name|finishedInTime
+init|=
 name|executor
 operator|.
 name|awaitTermination
@@ -2566,7 +2589,7 @@ name|TimeUnit
 operator|.
 name|SECONDS
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|assertTrue
 argument_list|(
 literal|"no exceptions"
@@ -2575,6 +2598,13 @@ name|exceptions
 operator|.
 name|isEmpty
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"finished ok"
+argument_list|,
+name|finishedInTime
 argument_list|)
 expr_stmt|;
 block|}
@@ -2993,19 +3023,21 @@ argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(
-literal|"test did not  timeout "
-argument_list|,
-name|shutdown
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"no exceptions"
+literal|"no exceptions: "
+operator|+
+name|exceptions
 argument_list|,
 name|exceptions
 operator|.
 name|isEmpty
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"test did not  timeout "
+argument_list|,
+name|shutdown
 argument_list|)
 expr_stmt|;
 block|}
@@ -3738,6 +3770,19 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|executor
+operator|!=
+literal|null
+condition|)
+block|{
+name|executor
+operator|.
+name|shutdownNow
+argument_list|()
+expr_stmt|;
+block|}
 name|store
 operator|.
 name|stop
