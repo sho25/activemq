@@ -73,18 +73,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|transaction
-operator|.
-name|xa
-operator|.
-name|XAException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -314,7 +302,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides a TransactionStore implementation that can create transaction aware  * MessageStore objects from non transaction aware MessageStore objects.  *   *   */
+comment|/**  * Provides a TransactionStore implementation that can create transaction aware  * MessageStore objects from non transaction aware MessageStore objects.  *  *  */
 end_comment
 
 begin_class
@@ -413,6 +401,38 @@ parameter_list|,
 specifier|final
 name|Message
 name|send
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|KahaTransactionStore
+operator|.
+name|this
+operator|.
+name|addMessage
+argument_list|(
+name|getDelegate
+argument_list|()
+argument_list|,
+name|send
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|addMessage
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+specifier|final
+name|Message
+name|send
+parameter_list|,
+name|boolean
+name|canOptimize
 parameter_list|)
 throws|throws
 name|IOException

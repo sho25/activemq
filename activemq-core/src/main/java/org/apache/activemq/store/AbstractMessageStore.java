@@ -185,6 +185,8 @@ operator|=
 name|destination
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|dispose
@@ -193,6 +195,8 @@ name|ConnectionContext
 name|context
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -200,6 +204,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -207,6 +213,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|ActiveMQDestination
 name|getDestination
@@ -216,6 +224,8 @@ return|return
 name|destination
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMemoryUsage
@@ -224,6 +234,8 @@ name|MemoryUsage
 name|memoryUsage
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBatch
@@ -236,7 +248,9 @@ name|IOException
 throws|,
 name|Exception
 block|{     }
-comment|/**      * flag to indicate if the store is empty      *       * @return true if the message count is 0      * @throws Exception      */
+comment|/**      * flag to indicate if the store is empty      *      * @return true if the message count is 0      * @throws Exception      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isEmpty
@@ -251,6 +265,8 @@ operator|==
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setPrioritizedMessages
@@ -266,6 +282,8 @@ operator|=
 name|prioritizedMessages
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isPrioritizedMessages
@@ -277,6 +295,8 @@ operator|.
 name|prioritizedMessages
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addMessage
@@ -304,6 +324,8 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Future
 argument_list|<
@@ -333,6 +355,8 @@ return|return
 name|FUTURE
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Future
 argument_list|<
@@ -368,6 +392,8 @@ return|return
 name|FUTURE
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Future
 argument_list|<
@@ -403,6 +429,8 @@ return|return
 name|FUTURE
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Future
 argument_list|<
@@ -432,6 +460,8 @@ return|return
 name|FUTURE
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeAsyncMessage

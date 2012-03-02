@@ -134,7 +134,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a message store which is used by the persistent implementations  *   *   */
+comment|/**  * Represents a message store which is used by the persistent implementations  *  *  */
 end_comment
 
 begin_interface
@@ -144,7 +144,7 @@ name|MessageStore
 extends|extends
 name|Service
 block|{
-comment|/**      * Adds a message to the message store      *       * @param context context      * @param message      * @throws IOException      */
+comment|/**      * Adds a message to the message store      *      * @param context context      * @param message      * @throws IOException      */
 name|void
 name|addMessage
 parameter_list|(
@@ -173,7 +173,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Adds a message to the message store      *       * @param context context      * @param message      * @return a Future to track when this is complete      * @throws IOException       * @throws IOException      */
+comment|/**      * Adds a message to the message store      *      * @param context context      * @param message      * @return a Future to track when this is complete      * @throws IOException      * @throws IOException      */
 name|Future
 argument_list|<
 name|Object
@@ -208,7 +208,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Adds a message to the message store      *       * @param context context      * @param message      * @return a Future to track when this is complete      * @throws IOException       * @throws IOException      */
+comment|/**      * Adds a message to the message store      *      * @param context context      * @param message      * @return a Future to track when this is complete      * @throws IOException      * @throws IOException      */
 name|Future
 argument_list|<
 name|Object
@@ -243,7 +243,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Looks up a message using either the String messageID or the      * messageNumber. Implementations are encouraged to fill in the missing key      * if its easy to do so.      *       * @param identity which contains either the messageID or the messageNumber      * @return the message or null if it does not exist      * @throws IOException      */
+comment|/**      * Looks up a message using either the String messageID or the      * messageNumber. Implementations are encouraged to fill in the missing key      * if its easy to do so.      *      * @param identity which contains either the messageID or the messageNumber      * @return the message or null if it does not exist      * @throws IOException      */
 name|Message
 name|getMessage
 parameter_list|(
@@ -253,7 +253,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Removes a message from the message store.      *       * @param context      * @param ack the ack request that cause the message to be removed. It      *                conatins the identity which contains the messageID of the      *                message that needs to be removed.      * @throws IOException      */
+comment|/**      * Removes a message from the message store.      *      * @param context      * @param ack the ack request that cause the message to be removed. It      *                conatins the identity which contains the messageID of the      *                message that needs to be removed.      * @throws IOException      */
 name|void
 name|removeMessage
 parameter_list|(
@@ -278,7 +278,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Removes all the messages from the message store.      *       * @param context      * @throws IOException      */
+comment|/**      * Removes all the messages from the message store.      *      * @param context      * @throws IOException      */
 name|void
 name|removeAllMessages
 parameter_list|(
@@ -288,7 +288,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Recover any messages to be delivered.      *       * @param container      * @throws Exception      */
+comment|/**      * Recover any messages to be delivered.      *      * @param container      * @throws Exception      */
 name|void
 name|recover
 parameter_list|(
@@ -298,7 +298,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * The destination that the message store is holding messages for.      *       * @return the destination      */
+comment|/**      * The destination that the message store is holding messages for.      *      * @return the destination      */
 name|ActiveMQDestination
 name|getDestination
 parameter_list|()
@@ -311,14 +311,14 @@ name|MemoryUsage
 name|memoeyUSage
 parameter_list|)
 function_decl|;
-comment|/**      * @return the number of messages ready to deliver      * @throws IOException      *       */
+comment|/**      * @return the number of messages ready to deliver      * @throws IOException      *      */
 name|int
 name|getMessageCount
 parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * A hint to the Store to reset any batching state for the Destination      *       */
+comment|/**      * A hint to the Store to reset any batching state for the Destination      *      */
 name|void
 name|resetBatching
 parameter_list|()
@@ -342,7 +342,7 @@ name|ConnectionContext
 name|context
 parameter_list|)
 function_decl|;
-comment|/**      * allow caching cursors to set the current batch offset when cache is exhausted      * @param messageId      * @throws Exception       */
+comment|/**      * allow caching cursors to set the current batch offset when cache is exhausted      * @param messageId      * @throws Exception      */
 name|void
 name|setBatch
 parameter_list|(
@@ -352,7 +352,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * flag to indicate if the store is empty      * @return true if the message count is 0      * @throws Exception       */
+comment|/**      * flag to indicate if the store is empty      * @return true if the message count is 0      * @throws Exception      */
 name|boolean
 name|isEmpty
 parameter_list|()
@@ -368,7 +368,7 @@ name|boolean
 name|prioritizedMessages
 parameter_list|)
 function_decl|;
-comment|/**      *       * @return true if store is trying to recover messages according to priority      */
+comment|/**      *      * @return true if store is trying to recover messages according to priority      */
 specifier|public
 name|boolean
 name|isPrioritizedMessages

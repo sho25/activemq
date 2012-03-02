@@ -159,6 +159,8 @@ return|return
 name|delegate
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addMessage
@@ -182,6 +184,8 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addMessage
@@ -210,6 +214,8 @@ name|canOptimizeHint
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|getMessage
@@ -229,6 +235,8 @@ name|identity
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|recover
@@ -247,6 +255,8 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeAllMessages
@@ -265,6 +275,8 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeMessage
@@ -288,6 +300,8 @@ name|ack
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -301,6 +315,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -314,6 +330,8 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|dispose
@@ -330,6 +348,8 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ActiveMQDestination
 name|getDestination
@@ -342,6 +362,8 @@ name|getDestination
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMemoryUsage
@@ -358,6 +380,8 @@ name|memoryUsage
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMessageCount
@@ -372,6 +396,8 @@ name|getMessageCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|recoverNextMessages
@@ -395,6 +421,8 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|resetBatching
@@ -406,6 +434,8 @@ name|resetBatching
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBatch
@@ -424,6 +454,8 @@ name|messageId
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isEmpty
@@ -438,6 +470,8 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Future
 argument_list|<
@@ -465,6 +499,8 @@ name|message
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Future
 argument_list|<
@@ -497,6 +533,8 @@ name|canOptimizeHint
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Future
 argument_list|<
@@ -524,6 +562,8 @@ name|message
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Future
 argument_list|<
@@ -554,6 +594,8 @@ name|canOptimizeHint
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeAsyncMessage
@@ -577,6 +619,8 @@ name|ack
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setPrioritizedMessages
@@ -593,6 +637,8 @@ name|prioritizedMessages
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isPrioritizedMessages
