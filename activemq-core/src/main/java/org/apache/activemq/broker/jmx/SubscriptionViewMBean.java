@@ -27,6 +27,16 @@ name|InvalidSelectorException
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|ObjectName
+import|;
+end_import
+
 begin_comment
 comment|/**  *  */
 end_comment
@@ -337,6 +347,16 @@ literal|"User Name used to authorize creation of this Subscription"
 argument_list|)
 name|String
 name|getUserName
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the ObjectName of the Connection that created this Subscription.      * This value can be null if for instance this is an off-line durable subscription.      *      * @return the name of the Connection that created this Subscription.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"ObjectName of the Connection that created this Subscription"
+argument_list|)
+name|ObjectName
+name|getConnection
 parameter_list|()
 function_decl|;
 block|}
