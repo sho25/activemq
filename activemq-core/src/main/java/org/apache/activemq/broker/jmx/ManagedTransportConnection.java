@@ -301,6 +301,8 @@ operator|new
 name|ConnectionView
 argument_list|(
 name|this
+argument_list|,
+name|managementContext
 argument_list|)
 expr_stmt|;
 name|this

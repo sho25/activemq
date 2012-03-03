@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|ObjectName
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -115,6 +125,28 @@ literal|"User Name used to authorize creation of this connection"
 argument_list|)
 name|String
 name|getUserName
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the ObjectNames of all the Consumers created by this Connection.      *      * @return the ObjectNames of all Consumers created by this Connection.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The ObjectNames of all Consumers created by this Connection"
+argument_list|)
+name|ObjectName
+index|[]
+name|getConsumers
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the ObjectNames of all the Producers created by this Connection.      *      * @return the ObjectNames of all Producers created by this Connection.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The ObjectNames of all Producers created by this Connection"
+argument_list|)
+name|ObjectName
+index|[]
+name|getProducers
 parameter_list|()
 function_decl|;
 block|}
