@@ -3090,7 +3090,7 @@ return|return
 name|dispatchAsync
 return|;
 block|}
-comment|/**      * Enables or disables the default setting of whether or not consumers have      * their messages<a      * href="http://activemq.apache.org/consumer-dispatch-async.html">dispatched      * synchronously or asynchronously by the broker</a>. For non-durable      * topics for example we typically dispatch synchronously by default to      * minimize context switches which boost performance. However sometimes its      * better to go slower to ensure that a single blocked consumer socket does      * not block delivery to other consumers.      *      * @param asyncDispatch If true then consumers created on this connection      *                will default to having their messages dispatched      *                asynchronously. The default value is false.      */
+comment|/**      * Enables or disables the default setting of whether or not consumers have      * their messages<a      * href="http://activemq.apache.org/consumer-dispatch-async.html">dispatched      * synchronously or asynchronously by the broker</a>. For non-durable      * topics for example we typically dispatch synchronously by default to      * minimize context switches which boost performance. However sometimes its      * better to go slower to ensure that a single blocked consumer socket does      * not block delivery to other consumers.      *      * @param asyncDispatch If true then consumers created on this connection      *                will default to having their messages dispatched      *                asynchronously. The default value is true.      */
 specifier|public
 name|void
 name|setDispatchAsync
