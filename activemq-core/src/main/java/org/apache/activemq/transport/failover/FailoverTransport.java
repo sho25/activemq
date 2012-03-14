@@ -3022,6 +3022,38 @@ throw|throw
 name|e
 throw|;
 block|}
+else|else
+block|{
+comment|// Handle the error but allow the method to return since the
+comment|// tracked commands are replayed on reconnect.
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Send oneway attempt: "
+operator|+
+name|i
+operator|+
+literal|" failed for command:"
+operator|+
+name|command
+argument_list|)
+expr_stmt|;
+block|}
+name|handleTransportFailure
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 return|return;
 block|}
