@@ -4527,7 +4527,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Sends the message for dispatch by the broker.      *      * @param producer - message producer.      * @param destination - message destination.      * @param message - message to be sent.      * @param deliveryMode - JMS messsage delivery mode.      * @param priority - message priority.      * @param timeToLive - message expiration.      * @param producerWindow      * @throws JMSException      */
+comment|/**      * Sends the message for dispatch by the broker.      *      *      * @param producer - message producer.      * @param destination - message destination.      * @param message - message to be sent.      * @param deliveryMode - JMS messsage delivery mode.      * @param priority - message priority.      * @param timeToLive - message expiration.      * @param producerWindow      * @param onComplete      * @throws JMSException      */
 specifier|protected
 name|void
 name|send
@@ -4555,6 +4555,9 @@ name|producerWindow
 parameter_list|,
 name|int
 name|sendTimeout
+parameter_list|,
+name|AsyncCallback
+name|onComplete
 parameter_list|)
 throws|throws
 name|JMSException
@@ -4851,6 +4854,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|onComplete
+operator|==
+literal|null
+operator|&&
 name|sendTimeout
 operator|<=
 literal|0
@@ -4932,6 +4939,10 @@ condition|(
 name|sendTimeout
 operator|>
 literal|0
+operator|&&
+name|onComplete
+operator|==
+literal|null
 condition|)
 block|{
 name|this
@@ -4955,6 +4966,8 @@ operator|.
 name|syncSendPacket
 argument_list|(
 name|msg
+argument_list|,
+name|onComplete
 argument_list|)
 expr_stmt|;
 block|}
