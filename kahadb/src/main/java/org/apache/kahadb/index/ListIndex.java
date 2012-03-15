@@ -972,6 +972,9 @@ argument_list|(
 name|tx
 argument_list|)
 expr_stmt|;
+name|flushCache
+argument_list|()
+expr_stmt|;
 return|return
 name|oldValue
 return|;
@@ -1057,6 +1060,9 @@ name|storeUpdate
 argument_list|(
 name|tx
 argument_list|)
+expr_stmt|;
+name|flushCache
+argument_list|()
 expr_stmt|;
 return|return
 name|oldValue
@@ -1163,12 +1169,18 @@ argument_list|(
 name|tx
 argument_list|)
 expr_stmt|;
+name|flushCache
+argument_list|()
+expr_stmt|;
 return|return
 name|oldValue
 return|;
 block|}
 block|}
 comment|// Not found so add it last.
+name|flushCache
+argument_list|()
+expr_stmt|;
 return|return
 name|add
 argument_list|(
@@ -1219,6 +1231,9 @@ operator|.
 name|incrementAndGet
 argument_list|()
 expr_stmt|;
+name|flushCache
+argument_list|()
+expr_stmt|;
 return|return
 literal|null
 return|;
@@ -1260,6 +1275,9 @@ expr_stmt|;
 name|size
 operator|.
 name|incrementAndGet
+argument_list|()
+expr_stmt|;
+name|flushCache
 argument_list|()
 expr_stmt|;
 return|return
