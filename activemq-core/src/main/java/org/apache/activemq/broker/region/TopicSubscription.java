@@ -713,6 +713,26 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|info
+operator|.
+name|getPrefetchSize
+argument_list|()
+operator|>
+literal|1
+operator|&&
+name|matched
+operator|.
+name|size
+argument_list|()
+operator|>
+name|info
+operator|.
+name|getPrefetchSize
+argument_list|()
+condition|)
+block|{
 comment|//we are slow
 if|if
 condition|(
@@ -728,7 +748,7 @@ argument_list|(
 name|toString
 argument_list|()
 operator|+
-literal|": has reached its prefetch limit without an ack, it appears to be slow"
+literal|": has twice its prefetch limit pending, without an ack; it appears to be slow"
 argument_list|)
 expr_stmt|;
 name|setSlowConsumer
@@ -754,6 +774,7 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 if|if
