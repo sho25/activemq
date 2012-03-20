@@ -293,6 +293,10 @@ specifier|private
 name|ActiveMQTopic
 name|topic
 decl_stmt|;
+specifier|private
+name|String
+name|connectionUri
+decl_stmt|;
 annotation|@
 name|Test
 specifier|public
@@ -396,8 +400,6 @@ name|j
 index|]
 argument_list|)
 expr_stmt|;
-comment|// broker.getAdminView().destroyDurableSubscriber(clientID,
-comment|// Client.SUBSCRIPTION_NAME);
 name|subscribers
 index|[
 name|j
@@ -829,11 +831,6 @@ specifier|final
 class|class
 name|DurableSubscriber
 block|{
-name|String
-name|url
-init|=
-literal|"tcp://localhost:61656"
-decl_stmt|;
 specifier|final
 name|ConnectionFactory
 name|cf
@@ -841,7 +838,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-name|url
+name|connectionUri
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -964,7 +961,6 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-comment|//MessageConsumer consumer = sess.createDurableSubscriber(topic,SUBSCRIPTION_NAME);
 try|try
 block|{
 do|do
@@ -1004,7 +1000,9 @@ name|message
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
+block|}
 name|LOG
 operator|.
 name|info
@@ -1312,12 +1310,17 @@ argument_list|(
 name|kahadb
 argument_list|)
 expr_stmt|;
+name|connectionUri
+operator|=
 name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://localhost:61656"
+literal|"tcp://localhost:0"
 argument_list|)
+operator|.
+name|getPublishableConnectString
+argument_list|()
 expr_stmt|;
 name|broker
 operator|.
