@@ -1134,6 +1134,17 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+name|Journal
+name|getJournal
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|journal
+return|;
+block|}
+specifier|public
 name|File
 name|getDirectory
 parameter_list|()
@@ -2185,6 +2196,9 @@ name|plists
 operator|=
 operator|new
 name|ArrayList
+argument_list|<
+name|PList
+argument_list|>
 argument_list|(
 name|persistentLists
 operator|.

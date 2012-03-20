@@ -114,7 +114,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Store based Cursor for Queues  *   *   */
+comment|/**  * Store based Cursor for Queues  */
 end_comment
 
 begin_class
@@ -170,7 +170,7 @@ specifier|private
 name|PendingMessageCursor
 name|currentCursor
 decl_stmt|;
-comment|/**      * Construct      * @param broker       * @param queue      */
+comment|/**      * Construct      * @param broker      * @param queue      */
 specifier|public
 name|StoreQueueCursor
 parameter_list|(
@@ -388,6 +388,11 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|nonPersistent
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 name|nonPersistent
 operator|.
 name|stop
@@ -793,7 +798,7 @@ operator|==
 literal|0
 return|;
 block|}
-comment|/**      * Informs the Broker if the subscription needs to intervention to recover      * it's state e.g. DurableTopicSubscriber may do      *       * @see org.apache.activemq.broker.region.cursors.PendingMessageCursor      * @return true if recovery required      */
+comment|/**      * Informs the Broker if the subscription needs to intervention to recover      * it's state e.g. DurableTopicSubscriber may do      *      * @see org.apache.activemq.broker.region.cursors.PendingMessageCursor      * @return true if recovery required      */
 specifier|public
 name|boolean
 name|isRecoveryRequired
