@@ -635,6 +635,13 @@ name|doOptimzeMessageStorage
 init|=
 literal|true
 decl_stmt|;
+comment|/*      * percentage of in-flight messages above which optimize message store is disabled      */
+specifier|private
+name|int
+name|optimizeMessageStoreInFlightLimit
+init|=
+literal|10
+decl_stmt|;
 comment|/**      * @param brokerService      * @param store      * @param destination      * @param parentStats      * @throws Exception      */
 specifier|public
 name|BaseDestination
@@ -2659,6 +2666,30 @@ operator|.
 name|doOptimzeMessageStorage
 operator|=
 name|doOptimzeMessageStorage
+expr_stmt|;
+block|}
+specifier|public
+name|int
+name|getOptimizeMessageStoreInFlightLimit
+parameter_list|()
+block|{
+return|return
+name|optimizeMessageStoreInFlightLimit
+return|;
+block|}
+specifier|public
+name|void
+name|setOptimizeMessageStoreInFlightLimit
+parameter_list|(
+name|int
+name|optimizeMessageStoreInFlightLimit
+parameter_list|)
+block|{
+name|this
+operator|.
+name|optimizeMessageStoreInFlightLimit
+operator|=
+name|optimizeMessageStoreInFlightLimit
 expr_stmt|;
 block|}
 specifier|public

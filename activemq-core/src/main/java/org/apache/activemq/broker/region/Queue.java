@@ -10791,7 +10791,8 @@ operator|.
 name|getInFlightUsage
 argument_list|()
 operator|>
-literal|10
+name|getOptimizeMessageStoreInFlightLimit
+argument_list|()
 condition|)
 block|{
 name|result
