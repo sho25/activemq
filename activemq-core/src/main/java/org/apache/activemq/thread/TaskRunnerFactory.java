@@ -485,7 +485,7 @@ name|Integer
 operator|.
 name|MAX_VALUE
 argument_list|,
-literal|10
+literal|30
 argument_list|,
 name|TimeUnit
 operator|.
@@ -549,7 +549,6 @@ block|}
 block|}
 argument_list|)
 decl_stmt|;
-comment|// rc.allowCoreThreadTimeOut(true);
 return|return
 name|rc
 return|;

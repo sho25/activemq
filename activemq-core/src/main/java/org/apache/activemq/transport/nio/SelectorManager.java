@@ -122,7 +122,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The SelectorManager will manage one Selector and the thread that checks the  * selector.  *   * We may need to consider running more than one thread to check the selector if  * servicing the selector takes too long.  *   * @version $Rev: 46019 $ $Date: 2004-09-14 05:56:06 -0400 (Tue, 14 Sep 2004) $  */
+comment|/**  * The SelectorManager will manage one Selector and the thread that checks the  * selector.  *  * We may need to consider running more than one thread to check the selector if  * servicing the selector takes too long.  */
 end_comment
 
 begin_class
@@ -195,7 +195,7 @@ literal|10
 argument_list|,
 name|TimeUnit
 operator|.
-name|MILLISECONDS
+name|SECONDS
 argument_list|,
 operator|new
 name|SynchronousQueue
@@ -208,6 +208,12 @@ operator|new
 name|ThreadFactory
 argument_list|()
 block|{
+specifier|private
+name|long
+name|i
+init|=
+literal|0
+decl_stmt|;
 specifier|public
 name|Thread
 name|newThread
@@ -216,20 +222,34 @@ name|Runnable
 name|runnable
 parameter_list|)
 block|{
-return|return
+name|this
+operator|.
+name|i
+operator|++
+expr_stmt|;
+specifier|final
+name|Thread
+name|t
+init|=
 operator|new
 name|Thread
 argument_list|(
 name|runnable
 argument_list|,
-literal|"ActiveMQ NIO Worker"
+literal|"ActiveMQ NIO Worker "
+operator|+
+name|this
+operator|.
+name|i
 argument_list|)
+decl_stmt|;
+return|return
+name|t
 return|;
 block|}
 block|}
 argument_list|)
 decl_stmt|;
-comment|// rc.allowCoreThreadTimeOut(true);
 return|return
 name|rc
 return|;
