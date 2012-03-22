@@ -1854,8 +1854,6 @@ argument_list|,
 name|marshaller
 argument_list|)
 decl_stmt|;
-try|try
-block|{
 name|ListNode
 argument_list|<
 name|Key
@@ -1886,17 +1884,6 @@ expr_stmt|;
 return|return
 name|node
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|ClassCastException
-name|e
-parameter_list|)
-block|{
-throw|throw
-name|e
-throw|;
-block|}
 block|}
 name|ListNode
 argument_list|<
