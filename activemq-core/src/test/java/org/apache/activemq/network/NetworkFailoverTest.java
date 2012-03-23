@@ -612,7 +612,9 @@ name|handleTransportFailure
 argument_list|(
 operator|new
 name|IOException
-argument_list|()
+argument_list|(
+literal|"Forcing failover from test"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|TextMessage
@@ -624,7 +626,9 @@ operator|)
 name|requestConsumer
 operator|.
 name|receive
-argument_list|()
+argument_list|(
+literal|10000
+argument_list|)
 decl_stmt|;
 name|assertNotNull
 argument_list|(
@@ -656,7 +660,9 @@ name|setUp
 argument_list|()
 expr_stmt|;
 name|doSetUp
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
@@ -666,16 +672,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|localBroker
-operator|.
-name|deleteAllMessages
-argument_list|()
-expr_stmt|;
-name|remoteBroker
-operator|.
-name|deleteAllMessages
-argument_list|()
-expr_stmt|;
 name|doTearDown
 argument_list|()
 expr_stmt|;
@@ -716,7 +712,10 @@ block|}
 specifier|protected
 name|void
 name|doSetUp
-parameter_list|()
+parameter_list|(
+name|boolean
+name|deleteAllMessages
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -727,6 +726,13 @@ argument_list|()
 expr_stmt|;
 name|remoteBroker
 operator|.
+name|setDeleteAllMessagesOnStartup
+argument_list|(
+name|deleteAllMessages
+argument_list|)
+expr_stmt|;
+name|remoteBroker
+operator|.
 name|start
 argument_list|()
 expr_stmt|;
@@ -734,6 +740,13 @@ name|localBroker
 operator|=
 name|createLocalBroker
 argument_list|()
+expr_stmt|;
+name|localBroker
+operator|.
+name|setDeleteAllMessagesOnStartup
+argument_list|(
+name|deleteAllMessages
+argument_list|)
 expr_stmt|;
 name|localBroker
 operator|.
@@ -764,7 +777,7 @@ literal|","
 operator|+
 name|remoteURI
 operator|+
-literal|"?trackMessages=true)?randomize=false&backup=true"
+literal|")?randomize=false&backup=true&trackMessages=true"
 argument_list|)
 decl_stmt|;
 comment|//ActiveMQConnectionFactory fac = new ActiveMQConnectionFactory(localURI);
@@ -800,7 +813,7 @@ literal|","
 operator|+
 name|localURI
 operator|+
-literal|")?randomize=false&backup=true"
+literal|")?randomize=false&backup=true&trackMessages=true"
 argument_list|)
 expr_stmt|;
 name|fac

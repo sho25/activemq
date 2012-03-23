@@ -49,6 +49,28 @@ name|BrokerService
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -101,6 +123,8 @@ return|return
 name|broker
 return|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testTempQueues
