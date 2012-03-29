@@ -1922,6 +1922,13 @@ name|KahaDestination
 name|commandDestination
 parameter_list|)
 block|{
+if|if
+condition|(
+name|brokerService
+operator|!=
+literal|null
+condition|)
+block|{
 name|RegionBroker
 name|regionBroker
 init|=
@@ -1933,6 +1940,13 @@ operator|.
 name|getRegionBroker
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|regionBroker
+operator|!=
+literal|null
+condition|)
+block|{
 name|Set
 argument_list|<
 name|Destination
@@ -1979,6 +1993,8 @@ operator|.
 name|decrement
 argument_list|()
 expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 specifier|private
