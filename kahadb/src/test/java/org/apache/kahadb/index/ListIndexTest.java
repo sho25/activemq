@@ -3098,13 +3098,6 @@ operator|++
 name|i
 control|)
 block|{
-name|tx
-operator|=
-name|pf
-operator|.
-name|tx
-argument_list|()
-expr_stmt|;
 name|test
 operator|.
 name|add
@@ -3123,18 +3116,6 @@ operator|new
 name|SequenceSet
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|tx
-operator|.
-name|commit
-argument_list|()
-expr_stmt|;
-name|tx
-operator|=
-name|pf
-operator|.
-name|tx
-argument_list|()
 expr_stmt|;
 for|for
 control|(
@@ -3272,11 +3253,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|tx
-operator|.
-name|commit
-argument_list|()
-expr_stmt|;
 block|}
 name|LOG
 operator|.
@@ -3300,13 +3276,6 @@ operator|++
 name|i
 control|)
 block|{
-name|tx
-operator|=
-name|pf
-operator|.
-name|tx
-argument_list|()
-expr_stmt|;
 name|assertTrue
 argument_list|(
 literal|"List should contain Key["
@@ -3353,11 +3322,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|tx
-operator|.
-name|commit
-argument_list|()
-expr_stmt|;
 block|}
 name|LOG
 operator|.
@@ -3393,7 +3357,7 @@ control|)
 block|{
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Size of ListIndex before removal of entry ["
 operator|+
@@ -3407,14 +3371,29 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|tx
-operator|=
-name|pf
+name|assertTrue
+argument_list|(
+literal|"List should contain Key["
+operator|+
+name|i
+operator|+
+literal|"]"
+argument_list|,
+name|test
 operator|.
+name|containsKey
+argument_list|(
 name|tx
-argument_list|()
+argument_list|,
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|i
+argument_list|)
+argument_list|)
+argument_list|)
 expr_stmt|;
-comment|//            assertTrue("List should contain Key["+i+"]",test.containsKey(tx, String.valueOf(i)));
 name|assertNotNull
 argument_list|(
 literal|"List contents of Key["
@@ -3438,14 +3417,9 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|tx
-operator|.
-name|commit
-argument_list|()
-expr_stmt|;
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Size of ListIndex after removal of entry ["
 operator|+
