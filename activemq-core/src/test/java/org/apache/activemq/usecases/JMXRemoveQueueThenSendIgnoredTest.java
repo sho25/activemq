@@ -497,7 +497,7 @@ argument_list|)
 decl_stmt|;
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"Received message "
 operator|+
@@ -610,7 +610,7 @@ argument_list|)
 decl_stmt|;
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"Received message "
 operator|+
@@ -721,28 +721,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|JMXConnector
-name|jmxConnector
-init|=
-name|JMXConnectorFactory
-operator|.
-name|connect
-argument_list|(
-operator|new
-name|JMXServiceURL
-argument_list|(
-literal|"service:jmx:rmi:///jndi/rmi://localhost:1099/jmxrmi"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|MBeanServerConnection
-name|mbeanServerConnection
-init|=
-name|jmxConnector
-operator|.
-name|getMBeanServerConnection
-argument_list|()
-decl_stmt|;
 name|ObjectName
 name|queueViewMBeanName
 init|=
@@ -760,12 +738,13 @@ init|=
 operator|(
 name|QueueViewMBean
 operator|)
-name|MBeanServerInvocationHandler
+name|brokerService
+operator|.
+name|getManagementContext
+argument_list|()
 operator|.
 name|newProxyInstance
 argument_list|(
-name|mbeanServerConnection
-argument_list|,
 name|queueViewMBeanName
 argument_list|,
 name|QueueViewMBean
@@ -783,11 +762,6 @@ operator|.
 name|getQueueSize
 argument_list|()
 decl_stmt|;
-name|jmxConnector
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 return|return
 operator|(
 name|int
