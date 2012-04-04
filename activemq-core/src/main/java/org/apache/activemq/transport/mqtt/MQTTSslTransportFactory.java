@@ -119,7 +119,7 @@ name|transport
 operator|.
 name|tcp
 operator|.
-name|TcpTransportFactory
+name|SslTransportFactory
 import|;
 end_import
 
@@ -152,15 +152,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A<a href="http://mqtt.org/">MQTT</a> transport factory  */
+comment|/**  * A<a href="http://mqtt.org/">MQTT</a> over SSL transport factory  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|MQTTTransportFactory
+name|MQTTSslTransportFactory
 extends|extends
-name|TcpTransportFactory
+name|SslTransportFactory
 implements|implements
 name|BrokerServiceAware
 block|{
@@ -232,24 +232,6 @@ name|options
 argument_list|)
 return|;
 block|}
-specifier|public
-name|void
-name|setBrokerService
-parameter_list|(
-name|BrokerService
-name|brokerService
-parameter_list|)
-block|{
-name|this
-operator|.
-name|brokerContext
-operator|=
-name|brokerService
-operator|.
-name|getBrokerContext
-argument_list|()
-expr_stmt|;
-block|}
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -317,8 +299,24 @@ return|return
 name|transport
 return|;
 block|}
-annotation|@
-name|Override
+specifier|public
+name|void
+name|setBrokerService
+parameter_list|(
+name|BrokerService
+name|brokerService
+parameter_list|)
+block|{
+name|this
+operator|.
+name|brokerContext
+operator|=
+name|brokerService
+operator|.
+name|getBrokerContext
+argument_list|()
+expr_stmt|;
+block|}
 specifier|protected
 name|Transport
 name|createInactivityMonitor

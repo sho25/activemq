@@ -198,7 +198,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The StompTransportFilter normally sits on top of a TcpTransport that has been  * configured with the StompWireFormat and is used to convert STOMP commands to  * ActiveMQ commands. All of the conversion work is done by delegating to the  * MQTTProtocolConverter.  *  * @author<a href="http://hiramchirino.com">chirino</a>  */
+comment|/**  * The StompTransportFilter normally sits on top of a TcpTransport that has been  * configured with the StompWireFormat and is used to convert STOMP commands to  * ActiveMQ commands. All of the conversion work is done by delegating to the  * MQTTProtocolConverter  */
 end_comment
 
 begin_class
@@ -344,7 +344,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|JMSException
+name|Exception
 name|e
 parameter_list|)
 block|{
