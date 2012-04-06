@@ -388,19 +388,12 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|//            nonPersistent.clear();
+comment|//            nonPersistent.stop();
+comment|//            nonPersistent.gc();
 name|nonPersistent
 operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-name|nonPersistent
-operator|.
-name|stop
-argument_list|()
-expr_stmt|;
-name|nonPersistent
-operator|.
-name|gc
+name|destroy
 argument_list|()
 expr_stmt|;
 block|}
