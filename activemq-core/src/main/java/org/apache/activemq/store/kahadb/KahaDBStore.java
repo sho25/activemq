@@ -2996,7 +2996,7 @@ name|location
 decl_stmt|;
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|lock
@@ -3018,7 +3018,7 @@ finally|finally
 block|{
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|unlock
@@ -3057,7 +3057,7 @@ argument_list|()
 expr_stmt|;
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|lock
@@ -3162,7 +3162,7 @@ finally|finally
 block|{
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|unlock
@@ -3188,7 +3188,7 @@ name|IOException
 block|{
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|lock
@@ -3256,7 +3256,7 @@ finally|finally
 block|{
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|unlock
@@ -3448,7 +3448,7 @@ name|Exception
 block|{
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|lock
@@ -3614,7 +3614,7 @@ finally|finally
 block|{
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|unlock
@@ -3635,6 +3635,14 @@ name|isLoaded
 argument_list|()
 condition|)
 block|{
+name|indexLock
+operator|.
+name|writeLock
+argument_list|()
+operator|.
+name|lock
+argument_list|()
+expr_stmt|;
 try|try
 block|{
 name|pageFile
@@ -3707,6 +3715,17 @@ literal|"Failed to reset batching"
 argument_list|,
 name|e
 argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|indexLock
+operator|.
+name|writeLock
+argument_list|()
+operator|.
+name|unlock
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -4586,7 +4605,7 @@ argument_list|()
 decl_stmt|;
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|lock
@@ -4715,7 +4734,7 @@ finally|finally
 block|{
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|unlock
@@ -4772,7 +4791,7 @@ argument_list|)
 decl_stmt|;
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|lock
@@ -4874,7 +4893,7 @@ finally|finally
 block|{
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|unlock
@@ -5763,7 +5782,7 @@ argument_list|()
 decl_stmt|;
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|lock
@@ -5951,7 +5970,7 @@ finally|finally
 block|{
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|unlock
