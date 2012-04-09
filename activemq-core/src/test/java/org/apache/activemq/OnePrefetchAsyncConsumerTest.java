@@ -405,7 +405,16 @@ block|{
 name|testMutex
 operator|.
 name|wait
-argument_list|()
+argument_list|(
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|5
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 block|}
