@@ -344,7 +344,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|1000
+literal|3000
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -382,7 +382,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|1000
+literal|3000
 argument_list|)
 expr_stmt|;
 comment|// should reconnect to some of the remaining brokers
