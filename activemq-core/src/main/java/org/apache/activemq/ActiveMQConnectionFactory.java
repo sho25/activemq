@@ -1016,14 +1016,16 @@ name|password
 argument_list|)
 return|;
 block|}
+comment|/**      * @returns the StatsImpl associated with this ConnectionFactory.      */
 specifier|public
 name|StatsImpl
 name|getStats
 parameter_list|()
 block|{
-comment|// TODO
 return|return
-literal|null
+name|this
+operator|.
+name|factoryStats
 return|;
 block|}
 comment|// /////////////////////////////////////////////
