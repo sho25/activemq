@@ -160,7 +160,6 @@ name|MQTTWireFormat
 implements|implements
 name|WireFormat
 block|{
-specifier|private
 specifier|static
 specifier|final
 name|int
@@ -411,8 +410,6 @@ argument_list|()
 decl_stmt|;
 name|byte
 name|digit
-init|=
-literal|0
 decl_stmt|;
 name|int
 name|multiplier
