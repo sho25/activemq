@@ -2315,6 +2315,10 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|messageCount
+operator|>
+literal|0
+operator|&&
 name|messages
 operator|.
 name|isRecoveryRequired
