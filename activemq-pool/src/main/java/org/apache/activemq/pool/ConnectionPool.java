@@ -251,8 +251,7 @@ name|poolFactory
 argument_list|)
 expr_stmt|;
 comment|// Add a transport Listener so that we can notice if this connection
-comment|// should be expired due to
-comment|// a connection failure.
+comment|// should be expired due to a connection failure.
 name|connection
 operator|.
 name|addTransportListener
@@ -303,10 +302,8 @@ block|{             }
 block|}
 argument_list|)
 expr_stmt|;
-comment|//
 comment|// make sure that we set the hasFailed flag, in case the transport already failed
 comment|// prior to the addition of our new TransportListener
-comment|//
 if|if
 condition|(
 name|connection

@@ -193,6 +193,16 @@ name|javax
 operator|.
 name|jms
 operator|.
+name|Session
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
 name|StreamMessage
 import|;
 end_import
@@ -274,16 +284,6 @@ operator|.
 name|jms
 operator|.
 name|XASession
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Session
 import|;
 end_import
 
@@ -379,10 +379,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  *  */
-end_comment
-
 begin_class
 specifier|public
 class|class
@@ -473,6 +469,21 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
+name|CopyOnWriteArrayList
+argument_list|<
+name|PooledSessionEventListener
+argument_list|>
+name|tempDestEventListeners
+init|=
+operator|new
+name|CopyOnWriteArrayList
+argument_list|<
+name|PooledSessionEventListener
+argument_list|>
+argument_list|()
+decl_stmt|;
+specifier|private
 name|boolean
 name|isXa
 decl_stmt|;
@@ -506,6 +517,24 @@ name|session
 operator|.
 name|isTransacted
 argument_list|()
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|addTempDestEventListener
+parameter_list|(
+name|PooledSessionEventListener
+name|listener
+parameter_list|)
+block|{
+name|this
+operator|.
+name|tempDestEventListeners
+operator|.
+name|add
+argument_list|(
+name|listener
+argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
@@ -908,12 +937,38 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-return|return
+name|TemporaryQueue
+name|result
+decl_stmt|;
+name|result
+operator|=
 name|getInternalSession
 argument_list|()
 operator|.
 name|createTemporaryQueue
 argument_list|()
+expr_stmt|;
+comment|// Notify all of the listeners of the created temporary Queue.
+for|for
+control|(
+name|PooledSessionEventListener
+name|listener
+range|:
+name|this
+operator|.
+name|tempDestEventListeners
+control|)
+block|{
+name|listener
+operator|.
+name|onTemporaryQueueCreate
+argument_list|(
+name|result
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|result
 return|;
 block|}
 specifier|public
@@ -923,12 +978,38 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-return|return
+name|TemporaryTopic
+name|result
+decl_stmt|;
+name|result
+operator|=
 name|getInternalSession
 argument_list|()
 operator|.
 name|createTemporaryTopic
 argument_list|()
+expr_stmt|;
+comment|// Notify all of the listeners of the created temporary Topic.
+for|for
+control|(
+name|PooledSessionEventListener
+name|listener
+range|:
+name|this
+operator|.
+name|tempDestEventListeners
+control|)
+block|{
+name|listener
+operator|.
+name|onTemporaryTopicCreate
+argument_list|(
+name|result
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|result
 return|;
 block|}
 specifier|public
@@ -1527,7 +1608,7 @@ name|topic
 argument_list|)
 return|;
 block|}
-comment|/**      * Callback invoked when the consumer is closed.      *<p/>      * This is used to keep track of an explicit closed consumer created by this session,      * by which we know do not need to keep track of the consumer, as its already closed.      *      * @param consumer the consumer which is being closed      */
+comment|/**      * Callback invoked when the consumer is closed.      *<p/>      * This is used to keep track of an explicit closed consumer created by this      * session, by which we know do not need to keep track of the consumer, as      * its already closed.      *      * @param consumer      *            the consumer which is being closed      */
 specifier|protected
 name|void
 name|onConsumerClose
@@ -1700,8 +1781,10 @@ argument_list|(
 name|consumer
 argument_list|)
 expr_stmt|;
-comment|// must wrap in PooledMessageConsumer to ensure the onConsumerClose method is invoked
-comment|// when the returned consumer is closed, to avoid memory leak in this session class
+comment|// must wrap in PooledMessageConsumer to ensure the onConsumerClose
+comment|// method is invoked
+comment|// when the returned consumer is closed, to avoid memory leak in this
+comment|// session class
 comment|// in case many consumers is created
 return|return
 operator|new
