@@ -1095,7 +1095,11 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Deactivating "
+literal|"Deactivating keepActive="
+operator|+
+name|keepDurableSubsActive
+operator|+
+literal|", "
 operator|+
 name|this
 argument_list|)
@@ -1303,6 +1307,16 @@ operator|.
 name|addMessageFirst
 argument_list|(
 name|node
+argument_list|)
+expr_stmt|;
+name|pending
+operator|.
+name|rollback
+argument_list|(
+name|node
+operator|.
+name|getMessageId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

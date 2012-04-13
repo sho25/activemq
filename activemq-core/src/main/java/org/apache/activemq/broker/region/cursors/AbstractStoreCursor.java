@@ -1095,6 +1095,7 @@ name|batchResetNeeded
 operator|=
 literal|true
 expr_stmt|;
+comment|// wonder do we need to determine size here, it may change before restart
 name|resetSize
 argument_list|()
 expr_stmt|;

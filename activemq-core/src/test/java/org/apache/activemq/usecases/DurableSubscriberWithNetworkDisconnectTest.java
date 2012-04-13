@@ -1216,7 +1216,7 @@ condition|)
 block|{
 name|options
 operator|+=
-literal|"?maxReconnectAttempts=1)"
+literal|"?maxReconnectAttempts=0)"
 expr_stmt|;
 block|}
 name|options

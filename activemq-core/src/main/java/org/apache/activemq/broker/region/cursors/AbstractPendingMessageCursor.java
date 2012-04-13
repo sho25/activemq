@@ -338,10 +338,6 @@ name|started
 operator|=
 literal|false
 expr_stmt|;
-name|audit
-operator|=
-literal|null
-expr_stmt|;
 name|gc
 argument_list|()
 expr_stmt|;

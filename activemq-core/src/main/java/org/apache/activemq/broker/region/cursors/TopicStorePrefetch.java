@@ -562,7 +562,19 @@ literal|","
 operator|+
 name|subscriberName
 operator|+
-literal|")"
+literal|") "
+operator|+
+name|this
+operator|.
+name|subscription
+operator|.
+name|getConsumerInfo
+argument_list|()
+operator|.
+name|getConsumerId
+argument_list|()
+operator|+
+literal|" - "
 operator|+
 name|super
 operator|.
