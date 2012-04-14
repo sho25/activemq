@@ -94,7 +94,7 @@ comment|// REMIND: multiple IP addresses
 end_comment
 
 begin_comment
-comment|/**  * mDNS implementation in Java.  *  * @version %I%, %G%  * @author	Arthur van Hoff, Rick Blair, Jeff Sonstein,  * Werner Randelshofer, Pierre Frisch, Scott Lewis  */
+comment|/**  * mDNS implementation in Java.  *  * @version %I%, %G%  */
 end_comment
 
 begin_class
@@ -1782,6 +1782,8 @@ operator|new
 name|Object
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 operator|new
 name|Canceler
 argument_list|(
@@ -1801,10 +1803,13 @@ init|(
 name|lock
 init|)
 block|{
+comment|//don'r wait forever
 name|lock
 operator|.
 name|wait
-argument_list|()
+argument_list|(
+literal|5000
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1815,6 +1820,21 @@ name|e
 parameter_list|)
 block|{
 comment|// empty
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|e
+parameter_list|)
+block|{
+name|logger
+operator|.
+name|info
+argument_list|(
+literal|"Failed to properly unregister "
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Unregister all services.      */
@@ -1898,6 +1918,8 @@ name|cancel
 argument_list|()
 expr_stmt|;
 block|}
+try|try
+block|{
 name|Object
 name|lock
 init|=
@@ -1933,7 +1955,9 @@ block|{
 name|lock
 operator|.
 name|wait
-argument_list|()
+argument_list|(
+literal|5000
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1945,6 +1969,21 @@ name|e
 parameter_list|)
 block|{
 comment|// empty
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|e
+parameter_list|)
+block|{
+name|logger
+operator|.
+name|info
+argument_list|(
+literal|"Failed to unregister"
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Register a service type. If this service type was not already known,      * all service listeners will be notified of the new service type. Service types      * are automatically registered as they are discovered.      */
@@ -7119,7 +7158,7 @@ expr_stmt|;
 block|}
 break|break;
 block|}
-default|default :
+default|default:
 block|{
 comment|//System.out.println("JmDNSResponder.unhandled query:"+q);
 break|break;
