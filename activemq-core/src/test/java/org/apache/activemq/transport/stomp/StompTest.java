@@ -8953,7 +8953,7 @@ argument_list|()
 operator|+
 literal|"\n"
 operator|+
-literal|"ack:auto\nactivemq.subscriptionName:test\n\n"
+literal|"activemq.subscriptionName:test\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -9004,6 +9004,18 @@ argument_list|(
 name|view
 operator|.
 name|getDurableTopicSubscribers
+argument_list|()
+operator|.
+name|length
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|view
+operator|.
+name|getInactiveDurableTopicSubscribers
 argument_list|()
 operator|.
 name|length
