@@ -12272,6 +12272,13 @@ argument_list|(
 name|messageSequence
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|count
+operator|!=
+literal|null
+condition|)
+block|{
 name|long
 name|references
 init|=
@@ -12318,6 +12325,7 @@ argument_list|(
 name|messageSequence
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Find all the entries that need to get deleted.
 name|ArrayList
