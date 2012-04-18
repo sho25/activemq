@@ -1675,13 +1675,8 @@ operator|+
 name|transport
 argument_list|)
 decl_stmt|;
-name|thread
-operator|.
-name|setDaemon
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
+comment|//Don't make these daemon threads - see https://issues.apache.org/jira/browse/AMQ-796
+comment|//thread.setDaemon(true);
 return|return
 name|thread
 return|;
