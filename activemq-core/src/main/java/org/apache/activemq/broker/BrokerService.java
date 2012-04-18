@@ -7168,6 +7168,13 @@ operator|.
 name|getDirectory
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|dir
+operator|!=
+literal|null
+condition|)
+block|{
 name|String
 name|dirPath
 init|=
@@ -7176,13 +7183,6 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|dir
-operator|!=
-literal|null
-condition|)
-block|{
 if|if
 condition|(
 operator|!
