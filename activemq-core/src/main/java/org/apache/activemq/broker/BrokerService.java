@@ -7168,6 +7168,14 @@ operator|.
 name|getDirectory
 argument_list|()
 decl_stmt|;
+name|String
+name|dirPath
+init|=
+name|dir
+operator|.
+name|getAbsolutePath
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|dir
@@ -7175,6 +7183,46 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|dir
+operator|.
+name|isAbsolute
+argument_list|()
+condition|)
+block|{
+name|dir
+operator|=
+operator|new
+name|File
+argument_list|(
+name|dirPath
+argument_list|)
+expr_stmt|;
+block|}
+while|while
+condition|(
+name|dir
+operator|!=
+literal|null
+operator|&&
+name|dir
+operator|.
+name|isDirectory
+argument_list|()
+operator|==
+literal|false
+condition|)
+block|{
+name|dir
+operator|=
+name|dir
+operator|.
+name|getParentFile
+argument_list|()
+expr_stmt|;
+block|}
 name|long
 name|storeLimit
 init|=
@@ -7191,7 +7239,7 @@ name|dirFreeSpace
 init|=
 name|dir
 operator|.
-name|getFreeSpace
+name|getUsableSpace
 argument_list|()
 decl_stmt|;
 if|if
@@ -7232,7 +7280,7 @@ operator|*
 literal|1024
 operator|)
 operator|+
-literal|" mb of free space"
+literal|" mb of usable space"
 argument_list|)
 expr_stmt|;
 block|}
@@ -7453,7 +7501,7 @@ operator|*
 literal|1024
 operator|)
 operator|+
-literal|" mb of free space"
+literal|" mb of usable space"
 argument_list|)
 expr_stmt|;
 block|}
