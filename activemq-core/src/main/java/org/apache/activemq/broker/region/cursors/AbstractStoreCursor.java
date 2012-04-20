@@ -769,6 +769,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|boolean
+name|disableCache
+init|=
+literal|false
+decl_stmt|;
 if|if
 condition|(
 name|hasSpace
@@ -826,6 +831,8 @@ name|isCacheEnabled
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
 name|recoverMessage
 argument_list|(
 name|node
@@ -835,7 +842,8 @@ argument_list|()
 argument_list|,
 literal|true
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
 name|lastCachedId
 operator|=
 name|node
@@ -844,10 +852,28 @@ name|getMessageId
 argument_list|()
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// failed to recover, possible duplicate from concurrent dispatchPending,
+comment|// lets not recover further in case of out of order
+name|disableCache
+operator|=
+literal|true
+expr_stmt|;
 block|}
-elseif|else
+block|}
+block|}
+else|else
+block|{
+name|disableCache
+operator|=
+literal|true
+expr_stmt|;
+block|}
 if|if
 condition|(
+name|disableCache
+operator|&&
 name|isCacheEnabled
 argument_list|()
 condition|)

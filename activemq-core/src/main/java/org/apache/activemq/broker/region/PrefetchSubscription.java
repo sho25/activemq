@@ -65,18 +65,6 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|CopyOnWriteArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
 name|CountDownLatch
 import|;
 end_import
@@ -438,7 +426,7 @@ argument_list|>
 name|dispatched
 init|=
 operator|new
-name|CopyOnWriteArrayList
+name|ArrayList
 argument_list|<
 name|MessageReference
 argument_list|>
@@ -497,7 +485,7 @@ operator|new
 name|Object
 argument_list|()
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|final
 name|Object
 name|dispatchLock
@@ -2299,7 +2287,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Checks an ack versus the contents of the dispatched list.      *      * @param ack      * @throws JMSException if it does not match      */
+comment|/**      * Checks an ack versus the contents of the dispatched list.      *  called with dispatchLock held      * @param ack      * @throws JMSException if it does not match      */
 specifier|protected
 name|void
 name|assertAckMatchesDispatched
@@ -3216,6 +3204,7 @@ name|numberToDispatch
 argument_list|)
 expr_stmt|;
 block|}
+comment|// called with dispatchLock held
 specifier|protected
 name|boolean
 name|dispatch

@@ -1135,7 +1135,7 @@ argument_list|)
 expr_stmt|;
 synchronized|synchronized
 init|(
-name|pending
+name|pendingLock
 init|)
 block|{
 name|pending
@@ -1143,7 +1143,11 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
-block|}
+synchronized|synchronized
+init|(
+name|dispatchLock
+init|)
+block|{
 for|for
 control|(
 name|Iterator
@@ -1297,11 +1301,6 @@ name|isTransient
 argument_list|()
 condition|)
 block|{
-synchronized|synchronized
-init|(
-name|pending
-init|)
-block|{
 name|pending
 operator|.
 name|addMessageFirst
@@ -1320,7 +1319,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 else|else
 block|{
 name|node
@@ -1330,11 +1328,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-synchronized|synchronized
-init|(
-name|dispatched
-init|)
-block|{
 name|dispatched
 operator|.
 name|clear
@@ -1351,11 +1344,6 @@ operator|.
 name|isTransient
 argument_list|()
 condition|)
-block|{
-synchronized|synchronized
-init|(
-name|pending
-init|)
 block|{
 try|try
 block|{
@@ -1752,7 +1740,7 @@ parameter_list|()
 block|{
 synchronized|synchronized
 init|(
-name|pending
+name|pendingLock
 init|)
 block|{
 try|try
@@ -1801,7 +1789,7 @@ block|}
 block|}
 synchronized|synchronized
 init|(
-name|dispatched
+name|dispatchLock
 init|)
 block|{
 for|for
