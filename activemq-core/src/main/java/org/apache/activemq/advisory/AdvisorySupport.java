@@ -1854,6 +1854,13 @@ block|{
 if|if
 condition|(
 name|destination
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|destination
 operator|.
 name|isComposite
 argument_list|()
@@ -1924,6 +1931,10 @@ name|ADVISORY_TOPIC_PREFIX
 argument_list|)
 return|;
 block|}
+block|}
+return|return
+literal|false
+return|;
 block|}
 specifier|public
 specifier|static
