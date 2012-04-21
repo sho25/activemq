@@ -162,7 +162,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The ListNode class represents a node in the List object graph.  It is stored in  * one overflowing Page of a PageFile.  */
+comment|/**  * The ListNode class represents a node in the List object graph. It is stored  * in one overflowing Page of a PageFile.  */
 end_comment
 
 begin_class
@@ -1002,9 +1002,8 @@ name|isHead
 argument_list|()
 condition|)
 block|{
-comment|// merge next node into existing headNode
-comment|// as we don't want to change our headPageId b/c
-comment|// that is our identity
+comment|// merge next node into existing headNode as we don't want to
+comment|// change our headPageId b/c that is our identity
 name|ListNode
 argument_list|<
 name|Key
@@ -1113,6 +1112,30 @@ name|previousNode
 operator|.
 name|getPageId
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|toRemoveNode
+operator|=
+name|currentNode
+expr_stmt|;
+name|previousNode
+operator|.
+name|setNext
+argument_list|(
+name|toRemoveNode
+operator|.
+name|getNext
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|previousNode
+operator|.
+name|store
+argument_list|(
+name|tx
 argument_list|)
 expr_stmt|;
 block|}
@@ -1304,7 +1327,8 @@ operator|.
 name|size
 argument_list|()
 decl_stmt|;
-comment|// cast may truncate value...
+comment|// cast may truncate
+comment|// value...
 if|if
 condition|(
 name|count
@@ -1711,9 +1735,9 @@ name|IOException
 block|{
 try|try
 block|{
-comment|// When we split to a node of one element we can span multiple
-comment|// pages for that entry, otherwise we keep the entries on one
-comment|// page to avoid fragmented reads and segment the list traversal.
+comment|// When we split to a node of one element we can span multiple pages for that
+comment|// entry, otherwise we keep the entries on one page to avoid fragmented reads
+comment|// and segment the list traversal.
 if|if
 condition|(
 name|this
@@ -2345,9 +2369,9 @@ return|return
 name|found
 return|;
 block|}
-comment|///////////////////////////////////////////////////////////////////
+comment|// /////////////////////////////////////////////////////////////////
 comment|// Implementation methods
-comment|///////////////////////////////////////////////////////////////////
+comment|// /////////////////////////////////////////////////////////////////
 specifier|public
 name|long
 name|getPageId
