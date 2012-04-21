@@ -1615,12 +1615,10 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
-name|dispatched
+name|iter
 operator|.
 name|remove
-argument_list|(
-name|node
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|node
 operator|.
