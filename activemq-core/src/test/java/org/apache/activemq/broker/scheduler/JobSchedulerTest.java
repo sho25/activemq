@@ -779,7 +779,7 @@ decl_stmt|;
 name|long
 name|time
 init|=
-literal|20000
+literal|60000
 decl_stmt|;
 for|for
 control|(
@@ -840,7 +840,7 @@ name|size
 init|=
 name|scheduler
 operator|.
-name|getNextScheduleJobs
+name|getAllJobs
 argument_list|()
 operator|.
 name|size
@@ -872,7 +872,7 @@ name|size
 operator|=
 name|scheduler
 operator|.
-name|getNextScheduleJobs
+name|getAllJobs
 argument_list|()
 operator|.
 name|size
@@ -959,7 +959,7 @@ literal|""
 argument_list|,
 name|time
 argument_list|,
-literal|10
+literal|1000
 argument_list|,
 operator|-
 literal|1
@@ -993,7 +993,7 @@ literal|""
 argument_list|,
 name|time
 argument_list|,
-literal|10
+literal|1000
 argument_list|,
 operator|-
 literal|1
@@ -1006,7 +1006,7 @@ name|size
 init|=
 name|scheduler
 operator|.
-name|getNextScheduleJobs
+name|getAllJobs
 argument_list|()
 operator|.
 name|size
@@ -1032,7 +1032,7 @@ name|size
 operator|=
 name|scheduler
 operator|.
-name|getNextScheduleJobs
+name|getAllJobs
 argument_list|()
 operator|.
 name|size
