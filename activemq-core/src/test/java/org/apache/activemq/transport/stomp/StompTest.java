@@ -996,11 +996,11 @@ name|connectFrame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
-literal|"request-id: 1\n"
+literal|"request-id:1\n"
 operator|+
 literal|"\n"
 operator|+
@@ -1068,9 +1068,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -1207,9 +1207,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -1250,7 +1250,7 @@ argument_list|()
 operator|+
 literal|"\n"
 operator|+
-literal|"JMSXGroupID: TEST\n\n"
+literal|"JMSXGroupID:TEST\n\n"
 operator|+
 literal|"Hello World"
 operator|+
@@ -1323,9 +1323,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -1462,9 +1462,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -1578,9 +1578,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -1795,9 +1795,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -1932,9 +1932,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -1992,9 +1992,9 @@ name|frame
 operator|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -2325,9 +2325,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -2444,9 +2444,9 @@ name|frame
 operator|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -2648,9 +2648,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -2757,9 +2757,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -2944,9 +2944,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -3113,9 +3113,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -3308,9 +3308,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -3534,9 +3534,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -3780,9 +3780,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -3919,9 +3919,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -4094,9 +4094,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -4269,9 +4269,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -4444,9 +4444,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -4576,9 +4576,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -4857,9 +4857,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -5044,9 +5044,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -5186,9 +5186,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -5402,9 +5402,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -5448,7 +5448,7 @@ literal|"CONNECT\n"
 operator|+
 literal|"login: dejanb\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -5497,7 +5497,7 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
 literal|"passcode: dejanb\n\n"
 operator|+
@@ -5548,9 +5548,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: guest\n"
+literal|"login:guest\n"
 operator|+
-literal|"passcode: password\n\n"
+literal|"passcode:password\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -5635,9 +5635,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: guest\n"
+literal|"login:guest\n"
 operator|+
-literal|"passcode: password\n\n"
+literal|"passcode:password\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -5732,9 +5732,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -5843,9 +5843,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -5974,9 +5974,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -6102,9 +6102,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -6260,9 +6260,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -6418,9 +6418,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -6576,9 +6576,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -6734,9 +6734,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -6925,9 +6925,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -7139,9 +7139,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -7280,9 +7280,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -7433,9 +7433,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -7638,9 +7638,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -7875,9 +7875,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -8049,9 +8049,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -8164,9 +8164,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -8283,9 +8283,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -8442,9 +8442,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -8611,9 +8611,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -8770,9 +8770,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\nclient-id:test\n\n"
+literal|"passcode:manager\nclient-id:test\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -8909,9 +8909,9 @@ name|frame
 operator|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\nclient-id:test\n\n"
+literal|"passcode:manager\nclient-id:test\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -9576,9 +9576,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -9699,9 +9699,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -9804,9 +9804,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -10676,9 +10676,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -10950,9 +10950,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -11197,9 +11197,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -11343,9 +11343,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -11398,9 +11398,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -11822,9 +11822,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -11901,9 +11901,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.
@@ -12529,9 +12529,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.

@@ -737,9 +737,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n\n"
+literal|"passcode:manager\n\n"
 operator|+
 name|Stomp
 operator|.

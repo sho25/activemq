@@ -542,15 +542,15 @@ name|connectFrame
 init|=
 literal|"STOMP\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.1\n"
 operator|+
 literal|"host:localhost\n"
 operator|+
-literal|"request-id: 1\n"
+literal|"request-id:1\n"
 operator|+
 literal|"\n"
 operator|+
@@ -659,9 +659,9 @@ name|connectFrame
 init|=
 literal|"STOMP\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.0,1.1\n"
 operator|+
@@ -762,9 +762,9 @@ name|connectFrame
 init|=
 literal|"STOMP\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.0,10.1\n"
 operator|+
@@ -865,9 +865,9 @@ name|connectFrame
 init|=
 literal|"STOMP\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:9.0,10.1\n"
 operator|+
@@ -950,9 +950,9 @@ name|connectFrame
 init|=
 literal|"STOMP\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.1\n"
 operator|+
@@ -1196,9 +1196,9 @@ name|connectFrame
 init|=
 literal|"STOMP\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.1\n"
 operator|+
@@ -1352,9 +1352,9 @@ name|connectFrame
 init|=
 literal|"STOMP\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.1\n"
 operator|+
@@ -1517,9 +1517,9 @@ name|connectFrame
 init|=
 literal|"STOMP\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.1\n"
 operator|+
@@ -1604,9 +1604,9 @@ name|connectFrame
 init|=
 literal|"STOMP\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.1\n"
 operator|+
@@ -1691,9 +1691,9 @@ name|connectFrame
 init|=
 literal|"STOMP\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.1\n"
 operator|+
@@ -1778,9 +1778,9 @@ name|connectFrame
 init|=
 literal|"STOMP\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.1\n"
 operator|+
@@ -1997,9 +1997,9 @@ name|connectFrame
 init|=
 literal|"STOMP\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.1\n"
 operator|+
@@ -2117,9 +2117,9 @@ name|connectFrame
 init|=
 literal|"STOMP\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.1\n"
 operator|+
@@ -2270,9 +2270,9 @@ name|connectFrame
 init|=
 literal|"STOMP\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.1\n"
 operator|+
@@ -2476,9 +2476,9 @@ name|connectFrame
 init|=
 literal|"STOMP\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.1\n"
 operator|+
@@ -2710,9 +2710,9 @@ name|connectFrame
 init|=
 literal|"STOMP\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.1\n"
 operator|+
@@ -3183,9 +3183,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.1"
 operator|+
@@ -3394,9 +3394,9 @@ name|frame
 init|=
 literal|"CONNECT\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.1"
 operator|+
@@ -3590,9 +3590,9 @@ name|connectFrame
 init|=
 literal|"STOMP\n"
 operator|+
-literal|"login: system\n"
+literal|"login:system\n"
 operator|+
-literal|"passcode: manager\n"
+literal|"passcode:manager\n"
 operator|+
 literal|"accept-version:1.1\n"
 operator|+
@@ -3858,6 +3858,232 @@ operator|=
 literal|"UNSUBSCRIBE\n"
 operator|+
 literal|"destination:/queue/ActiveMQ.DLQ\n"
+operator|+
+literal|"id:12345\n\n"
+operator|+
+name|Stomp
+operator|.
+name|NULL
+expr_stmt|;
+name|stompConnection
+operator|.
+name|sendFrame
+argument_list|(
+name|frame
+argument_list|)
+expr_stmt|;
+name|frame
+operator|=
+literal|"DISCONNECT\n"
+operator|+
+literal|"\n\n"
+operator|+
+name|Stomp
+operator|.
+name|NULL
+expr_stmt|;
+name|stompConnection
+operator|.
+name|sendFrame
+argument_list|(
+name|frame
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testHeaderValuesAreNotWSTrimmed
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|connectFrame
+init|=
+literal|"STOMP\n"
+operator|+
+literal|"login:system\n"
+operator|+
+literal|"passcode:manager\n"
+operator|+
+literal|"accept-version:1.1\n"
+operator|+
+literal|"host:localhost\n"
+operator|+
+literal|"\n"
+operator|+
+name|Stomp
+operator|.
+name|NULL
+decl_stmt|;
+name|stompConnection
+operator|.
+name|sendFrame
+argument_list|(
+name|connectFrame
+argument_list|)
+expr_stmt|;
+name|String
+name|f
+init|=
+name|stompConnection
+operator|.
+name|receiveFrame
+argument_list|()
+decl_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Broker sent: "
+operator|+
+name|f
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|f
+operator|.
+name|startsWith
+argument_list|(
+literal|"CONNECTED"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|String
+name|message
+init|=
+literal|"SEND\n"
+operator|+
+literal|"destination:/queue/"
+operator|+
+name|getQueueName
+argument_list|()
+operator|+
+literal|"\ntest1: value"
+operator|+
+literal|"\ntest2:value "
+operator|+
+literal|"\ntest3: value "
+operator|+
+literal|"\n\n"
+operator|+
+literal|"Hello World"
+operator|+
+name|Stomp
+operator|.
+name|NULL
+decl_stmt|;
+name|stompConnection
+operator|.
+name|sendFrame
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+name|String
+name|frame
+init|=
+literal|"SUBSCRIBE\n"
+operator|+
+literal|"destination:/queue/"
+operator|+
+name|getQueueName
+argument_list|()
+operator|+
+literal|"\n"
+operator|+
+literal|"id:12345\n"
+operator|+
+literal|"ack:auto\n\n"
+operator|+
+name|Stomp
+operator|.
+name|NULL
+decl_stmt|;
+name|stompConnection
+operator|.
+name|sendFrame
+argument_list|(
+name|frame
+argument_list|)
+expr_stmt|;
+name|StompFrame
+name|received
+init|=
+name|stompConnection
+operator|.
+name|receive
+argument_list|()
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|received
+operator|.
+name|getAction
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"MESSAGE"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|" value"
+argument_list|,
+name|received
+operator|.
+name|getHeaders
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|"test1"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"value "
+argument_list|,
+name|received
+operator|.
+name|getHeaders
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|"test2"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|" value "
+argument_list|,
+name|received
+operator|.
+name|getHeaders
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|"test3"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|frame
+operator|=
+literal|"UNSUBSCRIBE\n"
+operator|+
+literal|"destination:/queue/"
+operator|+
+name|getQueueName
+argument_list|()
+operator|+
+literal|"\n"
 operator|+
 literal|"id:12345\n\n"
 operator|+
