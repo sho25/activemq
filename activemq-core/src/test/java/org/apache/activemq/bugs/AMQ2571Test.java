@@ -148,6 +148,13 @@ operator|.
 name|bindAddress
 argument_list|)
 decl_stmt|;
+name|connectionFactory
+operator|.
+name|setAlwaysSyncSend
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 comment|// First create session that will own the TempQueue
 name|Connection
 name|connectionA
@@ -261,20 +268,30 @@ parameter_list|()
 block|{
 try|try
 block|{
-for|for
-control|(
-name|int
-name|i
+name|long
+name|end
 init|=
-literal|0
-init|;
-name|i
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|+
+literal|5
+operator|*
+literal|60
+operator|*
+literal|1000
+decl_stmt|;
+comment|// wait for exception on send
+while|while
+condition|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
 operator|<
-literal|100000
-condition|;
-name|i
-operator|++
-control|)
+name|end
+condition|)
 block|{
 name|producerB
 operator|.
@@ -291,9 +308,11 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-comment|// We don't get this exception every time.
-comment|// Not getting it means that we don't know if the
-comment|// creator of the TempQueue has disconnected.
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -315,7 +334,13 @@ comment|// Wait for the thread to finish.
 name|sendingThread
 operator|.
 name|join
-argument_list|()
+argument_list|(
+literal|5
+operator|*
+literal|60
+operator|*
+literal|1000
+argument_list|)
 expr_stmt|;
 comment|// Sleep for a while to make sure that we should know that the
 comment|// TempQueue is gone.
@@ -381,6 +406,11 @@ name|bindAddress
 operator|=
 literal|"vm://localhost"
 expr_stmt|;
+name|setAutoFail
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|super
 operator|.
 name|setUp
@@ -415,13 +445,6 @@ operator|.
 name|setUseJmx
 argument_list|(
 literal|false
-argument_list|)
-expr_stmt|;
-name|answer
-operator|.
-name|addConnector
-argument_list|(
-name|bindAddress
 argument_list|)
 expr_stmt|;
 return|return

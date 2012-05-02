@@ -9919,7 +9919,12 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"No exceptions"
+literal|"No exceptions  "
+operator|+
+name|exceptions
+operator|.
+name|elements
+argument_list|()
 argument_list|,
 name|exceptions
 operator|.
@@ -10098,6 +10103,11 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 name|exceptions
 operator|.
 name|add
