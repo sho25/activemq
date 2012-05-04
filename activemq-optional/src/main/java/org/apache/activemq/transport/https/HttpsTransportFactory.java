@@ -63,7 +63,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|HashMap
 import|;
 end_import
 
@@ -73,7 +73,21 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|SslContext
 import|;
 end_import
 
@@ -131,7 +145,7 @@ name|activemq
 operator|.
 name|util
 operator|.
-name|IntrospectionSupport
+name|IOExceptionSupport
 import|;
 end_import
 
@@ -145,7 +159,7 @@ name|activemq
 operator|.
 name|util
 operator|.
-name|IOExceptionSupport
+name|IntrospectionSupport
 import|;
 end_import
 
@@ -253,6 +267,11 @@ argument_list|(
 name|location
 argument_list|,
 name|this
+argument_list|,
+name|SslContext
+operator|.
+name|getCurrentSslContext
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|Map
