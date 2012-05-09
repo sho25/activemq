@@ -269,6 +269,11 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|broker
+operator|.
+name|waitUntilStarted
+argument_list|()
+expr_stmt|;
 block|}
 specifier|private
 name|void
