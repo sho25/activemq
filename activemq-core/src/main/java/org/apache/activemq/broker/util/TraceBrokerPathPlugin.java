@@ -227,6 +227,16 @@ argument_list|,
 name|brokerStamp
 argument_list|)
 expr_stmt|;
+name|messageDispatch
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|setMarshalledProperties
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 catch|catch
