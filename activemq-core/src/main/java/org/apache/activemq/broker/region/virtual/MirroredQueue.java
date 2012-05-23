@@ -312,6 +312,14 @@ name|getActiveMQDestination
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|message
+operator|.
+name|setMemoryUsage
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+comment|// set this to null so that it will use the queue memoryUsage instance instead of the topic.
 name|super
 operator|.
 name|send
