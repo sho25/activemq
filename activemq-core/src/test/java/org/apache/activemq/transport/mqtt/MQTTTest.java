@@ -1614,7 +1614,7 @@ name|Topic
 argument_list|(
 name|utf8
 argument_list|(
-literal|"foo/far"
+literal|"foo/+"
 argument_list|)
 argument_list|,
 name|QoS
