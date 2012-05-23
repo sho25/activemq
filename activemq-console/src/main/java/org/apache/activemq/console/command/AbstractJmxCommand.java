@@ -1534,6 +1534,13 @@ argument_list|(
 name|pid
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|jmxUrl
+operator|!=
+literal|null
+condition|)
+block|{
 comment|// If jmx url already specified
 if|if
 condition|(
@@ -1591,6 +1598,21 @@ name|tokens
 operator|.
 name|clear
 argument_list|()
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|context
+operator|.
+name|printInfo
+argument_list|(
+literal|"failed to resolve jmxUrl for pid:"
+operator|+
+name|pid
+operator|+
+literal|", using default JMX url"
+argument_list|)
 expr_stmt|;
 block|}
 block|}
