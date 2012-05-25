@@ -2275,6 +2275,13 @@ decl_stmt|;
 if|if
 condition|(
 name|txt
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|txt
 operator|.
 name|startsWith
 argument_list|(
@@ -2307,6 +2314,7 @@ name|txt
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 elseif|else
 if|if
 condition|(
@@ -2331,6 +2339,13 @@ operator|.
 name|getObject
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|object
+operator|!=
+literal|null
+condition|)
+block|{
 name|writer
 operator|.
 name|print
@@ -2341,6 +2356,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|writer
 operator|.
