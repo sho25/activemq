@@ -205,26 +205,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|eclipse
 operator|.
 name|jetty
@@ -249,8 +229,28 @@ name|ContinuationSupport
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * A servlet for sending and receiving messages to/from JMS destinations using  * HTTP POST for sending and HTTP GET for receiving.<p/> You can specify the  * destination and whether it is a topic or queue via configuration details on  * the servlet or as request parameters.<p/> For reading messages you can  * specify a readTimeout parameter to determine how long the servlet should  * block for.  *   *   */
+comment|/**  * A servlet for sending and receiving messages to/from JMS destinations using  * HTTP POST for sending and HTTP GET for receiving.<p/> You can specify the  * destination and whether it is a topic or queue via configuration details on  * the servlet or as request parameters.<p/> For reading messages you can  * specify a readTimeout parameter to determine how long the servlet should  * block for.  *  *  */
 end_comment
 
 begin_class
@@ -413,7 +413,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sends a message to a destination      *       * @param request      * @param response      * @throws ServletException      * @throws IOException      */
+comment|/**      * Sends a message to a destination      *      * @param request      * @param response      * @throws ServletException      * @throws IOException      */
 specifier|protected
 name|void
 name|doPost
@@ -824,7 +824,7 @@ name|response
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Reads a message from a destination up to some specific timeout period      *       * @param request      * @param response      * @throws ServletException      * @throws IOException      */
+comment|/**      * Reads a message from a destination up to some specific timeout period      *      * @param request      * @param response      * @throws ServletException      * @throws IOException      */
 specifier|protected
 name|void
 name|doMessages
@@ -1279,6 +1279,13 @@ decl_stmt|;
 if|if
 condition|(
 name|txt
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|txt
 operator|.
 name|startsWith
 argument_list|(
@@ -1311,6 +1318,7 @@ name|txt
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 elseif|else
 if|if
 condition|(
@@ -1335,6 +1343,13 @@ operator|.
 name|getObject
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|object
+operator|!=
+literal|null
+condition|)
+block|{
 name|writer
 operator|.
 name|print
@@ -1345,6 +1360,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|protected
