@@ -33,6 +33,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Iterator
 import|;
 end_import
@@ -1218,6 +1228,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// Before we add these back to pending they need to be in producer order not
+comment|// dispatch order so we can add them to the front of the pending list.
+name|Collections
+operator|.
+name|reverse
+argument_list|(
+name|dispatched
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 specifier|final
