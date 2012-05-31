@@ -312,7 +312,6 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-comment|//text.setText(new String(command.getContent(), "UTF-8"));
 name|ByteArrayOutputStream
 name|bytes
 init|=
@@ -505,7 +504,6 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-comment|//text.setText(new String(command.getContent(), "UTF-8"));
 name|ByteArrayOutputStream
 name|bytes
 init|=
@@ -1138,7 +1136,20 @@ return|return
 literal|null
 return|;
 block|}
-elseif|else
+comment|// in case of space padding by a client we trim for the initial detection, on fallback use
+comment|// the un-trimmed value.
+name|String
+name|originalName
+init|=
+name|name
+decl_stmt|;
+name|name
+operator|=
+name|name
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|name
@@ -1369,7 +1380,7 @@ argument_list|()
 operator|.
 name|transform
 argument_list|(
-name|name
+name|originalName
 argument_list|)
 decl_stmt|;
 if|if
@@ -1396,7 +1407,7 @@ name|ProtocolException
 argument_list|(
 literal|"Illegal destination name: ["
 operator|+
-name|name
+name|originalName
 operator|+
 literal|"] -- ActiveMQ STOMP destinations "
 operator|+
@@ -1415,7 +1426,7 @@ name|ProtocolException
 argument_list|(
 literal|"Illegal destination name: ["
 operator|+
-name|name
+name|originalName
 operator|+
 literal|"] -- ActiveMQ STOMP destinations "
 operator|+
