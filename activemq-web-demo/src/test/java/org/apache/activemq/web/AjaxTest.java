@@ -723,21 +723,21 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handler' destination='queue://test'>msg1</response>\n"
+literal|"<response id='handler' destination='queue://test'>msg1</response>"
 argument_list|,
 name|fullResponse
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handler' destination='queue://test'>msg2</response>\n"
+literal|"<response id='handler' destination='queue://test'>msg2</response>"
 argument_list|,
 name|fullResponse
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handler' destination='queue://test'>msg3</response>\n"
+literal|"<response id='handler' destination='queue://test'>msg3</response>"
 argument_list|,
 name|fullResponse
 argument_list|)
@@ -1043,21 +1043,21 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handler' destination='topic://test'>msg1</response>\n"
+literal|"<response id='handler' destination='topic://test'>msg1</response>"
 argument_list|,
 name|fullResponse
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handler' destination='topic://test'>msg2</response>\n"
+literal|"<response id='handler' destination='topic://test'>msg2</response>"
 argument_list|,
 name|fullResponse
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handler' destination='topic://test'>msg3</response>\n"
+literal|"<response id='handler' destination='topic://test'>msg3</response>"
 argument_list|,
 name|fullResponse
 argument_list|)
@@ -1270,21 +1270,21 @@ argument_list|()
 decl_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handler' destination='queue://test'>test one</response>\n"
+literal|"<response id='handler' destination='queue://test'>test one</response>"
 argument_list|,
 name|response
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handler' destination='queue://test'>test two</response>\n"
+literal|"<response id='handler' destination='queue://test'>test two</response>"
 argument_list|,
 name|response
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handler' destination='queue://test'>test three</response>\n"
+literal|"<response id='handler' destination='queue://test'>test three</response>"
 argument_list|,
 name|response
 argument_list|)
@@ -1684,35 +1684,35 @@ argument_list|()
 decl_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handler' destination='queue://test'>message1</response>\n"
+literal|"<response id='handler' destination='queue://test'>message1</response>"
 argument_list|,
 name|fullResponse
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handler' destination='queue://test'>message2</response>\n"
+literal|"<response id='handler' destination='queue://test'>message2</response>"
 argument_list|,
 name|fullResponse
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handler' destination='queue://test'>message3</response>\n"
+literal|"<response id='handler' destination='queue://test'>message3</response>"
 argument_list|,
 name|fullResponse
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handler' destination='queue://test'>message4</response>\n"
+literal|"<response id='handler' destination='queue://test'>message4</response>"
 argument_list|,
 name|fullResponse
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handler' destination='queue://test'>message5</response>\n"
+literal|"<response id='handler' destination='queue://test'>message5</response>"
 argument_list|,
 name|fullResponse
 argument_list|)
@@ -2163,16 +2163,10 @@ expr_stmt|;
 name|String
 name|expected
 init|=
-literal|"<ajax-response>\n"
-operator|+
-literal|"<response id='handler' destination='queue://test'>test two</response>\n"
-operator|+
-literal|"</ajax-response>\n"
+literal|"<response id='handler' destination='queue://test'>test two</response>"
 decl_stmt|;
-name|assertEquals
+name|assertContains
 argument_list|(
-literal|"Poll response is not correct."
-argument_list|,
 name|expected
 argument_list|,
 name|poll
@@ -2491,21 +2485,28 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|String
-name|expected
+name|expected1
 init|=
-literal|"<ajax-response>\n"
-operator|+
-literal|"<response id='handlerA' destination='queue://testA'>A1</response>\n"
-operator|+
-literal|"<response id='handlerA' destination='queue://testA'>A2</response>\n"
-operator|+
-literal|"</ajax-response>\n"
+literal|"<response id='handlerA' destination='queue://testA'>A1</response>"
 decl_stmt|;
-name|assertEquals
+name|String
+name|expected2
+init|=
+literal|"<response id='handlerA' destination='queue://testA'>A2</response>"
+decl_stmt|;
+name|assertContains
 argument_list|(
-literal|"Poll response is not correct."
+name|expected1
 argument_list|,
-name|expected
+name|poll
+operator|.
+name|getResponseContent
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+name|expected2
 argument_list|,
 name|poll
 operator|.
@@ -2567,21 +2568,27 @@ name|getResponseContent
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|expected
+name|expected1
 operator|=
-literal|"<ajax-response>\n"
-operator|+
-literal|"<response id='handlerB' destination='queue://testB'>B1</response>\n"
-operator|+
-literal|"<response id='handlerB' destination='queue://testB'>B2</response>\n"
-operator|+
-literal|"</ajax-response>\n"
+literal|"<response id='handlerB' destination='queue://testB'>B1</response>"
 expr_stmt|;
-name|assertEquals
+name|expected2
+operator|=
+literal|"<response id='handlerB' destination='queue://testB'>B2</response>"
+expr_stmt|;
+name|assertContains
 argument_list|(
-literal|"Poll response is not correct."
+name|expected1
 argument_list|,
-name|expected
+name|poll
+operator|.
+name|getResponseContent
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+name|expected2
 argument_list|,
 name|poll
 operator|.
@@ -2950,28 +2957,28 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handlerA' destination='topic://topicA'>A1</response>\n"
+literal|"<response id='handlerA' destination='topic://topicA'>A1</response>"
 argument_list|,
 name|fullResponse
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handlerB' destination='topic://topicB'>B1</response>\n"
+literal|"<response id='handlerB' destination='topic://topicB'>B1</response>"
 argument_list|,
 name|fullResponse
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handlerA' destination='topic://topicA'>A2</response>\n"
+literal|"<response id='handlerA' destination='topic://topicA'>A2</response>"
 argument_list|,
 name|fullResponse
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<response id='handlerB' destination='topic://topicB'>B2</response>\n"
+literal|"<response id='handlerB' destination='topic://topicB'>B2</response>"
 argument_list|,
 name|fullResponse
 argument_list|)
