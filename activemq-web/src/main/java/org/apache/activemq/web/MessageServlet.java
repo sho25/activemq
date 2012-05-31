@@ -41,6 +41,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Enumeration
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashMap
 import|;
 end_import
@@ -250,7 +260,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A servlet for sending and receiving messages to/from JMS destinations using  * HTTP POST for sending and HTTP GET for receiving.<p/> You can specify the  * destination and whether it is a topic or queue via configuration details on  * the servlet or as request parameters.<p/> For reading messages you can  * specify a readTimeout parameter to determine how long the servlet should  * block for.  *  *  */
+comment|/**  * A servlet for sending and receiving messages to/from JMS destinations using  * HTTP POST for sending and HTTP GET for receiving.<p/> You can specify the  * destination and whether it is a topic or queue via configuration details on  * the servlet or as request parameters.<p/> For reading messages you can  * specify a readTimeout parameter to determine how long the servlet should  * block for.  */
 end_comment
 
 begin_class
@@ -1537,6 +1547,11 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|protected
 name|void
 name|setResponseHeaders
@@ -1577,6 +1592,53 @@ name|getJMSMessageID
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Return JMS properties as header values.
+for|for
+control|(
+name|Enumeration
+name|names
+init|=
+name|message
+operator|.
+name|getPropertyNames
+argument_list|()
+init|;
+name|names
+operator|.
+name|hasMoreElements
+argument_list|()
+condition|;
+control|)
+block|{
+name|String
+name|name
+init|=
+operator|(
+name|String
+operator|)
+name|names
+operator|.
+name|nextElement
+argument_list|()
+decl_stmt|;
+name|response
+operator|.
+name|setHeader
+argument_list|(
+name|name
+argument_list|,
+name|message
+operator|.
+name|getObjectProperty
+argument_list|(
+name|name
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * @return the timeout value for read requests which is always>= 0 and<=      *         maximumReadTimeout to avoid DoS attacks      */
 specifier|protected
