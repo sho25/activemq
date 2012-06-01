@@ -713,6 +713,11 @@ name|boolean
 name|doOptimzeMessageStorage
 parameter_list|)
 function_decl|;
+specifier|public
+name|void
+name|clearPendingMessages
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

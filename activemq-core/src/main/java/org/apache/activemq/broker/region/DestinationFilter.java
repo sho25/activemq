@@ -1317,6 +1317,19 @@ name|doOptimzeMessageStorage
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|clearPendingMessages
+parameter_list|()
+block|{
+name|next
+operator|.
+name|clearPendingMessages
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 

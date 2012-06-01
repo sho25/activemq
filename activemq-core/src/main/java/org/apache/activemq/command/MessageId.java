@@ -523,7 +523,17 @@ name|copy
 operator|.
 name|dataLocator
 operator|=
+operator|new
+name|AtomicReference
+argument_list|<
+name|Object
+argument_list|>
+argument_list|(
 name|dataLocator
+operator|.
+name|get
+argument_list|()
+argument_list|)
 expr_stmt|;
 return|return
 name|copy

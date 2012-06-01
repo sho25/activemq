@@ -248,6 +248,42 @@ specifier|private
 name|String
 name|dropAckPKAlterStatementEnd
 decl_stmt|;
+specifier|private
+name|String
+name|updateXidFlagStatement
+decl_stmt|;
+specifier|private
+name|String
+name|findOpsPendingOutcomeStatement
+decl_stmt|;
+specifier|private
+name|String
+name|clearXidFlagStatement
+decl_stmt|;
+specifier|private
+name|String
+name|updateDurableLastAckInTxStatement
+decl_stmt|;
+specifier|private
+name|String
+name|findAcksPendingOutcomeStatement
+decl_stmt|;
+specifier|private
+name|String
+name|clearDurableLastAckInTxStatement
+decl_stmt|;
+specifier|private
+name|String
+name|updateDurableLastAckWithPriorityStatement
+decl_stmt|;
+specifier|private
+name|String
+name|updateDurableLastAckWithPriorityInTxStatement
+decl_stmt|;
+specifier|private
+name|String
+name|findXidByIdStatement
+decl_stmt|;
 specifier|public
 name|String
 index|[]
@@ -432,6 +468,15 @@ literal|" (PRIORITY)"
 block|,
 literal|"ALTER TABLE "
 operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" ADD XID "
+operator|+
+name|binaryDataType
+block|,
+literal|"ALTER TABLE "
+operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
@@ -440,6 +485,15 @@ operator|+
 name|sequenceDataType
 operator|+
 literal|" DEFAULT 5 NOT NULL"
+block|,
+literal|"ALTER TABLE "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" ADD XID "
+operator|+
+name|binaryDataType
 block|,
 literal|"ALTER TABLE "
 operator|+
@@ -565,7 +619,7 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|"(ID, MSGID_PROD, MSGID_SEQ, CONTAINER, EXPIRATION, PRIORITY, MSG) VALUES (?, ?, ?, ?, ?, ?, ?)"
+literal|"(ID, MSGID_PROD, MSGID_SEQ, CONTAINER, EXPIRATION, PRIORITY, MSG, XID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
 expr_stmt|;
 block|}
 return|return
@@ -700,6 +754,32 @@ expr_stmt|;
 block|}
 return|return
 name|findMessageByIdStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getFindXidByIdStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|findXidByIdStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|findXidByIdStatement
+operator|=
+literal|"SELECT XID FROM "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" WHERE ID=?"
+expr_stmt|;
+block|}
+return|return
+name|findXidByIdStatement
 return|;
 block|}
 specifier|public
@@ -1033,6 +1113,8 @@ literal|" D "
 operator|+
 literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
 operator|+
+literal|" AND M.XID IS NULL"
+operator|+
 literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID"
 operator|+
 literal|" AND M.ID> ?"
@@ -1073,6 +1155,8 @@ operator|+
 literal|" D"
 operator|+
 literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
+operator|+
+literal|" AND M.XID IS NULL"
 operator|+
 literal|" AND M.CONTAINER=D.CONTAINER"
 operator|+
@@ -1471,7 +1555,7 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" WHERE CONTAINER=?"
+literal|" WHERE CONTAINER=? AND XID IS NULL"
 expr_stmt|;
 block|}
 return|return
@@ -1498,7 +1582,7 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" WHERE CONTAINER=? AND ID> ? ORDER BY ID"
+literal|" WHERE CONTAINER=? AND ID> ? AND XID IS NULL ORDER BY ID"
 expr_stmt|;
 block|}
 return|return
@@ -1526,6 +1610,8 @@ name|getFullMessageTableName
 argument_list|()
 operator|+
 literal|" WHERE CONTAINER=?"
+operator|+
+literal|" AND XID IS NULL"
 operator|+
 literal|" AND ((ID> ? AND PRIORITY = ?) OR PRIORITY< ?)"
 operator|+
@@ -1638,11 +1724,221 @@ operator|+
 name|getFullAckTableName
 argument_list|()
 operator|+
-literal|" SET LAST_ACKED_ID = ? WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=?"
+literal|" SET LAST_ACKED_ID=?, XID = NULL WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=?"
 expr_stmt|;
 block|}
 return|return
 name|updateDurableLastAckStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getUpdateDurableLastAckInTxStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|updateDurableLastAckInTxStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|updateDurableLastAckInTxStatement
+operator|=
+literal|"UPDATE "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" SET XID=? WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=?"
+expr_stmt|;
+block|}
+return|return
+name|updateDurableLastAckInTxStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getUpdateDurableLastAckWithPriorityStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|updateDurableLastAckWithPriorityStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|updateDurableLastAckWithPriorityStatement
+operator|=
+literal|"UPDATE "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" SET LAST_ACKED_ID=?, XID = NULL WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=? AND PRIORITY=?"
+expr_stmt|;
+block|}
+return|return
+name|updateDurableLastAckWithPriorityStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getUpdateDurableLastAckWithPriorityInTxStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|updateDurableLastAckWithPriorityInTxStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|updateDurableLastAckWithPriorityInTxStatement
+operator|=
+literal|"UPDATE "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" SET XID=? WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=? AND PRIORITY=?"
+expr_stmt|;
+block|}
+return|return
+name|updateDurableLastAckWithPriorityInTxStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getClearDurableLastAckInTxStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|clearDurableLastAckInTxStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|clearDurableLastAckInTxStatement
+operator|=
+literal|"UPDATE "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" SET XID = NULL WHERE CONTAINER=? AND CLIENT_ID=? AND SUB_NAME=? AND PRIORITY=?"
+expr_stmt|;
+block|}
+return|return
+name|clearDurableLastAckInTxStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getFindOpsPendingOutcomeStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|findOpsPendingOutcomeStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|findOpsPendingOutcomeStatement
+operator|=
+literal|"SELECT ID, XID, MSG FROM "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" WHERE XID IS NOT NULL ORDER BY ID"
+expr_stmt|;
+block|}
+return|return
+name|findOpsPendingOutcomeStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getFindAcksPendingOutcomeStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|findAcksPendingOutcomeStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|findAcksPendingOutcomeStatement
+operator|=
+literal|"SELECT XID,"
+operator|+
+literal|" CONTAINER, CLIENT_ID, SUB_NAME FROM "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" WHERE XID IS NOT NULL"
+expr_stmt|;
+block|}
+return|return
+name|findAcksPendingOutcomeStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getUpdateXidFlagStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|updateXidFlagStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|updateXidFlagStatement
+operator|=
+literal|"UPDATE "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" SET XID = ? WHERE ID = ?"
+expr_stmt|;
+block|}
+return|return
+name|updateXidFlagStatement
+return|;
+block|}
+specifier|public
+name|String
+name|getClearXidFlagStatement
+parameter_list|()
+block|{
+if|if
+condition|(
+name|clearXidFlagStatement
+operator|==
+literal|null
+condition|)
+block|{
+name|clearXidFlagStatement
+operator|=
+literal|"UPDATE "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" SET XID = NULL WHERE ID = ?"
+expr_stmt|;
+block|}
+return|return
+name|clearXidFlagStatement
 return|;
 block|}
 specifier|public
@@ -2502,6 +2798,141 @@ operator|.
 name|updateDurableLastAckStatement
 operator|=
 name|updateDurableLastAckStatement
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setUpdateXidFlagStatement
+parameter_list|(
+name|String
+name|updateXidFlagStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|updateXidFlagStatement
+operator|=
+name|updateXidFlagStatement
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setFindOpsPendingOutcomeStatement
+parameter_list|(
+name|String
+name|findOpsPendingOutcomeStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|findOpsPendingOutcomeStatement
+operator|=
+name|findOpsPendingOutcomeStatement
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setClearXidFlagStatement
+parameter_list|(
+name|String
+name|clearXidFlagStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|clearXidFlagStatement
+operator|=
+name|clearXidFlagStatement
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setUpdateDurableLastAckInTxStatement
+parameter_list|(
+name|String
+name|updateDurableLastAckInTxStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|updateDurableLastAckInTxStatement
+operator|=
+name|updateDurableLastAckInTxStatement
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setFindAcksPendingOutcomeStatement
+parameter_list|(
+name|String
+name|findAcksPendingOutcomeStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|findAcksPendingOutcomeStatement
+operator|=
+name|findAcksPendingOutcomeStatement
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setClearDurableLastAckInTxStatement
+parameter_list|(
+name|String
+name|clearDurableLastAckInTxStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|clearDurableLastAckInTxStatement
+operator|=
+name|clearDurableLastAckInTxStatement
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setUpdateDurableLastAckWithPriorityStatement
+parameter_list|(
+name|String
+name|updateDurableLastAckWithPriorityStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|updateDurableLastAckWithPriorityStatement
+operator|=
+name|updateDurableLastAckWithPriorityStatement
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setUpdateDurableLastAckWithPriorityInTxStatement
+parameter_list|(
+name|String
+name|updateDurableLastAckWithPriorityInTxStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|updateDurableLastAckWithPriorityInTxStatement
+operator|=
+name|updateDurableLastAckWithPriorityInTxStatement
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setFindXidByIdStatement
+parameter_list|(
+name|String
+name|findXidByIdStatement
+parameter_list|)
+block|{
+name|this
+operator|.
+name|findXidByIdStatement
+operator|=
+name|findXidByIdStatement
 expr_stmt|;
 block|}
 block|}

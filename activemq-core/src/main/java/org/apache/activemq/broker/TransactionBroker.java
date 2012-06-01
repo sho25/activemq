@@ -929,22 +929,12 @@ name|BaseCommand
 name|command
 parameter_list|)
 block|{
-if|if
-condition|(
-name|destination
-operator|instanceof
-name|Queue
-condition|)
-block|{
 name|Synchronization
 name|sync
 init|=
 operator|new
 name|PreparedDestinationCompletion
 argument_list|(
-operator|(
-name|Queue
-operator|)
 name|destination
 argument_list|,
 name|command
@@ -969,7 +959,6 @@ name|sync
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 specifier|static
 class|class
 name|PreparedDestinationCompletion
@@ -977,8 +966,8 @@ extends|extends
 name|Synchronization
 block|{
 specifier|final
-name|Queue
-name|queue
+name|Destination
+name|destination
 decl_stmt|;
 specifier|final
 name|boolean
@@ -988,8 +977,8 @@ specifier|public
 name|PreparedDestinationCompletion
 parameter_list|(
 specifier|final
-name|Queue
-name|queue
+name|Destination
+name|destination
 parameter_list|,
 name|boolean
 name|messageSend
@@ -997,9 +986,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|queue
+name|destination
 operator|=
-name|queue
+name|destination
 expr_stmt|;
 comment|// rollback relevant to acks, commit to sends
 name|this
@@ -1021,7 +1010,7 @@ name|System
 operator|.
 name|identityHashCode
 argument_list|(
-name|queue
+name|destination
 argument_list|)
 operator|+
 name|System
@@ -1052,7 +1041,7 @@ name|other
 operator|instanceof
 name|PreparedDestinationCompletion
 operator|&&
-name|queue
+name|destination
 operator|.
 name|equals
 argument_list|(
@@ -1063,7 +1052,7 @@ operator|)
 name|other
 operator|)
 operator|.
-name|queue
+name|destination
 argument_list|)
 operator|&&
 name|messageSend
@@ -1093,7 +1082,7 @@ operator|!
 name|messageSend
 condition|)
 block|{
-name|queue
+name|destination
 operator|.
 name|clearPendingMessages
 argument_list|()
@@ -1112,7 +1101,7 @@ name|debug
 argument_list|(
 literal|"cleared pending from afterRollback : "
 operator|+
-name|queue
+name|destination
 argument_list|)
 expr_stmt|;
 block|}
@@ -1132,7 +1121,7 @@ condition|(
 name|messageSend
 condition|)
 block|{
-name|queue
+name|destination
 operator|.
 name|clearPendingMessages
 argument_list|()
@@ -1151,7 +1140,7 @@ name|debug
 argument_list|(
 literal|"cleared pending from afterCommit : "
 operator|+
-name|queue
+name|destination
 argument_list|)
 expr_stmt|;
 block|}

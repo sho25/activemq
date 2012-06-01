@@ -172,7 +172,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * A hint to the Store to reset any batching state for a durable subsriber      *       * @param clientId      * @param subscriptionName      */
+comment|/**      * A hint to the Store to reset any batching state for a durable subscriber      *       * @param clientId      * @param subscriptionName      */
 name|void
 name|resetBatching
 parameter_list|(
