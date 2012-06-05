@@ -5145,11 +5145,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|int
+name|char
 name|priorityIterator
 init|=
 literal|0
 decl_stmt|;
+comment|// unsigned
 specifier|public
 name|void
 name|doDeleteOldMessages
