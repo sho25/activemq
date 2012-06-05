@@ -2854,7 +2854,12 @@ operator|.
 name|getMessageId
 argument_list|()
 argument_list|,
+name|convertToNonRangedAck
+argument_list|(
 name|ack
+argument_list|,
+name|node
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3925,7 +3930,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-specifier|public
+specifier|private
 name|void
 name|clearPendingMessages
 parameter_list|(
