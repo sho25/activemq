@@ -3186,7 +3186,7 @@ name|outputStream
 init|=
 name|xid
 operator|.
-name|getOutputStream
+name|internalOutputStream
 argument_list|()
 decl_stmt|;
 name|outputStream

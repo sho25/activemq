@@ -418,7 +418,7 @@ return|;
 block|}
 specifier|public
 name|DataByteArrayOutputStream
-name|getOutputStream
+name|internalOutputStream
 parameter_list|()
 block|{
 return|return
