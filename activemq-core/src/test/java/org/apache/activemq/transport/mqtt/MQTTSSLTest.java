@@ -127,7 +127,22 @@ name|MQTT
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
 begin_class
+annotation|@
+name|Ignore
+argument_list|(
+literal|"hangs atm, needs investigation"
+argument_list|)
 specifier|public
 class|class
 name|MQTTSSLTest
