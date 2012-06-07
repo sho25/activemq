@@ -530,9 +530,15 @@ name|Object
 argument_list|>
 argument_list|(
 name|dataLocator
+operator|!=
+literal|null
+condition|?
+name|dataLocator
 operator|.
 name|get
 argument_list|()
+else|:
+literal|null
 argument_list|)
 expr_stmt|;
 return|return
