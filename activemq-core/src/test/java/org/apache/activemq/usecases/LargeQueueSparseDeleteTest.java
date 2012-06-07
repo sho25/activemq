@@ -75,9 +75,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|filter
+name|broker
 operator|.
-name|NonCachedMessageEvaluationContext
+name|ConnectionContext
 import|;
 end_import
 
@@ -105,9 +105,19 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
+name|filter
 operator|.
-name|ConnectionContext
+name|NonCachedMessageEvaluationContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
 import|;
 end_import
 
@@ -128,16 +138,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
 import|;
 end_import
 
@@ -216,7 +216,7 @@ specifier|final
 name|long
 name|TEST_TIMEOUT
 init|=
-literal|6000
+literal|8000
 decl_stmt|;
 comment|// Populate a test queue with uniquely-identifiable messages.
 name|Connection
@@ -465,7 +465,7 @@ specifier|final
 name|long
 name|TEST_TIMEOUT
 init|=
-literal|6000
+literal|8000
 decl_stmt|;
 comment|// Populate a test queue with uniquely-identifiable messages.
 name|Connection
@@ -705,7 +705,7 @@ specifier|final
 name|long
 name|TEST_TIMEOUT
 init|=
-literal|6000
+literal|8000
 decl_stmt|;
 comment|// Populate a test queue with uniquely-identifiable messages.
 name|Connection
