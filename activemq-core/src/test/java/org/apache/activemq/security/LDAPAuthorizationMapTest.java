@@ -410,7 +410,13 @@ name|authMap
 operator|.
 name|setConnectionURL
 argument_list|(
-literal|"ldap://localhost:1024"
+literal|"ldap://localhost:"
+operator|+
+name|getLdapServer
+argument_list|()
+operator|.
+name|getPort
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|authMap
