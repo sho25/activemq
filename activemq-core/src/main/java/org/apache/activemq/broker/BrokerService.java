@@ -1378,6 +1378,12 @@ name|boolean
 name|populateUserNameInMBeans
 decl_stmt|;
 specifier|private
+name|long
+name|mbeanInvocationTimeout
+init|=
+literal|0
+decl_stmt|;
+specifier|private
 name|boolean
 name|useShutdownHook
 init|=
@@ -11613,6 +11619,32 @@ operator|.
 name|populateUserNameInMBeans
 operator|=
 name|value
+expr_stmt|;
+block|}
+comment|/**      * Gets the time in Milliseconds that an invocation of an MBean method will wait before      * failing.  The default value is to wait forever (zero).      *      * @return timeout in milliseconds before MBean calls fail, (default is 0 or no timeout).      */
+specifier|public
+name|long
+name|getMbeanInvocationTimeout
+parameter_list|()
+block|{
+return|return
+name|mbeanInvocationTimeout
+return|;
+block|}
+comment|/**      * Gets the time in Milliseconds that an invocation of an MBean method will wait before      * failing. The default value is to wait forever (zero).      *      * @param mbeanInvocationTimeout      *      timeout in milliseconds before MBean calls fail, (default is 0 or no timeout).      */
+specifier|public
+name|void
+name|setMbeanInvocationTimeout
+parameter_list|(
+name|long
+name|mbeanInvocationTimeout
+parameter_list|)
+block|{
+name|this
+operator|.
+name|mbeanInvocationTimeout
+operator|=
+name|mbeanInvocationTimeout
 expr_stmt|;
 block|}
 specifier|public
