@@ -2320,7 +2320,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|500
+literal|1000
 argument_list|)
 expr_stmt|;
 name|remote
@@ -2351,6 +2351,17 @@ argument_list|()
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"Remote should receive: "
+operator|+
+name|expect
+operator|+
+literal|", commands but got: "
+operator|+
+name|remoteReceived
+operator|.
+name|size
+argument_list|()
+argument_list|,
 name|Wait
 operator|.
 name|waitFor
