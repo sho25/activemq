@@ -1892,11 +1892,12 @@ condition|(
 name|sync
 condition|)
 block|{
+comment|// ldap connection can be slow to close
 name|map
 operator|.
 name|setRefreshInterval
 argument_list|(
-literal|1
+literal|2000
 argument_list|)
 expr_stmt|;
 block|}
