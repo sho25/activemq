@@ -1897,7 +1897,7 @@ name|map
 operator|.
 name|setRefreshInterval
 argument_list|(
-literal|2000
+literal|1000
 argument_list|)
 expr_stmt|;
 block|}
@@ -1972,6 +1972,12 @@ argument_list|(
 literal|1000
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|sync
+condition|)
+block|{
 name|failedACLs
 operator|=
 name|map
@@ -1999,6 +2005,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|getLdapServer
 argument_list|()
 operator|.
