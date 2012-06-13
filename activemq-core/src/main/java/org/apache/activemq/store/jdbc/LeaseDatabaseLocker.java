@@ -199,7 +199,7 @@ specifier|protected
 name|int
 name|maxAllowableDiffFromDBTime
 init|=
-literal|2000
+literal|0
 decl_stmt|;
 specifier|protected
 name|long
@@ -276,7 +276,7 @@ argument_list|(
 name|getLeaseHolderId
 argument_list|()
 operator|+
-literal|" attempting to acquire the exclusive lease to become the Master broker"
+literal|" attempting to acquire exclusive lease to become the Master broker"
 argument_list|)
 expr_stmt|;
 name|String
@@ -730,15 +730,18 @@ name|SQLException
 block|{
 if|if
 condition|(
-name|maxAllowableDiffFromDBTime
-operator|>
-literal|0
-operator|&&
 name|Long
 operator|.
 name|MAX_VALUE
 operator|==
 name|diffFromCurrentTime
+condition|)
+block|{
+if|if
+condition|(
+name|maxAllowableDiffFromDBTime
+operator|>
+literal|0
 condition|)
 block|{
 name|diffFromCurrentTime
@@ -748,6 +751,14 @@ argument_list|(
 name|connection
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|diffFromCurrentTime
+operator|=
+literal|0l
+expr_stmt|;
+block|}
 block|}
 return|return
 name|diffFromCurrentTime
