@@ -121,7 +121,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|private
+specifier|protected
 name|BrokerService
 name|broker
 decl_stmt|;
@@ -430,6 +430,9 @@ try|try
 block|{
 while|while
 condition|(
+name|hasLockOwnership
+argument_list|()
+operator|&&
 name|isPersistenceAdapterDown
 argument_list|()
 condition|)
@@ -467,8 +470,13 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failure occurred while restarting broker connectors"
+literal|"Stopping broker due to failure while restarting broker connectors"
 argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+name|stopBroker
+argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
@@ -531,11 +539,25 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
+name|stopBroker
+argument_list|(
+name|exception
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|stopBroker
+parameter_list|(
+name|Exception
+name|exception
+parameter_list|)
+block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Stopping the broker due to IO exception, "
+literal|"Stopping the broker due to exception, "
 operator|+
 name|exception
 argument_list|,
@@ -583,6 +605,17 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+block|}
+specifier|protected
+name|boolean
+name|hasLockOwnership
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+return|return
+literal|true
+return|;
 block|}
 specifier|public
 name|void

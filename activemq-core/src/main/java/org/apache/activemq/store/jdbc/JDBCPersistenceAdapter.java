@@ -2907,9 +2907,9 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|error
+name|warn
 argument_list|(
-literal|"Failed to get database when trying keepalive: "
+literal|"databaselocker keepalive resulted in: "
 operator|+
 name|e
 argument_list|,
@@ -2937,7 +2937,12 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"No longer able to keep the exclusive lock so giving up being a master"
+name|brokerService
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|", no longer able to keep the exclusive lock so giving up being a master"
 argument_list|)
 expr_stmt|;
 try|try

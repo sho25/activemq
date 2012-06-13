@@ -60,10 +60,12 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Used by a timer to keep alive the lock.      * If the method returns false the broker should be terminated      */
+comment|/**      * Used by a timer to keep alive the lock.      * If the method returns false the broker should be terminated      * if an exception is thrown, the lock state cannot be determined      */
 name|boolean
 name|keepAlive
 parameter_list|()
+throws|throws
+name|IOException
 function_decl|;
 comment|/**      * set the delay interval in milliseconds between lock acquire attempts      * @param lockAcquireSleepInterval the sleep interval in miliseconds      */
 name|void

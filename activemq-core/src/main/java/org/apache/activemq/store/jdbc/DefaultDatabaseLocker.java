@@ -706,6 +706,8 @@ specifier|public
 name|boolean
 name|keepAlive
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|boolean
 name|result
