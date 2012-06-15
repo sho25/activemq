@@ -559,8 +559,12 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// Lock here on the target transport's started since we want to wait for its start()
+comment|// method to finish dispatching out of the queue before we do our own.
 synchronized|synchronized
 init|(
+name|transport
+operator|.
 name|started
 init|)
 block|{
