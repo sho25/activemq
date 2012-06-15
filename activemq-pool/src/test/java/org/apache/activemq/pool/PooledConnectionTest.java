@@ -292,6 +292,14 @@ name|ise
 argument_list|)
 expr_stmt|;
 block|}
+finally|finally
+block|{
+name|conn
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 comment|// 3rd test: try to call setClientID() after start()
 comment|// should result in an exception
 name|cf
@@ -342,6 +350,14 @@ literal|"Correctly received "
 operator|+
 name|ise
 argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|conn
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 name|log
