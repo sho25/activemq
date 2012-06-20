@@ -31,11 +31,31 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Connection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|concurrent
 operator|.
 name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|Test
 import|;
 end_import
 
@@ -48,6 +68,22 @@ operator|.
 name|activemq
 operator|.
 name|ActiveMQConnection
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|jdbc
+operator|.
+name|DataSourceSupport
 import|;
 end_import
 
@@ -80,6 +116,24 @@ operator|.
 name|jdbc
 operator|.
 name|LeaseDatabaseLocker
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|jdbc
+operator|.
+name|adapter
+operator|.
+name|DefaultJDBCAdapter
 import|;
 end_import
 
@@ -200,18 +254,18 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"restart db after lease has expired. While Db is offline, master should stay alive, them lease up for grabs"
+literal|"delay for less than lease quantum. While Db is offline, master should stay alive"
 argument_list|)
 expr_stmt|;
 try|try
 block|{
 name|TimeUnit
 operator|.
-name|MILLISECONDS
+name|SECONDS
 operator|.
 name|sleep
 argument_list|(
-literal|3000
+literal|1
 argument_list|)
 expr_stmt|;
 block|}
@@ -243,6 +297,12 @@ condition|(
 name|inflightMessageCount
 operator|==
 literal|0
+operator|||
+name|inflightMessageCount
+operator|==
+name|failureCount
+operator|+
+literal|10
 condition|)
 block|{
 name|assertEquals
@@ -266,7 +326,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// the lock is up for grabs after the expiry
 block|}
 block|}
 end_class
