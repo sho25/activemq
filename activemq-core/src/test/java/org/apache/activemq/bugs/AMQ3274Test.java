@@ -16,108 +16,78 @@ package|;
 end_package
 
 begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|BrokerService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQDestination
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|network
-operator|.
-name|DiscoveryNetworkConnector
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|network
-operator|.
-name|NetworkConnector
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URI
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URISyntaxException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Enumeration
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|CountDownLatch
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
 import|;
 end_import
 
@@ -203,89 +173,123 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|net
+name|apache
 operator|.
-name|URI
+name|activemq
+operator|.
+name|ActiveMQConnection
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|net
+name|apache
 operator|.
-name|URISyntaxException
+name|activemq
+operator|.
+name|broker
+operator|.
+name|BrokerService
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|ArrayList
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQDestination
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|Enumeration
+name|activemq
+operator|.
+name|network
+operator|.
+name|DiscoveryNetworkConnector
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|concurrent
+name|activemq
 operator|.
-name|CountDownLatch
+name|network
+operator|.
+name|NetworkConnector
 import|;
 end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-operator|.
-name|assertTrue
+name|Test
 import|;
 end_import
 
-begin_comment
-comment|/**  *  */
-end_comment
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
 
 begin_class
 specifier|public
 class|class
 name|AMQ3274Test
 block|{
+specifier|private
+specifier|static
+specifier|final
+specifier|transient
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|AMQ3274Test
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|protected
 specifier|static
 name|int
@@ -320,25 +324,6 @@ init|=
 literal|0
 decl_stmt|;
 comment|// Number of "filler" response messages per request
-specifier|protected
-specifier|static
-name|Log
-name|LOG
-decl_stmt|;
-static|static
-block|{
-name|LOG
-operator|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|AMQ3274Test
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-block|}
 specifier|public
 name|AMQ3274Test
 parameter_list|()
@@ -401,7 +386,6 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * 	 */
 specifier|public
 name|void
 name|testMessages
@@ -546,9 +530,6 @@ name|cur
 operator|++
 expr_stmt|;
 block|}
-comment|//
-comment|// Give the consumer some time to receive the response.
-comment|//
 name|cons_client
 operator|.
 name|waitShutdown
@@ -556,9 +537,6 @@ argument_list|(
 literal|5000
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// Now shutdown the consumer if it's still running.
-comment|//
 if|if
 condition|(
 name|cons_client
@@ -566,6 +544,7 @@ operator|.
 name|shutdown
 argument_list|()
 condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -573,7 +552,9 @@ argument_list|(
 literal|"Consumer client shutdown complete"
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|LOG
 operator|.
 name|debug
@@ -581,9 +562,7 @@ argument_list|(
 literal|"Consumer client shutdown incomplete!!!"
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// Check that the correct number of messages was received.
-comment|//
+block|}
 name|tot_expected
 operator|=
 name|num_msg
@@ -645,7 +624,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Test one destination between the given "producer broker" and "consumer broker" specified. 	 */
+comment|/**      * Test one destination between the given "producer broker" and      * "consumer broker" specified.      */
 specifier|public
 name|void
 name|testOneDest
@@ -709,9 +688,6 @@ literal|"echo.queue."
 operator|+
 name|echo_id
 expr_stmt|;
-comment|//
-comment|// Remove any previously-created echo queue with the same name.
-comment|//
 name|LOG
 operator|.
 name|trace
@@ -726,9 +702,6 @@ argument_list|,
 name|echo_queue_name
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// Now start the echo service with that queue.
-comment|//
 name|echo_svc
 operator|=
 operator|new
@@ -744,9 +717,6 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-comment|//
-comment|// Create the Producer to the echo request Queue
-comment|//
 name|LOG
 operator|.
 name|trace
@@ -772,9 +742,6 @@ argument_list|(
 name|prod_dest
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// Pass messages around.
-comment|//
 name|testMessages
 argument_list|(
 name|sess
@@ -786,9 +753,6 @@ argument_list|,
 name|num_msg
 argument_list|)
 expr_stmt|;
-comment|//
-comment|//
-comment|//
 name|echo_svc
 operator|.
 name|shutdown
@@ -800,7 +764,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * TEST TEMPORARY TOPICS 	 */
+comment|/**      * TEST TEMPORARY TOPICS      */
 specifier|public
 name|void
 name|testTempTopic
@@ -822,9 +786,6 @@ name|sess
 decl_stmt|;
 name|Destination
 name|cons_dest
-decl_stmt|;
-name|int
-name|echo_id
 decl_stmt|;
 name|int
 name|num_msg
@@ -852,9 +813,6 @@ operator|+
 literal|" messages)"
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// Connect to the bus.
-comment|//
 name|conn
 operator|=
 name|createConnection
@@ -880,9 +838,6 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// Create the destination on which messages are being tested.
-comment|//
 name|LOG
 operator|.
 name|trace
@@ -912,9 +867,6 @@ argument_list|,
 name|num_msg
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// Cleanup
-comment|//
 name|sess
 operator|.
 name|close
@@ -926,7 +878,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * TEST TOPICS 	 */
+comment|/**      * TEST TOPICS      */
 specifier|public
 name|void
 name|testTopic
@@ -978,9 +930,6 @@ operator|+
 literal|" messages)"
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// Connect to the bus.
-comment|//
 name|conn
 operator|=
 name|createConnection
@@ -1006,9 +955,6 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// Create the destination on which messages are being tested.
-comment|//
 name|topic_name
 operator|=
 literal|"topotest2.perm.topic"
@@ -1060,9 +1006,6 @@ argument_list|,
 name|num_msg
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// Cleanup
-comment|//
 name|removeTopic
 argument_list|(
 name|conn
@@ -1081,7 +1024,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * TEST TEMPORARY QUEUES 	 */
+comment|/**      * TEST TEMPORARY QUEUES      */
 specifier|public
 name|void
 name|testTempQueue
@@ -1095,9 +1038,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|int
-name|echo_id
-decl_stmt|;
 name|int
 name|num_msg
 decl_stmt|;
@@ -1133,9 +1073,6 @@ operator|+
 literal|" messages)"
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// Connect to the bus.
-comment|//
 name|conn
 operator|=
 name|createConnection
@@ -1161,9 +1098,6 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// Create the destination on which messages are being tested.
-comment|//
 name|LOG
 operator|.
 name|trace
@@ -1193,9 +1127,6 @@ argument_list|,
 name|num_msg
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// Cleanup
-comment|//
 name|sess
 operator|.
 name|close
@@ -1207,7 +1138,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * TEST QUEUES 	 */
+comment|/**      * TEST QUEUES      */
 specifier|public
 name|void
 name|testQueue
@@ -1259,9 +1190,6 @@ operator|+
 literal|" messages)"
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// Connect to the bus.
-comment|//
 name|conn
 operator|=
 name|createConnection
@@ -1287,9 +1215,6 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// Create the destination on which messages are being tested.
-comment|//
 name|queue_name
 operator|=
 literal|"topotest2.perm.queue"
@@ -1341,9 +1266,6 @@ argument_list|,
 name|num_msg
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// Cleanup
-comment|//
 name|removeQueue
 argument_list|(
 name|conn
@@ -1382,8 +1304,8 @@ operator|=
 literal|false
 expr_stmt|;
 comment|// Use threads to avoid startup deadlock since the first broker started waits until
-comment|//	it knows the name of the remote broker before finishing its startup, which means
-comment|//	the remote must already be running.
+comment|// it knows the name of the remote broker before finishing its startup, which means
+comment|// the remote must already be running.
 name|start1
 operator|=
 operator|new
@@ -1485,6 +1407,7 @@ condition|(
 operator|!
 name|testError
 condition|)
+block|{
 name|this
 operator|.
 name|testTempTopic
@@ -1500,11 +1423,13 @@ name|getConnectionUrl
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
 name|testError
 condition|)
+block|{
 name|this
 operator|.
 name|testTempQueue
@@ -1520,11 +1445,13 @@ name|getConnectionUrl
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
 name|testError
 condition|)
+block|{
 name|this
 operator|.
 name|testTopic
@@ -1540,11 +1467,13 @@ name|getConnectionUrl
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
 name|testError
 condition|)
+block|{
 name|this
 operator|.
 name|testQueue
@@ -1560,6 +1489,7 @@ name|getConnectionUrl
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|Thread
 operator|.
 name|sleep
@@ -1595,7 +1525,7 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * @param args the command line arguments 	 */
+comment|/**      * @param args      *            the command line arguments      */
 specifier|public
 specifier|static
 name|void
@@ -1865,6 +1795,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 specifier|static
 name|String
@@ -2016,9 +1951,10 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-comment|/////////////////////////////////////////////////  INTERNAL CLASSES  /////////////////////////////////////////////////
-comment|//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+comment|// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+comment|// /////////////////////////////////////////////// INTERNAL CLASSES
+comment|// /////////////////////////////////////////////////
+comment|// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 specifier|protected
 class|class
 name|EmbeddedTcpBroker
@@ -2115,35 +2051,17 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|// TBD
-name|port
-operator|=
-literal|60000
-operator|+
-operator|(
-name|brokerNum
-operator|*
-literal|10
-operator|)
-expr_stmt|;
-comment|// Configure the transport connector (TCP)
 name|tcpUrl
 operator|=
-literal|"tcp://127.0.0.1:"
-operator|+
-name|Integer
-operator|.
-name|toString
-argument_list|(
-name|port
-argument_list|)
-expr_stmt|;
 name|brokerSvc
 operator|.
 name|addConnector
 argument_list|(
-name|tcpUrl
+literal|"tcp://localhost:0"
 argument_list|)
+operator|.
+name|getPublishableConnectString
+argument_list|()
 expr_stmt|;
 block|}
 specifier|public
@@ -2190,7 +2108,7 @@ operator|.
 name|tcpUrl
 return|;
 block|}
-comment|/** 		 * Create network connections to the given broker using the network-connector 		 * configuration of CORE brokers (e.g. core1.bus.dev1.coresys.tmcs) 		 * 		 * @param other 		 * @param duplex_f 		 */
+comment|/**          * Create network connections to the given broker using the          * network-connector configuration of CORE brokers (e.g.          * core1.bus.dev1.coresys.tmcs)          *          * @param other          * @param duplex_f          */
 specifier|public
 name|void
 name|coreConnectTo
@@ -2239,7 +2157,6 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-comment|//brokerSvc.waitUntilStarted();
 block|}
 specifier|public
 name|void
@@ -2254,7 +2171,7 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 		 * Make one connection to the other embedded broker, of the specified type (queue or topic) 		 * using the standard CORE broker networking. 		 *  		 * @param other 		 * @param duplex_f 		 * @param queue_f 		 * @throws Exception 		 */
+comment|/**          * Make one connection to the other embedded broker, of the specified          * type (queue or topic) using the standard CORE broker networking.          *          * @param other          * @param duplex_f          * @param queue_f          * @throws Exception          */
 specifier|protected
 name|void
 name|makeConnectionTo
@@ -2281,6 +2198,9 @@ name|ActiveMQDestination
 name|excl_dest
 decl_stmt|;
 name|ArrayList
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 name|excludes
 decl_stmt|;
 name|nw_conn
@@ -2402,6 +2322,9 @@ name|excludes
 operator|=
 operator|new
 name|ArrayList
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|excludes
@@ -2746,9 +2669,6 @@ name|haveFirstSeq
 operator|=
 literal|false
 expr_stmt|;
-comment|//
-comment|// Stop at shutdown time or after any test error is detected.
-comment|//
 while|while
 condition|(
 operator|(
@@ -2814,9 +2734,6 @@ name|in_msg
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// Only check messages with a sequence number.
-comment|//
 if|if
 condition|(
 name|in_msg
@@ -2937,7 +2854,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * 	 */
 specifier|protected
 class|class
 name|EchoService
@@ -3255,7 +3171,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 		 * Shut down the service, waiting up to 3 seconds for the service to terminate. 		 */
+comment|/**          * Shut down the service, waiting up to 3 seconds for the service to          * terminate.          */
 specifier|public
 name|void
 name|shutdown
@@ -3300,6 +3216,7 @@ operator|.
 name|MILLISECONDS
 argument_list|)
 condition|)
+block|{
 name|LOG
 operator|.
 name|info
@@ -3307,7 +3224,9 @@ argument_list|(
 literal|"echo service shutdown complete"
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|LOG
 operator|.
 name|warn
@@ -3315,6 +3234,7 @@ argument_list|(
 literal|"timeout waiting for echo service shutdown"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
