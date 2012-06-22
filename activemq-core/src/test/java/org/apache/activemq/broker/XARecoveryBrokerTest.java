@@ -739,6 +739,11 @@ index|[
 literal|0
 index|]
 decl_stmt|;
+name|int
+name|commitCount
+init|=
+literal|0
+decl_stmt|;
 comment|// via jmx, force outcome
 for|for
 control|(
@@ -785,6 +790,9 @@ name|mbean
 operator|.
 name|heuristicCommit
 argument_list|()
+expr_stmt|;
+name|commitCount
+operator|++
 expr_stmt|;
 block|}
 else|else
@@ -841,6 +849,19 @@ name|getData
 argument_list|()
 operator|.
 name|length
+argument_list|)
+expr_stmt|;
+comment|// verify messages available
+name|assertEquals
+argument_list|(
+literal|"enqueue count reflects outcome"
+argument_list|,
+name|commitCount
+argument_list|,
+name|destinationView
+operator|.
+name|getQueueSize
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// verify mbeans gone
@@ -3122,6 +3143,45 @@ argument_list|(
 name|connection
 argument_list|)
 expr_stmt|;
+comment|// validate destination depth via jmx
+name|DestinationViewMBean
+name|destinationView
+init|=
+name|getProxyToDestination
+argument_list|(
+name|destinationList
+argument_list|(
+name|destination
+argument_list|)
+index|[
+literal|0
+index|]
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"enqueue count does not see prepared acks"
+argument_list|,
+literal|4
+argument_list|,
+name|destinationView
+operator|.
+name|getQueueSize
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"enqueue count does not see prepared acks"
+argument_list|,
+literal|0
+argument_list|,
+name|destinationView
+operator|.
+name|getDequeueCount
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|connection
 operator|.
 name|request
@@ -3159,6 +3219,30 @@ name|getData
 argument_list|()
 operator|.
 name|length
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"enqueue count does not see commited acks"
+argument_list|,
+literal|0
+argument_list|,
+name|destinationView
+operator|.
+name|getQueueSize
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"enqueue count does not see commited acks"
+argument_list|,
+literal|4
+argument_list|,
+name|destinationView
+operator|.
+name|getDequeueCount
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

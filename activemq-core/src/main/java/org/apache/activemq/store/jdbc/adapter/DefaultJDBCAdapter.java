@@ -2242,6 +2242,13 @@ operator|.
 name|getEncodedXidBytes
 argument_list|()
 decl_stmt|;
+name|xidVal
+index|[
+literal|0
+index|]
+operator|=
+literal|'-'
+expr_stmt|;
 name|setBinaryData
 argument_list|(
 name|s
