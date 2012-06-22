@@ -57,7 +57,7 @@ argument_list|<
 name|T
 argument_list|>
 block|{
-specifier|private
+specifier|protected
 name|ActiveMQDestination
 name|destination
 decl_stmt|;
