@@ -61,16 +61,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -256,7 +246,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @openwire:marshaller code="23"  */
+comment|/**  *  * @openwire:marshaller code="23"  */
 end_comment
 
 begin_class
@@ -1241,6 +1231,11 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|Enumeration
 name|getPropertyNames
@@ -1295,6 +1290,11 @@ throw|;
 block|}
 block|}
 comment|/**      * return all property names, including standard JMS properties and JMSX properties      * @return  Enumeration of all property names on this message      * @throws JMSException      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|Enumeration
 name|getAllPropertyNames
@@ -2467,6 +2467,11 @@ name|void
 name|setProperties
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|?
+argument_list|>
 name|properties
 parameter_list|)
 throws|throws
@@ -2474,39 +2479,22 @@ name|JMSException
 block|{
 for|for
 control|(
-name|Iterator
-name|iter
-init|=
+name|Map
+operator|.
+name|Entry
+argument_list|<
+name|String
+argument_list|,
+name|?
+argument_list|>
+name|entry
+range|:
 name|properties
 operator|.
 name|entrySet
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|Map
-operator|.
-name|Entry
-name|entry
-init|=
-operator|(
-name|Map
-operator|.
-name|Entry
-operator|)
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 comment|// Lets use the object property method as we may contain standard
 comment|// extension headers like JMSXGroupID
 name|setObjectProperty
@@ -3959,6 +3947,13 @@ name|this
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|storeContent
+parameter_list|()
+block|{     }
 block|}
 end_class
 

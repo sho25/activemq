@@ -394,7 +394,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Forwards all messages from the local broker to the remote broker.  *   * @org.apache.xbean.XBean  *   *   */
+comment|/**  * Forwards all messages from the local broker to the remote broker.  *  * @org.apache.xbean.XBean  *  *  */
 end_comment
 
 begin_class
@@ -505,6 +505,12 @@ decl_stmt|;
 specifier|private
 name|NetworkBridgeListener
 name|bridgeFailedListener
+decl_stmt|;
+specifier|private
+name|boolean
+name|useCompression
+init|=
+literal|false
 decl_stmt|;
 specifier|public
 name|ForwardingBridge
@@ -1289,6 +1295,18 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|isUseCompression
+argument_list|()
+condition|)
+block|{
+name|message
+operator|.
+name|compress
+argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
 operator|!
 name|message
 operator|.
@@ -1296,10 +1314,8 @@ name|isResponseRequired
 argument_list|()
 condition|)
 block|{
-comment|// If the message was originally sent using async send, we
-comment|// will preserve that QOS
-comment|// by bridging it using an async send (small chance of
-comment|// message loss).
+comment|// If the message was originally sent using async send, we will preserve that
+comment|// QOS by bridging it using an async send (small chance of message loss).
 name|remoteBroker
 operator|.
 name|oneway
@@ -1778,6 +1794,32 @@ name|enqueueCounter
 operator|.
 name|get
 argument_list|()
+return|;
+block|}
+comment|/**      * @param useCompression      *      True if forwarded Messages should have their bodies compressed.      */
+specifier|public
+name|void
+name|setUseCompression
+parameter_list|(
+name|boolean
+name|useCompression
+parameter_list|)
+block|{
+name|this
+operator|.
+name|useCompression
+operator|=
+name|useCompression
+expr_stmt|;
+block|}
+comment|/**      * @return the vale of the useCompression setting, true if forwarded messages will be compressed.      */
+specifier|public
+name|boolean
+name|isUseCompression
+parameter_list|()
+block|{
+return|return
+name|useCompression
 return|;
 block|}
 block|}

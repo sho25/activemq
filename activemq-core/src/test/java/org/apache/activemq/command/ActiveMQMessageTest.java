@@ -172,7 +172,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -246,7 +246,7 @@ name|long
 index|[]
 name|consumerIDs
 decl_stmt|;
-comment|/**      * Constructor for ActiveMQMessageTest.      *       * @param name      */
+comment|/**      * Constructor for ActiveMQMessageTest.      *      * @param name      */
 specifier|public
 name|ActiveMQMessageTest
 parameter_list|(
@@ -2081,6 +2081,11 @@ literal|1.3f
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|void
 name|testGetPropertyNames
@@ -2228,6 +2233,11 @@ name|found3
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|void
 name|testGetAllPropertyNames
@@ -2670,7 +2680,14 @@ name|clearBody
 parameter_list|()
 throws|throws
 name|JMSException
-block|{                             }
+block|{             }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|storeContent
+parameter_list|()
+block|{             }
 block|}
 decl_stmt|;
 name|msg
@@ -2796,6 +2813,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|properties
 init|=
 name|msg

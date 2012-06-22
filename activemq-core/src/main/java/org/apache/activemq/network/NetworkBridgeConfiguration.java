@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -57,18 +67,8 @@ name|ConsumerInfo
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_comment
-comment|/**  * Configuration for a NetworkBridge  *   *   */
+comment|/**  * Configuration for a NetworkBridge  *  *  */
 end_comment
 
 begin_class
@@ -200,6 +200,12 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|staticBridge
+init|=
+literal|false
+decl_stmt|;
+specifier|private
+name|boolean
+name|useCompression
 init|=
 literal|false
 decl_stmt|;
@@ -817,7 +823,7 @@ return|return
 name|suppressDuplicateQueueSubscriptions
 return|;
 block|}
-comment|/**      *       * @param val if true, duplicate network queue subscriptions (in a cyclic network) will be suppressed      */
+comment|/**      *      * @param val if true, duplicate network queue subscriptions (in a cyclic network) will be suppressed      */
 specifier|public
 name|void
 name|setSuppressDuplicateQueueSubscriptions
@@ -840,7 +846,7 @@ return|return
 name|suppressDuplicateTopicSubscriptions
 return|;
 block|}
-comment|/**      *       * @param val if true, duplicate network topic subscriptions (in a cyclic network) will be suppressed      */
+comment|/**      *      * @param val if true, duplicate network topic subscriptions (in a cyclic network) will be suppressed      */
 specifier|public
 name|void
 name|setSuppressDuplicateTopicSubscriptions
@@ -955,6 +961,32 @@ name|staticBridge
 operator|=
 name|staticBridge
 expr_stmt|;
+block|}
+comment|/**      * @param useCompression      *      True if the Network should enforce compression for messages sent.      */
+specifier|public
+name|void
+name|setUseCompression
+parameter_list|(
+name|boolean
+name|useCompression
+parameter_list|)
+block|{
+name|this
+operator|.
+name|useCompression
+operator|=
+name|useCompression
+expr_stmt|;
+block|}
+comment|/**      * @return the useCompression setting, true if message will be compressed on send.      */
+specifier|public
+name|boolean
+name|isUseCompression
+parameter_list|()
+block|{
+return|return
+name|useCompression
+return|;
 block|}
 block|}
 end_class
