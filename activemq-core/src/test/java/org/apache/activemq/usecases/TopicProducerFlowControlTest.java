@@ -779,22 +779,6 @@ name|Message
 name|message
 parameter_list|)
 block|{
-try|try
-block|{
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{         }
 name|long
 name|count
 init|=
@@ -823,6 +807,22 @@ operator|+
 literal|" messages"
 argument_list|)
 expr_stmt|;
+try|try
+block|{
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|100
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{             }
 block|}
 block|}
 block|}
