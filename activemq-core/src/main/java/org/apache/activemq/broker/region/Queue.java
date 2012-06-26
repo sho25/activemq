@@ -103,6 +103,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|LinkedHashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|LinkedList
 import|;
 end_import
@@ -6359,7 +6369,7 @@ argument_list|>
 name|set
 init|=
 operator|new
-name|HashSet
+name|LinkedHashSet
 argument_list|<
 name|MessageReference
 argument_list|>
@@ -6647,7 +6657,7 @@ argument_list|>
 name|set
 init|=
 operator|new
-name|HashSet
+name|LinkedHashSet
 argument_list|<
 name|MessageReference
 argument_list|>
@@ -7047,7 +7057,7 @@ argument_list|>
 name|set
 init|=
 operator|new
-name|HashSet
+name|LinkedHashSet
 argument_list|<
 name|QueueMessageReference
 argument_list|>
