@@ -326,7 +326,7 @@ specifier|final
 name|long
 name|numMessages
 init|=
-literal|50000
+literal|5000
 decl_stmt|;
 specifier|final
 name|long
@@ -543,11 +543,17 @@ argument_list|()
 operator|.
 name|setLimit
 argument_list|(
+operator|(
 name|numMessages
 operator|*
 name|payLoadSize
+operator|)
+operator|+
+operator|(
+literal|1000
 operator|*
-literal|2
+name|payLoadSize
+operator|)
 argument_list|)
 expr_stmt|;
 name|PolicyMap
