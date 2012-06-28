@@ -983,6 +983,8 @@ argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
+literal|"Failed to receive a connected frame."
+argument_list|,
 name|f
 operator|.
 name|startsWith
@@ -993,6 +995,8 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"Frame should have a versoion 1.1 header."
+argument_list|,
 name|f
 operator|.
 name|indexOf
@@ -1005,6 +1009,8 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"Frame should have a heart beat header."
+argument_list|,
 name|f
 operator|.
 name|indexOf
@@ -1017,6 +1023,8 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"Frame should have a session header."
+argument_list|,
 name|f
 operator|.
 name|indexOf
@@ -1029,7 +1037,7 @@ argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"Broker sent: "
 operator|+
@@ -1464,7 +1472,9 @@ operator|+
 name|getQueueName
 argument_list|()
 operator|+
-literal|"\n\n"
+literal|"\n"
+operator|+
+literal|"receipt:1\n\n"
 operator|+
 literal|"Hello World"
 operator|+
@@ -1479,6 +1489,11 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
+name|stompConnection
+operator|.
+name|receiveFrame
+argument_list|()
+expr_stmt|;
 name|fail
 argument_list|(
 literal|"SEND frame has been accepted after missing heart beat"
@@ -1491,11 +1506,9 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 name|ex
 operator|.
