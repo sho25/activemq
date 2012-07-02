@@ -70,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -194,6 +194,13 @@ argument_list|)
 return|;
 block|}
 comment|// NOOP - These operations handled by jaas cert login module
+specifier|public
+name|void
+name|testSubscribeWithReceiptNotAuthorized
+parameter_list|()
+throws|throws
+name|Exception
+block|{     }
 specifier|public
 name|void
 name|testConnectNotAuthenticatedWrongUser
