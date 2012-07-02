@@ -733,7 +733,7 @@ name|getPrefetchSize
 argument_list|()
 condition|)
 block|{
-comment|//we are slow
+comment|// Slow consumers should log and set their state as such.
 if|if
 condition|(
 operator|!
@@ -901,8 +901,8 @@ literal|20
 argument_list|)
 expr_stmt|;
 block|}
-comment|//Temporary storage could be full - so just try to add the message
-comment|//see https://issues.apache.org/activemq/browse/AMQ-2475
+comment|// Temporary storage could be full - so just try to add the message
+comment|// see https://issues.apache.org/activemq/browse/AMQ-2475
 if|if
 condition|(
 name|matched
@@ -1005,8 +1005,7 @@ argument_list|()
 operator|-
 name|maximumPendingMessages
 decl_stmt|;
-comment|// only page in a 1000 at a time - else we could
-comment|// blow da memory
+comment|// only page in a 1000 at a time - else we could blow the memory
 name|pageInSize
 operator|=
 name|Math
@@ -1118,8 +1117,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// lets avoid an infinite loop if we are given a bad
-comment|// eviction strategy
+comment|// lets avoid an infinite loop if we are given a bad eviction strategy
 comment|// for a bad strategy lets just not evict
 if|if
 condition|(
@@ -1226,7 +1224,7 @@ return|return
 name|duplicate
 return|;
 block|}
-comment|/**      * Discard any expired messages from the matched list. Called from a      * synchronized block.      *       * @throws IOException      */
+comment|/**      * Discard any expired messages from the matched list. Called from a      * synchronized block.      *      * @throws IOException      */
 specifier|protected
 name|void
 name|removeExpiredMessages
@@ -1596,8 +1594,7 @@ name|isDeliveredAck
 argument_list|()
 condition|)
 block|{
-comment|// Message was delivered but not acknowledged: update pre-fetch
-comment|// counters.
+comment|// Message was delivered but not acknowledged: update pre-fetch counters.
 comment|// also. get these for a consumer expired message.
 if|if
 condition|(
@@ -2113,7 +2110,7 @@ operator|=
 name|matched
 expr_stmt|;
 block|}
-comment|/**      * inform the MessageConsumer on the client to change it's prefetch      *       * @param newPrefetch      */
+comment|/**      * inform the MessageConsumer on the client to change it's prefetch      *      * @param newPrefetch      */
 specifier|public
 name|void
 name|updateConsumerPrefetch
@@ -2242,8 +2239,7 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-comment|// Message may have been sitting in the matched list a
-comment|// while
+comment|// Message may have been sitting in the matched list a while
 comment|// waiting for the consumer to ak the message.
 if|if
 condition|(
@@ -2346,8 +2342,7 @@ operator|.
 name|incrementAndGet
 argument_list|()
 expr_stmt|;
-comment|// Keep track if this subscription is receiving messages from a single
-comment|// destination.
+comment|// Keep track if this subscription is receiving messages from a single destination.
 if|if
 condition|(
 name|singleDestination
@@ -2714,6 +2709,44 @@ operator|.
 name|getPrefetchSize
 argument_list|()
 return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setPrefetchSize
+parameter_list|(
+name|int
+name|newSize
+parameter_list|)
+block|{
+name|info
+operator|.
+name|setPrefetchSize
+argument_list|(
+name|newSize
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|dispatchMatched
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Caught exception on dispatch after prefetch size change."
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

@@ -43,16 +43,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|LinkedList
 import|;
 end_import
@@ -1118,6 +1108,7 @@ condition|(
 operator|!
 name|hasSubscription
 condition|)
+block|{
 name|consumers
 operator|.
 name|add
@@ -1125,6 +1116,7 @@ argument_list|(
 name|sub
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|durableSubcribers
@@ -1990,9 +1982,7 @@ literal|" See http://activemq.apache.org/producer-flow-control.html for more inf
 argument_list|)
 throw|;
 block|}
-comment|// We can avoid blocking due to low usage if the producer is
-comment|// sending
-comment|// a sync message or
+comment|// We can avoid blocking due to low usage if the producer is sending a sync message or
 comment|// if it is using a producer window
 if|if
 condition|(
@@ -2202,10 +2192,8 @@ block|}
 block|}
 else|else
 block|{
-comment|// Producer flow control cannot be used, so we have do the
-comment|// flow
-comment|// control at the broker
-comment|// by blocking this thread until there is space available.
+comment|// Producer flow control cannot be used, so we have do the flow control
+comment|// at the broker by blocking this thread until there is space available.
 if|if
 condition|(
 name|memoryUsage
@@ -3917,52 +3905,6 @@ name|durableTopicSubscription
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|dispatchLock
-operator|.
-name|readLock
-argument_list|()
-operator|.
-name|unlock
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-specifier|private
-name|void
-name|clearPendingMessages
-parameter_list|(
-name|SubscriptionKey
-name|subscriptionKey
-parameter_list|)
-block|{
-name|dispatchLock
-operator|.
-name|readLock
-argument_list|()
-operator|.
-name|lock
-argument_list|()
-expr_stmt|;
-try|try
-block|{
-name|DurableTopicSubscription
-name|durableTopicSubscription
-init|=
-name|durableSubcribers
-operator|.
-name|get
-argument_list|(
-name|subscriptionKey
-argument_list|)
-decl_stmt|;
-name|clearPendingAndDispatch
-argument_list|(
-name|durableTopicSubscription
-argument_list|)
-expr_stmt|;
 block|}
 finally|finally
 block|{
