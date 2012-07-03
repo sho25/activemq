@@ -2608,6 +2608,7 @@ name|name
 return|;
 block|}
 comment|/**      * Add a listener for a question. The listener will receive updates      * of answers to the question as they arrive, or from the cache if they      * are already available.      */
+specifier|public
 name|void
 name|addListener
 parameter_list|(
@@ -2721,6 +2722,7 @@ block|}
 block|}
 block|}
 comment|/**      * Remove a listener from all outstanding questions. The listener will no longer      * receive any updates.      */
+specifier|public
 name|void
 name|removeListener
 parameter_list|(

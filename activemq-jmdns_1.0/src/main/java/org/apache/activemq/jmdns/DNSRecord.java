@@ -114,6 +114,7 @@ comment|/**  * DNS record  *  * @version %I%, %G%  * @author	Arthur van Hoff, Ri
 end_comment
 
 begin_class
+specifier|public
 specifier|abstract
 class|class
 name|DNSRecord
@@ -472,6 +473,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Check if the record is expired.      */
+specifier|public
 name|boolean
 name|isExpired
 parameter_list|(
@@ -538,6 +540,7 @@ throws|throws
 name|IOException
 function_decl|;
 comment|/**      * Address record.      */
+specifier|public
 specifier|static
 class|class
 name|Address
@@ -1507,6 +1510,7 @@ return|;
 block|}
 block|}
 comment|/**      * Pointer record.      */
+specifier|public
 specifier|static
 class|class
 name|Pointer
@@ -1684,6 +1688,7 @@ argument_list|)
 return|;
 block|}
 block|}
+specifier|public
 specifier|static
 class|class
 name|Text
@@ -1707,6 +1712,8 @@ name|toString
 argument_list|()
 argument_list|)
 decl_stmt|;
+specifier|final
+specifier|public
 name|byte
 name|text
 index|[]
@@ -1936,6 +1943,7 @@ return|;
 block|}
 block|}
 comment|/**      * Service record.      */
+specifier|public
 specifier|static
 class|class
 name|Service
