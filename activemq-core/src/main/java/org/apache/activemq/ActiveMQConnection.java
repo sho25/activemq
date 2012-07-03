@@ -421,6 +421,24 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|policy
+operator|.
+name|RedeliveryPolicyMap
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -1225,8 +1243,8 @@ name|BlobTransferPolicy
 name|blobTransferPolicy
 decl_stmt|;
 specifier|private
-name|RedeliveryPolicy
-name|redeliveryPolicy
+name|RedeliveryPolicyMap
+name|redeliveryPolicyMap
 decl_stmt|;
 specifier|private
 name|MessageTransformer
@@ -5546,7 +5564,10 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|redeliveryPolicy
+name|redeliveryPolicyMap
+operator|.
+name|getDefaultEntry
+argument_list|()
 return|;
 block|}
 comment|/**      * Sets the redelivery policy to be used when messages are rolled back      */
@@ -5560,9 +5581,12 @@ parameter_list|)
 block|{
 name|this
 operator|.
+name|redeliveryPolicyMap
+operator|.
+name|setDefaultEntry
+argument_list|(
 name|redeliveryPolicy
-operator|=
-name|redeliveryPolicy
+argument_list|)
 expr_stmt|;
 block|}
 specifier|public
@@ -9131,6 +9155,32 @@ comment|// the temp dest is in use so it can not be deleted.
 comment|// it is ok to leave it to connection tear down phase
 block|}
 block|}
+block|}
+comment|/**      * Sets the Connection wide RedeliveryPolicyMap for handling messages that are being rolled back.      * @param redeliveryPolicyMap the redeliveryPolicyMap to set      */
+specifier|public
+name|void
+name|setRedeliveryPolicyMap
+parameter_list|(
+name|RedeliveryPolicyMap
+name|redeliveryPolicyMap
+parameter_list|)
+block|{
+name|this
+operator|.
+name|redeliveryPolicyMap
+operator|=
+name|redeliveryPolicyMap
+expr_stmt|;
+block|}
+comment|/**      * Gets the Connection's configured RedeliveryPolicyMap which will be used by all the      * Consumers when dealing with transaction messages that have been rolled back.      *      * @return the redeliveryPolicyMap      */
+specifier|public
+name|RedeliveryPolicyMap
+name|getRedeliveryPolicyMap
+parameter_list|()
+block|{
+return|return
+name|redeliveryPolicyMap
+return|;
 block|}
 block|}
 end_class

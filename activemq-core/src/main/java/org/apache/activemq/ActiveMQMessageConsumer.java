@@ -1055,8 +1055,13 @@ name|session
 operator|.
 name|connection
 operator|.
-name|getRedeliveryPolicy
+name|getRedeliveryPolicyMap
 argument_list|()
+operator|.
+name|getEntryFor
+argument_list|(
+name|dest
+argument_list|)
 expr_stmt|;
 name|setTransformer
 argument_list|(
