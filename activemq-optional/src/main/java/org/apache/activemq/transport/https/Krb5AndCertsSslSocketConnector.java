@@ -480,19 +480,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// @Override
-comment|// protected SSLServerSocketFactory createFactory() throws Exception {
-comment|// if(useCerts)
-comment|// return super.createFactory();
-comment|//
-comment|// SSLContext context = super.getProvider()==null
-comment|// ? SSLContext.getInstance(super.getProtocol())
-comment|// :SSLContext.getInstance(super.getProtocol(), super.getProvider());
-comment|// context.init(null, null, null);
-comment|//
-comment|// System.err.println("Creating socket factory");
-comment|// return context.getServerSocketFactory();
-comment|// }
 annotation|@
 name|Override
 specifier|public
@@ -615,17 +602,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Creating new KrbServerSocket for: "
-operator|+
-name|host
-argument_list|)
-expr_stmt|;
 name|logIfDebug
 argument_list|(
 literal|"Creating new KrbServerSocket for: "
@@ -829,15 +805,6 @@ name|combined
 argument_list|)
 expr_stmt|;
 block|}
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"New socket created"
-argument_list|)
-expr_stmt|;
 return|return
 name|ss
 return|;
@@ -978,13 +945,6 @@ name|endpoint
 argument_list|,
 name|request
 argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|()
 expr_stmt|;
 block|}
 specifier|private
