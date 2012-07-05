@@ -980,7 +980,19 @@ name|stompConnection
 operator|.
 name|receiveFrame
 argument_list|()
+operator|.
+name|trim
+argument_list|()
 decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Broker sent: "
+operator|+
+name|f
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 literal|"Failed to receive a connected frame."
@@ -1033,15 +1045,6 @@ literal|"session:"
 argument_list|)
 operator|>=
 literal|0
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Broker sent: "
-operator|+
-name|f
 argument_list|)
 expr_stmt|;
 name|stompConnection
