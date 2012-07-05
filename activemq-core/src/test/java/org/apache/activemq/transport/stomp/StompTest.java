@@ -2978,7 +2978,9 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|=
-literal|"SEND\n destination:/queue/"
+literal|"SEND\n"
+operator|+
+literal|"destination:/queue/"
 operator|+
 name|getQueueName
 argument_list|()
@@ -3162,7 +3164,9 @@ control|)
 block|{
 name|frame
 operator|=
-literal|"SEND\n destination:/queue/"
+literal|"SEND\n"
+operator|+
+literal|"destination:/queue/"
 operator|+
 name|getQueueName
 argument_list|()
@@ -11559,7 +11563,9 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|=
-literal|"SEND\n destination:/queue/"
+literal|"SEND\n"
+operator|+
+literal|"destination:/queue/"
 operator|+
 name|getQueueName
 argument_list|()

@@ -963,7 +963,9 @@ control|)
 block|{
 name|frame
 operator|=
-literal|"SEND\n destination:/topic/"
+literal|"SEND\n"
+operator|+
+literal|"destination:/topic/"
 operator|+
 name|getDestinationName
 argument_list|()
