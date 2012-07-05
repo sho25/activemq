@@ -73,22 +73,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|store
-operator|.
-name|memory
-operator|.
-name|MemoryPersistenceAdapter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|usage
 operator|.
 name|SystemUsage
@@ -158,7 +142,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -277,7 +261,7 @@ name|assertEquals
 argument_list|(
 literal|"Broker Config Error (persistent)"
 argument_list|,
-literal|false
+literal|true
 argument_list|,
 name|broker
 operator|.
