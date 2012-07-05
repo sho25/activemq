@@ -600,7 +600,7 @@ name|consumer1
 operator|.
 name|receive
 argument_list|(
-literal|1000
+literal|3000
 argument_list|)
 decl_stmt|;
 name|assertNotNull
