@@ -1171,9 +1171,6 @@ argument_list|()
 argument_list|,
 literal|"UTF-8"
 argument_list|)
-operator|.
-name|trim
-argument_list|()
 decl_stmt|;
 name|String
 name|value
