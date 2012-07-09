@@ -39,6 +39,16 @@ name|Service
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
 begin_comment
 comment|/**  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (for the reloadLog4jProperties method)  *  */
 end_comment
@@ -736,37 +746,49 @@ parameter_list|()
 throws|throws
 name|Throwable
 function_decl|;
+comment|/**      * @deprecated use {@link #getTransportConnectors()} or {@link #getTransportConnectorByType(String)}      */
+annotation|@
+name|Deprecated
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"The url of the openwire connector"
+literal|"The url of the openwire connector - deprecated, use getTransportConnectors or getTransportConnectorByType instead"
 argument_list|)
 name|String
 name|getOpenWireURL
 parameter_list|()
 function_decl|;
+comment|/**      * @deprecated use {@link #getTransportConnectors()} or {@link #getTransportConnectorByType(String)}      */
+annotation|@
+name|Deprecated
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"The url of the stomp connector"
+literal|"The url of the stomp connector - deprecated, use getTransportConnectors or getTransportConnectorByType instead"
 argument_list|)
 name|String
 name|getStompURL
 parameter_list|()
 function_decl|;
+comment|/**      * @deprecated use {@link #getTransportConnectors()} or {@link #getTransportConnectorByType(String)}      */
+annotation|@
+name|Deprecated
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"The url of the SSL connector"
+literal|"The url of the SSL connector - deprecated, use getTransportConnectors or getTransportConnectorByType instead"
 argument_list|)
 name|String
 name|getSslURL
 parameter_list|()
 function_decl|;
+comment|/**      * @deprecated use {@link #getTransportConnectors()} or {@link #getTransportConnectorByType(String)}      */
+annotation|@
+name|Deprecated
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"The url of the Stomp SSL connector"
+literal|"The url of the Stomp SSL connector - deprecated, use getTransportConnectors or getTransportConnectorByType instead"
 argument_list|)
 name|String
 name|getStompSslURL
@@ -780,6 +802,32 @@ argument_list|)
 name|String
 name|getVMURL
 parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The map of all defined transport connectors, with transport name as a key"
+argument_list|)
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|getTransportConnectors
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The url of transport connector by it's type; e.g. tcp, stomp, ssl, etc."
+argument_list|)
+name|String
+name|getTransportConnectorByType
+parameter_list|(
+name|String
+name|type
+parameter_list|)
 function_decl|;
 annotation|@
 name|MBeanInfo

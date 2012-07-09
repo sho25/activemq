@@ -606,8 +606,10 @@ name|URI
 argument_list|(
 name|broker
 operator|.
-name|getOpenWireURL
-argument_list|()
+name|getTransportConnectorByType
+argument_list|(
+literal|"tcp"
+argument_list|)
 argument_list|)
 operator|.
 name|getPort
