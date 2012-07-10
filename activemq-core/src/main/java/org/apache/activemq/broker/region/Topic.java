@@ -1416,6 +1416,17 @@ init|(
 name|consumers
 init|)
 block|{
+if|if
+condition|(
+operator|!
+name|consumers
+operator|.
+name|contains
+argument_list|(
+name|subscription
+argument_list|)
+condition|)
+block|{
 name|consumers
 operator|.
 name|add
@@ -1423,6 +1434,7 @@ argument_list|(
 name|subscription
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
