@@ -359,7 +359,6 @@ name|message
 operator|!=
 literal|null
 operator|&&
-operator|++
 name|attempt
 operator|<=
 name|maxRetries
@@ -370,6 +369,7 @@ block|{
 if|if
 condition|(
 name|attempt
+operator|++
 operator|>
 literal|0
 condition|)
