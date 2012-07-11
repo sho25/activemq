@@ -378,6 +378,11 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|broker
+operator|.
+name|waitUntilStarted
+argument_list|()
+expr_stmt|;
 name|connection
 operator|=
 name|createConnection
@@ -408,11 +413,18 @@ name|broker
 operator|!=
 literal|null
 condition|)
+block|{
 name|broker
 operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+name|broker
+operator|.
+name|waitUntilStopped
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -620,6 +632,16 @@ comment|// restart the broker
 name|restartBroker
 argument_list|()
 expr_stmt|;
+name|Destination
+name|d1
+init|=
+name|broker
+operator|.
+name|getDestination
+argument_list|(
+name|topic
+argument_list|)
+decl_stmt|;
 comment|// activate
 name|session
 operator|=
