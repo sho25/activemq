@@ -65,6 +65,8 @@ name|statements
 operator|.
 name|getFullLockTableName
 argument_list|()
+operator|+
+literal|" WITH (UPDLOCK, ROWLOCK)"
 decl_stmt|;
 if|if
 condition|(
@@ -79,10 +81,6 @@ operator|+=
 literal|" WHERE ID = 1"
 expr_stmt|;
 block|}
-name|lockCreateStatement
-operator|+=
-literal|" WITH (UPDLOCK, ROWLOCK)"
-expr_stmt|;
 name|statements
 operator|.
 name|setLockCreateStatement
