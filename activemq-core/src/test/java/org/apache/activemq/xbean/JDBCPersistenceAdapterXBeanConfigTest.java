@@ -100,7 +100,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|JDBCPersistenceXBeanConfigTest
+name|JDBCPersistenceAdapterXBeanConfigTest
 extends|extends
 name|TestCase
 block|{
@@ -206,7 +206,7 @@ block|{
 name|String
 name|uri
 init|=
-literal|"org/apache/activemq/xbean/jdbc-persistence-test.xml"
+literal|"org/apache/activemq/xbean/jdbc-persistence-adapter-test.xml"
 decl_stmt|;
 return|return
 name|BrokerFactory
