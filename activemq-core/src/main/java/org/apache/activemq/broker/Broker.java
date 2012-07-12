@@ -733,7 +733,7 @@ name|Subscription
 name|subs
 parameter_list|)
 function_decl|;
-comment|/**      * Called to notify a producer is too fast      * @param context      * @param producerInfo      */
+comment|/**      * Called to notify a producer is too fast      * @param context      * @param producerInfo      * @param destination      */
 name|void
 name|fastProducer
 parameter_list|(
@@ -742,6 +742,9 @@ name|context
 parameter_list|,
 name|ProducerInfo
 name|producerInfo
+parameter_list|,
+name|ActiveMQDestination
+name|destination
 parameter_list|)
 function_decl|;
 comment|/**      * Called when a Usage reaches a limit      * @param context      * @param destination       * @param usage      */

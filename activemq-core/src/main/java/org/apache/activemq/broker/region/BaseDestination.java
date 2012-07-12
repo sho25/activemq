@@ -527,7 +527,7 @@ name|advisoryForSlowConsumers
 decl_stmt|;
 specifier|private
 name|boolean
-name|advisdoryForFastProducers
+name|advisoryForFastProducers
 decl_stmt|;
 specifier|private
 name|boolean
@@ -1497,27 +1497,27 @@ block|}
 comment|/**      * @return the advisdoryForFastProducers      */
 specifier|public
 name|boolean
-name|isAdvisdoryForFastProducers
+name|isAdvisoryForFastProducers
 parameter_list|()
 block|{
 return|return
-name|advisdoryForFastProducers
+name|advisoryForFastProducers
 return|;
 block|}
-comment|/**      * @param advisdoryForFastProducers the advisdoryForFastProducers to set      */
+comment|/**      * @param advisoryForFastProducers the advisdoryForFastProducers to set      */
 specifier|public
 name|void
-name|setAdvisdoryForFastProducers
+name|setAdvisoryForFastProducers
 parameter_list|(
 name|boolean
-name|advisdoryForFastProducers
+name|advisoryForFastProducers
 parameter_list|)
 block|{
 name|this
 operator|.
-name|advisdoryForFastProducers
+name|advisoryForFastProducers
 operator|=
-name|advisdoryForFastProducers
+name|advisoryForFastProducers
 expr_stmt|;
 block|}
 specifier|public
@@ -1746,7 +1746,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|advisdoryForFastProducers
+name|advisoryForFastProducers
 condition|)
 block|{
 name|broker
@@ -1756,6 +1756,9 @@ argument_list|(
 name|context
 argument_list|,
 name|producerInfo
+argument_list|,
+name|getActiveMQDestination
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

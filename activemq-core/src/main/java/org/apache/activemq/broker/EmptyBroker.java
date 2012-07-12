@@ -1053,6 +1053,9 @@ name|context
 parameter_list|,
 name|ProducerInfo
 name|producerInfo
+parameter_list|,
+name|ActiveMQDestination
+name|destination
 parameter_list|)
 block|{     }
 specifier|public

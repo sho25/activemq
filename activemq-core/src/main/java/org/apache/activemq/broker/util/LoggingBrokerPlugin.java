@@ -2696,6 +2696,9 @@ name|context
 parameter_list|,
 name|ProducerInfo
 name|producerInfo
+parameter_list|,
+name|ActiveMQDestination
+name|destination
 parameter_list|)
 block|{
 if|if
@@ -2727,6 +2730,8 @@ argument_list|(
 name|context
 argument_list|,
 name|producerInfo
+argument_list|,
+name|destination
 argument_list|)
 expr_stmt|;
 block|}

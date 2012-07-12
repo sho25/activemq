@@ -2623,6 +2623,9 @@ name|context
 parameter_list|,
 name|ProducerInfo
 name|producerInfo
+parameter_list|,
+name|ActiveMQDestination
+name|destination
 parameter_list|)
 block|{
 name|super
@@ -2632,6 +2635,8 @@ argument_list|(
 name|context
 argument_list|,
 name|producerInfo
+argument_list|,
+name|destination
 argument_list|)
 expr_stmt|;
 try|try
@@ -2643,10 +2648,7 @@ name|AdvisorySupport
 operator|.
 name|isAdvisoryTopic
 argument_list|(
-name|producerInfo
-operator|.
-name|getDestination
-argument_list|()
+name|destination
 argument_list|)
 condition|)
 block|{
@@ -2657,10 +2659,7 @@ name|AdvisorySupport
 operator|.
 name|getFastProducerAdvisoryTopic
 argument_list|(
-name|producerInfo
-operator|.
-name|getDestination
-argument_list|()
+name|destination
 argument_list|)
 decl_stmt|;
 name|ActiveMQMessage

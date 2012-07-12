@@ -301,7 +301,7 @@ argument_list|()
 decl_stmt|;
 name|policy
 operator|.
-name|setAdvisdoryForFastProducers
+name|setAdvisoryForFastProducers
 argument_list|(
 literal|true
 argument_list|)
