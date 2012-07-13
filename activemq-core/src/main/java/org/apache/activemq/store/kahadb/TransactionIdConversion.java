@@ -191,7 +191,7 @@ argument_list|)
 expr_stmt|;
 name|kahaTxId
 operator|.
-name|setTransacitonId
+name|setTransactionId
 argument_list|(
 name|t
 operator|.
@@ -201,7 +201,7 @@ argument_list|)
 expr_stmt|;
 name|rc
 operator|.
-name|setLocalTransacitonId
+name|setLocalTransactionId
 argument_list|(
 name|kahaTxId
 argument_list|)
@@ -311,7 +311,7 @@ argument_list|)
 expr_stmt|;
 name|rc
 operator|.
-name|setXaTransacitonId
+name|setXaTransactionId
 argument_list|(
 name|kahaTxId
 argument_list|)
@@ -333,7 +333,7 @@ if|if
 condition|(
 name|transactionInfo
 operator|.
-name|hasLocalTransacitonId
+name|hasLocalTransactionId
 argument_list|()
 condition|)
 block|{
@@ -342,7 +342,7 @@ name|tx
 init|=
 name|transactionInfo
 operator|.
-name|getLocalTransacitonId
+name|getLocalTransactionId
 argument_list|()
 decl_stmt|;
 name|LocalTransactionId
@@ -372,7 +372,7 @@ name|setValue
 argument_list|(
 name|tx
 operator|.
-name|getTransacitonId
+name|getTransactionId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -387,7 +387,7 @@ name|tx
 init|=
 name|transactionInfo
 operator|.
-name|getXaTransacitonId
+name|getXaTransactionId
 argument_list|()
 decl_stmt|;
 name|XATransactionId

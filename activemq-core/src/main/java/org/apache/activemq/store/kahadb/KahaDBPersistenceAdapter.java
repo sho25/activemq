@@ -326,7 +326,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with  * KahaDB - Embedded Lightweight Non-Relational Database  *   * @org.apache.xbean.XBean element="kahaDB"  *   */
+comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with  * KahaDB - Embedded Lightweight Non-Relational Database  *  * @org.apache.xbean.XBean element="kahaDB"  *  */
 end_comment
 
 begin_class
@@ -687,7 +687,7 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Get the journalMaxFileLength      *       * @return the journalMaxFileLength      */
+comment|/**      * Get the journalMaxFileLength      *      * @return the journalMaxFileLength      */
 specifier|public
 name|int
 name|getJournalMaxFileLength
@@ -702,7 +702,7 @@ name|getJournalMaxFileLength
 argument_list|()
 return|;
 block|}
-comment|/**      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can      * be used      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryIntPropertyEditor"      */
+comment|/**      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can      * be used      *      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryIntPropertyEditor"      */
 specifier|public
 name|void
 name|setJournalMaxFileLength
@@ -787,7 +787,7 @@ name|getFailoverProducersAuditDepth
 argument_list|()
 return|;
 block|}
-comment|/**      * Get the checkpointInterval      *       * @return the checkpointInterval      */
+comment|/**      * Get the checkpointInterval      *      * @return the checkpointInterval      */
 specifier|public
 name|long
 name|getCheckpointInterval
@@ -802,7 +802,7 @@ name|getCheckpointInterval
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the checkpointInterval      *       * @param checkpointInterval      *            the checkpointInterval to set      */
+comment|/**      * Set the checkpointInterval      *      * @param checkpointInterval      *            the checkpointInterval to set      */
 specifier|public
 name|void
 name|setCheckpointInterval
@@ -821,7 +821,7 @@ name|checkpointInterval
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the cleanupInterval      *       * @return the cleanupInterval      */
+comment|/**      * Get the cleanupInterval      *      * @return the cleanupInterval      */
 specifier|public
 name|long
 name|getCleanupInterval
@@ -836,7 +836,7 @@ name|getCleanupInterval
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the cleanupInterval      *       * @param cleanupInterval      *            the cleanupInterval to set      */
+comment|/**      * Set the cleanupInterval      *      * @param cleanupInterval      *            the cleanupInterval to set      */
 specifier|public
 name|void
 name|setCleanupInterval
@@ -855,7 +855,7 @@ name|cleanupInterval
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the indexWriteBatchSize      *       * @return the indexWriteBatchSize      */
+comment|/**      * Get the indexWriteBatchSize      *      * @return the indexWriteBatchSize      */
 specifier|public
 name|int
 name|getIndexWriteBatchSize
@@ -889,7 +889,7 @@ name|indexWriteBatchSize
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the journalMaxWriteBatchSize      *       * @return the journalMaxWriteBatchSize      */
+comment|/**      * Get the journalMaxWriteBatchSize      *      * @return the journalMaxWriteBatchSize      */
 specifier|public
 name|int
 name|getJournalMaxWriteBatchSize
@@ -923,7 +923,7 @@ name|journalMaxWriteBatchSize
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the enableIndexWriteAsync      *       * @return the enableIndexWriteAsync      */
+comment|/**      * Get the enableIndexWriteAsync      *      * @return the enableIndexWriteAsync      */
 specifier|public
 name|boolean
 name|isEnableIndexWriteAsync
@@ -938,7 +938,7 @@ name|isEnableIndexWriteAsync
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the enableIndexWriteAsync      *       * @param enableIndexWriteAsync      *            the enableIndexWriteAsync to set      */
+comment|/**      * Set the enableIndexWriteAsync      *      * @param enableIndexWriteAsync      *            the enableIndexWriteAsync to set      */
 specifier|public
 name|void
 name|setEnableIndexWriteAsync
@@ -957,7 +957,7 @@ name|enableIndexWriteAsync
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the directory      *       * @return the directory      */
+comment|/**      * Get the directory      *      * @return the directory      */
 specifier|public
 name|File
 name|getDirectory
@@ -991,7 +991,7 @@ name|dir
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the enableJournalDiskSyncs      *       * @return the enableJournalDiskSyncs      */
+comment|/**      * Get the enableJournalDiskSyncs      *      * @return the enableJournalDiskSyncs      */
 specifier|public
 name|boolean
 name|isEnableJournalDiskSyncs
@@ -1006,7 +1006,7 @@ name|isEnableJournalDiskSyncs
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the enableJournalDiskSyncs      *       * @param enableJournalDiskSyncs      *            the enableJournalDiskSyncs to set      */
+comment|/**      * Set the enableJournalDiskSyncs      *      * @param enableJournalDiskSyncs      *            the enableJournalDiskSyncs to set      */
 specifier|public
 name|void
 name|setEnableJournalDiskSyncs
@@ -1025,7 +1025,7 @@ name|enableJournalDiskSyncs
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the indexCacheSize      *       * @return the indexCacheSize      */
+comment|/**      * Get the indexCacheSize      *      * @return the indexCacheSize      */
 specifier|public
 name|int
 name|getIndexCacheSize
@@ -1059,7 +1059,7 @@ name|indexCacheSize
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the ignoreMissingJournalfiles      *       * @return the ignoreMissingJournalfiles      */
+comment|/**      * Get the ignoreMissingJournalfiles      *      * @return the ignoreMissingJournalfiles      */
 specifier|public
 name|boolean
 name|isIgnoreMissingJournalfiles
@@ -1074,7 +1074,7 @@ name|isIgnoreMissingJournalfiles
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the ignoreMissingJournalfiles      *       * @param ignoreMissingJournalfiles      *            the ignoreMissingJournalfiles to set      */
+comment|/**      * Set the ignoreMissingJournalfiles      *      * @param ignoreMissingJournalfiles      *            the ignoreMissingJournalfiles to set      */
 specifier|public
 name|void
 name|setIgnoreMissingJournalfiles
@@ -1634,7 +1634,7 @@ argument_list|)
 expr_stmt|;
 name|kahaTxId
 operator|.
-name|setTransacitonId
+name|setTransactionId
 argument_list|(
 name|t
 operator|.
@@ -1644,7 +1644,7 @@ argument_list|)
 expr_stmt|;
 name|rc
 operator|.
-name|setLocalTransacitonId
+name|setLocalTransactionId
 argument_list|(
 name|kahaTxId
 argument_list|)
@@ -1707,7 +1707,7 @@ argument_list|)
 expr_stmt|;
 name|rc
 operator|.
-name|setXaTransacitonId
+name|setXaTransactionId
 argument_list|(
 name|kahaTxId
 argument_list|)

@@ -746,7 +746,7 @@ expr_stmt|;
 block|}
 name|rc
 operator|.
-name|setXaTransacitonId
+name|setXaTransactionId
 argument_list|(
 name|kahaTxId
 argument_list|)
