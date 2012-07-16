@@ -1180,6 +1180,17 @@ argument_list|(
 name|headerLine
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|headers
+operator|.
+name|containsKey
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
 name|headers
 operator|.
 name|put
@@ -1189,6 +1200,7 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
