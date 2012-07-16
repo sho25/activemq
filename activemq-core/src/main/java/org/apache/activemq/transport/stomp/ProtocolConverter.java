@@ -4322,6 +4322,9 @@ name|asList
 argument_list|(
 name|accepts
 operator|.
+name|trim
+argument_list|()
+operator|.
 name|split
 argument_list|(
 name|Stomp
@@ -4393,6 +4396,9 @@ block|}
 name|configureInactivityMonitor
 argument_list|(
 name|heartBeat
+operator|.
+name|trim
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|IntrospectionSupport
