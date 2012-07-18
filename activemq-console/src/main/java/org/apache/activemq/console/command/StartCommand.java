@@ -398,10 +398,14 @@ argument_list|()
 condition|)
 block|{
 throw|throw
+operator|new
+name|Exception
+argument_list|(
 name|broker
 operator|.
 name|getStartException
 argument_list|()
+argument_list|)
 throw|;
 block|}
 block|}
