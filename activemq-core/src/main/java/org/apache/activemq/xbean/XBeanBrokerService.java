@@ -149,7 +149,7 @@ name|shouldAutostart
 argument_list|()
 condition|)
 block|{
-name|startAsync
+name|start
 argument_list|()
 expr_stmt|;
 block|}
