@@ -388,6 +388,22 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|broker
+operator|.
+name|waitUntilStarted
+argument_list|()
+condition|)
+block|{
+throw|throw
+name|broker
+operator|.
+name|getStartException
+argument_list|()
+throw|;
+block|}
 block|}
 comment|/**      * Wait for a shutdown invocation elsewhere      *       * @throws Exception      */
 specifier|protected
