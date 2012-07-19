@@ -2809,6 +2809,21 @@ name|startManagementContext
 argument_list|()
 expr_stmt|;
 block|}
+name|BrokerRegistry
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|bind
+argument_list|(
+name|getBrokerName
+argument_list|()
+argument_list|,
+name|BrokerService
+operator|.
+name|this
+argument_list|)
+expr_stmt|;
 name|startPersistenceAdapter
 argument_list|(
 name|startAsync
@@ -3175,21 +3190,6 @@ name|managedBroker
 argument_list|)
 expr_stmt|;
 block|}
-name|BrokerRegistry
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|bind
-argument_list|(
-name|getBrokerName
-argument_list|()
-argument_list|,
-name|BrokerService
-operator|.
-name|this
-argument_list|)
-expr_stmt|;
 comment|// see if there is a MasterBroker service and if so, configure
 comment|// it and start it.
 for|for
