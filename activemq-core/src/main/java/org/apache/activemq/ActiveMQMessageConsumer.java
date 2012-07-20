@@ -2905,6 +2905,15 @@ operator|.
 name|decrementAndGet
 argument_list|()
 expr_stmt|;
+comment|// Wake up any blockers and allow them to recheck state.
+name|unconsumedMessages
+operator|.
+name|getMutex
+argument_list|()
+operator|.
+name|notifyAll
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 block|}
