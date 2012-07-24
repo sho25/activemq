@@ -102,7 +102,7 @@ name|waitFor
 argument_list|(
 name|condition
 argument_list|,
-name|MAX_WAIT_MILLIS
+name|duration
 argument_list|,
 name|SLEEP_MILLIS
 argument_list|)
