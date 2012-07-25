@@ -1010,6 +1010,9 @@ block|{
 return|return
 name|createActiveMQConnection
 argument_list|()
+operator|.
+name|enforceQueueOnlyConnection
+argument_list|()
 return|;
 block|}
 comment|/**      * @return Returns the QueueConnection.      */
@@ -1033,6 +1036,9 @@ name|userName
 argument_list|,
 name|password
 argument_list|)
+operator|.
+name|enforceQueueOnlyConnection
+argument_list|()
 return|;
 block|}
 comment|/**      * @return Returns the TopicConnection.      * @throws JMSException      */

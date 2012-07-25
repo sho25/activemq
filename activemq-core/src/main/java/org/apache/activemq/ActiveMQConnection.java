@@ -1350,6 +1350,12 @@ init|=
 literal|true
 decl_stmt|;
 specifier|private
+name|boolean
+name|queueOnlyConnection
+init|=
+literal|false
+decl_stmt|;
+specifier|private
 specifier|final
 name|Transport
 name|transport
@@ -3035,6 +3041,19 @@ block|{
 name|checkClosedOrFailed
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|queueOnlyConnection
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"QueueConnection cannot be used to create Pub/Sub based resources."
+argument_list|)
+throw|;
+block|}
 name|ensureConnectionInfoSent
 argument_list|()
 expr_stmt|;
@@ -9220,6 +9239,21 @@ name|maxThreadPoolSize
 operator|=
 name|maxThreadPoolSize
 expr_stmt|;
+block|}
+comment|/**      * Enable enforcement of QueueConnection semantics.      *      * @return this object, useful for chaining      */
+name|ActiveMQConnection
+name|enforceQueueOnlyConnection
+parameter_list|()
+block|{
+name|this
+operator|.
+name|queueOnlyConnection
+operator|=
+literal|true
+expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 block|}
 end_class
