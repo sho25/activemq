@@ -4082,6 +4082,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|stompConnection
+operator|.
+name|setVersion
+argument_list|(
+name|Stomp
+operator|.
+name|V1_1
+argument_list|)
+expr_stmt|;
 name|String
 name|connectFrame
 init|=
