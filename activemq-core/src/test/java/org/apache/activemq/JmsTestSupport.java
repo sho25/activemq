@@ -210,7 +210,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test cases used to test the JMS message consumer.  *   *   */
+comment|/**  * Test cases used to test the JMS message consumer.  *  *  */
 end_comment
 
 begin_class
@@ -545,6 +545,37 @@ argument_list|(
 name|destination
 argument_list|)
 decl_stmt|;
+name|sendMessages
+argument_list|(
+name|session
+argument_list|,
+name|producer
+argument_list|,
+name|count
+argument_list|)
+expr_stmt|;
+name|producer
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+specifier|protected
+name|void
+name|sendMessages
+parameter_list|(
+name|Session
+name|session
+parameter_list|,
+name|MessageProducer
+name|producer
+parameter_list|,
+name|int
+name|count
+parameter_list|)
+throws|throws
+name|JMSException
+block|{
 for|for
 control|(
 name|int
@@ -575,11 +606,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|producer
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 specifier|protected
 name|ConnectionFactory
@@ -709,6 +735,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Connection
+argument_list|>
 name|iter
 init|=
 name|connections
@@ -726,9 +755,6 @@ block|{
 name|Connection
 name|conn
 init|=
-operator|(
-name|Connection
-operator|)
 name|iter
 operator|.
 name|next
