@@ -89,6 +89,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|TransactionRolledBackException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -500,7 +510,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Faild to commit message receipt: "
+literal|"Failed to commit message receipt: "
 operator|+
 name|message
 argument_list|,
@@ -521,6 +531,54 @@ name|JMSException
 name|ignored
 parameter_list|)
 block|{}
+if|if
+condition|(
+name|e
+operator|.
+name|getCause
+argument_list|()
+operator|instanceof
+name|TransactionRolledBackException
+condition|)
+block|{
+name|TransactionRolledBackException
+name|transactionRolledBackException
+init|=
+operator|(
+name|TransactionRolledBackException
+operator|)
+name|e
+operator|.
+name|getCause
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|transactionRolledBackException
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|indexOf
+argument_list|(
+literal|"in doubt"
+argument_list|)
+operator|!=
+operator|-
+literal|1
+condition|)
+block|{
+comment|// failover chucked bc there is a missing reply to a commit. the ack may have got there and the reply
+comment|// was lost or the ack may be lost.
+comment|// so we may not get a resend.
+comment|//
+comment|// REVISIT: A JDBC store IO exception should not cause the connection to drop, so it needs to be wrapped
+comment|// possibly by the IOExceptionHandler
+comment|// The commit/close wrappers in jdbc TransactionContext need to delegate to the IOExceptionHandler
+comment|// this would leave the application aware of the store failure, and possible aware of whether the commit
+comment|// was a success, rather than going into failover-retries as it does now.
+block|}
+block|}
 block|}
 block|}
 block|}
