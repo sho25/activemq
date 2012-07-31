@@ -1901,33 +1901,6 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|e
-operator|instanceof
-name|java
-operator|.
-name|lang
-operator|.
-name|SecurityException
-condition|)
-block|{
-comment|// still need to close this down - in case the peer of this transport doesn't play nice
-name|delayedStop
-argument_list|(
-literal|2000
-argument_list|,
-literal|"Failed with SecurityException: "
-operator|+
-name|e
-operator|.
-name|getLocalizedMessage
-argument_list|()
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
 name|responseRequired
 condition|)
 block|{
@@ -4416,6 +4389,29 @@ operator|.
 name|debug
 argument_list|(
 literal|"Exception detail:"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|e
+operator|instanceof
+name|SecurityException
+condition|)
+block|{
+comment|// close this down - in case the peer of this transport doesn't play nice
+name|delayedStop
+argument_list|(
+literal|2000
+argument_list|,
+literal|"Failed with SecurityException: "
+operator|+
+name|e
+operator|.
+name|getLocalizedMessage
+argument_list|()
 argument_list|,
 name|e
 argument_list|)

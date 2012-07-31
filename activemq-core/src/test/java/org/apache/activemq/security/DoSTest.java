@@ -27,6 +27,32 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicBoolean
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -118,7 +144,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The configuration is set to except a maximum of 2 concurrent connections  * As the exception is delibrately ignored, the ActiveMQConnection would continue to  * attempt to connect unless the connection's transport was also stopped on an error.  *<p/>  * As the maximum connections allowed is 2, no more connections would be allowed unless  * the transport was adequately destroyed on the broker side.  */
+comment|/**  * The configuration is set to except a maximum of 2 concurrent connections  * As the exception is deliberately ignored, the ActiveMQConnection would continue to  * attempt to connect unless the connection's transport was also stopped on an error.  *<p/>  * As the maximum connections allowed is 2, no more connections would be allowed unless  * the transport was adequately destroyed on the broker side.  */
 end_comment
 
 begin_class
@@ -150,6 +176,38 @@ parameter_list|()
 throws|throws
 name|Throwable
 block|{
+comment|// with failover reconnect, we don't expect this thread to complete
+comment|// but periodically the failure changes from ExceededMaximumConnectionsException on the broker
+comment|// side to a SecurityException.
+comment|// A failed to authenticated but idle connection (dos style) is aborted by the inactivity monitor
+comment|// since useKeepAlive=false
+specifier|final
+name|AtomicBoolean
+name|done
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|(
+literal|false
+argument_list|)
+decl_stmt|;
+name|Thread
+name|thread
+init|=
+operator|new
+name|Thread
+argument_list|()
+block|{
+name|Connection
+name|connection
+init|=
+literal|null
+decl_stmt|;
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
 for|for
 control|(
 name|int
@@ -160,14 +218,17 @@ init|;
 name|i
 operator|<
 literal|1000
+operator|&&
+operator|!
+name|done
+operator|.
+name|get
+argument_list|()
 condition|;
 name|i
 operator|++
 control|)
 block|{
-try|try
-block|{
-comment|// Bad password
 name|ActiveMQConnectionFactory
 name|factory
 init|=
@@ -175,9 +236,11 @@ operator|new
 name|ActiveMQConnectionFactory
 argument_list|()
 decl_stmt|;
-name|Connection
-name|c
-init|=
+try|try
+block|{
+comment|// Bad password
+name|connection
+operator|=
 name|factory
 operator|.
 name|createConnection
@@ -186,8 +249,8 @@ literal|"bad"
 argument_list|,
 literal|"krap"
 argument_list|)
-decl_stmt|;
-name|c
+expr_stmt|;
+name|connection
 operator|.
 name|start
 argument_list|()
@@ -203,8 +266,88 @@ parameter_list|(
 name|JMSException
 name|e
 parameter_list|)
-block|{              }
+block|{
+comment|// ignore exception and don't close
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 block|}
+block|}
+block|}
+block|}
+decl_stmt|;
+name|thread
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+comment|// run dos for a while
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|sleep
+argument_list|(
+literal|10
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"trying genuine connection ..."
+argument_list|)
+expr_stmt|;
+comment|// verify a valid connection can work with one of the 2 allowed connections provided it is eager!
+comment|// it could take a while as it is competing with the three other reconnect threads.
+comment|// wonder if it makes sense to serialise these reconnect attempts on an executor
+name|ActiveMQConnectionFactory
+name|factory
+init|=
+operator|new
+name|ActiveMQConnectionFactory
+argument_list|(
+literal|"failover:(tcp://127.0.0.1:61616)?useExponentialBackOff=false&reconnectDelay=10"
+argument_list|)
+decl_stmt|;
+name|Connection
+name|goodConnection
+init|=
+name|factory
+operator|.
+name|createConnection
+argument_list|(
+literal|"user"
+argument_list|,
+literal|"password"
+argument_list|)
+decl_stmt|;
+name|goodConnection
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+name|goodConnection
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"giving up on DOS"
+argument_list|)
+expr_stmt|;
+name|done
+operator|.
+name|set
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 specifier|protected
 name|BrokerService

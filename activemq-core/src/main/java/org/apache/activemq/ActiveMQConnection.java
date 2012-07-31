@@ -4275,6 +4275,7 @@ specifier|public
 name|void
 name|syncSendPacket
 parameter_list|(
+specifier|final
 name|Command
 name|command
 parameter_list|,
@@ -4470,12 +4471,16 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-comment|//dispose of transport for security exceptions
+comment|// dispose of transport for security exceptions on connection initiation
 if|if
 condition|(
 name|exception
 operator|instanceof
 name|SecurityException
+operator|&&
+name|command
+operator|instanceof
+name|ConnectionInfo
 condition|)
 block|{
 name|Transport
@@ -4694,6 +4699,10 @@ name|getException
 argument_list|()
 operator|instanceof
 name|SecurityException
+operator|&&
+name|command
+operator|instanceof
+name|ConnectionInfo
 condition|)
 block|{
 name|Transport

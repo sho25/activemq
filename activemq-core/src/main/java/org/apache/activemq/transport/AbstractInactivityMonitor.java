@@ -900,7 +900,7 @@ operator|+
 name|toString
 argument_list|()
 operator|+
-literal|"! Throwing InactivityIOException."
+literal|". Throwing InactivityIOException."
 argument_list|)
 expr_stmt|;
 block|}
