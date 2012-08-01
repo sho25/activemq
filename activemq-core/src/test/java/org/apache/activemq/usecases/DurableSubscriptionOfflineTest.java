@@ -4724,12 +4724,11 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// fails for numMessages> 3000
 specifier|final
 name|int
 name|numMessages
 init|=
-literal|100
+literal|2750
 decl_stmt|;
 name|KahaDBPersistenceAdapter
 name|kahaDBPersistenceAdapter
@@ -4796,7 +4795,7 @@ literal|0
 init|;
 name|repeats
 operator|<
-literal|4
+literal|2
 condition|;
 name|repeats
 operator|++
@@ -5045,7 +5044,9 @@ condition|)
 block|{
 name|assertEquals
 argument_list|(
-literal|"Only use X pages per iteration"
+literal|"Only use X pages per iteration: "
+operator|+
+name|repeats
 argument_list|,
 name|lastDiff
 argument_list|,

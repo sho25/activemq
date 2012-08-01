@@ -1480,7 +1480,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"BTree corrupted: Cylce detected."
+literal|"BTree corrupted: Cycle detected."
 argument_list|)
 throw|;
 block|}
@@ -1529,6 +1529,16 @@ name|children
 index|[
 literal|0
 index|]
+expr_stmt|;
+name|tx
+operator|.
+name|free
+argument_list|(
+name|child
+operator|.
+name|getPage
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -2807,6 +2817,28 @@ argument_list|(
 literal|"Cycle back to root node detected."
 argument_list|)
 throw|;
+block|}
+if|if
+condition|(
+name|parent
+operator|==
+literal|null
+condition|)
+block|{
+name|prefix
+operator|+=
+literal|"|"
+expr_stmt|;
+name|out
+operator|.
+name|println
+argument_list|(
+name|prefix
+operator|+
+name|getPageId
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
