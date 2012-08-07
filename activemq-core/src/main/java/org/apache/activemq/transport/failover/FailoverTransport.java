@@ -5498,6 +5498,9 @@ operator|.
 name|iterator
 argument_list|()
 init|;
+operator|!
+name|disposed
+operator|&&
 name|iter
 operator|.
 name|hasNext
