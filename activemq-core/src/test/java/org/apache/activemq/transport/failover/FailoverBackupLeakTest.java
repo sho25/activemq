@@ -434,7 +434,14 @@ name|assertTrue
 argument_list|(
 name|connectionProperties
 operator|+
-literal|" broker1 connection count not zero"
+literal|" broker1 connection count not zero: was["
+operator|+
+name|getConnectionCount
+argument_list|(
+name|s1
+argument_list|)
+operator|+
+literal|"]"
 argument_list|,
 name|Wait
 operator|.
@@ -472,7 +479,14 @@ name|assertTrue
 argument_list|(
 name|connectionProperties
 operator|+
-literal|" broker2 connection count not zero"
+literal|" broker2 connection count not zero: was["
+operator|+
+name|getConnectionCount
+argument_list|(
+name|s2
+argument_list|)
+operator|+
+literal|"]"
 argument_list|,
 name|Wait
 operator|.
