@@ -18,6 +18,62 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URI
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -187,38 +243,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URI
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -232,10 +256,6 @@ specifier|protected
 name|FailoverTransport
 name|failoverTransport
 decl_stmt|;
-specifier|private
-name|int
-name|commandsReceived
-decl_stmt|;
 annotation|@
 name|Before
 specifier|public
@@ -244,12 +264,7 @@ name|setUp
 parameter_list|()
 throws|throws
 name|Exception
-block|{
-name|commandsReceived
-operator|=
-literal|0
-expr_stmt|;
-block|}
+block|{     }
 annotation|@
 name|After
 specifier|public
@@ -316,11 +331,7 @@ parameter_list|(
 name|Object
 name|command
 parameter_list|)
-block|{
-name|commandsReceived
-operator|++
-expr_stmt|;
-block|}
+block|{             }
 specifier|public
 name|void
 name|onException
@@ -641,7 +652,7 @@ argument_list|(
 operator|new
 name|URI
 argument_list|(
-literal|"failover://(tcp://localhost:1234)"
+literal|"failover://(tcp://localhost:1234?transport.connectTimeout=10000)"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -660,11 +671,7 @@ parameter_list|(
 name|Object
 name|command
 parameter_list|)
-block|{
-name|commandsReceived
-operator|++
-expr_stmt|;
-block|}
+block|{             }
 specifier|public
 name|void
 name|onException
