@@ -3756,9 +3756,13 @@ block|{
 name|ackCounter
 operator|++
 expr_stmt|;
+comment|// AMQ-3956 evaluate both expired and normal msgs as
+comment|// otherwise consumer may get stalled
 if|if
 condition|(
 name|ackCounter
+operator|+
+name|deliveredCounter
 operator|>=
 operator|(
 name|info
@@ -3826,6 +3830,39 @@ name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
+expr_stmt|;
+block|}
+comment|// AMQ-3956 - as further optimization send
+comment|// ack for expired msgs when there are any.
+comment|// This resets the deliveredCounter to 0 so that
+comment|// we won't sent standard acks with every msg just
+comment|// because the deliveredCounter just below
+comment|// 0.5 * prefetch as used in ackLater()
+if|if
+condition|(
+name|pendingAck
+operator|!=
+literal|null
+operator|&&
+name|deliveredCounter
+operator|>
+literal|0
+condition|)
+block|{
+name|session
+operator|.
+name|sendAck
+argument_list|(
+name|pendingAck
+argument_list|)
+expr_stmt|;
+name|pendingAck
+operator|=
+literal|null
+expr_stmt|;
+name|deliveredCounter
+operator|=
+literal|0
 expr_stmt|;
 block|}
 block|}
@@ -4194,6 +4231,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|// AMQ-3956 evaluate both expired and normal msgs as
+comment|// otherwise consumer may get stalled
 if|if
 condition|(
 operator|(
@@ -4207,6 +4246,8 @@ operator|)
 operator|<=
 operator|(
 name|deliveredCounter
+operator|+
+name|ackCounter
 operator|-
 name|additionalWindowSize
 operator|)
