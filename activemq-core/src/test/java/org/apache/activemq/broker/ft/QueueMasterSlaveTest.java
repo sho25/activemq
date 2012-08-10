@@ -399,6 +399,16 @@ operator|.
 name|tearDown
 argument_list|()
 expr_stmt|;
+name|master
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
+name|master
+operator|.
+name|waitUntilStopped
+argument_list|()
+expr_stmt|;
 name|slaveStarted
 operator|.
 name|await
