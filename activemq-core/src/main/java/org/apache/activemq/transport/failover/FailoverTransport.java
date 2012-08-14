@@ -1573,7 +1573,13 @@ name|wakeup
 argument_list|()
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+operator|!
+name|isDisposed
+argument_list|()
+condition|)
 block|{
 name|propagateFailureToExceptionListener
 argument_list|(
