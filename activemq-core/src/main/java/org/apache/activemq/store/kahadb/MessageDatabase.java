@@ -1611,7 +1611,7 @@ name|directoryArchive
 decl_stmt|;
 specifier|protected
 name|AtomicLong
-name|storeSize
+name|journalSize
 init|=
 operator|new
 name|AtomicLong
@@ -13184,7 +13184,7 @@ name|manager
 operator|.
 name|setSizeAccumulator
 argument_list|(
-name|storeSize
+name|journalSize
 argument_list|)
 expr_stmt|;
 name|manager

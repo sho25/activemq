@@ -643,6 +643,36 @@ name|LOG
 operator|.
 name|info
 argument_list|(
+literal|"Total index size "
+operator|+
+name|kahaDBPersistenceAdapter
+operator|.
+name|getStore
+argument_list|()
+operator|.
+name|getPageFile
+argument_list|()
+operator|.
+name|getDiskSize
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Total store size: "
+operator|+
+name|kahaDBPersistenceAdapter
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
 literal|"Journal writes %:    "
 operator|+
 name|kahaDBPersistenceAdapter
@@ -905,6 +935,36 @@ name|getJournal
 argument_list|()
 operator|.
 name|length
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Total index size "
+operator|+
+name|kahaDBPersistenceAdapter
+operator|.
+name|getStore
+argument_list|()
+operator|.
+name|getPageFile
+argument_list|()
+operator|.
+name|getDiskSize
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Total store size: "
+operator|+
+name|kahaDBPersistenceAdapter
+operator|.
+name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
