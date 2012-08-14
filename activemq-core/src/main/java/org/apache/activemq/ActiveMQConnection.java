@@ -3549,15 +3549,6 @@ name|TaskRunnerFactory
 name|getSessionTaskRunner
 parameter_list|()
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|maxThreadPoolSize
-argument_list|)
-expr_stmt|;
 synchronized|synchronized
 init|(
 name|this
