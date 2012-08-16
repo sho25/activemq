@@ -353,7 +353,11 @@ name|clientCleanupTimer
 init|=
 operator|new
 name|Timer
-argument_list|()
+argument_list|(
+literal|"ActiveMQ Ajax Client Cleanup Timer"
+argument_list|,
+literal|true
+argument_list|)
 decl_stmt|;
 specifier|private
 name|HashMap
