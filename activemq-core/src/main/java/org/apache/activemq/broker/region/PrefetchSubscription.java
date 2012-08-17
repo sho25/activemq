@@ -2239,6 +2239,17 @@ name|decrement
 argument_list|()
 expr_stmt|;
 block|}
+name|node
+operator|.
+name|getRegionDestination
+argument_list|()
+operator|.
+name|wakeup
+argument_list|()
+expr_stmt|;
+name|dispatchPending
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
