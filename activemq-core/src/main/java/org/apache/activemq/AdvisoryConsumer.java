@@ -257,6 +257,13 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|info
+operator|.
+name|setDispatchAsync
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|connection
