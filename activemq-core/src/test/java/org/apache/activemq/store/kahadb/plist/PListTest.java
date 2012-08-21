@@ -4357,7 +4357,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-literal|"/tmp/target/test/PlistDB"
+literal|"target/test/PlistDB"
 argument_list|)
 decl_stmt|;
 name|IOHelper
