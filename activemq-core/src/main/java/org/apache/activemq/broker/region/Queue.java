@@ -8661,7 +8661,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Async task tunner failed to wakeup "
+literal|"Async task runner failed to wakeup "
 argument_list|,
 name|e
 argument_list|)
@@ -9553,7 +9553,10 @@ name|contains
 argument_list|(
 name|s
 argument_list|)
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 operator|!
 name|s
 operator|.
@@ -9620,20 +9623,12 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Sub full "
-operator|+
+literal|"Subscription full {}"
+argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
