@@ -751,6 +751,13 @@ name|socket
 operator|.
 name|getPort
 argument_list|()
+operator|+
+literal|"@"
+operator|+
+name|socket
+operator|.
+name|getLocalPort
+argument_list|()
 else|:
 operator|(
 name|localLocation
