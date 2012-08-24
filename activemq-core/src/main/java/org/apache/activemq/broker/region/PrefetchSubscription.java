@@ -826,9 +826,24 @@ block|{
 comment|// perhaps we should inform the caller that we are no longer valid to dispatch to?
 return|return;
 block|}
+comment|// Don't increment for the pullTimeout control message.
+if|if
+condition|(
+operator|!
+name|node
+operator|.
+name|equals
+argument_list|(
+name|QueueMessageReference
+operator|.
+name|NULL_MESSAGE
+argument_list|)
+condition|)
+block|{
 name|enqueueCounter
 operator|++
 expr_stmt|;
+block|}
 name|pending
 operator|.
 name|addMessageLast
