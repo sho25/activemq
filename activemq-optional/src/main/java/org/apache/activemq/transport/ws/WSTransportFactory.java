@@ -207,7 +207,7 @@ name|extractProperties
 argument_list|(
 name|options
 argument_list|,
-literal|"transport."
+literal|""
 argument_list|)
 decl_stmt|;
 name|result

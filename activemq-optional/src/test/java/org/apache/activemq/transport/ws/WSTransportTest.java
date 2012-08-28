@@ -407,7 +407,7 @@ name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"ws://127.0.0.1:61623"
+literal|"ws://127.0.0.1:61623?websocket.maxTextMessageSize=99999&transport.maxIdleTime=1001"
 argument_list|)
 operator|.
 name|getPublishableConnectString
