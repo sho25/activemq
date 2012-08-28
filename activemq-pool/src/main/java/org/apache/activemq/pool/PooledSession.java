@@ -527,6 +527,18 @@ name|PooledSessionEventListener
 name|listener
 parameter_list|)
 block|{
+comment|// only add if really needed
+if|if
+condition|(
+operator|!
+name|tempDestEventListeners
+operator|.
+name|contains
+argument_list|(
+name|listener
+argument_list|)
+condition|)
+block|{
 name|this
 operator|.
 name|tempDestEventListeners
@@ -536,6 +548,7 @@ argument_list|(
 name|listener
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|protected
 name|boolean
@@ -731,6 +744,11 @@ name|clear
 argument_list|()
 expr_stmt|;
 name|browsers
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|tempDestEventListeners
 operator|.
 name|clear
 argument_list|()

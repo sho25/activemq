@@ -41,6 +41,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|ConcurrentHashMap
@@ -55,7 +65,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ConcurrentLinkedQueue
+name|CopyOnWriteArrayList
 import|;
 end_import
 
@@ -156,14 +166,14 @@ argument_list|>
 name|cache
 decl_stmt|;
 specifier|private
-name|ConcurrentLinkedQueue
+name|List
 argument_list|<
 name|PooledSession
 argument_list|>
 name|loanedSessions
 init|=
 operator|new
-name|ConcurrentLinkedQueue
+name|CopyOnWriteArrayList
 argument_list|<
 name|PooledSession
 argument_list|>
