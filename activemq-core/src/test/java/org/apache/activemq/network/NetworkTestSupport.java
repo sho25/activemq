@@ -257,6 +257,12 @@ name|TransportConnector
 name|remoteConnector
 decl_stmt|;
 specifier|protected
+name|boolean
+name|useJmx
+init|=
+literal|false
+decl_stmt|;
+specifier|protected
 name|void
 name|setUp
 parameter_list|()
@@ -343,6 +349,13 @@ operator|.
 name|addConnector
 argument_list|(
 name|connector
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
+name|setUseJmx
+argument_list|(
+name|useJmx
 argument_list|)
 expr_stmt|;
 return|return
@@ -485,7 +498,7 @@ name|answer
 operator|.
 name|setUseJmx
 argument_list|(
-literal|false
+name|useJmx
 argument_list|)
 expr_stmt|;
 name|answer
