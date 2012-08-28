@@ -1121,10 +1121,6 @@ name|batchResetNeeded
 operator|=
 literal|true
 expr_stmt|;
-comment|// wonder do we need to determine size here, it may change before restart
-name|resetSize
-argument_list|()
-expr_stmt|;
 name|setCacheEnabled
 argument_list|(
 literal|false
@@ -1179,6 +1175,24 @@ condition|(
 name|batchResetNeeded
 condition|)
 block|{
+name|resetSize
+argument_list|()
+expr_stmt|;
+name|setMaxBatchSize
+argument_list|(
+name|Math
+operator|.
+name|min
+argument_list|(
+name|regionDestination
+operator|.
+name|getMaxPageSize
+argument_list|()
+argument_list|,
+name|size
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|resetBatch
 argument_list|()
 expr_stmt|;
@@ -1355,6 +1369,10 @@ literal|",cacheEnabled="
 operator|+
 name|isCacheEnabled
 argument_list|()
+operator|+
+literal|",maxBatchSize:"
+operator|+
+name|maxBatchSize
 return|;
 block|}
 specifier|protected

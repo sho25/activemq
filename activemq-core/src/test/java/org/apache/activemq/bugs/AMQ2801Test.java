@@ -1140,6 +1140,13 @@ name|sub
 operator|.
 name|getPendingQueueSize
 argument_list|()
+operator|+
+literal|", dispatched: "
+operator|+
+name|sub
+operator|.
+name|getDispatchedQueueSize
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -1164,6 +1171,11 @@ argument_list|,
 name|sub
 operator|.
 name|getPendingQueueSize
+argument_list|()
+operator|+
+name|sub
+operator|.
+name|getDispatchedQueueSize
 argument_list|()
 argument_list|)
 expr_stmt|;

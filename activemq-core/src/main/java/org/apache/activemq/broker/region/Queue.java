@@ -6257,6 +6257,11 @@ operator|.
 name|gc
 argument_list|()
 expr_stmt|;
+name|messages
+operator|.
+name|reset
+argument_list|()
+expr_stmt|;
 name|asyncWakeup
 argument_list|()
 expr_stmt|;
