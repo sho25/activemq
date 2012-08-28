@@ -564,6 +564,54 @@ name|getDurableTopicPrefetch
 argument_list|()
 return|;
 block|}
+comment|/**      * @param optimizeDurableTopicPrefetch      */
+specifier|public
+name|void
+name|setOptimizeDurableTopicPrefetch
+parameter_list|(
+name|Integer
+name|optimizeDurableTopicPrefetch
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"setting [optimizeDurableTopicPrefetch] to: "
+operator|+
+name|optimizeDurableTopicPrefetch
+argument_list|)
+expr_stmt|;
+block|}
+name|info
+operator|.
+name|setOptimizeDurableTopicPrefetch
+argument_list|(
+name|optimizeDurableTopicPrefetch
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * @return durable topic prefetch      */
+specifier|public
+name|Integer
+name|getOptimizeDurableTopicPrefetch
+parameter_list|()
+block|{
+return|return
+name|info
+operator|.
+name|getOptimizeDurableTopicPrefetch
+argument_list|()
+return|;
+block|}
 comment|/**      * @param durableTopicPrefetch      */
 specifier|public
 name|void
