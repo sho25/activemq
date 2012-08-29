@@ -517,7 +517,7 @@ name|policyEntry
 operator|.
 name|setMaxAuditDepth
 argument_list|(
-literal|2000
+literal|3000
 argument_list|)
 expr_stmt|;
 name|policyEntry

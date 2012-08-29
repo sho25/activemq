@@ -175,7 +175,7 @@ specifier|protected
 name|boolean
 name|batchResetNeeded
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|private
 name|boolean
@@ -270,9 +270,6 @@ name|isStarted
 argument_list|()
 condition|)
 block|{
-name|clear
-argument_list|()
-expr_stmt|;
 name|super
 operator|.
 name|start
