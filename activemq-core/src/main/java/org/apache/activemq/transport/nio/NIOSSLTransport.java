@@ -438,7 +438,8 @@ name|getDefault
 argument_list|()
 expr_stmt|;
 block|}
-comment|// initialize engine
+comment|// initialize engine, the initial sslSession we get will need to be
+comment|// updated once the ssl handshake process is completed.
 name|sslEngine
 operator|=
 name|sslContext
@@ -601,6 +602,16 @@ name|nextFrameSize
 operator|=
 operator|-
 literal|1
+expr_stmt|;
+comment|// Once handshake completes we need to ask for the now real sslSession
+comment|// otherwise the session would return 'SSL_NULL_WITH_NULL_NULL' for the
+comment|// cipher suite.
+name|sslSession
+operator|=
+name|sslEngine
+operator|.
+name|getSession
+argument_list|()
 expr_stmt|;
 comment|// listen for events telling us when the socket is readable.
 name|selection
@@ -1423,7 +1434,7 @@ name|stopper
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Overriding in order to add the client's certificates to ConnectionInfo      * Commmands.      *      * @param command The Command coming in.      */
+comment|/**      * Overriding in order to add the client's certificates to ConnectionInfo Commmands.      *      * @param command The Command coming in.      */
 annotation|@
 name|Override
 specifier|public
