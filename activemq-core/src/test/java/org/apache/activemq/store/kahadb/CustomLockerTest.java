@@ -13,17 +13,17 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|jdbc
+name|kahadb
 package|;
 end_package
 
 begin_import
 import|import
-name|java
+name|junit
 operator|.
-name|io
+name|framework
 operator|.
-name|IOException
+name|TestCase
 import|;
 end_import
 
@@ -35,50 +35,68 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|Service
+name|broker
+operator|.
+name|BrokerFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  * Represents some kind of lock service to ensure that a broker is the only master  *  * @deprecated As of 5.7.0, use more general {@link org.apache.activemq.broker.Locker} instead  */
-end_comment
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|BrokerService
+import|;
+end_import
 
-begin_interface
-annotation|@
-name|Deprecated
+begin_class
 specifier|public
-interface|interface
-name|DatabaseLocker
+class|class
+name|CustomLockerTest
 extends|extends
-name|Service
+name|TestCase
 block|{
-comment|/**      * allow the injection of a jdbc persistence adapter      * @param adapter the persistence adapter to use      * @throws IOException       */
+specifier|public
 name|void
-name|setPersistenceAdapter
-parameter_list|(
-name|JDBCPersistenceAdapter
-name|adapter
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
-comment|/**      * Used by a timer to keep alive the lock.      * If the method returns false the broker should be terminated      * if an exception is thrown, the lock state cannot be determined      */
-name|boolean
-name|keepAlive
+name|testCustomLocker
 parameter_list|()
 throws|throws
-name|IOException
-function_decl|;
-comment|/**      * set the delay interval in milliseconds between lock acquire attempts      * @param lockAcquireSleepInterval the sleep interval in miliseconds      */
-name|void
-name|setLockAcquireSleepInterval
-parameter_list|(
-name|long
-name|lockAcquireSleepInterval
-parameter_list|)
-function_decl|;
+name|Exception
+block|{
+name|BrokerService
+name|broker
+init|=
+name|BrokerFactory
+operator|.
+name|createBroker
+argument_list|(
+literal|"xbean:org/apache/activemq/store/kahadb/shared.xml"
+argument_list|)
+decl_stmt|;
+name|broker
+operator|.
+name|waitUntilStarted
+argument_list|()
+expr_stmt|;
+name|broker
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
+name|broker
+operator|.
+name|waitUntilStopped
+argument_list|()
+expr_stmt|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

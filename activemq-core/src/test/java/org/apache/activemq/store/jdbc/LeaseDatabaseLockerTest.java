@@ -267,7 +267,7 @@ argument_list|)
 expr_stmt|;
 name|lockerA
 operator|.
-name|setPersistenceAdapter
+name|configure
 argument_list|(
 name|jdbc
 argument_list|)
@@ -289,7 +289,7 @@ argument_list|)
 expr_stmt|;
 name|lockerB
 operator|.
-name|setPersistenceAdapter
+name|configure
 argument_list|(
 name|jdbc
 argument_list|)

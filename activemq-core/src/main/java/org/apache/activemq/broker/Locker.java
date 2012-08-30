@@ -11,21 +11,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|store
-operator|.
-name|jdbc
+name|broker
 package|;
 end_package
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
 
 begin_import
 import|import
@@ -39,29 +27,41 @@ name|Service
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|PersistenceAdapter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_comment
-comment|/**  * Represents some kind of lock service to ensure that a broker is the only master  *  * @deprecated As of 5.7.0, use more general {@link org.apache.activemq.broker.Locker} instead  */
+comment|/**  * Represents a lock service to ensure that a broker is the only master  */
 end_comment
 
 begin_interface
-annotation|@
-name|Deprecated
 specifier|public
 interface|interface
-name|DatabaseLocker
+name|Locker
 extends|extends
 name|Service
 block|{
-comment|/**      * allow the injection of a jdbc persistence adapter      * @param adapter the persistence adapter to use      * @throws IOException       */
-name|void
-name|setPersistenceAdapter
-parameter_list|(
-name|JDBCPersistenceAdapter
-name|adapter
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
 comment|/**      * Used by a timer to keep alive the lock.      * If the method returns false the broker should be terminated      * if an exception is thrown, the lock state cannot be determined      */
 name|boolean
 name|keepAlive
@@ -69,13 +69,42 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * set the delay interval in milliseconds between lock acquire attempts      * @param lockAcquireSleepInterval the sleep interval in miliseconds      */
+comment|/**      * set the delay interval in milliseconds between lock acquire attempts      *      * @param lockAcquireSleepInterval the sleep interval in miliseconds      */
 name|void
 name|setLockAcquireSleepInterval
 parameter_list|(
 name|long
 name|lockAcquireSleepInterval
 parameter_list|)
+function_decl|;
+comment|/**      * Set the name of the lock to use.      */
+specifier|public
+name|void
+name|setName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
+comment|/**      * Specify whether to fail immediately if the lock is already held.  When set, the CustomLock must throw an      * IOException immediately upon detecting the lock is already held.      *      * @param failIfLocked: true => fail immediately if the lock is held; false => block until the lock can be obtained      *                      (default).      */
+specifier|public
+name|void
+name|setFailIfLocked
+parameter_list|(
+name|boolean
+name|failIfLocked
+parameter_list|)
+function_decl|;
+comment|/**      * Configure the locker with the persistence adapter currently used      *      * @param persistenceAdapter      * @throws IOException      */
+specifier|public
+name|void
+name|configure
+parameter_list|(
+name|PersistenceAdapter
+name|persistenceAdapter
+parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 block|}
 end_interface
