@@ -279,7 +279,7 @@ name|poolFactory
 decl_stmt|;
 specifier|private
 name|int
-name|maximumActive
+name|maximumActiveSessionPerConnection
 init|=
 literal|500
 decl_stmt|;
@@ -893,16 +893,22 @@ operator|=
 name|poolFactory
 expr_stmt|;
 block|}
+comment|/**      * @deprecated use {@link #getMaximumActiveSessionPerConnection()}      */
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|getMaximumActive
 parameter_list|()
 block|{
 return|return
-name|maximumActive
+name|getMaximumActiveSessionPerConnection
+argument_list|()
 return|;
 block|}
-comment|/**      * Sets the maximum number of active sessions per connection      */
+comment|/**      * @deprecated use {@link #setMaximumActiveSessionPerConnection(int)}      */
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setMaximumActive
@@ -911,11 +917,35 @@ name|int
 name|maximumActive
 parameter_list|)
 block|{
+name|setMaximumActiveSessionPerConnection
+argument_list|(
+name|maximumActive
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|int
+name|getMaximumActiveSessionPerConnection
+parameter_list|()
+block|{
+return|return
+name|maximumActiveSessionPerConnection
+return|;
+block|}
+comment|/**      * Sets the maximum number of active sessions per connection      */
+specifier|public
+name|void
+name|setMaximumActiveSessionPerConnection
+parameter_list|(
+name|int
+name|maximumActiveSessionPerConnection
+parameter_list|)
+block|{
 name|this
 operator|.
-name|maximumActive
+name|maximumActiveSessionPerConnection
 operator|=
-name|maximumActive
+name|maximumActiveSessionPerConnection
 expr_stmt|;
 block|}
 comment|/**      * Controls the behavior of the internal session pool. By default the call to      * Connection.getSession() will block if the session pool is full.  If the      * argument false is given, it will change the default behavior and instead the      * call to getSession() will throw a JMSException.      *      * The size of the session pool is controlled by the @see #maximumActive      * property.      *      * @param block - if true, the call to getSession() blocks if the pool is full      * until a session object is available.  defaults to true.      */
@@ -977,7 +1007,7 @@ name|GenericObjectPoolFactory
 argument_list|(
 literal|null
 argument_list|,
-name|maximumActive
+name|maximumActiveSessionPerConnection
 argument_list|)
 return|;
 block|}
@@ -989,7 +1019,7 @@ name|GenericObjectPoolFactory
 argument_list|(
 literal|null
 argument_list|,
-name|maximumActive
+name|maximumActiveSessionPerConnection
 argument_list|,
 name|GenericObjectPool
 operator|.

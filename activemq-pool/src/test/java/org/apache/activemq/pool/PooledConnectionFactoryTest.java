@@ -382,7 +382,7 @@ argument_list|)
 expr_stmt|;
 name|cf
 operator|.
-name|setMaximumActive
+name|setMaximumActiveSessionPerConnection
 argument_list|(
 literal|1
 argument_list|)
