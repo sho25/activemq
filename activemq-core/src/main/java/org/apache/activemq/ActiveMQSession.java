@@ -2509,7 +2509,7 @@ operator|.
 name|messageListener
 return|;
 block|}
-comment|/**      * Sets the session's distinguished message listener (optional).      *<P>      * When the distinguished message listener is set, no other form of message      * receipt in the session can be used; however, all forms of sending      * messages are still supported.      *<P>      * This is an expert facility not used by regular JMS clients.      *      * @param listener the message listener to associate with this session      * @throws JMSException if the JMS provider fails to set the message      *                 listener due to an internal error.      * @see javax.jms.Session#getMessageListener()      * @see javax.jms.ServerSessionPool      * @see javax.jms.ServerSession      */
+comment|/**      * Sets the session's distinguished message listener (optional).      *<P>      * When the distinguished message listener is set, no other form of message      * receipt in the session can be used; however, all forms of sending      * messages are still supported.      *<P>      * If this session has been closed, then an {@link IllegalStateException} is      * thrown, if trying to set a new listener. However setting the listener      * to<tt>null</tt> is allowed, to clear the listener, even if this session      * has been closed prior.      *<P>      * This is an expert facility not used by regular JMS clients.      *      * @param listener the message listener to associate with this session      * @throws JMSException if the JMS provider fails to set the message      *                 listener due to an internal error.      * @see javax.jms.Session#getMessageListener()      * @see javax.jms.ServerSessionPool      * @see javax.jms.ServerSession      */
 specifier|public
 name|void
 name|setMessageListener
@@ -2520,9 +2520,20 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{
+comment|// only check for closed if we set a new listener, as we allow to clear
+comment|// the listener, such as when an application is shutting down, and is
+comment|// no longer using a message listener on this session
+if|if
+condition|(
+name|listener
+operator|!=
+literal|null
+condition|)
+block|{
 name|checkClosed
 argument_list|()
 expr_stmt|;
+block|}
 name|this
 operator|.
 name|messageListener
