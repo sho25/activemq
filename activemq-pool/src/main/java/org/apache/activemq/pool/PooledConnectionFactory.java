@@ -249,6 +249,7 @@ name|ConnectionFactory
 name|connectionFactory
 decl_stmt|;
 specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|ConnectionKey
@@ -303,6 +304,7 @@ init|=
 literal|true
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicBoolean
 name|stopped
 init|=
@@ -317,6 +319,12 @@ name|long
 name|expiryTimeout
 init|=
 literal|0l
+decl_stmt|;
+specifier|private
+name|boolean
+name|createConnectionOnStartup
+init|=
+literal|true
 decl_stmt|;
 specifier|public
 name|PooledConnectionFactory
@@ -521,6 +529,24 @@ name|expiredCheck
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Connection has expired: {}"
+argument_list|,
+name|connection
+argument_list|)
+expr_stmt|;
+block|}
 name|connection
 operator|=
 literal|null
@@ -548,6 +574,24 @@ argument_list|(
 name|delegate
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Created new connection: {}"
+argument_list|,
+name|connection
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|pools
 operator|.
@@ -664,14 +708,18 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * @see org.apache.activemq.service.Service#start()      */
 specifier|public
 name|void
 name|start
 parameter_list|()
 block|{
-try|try
-block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Staring the PooledConnectionFactory"
+argument_list|)
+expr_stmt|;
 name|stopped
 operator|.
 name|set
@@ -679,6 +727,15 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|isCreateConnectionOnStartup
+argument_list|()
+condition|)
+block|{
+try|try
+block|{
+comment|// warm the pool by creating a connection during startup
 name|createConnection
 argument_list|()
 expr_stmt|;
@@ -693,18 +750,12 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Create pooled connection during start failed."
+literal|"Create pooled connection during start failed. This exception will be ignored."
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|IOExceptionSupport
-operator|.
-name|create
-argument_list|(
-name|e
-argument_list|)
-expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
@@ -716,8 +767,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Stop the PooledConnectionFactory, number of connections in cache: "
-operator|+
+literal|"Stopping the PooledConnectionFactory, number of connections in cache: {}"
+argument_list|,
 name|cache
 operator|.
 name|size
@@ -786,7 +837,11 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Close connection failed"
+literal|"Close connection failed for connection: "
+operator|+
+name|connection
+operator|+
+literal|". This exception will be ignored."
 argument_list|,
 name|e
 argument_list|)
@@ -995,6 +1050,31 @@ block|{
 return|return
 name|expiryTimeout
 return|;
+block|}
+specifier|public
+name|boolean
+name|isCreateConnectionOnStartup
+parameter_list|()
+block|{
+return|return
+name|createConnectionOnStartup
+return|;
+block|}
+comment|/**      * Whether to create a connection on starting this {@link PooledConnectionFactory}.      *<p/>      * This can be used to warmup the pool on startup. Notice that any kind of exception      * happens during startup is logged at WARN level and ignored.      *      * @param createConnectionOnStartup<tt>true</tt> to create a connection on startup      */
+specifier|public
+name|void
+name|setCreateConnectionOnStartup
+parameter_list|(
+name|boolean
+name|createConnectionOnStartup
+parameter_list|)
+block|{
+name|this
+operator|.
+name|createConnectionOnStartup
+operator|=
+name|createConnectionOnStartup
+expr_stmt|;
 block|}
 block|}
 end_class

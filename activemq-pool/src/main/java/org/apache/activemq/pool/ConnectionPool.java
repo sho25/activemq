@@ -944,6 +944,21 @@ name|session
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ConnectionPool["
+operator|+
+name|connection
+operator|+
+literal|"]"
+return|;
+block|}
 block|}
 end_class
 
