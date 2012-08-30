@@ -95,7 +95,7 @@ name|boolean
 name|failIfLocked
 parameter_list|)
 function_decl|;
-comment|/**      * Configure the locker with the persistence adapter currently used      *      * @param persistenceAdapter      * @throws IOException      */
+comment|/**      * Optionally configure the locker with the persistence adapter currently used      * You can use persistence adapter configuration details like, data directory      * datasource, etc. to be used by the locker      *      * @param persistenceAdapter      * @throws IOException      */
 specifier|public
 name|void
 name|configure

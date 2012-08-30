@@ -12,8 +12,6 @@ operator|.
 name|activemq
 operator|.
 name|store
-operator|.
-name|kahadb
 package|;
 end_package
 
@@ -41,7 +39,9 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|PersistenceAdapter
+name|kahadb
+operator|.
+name|MessageDatabase
 import|;
 end_import
 
