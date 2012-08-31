@@ -2767,7 +2767,7 @@ comment|// lets just ignore redundant start() calls
 comment|// as its way too easy to not be completely sure if start() has been
 comment|// called or not with the gazillion of different configuration
 comment|// mechanisms
-comment|// throw new IllegalStateException("Allready started.");
+comment|// throw new IllegalStateException("Already started.");
 return|return;
 block|}
 name|MDC
@@ -2805,9 +2805,33 @@ name|isUseJmx
 argument_list|()
 condition|)
 block|{
+comment|// need to remove MDC during starting JMX, as that would otherwise causes leaks, as spawned threads inheirt the MDC and
+comment|// we cannot cleanup clear that during shutdown of the broker.
+name|MDC
+operator|.
+name|remove
+argument_list|(
+literal|"activemq.broker"
+argument_list|)
+expr_stmt|;
+try|try
+block|{
 name|startManagementContext
 argument_list|()
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|MDC
+operator|.
+name|put
+argument_list|(
+literal|"activemq.broker"
+argument_list|,
+name|brokerName
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|// in jvm master slave, lets not publish over existing broker till we get the lock
 specifier|final
@@ -3501,7 +3525,7 @@ argument_list|)
 expr_stmt|;
 comment|// remove any VMTransports connected
 comment|// this has to be done after services are stopped,
-comment|// to avoid timimg issue with discovery (spinning up a new instance)
+comment|// to avoid timing issue with discovery (spinning up a new instance)
 name|BrokerRegistry
 operator|.
 name|getInstance
@@ -10133,6 +10157,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|getManagementContext
+argument_list|()
+operator|.
+name|setBrokerName
+argument_list|(
+name|brokerName
+argument_list|)
+expr_stmt|;
 name|getManagementContext
 argument_list|()
 operator|.

@@ -51,6 +51,16 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|MDC
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|management
@@ -387,6 +397,10 @@ name|allowRemoteAddressInMBeanNames
 init|=
 literal|true
 decl_stmt|;
+specifier|private
+name|String
+name|brokerName
+decl_stmt|;
 specifier|public
 name|ManagementContext
 parameter_list|()
@@ -480,6 +494,24 @@ name|void
 name|run
 parameter_list|()
 block|{
+comment|// ensure we use MDC logging with the broker name, so people can see the logs if MDC was in use
+if|if
+condition|(
+name|brokerName
+operator|!=
+literal|null
+condition|)
+block|{
+name|MDC
+operator|.
+name|put
+argument_list|(
+literal|"activemq.broker"
+argument_list|,
+name|brokerName
+argument_list|)
+expr_stmt|;
+block|}
 try|try
 block|{
 name|JMXConnectorServer
@@ -515,6 +547,14 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+comment|// need to remove MDC as we must not inherit MDC in child threads causing leaks
+name|MDC
+operator|.
+name|remove
+argument_list|(
+literal|"activemq.broker"
+argument_list|)
+expr_stmt|;
 name|server
 operator|.
 name|start
@@ -523,6 +563,23 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
+if|if
+condition|(
+name|brokerName
+operator|!=
+literal|null
+condition|)
+block|{
+name|MDC
+operator|.
+name|put
+argument_list|(
+literal|"activemq.broker"
+argument_list|,
+name|brokerName
+argument_list|)
+expr_stmt|;
+block|}
 name|connectorStarting
 operator|.
 name|set
@@ -570,6 +627,16 @@ argument_list|(
 literal|"Reason for failed jms connector start"
 argument_list|,
 name|e
+argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|MDC
+operator|.
+name|remove
+argument_list|(
+literal|"activemq.broker"
 argument_list|)
 expr_stmt|;
 block|}
@@ -822,6 +889,32 @@ literal|null
 expr_stmt|;
 block|}
 block|}
+block|}
+comment|/**      * Gets the broker name this context is used by, may be<tt>null</tt>      * if the broker name was not set.      */
+specifier|public
+name|String
+name|getBrokerName
+parameter_list|()
+block|{
+return|return
+name|brokerName
+return|;
+block|}
+comment|/**      * Sets the broker name this context is being used by.      */
+specifier|public
+name|void
+name|setBrokerName
+parameter_list|(
+name|String
+name|brokerName
+parameter_list|)
+block|{
+name|this
+operator|.
+name|brokerName
+operator|=
+name|brokerName
+expr_stmt|;
 block|}
 comment|/**      * @return Returns the jmxDomainName.      */
 specifier|public
