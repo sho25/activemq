@@ -618,13 +618,15 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
+operator|+
+literal|". Will restart management to re-create jmx connector, trying to remedy this issue."
 argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Reason for failed jms connector start"
+literal|"Reason for failed jmx connector start"
 argument_list|,
 name|e
 argument_list|)
@@ -718,6 +720,15 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Unregistering MBean {}"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
 name|mbeanServer
 operator|.
 name|unregisterMBean
@@ -759,6 +770,13 @@ name|get
 argument_list|()
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Stopping jmx connector"
+argument_list|)
+expr_stmt|;
 name|server
 operator|.
 name|stop
@@ -785,8 +803,29 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// stop naming service mbean
 try|try
 block|{
+if|if
+condition|(
+name|getMBeanServer
+argument_list|()
+operator|.
+name|isRegistered
+argument_list|(
+name|namingServiceObjectName
+argument_list|)
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Stopping MBean {}"
+argument_list|,
+name|namingServiceObjectName
+argument_list|)
+expr_stmt|;
 name|getMBeanServer
 argument_list|()
 operator|.
@@ -801,13 +840,52 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Unregistering MBean {}"
+argument_list|,
+name|namingServiceObjectName
+argument_list|)
+expr_stmt|;
+name|getMBeanServer
+argument_list|()
+operator|.
+name|unregisterMBean
+argument_list|(
+name|namingServiceObjectName
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
 name|Throwable
 name|ignore
 parameter_list|)
-block|{                 }
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Error stopping and unregsitering mbean "
+operator|+
+name|namingServiceObjectName
+operator|+
+literal|" due "
+operator|+
+name|ignore
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+name|namingServiceObjectName
+operator|=
+literal|null
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -889,6 +967,11 @@ literal|null
 expr_stmt|;
 block|}
 block|}
+comment|// clear reference to aid GC
+name|registry
+operator|=
+literal|null
+expr_stmt|;
 block|}
 comment|/**      * Gets the broker name this context is used by, may be<tt>null</tt>      * if the broker name was not set.      */
 specifier|public
@@ -2095,7 +2178,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to create local registry"
+literal|"Failed to create local registry. This exception will be ignored."
 argument_list|,
 name|e
 argument_list|)
@@ -2166,6 +2249,15 @@ argument_list|,
 name|environment
 argument_list|,
 name|mbeanServer
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Created JMXConnectorServer {}"
+argument_list|,
+name|connectorServer
 argument_list|)
 expr_stmt|;
 block|}
