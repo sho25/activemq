@@ -4750,9 +4750,7 @@ operator|*
 literal|64
 argument_list|)
 expr_stmt|;
-comment|// Default
-comment|// 64
-comment|// Meg
+comment|// 64 MB
 name|systemUsage
 operator|.
 name|getTempUsage
@@ -4764,13 +4762,12 @@ literal|1024L
 operator|*
 literal|1024
 operator|*
-literal|1000
+literal|1024
 operator|*
 literal|50
 argument_list|)
 expr_stmt|;
-comment|// 50
-comment|// Gb
+comment|// 50 GB
 name|systemUsage
 operator|.
 name|getStoreUsage
@@ -4782,13 +4779,12 @@ literal|1024L
 operator|*
 literal|1024
 operator|*
-literal|1000
+literal|1024
 operator|*
 literal|100
 argument_list|)
 expr_stmt|;
-comment|// 100
-comment|// GB
+comment|// 100 GB
 name|addService
 argument_list|(
 name|this
