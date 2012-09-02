@@ -676,6 +676,16 @@ argument_list|(
 name|managementContext
 argument_list|)
 operator|.
+name|setBrokerName
+argument_list|(
+literal|"BrokerNC"
+argument_list|)
+expr_stmt|;
+name|allowing
+argument_list|(
+name|managementContext
+argument_list|)
+operator|.
 name|start
 argument_list|()
 expr_stmt|;
