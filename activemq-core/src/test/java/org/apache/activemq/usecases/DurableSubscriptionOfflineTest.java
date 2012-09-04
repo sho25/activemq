@@ -5456,7 +5456,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"after restart, sent: "
+literal|"after restart, total sent with filter='true': "
 operator|+
 name|filtered
 argument_list|)
@@ -5522,7 +5522,9 @@ name|listener
 init|=
 operator|new
 name|Listener
-argument_list|()
+argument_list|(
+literal|"1>"
+argument_list|)
 decl_stmt|;
 name|consumer
 operator|.

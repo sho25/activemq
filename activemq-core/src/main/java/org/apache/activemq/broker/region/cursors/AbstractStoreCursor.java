@@ -298,12 +298,6 @@ name|void
 name|resetSize
 parameter_list|()
 block|{
-if|if
-condition|(
-name|isStarted
-argument_list|()
-condition|)
-block|{
 name|this
 operator|.
 name|size
@@ -311,7 +305,6 @@ operator|=
 name|getStoreSize
 argument_list|()
 expr_stmt|;
-block|}
 name|this
 operator|.
 name|storeHasMessages

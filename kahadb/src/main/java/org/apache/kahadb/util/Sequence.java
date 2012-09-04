@@ -161,7 +161,7 @@ name|first
 else|:
 name|first
 operator|+
-literal|"-"
+literal|".."
 operator|+
 name|last
 return|;

@@ -256,6 +256,9 @@ name|maxAuditDepth
 operator|=
 literal|10000
 expr_stmt|;
+name|resetSize
+argument_list|()
+expr_stmt|;
 block|}
 specifier|public
 name|boolean
