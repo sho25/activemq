@@ -422,6 +422,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// need a little sleep to ensure JMX is up to date
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|200
+argument_list|)
+expr_stmt|;
 return|return
 name|broker
 operator|.
