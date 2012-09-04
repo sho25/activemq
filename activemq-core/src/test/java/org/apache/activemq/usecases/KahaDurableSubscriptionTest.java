@@ -110,6 +110,15 @@ return|return
 name|adaptor
 return|;
 block|}
+specifier|public
+name|void
+name|testDurableSubscriptionRetroactive
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// nop
+block|}
 block|}
 end_class
 
