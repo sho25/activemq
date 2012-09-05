@@ -2342,14 +2342,12 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+comment|// always dispatch advisories async so that we never block the producer broker if we are slow
 name|demandConsumerInfo
 operator|.
 name|setDispatchAsync
 argument_list|(
-name|configuration
-operator|.
-name|isDispatchAsync
-argument_list|()
+literal|true
 argument_list|)
 expr_stmt|;
 name|String
