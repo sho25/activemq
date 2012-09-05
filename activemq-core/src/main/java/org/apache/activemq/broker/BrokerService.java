@@ -21,6 +21,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|BufferedReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|File
 import|;
 end_import
@@ -32,6 +42,26 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStreamReader
 import|;
 end_import
 
@@ -1115,6 +1145,22 @@ name|activemq
 operator|.
 name|transport
 operator|.
+name|stomp
+operator|.
+name|ProtocolConverter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
 name|vm
 operator|.
 name|VMTransportFactory
@@ -1325,6 +1371,12 @@ specifier|static
 specifier|final
 name|String
 name|LOCAL_HOST_NAME
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|BROKER_VERSION
 decl_stmt|;
 specifier|public
 specifier|static
@@ -1937,6 +1989,68 @@ name|LOCAL_HOST_NAME
 operator|=
 name|localHostName
 expr_stmt|;
+name|InputStream
+name|in
+init|=
+literal|null
+decl_stmt|;
+name|String
+name|version
+init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+operator|(
+name|in
+operator|=
+name|ProtocolConverter
+operator|.
+name|class
+operator|.
+name|getResourceAsStream
+argument_list|(
+literal|"/org/apache/activemq/version.txt"
+argument_list|)
+operator|)
+operator|!=
+literal|null
+condition|)
+block|{
+name|BufferedReader
+name|reader
+init|=
+operator|new
+name|BufferedReader
+argument_list|(
+operator|new
+name|InputStreamReader
+argument_list|(
+name|in
+argument_list|)
+argument_list|)
+decl_stmt|;
+try|try
+block|{
+name|version
+operator|=
+name|reader
+operator|.
+name|readLine
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{             }
+block|}
+name|BROKER_VERSION
+operator|=
+name|version
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -1952,6 +2066,34 @@ name|getBrokerName
 argument_list|()
 operator|+
 literal|"]"
+return|;
+block|}
+specifier|private
+name|String
+name|getBrokerVersion
+parameter_list|()
+block|{
+name|String
+name|version
+init|=
+name|ActiveMQConnectionMetaData
+operator|.
+name|PROVIDER_VERSION
+decl_stmt|;
+if|if
+condition|(
+name|version
+operator|==
+literal|null
+condition|)
+block|{
+name|version
+operator|=
+name|BROKER_VERSION
+expr_stmt|;
+block|}
+return|return
+name|version
 return|;
 block|}
 comment|/**      * Adds a new transport connector for the given bind address      *      * @return the newly created and added transport connector      * @throws Exception      */
@@ -3364,11 +3506,24 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"ActiveMQ JMS Message Broker ("
+literal|"ActiveMQ "
+operator|+
+name|getBrokerVersion
+argument_list|()
+operator|+
+literal|" JMS Message Broker ("
 operator|+
 name|getBrokerName
 argument_list|()
@@ -3380,6 +3535,7 @@ operator|+
 literal|") started"
 argument_list|)
 expr_stmt|;
+block|}
 name|getBroker
 argument_list|()
 operator|.
@@ -3455,11 +3611,24 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"ActiveMQ Message Broker ("
+literal|"ActiveMQ "
+operator|+
+name|getBrokerVersion
+argument_list|()
+operator|+
+literal|" JMS Message Broker ("
 operator|+
 name|getBrokerName
 argument_list|()
@@ -3471,6 +3640,7 @@ operator|+
 literal|") is shutting down"
 argument_list|)
 expr_stmt|;
+block|}
 name|removeShutdownHook
 argument_list|()
 expr_stmt|;
@@ -3790,11 +3960,24 @@ name|destinationFactory
 operator|=
 literal|null
 expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"ActiveMQ JMS Message Broker ("
+literal|"ActiveMQ "
+operator|+
+name|getBrokerVersion
+argument_list|()
+operator|+
+literal|" JMS Message Broker ("
 operator|+
 name|getBrokerName
 argument_list|()
@@ -3806,6 +3989,7 @@ operator|+
 literal|") stopped"
 argument_list|)
 expr_stmt|;
+block|}
 synchronized|synchronized
 init|(
 name|shutdownHooks
@@ -4327,15 +4511,22 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
 literal|"ActiveMQ "
 operator|+
-name|ActiveMQConnectionMetaData
-operator|.
-name|PROVIDER_VERSION
+name|getBrokerVersion
+argument_list|()
 operator|+
 literal|" JMS Message Broker ("
 operator|+
@@ -4352,6 +4543,7 @@ argument_list|(
 literal|"For help or more information please see: http://activemq.apache.org/"
 argument_list|)
 expr_stmt|;
+block|}
 name|broker
 operator|=
 name|createBroker
