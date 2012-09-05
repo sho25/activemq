@@ -77,7 +77,7 @@ name|activemq
 operator|.
 name|thread
 operator|.
-name|DefaultThreadPools
+name|TaskRunnerFactory
 import|;
 end_import
 
@@ -229,6 +229,10 @@ argument_list|(
 literal|false
 argument_list|)
 decl_stmt|;
+specifier|private
+name|TaskRunnerFactory
+name|taskRunner
+decl_stmt|;
 class|class
 name|SimpleDiscoveryEvent
 extends|extends
@@ -332,6 +336,17 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|taskRunner
+operator|=
+operator|new
+name|TaskRunnerFactory
+argument_list|()
+expr_stmt|;
+name|taskRunner
+operator|.
+name|init
+argument_list|()
+expr_stmt|;
 name|running
 operator|.
 name|set
@@ -386,6 +401,12 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|taskRunner
+operator|.
+name|shutdown
+argument_list|()
+expr_stmt|;
+comment|// TODO: Should we not remove the services on the listener?
 synchronized|synchronized
 init|(
 name|sleepMutex
@@ -539,10 +560,7 @@ argument_list|(
 name|event
 argument_list|)
 expr_stmt|;
-name|DefaultThreadPools
-operator|.
-name|getDefaultTaskRunnerFactory
-argument_list|()
+name|taskRunner
 operator|.
 name|execute
 argument_list|(

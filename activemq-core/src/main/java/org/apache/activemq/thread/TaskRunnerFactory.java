@@ -203,6 +203,19 @@ block|{
 name|this
 argument_list|(
 literal|"ActiveMQ Task"
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|TaskRunnerFactory
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|name
 argument_list|,
 name|Thread
 operator|.
@@ -485,7 +498,7 @@ name|execute
 argument_list|(
 name|runnable
 argument_list|,
-literal|"ActiveMQ Task"
+name|name
 argument_list|)
 expr_stmt|;
 block|}

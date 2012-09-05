@@ -15,62 +15,18 @@ name|thread
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Executor
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ScheduledThreadPoolExecutor
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ThreadFactory
-import|;
-end_import
-
 begin_comment
-comment|/**  *   *   */
+comment|/**  * @deprecated do not use this class. Instead use {@link TaskRunnerFactory}  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 specifier|final
 class|class
 name|DefaultThreadPools
 block|{
-comment|//    private static final Executor DEFAULT_POOL;
-comment|//    static {
-comment|//        DEFAULT_POOL = new ScheduledThreadPoolExecutor(5, new ThreadFactory() {
-comment|//            public Thread newThread(Runnable runnable) {
-comment|//                Thread thread = new Thread(runnable, "ActiveMQ Default Thread Pool Thread");
-comment|//                thread.setDaemon(true);
-comment|//                return thread;
-comment|//            }
-comment|//        });
-comment|//    }
 specifier|private
 specifier|static
 specifier|final
@@ -85,9 +41,8 @@ specifier|private
 name|DefaultThreadPools
 parameter_list|()
 block|{             }
-comment|//    public static Executor getDefaultPool() {
-comment|//        return DEFAULT_POOL;
-comment|//    }
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|TaskRunnerFactory
