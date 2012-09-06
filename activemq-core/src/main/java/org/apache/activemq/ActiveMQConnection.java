@@ -1093,6 +1093,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|ThreadPoolUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -2927,10 +2941,12 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|executor
+name|ThreadPoolUtils
 operator|.
 name|shutdown
-argument_list|()
+argument_list|(
+name|executor
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2942,11 +2958,13 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|error
+name|warn
 argument_list|(
-literal|"Error shutting down thread pool "
+literal|"Error shutting down thread pool: "
 operator|+
-name|e
+name|executor
+operator|+
+literal|". This exception will be ignored."
 argument_list|,
 name|e
 argument_list|)

@@ -727,20 +727,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|thread
-operator|.
-name|TaskRunnerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|transport
 operator|.
 name|DefaultTransportListener
@@ -965,10 +951,6 @@ name|DemandForwardingBridgeSupport
 operator|.
 name|class
 argument_list|)
-decl_stmt|;
-specifier|private
-name|TaskRunnerFactory
-name|asyncTaskRunner
 decl_stmt|;
 specifier|protected
 specifier|static
@@ -1363,19 +1345,23 @@ literal|true
 argument_list|)
 condition|)
 block|{
-name|asyncTaskRunner
-operator|=
+if|if
+condition|(
+name|brokerService
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
 operator|new
-name|TaskRunnerFactory
+name|IllegalArgumentException
 argument_list|(
-literal|"ActiveMQ ForwardingBridge Task"
+literal|"BrokerService is null on "
+operator|+
+name|this
 argument_list|)
-expr_stmt|;
-name|asyncTaskRunner
-operator|.
-name|init
-argument_list|()
-expr_stmt|;
+throw|;
+block|}
 name|localBroker
 operator|.
 name|setTransportListener
@@ -1540,7 +1526,10 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|asyncTaskRunner
+name|brokerService
+operator|.
+name|getTaskRunnerFactory
+argument_list|()
 operator|.
 name|execute
 argument_list|(
@@ -1620,7 +1609,10 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|asyncTaskRunner
+name|brokerService
+operator|.
+name|getTaskRunnerFactory
+argument_list|()
 operator|.
 name|execute
 argument_list|(
@@ -2493,7 +2485,10 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-name|asyncTaskRunner
+name|brokerService
+operator|.
+name|getTaskRunnerFactory
+argument_list|()
 operator|.
 name|execute
 argument_list|(
@@ -2558,6 +2553,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+argument_list|,
+literal|"ActiveMQ ForwardingBridge StopTask"
 argument_list|)
 expr_stmt|;
 if|if
@@ -2623,16 +2620,6 @@ name|localStartedLatch
 operator|.
 name|countDown
 argument_list|()
-expr_stmt|;
-comment|// stop task runner
-name|asyncTaskRunner
-operator|.
-name|shutdown
-argument_list|()
-expr_stmt|;
-name|asyncTaskRunner
-operator|=
-literal|null
 expr_stmt|;
 name|ss
 operator|.
@@ -2766,7 +2753,10 @@ argument_list|,
 name|error
 argument_list|)
 expr_stmt|;
-name|asyncTaskRunner
+name|brokerService
+operator|.
+name|getTaskRunnerFactory
+argument_list|()
 operator|.
 name|execute
 argument_list|(
@@ -4200,7 +4190,10 @@ argument_list|,
 name|error
 argument_list|)
 expr_stmt|;
-name|asyncTaskRunner
+name|brokerService
+operator|.
+name|getTaskRunnerFactory
+argument_list|()
 operator|.
 name|execute
 argument_list|(
@@ -4350,7 +4343,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// continue removal in separate thread to free up this thread for outstanding responses
-name|asyncTaskRunner
+name|brokerService
+operator|.
+name|getTaskRunnerFactory
+argument_list|()
 operator|.
 name|execute
 argument_list|(

@@ -1303,6 +1303,20 @@ name|activemq
 operator|.
 name|util
 operator|.
+name|ThreadPoolUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
 name|URISupport
 import|;
 end_import
@@ -3934,12 +3948,12 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|this
-operator|.
-name|executor
+name|ThreadPoolUtils
 operator|.
 name|shutdownNow
-argument_list|()
+argument_list|(
+name|executor
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -10829,14 +10843,12 @@ literal|null
 condition|)
 block|{
 comment|// executor done when enqueued tasks are complete
-name|networkConnectorStartExecutor
+name|ThreadPoolUtils
 operator|.
 name|shutdown
-argument_list|()
-expr_stmt|;
+argument_list|(
 name|networkConnectorStartExecutor
-operator|=
-literal|null
+argument_list|)
 expr_stmt|;
 block|}
 for|for
@@ -12107,7 +12119,7 @@ operator|.
 name|populateUserNameInMBeans
 return|;
 block|}
-comment|/**      * Sets whether Authenticated User Name information is shown in MBeans that support this field.      * @param true if MBeans should expose user name information.      */
+comment|/**      * Sets whether Authenticated User Name information is shown in MBeans that support this field.      * @param value if MBeans should expose user name information.      */
 specifier|public
 name|void
 name|setPopulateUserNameInMBeans
