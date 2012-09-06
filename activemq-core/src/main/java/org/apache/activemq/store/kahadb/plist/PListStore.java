@@ -2644,7 +2644,7 @@ literal|"PListStore:["
 operator|+
 name|path
 operator|+
-literal|" ]"
+literal|"]"
 return|;
 block|}
 block|}
