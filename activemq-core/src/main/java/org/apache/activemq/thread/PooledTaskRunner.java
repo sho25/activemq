@@ -27,6 +27,26 @@ name|Executor
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  *   */
 end_comment
@@ -37,6 +57,21 @@ name|PooledTaskRunner
 implements|implements
 name|TaskRunner
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|PooledTaskRunner
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|int
@@ -80,6 +115,7 @@ parameter_list|(
 name|Executor
 name|executor
 parameter_list|,
+specifier|final
 name|Task
 name|task
 parameter_list|,
@@ -131,6 +167,15 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Run task done: {}"
+argument_list|,
+name|task
+argument_list|)
+expr_stmt|;
 name|runningThread
 operator|=
 literal|null
@@ -204,6 +249,15 @@ parameter_list|)
 throws|throws
 name|InterruptedException
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Shutdown timeout: {} task: {}"
+argument_list|,
+name|task
+argument_list|)
+expr_stmt|;
 synchronized|synchronized
 init|(
 name|runable
@@ -315,6 +369,17 @@ name|i
 operator|++
 control|)
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Running task iteration {} - {}"
+argument_list|,
+name|i
+argument_list|,
+name|task
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!

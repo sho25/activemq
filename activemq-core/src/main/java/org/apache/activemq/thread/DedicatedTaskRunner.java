@@ -15,6 +15,26 @@ name|thread
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  *   */
 end_comment
@@ -25,6 +45,21 @@ name|DedicatedTaskRunner
 implements|implements
 name|TaskRunner
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|DedicatedTaskRunner
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|Task
@@ -59,6 +94,7 @@ decl_stmt|;
 specifier|public
 name|DedicatedTaskRunner
 parameter_list|(
+specifier|final
 name|Task
 name|task
 parameter_list|,
@@ -91,9 +127,24 @@ name|void
 name|run
 parameter_list|()
 block|{
+try|try
+block|{
 name|runTask
 argument_list|()
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Run task done: {}"
+argument_list|,
+name|task
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 expr_stmt|;
@@ -166,6 +217,15 @@ parameter_list|)
 throws|throws
 name|InterruptedException
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Shutdown timeout: {} task: {}"
+argument_list|,
+name|task
+argument_list|)
+expr_stmt|;
 synchronized|synchronized
 init|(
 name|mutex
@@ -252,6 +312,15 @@ block|{
 return|return;
 block|}
 block|}
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Running task {}"
+argument_list|,
+name|task
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
