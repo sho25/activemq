@@ -1244,7 +1244,7 @@ literal|"has the locker override"
 argument_list|,
 name|adapter
 operator|.
-name|getDatabaseLocker
+name|getLocker
 argument_list|()
 operator|instanceof
 name|TransactDatabaseLocker
@@ -1436,7 +1436,7 @@ literal|"has the default locker"
 argument_list|,
 name|adapter
 operator|.
-name|getDatabaseLocker
+name|getLocker
 argument_list|()
 operator|.
 name|getClass

@@ -217,7 +217,7 @@ argument_list|)
 expr_stmt|;
 name|persistenceAdapter
 operator|.
-name|setDatabaseLocker
+name|setLocker
 argument_list|(
 operator|new
 name|LeaseDatabaseLocker
