@@ -261,6 +261,9 @@ parameter_list|,
 name|TaskRunnerFactory
 name|factory
 parameter_list|,
+name|TaskRunnerFactory
+name|stopFactory
+parameter_list|,
 name|ManagementContext
 name|context
 parameter_list|,
@@ -279,6 +282,8 @@ argument_list|,
 name|broker
 argument_list|,
 name|factory
+argument_list|,
+name|stopFactory
 argument_list|)
 expr_stmt|;
 name|this

@@ -471,20 +471,6 @@ name|activemq
 operator|.
 name|thread
 operator|.
-name|DefaultThreadPools
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|thread
-operator|.
 name|Task
 import|;
 end_import
@@ -1015,6 +1001,11 @@ name|TaskRunnerFactory
 name|taskRunnerFactory
 decl_stmt|;
 specifier|private
+specifier|final
+name|TaskRunnerFactory
+name|stopTaskRunnerFactory
+decl_stmt|;
+specifier|private
 name|TransportConnectionStateRegister
 name|connectionStateRegister
 init|=
@@ -1041,7 +1032,7 @@ name|stopError
 init|=
 literal|null
 decl_stmt|;
-comment|/**      * @param taskRunnerFactory - can be null if you want direct dispatch to the transport      *                          else commands are sent async.      */
+comment|/**      * @param taskRunnerFactory - can be null if you want direct dispatch to the transport      *                          else commands are sent async.      * @param stopTaskRunnerFactory - can<b>not</b> be null, used for stopping this connection.      */
 specifier|public
 name|TransportConnection
 parameter_list|(
@@ -1057,6 +1048,9 @@ name|broker
 parameter_list|,
 name|TaskRunnerFactory
 name|taskRunnerFactory
+parameter_list|,
+name|TaskRunnerFactory
+name|stopTaskRunnerFactory
 parameter_list|)
 block|{
 name|this
@@ -1070,15 +1064,6 @@ operator|.
 name|broker
 operator|=
 name|broker
-expr_stmt|;
-name|this
-operator|.
-name|messageAuthorizationPolicy
-operator|=
-name|connector
-operator|.
-name|getMessageAuthorizationPolicy
-argument_list|()
 expr_stmt|;
 name|RegionBroker
 name|rb
@@ -1121,12 +1106,27 @@ name|getStatistics
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|messageAuthorizationPolicy
+operator|=
+name|connector
+operator|.
+name|getMessageAuthorizationPolicy
+argument_list|()
+expr_stmt|;
 block|}
 name|this
 operator|.
 name|taskRunnerFactory
 operator|=
 name|taskRunnerFactory
+expr_stmt|;
+name|this
+operator|.
+name|stopTaskRunnerFactory
+operator|=
+name|stopTaskRunnerFactory
 expr_stmt|;
 name|this
 operator|.
@@ -5387,6 +5387,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// do not stop task the task runner factories (taskRunnerFactory, stopTaskRunnerFactory)
+comment|// as their lifecycle is handled elsewhere
 name|stopAsync
 argument_list|()
 expr_stmt|;
@@ -5460,10 +5462,7 @@ expr_stmt|;
 block|}
 try|try
 block|{
-name|DefaultThreadPools
-operator|.
-name|getDefaultTaskRunnerFactory
-argument_list|()
+name|stopTaskRunnerFactory
 operator|.
 name|execute
 argument_list|(
@@ -5513,13 +5512,6 @@ parameter_list|)
 block|{                         }
 block|}
 block|}
-argument_list|,
-literal|"delayedStop:"
-operator|+
-name|transport
-operator|.
-name|getRemoteAddress
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -5533,7 +5525,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"cannot create stopAsync :"
+literal|"Cannot create stopAsync. This exception will be ignored."
 argument_list|,
 name|t
 argument_list|)
@@ -5631,10 +5623,7 @@ block|}
 block|}
 try|try
 block|{
-name|DefaultThreadPools
-operator|.
-name|getDefaultTaskRunnerFactory
-argument_list|()
+name|stopTaskRunnerFactory
 operator|.
 name|execute
 argument_list|(
@@ -5697,13 +5686,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-argument_list|,
-literal|"StopAsync:"
-operator|+
-name|transport
-operator|.
-name|getRemoteAddress
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -5717,7 +5699,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"cannot create async transport stopper thread.. not waiting for stop to complete, reason:"
+literal|"Cannot create async transport stopper thread. This exception is ignored. Not waiting for stop to complete"
 argument_list|,
 name|t
 argument_list|)
@@ -5752,15 +5734,13 @@ name|doStop
 parameter_list|()
 throws|throws
 name|Exception
-throws|,
-name|InterruptedException
 block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Stopping connection: "
-operator|+
+literal|"Stopping connection: {}"
+argument_list|,
 name|transport
 operator|.
 name|getRemoteAddress
@@ -5819,7 +5799,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Exception caught stopping"
+literal|"Exception caught stopping. This exception is ignored."
 argument_list|,
 name|ignore
 argument_list|)
@@ -5855,9 +5835,14 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Could not stop transport: "
+literal|"Could not stop transport to "
 operator|+
-name|e
+name|transport
+operator|.
+name|getRemoteAddress
+argument_list|()
+operator|+
+literal|". This exception is ignored."
 argument_list|,
 name|e
 argument_list|)
@@ -5876,6 +5861,10 @@ name|shutdown
 argument_list|(
 literal|1
 argument_list|)
+expr_stmt|;
+name|taskRunner
+operator|=
+literal|null
 expr_stmt|;
 block|}
 name|active
@@ -6022,8 +6011,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Cleaning up connection resources: "
-operator|+
+literal|"Cleaning up connection resources: {}"
+argument_list|,
 name|getRemoteAddress
 argument_list|()
 argument_list|)
@@ -6060,8 +6049,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Connection Stopped: "
-operator|+
+literal|"Connection Stopped: {}"
+argument_list|,
 name|getRemoteAddress
 argument_list|()
 argument_list|)

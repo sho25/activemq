@@ -100,7 +100,7 @@ specifier|final
 name|long
 name|DEFAULT_SHUTDOWN_AWAIT_TERMINATION
 init|=
-literal|30
+literal|10
 operator|*
 literal|1000L
 decl_stmt|;
@@ -118,10 +118,7 @@ name|doShutdown
 argument_list|(
 name|executorService
 argument_list|,
-operator|-
-literal|1
-argument_list|,
-literal|true
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
@@ -224,12 +221,10 @@ argument_list|(
 name|executorService
 argument_list|,
 name|DEFAULT_SHUTDOWN_AWAIT_TERMINATION
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Shutdown the given executor service graceful at first, and then aggressively      * if the await termination timeout was hit.      *<p/>      * Will try to perform an orderly shutdown by giving the running threads      * time to complete tasks, before going more aggressively by doing a      * {@link #shutdownNow(java.util.concurrent.ExecutorService)} which      * forces a shutdown. The parameter<tt>shutdownAwaitTermination</tt>      * is used as timeout value waiting for orderly shutdown to      * complete normally, before going aggressively.      *<p/>      * Notice if the given parameter<tt>shutdownAwaitTermination</tt> is negative, then a quick shutdown      * is commenced, by invoking the {@link java.util.concurrent.ExecutorService#shutdown()} method      * and then exit from this method (ie. no graceful shutdown is performed).      *      * @param executorService the executor service to shutdown      * @param shutdownAwaitTermination timeout in millis to wait for orderly shutdown, if the value if negative      *                                 then the thread pool is<b>not</b> graceful shutdown, but a regular shutdown      *                                 is commenced.      */
+comment|/**      * Shutdown the given executor service graceful at first, and then aggressively      * if the await termination timeout was hit.      *<p/>      * Will try to perform an orderly shutdown by giving the running threads      * time to complete tasks, before going more aggressively by doing a      * {@link #shutdownNow(java.util.concurrent.ExecutorService)} which      * forces a shutdown. The parameter<tt>shutdownAwaitTermination</tt>      * is used as timeout value waiting for orderly shutdown to      * complete normally, before going aggressively.      *      * @param executorService the executor service to shutdown      * @param shutdownAwaitTermination timeout in millis to wait for orderly shutdown      */
 specifier|public
 specifier|static
 name|void
@@ -247,8 +242,6 @@ argument_list|(
 name|executorService
 argument_list|,
 name|shutdownAwaitTermination
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -262,9 +255,6 @@ name|executorService
 parameter_list|,
 name|long
 name|shutdownAwaitTermination
-parameter_list|,
-name|boolean
-name|quick
 parameter_list|)
 block|{
 comment|// code from Apache Camel - org.apache.camel.impl.DefaultExecutorServiceManager
@@ -277,63 +267,19 @@ condition|)
 block|{
 return|return;
 block|}
+comment|// shutting down a thread pool is a 2 step process. First we try graceful, and if that fails, then we go more aggressively
+comment|// and try shutting down again. In both cases we wait at most the given shutdown timeout value given
+comment|// (total wait could then be 2 x shutdownAwaitTermination, but when we shutdown the 2nd time we are aggressive and thus
+comment|// we ought to shutdown much faster)
 if|if
 condition|(
-name|quick
-condition|)
-block|{
-comment|// do not shutdown graceful, but just quick shutdown on the thread pool
-name|executorService
-operator|.
-name|shutdown
-argument_list|()
-expr_stmt|;
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"Quick shutdown of ExecutorService: {} is shutdown: {} and terminated: {}."
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-name|executorService
-block|,
+operator|!
 name|executorService
 operator|.
 name|isShutdown
 argument_list|()
-block|,
-name|executorService
-operator|.
-name|isTerminated
-argument_list|()
-block|}
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
-if|if
-condition|(
-name|shutdownAwaitTermination
-operator|<=
-literal|0
 condition|)
 block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"ShutdownAwaitTermination must be a positive number, was: "
-operator|+
-name|shutdownAwaitTermination
-argument_list|)
-throw|;
-block|}
-comment|// shutting down a thread pool is a 2 step process. First we try graceful, and if that fails, then we go more aggressively
-comment|// and try shutting down again. In both cases we wait at most the given shutdown timeout value given
-comment|// (total wait could then be 2 x shutdownAwaitTermination)
 name|boolean
 name|warned
 init|=
@@ -346,15 +292,6 @@ operator|new
 name|StopWatch
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|executorService
-operator|.
-name|isShutdown
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
@@ -371,6 +308,13 @@ operator|.
 name|shutdown
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|shutdownAwaitTermination
+operator|>
+literal|0
+condition|)
+block|{
 try|try
 block|{
 if|if
@@ -451,6 +395,7 @@ operator|.
 name|shutdownNow
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|// if we logged at WARN level, then report at INFO level when we are complete so the end user can see this in the log
 if|if
@@ -539,7 +484,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Awaits the termination of the thread pool.      *<p/>      * This implementation will log every 5th second at INFO level that we are waiting, so the end user      * can see we are not hanging in case it takes longer time to shutdown the pool.      *      * @param executorService            the thread pool      * @param shutdownAwaitTermination   time in millis to use as timeout      * @return<tt>true</tt> if the pool is terminated, or<tt>false</tt> if we timed out      * @throws InterruptedException is thrown if we are interrupted during the waiting      */
+comment|/**      * Awaits the termination of the thread pool.      *<p/>      * This implementation will log every 2nd second at INFO level that we are waiting, so the end user      * can see we are not hanging in case it takes longer time to terminate the pool.      *      * @param executorService            the thread pool      * @param shutdownAwaitTermination   time in millis to use as timeout      * @return<tt>true</tt> if the pool is terminated, or<tt>false</tt> if we timed out      * @throws InterruptedException is thrown if we are interrupted during the waiting      */
 specifier|public
 specifier|static
 name|boolean
@@ -569,7 +514,7 @@ name|Math
 operator|.
 name|min
 argument_list|(
-literal|5000
+literal|2000
 argument_list|,
 name|shutdownAwaitTermination
 argument_list|)
@@ -614,7 +559,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Waited {} for ExecutorService: {} to shutdown..."
+literal|"Waited {} for ExecutorService: {} to terminate..."
 argument_list|,
 name|TimeUtils
 operator|.
@@ -636,7 +581,7 @@ name|Math
 operator|.
 name|min
 argument_list|(
-literal|5000
+literal|2000
 argument_list|,
 name|shutdownAwaitTermination
 operator|-

@@ -231,7 +231,7 @@ name|activemq
 operator|.
 name|thread
 operator|.
-name|DefaultThreadPools
+name|TaskRunnerFactory
 import|;
 end_import
 
@@ -310,6 +310,7 @@ name|SSLSession
 name|sslSession
 decl_stmt|;
 specifier|protected
+specifier|volatile
 name|boolean
 name|handshakeInProgress
 init|=
@@ -330,6 +331,10 @@ name|HandshakeStatus
 name|handshakeStatus
 init|=
 literal|null
+decl_stmt|;
+specifier|protected
+name|TaskRunnerFactory
+name|taskRunnerFactory
 decl_stmt|;
 specifier|public
 name|NIOSSLTransport
@@ -1351,10 +1356,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|DefaultThreadPools
-operator|.
-name|getDefaultTaskRunnerFactory
-argument_list|()
+name|taskRunnerFactory
 operator|.
 name|execute
 argument_list|(
@@ -1401,6 +1403,30 @@ annotation|@
 name|Override
 specifier|protected
 name|void
+name|doStart
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|taskRunnerFactory
+operator|=
+operator|new
+name|TaskRunnerFactory
+argument_list|(
+literal|"ActiveMQ NIOSSLTransport Task"
+argument_list|)
+expr_stmt|;
+comment|// no need to init as we can delay that until demand (eg in doHandshake)
+name|super
+operator|.
+name|doStart
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|protected
+name|void
 name|doStop
 parameter_list|(
 name|ServiceStopper
@@ -1409,6 +1435,23 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|taskRunnerFactory
+operator|!=
+literal|null
+condition|)
+block|{
+name|taskRunnerFactory
+operator|.
+name|shutdownNow
+argument_list|()
+expr_stmt|;
+name|taskRunnerFactory
+operator|=
+literal|null
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|channel

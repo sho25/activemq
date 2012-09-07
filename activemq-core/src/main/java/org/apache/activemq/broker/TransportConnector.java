@@ -209,20 +209,6 @@ name|activemq
 operator|.
 name|thread
 operator|.
-name|DefaultThreadPools
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|thread
-operator|.
 name|TaskRunnerFactory
 import|;
 end_import
@@ -1083,9 +1069,9 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|DefaultThreadPools
+name|brokerService
 operator|.
-name|getDefaultTaskRunnerFactory
+name|getTaskRunnerFactory
 argument_list|()
 operator|.
 name|execute
@@ -1557,6 +1543,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// prefer to use task runner from broker service as stop task runner, as we can then
+comment|// tie it to the lifecycle of the broker service
 name|TransportConnection
 name|answer
 init|=
@@ -1574,6 +1562,11 @@ condition|?
 literal|null
 else|:
 name|taskRunnerFactory
+argument_list|,
+name|brokerService
+operator|.
+name|getTaskRunnerFactory
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|boolean

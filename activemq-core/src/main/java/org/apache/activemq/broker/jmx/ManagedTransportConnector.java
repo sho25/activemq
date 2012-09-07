@@ -200,6 +200,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// prefer to use task runner from broker service as stop task runner, as we can then
+comment|// tie it to the lifecycle of the broker service
 return|return
 operator|new
 name|ManagedTransportConnection
@@ -216,6 +218,12 @@ argument_list|()
 condition|?
 literal|null
 else|:
+name|getTaskRunnerFactory
+argument_list|()
+argument_list|,
+name|getBrokerService
+argument_list|()
+operator|.
 name|getTaskRunnerFactory
 argument_list|()
 argument_list|,

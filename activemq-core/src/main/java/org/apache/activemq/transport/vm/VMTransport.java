@@ -135,20 +135,6 @@ name|activemq
 operator|.
 name|thread
 operator|.
-name|DefaultThreadPools
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|thread
-operator|.
 name|Task
 import|;
 end_import
@@ -164,6 +150,20 @@ operator|.
 name|thread
 operator|.
 name|TaskRunner
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|thread
+operator|.
+name|TaskRunnerFactory
 import|;
 end_import
 
@@ -318,6 +318,10 @@ argument_list|<
 name|Object
 argument_list|>
 name|messageQueue
+decl_stmt|;
+specifier|private
+name|TaskRunnerFactory
+name|taskRunnerFactory
 decl_stmt|;
 specifier|private
 name|TaskRunner
@@ -908,6 +912,10 @@ name|Exception
 name|e
 parameter_list|)
 block|{                 }
+name|taskRunner
+operator|=
+literal|null
+expr_stmt|;
 block|}
 comment|// let the peer know that we are disconnecting after attempting
 comment|// to cleanly shutdown the async tasks so that this is the last
@@ -932,6 +940,24 @@ name|Exception
 name|ignore
 parameter_list|)
 block|{             }
+comment|// shutdown task runner factory
+if|if
+condition|(
+name|taskRunnerFactory
+operator|!=
+literal|null
+condition|)
+block|{
+name|taskRunnerFactory
+operator|.
+name|shutdownNow
+argument_list|()
+expr_stmt|;
+name|taskRunnerFactory
+operator|=
+literal|null
+expr_stmt|;
+block|}
 block|}
 block|}
 specifier|protected
@@ -1284,14 +1310,35 @@ literal|"The Transport has been disposed"
 argument_list|)
 throw|;
 block|}
+if|if
+condition|(
+name|taskRunnerFactory
+operator|==
+literal|null
+condition|)
+block|{
+name|taskRunnerFactory
+operator|=
+operator|new
+name|TaskRunnerFactory
+argument_list|(
+literal|"ActiveMQ VMTransport: "
+operator|+
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|taskRunnerFactory
+operator|.
+name|init
+argument_list|()
+expr_stmt|;
+block|}
 name|taskRunner
 operator|=
 name|result
 operator|=
-name|DefaultThreadPools
-operator|.
-name|getDefaultTaskRunnerFactory
-argument_list|()
+name|taskRunnerFactory
 operator|.
 name|createTaskRunner
 argument_list|(

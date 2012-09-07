@@ -227,7 +227,7 @@ name|activemq
 operator|.
 name|thread
 operator|.
-name|DefaultThreadPools
+name|TaskRunnerFactory
 import|;
 end_import
 
@@ -1937,10 +1937,16 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-name|DefaultThreadPools
-operator|.
-name|getDefaultTaskRunnerFactory
+comment|// need a async task for this
+specifier|final
+name|TaskRunnerFactory
+name|taskRunnerFactory
+init|=
+operator|new
+name|TaskRunnerFactory
 argument_list|()
+decl_stmt|;
+name|taskRunnerFactory
 operator|.
 name|execute
 argument_list|(
@@ -1953,12 +1959,30 @@ name|void
 name|run
 parameter_list|()
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Closing socket {}"
+argument_list|,
+name|socket
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|socket
 operator|.
 name|close
 argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Closed socket {}"
+argument_list|,
+name|socket
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -1979,7 +2003,11 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Caught exception closing socket"
+literal|"Caught exception closing socket "
+operator|+
+name|socket
+operator|+
+literal|". This exception will be ignored."
 argument_list|,
 name|e
 argument_list|)
@@ -2027,15 +2055,42 @@ name|interrupt
 argument_list|()
 expr_stmt|;
 block|}
+finally|finally
+block|{
+name|taskRunnerFactory
+operator|.
+name|shutdownNow
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
+comment|// close synchronously
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Closing socket {}"
+argument_list|,
+name|socket
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|socket
 operator|.
 name|close
 argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Closed socket {}"
+argument_list|,
+name|socket
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -2044,15 +2099,28 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Caught exception closing socket"
+literal|"Caught exception closing socket "
+operator|+
+name|socket
+operator|+
+literal|". This exception will be ignored."
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
