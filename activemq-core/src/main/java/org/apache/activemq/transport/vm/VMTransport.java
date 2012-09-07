@@ -1310,6 +1310,14 @@ literal|"The Transport has been disposed"
 argument_list|)
 throw|;
 block|}
+name|String
+name|name
+init|=
+literal|"ActiveMQ VMTransport: "
+operator|+
+name|toString
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|taskRunnerFactory
@@ -1322,10 +1330,7 @@ operator|=
 operator|new
 name|TaskRunnerFactory
 argument_list|(
-literal|"ActiveMQ VMTransport: "
-operator|+
-name|toString
-argument_list|()
+name|name
 argument_list|)
 expr_stmt|;
 name|taskRunnerFactory
@@ -1344,10 +1349,7 @@ name|createTaskRunner
 argument_list|(
 name|this
 argument_list|,
-literal|"VMTransport: "
-operator|+
-name|toString
-argument_list|()
+name|name
 argument_list|)
 expr_stmt|;
 block|}
