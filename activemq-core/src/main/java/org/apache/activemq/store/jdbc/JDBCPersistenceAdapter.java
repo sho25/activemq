@@ -1616,7 +1616,7 @@ block|{
 name|Locker
 name|service
 init|=
-name|getDatabaseLocker
+name|getLocker
 argument_list|()
 decl_stmt|;
 if|if

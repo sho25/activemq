@@ -121,7 +121,7 @@ name|locker
 init|=
 name|jdbcPersistenceAdapter
 operator|.
-name|getDatabaseLocker
+name|getLocker
 argument_list|()
 decl_stmt|;
 if|if
