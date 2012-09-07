@@ -93,6 +93,18 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|springframework
+operator|.
+name|beans
+operator|.
+name|CachedIntrospectionResults
+import|;
+end_import
+
 begin_comment
 comment|/**  * An ActiveMQ Message Broker. It consists of a number of transport  * connectors, network connectors and a bunch of properties which can be used to  * configure the broker as its lazily created.  *   * @org.apache.xbean.XBean element="broker" rootElement="true"  * @org.apache.xbean.Defaults {code:xml}   *<broker test="foo.bar">  *   lets.  *   see what it includes.  *</broker>     * {code}  *   */
 end_comment
@@ -239,6 +251,33 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|stop
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|stop
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// must clear this Spring cache to avoid any memory leaks
+name|CachedIntrospectionResults
+operator|.
+name|clearClassLoader
+argument_list|(
+name|getClass
+argument_list|()
+operator|.
+name|getClassLoader
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|super
+operator|.
 name|stop
 argument_list|()
 expr_stmt|;
