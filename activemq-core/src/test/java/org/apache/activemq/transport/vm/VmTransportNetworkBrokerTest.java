@@ -161,20 +161,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|thread
-operator|.
-name|DefaultThreadPools
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -502,12 +488,6 @@ operator|.
 name|waitUntilStopped
 argument_list|()
 expr_stmt|;
-comment|// must only be called when all brokers and connections are done!
-name|DefaultThreadPools
-operator|.
-name|shutdown
-argument_list|()
-expr_stmt|;
 comment|// let it settle
 name|TimeUnit
 operator|.
@@ -538,17 +518,10 @@ name|threads
 operator|.
 name|length
 decl_stmt|;
-if|if
-condition|(
+comment|// lets see the thread counts at INFO level so they are always in the test log
 name|LOG
 operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|debug
+name|info
 argument_list|(
 name|ThreadExplorer
 operator|.
@@ -560,7 +533,7 @@ argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"originalThreadCount="
 operator|+
@@ -571,7 +544,6 @@ operator|+
 name|threadCountAfterStop
 argument_list|)
 expr_stmt|;
-block|}
 name|assertTrue
 argument_list|(
 literal|"Threads are leaking: "
