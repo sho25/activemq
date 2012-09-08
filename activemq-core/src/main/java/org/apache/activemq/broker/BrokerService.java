@@ -8098,6 +8098,12 @@ literal|" mb of usable space"
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|isPersistent
+argument_list|()
+condition|)
+block|{
 name|long
 name|maxJournalFileSize
 decl_stmt|;
@@ -8181,6 +8187,7 @@ operator|+
 literal|"the temp store will not accept any data when used."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
