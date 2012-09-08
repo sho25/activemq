@@ -89,6 +89,7 @@ class|class
 name|BlobUploader
 block|{
 specifier|private
+specifier|final
 name|BlobTransferPolicy
 name|blobTransferPolicy
 decl_stmt|;
@@ -110,11 +111,15 @@ name|InputStream
 name|in
 parameter_list|)
 block|{
+comment|// need to do a defensive copy
 name|this
 operator|.
 name|blobTransferPolicy
 operator|=
 name|blobTransferPolicy
+operator|.
+name|copy
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -133,11 +138,15 @@ name|File
 name|file
 parameter_list|)
 block|{
+comment|// need to do a defensive copy
 name|this
 operator|.
 name|blobTransferPolicy
 operator|=
 name|blobTransferPolicy
+operator|.
+name|copy
+argument_list|()
 expr_stmt|;
 name|this
 operator|.

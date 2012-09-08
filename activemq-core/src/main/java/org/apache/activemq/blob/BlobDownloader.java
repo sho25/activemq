@@ -69,6 +69,7 @@ class|class
 name|BlobDownloader
 block|{
 specifier|private
+specifier|final
 name|BlobTransferPolicy
 name|blobTransferPolicy
 decl_stmt|;
@@ -79,11 +80,15 @@ name|BlobTransferPolicy
 name|transferPolicy
 parameter_list|)
 block|{
+comment|// need to do a defensive copy
 name|this
 operator|.
 name|blobTransferPolicy
 operator|=
 name|transferPolicy
+operator|.
+name|copy
+argument_list|()
 expr_stmt|;
 block|}
 specifier|public
