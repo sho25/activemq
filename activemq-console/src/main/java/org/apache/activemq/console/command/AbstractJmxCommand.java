@@ -287,6 +287,7 @@ name|boolean
 name|isSunJVM
 parameter_list|()
 block|{
+comment|// need to check for Oracle as that is the name for Java7 onwards.
 return|return
 name|getJVM
 argument_list|()
@@ -294,6 +295,14 @@ operator|.
 name|equals
 argument_list|(
 literal|"Sun Microsystems Inc."
+argument_list|)
+operator|||
+name|getJVM
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"Oracle"
 argument_list|)
 return|;
 block|}
