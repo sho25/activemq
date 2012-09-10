@@ -196,18 +196,22 @@ name|Statements
 name|statements
 decl_stmt|;
 specifier|protected
+specifier|volatile
 name|PreparedStatement
 name|lockCreateStatement
 decl_stmt|;
 specifier|protected
+specifier|volatile
 name|PreparedStatement
 name|lockUpdateStatement
 decl_stmt|;
 specifier|protected
+specifier|volatile
 name|Connection
 name|connection
 decl_stmt|;
 specifier|protected
+specifier|volatile
 name|boolean
 name|stopping
 decl_stmt|;
@@ -655,19 +659,15 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-try|try
-block|{
+comment|// when the connection is closed from an outside source (lost TCP
+comment|// connection, db server, etc) and this connection is managed by a pool
+comment|// it is important to close the connection so that we don't leak
+comment|// connections
 if|if
 condition|(
 name|connection
 operator|!=
 literal|null
-operator|&&
-operator|!
-name|connection
-operator|.
-name|isClosed
-argument_list|()
 condition|)
 block|{
 try|try
@@ -688,7 +688,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Exception while rollbacking the connection on shutdown"
+literal|"Exception while rollbacking the connection on shutdown. This exception is ignored."
 argument_list|,
 name|sqle
 argument_list|)
@@ -714,7 +714,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Exception while closing connection on shutdown"
+literal|"Exception while closing connection on shutdown. This exception is ignored."
 argument_list|,
 name|ignored
 argument_list|)
@@ -725,23 +725,6 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|SQLException
-name|sqle
-parameter_list|)
-block|{
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"Exception while checking close status of connection on shutdown"
-argument_list|,
-name|sqle
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 specifier|public
