@@ -449,6 +449,7 @@ literal|true
 argument_list|)
 condition|)
 block|{
+comment|// force mbean server to be looked up, so we have it
 name|getMBeanServer
 argument_list|()
 expr_stmt|;
@@ -461,6 +462,26 @@ condition|)
 block|{
 try|try
 block|{
+if|if
+condition|(
+name|getMBeanServer
+argument_list|()
+operator|.
+name|isRegistered
+argument_list|(
+name|namingServiceObjectName
+argument_list|)
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Invoking start on mbean: {}"
+argument_list|,
+name|namingServiceObjectName
+argument_list|)
+expr_stmt|;
 name|getMBeanServer
 argument_list|()
 operator|.
@@ -476,12 +497,27 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 catch|catch
 parameter_list|(
 name|Throwable
 name|ignore
 parameter_list|)
-block|{                 }
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Error invoking start on mbean "
+operator|+
+name|namingServiceObjectName
+operator|+
+literal|". This exception is ignored."
+argument_list|,
+name|ignore
+argument_list|)
+expr_stmt|;
+block|}
 name|Thread
 name|t
 init|=
@@ -945,6 +981,15 @@ name|beanServer
 argument_list|)
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Releasing MBeanServer {}"
+argument_list|,
+name|beanServer
+argument_list|)
+expr_stmt|;
 name|MBeanServerFactory
 operator|.
 name|releaseMBeanServer
@@ -967,18 +1012,98 @@ condition|)
 block|{
 try|try
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Closing registry socket {}, is closed: {}, is bound: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
+name|registrySocket
+block|,
+name|registrySocket
+operator|.
+name|isClosed
+argument_list|()
+block|,
+name|registrySocket
+operator|.
+name|isBound
+argument_list|()
+block|}
+argument_list|)
+expr_stmt|;
+block|}
 name|registrySocket
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Closed registry socket {}, is closed: {}, is bound: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
+name|registrySocket
+block|,
+name|registrySocket
+operator|.
+name|isClosed
+argument_list|()
+block|,
+name|registrySocket
+operator|.
+name|isBound
+argument_list|()
+block|}
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
 name|IOException
 name|e
 parameter_list|)
-block|{                 }
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Error closing registry socket "
+operator|+
+name|registrySocket
+operator|+
+literal|". This exception is ignored."
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 name|registrySocket
 operator|=
 literal|null
@@ -2091,7 +2216,7 @@ return|return
 name|mbeanServer
 return|;
 block|}
-comment|/**      * @param mbeanServer      * @throws MalformedObjectNameException      * @throws MalformedURLException      * @throws IOException      */
+comment|/**      * @param mbeanServer      * @throws MalformedObjectNameException      * @throws IOException      */
 specifier|private
 name|void
 name|createConnector
@@ -2101,8 +2226,6 @@ name|mbeanServer
 parameter_list|)
 throws|throws
 name|MalformedObjectNameException
-throws|,
-name|MalformedURLException
 throws|,
 name|IOException
 block|{
