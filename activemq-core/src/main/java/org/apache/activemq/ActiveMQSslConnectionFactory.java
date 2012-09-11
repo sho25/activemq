@@ -351,6 +351,7 @@ operator|=
 name|createTrustManager
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|keyManager
@@ -377,7 +378,6 @@ name|secureRandom
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 name|super
