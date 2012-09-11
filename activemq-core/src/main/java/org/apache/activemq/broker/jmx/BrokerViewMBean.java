@@ -90,6 +90,16 @@ name|String
 name|getBrokerVersion
 parameter_list|()
 function_decl|;
+comment|/**      * @return Uptime of the broker.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Uptime of the broker."
+argument_list|)
+name|String
+name|getUptime
+parameter_list|()
+function_decl|;
 comment|/**      * The Broker will flush it's caches so that the garbage collector can      * reclaim more memory.      *      * @throws Exception      */
 annotation|@
 name|MBeanInfo
