@@ -4358,6 +4358,10 @@ name|command
 operator|.
 name|setTransactionInfo
 argument_list|(
+name|ack
+operator|!=
+literal|null
+condition|?
 name|transactionIdTransformer
 operator|.
 name|transform
@@ -4367,6 +4371,8 @@ operator|.
 name|getTransactionId
 argument_list|()
 argument_list|)
+else|:
+literal|null
 argument_list|)
 expr_stmt|;
 if|if
