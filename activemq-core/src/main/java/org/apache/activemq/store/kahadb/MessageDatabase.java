@@ -1695,12 +1695,6 @@ name|checksumJournalFiles
 init|=
 literal|false
 decl_stmt|;
-specifier|private
-name|int
-name|databaseLockedWaitDelay
-init|=
-name|DEFAULT_DATABASE_LOCKED_WAIT_DELAY
-decl_stmt|;
 specifier|protected
 name|boolean
 name|forceRecoverIndex
@@ -13574,34 +13568,6 @@ operator|.
 name|directoryArchive
 operator|=
 name|directoryArchive
-expr_stmt|;
-block|}
-comment|/**      * @return the databaseLockedWaitDelay      */
-specifier|public
-name|int
-name|getDatabaseLockedWaitDelay
-parameter_list|()
-block|{
-return|return
-name|this
-operator|.
-name|databaseLockedWaitDelay
-return|;
-block|}
-comment|/**      * @param databaseLockedWaitDelay the databaseLockedWaitDelay to set      */
-specifier|public
-name|void
-name|setDatabaseLockedWaitDelay
-parameter_list|(
-name|int
-name|databaseLockedWaitDelay
-parameter_list|)
-block|{
-name|this
-operator|.
-name|databaseLockedWaitDelay
-operator|=
-name|databaseLockedWaitDelay
 expr_stmt|;
 block|}
 specifier|public

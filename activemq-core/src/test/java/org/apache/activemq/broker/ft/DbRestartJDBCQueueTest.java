@@ -161,7 +161,7 @@ name|store
 operator|.
 name|jdbc
 operator|.
-name|DataSourceSupport
+name|DataSourceServiceSupport
 import|;
 end_import
 
@@ -192,6 +192,20 @@ operator|.
 name|util
 operator|.
 name|DefaultIOExceptionHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IOHelper
 import|;
 end_import
 
@@ -314,12 +328,15 @@ operator|=
 operator|(
 name|EmbeddedDataSource
 operator|)
-operator|new
-name|DataSourceSupport
-argument_list|()
+name|DataSourceServiceSupport
 operator|.
-name|getDataSource
+name|createDataSource
+argument_list|(
+name|IOHelper
+operator|.
+name|getDefaultDataDirectory
 argument_list|()
+argument_list|)
 expr_stmt|;
 name|broker
 operator|=
@@ -399,7 +416,7 @@ argument_list|)
 expr_stmt|;
 name|persistenceAdapter
 operator|.
-name|setUseDatabaseLock
+name|setUseLock
 argument_list|(
 literal|false
 argument_list|)
@@ -412,6 +429,9 @@ literal|500
 argument_list|)
 expr_stmt|;
 name|persistenceAdapter
+operator|.
+name|getLocker
+argument_list|()
 operator|.
 name|setLockAcquireSleepInterval
 argument_list|(

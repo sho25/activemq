@@ -2066,7 +2066,10 @@ name|getPersistenceAdapter
 argument_list|()
 operator|)
 operator|.
-name|setDatabaseLockedWaitDelay
+name|getLocker
+argument_list|()
+operator|.
+name|setLockAcquireSleepInterval
 argument_list|(
 literal|1000
 argument_list|)
@@ -2232,7 +2235,10 @@ name|getPersistenceAdapter
 argument_list|()
 operator|)
 operator|.
-name|setDatabaseLockedWaitDelay
+name|getLocker
+argument_list|()
+operator|.
+name|setLockAcquireSleepInterval
 argument_list|(
 literal|1000
 argument_list|)

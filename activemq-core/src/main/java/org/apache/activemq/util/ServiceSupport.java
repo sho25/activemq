@@ -227,6 +227,9 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+name|preStart
+argument_list|()
+expr_stmt|;
 name|doStart
 argument_list|()
 expr_stmt|;
@@ -319,6 +322,14 @@ argument_list|(
 name|this
 argument_list|,
 name|e
+argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|postStop
+argument_list|(
+name|stopper
 argument_list|)
 expr_stmt|;
 block|}
@@ -443,6 +454,17 @@ name|l
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      *      * handle for various operations after stopping the service (like locking)      *      * @throws Exception      */
+specifier|protected
+name|void
+name|postStop
+parameter_list|(
+name|ServiceStopper
+name|stopper
+parameter_list|)
+throws|throws
+name|Exception
+block|{}
 specifier|protected
 specifier|abstract
 name|void
@@ -454,6 +476,14 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      *      * handle for various operations before starting the service (like locking)      *      * @throws Exception      */
+specifier|protected
+name|void
+name|preStart
+parameter_list|()
+throws|throws
+name|Exception
+block|{}
 specifier|protected
 specifier|abstract
 name|void

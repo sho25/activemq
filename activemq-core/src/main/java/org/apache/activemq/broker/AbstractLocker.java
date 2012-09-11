@@ -99,7 +99,7 @@ throws|throws
 name|IOException
 block|{
 return|return
-literal|false
+literal|true
 return|;
 block|}
 annotation|@
