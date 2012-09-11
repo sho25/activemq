@@ -2221,6 +2221,11 @@ argument_list|(
 name|tid
 argument_list|)
 expr_stmt|;
+name|broker
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
 block|}
 specifier|private
 name|void
