@@ -432,13 +432,14 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+comment|// need a little slack so go over 60 seconds
 name|assertTrue
 argument_list|(
 name|latch
 operator|.
 name|await
 argument_list|(
-literal|60
+literal|70
 argument_list|,
 name|TimeUnit
 operator|.
