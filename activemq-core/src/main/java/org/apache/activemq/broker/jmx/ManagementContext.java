@@ -929,6 +929,10 @@ try|try
 block|{
 if|if
 condition|(
+name|namingServiceObjectName
+operator|!=
+literal|null
+operator|&&
 name|getMBeanServer
 argument_list|()
 operator|.
