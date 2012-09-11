@@ -249,6 +249,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -1249,6 +1259,11 @@ block|}
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"Does not work"
+argument_list|)
 specifier|public
 name|void
 name|does_xml_multicast_load_balance_between_consumers
