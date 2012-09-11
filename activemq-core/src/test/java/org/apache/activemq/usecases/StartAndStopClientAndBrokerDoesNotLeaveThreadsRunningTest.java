@@ -342,7 +342,7 @@ throws|throws
 name|Exception
 block|{
 name|int
-name|numThreads
+name|before
 init|=
 name|Thread
 operator|.
@@ -355,7 +355,6 @@ operator|.
 name|activeCount
 argument_list|()
 decl_stmt|;
-comment|//        Thread.currentThread().getThreadGroup().list();
 name|task
 operator|.
 name|execute
@@ -366,17 +365,16 @@ operator|.
 name|yield
 argument_list|()
 expr_stmt|;
+comment|// need to wait for slow servers
 name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|2000
+literal|5000
 argument_list|)
 expr_stmt|;
-comment|// Wait for the threads to exit on their own
-comment|//        Thread.currentThread().getThreadGroup().list();
 name|int
-name|activeCount
+name|after
 init|=
 name|Thread
 operator|.
@@ -389,17 +387,29 @@ operator|.
 name|activeCount
 argument_list|()
 decl_stmt|;
+name|int
+name|diff
+init|=
+name|Math
+operator|.
+name|abs
+argument_list|(
+name|before
+operator|-
+name|after
+argument_list|)
+decl_stmt|;
 name|assertTrue
 argument_list|(
-literal|"Should be at most one more thread but was: "
+literal|"Should be at most one more thread. Diff = "
 operator|+
-name|activeCount
+name|diff
 argument_list|,
-name|numThreads
+name|diff
 operator|+
 literal|1
 operator|<=
-name|activeCount
+name|after
 argument_list|)
 expr_stmt|;
 block|}
