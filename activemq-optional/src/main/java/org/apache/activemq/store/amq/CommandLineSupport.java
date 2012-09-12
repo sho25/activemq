@@ -42,7 +42,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helper utility that can be used to set the properties on any object using  * command line arguments.  *   * @author<a href="http://hiramchirino.com">Hiram Chirino</a>  */
+comment|/**  * Helper utility that can be used to set the properties on any object using  * command line arguments.  */
 end_comment
 
 begin_class
@@ -55,7 +55,7 @@ specifier|private
 name|CommandLineSupport
 parameter_list|()
 block|{     }
-comment|/**      * Sets the properties of an object given the command line args.      *       * if args contains: --ack-mode=AUTO --url=tcp://localhost:61616 --persistent       *       * then it will try to call the following setters on the target object.      *       * target.setAckMode("AUTO");      * target.setURL(new URI("tcp://localhost:61616") );      * target.setPersistent(true);      *       * Notice the the proper conversion for the argument is determined by examining the       * setter arguement type.        *       * @param target the object that will have it's properties set      * @param args the commline options      * @return any arguments that are not valid options for the target      */
+comment|/**      * Sets the properties of an object given the command line args.      *       * if args contains: --ack-mode=AUTO --url=tcp://localhost:61616 --persistent       *       * then it will try to call the following setters on the target object.      *       * target.setAckMode("AUTO");      * target.setURL(new URI("tcp://localhost:61616") );      * target.setPersistent(true);      *       * Notice the the proper conversion for the argument is determined by examining the       * setter argument type.      *       * @param target the object that will have it's properties set      * @param args the command line options      * @return any arguments that are not valid options for the target      */
 specifier|public
 specifier|static
 name|String
@@ -283,7 +283,7 @@ return|return
 name|r
 return|;
 block|}
-comment|/**      * converts strings like: test-enabled to testEnabled      *       * @param name      * @return      */
+comment|/**      * converts strings like: test-enabled to testEnabled      */
 specifier|private
 specifier|static
 name|String

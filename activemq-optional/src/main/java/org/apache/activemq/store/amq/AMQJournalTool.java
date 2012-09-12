@@ -436,7 +436,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Allows you to view the contents of a Journal.  *   * @author<a href="http://hiramchirino.com">Hiram Chirino</a>  */
+comment|/**  * Allows you to view the contents of a Journal.  */
 end_comment
 
 begin_class
