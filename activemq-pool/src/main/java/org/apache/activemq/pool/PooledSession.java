@@ -363,6 +363,34 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|JMSExceptionSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|pool
+operator|.
+name|KeyedObjectPool
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -409,34 +437,19 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
-name|ActiveMQSession
-name|session
+specifier|final
+name|SessionKey
+name|key
 decl_stmt|;
 specifier|private
-name|SessionPool
+specifier|final
+name|KeyedObjectPool
+argument_list|<
+name|SessionKey
+argument_list|,
+name|PooledSession
+argument_list|>
 name|sessionPool
-decl_stmt|;
-specifier|private
-name|ActiveMQMessageProducer
-name|messageProducer
-decl_stmt|;
-specifier|private
-name|ActiveMQQueueSender
-name|queueSender
-decl_stmt|;
-specifier|private
-name|ActiveMQTopicPublisher
-name|topicPublisher
-decl_stmt|;
-specifier|private
-name|boolean
-name|transactional
-init|=
-literal|true
-decl_stmt|;
-specifier|private
-name|boolean
-name|ignoreClose
 decl_stmt|;
 specifier|private
 specifier|final
@@ -484,24 +497,64 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
+name|ActiveMQSession
+name|session
+decl_stmt|;
+specifier|private
+name|ActiveMQMessageProducer
+name|messageProducer
+decl_stmt|;
+specifier|private
+name|ActiveMQQueueSender
+name|queueSender
+decl_stmt|;
+specifier|private
+name|ActiveMQTopicPublisher
+name|topicPublisher
+decl_stmt|;
+specifier|private
+name|boolean
+name|transactional
+init|=
+literal|true
+decl_stmt|;
+specifier|private
+name|boolean
+name|ignoreClose
+decl_stmt|;
+specifier|private
 name|boolean
 name|isXa
 decl_stmt|;
 specifier|public
 name|PooledSession
 parameter_list|(
-name|ActiveMQSession
-name|aSession
+name|SessionKey
+name|key
 parameter_list|,
-name|SessionPool
+name|ActiveMQSession
+name|session
+parameter_list|,
+name|KeyedObjectPool
+argument_list|<
+name|SessionKey
+argument_list|,
+name|PooledSession
+argument_list|>
 name|sessionPool
 parameter_list|)
 block|{
 name|this
 operator|.
+name|key
+operator|=
+name|key
+expr_stmt|;
+name|this
+operator|.
 name|session
 operator|=
-name|aSession
+name|session
 expr_stmt|;
 name|this
 operator|.
@@ -574,6 +627,8 @@ operator|=
 name|ignoreClose
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
@@ -587,7 +642,6 @@ operator|!
 name|ignoreClose
 condition|)
 block|{
-comment|// TODO a cleaner way to reset??
 name|boolean
 name|invalidate
 init|=
@@ -759,8 +813,8 @@ condition|(
 name|invalidate
 condition|)
 block|{
-comment|// lets close the session and not put the session back into
-comment|// the pool
+comment|// lets close the session and not put the session back into the pool
+comment|// instead invalidate it so the pool can create a new one on demand.
 if|if
 condition|(
 name|session
@@ -799,26 +853,68 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-name|sessionPool
-operator|.
-name|invalidateSession
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
-block|}
-else|else
+try|try
 block|{
 name|sessionPool
 operator|.
-name|returnSession
+name|invalidateObject
 argument_list|(
+name|key
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|JMSExceptionSupport
+operator|.
+name|create
+argument_list|(
+name|e
+argument_list|)
+throw|;
 block|}
 block|}
+else|else
+block|{
+try|try
+block|{
+name|sessionPool
+operator|.
+name|returnObject
+argument_list|(
+name|key
+argument_list|,
+name|this
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|JMSExceptionSupport
+operator|.
+name|create
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+block|}
+block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commit
@@ -833,6 +929,8 @@ name|commit
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|BytesMessage
 name|createBytesMessage
@@ -848,6 +946,8 @@ name|createBytesMessage
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MapMessage
 name|createMapMessage
@@ -863,6 +963,8 @@ name|createMapMessage
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|createMessage
@@ -878,6 +980,8 @@ name|createMessage
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectMessage
 name|createObjectMessage
@@ -893,6 +997,8 @@ name|createObjectMessage
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectMessage
 name|createObjectMessage
@@ -913,6 +1019,8 @@ name|serializable
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Queue
 name|createQueue
@@ -933,6 +1041,8 @@ name|s
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|StreamMessage
 name|createStreamMessage
@@ -948,6 +1058,8 @@ name|createStreamMessage
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TemporaryQueue
 name|createTemporaryQueue
@@ -989,6 +1101,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TemporaryTopic
 name|createTemporaryTopic
@@ -1030,6 +1144,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|unsubscribe
@@ -1049,6 +1165,8 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TextMessage
 name|createTextMessage
@@ -1064,6 +1182,8 @@ name|createTextMessage
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TextMessage
 name|createTextMessage
@@ -1084,6 +1204,8 @@ name|s
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Topic
 name|createTopic
@@ -1104,6 +1226,8 @@ name|s
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getAcknowledgeMode
@@ -1119,6 +1243,8 @@ name|getAcknowledgeMode
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|getTransacted
@@ -1134,6 +1260,8 @@ name|getTransacted
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|recover
@@ -1148,6 +1276,8 @@ name|recover
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollback
@@ -1162,6 +1292,8 @@ name|rollback
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|XAResource
 name|getXAResource
@@ -1189,6 +1321,8 @@ name|getTransactionContext
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Session
 name|getSession
@@ -1198,6 +1332,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1219,6 +1355,8 @@ block|}
 block|}
 comment|// Consumer related methods
 comment|// -------------------------------------------------------------------------
+annotation|@
+name|Override
 specifier|public
 name|QueueBrowser
 name|createBrowser
@@ -1242,6 +1380,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|QueueBrowser
 name|createBrowser
@@ -1270,6 +1410,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MessageConsumer
 name|createConsumer
@@ -1293,6 +1435,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MessageConsumer
 name|createConsumer
@@ -1321,6 +1465,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MessageConsumer
 name|createConsumer
@@ -1354,6 +1500,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TopicSubscriber
 name|createDurableSubscriber
@@ -1382,6 +1530,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TopicSubscriber
 name|createDurableSubscriber
@@ -1420,6 +1570,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MessageListener
 name|getMessageListener
@@ -1435,6 +1587,8 @@ name|getMessageListener
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMessageListener
@@ -1454,6 +1608,8 @@ name|messageListener
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TopicSubscriber
 name|createSubscriber
@@ -1477,6 +1633,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TopicSubscriber
 name|createSubscriber
@@ -1510,6 +1668,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|QueueReceiver
 name|createReceiver
@@ -1533,6 +1693,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|QueueReceiver
 name|createReceiver
@@ -1563,6 +1725,8 @@ return|;
 block|}
 comment|// Producer related methods
 comment|// -------------------------------------------------------------------------
+annotation|@
+name|Override
 specifier|public
 name|MessageProducer
 name|createProducer
@@ -1584,6 +1748,8 @@ name|destination
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|QueueSender
 name|createSender
@@ -1605,6 +1771,8 @@ name|queue
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TopicPublisher
 name|createPublisher
@@ -1799,11 +1967,9 @@ argument_list|(
 name|consumer
 argument_list|)
 expr_stmt|;
-comment|// must wrap in PooledMessageConsumer to ensure the onConsumerClose
-comment|// method is invoked
-comment|// when the returned consumer is closed, to avoid memory leak in this
-comment|// session class
-comment|// in case many consumers is created
+comment|// must wrap in PooledMessageConsumer to ensure the onConsumerClose method is
+comment|// invoked when the returned consumer is closed, to avoid memory leak in this
+comment|// session class in case many consumers is created
 return|return
 operator|new
 name|PooledMessageConsumer
@@ -1867,6 +2033,8 @@ operator|=
 name|isXa
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

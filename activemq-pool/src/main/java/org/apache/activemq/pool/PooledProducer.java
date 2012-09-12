@@ -68,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A pooled {@link MessageProducer}  *   *   */
+comment|/**  * A pooled {@link MessageProducer}  */
 end_comment
 
 begin_class
@@ -79,10 +79,12 @@ implements|implements
 name|MessageProducer
 block|{
 specifier|private
+specifier|final
 name|ActiveMQMessageProducer
 name|messageProducer
 decl_stmt|;
 specifier|private
+specifier|final
 name|Destination
 name|destination
 decl_stmt|;
@@ -176,6 +178,8 @@ name|getTimeToLive
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
@@ -183,6 +187,8 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
@@ -213,6 +219,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
@@ -240,6 +248,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
@@ -273,6 +283,8 @@ name|timeToLive
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
@@ -338,6 +350,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Destination
 name|getDestination
@@ -347,6 +361,8 @@ return|return
 name|destination
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getDeliveryMode
@@ -356,6 +372,8 @@ return|return
 name|deliveryMode
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDeliveryMode
@@ -371,6 +389,8 @@ operator|=
 name|deliveryMode
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|getDisableMessageID
@@ -380,6 +400,8 @@ return|return
 name|disableMessageID
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDisableMessageID
@@ -395,6 +417,8 @@ operator|=
 name|disableMessageID
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|getDisableMessageTimestamp
@@ -404,6 +428,8 @@ return|return
 name|disableMessageTimestamp
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDisableMessageTimestamp
@@ -419,6 +445,8 @@ operator|=
 name|disableMessageTimestamp
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getPriority
@@ -428,6 +456,8 @@ return|return
 name|priority
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setPriority
@@ -443,6 +473,8 @@ operator|=
 name|priority
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getTimeToLive
@@ -452,6 +484,8 @@ return|return
 name|timeToLive
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setTimeToLive
@@ -478,6 +512,8 @@ return|return
 name|messageProducer
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

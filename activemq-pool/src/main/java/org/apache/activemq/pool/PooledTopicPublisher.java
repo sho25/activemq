@@ -78,7 +78,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  * A {@link TopicPublisher} instance that is created and managed by a PooledConnection.  */
 end_comment
 
 begin_class
@@ -110,6 +110,8 @@ name|destination
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Topic
 name|getTopic
@@ -125,6 +127,8 @@ name|getTopic
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|publish
@@ -150,6 +154,8 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|publish
@@ -190,6 +196,8 @@ name|l
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|publish
@@ -214,6 +222,8 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|publish

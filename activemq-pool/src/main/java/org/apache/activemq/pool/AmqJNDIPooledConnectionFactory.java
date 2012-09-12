@@ -85,20 +85,6 @@ name|JNDIStorableInterface
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|pool
-operator|.
-name|PooledConnectionFactory
-import|;
-end_import
-
 begin_comment
 comment|/** * AmqJNDIPooledConnectionFactory.java * Created by linus on 2008-03-07. */
 end_comment
@@ -150,7 +136,7 @@ name|connectionFactory
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * set the properties for this instance as retrieved from JNDI      *       * @param props      */
+comment|/**      * set the properties for this instance as retrieved from JNDI      *      * @param props      */
 specifier|public
 specifier|synchronized
 name|void
@@ -172,7 +158,7 @@ name|props
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the properties from this instance for storing in JNDI      *       * @return the properties      */
+comment|/**      * Get the properties from this instance for storing in JNDI      *      * @return the properties      */
 specifier|public
 specifier|synchronized
 name|Properties
@@ -210,7 +196,7 @@ operator|.
 name|properties
 return|;
 block|}
-comment|/**      * Retrive a Reference for this instance to store in JNDI      *       * @return the built Reference      * @throws NamingException      *             if error on building Reference      */
+comment|/**      * Retrive a Reference for this instance to store in JNDI      *      * @return the built Reference      * @throws NamingException      *             if error on building Reference      */
 specifier|public
 name|Reference
 name|getReference
@@ -294,7 +280,7 @@ operator|>
 literal|0
 condition|)
 block|{
-name|setMaximumActive
+name|setMaximumActiveSessionPerConnection
 argument_list|(
 name|Integer
 operator|.
@@ -405,7 +391,7 @@ name|Integer
 operator|.
 name|toString
 argument_list|(
-name|getMaximumActive
+name|getMaximumActiveSessionPerConnection
 argument_list|()
 argument_list|)
 argument_list|)

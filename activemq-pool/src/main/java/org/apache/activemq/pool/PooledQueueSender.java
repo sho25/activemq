@@ -78,7 +78,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  * {@link QueueSender} instance that is created and managed by the PooledConnection.  */
 end_comment
 
 begin_class
@@ -110,6 +110,8 @@ name|destination
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
@@ -149,6 +151,8 @@ name|l
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
@@ -173,6 +177,8 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Queue
 name|getQueue

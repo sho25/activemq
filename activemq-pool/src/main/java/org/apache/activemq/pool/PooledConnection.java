@@ -280,7 +280,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a proxy {@link Connection} which is-a {@link TopicConnection} and  * {@link QueueConnection} which is pooled and on {@link #close()} will return  * itself to the sessionPool.  *  *<b>NOTE</b> this implementation is only intended for use when sending  * messages. It does not deal with pooling of consumers; for that look at a  * library like<a href="http://jencks.org/">Jencks</a> such as in<a  * href="http://jencks.org/Message+Driven+POJOs">this example</a>  *  */
+comment|/**  * Represents a proxy {@link Connection} which is-a {@link TopicConnection} and  * {@link QueueConnection} which is pooled and on {@link #close()} will return  * its reference to the ConnectionPool backing it.  *  *<b>NOTE</b> this implementation is only intended for use when sending  * messages. It does not deal with pooling of consumers; for that look at a  * library like<a href="http://jencks.org/">Jencks</a> such as in<a  * href="http://jencks.org/Message+Driven+POJOs">this example</a>  *  */
 end_comment
 
 begin_class
@@ -351,6 +351,7 @@ name|TemporaryTopic
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|/**      * Creates a new PooledConnection instance that uses the given ConnectionPool to create      * and manage its resources.  The ConnectionPool instance can be shared amongst many      * PooledConnection instances.      *      * @param pool      *      The connection and pool manager backing this proxy connection object.      */
 specifier|public
 name|PooledConnection
 parameter_list|(
@@ -386,6 +387,8 @@ name|pool
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
@@ -422,6 +425,8 @@ literal|null
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -438,6 +443,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -450,6 +457,8 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ConnectionConsumer
 name|createConnectionConsumer
@@ -485,6 +494,8 @@ name|maxMessages
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ConnectionConsumer
 name|createConnectionConsumer
@@ -520,6 +531,8 @@ name|maxMessages
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ConnectionConsumer
 name|createDurableConnectionConsumer
@@ -560,6 +573,8 @@ name|i
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getClientID
@@ -575,6 +590,8 @@ name|getClientID
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ExceptionListener
 name|getExceptionListener
@@ -590,6 +607,8 @@ name|getExceptionListener
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ConnectionMetaData
 name|getMetaData
@@ -605,6 +624,8 @@ name|getMetaData
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setExceptionListener
@@ -624,6 +645,8 @@ name|exceptionListener
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setClientID
@@ -671,6 +694,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ConnectionConsumer
 name|createConnectionConsumer
@@ -708,6 +733,8 @@ return|;
 block|}
 comment|// Session factory methods
 comment|// -------------------------------------------------------------------------
+annotation|@
+name|Override
 specifier|public
 name|QueueSession
 name|createQueueSession
@@ -733,6 +760,8 @@ name|ackMode
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TopicSession
 name|createTopicSession
@@ -758,6 +787,8 @@ name|ackMode
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Session
 name|createSession
@@ -804,6 +835,27 @@ operator|)
 name|result
 return|;
 block|}
+comment|// EnhancedCollection API
+comment|// -------------------------------------------------------------------------
+annotation|@
+name|Override
+specifier|public
+name|DestinationSource
+name|getDestinationSource
+parameter_list|()
+throws|throws
+name|JMSException
+block|{
+return|return
+name|getConnection
+argument_list|()
+operator|.
+name|getDestinationSource
+argument_list|()
+return|;
+block|}
+comment|// Implementation methods
+comment|// -------------------------------------------------------------------------
 specifier|public
 name|void
 name|onTemporaryQueueCreate
@@ -836,25 +888,6 @@ name|tempTopic
 argument_list|)
 expr_stmt|;
 block|}
-comment|// EnhancedCollection API
-comment|// -------------------------------------------------------------------------
-specifier|public
-name|DestinationSource
-name|getDestinationSource
-parameter_list|()
-throws|throws
-name|JMSException
-block|{
-return|return
-name|getConnection
-argument_list|()
-operator|.
-name|getDestinationSource
-argument_list|()
-return|;
-block|}
-comment|// Implementation methods
-comment|// -------------------------------------------------------------------------
 specifier|public
 name|ActiveMQConnection
 name|getConnection
@@ -1041,6 +1074,51 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+block|}
+comment|/**      * @return the total number of Pooled session including idle sessions that are not      *          currently loaned out to any client.      */
+specifier|public
+name|int
+name|getNumSessions
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|pool
+operator|.
+name|getNumSessions
+argument_list|()
+return|;
+block|}
+comment|/**      * @return the number of Sessions that are currently checked out of this Connection's session pool.      */
+specifier|public
+name|int
+name|getNumActiveSessions
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|pool
+operator|.
+name|getNumActiveSessions
+argument_list|()
+return|;
+block|}
+comment|/**      * @return the number of Sessions that are idle in this Connection's sessions pool.      */
+specifier|public
+name|int
+name|getNumtIdleSessions
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|pool
+operator|.
+name|getNumIdleSessions
+argument_list|()
+return|;
 block|}
 block|}
 end_class

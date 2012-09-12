@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A cache key for the session details  *  *   */
+comment|/**  * A cache key for the session details used to locate PooledSession intances.  */
 end_comment
 
 begin_class
@@ -25,10 +25,12 @@ class|class
 name|SessionKey
 block|{
 specifier|private
+specifier|final
 name|boolean
 name|transacted
 decl_stmt|;
 specifier|private
+specifier|final
 name|int
 name|ackMode
 decl_stmt|;

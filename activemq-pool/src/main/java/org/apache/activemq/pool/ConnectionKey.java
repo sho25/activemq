@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A cache key for the connection details  *   *   */
+comment|/**  * A cache key for the connection details  */
 end_comment
 
 begin_class
@@ -25,10 +25,12 @@ class|class
 name|ConnectionKey
 block|{
 specifier|private
+specifier|final
 name|String
 name|userName
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|password
 decl_stmt|;

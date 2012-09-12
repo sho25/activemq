@@ -194,7 +194,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -462,6 +462,11 @@ operator|.
 name|getConnection
 argument_list|()
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|amq
+argument_list|)
+expr_stmt|;
 specifier|final
 name|CountDownLatch
 name|gotException
@@ -472,7 +477,6 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-comment|//amq.set
 name|conn
 operator|.
 name|setExceptionListener

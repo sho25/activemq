@@ -136,9 +136,6 @@ name|XaConnectionPool
 argument_list|(
 name|connection
 argument_list|,
-name|getPoolFactory
-argument_list|()
-argument_list|,
 name|getTransactionManager
 argument_list|()
 argument_list|)

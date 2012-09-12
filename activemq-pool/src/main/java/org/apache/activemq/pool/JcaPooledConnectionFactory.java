@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -125,9 +125,6 @@ operator|new
 name|JcaConnectionPool
 argument_list|(
 name|connection
-argument_list|,
-name|getPoolFactory
-argument_list|()
 argument_list|,
 name|getTransactionManager
 argument_list|()
