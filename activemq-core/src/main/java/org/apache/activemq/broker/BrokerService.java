@@ -11342,6 +11342,13 @@ name|ActiveMQQueue
 argument_list|>
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|destinationInterceptors
+operator|!=
+literal|null
+condition|)
+block|{
 for|for
 control|(
 name|DestinationInterceptor
@@ -11406,6 +11413,7 @@ name|ANY_DESCENDENT
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
