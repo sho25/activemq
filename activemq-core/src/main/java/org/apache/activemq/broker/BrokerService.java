@@ -3161,7 +3161,7 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to start ActiveMQ JMS Message Broker ("
+literal|"Failed to start Apache ActiveMQ ("
 operator|+
 name|getBrokerName
 argument_list|()
@@ -3203,7 +3203,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to stop broker after failure in start "
+literal|"Failed to stop broker after failure in start. This exception will be ignored."
 argument_list|,
 name|ex
 argument_list|)
@@ -3444,8 +3444,50 @@ expr_stmt|;
 name|addShutdownHook
 argument_list|()
 expr_stmt|;
+name|broker
+operator|=
 name|getBroker
 argument_list|()
+expr_stmt|;
+name|brokerId
+operator|=
+name|broker
+operator|.
+name|getBrokerId
+argument_list|()
+expr_stmt|;
+comment|// need to log this after creating the broker so we have its id and name
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Apache ActiveMQ "
+operator|+
+name|getBrokerVersion
+argument_list|()
+operator|+
+literal|" ("
+operator|+
+name|getBrokerName
+argument_list|()
+operator|+
+literal|", "
+operator|+
+name|brokerId
+operator|+
+literal|") is starting"
+argument_list|)
+expr_stmt|;
+block|}
+name|broker
 operator|.
 name|start
 argument_list|()
@@ -3585,21 +3627,6 @@ block|}
 block|}
 if|if
 condition|(
-name|brokerId
-operator|==
-literal|null
-condition|)
-block|{
-name|brokerId
-operator|=
-name|broker
-operator|.
-name|getBrokerId
-argument_list|()
-expr_stmt|;
-block|}
-if|if
-condition|(
 name|ioExceptionHandler
 operator|==
 literal|null
@@ -3625,12 +3652,12 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"ActiveMQ "
+literal|"Apache ActiveMQ "
 operator|+
 name|getBrokerVersion
 argument_list|()
 operator|+
-literal|" JMS Message Broker ("
+literal|" ("
 operator|+
 name|getBrokerName
 argument_list|()
@@ -3640,6 +3667,13 @@ operator|+
 name|brokerId
 operator|+
 literal|") started"
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"For help or more information please see: http://activemq.apache.org"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3741,12 +3775,12 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"ActiveMQ "
+literal|"Apache ActiveMQ "
 operator|+
 name|getBrokerVersion
 argument_list|()
 operator|+
-literal|" JMS Message Broker ("
+literal|" ("
 operator|+
 name|getBrokerName
 argument_list|()
@@ -4097,8 +4131,22 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Uptime {}"
-argument_list|,
+literal|"Apache ActiveMQ "
+operator|+
+name|getBrokerVersion
+argument_list|()
+operator|+
+literal|" ("
+operator|+
+name|getBrokerName
+argument_list|()
+operator|+
+literal|", "
+operator|+
+name|brokerId
+operator|+
+literal|") uptime "
+operator|+
 name|getUptime
 argument_list|()
 argument_list|)
@@ -4108,12 +4156,12 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"ActiveMQ "
+literal|"Apache ActiveMQ "
 operator|+
 name|getBrokerVersion
 argument_list|()
 operator|+
-literal|" JMS Message Broker ("
+literal|" ("
 operator|+
 name|getBrokerName
 argument_list|()
@@ -4652,39 +4700,6 @@ operator|==
 literal|null
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isInfoEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"ActiveMQ "
-operator|+
-name|getBrokerVersion
-argument_list|()
-operator|+
-literal|" JMS Message Broker ("
-operator|+
-name|getBrokerName
-argument_list|()
-operator|+
-literal|") is starting"
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"For help or more information please see: http://activemq.apache.org/"
-argument_list|)
-expr_stmt|;
-block|}
 name|broker
 operator|=
 name|createBroker
