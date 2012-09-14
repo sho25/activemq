@@ -1732,6 +1732,17 @@ literal|false
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
+name|AtomicBoolean
+name|stopping
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|(
+literal|false
+argument_list|)
+decl_stmt|;
+specifier|private
 name|BrokerPlugin
 index|[]
 name|plugins
@@ -3005,6 +3016,13 @@ comment|// mechanisms
 comment|// throw new IllegalStateException("Already started.");
 return|return;
 block|}
+name|stopping
+operator|.
+name|set
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|startDate
 operator|=
 operator|new
@@ -3653,12 +3671,23 @@ block|{
 if|if
 condition|(
 operator|!
-name|started
+name|stopping
 operator|.
-name|get
-argument_list|()
+name|compareAndSet
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
 condition|)
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Broker already stopping/stopped"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|MDC
@@ -4093,7 +4122,7 @@ literal|", "
 operator|+
 name|brokerId
 operator|+
-literal|") stopped"
+literal|") is shutdown"
 argument_list|)
 expr_stmt|;
 block|}
