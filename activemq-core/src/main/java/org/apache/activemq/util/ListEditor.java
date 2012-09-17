@@ -66,6 +66,8 @@ comment|/**  * Used to serialize lists of ActiveMQDestinations.   * @see org.apa
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|ListEditor

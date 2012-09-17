@@ -54,7 +54,6 @@ specifier|public
 class|class
 name|StringArrayConverter
 block|{
-comment|// TODO: Remove System.out
 specifier|public
 specifier|static
 name|String

@@ -54,6 +54,8 @@ comment|/**  * Converts string values like "20 Mb", "1024kb", and "1g" to int va
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|MemoryIntPropertyEditor
