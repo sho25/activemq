@@ -100,10 +100,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An adapter for using ActiveMQ inside<a  * href="http://ws.apache.org/axis/">Apache Axis</a>  *   *   */
+comment|/**  * An adapter for using ActiveMQ inside<a  * href="http://ws.apache.org/axis/">Apache Axis</a>  *   * @deprecated will be removed from ActiveMQ 5.8 onwards.  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|ActiveMQVendorAdapter
