@@ -69,7 +69,7 @@ name|jetty
 operator|.
 name|servlet
 operator|.
-name|ServletHolder
+name|ServletContextHandler
 import|;
 end_import
 
@@ -83,7 +83,7 @@ name|jetty
 operator|.
 name|servlet
 operator|.
-name|ServletContextHandler
+name|ServletHolder
 import|;
 end_import
 

@@ -119,18 +119,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|MessageTransformerSupport
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|thoughtworks
@@ -212,6 +200,18 @@ operator|.
 name|xml
 operator|.
 name|XppReader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|MessageTransformerSupport
 import|;
 end_import
 

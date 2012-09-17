@@ -85,7 +85,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ConcurrentMap
+name|ConcurrentHashMap
 import|;
 end_import
 
@@ -97,7 +97,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ConcurrentHashMap
+name|ConcurrentMap
 import|;
 end_import
 

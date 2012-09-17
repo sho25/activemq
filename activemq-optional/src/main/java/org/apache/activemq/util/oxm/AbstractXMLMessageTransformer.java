@@ -109,32 +109,6 @@ name|MessageTransformerSupport
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|thoughtworks
-operator|.
-name|xstream
-operator|.
-name|XStream
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|thoughtworks
-operator|.
-name|xstream
-operator|.
-name|io
-operator|.
-name|HierarchicalStreamDriver
-import|;
-end_import
-
 begin_comment
 comment|/**  * Abstract class used as a base for implementing transformers from object to text messages (in XML/JSON format)  * and vice versa using.  * Supports plugging of custom marshallers  */
 end_comment

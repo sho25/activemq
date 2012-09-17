@@ -18,18 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -85,16 +73,6 @@ name|java
 operator|.
 name|net
 operator|.
-name|URL
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
 name|UnknownHostException
 import|;
 end_import
@@ -124,20 +102,6 @@ operator|.
 name|broker
 operator|.
 name|BrokerService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|SslContext
 import|;
 end_import
 
@@ -226,38 +190,6 @@ operator|.
 name|nio
 operator|.
 name|SelectChannelConnector
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jetty
-operator|.
-name|server
-operator|.
-name|ssl
-operator|.
-name|SslSocketConnector
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jetty
-operator|.
-name|util
-operator|.
-name|ssl
-operator|.
-name|SslContextFactory
 import|;
 end_import
 
@@ -424,6 +356,18 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 

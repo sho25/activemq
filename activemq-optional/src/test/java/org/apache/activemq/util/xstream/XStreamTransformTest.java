@@ -99,6 +99,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|thoughtworks
+operator|.
+name|xstream
+operator|.
+name|io
+operator|.
+name|json
+operator|.
+name|JettisonMappedXmlDriver
+import|;
+end_import
+
+begin_import
+import|import
 name|junit
 operator|.
 name|framework
@@ -132,18 +148,22 @@ import|;
 end_import
 
 begin_import
-import|import
-name|com
+import|import static
+name|org
 operator|.
-name|thoughtworks
+name|apache
 operator|.
-name|xstream
+name|activemq
 operator|.
-name|io
+name|util
 operator|.
-name|json
+name|oxm
 operator|.
-name|JettisonMappedXmlDriver
+name|AbstractXMLMessageTransformer
+operator|.
+name|MessageTransform
+operator|.
+name|ADAPTIVE
 import|;
 end_import
 
@@ -163,7 +183,27 @@ name|AbstractXMLMessageTransformer
 operator|.
 name|MessageTransform
 operator|.
-name|*
+name|OBJECT
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|oxm
+operator|.
+name|AbstractXMLMessageTransformer
+operator|.
+name|MessageTransform
+operator|.
+name|XML
 import|;
 end_import
 
