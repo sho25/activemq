@@ -173,6 +173,18 @@ name|XppReader
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|xmlpull
+operator|.
+name|mxp1
+operator|.
+name|MXParser
+import|;
+end_import
+
 begin_comment
 comment|/**  * Transforms object messages to text messages and vice versa using  * {@link XStream}  *   */
 end_comment
@@ -402,6 +414,10 @@ operator|.
 name|getText
 argument_list|()
 argument_list|)
+argument_list|,
+operator|new
+name|MXParser
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

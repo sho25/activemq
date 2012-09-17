@@ -461,9 +461,7 @@ name|impl
 operator|.
 name|conn
 operator|.
-name|tsccm
-operator|.
-name|ThreadSafeClientConnManager
+name|PoolingClientConnectionManager
 import|;
 end_import
 
@@ -558,7 +556,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A HTTP {@link org.apache.activemq.transport.TransportChannel} which uses the  *<a href="http://jakarta.apache.org/commons/httpclient/">commons-httpclient</a>  * library  */
+comment|/**  * A HTTP {@link org.apache.activemq.transport.Transport} which uses the  *<a href="http://hc.apache.org/index.html">Apache HTTP Client</a>  * library  */
 end_comment
 
 begin_class
@@ -1694,7 +1692,7 @@ operator|new
 name|DefaultHttpClient
 argument_list|(
 operator|new
-name|ThreadSafeClientConnManager
+name|PoolingClientConnectionManager
 argument_list|()
 argument_list|)
 decl_stmt|;
