@@ -249,7 +249,7 @@ operator|.
 name|purge
 argument_list|()
 expr_stmt|;
-comment|//remove cancelled TimerTasks
+comment|// remove cancelled TimerTasks
 block|}
 block|}
 specifier|public
