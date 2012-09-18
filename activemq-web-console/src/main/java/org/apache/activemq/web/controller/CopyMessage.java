@@ -136,7 +136,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Copies a message from one to another queue  *   * @author<a href="http://www.nighttale.net">Dejan Bosanac</a>  *   */
+comment|/**  * Copies a message from one to another queue  */
 end_comment
 
 begin_class

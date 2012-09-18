@@ -168,7 +168,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Sends a message  *  *  */
+comment|/**  * Sends a message  */
 end_comment
 
 begin_class

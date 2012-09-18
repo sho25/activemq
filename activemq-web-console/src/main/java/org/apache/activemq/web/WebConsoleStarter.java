@@ -351,7 +351,7 @@ name|destroy
 argument_list|()
 expr_stmt|;
 block|}
-comment|// do nothing, since the context is destoyed anyway
+comment|// do nothing, since the context is destroyed anyway
 block|}
 block|}
 end_class
