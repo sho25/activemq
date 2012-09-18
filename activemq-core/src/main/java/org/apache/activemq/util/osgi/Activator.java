@@ -63,6 +63,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Properties
 import|;
 end_import
@@ -811,7 +821,7 @@ name|wrrningCounter
 operator|++
 operator|)
 operator|+
-literal|") Invalid sevice file in bundle "
+literal|") Invalid service file in bundle "
 operator|+
 name|wrapper
 operator|+
@@ -894,7 +904,7 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// Since OSGi is such a tricky enviorment to work in.. lets give folks the
+comment|// Since OSGi is such a tricky environment to work in.. lets give folks the
 comment|// most information we can in the error message.
 name|String
 name|msg
@@ -1127,7 +1137,7 @@ name|bundle
 decl_stmt|;
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
