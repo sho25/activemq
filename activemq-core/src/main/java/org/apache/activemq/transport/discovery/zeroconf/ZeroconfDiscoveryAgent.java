@@ -93,11 +93,7 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
+name|javax
 operator|.
 name|jmdns
 operator|.
@@ -107,11 +103,7 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
+name|javax
 operator|.
 name|jmdns
 operator|.
@@ -121,11 +113,7 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
+name|javax
 operator|.
 name|jmdns
 operator|.
@@ -135,11 +123,7 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
+name|javax
 operator|.
 name|jmdns
 operator|.
@@ -275,7 +259,7 @@ specifier|final
 name|String
 name|TYPE_SUFFIX
 init|=
-literal|"ActiveMQ-4."
+literal|"ActiveMQ-5."
 decl_stmt|;
 specifier|private
 name|JmDNS
@@ -498,11 +482,40 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|closeTarget
+try|try
+block|{
+name|JmDNSFactory
 operator|.
-name|close
+name|onClose
+argument_list|(
+name|getLocalAddress
 argument_list|()
+argument_list|,
+name|closeTarget
+argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Error closing JmDNS "
+operator|+
+name|getLocalhost
+argument_list|()
+operator|+
+literal|". This exception will be ignored."
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 decl_stmt|;
@@ -974,8 +987,9 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-operator|new
 name|ServiceInfo
+operator|.
+name|create
 argument_list|(
 name|type
 argument_list|,
