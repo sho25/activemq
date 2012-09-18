@@ -127,6 +127,11 @@ argument_list|,
 literal|1.0F
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|final
+name|ClassLoader
+name|inLoader
+decl_stmt|;
 specifier|public
 name|ClassLoadingAwareObjectInputStream
 parameter_list|(
@@ -140,6 +145,16 @@ name|super
 argument_list|(
 name|in
 argument_list|)
+expr_stmt|;
+name|inLoader
+operator|=
+name|in
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getClassLoader
+argument_list|()
 expr_stmt|;
 block|}
 specifier|protected
@@ -177,6 +192,8 @@ name|getName
 argument_list|()
 argument_list|,
 name|cl
+argument_list|,
+name|inLoader
 argument_list|)
 return|;
 block|}
@@ -278,7 +295,7 @@ name|Proxy
 operator|.
 name|getProxyClass
 argument_list|(
-name|FALLBACK_CLASS_LOADER
+name|inLoader
 argument_list|,
 name|cinterfaces
 argument_list|)
@@ -289,7 +306,30 @@ parameter_list|(
 name|IllegalArgumentException
 name|e1
 parameter_list|)
-block|{             }
+block|{
+comment|// ignore
+block|}
+try|try
+block|{
+return|return
+name|Proxy
+operator|.
+name|getProxyClass
+argument_list|(
+name|FALLBACK_CLASS_LOADER
+argument_list|,
+name|cinterfaces
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e2
+parameter_list|)
+block|{
+comment|// ignore
+block|}
 throw|throw
 operator|new
 name|ClassNotFoundException
@@ -312,10 +352,19 @@ name|String
 name|className
 parameter_list|,
 name|ClassLoader
+modifier|...
 name|cl
 parameter_list|)
 throws|throws
 name|ClassNotFoundException
+block|{
+for|for
+control|(
+name|ClassLoader
+name|loader
+range|:
+name|cl
+control|)
 block|{
 try|try
 block|{
@@ -328,7 +377,7 @@ name|className
 argument_list|,
 literal|false
 argument_list|,
-name|cl
+name|loader
 argument_list|)
 return|;
 block|}
@@ -338,6 +387,10 @@ name|ClassNotFoundException
 name|e
 parameter_list|)
 block|{
+comment|// ignore
+block|}
+block|}
+comment|// fallback
 specifier|final
 name|Class
 argument_list|<
@@ -383,7 +436,6 @@ argument_list|,
 name|FALLBACK_CLASS_LOADER
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 static|static
