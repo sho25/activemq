@@ -25,9 +25,11 @@ name|PropertyEditorSupport
 import|;
 end_import
 
+begin_comment
+comment|/**  * Used by xbean to set booleans.  *<p/>  *<b>Important:</b> Do not use this for other purposes than xbean, as property editors  * are not thread safe, and they are slow to use.  */
+end_comment
+
 begin_class
-annotation|@
-name|Deprecated
 specifier|public
 class|class
 name|BooleanEditor
