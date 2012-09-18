@@ -233,6 +233,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -290,6 +300,11 @@ comment|/**  *  shows broker 'once only delivery' and recovery with XA  */
 end_comment
 
 begin_class
+annotation|@
+name|Ignore
+argument_list|(
+literal|"Test hangs"
+argument_list|)
 specifier|public
 class|class
 name|JmsJdbcXATest
