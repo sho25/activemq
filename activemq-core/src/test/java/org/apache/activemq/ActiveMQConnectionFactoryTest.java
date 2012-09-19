@@ -75,6 +75,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -545,7 +555,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://localhost?broker.persistent=false"
+literal|"vm://myBroker2?broker.persistent=false"
 argument_list|)
 decl_stmt|;
 comment|// Make sure the broker is not created until the connection is
@@ -559,7 +569,7 @@ argument_list|()
 operator|.
 name|lookup
 argument_list|(
-literal|"localhost"
+literal|"myBroker2"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -589,7 +599,7 @@ argument_list|()
 operator|.
 name|lookup
 argument_list|(
-literal|"localhost"
+literal|"myBroker2"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -608,7 +618,7 @@ argument_list|()
 operator|.
 name|lookup
 argument_list|(
-literal|"localhost"
+literal|"myBroker2"
 argument_list|)
 argument_list|)
 expr_stmt|;
