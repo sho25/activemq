@@ -270,6 +270,9 @@ name|MessageServlet
 extends|extends
 name|MessageServletSupport
 block|{
+comment|// its a bit pita that this servlet got intermixed with jetty continuation/rest
+comment|// instead of creating a special for that. We should have kept a simple servlet
+comment|// for good old fashioned request/response blocked communication.
 specifier|private
 specifier|static
 specifier|final
@@ -686,11 +689,12 @@ argument_list|(
 name|body
 argument_list|)
 expr_stmt|;
-name|writeResponse
+name|writeMessageResponse
 argument_list|(
-name|request
-argument_list|,
 name|response
+operator|.
+name|getWriter
+argument_list|()
 argument_list|,
 name|answer
 argument_list|)
@@ -1198,28 +1202,12 @@ name|setStatus
 argument_list|(
 name|HttpServletResponse
 operator|.
-name|SC_OK
+name|SC_NO_CONTENT
 argument_list|)
 expr_stmt|;
-name|response
-operator|.
-name|setContentType
-argument_list|(
-literal|"text/plain"
-argument_list|)
-expr_stmt|;
-name|writer
-operator|.
-name|write
-argument_list|(
-literal|"No message received"
-argument_list|)
-expr_stmt|;
-name|writer
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
+comment|//                response.setContentType("text/plain");
+comment|//                writer.write("No message received");
+comment|//                writer.flush();
 block|}
 else|else
 block|{
