@@ -327,7 +327,7 @@ argument_list|(
 operator|new
 name|URI
 argument_list|(
-literal|"failover://(tcp://0.0.0.0:61616)?useExponentialBackOff=false&reconnectDelay=100&initialReconnectDelay=0"
+literal|"failover://(tcp://0.0.0.0:61616)?useExponentialBackOff=false&reconnectDelay=0&initialReconnectDelay=0"
 argument_list|)
 argument_list|)
 decl_stmt|;
