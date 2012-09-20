@@ -119,7 +119,7 @@ name|gogo
 operator|.
 name|commands
 operator|.
-name|Option
+name|Argument
 import|;
 end_import
 
@@ -136,6 +136,22 @@ operator|.
 name|commands
 operator|.
 name|Command
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|felix
+operator|.
+name|gogo
+operator|.
+name|commands
+operator|.
+name|Option
 import|;
 end_import
 
@@ -182,17 +198,11 @@ extends|extends
 name|OsgiCommandSupport
 block|{
 annotation|@
-name|Option
+name|Argument
 argument_list|(
 name|name
 operator|=
-literal|"-n"
-argument_list|,
-name|aliases
-operator|=
-block|{
-literal|"--name"
-block|}
+literal|"name"
 argument_list|,
 name|description
 operator|=
