@@ -5578,7 +5578,7 @@ operator|=
 operator|new
 name|TaskRunnerFactory
 argument_list|(
-literal|"BrokerService["
+literal|"ActiveMQ BrokerService["
 operator|+
 name|getBrokerName
 argument_list|()
@@ -11570,7 +11570,7 @@ name|Thread
 argument_list|(
 name|runnable
 argument_list|,
-literal|"BrokerService.worker."
+literal|"ActiveMQ BrokerService.worker."
 operator|+
 name|this
 operator|.

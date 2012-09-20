@@ -484,6 +484,17 @@ name|readCheck
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ReadChecker"
+return|;
+block|}
 block|}
 decl_stmt|;
 specifier|private
@@ -568,6 +579,17 @@ expr_stmt|;
 name|writeCheck
 argument_list|()
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"WriteChecker"
+return|;
 block|}
 block|}
 decl_stmt|;
@@ -711,6 +733,24 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Running {}"
+argument_list|,
+name|this
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|monitorStarted
 operator|.
 name|get
@@ -789,6 +829,22 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"WriteCheck["
+operator|+
+name|getRemoteAddress
+argument_list|()
+operator|+
+literal|"]"
+return|;
 block|}
 empty_stmt|;
 block|}
@@ -931,6 +987,24 @@ name|void
 name|run
 parameter_list|()
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Running {}"
+argument_list|,
+name|this
+argument_list|)
+expr_stmt|;
+block|}
 name|onException
 argument_list|(
 operator|new
@@ -949,6 +1023,22 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ReadCheck["
+operator|+
+name|getRemoteAddress
+argument_list|()
+operator|+
+literal|"]"
+return|;
 block|}
 empty_stmt|;
 block|}
@@ -1560,7 +1650,7 @@ operator|=
 operator|new
 name|Timer
 argument_list|(
-literal|"InactivityMonitor ReadCheck"
+literal|"ActiveMQ InactivityMonitor ReadCheckTimer"
 argument_list|,
 literal|true
 argument_list|)
@@ -1570,7 +1660,7 @@ operator|=
 operator|new
 name|Timer
 argument_list|(
-literal|"InactivityMonitor WriteCheck"
+literal|"ActiveMQ InactivityMonitor WriteCheckTimer"
 argument_list|,
 literal|true
 argument_list|)
@@ -1756,9 +1846,7 @@ name|Thread
 argument_list|(
 name|runnable
 argument_list|,
-literal|"InactivityMonitor Async Task: "
-operator|+
-name|runnable
+literal|"ActiveMQ InactivityMonitor Worker"
 argument_list|)
 decl_stmt|;
 name|thread
@@ -1779,6 +1867,8 @@ name|ThreadPoolExecutor
 name|createExecutor
 parameter_list|()
 block|{
+comment|// TODO: This value of 10 seconds seems to low, see discussion at
+comment|// http://activemq.2283324.n4.nabble.com/InactivityMonitor-Creating-too-frequent-threads-tp4656752.html;cid=1348142445209-351
 name|ThreadPoolExecutor
 name|exec
 init|=
