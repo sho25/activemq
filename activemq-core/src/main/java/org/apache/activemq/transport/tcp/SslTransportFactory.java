@@ -61,16 +61,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|security
-operator|.
-name|SecureRandom
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|HashMap
@@ -115,18 +105,6 @@ name|net
 operator|.
 name|ssl
 operator|.
-name|KeyManager
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|net
-operator|.
-name|ssl
-operator|.
 name|SSLServerSocketFactory
 import|;
 end_import
@@ -140,18 +118,6 @@ operator|.
 name|ssl
 operator|.
 name|SSLSocketFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|net
-operator|.
-name|ssl
-operator|.
-name|TrustManager
 import|;
 end_import
 
@@ -274,7 +240,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the TcpTransportFactory using SSL. The major  * contribution from this class is that it is aware of SslTransportServer and  * SslTransport classes. All Transports and TransportServers created from this  * factory will have their needClientAuth option set to false.  *  * @author sepandm@gmail.com (Sepand)  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  *  */
+comment|/**  * An implementation of the TcpTransportFactory using SSL. The major  * contribution from this class is that it is aware of SslTransportServer and  * SslTransport classes. All Transports and TransportServers created from this  * factory will have their needClientAuth option set to false.  */
 end_comment
 
 begin_class
@@ -284,7 +250,6 @@ name|SslTransportFactory
 extends|extends
 name|TcpTransportFactory
 block|{
-comment|// The log this uses.,
 specifier|private
 specifier|static
 specifier|final
@@ -750,44 +715,6 @@ name|getDefault
 argument_list|()
 return|;
 block|}
-block|}
-comment|/**      *      * @param km      * @param tm      * @param random      * @deprecated "Do not use anymore... using static initializers like this method only allows the JVM to use 1 SSL configuration per broker."      * @see org.apache.activemq.broker.SslContext#setCurrentSslContext(SslContext)      * @see org.apache.activemq.broker.SslContext#getSSLContext()      */
-specifier|public
-name|void
-name|setKeyAndTrustManagers
-parameter_list|(
-name|KeyManager
-index|[]
-name|km
-parameter_list|,
-name|TrustManager
-index|[]
-name|tm
-parameter_list|,
-name|SecureRandom
-name|random
-parameter_list|)
-block|{
-name|SslContext
-name|ctx
-init|=
-operator|new
-name|SslContext
-argument_list|(
-name|km
-argument_list|,
-name|tm
-argument_list|,
-name|random
-argument_list|)
-decl_stmt|;
-name|SslContext
-operator|.
-name|setCurrentSslContext
-argument_list|(
-name|ctx
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class

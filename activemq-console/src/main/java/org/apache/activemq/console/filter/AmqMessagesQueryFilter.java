@@ -43,16 +43,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -253,19 +243,10 @@ decl_stmt|;
 comment|// Convert to message selector
 for|for
 control|(
-name|Iterator
-name|i
-init|=
+name|Object
+name|query
+range|:
 name|queries
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
 name|selector
@@ -274,10 +255,7 @@ name|selector
 operator|+
 literal|"("
 operator|+
-name|i
-operator|.
-name|next
-argument_list|()
+name|query
 operator|.
 name|toString
 argument_list|()
@@ -438,35 +416,6 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Create and start a JMS connection      *      * @param brokerUrl - broker url to connect to.      * @return JMS connection      * @throws JMSException      * @deprecated Use createConnection() instead, and pass the url to the ConnectionFactory when it's created.      */
-annotation|@
-name|Deprecated
-specifier|protected
-name|Connection
-name|createConnection
-parameter_list|(
-name|URI
-name|brokerUrl
-parameter_list|)
-throws|throws
-name|JMSException
-block|{
-comment|// maintain old behaviour, when called this way.
-name|connectionFactory
-operator|=
-operator|(
-operator|new
-name|ActiveMQConnectionFactory
-argument_list|(
-name|brokerUrl
-argument_list|)
-operator|)
-expr_stmt|;
-return|return
-name|createConnection
-argument_list|()
-return|;
-block|}
 comment|/**      * Create and start a JMS connection      *      * @return JMS connection      * @throws JMSException      */
 specifier|protected
 name|Connection
@@ -482,6 +431,7 @@ literal|null
 operator|==
 name|connectionFactory
 condition|)
+block|{
 name|connectionFactory
 operator|=
 operator|(
@@ -493,6 +443,7 @@ argument_list|()
 argument_list|)
 operator|)
 expr_stmt|;
+block|}
 name|Connection
 name|conn
 init|=

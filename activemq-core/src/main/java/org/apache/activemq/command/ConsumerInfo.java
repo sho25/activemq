@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @openwire:marshaller code="5"  *   */
+comment|/**  * @openwire:marshaller code="5"  *  */
 end_comment
 
 begin_class
@@ -438,7 +438,7 @@ return|return
 name|DATA_STRUCTURE_TYPE
 return|;
 block|}
-comment|/**      * Is used to uniquely identify the consumer to the broker.      *       * @openwire:property version=1 cache=true      */
+comment|/**      * Is used to uniquely identify the consumer to the broker.      *      * @openwire:property version=1 cache=true      */
 specifier|public
 name|ConsumerId
 name|getConsumerId
@@ -463,7 +463,7 @@ operator|=
 name|consumerId
 expr_stmt|;
 block|}
-comment|/**      * Is this consumer a queue browser?      *       * @openwire:property version=1      */
+comment|/**      * Is this consumer a queue browser?      *      * @openwire:property version=1      */
 specifier|public
 name|boolean
 name|isBrowser
@@ -488,7 +488,7 @@ operator|=
 name|browser
 expr_stmt|;
 block|}
-comment|/**      * The destination that the consumer is interested in receiving messages      * from. This destination could be a composite destination.      *       * @openwire:property version=1 cache=true      */
+comment|/**      * The destination that the consumer is interested in receiving messages      * from. This destination could be a composite destination.      *      * @openwire:property version=1 cache=true      */
 specifier|public
 name|ActiveMQDestination
 name|getDestination
@@ -513,7 +513,7 @@ operator|=
 name|destination
 expr_stmt|;
 block|}
-comment|/**      * How many messages a broker will send to the client without receiving an      * ack before he stops dispatching messages to the client.      *       * @openwire:property version=1      */
+comment|/**      * How many messages a broker will send to the client without receiving an      * ack before he stops dispatching messages to the client.      *      * @openwire:property version=1      */
 specifier|public
 name|int
 name|getPrefetchSize
@@ -544,7 +544,7 @@ operator|=
 name|prefetchSize
 expr_stmt|;
 block|}
-comment|/**      * How many messages a broker will keep around, above the prefetch limit,      * for non-durable topics before starting to discard older messages.      *       * @openwire:property version=1      */
+comment|/**      * How many messages a broker will keep around, above the prefetch limit,      * for non-durable topics before starting to discard older messages.      *      * @openwire:property version=1      */
 specifier|public
 name|int
 name|getMaximumPendingMessageLimit
@@ -569,7 +569,7 @@ operator|=
 name|maximumPendingMessageLimit
 expr_stmt|;
 block|}
-comment|/**      * Should the broker dispatch a message to the consumer async? If he does it      * async, then he uses a more SEDA style of processing while if it is not      * done async, then he broker use a STP style of processing. STP is more      * appropriate in high bandwidth situations or when being used by and in vm      * transport.      *       * @openwire:property version=1      */
+comment|/**      * Should the broker dispatch a message to the consumer async? If he does it      * async, then he uses a more SEDA style of processing while if it is not      * done async, then he broker use a STP style of processing. STP is more      * appropriate in high bandwidth situations or when being used by and in vm      * transport.      *      * @openwire:property version=1      */
 specifier|public
 name|boolean
 name|isDispatchAsync
@@ -594,7 +594,7 @@ operator|=
 name|dispatchAsync
 expr_stmt|;
 block|}
-comment|/**      * The JMS selector used to filter out messages that this consumer is      * interested in.      *       * @openwire:property version=1      */
+comment|/**      * The JMS selector used to filter out messages that this consumer is      * interested in.      *      * @openwire:property version=1      */
 specifier|public
 name|String
 name|getSelector
@@ -619,7 +619,7 @@ operator|=
 name|selector
 expr_stmt|;
 block|}
-comment|/**      * Used to identify the name of a durable subscription.      *       * @openwire:property version=1      */
+comment|/**      * Used to identify the name of a durable subscription.      *      * @openwire:property version=1      */
 specifier|public
 name|String
 name|getSubscriptionName
@@ -644,33 +644,7 @@ operator|=
 name|durableSubscriptionId
 expr_stmt|;
 block|}
-comment|/**      * @deprecated      * @return      * @see getSubscriptionName      */
-specifier|public
-name|String
-name|getSubcriptionName
-parameter_list|()
-block|{
-return|return
-name|subscriptionName
-return|;
-block|}
-comment|/**      * @deprecated      * @see setSubscriptionName      * @param durableSubscriptionId      */
-specifier|public
-name|void
-name|setSubcriptionName
-parameter_list|(
-name|String
-name|durableSubscriptionId
-parameter_list|)
-block|{
-name|this
-operator|.
-name|subscriptionName
-operator|=
-name|durableSubscriptionId
-expr_stmt|;
-block|}
-comment|/**      * Set noLocal to true to avoid receiving messages that were published      * locally on the same connection.      *       * @openwire:property version=1      */
+comment|/**      * Set noLocal to true to avoid receiving messages that were published      * locally on the same connection.      *      * @openwire:property version=1      */
 specifier|public
 name|boolean
 name|isNoLocal
@@ -695,7 +669,7 @@ operator|=
 name|noLocal
 expr_stmt|;
 block|}
-comment|/**      * An exclusive consumer locks out other consumers from being able to      * receive messages from the destination. If there are multiple exclusive      * consumers for a destination, the first one created will be the exclusive      * consumer of the destination.      *       * @openwire:property version=1      */
+comment|/**      * An exclusive consumer locks out other consumers from being able to      * receive messages from the destination. If there are multiple exclusive      * consumers for a destination, the first one created will be the exclusive      * consumer of the destination.      *      * @openwire:property version=1      */
 specifier|public
 name|boolean
 name|isExclusive
@@ -720,7 +694,7 @@ operator|=
 name|exclusive
 expr_stmt|;
 block|}
-comment|/**      * A retroactive consumer only has meaning for Topics. It allows a consumer      * to retroactively see messages sent prior to the consumer being created.      * If the consumer is not durable, it will be delivered the last message      * published to the topic. If the consumer is durable then it will receive      * all persistent messages that are still stored in persistent storage for      * that topic.      *       * @openwire:property version=1      */
+comment|/**      * A retroactive consumer only has meaning for Topics. It allows a consumer      * to retroactively see messages sent prior to the consumer being created.      * If the consumer is not durable, it will be delivered the last message      * published to the topic. If the consumer is durable then it will receive      * all persistent messages that are still stored in persistent storage for      * that topic.      *      * @openwire:property version=1      */
 specifier|public
 name|boolean
 name|isRetroactive
@@ -772,7 +746,7 @@ return|return
 name|command
 return|;
 block|}
-comment|/**      * The broker will avoid dispatching to a lower priority consumer if there      * are other higher priority consumers available to dispatch to. This allows      * letting the broker to have an affinity to higher priority consumers.      * Default priority is 0.      *       * @openwire:property version=1      */
+comment|/**      * The broker will avoid dispatching to a lower priority consumer if there      * are other higher priority consumers available to dispatch to. This allows      * letting the broker to have an affinity to higher priority consumers.      * Default priority is 0.      *      * @openwire:property version=1      */
 specifier|public
 name|byte
 name|getPriority
@@ -797,7 +771,7 @@ operator|=
 name|priority
 expr_stmt|;
 block|}
-comment|/**      * The route of brokers the command has moved through.      *       * @openwire:property version=1 cache=true      */
+comment|/**      * The route of brokers the command has moved through.      *      * @openwire:property version=1 cache=true      */
 specifier|public
 name|BrokerId
 index|[]
@@ -824,7 +798,7 @@ operator|=
 name|brokerPath
 expr_stmt|;
 block|}
-comment|/**      * A transient additional predicate that can be used it inject additional      * predicates into the selector on the fly. Handy if if say a Security      * Broker interceptor wants to filter out messages based on security level      * of the consumer.      *       * @openwire:property version=1      */
+comment|/**      * A transient additional predicate that can be used it inject additional      * predicates into the selector on the fly. Handy if if say a Security      * Broker interceptor wants to filter out messages based on security level      * of the consumer.      *      * @openwire:property version=1      */
 specifier|public
 name|BooleanExpression
 name|getAdditionalPredicate
@@ -946,7 +920,7 @@ operator|=
 name|currentPrefetchSize
 expr_stmt|;
 block|}
-comment|/**      * The broker may be able to optimize it's processing or provides better QOS      * if it knows the consumer will not be sending ranged acks.      *       * @return true if the consumer will not send range acks.      * @openwire:property version=1      */
+comment|/**      * The broker may be able to optimize it's processing or provides better QOS      * if it knows the consumer will not be sending ranged acks.      *      * @return true if the consumer will not send range acks.      * @openwire:property version=1      */
 specifier|public
 name|boolean
 name|isNoRangeAcks
@@ -1101,7 +1075,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Tracks the original subscription id that causes a subscription to       * percolate through a network when networkTTL> 1. Tracking the original      * subscription allows duplicate suppression.      *       * @return array of the current subscription path      * @openwire:property version=4      */
+comment|/**      * Tracks the original subscription id that causes a subscription to      * percolate through a network when networkTTL> 1. Tracking the original      * subscription allows duplicate suppression.      *      * @return array of the current subscription path      * @openwire:property version=4      */
 specifier|public
 name|ConsumerId
 index|[]

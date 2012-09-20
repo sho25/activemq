@@ -77,26 +77,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|springframework
 operator|.
 name|beans
@@ -106,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An ActiveMQ Message Broker. It consists of a number of transport  * connectors, network connectors and a bunch of properties which can be used to  * configure the broker as its lazily created.  *   * @org.apache.xbean.XBean element="broker" rootElement="true"  * @org.apache.xbean.Defaults {code:xml}   *<broker test="foo.bar">  *   lets.  *   see what it includes.  *</broker>     * {code}  *   */
+comment|/**  * An ActiveMQ Message Broker. It consists of a number of transport  * connectors, network connectors and a bunch of properties which can be used to  * configure the broker as its lazily created.  *  * @org.apache.xbean.XBean element="broker" rootElement="true"  * @org.apache.xbean.Defaults {code:xml}  *<broker test="foo.bar">  *   lets.  *   see what it includes.  *</broker>  * {code}  *  */
 end_comment
 
 begin_class
@@ -116,22 +96,6 @@ name|XBeanBrokerService
 extends|extends
 name|BrokerService
 block|{
-specifier|private
-specifier|static
-specifier|final
-specifier|transient
-name|Logger
-name|LOG
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|XBeanBrokerService
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|private
 name|boolean
 name|start
@@ -296,44 +260,6 @@ operator|.
 name|start
 operator|=
 name|start
-expr_stmt|;
-block|}
-comment|/**      * Sets whether the broker should shutdown the ApplicationContext when the broker jvm is shutdown.      * The broker can be stopped because the underlying JDBC store is unavailable for example.      */
-annotation|@
-name|Deprecated
-specifier|public
-name|void
-name|setDestroyApplicationContextOnShutdown
-parameter_list|(
-name|boolean
-name|destroy
-parameter_list|)
-block|{
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"destroyApplicationContextOnShutdown parameter is deprecated, please use shutdown hooks instead"
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Sets whether the broker should shutdown the ApplicationContext when the broker is stopped.      * The broker can be stopped because the underlying JDBC store is unavailable for example.      */
-annotation|@
-name|Deprecated
-specifier|public
-name|void
-name|setDestroyApplicationContextOnStop
-parameter_list|(
-name|boolean
-name|destroy
-parameter_list|)
-block|{
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"destroyApplicationContextOnStop parameter is deprecated, please use shutdown hooks instead"
-argument_list|)
 expr_stmt|;
 block|}
 block|}

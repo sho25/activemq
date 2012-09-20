@@ -51,16 +51,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|LinkedList
 import|;
 end_import
@@ -350,7 +340,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @org.apache.xbean.XBean  *  */
+comment|/**  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
@@ -376,6 +366,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|protected
+specifier|final
 name|CopyOnWriteArrayList
 argument_list|<
 name|TransportConnection
@@ -793,45 +784,6 @@ operator|.
 name|brokerInfo
 operator|=
 name|brokerInfo
-expr_stmt|;
-block|}
-comment|/**      *      * @deprecated use the {@link #setBrokerService(BrokerService)} method      *             instead.      */
-annotation|@
-name|Deprecated
-specifier|public
-name|void
-name|setBrokerName
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
-if|if
-condition|(
-name|this
-operator|.
-name|brokerInfo
-operator|==
-literal|null
-condition|)
-block|{
-name|this
-operator|.
-name|brokerInfo
-operator|=
-operator|new
-name|BrokerInfo
-argument_list|()
-expr_stmt|;
-block|}
-name|this
-operator|.
-name|brokerInfo
-operator|.
-name|setBrokerName
-argument_list|(
-name|name
-argument_list|)
 expr_stmt|;
 block|}
 specifier|public
@@ -1351,8 +1303,7 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
-comment|// strip off server side query parameters which may not be compatible to
-comment|// clients
+comment|// strip off server side query parameters which may not be compatible to clients
 if|if
 condition|(
 name|theConnectURI
@@ -1475,37 +1426,17 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|Iterator
-argument_list|<
 name|TransportConnection
-argument_list|>
-name|iter
-init|=
+name|connection
+range|:
 name|connections
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|TransportConnection
-name|c
-init|=
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|ss
 operator|.
 name|stop
 argument_list|(
-name|c
+name|connection
 argument_list|)
 expr_stmt|;
 block|}
