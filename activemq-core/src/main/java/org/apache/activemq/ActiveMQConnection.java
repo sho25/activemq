@@ -5729,7 +5729,7 @@ return|return
 name|alwaysSessionAsync
 return|;
 block|}
-comment|/**      * If this flag is set then a separate thread is not used for dispatching      * messages for each Session in the Connection. However, a separate thread      * is always used if there is more than one session, or the session isn't in      * auto acknowledge or duplicates ok mode      */
+comment|/**      * If this flag is not set then a separate thread is not used for dispatching messages for each Session in      * the Connection. However, a separate thread is always used if there is more than one session, or the session      * isn't in auto acknowledge or duplicates ok mode.  By default this value is set to true and session dispatch      * happens asynchronously.      */
 specifier|public
 name|void
 name|setAlwaysSessionAsync

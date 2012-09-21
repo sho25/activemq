@@ -116,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility class that provides methods for parsing URI's  */
+comment|/**  * Utility class that provides methods for parsing URI's  *  * This class can be used to split composite URI's into their component parts and is used to extract any  * URI options from each URI in order to set specific properties on Beans.  */
 end_comment
 
 begin_class
@@ -124,6 +124,7 @@ specifier|public
 class|class
 name|URISupport
 block|{
+comment|/**      * A composite URI can be split into one or more CompositeData object which each represent the      * individual URIs that comprise the composite one.      */
 specifier|public
 specifier|static
 class|class
@@ -423,6 +424,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**      * Give a URI break off any URI options and store them in a Key / Value Mapping.      *      * @param uri      * 		The URI whose query should be extracted and processed.      *      * @return A Mapping of the URI options.      * @throws URISyntaxException      */
 specifier|public
 specifier|static
 name|Map
@@ -639,6 +641,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/**      * Given a URI parse and extract any URI query options and return them as a Key / Value mapping.      *      * This method differs from the {@link parseQuery} method in that it handles composite URI types and      * will extract the URI options from the outermost composite URI.      *      * @param uri      * 		The URI whose query should be extracted and processed.      *      * @return A Mapping of the URI options.      * @throws URISyntaxException      */
 specifier|public
 specifier|static
 name|Map
@@ -747,6 +750,7 @@ name|parameters
 return|;
 block|}
 block|}
+comment|/**      * Given a Key / Value mapping create and append a URI query value that represents the mapped entries, return the      * newly updated URI that contains the value of the given URI and the appended query value.      *      * @param uri      * 		The source URI that will have the Map entries appended as a URI query value.      * @param queryParameters      * 		The Key / Value mapping that will be transformed into a URI query string.      *      * @return A new URI value that combines the given URI and the constructed query string.      * @throws URISyntaxException      */
 specifier|public
 specifier|static
 name|URI
@@ -777,6 +781,7 @@ literal|""
 argument_list|)
 return|;
 block|}
+comment|/**      * Given a Key / Value mapping create and append a URI query value that represents the mapped entries, return the      * newly updated URI that contains the value of the given URI and the appended query value.  Each entry in the query      * string is prefixed by the supplied optionPrefix string.      *      * @param uri      * 		The source URI that will have the Map entries appended as a URI query value.      * @param queryParameters      * 		The Key / Value mapping that will be transformed into a URI query string.      * @param optionPrefix      * 		A string value that when not null or empty is used to prefix each query option key.      *      * @return A new URI value that combines the given URI and the constructed query string.      * @throws URISyntaxException      */
 specifier|public
 specifier|static
 name|URI
@@ -962,7 +967,7 @@ operator|.
 name|EMPTY_MAP
 return|;
 block|}
-comment|/**      * Removes any URI query from the given uri      */
+comment|/**      * Removes any URI query from the given uri and return a new URI that does not contain the query portion.      *      * @param uri      * 		The URI whose query value is to be removed.      *      * @return a new URI that does not contain a query value.      * @throws URISyntaxException      */
 specifier|public
 specifier|static
 name|URI
@@ -983,7 +988,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a URI with the given query      */
+comment|/**      * Creates a URI with the given query, removing an previous query value from the given URI.      *      * @param uri      * 		The source URI whose existing query is replaced with the newly supplied one.      * @param query      * 		The new URI query string that should be appended to the given URI.      *      * @return a new URI that is a combination of the original URI and the given query string.      * @throws URISyntaxException      */
 specifier|public
 specifier|static
 name|URI
@@ -1094,6 +1099,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * Given a composite URI, parse the individual URI elements contained within that URI and return      * a CompsoteData instance that contains the parsed URI values.      *      * @param uri      * 		The target URI that should be parsed.      *      * @return a new CompsiteData instance representing the parsed composite URI.      * @throws URISyntaxException      */
 specifier|public
 specifier|static
 name|CompositeData
@@ -1162,6 +1168,7 @@ return|return
 name|rc
 return|;
 block|}
+comment|/**      * Examine a URI and determine if it is a Composite type or not.      *      * @param uri      * 		The URI that is to be examined.      *      * @return true if the given URI is a Compsote type.      */
 specifier|public
 specifier|static
 name|boolean
@@ -1215,6 +1222,7 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**      * Given a string and a position in that string of an open parend, find the matching close parend.      *      * @param str      * 		The string to be searched for a matching parend.      * @param first      * 		The index in the string of the opening parend whose close value is to be searched.      *      * @return the index in the string where the closing parend is located.      * @throws URISyntaxException fi the string does not contain a matching parend.      */
 specifier|public
 specifier|static
 name|int
@@ -1371,7 +1379,7 @@ return|return
 name|index
 return|;
 block|}
-comment|/**      * @param uri      * @param rc      * @param ssp      * @throws URISyntaxException      */
+comment|/**      * Given a composite URI and a CompositeData instance and the scheme specific part extracted from the source URI,      * parse the composite URI and populate the CompositeData object with the results.  The source URI is used only      * for logging as the ssp should have already been extracted from it and passed here.      *      * @param uri      * 		The original source URI whose ssp is parsed into the composite data.      * @param rc      * 		The CompsositeData instance that will be populated from the given ssp.      * @param ssp      * 		The scheme specific part from the original string that is a composite or one or more URIs.      *      * @throws URISyntaxException      */
 specifier|private
 specifier|static
 name|void
@@ -1695,7 +1703,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @param str      * @return      */
+comment|/**      * Given the inner portion of a composite URI, split and return each inner URI as a string      * element in a new String array.      *      * @param str      * 		The inner URI elements of a composite URI string.      *      * @return an array containing each inner URI from the composite one.      */
 specifier|private
 specifier|static
 name|String
@@ -1869,6 +1877,7 @@ return|return
 name|rc
 return|;
 block|}
+comment|/**      * String the given prefix from the target string and return the result.      *      * @param value      * 		The string that should be trimmed of the given prefix if present.      * @param prefix      * 		The prefix to remove from the target string.      *      * @return either the original string or a new string minus the supplied prefix if present.      */
 specifier|public
 specifier|static
 name|String
@@ -1907,6 +1916,7 @@ return|return
 name|value
 return|;
 block|}
+comment|/**      * Strip a URI of its scheme element.      *      * @param uri      * 		The URI whose scheme value should be stripped.      *      * @return The stripped URI value.      * @throws URISyntaxException      */
 specifier|public
 specifier|static
 name|URI
@@ -1937,6 +1947,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Given a key / value mapping, create and return a URI formatted query string that is valid and      * can be appended to a URI.      *      * @param options      * 		The Mapping that will create the new Query string.      *      * @return a URI formatted query string.      * @throws URISyntaxException      */
 specifier|public
 specifier|static
 name|String
@@ -2099,7 +2110,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Creates a URI from the original URI and the remaining paramaters      *      * @throws URISyntaxException      */
+comment|/**      * Creates a URI from the original URI and the remaining parameters.      *      * When the query options of a URI are applied to certain objects the used portion of the query options needs      * to be removed and replaced with those that remain so that other parts of the code can attempt to apply the      * remainder or give an error is unknown values were given.  This method is used to update a URI with those      * remainder values.      *      * @param originalURI      *		The URI whose current parameters are remove and replaced with the given remainder value.      * @param params      * 		The URI params that should be used to replace the current ones in the target.      *      * @return a new URI that matches the original one but has its query options replaced with the given ones.      * @throws URISyntaxException      */
 specifier|public
 specifier|static
 name|URI
@@ -2151,6 +2162,7 @@ name|s
 argument_list|)
 return|;
 block|}
+comment|/**      * Given a URI value create and return a new URI that matches the target one but with the scheme value      * supplied to this method.      *      * @param bindAddr      * 		The URI whose scheme value should be altered.      * @param scheme      * 		The new scheme value to use for the returned URI.      *      * @return a new URI that is a copy of the original except that its scheme matches the supplied one.      * @throws URISyntaxException      */
 specifier|public
 specifier|static
 name|URI
@@ -2203,6 +2215,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * Examine the supplied string and ensure that all parends appear as matching pairs.      *      * @param str      * 		The target string to examine.      *      * @return true if the target string has valid parend pairings.      */
 specifier|public
 specifier|static
 name|boolean
