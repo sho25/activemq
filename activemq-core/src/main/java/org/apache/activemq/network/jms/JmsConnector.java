@@ -296,6 +296,12 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|protected
+name|boolean
+name|preferJndiDestinationLookup
+init|=
+literal|false
+decl_stmt|;
+specifier|protected
 name|JndiTemplate
 name|jndiLocalTemplate
 decl_stmt|;
@@ -1325,6 +1331,32 @@ operator|.
 name|policy
 operator|=
 name|policy
+expr_stmt|;
+block|}
+comment|/**      * @return the preferJndiDestinationLookup      */
+specifier|public
+name|boolean
+name|isPreferJndiDestinationLookup
+parameter_list|()
+block|{
+return|return
+name|preferJndiDestinationLookup
+return|;
+block|}
+comment|/**      * Sets whether the connector should prefer to first try to find a destination in JNDI before      * using JMS semantics to create a Destination.  By default the connector will first use JMS      * semantics and then fall-back to JNDI lookup, setting this value to true will reverse that      * ordering.      *      * @param preferJndiDestinationLookup the preferJndiDestinationLookup to set      */
+specifier|public
+name|void
+name|setPreferJndiDestinationLookup
+parameter_list|(
+name|boolean
+name|preferJndiDestinationLookup
+parameter_list|)
+block|{
+name|this
+operator|.
+name|preferJndiDestinationLookup
+operator|=
+name|preferJndiDestinationLookup
 expr_stmt|;
 block|}
 comment|/**      * @return returns true if the {@link JmsConnector} is connected to both brokers.      */
