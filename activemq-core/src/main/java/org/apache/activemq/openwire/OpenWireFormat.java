@@ -224,16 +224,13 @@ decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
-name|int
+name|long
 name|DEFAULT_MAX_FRAME_SIZE
 init|=
-literal|100
-operator|*
-literal|1024
-operator|*
-literal|1024
+name|Long
+operator|.
+name|MAX_VALUE
 decl_stmt|;
-comment|//100 MB
 specifier|static
 specifier|final
 name|byte
