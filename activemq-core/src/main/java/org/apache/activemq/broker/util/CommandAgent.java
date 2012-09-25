@@ -328,13 +328,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ServiceStopper
-name|stopper
-init|=
-operator|new
-name|ServiceStopper
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|consumer
@@ -357,19 +350,9 @@ block|}
 catch|catch
 parameter_list|(
 name|JMSException
-name|e
+name|ignored
 parameter_list|)
-block|{
-name|stopper
-operator|.
-name|onException
-argument_list|(
-name|this
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
+block|{             }
 block|}
 if|if
 condition|(
@@ -393,19 +376,9 @@ block|}
 catch|catch
 parameter_list|(
 name|JMSException
-name|e
+name|ignored
 parameter_list|)
-block|{
-name|stopper
-operator|.
-name|onException
-argument_list|(
-name|this
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
+block|{             }
 block|}
 if|if
 condition|(
@@ -429,25 +402,10 @@ block|}
 catch|catch
 parameter_list|(
 name|JMSException
-name|e
+name|ignored
 parameter_list|)
-block|{
-name|stopper
-operator|.
-name|onException
-argument_list|(
-name|this
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
+block|{             }
 block|}
-block|}
-name|stopper
-operator|.
-name|throwFirstException
-argument_list|()
-expr_stmt|;
 block|}
 comment|// Properties
 comment|// -------------------------------------------------------------------------
