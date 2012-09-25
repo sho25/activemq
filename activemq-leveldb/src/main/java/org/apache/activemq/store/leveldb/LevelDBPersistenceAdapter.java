@@ -21,9 +21,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|fusesource
+name|apache
 operator|.
-name|mq
+name|activemq
 operator|.
 name|leveldb
 operator|.
