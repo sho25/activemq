@@ -1988,6 +1988,7 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
+block|}
 name|safeWaitUntilStarted
 argument_list|()
 expr_stmt|;
@@ -2025,7 +2026,6 @@ operator|+
 literal|") was interrupted during establishment."
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
