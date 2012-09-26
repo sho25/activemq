@@ -4482,16 +4482,40 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// if there is a pending delivered ack then we need to send that since there
+comment|// could be expired Messages in the ack which haven't been acked yet and the
+comment|// ack for all deliveries might not include those in its range of acks.  The
+comment|// pending standard acks will be included in the ack for all deliveries.
+if|if
+condition|(
+name|pendingAck
+operator|!=
+literal|null
+operator|&&
+name|pendingAck
+operator|.
+name|isDeliveredAck
+argument_list|()
+condition|)
+block|{
+name|session
+operator|.
+name|sendAck
+argument_list|(
+name|pendingAck
+argument_list|)
+expr_stmt|;
+block|}
+name|pendingAck
+operator|=
+literal|null
+expr_stmt|;
 name|session
 operator|.
 name|sendAck
 argument_list|(
 name|ack
 argument_list|)
-expr_stmt|;
-name|pendingAck
-operator|=
-literal|null
 expr_stmt|;
 comment|// Adjust the counters
 name|deliveredCounter
