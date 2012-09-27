@@ -10,8 +10,6 @@ operator|.
 name|apache
 operator|.
 name|activemq
-operator|.
-name|usecases
 package|;
 end_package
 
@@ -34,6 +32,20 @@ operator|.
 name|activemq
 operator|.
 name|ActiveMQConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usecases
+operator|.
+name|TwoBrokerTopicSendReceiveTest
 import|;
 end_import
 
