@@ -53,7 +53,7 @@ block|{
 specifier|private
 specifier|final
 name|ReentrantLock
-name|wreiteLock
+name|writeLock
 init|=
 operator|new
 name|ReentrantLock
@@ -119,7 +119,7 @@ condition|(
 name|syncOnCommand
 condition|)
 block|{
-name|wreiteLock
+name|writeLock
 operator|.
 name|lock
 argument_list|()
@@ -136,7 +136,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|wreiteLock
+name|writeLock
 operator|.
 name|unlock
 argument_list|()
@@ -169,7 +169,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|wreiteLock
+name|writeLock
 operator|.
 name|lock
 argument_list|()
@@ -189,7 +189,7 @@ return|;
 block|}
 finally|finally
 block|{
-name|wreiteLock
+name|writeLock
 operator|.
 name|unlock
 argument_list|()
@@ -208,7 +208,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|wreiteLock
+name|writeLock
 operator|.
 name|lock
 argument_list|()
@@ -225,7 +225,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|wreiteLock
+name|writeLock
 operator|.
 name|unlock
 argument_list|()
@@ -244,7 +244,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|wreiteLock
+name|writeLock
 operator|.
 name|lock
 argument_list|()
@@ -262,7 +262,7 @@ return|;
 block|}
 finally|finally
 block|{
-name|wreiteLock
+name|writeLock
 operator|.
 name|unlock
 argument_list|()
@@ -284,7 +284,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|wreiteLock
+name|writeLock
 operator|.
 name|lock
 argument_list|()
@@ -304,7 +304,7 @@ return|;
 block|}
 finally|finally
 block|{
-name|wreiteLock
+name|writeLock
 operator|.
 name|unlock
 argument_list|()
