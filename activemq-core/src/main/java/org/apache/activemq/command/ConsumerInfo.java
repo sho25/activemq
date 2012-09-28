@@ -208,6 +208,7 @@ decl_stmt|;
 comment|// the original consumerId
 comment|// not marshalled, populated from RemoveInfo, the last message delivered, used
 comment|// to suppress redelivery on prefetched messages after close
+comment|// overload; also used at runtime to track assignment of message groups
 specifier|private
 specifier|transient
 name|long
