@@ -332,7 +332,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  * Connector class for bridging broker networks.  */
 end_comment
 
 begin_class
@@ -527,6 +527,9 @@ block|}
 comment|/**      * @return Returns the durableDestinations.      */
 specifier|public
 name|Set
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 name|getDurableDestinations
 parameter_list|()
 block|{
@@ -1233,11 +1236,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 specifier|protected
 name|ObjectName
 name|createNetworkBridgeObjectName

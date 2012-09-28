@@ -17,16 +17,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -53,28 +43,8 @@ name|Transport
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
-comment|/**  * A demand forwarding bridge which works with multicast style transports where  * a single Transport could be communicating with multiple remote brokers  *   * @org.apache.xbean.XBean  *   *   */
+comment|/**  * A demand forwarding bridge which works with multicast style transports where  * a single Transport could be communicating with multiple remote brokers  *  * @org.apache.xbean.XBean  *  */
 end_comment
 
 begin_class
@@ -84,21 +54,6 @@ name|CompositeDemandForwardingBridge
 extends|extends
 name|DemandForwardingBridgeSupport
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|LOG
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|CompositeDemandForwardingBridge
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|public
 name|CompositeDemandForwardingBridge
 parameter_list|(
@@ -138,9 +93,7 @@ name|command
 parameter_list|)
 throws|throws
 name|InterruptedException
-block|{
-comment|// TODO is there much we can do here?
-block|}
+block|{     }
 block|}
 end_class
 

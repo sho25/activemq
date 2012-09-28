@@ -68,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Configuration for a NetworkBridge  *  *  */
+comment|/**  * Configuration for a NetworkBridge  */
 end_comment
 
 begin_class

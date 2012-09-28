@@ -26,7 +26,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstraction that allows you to control which brokers a NetworkConnector connects bridges to.  *   *   */
+comment|/**  * Abstraction that allows you to control which brokers a NetworkConnector connects bridges to.  */
 end_comment
 
 begin_interface
@@ -34,7 +34,7 @@ specifier|public
 interface|interface
 name|ConnectionFilter
 block|{
-comment|/**      * @param location      * @return true if the network connector should establish a connection to the specified location.      */
+comment|/**      * Connect the filter to a given location.      *      * @param location      * @return true if the network connector should establish a connection to the specified location.      */
 name|boolean
 name|connectTo
 parameter_list|(

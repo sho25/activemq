@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a network bridge interface  *   *   */
+comment|/**  * Represents a network bridge interface  */
 end_comment
 
 begin_interface
@@ -48,7 +48,7 @@ name|NetworkBridge
 extends|extends
 name|Service
 block|{
-comment|/**      * Service an exception      * @param error      */
+comment|/**      * Service an exception received from the Remote Broker connection.      * @param error      */
 name|void
 name|serviceRemoteException
 parameter_list|(
@@ -56,7 +56,7 @@ name|Throwable
 name|error
 parameter_list|)
 function_decl|;
-comment|/**      * servicee an exception      * @param error      */
+comment|/**      * Service an exception received from the Local Broker connection.      * @param error      */
 name|void
 name|serviceLocalException
 parameter_list|(
@@ -72,30 +72,37 @@ name|NetworkBridgeListener
 name|listener
 parameter_list|)
 function_decl|;
+comment|/**      * @return the network address of the remote broker connection.      */
 name|String
 name|getRemoteAddress
 parameter_list|()
 function_decl|;
+comment|/**      * @return the name of the remote broker this bridge is connected to.      */
 name|String
 name|getRemoteBrokerName
 parameter_list|()
 function_decl|;
+comment|/**      * @return the network address of the local broker connection.      */
 name|String
 name|getLocalAddress
 parameter_list|()
 function_decl|;
+comment|/**      * @return the name of the local broker this bridge is connected to.      */
 name|String
 name|getLocalBrokerName
 parameter_list|()
 function_decl|;
+comment|/**      * @return the current number of enqueues this bridge has.      */
 name|long
 name|getEnqueueCounter
 parameter_list|()
 function_decl|;
+comment|/**      * @return the current number of dequeues this bridge has.      */
 name|long
 name|getDequeueCounter
 parameter_list|()
 function_decl|;
+comment|/**      * @param objectName      *      The ObjectName assigned to this bridge in the MBean server.      */
 name|void
 name|setMbeanObjectName
 parameter_list|(
@@ -103,6 +110,7 @@ name|ObjectName
 name|objectName
 parameter_list|)
 function_decl|;
+comment|/**      * @return the MBean name used to identify this bridge in the MBean server.      */
 name|ObjectName
 name|getMbeanObjectName
 parameter_list|()

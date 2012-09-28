@@ -394,7 +394,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Forwards all messages from the local broker to the remote broker.  *  * @org.apache.xbean.XBean  *  *  */
+comment|/**  * Forwards all messages from the local broker to the remote broker.  *  * @org.apache.xbean.XBean  *  */
 end_comment
 
 begin_class
@@ -938,6 +938,14 @@ name|topicConsumerInfo
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
@@ -953,6 +961,7 @@ operator|+
 literal|" has been established."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
@@ -1071,6 +1080,14 @@ operator|+
 name|error
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -1080,6 +1097,7 @@ argument_list|,
 name|error
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|protected
 name|void

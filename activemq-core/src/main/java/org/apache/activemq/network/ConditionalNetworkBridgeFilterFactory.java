@@ -132,7 +132,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * implement conditional behaviour for queue consumers,  * allows replaying back to origin if no consumers are present on the local broker  * after a configurable delay, irrespective of the networkTTL  * Also allows rate limiting of messages through the network, useful for static includes  *  *  @org.apache.xbean.XBean  */
+comment|/**  * implement conditional behavior for queue consumers, allows replaying back to  * origin if no consumers are present on the local broker after a configurable  * delay, irrespective of the networkTTL Also allows rate limiting of messages  * through the network, useful for static includes  *  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class

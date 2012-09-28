@@ -27,16 +27,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -126,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Consolidates subscriptions  *   *   */
+comment|/**  * Consolidates subscriptions  */
 end_comment
 
 begin_class
@@ -151,7 +141,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Constructor      *       * @param configuration      *       * @param localBroker      * @param remoteBroker      */
+comment|/**      * Constructor      *      * @param configuration      *      * @param localBroker      * @param remoteBroker      */
 specifier|public
 name|DurableConduitBridge
 parameter_list|(
@@ -175,7 +165,7 @@ name|remoteBroker
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Subscriptions for these destinations are always created      *       */
+comment|/**      * Subscriptions for these destinations are always created      *      */
 specifier|protected
 name|void
 name|setupStaticDestinations
@@ -208,29 +198,12 @@ condition|)
 block|{
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|dests
-operator|.
-name|length
-condition|;
-name|i
-operator|++
-control|)
-block|{
 name|ActiveMQDestination
 name|dest
-init|=
+range|:
 name|dests
-index|[
-name|i
-index|]
-decl_stmt|;
+control|)
+block|{
 if|if
 condition|(
 name|isPermissableDestination
@@ -464,35 +437,15 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|Iterator
-name|i
-init|=
+name|DemandSubscription
+name|ds
+range|:
 name|subscriptionMapByLocalId
 operator|.
 name|values
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|DemandSubscription
-name|ds
-init|=
-operator|(
-name|DemandSubscription
-operator|)
-name|i
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|filter

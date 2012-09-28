@@ -29,28 +29,8 @@ name|Transport
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
-comment|/**  * Forwards messages from the local broker to the remote broker based on demand.  *   * @org.apache.xbean.XBean  *   *   */
+comment|/**  * Forwards messages from the local broker to the remote broker based on demand.  *  * @org.apache.xbean.XBean  *  */
 end_comment
 
 begin_class
@@ -60,21 +40,6 @@ name|DemandForwardingBridge
 extends|extends
 name|DemandForwardingBridgeSupport
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|LOG
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|DemandForwardingBridge
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|public
 name|DemandForwardingBridge
 parameter_list|(

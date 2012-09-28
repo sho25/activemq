@@ -51,16 +51,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -156,7 +146,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Consolidates subscriptions  *   *   */
+comment|/**  * Consolidates subscriptions  */
 end_comment
 
 begin_class
@@ -181,7 +171,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Constructor      *       * @param localBroker      * @param remoteBroker      */
+comment|/**      * Constructor      *      * @param localBroker      * @param remoteBroker      */
 specifier|public
 name|ConduitBridge
 parameter_list|(
@@ -278,9 +268,11 @@ name|second
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|Arrays
@@ -292,9 +284,11 @@ argument_list|,
 name|second
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|first
@@ -331,13 +325,17 @@ literal|1
 index|]
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 specifier|protected
 name|boolean
@@ -355,35 +353,15 @@ literal|false
 decl_stmt|;
 for|for
 control|(
-name|Iterator
-name|i
-init|=
+name|DemandSubscription
+name|ds
+range|:
 name|subscriptionMapByLocalId
 operator|.
 name|values
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|DemandSubscription
-name|ds
-init|=
-operator|(
-name|DemandSubscription
-operator|)
-name|i
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|DestinationFilter
 name|filter
 init|=
@@ -447,7 +425,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// add the interest in the subscription
-comment|// ds.add(ds.getRemoteInfo().getConsumerId());
 if|if
 condition|(
 name|checkPaths
@@ -482,8 +459,7 @@ name|matched
 operator|=
 literal|true
 expr_stmt|;
-comment|// continue - we want interest to any existing
-comment|// DemandSubscriptions
+comment|// continue - we want interest to any existing DemandSubscriptions
 block|}
 block|}
 return|return
@@ -517,35 +493,15 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Iterator
-name|i
-init|=
+name|DemandSubscription
+name|ds
+range|:
 name|subscriptionMapByLocalId
 operator|.
 name|values
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|DemandSubscription
-name|ds
-init|=
-operator|(
-name|DemandSubscription
-operator|)
-name|i
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|ds
@@ -614,32 +570,12 @@ block|}
 block|}
 for|for
 control|(
-name|Iterator
-argument_list|<
-name|DemandSubscription
-argument_list|>
-name|i
-init|=
-name|tmpList
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
 name|DemandSubscription
 name|ds
-init|=
-name|i
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
+range|:
+name|tmpList
+control|)
+block|{
 name|removeSubscription
 argument_list|(
 name|ds

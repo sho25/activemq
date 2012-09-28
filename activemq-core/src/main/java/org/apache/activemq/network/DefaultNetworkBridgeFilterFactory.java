@@ -58,7 +58,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * implement default behaviour, filter that will not allow resend to origin  * based on brokerPath and which respects networkTTL  *  *  @org.apache.xbean.XBean  */
+comment|/**  * implement default behavior, filter that will not allow re-send to origin  * based on brokerPath and which respects networkTTL  *  *  @org.apache.xbean.XBean  */
 end_comment
 
 begin_class

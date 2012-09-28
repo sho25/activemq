@@ -128,7 +128,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a network bridge interface  *   *   */
+comment|/**  * Represents a network bridge interface  */
 end_comment
 
 begin_class
@@ -162,6 +162,7 @@ name|ConsumerInfo
 name|localInfo
 decl_stmt|;
 specifier|private
+specifier|final
 name|Set
 argument_list|<
 name|ConsumerId
@@ -176,6 +177,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicInteger
 name|dispatched
 init|=
@@ -186,6 +188,7 @@ literal|0
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicBoolean
 name|activeWaiter
 init|=
@@ -232,7 +235,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Increment the consumers associated with this subscription      *       * @param id      * @return true if added      */
+comment|/**      * Increment the consumers associated with this subscription      *      * @param id      * @return true if added      */
 specifier|public
 name|boolean
 name|add
@@ -250,7 +253,7 @@ name|id
 argument_list|)
 return|;
 block|}
-comment|/**      * Increment the consumers associated with this subscription      *       * @param id      * @return true if removed      */
+comment|/**      * Increment the consumers associated with this subscription      *      * @param id      * @return true if removed      */
 specifier|public
 name|boolean
 name|remove
@@ -411,7 +414,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"demand sub interrupted or timedout while waiting for outstanding responses, expect potentially "
+literal|"demand sub interrupted or timedout while waiting for outstanding responses, "
+operator|+
+literal|"expect potentially "
 operator|+
 name|this
 operator|.

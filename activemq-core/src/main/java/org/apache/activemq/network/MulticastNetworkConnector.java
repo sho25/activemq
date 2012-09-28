@@ -68,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A network connector which uses some kind of multicast-like transport that  * communicates with potentially many remote brokers over a single logical  * {@link Transport} instance such as when using multicast.  *   * This implementation does not depend on multicast at all; any other group  * based transport could be used.  *   * @org.apache.xbean.XBean  *   *   */
+comment|/**  * A network connector which uses some kind of multicast-like transport that  * communicates with potentially many remote brokers over a single logical  * {@link Transport} instance such as when using multicast.  *  * This implementation does not depend on multicast at all; any other group  * based transport could be used.  *  * @org.apache.xbean.XBean  *  */
 end_comment
 
 begin_class

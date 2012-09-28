@@ -51,16 +51,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Random
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|concurrent
 operator|.
 name|ConcurrentHashMap
@@ -268,7 +258,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * class to create dynamic network connectors listed in an directory  * server using the LDAP v3 protocol as defined in RFC 2251, the  * entries listed in the directory server must implement the ipHost  * and ipService objectClasses as defined in RFC 2307.  *   * @author Trevor Pounds  * @see<a href="http://www.faqs.org/rfcs/rfc2251.html">RFC 2251</a>  * @see<a href="http://www.faqs.org/rfcs/rfc2307.html">RFC 2307</a>  *  * @org.apache.xbean.XBean element="ldapNetworkConnector"  */
+comment|/**  * class to create dynamic network connectors listed in an directory server  * using the LDAP v3 protocol as defined in RFC 2251, the entries listed in the  * directory server must implement the ipHost and ipService objectClasses as  * defined in RFC 2307.  *  * @see<a href="http://www.faqs.org/rfcs/rfc2251.html">RFC 2251</a>  * @see<a href="http://www.faqs.org/rfcs/rfc2307.html">RFC 2307</a>  *  * @org.apache.xbean.XBean element="ldapNetworkConnector"  */
 end_comment
 
 begin_class
@@ -400,6 +390,11 @@ name|connectorMap
 init|=
 operator|new
 name|ConcurrentHashMap
+argument_list|<
+name|URI
+argument_list|,
+name|NetworkConnector
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -413,6 +408,11 @@ name|referenceMap
 init|=
 operator|new
 name|ConcurrentHashMap
+argument_list|<
+name|URI
+argument_list|,
+name|Integer
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -426,6 +426,11 @@ name|uuidMap
 init|=
 operator|new
 name|ConcurrentHashMap
+argument_list|<
+name|String
+argument_list|,
+name|URI
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// local context
@@ -435,14 +440,14 @@ name|context
 init|=
 literal|null
 decl_stmt|;
-comment|//currently in use URI
+comment|// currently in use URI
 specifier|private
 name|URI
 name|ldapURI
 init|=
 literal|null
 decl_stmt|;
-comment|/**     * returns the next URI from the configured list     *     * @return random URI from the configured list     */
+comment|/**      * returns the next URI from the configured list      *      * @return random URI from the configured list      */
 specifier|public
 name|URI
 name|getUri
@@ -460,13 +465,13 @@ name|length
 index|]
 return|;
 block|}
-comment|/**     * sets the LDAP server URI     *     * @param _uri LDAP server URI     */
+comment|/**      * sets the LDAP server URI      *      * @param _uri      *            LDAP server URI      */
 specifier|public
 name|void
 name|setUri
 parameter_list|(
 name|URI
-name|_uri
+name|uri
 parameter_list|)
 throws|throws
 name|Exception
@@ -478,7 +483,7 @@ name|URISupport
 operator|.
 name|parseComposite
 argument_list|(
-name|_uri
+name|uri
 argument_list|)
 decl_stmt|;
 if|if
@@ -514,74 +519,82 @@ operator|new
 name|URI
 index|[]
 block|{
-name|_uri
+name|uri
 block|}
 expr_stmt|;
 block|}
 block|}
-comment|/**     * sets the base LDAP dn used for lookup operations     *     * @param _base LDAP base dn     */
+comment|/**      * sets the base LDAP dn used for lookup operations      *      * @param _base      *            LDAP base dn      */
 specifier|public
 name|void
 name|setBase
 parameter_list|(
 name|String
-name|_base
+name|base
 parameter_list|)
 block|{
+name|this
+operator|.
 name|base
 operator|=
-name|_base
+name|base
 expr_stmt|;
 block|}
-comment|/**     * sets the LDAP user for access credentials     *     * @param _user LDAP dn of user     */
+comment|/**      * sets the LDAP user for access credentials      *      * @param _user      *            LDAP dn of user      */
 specifier|public
 name|void
 name|setUser
 parameter_list|(
 name|String
-name|_user
+name|user
 parameter_list|)
 block|{
+name|this
+operator|.
 name|user
 operator|=
-name|_user
+name|user
 expr_stmt|;
 block|}
-comment|/**     * sets the LDAP password for access credentials     *     * @param _password user password     */
+comment|/**      * sets the LDAP password for access credentials      *      * @param _password      *            user password      */
 specifier|public
 name|void
 name|setPassword
 parameter_list|(
 name|String
-name|_password
+name|password
 parameter_list|)
 block|{
+name|this
+operator|.
 name|password
 operator|=
-name|_password
+name|password
 expr_stmt|;
 block|}
-comment|/**     * sets LDAP anonymous authentication access credentials     *     * @param _anonymousAuthentication set to true to use anonymous authentication     */
+comment|/**      * sets LDAP anonymous authentication access credentials      *      * @param _anonymousAuthentication      *            set to true to use anonymous authentication      */
 specifier|public
 name|void
 name|setAnonymousAuthentication
 parameter_list|(
 name|boolean
-name|_anonymousAuthentication
+name|anonymousAuthentication
 parameter_list|)
 block|{
+name|this
+operator|.
 name|anonymousAuthentication
 operator|=
-name|_anonymousAuthentication
+name|anonymousAuthentication
 expr_stmt|;
 block|}
-comment|/**     * sets the LDAP search scope     *     * @param _searchScope LDAP JNDI search scope     */
+comment|/**      * sets the LDAP search scope      *      * @param _searchScope      *            LDAP JNDI search scope      */
 specifier|public
 name|void
 name|setSearchScope
 parameter_list|(
 name|String
-name|_searchScope
+name|searchScope
 parameter_list|)
 throws|throws
 name|Exception
@@ -591,7 +604,7 @@ name|scope
 decl_stmt|;
 if|if
 condition|(
-name|_searchScope
+name|searchScope
 operator|.
 name|equals
 argument_list|(
@@ -609,7 +622,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|_searchScope
+name|searchScope
 operator|.
 name|equals
 argument_list|(
@@ -627,7 +640,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|_searchScope
+name|searchScope
 operator|.
 name|equals
 argument_list|(
@@ -650,7 +663,7 @@ name|Exception
 argument_list|(
 literal|"ERR: unknown LDAP search scope specified: "
 operator|+
-name|_searchScope
+name|searchScope
 argument_list|)
 throw|;
 block|}
@@ -662,15 +675,17 @@ name|scope
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**     * sets the LDAP search filter as defined in RFC 2254     *     * @param _searchFilter LDAP search filter     * @see<a href="http://www.faqs.org/rfcs/rfc2254.html">RFC 2254</a>     */
+comment|/**      * sets the LDAP search filter as defined in RFC 2254      *      * @param _searchFilter      *            LDAP search filter      * @see<a href="http://www.faqs.org/rfcs/rfc2254.html">RFC 2254</a>      */
 specifier|public
 name|void
 name|setSearchFilter
 parameter_list|(
 name|String
-name|_searchFilter
+name|searchFilter
 parameter_list|)
 block|{
+name|this
+operator|.
 name|searchFilter
 operator|=
 literal|"(&"
@@ -679,26 +694,28 @@ name|REQUIRED_OBJECT_CLASS_FILTER
 operator|+
 literal|"("
 operator|+
-name|_searchFilter
+name|searchFilter
 operator|+
 literal|"))"
 expr_stmt|;
 block|}
-comment|/**     * enables/disable a persistent search to the LDAP server as defined     * in draft-ietf-ldapext-psearch-03.txt (2.16.840.1.113730.3.4.3)     *     * @param _searchEventListener enable = true, disable = false (default)     * @see<a href="http://www.ietf.org/proceedings/01mar/I-D/draft-ietf-ldapext-psearch-03.txt">draft-ietf-ldapext-psearch-03.txt</a>     */
+comment|/**      * enables/disable a persistent search to the LDAP server as defined in      * draft-ietf-ldapext-psearch-03.txt (2.16.840.1.113730.3.4.3)      *      * @param _searchEventListener      *            enable = true, disable = false (default)      * @see<a      *      href="http://www.ietf.org/proceedings/01mar/I-D/draft-ietf-ldapext-psearch-03.txt">draft-ietf-ldapext-psearch-03.txt</a>      */
 specifier|public
 name|void
 name|setSearchEventListener
 parameter_list|(
 name|boolean
-name|_searchEventListener
+name|searchEventListener
 parameter_list|)
 block|{
+name|this
+operator|.
 name|searchEventListener
 operator|=
-name|_searchEventListener
+name|searchEventListener
 expr_stmt|;
 block|}
-comment|/**     * start the connector     */
+comment|/**      * start the connector      */
 specifier|public
 name|void
 name|start
@@ -723,6 +740,11 @@ name|env
 init|=
 operator|new
 name|Hashtable
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|env
@@ -1067,8 +1089,8 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
-comment|// otherwise close context (i.e. connection as it is no longer needed)
 block|{
+comment|// otherwise close context (i.e. connection as it is no longer needed)
 name|context
 operator|.
 name|close
@@ -1076,7 +1098,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**     * stop the connector     */
+comment|/**      * stop the connector      */
 specifier|public
 name|void
 name|stop
@@ -1156,7 +1178,7 @@ operator|+
 literal|"]"
 return|;
 block|}
-comment|/**      * add connector of the given URI      *       * @param result      *            search result of connector to add      */
+comment|/**      * add connector of the given URI      *      * @param result      *            search result of connector to add      */
 specifier|protected
 specifier|synchronized
 name|void
@@ -1269,9 +1291,9 @@ expr_stmt|;
 return|return;
 block|}
 comment|// FIXME: disable JMX listing of LDAP managed connectors, we will
-comment|//       want to map/manage these differently in the future
-comment|//      boolean useJMX = getBrokerService().isUseJmx();
-comment|//      getBrokerService().setUseJmx(false);
+comment|// want to map/manage these differently in the future
+comment|// boolean useJMX = getBrokerService().isUseJmx();
+comment|// getBrokerService().setUseJmx(false);
 name|NetworkConnector
 name|connector
 init|=
@@ -1283,8 +1305,8 @@ argument_list|(
 name|connectorURI
 argument_list|)
 decl_stmt|;
-comment|//      getBrokerService().setUseJmx(useJMX);
-comment|// propogate std connector properties that may have been set via XML
+comment|// getBrokerService().setUseJmx(useJMX);
+comment|// Propagate standard connector properties that may have been set via XML
 name|connector
 operator|.
 name|setDynamicOnly
@@ -1342,7 +1364,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// XXX: set in the BrokerService.startAllConnectors method and is
-comment|//      required to prevent remote broker exceptions upon connection
+comment|// required to prevent remote broker exceptions upon connection
 name|connector
 operator|.
 name|setLocalUri
@@ -1424,7 +1446,7 @@ literal|"]"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**     * remove connector of the given URI     *     * @param result search result of connector to remove     */
+comment|/**      * remove connector of the given URI      *      * @param result      *            search result of connector to remove      */
 specifier|protected
 specifier|synchronized
 name|void
@@ -1585,7 +1607,7 @@ literal|"]"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**     * convert search result into URI     *     * @param result search result to convert to URI     */
+comment|/**      * convert search result into URI      *      * @param result      *            search result to convert to URI      */
 specifier|protected
 name|URI
 name|toURI
@@ -1688,7 +1710,7 @@ return|return
 name|connectorURI
 return|;
 block|}
-comment|/**     * convert search result into URI     *     * @param result search result to convert to URI     */
+comment|/**      * convert search result into URI      *      * @param result      *            search result to convert to URI      */
 specifier|protected
 name|String
 name|toUUID
@@ -1720,7 +1742,7 @@ return|return
 name|uuid
 return|;
 block|}
-comment|/**     * invoked when an entry has been added during a persistent search     */
+comment|/**      * invoked when an entry has been added during a persistent search      */
 specifier|public
 name|void
 name|objectAdded
@@ -1767,7 +1789,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**     * invoked when an entry has been removed during a persistent search     */
+comment|/**      * invoked when an entry has been removed during a persistent search      */
 specifier|public
 name|void
 name|objectRemoved
@@ -1814,7 +1836,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**     * invoked when an entry has been renamed during a persistent search     */
+comment|/**      * invoked when an entry has been renamed during a persistent search      */
 specifier|public
 name|void
 name|objectRenamed
@@ -1831,7 +1853,7 @@ literal|"entry renamed"
 argument_list|)
 expr_stmt|;
 comment|// XXX: getNameInNamespace method does not seem to work properly,
-comment|//      but getName seems to provide the result we want
+comment|// but getName seems to provide the result we want
 name|String
 name|uuidOld
 init|=
@@ -1893,7 +1915,7 @@ literal|"]"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**     * invoked when an entry has been changed during a persistent search     */
+comment|/**      * invoked when an entry has been changed during a persistent search      */
 specifier|public
 name|void
 name|objectChanged
@@ -1950,7 +1972,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**     * invoked when an exception has occurred during a persistent search     */
+comment|/**      * invoked when an exception has occurred during a persistent search      */
 specifier|public
 name|void
 name|namingExceptionThrown

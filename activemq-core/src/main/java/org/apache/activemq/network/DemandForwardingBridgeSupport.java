@@ -1128,6 +1128,7 @@ literal|null
 block|}
 decl_stmt|;
 specifier|protected
+specifier|final
 name|CountDownLatch
 name|startedLatch
 init|=
@@ -1138,6 +1139,7 @@ literal|2
 argument_list|)
 decl_stmt|;
 specifier|protected
+specifier|final
 name|CountDownLatch
 name|localStartedLatch
 init|=
@@ -2327,7 +2329,8 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-comment|// always dispatch advisories async so that we never block the producer broker if we are slow
+comment|// always dispatch advisory message asynchronously so that we never block the producer
+comment|// broker if we are slow
 name|demandConsumerInfo
 operator|.
 name|setDispatchAsync
@@ -3793,7 +3796,7 @@ block|}
 return|return;
 block|}
 comment|// in a cyclic network there can be multiple bridges per broker that can propagate
-comment|// a network subscription so there is a need to synchronise on a shared entity
+comment|// a network subscription so there is a need to synchronize on a shared entity
 synchronized|synchronized
 init|(
 name|brokerService
@@ -3887,8 +3890,7 @@ operator|.
 name|class
 condition|)
 block|{
-comment|// It's a destination info - we want to pass up
-comment|// information about temporary destinations
+comment|// It's a destination info - we want to pass up information about temporary destinations
 name|DestinationInfo
 name|destInfo
 init|=
@@ -3966,8 +3968,7 @@ index|]
 argument_list|)
 condition|)
 block|{
-comment|// Ignore this consumer as it's a consumer we locally sent to
-comment|// the broker.
+comment|// Ignore this consumer as it's a consumer we locally sent to the broker.
 if|if
 condition|(
 name|LOG
@@ -5582,7 +5583,7 @@ name|boolean
 name|allowTemporary
 parameter_list|)
 block|{
-comment|// Are we not bridging temp destinations?
+comment|// Are we not bridging temporary destinations?
 if|if
 condition|(
 name|destination
@@ -6626,6 +6627,7 @@ name|region
 operator|instanceof
 name|AbstractRegion
 condition|)
+block|{
 name|subs
 operator|=
 operator|(
@@ -6641,11 +6643,14 @@ operator|.
 name|values
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 name|subs
 operator|=
 literal|null
 expr_stmt|;
+block|}
 return|return
 name|subs
 return|;
@@ -6882,8 +6887,7 @@ argument_list|(
 name|destination
 argument_list|)
 expr_stmt|;
-comment|// the remote info held by the DemandSubscription holds the original
-comment|// consumerId,
+comment|// the remote info held by the DemandSubscription holds the original consumerId,
 comment|// the local info get's overwritten
 name|info
 operator|.
