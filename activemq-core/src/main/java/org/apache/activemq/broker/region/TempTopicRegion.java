@@ -83,6 +83,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|ActiveMQTempTopic
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|ConsumerInfo
 import|;
 end_import
@@ -193,9 +207,6 @@ argument_list|,
 name|destinationFactory
 argument_list|)
 expr_stmt|;
-comment|// We should allow the following to be configurable via a Destination
-comment|// Policy
-comment|// setAutoCreateDestinations(false);
 block|}
 specifier|protected
 name|Subscription
@@ -419,32 +430,6 @@ argument_list|,
 name|timeout
 argument_list|)
 expr_stmt|;
-block|}
-specifier|protected
-name|Destination
-name|doCreateDestination
-parameter_list|(
-name|ConnectionContext
-name|context
-parameter_list|,
-name|ActiveMQDestination
-name|destination
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-return|return
-name|destinationFactory
-operator|.
-name|createDestination
-argument_list|(
-name|context
-argument_list|,
-name|destination
-argument_list|,
-name|destinationStatistics
-argument_list|)
-return|;
 block|}
 block|}
 end_class

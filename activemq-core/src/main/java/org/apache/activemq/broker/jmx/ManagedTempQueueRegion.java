@@ -219,9 +219,6 @@ parameter_list|(
 name|ManagedRegionBroker
 name|broker
 parameter_list|,
-name|BrokerService
-name|brokerService
-parameter_list|,
 name|DestinationStatistics
 name|destinationStatistics
 parameter_list|,
@@ -238,8 +235,6 @@ block|{
 name|super
 argument_list|(
 name|broker
-argument_list|,
-name|brokerService
 argument_list|,
 name|destinationStatistics
 argument_list|,

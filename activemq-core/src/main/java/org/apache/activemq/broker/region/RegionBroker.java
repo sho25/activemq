@@ -1138,8 +1138,6 @@ name|TempQueueRegion
 argument_list|(
 name|this
 argument_list|,
-name|brokerService
-argument_list|,
 name|destinationStatistics
 argument_list|,
 name|memoryManager

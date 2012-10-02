@@ -410,6 +410,13 @@ argument_list|,
 name|taskRunnerFactory
 argument_list|)
 decl_stmt|;
+name|configureQueue
+argument_list|(
+name|queue
+argument_list|,
+name|destination
+argument_list|)
+expr_stmt|;
 name|queue
 operator|.
 name|initialize
@@ -494,6 +501,13 @@ argument_list|,
 name|taskRunnerFactory
 argument_list|)
 decl_stmt|;
+name|configureTopic
+argument_list|(
+name|topic
+argument_list|,
+name|destination
+argument_list|)
+expr_stmt|;
 name|topic
 operator|.
 name|initialize
