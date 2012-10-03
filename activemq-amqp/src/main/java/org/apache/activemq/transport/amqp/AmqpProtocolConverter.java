@@ -466,32 +466,7 @@ argument_list|,
 name|count
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"writing: "
-operator|+
-name|buffer
-operator|.
-name|toString
-argument_list|()
-operator|.
-name|substring
-argument_list|(
-literal|5
-argument_list|)
-operator|.
-name|replaceAll
-argument_list|(
-literal|"(..)"
-argument_list|,
-literal|"$1 "
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|//                    System.out.println("writing: " + buffer.toString().substring(5).replaceAll("(..)", "$1 "));
 name|amqpTransport
 operator|.
 name|sendToAmqp
@@ -582,32 +557,7 @@ name|JMSException
 block|{
 try|try
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"reading: "
-operator|+
-name|frame
-operator|.
-name|toString
-argument_list|()
-operator|.
-name|substring
-argument_list|(
-literal|5
-argument_list|)
-operator|.
-name|replaceAll
-argument_list|(
-literal|"(..)"
-argument_list|,
-literal|"$1 "
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|//            System.out.println("reading: " + frame.toString().substring(5).replaceAll("(..)", "$1 "));
 name|protonTransport
 operator|.
 name|input

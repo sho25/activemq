@@ -170,7 +170,7 @@ name|prefixVendor
 operator|+
 literal|"NATIVE"
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 return|return

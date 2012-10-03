@@ -123,6 +123,18 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|*
+import|;
+end_import
+
 begin_comment
 comment|/**  * @author<a href="http://hiramchirino.com">Hiram Chirino</a>  */
 end_comment
@@ -243,18 +255,6 @@ name|connect
 argument_list|()
 expr_stmt|;
 block|{
-name|String
-name|data
-init|=
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"%010d"
-argument_list|,
-literal|0
-argument_list|)
-decl_stmt|;
 name|Session
 name|session
 init|=
@@ -301,17 +301,6 @@ operator|new
 name|AMQPMessage
 argument_list|()
 decl_stmt|;
-name|String
-name|s
-init|=
-literal|"Message #"
-operator|+
-operator|(
-name|i
-operator|+
-literal|1
-operator|)
-decl_stmt|;
 name|System
 operator|.
 name|out
@@ -320,7 +309,7 @@ name|println
 argument_list|(
 literal|"Sending "
 operator|+
-name|s
+name|i
 argument_list|)
 expr_stmt|;
 name|msg
@@ -333,11 +322,14 @@ argument_list|(
 operator|new
 name|AMQPString
 argument_list|(
-name|s
-operator|+
-literal|", data: "
-operator|+
-name|data
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%010d"
+argument_list|,
+name|i
+argument_list|)
 argument_list|)
 argument_list|)
 argument_list|)
@@ -361,24 +353,144 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|//            {
-comment|//                Session session = connection.createSession(10, 10);
-comment|//                Consumer c = session.createConsumer(queue, 100, qos, true, null);
-comment|//
-comment|//                // Receive messages non-transacted
-comment|//                for (int i = 0; i< nMsgs; i++) {
-comment|//                    AMQPMessage msg = c.receive();
-comment|//                    final AMQPType value = msg.getAmqpValue().getValue();
-comment|//                    if (value instanceof AMQPString) {
-comment|//                        AMQPString s = (AMQPString) value;
-comment|//                        System.out.println("Received: " + s.getValue());
-comment|//                    }
-comment|//                    if (!msg.isSettled())
-comment|//                        msg.accept();
-comment|//                }
-comment|//                c.close();
-comment|//                session.close();
-comment|//            }
+block|{
+name|Session
+name|session
+init|=
+name|connection
+operator|.
+name|createSession
+argument_list|(
+literal|10
+argument_list|,
+literal|10
+argument_list|)
+decl_stmt|;
+name|Consumer
+name|c
+init|=
+name|session
+operator|.
+name|createConsumer
+argument_list|(
+name|queue
+argument_list|,
+literal|100
+argument_list|,
+name|qos
+argument_list|,
+literal|true
+argument_list|,
+literal|null
+argument_list|)
+decl_stmt|;
+comment|// Receive messages non-transacted
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|nMsgs
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|AMQPMessage
+name|msg
+init|=
+name|c
+operator|.
+name|receive
+argument_list|()
+decl_stmt|;
+specifier|final
+name|AMQPType
+name|value
+init|=
+name|msg
+operator|.
+name|getAmqpValue
+argument_list|()
+operator|.
+name|getValue
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|value
+operator|instanceof
+name|AMQPString
+condition|)
+block|{
+name|String
+name|s
+init|=
+operator|(
+operator|(
+name|AMQPString
+operator|)
+name|value
+operator|)
+operator|.
+name|getValue
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%010d"
+argument_list|,
+name|i
+argument_list|)
+argument_list|,
+name|s
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Received: "
+operator|+
+name|i
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
+name|msg
+operator|.
+name|isSettled
+argument_list|()
+condition|)
+name|msg
+operator|.
+name|accept
+argument_list|()
+expr_stmt|;
+block|}
+name|c
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|session
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 name|connection
 operator|.
 name|close
