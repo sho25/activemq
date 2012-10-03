@@ -132,7 +132,7 @@ specifier|public
 class|class
 name|SwiftMQClientTest
 extends|extends
-name|AmqpTest
+name|AmqpTestSupport
 block|{
 annotation|@
 name|Test

@@ -36,7 +36,7 @@ specifier|public
 class|class
 name|AmqpNioTest
 extends|extends
-name|AmqpTest
+name|AmqpTestSupport
 block|{
 specifier|protected
 name|void

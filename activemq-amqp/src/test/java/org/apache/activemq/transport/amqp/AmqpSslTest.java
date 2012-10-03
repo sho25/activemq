@@ -133,7 +133,7 @@ specifier|public
 class|class
 name|AmqpSslTest
 extends|extends
-name|AmqpTest
+name|AmqpTestSupport
 block|{
 specifier|public
 name|void
