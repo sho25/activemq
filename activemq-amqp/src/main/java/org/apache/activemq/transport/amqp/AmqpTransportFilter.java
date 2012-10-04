@@ -329,6 +329,11 @@ name|Command
 operator|)
 name|o
 decl_stmt|;
+synchronized|synchronized
+init|(
+name|protocolConverter
+init|)
+block|{
 name|protocolConverter
 operator|.
 name|onActiveMQCommand
@@ -336,6 +341,7 @@ argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -378,6 +384,11 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
+synchronized|synchronized
+init|(
+name|protocolConverter
+init|)
+block|{
 name|protocolConverter
 operator|.
 name|onAMQPData
@@ -388,6 +399,7 @@ operator|)
 name|command
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

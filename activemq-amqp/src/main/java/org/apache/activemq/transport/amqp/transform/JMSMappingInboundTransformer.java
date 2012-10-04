@@ -243,6 +243,22 @@ decl_stmt|;
 if|if
 condition|(
 name|body
+operator|==
+literal|null
+condition|)
+block|{
+name|rc
+operator|=
+name|vendor
+operator|.
+name|createMessage
+argument_list|()
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|body
 operator|instanceof
 name|Data
 condition|)
@@ -533,7 +549,12 @@ throw|throw
 operator|new
 name|RuntimeException
 argument_list|(
-literal|"Unexpected body type."
+literal|"Unexpected body type: "
+operator|+
+name|body
+operator|.
+name|getClass
+argument_list|()
 argument_list|)
 throw|;
 block|}
