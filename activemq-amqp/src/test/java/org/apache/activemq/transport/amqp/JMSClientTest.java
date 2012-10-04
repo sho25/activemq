@@ -111,7 +111,7 @@ init|=
 operator|new
 name|QueueImpl
 argument_list|(
-literal|"BURL:direct://amq.direct//test"
+literal|"queue://testqueue"
 argument_list|)
 decl_stmt|;
 name|int
