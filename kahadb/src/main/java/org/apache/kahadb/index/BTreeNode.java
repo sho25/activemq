@@ -1739,6 +1739,7 @@ name|child
 operator|.
 name|values
 expr_stmt|;
+block|}
 comment|// free up the page..
 name|tx
 operator|.
@@ -1750,7 +1751,6 @@ name|getPage
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|index
 operator|.

@@ -955,6 +955,14 @@ argument_list|,
 name|data
 argument_list|)
 expr_stmt|;
+comment|// make the new link visible
+name|pageFile
+operator|.
+name|addToCache
+argument_list|(
+name|current
+argument_list|)
+expr_stmt|;
 comment|// Reset for the next page chunk
 name|pos
 operator|=
