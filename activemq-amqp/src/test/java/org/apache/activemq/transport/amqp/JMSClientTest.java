@@ -123,7 +123,7 @@ specifier|final
 name|String
 name|dataFormat
 init|=
-literal|"%01024d"
+literal|"%010240d"
 decl_stmt|;
 specifier|final
 name|ConnectionFactoryImpl

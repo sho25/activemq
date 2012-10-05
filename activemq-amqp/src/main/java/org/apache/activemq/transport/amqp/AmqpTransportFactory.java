@@ -286,33 +286,31 @@ argument_list|,
 name|options
 argument_list|)
 expr_stmt|;
-name|MutexTransport
-name|mutex
-init|=
-name|transport
-operator|.
-name|narrow
-argument_list|(
-name|MutexTransport
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
+comment|// strip off the mutex transport.
 if|if
 condition|(
-name|mutex
-operator|!=
-literal|null
+name|transport
+operator|instanceof
+name|MutexTransport
 condition|)
 block|{
-name|mutex
+name|transport
+operator|=
+operator|(
+operator|(
+name|MutexTransport
+operator|)
+name|transport
+operator|)
 operator|.
-name|setSyncOnCommand
-argument_list|(
-literal|true
-argument_list|)
+name|getNext
+argument_list|()
 expr_stmt|;
 block|}
+comment|//        MutexTransport mutex = transport.narrow(MutexTransport.class);
+comment|//        if (mutex != null) {
+comment|//            mutex.setSyncOnCommand(true);
+comment|//        }
 return|return
 name|transport
 return|;

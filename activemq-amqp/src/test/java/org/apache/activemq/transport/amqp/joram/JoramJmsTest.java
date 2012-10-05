@@ -405,25 +405,183 @@ operator|new
 name|TestSuite
 argument_list|()
 decl_stmt|;
-comment|// TODO: figure out why the following tests are failing..
-comment|//        suite.addTestSuite(ConnectionTest.class);
-comment|//        suite.addTestSuite(TopicConnectionTest.class);
-comment|//        suite.addTestSuite(MessageHeaderTest.class);
-comment|//        suite.addTestSuite(MessageBodyTest.class);
-comment|//        suite.addTestSuite(MessageDefaultTest.class);
-comment|//        suite.addTestSuite(MessageTypeTest.class);
-comment|//        suite.addTestSuite(JMSXPropertyTest.class);
-comment|//        suite.addTestSuite(MessagePropertyConversionTest.class);
-comment|//        suite.addTestSuite(TemporaryQueueTest.class);
-comment|//        suite.addTestSuite(SelectorSyntaxTest.class);
-comment|//        suite.addTestSuite(QueueSessionTest.class);
-comment|//        suite.addTestSuite(SessionTest.class);
-comment|//        suite.addTestSuite(TopicSessionTest.class);
-comment|//        suite.addTestSuite(TemporaryTopicTest.class);
-comment|//        suite.addTestSuite(UnifiedSessionTest.class);
-comment|//        suite.addTestSuite(QueueBrowserTest.class);
-comment|//        suite.addTestSuite(MessagePropertyTest.class);
-comment|//        suite.addTestSuite(SelectorTest.class);
+comment|// Passing tests
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|JMSXPropertyTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|MessageBodyTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|MessageDefaultTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|MessagePropertyConversionTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|MessagePropertyTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+literal|false
+condition|)
+block|{
+comment|// TODO: Fails due to JMS client impl error.
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|UnifiedSessionTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+comment|// TODO: Fails due to https://issues.apache.org/jira/browse/PROTON-62: ClassCastException when processing an Attach frame
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|QueueSessionTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|SessionTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+comment|// TODO: Fails due to inconsistent ObjectMessage mapping in the JMS client.
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|MessageTypeTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+comment|// TODO: Fails due to temp destinations not being supported yet.
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|MessageHeaderTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|TemporaryQueueTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|TemporaryTopicTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+comment|// TODO: Fails due to selectors not being implemented yet.
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|SelectorSyntaxTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|SelectorTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+comment|// TODO: Fails due to: javax.jms.IllegalStateException: Cannot set client-id to "publisherConnection"; client-id must be set on connection creation
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|TopicConnectionTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|TopicSessionTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+comment|// TODO: figure out why the following tests fail..
+comment|// TODO: figure out why the following tests hang..
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|ConnectionTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|QueueBrowserTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|suite
 return|;
