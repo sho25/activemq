@@ -426,7 +426,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Message is not recieved."
+literal|"Message is not received."
 argument_list|,
 literal|1
 argument_list|,
@@ -447,7 +447,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Message is not recieved."
+literal|"Message is not received."
 argument_list|,
 literal|2
 argument_list|,

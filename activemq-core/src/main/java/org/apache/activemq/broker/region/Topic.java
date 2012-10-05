@@ -608,7 +608,7 @@ name|SubscriptionKey
 argument_list|,
 name|DurableTopicSubscription
 argument_list|>
-name|durableSubcribers
+name|durableSubscribers
 init|=
 operator|new
 name|ConcurrentHashMap
@@ -1119,7 +1119,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|durableSubcribers
+name|durableSubscribers
 operator|.
 name|put
 argument_list|(
@@ -1232,7 +1232,7 @@ expr_stmt|;
 name|DurableTopicSubscription
 name|removed
 init|=
-name|durableSubcribers
+name|durableSubscribers
 operator|.
 name|remove
 argument_list|(
@@ -2766,7 +2766,7 @@ name|canOptimizeOutPersistence
 parameter_list|()
 block|{
 return|return
-name|durableSubcribers
+name|durableSubscribers
 operator|.
 name|size
 argument_list|()
@@ -3217,7 +3217,7 @@ control|(
 name|DurableTopicSubscription
 name|sub
 range|:
-name|durableSubcribers
+name|durableSubscribers
 operator|.
 name|values
 argument_list|()
@@ -3805,7 +3805,7 @@ condition|(
 name|isDoOptimzeMessageStorage
 argument_list|()
 operator|&&
-name|durableSubcribers
+name|durableSubscribers
 operator|.
 name|isEmpty
 argument_list|()
@@ -3822,7 +3822,7 @@ control|(
 name|DurableTopicSubscription
 name|s
 range|:
-name|durableSubcribers
+name|durableSubscribers
 operator|.
 name|values
 argument_list|()
@@ -3918,7 +3918,7 @@ control|(
 name|DurableTopicSubscription
 name|durableTopicSubscription
 range|:
-name|durableSubcribers
+name|durableSubscribers
 operator|.
 name|values
 argument_list|()
@@ -4014,7 +4014,7 @@ name|getDurableTopicSubs
 parameter_list|()
 block|{
 return|return
-name|durableSubcribers
+name|durableSubscribers
 return|;
 block|}
 block|}
