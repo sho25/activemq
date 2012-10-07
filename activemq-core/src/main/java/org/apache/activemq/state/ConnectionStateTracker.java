@@ -680,6 +680,13 @@ argument_list|(
 name|connectionId
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|cs
+operator|!=
+literal|null
+condition|)
+block|{
 name|cs
 operator|.
 name|removeTransactionState
@@ -690,6 +697,7 @@ name|getTransactionId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|private
