@@ -222,6 +222,14 @@ operator|.
 name|getConnection
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|persistenceAdapter
+operator|.
+name|isChangeAutoCommitAllowed
+argument_list|()
+condition|)
+block|{
 name|boolean
 name|autoCommit
 init|=
@@ -238,6 +246,17 @@ operator|!=
 name|autoCommit
 condition|)
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Setting auto commit to {} on connection {}"
+argument_list|,
+name|autoCommit
+argument_list|,
+name|connection
+argument_list|)
+expr_stmt|;
 name|connection
 operator|.
 name|setAutoCommit
@@ -245,6 +264,7 @@ argument_list|(
 name|autoCommit
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch
