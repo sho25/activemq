@@ -2775,11 +2775,11 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|DefaultDatabaseLocker
+name|Locker
 name|locker
 init|=
 operator|(
-name|DefaultDatabaseLocker
+name|Locker
 operator|)
 name|loadAdapter
 argument_list|(
