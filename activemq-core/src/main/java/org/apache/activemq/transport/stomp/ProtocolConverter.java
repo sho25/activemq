@@ -4775,9 +4775,14 @@ parameter_list|)
 throws|throws
 name|ProtocolException
 block|{
-name|checkConnected
+if|if
+condition|(
+name|connected
+operator|.
+name|get
 argument_list|()
-expr_stmt|;
+condition|)
+block|{
 name|sendToActiveMQ
 argument_list|(
 name|connectionInfo
@@ -4810,6 +4815,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|protected
 name|void
