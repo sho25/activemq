@@ -81,6 +81,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|net
+operator|.
+name|ssl
+operator|.
+name|SSLEngine
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -92,18 +104,6 @@ operator|.
 name|tcp
 operator|.
 name|TimeStampStream
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|net
-operator|.
-name|ssl
-operator|.
-name|SSLEngine
 import|;
 end_import
 
@@ -634,6 +634,44 @@ operator|.
 name|remaining
 argument_list|()
 expr_stmt|;
+comment|// if the data buffer was larger than the packet buffer we might need to
+comment|// wrap more packets until we reach the end of data, but only when plain
+comment|// has no more space since we are non-blocking and a write might not have
+comment|// written anything.
+if|if
+condition|(
+name|data
+operator|.
+name|hasRemaining
+argument_list|()
+operator|&&
+operator|!
+name|plain
+operator|.
+name|hasRemaining
+argument_list|()
+condition|)
+block|{
+name|plain
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|engine
+operator|.
+name|wrap
+argument_list|(
+name|data
+argument_list|,
+name|plain
+argument_list|)
+expr_stmt|;
+name|plain
+operator|.
+name|flip
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 finally|finally
