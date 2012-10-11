@@ -640,6 +640,10 @@ comment|// has no more space since we are non-blocking and a write might not hav
 comment|// written anything.
 if|if
 condition|(
+name|engine
+operator|!=
+literal|null
+operator|&&
 name|data
 operator|.
 name|hasRemaining
