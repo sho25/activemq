@@ -211,14 +211,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
-name|long
-name|DEFAULT_LOCK_ACQUIRE_SLEEP_INTERVAL
-init|=
-literal|5000
-decl_stmt|;
 specifier|protected
 name|DataSource
 name|dataSource
@@ -314,10 +306,6 @@ name|getStatements
 argument_list|()
 expr_stmt|;
 block|}
-name|lockAcquireSleepInterval
-operator|=
-name|DEFAULT_LOCK_ACQUIRE_SLEEP_INTERVAL
-expr_stmt|;
 block|}
 specifier|public
 name|void

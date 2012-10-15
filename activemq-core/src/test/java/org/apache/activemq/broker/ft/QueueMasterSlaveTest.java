@@ -649,7 +649,7 @@ name|slaveStarted
 operator|.
 name|await
 argument_list|(
-literal|10
+literal|15
 argument_list|,
 name|TimeUnit
 operator|.
