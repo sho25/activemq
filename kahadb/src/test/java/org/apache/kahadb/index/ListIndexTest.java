@@ -3595,7 +3595,7 @@ literal|"Loading up the ListIndex with "
 operator|+
 name|NUM_ITERATIONS
 operator|+
-literal|" entires and sparsely populating the sequences."
+literal|" entries and sparsely populating the sequences."
 argument_list|)
 expr_stmt|;
 for|for
