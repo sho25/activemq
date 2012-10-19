@@ -23,6 +23,24 @@ name|org
 operator|.
 name|apache
 operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|amqp
+operator|.
+name|joram
+operator|.
+name|ActiveMQAdmin
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|qpid
 operator|.
 name|amqp_1_0
@@ -100,31 +118,199 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testSendReceive
+name|testTransactions
 parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|ActiveMQAdmin
+operator|.
+name|enableJMSFrameTracing
+argument_list|()
+expr_stmt|;
 name|QueueImpl
 name|queue
 init|=
 operator|new
 name|QueueImpl
 argument_list|(
-literal|"queue://testqueue"
+literal|"queue://txqueue"
 argument_list|)
 decl_stmt|;
-name|int
-name|nMsgs
+name|Connection
+name|connection
 init|=
-literal|100
+name|createConnection
+argument_list|()
 decl_stmt|;
-specifier|final
-name|String
-name|dataFormat
+block|{
+name|Session
+name|session
 init|=
-literal|"%010240d"
+name|connection
+operator|.
+name|createSession
+argument_list|(
+literal|false
+argument_list|,
+name|Session
+operator|.
+name|AUTO_ACKNOWLEDGE
+argument_list|)
 decl_stmt|;
+name|MessageProducer
+name|p
+init|=
+name|session
+operator|.
+name|createProducer
+argument_list|(
+name|queue
+argument_list|)
+decl_stmt|;
+name|p
+operator|.
+name|send
+argument_list|(
+name|session
+operator|.
+name|createTextMessage
+argument_list|(
+literal|"Hello World"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//            session.commit();
+name|MessageConsumer
+name|c
+init|=
+name|session
+operator|.
+name|createConsumer
+argument_list|(
+name|queue
+argument_list|)
+decl_stmt|;
+name|Message
+name|msg
+init|=
+name|c
+operator|.
+name|receive
+argument_list|()
+decl_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"first:"
+operator|+
+name|msg
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|msg
+operator|.
+name|getJMSRedelivered
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|//            session.rollback();
+comment|//
+comment|//            msg = c.receive();
+comment|//            System.out.println("second:"+msg);
+comment|//            System.out.println(msg.getJMSRedelivered());
+block|}
+name|connection
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+comment|//    @Test
+comment|//    public void testSendReceive() throws Exception {
+comment|//        ActiveMQAdmin.enableJMSFrameTracing();
+comment|//        QueueImpl queue = new QueueImpl("queue://testqueue");
+comment|//        int nMsgs = 1;
+comment|//        final String dataFormat = "%01024d";
+comment|//
+comment|//
+comment|//        try {
+comment|//            Connection connection = createConnection();
+comment|//            {
+comment|//                Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//                MessageProducer p = session.createProducer(queue);
+comment|//                for (int i = 0; i< nMsgs; i++) {
+comment|//                    System.out.println("Sending " + i);
+comment|//                    p.send(session.createTextMessage(String.format(dataFormat, i)));
+comment|//                }
+comment|//            }
+comment|//            connection.close();
+comment|//
+comment|//            System.out.println("=======================================================================================");
+comment|//            System.out.println(" failing a receive ");
+comment|//            System.out.println("=======================================================================================");
+comment|//            connection = createConnection();
+comment|//            {
+comment|//                Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+comment|//                MessageConsumer c = session.createConsumer(queue);
+comment|//
+comment|//                // Receive messages non-transacted
+comment|//                int i = 0;
+comment|//                while ( i< 1) {
+comment|//                    TextMessage msg = (TextMessage) c.receive();
+comment|//                    if( msg!=null ) {
+comment|//                        String s = msg.getText();
+comment|//                        assertEquals(String.format(dataFormat, i), s);
+comment|//                        System.out.println("Received: " + i);
+comment|//                        i++;
+comment|//                    }
+comment|//                }
+comment|//            }
+comment|//            connection.close();
+comment|//
+comment|//
+comment|//            System.out.println("=======================================================================================");
+comment|//            System.out.println(" receiving ");
+comment|//            System.out.println("=======================================================================================");
+comment|//            connection = createConnection();
+comment|//            {
+comment|//                Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//                MessageConsumer c = session.createConsumer(queue);
+comment|//
+comment|//                // Receive messages non-transacted
+comment|//                int i = 0;
+comment|//                while ( i< nMsgs) {
+comment|//                    TextMessage msg = (TextMessage) c.receive();
+comment|//                    if( msg!=null ) {
+comment|//                        String s = msg.getText();
+comment|//                        assertEquals(String.format(dataFormat, i), s);
+comment|//                        System.out.println("Received: " + i);
+comment|//                        i++;
+comment|//                    }
+comment|//                }
+comment|//            }
+comment|//            connection.close();
+comment|//
+comment|//        } catch (Exception e) {
+comment|//            e.printStackTrace();
+comment|//        }
+comment|//
+comment|//    }
+specifier|private
+name|Connection
+name|createConnection
+parameter_list|()
+throws|throws
+name|JMSException
+block|{
 specifier|final
 name|ConnectionFactoryImpl
 name|factory
@@ -141,8 +327,6 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
-try|try
-block|{
 specifier|final
 name|Connection
 name|connection
@@ -184,238 +368,9 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-block|{
-name|Session
-name|session
-init|=
+return|return
 name|connection
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|MessageProducer
-name|p
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-name|queue
-argument_list|)
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|nMsgs
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Sending "
-operator|+
-name|i
-argument_list|)
-expr_stmt|;
-name|p
-operator|.
-name|send
-argument_list|(
-name|session
-operator|.
-name|createTextMessage
-argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-name|dataFormat
-argument_list|,
-name|i
-argument_list|)
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-name|p
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"======================================================================================="
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|" receiving "
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"======================================================================================="
-argument_list|)
-expr_stmt|;
-block|{
-name|Session
-name|session
-init|=
-name|connection
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|MessageConsumer
-name|c
-init|=
-name|session
-operator|.
-name|createConsumer
-argument_list|(
-name|queue
-argument_list|)
-decl_stmt|;
-comment|// Receive messages non-transacted
-name|int
-name|i
-init|=
-literal|0
-decl_stmt|;
-while|while
-condition|(
-name|i
-operator|<
-name|nMsgs
-condition|)
-block|{
-name|TextMessage
-name|msg
-init|=
-operator|(
-name|TextMessage
-operator|)
-name|c
-operator|.
-name|receive
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|msg
-operator|!=
-literal|null
-condition|)
-block|{
-name|String
-name|s
-init|=
-name|msg
-operator|.
-name|getText
-argument_list|()
-decl_stmt|;
-name|assertEquals
-argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-name|dataFormat
-argument_list|,
-name|i
-argument_list|)
-argument_list|,
-name|s
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Received: "
-operator|+
-name|i
-argument_list|)
-expr_stmt|;
-name|i
-operator|++
-expr_stmt|;
-block|}
-block|}
-name|c
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-name|connection
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
+return|;
 block|}
 block|}
 end_class
