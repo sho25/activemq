@@ -1071,6 +1071,14 @@ name|getWriteTransactionId
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// make visible as end page
+name|pageFile
+operator|.
+name|addToCache
+argument_list|(
+name|current
+argument_list|)
+expr_stmt|;
 comment|// Write the header..
 name|pos
 operator|=
