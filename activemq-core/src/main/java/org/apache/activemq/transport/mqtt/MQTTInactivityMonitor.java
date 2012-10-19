@@ -123,7 +123,7 @@ name|concurrent
 operator|.
 name|locks
 operator|.
-name|ReentrantReadWriteLock
+name|ReentrantLock
 import|;
 end_import
 
@@ -283,6 +283,14 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|static
+specifier|final
+name|long
+name|DEFAULT_CHECK_TIME_MILLS
+init|=
+literal|30000
+decl_stmt|;
+specifier|private
+specifier|static
 name|ThreadPoolExecutor
 name|ASYNC_TASKS
 decl_stmt|;
@@ -293,13 +301,6 @@ name|CHECKER_COUNTER
 decl_stmt|;
 specifier|private
 specifier|static
-name|long
-name|DEFAULT_CHECK_TIME_MILLS
-init|=
-literal|30000
-decl_stmt|;
-specifier|private
-specifier|static
 name|Timer
 name|READ_CHECK_TIMER
 decl_stmt|;
@@ -307,28 +308,6 @@ specifier|private
 specifier|final
 name|AtomicBoolean
 name|monitorStarted
-init|=
-operator|new
-name|AtomicBoolean
-argument_list|(
-literal|false
-argument_list|)
-decl_stmt|;
-specifier|private
-specifier|final
-name|AtomicBoolean
-name|commandSent
-init|=
-operator|new
-name|AtomicBoolean
-argument_list|(
-literal|false
-argument_list|)
-decl_stmt|;
-specifier|private
-specifier|final
-name|AtomicBoolean
-name|inSend
 init|=
 operator|new
 name|AtomicBoolean
@@ -382,11 +361,11 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|ReentrantReadWriteLock
+name|ReentrantLock
 name|sendLock
 init|=
 operator|new
-name|ReentrantReadWriteLock
+name|ReentrantLock
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -711,7 +690,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-empty_stmt|;
 block|}
 argument_list|)
 expr_stmt|;
@@ -797,9 +775,6 @@ condition|)
 block|{
 name|sendLock
 operator|.
-name|readLock
-argument_list|()
-operator|.
 name|lock
 argument_list|()
 expr_stmt|;
@@ -833,9 +808,6 @@ block|}
 finally|finally
 block|{
 name|sendLock
-operator|.
-name|readLock
-argument_list|()
 operator|.
 name|unlock
 argument_list|()
@@ -876,25 +848,13 @@ throws|throws
 name|IOException
 block|{
 comment|// To prevent the inactivity monitor from sending a message while we
-comment|// are performing a send we take a read lock.  The inactivity monitor
-comment|// sends its Heart-beat commands under a write lock.  This means that
-comment|// the MutexTransport is still responsible for synchronizing sends
+comment|// are performing a send we take the lock.
 name|this
 operator|.
 name|sendLock
 operator|.
-name|readLock
-argument_list|()
-operator|.
 name|lock
 argument_list|()
-expr_stmt|;
-name|inSend
-operator|.
-name|set
-argument_list|(
-literal|true
-argument_list|)
 expr_stmt|;
 try|try
 block|{
@@ -906,26 +866,9 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|commandSent
-operator|.
-name|set
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|inSend
-operator|.
-name|set
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|sendLock
-operator|.
-name|readLock
-argument_list|()
 operator|.
 name|unlock
 argument_list|()
@@ -1121,6 +1064,16 @@ name|void
 name|startMonitorThread
 parameter_list|()
 block|{
+comment|// Not yet configured if this isn't set yet.
+if|if
+condition|(
+name|protocolConverter
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
 if|if
 condition|(
 name|monitorStarted
@@ -1351,7 +1304,7 @@ name|Integer
 operator|.
 name|MAX_VALUE
 argument_list|,
-literal|10
+literal|60
 argument_list|,
 name|TimeUnit
 operator|.

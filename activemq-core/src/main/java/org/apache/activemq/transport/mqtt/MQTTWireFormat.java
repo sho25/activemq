@@ -172,12 +172,6 @@ operator|*
 literal|256
 decl_stmt|;
 specifier|private
-name|boolean
-name|encodingEnabled
-init|=
-literal|false
-decl_stmt|;
-specifier|private
 name|int
 name|version
 init|=
