@@ -158,6 +158,18 @@ name|getSocketAddress
 argument_list|()
 return|;
 block|}
+specifier|public
+name|boolean
+name|isSslServer
+parameter_list|()
+block|{
+return|return
+name|next
+operator|.
+name|isSslServer
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

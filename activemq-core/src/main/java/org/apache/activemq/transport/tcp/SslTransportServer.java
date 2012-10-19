@@ -122,7 +122,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  An SSL TransportServer.  *   *  Allows for client certificate authentication (refer to setNeedClientAuth for  *      details).  *  NOTE: Client certificate authentication is disabled by default.   *  */
+comment|/**  *  An SSL TransportServer.  *  *  Allows for client certificate authentication (refer to setNeedClientAuth for  *      details).  *  NOTE: Client certificate authentication is disabled by default.  *  */
 end_comment
 
 begin_class
@@ -142,7 +142,7 @@ specifier|private
 name|boolean
 name|wantClientAuth
 decl_stmt|;
-comment|/**      * Creates a ssl transport server for the specified url using the provided      * serverSocketFactory      *       * @param transportFactory The factory used to create transports when connections arrive.      * @param location The location of the broker to bind to.      * @param serverSocketFactory The factory used to create this server.      * @throws IOException passed up from TcpTransportFactory.      * @throws URISyntaxException passed up from TcpTransportFactory.      */
+comment|/**      * Creates a ssl transport server for the specified url using the provided      * serverSocketFactory      *      * @param transportFactory The factory used to create transports when connections arrive.      * @param location The location of the broker to bind to.      * @param serverSocketFactory The factory used to create this server.      * @throws IOException passed up from TcpTransportFactory.      * @throws URISyntaxException passed up from TcpTransportFactory.      */
 specifier|public
 name|SslTransportServer
 parameter_list|(
@@ -226,7 +226,7 @@ operator|=
 name|wantAuth
 expr_stmt|;
 block|}
-comment|/**      * Binds this socket to the previously specified URI.      *       * Overridden to allow for proper handling of needClientAuth.      *       * @throws IOException passed up from TcpTransportServer.       */
+comment|/**      * Binds this socket to the previously specified URI.      *      * Overridden to allow for proper handling of needClientAuth.      *      * @throws IOException passed up from TcpTransportServer.      */
 specifier|public
 name|void
 name|bind
@@ -281,7 +281,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Used to create Transports for this server.      *       * Overridden to allow the use of SslTransports (instead of TcpTransports).      *       * @param socket The incoming socket that will be wrapped into the new Transport.       * @param format The WireFormat being used.      * @return The newly return (SSL) Transport.      * @throws IOException      */
+comment|/**      * Used to create Transports for this server.      *      * Overridden to allow the use of SslTransports (instead of TcpTransports).      *      * @param socket The incoming socket that will be wrapped into the new Transport.      * @param format The WireFormat being used.      * @return The newly return (SSL) Transport.      * @throws IOException      */
 specifier|protected
 name|Transport
 name|createTransport
@@ -306,6 +306,17 @@ name|SSLSocket
 operator|)
 name|socket
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isSslServer
+parameter_list|()
+block|{
+return|return
+literal|true
 return|;
 block|}
 block|}

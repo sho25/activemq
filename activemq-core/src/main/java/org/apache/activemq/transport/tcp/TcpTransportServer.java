@@ -414,7 +414,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A TCP based implementation of {@link TransportServer}  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  *   */
+comment|/**  * A TCP based implementation of {@link TransportServer}  *  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  *  */
 end_comment
 
 begin_class
@@ -889,7 +889,7 @@ operator|=
 name|wireFormatFactory
 expr_stmt|;
 block|}
-comment|/**      * Associates a broker info with the transport server so that the transport      * can do discovery advertisements of the broker.      *       * @param brokerInfo      */
+comment|/**      * Associates a broker info with the transport server so that the transport      * can do discovery advertisements of the broker.      *      * @param brokerInfo      */
 specifier|public
 name|void
 name|setBrokerInfo
@@ -1250,7 +1250,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Allow derived classes to override the Transport implementation that this      * transport server creates.      *       * @param socket      * @param format      * @return      * @throws IOException      */
+comment|/**      * Allow derived classes to override the Transport implementation that this      * transport server creates.      *      * @param socket      * @param format      * @return      * @throws IOException      */
 specifier|protected
 name|Transport
 name|createTransport
@@ -1287,7 +1287,7 @@ name|getBindLocation
 argument_list|()
 return|;
 block|}
-comment|/**      * @param socket       * @param inetAddress      * @return real hostName      * @throws UnknownHostException      */
+comment|/**      * @param socket      * @param inetAddress      * @return real hostName      * @throws UnknownHostException      */
 specifier|protected
 name|String
 name|resolveHostName
@@ -1988,6 +1988,17 @@ operator|.
 name|currentTransportCount
 operator|--
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isSslServer
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
 block|}
 block|}
 end_class

@@ -243,22 +243,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|transport
-operator|.
-name|reliable
-operator|.
-name|Replayer
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|util
 operator|.
 name|ServiceStopper
@@ -286,7 +270,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A UDP based implementation of {@link TransportServer}  *   *   */
+comment|/**  * A UDP based implementation of {@link TransportServer}  *  *  */
 end_comment
 
 begin_class
@@ -877,6 +861,17 @@ name|serverTransport
 operator|.
 name|getLocalSocketAddress
 argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isSslServer
+parameter_list|()
+block|{
+return|return
+literal|false
 return|;
 block|}
 block|}

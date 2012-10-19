@@ -62,7 +62,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A TransportServer asynchronously accepts {@see Transport} objects and then  * delivers those objects to a {@see TransportAcceptListener}.  *   *   */
+comment|/**  * A TransportServer asynchronously accepts {@see Transport} objects and then  * delivers those objects to a {@see TransportAcceptListener}.  *  *  */
 end_comment
 
 begin_interface
@@ -72,7 +72,7 @@ name|TransportServer
 extends|extends
 name|Service
 block|{
-comment|/**      * Registers an {@see TransportAcceptListener} which is notified of accepted      * channels.      *       * @param acceptListener      */
+comment|/**      * Registers an {@see TransportAcceptListener} which is notified of accepted      * channels.      *      * @param acceptListener      */
 name|void
 name|setAcceptListener
 parameter_list|(
@@ -80,7 +80,7 @@ name|TransportAcceptListener
 name|acceptListener
 parameter_list|)
 function_decl|;
-comment|/**      * Associates a broker info with the transport server so that the transport      * can do discovery advertisements of the broker.      *       * @param brokerInfo      */
+comment|/**      * Associates a broker info with the transport server so that the transport      * can do discovery advertisements of the broker.      *      * @param brokerInfo      */
 name|void
 name|setBrokerInfo
 parameter_list|(
@@ -95,6 +95,11 @@ function_decl|;
 comment|/**      * @return The socket address that this transport is accepting connections      *         on or null if this does not or is not currently accepting      *         connections on a socket.      */
 name|InetSocketAddress
 name|getSocketAddress
+parameter_list|()
+function_decl|;
+comment|/**      * For TransportServers that provide SSL connections to their connected peers they should      * return true here if and only if they populate the ConnectionInfo command presented to      * the Broker with the peers certificate chain so that the broker knows it can use that      * information to authenticate the connected peer.      *      * @return true if this transport server provides SSL level security over its      *          connections.      */
+name|boolean
+name|isSslServer
 parameter_list|()
 function_decl|;
 block|}
