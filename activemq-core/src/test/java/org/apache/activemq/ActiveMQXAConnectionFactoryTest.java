@@ -453,7 +453,9 @@ specifier|private
 name|BrokerService
 name|broker
 decl_stmt|;
-specifier|protected
+annotation|@
+name|Override
+specifier|public
 name|void
 name|tearDown
 parameter_list|()
@@ -2724,13 +2726,14 @@ comment|// TODO this sometimes fails when using the actual local host name
 name|URI
 name|currentURI
 init|=
+operator|new
+name|URI
+argument_list|(
 name|connector
 operator|.
-name|getServer
+name|getPublishableConnectString
 argument_list|()
-operator|.
-name|getConnectURI
-argument_list|()
+argument_list|)
 decl_stmt|;
 comment|// sometimes the actual host name doesn't work in this test case
 comment|// e.g. on OS X so lets use the original details but just use the actual
@@ -2835,16 +2838,6 @@ name|assertNotNull
 argument_list|(
 name|connection
 argument_list|)
-expr_stmt|;
-name|connection
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|broker
-operator|.
-name|stop
-argument_list|()
 expr_stmt|;
 block|}
 specifier|private
