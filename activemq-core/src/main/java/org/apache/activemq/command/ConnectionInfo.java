@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @openwire:marshaller code="3"  *   */
+comment|/**  *  * @openwire:marshaller code="3"  *  */
 end_comment
 
 begin_class
@@ -361,7 +361,7 @@ operator|=
 name|userName
 expr_stmt|;
 block|}
-comment|/**      * The route of brokers the command has moved through.      *       * @openwire:property version=1 cache=true      */
+comment|/**      * The route of brokers the command has moved through.      *      * @openwire:property version=1 cache=true      */
 specifier|public
 name|BrokerId
 index|[]
@@ -459,7 +459,7 @@ operator|=
 name|manageable
 expr_stmt|;
 block|}
-comment|/**      * Transports may wish to associate additional data with the connection. For      * example, an SSL transport may use this field to attach the client      * certificates used when the conection was established.      *       * @return the transport context.      */
+comment|/**      * Transports may wish to associate additional data with the connection. For      * example, an SSL transport may use this field to attach the client      * certificates used when the connection was established.      *      * @return the transport context.      */
 specifier|public
 name|Object
 name|getTransportContext
@@ -469,7 +469,7 @@ return|return
 name|transportContext
 return|;
 block|}
-comment|/**      * Transports may wish to associate additional data with the connection. For      * example, an SSL transport may use this field to attach the client      * certificates used when the conection was established.      *       * @param transportContext value used to set the transport context      */
+comment|/**      * Transports may wish to associate additional data with the connection. For      * example, an SSL transport may use this field to attach the client      * certificates used when the connection was established.      *      * @param transportContext value used to set the transport context      */
 specifier|public
 name|void
 name|setTransportContext
