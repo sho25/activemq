@@ -189,6 +189,13 @@ name|content
 init|=
 name|NO_DATA
 decl_stmt|;
+specifier|private
+specifier|transient
+name|Object
+name|transportContext
+init|=
+literal|null
+decl_stmt|;
 specifier|public
 name|StompFrame
 parameter_list|(
@@ -832,6 +839,32 @@ operator|.
 name|toString
 argument_list|()
 return|;
+block|}
+comment|/**      * Transports may wish to associate additional data with the connection. For      * example, an SSL transport may use this field to attach the client      * certificates used when the connection was established.      *      * @return the transport context.      */
+specifier|public
+name|Object
+name|getTransportContext
+parameter_list|()
+block|{
+return|return
+name|transportContext
+return|;
+block|}
+comment|/**      * Transports may wish to associate additional data with the connection. For      * example, an SSL transport may use this field to attach the client      * certificates used when the connection was established.      *      * @param transportContext value used to set the transport context      */
+specifier|public
+name|void
+name|setTransportContext
+parameter_list|(
+name|Object
+name|transportContext
+parameter_list|)
+block|{
+name|this
+operator|.
+name|transportContext
+operator|=
+name|transportContext
+expr_stmt|;
 block|}
 block|}
 end_class

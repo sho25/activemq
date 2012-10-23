@@ -4366,9 +4366,9 @@ name|connectionInfo
 operator|.
 name|setTransportContext
 argument_list|(
-name|stompTransport
+name|command
 operator|.
-name|getPeerCertificates
+name|getTransportContext
 argument_list|()
 argument_list|)
 expr_stmt|;

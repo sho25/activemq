@@ -29,18 +29,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|security
-operator|.
-name|cert
-operator|.
-name|X509Certificate
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -79,12 +67,6 @@ name|command
 parameter_list|)
 throws|throws
 name|IOException
-function_decl|;
-specifier|public
-name|X509Certificate
-index|[]
-name|getPeerCertificates
-parameter_list|()
 function_decl|;
 specifier|public
 name|void
