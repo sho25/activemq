@@ -529,6 +529,10 @@ condition|)
 block|{
 break|break;
 block|}
+name|receiveCounter
+operator|+=
+name|readSize
+expr_stmt|;
 name|inputBuffer
 operator|.
 name|flip

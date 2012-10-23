@@ -914,7 +914,9 @@ name|readCount
 operator|==
 literal|0
 condition|)
+block|{
 break|break;
+block|}
 comment|// channel is closed, cleanup
 if|if
 condition|(
@@ -938,6 +940,10 @@ argument_list|()
 expr_stmt|;
 break|break;
 block|}
+name|receiveCounter
+operator|+=
+name|readCount
+expr_stmt|;
 block|}
 if|if
 condition|(

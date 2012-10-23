@@ -188,6 +188,11 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
+name|boolean
+name|awaitingCommandStart
+init|=
+literal|true
+decl_stmt|;
 name|String
 name|version
 init|=
@@ -268,6 +273,26 @@ operator|!
 name|processedHeaders
 condition|)
 block|{
+comment|// skip heart beat commands.
+if|if
+condition|(
+name|awaitingCommandStart
+operator|&&
+name|b
+operator|==
+literal|'\n'
+condition|)
+block|{
+continue|continue;
+block|}
+else|else
+block|{
+name|awaitingCommandStart
+operator|=
+literal|false
+expr_stmt|;
+comment|// non-newline indicates next frame.
+block|}
 name|currentCommand
 operator|.
 name|write
@@ -523,6 +548,10 @@ expr_stmt|;
 name|processedHeaders
 operator|=
 literal|false
+expr_stmt|;
+name|awaitingCommandStart
+operator|=
+literal|true
 expr_stmt|;
 name|currentCommand
 operator|.

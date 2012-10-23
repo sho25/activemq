@@ -539,6 +539,11 @@ name|CountDownLatch
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|protected
+specifier|volatile
+name|int
+name|receiveCounter
+decl_stmt|;
 specifier|private
 name|Map
 argument_list|<
@@ -567,11 +572,6 @@ decl_stmt|;
 specifier|private
 name|Thread
 name|runnerThread
-decl_stmt|;
-specifier|private
-specifier|volatile
-name|int
-name|receiveCounter
 decl_stmt|;
 comment|/**      * Connect to a remote Node - e.g. a Broker      *      * @param wireFormat      * @param socketFactory      * @param remoteLocation      * @param localLocation - e.g. local InetAddress and local port      * @throws IOException      * @throws UnknownHostException      */
 specifier|public
