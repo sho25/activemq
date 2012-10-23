@@ -552,6 +552,10 @@ argument_list|,
 name|readSize
 argument_list|)
 expr_stmt|;
+name|receiveCounter
+operator|+=
+name|readSize
+expr_stmt|;
 comment|// clear the buffer
 name|inputBuffer
 operator|.
