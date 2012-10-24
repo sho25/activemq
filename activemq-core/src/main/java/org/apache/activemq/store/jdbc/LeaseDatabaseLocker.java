@@ -475,7 +475,7 @@ argument_list|(
 name|getLeaseHolderId
 argument_list|()
 operator|+
-literal|" lease aquire failure: "
+literal|" lease acquire failure: "
 operator|+
 name|e
 argument_list|,
@@ -532,7 +532,7 @@ argument_list|(
 name|getLeaseHolderId
 argument_list|()
 operator|+
-literal|" failing lease aquire due to stop"
+literal|" failing lease acquire due to stop"
 argument_list|)
 throw|;
 block|}
