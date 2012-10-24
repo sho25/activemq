@@ -153,25 +153,6 @@ name|store
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO: The following test cases are failing...
-annotation|@
-name|Override
-specifier|public
-name|void
-name|testQueuePersistentPreparedAcksNotLostOnRestart
-parameter_list|()
-throws|throws
-name|Exception
-block|{     }
-annotation|@
-name|Override
-specifier|public
-name|void
-name|testQueuePersistentPreparedAcksAvailableAfterRestartAndRollback
-parameter_list|()
-throws|throws
-name|Exception
-block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -180,7 +161,10 @@ name|testTopicPersistentPreparedAcksAvailableAfterRestartAndRollback
 parameter_list|()
 throws|throws
 name|Exception
-block|{     }
+block|{
+comment|//        XA Durable Subs not yet implemented
+comment|//        super.testTopicPersistentPreparedAcksAvailableAfterRestartAndRollback();
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -189,7 +173,10 @@ name|testTopicPersistentPreparedAcksAvailableAfterRollback
 parameter_list|()
 throws|throws
 name|Exception
-block|{     }
+block|{
+comment|//        XA Durable Subs not yet implemented
+comment|//        super.testTopicPersistentPreparedAcksAvailableAfterRollback();
+block|}
 block|}
 end_class
 
