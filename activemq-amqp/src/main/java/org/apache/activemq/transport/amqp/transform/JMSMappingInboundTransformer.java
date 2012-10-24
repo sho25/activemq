@@ -1297,7 +1297,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|da
+name|ap
 operator|!=
 literal|null
 condition|)
@@ -1362,7 +1362,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|da
+name|fp
 operator|!=
 literal|null
 condition|)
@@ -1465,6 +1465,7 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{
+comment|//TODO support all types
 if|if
 condition|(
 name|value
@@ -1484,10 +1485,58 @@ operator|)
 name|value
 argument_list|)
 expr_stmt|;
-comment|//        } else if( value instanceof Integer ) {
-comment|//            msg.setIntProperty(key, ((Integer) value).intValue());
-comment|//        } else if( value instanceof Long ) {
-comment|//            msg.setLongProperty(key, ((Long) value).longValue());
+block|}
+elseif|else
+if|if
+condition|(
+name|value
+operator|instanceof
+name|Integer
+condition|)
+block|{
+name|msg
+operator|.
+name|setIntProperty
+argument_list|(
+name|key
+argument_list|,
+operator|(
+operator|(
+name|Integer
+operator|)
+name|value
+operator|)
+operator|.
+name|intValue
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|value
+operator|instanceof
+name|Long
+condition|)
+block|{
+name|msg
+operator|.
+name|setLongProperty
+argument_list|(
+name|key
+argument_list|,
+operator|(
+operator|(
+name|Long
+operator|)
+name|value
+operator|)
+operator|.
+name|longValue
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{

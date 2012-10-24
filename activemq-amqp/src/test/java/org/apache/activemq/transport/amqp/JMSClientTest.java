@@ -103,6 +103,18 @@ name|assertEquals
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
 begin_comment
 comment|/**  * @author<a href="http://hiramchirino.com">Hiram Chirino</a>  */
 end_comment
@@ -168,16 +180,30 @@ argument_list|(
 name|queue
 argument_list|)
 decl_stmt|;
-name|p
-operator|.
-name|send
-argument_list|(
+name|Message
+name|msg
+init|=
 name|session
 operator|.
 name|createTextMessage
 argument_list|(
 literal|"Hello World"
 argument_list|)
+decl_stmt|;
+name|msg
+operator|.
+name|setObjectProperty
+argument_list|(
+literal|"x"
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|send
+argument_list|(
+name|msg
 argument_list|)
 expr_stmt|;
 comment|//            session.commit();
@@ -189,25 +215,23 @@ operator|.
 name|createConsumer
 argument_list|(
 name|queue
+argument_list|,
+literal|"x = 1"
 argument_list|)
 decl_stmt|;
 name|Message
-name|msg
+name|received
 init|=
 name|c
 operator|.
 name|receive
-argument_list|()
-decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
 argument_list|(
-literal|"first:"
-operator|+
-name|msg
+literal|2000
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|received
 argument_list|)
 expr_stmt|;
 name|System
@@ -216,7 +240,26 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|msg
+literal|"first: "
+operator|+
+operator|(
+operator|(
+name|TextMessage
+operator|)
+name|received
+operator|)
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|received
 operator|.
 name|getJMSRedelivered
 argument_list|()
