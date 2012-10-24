@@ -2697,6 +2697,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|broker
+operator|.
+name|setUseJmx
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|TransportConnector
 name|connector
 init|=
