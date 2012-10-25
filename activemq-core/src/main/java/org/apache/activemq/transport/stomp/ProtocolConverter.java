@@ -3349,7 +3349,7 @@ throw|throw
 operator|new
 name|ProtocolException
 argument_list|(
-literal|"Invliad Subscription: cannot durably subscribe to a Queue destination!"
+literal|"Invalid Subscription: cannot durably subscribe to a Queue destination!"
 argument_list|)
 throw|;
 block|}
