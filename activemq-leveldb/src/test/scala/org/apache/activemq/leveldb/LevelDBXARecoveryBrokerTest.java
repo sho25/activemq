@@ -153,30 +153,6 @@ name|store
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|testTopicPersistentPreparedAcksAvailableAfterRestartAndRollback
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|//        XA Durable Subs not yet implemented
-comment|//        super.testTopicPersistentPreparedAcksAvailableAfterRestartAndRollback();
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|testTopicPersistentPreparedAcksAvailableAfterRollback
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|//        XA Durable Subs not yet implemented
-comment|//        super.testTopicPersistentPreparedAcksAvailableAfterRollback();
-block|}
 block|}
 end_class
 
