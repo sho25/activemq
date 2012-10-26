@@ -488,9 +488,6 @@ name|protocolConverter
 operator|.
 name|onAMQPData
 argument_list|(
-operator|(
-name|Buffer
-operator|)
 name|command
 argument_list|)
 expr_stmt|;
@@ -520,7 +517,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|JMSException
+name|Exception
 name|e
 parameter_list|)
 block|{
@@ -577,7 +574,7 @@ specifier|public
 name|void
 name|sendToAmqp
 parameter_list|(
-name|Buffer
+name|Object
 name|command
 parameter_list|)
 throws|throws

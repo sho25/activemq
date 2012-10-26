@@ -273,7 +273,11 @@ operator|=
 literal|true
 expr_stmt|;
 return|return
+operator|new
+name|AmqpHeader
+argument_list|(
 name|magic
+argument_list|)
 return|;
 block|}
 else|else

@@ -86,7 +86,7 @@ specifier|public
 name|void
 name|sendToAmqp
 parameter_list|(
-name|Buffer
+name|Object
 name|command
 parameter_list|)
 throws|throws

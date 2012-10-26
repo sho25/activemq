@@ -365,9 +365,9 @@ literal|"localhost"
 argument_list|,
 name|port
 argument_list|,
-literal|null
+literal|"admin"
 argument_list|,
-literal|null
+literal|"password"
 argument_list|)
 decl_stmt|;
 specifier|final
