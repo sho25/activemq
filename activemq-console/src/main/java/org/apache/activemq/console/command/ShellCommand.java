@@ -188,6 +188,8 @@ literal|"    browse          - Display selected messages in a specified destinat
 block|,
 literal|"    journal-audit   - Allows you to view records stored in the persistent journal."
 block|,
+literal|"    export          - Exports a stopped brokers data files to an archive file"
+block|,
 literal|"    purge           - Delete selected destination's messages that matches the message selector"
 block|,
 literal|"    encrypt         - Encrypts given text"
@@ -597,6 +599,24 @@ name|command
 operator|=
 operator|new
 name|DecryptCommand
+argument_list|()
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|taskToken
+operator|.
+name|equals
+argument_list|(
+literal|"export"
+argument_list|)
+condition|)
+block|{
+name|command
+operator|=
+operator|new
+name|StoreExportCommand
 argument_list|()
 expr_stmt|;
 block|}
