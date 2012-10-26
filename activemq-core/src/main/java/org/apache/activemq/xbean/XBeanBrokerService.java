@@ -99,13 +99,19 @@ block|{
 specifier|private
 name|boolean
 name|start
-init|=
-literal|true
 decl_stmt|;
 specifier|public
 name|XBeanBrokerService
 parameter_list|()
-block|{     }
+block|{
+name|start
+operator|=
+name|XBeanBrokerFactory
+operator|.
+name|getStartDefault
+argument_list|()
+expr_stmt|;
+block|}
 comment|/**      *      * @throws Exception      * @org.apache.xbean.InitMethod      */
 annotation|@
 name|PostConstruct
