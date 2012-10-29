@@ -138,7 +138,7 @@ name|void
 name|resetStatistics
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of messages that have been sent to the destination.      *       * @return The number of messages that have been sent to the destination.      */
+comment|/**      * Returns the number of messages that have been sent to the destination.      *      * @return The number of messages that have been sent to the destination.      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -148,7 +148,7 @@ name|long
 name|getEnqueueCount
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of messages that have been delivered (potentially not      * acknowledged) to consumers.      *       * @return The number of messages that have been delivered (potentially not      *         acknowledged) to consumers.      */
+comment|/**      * Returns the number of messages that have been delivered (potentially not      * acknowledged) to consumers.      *      * @return The number of messages that have been delivered (potentially not      *         acknowledged) to consumers.      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -158,7 +158,7 @@ name|long
 name|getDispatchCount
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of messages that have been acknowledged from the      * destination.      *       * @return The number of messages that have been acknowledged from the      *         destination.      */
+comment|/**      * Returns the number of messages that have been acknowledged from the      * destination.      *      * @return The number of messages that have been acknowledged from the      *         destination.      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -168,7 +168,7 @@ name|long
 name|getDequeueCount
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of messages that have been dispatched but not      * acknowledged      *       * @return The number of messages that have been dispatched but not      * acknowledged      */
+comment|/**      * Returns the number of messages that have been dispatched but not      * acknowledged      *      * @return The number of messages that have been dispatched but not      * acknowledged      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -178,7 +178,7 @@ name|long
 name|getInFlightCount
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of messages that have expired      *       * @return The number of messages that have expired      */
+comment|/**      * Returns the number of messages that have expired      *      * @return The number of messages that have expired      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -188,7 +188,7 @@ name|long
 name|getExpiredCount
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of consumers subscribed this destination.      *       * @return The number of consumers subscribed this destination.      */
+comment|/**      * Returns the number of consumers subscribed this destination.      *      * @return The number of consumers subscribed this destination.      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -208,7 +208,7 @@ name|long
 name|getProducerCount
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the number of messages in this destination which are yet to be      * consumed      *       * @return Returns the number of messages in this destination which are yet      *         to be consumed      */
+comment|/**      * Returns the number of messages in this destination which are yet to be      * consumed      *      * @return Returns the number of messages in this destination which are yet      *         to be consumed      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -288,7 +288,7 @@ name|OpenDataException
 throws|,
 name|InvalidSelectorException
 function_decl|;
-comment|/**      * Sends a TextMesage to the destination.      *       * @param body the text to send      * @return the message id of the message sent.      * @throws Exception      */
+comment|/**      * Sends a TextMesage to the destination.      *      * @param body the text to send      * @return the message id of the message sent.      * @throws Exception      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -308,7 +308,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Sends a TextMesage to the destination.      *       * @param headers the message headers and properties to set. Can only      *                container Strings maped to primitive types.      * @param body the text to send      * @return the message id of the message sent.      * @throws Exception      */
+comment|/**      * Sends a TextMesage to the destination.      *      * @param headers the message headers and properties to set. Can only      *                container Strings maped to primitive types.      * @param body the text to send      * @return the message id of the message sent.      * @throws Exception      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -377,7 +377,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      *       * @param headers the message headers and properties to set. Can only      *                container Strings maped to primitive types.      * @param body the text to send      * @param user      * @param password      * @return      * @throws Exception      */
+comment|/**      *      * @param headers the message headers and properties to set. Can only      *                container Strings maped to primitive types.      * @param body the text to send      * @param user      * @param password      * @return      * @throws Exception      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -434,6 +434,16 @@ literal|"The percentage of the memory limit used"
 argument_list|)
 name|int
 name|getMemoryPercentUsage
+parameter_list|()
+function_decl|;
+comment|/**      * @return the amount of memory currently used by this destination      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Memory usage, in bytes, used by undelivered messages"
+argument_list|)
+name|long
+name|getMemoryUsageByteCount
 parameter_list|()
 function_decl|;
 comment|/**      * @return the amount of memory allocated to this destination      */
@@ -588,7 +598,7 @@ name|boolean
 name|alwaysRetroactive
 parameter_list|)
 function_decl|;
-comment|/**      * Set's the interval at which warnings about producers being blocked by      * resource usage will be triggered. Values of 0 or less will disable      * warnings      *       * @param blockedProducerWarningInterval the interval at which warning about      *            blocked producers will be triggered.      */
+comment|/**      * Set's the interval at which warnings about producers being blocked by      * resource usage will be triggered. Values of 0 or less will disable      * warnings      *      * @param blockedProducerWarningInterval the interval at which warning about      *            blocked producers will be triggered.      */
 specifier|public
 name|void
 name|setBlockedProducerWarningInterval
@@ -602,7 +612,7 @@ name|long
 name|blockedProducerWarningInterval
 parameter_list|)
 function_decl|;
-comment|/**      *       * @return the interval at which warning about blocked producers will be      *         triggered.      */
+comment|/**      *      * @return the interval at which warning about blocked producers will be      *         triggered.      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -663,7 +673,7 @@ name|int
 name|maxAuditDepth
 parameter_list|)
 function_decl|;
-comment|/**      * @return the maximum number of message to be paged into the       * destination      */
+comment|/**      * @return the maximum number of message to be paged into the      * destination      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -724,7 +734,7 @@ name|boolean
 name|value
 parameter_list|)
 function_decl|;
-comment|/**      * Returns all the current subscription MBeans matching this destination      *       * @return the names of the subscriptions for this destination      */
+comment|/**      * Returns all the current subscription MBeans matching this destination      *      * @return the names of the subscriptions for this destination      */
 annotation|@
 name|MBeanInfo
 argument_list|(
