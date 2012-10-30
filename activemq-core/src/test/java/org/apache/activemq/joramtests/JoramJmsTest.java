@@ -281,6 +281,24 @@ name|jms
 operator|.
 name|conform
 operator|.
+name|selector
+operator|.
+name|SelectorTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|objectweb
+operator|.
+name|jtests
+operator|.
+name|jms
+operator|.
+name|conform
+operator|.
 name|session
 operator|.
 name|QueueSessionTest
@@ -383,6 +401,15 @@ operator|new
 name|TestSuite
 argument_list|()
 decl_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|SelectorTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|suite
 operator|.
 name|addTestSuite
@@ -536,8 +563,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|// TODO: figure out why the following tests are failing..
-comment|//        suite.addTestSuite(SelectorTest.class);
 return|return
 name|suite
 return|;

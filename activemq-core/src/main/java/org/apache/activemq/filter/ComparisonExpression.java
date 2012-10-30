@@ -81,6 +81,27 @@ name|BinaryExpression
 implements|implements
 name|BooleanExpression
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|ThreadLocal
+argument_list|<
+name|Boolean
+argument_list|>
+name|CONVERT_STRING_EXPRESSIONS
+init|=
+operator|new
+name|ThreadLocal
+argument_list|<
+name|Boolean
+argument_list|>
+argument_list|()
+decl_stmt|;
+name|boolean
+name|convertStringExpressions
+init|=
+literal|false
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -114,6 +135,15 @@ name|left
 argument_list|,
 name|right
 argument_list|)
+expr_stmt|;
+name|convertStringExpressions
+operator|=
+name|CONVERT_STRING_EXPRESSIONS
+operator|.
+name|get
+argument_list|()
+operator|!=
+literal|null
 expr_stmt|;
 block|}
 specifier|public
@@ -442,7 +472,7 @@ block|{
 name|Pattern
 name|likePattern
 decl_stmt|;
-comment|/**          * @param left          */
+comment|/**          */
 specifier|public
 name|LikeExpression
 parameter_list|(
@@ -1840,6 +1870,8 @@ condition|)
 block|{
 if|if
 condition|(
+name|convertStringExpressions
+operator|&&
 name|rc
 operator|==
 name|String
@@ -2022,6 +2054,8 @@ block|}
 elseif|else
 if|if
 condition|(
+name|convertStringExpressions
+operator|&&
 name|rc
 operator|==
 name|String
@@ -2173,6 +2207,8 @@ block|}
 elseif|else
 if|if
 condition|(
+name|convertStringExpressions
+operator|&&
 name|rc
 operator|==
 name|String
@@ -2296,6 +2332,8 @@ block|}
 elseif|else
 if|if
 condition|(
+name|convertStringExpressions
+operator|&&
 name|rc
 operator|==
 name|String
@@ -2419,6 +2457,8 @@ block|}
 elseif|else
 if|if
 condition|(
+name|convertStringExpressions
+operator|&&
 name|rc
 operator|==
 name|String
@@ -2541,6 +2581,8 @@ block|}
 elseif|else
 if|if
 condition|(
+name|convertStringExpressions
+operator|&&
 name|rc
 operator|==
 name|String
@@ -2663,6 +2705,8 @@ block|}
 elseif|else
 if|if
 condition|(
+name|convertStringExpressions
+operator|&&
 name|rc
 operator|==
 name|String
@@ -2695,6 +2739,8 @@ block|}
 elseif|else
 if|if
 condition|(
+name|convertStringExpressions
+operator|&&
 name|lc
 operator|==
 name|String
