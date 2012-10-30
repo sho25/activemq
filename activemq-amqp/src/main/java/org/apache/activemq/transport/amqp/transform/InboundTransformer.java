@@ -1255,93 +1255,26 @@ throws|throws
 name|JMSException
 block|{
 comment|//TODO support all types
-if|if
-condition|(
-name|value
-operator|instanceof
-name|String
-condition|)
-block|{
 name|msg
 operator|.
-name|setStringProperty
+name|setObjectProperty
 argument_list|(
 name|key
 argument_list|,
-operator|(
-name|String
-operator|)
 name|value
 argument_list|)
 expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|value
-operator|instanceof
-name|Integer
-condition|)
-block|{
-name|msg
-operator|.
-name|setIntProperty
-argument_list|(
-name|key
-argument_list|,
-operator|(
-operator|(
-name|Integer
-operator|)
-name|value
-operator|)
-operator|.
-name|intValue
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|value
-operator|instanceof
-name|Long
-condition|)
-block|{
-name|msg
-operator|.
-name|setLongProperty
-argument_list|(
-name|key
-argument_list|,
-operator|(
-operator|(
-name|Long
-operator|)
-name|value
-operator|)
-operator|.
-name|longValue
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"Unexpected value type: "
-operator|+
-name|value
-operator|.
-name|getClass
-argument_list|()
-argument_list|)
-throw|;
-block|}
+comment|//        if( value instanceof String ) {
+comment|//            msg.setStringProperty(key, (String) value);
+comment|//        } else if( value instanceof Double ) {
+comment|//            msg.setDoubleProperty(key, ((Double) value).doubleValue());
+comment|//        } else if( value instanceof Integer ) {
+comment|//            msg.setIntProperty(key, ((Integer) value).intValue());
+comment|//        } else if( value instanceof Long ) {
+comment|//            msg.setLongProperty(key, ((Long) value).longValue());
+comment|//        } else {
+comment|//            throw new RuntimeException("Unexpected value type: "+value.getClass());
+comment|//        }
 block|}
 block|}
 end_class
