@@ -410,6 +410,15 @@ name|suite
 operator|.
 name|addTestSuite
 argument_list|(
+name|TemporaryQueueTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
 name|ConnectionTest
 operator|.
 name|class
@@ -474,34 +483,6 @@ condition|(
 literal|false
 condition|)
 block|{
-comment|// TODO: Fails due to temp destinations not being supported yet.
-name|suite
-operator|.
-name|addTestSuite
-argument_list|(
-name|MessageHeaderTest
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|suite
-operator|.
-name|addTestSuite
-argument_list|(
-name|TemporaryQueueTest
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|suite
-operator|.
-name|addTestSuite
-argument_list|(
-name|TemporaryTopicTest
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 comment|// TODO: Fails due to selectors not being implemented yet.
 name|suite
 operator|.
@@ -530,7 +511,17 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|// TODO: Browsers not yet supported.
+comment|// TODO: Fails due to https://issues.apache.org/jira/browse/PROTON-110 and DestinationImpl vs QueueImpl mapping issues
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|MessageHeaderTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+comment|// TODO: Fails due to JMS client setup browser before getEnumeration() gets called.
 name|suite
 operator|.
 name|addTestSuite
@@ -561,6 +552,15 @@ name|class
 argument_list|)
 expr_stmt|;
 comment|// TODO: Fails due to: javax.jms.IllegalStateException: Cannot set client-id to "publisherConnection"; client-id must be set on connection creation
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|TemporaryTopicTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|suite
 operator|.
 name|addTestSuite
