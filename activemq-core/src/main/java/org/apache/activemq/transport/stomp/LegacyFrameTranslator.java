@@ -369,6 +369,11 @@ name|toByteSequence
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|data
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -560,6 +565,11 @@ operator|.
 name|toByteSequence
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|data
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch

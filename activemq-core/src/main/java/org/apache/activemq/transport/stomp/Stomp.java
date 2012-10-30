@@ -103,6 +103,11 @@ init|=
 literal|"1.1"
 decl_stmt|;
 name|String
+name|V1_2
+init|=
+literal|"1.2"
+decl_stmt|;
+name|String
 name|DEFAULT_HEART_BEAT
 init|=
 literal|"0,0"
@@ -122,6 +127,8 @@ index|[]
 name|SUPPORTED_PROTOCOL_VERSIONS
 init|=
 block|{
+literal|"1.2"
+block|,
 literal|"1.1"
 block|,
 literal|"1.0"
@@ -358,6 +365,11 @@ init|=
 literal|"message-id"
 decl_stmt|;
 name|String
+name|ACK_ID
+init|=
+literal|"ack"
+decl_stmt|;
+name|String
 name|DESTINATION
 init|=
 literal|"destination"
@@ -581,6 +593,11 @@ name|String
 name|SUBSCRIPTION
 init|=
 literal|"subscription"
+decl_stmt|;
+name|String
+name|ACK_ID
+init|=
+literal|"id"
 decl_stmt|;
 block|}
 block|}
