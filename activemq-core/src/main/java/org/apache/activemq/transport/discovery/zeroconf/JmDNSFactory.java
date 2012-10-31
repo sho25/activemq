@@ -204,9 +204,6 @@ name|onClose
 parameter_list|(
 name|InetAddress
 name|address
-parameter_list|,
-name|JmDNS
-name|dns
 parameter_list|)
 block|{
 name|UsageTracker
