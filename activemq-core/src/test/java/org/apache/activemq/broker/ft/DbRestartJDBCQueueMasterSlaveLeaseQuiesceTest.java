@@ -282,6 +282,14 @@ name|testSendReceive
 argument_list|()
 expr_stmt|;
 block|}
+comment|// ignore this test case
+specifier|public
+name|void
+name|testAdvisory
+parameter_list|()
+throws|throws
+name|Exception
+block|{}
 block|}
 end_class
 

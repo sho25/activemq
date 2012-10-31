@@ -604,10 +604,6 @@ name|OpenWireFormat
 argument_list|()
 decl_stmt|;
 specifier|private
-name|BrokerService
-name|brokerService
-decl_stmt|;
-specifier|private
 name|Statements
 name|statements
 decl_stmt|;

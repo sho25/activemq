@@ -204,7 +204,7 @@ specifier|private
 name|ScheduledThreadPoolExecutor
 name|clockDaemon
 decl_stmt|;
-specifier|private
+specifier|protected
 name|BrokerService
 name|brokerService
 decl_stmt|;
