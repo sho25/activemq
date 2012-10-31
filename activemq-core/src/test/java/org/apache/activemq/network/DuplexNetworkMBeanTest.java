@@ -304,6 +304,8 @@ operator|=
 name|createNetworkedBroker
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|networkedBroker
 operator|.
 name|start
@@ -349,6 +351,9 @@ literal|"Connection"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|networkedBroker
 operator|.
 name|stop
@@ -359,6 +364,7 @@ operator|.
 name|waitUntilStopped
 argument_list|()
 expr_stmt|;
+block|}
 name|assertEquals
 argument_list|(
 literal|0
