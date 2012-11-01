@@ -1630,6 +1630,16 @@ argument_list|,
 name|consumerInfo
 argument_list|)
 expr_stmt|;
+name|sub
+operator|.
+name|setOfflineTimestamp
+argument_list|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -1685,7 +1695,7 @@ name|values
 argument_list|()
 control|)
 block|{
-comment|// Skip over subscriptions that we allready added..
+comment|// Skip over subscriptions that we already added..
 if|if
 condition|(
 name|dupChecker
