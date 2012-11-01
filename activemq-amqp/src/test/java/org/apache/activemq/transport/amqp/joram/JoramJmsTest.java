@@ -550,7 +550,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|// TODO: Fails due to: javax.jms.IllegalStateException: Cannot set client-id to "publisherConnection"; client-id must be set on connection creation
+comment|//TODO: Should work with qpid 0.19-SNAPSHOT
 name|suite
 operator|.
 name|addTestSuite
@@ -560,7 +560,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|//TODO: Should work with qpid 0.19-SNAPSHOT when patch for https://issues.apache.org/jira/browse/QPID-4408 is applied
+comment|// TODO: Should work with qpid 0.19-SNAPSHOT when patch for https://issues.apache.org/jira/browse/QPID-4408 is applied
 name|suite
 operator|.
 name|addTestSuite
