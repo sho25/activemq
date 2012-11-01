@@ -348,6 +348,8 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+name|assertTrue
+argument_list|(
 name|Wait
 operator|.
 name|waitFor
@@ -384,6 +386,7 @@ block|}
 block|}
 argument_list|,
 literal|15000
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
