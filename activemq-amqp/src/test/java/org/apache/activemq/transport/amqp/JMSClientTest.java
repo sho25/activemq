@@ -92,6 +92,16 @@ import|;
 end_import
 
 begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Enumeration
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -207,64 +217,48 @@ name|msg
 argument_list|)
 expr_stmt|;
 comment|//            session.commit();
-name|MessageConsumer
-name|c
+comment|/*            MessageConsumer c = session.createConsumer(queue, "x = 1");             Message received = c.receive(2000);             assertNotNull(received);             System.out.println("first: " + ((TextMessage)received).getText());             System.out.println(received.getJMSRedelivered());*/
+name|QueueBrowser
+name|browser
 init|=
 name|session
 operator|.
-name|createConsumer
+name|createBrowser
 argument_list|(
 name|queue
-argument_list|,
-literal|"x = 1"
 argument_list|)
 decl_stmt|;
-name|Message
-name|received
+name|Enumeration
+name|enumeration
 init|=
-name|c
+name|browser
 operator|.
-name|receive
-argument_list|(
-literal|2000
-argument_list|)
+name|getEnumeration
+argument_list|()
 decl_stmt|;
-name|assertNotNull
-argument_list|(
-name|received
-argument_list|)
-expr_stmt|;
+while|while
+condition|(
+name|enumeration
+operator|.
+name|hasMoreElements
+argument_list|()
+condition|)
+block|{
 name|System
 operator|.
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"first: "
+literal|"BROWSE "
 operator|+
-operator|(
-operator|(
-name|TextMessage
-operator|)
-name|received
-operator|)
+name|enumeration
 operator|.
-name|getText
+name|nextElement
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|received
-operator|.
-name|getJMSRedelivered
-argument_list|()
-argument_list|)
-expr_stmt|;
+block|}
 comment|//            session.rollback();
 comment|//
 comment|//            msg = c.receive();
