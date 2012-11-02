@@ -5237,6 +5237,11 @@ name|getDistributionMode
 argument_list|()
 operator|==
 name|COPY
+operator|&&
+name|dest
+operator|.
+name|isQueue
+argument_list|()
 condition|)
 block|{
 name|consumerInfo
