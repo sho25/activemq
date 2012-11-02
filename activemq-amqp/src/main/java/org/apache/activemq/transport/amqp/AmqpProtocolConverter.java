@@ -1535,7 +1535,7 @@ name|next
 argument_list|(
 name|ACTIVE_STATE
 argument_list|,
-name|CLOSED_STATE
+name|ALL_STATES
 argument_list|)
 expr_stmt|;
 block|}
