@@ -530,7 +530,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|// TODO: Fails due to JMS client impl error.
+comment|// TODO: Should work with qpid 0.19-SNAPSHOT when patch for https://issues.apache.org/jira/browse/QPID-4409
 name|suite
 operator|.
 name|addTestSuite
