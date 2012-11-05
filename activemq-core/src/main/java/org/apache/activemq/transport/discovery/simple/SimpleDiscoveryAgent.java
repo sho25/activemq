@@ -280,6 +280,49 @@ name|service
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|SimpleDiscoveryEvent
+parameter_list|(
+name|SimpleDiscoveryEvent
+name|copy
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|copy
+argument_list|)
+expr_stmt|;
+name|connectFailures
+operator|=
+name|copy
+operator|.
+name|connectFailures
+expr_stmt|;
+name|reconnectDelay
+operator|=
+name|copy
+operator|.
+name|reconnectDelay
+expr_stmt|;
+name|connectTime
+operator|=
+name|copy
+operator|.
+name|connectTime
+expr_stmt|;
+name|failed
+operator|.
+name|set
+argument_list|(
+name|copy
+operator|.
+name|failed
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -532,7 +575,7 @@ name|IOException
 block|{
 specifier|final
 name|SimpleDiscoveryEvent
-name|event
+name|sevent
 init|=
 operator|(
 name|SimpleDiscoveryEvent
@@ -541,7 +584,7 @@ name|devent
 decl_stmt|;
 if|if
 condition|(
-name|event
+name|sevent
 operator|.
 name|failed
 operator|.
@@ -557,7 +600,7 @@ name|listener
 operator|.
 name|onServiceRemove
 argument_list|(
-name|event
+name|sevent
 argument_list|)
 expr_stmt|;
 name|taskRunner
@@ -573,9 +616,17 @@ name|void
 name|run
 parameter_list|()
 block|{
+name|SimpleDiscoveryEvent
+name|event
+init|=
+operator|new
+name|SimpleDiscoveryEvent
+argument_list|(
+name|sevent
+argument_list|)
+decl_stmt|;
 comment|// We detect a failed connection attempt because the service
-comment|// fails right
-comment|// away.
+comment|// fails right away.
 if|if
 condition|(
 name|event
