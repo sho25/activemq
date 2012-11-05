@@ -605,10 +605,6 @@ name|isTemporary
 argument_list|()
 operator|||
 name|broker
-operator|==
-literal|null
-operator|||
-name|broker
 operator|.
 name|getTempDataStore
 argument_list|()
