@@ -763,6 +763,16 @@ name|IOException
 throws|,
 name|MalformedObjectNameException
 function_decl|;
+comment|/**      * @return A string of destination options, name value pairs as URL queryString.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"returns the destination options, name value pairs as URL queryString"
+argument_list|)
+name|String
+name|getOptions
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
