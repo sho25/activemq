@@ -11,7 +11,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
+name|store
+operator|.
+name|kahadb
 operator|.
 name|scheduler
 package|;
