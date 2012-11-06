@@ -8284,7 +8284,13 @@ name|org
 operator|.
 name|apache
 operator|.
+name|activemq
+operator|.
+name|store
+operator|.
 name|kahadb
+operator|.
+name|disk
 operator|.
 name|journal
 operator|.

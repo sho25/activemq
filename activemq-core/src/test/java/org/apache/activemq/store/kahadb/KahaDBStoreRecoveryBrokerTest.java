@@ -85,20 +85,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|kahadb
-operator|.
-name|page
-operator|.
-name|PageFile
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io

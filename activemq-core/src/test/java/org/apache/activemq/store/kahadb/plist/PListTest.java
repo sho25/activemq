@@ -181,7 +181,7 @@ name|org
 operator|.
 name|apache
 operator|.
-name|kahadb
+name|activemq
 operator|.
 name|util
 operator|.
