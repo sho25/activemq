@@ -2515,11 +2515,6 @@ name|ShutdownInfo
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|sendShutdown
-operator|.
-name|countDown
-argument_list|()
-expr_stmt|;
 name|remoteBroker
 operator|.
 name|oneway
