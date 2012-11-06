@@ -301,7 +301,7 @@ name|kahadb
 operator|.
 name|plist
 operator|.
-name|PListStore
+name|PListStoreImpl
 import|;
 end_import
 
@@ -871,9 +871,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 specifier|final
-name|PListStore
+name|PListStoreImpl
 name|pa
 init|=
+operator|(
+name|PListStoreImpl
+operator|)
 name|broker
 operator|.
 name|getTempDataStore

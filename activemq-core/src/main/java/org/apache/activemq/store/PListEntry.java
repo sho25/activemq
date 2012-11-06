@@ -12,10 +12,6 @@ operator|.
 name|activemq
 operator|.
 name|store
-operator|.
-name|kahadb
-operator|.
-name|plist
 package|;
 end_package
 
@@ -48,6 +44,7 @@ specifier|final
 name|String
 name|entry
 decl_stmt|;
+specifier|public
 name|PListEntry
 parameter_list|(
 name|String

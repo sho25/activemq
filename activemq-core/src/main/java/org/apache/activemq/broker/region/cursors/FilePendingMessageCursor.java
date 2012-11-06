@@ -221,10 +221,6 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|kahadb
-operator|.
-name|plist
-operator|.
 name|PList
 import|;
 end_import
@@ -239,11 +235,7 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|kahadb
-operator|.
-name|plist
-operator|.
-name|PListEntry
+name|PListStore
 import|;
 end_import
 
@@ -257,11 +249,7 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|kahadb
-operator|.
-name|plist
-operator|.
-name|PListStore
+name|PListEntry
 import|;
 end_import
 
@@ -2203,7 +2191,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-specifier|protected
+specifier|public
 name|PList
 name|getDiskList
 parameter_list|()

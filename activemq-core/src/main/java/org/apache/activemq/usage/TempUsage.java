@@ -25,10 +25,6 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|kahadb
-operator|.
-name|plist
-operator|.
 name|PListStore
 import|;
 end_import

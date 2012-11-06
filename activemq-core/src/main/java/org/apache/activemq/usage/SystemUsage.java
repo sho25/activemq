@@ -71,7 +71,7 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|PersistenceAdapter
+name|PListStore
 import|;
 end_import
 
@@ -85,11 +85,7 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|kahadb
-operator|.
-name|plist
-operator|.
-name|PListStore
+name|PersistenceAdapter
 import|;
 end_import
 
