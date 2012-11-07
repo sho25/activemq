@@ -275,11 +275,11 @@ function_decl|;
 annotation|@
 name|Override
 specifier|protected
-name|CachedLDAPAuthorizationMap
+name|SimpleCachedLDAPAuthorizationMap
 name|createMap
 parameter_list|()
 block|{
-name|CachedLDAPAuthorizationMap
+name|SimpleCachedLDAPAuthorizationMap
 name|map
 init|=
 name|super

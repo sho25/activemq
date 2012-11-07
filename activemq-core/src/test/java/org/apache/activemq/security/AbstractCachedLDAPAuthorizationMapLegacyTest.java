@@ -465,7 +465,7 @@ name|LdapConnection
 name|connection
 decl_stmt|;
 specifier|protected
-name|CachedLDAPAuthorizationMap
+name|SimpleCachedLDAPAuthorizationMap
 name|map
 decl_stmt|;
 annotation|@
@@ -2136,13 +2136,13 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
-name|CachedLDAPAuthorizationMap
+name|SimpleCachedLDAPAuthorizationMap
 name|createMap
 parameter_list|()
 block|{
 return|return
 operator|new
-name|CachedLDAPAuthorizationMap
+name|SimpleCachedLDAPAuthorizationMap
 argument_list|()
 return|;
 block|}

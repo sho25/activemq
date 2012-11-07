@@ -251,18 +251,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|springframework
-operator|.
-name|jndi
-operator|.
-name|JndiTemplate
-import|;
-end_import
-
 begin_comment
 comment|/**  * This bridge joins the gap between foreign JMS providers and ActiveMQ As some  * JMS providers are still only in compliance with JMS v1.0.1 , this bridge itself  * aimed to be in compliance with the JMS 1.0.2 specification.  */
 end_comment
@@ -302,11 +290,11 @@ init|=
 literal|false
 decl_stmt|;
 specifier|protected
-name|JndiTemplate
+name|JndiLookupFactory
 name|jndiLocalTemplate
 decl_stmt|;
 specifier|protected
-name|JndiTemplate
+name|JndiLookupFactory
 name|jndiOutboundTemplate
 decl_stmt|;
 specifier|protected
@@ -666,7 +654,7 @@ block|{
 name|jndiLocalTemplate
 operator|=
 operator|new
-name|JndiTemplate
+name|JndiLookupFactory
 argument_list|()
 expr_stmt|;
 block|}
@@ -680,7 +668,7 @@ block|{
 name|jndiOutboundTemplate
 operator|=
 operator|new
-name|JndiTemplate
+name|JndiLookupFactory
 argument_list|()
 expr_stmt|;
 block|}
@@ -1021,7 +1009,7 @@ return|;
 block|}
 comment|/**      * @return Returns the jndiTemplate.      */
 specifier|public
-name|JndiTemplate
+name|JndiLookupFactory
 name|getJndiLocalTemplate
 parameter_list|()
 block|{
@@ -1034,7 +1022,7 @@ specifier|public
 name|void
 name|setJndiLocalTemplate
 parameter_list|(
-name|JndiTemplate
+name|JndiLookupFactory
 name|jndiTemplate
 parameter_list|)
 block|{
@@ -1047,7 +1035,7 @@ expr_stmt|;
 block|}
 comment|/**      * @return Returns the jndiOutboundTemplate.      */
 specifier|public
-name|JndiTemplate
+name|JndiLookupFactory
 name|getJndiOutboundTemplate
 parameter_list|()
 block|{
@@ -1060,7 +1048,7 @@ specifier|public
 name|void
 name|setJndiOutboundTemplate
 parameter_list|(
-name|JndiTemplate
+name|JndiLookupFactory
 name|jndiOutboundTemplate
 parameter_list|)
 block|{

@@ -1195,11 +1195,11 @@ argument_list|(
 literal|"vm://broker1"
 argument_list|)
 expr_stmt|;
-name|JmsTopicConnector
+name|SimpleJmsTopicConnector
 name|jmsTopicConnector
 init|=
 operator|new
-name|JmsTopicConnector
+name|SimpleJmsTopicConnector
 argument_list|()
 decl_stmt|;
 name|jmsTopicConnector

@@ -184,7 +184,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
-name|JmsTopicConnector
+name|SimpleJmsTopicConnector
 name|jmsTopicConnector
 decl_stmt|;
 specifier|private
@@ -949,7 +949,7 @@ expr_stmt|;
 name|jmsTopicConnector
 operator|=
 operator|new
-name|JmsTopicConnector
+name|SimpleJmsTopicConnector
 argument_list|()
 expr_stmt|;
 comment|// Wire the bridges.

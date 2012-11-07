@@ -142,7 +142,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test of the {@link CachedLDAPAuthorizationMap} that tests against a basic OpenLDAP instance.  * Disabled by default because it requires external setup to provide the OpenLDAP instance.  *   * To enable, you need an OpenLDAP with a minimum of the following in the slapd.conf file:   *   * suffix   "dc=apache,dc=org"  * rootdn   "cn=Manager,dc=apache,dc=org"  * rootpw   {SSHA}+Rx8kj98q3FlK5rUkT2hAtMP5v2ImQ82  *   * If you wish to use different settings or don't use the default port, change the constants   * below for your environment.  */
+comment|/**  * Test of the {@link SimpleCachedLDAPAuthorizationMap} that tests against a basic OpenLDAP instance.  * Disabled by default because it requires external setup to provide the OpenLDAP instance.  *   * To enable, you need an OpenLDAP with a minimum of the following in the slapd.conf file:   *   * suffix   "dc=apache,dc=org"  * rootdn   "cn=Manager,dc=apache,dc=org"  * rootpw   {SSHA}+Rx8kj98q3FlK5rUkT2hAtMP5v2ImQ82  *   * If you wish to use different settings or don't use the default port, change the constants   * below for your environment.  */
 end_comment
 
 begin_class
@@ -235,11 +235,11 @@ block|{
 comment|// Subtree rename not implemented by OpenLDAP.
 block|}
 specifier|protected
-name|CachedLDAPAuthorizationMap
+name|SimpleCachedLDAPAuthorizationMap
 name|createMap
 parameter_list|()
 block|{
-name|CachedLDAPAuthorizationMap
+name|SimpleCachedLDAPAuthorizationMap
 name|newMap
 init|=
 name|super

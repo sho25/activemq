@@ -138,13 +138,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Bridge to other JMS Topic providers  *  * @org.apache.xbean.XBean  */
+comment|/**  * A Bridge to other JMS Topic providers  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|JmsTopicConnector
+name|SimpleJmsTopicConnector
 extends|extends
 name|JmsConnector
 block|{
@@ -158,7 +158,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|JmsTopicConnector
+name|SimpleJmsTopicConnector
 operator|.
 name|class
 argument_list|)

@@ -184,7 +184,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
-name|JmsQueueConnector
+name|SimpleJmsQueueConnector
 name|jmsQueueConnector
 decl_stmt|;
 specifier|private
@@ -949,7 +949,7 @@ expr_stmt|;
 name|jmsQueueConnector
 operator|=
 operator|new
-name|JmsQueueConnector
+name|SimpleJmsQueueConnector
 argument_list|()
 expr_stmt|;
 comment|// Wire the bridges.

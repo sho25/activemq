@@ -138,13 +138,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Bridge to other JMS Queue providers  *  * @org.apache.xbean.XBean  */
+comment|/**  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|JmsQueueConnector
+name|SimpleJmsQueueConnector
 extends|extends
 name|JmsConnector
 block|{
@@ -158,7 +158,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|JmsQueueConnector
+name|SimpleJmsQueueConnector
 operator|.
 name|class
 argument_list|)

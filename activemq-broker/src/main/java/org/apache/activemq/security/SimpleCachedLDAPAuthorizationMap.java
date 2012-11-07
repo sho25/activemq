@@ -121,79 +121,11 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|springframework
-operator|.
-name|beans
-operator|.
-name|factory
-operator|.
-name|DisposableBean
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|springframework
-operator|.
-name|beans
-operator|.
-name|factory
-operator|.
-name|InitializingBean
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|naming
 operator|.
-name|Binding
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|naming
-operator|.
-name|Context
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|naming
-operator|.
-name|InvalidNameException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|naming
-operator|.
-name|NamingEnumeration
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|naming
-operator|.
-name|NamingException
+name|*
 import|;
 end_import
 
@@ -256,19 +188,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link DefaultAuthorizationMap} implementation which uses LDAP to initialize and update authorization  * policy.  *  * @org.apache.xbean.XBean  */
+comment|/**  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|CachedLDAPAuthorizationMap
+name|SimpleCachedLDAPAuthorizationMap
 extends|extends
 name|DefaultAuthorizationMap
-implements|implements
-name|InitializingBean
-implements|,
-name|DisposableBean
 block|{
 specifier|private
 specifier|static
@@ -280,7 +208,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|CachedLDAPAuthorizationMap
+name|SimpleCachedLDAPAuthorizationMap
 operator|.
 name|class
 argument_list|)
@@ -3309,8 +3237,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Init / Destroy
-annotation|@
-name|Override
 specifier|public
 name|void
 name|afterPropertiesSet
@@ -3322,8 +3248,6 @@ name|query
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|void
 name|destroy
@@ -4009,7 +3933,7 @@ name|NamingExceptionEvent
 name|evt
 parameter_list|)
 block|{
-name|CachedLDAPAuthorizationMap
+name|SimpleCachedLDAPAuthorizationMap
 operator|.
 name|this
 operator|.
@@ -4038,7 +3962,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|CachedLDAPAuthorizationMap
+name|SimpleCachedLDAPAuthorizationMap
 operator|.
 name|this
 operator|.
@@ -4072,7 +3996,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|CachedLDAPAuthorizationMap
+name|SimpleCachedLDAPAuthorizationMap
 operator|.
 name|this
 operator|.
@@ -4097,7 +4021,7 @@ name|NamingEvent
 name|evt
 parameter_list|)
 block|{
-name|CachedLDAPAuthorizationMap
+name|SimpleCachedLDAPAuthorizationMap
 operator|.
 name|this
 operator|.
@@ -4130,7 +4054,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|CachedLDAPAuthorizationMap
+name|SimpleCachedLDAPAuthorizationMap
 operator|.
 name|this
 operator|.

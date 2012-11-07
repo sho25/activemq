@@ -1221,11 +1221,11 @@ argument_list|(
 literal|"vm://broker1"
 argument_list|)
 expr_stmt|;
-name|JmsQueueConnector
+name|SimpleJmsQueueConnector
 name|jmsQueueConnector
 init|=
 operator|new
-name|JmsQueueConnector
+name|SimpleJmsQueueConnector
 argument_list|()
 decl_stmt|;
 name|jmsQueueConnector
