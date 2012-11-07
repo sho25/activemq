@@ -129,16 +129,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|Destination
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|MapMessage
 import|;
 end_import
@@ -284,20 +274,6 @@ operator|.
 name|command
 operator|.
 name|ActiveMQObjectMessage
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQQueue
 import|;
 end_import
 
