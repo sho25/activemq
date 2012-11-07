@@ -439,8 +439,7 @@ decl_stmt|;
 name|ConnectionPool
 name|connection
 init|=
-operator|new
-name|ConnectionPool
+name|createConnectionPool
 argument_list|(
 name|delegate
 argument_list|)
@@ -1291,6 +1290,23 @@ argument_list|>
 name|factory
 parameter_list|)
 block|{     }
+comment|/**      * Delegate that creates each instance of an ConnectionPool object.  Subclasses can override      * this method to customize the type of connection pool returned.      *      * @param connection      *      * @return instance of a new ConnectionPool.      */
+specifier|protected
+name|ConnectionPool
+name|createConnectionPool
+parameter_list|(
+name|ActiveMQConnection
+name|connection
+parameter_list|)
+block|{
+return|return
+operator|new
+name|ConnectionPool
+argument_list|(
+name|connection
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
