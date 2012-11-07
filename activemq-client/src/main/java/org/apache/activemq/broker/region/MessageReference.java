@@ -84,7 +84,9 @@ name|boolean
 name|isPersistent
 parameter_list|()
 function_decl|;
-name|Destination
+name|Message
+operator|.
+name|MessageDestination
 name|getRegionDestination
 parameter_list|()
 function_decl|;

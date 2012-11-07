@@ -39,16 +39,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|InvalidSelectorException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|Message
 import|;
 end_import

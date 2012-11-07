@@ -925,6 +925,9 @@ block|{
 name|Destination
 name|dest
 init|=
+operator|(
+name|Destination
+operator|)
 name|msg
 operator|.
 name|getRegionDestination
@@ -1105,6 +1108,9 @@ block|{
 name|Destination
 name|dest
 init|=
+operator|(
+name|Destination
+operator|)
 name|msg
 operator|.
 name|getRegionDestination

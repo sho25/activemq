@@ -103,6 +103,20 @@ name|activemq
 operator|.
 name|transport
 operator|.
+name|TransportFactorySupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
 name|TransportServer
 import|;
 end_import
@@ -303,7 +317,7 @@ else|else
 block|{
 comment|// Else, business as usual.
 return|return
-name|TransportFactory
+name|TransportFactorySupport
 operator|.
 name|bind
 argument_list|(

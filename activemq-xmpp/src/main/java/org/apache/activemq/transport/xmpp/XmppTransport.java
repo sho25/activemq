@@ -265,22 +265,6 @@ end_import
 
 begin_import
 import|import
-name|ietf
-operator|.
-name|params
-operator|.
-name|xml
-operator|.
-name|ns
-operator|.
-name|xmpp_sasl
-operator|.
-name|Mechanisms
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache

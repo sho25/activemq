@@ -123,26 +123,6 @@ name|WireFormat
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * A wire format which uses XMPP format of messages  *  *   */
 end_comment

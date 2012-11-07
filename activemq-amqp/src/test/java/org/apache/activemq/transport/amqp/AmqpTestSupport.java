@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -50,20 +40,6 @@ operator|.
 name|broker
 operator|.
 name|BrokerService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|SslContext
 import|;
 end_import
 

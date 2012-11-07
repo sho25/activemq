@@ -31,16 +31,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|OutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|HashMap

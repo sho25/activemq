@@ -1099,6 +1099,9 @@ try|try
 block|{
 name|regionDestination
 operator|=
+operator|(
+name|Destination
+operator|)
 name|node
 operator|.
 name|getMessage
@@ -1307,6 +1310,9 @@ try|try
 block|{
 name|regionDestination
 operator|=
+operator|(
+name|Destination
+operator|)
 name|node
 operator|.
 name|getMessage
@@ -2299,10 +2305,15 @@ argument_list|(
 name|broker
 argument_list|)
 expr_stmt|;
+operator|(
+operator|(
+name|Destination
+operator|)
 name|reference
 operator|.
 name|getRegionDestination
 argument_list|()
+operator|)
 operator|.
 name|messageExpired
 argument_list|(

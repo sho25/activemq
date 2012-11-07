@@ -3911,7 +3911,7 @@ return|return
 name|optimizedAckScheduledAckInterval
 return|;
 block|}
-comment|/**      * Sets the amount of time between scheduled sends of any outstanding Message Acks for consumers that      * have been configured with optimizeAcknowledge enabled.      *      * @param scheduledOptimizedAckInterval the scheduledOptimizedAckInterval to set      */
+comment|/**      * Sets the amount of time between scheduled sends of any outstanding Message Acks for consumers that      * have been configured with optimizeAcknowledge enabled.      *      * @param optimizedAckScheduledAckInterval the scheduledOptimizedAckInterval to set      */
 specifier|public
 name|void
 name|setOptimizedAckScheduledAckInterval

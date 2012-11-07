@@ -501,7 +501,7 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|TransportFactory
+name|TransportFactorySupport
 import|;
 end_import
 
@@ -9440,7 +9440,7 @@ block|{
 name|TransportServer
 name|transport
 init|=
-name|TransportFactory
+name|TransportFactorySupport
 operator|.
 name|bind
 argument_list|(

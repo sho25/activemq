@@ -338,7 +338,9 @@ argument_list|()
 return|;
 block|}
 specifier|public
-name|Destination
+name|Message
+operator|.
+name|MessageDestination
 name|getRegionDestination
 parameter_list|()
 block|{

@@ -269,6 +269,10 @@ extends|extends
 name|Service
 extends|,
 name|Task
+extends|,
+name|Message
+operator|.
+name|MessageDestination
 block|{
 specifier|public
 specifier|static

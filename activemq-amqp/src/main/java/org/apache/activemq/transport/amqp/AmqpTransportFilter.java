@@ -153,18 +153,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|fusesource
-operator|.
-name|hawtbuf
-operator|.
-name|Buffer
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -178,16 +166,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
 import|;
 end_import
 

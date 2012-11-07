@@ -134,7 +134,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class implementing the TransportLoggerViewMBean interface.  * When an object of this class is created, it registers itself in  * the MBeanServer of the management context provided.  * When a TransportLogger object is finalized because the Transport Stack  * where it resides is no longer in use, the method unregister() will be called.  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  *    * @see TransportLoggerViewMBean.  */
+comment|/**  * Class implementing the TransportLoggerViewMBean interface.  * When an object of this class is created, it registers itself in  * the MBeanServer of the management context provided.  * When a TransportLogger object is finalized because the Transport Stack  * where it resides is no longer in use, the method unregister() will be called.  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  *    * @see TransportLoggerViewMBean  */
 end_comment
 
 begin_class

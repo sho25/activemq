@@ -81,18 +81,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|xpath
-operator|.
-name|XPath
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|w3c

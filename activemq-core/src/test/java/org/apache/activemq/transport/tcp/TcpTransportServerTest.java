@@ -43,16 +43,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|net
-operator|.
-name|ServerSocketFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|net

@@ -261,6 +261,9 @@ specifier|final
 name|Destination
 name|q
 init|=
+operator|(
+name|Destination
+operator|)
 name|n
 operator|.
 name|getRegionDestination
