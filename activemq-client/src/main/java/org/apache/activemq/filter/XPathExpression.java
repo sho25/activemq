@@ -148,12 +148,7 @@ specifier|final
 name|String
 name|DEFAULT_EVALUATOR_CLASS_NAME
 init|=
-name|XalanXPathEvaluator
-operator|.
-name|class
-operator|.
-name|getName
-argument_list|()
+literal|"org.apache.activemq.filter.XalanXPathEvaluator"
 decl_stmt|;
 specifier|private
 specifier|static

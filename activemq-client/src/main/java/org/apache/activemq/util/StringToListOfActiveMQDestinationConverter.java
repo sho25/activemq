@@ -49,18 +49,6 @@ name|ActiveMQDestination
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|springframework
-operator|.
-name|util
-operator|.
-name|StringUtils
-import|;
-end_import
-
 begin_comment
 comment|/**  * Special converter for String -> List<ActiveMQDestination> to be used instead of a  * {@link java.beans.PropertyEditor} which otherwise causes  * memory leaks as the JDK {@link java.beans.PropertyEditorManager}  * is a static class and has strong references to classes, causing  * problems in hot-deployment environments.  */
 end_comment
@@ -139,15 +127,11 @@ name|String
 index|[]
 name|array
 init|=
-name|StringUtils
-operator|.
-name|delimitedListToStringArray
-argument_list|(
 name|text
-argument_list|,
+operator|.
+name|split
+argument_list|(
 literal|","
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 name|List
