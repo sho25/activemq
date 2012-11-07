@@ -215,22 +215,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|store
-operator|.
-name|jdbc
-operator|.
-name|JDBCMessageStore
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
