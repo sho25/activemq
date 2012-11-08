@@ -273,7 +273,7 @@ return|return
 operator|new
 name|ClassPathXmlApplicationContext
 argument_list|(
-literal|"activemq.xml"
+literal|"org/apache/activemq/console/command/activemq.xml"
 argument_list|)
 return|;
 block|}

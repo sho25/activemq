@@ -314,6 +314,28 @@ argument_list|(
 literal|10
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+literal|"purge"
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getOneLineDescription
+parameter_list|()
+block|{
+return|return
+literal|"Delete selected destination's messages that matches the message selector"
+return|;
+block|}
 comment|/**      * Execute the purge command, which allows you to purge the messages in a      * given JMS destination      *       * @param tokens - command arguments      * @throws Exception      */
 specifier|protected
 name|void

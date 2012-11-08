@@ -202,6 +202,28 @@ argument_list|(
 literal|5
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+literal|"start"
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getOneLineDescription
+parameter_list|()
+block|{
+return|return
+literal|"Creates and starts a broker using a configuration file, or a broker URI."
+return|;
+block|}
 comment|/**      * The default task to start a broker or a group of brokers      *       * @param brokerURIs      */
 specifier|protected
 name|void

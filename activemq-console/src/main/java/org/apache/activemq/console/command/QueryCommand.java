@@ -340,6 +340,28 @@ argument_list|(
 literal|10
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+literal|"query"
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getOneLineDescription
+parameter_list|()
+block|{
+return|return
+literal|"Display selected broker component's attributes and statistics."
+return|;
+block|}
 comment|/**      * Queries the mbeans registered in the specified JMX context      *       * @param tokens - command arguments      * @throws Exception      */
 specifier|protected
 name|void

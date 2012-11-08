@@ -46,6 +46,14 @@ specifier|public
 interface|interface
 name|Command
 block|{
+name|String
+name|getName
+parameter_list|()
+function_decl|;
+name|String
+name|getOneLineDescription
+parameter_list|()
+function_decl|;
 name|void
 name|setCommandContext
 parameter_list|(

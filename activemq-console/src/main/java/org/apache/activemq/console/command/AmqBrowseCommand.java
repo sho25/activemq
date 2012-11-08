@@ -336,6 +336,28 @@ argument_list|(
 literal|10
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+literal|"browse"
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getOneLineDescription
+parameter_list|()
+block|{
+return|return
+literal|"Display selected messages in a specified destination."
+return|;
+block|}
 comment|/**      * Execute the browse command, which allows you to browse the messages in a      * given JMS destination      *      * @param tokens - command arguments      * @throws Exception      */
 specifier|protected
 name|void

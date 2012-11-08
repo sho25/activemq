@@ -160,6 +160,28 @@ specifier|private
 name|boolean
 name|isStopAllBrokers
 decl_stmt|;
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+literal|"stop"
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getOneLineDescription
+parameter_list|()
+block|{
+return|return
+literal|"Stops a running broker specified by the broker name."
+return|;
+block|}
 comment|/**      * Shuts down the specified broker or brokers      *       * @param brokerNames - names of brokers to shutdown      * @throws Exception      */
 specifier|protected
 name|void

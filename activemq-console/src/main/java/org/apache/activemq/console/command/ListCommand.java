@@ -104,6 +104,28 @@ block|,
 literal|""
 block|}
 decl_stmt|;
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+literal|"list"
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getOneLineDescription
+parameter_list|()
+block|{
+return|return
+literal|"Lists all available brokers in the specified JMX context"
+return|;
+block|}
 comment|/**      * List all running brokers registered in the specified JMX context      * @param tokens - command arguments      * @throws Exception      */
 specifier|protected
 name|void

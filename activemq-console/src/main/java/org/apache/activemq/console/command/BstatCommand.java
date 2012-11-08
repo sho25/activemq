@@ -96,6 +96,28 @@ block|,
 literal|"        - Display a summary of statistics for the broker 'localhost'"
 block|}
 decl_stmt|;
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+literal|"bstat"
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getOneLineDescription
+parameter_list|()
+block|{
+return|return
+literal|"Performs a predefined query that displays useful statistics regarding the specified broker"
+return|;
+block|}
 comment|/**      * Performs a predefiend query option      * @param tokens - command arguments      * @throws Exception      */
 specifier|protected
 name|void
