@@ -13,6 +13,16 @@ end_package
 
 begin_import
 import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -84,13 +94,44 @@ name|LevelDBStoreBrokerTest
 extends|extends
 name|BrokerTest
 block|{
-comment|//    def suite: Test = {
-comment|//      return new TestSuite(classOf[LevelDBStoreBrokerTest])
-comment|//    }
-comment|//
-comment|//    def main(args: Array[String]): Unit = {
-comment|//      junit.textui.TestRunner.run(suite)
-comment|//    }
+specifier|public
+specifier|static
+name|Test
+name|suite
+parameter_list|()
+block|{
+return|return
+name|suite
+argument_list|(
+name|LevelDBStoreBrokerTest
+operator|.
+name|class
+argument_list|)
+return|;
+block|}
+specifier|public
+specifier|static
+name|void
+name|main
+parameter_list|(
+name|String
+index|[]
+name|args
+parameter_list|)
+block|{
+name|junit
+operator|.
+name|textui
+operator|.
+name|TestRunner
+operator|.
+name|run
+argument_list|(
+name|suite
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|protected
