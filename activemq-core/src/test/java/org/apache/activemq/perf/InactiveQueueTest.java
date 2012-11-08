@@ -289,7 +289,7 @@ name|addConnector
 argument_list|(
 name|ActiveMQConnectionFactory
 operator|.
-name|DEFAULT_BROKER_URL
+name|DEFAULT_BROKER_BIND_URL
 argument_list|)
 expr_stmt|;
 name|broker
