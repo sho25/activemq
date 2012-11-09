@@ -164,14 +164,6 @@ name|DefaultDatabaseLocker
 extends|extends
 name|AbstractLocker
 block|{
-specifier|public
-specifier|static
-specifier|final
-name|long
-name|DEFAULT_LOCK_ACQUIRE_SLEEP_INTERVAL
-init|=
-literal|1000
-decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -274,10 +266,6 @@ name|getStatements
 argument_list|()
 expr_stmt|;
 block|}
-name|lockAcquireSleepInterval
-operator|=
-name|DEFAULT_LOCK_ACQUIRE_SLEEP_INTERVAL
-expr_stmt|;
 block|}
 specifier|public
 name|void
