@@ -545,8 +545,6 @@ extends|extends
 name|DataSourceServiceSupport
 implements|implements
 name|PersistenceAdapter
-implements|,
-name|BrokerServiceAware
 block|{
 specifier|private
 specifier|static
@@ -2013,21 +2011,6 @@ block|{
 return|return
 name|brokerService
 return|;
-block|}
-specifier|public
-name|void
-name|setBrokerService
-parameter_list|(
-name|BrokerService
-name|brokerService
-parameter_list|)
-block|{
-name|this
-operator|.
-name|brokerService
-operator|=
-name|brokerService
-expr_stmt|;
 block|}
 comment|/**      * @throws IOException      */
 specifier|protected
