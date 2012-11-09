@@ -628,15 +628,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|next
-operator|.
-name|get
-argument_list|()
+name|messageReference
 operator|.
 name|isExpired
-argument_list|(
-name|messageReference
-argument_list|)
+argument_list|()
 condition|)
 block|{
 comment|// there are two uses of  sendToDeadLetterQueue, we are only interested in valid messages
