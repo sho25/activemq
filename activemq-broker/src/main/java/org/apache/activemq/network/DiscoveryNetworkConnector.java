@@ -335,6 +335,7 @@ argument_list|>
 name|parameters
 decl_stmt|;
 specifier|private
+specifier|final
 name|ConcurrentMap
 argument_list|<
 name|URI
@@ -433,6 +434,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onServiceAdd
@@ -589,6 +592,14 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -598,6 +609,8 @@ operator|+
 name|uri
 argument_list|)
 expr_stmt|;
+block|}
+return|return;
 block|}
 name|URI
 name|connectUri
@@ -742,7 +755,7 @@ name|activeEvents
 operator|.
 name|remove
 argument_list|(
-name|url
+name|uri
 argument_list|)
 expr_stmt|;
 return|return;
@@ -808,7 +821,7 @@ name|activeEvents
 operator|.
 name|remove
 argument_list|(
-name|url
+name|uri
 argument_list|)
 expr_stmt|;
 return|return;
@@ -960,6 +973,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onServiceRemove
@@ -1027,7 +1042,7 @@ name|activeEvents
 operator|.
 name|remove
 argument_list|(
-name|url
+name|uri
 argument_list|,
 name|event
 argument_list|)
@@ -1090,6 +1105,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|handleStart
@@ -1125,6 +1142,8 @@ name|handleStart
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|handleStop
@@ -1268,6 +1287,8 @@ name|connectorName
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|bridgeFailed

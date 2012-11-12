@@ -323,7 +323,7 @@ block|{
 comment|/**      * This test demonstrates how concurrent attempts to establish a bridge to      * the same remote broker are allowed to occur. Connection uniqueness will      * cause whichever bridge creation attempt is second to fail. However, this      * failure erases the entry in      * {@link DiscoveryNetworkConnector#activeBridges()} that represents the      * successful first bridge creation attempt.      */
 specifier|public
 name|void
-name|testLostActiveBridge
+name|x_testLostActiveBridge
 parameter_list|()
 throws|throws
 name|Exception
