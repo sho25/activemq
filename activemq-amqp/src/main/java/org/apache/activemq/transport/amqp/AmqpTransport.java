@@ -124,6 +124,11 @@ name|String
 name|getTransformer
 parameter_list|()
 function_decl|;
+specifier|public
+name|String
+name|getRemoteAddress
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
