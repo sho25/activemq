@@ -639,6 +639,11 @@ comment|//    private final AtomicBoolean connected = new AtomicBoolean(false);
 comment|//    private CONNECT connect;
 comment|//    private String clientId;
 comment|//    private final String QOS_PROPERTY_NAME = "QoSPropertyName";
+name|int
+name|prefetch
+init|=
+literal|100
+decl_stmt|;
 name|TransportImpl
 name|protonTransport
 init|=
@@ -3588,9 +3593,7 @@ name|receiver
 operator|.
 name|flow
 argument_list|(
-literal|1024
-operator|*
-literal|64
+name|prefetch
 argument_list|)
 expr_stmt|;
 name|receiver
@@ -3744,9 +3747,7 @@ name|receiver
 operator|.
 name|flow
 argument_list|(
-literal|1024
-operator|*
-literal|64
+name|prefetch
 argument_list|)
 expr_stmt|;
 name|ProducerInfo
