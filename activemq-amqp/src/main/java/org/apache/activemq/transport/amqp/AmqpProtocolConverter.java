@@ -644,6 +644,11 @@ name|prefetch
 init|=
 literal|100
 decl_stmt|;
+name|boolean
+name|trace
+init|=
+literal|false
+decl_stmt|;
 name|TransportImpl
 name|protonTransport
 init|=
@@ -670,6 +675,11 @@ operator|.
 name|protonConnection
 parameter_list|)
 constructor_decl|;
+if|if
+condition|(
+name|trace
+condition|)
+block|{
 name|this
 operator|.
 name|protonTransport
@@ -753,6 +763,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|void
 name|pumpProtonToSocket
