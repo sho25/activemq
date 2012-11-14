@@ -633,6 +633,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|service
+operator|.
+name|setKeepDurableSubsActive
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|KahaDBPersistenceAdapter
 name|pa
 init|=
