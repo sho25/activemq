@@ -229,6 +229,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|network
+operator|.
+name|NetworkConnector
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|thread
 operator|.
 name|TaskRunnerFactory
@@ -320,14 +334,64 @@ name|AMQ4160Test
 extends|extends
 name|JmsMultipleBrokersTestSupport
 block|{
-comment|/**      * This test demonstrates how concurrent attempts to establish a bridge to      * the same remote broker are allowed to occur. Connection uniqueness will      * cause whichever bridge creation attempt is second to fail. However, this      * failure erases the entry in      * {@link DiscoveryNetworkConnector#activeBridges()} that represents the      * successful first bridge creation attempt.      */
+specifier|final
+name|long
+name|MAX_TEST_TIME
+init|=
+name|TimeUnit
+operator|.
+name|MINUTES
+operator|.
+name|toMillis
+argument_list|(
+literal|2
+argument_list|)
+decl_stmt|;
+comment|/**      * Since these tests involve wait conditions, protect against indefinite      * waits (due to unanticipated issues).      */
 specifier|public
 name|void
-name|x_testLostActiveBridge
+name|setUp
 parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|setAutoFail
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|setMaxTestTime
+argument_list|(
+name|MAX_TEST_TIME
+argument_list|)
+expr_stmt|;
+name|super
+operator|.
+name|setUp
+argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * This test demonstrates how concurrent attempts to establish a bridge to      * the same remote broker are allowed to occur. Connection uniqueness will      * cause whichever bridge creation attempt is second to fail. However, this      * failure erases the entry in      * {@link DiscoveryNetworkConnector#activeBridges()} that represents the      * successful first bridge creation attempt.      */
+specifier|public
+name|void
+name|testLostActiveBridge
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+specifier|final
+name|long
+name|ATTEMPT_TO_CREATE_DELAY
+init|=
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|15
+argument_list|)
+decl_stmt|;
 comment|// Start two brokers with a bridge from broker1 to broker2.
 name|BrokerService
 name|broker1
@@ -423,8 +487,19 @@ argument_list|()
 expr_stmt|;
 comment|// Start a bridge from broker1 to broker2. The discovery agent attempts
 comment|// to create the bridge concurrently with two threads, and the
-comment|// synchronization in createBridge ensures that both threads actually
-comment|// attempt to start bridges.
+comment|// synchronization in createBridge ensures that pre-patch both threads
+comment|// actually attempt to start bridges. Post-patch, only one thread is
+comment|// allowed to start the bridge.
+specifier|final
+name|CountDownLatch
+name|attemptLatch
+init|=
+operator|new
+name|CountDownLatch
+argument_list|(
+literal|2
+argument_list|)
+decl_stmt|;
 specifier|final
 name|CountDownLatch
 name|createLatch
@@ -444,6 +519,31 @@ argument_list|()
 block|{
 annotation|@
 name|Override
+specifier|public
+name|void
+name|onServiceAdd
+parameter_list|(
+name|DiscoveryEvent
+name|event
+parameter_list|)
+block|{
+comment|// Pre-and-post patch, two threads attempt to establish a bridge
+comment|// to the same remote broker.
+name|attemptLatch
+operator|.
+name|countDown
+argument_list|()
+expr_stmt|;
+name|super
+operator|.
+name|onServiceAdd
+argument_list|(
+name|event
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
 specifier|protected
 name|NetworkBridge
 name|createBridge
@@ -459,25 +559,35 @@ name|DiscoveryEvent
 name|event
 parameter_list|)
 block|{
+comment|// Pre-patch, the two threads are allowed to create the bridge.
+comment|// Post-patch, only the first thread is allowed. Wait a
+comment|// reasonable delay once both attempts are detected to allow
+comment|// the two bridge creations to occur concurrently (pre-patch).
+comment|// Post-patch, the wait will timeout and allow the first (and
+comment|// only) bridge creation to occur.
+try|try
+block|{
+name|attemptLatch
+operator|.
+name|await
+argument_list|()
+expr_stmt|;
 name|createLatch
 operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
-try|try
-block|{
 name|createLatch
 operator|.
 name|await
-argument_list|()
+argument_list|(
+name|ATTEMPT_TO_CREATE_DELAY
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{                 }
 return|return
 name|super
 operator|.
@@ -490,6 +600,22 @@ argument_list|,
 name|event
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+name|Thread
+operator|.
+name|interrupted
+argument_list|()
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
 block|}
 block|}
 decl_stmt|;
@@ -677,13 +803,32 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-comment|// The bridge should be formed by the second creation attempt, but the
-comment|// wait will time out because the active bridge entry from the second
-comment|// (successful) bridge creation attempt is removed by the first
-comment|// (unsuccessful) bridge creation attempt.
-name|waitForBridgeFormation
+comment|// Wait for the bridge to be formed by the first attempt.
+name|waitForBridge
+argument_list|(
+name|broker1
+operator|.
+name|getBrokerName
 argument_list|()
+argument_list|,
+name|broker2
+operator|.
+name|getBrokerName
+argument_list|()
+argument_list|,
+name|MAX_TEST_TIME
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
 expr_stmt|;
+comment|// Pre-patch, the second bridge creation attempt fails and removes the
+comment|// first (successful) bridge creation attempt from the
+comment|// list of active bridges. Post-patch, the second bridge creation
+comment|// attempt is prevented, so the first bridge creation attempt
+comment|// remains "active". This assertion is expected to fail pre-patch and
+comment|// pass post-patch.
 name|Assert
 operator|.
 name|assertFalse
@@ -698,7 +843,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This test demonstrates a race condition where a failed bridge can be      * removed from the list of active bridges in      * {@link DiscoveryNetworkConnector} before it has been added. Eventually,      * the failed bridge is added, but never removed, which prevents subsequent      * bridge creation attempts to be ignored. The result is a network connector      * that thinks it has an active bridge, when in fact it doesn't.      */
+comment|/**      * This test demonstrates a race condition where a failed bridge can be      * removed from the list of active bridges in      * {@link DiscoveryNetworkConnector} before it has been added. Eventually,      * the failed bridge is added, but never removed, which causes subsequent      * bridge creation attempts to be ignored. The result is a network connector      * that thinks it has an active bridge, when in fact it doesn't.      */
 specifier|public
 name|void
 name|testInactiveBridgStillActive
@@ -1188,6 +1333,137 @@ name|TimeUnit
 operator|.
 name|SECONDS
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * This test verifies that when a network connector is restarted, any      * bridges that were active at the time of the stop are allowed to be      * re-established (i.e., the "active events" data structure in      * {@link DiscoveryNetworkConnector} is reset.      */
+specifier|public
+name|void
+name|testAllowAttemptsAfterRestart
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+specifier|final
+name|long
+name|STOP_DELAY
+init|=
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|10
+argument_list|)
+decl_stmt|;
+comment|// Start two brokers with a bridge from broker1 to broker2.
+name|BrokerService
+name|broker1
+init|=
+name|createBroker
+argument_list|(
+operator|new
+name|URI
+argument_list|(
+literal|"broker:(vm://broker1)/broker1?persistent=false"
+argument_list|)
+argument_list|)
+decl_stmt|;
+specifier|final
+name|BrokerService
+name|broker2
+init|=
+name|createBroker
+argument_list|(
+operator|new
+name|URI
+argument_list|(
+literal|"broker:(vm://broker2)/broker2?persistent=false"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|startAllBrokers
+argument_list|()
+expr_stmt|;
+comment|// Start a bridge from broker1 to broker2.
+name|NetworkConnector
+name|nc
+init|=
+name|bridgeBrokers
+argument_list|(
+name|broker1
+operator|.
+name|getBrokerName
+argument_list|()
+argument_list|,
+name|broker2
+operator|.
+name|getBrokerName
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|nc
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+name|waitForBridge
+argument_list|(
+name|broker1
+operator|.
+name|getBrokerName
+argument_list|()
+argument_list|,
+name|broker2
+operator|.
+name|getBrokerName
+argument_list|()
+argument_list|,
+name|MAX_TEST_TIME
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
+expr_stmt|;
+comment|// Restart the network connector and verify that the bridge is
+comment|// re-established. The pause between start/stop is to account for the
+comment|// asynchronous closure.
+name|nc
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+name|STOP_DELAY
+argument_list|)
+expr_stmt|;
+name|nc
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+name|waitForBridge
+argument_list|(
+name|broker1
+operator|.
+name|getBrokerName
+argument_list|()
+argument_list|,
+name|broker2
+operator|.
+name|getBrokerName
+argument_list|()
+argument_list|,
+name|MAX_TEST_TIME
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
 argument_list|)
 expr_stmt|;
 block|}
