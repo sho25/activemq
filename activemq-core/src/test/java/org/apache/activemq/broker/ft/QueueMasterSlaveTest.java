@@ -292,7 +292,7 @@ specifier|protected
 name|String
 name|uriString
 init|=
-literal|"failover://(tcp://localhost:62001,tcp://localhost:62002)?randomize=false"
+literal|"failover://(tcp://localhost:62001,tcp://localhost:62002)?randomize=false&useExponentialBackOff=false"
 decl_stmt|;
 specifier|protected
 name|void
@@ -798,6 +798,13 @@ name|SECONDS
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"slave started"
+argument_list|)
+expr_stmt|;
 name|Message
 name|advisoryMessage
 init|=
@@ -808,6 +815,15 @@ argument_list|(
 literal|5000
 argument_list|)
 decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"received "
+operator|+
+name|advisoryMessage
+argument_list|)
+expr_stmt|;
 name|assertNotNull
 argument_list|(
 literal|"Didn't received advisory"

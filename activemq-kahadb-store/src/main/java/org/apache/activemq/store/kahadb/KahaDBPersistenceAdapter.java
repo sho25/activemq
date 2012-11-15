@@ -1140,6 +1140,8 @@ name|checkForCorruptJournalFiles
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerService
@@ -1148,6 +1150,13 @@ name|BrokerService
 name|brokerService
 parameter_list|)
 block|{
+name|super
+operator|.
+name|setBrokerService
+argument_list|(
+name|brokerService
+argument_list|)
+expr_stmt|;
 name|letter
 operator|.
 name|setBrokerService
