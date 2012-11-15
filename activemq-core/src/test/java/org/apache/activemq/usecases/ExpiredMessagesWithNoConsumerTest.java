@@ -2080,16 +2080,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// consumer ackLater(delivery ack for expired messages) is based on half the prefetch value
-comment|// which will leave half of the prefetch pending till consumer close
 return|return
-operator|(
-name|queuePrefetch
-operator|/
-literal|2
-operator|)
-operator|-
-literal|1
+literal|0
 operator|==
 name|view
 operator|.
@@ -2142,15 +2134,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"inflight didn't reduce to half prefetch minus single delivered message"
+literal|"inflight reduced to duck"
 argument_list|,
-operator|(
-name|queuePrefetch
-operator|/
-literal|2
-operator|)
-operator|-
-literal|1
+literal|0
 argument_list|,
 name|view
 operator|.
@@ -2218,7 +2204,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"inflight goes to zeor on close"
+literal|"inflight goes to zero on close"
 argument_list|,
 literal|0
 argument_list|,
@@ -2781,16 +2767,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// consumer ackLater(delivery ack for expired messages) is based on half the prefetch value
-comment|// which will leave half of the prefetch pending till consumer close
 return|return
-operator|(
-name|queuePrefetch
-operator|/
-literal|2
-operator|)
-operator|-
-literal|1
+literal|0
 operator|==
 name|view
 operator|.
@@ -2843,15 +2821,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"inflight didn't reduce to half prefetch minus single delivered message"
+literal|"inflight didn't reduce to duck"
 argument_list|,
-operator|(
-name|queuePrefetch
-operator|/
-literal|2
-operator|)
-operator|-
-literal|1
+literal|0
 argument_list|,
 name|view
 operator|.
@@ -3037,7 +3009,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"inflight did not go to zeor on close"
+literal|"inflight did not go to zero on close"
 argument_list|,
 literal|0
 argument_list|,
