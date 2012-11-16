@@ -79,6 +79,18 @@ name|ActiveMQDestination
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|fusesource
+operator|.
+name|hawtbuf
+operator|.
+name|UTF8Buffer
+import|;
+end_import
+
 begin_comment
 comment|/**  * Type conversion support for ActiveMQ.  */
 end_comment
@@ -122,10 +134,16 @@ name|ConversionKey
 block|{
 specifier|final
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|from
 decl_stmt|;
 specifier|final
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|to
 decl_stmt|;
 specifier|final
@@ -136,9 +154,15 @@ specifier|public
 name|ConversionKey
 parameter_list|(
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|from
 parameter_list|,
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|to
 parameter_list|)
 block|{
@@ -173,6 +197,8 @@ literal|1
 operator|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals
@@ -203,6 +229,8 @@ operator|==
 name|to
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -254,6 +282,8 @@ operator|new
 name|Converter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|convert
@@ -411,6 +441,25 @@ argument_list|(
 operator|new
 name|ConversionKey
 argument_list|(
+name|UTF8Buffer
+operator|.
+name|class
+argument_list|,
+name|String
+operator|.
+name|class
+argument_list|)
+argument_list|,
+name|toStringConverter
+argument_list|)
+expr_stmt|;
+name|CONVERSION_MAP
+operator|.
+name|put
+argument_list|(
+operator|new
+name|ConversionKey
+argument_list|(
 name|String
 operator|.
 name|class
@@ -424,6 +473,8 @@ operator|new
 name|Converter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|convert
@@ -467,6 +518,8 @@ operator|new
 name|Converter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|convert
@@ -510,6 +563,8 @@ operator|new
 name|Converter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|convert
@@ -553,6 +608,8 @@ operator|new
 name|Converter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|convert
@@ -596,6 +653,8 @@ operator|new
 name|Converter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|convert
@@ -639,6 +698,8 @@ operator|new
 name|Converter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|convert
@@ -682,6 +743,8 @@ operator|new
 name|Converter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|convert
@@ -712,6 +775,8 @@ operator|new
 name|Converter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|convert
@@ -816,6 +881,8 @@ operator|new
 name|Converter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|convert
@@ -851,6 +918,8 @@ operator|new
 name|Converter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|convert
@@ -936,6 +1005,8 @@ operator|new
 name|Converter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|convert
@@ -984,6 +1055,8 @@ operator|new
 name|Converter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|convert
@@ -1031,6 +1104,8 @@ operator|new
 name|Converter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|convert
@@ -1078,6 +1153,8 @@ operator|new
 name|Converter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|convert
@@ -1136,6 +1213,9 @@ name|Object
 name|value
 parameter_list|,
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|to
 parameter_list|)
 block|{
@@ -1233,9 +1313,15 @@ name|Converter
 name|lookupConverter
 parameter_list|(
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|from
 parameter_list|,
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|to
 parameter_list|)
 block|{

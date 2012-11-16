@@ -309,6 +309,8 @@ specifier|transient
 name|Callback
 name|acknowledgeCallback
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getDataStructureType
@@ -481,6 +483,8 @@ name|thisMsg
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|acknowledge
@@ -549,6 +553,8 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getJMSMessageID
@@ -581,6 +587,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Seems to be invalid because the parameter doesn't initialize MessageId      * instance variables ProducerId and ProducerSequenceId      *      * @param value      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSMessageID
@@ -726,6 +734,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getJMSTimestamp
@@ -738,6 +748,8 @@ name|getTimestamp
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSTimestamp
@@ -754,6 +766,8 @@ name|timestamp
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getJMSCorrelationID
@@ -766,6 +780,8 @@ name|getCorrelationId
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSCorrelationID
@@ -782,6 +798,8 @@ name|correlationId
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 index|[]
@@ -800,6 +818,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSCorrelationIDAsBytes
@@ -822,6 +842,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getJMSXMimeType
@@ -940,6 +962,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Destination
 name|getJMSReplyTo
@@ -952,6 +976,8 @@ name|getReplyTo
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSReplyTo
@@ -975,6 +1001,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Destination
 name|getJMSDestination
@@ -987,6 +1015,8 @@ name|getDestination
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSDestination
@@ -1010,6 +1040,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getJMSDeliveryMode
@@ -1030,6 +1062,8 @@ operator|.
 name|NON_PERSISTENT
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSDeliveryMode
@@ -1050,6 +1084,8 @@ name|PERSISTENT
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|getJMSRedelivered
@@ -1062,6 +1098,8 @@ name|isRedelivered
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSRedelivered
@@ -1078,6 +1116,8 @@ name|redelivered
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getJMSType
@@ -1090,6 +1130,8 @@ name|getType
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSType
@@ -1106,6 +1148,8 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getJMSExpiration
@@ -1118,6 +1162,8 @@ name|getExpiration
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSExpiration
@@ -1134,6 +1180,8 @@ name|expiration
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getJMSPriority
@@ -1146,6 +1194,8 @@ name|getPriority
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSPriority
@@ -1182,6 +1232,8 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|propertyExists
@@ -1231,6 +1283,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1386,6 +1440,8 @@ operator|new
 name|PropertySetter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|set
@@ -1467,6 +1523,8 @@ operator|new
 name|PropertySetter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|set
@@ -1543,6 +1601,8 @@ operator|new
 name|PropertySetter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|set
@@ -1622,6 +1682,8 @@ operator|new
 name|PropertySetter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|set
@@ -1703,6 +1765,8 @@ operator|new
 name|PropertySetter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|set
@@ -1827,6 +1891,8 @@ operator|new
 name|PropertySetter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|set
@@ -1911,6 +1977,8 @@ operator|new
 name|PropertySetter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|set
@@ -1995,6 +2063,8 @@ operator|new
 name|PropertySetter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|set
@@ -2079,6 +2149,8 @@ operator|new
 name|PropertySetter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|set
@@ -2160,6 +2232,8 @@ operator|new
 name|PropertySetter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|set
@@ -2244,6 +2318,8 @@ operator|new
 name|PropertySetter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|set
@@ -2316,6 +2392,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setObjectProperty
@@ -2499,9 +2577,6 @@ comment|// Lets use the object property method as we may contain standard
 comment|// extension headers like JMSXGroupID
 name|setObjectProperty
 argument_list|(
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getKey
@@ -2831,6 +2906,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|getObjectProperty
@@ -2875,6 +2952,8 @@ name|this
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|getBooleanProperty
@@ -2957,6 +3036,8 @@ name|booleanValue
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getByteProperty
@@ -3047,6 +3128,8 @@ name|byteValue
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|short
 name|getShortProperty
@@ -3137,6 +3220,8 @@ name|shortValue
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getIntProperty
@@ -3227,6 +3312,8 @@ name|intValue
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLongProperty
@@ -3317,6 +3404,8 @@ name|longValue
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|float
 name|getFloatProperty
@@ -3407,6 +3496,8 @@ name|floatValue
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|double
 name|getDoubleProperty
@@ -3497,6 +3588,8 @@ name|doubleValue
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getStringProperty
@@ -3614,6 +3707,8 @@ return|return
 name|rc
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBooleanProperty
@@ -3668,6 +3763,8 @@ name|checkReadOnly
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setByteProperty
@@ -3694,6 +3791,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setShortProperty
@@ -3720,6 +3819,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setIntProperty
@@ -3746,6 +3847,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setLongProperty
@@ -3772,6 +3875,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setFloatProperty
@@ -3797,6 +3902,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDoubleProperty
@@ -3822,6 +3929,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setStringProperty
@@ -3928,6 +4037,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|visit
