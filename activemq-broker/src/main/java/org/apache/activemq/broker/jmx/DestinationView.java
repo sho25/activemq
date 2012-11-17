@@ -1181,6 +1181,13 @@ index|[
 name|i
 index|]
 decl_stmt|;
+name|message
+operator|.
+name|setReadOnlyBody
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|selectorExpression
