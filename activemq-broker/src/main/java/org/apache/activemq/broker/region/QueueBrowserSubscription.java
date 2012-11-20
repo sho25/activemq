@@ -59,6 +59,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -82,6 +92,24 @@ operator|.
 name|broker
 operator|.
 name|ConnectionContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|cursors
+operator|.
+name|VMPendingMessageCursor
 import|;
 end_import
 
@@ -173,7 +201,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|InvalidSelectorException
+name|JMSException
 block|{
 name|super
 argument_list|(

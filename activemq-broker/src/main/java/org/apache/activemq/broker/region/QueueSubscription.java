@@ -223,7 +223,7 @@ name|ConsumerInfo
 name|info
 parameter_list|)
 throws|throws
-name|InvalidSelectorException
+name|JMSException
 block|{
 name|super
 argument_list|(

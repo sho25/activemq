@@ -1550,7 +1550,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|1
+literal|4
 condition|;
 name|i
 operator|++

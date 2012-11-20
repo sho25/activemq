@@ -679,6 +679,13 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
+name|browseDone
+operator|.
+name|set
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|destroyConsumer
 argument_list|()
 expr_stmt|;
