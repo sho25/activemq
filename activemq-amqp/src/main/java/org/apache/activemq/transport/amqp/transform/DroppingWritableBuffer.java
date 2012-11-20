@@ -249,6 +249,19 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|int
+name|limit
+parameter_list|()
+block|{
+return|return
+name|Integer
+operator|.
+name|MAX_VALUE
+return|;
+block|}
 block|}
 end_class
 
