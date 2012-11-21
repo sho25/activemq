@@ -233,6 +233,18 @@ name|WireFormat
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|fusesource
+operator|.
+name|hawtbuf
+operator|.
+name|UTF8Buffer
+import|;
+end_import
+
 begin_comment
 comment|/**  * Represents an ActiveMQ message  *  * @openwire:marshaller  *  */
 end_comment
@@ -771,13 +783,33 @@ name|marshalledProperties
 argument_list|)
 expr_stmt|;
 block|}
-return|return
+name|Object
+name|result
+init|=
 name|properties
 operator|.
 name|get
 argument_list|(
 name|name
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|result
+operator|instanceof
+name|UTF8Buffer
+condition|)
+block|{
+name|result
+operator|=
+name|result
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|result
 return|;
 block|}
 annotation|@
@@ -976,6 +1008,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beforeMarshall
@@ -1037,6 +1071,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterMarshall
@@ -1047,6 +1083,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beforeUnmarshall
@@ -1057,6 +1095,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterUnmarshall
@@ -1184,6 +1224,8 @@ name|destination
 expr_stmt|;
 block|}
 comment|/**      * @openwire:property version=1      */
+annotation|@
+name|Override
 specifier|public
 name|MessageId
 name|getMessageId
@@ -1234,6 +1276,8 @@ name|transactionId
 expr_stmt|;
 block|}
 comment|/**      * @openwire:property version=1      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getGroupID
@@ -1259,6 +1303,8 @@ name|groupID
 expr_stmt|;
 block|}
 comment|/**      * @openwire:property version=1      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getGroupSequence
@@ -1309,6 +1355,8 @@ name|correlationId
 expr_stmt|;
 block|}
 comment|/**      * @openwire:property version=1      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isPersistent
@@ -1334,6 +1382,8 @@ name|deliveryMode
 expr_stmt|;
 block|}
 comment|/**      * @openwire:property version=1      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getExpiration
@@ -1566,6 +1616,8 @@ name|data
 expr_stmt|;
 block|}
 comment|/**      * Can be used to route the message to a specific consumer. Should be null      * to allow the broker use normal JMS routing semantics. If the target      * consumer id is an active consumer on the broker, the message is dropped.      * Used by the AdvisoryBroker to replay advisory messages to a specific      * consumer.      *      * @openwire:property version=1 cache=true      */
+annotation|@
+name|Override
 specifier|public
 name|ConsumerId
 name|getTargetConsumerId
@@ -1590,6 +1642,8 @@ operator|=
 name|targetConsumerId
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isExpired
@@ -1614,6 +1668,8 @@ operator|>
 name|expireTime
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isAdvisory
@@ -1713,6 +1769,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|incrementRedeliveryCounter
@@ -1723,6 +1781,8 @@ operator|++
 expr_stmt|;
 block|}
 comment|/**      * @openwire:property version=1      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getRedeliveryCounter
@@ -1898,6 +1958,8 @@ operator|=
 name|jmsxUserID
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getReferenceCount
@@ -1907,6 +1969,8 @@ return|return
 name|referenceCount
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|getMessageHardRef
@@ -1916,6 +1980,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|getMessage
@@ -1959,6 +2025,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MessageDestination
 name|getRegionDestination
@@ -2005,6 +2073,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|incrementReferenceCount
@@ -2059,6 +2129,8 @@ return|return
 name|rc
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|decrementReferenceCount
@@ -2114,6 +2186,8 @@ return|return
 name|rc
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getSize
@@ -2362,6 +2436,8 @@ operator|=
 name|brokerOutTime
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDropped
