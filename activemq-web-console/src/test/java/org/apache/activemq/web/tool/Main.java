@@ -197,6 +197,9 @@ argument_list|(
 name|server
 argument_list|)
 expr_stmt|;
+comment|//System.setProperty("webconsole.type","properties");
+comment|//System.setProperty("webconsole.jms.url","tcp://localhost:61616");
+comment|//System.setProperty("webconsole.jmx.url","service:jmx:rmi:///jndi/rmi://localhost:1099/karaf-root");
 name|WebAppContext
 name|context
 init|=
