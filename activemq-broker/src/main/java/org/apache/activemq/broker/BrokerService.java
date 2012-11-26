@@ -1246,12 +1246,6 @@ name|ThreadPoolExecutor
 name|executor
 decl_stmt|;
 specifier|private
-name|boolean
-name|slave
-init|=
-literal|true
-decl_stmt|;
-specifier|private
 name|int
 name|schedulePeriodForDestinationPurge
 init|=
@@ -2036,16 +2030,6 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * @return true if this Broker is a slave to a Master      */
-specifier|public
-name|boolean
-name|isSlave
-parameter_list|()
-block|{
-return|return
-name|slave
-return|;
-block|}
 specifier|public
 name|void
 name|masterFailed
@@ -2692,10 +2676,6 @@ condition|)
 block|{
 return|return;
 block|}
-name|slave
-operator|=
-literal|false
-expr_stmt|;
 name|startDestinations
 argument_list|()
 expr_stmt|;
@@ -2806,17 +2786,9 @@ name|managedBroker
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-operator|!
-name|isSlave
-argument_list|()
-condition|)
-block|{
 name|startAllConnectors
 argument_list|()
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|ioExceptionHandler
@@ -3117,10 +3089,6 @@ expr_stmt|;
 name|persistenceAdapter
 operator|=
 literal|null
-expr_stmt|;
-name|slave
-operator|=
-literal|true
 expr_stmt|;
 if|if
 condition|(
@@ -5189,7 +5157,7 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|/**      * Sets the services associated with this broker such as a      * {@link MasterConnector}      */
+comment|/**      * Sets the services associated with this broker.      */
 specifier|public
 name|void
 name|setServices
@@ -9503,13 +9471,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-operator|!
-name|isSlave
-argument_list|()
-condition|)
-block|{
 name|Set
 argument_list|<
 name|ActiveMQDestination
@@ -10007,7 +9968,6 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

@@ -741,10 +741,6 @@ name|matched
 operator|.
 name|isEmpty
 argument_list|()
-operator|&&
-operator|!
-name|isSlave
-argument_list|()
 condition|)
 block|{
 comment|// if maximumPendingMessages is set we will only discard messages which
@@ -1753,10 +1749,6 @@ name|getPrefetchSize
 argument_list|()
 operator|==
 literal|0
-operator|&&
-operator|!
-name|isSlave
-argument_list|()
 condition|)
 block|{
 name|prefetchWindowOpen

@@ -268,12 +268,6 @@ name|boolean
 name|isJobSchedulerStarted
 parameter_list|()
 function_decl|;
-name|boolean
-name|isSlave
-parameter_list|()
-throws|throws
-name|Exception
-function_decl|;
 block|}
 end_interface
 

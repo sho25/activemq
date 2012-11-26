@@ -1137,15 +1137,6 @@ return|;
 block|}
 specifier|public
 name|boolean
-name|isSlave
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-block|}
-specifier|public
-name|boolean
 name|matches
 parameter_list|(
 name|MessageReference

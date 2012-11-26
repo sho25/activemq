@@ -714,21 +714,6 @@ name|gc
 parameter_list|()
 block|{     }
 specifier|public
-name|boolean
-name|isSlave
-parameter_list|()
-block|{
-return|return
-name|broker
-operator|.
-name|getBrokerService
-argument_list|()
-operator|.
-name|isSlave
-argument_list|()
-return|;
-block|}
-specifier|public
 name|ConnectionContext
 name|getContext
 parameter_list|()

@@ -1465,21 +1465,6 @@ literal|false
 return|;
 block|}
 block|}
-specifier|public
-name|boolean
-name|isSlave
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-return|return
-name|getBrokerAdmin
-argument_list|()
-operator|.
-name|isSlave
-argument_list|()
-return|;
-block|}
 block|}
 end_class
 

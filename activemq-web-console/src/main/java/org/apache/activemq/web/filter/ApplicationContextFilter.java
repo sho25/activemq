@@ -288,13 +288,6 @@ name|requestName
 init|=
 literal|"request"
 decl_stmt|;
-specifier|private
-specifier|final
-name|String
-name|slavePage
-init|=
-literal|"slave.jsp"
-decl_stmt|;
 specifier|public
 name|void
 name|init
@@ -423,121 +416,19 @@ name|getRequestURI
 argument_list|()
 decl_stmt|;
 comment|// handle slave brokers
-try|try
-block|{
-if|if
-condition|(
-operator|!
-operator|(
-name|path
-operator|.
-name|endsWith
-argument_list|(
-literal|"css"
-argument_list|)
-operator|||
-name|path
-operator|.
-name|endsWith
-argument_list|(
-literal|"png"
-argument_list|)
-operator|||
-name|path
-operator|.
-name|endsWith
-argument_list|(
-literal|"ico"
-argument_list|)
-operator|||
-name|path
-operator|.
-name|endsWith
-argument_list|(
-name|slavePage
-argument_list|)
-operator|)
-operator|&&
-operator|(
-operator|(
-name|BrokerFacade
-operator|)
-name|requestContextWrapper
-operator|.
-name|get
-argument_list|(
-literal|"brokerQuery"
-argument_list|)
-operator|)
-operator|.
-name|isSlave
-argument_list|()
-condition|)
-block|{
-operator|(
-operator|(
-name|HttpServletResponse
-operator|)
-name|response
-operator|)
-operator|.
-name|sendRedirect
-argument_list|(
-name|slavePage
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|LOG
-operator|.
-name|warn
-argument_list|(
-name|path
-operator|+
-literal|", failed to access BrokerFacade: reason: "
-operator|+
-name|e
-operator|.
-name|getLocalizedMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|debug
-argument_list|(
-name|request
-operator|.
-name|toString
-argument_list|()
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
+comment|//        try {
+comment|//            if ( !(path.endsWith("css") || path.endsWith("png") || path.endsWith("ico") || path.endsWith(slavePage))
+comment|//&& ((BrokerFacade)requestContextWrapper.get("brokerQuery")).isSlave()) {
+comment|//                ((HttpServletResponse)response).sendRedirect(slavePage);
+comment|//                return;
+comment|//            }
+comment|//        } catch (Exception e) {
+comment|//            LOG.warn(path + ", failed to access BrokerFacade: reason: " + e.getLocalizedMessage());
+comment|//            if (LOG.isDebugEnabled()) {
+comment|//                LOG.debug(request.toString(), e);
+comment|//            }
+comment|//            throw new IOException(e);
+comment|//        }
 name|request
 operator|.
 name|setAttribute

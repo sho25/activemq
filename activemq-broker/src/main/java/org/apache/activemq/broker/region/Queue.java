@@ -2842,14 +2842,9 @@ block|}
 if|if
 condition|(
 operator|!
-operator|(
 name|this
 operator|.
 name|optimizedDispatch
-operator|||
-name|isSlave
-argument_list|()
-operator|)
 condition|)
 block|{
 name|wakeup
@@ -2873,9 +2868,6 @@ condition|(
 name|this
 operator|.
 name|optimizedDispatch
-operator|||
-name|isSlave
-argument_list|()
 condition|)
 block|{
 comment|// Outside of dispatchLock() to maintain the lock hierarchy of
@@ -3393,14 +3385,9 @@ block|}
 if|if
 condition|(
 operator|!
-operator|(
 name|this
 operator|.
 name|optimizedDispatch
-operator|||
-name|isSlave
-argument_list|()
-operator|)
 condition|)
 block|{
 name|wakeup
@@ -3424,9 +3411,6 @@ condition|(
 name|this
 operator|.
 name|optimizedDispatch
-operator|||
-name|isSlave
-argument_list|()
 condition|)
 block|{
 comment|// Outside of dispatchLock() to maintain the lock hierarchy of
@@ -8753,12 +8737,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-operator|(
 name|optimizedDispatch
-operator|||
-name|isSlave
-argument_list|()
-operator|)
 operator|&&
 operator|!
 name|iterationRunning
@@ -8816,21 +8795,6 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-specifier|private
-name|boolean
-name|isSlave
-parameter_list|()
-block|{
-return|return
-name|broker
-operator|.
-name|getBrokerService
-argument_list|()
-operator|.
-name|isSlave
-argument_list|()
-return|;
 block|}
 specifier|private
 name|void
@@ -9551,9 +9515,6 @@ operator|.
 name|consumers
 operator|.
 name|isEmpty
-argument_list|()
-operator|||
-name|isSlave
 argument_list|()
 condition|)
 block|{

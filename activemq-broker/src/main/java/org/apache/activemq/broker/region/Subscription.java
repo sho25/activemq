@@ -287,11 +287,6 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * @return true if the broker is currently in slave mode      */
-name|boolean
-name|isSlave
-parameter_list|()
-function_decl|;
 comment|/**      * @return number of messages pending delivery      */
 name|int
 name|getPendingQueueSize

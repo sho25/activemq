@@ -1089,37 +1089,6 @@ return|return
 name|dontSendReponse
 return|;
 block|}
-comment|/**      * @return the slave      */
-specifier|public
-name|boolean
-name|isSlave
-parameter_list|()
-block|{
-return|return
-operator|(
-name|this
-operator|.
-name|broker
-operator|!=
-literal|null
-operator|&&
-name|this
-operator|.
-name|broker
-operator|.
-name|getBrokerService
-argument_list|()
-operator|.
-name|isSlave
-argument_list|()
-operator|)
-operator|||
-operator|!
-name|this
-operator|.
-name|clientMaster
-return|;
-block|}
 comment|/**      * @return the clientMaster      */
 specifier|public
 name|boolean
