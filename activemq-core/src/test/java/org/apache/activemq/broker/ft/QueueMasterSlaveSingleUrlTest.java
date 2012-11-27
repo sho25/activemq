@@ -31,16 +31,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|net
 operator|.
 name|URI
@@ -108,7 +98,7 @@ specifier|public
 class|class
 name|QueueMasterSlaveSingleUrlTest
 extends|extends
-name|QueueMasterSlaveTest
+name|QueueMasterSlaveTestSupport
 block|{
 specifier|private
 specifier|final

@@ -228,9 +228,10 @@ comment|/**  * Test failover for Queues  */
 end_comment
 
 begin_class
+specifier|abstract
 specifier|public
 class|class
-name|QueueMasterSlaveTest
+name|QueueMasterSlaveTestSupport
 extends|extends
 name|JmsTopicSendReceiveWithTwoConnectionsTest
 block|{
@@ -245,7 +246,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|QueueMasterSlaveTest
+name|QueueMasterSlaveTestSupport
 operator|.
 name|class
 argument_list|)

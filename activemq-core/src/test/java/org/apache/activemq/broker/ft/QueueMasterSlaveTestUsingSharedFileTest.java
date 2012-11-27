@@ -22,7 +22,7 @@ specifier|public
 class|class
 name|QueueMasterSlaveTestUsingSharedFileTest
 extends|extends
-name|QueueMasterSlaveTest
+name|QueueMasterSlaveTestSupport
 block|{
 specifier|protected
 name|String

@@ -192,7 +192,7 @@ specifier|public
 class|class
 name|JDBCQueueMasterSlaveTest
 extends|extends
-name|QueueMasterSlaveTest
+name|QueueMasterSlaveTestSupport
 block|{
 specifier|protected
 name|DataSource
