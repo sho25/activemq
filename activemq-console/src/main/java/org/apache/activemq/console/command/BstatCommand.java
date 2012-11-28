@@ -236,7 +236,7 @@ name|queryTokens
 operator|.
 name|add
 argument_list|(
-literal|"--vuew"
+literal|"--view"
 argument_list|)
 expr_stmt|;
 name|queryTokens
@@ -251,6 +251,13 @@ literal|"TotalMessages,ConsumerCount,TotalConsumerCount,DispatchQueueSize"
 argument_list|)
 expr_stmt|;
 comment|// Call the query command
+name|super
+operator|.
+name|parseOptions
+argument_list|(
+name|queryTokens
+argument_list|)
+expr_stmt|;
 name|super
 operator|.
 name|runTask
