@@ -93,13 +93,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|activemq
+name|qpid
 operator|.
-name|transport
+name|proton
 operator|.
-name|amqp
-operator|.
-name|transform
+name|jms
 operator|.
 name|InboundTransformer
 import|;

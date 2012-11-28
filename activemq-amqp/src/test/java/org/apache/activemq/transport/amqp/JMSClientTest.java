@@ -83,6 +83,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|objectweb
+operator|.
+name|jtests
+operator|.
+name|jms
+operator|.
+name|framework
+operator|.
+name|TestConfig
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -122,6 +138,18 @@ operator|.
 name|Assert
 operator|.
 name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -190,34 +218,28 @@ argument_list|(
 name|queue
 argument_list|)
 decl_stmt|;
-name|Message
-name|msg
+name|TextMessage
+name|message
 init|=
 name|session
 operator|.
 name|createTextMessage
-argument_list|(
-literal|"Hello World"
-argument_list|)
+argument_list|()
 decl_stmt|;
-name|msg
+name|message
 operator|.
-name|setObjectProperty
+name|setText
 argument_list|(
-literal|"x"
-argument_list|,
-literal|1
+literal|"hello"
 argument_list|)
 expr_stmt|;
 name|p
 operator|.
 name|send
 argument_list|(
-name|msg
+name|message
 argument_list|)
 expr_stmt|;
-comment|//            session.commit();
-comment|/*            MessageConsumer c = session.createConsumer(queue, "x = 1");             Message received = c.receive(2000);             assertNotNull(received);             System.out.println("first: " + ((TextMessage)received).getText());             System.out.println(received.getJMSRedelivered());*/
 name|QueueBrowser
 name|browser
 init|=
@@ -244,26 +266,54 @@ name|hasMoreElements
 argument_list|()
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"BROWSE "
-operator|+
+name|Message
+name|m
+init|=
+operator|(
+name|Message
+operator|)
 name|enumeration
 operator|.
 name|nextElement
 argument_list|()
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|m
+operator|instanceof
+name|TextMessage
 argument_list|)
 expr_stmt|;
 block|}
-comment|//            session.rollback();
-comment|//
-comment|//            msg = c.receive();
-comment|//            System.out.println("second:"+msg);
-comment|//            System.out.println(msg.getJMSRedelivered());
+name|MessageConsumer
+name|consumer
+init|=
+name|session
+operator|.
+name|createConsumer
+argument_list|(
+name|queue
+argument_list|)
+decl_stmt|;
+name|Message
+name|msg
+init|=
+name|consumer
+operator|.
+name|receive
+argument_list|(
+name|TestConfig
+operator|.
+name|TIMEOUT
+argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|message
+operator|instanceof
+name|TextMessage
+argument_list|)
+expr_stmt|;
 block|}
 name|connection
 operator|.
