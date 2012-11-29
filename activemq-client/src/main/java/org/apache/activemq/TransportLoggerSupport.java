@@ -135,12 +135,6 @@ name|temp
 operator|=
 literal|null
 expr_stmt|;
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-comment|//To change body of catch statement use File | Settings | File Templates.
 block|}
 name|spi
 operator|=
