@@ -2849,10 +2849,11 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
-comment|// As TemporaryQueue and TemporaryTopic instances are bound
-comment|// to a connection we should just delete them after the connection
-comment|// is closed to free up memory
-name|cleanUpTempDestinations
+name|this
+operator|.
+name|activeTempDestinations
+operator|.
+name|clear
 argument_list|()
 expr_stmt|;
 if|if
@@ -9012,7 +9013,7 @@ operator|=
 name|nonBlockingRedelivery
 expr_stmt|;
 block|}
-comment|/**      * Removes any TempDestinations that this connection has cached, ignoring      * any exceptions generated because the destination is in use as they should      * not be removed.      */
+comment|/**      * Removes any TempDestinations that this connection has cached, ignoring      * any exceptions generated because the destination is in use as they should      * not be removed.      * Used from a pooled connection, b/c it will not be explicitly closed.      */
 specifier|public
 name|void
 name|cleanUpTempDestinations
@@ -9258,7 +9259,7 @@ return|return
 name|optimizedAckScheduledAckInterval
 return|;
 block|}
-comment|/**      * Sets the amount of time between scheduled sends of any outstanding Message Acks for consumers that      * have been configured with optimizeAcknowledge enabled.      *      * @param scheduledOptimizedAckInterval the scheduledOptimizedAckInterval to set      */
+comment|/**      * Sets the amount of time between scheduled sends of any outstanding Message Acks for consumers that      * have been configured with optimizeAcknowledge enabled.      *      * @param optimizedAckScheduledAckInterval the scheduledOptimizedAckInterval to set      */
 specifier|public
 name|void
 name|setOptimizedAckScheduledAckInterval
