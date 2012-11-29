@@ -5813,6 +5813,20 @@ return|return
 name|sub
 return|;
 block|}
+specifier|public
+name|Map
+argument_list|<
+name|ObjectName
+argument_list|,
+name|DestinationView
+argument_list|>
+name|getQueueViews
+parameter_list|()
+block|{
+return|return
+name|queues
+return|;
+block|}
 block|}
 end_class
 
