@@ -456,7 +456,7 @@ decl_stmt|;
 comment|// TODO: Fix these tests..
 if|if
 condition|(
-literal|true
+literal|false
 condition|)
 block|{
 comment|// Fails due to https://issues.apache.org/jira/browse/QPID-4454
@@ -469,33 +469,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|// Fails due to https://issues.apache.org/jira/browse/QPID-4455
-name|suite
-operator|.
-name|addTestSuite
-argument_list|(
-name|QueueBrowserTest
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-block|}
-comment|// TODO: enable once QPID 0.21 is released
-if|if
-condition|(
-literal|true
-condition|)
-block|{
-name|suite
-operator|.
-name|addTestSuite
-argument_list|(
-name|MessageTypeTest
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-block|}
+comment|// https://issues.apache.org/jira/browse/PROTON-154
 name|suite
 operator|.
 name|addTestSuite
@@ -505,12 +479,31 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|// TODO: enable once QPID 0.19 is released
+block|}
+comment|// TODO: enable once QPID 0.20 is released
 if|if
 condition|(
-literal|true
+literal|false
 condition|)
 block|{
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|QueueBrowserTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|MessageTypeTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|suite
 operator|.
 name|addTestSuite
