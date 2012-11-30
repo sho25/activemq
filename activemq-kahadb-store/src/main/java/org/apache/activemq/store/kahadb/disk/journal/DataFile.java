@@ -59,20 +59,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|util
-operator|.
-name|IOHelper
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|store
 operator|.
 name|kahadb
@@ -105,8 +91,22 @@ name|SequenceSet
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IOHelper
+import|;
+end_import
+
 begin_comment
-comment|/**  * DataFile  *   *   */
+comment|/**  * DataFile  *  *  */
 end_comment
 
 begin_class
@@ -254,6 +254,8 @@ operator|+=
 name|size
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|String
@@ -288,6 +290,9 @@ operator|new
 name|RandomAccessFile
 argument_list|(
 name|file
+operator|.
+name|getCanonicalPath
+argument_list|()
 argument_list|,
 literal|"rw"
 argument_list|)
@@ -355,6 +360,8 @@ return|return
 name|corruptedBlocks
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|compareTo
