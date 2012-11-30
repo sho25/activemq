@@ -275,6 +275,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -426,7 +436,7 @@ return|return
 name|index
 return|;
 block|}
-comment|/**      * Yeah, the current implementation does NOT try to balance the tree.  Here is       * a test case showing that it gets out of balance.        *       * @throws Exception      */
+comment|/**      * Yeah, the current implementation does NOT try to balance the tree.  Here is      * a test case showing that it gets out of balance.      *      * @throws Exception      */
 specifier|public
 name|void
 name|disabled_testTreeBalancing
@@ -583,6 +593,13 @@ name|tx
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testPruning
@@ -759,6 +776,13 @@ name|commit
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testIteration
@@ -891,16 +915,6 @@ name|Long
 argument_list|>
 name|entry
 init|=
-operator|(
-name|Map
-operator|.
-name|Entry
-argument_list|<
-name|String
-argument_list|,
-name|Long
-argument_list|>
-operator|)
 name|i
 operator|.
 name|next
@@ -951,6 +965,13 @@ name|commit
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testVisitor
@@ -1049,6 +1070,8 @@ name|Long
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isInterestedInKeysBetween
@@ -1064,6 +1087,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|visit
@@ -1099,6 +1124,13 @@ name|commit
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testRandomRemove
@@ -1396,6 +1428,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|300000
+argument_list|)
 specifier|public
 name|void
 name|testRandomAddRemove
@@ -1703,6 +1742,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testRemovePattern
@@ -2037,6 +2083,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testLargeValue
@@ -2050,7 +2103,8 @@ operator|=
 operator|new
 name|PageFile
 argument_list|(
-name|directory
+name|getDirectory
+argument_list|()
 argument_list|,
 name|getClass
 argument_list|()
@@ -2389,6 +2443,13 @@ name|commit
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testLargeValueOverflow
@@ -2401,7 +2462,8 @@ operator|=
 operator|new
 name|PageFile
 argument_list|(
-name|directory
+name|getDirectory
+argument_list|()
 argument_list|,
 name|getClass
 argument_list|()
@@ -2782,6 +2844,13 @@ name|commit
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testIndexRepeatFillClearIncrementingPageReuse
@@ -2794,7 +2863,8 @@ operator|=
 operator|new
 name|PageFile
 argument_list|(
-name|directory
+name|getDirectory
+argument_list|()
 argument_list|,
 name|getClass
 argument_list|()
@@ -3152,6 +3222,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testListIndexConsistancyOverTime
@@ -3170,7 +3247,8 @@ operator|=
 operator|new
 name|PageFile
 argument_list|(
-name|directory
+name|getDirectory
+argument_list|()
 argument_list|,
 name|getClass
 argument_list|()
@@ -3719,7 +3797,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Overriding so that this generates keys that are the worst case for the BTree. Keys that      * always insert to the end of the BTree.        */
+comment|/**      * Overriding so that this generates keys that are the worst case for the BTree. Keys that      * always insert to the end of the BTree.      */
 annotation|@
 name|Override
 specifier|protected
@@ -3762,6 +3840,8 @@ operator|new
 name|HashSetStringMarshaller
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writePayload
@@ -3837,6 +3917,8 @@ name|data
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|HashSet
 argument_list|<
