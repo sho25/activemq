@@ -29,6 +29,20 @@ name|TabularData
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_comment
+comment|/**  * Returns the status events of the broker to indicate any warnings.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
@@ -37,6 +51,16 @@ block|{
 specifier|public
 name|TabularData
 name|status
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Warning this method can only be invoked if you have the correct version      * of {@link StatusEvent} on your classpath or you use something      * like<a href="http://jolokia.org/">jolokia</a> to access JMX.      *      * If in doubt, please use the {@link #status()} method instead!      */
+name|List
+argument_list|<
+name|StatusEvent
+argument_list|>
+name|statusList
 parameter_list|()
 throws|throws
 name|Exception
