@@ -81,6 +81,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|PostConstruct
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -694,6 +704,9 @@ return|return
 name|answer
 return|;
 block|}
+comment|/**      *      * @org.apache.xbean.InitMethod      */
+annotation|@
+name|PostConstruct
 specifier|public
 name|void
 name|afterPropertiesSet
@@ -701,11 +714,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|afterPropertiesSet
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|adminRoles

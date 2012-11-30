@@ -116,17 +116,6 @@ operator|=
 name|persistenceAdapter
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|afterPropertiesSet
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// ok to have no destination, we default it
-block|}
 specifier|public
 name|boolean
 name|isPerDestination
