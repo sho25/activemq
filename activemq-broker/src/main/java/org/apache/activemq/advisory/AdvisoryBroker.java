@@ -667,7 +667,7 @@ operator|.
 name|getConnectionAdvisoryTopic
 argument_list|()
 decl_stmt|;
-comment|//do not distribute usernames or passwords in advisory
+comment|// do not distribute passwords in advisory messages. usernames okay
 name|ConnectionInfo
 name|copy
 init|=
@@ -676,13 +676,6 @@ operator|.
 name|copy
 argument_list|()
 decl_stmt|;
-name|copy
-operator|.
-name|setUserName
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
 name|copy
 operator|.
 name|setPassword
