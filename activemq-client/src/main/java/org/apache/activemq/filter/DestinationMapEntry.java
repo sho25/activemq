@@ -235,32 +235,6 @@ operator|=
 name|destination
 expr_stmt|;
 block|}
-comment|/**      *      * @throws Exception      * @org.apache.xbean.InitMethod      */
-annotation|@
-name|PostConstruct
-specifier|public
-name|void
-name|afterPropertiesSet
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-if|if
-condition|(
-name|destination
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"You must specify the 'destination' property"
-argument_list|)
-throw|;
-block|}
-block|}
 specifier|public
 name|Comparable
 argument_list|<
