@@ -232,7 +232,9 @@ specifier|private
 name|ActiveMQConnectionMetaData
 parameter_list|()
 block|{     }
-comment|/**      * Gets the JMS API version.      *       * @return the JMS API version      */
+comment|/**      * Gets the JMS API version.      *      * @return the JMS API version      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getJMSVersion
@@ -242,7 +244,9 @@ return|return
 literal|"1.1"
 return|;
 block|}
-comment|/**      * Gets the JMS major version number.      *       * @return the JMS API major version number      */
+comment|/**      * Gets the JMS major version number.      *      * @return the JMS API major version number      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getJMSMajorVersion
@@ -252,7 +256,9 @@ return|return
 literal|1
 return|;
 block|}
-comment|/**      * Gets the JMS minor version number.      *       * @return the JMS API minor version number      */
+comment|/**      * Gets the JMS minor version number.      *      * @return the JMS API minor version number      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getJMSMinorVersion
@@ -262,7 +268,9 @@ return|return
 literal|1
 return|;
 block|}
-comment|/**      * Gets the JMS provider name.      *       * @return the JMS provider name      */
+comment|/**      * Gets the JMS provider name.      *      * @return the JMS provider name      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getJMSProviderName
@@ -272,7 +280,9 @@ return|return
 literal|"ActiveMQ"
 return|;
 block|}
-comment|/**      * Gets the JMS provider version.      *       * @return the JMS provider version      */
+comment|/**      * Gets the JMS provider version.      *      * @return the JMS provider version      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getProviderVersion
@@ -282,7 +292,9 @@ return|return
 name|PROVIDER_VERSION
 return|;
 block|}
-comment|/**      * Gets the JMS provider major version number.      *       * @return the JMS provider major version number      */
+comment|/**      * Gets the JMS provider major version number.      *      * @return the JMS provider major version number      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getProviderMajorVersion
@@ -292,7 +304,9 @@ return|return
 name|PROVIDER_MAJOR_VERSION
 return|;
 block|}
-comment|/**      * Gets the JMS provider minor version number.      *       * @return the JMS provider minor version number      */
+comment|/**      * Gets the JMS provider minor version number.      *      * @return the JMS provider minor version number      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getProviderMinorVersion
@@ -302,7 +316,9 @@ return|return
 name|PROVIDER_MINOR_VERSION
 return|;
 block|}
-comment|/**      * Gets an enumeration of the JMSX property names.      *       * @return an Enumeration of JMSX property names      */
+comment|/**      * Gets an enumeration of the JMSX property names.      *      * @return an Enumeration of JMSX property names      */
+annotation|@
+name|Override
 specifier|public
 name|Enumeration
 argument_list|<
@@ -324,6 +340,13 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
+name|jmxProperties
+operator|.
+name|add
+argument_list|(
+literal|"JMSXUserID"
+argument_list|)
+expr_stmt|;
 name|jmxProperties
 operator|.
 name|add
