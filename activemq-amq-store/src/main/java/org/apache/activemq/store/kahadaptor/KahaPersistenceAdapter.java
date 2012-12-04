@@ -480,10 +480,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @org.apache.xbean.XBean  *   */
+comment|/**  * @org.apache.xbean.XBean  *  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|KahaPersistenceAdapter
@@ -658,6 +660,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -766,6 +770,8 @@ return|return
 name|rc
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|MessageStore
@@ -849,6 +855,8 @@ return|return
 name|rc
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|TopicMessageStore
@@ -992,6 +1000,8 @@ name|rc
 return|;
 block|}
 comment|/**      * Cleanup method to remove any state associated with the given destination      *      * @param destination Destination to forget      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeQueueMessageStore
@@ -1047,6 +1057,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Cleanup method to remove any state associated with the given destination      *      * @param destination Destination to forget      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeTopicMessageStore
@@ -1085,6 +1097,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TransactionStore
 name|createTransactionStore
@@ -1214,6 +1228,8 @@ return|return
 name|transactionStore
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beginTransaction
@@ -1222,6 +1238,8 @@ name|ConnectionContext
 name|context
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commitTransaction
@@ -1246,6 +1264,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollbackTransaction
@@ -1254,6 +1274,8 @@ name|ConnectionContext
 name|context
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -1265,6 +1287,8 @@ name|initialize
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -1286,6 +1310,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastMessageBrokerSequenceId
@@ -1297,6 +1323,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|deleteAllMessages
@@ -1544,6 +1572,8 @@ name|container
 return|;
 block|}
 comment|/**      * @param usageManager The UsageManager that is controlling the broker's      *                memory usage.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUsageManager
@@ -1704,6 +1734,8 @@ return|return
 name|directory
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -1718,6 +1750,8 @@ operator|+
 literal|")"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerName
@@ -1742,6 +1776,8 @@ return|return
 name|brokerName
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|File
 name|getDirectory
@@ -1753,6 +1789,8 @@ operator|.
 name|directory
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDirectory
@@ -1768,6 +1806,8 @@ operator|=
 name|directory
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|checkpoint
@@ -1791,6 +1831,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|size
@@ -1904,6 +1946,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerService
@@ -1919,6 +1963,8 @@ operator|=
 name|brokerService
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastProducerSequenceId

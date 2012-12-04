@@ -479,7 +479,105 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|*
+name|JournaledStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|MessageStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|PersistenceAdapter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|ReferenceStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|ReferenceStoreAdapter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|TopicMessageStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|TopicReferenceStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|TransactionStore
 import|;
 end_import
 
@@ -674,10 +772,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with a  * {@link Journal} and then check pointing asynchronously on a timeout with some  * other long term persistent storage.  *   * @org.apache.xbean.XBean element="amqPersistenceAdapter"  *   */
+comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with a  * {@link Journal} and then check pointing asynchronously on a timeout with some  * other long term persistent storage.  *  * @org.apache.xbean.XBean element="amqPersistenceAdapter"  *  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|AMQPersistenceAdapter
@@ -1070,6 +1170,8 @@ operator|.
 name|brokerName
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerName
@@ -1113,6 +1215,8 @@ return|return
 name|brokerService
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerService
@@ -1128,6 +1232,8 @@ operator|=
 name|brokerService
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1651,6 +1757,8 @@ operator|new
 name|Task
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|iterate
@@ -1759,6 +1867,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1788,6 +1898,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1844,6 +1956,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -2114,7 +2228,9 @@ name|firstException
 throw|;
 block|}
 block|}
-comment|/**      * When we checkpoint we move all the journalled data to long term storage.      *       * @param sync      */
+comment|/**      * When we checkpoint we move all the journalled data to long term storage.      *      * @param sync      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|checkpoint
@@ -2240,7 +2356,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This does the actual checkpoint.      *       * @return true if successful      */
+comment|/**      * This does the actual checkpoint.      *      * @return true if successful      */
 specifier|public
 name|boolean
 name|doCheckpoint
@@ -2714,6 +2830,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -2804,6 +2922,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MessageStore
 name|createQueueMessageStore
@@ -2890,6 +3010,8 @@ return|return
 name|store
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TopicMessageStore
 name|createTopicMessageStore
@@ -2977,6 +3099,8 @@ name|store
 return|;
 block|}
 comment|/**      * Cleanup method to remove any state associated with the given destination      *      * @param destination      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeQueueMessageStore
@@ -3004,6 +3128,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Cleanup method to remove any state associated with the given destination      *      * @param destination      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeTopicMessageStore
@@ -3020,6 +3146,8 @@ name|destination
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TransactionStore
 name|createTransactionStore
@@ -3031,6 +3159,8 @@ return|return
 name|transactionStore
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastMessageBrokerSequenceId
@@ -3045,6 +3175,8 @@ name|getLastMessageBrokerSequenceId
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beginTransaction
@@ -3063,6 +3195,8 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commitTransaction
@@ -3081,6 +3215,8 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollbackTransaction
@@ -3174,7 +3310,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Move all the messages that were in the journal into long term storage. We      * just replay and do a checkpoint.      *       * @throws IOException      * @throws IOException      * @throws IllegalStateException      */
+comment|/**      * Move all the messages that were in the journal into long term storage. We      * just replay and do a checkpoint.      *      * @throws IOException      * @throws IOException      * @throws IllegalStateException      */
 specifier|private
 name|void
 name|recover
@@ -4059,6 +4195,8 @@ name|sync
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onUsageChanged
@@ -4120,6 +4258,8 @@ return|return
 name|transactionStore
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -4374,6 +4514,8 @@ return|return
 name|usageManager
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUsageManager
@@ -4398,7 +4540,7 @@ return|return
 name|maxCheckpointMessageAddSize
 return|;
 block|}
-comment|/**       * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryIntPropertyEditor"      */
+comment|/**      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryIntPropertyEditor"      */
 specifier|public
 name|void
 name|setMaxCheckpointMessageAddSize
@@ -4414,6 +4556,8 @@ operator|=
 name|maxCheckpointMessageAddSize
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|File
@@ -4424,6 +4568,8 @@ return|return
 name|directory
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -4482,6 +4628,8 @@ operator|=
 name|referenceStoreAdapter
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|size
@@ -5442,6 +5590,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastProducerSequenceId
