@@ -130,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides basic audit functions for Messages without sync  *   *   */
+comment|/**  * Provides basic audit functions for Messages without sync  *  *  */
 end_comment
 
 begin_class
@@ -173,6 +173,7 @@ name|int
 name|maximumNumberOfProducersToTrack
 decl_stmt|;
 specifier|private
+specifier|final
 name|LRUCache
 argument_list|<
 name|Object
@@ -181,7 +182,14 @@ name|BitArrayBin
 argument_list|>
 name|map
 decl_stmt|;
-comment|/**      * Default Constructor windowSize = 2048, maximumNumberOfProducersToTrack =      * 64      */
+specifier|private
+specifier|transient
+name|boolean
+name|modified
+init|=
+literal|true
+decl_stmt|;
+comment|/**      * Default Constructor windowSize = 2048, maximumNumberOfProducersToTrack = 64      */
 specifier|public
 name|ActiveMQMessageAuditNoSync
 parameter_list|()
@@ -194,7 +202,7 @@ name|MAXIMUM_PRODUCER_COUNT
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Construct a MessageAudit      *       * @param auditDepth range of ids to track      * @param maximumNumberOfProducersToTrack number of producers expected in      *                the system      */
+comment|/**      * Construct a MessageAudit      *      * @param auditDepth range of ids to track      * @param maximumNumberOfProducersToTrack number of producers expected in the system      */
 specifier|public
 name|ActiveMQMessageAuditNoSync
 parameter_list|(
@@ -265,6 +273,12 @@ name|auditDepth
 operator|=
 name|auditDepth
 expr_stmt|;
+name|this
+operator|.
+name|modified
+operator|=
+literal|true
+expr_stmt|;
 block|}
 comment|/**      * @return the maximumNumberOfProducersToTrack      */
 specifier|public
@@ -300,8 +314,14 @@ argument_list|(
 name|maximumNumberOfProducersToTrack
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|modified
+operator|=
+literal|true
+expr_stmt|;
 block|}
-comment|/**      * Checks if this message has been seen before      *       * @param message      * @return true if the message is a duplicate      * @throws JMSException      */
+comment|/**      * Checks if this message has been seen before      *      * @param message      * @return true if the message is a duplicate      * @throws JMSException      */
 specifier|public
 name|boolean
 name|isDuplicate
@@ -322,7 +342,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * checks whether this messageId has been seen before and adds this      * messageId to the list      *       * @param id      * @return true if the message is a duplicate      */
+comment|/**      * checks whether this messageId has been seen before and adds this      * messageId to the list      *      * @param id      * @return true if the message is a duplicate      */
 specifier|public
 name|boolean
 name|isDuplicate
@@ -386,6 +406,10 @@ name|seed
 argument_list|,
 name|bab
 argument_list|)
+expr_stmt|;
+name|modified
+operator|=
+literal|true
 expr_stmt|;
 block|}
 name|long
@@ -416,13 +440,17 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+name|modified
+operator|=
+literal|true
+expr_stmt|;
 block|}
 block|}
 return|return
 name|answer
 return|;
 block|}
-comment|/**      * Checks if this message has been seen before      *       * @param message      * @return true if the message is a duplicate      */
+comment|/**      * Checks if this message has been seen before      *      * @param message      * @return true if the message is a duplicate      */
 specifier|public
 name|boolean
 name|isDuplicate
@@ -447,7 +475,7 @@ name|id
 argument_list|)
 return|;
 block|}
-comment|/**      * Checks if this messageId has been seen before      *       * @param id      * @return true if the message is a duplicate      */
+comment|/**      * Checks if this messageId has been seen before      *      * @param id      * @return true if the message is a duplicate      */
 specifier|public
 name|boolean
 name|isDuplicate
@@ -518,6 +546,10 @@ argument_list|,
 name|bab
 argument_list|)
 expr_stmt|;
+name|modified
+operator|=
+literal|true
+expr_stmt|;
 block|}
 name|answer
 operator|=
@@ -539,7 +571,7 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * mark this message as being received      *       * @param message      */
+comment|/**      * mark this message as being received      *      * @param message      */
 specifier|public
 name|void
 name|rollback
@@ -563,7 +595,7 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * mark this message as being received      *       * @param id      */
+comment|/**      * mark this message as being received      *      * @param id      */
 specifier|public
 name|void
 name|rollback
@@ -623,6 +655,10 @@ argument_list|()
 argument_list|,
 literal|false
 argument_list|)
+expr_stmt|;
+name|modified
+operator|=
+literal|true
 expr_stmt|;
 block|}
 block|}
@@ -689,6 +725,10 @@ name|index
 argument_list|,
 literal|false
 argument_list|)
+expr_stmt|;
+name|modified
+operator|=
+literal|true
 expr_stmt|;
 block|}
 block|}
@@ -789,6 +829,10 @@ argument_list|(
 name|index
 argument_list|)
 expr_stmt|;
+name|modified
+operator|=
+literal|true
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -796,7 +840,7 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * Check the MessageId is in order      * @param message       * @return      */
+comment|/**      * Check the MessageId is in order      * @param message      * @return      */
 specifier|public
 name|boolean
 name|isInOrder
@@ -887,6 +931,10 @@ argument_list|,
 name|bab
 argument_list|)
 expr_stmt|;
+name|modified
+operator|=
+literal|true
+expr_stmt|;
 block|}
 name|answer
 operator|=
@@ -962,6 +1010,60 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+block|}
+comment|/**      * Returns if the Audit has been modified since last check, this method does not      * reset the modified flag.  If the caller needs to reset the flag in order to avoid      * serializing an unchanged Audit then its up the them to reset it themselves.      *      * @return true if the Audit has been modified.      */
+specifier|public
+name|boolean
+name|isModified
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|modified
+return|;
+block|}
+specifier|public
+name|void
+name|setModified
+parameter_list|(
+name|boolean
+name|modified
+parameter_list|)
+block|{
+name|this
+operator|.
+name|modified
+operator|=
+name|modified
+expr_stmt|;
+block|}
+comment|/**      * Reads and returns the current modified state of the Audit, once called the state is      * reset to false.  This method is useful for code the needs to know if it should write      * out the Audit or otherwise execute some logic based on the Audit having changed since      * last check.      *      * @return true if the Audit has been modified since last check.      */
+specifier|public
+name|boolean
+name|modified
+parameter_list|()
+block|{
+if|if
+condition|(
+name|this
+operator|.
+name|modified
+condition|)
+block|{
+name|this
+operator|.
+name|modified
+operator|=
+literal|false
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
+return|return
+literal|false
+return|;
 block|}
 block|}
 end_class
