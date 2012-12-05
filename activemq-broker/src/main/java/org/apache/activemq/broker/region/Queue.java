@@ -5433,9 +5433,7 @@ try|try
 block|{
 name|pageInMessages
 argument_list|(
-operator|!
-name|isUseCache
-argument_list|()
+literal|true
 argument_list|)
 expr_stmt|;
 name|List
