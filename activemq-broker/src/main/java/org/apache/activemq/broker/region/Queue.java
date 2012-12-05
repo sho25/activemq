@@ -7875,6 +7875,13 @@ operator|.
 name|decrementQueueRef
 argument_list|()
 expr_stmt|;
+name|browserDispatches
+operator|.
+name|remove
+argument_list|(
+name|browserDispatch
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 catch|catch
