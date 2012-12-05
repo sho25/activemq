@@ -411,9 +411,17 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|queueRefs
+operator|>
+literal|0
+condition|)
+block|{
 name|queueRefs
 operator|--
 expr_stmt|;
+block|}
 name|checkDone
 argument_list|()
 expr_stmt|;
