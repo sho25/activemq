@@ -877,7 +877,7 @@ name|displayName
 operator|.
 name|contains
 argument_list|(
-literal|"run.jar start"
+literal|"activemq.jar start"
 argument_list|)
 condition|)
 block|{
@@ -1318,6 +1318,8 @@ name|jmxConnection
 return|;
 block|}
 comment|/**      * Handle the --jmxurl option.      * @param token - option token to handle      * @param tokens - succeeding command arguments      * @throws Exception      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|handleOption
@@ -1353,17 +1355,12 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|||
-operator|(
-operator|(
-name|String
-operator|)
 name|tokens
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|.
 name|startsWith
 argument_list|(
@@ -1412,9 +1409,6 @@ block|}
 name|String
 name|strJmxUrl
 init|=
-operator|(
-name|String
-operator|)
 name|tokens
 operator|.
 name|remove
@@ -1480,17 +1474,12 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|||
-operator|(
-operator|(
-name|String
-operator|)
 name|tokens
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|.
 name|startsWith
 argument_list|(
@@ -1655,17 +1644,12 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|||
-operator|(
-operator|(
-name|String
-operator|)
 name|tokens
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|.
 name|startsWith
 argument_list|(
@@ -1689,9 +1673,6 @@ name|this
 operator|.
 name|setJmxUser
 argument_list|(
-operator|(
-name|String
-operator|)
 name|tokens
 operator|.
 name|remove
@@ -1720,17 +1701,12 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|||
-operator|(
-operator|(
-name|String
-operator|)
 name|tokens
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|.
 name|startsWith
 argument_list|(
@@ -1754,9 +1730,6 @@ name|this
 operator|.
 name|setJmxPassword
 argument_list|(
-operator|(
-name|String
-operator|)
 name|tokens
 operator|.
 name|remove
@@ -1799,6 +1772,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
