@@ -663,11 +663,37 @@ argument_list|(
 literal|"DURABLE_SUBSCRIPTION_ENDED"
 argument_list|)
 decl_stmt|;
+name|int
+name|prefetch
+init|=
+literal|100
+decl_stmt|;
+name|ReentrantLock
+name|lock
+init|=
+operator|new
+name|ReentrantLock
+argument_list|()
+decl_stmt|;
+name|TransportImpl
+name|protonTransport
+init|=
+operator|new
+name|TransportImpl
+argument_list|()
+decl_stmt|;
+name|ConnectionImpl
+name|protonConnection
+init|=
+operator|new
+name|ConnectionImpl
+argument_list|()
+decl_stmt|;
 specifier|public
 name|AmqpProtocolConverter
 parameter_list|(
 name|AmqpTransport
-name|amqpTransport
+name|transport
 parameter_list|,
 name|BrokerContext
 name|brokerContext
@@ -677,73 +703,25 @@ name|this
 operator|.
 name|amqpTransport
 operator|=
-name|amqpTransport
+name|transport
 expr_stmt|;
-block|}
-name|ReentrantLock
-name|lock
-init|=
-operator|new
-name|ReentrantLock
-argument_list|()
-decl_stmt|;
-comment|//
-comment|//    private static final Buffer PING_RESP_FRAME = new PINGRESP().encode();
-comment|//
-comment|//
-comment|//    private final LongSequenceGenerator messageIdGenerator = new LongSequenceGenerator();
-comment|//    private final LongSequenceGenerator consumerIdGenerator = new LongSequenceGenerator();
-comment|//
-comment|//    private final ConcurrentHashMap<ConsumerId, AmqpSubscription> subscriptionsByConsumerId = new ConcurrentHashMap<ConsumerId, AmqpSubscription>();
-comment|//    private final ConcurrentHashMap<UTF8Buffer, AmqpSubscription> amqpSubscriptionByTopic = new ConcurrentHashMap<UTF8Buffer, AmqpSubscription>();
-comment|//    private final Map<UTF8Buffer, ActiveMQTopic> activeMQTopicMap = new LRUCache<UTF8Buffer, ActiveMQTopic>();
-comment|//    private final Map<Destination, UTF8Buffer> amqpTopicMap = new LRUCache<Destination, UTF8Buffer>();
-comment|//    private final Map<Short, MessageAck> consumerAcks = new LRUCache<Short, MessageAck>();
-comment|//    private final Map<Short, PUBREC> publisherRecs = new LRUCache<Short, PUBREC>();
-comment|//
-comment|//    private final AtomicBoolean connected = new AtomicBoolean(false);
-comment|//    private CONNECT connect;
-comment|//    private String clientId;
-comment|//    private final String QOS_PROPERTY_NAME = "QoSPropertyName";
-name|int
-name|prefetch
-init|=
-literal|100
-decl_stmt|;
-name|boolean
-name|trace
-init|=
-literal|true
-decl_stmt|;
-name|TransportImpl
-name|protonTransport
-init|=
-operator|new
-name|TransportImpl
-argument_list|()
-decl_stmt|;
-name|ConnectionImpl
-name|protonConnection
-init|=
-operator|new
-name|ConnectionImpl
-argument_list|()
-decl_stmt|;
-block|{
 name|this
 operator|.
 name|protonTransport
 operator|.
 name|bind
-parameter_list|(
+argument_list|(
 name|this
 operator|.
 name|protonConnection
-parameter_list|)
-constructor_decl|;
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
-name|trace
+name|transport
+operator|.
+name|isTrace
+argument_list|()
 condition|)
 block|{
 name|this
@@ -2123,16 +2101,6 @@ name|clientId
 argument_list|)
 expr_stmt|;
 block|}
-comment|//        String userName = "";
-comment|//        if (connect.userName() != null) {
-comment|//            userName = connect.userName().toString();
-comment|//        }
-comment|//        String passswd = "";
-comment|//        if (connect.password() != null) {
-comment|//            passswd = connect.password().toString();
-comment|//        }
-comment|//        connectionInfo.setUserName(userName);
-comment|//        connectionInfo.setPassword(passswd);
 name|connectionInfo
 operator|.
 name|setTransportContext
@@ -6050,181 +6018,6 @@ return|return
 name|rc
 return|;
 block|}
-comment|//    void onUnSubscribe(UNSUBSCRIBE command) {
-comment|//        UTF8Buffer[] topics = command.topics();
-comment|//        if (topics != null) {
-comment|//            for (int i = 0; i< topics.length; i++) {
-comment|//                onUnSubscribe(topics[i]);
-comment|//            }
-comment|//        }
-comment|//        UNSUBACK ack = new UNSUBACK();
-comment|//        ack.messageId(command.messageId());
-comment|//        pumpOut(ack.encode());
-comment|//
-comment|//    }
-comment|//
-comment|//    void onUnSubscribe(UTF8Buffer topicName) {
-comment|//        AmqpSubscription subs = amqpSubscriptionByTopic.remove(topicName);
-comment|//        if (subs != null) {
-comment|//            ConsumerInfo info = subs.getConsumerInfo();
-comment|//            if (info != null) {
-comment|//                subscriptionsByConsumerId.remove(info.getConsumerId());
-comment|//            }
-comment|//            RemoveInfo removeInfo = info.createRemoveCommand();
-comment|//            sendToActiveMQ(removeInfo, null);
-comment|//        }
-comment|//    }
-comment|//
-comment|//
-comment|//    /**
-comment|//     * Dispatch a ActiveMQ command
-comment|//     */
-comment|//
-comment|//
-comment|//
-comment|//    void onAMQPPublish(PUBLISH command) throws IOException, JMSException {
-comment|//        checkConnected();
-comment|//    }
-comment|//
-comment|//    void onAMQPPubAck(PUBACK command) {
-comment|//        short messageId = command.messageId();
-comment|//        MessageAck ack;
-comment|//        synchronized (consumerAcks) {
-comment|//            ack = consumerAcks.remove(messageId);
-comment|//        }
-comment|//        if (ack != null) {
-comment|//            amqpTransport.sendToActiveMQ(ack);
-comment|//        }
-comment|//    }
-comment|//
-comment|//    void onAMQPPubRec(PUBREC commnand) {
-comment|//        //from a subscriber - send a PUBREL in response
-comment|//        PUBREL pubrel = new PUBREL();
-comment|//        pubrel.messageId(commnand.messageId());
-comment|//        pumpOut(pubrel.encode());
-comment|//    }
-comment|//
-comment|//    void onAMQPPubRel(PUBREL command) {
-comment|//        PUBREC ack;
-comment|//        synchronized (publisherRecs) {
-comment|//            ack = publisherRecs.remove(command.messageId());
-comment|//        }
-comment|//        if (ack == null) {
-comment|//            LOG.warn("Unknown PUBREL: " + command.messageId() + " received");
-comment|//        }
-comment|//        PUBCOMP pubcomp = new PUBCOMP();
-comment|//        pubcomp.messageId(command.messageId());
-comment|//        pumpOut(pubcomp.encode());
-comment|//    }
-comment|//
-comment|//    void onAMQPPubComp(PUBCOMP command) {
-comment|//        short messageId = command.messageId();
-comment|//        MessageAck ack;
-comment|//        synchronized (consumerAcks) {
-comment|//            ack = consumerAcks.remove(messageId);
-comment|//        }
-comment|//        if (ack != null) {
-comment|//            amqpTransport.sendToActiveMQ(ack);
-comment|//        }
-comment|//    }
-comment|//
-comment|//
-comment|//
-comment|//
-comment|//    public AmqpTransport amqpTransport {
-comment|//        return amqpTransport;
-comment|//    }
-comment|//
-comment|//
-comment|//
-comment|//    void configureInactivityMonitor(short heartBeat) {
-comment|//        try {
-comment|//
-comment|//            int heartBeatMS = heartBeat * 1000;
-comment|//            AmqpInactivityMonitor monitor = amqpTransport.getInactivityMonitor();
-comment|//            monitor.setProtocolConverter(this);
-comment|//            monitor.setReadCheckTime(heartBeatMS);
-comment|//            monitor.setInitialDelayTime(heartBeatMS);
-comment|//            monitor.startMonitorThread();
-comment|//
-comment|//        } catch (Exception ex) {
-comment|//            LOG.warn("Failed to start AMQP InactivityMonitor ", ex);
-comment|//        }
-comment|//
-comment|//        LOG.debug(getClientId() + " AMQP Connection using heart beat of  " + heartBeat + " secs");
-comment|//    }
-comment|//
-comment|//
-comment|//
-comment|//    void checkConnected() throws AmqpProtocolException {
-comment|//        if (!connected.get()) {
-comment|//            throw new AmqpProtocolException("Not connected.");
-comment|//        }
-comment|//    }
-comment|//
-comment|//    private String getClientId() {
-comment|//        if (clientId == null) {
-comment|//            if (connect != null&& connect.clientId() != null) {
-comment|//                clientId = connect.clientId().toString();
-comment|//            }
-comment|//        } else {
-comment|//            clientId = "";
-comment|//        }
-comment|//        return clientId;
-comment|//    }
-comment|//
-comment|//    private void stopTransport() {
-comment|//        try {
-comment|//            amqpTransport.stop();
-comment|//        } catch (Throwable e) {
-comment|//            LOG.debug("Failed to stop AMQP transport ", e);
-comment|//        }
-comment|//    }
-comment|//
-comment|//    ResponseHandler createResponseHandler(final PUBLISH command) {
-comment|//
-comment|//        if (command != null) {
-comment|//            switch (command.qos()) {
-comment|//                case AT_LEAST_ONCE:
-comment|//                    return new ResponseHandler() {
-comment|//                        public void onResponse(AmqpProtocolConverter converter, Response response) throws IOException {
-comment|//                            if (response.isException()) {
-comment|//                                LOG.warn("Failed to send AMQP Publish: ", command, ((ExceptionResponse) response).getException());
-comment|//                            } else {
-comment|//                                PUBACK ack = new PUBACK();
-comment|//                                ack.messageId(command.messageId());
-comment|//                                converter.amqpTransport.sendToAmqp(ack.encode());
-comment|//                            }
-comment|//                        }
-comment|//                    };
-comment|//                case EXACTLY_ONCE:
-comment|//                    return new ResponseHandler() {
-comment|//                        public void onResponse(AmqpProtocolConverter converter, Response response) throws IOException {
-comment|//                            if (response.isException()) {
-comment|//                                LOG.warn("Failed to send AMQP Publish: ", command, ((ExceptionResponse) response).getException());
-comment|//                            } else {
-comment|//                                PUBREC ack = new PUBREC();
-comment|//                                ack.messageId(command.messageId());
-comment|//                                synchronized (publisherRecs) {
-comment|//                                    publisherRecs.put(command.messageId(), ack);
-comment|//                                }
-comment|//                                converter.amqpTransport.sendToAmqp(ack.encode());
-comment|//                            }
-comment|//                        }
-comment|//                    };
-comment|//                case AT_MOST_ONCE:
-comment|//                    break;
-comment|//            }
-comment|//        }
-comment|//        return null;
-comment|//    }
-comment|//
-comment|//    private String convertAMQPToActiveMQ(String name) {
-comment|//        String result = name.replace('#', '>');
-comment|//        result = result.replace('+', '*');
-comment|//        result = result.replace('/', '.');
-comment|//        return result;
-comment|//    }
 comment|////////////////////////////////////////////////////////////////////////////
 comment|//
 comment|// Implementation methods
