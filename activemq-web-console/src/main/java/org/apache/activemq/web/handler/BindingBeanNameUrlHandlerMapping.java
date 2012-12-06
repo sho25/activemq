@@ -29,16 +29,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|UUID
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|servlet
@@ -107,9 +97,7 @@ name|web
 operator|.
 name|servlet
 operator|.
-name|handler
-operator|.
-name|BeanNameUrlHandlerMapping
+name|HandlerExecutionChain
 import|;
 end_import
 
@@ -123,12 +111,14 @@ name|web
 operator|.
 name|servlet
 operator|.
-name|HandlerExecutionChain
+name|handler
+operator|.
+name|BeanNameUrlHandlerMapping
 import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -154,6 +144,8 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|Object
 name|getHandlerInternal
@@ -289,6 +281,18 @@ block|}
 comment|// check the 'secret'
 if|if
 condition|(
+name|request
+operator|.
+name|getSession
+argument_list|()
+operator|.
+name|getAttribute
+argument_list|(
+literal|"secret"
+argument_list|)
+operator|==
+literal|null
+operator|||
 operator|!
 name|request
 operator|.
