@@ -2368,6 +2368,9 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+name|count
+operator|++
+expr_stmt|;
 block|}
 block|}
 else|else
