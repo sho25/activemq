@@ -377,9 +377,11 @@ name|consumerName
 init|=
 literal|"durableSubs"
 decl_stmt|;
+comment|// skip this test. it runs for an hour, doesn't assert anything, and could probably
+comment|// just be removed (seems like a throwaway impl for https://issues.apache.org/activemq/browse/AMQ-1202)
 specifier|public
 name|void
-name|testNetworkConnections
+name|skipTestNetworkConnections
 parameter_list|()
 throws|throws
 name|Exception

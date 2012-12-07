@@ -44,6 +44,17 @@ return|return
 literal|"org/apache/activemq/network/multicast/localBroker.xml"
 return|;
 block|}
+comment|// blocked out for multi cast because temp dest request reply isn't supported
+comment|// with dynamicallyAddedDestinations
+annotation|@
+name|Override
+specifier|public
+name|void
+name|testRequestReply
+parameter_list|()
+throws|throws
+name|Exception
+block|{      }
 block|}
 end_class
 
