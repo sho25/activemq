@@ -726,6 +726,19 @@ condition|)
 block|{
 return|return;
 block|}
+comment|// Lets use an indirect reference so that we can associate a unique
+comment|// locator /w the message.
+name|node
+operator|=
+operator|new
+name|IndirectMessageReference
+argument_list|(
+name|node
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|enqueueCounter
 operator|.
 name|incrementAndGet
@@ -2495,10 +2508,10 @@ block|{
 name|Message
 name|message
 init|=
-operator|(
-name|Message
-operator|)
 name|node
+operator|.
+name|getMessage
+argument_list|()
 decl_stmt|;
 if|if
 condition|(

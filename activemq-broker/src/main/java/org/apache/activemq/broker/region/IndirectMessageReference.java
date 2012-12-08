@@ -91,6 +91,11 @@ specifier|final
 name|Message
 name|message
 decl_stmt|;
+specifier|private
+specifier|final
+name|MessageId
+name|messageId
+decl_stmt|;
 comment|/**      * @param message      */
 specifier|public
 name|IndirectMessageReference
@@ -105,6 +110,18 @@ operator|.
 name|message
 operator|=
 name|message
+expr_stmt|;
+name|this
+operator|.
+name|messageId
+operator|=
+name|message
+operator|.
+name|getMessageId
+argument_list|()
+operator|.
+name|copy
+argument_list|()
 expr_stmt|;
 name|message
 operator|.
@@ -331,10 +348,7 @@ name|getMessageId
 parameter_list|()
 block|{
 return|return
-name|message
-operator|.
-name|getMessageId
-argument_list|()
+name|messageId
 return|;
 block|}
 specifier|public
