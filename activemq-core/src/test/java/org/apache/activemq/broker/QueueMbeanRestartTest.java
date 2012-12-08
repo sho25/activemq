@@ -210,6 +210,10 @@ name|KahaDB
 block|,
 name|PersistenceAdapterChoice
 operator|.
+name|LevelDB
+block|,
+name|PersistenceAdapterChoice
+operator|.
 name|JDBC
 block|}
 argument_list|)

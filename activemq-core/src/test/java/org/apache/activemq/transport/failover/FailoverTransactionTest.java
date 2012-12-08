@@ -901,7 +901,7 @@ name|KahaDB
 block|,
 name|PersistenceAdapterChoice
 operator|.
-name|AMQ
+name|LevelDB
 block|,
 name|PersistenceAdapterChoice
 operator|.
@@ -2354,6 +2354,10 @@ name|KahaDB
 block|,
 name|PersistenceAdapterChoice
 operator|.
+name|LevelDB
+block|,
+name|PersistenceAdapterChoice
+operator|.
 name|JDBC
 comment|// not implemented for AMQ store
 block|}
@@ -3101,6 +3105,10 @@ block|{
 name|PersistenceAdapterChoice
 operator|.
 name|KahaDB
+block|,
+name|PersistenceAdapterChoice
+operator|.
+name|LevelDB
 block|,
 name|PersistenceAdapterChoice
 operator|.

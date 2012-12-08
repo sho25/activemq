@@ -537,6 +537,10 @@ name|PersistenceAdapterChoice
 operator|.
 name|KahaDB
 block|,
+name|PersistenceAdapterChoice
+operator|.
+name|LevelDB
+block|,
 comment|/* too slow for hudson - PersistenceAdapterChoice.JDBC,*/
 name|PersistenceAdapterChoice
 operator|.
@@ -1103,6 +1107,10 @@ block|{
 name|PersistenceAdapterChoice
 operator|.
 name|KahaDB
+block|,
+name|PersistenceAdapterChoice
+operator|.
+name|LevelDB
 block|,
 comment|/* too slow for hudson - PersistenceAdapterChoice.JDBC,*/
 name|PersistenceAdapterChoice

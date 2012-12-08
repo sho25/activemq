@@ -356,7 +356,7 @@ index|[]
 block|{
 name|PersistenceAdapterChoice
 operator|.
-name|AMQ
+name|LevelDB
 block|,
 name|PersistenceAdapterChoice
 operator|.

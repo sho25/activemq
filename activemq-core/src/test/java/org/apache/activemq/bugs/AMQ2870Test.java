@@ -322,7 +322,7 @@ name|KahaDB
 block|,
 name|PersistenceAdapterChoice
 operator|.
-name|AMQ
+name|LevelDB
 block|}
 argument_list|)
 expr_stmt|;
