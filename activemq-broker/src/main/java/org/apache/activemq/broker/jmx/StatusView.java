@@ -145,7 +145,7 @@ annotation|@
 name|Override
 specifier|public
 name|TabularData
-name|status
+name|health
 parameter_list|()
 throws|throws
 name|Exception
@@ -209,7 +209,7 @@ name|StatusEvent
 argument_list|>
 name|list
 init|=
-name|statusList
+name|healthList
 argument_list|()
 decl_stmt|;
 for|for
@@ -250,7 +250,7 @@ name|List
 argument_list|<
 name|StatusEvent
 argument_list|>
-name|statusList
+name|healthList
 parameter_list|()
 throws|throws
 name|Exception

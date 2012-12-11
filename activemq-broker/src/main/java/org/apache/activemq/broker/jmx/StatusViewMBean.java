@@ -50,7 +50,7 @@ name|StatusViewMBean
 block|{
 specifier|public
 name|TabularData
-name|status
+name|health
 parameter_list|()
 throws|throws
 name|Exception
@@ -60,7 +60,7 @@ name|List
 argument_list|<
 name|StatusEvent
 argument_list|>
-name|statusList
+name|healthList
 parameter_list|()
 throws|throws
 name|Exception

@@ -8794,7 +8794,7 @@ argument_list|)
 operator|+
 literal|","
 operator|+
-literal|"Type=Status"
+literal|"Type=Health"
 argument_list|)
 decl_stmt|;
 name|AnnotatedMBean
