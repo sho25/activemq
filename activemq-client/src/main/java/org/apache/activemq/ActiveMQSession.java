@@ -3504,6 +3504,21 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|topic
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|InvalidDestinationException
+argument_list|(
+literal|"Topic cannot be null"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
 name|isIndividualAcknowledge
 argument_list|()
 condition|)
