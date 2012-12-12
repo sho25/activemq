@@ -4727,6 +4727,13 @@ argument_list|,
 name|connection
 argument_list|)
 decl_stmt|;
+name|msg
+operator|.
+name|setDestination
+argument_list|(
+name|destination
+argument_list|)
+expr_stmt|;
 comment|// Set the message id.
 if|if
 condition|(
@@ -4776,17 +4783,12 @@ name|sequenceNumber
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Make sure the JMS destination is set on the foreign messages too.
 name|message
 operator|.
-name|setJMSMessageID
+name|setJMSDestination
 argument_list|(
-name|msg
-operator|.
-name|getMessageId
-argument_list|()
-operator|.
-name|toString
-argument_list|()
+name|destination
 argument_list|)
 expr_stmt|;
 block|}
@@ -4796,14 +4798,6 @@ operator|.
 name|setBrokerPath
 argument_list|(
 literal|null
-argument_list|)
-expr_stmt|;
-comment|// destination format is provider specific so only set on transformed message
-name|msg
-operator|.
-name|setJMSDestination
-argument_list|(
-name|destination
 argument_list|)
 expr_stmt|;
 name|msg
