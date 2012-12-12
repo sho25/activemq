@@ -21,7 +21,67 @@ name|java
 operator|.
 name|io
 operator|.
-name|*
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|FileInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|FileOutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|FilenameFilter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|OutputStream
 import|;
 end_import
 
@@ -56,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -187,7 +247,7 @@ name|MAX_FILE_NAME_LENGTH
 argument_list|)
 return|;
 block|}
-comment|/**      * Converts any string into a string that is safe to use as a file name.      * The result will only include ascii characters and numbers, and the "-","_", and "." characters.      *      * @param name      * @param dirSeparators       * @param maxFileLength       * @return      */
+comment|/**      * Converts any string into a string that is safe to use as a file name.      * The result will only include ascii characters and numbers, and the "-","_", and "." characters.      *      * @param name      * @param dirSeparators      * @param maxFileLength      * @return      */
 specifier|public
 specifier|static
 name|String
@@ -1376,6 +1436,26 @@ argument_list|,
 literal|64
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+specifier|static
+name|int
+name|getMaxDirNameLength
+parameter_list|()
+block|{
+return|return
+name|MAX_DIR_NAME_LENGTH
+return|;
+block|}
+specifier|public
+specifier|static
+name|int
+name|getMaxFileNameLength
+parameter_list|()
+block|{
+return|return
+name|MAX_FILE_NAME_LENGTH
+return|;
 block|}
 specifier|public
 specifier|static

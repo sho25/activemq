@@ -880,6 +880,32 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 block|{
+if|if
+condition|(
+name|destination
+operator|.
+name|getQualifiedName
+argument_list|()
+operator|.
+name|length
+argument_list|()
+operator|>
+name|IOHelper
+operator|.
+name|getMaxFileNameLength
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Destination name is longer than 'MaximumFileNameLength' system property, "
+operator|+
+literal|"potential problem with recovery can result from name truncation."
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|IOHelper
 operator|.
@@ -918,6 +944,8 @@ operator|==
 name|LOCAL_FORMAT_ID_MAGIC
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beginTransaction
@@ -934,6 +962,8 @@ name|IllegalStateException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|checkpoint
@@ -962,6 +992,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commitTransaction
@@ -978,6 +1010,8 @@ name|IllegalStateException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MessageStore
 name|createQueueMessageStore
@@ -1257,6 +1291,8 @@ name|detail
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TopicMessageStore
 name|createTopicMessageStore
@@ -1294,6 +1330,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TransactionStore
 name|createTransactionStore
@@ -1305,6 +1343,8 @@ return|return
 name|transactionStore
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|deleteAllMessages
@@ -1340,6 +1380,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -1384,6 +1426,8 @@ return|return
 name|results
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastMessageBrokerSequenceId
@@ -1424,6 +1468,8 @@ return|return
 name|maxId
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastProducerSequenceId
@@ -1469,6 +1515,8 @@ return|return
 name|maxId
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeQueueMessageStore
@@ -1518,6 +1566,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeTopicMessageStore
@@ -1660,6 +1710,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollbackTransaction
@@ -1676,6 +1728,8 @@ name|IllegalStateException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerName
@@ -1701,6 +1755,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUsageManager
@@ -1726,6 +1782,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|size
@@ -1756,6 +1814,8 @@ return|return
 name|size
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -2276,6 +2336,8 @@ return|return
 name|adapter
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -2298,6 +2360,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|File
 name|getDirectory
@@ -2326,6 +2390,8 @@ operator|=
 name|directory
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerService
