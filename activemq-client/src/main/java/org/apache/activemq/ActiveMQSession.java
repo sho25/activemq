@@ -4734,14 +4734,6 @@ argument_list|(
 name|destination
 argument_list|)
 expr_stmt|;
-comment|// Set the message id.
-if|if
-condition|(
-name|msg
-operator|==
-name|message
-condition|)
-block|{
 name|msg
 operator|.
 name|setMessageId
@@ -4761,26 +4753,25 @@ name|sequenceNumber
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-else|else
+comment|// Set the message id.
+if|if
+condition|(
+name|msg
+operator|!=
+name|message
+condition|)
 block|{
+name|message
+operator|.
+name|setJMSMessageID
+argument_list|(
 name|msg
 operator|.
-name|setMessageId
-argument_list|(
-operator|new
-name|MessageId
-argument_list|(
-name|producer
-operator|.
-name|getProducerInfo
+name|getMessageId
 argument_list|()
 operator|.
-name|getProducerId
+name|toString
 argument_list|()
-argument_list|,
-name|sequenceNumber
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Make sure the JMS destination is set on the foreign messages too.
