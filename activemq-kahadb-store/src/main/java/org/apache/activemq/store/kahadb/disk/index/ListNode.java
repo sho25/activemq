@@ -1180,6 +1180,10 @@ argument_list|(
 name|tx
 argument_list|)
 expr_stmt|;
+name|currentNode
+operator|=
+name|previousNode
+expr_stmt|;
 block|}
 block|}
 name|targetList
