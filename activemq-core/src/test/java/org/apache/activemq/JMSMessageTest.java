@@ -119,16 +119,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|Message
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|MessageConsumer
 import|;
 end_import
@@ -218,7 +208,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test cases used to test the JMS message consumer.  *   *   */
+comment|/**  * Test cases used to test the JMS message consumer.  *  *  */
 end_comment
 
 begin_class
@@ -493,6 +483,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|ConnectionFactory
 name|createConnectionFactory
@@ -1251,6 +1243,7 @@ name|String
 name|text
 decl_stmt|;
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -1268,6 +1261,8 @@ name|Object
 argument_list|>
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getJMSMessageID
@@ -1279,6 +1274,8 @@ return|return
 name|messageId
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSMessageID
@@ -1294,6 +1291,8 @@ operator|=
 name|arg0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getJMSTimestamp
@@ -1305,6 +1304,8 @@ return|return
 name|timestamp
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSTimestamp
@@ -1320,6 +1321,8 @@ operator|=
 name|arg0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 index|[]
@@ -1332,6 +1335,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSCorrelationIDAsBytes
@@ -1343,6 +1348,8 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSCorrelationID
@@ -1358,6 +1365,8 @@ operator|=
 name|arg0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getJMSCorrelationID
@@ -1369,6 +1378,8 @@ return|return
 name|correlationId
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Destination
 name|getJMSReplyTo
@@ -1380,6 +1391,8 @@ return|return
 name|replyTo
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSReplyTo
@@ -1395,6 +1408,8 @@ operator|=
 name|arg0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Destination
 name|getJMSDestination
@@ -1406,6 +1421,8 @@ return|return
 name|destination
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSDestination
@@ -1421,6 +1438,8 @@ operator|=
 name|arg0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getJMSDeliveryMode
@@ -1432,6 +1451,8 @@ return|return
 name|deliveryMode
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSDeliveryMode
@@ -1447,6 +1468,8 @@ operator|=
 name|arg0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|getJMSRedelivered
@@ -1458,6 +1481,8 @@ return|return
 name|redelivered
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSRedelivered
@@ -1473,6 +1498,8 @@ operator|=
 name|arg0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getJMSType
@@ -1484,6 +1511,8 @@ return|return
 name|type
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSType
@@ -1499,6 +1528,8 @@ operator|=
 name|arg0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getJMSExpiration
@@ -1510,6 +1541,8 @@ return|return
 name|expiration
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSExpiration
@@ -1525,6 +1558,8 @@ operator|=
 name|arg0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getJMSPriority
@@ -1536,6 +1571,8 @@ return|return
 name|priority
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJMSPriority
@@ -1551,6 +1588,8 @@ operator|=
 name|arg0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|clearProperties
@@ -1558,6 +1597,8 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|propertyExists
@@ -1572,6 +1613,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|getBooleanProperty
@@ -1586,6 +1629,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getByteProperty
@@ -1600,6 +1645,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|short
 name|getShortProperty
@@ -1614,6 +1661,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getIntProperty
@@ -1628,6 +1677,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLongProperty
@@ -1642,6 +1693,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|float
 name|getFloatProperty
@@ -1656,6 +1709,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|double
 name|getDoubleProperty
@@ -1670,6 +1725,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getStringProperty
@@ -1692,6 +1749,8 @@ name|arg0
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|getObjectProperty
@@ -1711,6 +1770,8 @@ name|arg0
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Enumeration
 name|getPropertyNames
@@ -1735,6 +1796,8 @@ name|elements
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBooleanProperty
@@ -1748,6 +1811,8 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setByteProperty
@@ -1761,6 +1826,8 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setShortProperty
@@ -1774,6 +1841,8 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setIntProperty
@@ -1787,6 +1856,8 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setLongProperty
@@ -1800,6 +1871,8 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setFloatProperty
@@ -1813,6 +1886,8 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDoubleProperty
@@ -1826,6 +1901,8 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setStringProperty
@@ -1849,6 +1926,8 @@ name|arg1
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setObjectProperty
@@ -1872,6 +1951,8 @@ name|arg1
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|acknowledge
@@ -1879,6 +1960,8 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|clearBody
@@ -1886,6 +1969,8 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setText
@@ -1901,6 +1986,8 @@ operator|=
 name|arg0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getText
@@ -2032,8 +2119,7 @@ decl_stmt|;
 comment|//validate jms spec 1.1 section 3.4.11 table 3.1
 comment|// JMSDestination, JMSDeliveryMode,  JMSExpiration, JMSPriority, JMSMessageID, and JMSTimestamp
 comment|//must be set by sending a message.
-comment|// exception for jms destination as the format is provider defined so it is only set on the copy
-name|assertNull
+name|assertNotNull
 argument_list|(
 name|message
 operator|.
