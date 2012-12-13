@@ -265,7 +265,7 @@ function_decl|;
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"Disk limit, in bytes, used for non-persistent messages and temporary date before producers are blocked."
+literal|"Disk limit, in bytes, used for non-persistent messages and temporary data before producers are blocked."
 argument_list|)
 name|long
 name|getTempLimit
@@ -273,6 +273,36 @@ parameter_list|()
 function_decl|;
 name|void
 name|setTempLimit
+parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"bytes"
+argument_list|)
+name|long
+name|limit
+parameter_list|)
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Percent of job store limit used."
+argument_list|)
+name|int
+name|getJobSchedulerStorePercentUsage
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Disk limit, in bytes, used for scheduled messages before producers are blocked."
+argument_list|)
+name|long
+name|getJobSchedulerStoreLimit
+parameter_list|()
+function_decl|;
+name|void
+name|setJobSchedulerStoreLimit
 parameter_list|(
 annotation|@
 name|MBeanInfo
