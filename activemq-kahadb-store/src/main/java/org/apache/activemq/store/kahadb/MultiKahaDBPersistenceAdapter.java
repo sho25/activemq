@@ -1533,13 +1533,6 @@ argument_list|(
 name|destination
 argument_list|)
 decl_stmt|;
-name|adapter
-operator|.
-name|removeQueueMessageStore
-argument_list|(
-name|destination
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|adapter
@@ -1561,6 +1554,11 @@ name|KahaDBPersistenceAdapter
 operator|)
 name|adapter
 argument_list|,
+name|destination
+argument_list|)
+expr_stmt|;
+name|removeAll
+argument_list|(
 name|destination
 argument_list|)
 expr_stmt|;
@@ -1605,6 +1603,11 @@ name|KahaDBPersistenceAdapter
 operator|)
 name|adapter
 argument_list|,
+name|destination
+argument_list|)
+expr_stmt|;
+name|removeAll
+argument_list|(
 name|destination
 argument_list|)
 expr_stmt|;
