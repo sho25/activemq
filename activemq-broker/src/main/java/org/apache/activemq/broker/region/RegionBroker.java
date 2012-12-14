@@ -2632,6 +2632,14 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|ActiveMQDestination
+name|destination
+init|=
+name|message
+operator|.
+name|getDestination
+argument_list|()
+decl_stmt|;
 name|message
 operator|.
 name|setBrokerInTime
@@ -2674,14 +2682,6 @@ argument_list|()
 operator|)
 condition|)
 block|{
-name|ActiveMQDestination
-name|destination
-init|=
-name|message
-operator|.
-name|getDestination
-argument_list|()
-decl_stmt|;
 comment|// ensure the destination is registered with the RegionBroker
 name|producerExchange
 operator|.
@@ -2790,6 +2790,31 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
+comment|// clean up so these references aren't kept (possible leak) in the producer exchange
+comment|// especially since temps are transitory
+if|if
+condition|(
+name|destination
+operator|.
+name|isTemporary
+argument_list|()
+condition|)
+block|{
+name|producerExchange
+operator|.
+name|setRegionDestination
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|producerExchange
+operator|.
+name|setRegion
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
