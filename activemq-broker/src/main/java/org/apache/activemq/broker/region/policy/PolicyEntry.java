@@ -1650,6 +1650,25 @@ name|getQueuePrefetch
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|sub
+operator|.
+name|getPrefetchSize
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+comment|// tell the sub so that it can issue a pull request
+name|sub
+operator|.
+name|updateConsumerPrefetch
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|sub
 operator|.

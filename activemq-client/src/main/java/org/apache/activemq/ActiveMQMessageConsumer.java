@@ -3428,7 +3428,7 @@ if|if
 condition|(
 name|info
 operator|.
-name|getPrefetchSize
+name|getCurrentPrefetchSize
 argument_list|()
 operator|==
 literal|0
