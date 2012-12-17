@@ -46,7 +46,7 @@ end_comment
 begin_interface
 specifier|public
 interface|interface
-name|StatusViewMBean
+name|HealthViewMBean
 block|{
 specifier|public
 name|TabularData
@@ -55,10 +55,10 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Warning this method can only be invoked if you have the correct version      * of {@link StatusEvent} on your classpath or you use something      * like<a href="http://jolokia.org/">jolokia</a> to access JMX.      *      * If in doubt, please use the {@link #status()} method instead!      */
+comment|/**      * Warning this method can only be invoked if you have the correct version      * of {@link HealthStatus} on your classpath or you use something      * like<a href="http://jolokia.org/">jolokia</a> to access JMX.      *      * If in doubt, please use the {@link #status()} method instead!      */
 name|List
 argument_list|<
-name|StatusEvent
+name|HealthStatus
 argument_list|>
 name|healthList
 parameter_list|()
