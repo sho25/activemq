@@ -511,18 +511,13 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-comment|// https://issues.apache.org/jira/browse/AMQ-4213
-comment|// sync send on producer so it throws
-name|MessageProducer
-name|producer
-init|=
 name|sess
 operator|.
 name|createProducer
 argument_list|(
 name|queue
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|fail
 argument_list|(
 literal|"expect auth exception"
@@ -597,18 +592,13 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-comment|// https://issues.apache.org/jira/browse/AMQ-4213
-comment|// sync send on producer so it throws
-name|MessageProducer
-name|producer
-init|=
 name|sess
 operator|.
 name|createProducer
 argument_list|(
 name|queue
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|fail
 argument_list|(
 literal|"expect auth exception"
