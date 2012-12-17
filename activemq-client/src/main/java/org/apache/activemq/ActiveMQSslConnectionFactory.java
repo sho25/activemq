@@ -39,6 +39,26 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|FileInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -204,7 +224,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An ActiveMQConnectionFactory that allows access to the key and trust managers  * used for SslConnections. There is no reason to use this class unless SSL is  * being used AND the key and trust managers need to be specified from within  * code. In fact, if the URI passed to this class does not have an "ssl" scheme,  * this class will pass all work on to its superclass.  *  * There are two alternative approaches you can use to provide X.509 certificates  * for the SSL connections:  *  * Call<code>setTrustStore</code>,<code>setTrustStorePassword</code>,<code>setKeyStore</code>,  * and<code>setKeyStorePassword</code>.  *  * Call<code>setKeyAndTrustManagers</code>.  *  * @author sepandm@gmail.com  */
+comment|/**  * An ActiveMQConnectionFactory that allows access to the key and trust managers  * used for SslConnections. There is no reason to use this class unless SSL is  * being used AND the key and trust managers need to be specified from within  * code. In fact, if the URI passed to this class does not have an "ssl" scheme,  * this class will pass all work on to its superclass.  *  * There are two alternative approaches you can use to provide X.509  * certificates for the SSL connections:  *  * Call<code>setTrustStore</code>,<code>setTrustStorePassword</code>,  *<code>setKeyStore</code>, and<code>setKeyStorePassword</code>.  *  * Call<code>setKeyAndTrustManagers</code>.  *  * @author sepandm@gmail.com  */
 end_comment
 
 begin_class
@@ -279,7 +299,7 @@ name|brokerURL
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets the key and trust managers used when creating SSL connections.      *      * @param km The KeyManagers used.      * @param tm The TrustManagers used.      * @param random The SecureRandom number used.      */
+comment|/**      * Sets the key and trust managers used when creating SSL connections.      *      * @param km      *            The KeyManagers used.      * @param tm      *            The TrustManagers used.      * @param random      *            The SecureRandom number used.      */
 specifier|public
 name|void
 name|setKeyAndTrustManagers
@@ -313,6 +333,8 @@ name|random
 expr_stmt|;
 block|}
 comment|/**      * Overriding to make special considerations for SSL connections. If we are      * not using SSL, the superclass's method is called. If we are using SSL, an      * SslConnectionFactory is used and it is given the needed key and trust      * managers.      *      * @author sepandm@gmail.com      */
+annotation|@
+name|Override
 specifier|protected
 name|Transport
 name|createTransport
@@ -450,7 +472,7 @@ block|{
 name|InputStream
 name|tsStream
 init|=
-name|getUrlOrResourceAsStream
+name|getInputStream
 argument_list|(
 name|trustStore
 argument_list|)
@@ -636,7 +658,7 @@ block|}
 name|InputStream
 name|in
 init|=
-name|getUrlOrResourceAsStream
+name|getInputStream
 argument_list|(
 name|fileName
 argument_list|)
@@ -710,7 +732,7 @@ return|;
 block|}
 specifier|protected
 name|InputStream
-name|getUrlOrResourceAsStream
+name|getInputStream
 parameter_list|(
 name|String
 name|urlOrResource
@@ -718,6 +740,41 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+block|{
+name|File
+name|ifile
+init|=
+operator|new
+name|File
+argument_list|(
+name|urlOrResource
+argument_list|)
+decl_stmt|;
+comment|// only open the file if and only if it exists
+if|if
+condition|(
+name|ifile
+operator|.
+name|exists
+argument_list|()
+condition|)
+block|{
+return|return
+operator|new
+name|FileInputStream
+argument_list|(
+name|ifile
+argument_list|)
+return|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{         }
 name|InputStream
 name|ins
 init|=
@@ -741,18 +798,24 @@ operator|.
 name|openStream
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|ins
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|ins
+return|;
+block|}
 block|}
 catch|catch
 parameter_list|(
 name|MalformedURLException
 name|ignore
 parameter_list|)
-block|{
-name|ins
-operator|=
-literal|null
-expr_stmt|;
-block|}
+block|{         }
 comment|// Alternatively, treat as classpath resource
 if|if
 condition|(
@@ -763,10 +826,12 @@ condition|)
 block|{
 name|ins
 operator|=
-name|getClass
+name|Thread
+operator|.
+name|currentThread
 argument_list|()
 operator|.
-name|getClassLoader
+name|getContextClassLoader
 argument_list|()
 operator|.
 name|getResourceAsStream
@@ -784,10 +849,6 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 argument_list|(
 literal|"Could not load resource: "
@@ -809,7 +870,7 @@ return|return
 name|trustStore
 return|;
 block|}
-comment|/**      * The location of a keystore file (in<code>jks</code> format) containing one or more      * trusted certificates.      *      * @param trustStore If specified with a scheme, treat as a URL, otherwise treat as a classpath resource.      */
+comment|/**      * The location of a keystore file (in<code>jks</code> format) containing      * one or more trusted certificates.      *      * @param trustStore      *            If specified with a scheme, treat as a URL, otherwise treat as      *            a classpath resource.      */
 specifier|public
 name|void
 name|setTrustStore
@@ -840,7 +901,7 @@ return|return
 name|trustStorePassword
 return|;
 block|}
-comment|/**      * The password to match the trust store specified by {@link setTrustStore}.      *      * @param trustStorePassword The password used to unlock the keystore file.      */
+comment|/**      * The password to match the trust store specified by {@link setTrustStore}.      *      * @param trustStorePassword      *            The password used to unlock the keystore file.      */
 specifier|public
 name|void
 name|setTrustStorePassword
@@ -865,7 +926,7 @@ return|return
 name|keyStore
 return|;
 block|}
-comment|/**      * The location of a keystore file (in<code>jks</code> format) containing a certificate      * and its private key.      *      * @param keyStore If specified with a scheme, treat as a URL, otherwise treat as a classpath resource.      */
+comment|/**      * The location of a keystore file (in<code>jks</code> format) containing a      * certificate and its private key.      *      * @param keyStore      *            If specified with a scheme, treat as a URL, otherwise treat as      *            a classpath resource.      */
 specifier|public
 name|void
 name|setKeyStore
@@ -896,7 +957,7 @@ return|return
 name|keyStorePassword
 return|;
 block|}
-comment|/**      * The password to match the key store specified by {@link setKeyStore}.      *      * @param keyStorePassword The password, which is used both to unlock the keystore file      * and as the pass phrase for the private key stored in the keystore.      */
+comment|/**      * The password to match the key store specified by {@link setKeyStore}.      *      * @param keyStorePassword      *            The password, which is used both to unlock the keystore file      *            and as the pass phrase for the private key stored in the      *            keystore.      */
 specifier|public
 name|void
 name|setKeyStorePassword
