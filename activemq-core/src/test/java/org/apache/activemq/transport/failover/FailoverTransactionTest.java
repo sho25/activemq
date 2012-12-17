@@ -2354,12 +2354,8 @@ name|KahaDB
 block|,
 name|PersistenceAdapterChoice
 operator|.
-name|LevelDB
-block|,
-name|PersistenceAdapterChoice
-operator|.
 name|JDBC
-comment|// not implemented for AMQ store
+comment|// not implemented for AMQ store or PersistenceAdapterChoice.LevelDB
 block|}
 argument_list|)
 expr_stmt|;
@@ -3108,12 +3104,9 @@ name|KahaDB
 block|,
 name|PersistenceAdapterChoice
 operator|.
-name|LevelDB
-block|,
-name|PersistenceAdapterChoice
-operator|.
 name|JDBC
 comment|// last producer message id store feature not implemented for AMQ store
+comment|// or PersistenceAdapterChoice.LevelDB
 block|}
 argument_list|)
 expr_stmt|;
