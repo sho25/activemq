@@ -509,6 +509,10 @@ argument_list|(
 literal|"ADMIN.FOO"
 argument_list|)
 decl_stmt|;
+try|try
+block|{
+comment|// https://issues.apache.org/jira/browse/AMQ-4213
+comment|// sync send on producer so it throws
 name|MessageProducer
 name|producer
 init|=
@@ -519,20 +523,6 @@ argument_list|(
 name|queue
 argument_list|)
 decl_stmt|;
-try|try
-block|{
-name|producer
-operator|.
-name|send
-argument_list|(
-name|sess
-operator|.
-name|createTextMessage
-argument_list|(
-literal|"test"
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|fail
 argument_list|(
 literal|"expect auth exception"
@@ -605,6 +595,10 @@ argument_list|(
 literal|"TEST.FOO,ADMIN.FOO"
 argument_list|)
 decl_stmt|;
+try|try
+block|{
+comment|// https://issues.apache.org/jira/browse/AMQ-4213
+comment|// sync send on producer so it throws
 name|MessageProducer
 name|producer
 init|=
@@ -615,20 +609,6 @@ argument_list|(
 name|queue
 argument_list|)
 decl_stmt|;
-try|try
-block|{
-name|producer
-operator|.
-name|send
-argument_list|(
-name|sess
-operator|.
-name|createTextMessage
-argument_list|(
-literal|"test"
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|fail
 argument_list|(
 literal|"expect auth exception"
