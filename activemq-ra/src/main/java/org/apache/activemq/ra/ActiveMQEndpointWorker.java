@@ -217,6 +217,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|ActiveMQConnectionConsumer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -434,7 +446,7 @@ name|ActiveMQConnection
 name|connection
 decl_stmt|;
 specifier|private
-name|ConnectionConsumer
+name|ActiveMQConnectionConsumer
 name|consumer
 decl_stmt|;
 specifier|private
@@ -697,6 +709,9 @@ condition|)
 block|{
 name|consumer
 operator|=
+operator|(
+name|ActiveMQConnectionConsumer
+operator|)
 name|connection
 operator|.
 name|createDurableConnectionConsumer
@@ -740,6 +755,9 @@ else|else
 block|{
 name|consumer
 operator|=
+operator|(
+name|ActiveMQConnectionConsumer
+operator|)
 name|connection
 operator|.
 name|createConnectionConsumer
@@ -818,6 +836,36 @@ operator|.
 name|error
 argument_list|(
 literal|"Could not release connection lock"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|consumer
+operator|.
+name|getConsumerInfo
+argument_list|()
+operator|.
+name|getCurrentPrefetchSize
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Endpoint "
+operator|+
+name|endpointActivationKey
+operator|.
+name|getActivationSpec
+argument_list|()
+operator|+
+literal|" will not receive any messages due to broker 'zero prefetch' configuration for: "
+operator|+
+name|dest
 argument_list|)
 expr_stmt|;
 block|}

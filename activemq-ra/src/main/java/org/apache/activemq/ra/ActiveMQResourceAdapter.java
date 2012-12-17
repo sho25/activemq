@@ -851,7 +851,7 @@ throw|throw
 operator|new
 name|NotSupportedException
 argument_list|(
-literal|"That type of ActicationSpec not supported: "
+literal|"That type of ActivationSpec not supported: "
 operator|+
 name|activationSpec
 operator|.
