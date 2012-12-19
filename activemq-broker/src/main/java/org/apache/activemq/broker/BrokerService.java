@@ -3804,6 +3804,13 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
+name|started
+operator|.
+name|set
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|stopped
 operator|.
 name|set
