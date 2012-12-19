@@ -77,20 +77,6 @@ name|activemq
 operator|.
 name|command
 operator|.
-name|ActiveMQQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|ProducerId
 import|;
 end_import
@@ -113,11 +99,15 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jms
+name|apache
 operator|.
-name|*
+name|activemq
+operator|.
+name|util
+operator|.
+name|Wait
 import|;
 end_import
 
@@ -128,6 +118,16 @@ operator|.
 name|jms
 operator|.
 name|Connection
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|*
 import|;
 end_import
 
@@ -639,6 +639,7 @@ comment|// now.. the connection on the broker side for the dude producing to the
 comment|// still have a reference in his producerBrokerExchange.. this will keep the destination
 comment|// from being reclaimed by GC if there is never another send that producer makes...
 comment|// let's see if that reference is there...
+specifier|final
 name|TransportConnector
 name|connector
 init|=
@@ -656,10 +657,28 @@ argument_list|(
 name|connector
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertTrue
 argument_list|(
-literal|1
-argument_list|,
+name|Wait
+operator|.
+name|waitFor
+argument_list|(
+operator|new
+name|Wait
+operator|.
+name|Condition
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isSatisified
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
 name|connector
 operator|.
 name|getConnections
@@ -667,6 +686,12 @@ argument_list|()
 operator|.
 name|size
 argument_list|()
+operator|==
+literal|1
+return|;
+block|}
+block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|TransportConnection
