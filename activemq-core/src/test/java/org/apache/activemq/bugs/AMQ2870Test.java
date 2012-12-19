@@ -420,7 +420,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"store precent usage: "
+literal|"store percent usage: "
 operator|+
 name|brokerView
 operator|.
@@ -933,6 +933,16 @@ argument_list|(
 literal|"checkpointInterval"
 argument_list|,
 literal|"2000"
+argument_list|)
+expr_stmt|;
+comment|// leveldb
+name|properties
+operator|.
+name|put
+argument_list|(
+literal|"logSize"
+argument_list|,
+name|maxFileLengthVal
 argument_list|)
 expr_stmt|;
 name|IntrospectionSupport
