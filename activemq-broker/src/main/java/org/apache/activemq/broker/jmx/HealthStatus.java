@@ -131,6 +131,27 @@ return|return
 name|resource
 return|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|healthId
+operator|+
+literal|": "
+operator|+
+name|level
+operator|+
+literal|" "
+operator|+
+name|message
+operator|+
+literal|" from "
+operator|+
+name|resource
+return|;
+block|}
 block|}
 end_class
 
