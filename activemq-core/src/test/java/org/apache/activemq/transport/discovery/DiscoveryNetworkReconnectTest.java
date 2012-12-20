@@ -752,6 +752,36 @@ argument_list|(
 operator|new
 name|ObjectName
 argument_list|(
+literal|"Test:BrokerName=BrokerNC,Type=Health"
+argument_list|)
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|allowing
+argument_list|(
+name|managementContext
+argument_list|)
+operator|.
+name|registerMBean
+argument_list|(
+name|with
+argument_list|(
+name|any
+argument_list|(
+name|Object
+operator|.
+name|class
+argument_list|)
+argument_list|)
+argument_list|,
+name|with
+argument_list|(
+name|equal
+argument_list|(
+operator|new
+name|ObjectName
+argument_list|(
 literal|"Test:BrokerName=BrokerNC,Type=NetworkConnector,NetworkConnectorName=NC"
 argument_list|)
 argument_list|)
@@ -1072,6 +1102,26 @@ argument_list|(
 operator|new
 name|ObjectName
 argument_list|(
+literal|"Test:BrokerName=BrokerNC,Type=Health"
+argument_list|)
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|allowing
+argument_list|(
+name|managementContext
+argument_list|)
+operator|.
+name|unregisterMBean
+argument_list|(
+name|with
+argument_list|(
+name|equal
+argument_list|(
+operator|new
+name|ObjectName
+argument_list|(
 literal|"Test:BrokerName=BrokerNC,Type=NetworkConnector,NetworkConnectorName=NC"
 argument_list|)
 argument_list|)
@@ -1369,13 +1419,13 @@ expr_stmt|;
 comment|// wait for network connector
 name|assertTrue
 argument_list|(
-literal|"network connector mbean registered within 3 minute"
+literal|"network connector mbean registered within 1 minute"
 argument_list|,
 name|mbeanRegistered
 operator|.
 name|tryAcquire
 argument_list|(
-literal|180
+literal|60
 argument_list|,
 name|TimeUnit
 operator|.
@@ -1392,13 +1442,13 @@ expr_stmt|;
 comment|// wait for the inactivity timeout and network shutdown
 name|assertTrue
 argument_list|(
-literal|"network connector mbean unregistered within 3 minute"
+literal|"network connector mbean unregistered within 1 minute"
 argument_list|,
 name|mbeanUnregistered
 operator|.
 name|tryAcquire
 argument_list|(
-literal|180
+literal|60
 argument_list|,
 name|TimeUnit
 operator|.
