@@ -113,6 +113,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -198,6 +218,21 @@ name|AMQ4222Test
 extends|extends
 name|TestSupport
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|AMQ4222Test
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|protected
 name|BrokerService
 name|brokerService
@@ -402,11 +437,9 @@ operator|instanceof
 name|TextMessage
 condition|)
 block|{
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"You got a message: "
 operator|+
@@ -541,11 +574,9 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"error sending a response on the temp queue"
 argument_list|)
