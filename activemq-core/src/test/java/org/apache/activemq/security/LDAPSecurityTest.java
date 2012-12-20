@@ -523,6 +523,8 @@ argument_list|(
 literal|"ADMIN.FOO"
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|MessageProducer
 name|producer
 init|=
@@ -533,8 +535,6 @@ argument_list|(
 name|queue
 argument_list|)
 decl_stmt|;
-try|try
-block|{
 name|producer
 operator|.
 name|send
@@ -619,6 +619,8 @@ argument_list|(
 literal|"TEST.FOO,ADMIN.FOO"
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|MessageProducer
 name|producer
 init|=
@@ -629,8 +631,6 @@ argument_list|(
 name|queue
 argument_list|)
 decl_stmt|;
-try|try
-block|{
 name|producer
 operator|.
 name|send
