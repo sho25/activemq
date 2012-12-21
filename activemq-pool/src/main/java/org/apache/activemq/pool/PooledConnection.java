@@ -351,6 +351,21 @@ name|TemporaryTopic
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|private
+specifier|final
+name|List
+argument_list|<
+name|PooledSession
+argument_list|>
+name|loanedSessions
+init|=
+operator|new
+name|CopyOnWriteArrayList
+argument_list|<
+name|PooledSession
+argument_list|>
+argument_list|()
+decl_stmt|;
 comment|/**      * Creates a new PooledConnection instance that uses the given ConnectionPool to create      * and manage its resources.  The ConnectionPool instance can be shared amongst many      * PooledConnection instances.      *      * @param pool      *      The connection and pool manager backing this proxy connection object.      */
 specifier|public
 name|PooledConnection
@@ -399,6 +414,11 @@ block|{
 name|this
 operator|.
 name|cleanupConnectionTemporaryDestinations
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|cleanupAllLoanedSessions
 argument_list|()
 expr_stmt|;
 if|if
@@ -819,19 +839,25 @@ argument_list|,
 name|ackMode
 argument_list|)
 expr_stmt|;
-comment|// Add a temporary destination event listener to the session that notifies us when
-comment|// the session creates temporary destinations.
+comment|// Store the session so we can close the sessions that this PooledConnection
+comment|// created in order to ensure that consumers etc are closed per the JMS contract.
+name|loanedSessions
+operator|.
+name|add
+argument_list|(
+name|result
+argument_list|)
+expr_stmt|;
+comment|// Add a event listener to the session that notifies us when the session
+comment|// creates / destroys temporary destinations and closes etc.
 name|result
 operator|.
-name|addTempDestEventListener
+name|addSessionEventListener
 argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
 return|return
-operator|(
-name|Session
-operator|)
 name|result
 return|;
 block|}
@@ -856,6 +882,8 @@ return|;
 block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onTemporaryQueueCreate
@@ -872,6 +900,8 @@ name|tempQueue
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onTemporaryTopicCreate
@@ -887,6 +917,34 @@ argument_list|(
 name|tempTopic
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onSessionClosed
+parameter_list|(
+name|PooledSession
+name|session
+parameter_list|)
+block|{
+if|if
+condition|(
+name|session
+operator|!=
+literal|null
+condition|)
+block|{
+name|this
+operator|.
+name|loanedSessions
+operator|.
+name|remove
+argument_list|(
+name|session
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|public
 name|ActiveMQConnection
@@ -959,6 +1017,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -1070,6 +1130,58 @@ expr_stmt|;
 block|}
 block|}
 name|connTempTopics
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * The PooledSession tracks all Sessions that it created and now we close them.  Closing the      * PooledSession will return the internal Session to the Pool of Session after cleaning up      * all the resources that the Session had allocated for this PooledConnection.      */
+specifier|protected
+name|void
+name|cleanupAllLoanedSessions
+parameter_list|()
+block|{
+for|for
+control|(
+name|PooledSession
+name|session
+range|:
+name|loanedSessions
+control|)
+block|{
+try|try
+block|{
+name|session
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|ex
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"failed to close laoned Session \""
+operator|+
+name|session
+operator|+
+literal|"\" on closing pooled connection: "
+operator|+
+name|ex
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+name|loanedSessions
 operator|.
 name|clear
 argument_list|()

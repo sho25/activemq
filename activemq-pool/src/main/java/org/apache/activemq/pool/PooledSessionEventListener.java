@@ -39,7 +39,7 @@ begin_interface
 interface|interface
 name|PooledSessionEventListener
 block|{
-comment|/**      * Called on successful creation of a new TemporaryQueue.      *      * @param tempQueue      *            The TemporaryQueue just created.      */
+comment|/**      * Called on successful creation of a new TemporaryQueue.      *      * @param tempQueue      *      The TemporaryQueue just created.      */
 name|void
 name|onTemporaryQueueCreate
 parameter_list|(
@@ -47,12 +47,20 @@ name|TemporaryQueue
 name|tempQueue
 parameter_list|)
 function_decl|;
-comment|/**      * Called on successful creation of a new TemporaryTopic.      *      * @param tempTopic      *            The TemporaryTopic just created.      */
+comment|/**      * Called on successful creation of a new TemporaryTopic.      *      * @param tempTopic      *      The TemporaryTopic just created.      */
 name|void
 name|onTemporaryTopicCreate
 parameter_list|(
 name|TemporaryTopic
 name|tempTopic
+parameter_list|)
+function_decl|;
+comment|/**      * Called when the PooledSession is closed.      *      * @param session      *      The PooledSession that has been closed.      */
+name|void
+name|onSessionClosed
+parameter_list|(
+name|PooledSession
+name|session
 parameter_list|)
 function_decl|;
 block|}
