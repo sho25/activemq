@@ -274,6 +274,13 @@ argument_list|()
 expr_stmt|;
 name|broker
 operator|.
+name|setBrokerName
+argument_list|(
+literal|"amq-broker"
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
 name|setPersistent
 argument_list|(
 literal|false
