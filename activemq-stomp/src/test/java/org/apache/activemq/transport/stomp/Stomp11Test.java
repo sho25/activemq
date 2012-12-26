@@ -4667,7 +4667,7 @@ name|ObjectName
 argument_list|(
 name|domain
 operator|+
-literal|":Type=Broker,BrokerName=localhost"
+literal|":type=Broker,brokerName=localhost"
 argument_list|)
 decl_stmt|;
 name|BrokerViewMBean
@@ -5250,7 +5250,7 @@ name|ObjectName
 argument_list|(
 name|domain
 operator|+
-literal|":Type=Broker,BrokerName=localhost"
+literal|":type=Broker,brokerName=localhost"
 argument_list|)
 decl_stmt|;
 name|BrokerViewMBean
