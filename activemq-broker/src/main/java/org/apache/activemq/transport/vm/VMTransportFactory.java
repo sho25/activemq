@@ -1222,9 +1222,17 @@ name|waitForStart
 decl_stmt|;
 while|while
 condition|(
+operator|(
 name|broker
 operator|==
 literal|null
+operator|||
+operator|!
+name|broker
+operator|.
+name|isStarted
+argument_list|()
+operator|)
 operator|&&
 name|expiry
 operator|>
