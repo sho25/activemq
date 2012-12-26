@@ -4405,7 +4405,8 @@ block|{
 name|boolean
 name|waitSucceeded
 init|=
-literal|false
+name|isStarted
+argument_list|()
 decl_stmt|;
 while|while
 condition|(
