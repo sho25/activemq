@@ -56,6 +56,11 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/**      * Warning this method can only be invoked if you have the correct version      * of {@link HealthStatus} on your classpath or you use something      * like<a href="http://jolokia.org/">jolokia</a> to access JMX.      *      * If in doubt, please use the {@link #status()} method instead!      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"List of warnings and errors about the current health of the Broker - empty list is Good!"
+argument_list|)
 name|List
 argument_list|<
 name|HealthStatus
@@ -64,6 +69,16 @@ name|healthList
 parameter_list|()
 throws|throws
 name|Exception
+function_decl|;
+comment|/**      * @return  String representation of the current Broker state      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"String representation of current Broker state"
+argument_list|)
+name|String
+name|getCurrentStatus
+parameter_list|()
 function_decl|;
 block|}
 end_interface

@@ -353,7 +353,7 @@ block|{
 name|ObjectName
 name|query
 init|=
-name|createConnectionQueury
+name|createConnectionQuery
 argument_list|(
 name|managementCtx
 argument_list|,
@@ -415,7 +415,7 @@ return|;
 block|}
 specifier|private
 name|ObjectName
-name|createConnectionQueury
+name|createConnectionQuery
 parameter_list|(
 name|ManagementContext
 name|ctx
@@ -437,9 +437,7 @@ operator|.
 name|getJmxDomainName
 argument_list|()
 operator|+
-literal|":"
-operator|+
-literal|"BrokerName="
+literal|":type=Broker,brokerName="
 operator|+
 name|JMXSupport
 operator|.
@@ -450,11 +448,11 @@ argument_list|)
 operator|+
 literal|","
 operator|+
-literal|"Type=Connection,"
+literal|"connector=*,"
 operator|+
-literal|"ConnectorName=*,"
+literal|"connectorName=*,"
 operator|+
-literal|"Connection="
+literal|"connectionName="
 operator|+
 name|JMXSupport
 operator|.
