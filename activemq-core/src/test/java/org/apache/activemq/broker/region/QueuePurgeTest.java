@@ -139,16 +139,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -182,20 +172,6 @@ operator|.
 name|broker
 operator|.
 name|BrokerService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|BrokerTestSupport
 import|;
 end_import
 
@@ -879,16 +855,12 @@ init|=
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq"
-operator|+
-literal|":Type=Queue,Destination="
+literal|"org.apache.activemq:type=Broker,brokerName=localhost,destinationType=Queue,destinationName="
 operator|+
 name|queue
 operator|.
 name|getQueueName
 argument_list|()
-operator|+
-literal|",BrokerName=localhost"
 argument_list|)
 decl_stmt|;
 name|QueueViewMBean

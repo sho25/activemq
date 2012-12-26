@@ -16,30 +16,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -316,6 +292,30 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -663,8 +663,6 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
-annotation|@
-name|Override
 specifier|public
 name|void
 name|onMessage
@@ -755,8 +753,6 @@ operator|.
 name|Condition
 argument_list|()
 block|{
-annotation|@
-name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -1003,8 +999,6 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
-annotation|@
-name|Override
 specifier|public
 name|void
 name|onMessage
@@ -2855,14 +2849,12 @@ init|=
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq:Type=Queue,Destination="
+literal|"org.apache.activemq:type=Broker,brokerName=localhost,destinationType=Queue,destinationName="
 operator|+
 name|queue
 operator|.
 name|getQueueName
 argument_list|()
-operator|+
-literal|",BrokerName=localhost"
 argument_list|)
 decl_stmt|;
 specifier|final

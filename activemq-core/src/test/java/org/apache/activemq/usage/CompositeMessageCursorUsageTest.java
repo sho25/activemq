@@ -429,11 +429,9 @@ name|ObjectName
 argument_list|(
 literal|"org.apache.activemq"
 operator|+
-literal|":Type=Queue,Destination="
+literal|":type=Broker,brokerName=localhost,destinationType=Queue,destinationName="
 operator|+
 name|queueName
-operator|+
-literal|",BrokerName=localhost"
 argument_list|)
 decl_stmt|;
 return|return

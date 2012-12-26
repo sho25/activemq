@@ -18,30 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -231,6 +207,30 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -321,18 +321,29 @@ literal|" messages to the broker."
 argument_list|)
 expr_stmt|;
 comment|// Now get the QueueViewMBean and purge
+name|String
+name|objectNameStr
+init|=
+name|broker
+operator|.
+name|getBrokerObjectName
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+name|objectNameStr
+operator|+=
+literal|",destinationType=Queue,destinationName="
+operator|+
+name|destinationName
+expr_stmt|;
 name|ObjectName
 name|queueViewMBeanName
 init|=
 name|assertRegisteredObjectName
 argument_list|(
-name|domain
-operator|+
-literal|":Type=Queue,Destination="
-operator|+
-name|destinationName
-operator|+
-literal|",BrokerName=localhost"
+name|objectNameStr
 argument_list|)
 decl_stmt|;
 name|QueueViewMBean

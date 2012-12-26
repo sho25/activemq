@@ -287,7 +287,7 @@ init|=
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq:Type=Broker,BrokerName=localhost"
+literal|"org.apache.activemq:type=Broker,brokerName=localhost"
 argument_list|)
 decl_stmt|;
 name|BrokerViewMBean

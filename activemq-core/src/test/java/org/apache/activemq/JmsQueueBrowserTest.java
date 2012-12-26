@@ -1224,7 +1224,7 @@ init|=
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq:Type=Queue,Destination=TEST,BrokerName=localhost"
+literal|"org.apache.activemq:type=Broker,brokerName=localhost,destinationType=Queue,destinationName=TEST"
 argument_list|)
 decl_stmt|;
 name|LOG

@@ -16,18 +16,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
 import|import
 name|javax
 operator|.
@@ -268,6 +256,18 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -678,22 +678,19 @@ name|MalformedObjectNameException
 throws|,
 name|JMSException
 block|{
+specifier|final
 name|ObjectName
 name|queueViewMBeanName
 init|=
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq"
-operator|+
-literal|":Type=Queue,Destination="
+literal|"org.apache.activemq:type=Broker,brokerName=localhost,destinationType=Queue,destinationName="
 operator|+
 name|queue
 operator|.
 name|getQueueName
 argument_list|()
-operator|+
-literal|",BrokerName=localhost"
 argument_list|)
 decl_stmt|;
 name|QueueViewMBean

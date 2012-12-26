@@ -16,30 +16,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNull
-import|;
-end_import
-
-begin_import
 import|import
 name|javax
 operator|.
@@ -234,6 +210,30 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
 import|;
 end_import
 
@@ -572,14 +572,12 @@ init|=
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq:Type=Queue,Destination="
+literal|"org.apache.activemq:type=Broker,brokerName=localhost,destinationType=Queue,destinationName="
 operator|+
 name|queue
 operator|.
 name|getQueueName
 argument_list|()
-operator|+
-literal|",BrokerName=localhost"
 argument_list|)
 decl_stmt|;
 specifier|final
