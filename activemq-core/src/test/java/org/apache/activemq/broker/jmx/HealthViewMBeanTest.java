@@ -514,16 +514,14 @@ operator|.
 name|healthList
 argument_list|()
 decl_stmt|;
-name|assertTrue
+name|assertEquals
 argument_list|(
-literal|"There should be at least two statuses"
+literal|2
 argument_list|,
 name|list
 operator|.
 name|size
 argument_list|()
-operator|>=
-literal|2
 argument_list|)
 expr_stmt|;
 block|}
