@@ -643,11 +643,11 @@ name|ObjectName
 argument_list|(
 literal|"org.apache.activemq"
 operator|+
-literal|":Type=Queue,Destination="
+literal|":destinationType=Queue,destinationName="
 operator|+
 name|name
 operator|+
-literal|",BrokerName=localhost"
+literal|",type=Broker,brokerName=localhost"
 argument_list|)
 decl_stmt|;
 name|QueueViewMBean
