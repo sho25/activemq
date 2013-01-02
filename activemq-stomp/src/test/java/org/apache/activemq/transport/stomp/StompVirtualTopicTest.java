@@ -1337,11 +1337,11 @@ init|=
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq:Type=Queue"
+literal|"org.apache.activemq:destinationType=Queue"
 operator|+
-literal|",Destination=Consumer.A.VirtualTopic.FOO"
+literal|",destinationName=Consumer.A.VirtualTopic.FOO"
 operator|+
-literal|",BrokerName=localhost"
+literal|",type=Broker,brokerName=localhost"
 argument_list|)
 decl_stmt|;
 name|QueueViewMBean
