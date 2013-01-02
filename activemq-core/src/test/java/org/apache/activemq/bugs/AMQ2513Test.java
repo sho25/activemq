@@ -481,7 +481,9 @@ name|ObjectName
 argument_list|(
 name|domain
 operator|+
-literal|":BrokerName=localhost,Type=Queue,Destination=test"
+literal|":type=Broker,brokerName=localhost,"
+operator|+
+literal|"destinationType=Queue,destinationName=test"
 argument_list|)
 decl_stmt|;
 return|return

@@ -422,7 +422,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Modified CursorSupport Unit test to reproduce the negative queue issue.  *   * Keys to reproducing:  * 1) Consecutive queues with listener on first sending to second queue  * 2) Push each queue to the memory limit  *      This seems to help reproduce the issue more consistently, but  *      we have seen times in our production environment where the  *      negative queue can occur without. Our memory limits are  *      very high in production and it still happens in varying   *      frequency.  * 3) Prefetch  *      Lowering the prefetch down to 10 and below seems to help   *      reduce occurrences.   * 4) # of consumers per queue  *      The issue occurs less with fewer consumers  *   * Things that do not affect reproduction:  * 1) Spring - we use spring in our production applications, but this test case works  *      with or without it.  * 2) transacted  *   */
+comment|/**  * Modified CursorSupport Unit test to reproduce the negative queue issue.  *  * Keys to reproducing:  * 1) Consecutive queues with listener on first sending to second queue  * 2) Push each queue to the memory limit  *      This seems to help reproduce the issue more consistently, but  *      we have seen times in our production environment where the  *      negative queue can occur without. Our memory limits are  *      very high in production and it still happens in varying  *      frequency.  * 3) Prefetch  *      Lowering the prefetch down to 10 and below seems to help  *      reduce occurrences.  * 4) # of consumers per queue  *      The issue occurs less with fewer consumers  *  * Things that do not affect reproduction:  * 1) Spring - we use spring in our production applications, but this test case works  *      with or without it.  * 2) transacted  *  */
 end_comment
 
 begin_class
@@ -742,9 +742,6 @@ name|proxyQueue1
 init|=
 name|getProxyToQueueViewMBean
 argument_list|(
-operator|(
-name|Queue
-operator|)
 name|proxySession
 operator|.
 name|createQueue
@@ -759,9 +756,6 @@ name|proxyQueue2
 init|=
 name|getProxyToQueueViewMBean
 argument_list|(
-operator|(
-name|Queue
-operator|)
 name|proxySession
 operator|.
 name|createQueue
@@ -1320,6 +1314,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -1590,6 +1586,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -1631,6 +1629,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -1680,22 +1680,24 @@ name|MalformedObjectNameException
 throws|,
 name|JMSException
 block|{
+specifier|final
+name|String
+name|prefix
+init|=
+literal|"org.apache.activemq:type=Broker,brokerName=localhost,destinationType=Queue,destinationName="
+decl_stmt|;
 name|ObjectName
 name|queueViewMBeanName
 init|=
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq"
-operator|+
-literal|":Type=Queue,Destination="
+name|prefix
 operator|+
 name|queue
 operator|.
 name|getQueueName
 argument_list|()
-operator|+
-literal|",BrokerName=localhost"
 argument_list|)
 decl_stmt|;
 name|QueueViewMBean
@@ -1751,6 +1753,8 @@ return|return
 name|connection
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -1777,6 +1781,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -2091,6 +2097,7 @@ implements|implements
 name|MessageListener
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|Message
@@ -2098,10 +2105,12 @@ argument_list|>
 name|consumerList
 decl_stmt|;
 specifier|private
+specifier|final
 name|CountDownLatch
 name|latch
 decl_stmt|;
 specifier|private
+specifier|final
 name|Session
 name|consumerSession
 decl_stmt|;
@@ -2239,6 +2248,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage

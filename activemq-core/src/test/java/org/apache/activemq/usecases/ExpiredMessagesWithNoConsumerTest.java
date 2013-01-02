@@ -952,30 +952,6 @@ argument_list|(
 literal|5
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|ObjectName
-name|name
-range|:
-name|broker
-operator|.
-name|getAdminView
-argument_list|()
-operator|.
-name|getQueues
-argument_list|()
-control|)
-block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Broker Queue: {}"
-argument_list|,
-name|name
-argument_list|)
-expr_stmt|;
-block|}
 specifier|final
 name|DestinationViewMBean
 name|view
@@ -3531,15 +3507,6 @@ literal|":type=Broker,brokerName=localhost,destinationType=Topic,destinationName
 argument_list|)
 expr_stmt|;
 block|}
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Attempting to find Queue named: {}"
-argument_list|,
-name|name
-argument_list|)
-expr_stmt|;
 return|return
 operator|(
 name|DestinationViewMBean
