@@ -23,7 +23,19 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|*
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -617,11 +629,11 @@ name|ObjectName
 argument_list|(
 literal|"org.apache.activemq"
 operator|+
-literal|":Type=Queue,Destination="
+literal|":destinationType=Queue,destinationName="
 operator|+
 name|queueName
 operator|+
-literal|",BrokerName=localhost"
+literal|",type=Broker,brokerName=localhost"
 argument_list|)
 decl_stmt|;
 name|QueueViewMBean

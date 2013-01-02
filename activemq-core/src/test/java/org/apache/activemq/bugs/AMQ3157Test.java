@@ -951,7 +951,9 @@ name|ObjectName
 argument_list|(
 name|domain
 operator|+
-literal|":BrokerName=localhost,Type=Queue,Destination="
+literal|":type=Broker,brokerName=localhost,"
+operator|+
+literal|"destinationType=Queue,destinationName="
 operator|+
 name|destination
 operator|.
@@ -969,7 +971,9 @@ name|ObjectName
 argument_list|(
 name|domain
 operator|+
-literal|":BrokerName=localhost,Type=Topic,Destination="
+literal|":type=Broker,brokerName=localhost,"
+operator|+
+literal|"destinationType=Topic,destinationName="
 operator|+
 name|destination
 operator|.
@@ -982,6 +986,8 @@ return|return
 name|name
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown

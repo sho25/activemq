@@ -213,6 +213,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|TestSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|broker
 operator|.
 name|BrokerService
@@ -318,18 +330,6 @@ operator|.
 name|command
 operator|.
 name|ActiveMQQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|TestSupport
 import|;
 end_import
 
@@ -705,6 +705,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -820,6 +822,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -936,6 +940,8 @@ name|dlqDestination
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -1003,6 +1009,8 @@ name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -1045,6 +1053,8 @@ expr_stmt|;
 block|}
 block|}
 empty_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|ActiveMQConnectionFactory
 name|createConnectionFactory
@@ -1269,11 +1279,9 @@ init|=
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq"
+literal|"org.apache.activemq:type=Broker,brokerName=localhost,"
 operator|+
-literal|":Type=Queue,Destination=ActiveMQ.DLQ"
-operator|+
-literal|",BrokerName=localhost"
+literal|"destinationType=Queue,destinationName=ActiveMQ.DLQ"
 argument_list|)
 decl_stmt|;
 name|QueueViewMBean
@@ -1373,6 +1381,8 @@ operator|=
 name|delvery
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
