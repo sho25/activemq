@@ -3529,6 +3529,12 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
+name|getBroker
+argument_list|()
+operator|.
+name|nowMasterBroker
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      *      * @throws Exception      * @org.apache .xbean.DestroyMethod      */
 annotation|@
