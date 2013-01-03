@@ -23,7 +23,43 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|*
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
 import|;
 end_import
 
@@ -34,16 +70,6 @@ operator|.
 name|net
 operator|.
 name|URI
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Connection
 import|;
 end_import
 
@@ -512,12 +538,7 @@ name|Exception
 block|{
 name|assertTrue
 argument_list|(
-operator|(
-operator|(
-name|ActiveMQConnection
-operator|)
 name|connection
-operator|)
 operator|.
 name|isUseCompression
 argument_list|()
@@ -871,14 +892,14 @@ name|ObjectName
 argument_list|(
 literal|"org.apache.activemq"
 operator|+
-literal|":Type=Queue,Destination="
+literal|":destinationType=Queue,destinationName="
 operator|+
 name|queue
 operator|.
 name|getQueueName
 argument_list|()
 operator|+
-literal|",BrokerName=localhost"
+literal|",type=Broker,brokerName=localhost"
 argument_list|)
 decl_stmt|;
 name|QueueViewMBean
