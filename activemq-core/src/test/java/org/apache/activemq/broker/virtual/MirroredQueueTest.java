@@ -129,20 +129,6 @@ name|activemq
 operator|.
 name|command
 operator|.
-name|ActiveMQDestination
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|ActiveMQQueue
 import|;
 end_import
@@ -196,7 +182,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -474,7 +460,7 @@ operator|.
 name|size
 argument_list|()
 operator|==
-literal|4
+literal|5
 argument_list|)
 expr_stmt|;
 name|tempQueue
@@ -492,7 +478,7 @@ operator|.
 name|size
 argument_list|()
 operator|==
-literal|3
+literal|4
 argument_list|)
 expr_stmt|;
 block|}
@@ -563,6 +549,8 @@ return|return
 name|answer
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
