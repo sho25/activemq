@@ -99,7 +99,7 @@ name|broker
 operator|.
 name|region
 operator|.
-name|RegionBroker
+name|Destination
 import|;
 end_import
 
@@ -111,14 +111,36 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|command
+name|broker
 operator|.
-name|ActiveMQDestination
+name|region
+operator|.
+name|RegionBroker
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -128,6 +150,21 @@ name|TempDestLoadTest
 extends|extends
 name|EmbeddedBrokerTestSupport
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|TempDestLoadTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|protected
 name|int
 name|consumerCounter
@@ -289,10 +326,36 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|//there should be 2 destinations - advisories -
-comment|//1 for the connection + 1 generic ones
+for|for
+control|(
+name|Destination
+name|dest
+range|:
+name|rb
+operator|.
+name|getDestinationMap
+argument_list|()
+operator|.
+name|values
+argument_list|()
+control|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Destination: {}"
+argument_list|,
+name|dest
+argument_list|)
+expr_stmt|;
+block|}
+comment|// there should be at least 2 destinations - advisories -
+comment|// 1 for the connection + 1 generic ones
 name|assertTrue
 argument_list|(
+literal|"Should be at least 2 destinations"
+argument_list|,
 name|rb
 operator|.
 name|getDestinationMap
@@ -300,7 +363,7 @@ argument_list|()
 operator|.
 name|size
 argument_list|()
-operator|==
+operator|>
 literal|2
 argument_list|)
 expr_stmt|;
@@ -446,10 +509,36 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|//there should be 2 destinations - advisories -
-comment|//1 for the connection + 1 generic ones
+for|for
+control|(
+name|Destination
+name|dest
+range|:
+name|rb
+operator|.
+name|getDestinationMap
+argument_list|()
+operator|.
+name|values
+argument_list|()
+control|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Destination: {}"
+argument_list|,
+name|dest
+argument_list|)
+expr_stmt|;
+block|}
+comment|// there should be at least 2 destinations - advisories -
+comment|// 1 for the connection + 1 generic ones
 name|assertTrue
 argument_list|(
+literal|"Should be at least 2 destinations"
+argument_list|,
 name|rb
 operator|.
 name|getDestinationMap
@@ -457,11 +546,13 @@ argument_list|()
 operator|.
 name|size
 argument_list|()
-operator|==
+operator|>
 literal|2
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -498,6 +589,8 @@ name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
