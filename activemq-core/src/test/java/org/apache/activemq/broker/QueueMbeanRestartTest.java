@@ -156,6 +156,8 @@ name|class
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp
@@ -173,6 +175,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|tearDown
@@ -320,7 +324,7 @@ name|name
 operator|.
 name|getKeyProperty
 argument_list|(
-literal|"Type"
+literal|"destinationType"
 argument_list|)
 decl_stmt|;
 if|if
@@ -359,7 +363,7 @@ name|name
 operator|.
 name|getKeyProperty
 argument_list|(
-literal|"Destination"
+literal|"destinationName"
 argument_list|)
 argument_list|)
 expr_stmt|;
