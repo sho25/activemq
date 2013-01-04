@@ -101,16 +101,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -148,7 +138,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The fixed version of the UTF8 encoding function. Some older JVM's UTF8  * encoding function breaks when handling large strings.  *  *  */
+comment|/**  * The fixed version of the UTF8 encoding function. Some older JVM's UTF8  * encoding function breaks when handling large strings.  */
 end_comment
 
 begin_class
@@ -272,13 +262,18 @@ decl_stmt|;
 specifier|private
 name|MarshallingSupport
 parameter_list|()
-block|{     }
+block|{}
 specifier|public
 specifier|static
 name|void
 name|marshalPrimitiveMap
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|map
 parameter_list|,
 name|DataOutputStream
@@ -317,35 +312,15 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|Iterator
-name|iter
-init|=
+name|String
+name|name
+range|:
 name|map
 operator|.
 name|keySet
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|String
-name|name
-init|=
-operator|(
-name|String
-operator|)
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|out
 operator|.
 name|writeUTF
@@ -1069,6 +1044,11 @@ name|marshalPrimitiveMap
 argument_list|(
 operator|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 operator|)
 name|value
 argument_list|,
@@ -1095,6 +1075,9 @@ name|marshalPrimitiveList
 argument_list|(
 operator|(
 name|List
+argument_list|<
+name|Object
+argument_list|>
 operator|)
 name|value
 argument_list|,
