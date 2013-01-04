@@ -261,7 +261,7 @@ name|countMbeans
 argument_list|(
 name|broker
 argument_list|,
-literal|"Connector"
+literal|"connector"
 argument_list|,
 literal|30000
 argument_list|)
@@ -275,7 +275,7 @@ name|countMbeans
 argument_list|(
 name|broker
 argument_list|,
-literal|"Connection"
+literal|"connectionName"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -319,7 +319,7 @@ name|countMbeans
 argument_list|(
 name|networkedBroker
 argument_list|,
-literal|"NetworkBridge"
+literal|"service=NetworkBridge"
 argument_list|,
 literal|2000
 argument_list|)
@@ -333,7 +333,7 @@ name|countMbeans
 argument_list|(
 name|broker
 argument_list|,
-literal|"NetworkBridge"
+literal|"service=NetworkBridge"
 argument_list|,
 literal|2000
 argument_list|)
@@ -347,7 +347,7 @@ name|countMbeans
 argument_list|(
 name|broker
 argument_list|,
-literal|"Connection"
+literal|"connectionName"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -385,7 +385,7 @@ name|countMbeans
 argument_list|(
 name|broker
 argument_list|,
-literal|"NetworkBridge"
+literal|"service=NetworkBridge"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -398,7 +398,7 @@ name|countMbeans
 argument_list|(
 name|networkedBroker
 argument_list|,
-literal|"NetworkBridge"
+literal|"service=NetworkBridge"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -410,7 +410,7 @@ name|countMbeans
 argument_list|(
 name|networkedBroker
 argument_list|,
-literal|"Connector"
+literal|"connector"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -422,7 +422,7 @@ name|countMbeans
 argument_list|(
 name|networkedBroker
 argument_list|,
-literal|"Connection"
+literal|"connectionName"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -434,7 +434,7 @@ name|countMbeans
 argument_list|(
 name|broker
 argument_list|,
-literal|"Connector"
+literal|"connector"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -483,7 +483,7 @@ name|countMbeans
 argument_list|(
 name|networkedBroker
 argument_list|,
-literal|"Connector"
+literal|"connector=networkConnectors"
 argument_list|,
 literal|30000
 argument_list|)
@@ -497,7 +497,7 @@ name|countMbeans
 argument_list|(
 name|networkedBroker
 argument_list|,
-literal|"Connection"
+literal|"connectionName"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -541,7 +541,7 @@ name|countMbeans
 argument_list|(
 name|networkedBroker
 argument_list|,
-literal|"NetworkBridge"
+literal|"service=NetworkBridge"
 argument_list|,
 literal|5000
 argument_list|)
@@ -559,7 +559,7 @@ name|countMbeans
 argument_list|(
 name|broker
 argument_list|,
-literal|"Connection"
+literal|"connectionName"
 argument_list|,
 literal|10000
 argument_list|)
@@ -592,7 +592,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|//assertEquals(0, countMbeans(networkedBroker, "NetworkBridge"));
 name|assertEquals
 argument_list|(
 literal|1
@@ -601,7 +600,7 @@ name|countMbeans
 argument_list|(
 name|networkedBroker
 argument_list|,
-literal|"Connector"
+literal|"connector=networkConnectors"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -613,7 +612,7 @@ name|countMbeans
 argument_list|(
 name|networkedBroker
 argument_list|,
-literal|"Connection"
+literal|"connectionName"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -625,7 +624,7 @@ name|countMbeans
 argument_list|(
 name|broker
 argument_list|,
-literal|"Connection"
+literal|"connectionName"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -695,6 +694,24 @@ argument_list|()
 operator|+
 name|timeout
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|type
+operator|.
+name|contains
+argument_list|(
+literal|"="
+argument_list|)
+condition|)
+block|{
+name|type
+operator|=
+name|type
+operator|+
+literal|"=*"
+expr_stmt|;
+block|}
 specifier|final
 name|ObjectName
 name|beanName
@@ -702,14 +719,14 @@ init|=
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq:BrokerName="
+literal|"org.apache.activemq:type=Broker,brokerName="
 operator|+
 name|broker
 operator|.
 name|getBrokerName
 argument_list|()
 operator|+
-literal|",Type="
+literal|","
 operator|+
 name|type
 operator|+
@@ -718,7 +735,7 @@ argument_list|)
 decl_stmt|;
 name|Set
 argument_list|<
-name|?
+name|ObjectName
 argument_list|>
 name|mbeans
 init|=
@@ -814,9 +831,8 @@ name|currentTimeMillis
 argument_list|()
 condition|)
 do|;
-comment|// If port 1099 is in use when the Broker starts, starting the jmx
-comment|// connector will fail.  So, if we have no mbsc to query, skip the
-comment|// test.
+comment|// If port 1099 is in use when the Broker starts, starting the jmx connector
+comment|// will fail.  So, if we have no mbsc to query, skip the test.
 if|if
 condition|(
 name|timeout
