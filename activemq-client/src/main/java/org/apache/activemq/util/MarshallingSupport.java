@@ -456,9 +456,7 @@ name|unmarshalPrimitiveMap
 argument_list|(
 name|in
 argument_list|,
-name|Integer
-operator|.
-name|MAX_VALUE
+name|maxPropertySize
 argument_list|,
 literal|false
 argument_list|)
@@ -593,6 +591,9 @@ name|void
 name|marshalPrimitiveList
 parameter_list|(
 name|List
+argument_list|<
+name|Object
+argument_list|>
 name|list
 parameter_list|,
 name|DataOutputStream
