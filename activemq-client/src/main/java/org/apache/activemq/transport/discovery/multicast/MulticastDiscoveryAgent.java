@@ -556,15 +556,9 @@ literal|null
 decl_stmt|;
 class|class
 name|RemoteBrokerData
+extends|extends
+name|DiscoveryEvent
 block|{
-specifier|final
-name|String
-name|brokerName
-decl_stmt|;
-specifier|final
-name|String
-name|service
-decl_stmt|;
 name|long
 name|lastHeartBeat
 decl_stmt|;
@@ -587,17 +581,15 @@ name|String
 name|service
 parameter_list|)
 block|{
-name|this
-operator|.
-name|brokerName
-operator|=
-name|brokerName
+name|super
+argument_list|(
+name|service
+argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|service
-operator|=
-name|service
+name|setBrokerName
+argument_list|(
+name|brokerName
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -658,7 +650,7 @@ name|debug
 argument_list|(
 literal|"I now think that the "
 operator|+
-name|service
+name|serviceName
 operator|+
 literal|" service has recovered."
 argument_list|)
@@ -760,7 +752,7 @@ name|debug
 argument_list|(
 literal|"Remote failure of "
 operator|+
-name|service
+name|serviceName
 operator|+
 literal|" while still receiving multicast advertisements.  Advertising events will be suppressed for "
 operator|+
@@ -832,7 +824,7 @@ name|debug
 argument_list|(
 literal|"Max reconnect attempts of the "
 operator|+
-name|service
+name|serviceName
 operator|+
 literal|" service has been reached."
 argument_list|)
@@ -871,7 +863,7 @@ name|debug
 argument_list|(
 literal|"Resuming event advertisement of the "
 operator|+
-name|service
+name|serviceName
 operator|+
 literal|" service."
 argument_list|)
@@ -2215,7 +2207,8 @@ name|processDead
 argument_list|(
 name|data
 operator|.
-name|service
+name|getServiceName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2329,6 +2322,7 @@ specifier|private
 name|void
 name|fireServiceRemovedEvent
 parameter_list|(
+specifier|final
 name|RemoteBrokerData
 name|data
 parameter_list|)
@@ -2345,27 +2339,6 @@ name|get
 argument_list|()
 condition|)
 block|{
-specifier|final
-name|DiscoveryEvent
-name|event
-init|=
-operator|new
-name|DiscoveryEvent
-argument_list|(
-name|data
-operator|.
-name|service
-argument_list|)
-decl_stmt|;
-name|event
-operator|.
-name|setBrokerName
-argument_list|(
-name|data
-operator|.
-name|brokerName
-argument_list|)
-expr_stmt|;
 comment|// Have the listener process the event async so that
 comment|// he does not block this thread since we are doing time sensitive
 comment|// processing of events.
@@ -2403,7 +2376,7 @@ name|discoveryListener
 operator|.
 name|onServiceRemove
 argument_list|(
-name|event
+name|data
 argument_list|)
 expr_stmt|;
 block|}
@@ -2417,6 +2390,7 @@ specifier|private
 name|void
 name|fireServiceAddEvent
 parameter_list|(
+specifier|final
 name|RemoteBrokerData
 name|data
 parameter_list|)
@@ -2433,27 +2407,6 @@ name|get
 argument_list|()
 condition|)
 block|{
-specifier|final
-name|DiscoveryEvent
-name|event
-init|=
-operator|new
-name|DiscoveryEvent
-argument_list|(
-name|data
-operator|.
-name|service
-argument_list|)
-decl_stmt|;
-name|event
-operator|.
-name|setBrokerName
-argument_list|(
-name|data
-operator|.
-name|brokerName
-argument_list|)
-expr_stmt|;
 comment|// Have the listener process the event async so that
 comment|// he does not block this thread since we are doing time sensitive
 comment|// processing of events.
@@ -2491,7 +2444,7 @@ name|discoveryListener
 operator|.
 name|onServiceAdd
 argument_list|(
-name|event
+name|data
 argument_list|)
 expr_stmt|;
 block|}
