@@ -276,7 +276,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -347,6 +347,7 @@ name|long
 name|nextSequenceId
 decl_stmt|;
 specifier|private
+specifier|final
 name|long
 name|timeout
 decl_stmt|;
@@ -863,6 +864,7 @@ return|return
 name|jmsProperties
 return|;
 block|}
+comment|/**      * This method allows the client to receive the Stream data as unaltered ActiveMQMessage      * object which is how the split stream data is sent.  Each message will contains one      * chunk of the written bytes as well as a valid message group sequence id.  The EOS      * message will have a message group sequence id of -1.      *      * This method is useful for testing, but should never be mixed with calls to the      * normal stream receive methods as it will break the normal stream processing flow      * and can lead to loss of data.      *      * @return an ActiveMQMessage object that either contains byte data or an end of strem      *         marker.      * @throws JMSException      * @throws ReadTimeoutException      */
 specifier|public
 name|ActiveMQMessage
 name|receive
@@ -1066,7 +1068,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      *       * @see InputStream#read()      * @throws ReadTimeoutException if a timeout was given and the first chunk of the message could not read within the timeout      */
+comment|/**      *      * @see InputStream#read()      * @throws ReadTimeoutException if a timeout was given and the first chunk of the message could not read within the timeout      */
 annotation|@
 name|Override
 specifier|public
@@ -1105,7 +1107,7 @@ operator|&
 literal|0xff
 return|;
 block|}
-comment|/**      *       * @see InputStream#read(byte[], int, int)      * @throws ReadTimeoutException if a timeout was given and the first chunk of the message could not read within the timeout      */
+comment|/**      *      * @see InputStream#read(byte[], int, int)      * @throws ReadTimeoutException if a timeout was given and the first chunk of the message could not read within the timeout      */
 annotation|@
 name|Override
 specifier|public
@@ -1468,6 +1470,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|dispatch
@@ -1506,13 +1510,22 @@ operator|+
 literal|" }"
 return|;
 block|}
-comment|/**      * Exception which should get thrown if the first chunk of the stream could not read within the configured timeout      *      */
+comment|/**      * Exception which should get thrown if the first chunk of the stream could not read within the configured timeout      */
 specifier|public
 class|class
 name|ReadTimeoutException
 extends|extends
 name|IOException
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|3217758894326719909L
+decl_stmt|;
 specifier|public
 name|ReadTimeoutException
 parameter_list|()
