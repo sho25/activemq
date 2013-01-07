@@ -615,7 +615,7 @@ name|this
 operator|.
 name|numberOfMessages
 operator|=
-literal|1000
+literal|3000
 expr_stmt|;
 block|}
 annotation|@
@@ -1365,6 +1365,7 @@ operator|.
 name|ack
 argument_list|()
 expr_stmt|;
+comment|//System.err.println("Sent " + payload + " GOT " + new String(message.getPayload()));
 name|assertEquals
 argument_list|(
 name|payload

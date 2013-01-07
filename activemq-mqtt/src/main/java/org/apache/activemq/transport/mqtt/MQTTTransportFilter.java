@@ -731,6 +731,35 @@ name|defaultHeartBeat
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|int
+name|getActiveMQSubscriptionPrefetch
+parameter_list|()
+block|{
+return|return
+name|protocolConverter
+operator|.
+name|getActiveMQSubscriptionPrefetch
+argument_list|()
+return|;
+block|}
+comment|/**      * set the default prefetch size when mapping the MQTT subscription to an ActiveMQ one      * The default = 1      * @param activeMQSubscriptionPrefetch set the prefetch for the corresponding ActiveMQ subscription      */
+specifier|public
+name|void
+name|setActiveMQSubscriptionPrefetch
+parameter_list|(
+name|int
+name|activeMQSubscriptionPrefetch
+parameter_list|)
+block|{
+name|protocolConverter
+operator|.
+name|setActiveMQSubscriptionPrefetch
+argument_list|(
+name|activeMQSubscriptionPrefetch
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
