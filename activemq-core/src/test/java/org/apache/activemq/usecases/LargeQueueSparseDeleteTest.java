@@ -216,7 +216,7 @@ specifier|final
 name|long
 name|TEST_TIMEOUT
 init|=
-literal|8000
+literal|10000
 decl_stmt|;
 comment|// Populate a test queue with uniquely-identifiable messages.
 name|Connection
@@ -465,7 +465,7 @@ specifier|final
 name|long
 name|TEST_TIMEOUT
 init|=
-literal|8000
+literal|10000
 decl_stmt|;
 comment|// Populate a test queue with uniquely-identifiable messages.
 name|Connection
@@ -705,7 +705,7 @@ specifier|final
 name|long
 name|TEST_TIMEOUT
 init|=
-literal|8000
+literal|10000
 decl_stmt|;
 comment|// Populate a test queue with uniquely-identifiable messages.
 name|Connection
