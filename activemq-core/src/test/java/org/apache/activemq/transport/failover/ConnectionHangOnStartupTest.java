@@ -349,7 +349,7 @@ name|getSlaveXml
 parameter_list|()
 block|{
 return|return
-literal|"org/apache/activemq/broker/ft/slave.xml"
+literal|"org/apache/activemq/broker/ft/sharedFileSlave.xml"
 return|;
 block|}
 specifier|protected
@@ -358,7 +358,7 @@ name|getMasterXml
 parameter_list|()
 block|{
 return|return
-literal|"org/apache/activemq/broker/ft/master.xml"
+literal|"org/apache/activemq/broker/ft/sharedFileMaster.xml"
 return|;
 block|}
 annotation|@
@@ -467,9 +467,8 @@ expr_stmt|;
 name|createMaster
 argument_list|()
 expr_stmt|;
-name|createSlave
-argument_list|()
-expr_stmt|;
+comment|// slave will never start unless the master dies!
+comment|//createSlave();
 name|conn
 operator|.
 name|get
