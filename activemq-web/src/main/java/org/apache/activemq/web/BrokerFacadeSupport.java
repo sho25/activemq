@@ -1040,11 +1040,11 @@ init|=
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq:BrokerName="
+literal|"org.apache.activemq:type=Broker,brokerName="
 operator|+
 name|brokerName
 operator|+
-literal|",Type=NetworkConnector,*"
+literal|",connector=networkConnectors,networkConnectorName=*"
 argument_list|)
 decl_stmt|;
 name|Set
@@ -1105,11 +1105,11 @@ init|=
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq:BrokerName="
+literal|"org.apache.activemq:type=Broker,brokerName="
 operator|+
 name|brokerName
 operator|+
-literal|",Type=NetworkBridge,*"
+literal|",connector=networkConnectors,networkConnectorName=*,networkBridge=*"
 argument_list|)
 decl_stmt|;
 name|Set
