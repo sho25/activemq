@@ -2586,7 +2586,9 @@ operator|&&
 name|sub
 operator|.
 name|expectAck
-argument_list|()
+argument_list|(
+name|publish
+argument_list|)
 condition|)
 block|{
 synchronized|synchronized
@@ -2629,7 +2631,9 @@ operator|!
 name|sub
 operator|.
 name|expectAck
-argument_list|()
+argument_list|(
+name|publish
+argument_list|)
 condition|)
 block|{
 name|getMQTTTransport
@@ -4415,20 +4419,20 @@ return|return
 name|defaultKeepAlive
 return|;
 block|}
-comment|/**      * Set the default keep alive time (in milliseconds) that would be used if configured on server side      * and the client sends a keep-alive value of 0 (zero) on a CONNECT frame      *      * @param defaultKeepAlive the keepAlive in milliseconds      */
+comment|/**      * Set the default keep alive time (in milliseconds) that would be used if configured on server side      * and the client sends a keep-alive value of 0 (zero) on a CONNECT frame      * @param keepAlive the keepAlive in milliseconds      */
 specifier|public
 name|void
 name|setDefaultKeepAlive
 parameter_list|(
 name|long
-name|defaultKeepAlive
+name|keepAlive
 parameter_list|)
 block|{
 name|this
 operator|.
 name|defaultKeepAlive
 operator|=
-name|defaultKeepAlive
+name|keepAlive
 expr_stmt|;
 block|}
 specifier|public
