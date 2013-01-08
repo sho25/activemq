@@ -1914,10 +1914,6 @@ argument_list|(
 name|ASYNC_TASKS
 argument_list|)
 expr_stmt|;
-name|ASYNC_TASKS
-operator|=
-literal|null
-expr_stmt|;
 block|}
 block|}
 block|}

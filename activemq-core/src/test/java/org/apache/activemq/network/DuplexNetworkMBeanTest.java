@@ -319,7 +319,7 @@ name|countMbeans
 argument_list|(
 name|networkedBroker
 argument_list|,
-literal|"service=NetworkBridge"
+literal|"networkBridge"
 argument_list|,
 literal|2000
 argument_list|)
@@ -333,7 +333,7 @@ name|countMbeans
 argument_list|(
 name|broker
 argument_list|,
-literal|"service=NetworkBridge"
+literal|"networkBridge"
 argument_list|,
 literal|2000
 argument_list|)
@@ -385,7 +385,7 @@ name|countMbeans
 argument_list|(
 name|broker
 argument_list|,
-literal|"service=NetworkBridge"
+literal|"networkBridge"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -398,7 +398,7 @@ name|countMbeans
 argument_list|(
 name|networkedBroker
 argument_list|,
-literal|"service=NetworkBridge"
+literal|"networkBridge"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -541,7 +541,7 @@ name|countMbeans
 argument_list|(
 name|networkedBroker
 argument_list|,
-literal|"service=NetworkBridge"
+literal|"networkBridge"
 argument_list|,
 literal|5000
 argument_list|)
