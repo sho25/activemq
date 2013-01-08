@@ -199,7 +199,7 @@ name|activemq
 operator|.
 name|util
 operator|.
-name|IOHelper
+name|ByteSequence
 import|;
 end_import
 
@@ -213,7 +213,7 @@ name|activemq
 operator|.
 name|util
 operator|.
-name|ByteSequence
+name|IOHelper
 import|;
 end_import
 
@@ -1552,6 +1552,9 @@ name|candidate
 argument_list|)
 init|)
 block|{
+name|Object
+name|locator
+init|=
 name|candidate
 operator|.
 name|addLast
@@ -1565,7 +1568,7 @@ argument_list|)
 argument_list|,
 name|payload
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|getFirst
 argument_list|(
 name|candidate
@@ -1577,12 +1580,7 @@ name|candidate
 operator|.
 name|remove
 argument_list|(
-name|String
-operator|.
-name|valueOf
-argument_list|(
-name|i
-argument_list|)
+name|locator
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1707,6 +1705,9 @@ name|candidate
 argument_list|)
 init|)
 block|{
+name|Object
+name|locator
+init|=
 name|candidate
 operator|.
 name|addLast
@@ -1720,7 +1721,7 @@ argument_list|)
 argument_list|,
 name|payload
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|getFirst
 argument_list|(
 name|candidate
@@ -1732,12 +1733,7 @@ name|candidate
 operator|.
 name|remove
 argument_list|(
-name|String
-operator|.
-name|valueOf
-argument_list|(
-name|i
-argument_list|)
+name|locator
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3273,8 +3269,10 @@ argument_list|(
 literal|"parallel add and iterate"
 argument_list|)
 expr_stmt|;
-comment|// We want a lot of adds occurring so that new free pages get created along
-comment|// with overlapping seeks from the iterators so that we are likely to seek into
+comment|// We want a lot of adds occurring so that new free pages get created
+comment|// along
+comment|// with overlapping seeks from the iterators so that we are likely to
+comment|// seek into
 comment|// some bad area in the page file.
 name|executor
 operator|=
@@ -3903,7 +3901,9 @@ name|iterateCount
 operator|++
 expr_stmt|;
 block|}
-comment|//LOG.info("Job-" + id + " Done iterate: it=" + iterator + ", count:" + iterateCount + ", size:" + plist.size());
+comment|// LOG.info("Job-" + id + " Done iterate: it=" +
+comment|// iterator + ", count:" + iterateCount +
+comment|// ", size:" + plist.size());
 if|if
 condition|(
 name|plist
