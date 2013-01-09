@@ -588,7 +588,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class duplicates most of the functionality in {@link NetworkTestSupport}   * and {@link BrokerTestSupport} because more control was needed over how brokers   * and connectors are created. Also, this test asserts message counts via JMX on   * each broker.   *   * @author bsnyder  *  */
+comment|/**  * This class duplicates most of the functionality in {@link NetworkTestSupport}  * and {@link BrokerTestSupport} because more control was needed over how brokers  * and connectors are created. Also, this test asserts message counts via JMX on  * each broker.  */
 end_comment
 
 begin_class
@@ -646,10 +646,16 @@ argument_list|()
 decl_stmt|;
 specifier|protected
 name|ArrayList
+argument_list|<
+name|StubConnection
+argument_list|>
 name|connections
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|StubConnection
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|protected
@@ -690,6 +696,8 @@ name|amqDomain
 init|=
 literal|"org.apache.activemq"
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -839,6 +847,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -871,6 +881,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -2115,7 +2127,11 @@ block|}
 annotation|@
 name|SuppressWarnings
 argument_list|(
+block|{
 literal|"unchecked"
+block|,
+literal|"unused"
+block|}
 argument_list|)
 specifier|private
 name|Object
@@ -2339,7 +2355,7 @@ name|params
 operator|.
 name|put
 argument_list|(
-literal|"BrokerName"
+literal|"brokerName"
 argument_list|,
 name|broker
 operator|.
@@ -2351,7 +2367,16 @@ name|params
 operator|.
 name|put
 argument_list|(
-literal|"Type"
+literal|"type"
+argument_list|,
+literal|"Broker"
+argument_list|)
+expr_stmt|;
+name|params
+operator|.
+name|put
+argument_list|(
+literal|"destinationType"
 argument_list|,
 literal|"Queue"
 argument_list|)
@@ -2360,7 +2385,7 @@ name|params
 operator|.
 name|put
 argument_list|(
-literal|"Destination"
+literal|"destinationName"
 argument_list|,
 name|queueName
 argument_list|)
@@ -2408,10 +2433,6 @@ name|Object
 index|[]
 name|messages
 init|=
-operator|(
-name|Object
-index|[]
-operator|)
 name|queueView
 operator|.
 name|browse
