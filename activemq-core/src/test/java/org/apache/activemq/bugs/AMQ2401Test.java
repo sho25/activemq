@@ -153,6 +153,16 @@ end_import
 
 begin_import
 import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|TestCase
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -263,18 +273,8 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
 begin_comment
-comment|/**  * An AMQ-2401 Test  *  */
+comment|/**  * An AMQ-2401 Test  */
 end_comment
 
 begin_class
@@ -286,6 +286,7 @@ name|TestCase
 implements|implements
 name|MessageListener
 block|{
+specifier|private
 name|BrokerService
 name|broker
 decl_stmt|;
@@ -341,6 +342,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|ArrayList
 argument_list|<
 name|Service
@@ -358,14 +360,18 @@ operator|+
 name|PRODUCER_COUNT
 argument_list|)
 decl_stmt|;
+specifier|private
 name|int
 name|count
 init|=
 literal|0
 decl_stmt|;
+specifier|private
 name|CountDownLatch
 name|latch
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -405,13 +411,19 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|String
+name|connectionUri
+init|=
 name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://0.0.0.0:2401"
+literal|"tcp://0.0.0.0:0"
 argument_list|)
-expr_stmt|;
+operator|.
+name|getPublishableConnectString
+argument_list|()
+decl_stmt|;
 name|PolicyMap
 name|policies
 init|=
@@ -474,6 +486,13 @@ argument_list|)
 expr_stmt|;
 name|broker
 operator|.
+name|setUseJmx
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
 name|start
 argument_list|()
 expr_stmt|;
@@ -487,7 +506,7 @@ operator|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"tcp://0.0.0.0:2401"
+name|connectionUri
 argument_list|)
 expr_stmt|;
 name|super
@@ -496,6 +515,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -506,6 +527,11 @@ block|{
 name|broker
 operator|.
 name|stop
+argument_list|()
+expr_stmt|;
+name|broker
+operator|.
+name|waitUntilStopped
 argument_list|()
 expr_stmt|;
 block|}
@@ -649,7 +675,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/*      * (non-Javadoc)      *      * @see javax.jms.MessageListener#onMessage(javax.jms.Message)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -709,7 +736,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @throws InterruptedException      * @throws TimeoutException      *      */
+comment|/**      * @throws InterruptedException      * @throws TimeoutException      */
 specifier|private
 name|void
 name|waitForMessageReceipt
@@ -853,6 +880,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -864,6 +893,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -955,6 +986,8 @@ break|break;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
@@ -1052,6 +1085,8 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -1065,6 +1100,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
@@ -1085,7 +1122,8 @@ name|e
 parameter_list|)
 block|{             }
 block|}
-comment|/*          * (non-Javadoc)          *          * @see java.lang.Runnable#run()          */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
