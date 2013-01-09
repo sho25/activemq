@@ -287,7 +287,7 @@ operator|)
 operator|.
 name|query
 argument_list|(
-literal|"Type=Broker"
+literal|"type=Broker,brokerName=*"
 argument_list|)
 return|;
 block|}
@@ -316,7 +316,7 @@ operator|)
 operator|.
 name|query
 argument_list|(
-literal|"Type=Broker,BrokerName="
+literal|"type=Broker,brokerName="
 operator|+
 name|brokerName
 argument_list|)
@@ -355,7 +355,7 @@ operator|)
 operator|.
 name|query
 argument_list|(
-literal|"Type=Broker"
+literal|"type=Broker"
 argument_list|)
 return|;
 block|}
@@ -395,7 +395,7 @@ operator|)
 operator|.
 name|query
 argument_list|(
-literal|"Type=Broker,BrokerName="
+literal|"type=Broker,brokerName="
 operator|+
 name|brokerName
 argument_list|)

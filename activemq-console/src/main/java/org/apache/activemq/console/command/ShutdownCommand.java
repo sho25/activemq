@@ -477,7 +477,7 @@ name|brokerObjName
 operator|.
 name|getKeyProperty
 argument_list|(
-literal|"BrokerName"
+literal|"brokerName"
 argument_list|)
 decl_stmt|;
 name|context

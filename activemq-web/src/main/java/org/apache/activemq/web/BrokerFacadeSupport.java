@@ -623,11 +623,11 @@ init|=
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq:BrokerName="
+literal|"org.apache.activemq:type=Broker,brokerName="
 operator|+
 name|brokerName
 operator|+
-literal|",Type=Connection,ConnectorName=*,Connection=*"
+literal|",connector=clientConnectors,connectorName=*,connectionName=*"
 argument_list|)
 decl_stmt|;
 name|Set
