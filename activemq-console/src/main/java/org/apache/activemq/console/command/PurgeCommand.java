@@ -400,7 +400,7 @@ argument_list|(
 name|createJmxConnection
 argument_list|()
 argument_list|,
-literal|"Type=Queue,Destination="
+literal|"destinationType=Queue,destinationName="
 operator|+
 name|i
 operator|.
@@ -611,7 +611,7 @@ name|queue
 operator|.
 name|getKeyProperty
 argument_list|(
-literal|"Destination"
+literal|"destinationName"
 argument_list|)
 argument_list|)
 expr_stmt|;

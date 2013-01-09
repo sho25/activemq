@@ -274,6 +274,15 @@ name|pos
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|objNameQuery
+operator|+=
+name|delimiter
+operator|+
+name|key
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|val

@@ -156,7 +156,7 @@ name|propsView
 operator|.
 name|add
 argument_list|(
-literal|"BrokerName"
+literal|"brokerName"
 argument_list|)
 expr_stmt|;
 name|context
