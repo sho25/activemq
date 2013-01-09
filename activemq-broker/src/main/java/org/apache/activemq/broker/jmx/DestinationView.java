@@ -527,6 +527,8 @@ name|gc
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -539,6 +541,8 @@ name|getName
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|resetStatistics
@@ -553,6 +557,8 @@ name|reset
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getEnqueueCount
@@ -571,6 +577,8 @@ name|getCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getDequeueCount
@@ -589,6 +597,8 @@ name|getCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getDispatchCount
@@ -607,6 +617,8 @@ name|getCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getInFlightCount
@@ -625,6 +637,8 @@ name|getCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getExpiredCount
@@ -643,6 +657,8 @@ name|getCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getConsumerCount
@@ -661,6 +677,8 @@ name|getCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getQueueSize
@@ -697,6 +715,8 @@ name|getCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMemoryPercentUsage
@@ -712,6 +732,8 @@ name|getPercentUsage
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getMemoryUsageByteCount
@@ -727,6 +749,8 @@ name|getUsage
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getMemoryLimit
@@ -742,6 +766,8 @@ name|getLimit
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMemoryLimit
@@ -761,6 +787,8 @@ name|limit
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|double
 name|getAverageEnqueueTime
@@ -779,6 +807,8 @@ name|getAverageTime
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getMaxEnqueueTime
@@ -797,6 +827,8 @@ name|getMaxTime
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getMinEnqueueTime
@@ -815,6 +847,8 @@ name|getMinTime
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isPrioritizedMessages
@@ -827,6 +861,8 @@ name|isPrioritizedMessages
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|CompositeData
 index|[]
@@ -860,6 +896,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|CompositeData
 index|[]
@@ -1068,6 +1106,8 @@ name|rc
 return|;
 block|}
 comment|/**      * Browses the current destination returning a list of messages      */
+annotation|@
+name|Override
 specifier|public
 name|List
 argument_list|<
@@ -1086,6 +1126,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Browses the current destination with the given selector returning a list      * of messages      */
+annotation|@
+name|Override
 specifier|public
 name|List
 argument_list|<
@@ -1253,6 +1295,8 @@ return|return
 name|answer
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TabularData
 name|browseAsTable
@@ -1284,6 +1328,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TabularData
 name|browseAsTable
@@ -1502,6 +1548,8 @@ return|return
 name|rc
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|sendTextMessage
@@ -1523,6 +1571,8 @@ name|body
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|sendTextMessage
@@ -1549,6 +1599,8 @@ literal|null
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|sendTextMessage
@@ -1580,6 +1632,8 @@ name|password
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|sendTextMessage
@@ -1804,6 +1858,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMaxAuditDepth
@@ -1816,6 +1872,8 @@ name|getMaxAuditDepth
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMaxProducersToAudit
@@ -1856,6 +1914,8 @@ name|enableAudit
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxAuditDepth
@@ -1872,6 +1932,8 @@ name|maxAuditDepth
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxProducersToAudit
@@ -1888,6 +1950,8 @@ name|maxProducersToAudit
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|float
 name|getMemoryUsagePortion
@@ -1903,6 +1967,8 @@ name|getUsagePortion
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getProducerCount
@@ -1921,6 +1987,8 @@ name|getCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isProducerFlowControl
@@ -1933,6 +2001,8 @@ name|isProducerFlowControl
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMemoryUsagePortion
@@ -1952,6 +2022,8 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setProducerFlowControl
@@ -1968,6 +2040,8 @@ name|producerFlowControl
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isAlwaysRetroactive
@@ -1980,6 +2054,8 @@ name|isAlwaysRetroactive
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setAlwaysRetroactive
@@ -1997,6 +2073,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Set's the interval at which warnings about producers being blocked by      * resource usage will be triggered. Values of 0 or less will disable      * warnings      *      * @param blockedProducerWarningInterval the interval at which warning about      *            blocked producers will be triggered.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBlockedProducerWarningInterval
@@ -2014,6 +2092,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      *      * @return the interval at which warning about blocked producers will be      *         triggered.      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getBlockedProducerWarningInterval
@@ -2026,6 +2106,8 @@ name|getBlockedProducerWarningInterval
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMaxPageSize
@@ -2038,6 +2120,8 @@ name|getMaxPageSize
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxPageSize
@@ -2054,6 +2138,8 @@ name|pageSize
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isUseCache
@@ -2066,6 +2152,8 @@ name|isUseCache
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUseCache
@@ -2082,6 +2170,8 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 index|[]
@@ -2117,7 +2207,7 @@ argument_list|()
 index|]
 decl_stmt|;
 name|ObjectName
-name|objectName
+name|brokerObjectName
 init|=
 name|broker
 operator|.
@@ -2151,33 +2241,24 @@ operator|.
 name|getClientId
 argument_list|()
 decl_stmt|;
-name|String
-name|objectNameStr
-init|=
-name|ManagedRegionBroker
-operator|.
-name|getSubscriptionObjectName
-argument_list|(
-name|subscription
-operator|.
-name|getConsumerInfo
-argument_list|()
-argument_list|,
-name|connectionClientId
-argument_list|,
-name|objectName
-argument_list|)
-decl_stmt|;
 name|answer
 index|[
 name|index
 operator|++
 index|]
 operator|=
-operator|new
-name|ObjectName
+name|BrokerMBeanSuppurt
+operator|.
+name|createSubscriptionName
 argument_list|(
-name|objectNameStr
+name|brokerObjectName
+argument_list|,
+name|connectionClientId
+argument_list|,
+name|subscription
+operator|.
+name|getConsumerInfo
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2185,6 +2266,8 @@ return|return
 name|answer
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 name|getSlowConsumerStrategy
@@ -2235,6 +2318,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getOptions

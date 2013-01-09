@@ -185,20 +185,6 @@ name|IOExceptionSupport
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|JMXSupport
-import|;
-end_import
-
 begin_comment
 comment|/**  *  */
 end_comment
@@ -259,6 +245,8 @@ name|userName
 expr_stmt|;
 block|}
 comment|/**      * @return the clientId      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getClientId
@@ -269,6 +257,8 @@ name|clientId
 return|;
 block|}
 comment|/**      * @returns the ObjectName of the Connection that created this subscription      */
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 name|getConnection
@@ -429,37 +419,18 @@ block|{
 try|try
 block|{
 return|return
-operator|new
-name|ObjectName
+name|BrokerMBeanSuppurt
+operator|.
+name|createConnectionQuery
 argument_list|(
 name|ctx
 operator|.
 name|getJmxDomainName
 argument_list|()
-operator|+
-literal|":type=Broker,brokerName="
-operator|+
-name|JMXSupport
-operator|.
-name|encodeObjectNamePart
-argument_list|(
+argument_list|,
 name|brokerName
-argument_list|)
-operator|+
-literal|","
-operator|+
-literal|"connector=*,"
-operator|+
-literal|"connectorName=*,"
-operator|+
-literal|"connectionName="
-operator|+
-name|JMXSupport
-operator|.
-name|encodeObjectNamePart
-argument_list|(
+argument_list|,
 name|clientId
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -480,6 +451,8 @@ throw|;
 block|}
 block|}
 comment|/**      * @return the id of the Connection the Subscription is on      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getConnectionId
@@ -513,6 +486,8 @@ literal|"NOTSET"
 return|;
 block|}
 comment|/**      * @return the id of the Session the subscription is on      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getSessionId
@@ -546,6 +521,8 @@ literal|0
 return|;
 block|}
 comment|/**      * @return the id of the Subscription      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getSubcriptionId
@@ -579,6 +556,8 @@ literal|0
 return|;
 block|}
 comment|/**      * @return the destination name      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getDestinationName
@@ -616,6 +595,8 @@ return|return
 literal|"NOTSET"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getSelector
@@ -639,6 +620,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setSelector
@@ -678,6 +661,8 @@ throw|;
 block|}
 block|}
 comment|/**      * @return true if the destination is a Queue      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDestinationQueue
@@ -716,6 +701,8 @@ literal|false
 return|;
 block|}
 comment|/**      * @return true of the destination is a Topic      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDestinationTopic
@@ -754,6 +741,8 @@ literal|false
 return|;
 block|}
 comment|/**      * @return true if the destination is temporary      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDestinationTemporary
@@ -792,6 +781,8 @@ literal|false
 return|;
 block|}
 comment|/**      * @return true if the subscriber is active      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isActive
@@ -822,6 +813,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @return whether or not the subscriber is retroactive or not      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isRetroactive
@@ -847,6 +840,8 @@ literal|false
 return|;
 block|}
 comment|/**      * @return whether or not the subscriber is an exclusive consumer      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isExclusive
@@ -872,6 +867,8 @@ literal|false
 return|;
 block|}
 comment|/**      * @return whether or not the subscriber is durable (persistent)      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDurable
@@ -897,6 +894,8 @@ literal|false
 return|;
 block|}
 comment|/**      * @return whether or not the subscriber ignores local messages      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isNoLocal
@@ -922,6 +921,8 @@ literal|false
 return|;
 block|}
 comment|/**      * @return the maximum number of pending messages allowed in addition to the      *         prefetch size. If enabled to a non-zero value then this will      *         perform eviction of messages for slow consumers on non-durable      *         topics.      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMaximumPendingMessageLimit
@@ -947,6 +948,8 @@ literal|0
 return|;
 block|}
 comment|/**      * @return the consumer priority      */
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getPriority
@@ -972,6 +975,8 @@ literal|0
 return|;
 block|}
 comment|/**      * @return the name of the consumer which is only used for durable      *         consumers.      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getSubcriptionName
@@ -997,6 +1002,8 @@ literal|null
 return|;
 block|}
 comment|/**      * @return number of messages pending delivery      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getPendingQueueSize
@@ -1016,6 +1023,8 @@ literal|0
 return|;
 block|}
 comment|/**      * @return number of messages dispatched      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getDispatchedQueueSize
@@ -1034,6 +1043,8 @@ else|:
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMessageCountAwaitingAcknowledge
@@ -1045,6 +1056,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return number of messages that matched the subscription      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getDispatchedCounter
@@ -1064,6 +1077,8 @@ literal|0
 return|;
 block|}
 comment|/**      * @return number of messages that matched the subscription      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getEnqueueCounter
@@ -1083,6 +1098,8 @@ literal|0
 return|;
 block|}
 comment|/**      * @return number of messages queued by the client      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getDequeueCounter
@@ -1120,6 +1137,8 @@ literal|null
 return|;
 block|}
 comment|/**      * @return pretty print      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -1138,6 +1157,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getPrefetchSize
@@ -1156,6 +1177,8 @@ else|:
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMatchingQueue
@@ -1185,6 +1208,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMatchingTopic
