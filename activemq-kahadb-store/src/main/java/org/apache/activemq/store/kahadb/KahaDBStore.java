@@ -2608,6 +2608,11 @@ condition|)
 block|{
 if|if
 condition|(
+name|ack
+operator|.
+name|isInTransaction
+argument_list|()
+operator|||
 operator|!
 name|task
 operator|.
