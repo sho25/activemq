@@ -4635,12 +4635,17 @@ operator|.
 name|setUp
 argument_list|()
 expr_stmt|;
-name|mbeanServer
-operator|=
+name|ManagementContext
+name|managementContext
+init|=
 name|broker
 operator|.
 name|getManagementContext
 argument_list|()
+decl_stmt|;
+name|mbeanServer
+operator|=
+name|managementContext
 operator|.
 name|getMBeanServer
 argument_list|()
@@ -6378,6 +6383,18 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"client id match"
+argument_list|,
+literal|"MBeanTest"
+argument_list|,
+name|connectionView
+operator|.
+name|getClientId
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Check that the subscription view we found earlier is in this list.
 name|boolean
 name|found
@@ -7161,14 +7178,19 @@ block|}
 name|ObjectName
 name|query
 init|=
-operator|new
-name|ObjectName
+comment|//new ObjectName(domain + ":type=Broker,brokerName=localhost,connector=*," + "connectorName=*,connectionName=MBeanTest");
+name|BrokerMBeanSuppurt
+operator|.
+name|createConnectionQuery
 argument_list|(
 name|domain
-operator|+
-literal|":type=Broker,brokerName=localhost,connector=*,"
-operator|+
-literal|"connectorName=*,connectionName=MBeanTest"
+argument_list|,
+literal|"localhost"
+argument_list|,
+name|connection
+operator|.
+name|getClientID
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|Set

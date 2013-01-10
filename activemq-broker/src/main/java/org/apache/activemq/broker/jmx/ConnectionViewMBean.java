@@ -100,10 +100,20 @@ comment|/**      * Returns the source address for this connection      *      * 
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"Source address for this connection"
+literal|"source address for this connection"
 argument_list|)
 name|String
 name|getRemoteAddress
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the client identifier for this connection      *      * @return the the client identifier for this connection      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"client id for this connection"
+argument_list|)
+name|String
+name|getClientId
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the number of messages to be dispatched to this connection      * @return the  number of messages pending dispatch      */

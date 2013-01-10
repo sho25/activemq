@@ -250,8 +250,7 @@ name|assertEquals
 argument_list|(
 literal|"presence of mbean with clientId"
 argument_list|,
-operator|!
-name|allowRemoteAddress
+literal|true
 argument_list|,
 name|match
 argument_list|(
