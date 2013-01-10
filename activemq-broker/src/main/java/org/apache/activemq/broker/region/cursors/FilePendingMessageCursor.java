@@ -795,6 +795,11 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|// ensure any memory ref is released
+name|iter
+operator|=
+literal|null
+expr_stmt|;
 block|}
 annotation|@
 name|Override
