@@ -3694,7 +3694,7 @@ name|queueConsumer
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|20000
 argument_list|)
 decl_stmt|;
 name|LOG
@@ -3719,6 +3719,17 @@ argument_list|()
 else|:
 literal|null
 operator|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|msg
+operator|==
+literal|null
+condition|)
+name|dumpAllThreads
+argument_list|(
+literal|"backlog"
 argument_list|)
 expr_stmt|;
 name|assertNotNull
