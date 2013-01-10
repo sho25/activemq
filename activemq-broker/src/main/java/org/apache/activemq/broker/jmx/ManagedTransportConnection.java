@@ -424,6 +424,15 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
+name|managementContext
+operator|.
+name|isAllowRemoteAddressInMBeanNames
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
 name|clientId
 operator|!=
 literal|null
@@ -448,6 +457,7 @@ argument_list|(
 name|byClientIdName
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return

@@ -246,9 +246,12 @@ init|=
 name|getRegisteredMbeans
 argument_list|()
 decl_stmt|;
-name|assertTrue
+name|assertEquals
 argument_list|(
-literal|"found mbean with clientId"
+literal|"presence of mbean with clientId"
+argument_list|,
+operator|!
+name|allowRemoteAddress
 argument_list|,
 name|match
 argument_list|(
@@ -451,6 +454,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+specifier|final
+name|String
+name|opts
+init|=
+literal|"?jms.watchTopicAdvisories=false"
+decl_stmt|;
 name|ActiveMQConnection
 name|connection
 init|=
@@ -472,6 +481,8 @@ argument_list|)
 operator|.
 name|getConnectUri
 argument_list|()
+operator|+
+name|opts
 argument_list|)
 operator|.
 name|createConnection
