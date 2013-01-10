@@ -749,12 +749,6 @@ comment|// Retrieve the attributes needed
 comment|// Retrieve the mbeans object name specified by the query
 return|return
 operator|new
-name|WildcardToRegExTransformFilter
-argument_list|(
-operator|new
-name|MBeansRegExQueryFilter
-argument_list|(
-operator|new
 name|MBeansAttributeQueryFilter
 argument_list|(
 name|jmxConnection
@@ -765,8 +759,6 @@ operator|new
 name|MBeansObjectNameQueryFilter
 argument_list|(
 name|jmxConnection
-argument_list|)
-argument_list|)
 argument_list|)
 argument_list|)
 return|;

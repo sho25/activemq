@@ -220,9 +220,11 @@ name|queryTokens
 operator|.
 name|add
 argument_list|(
-literal|"Type=*,BrokerName="
+literal|"type=*,brokerName="
 operator|+
 name|brokerName
+operator|+
+literal|",*"
 argument_list|)
 expr_stmt|;
 name|queryTokens
@@ -243,11 +245,11 @@ name|queryTokens
 operator|.
 name|add
 argument_list|(
-literal|"Type,BrokerName,Destination,ConnectorName,EnqueueCount,"
+literal|"BrokerName,Name,connectorName,networkConnectorName,destinationName,destinationType,EnqueueCount,"
 operator|+
 literal|"DequeueCount,TotalEnqueueCount,TotalDequeueCount,Messages,"
 operator|+
-literal|"TotalMessages,ConsumerCount,TotalConsumerCount,DispatchQueueSize"
+literal|"TotalMessageCount,ConsumerCount,TotalConsumerCount,DispatchCount,Duplex,NetworkTTL"
 argument_list|)
 expr_stmt|;
 comment|// Call the query command

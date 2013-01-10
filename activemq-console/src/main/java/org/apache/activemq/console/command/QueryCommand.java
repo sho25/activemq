@@ -129,7 +129,7 @@ name|setProperty
 argument_list|(
 literal|"Broker"
 argument_list|,
-literal|"Type=Broker,BrokerName=%1,*"
+literal|"type=Broker,brokerName=%1"
 argument_list|)
 expr_stmt|;
 name|PREDEFINED_OBJNAME_QUERY
@@ -138,7 +138,7 @@ name|setProperty
 argument_list|(
 literal|"Connection"
 argument_list|,
-literal|"Type=Connection,Connection=%1,*"
+literal|"type=Broker,connector=clientConnectors,connectionName=%1,*"
 argument_list|)
 expr_stmt|;
 name|PREDEFINED_OBJNAME_QUERY
@@ -147,7 +147,7 @@ name|setProperty
 argument_list|(
 literal|"Connector"
 argument_list|,
-literal|"Type=Connector,ConnectorName=%1,*"
+literal|"type=Broker,brokerName=*,connector=clientConnectors,connectorName=%1"
 argument_list|)
 expr_stmt|;
 name|PREDEFINED_OBJNAME_QUERY
@@ -156,7 +156,7 @@ name|setProperty
 argument_list|(
 literal|"NetworkConnector"
 argument_list|,
-literal|"Type=NetworkConnector,BrokerName=%1,*"
+literal|"type=Broker,brokerName=%1,connector=networkConnectors,networkConnectorName=*"
 argument_list|)
 expr_stmt|;
 name|PREDEFINED_OBJNAME_QUERY
@@ -165,7 +165,7 @@ name|setProperty
 argument_list|(
 literal|"Queue"
 argument_list|,
-literal|"Type=Queue,Destination=%1,*"
+literal|"type=Broker,brokerName=*,destinationType=Queue,destinationName=%1"
 argument_list|)
 expr_stmt|;
 name|PREDEFINED_OBJNAME_QUERY
@@ -174,7 +174,7 @@ name|setProperty
 argument_list|(
 literal|"Topic"
 argument_list|,
-literal|"Type=Topic,Destination=%1,*"
+literal|"type=Broker,brokerName=*,destinationType=Topic,destinationName=%1,*"
 argument_list|)
 expr_stmt|;
 block|}
