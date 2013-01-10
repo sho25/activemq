@@ -586,7 +586,7 @@ block|{
 try|try
 block|{
 return|return
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createConnectionViewByType
 argument_list|(

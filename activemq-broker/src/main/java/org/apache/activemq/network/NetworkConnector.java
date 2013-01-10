@@ -161,7 +161,7 @@ name|broker
 operator|.
 name|jmx
 operator|.
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 import|;
 end_import
 
@@ -1083,7 +1083,7 @@ throws|throws
 name|MalformedObjectNameException
 block|{
 return|return
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createNetworkBridgeObjectName
 argument_list|(

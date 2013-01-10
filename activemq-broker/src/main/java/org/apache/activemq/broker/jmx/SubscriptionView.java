@@ -419,7 +419,7 @@ block|{
 try|try
 block|{
 return|return
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createConnectionQuery
 argument_list|(

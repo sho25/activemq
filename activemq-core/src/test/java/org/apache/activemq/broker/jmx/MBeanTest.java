@@ -7179,7 +7179,7 @@ name|ObjectName
 name|query
 init|=
 comment|//new ObjectName(domain + ":type=Broker,brokerName=localhost,connector=*," + "connectorName=*,connectionName=MBeanTest");
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createConnectionQuery
 argument_list|(

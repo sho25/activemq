@@ -138,7 +138,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 block|{
 comment|// MBean Name Creation
 specifier|public

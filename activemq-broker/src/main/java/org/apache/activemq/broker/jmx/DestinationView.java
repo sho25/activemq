@@ -2247,7 +2247,7 @@ name|index
 operator|++
 index|]
 operator|=
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createSubscriptionName
 argument_list|(

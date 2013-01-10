@@ -1518,7 +1518,7 @@ block|{
 name|ObjectName
 name|objectName
 init|=
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createDestinationName
 argument_list|(
@@ -1639,7 +1639,7 @@ block|{
 name|ObjectName
 name|objectName
 init|=
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createDestinationName
 argument_list|(
@@ -1717,7 +1717,7 @@ block|{
 name|ObjectName
 name|objectName
 init|=
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createSubscriptionName
 argument_list|(
@@ -2139,7 +2139,7 @@ decl_stmt|;
 name|ObjectName
 name|objectName
 init|=
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createProducerName
 argument_list|(
@@ -2214,7 +2214,7 @@ block|{
 name|ObjectName
 name|objectName
 init|=
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createProducerName
 argument_list|(
@@ -2313,7 +2313,7 @@ block|{
 name|ObjectName
 name|objectName
 init|=
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createProducerName
 argument_list|(
@@ -3837,7 +3837,7 @@ decl_stmt|;
 name|ObjectName
 name|objectName
 init|=
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createSubscriptionName
 argument_list|(
@@ -4893,7 +4893,7 @@ try|try
 block|{
 name|objectName
 operator|=
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createAbortSlowConsumerStrategyName
 argument_list|(
@@ -4992,7 +4992,7 @@ block|{
 name|ObjectName
 name|objectName
 init|=
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createXATransactionName
 argument_list|(
@@ -5088,7 +5088,7 @@ block|{
 name|ObjectName
 name|objectName
 init|=
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createXATransactionName
 argument_list|(

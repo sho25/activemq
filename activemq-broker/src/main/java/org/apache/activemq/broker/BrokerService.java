@@ -441,7 +441,7 @@ name|broker
 operator|.
 name|jmx
 operator|.
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 import|;
 end_import
 
@@ -8697,7 +8697,7 @@ throws|throws
 name|MalformedObjectNameException
 block|{
 return|return
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createConnectorName
 argument_list|(
@@ -8796,7 +8796,7 @@ throws|throws
 name|MalformedObjectNameException
 block|{
 return|return
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createNetworkConnectorName
 argument_list|(
@@ -8823,7 +8823,7 @@ throws|throws
 name|MalformedObjectNameException
 block|{
 return|return
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createNetworkConnectorName
 argument_list|(
@@ -8916,7 +8916,7 @@ block|{
 name|ObjectName
 name|objectName
 init|=
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createNetworkConnectorName
 argument_list|(
@@ -8991,7 +8991,7 @@ block|{
 name|ObjectName
 name|objectName
 init|=
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createNetworkConnectorName
 argument_list|(
@@ -9555,7 +9555,7 @@ block|{
 name|ObjectName
 name|objectName
 init|=
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createJobSchedulerServiceName
 argument_list|(
@@ -9637,7 +9637,7 @@ block|{
 name|ObjectName
 name|objectName
 init|=
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createHealthServiceName
 argument_list|(
@@ -9927,7 +9927,7 @@ throws|throws
 name|MalformedObjectNameException
 block|{
 return|return
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createBrokerObjectName
 argument_list|(

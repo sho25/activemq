@@ -490,7 +490,7 @@ block|{
 try|try
 block|{
 return|return
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createConsumerQueury
 argument_list|(
@@ -532,7 +532,7 @@ block|{
 try|try
 block|{
 return|return
-name|BrokerMBeanSuppurt
+name|BrokerMBeanSupport
 operator|.
 name|createProducerQueury
 argument_list|(
