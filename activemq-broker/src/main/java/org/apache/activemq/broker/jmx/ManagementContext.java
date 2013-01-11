@@ -45,6 +45,16 @@ name|java
 operator|.
 name|rmi
 operator|.
+name|NoSuchObjectException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|rmi
+operator|.
 name|registry
 operator|.
 name|LocateRegistry
@@ -60,6 +70,18 @@ operator|.
 name|registry
 operator|.
 name|Registry
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|rmi
+operator|.
+name|server
+operator|.
+name|UnicastRemoteObject
 import|;
 end_import
 
@@ -298,7 +320,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An abstraction over JMX mbean registration  *   * @org.apache.xbean.XBean  *   */
+comment|/**  * An abstraction over JMX mbean registration  *  * @org.apache.xbean.XBean  *  */
 end_comment
 
 begin_class
@@ -384,6 +406,11 @@ literal|1099
 decl_stmt|;
 specifier|private
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|?
+argument_list|>
 name|environment
 decl_stmt|;
 specifier|private
@@ -483,6 +510,8 @@ operator|=
 name|server
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -767,6 +796,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -1023,6 +1054,9 @@ condition|)
 block|{
 comment|// check to see if the factory knows about this server
 name|List
+argument_list|<
+name|MBeanServer
+argument_list|>
 name|list
 init|=
 name|MBeanServerFactory
@@ -1075,11 +1109,52 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|// clear reference to aid GC
+comment|// Un-export JMX RMI registry, if it was created
+if|if
+condition|(
+name|registry
+operator|!=
+literal|null
+condition|)
+block|{
+try|try
+block|{
+name|UnicastRemoteObject
+operator|.
+name|unexportObject
+argument_list|(
+name|registry
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Unexported JMX RMI Registry"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NoSuchObjectException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Error occurred while unexporting JMX RMI registry. This exception will be ignored."
+argument_list|)
+expr_stmt|;
+block|}
 name|registry
 operator|=
 literal|null
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Gets the broker name this context is used by, may be<tt>null</tt>      * if the broker name was not set.      */
 specifier|public
@@ -1133,7 +1208,7 @@ operator|=
 name|jmxDomainName
 expr_stmt|;
 block|}
-comment|/**      * Get the MBeanServer      *       * @return the MBeanServer      */
+comment|/**      * Get the MBeanServer      *      * @return the MBeanServer      */
 specifier|protected
 name|MBeanServer
 name|getMBeanServer
@@ -1160,7 +1235,7 @@ return|return
 name|beanServer
 return|;
 block|}
-comment|/**      * Set the MBeanServer      *       * @param beanServer      */
+comment|/**      * Set the MBeanServer      *      * @param beanServer      */
 specifier|public
 name|void
 name|setMBeanServer
@@ -1276,7 +1351,7 @@ operator|=
 name|findTigerMbeanServer
 expr_stmt|;
 block|}
-comment|/**      * Formulate and return the MBean ObjectName of a custom control MBean      *       * @param type      * @param name      * @return the JMX ObjectName of the MBean, or<code>null</code> if      *<code>customName</code> is invalid.      */
+comment|/**      * Formulate and return the MBean ObjectName of a custom control MBean      *      * @param type      * @param name      * @return the JMX ObjectName of the MBean, or<code>null</code> if      *<code>customName</code> is invalid.      */
 specifier|public
 name|ObjectName
 name|createCustomComponentMBeanName
@@ -1349,7 +1424,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * The ':' and '/' characters are reserved in ObjectNames      *       * @param in      * @return sanitized String      */
+comment|/**      * The ':' and '/' characters are reserved in ObjectNames      *      * @param in      * @return sanitized String      */
 specifier|private
 specifier|static
 name|String
@@ -1409,7 +1484,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Retrive an System ObjectName      *       * @param domainName      * @param containerName      * @param theClass      * @return the ObjectName      * @throws MalformedObjectNameException      */
+comment|/**      * Retrieve an System ObjectName      *      * @param domainName      * @param containerName      * @param theClass      * @return the ObjectName      * @throws MalformedObjectNameException      */
 specifier|public
 specifier|static
 name|ObjectName
@@ -1422,6 +1497,9 @@ name|String
 name|containerName
 parameter_list|,
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|theClass
 parameter_list|)
 throws|throws
@@ -1469,6 +1547,9 @@ name|String
 name|containerName
 parameter_list|,
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|theClass
 parameter_list|)
 block|{
@@ -1536,6 +1617,9 @@ name|ObjectName
 name|objectName
 parameter_list|,
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|interfaceClass
 parameter_list|,
 name|boolean
@@ -1714,7 +1798,7 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/**      * Unregister an MBean      *       * @param name      * @throws JMException      */
+comment|/**      * Unregister an MBean      *      * @param name      * @throws JMException      */
 specifier|public
 name|void
 name|unregisterMBean
@@ -1795,7 +1879,6 @@ name|result
 init|=
 literal|null
 decl_stmt|;
-comment|// create the mbean server
 try|try
 block|{
 if|if
@@ -1821,9 +1904,11 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// lets piggy back on another MBeanServer -
-comment|// we could be in an appserver!
+comment|// lets piggy back on another MBeanServer - we could be in an appserver!
 name|List
+argument_list|<
+name|MBeanServer
+argument_list|>
 name|list
 init|=
 name|MBeanServerFactory
@@ -1849,9 +1934,6 @@ condition|)
 block|{
 name|result
 operator|=
-operator|(
-name|MBeanServer
-operator|)
 name|list
 operator|.
 name|get
@@ -1926,6 +2008,9 @@ init|=
 literal|"java.lang.management.ManagementFactory"
 decl_stmt|;
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|type
 init|=
 name|loadClass
@@ -2087,6 +2172,9 @@ block|}
 specifier|private
 specifier|static
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|loadClass
 parameter_list|(
 name|String
@@ -2235,6 +2323,9 @@ expr_stmt|;
 comment|// Do not use the createMBean as the mx4j jar may not be in the
 comment|// same class loader than the server
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|cl
 init|=
 name|Class
@@ -2256,8 +2347,6 @@ argument_list|,
 name|namingServiceObjectName
 argument_list|)
 expr_stmt|;
-comment|// mbeanServer.createMBean("mx4j.tools.naming.NamingService",
-comment|// namingServiceObjectName, null);
 comment|// set the naming port
 name|Attribute
 name|attr
@@ -2333,8 +2422,7 @@ operator|!=
 literal|0
 condition|)
 block|{
-comment|// This is handy to use if you have a firewall and need to
-comment|// force JMX to use fixed ports.
+comment|// This is handy to use if you have a firewall and need to force JMX to use fixed ports.
 name|rmiServer
 operator|=
 literal|""
@@ -2526,6 +2614,11 @@ expr_stmt|;
 block|}
 specifier|public
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|?
+argument_list|>
 name|getEnvironment
 parameter_list|()
 block|{
@@ -2538,6 +2631,11 @@ name|void
 name|setEnvironment
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|?
+argument_list|>
 name|environment
 parameter_list|)
 block|{
