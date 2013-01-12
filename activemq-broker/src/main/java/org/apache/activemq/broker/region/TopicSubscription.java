@@ -353,6 +353,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|transport
+operator|.
+name|TransmitCallback
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|usage
 operator|.
 name|SystemUsage
@@ -706,6 +720,8 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|add
@@ -1387,6 +1403,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|processMessageDispatchNotification
@@ -1473,6 +1491,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1742,6 +1762,8 @@ name|ack
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|pullMessage
@@ -1827,6 +1849,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1903,6 +1927,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getPendingQueueSize
@@ -1913,6 +1939,8 @@ name|matched
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getDispatchedQueueSize
@@ -1944,6 +1972,8 @@ return|return
 name|maximumPendingMessages
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getDispatchedCounter
@@ -1956,6 +1986,8 @@ name|get
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getEnqueueCounter
@@ -1968,6 +2000,8 @@ name|get
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getDequeueCounter
@@ -2183,6 +2217,8 @@ block|}
 block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isFull
@@ -2204,6 +2240,8 @@ name|get
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getInFlightSize
@@ -2215,6 +2253,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return true when 60% or more room is left for dispatching messages      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isLowWaterMark
@@ -2235,6 +2275,8 @@ operator|)
 return|;
 block|}
 comment|/**      * @return true when 10% or less room is left for dispatching messages      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isHighWaterMark
@@ -2323,6 +2365,8 @@ name|matched
 expr_stmt|;
 block|}
 comment|/**      * inform the MessageConsumer on the client to change it's prefetch      *      * @param newPrefetch      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|updateConsumerPrefetch
@@ -2645,14 +2689,60 @@ operator|.
 name|setTransmitCallback
 argument_list|(
 operator|new
-name|Runnable
+name|TransmitCallback
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
 name|void
-name|run
+name|onSuccess
+parameter_list|()
+block|{
+name|Destination
+name|regionDestination
+init|=
+operator|(
+name|Destination
+operator|)
+name|node
+operator|.
+name|getRegionDestination
+argument_list|()
+decl_stmt|;
+name|regionDestination
+operator|.
+name|getDestinationStatistics
+argument_list|()
+operator|.
+name|getDispatched
+argument_list|()
+operator|.
+name|increment
+argument_list|()
+expr_stmt|;
+name|regionDestination
+operator|.
+name|getDestinationStatistics
+argument_list|()
+operator|.
+name|getInflight
+argument_list|()
+operator|.
+name|increment
+argument_list|()
+expr_stmt|;
+name|node
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onFailure
 parameter_list|()
 block|{
 name|Destination
@@ -2923,6 +3013,8 @@ name|discarded
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|destroy

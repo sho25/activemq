@@ -226,7 +226,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * persist pending messages pending message (messages awaiting dispatch to a  * consumer) cursor  *   *   */
+comment|/**  * persist pending messages pending message (messages awaiting dispatch to a  * consumer) cursor  */
 end_comment
 
 begin_class
@@ -574,7 +574,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Add a destination      *       * @param context      * @param destination      * @throws Exception      */
+comment|/**      * Add a destination      *      * @param context      * @param destination      * @throws Exception      */
 annotation|@
 name|Override
 specifier|public
@@ -721,7 +721,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * remove a destination      *       * @param context      * @param destination      * @throws Exception      */
+comment|/**      * remove a destination      *      * @param context      * @param destination      * @throws Exception      */
 annotation|@
 name|Override
 specifier|public
@@ -850,7 +850,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Informs the Broker if the subscription needs to intervention to recover      * it's state e.g. DurableTopicSubscriber may do      *       * @see org.apache.activemq.broker.region.cursors.AbstractPendingMessageCursor      * @return true if recovery required      */
+comment|/**      * Informs the Broker if the subscription needs to intervention to recover      * it's state e.g. DurableTopicSubscriber may do      *      * @see org.apache.activemq.broker.region.cursors.AbstractPendingMessageCursor      * @return true if recovery required      */
 annotation|@
 name|Override
 specifier|public
@@ -1362,6 +1362,12 @@ name|void
 name|release
 parameter_list|()
 block|{
+name|this
+operator|.
+name|currentCursor
+operator|=
+literal|null
+expr_stmt|;
 for|for
 control|(
 name|PendingMessageCursor

@@ -101,16 +101,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|InvalidSelectorException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|JMSException
 import|;
 end_import
@@ -344,6 +334,20 @@ operator|.
 name|transaction
 operator|.
 name|Synchronization
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|TransmitCallback
 import|;
 end_import
 
@@ -617,6 +621,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Allows a message to be pulled on demand by a client      */
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|pullMessage
@@ -808,6 +814,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|add
@@ -877,6 +885,8 @@ name|dispatchPending
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|processMessageDispatchNotification
@@ -1019,6 +1029,8 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 name|void
@@ -1658,9 +1670,6 @@ block|{
 name|Destination
 name|regionDestination
 init|=
-operator|(
-name|Destination
-operator|)
 name|nodeDest
 decl_stmt|;
 name|regionDestination
@@ -2554,6 +2563,8 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getInFlightSize
@@ -2567,6 +2578,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Used to determine if the broker can dispatch to the consumer.      *      * @return      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isFull
@@ -2590,6 +2603,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return true when 60% or more room is left for dispatching messages      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isLowWaterMark
@@ -2619,6 +2634,8 @@ operator|)
 return|;
 block|}
 comment|/**      * @return true when 10% or less room is left for dispatching messages      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isHighWaterMark
@@ -2671,6 +2688,8 @@ name|size
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getPendingQueueSize
@@ -2683,6 +2702,8 @@ name|size
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getDispatchedQueueSize
@@ -2695,6 +2716,8 @@ name|size
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getDequeueCounter
@@ -2704,6 +2727,8 @@ return|return
 name|dequeueCounter
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getDispatchedCounter
@@ -2713,6 +2738,8 @@ return|return
 name|dispatchCounter
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getEnqueueCounter
@@ -3357,18 +3384,18 @@ operator|.
 name|setTransmitCallback
 argument_list|(
 operator|new
-name|Runnable
+name|TransmitCallback
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
-name|run
+name|onSuccess
 parameter_list|()
 block|{
-comment|// Since the message gets queued up in async dispatch,
-comment|// we don't want to
-comment|// decrease the reference count until it gets put on the
-comment|// wire.
+comment|// Since the message gets queued up in async dispatch, we don't want to
+comment|// decrease the reference count until it gets put on the wire.
 name|onDispatch
 argument_list|(
 name|node
@@ -3376,6 +3403,109 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onFailure
+parameter_list|()
+block|{
+name|Destination
+name|nodeDest
+init|=
+operator|(
+name|Destination
+operator|)
+name|node
+operator|.
+name|getRegionDestination
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|nodeDest
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|node
+operator|!=
+name|QueueMessageReference
+operator|.
+name|NULL_MESSAGE
+condition|)
+block|{
+name|nodeDest
+operator|.
+name|getDestinationStatistics
+argument_list|()
+operator|.
+name|getDispatched
+argument_list|()
+operator|.
+name|increment
+argument_list|()
+expr_stmt|;
+name|nodeDest
+operator|.
+name|getDestinationStatistics
+argument_list|()
+operator|.
+name|getInflight
+argument_list|()
+operator|.
+name|increment
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+name|info
+operator|.
+name|getConsumerId
+argument_list|()
+operator|+
+literal|" failed to dispatch: "
+operator|+
+name|message
+operator|.
+name|getMessageId
+argument_list|()
+operator|+
+literal|" - "
+operator|+
+name|message
+operator|.
+name|getDestination
+argument_list|()
+operator|+
+literal|", dispatched: "
+operator|+
+name|dispatchCounter
+operator|+
+literal|", inflight: "
+operator|+
+name|dispatched
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
 block|}
 block|}
 argument_list|)
@@ -3557,6 +3687,8 @@ block|}
 block|}
 block|}
 comment|/**      * inform the MessageConsumer on the client to change it's prefetch      *      * @param newPrefetch      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|updateConsumerPrefetch

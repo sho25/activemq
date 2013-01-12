@@ -29,8 +29,22 @@ name|CommandVisitor
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|TransmitCallback
+import|;
+end_import
+
 begin_comment
-comment|/**  *   * @openwire:marshaller code="21"  *   */
+comment|/**  *  * @openwire:marshaller code="21"  *  */
 end_comment
 
 begin_class
@@ -78,7 +92,7 @@ name|consumer
 decl_stmt|;
 specifier|protected
 specifier|transient
-name|Runnable
+name|TransmitCallback
 name|transmitCallback
 decl_stmt|;
 specifier|protected
@@ -86,6 +100,8 @@ specifier|transient
 name|Throwable
 name|rollbackCause
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getDataStructureType
@@ -95,6 +111,8 @@ return|return
 name|DATA_STRUCTURE_TYPE
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMessageDispatch
@@ -252,6 +270,8 @@ operator|=
 name|consumer
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|visit
@@ -272,7 +292,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|Runnable
+name|TransmitCallback
 name|getTransmitCallback
 parameter_list|()
 block|{
@@ -284,7 +304,7 @@ specifier|public
 name|void
 name|setTransmitCallback
 parameter_list|(
-name|Runnable
+name|TransmitCallback
 name|transmitCallback
 parameter_list|)
 block|{
