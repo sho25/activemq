@@ -5447,7 +5447,7 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|IOException
 name|e
 parameter_list|)
 block|{
@@ -5490,6 +5490,9 @@ name|messageDispatch
 operator|=
 literal|null
 expr_stmt|;
+throw|throw
+name|e
+throw|;
 block|}
 block|}
 finally|finally
