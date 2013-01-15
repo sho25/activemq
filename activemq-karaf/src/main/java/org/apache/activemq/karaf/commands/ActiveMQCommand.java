@@ -1015,6 +1015,23 @@ return|return
 name|action
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Completer
+argument_list|>
+name|getOptionalCompleters
+parameter_list|()
+block|{
+comment|//TODO implement completers
+return|return
+literal|null
+return|;
+block|}
 block|}
 end_class
 

@@ -477,11 +477,8 @@ argument_list|(
 literal|"activemq-karaf"
 argument_list|)
 operator|.
-name|version
-argument_list|(
-name|activemqVersion
+name|versionAsInProject
 argument_list|()
-argument_list|)
 operator|.
 name|type
 argument_list|(
