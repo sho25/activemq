@@ -12,6 +12,8 @@ operator|.
 name|activemq
 operator|.
 name|hooks
+operator|.
+name|osgi
 package|;
 end_package
 
