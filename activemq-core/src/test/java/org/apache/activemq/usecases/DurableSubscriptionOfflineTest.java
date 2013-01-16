@@ -31,6 +31,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -42,16 +52,6 @@ operator|.
 name|util
 operator|.
 name|Random
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashSet
 import|;
 end_import
 
@@ -357,20 +357,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|util
-operator|.
-name|Wait
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|store
 operator|.
 name|kahadb
@@ -400,6 +386,20 @@ operator|.
 name|page
 operator|.
 name|PageFile
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|Wait
 import|;
 end_import
 
@@ -482,6 +482,7 @@ name|ActiveMQTopic
 name|topic
 decl_stmt|;
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|Throwable
@@ -495,6 +496,8 @@ name|Throwable
 argument_list|>
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|ActiveMQConnectionFactory
 name|createConnectionFactory
@@ -592,6 +595,8 @@ name|class
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -621,6 +626,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -9323,6 +9330,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -9388,9 +9397,9 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"only one journal file left after restart"
+literal|"only two journal file(s) left after restart"
 argument_list|,
-literal|1
+literal|2
 argument_list|,
 name|pa
 operator|.
@@ -10403,6 +10412,8 @@ operator|=
 name|id
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -10453,6 +10464,8 @@ name|FilterCheckListener
 extends|extends
 name|Listener
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
