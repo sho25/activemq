@@ -513,7 +513,7 @@ argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
-literal|"only two journal files should be left: "
+literal|"only less than two journal files should be left: "
 operator|+
 name|pa
 operator|.
@@ -562,7 +562,7 @@ argument_list|()
 operator|.
 name|size
 argument_list|()
-operator|==
+operator|<=
 literal|2
 return|;
 block|}
