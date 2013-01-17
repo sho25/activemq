@@ -403,6 +403,13 @@ name|getMemoryUsage
 parameter_list|()
 function_decl|;
 name|void
+name|setMemoryUsage
+parameter_list|(
+name|MemoryUsage
+name|memoryUsage
+parameter_list|)
+function_decl|;
+name|void
 name|dispose
 parameter_list|(
 name|ConnectionContext
