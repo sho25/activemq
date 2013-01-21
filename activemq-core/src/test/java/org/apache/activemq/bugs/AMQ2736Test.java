@@ -315,8 +315,11 @@ literal|"last tx location is present "
 operator|+
 name|store
 operator|.
-name|getFirstInProgressTxLocation
+name|getInProgressTxLocationRange
 argument_list|()
+index|[
+literal|1
+index|]
 argument_list|)
 expr_stmt|;
 comment|// test hack, close the journal to ensure no further journal updates when broker stops
@@ -385,8 +388,11 @@ literal|"in progress tx location is present "
 argument_list|,
 name|store
 operator|.
-name|getFirstInProgressTxLocation
+name|getInProgressTxLocationRange
 argument_list|()
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 block|}
