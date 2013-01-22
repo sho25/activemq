@@ -11,7 +11,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|karaf
+name|osgi
 package|;
 end_package
 
@@ -155,16 +155,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Dictionary
 import|;
 end_import
@@ -176,16 +166,6 @@ operator|.
 name|util
 operator|.
 name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
 import|;
 end_import
 
@@ -303,7 +283,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|config
+name|name
 operator|==
 literal|null
 condition|)
@@ -318,6 +298,16 @@ literal|"Property must be set"
 argument_list|)
 throw|;
 block|}
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Starting broker "
+operator|+
+name|name
+argument_list|)
+expr_stmt|;
+comment|//TODO properties
 try|try
 block|{
 name|Thread
