@@ -18,6 +18,76 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|jmx
+operator|.
+name|BrokerMBeanSupport
+operator|.
+name|createPersistenceAdapterName
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Callable
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|ObjectName
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -56,6 +126,20 @@ operator|.
 name|broker
 operator|.
 name|LockableServiceSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|Locker
 import|;
 end_import
 
@@ -211,9 +295,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
+name|store
 operator|.
-name|Locker
+name|JournaledStore
 import|;
 end_import
 
@@ -227,7 +311,63 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|*
+name|MessageStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|PersistenceAdapter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|SharedFileLocker
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|TopicMessageStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|TransactionStore
 import|;
 end_import
 
@@ -313,66 +453,6 @@ name|ServiceStopper
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Callable
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|jmx
-operator|.
-name|BrokerMBeanSupport
-operator|.
-name|createPersistenceAdapterName
-import|;
-end_import
-
 begin_comment
 comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with  * KahaDB - Embedded Lightweight Non-Relational Database  *  * @org.apache.xbean.XBean element="kahaDB"  *  */
 end_comment
@@ -398,6 +478,8 @@ name|KahaDBStore
 argument_list|()
 decl_stmt|;
 comment|/**      * @param context      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#beginTransaction(org.apache.activemq.broker.ConnectionContext)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beginTransaction
@@ -419,6 +501,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @param sync      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#checkpoint(boolean)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|checkpoint
@@ -440,6 +524,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @param context      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#commitTransaction(org.apache.activemq.broker.ConnectionContext)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commitTransaction
@@ -461,6 +547,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @param destination      * @return MessageStore      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#createQueueMessageStore(org.apache.activemq.command.ActiveMQQueue)      */
+annotation|@
+name|Override
 specifier|public
 name|MessageStore
 name|createQueueMessageStore
@@ -483,6 +571,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @param destination      * @return TopicMessageStore      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#createTopicMessageStore(org.apache.activemq.command.ActiveMQTopic)      */
+annotation|@
+name|Override
 specifier|public
 name|TopicMessageStore
 name|createTopicMessageStore
@@ -505,6 +595,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @return TransactionStore      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#createTransactionStore()      */
+annotation|@
+name|Override
 specifier|public
 name|TransactionStore
 name|createTransactionStore
@@ -522,6 +614,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#deleteAllMessages()      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|deleteAllMessages
@@ -538,6 +632,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @return destinations      * @see org.apache.activemq.store.PersistenceAdapter#getDestinations()      */
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -556,6 +652,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return lastMessageBrokerSequenceId      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#getLastMessageBrokerSequenceId()      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastMessageBrokerSequenceId
@@ -572,6 +670,8 @@ name|getLastMessageBrokerSequenceId
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastProducerSequenceId
@@ -594,6 +694,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @param destination      * @see org.apache.activemq.store.PersistenceAdapter#removeQueueMessageStore(org.apache.activemq.command.ActiveMQQueue)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeQueueMessageStore
@@ -613,6 +715,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @param destination      * @see org.apache.activemq.store.PersistenceAdapter#removeTopicMessageStore(org.apache.activemq.command.ActiveMQTopic)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeTopicMessageStore
@@ -632,6 +736,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @param context      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#rollbackTransaction(org.apache.activemq.broker.ConnectionContext)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollbackTransaction
@@ -653,6 +759,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @param brokerName      * @see org.apache.activemq.store.PersistenceAdapter#setBrokerName(java.lang.String)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerName
@@ -672,6 +780,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @param usageManager      * @see org.apache.activemq.store.PersistenceAdapter#setUsageManager(org.apache.activemq.usage.SystemUsage)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUsageManager
@@ -691,6 +801,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @return the size of the store      * @see org.apache.activemq.store.PersistenceAdapter#size()      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|size
@@ -706,6 +818,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @throws Exception      * @see org.apache.activemq.Service#start()      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doStart
@@ -839,6 +953,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @throws Exception      * @see org.apache.activemq.Service#stop()      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doStop
@@ -856,8 +972,50 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|brokerService
+operator|!=
+literal|null
+operator|&&
+name|brokerService
+operator|.
+name|isUseJmx
+argument_list|()
+condition|)
+block|{
+name|ObjectName
+name|brokerObjectName
+init|=
+name|brokerService
+operator|.
+name|getBrokerObjectName
+argument_list|()
+decl_stmt|;
+name|brokerService
+operator|.
+name|getManagementContext
+argument_list|()
+operator|.
+name|unregisterMBean
+argument_list|(
+name|createPersistenceAdapterName
+argument_list|(
+name|brokerObjectName
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+name|toString
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Get the journalMaxFileLength      *      * @return the journalMaxFileLength      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getJournalMaxFileLength
@@ -1128,6 +1286,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Get the directory      *      * @return the directory      */
+annotation|@
+name|Override
 specifier|public
 name|File
 name|getDirectory
@@ -1143,6 +1303,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @param dir      * @see org.apache.activemq.store.PersistenceAdapter#setDirectory(java.io.File)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDirectory
@@ -1888,6 +2050,8 @@ return|return
 name|rc
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Locker
 name|createDefaultLocker
