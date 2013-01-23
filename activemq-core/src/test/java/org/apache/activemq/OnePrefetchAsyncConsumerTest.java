@@ -412,7 +412,7 @@ name|SECONDS
 operator|.
 name|toMillis
 argument_list|(
-literal|5
+literal|10
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -466,6 +466,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -529,6 +531,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -552,6 +556,8 @@ name|tearDown
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|BrokerService
 name|createBroker
@@ -663,6 +669,8 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ServerSession
 name|getServerSession
@@ -768,6 +776,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Session
 name|getSession
@@ -779,6 +789,8 @@ return|return
 name|session
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -791,6 +803,8 @@ operator|new
 name|Thread
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -856,6 +870,8 @@ name|TestMessageListener
 implements|implements
 name|MessageListener
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
