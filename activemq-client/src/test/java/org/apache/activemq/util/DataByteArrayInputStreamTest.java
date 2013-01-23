@@ -42,7 +42,7 @@ name|Exception
 block|{
 name|doMarshallUnMarshallValidation
 argument_list|(
-literal|"meißen"
+literal|"mei\u00DFen"
 argument_list|)
 expr_stmt|;
 name|String
