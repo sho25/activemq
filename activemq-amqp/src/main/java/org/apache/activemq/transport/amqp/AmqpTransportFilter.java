@@ -385,8 +385,6 @@ name|IOException
 name|error
 parameter_list|)
 block|{
-try|try
-block|{
 name|protocolConverter
 operator|.
 name|lock
@@ -415,7 +413,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-finally|finally
+specifier|public
+name|void
+name|sendToActiveMQ
+parameter_list|(
+name|IOException
+name|error
+parameter_list|)
 block|{
 name|super
 operator|.
@@ -424,7 +428,6 @@ argument_list|(
 name|error
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 specifier|public
 name|void

@@ -84,6 +84,14 @@ parameter_list|)
 function_decl|;
 specifier|public
 name|void
+name|sendToActiveMQ
+parameter_list|(
+name|IOException
+name|command
+parameter_list|)
+function_decl|;
+specifier|public
+name|void
 name|sendToAmqp
 parameter_list|(
 name|Object
