@@ -123,7 +123,7 @@ name|activemq
 operator|.
 name|util
 operator|.
-name|IOHelper
+name|ByteSequence
 import|;
 end_import
 
@@ -137,7 +137,7 @@ name|activemq
 operator|.
 name|util
 operator|.
-name|ByteSequence
+name|IOHelper
 import|;
 end_import
 
@@ -217,6 +217,8 @@ operator|new
 name|JobListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|scheduledJob
@@ -333,6 +335,8 @@ operator|new
 name|JobListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|scheduledJob
@@ -361,6 +365,17 @@ operator|.
 name|getInstance
 argument_list|()
 decl_stmt|;
+name|current
+operator|.
+name|add
+argument_list|(
+name|Calendar
+operator|.
+name|MINUTE
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
 name|int
 name|minutes
 init|=
@@ -372,8 +387,6 @@ name|Calendar
 operator|.
 name|MINUTE
 argument_list|)
-operator|+
-literal|1
 decl_stmt|;
 name|int
 name|hour
@@ -509,6 +522,8 @@ operator|new
 name|JobListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|scheduledJob
@@ -728,6 +743,8 @@ operator|new
 name|JobListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|scheduledJob
@@ -887,6 +904,29 @@ argument_list|(
 name|removeTime
 argument_list|)
 expr_stmt|;
+comment|// If all jobs are not started within the same second we need to call remove again
+if|if
+condition|(
+name|size
+operator|!=
+literal|0
+condition|)
+block|{
+name|removeTime
+operator|=
+name|scheduler
+operator|.
+name|getNextScheduleTime
+argument_list|()
+expr_stmt|;
+name|scheduler
+operator|.
+name|remove
+argument_list|(
+name|removeTime
+argument_list|)
+expr_stmt|;
+block|}
 name|size
 operator|=
 name|scheduler
