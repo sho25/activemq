@@ -155,6 +155,8 @@ specifier|private
 name|Connection
 name|connection
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -174,6 +176,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @see junit.framework.TestCase#tearDown()      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -341,6 +345,16 @@ expr_stmt|;
 comment|// The async style HAS to be faster than the non-async style..
 name|assertTrue
 argument_list|(
+literal|"async rate["
+operator|+
+name|callbackRate
+operator|+
+literal|"] should beat non-async rate["
+operator|+
+name|nonCallbackRate
+operator|+
+literal|"]"
+argument_list|,
 name|callbackRate
 operator|/
 name|nonCallbackRate
