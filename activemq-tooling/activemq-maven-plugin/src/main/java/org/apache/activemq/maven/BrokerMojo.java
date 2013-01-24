@@ -110,27 +110,27 @@ name|BrokerMojo
 extends|extends
 name|AbstractMojo
 block|{
-comment|/**      * The maven project.      *      * @parameter property="${project}"      * @required      * @readonly      */
+comment|/**      * The maven project.      *      * @parameter property="project"      * @required      * @readonly      */
 specifier|protected
 name|MavenProject
 name|project
 decl_stmt|;
-comment|/**      * The broker configuration uri The list of currently supported URI syntaxes      * is described<a      * href="http://activemq.apache.org/how-do-i-embed-a-broker-inside-a-connection.html">here</a>      *      * @parameter property="${configUri}"      *            default-value="broker:(tcp://localhost:61616)?useJmx=false&persistent=false"      * @required      */
+comment|/**      * The broker configuration uri The list of currently supported URI syntaxes      * is described<a      * href="http://activemq.apache.org/how-do-i-embed-a-broker-inside-a-connection.html">here</a>      *      * @parameter property="configUri"      *            default-value="broker:(tcp://localhost:61616)?useJmx=false&persistent=false"      * @required      */
 specifier|private
 name|String
 name|configUri
 decl_stmt|;
-comment|/**      * Indicates whether to fork the broker, useful for integration tests.      *      * @parameter property="${fork}" default-value="false"      */
+comment|/**      * Indicates whether to fork the broker, useful for integration tests.      *      * @parameter property="fork" default-value="false"      */
 specifier|private
 name|boolean
 name|fork
 decl_stmt|;
-comment|/**      * System properties to add      *      * @parameter property="${systemProperties}"      */
+comment|/**      * System properties to add      *      * @parameter property="systemProperties"      */
 specifier|private
 name|Properties
 name|systemProperties
 decl_stmt|;
-comment|/**      * Skip execution of the ActiveMQ Broker plugin if set to true      *      * @parameter property="${skip}"      */
+comment|/**      * Skip execution of the ActiveMQ Broker plugin if set to true      *      * @parameter property="skip"      */
 specifier|private
 name|boolean
 name|skip
