@@ -419,6 +419,8 @@ block|{
 name|long
 name|lastRunTime
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -468,7 +470,8 @@ block|}
 comment|// Perhaps the timer executed a read check late.. and then executes
 comment|// the next read check on time which causes the time elapsed between
 comment|// read checks to be small..
-comment|// If less than 90% of the read check Time elapsed then abort this readcheck.
+comment|// If less than 90% of the read check Time elapsed then abort this
+comment|// readcheck.
 if|if
 condition|(
 operator|!
@@ -478,7 +481,8 @@ name|elapsed
 argument_list|)
 condition|)
 block|{
-comment|// FUNKY qdox bug does not allow me to inline this expression.
+comment|// FUNKY qdox bug does not allow me
+comment|// to inline this expression.
 name|LOG
 operator|.
 name|debug
@@ -541,6 +545,8 @@ block|{
 name|long
 name|lastRunTime
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -627,6 +633,8 @@ operator|=
 name|wireFormat
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -643,6 +651,8 @@ name|startMonitorThreads
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -746,6 +756,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -779,7 +791,8 @@ condition|)
 block|{
 try|try
 block|{
-comment|// If we can't get the lock it means another write beat us into the
+comment|// If we can't get the lock it means another
+comment|// write beat us into the
 comment|// send and we don't need to heart beat now.
 if|if
 condition|(
@@ -1046,6 +1059,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1194,6 +1209,8 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onCommand
@@ -1358,6 +1375,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|oneway
@@ -1369,8 +1388,8 @@ throws|throws
 name|IOException
 block|{
 comment|// To prevent the inactivity monitor from sending a message while we
-comment|// are performing a send we take a read lock.  The inactivity monitor
-comment|// sends its Heart-beat commands under a write lock.  This means that
+comment|// are performing a send we take a read lock. The inactivity monitor
+comment|// sends its Heart-beat commands under a write lock. This means that
 comment|// the MutexTransport is still responsible for synchronizing sends
 name|this
 operator|.
@@ -1492,6 +1511,8 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onException
@@ -1515,6 +1536,26 @@ block|{
 name|stopMonitorThreads
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|sendLock
+operator|.
+name|writeLock
+argument_list|()
+operator|.
+name|isHeldByCurrentThread
+argument_list|()
+condition|)
+block|{
+name|sendLock
+operator|.
+name|writeLock
+argument_list|()
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
+block|}
 name|transportListener
 operator|.
 name|onException
@@ -1919,6 +1960,7 @@ block|}
 block|}
 block|}
 specifier|private
+specifier|final
 name|ThreadFactory
 name|factory
 init|=
@@ -1926,6 +1968,8 @@ operator|new
 name|ThreadFactory
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Thread
 name|newThread
