@@ -919,7 +919,7 @@ operator|=
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq:Type=Broker,*"
+literal|"org.apache.activemq:type=Broker,*"
 argument_list|)
 expr_stmt|;
 block|}
@@ -930,13 +930,13 @@ operator|=
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq:BrokerName="
+literal|"org.apache.activemq:brokerName="
 operator|+
 name|this
 operator|.
 name|brokerName
 operator|+
-literal|",Type=Broker"
+literal|",Type=broker"
 argument_list|)
 expr_stmt|;
 block|}
