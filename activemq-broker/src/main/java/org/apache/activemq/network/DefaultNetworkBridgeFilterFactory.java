@@ -87,6 +87,8 @@ return|return
 operator|new
 name|NetworkBridgeFilter
 argument_list|(
+name|info
+argument_list|,
 name|remoteBrokerPath
 index|[
 literal|0

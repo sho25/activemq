@@ -497,6 +497,8 @@ name|consumerName
 init|=
 literal|"durableSubs"
 decl_stmt|;
+comment|// works b/c of non marshaling vm transport, the connection
+comment|// ref from the client is used during the forward
 annotation|@
 name|Test
 specifier|public

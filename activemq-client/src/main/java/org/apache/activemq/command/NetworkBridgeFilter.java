@@ -152,6 +152,10 @@ specifier|protected
 name|int
 name|networkTTL
 decl_stmt|;
+specifier|transient
+name|ConsumerInfo
+name|consumerInfo
+decl_stmt|;
 specifier|public
 name|NetworkBridgeFilter
 parameter_list|()
@@ -159,6 +163,9 @@ block|{     }
 specifier|public
 name|NetworkBridgeFilter
 parameter_list|(
+name|ConsumerInfo
+name|consumerInfo
+parameter_list|,
 name|BrokerId
 name|networkBrokerId
 parameter_list|,
@@ -177,6 +184,12 @@ operator|.
 name|networkTTL
 operator|=
 name|networkTTL
+expr_stmt|;
+name|this
+operator|.
+name|consumerInfo
+operator|=
+name|consumerInfo
 expr_stmt|;
 block|}
 specifier|public
@@ -395,7 +408,46 @@ name|message
 operator|.
 name|isAdvisory
 argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|consumerInfo
+operator|!=
+literal|null
 operator|&&
+name|consumerInfo
+operator|.
+name|isNetworkSubscription
+argument_list|()
+condition|)
+block|{
+comment|// they will be interpreted by the bridge leading to dup commands
+comment|//if (LOG.isTraceEnabled()) {
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"not propagating advisory to network sub: "
+operator|+
+name|consumerInfo
+operator|.
+name|getConsumerId
+argument_list|()
+operator|+
+literal|", message: "
+operator|+
+name|message
+argument_list|)
+expr_stmt|;
+comment|//}
+return|return
+literal|false
+return|;
+block|}
+elseif|else
+if|if
+condition|(
 name|message
 operator|.
 name|getDataStructure
@@ -519,6 +571,7 @@ expr_stmt|;
 return|return
 literal|false
 return|;
+block|}
 block|}
 block|}
 return|return

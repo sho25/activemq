@@ -10,8 +10,6 @@ operator|.
 name|apache
 operator|.
 name|activemq
-operator|.
-name|broker
 package|;
 end_package
 
@@ -25,64 +23,59 @@ name|JMSException
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQDestination
-import|;
-end_import
-
 begin_comment
-comment|/**  * An exception thrown if a destination is attempted to be created when it already exists.  *   *   */
+comment|/**  * An exception thrown on a send if a destination does not exist.  * Allows a network bridge to easily cherry-pick and ignore  *   */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|DestinationAlreadyExistsException
+name|DestinationDoesNotExistException
 extends|extends
 name|JMSException
 block|{
-specifier|private
-specifier|final
-name|ActiveMQDestination
-name|destination
-decl_stmt|;
 specifier|public
-name|DestinationAlreadyExistsException
+name|DestinationDoesNotExistException
 parameter_list|(
-name|ActiveMQDestination
+name|String
 name|destination
 parameter_list|)
 block|{
 name|super
 argument_list|(
-literal|"Destination already exists: "
-operator|+
 name|destination
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|destination
-operator|=
-name|destination
-expr_stmt|;
 block|}
 specifier|public
-name|ActiveMQDestination
-name|getDestination
+name|boolean
+name|isTemporary
 parameter_list|()
 block|{
 return|return
-name|destination
+name|getMessage
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"temp-"
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getLocalizedMessage
+parameter_list|()
+block|{
+return|return
+literal|"The destination "
+operator|+
+name|getMessage
+argument_list|()
+operator|+
+literal|" does not exist."
 return|;
 block|}
 block|}

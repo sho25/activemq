@@ -3623,7 +3623,7 @@ name|advisoryMessage
 argument_list|)
 expr_stmt|;
 block|}
-specifier|protected
+specifier|public
 name|void
 name|fireAdvisory
 parameter_list|(

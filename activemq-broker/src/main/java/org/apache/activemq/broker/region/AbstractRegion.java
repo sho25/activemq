@@ -149,9 +149,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
-operator|.
-name|DestinationAlreadyExistsException
+name|DestinationDoesNotExistException
 import|;
 end_import
 
@@ -166,20 +164,6 @@ operator|.
 name|broker
 operator|.
 name|ProducerBrokerExchange
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|TransportConnection
 import|;
 end_import
 
@@ -254,20 +238,6 @@ operator|.
 name|command
 operator|.
 name|ConsumerInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|DestinationInfo
 import|;
 end_import
 
@@ -1058,13 +1028,12 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|JMSException
+name|DestinationDoesNotExistException
 argument_list|(
-literal|"The destination "
-operator|+
 name|destination
-operator|+
-literal|" does not exist."
+operator|.
+name|getQualifiedName
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -2499,8 +2468,6 @@ block|{
 comment|// Try to auto create the destination... re-invoke broker
 comment|// from the
 comment|// top so that the proper security checks are performed.
-try|try
-block|{
 name|context
 operator|.
 name|getBroker
@@ -2526,16 +2493,6 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|DestinationAlreadyExistsException
-name|e
-parameter_list|)
-block|{
-comment|// if the destination already exists then lets ignore
-comment|// this error
-block|}
 comment|// We should now have the dest created.
 name|destinationsLock
 operator|.

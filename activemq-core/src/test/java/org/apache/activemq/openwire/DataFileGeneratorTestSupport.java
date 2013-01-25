@@ -2257,6 +2257,8 @@ return|return
 operator|new
 name|NetworkBridgeFilter
 argument_list|(
+literal|null
+argument_list|,
 operator|new
 name|BrokerId
 argument_list|(
