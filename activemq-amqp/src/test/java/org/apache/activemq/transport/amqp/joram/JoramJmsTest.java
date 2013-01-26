@@ -459,16 +459,7 @@ condition|(
 literal|false
 condition|)
 block|{
-comment|// Fails due to https://issues.apache.org/jira/browse/QPID-4454
-name|suite
-operator|.
-name|addTestSuite
-argument_list|(
-name|MessageHeaderTest
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
+comment|// Fails due to
 comment|// https://issues.apache.org/jira/browse/PROTON-154
 name|suite
 operator|.
@@ -480,12 +471,16 @@ name|class
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO: enable once QPID 0.20 is released
-if|if
-condition|(
-literal|false
-condition|)
-block|{
+comment|// Passing tests
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|MessageHeaderTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|suite
 operator|.
 name|addTestSuite
@@ -531,8 +526,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-block|}
-comment|// Passing tests
 name|suite
 operator|.
 name|addTestSuite
