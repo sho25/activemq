@@ -163,6 +163,15 @@ name|boolean
 name|isActive
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Subscription was created by a demand-forwarding network bridge"
+argument_list|)
+name|boolean
+name|isNetwork
+parameter_list|()
+function_decl|;
 comment|/**      * @return number of messages pending delivery      */
 annotation|@
 name|MBeanInfo
