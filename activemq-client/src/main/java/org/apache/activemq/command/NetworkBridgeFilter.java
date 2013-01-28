@@ -423,10 +423,17 @@ argument_list|()
 condition|)
 block|{
 comment|// they will be interpreted by the bridge leading to dup commands
-comment|//if (LOG.isTraceEnabled()) {
+if|if
+condition|(
 name|LOG
 operator|.
-name|error
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
 argument_list|(
 literal|"not propagating advisory to network sub: "
 operator|+
@@ -440,7 +447,7 @@ operator|+
 name|message
 argument_list|)
 expr_stmt|;
-comment|//}
+block|}
 return|return
 literal|false
 return|;
