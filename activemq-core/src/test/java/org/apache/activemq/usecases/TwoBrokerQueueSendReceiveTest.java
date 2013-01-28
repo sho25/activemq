@@ -276,7 +276,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-literal|1
+literal|0
 operator|==
 name|bridge
 operator|.
