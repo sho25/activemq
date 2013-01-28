@@ -128,10 +128,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  * @deprecated  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|XmppTransportServer

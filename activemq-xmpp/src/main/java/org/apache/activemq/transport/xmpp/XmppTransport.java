@@ -385,6 +385,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|jabber
+operator|.
+name|etherx
+operator|.
+name|streams
+operator|.
+name|Features
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -401,25 +415,13 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|jabber
-operator|.
-name|etherx
-operator|.
-name|streams
-operator|.
-name|Features
-import|;
-end_import
-
 begin_comment
-comment|/**  *   */
+comment|/**  * @deprecated  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|XmppTransport
@@ -837,6 +839,8 @@ operator|new
 name|XMLReporter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|report
