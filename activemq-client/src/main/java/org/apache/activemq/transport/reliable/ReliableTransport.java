@@ -182,10 +182,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This interceptor deals with out of order commands together with being able to  * handle dropped commands and the re-requesting dropped commands.  *   *   */
+comment|/**  * This interceptor deals with out of order commands together with being able to  * handle dropped commands and the re-requesting dropped commands.  *  * @deprecated  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|ReliableTransport
@@ -212,6 +214,7 @@ name|ReplayStrategy
 name|replayStrategy
 decl_stmt|;
 specifier|private
+specifier|final
 name|SortedSet
 argument_list|<
 name|Command
@@ -376,6 +379,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|request
@@ -440,6 +445,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|request
@@ -538,6 +545,8 @@ literal|0
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onCommand
@@ -1016,6 +1025,8 @@ operator|=
 name|replayer
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -1028,6 +1039,8 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start

@@ -270,10 +270,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A UDP based implementation of {@link TransportServer}  *  *  */
+comment|/**  * A UDP based implementation of {@link TransportServer}  *  * @deprecated  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|UdpTransportServer
@@ -296,14 +298,17 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|UdpTransport
 name|serverTransport
 decl_stmt|;
 specifier|private
+specifier|final
 name|ReplayStrategy
 name|replayStrategy
 decl_stmt|;
 specifier|private
+specifier|final
 name|Transport
 name|configuredTransport
 decl_stmt|;
@@ -312,6 +317,7 @@ name|boolean
 name|usingWireFormatNegotiation
 decl_stmt|;
 specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|DatagramEndpoint
@@ -369,6 +375,8 @@ operator|=
 name|replayStrategy
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -394,6 +402,8 @@ return|return
 name|serverTransport
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerInfo
@@ -402,6 +412,8 @@ name|BrokerInfo
 name|brokerInfo
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStart
@@ -426,6 +438,8 @@ operator|new
 name|TransportListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onCommand
@@ -449,6 +463,8 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onException
@@ -469,11 +485,15 @@ name|error
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|transportInterupted
 parameter_list|()
 block|{             }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|transportResumed
@@ -488,6 +508,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStop
@@ -827,6 +849,8 @@ argument_list|,
 name|connectionWireFormat
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -851,6 +875,8 @@ block|}
 return|;
 comment|/**          * final WireFormatNegotiator wireFormatNegotiator = new          * WireFormatNegotiator(configuredTransport, transport.getWireFormat(),          * serverTransport .getMinmumWireFormatVersion()) { public void start()          * throws Exception { super.start(); log.debug("Starting a new server          * transport: " + this + " with command: " + command);          * onCommand(command); } // lets use the specific addressing of wire          * format protected void sendWireFormat(WireFormatInfo info) throws          * IOException { log.debug("#### we have negotiated the wireformat;          * sending a wireformat to: " + address); transport.oneway(info,          * address); } }; return wireFormatNegotiator;          */
 block|}
+annotation|@
+name|Override
 specifier|public
 name|InetSocketAddress
 name|getSocketAddress
