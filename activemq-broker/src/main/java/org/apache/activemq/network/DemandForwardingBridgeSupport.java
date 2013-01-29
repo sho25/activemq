@@ -2100,7 +2100,8 @@ name|isDuplex
 argument_list|()
 condition|)
 block|{
-comment|// separate inbound chanel for forwards so we don't contend with outbound dispatch on same connection
+comment|// separate in-bound chamnel for forwards so we don't
+comment|// contend with out-bound dispatch on same connection
 name|ConnectionInfo
 name|duplexLocalConnectionInfo
 init|=
@@ -2656,8 +2657,7 @@ argument_list|(
 name|producerInfo
 argument_list|)
 expr_stmt|;
-comment|// Listen to consumer advisory messages on the remote broker to
-comment|// determine demand.
+comment|// Listen to consumer advisory messages on the remote broker to determine demand.
 if|if
 condition|(
 operator|!
@@ -2677,8 +2677,8 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-comment|// always dispatch advisory message asynchronously so that we never block the producer
-comment|// broker if we are slow
+comment|// always dispatch advisory message asynchronously so that
+comment|// we never block the producer broker if we are slow
 name|demandConsumerInfo
 operator|.
 name|setDispatchAsync
@@ -3574,7 +3574,8 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// message being forwarded - we need to propagate the response to our local send
+comment|// message being forwarded - we need to
+comment|// propagate the response to our local send
 name|message
 operator|.
 name|setProducerId
@@ -4607,7 +4608,8 @@ name|isRemoveOperation
 argument_list|()
 condition|)
 block|{
-comment|// Serialize with removeSub operations such that all removeSub advisories are generated
+comment|// Serialize with removeSub operations such that all removeSub advisories
+comment|// are generated
 name|serialExecutor
 operator|.
 name|execute
@@ -4761,7 +4763,8 @@ name|isTemporary
 argument_list|()
 condition|)
 block|{
-comment|// not a reason to terminate the bridge - temps can disappear with pending sends as the demand sub may outlive the remote dest
+comment|// not a reason to terminate the bridge - temps can disappear with
+comment|// pending sends as the demand sub may outlive the remote dest
 if|if
 condition|(
 name|messageDispatch
@@ -5210,8 +5213,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// continue removal in separate thread to free up this thread for outstanding responses
-comment|// Serialize with removeDestination operations so that removeSubs are serialised with removeDestinations
-comment|// such that all removeSub advisories are generated
+comment|// Serialize with removeDestination operations so that removeSubs are serialized with
+comment|// removeDestinations such that all removeSub advisories are generated
 name|serialExecutor
 operator|.
 name|execute
@@ -5638,9 +5641,8 @@ name|isPersistent
 argument_list|()
 condition|)
 block|{
-comment|// If the message was originally sent using async
-comment|// send, we will preserve that QOS
-comment|// by bridging it using an async send (small chance
+comment|// If the message was originally sent using async send, we will
+comment|// preserve that QOS by bridging it using an async send (small chance
 comment|// of message loss).
 try|try
 block|{
@@ -5685,9 +5687,8 @@ block|}
 block|}
 else|else
 block|{
-comment|// The message was not sent using async send, so we
-comment|// should only ack the local
-comment|// broker when we get confirmation that the remote
+comment|// The message was not sent using async send, so we should only
+comment|// ack the local broker when we get confirmation that the remote
 comment|// broker has received the message.
 name|ResponseCallback
 name|callback
@@ -5966,6 +5967,191 @@ expr_stmt|;
 block|}
 block|}
 block|}
+specifier|protected
+name|void
+name|serviceLocalBrokerInfo
+parameter_list|(
+name|Command
+name|command
+parameter_list|)
+throws|throws
+name|InterruptedException
+block|{
+synchronized|synchronized
+init|(
+name|brokerInfoMutex
+init|)
+block|{
+if|if
+condition|(
+name|remoteBrokerId
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|remoteBrokerId
+operator|.
+name|equals
+argument_list|(
+name|localBrokerId
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" disconnecting local loop back connection for: "
+operator|+
+name|remoteBrokerName
+operator|+
+literal|", with id:"
+operator|+
+name|remoteBrokerId
+argument_list|)
+expr_stmt|;
+block|}
+name|safeWaitUntilStarted
+argument_list|()
+expr_stmt|;
+name|ServiceSupport
+operator|.
+name|dispose
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+block|}
+specifier|protected
+name|void
+name|serviceRemoteBrokerInfo
+parameter_list|(
+name|Command
+name|command
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+synchronized|synchronized
+init|(
+name|brokerInfoMutex
+init|)
+block|{
+name|BrokerInfo
+name|remoteBrokerInfo
+init|=
+operator|(
+name|BrokerInfo
+operator|)
+name|command
+decl_stmt|;
+name|remoteBrokerId
+operator|=
+name|remoteBrokerInfo
+operator|.
+name|getBrokerId
+argument_list|()
+expr_stmt|;
+name|remoteBrokerPath
+index|[
+literal|0
+index|]
+operator|=
+name|remoteBrokerId
+expr_stmt|;
+name|remoteBrokerName
+operator|=
+name|remoteBrokerInfo
+operator|.
+name|getBrokerName
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|localBrokerId
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|localBrokerId
+operator|.
+name|equals
+argument_list|(
+name|remoteBrokerId
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" disconnecting remote loop back connection for: "
+operator|+
+name|remoteBrokerName
+operator|+
+literal|", with id:"
+operator|+
+name|remoteBrokerId
+argument_list|)
+expr_stmt|;
+block|}
+name|ServiceSupport
+operator|.
+name|dispose
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+operator|!
+name|disposed
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
+name|triggerLocalStartBridge
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+block|}
 specifier|private
 name|boolean
 name|suppressMessageDispatch
@@ -5984,8 +6170,8 @@ name|suppress
 init|=
 literal|false
 decl_stmt|;
-comment|// for durable subs, suppression via filter leaves dangling acks so we need to
-comment|// check here and allow the ack irrespective
+comment|// for durable subs, suppression via filter leaves dangling acks so we
+comment|// need to check here and allow the ack irrespective
 if|if
 condition|(
 name|sub
@@ -6042,166 +6228,6 @@ return|return
 name|suppress
 return|;
 block|}
-comment|/**      * @return Returns the dynamicallyIncludedDestinations.      */
-specifier|public
-name|ActiveMQDestination
-index|[]
-name|getDynamicallyIncludedDestinations
-parameter_list|()
-block|{
-return|return
-name|dynamicallyIncludedDestinations
-return|;
-block|}
-comment|/**      * @param dynamicallyIncludedDestinations The      *            dynamicallyIncludedDestinations to set.      */
-specifier|public
-name|void
-name|setDynamicallyIncludedDestinations
-parameter_list|(
-name|ActiveMQDestination
-index|[]
-name|dynamicallyIncludedDestinations
-parameter_list|)
-block|{
-name|this
-operator|.
-name|dynamicallyIncludedDestinations
-operator|=
-name|dynamicallyIncludedDestinations
-expr_stmt|;
-block|}
-comment|/**      * @return Returns the excludedDestinations.      */
-specifier|public
-name|ActiveMQDestination
-index|[]
-name|getExcludedDestinations
-parameter_list|()
-block|{
-return|return
-name|excludedDestinations
-return|;
-block|}
-comment|/**      * @param excludedDestinations The excludedDestinations to set.      */
-specifier|public
-name|void
-name|setExcludedDestinations
-parameter_list|(
-name|ActiveMQDestination
-index|[]
-name|excludedDestinations
-parameter_list|)
-block|{
-name|this
-operator|.
-name|excludedDestinations
-operator|=
-name|excludedDestinations
-expr_stmt|;
-block|}
-comment|/**      * @return Returns the staticallyIncludedDestinations.      */
-specifier|public
-name|ActiveMQDestination
-index|[]
-name|getStaticallyIncludedDestinations
-parameter_list|()
-block|{
-return|return
-name|staticallyIncludedDestinations
-return|;
-block|}
-comment|/**      * @param staticallyIncludedDestinations The staticallyIncludedDestinations      *            to set.      */
-specifier|public
-name|void
-name|setStaticallyIncludedDestinations
-parameter_list|(
-name|ActiveMQDestination
-index|[]
-name|staticallyIncludedDestinations
-parameter_list|)
-block|{
-name|this
-operator|.
-name|staticallyIncludedDestinations
-operator|=
-name|staticallyIncludedDestinations
-expr_stmt|;
-block|}
-comment|/**      * @return Returns the durableDestinations.      */
-specifier|public
-name|ActiveMQDestination
-index|[]
-name|getDurableDestinations
-parameter_list|()
-block|{
-return|return
-name|durableDestinations
-return|;
-block|}
-comment|/**      * @param durableDestinations The durableDestinations to set.      */
-specifier|public
-name|void
-name|setDurableDestinations
-parameter_list|(
-name|ActiveMQDestination
-index|[]
-name|durableDestinations
-parameter_list|)
-block|{
-name|this
-operator|.
-name|durableDestinations
-operator|=
-name|durableDestinations
-expr_stmt|;
-block|}
-comment|/**      * @return Returns the localBroker.      */
-specifier|public
-name|Transport
-name|getLocalBroker
-parameter_list|()
-block|{
-return|return
-name|localBroker
-return|;
-block|}
-comment|/**      * @return Returns the remoteBroker.      */
-specifier|public
-name|Transport
-name|getRemoteBroker
-parameter_list|()
-block|{
-return|return
-name|remoteBroker
-return|;
-block|}
-comment|/**      * @return the createdByDuplex      */
-specifier|public
-name|boolean
-name|isCreatedByDuplex
-parameter_list|()
-block|{
-return|return
-name|this
-operator|.
-name|createdByDuplex
-return|;
-block|}
-comment|/**      * @param createdByDuplex the createdByDuplex to set      */
-specifier|public
-name|void
-name|setCreatedByDuplex
-parameter_list|(
-name|boolean
-name|createdByDuplex
-parameter_list|)
-block|{
-name|this
-operator|.
-name|createdByDuplex
-operator|=
-name|createdByDuplex
-expr_stmt|;
-block|}
 specifier|public
 specifier|static
 name|boolean
@@ -6224,19 +6250,10 @@ condition|)
 block|{
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|BrokerId
+name|id
+range|:
 name|brokerPath
-operator|.
-name|length
-condition|;
-name|i
-operator|++
 control|)
 block|{
 if|if
@@ -6245,10 +6262,7 @@ name|brokerId
 operator|.
 name|equals
 argument_list|(
-name|brokerPath
-index|[
-name|i
-index|]
+name|id
 argument_list|)
 condition|)
 block|{
@@ -6505,29 +6519,12 @@ condition|)
 block|{
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|ActiveMQDestination
+name|dest
+range|:
 name|dests
-operator|.
-name|length
-condition|;
-name|i
-operator|++
 control|)
 block|{
-name|ActiveMQDestination
-name|match
-init|=
-name|dests
-index|[
-name|i
-index|]
-decl_stmt|;
 name|DestinationFilter
 name|inclusionFilter
 init|=
@@ -6535,12 +6532,12 @@ name|DestinationFilter
 operator|.
 name|parseFilter
 argument_list|(
-name|match
+name|dest
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|match
+name|dest
 operator|!=
 literal|null
 operator|&&
@@ -6551,10 +6548,7 @@ argument_list|(
 name|destination
 argument_list|)
 operator|&&
-name|dests
-index|[
-name|i
-index|]
+name|dest
 operator|.
 name|getDestinationType
 argument_list|()
@@ -6590,29 +6584,12 @@ condition|)
 block|{
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|ActiveMQDestination
+name|dest
+range|:
 name|dests
-operator|.
-name|length
-condition|;
-name|i
-operator|++
 control|)
 block|{
-name|ActiveMQDestination
-name|match
-init|=
-name|dests
-index|[
-name|i
-index|]
-decl_stmt|;
 name|DestinationFilter
 name|exclusionFilter
 init|=
@@ -6620,12 +6597,12 @@ name|DestinationFilter
 operator|.
 name|parseFilter
 argument_list|(
-name|match
+name|dest
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|match
+name|dest
 operator|!=
 literal|null
 operator|&&
@@ -6636,10 +6613,7 @@ argument_list|(
 name|destination
 argument_list|)
 operator|&&
-name|dests
-index|[
-name|i
-index|]
+name|dest
 operator|.
 name|getDestinationType
 argument_list|()
@@ -6675,29 +6649,12 @@ condition|)
 block|{
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|ActiveMQDestination
+name|dest
+range|:
 name|dests
-operator|.
-name|length
-condition|;
-name|i
-operator|++
 control|)
 block|{
-name|ActiveMQDestination
-name|match
-init|=
-name|dests
-index|[
-name|i
-index|]
-decl_stmt|;
 name|DestinationFilter
 name|inclusionFilter
 init|=
@@ -6705,12 +6662,12 @@ name|DestinationFilter
 operator|.
 name|parseFilter
 argument_list|(
-name|match
+name|dest
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|match
+name|dest
 operator|!=
 literal|null
 operator|&&
@@ -6721,10 +6678,7 @@ argument_list|(
 name|destination
 argument_list|)
 operator|&&
-name|dests
-index|[
-name|i
-index|]
+name|dest
 operator|.
 name|getDestinationType
 argument_list|()
@@ -6769,29 +6723,12 @@ condition|)
 block|{
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|dests
-operator|.
-name|length
-condition|;
-name|i
-operator|++
-control|)
-block|{
 name|ActiveMQDestination
 name|dest
-init|=
+range|:
 name|dests
-index|[
-name|i
-index|]
-decl_stmt|;
+control|)
+block|{
 name|DemandSubscription
 name|sub
 init|=
@@ -6957,7 +6894,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * check our existing subs networkConsumerIds against the list of network ids in this subscription      * A match means a duplicate which we suppress for topics and maybe for queues      */
+comment|/*      * check our existing subs networkConsumerIds against the list of network      * ids in this subscription A match means a duplicate which we suppress for      * topics and maybe for queues      */
 specifier|private
 name|boolean
 name|duplicateSuppressionIsRequired
@@ -7538,7 +7475,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|//add our original id to ourselves
+comment|// add our original id to ourselves
 name|info
 operator|.
 name|addNetworkConsumerId
@@ -7780,8 +7717,8 @@ name|remoteBrokerId
 block|}
 argument_list|)
 expr_stmt|;
-comment|// the remote info held by the DemandSubscription holds the original consumerId,
-comment|// the local info get's overwritten
+comment|// the remote info held by the DemandSubscription holds the original
+comment|// consumerId, the local info get's overwritten
 name|info
 operator|.
 name|setConsumerId
@@ -8147,7 +8084,7 @@ return|return
 name|removeDone
 return|;
 block|}
-comment|/**      * Performs a timed wait on the started latch and then checks for disposed before performing      * another wait each time the the started wait times out.      *      * @throws InterruptedException      */
+comment|/**      * Performs a timed wait on the started latch and then checks for disposed      * before performing another wait each time the the started wait times out.      *      * @throws InterruptedException      */
 specifier|protected
 name|void
 name|safeWaitUntilStarted
@@ -8269,79 +8206,6 @@ return|;
 block|}
 specifier|protected
 name|void
-name|serviceLocalBrokerInfo
-parameter_list|(
-name|Command
-name|command
-parameter_list|)
-throws|throws
-name|InterruptedException
-block|{
-synchronized|synchronized
-init|(
-name|brokerInfoMutex
-init|)
-block|{
-if|if
-condition|(
-name|remoteBrokerId
-operator|!=
-literal|null
-condition|)
-block|{
-if|if
-condition|(
-name|remoteBrokerId
-operator|.
-name|equals
-argument_list|(
-name|localBrokerId
-argument_list|)
-condition|)
-block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|trace
-argument_list|(
-name|configuration
-operator|.
-name|getBrokerName
-argument_list|()
-operator|+
-literal|" disconnecting local loop back connection for: "
-operator|+
-name|remoteBrokerName
-operator|+
-literal|", with id:"
-operator|+
-name|remoteBrokerId
-argument_list|)
-expr_stmt|;
-block|}
-name|safeWaitUntilStarted
-argument_list|()
-expr_stmt|;
-name|ServiceSupport
-operator|.
-name|dispose
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
-block|}
-specifier|protected
-name|void
 name|addRemoteBrokerToBrokerPath
 parameter_list|(
 name|ConsumerInfo
@@ -8366,118 +8230,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-specifier|protected
-name|void
-name|serviceRemoteBrokerInfo
-parameter_list|(
-name|Command
-name|command
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-synchronized|synchronized
-init|(
-name|brokerInfoMutex
-init|)
-block|{
-name|BrokerInfo
-name|remoteBrokerInfo
-init|=
-operator|(
-name|BrokerInfo
-operator|)
-name|command
-decl_stmt|;
-name|remoteBrokerId
-operator|=
-name|remoteBrokerInfo
-operator|.
-name|getBrokerId
-argument_list|()
-expr_stmt|;
-name|remoteBrokerPath
-index|[
-literal|0
-index|]
-operator|=
-name|remoteBrokerId
-expr_stmt|;
-name|remoteBrokerName
-operator|=
-name|remoteBrokerInfo
-operator|.
-name|getBrokerName
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-name|localBrokerId
-operator|!=
-literal|null
-condition|)
-block|{
-if|if
-condition|(
-name|localBrokerId
-operator|.
-name|equals
-argument_list|(
-name|remoteBrokerId
-argument_list|)
-condition|)
-block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|trace
-argument_list|(
-name|configuration
-operator|.
-name|getBrokerName
-argument_list|()
-operator|+
-literal|" disconnecting remote loop back connection for: "
-operator|+
-name|remoteBrokerName
-operator|+
-literal|", with id:"
-operator|+
-name|remoteBrokerId
-argument_list|)
-expr_stmt|;
-block|}
-name|ServiceSupport
-operator|.
-name|dispose
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-if|if
-condition|(
-operator|!
-name|disposed
-operator|.
-name|get
-argument_list|()
-condition|)
-block|{
-name|triggerLocalStartBridge
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 block|}
 specifier|protected
 name|BrokerId
@@ -8531,6 +8283,166 @@ name|bridgeFailed
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+comment|/**      * @return Returns the dynamicallyIncludedDestinations.      */
+specifier|public
+name|ActiveMQDestination
+index|[]
+name|getDynamicallyIncludedDestinations
+parameter_list|()
+block|{
+return|return
+name|dynamicallyIncludedDestinations
+return|;
+block|}
+comment|/**      * @param dynamicallyIncludedDestinations      *            The dynamicallyIncludedDestinations to set.      */
+specifier|public
+name|void
+name|setDynamicallyIncludedDestinations
+parameter_list|(
+name|ActiveMQDestination
+index|[]
+name|dynamicallyIncludedDestinations
+parameter_list|)
+block|{
+name|this
+operator|.
+name|dynamicallyIncludedDestinations
+operator|=
+name|dynamicallyIncludedDestinations
+expr_stmt|;
+block|}
+comment|/**      * @return Returns the excludedDestinations.      */
+specifier|public
+name|ActiveMQDestination
+index|[]
+name|getExcludedDestinations
+parameter_list|()
+block|{
+return|return
+name|excludedDestinations
+return|;
+block|}
+comment|/**      * @param excludedDestinations      *            The excludedDestinations to set.      */
+specifier|public
+name|void
+name|setExcludedDestinations
+parameter_list|(
+name|ActiveMQDestination
+index|[]
+name|excludedDestinations
+parameter_list|)
+block|{
+name|this
+operator|.
+name|excludedDestinations
+operator|=
+name|excludedDestinations
+expr_stmt|;
+block|}
+comment|/**      * @return Returns the staticallyIncludedDestinations.      */
+specifier|public
+name|ActiveMQDestination
+index|[]
+name|getStaticallyIncludedDestinations
+parameter_list|()
+block|{
+return|return
+name|staticallyIncludedDestinations
+return|;
+block|}
+comment|/**      * @param staticallyIncludedDestinations      *            The staticallyIncludedDestinations to set.      */
+specifier|public
+name|void
+name|setStaticallyIncludedDestinations
+parameter_list|(
+name|ActiveMQDestination
+index|[]
+name|staticallyIncludedDestinations
+parameter_list|)
+block|{
+name|this
+operator|.
+name|staticallyIncludedDestinations
+operator|=
+name|staticallyIncludedDestinations
+expr_stmt|;
+block|}
+comment|/**      * @return Returns the durableDestinations.      */
+specifier|public
+name|ActiveMQDestination
+index|[]
+name|getDurableDestinations
+parameter_list|()
+block|{
+return|return
+name|durableDestinations
+return|;
+block|}
+comment|/**      * @param durableDestinations      *            The durableDestinations to set.      */
+specifier|public
+name|void
+name|setDurableDestinations
+parameter_list|(
+name|ActiveMQDestination
+index|[]
+name|durableDestinations
+parameter_list|)
+block|{
+name|this
+operator|.
+name|durableDestinations
+operator|=
+name|durableDestinations
+expr_stmt|;
+block|}
+comment|/**      * @return Returns the localBroker.      */
+specifier|public
+name|Transport
+name|getLocalBroker
+parameter_list|()
+block|{
+return|return
+name|localBroker
+return|;
+block|}
+comment|/**      * @return Returns the remoteBroker.      */
+specifier|public
+name|Transport
+name|getRemoteBroker
+parameter_list|()
+block|{
+return|return
+name|remoteBroker
+return|;
+block|}
+comment|/**      * @return the createdByDuplex      */
+specifier|public
+name|boolean
+name|isCreatedByDuplex
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|createdByDuplex
+return|;
+block|}
+comment|/**      * @param createdByDuplex      *            the createdByDuplex to set      */
+specifier|public
+name|void
+name|setCreatedByDuplex
+parameter_list|(
+name|boolean
+name|createdByDuplex
+parameter_list|)
+block|{
+name|this
+operator|.
+name|createdByDuplex
+operator|=
+name|createdByDuplex
+expr_stmt|;
 block|}
 annotation|@
 name|Override
