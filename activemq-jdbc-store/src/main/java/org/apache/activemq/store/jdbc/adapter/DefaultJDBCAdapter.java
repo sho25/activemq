@@ -411,9 +411,15 @@ specifier|final
 name|int
 name|MAX_ROWS
 init|=
-name|BaseDestination
+name|org
 operator|.
-name|MAX_PAGE_SIZE
+name|apache
+operator|.
+name|activemq
+operator|.
+name|ActiveMQPrefetchPolicy
+operator|.
+name|MAX_PREFETCH_SIZE
 decl_stmt|;
 specifier|protected
 name|Statements
@@ -437,7 +443,6 @@ operator|new
 name|ReentrantReadWriteLock
 argument_list|()
 decl_stmt|;
-comment|// needs to be min twice the prefetch for a durable sub and large enough for selector range
 specifier|protected
 name|int
 name|maxRows
@@ -3666,7 +3671,7 @@ name|setMaxRows
 argument_list|(
 name|Math
 operator|.
-name|max
+name|min
 argument_list|(
 name|maxReturned
 operator|*
@@ -3909,7 +3914,7 @@ name|setMaxRows
 argument_list|(
 name|Math
 operator|.
-name|max
+name|min
 argument_list|(
 name|maxReturned
 operator|*
@@ -5730,6 +5735,7 @@ return|return
 name|maxRows
 return|;
 block|}
+comment|/**      * the max value for statement maxRows, used to limit jdbc queries      */
 specifier|public
 name|void
 name|setMaxRows
