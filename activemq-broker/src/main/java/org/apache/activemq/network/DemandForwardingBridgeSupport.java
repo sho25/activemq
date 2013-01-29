@@ -193,6 +193,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|DestinationDoesNotExistException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|Service
 import|;
 end_import
@@ -250,18 +262,6 @@ operator|.
 name|broker
 operator|.
 name|BrokerServiceAware
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|DestinationDoesNotExistException
 import|;
 end_import
 
@@ -864,20 +864,6 @@ operator|.
 name|transport
 operator|.
 name|TransportDisposedIOException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|TransportFactory
 import|;
 end_import
 
@@ -4621,7 +4607,7 @@ name|isRemoveOperation
 argument_list|()
 condition|)
 block|{
-comment|// serialise with removeSub operations such that all removeSub advisories are generated
+comment|// Serialize with removeSub operations such that all removeSub advisories are generated
 name|serialExecutor
 operator|.
 name|execute
@@ -5224,7 +5210,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// continue removal in separate thread to free up this thread for outstanding responses
-comment|// serialise with removeDestination operations so that removeSubs are serialised with removeDestinations
+comment|// Serialize with removeDestination operations so that removeSubs are serialised with removeDestinations
 comment|// such that all removeSub advisories are generated
 name|serialExecutor
 operator|.
