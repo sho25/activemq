@@ -430,10 +430,7 @@ argument_list|()
 operator|.
 name|isQueue
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|contains
 argument_list|(
 name|message
@@ -495,6 +492,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+else|else
+block|{
+comment|// use existing filter logic for topics and non replays
+name|match
+operator|=
+name|super
+operator|.
+name|matchesForwardingFilter
+argument_list|(
+name|message
+argument_list|,
+name|mec
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|match
@@ -546,22 +558,6 @@ block|}
 name|match
 operator|=
 literal|false
-expr_stmt|;
-block|}
-block|}
-else|else
-block|{
-comment|// use existing logic for topics
-name|match
-operator|=
-name|super
-operator|.
-name|matchesForwardingFilter
-argument_list|(
-name|message
-argument_list|,
-name|mec
-argument_list|)
 expr_stmt|;
 block|}
 return|return

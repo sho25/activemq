@@ -834,12 +834,9 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|Message
+name|MessageReference
 name|node
 init|=
-operator|(
-name|Message
-operator|)
 name|i
 operator|.
 name|next
