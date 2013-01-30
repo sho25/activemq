@@ -403,6 +403,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -453,6 +455,18 @@ argument_list|(
 name|payload
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"*** Sending response: {}"
+argument_list|,
+name|textMsg
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|remoteProducer
 operator|.
 name|send
@@ -469,6 +483,15 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"*** Responder listener caught exception: "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 name|e
 operator|.
 name|printStackTrace
@@ -574,7 +597,9 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Failing over"
+literal|"*** Failing over for iteration: #{}"
+argument_list|,
+name|i
 argument_list|)
 expr_stmt|;
 operator|(
@@ -639,6 +664,10 @@ name|LOG
 operator|.
 name|info
 argument_list|(
+literal|"*** Iteration #{} got response: {}"
+argument_list|,
+name|i
+argument_list|,
 name|result
 operator|.
 name|getText
@@ -647,6 +676,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -665,6 +696,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -688,6 +721,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+block|{
 name|localConnection
 operator|.
 name|close
@@ -698,16 +733,41 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{}
+try|try
+block|{
 name|localBroker
 operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{}
+try|try
+block|{
 name|remoteBroker
 operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{}
 block|}
 specifier|protected
 name|void
@@ -780,7 +840,7 @@ operator|+
 literal|")?randomize=false&backup=true&trackMessages=true"
 argument_list|)
 decl_stmt|;
-comment|//ActiveMQConnectionFactory fac = new ActiveMQConnectionFactory(localURI);
+comment|// ActiveMQConnectionFactory fac = new ActiveMQConnectionFactory(localURI);
 name|localConnection
 operator|=
 name|fac
