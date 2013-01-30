@@ -2299,6 +2299,14 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
@@ -2318,6 +2326,7 @@ operator|+
 literal|") has been established."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -2781,6 +2790,14 @@ literal|true
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -2797,6 +2814,7 @@ operator|+
 name|remoteBrokerName
 argument_list|)
 expr_stmt|;
+block|}
 name|NetworkBridgeListener
 name|l
 init|=
@@ -2889,6 +2907,14 @@ operator|.
 name|shutdownNow
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
@@ -2898,6 +2924,7 @@ operator|+
 name|pendingTasks
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|localBroker
 operator|.
@@ -2924,6 +2951,14 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -2933,6 +2968,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
@@ -3055,6 +3091,14 @@ argument_list|(
 name|remoteBrokerInfo
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
@@ -3071,6 +3115,7 @@ operator|+
 literal|" stopped"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -4865,6 +4910,14 @@ expr_stmt|;
 block|}
 return|return;
 block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isInfoEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
@@ -4882,6 +4935,15 @@ operator|+
 name|error
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -4893,6 +4955,7 @@ argument_list|,
 name|error
 argument_list|)
 expr_stmt|;
+block|}
 name|brokerService
 operator|.
 name|getTaskRunnerFactory
