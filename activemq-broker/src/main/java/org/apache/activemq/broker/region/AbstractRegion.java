@@ -3180,7 +3180,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"failed to deliver consumerControl to destination: "
+literal|"failed to deliver post consumerControl dispatch-wakeup, to destination: "
 operator|+
 name|control
 operator|.
