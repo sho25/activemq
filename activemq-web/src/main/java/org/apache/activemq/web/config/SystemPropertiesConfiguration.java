@@ -60,7 +60,7 @@ name|SystemPropertiesConfiguration
 extends|extends
 name|AbstractConfiguration
 block|{
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -68,7 +68,7 @@ name|PROPERTY_JMS_URL
 init|=
 literal|"webconsole.jms.url"
 decl_stmt|;
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -76,7 +76,7 @@ name|PROPERTY_JMS_USER
 init|=
 literal|"webconsole.jms.user"
 decl_stmt|;
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -84,7 +84,7 @@ name|PROPERTY_JMS_PASSWORD
 init|=
 literal|"webconsole.jms.password"
 decl_stmt|;
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -92,7 +92,7 @@ name|PROPERTY_JMX_URL
 init|=
 literal|"webconsole.jmx.url"
 decl_stmt|;
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -100,7 +100,7 @@ name|PROPERTY_JMX_USER
 init|=
 literal|"webconsole.jmx.user"
 decl_stmt|;
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
