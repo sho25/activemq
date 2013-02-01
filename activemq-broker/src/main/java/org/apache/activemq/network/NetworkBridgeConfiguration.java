@@ -263,7 +263,7 @@ specifier|private
 name|boolean
 name|alwaysSyncSend
 init|=
-literal|false
+literal|true
 decl_stmt|;
 specifier|private
 name|boolean
