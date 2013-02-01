@@ -414,6 +414,22 @@ name|COMMAND_TIMEOUT
 init|=
 literal|10000L
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|USER
+init|=
+literal|"karaf"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PASSWORD
+init|=
+literal|"karaf"
+decl_stmt|;
 specifier|static
 name|String
 name|basedir
@@ -613,7 +629,7 @@ name|put
 argument_list|(
 literal|"USER"
 argument_list|,
-literal|"karaf"
+name|USER
 argument_list|)
 expr_stmt|;
 name|FutureTask
@@ -771,66 +787,6 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|//    protected void testComponent(String component) throws Exception {
-comment|//        long max = System.currentTimeMillis() + 10000;
-comment|//        while (true) {
-comment|//            try {
-comment|//                assertNotNull("Cannot get component with name: " + component, createCamelContext().getComponent(component));
-comment|//                return;
-comment|//            } catch (Exception t) {
-comment|//                if (System.currentTimeMillis()< max) {
-comment|//                    Thread.sleep(1000);
-comment|//                } else {
-comment|//                    throw t;
-comment|//                }
-comment|//            }
-comment|//        }
-comment|//    }
-comment|//
-comment|//    protected void testDataFormat(String format) throws Exception {
-comment|//        long max = System.currentTimeMillis() + 10000;
-comment|//        while (true) {
-comment|//            try {
-comment|//                DataFormatDefinition dataFormatDefinition = createDataformatDefinition(format);
-comment|//                assertNotNull(dataFormatDefinition);
-comment|//                assertNotNull(dataFormatDefinition.getDataFormat(new DefaultRouteContext(createCamelContext())));
-comment|//                return;
-comment|//            } catch (Exception t) {
-comment|//                if (System.currentTimeMillis()< max) {
-comment|//                    Thread.sleep(1000);
-comment|//                    continue;
-comment|//                } else {
-comment|//                    throw t;
-comment|//                }
-comment|//            }
-comment|//        }
-comment|//    }
-comment|//
-comment|//    protected DataFormatDefinition createDataformatDefinition(String format) {
-comment|//        return null;
-comment|//    }
-comment|//    protected void testLanguage(String lang) throws Exception {
-comment|//        long max = System.currentTimeMillis() + 10000;
-comment|//        while (true) {
-comment|//            try {
-comment|//                assertNotNull(createCamelContext().resolveLanguage(lang));
-comment|//                return;
-comment|//            } catch (Exception t) {
-comment|//                if (System.currentTimeMillis()< max) {
-comment|//                    Thread.sleep(1000);
-comment|//                    continue;
-comment|//                } else {
-comment|//                    throw t;
-comment|//                }
-comment|//            }
-comment|//        }
-comment|//    }
-comment|//    protected CamelContext createCamelContext() throws Exception {
-comment|//        CamelContextFactory factory = new CamelContextFactory();
-comment|//        factory.setBundleContext(bundleContext);
-comment|//        LOG.info("Get the bundleContext is " + bundleContext);
-comment|//        return factory.createContext();
-comment|//    }
 specifier|public
 specifier|static
 name|String
