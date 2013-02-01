@@ -320,6 +320,10 @@ name|ConfigurationException
 block|{
 name|jmxUrl
 operator|=
+name|dictionary
+operator|!=
+literal|null
+condition|?
 operator|(
 name|String
 operator|)
@@ -331,6 +335,8 @@ name|SystemPropertiesConfiguration
 operator|.
 name|PROPERTY_JMX_URL
 argument_list|)
+else|:
+literal|null
 expr_stmt|;
 if|if
 condition|(
