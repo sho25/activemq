@@ -268,6 +268,12 @@ parameter_list|)
 throws|throws
 name|ConfigurationException
 block|{
+comment|// First stop currently running broker (if any)
+name|deleted
+argument_list|(
+name|pid
+argument_list|)
+expr_stmt|;
 name|String
 name|config
 init|=
@@ -565,15 +571,6 @@ name|String
 name|pid
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Stopping broker "
-operator|+
-name|pid
-argument_list|)
-expr_stmt|;
 name|BrokerService
 name|broker
 init|=
@@ -591,21 +588,19 @@ operator|==
 literal|null
 condition|)
 block|{
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"Broker "
-operator|+
-name|pid
-operator|+
-literal|" not found"
-argument_list|)
-expr_stmt|;
 return|return;
 block|}
 try|try
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Stopping broker "
+operator|+
+name|pid
+argument_list|)
+expr_stmt|;
 name|broker
 operator|.
 name|stop
