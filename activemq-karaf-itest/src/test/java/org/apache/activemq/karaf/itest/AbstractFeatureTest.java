@@ -983,7 +983,7 @@ name|File
 argument_list|(
 name|basedir
 operator|+
-literal|"/src/test/resources/org/apache/activemq/karaf/itest/org.apache.activemq.server.cfg"
+literal|"/src/test/resources/org/apache/activemq/karaf/itest/org.apache.activemq.server-default.cfg"
 argument_list|)
 argument_list|)
 argument_list|)
