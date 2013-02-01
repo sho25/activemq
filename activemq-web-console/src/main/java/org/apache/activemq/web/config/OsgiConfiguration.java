@@ -95,6 +95,16 @@ end_import
 
 begin_import
 import|import
+name|sun
+operator|.
+name|util
+operator|.
+name|LocaleServiceProviderPool
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -318,12 +328,15 @@ parameter_list|)
 throws|throws
 name|ConfigurationException
 block|{
-name|jmxUrl
-operator|=
+if|if
+condition|(
 name|dictionary
 operator|!=
 literal|null
-condition|?
+condition|)
+block|{
+name|jmxUrl
+operator|=
 operator|(
 name|String
 operator|)
@@ -335,8 +348,6 @@ name|SystemPropertiesConfiguration
 operator|.
 name|PROPERTY_JMX_URL
 argument_list|)
-else|:
-literal|null
 expr_stmt|;
 if|if
 condition|(
@@ -385,7 +396,7 @@ operator|.
 name|PROPERTY_JMX_PASSWORD
 argument_list|)
 expr_stmt|;
-name|jmxUrl
+name|jmsUrl
 operator|=
 operator|(
 name|String
@@ -427,6 +438,7 @@ operator|.
 name|PROPERTY_JMS_PASSWORD
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class
