@@ -16,6 +16,54 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -67,40 +115,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CountDownLatch
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|ExceptionListener
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -116,16 +130,6 @@ operator|.
 name|jms
 operator|.
 name|MessageConsumer
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|MessageProducer
 import|;
 end_import
 
@@ -156,16 +160,6 @@ operator|.
 name|sql
 operator|.
 name|DataSource
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -375,6 +369,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|network
+operator|.
+name|NetworkConnector
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|store
 operator|.
 name|PersistenceAdapter
@@ -501,37 +509,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|wireformat
-operator|.
-name|ObjectStreamWireFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|xbean
 operator|.
 name|BrokerFactoryBean
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|derby
-operator|.
-name|jdbc
-operator|.
-name|EmbeddedDataSource
 import|;
 end_import
 
@@ -552,6 +532,16 @@ operator|.
 name|jmock
 operator|.
 name|Mockery
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -617,16 +607,10 @@ name|Resource
 import|;
 end_import
 
-begin_comment
-comment|/**  *  */
-end_comment
-
 begin_class
 specifier|public
 class|class
 name|ConfigTest
-extends|extends
-name|TestCase
 block|{
 specifier|protected
 specifier|static
@@ -726,6 +710,8 @@ expr_stmt|;
 block|}
 comment|/*      * IMPORTANT NOTE: Assertions checking for the existence of the derby      * directory will fail if the first derby directory is not created under      * target/test-data/. The test in unable to change the derby root directory      * for succeeding creation. It uses the first created directory as the root.      */
 comment|/*      * This tests creating a journal persistence adapter using the persistence      * adapter factory bean      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testJournaledJDBCConfig
@@ -733,8 +719,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// System.out.print("Checking journaled JDBC persistence adapter
-comment|// configuration... ");
 name|File
 name|journalFile
 init|=
@@ -763,8 +747,6 @@ literal|"testJournaledJDBCConfig/derbydb"
 argument_list|)
 decl_stmt|;
 comment|// Default
-comment|// derby
-comment|// name
 name|recursiveDelete
 argument_list|(
 name|derbyFile
@@ -848,8 +830,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Check persistence factory configurations
-comment|// System.out.print("Checking persistence adapter factory
-comment|// settings... ");
 name|broker
 operator|.
 name|getPersistenceAdapter
@@ -896,174 +876,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/*      * This tests creating a jdbc persistence adapter using xbeans-spring      */
-specifier|public
-name|void
-name|testJdbcConfig
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// System.out.print("Checking jdbc persistence adapter configuration...
-comment|// ");
-name|File
-name|journalFile
-init|=
-operator|new
-name|File
-argument_list|(
-name|JOURNAL_ROOT
-operator|+
-literal|"testJDBCConfig/journal"
-argument_list|)
-decl_stmt|;
-name|recursiveDelete
-argument_list|(
-name|journalFile
-argument_list|)
-expr_stmt|;
-name|File
-name|derbyFile
-init|=
-operator|new
-name|File
-argument_list|(
-name|DERBY_ROOT
-operator|+
-literal|"testJDBCConfig/derbydb"
-argument_list|)
-decl_stmt|;
-comment|// Default
-comment|// derby
-comment|// name
-name|recursiveDelete
-argument_list|(
-name|derbyFile
-argument_list|)
-expr_stmt|;
-name|BrokerService
-name|broker
-decl_stmt|;
-name|broker
-operator|=
-name|createBroker
-argument_list|(
-operator|new
-name|FileSystemResource
-argument_list|(
-name|CONF_ROOT
-operator|+
-literal|"jdbc-example.xml"
-argument_list|)
-argument_list|)
-expr_stmt|;
-try|try
-block|{
-name|assertEquals
-argument_list|(
-literal|"Broker Config Error (brokerName)"
-argument_list|,
-literal|"brokerJdbcConfigTest"
-argument_list|,
-name|broker
-operator|.
-name|getBrokerName
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|PersistenceAdapter
-name|adapter
-init|=
-name|broker
-operator|.
-name|getPersistenceAdapter
-argument_list|()
-decl_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Should have created a jdbc persistence adapter"
-argument_list|,
-name|adapter
-operator|instanceof
-name|JDBCPersistenceAdapter
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"JDBC Adapter Config Error (cleanupPeriod)"
-argument_list|,
-literal|60000
-argument_list|,
-operator|(
-operator|(
-name|JDBCPersistenceAdapter
-operator|)
-name|adapter
-operator|)
-operator|.
-name|getCleanupPeriod
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Should have created an EmbeddedDataSource"
-argument_list|,
-operator|(
-operator|(
-name|JDBCPersistenceAdapter
-operator|)
-name|adapter
-operator|)
-operator|.
-name|getDataSource
-argument_list|()
-operator|instanceof
-name|EmbeddedDataSource
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"Should have created a DefaultWireFormat"
-argument_list|,
-operator|(
-operator|(
-name|JDBCPersistenceAdapter
-operator|)
-name|adapter
-operator|)
-operator|.
-name|getWireFormat
-argument_list|()
-operator|instanceof
-name|ObjectStreamWireFormat
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Success"
-argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|broker
-operator|!=
-literal|null
-condition|)
-block|{
-name|broker
-operator|.
-name|stop
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testJdbcLockConfigOverride
@@ -1454,6 +1268,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/*      * This tests configuring the different broker properties using      * xbeans-spring      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testBrokerConfig
@@ -1619,6 +1435,9 @@ expr_stmt|;
 comment|// Check transport connectors list
 comment|// System.out.print("Checking transport connectors... ");
 name|List
+argument_list|<
+name|TransportConnector
+argument_list|>
 name|connectors
 init|=
 name|broker
@@ -1642,17 +1461,12 @@ name|assertTrue
 argument_list|(
 literal|"1st connector should be TcpTransportServer"
 argument_list|,
-operator|(
-operator|(
-name|TransportConnector
-operator|)
 name|connectors
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|.
 name|getServer
 argument_list|()
@@ -1664,17 +1478,12 @@ name|assertTrue
 argument_list|(
 literal|"2nd connector should be TcpTransportServer"
 argument_list|,
-operator|(
-operator|(
-name|TransportConnector
-operator|)
 name|connectors
 operator|.
 name|get
 argument_list|(
 literal|1
 argument_list|)
-operator|)
 operator|.
 name|getServer
 argument_list|()
@@ -1686,17 +1495,12 @@ name|assertTrue
 argument_list|(
 literal|"3rd connector should be TcpTransportServer"
 argument_list|,
-operator|(
-operator|(
-name|TransportConnector
-operator|)
 name|connectors
 operator|.
 name|get
 argument_list|(
 literal|2
 argument_list|)
-operator|)
 operator|.
 name|getServer
 argument_list|()
@@ -1707,6 +1511,9 @@ expr_stmt|;
 comment|// Check network connectors
 comment|// System.out.print("Checking network connectors... ");
 name|List
+argument_list|<
+name|NetworkConnector
+argument_list|>
 name|networkConnectors
 init|=
 name|broker
@@ -2208,6 +2015,8 @@ block|}
 block|}
 block|}
 comment|/*      * This tests creating a journal persistence adapter using xbeans-spring      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testJournalConfig
@@ -2215,8 +2024,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// System.out.print("Checking journal persistence adapter
-comment|// configuration... ");
 name|File
 name|journalFile
 init|=
@@ -2321,6 +2128,8 @@ block|}
 block|}
 block|}
 comment|/*      * This tests creating a memory persistence adapter using xbeans-spring      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMemoryConfig
@@ -2328,8 +2137,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// System.out.print("Checking memory persistence adapter
-comment|// configuration... ");
 name|File
 name|journalFile
 init|=
@@ -2466,6 +2273,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testConnectorConfig
@@ -2473,8 +2282,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// System.out.print("Checking memory persistence adapter
-comment|// configuration... ");
 name|File
 name|journalFile
 init|=
@@ -2695,6 +2502,11 @@ argument_list|(
 name|topic
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|consumer
+argument_list|)
+expr_stmt|;
 block|}
 name|fail
 argument_list|(
@@ -2733,6 +2545,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testXmlConfigHelper
