@@ -1152,12 +1152,15 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
-comment|//                            if (val != null&& val != targetObject) {
 if|if
 condition|(
 name|val
 operator|!=
 literal|null
+operator|&&
+name|val
+operator|!=
+name|targetObject
 condition|)
 block|{
 name|props
