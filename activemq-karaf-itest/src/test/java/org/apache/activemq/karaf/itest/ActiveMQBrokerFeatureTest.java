@@ -197,9 +197,12 @@ name|configure
 parameter_list|()
 block|{
 return|return
+name|configureBrokerStart
+argument_list|(
 name|configure
 argument_list|(
 literal|"activemq-broker"
+argument_list|)
 argument_list|)
 return|;
 block|}

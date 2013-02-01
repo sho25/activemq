@@ -148,6 +148,7 @@ operator|.
 name|getBrokerURL
 argument_list|()
 expr_stmt|;
+comment|// todo: validate connection to remote broker
 block|}
 block|}
 end_class
