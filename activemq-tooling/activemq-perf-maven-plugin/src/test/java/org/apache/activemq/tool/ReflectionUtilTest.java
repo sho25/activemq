@@ -1518,6 +1518,15 @@ operator|=
 name|testData
 expr_stmt|;
 block|}
+specifier|public
+name|TestClass3
+name|getRecursiveData
+parameter_list|()
+block|{
+return|return
+name|this
+return|;
+block|}
 block|}
 specifier|public
 class|class

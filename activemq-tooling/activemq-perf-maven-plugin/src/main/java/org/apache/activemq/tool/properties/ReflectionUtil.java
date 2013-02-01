@@ -1152,6 +1152,7 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
+comment|//                            if (val != null&& val != targetObject) {
 if|if
 condition|(
 name|val
