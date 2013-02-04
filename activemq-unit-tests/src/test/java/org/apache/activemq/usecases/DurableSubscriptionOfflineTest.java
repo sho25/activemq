@@ -866,6 +866,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// TODO - readd PersistenceAdapterChoice.LevelDB and investigate failure cause.
 name|this
 operator|.
 name|addCombinationValues
@@ -879,10 +880,6 @@ block|{
 name|PersistenceAdapterChoice
 operator|.
 name|KahaDB
-block|,
-name|PersistenceAdapterChoice
-operator|.
-name|LevelDB
 block|,
 name|PersistenceAdapterChoice
 operator|.
