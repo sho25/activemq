@@ -352,6 +352,13 @@ argument_list|,
 name|connectionFactory
 argument_list|)
 expr_stmt|;
+name|WebClient
+operator|.
+name|initContext
+argument_list|(
+name|servletContext
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void

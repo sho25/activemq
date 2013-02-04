@@ -253,8 +253,6 @@ argument_list|(
 name|configure
 argument_list|(
 literal|"activemq-broker"
-argument_list|,
-literal|"activemq-web-console"
 argument_list|)
 argument_list|)
 argument_list|)

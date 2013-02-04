@@ -1172,19 +1172,7 @@ literal|"/src/test/resources/org/apache/activemq/karaf/itest/custom.properties"
 argument_list|)
 argument_list|)
 block|,
-name|replaceConfigurationFile
-argument_list|(
-literal|"etc/org.ops4j.pax.logging.cfg"
-argument_list|,
-operator|new
-name|File
-argument_list|(
-name|basedir
-operator|+
-literal|"/src/test/resources/org/apache/activemq/karaf/itest/org.ops4j.pax.logging.cfg"
-argument_list|)
-argument_list|)
-block|,
+comment|//replaceConfigurationFile("etc/org.ops4j.pax.logging.cfg", new File(basedir+"/src/test/resources/org/apache/activemq/karaf/itest/org.ops4j.pax.logging.cfg")),
 name|scanFeatures
 argument_list|(
 name|getActiveMQKarafFeatureUrl
