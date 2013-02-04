@@ -240,6 +240,8 @@ name|bs2
 init|=
 literal|null
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|tearDown
@@ -699,14 +701,13 @@ operator|+
 literal|")"
 argument_list|)
 decl_stmt|;
-name|Connection
 name|connection
-init|=
+operator|=
 name|cf
 operator|.
 name|createConnection
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|connection
 operator|.
 name|start
