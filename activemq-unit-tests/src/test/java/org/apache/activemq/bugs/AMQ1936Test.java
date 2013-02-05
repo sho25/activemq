@@ -17,70 +17,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|AutoFailTestSupport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|BrokerService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|Wait
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|log4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -287,6 +223,70 @@ name|TestCase
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|ActiveMQConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|AutoFailTestSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|BrokerService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|Wait
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|log4j
+operator|.
+name|Logger
+import|;
+end_import
+
 begin_comment
 comment|/**  * A AMQ1936Test  *  */
 end_comment
@@ -321,7 +321,7 @@ name|TEST_QUEUE_NAME
 init|=
 literal|"dynamicQueues/duplicate.message.test.queue"
 decl_stmt|;
-comment|////--
+comment|// //--
 comment|//
 specifier|private
 specifier|final
@@ -333,7 +333,7 @@ literal|6000
 decl_stmt|;
 comment|// The number of test messages to use
 comment|//
-comment|////--
+comment|// //--
 specifier|private
 specifier|final
 specifier|static
@@ -351,8 +351,10 @@ name|TRANSACTED_RECEIVE
 init|=
 literal|true
 decl_stmt|;
-comment|// Flag used by receiver which indicates messages should be processed within a JMS transaction
+comment|// Flag used by receiver which indicates messages should be
+comment|// processed within a JMS transaction
 specifier|private
+specifier|final
 name|ThreadPoolExecutor
 name|threadPool
 init|=
@@ -380,6 +382,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|ThreadedMessageReceiver
 index|[]
 name|receivers
@@ -721,14 +724,14 @@ operator|+
 name|queue
 operator|.
 name|getQueueName
-argument_list|( )
+argument_list|()
 operator|+
 literal|" messageid: "
 operator|+
 name|message
 operator|.
 name|getJMSMessageID
-argument_list|( )
+argument_list|()
 operator|+
 literal|" content:"
 operator|+
@@ -786,7 +789,7 @@ block|}
 specifier|public
 name|void
 name|testForDuplicateMessages
-parameter_list|( )
+parameter_list|()
 throws|throws
 name|Exception
 block|{
@@ -806,7 +809,7 @@ name|String
 argument_list|,
 name|String
 argument_list|>
-argument_list|( )
+argument_list|()
 decl_stmt|;
 specifier|final
 name|Object
@@ -814,7 +817,7 @@ name|lock
 init|=
 operator|new
 name|Object
-argument_list|( )
+argument_list|()
 decl_stmt|;
 specifier|final
 name|CountDownLatch
@@ -878,7 +881,8 @@ name|i
 argument_list|)
 expr_stmt|;
 block|}
-comment|// create a number of consumers to read of the messages and start them with a handler which simply stores the message ids
+comment|// create a number of consumers to read of the messages and start them with a handler which simply stores the
+comment|// message ids
 comment|// in a Map and checks for a duplicate
 for|for
 control|(
@@ -907,8 +911,10 @@ name|TEST_QUEUE_NAME
 argument_list|,
 operator|new
 name|IMessageHandler
-argument_list|( )
+argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -982,7 +988,7 @@ block|{
 name|duplicateSignal
 operator|.
 name|countDown
-argument_list|( )
+argument_list|()
 expr_stmt|;
 name|logger
 operator|.
@@ -1108,6 +1114,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -1159,7 +1167,7 @@ argument_list|,
 name|messages
 operator|.
 name|size
-argument_list|( )
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1182,18 +1190,13 @@ implements|implements
 name|Runnable
 block|{
 specifier|private
-name|String
-name|queueName
-init|=
-literal|null
-decl_stmt|;
-specifier|private
 name|IMessageHandler
 name|handler
 init|=
 literal|null
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicBoolean
 name|shouldStop
 init|=
@@ -1215,21 +1218,17 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|queueName
-operator|=
-name|queueName
-expr_stmt|;
-name|this
-operator|.
 name|handler
 operator|=
 name|handler
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
-parameter_list|( )
+parameter_list|()
 block|{
 name|QueueConnection
 name|queueConnection
@@ -1265,7 +1264,7 @@ operator|=
 name|connectionFactory
 operator|.
 name|createQueueConnection
-argument_list|( )
+argument_list|()
 expr_stmt|;
 comment|// create a transacted session
 name|session
@@ -1303,7 +1302,7 @@ comment|// start the connection
 name|queueConnection
 operator|.
 name|start
-argument_list|( )
+argument_list|()
 expr_stmt|;
 name|logger
 operator|.
@@ -1572,18 +1571,6 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-specifier|public
-name|Boolean
-name|getShouldStop
-parameter_list|()
-block|{
-return|return
-name|shouldStop
-operator|.
-name|get
-argument_list|()
-return|;
 block|}
 specifier|public
 name|void

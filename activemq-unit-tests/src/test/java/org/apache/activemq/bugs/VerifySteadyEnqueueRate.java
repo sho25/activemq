@@ -223,6 +223,7 @@ init|=
 literal|1000000
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|destinationName
 init|=
@@ -242,6 +243,7 @@ init|=
 literal|false
 decl_stmt|;
 specifier|private
+specifier|final
 name|boolean
 name|useAMQPStore
 init|=
@@ -263,6 +265,8 @@ literal|24
 index|]
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp
@@ -274,6 +278,8 @@ name|startBroker
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|tearDown
@@ -287,6 +293,11 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 specifier|public
 name|void
 name|testEnqueueRateCanMeetSLA
@@ -367,6 +378,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run

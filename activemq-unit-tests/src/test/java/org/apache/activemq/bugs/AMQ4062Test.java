@@ -942,6 +942,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|private
 name|ConcurrentHashMap
 argument_list|<
@@ -1122,6 +1127,7 @@ init|=
 literal|"A_NAME_ABC_DEF"
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|user
 init|=
@@ -1130,6 +1136,7 @@ operator|.
 name|DEFAULT_USER
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|password
 init|=
@@ -1280,6 +1287,8 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1353,6 +1362,7 @@ operator|.
 name|DEFAULT_USER
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|password
 init|=

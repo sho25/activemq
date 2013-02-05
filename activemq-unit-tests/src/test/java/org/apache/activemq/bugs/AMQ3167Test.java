@@ -16,6 +16,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -121,20 +145,6 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|TransportConnector
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
 name|region
 operator|.
 name|policy
@@ -219,32 +229,8 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
 begin_comment
-comment|/**  * Test the loss of messages detected during testing with ActiveMQ 5.4.1 and 5.4.2.  *<p/>  * Symptoms:  * - 1 record is lost "early" in the stream.  * - no more records lost.  *<p/>  * Test Configuration:  * - Broker Settings:  * - Destination Policy  * - Occurs with "Destination Policy" using Store Cursor and a memory limit  * - Not reproduced without "Destination Policy" defined  * - Persistence Adapter  * - Memory: Does not occur.  * - KahaDB: Occurs.  * - Messages  * - Occurs with TextMessage and BinaryMessage  * - Persistent messages.  *<p/>  * Notes:  * - Lower memory limits increase the rate of occurrence.  * - Higher memory limits may prevent the problem (probably because memory limits not reached).  * - Producers sending a number of messages before consumers come online increases rate of occurrence.  */
+comment|/**  * Test the loss of messages detected during testing with ActiveMQ 5.4.1 and 5.4.2.  *<p/>  * Symptoms: - 1 record is lost "early" in the stream. - no more records lost.  *<p/>  * Test Configuration: - Broker Settings: - Destination Policy - Occurs with "Destination Policy" using Store Cursor and  * a memory limit - Not reproduced without "Destination Policy" defined - Persistence Adapter - Memory: Does not occur.  * - KahaDB: Occurs. - Messages - Occurs with TextMessage and BinaryMessage - Persistent messages.  *<p/>  * Notes: - Lower memory limits increase the rate of occurrence. - Higher memory limits may prevent the problem  * (probably because memory limits not reached). - Producers sending a number of messages before consumers come online  * increases rate of occurrence.  */
 end_comment
 
 begin_class
@@ -307,10 +293,10 @@ name|Num_error
 init|=
 literal|0
 decl_stmt|;
-comment|////             ////
-comment|////  UTILITIES  ////
-comment|////             ////
-comment|/**      * Create a new, unsecured, client connection to the test broker using the given username and password.  This      * connection bypasses all security.      *<p/>      * Don't forget to start the connection or no messages will be received by consumers even though producers      * will work fine.      *      * @username name of the JMS user for the connection; may be null.      * @password Password for the JMS user; may be null.      */
+comment|// // ////
+comment|// // UTILITIES ////
+comment|// // ////
+comment|/**      * Create a new, unsecured, client connection to the test broker using the given username and password. This      * connection bypasses all security.      *<p/>      * Don't forget to start the connection or no messages will be received by consumers even though producers will work      * fine.      *      * @username name of the JMS user for the connection; may be null.      * @password Password for the JMS user; may be null.      */
 specifier|protected
 name|Connection
 name|createUnsecuredConnection
@@ -353,9 +339,9 @@ name|password
 argument_list|)
 return|;
 block|}
-comment|////                      ////
-comment|////  TEST FUNCTIONALITY  ////
-comment|////                      ////
+comment|// // ////
+comment|// // TEST FUNCTIONALITY ////
+comment|// // ////
 annotation|@
 name|Before
 specifier|public
@@ -436,9 +422,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|TransportConnector
-name|conn
-decl_stmt|;
 name|broker_svc
 operator|.
 name|setBrokerName
@@ -564,9 +547,9 @@ name|pol_map
 argument_list|)
 expr_stmt|;
 block|}
-comment|////        ////
-comment|////  TEST  ////
-comment|////        ////
+comment|// // ////
+comment|// // TEST ////
+comment|// // ////
 annotation|@
 name|Test
 specifier|public
@@ -910,10 +893,10 @@ literal|"Shutting down"
 argument_list|)
 expr_stmt|;
 block|}
-comment|////                    ////
-comment|////  INTERNAL CLASSES  ////
-comment|////                    ////
-comment|/**      * Producer thread - runs a single producer until the maximum number of messages is sent, the producer stop      * time is reached, or a test error is detected.      */
+comment|// // ////
+comment|// // INTERNAL CLASSES ////
+comment|// // ////
+comment|/**      * Producer thread - runs a single producer until the maximum number of messages is sent, the producer stop time is      * reached, or a test error is detected.      */
 specifier|protected
 class|class
 name|producerThread
@@ -1106,7 +1089,7 @@ operator|++
 expr_stmt|;
 comment|//
 comment|// Commit if the number of messages per session has been reached, and
-comment|//  transactions are being used (only when> 1 msg per sess).
+comment|// transactions are being used (only when> 1 msg per sess).
 comment|//
 if|if
 condition|(
@@ -1305,7 +1288,7 @@ name|producerTag
 return|;
 block|}
 block|}
-comment|/**      * Producer thread - runs a single consumer until the maximum number of messages is received, the consumer stop      * time is reached, or a test error is detected.      */
+comment|/**      * Producer thread - runs a single consumer until the maximum number of messages is received, the consumer stop time      * is reached, or a test error is detected.      */
 specifier|protected
 class|class
 name|consumerThread
@@ -1564,7 +1547,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**          * Verify the message received.  Sequence numbers are checked and are expected to exactly match the          * message number (starting at 0).          */
+comment|/**          * Verify the message received. Sequence numbers are checked and are expected to exactly match the message          * number (starting at 0).          */
 specifier|protected
 name|void
 name|checkMessage

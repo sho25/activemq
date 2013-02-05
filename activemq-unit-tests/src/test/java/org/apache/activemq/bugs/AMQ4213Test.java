@@ -225,6 +225,11 @@ name|String
 name|connectionUri
 decl_stmt|;
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
 name|Before
 specifier|public
 name|void

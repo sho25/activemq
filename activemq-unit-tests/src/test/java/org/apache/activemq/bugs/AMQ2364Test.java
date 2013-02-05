@@ -20,6 +20,18 @@ comment|//package org.apache.activemq.transport.failover;
 end_comment
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -142,16 +154,6 @@ operator|.
 name|jms
 operator|.
 name|Session
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
 import|;
 end_import
 
@@ -461,6 +463,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -660,8 +664,6 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Transaction states not cleaned up"

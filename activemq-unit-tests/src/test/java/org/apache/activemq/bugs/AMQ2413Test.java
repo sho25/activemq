@@ -497,6 +497,7 @@ init|=
 literal|false
 decl_stmt|;
 specifier|private
+specifier|final
 name|ArrayList
 argument_list|<
 name|Service
@@ -590,8 +591,10 @@ literal|false
 block|}
 argument_list|)
 expr_stmt|;
-comment|//addCombinationValues("useOptimizeAcks", new Object[] {true, false});
+comment|// addCombinationValues("useOptimizeAcks", new Object[] {true, false});
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -755,7 +758,7 @@ argument_list|(
 literal|"tcp://0.0.0.0:2401"
 argument_list|)
 expr_stmt|;
-comment|//factory = new ActiveMQConnectionFactory("vm://localhost?broker.useJmx=false&broker.persistent=false");
+comment|// factory = new ActiveMQConnectionFactory("vm://localhost?broker.useJmx=false&broker.persistent=false");
 name|setAutoFail
 argument_list|(
 literal|true
@@ -767,6 +770,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -943,7 +948,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/*      * (non-Javadoc)      *       * @see javax.jms.MessageListener#onMessage(javax.jms.Message)      */
+comment|/*      * (non-Javadoc)      *      * @see javax.jms.MessageListener#onMessage(javax.jms.Message)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -994,9 +1001,6 @@ block|{
 try|try
 block|{
 name|Thread
-operator|.
-name|currentThread
-argument_list|()
 operator|.
 name|sleep
 argument_list|(
@@ -1169,7 +1173,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @throws InterruptedException      * @throws TimeoutException      *       */
+comment|/**      * @throws InterruptedException      * @throws TimeoutException      *      */
 specifier|private
 name|void
 name|waitForMessageReceipt
@@ -1377,9 +1381,6 @@ decl_stmt|;
 name|BytesMessage
 name|message
 decl_stmt|;
-name|int
-name|id
-decl_stmt|;
 name|Connection
 name|connection
 decl_stmt|;
@@ -1397,12 +1398,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|this
-operator|.
-name|id
-operator|=
-name|id
-expr_stmt|;
 name|thread
 operator|=
 operator|new
@@ -1455,6 +1450,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -1466,6 +1463,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1503,7 +1502,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-name|thread
+name|Thread
 operator|.
 name|currentThread
 argument_list|()
@@ -1568,7 +1567,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-name|thread
+name|Thread
 operator|.
 name|currentThread
 argument_list|()
@@ -1586,6 +1585,8 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
@@ -1630,9 +1631,6 @@ name|session
 decl_stmt|;
 name|MessageConsumer
 name|consumer
-decl_stmt|;
-name|Thread
-name|thread
 decl_stmt|;
 name|TestConsumer
 parameter_list|()
@@ -1704,6 +1702,8 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -1717,6 +1717,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
@@ -1744,7 +1746,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/*          * (non-Javadoc)          *           * @see java.lang.Runnable#run()          */
+comment|/*          * (non-Javadoc)          *          * @see java.lang.Runnable#run()          */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run

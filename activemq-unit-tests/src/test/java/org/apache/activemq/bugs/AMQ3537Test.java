@@ -16,6 +16,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -96,16 +108,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
 import|;
 end_import
 
@@ -200,6 +202,7 @@ block|}
 decl_stmt|;
 comment|/** Underlying list */
 specifier|private
+specifier|final
 name|List
 name|l
 init|=
@@ -336,9 +339,12 @@ operator|.
 name|readObject
 argument_list|()
 decl_stmt|;
-comment|// assert the invocation worked
-name|Assert
+name|claois
 operator|.
+name|close
+argument_list|()
+expr_stmt|;
+comment|// assert the invocation worked
 name|assertEquals
 argument_list|(
 literal|"foo"

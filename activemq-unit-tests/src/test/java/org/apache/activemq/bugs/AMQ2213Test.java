@@ -16,6 +16,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -112,16 +136,6 @@ operator|.
 name|jms
 operator|.
 name|TopicSession
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
 import|;
 end_import
 
@@ -383,8 +397,6 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|this
@@ -408,8 +420,6 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|sess
@@ -430,8 +440,6 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|this
@@ -439,8 +447,6 @@ operator|.
 name|connection
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|this
@@ -471,8 +477,6 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|sess
@@ -493,8 +497,6 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|this
@@ -502,8 +504,6 @@ operator|.
 name|connection
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|this
@@ -534,8 +534,6 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|sess

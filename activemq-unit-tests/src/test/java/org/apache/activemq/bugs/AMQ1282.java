@@ -67,6 +67,16 @@ end_import
 
 begin_import
 import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|TestCase
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -77,18 +87,8 @@ name|ActiveMQConnectionFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
 begin_comment
-comment|/**  * An AMQ-1282 Test  *   */
+comment|/**  * An AMQ-1282 Test  */
 end_comment
 
 begin_class
@@ -110,6 +110,8 @@ specifier|private
 name|MapMessage
 name|message
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -164,6 +166,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -310,6 +314,9 @@ name|ex
 parameter_list|)
 block|{
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|aClass
 init|=
 name|expected
@@ -389,6 +396,9 @@ name|ex
 parameter_list|)
 block|{
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|aClass
 init|=
 name|expected
@@ -468,6 +478,9 @@ name|ex
 parameter_list|)
 block|{
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|aClass
 init|=
 name|expected
@@ -547,6 +560,9 @@ name|ex
 parameter_list|)
 block|{
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|aClass
 init|=
 name|expected
@@ -661,6 +677,9 @@ name|ex
 parameter_list|)
 block|{
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|aClass
 init|=
 name|expected
@@ -740,6 +759,9 @@ name|ex
 parameter_list|)
 block|{
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|aClass
 init|=
 name|expected
@@ -819,6 +841,9 @@ name|ex
 parameter_list|)
 block|{
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|aClass
 init|=
 name|expected
