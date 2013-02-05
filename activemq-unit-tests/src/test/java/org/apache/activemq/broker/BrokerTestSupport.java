@@ -549,7 +549,7 @@ specifier|protected
 name|int
 name|maxWait
 init|=
-literal|4000
+literal|10000
 decl_stmt|;
 specifier|protected
 name|SystemUsage
@@ -563,6 +563,8 @@ operator|new
 name|PolicyMap
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -660,6 +662,8 @@ return|return
 name|broker
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
