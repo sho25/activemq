@@ -21,7 +21,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|CountDownLatch
+name|TimeUnit
 import|;
 end_import
 
@@ -33,7 +33,9 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|TimeUnit
+name|atomic
+operator|.
+name|AtomicBoolean
 import|;
 end_import
 
@@ -225,6 +227,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|Wait
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -268,30 +284,34 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
-name|TestMutex
-name|testMutex
-decl_stmt|;
-specifier|protected
 name|Connection
 name|connection
 decl_stmt|;
-specifier|protected
+specifier|private
 name|ConnectionConsumer
 name|connectionConsumer
 decl_stmt|;
-specifier|protected
+specifier|private
 name|Queue
 name|queue
 decl_stmt|;
-specifier|protected
-name|CountDownLatch
-name|messageTwoDelay
+specifier|private
+specifier|final
+name|AtomicBoolean
+name|completed
 init|=
 operator|new
-name|CountDownLatch
-argument_list|(
-literal|1
-argument_list|)
+name|AtomicBoolean
+argument_list|()
+decl_stmt|;
+specifier|private
+specifier|final
+name|AtomicBoolean
+name|success
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|()
 decl_stmt|;
 specifier|public
 name|void
@@ -351,7 +371,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Msg3 will cause the test to fail as it will attempt to retrieve an additional ServerSession from
-comment|// an exhausted ServerSessionPool due to the (incorrectly?) incremented prefetchExtension in the PrefetchSubscription
+comment|// an exhausted ServerSessionPool due to the (incorrectly?) incremented prefetchExtension in the
+comment|// PrefetchSubscription
 name|producer
 operator|.
 name|send
@@ -369,72 +390,48 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-comment|// wait for test to complete and the test result to get set
-comment|// this happens asynchronously since the messages are delivered asynchronously
-name|long
-name|done
-init|=
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-operator|+
-name|getMaxTestTime
-argument_list|()
-decl_stmt|;
-synchronized|synchronized
-init|(
-name|testMutex
-init|)
-block|{
-while|while
-condition|(
-operator|!
-name|testMutex
-operator|.
-name|testCompleted
-operator|&&
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-operator|<
-name|done
-condition|)
-block|{
-name|testMutex
-operator|.
-name|wait
-argument_list|(
-name|TimeUnit
-operator|.
-name|SECONDS
-operator|.
-name|toMillis
-argument_list|(
-literal|10
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 name|assertTrue
 argument_list|(
-literal|"completed on time"
+literal|"test completed on time"
 argument_list|,
-name|testMutex
+name|Wait
 operator|.
-name|testCompleted
+name|waitFor
+argument_list|(
+operator|new
+name|Wait
+operator|.
+name|Condition
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isSatisified
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
+name|completed
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
+block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//test completed, result is ready
 name|assertTrue
 argument_list|(
 literal|"Attempted to retrieve more than one ServerSession at a time"
 argument_list|,
-name|testMutex
+name|success
 operator|.
-name|testSuccessful
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -487,12 +484,6 @@ expr_stmt|;
 name|super
 operator|.
 name|setUp
-argument_list|()
-expr_stmt|;
-name|testMutex
-operator|=
-operator|new
-name|TestMutex
 argument_list|()
 expr_stmt|;
 name|connection
@@ -660,6 +651,8 @@ name|connection
 operator|=
 name|connection
 expr_stmt|;
+name|this
+operator|.
 name|serverSession
 operator|=
 operator|new
@@ -695,24 +688,20 @@ argument_list|(
 literal|"asked for session while in use, not serialised delivery"
 argument_list|)
 expr_stmt|;
-synchronized|synchronized
-init|(
-name|testMutex
-init|)
-block|{
-name|testMutex
+name|success
 operator|.
-name|testSuccessful
-operator|=
+name|set
+argument_list|(
 literal|false
+argument_list|)
 expr_stmt|;
-name|testMutex
+name|completed
 operator|.
-name|testCompleted
-operator|=
+name|set
+argument_list|(
 literal|true
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|serverSessionInUse
 operator|=
@@ -816,8 +805,7 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
-comment|// commit the tx and
-comment|// return ServerSession to pool
+comment|// commit the tx and return ServerSession to pool
 synchronized|synchronized
 init|(
 name|pool
@@ -842,18 +830,6 @@ operator|.
 name|serverSessionInUse
 operator|=
 literal|false
-expr_stmt|;
-block|}
-comment|// let the test check if the test was completed
-synchronized|synchronized
-init|(
-name|testMutex
-init|)
-block|{
-name|testMutex
-operator|.
-name|notifyAll
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -914,41 +890,23 @@ literal|"Msg3"
 argument_list|)
 condition|)
 block|{
-comment|// if we get here, Exception in getServerSession() was not thrown, test is successful
-comment|// this obviously doesn't happen now,
-comment|// need to fix prefetchExtension computation logic in PrefetchSubscription to get here
-synchronized|synchronized
-init|(
-name|testMutex
-init|)
-block|{
-if|if
-condition|(
-operator|!
-name|testMutex
+comment|// if we get here, Exception in getServerSession() was not thrown, test is
+comment|// successful this obviously doesn't happen now, need to fix prefetchExtension
+comment|// computation logic in PrefetchSubscription to get here
+name|success
 operator|.
-name|testCompleted
-condition|)
-block|{
-name|testMutex
-operator|.
-name|testSuccessful
-operator|=
+name|set
+argument_list|(
 literal|true
+argument_list|)
 expr_stmt|;
-name|testMutex
+name|completed
 operator|.
-name|testCompleted
-operator|=
+name|set
+argument_list|(
 literal|true
+argument_list|)
 expr_stmt|;
-name|testMutex
-operator|.
-name|notifyAll
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 block|}
 elseif|else
 if|if
@@ -961,8 +919,8 @@ literal|"Msg2"
 argument_list|)
 condition|)
 block|{
-comment|// simulate long message processing so that Msg3 comes when Msg2 is still being processed
-comment|// and thus the single ServerSession is in use
+comment|// simulate long message processing so that Msg3 comes when Msg2 is still being
+comment|// processed and thus the single ServerSession is in use
 name|TimeUnit
 operator|.
 name|SECONDS
@@ -987,21 +945,6 @@ name|e
 parameter_list|)
 block|{             }
 block|}
-block|}
-specifier|private
-class|class
-name|TestMutex
-block|{
-name|boolean
-name|testCompleted
-init|=
-literal|false
-decl_stmt|;
-name|boolean
-name|testSuccessful
-init|=
-literal|true
-decl_stmt|;
 block|}
 block|}
 end_class
