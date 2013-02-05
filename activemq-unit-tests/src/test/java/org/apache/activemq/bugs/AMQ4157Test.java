@@ -16,6 +16,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -232,14 +268,14 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|junit
+import|import
+name|org
 operator|.
-name|framework
+name|mortbay
 operator|.
-name|Assert
+name|log
 operator|.
-name|*
+name|Log
 import|;
 end_import
 
@@ -257,6 +293,7 @@ name|ActiveMQConnectionFactory
 name|connectionFactory
 decl_stmt|;
 specifier|private
+specifier|final
 name|Destination
 name|destination
 init|=
@@ -267,6 +304,7 @@ literal|"Test"
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|payloadString
 init|=
@@ -283,6 +321,7 @@ index|]
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|boolean
 name|useBytesMessage
 init|=
@@ -303,6 +342,7 @@ init|=
 literal|100
 decl_stmt|;
 specifier|private
+specifier|final
 name|Vector
 argument_list|<
 name|Exception
@@ -507,7 +547,16 @@ argument_list|)
 expr_stmt|;
 name|restartBroker
 argument_list|(
-literal|100
+literal|500
+argument_list|)
+expr_stmt|;
+name|Log
+operator|.
+name|info
+argument_list|(
+literal|"Attempting consume of {} messages"
+argument_list|,
+name|toSend
 argument_list|)
 expr_stmt|;
 name|consumeMessages
@@ -671,7 +720,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|10000
+literal|20000
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -805,16 +854,9 @@ argument_list|(
 name|destination
 argument_list|)
 decl_stmt|;
-name|long
-name|i
-init|=
-literal|0l
-decl_stmt|;
 while|while
 condition|(
 operator|(
-name|i
-operator|=
 name|count
 operator|.
 name|getAndDecrement
