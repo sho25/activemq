@@ -52,6 +52,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -1275,6 +1287,18 @@ argument_list|(
 name|message1
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"on remote, got: "
+operator|+
+name|message1
+operator|.
+name|getMessageId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|connection2
 operator|.
 name|send
@@ -1501,6 +1525,50 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// There should now be 5 messages stuck on the remote broker
+name|assertTrue
+argument_list|(
+literal|"correct stuck message count"
+argument_list|,
+name|Wait
+operator|.
+name|waitFor
+argument_list|(
+operator|new
+name|Wait
+operator|.
+name|Condition
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isSatisified
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Object
+index|[]
+name|result
+init|=
+name|browseQueueWithJmx
+argument_list|(
+name|remoteBroker
+argument_list|)
+decl_stmt|;
+return|return
+literal|5
+operator|==
+name|result
+operator|.
+name|length
+return|;
+block|}
+block|}
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|messages
 operator|=
 name|browseQueueWithJmx
@@ -1745,6 +1813,26 @@ operator|=
 name|receiveMessage
 argument_list|(
 name|connection1
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"local consume of: "
+operator|+
+operator|(
+name|message1
+operator|!=
+literal|null
+condition|?
+name|message1
+operator|.
+name|getMessageId
+argument_list|()
+else|:
+literal|" null"
+operator|)
 argument_list|)
 expr_stmt|;
 name|connection1
