@@ -119,7 +119,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-name|void
+name|URI
 name|bind
 parameter_list|()
 throws|throws
@@ -222,8 +222,9 @@ name|getLocalHostName
 argument_list|()
 expr_stmt|;
 block|}
-name|setConnectURI
-argument_list|(
+name|URI
+name|boundUri
+init|=
 operator|new
 name|URI
 argument_list|(
@@ -259,8 +260,15 @@ operator|.
 name|getFragment
 argument_list|()
 argument_list|)
+decl_stmt|;
+name|setConnectURI
+argument_list|(
+name|boundUri
 argument_list|)
 expr_stmt|;
+return|return
+name|boundUri
+return|;
 block|}
 block|}
 end_class
