@@ -153,6 +153,15 @@ name|store
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|testTopicPersistentPreparedAcksAvailableAfterRestartAndRollback
+parameter_list|()
+block|{
+comment|// https://issues.apache.org/jira/browse/AMQ-4296
+block|}
 block|}
 end_class
 

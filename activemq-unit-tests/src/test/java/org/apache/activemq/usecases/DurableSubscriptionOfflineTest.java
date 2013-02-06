@@ -5161,6 +5161,18 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|PersistenceAdapterChoice
+operator|.
+name|LevelDB
+operator|==
+name|defaultPersistenceAdapter
+condition|)
+block|{
+comment|// https://issues.apache.org/jira/browse/AMQ-4296
+return|return;
+block|}
 comment|// create offline subs 1
 name|Connection
 name|con
