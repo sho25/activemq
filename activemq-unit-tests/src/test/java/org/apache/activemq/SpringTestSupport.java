@@ -57,26 +57,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|springframework
 operator|.
 name|context
@@ -88,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A useful base class for spring based unit test cases  *   *   */
+comment|/**  * A useful base class for spring based unit test cases  *  *  */
 end_comment
 
 begin_class
@@ -103,6 +83,8 @@ specifier|protected
 name|AbstractApplicationContext
 name|context
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -123,6 +105,8 @@ name|createApplicationContext
 parameter_list|()
 function_decl|;
 empty_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -195,6 +179,9 @@ index|[]
 name|expected
 parameter_list|,
 name|Set
+argument_list|<
+name|?
+argument_list|>
 name|actual
 parameter_list|)
 block|{

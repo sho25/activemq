@@ -196,6 +196,9 @@ name|value
 argument_list|)
 expr_stmt|;
 name|Set
+argument_list|<
+name|?
+argument_list|>
 name|set
 init|=
 name|map

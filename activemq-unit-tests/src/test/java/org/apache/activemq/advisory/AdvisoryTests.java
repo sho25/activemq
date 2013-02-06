@@ -258,7 +258,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -349,6 +349,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -510,6 +512,11 @@ argument_list|(
 name|queue
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|consumer
+argument_list|)
+expr_stmt|;
 name|Topic
 name|advisoryTopic
 init|=
@@ -660,6 +667,11 @@ argument_list|(
 name|queue
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|consumer
+argument_list|)
+expr_stmt|;
 name|Topic
 name|advisoryTopic
 init|=
@@ -958,6 +970,11 @@ argument_list|(
 name|queue
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|consumer
+argument_list|)
+expr_stmt|;
 name|Topic
 name|advisoryTopic
 init|=
@@ -1102,6 +1119,11 @@ argument_list|(
 name|topic
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|consumer
+argument_list|)
+expr_stmt|;
 name|Topic
 name|advisoryTopic
 init|=
@@ -1197,6 +1219,8 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -1241,6 +1265,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown

@@ -27,28 +27,8 @@ name|JmsTopicSendReceiveWithTwoConnectionsTest
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -58,7 +38,9 @@ name|JmsQueueSendReceiveTwoConnectionsTest
 extends|extends
 name|JmsTopicSendReceiveWithTwoConnectionsTest
 block|{
-comment|/**      * Set up the test with a queue and using two connections.      *       * @see junit.framework.TestCase#setUp()      */
+comment|/**      * Set up the test with a queue and using two connections.      *      * @see junit.framework.TestCase#setUp()      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp

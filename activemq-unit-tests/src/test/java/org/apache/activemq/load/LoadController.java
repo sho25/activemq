@@ -70,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -132,9 +132,6 @@ parameter_list|()
 throws|throws
 name|InterruptedException
 block|{
-name|boolean
-name|complete
-init|=
 name|stopped
 operator|.
 name|await
@@ -147,11 +144,13 @@ name|TimeUnit
 operator|.
 name|SECONDS
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 return|return
 name|count
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -186,6 +185,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -349,6 +350,8 @@ operator|=
 name|batchSize
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|Destination
 name|getSendDestination
@@ -358,6 +361,8 @@ return|return
 name|startDestination
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|Destination
 name|getConsumeDestination

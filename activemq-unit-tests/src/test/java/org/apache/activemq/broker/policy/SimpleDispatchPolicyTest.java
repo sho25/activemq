@@ -29,6 +29,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|MessageConsumer
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -148,6 +158,8 @@ name|SimpleDispatchPolicyTest
 extends|extends
 name|QueueSubscriptionTest
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|BrokerService
 name|createBroker
@@ -213,6 +225,8 @@ return|return
 name|broker
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|testOneProducerTwoConsumersSmallMessagesLargePrefetch
@@ -228,6 +242,8 @@ expr_stmt|;
 comment|// One consumer should have received all messages, and the rest none
 comment|// assertOneConsumerReceivedAllMessages(messageCount);
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|testOneProducerTwoConsumersLargeMessagesLargePrefetch
@@ -261,6 +277,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|MessageConsumer
+argument_list|>
 name|i
 init|=
 name|consumers
@@ -281,9 +300,6 @@ block|{
 name|MessageIdList
 name|messageIdList
 init|=
-operator|(
-name|MessageIdList
-operator|)
 name|consumers
 operator|.
 name|get

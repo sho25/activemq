@@ -230,10 +230,16 @@ name|BrokerTestSupport
 block|{
 specifier|protected
 name|ArrayList
+argument_list|<
+name|StubConnection
+argument_list|>
 name|connections
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|StubConnection
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|protected
@@ -262,6 +268,8 @@ name|useJmx
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -318,6 +326,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|BrokerService
 name|createBroker
@@ -512,6 +522,8 @@ return|return
 name|answer
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|StubConnection
 name|createConnection
@@ -652,7 +664,7 @@ return|return
 name|transport
 return|;
 block|}
-comment|/**      * Simulates a broker restart. The memory based persistence adapter is      * reused so that it does not "loose" it's "persistent" messages.      *       * @throws Exception      */
+comment|/**      * Simulates a broker restart. The memory based persistence adapter is      * reused so that it does not "loose" it's "persistent" messages.      *      * @throws Exception      */
 specifier|protected
 name|void
 name|restartRemoteBroker
@@ -730,6 +742,8 @@ name|remoteBroker
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -740,6 +754,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|StubConnection
+argument_list|>
 name|iter
 init|=
 name|connections
@@ -757,9 +774,6 @@ block|{
 name|StubConnection
 name|connection
 init|=
-operator|(
-name|StubConnection
-operator|)
 name|iter
 operator|.
 name|next

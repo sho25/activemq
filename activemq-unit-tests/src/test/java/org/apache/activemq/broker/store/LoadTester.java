@@ -191,20 +191,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
-operator|.
-name|TransportConnector
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -229,22 +215,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|memory
-operator|.
-name|list
-operator|.
-name|SimpleMessageList
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -262,7 +232,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -301,6 +271,8 @@ name|produceCount
 init|=
 literal|10000
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|BrokerService
 name|createBroker
@@ -321,6 +293,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|ConnectionFactory
 name|createConnectionFactory
@@ -336,10 +310,6 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-operator|(
-operator|(
-name|TransportConnector
-operator|)
 name|broker
 operator|.
 name|getTransportConnectors
@@ -349,7 +319,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|.
 name|getServer
 argument_list|()

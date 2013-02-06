@@ -329,11 +329,14 @@ name|ActiveMQConnectionFactory
 name|connFactory
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|brokerURL
 init|=
 literal|"vm://localhost?broker.persistent=false"
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp
@@ -372,14 +375,11 @@ name|brokerURL
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|String
-name|brokerId
-init|=
 name|broker
 operator|.
 name|getBrokerName
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|connector
 operator|=
 operator|new
@@ -401,6 +401,8 @@ argument_list|)
 block|{
 comment|// Hook into the connector so we can assert that the server
 comment|// accepted a connection.
+annotation|@
+name|Override
 specifier|protected
 name|org
 operator|.
@@ -513,6 +515,8 @@ name|connectURI
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown

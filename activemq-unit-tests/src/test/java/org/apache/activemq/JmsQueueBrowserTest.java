@@ -79,16 +79,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|Queue
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|QueueBrowser
 import|;
 end_import
@@ -100,16 +90,6 @@ operator|.
 name|jms
 operator|.
 name|Session
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Connection
 import|;
 end_import
 
@@ -264,7 +244,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -486,13 +466,13 @@ name|session
 operator|.
 name|createBrowser
 argument_list|(
-operator|(
-name|Queue
-operator|)
 name|destination
 argument_list|)
 decl_stmt|;
 name|Enumeration
+argument_list|<
+name|?
+argument_list|>
 name|enumeration
 init|=
 name|browser
@@ -518,9 +498,6 @@ index|[
 literal|1
 index|]
 argument_list|,
-operator|(
-name|Message
-operator|)
 name|enumeration
 operator|.
 name|nextElement
@@ -545,9 +522,6 @@ index|[
 literal|2
 index|]
 argument_list|,
-operator|(
-name|Message
-operator|)
 name|enumeration
 operator|.
 name|nextElement
@@ -824,13 +798,13 @@ name|session
 operator|.
 name|createBrowser
 argument_list|(
-operator|(
-name|Queue
-operator|)
 name|destination
 argument_list|)
 decl_stmt|;
 name|Enumeration
+argument_list|<
+name|?
+argument_list|>
 name|enumeration
 init|=
 name|browser
@@ -919,9 +893,6 @@ name|session
 operator|.
 name|createBrowser
 argument_list|(
-operator|(
-name|Queue
-operator|)
 name|destination
 argument_list|)
 expr_stmt|;
@@ -1898,13 +1869,13 @@ name|session
 operator|.
 name|createBrowser
 argument_list|(
-operator|(
-name|Queue
-operator|)
 name|destination
 argument_list|)
 decl_stmt|;
 name|Enumeration
+argument_list|<
+name|?
+argument_list|>
 name|enumeration
 init|=
 name|browser
@@ -1930,9 +1901,6 @@ index|[
 literal|0
 index|]
 argument_list|,
-operator|(
-name|Message
-operator|)
 name|enumeration
 operator|.
 name|nextElement
@@ -2057,6 +2025,9 @@ name|destination
 argument_list|)
 decl_stmt|;
 name|Enumeration
+argument_list|<
+name|?
+argument_list|>
 name|enumeration
 init|=
 name|browser
@@ -2308,6 +2279,11 @@ argument_list|(
 name|destinationPrefetch1
 argument_list|)
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 name|Enumeration
 argument_list|<
 name|Message
@@ -2608,13 +2584,13 @@ name|session
 operator|.
 name|createBrowser
 argument_list|(
-operator|(
-name|Queue
-operator|)
 name|destination
 argument_list|)
 decl_stmt|;
 name|Enumeration
+argument_list|<
+name|?
+argument_list|>
 name|enumeration
 init|=
 name|browser
@@ -2630,9 +2606,6 @@ index|[
 literal|0
 index|]
 argument_list|,
-operator|(
-name|Message
-operator|)
 name|enumeration
 operator|.
 name|nextElement
@@ -2646,9 +2619,6 @@ index|[
 literal|1
 index|]
 argument_list|,
-operator|(
-name|Message
-operator|)
 name|enumeration
 operator|.
 name|nextElement
@@ -2791,6 +2761,8 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|BrokerService
 name|createBroker

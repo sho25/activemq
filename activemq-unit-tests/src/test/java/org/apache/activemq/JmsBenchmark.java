@@ -251,20 +251,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
-operator|.
-name|TransportConnector
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -306,7 +292,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Benchmarks the broker by starting many consumer and producers against the  * same destination. Make sure you run with jvm option -server (makes a big  * difference). The tests simulate storing 1000 1k jms messages to see the rate  * of processing msg/sec.  *   *   */
+comment|/**  * Benchmarks the broker by starting many consumer and producers against the  * same destination. Make sure you run with jvm option -server (makes a big  * difference). The tests simulate storing 1000 1k jms messages to see the rate  * of processing msg/sec.  *  *  */
 end_comment
 
 begin_class
@@ -505,6 +491,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|BrokerService
 name|createBroker
@@ -525,6 +513,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|ConnectionFactory
 name|createConnectionFactory
@@ -538,10 +528,6 @@ return|return
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-operator|(
-operator|(
-name|TransportConnector
-operator|)
 name|broker
 operator|.
 name|getTransportConnectors
@@ -551,7 +537,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|.
 name|getServer
 argument_list|()
@@ -633,12 +618,20 @@ argument_list|)
 decl_stmt|;
 specifier|final
 name|Callable
+argument_list|<
+name|Object
+argument_list|>
 name|producer
 init|=
 operator|new
 name|Callable
+argument_list|<
+name|Object
+argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|call
@@ -771,12 +764,20 @@ block|}
 decl_stmt|;
 specifier|final
 name|Callable
+argument_list|<
+name|Object
+argument_list|>
 name|consumer
 init|=
 operator|new
 name|Callable
+argument_list|<
+name|Object
+argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|call
@@ -833,6 +834,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -915,6 +918,8 @@ operator|+
 name|i
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -977,6 +982,8 @@ operator|+
 name|i
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run

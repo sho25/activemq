@@ -101,16 +101,6 @@ name|junit
 operator|.
 name|framework
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
 name|TestCase
 import|;
 end_import
@@ -199,6 +189,7 @@ name|Exception
 name|readerException
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicInteger
 name|totalRead
 init|=
@@ -207,6 +198,7 @@ name|AtomicInteger
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicInteger
 name|totalWritten
 init|=
@@ -215,6 +207,7 @@ name|AtomicInteger
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicBoolean
 name|stopThreads
 init|=
@@ -299,6 +292,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -433,6 +428,8 @@ operator|new
 name|Random
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -647,8 +644,6 @@ operator|==
 literal|null
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Not all messages accounted for"

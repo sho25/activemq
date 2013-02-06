@@ -77,16 +77,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -270,8 +260,6 @@ name|read
 argument_list|()
 expr_stmt|;
 block|}
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"hello world"
@@ -292,8 +280,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|FILE_SIZE
@@ -350,8 +336,6 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 literal|false
@@ -423,8 +407,6 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Wrong Exception"
@@ -454,8 +436,6 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 literal|"Wrong Exception "
@@ -467,8 +447,6 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 literal|"Expect Exception"
@@ -541,8 +519,6 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Wrong Exception"
@@ -568,8 +544,6 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 literal|"Wrong Exception "
@@ -581,8 +555,6 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 literal|"Expect Exception"

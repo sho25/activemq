@@ -210,7 +210,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -235,6 +235,8 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|BrokerService
 name|createBroker
@@ -303,6 +305,8 @@ return|return
 name|broker
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|Destination
 name|createDlqDestination
@@ -545,6 +549,9 @@ throws|throws
 name|Exception
 block|{
 name|Enumeration
+argument_list|<
+name|?
+argument_list|>
 name|messages
 init|=
 name|dlqBrowser

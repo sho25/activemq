@@ -130,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -174,10 +174,20 @@ argument_list|)
 decl_stmt|;
 specifier|protected
 name|Hashtable
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|environment
 init|=
 operator|new
 name|Hashtable
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|protected
@@ -258,6 +268,9 @@ operator|)
 name|object
 decl_stmt|;
 name|NamingEnumeration
+argument_list|<
+name|Binding
+argument_list|>
 name|iter
 init|=
 name|childContext
@@ -278,9 +291,6 @@ block|{
 name|Binding
 name|destinationBinding
 init|=
-operator|(
-name|Binding
-operator|)
 name|iter
 operator|.
 name|next
@@ -319,6 +329,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -361,6 +373,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Stops all existing ActiveMQConnectionFactory in Context.      *      * @throws javax.naming.NamingException      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -371,6 +385,9 @@ throws|,
 name|JMSException
 block|{
 name|NamingEnumeration
+argument_list|<
+name|Binding
+argument_list|>
 name|iter
 init|=
 name|context
@@ -391,9 +408,6 @@ block|{
 name|Binding
 name|binding
 init|=
-operator|(
-name|Binding
-operator|)
 name|iter
 operator|.
 name|next

@@ -85,16 +85,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -172,6 +162,8 @@ name|VM_BROKER_URL
 init|=
 literal|"vm://localhost"
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|BrokerService
 name|createBroker
@@ -441,8 +433,6 @@ literal|100
 argument_list|)
 expr_stmt|;
 comment|// Verify exclusive consumer receives the message.
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|exclusiveConsumer
@@ -453,8 +443,6 @@ literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNull
 argument_list|(
 name|fallbackConsumer
@@ -670,8 +658,6 @@ literal|100
 argument_list|)
 expr_stmt|;
 comment|// Verify exclusive consumer receives the message.
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|exclusiveConsumer1
@@ -682,8 +668,6 @@ literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNull
 argument_list|(
 name|exclusiveConsumer2
@@ -694,8 +678,6 @@ literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNull
 argument_list|(
 name|fallbackConsumer
@@ -727,8 +709,6 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 literal|"Should have received a message"
@@ -741,8 +721,6 @@ literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNull
 argument_list|(
 literal|"Should not have received a message"
@@ -932,8 +910,6 @@ literal|100
 argument_list|)
 expr_stmt|;
 comment|// Verify exclusive consumer receives the message.
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|exclusiveConsumer
@@ -944,8 +920,6 @@ literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNull
 argument_list|(
 name|fallbackConsumer
@@ -970,8 +944,6 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 name|fallbackConsumer

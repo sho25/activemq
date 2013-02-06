@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -142,6 +142,8 @@ operator|new
 name|BooleanValueSet
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|getBooleanValueFor
@@ -176,6 +178,8 @@ operator|new
 name|BooleanValueSet
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|getBooleanValueFor
@@ -210,6 +214,8 @@ operator|new
 name|BooleanValueSet
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|getBooleanValueFor
@@ -250,6 +256,8 @@ operator|new
 name|BooleanValueSet
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|getBooleanValueFor
@@ -602,14 +610,11 @@ expr_stmt|;
 comment|// lets try read and we should get an exception
 try|try
 block|{
-name|byte
-name|value
-init|=
 name|dis
 operator|.
 name|readByte
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|fail
 argument_list|(
 literal|"Should have reached the end of the stream"
@@ -625,6 +630,8 @@ block|{
 comment|// worked!
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp

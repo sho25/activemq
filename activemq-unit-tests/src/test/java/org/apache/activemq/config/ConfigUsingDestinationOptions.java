@@ -279,6 +279,8 @@ expr_stmt|;
 name|fail
 argument_list|(
 literal|"Selector should be invalid"
+operator|+
+name|cons
 argument_list|)
 expr_stmt|;
 block|}
@@ -306,6 +308,8 @@ expr_stmt|;
 name|fail
 argument_list|(
 literal|"Selector should be invalid"
+operator|+
+name|cons
 argument_list|)
 expr_stmt|;
 block|}

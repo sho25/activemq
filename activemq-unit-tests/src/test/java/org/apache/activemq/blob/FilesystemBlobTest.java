@@ -107,16 +107,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -226,6 +216,7 @@ name|Connection
 name|connection
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|tmpDir
 init|=
@@ -238,6 +229,8 @@ argument_list|)
 operator|+
 literal|"/target/FilesystemBlobTest"
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp
@@ -424,8 +417,6 @@ argument_list|(
 literal|1000
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|msg
@@ -516,8 +507,6 @@ literal|"_"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|content
@@ -555,6 +544,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown

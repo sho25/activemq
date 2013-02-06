@@ -41,54 +41,6 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|CountDownLatch
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Executor
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ExecutorService
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Executors
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
 name|SynchronousQueue
 import|;
 end_import
@@ -198,7 +150,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -248,6 +200,8 @@ name|Connection
 name|stoppedConnection
 decl_stmt|;
 comment|/**      * @see junit.framework.TestCase#setUp()      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -298,6 +252,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @see junit.framework.TestCase#tearDown()      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -316,7 +272,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Tests if the consumer receives the messages that were sent before the      * connection was started.      *       * @throws JMSException      */
+comment|/**      * Tests if the consumer receives the messages that were sent before the      * connection was started.      *      * @throws JMSException      */
 specifier|public
 name|void
 name|testStoppedConsumerHoldsMessagesTillStarted
@@ -471,7 +427,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Tests if the consumer is able to receive messages eveb when the      * connecction restarts multiple times.      *       * @throws Exception      */
+comment|/**      * Tests if the consumer is able to receive messages eveb when the      * connecction restarts multiple times.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testMultipleConnectionStops
@@ -561,6 +517,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -618,6 +576,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run

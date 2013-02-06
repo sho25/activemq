@@ -720,6 +720,9 @@ name|v3
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|Object
+argument_list|>
 name|allValues
 init|=
 name|Arrays
@@ -1688,9 +1691,6 @@ argument_list|,
 name|v2
 argument_list|)
 expr_stmt|;
-name|Set
-name|set
-init|=
 name|map
 operator|.
 name|removeAll
@@ -1700,7 +1700,7 @@ argument_list|(
 literal|"FOO.A"
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|assertMapValue
 argument_list|(
 literal|"FOO.>"
@@ -2196,7 +2196,11 @@ block|}
 annotation|@
 name|SuppressWarnings
 argument_list|(
+block|{
 literal|"unchecked"
+block|,
+literal|"rawtypes"
+block|}
 argument_list|)
 specifier|protected
 name|void

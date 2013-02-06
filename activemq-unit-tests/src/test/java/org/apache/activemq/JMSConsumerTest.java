@@ -292,7 +292,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test cases used to test the JMS message consumer.  *   *   */
+comment|/**  * Test cases used to test the JMS message consumer.  *  *  */
 end_comment
 
 begin_class
@@ -546,6 +546,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -813,6 +815,8 @@ operator|new
 name|UncaughtExceptionHandler
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|uncaughtException
@@ -853,6 +857,7 @@ implements|implements
 name|Runnable
 block|{
 specifier|private
+specifier|final
 name|Message
 name|message
 decl_stmt|;
@@ -870,6 +875,8 @@ operator|=
 name|m
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -970,6 +977,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1937,6 +1946,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -2109,6 +2120,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -2142,6 +2155,11 @@ block|}
 block|}
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|consumer
+argument_list|)
+expr_stmt|;
 comment|// Send the messages
 name|sendMessages
 argument_list|(
@@ -2361,6 +2379,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -2561,6 +2581,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -2853,6 +2875,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -3053,6 +3077,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -3323,6 +3349,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -3553,6 +3581,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage

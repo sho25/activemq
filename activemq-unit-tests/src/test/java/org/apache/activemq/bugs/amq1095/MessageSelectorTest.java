@@ -77,18 +77,8 @@ name|Topic
 import|;
 end_import
 
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-import|;
-end_import
-
 begin_comment
-comment|/**  *<p>  * Test cases for various ActiveMQ functionalities.  *</p>  *   *<ul>  *<li>  *<p>  * Durable subscriptions are used.  *</p>  *</li>  *<li>  *<p>  * The Kaha persistence manager is used.  *</p>  *</li>  *<li>  *<p>  * An already existing Kaha directory is used. Everything runs fine if the  * ActiveMQ broker creates a new Kaha directory.  *</p>  *</li>  *</ul>  *   * @author Rainer Klute<a  *         href="mailto:rainer.klute@dp-itsolutions.de">&lt;rainer.klute@dp-itsolutions.de&gt;</a>  * @since 2007-08-09  * @version $Id: MessageSelectorTest.java 12 2007-08-14 12:02:02Z rke $  */
+comment|/**  *<p>  * Test cases for various ActiveMQ functionalities.  *</p>  *  *<ul>  *<li>  *<p>  * Durable subscriptions are used.  *</p>  *</li>  *<li>  *<p>  * The Kaha persistence manager is used.  *</p>  *</li>  *<li>  *<p>  * An already existing Kaha directory is used. Everything runs fine if the  * ActiveMQ broker creates a new Kaha directory.  *</p>  *</li>  *</ul>  *  * @author Rainer Klute<a  *         href="mailto:rainer.klute@dp-itsolutions.de">&lt;rainer.klute@dp-itsolutions.de&gt;</a>  * @since 2007-08-09  * @version $Id: MessageSelectorTest.java 12 2007-08-14 12:02:02Z rke $  */
 end_comment
 
 begin_class
@@ -752,8 +742,6 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|()
 expr_stmt|;

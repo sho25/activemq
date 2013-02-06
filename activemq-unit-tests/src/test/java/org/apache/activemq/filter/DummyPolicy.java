@@ -26,7 +26,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a destination based policy  *   *   */
+comment|/**  * Represents a destination based policy  *  *  */
 end_comment
 
 begin_class
@@ -36,6 +36,17 @@ name|DummyPolicy
 extends|extends
 name|DestinationMap
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
+annotation|@
+name|Override
 specifier|protected
 name|Class
 name|getEntryClass
@@ -47,6 +58,17 @@ operator|.
 name|class
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setEntries

@@ -75,16 +75,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -729,16 +719,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|TransportConnector
-name|connector
-init|=
 name|broker
 operator|.
 name|addConnector
 argument_list|(
 literal|"tcp://localhost:61610?wireFormat.tcpNoDelayEnabled=true"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|broker
 operator|.
 name|start
@@ -959,6 +946,8 @@ operator|new
 name|ExceptionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onException
@@ -966,7 +955,7 @@ parameter_list|(
 name|JMSException
 name|arg0
 parameter_list|)
-block|{ 			}
+block|{             }
 block|}
 decl_stmt|;
 name|cf
@@ -1091,6 +1080,8 @@ operator|new
 name|ClientInternalExceptionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onException

@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Test case for AMQ-140  *  *   */
+comment|/**  * Test case for AMQ-140  *  *  */
 end_comment
 
 begin_class
@@ -39,6 +39,8 @@ literal|"jms/Queue"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|configureEnvironment

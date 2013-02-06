@@ -1774,6 +1774,9 @@ annotation|@
 name|Override
 specifier|public
 name|Enumeration
+argument_list|<
+name|?
+argument_list|>
 name|getPropertyNames
 parameter_list|()
 throws|throws

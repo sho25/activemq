@@ -124,7 +124,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   *   */
+comment|/**  *  *  */
 end_comment
 
 begin_class
@@ -325,6 +325,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onProducerEvent
@@ -341,6 +343,8 @@ name|event
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -381,6 +385,8 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -545,6 +551,11 @@ argument_list|(
 name|destination
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|producer
+argument_list|)
+expr_stmt|;
 return|return
 name|answer
 return|;

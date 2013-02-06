@@ -520,6 +520,8 @@ specifier|protected
 name|Queue
 name|theQueue
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -651,6 +653,8 @@ literal|"org/apache/activemq/console/command/activemq.xml"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -704,11 +708,6 @@ name|tearDown
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 specifier|public
 name|int
 name|getMessageCount
@@ -723,6 +722,9 @@ throws|throws
 name|JMSException
 block|{
 name|Enumeration
+argument_list|<
+name|?
+argument_list|>
 name|e
 init|=
 name|browser
@@ -1187,7 +1189,7 @@ literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * This test ensures that the queueViewMbean will work. 	 *  	 * @throws Exception 	 */
+comment|/**      * This test ensures that the queueViewMbean will work.      *      * @throws Exception      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1273,12 +1275,7 @@ block|{
 name|ObjectName
 name|queueName
 init|=
-operator|(
-operator|(
-name|ObjectInstance
-operator|)
 name|queue
-operator|)
 operator|.
 name|getObjectName
 argument_list|()
@@ -1286,9 +1283,6 @@ decl_stmt|;
 name|QueueViewMBean
 name|proxy
 init|=
-operator|(
-name|QueueViewMBean
-operator|)
 name|MBeanServerInvocationHandler
 operator|.
 name|newProxyInstance
@@ -2260,7 +2254,7 @@ argument_list|(
 name|tokens
 argument_list|)
 expr_stmt|;
-comment|/* 			QueueBrowser withPropertyBrowser = requestServerSession.createBrowser( 					theQueue, MSG_SEL_COMPLEX_SQL_AND); 			QueueBrowser allBrowser = requestServerSession.createBrowser(theQueue);  			int withCount = getMessageCount(withPropertyBrowser, "withProperty "); 			int allCount = getMessageCount(allBrowser, "allMessages ");  			withPropertyBrowser.close(); 			allBrowser.close(); 			 			assertEquals("Expected withCount to be " + "0" + " was " 					+ withCount, 0, withCount); 			assertEquals("Expected allCount to be " + MESSAGE_COUNT + " was " 					+ allCount, MESSAGE_COUNT, allCount); 			LOG.info("withCount = " + withCount + "\n allCount = " +  					allCount + "\n  = " + "\n"); 			*/
+comment|/*             QueueBrowser withPropertyBrowser = requestServerSession.createBrowser(                     theQueue, MSG_SEL_COMPLEX_SQL_AND);             QueueBrowser allBrowser = requestServerSession.createBrowser(theQueue);              int withCount = getMessageCount(withPropertyBrowser, "withProperty ");             int allCount = getMessageCount(allBrowser, "allMessages ");              withPropertyBrowser.close();             allBrowser.close();              assertEquals("Expected withCount to be " + "0" + " was "                     + withCount, 0, withCount);             assertEquals("Expected allCount to be " + MESSAGE_COUNT + " was "                     + allCount, MESSAGE_COUNT, allCount);             LOG.info("withCount = " + withCount + "\n allCount = " +                     allCount + "\n  = " + "\n");             */
 block|}
 finally|finally
 block|{

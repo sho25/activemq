@@ -39,16 +39,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Enumeration
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Map
 import|;
 end_import
@@ -100,16 +90,6 @@ operator|.
 name|jms
 operator|.
 name|TextMessage
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -309,28 +289,8 @@ name|MemoryPersistenceAdapter
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
-comment|/**  * Useful base class for unit test cases  *   *   */
+comment|/**  * Useful base class for unit test cases  *  *  */
 end_comment
 
 begin_class

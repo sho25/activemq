@@ -89,16 +89,6 @@ name|junit
 operator|.
 name|framework
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
 name|TestCase
 import|;
 end_import
@@ -145,6 +135,8 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -158,6 +150,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -272,6 +266,11 @@ argument_list|,
 name|Session
 operator|.
 name|AUTO_ACKNOWLEDGE
+argument_list|)
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+name|consumerHighPriority
 argument_list|)
 expr_stmt|;
 name|senderSession
@@ -389,8 +388,6 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNotNull
 argument_list|(
 literal|"null on iteration: "
@@ -406,8 +403,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|Assert
-operator|.
 name|assertNull
 argument_list|(
 name|lowConsumer

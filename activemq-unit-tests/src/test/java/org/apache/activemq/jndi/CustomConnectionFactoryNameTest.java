@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test case for AMQ-141  *  *   */
+comment|/**  * Test case for AMQ-141  *  *  */
 end_comment
 
 begin_class
@@ -48,6 +48,8 @@ name|CustomConnectionFactoryNameTest
 extends|extends
 name|ActiveMQInitialContextFactoryTest
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|testConnectionFactoriesArePresent
@@ -128,6 +130,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|String
 name|getConnectionFactoryLookupName
@@ -137,6 +141,8 @@ return|return
 literal|"myConnectionFactory"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|configureEnvironment

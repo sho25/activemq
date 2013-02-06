@@ -109,6 +109,9 @@ literal|"policy"
 argument_list|)
 decl_stmt|;
 name|Set
+argument_list|<
+name|?
+argument_list|>
 name|set
 init|=
 name|policy
@@ -139,6 +142,8 @@ name|set
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|AbstractApplicationContext
 name|createApplicationContext

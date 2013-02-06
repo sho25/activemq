@@ -415,6 +415,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -654,15 +656,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Make sure the message was delivered via the remote.
-name|Message
-name|m
-init|=
 name|receiveMessage
 argument_list|(
 name|connection2
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -723,6 +724,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown

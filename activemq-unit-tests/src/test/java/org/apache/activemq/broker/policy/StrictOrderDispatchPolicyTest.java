@@ -29,6 +29,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|MessageConsumer
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -130,6 +140,8 @@ name|StrictOrderDispatchPolicyTest
 extends|extends
 name|TopicSubscriptionTest
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|BrokerService
 name|createBroker
@@ -186,6 +198,8 @@ return|return
 name|broker
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|testOneProducerTwoConsumersLargeMessagesOnePrefetch
@@ -202,6 +216,8 @@ name|assertReceivedMessagesAreOrdered
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|testOneProducerTwoConsumersSmallMessagesOnePrefetch
@@ -218,6 +234,8 @@ name|assertReceivedMessagesAreOrdered
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|testOneProducerTwoConsumersSmallMessagesLargePrefetch
@@ -234,6 +252,8 @@ name|assertReceivedMessagesAreOrdered
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|testOneProducerTwoConsumersLargeMessagesLargePrefetch
@@ -250,6 +270,8 @@ name|assertReceivedMessagesAreOrdered
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|testOneProducerManyConsumersFewMessages
@@ -266,6 +288,8 @@ name|assertReceivedMessagesAreOrdered
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|testOneProducerManyConsumersManyMessages
@@ -282,6 +306,8 @@ name|assertReceivedMessagesAreOrdered
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|testManyProducersOneConsumer
@@ -298,6 +324,8 @@ name|assertReceivedMessagesAreOrdered
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|testManyProducersManyConsumers
@@ -336,6 +364,9 @@ return|return;
 block|}
 comment|// Get basis of order
 name|Iterator
+argument_list|<
+name|MessageConsumer
+argument_list|>
 name|i
 init|=
 name|consumers

@@ -21,16 +21,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|net
 operator|.
 name|URI
@@ -173,16 +163,6 @@ name|junit
 operator|.
 name|framework
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
 name|TestCase
 import|;
 end_import
@@ -230,7 +210,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<p>  * Common functionality for ActiveMQ test cases.  *</p>  *   * @author Rainer Klute<a  *         href="mailto:rainer.klute@dp-itsolutions.de">&lt;rainer.klute@dp-itsolutions.de&gt;</a>  * @since 2007-08-10  * @version $Id: ActiveMQTestCase.java 12 2007-08-14 12:02:02Z rke $  */
+comment|/**  *<p>  * Common functionality for ActiveMQ test cases.  *</p>  *  * @author Rainer Klute<a  *         href="mailto:rainer.klute@dp-itsolutions.de">&lt;rainer.klute@dp-itsolutions.de&gt;</a>  * @since 2007-08-10  * @version $Id: ActiveMQTestCase.java 12 2007-08-14 12:02:02Z rke $  */
 end_comment
 
 begin_class
@@ -257,6 +237,7 @@ name|Destination
 name|destination
 decl_stmt|;
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|MessageConsumer
@@ -282,7 +263,7 @@ specifier|public
 name|ActiveMQTestCase
 parameter_list|()
 block|{}
-comment|/**<p>Constructor</p>       * @param name the test case's name      */
+comment|/**<p>Constructor</p>      * @param name the test case's name      */
 specifier|public
 name|ActiveMQTestCase
 parameter_list|(
@@ -298,6 +279,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      *<p>Sets up the JUnit testing environment.      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -330,6 +313,9 @@ for|for
 control|(
 specifier|final
 name|Iterator
+argument_list|<
+name|Object
+argument_list|>
 name|i
 init|=
 name|systemProperties
@@ -507,8 +493,6 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|(
 name|ex1
@@ -529,8 +513,6 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|(
 name|ex2
@@ -551,8 +533,6 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|(
 name|ex3
@@ -564,6 +544,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      *<p>      * Tear down the testing environment by receiving any messages that might be      * left in the topic after a failure and shutting down the broker properly.      * This is quite important for subsequent test cases that assume the topic      * to be empty.      *</p>      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -580,6 +562,9 @@ for|for
 control|(
 specifier|final
 name|Iterator
+argument_list|<
+name|MessageConsumer
+argument_list|>
 name|i
 init|=
 name|consumersToEmpty
@@ -598,9 +583,6 @@ specifier|final
 name|MessageConsumer
 name|consumer
 init|=
-operator|(
-name|MessageConsumer
-operator|)
 name|i
 operator|.
 name|next
@@ -639,7 +621,7 @@ parameter_list|(
 name|Exception
 name|e
 parameter_list|)
-block|{ 		}
+block|{         }
 if|if
 condition|(
 name|connection

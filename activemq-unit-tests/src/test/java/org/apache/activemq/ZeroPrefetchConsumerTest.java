@@ -221,20 +221,6 @@ name|activemq
 operator|.
 name|command
 operator|.
-name|ConsumerInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|ExceptionResponse
 import|;
 end_import
@@ -274,7 +260,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -2354,6 +2340,8 @@ return|return
 name|brokerService
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -2386,6 +2374,8 @@ name|createQueue
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|startBroker
@@ -2417,6 +2407,8 @@ name|toString
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown

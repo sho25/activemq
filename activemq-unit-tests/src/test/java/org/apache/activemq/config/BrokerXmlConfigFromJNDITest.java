@@ -82,7 +82,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -92,6 +92,8 @@ name|BrokerXmlConfigFromJNDITest
 extends|extends
 name|JmsTopicSendReceiveWithTwoConnectionsTest
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|ActiveMQConnectionFactory
 name|createConnectionFactory
@@ -105,10 +107,20 @@ expr_stmt|;
 comment|// we could put these properties into a jndi.properties
 comment|// on the classpath instead
 name|Hashtable
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|properties
 init|=
 operator|new
 name|Hashtable
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|properties

@@ -142,7 +142,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Various Tests to show the memory leak suspect in network of brokers. This is  * for https://issues.apache.org/activemq/browse/AMQ-2530  *   */
+comment|/**  * Various Tests to show the memory leak suspect in network of brokers. This is  * for https://issues.apache.org/activemq/browse/AMQ-2530  *  */
 end_comment
 
 begin_class
@@ -636,6 +636,11 @@ argument_list|(
 name|topic
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|subscriber
+argument_list|)
+expr_stmt|;
 block|}
 name|connection
 operator|.
@@ -682,7 +687,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Running this test you can produce a leak of only 2 ConsumerInfo on BE      * broker, NOT 200 as in other cases!      *       */
+comment|/**      * Running this test you can produce a leak of only 2 ConsumerInfo on BE      * broker, NOT 200 as in other cases!      *      */
 specifier|public
 name|void
 name|testWithoutSessionAndSubsciberClosePlayAround
@@ -825,6 +830,8 @@ name|DummyMessageListener
 implements|implements
 name|MessageListener
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage

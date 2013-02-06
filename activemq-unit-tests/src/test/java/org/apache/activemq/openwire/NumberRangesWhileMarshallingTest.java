@@ -124,7 +124,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -519,7 +519,9 @@ argument_list|()
 decl_stmt|;
 name|fail
 argument_list|(
-literal|"Should have reached the end of the stream"
+literal|"Should have reached the end of the stream: "
+operator|+
+name|value
 argument_list|)
 expr_stmt|;
 block|}
@@ -655,6 +657,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp

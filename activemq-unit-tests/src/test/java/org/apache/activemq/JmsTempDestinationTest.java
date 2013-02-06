@@ -358,6 +358,8 @@ argument_list|>
 argument_list|()
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -396,6 +398,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @see junit.framework.TestCase#tearDown()      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -406,6 +410,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Connection
+argument_list|>
 name|iter
 init|=
 name|connections
@@ -423,9 +430,6 @@ block|{
 name|Connection
 name|conn
 init|=
-operator|(
-name|Connection
-operator|)
 name|iter
 operator|.
 name|next
@@ -452,7 +456,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Make sure Temp destination can only be consumed by local connection      *       * @throws JMSException      */
+comment|/**      * Make sure Temp destination can only be consumed by local connection      *      * @throws JMSException      */
 specifier|public
 name|void
 name|testTempDestOnlyConsumedByLocalConn
@@ -644,7 +648,7 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Make sure that a temp queue does not drop message if there is an active      * consumers.      *       * @throws JMSException      */
+comment|/**      * Make sure that a temp queue does not drop message if there is an active      * consumers.      *      * @throws JMSException      */
 specifier|public
 name|void
 name|testTempQueueHoldsMessagesWithConsumers
@@ -780,7 +784,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Make sure that a temp queue does not drop message if there are no active      * consumers.      *       * @throws JMSException      */
+comment|/**      * Make sure that a temp queue does not drop message if there are no active      * consumers.      *      * @throws JMSException      */
 specifier|public
 name|void
 name|testTempQueueHoldsMessagesWithoutConsumers
@@ -916,7 +920,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test temp queue works under load      *       * @throws JMSException      */
+comment|/**      * Test temp queue works under load      *      * @throws JMSException      */
 specifier|public
 name|void
 name|testTmpQueueWorksUnderLoad
@@ -935,10 +939,16 @@ init|=
 literal|1024
 decl_stmt|;
 name|ArrayList
+argument_list|<
+name|BytesMessage
+argument_list|>
 name|list
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|BytesMessage
+argument_list|>
 argument_list|(
 name|count
 argument_list|)
@@ -1124,7 +1134,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Make sure you cannot publish to a temp destination that does not exist      * anymore.      *       * @throws JMSException      * @throws InterruptedException      * @throws URISyntaxException       */
+comment|/**      * Make sure you cannot publish to a temp destination that does not exist      * anymore.      *      * @throws JMSException      * @throws InterruptedException      * @throws URISyntaxException      */
 specifier|public
 name|void
 name|testPublishFailsForClosedConnection
@@ -1322,7 +1332,7 @@ name|e
 parameter_list|)
 block|{         }
 block|}
-comment|/**      * Make sure you cannot publish to a temp destination that does not exist      * anymore.      *       * @throws JMSException      * @throws InterruptedException      */
+comment|/**      * Make sure you cannot publish to a temp destination that does not exist      * anymore.      *      * @throws JMSException      * @throws InterruptedException      */
 specifier|public
 name|void
 name|testPublishFailsForDestroyedTempDestination
@@ -1527,7 +1537,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Test you can't delete a Destination with Active Subscribers      *       * @throws JMSException      */
+comment|/**      * Test you can't delete a Destination with Active Subscribers      *      * @throws JMSException      */
 specifier|public
 name|void
 name|testDeleteDestinationWithSubscribersFails
