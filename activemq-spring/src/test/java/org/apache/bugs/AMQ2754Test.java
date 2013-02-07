@@ -201,10 +201,6 @@ name|PooledConnectionFactory
 import|;
 end_import
 
-begin_comment
-comment|//import org.apache.activemq.pool.PooledConnectionFactory;
-end_comment
-
 begin_import
 import|import
 name|org
@@ -263,6 +259,10 @@ name|DefaultMessageListenerContainer
 import|;
 end_import
 
+begin_comment
+comment|//import org.apache.activemq.pool.PooledConnectionFactory;
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -286,6 +286,12 @@ name|BrokerService
 name|brokerService2
 init|=
 literal|null
+decl_stmt|;
+name|String
+name|broker1Uri
+decl_stmt|;
+name|String
+name|broker2Uri
 decl_stmt|;
 specifier|final
 name|int
@@ -341,12 +347,17 @@ name|MemoryPersistenceAdapter
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|broker1Uri
+operator|=
 name|brokerService1
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://0.0.0.0:61616"
+literal|"tcp://0.0.0.0:0"
 argument_list|)
+operator|.
+name|getPublishableConnectString
+argument_list|()
 expr_stmt|;
 name|brokerService1
 operator|.
@@ -384,12 +395,17 @@ name|MemoryPersistenceAdapter
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|broker2Uri
+operator|=
 name|brokerService2
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://0.0.0.0:51515"
+literal|"tcp://0.0.0.0:0"
 argument_list|)
+operator|.
+name|getPublishableConnectString
+argument_list|()
 expr_stmt|;
 name|NetworkConnector
 name|network2
@@ -398,7 +414,11 @@ name|brokerService2
 operator|.
 name|addNetworkConnector
 argument_list|(
-literal|"static:(tcp://localhost:61616)"
+literal|"static:("
+operator|+
+name|broker1Uri
+operator|+
+literal|")"
 argument_list|)
 decl_stmt|;
 name|network2
@@ -456,7 +476,11 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"failover:(tcp://localhost:61616)"
+literal|"failover:("
+operator|+
+name|broker1Uri
+operator|+
+literal|")"
 argument_list|)
 decl_stmt|;
 name|connectionFactory1
@@ -525,6 +549,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -559,6 +585,12 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+specifier|final
+name|String
+name|finalBroker2Uri
+init|=
+name|broker2Uri
+decl_stmt|;
 name|pool
 operator|.
 name|submit
@@ -570,6 +602,8 @@ name|Object
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|call
@@ -591,7 +625,11 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"failover:(tcp://localhost:51515)"
+literal|"failover:("
+operator|+
+name|finalBroker2Uri
+operator|+
+literal|")"
 argument_list|)
 decl_stmt|;
 name|PooledConnectionFactory
@@ -684,6 +722,8 @@ operator|new
 name|MessageCreator
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|createMessage
