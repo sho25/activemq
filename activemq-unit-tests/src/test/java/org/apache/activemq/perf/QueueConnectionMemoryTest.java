@@ -51,16 +51,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|MessageConsumer
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|Session
 import|;
 end_import
@@ -116,7 +106,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -142,6 +132,8 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -149,6 +141,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -156,6 +150,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|protected
 name|Destination
 name|createDestination
@@ -176,6 +172,8 @@ name|createTemporaryQueue
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|testPerformance
@@ -185,6 +183,8 @@ name|JMSException
 block|{
 comment|// just cancel super class test
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|configureBroker
@@ -278,16 +278,13 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 decl_stmt|;
-name|Destination
-name|destination
-init|=
 name|createDestination
 argument_list|(
 name|session
 argument_list|,
 name|destinationName
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|con
 operator|.
 name|close
@@ -343,16 +340,13 @@ operator|.
 name|createTemporaryQueue
 argument_list|()
 decl_stmt|;
-name|MessageConsumer
-name|consumer
-init|=
 name|s
 operator|.
 name|createConsumer
 argument_list|(
 name|dest
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|LOG
 operator|.
 name|debug

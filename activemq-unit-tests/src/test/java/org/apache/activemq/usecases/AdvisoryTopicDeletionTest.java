@@ -83,7 +83,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|TestSupport
+name|ActiveMQConnectionFactory
 import|;
 end_import
 
@@ -95,7 +95,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|ActiveMQConnectionFactory
+name|TestSupport
 import|;
 end_import
 
@@ -138,20 +138,6 @@ operator|.
 name|command
 operator|.
 name|ActiveMQDestination
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQQueue
 import|;
 end_import
 
@@ -205,6 +191,8 @@ specifier|private
 name|Connection
 name|connection
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|ActiveMQConnectionFactory
 name|createConnectionFactory
@@ -223,6 +211,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -243,6 +233,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown

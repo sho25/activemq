@@ -513,6 +513,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|void
 name|testNoStuckConnectionsWithTransportDisconnect
@@ -711,6 +716,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -797,6 +804,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -865,7 +874,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_function
-unit|}          public
+unit|}      public
 name|void
 name|testTwoDuplexNCsAreAllowed
 parameter_list|()
@@ -1010,6 +1019,8 @@ block|}
 end_function
 
 begin_function
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp
@@ -1077,6 +1088,8 @@ block|}
 end_function
 
 begin_function
+annotation|@
+name|Override
 specifier|public
 name|void
 name|tearDown
@@ -1328,17 +1341,12 @@ condition|)
 block|{
 name|remoteURI
 operator|=
-operator|(
-operator|(
-name|TransportConnector
-operator|)
 name|transportConnectors
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|.
 name|getConnectUri
 argument_list|()

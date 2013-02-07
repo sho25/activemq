@@ -110,7 +110,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -122,7 +122,7 @@ name|TestSupport
 implements|implements
 name|MessageListener
 block|{
-comment|/**      * test following condition- which are defined by JMS Spec 1.1:      * MessageConsumers cannot use a MessageListener and receive() from the same      * session      *       * @throws Exception      */
+comment|/**      * test following condition- which are defined by JMS Spec 1.1:      * MessageConsumers cannot use a MessageListener and receive() from the same      * session      *      * @throws Exception      */
 specifier|public
 name|void
 name|testDoChangeSessionDeliveryMode
@@ -180,11 +180,6 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|JMSException
-name|jmsEx
-init|=
-literal|null
-decl_stmt|;
 name|MessageConsumer
 name|consumer2
 init|=
@@ -225,6 +220,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage

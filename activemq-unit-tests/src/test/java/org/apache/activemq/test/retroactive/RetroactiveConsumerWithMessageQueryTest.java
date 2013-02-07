@@ -157,20 +157,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|usecases
-operator|.
-name|CreateLotsOfTemporaryQueuesTest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|util
 operator|.
 name|MessageIdList
@@ -198,7 +184,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -383,6 +369,8 @@ name|messageCount
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -404,6 +392,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -447,6 +437,8 @@ name|tearDown
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|ConnectionFactory
 name|createConnectionFactory
@@ -469,6 +461,8 @@ return|return
 name|answer
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|BrokerService
 name|createBroker
@@ -506,6 +500,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|startBroker

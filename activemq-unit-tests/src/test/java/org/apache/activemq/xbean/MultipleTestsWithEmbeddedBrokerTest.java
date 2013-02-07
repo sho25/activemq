@@ -41,22 +41,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|test
-operator|.
-name|retroactive
-operator|.
-name|RetroactiveConsumerWithMessageQueryTest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -74,7 +58,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @author Neil Clayton  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -117,6 +101,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -162,6 +148,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown

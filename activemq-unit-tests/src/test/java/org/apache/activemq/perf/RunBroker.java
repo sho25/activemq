@@ -109,17 +109,6 @@ argument_list|(
 name|dataFileDir
 argument_list|)
 expr_stmt|;
-name|File
-name|archiveDir
-init|=
-operator|new
-name|File
-argument_list|(
-name|dataFileDir
-argument_list|,
-literal|"archive"
-argument_list|)
-decl_stmt|;
 name|kahaDB
 operator|.
 name|setDirectory

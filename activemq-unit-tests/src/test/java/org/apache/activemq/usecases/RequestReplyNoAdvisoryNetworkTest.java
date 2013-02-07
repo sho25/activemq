@@ -442,6 +442,7 @@ literal|">"
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|long
 name|receiveTimeout
 init|=
@@ -1153,6 +1154,11 @@ throws|throws
 name|Exception
 block|{
 name|Map
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
 name|tempTopics
 init|=
 name|regionBroker
@@ -1180,6 +1186,11 @@ name|tempTopics
 argument_list|)
 expr_stmt|;
 name|Map
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
 name|tempQ
 init|=
 name|regionBroker
@@ -1373,6 +1384,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|tearDown

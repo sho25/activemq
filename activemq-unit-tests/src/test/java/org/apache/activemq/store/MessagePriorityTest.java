@@ -417,6 +417,8 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -682,6 +684,8 @@ name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -951,6 +955,8 @@ operator|=
 name|dest
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2684,11 +2690,6 @@ argument_list|,
 name|subName
 argument_list|)
 expr_stmt|;
-name|int
-name|count
-init|=
-literal|0
-decl_stmt|;
 name|Message
 name|msg
 init|=

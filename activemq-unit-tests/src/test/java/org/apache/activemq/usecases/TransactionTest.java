@@ -31,16 +31,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|concurrent
 operator|.
 name|CountDownLatch
@@ -206,7 +196,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author pragmasoft  *   */
+comment|/**  * @author pragmasoft  *  */
 end_comment
 
 begin_class
@@ -262,6 +252,7 @@ name|Connection
 name|connection
 decl_stmt|;
 specifier|private
+specifier|final
 name|CountDownLatch
 name|latch
 init|=
@@ -361,6 +352,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -571,6 +564,8 @@ name|receivedText
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown

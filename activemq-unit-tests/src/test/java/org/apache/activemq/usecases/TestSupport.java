@@ -129,28 +129,8 @@ name|ActiveMQTopic
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
-comment|/**  * Useful base class for unit test cases  *   *   */
+comment|/**  * Useful base class for unit test cases  */
 end_comment
 
 begin_class
@@ -160,21 +140,6 @@ name|TestSupport
 extends|extends
 name|TestCase
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|LOG
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|TestSupport
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|protected
 name|ActiveMQConnectionFactory
 name|connectionFactory

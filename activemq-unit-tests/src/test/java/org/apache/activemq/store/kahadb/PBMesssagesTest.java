@@ -101,7 +101,9 @@ name|kahadb
 operator|.
 name|data
 operator|.
-name|KahaEntryType
+name|KahaDestination
+operator|.
+name|DestinationType
 import|;
 end_import
 
@@ -119,9 +121,7 @@ name|kahadb
 operator|.
 name|data
 operator|.
-name|KahaDestination
-operator|.
-name|DestinationType
+name|KahaEntryType
 import|;
 end_import
 
@@ -174,6 +174,11 @@ name|PBMesssagesTest
 extends|extends
 name|TestCase
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|void
 name|testKahaAddMessageCommand

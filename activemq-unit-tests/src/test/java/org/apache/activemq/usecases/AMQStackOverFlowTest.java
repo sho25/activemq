@@ -91,16 +91,6 @@ name|junit
 operator|.
 name|framework
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
 name|TestCase
 import|;
 end_import
@@ -386,6 +376,8 @@ operator|new
 name|MessageCreator
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|createMessage
@@ -452,8 +444,6 @@ name|TextMessage
 operator|)
 name|m
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -474,6 +464,8 @@ operator|new
 name|MessageCreator
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|createMessage
@@ -528,8 +520,6 @@ name|TextMessage
 operator|)
 name|m2
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test2"

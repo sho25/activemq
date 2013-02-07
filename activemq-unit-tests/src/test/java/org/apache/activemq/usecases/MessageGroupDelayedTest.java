@@ -382,6 +382,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp
@@ -456,6 +458,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|BrokerService
 name|createBroker
@@ -553,6 +557,8 @@ return|return
 name|service
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|tearDown
@@ -1111,6 +1117,7 @@ init|=
 literal|null
 decl_stmt|;
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -1120,6 +1127,7 @@ argument_list|>
 name|messageCount
 decl_stmt|;
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -1281,6 +1289,8 @@ name|groups
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1396,16 +1406,13 @@ argument_list|(
 literal|"JMSXGroupID"
 argument_list|)
 decl_stmt|;
-name|boolean
-name|first
-init|=
 name|msg
 operator|.
 name|getBooleanProperty
 argument_list|(
 literal|"JMSXGroupFirstForConsumer"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 literal|"A"

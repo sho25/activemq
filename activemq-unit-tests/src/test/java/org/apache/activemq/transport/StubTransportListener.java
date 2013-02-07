@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   *   */
+comment|/**  *  *  */
 end_comment
 
 begin_class
@@ -59,23 +59,40 @@ implements|implements
 name|TransportListener
 block|{
 specifier|private
+specifier|final
 name|Queue
+argument_list|<
+name|Object
+argument_list|>
 name|commands
 init|=
 operator|new
 name|ConcurrentLinkedQueue
+argument_list|<
+name|Object
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|Queue
+argument_list|<
+name|Object
+argument_list|>
 name|exceptions
 init|=
 operator|new
 name|ConcurrentLinkedQueue
+argument_list|<
+name|Object
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|public
 name|Queue
+argument_list|<
+name|Object
+argument_list|>
 name|getCommands
 parameter_list|()
 block|{
@@ -85,6 +102,9 @@ return|;
 block|}
 specifier|public
 name|Queue
+argument_list|<
+name|Object
+argument_list|>
 name|getExceptions
 parameter_list|()
 block|{
@@ -92,6 +112,8 @@ return|return
 name|exceptions
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onCommand
@@ -108,6 +130,8 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onException
@@ -124,11 +148,15 @@ name|error
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|transportInterupted
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|transportResumed

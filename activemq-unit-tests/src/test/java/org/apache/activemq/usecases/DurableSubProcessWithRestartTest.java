@@ -16,6 +16,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -355,30 +379,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -620,21 +620,6 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|BROKER_RESTART
-operator|<=
-literal|0
-condition|)
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-name|RUNTIME
-argument_list|)
-expr_stmt|;
-else|else
-block|{
 name|long
 name|end
 init|=
@@ -691,7 +676,6 @@ expr_stmt|;
 name|restartBroker
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 block|}
 catch|catch
@@ -2890,6 +2874,11 @@ expr_stmt|;
 block|}
 block|}
 comment|/**          * Checks if the message was not delivered fast enough.          */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 specifier|public
 name|void
 name|checkDeliveryTime

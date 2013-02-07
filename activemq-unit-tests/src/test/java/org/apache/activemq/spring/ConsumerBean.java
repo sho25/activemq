@@ -57,9 +57,9 @@ end_import
 
 begin_import
 import|import
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 import|;
@@ -177,6 +177,8 @@ name|answer
 return|;
 block|}
 comment|/**      * Method implemented from MessageListener interface.      *      * @param message      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage

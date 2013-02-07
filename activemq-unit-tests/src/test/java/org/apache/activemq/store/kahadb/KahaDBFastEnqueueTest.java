@@ -18,6 +18,54 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -303,18 +351,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -347,6 +383,7 @@ name|KahaDBPersistenceAdapter
 name|kahaDBPersistenceAdapter
 decl_stmt|;
 specifier|private
+specifier|final
 name|Destination
 name|destination
 init|=
@@ -357,6 +394,7 @@ literal|"Test"
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|payloadString
 init|=
@@ -373,6 +411,7 @@ index|]
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|boolean
 name|useBytesMessage
 init|=
@@ -386,6 +425,7 @@ init|=
 literal|20
 decl_stmt|;
 specifier|private
+specifier|final
 name|Vector
 argument_list|<
 name|Exception

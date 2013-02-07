@@ -148,7 +148,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -220,6 +220,9 @@ name|list
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Connection
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -348,6 +351,8 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -374,6 +379,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown

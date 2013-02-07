@@ -77,16 +77,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|TopicSubscriber
-import|;
-end_import
-
-begin_import
-import|import
 name|junit
 operator|.
 name|framework
@@ -142,7 +132,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -196,14 +186,6 @@ specifier|private
 specifier|static
 specifier|final
 name|String
-name|CLIENTID
-init|=
-literal|"mytestclient"
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|String
 name|QUEUE_NAME
 init|=
 literal|"testevent"
@@ -251,10 +233,6 @@ name|MessageProducer
 name|publisher
 decl_stmt|;
 specifier|private
-name|TopicSubscriber
-name|subscriber
-decl_stmt|;
-specifier|private
 name|Destination
 name|destination
 decl_stmt|;
@@ -262,6 +240,8 @@ specifier|private
 name|Session
 name|session
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -316,6 +296,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -504,8 +486,6 @@ argument_list|(
 literal|1000000
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
 name|assertEquals
 argument_list|(
 name|loop

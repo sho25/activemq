@@ -350,6 +350,7 @@ name|ActiveMQTopic
 name|topic
 decl_stmt|;
 specifier|private
+specifier|final
 name|Vector
 argument_list|<
 name|Throwable
@@ -364,6 +365,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|int
 name|messageSize
 init|=
@@ -398,6 +400,8 @@ name|session2
 init|=
 literal|null
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|ActiveMQConnectionFactory
 name|createConnectionFactory
@@ -515,6 +519,8 @@ name|class
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -551,6 +557,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -793,6 +801,11 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|consumer1
+argument_list|)
+expr_stmt|;
 name|DurableSubscriptionViewMBean
 name|subscriber1
 init|=
@@ -1158,6 +1171,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -1343,6 +1358,8 @@ decl_stmt|;
 name|Listener
 parameter_list|()
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage

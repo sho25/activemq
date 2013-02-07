@@ -101,6 +101,11 @@ argument_list|,
 literal|2
 argument_list|)
 expr_stmt|;
+name|socket
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -684,16 +689,13 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|int
-name|dscp
-init|=
 name|QualityOfServiceUtils
 operator|.
 name|getDSCP
 argument_list|(
 name|name
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|fail
 argument_list|(
 literal|"No IllegalArgumentException thrown for invalid Differentiated"
@@ -788,9 +790,6 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|int
-name|dscp
-init|=
 name|QualityOfServiceUtils
 operator|.
 name|getDSCP
@@ -802,7 +801,7 @@ argument_list|(
 name|val
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|fail
 argument_list|(
 literal|"No IllegalArgumentException thrown for invalid "
@@ -957,16 +956,13 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|int
-name|typeOfService
-init|=
 name|QualityOfServiceUtils
 operator|.
 name|getToS
 argument_list|(
 name|val
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|fail
 argument_list|(
 literal|"No IllegalArgumentException thrown for invalid "

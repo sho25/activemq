@@ -92,7 +92,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -152,9 +152,6 @@ expr_stmt|;
 name|BrokerItem
 name|brokerItem
 init|=
-operator|(
-name|BrokerItem
-operator|)
 name|brokers
 operator|.
 name|get
@@ -207,6 +204,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|BrokerItem
+argument_list|>
 name|i
 init|=
 name|brokers
@@ -227,9 +227,6 @@ block|{
 name|BrokerItem
 name|bi
 init|=
-operator|(
-name|BrokerItem
-operator|)
 name|i
 operator|.
 name|next
@@ -277,6 +274,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|BrokerItem
+argument_list|>
 name|i
 init|=
 name|brokers
@@ -297,9 +297,6 @@ block|{
 name|BrokerItem
 name|bi
 init|=
-operator|(
-name|BrokerItem
-operator|)
 name|i
 operator|.
 name|next
@@ -370,9 +367,6 @@ expr_stmt|;
 name|BrokerItem
 name|brokerItem
 init|=
-operator|(
-name|BrokerItem
-operator|)
 name|brokers
 operator|.
 name|get
@@ -425,6 +419,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|BrokerItem
+argument_list|>
 name|i
 init|=
 name|brokers
@@ -445,9 +442,6 @@ block|{
 name|BrokerItem
 name|bi
 init|=
-operator|(
-name|BrokerItem
-operator|)
 name|i
 operator|.
 name|next
@@ -503,9 +497,6 @@ expr_stmt|;
 name|BrokerItem
 name|newBroker
 init|=
-operator|(
-name|BrokerItem
-operator|)
 name|brokers
 operator|.
 name|get
@@ -561,6 +552,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|BrokerItem
+argument_list|>
 name|i
 init|=
 name|brokers
@@ -581,9 +575,6 @@ block|{
 name|BrokerItem
 name|bi
 init|=
-operator|(
-name|BrokerItem
-operator|)
 name|i
 operator|.
 name|next
@@ -649,6 +640,8 @@ literal|"Test should have failed since temp queues are disabled."
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp

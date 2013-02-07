@@ -110,7 +110,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   *  * Automatically generated socket.close() calls to simulate network faults  */
+comment|/**  *  *  * Automatically generated socket.close() calls to simulate network faults  */
 end_comment
 
 begin_class
@@ -166,14 +166,12 @@ implements|implements
 name|Runnable
 block|{
 specifier|private
+specifier|final
 name|Thread
 name|processus
 decl_stmt|;
 specifier|private
-name|Random
-name|rnd
-decl_stmt|;
-specifier|private
+specifier|final
 name|Socket
 name|socket
 decl_stmt|;
@@ -206,12 +204,6 @@ name|this
 argument_list|,
 literal|"Network Faults maker : undefined"
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|rnd
-operator|=
-name|rnd
 expr_stmt|;
 name|this
 operator|.
@@ -255,6 +247,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -401,7 +395,7 @@ parameter_list|(
 name|IllegalArgumentException
 name|e
 parameter_list|)
-block|{ 						}
+block|{                             }
 name|this
 operator|.
 name|socket
@@ -442,7 +436,7 @@ parameter_list|(
 name|IOException
 name|e
 parameter_list|)
-block|{ 					}
+block|{                         }
 block|}
 name|this
 operator|.
@@ -716,6 +710,8 @@ name|Random
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Socket
 name|createSocket
@@ -758,6 +754,8 @@ name|getSocket
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Socket
 name|createSocket
@@ -810,6 +808,8 @@ name|getSocket
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Socket
 name|createSocket
@@ -852,6 +852,8 @@ name|getSocket
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Socket
 name|createSocket

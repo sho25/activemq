@@ -41,36 +41,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|Destination
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Message
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|MessageConsumer
 import|;
 end_import
@@ -112,30 +82,6 @@ operator|.
 name|jms
 operator|.
 name|TextMessage
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|JmsConnectionStartStopTest
 import|;
 end_import
 
@@ -190,7 +136,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test case intended to demonstrate delivery interruption to queue consumers when  * a JMS selector leaves some messages on the queue (due to use of a JMS Selector)  *   * testNonDiscriminatingConsumer() demonstrates proper functionality for consumers that don't use  * a selector to qualify their input.  *   * testDiscriminatingConsumer() demonstrates the failure condition in which delivery to the consumer  * eventually halts.  *   * The expected behavior is for the delivery to the client to be maintained regardless of the depth  * of the queue, particularly when the messages in the queue do not meet the selector criteria of the  * client.  *  * https://issues.apache.org/activemq/browse/AMQ-2217  *   */
+comment|/**  * Test case intended to demonstrate delivery interruption to queue consumers when a JMS selector leaves some messages  * on the queue (due to use of a JMS Selector)  *  * testNonDiscriminatingConsumer() demonstrates proper functionality for consumers that don't use a selector to qualify  * their input.  *  * testDiscriminatingConsumer() demonstrates the failure condition in which delivery to the consumer eventually halts.  *  * The expected behavior is for the delivery to the client to be maintained regardless of the depth of the queue,  * particularly when the messages in the queue do not meet the selector criteria of the client.  *  * https://issues.apache.org/activemq/browse/AMQ-2217  *  */
 end_comment
 
 begin_class
@@ -239,18 +185,6 @@ specifier|private
 name|Connection
 name|consumerConnection
 decl_stmt|;
-specifier|private
-name|int
-name|counterSent
-init|=
-literal|0
-decl_stmt|;
-specifier|private
-name|int
-name|counterReceived
-init|=
-literal|0
-decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -268,6 +202,7 @@ init|=
 literal|"DiscriminatingLoadClient.IgnoreMe"
 decl_stmt|;
 specifier|private
+specifier|final
 name|int
 name|testSize
 init|=
@@ -277,6 +212,8 @@ comment|// setting this to a small number will pass all tests
 name|BrokerService
 name|broker
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -362,7 +299,9 @@ name|createConnection
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * @see junit.framework.TestCase#tearDown() 	 */
+comment|/**      * @see junit.framework.TestCase#tearDown()      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -415,7 +354,7 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Test to check if a single consumer with no JMS selector will receive all intended messages 	 *  	 * @throws java.lang.Exception 	 */
+comment|/**      * Test to check if a single consumer with no JMS selector will receive all intended messages      *      * @throws java.lang.Exception      */
 specifier|public
 name|void
 name|testNonDiscriminatingConsumer
@@ -457,7 +396,7 @@ parameter_list|(
 name|Exception
 name|e
 parameter_list|)
-block|{}
+block|{         }
 comment|// here we pass in null for the JMS selector
 name|Consumer
 name|consumer
@@ -518,7 +457,7 @@ parameter_list|(
 name|Exception
 name|e
 parameter_list|)
-block|{}
+block|{         }
 name|Producer
 name|producer
 init|=
@@ -629,7 +568,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Test to check if a single consumer with a JMS selector will receive all intended messages 	 *  	 * @throws java.lang.Exception 	 */
+comment|/**      * Test to check if a single consumer with a JMS selector will receive all intended messages      *      * @throws java.lang.Exception      */
 specifier|public
 name|void
 name|testDiscriminatingConsumer
@@ -671,7 +610,7 @@ parameter_list|(
 name|Exception
 name|e
 parameter_list|)
-block|{}
+block|{         }
 comment|// here we pass the JMS selector we intend to consume
 name|Consumer
 name|consumer
@@ -732,7 +671,7 @@ parameter_list|(
 name|Exception
 name|e
 parameter_list|)
-block|{}
+block|{         }
 name|Producer
 name|producer
 init|=
@@ -816,8 +755,9 @@ name|getCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("test failed .... Sent " + testSize  + " original messages, only half of which (" + (testSize / 2) +
-comment|//		") were intended to be consumed: consumer paused at: " + consumer.getCount());
+comment|// System.out.println("test failed .... Sent " + testSize + " original messages, only half of which (" +
+comment|// (testSize / 2) +
+comment|// ") were intended to be consumed: consumer paused at: " + consumer.getCount());
 block|}
 name|assertTrue
 argument_list|(
@@ -865,7 +805,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Helper class that will publish 2 * testSize messages.  The messages will be distributed evenly 	 * between the following two JMS types: 	 *  	 * @see JMSTYPE_INTENDED_FOR_CONSUMPTION 	 * @see JMSTYPE_NOT_INTENDED_FOR_CONSUMPTION 	 *  	 * @author jlyons 	 * 	 */
+comment|/**      * Helper class that will publish 2 * testSize messages. The messages will be distributed evenly between the      * following two JMS types:      *      * @see JMSTYPE_INTENDED_FOR_CONSUMPTION      * @see JMSTYPE_NOT_INTENDED_FOR_CONSUMPTION      *      */
 specifier|private
 class|class
 name|Producer
@@ -904,6 +844,8 @@ operator|=
 name|connection
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -987,7 +929,7 @@ argument_list|(
 name|JMSTYPE_EATME
 argument_list|)
 expr_stmt|;
-comment|//LOG.info("sending .... JMSType = " + message.getJMSType());
+comment|// LOG.info("sending .... JMSType = " + message.getJMSType());
 name|producer
 operator|.
 name|send
@@ -1025,7 +967,7 @@ argument_list|(
 name|JMSTYPE_IGNOREME
 argument_list|)
 expr_stmt|;
-comment|//LOG.info("sending .... JMSType = " + message.getJMSType());
+comment|// LOG.info("sending .... JMSType = " + message.getJMSType());
 name|producer
 operator|.
 name|send
@@ -1075,19 +1017,8 @@ literal|" messages sent to the queue"
 argument_list|)
 expr_stmt|;
 block|}
-specifier|public
-name|int
-name|getCount
-parameter_list|()
-block|{
-return|return
-name|this
-operator|.
-name|counterSent
-return|;
 block|}
-block|}
-comment|/** 	 * Helper class that will consume messages from the queue based on the supplied JMS selector. 	 * Thread will stop after the first receive(..) timeout, or once all expected messages have 	 * been received (see testSize).  If the thread stops due to a timeout, it is experiencing the 	 * delivery pause that is symptomatic of a bug in the broker. 	 *  	 * @author jlyons 	 * 	 */
+comment|/**      * Helper class that will consume messages from the queue based on the supplied JMS selector. Thread will stop after      * the first receive(..) timeout, or once all expected messages have been received (see testSize). If the thread      * stops due to a timeout, it is experiencing the delivery pause that is symptomatic of a bug in the broker.      *      */
 specifier|private
 class|class
 name|Consumer
@@ -1099,12 +1030,6 @@ name|int
 name|counterReceived
 init|=
 literal|0
-decl_stmt|;
-specifier|private
-name|Connection
-name|connection
-init|=
-literal|null
 decl_stmt|;
 specifier|private
 name|String
@@ -1130,27 +1055,18 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|connection
-operator|=
-name|connection
-expr_stmt|;
-name|this
-operator|.
 name|jmsSelector
 operator|=
 name|jmsSelector
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
 parameter_list|()
 block|{
-name|boolean
-name|testComplete
-init|=
-literal|false
-decl_stmt|;
 try|try
 block|{
 name|Session
@@ -1257,7 +1173,8 @@ block|{
 name|counterReceived
 operator|++
 expr_stmt|;
-comment|//System.out.println("consuming .... JMSType = " + result.getJMSType() + " received = " + counterReceived);
+comment|// System.out.println("consuming .... JMSType = " + result.getJMSType() + " received = " +
+comment|// counterReceived);
 name|LOG
 operator|.
 name|info

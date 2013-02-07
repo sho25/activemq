@@ -101,16 +101,6 @@ name|junit
 operator|.
 name|framework
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
 name|AssertionFailedError
 import|;
 end_import
@@ -172,7 +162,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -677,8 +667,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|loop
@@ -849,14 +837,11 @@ name|loop
 operator|++
 control|)
 block|{
-name|Message
-name|msg
-init|=
 name|subscriber
 operator|.
 name|receive
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|loop
@@ -879,8 +864,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|this
-operator|.
 name|assertEquals
 argument_list|(
 name|loop

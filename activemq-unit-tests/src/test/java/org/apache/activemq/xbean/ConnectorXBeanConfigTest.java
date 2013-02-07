@@ -169,6 +169,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|ActiveMQDestination
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|ActiveMQQueue
 import|;
 end_import
@@ -222,7 +236,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -261,9 +275,6 @@ block|{
 name|TransportConnector
 name|connector
 init|=
-operator|(
-name|TransportConnector
-operator|)
 name|brokerService
 operator|.
 name|getTransportConnectors
@@ -304,9 +315,6 @@ expr_stmt|;
 name|NetworkConnector
 name|netConnector
 init|=
-operator|(
-name|NetworkConnector
-operator|)
 name|brokerService
 operator|.
 name|getNetworkConnectors
@@ -318,6 +326,9 @@ literal|0
 argument_list|)
 decl_stmt|;
 name|List
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 name|excludedDestinations
 init|=
 name|netConnector
@@ -358,6 +369,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|ActiveMQDestination
+argument_list|>
 name|dynamicallyIncludedDestinations
 init|=
 name|netConnector
@@ -561,6 +575,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -579,6 +595,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown

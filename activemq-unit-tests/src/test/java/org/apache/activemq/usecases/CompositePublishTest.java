@@ -139,22 +139,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|test
-operator|.
-name|retroactive
-operator|.
-name|RetroactiveConsumerTestWithSimpleMessageListTest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -172,7 +156,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -214,11 +198,23 @@ name|MessageConsumer
 index|[]
 name|consumers
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|protected
 name|List
 index|[]
 name|messageLists
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -536,6 +532,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -556,6 +554,8 @@ block|}
 return|;
 block|}
 comment|/**      * Returns the subject on which we publish      */
+annotation|@
+name|Override
 specifier|protected
 name|String
 name|getSubject
@@ -628,6 +628,13 @@ operator|+
 literal|"."
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|assertMessagesAreReceived
@@ -713,6 +720,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|ActiveMQConnectionFactory
 name|createConnectionFactory
@@ -726,6 +735,8 @@ literal|"vm://localhost"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown

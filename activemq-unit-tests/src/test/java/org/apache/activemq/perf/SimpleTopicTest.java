@@ -122,7 +122,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -157,16 +157,16 @@ name|clientURI
 init|=
 literal|"tcp://localhost:61616?wireFormat.cacheEnabled=true&wireFormat.tightEncodingEnabled=true&jms.useAsyncSend=false&wireFormat.maxInactivityDuration=0"
 decl_stmt|;
-comment|//protected String clientURI="tcp://localhost:61616";
+comment|// protected String clientURI="tcp://localhost:61616";
 specifier|protected
 name|String
 name|bindAddress
 init|=
 literal|"tcp://localhost:61616?wireFormat.maxInactivityDuration=0"
 decl_stmt|;
-comment|//protected String bindAddress = "tcp://localhost:61616";
-comment|//protected String bindAddress="vm://localhost?marshal=true";
-comment|//protected String bindAddress="vm://localhost";
+comment|// protected String bindAddress = "tcp://localhost:61616";
+comment|// protected String bindAddress="vm://localhost?marshal=true";
+comment|// protected String bindAddress="vm://localhost";
 specifier|protected
 name|PerfProducer
 index|[]
@@ -240,7 +240,9 @@ specifier|protected
 name|ConnectionFactory
 name|factory
 decl_stmt|;
-comment|/**      * Sets up a test where the producer and consumer have their own connection.      *       * @see junit.framework.TestCase#setUp()      */
+comment|/**      * Sets up a test where the producer and consumer have their own connection.      *      * @see junit.framework.TestCase#setUp()      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -503,6 +505,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -603,7 +607,7 @@ name|destinationName
 argument_list|)
 return|;
 block|}
-comment|/**      * Factory method to create a new broker      *       * @throws Exception      */
+comment|/**      * Factory method to create a new broker      *      * @throws Exception      */
 specifier|protected
 name|BrokerService
 name|createBroker
@@ -898,6 +902,11 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 specifier|protected
 name|void
 name|dumpProducerRate

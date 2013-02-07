@@ -252,7 +252,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -326,6 +326,8 @@ name|MessageIdList
 name|messageIdList
 index|[]
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -362,16 +364,6 @@ name|destination
 init|=
 name|createDestination
 argument_list|()
-decl_stmt|;
-name|String
-name|root
-init|=
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"activemq.store.dir"
-argument_list|)
 decl_stmt|;
 for|for
 control|(
@@ -637,6 +629,8 @@ literal|"Cluster is online."
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown

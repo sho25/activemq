@@ -59,20 +59,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|test
-operator|.
-name|JmsTopicSendReceiveWithEmbeddedBrokerAndUserIDTest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|transport
 operator|.
 name|CommandJoiner
@@ -162,7 +148,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   *   */
+comment|/**  *  *  */
 end_comment
 
 begin_class
@@ -195,6 +181,8 @@ operator|new
 name|DropCommandStrategy
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|shouldDropCommand
@@ -228,6 +216,8 @@ return|;
 block|}
 block|}
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|Transport
 name|createProducer
@@ -311,6 +301,8 @@ name|wireFormat
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|Transport
 name|createConsumer

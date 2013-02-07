@@ -4566,11 +4566,6 @@ argument_list|(
 literal|null
 argument_list|)
 decl_stmt|;
-name|int
-name|sent
-init|=
-literal|0
-decl_stmt|;
 for|for
 control|(
 name|int
@@ -4586,9 +4581,6 @@ name|i
 operator|++
 control|)
 block|{
-name|sent
-operator|++
-expr_stmt|;
 name|Message
 name|message
 init|=

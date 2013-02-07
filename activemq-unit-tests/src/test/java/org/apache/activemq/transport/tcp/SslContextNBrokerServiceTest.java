@@ -231,6 +231,11 @@ name|ClassPathXmlApplicationContext
 name|context
 decl_stmt|;
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|BrokerService
+argument_list|>
 name|beansOfType
 decl_stmt|;
 specifier|public
@@ -586,6 +591,9 @@ init|=
 literal|null
 decl_stmt|;
 name|Iterator
+argument_list|<
+name|BrokerService
+argument_list|>
 name|iterator
 init|=
 name|beansOfType
@@ -607,9 +615,6 @@ block|{
 name|BrokerService
 name|candidate
 init|=
-operator|(
-name|BrokerService
-operator|)
 name|iterator
 operator|.
 name|next
@@ -639,6 +644,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -646,7 +653,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//System.setProperty("javax.net.debug", "ssl");
+comment|// System.setProperty("javax.net.debug", "ssl");
 name|Thread
 operator|.
 name|currentThread
@@ -706,6 +713,8 @@ name|X509Certificate
 index|[]
 name|serverCerts
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|checkClientTrusted
@@ -720,6 +729,8 @@ parameter_list|)
 throws|throws
 name|CertificateException
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|checkServerTrusted
@@ -739,6 +750,8 @@ operator|=
 name|arg0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|X509Certificate
 index|[]

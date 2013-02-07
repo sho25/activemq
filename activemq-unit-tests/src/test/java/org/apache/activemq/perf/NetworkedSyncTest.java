@@ -183,6 +183,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|xbean
+operator|.
+name|spring
+operator|.
+name|context
+operator|.
+name|ClassPathXmlApplicationContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -196,22 +212,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|xbean
-operator|.
-name|spring
-operator|.
-name|context
-operator|.
-name|ClassPathXmlApplicationContext
 import|;
 end_import
 
@@ -353,6 +353,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @throws java.lang.Exception      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -385,6 +387,11 @@ name|config
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|brokerFactory
+argument_list|)
+expr_stmt|;
 comment|/* start up first broker instance */
 try|try
 block|{
@@ -626,6 +633,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @throws java.lang.Exception      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -813,7 +822,7 @@ block|}
 end_class
 
 begin_comment
-comment|/**  * Message producer running as a separate thread, connecting to broker1  *   * @author tmielke  *   */
+comment|/**  * Message producer running as a separate thread, connecting to broker1  *  * @author tmielke  *  */
 end_comment
 
 begin_class
@@ -838,6 +847,8 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * connect to broker and constantly send messages      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -890,6 +901,8 @@ operator|.
 name|ExceptionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onException
@@ -1125,7 +1138,7 @@ block|}
 end_class
 
 begin_comment
-comment|/*  * * Message consumer running as a separate thread, connecting to broker2  * @author tmielke  *   */
+comment|/*  * * Message consumer running as a separate thread, connecting to broker2  * @author tmielke  *  */
 end_comment
 
 begin_class
@@ -1151,6 +1164,8 @@ argument_list|)
 decl_stmt|;
 empty_stmt|;
 comment|/**      * connect to broker and receive messages      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1211,6 +1226,8 @@ operator|.
 name|ExceptionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onException
@@ -1320,14 +1337,11 @@ name|TextMessage
 operator|)
 name|message2
 decl_stmt|;
-name|String
-name|text
-init|=
 name|textMessage
 operator|.
 name|getText
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 comment|// logger.info("Received: " + text);
 block|}
 else|else

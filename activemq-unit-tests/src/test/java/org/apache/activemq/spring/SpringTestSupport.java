@@ -37,25 +37,21 @@ end_import
 
 begin_import
 import|import
-name|junit
+name|javax
 operator|.
-name|framework
+name|jms
 operator|.
-name|TestCase
+name|Message
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|junit
 operator|.
-name|apache
+name|framework
 operator|.
-name|activemq
-operator|.
-name|test
-operator|.
-name|JmsTopicSendReceiveTest
+name|TestCase
 import|;
 end_import
 
@@ -108,7 +104,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -257,6 +253,9 @@ argument_list|)
 expr_stmt|;
 comment|// now lets check that the consumer has received some messages
 name|List
+argument_list|<
+name|Message
+argument_list|>
 name|messages
 init|=
 name|consumer
@@ -274,6 +273,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Message
+argument_list|>
 name|iter
 init|=
 name|messages
@@ -323,6 +325,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Clean up method.      *      * @throws Exception      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown

@@ -126,7 +126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -1455,35 +1455,6 @@ init|=
 name|createMessage
 argument_list|()
 decl_stmt|;
-comment|// JMS 1.1 Section 3.8.1.1 : Approximate literals use the Java
-comment|// floating-point literal syntax.
-comment|// We will use the java varible x to demo valid floating point syntaxs.
-name|double
-name|x
-decl_stmt|;
-comment|// test decimals like x.x
-name|x
-operator|=
-literal|1.0
-expr_stmt|;
-name|x
-operator|=
-operator|-
-literal|1.1
-expr_stmt|;
-name|x
-operator|=
-literal|1.0E1
-expr_stmt|;
-name|x
-operator|=
-literal|1.1E1
-expr_stmt|;
-name|x
-operator|=
-operator|-
-literal|1.1E1
-expr_stmt|;
 name|assertSelector
 argument_list|(
 name|message
@@ -1519,15 +1490,6 @@ literal|"-1.1E1< 1.0E1"
 argument_list|,
 literal|true
 argument_list|)
-expr_stmt|;
-comment|// test decimals like x.
-name|x
-operator|=
-literal|1.
-expr_stmt|;
-name|x
-operator|=
-literal|1.E1
 expr_stmt|;
 name|assertSelector
 argument_list|(
@@ -1565,20 +1527,6 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// test decimals like .x
-name|x
-operator|=
-literal|.5
-expr_stmt|;
-name|x
-operator|=
-operator|-
-literal|.5
-expr_stmt|;
-name|x
-operator|=
-literal|.5E1
-expr_stmt|;
 name|assertSelector
 argument_list|(
 name|message
@@ -1614,28 +1562,6 @@ literal|"-.5E1< .1E1"
 argument_list|,
 literal|true
 argument_list|)
-expr_stmt|;
-comment|// test exponents
-name|x
-operator|=
-literal|4E10
-expr_stmt|;
-name|x
-operator|=
-operator|-
-literal|4E10
-expr_stmt|;
-name|x
-operator|=
-literal|5E
-operator|+
-literal|10
-expr_stmt|;
-name|x
-operator|=
-literal|5E
-operator|-
-literal|10
 expr_stmt|;
 name|assertSelector
 argument_list|(
@@ -1970,9 +1896,6 @@ name|setIntProperty
 argument_list|(
 literal|"intProp"
 argument_list|,
-operator|(
-name|int
-operator|)
 literal|123
 argument_list|)
 expr_stmt|;
@@ -1982,9 +1905,6 @@ name|setLongProperty
 argument_list|(
 literal|"longProp"
 argument_list|,
-operator|(
-name|long
-operator|)
 literal|123
 argument_list|)
 expr_stmt|;
@@ -1994,9 +1914,6 @@ name|setFloatProperty
 argument_list|(
 literal|"floatProp"
 argument_list|,
-operator|(
-name|float
-operator|)
 literal|123
 argument_list|)
 expr_stmt|;
@@ -2006,9 +1923,6 @@ name|setDoubleProperty
 argument_list|(
 literal|"doubleProp"
 argument_list|,
-operator|(
-name|double
-operator|)
 literal|123
 argument_list|)
 expr_stmt|;

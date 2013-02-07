@@ -233,6 +233,8 @@ specifier|private
 name|StompConnection
 name|stompConnection
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|NetworkConnector
 name|bridgeBrokers
@@ -1010,7 +1012,14 @@ argument_list|,
 name|remote
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|bridge
+argument_list|)
+expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp

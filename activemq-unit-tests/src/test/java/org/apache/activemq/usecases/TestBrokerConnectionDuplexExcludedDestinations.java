@@ -190,6 +190,8 @@ decl_stmt|;
 name|Session
 name|spokeSession
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp
@@ -357,6 +359,8 @@ name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|tearDown
@@ -710,6 +714,11 @@ argument_list|(
 name|alwaysIncludedQueueHub
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|alwaysIncludedConsumerHub
+argument_list|)
+expr_stmt|;
 comment|// Receiving from excluded Spoke queue
 name|Message
 name|msg

@@ -350,7 +350,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -1694,6 +1694,11 @@ name|msgsClient2
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|void
 name|testDuplicateSend
@@ -1862,6 +1867,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2183,11 +2190,16 @@ argument_list|)
 expr_stmt|;
 end_expr_stmt
 
-begin_function
-unit|}      public
+begin_expr_stmt
+unit|}      @
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+specifier|public
 name|void
 name|testDuplicateSendWithNoAuditEnqueueCountStat
-parameter_list|()
+argument_list|()
 throws|throws
 name|Exception
 block|{
@@ -2195,10 +2207,16 @@ name|broker1
 operator|=
 literal|"BrokerA"
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|broker2
 operator|=
 literal|"BrokerB"
 expr_stmt|;
+end_expr_stmt
+
+begin_decl_stmt
 name|NetworkConnector
 name|networkConnector
 init|=
@@ -2209,6 +2227,9 @@ argument_list|,
 name|broker2
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 specifier|final
 name|AtomicBoolean
 name|first
@@ -2217,6 +2238,9 @@ operator|new
 name|AtomicBoolean
 argument_list|()
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 specifier|final
 name|CountDownLatch
 name|gotMessageLatch
@@ -2227,6 +2251,9 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 name|BrokerService
 name|brokerService
 init|=
@@ -2239,6 +2266,9 @@ argument_list|)
 operator|.
 name|broker
 decl_stmt|;
+end_decl_stmt
+
+begin_expr_stmt
 name|brokerService
 operator|.
 name|setPersistent
@@ -2246,6 +2276,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|brokerService
 operator|.
 name|setDeleteAllMessagesOnStartup
@@ -2253,6 +2286,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|brokerService
 operator|.
 name|setPlugins
@@ -2331,6 +2367,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2392,11 +2430,10 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-end_function
+end_expr_stmt
 
 begin_empty_stmt
-unit|})
+unit|}                             })
 empty_stmt|;
 end_empty_stmt
 
@@ -2792,6 +2829,8 @@ block|}
 end_function
 
 begin_function
+annotation|@
+name|Override
 specifier|protected
 name|MessageConsumer
 name|createConsumer
@@ -2844,6 +2883,8 @@ block|}
 end_function
 
 begin_function
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|configureBroker
@@ -2891,6 +2932,8 @@ block|}
 end_function
 
 begin_function
+annotation|@
+name|Override
 specifier|protected
 name|NetworkConnector
 name|bridgeBrokers
@@ -2957,6 +3000,8 @@ block|}
 end_function
 
 begin_function
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp

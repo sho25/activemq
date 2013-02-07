@@ -845,6 +845,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|String
 name|getLocalURI
@@ -854,6 +856,8 @@ return|return
 literal|"tcp://localhost:0?wireFormat.tcpNoDelayEnabled=true"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|String
 name|getRemoteURI
@@ -863,11 +867,6 @@ return|return
 literal|"tcp://localhost:0?wireFormat.tcpNoDelayEnabled=true"
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 specifier|protected
 name|StubConnection
 name|createFailoverConnection

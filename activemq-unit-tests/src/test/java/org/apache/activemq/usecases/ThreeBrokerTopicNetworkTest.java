@@ -115,20 +115,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|JmsMultipleBrokersTestSupport
-operator|.
-name|BrokerItem
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|broker
 operator|.
 name|BrokerService
@@ -186,7 +172,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -2062,6 +2048,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp

@@ -53,27 +53,7 @@ name|junit
 operator|.
 name|framework
 operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
 name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|textui
-operator|.
-name|TestRunner
 import|;
 end_import
 
@@ -109,20 +89,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|TransportBrokerTestSupport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|springframework
 operator|.
 name|context
@@ -134,7 +100,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -224,6 +190,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -255,6 +223,11 @@ literal|"org/apache/activemq/transport/tcp/activemq-ssl.xml"
 argument_list|)
 expr_stmt|;
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|BrokerService
+argument_list|>
 name|beansOfType
 init|=
 name|context
@@ -268,9 +241,6 @@ argument_list|)
 decl_stmt|;
 name|broker
 operator|=
-operator|(
-name|BrokerService
-operator|)
 name|beansOfType
 operator|.
 name|values

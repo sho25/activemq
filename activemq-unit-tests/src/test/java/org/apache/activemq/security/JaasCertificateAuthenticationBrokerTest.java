@@ -208,6 +208,8 @@ decl_stmt|;
 name|ConnectionInfo
 name|connectionInfo
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -254,6 +256,8 @@ block|{}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -602,19 +606,12 @@ expr_stmt|;
 name|ConnectionContext
 name|receivedContext
 init|=
-operator|(
-operator|(
-name|StubBroker
-operator|.
-name|AddConnectionData
-operator|)
 name|receiveBroker
 operator|.
 name|addConnectionData
 operator|.
 name|getFirst
 argument_list|()
-operator|)
 operator|.
 name|connectionContext
 decl_stmt|;
@@ -634,6 +631,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|Set
+argument_list|<
+name|Principal
+argument_list|>
 name|receivedPrincipals
 init|=
 name|receivedContext
@@ -647,6 +647,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Principal
+argument_list|>
 name|iter
 init|=
 name|receivedPrincipals
@@ -664,9 +667,6 @@ block|{
 name|Principal
 name|currentPrincipal
 init|=
-operator|(
-name|Principal
-operator|)
 name|iter
 operator|.
 name|next

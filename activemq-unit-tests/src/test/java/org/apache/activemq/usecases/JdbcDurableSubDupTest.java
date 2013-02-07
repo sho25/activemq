@@ -16,6 +16,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -241,49 +253,11 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
-operator|.
-name|region
-operator|.
-name|policy
-operator|.
-name|StorePendingDurableSubscriberMessageStoragePolicy
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|store
 operator|.
 name|jdbc
 operator|.
 name|JDBCPersistenceAdapter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
 import|;
 end_import
 
@@ -318,14 +292,22 @@ import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
-name|junit
+name|slf4j
 operator|.
-name|Assert
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|assertTrue
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -429,6 +411,9 @@ name|exceptions
 init|=
 operator|new
 name|Vector
+argument_list|<
+name|Throwable
+argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -1078,6 +1063,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1300,6 +1287,8 @@ name|priorityModulator
 init|=
 literal|10
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run

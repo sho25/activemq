@@ -593,6 +593,8 @@ operator|=
 name|expect
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -691,6 +693,13 @@ argument_list|(
 literal|1000
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|message
+operator|==
+literal|null
+condition|)
+break|break;
 name|LOG
 operator|.
 name|info
@@ -731,13 +740,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|message
-operator|==
-literal|null
-condition|)
-break|break;
 block|}
 block|}
 block|}
@@ -1278,6 +1280,9 @@ throws|throws
 name|Exception
 block|{
 name|Enumeration
+argument_list|<
+name|?
+argument_list|>
 name|msgs
 init|=
 name|browser
@@ -1399,6 +1404,8 @@ return|return
 name|browsedMessage
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp

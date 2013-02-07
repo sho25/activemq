@@ -223,14 +223,6 @@ name|failoverTransport
 decl_stmt|;
 specifier|private
 name|int
-name|commandsReceived
-decl_stmt|;
-specifier|private
-name|int
-name|exceptionReceived
-decl_stmt|;
-specifier|private
-name|int
 name|transportInterruptions
 decl_stmt|;
 specifier|private
@@ -307,14 +299,6 @@ name|waitUntilStarted
 argument_list|()
 expr_stmt|;
 comment|// Reset stats
-name|commandsReceived
-operator|=
-literal|0
-expr_stmt|;
-name|exceptionReceived
-operator|=
-literal|0
-expr_stmt|;
 name|transportInterruptions
 operator|=
 literal|0
@@ -432,6 +416,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -520,6 +506,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -571,6 +559,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -640,6 +630,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -746,6 +738,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -797,6 +791,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -848,6 +844,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
@@ -1026,6 +1024,8 @@ operator|new
 name|TransportListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onCommand
@@ -1043,10 +1043,9 @@ operator|+
 name|command
 argument_list|)
 expr_stmt|;
-name|commandsReceived
-operator|++
-expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onException
@@ -1064,10 +1063,9 @@ operator|+
 name|error
 argument_list|)
 expr_stmt|;
-name|exceptionReceived
-operator|++
-expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|transportInterupted
@@ -1086,6 +1084,8 @@ name|transportInterruptions
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|transportResumed

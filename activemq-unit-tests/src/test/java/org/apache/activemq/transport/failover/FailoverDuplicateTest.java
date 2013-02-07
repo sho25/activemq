@@ -346,6 +346,8 @@ decl_stmt|;
 name|BrokerService
 name|broker
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|tearDown
@@ -377,19 +379,6 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-specifier|private
-name|void
-name|startCleanBroker
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|startBroker
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -686,6 +675,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -996,6 +987,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run

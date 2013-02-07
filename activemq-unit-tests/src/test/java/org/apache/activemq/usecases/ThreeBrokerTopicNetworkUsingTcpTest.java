@@ -116,7 +116,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -147,6 +147,9 @@ throws|throws
 name|Exception
 block|{
 name|List
+argument_list|<
+name|TransportConnector
+argument_list|>
 name|remoteTransports
 init|=
 name|remoteBroker
@@ -155,6 +158,9 @@ name|getTransportConnectors
 argument_list|()
 decl_stmt|;
 name|List
+argument_list|<
+name|TransportConnector
+argument_list|>
 name|localTransports
 init|=
 name|localBroker
@@ -185,34 +191,24 @@ condition|)
 block|{
 name|remoteURI
 operator|=
-operator|(
-operator|(
-name|TransportConnector
-operator|)
 name|remoteTransports
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|.
 name|getConnectUri
 argument_list|()
 expr_stmt|;
 name|localURI
 operator|=
-operator|(
-operator|(
-name|TransportConnector
-operator|)
 name|localTransports
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|.
 name|getConnectUri
 argument_list|()
@@ -327,6 +323,8 @@ operator|=
 literal|2000
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp

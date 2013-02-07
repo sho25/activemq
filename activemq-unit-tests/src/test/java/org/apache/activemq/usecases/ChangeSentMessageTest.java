@@ -100,7 +100,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -126,7 +126,12 @@ name|VALUE_NAME
 init|=
 literal|"value"
 decl_stmt|;
-comment|/**      * test Object messages can be changed after sending with no side-affects      *       * @throws Exception      */
+comment|/**      * test Object messages can be changed after sending with no side-affects      *      * @throws Exception      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|void
 name|testDoChangeSentMessage

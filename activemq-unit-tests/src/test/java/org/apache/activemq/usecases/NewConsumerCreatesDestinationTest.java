@@ -106,7 +106,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   *   */
+comment|/**  *  *  */
 end_comment
 
 begin_class
@@ -249,6 +249,9 @@ throws|throws
 name|Exception
 block|{
 name|Set
+argument_list|<
+name|?
+argument_list|>
 name|answer
 init|=
 name|broker

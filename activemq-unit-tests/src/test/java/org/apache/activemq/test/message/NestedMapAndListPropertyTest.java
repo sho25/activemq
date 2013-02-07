@@ -112,7 +112,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests that a Message can have nested Map and List properties attached.  *   *   */
+comment|/**  * Tests that a Message can have nested Map and List properties attached.  *  */
 end_comment
 
 begin_class
@@ -137,6 +137,13 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|protected
 name|void
 name|assertMessageValid
@@ -423,6 +430,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|Message
 name|createMessage

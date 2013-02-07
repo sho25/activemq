@@ -210,7 +210,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -363,10 +363,20 @@ literal|"service:jmx:rmi:///jndi/rmi://localhost:2011/jmxrmi"
 argument_list|)
 decl_stmt|;
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|env
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|env
@@ -490,9 +500,6 @@ decl_stmt|;
 name|BrokerViewMBean
 name|mbean
 init|=
-operator|(
-name|BrokerViewMBean
-operator|)
 name|MBeanServerInvocationHandler
 operator|.
 name|newProxyInstance
@@ -528,6 +535,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -546,6 +555,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown

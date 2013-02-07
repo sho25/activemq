@@ -79,9 +79,9 @@ end_import
 
 begin_import
 import|import
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 import|;
@@ -108,7 +108,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple container of messages for performing testing and rendezvous style  * code. You can use this class a {@link MessageListener} and then make  * assertions about how many messages it has received allowing a certain maximum  * amount of time to ensure that the test does not hang forever. Also you can  * chain these instances together with the {@link #setParent(MessageListener)}  * method so that you can aggregate the total number of messages consumed across  * a number of consumers.  *   *   */
+comment|/**  * A simple container of messages for performing testing and rendezvous style  * code. You can use this class a {@link MessageListener} and then make  * assertions about how many messages it has received allowing a certain maximum  * amount of time to ensure that the test does not hang forever. Also you can  * chain these instances together with the {@link #setParent(MessageListener)}  * method so that you can aggregate the total number of messages consumed across  * a number of consumers.  *  *  */
 end_comment
 
 begin_class
@@ -136,6 +136,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -150,6 +151,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|Object
 name|semaphore
 decl_stmt|;
@@ -201,6 +203,8 @@ operator|=
 name|semaphore
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals
@@ -241,6 +245,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -261,6 +267,8 @@ literal|1
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -344,6 +352,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -619,7 +629,7 @@ literal|" messages"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Performs a testing assertion that the correct number of messages have      * been received without waiting      *       * @param messageCount      */
+comment|/**      * Performs a testing assertion that the correct number of messages have      * been received without waiting      *      * @param messageCount      */
 specifier|public
 name|void
 name|assertMessagesReceivedNoWait
@@ -639,7 +649,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Performs a testing assertion that the correct number of messages have      * been received waiting for the messages to arrive up to a fixed amount of      * time.      *       * @param messageCount      */
+comment|/**      * Performs a testing assertion that the correct number of messages have      * been received waiting for the messages to arrive up to a fixed amount of      * time.      *      * @param messageCount      */
 specifier|public
 name|void
 name|assertMessagesReceived
@@ -690,7 +700,7 @@ name|messageCount
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Asserts that there are at most the number of messages received without      * waiting      *       * @param messageCount      */
+comment|/**      * Asserts that there are at most the number of messages received without      * waiting      *      * @param messageCount      */
 specifier|public
 name|void
 name|assertAtMostMessagesReceived
@@ -840,7 +850,7 @@ operator|=
 name|countDownLatch
 expr_stmt|;
 block|}
-comment|/**      * Gets the amount of time the message listener will spend sleeping to      * simulate a processing delay.      *       * @return      */
+comment|/**      * Gets the amount of time the message listener will spend sleeping to      * simulate a processing delay.      *      * @return      */
 specifier|public
 name|long
 name|getProcessingDelay
@@ -850,7 +860,7 @@ return|return
 name|processingDelay
 return|;
 block|}
-comment|/**      * Sets the amount of time the message listener will spend sleeping to      * simulate a processing delay.      *       * @param processingDelay      */
+comment|/**      * Sets the amount of time the message listener will spend sleeping to      * simulate a processing delay.      *      * @param processingDelay      */
 specifier|public
 name|void
 name|setProcessingDelay

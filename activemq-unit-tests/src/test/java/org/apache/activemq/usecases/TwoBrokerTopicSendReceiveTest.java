@@ -158,7 +158,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -193,12 +193,24 @@ name|receiveFactory
 decl_stmt|;
 specifier|protected
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|BrokerService
+argument_list|>
 name|brokers
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|BrokerService
+argument_list|>
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -281,6 +293,8 @@ literal|"vm://sender"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -296,6 +310,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|BrokerService
+argument_list|>
 name|iter
 init|=
 name|brokers
@@ -316,9 +333,6 @@ block|{
 name|BrokerService
 name|broker
 init|=
-operator|(
-name|BrokerService
-operator|)
 name|iter
 operator|.
 name|next
@@ -338,6 +352,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|Connection
 name|createReceiveConnection
@@ -352,6 +368,8 @@ name|createConnection
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|Connection
 name|createSendConnection
