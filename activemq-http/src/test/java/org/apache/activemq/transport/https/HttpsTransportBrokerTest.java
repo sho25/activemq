@@ -60,6 +60,8 @@ name|HttpsTransportBrokerTest
 extends|extends
 name|HttpTransportBrokerTest
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|String
 name|getBindLocation
@@ -69,6 +71,8 @@ return|return
 literal|"https://localhost:8161"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -76,6 +80,16 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|setAutoFail
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|setMaxTestTime
+argument_list|(
+literal|300000
+argument_list|)
+expr_stmt|;
 name|System
 operator|.
 name|setProperty
