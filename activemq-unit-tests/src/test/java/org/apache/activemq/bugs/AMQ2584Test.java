@@ -354,7 +354,10 @@ operator|new
 name|Object
 index|[]
 block|{
-comment|//PersistenceAdapterChoice.LevelDB,  TODO readd and investiaget failures.
+name|PersistenceAdapterChoice
+operator|.
+name|LevelDB
+block|,
 name|PersistenceAdapterChoice
 operator|.
 name|KahaDB

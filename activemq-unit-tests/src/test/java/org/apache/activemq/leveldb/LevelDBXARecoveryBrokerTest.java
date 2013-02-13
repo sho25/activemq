@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
 name|junit
 operator|.
 name|framework
@@ -50,16 +60,6 @@ operator|.
 name|broker
 operator|.
 name|XARecoveryBrokerTest
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
 import|;
 end_import
 
@@ -156,15 +156,6 @@ argument_list|(
 name|store
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|testTopicPersistentPreparedAcksAvailableAfterRestartAndRollback
-parameter_list|()
-block|{
-comment|// https://issues.apache.org/jira/browse/AMQ-4296
 block|}
 block|}
 end_class
