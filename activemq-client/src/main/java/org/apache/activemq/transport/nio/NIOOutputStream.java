@@ -629,7 +629,7 @@ argument_list|)
 expr_stmt|;
 name|remaining
 operator|=
-name|data
+name|plain
 operator|.
 name|remaining
 argument_list|()
