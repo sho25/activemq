@@ -85,11 +85,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|store
+name|leveldb
 operator|.
-name|amq
-operator|.
-name|AMQPersistenceAdapter
+name|LevelDBStore
 import|;
 end_import
 
@@ -201,11 +199,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|AMQPersistenceAdapter
+name|LevelDBStore
 name|adapter
 init|=
 operator|new
-name|AMQPersistenceAdapter
+name|LevelDBStore
 argument_list|()
 decl_stmt|;
 name|adapter

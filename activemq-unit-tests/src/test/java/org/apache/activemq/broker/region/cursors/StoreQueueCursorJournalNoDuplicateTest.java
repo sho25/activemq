@@ -67,11 +67,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|store
+name|leveldb
 operator|.
-name|journal
-operator|.
-name|JournalPersistenceAdapter
+name|LevelDBStore
 import|;
 end_import
 
@@ -85,9 +83,9 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|kahadaptor
+name|journal
 operator|.
-name|KahaPersistenceAdapter
+name|JournalPersistenceAdapter
 import|;
 end_import
 
@@ -159,14 +157,14 @@ operator|*
 literal|20
 argument_list|)
 decl_stmt|;
-name|KahaPersistenceAdapter
-name|kahaAdaptor
+name|LevelDBStore
+name|store
 init|=
 operator|new
-name|KahaPersistenceAdapter
+name|LevelDBStore
 argument_list|()
 decl_stmt|;
-name|kahaAdaptor
+name|store
 operator|.
 name|setDirectory
 argument_list|(
@@ -181,7 +179,7 @@ name|JournalPersistenceAdapter
 argument_list|(
 name|journal
 argument_list|,
-name|kahaAdaptor
+name|store
 argument_list|,
 name|broker
 operator|.

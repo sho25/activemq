@@ -201,9 +201,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|store
+name|leveldb
 operator|.
-name|PersistenceAdapter
+name|LevelDBStore
 import|;
 end_import
 
@@ -217,9 +217,7 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|amq
-operator|.
-name|AMQPersistenceAdapter
+name|PersistenceAdapter
 import|;
 end_import
 
@@ -458,34 +456,6 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|PersistenceAdapter
-name|adaptor
-init|=
-name|broker
-operator|.
-name|getPersistenceAdapter
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|adaptor
-operator|instanceof
-name|AMQPersistenceAdapter
-condition|)
-block|{
-operator|(
-operator|(
-name|AMQPersistenceAdapter
-operator|)
-name|adaptor
-operator|)
-operator|.
-name|setDisableLocking
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
 name|broker
 operator|.
 name|addConnector

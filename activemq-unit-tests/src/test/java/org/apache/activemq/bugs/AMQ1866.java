@@ -197,11 +197,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|store
+name|leveldb
 operator|.
-name|amq
-operator|.
-name|AMQPersistenceAdapter
+name|LevelDBStore
 import|;
 end_import
 
@@ -307,20 +305,13 @@ operator|new
 name|BrokerService
 argument_list|()
 expr_stmt|;
-name|AMQPersistenceAdapter
+name|LevelDBStore
 name|adaptor
 init|=
 operator|new
-name|AMQPersistenceAdapter
+name|LevelDBStore
 argument_list|()
 decl_stmt|;
-name|adaptor
-operator|.
-name|setIndexBinSize
-argument_list|(
-literal|4096
-argument_list|)
-expr_stmt|;
 name|brokerService
 operator|.
 name|setPersistenceAdapter

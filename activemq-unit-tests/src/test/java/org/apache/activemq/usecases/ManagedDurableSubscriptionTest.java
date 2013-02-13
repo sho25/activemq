@@ -117,11 +117,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|store
+name|leveldb
 operator|.
-name|kahadaptor
-operator|.
-name|KahaPersistenceAdapter
+name|LevelDBStore
 import|;
 end_import
 
@@ -372,11 +370,11 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|KahaPersistenceAdapter
+name|LevelDBStore
 name|persistenceAdapter
 init|=
 operator|new
-name|KahaPersistenceAdapter
+name|LevelDBStore
 argument_list|()
 decl_stmt|;
 name|persistenceAdapter
