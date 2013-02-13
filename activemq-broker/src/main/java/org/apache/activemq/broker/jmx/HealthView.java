@@ -1110,7 +1110,7 @@ name|this
 operator|.
 name|currentState
 operator|=
-literal|"Feeling Ill {"
+literal|"Getting Worried {"
 expr_stmt|;
 for|for
 control|(
