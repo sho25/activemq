@@ -337,6 +337,10 @@ name|RedeliveryPolicy
 name|lazyCreateRedeliveryPolicy
 parameter_list|()
 function_decl|;
+name|boolean
+name|isUseJndi
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

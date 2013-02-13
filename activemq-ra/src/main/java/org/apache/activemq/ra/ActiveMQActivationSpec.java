@@ -359,6 +359,10 @@ specifier|private
 name|RedeliveryPolicy
 name|redeliveryPolicy
 decl_stmt|;
+specifier|private
+name|boolean
+name|useJndi
+decl_stmt|;
 comment|/**      * @see javax.resource.spi.ActivationSpec#validate()      */
 specifier|public
 name|void
@@ -2086,6 +2090,12 @@ name|subscriptionDurability
 operator|+
 literal|"'"
 operator|+
+literal|", useJndi='"
+operator|+
+name|useJndi
+operator|+
+literal|"'"
+operator|+
 literal|"}"
 return|;
 block|}
@@ -2765,6 +2775,30 @@ expr_stmt|;
 block|}
 return|return
 name|redeliveryPolicy
+return|;
+block|}
+specifier|public
+name|void
+name|setUseJndi
+parameter_list|(
+name|boolean
+name|useJndi
+parameter_list|)
+block|{
+name|this
+operator|.
+name|useJndi
+operator|=
+name|useJndi
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isUseJndi
+parameter_list|()
+block|{
+return|return
+name|useJndi
 return|;
 block|}
 block|}
