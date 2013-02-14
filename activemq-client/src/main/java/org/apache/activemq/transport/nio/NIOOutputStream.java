@@ -232,6 +232,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * write a byte on to the stream      *      * @param b - byte to write      * @throws IOException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|write
@@ -270,6 +272,8 @@ name|b
 expr_stmt|;
 block|}
 comment|/**      * write a byte array to the stream      *      * @param b the byte buffer      * @param off the offset into the buffer      * @param len the length of data to write      * @throws IOException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|write
@@ -350,6 +354,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * flush the data to the output stream This doesn't call flush on the      * underlying outputstream, because Tcp is particularly efficent at doing      * this itself ....      *      * @throws IOException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|flush
@@ -394,6 +400,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * close this stream      *      * @throws IOException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
@@ -627,13 +635,6 @@ argument_list|(
 name|plain
 argument_list|)
 expr_stmt|;
-name|remaining
-operator|=
-name|plain
-operator|.
-name|remaining
-argument_list|()
-expr_stmt|;
 comment|// if the data buffer was larger than the packet buffer we might need to
 comment|// wrap more packets until we reach the end of data, but only when plain
 comment|// has no more space since we are non-blocking and a write might not have
@@ -676,6 +677,13 @@ name|flip
 argument_list|()
 expr_stmt|;
 block|}
+name|remaining
+operator|=
+name|plain
+operator|.
+name|remaining
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 finally|finally
@@ -688,6 +696,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/* (non-Javadoc)      * @see org.apache.activemq.transport.tcp.TimeStampStream#isWriting()      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isWriting
@@ -700,6 +710,8 @@ literal|0
 return|;
 block|}
 comment|/* (non-Javadoc)      * @see org.apache.activemq.transport.tcp.TimeStampStream#getWriteTimestamp()      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getWriteTimestamp
