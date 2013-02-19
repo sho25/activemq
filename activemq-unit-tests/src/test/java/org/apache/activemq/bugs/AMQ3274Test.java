@@ -597,13 +597,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|testError
-operator|=
-literal|true
-expr_stmt|;
 name|LOG
 operator|.
-name|info
+name|error
 argument_list|(
 literal|"Have "
 operator|+
@@ -616,6 +612,10 @@ literal|" messages; expected "
 operator|+
 name|tot_expected
 argument_list|)
+expr_stmt|;
+name|testError
+operator|=
+literal|true
 expr_stmt|;
 block|}
 name|resp_cons

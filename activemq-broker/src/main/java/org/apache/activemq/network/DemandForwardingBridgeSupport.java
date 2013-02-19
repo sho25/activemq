@@ -5173,7 +5173,7 @@ condition|)
 block|{
 name|localBroker
 operator|.
-name|oneway
+name|request
 argument_list|(
 name|sub
 operator|.
