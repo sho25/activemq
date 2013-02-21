@@ -5473,6 +5473,26 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|isDuplex
+argument_list|()
+condition|)
+block|{
+comment|// async vm transport, need to wait for completion
+name|localBroker
+operator|.
+name|request
+argument_list|(
+name|sub
+operator|.
+name|getLocalInfo
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|localBroker
 operator|.
 name|oneway
@@ -5483,6 +5503,7 @@ name|getLocalInfo
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|protected
