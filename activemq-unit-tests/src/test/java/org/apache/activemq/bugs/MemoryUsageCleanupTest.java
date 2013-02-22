@@ -886,8 +886,10 @@ argument_list|()
 operator|.
 name|getMemoryPercentUsage
 argument_list|()
-operator|==
+operator|<=
 name|startPercentage
+operator|+
+literal|1
 return|;
 block|}
 block|}
