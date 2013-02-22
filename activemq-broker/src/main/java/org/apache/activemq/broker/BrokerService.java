@@ -1978,6 +1978,12 @@ specifier|private
 name|Date
 name|startDate
 decl_stmt|;
+specifier|private
+name|boolean
+name|slave
+init|=
+literal|true
+decl_stmt|;
 static|static
 block|{
 name|String
@@ -3702,6 +3708,12 @@ name|stopAllConnectors
 argument_list|(
 name|stopper
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|slave
+operator|=
+literal|true
 expr_stmt|;
 comment|// remove any VMTransports connected
 comment|// this has to be done after services are stopped,
@@ -10514,6 +10526,12 @@ name|al
 argument_list|)
 expr_stmt|;
 block|}
+name|this
+operator|.
+name|slave
+operator|=
+literal|false
+expr_stmt|;
 name|URI
 name|uri
 init|=
@@ -12267,6 +12285,17 @@ name|startAsync
 operator|=
 name|startAsync
 expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isSlave
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|slave
+return|;
 block|}
 block|}
 end_class

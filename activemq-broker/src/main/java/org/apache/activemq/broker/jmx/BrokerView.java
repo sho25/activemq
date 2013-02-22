@@ -431,6 +431,8 @@ operator|=
 name|broker
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getBrokerId
@@ -447,6 +449,8 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getBrokerName
@@ -460,6 +464,8 @@ name|getBrokerName
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getBrokerVersion
@@ -485,6 +491,8 @@ name|getUptime
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|gc
@@ -532,6 +540,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -545,6 +555,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -558,6 +570,8 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stopGracefully
@@ -591,6 +605,8 @@ name|pollInterval
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getTotalEnqueueCount
@@ -610,6 +626,8 @@ name|getCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getTotalDequeueCount
@@ -629,6 +647,8 @@ name|getCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getTotalConsumerCount
@@ -648,6 +668,8 @@ name|getCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getTotalProducerCount
@@ -667,6 +689,8 @@ name|getCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getTotalMessageCount
@@ -705,6 +729,8 @@ name|getCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMemoryPercentUsage
@@ -723,6 +749,8 @@ name|getPercentUsage
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getMemoryLimit
@@ -741,6 +769,8 @@ name|getLimit
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMemoryLimit
@@ -763,6 +793,8 @@ name|limit
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getStoreLimit
@@ -781,6 +813,8 @@ name|getLimit
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getStorePercentUsage
@@ -799,6 +833,8 @@ name|getPercentUsage
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getTempLimit
@@ -817,6 +853,8 @@ name|getLimit
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getTempPercentUsage
@@ -835,6 +873,8 @@ name|getPercentUsage
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getJobSchedulerStoreLimit
@@ -853,6 +893,8 @@ name|getLimit
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getJobSchedulerStorePercentUsage
@@ -871,6 +913,8 @@ name|getPercentUsage
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setStoreLimit
@@ -893,6 +937,8 @@ name|limit
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setTempLimit
@@ -915,6 +961,8 @@ name|limit
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setJobSchedulerStoreLimit
@@ -937,6 +985,8 @@ name|limit
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|resetStatistics
@@ -952,6 +1002,8 @@ name|reset
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|enableStatistics
@@ -969,6 +1021,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|disableStatistics
@@ -986,6 +1040,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isStatisticsEnabled
@@ -1002,6 +1058,8 @@ name|isEnabled
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isPersistent
@@ -1014,6 +1072,8 @@ name|isPersistent
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|terminateJVM
@@ -1030,6 +1090,8 @@ name|exitCode
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 index|[]
@@ -1044,6 +1106,8 @@ name|getTopics
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 index|[]
@@ -1058,6 +1122,8 @@ name|getQueues
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 index|[]
@@ -1072,6 +1138,8 @@ name|getTemporaryTopics
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 index|[]
@@ -1086,6 +1154,8 @@ name|getTemporaryQueues
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 index|[]
@@ -1100,6 +1170,8 @@ name|getTopicSubscribers
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 index|[]
@@ -1114,6 +1186,8 @@ name|getDurableTopicSubscribers
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 index|[]
@@ -1128,6 +1202,8 @@ name|getQueueSubscribers
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 index|[]
@@ -1142,6 +1218,8 @@ name|getTemporaryTopicSubscribers
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 index|[]
@@ -1156,6 +1234,8 @@ name|getTemporaryQueueSubscribers
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 index|[]
@@ -1170,6 +1250,8 @@ name|getInactiveDurableTopicSubscribers
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 index|[]
@@ -1184,6 +1266,8 @@ name|getTopicProducers
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 index|[]
@@ -1198,6 +1282,8 @@ name|getQueueProducers
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 index|[]
@@ -1212,6 +1298,8 @@ name|getTemporaryTopicProducers
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 index|[]
@@ -1226,6 +1314,8 @@ name|getTemporaryQueueProducers
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 index|[]
@@ -1240,6 +1330,8 @@ name|getDynamicDestinationProducers
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|addConnector
@@ -1289,6 +1381,8 @@ name|getName
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|addNetworkConnector
@@ -1338,6 +1432,8 @@ name|getName
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|removeConnector
@@ -1389,6 +1485,8 @@ name|connector
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|removeNetworkConnector
@@ -1440,6 +1538,8 @@ name|connector
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addTopic
@@ -1479,6 +1579,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addQueue
@@ -1518,6 +1620,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeTopic
@@ -1557,6 +1661,8 @@ literal|1000
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeQueue
@@ -1596,6 +1702,8 @@ literal|1000
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 name|createDurableSubscriber
@@ -1748,6 +1856,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|destroyDurableSubscriber
@@ -1816,6 +1926,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//  doc comment inherited from BrokerViewMBean
+annotation|@
+name|Override
 specifier|public
 name|void
 name|reloadLog4jProperties
@@ -2006,6 +2118,8 @@ argument_list|()
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Map
 argument_list|<
@@ -2109,6 +2223,8 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|Override
+annotation|@
 name|Deprecated
 comment|/**      * @deprecated use {@link #getTransportConnectors()} or {@link #getTransportConnectorByType(String)}      */
 specifier|public
@@ -2139,6 +2255,8 @@ else|:
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 annotation|@
 name|Deprecated
 comment|/**      * @deprecated use {@link #getTransportConnectors()} or {@link #getTransportConnectorByType(String)}      */
@@ -2171,6 +2289,8 @@ literal|""
 return|;
 block|}
 annotation|@
+name|Override
+annotation|@
 name|Deprecated
 comment|/**      * @deprecated use {@link #getTransportConnectors()} or {@link #getTransportConnectorByType(String)}      */
 specifier|public
@@ -2202,6 +2322,8 @@ literal|""
 return|;
 block|}
 annotation|@
+name|Override
+annotation|@
 name|Deprecated
 comment|/**      * @deprecated use {@link #getTransportConnectors()} or {@link #getTransportConnectorByType(String)}      */
 specifier|public
@@ -2232,6 +2354,8 @@ else|:
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getVMURL
@@ -2258,6 +2382,8 @@ else|:
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getDataDirectory
@@ -2297,6 +2423,8 @@ literal|""
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 name|getJMSJobScheduler
@@ -2322,6 +2450,20 @@ name|jmsJobScheduler
 operator|=
 name|name
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isSlave
+parameter_list|()
+block|{
+return|return
+name|brokerService
+operator|.
+name|isSlave
+argument_list|()
+return|;
 block|}
 specifier|private
 name|ManagedRegionBroker
