@@ -404,7 +404,7 @@ block|}
 specifier|public
 specifier|static
 name|List
-name|queryMBeans
+name|x_queryMBeans
 parameter_list|(
 name|MBeanServerConnection
 name|jmxConnection
@@ -712,22 +712,11 @@ name|MBeanServerConnection
 name|jmxConnection
 parameter_list|)
 block|{
-comment|// Let us be able to accept wildcard queries
-comment|// Use regular expressions to filter the query results
-comment|// Let us retrieve the mbeans object name specified by the query
 return|return
-operator|new
-name|WildcardToRegExTransformFilter
-argument_list|(
-operator|new
-name|MBeansRegExQueryFilter
-argument_list|(
 operator|new
 name|MBeansObjectNameQueryFilter
 argument_list|(
 name|jmxConnection
-argument_list|)
-argument_list|)
 argument_list|)
 return|;
 block|}

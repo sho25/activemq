@@ -162,7 +162,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|TestAMQ3411
+name|AMQ3411Test
 extends|extends
 name|TestCase
 block|{
@@ -181,7 +181,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|TestPurgeCommand
+name|AMQ3411Test
 operator|.
 name|class
 argument_list|)

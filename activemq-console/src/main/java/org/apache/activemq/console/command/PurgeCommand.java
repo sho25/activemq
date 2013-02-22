@@ -400,14 +400,12 @@ argument_list|(
 name|createJmxConnection
 argument_list|()
 argument_list|,
-literal|"destinationType=Queue,destinationName="
+literal|"type=Broker,brokerName=*,destinationType=Queue,destinationName="
 operator|+
 name|i
 operator|.
 name|next
 argument_list|()
-operator|+
-literal|",*"
 argument_list|)
 decl_stmt|;
 for|for
