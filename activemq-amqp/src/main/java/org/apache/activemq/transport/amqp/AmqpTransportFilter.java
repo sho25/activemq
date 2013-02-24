@@ -190,7 +190,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The AMQPTransportFilter normally sits on top of a TcpTransport that has been  * configured with the StompWireFormat and is used to convert AMQP commands to  * ActiveMQ commands. All of the conversion work is done by delegating to the  * AMQPProtocolConverter  */
+comment|/**  * The AMQPTransportFilter normally sits on top of a TcpTransport that has been  * configured with the AmqpWireFormat and is used to convert AMQP commands to  * ActiveMQ commands. All of the conversion work is done by delegating to the  * AMQPProtocolConverter  */
 end_comment
 
 begin_class
