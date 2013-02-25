@@ -756,7 +756,7 @@ return|;
 block|}
 block|}
 argument_list|,
-literal|60000
+literal|120000
 argument_list|)
 expr_stmt|;
 name|assertEquals
