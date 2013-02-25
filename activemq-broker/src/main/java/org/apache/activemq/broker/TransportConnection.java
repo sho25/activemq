@@ -8304,7 +8304,8 @@ name|id
 argument_list|)
 return|;
 block|}
-specifier|protected
+comment|// public only for testing
+specifier|public
 specifier|synchronized
 name|TransportConnectionState
 name|lookupConnectionState
