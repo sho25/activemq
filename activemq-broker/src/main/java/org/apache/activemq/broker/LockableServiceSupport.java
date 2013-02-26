@@ -323,6 +323,17 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|long
+name|getLockKeepAlivePeriod
+parameter_list|()
+block|{
+return|return
+name|lockKeepAlivePeriod
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|void
 name|preStart
 parameter_list|()

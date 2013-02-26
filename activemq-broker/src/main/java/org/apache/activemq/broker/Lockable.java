@@ -71,6 +71,10 @@ name|long
 name|lockKeepAlivePeriod
 parameter_list|)
 function_decl|;
+name|long
+name|getLockKeepAlivePeriod
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

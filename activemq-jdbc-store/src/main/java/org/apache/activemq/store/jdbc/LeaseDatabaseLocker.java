@@ -318,6 +318,35 @@ name|stopping
 operator|=
 literal|false
 expr_stmt|;
+if|if
+condition|(
+name|lockAcquireSleepInterval
+operator|<
+name|persistenceAdapter
+operator|.
+name|getLockKeepAlivePeriod
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Persistence adapter keep alive period: "
+operator|+
+name|persistenceAdapter
+operator|.
+name|getLockKeepAlivePeriod
+argument_list|()
+operator|+
+literal|", which renews the lease, is less than lockAcquireSleepInterval: "
+operator|+
+name|lockAcquireSleepInterval
+operator|+
+literal|", the lease duration. These values will allow the lease to expire."
+argument_list|)
+expr_stmt|;
+block|}
 name|LOG
 operator|.
 name|info
