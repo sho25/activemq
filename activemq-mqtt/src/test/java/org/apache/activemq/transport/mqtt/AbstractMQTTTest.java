@@ -18,6 +18,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertArrayEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -231,18 +267,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
-
 begin_class
 specifier|public
 specifier|abstract
@@ -417,7 +441,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|30000
+literal|300000
 argument_list|)
 specifier|public
 name|void
@@ -475,6 +499,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -630,7 +656,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|30000
+literal|300000
 argument_list|)
 specifier|public
 name|void
@@ -746,7 +772,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|30000
+literal|300000
 argument_list|)
 specifier|public
 name|void
@@ -861,7 +887,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|30000
+literal|300000
 argument_list|)
 specifier|public
 name|void
@@ -976,7 +1002,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|30000
+literal|300000
 argument_list|)
 specifier|public
 name|void
@@ -1091,7 +1117,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|30000
+literal|300000
 argument_list|)
 specifier|public
 name|void
@@ -1206,7 +1232,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|30000
+literal|300000
 argument_list|)
 specifier|public
 name|void
@@ -1342,7 +1368,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|30000
+literal|300000
 argument_list|)
 specifier|public
 name|void
@@ -1497,7 +1523,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|30000
+literal|300000
 argument_list|)
 specifier|public
 name|void
@@ -1705,7 +1731,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|30000
+literal|300000
 argument_list|)
 specifier|public
 name|void

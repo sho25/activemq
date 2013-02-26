@@ -18,6 +18,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -69,18 +81,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -93,7 +93,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|30000
+literal|300000
 argument_list|)
 specifier|public
 name|void
@@ -185,7 +185,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|30000
+literal|300000
 argument_list|)
 specifier|public
 name|void
@@ -364,6 +364,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|String
 name|getProtocolScheme
@@ -373,6 +375,8 @@ return|return
 literal|"mqtt"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|addMQTTConnector
@@ -386,6 +390,8 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|addMQTTConnector
