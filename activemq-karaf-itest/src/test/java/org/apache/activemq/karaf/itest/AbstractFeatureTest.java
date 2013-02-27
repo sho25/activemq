@@ -53,6 +53,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|karaf
+operator|.
+name|features
+operator|.
+name|FeaturesService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|After
@@ -377,6 +391,18 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
 begin_class
 specifier|public
 specifier|abstract
@@ -495,6 +521,11 @@ name|Inject
 specifier|protected
 name|BundleContext
 name|bundleContext
+decl_stmt|;
+annotation|@
+name|Inject
+name|FeaturesService
+name|featuresService
 decl_stmt|;
 annotation|@
 name|Before
@@ -786,6 +817,65 @@ argument_list|,
 literal|false
 argument_list|)
 return|;
+block|}
+comment|/** 	 * Installs a feature and asserts that feature is properly installed. 	 * @param feature 	 * @throws Exception 	 */
+specifier|public
+name|void
+name|installAndAssertFeature
+parameter_list|(
+name|String
+name|feature
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+name|executeCommand
+argument_list|(
+literal|"features:install "
+operator|+
+name|feature
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+name|executeCommand
+argument_list|(
+literal|"osgi:list -t 0"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Expected "
+operator|+
+name|feature
+operator|+
+literal|" feature to be installed."
+argument_list|,
+name|featuresService
+operator|.
+name|isInstalled
+argument_list|(
+name|featuresService
+operator|.
+name|getFeature
+argument_list|(
+name|feature
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 specifier|static
