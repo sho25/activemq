@@ -438,7 +438,7 @@ specifier|final
 name|long
 name|COMMAND_TIMEOUT
 init|=
-literal|10000L
+literal|30000L
 decl_stmt|;
 specifier|public
 specifier|static
@@ -975,6 +975,27 @@ name|type
 argument_list|)
 return|;
 block|}
+comment|// for use from a probe
+specifier|public
+name|String
+name|getCamelFeatureUrl
+parameter_list|()
+block|{
+return|return
+literal|"mvn:org.apache.camel.karaf/apache-camel/"
+operator|+
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"camel.version"
+argument_list|,
+literal|"unknown"
+argument_list|)
+operator|+
+literal|"/xml/features"
+return|;
+block|}
 specifier|public
 specifier|static
 name|UrlReference
@@ -1157,8 +1178,6 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|// install the cxf jaxb spec as the karaf doesn't provide it by default
-comment|// f.add("cxf-jaxb");
 name|f
 operator|.
 name|addAll
@@ -1235,7 +1254,7 @@ operator|.
 name|keepRuntimeFolder
 argument_list|()
 block|,
-comment|// override the config.properties (to fix pax-exam bug)
+comment|//logLevel(LogLevelOption.LogLevel.DEBUG),
 name|replaceConfigurationFile
 argument_list|(
 literal|"etc/config.properties"
@@ -1262,7 +1281,6 @@ literal|"/src/test/resources/org/apache/activemq/karaf/itest/custom.properties"
 argument_list|)
 argument_list|)
 block|,
-comment|//replaceConfigurationFile("etc/org.ops4j.pax.logging.cfg", new File(basedir+"/src/test/resources/org/apache/activemq/karaf/itest/org.ops4j.pax.logging.cfg")),
 name|scanFeatures
 argument_list|(
 name|getActiveMQKarafFeatureUrl

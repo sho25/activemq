@@ -201,7 +201,7 @@ name|configureBrokerStart
 argument_list|(
 name|configure
 argument_list|(
-literal|"activemq-broker"
+literal|"activemq"
 argument_list|)
 argument_list|)
 return|;
