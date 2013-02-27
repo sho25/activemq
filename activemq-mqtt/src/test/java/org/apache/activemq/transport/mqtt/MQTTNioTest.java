@@ -84,7 +84,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|MTQQNioTest
+name|MQTTNioTest
 extends|extends
 name|MQTTTest
 block|{

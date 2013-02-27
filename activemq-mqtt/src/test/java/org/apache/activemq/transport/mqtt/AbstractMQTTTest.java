@@ -410,7 +410,7 @@ name|this
 operator|.
 name|numberOfMessages
 operator|=
-literal|3000
+literal|1000
 expr_stmt|;
 block|}
 annotation|@
