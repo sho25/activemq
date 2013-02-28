@@ -11523,6 +11523,8 @@ name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
+operator|-
+literal|100
 decl_stmt|;
 name|headers
 operator|.
@@ -11589,7 +11591,7 @@ name|stompConnection
 operator|.
 name|receive
 argument_list|(
-literal|10000
+literal|35000
 argument_list|)
 decl_stmt|;
 name|assertNotNull
