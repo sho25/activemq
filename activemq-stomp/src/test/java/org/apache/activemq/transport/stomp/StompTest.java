@@ -11589,7 +11589,7 @@ name|stompConnection
 operator|.
 name|receive
 argument_list|(
-literal|1000
+literal|10000
 argument_list|)
 decl_stmt|;
 name|assertNotNull
