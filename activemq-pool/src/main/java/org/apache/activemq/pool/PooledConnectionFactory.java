@@ -147,20 +147,6 @@ name|commons
 operator|.
 name|pool
 operator|.
-name|ObjectPoolFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|pool
-operator|.
 name|impl
 operator|.
 name|GenericKeyedObjectPool
@@ -820,19 +806,6 @@ name|connection
 argument_list|)
 return|;
 block|}
-comment|/**      * @deprecated      */
-specifier|public
-name|ObjectPoolFactory
-argument_list|<
-name|?
-argument_list|>
-name|getPoolFactory
-parameter_list|()
-block|{
-return|return
-literal|null
-return|;
-block|}
 specifier|protected
 name|ActiveMQConnection
 name|createConnection
@@ -1017,36 +990,6 @@ name|connectionsPool
 operator|.
 name|clear
 argument_list|()
-expr_stmt|;
-block|}
-comment|/**      * @deprecated use {@link #getMaximumActiveSessionPerConnection()}      */
-annotation|@
-name|Deprecated
-specifier|public
-name|int
-name|getMaximumActive
-parameter_list|()
-block|{
-return|return
-name|getMaximumActiveSessionPerConnection
-argument_list|()
-return|;
-block|}
-comment|/**      * @deprecated use {@link #setMaximumActiveSessionPerConnection(int)}      */
-annotation|@
-name|Deprecated
-specifier|public
-name|void
-name|setMaximumActive
-parameter_list|(
-name|int
-name|maximumActive
-parameter_list|)
-block|{
-name|setMaximumActiveSessionPerConnection
-argument_list|(
-name|maximumActive
-argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns the currently configured maximum number of sessions a pooled Connection will      * create before it either blocks or throws an exception when a new session is requested,      * depending on configuration.      *      * @return the number of session instances that can be taken from a pooled connection.      */
@@ -1278,18 +1221,6 @@ name|getNumIdle
 argument_list|()
 return|;
 block|}
-comment|/**      * @deprecated      */
-specifier|public
-name|void
-name|setPoolFactory
-parameter_list|(
-name|ObjectPoolFactory
-argument_list|<
-name|?
-argument_list|>
-name|factory
-parameter_list|)
-block|{     }
 comment|/**      * Delegate that creates each instance of an ConnectionPool object.  Subclasses can override      * this method to customize the type of connection pool returned.      *      * @param connection      *      * @return instance of a new ConnectionPool.      */
 specifier|protected
 name|ConnectionPool

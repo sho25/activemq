@@ -99,20 +99,6 @@ name|ActiveMQConnection
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|pool
-operator|.
-name|ObjectPoolFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * An XA-aware connection pool.  When a session is created and an xa transaction is active,  * the session will automatically be enlisted in the current transaction.  *  * @author gnodet  */
 end_comment
@@ -125,6 +111,7 @@ extends|extends
 name|ConnectionPool
 block|{
 specifier|private
+specifier|final
 name|TransactionManager
 name|transactionManager
 decl_stmt|;
@@ -148,28 +135,6 @@ operator|.
 name|transactionManager
 operator|=
 name|transactionManager
-expr_stmt|;
-block|}
-comment|/**      * @deprecated      */
-specifier|public
-name|XaConnectionPool
-parameter_list|(
-name|ActiveMQConnection
-name|connection
-parameter_list|,
-name|ObjectPoolFactory
-name|poolFactory
-parameter_list|,
-name|TransactionManager
-name|transactionManager
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|connection
-argument_list|,
-name|transactionManager
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -403,11 +368,15 @@ operator|=
 name|session
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beforeCompletion
 parameter_list|()
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterCompletion
