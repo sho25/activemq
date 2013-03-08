@@ -373,7 +373,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testRetainIdleWhenInUse
+name|testNotIdledWhenInUse
 parameter_list|()
 throws|throws
 name|Exception
@@ -420,8 +420,8 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-comment|// get the same connection from pool again, it will get destroyed due to validation check
-comment|// it will be the same since maxIdle is set to 1 in implementation
+comment|// get a connection from pool again, it should be the same underlying connection
+comment|// as before and should not be idled out since an open session exists.
 name|PooledConnection
 name|connection2
 init|=
@@ -479,6 +479,57 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+name|ActiveMQConnection
+name|original
+init|=
+name|connection
+operator|.
+name|getConnection
+argument_list|()
+decl_stmt|;
+name|connection
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|connection2
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+comment|// let connection to get idle
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|sleep
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+comment|// get a connection from pool again, it should be a new Connection instance as the
+comment|// old one should have been inactive and idled out.
+name|PooledConnection
+name|connection3
+init|=
+operator|(
+name|PooledConnection
+operator|)
+name|pooledFactory
+operator|.
+name|createConnection
+argument_list|()
+decl_stmt|;
+name|assertNotSame
+argument_list|(
+name|original
+argument_list|,
+name|connection3
+operator|.
+name|getConnection
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
