@@ -683,6 +683,15 @@ operator|!=
 literal|null
 condition|)
 block|{
+specifier|final
+name|int
+name|maximumRedeliveries
+init|=
+name|redeliveryPolicy
+operator|.
+name|getMaximumRedeliveries
+argument_list|()
+decl_stmt|;
 name|int
 name|redeliveryCount
 init|=
@@ -693,12 +702,15 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|RedeliveryPolicy
+operator|.
+name|NO_MAXIMUM_REDELIVERIES
+operator|==
+name|maximumRedeliveries
+operator|||
 name|redeliveryCount
 operator|<
-name|redeliveryPolicy
-operator|.
-name|getMaximumRedeliveries
-argument_list|()
+name|maximumRedeliveries
 condition|)
 block|{
 name|long
@@ -763,7 +775,11 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Discarding message that exceeds max redelivery count, "
+literal|"Discarding message that exceeds max redelivery count( "
+operator|+
+name|maximumRedeliveries
+operator|+
+literal|"), "
 operator|+
 name|messageReference
 operator|.

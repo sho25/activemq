@@ -85,6 +85,14 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_MAXIMUM_REDELIVERIES
+init|=
+literal|6
+decl_stmt|;
 specifier|private
 specifier|static
 name|Random
@@ -101,7 +109,7 @@ specifier|protected
 name|int
 name|maximumRedeliveries
 init|=
-literal|6
+name|DEFAULT_MAXIMUM_REDELIVERIES
 decl_stmt|;
 specifier|protected
 name|long
