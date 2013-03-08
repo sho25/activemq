@@ -99,6 +99,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -108,6 +110,8 @@ return|return
 name|hash
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals

@@ -206,6 +206,7 @@ name|currentTimeMillis
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|long
 name|firstUsed
 init|=
@@ -292,6 +293,8 @@ operator|new
 name|TransportListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onCommand
@@ -300,6 +303,8 @@ name|Object
 name|command
 parameter_list|)
 block|{             }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onException
@@ -321,11 +326,15 @@ literal|true
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|transportInterupted
 parameter_list|()
 block|{             }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|transportResumed
@@ -739,9 +748,6 @@ operator|==
 literal|0
 condition|)
 block|{
-name|expiredCheck
-argument_list|()
-expr_stmt|;
 comment|// Loaned sessions are those that are active in the sessionPool and
 comment|// have not been closed by the client before closing the connection.
 comment|// These need to be closed so that all session's reflect the fact
@@ -795,6 +801,9 @@ name|cleanUpTempDestinations
 argument_list|()
 expr_stmt|;
 block|}
+name|expiredCheck
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Determines if this Connection has expired.      *<p/>      * A ConnectionPool is considered expired when all references to it are released AND either      * the configured idleTimeout has elapsed OR the configured expiryTimeout has elapsed.      * Once a ConnectionPool is determined to have expired its underlying Connection is closed.      *      * @return true if this connection has expired.      */
@@ -818,6 +827,8 @@ block|}
 if|if
 condition|(
 name|hasExpired
+operator|||
+name|hasFailed
 condition|)
 block|{
 if|if
@@ -837,23 +848,6 @@ return|;
 block|}
 if|if
 condition|(
-name|hasFailed
-operator|||
-operator|(
-name|idleTimeout
-operator|>
-literal|0
-operator|&&
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-operator|>
-name|lastUsed
-operator|+
-name|idleTimeout
-operator|)
-operator|||
 name|expiryTimeout
 operator|>
 literal|0
@@ -883,6 +877,37 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+return|return
+literal|true
+return|;
+block|}
+if|if
+condition|(
+name|referenceCount
+operator|==
+literal|0
+operator|&&
+name|idleTimeout
+operator|>
+literal|0
+operator|&&
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|>
+name|lastUsed
+operator|+
+name|idleTimeout
+condition|)
+block|{
+name|hasExpired
+operator|=
+literal|true
+expr_stmt|;
+name|close
+argument_list|()
+expr_stmt|;
 return|return
 literal|true
 return|;
