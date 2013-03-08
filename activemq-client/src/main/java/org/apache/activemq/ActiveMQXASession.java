@@ -165,6 +165,9 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
+name|checkClosed
+argument_list|()
+expr_stmt|;
 return|return
 name|getTransactionContext
 argument_list|()
@@ -180,6 +183,9 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
+name|checkClosed
+argument_list|()
+expr_stmt|;
 throw|throw
 operator|new
 name|TransactionInProgressException
@@ -195,6 +201,9 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
+name|checkClosed
+argument_list|()
+expr_stmt|;
 throw|throw
 operator|new
 name|TransactionInProgressException
