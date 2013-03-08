@@ -767,7 +767,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"Destination on Broker before removing the Queue: "
 operator|+
@@ -852,7 +852,7 @@ argument_list|()
 decl_stmt|;
 name|LOG
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"Destination on broker after removing the Queue: "
 operator|+
