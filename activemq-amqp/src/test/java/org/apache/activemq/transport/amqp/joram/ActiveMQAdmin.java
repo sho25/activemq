@@ -339,6 +339,18 @@ operator|new
 name|SimpleFormatter
 argument_list|()
 decl_stmt|;
+name|String
+name|outputStreamName
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"java.io.tmpdir"
+argument_list|)
+operator|+
+literal|"/amqp-trace.txt"
+decl_stmt|;
 specifier|final
 name|PrintStream
 name|out
@@ -352,7 +364,7 @@ argument_list|(
 operator|new
 name|File
 argument_list|(
-literal|"/tmp/amqp-trace.txt"
+name|outputStreamName
 argument_list|)
 argument_list|)
 argument_list|)
