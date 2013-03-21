@@ -382,7 +382,10 @@ name|out
 operator|.
 name|print
 argument_list|(
+name|escape
+argument_list|(
 name|refreshRate
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|out
