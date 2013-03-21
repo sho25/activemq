@@ -174,7 +174,7 @@ if|if
 condition|(
 name|cronEntry
 operator|.
-name|startsWith
+name|equals
 argument_list|(
 literal|"* * * * *"
 argument_list|)
