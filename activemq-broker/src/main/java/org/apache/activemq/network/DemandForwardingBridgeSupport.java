@@ -2355,6 +2355,13 @@ expr_stmt|;
 block|}
 comment|// Before we try and build the bridge lets check if we are in a loop
 comment|// and if so just stop now before registering anything.
+name|remoteBrokerId
+operator|=
+name|remoteBrokerInfo
+operator|.
+name|getBrokerId
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|localBrokerId
@@ -2406,16 +2413,11 @@ argument_list|(
 name|remoteBroker
 argument_list|)
 expr_stmt|;
+comment|// the bridge is left in a bit of limbo, but it won't get retried
+comment|// in this state.
 return|return;
 block|}
 comment|// Fill in the remote broker's information now.
-name|remoteBrokerId
-operator|=
-name|remoteBrokerInfo
-operator|.
-name|getBrokerId
-argument_list|()
-expr_stmt|;
 name|remoteBrokerPath
 index|[
 literal|0
