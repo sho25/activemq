@@ -1194,7 +1194,7 @@ block|}
 comment|/**      * @return the number of milliseconds to sleep between runs of the idle connection eviction thread.      */
 specifier|public
 name|long
-name|setTimeBetweenExpirationCheckMillis
+name|getTimeBetweenExpirationCheckMillis
 parameter_list|()
 block|{
 return|return
