@@ -480,6 +480,17 @@ argument_list|,
 name|timeout
 argument_list|)
 expr_stmt|;
+name|super
+operator|.
+name|removeDestination
+argument_list|(
+name|context
+argument_list|,
+name|destination
+argument_list|,
+name|timeout
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
