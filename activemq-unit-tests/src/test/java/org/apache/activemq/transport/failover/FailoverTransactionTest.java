@@ -544,7 +544,7 @@ name|super
 operator|.
 name|setMaxTestTime
 argument_list|(
-literal|20
+literal|2
 operator|*
 literal|60
 operator|*
