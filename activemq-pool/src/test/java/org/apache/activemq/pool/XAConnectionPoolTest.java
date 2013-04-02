@@ -267,6 +267,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|ActiveMQConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|ActiveMQXAConnectionFactory
 import|;
 end_import
@@ -917,7 +929,7 @@ operator|.
 name|setConnectionFactory
 argument_list|(
 operator|new
-name|ActiveMQXAConnectionFactory
+name|ActiveMQConnectionFactory
 argument_list|(
 literal|"vm://test?broker.persistent=false"
 argument_list|)
