@@ -889,14 +889,17 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-throw|throw
-name|JMSExceptionSupport
+name|LOG
 operator|.
-name|create
+name|trace
 argument_list|(
+literal|"Ignoring exception on invalidateObject as discarding session: "
+operator|+
+name|e
+argument_list|,
 name|e
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 block|}
 else|else

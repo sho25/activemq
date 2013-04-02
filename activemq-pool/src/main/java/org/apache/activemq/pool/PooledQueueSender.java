@@ -187,10 +187,10 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getQueueSender
-argument_list|()
-operator|.
-name|getQueue
+operator|(
+name|Queue
+operator|)
+name|getDestination
 argument_list|()
 return|;
 block|}

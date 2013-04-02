@@ -120,10 +120,10 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getTopicPublisher
-argument_list|()
-operator|.
-name|getTopic
+operator|(
+name|Topic
+operator|)
+name|getDestination
 argument_list|()
 return|;
 block|}
