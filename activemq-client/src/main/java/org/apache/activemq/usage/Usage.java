@@ -126,7 +126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to keep track of how much of something is being used so that a  * productive working set usage can be controlled. Main use case is manage  * memory usage.  *   * @org.apache.xbean.XBean  *   */
+comment|/**  * Used to keep track of how much of something is being used so that a  * productive working set usage can be controlled. Main use case is manage  * memory usage.  *  * @org.apache.xbean.XBean  *  */
 end_comment
 
 begin_class
@@ -613,7 +613,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Sets the memory limit in bytes. Setting the limit in bytes will set the      * usagePortion to 0 since the UsageManager is not going to be portion based      * off the parent.      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      *       * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
+comment|/**      * Sets the memory limit in bytes. Setting the limit in bytes will set the      * usagePortion to 0 since the UsageManager is not going to be portion based      * off the parent.      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      *      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
 specifier|public
 name|void
 name|setLimit
@@ -812,7 +812,7 @@ name|percentUsageMinDelta
 return|;
 block|}
 block|}
-comment|/**      * Sets the minimum number of percentage points the usage has to change      * before a UsageListener event is fired by the manager.      *       * @param percentUsageMinDelta      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
+comment|/**      * Sets the minimum number of percentage points the usage has to change      * before a UsageListener event is fired by the manager.      *      * @param percentUsageMinDelta      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
 specifier|public
 name|void
 name|setPercentUsageMinDelta
@@ -1108,6 +1108,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1249,6 +1251,8 @@ operator|)
 return|;
 block|}
 annotation|@
+name|Override
+annotation|@
 name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
@@ -1336,6 +1340,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1521,6 +1527,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1721,6 +1729,18 @@ parameter_list|()
 block|{
 return|return
 name|executor
+return|;
+block|}
+specifier|public
+name|boolean
+name|isStarted
+parameter_list|()
+block|{
+return|return
+name|started
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 block|}

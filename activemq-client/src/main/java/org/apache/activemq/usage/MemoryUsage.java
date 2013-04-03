@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Used to keep track of how much of something is being used so that a  * productive working set usage can be controlled. Main use case is manage  * memory usage.  *   * @org.apache.xbean.XBean  *   */
+comment|/**  * Used to keep track of how much of something is being used so that a  * productive working set usage can be controlled. Main use case is manage  * memory usage.  *  * @org.apache.xbean.XBean  *  */
 end_comment
 
 begin_class
@@ -45,7 +45,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create the memory manager linked to a parent. When the memory manager is      * linked to a parent then when usage increased or decreased, the parent's      * usage is also increased or decreased.      *       * @param parent      */
+comment|/**      * Create the memory manager linked to a parent. When the memory manager is      * linked to a parent then when usage increased or decreased, the parent's      * usage is also increased or decreased.      *      * @param parent      */
 specifier|public
 name|MemoryUsage
 parameter_list|(
@@ -120,6 +120,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @throws InterruptedException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|waitForSpace
@@ -145,20 +147,15 @@ init|(
 name|usageMutex
 init|)
 block|{
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
+while|while
+condition|(
 name|percentUsage
 operator|>=
 literal|100
-condition|;
-name|i
-operator|++
-control|)
+operator|&&
+name|isStarted
+argument_list|()
+condition|)
 block|{
 name|usageMutex
 operator|.
@@ -166,9 +163,30 @@ name|wait
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|percentUsage
+operator|>=
+literal|100
+operator|&&
+operator|!
+name|isStarted
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|InterruptedException
+argument_list|(
+literal|"waitForSpace stopped during wait."
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 comment|/**      * @param timeout      * @throws InterruptedException      * @return true if space      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|waitForSpace
@@ -229,6 +247,8 @@ literal|100
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isFull
@@ -262,7 +282,7 @@ literal|100
 return|;
 block|}
 block|}
-comment|/**      * Tries to increase the usage by value amount but blocks if this object is      * currently full.      *       * @param value      * @throws InterruptedException      */
+comment|/**      * Tries to increase the usage by value amount but blocks if this object is      * currently full.      *      * @param value      * @throws InterruptedException      */
 specifier|public
 name|void
 name|enqueueUsage
@@ -282,7 +302,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Increases the usage by the value amount.      *       * @param value      */
+comment|/**      * Increases the usage by the value amount.      *      * @param value      */
 specifier|public
 name|void
 name|increaseUsage
@@ -330,12 +350,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-operator|(
-operator|(
-name|MemoryUsage
-operator|)
 name|parent
-operator|)
 operator|.
 name|increaseUsage
 argument_list|(
@@ -344,7 +359,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Decreases the usage by the value amount.      *       * @param value      */
+comment|/**      * Decreases the usage by the value amount.      *      * @param value      */
 specifier|public
 name|void
 name|decreaseUsage
@@ -401,6 +416,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|long
 name|retrieveUsage
@@ -410,6 +427,8 @@ return|return
 name|usage
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getUsage
