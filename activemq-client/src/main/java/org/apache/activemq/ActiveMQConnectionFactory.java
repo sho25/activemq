@@ -904,6 +904,8 @@ throw|;
 block|}
 block|}
 comment|/**      * @return Returns the Connection.      */
+annotation|@
+name|Override
 specifier|public
 name|Connection
 name|createConnection
@@ -917,6 +919,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return Returns the Connection.      */
+annotation|@
+name|Override
 specifier|public
 name|Connection
 name|createConnection
@@ -940,6 +944,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @return Returns the QueueConnection.      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|QueueConnection
 name|createQueueConnection
@@ -956,6 +962,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return Returns the QueueConnection.      */
+annotation|@
+name|Override
 specifier|public
 name|QueueConnection
 name|createQueueConnection
@@ -982,6 +990,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return Returns the TopicConnection.      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|TopicConnection
 name|createTopicConnection
@@ -995,6 +1005,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return Returns the TopicConnection.      */
+annotation|@
+name|Override
 specifier|public
 name|TopicConnection
 name|createTopicConnection
@@ -1018,6 +1030,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @returns the StatsImpl associated with this ConnectionFactory.      */
+annotation|@
+name|Override
 specifier|public
 name|StatsImpl
 name|getStats
@@ -3130,6 +3144,21 @@ operator|.
 name|toString
 argument_list|(
 name|isNestedMapAndListEnabled
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|props
+operator|.
+name|setProperty
+argument_list|(
+literal|"consumerFailoverRedeliveryWaitPeriod"
+argument_list|,
+name|Long
+operator|.
+name|toString
+argument_list|(
+name|getConsumerFailoverRedeliveryWaitPeriod
 argument_list|()
 argument_list|)
 argument_list|)
