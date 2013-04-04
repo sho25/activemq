@@ -248,7 +248,7 @@ name|DestinationFilter
 implements|implements
 name|Destination
 block|{
-specifier|private
+specifier|protected
 specifier|final
 name|Destination
 name|next
@@ -267,6 +267,8 @@ operator|=
 name|next
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|acknowledge
@@ -300,6 +302,8 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addSubscription
@@ -323,6 +327,8 @@ name|sub
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Message
 index|[]
@@ -336,6 +342,8 @@ name|browse
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|dispose
@@ -354,6 +362,8 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDisposed
@@ -366,6 +376,8 @@ name|isDisposed
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|gc
@@ -377,6 +389,8 @@ name|gc
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|markForGC
@@ -393,6 +407,8 @@ name|timeStamp
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|canGC
@@ -405,6 +421,8 @@ name|canGC
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getInactiveTimoutBeforeGC
@@ -417,6 +435,8 @@ name|getInactiveTimoutBeforeGC
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ActiveMQDestination
 name|getActiveMQDestination
@@ -429,6 +449,8 @@ name|getActiveMQDestination
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|DeadLetterStrategy
 name|getDeadLetterStrategy
@@ -441,6 +463,8 @@ name|getDeadLetterStrategy
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|DestinationStatistics
 name|getDestinationStatistics
@@ -453,6 +477,8 @@ name|getDestinationStatistics
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -465,6 +491,8 @@ name|getName
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MemoryUsage
 name|getMemoryUsage
@@ -495,6 +523,8 @@ name|memoryUsage
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeSubscription
@@ -523,6 +553,8 @@ name|lastDeliveredSequenceId
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
@@ -546,6 +578,8 @@ name|messageSend
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -559,6 +593,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -572,6 +608,8 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|List
 argument_list|<
@@ -650,6 +688,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MessageStore
 name|getMessageStore
@@ -662,6 +702,8 @@ name|getMessageStore
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isProducerFlowControl
@@ -674,6 +716,8 @@ name|isProducerFlowControl
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setProducerFlowControl
@@ -690,6 +734,8 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isAlwaysRetroactive
@@ -702,6 +748,8 @@ name|isAlwaysRetroactive
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setAlwaysRetroactive
@@ -718,6 +766,8 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBlockedProducerWarningInterval
@@ -734,6 +784,8 @@ name|blockedProducerWarningInterval
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getBlockedProducerWarningInterval
@@ -746,6 +798,8 @@ name|getBlockedProducerWarningInterval
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addProducer
@@ -769,6 +823,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeProducer
@@ -792,6 +848,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMaxAuditDepth
@@ -804,6 +862,8 @@ name|getMaxAuditDepth
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMaxProducersToAudit
@@ -816,6 +876,8 @@ name|getMaxProducersToAudit
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isEnableAudit
@@ -828,6 +890,8 @@ name|isEnableAudit
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setEnableAudit
@@ -844,6 +908,8 @@ name|enableAudit
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxAuditDepth
@@ -860,6 +926,8 @@ name|maxAuditDepth
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxProducersToAudit
@@ -876,6 +944,8 @@ name|maxProducersToAudit
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isActive
@@ -888,6 +958,8 @@ name|isActive
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMaxPageSize
@@ -900,6 +972,8 @@ name|getMaxPageSize
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxPageSize
@@ -916,6 +990,8 @@ name|maxPageSize
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isUseCache
@@ -928,6 +1004,8 @@ name|isUseCache
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUseCache
@@ -944,6 +1022,8 @@ name|useCache
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMinimumMessageSize
@@ -956,6 +1036,8 @@ name|getMinimumMessageSize
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMinimumMessageSize
@@ -972,6 +1054,8 @@ name|minimumMessageSize
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|wakeup
@@ -983,6 +1067,8 @@ name|wakeup
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isLazyDispatch
@@ -995,6 +1081,8 @@ name|isLazyDispatch
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setLazyDispatch
@@ -1037,6 +1125,8 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|iterate
@@ -1049,6 +1139,8 @@ name|iterate
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|fastProducer
@@ -1070,6 +1162,8 @@ name|producerInfo
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|isFull
@@ -1094,6 +1188,8 @@ name|usage
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageConsumed
@@ -1115,6 +1211,8 @@ name|messageReference
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageDelivered
@@ -1136,6 +1234,8 @@ name|messageReference
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageDiscarded
@@ -1162,6 +1262,8 @@ name|messageReference
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|slowConsumer
@@ -1183,6 +1285,8 @@ name|subs
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageExpired
@@ -1209,6 +1313,8 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMaxBrowsePageSize
@@ -1221,6 +1327,8 @@ name|getMaxBrowsePageSize
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxBrowsePageSize
@@ -1237,6 +1345,8 @@ name|maxPageSize
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|processDispatchNotification
@@ -1255,6 +1365,8 @@ name|messageDispatchNotification
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getCursorMemoryHighWaterMark
@@ -1267,6 +1379,8 @@ name|getCursorMemoryHighWaterMark
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setCursorMemoryHighWaterMark
@@ -1283,6 +1397,8 @@ name|cursorMemoryHighWaterMark
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isPrioritizedMessages
@@ -1295,6 +1411,8 @@ name|isPrioritizedMessages
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|SlowConsumerStrategy
 name|getSlowConsumerStrategy
@@ -1307,6 +1425,8 @@ name|getSlowConsumerStrategy
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDoOptimzeMessageStorage
@@ -1319,6 +1439,8 @@ name|isDoOptimzeMessageStorage
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDoOptimzeMessageStorage

@@ -73,6 +73,22 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|Topic
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -122,7 +138,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Destination which implements<a  * href="http://activemq.org/site/virtual-destinations.html">Virtual Topic</a>  *   *   */
+comment|/**  * A Destination which implements<a  * href="http://activemq.org/site/virtual-destinations.html">Virtual Topic</a>  */
 end_comment
 
 begin_class
@@ -133,18 +149,22 @@ extends|extends
 name|DestinationFilter
 block|{
 specifier|private
+specifier|final
 name|String
 name|prefix
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|postfix
 decl_stmt|;
 specifier|private
+specifier|final
 name|boolean
 name|local
 decl_stmt|;
 specifier|private
+specifier|final
 name|LRUCache
 argument_list|<
 name|ActiveMQDestination
@@ -202,6 +222,22 @@ operator|=
 name|local
 expr_stmt|;
 block|}
+specifier|public
+name|Topic
+name|getTopic
+parameter_list|()
+block|{
+return|return
+operator|(
+name|Topic
+operator|)
+name|this
+operator|.
+name|next
+return|;
+block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
