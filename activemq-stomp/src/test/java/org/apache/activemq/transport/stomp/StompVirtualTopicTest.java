@@ -25,7 +25,31 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
 import|;
 end_import
 
@@ -108,16 +132,6 @@ operator|.
 name|management
 operator|.
 name|ObjectName
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
 import|;
 end_import
 
@@ -812,8 +826,6 @@ argument_list|(
 name|failMsg
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|(
 name|failMsg
@@ -1109,8 +1121,6 @@ argument_list|(
 literal|3000
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertNull
 argument_list|(
 name|frame

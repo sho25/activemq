@@ -16,26 +16,26 @@ package|;
 end_package
 
 begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|Wait
-import|;
-end_import
-
-begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -68,26 +68,26 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|junit
+import|import
+name|org
 operator|.
-name|framework
+name|apache
 operator|.
-name|Assert
+name|activemq
 operator|.
-name|assertEquals
+name|util
+operator|.
+name|Wait
 import|;
 end_import
 
 begin_import
-import|import static
+import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertTrue
+name|Test
 import|;
 end_import
 

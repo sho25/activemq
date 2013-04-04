@@ -17,11 +17,31 @@ end_package
 
 begin_import
 import|import
-name|junit
+name|javax
 operator|.
-name|framework
+name|jms
 operator|.
-name|Assert
+name|Connection
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|ConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|IllegalStateException
 import|;
 end_import
 
@@ -55,36 +75,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Connection
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|ConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|IllegalStateException
-import|;
-end_import
-
 begin_comment
 comment|/**  * A couple of tests against the PooledConnection class.  *  */
 end_comment
@@ -97,6 +87,7 @@ extends|extends
 name|TestCase
 block|{
 specifier|private
+specifier|final
 name|Logger
 name|log
 init|=
@@ -143,7 +134,7 @@ literal|"tearDown() called."
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * AMQ-3752: 	 * Tests how the ActiveMQConnection reacts to repeated calls to 	 * setClientID().  	 *  	 * @throws Exception 	 */
+comment|/**      * AMQ-3752:      * Tests how the ActiveMQConnection reacts to repeated calls to      * setClientID().      *      * @throws Exception      */
 specifier|public
 name|void
 name|testRepeatedSetClientIDCalls
@@ -224,8 +215,6 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|(
 literal|"Repeated calls to ActiveMQConnection.setClientID(\"newID\") caused "
@@ -268,8 +257,6 @@ argument_list|(
 literal|"newID2"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|(
 literal|"calling ActiveMQConnection.setClientID() twice with different clientID must raise an IllegalStateException"
@@ -328,8 +315,6 @@ argument_list|(
 literal|"newID3"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|(
 literal|"Calling setClientID() after start() mut raise a JMSException."

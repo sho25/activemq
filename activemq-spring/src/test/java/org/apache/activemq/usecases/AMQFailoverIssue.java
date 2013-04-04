@@ -189,26 +189,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -216,20 +196,6 @@ operator|.
 name|activemq
 operator|.
 name|ActiveMQConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|test
-operator|.
-name|*
 import|;
 end_import
 
@@ -469,6 +435,7 @@ init|=
 literal|true
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicInteger
 name|messageCount
 init|=
@@ -652,8 +619,6 @@ name|shutdown
 argument_list|()
 expr_stmt|;
 comment|// Thread.sleep(30000);
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|TOTAL_MESSAGES
@@ -1110,6 +1075,8 @@ operator|=
 name|waitTime
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1144,7 +1111,6 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-comment|// TODO Auto-generated catch block
 name|e
 operator|.
 name|printStackTrace
@@ -1195,6 +1161,8 @@ operator|=
 name|queueName
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1313,6 +1281,8 @@ operator|new
 name|MessageCreator
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|createMessage

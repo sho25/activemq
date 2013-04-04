@@ -189,16 +189,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -206,20 +196,6 @@ operator|.
 name|activemq
 operator|.
 name|ActiveMQConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|test
-operator|.
-name|*
 import|;
 end_import
 
@@ -1485,6 +1461,8 @@ operator|=
 name|waitTime
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1607,6 +1585,8 @@ operator|=
 name|producerName
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1716,6 +1696,8 @@ operator|new
 name|MessageCreator
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|createMessage

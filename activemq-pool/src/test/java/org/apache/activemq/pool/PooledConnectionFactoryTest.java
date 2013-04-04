@@ -123,16 +123,6 @@ name|junit
 operator|.
 name|framework
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
 name|Test
 import|;
 end_import
@@ -1038,12 +1028,6 @@ name|Boolean
 argument_list|>
 name|result
 init|=
-operator|(
-name|Future
-argument_list|<
-name|Boolean
-argument_list|>
-operator|)
 name|executor
 operator|.
 name|submit
@@ -1087,9 +1071,9 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"2nd call to createSession()"
+literal|"2nd call to createSession() "
 operator|+
-literal|" is blocking but should have returned an error instead."
+literal|"is blocking but should have returned an error instead."
 argument_list|)
 expr_stmt|;
 name|executor
@@ -1097,8 +1081,6 @@ operator|.
 name|shutdownNow
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|(
 literal|"SessionPool inside PooledConnectionFactory is blocking if "
@@ -1133,6 +1115,8 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**          * @return true if test succeeded, false otherwise          */
+annotation|@
+name|Override
 specifier|public
 name|Boolean
 name|call
@@ -1244,8 +1228,6 @@ argument_list|(
 literal|"Expected JMSException wasn't thrown."
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|fail
 argument_list|(
 literal|"seconds call to Connection.createSession() was supposed"

@@ -189,11 +189,13 @@ end_import
 
 begin_import
 import|import
-name|junit
+name|org
 operator|.
-name|framework
+name|apache
 operator|.
-name|Assert
+name|activemq
+operator|.
+name|ActiveMQConnectionFactory
 import|;
 end_import
 
@@ -314,18 +316,6 @@ operator|.
 name|usage
 operator|.
 name|SystemUsage
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQConnectionFactory
 import|;
 end_import
 
@@ -479,6 +469,7 @@ init|=
 literal|10
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicInteger
 name|messageCount
 init|=
@@ -490,6 +481,8 @@ specifier|private
 name|CountDownLatch
 name|doneLatch
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp
@@ -497,6 +490,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|tearDown
@@ -679,8 +674,6 @@ operator|.
 name|shutdownNow
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|NUM_MESSAGE_TO_SEND
@@ -927,8 +920,6 @@ operator|.
 name|shutdownNow
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|MAX_PRODUCERS
@@ -1198,8 +1189,6 @@ operator|.
 name|shutdownNow
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|MAX_PRODUCERS
@@ -1656,6 +1645,8 @@ operator|=
 name|waitTime
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1704,7 +1695,6 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-comment|// TODO Auto-generated catch block
 name|e
 operator|.
 name|printStackTrace
@@ -1717,7 +1707,6 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-comment|// TODO Auto-generated catch block
 name|e
 operator|.
 name|printStackTrace
@@ -1768,6 +1757,8 @@ operator|=
 name|queueName
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1886,6 +1877,8 @@ operator|new
 name|MessageCreator
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|createMessage
@@ -2016,6 +2009,8 @@ operator|=
 name|queueName
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2134,6 +2129,8 @@ operator|new
 name|MessageCreator
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|createMessage
