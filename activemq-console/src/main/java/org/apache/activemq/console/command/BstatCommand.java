@@ -119,6 +119,8 @@ literal|"Performs a predefined query that displays useful statistics regarding t
 return|;
 block|}
 comment|/**      * Performs a predefiend query option      * @param tokens - command arguments      * @throws Exception      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|runTask
@@ -154,6 +156,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|i
 init|=
 name|tokens
@@ -171,9 +176,6 @@ block|{
 name|String
 name|token
 init|=
-operator|(
-name|String
-operator|)
 name|i
 operator|.
 name|next
@@ -249,7 +251,7 @@ literal|"BrokerName,Name,connectorName,networkConnectorName,destinationName,dest
 operator|+
 literal|"DequeueCount,TotalEnqueueCount,TotalDequeueCount,Messages,"
 operator|+
-literal|"TotalMessageCount,ConsumerCount,TotalConsumerCount,DispatchCount,Duplex,NetworkTTL"
+literal|"TotalMessageCount,ConsumerCount,TotalConsumerCount,DispatchCount,Duplex,NetworkTTL,Uptime"
 argument_list|)
 expr_stmt|;
 comment|// Call the query command
@@ -269,6 +271,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Print the help messages for the browse command      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|printHelp
