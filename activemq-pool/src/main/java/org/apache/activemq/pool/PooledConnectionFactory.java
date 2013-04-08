@@ -742,6 +742,18 @@ expr_stmt|;
 block|}
 try|try
 block|{
+comment|// We can race against other threads returning the connection when there is an
+comment|// expiration or idle timeout.  We keep pulling out ConnectionPool instances until
+comment|// we win and get a non-closed instance and then increment the reference count
+comment|// under lock to prevent another thread from triggering an expiration check and
+comment|// pulling the rug out from under us.
+while|while
+condition|(
+name|connection
+operator|==
+literal|null
+condition|)
+block|{
 name|connection
 operator|=
 name|connectionsPool
@@ -751,6 +763,44 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|connection
+init|)
+block|{
+if|if
+condition|(
+name|connection
+operator|.
+name|getConnection
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|connection
+operator|.
+name|incrementReferenceCount
+argument_list|()
+expr_stmt|;
+break|break;
+block|}
+comment|// Return the bad one to the pool and let if get destroyed as normal.
+name|connectionsPool
+operator|.
+name|returnObject
+argument_list|(
+name|key
+argument_list|,
+name|connection
+argument_list|)
+expr_stmt|;
+name|connection
+operator|=
+literal|null
+expr_stmt|;
+block|}
+block|}
 block|}
 catch|catch
 parameter_list|(
