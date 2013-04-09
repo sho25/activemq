@@ -39,6 +39,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashMap
 import|;
 end_import
@@ -1617,6 +1627,8 @@ name|isQueue
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|StatsImpl
 name|getStats
@@ -1789,6 +1801,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Gets this message consumer's message selector expression.      *      * @return this message consumer's message selector, or null if no message      *         selector exists for the message consumer (that is, if the message      *         selector was not set or was set to null or the empty string)      * @throws JMSException if the JMS provider fails to receive the next      *                 message due to some internal error.      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getMessageSelector
@@ -1804,6 +1818,8 @@ name|selector
 return|;
 block|}
 comment|/**      * Gets the message consumer's<CODE>MessageListener</CODE>.      *      * @return the listener for the message consumer, or null if no listener is      *         set      * @throws JMSException if the JMS provider fails to get the message      *                 listener due to some internal error.      * @see javax.jms.MessageConsumer#setMessageListener(javax.jms.MessageListener)      */
+annotation|@
+name|Override
 specifier|public
 name|MessageListener
 name|getMessageListener
@@ -1824,6 +1840,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Sets the message consumer's<CODE>MessageListener</CODE>.      *<P>      * Setting the message listener to null is the equivalent of unsetting the      * message listener for the message consumer.      *<P>      * The effect of calling<CODE>MessageConsumer.setMessageListener</CODE>      * while messages are being consumed by an existing listener or the consumer      * is being used to consume messages synchronously is undefined.      *      * @param listener the listener to which the messages are to be delivered      * @throws JMSException if the JMS provider fails to receive the next      *                 message due to some internal error.      * @see javax.jms.MessageConsumer#getMessageListener      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMessageListener
@@ -1924,6 +1942,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MessageAvailableListener
 name|getAvailableListener
@@ -1934,6 +1954,8 @@ name|availableListener
 return|;
 block|}
 comment|/**      * Sets the listener used to notify synchronous consumers that there is a      * message available so that the {@link MessageConsumer#receiveNoWait()} can      * be called.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setAvailableListener
@@ -2201,6 +2223,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Receives the next message produced for this message consumer.      *<P>      * This call blocks indefinitely until a message is produced or until this      * message consumer is closed.      *<P>      * If this<CODE>receive</CODE> is done within a transaction, the consumer      * retains the message until the transaction commits.      *      * @return the next message produced for this message consumer, or null if      *         this message consumer is concurrently closed      */
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|receive
@@ -2375,6 +2399,8 @@ operator|new
 name|Callback
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2414,6 +2440,8 @@ operator|new
 name|Callback
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2441,6 +2469,8 @@ name|m
 return|;
 block|}
 comment|/**      * Receives the next message that arrives within the specified timeout      * interval.      *<P>      * This call blocks until a message arrives, the timeout expires, or this      * message consumer is closed. A<CODE>timeout</CODE> of zero never      * expires, and the call blocks indefinitely.      *      * @param timeout the timeout value (in milliseconds), a time out of zero      *                never expires.      * @return the next message produced for this message consumer, or null if      *         the timeout expires or this message consumer is concurrently      *         closed      */
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|receive
@@ -2551,6 +2581,8 @@ literal|null
 return|;
 block|}
 comment|/**      * Receives the next message if one is immediately available.      *      * @return the next message produced for this message consumer, or null if      *         one is not available      * @throws JMSException if the JMS provider fails to receive the next      *                 message due to some internal error.      */
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|receiveNoWait
@@ -2635,6 +2667,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Closes the message consumer.      *<P>      * Since a provider may allocate some resources on behalf of a<CODE>      * MessageConsumer</CODE>      * outside the Java virtual machine, clients should close them when they are      * not needed. Relying on garbage collection to eventually reclaim these      * resources may not be timely enough.      *<P>      * This call blocks until a<CODE>receive</CODE> or message listener in      * progress has completed. A blocked message consumer<CODE>receive</CODE>      * call returns null when this message consumer is closed.      *      * @throws JMSException if the JMS provider fails to close the consumer due      *                 to some internal error.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
@@ -3069,6 +3103,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -5213,6 +5249,18 @@ name|redeliveryDelay
 operator|=
 literal|0
 expr_stmt|;
+name|deliveredCounter
+operator|-=
+name|deliveredMessages
+operator|.
+name|size
+argument_list|()
+expr_stmt|;
+name|deliveredMessages
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -5290,6 +5338,25 @@ argument_list|(
 name|deliveredMessages
 argument_list|)
 decl_stmt|;
+name|Collections
+operator|.
+name|reverse
+argument_list|(
+name|pendingRedeliveries
+argument_list|)
+expr_stmt|;
+name|deliveredCounter
+operator|-=
+name|deliveredMessages
+operator|.
+name|size
+argument_list|()
+expr_stmt|;
+name|deliveredMessages
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 comment|// Start up the delivery again a little later.
 name|session
 operator|.
@@ -5302,6 +5369,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -5383,6 +5452,18 @@ name|md
 argument_list|)
 expr_stmt|;
 block|}
+name|deliveredCounter
+operator|-=
+name|deliveredMessages
+operator|.
+name|size
+argument_list|()
+expr_stmt|;
+name|deliveredMessages
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|redeliveryDelay
@@ -5408,6 +5489,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -5459,18 +5542,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|deliveredCounter
-operator|-=
-name|deliveredMessages
-operator|.
-name|size
-argument_list|()
-expr_stmt|;
-name|deliveredMessages
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 if|if
@@ -5646,6 +5717,8 @@ literal|null
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|dispatch
