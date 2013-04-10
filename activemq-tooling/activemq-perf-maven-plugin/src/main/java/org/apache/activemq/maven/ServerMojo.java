@@ -130,27 +130,27 @@ name|ServerMojo
 extends|extends
 name|AbstractMojo
 block|{
-comment|/**      * Location of the output directory. Defaults to target.      *      * @parameter property="${project.build.directory}"      * @required      */
+comment|/**      * Location of the output directory. Defaults to target.      *      * @parameter property="project.build.directory"      * @required      */
 specifier|private
 name|File
 name|outputDirectory
 decl_stmt|;
-comment|/**      * Location of the predefined config files.      *      * @parameter property="${configDirectory}"      *            default-value="${basedir}/src/main/resources/broker-conf"      * @required      */
+comment|/**      * Location of the predefined config files.      *      * @parameter property="configDirectory"      *            default-value="${basedir}/src/main/resources/broker-conf"      * @required      */
 specifier|private
 name|String
 name|configDirectory
 decl_stmt|;
-comment|/**      * Type of activemq configuration to use. This is also the filename used.      *      * @parameter property="${configType}" default-value="activemq"      * @required      */
+comment|/**      * Type of activemq configuration to use. This is also the filename used.      *      * @parameter property="configType" default-value="activemq"      * @required      */
 specifier|private
 name|String
 name|configType
 decl_stmt|;
-comment|/**      * Location of activemq config file other those found in resources/config.      *      * @parameter property="${configFile}"      */
+comment|/**      * Location of activemq config file other those found in resources/config.      *      * @parameter property="configFile"      */
 specifier|private
 name|File
 name|configFile
 decl_stmt|;
-comment|/**      * Broker URL.      *      * @parameter property="${url}"      */
+comment|/**      * Broker URL.      *      * @parameter property="url"      */
 specifier|private
 name|String
 name|url
@@ -305,6 +305,19 @@ name|toString
 argument_list|()
 expr_stmt|;
 block|}
+name|getLog
+argument_list|()
+operator|.
+name|info
+argument_list|(
+literal|"Starting broker with configuration in:  "
+operator|+
+name|args
+index|[
+literal|1
+index|]
+argument_list|)
+expr_stmt|;
 name|Main
 operator|.
 name|main

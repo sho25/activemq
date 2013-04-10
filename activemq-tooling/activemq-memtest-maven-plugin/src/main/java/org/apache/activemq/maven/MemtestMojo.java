@@ -68,67 +68,67 @@ name|MemtestMojo
 extends|extends
 name|AbstractMojo
 block|{
-comment|/**      * @parameter property="${url}      */
+comment|/**      * @parameter property="url"      */
 specifier|private
 name|String
 name|url
 decl_stmt|;
-comment|/**      * @parameter property="${topic}" default-value="true"      * @required      */
+comment|/**      * @parameter property="topic" default-value="true"      * @required      */
 specifier|private
 name|String
 name|topic
 decl_stmt|;
-comment|/**      * @parameter property="${connectionCheckpointSize}" default-value="-1"      * @required      */
+comment|/**      * @parameter property="connectionCheckpointSize" default-value="-1"      * @required      */
 specifier|private
 name|String
 name|connectionCheckpointSize
 decl_stmt|;
-comment|/**      * @parameter property="${durable}" default-value="false"      * @required      */
+comment|/**      * @parameter property="durable" default-value="false"      * @required      */
 specifier|private
 name|String
 name|durable
 decl_stmt|;
-comment|/**      * @parameter property="${producerCount}" default-value="1"      * @required      */
+comment|/**      * @parameter property="producerCount" default-value="1"      * @required      */
 specifier|private
 name|String
 name|producerCount
 decl_stmt|;
-comment|/**      * @parameter property="${prefetchSize}" default-value="-1"      * @required      */
+comment|/**      * @parameter property="prefetchSize" default-value="-1"      * @required      */
 specifier|private
 name|String
 name|prefetchSize
 decl_stmt|;
-comment|/**      * @parameter property="${consumerCount}" default-value="1"      * @required      */
+comment|/**      * @parameter property="consumerCount" default-value="1"      * @required      */
 specifier|private
 name|String
 name|consumerCount
 decl_stmt|;
-comment|/**      * @parameter property="${messageCount}" default-value="100000"      * @required      */
+comment|/**      * @parameter property="messageCount" default-value="100000"      * @required      */
 specifier|private
 name|String
 name|messageCount
 decl_stmt|;
-comment|/**      * @parameter property="${messageSize}" default-value="10240"      * @required      */
+comment|/**      * @parameter property="messageSize" default-value="10240"      * @required      */
 specifier|private
 name|String
 name|messageSize
 decl_stmt|;
-comment|/**      * @parameter property="${checkpointInterval}" default-value="2"      * @required      */
+comment|/**      * @parameter property="checkpointInterval" default-value="2"      * @required      */
 specifier|private
 name|String
 name|checkpointInterval
 decl_stmt|;
-comment|/**      * @parameter property="${destinationName}" default-value="FOO.BAR"      * @required      */
+comment|/**      * @parameter property="destinationName" default-value="FOO.BAR"      * @required      */
 specifier|private
 name|String
 name|destinationName
 decl_stmt|;
-comment|/**      * @parameter property="${reportName}"      *            default-value="activemq-memory-usage-report"      * @required      */
+comment|/**      * @parameter property="$reportName"      *            default-value="activemq-memory-usage-report"      * @required      */
 specifier|private
 name|String
 name|reportName
 decl_stmt|;
-comment|/**      * @parameter property="${reportDirectory}"      *            default-value="${project.build.directory}/test-memtest"      * @required      */
+comment|/**      * @parameter property="reportDirectory"      *            default-value="${project.build.directory}/test-memtest"      * @required      */
 specifier|private
 name|String
 name|reportDirectory
