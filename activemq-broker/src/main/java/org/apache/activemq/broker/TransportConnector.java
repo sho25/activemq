@@ -1865,14 +1865,12 @@ block|{
 name|String
 name|shuffle
 init|=
-name|getPeerBrokers
-argument_list|()
+name|peerBrokers
 operator|.
 name|removeFirst
 argument_list|()
 decl_stmt|;
-name|getPeerBrokers
-argument_list|()
+name|peerBrokers
 operator|.
 name|addLast
 argument_list|(
