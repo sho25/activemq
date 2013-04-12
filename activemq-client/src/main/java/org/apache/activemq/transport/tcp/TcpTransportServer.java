@@ -165,6 +165,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicInteger
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|net
@@ -567,10 +581,12 @@ operator|.
 name|MAX_VALUE
 decl_stmt|;
 specifier|protected
-name|int
+name|AtomicInteger
 name|currentTransportCount
 init|=
-literal|0
+operator|new
+name|AtomicInteger
+argument_list|()
 decl_stmt|;
 specifier|public
 name|TcpTransportServer
@@ -888,6 +904,8 @@ name|wireFormatFactory
 expr_stmt|;
 block|}
 comment|/**      * Associates a broker info with the transport server so that the transport      * can do discovery advertisements of the broker.      *      * @param brokerInfo      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerInfo
@@ -1119,6 +1137,8 @@ name|useQueueForAccept
 expr_stmt|;
 block|}
 comment|/**      * pull Sockets from the ServerSocket      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1273,6 +1293,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @return pretty print of this      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -1360,6 +1382,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStart
@@ -1379,6 +1403,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1504,6 +1530,8 @@ name|doStart
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStop
@@ -1535,6 +1563,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|InetSocketAddress
 name|getSocketAddress
@@ -1566,6 +1596,9 @@ condition|(
 name|this
 operator|.
 name|currentTransportCount
+operator|.
+name|get
+argument_list|()
 operator|>=
 name|this
 operator|.
@@ -1807,6 +1840,11 @@ argument_list|(
 name|configuredTransport
 argument_list|)
 expr_stmt|;
+name|currentTransportCount
+operator|.
+name|incrementAndGet
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 catch|catch
@@ -1959,6 +1997,8 @@ operator|=
 name|maximumConnections
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|started
@@ -1966,13 +2006,9 @@ parameter_list|(
 name|Service
 name|service
 parameter_list|)
-block|{
-name|this
-operator|.
-name|currentTransportCount
-operator|++
-expr_stmt|;
-block|}
+block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stopped
@@ -1984,7 +2020,9 @@ block|{
 name|this
 operator|.
 name|currentTransportCount
-operator|--
+operator|.
+name|decrementAndGet
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
