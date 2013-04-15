@@ -306,6 +306,7 @@ name|ActiveMQTopic
 name|topic
 decl_stmt|;
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|Throwable
@@ -319,6 +320,8 @@ name|Throwable
 argument_list|>
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|ActiveMQConnectionFactory
 name|createConnectionFactory
@@ -417,6 +420,8 @@ name|class
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -446,6 +451,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -754,6 +761,8 @@ operator|new
 name|Thread
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1265,7 +1274,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"no leak of pages, always use just 10"
+literal|"no leak of pages, always use just 11"
 argument_list|,
 name|Wait
 operator|.
@@ -1287,7 +1296,7 @@ throws|throws
 name|Exception
 block|{
 return|return
-literal|10
+literal|11
 operator|==
 name|store
 operator|.
@@ -1401,6 +1410,8 @@ decl_stmt|;
 name|Listener
 parameter_list|()
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
