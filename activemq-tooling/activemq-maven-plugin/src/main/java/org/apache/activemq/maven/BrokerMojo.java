@@ -110,7 +110,7 @@ name|BrokerMojo
 extends|extends
 name|AbstractMojo
 block|{
-comment|/**      * The maven project.      *      * @parameter property="project"      * @required      * @readonly      */
+comment|/**      * The maven project.      *      * @parameter property="project" default-value="${project}"      * @required      * @readonly      */
 specifier|protected
 name|MavenProject
 name|project
