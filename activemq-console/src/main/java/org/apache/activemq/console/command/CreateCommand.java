@@ -1617,6 +1617,20 @@ name|res
 operator|.
 name|append
 argument_list|(
+literal|"## Enable remote debugging\n"
+argument_list|)
+expr_stmt|;
+name|res
+operator|.
+name|append
+argument_list|(
+literal|"#export ACTIVEMQ_DEBUG_OPTS=\"-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005\"\n\n"
+argument_list|)
+expr_stmt|;
+name|res
+operator|.
+name|append
+argument_list|(
 literal|"## Add system properties for this instance here (if needed), e.g\n"
 argument_list|)
 expr_stmt|;
