@@ -506,6 +506,13 @@ condition|(
 name|deadLetterStrategy
 operator|!=
 literal|null
+operator|&&
+name|message
+operator|.
+name|getOriginalDestination
+argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
 comment|// Cheap copy, since we only need two fields
