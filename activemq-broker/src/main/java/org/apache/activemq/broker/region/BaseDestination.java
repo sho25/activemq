@@ -2905,6 +2905,24 @@ return|return
 name|ack
 return|;
 block|}
+specifier|public
+name|boolean
+name|isDLQ
+parameter_list|()
+block|{
+return|return
+name|getDeadLetterStrategy
+argument_list|()
+operator|.
+name|isDLQ
+argument_list|(
+name|this
+operator|.
+name|getActiveMQDestination
+argument_list|()
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

@@ -121,6 +121,14 @@ name|boolean
 name|processNonPersistent
 parameter_list|)
 function_decl|;
+specifier|public
+name|boolean
+name|isDLQ
+parameter_list|(
+name|ActiveMQDestination
+name|destination
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

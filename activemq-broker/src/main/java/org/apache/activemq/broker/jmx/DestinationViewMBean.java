@@ -773,6 +773,16 @@ name|String
 name|getOptions
 parameter_list|()
 function_decl|;
+comment|/**      * @return true if this is dead letter queue      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Dead Letter Queue"
+argument_list|)
+name|boolean
+name|isDLQ
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

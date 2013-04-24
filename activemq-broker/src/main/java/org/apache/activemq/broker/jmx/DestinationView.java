@@ -2376,6 +2376,20 @@ return|return
 name|optionsString
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isDLQ
+parameter_list|()
+block|{
+return|return
+name|destination
+operator|.
+name|isDLQ
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

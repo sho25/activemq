@@ -1470,6 +1470,20 @@ name|clearPendingMessages
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isDLQ
+parameter_list|()
+block|{
+return|return
+name|next
+operator|.
+name|isDLQ
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

@@ -352,6 +352,19 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Retries messages sent to the DLQ      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Retries messages sent to the DLQ"
+argument_list|)
+specifier|public
+name|int
+name|retryMessages
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
 comment|/**      * @return true if the message cursor has memory space available      * to page in more messages      */
 annotation|@
 name|MBeanInfo
