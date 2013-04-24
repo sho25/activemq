@@ -201,7 +201,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://localhost?broker.useJmx=false&jms.prefetchPolicy.all=0"
+literal|"vm://localhost?broker.useJmx=false"
 argument_list|)
 decl_stmt|;
 name|connection

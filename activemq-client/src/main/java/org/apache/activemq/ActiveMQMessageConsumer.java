@@ -2687,6 +2687,12 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
+name|deliveredMessages
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
 name|session
 operator|.
 name|getTransactionContext
