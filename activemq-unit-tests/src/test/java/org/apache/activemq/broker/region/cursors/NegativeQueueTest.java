@@ -506,13 +506,14 @@ name|STORE_USAGE
 init|=
 literal|1000000000
 decl_stmt|;
+comment|// ensure we exceed the cache 70%
 specifier|private
 specifier|static
 specifier|final
 name|int
 name|MESSAGE_COUNT
 init|=
-literal|1100
+literal|2100
 decl_stmt|;
 specifier|protected
 specifier|static

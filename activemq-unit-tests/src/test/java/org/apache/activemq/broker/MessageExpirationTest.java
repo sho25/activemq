@@ -817,7 +817,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Small regression. Looks like persistent messages to a queue are not being      * timedout when in a long transaction. See:      * http://issues.apache.org/activemq/browse/AMQ-1269 Commenting out the      * DeliveryMode.PERSISTENT test combination for now.      */
 specifier|public
 name|void
 name|initCombosForTestMessagesInLongTransactionExpire
@@ -831,6 +830,15 @@ operator|new
 name|Object
 index|[]
 block|{
+name|Integer
+operator|.
+name|valueOf
+argument_list|(
+name|DeliveryMode
+operator|.
+name|PERSISTENT
+argument_list|)
+block|,
 name|Integer
 operator|.
 name|valueOf

@@ -574,9 +574,9 @@ name|toString
 parameter_list|()
 block|{
 return|return
-name|super
-operator|.
-name|toString
+literal|"Local-"
+operator|+
+name|getTransactionId
 argument_list|()
 operator|+
 literal|"[synchronizations="
