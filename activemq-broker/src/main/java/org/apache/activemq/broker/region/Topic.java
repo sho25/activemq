@@ -680,6 +680,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -823,6 +825,8 @@ comment|// int messageCount = store.getMessageCount();
 comment|// destinationStatistics.getMessages().setCount(messageCount);
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|List
 argument_list|<
@@ -863,6 +867,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addSubscription
@@ -1190,6 +1196,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeSubscription
@@ -1630,6 +1638,8 @@ operator|new
 name|MessageRecoveryListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|recoverMessage
@@ -1699,6 +1709,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|recoverMessageReference
@@ -1717,6 +1729,8 @@ literal|"Should not be called."
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasSpace
@@ -1726,6 +1740,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDuplicate
@@ -1764,6 +1780,12 @@ name|context
 parameter_list|,
 name|DurableTopicSubscription
 name|sub
+parameter_list|,
+name|List
+argument_list|<
+name|MessageReference
+argument_list|>
+name|dispatched
 parameter_list|)
 throws|throws
 name|Exception
@@ -1788,6 +1810,8 @@ argument_list|(
 name|context
 argument_list|,
 name|this
+argument_list|,
+name|dispatched
 argument_list|)
 expr_stmt|;
 block|}
@@ -1828,6 +1852,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
@@ -2094,6 +2120,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2857,6 +2885,8 @@ name|size
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|acknowledge
@@ -2944,6 +2974,8 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|gc
@@ -2974,6 +3006,8 @@ else|:
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -3021,6 +3055,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -3086,6 +3122,8 @@ name|expireMessagesTask
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Message
 index|[]
@@ -3177,6 +3215,8 @@ operator|new
 name|MessageRecoveryListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|recoverMessage
@@ -3214,6 +3254,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|recoverMessageReference
@@ -3228,6 +3270,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasSpace
@@ -3242,6 +3286,8 @@ operator|<
 name|max
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDuplicate
@@ -3384,6 +3430,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|iterate
@@ -3519,6 +3567,8 @@ expr_stmt|;
 block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
+annotation|@
+name|Override
 specifier|public
 specifier|final
 name|void
@@ -3682,6 +3732,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -3711,6 +3763,8 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageExpired
@@ -3958,6 +4012,8 @@ name|result
 return|;
 block|}
 comment|/**      * force a reread of the store - after transaction recovery completion      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|clearPendingMessages
