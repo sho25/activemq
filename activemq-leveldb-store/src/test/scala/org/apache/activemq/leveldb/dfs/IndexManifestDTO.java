@@ -12,6 +12,8 @@ operator|.
 name|activemq
 operator|.
 name|leveldb
+operator|.
+name|dfs
 package|;
 end_package
 

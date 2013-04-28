@@ -14,12 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.activemq.leveldb
+package org.apache.activemq.leveldb.test
 
-import org.apache.hadoop.conf.Configuration
-import org.apache.hadoop.fs.FileSystem
-import org.apache.hadoop.hdfs.MiniDFSCluster
-import java.io.IOException
+import org.apache.activemq.store.PersistenceAdapter
+import java.io.File
+import org.apache.activemq.leveldb.dfs.DFSLevelDBStore
 
 /**
  * <p>
@@ -27,25 +26,24 @@ import java.io.IOException
  *
  * @author <a href="http://hiramchirino.com">Hiram Chirino</a>
  */
-object TestingHDFSServer {
-  private[leveldb] def start: Unit = {
-    var conf: Configuration = new Configuration
-    cluster = new MiniDFSCluster(conf, 1, true, null)
-    cluster.waitActive
-    fs = cluster.getFileSystem
+class DFSLevelDBStoreTest extends LevelDBStoreTest {
+  override protected def setUp: Unit = {
+    TestingHDFSServer.start
+    super.setUp
   }
 
-  private[leveldb] def stop: Unit = {
-    try {
-      cluster.shutdown
-    }
-    catch {
-      case e: Throwable => {
-        e.printStackTrace
-      }
-    }
+  override protected def tearDown: Unit = {
+    super.tearDown
+    TestingHDFSServer.stop
   }
 
-  private[leveldb] var cluster: MiniDFSCluster = null
-  private[leveldb] var fs: FileSystem = null
+  override protected def createPersistenceAdapter(delete: Boolean): PersistenceAdapter = {
+    var store: DFSLevelDBStore = new DFSLevelDBStore
+    store.setDirectory(new File("target/activemq-data/haleveldb"))
+    store.setDfsDirectory("localhost")
+    if (delete) {
+      store.deleteAllMessages
+    }
+    return store
+  }
 }
