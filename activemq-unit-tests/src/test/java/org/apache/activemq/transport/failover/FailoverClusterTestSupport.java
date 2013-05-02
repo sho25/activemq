@@ -556,9 +556,6 @@ block|{
 name|double
 name|count
 init|=
-operator|(
-name|double
-operator|)
 name|clientConnectionCounts
 operator|.
 name|get
@@ -571,9 +568,6 @@ name|percentage
 init|=
 name|count
 operator|/
-operator|(
-name|double
-operator|)
 name|total
 decl_stmt|;
 name|logger
@@ -636,6 +630,8 @@ control|)
 block|{
 name|assertEquals
 argument_list|(
+name|url
+argument_list|,
 name|c
 operator|.
 name|getTransportChannel
@@ -643,8 +639,6 @@ argument_list|()
 operator|.
 name|getRemoteAddress
 argument_list|()
-argument_list|,
-name|url
 argument_list|)
 expr_stmt|;
 block|}
