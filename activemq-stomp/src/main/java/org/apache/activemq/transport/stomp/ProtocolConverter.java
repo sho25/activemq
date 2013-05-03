@@ -1101,10 +1101,12 @@ class|class
 name|AckEntry
 block|{
 specifier|private
+specifier|final
 name|String
 name|messageId
 decl_stmt|;
 specifier|private
+specifier|final
 name|StompSubscription
 name|subscription
 decl_stmt|;
@@ -1182,6 +1184,11 @@ operator|.
 name|messageId
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 specifier|public
 name|StompSubscription
 name|getSubscription
@@ -1272,6 +1279,8 @@ operator|new
 name|ResponseHandler
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onResponse
@@ -2207,16 +2216,6 @@ operator|.
 name|setMessageId
 argument_list|(
 name|id
-argument_list|)
-expr_stmt|;
-name|message
-operator|.
-name|setJMSTimestamp
-argument_list|(
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -4124,6 +4123,8 @@ operator|new
 name|ResponseHandler
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onResponse
@@ -4889,6 +4890,8 @@ operator|new
 name|ResponseHandler
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onResponse
@@ -4981,6 +4984,8 @@ operator|new
 name|ResponseHandler
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onResponse
