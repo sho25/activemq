@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|InvalidSelectorException
+import|;
+end_import
+
+begin_import
+import|import
 name|junit
 operator|.
 name|framework
@@ -36,6 +46,20 @@ operator|.
 name|filter
 operator|.
 name|BooleanExpression
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|filter
+operator|.
+name|BooleanFunctionCallExpr
 import|;
 end_import
 
@@ -155,6 +179,60 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|public
+name|void
+name|testFunctionCall
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Object
+name|filter
+init|=
+name|parse
+argument_list|(
+literal|"REGEX('sales.*', group)"
+argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+literal|"expected type"
+argument_list|,
+name|filter
+operator|instanceof
+name|BooleanFunctionCallExpr
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"function exp:"
+operator|+
+name|filter
+argument_list|)
+expr_stmt|;
+comment|// non existent function
+try|try
+block|{
+name|parse
+argument_list|(
+literal|"DoesNotExist('sales.*', group)"
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"expect ex on non existent function"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InvalidSelectorException
+name|expected
+parameter_list|)
+block|{}
+block|}
 specifier|public
 name|void
 name|testParseXPath
