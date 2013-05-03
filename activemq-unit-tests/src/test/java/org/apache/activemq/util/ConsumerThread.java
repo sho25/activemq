@@ -164,6 +164,10 @@ name|info
 argument_list|(
 literal|"Received "
 operator|+
+name|received
+operator|+
+literal|": "
+operator|+
 operator|(
 operator|(
 name|TextMessage

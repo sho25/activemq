@@ -1677,14 +1677,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-name|listener
-operator|.
-name|hasSpace
-argument_list|()
-condition|)
-block|{
 name|Message
 name|msg
 init|=
@@ -1738,10 +1730,6 @@ argument_list|)
 expr_stmt|;
 return|return
 literal|true
-return|;
-block|}
-return|return
-literal|false
 return|;
 block|}
 specifier|public

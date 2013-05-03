@@ -402,6 +402,11 @@ operator|new
 name|QueueStorePrefetch
 argument_list|(
 name|queue
+argument_list|,
+name|brokerService
+operator|.
+name|getBroker
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|SystemUsage
