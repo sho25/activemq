@@ -17,6 +17,32 @@ name|failover
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|TransportConnector
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|mortbay
+operator|.
+name|log
+operator|.
+name|Log
+import|;
+end_import
+
 begin_comment
 comment|/**  * Complex cluster test that will exercise the dynamic failover capabilities of  * a network of brokers. Using a networking of 3 brokers where the 3rd broker is  * removed and then added back in it is expected in each test that the number of  * connections on the client should start with 3, then have two after the 3rd  * broker is removed and then show 3 after the 3rd broker is reintroduced.  */
 end_comment
@@ -34,7 +60,7 @@ specifier|final
 name|String
 name|BROKER_A_CLIENT_TC_ADDRESS
 init|=
-literal|"tcp://localhost:61616"
+literal|"tcp://127.0.0.1:61616"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -42,7 +68,7 @@ specifier|final
 name|String
 name|BROKER_B_CLIENT_TC_ADDRESS
 init|=
-literal|"tcp://localhost:61617"
+literal|"tcp://127.0.0.1:61617"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -50,7 +76,7 @@ specifier|final
 name|String
 name|BROKER_C_CLIENT_TC_ADDRESS
 init|=
-literal|"tcp://localhost:61618"
+literal|"tcp://127.0.0.1:61618"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -58,7 +84,7 @@ specifier|final
 name|String
 name|BROKER_A_NOB_TC_ADDRESS
 init|=
-literal|"tcp://localhost:61626"
+literal|"tcp://127.0.0.1:61626"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -66,7 +92,7 @@ specifier|final
 name|String
 name|BROKER_B_NOB_TC_ADDRESS
 init|=
-literal|"tcp://localhost:61627"
+literal|"tcp://127.0.0.1:61627"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -74,7 +100,7 @@ specifier|final
 name|String
 name|BROKER_C_NOB_TC_ADDRESS
 init|=
-literal|"tcp://localhost:61628"
+literal|"tcp://127.0.0.1:61628"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -100,7 +126,7 @@ name|BROKER_C_NAME
 init|=
 literal|"BROKERC"
 decl_stmt|;
-comment|/**      * Basic dynamic failover 3 broker test       *       * @throws Exception      */
+comment|/**      * Basic dynamic failover 3 broker test      *      * @throws Exception      */
 specifier|public
 name|void
 name|testThreeBrokerClusterSingleConnectorBasic
@@ -159,7 +185,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tests a 3 broker configuration to ensure that the backup is random and 	 * supported in a cluster. useExponentialBackOff is set to false and 	 * maxReconnectAttempts is set to 1 to move through the list quickly for 	 * this test. 	 *  	 * @throws Exception 	 */
+comment|/**      * Tests a 3 broker configuration to ensure that the backup is random and      * supported in a cluster. useExponentialBackOff is set to false and      * maxReconnectAttempts is set to 1 to move through the list quickly for      * this test.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testThreeBrokerClusterSingleConnectorBackupFailoverConfig
@@ -218,7 +244,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tests a 3 broker cluster that passes in connection params on the 	 * transport connector. Prior versions of AMQ passed the TC connection 	 * params to the client and this should not happen. The chosen param is not 	 * compatible with the client and will throw an error if used. 	 *  	 * @throws Exception 	 */
+comment|/**      * Tests a 3 broker cluster that passes in connection params on the      * transport connector. Prior versions of AMQ passed the TC connection      * params to the client and this should not happen. The chosen param is not      * compatible with the client and will throw an error if used.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testThreeBrokerClusterSingleConnectorWithParams
@@ -277,7 +303,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Tests a 3 broker cluster using a cluster filter of *      *       * @throws Exception      */
+comment|/**      * Tests a 3 broker cluster using a cluster filter of *      *      * @throws Exception      */
 specifier|public
 name|void
 name|testThreeBrokerClusterWithClusterFilter
@@ -329,7 +355,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Test to verify that a broker with multiple transport connections only the 	 * one marked to update clients is propagate 	 *  	 * @throws Exception 	 */
+comment|/**      * Test to verify that a broker with multiple transport connections only the      * one marked to update clients is propagate      *      * @throws Exception      */
 specifier|public
 name|void
 name|testThreeBrokerClusterMultipleConnectorBasic
@@ -386,7 +412,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Test to verify the reintroduction of the A Broker 	 *  	 * @throws Exception 	 */
+comment|/**      * Test to verify the reintroduction of the A Broker      *      * @throws Exception      */
 specifier|public
 name|void
 name|testOriginalBrokerRestart
@@ -497,7 +523,7 @@ name|assertClientsConnectedToThreeBrokers
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Test to ensure clients are evenly to all available brokers in the 	 * network. 	 *  	 * @throws Exception 	 */
+comment|/**      * Test to ensure clients are evenly to all available brokers in the      * network.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testThreeBrokerClusterClientDistributions
@@ -558,7 +584,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Test to verify that clients are distributed with no less than 20% of the 	 * clients on any one broker. 	 *  	 * @throws Exception 	 */
+comment|/**      * Test to verify that clients are distributed with no less than 20% of the      * clients on any one broker.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testThreeBrokerClusterDestinationFilter
@@ -610,7 +636,253 @@ literal|"Queue.TEST.FOO.>"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Runs a 3 Broker dynamic failover test:<br/> 	 *<ul> 	 *<li>asserts clients are distributed across all 3 brokers</li> 	 *<li>asserts clients are distributed across 2 brokers after removing the 3rd</li> 	 *<li>asserts clients are distributed across all 3 brokers after 	 * reintroducing the 3rd broker</li> 	 *</ul> 	 *  	 * @param multi 	 * @param tcParams 	 * @param clusterFilter 	 * @param destinationFilter 	 * @throws Exception 	 * @throws InterruptedException 	 */
+specifier|public
+name|void
+name|testFailOverWithUpdateClientsOnRemove
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// Broker A
+name|addBroker
+argument_list|(
+name|BROKER_A_NAME
+argument_list|,
+name|createBroker
+argument_list|(
+name|BROKER_A_NAME
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|TransportConnector
+name|connectorA
+init|=
+name|getBroker
+argument_list|(
+name|BROKER_A_NAME
+argument_list|)
+operator|.
+name|addConnector
+argument_list|(
+name|BROKER_A_CLIENT_TC_ADDRESS
+argument_list|)
+decl_stmt|;
+name|connectorA
+operator|.
+name|setName
+argument_list|(
+literal|"openwire"
+argument_list|)
+expr_stmt|;
+name|connectorA
+operator|.
+name|setRebalanceClusterClients
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|connectorA
+operator|.
+name|setUpdateClusterClients
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|connectorA
+operator|.
+name|setUpdateClusterClientsOnRemove
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+comment|//If set to false the test succeeds.
+name|addNetworkBridge
+argument_list|(
+name|getBroker
+argument_list|(
+name|BROKER_A_NAME
+argument_list|)
+argument_list|,
+literal|"A_2_B_Bridge"
+argument_list|,
+literal|"static://("
+operator|+
+name|BROKER_B_CLIENT_TC_ADDRESS
+operator|+
+literal|")?useExponentialBackOff=false"
+argument_list|,
+literal|false
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+name|getBroker
+argument_list|(
+name|BROKER_A_NAME
+argument_list|)
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+comment|// Broker B
+name|addBroker
+argument_list|(
+name|BROKER_B_NAME
+argument_list|,
+name|createBroker
+argument_list|(
+name|BROKER_B_NAME
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|TransportConnector
+name|connectorB
+init|=
+name|getBroker
+argument_list|(
+name|BROKER_B_NAME
+argument_list|)
+operator|.
+name|addConnector
+argument_list|(
+name|BROKER_B_CLIENT_TC_ADDRESS
+argument_list|)
+decl_stmt|;
+name|connectorB
+operator|.
+name|setName
+argument_list|(
+literal|"openwire"
+argument_list|)
+expr_stmt|;
+name|connectorB
+operator|.
+name|setRebalanceClusterClients
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|connectorB
+operator|.
+name|setUpdateClusterClients
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|connectorB
+operator|.
+name|setUpdateClusterClientsOnRemove
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+comment|//If set to false the test succeeds.
+name|addNetworkBridge
+argument_list|(
+name|getBroker
+argument_list|(
+name|BROKER_B_NAME
+argument_list|)
+argument_list|,
+literal|"B_2_A_Bridge"
+argument_list|,
+literal|"static://("
+operator|+
+name|BROKER_A_CLIENT_TC_ADDRESS
+operator|+
+literal|")?useExponentialBackOff=false"
+argument_list|,
+literal|false
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+name|getBroker
+argument_list|(
+name|BROKER_B_NAME
+argument_list|)
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+name|getBroker
+argument_list|(
+name|BROKER_B_NAME
+argument_list|)
+operator|.
+name|waitUntilStarted
+argument_list|()
+expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
+comment|// create client connecting only to A. It should receive broker B address whet it connects to A.
+name|setClientUrl
+argument_list|(
+literal|"failover:("
+operator|+
+name|BROKER_A_CLIENT_TC_ADDRESS
+operator|+
+literal|")?useExponentialBackOff=true"
+argument_list|)
+expr_stmt|;
+name|createClients
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|5000
+argument_list|)
+expr_stmt|;
+comment|// We stop broker A.
+name|Log
+operator|.
+name|info
+argument_list|(
+literal|"Stopping broker A whose address is: {}"
+argument_list|,
+name|BROKER_A_CLIENT_TC_ADDRESS
+argument_list|)
+expr_stmt|;
+name|getBroker
+argument_list|(
+name|BROKER_A_NAME
+argument_list|)
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
+name|getBroker
+argument_list|(
+name|BROKER_A_NAME
+argument_list|)
+operator|.
+name|waitUntilStopped
+argument_list|()
+expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|5000
+argument_list|)
+expr_stmt|;
+comment|// Client should failover to B.
+name|assertAllConnectedTo
+argument_list|(
+name|BROKER_B_CLIENT_TC_ADDRESS
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Runs a 3 Broker dynamic failover test:<br/>      *<ul>      *<li>asserts clients are distributed across all 3 brokers</li>      *<li>asserts clients are distributed across 2 brokers after removing the 3rd</li>      *<li>asserts clients are distributed across all 3 brokers after      * reintroducing the 3rd broker</li>      *</ul>      *      * @param multi      * @param tcParams      * @param clusterFilter      * @param destinationFilter      * @throws Exception      * @throws InterruptedException      */
 specifier|private
 name|void
 name|runTests

@@ -1644,6 +1644,24 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Received ConnectionControl: {}"
+argument_list|,
+name|control
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|reconnectStr
 operator|!=
 literal|null

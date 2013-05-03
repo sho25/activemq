@@ -12297,6 +12297,20 @@ operator|.
 name|slave
 return|;
 block|}
+specifier|public
+name|boolean
+name|isStopping
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|stopping
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
