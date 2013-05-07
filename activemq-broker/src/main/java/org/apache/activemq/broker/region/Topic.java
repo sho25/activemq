@@ -3795,14 +3795,6 @@ comment|// misleading metrics.
 comment|// destinationStatistics.getMessages().decrement();
 name|destinationStatistics
 operator|.
-name|getEnqueues
-argument_list|()
-operator|.
-name|decrement
-argument_list|()
-expr_stmt|;
-name|destinationStatistics
-operator|.
 name|getExpired
 argument_list|()
 operator|.
