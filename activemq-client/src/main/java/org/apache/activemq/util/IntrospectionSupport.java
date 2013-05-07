@@ -486,7 +486,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|Exception
 name|ignore
 parameter_list|)
 block|{                 }
@@ -1037,10 +1037,28 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
-name|ignore
+name|Exception
+name|e
 parameter_list|)
 block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Could not set property %s on %s"
+argument_list|,
+name|name
+argument_list|,
+name|target
+argument_list|)
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -2051,7 +2069,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|Exception
 name|e
 parameter_list|)
 block|{                     }
@@ -2071,7 +2089,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|Exception
 name|e
 parameter_list|)
 block|{
