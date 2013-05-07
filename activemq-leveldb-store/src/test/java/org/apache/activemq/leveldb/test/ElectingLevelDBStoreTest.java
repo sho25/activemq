@@ -1223,7 +1223,7 @@ name|store
 operator|.
 name|setLogSize
 argument_list|(
-literal|1023
+literal|1024
 operator|*
 literal|200
 argument_list|)
