@@ -613,7 +613,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|sendToDeadLetterQueue
 parameter_list|(
 name|ConnectionContext
@@ -635,6 +635,7 @@ argument_list|()
 condition|)
 block|{
 comment|// there are two uses of  sendToDeadLetterQueue, we are only interested in valid messages
+return|return
 name|super
 operator|.
 name|sendToDeadLetterQueue
@@ -645,7 +646,7 @@ name|messageReference
 argument_list|,
 name|subscription
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 else|else
 block|{
@@ -757,6 +758,7 @@ name|isSendToDlqIfMaxRetriesExceeded
 argument_list|()
 condition|)
 block|{
+return|return
 name|super
 operator|.
 name|sendToDeadLetterQueue
@@ -767,7 +769,7 @@ name|messageReference
 argument_list|,
 name|subscription
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 else|else
 block|{
@@ -796,6 +798,7 @@ name|isFallbackToDeadLetter
 argument_list|()
 condition|)
 block|{
+return|return
 name|super
 operator|.
 name|sendToDeadLetterQueue
@@ -806,7 +809,7 @@ name|messageReference
 argument_list|,
 name|subscription
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 else|else
 block|{
@@ -830,6 +833,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 catch|catch
 parameter_list|(

@@ -400,7 +400,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Like a BrokerFilter but it allows you to switch the getNext().broker. This  * has more overhead than a BrokerFilter since access to the getNext().broker  * has to synchronized since it is mutable  *   *   */
+comment|/**  * Like a BrokerFilter but it allows you to switch the getNext().broker. This  * has more overhead than a BrokerFilter since access to the getNext().broker  * has to synchronized since it is mutable  *  *  */
 end_comment
 
 begin_class
@@ -441,6 +441,8 @@ name|next
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Broker
 name|getAdaptor
@@ -505,6 +507,8 @@ name|next
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Map
 argument_list|<
@@ -523,6 +527,8 @@ name|getDestinationMap
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Set
 name|getDestinations
@@ -541,6 +547,8 @@ name|destination
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|acknowledge
@@ -565,6 +573,8 @@ name|ack
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addConnection
@@ -589,6 +599,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Subscription
 name|addConsumer
@@ -614,6 +626,8 @@ name|info
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addProducer
@@ -638,6 +652,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commitTransaction
@@ -667,6 +683,8 @@ name|onePhase
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeSubscription
@@ -691,6 +709,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TransactionId
 index|[]
@@ -712,6 +732,8 @@ name|context
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|prepareTransaction
@@ -737,6 +759,8 @@ name|xid
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeConnection
@@ -766,6 +790,8 @@ name|error
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeConsumer
@@ -790,6 +816,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeProducer
@@ -814,6 +842,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollbackTransaction
@@ -838,6 +868,8 @@ name|xid
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
@@ -862,6 +894,8 @@ name|messageSend
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beginTransaction
@@ -886,6 +920,8 @@ name|xid
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|forgetTransaction
@@ -910,6 +946,8 @@ name|transactionId
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Connection
 index|[]
@@ -926,6 +964,8 @@ name|getClients
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Destination
 name|addDestination
@@ -956,6 +996,8 @@ name|createIfTemporary
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeDestination
@@ -985,6 +1027,8 @@ name|timeout
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ActiveMQDestination
 index|[]
@@ -1001,6 +1045,8 @@ name|getDestinations
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -1015,6 +1061,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -1029,6 +1077,8 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addSession
@@ -1053,6 +1103,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeSession
@@ -1077,6 +1129,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|BrokerId
 name|getBrokerId
@@ -1090,6 +1144,8 @@ name|getBrokerId
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getBrokerName
@@ -1103,6 +1159,8 @@ name|getBrokerName
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|gc
@@ -1115,6 +1173,8 @@ name|gc
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addBroker
@@ -1137,6 +1197,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeBroker
@@ -1159,6 +1221,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|BrokerInfo
 index|[]
@@ -1173,6 +1237,8 @@ name|getPeerBrokerInfos
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|preProcessDispatch
@@ -1190,6 +1256,8 @@ name|messageDispatch
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|postProcessDispatch
@@ -1207,6 +1275,8 @@ name|messageDispatch
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|processDispatchNotification
@@ -1226,6 +1296,8 @@ name|messageDispatchNotification
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isStopped
@@ -1239,6 +1311,8 @@ name|isStopped
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -1255,6 +1329,8 @@ name|getDurableDestinations
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addDestinationInfo
@@ -1279,6 +1355,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeDestinationInfo
@@ -1303,6 +1381,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isFaultTolerantConfiguration
@@ -1316,6 +1396,8 @@ name|isFaultTolerantConfiguration
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ConnectionContext
 name|getAdminConnectionContext
@@ -1329,6 +1411,8 @@ name|getAdminConnectionContext
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setAdminConnectionContext
@@ -1346,6 +1430,8 @@ name|adminConnectionContext
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|messagePull
@@ -1371,6 +1457,8 @@ name|pull
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|PListStore
 name|getTempDataStore
@@ -1384,6 +1472,8 @@ name|getTempDataStore
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|URI
 name|getVmConnectorURI
@@ -1397,6 +1487,8 @@ name|getVmConnectorURI
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|brokerServiceStarted
@@ -1409,6 +1501,8 @@ name|brokerServiceStarted
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|BrokerService
 name|getBrokerService
@@ -1422,6 +1516,8 @@ name|getBrokerService
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isExpired
@@ -1440,6 +1536,8 @@ name|messageReference
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageExpired
@@ -1467,8 +1565,10 @@ name|subscription
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
-name|void
+name|boolean
 name|sendToDeadLetterQueue
 parameter_list|(
 name|ConnectionContext
@@ -1481,6 +1581,7 @@ name|Subscription
 name|subscription
 parameter_list|)
 block|{
+return|return
 name|getNext
 argument_list|()
 operator|.
@@ -1492,8 +1593,10 @@ name|messageReference
 argument_list|,
 name|subscription
 argument_list|)
-expr_stmt|;
+return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Broker
 name|getRoot
@@ -1507,6 +1610,8 @@ name|getRoot
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getBrokerSequenceId
@@ -1520,6 +1625,8 @@ name|getBrokerSequenceId
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|fastProducer
@@ -1547,6 +1654,8 @@ name|destination
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|isFull
@@ -1574,6 +1683,8 @@ name|usage
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageConsumed
@@ -1596,6 +1707,8 @@ name|messageReference
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageDelivered
@@ -1618,6 +1731,8 @@ name|messageReference
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageDiscarded
@@ -1645,6 +1760,8 @@ name|messageReference
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|slowConsumer
@@ -1672,6 +1789,8 @@ name|subs
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|nowMasterBroker
@@ -1684,6 +1803,8 @@ name|nowMasterBroker
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|processConsumerControl
@@ -1706,6 +1827,8 @@ name|control
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Scheduler
 name|getScheduler
@@ -1719,6 +1842,8 @@ name|getScheduler
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ThreadPoolExecutor
 name|getExecutor
@@ -1732,6 +1857,8 @@ name|getExecutor
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|networkBridgeStarted
@@ -1759,6 +1886,8 @@ name|remoteIp
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|networkBridgeStopped

@@ -2905,7 +2905,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|sendToDeadLetterQueue
 parameter_list|(
 name|ConnectionContext
@@ -2918,6 +2918,9 @@ name|Subscription
 name|subscription
 parameter_list|)
 block|{
+name|boolean
+name|wasDLQd
+init|=
 name|super
 operator|.
 name|sendToDeadLetterQueue
@@ -2928,7 +2931,12 @@ name|messageReference
 argument_list|,
 name|subscription
 argument_list|)
-expr_stmt|;
+decl_stmt|;
+if|if
+condition|(
+name|wasDLQd
+condition|)
+block|{
 try|try
 block|{
 if|if
@@ -2997,6 +3005,10 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+return|return
+name|wasDLQd
+return|;
 block|}
 annotation|@
 name|Override

@@ -396,7 +396,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Dumb implementation - used to be overriden by listeners  *   *   */
+comment|/**  * Dumb implementation - used to be overriden by listeners  *  *  */
 end_comment
 
 begin_class
@@ -406,6 +406,8 @@ name|EmptyBroker
 implements|implements
 name|Broker
 block|{
+annotation|@
+name|Override
 specifier|public
 name|BrokerId
 name|getBrokerId
@@ -415,6 +417,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getBrokerName
@@ -424,6 +428,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Broker
 name|getAdaptor
@@ -451,6 +457,8 @@ literal|null
 return|;
 block|}
 annotation|@
+name|Override
+annotation|@
 name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
@@ -471,6 +479,8 @@ operator|.
 name|EMPTY_MAP
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Set
 name|getDestinations
@@ -485,6 +495,8 @@ operator|.
 name|EMPTY_SET
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addConnection
@@ -498,6 +510,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeConnection
@@ -514,6 +528,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addSession
@@ -527,6 +543,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeSession
@@ -540,6 +558,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addProducer
@@ -553,6 +573,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeProducer
@@ -566,6 +588,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|Connection
 index|[]
@@ -578,6 +602,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ActiveMQDestination
 index|[]
@@ -590,6 +616,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TransactionId
 index|[]
@@ -605,6 +633,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beginTransaction
@@ -618,6 +648,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|int
 name|prepareTransaction
@@ -635,6 +667,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollbackTransaction
@@ -648,6 +682,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commitTransaction
@@ -664,6 +700,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|forgetTransaction
@@ -677,6 +715,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|Destination
 name|addDestination
@@ -697,6 +737,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeDestination
@@ -713,6 +755,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|Subscription
 name|addConsumer
@@ -730,6 +774,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeConsumer
@@ -743,6 +789,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeSubscription
@@ -756,6 +804,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
@@ -769,6 +819,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|acknowledge
@@ -782,11 +834,15 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|gc
 parameter_list|()
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -794,6 +850,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -801,6 +859,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addBroker
@@ -812,6 +872,8 @@ name|BrokerInfo
 name|info
 parameter_list|)
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeBroker
@@ -823,6 +885,8 @@ name|BrokerInfo
 name|info
 parameter_list|)
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|BrokerInfo
 index|[]
@@ -833,6 +897,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|preProcessDispatch
@@ -841,6 +907,8 @@ name|MessageDispatch
 name|messageDispatch
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|postProcessDispatch
@@ -849,6 +917,8 @@ name|MessageDispatch
 name|messageDispatch
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|processDispatchNotification
@@ -859,6 +929,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{      }
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isStopped
@@ -868,6 +940,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -880,6 +954,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addDestinationInfo
@@ -893,6 +969,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeDestinationInfo
@@ -906,6 +984,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isFaultTolerantConfiguration
@@ -915,6 +995,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ConnectionContext
 name|getAdminConnectionContext
@@ -924,6 +1006,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setAdminConnectionContext
@@ -932,6 +1016,8 @@ name|ConnectionContext
 name|adminConnectionContext
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|messagePull
@@ -949,6 +1035,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|PListStore
 name|getTempDataStore
@@ -958,6 +1046,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|URI
 name|getVmConnectorURI
@@ -967,11 +1057,15 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|brokerServiceStarted
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|BrokerService
 name|getBrokerService
@@ -981,6 +1075,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isExpired
@@ -993,6 +1089,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageExpired
@@ -1007,8 +1105,10 @@ name|Subscription
 name|subscription
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
-name|void
+name|boolean
 name|sendToDeadLetterQueue
 parameter_list|(
 name|ConnectionContext
@@ -1020,7 +1120,13 @@ parameter_list|,
 name|Subscription
 name|subscription
 parameter_list|)
-block|{     }
+block|{
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
 specifier|public
 name|Broker
 name|getRoot
@@ -1030,6 +1136,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getBrokerSequenceId
@@ -1040,6 +1148,8 @@ operator|-
 literal|1l
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|fastProducer
@@ -1054,6 +1164,8 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|isFull
@@ -1068,6 +1180,8 @@ name|Usage
 name|usage
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageConsumed
@@ -1079,6 +1193,8 @@ name|MessageReference
 name|messageReference
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageDelivered
@@ -1090,6 +1206,8 @@ name|MessageReference
 name|messageReference
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageDiscarded
@@ -1104,6 +1222,8 @@ name|MessageReference
 name|messageReference
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|slowConsumer
@@ -1118,11 +1238,15 @@ name|Subscription
 name|subs
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|nowMasterBroker
 parameter_list|()
-block|{             }
+block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|networkBridgeStarted
@@ -1137,6 +1261,8 @@ name|String
 name|remoteIp
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|networkBridgeStopped
@@ -1145,6 +1271,8 @@ name|BrokerInfo
 name|brokerInfo
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|processConsumerControl
@@ -1155,7 +1283,9 @@ parameter_list|,
 name|ConsumerControl
 name|control
 parameter_list|)
-block|{          }
+block|{     }
+annotation|@
+name|Override
 specifier|public
 name|Scheduler
 name|getScheduler
@@ -1165,6 +1295,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ThreadPoolExecutor
 name|getExecutor

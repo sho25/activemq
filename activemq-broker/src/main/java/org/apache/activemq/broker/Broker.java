@@ -292,7 +292,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The Message Broker which routes messages, maintains subscriptions and  * connections, acknowledges messages and handles transactions.  *   *   */
+comment|/**  * The Message Broker which routes messages, maintains subscriptions and  * connections, acknowledges messages and handles transactions.  *  *  */
 end_comment
 
 begin_interface
@@ -304,7 +304,7 @@ name|Region
 extends|,
 name|Service
 block|{
-comment|/**      * Get a Broker from the Broker Stack that is a particular class      *       * @param type      * @return      */
+comment|/**      * Get a Broker from the Broker Stack that is a particular class      *      * @param type      * @return      */
 name|Broker
 name|getAdaptor
 parameter_list|(
@@ -333,7 +333,7 @@ name|BrokerInfo
 name|info
 parameter_list|)
 function_decl|;
-comment|/**      * Remove a BrokerInfo      *       * @param connection      * @param info      */
+comment|/**      * Remove a BrokerInfo      *      * @param connection      * @param info      */
 name|void
 name|removeBroker
 parameter_list|(
@@ -344,7 +344,7 @@ name|BrokerInfo
 name|info
 parameter_list|)
 function_decl|;
-comment|/**      * A client is establishing a connection with the broker.      *       * @throws Exception TODO      */
+comment|/**      * A client is establishing a connection with the broker.      *      * @throws Exception TODO      */
 name|void
 name|addConnection
 parameter_list|(
@@ -357,7 +357,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * A client is disconnecting from the broker.      *       * @param context the environment the operation is being executed under.      * @param info      * @param error null if the client requested the disconnect or the error      *                that caused the client to disconnect.      * @throws Exception TODO      */
+comment|/**      * A client is disconnecting from the broker.      *      * @param context the environment the operation is being executed under.      * @param info      * @param error null if the client requested the disconnect or the error      *                that caused the client to disconnect.      * @throws Exception TODO      */
 name|void
 name|removeConnection
 parameter_list|(
@@ -373,7 +373,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Adds a session.      *       * @param context      * @param info      * @throws Exception TODO      */
+comment|/**      * Adds a session.      *      * @param context      * @param info      * @throws Exception TODO      */
 name|void
 name|addSession
 parameter_list|(
@@ -386,7 +386,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Removes a session.      *       * @param context      * @param info      * @throws Exception TODO      */
+comment|/**      * Removes a session.      *      * @param context      * @param info      * @throws Exception TODO      */
 name|void
 name|removeSession
 parameter_list|(
@@ -399,7 +399,9 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Adds a producer.      *       * @param context the enviorment the operation is being executed under.      * @throws Exception TODO      */
+comment|/**      * Adds a producer.      *      * @param context the enviorment the operation is being executed under.      * @throws Exception TODO      */
+annotation|@
+name|Override
 name|void
 name|addProducer
 parameter_list|(
@@ -412,7 +414,9 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Removes a producer.      *       * @param context the enviorment the operation is being executed under.      * @throws Exception TODO      */
+comment|/**      * Removes a producer.      *      * @param context the enviorment the operation is being executed under.      * @throws Exception TODO      */
+annotation|@
+name|Override
 name|void
 name|removeProducer
 parameter_list|(
@@ -441,7 +445,7 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Gets a list of all the prepared xa transactions.      *       * @param context transaction ids      * @return      * @throws Exception TODO      */
+comment|/**      * Gets a list of all the prepared xa transactions.      *      * @param context transaction ids      * @return      * @throws Exception TODO      */
 name|TransactionId
 index|[]
 name|getPreparedTransactions
@@ -452,7 +456,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Starts a transaction.      *       * @param context      * @param xid      * @throws Exception TODO      */
+comment|/**      * Starts a transaction.      *      * @param context      * @param xid      * @throws Exception TODO      */
 name|void
 name|beginTransaction
 parameter_list|(
@@ -465,7 +469,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Prepares a transaction. Only valid for xa transactions.      *       * @param context      * @param xid      * @return id      * @throws Exception TODO      */
+comment|/**      * Prepares a transaction. Only valid for xa transactions.      *      * @param context      * @param xid      * @return id      * @throws Exception TODO      */
 name|int
 name|prepareTransaction
 parameter_list|(
@@ -478,7 +482,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Rollsback a transaction.      *       * @param context      * @param xid      * @throws Exception TODO      */
+comment|/**      * Rollsback a transaction.      *      * @param context      * @param xid      * @throws Exception TODO      */
 name|void
 name|rollbackTransaction
 parameter_list|(
@@ -491,7 +495,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Commits a transaction.      *       * @param context      * @param xid      * @param onePhase      * @throws Exception TODO      */
+comment|/**      * Commits a transaction.      *      * @param context      * @param xid      * @param onePhase      * @throws Exception TODO      */
 name|void
 name|commitTransaction
 parameter_list|(
@@ -507,7 +511,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Forgets a transaction.      *       * @param context      * @param transactionId      * @throws Exception      */
+comment|/**      * Forgets a transaction.      *      * @param context      * @param transactionId      * @throws Exception      */
 name|void
 name|forgetTransaction
 parameter_list|(
@@ -520,13 +524,13 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Get the BrokerInfo's of any connected Brokers      *       * @return array of peer BrokerInfos      */
+comment|/**      * Get the BrokerInfo's of any connected Brokers      *      * @return array of peer BrokerInfos      */
 name|BrokerInfo
 index|[]
 name|getPeerBrokerInfos
 parameter_list|()
 function_decl|;
-comment|/**      * Notify the Broker that a dispatch is going to happen      *       * @param messageDispatch      */
+comment|/**      * Notify the Broker that a dispatch is going to happen      *      * @param messageDispatch      */
 name|void
 name|preProcessDispatch
 parameter_list|(
@@ -534,7 +538,7 @@ name|MessageDispatch
 name|messageDispatch
 parameter_list|)
 function_decl|;
-comment|/**      * Notify the Broker that a dispatch has happened      *       * @param messageDispatch      */
+comment|/**      * Notify the Broker that a dispatch has happened      *      * @param messageDispatch      */
 name|void
 name|postProcessDispatch
 parameter_list|(
@@ -555,7 +559,7 @@ argument_list|>
 name|getDurableDestinations
 parameter_list|()
 function_decl|;
-comment|/**      * Add and process a DestinationInfo object      *       * @param context      * @param info      * @throws Exception      */
+comment|/**      * Add and process a DestinationInfo object      *      * @param context      * @param info      * @throws Exception      */
 name|void
 name|addDestinationInfo
 parameter_list|(
@@ -568,7 +572,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Remove and process a DestinationInfo object      *       * @param context      * @param info      * @throws Exception      */
+comment|/**      * Remove and process a DestinationInfo object      *      * @param context      * @param info      * @throws Exception      */
 name|void
 name|removeDestinationInfo
 parameter_list|(
@@ -591,7 +595,7 @@ name|ConnectionContext
 name|getAdminConnectionContext
 parameter_list|()
 function_decl|;
-comment|/**      * Sets the default administration connection context used when configuring      * the broker on startup or via JMX      *       * @param adminConnectionContext      */
+comment|/**      * Sets the default administration connection context used when configuring      * the broker on startup or via JMX      *      * @param adminConnectionContext      */
 name|void
 name|setAdminConnectionContext
 parameter_list|(
@@ -619,12 +623,12 @@ name|BrokerService
 name|getBrokerService
 parameter_list|()
 function_decl|;
-comment|/**      * Ensure we get the Broker at the top of the Stack      *       * @return the broker at the top of the Stack      */
+comment|/**      * Ensure we get the Broker at the top of the Stack      *      * @return the broker at the top of the Stack      */
 name|Broker
 name|getRoot
 parameter_list|()
 function_decl|;
-comment|/**      * Determine if a message has expired -allows default behaviour to be      * overriden - as the timestamp set by the producer can be out of sync with      * the broker      *       * @param messageReference      * @return true if the message is expired      */
+comment|/**      * Determine if a message has expired -allows default behaviour to be      * overriden - as the timestamp set by the producer can be out of sync with      * the broker      *      * @param messageReference      * @return true if the message is expired      */
 name|boolean
 name|isExpired
 parameter_list|(
@@ -646,8 +650,8 @@ name|Subscription
 name|subscription
 parameter_list|)
 function_decl|;
-comment|/**      * A message needs to go the a DLQ      *       * @param context      * @param messageReference      * @param subscription, may be null      */
-name|void
+comment|/**      * A message needs to go the a DLQ      *      * @param context      * @param messageReference      * @param subscription, may be null      *      * @return true if Message was placed in a DLQ false if discarded.      */
+name|boolean
 name|sendToDeadLetterQueue
 parameter_list|(
 name|ConnectionContext
@@ -687,7 +691,7 @@ name|MessageReference
 name|messageReference
 parameter_list|)
 function_decl|;
-comment|/**      * Called when a message is discarded - e.g. running low on memory      * This will happen only if the policy is enabled - e.g. non durable topics      * @param context      * @param sub       * @param messageReference      */
+comment|/**      * Called when a message is discarded - e.g. running low on memory      * This will happen only if the policy is enabled - e.g. non durable topics      * @param context      * @param sub      * @param messageReference      */
 name|void
 name|messageDiscarded
 parameter_list|(
@@ -701,7 +705,7 @@ name|MessageReference
 name|messageReference
 parameter_list|)
 function_decl|;
-comment|/**      * Called when there is a slow consumer      * @param context      * @param destination       * @param subs      */
+comment|/**      * Called when there is a slow consumer      * @param context      * @param destination      * @param subs      */
 name|void
 name|slowConsumer
 parameter_list|(
@@ -729,7 +733,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 function_decl|;
-comment|/**      * Called when a Usage reaches a limit      * @param context      * @param destination       * @param usage      */
+comment|/**      * Called when a Usage reaches a limit      * @param context      * @param destination      * @param usage      */
 name|void
 name|isFull
 parameter_list|(

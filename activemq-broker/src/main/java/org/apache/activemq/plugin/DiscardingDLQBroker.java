@@ -150,7 +150,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Filip Hanik  * @version 1.0  */
+comment|/**  */
 end_comment
 
 begin_class
@@ -225,7 +225,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|sendToDeadLetterQueue
 parameter_list|(
 name|ConnectionContext
@@ -319,7 +319,7 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|//do nothing, no need to forward it
+comment|// do nothing, no need to forward it
 name|skipMessage
 argument_list|(
 literal|"NULL DESTINATION"
@@ -334,7 +334,7 @@ condition|(
 name|dropAll
 condition|)
 block|{
-comment|//do nothing
+comment|// do nothing
 name|skipMessage
 argument_list|(
 literal|"dropAll"
@@ -359,7 +359,7 @@ name|isTopic
 argument_list|()
 condition|)
 block|{
-comment|//do nothing
+comment|// do nothing
 name|skipMessage
 argument_list|(
 literal|"dropTemporaryTopics"
@@ -384,7 +384,7 @@ name|isQueue
 argument_list|()
 condition|)
 block|{
-comment|//do nothing
+comment|// do nothing
 name|skipMessage
 argument_list|(
 literal|"dropTemporaryQueues"
@@ -406,7 +406,7 @@ name|destName
 argument_list|)
 condition|)
 block|{
-comment|//do nothing
+comment|// do nothing
 name|skipMessage
 argument_list|(
 literal|"dropOnly"
@@ -421,6 +421,7 @@ name|dropped
 operator|=
 literal|false
 expr_stmt|;
+return|return
 name|next
 operator|.
 name|sendToDeadLetterQueue
@@ -431,7 +432,7 @@ name|msgRef
 argument_list|,
 name|subscription
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 if|if
 condition|(
@@ -469,6 +470,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+return|return
+literal|false
+return|;
 block|}
 specifier|public
 name|boolean

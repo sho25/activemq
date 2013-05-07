@@ -3885,7 +3885,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|sendToDeadLetterQueue
 parameter_list|(
 name|ConnectionContext
@@ -4054,6 +4054,9 @@ argument_list|,
 name|deadLetterDestination
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 block|}
 else|else
@@ -4108,6 +4111,9 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 annotation|@
 name|Override

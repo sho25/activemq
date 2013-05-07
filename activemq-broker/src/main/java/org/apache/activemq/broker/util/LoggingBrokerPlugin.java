@@ -2626,7 +2626,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|sendToDeadLetterQueue
 parameter_list|(
 name|ConnectionContext
@@ -2673,6 +2673,7 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+return|return
 name|super
 operator|.
 name|sendToDeadLetterQueue
@@ -2683,7 +2684,7 @@ name|messageReference
 argument_list|,
 name|subscription
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 annotation|@
 name|Override
