@@ -393,9 +393,9 @@ literal|"headers"
 argument_list|)
 name|Map
 argument_list|<
-name|?
+name|String
 argument_list|,
-name|?
+name|String
 argument_list|>
 name|headers
 parameter_list|,
