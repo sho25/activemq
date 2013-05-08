@@ -361,6 +361,18 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Restart the broker and all it's components.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Restart the broker and all its components."
+argument_list|)
+name|void
+name|restart
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
 annotation|@
 name|MBeanInfo
 argument_list|(
