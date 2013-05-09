@@ -311,6 +311,15 @@ name|String
 name|getIndexStats
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Compacts disk usage"
+argument_list|)
+name|void
+name|compact
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
