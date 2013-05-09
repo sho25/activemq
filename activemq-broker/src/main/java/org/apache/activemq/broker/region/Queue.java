@@ -1264,6 +1264,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1284,6 +1286,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1355,6 +1359,8 @@ operator|+
 name|delay
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getDelay
@@ -1386,6 +1392,8 @@ name|MILLISECONDS
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|compareTo
@@ -1636,6 +1644,8 @@ name|Subscription
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|int
 name|compare
@@ -1782,6 +1792,8 @@ name|destination
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|List
 argument_list|<
@@ -1911,6 +1923,8 @@ operator|=
 name|recoveredAccumulator
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|recoverMessage
@@ -2078,6 +2092,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|recoverMessageReference
@@ -2096,6 +2112,8 @@ literal|"Should not be called."
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasSpace
@@ -2105,6 +2123,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDuplicate
@@ -2573,6 +2593,8 @@ name|BrowserDispatch
 argument_list|>
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addSubscription
@@ -2904,6 +2926,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeSubscription
@@ -3447,6 +3471,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
@@ -3795,6 +3821,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -5160,11 +5188,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|gc
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|acknowledge
@@ -5340,6 +5372,8 @@ operator|+
 name|messageGroupOwners
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -5419,6 +5453,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -5810,6 +5846,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Message
 index|[]
@@ -6601,8 +6639,11 @@ block|{
 name|doPageIn
 argument_list|(
 literal|true
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
+comment|// signal no expiry processing needed.
 name|pagedInMessagesLock
 operator|.
 name|readLock
@@ -6757,6 +6798,8 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|clearPendingMessages
@@ -7934,6 +7977,8 @@ name|restoredCounter
 return|;
 block|}
 comment|/**      * @return true if we would like to iterate again      * @see org.apache.activemq.thread.Task#iterate()      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|iterate
@@ -8594,6 +8639,8 @@ operator|new
 name|MessageReferenceFilter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|evaluate
@@ -8701,6 +8748,8 @@ operator|new
 name|MessageReferenceFilter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|evaluate
@@ -9135,6 +9184,8 @@ name|reference
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageExpired
@@ -9403,6 +9454,8 @@ name|wakeup
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|wakeup
@@ -9479,12 +9532,35 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|doPageIn
+argument_list|(
+name|force
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|doPageIn
+parameter_list|(
+name|boolean
+name|force
+parameter_list|,
+name|boolean
+name|processExpired
+parameter_list|)
+throws|throws
+name|Exception
+block|{
 name|PendingList
 name|newlyPaged
 init|=
 name|doPageInForDispatch
 argument_list|(
 name|force
+argument_list|,
+name|processExpired
 argument_list|)
 decl_stmt|;
 name|pagedInPendingDispatchLock
@@ -9563,6 +9639,9 @@ name|doPageInForDispatch
 parameter_list|(
 name|boolean
 name|force
+parameter_list|,
+name|boolean
+name|processExpired
 parameter_list|)
 throws|throws
 name|Exception
@@ -9816,6 +9895,8 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|processExpired
+operator|&&
 name|ref
 operator|.
 name|isExpired
@@ -10289,9 +10370,6 @@ block|{
 name|MessageReference
 name|node
 init|=
-operator|(
-name|MessageReference
-operator|)
 name|iterator
 operator|.
 name|next
@@ -10458,9 +10536,6 @@ name|rc
 operator|.
 name|addMessageLast
 argument_list|(
-operator|(
-name|QueueMessageReference
-operator|)
 name|node
 argument_list|)
 expr_stmt|;
@@ -10842,6 +10917,8 @@ argument_list|(
 name|doPageInForDispatch
 argument_list|(
 name|force
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -11423,6 +11500,8 @@ return|return
 name|sub
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onUsageChanged
