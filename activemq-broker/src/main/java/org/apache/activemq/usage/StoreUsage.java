@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to keep track of how much of something is being used so that a  * productive working set usage can be controlled. Main use case is manage  * memory usage.  *   * @org.apache.xbean.XBean  *   */
+comment|/**  * Used to keep track of how much of something is being used so that a  * productive working set usage can be controlled. Main use case is manage  * memory usage.  *  * @org.apache.xbean.XBean  *  */
 end_comment
 
 begin_class
@@ -115,6 +115,8 @@ operator|.
 name|store
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|long
 name|retrieveUsage
@@ -170,10 +172,15 @@ name|int
 name|getPercentUsage
 parameter_list|()
 block|{
-synchronized|synchronized
-init|(
-name|usageMutex
-init|)
+name|usageLock
+operator|.
+name|writeLock
+argument_list|()
+operator|.
+name|lock
+argument_list|()
+expr_stmt|;
+try|try
 block|{
 name|percentUsage
 operator|=
@@ -186,6 +193,17 @@ operator|.
 name|getPercentUsage
 argument_list|()
 return|;
+block|}
+finally|finally
+block|{
+name|usageLock
+operator|.
+name|writeLock
+argument_list|()
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 annotation|@
