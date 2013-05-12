@@ -470,6 +470,12 @@ name|void
 name|storeContent
 parameter_list|()
 function_decl|;
+specifier|public
+specifier|abstract
+name|void
+name|storeContentAndClear
+parameter_list|()
+function_decl|;
 comment|// useful to reduce the memory footprint of a persisted message
 specifier|public
 name|void

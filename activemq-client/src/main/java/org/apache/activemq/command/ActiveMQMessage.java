@@ -4129,6 +4129,17 @@ name|void
 name|storeContent
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|storeContentAndClear
+parameter_list|()
+block|{
+name|storeContent
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 
