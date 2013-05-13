@@ -498,7 +498,7 @@ name|useQueueForAccept
 init|=
 literal|true
 decl_stmt|;
-comment|/**      * trace=true -> the Transport stack where this TcpTransport      * object will be, will have a TransportLogger layer      * trace=false -> the Transport stack where this TcpTransport      * object will be, will NOT have a TransportLogger layer, and therefore      * will never be able to print logging messages.      * This parameter is most probably set in Connection or TransportConnector URIs.      */
+comment|/**      * trace=true -> the Transport stack where this TcpTransport object will be, will have a TransportLogger layer      * trace=false -> the Transport stack where this TcpTransport object will be, will NOT have a TransportLogger layer,      * and therefore will never be able to print logging messages. This parameter is most probably set in Connection or      * TransportConnector URIs.      */
 specifier|protected
 name|boolean
 name|trace
@@ -525,7 +525,7 @@ name|connectionTimeout
 init|=
 literal|30000
 decl_stmt|;
-comment|/**      * Name of the LogWriter implementation to use.      * Names are mapped to classes in the resources/META-INF/services/org/apache/activemq/transport/logwriters directory.      * This parameter is most probably set in Connection or TransportConnector URIs.      */
+comment|/**      * Name of the LogWriter implementation to use. Names are mapped to classes in the      * resources/META-INF/services/org/apache/activemq/transport/logwriters directory. This parameter is most probably      * set in Connection or TransportConnector URIs.      */
 specifier|protected
 name|String
 name|logWriterName
@@ -534,14 +534,14 @@ name|TransportLoggerSupport
 operator|.
 name|defaultLogWriterName
 decl_stmt|;
-comment|/**      * Specifies if the TransportLogger will be manageable by JMX or not.      * Also, as long as there is at least 1 TransportLogger which is manageable,      * a TransportLoggerControl MBean will me created.      */
+comment|/**      * Specifies if the TransportLogger will be manageable by JMX or not. Also, as long as there is at least 1      * TransportLogger which is manageable, a TransportLoggerControl MBean will me created.      */
 specifier|protected
 name|boolean
 name|dynamicManagement
 init|=
 literal|false
 decl_stmt|;
-comment|/**      * startLogging=true -> the TransportLogger object of the Transport stack      * will initially write messages to the log.      * startLogging=false -> the TransportLogger object of the Transport stack      * will initially NOT write messages to the log.      * This parameter only has an effect if trace == true.      * This parameter is most probably set in Connection or TransportConnector URIs.      */
+comment|/**      * startLogging=true -> the TransportLogger object of the Transport stack will initially write messages to the log.      * startLogging=false -> the TransportLogger object of the Transport stack will initially NOT write messages to the      * log. This parameter only has an effect if trace == true. This parameter is most probably set in Connection or      * TransportConnector URIs.      */
 specifier|protected
 name|boolean
 name|startLogging
@@ -887,7 +887,7 @@ return|return
 name|wireFormatFactory
 return|;
 block|}
-comment|/**      * @param wireFormatFactory The wireFormatFactory to set.      */
+comment|/**      * @param wireFormatFactory      *            The wireFormatFactory to set.      */
 specifier|public
 name|void
 name|setWireFormatFactory
@@ -903,7 +903,7 @@ operator|=
 name|wireFormatFactory
 expr_stmt|;
 block|}
-comment|/**      * Associates a broker info with the transport server so that the transport      * can do discovery advertisements of the broker.      *      * @param brokerInfo      */
+comment|/**      * Associates a broker info with the transport server so that the transport can do discovery advertisements of the      * broker.      *      * @param brokerInfo      */
 annotation|@
 name|Override
 specifier|public
@@ -1094,7 +1094,7 @@ return|return
 name|backlog
 return|;
 block|}
-comment|/**      * @param backlog the backlog to set      */
+comment|/**      * @param backlog      *            the backlog to set      */
 specifier|public
 name|void
 name|setBacklog
@@ -1120,7 +1120,7 @@ return|return
 name|useQueueForAccept
 return|;
 block|}
-comment|/**      * @param useQueueForAccept the useQueueForAccept to set      */
+comment|/**      * @param useQueueForAccept      *            the useQueueForAccept to set      */
 specifier|public
 name|void
 name|setUseQueueForAccept
@@ -1268,7 +1268,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Allow derived classes to override the Transport implementation that this      * transport server creates.      *      * @param socket      * @param format      * @return      * @throws IOException      */
+comment|/**      * Allow derived classes to override the Transport implementation that this transport server creates.      *      * @param socket      * @param format      * @return      * @throws IOException      */
 specifier|protected
 name|Transport
 name|createTransport
@@ -1589,6 +1589,11 @@ name|Socket
 name|socket
 parameter_list|)
 block|{
+name|boolean
+name|closeSocket
+init|=
+literal|true
+decl_stmt|;
 try|try
 block|{
 if|if
@@ -1609,13 +1614,11 @@ throw|throw
 operator|new
 name|ExceededMaximumConnectionsException
 argument_list|(
-literal|"Exceeded the maximum "
+literal|"Exceeded the maximum number of allowed client connections. See the '"
 operator|+
-literal|"number of allowed client connections. See the 'maximumConnections' "
+literal|"maximumConnections' property on the TCP transport configuration URI "
 operator|+
-literal|"property on the TCP transport configuration URI in the ActiveMQ "
-operator|+
-literal|"configuration file (e.g., activemq.xml)"
+literal|"in the ActiveMQ configuration file (e.g., activemq.xml)"
 argument_list|)
 throw|;
 block|}
@@ -1798,6 +1801,10 @@ argument_list|,
 name|format
 argument_list|)
 decl_stmt|;
+name|closeSocket
+operator|=
+literal|false
+expr_stmt|;
 if|if
 condition|(
 name|transport
@@ -1861,6 +1868,26 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|closeSocket
+condition|)
+block|{
+try|try
+block|{
+name|socket
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ignore
+parameter_list|)
+block|{                 }
+block|}
 if|if
 condition|(
 operator|!
@@ -1981,7 +2008,7 @@ return|return
 name|maximumConnections
 return|;
 block|}
-comment|/**      * @param maximumConnections the maximumConnections to set      */
+comment|/**      * @param maximumConnections      *            the maximumConnections to set      */
 specifier|public
 name|void
 name|setMaximumConnections
