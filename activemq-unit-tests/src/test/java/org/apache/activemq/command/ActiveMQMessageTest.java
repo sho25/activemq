@@ -271,6 +271,8 @@ name|args
 parameter_list|)
 block|{     }
 comment|/*      * @see TestCase#setUp()      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -403,6 +405,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/*      * @see TestCase#tearDown()      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -2614,6 +2618,8 @@ operator|.
 name|Message
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|org
 operator|.
@@ -2631,6 +2637,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beforeMarshall
@@ -2649,6 +2657,8 @@ name|wireFormat
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getDataStructureType
@@ -2658,6 +2668,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|visit
@@ -2688,6 +2700,13 @@ name|void
 name|storeContent
 parameter_list|()
 block|{             }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|storeContentAndClear
+parameter_list|()
+block|{              }
 block|}
 decl_stmt|;
 name|msg
@@ -3812,9 +3831,6 @@ name|setIntProperty
 argument_list|(
 name|propertyName
 argument_list|,
-operator|(
-name|int
-operator|)
 literal|1
 argument_list|)
 expr_stmt|;
