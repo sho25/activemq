@@ -940,6 +940,33 @@ name|Exception
 name|ignore
 parameter_list|)
 block|{             }
+comment|// let any requests pending a response see an exception
+try|try
+block|{
+name|peer
+operator|.
+name|transportListener
+operator|.
+name|onException
+argument_list|(
+operator|new
+name|TransportDisposedIOException
+argument_list|(
+literal|"peer ("
+operator|+
+name|this
+operator|+
+literal|") stopped."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ignore
+parameter_list|)
+block|{             }
 comment|// shutdown task runner factory
 if|if
 condition|(

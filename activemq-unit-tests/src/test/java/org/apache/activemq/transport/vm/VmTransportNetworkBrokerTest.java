@@ -564,7 +564,7 @@ operator|+
 name|threadCountAfterStop
 argument_list|,
 name|threadCountAfterStop
-operator|==
+operator|<=
 name|originalThreadCount
 argument_list|)
 expr_stmt|;
