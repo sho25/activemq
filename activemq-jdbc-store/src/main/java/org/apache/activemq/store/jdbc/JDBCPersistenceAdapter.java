@@ -3237,7 +3237,7 @@ name|Long
 operator|)
 name|messageId
 operator|.
-name|getDataLocator
+name|getEntryLocator
 argument_list|()
 decl_stmt|;
 name|getAdapter
@@ -3330,7 +3330,7 @@ operator|.
 name|getLastMessageId
 argument_list|()
 operator|.
-name|getDataLocator
+name|getEntryLocator
 argument_list|()
 argument_list|,
 literal|null

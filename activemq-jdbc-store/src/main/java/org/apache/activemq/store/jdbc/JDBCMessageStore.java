@@ -809,7 +809,7 @@ operator|.
 name|getMessageId
 argument_list|()
 operator|.
-name|setDataLocator
+name|setEntryLocator
 argument_list|(
 name|sequenceId
 argument_list|)
@@ -1300,7 +1300,7 @@ operator|.
 name|getLastMessageId
 argument_list|()
 operator|.
-name|setDataLocator
+name|setEntryLocator
 argument_list|(
 name|seq
 argument_list|)

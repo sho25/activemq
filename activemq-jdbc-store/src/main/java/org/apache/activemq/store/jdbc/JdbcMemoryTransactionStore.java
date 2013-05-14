@@ -611,7 +611,7 @@ operator|.
 name|getMessageId
 argument_list|()
 operator|.
-name|getDataLocator
+name|getEntryLocator
 argument_list|()
 argument_list|,
 name|message
@@ -943,7 +943,7 @@ operator|.
 name|getMessageId
 argument_list|()
 operator|.
-name|setDataLocator
+name|setEntryLocator
 argument_list|(
 name|id
 argument_list|)
@@ -1071,7 +1071,7 @@ operator|.
 name|getMessageId
 argument_list|()
 operator|.
-name|setDataLocator
+name|setEntryLocator
 argument_list|(
 name|id
 argument_list|)
