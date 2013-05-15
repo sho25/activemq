@@ -1803,9 +1803,9 @@ name|node
 parameter_list|)
 block|{
 return|return
-name|isActive
-argument_list|()
+literal|true
 return|;
+comment|// let them go, our dispatchPending gates the active / inactive state.
 block|}
 annotation|@
 name|Override
