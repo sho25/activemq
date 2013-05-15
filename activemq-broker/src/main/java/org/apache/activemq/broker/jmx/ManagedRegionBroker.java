@@ -1852,6 +1852,8 @@ name|DurableSubscriptionView
 argument_list|(
 name|this
 argument_list|,
+name|brokerService
+argument_list|,
 name|context
 operator|.
 name|getClientId
@@ -3858,6 +3860,8 @@ operator|new
 name|InactiveDurableSubscriptionView
 argument_list|(
 name|this
+argument_list|,
+name|brokerService
 argument_list|,
 name|key
 operator|.

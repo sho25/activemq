@@ -2391,6 +2391,23 @@ name|key
 argument_list|)
 return|;
 block|}
+specifier|public
+name|DurableTopicSubscription
+name|getDurableSubscription
+parameter_list|(
+name|SubscriptionKey
+name|key
+parameter_list|)
+block|{
+return|return
+name|durableSubscriptions
+operator|.
+name|get
+argument_list|(
+name|key
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

@@ -1934,7 +1934,9 @@ argument_list|(
 name|clientId
 argument_list|)
 expr_stmt|;
-name|safeGetBroker
+name|brokerService
+operator|.
+name|getBroker
 argument_list|()
 operator|.
 name|removeSubscription
