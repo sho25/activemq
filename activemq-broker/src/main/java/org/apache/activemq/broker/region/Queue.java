@@ -4477,7 +4477,7 @@ name|sync
 init|=
 name|sendSyncs
 operator|.
-name|get
+name|remove
 argument_list|(
 name|tx
 argument_list|)
@@ -4492,13 +4492,6 @@ operator|.
 name|add
 argument_list|(
 name|sync
-argument_list|)
-expr_stmt|;
-name|sendSyncs
-operator|.
-name|remove
-argument_list|(
-name|tx
 argument_list|)
 expr_stmt|;
 block|}
