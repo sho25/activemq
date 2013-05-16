@@ -45,6 +45,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|atomic
 operator|.
 name|AtomicBoolean
@@ -388,7 +400,16 @@ block|{
 name|activeWaiter
 operator|.
 name|wait
-argument_list|()
+argument_list|(
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|30
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -425,7 +446,7 @@ operator|.
 name|get
 argument_list|()
 operator|+
-literal|" duplicate deliveried"
+literal|" duplicate forwards"
 argument_list|)
 expr_stmt|;
 block|}
