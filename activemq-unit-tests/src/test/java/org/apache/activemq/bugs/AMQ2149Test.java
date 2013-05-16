@@ -493,7 +493,7 @@ name|Throwable
 argument_list|>
 argument_list|()
 decl_stmt|;
-specifier|private
+specifier|protected
 name|File
 name|dataDirFile
 decl_stmt|;
@@ -601,9 +601,7 @@ name|brokerService
 parameter_list|)
 throws|throws
 name|Exception
-block|{
-comment|/*         https://issues.apache.org/jira/browse/AMQ-4296          a leveldb variant will fail. needs to have this test exercise all stores         LevelDBStore persistenceFactory = new LevelDBStore();         persistenceFactory.setDirectory(dataDirFile);         brokerService.setPersistenceAdapter(persistenceFactory); */
-block|}
+block|{     }
 specifier|public
 name|void
 name|setUp
