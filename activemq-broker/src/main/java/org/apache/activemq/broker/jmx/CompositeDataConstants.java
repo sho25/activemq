@@ -42,6 +42,11 @@ init|=
 literal|"JMSXGroupID"
 decl_stmt|;
 name|String
+name|BROKER_PATH
+init|=
+literal|"BrokerPath"
+decl_stmt|;
+name|String
 name|BODY_LENGTH
 init|=
 literal|"BodyLength"

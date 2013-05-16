@@ -284,6 +284,14 @@ name|DLQ_DELIVERY_FAILURE_CAUSE_PROPERTY
 init|=
 literal|"dlqDeliveryFailureCause"
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|BROKER_PATH_PROPERTY
+init|=
+literal|"JMSActiveMQBrokerPath"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
