@@ -234,6 +234,13 @@ argument_list|)
 expr_stmt|;
 name|mqtt
 operator|.
+name|setReconnectAttemptsMax
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|mqtt
+operator|.
 name|setTracer
 argument_list|(
 name|createTracer

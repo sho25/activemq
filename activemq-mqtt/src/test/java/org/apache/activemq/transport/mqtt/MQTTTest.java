@@ -567,6 +567,13 @@ argument_list|)
 expr_stmt|;
 name|mqtt
 operator|.
+name|setReconnectAttemptsMax
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|mqtt
+operator|.
 name|setTracer
 argument_list|(
 name|createTracer
@@ -589,20 +596,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// shut off connect retry
-name|mqtt
-operator|.
-name|setConnectAttemptsMax
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
-name|mqtt
-operator|.
-name|setReconnectAttemptsMax
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
 return|return
 name|mqtt
 return|;
@@ -627,15 +620,7 @@ name|MQTTFrame
 name|frame
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Client Received:\n"
-operator|+
-name|frame
-argument_list|)
-expr_stmt|;
+comment|//                LOG.info("Client Received:\n"+frame);
 block|}
 annotation|@
 name|Override
@@ -647,15 +632,7 @@ name|MQTTFrame
 name|frame
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Client Sent:\n"
-operator|+
-name|frame
-argument_list|)
-expr_stmt|;
+comment|//                LOG.info("Client Sent:\n" + frame);
 block|}
 annotation|@
 name|Override

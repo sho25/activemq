@@ -1985,7 +1985,7 @@ argument_list|(
 name|getProtocolScheme
 argument_list|()
 operator|+
-literal|"://localhost:0?trace=true&"
+literal|"://localhost:0?"
 operator|+
 name|config
 argument_list|)
