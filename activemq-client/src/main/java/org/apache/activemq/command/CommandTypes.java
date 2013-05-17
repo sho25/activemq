@@ -28,7 +28,7 @@ comment|// What is the latest version of the openwire protocol
 name|byte
 name|PROTOCOL_VERSION
 init|=
-literal|9
+literal|10
 decl_stmt|;
 comment|// What is the latest version of the openwire protocol used in the stores
 name|byte

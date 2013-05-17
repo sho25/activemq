@@ -630,7 +630,7 @@ operator|=
 name|selector
 expr_stmt|;
 block|}
-comment|/**      * Used to identify the id of a client connection.      *      * @openwire:property version=1      */
+comment|/**      * Used to identify the id of a client connection.      *      * @openwire:property version=10      */
 specifier|public
 name|String
 name|getClientId
