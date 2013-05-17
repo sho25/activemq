@@ -412,7 +412,7 @@ specifier|final
 name|int
 name|minPercentUsageForStore
 init|=
-literal|10
+literal|3
 decl_stmt|;
 name|String
 name|data
@@ -535,13 +535,22 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|int
+name|messages
+init|=
+literal|1000
+decl_stmt|;
 name|CountDownLatch
 name|redeliveryConsumerLatch
 init|=
 operator|new
 name|CountDownLatch
 argument_list|(
-literal|15000
+operator|(
+name|messages
+operator|*
+literal|3
+operator|)
 operator|-
 literal|1
 argument_list|)
@@ -573,7 +582,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|5000
+name|messages
 condition|;
 name|i
 operator|++
@@ -617,10 +626,9 @@ name|getStorePercentUsage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"some store in use"
-argument_list|,
+name|int
+name|storePercentUsage
+init|=
 name|broker
 operator|.
 name|getAdminView
@@ -628,6 +636,12 @@ argument_list|()
 operator|.
 name|getStorePercentUsage
 argument_list|()
+decl_stmt|;
+name|assertTrue
+argument_list|(
+literal|"some store in use"
+argument_list|,
+name|storePercentUsage
 operator|>
 name|minPercentUsageForStore
 argument_list|)
@@ -659,7 +673,7 @@ init|=
 operator|new
 name|CountDownLatch
 argument_list|(
-literal|5000
+name|messages
 operator|-
 literal|1
 argument_list|)
