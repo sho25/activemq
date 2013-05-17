@@ -148,6 +148,10 @@ name|selector
 decl_stmt|;
 specifier|protected
 name|String
+name|clientId
+decl_stmt|;
+specifier|protected
+name|String
 name|subscriptionName
 decl_stmt|;
 specifier|protected
@@ -337,6 +341,12 @@ operator|.
 name|selector
 operator|=
 name|selector
+expr_stmt|;
+name|info
+operator|.
+name|clientId
+operator|=
+name|clientId
 expr_stmt|;
 name|info
 operator|.
@@ -618,6 +628,31 @@ operator|.
 name|selector
 operator|=
 name|selector
+expr_stmt|;
+block|}
+comment|/**      * Used to identify the id of a client connection.      *      * @openwire:property version=1      */
+specifier|public
+name|String
+name|getClientId
+parameter_list|()
+block|{
+return|return
+name|clientId
+return|;
+block|}
+specifier|public
+name|void
+name|setClientId
+parameter_list|(
+name|String
+name|clientId
+parameter_list|)
+block|{
+name|this
+operator|.
+name|clientId
+operator|=
+name|clientId
 expr_stmt|;
 block|}
 comment|/**      * Used to identify the name of a durable subscription.      *      * @openwire:property version=1      */
