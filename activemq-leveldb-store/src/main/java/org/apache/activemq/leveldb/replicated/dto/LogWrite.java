@@ -152,6 +152,19 @@ specifier|public
 name|long
 name|length
 decl_stmt|;
+annotation|@
+name|XmlAttribute
+argument_list|(
+name|name
+operator|=
+literal|"sync"
+argument_list|)
+specifier|public
+name|boolean
+name|sync
+init|=
+literal|false
+decl_stmt|;
 block|}
 end_class
 
