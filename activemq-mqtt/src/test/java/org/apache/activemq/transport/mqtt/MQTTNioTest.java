@@ -110,7 +110,7 @@ name|Exception
 block|{
 name|addMQTTConnector
 argument_list|(
-literal|"?maxInactivityDuration=-1"
+literal|"maxInactivityDuration=-1"
 argument_list|)
 expr_stmt|;
 name|brokerService

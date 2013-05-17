@@ -247,7 +247,7 @@ name|Exception
 block|{
 name|addMQTTConnector
 argument_list|(
-literal|"?transport.useInactivityMonitor=false"
+literal|"transport.useInactivityMonitor=false"
 argument_list|)
 expr_stmt|;
 name|brokerService
@@ -342,7 +342,7 @@ block|{
 comment|// default keep alive in milliseconds
 name|addMQTTConnector
 argument_list|(
-literal|"?transport.defaultKeepAlive=2000"
+literal|"transport.defaultKeepAlive=2000"
 argument_list|)
 expr_stmt|;
 name|brokerService
@@ -534,33 +534,6 @@ block|}
 annotation|@
 name|Override
 specifier|protected
-name|void
-name|addMQTTConnector
-parameter_list|(
-name|String
-name|config
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-name|mqttConnector
-operator|=
-name|brokerService
-operator|.
-name|addConnector
-argument_list|(
-name|getProtocolScheme
-argument_list|()
-operator|+
-literal|"://localhost:0"
-operator|+
-name|config
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|protected
 name|MQTTClientProvider
 name|getMQTTClientProvider
 parameter_list|()
@@ -658,7 +631,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"recv: "
+literal|"Client Received:\n"
 operator|+
 name|frame
 argument_list|)
@@ -678,7 +651,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"send: "
+literal|"Client Sent:\n"
 operator|+
 name|frame
 argument_list|)
