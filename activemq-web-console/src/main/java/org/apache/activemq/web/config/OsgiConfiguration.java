@@ -95,16 +95,6 @@ end_import
 
 begin_import
 import|import
-name|sun
-operator|.
-name|util
-operator|.
-name|LocaleServiceProviderPool
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
