@@ -309,6 +309,20 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
+literal|"Loaded the Bouncy Castle security provider."
+operator|.
+name|equals
+argument_list|(
+name|event
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
 name|event
 operator|.
 name|getMDC
@@ -328,6 +342,7 @@ operator|.
 name|TRUE
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return;
 block|}
