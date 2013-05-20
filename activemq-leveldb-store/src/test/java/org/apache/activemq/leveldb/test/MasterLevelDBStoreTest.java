@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -40,6 +30,16 @@ operator|.
 name|replicated
 operator|.
 name|MasterLevelDBStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -107,6 +107,18 @@ name|Executors
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|*
+import|;
+end_import
+
 begin_comment
 comment|/**  * @author<a href="http://www.christianposta.com/blog">Christian Posta</a>  */
 end_comment
@@ -115,9 +127,18 @@ begin_class
 specifier|public
 class|class
 name|MasterLevelDBStoreTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|1000
+operator|*
+literal|60
+operator|*
+literal|60
+argument_list|)
 specifier|public
 name|void
 name|testStoppingStoreStopsTransport
