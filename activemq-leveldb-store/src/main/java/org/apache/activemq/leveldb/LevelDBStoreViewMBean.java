@@ -320,6 +320,15 @@ name|void
 name|compact
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Are delayed index updates occurring?"
+argument_list|)
+name|boolean
+name|getDelayedIndexUpdates
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
