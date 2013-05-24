@@ -61,16 +61,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|DeliveryMode
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|JMSException
 import|;
 end_import
@@ -132,7 +122,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a property expression  *   *   */
+comment|/**  * Represents a property expression  */
 end_comment
 
 begin_class
@@ -185,6 +175,8 @@ operator|new
 name|SubExpression
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -247,6 +239,8 @@ operator|new
 name|SubExpression
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -292,6 +286,8 @@ operator|new
 name|SubExpression
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -320,6 +316,8 @@ operator|new
 name|SubExpression
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -352,6 +350,8 @@ operator|new
 name|SubExpression
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -385,6 +385,8 @@ operator|new
 name|SubExpression
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -430,6 +432,8 @@ operator|new
 name|SubExpression
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -463,6 +467,8 @@ operator|new
 name|SubExpression
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -491,6 +497,8 @@ operator|new
 name|SubExpression
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -524,6 +532,8 @@ operator|new
 name|SubExpression
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -557,6 +567,8 @@ operator|new
 name|SubExpression
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -592,6 +604,8 @@ operator|new
 name|SubExpression
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -620,6 +634,8 @@ operator|new
 name|SubExpression
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -652,6 +668,8 @@ operator|new
 name|SubExpression
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -695,14 +713,10 @@ literal|null
 return|;
 block|}
 return|return
-operator|new
-name|Integer
-argument_list|(
 name|txId
 operator|.
 name|toString
 argument_list|()
-argument_list|)
 return|;
 block|}
 block|}
@@ -718,6 +732,8 @@ operator|new
 name|SubExpression
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -751,6 +767,8 @@ operator|new
 name|SubExpression
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -784,6 +802,8 @@ operator|new
 name|SubExpression
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -841,6 +861,8 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -1004,6 +1026,8 @@ name|name
 return|;
 block|}
 comment|/**      * @see java.lang.Object#toString()      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -1014,6 +1038,8 @@ name|name
 return|;
 block|}
 comment|/**      * @see java.lang.Object#hashCode()      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -1027,6 +1053,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @see java.lang.Object#equals(java.lang.Object)      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals
