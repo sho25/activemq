@@ -664,18 +664,18 @@ specifier|public
 name|SimpleCachedLDAPAuthorizationMap
 parameter_list|()
 block|{
-comment|// Allow for only a couple outstanding update requests, they can be slow so we
+comment|// Allow for only a couple outstanding update request, they can be slow so we
 comment|// don't want a bunch to pile up for no reason.
 name|updaterService
 operator|=
 operator|new
 name|ThreadPoolExecutor
 argument_list|(
-literal|1
-argument_list|,
-literal|1
-argument_list|,
 literal|0
+argument_list|,
+literal|1
+argument_list|,
+literal|60
 argument_list|,
 name|TimeUnit
 operator|.
