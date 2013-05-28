@@ -636,7 +636,7 @@ literal|","
 operator|+
 name|BROKER_C_CLIENT_TC_ADDRESS
 operator|+
-literal|")?randomize=false&priorityBackup=true&initialReconnectDelay=1000&useExponentialBackOff=false&backupPoolSize=2"
+literal|")?randomize=false&priorityBackup=true&initialReconnectDelay=1000&useExponentialBackOff=false"
 argument_list|)
 expr_stmt|;
 name|createClients
