@@ -3448,7 +3448,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|0
+literal|10
 argument_list|,
 name|view
 operator|.
