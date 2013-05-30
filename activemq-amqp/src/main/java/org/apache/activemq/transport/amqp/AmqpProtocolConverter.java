@@ -1644,7 +1644,7 @@ argument_list|,
 name|count
 argument_list|)
 expr_stmt|;
-comment|//                    System.out.println("writing: " + buffer.toString().substring(5).replaceAll("(..)", "$1 "));
+comment|// System.out.println("writing: " + buffer.toString().substring(5).replaceAll("(..)", "$1 "));
 name|amqpTransport
 operator|.
 name|sendToAmqp
@@ -1661,7 +1661,7 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-comment|//            System.out.println("write done");
+comment|// System.out.println("write done");
 block|}
 catch|catch
 parameter_list|(
@@ -1837,7 +1837,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|//        System.out.println("read: " + frame.toString().substring(5).replaceAll("(..)", "$1 "));
+comment|// System.out.println("read: " + frame.toString().substring(5).replaceAll("(..)", "$1 "));
 while|while
 condition|(
 name|frame
@@ -2364,7 +2364,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//TODO - close links?
+comment|// TODO - close links?
 name|onSessionClose
 argument_list|(
 name|session
@@ -2680,6 +2680,30 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Dispatching MessageId:{} to consumer"
+argument_list|,
+name|md
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|getMessageId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|consumerContext
 operator|.
 name|onMessageDispatch
@@ -2731,7 +2755,7 @@ name|isBrokerInfo
 argument_list|()
 condition|)
 block|{
-comment|//ignore
+comment|// ignore
 block|}
 else|else
 block|{
@@ -2813,12 +2837,12 @@ name|onClose
 parameter_list|()
 throws|throws
 name|Exception
-block|{}
+block|{         }
 specifier|public
 name|void
 name|drainCheck
 parameter_list|()
-block|{}
+block|{         }
 block|}
 specifier|private
 name|void
@@ -2841,7 +2865,7 @@ argument_list|(
 name|connectionId
 argument_list|)
 expr_stmt|;
-comment|//        configureInactivityMonitor(connect.keepAlive());
+comment|// configureInactivityMonitor(connect.keepAlive());
 name|String
 name|clientId
 init|=
@@ -2934,7 +2958,8 @@ name|getException
 argument_list|()
 decl_stmt|;
 comment|// TODO: figure out how to close /w an error.
-comment|//                    protonConnection.setLocalError(new EndpointError(exception.getClass().getName(), exception.getMessage()));
+comment|// protonConnection.setLocalError(new EndpointError(exception.getClass().getName(),
+comment|// exception.getMessage()));
 name|protonConnection
 operator|.
 name|close
@@ -3792,7 +3817,7 @@ literal|0
 decl_stmt|;
 class|class
 name|Transaction
-block|{      }
+block|{     }
 name|HashMap
 argument_list|<
 name|Long
@@ -4876,14 +4901,6 @@ operator|instanceof
 name|Coordinator
 condition|)
 block|{
-name|Coordinator
-name|target
-init|=
-operator|(
-name|Coordinator
-operator|)
-name|terminus
-decl_stmt|;
 return|return
 literal|null
 return|;
@@ -5672,6 +5689,27 @@ name|connectionId
 argument_list|,
 name|txid
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Sending Ack for MessageId:{} to ActiveMQ"
+argument_list|,
+name|ack
+operator|.
+name|getLastMessageId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -6905,11 +6943,11 @@ return|return
 name|rc
 return|;
 block|}
-comment|////////////////////////////////////////////////////////////////////////////
+comment|// //////////////////////////////////////////////////////////////////////////
 comment|//
 comment|// Implementation methods
 comment|//
-comment|////////////////////////////////////////////////////////////////////////////
+comment|// //////////////////////////////////////////////////////////////////////////
 specifier|private
 specifier|final
 name|Object
