@@ -104,6 +104,11 @@ name|size
 init|=
 literal|0
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|SimplePriorityMessageDispatchChannel
 parameter_list|()
@@ -147,7 +152,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/*      * (non-Javadoc)      * @see      * org.apache.activemq.MessageDispatchChannelI#enqueue(org.apache.activemq      * .command.MessageDispatch)      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.MessageDispatchChannelI#enqueue(org.apache.activemq.command.MessageDispatch)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|enqueue
@@ -183,7 +190,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/*      * (non-Javadoc)      * @see      * org.apache.activemq.MessageDispatchChannelI#enqueueFirst(org.apache.activemq      * .command.MessageDispatch)      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.MessageDispatchChannelI#enqueueFirst(org.apache.activemq.command.MessageDispatch)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|enqueueFirst
@@ -219,13 +228,14 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.MessageDispatchChannelI#isEmpty()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.MessageDispatchChannelI#isEmpty()      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isEmpty
 parameter_list|()
 block|{
-comment|// synchronized (mutex) {
 return|return
 name|this
 operator|.
@@ -233,9 +243,10 @@ name|size
 operator|==
 literal|0
 return|;
-comment|// }
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.MessageDispatchChannelI#dequeue(long)      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.MessageDispatchChannelI#dequeue(long)      */
+annotation|@
+name|Override
 specifier|public
 name|MessageDispatch
 name|dequeue
@@ -317,7 +328,9 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.MessageDispatchChannelI#dequeueNoWait()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.MessageDispatchChannelI#dequeueNoWait()      */
+annotation|@
+name|Override
 specifier|public
 name|MessageDispatch
 name|dequeueNoWait
@@ -349,7 +362,9 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.MessageDispatchChannelI#peek()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.MessageDispatchChannelI#peek()      */
+annotation|@
+name|Override
 specifier|public
 name|MessageDispatch
 name|peek
@@ -381,7 +396,9 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.MessageDispatchChannelI#start()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.MessageDispatchChannelI#start()      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -403,7 +420,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.MessageDispatchChannelI#stop()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.MessageDispatchChannelI#stop()      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -425,7 +444,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.MessageDispatchChannelI#close()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.MessageDispatchChannelI#close()      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
@@ -458,7 +479,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.MessageDispatchChannelI#clear()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.MessageDispatchChannelI#clear()      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|clear
@@ -493,9 +516,17 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+name|this
+operator|.
+name|size
+operator|=
+literal|0
+expr_stmt|;
 block|}
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.MessageDispatchChannelI#isClosed()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.MessageDispatchChannelI#isClosed()      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isClosed
@@ -505,7 +536,9 @@ return|return
 name|closed
 return|;
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.MessageDispatchChannelI#size()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.MessageDispatchChannelI#size()      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|size
@@ -523,7 +556,9 @@ name|size
 return|;
 block|}
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.MessageDispatchChannelI#getMutex()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.MessageDispatchChannelI#getMutex()      */
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|getMutex
@@ -533,7 +568,9 @@ return|return
 name|mutex
 return|;
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.MessageDispatchChannelI#isRunning()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.MessageDispatchChannelI#isRunning()      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isRunning
@@ -543,7 +580,9 @@ return|return
 name|running
 return|;
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.MessageDispatchChannelI#removeAll()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.MessageDispatchChannelI#removeAll()      */
+annotation|@
+name|Override
 specifier|public
 name|List
 argument_list|<
