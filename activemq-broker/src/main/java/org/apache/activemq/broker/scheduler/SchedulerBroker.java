@@ -527,6 +527,16 @@ operator|.
 name|getSystemUsage
 argument_list|()
 expr_stmt|;
+name|wireFormat
+operator|.
+name|setVersion
+argument_list|(
+name|brokerService
+operator|.
+name|getStoreOpenWireVersion
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 specifier|synchronized

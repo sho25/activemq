@@ -1620,6 +1620,24 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|brokerService
+operator|!=
+literal|null
+condition|)
+block|{
+name|wireFormat
+operator|.
+name|setVersion
+argument_list|(
+name|brokerService
+operator|.
+name|getStoreOpenWireVersion
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Cleanup the db periodically.
 if|if
 condition|(
