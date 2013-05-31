@@ -1087,7 +1087,7 @@ operator|.
 name|getMessageId
 argument_list|()
 operator|.
-name|toString
+name|toProducerKey
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1145,7 +1145,7 @@ operator|.
 name|getLastMessageId
 argument_list|()
 operator|.
-name|toString
+name|toProducerKey
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1206,7 +1206,7 @@ name|key
 init|=
 name|identity
 operator|.
-name|toString
+name|toProducerKey
 argument_list|()
 decl_stmt|;
 comment|// Hopefully one day the page file supports concurrent read operations... but for now we must
@@ -1754,7 +1754,7 @@ name|key
 init|=
 name|identity
 operator|.
-name|toString
+name|toProducerKey
 argument_list|()
 decl_stmt|;
 comment|// Hopefully one day the page file supports concurrent read operations... but for now we must
@@ -1942,7 +1942,7 @@ name|setMessageId
 argument_list|(
 name|messageId
 operator|.
-name|toString
+name|toProducerKey
 argument_list|()
 argument_list|)
 expr_stmt|;

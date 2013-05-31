@@ -14142,7 +14142,7 @@ operator|.
 name|getLastMessageId
 argument_list|()
 operator|.
-name|toString
+name|toProducerKey
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -14211,7 +14211,7 @@ operator|.
 name|getLastMessageId
 argument_list|()
 operator|.
-name|toString
+name|toProducerKey
 argument_list|()
 argument_list|)
 expr_stmt|;
