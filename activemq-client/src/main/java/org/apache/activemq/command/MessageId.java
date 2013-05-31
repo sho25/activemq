@@ -301,7 +301,7 @@ operator|=
 name|key
 expr_stmt|;
 block|}
-comment|/**      * @return      */
+comment|/**      * @openwire:property version=10      * @return      */
 specifier|public
 name|String
 name|getTextView
