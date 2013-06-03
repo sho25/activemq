@@ -31,19 +31,9 @@ name|BrokerService
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|leveldb
-operator|.
-name|LevelDBStore
-import|;
-end_import
+begin_comment
+comment|// import org.apache.activemq.leveldb.LevelDBStore;
+end_comment
 
 begin_import
 import|import
@@ -86,36 +76,10 @@ argument_list|(
 literal|"tcp://localhost:61616"
 argument_list|)
 expr_stmt|;
-name|LevelDBStore
-name|store
-init|=
-operator|new
-name|LevelDBStore
-argument_list|()
-decl_stmt|;
-name|store
-operator|.
-name|setDirectory
-argument_list|(
-operator|new
-name|File
-argument_list|(
-literal|"target/activemq-data/haleveldb"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|bs
-operator|.
-name|setPersistenceAdapter
-argument_list|(
-name|store
-argument_list|)
-expr_stmt|;
-name|bs
-operator|.
-name|deleteAllMessages
-argument_list|()
-expr_stmt|;
+comment|// LevelDBStore store = new LevelDBStore();
+comment|// store.setDirectory(new File("target/activemq-data/haleveldb"));
+comment|// bs.setPersistenceAdapter(store);
+comment|// bs.deleteAllMessages();
 name|bs
 operator|.
 name|start
