@@ -306,7 +306,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents an entry in a {@link PolicyMap} for assigning policies to a  * specific destination or a hierarchical wildcard area of destinations.  *   * @org.apache.xbean.XBean  *   */
+comment|/**  * Represents an entry in a {@link PolicyMap} for assigning policies to a  * specific destination or a hierarchical wildcard area of destinations.  *  * @org.apache.xbean.XBean  *  */
 end_comment
 
 begin_class
@@ -1547,6 +1547,14 @@ name|isUsePrefetchExtension
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|sub
+operator|.
+name|setMaxProducersToAudit
+argument_list|(
+name|getMaxProducersToAudit
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -1580,6 +1588,14 @@ operator|.
 name|setUsePrefetchExtension
 argument_list|(
 name|isUsePrefetchExtension
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|sub
+operator|.
+name|setMaxProducersToAudit
+argument_list|(
+name|getMaxProducersToAudit
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2117,7 +2133,7 @@ operator|=
 name|alwaysRetroactive
 expr_stmt|;
 block|}
-comment|/**      * Set's the interval at which warnings about producers being blocked by      * resource usage will be triggered. Values of 0 or less will disable      * warnings      *       * @param blockedProducerWarningInterval the interval at which warning about      *            blocked producers will be triggered.      */
+comment|/**      * Set's the interval at which warnings about producers being blocked by      * resource usage will be triggered. Values of 0 or less will disable      * warnings      *      * @param blockedProducerWarningInterval the interval at which warning about      *            blocked producers will be triggered.      */
 specifier|public
 name|void
 name|setBlockedProducerWarningInterval
@@ -2133,7 +2149,7 @@ operator|=
 name|blockedProducerWarningInterval
 expr_stmt|;
 block|}
-comment|/**      *       * @return the interval at which warning about blocked producers will be      *         triggered.      */
+comment|/**      *      * @return the interval at which warning about blocked producers will be      *         triggered.      */
 specifier|public
 name|long
 name|getBlockedProducerWarningInterval
