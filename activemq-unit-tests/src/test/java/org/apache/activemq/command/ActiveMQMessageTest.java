@@ -171,10 +171,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  *  */
-end_comment
-
 begin_class
 specifier|public
 class|class
@@ -890,20 +886,17 @@ argument_list|(
 name|msg2
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertEquals
 argument_list|(
 name|msg1
 operator|.
 name|getJMSMessageID
 argument_list|()
-operator|.
-name|equals
-argument_list|(
+argument_list|,
 name|msg2
 operator|.
 name|getJMSMessageID
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertTrue

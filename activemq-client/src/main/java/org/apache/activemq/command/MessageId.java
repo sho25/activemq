@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @openwire:marshaller code="110"  *   */
+comment|/**  * @openwire:marshaller code="110"  *  */
 end_comment
 
 begin_class
@@ -305,6 +305,8 @@ return|return
 name|textView
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getDataStructureType
@@ -314,6 +316,8 @@ return|return
 name|DATA_STRUCTURE_TYPE
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals
@@ -377,6 +381,8 @@ name|producerId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -437,6 +443,8 @@ name|producerSequenceId
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -575,6 +583,8 @@ operator|=
 name|brokerSequenceId
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMarshallAware
@@ -630,11 +640,19 @@ name|plistLocator
 operator|=
 name|plistLocator
 expr_stmt|;
+name|copy
+operator|.
+name|textView
+operator|=
+name|textView
+expr_stmt|;
 return|return
 name|copy
 return|;
 block|}
 comment|/**      * @param      * @return      * @see java.lang.Comparable#compareTo(java.lang.Object)      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|compareTo
