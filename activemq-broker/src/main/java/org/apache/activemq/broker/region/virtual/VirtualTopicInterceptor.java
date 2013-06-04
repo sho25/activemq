@@ -138,7 +138,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Destination which implements<a  * href="http://activemq.org/site/virtual-destinations.html">Virtual Topic</a>  */
+comment|/**  * A Destination which implements<a href="http://activemq.org/site/virtual-destinations.html">Virtual Topic</a>  */
 end_comment
 
 begin_class
