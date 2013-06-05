@@ -1547,12 +1547,26 @@ name|isUsePrefetchExtension
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// TODO
+comment|// We currently need an infinite audit because of the way that browser dispatch
+comment|// is done.  We should refactor the browsers to better handle message dispatch so
+comment|// we can remove this and perform a more efficient dispatch.
 name|sub
 operator|.
 name|setMaxProducersToAudit
 argument_list|(
-name|getMaxProducersToAudit
-argument_list|()
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+name|sub
+operator|.
+name|setMaxAuditDepth
+argument_list|(
+name|Integer
+operator|.
+name|MAX_VALUE
 argument_list|)
 expr_stmt|;
 block|}

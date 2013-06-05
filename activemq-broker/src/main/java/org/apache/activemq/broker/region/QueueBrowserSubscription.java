@@ -53,16 +53,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|InvalidSelectorException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|JMSException
 import|;
 end_import
@@ -92,24 +82,6 @@ operator|.
 name|broker
 operator|.
 name|ConnectionContext
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|region
-operator|.
-name|cursors
-operator|.
-name|VMPendingMessageCursor
 import|;
 end_import
 
@@ -215,6 +187,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|boolean
 name|canDispatch
@@ -236,6 +210,8 @@ name|isAcked
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|String
@@ -326,6 +302,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|matches
@@ -354,6 +332,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Since we are a browser we don't really remove the message from the queue.      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|acknowledge
