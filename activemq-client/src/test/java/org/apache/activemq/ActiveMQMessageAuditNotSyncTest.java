@@ -220,7 +220,7 @@ block|{
 name|int
 name|maxAuditDepth
 init|=
-name|Integer
+name|Short
 operator|.
 name|MAX_VALUE
 decl_stmt|;
