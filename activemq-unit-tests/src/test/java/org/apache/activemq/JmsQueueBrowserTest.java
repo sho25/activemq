@@ -1983,6 +1983,11 @@ argument_list|(
 name|destination
 argument_list|)
 decl_stmt|;
+name|int
+name|numberOfMessages
+init|=
+literal|4096
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -1992,7 +1997,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|1000
+name|numberOfMessages
 condition|;
 name|i
 operator|++
@@ -2104,7 +2109,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|1000
+name|numberOfMessages
 argument_list|,
 name|numberBrowsed
 argument_list|)
