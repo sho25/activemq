@@ -270,6 +270,17 @@ operator|instanceof
 name|TransportDisposedIOException
 condition|)
 block|{
+comment|// Prevent StackOverflowException so we can see a sane stack trace.
+if|if
+condition|(
+name|gotExceptionInLog
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
+return|return;
+block|}
 name|LOG
 operator|.
 name|error
@@ -418,6 +429,8 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp
@@ -494,6 +507,8 @@ name|DEBUG
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|tearDown
