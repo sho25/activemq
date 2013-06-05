@@ -1560,15 +1560,6 @@ operator|.
 name|MAX_VALUE
 argument_list|)
 expr_stmt|;
-name|sub
-operator|.
-name|setMaxAuditDepth
-argument_list|(
-name|Integer
-operator|.
-name|MAX_VALUE
-argument_list|)
-expr_stmt|;
 block|}
 specifier|public
 name|void
