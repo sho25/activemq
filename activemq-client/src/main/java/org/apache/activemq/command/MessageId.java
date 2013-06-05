@@ -279,7 +279,7 @@ name|messageKey
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets the transient text view of the message which will be ignored if the      * message is marshaled on a transport; so is only for in-JVM changes to      * accommodate foreign JMS message IDs      */
+comment|/**      * Sets the transient text view of the message which will be ignored if the message is marshaled on a transport; so      * is only for in-JVM changes to accommodate foreign JMS message IDs      */
 specifier|public
 name|void
 name|setTextView
@@ -694,7 +694,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * @return a locator which aids a message store in loading a message faster.  Only used      * by the message stores.      */
+comment|/**      * @return a locator which aids a message store in loading a message faster. Only used by the message stores.      */
 specifier|public
 name|Object
 name|getDataLocator
@@ -707,7 +707,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**      * Sets a locator which aids a message store in loading a message faster.  Only used      * by the message stores.      */
+comment|/**      * Sets a locator which aids a message store in loading a message faster. Only used by the message stores.      */
 specifier|public
 name|void
 name|setDataLocator
