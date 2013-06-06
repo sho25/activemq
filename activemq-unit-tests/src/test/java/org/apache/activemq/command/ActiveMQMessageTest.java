@@ -285,7 +285,7 @@ name|this
 operator|.
 name|jmsMessageID
 operator|=
-literal|"testid"
+literal|"ID:TEST-ID:0:0:0:1"
 expr_stmt|;
 name|this
 operator|.
@@ -467,6 +467,9 @@ expr_stmt|;
 name|assertTrue
 argument_list|(
 name|msg
+operator|.
+name|getJMSMessageID
+argument_list|()
 operator|.
 name|hashCode
 argument_list|()
