@@ -779,7 +779,7 @@ name|getJMSDeliveryMode
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// should not equal 7 (should equal the default)  because "raw" does not map
+comment|// should not equal 7 (should equal the default) because "raw" does not map
 comment|// headers
 name|assertEquals
 argument_list|(
