@@ -33,16 +33,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|InvalidSelectorException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|JMSException
 import|;
 end_import
@@ -237,7 +227,9 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * In the queue case, mark the node as dropped and then a gc cycle will      * remove it from the queue.      *       * @throws IOException      */
+comment|/**      * In the queue case, mark the node as dropped and then a gc cycle will      * remove it from the queue.      *      * @throws IOException      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|acknowledge
@@ -307,19 +299,26 @@ name|n
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
 name|LOG
 operator|.
-name|warn
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
 argument_list|(
-literal|"ignoring ack "
-operator|+
+literal|"ignoring ack {}, for already expired message: {}"
+argument_list|,
 name|ack
-operator|+
-literal|", for already expired message: "
-operator|+
+argument_list|,
 name|n
 argument_list|)
 expr_stmt|;
+block|}
 return|return;
 block|}
 block|}
@@ -337,6 +336,8 @@ name|ack
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|boolean
 name|canDispatch
@@ -484,6 +485,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|String
@@ -526,6 +529,8 @@ name|getPendingQueueSize
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getLockPriority
@@ -538,6 +543,8 @@ name|getPriority
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isLockExclusive
@@ -551,6 +558,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|destroy
@@ -562,6 +571,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|boolean
 name|isDropped
