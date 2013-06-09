@@ -33,6 +33,20 @@ name|ElectingLevelDBStore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|PersistenceAdapter
+import|;
+end_import
+
 begin_comment
 comment|/**  * An implementation of {@link org.apache.activemq.store.PersistenceAdapter} designed for use with  * LevelDB - Embedded Lightweight Non-Relational Database  *  * @org.apache.xbean.XBean element="replicatedLevelDB"  *  */
 end_comment
@@ -43,6 +57,8 @@ class|class
 name|ReplicatedLevelDBPersistenceAdapter
 extends|extends
 name|ElectingLevelDBStore
+implements|implements
+name|PersistenceAdapter
 block|{ }
 end_class
 
