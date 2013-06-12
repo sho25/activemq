@@ -3644,6 +3644,13 @@ operator|new
 name|MessageId
 argument_list|()
 expr_stmt|;
+name|message
+operator|.
+name|setMessageId
+argument_list|(
+name|messageId
+argument_list|)
+expr_stmt|;
 block|}
 name|messageId
 operator|.
