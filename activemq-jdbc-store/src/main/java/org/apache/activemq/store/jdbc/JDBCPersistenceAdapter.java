@@ -181,7 +181,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|BrokerServiceAware
+name|ConnectionContext
 import|;
 end_import
 
@@ -195,7 +195,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|ConnectionContext
+name|Locker
 import|;
 end_import
 
@@ -308,20 +308,6 @@ operator|.
 name|openwire
 operator|.
 name|OpenWireFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|Locker
 import|;
 end_import
 
@@ -534,7 +520,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link PersistenceAdapter} implementation using JDBC for persistence  * storage.  *   * This persistence adapter will correctly remember prepared XA transactions,  * but it will not keep track of local transaction commits so that operations  * performed against the Message store are done as a single uow.  *   * @org.apache.xbean.XBean element="jdbcPersistenceAdapter"  *   *   */
+comment|/**  * A {@link PersistenceAdapter} implementation using JDBC for persistence  * storage.  *  * This persistence adapter will correctly remember prepared XA transactions,  * but it will not keep track of local transaction commits so that operations  * performed against the Message store are done as a single uow.  *  * @org.apache.xbean.XBean element="jdbcPersistenceAdapter"  *  */
 end_comment
 
 begin_class
@@ -739,6 +725,8 @@ operator|=
 name|wireFormat
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -894,6 +882,8 @@ operator|new
 name|JDBCMessageIdScanListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageId
@@ -987,6 +977,8 @@ operator|new
 name|JDBCMessageIdScanListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageId
@@ -1049,6 +1041,8 @@ block|{                 }
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MessageStore
 name|createQueueMessageStore
@@ -1098,6 +1092,8 @@ return|return
 name|rc
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TopicMessageStore
 name|createTopicMessageStore
@@ -1148,6 +1144,8 @@ name|rc
 return|;
 block|}
 comment|/**      * Cleanup method to remove any state associated with the given destination      * @param destination Destination to forget      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeQueueMessageStore
@@ -1279,6 +1277,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Cleanup method to remove any state associated with the given destination      * No state retained.... nothing to do      *      * @param destination Destination to forget      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeTopicMessageStore
@@ -1287,6 +1287,8 @@ name|ActiveMQTopic
 name|destination
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|TransactionStore
 name|createTransactionStore
@@ -1316,6 +1318,8 @@ operator|.
 name|transactionStore
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastMessageBrokerSequenceId
@@ -1462,6 +1466,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastProducerSequenceId
@@ -1613,6 +1619,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doStart
@@ -1657,6 +1665,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1682,6 +1692,8 @@ name|createMessageAudit
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1837,6 +1849,8 @@ operator|=
 name|clockDaemon
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ScheduledThreadPoolExecutor
 name|getScheduledThreadPoolExecutor
@@ -1860,6 +1874,8 @@ operator|new
 name|ThreadFactory
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Thread
 name|newThread
@@ -1923,7 +1939,7 @@ return|return
 name|adapter
 return|;
 block|}
-comment|/**      *      * @deprecated as of 5.7.0, replaced by {@link #getLocker()}      */
+comment|/**      * @deprecated as of 5.7.0, replaced by {@link #getLocker()}      */
 annotation|@
 name|Deprecated
 specifier|public
@@ -1939,6 +1955,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Sets the database locker strategy to use to lock the database on startup      * @throws IOException      *      * @deprecated as of 5.7.0, replaced by {@link #setLocker(org.apache.activemq.broker.Locker)}      */
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setDatabaseLocker
@@ -2390,6 +2408,8 @@ return|return
 name|answer
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beginTransaction
@@ -2414,6 +2434,8 @@ name|begin
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commitTransaction
@@ -2438,6 +2460,8 @@ name|commit
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollbackTransaction
@@ -2512,6 +2536,8 @@ operator|=
 name|changeAutoCommitAllowed
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|deleteAllMessages
@@ -2755,8 +2781,28 @@ name|statements
 operator|=
 name|statements
 expr_stmt|;
+if|if
+condition|(
+name|adapter
+operator|!=
+literal|null
+condition|)
+block|{
+name|this
+operator|.
+name|adapter
+operator|.
+name|setStatements
+argument_list|(
+name|getStatements
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * @param usageManager The UsageManager that is controlling the      *                destination's memory usage.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUsageManager
@@ -2765,6 +2811,8 @@ name|SystemUsage
 name|usageManager
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|Locker
 name|createDefaultLocker
@@ -2819,6 +2867,8 @@ return|return
 name|locker
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerName
@@ -2827,6 +2877,8 @@ name|String
 name|brokerName
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -2843,6 +2895,8 @@ operator|+
 literal|")"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDirectory
@@ -2858,6 +2912,8 @@ operator|=
 name|dir
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|File
 name|getDirectory
@@ -2893,6 +2949,8 @@ name|directory
 return|;
 block|}
 comment|// interesting bit here is proof that DB is ok
+annotation|@
+name|Override
 specifier|public
 name|void
 name|checkpoint
@@ -2970,6 +3028,8 @@ block|{                 }
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|size
@@ -2980,6 +3040,8 @@ literal|0
 return|;
 block|}
 comment|/**      * @deprecated use {@link Locker#setLockAcquireSleepInterval(long)} instead      *      * millisecond interval between lock acquire attempts, applied to newly created DefaultDatabaseLocker      * not applied if DataBaseLocker is injected.      *      */
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setLockAcquireSleepInterval
