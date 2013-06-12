@@ -49,6 +49,18 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|assertTrue
 import|;
 end_import
@@ -249,6 +261,26 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * @author<a href="http://www.christianposta.com/blog">Christian Posta</a>  */
 end_comment
@@ -258,6 +290,21 @@ specifier|public
 class|class
 name|AmqpTransformerTest
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|AmqpTransformerTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -722,9 +769,25 @@ name|c
 operator|.
 name|receive
 argument_list|(
-literal|1000
+literal|2000
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Should have received a message"
+argument_list|,
+name|message
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Recieved message: "
+argument_list|,
+name|message
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 name|message
