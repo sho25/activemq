@@ -30,30 +30,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -380,6 +356,8 @@ name|int
 name|numberOfMessages
 decl_stmt|;
 annotation|@
+name|Override
+annotation|@
 name|Before
 specifier|public
 name|void
@@ -432,6 +410,8 @@ operator|=
 literal|1000
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 annotation|@
 name|After
 specifier|public

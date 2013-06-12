@@ -2278,6 +2278,14 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
+operator|+
+name|topic
+operator|.
+name|name
+argument_list|()
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
