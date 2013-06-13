@@ -136,6 +136,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|ActiveMQConnectionFactory
 name|createConnectionFactory
@@ -151,6 +153,8 @@ name|singleUriString
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|createMaster
@@ -225,6 +229,8 @@ name|adapter
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|createSlave
@@ -239,6 +245,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
