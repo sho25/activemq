@@ -3712,6 +3712,13 @@ name|getMessageId
 argument_list|()
 argument_list|,
 name|producerId
+operator|+
+literal|":"
+operator|+
+name|messageId
+operator|.
+name|getProducerSequenceId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
