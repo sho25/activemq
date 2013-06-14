@@ -2694,12 +2694,20 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// End of Queue Browse will have no Message object.
 if|if
 condition|(
 name|LOG
 operator|.
 name|isTraceEnabled
 argument_list|()
+operator|&&
+name|md
+operator|.
+name|getMessage
+argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
 name|LOG
@@ -2714,6 +2722,21 @@ name|getMessage
 argument_list|()
 operator|.
 name|getMessageId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Dispatching End of Browse Command to consumer {}"
+argument_list|,
+name|md
+operator|.
+name|getConsumerId
 argument_list|()
 argument_list|)
 expr_stmt|;
