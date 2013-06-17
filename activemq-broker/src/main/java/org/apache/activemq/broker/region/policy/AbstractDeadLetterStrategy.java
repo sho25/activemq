@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A strategy for choosing which destination is used for dead letter queue  * messages.  *   *   */
+comment|/**  * A strategy for choosing which destination is used for dead letter queue  * messages.  *  */
 end_comment
 
 begin_class
@@ -111,6 +111,7 @@ init|=
 literal|true
 decl_stmt|;
 specifier|private
+specifier|final
 name|ActiveMQMessageAudit
 name|messageAudit
 init|=
@@ -118,6 +119,38 @@ operator|new
 name|ActiveMQMessageAudit
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
+specifier|public
+name|void
+name|rollback
+parameter_list|(
+name|Message
+name|message
+parameter_list|)
+block|{
+if|if
+condition|(
+name|message
+operator|!=
+literal|null
+operator|&&
+name|this
+operator|.
+name|enableAudit
+condition|)
+block|{
+name|messageAudit
+operator|.
+name|rollback
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSendToDeadLetterQueue
@@ -226,6 +259,8 @@ name|result
 return|;
 block|}
 comment|/**      * @return the processExpired      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isProcessExpired
@@ -238,6 +273,8 @@ name|processExpired
 return|;
 block|}
 comment|/**      * @param processExpired the processExpired to set      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setProcessExpired
@@ -254,6 +291,8 @@ name|processExpired
 expr_stmt|;
 block|}
 comment|/**      * @return the processNonPersistent      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isProcessNonPersistent
@@ -266,6 +305,8 @@ name|processNonPersistent
 return|;
 block|}
 comment|/**      * @param processNonPersistent the processNonPersistent to set      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setProcessNonPersistent
