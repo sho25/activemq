@@ -340,6 +340,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|source
+operator|!=
+literal|null
+condition|)
+block|{
 name|source
 operator|.
 name|setDestinationListener
@@ -515,6 +522,7 @@ argument_list|(
 name|topic
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// Properties
