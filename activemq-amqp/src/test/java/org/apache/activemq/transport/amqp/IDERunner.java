@@ -31,6 +31,22 @@ name|BrokerService
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|kahadb
+operator|.
+name|KahaDBStore
+import|;
+end_import
+
 begin_comment
 comment|// import org.apache.activemq.leveldb.LevelDBStore;
 end_comment
@@ -73,13 +89,39 @@ name|bs
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://localhost:61616"
+literal|"amqp://0.0.0.0:5672?trace=true"
 argument_list|)
 expr_stmt|;
-comment|// LevelDBStore store = new LevelDBStore();
-comment|// store.setDirectory(new File("target/activemq-data/haleveldb"));
-comment|// bs.setPersistenceAdapter(store);
-comment|// bs.deleteAllMessages();
+name|KahaDBStore
+name|store
+init|=
+operator|new
+name|KahaDBStore
+argument_list|()
+decl_stmt|;
+name|store
+operator|.
+name|setDirectory
+argument_list|(
+operator|new
+name|File
+argument_list|(
+literal|"target/activemq-data/kahadb"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|bs
+operator|.
+name|setPersistenceAdapter
+argument_list|(
+name|store
+argument_list|)
+expr_stmt|;
+name|bs
+operator|.
+name|deleteAllMessages
+argument_list|()
+expr_stmt|;
 name|bs
 operator|.
 name|start
