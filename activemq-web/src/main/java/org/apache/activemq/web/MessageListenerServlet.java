@@ -267,6 +267,20 @@ name|jetty
 operator|.
 name|continuation
 operator|.
+name|ContinuationListener
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jetty
+operator|.
+name|continuation
+operator|.
 name|ContinuationSupport
 import|;
 end_import
@@ -323,6 +337,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|readTimeoutParameter
 init|=
@@ -348,6 +363,7 @@ init|=
 literal|100
 decl_stmt|;
 specifier|private
+specifier|final
 name|Timer
 name|clientCleanupTimer
 init|=
@@ -360,6 +376,7 @@ literal|true
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -377,6 +394,8 @@ name|AjaxWebClient
 argument_list|>
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|init
@@ -481,6 +500,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Sends a message to a destination or manage subscriptions. If the the      * content type of the POST is      *<code>application/x-www-form-urlencoded</code>, then the form      * parameters "destination", "message" and "type" are used to pass a message      * or a subscription. If multiple messages or subscriptions are passed in a      * single post, then additional parameters are shortened to "dN", "mN" and      * "tN" where N is an index starting from 1. The type is either "send",      * "listen" or "unlisten". For send types, the message is the text of the      * TextMessage, otherwise it is the ID to be used for the subscription. If      * the content type is not<code>application/x-www-form-urlencoded</code>,      * then the body of the post is sent as the message to a destination that is      * derived from a query parameter, the URL or the default destination.      *      * @param request      * @param response      * @throws ServletException      * @throws IOException      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doPost
@@ -1280,6 +1301,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Supports a HTTP DELETE to be equivlanent of consuming a singe message      * from a queue      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doGet
@@ -1469,9 +1492,6 @@ condition|)
 block|{
 name|message
 operator|=
-operator|(
-name|Message
-operator|)
 name|undelivered_message
 operator|.
 name|getMessage
@@ -1652,6 +1672,88 @@ argument_list|(
 name|request
 argument_list|)
 decl_stmt|;
+comment|// Add a listener to the continuation to make sure it actually
+comment|// will expire (seems like a bug in Jetty Servlet 3 continuations,
+comment|// see https://issues.apache.org/jira/browse/AMQ-3447
+name|continuation
+operator|.
+name|addContinuationListener
+argument_list|(
+operator|new
+name|ContinuationListener
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onTimeout
+parameter_list|(
+name|Continuation
+name|cont
+parameter_list|)
+block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Continuation "
+operator|+
+name|cont
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|" expired."
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onComplete
+parameter_list|(
+name|Continuation
+name|cont
+parameter_list|)
+block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Continuation "
+operator|+
+name|cont
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|" completed."
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|continuation
@@ -1950,9 +2052,6 @@ decl_stmt|;
 name|Message
 name|msg
 init|=
-operator|(
-name|Message
-operator|)
 name|undelivered
 operator|.
 name|getMessage
@@ -2565,6 +2664,8 @@ name|ClientCleaner
 extends|extends
 name|TimerTask
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2717,6 +2818,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|destroy
