@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|LinkedList
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -39,13 +49,11 @@ begin_import
 import|import
 name|org
 operator|.
-name|eclipse
+name|apache
 operator|.
-name|jetty
+name|activemq
 operator|.
-name|continuation
-operator|.
-name|Continuation
+name|MessageAvailableListener
 import|;
 end_import
 
@@ -59,7 +67,7 @@ name|jetty
 operator|.
 name|continuation
 operator|.
-name|ContinuationSupport
+name|Continuation
 import|;
 end_import
 
@@ -80,28 +88,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|MessageAvailableListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|LinkedList
 import|;
 end_import
 
@@ -132,10 +118,12 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|long
 name|maximumReadTimeout
 decl_stmt|;
 specifier|private
+specifier|final
 name|AjaxWebClient
 name|client
 decl_stmt|;
@@ -148,6 +136,7 @@ name|Continuation
 name|continuation
 decl_stmt|;
 specifier|private
+specifier|final
 name|LinkedList
 argument_list|<
 name|UndeliveredAjaxMessage
@@ -227,6 +216,8 @@ return|return
 name|undeliveredMessages
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -295,9 +286,10 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|continuation
 operator|.
-name|isSuspended
+name|isResumed
 argument_list|()
 condition|)
 block|{
@@ -390,6 +382,8 @@ operator|new
 name|Thread
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
