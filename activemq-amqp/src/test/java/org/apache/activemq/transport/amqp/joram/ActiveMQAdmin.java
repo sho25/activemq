@@ -328,8 +328,8 @@ specifier|public
 name|void
 name|enableJMSFrameTracing
 parameter_list|()
-throws|throws
-name|FileNotFoundException
+block|{
+try|try
 block|{
 specifier|final
 name|SimpleFormatter
@@ -342,14 +342,7 @@ decl_stmt|;
 name|String
 name|outputStreamName
 init|=
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"java.io.tmpdir"
-argument_list|)
-operator|+
-literal|"/amqp-trace.txt"
+literal|"amqp-trace.txt"
 decl_stmt|;
 specifier|final
 name|PrintStream
@@ -430,7 +423,7 @@ name|close
 parameter_list|()
 throws|throws
 name|SecurityException
-block|{             }
+block|{                 }
 block|}
 decl_stmt|;
 name|Logger
@@ -459,6 +452,21 @@ operator|.
 name|FINEST
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|FileNotFoundException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 specifier|protected
 name|BrokerService
