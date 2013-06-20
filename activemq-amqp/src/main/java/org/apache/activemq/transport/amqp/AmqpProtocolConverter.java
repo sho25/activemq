@@ -5091,6 +5091,16 @@ name|boolean
 name|closed
 decl_stmt|;
 specifier|public
+name|ConsumerInfo
+name|info
+decl_stmt|;
+specifier|private
+name|boolean
+name|endOfBrowse
+init|=
+literal|false
+decl_stmt|;
+specifier|public
 name|ConsumerContext
 parameter_list|(
 name|ConsumerId
@@ -5485,9 +5495,11 @@ literal|null
 condition|)
 block|{
 comment|// It's the end of browse signal.
-name|sender
-operator|.
-name|drained
+name|endOfBrowse
+operator|=
+literal|true
+expr_stmt|;
+name|drainCheck
 argument_list|()
 expr_stmt|;
 block|}
@@ -5938,6 +5950,19 @@ name|void
 name|drainCheck
 parameter_list|()
 block|{
+comment|// If we are a browser.. lets not say we are drained until
+comment|// we hit the end of browse message.
+if|if
+condition|(
+name|info
+operator|.
+name|isBrowser
+argument_list|()
+operator|&&
+operator|!
+name|endOfBrowse
+condition|)
+return|return;
 if|if
 condition|(
 name|outbound
@@ -6676,6 +6701,12 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+name|consumerContext
+operator|.
+name|info
+operator|=
+name|consumerInfo
+expr_stmt|;
 name|consumerInfo
 operator|.
 name|setSelector
