@@ -3388,6 +3388,15 @@ expr_stmt|;
 block|}
 block|}
 block|}
+if|if
+condition|(
+operator|!
+name|qmr
+operator|.
+name|isDropped
+argument_list|()
+condition|)
+block|{
 name|redeliveredWaitingDispatch
 operator|.
 name|addMessageLast
@@ -3395,6 +3404,7 @@ argument_list|(
 name|qmr
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -9199,6 +9209,15 @@ name|QueueMessageReference
 name|reference
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|reference
+operator|.
+name|isDropped
+argument_list|()
+condition|)
+block|{
 name|reference
 operator|.
 name|drop
@@ -9243,6 +9262,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
