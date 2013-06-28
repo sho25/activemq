@@ -141,6 +141,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"DurableConduitBridge"
+return|;
+block|}
 comment|/**      * Constructor      *      * @param configuration      *      * @param localBroker      * @param remoteBroker      */
 specifier|public
 name|DurableConduitBridge

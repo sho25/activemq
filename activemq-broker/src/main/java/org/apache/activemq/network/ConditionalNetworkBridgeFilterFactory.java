@@ -21,6 +21,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -148,7 +158,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * implement conditional behavior for queue consumers, allows replaying back to  * origin if no consumers are present on the local broker after a configurable  * delay, irrespective of the networkTTL Also allows rate limiting of messages  * through the network, useful for static includes  *  * @org.apache.xbean.XBean  */
+comment|/**  * implement conditional behavior for queue consumers, allows replaying back to  * origin if no consumers are present on the local broker after a configurable  * delay, irrespective of the TTL. Also allows rate limiting of messages  * through the network, useful for static includes  *  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
@@ -192,7 +202,10 @@ index|[]
 name|remoteBrokerPath
 parameter_list|,
 name|int
-name|networkTimeToLive
+name|messageTTL
+parameter_list|,
+name|int
+name|consumerTTL
 parameter_list|)
 block|{
 name|ConditionalNetworkBridgeFilter
@@ -214,9 +227,16 @@ argument_list|)
 expr_stmt|;
 name|filter
 operator|.
-name|setNetworkTTL
+name|setMessageTTL
 argument_list|(
-name|networkTimeToLive
+name|messageTTL
+argument_list|)
+expr_stmt|;
+name|filter
+operator|.
+name|setConsumerTTL
+argument_list|(
+name|consumerTTL
 argument_list|)
 expr_stmt|;
 name|filter
@@ -461,19 +481,22 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|match
-operator|&&
 name|LOG
 operator|.
 name|isTraceEnabled
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+name|match
+condition|)
+block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Replaying  ["
+literal|"Replaying ["
 operator|+
 name|message
 operator|.
@@ -490,6 +513,41 @@ operator|+
 literal|"] back to origin in the absence of a local consumer"
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Suppressing replay of ["
+operator|+
+name|message
+operator|.
+name|getMessageId
+argument_list|()
+operator|+
+literal|"] for ["
+operator|+
+name|message
+operator|.
+name|getDestination
+argument_list|()
+operator|+
+literal|"] back to origin "
+operator|+
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|message
+operator|.
+name|getBrokerPath
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 else|else

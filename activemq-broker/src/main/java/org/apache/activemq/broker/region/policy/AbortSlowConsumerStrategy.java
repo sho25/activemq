@@ -673,12 +673,6 @@ name|entry
 operator|.
 name|getKey
 argument_list|()
-operator|.
-name|getConsumerInfo
-argument_list|()
-operator|.
-name|getConsumerId
-argument_list|()
 argument_list|)
 expr_stmt|;
 specifier|final

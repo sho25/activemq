@@ -75,7 +75,10 @@ index|[]
 name|remoteBrokerPath
 parameter_list|,
 name|int
-name|networkTimeToLive
+name|messageTTL
+parameter_list|,
+name|int
+name|consumerTTL
 parameter_list|)
 function_decl|;
 block|}

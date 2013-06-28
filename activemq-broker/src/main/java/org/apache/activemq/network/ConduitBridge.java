@@ -422,19 +422,20 @@ operator|.
 name|getBrokerName
 argument_list|()
 operator|+
-literal|" matched (add interest) to exsting sub for: "
+literal|" "
 operator|+
-name|ds
-operator|.
-name|getRemoteInfo
-argument_list|()
+name|info
 operator|+
-literal|" with sub: "
+literal|" with ids"
 operator|+
 name|info
 operator|.
-name|getConsumerId
+name|getNetworkConsumerIds
 argument_list|()
+operator|+
+literal|" matched (add interest) "
+operator|+
+name|ds
 argument_list|)
 expr_stmt|;
 block|}
@@ -578,7 +579,7 @@ operator|.
 name|getBrokerName
 argument_list|()
 operator|+
-literal|" removing interest in sub on "
+literal|" on "
 operator|+
 name|localBroker
 operator|+
@@ -586,16 +587,13 @@ literal|" from "
 operator|+
 name|remoteBrokerName
 operator|+
-literal|" : sub: "
+literal|" removed interest for: "
 operator|+
 name|id
 operator|+
-literal|" existing matched sub: "
+literal|" from "
 operator|+
 name|ds
-operator|.
-name|getRemoteInfo
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -647,7 +645,7 @@ operator|.
 name|getBrokerName
 argument_list|()
 operator|+
-literal|" removing sub on "
+literal|" on "
 operator|+
 name|localBroker
 operator|+
@@ -655,12 +653,9 @@ literal|" from "
 operator|+
 name|remoteBrokerName
 operator|+
-literal|" :  "
+literal|" removed "
 operator|+
 name|ds
-operator|.
-name|getRemoteInfo
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

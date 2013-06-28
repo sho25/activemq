@@ -3230,6 +3230,16 @@ name|getVmConnectorURI
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|factory
+operator|.
+name|setConnectionIDPrefix
+argument_list|(
+name|broker
+operator|.
+name|getBrokerName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|consumers
 operator|=
 name|Collections

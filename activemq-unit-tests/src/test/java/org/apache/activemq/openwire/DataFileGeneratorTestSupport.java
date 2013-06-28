@@ -2280,6 +2280,8 @@ name|string
 argument_list|)
 argument_list|,
 literal|10
+argument_list|,
+literal|10
 argument_list|)
 return|;
 block|}

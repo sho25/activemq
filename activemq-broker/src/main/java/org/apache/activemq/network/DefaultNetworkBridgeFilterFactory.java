@@ -80,7 +80,10 @@ index|[]
 name|remoteBrokerPath
 parameter_list|,
 name|int
-name|networkTimeToLive
+name|messageTTL
+parameter_list|,
+name|int
+name|consumerTTL
 parameter_list|)
 block|{
 return|return
@@ -94,7 +97,9 @@ index|[
 literal|0
 index|]
 argument_list|,
-name|networkTimeToLive
+name|messageTTL
+argument_list|,
+name|consumerTTL
 argument_list|)
 return|;
 block|}

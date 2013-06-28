@@ -9164,6 +9164,20 @@ name|ack
 operator|.
 name|isPoisonAck
 argument_list|()
+operator|||
+operator|(
+name|sub
+operator|!=
+literal|null
+operator|&&
+name|sub
+operator|.
+name|getConsumerInfo
+argument_list|()
+operator|.
+name|isNetworkSubscription
+argument_list|()
+operator|)
 condition|)
 block|{
 comment|// message gone to DLQ, is ok to allow redelivery

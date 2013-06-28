@@ -5719,7 +5719,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Closed consumer on Command"
+literal|"Closed consumer on Command, "
+operator|+
+name|id
 argument_list|)
 expr_stmt|;
 break|break;

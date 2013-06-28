@@ -108,7 +108,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @openwire:marshaller code="91"  *   */
+comment|/**  * @openwire:marshaller code="91"  *  */
 end_comment
 
 begin_class
@@ -150,7 +150,11 @@ name|networkBrokerId
 decl_stmt|;
 specifier|protected
 name|int
-name|networkTTL
+name|messageTTL
+decl_stmt|;
+specifier|protected
+name|int
+name|consumerTTL
 decl_stmt|;
 specifier|transient
 name|ConsumerInfo
@@ -170,7 +174,10 @@ name|BrokerId
 name|networkBrokerId
 parameter_list|,
 name|int
-name|networkTTL
+name|messageTTL
+parameter_list|,
+name|int
+name|consumerTTL
 parameter_list|)
 block|{
 name|this
@@ -181,9 +188,15 @@ name|networkBrokerId
 expr_stmt|;
 name|this
 operator|.
-name|networkTTL
+name|messageTTL
 operator|=
-name|networkTTL
+name|messageTTL
+expr_stmt|;
+name|this
+operator|.
+name|consumerTTL
+operator|=
+name|consumerTTL
 expr_stmt|;
 name|this
 operator|.
@@ -371,9 +384,14 @@ name|length
 decl_stmt|;
 if|if
 condition|(
+name|messageTTL
+operator|>
+operator|-
+literal|1
+operator|&&
 name|hops
 operator|>=
-name|networkTTL
+name|messageTTL
 condition|)
 block|{
 if|if
@@ -390,7 +408,7 @@ name|trace
 argument_list|(
 literal|"Message restricted to "
 operator|+
-name|networkTTL
+name|messageTTL
 operator|+
 literal|" network hops ignoring: "
 operator|+
@@ -506,9 +524,14 @@ name|length
 expr_stmt|;
 if|if
 condition|(
+name|consumerTTL
+operator|>
+operator|-
+literal|1
+operator|&&
 name|hops
 operator|>=
-name|networkTTL
+name|consumerTTL
 condition|)
 block|{
 if|if
@@ -525,7 +548,7 @@ name|trace
 argument_list|(
 literal|"ConsumerInfo advisory restricted to "
 operator|+
-name|networkTTL
+name|consumerTTL
 operator|+
 literal|" network hops ignoring: "
 operator|+
@@ -649,14 +672,15 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * @openwire:property version=1      */
+comment|// keep for backward compat with older
+comment|// wire formats
 specifier|public
 name|int
 name|getNetworkTTL
 parameter_list|()
 block|{
 return|return
-name|networkTTL
+name|messageTTL
 return|;
 block|}
 specifier|public
@@ -667,9 +691,11 @@ name|int
 name|networkTTL
 parameter_list|)
 block|{
-name|this
-operator|.
+name|messageTTL
+operator|=
 name|networkTTL
+expr_stmt|;
+name|consumerTTL
 operator|=
 name|networkTTL
 expr_stmt|;
@@ -698,6 +724,60 @@ name|networkBrokerId
 operator|=
 name|remoteBrokerPath
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setMessageTTL
+parameter_list|(
+name|int
+name|messageTTL
+parameter_list|)
+block|{
+name|this
+operator|.
+name|messageTTL
+operator|=
+name|messageTTL
+expr_stmt|;
+block|}
+comment|/**      * @openwire:property version=10      */
+specifier|public
+name|int
+name|getMessageTTL
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|messageTTL
+return|;
+block|}
+specifier|public
+name|void
+name|setConsumerTTL
+parameter_list|(
+name|int
+name|consumerTTL
+parameter_list|)
+block|{
+name|this
+operator|.
+name|consumerTTL
+operator|=
+name|consumerTTL
+expr_stmt|;
+block|}
+comment|/**      * @openwire:property version=10      */
+specifier|public
+name|int
+name|getConsumerTTL
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|consumerTTL
+return|;
 block|}
 block|}
 end_class
