@@ -3985,6 +3985,12 @@ name|context
 operator|.
 name|isInRecoveryMode
 argument_list|()
+operator|&&
+operator|!
+name|brokerService
+operator|.
+name|isStopping
+argument_list|()
 condition|)
 block|{
 name|ExceptionResponse
