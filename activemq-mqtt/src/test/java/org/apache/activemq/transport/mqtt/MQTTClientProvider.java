@@ -88,6 +88,20 @@ name|SSLContext
 name|sslContext
 parameter_list|)
 function_decl|;
+name|void
+name|setWillMessage
+parameter_list|(
+name|String
+name|string
+parameter_list|)
+function_decl|;
+name|void
+name|setWillTopic
+parameter_list|(
+name|String
+name|topic
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
