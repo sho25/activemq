@@ -339,7 +339,7 @@ operator|.
 name|setServlet
 argument_list|(
 operator|new
-name|StompServlet
+name|WSServlet
 argument_list|()
 argument_list|)
 expr_stmt|;
