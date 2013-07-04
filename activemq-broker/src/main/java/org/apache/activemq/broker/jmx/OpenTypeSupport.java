@@ -375,6 +375,7 @@ specifier|final
 class|class
 name|OpenTypeSupport
 block|{
+specifier|public
 interface|interface
 name|OpenTypeFactory
 block|{
@@ -419,6 +420,7 @@ name|AbstractOpenTypeFactory
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|public
 specifier|abstract
 specifier|static
 class|class

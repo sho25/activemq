@@ -124,11 +124,11 @@ name|XmlAttribute
 argument_list|(
 name|name
 operator|=
-literal|"slave_id"
+literal|"node_id"
 argument_list|)
 specifier|public
 name|String
-name|slave_id
+name|node_id
 decl_stmt|;
 annotation|@
 name|XmlAttribute

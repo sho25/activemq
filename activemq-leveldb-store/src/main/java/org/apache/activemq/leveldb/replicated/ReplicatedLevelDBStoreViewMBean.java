@@ -33,6 +33,18 @@ name|MBeanInfo
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|openmbean
+operator|.
+name|CompositeData
+import|;
+end_import
+
 begin_comment
 comment|/**  *<p>  *</p>  *  * @author<a href="http://hiramchirino.com">Hiram Chirino</a>  */
 end_comment
@@ -108,6 +120,16 @@ function_decl|;
 annotation|@
 name|MBeanInfo
 argument_list|(
+literal|"The status of the connected slaves."
+argument_list|)
+name|CompositeData
+index|[]
+name|getSlaves
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
 literal|"The current position of the replication log."
 argument_list|)
 name|Long
@@ -126,109 +148,19 @@ function_decl|;
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"The size the log files are allowed to grow to."
-argument_list|)
-name|long
-name|getLogSize
-parameter_list|()
-function_decl|;
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"The implementation of the LevelDB index being used."
-argument_list|)
-name|String
-name|getIndexFactory
-parameter_list|()
-function_decl|;
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"Is data verified against checksums as it's loaded back from disk."
-argument_list|)
-name|boolean
-name|getVerifyChecksums
-parameter_list|()
-function_decl|;
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"The maximum number of open files the index will open at one time."
-argument_list|)
-name|int
-name|getIndexMaxOpenFiles
-parameter_list|()
-function_decl|;
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"Number of keys between restart points for delta encoding of keys in the index"
-argument_list|)
-name|int
-name|getIndexBlockRestartInterval
-parameter_list|()
-function_decl|;
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"Do aggressive checking of store data"
-argument_list|)
-name|boolean
-name|getParanoidChecks
-parameter_list|()
-function_decl|;
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"Amount of data to build up in memory for the index before converting to a sorted on-disk file."
-argument_list|)
-name|int
-name|getIndexWriteBufferSize
-parameter_list|()
-function_decl|;
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"Approximate size of user data packed per block for the index"
-argument_list|)
-name|int
-name|getIndexBlockSize
-parameter_list|()
-function_decl|;
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"The type of compression to use for the index"
-argument_list|)
-name|String
-name|getIndexCompression
-parameter_list|()
-function_decl|;
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"The size of the cache index"
-argument_list|)
-name|long
-name|getIndexCacheSize
-parameter_list|()
-function_decl|;
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"The maximum amount of async writes to buffer up"
-argument_list|)
-name|int
-name|getAsyncBufferSize
-parameter_list|()
-function_decl|;
-annotation|@
-name|MBeanInfo
-argument_list|(
 literal|"The sync strategy to use."
 argument_list|)
 name|String
 name|getSync
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The node id of this replication node."
+argument_list|)
+name|String
+name|getNodeId
 parameter_list|()
 function_decl|;
 block|}

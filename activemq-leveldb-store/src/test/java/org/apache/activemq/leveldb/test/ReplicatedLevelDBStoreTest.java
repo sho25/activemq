@@ -201,18 +201,6 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|CountDownLatch
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
 name|TimeUnit
 import|;
 end_import
@@ -1002,7 +990,7 @@ literal|"Stopping master: "
 operator|+
 name|master
 operator|.
-name|replicaId
+name|node_id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1019,7 +1007,7 @@ literal|"Stopping slave: "
 operator|+
 name|slave1
 operator|.
-name|replicaId
+name|node_id
 argument_list|()
 argument_list|)
 expr_stmt|;
