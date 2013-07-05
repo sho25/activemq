@@ -2001,6 +2001,13 @@ name|get
 argument_list|()
 condition|)
 block|{
+name|connected
+operator|.
+name|set
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|sendToActiveMQ
 argument_list|(
 name|connectionInfo
@@ -3764,6 +3771,11 @@ condition|)
 block|{
 if|if
 condition|(
+name|connected
+operator|.
+name|get
+argument_list|()
+operator|&&
 name|connect
 operator|.
 name|willTopic
