@@ -192,9 +192,9 @@ name|result
 operator|=
 name|result
 operator|/
-literal|1000
+literal|60000
 operator|*
-literal|1000
+literal|60000
 expr_stmt|;
 return|return
 name|result
