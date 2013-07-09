@@ -700,6 +700,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|oneway
@@ -1020,6 +1022,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|request
@@ -1107,6 +1111,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1283,9 +1289,6 @@ decl_stmt|;
 name|Object
 name|command
 init|=
-operator|(
-name|Object
-operator|)
 name|getTextWireFormat
 argument_list|()
 operator|.
@@ -1465,6 +1468,8 @@ expr_stmt|;
 block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStart
@@ -1670,6 +1675,8 @@ name|doStart
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStop
@@ -1687,11 +1694,88 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// In some versions of the JVM a race between the httpMethod and the completion
+comment|// of the method when using HTTPS can lead to a deadlock.  This hack attempts to
+comment|// detect that and interrupt the thread that's locked so that they can complete
+comment|// on another attempt.
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+literal|3
+condition|;
+operator|++
+name|i
+control|)
+block|{
+name|Thread
+name|abortThread
+init|=
+operator|new
+name|Thread
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+try|try
+block|{
 name|httpMethod
 operator|.
 name|abort
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{                         }
+block|}
+block|}
+argument_list|)
+decl_stmt|;
+name|abortThread
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+name|abortThread
+operator|.
+name|join
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|abortThread
+operator|.
+name|isAlive
+argument_list|()
+condition|)
+block|{
+name|abortThread
+operator|.
+name|interrupt
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 specifier|protected
@@ -1885,6 +1969,8 @@ operator|=
 name|trace
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getReceiveCounter
