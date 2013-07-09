@@ -1762,10 +1762,15 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|abortThread
 operator|.
 name|isAlive
+argument_list|()
+operator|&&
+operator|!
+name|httpMethod
+operator|.
+name|isAborted
 argument_list|()
 condition|)
 block|{
