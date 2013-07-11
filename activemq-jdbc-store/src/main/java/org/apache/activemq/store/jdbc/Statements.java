@@ -489,7 +489,7 @@ argument_list|()
 operator|+
 literal|" ADD XID "
 operator|+
-name|binaryDataType
+name|stringIdDataType
 block|,
 literal|"ALTER TABLE "
 operator|+
@@ -509,7 +509,7 @@ argument_list|()
 operator|+
 literal|" ADD XID "
 operator|+
-name|binaryDataType
+name|stringIdDataType
 block|,
 literal|"ALTER TABLE "
 operator|+
@@ -527,7 +527,31 @@ name|getFullAckTableName
 argument_list|()
 operator|+
 literal|" ADD PRIMARY KEY (CONTAINER, CLIENT_ID, SUB_NAME, PRIORITY)"
-block|,             }
+block|,
+literal|"CREATE INDEX "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|"_XIDX ON "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" (XID)"
+block|,
+literal|"CREATE INDEX "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|"_XIDX ON "
+operator|+
+name|getFullAckTableName
+argument_list|()
+operator|+
+literal|" (XID)"
+block|}
 expr_stmt|;
 block|}
 return|return
