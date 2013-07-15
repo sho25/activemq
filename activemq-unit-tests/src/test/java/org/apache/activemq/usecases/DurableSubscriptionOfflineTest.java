@@ -31,27 +31,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Random
 import|;
 end_import
 
@@ -163,16 +143,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|ObjectName
-import|;
-end_import
-
-begin_import
-import|import
 name|junit
 operator|.
 name|framework
@@ -218,38 +188,6 @@ operator|.
 name|broker
 operator|.
 name|BrokerService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|jmx
-operator|.
-name|DurableSubscriptionViewMBean
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|jmx
-operator|.
-name|TopicViewMBean
 import|;
 end_import
 
@@ -366,26 +304,6 @@ operator|.
 name|journal
 operator|.
 name|Journal
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|store
-operator|.
-name|kahadb
-operator|.
-name|disk
-operator|.
-name|page
-operator|.
-name|PageFile
 import|;
 end_import
 
@@ -873,6152 +791,992 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-specifier|public
-name|void
-name|initCombosForTestConsumeOnlyMatchedMessages
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|this
-operator|.
-name|addCombinationValues
-argument_list|(
-literal|"defaultPersistenceAdapter"
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-name|PersistenceAdapterChoice
-operator|.
-name|KahaDB
-block|,
-name|PersistenceAdapterChoice
-operator|.
-name|LevelDB
-block|,
-name|PersistenceAdapterChoice
-operator|.
-name|JDBC
-block|}
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|addCombinationValues
-argument_list|(
-literal|"usePrioritySupport"
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-name|Boolean
-operator|.
-name|TRUE
-block|,
-name|Boolean
-operator|.
-name|FALSE
-block|}
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testConsumeOnlyMatchedMessages
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// create durable subscription
-name|Connection
-name|con
-init|=
-name|createConnection
-argument_list|()
-decl_stmt|;
-name|Session
-name|session
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// send messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-name|int
-name|sent
-init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|boolean
-name|filter
-init|=
-name|i
-operator|%
-literal|2
-operator|==
-literal|1
-decl_stmt|;
-if|if
-condition|(
-name|filter
-condition|)
-name|sent
-operator|++
-expr_stmt|;
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-name|filter
-condition|?
-literal|"true"
-else|:
-literal|"false"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// consume messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener
-init|=
-operator|new
-name|Listener
-argument_list|()
-decl_stmt|;
-name|consumer
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|sent
-argument_list|,
-name|listener
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testConsumeAllMatchedMessages
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// create durable subscription
-name|Connection
-name|con
-init|=
-name|createConnection
-argument_list|()
-decl_stmt|;
-name|Session
-name|session
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// send messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-name|int
-name|sent
-init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|sent
-operator|++
-expr_stmt|;
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// consume messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener
-init|=
-operator|new
-name|Listener
-argument_list|()
-decl_stmt|;
-name|consumer
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|sent
-argument_list|,
-name|listener
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|initCombosForTestVerifyAllConsumedAreAcked
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|this
-operator|.
-name|addCombinationValues
-argument_list|(
-literal|"defaultPersistenceAdapter"
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-name|PersistenceAdapterChoice
-operator|.
-name|KahaDB
-block|,
-name|PersistenceAdapterChoice
-operator|.
-name|LevelDB
-block|,
-name|PersistenceAdapterChoice
-operator|.
-name|JDBC
-block|}
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|addCombinationValues
-argument_list|(
-literal|"usePrioritySupport"
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-name|Boolean
-operator|.
-name|TRUE
-block|,
-name|Boolean
-operator|.
-name|FALSE
-block|}
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testVerifyAllConsumedAreAcked
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// create durable subscription
-name|Connection
-name|con
-init|=
-name|createConnection
-argument_list|()
-decl_stmt|;
-name|Session
-name|session
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// send messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-name|int
-name|sent
-init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|sent
-operator|++
-expr_stmt|;
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// consume messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener
-init|=
-operator|new
-name|Listener
-argument_list|()
-decl_stmt|;
-name|consumer
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Consumed: "
-operator|+
-name|listener
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|sent
-argument_list|,
-name|listener
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-comment|// consume messages again, should not get any
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|consumer
-operator|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|listener
-operator|=
-operator|new
-name|Listener
-argument_list|()
-expr_stmt|;
-name|consumer
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|0
-argument_list|,
-name|listener
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testTwoOfflineSubscriptionCanConsume
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// create durable subscription 1
-name|Connection
-name|con
-init|=
-name|createConnection
-argument_list|(
-literal|"cliId1"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// create durable subscription 2
-name|Connection
-name|con2
-init|=
-name|createConnection
-argument_list|(
-literal|"cliId2"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session2
-init|=
-name|con2
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|MessageConsumer
-name|consumer2
-init|=
-name|session2
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener2
-init|=
-operator|new
-name|Listener
-argument_list|()
-decl_stmt|;
-name|consumer2
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener2
-argument_list|)
-expr_stmt|;
-comment|// send messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-name|int
-name|sent
-init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|sent
-operator|++
-expr_stmt|;
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// test online subs
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session2
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con2
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|sent
-argument_list|,
-name|listener2
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-comment|// consume messages
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"cliId1"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener
-init|=
-operator|new
-name|Listener
-argument_list|()
-decl_stmt|;
-name|consumer
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"offline consumer got all"
-argument_list|,
-name|sent
-argument_list|,
-name|listener
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|initCombosForTestJMXCountersWithOfflineSubs
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|this
-operator|.
-name|addCombinationValues
-argument_list|(
-literal|"keepDurableSubsActive"
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-name|Boolean
-operator|.
-name|TRUE
-block|,
-name|Boolean
-operator|.
-name|FALSE
-block|}
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testJMXCountersWithOfflineSubs
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// create durable subscription 1
-name|Connection
-name|con
-init|=
-name|createConnection
-argument_list|(
-literal|"cliId1"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|null
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// restart broker
-name|broker
-operator|.
-name|stop
-argument_list|()
-expr_stmt|;
-name|createBroker
-argument_list|(
-literal|false
-comment|/*deleteAllMessages*/
-argument_list|)
-expr_stmt|;
-comment|// send messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-name|int
-name|sent
-init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|sent
-operator|++
-expr_stmt|;
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// consume some messages
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"cliId1"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|null
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|sent
-operator|/
-literal|2
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|Message
-name|m
-init|=
-name|consumer
-operator|.
-name|receive
-argument_list|(
-literal|4000
-argument_list|)
-decl_stmt|;
-name|assertNotNull
-argument_list|(
-literal|"got message: "
-operator|+
-name|i
-argument_list|,
-name|m
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Got :"
-operator|+
-name|i
-operator|+
-literal|", "
-operator|+
-name|m
-argument_list|)
-expr_stmt|;
-block|}
-comment|// check some counters while active
-name|ObjectName
-name|activeDurableSubName
-init|=
-name|broker
-operator|.
-name|getAdminView
-argument_list|()
-operator|.
-name|getDurableTopicSubscribers
-argument_list|()
-index|[
-literal|0
-index|]
-decl_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"active durable sub name: "
-operator|+
-name|activeDurableSubName
-argument_list|)
-expr_stmt|;
-specifier|final
-name|DurableSubscriptionViewMBean
-name|durableSubscriptionView
-init|=
-operator|(
-name|DurableSubscriptionViewMBean
-operator|)
-name|broker
-operator|.
-name|getManagementContext
-argument_list|()
-operator|.
-name|newProxyInstance
-argument_list|(
-name|activeDurableSubName
-argument_list|,
-name|DurableSubscriptionViewMBean
-operator|.
-name|class
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|assertTrue
-argument_list|(
-literal|"is active"
-argument_list|,
-name|durableSubscriptionView
-operator|.
-name|isActive
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"all enqueued"
-argument_list|,
-name|keepDurableSubsActive
-condition|?
-literal|10
-else|:
-literal|0
-argument_list|,
-name|durableSubscriptionView
-operator|.
-name|getEnqueueCounter
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"correct waiting acks"
-argument_list|,
-name|Wait
-operator|.
-name|waitFor
-argument_list|(
-operator|new
-name|Wait
-operator|.
-name|Condition
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|isSatisified
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-return|return
-literal|5
-operator|==
-name|durableSubscriptionView
-operator|.
-name|getMessageCountAwaitingAcknowledge
-argument_list|()
-return|;
-block|}
-block|}
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"correct dequeue"
-argument_list|,
-literal|5
-argument_list|,
-name|durableSubscriptionView
-operator|.
-name|getDequeueCounter
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|ObjectName
-name|destinationName
-init|=
-name|broker
-operator|.
-name|getAdminView
-argument_list|()
-operator|.
-name|getTopics
-argument_list|()
-index|[
-literal|0
-index|]
-decl_stmt|;
-name|TopicViewMBean
-name|topicView
-init|=
-operator|(
-name|TopicViewMBean
-operator|)
-name|broker
-operator|.
-name|getManagementContext
-argument_list|()
-operator|.
-name|newProxyInstance
-argument_list|(
-name|destinationName
-argument_list|,
-name|TopicViewMBean
-operator|.
-name|class
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|assertEquals
-argument_list|(
-literal|"correct enqueue"
-argument_list|,
-literal|10
-argument_list|,
-name|topicView
-operator|.
-name|getEnqueueCount
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"still zero dequeue, we don't decrement on each sub ack to stop exceeding the enqueue count with multiple subs"
-argument_list|,
-literal|0
-argument_list|,
-name|topicView
-operator|.
-name|getDequeueCount
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"inflight"
-argument_list|,
-literal|5
-argument_list|,
-name|topicView
-operator|.
-name|getInFlightCount
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// check some counters when inactive
-name|ObjectName
-name|inActiveDurableSubName
-init|=
-name|broker
-operator|.
-name|getAdminView
-argument_list|()
-operator|.
-name|getInactiveDurableTopicSubscribers
-argument_list|()
-index|[
-literal|0
-index|]
-decl_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"inactive durable sub name: "
-operator|+
-name|inActiveDurableSubName
-argument_list|)
-expr_stmt|;
-name|DurableSubscriptionViewMBean
-name|durableSubscriptionView1
-init|=
-operator|(
-name|DurableSubscriptionViewMBean
-operator|)
-name|broker
-operator|.
-name|getManagementContext
-argument_list|()
-operator|.
-name|newProxyInstance
-argument_list|(
-name|inActiveDurableSubName
-argument_list|,
-name|DurableSubscriptionViewMBean
-operator|.
-name|class
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|assertTrue
-argument_list|(
-literal|"is not active"
-argument_list|,
-operator|!
-name|durableSubscriptionView1
-operator|.
-name|isActive
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"all enqueued"
-argument_list|,
-name|keepDurableSubsActive
-condition|?
-literal|10
-else|:
-literal|0
-argument_list|,
-name|durableSubscriptionView1
-operator|.
-name|getEnqueueCounter
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"correct awaiting ack"
-argument_list|,
-literal|0
-argument_list|,
-name|durableSubscriptionView1
-operator|.
-name|getMessageCountAwaitingAcknowledge
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"correct dequeue"
-argument_list|,
-name|keepDurableSubsActive
-condition|?
-literal|5
-else|:
-literal|0
-argument_list|,
-name|durableSubscriptionView1
-operator|.
-name|getDequeueCounter
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// destination view
-name|assertEquals
-argument_list|(
-literal|"correct enqueue"
-argument_list|,
-literal|10
-argument_list|,
-name|topicView
-operator|.
-name|getEnqueueCount
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"still zero dequeue, we don't decrement on each sub ack to stop exceeding the enqueue count with multiple subs"
-argument_list|,
-literal|0
-argument_list|,
-name|topicView
-operator|.
-name|getDequeueCount
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"inflight back to 0 after deactivate"
-argument_list|,
-literal|0
-argument_list|,
-name|topicView
-operator|.
-name|getInFlightCount
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// consume the rest
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"cliId1"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|consumer
-operator|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|null
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|sent
-operator|/
-literal|2
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|Message
-name|m
-init|=
-name|consumer
-operator|.
-name|receive
-argument_list|(
-literal|30000
-argument_list|)
-decl_stmt|;
-name|assertNotNull
-argument_list|(
-literal|"got message: "
-operator|+
-name|i
-argument_list|,
-name|m
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Got :"
-operator|+
-name|i
-operator|+
-literal|", "
-operator|+
-name|m
-argument_list|)
-expr_stmt|;
-block|}
-name|activeDurableSubName
-operator|=
-name|broker
-operator|.
-name|getAdminView
-argument_list|()
-operator|.
-name|getDurableTopicSubscribers
-argument_list|()
-index|[
-literal|0
-index|]
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"durable sub name: "
-operator|+
-name|activeDurableSubName
-argument_list|)
-expr_stmt|;
-specifier|final
-name|DurableSubscriptionViewMBean
-name|durableSubscriptionView2
-init|=
-operator|(
-name|DurableSubscriptionViewMBean
-operator|)
-name|broker
-operator|.
-name|getManagementContext
-argument_list|()
-operator|.
-name|newProxyInstance
-argument_list|(
-name|activeDurableSubName
-argument_list|,
-name|DurableSubscriptionViewMBean
-operator|.
-name|class
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|assertTrue
-argument_list|(
-literal|"is active"
-argument_list|,
-name|durableSubscriptionView2
-operator|.
-name|isActive
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"all enqueued"
-argument_list|,
-name|keepDurableSubsActive
-condition|?
-literal|10
-else|:
-literal|0
-argument_list|,
-name|durableSubscriptionView2
-operator|.
-name|getEnqueueCounter
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"correct dequeue"
-argument_list|,
-name|Wait
-operator|.
-name|waitFor
-argument_list|(
-operator|new
-name|Wait
-operator|.
-name|Condition
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|isSatisified
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|long
-name|val
-init|=
-name|durableSubscriptionView2
-operator|.
-name|getDequeueCounter
-argument_list|()
-decl_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"dequeue count:"
-operator|+
-name|val
-argument_list|)
-expr_stmt|;
-return|return
-literal|10
-operator|==
-name|val
-return|;
-block|}
-block|}
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|initCombosForTestOfflineSubscriptionCanConsumeAfterOnlineSubs
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|this
-operator|.
-name|addCombinationValues
-argument_list|(
-literal|"defaultPersistenceAdapter"
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-name|PersistenceAdapterChoice
-operator|.
-name|KahaDB
-block|,
-name|PersistenceAdapterChoice
-operator|.
-name|LevelDB
-block|,
-name|PersistenceAdapterChoice
-operator|.
-name|JDBC
-block|}
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|addCombinationValues
-argument_list|(
-literal|"usePrioritySupport"
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-name|Boolean
-operator|.
-name|TRUE
-block|,
-name|Boolean
-operator|.
-name|FALSE
-block|}
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testOfflineSubscriptionCanConsumeAfterOnlineSubs
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|Connection
-name|con
-init|=
-name|createConnection
-argument_list|(
-literal|"offCli1"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"offCli2"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|Connection
-name|con2
-init|=
-name|createConnection
-argument_list|(
-literal|"onlineCli1"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session2
-init|=
-name|con2
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|MessageConsumer
-name|consumer2
-init|=
-name|session2
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener2
-init|=
-operator|new
-name|Listener
-argument_list|()
-decl_stmt|;
-name|consumer2
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener2
-argument_list|)
-expr_stmt|;
-comment|// send messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-name|int
-name|sent
-init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|sent
-operator|++
-expr_stmt|;
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// test online subs
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session2
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con2
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|sent
-argument_list|,
-name|listener2
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-comment|// restart broker
-name|broker
-operator|.
-name|stop
-argument_list|()
-expr_stmt|;
-name|createBroker
-argument_list|(
-literal|false
-comment|/*deleteAllMessages*/
-argument_list|)
-expr_stmt|;
-comment|// test offline
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"offCli1"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Connection
-name|con3
-init|=
-name|createConnection
-argument_list|(
-literal|"offCli2"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session3
-init|=
-name|con3
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|MessageConsumer
-name|consumer3
-init|=
-name|session3
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener
-init|=
-operator|new
-name|Listener
-argument_list|()
-decl_stmt|;
-name|consumer
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-name|Listener
-name|listener3
-init|=
-operator|new
-name|Listener
-argument_list|()
-decl_stmt|;
-name|consumer3
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener3
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|session3
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con3
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|sent
-argument_list|,
-name|listener
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|sent
-argument_list|,
-name|listener3
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|initCombosForTestInterleavedOfflineSubscriptionCanConsume
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|this
-operator|.
-name|addCombinationValues
-argument_list|(
-literal|"defaultPersistenceAdapter"
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-name|PersistenceAdapterChoice
-operator|.
-name|KahaDB
-block|,
-name|PersistenceAdapterChoice
-operator|.
-name|LevelDB
-block|,
-name|PersistenceAdapterChoice
-operator|.
-name|JDBC
-block|}
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testInterleavedOfflineSubscriptionCanConsume
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// create durable subscription 1
-name|Connection
-name|con
-init|=
-name|createConnection
-argument_list|(
-literal|"cliId1"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// send messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-name|int
-name|sent
-init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|sent
-operator|++
-expr_stmt|;
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-comment|// create durable subscription 2
-name|Connection
-name|con2
-init|=
-name|createConnection
-argument_list|(
-literal|"cliId2"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session2
-init|=
-name|con2
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|MessageConsumer
-name|consumer2
-init|=
-name|session2
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener2
-init|=
-operator|new
-name|Listener
-argument_list|()
-decl_stmt|;
-name|consumer2
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener2
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|0
-argument_list|,
-name|listener2
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-name|session2
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con2
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// send some more
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|sent
-operator|++
-expr_stmt|;
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con2
-operator|=
-name|createConnection
-argument_list|(
-literal|"cliId2"
-argument_list|)
-expr_stmt|;
-name|session2
-operator|=
-name|con2
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|consumer2
-operator|=
-name|session2
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|listener2
-operator|=
-operator|new
-name|Listener
-argument_list|(
-literal|"cliId2"
-argument_list|)
-expr_stmt|;
-name|consumer2
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener2
-argument_list|)
-expr_stmt|;
-comment|// test online subs
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|10
-argument_list|,
-name|listener2
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-comment|// consume all messages
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"cliId1"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener
-init|=
-operator|new
-name|Listener
-argument_list|(
-literal|"cliId1"
-argument_list|)
-decl_stmt|;
-name|consumer
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"offline consumer got all"
-argument_list|,
-name|sent
-argument_list|,
-name|listener
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|initCombosForTestMixOfOnLineAndOfflineSubsGetAllMatched
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|this
-operator|.
-name|addCombinationValues
-argument_list|(
-literal|"defaultPersistenceAdapter"
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-name|PersistenceAdapterChoice
-operator|.
-name|KahaDB
-block|,
-name|PersistenceAdapterChoice
-operator|.
-name|LevelDB
-block|,
-name|PersistenceAdapterChoice
-operator|.
-name|JDBC
-block|}
-argument_list|)
-expr_stmt|;
-block|}
-specifier|private
-specifier|static
-name|String
-name|filter
-init|=
-literal|"$a='A1' AND (($b=true AND $c=true) OR ($d='D1' OR $d='D2'))"
-decl_stmt|;
-specifier|public
-name|void
-name|testMixOfOnLineAndOfflineSubsGetAllMatched
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// create offline subs 1
-name|Connection
-name|con
-init|=
-name|createConnection
-argument_list|(
-literal|"offCli1"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-name|filter
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// create offline subs 2
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"offCli2"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-name|filter
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// create online subs
-name|Connection
-name|con2
-init|=
-name|createConnection
-argument_list|(
-literal|"onlineCli1"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session2
-init|=
-name|con2
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|MessageConsumer
-name|consumer2
-init|=
-name|session2
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-name|filter
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener2
-init|=
-operator|new
-name|Listener
-argument_list|()
-decl_stmt|;
-name|consumer2
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener2
-argument_list|)
-expr_stmt|;
-comment|// create non-durable consumer
-name|Connection
-name|con4
-init|=
-name|createConnection
-argument_list|(
-literal|"nondurableCli"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session4
-init|=
-name|con4
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|MessageConsumer
-name|consumer4
-init|=
-name|session4
-operator|.
-name|createConsumer
-argument_list|(
-name|topic
-argument_list|,
-name|filter
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener4
-init|=
-operator|new
-name|Listener
-argument_list|()
-decl_stmt|;
-name|consumer4
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener4
-argument_list|)
-expr_stmt|;
-comment|// send messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-name|boolean
-name|hasRelevant
-init|=
-literal|false
-decl_stmt|;
-name|int
-name|filtered
-init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|100
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|int
-name|postf
-init|=
-call|(
-name|int
-call|)
-argument_list|(
-name|Math
-operator|.
-name|random
-argument_list|()
-operator|*
-literal|9
-argument_list|)
-operator|+
-literal|1
-decl_stmt|;
-name|String
-name|d
-init|=
-literal|"D"
-operator|+
-name|postf
-decl_stmt|;
-if|if
-condition|(
-literal|"D1"
-operator|.
-name|equals
-argument_list|(
-name|d
-argument_list|)
-operator|||
-literal|"D2"
-operator|.
-name|equals
-argument_list|(
-name|d
-argument_list|)
-condition|)
-block|{
-name|hasRelevant
-operator|=
-literal|true
-expr_stmt|;
-name|filtered
-operator|++
-expr_stmt|;
-block|}
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"$a"
-argument_list|,
-literal|"A1"
-argument_list|)
-expr_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"$d"
-argument_list|,
-name|d
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"$a"
-argument_list|,
-literal|"A1"
-argument_list|)
-expr_stmt|;
-name|message
-operator|.
-name|setBooleanProperty
-argument_list|(
-literal|"$b"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|message
-operator|.
-name|setBooleanProperty
-argument_list|(
-literal|"$c"
-argument_list|,
-name|hasRelevant
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|hasRelevant
-condition|)
-name|filtered
-operator|++
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-comment|// test non-durable consumer
-name|session4
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con4
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|filtered
-argument_list|,
-name|listener4
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-comment|// succeeded!
-comment|// test online subs
-name|session2
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con2
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|filtered
-argument_list|,
-name|listener2
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-comment|// succeeded!
-comment|// test offline 1
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"offCli1"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-name|filter
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener
-init|=
-operator|new
-name|FilterCheckListener
-argument_list|()
-decl_stmt|;
-name|consumer
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|filtered
-argument_list|,
-name|listener
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-comment|// test offline 2
-name|Connection
-name|con3
-init|=
-name|createConnection
-argument_list|(
-literal|"offCli2"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session3
-init|=
-name|con3
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|MessageConsumer
-name|consumer3
-init|=
-name|session3
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-name|filter
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener3
-init|=
-operator|new
-name|FilterCheckListener
-argument_list|()
-decl_stmt|;
-name|consumer3
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener3
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session3
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con3
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|filtered
-argument_list|,
-name|listener3
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"no unexpected exceptions: "
-operator|+
-name|exceptions
-argument_list|,
-name|exceptions
-operator|.
-name|isEmpty
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testRemovedDurableSubDeletes
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// create durable subscription 1
-name|Connection
-name|con
-init|=
-name|createConnection
-argument_list|(
-literal|"cliId1"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// send messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|Connection
-name|con2
-init|=
-name|createConnection
-argument_list|(
-literal|"cliId1"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session2
-init|=
-name|con2
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session2
-operator|.
-name|unsubscribe
-argument_list|(
-literal|"SubsId"
-argument_list|)
-expr_stmt|;
-name|session2
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con2
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// see if retroactive can consumer any
-name|topic
-operator|=
-operator|new
-name|ActiveMQTopic
-argument_list|(
-name|topic
-operator|.
-name|getPhysicalName
-argument_list|()
-operator|+
-literal|"?consumer.retroactive=true"
-argument_list|)
-expr_stmt|;
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"offCli2"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-name|filter
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener
-init|=
-operator|new
-name|Listener
-argument_list|()
-decl_stmt|;
-name|consumer
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|0
-argument_list|,
-name|listener
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testRemovedDurableSubDeletesFromIndex
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-if|if
-condition|(
-operator|!
-operator|(
-name|broker
-operator|.
-name|getPersistenceAdapter
-argument_list|()
-operator|instanceof
-name|KahaDBPersistenceAdapter
-operator|)
-condition|)
-block|{
-return|return;
-block|}
-specifier|final
-name|int
-name|numMessages
-init|=
-literal|2750
-decl_stmt|;
-name|KahaDBPersistenceAdapter
-name|kahaDBPersistenceAdapter
-init|=
-operator|(
-name|KahaDBPersistenceAdapter
-operator|)
-name|broker
-operator|.
-name|getPersistenceAdapter
-argument_list|()
-decl_stmt|;
-name|PageFile
-name|pageFile
-init|=
-name|kahaDBPersistenceAdapter
-operator|.
-name|getStore
-argument_list|()
-operator|.
-name|getPageFile
-argument_list|()
-decl_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"PageCount "
-operator|+
-name|pageFile
-operator|.
-name|getPageCount
-argument_list|()
-operator|+
-literal|" f:"
-operator|+
-name|pageFile
-operator|.
-name|getFreePageCount
-argument_list|()
-operator|+
-literal|", fileSize:"
-operator|+
-name|pageFile
-operator|.
-name|getFile
-argument_list|()
-operator|.
-name|length
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|long
-name|lastDiff
-init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|int
-name|repeats
-init|=
-literal|0
-init|;
-name|repeats
-operator|<
-literal|2
-condition|;
-name|repeats
-operator|++
-control|)
-block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Iteration: "
-operator|+
-name|repeats
-operator|+
-literal|" Count:"
-operator|+
-name|pageFile
-operator|.
-name|getPageCount
-argument_list|()
-operator|+
-literal|" f:"
-operator|+
-name|pageFile
-operator|.
-name|getFreePageCount
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|Connection
-name|con
-init|=
-name|createConnection
-argument_list|(
-literal|"cliId1"
-operator|+
-literal|"-"
-operator|+
-name|repeats
-argument_list|)
-decl_stmt|;
-name|Session
-name|session
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// send messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|numMessages
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|Connection
-name|con2
-init|=
-name|createConnection
-argument_list|(
-literal|"cliId1"
-operator|+
-literal|"-"
-operator|+
-name|repeats
-argument_list|)
-decl_stmt|;
-name|Session
-name|session2
-init|=
-name|con2
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session2
-operator|.
-name|unsubscribe
-argument_list|(
-literal|"SubsId"
-argument_list|)
-expr_stmt|;
-name|session2
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con2
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"PageCount "
-operator|+
-name|pageFile
-operator|.
-name|getPageCount
-argument_list|()
-operator|+
-literal|" f:"
-operator|+
-name|pageFile
-operator|.
-name|getFreePageCount
-argument_list|()
-operator|+
-literal|" diff: "
-operator|+
-operator|(
-name|pageFile
-operator|.
-name|getPageCount
-argument_list|()
-operator|-
-name|pageFile
-operator|.
-name|getFreePageCount
-argument_list|()
-operator|)
-operator|+
-literal|" fileSize:"
-operator|+
-name|pageFile
-operator|.
-name|getFile
-argument_list|()
-operator|.
-name|length
-argument_list|()
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|lastDiff
-operator|!=
-literal|0
-condition|)
-block|{
-name|assertEquals
-argument_list|(
-literal|"Only use X pages per iteration: "
-operator|+
-name|repeats
-argument_list|,
-name|lastDiff
-argument_list|,
-name|pageFile
-operator|.
-name|getPageCount
-argument_list|()
-operator|-
-name|pageFile
-operator|.
-name|getFreePageCount
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-name|lastDiff
-operator|=
-name|pageFile
-operator|.
-name|getPageCount
-argument_list|()
-operator|-
-name|pageFile
-operator|.
-name|getFreePageCount
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-specifier|public
-name|void
-name|initCombosForTestOfflineSubscriptionWithSelectorAfterRestart
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|this
-operator|.
-name|addCombinationValues
-argument_list|(
-literal|"defaultPersistenceAdapter"
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-name|PersistenceAdapterChoice
-operator|.
-name|KahaDB
-block|,
-name|PersistenceAdapterChoice
-operator|.
-name|LevelDB
-block|,
-name|PersistenceAdapterChoice
-operator|.
-name|JDBC
-block|}
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testOfflineSubscriptionWithSelectorAfterRestart
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-if|if
-condition|(
-name|PersistenceAdapterChoice
-operator|.
-name|LevelDB
-operator|==
-name|defaultPersistenceAdapter
-condition|)
-block|{
-comment|// https://issues.apache.org/jira/browse/AMQ-4296
-return|return;
-block|}
-comment|// create offline subs 1
-name|Connection
-name|con
-init|=
-name|createConnection
-argument_list|(
-literal|"offCli1"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// create offline subs 2
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"offCli2"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// send messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-name|int
-name|filtered
-init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|boolean
-name|filter
-init|=
-call|(
-name|int
-call|)
-argument_list|(
-name|Math
-operator|.
-name|random
-argument_list|()
-operator|*
-literal|2
-argument_list|)
-operator|>=
-literal|1
-decl_stmt|;
-if|if
-condition|(
-name|filter
-condition|)
-name|filtered
-operator|++
-expr_stmt|;
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-name|filter
-condition|?
-literal|"true"
-else|:
-literal|"false"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"sent: "
-operator|+
-name|filtered
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// restart broker
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|broker
-operator|.
-name|stop
-argument_list|()
-expr_stmt|;
-name|createBroker
-argument_list|(
-literal|false
-comment|/*deleteAllMessages*/
-argument_list|)
-expr_stmt|;
-comment|// send more messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|producer
-operator|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|boolean
-name|filter
-init|=
-call|(
-name|int
-call|)
-argument_list|(
-name|Math
-operator|.
-name|random
-argument_list|()
-operator|*
-literal|2
-argument_list|)
-operator|>=
-literal|1
-decl_stmt|;
-if|if
-condition|(
-name|filter
-condition|)
-name|filtered
-operator|++
-expr_stmt|;
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-name|filter
-condition|?
-literal|"true"
-else|:
-literal|"false"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"after restart, total sent with filter='true': "
-operator|+
-name|filtered
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// test offline subs
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"offCli1"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener
-init|=
-operator|new
-name|Listener
-argument_list|(
-literal|"1>"
-argument_list|)
-decl_stmt|;
-name|consumer
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-name|Connection
-name|con3
-init|=
-name|createConnection
-argument_list|(
-literal|"offCli2"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session3
-init|=
-name|con3
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|MessageConsumer
-name|consumer3
-init|=
-name|session3
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener3
-init|=
-operator|new
-name|Listener
-argument_list|()
-decl_stmt|;
-name|consumer3
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener3
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|session3
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con3
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|filtered
-argument_list|,
-name|listener
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|filtered
-argument_list|,
-name|listener3
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|initCombosForTestOfflineAfterRestart
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|this
-operator|.
-name|addCombinationValues
-argument_list|(
-literal|"defaultPersistenceAdapter"
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-name|PersistenceAdapterChoice
-operator|.
-name|KahaDB
-block|,
-name|PersistenceAdapterChoice
-operator|.
-name|LevelDB
-block|,
-name|PersistenceAdapterChoice
-operator|.
-name|JDBC
-block|}
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testOfflineSubscriptionAfterRestart
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// create offline subs 1
-name|Connection
-name|con
-init|=
-name|createConnection
-argument_list|(
-literal|"offCli1"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|null
-argument_list|,
-literal|false
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener
-init|=
-operator|new
-name|Listener
-argument_list|()
-decl_stmt|;
-name|consumer
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-comment|// send messages
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-name|int
-name|sent
-init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|sent
-operator|++
-expr_stmt|;
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-literal|"false"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"sent: "
-operator|+
-name|sent
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|5
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|sent
-argument_list|,
-name|listener
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-comment|// restart broker
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|broker
-operator|.
-name|stop
-argument_list|()
-expr_stmt|;
-name|createBroker
-argument_list|(
-literal|false
-comment|/*deleteAllMessages*/
-argument_list|)
-expr_stmt|;
-comment|// send more messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|producer
-operator|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|sent
-operator|++
-expr_stmt|;
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-literal|"false"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"after restart, sent: "
-operator|+
-name|sent
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// test offline subs
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"offCli1"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|consumer
-operator|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|null
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|consumer
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|sent
-argument_list|,
-name|listener
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testInterleavedOfflineSubscriptionCanConsumeAfterUnsub
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// create offline subs 1
-name|Connection
-name|con
-init|=
-name|createConnection
-argument_list|(
-literal|"offCli1"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// create offline subs 2
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"offCli2"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|null
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// send messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-name|int
-name|sent
-init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|boolean
-name|filter
-init|=
-call|(
-name|int
-call|)
-argument_list|(
-name|Math
-operator|.
-name|random
-argument_list|()
-operator|*
-literal|2
-argument_list|)
-operator|>=
-literal|1
-decl_stmt|;
-name|sent
-operator|++
-expr_stmt|;
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-name|filter
-condition|?
-literal|"true"
-else|:
-literal|"false"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|Connection
-name|con2
-init|=
-name|createConnection
-argument_list|(
-literal|"offCli1"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session2
-init|=
-name|con2
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session2
-operator|.
-name|unsubscribe
-argument_list|(
-literal|"SubsId"
-argument_list|)
-expr_stmt|;
-name|session2
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con2
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// consume all messages
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"offCli2"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|null
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener
-init|=
-operator|new
-name|Listener
-argument_list|(
-literal|"SubsId"
-argument_list|)
-decl_stmt|;
-name|consumer
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"offline consumer got all"
-argument_list|,
-name|sent
-argument_list|,
-name|listener
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testNoDuplicateOnConcurrentSendTranCommitAndActivate
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-specifier|final
-name|int
-name|messageCount
-init|=
-literal|1000
-decl_stmt|;
-name|Connection
-name|con
-init|=
-literal|null
-decl_stmt|;
-name|Session
-name|session
-init|=
-literal|null
-decl_stmt|;
-specifier|final
-name|int
-name|numConsumers
-init|=
-literal|10
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<=
-name|numConsumers
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"cli"
-operator|+
-name|i
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|null
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-class|class
-name|CheckForDupsClient
-implements|implements
-name|Runnable
-block|{
-name|HashSet
-argument_list|<
-name|Long
-argument_list|>
-name|ids
-init|=
-operator|new
-name|HashSet
-argument_list|<
-name|Long
-argument_list|>
-argument_list|()
-decl_stmt|;
-specifier|final
-name|int
-name|id
-decl_stmt|;
-specifier|public
-name|CheckForDupsClient
-parameter_list|(
-name|int
-name|id
-parameter_list|)
-block|{
-name|this
-operator|.
-name|id
-operator|=
-name|id
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
-try|try
-block|{
-name|Connection
-name|con
-init|=
-name|createConnection
-argument_list|(
-literal|"cli"
-operator|+
-name|id
-argument_list|)
-decl_stmt|;
-name|Session
-name|session
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-for|for
-control|(
-name|int
-name|j
-init|=
-literal|0
-init|;
-name|j
-operator|<
-literal|2
-condition|;
-name|j
-operator|++
-control|)
-block|{
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|null
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|messageCount
-operator|/
-literal|2
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|Message
-name|message
-init|=
-name|consumer
-operator|.
-name|receive
-argument_list|(
-literal|4000
-argument_list|)
-decl_stmt|;
-name|assertNotNull
-argument_list|(
-name|message
-argument_list|)
-expr_stmt|;
-name|long
-name|producerSequenceId
-init|=
-operator|new
-name|MessageId
-argument_list|(
-name|message
-operator|.
-name|getJMSMessageID
-argument_list|()
-argument_list|)
-operator|.
-name|getProducerSequenceId
-argument_list|()
-decl_stmt|;
-name|assertTrue
-argument_list|(
-literal|"ID="
-operator|+
-name|id
-operator|+
-literal|" not a duplicate: "
-operator|+
-name|producerSequenceId
-argument_list|,
-name|ids
-operator|.
-name|add
-argument_list|(
-name|producerSequenceId
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-name|consumer
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-comment|// verify no duplicates left
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|null
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Message
-name|message
-init|=
-name|consumer
-operator|.
-name|receive
-argument_list|(
-literal|4000
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|message
-operator|!=
-literal|null
-condition|)
-block|{
-name|long
-name|producerSequenceId
-init|=
-operator|new
-name|MessageId
-argument_list|(
-name|message
-operator|.
-name|getJMSMessageID
-argument_list|()
-argument_list|)
-operator|.
-name|getProducerSequenceId
-argument_list|()
-decl_stmt|;
-name|assertTrue
-argument_list|(
-literal|"ID="
-operator|+
-name|id
-operator|+
-literal|" not a duplicate: "
-operator|+
-name|producerSequenceId
-argument_list|,
-name|ids
-operator|.
-name|add
-argument_list|(
-name|producerSequenceId
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-name|assertNull
-argument_list|(
-name|message
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-name|exceptions
-operator|.
-name|add
-argument_list|(
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
-specifier|final
-name|String
-name|payLoad
-init|=
-operator|new
-name|String
-argument_list|(
-operator|new
-name|byte
-index|[
-literal|1000
-index|]
-argument_list|)
-decl_stmt|;
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-specifier|final
-name|Session
-name|sendSession
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|true
-argument_list|,
-name|Session
-operator|.
-name|SESSION_TRANSACTED
-argument_list|)
-decl_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|sendSession
-operator|.
-name|createProducer
-argument_list|(
-name|topic
-argument_list|)
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|messageCount
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|producer
-operator|.
-name|send
-argument_list|(
-name|sendSession
-operator|.
-name|createTextMessage
-argument_list|(
-name|payLoad
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-name|ExecutorService
-name|executorService
-init|=
-name|Executors
-operator|.
-name|newCachedThreadPool
-argument_list|()
-decl_stmt|;
-comment|// concurrent commit and activate
-name|executorService
-operator|.
-name|execute
-argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
-try|try
-block|{
-name|sendSession
-operator|.
-name|commit
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|JMSException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-name|exceptions
-operator|.
-name|add
-argument_list|(
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
-argument_list|)
-expr_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|numConsumers
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|executorService
-operator|.
-name|execute
-argument_list|(
-operator|new
-name|CheckForDupsClient
-argument_list|(
-name|i
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-name|executorService
-operator|.
-name|shutdown
-argument_list|()
-expr_stmt|;
-name|executorService
-operator|.
-name|awaitTermination
-argument_list|(
-literal|5
-argument_list|,
-name|TimeUnit
-operator|.
-name|MINUTES
-argument_list|)
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"no exceptions: "
-operator|+
-name|exceptions
-argument_list|,
-name|exceptions
-operator|.
-name|isEmpty
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testOrderOnActivateDeactivate
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Iteration: "
-operator|+
-name|i
-argument_list|)
-expr_stmt|;
-name|doTestOrderOnActivateDeactivate
-argument_list|()
-expr_stmt|;
-name|broker
-operator|.
-name|stop
-argument_list|()
-expr_stmt|;
-name|createBroker
-argument_list|(
-literal|true
-comment|/*deleteAllMessages*/
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+comment|//    public void initCombosForTestConsumeOnlyMatchedMessages() throws Exception {
+comment|//        this.addCombinationValues("defaultPersistenceAdapter",
+comment|//                new Object[]{ PersistenceAdapterChoice.KahaDB, PersistenceAdapterChoice.LevelDB, PersistenceAdapterChoice.JDBC});
+comment|//        this.addCombinationValues("usePrioritySupport",
+comment|//                new Object[]{ Boolean.TRUE, Boolean.FALSE});
+comment|//    }
+comment|//
+comment|//    public void testConsumeOnlyMatchedMessages() throws Exception {
+comment|//        // create durable subscription
+comment|//        Connection con = createConnection();
+comment|//        Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // send messages
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageProducer producer = session.createProducer(null);
+comment|//
+comment|//        int sent = 0;
+comment|//        for (int i = 0; i< 10; i++) {
+comment|//            boolean filter = i % 2 == 1;
+comment|//            if (filter)
+comment|//                sent++;
+comment|//
+comment|//            Message message = session.createMessage();
+comment|//            message.setStringProperty("filter", filter ? "true" : "false");
+comment|//            producer.send(topic, message);
+comment|//        }
+comment|//
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // consume messages
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer = session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        Listener listener = new Listener();
+comment|//        consumer.setMessageListener(listener);
+comment|//
+comment|//        Thread.sleep(3 * 1000);
+comment|//
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        assertEquals(sent, listener.count);
+comment|//    }
+comment|//
+comment|//     public void testConsumeAllMatchedMessages() throws Exception {
+comment|//         // create durable subscription
+comment|//         Connection con = createConnection();
+comment|//         Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//         session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//         session.close();
+comment|//         con.close();
+comment|//
+comment|//         // send messages
+comment|//         con = createConnection();
+comment|//         session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//         MessageProducer producer = session.createProducer(null);
+comment|//
+comment|//         int sent = 0;
+comment|//         for (int i = 0; i< 10; i++) {
+comment|//             sent++;
+comment|//             Message message = session.createMessage();
+comment|//             message.setStringProperty("filter", "true");
+comment|//             producer.send(topic, message);
+comment|//         }
+comment|//
+comment|//         Thread.sleep(1 * 1000);
+comment|//
+comment|//         session.close();
+comment|//         con.close();
+comment|//
+comment|//         // consume messages
+comment|//         con = createConnection();
+comment|//         session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//         MessageConsumer consumer = session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//         Listener listener = new Listener();
+comment|//         consumer.setMessageListener(listener);
+comment|//
+comment|//         Thread.sleep(3 * 1000);
+comment|//
+comment|//         session.close();
+comment|//         con.close();
+comment|//
+comment|//         assertEquals(sent, listener.count);
+comment|//     }
+comment|//
+comment|//    public void initCombosForTestVerifyAllConsumedAreAcked() throws Exception {
+comment|//        this.addCombinationValues("defaultPersistenceAdapter",
+comment|//               new Object[]{ PersistenceAdapterChoice.KahaDB, PersistenceAdapterChoice.LevelDB, PersistenceAdapterChoice.JDBC});
+comment|//        this.addCombinationValues("usePrioritySupport",
+comment|//                new Object[]{ Boolean.TRUE, Boolean.FALSE});
+comment|//    }
+comment|//
+comment|//     public void testVerifyAllConsumedAreAcked() throws Exception {
+comment|//         // create durable subscription
+comment|//         Connection con = createConnection();
+comment|//         Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//         session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//         session.close();
+comment|//         con.close();
+comment|//
+comment|//         // send messages
+comment|//         con = createConnection();
+comment|//         session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//         MessageProducer producer = session.createProducer(null);
+comment|//
+comment|//         int sent = 0;
+comment|//         for (int i = 0; i< 10; i++) {
+comment|//             sent++;
+comment|//             Message message = session.createMessage();
+comment|//             message.setStringProperty("filter", "true");
+comment|//             producer.send(topic, message);
+comment|//         }
+comment|//
+comment|//         Thread.sleep(1 * 1000);
+comment|//
+comment|//         session.close();
+comment|//         con.close();
+comment|//
+comment|//         // consume messages
+comment|//         con = createConnection();
+comment|//         session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//         MessageConsumer consumer = session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//         Listener listener = new Listener();
+comment|//         consumer.setMessageListener(listener);
+comment|//
+comment|//         Thread.sleep(3 * 1000);
+comment|//
+comment|//         session.close();
+comment|//         con.close();
+comment|//
+comment|//         LOG.info("Consumed: " + listener.count);
+comment|//         assertEquals(sent, listener.count);
+comment|//
+comment|//         // consume messages again, should not get any
+comment|//         con = createConnection();
+comment|//         session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//         consumer = session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//         listener = new Listener();
+comment|//         consumer.setMessageListener(listener);
+comment|//
+comment|//         Thread.sleep(3 * 1000);
+comment|//
+comment|//         session.close();
+comment|//         con.close();
+comment|//
+comment|//         assertEquals(0, listener.count);
+comment|//     }
+comment|//
+comment|//    public void testTwoOfflineSubscriptionCanConsume() throws Exception {
+comment|//        // create durable subscription 1
+comment|//        Connection con = createConnection("cliId1");
+comment|//        Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // create durable subscription 2
+comment|//        Connection con2 = createConnection("cliId2");
+comment|//        Session session2 = con2.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer2 = session2.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        Listener listener2 = new Listener();
+comment|//        consumer2.setMessageListener(listener2);
+comment|//
+comment|//        // send messages
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageProducer producer = session.createProducer(null);
+comment|//
+comment|//        int sent = 0;
+comment|//        for (int i = 0; i< 10; i++) {
+comment|//            sent++;
+comment|//            Message message = session.createMessage();
+comment|//            message.setStringProperty("filter", "true");
+comment|//            producer.send(topic, message);
+comment|//        }
+comment|//
+comment|//        Thread.sleep(1 * 1000);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // test online subs
+comment|//        Thread.sleep(3 * 1000);
+comment|//        session2.close();
+comment|//        con2.close();
+comment|//
+comment|//        assertEquals(sent, listener2.count);
+comment|//
+comment|//        // consume messages
+comment|//        con = createConnection("cliId1");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer = session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        Listener listener = new Listener();
+comment|//        consumer.setMessageListener(listener);
+comment|//
+comment|//        Thread.sleep(3 * 1000);
+comment|//
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        assertEquals("offline consumer got all", sent, listener.count);
+comment|//    }
+comment|//
+comment|//    public void initCombosForTestJMXCountersWithOfflineSubs() throws Exception {
+comment|//        this.addCombinationValues("keepDurableSubsActive",
+comment|//                new Object[]{Boolean.TRUE, Boolean.FALSE});
+comment|//    }
+comment|//
+comment|//    public void testJMXCountersWithOfflineSubs() throws Exception {
+comment|//        // create durable subscription 1
+comment|//        Connection con = createConnection("cliId1");
+comment|//        Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", null, true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // restart broker
+comment|//        broker.stop();
+comment|//        createBroker(false /*deleteAllMessages*/);
+comment|//
+comment|//        // send messages
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageProducer producer = session.createProducer(null);
+comment|//
+comment|//        int sent = 0;
+comment|//        for (int i = 0; i< 10; i++) {
+comment|//            sent++;
+comment|//            Message message = session.createMessage();
+comment|//            producer.send(topic, message);
+comment|//        }
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // consume some messages
+comment|//        con = createConnection("cliId1");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer = session.createDurableSubscriber(topic, "SubsId", null, true);
+comment|//
+comment|//        for (int i=0; i<sent/2; i++) {
+comment|//            Message m =  consumer.receive(4000);
+comment|//            assertNotNull("got message: " + i, m);
+comment|//            LOG.info("Got :" + i + ", " + m);
+comment|//        }
+comment|//
+comment|//        // check some counters while active
+comment|//        ObjectName activeDurableSubName = broker.getAdminView().getDurableTopicSubscribers()[0];
+comment|//        LOG.info("active durable sub name: " + activeDurableSubName);
+comment|//        final DurableSubscriptionViewMBean durableSubscriptionView = (DurableSubscriptionViewMBean)
+comment|//                broker.getManagementContext().newProxyInstance(activeDurableSubName, DurableSubscriptionViewMBean.class, true);
+comment|//
+comment|//        assertTrue("is active", durableSubscriptionView.isActive());
+comment|//        assertEquals("all enqueued", keepDurableSubsActive ? 10 : 0, durableSubscriptionView.getEnqueueCounter());
+comment|//        assertTrue("correct waiting acks", Wait.waitFor(new Wait.Condition() {
+comment|//            @Override
+comment|//            public boolean isSatisified() throws Exception {
+comment|//                return 5 == durableSubscriptionView.getMessageCountAwaitingAcknowledge();
+comment|//            }
+comment|//        }));
+comment|//        assertEquals("correct dequeue", 5, durableSubscriptionView.getDequeueCounter());
+comment|//
+comment|//
+comment|//        ObjectName destinationName = broker.getAdminView().getTopics()[0];
+comment|//        TopicViewMBean topicView = (TopicViewMBean) broker.getManagementContext().newProxyInstance(destinationName, TopicViewMBean.class, true);
+comment|//        assertEquals("correct enqueue", 10, topicView.getEnqueueCount());
+comment|//        assertEquals("still zero dequeue, we don't decrement on each sub ack to stop exceeding the enqueue count with multiple subs", 0, topicView.getDequeueCount());
+comment|//        assertEquals("inflight", 5, topicView.getInFlightCount());
+comment|//
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // check some counters when inactive
+comment|//        ObjectName inActiveDurableSubName = broker.getAdminView().getInactiveDurableTopicSubscribers()[0];
+comment|//        LOG.info("inactive durable sub name: " + inActiveDurableSubName);
+comment|//        DurableSubscriptionViewMBean durableSubscriptionView1 = (DurableSubscriptionViewMBean)
+comment|//                broker.getManagementContext().newProxyInstance(inActiveDurableSubName, DurableSubscriptionViewMBean.class, true);
+comment|//
+comment|//        assertTrue("is not active", !durableSubscriptionView1.isActive());
+comment|//        assertEquals("all enqueued", keepDurableSubsActive ? 10 : 0, durableSubscriptionView1.getEnqueueCounter());
+comment|//        assertEquals("correct awaiting ack", 0, durableSubscriptionView1.getMessageCountAwaitingAcknowledge());
+comment|//        assertEquals("correct dequeue", keepDurableSubsActive ? 5 : 0, durableSubscriptionView1.getDequeueCounter());
+comment|//
+comment|//        // destination view
+comment|//        assertEquals("correct enqueue", 10, topicView.getEnqueueCount());
+comment|//        assertEquals("still zero dequeue, we don't decrement on each sub ack to stop exceeding the enqueue count with multiple subs", 0, topicView.getDequeueCount());
+comment|//        assertEquals("inflight back to 0 after deactivate", 0, topicView.getInFlightCount());
+comment|//
+comment|//        // consume the rest
+comment|//        con = createConnection("cliId1");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        consumer = session.createDurableSubscriber(topic, "SubsId", null, true);
+comment|//
+comment|//        for (int i=0; i<sent/2;i++) {
+comment|//            Message m =  consumer.receive(30000);
+comment|//            assertNotNull("got message: " + i, m);
+comment|//            LOG.info("Got :" + i + ", " + m);
+comment|//        }
+comment|//
+comment|//        activeDurableSubName = broker.getAdminView().getDurableTopicSubscribers()[0];
+comment|//        LOG.info("durable sub name: " + activeDurableSubName);
+comment|//        final DurableSubscriptionViewMBean durableSubscriptionView2 = (DurableSubscriptionViewMBean)
+comment|//                broker.getManagementContext().newProxyInstance(activeDurableSubName, DurableSubscriptionViewMBean.class, true);
+comment|//
+comment|//        assertTrue("is active", durableSubscriptionView2.isActive());
+comment|//        assertEquals("all enqueued", keepDurableSubsActive ? 10 : 0, durableSubscriptionView2.getEnqueueCounter());
+comment|//        assertTrue("correct dequeue", Wait.waitFor(new Wait.Condition() {
+comment|//            @Override
+comment|//            public boolean isSatisified() throws Exception {
+comment|//                long val = durableSubscriptionView2.getDequeueCounter();
+comment|//                LOG.info("dequeue count:" + val);
+comment|//                return 10 == val;
+comment|//            }
+comment|//        }));
+comment|//    }
+comment|//
+comment|//    public void initCombosForTestOfflineSubscriptionCanConsumeAfterOnlineSubs() throws Exception {
+comment|//        this.addCombinationValues("defaultPersistenceAdapter",
+comment|//                new Object[]{ PersistenceAdapterChoice.KahaDB, PersistenceAdapterChoice.LevelDB, PersistenceAdapterChoice.JDBC});
+comment|//        this.addCombinationValues("usePrioritySupport",
+comment|//                new Object[]{ Boolean.TRUE, Boolean.FALSE});
+comment|//    }
+comment|//
+comment|//    public void testOfflineSubscriptionCanConsumeAfterOnlineSubs() throws Exception {
+comment|//        Connection con = createConnection("offCli1");
+comment|//        Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        con = createConnection("offCli2");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        Connection con2 = createConnection("onlineCli1");
+comment|//        Session session2 = con2.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer2 = session2.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        Listener listener2 = new Listener();
+comment|//        consumer2.setMessageListener(listener2);
+comment|//
+comment|//        // send messages
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageProducer producer = session.createProducer(null);
+comment|//
+comment|//        int sent = 0;
+comment|//        for (int i = 0; i< 10; i++) {
+comment|//            sent++;
+comment|//            Message message = session.createMessage();
+comment|//            message.setStringProperty("filter", "true");
+comment|//            producer.send(topic, message);
+comment|//        }
+comment|//
+comment|//        Thread.sleep(1 * 1000);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // test online subs
+comment|//        Thread.sleep(3 * 1000);
+comment|//        session2.close();
+comment|//        con2.close();
+comment|//        assertEquals(sent, listener2.count);
+comment|//
+comment|//        // restart broker
+comment|//        broker.stop();
+comment|//        createBroker(false /*deleteAllMessages*/);
+comment|//
+comment|//        // test offline
+comment|//        con = createConnection("offCli1");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer = session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//
+comment|//        Connection con3 = createConnection("offCli2");
+comment|//        Session session3 = con3.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer3 = session3.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//
+comment|//        Listener listener = new Listener();
+comment|//        consumer.setMessageListener(listener);
+comment|//        Listener listener3 = new Listener();
+comment|//        consumer3.setMessageListener(listener3);
+comment|//
+comment|//        Thread.sleep(3 * 1000);
+comment|//
+comment|//        session.close();
+comment|//        con.close();
+comment|//        session3.close();
+comment|//        con3.close();
+comment|//
+comment|//        assertEquals(sent, listener.count);
+comment|//        assertEquals(sent, listener3.count);
+comment|//    }
+comment|//
+comment|//    public void initCombosForTestInterleavedOfflineSubscriptionCanConsume() throws Exception {
+comment|//        this.addCombinationValues("defaultPersistenceAdapter",
+comment|//                new Object[]{PersistenceAdapterChoice.KahaDB, PersistenceAdapterChoice.LevelDB, PersistenceAdapterChoice.JDBC});
+comment|//    }
+comment|//
+comment|//    public void testInterleavedOfflineSubscriptionCanConsume() throws Exception {
+comment|//        // create durable subscription 1
+comment|//        Connection con = createConnection("cliId1");
+comment|//        Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // send messages
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageProducer producer = session.createProducer(null);
+comment|//
+comment|//        int sent = 0;
+comment|//        for (int i = 0; i< 10; i++) {
+comment|//            sent++;
+comment|//            Message message = session.createMessage();
+comment|//            message.setStringProperty("filter", "true");
+comment|//            producer.send(topic, message);
+comment|//        }
+comment|//
+comment|//        Thread.sleep(1 * 1000);
+comment|//
+comment|//        // create durable subscription 2
+comment|//        Connection con2 = createConnection("cliId2");
+comment|//        Session session2 = con2.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer2 = session2.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        Listener listener2 = new Listener();
+comment|//        consumer2.setMessageListener(listener2);
+comment|//
+comment|//        assertEquals(0, listener2.count);
+comment|//        session2.close();
+comment|//        con2.close();
+comment|//
+comment|//        // send some more
+comment|//        for (int i = 0; i< 10; i++) {
+comment|//            sent++;
+comment|//            Message message = session.createMessage();
+comment|//            message.setStringProperty("filter", "true");
+comment|//            producer.send(topic, message);
+comment|//        }
+comment|//
+comment|//        Thread.sleep(1 * 1000);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        con2 = createConnection("cliId2");
+comment|//        session2 = con2.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        consumer2 = session2.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        listener2 = new Listener("cliId2");
+comment|//        consumer2.setMessageListener(listener2);
+comment|//        // test online subs
+comment|//        Thread.sleep(3 * 1000);
+comment|//
+comment|//        assertEquals(10, listener2.count);
+comment|//
+comment|//        // consume all messages
+comment|//        con = createConnection("cliId1");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer = session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        Listener listener = new Listener("cliId1");
+comment|//        consumer.setMessageListener(listener);
+comment|//
+comment|//        Thread.sleep(3 * 1000);
+comment|//
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        assertEquals("offline consumer got all", sent, listener.count);
+comment|//    }
+comment|//
+comment|//    public void initCombosForTestMixOfOnLineAndOfflineSubsGetAllMatched() throws Exception {
+comment|//        this.addCombinationValues("defaultPersistenceAdapter",
+comment|//                new Object[]{ PersistenceAdapterChoice.KahaDB, PersistenceAdapterChoice.LevelDB, PersistenceAdapterChoice.JDBC});
+comment|//    }
+comment|//
+comment|//    private static String filter = "$a='A1' AND (($b=true AND $c=true) OR ($d='D1' OR $d='D2'))";
+comment|//    public void testMixOfOnLineAndOfflineSubsGetAllMatched() throws Exception {
+comment|//        // create offline subs 1
+comment|//        Connection con = createConnection("offCli1");
+comment|//        Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", filter, true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // create offline subs 2
+comment|//        con = createConnection("offCli2");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", filter, true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // create online subs
+comment|//        Connection con2 = createConnection("onlineCli1");
+comment|//        Session session2 = con2.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer2 = session2.createDurableSubscriber(topic, "SubsId", filter, true);
+comment|//        Listener listener2 = new Listener();
+comment|//        consumer2.setMessageListener(listener2);
+comment|//
+comment|//        // create non-durable consumer
+comment|//        Connection con4 = createConnection("nondurableCli");
+comment|//        Session session4 = con4.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer4 = session4.createConsumer(topic, filter, true);
+comment|//        Listener listener4 = new Listener();
+comment|//        consumer4.setMessageListener(listener4);
+comment|//
+comment|//        // send messages
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageProducer producer = session.createProducer(null);
+comment|//
+comment|//        boolean hasRelevant = false;
+comment|//        int filtered = 0;
+comment|//        for (int i = 0; i< 100; i++) {
+comment|//            int postf = (int) (Math.random() * 9) + 1;
+comment|//            String d = "D" + postf;
+comment|//
+comment|//            if ("D1".equals(d) || "D2".equals(d)) {
+comment|//                hasRelevant = true;
+comment|//                filtered++;
+comment|//            }
+comment|//
+comment|//            Message message = session.createMessage();
+comment|//            message.setStringProperty("$a", "A1");
+comment|//            message.setStringProperty("$d", d);
+comment|//            producer.send(topic, message);
+comment|//        }
+comment|//
+comment|//        Message message = session.createMessage();
+comment|//        message.setStringProperty("$a", "A1");
+comment|//        message.setBooleanProperty("$b", true);
+comment|//        message.setBooleanProperty("$c", hasRelevant);
+comment|//        producer.send(topic, message);
+comment|//
+comment|//        if (hasRelevant)
+comment|//            filtered++;
+comment|//
+comment|//        Thread.sleep(1 * 1000);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        Thread.sleep(3 * 1000);
+comment|//
+comment|//        // test non-durable consumer
+comment|//        session4.close();
+comment|//        con4.close();
+comment|//        assertEquals(filtered, listener4.count); // succeeded!
+comment|//
+comment|//        // test online subs
+comment|//        session2.close();
+comment|//        con2.close();
+comment|//        assertEquals(filtered, listener2.count); // succeeded!
+comment|//
+comment|//        // test offline 1
+comment|//        con = createConnection("offCli1");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer = session.createDurableSubscriber(topic, "SubsId", filter, true);
+comment|//        Listener listener = new FilterCheckListener();
+comment|//        consumer.setMessageListener(listener);
+comment|//
+comment|//        Thread.sleep(3 * 1000);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        assertEquals(filtered, listener.count);
+comment|//
+comment|//        // test offline 2
+comment|//        Connection con3 = createConnection("offCli2");
+comment|//        Session session3 = con3.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer3 = session3.createDurableSubscriber(topic, "SubsId", filter, true);
+comment|//        Listener listener3 = new FilterCheckListener();
+comment|//        consumer3.setMessageListener(listener3);
+comment|//
+comment|//        Thread.sleep(3 * 1000);
+comment|//        session3.close();
+comment|//        con3.close();
+comment|//
+comment|//        assertEquals(filtered, listener3.count);
+comment|//        assertTrue("no unexpected exceptions: " + exceptions, exceptions.isEmpty());
+comment|//    }
+comment|//
+comment|//    public void testRemovedDurableSubDeletes() throws Exception {
+comment|//        // create durable subscription 1
+comment|//        Connection con = createConnection("cliId1");
+comment|//        Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // send messages
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageProducer producer = session.createProducer(null);
+comment|//
+comment|//        for (int i = 0; i< 10; i++) {
+comment|//            Message message = session.createMessage();
+comment|//            message.setStringProperty("filter", "true");
+comment|//            producer.send(topic, message);
+comment|//        }
+comment|//
+comment|//        Thread.sleep(1 * 1000);
+comment|//
+comment|//        Connection con2 = createConnection("cliId1");
+comment|//        Session session2 = con2.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session2.unsubscribe("SubsId");
+comment|//        session2.close();
+comment|//        con2.close();
+comment|//
+comment|//        // see if retroactive can consumer any
+comment|//        topic = new ActiveMQTopic(topic.getPhysicalName() + "?consumer.retroactive=true");
+comment|//        con = createConnection("offCli2");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer = session.createDurableSubscriber(topic, "SubsId", filter, true);
+comment|//        Listener listener = new Listener();
+comment|//        consumer.setMessageListener(listener);
+comment|//        session.close();
+comment|//        con.close();
+comment|//        assertEquals(0, listener.count);
+comment|//    }
+comment|//
+comment|//    public void testRemovedDurableSubDeletesFromIndex() throws Exception {
+comment|//
+comment|//        if (! (broker.getPersistenceAdapter() instanceof KahaDBPersistenceAdapter)) {
+comment|//            return;
+comment|//        }
+comment|//
+comment|//        final int numMessages = 2750;
+comment|//
+comment|//        KahaDBPersistenceAdapter kahaDBPersistenceAdapter = (KahaDBPersistenceAdapter)broker.getPersistenceAdapter();
+comment|//        PageFile pageFile = kahaDBPersistenceAdapter.getStore().getPageFile();
+comment|//        LOG.info("PageCount " + pageFile.getPageCount() + " f:" + pageFile.getFreePageCount() + ", fileSize:" + pageFile.getFile().length());
+comment|//
+comment|//        long lastDiff = 0;
+comment|//        for (int repeats=0; repeats<2; repeats++) {
+comment|//
+comment|//            LOG.info("Iteration: "+ repeats  + " Count:" + pageFile.getPageCount() + " f:" + pageFile.getFreePageCount());
+comment|//
+comment|//            Connection con = createConnection("cliId1" + "-" + repeats);
+comment|//            Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//            session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//            session.close();
+comment|//            con.close();
+comment|//
+comment|//            // send messages
+comment|//            con = createConnection();
+comment|//            session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//            MessageProducer producer = session.createProducer(null);
+comment|//
+comment|//            for (int i = 0; i< numMessages; i++) {
+comment|//                Message message = session.createMessage();
+comment|//                message.setStringProperty("filter", "true");
+comment|//                producer.send(topic, message);
+comment|//            }
+comment|//            con.close();
+comment|//
+comment|//            Connection con2 = createConnection("cliId1" + "-" + repeats);
+comment|//            Session session2 = con2.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//            session2.unsubscribe("SubsId");
+comment|//            session2.close();
+comment|//            con2.close();
+comment|//
+comment|//            LOG.info("PageCount " + pageFile.getPageCount() + " f:" + pageFile.getFreePageCount() +  " diff: " + (pageFile.getPageCount() - pageFile.getFreePageCount()) + " fileSize:" + pageFile.getFile().length());
+comment|//
+comment|//            if (lastDiff != 0) {
+comment|//                assertEquals("Only use X pages per iteration: " + repeats, lastDiff, pageFile.getPageCount() - pageFile.getFreePageCount());
+comment|//            }
+comment|//            lastDiff = pageFile.getPageCount() - pageFile.getFreePageCount();
+comment|//        }
+comment|//    }
+comment|//
+comment|//    public void initCombosForTestOfflineSubscriptionWithSelectorAfterRestart() throws Exception {
+comment|//        this.addCombinationValues("defaultPersistenceAdapter",
+comment|//                new Object[]{ PersistenceAdapterChoice.KahaDB, PersistenceAdapterChoice.LevelDB, PersistenceAdapterChoice.JDBC});
+comment|//    }
+comment|//
+comment|//    public void testOfflineSubscriptionWithSelectorAfterRestart() throws Exception {
+comment|//
+comment|//        if (PersistenceAdapterChoice.LevelDB == defaultPersistenceAdapter) {
+comment|//            // https://issues.apache.org/jira/browse/AMQ-4296
+comment|//            return;
+comment|//        }
+comment|//
+comment|//        // create offline subs 1
+comment|//        Connection con = createConnection("offCli1");
+comment|//        Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // create offline subs 2
+comment|//        con = createConnection("offCli2");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // send messages
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageProducer producer = session.createProducer(null);
+comment|//
+comment|//        int filtered = 0;
+comment|//        for (int i = 0; i< 10; i++) {
+comment|//            boolean filter = (int) (Math.random() * 2)>= 1;
+comment|//            if (filter)
+comment|//                filtered++;
+comment|//
+comment|//            Message message = session.createMessage();
+comment|//            message.setStringProperty("filter", filter ? "true" : "false");
+comment|//            producer.send(topic, message);
+comment|//        }
+comment|//
+comment|//        LOG.info("sent: " + filtered);
+comment|//        Thread.sleep(1 * 1000);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // restart broker
+comment|//        Thread.sleep(3 * 1000);
+comment|//        broker.stop();
+comment|//        createBroker(false /*deleteAllMessages*/);
+comment|//
+comment|//        // send more messages
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        producer = session.createProducer(null);
+comment|//
+comment|//        for (int i = 0; i< 10; i++) {
+comment|//            boolean filter = (int) (Math.random() * 2)>= 1;
+comment|//            if (filter)
+comment|//                filtered++;
+comment|//
+comment|//            Message message = session.createMessage();
+comment|//            message.setStringProperty("filter", filter ? "true" : "false");
+comment|//            producer.send(topic, message);
+comment|//        }
+comment|//
+comment|//        LOG.info("after restart, total sent with filter='true': " + filtered);
+comment|//        Thread.sleep(1 * 1000);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // test offline subs
+comment|//        con = createConnection("offCli1");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer = session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        Listener listener = new Listener("1>");
+comment|//        consumer.setMessageListener(listener);
+comment|//
+comment|//        Connection con3 = createConnection("offCli2");
+comment|//        Session session3 = con3.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer3 = session3.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        Listener listener3 = new Listener();
+comment|//        consumer3.setMessageListener(listener3);
+comment|//
+comment|//        Thread.sleep(3 * 1000);
+comment|//
+comment|//        session.close();
+comment|//        con.close();
+comment|//        session3.close();
+comment|//        con3.close();
+comment|//
+comment|//        assertEquals(filtered, listener.count);
+comment|//        assertEquals(filtered, listener3.count);
+comment|//    }
+comment|//
+comment|//    public void initCombosForTestOfflineAfterRestart() throws Exception {
+comment|//        this.addCombinationValues("defaultPersistenceAdapter",
+comment|//                new Object[]{ PersistenceAdapterChoice.KahaDB, PersistenceAdapterChoice.LevelDB, PersistenceAdapterChoice.JDBC});
+comment|//    }
+comment|//
+comment|//    public void testOfflineSubscriptionAfterRestart() throws Exception {
+comment|//        // create offline subs 1
+comment|//        Connection con = createConnection("offCli1");
+comment|//        Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer = session.createDurableSubscriber(topic, "SubsId", null, false);
+comment|//        Listener listener = new Listener();
+comment|//        consumer.setMessageListener(listener);
+comment|//
+comment|//        // send messages
+comment|//        MessageProducer producer = session.createProducer(null);
+comment|//
+comment|//        int sent = 0;
+comment|//        for (int i = 0; i< 10; i++) {
+comment|//            sent++;
+comment|//            Message message = session.createMessage();
+comment|//            message.setStringProperty("filter", "false");
+comment|//            producer.send(topic, message);
+comment|//        }
+comment|//
+comment|//        LOG.info("sent: " + sent);
+comment|//        Thread.sleep(5 * 1000);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        assertEquals(sent, listener.count);
+comment|//
+comment|//        // restart broker
+comment|//        Thread.sleep(3 * 1000);
+comment|//        broker.stop();
+comment|//        createBroker(false /*deleteAllMessages*/);
+comment|//
+comment|//        // send more messages
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        producer = session.createProducer(null);
+comment|//
+comment|//        for (int i = 0; i< 10; i++) {
+comment|//            sent++;
+comment|//            Message message = session.createMessage();
+comment|//            message.setStringProperty("filter", "false");
+comment|//            producer.send(topic, message);
+comment|//        }
+comment|//
+comment|//        LOG.info("after restart, sent: " + sent);
+comment|//        Thread.sleep(1 * 1000);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // test offline subs
+comment|//        con = createConnection("offCli1");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        consumer = session.createDurableSubscriber(topic, "SubsId", null, true);
+comment|//        consumer.setMessageListener(listener);
+comment|//
+comment|//        Thread.sleep(3 * 1000);
+comment|//
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        assertEquals(sent, listener.count);
+comment|//    }
+comment|//
+comment|//    public void testInterleavedOfflineSubscriptionCanConsumeAfterUnsub() throws Exception {
+comment|//        // create offline subs 1
+comment|//        Connection con = createConnection("offCli1");
+comment|//        Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // create offline subs 2
+comment|//        con = createConnection("offCli2");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", null, true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // send messages
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageProducer producer = session.createProducer(null);
+comment|//
+comment|//        int sent = 0;
+comment|//        for (int i = 0; i< 10; i++) {
+comment|//            boolean filter = (int) (Math.random() * 2)>= 1;
+comment|//
+comment|//            sent++;
+comment|//
+comment|//            Message message = session.createMessage();
+comment|//            message.setStringProperty("filter", filter ? "true" : "false");
+comment|//            producer.send(topic, message);
+comment|//        }
+comment|//
+comment|//        Thread.sleep(1 * 1000);
+comment|//
+comment|//        Connection con2 = createConnection("offCli1");
+comment|//        Session session2 = con2.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session2.unsubscribe("SubsId");
+comment|//        session2.close();
+comment|//        con2.close();
+comment|//
+comment|//        // consume all messages
+comment|//        con = createConnection("offCli2");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer = session.createDurableSubscriber(topic, "SubsId", null, true);
+comment|//        Listener listener = new Listener("SubsId");
+comment|//        consumer.setMessageListener(listener);
+comment|//
+comment|//        Thread.sleep(3 * 1000);
+comment|//
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        assertEquals("offline consumer got all", sent, listener.count);
+comment|//    }
+comment|//
+comment|//    public void testNoDuplicateOnConcurrentSendTranCommitAndActivate() throws Exception {
+comment|//        final int messageCount = 1000;
+comment|//        Connection con = null;
+comment|//        Session session = null;
+comment|//        final int numConsumers = 10;
+comment|//        for (int i = 0; i<= numConsumers; i++) {
+comment|//            con = createConnection("cli" + i);
+comment|//            session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//            session.createDurableSubscriber(topic, "SubsId", null, true);
+comment|//            session.close();
+comment|//            con.close();
+comment|//        }
+comment|//
+comment|//        class CheckForDupsClient implements Runnable {
+comment|//            HashSet<Long> ids = new HashSet<Long>();
+comment|//            final int id;
+comment|//
+comment|//            public CheckForDupsClient(int id) {
+comment|//                this.id = id;
+comment|//            }
+comment|//
+comment|//            @Override
+comment|//            public void run() {
+comment|//                try {
+comment|//                    Connection con = createConnection("cli" + id);
+comment|//                    Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//                    for (int j=0;j<2;j++) {
+comment|//                        MessageConsumer consumer = session.createDurableSubscriber(topic, "SubsId", null, true);
+comment|//                        for (int i = 0; i< messageCount/2; i++) {
+comment|//                            Message message = consumer.receive(4000);
+comment|//                            assertNotNull(message);
+comment|//                            long producerSequenceId = new MessageId(message.getJMSMessageID()).getProducerSequenceId();
+comment|//                            assertTrue("ID=" + id + " not a duplicate: " + producerSequenceId, ids.add(producerSequenceId));
+comment|//                        }
+comment|//                        consumer.close();
+comment|//                    }
+comment|//
+comment|//                    // verify no duplicates left
+comment|//                    MessageConsumer consumer = session.createDurableSubscriber(topic, "SubsId", null, true);
+comment|//                    Message message = consumer.receive(4000);
+comment|//                    if (message != null) {
+comment|//                        long producerSequenceId = new MessageId(message.getJMSMessageID()).getProducerSequenceId();
+comment|//                        assertTrue("ID=" + id + " not a duplicate: " + producerSequenceId, ids.add(producerSequenceId));
+comment|//                    }
+comment|//                    assertNull(message);
+comment|//
+comment|//
+comment|//                    session.close();
+comment|//                    con.close();
+comment|//                } catch (Throwable e) {
+comment|//                    e.printStackTrace();
+comment|//                    exceptions.add(e);
+comment|//                }
+comment|//            }
+comment|//        }
+comment|//
+comment|//        final String payLoad = new String(new byte[1000]);
+comment|//        con = createConnection();
+comment|//        final Session sendSession = con.createSession(true, Session.SESSION_TRANSACTED);
+comment|//        MessageProducer producer = sendSession.createProducer(topic);
+comment|//        for (int i = 0; i< messageCount; i++) {
+comment|//            producer.send(sendSession.createTextMessage(payLoad));
+comment|//        }
+comment|//
+comment|//        ExecutorService executorService = Executors.newCachedThreadPool();
+comment|//
+comment|//        // concurrent commit and activate
+comment|//        executorService.execute(new Runnable() {
+comment|//            @Override
+comment|//            public void run() {
+comment|//                try {
+comment|//                    sendSession.commit();
+comment|//                } catch (JMSException e) {
+comment|//                    e.printStackTrace();
+comment|//                    exceptions.add(e);
+comment|//                }
+comment|//            }
+comment|//        });
+comment|//        for (int i = 0; i< numConsumers; i++) {
+comment|//            executorService.execute(new CheckForDupsClient(i));
+comment|//        }
+comment|//
+comment|//        executorService.shutdown();
+comment|//        executorService.awaitTermination(5, TimeUnit.MINUTES);
+comment|//        con.close();
+comment|//
+comment|//        assertTrue("no exceptions: " + exceptions, exceptions.isEmpty());
+comment|//    }
+comment|//
+comment|//    public void testOrderOnActivateDeactivate() throws Exception {
+comment|//        for (int i=0;i<10;i++) {
+comment|//            LOG.info("Iteration: " + i);
+comment|//            doTestOrderOnActivateDeactivate();
+comment|//            broker.stop();
+comment|//            createBroker(true /*deleteAllMessages*/);
+comment|//        }
+comment|//    }
 specifier|public
 name|void
 name|doTestOrderOnActivateDeactivate
@@ -7615,1369 +2373,217 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-specifier|public
-name|void
-name|testUnmatchedSubUnsubscribeDeletesAll
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// create offline subs 1
-name|Connection
-name|con
-init|=
-name|createConnection
-argument_list|(
-literal|"offCli1"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// send messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-name|int
-name|filtered
-init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|boolean
-name|filter
-init|=
-operator|(
-name|i
-operator|%
-literal|2
-operator|==
-literal|0
-operator|)
-decl_stmt|;
-comment|//(int) (Math.random() * 2)>= 1;
-if|if
-condition|(
-name|filter
-condition|)
-name|filtered
-operator|++
-expr_stmt|;
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-name|filter
-condition|?
-literal|"true"
-else|:
-literal|"false"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"sent: "
-operator|+
-name|filtered
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// test offline subs
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"offCli1"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|unsubscribe
-argument_list|(
-literal|"SubsId"
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"offCli1"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener
-init|=
-operator|new
-name|Listener
-argument_list|()
-decl_stmt|;
-name|consumer
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|0
-argument_list|,
-name|listener
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testAllConsumed
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-specifier|final
-name|String
-name|filter
-init|=
-literal|"filter = 'true'"
-decl_stmt|;
-name|Connection
-name|con
-init|=
-name|createConnection
-argument_list|(
-literal|"cli1"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-name|filter
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"cli2"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-name|filter
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// send messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-name|int
-name|sent
-init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-name|sent
-operator|++
-expr_stmt|;
-block|}
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"sent: "
-operator|+
-name|sent
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"cli1"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-name|filter
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Listener
-name|listener
-init|=
-operator|new
-name|Listener
-argument_list|()
-decl_stmt|;
-name|consumer
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|sent
-argument_list|,
-name|listener
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"cli2 pull 2"
-argument_list|)
-expr_stmt|;
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"cli2"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|consumer
-operator|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-name|filter
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|assertNotNull
-argument_list|(
-literal|"got message"
-argument_list|,
-name|consumer
-operator|.
-name|receive
-argument_list|(
-literal|2000
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertNotNull
-argument_list|(
-literal|"got message"
-argument_list|,
-name|consumer
-operator|.
-name|receive
-argument_list|(
-literal|2000
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// send messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|producer
-operator|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-name|sent
-operator|=
-literal|0
-expr_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-literal|2
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-name|i
-operator|==
-literal|1
-condition|?
-literal|"true"
-else|:
-literal|"false"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-name|sent
-operator|++
-expr_stmt|;
-block|}
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"sent: "
-operator|+
-name|sent
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"cli1 again, should get 1 new ones"
-argument_list|)
-expr_stmt|;
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"cli1"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|consumer
-operator|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-name|filter
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|listener
-operator|=
-operator|new
-name|Listener
-argument_list|()
-expr_stmt|;
-name|consumer
-operator|.
-name|setMessageListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|3
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|1
-argument_list|,
-name|listener
-operator|.
-name|count
-argument_list|)
-expr_stmt|;
-block|}
-comment|// https://issues.apache.org/jira/browse/AMQ-3190
-specifier|public
-name|void
-name|testNoMissOnMatchingSubAfterRestart
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-specifier|final
-name|String
-name|filter
-init|=
-literal|"filter = 'true'"
-decl_stmt|;
-name|Connection
-name|con
-init|=
-name|createConnection
-argument_list|(
-literal|"cli1"
-argument_list|)
-decl_stmt|;
-name|Session
-name|session
-init|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-name|filter
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// send unmatched messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-name|int
-name|sent
-init|=
-literal|0
-decl_stmt|;
-comment|// message for cli1 to keep it interested
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
-name|message
-operator|.
-name|setIntProperty
-argument_list|(
-literal|"ID"
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-name|sent
-operator|++
-expr_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-name|sent
-init|;
-name|i
-operator|<
-literal|10
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|message
-operator|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-expr_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-literal|"false"
-argument_list|)
-expr_stmt|;
-name|message
-operator|.
-name|setIntProperty
-argument_list|(
-literal|"ID"
-argument_list|,
-name|i
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-name|sent
-operator|++
-expr_stmt|;
-block|}
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"sent: "
-operator|+
-name|sent
-argument_list|)
-expr_stmt|;
-comment|// new sub at id 10
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"cli2"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-name|filter
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|destroyBroker
-argument_list|()
-expr_stmt|;
-name|createBroker
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|producer
-operator|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-name|sent
-init|;
-name|i
-operator|<
-literal|30
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|message
-operator|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-expr_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
-name|message
-operator|.
-name|setIntProperty
-argument_list|(
-literal|"ID"
-argument_list|,
-name|i
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-name|sent
-operator|++
-expr_stmt|;
-block|}
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"sent: "
-operator|+
-name|sent
-argument_list|)
-expr_stmt|;
-comment|// pick up the first of the next twenty messages
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"cli2"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageConsumer
-name|consumer
-init|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-name|filter
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|Message
-name|m
-init|=
-name|consumer
-operator|.
-name|receive
-argument_list|(
-literal|3000
-argument_list|)
-decl_stmt|;
-name|assertEquals
-argument_list|(
-literal|"is message 10"
-argument_list|,
-literal|10
-argument_list|,
-name|m
-operator|.
-name|getIntProperty
-argument_list|(
-literal|"ID"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// pick up the first few messages for client1
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"cli1"
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|consumer
-operator|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-name|filter
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|m
-operator|=
-name|consumer
-operator|.
-name|receive
-argument_list|(
-literal|3000
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"is message 0"
-argument_list|,
-literal|0
-argument_list|,
-name|m
-operator|.
-name|getIntProperty
-argument_list|(
-literal|"ID"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|m
-operator|=
-name|consumer
-operator|.
-name|receive
-argument_list|(
-literal|3000
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"is message 10"
-argument_list|,
-literal|10
-argument_list|,
-name|m
-operator|.
-name|getIntProperty
-argument_list|(
-literal|"ID"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
+comment|//    public void testUnmatchedSubUnsubscribeDeletesAll() throws Exception {
+comment|//        // create offline subs 1
+comment|//        Connection con = createConnection("offCli1");
+comment|//        Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // send messages
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageProducer producer = session.createProducer(null);
+comment|//
+comment|//        int filtered = 0;
+comment|//        for (int i = 0; i< 10; i++) {
+comment|//            boolean filter = (i %2 == 0); //(int) (Math.random() * 2)>= 1;
+comment|//            if (filter)
+comment|//                filtered++;
+comment|//
+comment|//            Message message = session.createMessage();
+comment|//            message.setStringProperty("filter", filter ? "true" : "false");
+comment|//            producer.send(topic, message);
+comment|//        }
+comment|//
+comment|//        LOG.info("sent: " + filtered);
+comment|//        Thread.sleep(1 * 1000);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // test offline subs
+comment|//        con = createConnection("offCli1");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.unsubscribe("SubsId");
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        con = createConnection("offCli1");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer = session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//        Listener listener = new Listener();
+comment|//        consumer.setMessageListener(listener);
+comment|//
+comment|//        Thread.sleep(3 * 1000);
+comment|//
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        assertEquals(0, listener.count);
+comment|//    }
+comment|//
+comment|//    public void testAllConsumed() throws Exception {
+comment|//        final String filter = "filter = 'true'";
+comment|//        Connection con = createConnection("cli1");
+comment|//        Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", filter, true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        con = createConnection("cli2");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", filter, true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // send messages
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageProducer producer = session.createProducer(null);
+comment|//
+comment|//        int sent = 0;
+comment|//        for (int i = 0; i< 10; i++) {
+comment|//            Message message = session.createMessage();
+comment|//            message.setStringProperty("filter", "true");
+comment|//            producer.send(topic, message);
+comment|//            sent++;
+comment|//        }
+comment|//
+comment|//        LOG.info("sent: " + sent);
+comment|//        Thread.sleep(1 * 1000);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        con = createConnection("cli1");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer = session.createDurableSubscriber(topic, "SubsId", filter, true);
+comment|//        Listener listener = new Listener();
+comment|//        consumer.setMessageListener(listener);
+comment|//        Thread.sleep(3 * 1000);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        assertEquals(sent, listener.count);
+comment|//
+comment|//        LOG.info("cli2 pull 2");
+comment|//        con = createConnection("cli2");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        consumer = session.createDurableSubscriber(topic, "SubsId", filter, true);
+comment|//        assertNotNull("got message", consumer.receive(2000));
+comment|//        assertNotNull("got message", consumer.receive(2000));
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // send messages
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        producer = session.createProducer(null);
+comment|//
+comment|//        sent = 0;
+comment|//        for (int i = 0; i< 2; i++) {
+comment|//            Message message = session.createMessage();
+comment|//            message.setStringProperty("filter", i==1 ? "true" : "false");
+comment|//            producer.send(topic, message);
+comment|//            sent++;
+comment|//        }
+comment|//        LOG.info("sent: " + sent);
+comment|//        Thread.sleep(1 * 1000);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        LOG.info("cli1 again, should get 1 new ones");
+comment|//        con = createConnection("cli1");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        consumer = session.createDurableSubscriber(topic, "SubsId", filter, true);
+comment|//        listener = new Listener();
+comment|//        consumer.setMessageListener(listener);
+comment|//        Thread.sleep(3 * 1000);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        assertEquals(1, listener.count);
+comment|//    }
+comment|//
+comment|//    // https://issues.apache.org/jira/browse/AMQ-3190
+comment|//    public void testNoMissOnMatchingSubAfterRestart() throws Exception {
+comment|//
+comment|//        final String filter = "filter = 'true'";
+comment|//        Connection con = createConnection("cli1");
+comment|//        Session session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", filter, true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // send unmatched messages
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageProducer producer = session.createProducer(null);
+comment|//
+comment|//        int sent = 0;
+comment|//        // message for cli1 to keep it interested
+comment|//        Message message = session.createMessage();
+comment|//        message.setStringProperty("filter", "true");
+comment|//        message.setIntProperty("ID", 0);
+comment|//        producer.send(topic, message);
+comment|//        sent++;
+comment|//
+comment|//        for (int i = sent; i< 10; i++) {
+comment|//            message = session.createMessage();
+comment|//            message.setStringProperty("filter", "false");
+comment|//            message.setIntProperty("ID", i);
+comment|//            producer.send(topic, message);
+comment|//            sent++;
+comment|//        }
+comment|//        con.close();
+comment|//        LOG.info("sent: " + sent);
+comment|//
+comment|//        // new sub at id 10
+comment|//        con = createConnection("cli2");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        session.createDurableSubscriber(topic, "SubsId", filter, true);
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        destroyBroker();
+comment|//        createBroker(false);
+comment|//
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        producer = session.createProducer(null);
+comment|//
+comment|//        for (int i = sent; i< 30; i++) {
+comment|//            message = session.createMessage();
+comment|//            message.setStringProperty("filter", "true");
+comment|//            message.setIntProperty("ID", i);
+comment|//            producer.send(topic, message);
+comment|//            sent++;
+comment|//        }
+comment|//        con.close();
+comment|//        LOG.info("sent: " + sent);
+comment|//
+comment|//        // pick up the first of the next twenty messages
+comment|//        con = createConnection("cli2");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageConsumer consumer = session.createDurableSubscriber(topic, "SubsId", filter, true);
+comment|//        Message m = consumer.receive(3000);
+comment|//        assertEquals("is message 10", 10, m.getIntProperty("ID"));
+comment|//
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        // pick up the first few messages for client1
+comment|//        con = createConnection("cli1");
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        consumer = session.createDurableSubscriber(topic, "SubsId", filter, true);
+comment|//        m = consumer.receive(3000);
+comment|//        assertEquals("is message 0", 0, m.getIntProperty("ID"));
+comment|//        m = consumer.receive(3000);
+comment|//        assertEquals("is message 10", 10, m.getIntProperty("ID"));
+comment|//
+comment|//        session.close();
+comment|//        con.close();
+comment|//    }
 comment|// use very small journal to get lots of files to cleanup
 specifier|public
 name|void
@@ -9416,7 +3022,7 @@ argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
-literal|"Should have three journal files left but was: "
+literal|"Should have less than three journal files left but was: "
 operator|+
 name|pa
 operator|.
@@ -9465,7 +3071,7 @@ argument_list|()
 operator|.
 name|size
 argument_list|()
-operator|==
+operator|<=
 literal|3
 return|;
 block|}
@@ -9474,969 +3080,162 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// https://issues.apache.org/jira/browse/AMQ-3768
-specifier|public
-name|void
-name|testPageReuse
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|Connection
-name|con
-init|=
-literal|null
-decl_stmt|;
-name|Session
-name|session
-init|=
-literal|null
-decl_stmt|;
-specifier|final
-name|int
-name|numConsumers
-init|=
-literal|115
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<=
-name|numConsumers
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"cli"
-operator|+
-name|i
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|null
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-comment|// populate ack locations
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createTextMessage
-argument_list|(
-operator|new
-name|byte
-index|[
-literal|10
-index|]
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// we have a split, remove all but the last so that
-comment|// the head pageid changes in the acklocations listindex
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<=
-name|numConsumers
-operator|-
-literal|1
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"cli"
-operator|+
-name|i
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|unsubscribe
-argument_list|(
-literal|"SubsId"
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-name|destroyBroker
-argument_list|()
-expr_stmt|;
-name|createBroker
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-comment|// create a bunch more subs to reuse the freed page and get us in a knot
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|1
-init|;
-name|i
-operator|<=
-name|numConsumers
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"cli"
-operator|+
-name|i
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-name|filter
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-specifier|public
-name|void
-name|testRedeliveryFlag
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|Connection
-name|con
-decl_stmt|;
-name|Session
-name|session
-decl_stmt|;
-specifier|final
-name|int
-name|numClients
-init|=
-literal|2
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|numClients
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|con
-operator|=
-name|createConnection
-argument_list|(
-literal|"cliId"
-operator|+
-name|i
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|CLIENT_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-specifier|final
-name|Random
-name|random
-init|=
-operator|new
-name|Random
-argument_list|()
-decl_stmt|;
-comment|// send messages
-name|con
-operator|=
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|MessageProducer
-name|producer
-init|=
-name|session
-operator|.
-name|createProducer
-argument_list|(
-literal|null
-argument_list|)
-decl_stmt|;
-specifier|final
-name|int
-name|count
-init|=
-literal|1000
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|count
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|Message
-name|message
-init|=
-name|session
-operator|.
-name|createMessage
-argument_list|()
-decl_stmt|;
-name|message
-operator|.
-name|setStringProperty
-argument_list|(
-literal|"filter"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
-name|producer
-operator|.
-name|send
-argument_list|(
-name|topic
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-class|class
-name|Client
-implements|implements
-name|Runnable
-block|{
-name|Connection
-name|con
-decl_stmt|;
-name|Session
-name|session
-decl_stmt|;
-name|String
-name|clientId
-decl_stmt|;
-name|Client
-parameter_list|(
-name|String
-name|id
-parameter_list|)
-block|{
-name|this
-operator|.
-name|clientId
-operator|=
-name|id
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
-name|MessageConsumer
-name|consumer
-init|=
-literal|null
-decl_stmt|;
-name|Message
-name|message
-init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-for|for
-control|(
-name|int
-name|i
-init|=
-operator|-
-literal|1
-init|;
-name|i
-operator|<
-name|random
-operator|.
-name|nextInt
-argument_list|(
-literal|10
-argument_list|)
-condition|;
-name|i
-operator|++
-control|)
-block|{
-comment|// go online and take none
-name|con
-operator|=
-name|createConnection
-argument_list|(
-name|clientId
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|CLIENT_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|consumer
-operator|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-comment|// consume 1
-name|con
-operator|=
-name|createConnection
-argument_list|(
-name|clientId
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|CLIENT_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|consumer
-operator|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|message
-operator|=
-name|consumer
-operator|.
-name|receive
-argument_list|(
-literal|4000
-argument_list|)
-expr_stmt|;
-name|assertNotNull
-argument_list|(
-literal|"got message"
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-comment|// it is not reliable as it depends on broker dispatch rather than client receipt
-comment|// and delivered ack
-comment|//  assertFalse("not redelivered", message.getJMSRedelivered());
-name|message
-operator|.
-name|acknowledge
-argument_list|()
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|// peek all
-for|for
-control|(
-name|int
-name|j
-init|=
-operator|-
-literal|1
-init|;
-name|j
-operator|<
-name|random
-operator|.
-name|nextInt
-argument_list|(
-literal|10
-argument_list|)
-condition|;
-name|j
-operator|++
-control|)
-block|{
-name|con
-operator|=
-name|createConnection
-argument_list|(
-name|clientId
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|CLIENT_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|consumer
-operator|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|count
-operator|-
-literal|1
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|assertNotNull
-argument_list|(
-literal|"got message"
-argument_list|,
-name|consumer
-operator|.
-name|receive
-argument_list|(
-literal|4000
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-comment|// no ack
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-comment|// consume remaining
-name|con
-operator|=
-name|createConnection
-argument_list|(
-name|clientId
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|CLIENT_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|consumer
-operator|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|count
-operator|-
-literal|1
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|message
-operator|=
-name|consumer
-operator|.
-name|receive
-argument_list|(
-literal|4000
-argument_list|)
-expr_stmt|;
-name|assertNotNull
-argument_list|(
-literal|"got message"
-argument_list|,
-name|message
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"is redelivered"
-argument_list|,
-name|message
-operator|.
-name|getJMSRedelivered
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-name|message
-operator|.
-name|acknowledge
-argument_list|()
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|con
-operator|=
-name|createConnection
-argument_list|(
-name|clientId
-argument_list|)
-expr_stmt|;
-name|session
-operator|=
-name|con
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|Session
-operator|.
-name|CLIENT_ACKNOWLEDGE
-argument_list|)
-expr_stmt|;
-name|consumer
-operator|=
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|topic
-argument_list|,
-literal|"SubsId"
-argument_list|,
-literal|"filter = 'true'"
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|assertNull
-argument_list|(
-literal|"no message left"
-argument_list|,
-name|consumer
-operator|.
-name|receive
-argument_list|(
-literal|2000
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|throwable
-parameter_list|)
-block|{
-name|throwable
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-name|exceptions
-operator|.
-name|add
-argument_list|(
-name|throwable
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
-name|ExecutorService
-name|executorService
-init|=
-name|Executors
-operator|.
-name|newCachedThreadPool
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|numClients
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|executorService
-operator|.
-name|execute
-argument_list|(
-operator|new
-name|Client
-argument_list|(
-literal|"cliId"
-operator|+
-name|i
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-name|executorService
-operator|.
-name|shutdown
-argument_list|()
-expr_stmt|;
-name|executorService
-operator|.
-name|awaitTermination
-argument_list|(
-literal|10
-argument_list|,
-name|TimeUnit
-operator|.
-name|MINUTES
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"No exceptions expected, but was: "
-operator|+
-name|exceptions
-argument_list|,
-name|exceptions
-operator|.
-name|isEmpty
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
+comment|//    // https://issues.apache.org/jira/browse/AMQ-3768
+comment|//    public void testPageReuse() throws Exception {
+comment|//        Connection con = null;
+comment|//        Session session = null;
+comment|//
+comment|//        final int numConsumers = 115;
+comment|//        for (int i=0; i<=numConsumers;i++) {
+comment|//            con = createConnection("cli" + i);
+comment|//            session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//            session.createDurableSubscriber(topic, "SubsId", null, true);
+comment|//            session.close();
+comment|//            con.close();
+comment|//        }
+comment|//
+comment|//        // populate ack locations
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageProducer producer = session.createProducer(null);
+comment|//        Message message = session.createTextMessage(new byte[10].toString());
+comment|//        producer.send(topic, message);
+comment|//        con.close();
+comment|//
+comment|//        // we have a split, remove all but the last so that
+comment|//        // the head pageid changes in the acklocations listindex
+comment|//        for (int i=0; i<=numConsumers -1; i++) {
+comment|//            con = createConnection("cli" + i);
+comment|//            session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//            session.unsubscribe("SubsId");
+comment|//            session.close();
+comment|//            con.close();
+comment|//        }
+comment|//
+comment|//        destroyBroker();
+comment|//        createBroker(false);
+comment|//
+comment|//        // create a bunch more subs to reuse the freed page and get us in a knot
+comment|//        for (int i=1; i<=numConsumers;i++) {
+comment|//            con = createConnection("cli" + i);
+comment|//            session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//            session.createDurableSubscriber(topic, "SubsId", filter, true);
+comment|//            session.close();
+comment|//            con.close();
+comment|//        }
+comment|//    }
+comment|//
+comment|//    public void testRedeliveryFlag() throws Exception {
+comment|//
+comment|//        Connection con;
+comment|//        Session session;
+comment|//        final int numClients = 2;
+comment|//        for (int i=0; i<numClients; i++) {
+comment|//            con = createConnection("cliId" + i);
+comment|//            session = con.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+comment|//            session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//            session.close();
+comment|//            con.close();
+comment|//        }
+comment|//
+comment|//        final Random random = new Random();
+comment|//
+comment|//        // send messages
+comment|//        con = createConnection();
+comment|//        session = con.createSession(false, Session.AUTO_ACKNOWLEDGE);
+comment|//        MessageProducer producer = session.createProducer(null);
+comment|//
+comment|//        final int count = 1000;
+comment|//        for (int i = 0; i< count; i++) {
+comment|//            Message message = session.createMessage();
+comment|//            message.setStringProperty("filter", "true");
+comment|//            producer.send(topic, message);
+comment|//        }
+comment|//        session.close();
+comment|//        con.close();
+comment|//
+comment|//        class Client implements Runnable {
+comment|//            Connection con;
+comment|//            Session session;
+comment|//            String clientId;
+comment|//            Client(String id) {
+comment|//                this.clientId = id;
+comment|//            }
+comment|//
+comment|//            @Override
+comment|//            public void run() {
+comment|//                MessageConsumer consumer = null;
+comment|//                Message message = null;
+comment|//
+comment|//                try {
+comment|//                    for (int i = -1; i< random.nextInt(10); i++) {
+comment|//                        // go online and take none
+comment|//                        con = createConnection(clientId);
+comment|//                        session = con.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+comment|//                        consumer = session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//                        session.close();
+comment|//                        con.close();
+comment|//                    }
+comment|//
+comment|//                    // consume 1
+comment|//                    con = createConnection(clientId);
+comment|//                    session = con.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+comment|//                    consumer = session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//                    message = consumer.receive(4000);
+comment|//                    assertNotNull("got message", message);
+comment|//                    // it is not reliable as it depends on broker dispatch rather than client receipt
+comment|//                    // and delivered ack
+comment|//                    //  assertFalse("not redelivered", message.getJMSRedelivered());
+comment|//                    message.acknowledge();
+comment|//                    session.close();
+comment|//                    con.close();
+comment|//
+comment|//                    // peek all
+comment|//                    for (int j = -1; j< random.nextInt(10); j++) {
+comment|//                        con = createConnection(clientId);
+comment|//                        session = con.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+comment|//                        consumer = session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//
+comment|//                        for (int i = 0; i< count - 1; i++) {
+comment|//                            assertNotNull("got message", consumer.receive(4000));
+comment|//                        }
+comment|//                        // no ack
+comment|//                        session.close();
+comment|//                        con.close();
+comment|//                    }
+comment|//
+comment|//                    // consume remaining
+comment|//                    con = createConnection(clientId);
+comment|//                    session = con.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+comment|//                    consumer = session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//
+comment|//                    for (int i = 0; i< count - 1; i++) {
+comment|//                        message = consumer.receive(4000);
+comment|//                        assertNotNull("got message", message);
+comment|//                        assertTrue("is redelivered", message.getJMSRedelivered());
+comment|//                    }
+comment|//                    message.acknowledge();
+comment|//                    session.close();
+comment|//                    con.close();
+comment|//
+comment|//                    con = createConnection(clientId);
+comment|//                    session = con.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+comment|//                    consumer = session.createDurableSubscriber(topic, "SubsId", "filter = 'true'", true);
+comment|//                    assertNull("no message left", consumer.receive(2000));
+comment|//                } catch (Throwable throwable) {
+comment|//                    throwable.printStackTrace();
+comment|//                    exceptions.add(throwable);
+comment|//                }
+comment|//            }
+comment|//        }
+comment|//        ExecutorService executorService = Executors.newCachedThreadPool();
+comment|//        for (int i=0; i<numClients; i++) {
+comment|//            executorService.execute(new Client("cliId" + i));
+comment|//        }
+comment|//        executorService.shutdown();
+comment|//        executorService.awaitTermination(10, TimeUnit.MINUTES);
+comment|//        assertTrue("No exceptions expected, but was: " + exceptions, exceptions.isEmpty());
+comment|//    }
 specifier|public
 specifier|static
 class|class
