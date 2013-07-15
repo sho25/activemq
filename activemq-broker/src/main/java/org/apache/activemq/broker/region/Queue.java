@@ -1129,8 +1129,7 @@ name|QueueMessageReference
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|// Messages that are paged in but have not yet been targeted at a
-comment|// subscription
+comment|// Messages that are paged in but have not yet been targeted at a subscription
 specifier|private
 specifier|final
 name|ReentrantReadWriteLock
@@ -8593,12 +8592,6 @@ argument_list|()
 operator|&&
 operator|!
 name|browser
-operator|.
-name|getPending
-argument_list|()
-operator|.
-name|getMessageAudit
-argument_list|()
 operator|.
 name|isDuplicate
 argument_list|(
