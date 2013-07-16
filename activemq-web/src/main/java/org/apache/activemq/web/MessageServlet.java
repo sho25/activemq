@@ -297,6 +297,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|String
 name|readTimeoutParameter
 init|=
@@ -328,6 +329,7 @@ init|=
 literal|"text/xml"
 decl_stmt|;
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -345,6 +347,8 @@ name|WebClient
 argument_list|>
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|init
@@ -454,6 +458,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Sends a message to a destination      *      * @param request      * @param response      * @throws ServletException      * @throws IOException      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doPost
@@ -827,6 +833,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Supports a HTTP DELETE to be equivlanent of consuming a singe message      * from a queue      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doDelete
@@ -851,6 +859,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Supports a HTTP DELETE to be equivlanent of consuming a singe message      * from a queue      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doGet
@@ -1205,9 +1215,6 @@ operator|.
 name|SC_NO_CONTENT
 argument_list|)
 expr_stmt|;
-comment|//                response.setContentType("text/plain");
-comment|//                writer.write("No message received");
-comment|//                writer.flush();
 block|}
 else|else
 block|{
@@ -1878,6 +1885,8 @@ name|continuation
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessageAvailable
@@ -1893,6 +1902,18 @@ name|consumer
 operator|==
 name|consumer
 assert|;
+operator|(
+operator|(
+name|MessageAvailableConsumer
+operator|)
+name|consumer
+operator|)
+operator|.
+name|setAvailableListener
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 synchronized|synchronized
 init|(
 name|this
