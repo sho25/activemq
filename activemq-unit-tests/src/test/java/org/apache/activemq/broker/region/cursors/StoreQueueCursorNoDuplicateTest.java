@@ -203,6 +203,18 @@ name|SystemUsage
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|mortbay
+operator|.
+name|log
+operator|.
+name|Log
+import|;
+end_import
+
 begin_comment
 comment|/**  * @author gtully  * https://issues.apache.org/activemq/browse/AMQ-2020  **/
 end_comment
@@ -238,7 +250,7 @@ specifier|static
 name|String
 name|mesageIdRoot
 init|=
-literal|"11111:22222:"
+literal|"11111:22222:0:"
 decl_stmt|;
 specifier|final
 name|int
@@ -266,6 +278,8 @@ name|count
 init|=
 literal|6
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp
@@ -309,6 +323,8 @@ name|BrokerService
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|tearDown
@@ -582,6 +598,31 @@ name|underTest
 operator|.
 name|remove
 argument_list|()
+expr_stmt|;
+name|Log
+operator|.
+name|info
+argument_list|(
+literal|"Received message: {} with body: {}"
+argument_list|,
+name|ref
+operator|.
+name|getMessageId
+argument_list|()
+argument_list|,
+operator|(
+operator|(
+name|ActiveMQTextMessage
+operator|)
+name|ref
+operator|.
+name|getMessage
+argument_list|()
+operator|)
+operator|.
+name|getText
+argument_list|()
+argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
