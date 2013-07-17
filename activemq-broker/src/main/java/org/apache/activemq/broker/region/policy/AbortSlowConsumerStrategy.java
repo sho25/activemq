@@ -131,6 +131,22 @@ name|broker
 operator|.
 name|region
 operator|.
+name|Destination
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
 name|Subscription
 import|;
 end_import
@@ -198,7 +214,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abort slow consumers when they reach the configured threshold of slowness, default is slow for 30 seconds  *   * @org.apache.xbean.XBean  */
+comment|/**  * Abort slow consumers when they reach the configured threshold of slowness, default is slow for 30 seconds  *  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
@@ -225,7 +241,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|private
+specifier|protected
 name|String
 name|name
 init|=
@@ -234,15 +250,15 @@ operator|+
 name|hashCode
 argument_list|()
 decl_stmt|;
-specifier|private
+specifier|protected
 name|Scheduler
 name|scheduler
 decl_stmt|;
-specifier|private
+specifier|protected
 name|Broker
 name|broker
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|final
 name|AtomicBoolean
 name|taskStarted
@@ -253,7 +269,7 @@ argument_list|(
 literal|false
 argument_list|)
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|final
 name|Map
 argument_list|<
@@ -301,6 +317,8 @@ name|abortConnection
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerService
@@ -325,6 +343,8 @@ operator|=
 name|broker
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|slowConsumer
@@ -424,6 +444,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -601,7 +623,7 @@ name|abortConnection
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
+specifier|protected
 name|void
 name|abortSubscription
 parameter_list|(
@@ -704,6 +726,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -871,6 +895,11 @@ literal|null
 condition|)
 block|{
 name|Map
+argument_list|<
+name|Subscription
+argument_list|,
+name|SlowConsumerEntry
+argument_list|>
 name|toAbort
 init|=
 operator|new
@@ -1050,6 +1079,18 @@ block|{
 return|return
 name|slowConsumers
 return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|addDestination
+parameter_list|(
+name|Destination
+name|destination
+parameter_list|)
+block|{
+comment|// Not needed for this strategy.
 block|}
 block|}
 end_class

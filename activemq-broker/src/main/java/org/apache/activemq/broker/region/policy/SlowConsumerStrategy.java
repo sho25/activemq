@@ -59,12 +59,28 @@ name|broker
 operator|.
 name|region
 operator|.
+name|Destination
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
 name|Subscription
 import|;
 end_import
 
 begin_comment
-comment|/*  * a strategy for dealing with slow consumers  */
+comment|/**  * Interface for a strategy for dealing with slow consumers  */
 end_comment
 
 begin_interface
@@ -72,6 +88,7 @@ specifier|public
 interface|interface
 name|SlowConsumerStrategy
 block|{
+comment|/**      * Slow consumer event.      *      * @param context      *      Connection context of the subscription.      * @param subs      *      The subscription object for the slow consumer.      */
 name|void
 name|slowConsumer
 parameter_list|(
@@ -82,11 +99,20 @@ name|Subscription
 name|subs
 parameter_list|)
 function_decl|;
+comment|/**      * Sets the Broker instance which can provide a Scheduler among other things.      *      * @param broker      *      The running Broker.      */
 name|void
 name|setBrokerService
 parameter_list|(
 name|Broker
 name|broker
+parameter_list|)
+function_decl|;
+comment|/**      * For Strategies that need to examine assigned destination for slow consumers      * periodically the destination is assigned here.      *      * If the strategy doesn't is event driven it can just ignore assigned destination.      *      * @param destination      *      A destination to add to a watch list.      */
+name|void
+name|addDestination
+parameter_list|(
+name|Destination
+name|destination
 parameter_list|)
 function_decl|;
 block|}

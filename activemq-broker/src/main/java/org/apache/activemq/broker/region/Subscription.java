@@ -170,7 +170,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_interface
@@ -180,7 +180,7 @@ name|Subscription
 extends|extends
 name|SubscriptionRecovery
 block|{
-comment|/**      * Used to add messages that match the subscription.      * @param node      * @throws Exception       * @throws InterruptedException       * @throws IOException       */
+comment|/**      * Used to add messages that match the subscription.      * @param node      * @throws Exception      * @throws InterruptedException      * @throws IOException      */
 name|void
 name|add
 parameter_list|(
@@ -190,7 +190,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Used when client acknowledge receipt of dispatched message.       * @param node      * @throws IOException       * @throws Exception       */
+comment|/**      * Used when client acknowledge receipt of dispatched message.      * @param node      * @throws IOException      * @throws Exception      */
 name|void
 name|acknowledge
 parameter_list|(
@@ -217,7 +217,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Is the subscription interested in the message?      * @param node       * @param context      * @return      * @throws IOException       */
+comment|/**      * Is the subscription interested in the message?      * @param node      * @param context      * @return      * @throws IOException      */
 name|boolean
 name|matches
 parameter_list|(
@@ -238,7 +238,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 function_decl|;
-comment|/**      * The subscription will be receiving messages from the destination.      * @param context       * @param destination      * @throws Exception       */
+comment|/**      * The subscription will be receiving messages from the destination.      * @param context      * @param destination      * @throws Exception      */
 name|void
 name|add
 parameter_list|(
@@ -251,7 +251,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * The subscription will be no longer be receiving messages from the destination.      * @param context       * @param destination      * @return a list of un-acked messages that were added to the subscription.      */
+comment|/**      * The subscription will be no longer be receiving messages from the destination.      * @param context      * @param destination      * @return a list of un-acked messages that were added to the subscription.      */
 name|List
 argument_list|<
 name|MessageReference
@@ -277,7 +277,7 @@ name|void
 name|gc
 parameter_list|()
 function_decl|;
-comment|/**      * Used by a Slave Broker to update dispatch infomation      * @param mdn      * @throws Exception       */
+comment|/**      * Used by a Slave Broker to update dispatch infomation      * @param mdn      * @throws Exception      */
 name|void
 name|processMessageDispatchNotification
 parameter_list|(
@@ -429,6 +429,11 @@ name|node
 parameter_list|)
 throws|throws
 name|IOException
+function_decl|;
+comment|/**      * Returns the time since the last Ack message was received by this subscription.      *      * If there has never been an ack this value should be set to the creation time of the      * subscription.      *      * @return time of last received Ack message or Subscription create time if no Acks.      */
+name|long
+name|getTimeOfLastMessageAck
+parameter_list|()
 function_decl|;
 block|}
 end_interface

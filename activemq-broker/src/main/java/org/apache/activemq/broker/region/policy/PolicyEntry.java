@@ -1082,6 +1082,13 @@ argument_list|(
 name|broker
 argument_list|)
 expr_stmt|;
+name|scs
+operator|.
+name|addDestination
+argument_list|(
+name|destination
+argument_list|)
+expr_stmt|;
 block|}
 name|destination
 operator|.

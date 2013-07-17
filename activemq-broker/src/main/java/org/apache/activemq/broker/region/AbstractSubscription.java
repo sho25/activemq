@@ -167,6 +167,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|MessageAck
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|filter
 operator|.
 name|BooleanExpression
@@ -336,6 +350,10 @@ specifier|private
 name|boolean
 name|slowConsumer
 decl_stmt|;
+specifier|private
+name|long
+name|lastAckTime
+decl_stmt|;
 specifier|public
 name|AbstractSubscription
 parameter_list|(
@@ -391,6 +409,15 @@ name|parseSelector
 argument_list|(
 name|info
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|lastAckTime
+operator|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
 expr_stmt|;
 block|}
 specifier|private
@@ -534,6 +561,36 @@ return|return
 name|rc
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+specifier|synchronized
+name|void
+name|acknowledge
+parameter_list|(
+specifier|final
+name|ConnectionContext
+name|context
+parameter_list|,
+specifier|final
+name|MessageAck
+name|ack
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|this
+operator|.
+name|lastAckTime
+operator|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|matches
@@ -632,6 +689,8 @@ literal|false
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|matches
@@ -649,6 +708,8 @@ name|destination
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|add
@@ -670,6 +731,8 @@ name|destination
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|List
 argument_list|<
@@ -699,6 +762,8 @@ operator|.
 name|EMPTY_LIST
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ConsumerInfo
 name|getConsumerInfo
@@ -708,11 +773,15 @@ return|return
 name|info
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|gc
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|ConnectionContext
 name|getContext
@@ -740,6 +809,8 @@ return|return
 name|selectorExpression
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getSelector
@@ -752,6 +823,8 @@ name|getSelector
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setSelector
@@ -800,6 +873,8 @@ operator|=
 name|newSelector
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 name|getObjectName
@@ -809,6 +884,8 @@ return|return
 name|objectName
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setObjectName
@@ -824,6 +901,8 @@ operator|=
 name|objectName
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getPrefetchSize
@@ -852,6 +931,8 @@ name|newSize
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isRecoveryRequired
@@ -861,6 +942,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSlowConsumer
@@ -883,6 +966,8 @@ operator|=
 name|val
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|addRecoveredMessage
@@ -972,6 +1057,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ActiveMQDestination
 name|getActiveMQDestination
@@ -990,6 +1077,8 @@ else|:
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isBrowser
@@ -1006,6 +1095,8 @@ name|isBrowser
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getInFlightUsage
@@ -1049,7 +1140,7 @@ parameter_list|(
 name|Destination
 name|destination
 parameter_list|)
-block|{              }
+block|{      }
 comment|/**      * Remove a destination      * @param destination      */
 specifier|public
 name|void
@@ -1058,7 +1149,9 @@ parameter_list|(
 name|Destination
 name|destination
 parameter_list|)
-block|{              }
+block|{      }
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getCursorMemoryHighWaterMark
@@ -1070,6 +1163,8 @@ operator|.
 name|cursorMemoryHighWaterMark
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setCursorMemoryHighWaterMark
@@ -1085,6 +1180,8 @@ operator|=
 name|cursorMemoryHighWaterMark
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|countBeforeFull
@@ -1100,6 +1197,8 @@ name|getPrefetchSize
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|unmatched
@@ -1126,6 +1225,32 @@ name|add
 argument_list|(
 name|message
 argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|long
+name|getTimeOfLastMessageAck
+parameter_list|()
+block|{
+return|return
+name|lastAckTime
+return|;
+block|}
+specifier|public
+name|void
+name|setTimeOfLastMessageAck
+parameter_list|(
+name|long
+name|value
+parameter_list|)
+block|{
+name|this
+operator|.
+name|lastAckTime
+operator|=
+name|value
 expr_stmt|;
 block|}
 block|}

@@ -1509,6 +1509,15 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|super
+operator|.
+name|acknowledge
+argument_list|(
+name|context
+argument_list|,
+name|ack
+argument_list|)
+expr_stmt|;
 comment|// Handle the standard acknowledgment case.
 if|if
 condition|(
