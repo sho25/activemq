@@ -2671,47 +2671,7 @@ name|getNextDeliveryId
 argument_list|()
 argument_list|)
 expr_stmt|;
-try|try
-block|{
-name|messageListener
-operator|.
-name|onMessage
-argument_list|(
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RuntimeException
-name|e
-parameter_list|)
-block|{
-name|LOG
-operator|.
-name|error
-argument_list|(
-literal|"error dispatching message: "
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-comment|// A problem while invoking the MessageListener does not
-comment|// in general indicate a problem with the connection to the broker, i.e.
-comment|// it will usually be sufficient to let the afterDelivery() method either
-comment|// commit or roll back in order to deal with the exception.
-comment|// However, we notify any registered client internal exception listener
-comment|// of the problem.
-name|connection
-operator|.
-name|onClientInternalException
-argument_list|(
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-try|try
-block|{
+specifier|final
 name|MessageAck
 name|ack
 init|=
@@ -2727,6 +2687,8 @@ argument_list|,
 literal|1
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|ack
 operator|.
 name|setFirstMessageId
@@ -2773,6 +2735,21 @@ operator|new
 name|Synchronization
 argument_list|()
 block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|beforeEnd
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|asyncSendPacket
+argument_list|(
+name|ack
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -2873,6 +2850,19 @@ argument_list|()
 operator|.
 name|getMessageId
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|ack
+operator|.
+name|setPoisonCause
+argument_list|(
+operator|new
+name|Throwable
+argument_list|(
+literal|"Exceeded ra redelivery policy limit:"
+operator|+
+name|redeliveryPolicy
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|asyncSendPacket
@@ -2994,6 +2984,57 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+name|messageListener
+operator|.
+name|onMessage
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"error dispatching message: "
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+comment|// A problem while invoking the MessageListener does not
+comment|// in general indicate a problem with the connection to the broker, i.e.
+comment|// it will usually be sufficient to let the afterDelivery() method either
+comment|// commit or roll back in order to deal with the exception.
+comment|// However, we notify any registered client internal exception listener
+comment|// of the problem.
+name|connection
+operator|.
+name|onClientInternalException
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+if|if
+condition|(
+name|ack
+operator|.
+name|getTransactionId
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+try|try
+block|{
 name|asyncSendPacket
 argument_list|(
 name|ack
@@ -3013,6 +3054,8 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 if|if
 condition|(

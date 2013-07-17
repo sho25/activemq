@@ -975,7 +975,9 @@ throw|throw
 operator|new
 name|RuntimeException
 argument_list|(
-literal|"Endpoint after delivery notification failure"
+literal|"Endpoint after delivery notification failure: "
+operator|+
+name|e
 argument_list|,
 name|e
 argument_list|)
