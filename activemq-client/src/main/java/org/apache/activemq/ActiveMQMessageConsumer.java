@@ -5241,6 +5241,19 @@ argument_list|(
 name|firstMsgId
 argument_list|)
 expr_stmt|;
+name|ack
+operator|.
+name|setPoisonCause
+argument_list|(
+operator|new
+name|Throwable
+argument_list|(
+literal|"Exceeded redelivery policy limit:"
+operator|+
+name|redeliveryPolicy
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|session
 operator|.
 name|sendAck
