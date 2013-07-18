@@ -4103,6 +4103,8 @@ name|waitForSpace
 argument_list|(
 name|context
 argument_list|,
+name|producerExchange
+argument_list|,
 name|memoryUsage
 argument_list|,
 literal|"Usage Manager Memory Limit reached. Producer ("
@@ -4831,9 +4833,16 @@ name|result
 init|=
 literal|null
 decl_stmt|;
+name|producerExchange
+operator|.
+name|incrementSend
+argument_list|()
+expr_stmt|;
 name|checkUsage
 argument_list|(
 name|context
+argument_list|,
+name|producerExchange
 argument_list|,
 name|message
 argument_list|)
@@ -5015,6 +5024,9 @@ parameter_list|(
 name|ConnectionContext
 name|context
 parameter_list|,
+name|ProducerBrokerExchange
+name|producerBrokerExchange
+parameter_list|,
 name|Message
 name|message
 parameter_list|)
@@ -5092,6 +5104,8 @@ decl_stmt|;
 name|waitForSpace
 argument_list|(
 name|context
+argument_list|,
+name|producerBrokerExchange
 argument_list|,
 name|systemUsage
 operator|.
@@ -5171,6 +5185,8 @@ decl_stmt|;
 name|waitForSpace
 argument_list|(
 name|context
+argument_list|,
+name|producerBrokerExchange
 argument_list|,
 name|messages
 operator|.

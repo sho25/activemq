@@ -1890,6 +1890,11 @@ operator|.
 name|getInfo
 argument_list|()
 decl_stmt|;
+name|producerExchange
+operator|.
+name|incrementSend
+argument_list|()
+expr_stmt|;
 specifier|final
 name|boolean
 name|sendProducerAck
@@ -2407,6 +2412,8 @@ name|waitForSpace
 argument_list|(
 name|context
 argument_list|,
+name|producerExchange
+argument_list|,
 name|memoryUsage
 argument_list|,
 literal|"Usage Manager Memory Usage limit reached. Stopping producer ("
@@ -2671,6 +2678,8 @@ block|}
 name|waitForSpace
 argument_list|(
 name|context
+argument_list|,
+name|producerExchange
 argument_list|,
 name|systemUsage
 operator|.

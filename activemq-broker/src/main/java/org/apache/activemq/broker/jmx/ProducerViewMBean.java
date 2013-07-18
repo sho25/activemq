@@ -132,6 +132,42 @@ name|String
 name|getUserName
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"is the producer blocked for Flow Control"
+argument_list|)
+name|boolean
+name|isProducerBlocked
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"total time (ms) Producer Blocked For Flow Control"
+argument_list|)
+name|long
+name|getTotalTimeBlocked
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"percentage of sends Producer Blocked for Flow Control"
+argument_list|)
+name|int
+name|getPercentageBlocked
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"reset flow control stata"
+argument_list|)
+name|void
+name|resetFlowControlStats
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

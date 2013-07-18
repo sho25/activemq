@@ -783,6 +783,33 @@ name|boolean
 name|isDLQ
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Get number of messages blocked for Flow Control"
+argument_list|)
+name|long
+name|getBlockedSends
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"get the average time (ms) a message is blocked for Flow Control"
+argument_list|)
+name|double
+name|getAverageBlockedTime
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Get the total time (ms) messages are blocked for Flow Control"
+argument_list|)
+name|long
+name|getTotalBlockedTime
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
