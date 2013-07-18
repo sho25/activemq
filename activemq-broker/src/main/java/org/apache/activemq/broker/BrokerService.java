@@ -7640,7 +7640,27 @@ operator|*
 literal|1024
 operator|)
 operator|+
+literal|" mb - resetting to maximum available: "
+operator|+
+name|jvmLimit
+operator|/
+operator|(
+literal|1024
+operator|*
+literal|1024
+operator|)
+operator|+
 literal|" mb"
+argument_list|)
+expr_stmt|;
+name|usage
+operator|.
+name|getMemoryUsage
+argument_list|()
+operator|.
+name|setLimit
+argument_list|(
+name|jvmLimit
 argument_list|)
 expr_stmt|;
 block|}
@@ -7778,7 +7798,27 @@ operator|*
 literal|1024
 operator|)
 operator|+
-literal|" mb of usable space"
+literal|" mb of usable space - resetting to maximum available disk space:  "
+operator|+
+name|dirFreeSpace
+operator|/
+operator|(
+literal|1024
+operator|*
+literal|1024
+operator|)
+operator|+
+literal|" mb"
+argument_list|)
+expr_stmt|;
+name|usage
+operator|.
+name|getStoreUsage
+argument_list|()
+operator|.
+name|setLimit
+argument_list|(
+name|dirFreeSpace
 argument_list|)
 expr_stmt|;
 block|}
@@ -7972,7 +8012,27 @@ operator|*
 literal|1024
 operator|)
 operator|+
-literal|" mb of usable space"
+literal|" mb of usable space - resetting to maximum available "
+operator|+
+name|dirFreeSpace
+operator|/
+operator|(
+literal|1024
+operator|*
+literal|1024
+operator|)
+operator|+
+literal|" mb."
+argument_list|)
+expr_stmt|;
+name|usage
+operator|.
+name|getTempUsage
+argument_list|()
+operator|.
+name|setLimit
+argument_list|(
+name|dirFreeSpace
 argument_list|)
 expr_stmt|;
 block|}
@@ -8200,7 +8260,27 @@ operator|*
 literal|1024
 operator|)
 operator|+
-literal|" mb of usable space"
+literal|" mb of usable space - reseting to "
+operator|+
+name|dirFreeSpace
+operator|/
+operator|(
+literal|1024
+operator|*
+literal|1024
+operator|)
+operator|+
+literal|" mb."
+argument_list|)
+expr_stmt|;
+name|usage
+operator|.
+name|getJobSchedulerUsage
+argument_list|()
+operator|.
+name|setLimit
+argument_list|(
+name|dirFreeSpace
 argument_list|)
 expr_stmt|;
 block|}
