@@ -308,6 +308,22 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Sends a TextMessage to the destination.      *      * @param properties the message properties to set as a comma sep name=value list. Can only      *                contain Strings maped to primitive types or JMS properties. eg: body=hi,JMSReplyTo=Queue2      * @return the message id of the message sent.      * @throws Exception      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Sends a TextMessage to the destination."
+argument_list|)
+specifier|public
+name|String
+name|sendTextMessageWithProperties
+parameter_list|(
+name|String
+name|properties
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
 comment|/**      * Sends a TextMesage to the destination.      *      * @param headers the message headers and properties to set. Can only      *                container Strings maped to primitive types.      * @param body the text to send      * @return the message id of the message sent.      * @throws Exception      */
 annotation|@
 name|MBeanInfo
