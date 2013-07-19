@@ -5226,16 +5226,6 @@ argument_list|)
 decl_stmt|;
 name|ack
 operator|.
-name|setPoisonCause
-argument_list|(
-name|lastMd
-operator|.
-name|getRollbackCause
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|ack
-operator|.
 name|setFirstMessageId
 argument_list|(
 name|firstMsgId

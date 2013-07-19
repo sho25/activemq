@@ -269,6 +269,8 @@ specifier|private
 name|Connection
 name|connection
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -283,6 +285,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @see junit.framework.TestCase#tearDown()      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -404,6 +408,7 @@ name|int
 name|counter
 decl_stmt|;
 specifier|private
+specifier|final
 name|Session
 name|session
 decl_stmt|;
@@ -421,6 +426,8 @@ operator|=
 name|session
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -626,7 +633,7 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{          }
+block|{         }
 comment|// first try.. should get 2 since there is no delay on the
 comment|// first redeliver..
 name|assertEquals
@@ -653,7 +660,7 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{          }
+block|{         }
 comment|// 2nd redeliver (redelivery after 1 sec)
 name|assertEquals
 argument_list|(
@@ -679,7 +686,7 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{          }
+block|{         }
 comment|// 3rd redeliver (redelivery after 2 seconds) - it should give up after
 comment|// that
 name|assertEquals
@@ -722,9 +729,7 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{
-comment|// ignore
-block|}
+block|{         }
 comment|// it should be committed, so no redelivery
 name|assertEquals
 argument_list|(
@@ -750,9 +755,7 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{
-comment|// ignore
-block|}
+block|{         }
 comment|// no redelivery, counter should still be 4
 name|assertEquals
 argument_list|(
@@ -1180,6 +1183,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1473,6 +1478,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1544,6 +1551,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1640,6 +1649,15 @@ operator|.
 name|DLQ_DELIVERY_FAILURE_CAUSE_PROPERTY
 argument_list|)
 decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"DLQ'd message cause reported as: {}"
+argument_list|,
+name|cause
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 literal|"cause exception is remembered"
@@ -1648,20 +1666,7 @@ name|cause
 operator|.
 name|contains
 argument_list|(
-literal|"RuntimeException"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"is correct exception"
-argument_list|,
-name|cause
-operator|.
-name|contains
-argument_list|(
-name|getName
-argument_list|()
+literal|"Throwable"
 argument_list|)
 argument_list|)
 expr_stmt|;
