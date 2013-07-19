@@ -5241,6 +5241,18 @@ argument_list|(
 literal|"Exceeded redelivery policy limit:"
 operator|+
 name|redeliveryPolicy
+operator|+
+literal|", cause:"
+operator|+
+name|lastMd
+operator|.
+name|getRollbackCause
+argument_list|()
+argument_list|,
+name|lastMd
+operator|.
+name|getRollbackCause
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

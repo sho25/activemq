@@ -1660,6 +1660,31 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"cause 'cause' exception is remembered"
+argument_list|,
+name|cause
+operator|.
+name|contains
+argument_list|(
+literal|"RuntimeException"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"is correct exception"
+argument_list|,
+name|cause
+operator|.
+name|contains
+argument_list|(
+name|getName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
 literal|"cause exception is remembered"
 argument_list|,
 name|cause
@@ -1667,6 +1692,18 @@ operator|.
 name|contains
 argument_list|(
 literal|"Throwable"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"cause policy is remembered"
+argument_list|,
+name|cause
+operator|.
+name|contains
+argument_list|(
+literal|"RedeliveryPolicy"
 argument_list|)
 argument_list|)
 expr_stmt|;
