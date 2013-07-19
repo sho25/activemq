@@ -842,7 +842,7 @@ return|return
 name|diffFromCurrentTime
 return|;
 block|}
-specifier|private
+specifier|protected
 name|long
 name|determineTimeDifference
 parameter_list|(
@@ -909,6 +909,27 @@ operator|.
 name|getTime
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|Math
+operator|.
+name|abs
+argument_list|(
+name|diff
+argument_list|)
+operator|>
+name|maxAllowableDiffFromDBTime
+condition|)
+block|{
+comment|// off by more than maxAllowableDiffFromDBTime so lets adjust
+name|result
+operator|=
+operator|(
+operator|-
+name|diff
+operator|)
+expr_stmt|;
+block|}
 name|LOG
 operator|.
 name|info
@@ -916,33 +937,15 @@ argument_list|(
 name|getLeaseHolderId
 argument_list|()
 operator|+
-literal|" diff from db: "
+literal|" diff adjust from db: "
 operator|+
-name|diff
+name|result
 operator|+
 literal|", db time: "
 operator|+
 name|timestamp
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|diff
-operator|>
-name|maxAllowableDiffFromDBTime
-operator|||
-name|diff
-operator|<
-operator|-
-name|maxAllowableDiffFromDBTime
-condition|)
-block|{
-comment|// off by more than maxAllowableDiffFromDBTime so lets adjust
-name|result
-operator|=
-name|diff
-expr_stmt|;
-block|}
 block|}
 return|return
 name|result
