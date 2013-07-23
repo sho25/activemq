@@ -16,6 +16,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -163,16 +199,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -229,6 +255,58 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Rule
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|TestName
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -246,15 +324,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This is a test case for the issue reported at:  * https://issues.apache.org/activemq/browse/AMQ-2021  * Bug is modification of inflight message properties so the failure can manifest itself in a bunch  * or ways, from message receipt with null properties to marshall errors  */
+comment|/**  * This is a test case for the issue reported at: https://issues.apache.org/activemq/browse/AMQ-2021 Bug is modification  * of inflight message properties so the failure can manifest itself in a bunch or ways, from message receipt with null  * properties to marshall errors  */
 end_comment
 
 begin_class
 specifier|public
 class|class
 name|AMQ2021Test
-extends|extends
-name|TestCase
 implements|implements
 name|ExceptionListener
 implements|,
@@ -296,6 +372,16 @@ argument_list|<
 name|Throwable
 argument_list|>
 name|exceptions
+decl_stmt|;
+annotation|@
+name|Rule
+specifier|public
+name|TestName
+name|name
+init|=
+operator|new
+name|TestName
+argument_list|()
 decl_stmt|;
 name|AMQ2021Test
 name|testCase
@@ -353,8 +439,8 @@ name|CountDownLatch
 name|started
 decl_stmt|;
 annotation|@
-name|Override
-specifier|protected
+name|Before
+specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -403,7 +489,9 @@ operator|=
 operator|new
 name|ActiveMQTopic
 argument_list|(
-name|getName
+name|name
+operator|.
+name|getMethodName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -472,8 +560,8 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Override
-specifier|protected
+name|After
+specifier|public
 name|void
 name|tearDown
 parameter_list|()
@@ -505,6 +593,13 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|240000
+argument_list|)
 specifier|public
 name|void
 name|testConcurrentTopicResendToDLQ
@@ -935,7 +1030,9 @@ name|session
 operator|.
 name|createTextMessage
 argument_list|(
-name|getName
+name|name
+operator|.
+name|getMethodName
 argument_list|()
 operator|+
 literal|" Message "
@@ -1070,6 +1167,8 @@ name|threadId
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1177,6 +1276,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1284,6 +1385,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onException
@@ -1309,6 +1412,8 @@ name|exception
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|uncaughtException
