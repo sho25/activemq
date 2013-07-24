@@ -1666,7 +1666,7 @@ name|res
 operator|.
 name|append
 argument_list|(
-literal|"${ACTIVEMQ_HOME}/bin/activemq \"$*\""
+literal|"${ACTIVEMQ_HOME}/bin/activemq \"$@\""
 argument_list|)
 expr_stmt|;
 return|return
