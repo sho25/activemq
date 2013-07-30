@@ -49,6 +49,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|SuppressReplyException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|util
 operator|.
 name|DefaultIOExceptionHandler
@@ -81,6 +95,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+comment|// fail only when we get an authoritative answer from the db w/o exceptions
 annotation|@
 name|Override
 specifier|protected
@@ -150,6 +165,12 @@ block|}
 block|}
 catch|catch
 parameter_list|(
+name|SuppressReplyException
+name|ignoreWhileHandlingInProgress
+parameter_list|)
+block|{                 }
+catch|catch
+parameter_list|(
 name|IOException
 name|ignored
 parameter_list|)
@@ -164,7 +185,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"PersistenceAdapter lock no longer valid using: "
+literal|"Lock keepAlive failed, no longer lock owner with: "
 operator|+
 name|locker
 argument_list|)

@@ -130,13 +130,19 @@ name|BrokerService
 name|brokerService
 parameter_list|)
 block|{
+comment|// master and slave survive db restart and retain master/slave status
+name|JDBCIOExceptionHandler
+name|stopConnectors
+init|=
+operator|new
+name|JDBCIOExceptionHandler
+argument_list|()
+decl_stmt|;
 name|brokerService
 operator|.
 name|setIoExceptionHandler
 argument_list|(
-operator|new
-name|JDBCIOExceptionHandler
-argument_list|()
+name|stopConnectors
 argument_list|)
 expr_stmt|;
 block|}
@@ -246,6 +252,11 @@ name|getBrokerName
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// lease expired while DB was offline, either or master/slave can grab it so assert is not deterministic
+comment|// but we still need to validate sent == received
 block|}
 block|}
 annotation|@

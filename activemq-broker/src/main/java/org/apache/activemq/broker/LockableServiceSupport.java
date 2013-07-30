@@ -524,7 +524,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"locker keepalive resulted in: "
+literal|"locker keepAlive resulted in: "
 operator|+
 name|e
 argument_list|,

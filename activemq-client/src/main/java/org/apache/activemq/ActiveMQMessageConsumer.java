@@ -4962,6 +4962,9 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
+name|clearDispatchList
+argument_list|()
+expr_stmt|;
 synchronized|synchronized
 init|(
 name|unconsumedMessages

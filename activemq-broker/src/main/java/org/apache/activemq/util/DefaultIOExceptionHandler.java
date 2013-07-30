@@ -79,6 +79,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|SuppressReplyException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -172,7 +186,7 @@ literal|1000
 decl_stmt|;
 specifier|private
 name|AtomicBoolean
-name|stopStartInProgress
+name|handlingException
 init|=
 operator|new
 name|AtomicBoolean
@@ -339,8 +353,7 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
-name|stopStartInProgress
+name|handlingException
 operator|.
 name|compareAndSet
 argument_list|(
@@ -350,14 +363,15 @@ literal|true
 argument_list|)
 condition|)
 block|{
-comment|// we are already working on it
-return|return;
-block|}
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Initiating stop/restart of broker transport due to IO exception, "
+literal|"Initiating stop/restart of transports on "
+operator|+
+name|broker
+operator|+
+literal|" due to IO exception, "
 operator|+
 name|exception
 argument_list|,
@@ -367,7 +381,7 @@ expr_stmt|;
 operator|new
 name|Thread
 argument_list|(
-literal|"stop transport connectors on IO exception"
+literal|"IOExceptionHandler: stop transports"
 argument_list|)
 block|{
 specifier|public
@@ -391,6 +405,15 @@ argument_list|(
 name|stopper
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Successfully stopped transports on "
+operator|+
+name|broker
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -408,17 +431,13 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-block|}
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
+finally|finally
+block|{
 comment|// resume again
 operator|new
 name|Thread
 argument_list|(
-literal|"restart transport connectors post IO exception"
+literal|"IOExceptionHandler: restart transports"
 argument_list|)
 block|{
 specifier|public
@@ -459,6 +478,15 @@ operator|.
 name|startAllConnectors
 argument_list|()
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Successfully restarted transports on "
+operator|+
+name|broker
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -470,7 +498,11 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Stopping broker due to failure while restarting broker connectors"
+literal|"Stopping "
+operator|+
+name|broker
+operator|+
+literal|" due to failure while restarting transports"
 argument_list|,
 name|e
 argument_list|)
@@ -483,7 +515,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|stopStartInProgress
+name|handlingException
 operator|.
 name|compareAndSet
 argument_list|(
@@ -526,7 +558,7 @@ parameter_list|(
 name|Throwable
 name|ignored
 parameter_list|)
-block|{}
+block|{                                     }
 return|return
 operator|!
 name|checkpointSuccess
@@ -537,13 +569,54 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-return|return;
 block|}
+block|}
+block|}
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+block|}
+throw|throw
+operator|new
+name|SuppressReplyException
+argument_list|(
+literal|"Stop/RestartTransportsInitiated"
+argument_list|,
+name|exception
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+name|handlingException
+operator|.
+name|compareAndSet
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+condition|)
+block|{
 name|stopBroker
 argument_list|(
 name|exception
 argument_list|)
 expr_stmt|;
+block|}
+comment|// we don't want to propagate the exception back to the client
+comment|// They will see a delay till they see a disconnect via socket.close
+comment|// at which point failover: can kick in.
+throw|throw
+operator|new
+name|SuppressReplyException
+argument_list|(
+literal|"ShutdownBrokerInitiated"
+argument_list|,
+name|exception
+argument_list|)
+throw|;
 block|}
 specifier|private
 name|void
@@ -557,7 +630,11 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Stopping the broker due to exception, "
+literal|"Stopping "
+operator|+
+name|broker
+operator|+
+literal|" due to exception, "
 operator|+
 name|exception
 argument_list|,
@@ -567,7 +644,9 @@ expr_stmt|;
 operator|new
 name|Thread
 argument_list|(
-literal|"Stopping the broker due to IO exception"
+literal|"IOExceptionHandler: stopping "
+operator|+
+name|broker
 argument_list|)
 block|{
 specifier|public

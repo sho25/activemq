@@ -433,7 +433,7 @@ init|=
 operator|new
 name|XAException
 argument_list|(
-literal|"STORE COMMIT FAILED: Transaction rolled back."
+literal|"STORE COMMIT FAILED: Transaction rolled back"
 argument_list|)
 decl_stmt|;
 name|xae
@@ -513,7 +513,7 @@ init|=
 operator|new
 name|XAException
 argument_list|(
-literal|"Cannot do 2 phase commit if the transaction has not been prepared."
+literal|"Cannot do 2 phase commit if the transaction has not been prepared"
 argument_list|)
 decl_stmt|;
 name|xae
@@ -578,7 +578,7 @@ init|=
 operator|new
 name|XAException
 argument_list|(
-literal|"PRE-PREPARE FAILED: Transaction rolled back."
+literal|"PRE-PREPARE FAILED: Transaction rolled back"
 argument_list|)
 decl_stmt|;
 name|xae

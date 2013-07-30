@@ -1892,7 +1892,7 @@ name|Thread
 argument_list|(
 name|runnable
 argument_list|,
-literal|"ActiveMQ Cleanup Timer"
+literal|"ActiveMQ JDBC PA Scheduled Task"
 argument_list|)
 decl_stmt|;
 name|thread

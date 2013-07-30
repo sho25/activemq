@@ -265,7 +265,7 @@ init|=
 operator|new
 name|XAException
 argument_list|(
-literal|"COMMIT FAILED: Transaction rolled back."
+literal|"COMMIT FAILED: Transaction rolled back"
 argument_list|)
 decl_stmt|;
 name|xae
@@ -304,8 +304,6 @@ argument_list|(
 name|xid
 argument_list|)
 expr_stmt|;
-comment|// Sync on transaction store to avoid out of order messages in the cursor
-comment|// https://issues.apache.org/activemq/browse/AMQ-2594
 try|try
 block|{
 name|transactionStore
@@ -354,7 +352,7 @@ init|=
 operator|new
 name|XAException
 argument_list|(
-literal|"STORE COMMIT FAILED: Transaction rolled back."
+literal|"STORE COMMIT FAILED: Transaction rolled back"
 argument_list|)
 decl_stmt|;
 name|xae
@@ -509,7 +507,7 @@ init|=
 operator|new
 name|XAException
 argument_list|(
-literal|"Prepare not implemented on Local Transactions."
+literal|"Prepare not implemented on Local Transactions"
 argument_list|)
 decl_stmt|;
 name|xae

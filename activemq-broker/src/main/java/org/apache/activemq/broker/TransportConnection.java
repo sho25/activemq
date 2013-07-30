@@ -1878,6 +1878,47 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|e
+operator|instanceof
+name|SuppressReplyException
+operator|||
+operator|(
+name|e
+operator|.
+name|getCause
+argument_list|()
+operator|instanceof
+name|SuppressReplyException
+operator|)
+condition|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Suppressing reply to: "
+operator|+
+name|command
+operator|+
+literal|" on: "
+operator|+
+name|e
+operator|+
+literal|", cause: "
+operator|+
+name|e
+operator|.
+name|getCause
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|responseRequired
+operator|=
+literal|false
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|responseRequired
 condition|)
 block|{

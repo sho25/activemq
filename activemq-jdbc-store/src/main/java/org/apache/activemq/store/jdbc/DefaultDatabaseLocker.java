@@ -459,7 +459,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|error
+name|debug
 argument_list|(
 literal|"Caught exception during rollback on connection: "
 operator|+
@@ -485,7 +485,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|error
+name|debug
 argument_list|(
 literal|"Caught exception while closing connection: "
 operator|+
