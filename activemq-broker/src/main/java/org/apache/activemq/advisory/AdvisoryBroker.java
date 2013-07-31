@@ -2826,6 +2826,9 @@ name|messageReference
 parameter_list|,
 name|Subscription
 name|subscription
+parameter_list|,
+name|Throwable
+name|poisonCause
 parameter_list|)
 block|{
 name|boolean
@@ -2840,6 +2843,8 @@ argument_list|,
 name|messageReference
 argument_list|,
 name|subscription
+argument_list|,
+name|poisonCause
 argument_list|)
 decl_stmt|;
 if|if

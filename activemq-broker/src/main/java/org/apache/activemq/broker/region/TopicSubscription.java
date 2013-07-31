@@ -2974,6 +2974,17 @@ argument_list|,
 name|message
 argument_list|,
 name|this
+argument_list|,
+operator|new
+name|Throwable
+argument_list|(
+literal|"TopicSubDiscard. ID:"
+operator|+
+name|info
+operator|.
+name|getConsumerId
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

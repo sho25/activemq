@@ -1518,6 +1518,9 @@ name|messageReference
 parameter_list|,
 name|Subscription
 name|subscription
+parameter_list|,
+name|Throwable
+name|poisonCause
 parameter_list|)
 block|{
 throw|throw

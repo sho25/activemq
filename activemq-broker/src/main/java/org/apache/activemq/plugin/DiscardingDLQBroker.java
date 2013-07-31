@@ -236,6 +236,9 @@ name|msgRef
 parameter_list|,
 name|Subscription
 name|subscription
+parameter_list|,
+name|Throwable
+name|poisonCause
 parameter_list|)
 block|{
 if|if
@@ -431,6 +434,8 @@ argument_list|,
 name|msgRef
 argument_list|,
 name|subscription
+argument_list|,
+name|poisonCause
 argument_list|)
 return|;
 block|}

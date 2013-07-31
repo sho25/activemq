@@ -1579,6 +1579,9 @@ name|messageReference
 parameter_list|,
 name|Subscription
 name|subscription
+parameter_list|,
+name|Throwable
+name|poisonCause
 parameter_list|)
 block|{
 return|return
@@ -1592,6 +1595,8 @@ argument_list|,
 name|messageReference
 argument_list|,
 name|subscription
+argument_list|,
+name|poisonCause
 argument_list|)
 return|;
 block|}

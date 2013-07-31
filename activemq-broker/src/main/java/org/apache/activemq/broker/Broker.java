@@ -650,7 +650,7 @@ name|Subscription
 name|subscription
 parameter_list|)
 function_decl|;
-comment|/**      * A message needs to go the a DLQ      *      * @param context      * @param messageReference      * @param subscription, may be null      *      * @return true if Message was placed in a DLQ false if discarded.      */
+comment|/**      * A message needs to go the a DLQ      *      *      * @param context      * @param messageReference      * @param poisonCause reason for dlq submission, may be null      * @return true if Message was placed in a DLQ false if discarded.      */
 name|boolean
 name|sendToDeadLetterQueue
 parameter_list|(
@@ -662,6 +662,9 @@ name|messageReference
 parameter_list|,
 name|Subscription
 name|subscription
+parameter_list|,
+name|Throwable
+name|poisonCause
 parameter_list|)
 function_decl|;
 comment|/**      * @return the broker sequence id      */
