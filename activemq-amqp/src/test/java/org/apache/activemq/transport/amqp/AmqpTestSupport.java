@@ -670,7 +670,7 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-name|p
+name|session
 operator|.
 name|close
 argument_list|()
