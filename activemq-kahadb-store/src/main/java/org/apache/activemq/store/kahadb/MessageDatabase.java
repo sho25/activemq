@@ -1907,7 +1907,7 @@ specifier|private
 name|boolean
 name|checksumJournalFiles
 init|=
-literal|false
+literal|true
 decl_stmt|;
 specifier|protected
 name|boolean

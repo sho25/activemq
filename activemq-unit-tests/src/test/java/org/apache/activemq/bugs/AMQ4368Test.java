@@ -390,13 +390,6 @@ argument_list|()
 decl_stmt|;
 name|kahadb
 operator|.
-name|setChecksumJournalFiles
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|kahadb
-operator|.
 name|setCheckForCorruptJournalFiles
 argument_list|(
 literal|true
