@@ -61,6 +61,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|net
@@ -118,6 +128,20 @@ operator|.
 name|command
 operator|.
 name|ConnectionInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IntrospectionSupport
 import|;
 end_import
 
@@ -200,6 +224,40 @@ operator|.
 name|setNeedClientAuth
 argument_list|(
 name|needClientAuth
+argument_list|)
+expr_stmt|;
+comment|// Lets try to configure the SSL SNI field.  Handy in case your using
+comment|// a single proxy to route to different messaging apps.
+comment|// On java 1.7 it seems like it can only be configured via reflection.
+comment|// todo: find out if this will work on java 1.8
+name|HashMap
+name|props
+init|=
+operator|new
+name|HashMap
+argument_list|()
+decl_stmt|;
+name|props
+operator|.
+name|put
+argument_list|(
+literal|"host"
+argument_list|,
+name|remoteLocation
+operator|.
+name|getHost
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|IntrospectionSupport
+operator|.
+name|setProperties
+argument_list|(
+name|this
+operator|.
+name|socket
+argument_list|,
+name|props
 argument_list|)
 expr_stmt|;
 block|}
