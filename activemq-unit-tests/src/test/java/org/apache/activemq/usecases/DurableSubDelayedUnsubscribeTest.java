@@ -543,6 +543,49 @@ decl_stmt|;
 comment|// Wait for all client subscription to be unsubscribed or swept away.
 comment|// Ensure we sleep longer than the housekeeper's sweep delay otherwise we can
 comment|// miss the fact that all durables that were abandoned do finally get cleaned up.
+comment|// Wait for all clients to stop
+name|Wait
+operator|.
+name|waitFor
+argument_list|(
+operator|new
+name|Wait
+operator|.
+name|Condition
+argument_list|()
+block|{
+specifier|public
+name|boolean
+name|isSatisified
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
+name|clientManager
+operator|.
+name|getClientCount
+argument_list|()
+operator|==
+literal|0
+return|;
+block|}
+block|}
+argument_list|,
+name|Client
+operator|.
+name|lifetime
+operator|+
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|10
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 literal|"should have only one inactiveSubscriber subscribed but was: "
@@ -592,18 +635,11 @@ return|;
 block|}
 block|}
 argument_list|,
-name|TimeUnit
-operator|.
-name|MINUTES
-operator|.
-name|toMillis
-argument_list|(
 name|houseKeeper
 operator|.
 name|SWEEP_DELAY
 operator|*
 literal|2
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1941,6 +1977,18 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|int
+name|getClientCount
+parameter_list|()
+block|{
+return|return
+name|clients
+operator|.
+name|size
+argument_list|()
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -2260,7 +2308,8 @@ specifier|final
 name|String
 name|conClientId
 decl_stmt|;
-specifier|private
+specifier|public
+specifier|static
 specifier|final
 name|int
 name|lifetime
