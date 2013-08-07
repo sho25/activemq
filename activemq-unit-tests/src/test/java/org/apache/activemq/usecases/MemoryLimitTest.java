@@ -231,6 +231,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|Wait
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|After
@@ -793,6 +807,7 @@ literal|1000
 argument_list|)
 expr_stmt|;
 comment|// assert we didn't break high watermark (70%) usage
+specifier|final
 name|Destination
 name|dest
 init|=
@@ -895,15 +910,31 @@ operator|.
 name|acknowledge
 argument_list|()
 expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1000
-argument_list|)
-expr_stmt|;
 comment|// this should free some space and allow us to get new batch of messages in the memory
 comment|// exceeding the limit
+name|assertTrue
+argument_list|(
+literal|"Limit is exceeded"
+argument_list|,
+name|Wait
+operator|.
+name|waitFor
+argument_list|(
+operator|new
+name|Wait
+operator|.
+name|Condition
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isSatisified
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|LOG
 operator|.
 name|info
@@ -916,8 +947,7 @@ name|getMemoryUsage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
+return|return
 name|dest
 operator|.
 name|getMemoryUsage
@@ -927,6 +957,10 @@ name|getPercentUsage
 argument_list|()
 operator|>=
 literal|478
+return|;
+block|}
+block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|LOG
