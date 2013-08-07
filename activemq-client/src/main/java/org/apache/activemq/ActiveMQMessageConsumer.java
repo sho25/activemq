@@ -671,7 +671,7 @@ decl_stmt|;
 comment|// The are the messages that were delivered to the consumer but that have
 comment|// not been acknowledged. It's kept in reverse order since we
 comment|// Always walk list in reverse order.
-specifier|private
+specifier|protected
 specifier|final
 name|LinkedList
 argument_list|<
@@ -787,7 +787,7 @@ name|transformer
 decl_stmt|;
 specifier|private
 name|boolean
-name|clearDispatchList
+name|clearDeliveredList
 decl_stmt|;
 name|AtomicInteger
 name|inProgressClearRequiredFlag
@@ -2860,7 +2860,7 @@ name|incrementAndGet
 argument_list|()
 expr_stmt|;
 comment|// deal with delivered messages async to avoid lock contention with in progress acks
-name|clearDispatchList
+name|clearDeliveredList
 operator|=
 literal|true
 expr_stmt|;
@@ -2995,6 +2995,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|clearDeliveredList
+argument_list|()
+expr_stmt|;
 block|}
 name|void
 name|deliverAcks
@@ -3425,6 +3428,30 @@ name|list
 control|)
 block|{
 comment|// ensure we don't filter this as a duplicate
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"on close, rollback: "
+operator|+
+name|old
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|getMessageId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|session
 operator|.
 name|connection
@@ -3479,7 +3506,7 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{
-name|clearDispatchList
+name|clearDeliveredList
 argument_list|()
 expr_stmt|;
 if|if
@@ -4325,6 +4352,24 @@ name|additionalWindowSize
 operator|)
 condition|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"ackLater: sending: "
+operator|+
+name|pendingAck
+argument_list|)
+expr_stmt|;
+block|}
 name|session
 operator|.
 name|sendAck
@@ -4393,7 +4438,7 @@ condition|(
 name|transactedIndividualAck
 condition|)
 block|{
-name|clearDispatchList
+name|clearDeliveredList
 argument_list|()
 expr_stmt|;
 name|waitForRedeliveries
@@ -4467,7 +4512,7 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-name|clearDispatchList
+name|clearDeliveredList
 argument_list|()
 expr_stmt|;
 name|waitForRedeliveries
@@ -4962,7 +5007,7 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-name|clearDispatchList
+name|clearDeliveredList
 argument_list|()
 expr_stmt|;
 synchronized|synchronized
@@ -5643,6 +5688,27 @@ name|getValue
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"rollback non redelivered: "
+operator|+
+name|entry
+operator|.
+name|getKey
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|removeFromDeliveredMessages
 argument_list|(
 name|entry
@@ -5782,7 +5848,7 @@ block|{
 name|clearMessagesInProgress
 argument_list|()
 expr_stmt|;
-name|clearDispatchList
+name|clearDeliveredList
 argument_list|()
 expr_stmt|;
 synchronized|synchronized
@@ -6016,31 +6082,18 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Duplicate dispatch on connection: "
-operator|+
-name|session
-operator|.
-name|getConnection
-argument_list|()
-operator|.
-name|getConnectionInfo
-argument_list|()
-operator|.
-name|getConnectionId
-argument_list|()
-operator|+
-literal|" to consumer: "
+literal|"Duplicate non transacted dispatch to consumer: "
 operator|+
 name|getConsumerId
 argument_list|()
 operator|+
-literal|", ignoring (auto acking) duplicate: "
+literal|", poison acking: "
 operator|+
 name|md
 argument_list|)
 expr_stmt|;
 name|MessageAck
-name|ack
+name|poisonAck
 init|=
 operator|new
 name|MessageAck
@@ -6049,16 +6102,43 @@ name|md
 argument_list|,
 name|MessageAck
 operator|.
-name|INDIVIDUAL_ACK_TYPE
+name|POSION_ACK_TYPE
 argument_list|,
 literal|1
 argument_list|)
 decl_stmt|;
+name|poisonAck
+operator|.
+name|setFirstMessageId
+argument_list|(
+name|md
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|getMessageId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|poisonAck
+operator|.
+name|setPoisonCause
+argument_list|(
+operator|new
+name|Throwable
+argument_list|(
+literal|"Duplicate non transacted delivery to "
+operator|+
+name|getConsumerId
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|session
 operator|.
 name|sendAck
 argument_list|(
-name|ack
+name|poisonAck
 argument_list|)
 expr_stmt|;
 block|}
@@ -6292,12 +6372,12 @@ block|}
 comment|// async (on next call) clear or track delivered as they may be flagged as duplicates if they arrive again
 specifier|private
 name|void
-name|clearDispatchList
+name|clearDeliveredList
 parameter_list|()
 block|{
 if|if
 condition|(
-name|clearDispatchList
+name|clearDeliveredList
 condition|)
 block|{
 synchronized|synchronized
@@ -6307,7 +6387,7 @@ init|)
 block|{
 if|if
 condition|(
-name|clearDispatchList
+name|clearDeliveredList
 condition|)
 block|{
 if|if
@@ -6327,32 +6407,6 @@ name|isTransacted
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|debug
-argument_list|(
-name|getConsumerId
-argument_list|()
-operator|+
-literal|" tracking existing transacted delivered list ("
-operator|+
-name|deliveredMessages
-operator|.
-name|size
-argument_list|()
-operator|+
-literal|") on transport interrupt"
-argument_list|)
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|previouslyDeliveredMessages
@@ -6404,9 +6458,114 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|getConsumerId
+argument_list|()
+operator|+
+literal|" tracking existing transacted "
+operator|+
+name|previouslyDeliveredMessages
+operator|.
+name|transactionId
+operator|+
+literal|" delivered list ("
+operator|+
+name|deliveredMessages
+operator|.
+name|size
+argument_list|()
+operator|+
+literal|") on transport interrupt"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|session
+operator|.
+name|isClientAcknowledge
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|getConsumerId
+argument_list|()
+operator|+
+literal|" rolling back delivered list ("
+operator|+
+name|deliveredMessages
+operator|.
+name|size
+argument_list|()
+operator|+
+literal|") on transport interrupt"
+argument_list|)
+expr_stmt|;
+block|}
+comment|// allow redelivery
+if|if
+condition|(
+operator|!
+name|this
+operator|.
+name|info
+operator|.
+name|isBrowser
+argument_list|()
+condition|)
+block|{
+for|for
+control|(
+name|MessageDispatch
+name|md
+range|:
+name|deliveredMessages
+control|)
+block|{
+name|this
+operator|.
+name|session
+operator|.
+name|connection
+operator|.
+name|rollbackDuplicate
+argument_list|(
+name|this
+argument_list|,
+name|md
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
 if|if
 condition|(
 name|LOG
@@ -6444,7 +6603,7 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-name|clearDispatchList
+name|clearDeliveredList
 operator|=
 literal|false
 expr_stmt|;

@@ -1267,11 +1267,11 @@ end_comment
 begin_expr_stmt
 name|assertEquals
 argument_list|(
-literal|"expect all messages are dequeued with one duplicate"
+literal|"expect all messages are dequeued with one duplicate to dlq"
 argument_list|,
 name|totalSent
 operator|+
-literal|1
+literal|2
 argument_list|,
 operator|(
 operator|(
@@ -1374,7 +1374,7 @@ end_expr_stmt
 begin_expr_stmt
 name|assertEquals
 argument_list|(
-literal|"dequeue correct, including duplicate dispatch auto acked"
+literal|"dequeue correct, including duplicate dispatch poisoned"
 argument_list|,
 name|totalSent
 operator|+

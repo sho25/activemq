@@ -1780,6 +1780,14 @@ argument_list|)
 expr_stmt|;
 end_expr_stmt
 
+begin_decl_stmt
+name|int
+name|receivedIndex
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
 begin_expr_stmt
 name|assertEquals
 argument_list|(
@@ -1793,7 +1801,8 @@ name|receivedMessages
 operator|.
 name|get
 argument_list|(
-literal|0
+name|receivedIndex
+operator|++
 argument_list|)
 operator|.
 name|getText
@@ -1802,11 +1811,14 @@ argument_list|)
 expr_stmt|;
 end_expr_stmt
 
-begin_comment
-comment|// it was redelivered
-end_comment
-
-begin_expr_stmt
+begin_if
+if|if
+condition|(
+operator|!
+name|doActualBrokerCommit
+condition|)
+block|{
+comment|// it will be redelivered and not tracked as a duplicate
 name|assertEquals
 argument_list|(
 literal|"get message 0 second"
@@ -1819,14 +1831,16 @@ name|receivedMessages
 operator|.
 name|get
 argument_list|(
-literal|1
+name|receivedIndex
+operator|++
 argument_list|)
 operator|.
 name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
-end_expr_stmt
+block|}
+end_if
 
 begin_expr_stmt
 name|assertTrue
@@ -1860,7 +1874,8 @@ name|receivedMessages
 operator|.
 name|get
 argument_list|(
-literal|2
+name|receivedIndex
+operator|++
 argument_list|)
 operator|.
 name|getText
