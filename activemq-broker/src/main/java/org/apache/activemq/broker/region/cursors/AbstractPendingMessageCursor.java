@@ -990,7 +990,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|protected
+specifier|public
 specifier|synchronized
 name|boolean
 name|isStarted

@@ -949,7 +949,6 @@ throws|throws
 name|Exception
 block|{     }
 specifier|public
-specifier|final
 specifier|synchronized
 name|void
 name|addMessageFirst

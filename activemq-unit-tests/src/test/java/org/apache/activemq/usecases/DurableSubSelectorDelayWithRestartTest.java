@@ -1121,6 +1121,8 @@ do|;
 block|}
 finally|finally
 block|{
+try|try
+block|{
 name|sess
 operator|.
 name|close
@@ -1131,6 +1133,13 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{}
 name|LOG
 operator|.
 name|info
