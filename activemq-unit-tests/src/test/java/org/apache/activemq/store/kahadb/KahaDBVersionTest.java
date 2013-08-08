@@ -1031,6 +1031,10 @@ expr_stmt|;
 comment|// System.err.println(msg.getText());
 name|assertNotNull
 argument_list|(
+literal|""
+operator|+
+name|count
+argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;

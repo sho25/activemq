@@ -11059,6 +11059,33 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|LinkedHashMap
+argument_list|<
+name|String
+argument_list|,
+name|SequenceSet
+argument_list|>
+name|temp
+init|=
+operator|new
+name|LinkedHashMap
+argument_list|<
+name|String
+argument_list|,
+name|SequenceSet
+argument_list|>
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|metadata
+operator|.
+name|version
+operator|>=
+literal|3
+condition|)
+block|{
+comment|// migrate
 name|BTreeIndex
 argument_list|<
 name|Long
@@ -11114,23 +11141,6 @@ argument_list|(
 name|tx
 argument_list|)
 expr_stmt|;
-name|LinkedHashMap
-argument_list|<
-name|String
-argument_list|,
-name|SequenceSet
-argument_list|>
-name|temp
-init|=
-operator|new
-name|LinkedHashMap
-argument_list|<
-name|String
-argument_list|,
-name|SequenceSet
-argument_list|>
-argument_list|()
-decl_stmt|;
 comment|// Do the initial build of the data in memory before writing into the store
 comment|// based Ack Positions List to avoid a lot of disk thrashing.
 name|Iterator
@@ -11232,6 +11242,7 @@ name|getKey
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// Now move the pending messages to ack data into the store backed
