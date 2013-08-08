@@ -1188,6 +1188,35 @@ literal|0
 decl_stmt|;
 try|try
 block|{
+name|response
+operator|.
+name|setHeader
+argument_list|(
+literal|"Cache-Control"
+argument_list|,
+literal|"no-cache, no-store, must-revalidate"
+argument_list|)
+expr_stmt|;
+comment|// HTTP 1.1
+name|response
+operator|.
+name|setHeader
+argument_list|(
+literal|"Pragma"
+argument_list|,
+literal|"no-cache"
+argument_list|)
+expr_stmt|;
+comment|// HTTP 1.0
+name|response
+operator|.
+name|setDateHeader
+argument_list|(
+literal|"Expires"
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 comment|// write a responds
 name|PrintWriter
 name|writer
