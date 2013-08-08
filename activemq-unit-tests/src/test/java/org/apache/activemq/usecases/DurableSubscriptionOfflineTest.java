@@ -5701,7 +5701,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|initCombosForTestOfflineAfterRestart
+name|initCombosForTestOfflineSubscriptionAfterRestart
 parameter_list|()
 throws|throws
 name|Exception
