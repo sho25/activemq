@@ -118,7 +118,7 @@ specifier|private
 name|long
 name|restartDelay
 init|=
-literal|500
+literal|2000
 decl_stmt|;
 annotation|@
 name|Override
@@ -157,7 +157,7 @@ if|if
 condition|(
 name|restartDelay
 operator|>
-literal|500
+literal|2000
 condition|)
 block|{
 name|LOG
@@ -270,7 +270,7 @@ name|Exception
 block|{
 name|restartDelay
 operator|=
-literal|500
+literal|2000
 expr_stmt|;
 name|super
 operator|.
@@ -287,7 +287,7 @@ name|Exception
 block|{
 name|restartDelay
 operator|=
-literal|3000
+literal|10000
 expr_stmt|;
 name|testSendReceive
 argument_list|()

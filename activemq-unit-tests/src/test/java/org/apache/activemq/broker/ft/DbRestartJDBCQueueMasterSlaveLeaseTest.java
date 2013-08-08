@@ -272,7 +272,7 @@ name|getLockKeepAlivePeriod
 parameter_list|()
 block|{
 return|return
-literal|500
+literal|1000
 return|;
 block|}
 specifier|private
@@ -281,7 +281,7 @@ name|getLockAcquireSleepInterval
 parameter_list|()
 block|{
 return|return
-literal|2000
+literal|8000
 return|;
 block|}
 block|}

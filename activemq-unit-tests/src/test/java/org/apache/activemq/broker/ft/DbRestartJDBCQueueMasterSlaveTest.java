@@ -175,6 +175,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|MessageId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|store
 operator|.
 name|jdbc
@@ -612,6 +626,14 @@ name|ActiveMQMessage
 operator|)
 name|message
 decl_stmt|;
+name|MessageId
+name|id
+init|=
+name|mqMessage
+operator|.
+name|getMessageId
+argument_list|()
+decl_stmt|;
 name|dbConnection
 operator|=
 name|sharedDs
@@ -650,10 +672,7 @@ name|setString
 argument_list|(
 literal|1
 argument_list|,
-name|mqMessage
-operator|.
-name|getMessageId
-argument_list|()
+name|id
 operator|.
 name|getProducerId
 argument_list|()
@@ -668,10 +687,7 @@ name|setLong
 argument_list|(
 literal|2
 argument_list|,
-name|mqMessage
-operator|.
-name|getMessageId
-argument_list|()
+name|id
 operator|.
 name|getProducerSequenceId
 argument_list|()
@@ -699,7 +715,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"On TransactionRolledBackException we know that the ack/commit got there b/c message is gone so we  count it: "
+literal|"On TransactionRolledBackException we know that the ack/commit got there b/c message is gone so we count it: "
 operator|+
 name|mqMessage
 argument_list|)
