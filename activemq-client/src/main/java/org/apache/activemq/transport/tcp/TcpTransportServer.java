@@ -189,6 +189,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|net
+operator|.
+name|ssl
+operator|.
+name|SSLServerSocket
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -866,6 +878,74 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// If the enabledCipherSuites option is invalid we don't want to ignore it as the call
+comment|// to SSLServerSocket to configure it has a side effect on the socket rendering it
+comment|// useless as all suites are enabled many of which are considered as insecure.  We
+comment|// instead trap that option here and throw an exception.  We should really consider
+comment|// all invalid options as breaking and not start the transport but the current design
+comment|// doesn't really allow for this.
+comment|//
+comment|//  see: https://issues.apache.org/jira/browse/AMQ-4582
+comment|//
+if|if
+condition|(
+name|socket
+operator|instanceof
+name|SSLServerSocket
+condition|)
+block|{
+if|if
+condition|(
+name|transportOptions
+operator|.
+name|containsKey
+argument_list|(
+literal|"enabledCipherSuites"
+argument_list|)
+condition|)
+block|{
+name|Object
+name|cipherSuites
+init|=
+name|transportOptions
+operator|.
+name|remove
+argument_list|(
+literal|"enabledCipherSuites"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|IntrospectionSupport
+operator|.
+name|setProperty
+argument_list|(
+name|socket
+argument_list|,
+literal|"enabledCipherSuites"
+argument_list|,
+name|cipherSuites
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|SocketException
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Invalid transport options {enabledCipherSuites=%s}"
+argument_list|,
+name|cipherSuites
+argument_list|)
+argument_list|)
+throw|;
+block|}
+block|}
+block|}
 name|IntrospectionSupport
 operator|.
 name|setProperties
