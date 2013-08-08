@@ -8260,7 +8260,7 @@ operator|*
 literal|1024
 operator|)
 operator|+
-literal|" mb of usable space - reseting to "
+literal|" mb of usable space - resetting to "
 operator|+
 name|dirFreeSpace
 operator|/
