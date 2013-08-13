@@ -503,11 +503,9 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|20
+literal|5
 operator|*
 literal|60
-operator|*
-literal|1000
 operator|*
 literal|1000
 argument_list|)
