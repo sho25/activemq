@@ -522,6 +522,13 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
+name|broker
+operator|.
+name|setConfigurationUrl
+argument_list|(
+name|uri
+argument_list|)
+expr_stmt|;
 comment|// TODO warning resources from the context may not be closed down!
 return|return
 name|broker
