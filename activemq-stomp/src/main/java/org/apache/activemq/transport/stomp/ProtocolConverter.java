@@ -5646,10 +5646,7 @@ try|try
 block|{
 name|hbReadInterval
 operator|=
-call|(
-name|long
-call|)
-argument_list|(
+operator|(
 name|Long
 operator|.
 name|parseLong
@@ -5659,9 +5656,7 @@ index|[
 literal|0
 index|]
 argument_list|)
-operator|*
-name|hbGracePeriodMultiplier
-argument_list|)
+operator|)
 expr_stmt|;
 name|hbWriteInterval
 operator|=
