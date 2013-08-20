@@ -603,6 +603,9 @@ operator|.
 name|put
 argument_list|(
 name|pid
+operator|.
+name|toString
+argument_list|()
 argument_list|,
 name|bab
 argument_list|)
@@ -988,6 +991,9 @@ operator|.
 name|put
 argument_list|(
 name|pid
+operator|.
+name|toString
+argument_list|()
 argument_list|,
 name|bab
 argument_list|)
