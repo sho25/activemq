@@ -3398,7 +3398,6 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
 name|this
 operator|.
 name|version
@@ -3407,7 +3406,7 @@ name|equals
 argument_list|(
 name|Stomp
 operator|.
-name|V1_1
+name|V1_0
 argument_list|)
 condition|)
 block|{
@@ -3415,7 +3414,7 @@ throw|throw
 operator|new
 name|ProtocolException
 argument_list|(
-literal|"Queue Browser feature only valid for Stomp v1.1 clients!"
+literal|"Queue Browser feature only valid for Stomp v1.1+ clients!"
 argument_list|)
 throw|;
 block|}
