@@ -3329,6 +3329,26 @@ name|original
 operator|.
 name|errorCode
 expr_stmt|;
+if|if
+condition|(
+name|xae
+operator|.
+name|errorCode
+operator|==
+name|XA_OK
+condition|)
+block|{
+comment|// detail not unmarshalled see: org.apache.activemq.openwire.v1.BaseDataStreamMarshaller.createThrowable
+comment|// so use a valid generic error code in place of ok
+name|xae
+operator|.
+name|errorCode
+operator|=
+name|XAException
+operator|.
+name|XAER_RMERR
+expr_stmt|;
+block|}
 name|xae
 operator|.
 name|initCause
