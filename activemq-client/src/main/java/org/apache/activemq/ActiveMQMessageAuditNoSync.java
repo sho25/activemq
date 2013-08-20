@@ -176,7 +176,7 @@ specifier|private
 specifier|final
 name|LRUCache
 argument_list|<
-name|Object
+name|String
 argument_list|,
 name|BitArrayBin
 argument_list|>
@@ -233,7 +233,7 @@ operator|=
 operator|new
 name|LRUCache
 argument_list|<
-name|Object
+name|String
 argument_list|,
 name|BitArrayBin
 argument_list|>
@@ -310,7 +310,7 @@ condition|)
 block|{
 name|LRUCache
 argument_list|<
-name|Object
+name|String
 argument_list|,
 name|BitArrayBin
 argument_list|>
@@ -319,7 +319,7 @@ init|=
 operator|new
 name|LRUCache
 argument_list|<
-name|Object
+name|String
 argument_list|,
 name|BitArrayBin
 argument_list|>
@@ -581,6 +581,9 @@ operator|.
 name|get
 argument_list|(
 name|pid
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -699,6 +702,9 @@ operator|.
 name|get
 argument_list|(
 name|pid
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -969,6 +975,9 @@ operator|.
 name|get
 argument_list|(
 name|pid
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
