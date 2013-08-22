@@ -197,68 +197,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|util
-operator|.
-name|IdGenerator
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|ServiceStopper
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|ServiceSupport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|store
 operator|.
 name|kahadb
@@ -319,20 +257,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|util
-operator|.
-name|ByteSequence
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|store
 operator|.
 name|kahadb
@@ -362,6 +286,82 @@ operator|.
 name|util
 operator|.
 name|VariableMarshaller
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|ByteSequence
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IdGenerator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|ServiceStopper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|ServiceSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -421,6 +421,15 @@ decl_stmt|;
 specifier|private
 name|Thread
 name|thread
+decl_stmt|;
+specifier|private
+specifier|final
+name|Object
+name|listenerLock
+init|=
+operator|new
+name|Object
+argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
@@ -484,7 +493,9 @@ operator|=
 name|name
 expr_stmt|;
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.beanstalk.JobScheduler#getName()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.beanstalk.JobScheduler#getName()      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -496,7 +507,9 @@ operator|.
 name|name
 return|;
 block|}
-comment|/*      * (non-Javadoc)      * @see      * org.apache.activemq.beanstalk.JobScheduler#addListener(org.apache.activemq      * .beanstalk.JobListener)      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.beanstalk.JobScheduler#addListener(org.apache.activemq .beanstalk.JobListener)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addListener
@@ -514,8 +527,25 @@ argument_list|(
 name|l
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|this
+operator|.
+name|listenerLock
+init|)
+block|{
+name|this
+operator|.
+name|listenerLock
+operator|.
+name|notify
+argument_list|()
+expr_stmt|;
 block|}
-comment|/*      * (non-Javadoc)      * @see      * org.apache.activemq.beanstalk.JobScheduler#removeListener(org.apache.      * activemq.beanstalk.JobListener)      */
+block|}
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.beanstalk.JobScheduler#removeListener(org.apache. activemq.beanstalk.JobListener)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeListener
@@ -534,6 +564,8 @@ name|l
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -575,6 +607,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -607,6 +641,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -648,6 +684,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -680,6 +718,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -733,6 +773,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -765,7 +807,9 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.beanstalk.JobScheduler#remove(long)      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.beanstalk.JobScheduler#remove(long)      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -799,6 +843,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -857,6 +903,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -881,7 +929,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.beanstalk.JobScheduler#remove(long,      * java.lang.String)      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.beanstalk.JobScheduler#remove(long, java.lang.String)      */
 specifier|public
 specifier|synchronized
 name|void
@@ -919,6 +967,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -943,7 +993,9 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.beanstalk.JobScheduler#remove(java.lang.String)      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.beanstalk.JobScheduler#remove(java.lang.String)      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -977,6 +1029,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -999,6 +1053,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|long
@@ -1051,7 +1107,9 @@ operator|-
 literal|1l
 return|;
 block|}
-comment|/*      * (non-Javadoc)      * @see org.apache.activemq.beanstalk.JobScheduler#getNextScheduleJobs()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.beanstalk.JobScheduler#getNextScheduleJobs()      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|List
@@ -1098,6 +1156,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1191,6 +1251,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|List
@@ -1237,6 +1299,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1364,6 +1428,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|List
@@ -1418,6 +1484,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1557,6 +1625,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1586,6 +1656,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1606,6 +1678,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1643,6 +1717,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1966,6 +2042,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2913,6 +2991,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -3021,6 +3101,55 @@ name|get
 argument_list|()
 condition|)
 block|{
+comment|// Can't start pumping messages until a listener is added otherwise we'd discard messages
+comment|// without any warning.
+synchronized|synchronized
+init|(
+name|listenerLock
+init|)
+block|{
+while|while
+condition|(
+name|this
+operator|.
+name|running
+operator|.
+name|get
+argument_list|()
+operator|&&
+name|this
+operator|.
+name|jobListeners
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+try|try
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Scheduled Message dispatch paused while awaiting a Job Listener"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|listenerLock
+operator|.
+name|wait
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{                     }
+block|}
+block|}
 name|this
 operator|.
 name|scheduleTime
@@ -3185,8 +3314,7 @@ argument_list|(
 name|repeat
 argument_list|)
 expr_stmt|;
-comment|// remove this job from the index - so it
-comment|// doesn't get destroyed
+comment|// remove this job from the index so it doesn't get destroyed
 name|removeFromIndex
 argument_list|(
 name|executionTime
@@ -3217,15 +3345,13 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// we haven't got a separate scheduler to
-comment|// execute at
+comment|// we haven't got a separate scheduler to execute at
 comment|// this time - just a cron job - so fire it
 name|fireJob
 argument_list|(
 name|job
 argument_list|)
 expr_stmt|;
-comment|//this.scheduleTime.setWaitTime(this.scheduleTime.DEFAULT_WAIT);
 block|}
 if|if
 condition|(
@@ -3235,8 +3361,7 @@ name|currentTime
 condition|)
 block|{
 comment|// we will run again ...
-comment|// remove this job from the index - so it
-comment|// doesn't get destroyed
+comment|// remove this job from the index - so it doesn't get destroyed
 name|removeFromIndex
 argument_list|(
 name|executionTime
@@ -3262,14 +3387,10 @@ operator|!=
 literal|0
 condition|)
 block|{
-comment|// we have a separate schedule to run at
-comment|// this time
-comment|// so the cron job is used to set of a
-comment|// seperate scheule
-comment|// hence we won't fire the original cron
-comment|// job to the listeners
-comment|// but we do need to start a separate
-comment|// schedule
+comment|// we have a separate schedule to run at this time
+comment|// so the cron job is used to set of a separate schedule
+comment|// hence we won't fire the original cron job to the
+comment|// listeners but we do need to start a separate schedule
 name|String
 name|jobId
 init|=
@@ -3530,6 +3651,21 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|this
+operator|.
+name|listenerLock
+init|)
+block|{
+name|this
+operator|.
+name|listenerLock
+operator|.
+name|notify
+argument_list|()
+expr_stmt|;
+block|}
 name|this
 operator|.
 name|thread
@@ -3893,6 +4029,8 @@ operator|new
 name|ValueMarshaller
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|List
 argument_list|<
@@ -3968,6 +4106,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writePayload

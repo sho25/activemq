@@ -557,7 +557,6 @@ name|enableIndexWriteAsync
 init|=
 literal|false
 decl_stmt|;
-comment|// private int indexWriteBatchSize = PageFile.DEFAULT_WRITE_BATCH_SIZE;
 name|MetaData
 name|metaData
 init|=
