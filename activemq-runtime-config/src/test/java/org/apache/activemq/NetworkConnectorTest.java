@@ -115,6 +115,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|Wait
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|After
@@ -195,6 +209,18 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertSame
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|assertTrue
 import|;
 end_import
@@ -228,6 +254,14 @@ init|=
 literal|4
 decl_stmt|;
 comment|// seconds
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|EMPTY_UPDATABLE_CONFIG
+init|=
+literal|"emptyUpdatableConfig1000"
+decl_stmt|;
 name|String
 name|configurationSeed
 init|=
@@ -295,7 +329,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testNewConnector
+name|testNew
 parameter_list|()
 throws|throws
 name|Exception
@@ -312,7 +346,7 @@ name|applyNewConfig
 argument_list|(
 name|brokerConfig
 argument_list|,
-name|configurationSeed
+name|EMPTY_UPDATABLE_CONFIG
 argument_list|)
 expr_stmt|;
 name|startBroker
@@ -409,7 +443,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertSame
 argument_list|(
 literal|"same instance"
 argument_list|,
@@ -431,7 +465,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testModConnector
+name|testMod
 parameter_list|()
 throws|throws
 name|Exception
@@ -587,7 +621,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertSame
 argument_list|(
 literal|"same instance"
 argument_list|,
@@ -609,7 +643,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testRemoveConnector
+name|testRemove
 parameter_list|()
 throws|throws
 name|Exception
@@ -672,12 +706,32 @@ argument_list|,
 name|SLEEP
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertTrue
 argument_list|(
-literal|"one network connectors"
+literal|"expected mod on time"
 argument_list|,
+name|Wait
+operator|.
+name|waitFor
+argument_list|(
+operator|new
+name|Wait
+operator|.
+name|Condition
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isSatisified
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
 literal|1
-argument_list|,
+operator|==
 name|brokerService
 operator|.
 name|getNetworkConnectors
@@ -685,6 +739,10 @@ argument_list|()
 operator|.
 name|size
 argument_list|()
+return|;
+block|}
+block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|NetworkConnector
