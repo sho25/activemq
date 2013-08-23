@@ -1603,6 +1603,11 @@ argument_list|(
 literal|"test"
 argument_list|)
 expr_stmt|;
+name|scheduler
+operator|.
+name|startDispatching
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|After

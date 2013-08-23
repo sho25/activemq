@@ -308,6 +308,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -703,8 +705,7 @@ name|answer
 operator|.
 name|setPersistent
 argument_list|(
-name|isPersistent
-argument_list|()
+literal|true
 argument_list|)
 expr_stmt|;
 name|answer

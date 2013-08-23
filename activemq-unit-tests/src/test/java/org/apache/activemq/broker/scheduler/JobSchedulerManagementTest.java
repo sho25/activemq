@@ -332,6 +332,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -542,6 +544,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -588,6 +592,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -904,6 +910,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -950,6 +958,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1220,6 +1230,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1266,6 +1278,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1584,6 +1598,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1752,7 +1768,7 @@ parameter_list|(
 name|Exception
 name|e
 parameter_list|)
-block|{         	}
+block|{             }
 block|}
 comment|// now check that they all got removed and are not delivered.
 name|latch
@@ -2305,8 +2321,7 @@ name|answer
 operator|.
 name|setPersistent
 argument_list|(
-name|isPersistent
-argument_list|()
+literal|true
 argument_list|)
 expr_stmt|;
 name|answer
