@@ -46,18 +46,28 @@ specifier|public
 interface|interface
 name|JobScheduler
 block|{
-comment|/**      * @return the name of the scheduler      * @throws Exception       */
-specifier|public
-specifier|abstract
+comment|/**      * @return the name of the scheduler      * @throws Exception      */
 name|String
 name|getName
 parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**  * Add a Job listener  * @param l  * @throws Exception   */
-specifier|public
-specifier|abstract
+comment|/**      * Starts dispatch of scheduled Jobs to registered listeners.      *      * Any listener added after the start dispatch method can miss jobs so its      * important to register critical listeners before the start of job dispatching.      *      * @throws Exception      */
+name|void
+name|startDispatching
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Stops dispatching of scheduled Jobs to registered listeners.      *      * @throws Exception      */
+name|void
+name|stopDispatching
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Add a Job listener      *      * @param l      * @throws Exception      */
 name|void
 name|addListener
 parameter_list|(
@@ -67,9 +77,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**  * remove a JobListener  * @param l  * @throws Exception   */
-specifier|public
-specifier|abstract
+comment|/**      * remove a JobListener      *      * @param l      * @throws Exception      */
 name|void
 name|removeListener
 parameter_list|(
@@ -79,9 +87,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Add a job to be scheduled      * @param jobId a unique identifier for the job      * @param payload the message to be sent when the job is scheduled      * @param delay the time in milliseconds before the job will be run      * @throws Exception      */
-specifier|public
-specifier|abstract
+comment|/**      * Add a job to be scheduled      *      * @param jobId      *            a unique identifier for the job      * @param payload      *            the message to be sent when the job is scheduled      * @param delay      *            the time in milliseconds before the job will be run      * @throws Exception      */
 name|void
 name|schedule
 parameter_list|(
@@ -97,9 +103,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Add a job to be scheduled      * @param jobId a unique identifier for the job      * @param payload the message to be sent when the job is scheduled      * @param cronEntry - cron entry      * @throws Exception      */
-specifier|public
-specifier|abstract
+comment|/**      * Add a job to be scheduled      *      * @param jobId      *            a unique identifier for the job      * @param payload      *            the message to be sent when the job is scheduled      * @param cronEntry      *            - cron entry      * @throws Exception      */
 name|void
 name|schedule
 parameter_list|(
@@ -115,9 +119,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Add a job to be scheduled      * @param jobId a unique identifier for the job      * @param payload the message to be sent when the job is scheduled      * @param cronEntry - cron entry      * @param delay time in ms to wait before scheduling      * @param period the time in milliseconds between successive executions of the Job      * @param repeat the number of times to execute the job - less than 0 will be repeated forever      * @throws Exception      */
-specifier|public
-specifier|abstract
+comment|/**      * Add a job to be scheduled      *      * @param jobId      *            a unique identifier for the job      * @param payload      *            the message to be sent when the job is scheduled      * @param cronEntry      *            - cron entry      * @param delay      *            time in ms to wait before scheduling      * @param period      *            the time in milliseconds between successive executions of the Job      * @param repeat      *            the number of times to execute the job - less than 0 will be repeated forever      * @throws Exception      */
 name|void
 name|schedule
 parameter_list|(
@@ -142,9 +144,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * remove all jobs scheduled to run at this time      * @param time      * @throws Exception       */
-specifier|public
-specifier|abstract
+comment|/**      * remove all jobs scheduled to run at this time      *      * @param time      * @throws Exception      */
 name|void
 name|remove
 parameter_list|(
@@ -154,9 +154,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * remove a job with the matching jobId      * @param jobId      * @throws Exception       */
-specifier|public
-specifier|abstract
+comment|/**      * remove a job with the matching jobId      *      * @param jobId      * @throws Exception      */
 name|void
 name|remove
 parameter_list|(
@@ -166,18 +164,14 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * remove all the Jobs from the scheduler      * @throws Exception      */
-specifier|public
-specifier|abstract
+comment|/**      * remove all the Jobs from the scheduler      *      * @throws Exception      */
 name|void
 name|removeAllJobs
 parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * remove all the Jobs from the scheduler that are due between the start and finish times      * @param start time in milliseconds      * @param finish time in milliseconds      * @throws Exception      */
-specifier|public
-specifier|abstract
+comment|/**      * remove all the Jobs from the scheduler that are due between the start and finish times      *      * @param start      *            time in milliseconds      * @param finish      *            time in milliseconds      * @throws Exception      */
 name|void
 name|removeAllJobs
 parameter_list|(
@@ -190,18 +184,14 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Get the next time jobs will be fired      * @return the time in milliseconds      * @throws Exception       */
-specifier|public
-specifier|abstract
+comment|/**      * Get the next time jobs will be fired      *      * @return the time in milliseconds      * @throws Exception      */
 name|long
 name|getNextScheduleTime
 parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Get all the jobs scheduled to run next      * @return a list of jobs that will be scheduled next      * @throws Exception      */
-specifier|public
-specifier|abstract
+comment|/**      * Get all the jobs scheduled to run next      *      * @return a list of jobs that will be scheduled next      * @throws Exception      */
 name|List
 argument_list|<
 name|Job
@@ -211,9 +201,7 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Get all the outstanding Jobs      * @return a  list of all jobs      * @throws Exception       */
-specifier|public
-specifier|abstract
+comment|/**      * Get all the outstanding Jobs      *      * @return a list of all jobs      * @throws Exception      */
 name|List
 argument_list|<
 name|Job
@@ -223,9 +211,7 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Get all outstanding jobs due to run between start and finish      * @param start      * @param finish      * @return a list of jobs      * @throws Exception      */
-specifier|public
-specifier|abstract
+comment|/**      * Get all outstanding jobs due to run between start and finish      *      * @param start      * @param finish      * @return a list of jobs      * @throws Exception      */
 name|List
 argument_list|<
 name|Job

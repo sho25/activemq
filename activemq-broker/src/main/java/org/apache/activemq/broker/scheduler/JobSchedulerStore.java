@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -29,18 +39,8 @@ name|Service
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
 begin_comment
-comment|/**  * @author<a href="http://hiramchirino.com">Hiram Chirino</a>  */
+comment|/**  * A Job Scheduler Store interface use to manage delay processing of Messaging  * related jobs.  */
 end_comment
 
 begin_interface
