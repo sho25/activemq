@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|PostConstruct
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|springframework
@@ -26,16 +36,6 @@ operator|.
 name|factory
 operator|.
 name|InitializingBean
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|PostConstruct
 import|;
 end_import
 
@@ -103,9 +103,38 @@ operator|=
 name|roles
 expr_stmt|;
 block|}
-comment|/**      *      * @org.apache.xbean.InitMethod      */
+comment|/**      * JSR-250 callback wrapper; converts checked exceptions to runtime exceptions      *      * delegates to afterPropertiesSet, done to prevent backwards incompatible signature change.      */
 annotation|@
 name|PostConstruct
+specifier|private
+name|void
+name|postConstruct
+parameter_list|()
+block|{
+try|try
+block|{
+name|afterPropertiesSet
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|ex
+argument_list|)
+throw|;
+block|}
+block|}
+comment|/**      *      * @org.apache.xbean.InitMethod      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterPropertiesSet

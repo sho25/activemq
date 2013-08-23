@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A<a href="http://www.springframework.org/">Spring</a> enhanced XA connection  * factory which will automatically use the Spring bean name as the clientIDPrefix property  * so that connections created have client IDs related to your Spring.xml file for  * easier comprehension from<a href="http://activemq.apache.org/jmx.html">JMX</a>.  *   * @org.apache.xbean.XBean element="xaConnectionFactory"  *   *   */
+comment|/**  * A<a href="http://www.springframework.org/">Spring</a> enhanced XA connection  * factory which will automatically use the Spring bean name as the clientIDPrefix property  * so that connections created have client IDs related to your Spring.xml file for  * easier comprehension from<a href="http://activemq.apache.org/jmx.html">JMX</a>.  *  * @org.apache.xbean.XBean element="xaConnectionFactory"  */
 end_comment
 
 begin_class
@@ -66,9 +66,36 @@ specifier|private
 name|boolean
 name|useBeanNameAsClientIdPrefix
 decl_stmt|;
-comment|/**      *      * @throws Exception      * @org.apache.xbean.InitMethod      */
+comment|/**      * JSR-250 callback wrapper; converts checked exceptions to runtime exceptions      *      * delegates to afterPropertiesSet, done to prevent backwards incompatible signature change.      */
 annotation|@
 name|PostConstruct
+specifier|private
+name|void
+name|postConstruct
+parameter_list|()
+block|{
+try|try
+block|{
+name|afterPropertiesSet
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|ex
+argument_list|)
+throw|;
+block|}
+block|}
+comment|/**      *      * @throws Exception      * @org.apache.xbean.InitMethod      */
 specifier|public
 name|void
 name|afterPropertiesSet
@@ -104,6 +131,8 @@ return|return
 name|beanName
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBeanName

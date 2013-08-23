@@ -126,9 +126,36 @@ name|getStartDefault
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      *      * @throws Exception      * @org.apache.xbean.InitMethod      */
+comment|/**      * JSR-250 callback wrapper; converts checked exceptions to runtime exceptions      *      * delegates to afterPropertiesSet, done to prevent backwards incompatible signature change.      */
 annotation|@
 name|PostConstruct
+specifier|private
+name|void
+name|postConstruct
+parameter_list|()
+block|{
+try|try
+block|{
+name|afterPropertiesSet
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|ex
+argument_list|)
+throw|;
+block|}
+block|}
+comment|/**      *      * @throws Exception      * @org.apache.xbean.InitMethod      */
 specifier|public
 name|void
 name|afterPropertiesSet
@@ -250,9 +277,36 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      *      * @throws Exception      * @org.apache.xbean.DestroyMethod      */
+comment|/**      * JSR-250 callback wrapper; converts checked exceptions to runtime exceptions      *      * delegates to destroy, done to prevent backwards incompatible signature change.      */
 annotation|@
 name|PreDestroy
+specifier|private
+name|void
+name|preDestroy
+parameter_list|()
+block|{
+try|try
+block|{
+name|destroy
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|ex
+argument_list|)
+throw|;
+block|}
+block|}
+comment|/**      *      * @throws Exception      * @org.apache.xbean.DestroyMethod      */
 specifier|public
 name|void
 name|destroy

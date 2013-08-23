@@ -1054,7 +1054,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Manages the lifecycle of an ActiveMQ Broker. A BrokerService consists of a  * number of transport connectors, network connectors and a bunch of properties  * which can be used to configure the broker as its lazily created.  *  *  * @org.apache.xbean.XBean  */
+comment|/**  * Manages the life-cycle of an ActiveMQ Broker. A BrokerService consists of a  * number of transport connectors, network connectors and a bunch of properties  * which can be used to configure the broker as its lazily created.  *  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
@@ -1119,6 +1119,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 specifier|private
 specifier|static
 specifier|final
@@ -2656,9 +2661,36 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      *      * @throws Exception      * @org. apache.xbean.InitMethod      */
+comment|/**      * JSR-250 callback wrapper; converts checked exceptions to runtime exceptions      *      * delegates to autoStart, done to prevent backwards incompatible signature change      */
 annotation|@
 name|PostConstruct
+specifier|private
+name|void
+name|postConstruct
+parameter_list|()
+block|{
+try|try
+block|{
+name|autoStart
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|ex
+argument_list|)
+throw|;
+block|}
+block|}
+comment|/**      *      * @throws Exception      * @org. apache.xbean.InitMethod      */
 specifier|public
 name|void
 name|autoStart
@@ -3330,11 +3362,36 @@ name|nowMasterBroker
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * JSR-250 callback wrapper; converts checked exceptions to runtime exceptions      *      * delegates to stop, done to prevent backwards incompatible signature change      */
+annotation|@
+name|PreDestroy
+specifier|private
+name|void
+name|preDestroy
+parameter_list|()
+block|{
+try|try
+block|{
+name|stop
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|()
+throw|;
+block|}
+block|}
 comment|/**      *      * @throws Exception      * @org.apache .xbean.DestroyMethod      */
 annotation|@
 name|Override
-annotation|@
-name|PreDestroy
 specifier|public
 name|void
 name|stop

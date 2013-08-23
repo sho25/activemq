@@ -39,48 +39,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|annotation
-operator|.
-name|PreDestroy
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Connection
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|ConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|EnhancedConnection
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -235,20 +193,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|camel
-operator|.
-name|util
-operator|.
-name|ObjectHelper
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -266,7 +210,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper bean which populates a {@link CamelContext} with ActiveMQ Queue endpoints  *  *  * @org.apache.xbean.XBean  */
+comment|/**  * A helper bean which populates a {@link CamelContext} with ActiveMQ Queue endpoints  *  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
@@ -330,9 +274,36 @@ operator|=
 name|source
 expr_stmt|;
 block|}
-comment|/**      *      * @throws Exception      * @org.apache.xbean.InitMethod      */
+comment|/**      * JSR-250 callback wrapper; converts checked exceptions to runtime exceptions      *      * delegates to afterPropertiesSet, done to prevent backwards incompatible signature change      *      * fix: AMQ-4676      */
 annotation|@
 name|PostConstruct
+specifier|private
+name|void
+name|postConstruct
+parameter_list|()
+block|{
+try|try
+block|{
+name|afterPropertiesSet
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|ex
+argument_list|)
+throw|;
+block|}
+block|}
+comment|/**      *      * @throws Exception      * @org.apache.xbean.InitMethod      */
 specifier|public
 name|void
 name|afterPropertiesSet
@@ -355,6 +326,8 @@ operator|new
 name|DestinationListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onDestinationEvent
@@ -527,6 +500,8 @@ block|}
 block|}
 comment|// Properties
 comment|//-------------------------------------------------------------------------
+annotation|@
+name|Override
 specifier|public
 name|CamelContext
 name|getCamelContext
@@ -536,6 +511,8 @@ return|return
 name|camelContext
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setCamelContext
