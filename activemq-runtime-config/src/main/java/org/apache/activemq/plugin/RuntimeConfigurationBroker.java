@@ -3021,11 +3021,6 @@ operator|+
 name|interceptorsList
 argument_list|)
 expr_stmt|;
-name|Thread
-operator|.
-name|dumpStack
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}
