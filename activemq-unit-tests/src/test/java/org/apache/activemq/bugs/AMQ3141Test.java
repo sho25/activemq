@@ -280,7 +280,7 @@ name|broker
 operator|.
 name|setPersistent
 argument_list|(
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 name|broker
@@ -516,6 +516,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
