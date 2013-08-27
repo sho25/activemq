@@ -71,6 +71,7 @@ implements|implements
 name|DestinationInterceptor
 block|{
 specifier|private
+specifier|volatile
 name|DestinationInterceptor
 index|[]
 name|interceptors

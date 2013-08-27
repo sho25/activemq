@@ -396,6 +396,11 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+name|brokerService
+operator|.
+name|waitUntilStopped
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class

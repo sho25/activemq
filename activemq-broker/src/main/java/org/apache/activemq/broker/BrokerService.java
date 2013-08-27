@@ -1452,6 +1452,7 @@ name|BrokerId
 name|brokerId
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|DestinationInterceptor
 index|[]
 name|destinationInterceptors

@@ -191,6 +191,27 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"XBeanAuthEntry:"
+operator|+
+name|adminRoles
+operator|+
+literal|","
+operator|+
+name|writeRoles
+operator|+
+literal|","
+operator|+
+name|readRoles
+return|;
+block|}
 block|}
 end_class
 

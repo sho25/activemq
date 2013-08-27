@@ -344,11 +344,6 @@ literal|"same instance"
 argument_list|,
 name|newValue
 argument_list|,
-operator|(
-operator|(
-operator|(
-name|VirtualDestinationInterceptor
-operator|)
 name|brokerService
 operator|.
 name|getDestinationInterceptors
@@ -356,8 +351,6 @@ argument_list|()
 index|[
 literal|0
 index|]
-operator|)
-operator|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -515,11 +508,6 @@ literal|"same instance"
 argument_list|,
 name|newValue
 argument_list|,
-operator|(
-operator|(
-operator|(
-name|VirtualDestinationInterceptor
-operator|)
 name|brokerService
 operator|.
 name|getDestinationInterceptors
@@ -527,8 +515,6 @@ argument_list|()
 index|[
 literal|0
 index|]
-operator|)
-operator|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -686,11 +672,6 @@ literal|"same instance"
 argument_list|,
 name|newValue
 argument_list|,
-operator|(
-operator|(
-operator|(
-name|VirtualDestinationInterceptor
-operator|)
 name|brokerService
 operator|.
 name|getDestinationInterceptors
@@ -698,8 +679,6 @@ argument_list|()
 index|[
 literal|0
 index|]
-operator|)
-operator|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1206,9 +1185,12 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 decl_stmt|;
-name|MessageConsumer
+name|ActiveMQMessageConsumer
 name|consumer
 init|=
+operator|(
+name|ActiveMQMessageConsumer
+operator|)
 name|session
 operator|.
 name|createConsumer
@@ -1223,6 +1205,18 @@ name|topic
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"new consumer for: "
+operator|+
+name|consumer
+operator|.
+name|getDestination
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|MessageProducer
 name|producer
 init|=
@@ -1258,6 +1252,18 @@ name|body
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"sent to: "
+operator|+
+name|producer
+operator|.
+name|getDestination
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|Message
 name|message
 init|=
@@ -1272,7 +1278,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|5
+literal|10
 operator|&&
 name|message
 operator|==
