@@ -251,6 +251,32 @@ name|javax
 operator|.
 name|xml
 operator|.
+name|transform
+operator|.
+name|Source
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|transform
+operator|.
+name|stream
+operator|.
+name|StreamSource
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
 name|validation
 operator|.
 name|Schema
@@ -4125,6 +4151,13 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// need to pull the spring schemas from the classpath and find reelvant
+comment|// constants for the system id etc something like ...
+comment|//PluggableSchemaResolver resolver =
+comment|//        new PluggableSchemaResolver(getClass().getClassLoader());
+comment|//InputSource springBeans = resolver.resolveEntity("http://www.springframework.org/schema/beans",
+comment|//                                                "http://www.springframework.org/schema/beans/spring-beans-2.0.xsd");
+comment|//LOG.trace("Beans schema:" + springBeans);
 name|SchemaFactory
 name|schemaFactory
 init|=
@@ -4143,6 +4176,13 @@ name|schemaFactory
 operator|.
 name|newSchema
 argument_list|(
+operator|new
+name|Source
+index|[]
+block|{
+operator|new
+name|StreamSource
+argument_list|(
 name|getClass
 argument_list|()
 operator|.
@@ -4150,6 +4190,17 @@ name|getResource
 argument_list|(
 literal|"/activemq.xsd"
 argument_list|)
+operator|.
+name|toExternalForm
+argument_list|()
+argument_list|)
+block|,
+operator|new
+name|StreamSource
+argument_list|(
+literal|"http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
+argument_list|)
+block|}
 argument_list|)
 expr_stmt|;
 block|}
