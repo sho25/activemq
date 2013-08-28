@@ -556,7 +556,6 @@ name|long
 name|getMinEnqueueTime
 parameter_list|()
 function_decl|;
-comment|/**      * @return average time a message is held by a destination      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -564,6 +563,35 @@ literal|"Average time a message has been held this destination."
 argument_list|)
 name|double
 name|getAverageEnqueueTime
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Average message size on this destination"
+argument_list|)
+name|double
+name|getAverageMessageSize
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Max message size on this destination"
+argument_list|)
+specifier|public
+name|long
+name|getMaxMessageSize
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Min message size on this destination"
+argument_list|)
+specifier|public
+name|long
+name|getMinMessageSize
 parameter_list|()
 function_decl|;
 comment|/**      * @return the producerFlowControl      */

@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|management
@@ -36,16 +46,6 @@ operator|.
 name|activemq
 operator|.
 name|Service
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
 import|;
 end_import
 
@@ -191,6 +191,35 @@ literal|"Number of unacknowledged messages on the broker."
 argument_list|)
 name|long
 name|getTotalMessageCount
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Average message size on this broker"
+argument_list|)
+name|double
+name|getAverageMessageSize
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Max message size on this broker"
+argument_list|)
+specifier|public
+name|long
+name|getMaxMessageSize
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Min message size on this broker"
+argument_list|)
+specifier|public
+name|long
+name|getMinMessageSize
 parameter_list|()
 function_decl|;
 annotation|@

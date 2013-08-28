@@ -69,7 +69,7 @@ name|activemq
 operator|.
 name|management
 operator|.
-name|TimeStatisticImpl
+name|*
 import|;
 end_import
 
@@ -131,6 +131,10 @@ decl_stmt|;
 specifier|protected
 name|TimeStatisticImpl
 name|blockedTime
+decl_stmt|;
+specifier|protected
+name|SizeStatisticImpl
+name|messageSize
 decl_stmt|;
 specifier|public
 name|DestinationStatistics
@@ -277,6 +281,16 @@ argument_list|,
 literal|"amount of time messages are blocked for flow control"
 argument_list|)
 expr_stmt|;
+name|messageSize
+operator|=
+operator|new
+name|SizeStatisticImpl
+argument_list|(
+literal|"messageSize"
+argument_list|,
+literal|"Size of messages passing through the destination"
+argument_list|)
+expr_stmt|;
 name|addStatistic
 argument_list|(
 literal|"enqueues"
@@ -359,6 +373,13 @@ argument_list|(
 literal|"blockedTime"
 argument_list|,
 name|blockedTime
+argument_list|)
+expr_stmt|;
+name|addStatistic
+argument_list|(
+literal|"messageSize"
+argument_list|,
+name|messageSize
 argument_list|)
 expr_stmt|;
 block|}
@@ -492,6 +513,17 @@ name|blockedTime
 return|;
 block|}
 specifier|public
+name|SizeStatisticImpl
+name|getMessageSize
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|messageSize
+return|;
+block|}
+specifier|public
 name|void
 name|reset
 parameter_list|()
@@ -540,6 +572,11 @@ name|reset
 argument_list|()
 expr_stmt|;
 name|blockedTime
+operator|.
+name|reset
+argument_list|()
+expr_stmt|;
+name|messageSize
 operator|.
 name|reset
 argument_list|()
@@ -639,6 +676,13 @@ name|enabled
 argument_list|)
 expr_stmt|;
 name|blockedTime
+operator|.
+name|setEnabled
+argument_list|(
+name|enabled
+argument_list|)
+expr_stmt|;
+name|messageSize
 operator|.
 name|setEnabled
 argument_list|(
@@ -769,6 +813,15 @@ operator|.
 name|blockedTime
 argument_list|)
 expr_stmt|;
+name|messageSize
+operator|.
+name|setParent
+argument_list|(
+name|parent
+operator|.
+name|messageSize
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -850,6 +903,13 @@ literal|null
 argument_list|)
 expr_stmt|;
 name|blockedTime
+operator|.
+name|setParent
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|messageSize
 operator|.
 name|setParent
 argument_list|(
