@@ -1974,6 +1974,10 @@ operator|.
 name|scheduler
 operator|==
 literal|null
+operator|&&
+name|store
+operator|!=
+literal|null
 condition|)
 block|{
 name|this
