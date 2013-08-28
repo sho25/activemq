@@ -582,7 +582,7 @@ name|threadService
 operator|.
 name|awaitTermination
 argument_list|(
-literal|10l
+literal|30l
 argument_list|,
 name|TimeUnit
 operator|.
