@@ -238,6 +238,8 @@ name|BrokerDestinationView
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|/**      * Create a view of a running Broker      * @param brokerService      */
+specifier|public
 name|MessageBrokerView
 parameter_list|(
 name|BrokerService
@@ -250,7 +252,47 @@ name|brokerService
 operator|=
 name|brokerService
 expr_stmt|;
+if|if
+condition|(
+name|brokerService
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|NullPointerException
+argument_list|(
+literal|"BrokerService is null"
+argument_list|)
+throw|;
 block|}
+if|if
+condition|(
+operator|!
+name|brokerService
+operator|.
+name|isStarted
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"BrokerService "
+operator|+
+name|brokerService
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" is not started"
+argument_list|)
+throw|;
+block|}
+block|}
+comment|/**      * @return the brokerName      */
 specifier|public
 name|String
 name|getBrokerName
@@ -263,6 +305,39 @@ name|getBrokerName
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the unique id of the Broker      */
+specifier|public
+name|String
+name|getBrokerId
+parameter_list|()
+block|{
+try|try
+block|{
+return|return
+name|brokerService
+operator|.
+name|getBroker
+argument_list|()
+operator|.
+name|getBrokerId
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+return|return
+literal|""
+return|;
+block|}
+block|}
+comment|/**      * @return the memory used by the Broker as a percentage      */
 specifier|public
 name|int
 name|getMemoryPercentUsage
@@ -281,6 +356,7 @@ name|getPercentUsage
 argument_list|()
 return|;
 block|}
+comment|/**      * @return  the space used by the Message Store as a percentage      */
 specifier|public
 name|int
 name|getStorePercentUsage
@@ -299,6 +375,7 @@ name|getPercentUsage
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the space used by the store for temporary messages as a percentage      */
 specifier|public
 name|int
 name|getTempPercentUsage
@@ -317,6 +394,7 @@ name|getPercentUsage
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the space used by the store of scheduled messages      */
 specifier|public
 name|int
 name|getJobSchedulerStorePercentUsage
@@ -335,6 +413,7 @@ name|getPercentUsage
 argument_list|()
 return|;
 block|}
+comment|/**      * @return true if the Broker isn't using an in-memory store only for messages      */
 specifier|public
 name|boolean
 name|isPersistent
@@ -356,6 +435,7 @@ return|return
 name|brokerService
 return|;
 block|}
+comment|/**      * Retrieve a set of all Destinations be used by the Broker      * @return  all Destinations      */
 specifier|public
 name|Set
 argument_list|<
@@ -421,6 +501,7 @@ return|return
 name|result
 return|;
 block|}
+comment|/**      * Retrieve a set of all Topics be used by the Broker      * @return  all Topics      */
 specifier|public
 name|Set
 argument_list|<
@@ -481,6 +562,7 @@ return|return
 name|result
 return|;
 block|}
+comment|/**      * Retrieve a set of all Queues be used by the Broker      * @return  all Queues      */
 specifier|public
 name|Set
 argument_list|<
@@ -541,6 +623,7 @@ return|return
 name|result
 return|;
 block|}
+comment|/**      * Retrieve a set of all TemporaryTopics be used by the Broker      * @return  all TemporaryTopics      */
 specifier|public
 name|Set
 argument_list|<
@@ -600,6 +683,7 @@ return|return
 name|result
 return|;
 block|}
+comment|/**      * Retrieve a set of all TemporaryQueues be used by the Broker      * @return  all TemporaryQueues      */
 specifier|public
 name|Set
 argument_list|<
@@ -659,7 +743,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * It will be assumed the destinationName is prepended with topic:// or queue:// - but      * will default to a Queue      * @param destinationName      * @return the BrokerDestinationView associated with the destinationName      */
+comment|/**      * It will be assumed the destinationName is prepended with topic:// or queue:// - but      * will default to a Queue      * @param destinationName      * @return the BrokerDestinationView associated with the destinationName      * @throws Exception      */
 specifier|public
 name|BrokerDestinationView
 name|getDestinationView
@@ -667,6 +751,8 @@ parameter_list|(
 name|String
 name|destinationName
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 return|return
 name|getDestinationView
@@ -679,7 +765,7 @@ name|QUEUE_TYPE
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the BrokerDestinationView associated with the topic      * @param destinationName      * @return  BrokerDestinationView      */
+comment|/**      * Get the BrokerDestinationView associated with the topic      * @param destinationName      * @return  BrokerDestinationView      * @throws Exception      */
 specifier|public
 name|BrokerDestinationView
 name|getTopicDestinationView
@@ -687,6 +773,8 @@ parameter_list|(
 name|String
 name|destinationName
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 return|return
 name|getDestinationView
@@ -699,7 +787,7 @@ name|TOPIC_TYPE
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the BrokerDestinationView associated with the queue      * @param destinationName      * @return  BrokerDestinationView      */
+comment|/**      * Get the BrokerDestinationView associated with the queue      * @param destinationName      * @return  BrokerDestinationView      * @throws Exception      */
 specifier|public
 name|BrokerDestinationView
 name|getQueueDestinationView
@@ -707,6 +795,8 @@ parameter_list|(
 name|String
 name|destinationName
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 return|return
 name|getDestinationView
@@ -719,6 +809,7 @@ name|QUEUE_TYPE
 argument_list|)
 return|;
 block|}
+comment|/**      * Get the BrokerDestinationView associated with destination      * @param destinationName      * @param type  expects either ActiveMQDestination.QUEUE_TYPE, ActiveMQDestination.TOPIC_TYPE etc      * @return  BrokerDestinationView      * @throws Exception      */
 specifier|public
 name|BrokerDestinationView
 name|getDestinationView
@@ -729,6 +820,8 @@ parameter_list|,
 name|byte
 name|type
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 name|ActiveMQDestination
 name|activeMQDestination
@@ -749,6 +842,7 @@ name|activeMQDestination
 argument_list|)
 return|;
 block|}
+comment|/**      *  Get the BrokerDestinationView associated with destination      * @param activeMQDestination      * @return   BrokerDestinationView      * @throws Exception      */
 specifier|public
 name|BrokerDestinationView
 name|getDestinationView
@@ -756,6 +850,8 @@ parameter_list|(
 name|ActiveMQDestination
 name|activeMQDestination
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 name|BrokerDestinationView
 name|view
@@ -783,8 +879,6 @@ operator|==
 literal|null
 condition|)
 block|{
-try|try
-block|{
 comment|/**                      * If auto destinatons are allowed (on by default) - this will create a Broker Destination                      * if it doesn't exist. We could query the regionBroker first to check - but this affords more                      * flexibility - e.g. you might want to set up a query on destination statistics before any                      * messaging clients have started (and hence created the destination themselves                      */
 name|Destination
 name|destination
@@ -796,43 +890,14 @@ argument_list|(
 name|activeMQDestination
 argument_list|)
 decl_stmt|;
-name|BrokerDestinationView
-name|brokerDestinationView
-init|=
+name|view
+operator|=
 operator|new
 name|BrokerDestinationView
 argument_list|(
 name|destination
 argument_list|)
-decl_stmt|;
-name|destinationViewMap
-operator|.
-name|put
-argument_list|(
-name|activeMQDestination
-argument_list|,
-name|brokerDestinationView
-argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"Failed to get Destination for "
-operator|+
-name|activeMQDestination
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
 name|destinationViewMap
 operator|.
 name|put

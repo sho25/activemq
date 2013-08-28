@@ -43,7 +43,6 @@ specifier|final
 name|Destination
 name|destination
 decl_stmt|;
-specifier|public
 name|BrokerDestinationView
 parameter_list|(
 name|Destination
@@ -57,6 +56,7 @@ operator|=
 name|destination
 expr_stmt|;
 block|}
+comment|/**      * @return the name of the DestinationView      */
 specifier|public
 name|String
 name|getName
@@ -69,6 +69,7 @@ name|getName
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the number of messages enqueued by this destination      */
 specifier|public
 name|long
 name|getEnqueueCount
@@ -87,6 +88,7 @@ name|getCount
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the number of messages dequeued (dispatched and removed) by this destination      */
 specifier|public
 name|long
 name|getDequeueCount
@@ -105,6 +107,7 @@ name|getCount
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the number of messages dispatched by this destination      */
 specifier|public
 name|long
 name|getDispatchCount
@@ -123,6 +126,7 @@ name|getCount
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the number of messages inflight (dispatched by not acknowledged) by this destination      */
 specifier|public
 name|long
 name|getInFlightCount
@@ -141,6 +145,7 @@ name|getCount
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the number of messages expired by this destination      */
 specifier|public
 name|long
 name|getExpiredCount
@@ -159,12 +164,16 @@ name|getCount
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the number of active consumers on this destination      */
 specifier|public
-name|long
+name|int
 name|getConsumerCount
 parameter_list|()
 block|{
 return|return
+operator|(
+name|int
+operator|)
 name|destination
 operator|.
 name|getDestinationStatistics
@@ -177,6 +186,29 @@ name|getCount
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the number of active consumers on this destination      */
+specifier|public
+name|int
+name|getProducerCount
+parameter_list|()
+block|{
+return|return
+operator|(
+name|int
+operator|)
+name|destination
+operator|.
+name|getDestinationStatistics
+argument_list|()
+operator|.
+name|getProducers
+argument_list|()
+operator|.
+name|getCount
+argument_list|()
+return|;
+block|}
+comment|/**      * @return the depth of the Destination      */
 specifier|public
 name|long
 name|getQueueSize
@@ -195,6 +227,7 @@ name|getCount
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the number of messages cached in memory by this destination      */
 specifier|public
 name|long
 name|getMessagesCached
@@ -213,6 +246,7 @@ name|getCount
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the memory usage as a percentage for this Destination      */
 specifier|public
 name|int
 name|getMemoryPercentUsage
@@ -228,6 +262,7 @@ name|getPercentUsage
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the memory used by this destination in bytes      */
 specifier|public
 name|long
 name|getMemoryUsageByteCount
@@ -243,6 +278,7 @@ name|getUsage
 argument_list|()
 return|;
 block|}
+comment|/**      * @return  the memory limit for this destination in bytes      */
 specifier|public
 name|long
 name|getMemoryLimit
@@ -258,25 +294,7 @@ name|getLimit
 argument_list|()
 return|;
 block|}
-specifier|public
-name|void
-name|setMemoryLimit
-parameter_list|(
-name|long
-name|limit
-parameter_list|)
-block|{
-name|destination
-operator|.
-name|getMemoryUsage
-argument_list|()
-operator|.
-name|setLimit
-argument_list|(
-name|limit
-argument_list|)
-expr_stmt|;
-block|}
+comment|/**      * @return the average time it takes to store a message on this destination (ms)      */
 specifier|public
 name|double
 name|getAverageEnqueueTime
@@ -295,6 +313,7 @@ name|getAverageTime
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the maximum time it takes to store a message on this destination (ms)      */
 specifier|public
 name|long
 name|getMaxEnqueueTime
@@ -313,6 +332,7 @@ name|getMaxTime
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the minimum time it takes to store a message on this destination (ms)      */
 specifier|public
 name|long
 name|getMinEnqueueTime
@@ -331,39 +351,7 @@ name|getMinTime
 argument_list|()
 return|;
 block|}
-specifier|public
-name|float
-name|getMemoryUsagePortion
-parameter_list|()
-block|{
-return|return
-name|destination
-operator|.
-name|getMemoryUsage
-argument_list|()
-operator|.
-name|getUsagePortion
-argument_list|()
-return|;
-block|}
-specifier|public
-name|long
-name|getProducerCount
-parameter_list|()
-block|{
-return|return
-name|destination
-operator|.
-name|getDestinationStatistics
-argument_list|()
-operator|.
-name|getProducers
-argument_list|()
-operator|.
-name|getCount
-argument_list|()
-return|;
-block|}
+comment|/**      * @return true if the destination is a Dead Letter Queue      */
 specifier|public
 name|boolean
 name|isDLQ
@@ -376,6 +364,7 @@ name|isDLQ
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the number of messages blocked waiting for dispatch (indication of slow consumption if greater than zero)      */
 specifier|public
 name|long
 name|getBlockedSends
@@ -394,6 +383,7 @@ name|getCount
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the average time(ms) messages are  blocked waiting for dispatch (indication of slow consumption if greater than zero)      */
 specifier|public
 name|double
 name|getAverageBlockedTime
@@ -412,6 +402,7 @@ name|getAverageTime
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the total time(ms) messages are  blocked waiting for dispatch (indication of slow consumption if greater than zero)      */
 specifier|public
 name|long
 name|getTotalBlockedTime
