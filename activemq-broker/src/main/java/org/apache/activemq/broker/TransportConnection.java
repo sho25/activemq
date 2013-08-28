@@ -1357,6 +1357,9 @@ name|stopping
 operator|.
 name|get
 argument_list|()
+operator|&&
+operator|!
+name|pendingStop
 condition|)
 block|{
 name|transportException

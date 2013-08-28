@@ -317,6 +317,19 @@ name|getThrowable
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Event source: "
+argument_list|,
+operator|new
+name|Throwable
+argument_list|(
+literal|"Here"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
