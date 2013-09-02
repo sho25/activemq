@@ -753,11 +753,10 @@ operator|.
 name|isBrokerContext
 argument_list|()
 operator|&&
-operator|(
 name|allowedACLs
-operator|==
+operator|!=
 literal|null
-operator|||
+operator|&&
 operator|!
 name|securityContext
 operator|.
@@ -765,7 +764,6 @@ name|isInOneOf
 argument_list|(
 name|allowedACLs
 argument_list|)
-operator|)
 condition|)
 block|{
 throw|throw
