@@ -539,6 +539,22 @@ literal|null
 expr_stmt|;
 block|}
 block|}
+specifier|public
+name|boolean
+name|keepAlive
+parameter_list|()
+block|{
+return|return
+name|lock
+operator|!=
+literal|null
+operator|&&
+name|lock
+operator|.
+name|isValid
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
