@@ -41,13 +41,16 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-specifier|public
 name|Map
 name|getBeansOfType
 parameter_list|(
 name|Class
 name|type
 parameter_list|)
+function_decl|;
+name|String
+name|getConfigurationUrl
+parameter_list|()
 function_decl|;
 block|}
 end_interface

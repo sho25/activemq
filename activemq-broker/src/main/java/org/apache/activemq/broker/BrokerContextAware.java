@@ -31,6 +31,10 @@ name|BrokerContext
 name|brokerContext
 parameter_list|)
 function_decl|;
+name|BrokerContext
+name|getBrokerContext
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

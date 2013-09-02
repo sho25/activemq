@@ -1897,6 +1897,19 @@ operator|=
 name|brokerContext
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|BrokerContext
+name|getBrokerContext
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|brokerContext
+return|;
+block|}
 comment|/**      * Return an Advisory message as a JSON formatted string      * @param ds      * @return      */
 specifier|protected
 name|String

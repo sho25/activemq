@@ -320,7 +320,9 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"got sensible result"
+literal|"got sensible result: "
+operator|+
+name|result
 argument_list|,
 name|result
 operator|.
@@ -411,7 +413,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testUpdateFailedMod
+name|testUpdateFailedModParseError
 parameter_list|()
 throws|throws
 name|Exception
@@ -566,7 +568,9 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"got sensible result"
+literal|"got sensible result: "
+operator|+
+name|result
 argument_list|,
 name|result
 operator|.
@@ -665,7 +669,9 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"got sensible result"
+literal|"got sensible result: "
+operator|+
+name|result
 argument_list|,
 name|result
 operator|.
