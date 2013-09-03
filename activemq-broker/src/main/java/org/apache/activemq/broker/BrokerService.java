@@ -11946,6 +11946,15 @@ return|return
 name|this
 operator|.
 name|schedulerSupport
+operator|&&
+operator|(
+name|isPersistent
+argument_list|()
+operator|||
+name|jobSchedulerStore
+operator|!=
+literal|null
+operator|)
 return|;
 block|}
 comment|/**      * @param schedulerSupport the schedulerSupport to set      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
