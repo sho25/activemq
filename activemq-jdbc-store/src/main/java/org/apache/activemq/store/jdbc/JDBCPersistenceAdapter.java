@@ -2977,6 +2977,27 @@ operator|.
 name|getConnection
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|connection
+operator|.
+name|isValid
+argument_list|(
+literal|10
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"isValid(10) failed for: "
+operator|+
+name|connection
+argument_list|)
+throw|;
+block|}
 block|}
 catch|catch
 parameter_list|(
