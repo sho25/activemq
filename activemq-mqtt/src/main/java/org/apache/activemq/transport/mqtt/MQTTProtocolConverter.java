@@ -1603,7 +1603,7 @@ block|}
 name|String
 name|userName
 init|=
-literal|""
+literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -1629,7 +1629,7 @@ block|}
 name|String
 name|passswd
 init|=
-literal|""
+literal|null
 decl_stmt|;
 if|if
 condition|(
