@@ -157,8 +157,8 @@ block|}
 block|}
 comment|/**      * Using the supplied TransportConnector this method returns the String that will      * be used to update clients with this connector's connect address.      *      * @param connector      *      The TransportConnector whose address is to be published.      * @return a string URI address that a client can use to connect to this Transport.      * @throws Exception      */
 specifier|public
-name|String
-name|getPublishableConnectString
+name|URI
+name|getPublishableConnectURI
 parameter_list|(
 name|TransportConnector
 name|connector
@@ -289,6 +289,23 @@ argument_list|)
 decl_stmt|;
 return|return
 name|publishedURI
+return|;
+block|}
+specifier|public
+name|String
+name|getPublishableConnectString
+parameter_list|(
+name|TransportConnector
+name|connector
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+return|return
+name|getPublishableConnectURI
+argument_list|(
+name|connector
+argument_list|)
 operator|.
 name|toString
 argument_list|()
