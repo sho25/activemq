@@ -550,7 +550,7 @@ block|{
 comment|// we can no longer keep the lock so lets fail
 name|LOG
 operator|.
-name|info
+name|error
 argument_list|(
 name|brokerService
 operator|.

@@ -553,6 +553,11 @@ name|lock
 operator|.
 name|isValid
 argument_list|()
+operator|&&
+name|file
+operator|.
+name|exists
+argument_list|()
 return|;
 block|}
 block|}
