@@ -208,6 +208,7 @@ name|boolean
 name|daemon
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicLong
 name|id
 init|=
@@ -228,6 +229,7 @@ init|=
 literal|30000
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicBoolean
 name|initDone
 init|=
@@ -627,6 +629,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -768,7 +772,8 @@ argument_list|,
 name|getMaxThreadPoolSize
 argument_list|()
 argument_list|,
-literal|30
+name|getDefaultKeepAliveTime
+argument_list|()
 argument_list|,
 name|TimeUnit
 operator|.
@@ -785,6 +790,8 @@ operator|new
 name|ThreadFactory
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Thread
 name|newThread
@@ -1082,6 +1089,23 @@ name|shutdownAwaitTermination
 operator|=
 name|shutdownAwaitTermination
 expr_stmt|;
+block|}
+specifier|private
+specifier|static
+name|int
+name|getDefaultKeepAliveTime
+parameter_list|()
+block|{
+return|return
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"org.apache.activemq.thread.TaskRunnerFactory.keepAliveTime"
+argument_list|,
+literal|30
+argument_list|)
+return|;
 block|}
 block|}
 end_class

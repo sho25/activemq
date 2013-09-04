@@ -2007,8 +2007,6 @@ name|ThreadPoolExecutor
 name|createExecutor
 parameter_list|()
 block|{
-comment|// TODO: This value of 10 seconds seems to low, see discussion at
-comment|// http://activemq.2283324.n4.nabble.com/InactivityMonitor-Creating-too-frequent-threads-tp4656752.html;cid=1348142445209-351
 name|ThreadPoolExecutor
 name|exec
 init|=
@@ -2021,7 +2019,8 @@ name|Integer
 operator|.
 name|MAX_VALUE
 argument_list|,
-literal|10
+name|getDefaultKeepAliveTime
+argument_list|()
 argument_list|,
 name|TimeUnit
 operator|.
@@ -2046,6 +2045,23 @@ argument_list|)
 expr_stmt|;
 return|return
 name|exec
+return|;
+block|}
+specifier|private
+specifier|static
+name|int
+name|getDefaultKeepAliveTime
+parameter_list|()
+block|{
+return|return
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"org.apache.activemq.transport.AbstractInactivityMonitor.keepAliveTime"
+argument_list|,
+literal|30
+argument_list|)
 return|;
 block|}
 block|}
