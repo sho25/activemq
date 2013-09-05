@@ -721,11 +721,11 @@ block|}
 comment|// wait until all scheduled messages has been received
 name|TimeUnit
 operator|.
-name|SECONDS
+name|MINUTES
 operator|.
 name|sleep
 argument_list|(
-literal|10
+literal|2
 argument_list|)
 expr_stmt|;
 name|session

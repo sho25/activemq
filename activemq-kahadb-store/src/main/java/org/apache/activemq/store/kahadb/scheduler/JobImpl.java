@@ -139,6 +139,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getJobId
@@ -153,6 +155,8 @@ name|getJobId
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 index|[]
@@ -165,6 +169,8 @@ operator|.
 name|payload
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getPeriod
@@ -179,6 +185,8 @@ name|getPeriod
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getRepeat
@@ -193,6 +201,8 @@ name|getRepeat
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getStart
@@ -207,6 +217,8 @@ name|getStartTime
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getDelay
@@ -221,6 +233,8 @@ name|getDelay
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getCronEntry
@@ -235,6 +249,8 @@ name|getCronEntry
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getNextExecutionTime
@@ -254,6 +270,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getStartTime
