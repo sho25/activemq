@@ -67,16 +67,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -468,10 +458,6 @@ name|QueueBrowserTest
 operator|.
 name|class
 block|,
-name|JMSXPropertyTest
-operator|.
-name|class
-block|,
 name|MessageTypeTest
 operator|.
 name|class
@@ -530,8 +516,6 @@ argument_list|)
 specifier|public
 class|class
 name|JoramSslTest
-extends|extends
-name|TestCase
 block|{
 specifier|protected
 specifier|static
