@@ -147,7 +147,17 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"DurableConduitBridge"
+literal|"DurableConduitBridge:"
+operator|+
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+operator|+
+literal|"->"
+operator|+
+name|getRemoteBrokerName
+argument_list|()
 return|;
 block|}
 comment|/**      * Constructor      *      * @param configuration      *      * @param localBroker      * @param remoteBroker      */
