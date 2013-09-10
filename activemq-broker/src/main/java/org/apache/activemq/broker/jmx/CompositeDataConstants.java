@@ -42,6 +42,11 @@ init|=
 literal|"JMSXGroupID"
 decl_stmt|;
 name|String
+name|JMSXUSER_ID
+init|=
+literal|"JMSXUserID"
+decl_stmt|;
+name|String
 name|BROKER_PATH
 init|=
 literal|"BrokerPath"

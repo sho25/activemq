@@ -887,6 +887,19 @@ name|addItem
 argument_list|(
 name|CompositeDataConstants
 operator|.
+name|JMSXUSER_ID
+argument_list|,
+literal|"The user that sent the message"
+argument_list|,
+name|SimpleType
+operator|.
+name|STRING
+argument_list|)
+expr_stmt|;
+name|addItem
+argument_list|(
+name|CompositeDataConstants
+operator|.
 name|BROKER_PATH
 argument_list|,
 literal|"Brokers traversed"
@@ -1333,6 +1346,20 @@ argument_list|,
 name|m
 operator|.
 name|getGroupSequence
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|rc
+operator|.
+name|put
+argument_list|(
+name|CompositeDataConstants
+operator|.
+name|JMSXUSER_ID
+argument_list|,
+name|m
+operator|.
+name|getUserID
 argument_list|()
 argument_list|)
 expr_stmt|;
