@@ -641,6 +641,16 @@ argument_list|(
 literal|1000
 argument_list|)
 decl_stmt|;
+name|assertTrue
+argument_list|(
+name|m
+operator|.
+name|propertyExists
+argument_list|(
+literal|"JMSXUserID"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"system"
