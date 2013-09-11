@@ -1191,6 +1191,22 @@ return|return
 name|xid
 return|;
 block|}
+specifier|public
+name|boolean
+name|isAllowLinkStealing
+parameter_list|()
+block|{
+return|return
+name|connector
+operator|!=
+literal|null
+operator|&&
+name|connector
+operator|.
+name|isAllowLinkStealing
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

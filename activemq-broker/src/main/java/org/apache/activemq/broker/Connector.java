@@ -106,6 +106,11 @@ name|int
 name|connectionCount
 parameter_list|()
 function_decl|;
+comment|/**      * If enabled, older connections with the same clientID are stopped      * @return true/false if link stealing is enabled      */
+name|boolean
+name|isAllowLinkStealing
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
