@@ -424,6 +424,9 @@ control|)
 block|{
 if|if
 condition|(
+name|isIgnoreNetworkSubscriptions
+argument_list|()
+operator|&&
 name|subscriber
 operator|.
 name|getConsumerInfo
@@ -449,7 +452,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"sub: {} is no longer slow"
+literal|"network sub: {} is no longer slow"
 argument_list|,
 name|subscriber
 operator|.
@@ -460,8 +463,8 @@ name|getConsumerId
 argument_list|()
 argument_list|)
 expr_stmt|;
-continue|continue;
 block|}
+continue|continue;
 block|}
 if|if
 condition|(
@@ -493,7 +496,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"sub: {} is no longer slow"
+literal|"idle sub: {} is no longer slow"
 argument_list|,
 name|subscriber
 operator|.
@@ -504,35 +507,8 @@ name|getConsumerId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 continue|continue;
-block|}
-else|else
-block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|trace
-argument_list|(
-literal|"Not ignoring idle Consumer {}"
-argument_list|,
-name|subscriber
-operator|.
-name|getConsumerInfo
-argument_list|()
-operator|.
-name|getConsumerId
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 block|}
 name|long
 name|lastAckTime
@@ -753,7 +729,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Remove consumer {} from slow list: "
+literal|"Transferring consumer {} to the abort list: "
 operator|+
 literal|"slow duration = "
 operator|+
