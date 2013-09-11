@@ -66,6 +66,27 @@ name|boolean
 name|ignoreIdleConsumers
 parameter_list|)
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"returns the current value of the ignore network connector consumers setting."
+argument_list|)
+name|boolean
+name|isIgnoreNetworkConsumers
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"sets whether consumers that are from network connector should be included when checking for slow acks."
+argument_list|)
+name|void
+name|setIgnoreNetworkConsumers
+parameter_list|(
+name|boolean
+name|ignoreIdleConsumers
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
