@@ -1699,9 +1699,11 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to recover this message "
-operator|+
+literal|"Failed to recover this message {}"
+argument_list|,
 name|message
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -2029,19 +2031,13 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-name|memoryUsage
-operator|+
-literal|", Usage Manager memory limit reached for "
-operator|+
+literal|"{}, Usage Manager memory limit reached for {}. Producers will be throttled to the rate at which messages are removed from this destination to prevent flooding it. See http://activemq.apache.org/producer-flow-control.html for more info."
+argument_list|,
 name|getActiveMQDestination
 argument_list|()
 operator|.
 name|getQualifiedName
 argument_list|()
-operator|+
-literal|". Producers will be throttled to the rate at which messages are removed from this destination to prevent flooding it."
-operator|+
-literal|" See http://activemq.apache.org/producer-flow-control.html for more info"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2391,12 +2387,10 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Waiting for space to send  transacted message - transaction elements = "
-operator|+
+literal|"Waiting for space to send transacted message - transaction elements = {} need more space to commit. Message = {}"
+argument_list|,
 name|size
-operator|+
-literal|" need more space to commit. Message = "
-operator|+
+argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
@@ -2457,24 +2451,15 @@ operator|.
 name|increment
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Expired message: "
-operator|+
+literal|"Expired message: {}"
+argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-block|}
 return|return;
 block|}
 block|}
@@ -3426,8 +3411,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to browse Topic: "
-operator|+
+literal|"Failed to browse Topic: {}"
+argument_list|,
 name|getActiveMQDestination
 argument_list|()
 operator|.
@@ -4113,19 +4098,20 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"After clear of pending, failed to dispatch to: "
-operator|+
+literal|"After clear of pending, failed to dispatch to: {}, for: {}, pending: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|durableTopicSubscription
-operator|+
-literal|", for :"
-operator|+
+block|,
 name|destination
-operator|+
-literal|", pending: "
-operator|+
+block|,
 name|durableTopicSubscription
 operator|.
 name|pending
+block|}
 argument_list|,
 name|exception
 argument_list|)

@@ -1281,11 +1281,9 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Caught an Exception adding a message: "
-operator|+
+literal|"Caught an Exception adding a message: {} first to FilePendingMessageCursor "
+argument_list|,
 name|node
-operator|+
-literal|" first to FilePendingMessageCursor "
 argument_list|,
 name|e
 argument_list|)
@@ -1488,11 +1486,9 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Caught an Exception adding a message: "
-operator|+
+literal|"Caught an Exception adding a message: {} first to FilePendingMessageCursor "
+argument_list|,
 name|node
-operator|+
-literal|" first to FilePendingMessageCursor "
 argument_list|,
 name|e
 argument_list|)
@@ -2048,19 +2044,19 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|""
-operator|+
+literal|"{}, flushToDisk() mem list size: {} {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|name
-operator|+
-literal|", flushToDisk() mem list size: "
-operator|+
+block|,
 name|memoryList
 operator|.
 name|size
 argument_list|()
-operator|+
-literal|" "
-operator|+
+block|,
 operator|(
 name|systemUsage
 operator|!=
@@ -2073,6 +2069,7 @@ argument_list|()
 else|:
 literal|""
 operator|)
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -2175,24 +2172,18 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|""
-operator|+
+literal|"{}, flushToDisk() done - {} ms {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|name
-operator|+
-literal|", flushToDisk() done - "
-operator|+
+block|,
 operator|(
 name|System
 operator|.
@@ -2201,9 +2192,7 @@ argument_list|()
 operator|-
 name|start
 operator|)
-operator|+
-literal|"ms "
-operator|+
+block|,
 operator|(
 name|systemUsage
 operator|!=
@@ -2216,9 +2205,9 @@ argument_list|()
 else|:
 literal|""
 operator|)
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 specifier|protected
@@ -2271,8 +2260,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Caught an IO Exception getting the DiskList "
-operator|+
+literal|"Caught an IO Exception getting the DiskList {}"
+argument_list|,
 name|name
 argument_list|,
 name|e
@@ -2299,24 +2288,15 @@ name|MessageReference
 name|reference
 parameter_list|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Discarding expired message "
-operator|+
+literal|"Discarding expired message {}"
+argument_list|,
 name|reference
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|broker

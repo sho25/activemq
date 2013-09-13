@@ -546,15 +546,11 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Starting a network connection between "
-operator|+
+literal|"Starting a network connection between {} and {} has been established."
+argument_list|,
 name|localBroker
-operator|+
-literal|" and "
-operator|+
+argument_list|,
 name|remoteBroker
-operator|+
-literal|" has been established."
 argument_list|)
 expr_stmt|;
 name|localBroker
@@ -698,8 +694,6 @@ operator|.
 name|error
 argument_list|(
 literal|"Failed to start network bridge: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -938,30 +932,17 @@ name|topicConsumerInfo
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isInfoEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Network connection between "
-operator|+
+literal|"Network connection between {} and {} has been established."
+argument_list|,
 name|localBroker
-operator|+
-literal|" and "
-operator|+
+argument_list|,
 name|remoteBroker
-operator|+
-literal|" has been established."
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 specifier|public
 name|void
@@ -1075,19 +1056,14 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Unexpected remote exception: "
-operator|+
+literal|"Unexpected remote exception: {}"
+argument_list|,
 name|error
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
@@ -1097,7 +1073,6 @@ argument_list|,
 name|error
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 specifier|protected
 name|void
@@ -1183,8 +1158,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Unexpected remote command: "
-operator|+
+literal|"Unexpected remote command: {}"
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
@@ -1215,9 +1190,12 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Unexpected local exception: "
-operator|+
+literal|"Unexpected local exception: {}"
+argument_list|,
 name|error
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -1573,8 +1551,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Unexpected local command: "
-operator|+
+literal|"Unexpected local command: {}"
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;

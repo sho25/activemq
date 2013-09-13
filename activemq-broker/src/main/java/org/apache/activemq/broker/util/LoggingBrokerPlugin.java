@@ -324,8 +324,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Created LoggingBrokerPlugin: "
-operator|+
+literal|"Created LoggingBrokerPlugin: {}"
+argument_list|,
 name|this
 operator|.
 name|toString
@@ -561,8 +561,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Acknowledging message for client ID : "
-operator|+
+literal|"Acknowledging message for client ID: {}{}"
+argument_list|,
 name|consumerExchange
 operator|.
 name|getConnectionContext
@@ -570,7 +570,7 @@ argument_list|()
 operator|.
 name|getClientId
 argument_list|()
-operator|+
+argument_list|,
 operator|(
 name|ack
 operator|.
@@ -592,11 +592,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-operator|&&
 name|ack
 operator|.
 name|getMessageCount
@@ -609,26 +604,27 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Message count: "
-operator|+
+literal|"Message count: {}, First Message Id: {}, Last Message Id: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|ack
 operator|.
 name|getMessageCount
 argument_list|()
-operator|+
-literal|", First Message Id: "
-operator|+
+block|,
 name|ack
 operator|.
 name|getFirstMessageId
 argument_list|()
-operator|+
-literal|", Last Message Id: "
-operator|+
+block|,
 name|ack
 operator|.
 name|getLastMessageId
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -671,15 +667,13 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Message Pull from : "
-operator|+
+literal|"Message Pull from: {} on {}"
+argument_list|,
 name|context
 operator|.
 name|getClientId
 argument_list|()
-operator|+
-literal|" on "
-operator|+
+argument_list|,
 name|pull
 operator|.
 name|getDestination
@@ -729,8 +723,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Adding Connection : "
-operator|+
+literal|"Adding Connection: {}"
+argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
@@ -773,8 +767,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Adding Consumer : "
-operator|+
+literal|"Adding Consumer: {}"
+argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
@@ -818,8 +812,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Adding Producer :"
-operator|+
+literal|"Adding Producer: {}"
+argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
@@ -865,8 +859,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Commiting transaction : "
-operator|+
+literal|"Committing transaction: {}"
+argument_list|,
 name|xid
 operator|.
 name|getTransactionKey
@@ -914,8 +908,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Removing subscription : "
-operator|+
+literal|"Removing subscription: {}"
+argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
@@ -1017,8 +1011,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Prepared transactions : "
-operator|+
+literal|"Prepared transactions: {}"
+argument_list|,
 name|tids
 argument_list|)
 expr_stmt|;
@@ -1055,8 +1049,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Preparing transaction : "
-operator|+
+literal|"Preparing transaction: {}"
+argument_list|,
 name|xid
 operator|.
 name|getTransactionKey
@@ -1106,8 +1100,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Removing Connection : "
-operator|+
+literal|"Removing Connection: {}"
+argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
@@ -1152,8 +1146,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Removing Consumer : "
-operator|+
+literal|"Removing Consumer: {}"
+argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
@@ -1196,8 +1190,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Removing Producer : "
-operator|+
+literal|"Removing Producer: {}"
+argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
@@ -1240,8 +1234,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Rolling back Transaction : "
-operator|+
+literal|"Rolling back Transaction: {}"
+argument_list|,
 name|xid
 operator|.
 name|getTransactionKey
@@ -1360,8 +1354,8 @@ name|perDestinationsLogger
 operator|.
 name|info
 argument_list|(
-literal|"Sending message : "
-operator|+
+literal|"Sending message: {}"
+argument_list|,
 name|copy
 argument_list|)
 expr_stmt|;
@@ -1394,8 +1388,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Beginning transaction : "
-operator|+
+literal|"Beginning transaction: {}"
+argument_list|,
 name|xid
 operator|.
 name|getTransactionKey
@@ -1441,8 +1435,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Forgetting transaction : "
-operator|+
+literal|"Forgetting transaction: {}"
+argument_list|,
 name|transactionId
 operator|.
 name|getTransactionKey
@@ -1551,8 +1545,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Connected clients : "
-operator|+
+literal|"Connected clients: {}"
+argument_list|,
 name|cids
 argument_list|)
 expr_stmt|;
@@ -1606,15 +1600,13 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Adding destination : "
-operator|+
+literal|"Adding destination: {}:{}"
+argument_list|,
 name|destination
 operator|.
 name|getDestinationTypeAsString
 argument_list|()
-operator|+
-literal|":"
-operator|+
+argument_list|,
 name|destination
 operator|.
 name|getPhysicalName
@@ -1666,15 +1658,13 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Removing destination : "
-operator|+
+literal|"Removing destination: {}:{}"
+argument_list|,
 name|destination
 operator|.
 name|getDestinationTypeAsString
 argument_list|()
-operator|+
-literal|":"
-operator|+
+argument_list|,
 name|destination
 operator|.
 name|getPhysicalName
@@ -1785,8 +1775,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Get Destinations : "
-operator|+
+literal|"Get Destinations: {}"
+argument_list|,
 name|destinations
 argument_list|)
 expr_stmt|;
@@ -1818,8 +1808,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Starting "
-operator|+
+literal|"Starting {}"
+argument_list|,
 name|getBrokerName
 argument_list|()
 argument_list|)
@@ -1853,8 +1843,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Stopping "
-operator|+
+literal|"Stopping {}"
+argument_list|,
 name|getBrokerName
 argument_list|()
 argument_list|)
@@ -1894,8 +1884,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Adding Session : "
-operator|+
+literal|"Adding Session: {}"
+argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
@@ -1938,8 +1928,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Removing Session : "
-operator|+
+literal|"Removing Session: {}"
+argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
@@ -1980,8 +1970,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Adding Broker "
-operator|+
+literal|"Adding Broker {}"
+argument_list|,
 name|info
 operator|.
 name|getBrokerName
@@ -2025,8 +2015,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Removing Broker "
-operator|+
+literal|"Removing Broker {}"
+argument_list|,
 name|info
 operator|.
 name|getBrokerName
@@ -2133,8 +2123,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Get Peer Broker Infos : "
-operator|+
+literal|"Get Peer Broker Infos: {}"
+argument_list|,
 name|peers
 argument_list|)
 expr_stmt|;
@@ -2170,8 +2160,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"preProcessDispatch :"
-operator|+
+literal|"preProcessDispatch: {}"
+argument_list|,
 name|messageDispatch
 argument_list|)
 expr_stmt|;
@@ -2210,8 +2200,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"postProcessDispatch :"
-operator|+
+literal|"postProcessDispatch: {}"
+argument_list|,
 name|messageDispatch
 argument_list|)
 expr_stmt|;
@@ -2252,8 +2242,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"ProcessDispatchNotification :"
-operator|+
+literal|"ProcessDispatchNotification: {}"
+argument_list|,
 name|messageDispatchNotification
 argument_list|)
 expr_stmt|;
@@ -2359,8 +2349,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Get Durable Destinations : "
-operator|+
+literal|"Get Durable Destinations: {}"
+argument_list|,
 name|destinations
 argument_list|)
 expr_stmt|;
@@ -2398,8 +2388,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Adding destination info : "
-operator|+
+literal|"Adding destination info: {}"
+argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
@@ -2442,8 +2432,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Removing destination info : "
-operator|+
+literal|"Removing destination info: {}"
+argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
@@ -2502,8 +2492,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Message has expired : "
-operator|+
+literal|"Message has expired: {}"
+argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
@@ -2567,8 +2557,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Sending to DLQ : "
-operator|+
+literal|"Sending to DLQ: {}"
+argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
@@ -2620,8 +2610,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Fast Producer : "
-operator|+
+literal|"Fast Producer: {}"
+argument_list|,
 name|producerInfo
 argument_list|)
 expr_stmt|;
@@ -2670,8 +2660,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Destination is full : "
-operator|+
+literal|"Destination is full: {}"
+argument_list|,
 name|destination
 operator|.
 name|getName
@@ -2735,8 +2725,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Message consumed : "
-operator|+
+literal|"Message consumed: {}"
+argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
@@ -2795,8 +2785,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Message delivered : "
-operator|+
+literal|"Message delivered: {}"
+argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
@@ -2855,8 +2845,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Message discarded : "
-operator|+
+literal|"Message discarded: {}"
+argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
@@ -2905,8 +2895,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Detected slow consumer on "
-operator|+
+literal|"Detected slow consumer on {}"
+argument_list|,
 name|destination
 operator|.
 name|getName
@@ -3011,8 +3001,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Is now the master broker : "
-operator|+
+literal|"Is now the master broker: {}"
+argument_list|,
 name|getBrokerName
 argument_list|()
 argument_list|)

@@ -280,8 +280,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Evicting cache memory usage: "
-operator|+
+literal|"Evicting cache memory usage: {}"
+argument_list|,
 name|usage
 operator|.
 name|getPercentUsage

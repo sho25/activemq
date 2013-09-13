@@ -524,9 +524,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"locker keepAlive resulted in: "
-operator|+
-name|e
+literal|"locker keepAlive resulted in"
 argument_list|,
 name|e
 argument_list|)
@@ -552,12 +550,12 @@ name|LOG
 operator|.
 name|error
 argument_list|(
+literal|"{}, no longer able to keep the exclusive lock so giving up being a master"
+argument_list|,
 name|brokerService
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|", no longer able to keep the exclusive lock so giving up being a master"
 argument_list|)
 expr_stmt|;
 try|try

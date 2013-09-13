@@ -250,9 +250,12 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Transport error: "
-operator|+
+literal|"Transport error: {}"
+argument_list|,
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|,
 name|e
 argument_list|)

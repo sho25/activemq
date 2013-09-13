@@ -41,31 +41,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|BrokerId
 import|;
 end_import
 
@@ -334,40 +310,32 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} {} with ids {} matched (add interest) {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" "
-operator|+
+block|,
 name|info
-operator|+
-literal|" with ids"
-operator|+
+block|,
 name|info
 operator|.
 name|getNetworkConsumerIds
 argument_list|()
-operator|+
-literal|" matched (add interest) "
-operator|+
+block|,
 name|ds
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 comment|// add the interest in the subscription
 if|if
 condition|(
@@ -471,41 +439,31 @@ name|id
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} on {} from {} removed interest for: {} from {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" on "
-operator|+
+block|,
 name|localBroker
-operator|+
-literal|" from "
-operator|+
+block|,
 name|remoteBrokerName
-operator|+
-literal|" removed interest for: "
-operator|+
+block|,
 name|id
-operator|+
-literal|" from "
-operator|+
+block|,
 name|ds
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -537,37 +495,29 @@ argument_list|(
 name|ds
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} on {} from {} removed {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" on "
-operator|+
+block|,
 name|localBroker
-operator|+
-literal|" from "
-operator|+
+block|,
 name|remoteBrokerName
-operator|+
-literal|" removed "
-operator|+
+block|,
 name|ds
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

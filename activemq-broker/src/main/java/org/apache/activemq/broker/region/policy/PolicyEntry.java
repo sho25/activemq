@@ -1392,24 +1392,14 @@ operator|>=
 literal|0
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Setting the maximumPendingMessages size to: "
-operator|+
+literal|"Setting the maximumPendingMessages size to: {} for consumer: {}"
+argument_list|,
 name|value
-operator|+
-literal|" for consumer: "
-operator|+
+argument_list|,
 name|subscription
 operator|.
 name|getInfo
@@ -1419,7 +1409,6 @@ name|getConsumerId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|subscription
 operator|.
 name|setMaximumPendingMessages

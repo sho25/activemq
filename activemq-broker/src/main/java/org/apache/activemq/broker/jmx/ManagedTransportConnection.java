@@ -497,8 +497,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to register MBean: "
-operator|+
+literal|"Failed to register MBean {}"
+argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
@@ -507,8 +507,6 @@ operator|.
 name|debug
 argument_list|(
 literal|"Failure reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -551,8 +549,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to unregister mbean: "
-operator|+
+literal|"Failed to unregister MBean {}"
+argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
@@ -561,8 +559,6 @@ operator|.
 name|debug
 argument_list|(
 literal|"Failure reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)

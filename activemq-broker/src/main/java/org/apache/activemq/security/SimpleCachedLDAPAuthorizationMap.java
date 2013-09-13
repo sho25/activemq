@@ -1252,18 +1252,19 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Policy not applied!.  Error processing policy under '"
-operator|+
+literal|"Policy not applied!.  Error processing policy under '{}' with filter '{}'"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|queueSearchBase
-operator|+
-literal|"' with filter '"
-operator|+
+block|,
 name|getFilterForPermissionType
 argument_list|(
 name|permissionType
 argument_list|)
-operator|+
-literal|"'"
+block|}
 argument_list|,
 name|e
 argument_list|)
@@ -1319,18 +1320,19 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Policy not applied!.  Error processing policy under '"
-operator|+
+literal|"Policy not applied!.  Error processing policy under '{}' with filter '{}'"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|topicSearchBase
-operator|+
-literal|"' with filter '"
-operator|+
+block|,
 name|getFilterForPermissionType
 argument_list|(
 name|permissionType
 argument_list|)
-operator|+
-literal|"'"
+block|}
 argument_list|,
 name|e
 argument_list|)
@@ -1386,18 +1388,19 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Policy not applied!.  Error processing policy under '"
-operator|+
+literal|"Policy not applied!.  Error processing policy under '{}' with filter '{}'"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|tempSearchBase
-operator|+
-literal|"' with filter '"
-operator|+
+block|,
 name|getFilterForPermissionType
 argument_list|(
 name|permissionType
 argument_list|)
-operator|+
-literal|"'"
+block|}
 argument_list|,
 name|e
 argument_list|)
@@ -1510,8 +1513,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Policy not applied!  Error parsing authorization policy entry under "
-operator|+
+literal|"Policy not applied!  Error parsing authorization policy entry under {}"
+argument_list|,
 name|result
 operator|.
 name|getNameInNamespace
@@ -1876,16 +1879,19 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Policy not applied! Unknown member "
-operator|+
+literal|"Policy not applied! Unknown member {} in policy entry {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|memberDn
-operator|+
-literal|" in policy entry "
-operator|+
+block|,
 name|result
 operator|.
 name|getNameInNamespace
 argument_list|()
+block|}
 argument_list|,
 name|e
 argument_list|)
@@ -1967,20 +1973,21 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Policy not applied! Group "
-operator|+
+literal|"Policy not applied! Group {} does not have name attribute {} under entry {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|memberDn
-operator|+
-literal|"does not have name attribute "
-operator|+
+block|,
 name|groupNameAttribute
-operator|+
-literal|" under entry "
-operator|+
+block|,
 name|result
 operator|.
 name|getNameInNamespace
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
 break|break;
@@ -2031,20 +2038,21 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Policy not applied! User "
-operator|+
+literal|"Policy not applied! User {} does not have name attribute {} under entry {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|memberDn
-operator|+
-literal|" does not have name attribute "
-operator|+
+block|,
 name|userNameAttribute
-operator|+
-literal|" under entry "
-operator|+
+block|,
 name|result
 operator|.
 name|getNameInNamespace
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
 break|break;
@@ -2101,12 +2109,10 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Policy not applied! Can't determine type of member "
-operator|+
+literal|"Policy not applied! Can't determine type of member {} under entry {}"
+argument_list|,
 name|memberDn
-operator|+
-literal|" under entry "
-operator|+
+argument_list|,
 name|result
 operator|.
 name|getNameInNamespace
@@ -2241,8 +2247,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Policy not applied! Error adding principals to ACL under "
-operator|+
+literal|"Policy not applied! Error adding principals to ACL under {}"
+argument_list|,
 name|result
 operator|.
 name|getNameInNamespace
@@ -2851,9 +2857,7 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Error updating authorization map.  Partial policy "
-operator|+
-literal|"may be applied until the next successful update."
+literal|"Error updating authorization map.  Partial policy may be applied until the next successful update."
 argument_list|,
 name|e
 argument_list|)
@@ -3096,8 +3100,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Adding object: "
-operator|+
+literal|"Adding object: {}"
+argument_list|,
 name|namingEvent
 operator|.
 name|getNewBinding
@@ -3194,8 +3198,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Policy not applied!  Error parsing DN for addition of "
-operator|+
+literal|"Policy not applied!  Error parsing DN for addition of {}"
+argument_list|,
 name|result
 operator|.
 name|getName
@@ -3215,8 +3219,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Policy not applied!  Error processing object addition for addition of "
-operator|+
+literal|"Policy not applied!  Error processing object addition for addition of {}"
+argument_list|,
 name|result
 operator|.
 name|getName
@@ -3246,8 +3250,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Removing object: "
-operator|+
+literal|"Removing object: {}"
+argument_list|,
 name|namingEvent
 operator|.
 name|getOldBinding
@@ -3323,8 +3327,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Policy not applied!  Error parsing DN for object removal for removal of "
-operator|+
+literal|"Policy not applied!  Error parsing DN for object removal for removal of {}"
+argument_list|,
 name|result
 operator|.
 name|getName
@@ -3344,8 +3348,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Policy not applied!  Error processing object removal for removal of "
-operator|+
+literal|"Policy not applied!  Error processing object removal for removal of {}"
+argument_list|,
 name|result
 operator|.
 name|getName
@@ -3391,12 +3395,10 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Renaming object: "
-operator|+
+literal|"Renaming object: {} to {}"
+argument_list|,
 name|oldBinding
-operator|+
-literal|" to "
-operator|+
+argument_list|,
 name|newBinding
 argument_list|)
 expr_stmt|;
@@ -3549,21 +3551,17 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Policy not applied!  Error processing object rename for rename of "
-operator|+
+literal|"Policy not applied!  Error processing object rename for rename of {} to {}. Could not determine permission type of new object."
+argument_list|,
 name|oldBinding
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|" to "
-operator|+
+argument_list|,
 name|newBinding
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|".  Could not determine permission type of new object."
 argument_list|)
 expr_stmt|;
 block|}
@@ -3650,8 +3648,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"No authorization entry for "
-operator|+
+literal|"No authorization entry for {}"
+argument_list|,
 name|oldDest
 argument_list|)
 expr_stmt|;
@@ -3669,19 +3667,22 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Policy not applied!  Error parsing DN for object rename for rename of "
-operator|+
+literal|"Policy not applied!  Error parsing DN for object rename for rename of {} to {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|oldBinding
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|" to "
-operator|+
+block|,
 name|newBinding
 operator|.
 name|getName
 argument_list|()
+block|}
 argument_list|,
 name|e
 argument_list|)
@@ -3697,19 +3698,22 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Policy not applied!  Error processing object rename for rename of "
-operator|+
+literal|"Policy not applied!  Error processing object rename for rename of {} to {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|oldBinding
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|" to "
-operator|+
+block|,
 name|newBinding
 operator|.
 name|getName
 argument_list|()
+block|}
 argument_list|,
 name|e
 argument_list|)
@@ -3735,15 +3739,13 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Changing object "
-operator|+
+literal|"Changing object {} to {}"
+argument_list|,
 name|namingEvent
 operator|.
 name|getOldBinding
 argument_list|()
-operator|+
-literal|" to "
-operator|+
+argument_list|,
 name|namingEvent
 operator|.
 name|getNewBinding

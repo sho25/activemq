@@ -463,19 +463,14 @@ block|{
 if|if
 condition|(
 name|trace
-operator|&&
-name|TRACE_BYTES
-operator|.
-name|isTraceEnabled
-argument_list|()
 condition|)
 block|{
 name|TRACE_BYTES
 operator|.
 name|trace
 argument_list|(
-literal|"Received: \n"
-operator|+
+literal|"Received: \n{}"
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
@@ -596,19 +591,14 @@ assert|;
 if|if
 condition|(
 name|trace
-operator|&&
-name|TRACE_BYTES
-operator|.
-name|isTraceEnabled
-argument_list|()
 condition|)
 block|{
 name|TRACE_BYTES
 operator|.
 name|trace
 argument_list|(
-literal|"Sending: \n"
-operator|+
+literal|"Sending: \n{}"
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;

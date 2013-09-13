@@ -211,14 +211,12 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Broker localhost not started so using "
-operator|+
+literal|"Broker localhost not started so using {} instead"
+argument_list|,
 name|result
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" instead"
 argument_list|)
 expr_stmt|;
 block|}

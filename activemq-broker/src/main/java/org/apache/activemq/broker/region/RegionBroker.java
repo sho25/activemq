@@ -1653,12 +1653,10 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Stealing link for clientId "
-operator|+
+literal|"Stealing link for clientId {} From Connection {}"
+argument_list|,
 name|clientId
-operator|+
-literal|" From Connection "
-operator|+
+argument_list|,
 name|oldContext
 operator|.
 name|getConnection
@@ -1680,8 +1678,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Not Connection for "
-operator|+
+literal|"Not Connection for {}"
+argument_list|,
 name|oldContext
 argument_list|)
 expr_stmt|;
@@ -3280,37 +3278,31 @@ operator|.
 name|incrementRefCount
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} addBroker: {} brokerInfo size: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" addBroker:"
-operator|+
+block|,
 name|info
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" brokerInfo size : "
-operator|+
+block|,
 name|brokerInfos
 operator|.
 name|size
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 name|addBrokerInClusterUpdate
 argument_list|(
 name|info
@@ -3376,37 +3368,31 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} removeBroker: {} brokerInfo size: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" removeBroker:"
-operator|+
+block|,
 name|info
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" brokerInfo size : "
-operator|+
+block|,
 name|brokerInfos
 operator|.
 name|size
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 comment|// When stopping don't send cluster updates since we are the one's tearing down
 comment|// our own bridges.
 if|if
@@ -3845,8 +3831,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"unexpected exception on message expiry determination for: "
-operator|+
+literal|"unexpected exception on message expiry determination for: {}"
+argument_list|,
 name|messageReference
 argument_list|,
 name|e
@@ -3931,24 +3917,15 @@ name|Subscription
 name|subscription
 parameter_list|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Message expired "
-operator|+
+literal|"Message expired {}"
+argument_list|,
 name|node
 argument_list|)
 expr_stmt|;
-block|}
 name|getRoot
 argument_list|()
 operator|.
@@ -4177,34 +4154,23 @@ block|}
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Dead Letter message with no DLQ strategy in place, message id: "
-operator|+
+literal|"Dead Letter message with no DLQ strategy in place, message id: {}, destination: {}"
+argument_list|,
 name|message
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|", destination: "
-operator|+
+argument_list|,
 name|message
 operator|.
 name|getDestination
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -4219,8 +4185,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Caught an exception sending to DLQ: "
-operator|+
+literal|"Caught an exception sending to DLQ: {}"
+argument_list|,
 name|node
 argument_list|,
 name|e
@@ -4258,8 +4224,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Trying to get Root Broker "
-operator|+
+literal|"Trying to get Root Broker"
+argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
@@ -4365,12 +4331,10 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"unmatched destination: "
-operator|+
+literal|"unmatched destination: {}, in consumerControl: {}"
+argument_list|,
 name|destination
-operator|+
-literal|", in consumerControl: "
-operator|+
+argument_list|,
 name|control
 argument_list|)
 expr_stmt|;
@@ -4683,19 +4647,17 @@ name|log
 operator|.
 name|info
 argument_list|(
+literal|"{} Inactive for longer than {} ms - removing ..."
+argument_list|,
 name|dest
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|" Inactive for longer than "
-operator|+
+argument_list|,
 name|dest
 operator|.
 name|getInactiveTimoutBeforeGC
 argument_list|()
-operator|+
-literal|" ms - removing ..."
 argument_list|)
 expr_stmt|;
 try|try
@@ -4731,8 +4693,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to remove inactive destination "
-operator|+
+literal|"Failed to remove inactive destination {}"
+argument_list|,
 name|dest
 argument_list|,
 name|e

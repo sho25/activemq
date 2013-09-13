@@ -1448,31 +1448,20 @@ literal|true
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|" stopping "
-operator|+
+literal|" stopping {} bridge to {}"
+argument_list|,
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" bridge to "
-operator|+
+argument_list|,
 name|remoteBrokerName
 argument_list|)
 expr_stmt|;
-block|}
 name|futureRemoteBrokerInfo
 operator|.
 name|cancel
@@ -1522,33 +1511,27 @@ operator|<
 literal|2
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
+literal|"{} unregister bridge ({}) to {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" unregister bridge ("
-operator|+
+block|,
 name|this
-operator|+
-literal|") to "
-operator|+
+block|,
 name|remoteBrokerName
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 name|brokerService
 operator|.
 name|getBroker
@@ -1640,24 +1623,15 @@ operator|.
 name|shutdownNow
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isInfoEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"pending tasks on stop"
-operator|+
+literal|"pending tasks on stop {}"
+argument_list|,
 name|pendingTasks
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|localBroker
 operator|.
@@ -1684,14 +1658,6 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
@@ -1701,7 +1667,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 finally|finally
 block|{
@@ -1795,31 +1760,20 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isInfoEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
+literal|"{} bridge to {} stopped"
+argument_list|,
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" bridge to "
-operator|+
+argument_list|,
 name|remoteBrokerName
-operator|+
-literal|" stopped"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 specifier|protected
@@ -1987,33 +1941,27 @@ name|remoteBrokerId
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
+literal|"{} disconnecting remote loop back connector for: {}, with id: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" disconnecting remote loop back connection for: "
-operator|+
+block|,
 name|remoteBrokerName
-operator|+
-literal|", with id:"
-operator|+
+block|,
 name|remoteBrokerId
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 name|ServiceSupport
 operator|.
 name|dispose
@@ -2256,8 +2204,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Error mapping remote configuration: "
-operator|+
+literal|"Error mapping remote configuration: {}"
+argument_list|,
 name|props
 argument_list|,
 name|t
@@ -2327,29 +2275,20 @@ init|(
 name|this
 init|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
+literal|"{} starting local Bridge, localBroker={}"
+argument_list|,
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" starting local Bridge, localBroker="
-operator|+
+argument_list|,
 name|localBroker
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 operator|!
@@ -2753,61 +2692,45 @@ argument_list|,
 name|remoteBrokerInfo
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isInfoEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Network connection between "
-operator|+
+literal|"Network connection between {} and {} ({}) has been established."
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|localBroker
-operator|+
-literal|" and "
-operator|+
+block|,
 name|remoteBroker
-operator|+
-literal|"("
-operator|+
+block|,
 name|remoteBrokerName
-operator|+
-literal|") has been established."
+block|}
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
+literal|"{} register bridge ({}) to {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" register bridge ("
-operator|+
+block|,
 name|this
-operator|+
-literal|") to "
-operator|+
+block|,
 name|remoteBrokerName
+block|}
 argument_list|)
 expr_stmt|;
-block|}
-block|}
 block|}
 else|else
 block|{
@@ -2849,19 +2772,18 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Network connection between "
-operator|+
+literal|"Network connection between {} and {} ({}) was interrupted during establishment."
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|localBroker
-operator|+
-literal|" and "
-operator|+
+block|,
 name|remoteBroker
-operator|+
-literal|"("
-operator|+
+block|,
 name|remoteBrokerName
-operator|+
-literal|") was interrupted during establishment."
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -2886,29 +2808,20 @@ literal|true
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
+literal|"{} starting remote Bridge, remoteBroker={}"
+argument_list|,
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" starting remote Bridge, remoteBroker="
-operator|+
+argument_list|,
 name|remoteBroker
 argument_list|)
 expr_stmt|;
-block|}
 synchronized|synchronized
 init|(
 name|this
@@ -3276,17 +3189,18 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Network connection between "
-operator|+
+literal|"Network connection between {} and {} shutdown due to a remote error: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|localBroker
-operator|+
-literal|" and "
-operator|+
+block|,
 name|remoteBroker
-operator|+
-literal|" shutdown due to a remote error: "
-operator|+
+block|,
 name|error
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -3296,17 +3210,18 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Network connection between "
-operator|+
+literal|"Network connection between {} and {} shutdown due to a remote error: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|localBroker
-operator|+
-literal|" and "
-operator|+
+block|,
 name|remoteBroker
-operator|+
-literal|" shutdown due to a remote error: "
-operator|+
+block|,
 name|error
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -3314,8 +3229,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"The remote Exception was: "
-operator|+
+literal|"The remote Exception was: {}"
+argument_list|,
 name|error
 argument_list|,
 name|error
@@ -3472,32 +3387,23 @@ name|isDuplex
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
+literal|"{} duplex command type: {}"
+argument_list|,
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" duplex command type: "
-operator|+
+argument_list|,
 name|command
 operator|.
 name|getDataStructureType
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|command
@@ -3659,12 +3565,10 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Exception: "
-operator|+
+literal|"Exception: {} on duplex forward of: {}"
+argument_list|,
 name|error
-operator|+
-literal|" on duplex forward of: "
-operator|+
+argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
@@ -3786,8 +3690,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Matching local subscription not found for ack: "
-operator|+
+literal|"Matching local subscription not found for ack: {}"
+argument_list|,
 name|ack
 argument_list|)
 expr_stmt|;
@@ -3827,8 +3731,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Stopping - ignoring ConsumerInfo: "
-operator|+
+literal|"Stopping - ignoring ConsumerInfo: {}"
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
@@ -3862,24 +3766,15 @@ argument_list|)
 expr_stmt|;
 break|break;
 default|default:
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Ignoring remote command: "
-operator|+
+literal|"Ignoring remote command: {}"
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -3914,8 +3809,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Unexpected remote command: "
-operator|+
+literal|"Unexpected remote command: {}"
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
@@ -3929,26 +3824,17 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Exception processing remote command: "
-operator|+
+literal|"Exception processing remote command: {}"
+argument_list|,
 name|command
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 name|serviceRemoteException
 argument_list|(
 name|e
@@ -4079,31 +3965,20 @@ name|isBrowser
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
+literal|"{} Ignoring sub from {}, browsers explicitly suppressed"
+argument_list|,
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" Ignoring sub from "
-operator|+
+argument_list|,
 name|remoteBrokerName
-operator|+
-literal|", browsers explicitly suppressed"
 argument_list|)
 expr_stmt|;
-block|}
 return|return;
 block|}
 if|if
@@ -4124,37 +3999,29 @@ operator|>=
 name|networkTTL
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} Ignoring sub from {}, restricted to {} network hops only: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" Ignoring sub from "
-operator|+
+block|,
 name|remoteBrokerName
-operator|+
-literal|", restricted to "
-operator|+
+block|,
 name|networkTTL
-operator|+
-literal|" network hops only : "
-operator|+
+block|,
 name|info
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 return|return;
 block|}
 if|if
@@ -4171,33 +4038,27 @@ argument_list|)
 condition|)
 block|{
 comment|// Ignore this consumer as it's a consumer we locally sent to the broker.
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} Ignoring sub from {}, already routed through this broker once: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" Ignoring sub from "
-operator|+
+block|,
 name|remoteBrokerName
-operator|+
-literal|", already routed through this broker once : "
-operator|+
+block|,
 name|info
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 return|return;
 block|}
 if|if
@@ -4213,40 +4074,32 @@ argument_list|)
 condition|)
 block|{
 comment|// ignore if not in the permitted or in the excluded list
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} Ignoring sub from {}, destination {} is not permitted: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" Ignoring sub from "
-operator|+
+block|,
 name|remoteBrokerName
-operator|+
-literal|", destination "
-operator|+
+block|,
 name|info
 operator|.
 name|getDestination
 argument_list|()
-operator|+
-literal|" is not permiited :"
-operator|+
+block|,
 name|info
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 return|return;
 block|}
 comment|// in a cyclic network there can be multiple bridges per broker that can propagate
@@ -4316,35 +4169,27 @@ operator|>=
 name|networkTTL
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} Ignoring destination {} restricted to {} network hops only"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" Ignoring destination "
-operator|+
+block|,
 name|destInfo
-operator|+
-literal|" restricted to "
-operator|+
+block|,
 name|networkTTL
-operator|+
-literal|" network hops only"
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 return|return;
 block|}
 if|if
@@ -4363,31 +4208,20 @@ index|]
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} Ignoring destination {} already routed through this broker once"
+argument_list|,
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" Ignoring destination "
-operator|+
+argument_list|,
 name|destInfo
-operator|+
-literal|" already routed through this broker once"
 argument_list|)
 expr_stmt|;
-block|}
 return|return;
 block|}
 name|destInfo
@@ -4452,25 +4286,21 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
+literal|"{} bridging {} destination on {} from {}, destination: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" bridging "
-operator|+
+block|,
 operator|(
 name|destInfo
 operator|.
@@ -4481,21 +4311,15 @@ literal|"add"
 else|:
 literal|"remove"
 operator|)
-operator|+
-literal|" destination on "
-operator|+
+block|,
 name|localBroker
-operator|+
-literal|" from "
-operator|+
+block|,
 name|remoteBrokerName
-operator|+
-literal|", destination: "
-operator|+
+block|,
 name|destInfo
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|destInfo
@@ -4541,8 +4365,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"failed to deliver remove command for destination:"
-operator|+
+literal|"failed to deliver remove command for destination: {}"
+argument_list|,
 name|destInfo
 operator|.
 name|getDestination
@@ -4846,8 +4670,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"PoisonAck of "
-operator|+
+literal|"PoisonAck of {} on forwarding error: {}"
+argument_list|,
 name|messageDispatch
 operator|.
 name|getMessage
@@ -4855,9 +4679,7 @@ argument_list|()
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|" on forwarding error: "
-operator|+
+argument_list|,
 name|error
 argument_list|)
 expr_stmt|;
@@ -4904,8 +4726,6 @@ operator|.
 name|error
 argument_list|(
 literal|"Failed to posion ack message following forward failure: "
-operator|+
-name|ioe
 argument_list|,
 name|ioe
 argument_list|)
@@ -4926,8 +4746,6 @@ operator|.
 name|warn
 argument_list|(
 literal|"Ignoring exception on forwarding to non existent temp dest: "
-operator|+
-name|error
 argument_list|,
 name|error
 argument_list|)
@@ -4935,52 +4753,35 @@ expr_stmt|;
 block|}
 return|return;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isInfoEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Network connection between "
-operator|+
+literal|"Network connection between {} and {} shutdown due to a local error: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|localBroker
-operator|+
-literal|" and "
-operator|+
+block|,
 name|remoteBroker
-operator|+
-literal|" shutdown due to a local error: "
-operator|+
+block|,
 name|error
+block|}
 argument_list|)
 expr_stmt|;
-block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"The local Exception was:"
-operator|+
+literal|"The local Exception was: {}"
+argument_list|,
 name|error
 argument_list|,
 name|error
 argument_list|)
 expr_stmt|;
-block|}
 name|brokerService
 operator|.
 name|getTaskRunnerFactory
@@ -5144,19 +4945,11 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"failed to fire forward failure advisory, cause: "
-operator|+
+literal|"failed to fire forward failure advisory, cause: {}"
+argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
@@ -5166,7 +4959,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -5255,25 +5047,21 @@ operator|!=
 literal|null
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
+literal|"{} remove local subscription: {} for remote {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" remove local subscription:"
-operator|+
+block|,
 name|sub
 operator|.
 name|getLocalInfo
@@ -5281,9 +5069,7 @@ argument_list|()
 operator|.
 name|getConsumerId
 argument_list|()
-operator|+
-literal|" for remote "
-operator|+
+block|,
 name|sub
 operator|.
 name|getRemoteInfo
@@ -5291,9 +5077,9 @@ argument_list|()
 operator|.
 name|getConsumerId
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 comment|// ensure not available for conduit subs pending removal
 name|subscriptionMapByLocalId
 operator|.
@@ -5370,8 +5156,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"failed to deliver remove command for local subscription, for remote "
-operator|+
+literal|"failed to deliver remove command for local subscription, for remote {}"
+argument_list|,
 name|sub
 operator|.
 name|getRemoteInfo
@@ -5587,29 +5373,23 @@ name|sub
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} message not forwarded to {} because message came from there or fails TTL, brokerPath: {}, message: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" message not forwarded to "
-operator|+
+block|,
 name|remoteBrokerName
-operator|+
-literal|" because message came from there or fails TTL, brokerPath: "
-operator|+
+block|,
 name|Arrays
 operator|.
 name|toString
@@ -5622,16 +5402,14 @@ operator|.
 name|getBrokerPath
 argument_list|()
 argument_list|)
-operator|+
-literal|", message: "
-operator|+
+block|,
 name|md
 operator|.
 name|getMessage
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 comment|// still ack as it may be durable
 try|try
 block|{
@@ -5671,31 +5449,23 @@ argument_list|(
 name|md
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"bridging ("
-operator|+
+literal|"bridging ({} -> {}), consumer: {}, destinaition: {}, brokerPath: {}, message: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" -> "
-operator|+
+block|,
 name|remoteBrokerName
-operator|+
-literal|") "
-operator|+
+block|,
 operator|(
 name|LOG
 operator|.
@@ -5709,23 +5479,17 @@ operator|.
 name|getMessageId
 argument_list|()
 operator|)
-operator|+
-literal|", consumer: "
-operator|+
+block|,
 name|md
 operator|.
 name|getConsumerId
 argument_list|()
-operator|+
-literal|", destination "
-operator|+
+block|,
 name|message
 operator|.
 name|getDestination
 argument_list|()
-operator|+
-literal|", brokerPath: "
-operator|+
+block|,
 name|Arrays
 operator|.
 name|toString
@@ -5735,13 +5499,11 @@ operator|.
 name|getBrokerPath
 argument_list|()
 argument_list|)
-operator|+
-literal|", message: "
-operator|+
+block|,
 name|message
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|isDuplex
@@ -5956,34 +5718,23 @@ block|}
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"No subscription registered with this network bridge for consumerId "
-operator|+
+literal|"No subscription registered with this network bridge for consumerId: {} for message: {}"
+argument_list|,
 name|md
 operator|.
 name|getConsumerId
 argument_list|()
-operator|+
-literal|" for message: "
-operator|+
+argument_list|,
 name|md
 operator|.
 name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 elseif|else
@@ -6019,12 +5770,12 @@ name|LOG
 operator|.
 name|info
 argument_list|(
+literal|"{} Shutting down"
+argument_list|,
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" Shutting down"
 argument_list|)
 expr_stmt|;
 name|stop
@@ -6082,8 +5833,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Unexpected local command: "
-operator|+
+literal|"Unexpected local command: {}"
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
@@ -6716,37 +6467,28 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to add static destination "
-operator|+
+literal|"Failed to add static destination {}"
+argument_list|,
 name|dest
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
+literal|"{}, bridging messages for static destination: {}"
+argument_list|,
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|", bridging messages for static destination: "
-operator|+
+argument_list|,
 name|dest
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -6848,13 +6590,13 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} new demand subscription: {}"
+argument_list|,
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" new demand subscription: "
-operator|+
+argument_list|,
 name|sub
 argument_list|)
 expr_stmt|;
@@ -7123,37 +6865,27 @@ name|getPriority
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} Ignoring duplicate subscription from {}, sub: {} is duplicate by network subscription with equal or higher network priority: {}, networkConsumerIds: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" Ignoring duplicate subscription from "
-operator|+
+block|,
 name|remoteBrokerName
-operator|+
-literal|", sub: "
-operator|+
+block|,
 name|candidateInfo
-operator|+
-literal|" is duplicated by network subscription with equal or higher network priority: "
-operator|+
+block|,
 name|existingSub
-operator|+
-literal|", networkConsumerIds: "
-operator|+
+block|,
 name|existingSub
 operator|.
 name|getConsumerInfo
@@ -7161,9 +6893,9 @@ argument_list|()
 operator|.
 name|getNetworkConsumerIds
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 name|suppress
 operator|=
 literal|true
@@ -7179,47 +6911,37 @@ argument_list|(
 name|existingSub
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} Replacing duplicate subscription {} with sub from {}, which has a higher priority, new sub: {}, networkConsumerIds: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" Replacing duplicate subscription "
-operator|+
+block|,
 name|existingSub
 operator|.
 name|getConsumerInfo
 argument_list|()
-operator|+
-literal|" with sub from "
-operator|+
+block|,
 name|remoteBrokerName
-operator|+
-literal|", which has a higher priority, new sub: "
-operator|+
+block|,
 name|candidateInfo
-operator|+
-literal|", networkComsumerIds: "
-operator|+
+block|,
 name|candidateInfo
 operator|.
 name|getNetworkConsumerIds
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -7231,8 +6953,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to remove duplicated sub as a result of sub with higher priority, sub: "
-operator|+
+literal|"Failed to remove duplicated sub as a result of sub with higher priority, sub: {}"
+argument_list|,
 name|existingSub
 argument_list|,
 name|e
@@ -7637,33 +7359,27 @@ argument_list|(
 name|priority
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} using priority: {} for subscription: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" using priority :"
-operator|+
+block|,
 name|priority
-operator|+
-literal|" for subscription: "
-operator|+
+block|,
 name|info
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|configureDemandSubscription
 argument_list|(
@@ -7949,41 +7665,31 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} remove request on {} from {}, consumer id: {}, matching sub: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" remove request on "
-operator|+
+block|,
 name|localBroker
-operator|+
-literal|" from "
-operator|+
+block|,
 name|remoteBrokerName
-operator|+
-literal|" , consumer id: "
-operator|+
+block|,
 name|id
-operator|+
-literal|", matching sub: "
-operator|+
+block|,
 name|sub
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|sub
@@ -7996,40 +7702,32 @@ argument_list|(
 name|sub
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} removed sub on {} from {}: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|configuration
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" removed sub on "
-operator|+
+block|,
 name|localBroker
-operator|+
-literal|" from "
-operator|+
+block|,
 name|remoteBrokerName
-operator|+
-literal|" :  "
-operator|+
+block|,
 name|sub
 operator|.
 name|getRemoteInfo
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 specifier|protected
@@ -8090,8 +7788,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"removeDemandSubscriptionByLocalId failed for localId: "
-operator|+
+literal|"removeDemandSubscriptionByLocalId failed for localId: {}"
+argument_list|,
 name|consumerId
 argument_list|,
 name|e
@@ -8840,26 +8538,17 @@ operator|.
 name|interrupt
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Operation interupted: "
-operator|+
+literal|"Operation interrupted: {}"
+argument_list|,
 name|e
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 throw|throw
 operator|new
 name|InterruptedException

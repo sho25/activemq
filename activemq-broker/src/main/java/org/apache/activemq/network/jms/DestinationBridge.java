@@ -545,17 +545,18 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"failed to forward message on attempt: "
-operator|+
+literal|"failed to forward message on attempt: {} reason: {} message: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|attempt
-operator|+
-literal|" reason: "
-operator|+
+block|,
 name|e
-operator|+
-literal|" message: "
-operator|+
+block|,
 name|message
+block|}
 argument_list|,
 name|e
 argument_list|)

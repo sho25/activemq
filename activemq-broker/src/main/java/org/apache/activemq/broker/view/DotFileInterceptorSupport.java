@@ -144,24 +144,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-name|log
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Creating DOT file at: "
-operator|+
+literal|"Creating DOT file at: {}"
+argument_list|,
 name|file
 argument_list|)
 expr_stmt|;
-block|}
 name|PrintWriter
 name|writer
 init|=

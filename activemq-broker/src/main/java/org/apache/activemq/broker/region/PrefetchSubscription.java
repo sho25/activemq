@@ -179,20 +179,6 @@ name|activemq
 operator|.
 name|command
 operator|.
-name|ActiveMQMessage
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
 name|ConsumerControl
 import|;
 end_import
@@ -1078,31 +1064,22 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Ignoring ack received before dispatch; result of failover with an outstanding ack. Acked messages will be replayed if present on this broker. Ignored ack: "
-operator|+
+literal|"Ignoring ack received before dispatch; result of failover with an outstanding ack. Acked messages will be replayed if present on this broker. Ignored ack: {}"
+argument_list|,
 name|ack
 argument_list|)
 expr_stmt|;
 return|return;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"ack:"
-operator|+
+literal|"ack: {}"
+argument_list|,
 name|ack
 argument_list|)
 expr_stmt|;
-block|}
 synchronized|synchronized
 init|(
 name|dispatchLock
@@ -1423,8 +1400,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Could not correlate acknowledgment with dispatched message: "
-operator|+
+literal|"Could not correlate acknowledgment with dispatched message: {}"
+argument_list|,
 name|ack
 argument_list|)
 expr_stmt|;
@@ -2213,8 +2190,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Acknowledgment out of sync (Normally occurs when failover connection reconnects): "
-operator|+
+literal|"Acknowledgment out of sync (Normally occurs when failover connection reconnects): {}"
+argument_list|,
 name|ack
 argument_list|)
 expr_stmt|;
@@ -3558,50 +3535,40 @@ operator|.
 name|increment
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
+literal|"{} failed to dispatch: {} - {}, dispatched: {}, inflight: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|info
 operator|.
 name|getConsumerId
 argument_list|()
-operator|+
-literal|" failed to dispatch: "
-operator|+
+block|,
 name|message
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|" - "
-operator|+
+block|,
 name|message
 operator|.
 name|getDestination
 argument_list|()
-operator|+
-literal|", dispatched: "
-operator|+
+block|,
 name|dispatchCounter
-operator|+
-literal|", inflight: "
-operator|+
+block|,
 name|dispatched
 operator|.
 name|size
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -3705,50 +3672,40 @@ operator|.
 name|increment
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
+literal|"{} dispatched: {} - {}, dispatched: {}, inflight: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|info
 operator|.
 name|getConsumerId
 argument_list|()
-operator|+
-literal|" dispatched: "
-operator|+
+block|,
 name|message
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|" - "
-operator|+
+block|,
 name|message
 operator|.
 name|getDestination
 argument_list|()
-operator|+
-literal|", dispatched: "
-operator|+
+block|,
 name|dispatchCounter
-operator|+
-literal|", inflight: "
-operator|+
+block|,
 name|dispatched
 operator|.
 name|size
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 if|if

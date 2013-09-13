@@ -431,8 +431,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"ssl port is "
-operator|+
+literal|"ssl port is {}"
+argument_list|,
 name|port
 argument_list|)
 expr_stmt|;
@@ -471,8 +471,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Creating a connection factory using port "
-operator|+
+literal|"Creating a connection factory using port {}"
+argument_list|,
 name|port
 argument_list|)
 expr_stmt|;

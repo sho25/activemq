@@ -19,10 +19,6 @@ name|joram
 package|;
 end_package
 
-begin_comment
-comment|/**  * @author Kevin Earls  */
-end_comment
-
 begin_class
 specifier|public
 class|class

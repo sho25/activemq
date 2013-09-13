@@ -454,36 +454,30 @@ block|}
 else|else
 block|{
 comment|/*              * we should expect to get these - as the message is recorded as it before it goes into              * the cache. If subsequently, we pull out that message from the store (before its deleted)              * it will be a duplicate - but should be ignored              */
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
+literal|"{} - cursor got duplicate: {}, {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|this
-operator|+
-literal|" - cursor got duplicate: "
-operator|+
+block|,
 name|message
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|", "
-operator|+
+block|,
 name|message
 operator|.
 name|getPriority
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 name|recovered
@@ -520,9 +514,9 @@ name|LOG
 operator|.
 name|error
 argument_list|(
+literal|"{} - Failed to fill batch"
+argument_list|,
 name|this
-operator|+
-literal|" - Failed to fill batch"
 argument_list|,
 name|e
 argument_list|)
@@ -658,9 +652,9 @@ name|LOG
 operator|.
 name|error
 argument_list|(
+literal|"{} - Failed to fill batch"
+argument_list|,
 name|this
-operator|+
-literal|" - Failed to fill batch"
 argument_list|,
 name|e
 argument_list|)
@@ -786,29 +780,20 @@ operator|&&
 name|useCache
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
+literal|"{} - enabling cache for empty store {}"
+argument_list|,
 name|this
-operator|+
-literal|" - enabling cache for empty store "
-operator|+
+argument_list|,
 name|node
 operator|.
 name|getMessageId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|setCacheEnabled
 argument_list|(
 literal|true
@@ -881,42 +866,34 @@ operator|!=
 literal|null
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
 name|this
 operator|+
-literal|" - disabling cache"
-operator|+
-literal|", lastCachedId: "
-operator|+
+literal|"{} - disabling cache, lastCachedId: {} current node Id: {} batchList size: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
+name|this
+block|,
 name|lastCachedId
-operator|+
-literal|" current node Id: "
-operator|+
+block|,
 name|node
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|" batchList size: "
-operator|+
+block|,
 name|batchList
 operator|.
 name|size
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 name|setBatch
 argument_list|(
 name|lastCachedId
@@ -1123,24 +1100,15 @@ name|void
 name|fillBatch
 parameter_list|()
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
+literal|"{} - fillBatch"
+argument_list|,
 name|this
-operator|+
-literal|" - fillBatch"
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|batchResetNeeded
@@ -1210,9 +1178,9 @@ name|LOG
 operator|.
 name|error
 argument_list|(
+literal|"{} - Failed to fill batch"
+argument_list|,
 name|this
-operator|+
-literal|" - Failed to fill batch"
 argument_list|,
 name|e
 argument_list|)

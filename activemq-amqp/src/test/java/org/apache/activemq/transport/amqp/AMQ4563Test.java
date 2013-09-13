@@ -441,11 +441,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|">>>> Sent ["
-operator|+
+literal|">>>> Sent [{}]"
+argument_list|,
 name|messageText
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 name|p
@@ -640,8 +638,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Using selector: "
-operator|+
+literal|"Using selector: {}"
+argument_list|,
 name|selector
 argument_list|)
 expr_stmt|;
@@ -801,8 +799,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Using selector: "
-operator|+
+literal|"Using selector: {}"
+argument_list|,
 name|selector
 argument_list|)
 expr_stmt|;
@@ -953,11 +951,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|">>>> Sent ["
-operator|+
+literal|">>>> Sent [{}]"
+argument_list|,
 name|messageText
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 name|p
@@ -1148,14 +1144,12 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|">>>> Received ["
-operator|+
+literal|">>>> Received [{}]"
+argument_list|,
 name|textMessage
 operator|.
 name|getText
 argument_list|()
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 name|messagesReceived
@@ -1232,8 +1226,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|">>> In createConnection using port "
-operator|+
+literal|">>> In createConnection using port {}"
+argument_list|,
 name|port
 argument_list|)
 expr_stmt|;
@@ -1309,8 +1303,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|">>> In createConnection using port "
-operator|+
+literal|">>> In createConnection using port {}"
+argument_list|,
 name|port
 argument_list|)
 expr_stmt|;

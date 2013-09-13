@@ -364,31 +364,20 @@ name|getConnectionId
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|" changed ownership of "
-operator|+
+literal|"changed ownership of {} to {}"
+argument_list|,
 name|this
-operator|+
-literal|" to "
-operator|+
+argument_list|,
 name|tempDest
 operator|.
 name|getConnectionId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|super
 operator|.
@@ -431,14 +420,18 @@ name|LOG
 operator|.
 name|info
 argument_list|(
+literal|"{} on dispose, purge of {} pending messages: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|getActiveMQDestination
 argument_list|()
 operator|.
 name|getQualifiedName
 argument_list|()
-operator|+
-literal|" on dispose, purge of "
-operator|+
+block|,
 name|this
 operator|.
 name|destinationStatistics
@@ -448,10 +441,9 @@ argument_list|()
 operator|.
 name|getCount
 argument_list|()
-operator|+
-literal|" pending messages: "
-operator|+
+block|,
 name|messages
+block|}
 argument_list|)
 expr_stmt|;
 comment|// we may want to capture these message ids in an advisory
@@ -472,9 +464,11 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Caught an exception purging Queue: "
-operator|+
+literal|"Caught an exception purging Queue: {}"
+argument_list|,
 name|destination
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}

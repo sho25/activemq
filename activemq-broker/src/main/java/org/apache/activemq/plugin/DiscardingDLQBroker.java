@@ -241,20 +241,12 @@ name|Throwable
 name|poisonCause
 parameter_list|)
 block|{
-if|if
-condition|(
-name|log
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|log
 operator|.
 name|trace
 argument_list|(
-literal|"Discarding DLQ BrokerFilter[pass through] - skipping message:"
-operator|+
+literal|"Discarding DLQ BrokerFilter[pass through] - skipping message: {}"
+argument_list|,
 operator|(
 name|msgRef
 operator|!=
@@ -269,7 +261,6 @@ literal|null
 operator|)
 argument_list|)
 expr_stmt|;
-block|}
 name|boolean
 name|dropped
 init|=
@@ -466,11 +457,9 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Total of "
-operator|+
+literal|"Total of {} messages were discarded, since their destination was the dead letter queue"
+argument_list|,
 name|dropCount
-operator|+
-literal|" messages were discarded, since their destination was the dead letter queue"
 argument_list|)
 expr_stmt|;
 block|}
@@ -551,23 +540,14 @@ name|MessageReference
 name|msgRef
 parameter_list|)
 block|{
-if|if
-condition|(
 name|log
 operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|String
-name|lmsg
-init|=
-literal|"Discarding DLQ BrokerFilter["
-operator|+
+name|debug
+argument_list|(
+literal|"Discarding DLQ BrokerFilter[{}] - skipping message: {}"
+argument_list|,
 name|prefix
-operator|+
-literal|"] - skipping message:"
-operator|+
+argument_list|,
 operator|(
 name|msgRef
 operator|!=
@@ -580,15 +560,8 @@ argument_list|()
 else|:
 literal|null
 operator|)
-decl_stmt|;
-name|log
-operator|.
-name|debug
-argument_list|(
-name|lmsg
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 specifier|public
 name|void

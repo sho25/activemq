@@ -930,29 +930,20 @@ operator|||
 name|createIfTemporary
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} adding destination: {}"
+argument_list|,
 name|broker
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" adding destination: "
-operator|+
+argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
-block|}
 name|dest
 operator|=
 name|createDestination
@@ -1255,29 +1246,20 @@ comment|// the destination and that they should un-subscribe.. Then wait up
 comment|// to timeout time before
 comment|// dropping the subscription.
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} removing destination: {}"
+argument_list|,
 name|broker
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" removing destination: "
-operator|+
+argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
-block|}
 name|destinationsLock
 operator|.
 name|writeLock
@@ -1401,24 +1383,15 @@ block|}
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Cannot remove a destination that doesn't exist: "
-operator|+
+literal|"Cannot remove a destination that doesn't exist: {}"
+argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 finally|finally
@@ -1535,39 +1508,33 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} adding consumer: {} for destination: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|broker
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" adding consumer: "
-operator|+
+block|,
 name|info
 operator|.
 name|getConsumerId
 argument_list|()
-operator|+
-literal|" for destination: "
-operator|+
+block|,
 name|info
 operator|.
 name|getDestination
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 name|ActiveMQDestination
 name|destination
 init|=
@@ -1942,39 +1909,33 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} removing consumer: {} for destination: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|broker
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" removing consumer: "
-operator|+
+block|,
 name|info
 operator|.
 name|getConsumerId
 argument_list|()
-operator|+
-literal|" for destination: "
-operator|+
+block|,
 name|info
 operator|.
 name|getDestination
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 name|Subscription
 name|sub
 init|=
@@ -2281,8 +2242,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Ack for non existent subscription, ack:"
-operator|+
+literal|"Ack for non existent subscription, ack: {}"
+argument_list|,
 name|ack
 argument_list|)
 expr_stmt|;
@@ -2301,24 +2262,15 @@ throw|;
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Ack for non existent subscription in recovery, ack:"
-operator|+
+literal|"Ack for non existent subscription in recovery, ack: {}"
+argument_list|,
 name|ack
 argument_list|)
 expr_stmt|;
-block|}
 return|return;
 block|}
 block|}
@@ -3111,34 +3063,26 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"setting prefetch: "
-operator|+
+literal|"setting prefetch: {}, on subscription: {}; resulting value: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|control
 operator|.
 name|getPrefetch
 argument_list|()
-operator|+
-literal|", on subscription: "
-operator|+
+block|,
 name|control
 operator|.
 name|getConsumerId
 argument_list|()
-operator|+
-literal|"; resulting value: "
-operator|+
+block|,
 name|sub
 operator|.
 name|getConsumerInfo
@@ -3146,9 +3090,9 @@ argument_list|()
 operator|.
 name|getCurrentPrefetchSize
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 try|try
 block|{
 name|lookup
@@ -3180,8 +3124,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"failed to deliver post consumerControl dispatch-wakeup, to destination: "
-operator|+
+literal|"failed to deliver post consumerControl dispatch-wakeup, to destination: {}"
+argument_list|,
 name|control
 operator|.
 name|getDestination

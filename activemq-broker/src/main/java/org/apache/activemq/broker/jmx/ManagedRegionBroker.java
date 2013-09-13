@@ -1360,11 +1360,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"The MBean: "
-operator|+
+literal|"The MBean {} is no longer registered with JMX"
+argument_list|,
 name|name
-operator|+
-literal|" is no longer registered with JMX"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1601,8 +1599,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"JMX View is not supported for custom destination: "
-operator|+
+literal|"JMX View is not supported for custom destination {}"
+argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
@@ -1635,8 +1633,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to register destination "
-operator|+
+literal|"Failed to register destination {}"
+argument_list|,
 name|destName
 argument_list|,
 name|e
@@ -1682,8 +1680,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to unregister "
-operator|+
+literal|"Failed to unregister {}"
+argument_list|,
 name|destName
 argument_list|,
 name|e
@@ -1968,8 +1966,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to register subscription "
-operator|+
+literal|"Failed to register subscription {}"
+argument_list|,
 name|sub
 argument_list|,
 name|e
@@ -2498,8 +2496,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to unregister subscription "
-operator|+
+literal|"Failed to unregister subscription {}"
+argument_list|,
 name|sub
 argument_list|,
 name|e
@@ -2631,8 +2629,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to register MBean: "
-operator|+
+literal|"Failed to register MBean {}"
+argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
@@ -2641,8 +2639,6 @@ operator|.
 name|debug
 argument_list|(
 literal|"Failure reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -2734,8 +2730,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to unregister MBean: "
-operator|+
+literal|"Failed to unregister MBean {}"
+argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
@@ -2744,8 +2740,6 @@ operator|.
 name|debug
 argument_list|(
 literal|"Failure reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -2800,8 +2794,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to unregister slow consumer strategy MBean: "
-operator|+
+literal|"Failed to unregister slow consumer strategy MBean {}"
+argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
@@ -2810,8 +2804,6 @@ operator|.
 name|debug
 argument_list|(
 literal|"Failure reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -2963,8 +2955,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to register MBean: "
-operator|+
+literal|"Failed to register MBean {}"
+argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
@@ -2973,8 +2965,6 @@ operator|.
 name|debug
 argument_list|(
 literal|"Failure reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -3056,8 +3046,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to unregister MBean: "
-operator|+
+literal|"Failed to unregister MBean {}"
+argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
@@ -3066,8 +3056,6 @@ operator|.
 name|debug
 argument_list|(
 literal|"Failure reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -3288,8 +3276,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Unable to unregister inactive durable subscriber: "
-operator|+
+literal|"Unable to unregister inactive durable subscriber {}"
+argument_list|,
 name|subscriptionKey
 argument_list|,
 name|e
@@ -3346,8 +3334,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to register MBean: "
-operator|+
+literal|"Failed to register MBean {}"
+argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
@@ -3356,8 +3344,6 @@ operator|.
 name|debug
 argument_list|(
 literal|"Failure reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -3435,8 +3421,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to unregister MBean: "
-operator|+
+literal|"Failed to unregister MBean {}"
+argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
@@ -3445,8 +3431,6 @@ operator|.
 name|debug
 argument_list|(
 literal|"Failure reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -3696,8 +3680,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Restoring durable subscription mbean: "
-operator|+
+literal|"Restoring durable subscription MBean {}"
+argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
@@ -3779,24 +3763,14 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Sub with key: "
-operator|+
+literal|"Sub with key: {}, {} already registered"
+argument_list|,
 name|key
-operator|+
-literal|", "
-operator|+
+argument_list|,
 operator|(
 name|known
 condition|?
@@ -3804,11 +3778,8 @@ literal|""
 else|:
 literal|"not"
 operator|)
-operator|+
-literal|" already registered"
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|known
 return|;
@@ -3926,8 +3897,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to register MBean: "
-operator|+
+literal|"Failed to register MBean {}"
+argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
@@ -3936,8 +3907,6 @@ operator|.
 name|debug
 argument_list|(
 literal|"Failure reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -3972,8 +3941,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to register subscription "
-operator|+
+literal|"Failed to register subscription {}"
+argument_list|,
 name|info
 argument_list|,
 name|e
@@ -4063,8 +4032,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"failed to browse : "
-operator|+
+literal|"Failed to browse: {}"
+argument_list|,
 name|view
 argument_list|,
 name|e
@@ -4365,8 +4334,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to browse messages for Subscription "
-operator|+
+literal|"Failed to browse messages for Subscription {}"
+argument_list|,
 name|view
 argument_list|,
 name|e
@@ -5008,8 +4977,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to register MBean: "
-operator|+
+literal|"Failed to register MBean {}"
+argument_list|,
 name|strategy
 argument_list|)
 expr_stmt|;
@@ -5018,8 +4987,6 @@ operator|.
 name|debug
 argument_list|(
 literal|"Failure reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -5107,8 +5074,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to register prepared transaction MBean: "
-operator|+
+literal|"Failed to register prepared transaction MBean {}"
+argument_list|,
 name|transaction
 argument_list|)
 expr_stmt|;
@@ -5117,8 +5084,6 @@ operator|.
 name|debug
 argument_list|(
 literal|"Failure reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -5177,8 +5142,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to unregister MBean: "
-operator|+
+literal|"Failed to unregister MBean {}"
+argument_list|,
 name|objectName
 argument_list|)
 expr_stmt|;
@@ -5187,8 +5152,6 @@ operator|.
 name|debug
 argument_list|(
 literal|"Failure reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -5206,8 +5169,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to create object name to unregister "
-operator|+
+literal|"Failed to create object name to unregister {}"
+argument_list|,
 name|transaction
 argument_list|,
 name|e

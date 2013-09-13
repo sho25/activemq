@@ -233,12 +233,10 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|">>>> At Start, durable Subscribers "
-operator|+
+literal|">>>> At Start, durable Subscribers {} inactiveDurableSubscribers {}"
+argument_list|,
 name|durableSubscribersAtStart
-operator|+
-literal|" inactiveDurableSubscribers "
-operator|+
+argument_list|,
 name|inactiveSubscribersAtStart
 argument_list|)
 expr_stmt|;
@@ -338,12 +336,10 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|">>>> durable Subscribers after creation "
-operator|+
+literal|">>>> durable Subscribers after creation {} inactiveDurableSubscribers {}"
+argument_list|,
 name|durableSubscribers
-operator|+
-literal|" inactiveDurableSubscribers "
-operator|+
+argument_list|,
 name|inactiveSubscribers
 argument_list|)
 expr_stmt|;
@@ -404,12 +400,10 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|">>>> durable Subscribers after close "
-operator|+
+literal|">>>> durable Subscribers after close {} inactiveDurableSubscribers {}"
+argument_list|,
 name|durableSubscribers
-operator|+
-literal|" inactiveDurableSubscribers "
-operator|+
+argument_list|,
 name|inactiveSubscribers
 argument_list|)
 expr_stmt|;

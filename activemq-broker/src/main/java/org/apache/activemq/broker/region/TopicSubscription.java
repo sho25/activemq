@@ -819,10 +819,10 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
+literal|"{}: has twice its prefetch limit pending, without an ack; it appears to be slow"
+argument_list|,
 name|toString
 argument_list|()
-operator|+
-literal|": has twice its prefetch limit pending, without an ack; it appears to be slow"
 argument_list|)
 expr_stmt|;
 name|setSlowConsumer
@@ -897,11 +897,11 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
+literal|"{}: stopped waiting for space in pendingMessage cursor for: {}"
+argument_list|,
 name|toString
 argument_list|()
-operator|+
-literal|": stopped waiting for space in pendingMessage cursor for: "
-operator|+
+argument_list|,
 name|node
 operator|.
 name|getMessageId
@@ -925,16 +925,17 @@ name|LOG
 operator|.
 name|info
 argument_list|(
+literal|"{}: Pending message cursor [{}] is full, temp usag ({}%) or memory usage ({}%) limit reached, blocking message add() pending the release of resources."
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|toString
 argument_list|()
-operator|+
-literal|": Pending message cursor ["
-operator|+
+block|,
 name|matched
-operator|+
-literal|"] is full, temp usage ("
-operator|+
-operator|+
+block|,
 name|matched
 operator|.
 name|getSystemUsage
@@ -945,9 +946,7 @@ argument_list|()
 operator|.
 name|getPercentUsage
 argument_list|()
-operator|+
-literal|"%) or memory usage ("
-operator|+
+block|,
 name|matched
 operator|.
 name|getSystemUsage
@@ -958,8 +957,7 @@ argument_list|()
 operator|.
 name|getPercentUsage
 argument_list|()
-operator|+
-literal|"%) limit reached, blocking message add() pending the release of resources."
+block|}
 argument_list|)
 expr_stmt|;
 name|warnedAboutWait
@@ -1204,22 +1202,21 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"No messages to evict returned for "
-operator|+
+literal|"No messages to evict returned for {} from eviction strategy: {} out of {} candidates"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|destination
-operator|+
-literal|" from eviction strategy: "
-operator|+
+block|,
 name|messageEvictionStrategy
-operator|+
-literal|" out of "
-operator|+
+block|,
 name|list
 operator|.
 name|size
 argument_list|()
-operator|+
-literal|" candidates"
+block|}
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1281,10 +1278,10 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{}, ignoring duplicate add: {}"
+argument_list|,
 name|this
-operator|+
-literal|", ignoring duplicate add: "
-operator|+
+argument_list|,
 name|node
 operator|.
 name|getMessageId
@@ -2910,26 +2907,17 @@ name|increment
 argument_list|()
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{}, discarding message {}"
+argument_list|,
 name|this
-operator|+
-literal|", discarding message "
-operator|+
+argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-block|}
 name|Destination
 name|dest
 init|=

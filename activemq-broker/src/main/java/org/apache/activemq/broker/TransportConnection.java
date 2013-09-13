@@ -1308,14 +1308,12 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Slave has exception: "
-operator|+
+literal|"Slave has exception: {} shutting down master now."
+argument_list|,
 name|e
 operator|.
 name|getMessage
 argument_list|()
-operator|+
-literal|" shutting down master now."
 argument_list|,
 name|e
 argument_list|)
@@ -1603,14 +1601,6 @@ name|get
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|SERVICELOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|SERVICELOG
 operator|.
 name|debug
@@ -1618,7 +1608,6 @@ argument_list|(
 literal|"Broker has been stopped.  Notifying client and closing his connection."
 argument_list|)
 expr_stmt|;
-block|}
 name|ConnectionError
 name|ce
 init|=
@@ -1703,8 +1692,6 @@ operator|.
 name|warn
 argument_list|(
 literal|"Async error occurred: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -3864,13 +3851,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to remove consumer: "
-operator|+
+literal|"Failed to remove consumer: {}"
+argument_list|,
 name|consumerId
-operator|+
-literal|". Reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -3906,13 +3889,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to remove producer: "
-operator|+
+literal|"Failed to remove producer: {}"
+argument_list|,
 name|producerId
-operator|+
-literal|". Reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -4067,8 +4046,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Killing previous stale connection: "
-operator|+
+literal|"Killing previous stale connection: {}"
+argument_list|,
 name|state
 operator|.
 name|getConnection
@@ -4090,13 +4069,11 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Connection "
-operator|+
+literal|"Connection {} taking over previous connection: {}"
+argument_list|,
 name|getRemoteAddress
 argument_list|()
-operator|+
-literal|" taking over previous connection: "
-operator|+
+argument_list|,
 name|state
 operator|.
 name|getConnection
@@ -4136,21 +4113,22 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Setting up new connection id: "
-operator|+
+literal|"Setting up new connection id: {}, address: {}, info: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|info
 operator|.
 name|getConnectionId
 argument_list|()
-operator|+
-literal|", address: "
-operator|+
+block|,
 name|getRemoteAddress
 argument_list|()
-operator|+
-literal|", info: "
-operator|+
+block|,
 name|info
+block|}
 argument_list|)
 expr_stmt|;
 name|this
@@ -4383,39 +4361,16 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to add Connection "
-operator|+
+literal|"Failed to add Connection {}"
+argument_list|,
 name|info
 operator|.
 name|getConnectionId
 argument_list|()
-operator|+
-literal|", reason: "
-operator|+
-name|e
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"Exception detail:"
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|e
@@ -4518,8 +4473,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"remove connection id: "
-operator|+
+literal|"remove connection id: {}"
+argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
@@ -4577,8 +4532,8 @@ name|SERVICELOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to remove session "
-operator|+
+literal|"Failed to remove session {}"
+argument_list|,
 name|sessionId
 argument_list|,
 name|e
@@ -4648,8 +4603,8 @@ name|SERVICELOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to remove tmp destination "
-operator|+
+literal|"Failed to remove tmp destination {}"
+argument_list|,
 name|di
 operator|.
 name|getDestination
@@ -4695,39 +4650,16 @@ name|SERVICELOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to remove connection "
-operator|+
+literal|"Failed to remove connection {}"
+argument_list|,
 name|cs
 operator|.
 name|getInfo
 argument_list|()
-operator|+
-literal|", reason: "
-operator|+
-name|e
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|SERVICELOG
-operator|.
-name|debug
-argument_list|(
-literal|"Exception detail:"
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|TransportConnectionState
 name|state
@@ -5458,8 +5390,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Calling the delayed stop() after start() "
-operator|+
+literal|"Calling the delayed stop() after start() {}"
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
@@ -5502,14 +5434,12 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"The connection to '"
-operator|+
+literal|"The connection to '{}' is taking a long time to shutdown."
+argument_list|,
 name|transport
 operator|.
 name|getRemoteAddress
 argument_list|()
-operator|+
-literal|"' is taking a long time to shutdown."
 argument_list|)
 expr_stmt|;
 block|}
@@ -5584,15 +5514,13 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Stopping "
-operator|+
+literal|"Stopping {} because {}"
+argument_list|,
 name|transport
 operator|.
 name|getRemoteAddress
 argument_list|()
-operator|+
-literal|" because "
-operator|+
+argument_list|,
 name|reason
 argument_list|)
 expr_stmt|;
@@ -5755,8 +5683,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Error occurred while shutting down a connection "
-operator|+
+literal|"Error occurred while shutting down a connection {}"
+argument_list|,
 name|this
 argument_list|,
 name|e
@@ -5898,8 +5826,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Stopped transport: "
-operator|+
+literal|"Stopped transport: {}"
+argument_list|,
 name|transport
 operator|.
 name|getRemoteAddress
@@ -5917,14 +5845,12 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Could not stop transport to "
-operator|+
+literal|"Could not stop transport to {}. This exception is ignored."
+argument_list|,
 name|transport
 operator|.
 name|getRemoteAddress
 argument_list|()
-operator|+
-literal|". This exception is ignored."
 argument_list|,
 name|e
 argument_list|)
@@ -6450,8 +6376,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|" Slave Brokers are no longer supported - slave trying to attach is: "
-operator|+
+literal|" Slave Brokers are no longer supported - slave trying to attach is: {}"
+argument_list|,
 name|info
 operator|.
 name|getBrokerName
@@ -6622,15 +6548,11 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Stopping an existing active duplex connection ["
-operator|+
+literal|"Stopping an existing active duplex connection [{}] for network connector ({})."
+argument_list|,
 name|c
-operator|+
-literal|"] for network connector ("
-operator|+
+argument_list|,
 name|duplexNetworkConnectorId
-operator|+
-literal|")."
 argument_list|)
 expr_stmt|;
 name|c
@@ -6813,8 +6735,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Started responder end of duplex bridge "
-operator|+
+literal|"Started responder end of duplex bridge {}"
+argument_list|,
 name|duplexNetworkConnectorId
 argument_list|)
 expr_stmt|;
@@ -6832,11 +6754,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Duplex bridge "
-operator|+
+literal|"Duplex bridge {} was stopped before it was correctly started."
+argument_list|,
 name|duplexNetworkConnectorId
-operator|+
-literal|" was stopped before it was correctly started."
 argument_list|)
 expr_stmt|;
 return|return
@@ -6853,8 +6773,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to create responder end of duplex network bridge "
-operator|+
+literal|"Failed to create responder end of duplex network bridge {}"
+argument_list|,
 name|duplexNetworkConnectorId
 argument_list|,
 name|e
@@ -6879,8 +6799,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Unexpected extra broker info command received: "
-operator|+
+literal|"Unexpected extra broker info command received: {}"
+argument_list|,
 name|info
 argument_list|)
 expr_stmt|;

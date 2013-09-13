@@ -769,13 +769,11 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"    URI ["
-operator|+
+literal|"    URI [{}]"
+argument_list|,
 name|this
 operator|.
 name|ldapURI
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 name|env
@@ -824,11 +822,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"    login credentials ["
-operator|+
+literal|"    login credentials [{}:******]"
+argument_list|,
 name|user
-operator|+
-literal|":******]"
 argument_list|)
 expr_stmt|;
 name|env
@@ -902,8 +898,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"connection error ["
-operator|+
+literal|"connection error [{}], failover connection to [{}]"
+argument_list|,
 name|env
 operator|.
 name|get
@@ -912,17 +908,13 @@ name|Context
 operator|.
 name|PROVIDER_URL
 argument_list|)
-operator|+
-literal|"], failover connection to ["
-operator|+
+argument_list|,
 name|this
 operator|.
 name|ldapURI
 operator|.
 name|toString
 argument_list|()
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 name|env
@@ -982,36 +974,30 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"    base   ["
-operator|+
+literal|"    base   [{}]"
+argument_list|,
 name|base
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"    filter ["
-operator|+
+literal|"    filter [{}]"
+argument_list|,
 name|searchFilter
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"    scope  ["
-operator|+
+literal|"    scope  [{}]"
+argument_list|,
 name|searchControls
 operator|.
 name|getSearchScope
 argument_list|()
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 name|NamingEnumeration
@@ -1212,11 +1198,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"connector already regsitered for UUID ["
-operator|+
+literal|"connector already regsitered for UUID [{}]"
+argument_list|,
 name|uuid
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1255,19 +1239,18 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"connector reference added for URI ["
-operator|+
+literal|"connector reference added for URI [{}], UUID [{}], total reference(s) [{}]"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|connectorURI
-operator|+
-literal|"], UUID ["
-operator|+
+block|,
 name|uuid
-operator|+
-literal|"], total reference(s) ["
-operator|+
+block|,
 name|referenceCount
-operator|+
-literal|"]"
+block|}
 argument_list|)
 expr_stmt|;
 name|referenceMap
@@ -1454,11 +1437,9 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"connector added with URI ["
-operator|+
+literal|"connector added with URI [{}]"
+argument_list|,
 name|connectorURI
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1497,11 +1478,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"connector not regsitered for UUID ["
-operator|+
+literal|"connector not registered for UUID [{}]"
+argument_list|,
 name|uuid
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1531,11 +1510,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"connector not regisitered for URI ["
-operator|+
+literal|"connector not registered for URI [{}]"
+argument_list|,
 name|connectorURI
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1572,19 +1549,18 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"connector referenced removed for URI ["
-operator|+
+literal|"connector referenced removed for URI [{}], UUID[{}], remaining reference(s) [{}]"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|connectorURI
-operator|+
-literal|"], UUID ["
-operator|+
+block|,
 name|uuid
-operator|+
-literal|"], remaining reference(s) ["
-operator|+
+block|,
 name|referenceCount
-operator|+
-literal|"]"
+block|}
 argument_list|)
 expr_stmt|;
 if|if
@@ -1615,11 +1591,9 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"connector removed with URI ["
-operator|+
+literal|"connector removed with URI [{}]"
+argument_list|,
 name|connectorURI
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1715,11 +1689,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"retrieved URI from SearchResult ["
-operator|+
+literal|"retrieved URI from SearchResult [{}]"
+argument_list|,
 name|connectorURI
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 return|return
@@ -1747,11 +1719,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"retrieved UUID from SearchResult ["
-operator|+
+literal|"retrieved UUID from SearchResult [{}]"
+argument_list|,
 name|uuid
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 return|return
@@ -1915,19 +1885,18 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"connector reference renamed for URI ["
-operator|+
+literal|"connector reference renamed for URI [{}], Old UUID [{}], New UUID [{}]"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|connectorURI
-operator|+
-literal|"], Old UUID ["
-operator|+
+block|,
 name|uuidOld
-operator|+
-literal|"], New UUID ["
-operator|+
+block|,
 name|uuidNew
-operator|+
-literal|"]"
+block|}
 argument_list|)
 expr_stmt|;
 block|}

@@ -1577,23 +1577,11 @@ name|TransportFrame
 name|transportFrame
 parameter_list|)
 block|{
-if|if
-condition|(
-name|TRACE_FRAMES
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|TRACE_FRAMES
 operator|.
 name|trace
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"%s | RECV: %s"
+literal|"{} | RECV: {}"
 argument_list|,
 name|AmqpProtocolConverter
 operator|.
@@ -1609,9 +1597,7 @@ operator|.
 name|getBody
 argument_list|()
 argument_list|)
-argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Override
@@ -1623,23 +1609,11 @@ name|TransportFrame
 name|transportFrame
 parameter_list|)
 block|{
-if|if
-condition|(
-name|TRACE_FRAMES
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|TRACE_FRAMES
 operator|.
 name|trace
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"%s | SENT: %s"
+literal|"{} | SENT: {}"
 argument_list|,
 name|AmqpProtocolConverter
 operator|.
@@ -1655,9 +1629,7 @@ operator|.
 name|getBody
 argument_list|()
 argument_list|)
-argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 argument_list|)
@@ -2792,11 +2764,6 @@ block|{
 comment|// End of Queue Browse will have no Message object.
 if|if
 condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-operator|&&
 name|md
 operator|.
 name|getMessage
@@ -2809,7 +2776,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Dispatching MessageId:{} to consumer"
+literal|"Dispatching MessageId: {} to consumer"
 argument_list|,
 name|md
 operator|.
@@ -2891,24 +2858,15 @@ comment|// ignore
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Do not know how to process ActiveMQ Command "
-operator|+
+literal|"Do not know how to process ActiveMQ Command {}"
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 specifier|private
@@ -3229,14 +3187,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
@@ -3248,7 +3198,6 @@ operator|.
 name|sessionId
 argument_list|)
 expr_stmt|;
-block|}
 name|sendToActiveMQ
 argument_list|(
 operator|new
@@ -3450,11 +3399,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Unknown transformer type "
-operator|+
+literal|"Unknown transformer type {} using native one instead"
+argument_list|,
 name|transformer
-operator|+
-literal|", using native one instead"
 argument_list|)
 expr_stmt|;
 name|inboundTransformer
@@ -3841,14 +3788,6 @@ name|getNextSequenceId
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
@@ -3870,7 +3809,6 @@ name|getProducerSequenceId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|DeliveryState
 name|remoteState
 init|=
@@ -4259,15 +4197,11 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"COORDINATOR received: "
-operator|+
+literal|"COORDINATOR received: {}, [{}]"
+argument_list|,
 name|action
-operator|+
-literal|", ["
-operator|+
+argument_list|,
 name|buffer
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 if|if
@@ -4337,24 +4271,15 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"started transaction "
-operator|+
+literal|"started transaction {}"
+argument_list|,
 name|txid
 argument_list|)
 expr_stmt|;
-block|}
 name|Declared
 name|declared
 init|=
@@ -4428,24 +4353,15 @@ name|getFail
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"rollback transaction "
-operator|+
+literal|"rollback transaction {}"
+argument_list|,
 name|txid
 argument_list|)
 expr_stmt|;
-block|}
 name|operation
 operator|=
 name|TransactionInfo
@@ -4455,24 +4371,15 @@ expr_stmt|;
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"commit transaction "
-operator|+
+literal|"commit transaction {}"
+argument_list|,
 name|txid
 argument_list|)
 expr_stmt|;
-block|}
 name|operation
 operator|=
 name|TransactionInfo
@@ -4622,14 +4529,6 @@ name|rejected
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
@@ -4641,7 +4540,6 @@ argument_list|,
 name|action
 argument_list|)
 expr_stmt|;
-block|}
 name|delivery
 operator|.
 name|settle
@@ -6199,14 +6097,6 @@ name|md
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
@@ -6216,7 +6106,6 @@ argument_list|,
 name|ack
 argument_list|)
 expr_stmt|;
-block|}
 name|sendToActiveMQ
 argument_list|(
 name|ack
@@ -6389,14 +6278,6 @@ operator|instanceof
 name|DeliveryState
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
@@ -6406,7 +6287,6 @@ argument_list|,
 name|state
 argument_list|)
 expr_stmt|;
-block|}
 name|state
 operator|=
 operator|(
@@ -6464,14 +6344,6 @@ operator|instanceof
 name|Accepted
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
@@ -6481,7 +6353,6 @@ argument_list|,
 name|state
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 operator|!
@@ -6532,14 +6403,6 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
@@ -6554,7 +6417,6 @@ name|getRedeliveryCounter
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|settle
 argument_list|(
 name|delivery
@@ -6572,14 +6434,6 @@ operator|instanceof
 name|Released
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
@@ -6589,7 +6443,6 @@ argument_list|,
 name|state
 argument_list|)
 expr_stmt|;
-block|}
 comment|// re-deliver&& don't increment the counter.
 name|settle
 argument_list|(
@@ -6638,14 +6491,6 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
@@ -6660,7 +6505,6 @@ name|getRedeliveryCounter
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|byte
 name|ackType
 init|=
@@ -6778,14 +6622,6 @@ name|getMessageId
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
@@ -6795,7 +6631,6 @@ argument_list|,
 name|pendingTxAck
 argument_list|)
 expr_stmt|;
-block|}
 name|dispatchedInTx
 operator|.
 name|clear
@@ -6887,14 +6722,6 @@ init|(
 name|outbound
 init|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
@@ -6907,7 +6734,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 for|for
 control|(
 name|MessageDispatch
@@ -8017,14 +7843,6 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
@@ -8034,7 +7852,6 @@ argument_list|,
 name|exception
 argument_list|)
 expr_stmt|;
-block|}
 try|try
 block|{
 name|amqpTransport

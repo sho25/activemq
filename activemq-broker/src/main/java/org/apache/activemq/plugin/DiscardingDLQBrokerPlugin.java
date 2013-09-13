@@ -96,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Filip Hanik  * @org.apache.xbean.XBean element="discardingDLQBrokerPlugin"  * @version 1.0  */
+comment|/**  * @org.apache.xbean.XBean element="discardingDLQBrokerPlugin"  * @version 1.0  */
 end_comment
 
 begin_class
@@ -167,32 +167,26 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Installing Discarding Dead Letter Queue broker plugin[dropAll="
-operator|+
+literal|"Installing Discarding Dead Letter Queue broker plugin[dropAll={}; dropTemporaryTopics={}; dropTemporaryQueues={}; dropOnly={}; reportInterval={}]"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|isDropAll
 argument_list|()
-operator|+
-literal|"; dropTemporaryTopics="
-operator|+
+block|,
 name|isDropTemporaryTopics
 argument_list|()
-operator|+
-literal|"; dropTemporaryQueues="
-operator|+
+block|,
 name|isDropTemporaryQueues
 argument_list|()
-operator|+
-literal|"; dropOnly="
-operator|+
+block|,
 name|getDropOnly
 argument_list|()
-operator|+
-literal|"; reportInterval="
-operator|+
-name|getReportInterval
-argument_list|()
-operator|+
-literal|"]"
+block|,
+name|reportInterval
+block|}
 argument_list|)
 expr_stmt|;
 name|DiscardingDLQBroker

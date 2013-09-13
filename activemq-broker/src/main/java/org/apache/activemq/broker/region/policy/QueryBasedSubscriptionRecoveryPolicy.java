@@ -651,13 +651,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to dispatch initial message: "
-operator|+
+literal|"Failed to dispatch initial message: {} into subscription. Reason: "
+argument_list|,
 name|message
-operator|+
-literal|" into subscription. Reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)

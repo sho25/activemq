@@ -840,8 +840,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to trace: "
-operator|+
+literal|"Failed to trace: {}"
+argument_list|,
 name|command
 argument_list|,
 name|e

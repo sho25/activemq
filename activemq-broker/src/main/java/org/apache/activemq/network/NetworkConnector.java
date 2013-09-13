@@ -817,11 +817,9 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Network Connector "
-operator|+
+literal|"Network Connector {} Started"
+argument_list|,
 name|this
-operator|+
-literal|" Started"
 argument_list|)
 expr_stmt|;
 block|}
@@ -839,11 +837,9 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Network Connector "
-operator|+
+literal|"Network Connector {} Stopped"
+argument_list|,
 name|this
-operator|+
-literal|" Stopped"
 argument_list|)
 expr_stmt|;
 block|}
@@ -996,8 +992,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Network bridge could not be registered in JMX: "
-operator|+
+literal|"Network bridge could not be registered in JMX: {}"
+argument_list|,
 name|e
 operator|.
 name|getMessage
@@ -1060,8 +1056,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Network bridge could not be unregistered in JMX: "
-operator|+
+literal|"Network bridge could not be unregistered in JMX: {}"
+argument_list|,
 name|e
 operator|.
 name|getMessage

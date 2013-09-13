@@ -344,13 +344,9 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to lookup the mirror destination for: "
-operator|+
+literal|"Failed to lookup the mirror destination for: {}"
+argument_list|,
 name|destination
-operator|+
-literal|". Reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -423,13 +419,9 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to remove mirror destination for "
-operator|+
+literal|"Failed to remove mirror destination for {}"
+argument_list|,
 name|destination
-operator|+
-literal|". Reason: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)

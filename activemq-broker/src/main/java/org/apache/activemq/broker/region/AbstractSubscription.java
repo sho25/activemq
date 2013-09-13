@@ -674,8 +674,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Selector failed to evaluate: "
-operator|+
+literal|"Selector failed to evaluate: {}"
+argument_list|,
 name|e
 operator|.
 name|getMessage

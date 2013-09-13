@@ -2904,18 +2904,17 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to start Apache ActiveMQ ("
-operator|+
+literal|"Failed to start Apache ActiveMQ ({}, {})"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|getBrokerName
 argument_list|()
-operator|+
-literal|", "
-operator|+
+block|,
 name|brokerId
-operator|+
-literal|"). Reason: "
-operator|+
-name|e
+block|}
 argument_list|,
 name|e
 argument_list|)
@@ -3069,8 +3068,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Using Persistence Adapter: "
-operator|+
+literal|"Using Persistence Adapter: {}"
+argument_list|,
 name|getPersistenceAdapter
 argument_list|()
 argument_list|)
@@ -3196,36 +3195,26 @@ name|getBrokerId
 argument_list|()
 expr_stmt|;
 comment|// need to log this after creating the broker so we have its id and name
-if|if
-condition|(
-name|LOG
-operator|.
-name|isInfoEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Apache ActiveMQ "
-operator|+
+literal|"Apache ActiveMQ {} ({}, {}) is starting"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|getBrokerVersion
 argument_list|()
-operator|+
-literal|" ("
-operator|+
+block|,
 name|getBrokerName
 argument_list|()
-operator|+
-literal|", "
-operator|+
+block|,
 name|brokerId
-operator|+
-literal|") is starting"
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 name|broker
 operator|.
 name|start
@@ -3305,33 +3294,24 @@ block|}
 name|startAllConnectors
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isInfoEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Apache ActiveMQ "
-operator|+
+literal|"Apache ActiveMQ {} ({}, {}) started"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|getBrokerVersion
 argument_list|()
-operator|+
-literal|" ("
-operator|+
+block|,
 name|getBrokerName
 argument_list|()
-operator|+
-literal|", "
-operator|+
+block|,
 name|brokerId
-operator|+
-literal|") started"
+block|}
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -3341,7 +3321,6 @@ argument_list|(
 literal|"For help or more information please see: http://activemq.apache.org"
 argument_list|)
 expr_stmt|;
-block|}
 name|getBroker
 argument_list|()
 operator|.
@@ -3461,36 +3440,26 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isInfoEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Apache ActiveMQ "
-operator|+
+literal|"Apache ActiveMQ {} ({}, {}) is shutting down"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|getBrokerVersion
 argument_list|()
-operator|+
-literal|" ("
-operator|+
+block|,
 name|getBrokerName
 argument_list|()
-operator|+
-literal|", "
-operator|+
+block|,
 name|brokerId
-operator|+
-literal|") is shutting down"
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 name|removeShutdownHook
 argument_list|()
 expr_stmt|;
@@ -3755,14 +3724,6 @@ literal|null
 expr_stmt|;
 if|if
 condition|(
-name|LOG
-operator|.
-name|isInfoEnabled
-argument_list|()
-condition|)
-block|{
-if|if
-condition|(
 name|startDate
 operator|!=
 literal|null
@@ -3772,24 +3733,23 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Apache ActiveMQ "
-operator|+
+literal|"Apache ActiveMQ {} ({}, {}) uptime {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|getBrokerVersion
 argument_list|()
-operator|+
-literal|" ("
-operator|+
+block|,
 name|getBrokerName
 argument_list|()
-operator|+
-literal|", "
-operator|+
+block|,
 name|brokerId
-operator|+
-literal|") uptime "
-operator|+
+block|,
 name|getUptime
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -3797,24 +3757,22 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Apache ActiveMQ "
-operator|+
+literal|"Apache ActiveMQ {} ({}, {}) is shutdown"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|getBrokerVersion
 argument_list|()
-operator|+
-literal|" ("
-operator|+
+block|,
 name|getBrokerName
 argument_list|()
-operator|+
-literal|", "
-operator|+
+block|,
 name|brokerId
-operator|+
-literal|") is shutdown"
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 synchronized|synchronized
 init|(
 name|shutdownHooks
@@ -3979,8 +3937,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Queue has pending message:"
-operator|+
+literal|"Queue has pending message: {} queueSize is: {}"
+argument_list|,
 name|entry
 operator|.
 name|getValue
@@ -3988,9 +3946,7 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|" queueSize is:"
-operator|+
+argument_list|,
 name|queueSize
 argument_list|)
 expr_stmt|;
@@ -4069,21 +4025,20 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Stop gracefully with connectorName:"
-operator|+
+literal|"Stop gracefully with connectorName: {} queueName: {} timeout: {} pollInterval: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|connectorName
-operator|+
-literal|" queueName:"
-operator|+
+block|,
 name|queueName
-operator|+
-literal|" timeout:"
-operator|+
+block|,
 name|timeout
-operator|+
-literal|" pollInterval:"
-operator|+
+block|,
 name|pollInterval
+block|}
 argument_list|)
 expr_stmt|;
 name|TransportConnector
@@ -4452,12 +4407,10 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Broker Name: "
-operator|+
+literal|"Broker Name: {} contained illegal characters - replaced with {}"
+argument_list|,
 name|brokerName
-operator|+
-literal|" contained illegal characters - replaced with "
-operator|+
+argument_list|,
 name|str
 argument_list|)
 expr_stmt|;
@@ -5192,8 +5145,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"persistent=\"false\", ignoring configured persistenceAdapter: "
-operator|+
+literal|"persistent=\"false\", ignoring configured persistenceAdapter: {}"
+argument_list|,
 name|persistenceAdapter
 argument_list|)
 expr_stmt|;
@@ -6356,8 +6309,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Badly formed URI from "
-operator|+
+literal|"Badly formed URI from {}"
+argument_list|,
 name|getBrokerName
 argument_list|()
 argument_list|,
@@ -6442,8 +6395,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to get the ConnectURI for "
-operator|+
+literal|"Failed to get the ConnectURI for {}"
+argument_list|,
 name|tc
 argument_list|,
 name|e
@@ -6853,9 +6806,9 @@ name|LOG
 operator|.
 name|info
 argument_list|(
+literal|"{} temporary storage"
+argument_list|,
 name|str
-operator|+
-literal|" temporary storage"
 argument_list|)
 expr_stmt|;
 block|}
@@ -7501,8 +7454,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"JobScheduler using directory: "
-operator|+
+literal|"JobScheduler using directory: {}"
+argument_list|,
 name|getSchedulerDirectoryFile
 argument_list|()
 argument_list|)
@@ -8968,9 +8921,7 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Network Connector could not be unregistered from JMX: "
-operator|+
-name|e
+literal|"Network Connector could not be unregistered from JMX"
 argument_list|,
 name|e
 argument_list|)
@@ -10097,8 +10048,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"No port specified so defaulting to: "
-operator|+
+literal|"No port specified so defaulting to: {}"
+argument_list|,
 name|port
 argument_list|)
 expr_stmt|;
@@ -10185,8 +10136,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Caught exception, must be shutting down: "
-operator|+
+literal|"Caught exception, must be shutting down"
+argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
@@ -10862,8 +10813,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Async start of "
-operator|+
+literal|"Async start of {}"
+argument_list|,
 name|connector
 argument_list|)
 expr_stmt|;
@@ -10883,11 +10834,9 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Async start of network connector: "
-operator|+
+literal|"Async start of network connector: {} failed"
+argument_list|,
 name|connector
-operator|+
-literal|" failed"
 argument_list|,
 name|e
 argument_list|)
@@ -11172,9 +11121,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"No IOExceptionHandler registered, ignoring IO exception, "
-operator|+
-name|exception
+literal|"No IOExceptionHandler registered, ignoring IO exception"
 argument_list|,
 name|exception
 argument_list|)

@@ -281,10 +281,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author<a href="http://www.christianposta.com/blog">Christian Posta</a>  */
-end_comment
-
 begin_class
 specifier|public
 class|class
@@ -783,7 +779,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Recieved message: "
+literal|"Recieved message: {}"
 argument_list|,
 name|message
 argument_list|)

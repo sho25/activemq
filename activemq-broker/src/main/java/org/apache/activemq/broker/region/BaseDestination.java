@@ -2238,12 +2238,10 @@ argument_list|()
 operator|.
 name|debug
 argument_list|(
-literal|"sendFailIfNoSpace, forcing exception on send, usage:  "
-operator|+
+literal|"sendFailIfNoSpace, forcing exception on send, usage: {}: {}"
+argument_list|,
 name|usage
-operator|+
-literal|": "
-operator|+
+argument_list|,
 name|warning
 argument_list|)
 expr_stmt|;
@@ -2292,12 +2290,10 @@ argument_list|()
 operator|.
 name|debug
 argument_list|(
-literal|"sendFailIfNoSpaceAfterTimeout expired, forcing exception on send, usage: "
-operator|+
+literal|"sendFailIfNoSpaceAfterTimeout expired, forcing exception on send, usage: {}: {}"
+argument_list|,
 name|usage
-operator|+
-literal|": "
-operator|+
+argument_list|,
 name|warning
 argument_list|)
 expr_stmt|;
@@ -2392,16 +2388,20 @@ argument_list|()
 operator|.
 name|info
 argument_list|(
-literal|""
-operator|+
+literal|"{}: {} (blocking for: {}s)"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|usage
-operator|+
-literal|": "
-operator|+
+block|,
 name|warning
-operator|+
-literal|" (blocking for: "
-operator|+
+block|,
+operator|new
+name|Long
+argument_list|(
+operator|(
 operator|(
 name|now
 operator|-
@@ -2409,8 +2409,9 @@ name|start
 operator|)
 operator|/
 literal|1000
-operator|+
-literal|"s)"
+operator|)
+argument_list|)
+block|}
 argument_list|)
 expr_stmt|;
 name|nextWarn

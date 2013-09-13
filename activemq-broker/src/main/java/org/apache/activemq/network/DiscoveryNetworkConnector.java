@@ -435,8 +435,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"failed to parse query parameters from discoveryURI: "
-operator|+
+literal|"failed to parse query parameters from discoveryURI: {}"
+argument_list|,
 name|discoveryURI
 argument_list|,
 name|e
@@ -518,13 +518,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Could not connect to remote URI: "
-operator|+
+literal|"Could not connect to remote URI: {} due to bad URI syntax: "
+argument_list|,
 name|url
-operator|+
-literal|" due to bad URI syntax: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -541,24 +537,15 @@ name|uri
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"not connecting loopback: "
-operator|+
+literal|"not connecting loopback: {}"
+argument_list|,
 name|uri
 argument_list|)
 expr_stmt|;
-block|}
 return|return;
 block|}
 if|if
@@ -576,24 +563,15 @@ name|uri
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"connectionFilter disallows connection to: "
-operator|+
+literal|"connectionFilter disallows connection to: {}"
+argument_list|,
 name|uri
 argument_list|)
 expr_stmt|;
-block|}
 return|return;
 block|}
 comment|// Should we try to connect to that URI?
@@ -611,24 +589,15 @@ operator|!=
 literal|null
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Discovery agent generated a duplicate onServiceAdd event for: "
-operator|+
+literal|"Discovery agent generated a duplicate onServiceAdd event for: {}"
+argument_list|,
 name|uri
 argument_list|)
 expr_stmt|;
-block|}
 return|return;
 block|}
 name|URI
@@ -662,40 +631,32 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"could not apply query parameters: "
-operator|+
+literal|"could not apply query parameters: {} to: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|parameters
-operator|+
-literal|" to: "
-operator|+
+block|,
 name|connectUri
+block|}
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isInfoEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Establishing network connection from "
-operator|+
+literal|"Establishing network connection from {} to {}"
+argument_list|,
 name|localURI
-operator|+
-literal|" to "
-operator|+
+argument_list|,
 name|connectUri
 argument_list|)
 expr_stmt|;
-block|}
 name|Transport
 name|remoteTransport
 decl_stmt|;
@@ -738,38 +699,25 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Could not connect to remote URI: "
-operator|+
+literal|"Could not connect to remote URI: {}: {}"
+argument_list|,
 name|connectUri
-operator|+
-literal|": "
-operator|+
+argument_list|,
 name|e
 operator|.
 name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
 literal|"Connection failure exception: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 name|activeEvents
 operator|.
 name|remove
@@ -804,38 +752,25 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Could not connect to local URI: "
-operator|+
+literal|"Could not connect to local URI: {}: {}"
+argument_list|,
 name|localURI
-operator|+
-literal|": "
-operator|+
+argument_list|,
 name|e
 operator|.
 name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
 literal|"Connection failure exception: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 name|activeEvents
 operator|.
 name|remove
@@ -915,39 +850,29 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Could not start network bridge between: "
-operator|+
+literal|"Could not start network bridge between: {} and: {} due to: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|localURI
-operator|+
-literal|" and: "
-operator|+
+block|,
 name|uri
-operator|+
-literal|" due to: "
-operator|+
+block|,
 name|e
+block|}
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
 literal|"Start failure exception: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 try|try
 block|{
 comment|// Will remove bridge and active event.
@@ -965,20 +890,12 @@ name|IOException
 name|e1
 parameter_list|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Discovery agent failure while handling failure event: "
-operator|+
+literal|"Discovery agent failure while handling failure event: {}"
+argument_list|,
 name|e1
 operator|.
 name|getMessage
@@ -987,7 +904,6 @@ argument_list|,
 name|e1
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -1041,13 +957,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Could not connect to remote URI: "
-operator|+
+literal|"Could not connect to remote URI: {} due to bad URI syntax: "
+argument_list|,
 name|url
-operator|+
-literal|" due to bad URI syntax: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)

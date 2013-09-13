@@ -664,8 +664,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Destroying durable subscriber due to inactivity: "
-operator|+
+literal|"Destroying durable subscriber due to inactivity: {}"
+argument_list|,
 name|sub
 argument_list|)
 expr_stmt|;
@@ -1548,24 +1548,15 @@ index|[
 name|i
 index|]
 decl_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Restoring durable subscription: "
-operator|+
+literal|"Restoring durable subscription: {}"
+argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
-block|}
 name|SubscriptionKey
 name|key
 init|=

@@ -269,28 +269,17 @@ argument_list|(
 name|objectName
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"registered: "
-operator|+
+literal|"registered: {} as: {}"
+argument_list|,
 name|bridge
-operator|+
-literal|" as: "
-operator|+
+argument_list|,
 name|objectName
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -302,8 +291,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Network bridge could not be registered in JMX: "
-operator|+
+literal|"Network bridge could not be registered in JMX: {}"
+argument_list|,
 name|e
 operator|.
 name|getMessage
@@ -374,8 +363,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Network bridge could not be unregistered in JMX: "
-operator|+
+literal|"Network bridge could not be unregistered in JMX: {}"
+argument_list|,
 name|e
 operator|.
 name|getMessage

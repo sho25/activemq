@@ -191,34 +191,23 @@ name|result
 operator|=
 literal|false
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Not adding duplicate to DLQ: "
-operator|+
+literal|"Not adding duplicate to DLQ: {}, dest: {}"
+argument_list|,
 name|message
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|", dest: "
-operator|+
+argument_list|,
 name|message
 operator|.
 name|getDestination
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(

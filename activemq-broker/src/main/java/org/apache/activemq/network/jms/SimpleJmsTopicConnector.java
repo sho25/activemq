@@ -1505,8 +1505,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Created replyTo bridge for "
-operator|+
+literal|"Created replyTo bridge for {}"
+argument_list|,
 name|replyToProducerTopic
 argument_list|)
 expr_stmt|;
@@ -1521,8 +1521,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to create replyTo bridge for topic: "
-operator|+
+literal|"Failed to create replyTo bridge for topic: {}"
+argument_list|,
 name|replyToProducerTopic
 argument_list|,
 name|e
@@ -1701,8 +1701,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Created replyTo bridge for "
-operator|+
+literal|"Created replyTo bridge for {}"
+argument_list|,
 name|replyToProducerTopic
 argument_list|)
 expr_stmt|;
@@ -1717,8 +1717,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to create replyTo bridge for topic: "
-operator|+
+literal|"Failed to create replyTo bridge for topic: {}"
+argument_list|,
 name|replyToProducerTopic
 argument_list|,
 name|e

@@ -298,34 +298,18 @@ name|highestPrioritySub
 operator|=
 literal|false
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"ignoring lower priority: "
-operator|+
+literal|"ignoring lower priority: {} [{}, {}] in favour of: {} [{}, {}]"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|candidate
-operator|+
-literal|"["
-operator|+
-name|candidate
-operator|.
-name|getConsumerInfo
-argument_list|()
-operator|.
-name|getNetworkConsumerIds
-argument_list|()
-operator|+
-literal|", "
-operator|+
+block|,
 name|candidate
 operator|.
 name|getConsumerInfo
@@ -333,13 +317,17 @@ argument_list|()
 operator|.
 name|getNetworkConsumerIds
 argument_list|()
-operator|+
-literal|"] in favour of: "
-operator|+
+block|,
+name|candidate
+operator|.
+name|getConsumerInfo
+argument_list|()
+operator|.
+name|getNetworkConsumerIds
+argument_list|()
+block|,
 name|sub
-operator|+
-literal|"["
-operator|+
+block|,
 name|sub
 operator|.
 name|getConsumerInfo
@@ -347,9 +335,7 @@ argument_list|()
 operator|.
 name|getNetworkConsumerIds
 argument_list|()
-operator|+
-literal|", "
-operator|+
+block|,
 name|sub
 operator|.
 name|getConsumerInfo
@@ -357,11 +343,9 @@ argument_list|()
 operator|.
 name|getNetworkConsumerIds
 argument_list|()
-operator|+
-literal|"]"
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

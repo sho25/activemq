@@ -1270,12 +1270,10 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Connector "
-operator|+
+literal|"Connector {} Started"
+argument_list|,
 name|getName
 argument_list|()
-operator|+
-literal|" Started"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1296,29 +1294,18 @@ argument_list|(
 name|this
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Publishing: "
-operator|+
+literal|"Publishing: {} for broker transport URI: {}"
+argument_list|,
 name|publishableConnectString
-operator|+
-literal|" for broker transport URI: "
-operator|+
+argument_list|,
 name|getConnectUri
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|publishableConnectString
 return|;
@@ -1431,12 +1418,10 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Connector "
-operator|+
+literal|"Connector {} Stopped"
+argument_list|,
 name|getName
 argument_list|()
-operator|+
-literal|" Stopped"
 argument_list|)
 expr_stmt|;
 block|}

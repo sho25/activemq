@@ -131,8 +131,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Installing ForcePersistencyModeBroker plugin: persistency enforced="
-operator|+
+literal|"Installing ForcePersistencyModeBroker plugin: persistency enforced={}"
+argument_list|,
 name|pB
 operator|.
 name|isPersistent

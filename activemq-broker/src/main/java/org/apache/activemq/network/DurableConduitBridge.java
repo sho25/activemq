@@ -285,32 +285,23 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to add static destination "
-operator|+
+literal|"Failed to add static destination {}"
+argument_list|,
 name|dest
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Forwarding messages for durable destination: "
-operator|+
+literal|"Forwarding messages for durable destination: {}"
+argument_list|,
 name|dest
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

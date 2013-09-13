@@ -333,34 +333,23 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"recover: "
-operator|+
+literal|"recover: {}, priority: {}"
+argument_list|,
 name|message
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|", priority: "
-operator|+
+argument_list|,
 name|message
 operator|.
 name|getPriority
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|boolean
 name|recovered
 init|=
@@ -457,9 +446,9 @@ name|LOG
 operator|.
 name|error
 argument_list|(
+literal|"{} Failed to get the outstanding message count from the store"
+argument_list|,
 name|this
-operator|+
-literal|" Failed to get the outstanding message count from the store"
 argument_list|,
 name|e
 argument_list|)

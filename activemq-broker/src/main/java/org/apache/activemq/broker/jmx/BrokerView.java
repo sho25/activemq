@@ -531,9 +531,7 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to checkpoint persistence adapter on gc request, reason:"
-operator|+
-name|e
+literal|"Failed to checkpoint persistence adapter on gc request"
 argument_list|,
 name|e
 argument_list|)

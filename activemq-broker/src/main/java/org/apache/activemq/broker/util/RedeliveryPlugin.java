@@ -784,12 +784,10 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Discarding message that exceeds max redelivery count( "
-operator|+
+literal|"Discarding message that exceeds max redelivery count({}), {}"
+argument_list|,
 name|maximumRedeliveries
-operator|+
-literal|"), "
-operator|+
+argument_list|,
 name|messageReference
 operator|.
 name|getMessageId
@@ -826,15 +824,13 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Ignoring dlq request for:"
-operator|+
+literal|"Ignoring dlq request for: {}, RedeliveryPolicy not found (and no fallback) for: {}"
+argument_list|,
 name|messageReference
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|", RedeliveryPolicy not found (and no fallback) for: "
-operator|+
+argument_list|,
 name|regionDestination
 operator|.
 name|getActiveMQDestination
@@ -929,27 +925,26 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"redelivery #"
-operator|+
+literal|"redelivery #{} of: {} with delay: {}, dest: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|redeliveryCount
-operator|+
-literal|" of: "
-operator|+
+block|,
 name|messageReference
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|" with delay: "
-operator|+
+block|,
 name|delay
-operator|+
-literal|", dest: "
-operator|+
+block|,
 name|regionDestination
 operator|.
 name|getActiveMQDestination
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
 block|}

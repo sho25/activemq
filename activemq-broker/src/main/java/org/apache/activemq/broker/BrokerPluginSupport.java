@@ -111,15 +111,13 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Broker Plugin "
-operator|+
+literal|"Broker Plugin {} started"
+argument_list|,
 name|getClass
 argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|" started"
 argument_list|)
 expr_stmt|;
 block|}
@@ -141,15 +139,13 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Broker Plugin "
-operator|+
+literal|"Broker Plugin {} stopped"
+argument_list|,
 name|getClass
 argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|" stopped"
 argument_list|)
 expr_stmt|;
 block|}

@@ -364,8 +364,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"found a blocked client - stopping: "
-operator|+
+literal|"found a blocked client - stopping: {}"
+argument_list|,
 name|tc
 argument_list|)
 expr_stmt|;
@@ -387,8 +387,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Error stopping "
-operator|+
+literal|"Error stopping {}"
+argument_list|,
 name|tc
 argument_list|,
 name|e

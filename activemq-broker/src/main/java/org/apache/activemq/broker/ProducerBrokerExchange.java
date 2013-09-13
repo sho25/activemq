@@ -482,20 +482,16 @@ name|canDispatch
 operator|=
 literal|false
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"suppressing duplicate message send  ["
-operator|+
+literal|"suppressing duplicate message send [{}] from network producer with producerSequence [{}] less than last stored: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 operator|(
 name|LOG
 operator|.
@@ -509,17 +505,13 @@ operator|.
 name|getMessageId
 argument_list|()
 operator|)
-operator|+
-literal|"] from network producer with producerSequenceId ["
-operator|+
+block|,
 name|producerSequenceId
-operator|+
-literal|"] less than last stored: "
-operator|+
+block|,
 name|lastStoredForMessageProducer
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 elseif|else
@@ -537,20 +529,16 @@ name|canDispatch
 operator|=
 literal|false
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"suppressing duplicate message send ["
-operator|+
+literal|"suppressing duplicated message send [{}] with producerSequenceId [{}] less than last stored: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 operator|(
 name|LOG
 operator|.
@@ -564,17 +552,13 @@ operator|.
 name|getMessageId
 argument_list|()
 operator|)
-operator|+
-literal|"] with producerSequenceId ["
-operator|+
+block|,
 name|producerSequenceId
-operator|+
-literal|"] less than last stored: "
-operator|+
+block|,
 name|lastSendSequenceNumber
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 else|else
 block|{
@@ -627,8 +611,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to determine last producer sequence id for: "
-operator|+
+literal|"Failed to determine last producer sequence id for: {}"
+argument_list|,
 name|messageId
 argument_list|,
 name|ignored
@@ -686,8 +670,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"last stored sequence id set: "
-operator|+
+literal|"last stored sequence id set: {}"
+argument_list|,
 name|l
 argument_list|)
 expr_stmt|;

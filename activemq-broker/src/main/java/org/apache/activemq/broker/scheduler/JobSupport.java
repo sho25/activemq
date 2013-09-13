@@ -47,10 +47,6 @@ name|Date
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author<a href="http://hiramchirino.com">Hiram Chirino</a>  */
-end_comment
-
 begin_class
 specifier|public
 class|class

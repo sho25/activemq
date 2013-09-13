@@ -588,8 +588,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Expired bridge: "
-operator|+
+literal|"Expired bridge: {}"
+argument_list|,
 name|bridge
 argument_list|)
 expr_stmt|;
@@ -604,11 +604,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"stopping expired bridge"
-operator|+
+literal|"stopping expired bridge {} caused an exception"
+argument_list|,
 name|bridge
-operator|+
-literal|" caused an exception"
 argument_list|,
 name|e
 argument_list|)
@@ -840,12 +838,10 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"JMS Connector "
-operator|+
+literal|"JMS Connector {} Started"
+argument_list|,
 name|getName
 argument_list|()
-operator|+
-literal|" Started"
 argument_list|)
 expr_stmt|;
 block|}
@@ -912,12 +908,10 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"JMS Connector "
-operator|+
+literal|"JMS Connector {} Stopped"
+argument_list|,
 name|getName
 argument_list|()
-operator|+
-literal|" Stopped"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1570,14 +1564,12 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"JmsConnector handling loss of connection ["
-operator|+
+literal|"JmsConnector handling loss of connection [{}]"
+argument_list|,
 name|connection
 operator|.
 name|toString
 argument_list|()
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 comment|// TODO - How do we handle the re-wiring of replyToBridges in this case.
@@ -1665,7 +1657,7 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to initialize forgein connection for the JMSConnector"
+literal|"Failed to initialize foreign connection for the JMSConnector"
 argument_list|,
 name|e
 argument_list|)
@@ -1859,7 +1851,7 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to initialize forgein connection for the JMSConnector"
+literal|"Failed to initialize foreign connection for the JMSConnector"
 argument_list|,
 name|e
 argument_list|)
@@ -2065,26 +2057,24 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to establish initial "
-operator|+
+literal|"Failed to establish initial {} connection for JmsConnector [{}]"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 operator|(
 name|local
 condition|?
 literal|"local"
 else|:
-literal|"foriegn"
+literal|"foreign"
 operator|)
-operator|+
-literal|" connection for JmsConnector ["
-operator|+
+block|,
 name|attempt
-operator|+
-literal|"]: "
-operator|+
+block|}
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

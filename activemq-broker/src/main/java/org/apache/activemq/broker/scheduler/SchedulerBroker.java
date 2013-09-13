@@ -1854,35 +1854,27 @@ argument_list|(
 name|newTimeStamp
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Set message "
-operator|+
+literal|"Set message {} timestamp from {} to {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|messageSend
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|" timestamp from "
-operator|+
+block|,
 name|oldTimestamp
-operator|+
-literal|" to "
-operator|+
+block|,
 name|newTimeStamp
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 specifier|final
@@ -1940,8 +1932,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to send scheduled message "
-operator|+
+literal|"Failed to send scheduled message {}"
+argument_list|,
 name|id
 argument_list|,
 name|e
@@ -2244,8 +2236,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to send scheduled message "
-operator|+
+literal|"Failed to send scheduled message {}"
+argument_list|,
 name|job
 operator|.
 name|getJobId

@@ -994,50 +994,40 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"cached high priority ("
-operator|+
+literal|"cached high priority ({} message: {}, current paged batch priority: {}, cache size: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|msg
 operator|.
 name|getPriority
 argument_list|()
-operator|+
-literal|") message:"
-operator|+
+block|,
 name|msg
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|", current paged batch priority: "
-operator|+
+block|,
 name|tsp
 operator|.
 name|getLastRecoveredPriority
 argument_list|()
-operator|+
-literal|", cache size:"
-operator|+
+block|,
 name|tsp
 operator|.
 name|batchList
 operator|.
 name|size
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

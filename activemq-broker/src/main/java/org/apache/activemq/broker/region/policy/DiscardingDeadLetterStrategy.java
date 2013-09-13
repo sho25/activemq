@@ -90,34 +90,23 @@ name|result
 init|=
 literal|false
 decl_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Discarding message sent to DLQ: "
-operator|+
+literal|"Discarding message sent to DLQ: {}, dest: {}"
+argument_list|,
 name|message
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|", dest: "
-operator|+
+argument_list|,
 name|message
 operator|.
 name|getDestination
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|result
 return|;

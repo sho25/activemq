@@ -481,14 +481,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
-if|if
-condition|(
 name|match
 condition|)
 block|{
@@ -496,21 +488,17 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Replaying ["
-operator|+
+literal|"Replaying [{}] for [{}] back to origin in the absence of a local consumer"
+argument_list|,
 name|message
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|"] for ["
-operator|+
+argument_list|,
 name|message
 operator|.
 name|getDestination
 argument_list|()
-operator|+
-literal|"] back to origin in the absence of a local consumer"
 argument_list|)
 expr_stmt|;
 block|}
@@ -520,22 +508,22 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Suppressing replay of ["
-operator|+
+literal|"Suppressing replay of [{}] for [{}] back to origin {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|message
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|"] for ["
-operator|+
+block|,
 name|message
 operator|.
 name|getDestination
 argument_list|()
-operator|+
-literal|"] back to origin "
-operator|+
+block|,
 name|Arrays
 operator|.
 name|asList
@@ -545,9 +533,9 @@ operator|.
 name|getBrokerPath
 argument_list|()
 argument_list|)
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 else|else
@@ -573,46 +561,34 @@ name|rateLimitExceeded
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Throttled network consumer rejecting ["
-operator|+
+literal|"Throttled network consumer rejecting [{}] for [{}] {}>{}/{}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|message
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|"] for ["
-operator|+
+block|,
 name|message
 operator|.
 name|getDestination
 argument_list|()
-operator|+
-literal|" "
-operator|+
+block|,
 name|matchCount
-operator|+
-literal|">"
-operator|+
+block|,
 name|rateLimit
-operator|+
-literal|"/"
-operator|+
+block|,
 name|rateDuration
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 name|match
 operator|=
 literal|false
@@ -717,41 +693,33 @@ name|isBrowser
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Not replaying ["
-operator|+
+literal|"Not replaying [{}] for [{}] to origin due to existing local consumer: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|message
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|"] for ["
-operator|+
+block|,
 name|message
 operator|.
 name|getDestination
 argument_list|()
-operator|+
-literal|"] to origin due to existing local consumer: "
-operator|+
+block|,
 name|sub
 operator|.
 name|getConsumerInfo
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 literal|false
 return|;

@@ -451,8 +451,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"aborting consumer via jmx: "
-operator|+
+literal|"aborting consumer via jmx: {}"
+argument_list|,
 name|sub
 operator|.
 name|getConsumerInfo
@@ -478,8 +478,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"cannot resolve subscription matching name: "
-operator|+
+literal|"cannot resolve subscription matching name: {}"
+argument_list|,
 name|consumerToAbort
 argument_list|)
 expr_stmt|;
@@ -514,8 +514,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"aborting consumer connection via jmx: "
-operator|+
+literal|"aborting consumer connection via jmx: {}"
+argument_list|,
 name|sub
 operator|.
 name|getConsumerInfo
@@ -544,8 +544,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"cannot resolve subscription matching name: "
-operator|+
+literal|"cannot resolve subscription matching name: {}"
+argument_list|,
 name|consumerToAbort
 argument_list|)
 expr_stmt|;
@@ -619,8 +619,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"cannot create subscription ObjectName to abort, from string: "
-operator|+
+literal|"cannot create subscription ObjectName to abort, from string: {}"
+argument_list|,
 name|objectName
 argument_list|)
 expr_stmt|;

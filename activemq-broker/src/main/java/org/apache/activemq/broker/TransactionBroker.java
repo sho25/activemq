@@ -741,27 +741,18 @@ argument_list|(
 name|transaction
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"recovered prepared transaction: "
-operator|+
+literal|"recovered prepared transaction: {}"
+argument_list|,
 name|transaction
 operator|.
 name|getTransactionId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1109,24 +1100,15 @@ operator|.
 name|clearPendingMessages
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"cleared pending from afterRollback : "
-operator|+
+literal|"cleared pending from afterRollback: {}"
+argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 annotation|@
@@ -1174,24 +1156,15 @@ argument_list|(
 name|opCount
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"cleared pending from afterCommit : "
-operator|+
+literal|"cleared pending from afterCommit: {}"
+argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 else|else
 block|{
@@ -1315,27 +1288,18 @@ name|isPrepared
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"prepared transaction: "
-operator|+
+literal|"prepared transaction: {}"
+argument_list|,
 name|tx
 operator|.
 name|getTransactionId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|txs
 operator|.
 name|add
@@ -1369,26 +1333,17 @@ argument_list|(
 name|rc
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"prepared transaction list size: "
-operator|+
+literal|"prepared transaction list size: {}"
+argument_list|,
 name|rc
 operator|.
 name|length
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|rc
 return|;
@@ -1942,24 +1897,15 @@ name|sync
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"IGNORING duplicate message "
-operator|+
+literal|"IGNORING duplicate message {}"
+argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 specifier|public

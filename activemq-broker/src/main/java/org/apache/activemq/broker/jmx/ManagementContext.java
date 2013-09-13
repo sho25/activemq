@@ -604,11 +604,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Error invoking start on mbean "
-operator|+
+literal|"Error invoking start on MBean {}. This exception is ignored."
+argument_list|,
 name|namingServiceObjectName
-operator|+
-literal|". This exception is ignored."
 argument_list|,
 name|ignore
 argument_list|)
@@ -728,8 +726,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"JMX consoles can connect to "
-operator|+
+literal|"JMX consoles can connect to {}"
+argument_list|,
 name|server
 operator|.
 name|getAddress
@@ -748,21 +746,19 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to start jmx connector: "
-operator|+
+literal|"Failed to start JMX connector {}. Will restart management to re-create JMX connector, trying to remedy this issue."
+argument_list|,
 name|e
 operator|.
 name|getMessage
 argument_list|()
-operator|+
-literal|". Will restart management to re-create jmx connector, trying to remedy this issue."
 argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Reason for failed jmx connector start"
+literal|"Reason for failed JMX connector start"
 argument_list|,
 name|e
 argument_list|)
@@ -946,8 +942,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to stop jmx connector: "
-operator|+
+literal|"Failed to stop jmx connector: {}"
+argument_list|,
 name|e
 operator|.
 name|getMessage
@@ -1025,12 +1021,10 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Error stopping and unregsitering mbean "
-operator|+
+literal|"Error stopping and unregsitering MBean {} due to {}"
+argument_list|,
 name|namingServiceObjectName
-operator|+
-literal|" due "
-operator|+
+argument_list|,
 name|ignore
 operator|.
 name|getMessage
@@ -1410,12 +1404,10 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Couldn't create ObjectName from: "
-operator|+
+literal|"Couldn't create ObjectName from: {}, {}"
+argument_list|,
 name|type
-operator|+
-literal|" , "
-operator|+
+argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
@@ -2107,11 +2099,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Could not cast: "
-operator|+
+literal|"Could not cast: {} into an MBeanServer. There must be some classloader strangeness in town"
+argument_list|,
 name|answer
-operator|+
-literal|" into an MBeanServer. There must be some classloader strangeness in town"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2122,8 +2112,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Method getPlatformMBeanServer() does not appear visible on type: "
-operator|+
+literal|"Method getPlatformMBeanServer() does not appear visible on type: {}"
+argument_list|,
 name|type
 operator|.
 name|getName
@@ -2143,8 +2133,6 @@ operator|.
 name|warn
 argument_list|(
 literal|"Failed to call getPlatformMBeanServer() due to: "
-operator|+
-name|e
 argument_list|,
 name|e
 argument_list|)
@@ -2157,11 +2145,9 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Class not found: "
-operator|+
+literal|"Class not found: {} so probably running on Java 1.4"
+argument_list|,
 name|name
-operator|+
-literal|" so probably running on Java 1.4"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2384,8 +2370,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Probably not using JRE 1.4: "
-operator|+
+literal|"Probably not using JRE 1.4: {}"
+argument_list|,
 name|e
 operator|.
 name|getLocalizedMessage

@@ -1614,14 +1614,6 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
@@ -1632,7 +1624,6 @@ operator|+
 literal|"Producer Flow Control Timeout Task is stopping"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -1955,11 +1946,6 @@ operator|++
 expr_stmt|;
 if|if
 condition|(
-name|LOG
-operator|.
-name|isInfoEnabled
-argument_list|()
-operator|&&
 operator|(
 name|recoveredAccumulator
 operator|%
@@ -1973,20 +1959,23 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"cursor for "
-operator|+
+literal|"cursor for {} has recovered {} messages. {}% complete"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|getActiveMQDestination
 argument_list|()
 operator|.
 name|getQualifiedName
 argument_list|()
-operator|+
-literal|" has recovered "
-operator|+
+block|,
 name|recoveredAccumulator
-operator|+
-literal|" messages. "
-operator|+
+block|,
+operator|new
+name|Integer
+argument_list|(
 call|(
 name|int
 call|)
@@ -1997,8 +1986,8 @@ literal|100
 operator|/
 name|totalMessageCount
 argument_list|)
-operator|+
-literal|"% complete"
+argument_list|)
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -2625,30 +2614,22 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} add sub: {}, dequeues: {}, dispatched: {}, inflight: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|getActiveMQDestination
 argument_list|()
 operator|.
 name|getQualifiedName
 argument_list|()
-operator|+
-literal|" add sub: "
-operator|+
-name|sub
-operator|+
-literal|", dequeues: "
-operator|+
+block|,
 name|getDestinationStatistics
 argument_list|()
 operator|.
@@ -2657,9 +2638,7 @@ argument_list|()
 operator|.
 name|getCount
 argument_list|()
-operator|+
-literal|", dispatched: "
-operator|+
+block|,
 name|getDestinationStatistics
 argument_list|()
 operator|.
@@ -2668,9 +2647,7 @@ argument_list|()
 operator|.
 name|getCount
 argument_list|()
-operator|+
-literal|", inflight: "
-operator|+
+block|,
 name|getDestinationStatistics
 argument_list|()
 operator|.
@@ -2679,9 +2656,9 @@ argument_list|()
 operator|.
 name|getCount
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 name|super
 operator|.
 name|addSubscription
@@ -2984,34 +2961,26 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} remove sub: {}, lastDeliveredSeqId: {}, dequeues: {}, dispatched: {}, inflight: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|getActiveMQDestination
 argument_list|()
 operator|.
 name|getQualifiedName
 argument_list|()
-operator|+
-literal|" remove sub: "
-operator|+
+block|,
 name|sub
-operator|+
-literal|", lastDeliveredSeqId: "
-operator|+
+block|,
 name|lastDeiveredSequenceId
-operator|+
-literal|", dequeues: "
-operator|+
+block|,
 name|getDestinationStatistics
 argument_list|()
 operator|.
@@ -3020,9 +2989,7 @@ argument_list|()
 operator|.
 name|getCount
 argument_list|()
-operator|+
-literal|", dispatched: "
-operator|+
+block|,
 name|getDestinationStatistics
 argument_list|()
 operator|.
@@ -3031,9 +2998,7 @@ argument_list|()
 operator|.
 name|getCount
 argument_list|()
-operator|+
-literal|", inflight: "
-operator|+
+block|,
 name|getDestinationStatistics
 argument_list|()
 operator|.
@@ -3042,9 +3007,9 @@ argument_list|()
 operator|.
 name|getCount
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 name|consumersLock
 operator|.
 name|writeLock
@@ -3285,31 +3250,20 @@ name|markAsRedelivered
 operator|=
 literal|true
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"found lastDeliveredSeqID: "
-operator|+
+literal|"found lastDeliveredSeqID: {}, message reference: {}"
+argument_list|,
 name|lastDeiveredSequenceId
-operator|+
-literal|", message reference: "
-operator|+
+argument_list|,
 name|ref
 operator|.
 name|getMessageId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 break|break;
 block|}
 block|}
@@ -3552,12 +3506,10 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Send failed for: "
-operator|+
+literal|"Send failed for: {}, missing producer state for: {}"
+argument_list|,
 name|message
-operator|+
-literal|",  missing producer state for: "
-operator|+
+argument_list|,
 name|producerExchange
 argument_list|)
 expr_stmt|;
@@ -3713,24 +3665,18 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Usage Manager Memory Limit ("
-operator|+
+literal|"Usage Manager Memory Limit ({}) reached on {}. Producers will be throttled to the rate at which messages are removed from this destination to prevent flooding it. See http://activemq.apache.org/producer-flow-control.html for more info."
+argument_list|,
 name|memoryUsage
 operator|.
 name|getLimit
 argument_list|()
-operator|+
-literal|") reached on "
-operator|+
+argument_list|,
 name|getActiveMQDestination
 argument_list|()
 operator|.
 name|getQualifiedName
 argument_list|()
-operator|+
-literal|". Producers will be throttled to the rate at which messages are removed from this destination to prevent flooding it."
-operator|+
-literal|" See http://activemq.apache.org/producer-flow-control.html for more info"
 argument_list|)
 expr_stmt|;
 block|}
@@ -4028,8 +3974,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"unexpected exception on deferred send of :"
-operator|+
+literal|"unexpected exception on deferred send of: {}"
+argument_list|,
 name|message
 argument_list|,
 name|e
@@ -4138,24 +4084,15 @@ name|isExpired
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Expired message: "
-operator|+
+literal|"Expired message: {}"
+argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-block|}
 name|broker
 operator|.
 name|getRoot
@@ -5206,28 +5143,19 @@ name|void
 name|expireMessages
 parameter_list|()
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} expiring messages .."
+argument_list|,
 name|getActiveMQDestination
 argument_list|()
 operator|.
 name|getQualifiedName
 argument_list|()
-operator|+
-literal|" expiring messages .."
 argument_list|)
 expr_stmt|;
-block|}
 comment|// just track the insertion count
 name|List
 argument_list|<
@@ -5255,28 +5183,19 @@ expr_stmt|;
 name|asyncWakeup
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} expiring messages done."
+argument_list|,
 name|getActiveMQDestination
 argument_list|()
 operator|.
 name|getQualifiedName
 argument_list|()
-operator|+
-literal|" expiring messages done."
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Override
@@ -6071,24 +5990,15 @@ name|ref
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"expiring from pagedInPending: "
-operator|+
+literal|"expiring from pagedInPending: {}"
+argument_list|,
 name|ref
 argument_list|)
 expr_stmt|;
-block|}
 name|messageExpired
 argument_list|(
 name|connectionContext
@@ -6169,24 +6079,15 @@ name|ref
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"expiring from pagedInMessages: "
-operator|+
+literal|"expiring from pagedInMessages: {}"
+argument_list|,
 name|ref
 argument_list|)
 expr_stmt|;
-block|}
 name|messageExpired
 argument_list|(
 name|connectionContext
@@ -6300,24 +6201,15 @@ name|node
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"expiring from messages: "
-operator|+
+literal|"expiring from messages: {}"
+argument_list|,
 name|node
 argument_list|)
 expr_stmt|;
-block|}
 name|messageExpired
 argument_list|(
 name|connectionContext
@@ -6846,14 +6738,14 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
+literal|"{} after purge complete, message count stats report: {}"
+argument_list|,
 name|getActiveMQDestination
 argument_list|()
 operator|.
 name|getQualifiedName
 argument_list|()
-operator|+
-literal|" after purge complete, message count stats report: "
-operator|+
+argument_list|,
 name|this
 operator|.
 name|destinationStatistics
@@ -8240,55 +8132,35 @@ name|MILLISECONDS
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} consumers subscribed. Starting dispatch."
+argument_list|,
 name|consumers
 operator|.
 name|size
 argument_list|()
-operator|+
-literal|" consumers subscribed. Starting dispatch."
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} ms elapsed and {} consumers subscribed. Starting dispatch."
+argument_list|,
 name|timeout
-operator|+
-literal|" ms elapsed and "
-operator|+
+argument_list|,
 name|consumers
 operator|.
 name|size
 argument_list|()
-operator|+
-literal|" consumers subscribed. Starting dispatch."
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 if|if
@@ -8309,24 +8181,15 @@ argument_list|(
 name|timeBeforeDispatchStarts
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} ms elapsed. Starting dispatch."
+argument_list|,
 name|timeBeforeDispatchStarts
-operator|+
-literal|" ms elapsed. Starting dispatch."
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 catch|catch
@@ -8560,31 +8423,20 @@ operator|.
 name|getBrowser
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"dispatch to browser: "
-operator|+
+literal|"dispatch to browser: {}, already dispatched/paged count: {}"
+argument_list|,
 name|browser
-operator|+
-literal|", already dispatched/paged count: "
-operator|+
+argument_list|,
 name|alreadyDispatchedMessages
 operator|.
 name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|boolean
 name|added
 init|=
@@ -8682,8 +8534,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"exception on dispatch to browser: "
-operator|+
+literal|"exception on dispatch to browser: {}"
+argument_list|,
 name|browserDispatch
 operator|.
 name|getBrowser
@@ -9331,24 +9183,15 @@ name|MessageReference
 name|reference
 parameter_list|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"message expired: "
-operator|+
+literal|"message expired: {}"
+argument_list|,
 name|reference
 argument_list|)
 expr_stmt|;
-block|}
 name|broker
 operator|.
 name|messageExpired
@@ -9562,38 +9405,32 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} Message {} sent to {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|broker
 operator|.
 name|getBrokerName
 argument_list|()
-operator|+
-literal|" Message "
-operator|+
+block|,
 name|msg
 operator|.
 name|getMessageId
 argument_list|()
-operator|+
-literal|" sent to "
-operator|+
+block|,
 name|this
 operator|.
 name|destination
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 name|wakeup
 argument_list|()
 expr_stmt|;
@@ -9819,29 +9656,23 @@ name|size
 argument_list|()
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} toPageIn: {}, Inflight: {}, pagedInMessages.size {}, enqueueCount: {}, dequeueCount: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|destination
 operator|.
 name|getPhysicalName
 argument_list|()
-operator|+
-literal|" toPageIn: "
-operator|+
+block|,
 name|toPageIn
-operator|+
-literal|", Inflight: "
-operator|+
+block|,
 name|destinationStatistics
 operator|.
 name|getInflight
@@ -9849,16 +9680,12 @@ argument_list|()
 operator|.
 name|getCount
 argument_list|()
-operator|+
-literal|", pagedInMessages.size "
-operator|+
+block|,
 name|pagedInMessages
 operator|.
 name|size
 argument_list|()
-operator|+
-literal|", enqueueCount: "
-operator|+
+block|,
 name|destinationStatistics
 operator|.
 name|getEnqueues
@@ -9866,9 +9693,7 @@ argument_list|()
 operator|.
 name|getCount
 argument_list|()
-operator|+
-literal|", dequeueCount: "
-operator|+
+block|,
 name|destinationStatistics
 operator|.
 name|getDequeues
@@ -9876,9 +9701,9 @@ argument_list|()
 operator|.
 name|getCount
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|isLazyDispatch
@@ -11018,9 +10843,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to set boolean header: "
-operator|+
-name|e
+literal|"Failed to set boolean header"
 argument_list|,
 name|e
 argument_list|)

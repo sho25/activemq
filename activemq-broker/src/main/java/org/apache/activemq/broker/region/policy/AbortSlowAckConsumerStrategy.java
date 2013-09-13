@@ -546,14 +546,6 @@ name|subscriber
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
@@ -569,7 +561,6 @@ name|getConsumerId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|slowConsumers
 operator|.
 name|put
@@ -717,43 +708,16 @@ name|getMaxSlowCount
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Transferring consumer {} to the abort list: "
-operator|+
-literal|"slow duration = "
-operator|+
-name|entry
-operator|.
-name|getValue
-argument_list|()
-operator|.
-name|markCount
-operator|*
-name|getCheckPeriod
-argument_list|()
-operator|+
-literal|", "
-operator|+
-literal|"slow count = "
-operator|+
-name|entry
-operator|.
-name|getValue
-argument_list|()
-operator|.
-name|slowCount
+literal|"Transferring consumer{} to the abort list: {} slow duration = {}, slow count = {}"
 argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|entry
 operator|.
 name|getKey
@@ -764,9 +728,27 @@ argument_list|()
 operator|.
 name|getConsumerId
 argument_list|()
+block|,
+name|entry
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|markCount
+operator|*
+name|getCheckPeriod
+argument_list|()
+block|,
+name|entry
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|getSlowCount
+argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 name|toAbort
 operator|.
 name|put
@@ -795,43 +777,16 @@ expr_stmt|;
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Not yet time to abot consumer {}: "
-operator|+
-literal|"slow duration = "
-operator|+
-name|entry
-operator|.
-name|getValue
-argument_list|()
-operator|.
-name|markCount
-operator|*
-name|getCheckPeriod
-argument_list|()
-operator|+
-literal|", "
-operator|+
-literal|"slow count = "
-operator|+
-name|entry
-operator|.
-name|getValue
-argument_list|()
-operator|.
-name|slowCount
+literal|"Not yet time to abort consumer {}: slow duration = {}, slow count = {}"
 argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|entry
 operator|.
 name|getKey
@@ -842,9 +797,26 @@ argument_list|()
 operator|.
 name|getConsumerId
 argument_list|()
+block|,
+name|entry
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|markCount
+operator|*
+name|getCheckPeriod
+argument_list|()
+block|,
+name|entry
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|slowCount
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|// Now if any subscriptions made it into the aborts list we can kick them.

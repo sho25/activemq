@@ -1030,8 +1030,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|">>>>> Loading broker configuration from the classpath with URI: "
-operator|+
+literal|">>>>> Loading broker configuration from the classpath with URI: {}"
+argument_list|,
 name|uri
 argument_list|)
 expr_stmt|;

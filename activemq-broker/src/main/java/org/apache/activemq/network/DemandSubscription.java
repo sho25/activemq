@@ -410,27 +410,17 @@ operator|>
 literal|0
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Waiting for completion for sub: "
-operator|+
+literal|"Waiting for completion for sub: {}, dispatched: {}"
+argument_list|,
 name|localInfo
 operator|.
 name|getConsumerId
 argument_list|()
-operator|+
-literal|", dispatched: "
-operator|+
+argument_list|,
 name|this
 operator|.
 name|dispatched
@@ -439,7 +429,6 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|activeWaiter
 operator|.
 name|set
@@ -502,18 +491,14 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"demand sub interrupted or timedout while waiting for outstanding responses, "
-operator|+
-literal|"expect potentially "
-operator|+
+literal|"demand sub interrupted or timedout while waiting for outstanding responses, expect potentially {} duplicate forwards"
+argument_list|,
 name|this
 operator|.
 name|dispatched
 operator|.
 name|get
 argument_list|()
-operator|+
-literal|" duplicate forwards"
 argument_list|)
 expr_stmt|;
 block|}

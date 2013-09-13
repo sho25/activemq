@@ -349,8 +349,6 @@ operator|.
 name|error
 argument_list|(
 literal|"Could not accept connection: "
-operator|+
-name|error
 argument_list|,
 name|error
 argument_list|)
@@ -369,12 +367,10 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Proxy Connector "
-operator|+
+literal|"Proxy Connector {} Started"
+argument_list|,
 name|getName
 argument_list|()
-operator|+
-literal|" Started"
 argument_list|)
 expr_stmt|;
 block|}
@@ -458,12 +454,10 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Proxy Connector "
-operator|+
+literal|"Proxy Connector {} Stopped"
+argument_list|,
 name|getName
 argument_list|()
-operator|+
-literal|" Stopped"
 argument_list|)
 expr_stmt|;
 block|}

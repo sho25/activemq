@@ -146,7 +146,7 @@ name|SubscriptionRecoveryPolicy
 extends|extends
 name|Service
 block|{
-comment|/**      * A message was sent to the destination.      *       * @param context      * @param message       * @param node      * @return true if successful      * @throws Exception      */
+comment|/**      * A message was sent to the destination.      *       * @param context      * @param message      * @return true if successful      * @throws Exception      */
 name|boolean
 name|add
 parameter_list|(
@@ -159,7 +159,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Let a subscription recover message held by the policy.      *       * @param context      * @param topic      * @param sub       * @param node      * @throws Exception      */
+comment|/**      * Let a subscription recover message held by the policy.      *       * @param context      * @param topic      * @param sub      * @throws Exception      */
 name|void
 name|recover
 parameter_list|(

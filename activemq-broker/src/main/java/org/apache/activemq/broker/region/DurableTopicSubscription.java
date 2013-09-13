@@ -956,24 +956,15 @@ name|info
 operator|=
 name|info
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Activating "
-operator|+
+literal|"Activating {}"
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 operator|!
@@ -1221,28 +1212,17 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Deactivating keepActive="
-operator|+
+literal|"Deactivating keepActive={}, {}"
+argument_list|,
 name|keepDurableSubsActive
-operator|+
-literal|", "
-operator|+
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-block|}
 name|active
 operator|.
 name|set

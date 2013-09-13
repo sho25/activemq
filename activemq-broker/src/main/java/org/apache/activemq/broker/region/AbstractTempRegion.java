@@ -472,8 +472,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to dispose of "
-operator|+
+literal|"Failed to dispose of {}"
+argument_list|,
 name|dest
 argument_list|,
 name|e
@@ -522,8 +522,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to dispose of "
-operator|+
+literal|"Failed to dispose of {}"
+argument_list|,
 name|dest
 argument_list|,
 name|e

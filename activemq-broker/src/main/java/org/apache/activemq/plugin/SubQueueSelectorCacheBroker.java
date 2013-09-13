@@ -284,11 +284,9 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Using persisted selector cache from["
-operator|+
+literal|"Using persisted selector cache from[{}]"
+argument_list|,
 name|persistFile
-operator|+
-literal|"]"
 argument_list|)
 expr_stmt|;
 name|readCache
@@ -362,15 +360,13 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Caching consumer selector ["
-operator|+
+literal|"Caching consumer selector [{}] on a {}"
+argument_list|,
 name|info
 operator|.
 name|getSelector
 argument_list|()
-operator|+
-literal|"] on a "
-operator|+
+argument_list|,
 name|info
 operator|.
 name|getDestination
@@ -636,11 +632,9 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Unable to access file["
-operator|+
+literal|"Unable to access file[{}]"
+argument_list|,
 name|persistFile
-operator|+
-literal|"]"
 argument_list|,
 name|ex
 argument_list|)

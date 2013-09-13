@@ -372,8 +372,8 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Removed stale network consumer "
-operator|+
+literal|"Removed stale network consumer {}"
+argument_list|,
 name|nc
 argument_list|)
 expr_stmt|;

@@ -249,9 +249,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Setting broker property failed "
-operator|+
-name|ioe
+literal|"Setting broker property failed"
 argument_list|,
 name|ioe
 argument_list|)

@@ -3420,35 +3420,24 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to fire "
-operator|+
+literal|"Failed to fire {} advisory, reason: {}"
+argument_list|,
 name|message
-operator|+
-literal|" advisory, reason: "
-operator|+
-name|cause
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|debug
-argument_list|(
-name|message
-operator|+
-literal|" detail"
 argument_list|,
 name|cause
 argument_list|)
 expr_stmt|;
-block|}
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"{} detail: {}"
+argument_list|,
+name|message
+argument_list|,
+name|cause
+argument_list|)
+expr_stmt|;
 block|}
 specifier|protected
 name|void

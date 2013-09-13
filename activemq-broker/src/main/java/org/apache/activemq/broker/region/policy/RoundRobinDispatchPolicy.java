@@ -85,26 +85,6 @@ name|MessageEvaluationContext
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * Simple dispatch policy that sends a message to every subscription that  * matches the message.  *   * @org.apache.xbean.XBean  *   */
 end_comment
@@ -116,20 +96,6 @@ name|RoundRobinDispatchPolicy
 implements|implements
 name|DispatchPolicy
 block|{
-specifier|static
-specifier|final
-name|Logger
-name|LOG
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|RoundRobinDispatchPolicy
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 comment|/**      * @param node      * @param msgContext      * @param consumers      * @return true if dispatched      * @throws Exception      * @see org.apache.activemq.broker.region.policy.DispatchPolicy#dispatch(org.apache.activemq.broker.region.MessageReference,      *      org.apache.activemq.filter.MessageEvaluationContext, java.util.List)      */
 specifier|public
 name|boolean
