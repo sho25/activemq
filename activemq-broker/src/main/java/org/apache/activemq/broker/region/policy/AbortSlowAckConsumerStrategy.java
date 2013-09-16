@@ -510,19 +510,6 @@ expr_stmt|;
 block|}
 continue|continue;
 block|}
-comment|// don't mark consumers with no messages
-if|if
-condition|(
-name|subscriber
-operator|.
-name|getInFlightSize
-argument_list|()
-operator|<=
-literal|0
-condition|)
-block|{
-continue|continue;
-block|}
 name|long
 name|lastAckTime
 init|=

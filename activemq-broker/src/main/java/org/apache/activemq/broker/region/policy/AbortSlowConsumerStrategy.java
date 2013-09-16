@@ -556,7 +556,7 @@ operator|.
 name|markCount
 operator|*
 name|checkPeriod
-operator|>
+operator|>=
 name|maxSlowDuration
 operator|)
 operator|||
@@ -570,7 +570,7 @@ name|getValue
 argument_list|()
 operator|.
 name|slowCount
-operator|>
+operator|>=
 name|maxSlowCount
 condition|)
 block|{
