@@ -510,6 +510,19 @@ expr_stmt|;
 block|}
 continue|continue;
 block|}
+comment|// don't mark consumers with no messages
+if|if
+condition|(
+name|subscriber
+operator|.
+name|getInFlightSize
+argument_list|()
+operator|<=
+literal|0
+condition|)
+block|{
+continue|continue;
+block|}
 name|long
 name|lastAckTime
 init|=
@@ -561,12 +574,9 @@ name|getConsumerId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|slowConsumers
-operator|.
-name|put
-argument_list|(
-name|subscriber
-argument_list|,
+name|SlowConsumerEntry
+name|entry
+init|=
 operator|new
 name|SlowConsumerEntry
 argument_list|(
@@ -575,6 +585,20 @@ operator|.
 name|getContext
 argument_list|()
 argument_list|)
+decl_stmt|;
+name|entry
+operator|.
+name|mark
+argument_list|()
+expr_stmt|;
+comment|// mark consumer on first run
+name|slowConsumers
+operator|.
+name|put
+argument_list|(
+name|subscriber
+argument_list|,
+name|entry
 argument_list|)
 expr_stmt|;
 block|}
@@ -687,7 +711,7 @@ name|markCount
 operator|*
 name|getCheckPeriod
 argument_list|()
-operator|>
+operator|>=
 name|getMaxSlowDuration
 argument_list|()
 operator|)
@@ -703,7 +727,7 @@ name|getValue
 argument_list|()
 operator|.
 name|slowCount
-operator|>
+operator|>=
 name|getMaxSlowCount
 argument_list|()
 condition|)
@@ -712,12 +736,31 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Transferring consumer{} to the abort list: {} slow duration = {}, slow count = {}"
+literal|"Transferring consumer {} to the abort list: "
+operator|+
+literal|"slow duration = "
+operator|+
+name|entry
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|markCount
+operator|*
+name|getCheckPeriod
+argument_list|()
+operator|+
+literal|", "
+operator|+
+literal|"slow count = "
+operator|+
+name|entry
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|slowCount
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|entry
 operator|.
 name|getKey
@@ -728,25 +771,6 @@ argument_list|()
 operator|.
 name|getConsumerId
 argument_list|()
-block|,
-name|entry
-operator|.
-name|getValue
-argument_list|()
-operator|.
-name|markCount
-operator|*
-name|getCheckPeriod
-argument_list|()
-block|,
-name|entry
-operator|.
-name|getValue
-argument_list|()
-operator|.
-name|getSlowCount
-argument_list|()
-block|}
 argument_list|)
 expr_stmt|;
 name|toAbort
