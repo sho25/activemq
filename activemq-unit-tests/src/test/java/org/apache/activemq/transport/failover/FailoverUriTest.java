@@ -103,18 +103,8 @@ literal|"failover:("
 block|}
 argument_list|)
 expr_stmt|;
-name|addCombinationValues
-argument_list|(
-literal|"postfix"
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-literal|")?initialReconnectDelay=1000&maxReconnectDelay=1000"
-block|}
-argument_list|)
-expr_stmt|;
+comment|// TODO uncomment after fixing https://issues.apache.org/jira/browse/AMQ-4725
+comment|// addCombinationValues("postfix", new Object[] {")?initialReconnectDelay=1000&maxReconnectDelay=1000"});
 block|}
 specifier|public
 name|void
@@ -133,18 +123,8 @@ literal|"failover:("
 block|}
 argument_list|)
 expr_stmt|;
-name|addCombinationValues
-argument_list|(
-literal|"postfix"
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-literal|")?initialReconnectDelay=1000&maxReconnectDelay=1000"
-block|}
-argument_list|)
-expr_stmt|;
+comment|// TODO uncomment after fixing https://issues.apache.org/jira/browse/AMQ-4725
+comment|//addCombinationValues("postfix", new Object[] {")?initialReconnectDelay=1000&maxReconnectDelay=1000"});
 block|}
 specifier|public
 specifier|static

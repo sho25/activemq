@@ -106,7 +106,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -159,413 +159,84 @@ specifier|public
 name|String
 name|postfix
 decl_stmt|;
-specifier|public
-name|void
-name|initCombosForTestUriOptionsWork
-parameter_list|()
-block|{
-name|initSharedCombos
-argument_list|()
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testUriOptionsWork
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|String
-name|uri
-init|=
-name|prefix
-operator|+
-name|bindAddress
-operator|+
-name|postfix
-decl_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Connecting via: "
-operator|+
-name|uri
-argument_list|)
-expr_stmt|;
-name|connection
-operator|=
-operator|new
-name|ActiveMQConnectionFactory
-argument_list|(
-name|uri
-argument_list|)
-operator|.
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|connection
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|initCombosForTestValidDiffServOptionsWork
-parameter_list|()
-block|{
-name|initSharedCombos
-argument_list|()
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testValidDiffServOptionsWork
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|String
-index|[]
-name|validIntegerOptions
-init|=
-block|{
-literal|"0"
-block|,
-literal|"1"
-block|,
-literal|"32"
-block|,
-literal|"62"
-block|,
-literal|"63"
-block|}
-decl_stmt|;
-for|for
-control|(
-name|String
-name|opt
-range|:
-name|validIntegerOptions
-control|)
-block|{
-name|testValidOptionsWork
-argument_list|(
-name|DIFF_SERV
-operator|+
-name|opt
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-block|}
-name|String
-index|[]
-name|validNameOptions
-init|=
-block|{
-literal|"CS0"
-block|,
-literal|"CS1"
-block|,
-literal|"CS2"
-block|,
-literal|"CS3"
-block|,
-literal|"CS4"
-block|,
-literal|"CS5"
-block|,
-literal|"CS6"
-block|,
-literal|"CS7"
-block|,
-literal|"EF"
-block|,
-literal|"AF11"
-block|,
-literal|"AF12"
-block|,
-literal|"AF13"
-block|,
-literal|"AF21"
-block|,
-literal|"AF22"
-block|,
-literal|"AF23"
-block|,
-literal|"AF31"
-block|,
-literal|"AF32"
-block|,
-literal|"AF33"
-block|,
-literal|"AF41"
-block|,
-literal|"AF42"
-block|,
-literal|"AF43"
-block|}
-decl_stmt|;
-for|for
-control|(
-name|String
-name|opt
-range|:
-name|validNameOptions
-control|)
-block|{
-name|testValidOptionsWork
-argument_list|(
-name|DIFF_SERV
-operator|+
-name|opt
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-specifier|public
-name|void
-name|initCombosForTestInvalidDiffServOptionDoesNotWork
-parameter_list|()
-block|{
-name|initSharedCombos
-argument_list|()
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testInvalidDiffServOptionsDoesNotWork
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|String
-index|[]
-name|invalidIntegerOptions
-init|=
-block|{
-literal|"-2"
-block|,
-literal|"-1"
-block|,
-literal|"64"
-block|,
-literal|"65"
-block|,
-literal|"100"
-block|,
-literal|"255"
-block|}
-decl_stmt|;
-for|for
-control|(
-name|String
-name|opt
-range|:
-name|invalidIntegerOptions
-control|)
-block|{
-name|testInvalidOptionsDoNotWork
-argument_list|(
-name|DIFF_SERV
-operator|+
-name|opt
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-block|}
-name|String
-index|[]
-name|invalidNameOptions
-init|=
-block|{
-literal|"hi"
-block|,
-literal|""
-block|,
-literal|"A"
-block|,
-literal|"AF"
-block|,
-literal|"-AF21"
-block|}
-decl_stmt|;
-for|for
-control|(
-name|String
-name|opt
-range|:
-name|invalidNameOptions
-control|)
-block|{
-name|testInvalidOptionsDoNotWork
-argument_list|(
-name|DIFF_SERV
-operator|+
-name|opt
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-specifier|public
-name|void
-name|initCombosForTestValidTypeOfServiceOptionsWork
-parameter_list|()
-block|{
-name|initSharedCombos
-argument_list|()
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testValidTypeOfServiceOptionsWork
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|int
-index|[]
-name|validOptions
-init|=
-block|{
-literal|0
-block|,
-literal|1
-block|,
-literal|32
-block|,
-literal|100
-block|,
-literal|254
-block|,
-literal|255
-block|}
-decl_stmt|;
-for|for
-control|(
-name|int
-name|opt
-range|:
-name|validOptions
-control|)
-block|{
-name|testValidOptionsWork
-argument_list|(
-name|TOS
-operator|+
-name|opt
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-specifier|public
-name|void
-name|initCombosForTestInvalidTypeOfServiceOptionDoesNotWork
-parameter_list|()
-block|{
-name|initSharedCombos
-argument_list|()
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testInvalidTypeOfServiceOptionDoesNotWork
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|int
-index|[]
-name|invalidOptions
-init|=
-block|{
-operator|-
-literal|2
-block|,
-operator|-
-literal|1
-block|,
-literal|256
-block|,
-literal|257
-block|}
-decl_stmt|;
-for|for
-control|(
-name|int
-name|opt
-range|:
-name|invalidOptions
-control|)
-block|{
-name|testInvalidOptionsDoNotWork
-argument_list|(
-name|TOS
-operator|+
-name|opt
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-specifier|public
-name|void
-name|initCombosForTestDiffServAndTypeOfServiceMutuallyExclusive
-parameter_list|()
-block|{
-name|initSharedCombos
-argument_list|()
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|testDiffServAndTypeServiceMutuallyExclusive
-parameter_list|()
-block|{
-name|String
-name|msg
-init|=
-literal|"It should not be possible to set both Differentiated "
-operator|+
-literal|"Services and Type of Service options on the same connection "
-operator|+
-literal|"URI."
-decl_stmt|;
-name|testInvalidOptionsDoNotWork
-argument_list|(
-name|TOS
-operator|+
-literal|32
-operator|+
-name|DIFF_SERV
-argument_list|,
-name|msg
-argument_list|)
-expr_stmt|;
-name|testInvalidOptionsDoNotWork
-argument_list|(
-name|DIFF_SERV
-operator|+
-literal|32
-operator|+
-name|TOS
-operator|+
-literal|32
-argument_list|,
-name|msg
-argument_list|)
-expr_stmt|;
-block|}
+comment|//    public void initCombosForTestUriOptionsWork() {
+comment|//        initSharedCombos();
+comment|//    }
+comment|//
+comment|//    public void testUriOptionsWork() throws Exception {
+comment|//        String uri = prefix + bindAddress + postfix;
+comment|//        LOG.info("Connecting via: " + uri);
+comment|//
+comment|//        connection = new ActiveMQConnectionFactory(uri).createConnection();
+comment|//        connection.start();
+comment|//    }
+comment|//
+comment|//    public void initCombosForTestValidDiffServOptionsWork() {
+comment|//        initSharedCombos();
+comment|//    }
+comment|//
+comment|//    public void testValidDiffServOptionsWork() throws Exception {
+comment|//        String[] validIntegerOptions = {"0", "1", "32", "62", "63"};
+comment|//        for (String opt : validIntegerOptions) {
+comment|//            testValidOptionsWork(DIFF_SERV + opt, "");
+comment|//        }
+comment|//        String[] validNameOptions = { "CS0", "CS1", "CS2", "CS3", "CS4", "CS5", "CS6",
+comment|//                "CS7", "EF", "AF11", "AF12","AF13", "AF21", "AF22", "AF23", "AF31",
+comment|//                "AF32", "AF33", "AF41", "AF42", "AF43" };
+comment|//        for (String opt : validNameOptions) {
+comment|//            testValidOptionsWork(DIFF_SERV + opt, "");
+comment|//        }
+comment|//    }
+comment|//
+comment|//    public void initCombosForTestInvalidDiffServOptionDoesNotWork() {
+comment|//        initSharedCombos();
+comment|//    }
+comment|//
+comment|//    public void testInvalidDiffServOptionsDoesNotWork() throws Exception {
+comment|//        String[] invalidIntegerOptions = {"-2", "-1", "64", "65", "100", "255"};
+comment|//        for (String opt : invalidIntegerOptions) {
+comment|//            testInvalidOptionsDoNotWork(DIFF_SERV + opt, "");
+comment|//        }
+comment|//        String[] invalidNameOptions = {"hi", "", "A", "AF", "-AF21"};
+comment|//        for (String opt : invalidNameOptions) {
+comment|//            testInvalidOptionsDoNotWork(DIFF_SERV + opt, "");
+comment|//        }
+comment|//    }
+comment|//
+comment|//    public void initCombosForTestValidTypeOfServiceOptionsWork() {
+comment|//        initSharedCombos();
+comment|//    }
+comment|//
+comment|//    public void testValidTypeOfServiceOptionsWork() throws Exception {
+comment|//        int[] validOptions = {0, 1, 32, 100, 254, 255};
+comment|//        for (int opt : validOptions) {
+comment|//            testValidOptionsWork(TOS + opt, "");
+comment|//        }
+comment|//    }
+comment|//
+comment|//    public void initCombosForTestInvalidTypeOfServiceOptionDoesNotWork() {
+comment|//        initSharedCombos();
+comment|//    }
+comment|//
+comment|//    public void testInvalidTypeOfServiceOptionDoesNotWork() throws Exception {
+comment|//        int[] invalidOptions = {-2, -1, 256, 257};
+comment|//        for (int opt : invalidOptions) {
+comment|//            testInvalidOptionsDoNotWork(TOS + opt, "");
+comment|//        }
+comment|//    }
+comment|//
+comment|//    public void initCombosForTestDiffServAndTypeOfServiceMutuallyExclusive() {
+comment|//        initSharedCombos();
+comment|//    }
+comment|//
+comment|//    public void testDiffServAndTypeServiceMutuallyExclusive() {
+comment|//        String msg = "It should not be possible to set both Differentiated "
+comment|//            + "Services and Type of Service options on the same connection "
+comment|//            + "URI.";
+comment|//        testInvalidOptionsDoNotWork(TOS + 32 + DIFF_SERV, msg);
+comment|//        testInvalidOptionsDoNotWork(DIFF_SERV + 32 + TOS + 32, msg);
+comment|//    }
+comment|//
 specifier|public
 name|void
 name|initCombosForTestBadVersionNumberDoesNotWork
@@ -657,85 +328,19 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
-name|void
-name|testValidOptionsWork
-parameter_list|(
-name|String
-name|options
-parameter_list|,
-name|String
-name|msg
-parameter_list|)
-block|{
-name|String
-name|uri
-init|=
-name|prefix
-operator|+
-name|bindAddress
-operator|+
-name|postfix
-operator|+
-name|options
-decl_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Connecting via: "
-operator|+
-name|uri
-argument_list|)
-expr_stmt|;
-try|try
-block|{
-name|connection
-operator|=
-operator|new
-name|ActiveMQConnectionFactory
-argument_list|(
-name|uri
-argument_list|)
-operator|.
-name|createConnection
-argument_list|()
-expr_stmt|;
-name|connection
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|unexpected
-parameter_list|)
-block|{
-name|fail
-argument_list|(
-literal|"Valid options '"
-operator|+
-name|options
-operator|+
-literal|"' on URI '"
-operator|+
-name|uri
-operator|+
-literal|"' should "
-operator|+
-literal|"not have caused an exception to be thrown. "
-operator|+
-name|msg
-operator|+
-literal|" Exception: "
-operator|+
-name|unexpected
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+comment|//    private void testValidOptionsWork(String options, String msg) {
+comment|//        String uri = prefix + bindAddress + postfix + options;
+comment|//        LOG.info("Connecting via: " + uri);
+comment|//
+comment|//        try {
+comment|//            connection = new ActiveMQConnectionFactory(uri).createConnection();
+comment|//            connection.start();
+comment|//        } catch (Exception unexpected) {
+comment|//            fail("Valid options '" + options + "' on URI '" + uri + "' should "
+comment|//                 + "not have caused an exception to be thrown. " + msg
+comment|//                 + " Exception: " + unexpected);
+comment|//        }
+comment|//    }
 specifier|private
 name|void
 name|testInvalidOptionsDoNotWork
