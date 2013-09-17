@@ -189,6 +189,20 @@ name|X509Certificate
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|locks
+operator|.
+name|ReentrantLock
+import|;
+end_import
+
 begin_comment
 comment|/**  * The AMQPTransportFilter normally sits on top of a TcpTransport that has been  * configured with the AmqpWireFormat and is used to convert AMQP commands to  * ActiveMQ commands. All of the conversion work is done by delegating to the  * AMQPProtocolConverter  */
 end_comment
@@ -262,8 +276,7 @@ literal|".FRAMES"
 argument_list|)
 decl_stmt|;
 specifier|private
-specifier|final
-name|AmqpProtocolConverter
+name|IAmqpProtocolConverter
 name|protocolConverter
 decl_stmt|;
 comment|//    private AmqpInactivityMonitor monitor;
@@ -282,6 +295,14 @@ init|=
 name|InboundTransformer
 operator|.
 name|TRANSFORMER_NATIVE
+decl_stmt|;
+specifier|private
+name|ReentrantLock
+name|lock
+init|=
+operator|new
+name|ReentrantLock
+argument_list|()
 decl_stmt|;
 specifier|public
 name|AmqpTransportFilter
@@ -306,11 +327,9 @@ operator|.
 name|protocolConverter
 operator|=
 operator|new
-name|AmqpProtocolConverter
+name|AMQPProtocolDiscriminator
 argument_list|(
 name|this
-argument_list|,
-name|brokerContext
 argument_list|)
 expr_stmt|;
 if|if
@@ -352,8 +371,6 @@ name|Command
 operator|)
 name|o
 decl_stmt|;
-name|protocolConverter
-operator|.
 name|lock
 operator|.
 name|lock
@@ -371,8 +388,6 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|protocolConverter
-operator|.
 name|lock
 operator|.
 name|unlock
@@ -406,8 +421,6 @@ name|IOException
 name|error
 parameter_list|)
 block|{
-name|protocolConverter
-operator|.
 name|lock
 operator|.
 name|lock
@@ -425,8 +438,6 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|protocolConverter
-operator|.
 name|lock
 operator|.
 name|unlock
@@ -475,8 +486,6 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
-name|protocolConverter
-operator|.
 name|lock
 operator|.
 name|lock
@@ -494,8 +503,6 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|protocolConverter
-operator|.
 name|lock
 operator|.
 name|unlock
@@ -542,8 +549,6 @@ name|command
 parameter_list|)
 block|{
 assert|assert
-name|protocolConverter
-operator|.
 name|lock
 operator|.
 name|isHeldByCurrentThread
@@ -581,8 +586,6 @@ throws|throws
 name|IOException
 block|{
 assert|assert
-name|protocolConverter
-operator|.
 name|lock
 operator|.
 name|isHeldByCurrentThread
@@ -766,6 +769,30 @@ operator|.
 name|transformer
 operator|=
 name|transformer
+expr_stmt|;
+block|}
+specifier|public
+name|IAmqpProtocolConverter
+name|getProtocolConverter
+parameter_list|()
+block|{
+return|return
+name|protocolConverter
+return|;
+block|}
+specifier|public
+name|void
+name|setProtocolConverter
+parameter_list|(
+name|IAmqpProtocolConverter
+name|protocolConverter
+parameter_list|)
+block|{
+name|this
+operator|.
+name|protocolConverter
+operator|=
+name|protocolConverter
 expr_stmt|;
 block|}
 block|}

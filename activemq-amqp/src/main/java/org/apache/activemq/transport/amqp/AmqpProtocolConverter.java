@@ -111,39 +111,11 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|locks
-operator|.
-name|ReentrantLock
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
 operator|.
 name|InvalidSelectorException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|BrokerContext
 import|;
 end_import
 
@@ -1035,24 +1007,6 @@ name|engine
 operator|.
 name|impl
 operator|.
-name|ConnectionImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|qpid
-operator|.
-name|proton
-operator|.
-name|engine
-operator|.
-name|impl
-operator|.
 name|EngineFactoryImpl
 import|;
 end_import
@@ -1286,6 +1240,8 @@ end_import
 begin_class
 class|class
 name|AmqpProtocolConverter
+implements|implements
+name|IAmqpProtocolConverter
 block|{
 specifier|static
 specifier|final
@@ -1481,13 +1437,6 @@ name|prefetch
 init|=
 literal|100
 decl_stmt|;
-name|ReentrantLock
-name|lock
-init|=
-operator|new
-name|ReentrantLock
-argument_list|()
-decl_stmt|;
 name|EngineFactory
 name|engineFactory
 init|=
@@ -1516,9 +1465,6 @@ name|AmqpProtocolConverter
 parameter_list|(
 name|AmqpTransport
 name|transport
-parameter_list|,
-name|BrokerContext
-name|brokerContext
 parameter_list|)
 block|{
 name|this
@@ -1542,6 +1488,7 @@ name|updateTracer
 argument_list|()
 expr_stmt|;
 block|}
+specifier|public
 name|void
 name|updateTracer
 parameter_list|()
@@ -1804,6 +1751,8 @@ name|Sasl
 name|sasl
 decl_stmt|;
 comment|/**      * Convert a AMQP command      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onAMQPData
@@ -2557,7 +2506,7 @@ specifier|public
 name|void
 name|onResponse
 parameter_list|(
-name|AmqpProtocolConverter
+name|IAmqpProtocolConverter
 name|converter
 parameter_list|,
 name|Response
@@ -2587,6 +2536,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onAMQPException
@@ -2631,6 +2582,8 @@ parameter_list|)
 block|{             }
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onActiveMQCommand
@@ -3032,7 +2985,7 @@ specifier|public
 name|void
 name|onResponse
 parameter_list|(
-name|AmqpProtocolConverter
+name|IAmqpProtocolConverter
 name|converter
 parameter_list|,
 name|Response
@@ -3880,7 +3833,7 @@ specifier|public
 name|void
 name|onResponse
 parameter_list|(
-name|AmqpProtocolConverter
+name|IAmqpProtocolConverter
 name|converter
 parameter_list|,
 name|Response
@@ -4471,7 +4424,7 @@ specifier|public
 name|void
 name|onResponse
 parameter_list|(
-name|AmqpProtocolConverter
+name|IAmqpProtocolConverter
 name|converter
 parameter_list|,
 name|Response
@@ -4806,7 +4759,7 @@ specifier|public
 name|void
 name|onResponse
 parameter_list|(
-name|AmqpProtocolConverter
+name|IAmqpProtocolConverter
 name|converter
 parameter_list|,
 name|Response
@@ -6120,7 +6073,7 @@ specifier|public
 name|void
 name|onResponse
 parameter_list|(
-name|AmqpProtocolConverter
+name|IAmqpProtocolConverter
 name|converter
 parameter_list|,
 name|Response
@@ -6650,7 +6603,7 @@ specifier|public
 name|void
 name|onResponse
 parameter_list|(
-name|AmqpProtocolConverter
+name|IAmqpProtocolConverter
 name|converter
 parameter_list|,
 name|Response
@@ -7108,7 +7061,7 @@ specifier|public
 name|void
 name|onResponse
 parameter_list|(
-name|AmqpProtocolConverter
+name|IAmqpProtocolConverter
 name|converter
 parameter_list|,
 name|Response
@@ -7458,7 +7411,7 @@ specifier|public
 name|void
 name|onResponse
 parameter_list|(
-name|AmqpProtocolConverter
+name|IAmqpProtocolConverter
 name|converter
 parameter_list|,
 name|Response
