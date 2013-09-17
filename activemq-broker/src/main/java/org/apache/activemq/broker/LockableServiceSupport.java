@@ -516,6 +516,22 @@ block|}
 block|}
 catch|catch
 parameter_list|(
+name|SuppressReplyException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"locker keepAlive resulted in"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
 name|IOException
 name|e
 parameter_list|)
