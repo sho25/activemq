@@ -408,6 +408,10 @@ specifier|protected
 name|boolean
 name|droppable
 decl_stmt|;
+specifier|protected
+name|boolean
+name|jmsXGroupFirstForConsumer
+decl_stmt|;
 specifier|private
 specifier|transient
 name|short
@@ -748,6 +752,12 @@ operator|.
 name|brokerPath
 operator|=
 name|brokerPath
+expr_stmt|;
+name|copy
+operator|.
+name|jmsXGroupFirstForConsumer
+operator|=
+name|jmsXGroupFirstForConsumer
 expr_stmt|;
 comment|// lets not copy the following fields
 comment|// copy.targetConsumerId = targetConsumerId;
@@ -2452,6 +2462,29 @@ block|{
 return|return
 literal|false
 return|;
+block|}
+comment|/**      * @openwire:property version=10      */
+specifier|public
+name|boolean
+name|isJMSXGroupFirstForConsumer
+parameter_list|()
+block|{
+return|return
+name|jmsXGroupFirstForConsumer
+return|;
+block|}
+specifier|public
+name|void
+name|setJMSXGroupFirstForConsumer
+parameter_list|(
+name|boolean
+name|val
+parameter_list|)
+block|{
+name|jmsXGroupFirstForConsumer
+operator|=
+name|val
+expr_stmt|;
 block|}
 specifier|public
 name|void
