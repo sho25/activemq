@@ -50,6 +50,8 @@ name|FailoverUriTest
 extends|extends
 name|TransportUriTest
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|initCombosForTestUriOptionsWork
@@ -86,6 +88,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|initCombosForTestBadVersionNumberDoesNotWork
@@ -103,9 +107,21 @@ literal|"failover:("
 block|}
 argument_list|)
 expr_stmt|;
-comment|// TODO uncomment after fixing https://issues.apache.org/jira/browse/AMQ-4725
-comment|// addCombinationValues("postfix", new Object[] {")?initialReconnectDelay=1000&maxReconnectDelay=1000"});
+name|addCombinationValues
+argument_list|(
+literal|"postfix"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
+literal|")?initialReconnectDelay=1000&maxReconnectDelay=1000"
 block|}
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|initCombosForTestBadPropertyNameFails
@@ -123,8 +139,18 @@ literal|"failover:("
 block|}
 argument_list|)
 expr_stmt|;
-comment|// TODO uncomment after fixing https://issues.apache.org/jira/browse/AMQ-4725
-comment|//addCombinationValues("postfix", new Object[] {")?initialReconnectDelay=1000&maxReconnectDelay=1000"});
+name|addCombinationValues
+argument_list|(
+literal|"postfix"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
+literal|")?initialReconnectDelay=1000&maxReconnectDelay=1000"
+block|}
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 specifier|static
