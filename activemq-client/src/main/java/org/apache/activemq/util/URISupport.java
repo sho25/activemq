@@ -1957,7 +1957,9 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|?
+extends|extends
+name|Object
 argument_list|>
 name|options
 parameter_list|)

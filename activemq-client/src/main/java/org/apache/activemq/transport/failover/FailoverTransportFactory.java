@@ -384,6 +384,23 @@ operator|new
 name|FailoverTransport
 argument_list|()
 decl_stmt|;
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+name|nestedExtraQueryOptions
+init|=
+name|IntrospectionSupport
+operator|.
+name|extractProperties
+argument_list|(
+name|parameters
+argument_list|,
+literal|"nested."
+argument_list|)
+decl_stmt|;
 name|IntrospectionSupport
 operator|.
 name|setProperties
@@ -403,7 +420,7 @@ name|URISupport
 operator|.
 name|createQueryString
 argument_list|(
-name|parameters
+name|nestedExtraQueryOptions
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -414,11 +431,6 @@ name|URISyntaxException
 name|e
 parameter_list|)
 block|{         }
-name|parameters
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
 return|return
 name|transport
 return|;
