@@ -1577,11 +1577,14 @@ name|e
 argument_list|)
 throw|;
 block|}
+finally|finally
+block|{
 name|setXid
 argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1626,11 +1629,14 @@ name|e
 argument_list|)
 throw|;
 block|}
+finally|finally
+block|{
 name|setXid
 argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -2960,6 +2966,9 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
+name|disassociate
+argument_list|()
+expr_stmt|;
 throw|throw
 name|toXAException
 argument_list|(
@@ -3038,6 +3047,9 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
+name|disassociate
+argument_list|()
+expr_stmt|;
 throw|throw
 name|toXAException
 argument_list|(
@@ -3102,6 +3114,9 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
+name|disassociate
+argument_list|()
+expr_stmt|;
 throw|throw
 name|toXAException
 argument_list|(
@@ -3186,6 +3201,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|disassociate
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+specifier|private
+name|void
+name|disassociate
+parameter_list|()
+block|{
 comment|// dis-associate
 name|associatedXid
 operator|=
@@ -3195,7 +3220,6 @@ name|transactionId
 operator|=
 literal|null
 expr_stmt|;
-block|}
 block|}
 comment|/**      * Sends the given command. Also sends the command in case of interruption,      * so that important commands like rollback and commit are never interrupted.      * If interruption occurred, set the interruption state of the current      * after performing the action again.      *      * @return the response      */
 specifier|private

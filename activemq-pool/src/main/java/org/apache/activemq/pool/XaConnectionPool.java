@@ -177,15 +177,16 @@ condition|(
 name|isXa
 condition|)
 block|{
+comment|// if the xa tx aborts inflight we don't want to auto create a local transaction or auto ack
 name|transacted
 operator|=
-literal|true
+literal|false
 expr_stmt|;
 name|ackMode
 operator|=
 name|Session
 operator|.
-name|SESSION_TRANSACTED
+name|CLIENT_ACKNOWLEDGE
 expr_stmt|;
 block|}
 elseif|else

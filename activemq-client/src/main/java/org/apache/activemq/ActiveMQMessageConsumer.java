@@ -3440,7 +3440,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"on close, rollback: "
+literal|"on close, rollback duplicate: "
 operator|+
 name|old
 operator|.
