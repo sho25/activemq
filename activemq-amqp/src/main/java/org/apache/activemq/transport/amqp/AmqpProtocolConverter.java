@@ -5861,6 +5861,11 @@ operator|.
 name|length
 operator|>
 literal|0
+operator|&&
+name|delivery
+operator|.
+name|remotelySettled
+argument_list|()
 condition|)
 block|{
 name|checkinTag
