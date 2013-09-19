@@ -234,6 +234,17 @@ operator|=
 name|useLock
 expr_stmt|;
 block|}
+specifier|public
+name|boolean
+name|isUseLock
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|useLock
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
