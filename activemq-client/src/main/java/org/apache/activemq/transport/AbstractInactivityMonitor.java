@@ -448,22 +448,15 @@ condition|(
 name|lastRunTime
 operator|!=
 literal|0
-operator|&&
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
 condition|)
 block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|""
-operator|+
+literal|"{}ms elapsed since last read check."
+argument_list|,
 name|elapsed
-operator|+
-literal|" ms elapsed since last read check."
 argument_list|)
 expr_stmt|;
 block|}
@@ -471,7 +464,7 @@ comment|// Perhaps the timer executed a read check late.. and then executes
 comment|// the next read check on time which causes the time elapsed between
 comment|// read checks to be small..
 comment|// If less than 90% of the read check Time elapsed then abort this
-comment|// readcheck.
+comment|// read check.
 if|if
 condition|(
 operator|!
@@ -481,13 +474,11 @@ name|elapsed
 argument_list|)
 condition|)
 block|{
-comment|// FUNKY qdox bug does not allow me
-comment|// to inline this expression.
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Aborting read check.. Not enough time elapsed since last read check."
+literal|"Aborting read check...Not enough time elapsed since last read check."
 argument_list|)
 expr_stmt|;
 return|return;
@@ -565,28 +556,21 @@ condition|(
 name|lastRunTime
 operator|!=
 literal|0
-operator|&&
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
 condition|)
 block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{}: {}ms elapsed since last write check."
+argument_list|,
 name|this
-operator|+
-literal|" "
-operator|+
+argument_list|,
 operator|(
 name|now
 operator|-
 name|lastRunTime
 operator|)
-operator|+
-literal|" ms elapsed since last write check."
 argument_list|)
 expr_stmt|;
 block|}
@@ -682,22 +666,13 @@ name|get
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"A send is in progress"
+literal|"Send in progress. Skipping write check."
 argument_list|)
 expr_stmt|;
-block|}
 return|return;
 block|}
 if|if
@@ -728,24 +703,15 @@ name|isTerminated
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
+literal|"{} no message sent since last write check, sending a KeepAliveInfo"
+argument_list|,
 name|this
-operator|+
-literal|" no message sent since last write check, sending a KeepAliveInfo"
 argument_list|)
 expr_stmt|;
-block|}
 try|try
 block|{
 name|ASYNC_TASKS
@@ -763,14 +729,6 @@ name|void
 name|run
 parameter_list|()
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
@@ -780,7 +738,6 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|monitorStarted
@@ -922,24 +879,15 @@ block|}
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
+literal|"{} message sent since last write check, resetting flag."
+argument_list|,
 name|this
-operator|+
-literal|" message sent since last write check, resetting flag"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|commandSent
 operator|.
@@ -984,22 +932,13 @@ operator|!=
 name|previousCounter
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"A receive is in progress"
+literal|"A receive is in progress, skipping read check."
 argument_list|)
 expr_stmt|;
-block|}
 return|return;
 block|}
 if|if
@@ -1028,27 +967,15 @@ name|isTerminated
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"No message received since last read check for "
-operator|+
-name|toString
-argument_list|()
-operator|+
-literal|". Throwing InactivityIOException."
+literal|"No message received since last read check for {}. Throwing InactivityIOException."
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
-block|}
 try|try
 block|{
 name|ASYNC_TASKS
@@ -1066,14 +993,6 @@ name|void
 name|run
 parameter_list|()
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
@@ -1083,7 +1002,6 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-block|}
 name|onException
 argument_list|(
 operator|new

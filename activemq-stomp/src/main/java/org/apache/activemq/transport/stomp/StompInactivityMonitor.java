@@ -219,19 +219,16 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Stomp Inactivity Monitor read check: "
-operator|+
+literal|"Stomp Inactivity Monitor read check interval: {}ms, write check interval: {}ms"
+argument_list|,
 name|getReadCheckTime
 argument_list|()
-operator|+
-literal|", write check: "
-operator|+
+argument_list|,
 name|getWriteCheckTime
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
+return|return
 name|this
 operator|.
 name|getReadCheckTime
@@ -245,14 +242,6 @@ name|getWriteCheckTime
 argument_list|()
 operator|>=
 literal|0
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-return|return
-literal|false
 return|;
 block|}
 block|}
