@@ -1132,15 +1132,6 @@ argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Added {} to the map:"
-argument_list|,
-name|key
-argument_list|)
-expr_stmt|;
 name|fireConsumerAdvisory
 argument_list|(
 name|context
@@ -2307,7 +2298,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|info
+name|trace
 argument_list|(
 literal|"Failed to remove:{} from the consumers map: {}"
 argument_list|,
@@ -2322,7 +2313,7 @@ else|else
 block|{
 name|LOG
 operator|.
-name|info
+name|trace
 argument_list|(
 literal|"Failed to find consumer:{} in creation time tracking map: "
 argument_list|,
