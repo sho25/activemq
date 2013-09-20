@@ -202,7 +202,7 @@ specifier|protected
 name|int
 name|messagesToSend
 init|=
-literal|2000
+literal|10
 decl_stmt|;
 specifier|protected
 name|boolean
@@ -625,7 +625,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|///The server destination will be left
+comment|// The server destination will be left
 name|assertTrue
 argument_list|(
 name|ab
