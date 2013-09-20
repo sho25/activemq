@@ -146,10 +146,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|stopping
-operator|=
-literal|false
-expr_stmt|;
 name|LOG
 operator|.
 name|info
@@ -243,7 +239,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|stopping
+name|isStopping
+argument_list|()
 condition|)
 block|{
 throw|throw

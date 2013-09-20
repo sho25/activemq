@@ -178,6 +178,11 @@ decl_stmt|;
 specifier|private
 name|String
 index|[]
+name|createLockSchemaStatements
+decl_stmt|;
+specifier|private
+name|String
+index|[]
 name|dropSchemaStatements
 decl_stmt|;
 specifier|private
@@ -435,32 +440,6 @@ name|sequenceDataType
 operator|+
 literal|", PRIMARY KEY ( CONTAINER, CLIENT_ID, SUB_NAME))"
 block|,
-literal|"CREATE TABLE "
-operator|+
-name|getFullLockTableName
-argument_list|()
-operator|+
-literal|"( ID "
-operator|+
-name|longDataType
-operator|+
-literal|" NOT NULL, TIME "
-operator|+
-name|longDataType
-operator|+
-literal|", BROKER_NAME "
-operator|+
-name|stringIdDataType
-operator|+
-literal|", PRIMARY KEY (ID) )"
-block|,
-literal|"INSERT INTO "
-operator|+
-name|getFullLockTableName
-argument_list|()
-operator|+
-literal|"(ID) VALUES (1)"
-block|,
 literal|"ALTER TABLE "
 operator|+
 name|getFullMessageTableName
@@ -554,8 +533,114 @@ literal|" (XID)"
 block|}
 expr_stmt|;
 block|}
-return|return
+name|getCreateLockSchemaStatements
+argument_list|()
+expr_stmt|;
+name|String
+index|[]
+name|allCreateStatements
+init|=
+operator|new
+name|String
+index|[
 name|createSchemaStatements
+operator|.
+name|length
+operator|+
+name|createLockSchemaStatements
+operator|.
+name|length
+index|]
+decl_stmt|;
+name|System
+operator|.
+name|arraycopy
+argument_list|(
+name|createSchemaStatements
+argument_list|,
+literal|0
+argument_list|,
+name|allCreateStatements
+argument_list|,
+literal|0
+argument_list|,
+name|createSchemaStatements
+operator|.
+name|length
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|arraycopy
+argument_list|(
+name|createLockSchemaStatements
+argument_list|,
+literal|0
+argument_list|,
+name|allCreateStatements
+argument_list|,
+name|createSchemaStatements
+operator|.
+name|length
+argument_list|,
+name|createLockSchemaStatements
+operator|.
+name|length
+argument_list|)
+expr_stmt|;
+return|return
+name|allCreateStatements
+return|;
+block|}
+specifier|public
+name|String
+index|[]
+name|getCreateLockSchemaStatements
+parameter_list|()
+block|{
+if|if
+condition|(
+name|createLockSchemaStatements
+operator|==
+literal|null
+condition|)
+block|{
+name|createLockSchemaStatements
+operator|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"CREATE TABLE "
+operator|+
+name|getFullLockTableName
+argument_list|()
+operator|+
+literal|"( ID "
+operator|+
+name|longDataType
+operator|+
+literal|" NOT NULL, TIME "
+operator|+
+name|longDataType
+operator|+
+literal|", BROKER_NAME "
+operator|+
+name|stringIdDataType
+operator|+
+literal|", PRIMARY KEY (ID) )"
+block|,
+literal|"INSERT INTO "
+operator|+
+name|getFullLockTableName
+argument_list|()
+operator|+
+literal|"(ID) VALUES (1)"
+block|}
+expr_stmt|;
+block|}
+return|return
+name|createLockSchemaStatements
 return|;
 block|}
 specifier|public
@@ -2448,6 +2533,22 @@ operator|.
 name|createSchemaStatements
 operator|=
 name|createSchemaStatments
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setCreateLockSchemaStatements
+parameter_list|(
+name|String
+index|[]
+name|createLockSchemaStatments
+parameter_list|)
+block|{
+name|this
+operator|.
+name|createLockSchemaStatements
+operator|=
+name|createLockSchemaStatments
 expr_stmt|;
 block|}
 specifier|public

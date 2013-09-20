@@ -287,7 +287,7 @@ name|ds
 init|=
 operator|(
 operator|(
-name|SyncDataSource
+name|SyncCreateDataSource
 operator|)
 name|getExistingDataSource
 argument_list|()

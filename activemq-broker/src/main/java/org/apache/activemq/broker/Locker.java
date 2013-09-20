@@ -95,6 +95,15 @@ name|boolean
 name|failIfLocked
 parameter_list|)
 function_decl|;
+comment|/**      * A reference to what is locked      */
+specifier|public
+name|void
+name|setLockable
+parameter_list|(
+name|LockableServiceSupport
+name|lockable
+parameter_list|)
+function_decl|;
 comment|/**      * Optionally configure the locker with the persistence adapter currently used      * You can use persistence adapter configuration details like, data directory      * datasource, etc. to be used by the locker      *      * @param persistenceAdapter      * @throws IOException      */
 specifier|public
 name|void
