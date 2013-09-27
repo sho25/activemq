@@ -3179,6 +3179,10 @@ name|txid
 parameter_list|)
 block|{
 return|return
+name|TransactionIdConversion
+operator|.
+name|convert
+argument_list|(
 name|theStore
 operator|.
 name|getTransactionIdTransformer
@@ -3187,6 +3191,7 @@ operator|.
 name|transform
 argument_list|(
 name|txid
+argument_list|)
 argument_list|)
 return|;
 block|}

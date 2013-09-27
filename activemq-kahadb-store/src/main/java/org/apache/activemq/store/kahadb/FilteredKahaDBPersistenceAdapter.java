@@ -45,6 +45,20 @@ name|DestinationMapEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|PersistenceAdapter
+import|;
+end_import
+
 begin_comment
 comment|/**  * @org.apache.xbean.XBean element="filteredKahaDB"  *  */
 end_comment
@@ -57,7 +71,7 @@ extends|extends
 name|DestinationMapEntry
 block|{
 specifier|private
-name|KahaDBPersistenceAdapter
+name|PersistenceAdapter
 name|persistenceAdapter
 decl_stmt|;
 specifier|private
@@ -78,7 +92,7 @@ parameter_list|(
 name|ActiveMQDestination
 name|destination
 parameter_list|,
-name|KahaDBPersistenceAdapter
+name|PersistenceAdapter
 name|adapter
 parameter_list|)
 block|{
@@ -93,7 +107,7 @@ name|adapter
 expr_stmt|;
 block|}
 specifier|public
-name|KahaDBPersistenceAdapter
+name|PersistenceAdapter
 name|getPersistenceAdapter
 parameter_list|()
 block|{
@@ -105,7 +119,7 @@ specifier|public
 name|void
 name|setPersistenceAdapter
 parameter_list|(
-name|KahaDBPersistenceAdapter
+name|PersistenceAdapter
 name|persistenceAdapter
 parameter_list|)
 block|{
