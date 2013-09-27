@@ -449,7 +449,7 @@ name|broker
 return|;
 block|}
 specifier|protected
-name|KahaDBPersistenceAdapter
+name|PersistenceAdapter
 name|createStore
 parameter_list|(
 name|boolean
@@ -1020,7 +1020,7 @@ operator|new
 name|FilteredKahaDBPersistenceAdapter
 argument_list|()
 decl_stmt|;
-name|KahaDBPersistenceAdapter
+name|PersistenceAdapter
 name|otherStore
 init|=
 name|createStore
@@ -1082,7 +1082,7 @@ operator|new
 name|FilteredKahaDBPersistenceAdapter
 argument_list|()
 decl_stmt|;
-name|KahaDBPersistenceAdapter
+name|PersistenceAdapter
 name|storeDefault
 init|=
 name|createStore
