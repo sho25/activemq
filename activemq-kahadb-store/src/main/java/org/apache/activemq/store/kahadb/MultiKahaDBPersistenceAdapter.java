@@ -267,6 +267,8 @@ extends|extends
 name|LockableServiceSupport
 implements|implements
 name|PersistenceAdapter
+implements|,
+name|BrokerServiceAware
 block|{
 specifier|static
 specifier|final
@@ -2315,6 +2317,12 @@ name|BrokerService
 name|brokerService
 parameter_list|)
 block|{
+name|this
+operator|.
+name|brokerService
+operator|=
+name|brokerService
+expr_stmt|;
 for|for
 control|(
 name|PersistenceAdapter
@@ -2345,12 +2353,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|this
-operator|.
-name|brokerService
-operator|=
-name|brokerService
-expr_stmt|;
 block|}
 specifier|public
 name|BrokerService
