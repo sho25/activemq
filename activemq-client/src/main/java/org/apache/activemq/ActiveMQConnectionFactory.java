@@ -713,6 +713,14 @@ name|rejectedTaskHandler
 init|=
 literal|null
 decl_stmt|;
+specifier|protected
+name|int
+name|xaAckMode
+init|=
+operator|-
+literal|1
+decl_stmt|;
+comment|// ensure default init before setting via brokerUrl introspection in sub class
 comment|// /////////////////////////////////////////////
 comment|//
 comment|// ConnectionFactory, QueueConnectionFactory, TopicConnectionFactory Methods

@@ -59,6 +59,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|jms
+operator|.
+name|pool
+operator|.
+name|PooledConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -90,7 +106,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simple factory bean used to create a jencks connection pool.  * Depending on the properties set, it will create a simple pool,  * a transaction aware connection pool, or a jca aware connection pool.  *  *<pre class="code">  *<bean id="pooledConnectionFactory" class="javax.script.ScriptEngineFactory.PooledConnectionFactoryFactoryBean">  *<property name="connectionFactory" ref="connectionFactory" />  *<property name="transactionManager" ref="transactionManager" />  *<property name="resourceName" value="ResourceName" />  *</bean>  *</pre>  *  * The<code>resourceName</code> property should be used along with the {@link ActiveMQResourceManager} and have  * the same value than its<code>resourceName</code> property. This will make sure the transaction manager  * maps correctly the connection factory to the recovery process.  *  * @org.apache.xbean.XBean  */
+comment|/**  * Simple factory bean used to create a jencks connection pool.  * Depending on the properties set, it will create a simple pool,  * a transaction aware connection pool, or a jca aware connection pool.  *  *<pre class="code">  *<bean id="pooledConnectionFactory" class="javax.script.ScriptEngineFactory.PooledConnectionFactoryFactoryBean">  *<property name="connectionFactory" ref="connectionFactory" />  *<property name="transactionManager" ref="transactionManager" />  *<property name="resourceName" value="ResourceName" />  *</bean>  *</pre>  *  * The<code>resourceName</code> property should be used along with the {@link org.apache.activemq.jms.pool.GenericResourceManager} and have  * the same value than its<code>resourceName</code> property. This will make sure the transaction manager  * maps correctly the connection factory to the recovery process.  *  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
