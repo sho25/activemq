@@ -347,24 +347,6 @@ name|jms
 operator|.
 name|conform
 operator|.
-name|session
-operator|.
-name|UnifiedSessionTest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|objectweb
-operator|.
-name|jtests
-operator|.
-name|jms
-operator|.
-name|conform
-operator|.
 name|topic
 operator|.
 name|TemporaryTopicTest
@@ -399,10 +381,7 @@ name|MessageTypeTest
 operator|.
 name|class
 block|,
-name|UnifiedSessionTest
-operator|.
-name|class
-block|,
+comment|// UnifiedSessionTest.class,  // https://issues.apache.org/jira/browse/AMQ-4375
 name|TemporaryTopicTest
 operator|.
 name|class
