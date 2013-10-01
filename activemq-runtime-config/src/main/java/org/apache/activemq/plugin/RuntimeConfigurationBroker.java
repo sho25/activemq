@@ -1833,6 +1833,14 @@ operator|+
 literal|"millis) : "
 operator|+
 name|configToMonitor
+operator|+
+literal|", lastUpdate: "
+operator|+
+operator|new
+name|Date
+argument_list|(
+name|lastModified
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
