@@ -276,8 +276,6 @@ name|void
 name|displayAllDestinations
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
 name|Exception
 block|{
 name|String
@@ -312,13 +310,13 @@ specifier|final
 name|String
 name|header
 init|=
-literal|"%20s  %10s  %10s  %10s  %10s"
+literal|"%-60s  %10s  %10s  %10s  %10s"
 decl_stmt|;
 specifier|final
 name|String
 name|tableRow
 init|=
-literal|"%20s  %10d  %10d  %10d  %10d"
+literal|"%-60s  %10d  %10d  %10d  %10d"
 decl_stmt|;
 name|context
 operator|.
@@ -435,8 +433,6 @@ name|void
 name|displayQueueStats
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
 name|Exception
 block|{
 name|String
@@ -471,13 +467,13 @@ specifier|final
 name|String
 name|header
 init|=
-literal|"%20s  %10s  %10s  %10s  %10s"
+literal|"%-60s  %10s  %10s  %10s  %10s"
 decl_stmt|;
 specifier|final
 name|String
 name|tableRow
 init|=
-literal|"%20s  %10d  %10d  %10d  %10d"
+literal|"%-60s  %10d  %10d  %10d  %10d"
 decl_stmt|;
 name|context
 operator|.
@@ -594,8 +590,6 @@ name|void
 name|displayTopicStats
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
 name|Exception
 block|{
 name|String
@@ -630,13 +624,13 @@ specifier|final
 name|String
 name|header
 init|=
-literal|"%20s  %10s  %10s  %10s"
+literal|"%-60s  %10s  %10s  %10s"
 decl_stmt|;
 specifier|final
 name|String
 name|tableRow
 init|=
-literal|"%20s  %10d  %10d  %10d"
+literal|"%-60s  %10d  %10d  %10d"
 decl_stmt|;
 name|context
 operator|.
