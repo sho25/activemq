@@ -245,6 +245,13 @@ argument_list|(
 name|dest
 argument_list|)
 decl_stmt|;
+name|sub
+operator|.
+name|setStaticallyIncluded
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|dest
