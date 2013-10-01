@@ -1779,7 +1779,7 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Throwable
 name|e
 parameter_list|)
 block|{
