@@ -196,10 +196,13 @@ argument_list|(
 name|context2
 argument_list|)
 expr_stmt|;
+comment|// must be added first
 name|arguments
 operator|.
 name|add
 argument_list|(
+literal|0
+argument_list|,
 literal|"--jmxlocal"
 argument_list|)
 expr_stmt|;
