@@ -21,16 +21,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|List
@@ -310,13 +300,13 @@ specifier|final
 name|String
 name|header
 init|=
-literal|"%-60s  %10s  %10s  %10s  %10s"
+literal|"%-50s  %10s  %10s  %10s  %10s  %10s  %10s"
 decl_stmt|;
 specifier|final
 name|String
 name|tableRow
 init|=
-literal|"%-60s  %10d  %10d  %10d  %10d"
+literal|"%-50s  %10d  %10d  %10d  %10d  %10d  %10d"
 decl_stmt|;
 name|context
 operator|.
@@ -334,13 +324,17 @@ name|header
 argument_list|,
 literal|"Name"
 argument_list|,
-literal|"Pending"
+literal|"Queue Size"
 argument_list|,
-literal|"Consumers"
+literal|"Producer #"
 argument_list|,
-literal|"Enqueued"
+literal|"Consumer #"
 argument_list|,
-literal|"Dequeued"
+literal|"Enqueue #"
+argument_list|,
+literal|"Dequeue #"
+argument_list|,
+literal|"Memory %"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -411,6 +405,11 @@ argument_list|()
 argument_list|,
 name|queueView
 operator|.
+name|getProducerCount
+argument_list|()
+argument_list|,
+name|queueView
+operator|.
 name|getConsumerCount
 argument_list|()
 argument_list|,
@@ -422,6 +421,11 @@ argument_list|,
 name|queueView
 operator|.
 name|getDequeueCount
+argument_list|()
+argument_list|,
+name|queueView
+operator|.
+name|getMemoryPercentUsage
 argument_list|()
 argument_list|)
 argument_list|)
@@ -467,13 +471,13 @@ specifier|final
 name|String
 name|header
 init|=
-literal|"%-60s  %10s  %10s  %10s  %10s"
+literal|"%-50s  %10s  %10s  %10s  %10s  %10s  %10s"
 decl_stmt|;
 specifier|final
 name|String
 name|tableRow
 init|=
-literal|"%-60s  %10d  %10d  %10d  %10d"
+literal|"%-50s  %10d  %10d  %10d  %10d  %10d  %10d"
 decl_stmt|;
 name|context
 operator|.
@@ -491,13 +495,17 @@ name|header
 argument_list|,
 literal|"Name"
 argument_list|,
-literal|"Pending"
+literal|"Queue Size"
 argument_list|,
-literal|"Consumers"
+literal|"Producer #"
 argument_list|,
-literal|"Enqueued"
+literal|"Consumer #"
 argument_list|,
-literal|"Dequeued"
+literal|"Enqueue #"
+argument_list|,
+literal|"Dequeue #"
+argument_list|,
+literal|"Memory %"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -568,6 +576,11 @@ argument_list|()
 argument_list|,
 name|queueView
 operator|.
+name|getProducerCount
+argument_list|()
+argument_list|,
+name|queueView
+operator|.
 name|getConsumerCount
 argument_list|()
 argument_list|,
@@ -579,6 +592,11 @@ argument_list|,
 name|queueView
 operator|.
 name|getDequeueCount
+argument_list|()
+argument_list|,
+name|queueView
+operator|.
+name|getMemoryPercentUsage
 argument_list|()
 argument_list|)
 argument_list|)
@@ -624,13 +642,13 @@ specifier|final
 name|String
 name|header
 init|=
-literal|"%-60s  %10s  %10s  %10s"
+literal|"%-50s  %10s  %10s  %10s  %10s  %10s  %10s"
 decl_stmt|;
 specifier|final
 name|String
 name|tableRow
 init|=
-literal|"%-60s  %10d  %10d  %10d"
+literal|"%-50s  %10d  %10d  %10d  %10d  %10d  %10d"
 decl_stmt|;
 name|context
 operator|.
@@ -648,11 +666,17 @@ name|header
 argument_list|,
 literal|"Name"
 argument_list|,
-literal|"Consumers"
+literal|"Queue Size"
 argument_list|,
-literal|"Enqueued"
+literal|"Producer #"
 argument_list|,
-literal|"Dequeued"
+literal|"Consumer #"
+argument_list|,
+literal|"Enqueue #"
+argument_list|,
+literal|"Dequeue #"
+argument_list|,
+literal|"Memory %"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -718,6 +742,16 @@ argument_list|()
 argument_list|,
 name|topicView
 operator|.
+name|getQueueSize
+argument_list|()
+argument_list|,
+name|topicView
+operator|.
+name|getProducerCount
+argument_list|()
+argument_list|,
+name|topicView
+operator|.
 name|getConsumerCount
 argument_list|()
 argument_list|,
@@ -729,6 +763,11 @@ argument_list|,
 name|topicView
 operator|.
 name|getDequeueCount
+argument_list|()
+argument_list|,
+name|topicView
+operator|.
+name|getMemoryPercentUsage
 argument_list|()
 argument_list|)
 argument_list|)
