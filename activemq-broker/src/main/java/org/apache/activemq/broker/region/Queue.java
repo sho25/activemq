@@ -10324,11 +10324,6 @@ name|target
 init|=
 literal|null
 decl_stmt|;
-name|int
-name|interestCount
-init|=
-literal|0
-decl_stmt|;
 for|for
 control|(
 name|Subscription
@@ -10344,9 +10339,6 @@ operator|instanceof
 name|QueueBrowserSubscription
 condition|)
 block|{
-name|interestCount
-operator|++
-expr_stmt|;
 continue|continue;
 block|}
 if|if
@@ -10444,20 +10436,24 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// make sure it gets dispatched again
+block|}
 if|if
 condition|(
-operator|!
+name|target
+operator|==
+literal|null
+operator|&&
 name|node
 operator|.
 name|isDropped
 argument_list|()
 condition|)
 block|{
-name|interestCount
-operator|++
+name|iterator
+operator|.
+name|remove
+argument_list|()
 expr_stmt|;
-block|}
 block|}
 comment|// return if there are no consumers or all consumers are full
 if|if
@@ -10466,14 +10462,6 @@ name|target
 operator|==
 literal|null
 operator|&&
-operator|(
-name|consumers
-operator|.
-name|size
-argument_list|()
-operator|==
-literal|0
-operator|||
 name|consumers
 operator|.
 name|size
@@ -10483,7 +10471,6 @@ name|fullConsumers
 operator|.
 name|size
 argument_list|()
-operator|)
 condition|)
 block|{
 return|return
