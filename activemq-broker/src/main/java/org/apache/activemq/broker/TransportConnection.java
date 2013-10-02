@@ -6925,6 +6925,15 @@ name|getRemoteAddress
 argument_list|()
 return|;
 block|}
+specifier|public
+name|Transport
+name|getTransport
+parameter_list|()
+block|{
+return|return
+name|transport
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
