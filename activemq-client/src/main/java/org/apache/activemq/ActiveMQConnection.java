@@ -2509,9 +2509,31 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
+name|doStop
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * @see #stop()      * @param checkClosed<tt>true</tt> to check for already closed and throw {@link java.lang.IllegalStateException} if already closed,      *<tt>false</tt> to skip this check      * @throws JMSException if the JMS provider fails to stop message delivery due to some internal error.      */
+name|void
+name|doStop
+parameter_list|(
+name|boolean
+name|checkClosed
+parameter_list|)
+throws|throws
+name|JMSException
+block|{
+if|if
+condition|(
+name|checkClosed
+condition|)
+block|{
 name|checkClosedOrFailed
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|started
@@ -2604,8 +2626,12 @@ name|get
 argument_list|()
 condition|)
 block|{
-name|stop
-argument_list|()
+comment|// do not fail if already closed as according to JMS spec we must not
+comment|// throw exception if already closed
+name|doStop
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 block|}
 synchronized|synchronized
