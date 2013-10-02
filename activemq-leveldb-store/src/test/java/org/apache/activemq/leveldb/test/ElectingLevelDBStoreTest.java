@@ -1314,6 +1314,13 @@ argument_list|)
 expr_stmt|;
 name|store
 operator|.
+name|setHostname
+argument_list|(
+literal|"localhost"
+argument_list|)
+expr_stmt|;
+name|store
+operator|.
 name|setBind
 argument_list|(
 literal|"tcp://0.0.0.0:0"
