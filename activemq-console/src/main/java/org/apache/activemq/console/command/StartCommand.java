@@ -384,6 +384,8 @@ operator|.
 name|await
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|Runtime
 operator|.
 name|getRuntime
@@ -394,6 +396,15 @@ argument_list|(
 name|jvmShutdownHook
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|e
+parameter_list|)
+block|{
+comment|// may already be shutdown in progress so ignore
+block|}
 if|if
 condition|(
 operator|!
