@@ -2366,6 +2366,22 @@ block|}
 block|}
 catch|catch
 parameter_list|(
+name|NoSuchMethodException
+name|mappingIncomplete
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|o
+operator|+
+literal|" has no modifiable elements"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
 name|Exception
 name|e
 parameter_list|)
