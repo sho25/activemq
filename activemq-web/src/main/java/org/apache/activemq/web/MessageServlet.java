@@ -187,34 +187,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQDestination
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQTextMessage
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|eclipse
 operator|.
 name|jetty
@@ -928,7 +900,7 @@ name|listener
 init|=
 literal|null
 decl_stmt|;
-comment|// Look for any available messages
+comment|// Look for any available messages (need a little timeout)
 name|message
 operator|=
 name|consumer
@@ -1881,21 +1853,29 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|error
+name|warn
 argument_list|(
-literal|"Error receiving message "
+literal|"Error receiving message due "
 operator|+
 name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|+
+literal|". This exception is ignored."
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
 block|}
+finally|finally
+block|{
 name|continuation
 operator|.
 name|resume
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
