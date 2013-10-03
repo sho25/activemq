@@ -7818,12 +7818,11 @@ name|dir
 operator|!=
 literal|null
 operator|&&
+operator|!
 name|dir
 operator|.
 name|isDirectory
 argument_list|()
-operator|==
-literal|false
 condition|)
 block|{
 name|dir
@@ -7891,7 +7890,7 @@ operator|*
 literal|1024
 operator|)
 operator|+
-literal|" mb of usable space - resetting to maximum available disk space:  "
+literal|" mb of usable space - resetting to maximum available disk space: "
 operator|+
 name|dirFreeSpace
 operator|/
@@ -8046,12 +8045,11 @@ name|tmpDir
 operator|!=
 literal|null
 operator|&&
+operator|!
 name|tmpDir
 operator|.
 name|isDirectory
 argument_list|()
-operator|==
-literal|false
 condition|)
 block|{
 name|tmpDir
@@ -8280,12 +8278,11 @@ name|schedulerDir
 operator|!=
 literal|null
 operator|&&
+operator|!
 name|schedulerDir
 operator|.
 name|isDirectory
 argument_list|()
-operator|==
-literal|false
 condition|)
 block|{
 name|schedulerDir
@@ -8872,9 +8869,6 @@ argument_list|,
 literal|"duplexNetworkConnectors"
 argument_list|,
 name|transport
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -8919,9 +8913,16 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|error
+name|warn
 argument_list|(
-literal|"Network Connector could not be unregistered from JMX"
+literal|"Network Connector could not be unregistered from JMX due "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|+
+literal|". This exception is ignored."
 argument_list|,
 name|e
 argument_list|)
@@ -9321,9 +9322,14 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|error
+name|warn
 argument_list|(
-literal|"Couldn't create ManagedRegionBroker"
+literal|"Cannot create ManagedRegionBroker due "
+operator|+
+name|me
+operator|.
+name|getMessage
+argument_list|()
 argument_list|,
 name|me
 argument_list|)
@@ -10136,7 +10142,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Caught exception, must be shutting down"
+literal|"Caught exception, must be shutting down. This exception is ignored."
 argument_list|,
 name|e
 argument_list|)
@@ -11595,7 +11601,7 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to start Scheduler "
+literal|"Failed to start Scheduler"
 argument_list|,
 name|e
 argument_list|)
