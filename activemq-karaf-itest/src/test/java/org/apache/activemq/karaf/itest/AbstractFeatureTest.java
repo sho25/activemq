@@ -890,7 +890,7 @@ name|getProperty
 argument_list|(
 literal|"karafVersion"
 argument_list|,
-literal|"2.3.0"
+literal|"2.3.3"
 argument_list|)
 return|;
 block|}
