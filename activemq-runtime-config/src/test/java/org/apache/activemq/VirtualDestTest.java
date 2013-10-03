@@ -15,11 +15,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|jms
+name|util
 operator|.
-name|Message
+name|concurrent
+operator|.
+name|TimeUnit
 import|;
 end_import
 
@@ -29,7 +31,7 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|MessageConsumer
+name|Message
 import|;
 end_import
 
@@ -404,6 +406,15 @@ operator|.
 name|waitUntilStarted
 argument_list|()
 expr_stmt|;
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|sleep
+argument_list|(
+name|SLEEP
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 literal|"broker alive"
@@ -567,6 +578,15 @@ name|brokerService
 operator|.
 name|waitUntilStarted
 argument_list|()
+expr_stmt|;
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|sleep
+argument_list|(
+name|SLEEP
+argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
@@ -1032,6 +1052,15 @@ name|brokerService
 operator|.
 name|waitUntilStarted
 argument_list|()
+expr_stmt|;
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|sleep
+argument_list|(
+name|SLEEP
+argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
