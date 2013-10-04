@@ -169,6 +169,17 @@ operator|+
 name|port
 argument_list|)
 expr_stmt|;
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"jetty.port"
+argument_list|,
+literal|""
+operator|+
+name|port
+argument_list|)
+expr_stmt|;
 name|Server
 name|server
 init|=

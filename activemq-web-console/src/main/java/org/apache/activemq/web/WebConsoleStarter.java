@@ -134,7 +134,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Starts the WebConsole.  *   *   */
+comment|/**  * Starts the WebConsole.  */
 end_comment
 
 begin_class
@@ -174,6 +174,12 @@ argument_list|(
 literal|"Initializing ActiveMQ WebConsole..."
 argument_list|)
 expr_stmt|;
+name|String
+name|webconsoleType
+init|=
+name|getWebconsoleType
+argument_list|()
+decl_stmt|;
 name|ServletContext
 name|servletContext
 init|=
@@ -188,6 +194,8 @@ init|=
 name|createWebapplicationContext
 argument_list|(
 name|servletContext
+argument_list|,
+name|webconsoleType
 argument_list|)
 decl_stmt|;
 name|initializeWebClient
@@ -197,9 +205,49 @@ argument_list|,
 name|context
 argument_list|)
 expr_stmt|;
+comment|// for embedded console log what port it uses
+if|if
+condition|(
+literal|"embedded"
+operator|.
+name|equals
+argument_list|(
+name|webconsoleType
+argument_list|)
+condition|)
+block|{
+comment|// show the url for the web consoles / main page so people can spot it
+name|String
+name|port
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"jetty.port"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|port
+operator|!=
+literal|null
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
+argument_list|(
+literal|"ActiveMQ WebConsole available at http://localhost:{}/"
+argument_list|,
+name|port
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+name|LOG
+operator|.
+name|debug
 argument_list|(
 literal|"ActiveMQ WebConsole initialized."
 argument_list|)
@@ -211,43 +259,11 @@ name|createWebapplicationContext
 parameter_list|(
 name|ServletContext
 name|servletContext
-parameter_list|)
-block|{
+parameter_list|,
 name|String
 name|webconsoleType
-init|=
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"webconsole.type"
-argument_list|,
-literal|"embedded"
-argument_list|)
-decl_stmt|;
-comment|// detect osgi
-try|try
-block|{
-if|if
-condition|(
-name|OsgiUtil
-operator|.
-name|isOsgi
-argument_list|()
-condition|)
-block|{
-name|webconsoleType
-operator|=
-literal|"osgi"
-expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|NoClassDefFoundError
-name|ignore
 parameter_list|)
-block|{         }
+block|{
 name|String
 name|configuration
 init|=
@@ -259,7 +275,7 @@ literal|".xml"
 decl_stmt|;
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Web console type: "
 operator|+
@@ -403,6 +419,51 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// do nothing, since the context is destroyed anyway
+block|}
+specifier|private
+specifier|static
+name|String
+name|getWebconsoleType
+parameter_list|()
+block|{
+name|String
+name|webconsoleType
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"webconsole.type"
+argument_list|,
+literal|"embedded"
+argument_list|)
+decl_stmt|;
+comment|// detect osgi
+try|try
+block|{
+if|if
+condition|(
+name|OsgiUtil
+operator|.
+name|isOsgi
+argument_list|()
+condition|)
+block|{
+name|webconsoleType
+operator|=
+literal|"osgi"
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|NoClassDefFoundError
+name|ignore
+parameter_list|)
+block|{         }
+return|return
+name|webconsoleType
+return|;
 block|}
 specifier|static
 class|class
