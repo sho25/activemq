@@ -1480,6 +1480,11 @@ name|connectedToPriority
 operator|=
 literal|false
 expr_stmt|;
+if|if
+condition|(
+name|reconnectOk
+condition|)
+block|{
 comment|// notify before any reconnect attempt so ack state can be whacked
 if|if
 condition|(
@@ -1494,11 +1499,6 @@ name|transportInterupted
 argument_list|()
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|reconnectOk
-condition|)
-block|{
 name|updated
 operator|.
 name|remove
