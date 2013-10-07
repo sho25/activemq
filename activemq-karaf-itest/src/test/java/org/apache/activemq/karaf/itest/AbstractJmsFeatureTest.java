@@ -215,6 +215,13 @@ argument_list|()
 expr_stmt|;
 name|out
 operator|.
+name|force
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
 name|close
 argument_list|()
 expr_stmt|;

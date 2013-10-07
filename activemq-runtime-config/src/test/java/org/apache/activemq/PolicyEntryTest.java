@@ -160,7 +160,7 @@ name|verifyQueueLimit
 argument_list|(
 literal|"After"
 argument_list|,
-literal|2048
+literal|4194304
 argument_list|)
 expr_stmt|;
 comment|// change to existing dest
@@ -168,7 +168,7 @@ name|verifyQueueLimit
 argument_list|(
 literal|"Before"
 argument_list|,
-literal|2048
+literal|4194304
 argument_list|)
 expr_stmt|;
 block|}
