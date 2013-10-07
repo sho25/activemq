@@ -85,6 +85,22 @@ name|map
 operator|.
 name|annotate
 operator|.
+name|JsonDeserialize
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|codehaus
+operator|.
+name|jackson
+operator|.
+name|map
+operator|.
+name|annotate
+operator|.
 name|JsonSerialize
 import|;
 end_import
@@ -110,7 +126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The main Configuration class for the PartitionBroker plugin  *  * @org.apache.xbean.XBean element="partitioning"  */
+comment|/**  * The main Configuration class for the PartitionBroker plugin  */
 end_comment
 
 begin_class
@@ -194,6 +210,15 @@ name|JsonProperty
 argument_list|(
 literal|"by_client_id"
 argument_list|)
+annotation|@
+name|JsonDeserialize
+argument_list|(
+name|contentAs
+operator|=
+name|Target
+operator|.
+name|class
+argument_list|)
 specifier|public
 name|HashMap
 argument_list|<
@@ -208,6 +233,15 @@ annotation|@
 name|JsonProperty
 argument_list|(
 literal|"by_user_name"
+argument_list|)
+annotation|@
+name|JsonDeserialize
+argument_list|(
+name|contentAs
+operator|=
+name|Target
+operator|.
+name|class
 argument_list|)
 specifier|public
 name|HashMap
@@ -224,6 +258,15 @@ name|JsonProperty
 argument_list|(
 literal|"by_source_ip"
 argument_list|)
+annotation|@
+name|JsonDeserialize
+argument_list|(
+name|contentAs
+operator|=
+name|Target
+operator|.
+name|class
+argument_list|)
 specifier|public
 name|HashMap
 argument_list|<
@@ -238,6 +281,15 @@ annotation|@
 name|JsonProperty
 argument_list|(
 literal|"by_queue"
+argument_list|)
+annotation|@
+name|JsonDeserialize
+argument_list|(
+name|contentAs
+operator|=
+name|Target
+operator|.
+name|class
 argument_list|)
 specifier|public
 name|HashMap
@@ -254,6 +306,15 @@ name|JsonProperty
 argument_list|(
 literal|"by_topic"
 argument_list|)
+annotation|@
+name|JsonDeserialize
+argument_list|(
+name|contentAs
+operator|=
+name|Target
+operator|.
+name|class
+argument_list|)
 specifier|public
 name|HashMap
 argument_list|<
@@ -268,6 +329,15 @@ annotation|@
 name|JsonProperty
 argument_list|(
 literal|"brokers"
+argument_list|)
+annotation|@
+name|JsonDeserialize
+argument_list|(
+name|contentAs
+operator|=
+name|String
+operator|.
+name|class
 argument_list|)
 specifier|public
 name|HashMap

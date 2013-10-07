@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a partition target.  This identifies the brokers that  * a partition lives on.  *  * @org.apache.xbean.XBean element="target"  */
+comment|/**  * Represents a partition target.  This identifies the brokers that  * a partition lives on.  */
 end_comment
 
 begin_class
