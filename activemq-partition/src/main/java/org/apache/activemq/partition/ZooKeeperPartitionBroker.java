@@ -135,6 +135,30 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|CountDownLatch
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
 begin_comment
 comment|/**  */
 end_comment
@@ -173,6 +197,17 @@ specifier|volatile
 name|Partitioning
 name|config
 decl_stmt|;
+specifier|protected
+specifier|final
+name|CountDownLatch
+name|configAcquired
+init|=
+operator|new
+name|CountDownLatch
+argument_list|(
+literal|1
+argument_list|)
+decl_stmt|;
 specifier|public
 name|ZooKeeperPartitionBroker
 parameter_list|(
@@ -188,6 +223,35 @@ argument_list|(
 name|broker
 argument_list|,
 name|plugin
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|start
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|super
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+comment|// Lets block a bit until we get our config.. Otherwise just keep
+comment|// on going.. not a big deal if we get our config later.  Perhaps
+comment|// ZK service is not having a good day.
+name|configAcquired
+operator|.
+name|await
+argument_list|(
+literal|5
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
 argument_list|)
 expr_stmt|;
 block|}
@@ -439,6 +503,11 @@ block|}
 argument_list|,
 name|stat
 argument_list|)
+expr_stmt|;
+name|configAcquired
+operator|.
+name|countDown
+argument_list|()
 expr_stmt|;
 name|reloadConfigOnPoll
 operator|=
