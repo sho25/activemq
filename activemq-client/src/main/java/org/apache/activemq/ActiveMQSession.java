@@ -123,6 +123,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicInteger
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -2096,7 +2110,10 @@ block|}
 block|}
 name|void
 name|clearMessagesInProgress
-parameter_list|()
+parameter_list|(
+name|AtomicInteger
+name|transportInterruptionProcessingComplete
+parameter_list|)
 block|{
 name|executor
 operator|.
@@ -2123,6 +2140,11 @@ block|{
 name|consumer
 operator|.
 name|inProgressClearRequired
+argument_list|()
+expr_stmt|;
+name|transportInterruptionProcessingComplete
+operator|.
+name|incrementAndGet
 argument_list|()
 expr_stmt|;
 try|try
@@ -5561,10 +5583,8 @@ if|if
 condition|(
 name|consumer
 operator|.
-name|getMessageListener
+name|hasMessageListener
 argument_list|()
-operator|!=
-literal|null
 condition|)
 block|{
 throw|throw

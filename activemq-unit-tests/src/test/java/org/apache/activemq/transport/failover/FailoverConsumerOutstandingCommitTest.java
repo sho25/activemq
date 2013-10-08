@@ -1013,6 +1013,16 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|javax
+operator|.
+name|jms
+operator|.
+name|IllegalStateException
+name|SessionClosedExpectedOnShutdown
+parameter_list|)
+block|{                 }
+catch|catch
+parameter_list|(
 name|JMSException
 name|e
 parameter_list|)
@@ -1665,6 +1675,16 @@ literal|2
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|javax
+operator|.
+name|jms
+operator|.
+name|IllegalStateException
+name|SessionClosedExpectedOnShutdown
+parameter_list|)
+block|{                 }
 catch|catch
 parameter_list|(
 name|JMSException

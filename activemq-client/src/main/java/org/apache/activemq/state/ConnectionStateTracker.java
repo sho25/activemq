@@ -2338,6 +2338,16 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
+name|cs
+operator|.
+name|getRecoveringPullConsumers
+argument_list|()
+operator|.
+name|remove
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}

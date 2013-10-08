@@ -45,6 +45,32 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|CountDownLatch
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicInteger
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -515,18 +541,13 @@ block|}
 specifier|public
 name|void
 name|clearMessagesInProgress
-parameter_list|()
+parameter_list|(
+name|AtomicInteger
+name|transportInterruptionProcessingComplete
+parameter_list|)
 block|{
 comment|// future: may want to deal with rollback of in progress messages to track re deliveries
 comment|// before indicating that all is complete.
-comment|// Till there is a need, lets immediately allow dispatch
-name|this
-operator|.
-name|connection
-operator|.
-name|transportInterruptionProcessingComplete
-argument_list|()
-expr_stmt|;
 block|}
 specifier|public
 name|ConsumerInfo

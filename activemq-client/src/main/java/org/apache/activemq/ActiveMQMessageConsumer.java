@@ -2774,7 +2774,7 @@ throws|throws
 name|JMSException
 block|{
 comment|// Store interrupted state and clear so that Transport operations don't
-comment|// throw InterruptedException and we ensure that resources are clened up.
+comment|// throw InterruptedException and we ensure that resources are cleaned up.
 name|boolean
 name|interrupted
 init|=
@@ -7013,6 +7013,20 @@ name|e
 throw|;
 block|}
 block|}
+block|}
+specifier|public
+name|boolean
+name|hasMessageListener
+parameter_list|()
+block|{
+return|return
+name|messageListener
+operator|.
+name|get
+argument_list|()
+operator|!=
+literal|null
+return|;
 block|}
 block|}
 end_class
