@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -72,6 +82,24 @@ parameter_list|(
 name|ConsumerId
 name|consumerId
 parameter_list|)
+function_decl|;
+name|void
+name|removeAll
+parameter_list|()
+function_decl|;
+comment|/**      * @return  a map of group names and associated consumer Id      */
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|getGroups
+parameter_list|()
+function_decl|;
+name|String
+name|getType
+parameter_list|()
 function_decl|;
 block|}
 end_interface

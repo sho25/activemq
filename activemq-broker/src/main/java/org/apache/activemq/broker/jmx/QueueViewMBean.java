@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|management
@@ -439,6 +449,59 @@ literal|"Caching is enabled"
 argument_list|)
 name|boolean
 name|isCacheEnabled
+parameter_list|()
+function_decl|;
+comment|/**      * @return a Map of groupNames and ConsumerIds      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Map of groupNames and ConsumerIds"
+argument_list|)
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|getMessageGroups
+parameter_list|()
+function_decl|;
+comment|/**      * @return the message group type implementation (simple,bucket,cached)      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"group  implementation (simple,bucket,cached)"
+argument_list|)
+name|String
+name|getMessageGroupType
+parameter_list|()
+function_decl|;
+comment|/**      * remove a message group = has the effect of rebalancing group      * @param groupName      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"remove a message group by its groupName"
+argument_list|)
+name|void
+name|removeMessageGroup
+parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"groupName"
+argument_list|)
+name|String
+name|groupName
+parameter_list|)
+function_decl|;
+comment|/**      * remove all the message groups - will rebalance all message groups across consumers      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"emove all the message groups - will rebalance all message groups across consumers"
+argument_list|)
+name|void
+name|removeAllMessageGroups
 parameter_list|()
 function_decl|;
 block|}
