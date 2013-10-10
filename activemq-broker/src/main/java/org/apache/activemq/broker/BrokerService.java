@@ -4690,14 +4690,16 @@ argument_list|()
 operator|.
 name|setLimit
 argument_list|(
-literal|1024
+literal|1024L
 operator|*
 literal|1024
 operator|*
-literal|64
+literal|1024
+operator|*
+literal|1
 argument_list|)
 expr_stmt|;
-comment|// 64 MB
+comment|// 1 GB
 name|systemUsage
 operator|.
 name|getTempUsage
@@ -4743,12 +4745,12 @@ literal|1024L
 operator|*
 literal|1024
 operator|*
-literal|1000
+literal|1024
 operator|*
 literal|50
 argument_list|)
 expr_stmt|;
-comment|// 50 // Gb
+comment|// 50 GB
 name|addService
 argument_list|(
 name|this
@@ -7709,6 +7711,16 @@ operator|>
 name|jvmLimit
 condition|)
 block|{
+name|usage
+operator|.
+name|getMemoryUsage
+argument_list|()
+operator|.
+name|setPercentOfJvmHeap
+argument_list|(
+literal|70
+argument_list|)
+expr_stmt|;
 name|LOG
 operator|.
 name|error
@@ -7733,27 +7745,25 @@ operator|*
 literal|1024
 operator|)
 operator|+
-literal|" mb - resetting to maximum available: "
+literal|" mb - resetting to 70% of maximum available: "
 operator|+
-name|jvmLimit
+operator|(
+name|usage
+operator|.
+name|getMemoryUsage
+argument_list|()
+operator|.
+name|getLimit
+argument_list|()
 operator|/
 operator|(
 literal|1024
 operator|*
 literal|1024
 operator|)
+operator|)
 operator|+
 literal|" mb"
-argument_list|)
-expr_stmt|;
-name|usage
-operator|.
-name|getMemoryUsage
-argument_list|()
-operator|.
-name|setLimit
-argument_list|(
-name|jvmLimit
 argument_list|)
 expr_stmt|;
 block|}
