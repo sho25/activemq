@@ -352,6 +352,9 @@ operator|.
 name|getLimit
 argument_list|()
 operator|*
+operator|(
+name|double
+operator|)
 name|portion
 argument_list|)
 argument_list|)
@@ -805,6 +808,9 @@ operator|.
 name|getLimit
 argument_list|()
 operator|*
+operator|(
+name|double
+operator|)
 name|usagePortion
 argument_list|)
 argument_list|)

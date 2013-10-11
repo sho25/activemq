@@ -201,7 +201,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"no new thread created withough listener or callback"
+literal|"no new thread created without listener or callback"
 argument_list|,
 name|activeThreadCount
 argument_list|,
@@ -329,7 +329,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"listner was called"
+literal|"listener was called"
 argument_list|,
 name|called
 operator|.
@@ -345,7 +345,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"listner called from another thread"
+literal|"listener called from another thread"
 argument_list|,
 operator|!
 name|Thread
@@ -428,6 +428,73 @@ literal|2.0
 argument_list|)
 argument_list|,
 name|underTest
+operator|.
+name|getLimit
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testParentPortion
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|underTest
+operator|.
+name|setLimit
+argument_list|(
+literal|1491035750
+argument_list|)
+expr_stmt|;
+name|MemoryUsage
+name|child
+init|=
+operator|new
+name|MemoryUsage
+argument_list|(
+name|underTest
+argument_list|,
+literal|"child"
+argument_list|,
+literal|1f
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"limits are matched whole"
+argument_list|,
+name|underTest
+operator|.
+name|getLimit
+argument_list|()
+argument_list|,
+name|child
+operator|.
+name|getLimit
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|child
+operator|.
+name|setUsagePortion
+argument_list|(
+literal|1f
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"limits are still matched whole"
+argument_list|,
+name|underTest
+operator|.
+name|getLimit
+argument_list|()
+argument_list|,
+name|child
 operator|.
 name|getLimit
 argument_list|()
