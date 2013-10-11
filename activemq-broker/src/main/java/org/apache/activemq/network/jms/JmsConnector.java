@@ -604,7 +604,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"stopping expired bridge {} caused an exception"
+literal|"Stopping expired bridge {} caused an exception"
 argument_list|,
 name|bridge
 argument_list|,
@@ -838,7 +838,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"JMS Connector {} Started"
+literal|"JMS Connector {} started"
 argument_list|,
 name|getName
 argument_list|()
@@ -908,7 +908,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"JMS Connector {} Stopped"
+literal|"JMS Connector {} stopped"
 argument_list|,
 name|getName
 argument_list|()

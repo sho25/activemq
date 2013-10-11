@@ -1270,7 +1270,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Connector {} Started"
+literal|"Connector {} started"
 argument_list|,
 name|getName
 argument_list|()
@@ -1418,7 +1418,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Connector {} Stopped"
+literal|"Connector {} stopped"
 argument_list|,
 name|getName
 argument_list|()

@@ -367,7 +367,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Proxy Connector {} Started"
+literal|"Proxy Connector {} started"
 argument_list|,
 name|getName
 argument_list|()
@@ -454,7 +454,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Proxy Connector {} Stopped"
+literal|"Proxy Connector {} stopped"
 argument_list|,
 name|getName
 argument_list|()

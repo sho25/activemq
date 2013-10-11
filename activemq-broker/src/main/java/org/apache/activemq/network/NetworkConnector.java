@@ -817,7 +817,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Network Connector {} Started"
+literal|"Network Connector {} started"
 argument_list|,
 name|this
 argument_list|)
@@ -837,7 +837,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Network Connector {} Stopped"
+literal|"Network Connector {} stopped"
 argument_list|,
 name|this
 argument_list|)
