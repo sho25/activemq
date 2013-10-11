@@ -40,6 +40,8 @@ operator|new
 name|MessageGroupHashBucket
 argument_list|(
 literal|1024
+argument_list|,
+literal|64
 argument_list|)
 return|;
 block|}
