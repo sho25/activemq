@@ -396,6 +396,15 @@ literal|"bucket"
 return|;
 block|}
 specifier|public
+name|int
+name|getBucketCount
+parameter_list|()
+block|{
+return|return
+name|bucketCount
+return|;
+block|}
+specifier|public
 name|String
 name|toString
 parameter_list|()

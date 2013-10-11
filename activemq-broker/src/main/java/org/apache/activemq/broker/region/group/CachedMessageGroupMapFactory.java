@@ -20,7 +20,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A factory to create instances of {@link org.apache.activemq.broker.region.group.SimpleMessageGroupMap} when implementing the  *<a href="http://activemq.apache.org/message-groups.html">Message Groups</a> functionality.  *  * @org.apache.xbean.XBean  *  *  */
+comment|/**  * A factory to create instances of {@link org.apache.activemq.broker.region.group.CachedMessageGroupMap} when implementing the  *<a href="http://activemq.apache.org/message-groups.html">Message Groups</a> functionality.  *  * @org.apache.xbean.XBean  *  *  */
 end_comment
 
 begin_class
@@ -30,6 +30,36 @@ name|CachedMessageGroupMapFactory
 implements|implements
 name|MessageGroupMapFactory
 block|{
+specifier|private
+name|int
+name|cacheSize
+init|=
+literal|1024
+decl_stmt|;
+specifier|public
+name|int
+name|getCacheSize
+parameter_list|()
+block|{
+return|return
+name|cacheSize
+return|;
+block|}
+specifier|public
+name|void
+name|setCacheSize
+parameter_list|(
+name|int
+name|cacheSize
+parameter_list|)
+block|{
+name|this
+operator|.
+name|cacheSize
+operator|=
+name|cacheSize
+expr_stmt|;
+block|}
 specifier|public
 name|MessageGroupMap
 name|createMessageGroupMap
@@ -38,7 +68,10 @@ block|{
 return|return
 operator|new
 name|CachedMessageGroupMap
+argument_list|(
+name|getCacheSize
 argument_list|()
+argument_list|)
 return|;
 block|}
 block|}
