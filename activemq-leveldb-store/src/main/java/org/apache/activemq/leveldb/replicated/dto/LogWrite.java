@@ -165,6 +165,17 @@ name|sync
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|XmlAttribute
+argument_list|(
+name|name
+operator|=
+literal|"date"
+argument_list|)
+specifier|public
+name|long
+name|date
+decl_stmt|;
 block|}
 end_class
 

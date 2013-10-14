@@ -139,6 +139,15 @@ function_decl|;
 annotation|@
 name|MBeanInfo
 argument_list|(
+literal|"When the last entry was added to the replication log."
+argument_list|)
+name|Long
+name|getPositionDate
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
 literal|"The directory holding the data."
 argument_list|)
 name|String
