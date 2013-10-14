@@ -227,28 +227,17 @@ name|MessageConsumer
 name|consumer
 parameter_list|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"message for "
-operator|+
+literal|"Message for consumer: {} continuation: {}"
+argument_list|,
 name|consumer
-operator|+
-literal|" continuation="
-operator|+
+argument_list|,
 name|continuation
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|continuation
@@ -291,14 +280,20 @@ name|continuation
 operator|.
 name|isResumed
 argument_list|()
+operator|&&
+operator|!
+name|continuation
+operator|.
+name|isInitial
+argument_list|()
 condition|)
 block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Resuming suspended continuation "
-operator|+
+literal|"Resuming suspended continuation {}"
+argument_list|,
 name|continuation
 argument_list|)
 expr_stmt|;
@@ -329,7 +324,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Message available, but continuation is already resumed.  Buffer for next time."
+literal|"Message available, but continuation is already resumed. Buffer for next time."
 argument_list|)
 expr_stmt|;
 name|bufferMessageForDelivery
@@ -350,11 +345,16 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|error
+name|warn
 argument_list|(
 literal|"Error receiving message "
 operator|+
 name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|+
+literal|". This exception is ignored."
 argument_list|,
 name|e
 argument_list|)
@@ -389,13 +389,21 @@ name|void
 name|run
 parameter_list|()
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Closing consumers on client: {}"
+argument_list|,
+name|client
+argument_list|)
+expr_stmt|;
 name|client
 operator|.
 name|closeConsumers
 argument_list|()
 expr_stmt|;
 block|}
-empty_stmt|;
 block|}
 operator|.
 name|start
@@ -432,11 +440,16 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|error
+name|warn
 argument_list|(
 literal|"Error receiving message "
 operator|+
 name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|+
+literal|". This exception is ignored."
 argument_list|,
 name|e
 argument_list|)
