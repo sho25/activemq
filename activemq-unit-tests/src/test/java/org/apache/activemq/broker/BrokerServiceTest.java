@@ -322,7 +322,7 @@ literal|1024
 operator|*
 literal|1024
 operator|*
-literal|64
+literal|1024
 argument_list|,
 name|service
 operator|.
