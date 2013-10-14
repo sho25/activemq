@@ -745,7 +745,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Subscrition Usage: "
+literal|"Subscription Usage: "
 operator|+
 name|tempUsageBySubscription
 operator|+
@@ -868,6 +868,23 @@ operator|.
 name|setDeleteAllMessagesOnStartup
 argument_list|(
 literal|true
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
+name|getSystemUsage
+argument_list|()
+operator|.
+name|getMemoryUsage
+argument_list|()
+operator|.
+name|setLimit
+argument_list|(
+literal|1024l
+operator|*
+literal|1024
+operator|*
+literal|64
 argument_list|)
 expr_stmt|;
 name|broker
