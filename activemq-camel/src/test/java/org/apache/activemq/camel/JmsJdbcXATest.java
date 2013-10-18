@@ -207,7 +207,7 @@ name|camel
 operator|.
 name|test
 operator|.
-name|junit4
+name|spring
 operator|.
 name|CamelSpringTestSupport
 import|;
@@ -985,6 +985,11 @@ name|brokerService
 return|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
 name|Override
 specifier|protected
 name|AbstractXmlApplicationContext
@@ -1075,6 +1080,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run

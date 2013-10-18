@@ -131,7 +131,7 @@ name|camel
 operator|.
 name|processor
 operator|.
-name|CamelLogger
+name|CamelLogProcessor
 import|;
 end_import
 
@@ -533,7 +533,7 @@ operator|.
 name|createConsumer
 argument_list|(
 operator|new
-name|CamelLogger
+name|CamelLogProcessor
 argument_list|()
 argument_list|)
 decl_stmt|;

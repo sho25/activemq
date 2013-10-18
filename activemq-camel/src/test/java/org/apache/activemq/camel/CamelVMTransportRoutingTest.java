@@ -199,6 +199,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -212,16 +222,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
 import|;
 end_import
 
@@ -302,6 +302,11 @@ name|RECEIVER_TOPIC
 init|=
 literal|"B"
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 specifier|public
 name|void
 name|testSendReceiveWithCamelRouteIntercepting
@@ -539,6 +544,8 @@ return|return
 name|service
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp
@@ -615,6 +622,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|tearDown

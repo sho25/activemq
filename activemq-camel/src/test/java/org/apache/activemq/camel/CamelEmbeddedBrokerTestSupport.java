@@ -67,18 +67,6 @@ name|apache
 operator|.
 name|camel
 operator|.
-name|ProducerTemplate
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|camel
-operator|.
 name|Endpoint
 import|;
 end_import
@@ -91,7 +79,7 @@ name|apache
 operator|.
 name|camel
 operator|.
-name|Exchange
+name|ProducerTemplate
 import|;
 end_import
 
@@ -142,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper class for test cases which use an embedded broker and use Camel to do the routing  *  *   */
+comment|/**  * A helper class for test cases which use an embedded broker and use Camel to  * do the routing  *  */
 end_comment
 
 begin_class
@@ -269,6 +257,15 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"unchecked"
+block|,
+literal|"rawtypes"
+block|}
+argument_list|)
 specifier|protected
 name|Context
 name|createJndiContext
@@ -296,7 +293,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{     }
-comment|/**      * Resolves a mandatory endpoint for the given URI or an exception is thrown      *      * @param uri the Camel<a href="">URI</a> to use to create or resolve an endpoint      * @return the endpoint      */
+comment|/**      * Resolves a mandatory endpoint for the given URI or an exception is thrown      *      * @param uri      *            the Camel<a href="">URI</a> to use to create or resolve an      *            endpoint      * @return the endpoint      */
 specifier|protected
 name|Endpoint
 name|resolveMandatoryEndpoint
@@ -314,7 +311,7 @@ name|uri
 argument_list|)
 return|;
 block|}
-comment|/**      * Resolves a mandatory endpoint for the given URI and expected type or an exception is thrown      *      * @param uri the Camel<a href="">URI</a> to use to create or resolve an endpoint      * @return the endpoint      */
+comment|/**      * Resolves a mandatory endpoint for the given URI and expected type or an      * exception is thrown      *      * @param uri      *            the Camel<a href="">URI</a> to use to create or resolve an      *            endpoint      * @return the endpoint      */
 specifier|protected
 parameter_list|<
 name|T
@@ -428,7 +425,7 @@ return|return
 name|endpoint
 return|;
 block|}
-comment|/**      * Resolves the mandatory Mock endpoint using a URI of the form<code>mock:someName</code>      *      * @param uri the URI which typically starts with "mock:" and has some name      * @return the mandatory mock endpoint or an exception is thrown if it could not be resolved      */
+comment|/**      * Resolves the mandatory Mock endpoint using a URI of the form      *<code>mock:someName</code>      *      * @param uri      *            the URI which typically starts with "mock:" and has some name      * @return the mandatory mock endpoint or an exception is thrown if it could      *         not be resolved      */
 specifier|protected
 name|MockEndpoint
 name|getMockEndpoint
