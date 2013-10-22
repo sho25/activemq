@@ -1715,6 +1715,15 @@ operator|.
 name|MAX_VALUE
 argument_list|)
 expr_stmt|;
+comment|// part solution - dispatching to browsers needs to be restricted
+name|sub
+operator|.
+name|setMaxMessages
+argument_list|(
+name|getMaxBrowsePageSize
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void

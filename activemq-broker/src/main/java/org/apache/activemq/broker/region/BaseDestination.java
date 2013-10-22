@@ -1228,6 +1228,15 @@ return|return
 name|this
 operator|.
 name|maxBrowsePageSize
+operator|>
+literal|0
+condition|?
+name|this
+operator|.
+name|maxBrowsePageSize
+else|:
+name|getMaxPageSize
+argument_list|()
 return|;
 block|}
 specifier|public

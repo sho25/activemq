@@ -8218,6 +8218,12 @@ operator|.
 name|getMessageId
 argument_list|()
 argument_list|)
+operator|&&
+operator|!
+name|browser
+operator|.
+name|atMax
+argument_list|()
 condition|)
 block|{
 name|msgContext
@@ -8258,6 +8264,11 @@ if|if
 condition|(
 operator|!
 name|added
+operator|||
+name|browser
+operator|.
+name|atMax
+argument_list|()
 condition|)
 block|{
 name|browser

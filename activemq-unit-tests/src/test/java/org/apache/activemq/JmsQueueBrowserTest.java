@@ -2830,6 +2830,13 @@ argument_list|(
 name|isUseCache
 argument_list|)
 expr_stmt|;
+name|policyEntry
+operator|.
+name|setMaxBrowsePageSize
+argument_list|(
+literal|4096
+argument_list|)
+expr_stmt|;
 name|policyMap
 operator|.
 name|setDefaultEntry
