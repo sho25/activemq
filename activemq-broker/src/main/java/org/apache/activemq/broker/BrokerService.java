@@ -8304,7 +8304,7 @@ argument_list|()
 expr_stmt|;
 block|}
 name|long
-name|schedularLimit
+name|schedulerLimit
 init|=
 name|usage
 operator|.
@@ -8324,7 +8324,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|schedularLimit
+name|schedulerLimit
 operator|>
 name|dirFreeSpace
 condition|)
@@ -8333,9 +8333,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Job Schedular Store limit is "
+literal|"Job Scheduler Store limit is "
 operator|+
-name|schedularLimit
+name|schedulerLimit
 operator|/
 operator|(
 literal|1024
