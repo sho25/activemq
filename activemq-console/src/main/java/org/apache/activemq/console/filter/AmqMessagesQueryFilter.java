@@ -195,7 +195,7 @@ operator|=
 name|destination
 expr_stmt|;
 block|}
-comment|/**      * Create a JMS message query filter      *      * @param brokerUrl   - broker url to connect to      * @param destination - JMS destination to query      */
+comment|/**      * Create a JMS message query filter      *      * @param connectionFactory - to connect with      * @param destination - JMS destination to query      */
 specifier|public
 name|AmqMessagesQueryFilter
 parameter_list|(

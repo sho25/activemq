@@ -186,7 +186,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Retrieve the output stream being used by the formatter      *       * @return      */
+comment|/**      * Retrieve the output stream being used by the formatter      */
 specifier|public
 name|OutputStream
 name|getOutputStream
