@@ -302,6 +302,18 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
+specifier|private
+name|StompInactivityMonitor
+name|stompInactivityMonitor
+init|=
+operator|new
+name|StompInactivityMonitor
+argument_list|(
+name|this
+argument_list|,
+name|wireFormat
+argument_list|)
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -617,7 +629,7 @@ name|getInactivityMonitor
 parameter_list|()
 block|{
 return|return
-literal|null
+name|stompInactivityMonitor
 return|;
 block|}
 annotation|@
