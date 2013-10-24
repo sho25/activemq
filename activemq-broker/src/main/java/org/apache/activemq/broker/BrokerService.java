@@ -8759,7 +8759,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-specifier|protected
+specifier|public
 name|void
 name|registerNetworkConnectorMBean
 parameter_list|(

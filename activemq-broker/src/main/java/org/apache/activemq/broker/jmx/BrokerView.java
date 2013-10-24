@@ -1498,6 +1498,13 @@ name|discoveryAddress
 argument_list|)
 throw|;
 block|}
+name|brokerService
+operator|.
+name|registerNetworkConnectorMBean
+argument_list|(
+name|connector
+argument_list|)
+expr_stmt|;
 name|connector
 operator|.
 name|start
