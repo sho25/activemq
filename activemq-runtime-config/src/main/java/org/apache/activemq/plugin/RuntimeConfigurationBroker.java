@@ -4616,8 +4616,10 @@ name|brokerRootNode
 init|=
 name|doc
 operator|.
-name|getElementsByTagName
+name|getElementsByTagNameNS
 argument_list|(
+literal|"*"
+argument_list|,
 literal|"broker"
 argument_list|)
 operator|.
@@ -4626,6 +4628,13 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|brokerRootNode
+operator|!=
+literal|null
+condition|)
+block|{
 name|JAXBElement
 argument_list|<
 name|DtoBroker
@@ -4663,6 +4672,17 @@ argument_list|(
 name|doc
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|info
+argument_list|(
+literal|"Failed to find 'broker' element by tag in: "
+operator|+
+name|configToMonitor
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -4721,6 +4741,22 @@ block|{
 name|info
 argument_list|(
 literal|"Failed to find broker element in: "
+operator|+
+name|configToMonitor
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|info
+argument_list|(
+literal|"Unexpected exception during load of: "
 operator|+
 name|configToMonitor
 argument_list|,
