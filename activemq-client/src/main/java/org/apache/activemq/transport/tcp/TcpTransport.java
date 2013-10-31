@@ -1370,7 +1370,7 @@ return|return
 name|host
 return|;
 block|}
-comment|/**      * Configures the socket for use      *      * @param sock      * @throws SocketException, IllegalArgumentException if setting the options      *         on the socket failed.      */
+comment|/**      * Configures the socket for use      *      * @param sock  the socket      * @throws SocketException, IllegalArgumentException if setting the options      *         on the socket failed.      */
 specifier|protected
 name|void
 name|initialiseSocket
@@ -1390,15 +1390,55 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// copy the map as its used values is being removed when calling setProperties
+comment|// and we need to be able to set the options again in case socket is re-initailized
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+name|copy
+init|=
+operator|new
+name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+argument_list|(
+name|socketOptions
+argument_list|)
+decl_stmt|;
 name|IntrospectionSupport
 operator|.
 name|setProperties
 argument_list|(
 name|socket
 argument_list|,
-name|socketOptions
+name|copy
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|copy
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Invalid socket parameters: "
+operator|+
+name|copy
+argument_list|)
+throw|;
+block|}
 block|}
 try|try
 block|{
@@ -1439,6 +1479,11 @@ argument_list|(
 literal|"Cannot set socket buffer size. Reason: "
 operator|+
 name|se
+operator|.
+name|getMessage
+argument_list|()
+operator|+
+literal|". This exception is ignored."
 argument_list|,
 name|se
 argument_list|)
