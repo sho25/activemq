@@ -99,6 +99,20 @@ name|DataByteArrayOutputStream
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|RecoverableRandomAccessFile
+import|;
+end_import
+
 begin_comment
 comment|/**  * An optimized writer to do batch appends to a data file. This object is thread  * safe and gains throughput as you increase the number of concurrent writes it  * does.  * The thread calling enqueue does the file open and buffering of the data, which  * reduces the round trip of the write thread.  *   */
 end_comment
@@ -324,7 +338,7 @@ name|dataFile
 init|=
 literal|null
 decl_stmt|;
-name|RandomAccessFile
+name|RecoverableRandomAccessFile
 name|file
 init|=
 literal|null

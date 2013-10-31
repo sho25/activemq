@@ -169,6 +169,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|RecoverableRandomAccessFile
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -1336,7 +1350,7 @@ name|dataFile
 init|=
 literal|null
 decl_stmt|;
-name|RandomAccessFile
+name|RecoverableRandomAccessFile
 name|file
 init|=
 literal|null
@@ -1895,6 +1909,17 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|logger
+operator|.
+name|info
+argument_list|(
+literal|"Journal failed while writing at: "
+operator|+
+name|wb
+operator|.
+name|offset
+argument_list|)
+expr_stmt|;
 synchronized|synchronized
 init|(
 name|enqueueMutex

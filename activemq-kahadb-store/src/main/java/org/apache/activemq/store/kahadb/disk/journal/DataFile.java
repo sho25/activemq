@@ -105,6 +105,20 @@ name|IOHelper
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|RecoverableRandomAccessFile
+import|;
+end_import
+
 begin_comment
 comment|/**  * DataFile  *  *  */
 end_comment
@@ -279,7 +293,7 @@ return|;
 block|}
 specifier|public
 specifier|synchronized
-name|RandomAccessFile
+name|RecoverableRandomAccessFile
 name|openRandomAccessFile
 parameter_list|()
 throws|throws
@@ -287,7 +301,7 @@ name|IOException
 block|{
 return|return
 operator|new
-name|RandomAccessFile
+name|RecoverableRandomAccessFile
 argument_list|(
 name|file
 operator|.
@@ -303,7 +317,7 @@ specifier|synchronized
 name|void
 name|closeRandomAccessFile
 parameter_list|(
-name|RandomAccessFile
+name|RecoverableRandomAccessFile
 name|file
 parameter_list|)
 throws|throws

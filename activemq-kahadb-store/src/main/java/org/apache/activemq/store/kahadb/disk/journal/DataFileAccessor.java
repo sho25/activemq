@@ -65,6 +65,20 @@ name|ByteSequence
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|RecoverableRandomAccessFile
+import|;
+end_import
+
 begin_comment
 comment|/**  * Optimized Store reader and updater. Single threaded and synchronous. Use in  * conjunction with the DataFileAccessorPool of concurrent use.  *   *   */
 end_comment
@@ -95,7 +109,7 @@ name|inflightWrites
 decl_stmt|;
 specifier|private
 specifier|final
-name|RandomAccessFile
+name|RecoverableRandomAccessFile
 name|file
 decl_stmt|;
 specifier|private
