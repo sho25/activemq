@@ -7855,6 +7855,17 @@ name|getLimit
 argument_list|()
 decl_stmt|;
 name|long
+name|storeCurrent
+init|=
+name|usage
+operator|.
+name|getStoreUsage
+argument_list|()
+operator|.
+name|getUsage
+argument_list|()
+decl_stmt|;
+name|long
 name|dirFreeSpace
 init|=
 name|dir
@@ -7866,7 +7877,11 @@ if|if
 condition|(
 name|storeLimit
 operator|>
+operator|(
 name|dirFreeSpace
+operator|+
+name|storeCurrent
+operator|)
 condition|)
 block|{
 name|LOG
@@ -7883,7 +7898,17 @@ operator|*
 literal|1024
 operator|)
 operator|+
-literal|" mb, whilst the data directory: "
+literal|" mb (current store usage is "
+operator|+
+name|storeCurrent
+operator|/
+operator|(
+literal|1024
+operator|*
+literal|1024
+operator|)
+operator|+
+literal|" mb). The data directory: "
 operator|+
 name|dir
 operator|.
@@ -7902,7 +7927,11 @@ operator|)
 operator|+
 literal|" mb of usable space - resetting to maximum available disk space: "
 operator|+
+operator|(
 name|dirFreeSpace
+operator|+
+name|storeCurrent
+operator|)
 operator|/
 operator|(
 literal|1024
@@ -7921,6 +7950,8 @@ operator|.
 name|setLimit
 argument_list|(
 name|dirFreeSpace
+operator|+
+name|storeCurrent
 argument_list|)
 expr_stmt|;
 block|}
