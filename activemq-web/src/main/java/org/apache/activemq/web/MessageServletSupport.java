@@ -1733,18 +1733,17 @@ operator|&&
 name|contentType
 operator|!=
 literal|null
-operator|&&
-name|contentType
-operator|.
-name|toLowerCase
-argument_list|()
-operator|.
-name|startsWith
-argument_list|(
-literal|"text/xml"
-argument_list|)
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Content-Type={}"
+argument_list|,
+name|contentType
+argument_list|)
+expr_stmt|;
 comment|// lets read the message body instead
 name|BufferedReader
 name|reader
