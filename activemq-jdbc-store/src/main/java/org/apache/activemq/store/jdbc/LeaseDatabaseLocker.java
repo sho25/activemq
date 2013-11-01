@@ -240,7 +240,8 @@ expr_stmt|;
 name|String
 name|sql
 init|=
-name|statements
+name|getStatements
+argument_list|()
 operator|.
 name|getLeaseObtainStatement
 argument_list|()
@@ -494,7 +495,8 @@ name|connection
 operator|.
 name|prepareStatement
 argument_list|(
-name|statements
+name|getStatements
+argument_list|()
 operator|.
 name|getLeaseOwnerStatement
 argument_list|()
@@ -620,7 +622,8 @@ name|connection
 operator|.
 name|prepareStatement
 argument_list|(
-name|statements
+name|getStatements
+argument_list|()
 operator|.
 name|getCurrentDateTime
 argument_list|()
@@ -775,7 +778,8 @@ name|connection
 operator|.
 name|prepareStatement
 argument_list|(
-name|statements
+name|getStatements
+argument_list|()
 operator|.
 name|getLeaseUpdateStatement
 argument_list|()
@@ -884,7 +888,8 @@ specifier|final
 name|String
 name|sql
 init|=
-name|statements
+name|getStatements
+argument_list|()
 operator|.
 name|getLeaseUpdateStatement
 argument_list|()

@@ -182,7 +182,8 @@ expr_stmt|;
 name|String
 name|sql
 init|=
-name|statements
+name|getStatements
+argument_list|()
 operator|.
 name|getLockCreateStatement
 argument_list|()
