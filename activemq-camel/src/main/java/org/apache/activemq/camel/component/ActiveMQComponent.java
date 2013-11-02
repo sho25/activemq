@@ -404,18 +404,6 @@ name|brokerURL
 argument_list|)
 expr_stmt|;
 block|}
-comment|// set the connection factory with the provided broker url
-name|answer
-operator|.
-name|setConnectionFactory
-argument_list|(
-operator|new
-name|ActiveMQConnectionFactory
-argument_list|(
-name|brokerURL
-argument_list|)
-argument_list|)
-expr_stmt|;
 return|return
 name|answer
 return|;
