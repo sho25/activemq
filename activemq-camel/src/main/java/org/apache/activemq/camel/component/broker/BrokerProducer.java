@@ -31,18 +31,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|RejectedExecutionException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -52,22 +40,6 @@ operator|.
 name|broker
 operator|.
 name|ProducerBrokerExchange
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|camel
-operator|.
-name|converter
-operator|.
-name|ActiveMQMessageConverter
 import|;
 end_import
 
@@ -174,15 +146,6 @@ name|DefaultAsyncProducer
 block|{
 specifier|private
 specifier|final
-name|ActiveMQMessageConverter
-name|activeMQConverter
-init|=
-operator|new
-name|ActiveMQMessageConverter
-argument_list|()
-decl_stmt|;
-specifier|private
-specifier|final
 name|BrokerEndpoint
 name|brokerEndpoint
 decl_stmt|;
@@ -216,46 +179,6 @@ name|AsyncCallback
 name|callback
 parameter_list|)
 block|{
-comment|// deny processing if we are not started
-if|if
-condition|(
-operator|!
-name|isRunAllowed
-argument_list|()
-condition|)
-block|{
-if|if
-condition|(
-name|exchange
-operator|.
-name|getException
-argument_list|()
-operator|==
-literal|null
-condition|)
-block|{
-name|exchange
-operator|.
-name|setException
-argument_list|(
-operator|new
-name|RejectedExecutionException
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-comment|// we cannot process so invoke callback
-name|callback
-operator|.
-name|done
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-return|return
-literal|true
-return|;
-block|}
 try|try
 block|{
 comment|//In the middle of the broker - InOut doesn't make any sense
@@ -400,13 +323,9 @@ name|Exception
 block|{
 name|ActiveMQMessage
 name|result
-init|=
-literal|null
 decl_stmt|;
 name|Message
-name|camelMesssage
-init|=
-literal|null
+name|camelMessage
 decl_stmt|;
 if|if
 condition|(
@@ -416,7 +335,7 @@ name|hasOut
 argument_list|()
 condition|)
 block|{
-name|camelMesssage
+name|camelMessage
 operator|=
 name|exchange
 operator|.
@@ -426,7 +345,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|camelMesssage
+name|camelMessage
 operator|=
 name|exchange
 operator|.
@@ -442,7 +361,7 @@ name|Object
 argument_list|>
 name|headers
 init|=
-name|camelMesssage
+name|camelMessage
 operator|.
 name|getHeaders
 argument_list|()
@@ -450,7 +369,7 @@ decl_stmt|;
 comment|/**          * We purposely don't want to support injecting messages half-way through          * broker processing - use the activemq camel component for that - but          * we will support changing message headers and destinations          */
 if|if
 condition|(
-name|camelMesssage
+name|camelMessage
 operator|instanceof
 name|JmsMessage
 condition|)
@@ -461,7 +380,7 @@ init|=
 operator|(
 name|JmsMessage
 operator|)
-name|camelMesssage
+name|camelMessage
 decl_stmt|;
 if|if
 condition|(
@@ -498,7 +417,7 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"not the original message from the broker "
+literal|"Not the original message from the broker "
 operator|+
 name|jmsMessage
 operator|.
@@ -514,9 +433,9 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"not the original message from the broker "
+literal|"Not the original message from the broker "
 operator|+
-name|camelMesssage
+name|camelMessage
 argument_list|)
 throw|;
 block|}

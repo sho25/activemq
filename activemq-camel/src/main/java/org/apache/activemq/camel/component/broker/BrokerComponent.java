@@ -430,6 +430,13 @@ argument_list|,
 name|brokerConfiguration
 argument_list|)
 decl_stmt|;
+name|setProperties
+argument_list|(
+name|brokerEndpoint
+argument_list|,
+name|parameters
+argument_list|)
+expr_stmt|;
 return|return
 name|brokerEndpoint
 return|;
