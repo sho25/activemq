@@ -636,7 +636,6 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-comment|// FactoryBean methods
 annotation|@
 name|Override
 specifier|public
@@ -646,6 +645,18 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// in case spring-dm calls getObject before this bean has been initialized
+if|if
+condition|(
+name|pooledConnectionFactory
+operator|==
+literal|null
+condition|)
+block|{
+name|afterPropertiesSet
+argument_list|()
+expr_stmt|;
+block|}
 return|return
 name|pooledConnectionFactory
 return|;
