@@ -112,7 +112,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helps keep track of the current transaction/JDBC connection.  *   *   */
+comment|/**  * Helps keep track of the current transaction/JDBC connection.  */
 end_comment
 
 begin_class
@@ -150,6 +150,7 @@ name|Connection
 name|connection
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|boolean
 name|inTx
 decl_stmt|;
@@ -321,7 +322,29 @@ parameter_list|(
 name|Throwable
 name|e
 parameter_list|)
-block|{             }
+block|{
+comment|// ignore
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Cannot set transaction isolation to "
+operator|+
+name|transactionIsolation
+operator|+
+literal|" due "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|+
+literal|". This exception is ignored."
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 return|return
 name|connection
@@ -597,16 +620,19 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
+comment|// ignore
 name|LOG
 operator|.
-name|warn
+name|trace
 argument_list|(
-literal|"Close failed: "
+literal|"Closing connection failed due: "
 operator|+
 name|e
 operator|.
 name|getMessage
 argument_list|()
+operator|+
+literal|". This exception is ignored."
 argument_list|,
 name|e
 argument_list|)
@@ -642,14 +668,15 @@ literal|"Already started."
 argument_list|)
 throw|;
 block|}
-name|inTx
-operator|=
-literal|true
-expr_stmt|;
 name|connection
 operator|=
 name|getConnection
 argument_list|()
+expr_stmt|;
+comment|// only mark in tx if we could get a connection
+name|inTx
+operator|=
+literal|true
 expr_stmt|;
 block|}
 specifier|public
