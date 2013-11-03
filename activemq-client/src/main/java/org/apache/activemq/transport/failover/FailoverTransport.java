@@ -3717,9 +3717,11 @@ name|i
 operator|++
 control|)
 block|{
+comment|// meed parenthesis due other JDKs (see AMQ-4826)
 name|int
 name|p
 init|=
+operator|(
 call|(
 name|int
 call|)
@@ -3730,12 +3732,13 @@ name|random
 argument_list|()
 operator|*
 literal|100
+argument_list|)
+operator|)
 operator|%
 name|l
 operator|.
 name|size
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|URI
 name|t
