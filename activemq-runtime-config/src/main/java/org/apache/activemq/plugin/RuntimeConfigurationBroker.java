@@ -4102,16 +4102,6 @@ operator|.
 name|getSimpleName
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|elementName
-operator|.
-name|endsWith
-argument_list|(
-literal|"s"
-argument_list|)
-condition|)
-block|{
 name|Method
 name|setter
 init|=
@@ -4228,17 +4218,6 @@ operator|+
 literal|" on :"
 operator|+
 name|instance
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-else|else
-block|{
-name|info
-argument_list|(
-literal|"unsupported mapping of element for non plural:"
-operator|+
-name|elementName
 argument_list|)
 expr_stmt|;
 block|}
