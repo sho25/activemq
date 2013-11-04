@@ -253,7 +253,7 @@ name|connection
 parameter_list|)
 throws|throws
 name|Exception
-block|{                         }
+block|{                     }
 annotation|@
 name|Override
 specifier|public
@@ -412,7 +412,7 @@ name|connection
 parameter_list|)
 throws|throws
 name|Exception
-block|{                         }
+block|{                     }
 annotation|@
 name|Override
 specifier|public
@@ -531,6 +531,8 @@ operator|new
 name|ConnectionFactory
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Connection
 name|createConnection
@@ -550,6 +552,8 @@ name|createXAConnection
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Connection
 name|createConnection
