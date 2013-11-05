@@ -457,6 +457,15 @@ name|anonymousAccessAllowed
 expr_stmt|;
 block|}
 specifier|public
+name|boolean
+name|isAnonymousAccessAllowed
+parameter_list|()
+block|{
+return|return
+name|anonymousAccessAllowed
+return|;
+block|}
+specifier|public
 name|void
 name|setAnonymousUser
 parameter_list|(
@@ -472,6 +481,15 @@ name|anonymousUser
 expr_stmt|;
 block|}
 specifier|public
+name|String
+name|getAnonymousUser
+parameter_list|()
+block|{
+return|return
+name|anonymousUser
+return|;
+block|}
+specifier|public
 name|void
 name|setAnonymousGroup
 parameter_list|(
@@ -485,6 +503,15 @@ name|anonymousGroup
 operator|=
 name|anonymousGroup
 expr_stmt|;
+block|}
+specifier|public
+name|String
+name|getAnonymousGroup
+parameter_list|()
+block|{
+return|return
+name|anonymousGroup
+return|;
 block|}
 comment|/**      * Sets the groups a user is in. The key is the user name and the value is a      * Set of groups      */
 specifier|public

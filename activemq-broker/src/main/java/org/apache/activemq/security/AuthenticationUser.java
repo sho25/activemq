@@ -35,6 +35,10 @@ name|groups
 decl_stmt|;
 specifier|public
 name|AuthenticationUser
+parameter_list|()
+block|{     }
+specifier|public
+name|AuthenticationUser
 parameter_list|(
 name|String
 name|username
