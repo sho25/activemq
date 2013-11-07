@@ -341,7 +341,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|1
+literal|2
 argument_list|,
 name|countMbeans
 argument_list|(
@@ -553,7 +553,7 @@ literal|"restart number: "
 operator|+
 name|i
 argument_list|,
-literal|1
+literal|2
 argument_list|,
 name|countMbeans
 argument_list|(
