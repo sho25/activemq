@@ -415,15 +415,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|suite
-operator|.
-name|addTestSuite
-argument_list|(
-name|UnifiedSessionTest
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
+comment|// suite.addTestSuite(UnifiedSessionTest.class);   // https://issues.apache.org/jira/browse/AMQ-4375
 name|suite
 operator|.
 name|addTestSuite
