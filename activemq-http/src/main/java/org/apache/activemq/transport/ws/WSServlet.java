@@ -232,6 +232,10 @@ decl_stmt|;
 if|if
 condition|(
 name|protocol
+operator|!=
+literal|null
+operator|&&
+name|protocol
 operator|.
 name|startsWith
 argument_list|(
