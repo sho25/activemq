@@ -280,7 +280,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link BrokerFacade} which uses a JMX-Connection to communicate with a  * broker  *   *   */
+comment|/**  * A {@link BrokerFacade} which uses a JMX-Connection to communicate with a  * broker  */
 end_comment
 
 begin_class
@@ -367,18 +367,21 @@ name|closeConnection
 argument_list|()
 expr_stmt|;
 block|}
-specifier|private
-name|ObjectName
-name|getBrokerObjectName
-parameter_list|(
+annotation|@
+name|Override
+specifier|public
+name|BrokerViewMBean
+name|getBrokerAdmin
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|MBeanServerConnection
 name|connection
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|MalformedObjectNameException
-block|{
+init|=
+name|getMBeanServerConnection
+argument_list|()
+decl_stmt|;
 name|Set
 argument_list|<
 name|ObjectName
@@ -419,69 +422,9 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-return|return
-name|name
-return|;
-block|}
-specifier|public
-name|BrokerViewMBean
-name|getBrokerAdmin
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|MBeanServerConnection
-name|connection
-init|=
-name|getMBeanServerConnection
-argument_list|()
-decl_stmt|;
-name|Set
-name|brokers
-init|=
-name|findBrokers
-argument_list|(
-name|connection
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|brokers
-operator|.
-name|size
-argument_list|()
-operator|==
-literal|0
-condition|)
-block|{
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-literal|"No broker could be found in the JMX."
-argument_list|)
-throw|;
-block|}
-name|ObjectName
-name|name
-init|=
-operator|(
-name|ObjectName
-operator|)
-name|brokers
-operator|.
-name|iterator
-argument_list|()
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|BrokerViewMBean
 name|mbean
 init|=
-operator|(
-name|BrokerViewMBean
-operator|)
 name|MBeanServerInvocationHandler
 operator|.
 name|newProxyInstance
@@ -501,6 +444,8 @@ return|return
 name|mbean
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getBrokerName
@@ -886,17 +831,11 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-comment|// Ignore the exception, since it most likly won't matter
-comment|// anymore
+comment|// Ignore the exception, since it most likly won't matter anymore
 block|}
 block|}
 block|}
-comment|/** 	 * Finds all ActiveMQ-Brokers registered on a certain JMX-Server or, if a 	 * JMX-BrokerName has been set, the broker with that name. 	 *  	 * @param connection 	 *            not<code>null</code> 	 * @return Set with ObjectName-elements 	 * @throws IOException 	 * @throws MalformedObjectNameException 	 */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
+comment|/**      * Finds all ActiveMQ-Brokers registered on a certain JMX-Server or, if a      * JMX-BrokerName has been set, the broker with that name.      *      * @param connection      *            not<code>null</code>      * @return Set with ObjectName-elements      * @throws IOException      * @throws MalformedObjectNameException      */
 specifier|protected
 name|Set
 argument_list|<
@@ -940,13 +879,11 @@ operator|=
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq:brokerName="
+literal|"org.apache.activemq:type=Broker,brokerName="
 operator|+
 name|this
 operator|.
 name|brokerName
-operator|+
-literal|",Type=broker"
 argument_list|)
 expr_stmt|;
 block|}
@@ -989,9 +926,6 @@ block|{
 name|BrokerViewMBean
 name|mbean
 init|=
-operator|(
-name|BrokerViewMBean
-operator|)
 name|MBeanServerInvocationHandler
 operator|.
 name|newProxyInstance
@@ -1027,6 +961,8 @@ return|return
 name|masterBrokers
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|purgeQueue
@@ -1054,6 +990,8 @@ name|purge
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ManagementContext
 name|getManagementContext
@@ -1068,10 +1006,7 @@ argument_list|)
 throw|;
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
+name|Override
 specifier|protected
 parameter_list|<
 name|T
@@ -1166,9 +1101,6 @@ decl_stmt|;
 name|T
 name|value
 init|=
-operator|(
-name|T
-operator|)
 name|MBeanServerInvocationHandler
 operator|.
 name|newProxyInstance
