@@ -78,12 +78,24 @@ parameter_list|()
 function_decl|;
 comment|/**      * @return the id of the Subscription      */
 annotation|@
+name|Deprecated
+annotation|@
 name|MBeanInfo
 argument_list|(
 literal|"ID of the Subscription."
 argument_list|)
 name|long
 name|getSubcriptionId
+parameter_list|()
+function_decl|;
+comment|/**      * @return the id of the Subscription      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"ID of the Subscription."
+argument_list|)
+name|long
+name|getSubscriptionId
 parameter_list|()
 function_decl|;
 comment|/**      * @return the destination name      */
@@ -304,12 +316,24 @@ parameter_list|()
 function_decl|;
 comment|/**      * @return the name of the consumer which is only used for durable      *         consumers.      */
 annotation|@
+name|Deprecated
+annotation|@
 name|MBeanInfo
 argument_list|(
 literal|"The name of the subscription (durable subscriptions only)."
 argument_list|)
 name|String
 name|getSubcriptionName
+parameter_list|()
+function_decl|;
+comment|/**      * @return the name of the consumer which is only used for durable      *         consumers.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The name of the subscription (durable subscriptions only)."
+argument_list|)
+name|String
+name|getSubscriptionName
 parameter_list|()
 function_decl|;
 comment|/**      * Returns true if this subscription (which may be using wildcards) matches the given queue name      *      * @param queueName the JMS queue name to match against      * @return true if this subscription matches the given queue or false if not      */

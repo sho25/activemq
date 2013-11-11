@@ -278,7 +278,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -480,7 +480,7 @@ name|TimedSubscriptionRecoveryPolicy
 argument_list|)
 expr_stmt|;
 name|TimedSubscriptionRecoveryPolicy
-name|timedSubcriptionPolicy
+name|timedSubscriptionPolicy
 init|=
 operator|(
 name|TimedSubscriptionRecoveryPolicy
@@ -493,7 +493,7 @@ literal|"getRecoverDuration()"
 argument_list|,
 literal|60000
 argument_list|,
-name|timedSubcriptionPolicy
+name|timedSubscriptionPolicy
 operator|.
 name|getRecoverDuration
 argument_list|()

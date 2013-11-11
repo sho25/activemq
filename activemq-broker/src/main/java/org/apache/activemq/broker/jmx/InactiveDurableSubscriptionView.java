@@ -203,9 +203,11 @@ name|subInfo
 expr_stmt|;
 block|}
 comment|/**      * @return the id of the Subscription      */
+annotation|@
+name|Override
 specifier|public
 name|long
-name|getSubcriptionId
+name|getSubscriptionId
 parameter_list|()
 block|{
 return|return
@@ -214,6 +216,8 @@ literal|1
 return|;
 block|}
 comment|/**      * @return the destination name      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getDestinationName
@@ -230,6 +234,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return true if the destination is a Queue      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDestinationQueue
@@ -240,6 +246,8 @@ literal|false
 return|;
 block|}
 comment|/**      * @return true of the destination is a Topic      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDestinationTopic
@@ -250,6 +258,8 @@ literal|true
 return|;
 block|}
 comment|/**      * @return true if the destination is temporary      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDestinationTemporary
@@ -260,6 +270,8 @@ literal|false
 return|;
 block|}
 comment|/**      * @return name of the durable consumer      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getSubscriptionName
@@ -273,6 +285,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return true if the subscriber is active      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isActive
@@ -295,6 +309,8 @@ literal|null
 return|;
 block|}
 comment|/**      * Browse messages for this durable subscriber      *      * @return messages      * @throws OpenDataException      */
+annotation|@
+name|Override
 specifier|public
 name|CompositeData
 index|[]
@@ -313,6 +329,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Browse messages for this durable subscriber      *      * @return messages      * @throws OpenDataException      */
+annotation|@
+name|Override
 specifier|public
 name|TabularData
 name|browseAsTable
@@ -330,6 +348,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Destroys the durable subscription so that messages will no longer be      * stored for this subscription      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|destroy
@@ -395,6 +415,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
