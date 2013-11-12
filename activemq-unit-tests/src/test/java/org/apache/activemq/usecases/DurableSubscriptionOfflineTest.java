@@ -6967,9 +6967,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/*      * Ignoring for now, see https://issues.apache.org/jira/browse/AMQ-4874      */
 specifier|public
 name|void
-name|testOrderOnActivateDeactivate
+name|XXXtestOrderOnActivateDeactivate
 parameter_list|()
 throws|throws
 name|Exception
