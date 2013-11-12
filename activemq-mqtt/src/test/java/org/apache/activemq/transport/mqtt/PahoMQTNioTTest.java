@@ -262,8 +262,26 @@ specifier|final
 name|int
 name|CLIENTS
 init|=
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"PahoMQTNioTTest.CLIENTS"
+argument_list|,
 literal|100
+argument_list|)
 decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Using: "
+operator|+
+name|CLIENTS
+operator|+
+literal|" clients"
+argument_list|)
+expr_stmt|;
 name|addMQTTConnector
 argument_list|()
 expr_stmt|;
@@ -500,6 +518,28 @@ operator|.
 name|await
 argument_list|()
 expr_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+literal|10
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
 name|client
 operator|.
 name|publish
@@ -516,6 +556,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 name|client
 operator|.
 name|disconnect
@@ -581,19 +622,17 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"All clients connected..."
-argument_list|)
-expr_stmt|;
 name|sendBarrier
 operator|.
 name|countDown
 argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"All clients connected... waiting to receive sent messages..."
+argument_list|)
 expr_stmt|;
 comment|// We should eventually get all the messages.
 name|within
@@ -625,10 +664,19 @@ name|get
 argument_list|()
 operator|==
 name|CLIENTS
+operator|*
+literal|10
 argument_list|)
 expr_stmt|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"All messages received."
 argument_list|)
 expr_stmt|;
 name|disconnectDoneLatch
