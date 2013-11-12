@@ -296,7 +296,9 @@ name|IOException
 throws|,
 name|URISyntaxException
 block|{
-return|return
+name|TcpTransportServer
+name|result
+init|=
 operator|new
 name|TcpTransportServer
 argument_list|(
@@ -331,6 +333,16 @@ argument_list|)
 return|;
 block|}
 block|}
+decl_stmt|;
+name|result
+operator|.
+name|setAllowLinkStealing
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+return|return
+name|result
 return|;
 block|}
 specifier|protected
