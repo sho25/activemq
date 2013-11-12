@@ -350,8 +350,6 @@ name|choice
 expr_stmt|;
 block|}
 annotation|@
-name|Override
-annotation|@
 name|Before
 specifier|public
 name|void
@@ -370,8 +368,6 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 annotation|@
 name|After
 specifier|public
@@ -447,6 +443,15 @@ name|broker
 operator|.
 name|waitUntilStopped
 argument_list|()
+expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|5
+operator|*
+literal|1000
+argument_list|)
 expr_stmt|;
 name|createBroker
 argument_list|(
