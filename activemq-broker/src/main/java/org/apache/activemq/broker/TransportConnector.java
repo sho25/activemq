@@ -579,6 +579,22 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|server
+operator|!=
+literal|null
+condition|)
+block|{
+name|setAllowLinkStealing
+argument_list|(
+name|server
+operator|.
+name|isAllowLinkStealing
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * @return Returns the connections.      */
 specifier|public
@@ -763,6 +779,14 @@ operator|.
 name|setPublishedAddressPolicy
 argument_list|(
 name|getPublishedAddressPolicy
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|rc
+operator|.
+name|setAllowLinkStealing
+argument_list|(
+name|isAllowLinkStealing
 argument_list|()
 argument_list|)
 expr_stmt|;
