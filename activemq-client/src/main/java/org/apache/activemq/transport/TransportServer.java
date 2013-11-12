@@ -102,6 +102,11 @@ name|boolean
 name|isSslServer
 parameter_list|()
 function_decl|;
+comment|/**      * Some protocols allow link stealing by default (if 2 connections have the same clientID - the youngest wins).      * This is the default for AMQP and MQTT. However, JMS 1.1 spec requires the opposite      * @return      */
+name|boolean
+name|isAllowLinkStealing
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

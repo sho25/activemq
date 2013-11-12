@@ -510,6 +510,10 @@ name|useQueueForAccept
 init|=
 literal|true
 decl_stmt|;
+specifier|protected
+name|boolean
+name|allowLinkStealing
+decl_stmt|;
 comment|/**      * trace=true -> the Transport stack where this TcpTransport object will be, will have a TransportLogger layer      * trace=false -> the Transport stack where this TcpTransport object will be, will NOT have a TransportLogger layer,      * and therefore will never be able to print logging messages. This parameter is most probably set in Connection or      * TransportConnector URIs.      */
 specifier|protected
 name|boolean
@@ -1387,7 +1391,7 @@ name|getBindLocation
 argument_list|()
 return|;
 block|}
-comment|/**      * @param socket      * @param inetAddress      * @return real hostName      * @throws UnknownHostException      */
+comment|/**      * @param socket      * @param bindAddress      * @return real hostName      * @throws UnknownHostException      */
 specifier|protected
 name|String
 name|resolveHostName
@@ -2142,6 +2146,32 @@ block|{
 return|return
 literal|false
 return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isAllowLinkStealing
+parameter_list|()
+block|{
+return|return
+name|allowLinkStealing
+return|;
+block|}
+specifier|public
+name|void
+name|setAllowLinkStealing
+parameter_list|(
+name|boolean
+name|allowLinkStealing
+parameter_list|)
+block|{
+name|this
+operator|.
+name|allowLinkStealing
+operator|=
+name|allowLinkStealing
+expr_stmt|;
 block|}
 block|}
 end_class

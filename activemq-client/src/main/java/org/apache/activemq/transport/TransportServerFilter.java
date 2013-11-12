@@ -170,6 +170,18 @@ name|isSslServer
 argument_list|()
 return|;
 block|}
+specifier|public
+name|boolean
+name|isAllowLinkStealing
+parameter_list|()
+block|{
+return|return
+name|next
+operator|.
+name|isAllowLinkStealing
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
