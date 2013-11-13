@@ -60,7 +60,7 @@ name|statements
 operator|.
 name|setBinaryDataType
 argument_list|(
-literal|"OTHER"
+literal|"BLOB"
 argument_list|)
 expr_stmt|;
 name|super
