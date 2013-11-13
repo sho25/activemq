@@ -90,7 +90,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Map-like data structure allowing values to be indexed by  * {@link ActiveMQDestination} and retrieved by destination - supporting both *  * and&gt; style of wildcard as well as composite destinations.<br>  * This class assumes that the index changes rarely but that fast lookup into  * the index is required. So this class maintains a pre-calculated index for  * destination steps. So looking up the values for "TEST.*" or "*.TEST" will be  * pretty fast.<br>  * Looking up of a value could return a single value or a List of matching  * values if a wildcard or composite destination is used.  *  *  */
+comment|/**  * A Map-like data structure allowing values to be indexed by  * {@link ActiveMQDestination} and retrieved by destination - supporting both *  * and&gt; style of wildcard as well as composite destinations.<br>  * This class assumes that the index changes rarely but that fast lookup into  * the index is required. So this class maintains a pre-calculated index for  * destination steps. So looking up the values for "TEST.*" or "*.TEST" will be  * pretty fast.<br>  * Looking up of a value could return a single value or a List of matching  * values if a wildcard or composite destination is used.  */
 end_comment
 
 begin_class
@@ -357,6 +357,15 @@ operator|.
 name|getDestinationPaths
 argument_list|()
 decl_stmt|;
+name|paths
+operator|=
+name|DestinationFilter
+operator|.
+name|rationalizePaths
+argument_list|(
+name|paths
+argument_list|)
+expr_stmt|;
 name|getRootNode
 argument_list|(
 name|key
