@@ -231,8 +231,8 @@ implements|implements
 name|BrokerServiceAware
 block|{
 specifier|private
-name|BrokerContext
-name|brokerContext
+name|BrokerService
+name|brokerService
 init|=
 literal|null
 decl_stmt|;
@@ -312,7 +312,7 @@ name|transport
 argument_list|,
 name|format
 argument_list|,
-name|brokerContext
+name|brokerService
 argument_list|)
 expr_stmt|;
 name|IntrospectionSupport
@@ -347,12 +347,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|brokerContext
+name|brokerService
 operator|=
 name|brokerService
-operator|.
-name|getBrokerContext
-argument_list|()
 expr_stmt|;
 block|}
 annotation|@
