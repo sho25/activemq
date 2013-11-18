@@ -925,7 +925,7 @@ parameter_list|()
 throws|throws
 name|ResourceException
 block|{
-comment|// Have we allready been destroyed??
+comment|// Have we already been destroyed??
 if|if
 condition|(
 name|isDestroyed
@@ -959,7 +959,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Error occured during close of a JMS connection."
+literal|"Error occurred during close of a JMS connection."
 argument_list|,
 name|e
 argument_list|)
@@ -974,7 +974,7 @@ parameter_list|()
 throws|throws
 name|ResourceException
 block|{
-comment|// Have we allready been destroyed??
+comment|// Have we already been destroyed??
 if|if
 condition|(
 name|isDestroyed
@@ -1461,7 +1461,7 @@ name|info
 argument_list|)
 return|;
 block|}
-comment|/**      * When a proxy is closed this cleans up the proxy and notifys the      * ConnectionEventListeners that a connection closed.      *       * @param proxy      */
+comment|/**      * When a proxy is closed this cleans up the proxy and notifies the      * ConnectionEventListeners that a connection closed.      *       * @param proxy      */
 specifier|public
 name|void
 name|proxyClosedEvent
@@ -1530,7 +1530,7 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Let the container know that the error occured.
+comment|// Let the container know that the error occurred.
 name|fireErrorOccurredEvent
 argument_list|(
 name|e
