@@ -2030,7 +2030,7 @@ block|}
 block|}
 specifier|public
 name|void
-name|addSubsciption
+name|addSubscription
 parameter_list|(
 name|SubscriptionInfo
 name|subscriptionInfo

@@ -541,7 +541,7 @@ block|}
 specifier|public
 specifier|synchronized
 name|void
-name|addSubsciption
+name|addSubscription
 parameter_list|(
 name|SubscriptionInfo
 name|info

@@ -437,7 +437,7 @@ return|;
 block|}
 specifier|public
 name|void
-name|addSubsciption
+name|addSubscription
 parameter_list|(
 name|SubscriptionInfo
 name|subscriptionInfo
@@ -461,7 +461,7 @@ argument_list|)
 expr_stmt|;
 name|longTermStore
 operator|.
-name|addSubsciption
+name|addSubscription
 argument_list|(
 name|subscriptionInfo
 argument_list|,

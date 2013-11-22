@@ -1880,7 +1880,7 @@ name|void
 name|setMemoryUsage
 parameter_list|(
 name|MemoryUsage
-name|memoeyUSage
+name|memoryUsage
 parameter_list|)
 block|{         }
 annotation|@
@@ -1994,7 +1994,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|addSubsciption
+name|addSubscription
 parameter_list|(
 name|SubscriptionInfo
 name|subscriptionInfo

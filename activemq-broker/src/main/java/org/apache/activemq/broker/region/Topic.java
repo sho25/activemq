@@ -1588,7 +1588,7 @@ argument_list|)
 expr_stmt|;
 name|topicStore
 operator|.
-name|addSubsciption
+name|addSubscription
 argument_list|(
 name|info
 argument_list|,

@@ -414,7 +414,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|addSubsciption
+name|addSubscription
 parameter_list|(
 name|SubscriptionInfo
 name|subscriptionInfo
@@ -427,7 +427,7 @@ name|IOException
 block|{
 name|delegate
 operator|.
-name|addSubsciption
+name|addSubscription
 argument_list|(
 name|subscriptionInfo
 argument_list|,

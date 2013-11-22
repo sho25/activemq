@@ -303,12 +303,12 @@ name|ActiveMQDestination
 name|getDestination
 parameter_list|()
 function_decl|;
-comment|/**      * @param memoeyUSage The SystemUsage that is controlling the      *                destination's memory usage.      */
+comment|/**      * @param memoryUsage The SystemUsage that is controlling the      *                destination's memory usage.      */
 name|void
 name|setMemoryUsage
 parameter_list|(
 name|MemoryUsage
-name|memoeyUSage
+name|memoryUsage
 parameter_list|)
 function_decl|;
 comment|/**      * @return the number of messages ready to deliver      * @throws IOException      *      */
