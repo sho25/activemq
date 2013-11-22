@@ -298,7 +298,7 @@ specifier|private
 name|String
 name|defaultContentType
 init|=
-literal|"text/xml"
+literal|"application/xml"
 decl_stmt|;
 specifier|private
 specifier|final
@@ -1548,7 +1548,7 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|"text/xml"
+literal|"application/xml"
 return|;
 block|}
 name|value
