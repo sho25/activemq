@@ -245,6 +245,18 @@ name|TypeConversionSupport
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|fusesource
+operator|.
+name|hawtbuf
+operator|.
+name|UTF8Buffer
+import|;
+end_import
+
 begin_comment
 comment|/**  *  * @openwire:marshaller code="23"  */
 end_comment
@@ -2535,6 +2547,21 @@ argument_list|(
 literal|"Property name cannot be empty or null"
 argument_list|)
 throw|;
+block|}
+if|if
+condition|(
+name|value
+operator|instanceof
+name|UTF8Buffer
+condition|)
+block|{
+name|value
+operator|=
+name|value
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
 block|}
 name|checkValidObject
 argument_list|(
