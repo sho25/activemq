@@ -473,6 +473,12 @@ name|resumeCheckSleepPeriod
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|hasLockOwnership
+argument_list|()
+condition|)
+block|{
 name|broker
 operator|.
 name|startAllConnectors
@@ -488,6 +494,7 @@ name|broker
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 catch|catch
 parameter_list|(
 name|Exception
@@ -502,7 +509,7 @@ literal|"Stopping "
 operator|+
 name|broker
 operator|+
-literal|" due to failure while restarting transports"
+literal|" due to failure restarting transports"
 argument_list|,
 name|e
 argument_list|)

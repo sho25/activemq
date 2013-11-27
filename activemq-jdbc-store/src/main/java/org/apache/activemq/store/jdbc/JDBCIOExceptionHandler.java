@@ -69,6 +69,26 @@ name|DefaultIOExceptionHandler
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * @org.apache.xbean.XBean  */
 end_comment
@@ -80,6 +100,21 @@ name|JDBCIOExceptionHandler
 extends|extends
 name|DefaultIOExceptionHandler
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|JDBCIOExceptionHandler
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|public
 name|JDBCIOExceptionHandler
 parameter_list|()
@@ -181,6 +216,15 @@ operator|!
 name|hasLock
 condition|)
 block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Lock keepAlive failed, no longer lock owner with: {}"
+argument_list|,
+name|locker
+argument_list|)
+expr_stmt|;
 throw|throw
 operator|new
 name|IOException
