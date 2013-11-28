@@ -269,6 +269,8 @@ block|,
 name|LoadInvalid
 block|,
 name|LoadCorrupt
+block|,
+name|LoadOrderIndex0
 block|}
 empty_stmt|;
 specifier|public
@@ -383,6 +385,17 @@ name|kaha
 operator|.
 name|deleteAllMessages
 argument_list|()
+expr_stmt|;
+name|kaha
+operator|.
+name|setCheckForCorruptJournalFiles
+argument_list|(
+name|failTest
+operator|==
+name|CorruptionType
+operator|.
+name|LoadOrderIndex0
+argument_list|)
 expr_stmt|;
 name|broker
 operator|.
@@ -520,6 +533,47 @@ literal|10
 argument_list|)
 expr_stmt|;
 break|break;
+case|case
+name|LoadOrderIndex0
+case|:
+comment|// loadable but invalid metadata
+comment|// location of order index default priority index size
+comment|// so looks like there are no ids in the order index
+comment|// picked up by setCheckForCorruptJournalFiles
+name|raf
+operator|.
+name|seek
+argument_list|(
+literal|12
+operator|*
+literal|1024
+operator|+
+literal|21
+argument_list|)
+expr_stmt|;
+name|raf
+operator|.
+name|writeShort
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|raf
+operator|.
+name|writeChar
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|raf
+operator|.
+name|writeLong
+argument_list|(
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+break|break;
 default|default:
 block|}
 name|raf
@@ -542,6 +596,17 @@ operator|new
 name|KahaDBStore
 argument_list|()
 decl_stmt|;
+name|kaha
+operator|.
+name|setCheckForCorruptJournalFiles
+argument_list|(
+name|failTest
+operator|==
+name|CorruptionType
+operator|.
+name|LoadOrderIndex0
+argument_list|)
+expr_stmt|;
 comment|// uncomment if you want to test archiving
 comment|//kaha.setArchiveCorruptedIndex(true);
 name|kaha
@@ -630,6 +695,10 @@ block|,
 name|CorruptionType
 operator|.
 name|LoadCorrupt
+block|,
+name|CorruptionType
+operator|.
+name|LoadOrderIndex0
 block|}
 argument_list|)
 expr_stmt|;
