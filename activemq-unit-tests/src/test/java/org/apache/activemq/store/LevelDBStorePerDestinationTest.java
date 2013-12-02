@@ -41,16 +41,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -108,11 +98,6 @@ name|store
 return|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"needs some investigation w.r.t to SuppressReplyException - broken by: https://git-wip-us.apache.org/repos/asf?p=activemq.git;a=commit;h=b0e91d47"
-argument_list|)
-annotation|@
 name|Test
 annotation|@
 name|Override
@@ -123,11 +108,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"needs some investigation w.r.t to SuppressReplyException - broken by: https://git-wip-us.apache.org/repos/asf?p=activemq.git;a=commit;h=b0e91d47"
-argument_list|)
 annotation|@
 name|Test
 annotation|@
