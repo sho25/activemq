@@ -392,6 +392,24 @@ name|ObjectName
 name|getConnection
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Resets statistics."
+argument_list|)
+name|void
+name|resetStatistics
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Messages consumed"
+argument_list|)
+name|long
+name|getConsumedCount
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

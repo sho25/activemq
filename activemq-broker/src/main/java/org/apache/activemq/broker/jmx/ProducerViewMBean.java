@@ -162,10 +162,28 @@ function_decl|;
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"reset flow control stata"
+literal|"reset flow control state"
 argument_list|)
 name|void
 name|resetFlowControlStats
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Resets statistics."
+argument_list|)
+name|void
+name|resetStatistics
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Messages consumed"
+argument_list|)
+name|long
+name|getSentCount
 parameter_list|()
 function_decl|;
 block|}

@@ -169,6 +169,20 @@ name|MessageEvaluationContext
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|management
+operator|.
+name|CountStatisticImpl
+import|;
+end_import
+
 begin_comment
 comment|/**  *  */
 end_comment
@@ -433,6 +447,10 @@ function_decl|;
 comment|/**      * Returns the time since the last Ack message was received by this subscription.      *      * If there has never been an ack this value should be set to the creation time of the      * subscription.      *      * @return time of last received Ack message or Subscription create time if no Acks.      */
 name|long
 name|getTimeOfLastMessageAck
+parameter_list|()
+function_decl|;
+name|CountStatisticImpl
+name|getConsumedCount
 parameter_list|()
 function_decl|;
 block|}
