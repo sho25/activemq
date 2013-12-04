@@ -199,6 +199,8 @@ name|byte
 index|[]
 name|encodedBytes
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|encodedXidBytes
 operator|=
@@ -228,6 +230,8 @@ specifier|private
 name|void
 name|initFromEncodedBytes
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|DataByteArrayInputStream
 name|inputStream
