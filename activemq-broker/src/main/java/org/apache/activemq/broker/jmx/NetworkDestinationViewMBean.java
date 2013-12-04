@@ -11,75 +11,56 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|network
+name|broker
+operator|.
+name|jmx
 package|;
 end_package
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|Message
-import|;
-end_import
-
-begin_comment
-comment|/**  * called when a bridge fails  *   *   */
-end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|NetworkBridgeListener
+name|NetworkDestinationViewMBean
 block|{
-comment|/**      * called when the transport fails      */
-name|void
-name|bridgeFailed
+comment|/**      * Returns the name of this destination      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Name of this destination."
+argument_list|)
+name|String
+name|getName
 parameter_list|()
 function_decl|;
-comment|/**      * called after the bridge is started.      */
+comment|/**      * Resets the managment counters.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Resets statistics."
+argument_list|)
 name|void
-name|onStart
-parameter_list|(
-name|NetworkBridge
-name|bridge
-parameter_list|)
+name|resetStatistics
+parameter_list|()
 function_decl|;
-comment|/**      * called before the bridge is stopped.      */
-name|void
-name|onStop
-parameter_list|(
-name|NetworkBridge
-name|bridge
-parameter_list|)
+comment|/**      * Returns the number of messages that have been sent to the destination.      *      * @return The number of messages that have been sent to the destination.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of messages that have been sent to the destination."
+argument_list|)
+name|long
+name|getCount
+parameter_list|()
 function_decl|;
-comment|/**      * Called when message forwarded over the network      * @param bridge      * @param message      */
-name|void
-name|onOutboundMessage
-parameter_list|(
-name|NetworkBridge
-name|bridge
-parameter_list|,
-name|Message
-name|message
-parameter_list|)
-function_decl|;
-comment|/**      * Called for when a message arrives over the network      * @param bridge      * @param message      */
-name|void
-name|onInboundMessage
-parameter_list|(
-name|NetworkBridge
-name|bridge
-parameter_list|,
-name|Message
-name|message
-parameter_list|)
+comment|/**      * Returns the rate of messages that have been sent to the destination.      *      * @return The rate of messages that have been sent to the destination.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"rate of messages sent across the network destination."
+argument_list|)
+name|double
+name|getRate
+parameter_list|()
 function_decl|;
 block|}
 end_interface

@@ -499,7 +499,7 @@ name|buffer
 operator|.
 name|append
 argument_list|(
-literal|" averageTime: "
+literal|" averageSize: "
 argument_list|)
 expr_stmt|;
 name|buffer
