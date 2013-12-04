@@ -39,7 +39,7 @@ argument_list|(
 literal|"Resets statistics."
 argument_list|)
 name|void
-name|resetStatistics
+name|resetStats
 parameter_list|()
 function_decl|;
 comment|/**      * Returns the number of messages that have been sent to the destination.      *      * @return The number of messages that have been sent to the destination.      */

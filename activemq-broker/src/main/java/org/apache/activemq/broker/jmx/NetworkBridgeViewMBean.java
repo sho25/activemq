@@ -64,6 +64,10 @@ name|boolean
 name|isCreatedByDuplex
 parameter_list|()
 function_decl|;
+name|void
+name|resetStats
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
