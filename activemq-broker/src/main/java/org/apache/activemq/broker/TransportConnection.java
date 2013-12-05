@@ -6686,6 +6686,8 @@ operator|.
 name|getBrokerService
 argument_list|()
 argument_list|,
+name|config
+argument_list|,
 name|broker
 operator|.
 name|getBrokerService

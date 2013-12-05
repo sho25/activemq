@@ -226,6 +226,11 @@ name|void
 name|resetStats
 parameter_list|()
 block|{
+name|bridge
+operator|.
+name|resetStats
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|NetworkDestinationView

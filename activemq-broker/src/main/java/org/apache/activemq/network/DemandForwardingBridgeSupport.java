@@ -8430,6 +8430,26 @@ return|return
 name|mbeanObjectName
 return|;
 block|}
+specifier|public
+name|void
+name|resetStats
+parameter_list|()
+block|{
+name|enqueueCounter
+operator|.
+name|set
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|dequeueCounter
+operator|.
+name|set
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
 comment|/*      * Used to allow for async tasks to await receipt of the BrokerInfo from the local and      * remote sides of the network bridge.      */
 specifier|private
 specifier|static

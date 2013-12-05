@@ -115,6 +115,10 @@ name|ObjectName
 name|getMbeanObjectName
 parameter_list|()
 function_decl|;
+name|void
+name|resetStats
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

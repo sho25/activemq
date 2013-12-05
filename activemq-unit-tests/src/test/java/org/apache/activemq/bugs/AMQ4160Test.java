@@ -1291,6 +1291,17 @@ name|getMbeanObjectName
 argument_list|()
 return|;
 block|}
+specifier|public
+name|void
+name|resetStats
+parameter_list|()
+block|{
+name|next
+operator|.
+name|resetStats
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 return|;
 block|}

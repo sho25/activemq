@@ -1219,6 +1219,10 @@ name|super
 argument_list|(
 name|brokerService
 argument_list|,
+name|DiscoveryNetworkConnector
+operator|.
+name|this
+argument_list|,
 name|connectorName
 argument_list|)
 expr_stmt|;
