@@ -4215,6 +4215,18 @@ comment|// ignore
 block|}
 block|}
 block|}
+specifier|public
+name|boolean
+name|isStopped
+parameter_list|()
+block|{
+return|return
+name|stopped
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 comment|/**      * A helper method to block the caller thread until the broker has fully started      * @return boolean true if wait succeeded false if broker was not started or was stopped      */
 specifier|public
 name|boolean
