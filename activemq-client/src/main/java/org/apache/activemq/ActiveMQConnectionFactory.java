@@ -2316,7 +2316,7 @@ return|return
 name|transformer
 return|;
 block|}
-comment|/**      * @return the sendTimeout      */
+comment|/**      * @return the sendTimeout (in milliseconds)      */
 specifier|public
 name|int
 name|getSendTimeout
@@ -2326,7 +2326,7 @@ return|return
 name|sendTimeout
 return|;
 block|}
-comment|/**      * @param sendTimeout the sendTimeout to set      */
+comment|/**      * @param sendTimeout the sendTimeout to set (in milliseconds)      */
 specifier|public
 name|void
 name|setSendTimeout
