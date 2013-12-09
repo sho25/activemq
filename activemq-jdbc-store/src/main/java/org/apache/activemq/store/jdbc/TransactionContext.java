@@ -150,7 +150,6 @@ name|Connection
 name|connection
 decl_stmt|;
 specifier|private
-specifier|volatile
 name|boolean
 name|inTx
 decl_stmt|;
@@ -282,6 +281,13 @@ literal|"Could not get JDBC connection: "
 argument_list|,
 name|e
 argument_list|)
+expr_stmt|;
+name|inTx
+operator|=
+literal|false
+expr_stmt|;
+name|close
+argument_list|()
 expr_stmt|;
 name|IOException
 name|ioe
@@ -668,15 +674,14 @@ literal|"Already started."
 argument_list|)
 throw|;
 block|}
+name|inTx
+operator|=
+literal|true
+expr_stmt|;
 name|connection
 operator|=
 name|getConnection
 argument_list|()
-expr_stmt|;
-comment|// only mark in tx if we could get a connection
-name|inTx
-operator|=
-literal|true
 expr_stmt|;
 block|}
 specifier|public
