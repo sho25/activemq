@@ -49,6 +49,10 @@ name|getRemoteBrokerName
 parameter_list|()
 function_decl|;
 name|String
+name|getRemoteBrokerId
+parameter_list|()
+function_decl|;
+name|String
 name|getLocalBrokerName
 parameter_list|()
 function_decl|;

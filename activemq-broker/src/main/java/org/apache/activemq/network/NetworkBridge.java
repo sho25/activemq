@@ -82,6 +82,11 @@ name|String
 name|getRemoteBrokerName
 parameter_list|()
 function_decl|;
+comment|/**      * @return the id of the remote broker this bridge is connected to.      */
+name|String
+name|getRemoteBrokerId
+parameter_list|()
+function_decl|;
 comment|/**      * @return the network address of the local broker connection.      */
 name|String
 name|getLocalAddress
