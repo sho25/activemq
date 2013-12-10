@@ -2206,10 +2206,7 @@ operator|.
 name|getInfo
 argument_list|()
 operator|.
-name|getSentCount
-argument_list|()
-operator|.
-name|increment
+name|incrementSentCount
 argument_list|()
 expr_stmt|;
 block|}

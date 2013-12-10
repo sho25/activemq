@@ -1420,14 +1420,24 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|CountStatisticImpl
+name|long
 name|getConsumedCount
 parameter_list|()
 block|{
 return|return
-literal|null
+literal|0
 return|;
 block|}
+specifier|public
+name|void
+name|incrementConsumedCount
+parameter_list|()
+block|{              }
+specifier|public
+name|void
+name|resetConsumedCount
+parameter_list|()
+block|{              }
 block|}
 decl_stmt|;
 name|queue

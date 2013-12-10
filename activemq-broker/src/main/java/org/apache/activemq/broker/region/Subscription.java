@@ -169,20 +169,6 @@ name|MessageEvaluationContext
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|management
-operator|.
-name|CountStatisticImpl
-import|;
-end_import
-
 begin_comment
 comment|/**  *  */
 end_comment
@@ -204,7 +190,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Used when client acknowledge receipt of dispatched message.      * @param node      * @throws IOException      * @throws Exception      */
+comment|/**      * Used when client acknowledge receipt of dispatched message.      * @throws IOException      * @throws Exception      */
 name|void
 name|acknowledge
 parameter_list|(
@@ -244,7 +230,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Is the subscription interested in messages in the destination?      * @param context      * @return      */
+comment|/**      * Is the subscription interested in messages in the destination?      * @param destination      * @return      */
 name|boolean
 name|matches
 parameter_list|(
@@ -281,7 +267,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * The ConsumerInfo object that created the subscription.      * @param destination      */
+comment|/**      * The ConsumerInfo object that created the subscription.      */
 name|ConsumerInfo
 name|getConsumerInfo
 parameter_list|()
@@ -399,7 +385,7 @@ name|int
 name|getInFlightUsage
 parameter_list|()
 function_decl|;
-comment|/**      * Informs the Broker if the subscription needs to intervention to recover it's state      * e.g. DurableTopicSubscriber may do      * @see org.apache.activemq.region.cursors.PendingMessageCursor      * @return true if recovery required      */
+comment|/**      * Informs the Broker if the subscription needs to intervention to recover it's state      * e.g. DurableTopicSubscriber may do      * @see org.apache.activemq.broker.region.cursors.PendingMessageCursor      * @return true if recovery required      */
 name|boolean
 name|isRecoveryRequired
 parameter_list|()
@@ -449,8 +435,16 @@ name|long
 name|getTimeOfLastMessageAck
 parameter_list|()
 function_decl|;
-name|CountStatisticImpl
+name|long
 name|getConsumedCount
+parameter_list|()
+function_decl|;
+name|void
+name|incrementConsumedCount
+parameter_list|()
+function_decl|;
+name|void
+name|resetConsumedCount
 parameter_list|()
 function_decl|;
 block|}

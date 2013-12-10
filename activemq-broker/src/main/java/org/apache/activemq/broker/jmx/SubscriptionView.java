@@ -1377,10 +1377,7 @@ condition|)
 block|{
 name|subscription
 operator|.
-name|getConsumedCount
-argument_list|()
-operator|.
-name|reset
+name|resetConsumedCount
 argument_list|()
 expr_stmt|;
 block|}
@@ -1400,9 +1397,6 @@ condition|?
 name|subscription
 operator|.
 name|getConsumedCount
-argument_list|()
-operator|.
-name|getCount
 argument_list|()
 else|:
 literal|0

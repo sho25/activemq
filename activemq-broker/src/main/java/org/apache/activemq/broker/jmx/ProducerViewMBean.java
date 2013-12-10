@@ -180,7 +180,7 @@ function_decl|;
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"Messages consumed"
+literal|"Messages dispatched by Producer"
 argument_list|)
 name|long
 name|getSentCount

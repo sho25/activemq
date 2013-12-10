@@ -722,10 +722,7 @@ condition|)
 block|{
 name|info
 operator|.
-name|getSentCount
-argument_list|()
-operator|.
-name|reset
+name|resetSentCount
 argument_list|()
 expr_stmt|;
 block|}
@@ -745,9 +742,6 @@ condition|?
 name|info
 operator|.
 name|getSentCount
-argument_list|()
-operator|.
-name|getCount
 argument_list|()
 else|:
 literal|0
