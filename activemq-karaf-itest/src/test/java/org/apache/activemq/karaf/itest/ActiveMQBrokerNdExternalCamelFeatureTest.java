@@ -227,6 +227,8 @@ argument_list|,
 name|configure
 argument_list|(
 literal|"activemq"
+argument_list|,
+literal|"activemq-camel"
 argument_list|)
 argument_list|)
 decl_stmt|;

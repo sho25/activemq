@@ -181,6 +181,8 @@ init|=
 name|configure
 argument_list|(
 literal|"activemq"
+argument_list|,
+literal|"activemq-camel"
 argument_list|)
 decl_stmt|;
 return|return
@@ -229,7 +231,7 @@ name|println
 argument_list|(
 name|executeCommand
 argument_list|(
-literal|"features:list"
+literal|"osgi:list"
 argument_list|)
 operator|.
 name|trim
