@@ -435,7 +435,7 @@ operator|=
 literal|2000
 expr_stmt|;
 block|}
-specifier|private
+specifier|protected
 name|void
 name|createBroker
 parameter_list|(
