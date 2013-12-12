@@ -1035,6 +1035,10 @@ init|=
 literal|false
 decl_stmt|;
 specifier|private
+name|boolean
+name|resetNeeded
+decl_stmt|;
+specifier|private
 specifier|final
 name|Runnable
 name|sendMessagesWaitingForSpaceTask
@@ -4649,6 +4653,8 @@ name|isPersistent
 argument_list|()
 condition|)
 block|{
+try|try
+block|{
 name|message
 operator|.
 name|getMessageId
@@ -4706,6 +4712,23 @@ operator|.
 name|clearMarshalledState
 argument_list|()
 expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+comment|// we may have a store in inconsistent state, so reset the cursor
+comment|// before restarting normal broker operations
+name|resetNeeded
+operator|=
+literal|true
+expr_stmt|;
+throw|throw
+name|e
+throw|;
 block|}
 block|}
 comment|// did a transaction commit beat us to the index?
@@ -5685,6 +5708,15 @@ parameter_list|()
 block|{
 return|return
 name|allConsumersExclusiveByDefault
+return|;
+block|}
+specifier|public
+name|boolean
+name|isResetNeeded
+parameter_list|()
+block|{
+return|return
+name|resetNeeded
 return|;
 block|}
 comment|// Implementation methods
