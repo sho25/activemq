@@ -297,6 +297,8 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|copy
@@ -355,6 +357,8 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSend
@@ -425,6 +429,8 @@ throw|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getDataStructureType
@@ -434,6 +440,8 @@ return|return
 name|DATA_STRUCTURE_TYPE
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getJMSXMimeType
@@ -444,6 +452,8 @@ literal|"jms/stream-message"
 return|;
 block|}
 comment|/**      * Clears out the message body. Clearing a message's body does not clear its      * header values or property entries.<p/>      *<P>      * If this message body was read-only, calling this method leaves the      * message body in the same state as an empty body in a newly created      * message.      *      * @throws JMSException if the JMS provider fails to clear the message body      *                 due to some internal error.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|clearBody
@@ -483,6 +493,8 @@ literal|1
 expr_stmt|;
 block|}
 comment|/**      * Reads a<code>boolean</code> from the stream message.      *      * @return the<code>boolean</code> value read      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of message stream has been      *                 reached.      * @throws MessageFormatException if this type conversion is invalid.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|readBoolean
@@ -648,6 +660,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Reads a<code>byte</code> value from the stream message.      *      * @return the next byte from the stream message as a 8-bit      *<code>byte</code>      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of message stream has been      *                 reached.      * @throws MessageFormatException if this type conversion is invalid.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|readByte
@@ -848,6 +862,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Reads a 16-bit integer from the stream message.      *      * @return a 16-bit integer from the stream message      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of message stream has been      *                 reached.      * @throws MessageFormatException if this type conversion is invalid.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|short
 name|readShort
@@ -1066,6 +1082,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Reads a Unicode character value from the stream message.      *      * @return a Unicode character from the stream message      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of message stream has been      *                 reached.      * @throws MessageFormatException if this type conversion is invalid      * @throws MessageNotReadableException if the message is in write-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|char
 name|readChar
@@ -1240,6 +1258,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Reads a 32-bit integer from the stream message.      *      * @return a 32-bit integer value from the stream message, interpreted as an      *<code>int</code>      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of message stream has been      *                 reached.      * @throws MessageFormatException if this type conversion is invalid.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|readInt
@@ -1476,6 +1496,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Reads a 64-bit integer from the stream message.      *      * @return a 64-bit integer value from the stream message, interpreted as a      *<code>long</code>      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of message stream has been      *                 reached.      * @throws MessageFormatException if this type conversion is invalid.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|readLong
@@ -1730,6 +1752,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Reads a<code>float</code> from the stream message.      *      * @return a<code>float</code> value from the stream message      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of message stream has been      *                 reached.      * @throws MessageFormatException if this type conversion is invalid.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|float
 name|readFloat
@@ -1930,6 +1954,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Reads a<code>double</code> from the stream message.      *      * @return a<code>double</code> value from the stream message      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of message stream has been      *                 reached.      * @throws MessageFormatException if this type conversion is invalid.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|double
 name|readDouble
@@ -2148,6 +2174,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Reads a<CODE>String</CODE> from the stream message.      *      * @return a Unicode string from the stream message      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of message stream has been      *                 reached.      * @throws MessageFormatException if this type conversion is invalid.      * @throws MessageNotReadableException if the message is in write-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|readString
@@ -2535,6 +2563,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Reads a byte array field from the stream message into the specified      *<CODE>byte[]</CODE> object (the read buffer).<p/>      *<P>      * To read the field value,<CODE>readBytes</CODE> should be successively      * called until it returns a value less than the length of the read buffer.      * The value of the bytes in the buffer following the last byte read is      * undefined.<p/>      *<P>      * If<CODE>readBytes</CODE> returns a value equal to the length of the      * buffer, a subsequent<CODE>readBytes</CODE> call must be made. If there      * are no more bytes to be read, this call returns -1.<p/>      *<P>      * If the byte array field value is null,<CODE>readBytes</CODE> returns      * -1.<p/>      *<P>      * If the byte array field value is empty,<CODE>readBytes</CODE> returns      * 0.<p/>      *<P>      * Once the first<CODE>readBytes</CODE> call on a<CODE>byte[]</CODE>      * field value has been made, the full value of the field must be read      * before it is valid to read the next field. An attempt to read the next      * field before that has been done will throw a      *<CODE>MessageFormatException</CODE>.<p/>      *<P>      * To read the byte field value into a new<CODE>byte[]</CODE> object, use      * the<CODE>readObject</CODE> method.      *      * @param value the buffer into which the data is read      * @return the total number of bytes read into the buffer, or -1 if there is      *         no more data because the end of the byte field has been reached      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of message stream has been      *                 reached.      * @throws MessageFormatException if this type conversion is invalid.      * @throws MessageNotReadableException if the message is in write-only mode.      * @see #readObject()      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|readBytes
@@ -2775,6 +2805,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Reads an object from the stream message.<p/>      *<P>      * This method can be used to return, in objectified format, an object in      * the Java programming language ("Java object") that has been written to      * the stream with the equivalent<CODE>writeObject</CODE> method call, or      * its equivalent primitive<CODE>write<I>type</I></CODE> method.<p/>      *<P>      * Note that byte values are returned as<CODE>byte[]</CODE>, not      *<CODE>Byte[]</CODE>.<p/>      *<P>      * An attempt to call<CODE>readObject</CODE> to read a byte field value      * into a new<CODE>byte[]</CODE> object before the full value of the byte      * field has been read will throw a<CODE>MessageFormatException</CODE>.      *      * @return a Java object from the stream message, in objectified format (for      *         example, if the object was written as an<CODE>int</CODE>, an      *<CODE>Integer</CODE> is returned)      * @throws JMSException if the JMS provider fails to read the message due to      *                 some internal error.      * @throws MessageEOFException if unexpected end of message stream has been      *                 reached.      * @throws MessageFormatException if this type conversion is invalid.      * @throws MessageNotReadableException if the message is in write-only mode.      * @see #readBytes(byte[] value)      */
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|readObject
@@ -3211,6 +3243,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Writes a<code>boolean</code> to the stream message. The value      *<code>true</code> is written as the value<code>(byte)1</code>; the      * value<code>false</code> is written as the value<code>(byte)0</code>.      *      * @param value the<code>boolean</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeBoolean
@@ -3253,6 +3287,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Writes a<code>byte</code> to the stream message.      *      * @param value the<code>byte</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeByte
@@ -3295,6 +3331,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Writes a<code>short</code> to the stream message.      *      * @param value the<code>short</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeShort
@@ -3337,6 +3375,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Writes a<code>char</code> to the stream message.      *      * @param value the<code>char</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeChar
@@ -3379,6 +3419,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Writes an<code>int</code> to the stream message.      *      * @param value the<code>int</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeInt
@@ -3421,6 +3463,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Writes a<code>long</code> to the stream message.      *      * @param value the<code>long</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeLong
@@ -3463,6 +3507,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Writes a<code>float</code> to the stream message.      *      * @param value the<code>float</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeFloat
@@ -3505,6 +3551,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Writes a<code>double</code> to the stream message.      *      * @param value the<code>double</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeDouble
@@ -3547,6 +3595,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Writes a<code>String</code> to the stream message.      *      * @param value the<code>String</code> value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeString
@@ -3607,6 +3657,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Writes a byte array field to the stream message.<p/>      *<P>      * The byte array<code>value</code> is written to the message as a byte      * array field. Consecutively written byte array fields are treated as two      * distinct fields when the fields are read.      *      * @param value the byte array value to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeBytes
@@ -3631,6 +3683,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Writes a portion of a byte array as a byte array field to the stream      * message.<p/>      *<P>      * The a portion of the byte array<code>value</code> is written to the      * message as a byte array field. Consecutively written byte array fields      * are treated as two distinct fields when the fields are read.      *      * @param value the byte array value to be written      * @param offset the initial offset within the byte array      * @param length the number of bytes to use      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeBytes
@@ -3684,6 +3738,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Writes an object to the stream message.<p/>      *<P>      * This method works only for the objectified primitive object types (<code>Integer</code>,      *<code>Double</code>,<code>Long</code>&nbsp;...),      *<code>String</code> objects, and byte arrays.      *      * @param value the Java object to be written      * @throws JMSException if the JMS provider fails to write the message due      *                 to some internal error.      * @throws MessageFormatException if the object is invalid.      * @throws MessageNotWriteableException if the message is in read-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeObject
@@ -3959,6 +4015,8 @@ throw|;
 block|}
 block|}
 comment|/**      * Puts the message body in read-only mode and repositions the stream of      * bytes to the beginning.      *      * @throws JMSException if an internal error occurs      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|reset
@@ -4005,7 +4063,7 @@ name|void
 name|initializeWriting
 parameter_list|()
 throws|throws
-name|MessageNotWriteableException
+name|JMSException
 block|{
 name|checkReadOnlyBody
 argument_list|()
@@ -4073,6 +4131,185 @@ argument_list|(
 name|os
 argument_list|)
 expr_stmt|;
+block|}
+comment|// For a message that already had a body and was sent we need to restore the content
+comment|// if the message is used again without having its clearBody method called.
+if|if
+condition|(
+name|this
+operator|.
+name|content
+operator|!=
+literal|null
+operator|&&
+name|this
+operator|.
+name|content
+operator|.
+name|length
+operator|>
+literal|0
+condition|)
+block|{
+try|try
+block|{
+if|if
+condition|(
+name|compressed
+condition|)
+block|{
+name|ByteArrayInputStream
+name|input
+init|=
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+name|this
+operator|.
+name|content
+operator|.
+name|getData
+argument_list|()
+argument_list|,
+name|this
+operator|.
+name|content
+operator|.
+name|getOffset
+argument_list|()
+argument_list|,
+name|this
+operator|.
+name|content
+operator|.
+name|getLength
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|InflaterInputStream
+name|inflater
+init|=
+operator|new
+name|InflaterInputStream
+argument_list|(
+name|input
+argument_list|)
+decl_stmt|;
+try|try
+block|{
+name|byte
+index|[]
+name|buffer
+init|=
+operator|new
+name|byte
+index|[
+literal|8
+operator|*
+literal|1024
+index|]
+decl_stmt|;
+name|int
+name|read
+init|=
+literal|0
+decl_stmt|;
+while|while
+condition|(
+operator|(
+name|read
+operator|=
+name|inflater
+operator|.
+name|read
+argument_list|(
+name|buffer
+argument_list|)
+operator|)
+operator|!=
+operator|-
+literal|1
+condition|)
+block|{
+name|this
+operator|.
+name|dataOut
+operator|.
+name|write
+argument_list|(
+name|buffer
+argument_list|,
+literal|0
+argument_list|,
+name|read
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+finally|finally
+block|{
+name|inflater
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|this
+operator|.
+name|dataOut
+operator|.
+name|write
+argument_list|(
+name|this
+operator|.
+name|content
+operator|.
+name|getData
+argument_list|()
+argument_list|,
+name|this
+operator|.
+name|content
+operator|.
+name|getOffset
+argument_list|()
+argument_list|,
+name|this
+operator|.
+name|content
+operator|.
+name|getLength
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Free up the buffer from the old content, will be re-written when
+comment|// tbe message is sent again and storeContent() is called.
+name|this
+operator|.
+name|content
+operator|=
+literal|null
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ioe
+parameter_list|)
+block|{
+throw|throw
+name|JMSExceptionSupport
+operator|.
+name|create
+argument_list|(
+name|ioe
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 specifier|protected
@@ -4207,6 +4444,8 @@ name|compress
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
