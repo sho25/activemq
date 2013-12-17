@@ -2031,12 +2031,17 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"{}, Usage Manager memory limit reached for {}. Producers will be throttled to the rate at which messages are removed from this destination to prevent flooding it. See http://activemq.apache.org/producer-flow-control.html for more info."
+literal|"{}, Usage Manager memory limit reached {}. Producers will be throttled to the rate at which messages are removed from this destination to prevent flooding it. See http://activemq.apache.org/producer-flow-control.html for more info."
 argument_list|,
 name|getActiveMQDestination
 argument_list|()
 operator|.
 name|getQualifiedName
+argument_list|()
+argument_list|,
+name|memoryUsage
+operator|.
+name|getLimit
 argument_list|()
 argument_list|)
 expr_stmt|;

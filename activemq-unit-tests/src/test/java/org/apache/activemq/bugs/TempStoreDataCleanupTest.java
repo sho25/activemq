@@ -704,7 +704,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"MemoryUseage at test start = "
+literal|"MemoryUsage at test start = "
 operator|+
 name|startPercentage
 argument_list|)
@@ -859,7 +859,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"MemoryUseage before awaiting temp store cleanup = "
+literal|"MemoryUsage before awaiting temp store cleanup = "
 operator|+
 name|broker
 operator|.

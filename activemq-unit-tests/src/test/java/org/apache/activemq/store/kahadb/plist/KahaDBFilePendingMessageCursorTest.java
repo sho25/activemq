@@ -516,6 +516,11 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
+name|ref
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"id is correct"
