@@ -727,6 +727,13 @@ name|Command
 name|command
 parameter_list|)
 block|{
+if|if
+condition|(
+name|command
+operator|instanceof
+name|IntegerResponse
+condition|)
+block|{
 name|IntegerResponse
 name|response
 init|=
@@ -755,6 +762,7 @@ argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
