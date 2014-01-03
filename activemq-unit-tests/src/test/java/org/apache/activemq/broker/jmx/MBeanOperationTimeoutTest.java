@@ -297,6 +297,13 @@ literal|50000
 decl_stmt|;
 annotation|@
 name|Test
+argument_list|(
+name|expected
+operator|=
+name|TimeoutException
+operator|.
+name|class
+argument_list|)
 specifier|public
 name|void
 name|testLongOperationTimesOut
@@ -384,13 +391,11 @@ argument_list|,
 name|messageCount
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Attempting to move one message."
+literal|"Attempting to move one message, TimeoutException expected"
 argument_list|)
 expr_stmt|;
 name|proxy
@@ -402,26 +407,6 @@ argument_list|,
 name|moveToDestinationName
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"Queue purge should have timed out."
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|TimeoutException
-name|e
-parameter_list|)
-block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Queue message move Timed out as expected."
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 specifier|private
 name|void
@@ -654,6 +639,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|500
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|broker
