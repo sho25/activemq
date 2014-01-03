@@ -1036,6 +1036,22 @@ name|long
 name|expectedCount
 parameter_list|)
 block|{
+try|try
+block|{
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|100
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{         }
 name|RegionBroker
 name|regionBroker
 init|=
@@ -1099,7 +1115,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"inflight for : "
+literal|">>>> inflight for : "
 operator|+
 name|dest
 operator|.
