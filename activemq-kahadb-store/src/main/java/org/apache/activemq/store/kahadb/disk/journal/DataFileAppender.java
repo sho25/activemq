@@ -1868,13 +1868,11 @@ condition|)
 block|{
 name|file
 operator|.
-name|getChannel
+name|getFD
 argument_list|()
 operator|.
-name|force
-argument_list|(
-literal|false
-argument_list|)
+name|sync
+argument_list|()
 expr_stmt|;
 block|}
 name|Journal
