@@ -114,6 +114,7 @@ name|String
 name|seed
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicLong
 name|sequence
 init|=
@@ -268,7 +269,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|ioe
+name|e
 parameter_list|)
 block|{
 if|if
@@ -285,7 +286,7 @@ name|trace
 argument_list|(
 literal|"could not generate unique stub by using DNS and binding to local port"
 argument_list|,
-name|ioe
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -297,7 +298,7 @@ name|warn
 argument_list|(
 literal|"could not generate unique stub by using DNS and binding to local port: {} {}"
 argument_list|,
-name|ioe
+name|e
 operator|.
 name|getClass
 argument_list|()
@@ -305,11 +306,28 @@ operator|.
 name|getCanonicalName
 argument_list|()
 argument_list|,
-name|ioe
+name|e
 operator|.
 name|getMessage
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+comment|// Restore interrupted state so higher level code can deal with it.
+if|if
+condition|(
+name|e
+operator|instanceof
+name|InterruptedException
+condition|)
+block|{
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
+argument_list|()
 expr_stmt|;
 block|}
 block|}
