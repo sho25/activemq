@@ -384,6 +384,8 @@ operator|+
 literal|", : "
 operator|+
 name|e
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}

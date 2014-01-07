@@ -337,7 +337,9 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"recover: {}, priority: {}"
+literal|"{} recover: {}, priority: {}"
+argument_list|,
+name|this
 argument_list|,
 name|message
 operator|.
@@ -574,6 +576,17 @@ name|batchList
 operator|.
 name|isEmpty
 argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|Subscription
+name|getSubscription
+parameter_list|()
+block|{
+return|return
+name|subscription
 return|;
 block|}
 annotation|@

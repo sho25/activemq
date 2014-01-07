@@ -734,6 +734,16 @@ name|boolean
 name|isDLQ
 parameter_list|()
 function_decl|;
+name|void
+name|duplicateFromStore
+parameter_list|(
+name|Message
+name|message
+parameter_list|,
+name|Subscription
+name|subscription
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

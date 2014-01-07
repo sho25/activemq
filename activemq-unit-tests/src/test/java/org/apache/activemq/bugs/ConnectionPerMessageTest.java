@@ -171,7 +171,7 @@ specifier|final
 name|int
 name|COUNT
 init|=
-literal|20000
+literal|2000
 decl_stmt|;
 specifier|protected
 name|String
@@ -194,7 +194,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Initializing pooled connection factory for JMS to URL: "
+literal|"Initializing connection factory for JMS to URL: "
 operator|+
 name|bindAddress
 argument_list|)
@@ -233,7 +233,7 @@ if|if
 condition|(
 name|i
 operator|%
-literal|1000
+literal|100
 operator|==
 literal|0
 condition|)
@@ -427,6 +427,13 @@ operator|new
 name|BrokerService
 argument_list|()
 decl_stmt|;
+name|answer
+operator|.
+name|setDeleteAllMessagesOnStartup
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|answer
 operator|.
 name|setUseJmx

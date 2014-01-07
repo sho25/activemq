@@ -7772,8 +7772,16 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Duplicate message add attempt rejected. Destination: "
-operator|+
+literal|"Duplicate message add attempt rejected. Destination: {}://{}, Message id: {}"
+argument_list|,
+name|command
+operator|.
+name|getDestination
+argument_list|()
+operator|.
+name|getType
+argument_list|()
+argument_list|,
 name|command
 operator|.
 name|getDestination
@@ -7781,9 +7789,7 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|", Message id: "
-operator|+
+argument_list|,
 name|command
 operator|.
 name|getMessageId

@@ -31,6 +31,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|LinkedList
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -58,6 +68,22 @@ operator|.
 name|region
 operator|.
 name|MessageReference
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|Subscription
 import|;
 end_import
 
@@ -471,10 +497,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|/*              * we should expect to get these - as the message is recorded as it before it goes into              * the cache. If subsequently, we pull out that message from the store (before its deleted)              * it will be a duplicate - but should be ignored              */
 name|LOG
 operator|.
-name|trace
+name|warn
 argument_list|(
 literal|"{} - cursor got duplicate: {}, {}"
 argument_list|,
@@ -496,10 +521,75 @@ argument_list|()
 block|}
 argument_list|)
 expr_stmt|;
+name|duplicate
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 name|recovered
 return|;
+block|}
+comment|// track for processing outside of store index lock so we can dlq
+specifier|final
+name|LinkedList
+argument_list|<
+name|Message
+argument_list|>
+name|duplicatesFromStore
+init|=
+operator|new
+name|LinkedList
+argument_list|<
+name|Message
+argument_list|>
+argument_list|()
+decl_stmt|;
+specifier|private
+name|void
+name|duplicate
+parameter_list|(
+name|Message
+name|message
+parameter_list|)
+block|{
+name|duplicatesFromStore
+operator|.
+name|add
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+block|}
+name|void
+name|dealWithDuplicates
+parameter_list|()
+block|{
+for|for
+control|(
+name|Message
+name|message
+range|:
+name|duplicatesFromStore
+control|)
+block|{
+name|regionDestination
+operator|.
+name|duplicateFromStore
+argument_list|(
+name|message
+argument_list|,
+name|getSubscription
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+name|duplicatesFromStore
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 block|}
 specifier|public
 specifier|final
@@ -857,11 +947,28 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// failed to recover, possible duplicate from concurrent dispatchPending,
-comment|// lets not recover further in case of out of order
-name|disableCache
-operator|=
-literal|true
+name|LOG
+operator|.
+name|debug
+argument_list|(
+name|this
+operator|+
+literal|" duplicate add {}"
+argument_list|,
+name|node
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+operator|new
+name|Throwable
+argument_list|(
+literal|"duplicated detected"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|dealWithDuplicates
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -1140,15 +1247,7 @@ name|void
 name|fillBatch
 parameter_list|()
 block|{
-name|LOG
-operator|.
-name|trace
-argument_list|(
-literal|"{} - fillBatch"
-argument_list|,
-name|this
-argument_list|)
-expr_stmt|;
+comment|//LOG.trace("{} - fillBatch", this);
 if|if
 condition|(
 name|batchResetNeeded
@@ -1385,6 +1484,15 @@ name|boolean
 name|isStoreEmpty
 parameter_list|()
 function_decl|;
+specifier|public
+name|Subscription
+name|getSubscription
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
 block|}
 end_class
 

@@ -468,6 +468,10 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
+name|dealWithDuplicates
+argument_list|()
+expr_stmt|;
+comment|// without the index lock
 block|}
 block|}
 block|}

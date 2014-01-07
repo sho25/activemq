@@ -262,7 +262,7 @@ argument_list|,
 name|dest
 argument_list|)
 decl_stmt|;
-comment|//      let consumers propogate around the network
+comment|//let consumers propagate around the network
 name|Thread
 operator|.
 name|sleep
@@ -723,7 +723,7 @@ argument_list|,
 name|dest
 argument_list|)
 decl_stmt|;
-comment|//      let consumers propogate around the network
+comment|//let consumers propagate around the network
 name|Thread
 operator|.
 name|sleep
@@ -918,7 +918,7 @@ argument_list|,
 name|dest
 argument_list|)
 decl_stmt|;
-comment|//      let consumers propogate around the network
+comment|//let consumers propagate around the network
 name|Thread
 operator|.
 name|sleep
@@ -1288,7 +1288,7 @@ name|conduitSubs
 init|=
 literal|true
 decl_stmt|;
-comment|// Setup broker networks
+comment|// Setup ring broker networks
 name|bridgeBrokers
 argument_list|(
 literal|"BrokerA"
@@ -1612,7 +1612,7 @@ name|conduitSubs
 init|=
 literal|true
 decl_stmt|;
-comment|// Setup broker networks
+comment|// Setup ring broker network
 name|bridgeBrokers
 argument_list|(
 literal|"BrokerA"
@@ -2109,6 +2109,27 @@ literal|"broker:(tcp://localhost:61618)/BrokerC"
 operator|+
 name|options
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|protected
+name|void
+name|configureBroker
+parameter_list|(
+name|BrokerService
+name|broker
+parameter_list|)
+block|{
+name|broker
+operator|.
+name|setBrokerId
+argument_list|(
+name|broker
+operator|.
+name|getBrokerName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

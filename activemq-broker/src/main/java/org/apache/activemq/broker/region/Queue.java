@@ -8749,6 +8749,20 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"ack of {} with {}"
+argument_list|,
+name|reference
+operator|.
+name|getMessageId
+argument_list|()
+argument_list|,
+name|ack
+argument_list|)
+expr_stmt|;
 name|reference
 operator|.
 name|setAcked
@@ -10256,6 +10270,26 @@ operator|.
 name|add
 argument_list|(
 name|node
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"assigned {} to consumer {}"
+argument_list|,
+name|node
+operator|.
+name|getMessageId
+argument_list|()
+argument_list|,
+name|s
+operator|.
+name|getConsumerInfo
+argument_list|()
+operator|.
+name|getConsumerId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|iterator
