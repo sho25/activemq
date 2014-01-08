@@ -1487,6 +1487,27 @@ name|amqpTransport
 operator|=
 name|transport
 expr_stmt|;
+name|int
+name|maxFrameSize
+init|=
+name|AmqpWireFormat
+operator|.
+name|DEFAULT_MAX_FRAME_SIZE
+decl_stmt|;
+comment|// AMQ-4914 - Setting the max frame size to large stalls out the QPid client on sends or
+comment|//            consume due to no session credit.  Once fixed we should set this value using
+comment|//            the configured maxFrameSize on the URI.
+comment|//int maxFrameSize = transport.getWireFormat().getMaxFrameSize()> Integer.MAX_VALUE ?
+comment|//    Integer.MAX_VALUE : (int) transport.getWireFormat().getMaxFrameSize();
+name|this
+operator|.
+name|protonTransport
+operator|.
+name|setMaxFrameSize
+argument_list|(
+name|maxFrameSize
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|protonTransport
