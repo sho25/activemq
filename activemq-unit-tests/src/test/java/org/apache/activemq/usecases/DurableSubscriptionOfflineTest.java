@@ -2421,15 +2421,12 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"see https://issues.apache.org/jira/browse/AMQ-4874"
-argument_list|)
-annotation|@
 name|Test
 argument_list|(
 name|timeout
 operator|=
+literal|2
+operator|*
 literal|60
 operator|*
 literal|1000
