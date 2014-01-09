@@ -3279,13 +3279,8 @@ argument_list|,
 literal|"password"
 argument_list|)
 decl_stmt|;
-name|factory
-operator|.
-name|setSyncPublish
-argument_list|(
-name|syncPublish
-argument_list|)
-expr_stmt|;
+comment|// seems to require unreleased .026
+comment|// factory.setSyncPublish(syncPublish);
 specifier|final
 name|Connection
 name|connection
