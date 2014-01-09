@@ -35,16 +35,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|RandomAccessFile
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|zip
@@ -62,20 +52,6 @@ operator|.
 name|zip
 operator|.
 name|Checksum
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|ByteSequence
 import|;
 end_import
 
@@ -109,12 +85,26 @@ name|activemq
 operator|.
 name|util
 operator|.
+name|ByteSequence
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
 name|RecoverableRandomAccessFile
 import|;
 end_import
 
 begin_comment
-comment|/**  * An optimized writer to do batch appends to a data file. This object is thread  * safe and gains throughput as you increase the number of concurrent writes it  * does.  * The thread calling enqueue does the file open and buffering of the data, which  * reduces the round trip of the write thread.  *   */
+comment|/**  * An optimized writer to do batch appends to a data file. This object is thread  * safe and gains throughput as you increase the number of concurrent writes it  * does.  * The thread calling enqueue does the file open and buffering of the data, which  * reduces the round trip of the write thread.  *  */
 end_comment
 
 begin_class
@@ -208,6 +198,8 @@ name|write
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|append
@@ -731,9 +723,6 @@ name|forceToDisk
 condition|)
 block|{
 name|file
-operator|.
-name|getFD
-argument_list|()
 operator|.
 name|sync
 argument_list|()

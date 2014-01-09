@@ -35,16 +35,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|RandomAccessFile
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Map
@@ -80,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Optimized Store reader and updater. Single threaded and synchronous. Use in  * conjunction with the DataFileAccessorPool of concurrent use.  *   *   */
+comment|/**  * Optimized Store reader and updater. Single threaded and synchronous. Use in  * conjunction with the DataFileAccessorPool of concurrent use.  *  *  */
 end_comment
 
 begin_class
@@ -116,7 +106,7 @@ specifier|private
 name|boolean
 name|disposed
 decl_stmt|;
-comment|/**      * Construct a Store reader      *       * @param fileId      * @throws IOException      */
+comment|/**      * Construct a Store reader      *      * @param fileId      * @throws IOException      */
 specifier|public
 name|DataFileAccessor
 parameter_list|(
@@ -236,11 +226,6 @@ operator|.
 name|WriteCommand
 name|asyncWrite
 init|=
-operator|(
-name|Journal
-operator|.
-name|WriteCommand
-operator|)
 name|inflightWrites
 operator|.
 name|get
@@ -464,11 +449,6 @@ operator|.
 name|WriteCommand
 name|asyncWrite
 init|=
-operator|(
-name|Journal
-operator|.
-name|WriteCommand
-operator|)
 name|inflightWrites
 operator|.
 name|get
@@ -651,9 +631,6 @@ name|sync
 condition|)
 block|{
 name|file
-operator|.
-name|getFD
-argument_list|()
 operator|.
 name|sync
 argument_list|()

@@ -80,6 +80,19 @@ specifier|public
 class|class
 name|DiskBenchmark
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|SKIP_METADATA_UPDATE
+init|=
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+literal|"org.apache.activemq.file.skipMetadataUpdate"
+argument_list|)
+decl_stmt|;
 name|boolean
 name|verbose
 decl_stmt|;
@@ -1004,24 +1017,30 @@ block|{
 break|break;
 block|}
 block|}
-comment|// Sync to disk so that the we actually write the data to disk.. otherwise
-comment|// OS buffering might not really do the write.
+comment|// Sync to disk so that the we actually write the data to disk..
+comment|// otherwise OS buffering might not really do the write.
 name|raf
 operator|.
-name|getFD
+name|getChannel
 argument_list|()
 operator|.
-name|sync
-argument_list|()
+name|force
+argument_list|(
+operator|!
+name|SKIP_METADATA_UPDATE
+argument_list|)
 expr_stmt|;
 block|}
 name|raf
 operator|.
-name|getFD
+name|getChannel
 argument_list|()
 operator|.
-name|sync
-argument_list|()
+name|force
+argument_list|(
+operator|!
+name|SKIP_METADATA_UPDATE
+argument_list|)
 expr_stmt|;
 name|raf
 operator|.
@@ -1143,11 +1162,13 @@ argument_list|)
 expr_stmt|;
 name|raf
 operator|.
-name|getFD
+name|getChannel
 argument_list|()
 operator|.
-name|sync
-argument_list|()
+name|force
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 name|ioCount
 operator|++
