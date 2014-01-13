@@ -204,6 +204,12 @@ name|createConnectionOnStartup
 init|=
 literal|true
 decl_stmt|;
+specifier|private
+name|boolean
+name|useAnonymousProducers
+init|=
+literal|true
+decl_stmt|;
 specifier|public
 name|void
 name|initConnectionsPool
@@ -373,6 +379,14 @@ operator|.
 name|setBlockIfSessionPoolIsFull
 argument_list|(
 name|isBlockIfSessionPoolIsFull
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|setUseAnonymousProducers
+argument_list|(
+name|isUseAnonymousProducers
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1242,6 +1256,34 @@ operator|.
 name|createConnectionOnStartup
 operator|=
 name|createConnectionOnStartup
+expr_stmt|;
+block|}
+comment|/**      * Should Sessions use one anonymous producer for all producer requests or should a new      * MessageProducer be created for each request to create a producer object, default is true.      *      * When enabled the session only needs to allocate one MessageProducer for all requests and      * the MessageProducer#send(destination, message) method can be used.  Normally this is the      * right thing to do however it does result in the Broker not showing the producers per      * destination.      *      * @return true if a PooledSession will use only a single anonymous message producer instance.      */
+specifier|public
+name|boolean
+name|isUseAnonymousProducers
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|useAnonymousProducers
+return|;
+block|}
+comment|/**      * Sets whether a PooledSession uses only one anonymous MessageProducer instance or creates      * a new MessageProducer for each call the create a MessageProducer.      *      * @param value      *      Boolean value that configures whether anonymous producers are used.      */
+specifier|public
+name|void
+name|setUseAnonymousProducers
+parameter_list|(
+name|boolean
+name|value
+parameter_list|)
+block|{
+name|this
+operator|.
+name|useAnonymousProducers
+operator|=
+name|value
 expr_stmt|;
 block|}
 comment|/**      * Gets the Pool of ConnectionPool instances which are keyed by different ConnectionKeys.      *      * @return this factories pool of ConnectionPool instances.      */
