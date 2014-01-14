@@ -289,18 +289,6 @@ end_import
 
 begin_import
 import|import
-name|scala
-operator|.
-name|actors
-operator|.
-name|threadpool
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|net
@@ -326,6 +314,16 @@ operator|.
 name|util
 operator|.
 name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
 import|;
 end_import
 
@@ -1376,6 +1374,9 @@ name|setStaticallyIncludedDestinations
 argument_list|(
 name|Arrays
 operator|.
+expr|<
+name|ActiveMQDestination
+operator|>
 name|asList
 argument_list|(
 operator|new
