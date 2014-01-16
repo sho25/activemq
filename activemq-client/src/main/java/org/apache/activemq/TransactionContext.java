@@ -1399,6 +1399,10 @@ argument_list|(
 literal|"Start: "
 operator|+
 name|xid
+operator|+
+literal|", flags:"
+operator|+
+name|flags
 argument_list|)
 expr_stmt|;
 block|}
@@ -1501,6 +1505,10 @@ argument_list|(
 literal|"End: "
 operator|+
 name|xid
+operator|+
+literal|", flags:"
+operator|+
+name|flags
 argument_list|)
 expr_stmt|;
 block|}
