@@ -57,16 +57,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -111,6 +101,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|springframework
 operator|.
 name|context
@@ -125,8 +135,6 @@ begin_class
 specifier|public
 class|class
 name|NetworkConnectionsCleanedupTest
-extends|extends
-name|TestCase
 block|{
 specifier|protected
 specifier|static
@@ -180,6 +188,10 @@ literal|"durableSubs"
 decl_stmt|;
 comment|// skip this test. it runs for an hour, doesn't assert anything, and could probably
 comment|// just be removed (seems like a throwaway impl for https://issues.apache.org/activemq/browse/AMQ-1202)
+annotation|@
+name|Ignore
+annotation|@
+name|Test
 specifier|public
 name|void
 name|skipTestNetworkConnections
