@@ -301,6 +301,17 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|testSendReceive
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// Ignore this test for now, see AMQ-4975
+block|}
 block|}
 end_class
 
