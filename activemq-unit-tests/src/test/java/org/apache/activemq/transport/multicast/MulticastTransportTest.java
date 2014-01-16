@@ -271,6 +271,28 @@ name|wireFormat
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|testSendingMediumMessage
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// Ignoring, see AMQ-4973
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|testSendingLargeMessage
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// Ignoring, see AMQ-4973
+block|}
 block|}
 end_class
 
