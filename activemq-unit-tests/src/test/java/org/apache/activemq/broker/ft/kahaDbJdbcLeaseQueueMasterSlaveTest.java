@@ -584,6 +584,17 @@ literal|500
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|testVirtualTopicFailover
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// Ignoring for now, see AMQ-4842
+block|}
 specifier|protected
 name|DataSource
 name|getExistingDataSource
