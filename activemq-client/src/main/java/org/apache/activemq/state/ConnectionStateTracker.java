@@ -61,7 +61,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
+name|Map
+operator|.
+name|Entry
 import|;
 end_import
 
@@ -71,9 +73,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
-operator|.
-name|Entry
+name|Vector
 import|;
 end_import
 
@@ -398,7 +398,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tracks the state of a connection so a newly established transport can be  * re-initialized to the state that was tracked.  *   *   */
+comment|/**  * Tracks the state of a connection so a newly established transport can be  * re-initialized to the state that was tracked.  *  *  */
 end_comment
 
 begin_class
@@ -511,10 +511,12 @@ operator|*
 literal|1024
 decl_stmt|;
 specifier|private
-name|int
+name|long
 name|currentCacheSize
 decl_stmt|;
+comment|// use long to prevent overflow for folks who set high max.
 specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|Object
@@ -532,6 +534,8 @@ name|Command
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|boolean
 name|removeEldestEntry
@@ -654,6 +658,8 @@ operator|=
 name|info
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onResponse
@@ -719,6 +725,8 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onResponse
@@ -766,7 +774,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      *       *       * @param command      * @return null if the command is not state tracked.      * @throws IOException      */
+comment|/**      * Entry point for all tracked commands in the tracker.  Commands should be tracked before      * there is an attempt to send them on the wire.  Upon a successful send of a command it is      * necessary to call the trackBack method to complete the tracking of the given command.      *      * @param command      *      The command that is to be tracked by this tracker.      *      * @return null if the command is not state tracked.      *      * @throws IOException if an error occurs during setup of the tracking operation.      */
 specifier|public
 name|Tracked
 name|track
@@ -817,6 +825,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/**      * Completes the two phase tracking operation for a command that is sent on the wire.  Once      * the command is sent successfully to complete the tracking operation or otherwise update      * the state of the tracker.      *      * @param command      *      The command that was previously provided to the track method.      */
 specifier|public
 name|void
 name|trackBack
@@ -879,11 +888,27 @@ operator|instanceof
 name|MessagePull
 condition|)
 block|{
+comment|// We only track one MessagePull per consumer so only add to cache size
+comment|// when the command has been marked as tracked.
+if|if
+condition|(
+operator|(
+operator|(
+name|MessagePull
+operator|)
+name|command
+operator|)
+operator|.
+name|isTracked
+argument_list|()
+condition|)
+block|{
 comment|// just needs to be a rough estimate of size, ~4 identifiers
 name|currentCacheSize
 operator|+=
 name|MESSAGE_PULL_SIZE
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -1007,7 +1032,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//now flush messages
+comment|// now flush messages and MessagePull commands.
 for|for
 control|(
 name|Command
@@ -1843,6 +1868,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processAddDestination
@@ -1899,6 +1926,8 @@ return|return
 name|TRACKED_RESPONSE_MARKER
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processRemoveDestination
@@ -1958,6 +1987,8 @@ return|return
 name|TRACKED_RESPONSE_MARKER
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processAddProducer
@@ -2063,6 +2094,8 @@ return|return
 name|TRACKED_RESPONSE_MARKER
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processRemoveProducer
@@ -2158,6 +2191,8 @@ return|return
 name|TRACKED_RESPONSE_MARKER
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processAddConsumer
@@ -2256,6 +2291,8 @@ return|return
 name|TRACKED_RESPONSE_MARKER
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processRemoveConsumer
@@ -2364,6 +2401,8 @@ return|return
 name|TRACKED_RESPONSE_MARKER
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processAddSession
@@ -2428,6 +2467,8 @@ return|return
 name|TRACKED_RESPONSE_MARKER
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processRemoveSession
@@ -2492,6 +2533,8 @@ return|return
 name|TRACKED_RESPONSE_MARKER
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processAddConnection
@@ -2528,6 +2571,8 @@ return|return
 name|TRACKED_RESPONSE_MARKER
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processRemoveConnection
@@ -2560,6 +2605,8 @@ return|return
 name|TRACKED_RESPONSE_MARKER
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processMessage
@@ -2728,6 +2775,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processBeginTransaction
@@ -2824,6 +2873,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processPrepareTransaction
@@ -2921,6 +2972,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processCommitTransactionOnePhase
@@ -3018,6 +3071,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processCommitTransactionTwoPhase
@@ -3115,6 +3170,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processRollbackTransaction
@@ -3212,6 +3269,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processEndTransaction
@@ -3337,6 +3396,8 @@ operator|.
 name|getConsumerId
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
 name|messageCache
 operator|.
 name|put
@@ -3348,7 +3409,19 @@ argument_list|()
 argument_list|,
 name|pull
 argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
+comment|// Only marked as tracked if this is the first request we've seen.
+name|pull
+operator|.
+name|setTracked
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 literal|null
@@ -3547,6 +3620,18 @@ name|maxCacheSize
 operator|=
 name|maxCacheSize
 expr_stmt|;
+block|}
+comment|/**      * @return the current cache size for the Message and MessagePull Command cache.      */
+specifier|public
+name|long
+name|getCurrentCacheSize
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|currentCacheSize
+return|;
 block|}
 specifier|public
 name|void

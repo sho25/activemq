@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to pull messages on demand.  *   * @openwire:marshaller code="20"  *   *   */
+comment|/**  * Used to pull messages on demand.  *  * @openwire:marshaller code="20"  *  *  */
 end_comment
 
 begin_class
@@ -70,6 +70,15 @@ specifier|private
 name|String
 name|correlationId
 decl_stmt|;
+specifier|private
+specifier|transient
+name|boolean
+name|tracked
+init|=
+literal|false
+decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getDataStructureType
@@ -79,6 +88,8 @@ return|return
 name|DATA_STRUCTURE_TYPE
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|visit
@@ -248,6 +259,32 @@ name|messageId
 operator|=
 name|messageId
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|setTracked
+parameter_list|(
+name|boolean
+name|tracked
+parameter_list|)
+block|{
+name|this
+operator|.
+name|tracked
+operator|=
+name|tracked
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isTracked
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|tracked
+return|;
 block|}
 block|}
 end_class
