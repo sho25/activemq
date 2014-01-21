@@ -1485,6 +1485,22 @@ specifier|private
 specifier|final
 name|CopyOnWriteArrayList
 argument_list|<
+name|TransportListener
+argument_list|>
+name|transportListeners
+init|=
+operator|new
+name|CopyOnWriteArrayList
+argument_list|<
+name|TransportListener
+argument_list|>
+argument_list|()
+decl_stmt|;
+comment|// Stream are deprecated and will be removed in a later release.
+specifier|private
+specifier|final
+name|CopyOnWriteArrayList
+argument_list|<
 name|ActiveMQInputStream
 argument_list|>
 name|inputStreams
@@ -1508,21 +1524,6 @@ operator|new
 name|CopyOnWriteArrayList
 argument_list|<
 name|ActiveMQOutputStream
-argument_list|>
-argument_list|()
-decl_stmt|;
-specifier|private
-specifier|final
-name|CopyOnWriteArrayList
-argument_list|<
-name|TransportListener
-argument_list|>
-name|transportListeners
-init|=
-operator|new
-name|CopyOnWriteArrayList
-argument_list|<
-name|TransportListener
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -2828,6 +2829,7 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
+comment|// Stream are deprecated and will be removed in a later release.
 for|for
 control|(
 name|Iterator
@@ -5404,6 +5406,7 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
+comment|// Stream are deprecated and will be removed in a later release.
 for|for
 control|(
 name|Iterator
@@ -7463,6 +7466,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|InputStream
 name|createInputStream
@@ -7484,6 +7489,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|InputStream
 name|createInputStream
@@ -7510,6 +7517,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|InputStream
 name|createInputStream
@@ -7542,6 +7551,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|InputStream
 name|createInputStream
@@ -7578,6 +7589,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|InputStream
 name|createDurableInputStream
@@ -7604,6 +7617,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|InputStream
 name|createDurableInputStream
@@ -7635,6 +7650,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|InputStream
 name|createDurableInputStream
@@ -7672,6 +7689,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|InputStream
 name|createDurableInputStream
@@ -7709,6 +7728,8 @@ name|timeout
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|private
 name|InputStream
 name|doCreateInputStream
@@ -7771,6 +7792,8 @@ block|}
 comment|/**      * Creates a persistent output stream; individual messages will be written      * to disk/database by the broker      */
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|OutputStream
 name|createOutputStream
@@ -7803,6 +7826,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Creates a non persistent output stream; messages will not be written to      * disk      */
+annotation|@
+name|Deprecated
 specifier|public
 name|OutputStream
 name|createNonPersistentOutputStream
@@ -7837,6 +7862,8 @@ block|}
 comment|/**      * Creates an output stream allowing full control over the delivery mode,      * the priority and time to live of the messages and the properties added to      * messages on the stream.      *      * @param streamProperties defines a map of key-value pairs where the keys      *                are strings and the values are primitive values (numbers      *                and strings) which are appended to the messages similarly      *                to using the      *                {@link javax.jms.Message#setObjectProperty(String, Object)}      *                method      */
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 specifier|public
 name|OutputStream
 name|createOutputStream
@@ -8150,6 +8177,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|addOutputStream
@@ -8166,6 +8195,8 @@ name|stream
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|removeOutputStream
@@ -8182,6 +8213,8 @@ name|stream
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|addInputStream
@@ -8198,6 +8231,8 @@ name|stream
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|removeInputStream

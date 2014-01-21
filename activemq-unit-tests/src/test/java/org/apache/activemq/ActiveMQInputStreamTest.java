@@ -112,6 +112,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|ActiveMQInputStreamTest
@@ -170,6 +172,8 @@ specifier|private
 name|String
 name|connectionUri
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp
@@ -251,6 +255,8 @@ name|getPublishableConnectString
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|tearDown
