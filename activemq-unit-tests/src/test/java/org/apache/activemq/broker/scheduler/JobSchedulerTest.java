@@ -1618,6 +1618,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|scheduler
+operator|.
+name|stopDispatching
+argument_list|()
+expr_stmt|;
 name|store
 operator|.
 name|stop
