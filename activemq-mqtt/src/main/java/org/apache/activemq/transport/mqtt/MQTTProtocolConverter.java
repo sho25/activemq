@@ -891,8 +891,9 @@ operator|.
 name|TYPE
 case|:
 block|{
-name|onMQTTConnect
-argument_list|(
+name|CONNECT
+name|connect
+init|=
 operator|new
 name|CONNECT
 argument_list|()
@@ -901,18 +902,25 @@ name|decode
 argument_list|(
 name|frame
 argument_list|)
+decl_stmt|;
+name|onMQTTConnect
+argument_list|(
+name|connect
 argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"MQTT Client "
-operator|+
+literal|"MQTT Client {} connected. (version: {})"
+argument_list|,
 name|getClientId
 argument_list|()
-operator|+
-literal|" connected."
+argument_list|,
+name|connect
+operator|.
+name|version
+argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;
@@ -927,12 +935,10 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"MQTT Client "
-operator|+
+literal|"MQTT Client {} disconnecting"
+argument_list|,
 name|getClientId
 argument_list|()
-operator|+
-literal|" disconnecting"
 argument_list|)
 expr_stmt|;
 name|onMQTTDisconnect
