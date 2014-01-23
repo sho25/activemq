@@ -605,7 +605,7 @@ argument_list|)
 expr_stmt|;
 name|XAResource
 index|[]
-name|resoruces
+name|resources
 init|=
 name|ra
 operator|.
@@ -620,7 +620,7 @@ literal|"one resource"
 argument_list|,
 literal|1
 argument_list|,
-name|resoruces
+name|resources
 operator|.
 name|length
 argument_list|)
@@ -631,7 +631,7 @@ literal|"no pending transactions"
 argument_list|,
 literal|0
 argument_list|,
-name|resoruces
+name|resources
 index|[
 literal|0
 index|]
