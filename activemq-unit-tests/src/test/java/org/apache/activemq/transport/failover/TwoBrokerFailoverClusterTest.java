@@ -168,6 +168,13 @@ argument_list|(
 name|BROKER_A_NAME
 argument_list|)
 expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
 name|assertAllConnectedTo
 argument_list|(
 name|BROKER_B_CLIENT_TC_ADDRESS
