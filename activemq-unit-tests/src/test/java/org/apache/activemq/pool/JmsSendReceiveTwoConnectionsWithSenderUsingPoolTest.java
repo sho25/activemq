@@ -164,24 +164,6 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-comment|// TODO remove this method when AMQ-4991 is fixed
-annotation|@
-name|Ignore
-argument_list|(
-literal|"See AMQ-4991"
-argument_list|)
-comment|// Ignore doesn't really work here with JUnit3 runner, just adding as documentation
-specifier|public
-name|void
-name|testSendReceive
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|//super.testSendReceive();
-block|}
 block|}
 end_class
 

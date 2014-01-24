@@ -388,6 +388,12 @@ if|if
 condition|(
 name|anonymous
 operator|&&
+name|this
+operator|.
+name|destination
+operator|!=
+literal|null
+operator|&&
 operator|!
 name|this
 operator|.
