@@ -494,6 +494,34 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|int
+name|getCurrentConnectionsCount
+parameter_list|()
+block|{
+return|return
+name|brokerService
+operator|.
+name|getCurrentConnections
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|long
+name|getTotalConnectionsCount
+parameter_list|()
+block|{
+return|return
+name|brokerService
+operator|.
+name|getTotalConnections
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|void
 name|gc
 parameter_list|()
@@ -729,6 +757,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return the average size of a message (bytes)      */
+annotation|@
+name|Override
 specifier|public
 name|double
 name|getAverageMessageSize
@@ -749,6 +779,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return the max size of a message (bytes)      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getMaxMessageSize
@@ -769,6 +801,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return the min size of a message (bytes)      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getMinMessageSize
@@ -2012,7 +2046,6 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-comment|//  doc comment inherited from BrokerViewMBean
 annotation|@
 name|Override
 specifier|public

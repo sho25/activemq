@@ -100,6 +100,16 @@ name|String
 name|getUptime
 parameter_list|()
 function_decl|;
+comment|/**      * @return The current number of active connections on this Broker.      */
+name|int
+name|getCurrentConnectionsCount
+parameter_list|()
+function_decl|;
+comment|/**      * @return The total number of connections serviced since this Broker was started.      */
+name|long
+name|getTotalConnectionsCount
+parameter_list|()
+function_decl|;
 comment|/**      * The Broker will flush it's caches so that the garbage collector can      * reclaim more memory.      *      * @throws Exception      */
 annotation|@
 name|MBeanInfo
@@ -379,6 +389,8 @@ name|exitCode
 parameter_list|)
 function_decl|;
 comment|/**      * Stop the broker and all it's components.      */
+annotation|@
+name|Override
 annotation|@
 name|MBeanInfo
 argument_list|(
