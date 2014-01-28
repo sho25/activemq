@@ -423,6 +423,10 @@ name|ConsumerControl
 name|control
 parameter_list|)
 function_decl|;
+name|void
+name|reapplyInterceptor
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

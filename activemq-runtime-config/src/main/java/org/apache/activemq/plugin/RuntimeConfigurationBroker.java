@@ -4112,6 +4112,11 @@ operator|+
 name|interceptorsList
 argument_list|)
 expr_stmt|;
+name|regionBroker
+operator|.
+name|reapplyInterceptor
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 block|}

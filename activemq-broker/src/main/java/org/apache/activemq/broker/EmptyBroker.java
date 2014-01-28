@@ -1290,6 +1290,13 @@ block|{     }
 annotation|@
 name|Override
 specifier|public
+name|void
+name|reapplyInterceptor
+parameter_list|()
+block|{      }
+annotation|@
+name|Override
+specifier|public
 name|Scheduler
 name|getScheduler
 parameter_list|()
