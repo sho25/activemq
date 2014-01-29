@@ -43,6 +43,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -170,16 +182,6 @@ operator|.
 name|policy
 operator|.
 name|PolicyMap
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
 import|;
 end_import
 
@@ -462,11 +464,6 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"AMQ-5001"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -475,6 +472,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|strategy
+operator|.
+name|setMaxTimeSinceLastAck
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
+comment|// Make it shorter
 name|ActiveMQConnection
 name|conn
 init|=
@@ -558,13 +563,22 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|sleep
+argument_list|(
+literal|15
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|20000
+literal|5000
 argument_list|)
 expr_stmt|;
 name|fail
@@ -581,11 +595,6 @@ parameter_list|)
 block|{         }
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"AMQ-5001"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -601,6 +610,14 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|strategy
+operator|.
+name|setMaxTimeSinceLastAck
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
+comment|// Make it shorter
 name|ActiveMQConnection
 name|conn
 init|=
@@ -662,13 +679,45 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|startProducers
+argument_list|(
+name|destination
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+name|Message
+name|message
+init|=
+name|consumer
+operator|.
+name|receive
+argument_list|(
+literal|5000
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+comment|// Consumer needs to be closed before the reeive call.
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|sleep
+argument_list|(
+literal|15
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|20000
+literal|5000
 argument_list|)
 expr_stmt|;
 name|fail
@@ -684,11 +733,6 @@ name|ex
 parameter_list|)
 block|{         }
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"AMQ-5001"
-argument_list|)
 annotation|@
 name|Test
 specifier|public
@@ -711,6 +755,14 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|strategy
+operator|.
+name|setMaxTimeSinceLastAck
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
+comment|// Make it shorter
 name|ActiveMQConnection
 name|conn
 init|=
@@ -776,7 +828,7 @@ name|startProducers
 argument_list|(
 name|destination
 argument_list|,
-literal|20
+literal|1
 argument_list|)
 expr_stmt|;
 name|Message
@@ -799,18 +851,28 @@ operator|.
 name|acknowledge
 argument_list|()
 expr_stmt|;
+comment|// Consumer needs to be closed before the reeive call.
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|sleep
+argument_list|(
+literal|15
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|20000
+literal|5000
 argument_list|)
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"Slow consumer not aborted."
+literal|"Idle consumer not aborted."
 argument_list|)
 expr_stmt|;
 block|}
