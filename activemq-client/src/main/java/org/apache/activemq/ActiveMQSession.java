@@ -1129,6 +1129,15 @@ name|Object
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
+name|AtomicBoolean
+name|clearInProgress
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|()
+decl_stmt|;
+specifier|private
 name|MessageListener
 name|messageListener
 decl_stmt|;
@@ -2120,14 +2129,37 @@ operator|.
 name|clearMessagesInProgress
 argument_list|()
 expr_stmt|;
-comment|// we are called from inside the transport reconnection logic
-comment|// which involves us clearing all the connections' consumers
-comment|// dispatch and delivered lists. So rather than trying to
-comment|// grab a mutex (which could be already owned by the message
-comment|// listener calling the send or an ack) we allow it to complete in
-comment|// a separate thread via the scheduler and notify us via
-comment|// connection.transportInterruptionProcessingComplete()
+comment|// we are called from inside the transport reconnection logic which involves us
+comment|// clearing all the connections' consumers dispatch and delivered lists. So rather
+comment|// than trying to grab a mutex (which could be already owned by the message listener
+comment|// calling the send or an ack) we allow it to complete in a separate thread via the
+comment|// scheduler and notify us via connection.transportInterruptionProcessingComplete()
 comment|//
+comment|// We must be careful though not to allow multiple calls to this method from a
+comment|// connection that is having issue becoming fully established from causing a large
+comment|// build up of scheduled tasks to clear the same consumers over and over.
+if|if
+condition|(
+name|consumers
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return;
+block|}
+if|if
+condition|(
+name|clearInProgress
+operator|.
+name|compareAndSet
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+condition|)
+block|{
 for|for
 control|(
 specifier|final
@@ -2160,6 +2192,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2169,6 +2203,55 @@ name|consumer
 operator|.
 name|clearMessagesInProgress
 argument_list|()
+expr_stmt|;
+block|}
+block|}
+argument_list|,
+literal|0l
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|e
+parameter_list|)
+block|{
+name|connection
+operator|.
+name|onClientInternalException
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+try|try
+block|{
+name|connection
+operator|.
+name|getScheduler
+argument_list|()
+operator|.
+name|executeAfterDelay
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+name|clearInProgress
+operator|.
+name|set
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 block|}
 block|}
