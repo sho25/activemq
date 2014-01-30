@@ -19,26 +19,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|MessageConsumer
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -186,6 +166,26 @@ import|;
 end_import
 
 begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|MessageConsumer
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -193,7 +193,19 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|*
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
 import|;
 end_import
 
