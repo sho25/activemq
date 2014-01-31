@@ -605,6 +605,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|brokerService
+operator|.
+name|isRestartAllowed
+argument_list|()
+condition|)
+block|{
 name|brokerService
 operator|.
 name|requestRestart
@@ -615,6 +623,17 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|Exception
+argument_list|(
+literal|"Restart is not allowed"
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override
