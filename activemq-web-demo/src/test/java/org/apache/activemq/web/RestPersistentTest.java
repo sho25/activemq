@@ -77,6 +77,28 @@ name|Ignore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|*
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -96,6 +118,15 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60
+operator|*
+literal|1000
+argument_list|)
 specifier|public
 name|void
 name|testPostAndGetWithQueue
@@ -109,6 +140,20 @@ literal|"queue"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60
+operator|*
+literal|1000
+argument_list|)
+annotation|@
+name|Ignore
+argument_list|(
+literal|"Needs a JIRA"
+argument_list|)
 specifier|public
 name|void
 name|testPostAndGetWithTopic
