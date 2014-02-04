@@ -214,7 +214,7 @@ return|return
 name|durableTopicPrefetch
 return|;
 block|}
-comment|/**      * @param durableTopicPrefetch The durableTopicPrefetch to set.      */
+comment|/**      * @param durableTopicPrefetch      *            The durableTopicPrefetch to set.      */
 specifier|public
 name|void
 name|setDurableTopicPrefetch
@@ -243,7 +243,7 @@ return|return
 name|queuePrefetch
 return|;
 block|}
-comment|/**      * @param queuePrefetch The queuePrefetch to set.      */
+comment|/**      * @param queuePrefetch      *            The queuePrefetch to set.      */
 specifier|public
 name|void
 name|setQueuePrefetch
@@ -272,7 +272,7 @@ return|return
 name|queueBrowserPrefetch
 return|;
 block|}
-comment|/**      * @param queueBrowserPrefetch The queueBrowserPrefetch to set.      */
+comment|/**      * @param queueBrowserPrefetch      *            The queueBrowserPrefetch to set.      */
 specifier|public
 name|void
 name|setQueueBrowserPrefetch
@@ -301,7 +301,7 @@ return|return
 name|topicPrefetch
 return|;
 block|}
-comment|/**      * @param topicPrefetch The topicPrefetch to set.      */
+comment|/**      * @param topicPrefetch      *            The topicPrefetch to set.      */
 specifier|public
 name|void
 name|setTopicPrefetch
@@ -330,7 +330,7 @@ return|return
 name|optimizeDurableTopicPrefetch
 return|;
 block|}
-comment|/**      * @param optimizeAcknowledgePrefetch The optimizeDurableTopicPrefetch to      *                set.      */
+comment|/**      * @param optimizeAcknowledgePrefetch      *            The optimizeDurableTopicPrefetch to set.      */
 specifier|public
 name|void
 name|setOptimizeDurableTopicPrefetch
@@ -428,39 +428,59 @@ name|this
 operator|.
 name|durableTopicPrefetch
 operator|=
+name|getMaxPrefetchLimit
+argument_list|(
 name|i
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|queueBrowserPrefetch
 operator|=
+name|getMaxPrefetchLimit
+argument_list|(
 name|i
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|queuePrefetch
 operator|=
+name|getMaxPrefetchLimit
+argument_list|(
 name|i
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|topicPrefetch
 operator|=
+name|getMaxPrefetchLimit
+argument_list|(
 name|i
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|inputStreamPrefetch
 operator|=
-literal|1
+name|getMaxPrefetchLimit
+argument_list|(
+name|i
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|optimizeDurableTopicPrefetch
 operator|=
+name|getMaxPrefetchLimit
+argument_list|(
 name|i
+argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|int
 name|getInputStreamPrefetch
@@ -470,6 +490,8 @@ return|return
 name|inputStreamPrefetch
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setInputStreamPrefetch
@@ -488,6 +510,8 @@ name|inputStreamPrefetch
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals
