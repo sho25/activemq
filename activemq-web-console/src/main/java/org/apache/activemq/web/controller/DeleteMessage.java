@@ -252,7 +252,7 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|redirectToBrowseView
+name|redirectToDestinationView
 argument_list|()
 return|;
 block|}
