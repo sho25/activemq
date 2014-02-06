@@ -1108,6 +1108,12 @@ operator|-
 literal|1
 decl_stmt|;
 comment|// ensure default init before setting via brokerUrl introspection in sub class
+specifier|private
+name|boolean
+name|rmIdFromConnectionId
+init|=
+literal|false
+decl_stmt|;
 comment|// /////////////////////////////////////////////
 comment|//
 comment|// ConnectionFactory, QueueConnectionFactory, TopicConnectionFactory Methods
@@ -1253,7 +1259,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * @param brokerURL      * @return      * @throws URISyntaxException      */
+comment|/*boolean*      * @param brokerURL      * @return      * @throws URISyntaxException      */
 specifier|private
 specifier|static
 name|URI
@@ -1988,6 +1994,14 @@ operator|.
 name|setNestedMapAndListEnabled
 argument_list|(
 name|isNestedMapAndListEnabled
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|setRmIdFromConnectionId
+argument_list|(
+name|isRmIdFromConnectionId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3558,6 +3572,21 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|props
+operator|.
+name|setProperty
+argument_list|(
+literal|"rmIdFromConnectionId"
+argument_list|,
+name|Boolean
+operator|.
+name|toString
+argument_list|(
+name|isRmIdFromConnectionId
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|boolean
@@ -4349,6 +4378,31 @@ operator|.
 name|optimizedAckScheduledAckInterval
 operator|=
 name|optimizedAckScheduledAckInterval
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isRmIdFromConnectionId
+parameter_list|()
+block|{
+return|return
+name|rmIdFromConnectionId
+return|;
+block|}
+comment|/**      * uses the connection id as the resource identity for XAResource.isSameRM      * ensuring join will only occur on a single connection      */
+specifier|public
+name|void
+name|setRmIdFromConnectionId
+parameter_list|(
+name|boolean
+name|rmIdFromConnectionId
+parameter_list|)
+block|{
+name|this
+operator|.
+name|rmIdFromConnectionId
+operator|=
+name|rmIdFromConnectionId
 expr_stmt|;
 block|}
 block|}
