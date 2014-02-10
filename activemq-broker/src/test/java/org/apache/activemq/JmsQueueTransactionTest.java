@@ -836,6 +836,13 @@ name|nextElement
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Check for more..."
+argument_list|)
+expr_stmt|;
 comment|// There should be no more.
 name|boolean
 name|tooMany
@@ -880,10 +887,24 @@ argument_list|(
 name|tooMany
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"close browser..."
+argument_list|)
+expr_stmt|;
 name|browser
 operator|.
 name|close
 argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"reopen and consume..."
+argument_list|)
 expr_stmt|;
 comment|// Re-open the consumer.
 name|consumer
