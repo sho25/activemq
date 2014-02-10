@@ -3842,6 +3842,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|ActiveMQAdmin
+operator|.
+name|enableJMSFrameTracing
+argument_list|()
+expr_stmt|;
 name|Connection
 name|connection
 init|=
@@ -3995,7 +4000,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|40000
+literal|30000
 argument_list|)
 specifier|public
 name|void
@@ -4006,6 +4011,11 @@ name|JMSException
 throws|,
 name|InterruptedException
 block|{
+name|ActiveMQAdmin
+operator|.
+name|enableJMSFrameTracing
+argument_list|()
+expr_stmt|;
 name|Connection
 name|connection
 init|=
@@ -4249,7 +4259,7 @@ name|ConnectionFactoryImpl
 argument_list|(
 literal|"localhost"
 argument_list|,
-name|port
+name|nioPort
 argument_list|,
 literal|"admin"
 argument_list|,
