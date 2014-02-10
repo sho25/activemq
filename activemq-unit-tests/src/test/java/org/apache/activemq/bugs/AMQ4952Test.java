@@ -249,16 +249,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -577,6 +567,18 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|*
+import|;
+end_import
+
 begin_comment
 comment|/**  * Test creates a broker network with two brokers - producerBroker (with a  * message producer attached) and consumerBroker (with consumer attached)  *<p/>  * Simulates network duplicate message by stopping and restarting the  * consumerBroker after message (with message ID ending in 120) is persisted to  * consumerBrokerstore BUT BEFORE ack sent to the producerBroker over the  * network connection. When the network connection is reestablished the  * producerBroker resends message (with messageID ending in 120).  *<p/>  * Expectation:  *<p/>  * With the following policy entries set, would expect the duplicate message to  * be read from the store and dispatched to the consumer - where the duplicate  * could be detected by consumer.  *<p/>  * PolicyEntry policy = new PolicyEntry(); policy.setQueue(">");  * policy.setEnableAudit(false); policy.setUseCache(false);  * policy.setExpireMessagesPeriod(0);  *<p/>  *<p/>  * Note 1: Network needs to use replaywhenNoConsumers so enabling the  * networkAudit to avoid this scenario is not feasible.  *<p/>  * NOTE 2: Added a custom plugin to the consumerBroker so that the  * consumerBroker shutdown will occur after a message has been persisted to  * consumerBroker store but before an ACK is sent back to ProducerBroker. This  * is just a hack to ensure producerBroker will resend the message after  * shutdown.  */
 end_comment
@@ -594,8 +596,6 @@ argument_list|)
 specifier|public
 class|class
 name|AMQ4952Test
-extends|extends
-name|TestCase
 block|{
 specifier|private
 specifier|static
@@ -1285,8 +1285,6 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Override
-annotation|@
 name|Before
 specifier|public
 name|void
@@ -1295,17 +1293,21 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
+name|LOG
 operator|.
-name|setUp
-argument_list|()
+name|debug
+argument_list|(
+literal|"Running with enableCursorAudit set to {}"
+argument_list|,
+name|this
+operator|.
+name|enableCursorAudit
+argument_list|)
 expr_stmt|;
 name|doSetUp
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 annotation|@
 name|After
 specifier|public
@@ -1316,11 +1318,6 @@ throws|throws
 name|Exception
 block|{
 name|doTearDown
-argument_list|()
-expr_stmt|;
-name|super
-operator|.
-name|tearDown
 argument_list|()
 expr_stmt|;
 block|}
