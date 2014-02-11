@@ -458,6 +458,11 @@ literal|"rawtypes"
 argument_list|)
 annotation|@
 name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|30000
+argument_list|)
 specifier|public
 name|void
 name|testProducerConsume
@@ -808,6 +813,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|30000
+argument_list|)
 specifier|public
 name|void
 name|testRollbackRececeivedMessage
@@ -1056,6 +1066,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|30000
+argument_list|)
 specifier|public
 name|void
 name|testTXConsumerAndLargeNumberOfMessages
@@ -1277,6 +1292,11 @@ literal|"rawtypes"
 argument_list|)
 annotation|@
 name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|30000
+argument_list|)
 specifier|public
 name|void
 name|testSelectors
