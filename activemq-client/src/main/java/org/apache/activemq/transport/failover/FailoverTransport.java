@@ -1535,9 +1535,6 @@ argument_list|(
 literal|"Transport ("
 operator|+
 name|transport
-operator|.
-name|getRemoteAddress
-argument_list|()
 operator|+
 literal|") failed, reason:  "
 operator|+
