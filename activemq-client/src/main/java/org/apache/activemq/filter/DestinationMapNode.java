@@ -546,7 +546,7 @@ name|idx
 index|]
 argument_list|)
 operator|.
-name|add
+name|set
 argument_list|(
 name|paths
 argument_list|,
