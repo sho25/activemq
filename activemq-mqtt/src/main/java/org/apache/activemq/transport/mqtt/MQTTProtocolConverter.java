@@ -177,20 +177,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|store
-operator|.
-name|TopicMessageStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|util
 operator|.
 name|ByteArrayOutputStream
@@ -402,7 +388,7 @@ specifier|final
 name|double
 name|MQTT_KEEP_ALIVE_GRACE_PERIOD
 init|=
-literal|1.5
+literal|0.5
 decl_stmt|;
 specifier|private
 specifier|static
@@ -3909,8 +3895,26 @@ expr_stmt|;
 block|}
 try|try
 block|{
+comment|// if we have a default keep-alive value, and the client is trying to turn off keep-alive,
+comment|// we'll observe the server-side configured default value (note, no grace period)
+if|if
+condition|(
+name|keepAliveMS
+operator|==
+literal|0
+operator|&&
+name|defaultKeepAlive
+operator|>
+literal|0
+condition|)
+block|{
+name|keepAliveMS
+operator|=
+name|defaultKeepAlive
+expr_stmt|;
+block|}
 name|long
-name|keepAliveMSWithGracePeriod
+name|readGracePeriod
 init|=
 call|(
 name|long
@@ -3921,24 +3925,6 @@ operator|*
 name|MQTT_KEEP_ALIVE_GRACE_PERIOD
 argument_list|)
 decl_stmt|;
-comment|// if we have a default keep-alive value, and the client is trying to turn off keep-alive,
-comment|// we'll observe the server-side configured default value (note, no grace period)
-if|if
-condition|(
-name|keepAliveMSWithGracePeriod
-operator|==
-literal|0
-operator|&&
-name|defaultKeepAlive
-operator|>
-literal|0
-condition|)
-block|{
-name|keepAliveMSWithGracePeriod
-operator|=
-name|defaultKeepAlive
-expr_stmt|;
-block|}
 name|monitor
 operator|.
 name|setProtocolConverter
@@ -3948,16 +3934,16 @@ argument_list|)
 expr_stmt|;
 name|monitor
 operator|.
-name|setReadCheckTime
+name|setReadKeepAliveTime
 argument_list|(
-name|keepAliveMSWithGracePeriod
+name|keepAliveMS
 argument_list|)
 expr_stmt|;
 name|monitor
 operator|.
-name|setInitialDelayTime
+name|setReadGraceTime
 argument_list|(
-name|keepAliveMS
+name|readGracePeriod
 argument_list|)
 expr_stmt|;
 name|monitor
@@ -3984,7 +3970,7 @@ argument_list|()
 operator|+
 literal|" established heart beat of  "
 operator|+
-name|keepAliveMSWithGracePeriod
+name|keepAliveMS
 operator|+
 literal|" ms ("
 operator|+
@@ -3992,11 +3978,7 @@ name|keepAliveMS
 operator|+
 literal|"ms + "
 operator|+
-operator|(
-name|keepAliveMSWithGracePeriod
-operator|-
-name|keepAliveMS
-operator|)
+name|readGracePeriod
 operator|+
 literal|"ms grace period)"
 argument_list|)
