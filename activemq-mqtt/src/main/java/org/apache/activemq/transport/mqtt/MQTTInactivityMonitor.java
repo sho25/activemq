@@ -384,6 +384,8 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -510,6 +512,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -581,6 +585,8 @@ name|next
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -597,6 +603,8 @@ name|startMonitorThread
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -613,6 +621,8 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onCommand
@@ -649,6 +659,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|oneway
@@ -727,6 +739,8 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onException
@@ -763,11 +777,6 @@ name|onTransportError
 argument_list|()
 expr_stmt|;
 block|}
-name|protocolConverter
-operator|.
-name|onTransportError
-argument_list|()
-expr_stmt|;
 name|transportListener
 operator|.
 name|onException
@@ -1076,6 +1085,7 @@ block|}
 block|}
 block|}
 specifier|private
+specifier|final
 name|ThreadFactory
 name|factory
 init|=
@@ -1083,6 +1093,8 @@ operator|new
 name|ThreadFactory
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Thread
 name|newThread
