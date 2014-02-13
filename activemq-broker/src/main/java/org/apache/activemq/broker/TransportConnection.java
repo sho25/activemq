@@ -8094,6 +8094,15 @@ return|return
 name|result
 return|;
 block|}
+specifier|public
+name|WireFormatInfo
+name|getRemoteWireFormatInfo
+parameter_list|()
+block|{
+return|return
+name|wireFormatInfo
+return|;
+block|}
 block|}
 end_class
 
