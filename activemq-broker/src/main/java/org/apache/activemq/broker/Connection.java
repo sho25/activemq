@@ -17,16 +17,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -92,6 +82,16 @@ operator|.
 name|command
 operator|.
 name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
 import|;
 end_import
 
@@ -210,6 +210,18 @@ parameter_list|(
 name|ConnectionControl
 name|control
 parameter_list|)
+function_decl|;
+comment|/**      * Returns the number of active transactions established on this Connection.      *      * @return the number of active transactions established on this Connection..      */
+specifier|public
+name|int
+name|getActiveTransactionCount
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the number of active transactions established on this Connection.      *      * @return the number of active transactions established on this Connection..      */
+specifier|public
+name|Long
+name|getOldestActiveTransactionDuration
+parameter_list|()
 function_decl|;
 block|}
 end_interface

@@ -39,6 +39,44 @@ name|Service
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|TransportConnectionState
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|state
+operator|.
+name|TransactionState
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
 begin_interface
 specifier|public
 interface|interface
@@ -157,6 +195,28 @@ argument_list|)
 name|ObjectName
 index|[]
 name|getProducers
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the number of active transactions established on this Connection.      *      * @return the number of active transactions established on this Connection..      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The number of active transactions established on this Connection."
+argument_list|)
+specifier|public
+name|int
+name|getActiveTransactionCount
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the number of active transactions established on this Connection.      *      * @return the number of active transactions established on this Connection..      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The age in ms of the oldest active transaction established on this Connection."
+argument_list|)
+specifier|public
+name|Long
+name|getOldestActiveTransactionDuration
 parameter_list|()
 function_decl|;
 block|}
