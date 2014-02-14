@@ -231,7 +231,6 @@ begin_class
 specifier|public
 class|class
 name|JmsRollbackRedeliveryTest
-comment|/*extends AutoFailTestSupport*/
 block|{
 annotation|@
 name|Rule
@@ -298,13 +297,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//setAutoFail(true);
-comment|//super.setUp();
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
-literal|">>>> Starting "
+literal|"Starting "
 operator|+
 name|testName
 operator|.
@@ -352,7 +349,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//super.tearDown();
 if|if
 condition|(
 name|broker
@@ -371,6 +367,25 @@ name|waitUntilStopped
 argument_list|()
 expr_stmt|;
 block|}
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Finishing "
+operator|+
+name|testName
+operator|.
+name|getMethodName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|100
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -459,9 +474,9 @@ name|Exception
 block|{
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
-literal|">>>> entering doTestRedelivery interleaveProducer is "
+literal|"entering doTestRedelivery interleaveProducer is "
 operator|+
 name|interleaveProducer
 argument_list|)
