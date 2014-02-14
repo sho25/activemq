@@ -692,7 +692,7 @@ argument_list|)
 decl_stmt|;
 name|sendMessage
 argument_list|(
-literal|1000
+literal|1500
 argument_list|)
 expr_stmt|;
 name|Message
