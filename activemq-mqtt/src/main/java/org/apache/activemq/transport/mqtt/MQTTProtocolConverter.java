@@ -2400,7 +2400,12 @@ parameter_list|(
 name|UNSUBSCRIBE
 name|command
 parameter_list|)
+throws|throws
+name|MQTTProtocolException
 block|{
+name|checkConnected
+argument_list|()
+expr_stmt|;
 name|UTF8Buffer
 index|[]
 name|topics
