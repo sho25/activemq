@@ -326,15 +326,6 @@ operator|.
 name|setUp
 argument_list|()
 expr_stmt|;
-name|this
-operator|.
-name|autoFailTestSupport
-operator|.
-name|setAutoFail
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
