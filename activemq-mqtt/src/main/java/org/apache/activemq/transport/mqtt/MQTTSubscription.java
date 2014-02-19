@@ -340,6 +340,15 @@ return|return
 name|consumerInfo
 return|;
 block|}
+specifier|public
+name|QoS
+name|qos
+parameter_list|()
+block|{
+return|return
+name|qos
+return|;
+block|}
 block|}
 end_class
 
