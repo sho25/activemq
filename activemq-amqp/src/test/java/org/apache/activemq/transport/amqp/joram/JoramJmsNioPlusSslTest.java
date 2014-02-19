@@ -177,6 +177,24 @@ name|jms
 operator|.
 name|conform
 operator|.
+name|connection
+operator|.
+name|TopicConnectionTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|objectweb
+operator|.
+name|jtests
+operator|.
+name|jms
+operator|.
+name|conform
+operator|.
 name|message
 operator|.
 name|MessageBodyTest
@@ -447,6 +465,8 @@ end_import
 
 begin_class
 annotation|@
+name|Ignore
+annotation|@
 name|RunWith
 argument_list|(
 name|Suite
@@ -477,7 +497,11 @@ name|TemporaryTopicTest
 operator|.
 name|class
 block|,
-comment|//,TopicConnectionTest.class    // https://issues.apache.org/jira/browse/AMQ-4654
+name|TopicConnectionTest
+operator|.
+name|class
+block|,
+comment|// https://issues.apache.org/jira/browse/AMQ-4654
 name|SelectorSyntaxTest
 operator|.
 name|class

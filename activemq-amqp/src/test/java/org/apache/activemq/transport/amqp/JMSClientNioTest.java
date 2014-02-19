@@ -92,6 +92,8 @@ comment|/**  * Test the JMS client when connected to the NIO transport.  */
 end_comment
 
 begin_class
+annotation|@
+name|Ignore
 specifier|public
 class|class
 name|JMSClientNioTest
