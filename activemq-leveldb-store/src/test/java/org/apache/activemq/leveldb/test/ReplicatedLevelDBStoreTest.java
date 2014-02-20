@@ -318,7 +318,7 @@ literal|1000
 operator|*
 literal|60
 operator|*
-literal|60
+literal|10
 argument_list|)
 specifier|public
 name|void
@@ -711,7 +711,7 @@ literal|1000
 operator|*
 literal|60
 operator|*
-literal|20
+literal|10
 argument_list|)
 specifier|public
 name|void
@@ -1186,7 +1186,7 @@ literal|1000
 operator|*
 literal|60
 operator|*
-literal|60
+literal|10
 argument_list|)
 specifier|public
 name|void
