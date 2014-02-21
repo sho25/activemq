@@ -1081,6 +1081,15 @@ parameter_list|()
 block|{
 try|try
 block|{
+if|if
+condition|(
+operator|!
+name|brokerService
+operator|.
+name|isStopping
+argument_list|()
+condition|)
+block|{
 name|Connection
 name|connection
 init|=
@@ -1094,6 +1103,21 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|BrokerStoppedException
+argument_list|(
+literal|"Broker "
+operator|+
+name|brokerService
+operator|+
+literal|" is being stopped"
+argument_list|)
+throw|;
+block|}
 block|}
 catch|catch
 parameter_list|(

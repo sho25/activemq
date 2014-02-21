@@ -1132,6 +1132,15 @@ name|Command
 operator|)
 name|o
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|brokerService
+operator|.
+name|isStopping
+argument_list|()
+condition|)
+block|{
 name|Response
 name|response
 init|=
@@ -1158,6 +1167,21 @@ argument_list|(
 name|response
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|BrokerStoppedException
+argument_list|(
+literal|"Broker "
+operator|+
+name|brokerService
+operator|+
+literal|" is being stopped"
+argument_list|)
+throw|;
 block|}
 block|}
 finally|finally
