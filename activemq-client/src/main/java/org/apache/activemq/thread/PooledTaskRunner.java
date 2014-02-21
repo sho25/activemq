@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -147,6 +147,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -186,6 +188,8 @@ block|}
 expr_stmt|;
 block|}
 comment|/**      * We Expect MANY wakeup calls on the same TaskRunner.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|wakeup
@@ -239,6 +243,8 @@ block|}
 block|}
 block|}
 comment|/**      * shut down the task      *      * @throws InterruptedException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|shutdown
@@ -254,6 +260,8 @@ operator|.
 name|trace
 argument_list|(
 literal|"Shutdown timeout: {} task: {}"
+argument_list|,
+name|timeout
 argument_list|,
 name|task
 argument_list|)
@@ -297,6 +305,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|shutdown
