@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -122,6 +122,8 @@ argument_list|(
 name|name
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -176,6 +178,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|wakeup
@@ -206,7 +210,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * shut down the task      *       * @param timeout      * @throws InterruptedException      */
+comment|/**      * shut down the task      *      * @param timeout      * @throws InterruptedException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|shutdown
@@ -222,6 +228,8 @@ operator|.
 name|trace
 argument_list|(
 literal|"Shutdown timeout: {} task: {}"
+argument_list|,
+name|timeout
 argument_list|,
 name|task
 argument_list|)
@@ -269,7 +277,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * shut down the task      *       * @throws InterruptedException      */
+comment|/**      * shut down the task      *      * @throws InterruptedException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|shutdown
