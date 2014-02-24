@@ -320,7 +320,7 @@ return|return
 name|values
 return|;
 block|}
-comment|/**      * Returns a mutable List of the values available at this node in the tree      */
+comment|/**      * Removes values available at this node in the tree      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -404,14 +404,52 @@ name|Set
 name|answer
 parameter_list|)
 block|{
+for|for
+control|(
+name|Map
+operator|.
+name|Entry
+argument_list|<
+name|String
+argument_list|,
+name|DestinationNode
+argument_list|>
+name|child
+range|:
+name|childNodes
+operator|.
+name|entrySet
+argument_list|()
+control|)
+block|{
+comment|// remove all the values from the child
 name|answer
 operator|.
 name|addAll
 argument_list|(
+name|child
+operator|.
+name|getValue
+argument_list|()
+operator|.
 name|removeValues
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|answer
+operator|.
+name|addAll
+argument_list|(
+name|child
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|removeDesendentValues
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Returns a list of all the values from this node down the tree      */
 annotation|@
@@ -695,6 +733,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
+comment|// TODO is this correct, we are appending wildcard values here???
 name|node
 operator|.
 name|appendMatchingWildcards
@@ -775,14 +814,7 @@ name|Set
 name|answer
 parameter_list|)
 block|{
-name|answer
-operator|.
-name|addAll
-argument_list|(
-name|values
-argument_list|)
-expr_stmt|;
-comment|// lets add all the children too
+comment|// add children values, then recursively add their children
 for|for
 control|(
 name|DestinationNode
@@ -794,6 +826,16 @@ name|values
 argument_list|()
 control|)
 block|{
+name|answer
+operator|.
+name|addAll
+argument_list|(
+name|child
+operator|.
+name|getValues
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|child
 operator|.
 name|appendDescendantValues
@@ -896,6 +938,18 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// for a wildcard Node match, add all values of the descendant node
+name|answer
+operator|.
+name|addAll
+argument_list|(
+name|wildCardNode
+operator|.
+name|getValues
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// and all descendants for paths like ">.>"
 name|answer
 operator|.
 name|addAll

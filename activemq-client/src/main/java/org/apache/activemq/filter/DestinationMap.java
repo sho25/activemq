@@ -357,15 +357,6 @@ operator|.
 name|getDestinationPaths
 argument_list|()
 decl_stmt|;
-name|paths
-operator|=
-name|DestinationFilter
-operator|.
-name|rationalizePaths
-argument_list|(
-name|paths
-argument_list|)
-expr_stmt|;
 name|getRootNode
 argument_list|(
 name|key
