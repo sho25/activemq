@@ -194,6 +194,13 @@ literal|true
 decl_stmt|;
 specifier|private
 name|long
+name|blockIfSessionPoolIsFullTimeout
+init|=
+operator|-
+literal|1L
+decl_stmt|;
+specifier|private
+name|long
 name|expiryTimeout
 init|=
 literal|0l
@@ -382,6 +389,26 @@ name|isBlockIfSessionPoolIsFull
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|isBlockIfSessionPoolIsFull
+argument_list|()
+operator|&&
+name|getBlockIfSessionPoolIsFullTimeout
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+name|connection
+operator|.
+name|setBlockIfSessionPoolIsFullTimeout
+argument_list|(
+name|getBlockIfSessionPoolIsFullTimeout
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|connection
 operator|.
 name|setUseAnonymousProducers
@@ -1136,7 +1163,7 @@ operator|=
 name|block
 expr_stmt|;
 block|}
-comment|/**      * Returns whether a pooled Connection will enter a blocked state or will throw an Exception      * once the maximum number of sessions has been borrowed from the the Session Pool.      *      * @return true if the pooled Connection createSession method will block when the limit is hit.      * @see setBlockIfSessionPoolIsFull      */
+comment|/**      * Returns whether a pooled Connection will enter a blocked state or will throw an Exception      * once the maximum number of sessions has been borrowed from the the Session Pool.      *      * @return true if the pooled Connection createSession method will block when the limit is hit.      * @see #setBlockIfSessionPoolIsFull(boolean)      */
 specifier|public
 name|boolean
 name|isBlockIfSessionPoolIsFull
@@ -1368,6 +1395,32 @@ argument_list|(
 name|connection
 argument_list|)
 return|;
+block|}
+comment|/**      * Returns the timeout to use for blocking creating new sessions      *      * @return true if the pooled Connection createSession method will block when the limit is hit.      * @see #setBlockIfSessionPoolIsFull(boolean)      */
+specifier|public
+name|long
+name|getBlockIfSessionPoolIsFullTimeout
+parameter_list|()
+block|{
+return|return
+name|blockIfSessionPoolIsFullTimeout
+return|;
+block|}
+comment|/**      * Controls the behavior of the internal session pool. By default the call to      * Connection.getSession() will block if the session pool is full.  This setting      * will affect how long it blocks and throws an exception after the timeout.      *      * The size of the session pool is controlled by the @see #maximumActive      * property.      *      * Whether or not the call to create session blocks is controlled by the @see #blockIfSessionPoolIsFull      * property      *      * @param blockIfSessionPoolIsFullTimeout - if blockIfSessionPoolIsFullTimeout is true,      *                                        then use this setting to configure how long to block before retry      */
+specifier|public
+name|void
+name|setBlockIfSessionPoolIsFullTimeout
+parameter_list|(
+name|long
+name|blockIfSessionPoolIsFullTimeout
+parameter_list|)
+block|{
+name|this
+operator|.
+name|blockIfSessionPoolIsFullTimeout
+operator|=
+name|blockIfSessionPoolIsFullTimeout
+expr_stmt|;
 block|}
 block|}
 end_class
