@@ -465,8 +465,6 @@ end_import
 
 begin_class
 annotation|@
-name|Ignore
-annotation|@
 name|RunWith
 argument_list|(
 name|Suite

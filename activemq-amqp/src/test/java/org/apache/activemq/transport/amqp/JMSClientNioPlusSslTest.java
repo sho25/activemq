@@ -19,36 +19,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|JMSException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|slf4j
@@ -67,36 +37,16 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|ByteArrayInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|DataInputStream
-import|;
-end_import
-
 begin_comment
-comment|/**  * Test the JMS client when connected to the NIO transport.  */
+comment|/**  * Test the JMS client when connected to the NIO+SSL transport.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|JMSClientNioTest
+name|JMSClientNioPlusSslTest
 extends|extends
-name|JMSClientTest
+name|JMSClientSslTest
 block|{
 specifier|protected
 specifier|static
@@ -108,7 +58,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|JMSClientNioTest
+name|JMSClientNioPlusSslTest
 operator|.
 name|class
 argument_list|)
@@ -124,13 +74,13 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"JMSClientNioTest.getBrokerPort returning nioPort {}"
+literal|"JMSClientNioPlusSslTest.getBrokerPort returning nioPlusSslPort {}"
 argument_list|,
-name|nioPort
+name|nioPlusSslPort
 argument_list|)
 expr_stmt|;
 return|return
-name|nioPort
+name|nioPlusSslPort
 return|;
 block|}
 block|}

@@ -446,8 +446,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|Ignore
 specifier|public
 class|class
 name|JMSClientTest
@@ -2122,7 +2120,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|30000
+literal|90000
 argument_list|)
 specifier|public
 name|void
@@ -2250,11 +2248,17 @@ argument_list|()
 expr_stmt|;
 name|TimeUnit
 operator|.
-name|SECONDS
+name|MILLISECONDS
 operator|.
 name|sleep
 argument_list|(
-literal|1
+literal|1000
+operator|+
+operator|(
+name|i
+operator|*
+literal|100
+operator|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2286,7 +2290,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|30000
+literal|60000
 argument_list|)
 specifier|public
 name|void
@@ -2412,6 +2416,12 @@ operator|.
 name|receive
 argument_list|(
 literal|1000
+operator|+
+operator|(
+name|i
+operator|*
+literal|100
+operator|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4351,6 +4361,8 @@ name|toString
 argument_list|()
 argument_list|,
 literal|false
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -4373,6 +4385,8 @@ name|toString
 argument_list|()
 argument_list|,
 name|syncPublish
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -4392,6 +4406,8 @@ argument_list|(
 name|clientId
 argument_list|,
 literal|false
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -4405,7 +4421,7 @@ return|return
 name|port
 return|;
 block|}
-specifier|private
+specifier|protected
 name|Connection
 name|createConnection
 parameter_list|(
@@ -4414,6 +4430,9 @@ name|clientId
 parameter_list|,
 name|boolean
 name|syncPublish
+parameter_list|,
+name|boolean
+name|useSsl
 parameter_list|)
 throws|throws
 name|JMSException
@@ -4447,6 +4466,10 @@ argument_list|,
 literal|"admin"
 argument_list|,
 literal|"password"
+argument_list|,
+literal|null
+argument_list|,
+name|useSsl
 argument_list|)
 decl_stmt|;
 name|factory
