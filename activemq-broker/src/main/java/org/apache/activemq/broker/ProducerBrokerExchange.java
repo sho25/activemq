@@ -484,7 +484,7 @@ literal|false
 expr_stmt|;
 name|LOG
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"suppressing duplicate message send [{}] from network producer with producerSequence [{}] less than last stored: {}"
 argument_list|,
@@ -529,11 +529,19 @@ name|canDispatch
 operator|=
 literal|false
 expr_stmt|;
+if|if
+condition|(
+name|messageSend
+operator|.
+name|isInTransaction
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
-name|debug
+name|warn
 argument_list|(
-literal|"suppressing duplicated message send [{}] with producerSequenceId [{}] less than last stored: {}"
+literal|"suppressing duplicated message send [{}] with producerSequenceId [{}]<= last stored: {}"
 argument_list|,
 operator|new
 name|Object
@@ -559,6 +567,40 @@ name|lastSendSequenceNumber
 block|}
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"suppressing duplicated message send [{}] with producerSequenceId [{}]<= last stored: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
+operator|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|?
+name|messageSend
+else|:
+name|messageSend
+operator|.
+name|getMessageId
+argument_list|()
+operator|)
+block|,
+name|producerSequenceId
+block|,
+name|lastSendSequenceNumber
+block|}
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{

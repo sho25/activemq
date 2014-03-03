@@ -1260,7 +1260,17 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-comment|//
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"failed to close c {}"
+argument_list|,
+name|c
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|/**      * @param cc      */
@@ -1302,7 +1312,17 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-comment|//
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"failed to close cc {}"
+argument_list|,
+name|cc
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|/**      *       */

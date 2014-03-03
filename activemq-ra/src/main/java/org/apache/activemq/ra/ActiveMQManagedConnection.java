@@ -934,9 +934,14 @@ condition|)
 block|{
 return|return;
 block|}
+try|try
+block|{
 name|cleanup
 argument_list|()
 expr_stmt|;
+block|}
+finally|finally
+block|{
 try|try
 block|{
 name|physicalConnection
@@ -957,13 +962,14 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|info
+name|trace
 argument_list|(
 literal|"Error occurred during close of a JMS connection."
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Cleans up all proxy handles attached to this physical connection so that      * they cannot be used anymore.      *       * @see javax.resource.spi.ManagedConnection#cleanup()      */
@@ -1028,12 +1034,15 @@ name|e
 argument_list|)
 throw|;
 block|}
+finally|finally
+block|{
 comment|// defer transaction cleanup till after close so that close is aware of the current tx
 name|localAndXATransaction
 operator|.
 name|cleanup
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/**      * @see javax.resource.spi.ManagedConnection#associateConnection(java.lang.Object)      */
 specifier|public

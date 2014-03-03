@@ -6101,6 +6101,23 @@ name|consumerId
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|boolean
+name|hasDispatcher
+parameter_list|(
+name|ConsumerId
+name|consumerId
+parameter_list|)
+block|{
+return|return
+name|dispatchers
+operator|.
+name|containsKey
+argument_list|(
+name|consumerId
+argument_list|)
+return|;
+block|}
 comment|/**      * @param o - the command to consume      */
 annotation|@
 name|Override
@@ -6259,6 +6276,22 @@ operator|.
 name|dispatch
 argument_list|(
 name|md
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"{} no dispatcher for {} in {}"
+argument_list|,
+name|this
+argument_list|,
+name|md
+argument_list|,
+name|dispatchers
 argument_list|)
 expr_stmt|;
 block|}

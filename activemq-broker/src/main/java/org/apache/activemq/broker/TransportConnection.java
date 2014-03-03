@@ -2911,6 +2911,27 @@ name|ack
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|ack
+operator|.
+name|isInTransaction
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"no matching consumer, ignoring ack {}"
+argument_list|,
+name|consumerExchange
+argument_list|,
+name|ack
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 literal|null
 return|;

@@ -747,7 +747,17 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"JMS Session is no longer running (maybe due to loss of connection?), marking ServerSesison as stale"
+literal|"JMS Session {} with unconsumed {} is no longer running (maybe due to loss of connection?), marking ServerSession as stale"
+argument_list|,
+name|session
+argument_list|,
+name|session
+operator|.
+name|getUnconsumedMessages
+argument_list|()
+operator|.
+name|size
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|stale
@@ -778,7 +788,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Endpoint failed to process message."
+literal|"Endpoint {} failed to process message."
+argument_list|,
+name|session
 argument_list|,
 name|e
 argument_list|)
@@ -797,12 +809,14 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Endpoint failed to process message. Reason: "
+literal|"Endpoint {} failed to process message. Reason: "
 operator|+
 name|e
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|session
 argument_list|)
 expr_stmt|;
 block|}
@@ -859,6 +873,13 @@ block|{
 name|runningFlag
 operator|=
 literal|false
+expr_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Session has no unconsumed message, returning to pool"
+argument_list|)
 expr_stmt|;
 name|pool
 operator|.
@@ -1076,6 +1097,12 @@ return|return
 literal|"ServerSessionImpl:"
 operator|+
 name|serverSessionId
+operator|+
+literal|"{"
+operator|+
+name|session
+operator|+
+literal|"}"
 return|;
 block|}
 specifier|public

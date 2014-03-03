@@ -403,7 +403,9 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-throw|throw
+name|JMSException
+name|jmsException
+init|=
 operator|new
 name|JMSException
 argument_list|(
@@ -412,6 +414,16 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|)
+decl_stmt|;
+name|jmsException
+operator|.
+name|setLinkedException
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+name|jmsException
 throw|;
 block|}
 block|}
