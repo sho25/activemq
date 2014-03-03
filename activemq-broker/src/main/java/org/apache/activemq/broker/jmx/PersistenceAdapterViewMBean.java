@@ -34,7 +34,7 @@ function_decl|;
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"Current inflight local transactions."
+literal|"Inflight transactions."
 argument_list|)
 name|String
 name|getTransactions
