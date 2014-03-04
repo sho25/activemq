@@ -1626,7 +1626,7 @@ name|remoteDataSource
 operator|.
 name|setDatabaseName
 argument_list|(
-literal|"derbyDBRemoteBroker"
+literal|"target/derbyDBRemoteBroker"
 argument_list|)
 expr_stmt|;
 name|remoteDataSource
@@ -1936,7 +1936,7 @@ name|localDataSource
 operator|.
 name|setDatabaseName
 argument_list|(
-literal|"derbyDBLocalBroker"
+literal|"target/derbyDBLocalBroker"
 argument_list|)
 expr_stmt|;
 name|localDataSource
