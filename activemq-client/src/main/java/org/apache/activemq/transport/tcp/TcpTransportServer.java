@@ -1680,13 +1680,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|doStop
-argument_list|(
-name|stopper
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|serverSocket
@@ -1700,6 +1693,13 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+name|super
+operator|.
+name|doStop
+argument_list|(
+name|stopper
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
