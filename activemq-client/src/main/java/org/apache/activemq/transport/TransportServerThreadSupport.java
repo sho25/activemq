@@ -123,10 +123,6 @@ name|stackSize
 decl_stmt|;
 specifier|public
 name|TransportServerThreadSupport
-parameter_list|()
-block|{     }
-specifier|public
-name|TransportServerThreadSupport
 parameter_list|(
 name|URI
 name|location
