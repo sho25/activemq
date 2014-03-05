@@ -1453,7 +1453,7 @@ end_expr_stmt
 begin_expr_stmt
 name|assertTrue
 argument_list|(
-literal|"tx committed trough failover"
+literal|"tx committed through failover"
 argument_list|,
 name|commitDoneLatch
 operator|.

@@ -1692,7 +1692,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"restore consumer: "
+literal|"consumer: "
 operator|+
 name|infoToSend
 operator|.

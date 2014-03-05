@@ -1908,6 +1908,8 @@ expr_stmt|;
 name|forgetRecoveredAcks
 argument_list|(
 name|txid
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -1980,6 +1982,8 @@ expr_stmt|;
 name|forgetRecoveredAcks
 argument_list|(
 name|txid
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -2000,6 +2004,9 @@ name|forgetRecoveredAcks
 parameter_list|(
 name|TransactionId
 name|txid
+parameter_list|,
+name|boolean
+name|isRollback
 parameter_list|)
 throws|throws
 name|IOException
@@ -2030,6 +2037,8 @@ name|xaTid
 operator|.
 name|getPreparedAcks
 argument_list|()
+argument_list|,
+name|isRollback
 argument_list|)
 expr_stmt|;
 block|}

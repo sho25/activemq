@@ -466,6 +466,11 @@ name|boolean
 name|isCacheEnabled
 parameter_list|()
 function_decl|;
+specifier|public
+name|void
+name|rebase
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

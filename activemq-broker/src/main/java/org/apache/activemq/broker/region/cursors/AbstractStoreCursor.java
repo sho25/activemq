@@ -360,6 +360,17 @@ operator|>
 literal|0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|rebase
+parameter_list|()
+block|{
+name|resetSize
+argument_list|()
+expr_stmt|;
+block|}
 specifier|public
 specifier|final
 specifier|synchronized

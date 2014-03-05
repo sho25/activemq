@@ -1200,7 +1200,7 @@ throw|throw
 operator|new
 name|SQLException
 argument_list|(
-literal|"TEST SQL EXCEPTION from executeBatch"
+literal|"TEST SQL EXCEPTION from executeBatch after super. execution"
 argument_list|)
 throw|;
 block|}

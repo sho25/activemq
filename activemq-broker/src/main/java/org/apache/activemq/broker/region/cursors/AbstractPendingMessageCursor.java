@@ -1092,6 +1092,11 @@ operator|=
 name|val
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|rebase
+parameter_list|()
+block|{     }
 block|}
 end_class
 

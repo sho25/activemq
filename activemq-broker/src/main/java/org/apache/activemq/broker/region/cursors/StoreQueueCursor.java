@@ -1308,6 +1308,22 @@ return|return
 name|cacheEnabled
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|rebase
+parameter_list|()
+block|{
+name|persistent
+operator|.
+name|rebase
+argument_list|()
+expr_stmt|;
+name|reset
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 
