@@ -300,11 +300,6 @@ comment|/**  *  shows broker 'once only delivery' and recovery with XA  */
 end_comment
 
 begin_class
-annotation|@
-name|Ignore
-argument_list|(
-literal|"Test hangs"
-argument_list|)
 specifier|public
 class|class
 name|JmsJdbcXATest
