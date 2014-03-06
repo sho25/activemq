@@ -255,6 +255,12 @@ name|redeliveryDelayMillis
 init|=
 literal|2000
 decl_stmt|;
+specifier|final
+name|long
+name|initialRedeliveryDelayMillis
+init|=
+literal|4000
+decl_stmt|;
 name|int
 name|maxBrokerRedeliveries
 init|=
@@ -512,6 +518,12 @@ name|assertEquals
 argument_list|(
 literal|"has expiryDelay specified"
 argument_list|,
+name|i
+operator|==
+literal|0
+condition|?
+name|initialRedeliveryDelayMillis
+else|:
 name|redeliveryDelayMillis
 argument_list|,
 name|brokerRedeliveryMessage
@@ -934,7 +946,7 @@ name|brokerRedeliveryPolicy
 operator|.
 name|setInitialRedeliveryDelay
 argument_list|(
-name|redeliveryDelayMillis
+name|initialRedeliveryDelayMillis
 argument_list|)
 expr_stmt|;
 name|brokerRedeliveryPolicy
