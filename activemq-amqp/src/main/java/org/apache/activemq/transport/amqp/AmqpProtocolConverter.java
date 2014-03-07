@@ -7329,17 +7329,6 @@ operator|.
 name|getException
 argument_list|()
 decl_stmt|;
-name|String
-name|name
-init|=
-name|exception
-operator|.
-name|getClass
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-decl_stmt|;
 name|sender
 operator|.
 name|setCondition

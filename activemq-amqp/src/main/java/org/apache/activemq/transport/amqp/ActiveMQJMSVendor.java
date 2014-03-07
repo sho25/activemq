@@ -402,11 +402,6 @@ return|;
 block|}
 annotation|@
 name|Override
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 specifier|public
 name|Destination
 name|createDestination
@@ -428,6 +423,8 @@ name|class
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 parameter_list|<
 name|T

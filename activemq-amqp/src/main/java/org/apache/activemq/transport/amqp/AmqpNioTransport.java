@@ -259,26 +259,6 @@ name|Buffer
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * An implementation of the {@link org.apache.activemq.transport.Transport} interface for using AMQP over NIO  */
 end_comment
@@ -291,6 +271,7 @@ extends|extends
 name|TcpTransport
 block|{
 specifier|private
+specifier|final
 name|DataInputStream
 name|amqpHeaderValue
 init|=
@@ -389,6 +370,8 @@ name|socket
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|initializeStreams
@@ -428,6 +411,8 @@ operator|.
 name|Listener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSelect
@@ -448,6 +433,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onError
@@ -829,6 +816,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStart
@@ -854,6 +843,8 @@ name|enable
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStop

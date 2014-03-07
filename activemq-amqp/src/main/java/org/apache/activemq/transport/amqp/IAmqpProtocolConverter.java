@@ -19,32 +19,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|Command
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|fusesource
-operator|.
-name|hawtbuf
-operator|.
-name|Buffer
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -55,15 +29,15 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|concurrent
+name|activemq
 operator|.
-name|locks
+name|command
 operator|.
-name|ReentrantLock
+name|Command
 import|;
 end_import
 

@@ -546,9 +546,6 @@ argument_list|(
 literal|"SetUpTask started."
 argument_list|)
 expr_stmt|;
-name|Boolean
-name|result
-init|=
 name|future
 operator|.
 name|get
@@ -559,7 +556,7 @@ name|TimeUnit
 operator|.
 name|SECONDS
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1044,9 +1041,6 @@ argument_list|(
 literal|"tearDown started."
 argument_list|)
 expr_stmt|;
-name|Boolean
-name|result
-init|=
 name|future
 operator|.
 name|get
@@ -1057,7 +1051,7 @@ name|TimeUnit
 operator|.
 name|SECONDS
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1573,6 +1567,11 @@ argument_list|<
 name|Boolean
 argument_list|>
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 specifier|private
 name|String
 name|testName
@@ -1612,6 +1611,11 @@ argument_list|<
 name|Boolean
 argument_list|>
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 specifier|private
 name|String
 name|testName
