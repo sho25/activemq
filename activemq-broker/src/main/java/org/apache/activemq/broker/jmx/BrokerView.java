@@ -779,11 +779,15 @@ comment|/**      * @return the average size of a message (bytes)      */
 annotation|@
 name|Override
 specifier|public
-name|double
+name|long
 name|getAverageMessageSize
 parameter_list|()
 block|{
+comment|// we are okay with the size without decimals so cast to long
 return|return
+operator|(
+name|long
+operator|)
 name|safeGetBroker
 argument_list|()
 operator|.
