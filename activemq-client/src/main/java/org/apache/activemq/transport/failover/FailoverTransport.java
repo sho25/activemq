@@ -1538,8 +1538,6 @@ name|transport
 operator|+
 literal|") failed, reason:  "
 operator|+
-name|e
-operator|+
 operator|(
 name|reconnectOk
 condition|?
@@ -1549,6 +1547,8 @@ literal|", not"
 operator|)
 operator|+
 literal|" attempting to automatically reconnect"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 name|initialized
@@ -3154,20 +3154,45 @@ expr_stmt|;
 block|}
 break|break;
 block|}
-comment|// If it was a request and it was not being tracked by
-comment|// the state tracker,
-comment|// then hold it in the requestMap so that we can replay
-comment|// it later.
 name|Tracked
 name|tracked
 init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+name|tracked
+operator|=
 name|stateTracker
 operator|.
 name|track
 argument_list|(
 name|command
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ioe
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Cannot track the command "
+operator|+
+name|command
+argument_list|,
+name|ioe
+argument_list|)
+expr_stmt|;
+block|}
+comment|// If it was a request and it was not being tracked by
+comment|// the state tracker,
+comment|// then hold it in the requestMap so that we can replay
+comment|// it later.
 synchronized|synchronized
 init|(
 name|requestMap
