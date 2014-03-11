@@ -35,6 +35,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Rule
 import|;
 end_import
@@ -376,6 +386,11 @@ comment|/**  * Run the JoramJmsTests using amqp+nio  */
 end_comment
 
 begin_class
+annotation|@
+name|Ignore
+argument_list|(
+literal|"AMQ-5094"
+argument_list|)
 annotation|@
 name|RunWith
 argument_list|(
