@@ -255,7 +255,6 @@ name|redeliveryDelayMillis
 init|=
 literal|2000
 decl_stmt|;
-specifier|final
 name|long
 name|initialRedeliveryDelayMillis
 init|=
@@ -288,6 +287,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|initialRedeliveryDelayMillis
+operator|=
+name|redeliveryDelayMillis
+expr_stmt|;
 name|maxBrokerRedeliveries
 operator|=
 name|RedeliveryPolicy
