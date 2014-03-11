@@ -743,6 +743,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|currentBuffer
+operator|=
+literal|null
+expr_stmt|;
 if|if
 condition|(
 name|plain
@@ -783,10 +787,6 @@ name|nextFrameSize
 operator|=
 operator|-
 literal|1
-expr_stmt|;
-name|currentBuffer
-operator|=
-literal|null
 expr_stmt|;
 block|}
 return|return

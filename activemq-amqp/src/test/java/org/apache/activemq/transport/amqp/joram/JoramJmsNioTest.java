@@ -387,11 +387,6 @@ end_comment
 
 begin_class
 annotation|@
-name|Ignore
-argument_list|(
-literal|"AMQ-5094"
-argument_list|)
-annotation|@
 name|RunWith
 argument_list|(
 name|Suite
