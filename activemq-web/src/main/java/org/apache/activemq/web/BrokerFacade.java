@@ -111,6 +111,32 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/** 	 * All active producers to a queue. 	 *  	 * @param queueName 	 *            the name of the queue, not<code>null</code> 	 * @return not<code>null</code> 	 * @throws Exception 	 */
+name|Collection
+argument_list|<
+name|ProducerViewMBean
+argument_list|>
+name|getQueueProducers
+parameter_list|(
+name|String
+name|queueName
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/** 	 * All active producers to a topic. 	 *  	 * @param queueName 	 *            the name of the topic, not<code>null</code> 	 * @return not<code>null</code> 	 * @throws Exception 	 */
+name|Collection
+argument_list|<
+name|ProducerViewMBean
+argument_list|>
+name|getTopicProducers
+parameter_list|(
+name|String
+name|queueName
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
 comment|/** 	 * Active durable subscribers to topics of the broker. 	 *  	 * @return not<code>null</code> 	 * @throws Exception 	 */
 name|Collection
 argument_list|<
