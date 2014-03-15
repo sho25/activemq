@@ -137,6 +137,31 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/** 	 * All active non-durable subscribers to a topic. 	 *  	 * @param queueName 	 *            the name of the topic, not<code>null</code> 	 * @return not<code>null</code> 	 * @throws Exception 	 */
+specifier|public
+name|Collection
+argument_list|<
+name|SubscriptionViewMBean
+argument_list|>
+name|getTopicSubscribers
+parameter_list|(
+name|String
+name|topicName
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/** 	 * All active non-durable subscribers to a topic. 	 *  	 * @param queueName 	 *            the name of the topic, not<code>null</code> 	 * @return not<code>null</code> 	 * @throws Exception 	 */
+specifier|public
+name|Collection
+argument_list|<
+name|SubscriptionViewMBean
+argument_list|>
+name|getNonDurableTopicSubscribers
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
 comment|/** 	 * Active durable subscribers to topics of the broker. 	 *  	 * @return not<code>null</code> 	 * @throws Exception 	 */
 name|Collection
 argument_list|<
