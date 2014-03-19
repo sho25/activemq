@@ -502,7 +502,7 @@ argument_list|()
 decl_stmt|;
 name|assertTrue
 argument_list|(
-literal|"only one journal file should be left "
+literal|"small number of journal files should be left "
 argument_list|,
 name|Wait
 operator|.
@@ -523,6 +523,29 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"journal data file count - expected {} actual {}"
+argument_list|,
+literal|4
+argument_list|,
+name|pa
+operator|.
+name|getStore
+argument_list|()
+operator|.
+name|getJournal
+argument_list|()
+operator|.
+name|getFileMap
+argument_list|()
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|pa
 operator|.
@@ -1456,6 +1479,13 @@ argument_list|(
 literal|10
 operator|*
 literal|1024
+argument_list|)
+expr_stmt|;
+name|kahadb
+operator|.
+name|setCleanupInterval
+argument_list|(
+literal|5000
 argument_list|)
 expr_stmt|;
 name|broker
