@@ -742,12 +742,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|AbortSlowAckConsumerStrategy
-name|strategy
-init|=
-name|createSlowConsumerStrategy
-argument_list|()
-decl_stmt|;
 name|strategy
 operator|.
 name|setIgnoreIdleConsumers

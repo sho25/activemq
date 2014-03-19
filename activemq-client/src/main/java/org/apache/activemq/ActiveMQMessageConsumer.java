@@ -3785,7 +3785,7 @@ name|md
 argument_list|,
 name|MessageAck
 operator|.
-name|DELIVERED_ACK_TYPE
+name|EXPIRED_ACK_TYPE
 argument_list|)
 expr_stmt|;
 name|stats

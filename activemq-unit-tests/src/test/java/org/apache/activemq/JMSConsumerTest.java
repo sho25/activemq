@@ -5491,6 +5491,23 @@ name|getDequeueCount
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Wrong expired count: "
+operator|+
+name|view
+operator|.
+name|getExpiredCount
+argument_list|()
+argument_list|,
+literal|4
+argument_list|,
+name|view
+operator|.
+name|getExpiredCount
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 specifier|protected
 name|DestinationViewMBean

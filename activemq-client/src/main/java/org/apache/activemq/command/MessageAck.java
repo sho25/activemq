@@ -104,6 +104,15 @@ name|UNMATCHED_ACK_TYPE
 init|=
 literal|5
 decl_stmt|;
+comment|/**      * the case where a consumer does not dispatch because message has expired inflight      */
+specifier|public
+specifier|static
+specifier|final
+name|byte
+name|EXPIRED_ACK_TYPE
+init|=
+literal|6
+decl_stmt|;
 specifier|protected
 name|byte
 name|ackType
@@ -379,6 +388,17 @@ return|return
 name|ackType
 operator|==
 name|UNMATCHED_ACK_TYPE
+return|;
+block|}
+specifier|public
+name|boolean
+name|isExpiredAck
+parameter_list|()
+block|{
+return|return
+name|ackType
+operator|==
+name|EXPIRED_ACK_TYPE
 return|;
 block|}
 comment|/**      * @openwire:property version=1 cache=true      */

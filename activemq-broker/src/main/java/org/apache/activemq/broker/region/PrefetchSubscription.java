@@ -1575,6 +1575,11 @@ name|ack
 operator|.
 name|isDeliveredAck
 argument_list|()
+operator|||
+name|ack
+operator|.
+name|isExpiredAck
+argument_list|()
 condition|)
 block|{
 comment|// Message was delivered but not acknowledged: update pre-fetch
