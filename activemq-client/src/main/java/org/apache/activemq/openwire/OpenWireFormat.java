@@ -597,27 +597,11 @@ name|runMarshallCacheEvictionSweep
 argument_list|()
 expr_stmt|;
 block|}
-comment|//        MarshallAware ma = null;
-comment|//        // If not using value caching, then the marshaled form is always the
-comment|//        // same
-comment|//        if (!cacheEnabled&& ((DataStructure)command).isMarshallAware()) {
-comment|//            ma = (MarshallAware)command;
-comment|//        }
 name|ByteSequence
 name|sequence
 init|=
 literal|null
 decl_stmt|;
-comment|// if( ma!=null ) {
-comment|// sequence = ma.getCachedMarshalledForm(this);
-comment|// }
-if|if
-condition|(
-name|sequence
-operator|==
-literal|null
-condition|)
-block|{
 name|int
 name|size
 init|=
@@ -883,10 +867,6 @@ operator|.
 name|toByteSequence
 argument_list|()
 expr_stmt|;
-block|}
-comment|// if( ma!=null ) {
-comment|// ma.setCachedMarshalledForm(this, sequence);
-comment|// }
 block|}
 return|return
 name|sequence
