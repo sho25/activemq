@@ -2800,7 +2800,7 @@ name|join
 argument_list|(
 literal|1000
 operator|*
-literal|20
+literal|30
 argument_list|)
 expr_stmt|;
 if|if
@@ -2822,38 +2822,12 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|Throwable
-name|throwable
-init|=
-operator|new
-name|Throwable
+name|AutoFailTestSupport
+operator|.
+name|dumpAllThreads
 argument_list|(
-literal|"blocked send thread"
+literal|"Send blocked"
 argument_list|)
-decl_stmt|;
-name|throwable
-operator|.
-name|setStackTrace
-argument_list|(
-name|sendThread
-operator|.
-name|getStackTrace
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|error
-argument_list|(
-literal|"Send thread blocked"
-argument_list|,
-name|throwable
-argument_list|)
-expr_stmt|;
-name|throwable
-operator|.
-name|printStackTrace
-argument_list|()
 expr_stmt|;
 block|}
 block|}
