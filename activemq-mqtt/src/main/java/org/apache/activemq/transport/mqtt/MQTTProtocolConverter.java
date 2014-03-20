@@ -903,7 +903,8 @@ name|handler
 argument_list|)
 expr_stmt|;
 block|}
-name|mqttTransport
+name|getMQTTTransport
+argument_list|()
 operator|.
 name|sendToActiveMQ
 argument_list|(
@@ -984,8 +985,6 @@ name|getClientId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|mqttTransport
-operator|.
 name|sendToMQTT
 argument_list|(
 name|PING_RESP_FRAME
