@@ -295,8 +295,16 @@ case|:
 comment|// set packet id, and optionally dup flag
 name|protocolConverter
 operator|.
+name|getPacketIdGenerator
+argument_list|()
+operator|.
 name|setPacketId
 argument_list|(
+name|protocolConverter
+operator|.
+name|getClientId
+argument_list|()
+argument_list|,
 name|this
 argument_list|,
 name|message
