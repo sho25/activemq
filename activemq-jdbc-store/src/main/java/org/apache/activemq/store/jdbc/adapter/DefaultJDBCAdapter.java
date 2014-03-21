@@ -437,6 +437,13 @@ specifier|protected
 name|Statements
 name|statements
 decl_stmt|;
+specifier|private
+name|boolean
+name|batchStatements
+init|=
+literal|true
+decl_stmt|;
+comment|//This is deprecated and should be removed in a future release
 specifier|protected
 name|boolean
 name|batchStatments
@@ -1351,7 +1358,7 @@ if|if
 condition|(
 name|this
 operator|.
-name|batchStatments
+name|batchStatements
 condition|)
 block|{
 name|c
@@ -1495,7 +1502,7 @@ if|if
 condition|(
 name|this
 operator|.
-name|batchStatments
+name|batchStatements
 condition|)
 block|{
 name|s
@@ -1539,7 +1546,7 @@ condition|(
 operator|!
 name|this
 operator|.
-name|batchStatments
+name|batchStatements
 condition|)
 block|{
 if|if
@@ -1631,7 +1638,7 @@ if|if
 condition|(
 name|this
 operator|.
-name|batchStatments
+name|batchStatements
 condition|)
 block|{
 name|c
@@ -1716,7 +1723,7 @@ if|if
 condition|(
 name|this
 operator|.
-name|batchStatments
+name|batchStatements
 condition|)
 block|{
 name|s
@@ -1760,7 +1767,7 @@ condition|(
 operator|!
 name|this
 operator|.
-name|batchStatments
+name|batchStatements
 condition|)
 block|{
 name|s
@@ -2255,7 +2262,7 @@ if|if
 condition|(
 name|this
 operator|.
-name|batchStatments
+name|batchStatements
 condition|)
 block|{
 name|c
@@ -2333,7 +2340,7 @@ if|if
 condition|(
 name|this
 operator|.
-name|batchStatments
+name|batchStatements
 condition|)
 block|{
 name|s
@@ -2377,7 +2384,7 @@ condition|(
 operator|!
 name|this
 operator|.
-name|batchStatments
+name|batchStatements
 operator|&&
 name|s
 operator|!=
@@ -2830,7 +2837,7 @@ if|if
 condition|(
 name|this
 operator|.
-name|batchStatments
+name|batchStatements
 condition|)
 block|{
 name|c
@@ -2935,7 +2942,7 @@ if|if
 condition|(
 name|this
 operator|.
-name|batchStatments
+name|batchStatements
 condition|)
 block|{
 name|s
@@ -2985,7 +2992,7 @@ condition|(
 operator|!
 name|this
 operator|.
-name|batchStatments
+name|batchStatements
 condition|)
 block|{
 name|close
@@ -3083,7 +3090,7 @@ if|if
 condition|(
 name|this
 operator|.
-name|batchStatments
+name|batchStatements
 condition|)
 block|{
 name|c
@@ -3179,7 +3186,7 @@ if|if
 condition|(
 name|this
 operator|.
-name|batchStatments
+name|batchStatements
 condition|)
 block|{
 name|s
@@ -3229,7 +3236,7 @@ condition|(
 operator|!
 name|this
 operator|.
-name|batchStatments
+name|batchStatements
 condition|)
 block|{
 name|close
@@ -5697,6 +5704,41 @@ return|return
 name|rc
 return|;
 block|}
+comment|/**      * @return true if batchStatements      */
+specifier|public
+name|boolean
+name|isBatchStatements
+parameter_list|()
+block|{
+return|return
+name|batchStatements
+return|;
+block|}
+comment|/**      * Set the number of statements to process as a single batch DB update      * @param batchStatements      */
+specifier|public
+name|void
+name|setBatchStatements
+parameter_list|(
+name|boolean
+name|batchStatements
+parameter_list|)
+block|{
+name|this
+operator|.
+name|batchStatements
+operator|=
+name|batchStatements
+expr_stmt|;
+comment|// The next lines are deprecated and should be removed in a future release
+comment|// and is here in case someone created their own
+name|this
+operator|.
+name|batchStatments
+operator|=
+name|batchStatements
+expr_stmt|;
+block|}
+comment|// Note - remove batchStatment in future distributions.  Here for backward compatibility
 comment|/**      * @return true if batchStements      */
 specifier|public
 name|boolean
@@ -5706,10 +5748,10 @@ block|{
 return|return
 name|this
 operator|.
-name|batchStatments
+name|batchStatements
 return|;
 block|}
-comment|/**      * @param batchStatments      */
+comment|/**      * This value batchStatments is deprecated and will be removed in a future release.  Use batchStatements instead (Note the 'e' in Statement)"      * @deprecated      * @param batchStatments      */
 specifier|public
 name|void
 name|setBatchStatments
@@ -5718,6 +5760,19 @@ name|boolean
 name|batchStatments
 parameter_list|)
 block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"batchStatments is deprecated and will be removed in a future release.  Use batchStatements instead (Note the 'e' in Statement)"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|batchStatements
+operator|=
+name|batchStatments
+expr_stmt|;
 name|this
 operator|.
 name|batchStatments
