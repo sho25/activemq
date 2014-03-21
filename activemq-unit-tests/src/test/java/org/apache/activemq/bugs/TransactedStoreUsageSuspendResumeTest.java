@@ -763,6 +763,16 @@ argument_list|,
 name|allMessagesReceived
 argument_list|)
 expr_stmt|;
+comment|// give consumers a chance to exit gracefully
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|sleep
+argument_list|(
+literal|2
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 name|void
