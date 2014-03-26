@@ -770,7 +770,7 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" SET MSG=? WHERE ID=?"
+literal|" SET MSG=? WHERE MSGID_PROD=? AND MSGID_SEQ=? AND CONTAINER=?"
 expr_stmt|;
 block|}
 return|return

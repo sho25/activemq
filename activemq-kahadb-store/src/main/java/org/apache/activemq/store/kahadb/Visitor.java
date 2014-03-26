@@ -207,6 +207,24 @@ name|KahaTraceCommand
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|kahadb
+operator|.
+name|data
+operator|.
+name|KahaUpdateMessageCommand
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -306,6 +324,16 @@ name|visit
 parameter_list|(
 name|KahaAckMessageFileMapCommand
 name|kahaProducerAuditCommand
+parameter_list|)
+throws|throws
+name|IOException
+block|{     }
+specifier|public
+name|void
+name|visit
+parameter_list|(
+name|KahaUpdateMessageCommand
+name|kahaUpdateMessageCommand
 parameter_list|)
 throws|throws
 name|IOException

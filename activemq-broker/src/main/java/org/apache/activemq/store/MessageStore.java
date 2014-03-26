@@ -374,6 +374,15 @@ name|boolean
 name|isPrioritizedMessages
 parameter_list|()
 function_decl|;
+name|void
+name|updateMessage
+parameter_list|(
+name|Message
+name|message
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 block|}
 end_interface
 

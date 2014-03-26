@@ -914,6 +914,24 @@ name|isPrioritizedMessages
 argument_list|()
 return|;
 block|}
+specifier|public
+name|void
+name|updateMessage
+parameter_list|(
+name|Message
+name|message
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|delegate
+operator|.
+name|updateMessage
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

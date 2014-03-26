@@ -374,7 +374,7 @@ name|Parameters
 argument_list|(
 name|name
 operator|=
-literal|"{0}"
+literal|"store={0}"
 argument_list|)
 specifier|public
 specifier|static

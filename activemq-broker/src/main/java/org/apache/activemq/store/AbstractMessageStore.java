@@ -483,6 +483,26 @@ name|ack
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|updateMessage
+parameter_list|(
+name|Message
+name|message
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"update is not supported by: "
+operator|+
+name|this
+argument_list|)
+throw|;
+block|}
 specifier|static
 class|class
 name|CallableImplementation
