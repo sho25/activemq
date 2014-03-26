@@ -1848,7 +1848,10 @@ argument_list|(
 name|info
 argument_list|)
 argument_list|,
-literal|true
+name|theStore
+operator|.
+name|isEnableJournalDiskSyncs
+argument_list|()
 argument_list|,
 literal|null
 argument_list|,
@@ -1898,7 +1901,10 @@ argument_list|(
 name|info
 argument_list|)
 argument_list|,
-literal|true
+name|theStore
+operator|.
+name|isEnableJournalDiskSyncs
+argument_list|()
 argument_list|,
 name|preCommit
 argument_list|,
@@ -1972,7 +1978,10 @@ argument_list|(
 name|info
 argument_list|)
 argument_list|,
-literal|false
+name|theStore
+operator|.
+name|isEnableJournalDiskSyncs
+argument_list|()
 argument_list|,
 literal|null
 argument_list|,
