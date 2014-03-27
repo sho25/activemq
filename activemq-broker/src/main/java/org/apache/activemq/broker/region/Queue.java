@@ -3315,6 +3315,19 @@ range|:
 name|unAckedMessages
 control|)
 block|{
+comment|// AMQ-5107: don't resend if the broker is shutting down
+if|if
+condition|(
+name|this
+operator|.
+name|brokerService
+operator|.
+name|isStopping
+argument_list|()
+condition|)
+block|{
+break|break;
+block|}
 name|QueueMessageReference
 name|qmr
 init|=
@@ -3423,6 +3436,7 @@ name|sub
 argument_list|)
 expr_stmt|;
 block|}
+comment|// AMQ-5107: don't resend if the broker is shutting down
 if|if
 condition|(
 operator|!
@@ -3430,6 +3444,16 @@ name|redeliveredWaitingDispatch
 operator|.
 name|isEmpty
 argument_list|()
+operator|&&
+operator|(
+operator|!
+name|this
+operator|.
+name|brokerService
+operator|.
+name|isStopping
+argument_list|()
+operator|)
 condition|)
 block|{
 name|doDispatch
