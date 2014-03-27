@@ -991,6 +991,13 @@ literal|null
 expr_stmt|;
 block|}
 block|}
+else|else
+block|{
+name|marshalledProperties
+operator|=
+literal|null
+expr_stmt|;
+block|}
 block|}
 specifier|private
 name|Map
