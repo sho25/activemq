@@ -4075,7 +4075,8 @@ name|connector
 init|=
 name|getProxyToConnectionView
 argument_list|(
-literal|"amqp"
+name|getTargetConnectorName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|LOG
@@ -4203,6 +4204,15 @@ block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+specifier|protected
+name|String
+name|getTargetConnectorName
+parameter_list|()
+block|{
+return|return
+literal|"amqp"
+return|;
 block|}
 annotation|@
 name|Test

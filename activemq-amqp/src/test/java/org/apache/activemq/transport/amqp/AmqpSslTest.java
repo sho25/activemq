@@ -176,14 +176,6 @@ literal|"amqp+ssl://localhost:8883"
 argument_list|)
 expr_stmt|;
 block|}
-comment|//    protected AMQP createAMQPConnection() throws Exception {
-comment|//        AMQP amqp = new AMQP();
-comment|//        amqp.setHost("ssl://localhost:8883");
-comment|//        SSLContext ctx = SSLContext.getInstance("TLS");
-comment|//        ctx.init(new KeyManager[0], new TrustManager[]{new DefaultTrustManager()}, new SecureRandom());
-comment|//        amqp.setSslContext(ctx);
-comment|//        return amqp;
-comment|//    }
 specifier|static
 class|class
 name|DefaultTrustManager
