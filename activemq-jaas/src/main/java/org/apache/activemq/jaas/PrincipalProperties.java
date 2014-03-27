@@ -287,6 +287,14 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+name|Properties
+name|getPrincipals
+parameter_list|()
+block|{
+return|return
+name|principals
+return|;
+block|}
 block|}
 end_class
 

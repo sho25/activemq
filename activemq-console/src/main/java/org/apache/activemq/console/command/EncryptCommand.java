@@ -65,7 +65,9 @@ literal|""
 block|,
 literal|"Encrypt Options:"
 block|,
-literal|"    --password<password>      Password to be used by the encryptor."
+literal|"    --password<password>      Password to be used by the encryptor.  Defaults to"
+block|,
+literal|"                               the value in the ACTIVEMQ_ENCRYPTION_PASSWORD env variable."
 block|,
 literal|"    --input<input>            Text to be encrypted."
 block|,
@@ -141,6 +143,23 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|password
+operator|==
+literal|null
+condition|)
+block|{
+name|password
+operator|=
+name|System
+operator|.
+name|getenv
+argument_list|(
+literal|"ACTIVEMQ_ENCRYPTION_PASSWORD"
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|password
