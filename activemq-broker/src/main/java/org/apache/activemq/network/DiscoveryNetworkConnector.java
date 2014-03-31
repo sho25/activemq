@@ -861,6 +861,9 @@ block|,
 name|uri
 block|,
 name|e
+operator|.
+name|getMessage
+argument_list|()
 block|}
 argument_list|)
 expr_stmt|;
